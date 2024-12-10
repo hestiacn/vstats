@@ -1,6 +1,21 @@
 AWStats Changelog
 -----------------
 
+
+***** 8.0 *****
+
+Better CSS
+Update robots.pm
+Fixes #248
+Update Traditional Chinese translation and migrate it to UTF-8
+Sorting tree: Check if the key exists. Do not care about its value.
+Allow processing logs in json
+Fix default setup for NotPageList
+Add report about request time
+Fix bad link into doc
+Remove native Android and native iOS/OSX Browser's User Agents from robots.pm
+
+
 ***** 7.9 *****
 
 Add Windows 11 and Android 13 operating systems
