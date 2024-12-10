@@ -42,7 +42,7 @@ $DIR||='.'; $DIR =~ s/([^\/\\])[\\\/]+$/$1/;
 
 $SOURCE="$DIR/../../awstats";
 $DESTI="$SOURCE/make";
-$DESTI="/media/HDDATA1_LD/Mes Sites/Web/AWStats/wwwroot/files";
+$DESTI="/mnt/HDDATA1_LD/Mes Sites/Web/AWStats/wwwroot/files";
 $PUBLISHSTABLE="eldy,awstats\@frs.sourceforge.net:/home/frs/project/awstats";
 
 # Detect OS type
