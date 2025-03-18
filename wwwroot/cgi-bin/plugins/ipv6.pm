@@ -63,8 +63,12 @@ sub GetResolvedIP_ipv6 {
 	my $query = $resolver->query($reverseip, "PTR");
 	if (! defined($query)) { return; }
 	my @result=split(/\s/, ($query->answer)[0]->string);
-	chop($result[4]); # Remove the trailing dot of the answer.
-	return $result[4];
+	my $hostindex = 6;
+	# Host name appears at index 6 on EL8 and EL9.
+	# On older operating systems, it appears at index 4 at the array's end.
+	if ($hostindex > $#result) { $hostindex = $#result; }
+	chop($result[$hostindex]); # Remove the trailing dot of the answer.
+	return $result[$hostindex];
 	# ----->
 }
 
