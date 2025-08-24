@@ -24,10 +24,10 @@ Install dwonloaded package (file .zip) by unzipping it into your Dolibarr root d
 
 # ABOUT THE AUTHOR, LICENSE AND SUPPORT
 ---------------------------------------
-Copyright (C) 2000-2014 - Laurent Destailleur - eldy@users.sourceforge.net - <http://www.nltechno.com>
+Copyright (C) 2000-2014 - Laurent Destailleur - eldy@users.sourceforge.net - <https://www.dolicloud.com>
 
 Laurent Destailleur is also the project leader of Dolibarr ERP CRM Open-Source project <https://www.dolibarr.org>,
-and author of AWBot, CVSChangeLogBuilder, DoliDroid and founder of DoliCloud SaaS <http://www.dolicloud.com>.
+and author of AWBot, CVSChangeLogBuilder, DoliDroid and founder of DoliCloud SaaS <https://www.dolicloud.com>.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

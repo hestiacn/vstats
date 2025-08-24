@@ -9,8 +9,8 @@ It works with IIS 5.0+, Apache and all major web, wap, proxy, streaming
 server log files (and even ftp servers or mail logs) on all Operating Systems.
 
 - License: GNU GPL v3+ (GNU General Public License. See LICENSE file), OSI Certified Open Source Software license.
-- Version: 7.9
-- Release date: January 2023
+- Version: 8.0
+- Release date: August 2025
 - Platforms: All (Linux, NT, BSD, Solaris and other *NIX's, BeOS, OS/2...)
 - Author: Laurent Destailleur <eldy@users.sourceforge.net>
 
@@ -136,7 +136,7 @@ Follow AWStats project on:
 
 ## ABOUT THE AUTHOR, LICENSE AND SUPPORT
 
-Copyright (C) 2000-2020 - Laurent Destailleur - eldy@users.sourceforge.net - <https://www.nltechno.com>
+Copyright (C) 2000-2025 - Laurent Destailleur - eldy@users.sourceforge.net - <https://www.dolicloud.com>
 
 Laurent Destailleur is also the project leader of [Dolibarr ERP CRM Opensource project](https://www.dolibarr.org),
 and author of AWBot, CVSChangeLogBuilder, DoliDroid and founder of DoliCloud SaaS <https://www.dolicloud.com>.
