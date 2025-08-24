@@ -392,7 +392,7 @@ if ($nboftargetok) {
     		print "Copy $SOURCE/make/rpm/${BUILDFIC} to $BUILDROOT\n";
 #    		$ret=`cp -p "$SOURCE/make/rpm/${BUILDFIC}" "$BUILDROOT"`;
             open (SPECFROM,"<$SOURCE/make/rpm/${BUILDFIC}") || die "Error, can't open input file $SOURCE/make/rpm/${BUILDFIC}";
-            open (SPECTO,">$TEMP/$BUILDFIC") || die "Error, can't open output file $TEMP/$BUILDFIC";
+            open (SPECTO,">$TEMP/$BUILDFIC") || die "Error, can't open inputfile $SOURCE/make/rpm/${BUILDFIC} or output file $TEMP/$BUILDFIC";
             while (<SPECFROM>) {
                 $_ =~ s/__VERSION__/$MAJOR.$MINOR/;
                 print SPECTO $_;
