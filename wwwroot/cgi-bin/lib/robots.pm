@@ -71,11 +71,11 @@
 #		Added Storebot-Google (https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)
 #		Added Timpibot (http://www.timpi.io)
 #		Added YouBot (You.com)
-#		
+#
 #		Edited description for facebookexternalhit in %RobotsHashIDLib
 #		Edited entry and description for Bytespider
 #		Edited description for CCBot
-#		
+#
 #		Removed facebook (not documented by Meta - substituted by adding entries for FacebookBot and meta-... crawlers)
 #
 #		Fixed: Missing entry for laserlikebot in %RobotsHashIDLib
@@ -83,79 +83,75 @@
 #		Fixed: Unescaped dashes (-) in entries Mediapartners-Google, Baiduspider-, Contacts-Crawler, DuckDuckBot-Https, Nimbostratus-Bot, Quick-Crawler, SemrushBot-SI, uni-leipzig.de
 #		Fixed: Unescaped dot (.) in entry bnf.fr_bot
 #		Fixed: Removed deprecated entry mojeek from %RobotsHashIDLib
-
+#
 # 2024-07-17 Dinko Sotirov
-#              Added Amazonbot (https://developer.amazon.com/support/amazonbot)
-#              Added GPTBot (https://openai.com/gptbot)
-#              Added GeedoProductSearch (http://www.geedo.com/product-search.html)
-
+#		Added Amazonbot (https://developer.amazon.com/support/amazonbot)
+#		Added GPTBot (https://openai.com/gptbot)
+#		Added GeedoProductSearch (http://www.geedo.com/product-search.html)
+#
 # 2023-07-04 RobC 
-#              Removed Dalvik as native Android UI Browser User Agent
-#              Removed CFNetwork as native iOS and OSX Browser User Agent
-
+#		Removed Dalvik as native Android UI Browser User Agent
+#		Removed CFNetwork as native iOS and OSX Browser User Agent
+#
 # 2021-05--05 RobC
-
-# Removed Baidu catchall because its picking up baidu.sogo.uc.UCBrowser which is a phone browser
-# Added baiduspider- catchall instead
-
-# Newly added from 2021-05-05
-# Adsbot
-# BW/
-# Bytespider
-# CheckMarkNetwork/
-# DuckDuckBot
-# # Foregenix Web Scan
-# IonCrawl
-# Linguee Bot
-# Neevabot
-# PetalBot
-# TkBot
-# vuhuvBot
-
-
+#		Removed Baidu catchall because its picking up baidu.sogo.uc.UCBrowser which is a phone browser
+#		Added baiduspider- catchall instead
+#
+#		Newly added from 2021-05-05
+#		Adsbot
+#		BW/
+#		Bytespider
+#		CheckMarkNetwork/
+#		DuckDuckBot
+#		# Foregenix Web Scan
+#		IonCrawl
+#		Linguee Bot
+#		Neevabot
+#		PetalBot
+#		TkBot
+#		vuhuvBot
+#
 # 2018-03-13 RobC 
-#              Added 36 robots and one generic ( survey ) using v 7.7 robots file as base. 
-#              Also moved robot "Obot" into generics so that it is singled out as an individual Robot.         
+#		Added 36 robots and one generic ( survey ) using v 7.7 robots file as base. 
+#		Also moved robot "Obot" into generics so that it is singled out as an individual Robot.         
 #
 # 2016-09-02 RobC 
-#              Fixed a few errors and added a few missing bots from awstats 7.5 release.
+#		Fixed a few errors and added a few missing bots from awstats 7.5 release.
 #
 # 2016-08-28 RobC 
-#              Complete re-build of this file almost from scratch.
-#              dropped many old bots, added many new bots and reordered file.
-#              edited and added regex expressions to stop spaces causing problems.
-#              You should tune file by placing the most common robots crawling your site at top 
-#              in List1.
+#		Complete re-build of this file almost from scratch.
+#		dropped many old bots, added many new bots and reordered file.
+#		edited and added regex expressions to stop spaces causing problems.
+#		You should tune file by placing the most common robots crawling your site at top 
+#		in List1.
 #
-#
-#              N.B. many bots need to be in correct order so don't chnage order without checking if
-#              change will cause counts to be allocated to wrong bot. Not always simple.
-#
+#		N.B. many bots need to be in correct order so don't chnage order without checking if
+#		change will cause counts to be allocated to wrong bot. Not always simple.
 #
 # 2005-08-19 Sean Carlos http://www.antezeta.com/awstats.html
-#              added dipsie (not tested with real data).
-#              added DomainsDB.net http://domainsdb.net/
-#              added ia_archiver-web.archive.org (was inadvertently grouped with Alexa traffic)
-#              added Nutch (used by looksmart (furl?))
-#              added rssImagesBot
-#              added Sqworm
-#              added t\-h\-u\-n\-d\-e\-r\-s\-t\-o\-n\-e
-#              added w3c css-validator
-#              added documentation link to bot home pages for above and selected major bots.
-#                    In the case of international bots, choose .com page.
-#                    Included tool tip (html "title").
-#                    To do: parameterize to match both AWStats language and tooltips settings.
-#                    To do: add html links for all bots based on current documentation in source
-#                           files referenced below.
-#              changed '\wbot[\/\-]', to '\wbot[\/\-]' (removed comma)
-#              made minor grammar corrections to notes below
+#		added dipsie (not tested with real data).
+#		added DomainsDB.net http://domainsdb.net/
+#		added ia_archiver-web.archive.org (was inadvertently grouped with Alexa traffic)
+#		added Nutch (used by looksmart (furl?))
+#		added rssImagesBot
+#		added Sqworm
+#		added t\-h\-u\-n\-d\-e\-r\-s\-t\-o\-n\-e
+#		added w3c css-validator
+#		added documentation link to bot home pages for above and selected major bots.
+#		      In the case of international bots, choose .com page.
+#		      Included tool tip (html "title").
+#		      To do: parameterize to match both AWStats language and tooltips settings.
+#		      To do: add html links for all bots based on current documentation in source
+#		             files referenced below.
+#		changed '\wbot[\/\-]', to '\wbot[\/\-]' (removed comma)
+#		made minor grammar corrections to notes below
 # 2005-08-24	added YahooSeeker-Testing
-#              	added w3c-checklink
-#              	updated url for ask.com
+#		added w3c-checklink
+#		updated url for ask.com
 # 2005-08-24   	added Girafabot http://www.girafa.com/
 # 2005-08-30   	added PluckFeedCrawler http://www.pluck.com/
 #		added Gaisbot/3.0 (robot05@gais.cs.ccu.edu.tw; )
-#		dded geniebot (wgao@genieknows.com)
+#		added geniebot (wgao@genieknows.com)
 #		added BecomeBot link http://www.become.com/site_owners.html
 #		added topicblogs http://www.topicblogs.com/
 #		added Powermarks; seen used by referrer spam
@@ -183,7 +179,7 @@
 #		added RufusBot Rufus Web Miner http://64.124.122.252.webaroo.com/feedback.html
 #		added Seekbot (http://www.seekbot.net/bot.html)
 #		added Yahoo-MMCrawler/3.x (mms-mmcrawler-support@yahoo-inc.com)
-#               added link for BaiDuSpider
+#		added link for BaiDuSpider
 #		added link for Blogshares Spider
 #		added link for StackRambler http://www.rambler.ru/doc/faq.shtml
 #		added link for WISENutbot
@@ -435,10 +431,10 @@
 #		-- updates
 #		updated AskJeeves to Ask
 # 2012-06-05 Albrecht Mueller
-#              added Grabber from SDSC (San Diego Supercomputer Center).
+#		added Grabber from SDSC (San Diego Supercomputer Center).
 # 2013-09-30 Albrecht Mueller
-# AWStats probably cannot detect this bot as it identifies itself in
-# the referrer field and not in the user agent string.
+#		AWStats probably cannot detect this bot as it identifies itself in
+#		the referrer field and not in the user agent string.
 #92.113.100.35 - - [29/Sep/2013:17:22:46 +0200] "GET /robots.txt HTTP/1.1" 200 516 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0" "-"
 #92.113.100.35 - - [29/Sep/2013:17:22:49 +0200] "GET /tghome.htm HTTP/1.1" 200 4445 "http://extrabot.com/help/frytygativyheku.htm" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0" "-"
 #92.113.100.35 - - [29/Sep/2013:17:22:51 +0200] "GET / HTTP/1.1" 200 5467 "http://extrabot.com/help/frytygativyheku.htm" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0" "-"
