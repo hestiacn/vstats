@@ -12,6 +12,11 @@ a:visited	{ color: #2200C0; font-family: sans-serif; text-decoration: none; }
 a:active	{ color: #2200C0; font-family: sans-serif; text-decoration: none; }
 a:hover		{ color: #2200C0; font-family: sans-serif; text-decoration: underline; }
 
+.body {
+        padding-left: 30px;
+        padding-right: 30px;
+}
+
 .CHead 			{ background-color: #9999CC; }
 .CTextAreaConf	{ font: 11px verdana,arial; color: #202020; font-family: sans-serif; text-decoration: none; }
 
