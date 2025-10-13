@@ -43,78 +43,115 @@
 #
 #-------------------------------------------------------
 
+# 2025-09-26 Daniel-Percy Wimpff <daniel@wimpff.de>
+#		Added AI2Bot (Allen Institute, https://allenai.org/crawler)
+#		Added Applebot-Extended (Apple AI indexer)
+#		Added anthropic-ai (Anthropic)
+#		Added ChatGPT-User (OpenAI on demand URL fetcher, https://openai.com/bot)
+#		Added ClaudeBot (Anthropic)
+#		Added claude-web (Anthropic)
+#		Added cohere-ai (Cohere, accordings to https://momenticmarketing.com/blog/ai-search-crawlers-bots)
+#		Added Diffbot
+#		Added DuckAssistBot (DuckDuckGo AI)
+#		Added facebookcatalog (Meta, https://developers.facebook.com/docs/sharing/webmasters/web-crawlers)
+#		Added FacebookBot (Meta, according to https://momenticmarketing.com/blog/ai-search-crawlers-bots)
+#		Added Google-CloudVertexBot (https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)
+#		Added Google-Extended (https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)
+#		Added Google-InspectionTool (https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)
+#		Added GoogleOther (also fetches GoogleOther-Image, GoogleOther-Video, https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)
+#		Added meta-externalads (Meta, https://developers.facebook.com/docs/sharing/webmasters/web-crawlers)
+#		Added meta-externalagent (Meta, https://developers.facebook.com/docs/sharing/webmasters/web-crawlers)
+#		Added meta-externalfetcher (Meta, https://developers.facebook.com/docs/sharing/webmasters/web-crawlers)
+#		Added meta-webindexer (Meta, https://developers.facebook.com/docs/sharing/webmasters/web-crawlers)
+#		Added MistralAI-User (mistral.ai)
+#		Added OAI-SearchBot (OpenAI indexer, https://openai.com/searchbot)
+#		Added omgili (Webz.io, https://webz.io/blog/web-data/what-is-the-omgili-bot-and-why-is-it-crawling-your-website/)
+#		Added PerplexityBot (https://perplexity.ai/perplexitybot)
+#		Added Perplexity-User (https://perplexity.ai/perplexitybot)
+#		Added Storebot-Google (https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers)
+#		Added Timpibot (http://www.timpi.io)
+#		Added YouBot (You.com)
+#
+#		Edited description for facebookexternalhit in %RobotsHashIDLib
+#		Edited entry and description for Bytespider
+#		Edited description for CCBot
+#
+#		Removed facebook (not documented by Meta - substituted by adding entries for FacebookBot and meta-... crawlers)
+#
+#		Fixed: Missing entry for laserlikebot in %RobotsHashIDLib
+#		Fixed: Entries for MojeekBot differ in @RobotsSearchIDOrder_list1 and %RobotsHashIDLib. Using variant with trailing slash now.
+#		Fixed: Unescaped dashes (-) in entries Mediapartners-Google, Baiduspider-, Contacts-Crawler, DuckDuckBot-Https, Nimbostratus-Bot, Quick-Crawler, SemrushBot-SI, uni-leipzig.de
+#		Fixed: Unescaped dot (.) in entry bnf.fr_bot
+#		Fixed: Removed deprecated entry mojeek from %RobotsHashIDLib
+#
 # 2024-07-17 Dinko Sotirov
-#              Added Amazonbot (https://developer.amazon.com/support/amazonbot)
-#              Added GPTBot (https://openai.com/gptbot)
-#              Added GeedoProductSearch (http://www.geedo.com/product-search.html)
-
+#		Added Amazonbot (https://developer.amazon.com/support/amazonbot)
+#		Added GPTBot (https://openai.com/gptbot)
+#		Added GeedoProductSearch (http://www.geedo.com/product-search.html)
+#
 # 2023-07-04 RobC 
-#              Removed Dalvik as native Android UI Browser User Agent
-#              Removed CFNetwork as native iOS and OSX Browser User Agent
-
+#		Removed Dalvik as native Android UI Browser User Agent
+#		Removed CFNetwork as native iOS and OSX Browser User Agent
+#
 # 2021-05--05 RobC
-
-# Removed Baidu catchall because its picking up baidu.sogo.uc.UCBrowser which is a phone browser
-# Added baiduspider- catchall instead
-
-# Newly added from 2021-05-05
-# Adsbot
-# BW/
-# Bytespider
-# CheckMarkNetwork/
-# DuckDuckBot
-# # Foregenix Web Scan
-# IonCrawl
-# Linguee Bot
-# Neevabot
-# PetalBot
-# TkBot
-# vuhuvBot
-
-
+#		Removed Baidu catchall because its picking up baidu.sogo.uc.UCBrowser which is a phone browser
+#		Added baiduspider- catchall instead
+#
+#		Newly added from 2021-05-05
+#		Adsbot
+#		BW/
+#		Bytespider
+#		CheckMarkNetwork/
+#		DuckDuckBot
+#		# Foregenix Web Scan
+#		IonCrawl
+#		Linguee Bot
+#		Neevabot
+#		PetalBot
+#		TkBot
+#		vuhuvBot
+#
 # 2018-03-13 RobC 
-#              Added 36 robots and one generic ( survey ) using v 7.7 robots file as base. 
-#              Also moved robot "Obot" into generics so that it is singled out as an individual Robot.         
+#		Added 36 robots and one generic ( survey ) using v 7.7 robots file as base. 
+#		Also moved robot "Obot" into generics so that it is singled out as an individual Robot.         
 #
 # 2016-09-02 RobC 
-#              Fixed a few errors and added a few missing bots from awstats 7.5 release.
+#		Fixed a few errors and added a few missing bots from awstats 7.5 release.
 #
 # 2016-08-28 RobC 
-#              Complete re-build of this file almost from scratch.
-#              dropped many old bots, added many new bots and reordered file.
-#              edited and added regex expressions to stop spaces causing problems.
-#              You should tune file by placing the most common robots crawling your site at top 
-#              in List1.
+#		Complete re-build of this file almost from scratch.
+#		dropped many old bots, added many new bots and reordered file.
+#		edited and added regex expressions to stop spaces causing problems.
+#		You should tune file by placing the most common robots crawling your site at top 
+#		in List1.
 #
-#
-#              N.B. many bots need to be in correct order so don't chnage order without checking if
-#              change will cause counts to be allocated to wrong bot. Not always simple.
-#
+#		N.B. many bots need to be in correct order so don't chnage order without checking if
+#		change will cause counts to be allocated to wrong bot. Not always simple.
 #
 # 2005-08-19 Sean Carlos http://www.antezeta.com/awstats.html
-#              added dipsie (not tested with real data).
-#              added DomainsDB.net http://domainsdb.net/
-#              added ia_archiver-web.archive.org (was inadvertently grouped with Alexa traffic)
-#              added Nutch (used by looksmart (furl?))
-#              added rssImagesBot
-#              added Sqworm
-#              added t\-h\-u\-n\-d\-e\-r\-s\-t\-o\-n\-e
-#              added w3c css-validator
-#              added documentation link to bot home pages for above and selected major bots.
-#                    In the case of international bots, choose .com page.
-#                    Included tool tip (html "title").
-#                    To do: parameterize to match both AWStats language and tooltips settings.
-#                    To do: add html links for all bots based on current documentation in source
-#                           files referenced below.
-#              changed '\wbot[\/\-]', to '\wbot[\/\-]' (removed comma)
-#              made minor grammar corrections to notes below
+#		added dipsie (not tested with real data).
+#		added DomainsDB.net http://domainsdb.net/
+#		added ia_archiver-web.archive.org (was inadvertently grouped with Alexa traffic)
+#		added Nutch (used by looksmart (furl?))
+#		added rssImagesBot
+#		added Sqworm
+#		added t\-h\-u\-n\-d\-e\-r\-s\-t\-o\-n\-e
+#		added w3c css-validator
+#		added documentation link to bot home pages for above and selected major bots.
+#		      In the case of international bots, choose .com page.
+#		      Included tool tip (html "title").
+#		      To do: parameterize to match both AWStats language and tooltips settings.
+#		      To do: add html links for all bots based on current documentation in source
+#		             files referenced below.
+#		changed '\wbot[\/\-]', to '\wbot[\/\-]' (removed comma)
+#		made minor grammar corrections to notes below
 # 2005-08-24	added YahooSeeker-Testing
-#              	added w3c-checklink
-#              	updated url for ask.com
+#		added w3c-checklink
+#		updated url for ask.com
 # 2005-08-24   	added Girafabot http://www.girafa.com/
 # 2005-08-30   	added PluckFeedCrawler http://www.pluck.com/
 #		added Gaisbot/3.0 (robot05@gais.cs.ccu.edu.tw; )
-#		dded geniebot (wgao@genieknows.com)
+#		added geniebot (wgao@genieknows.com)
 #		added BecomeBot link http://www.become.com/site_owners.html
 #		added topicblogs http://www.topicblogs.com/
 #		added Powermarks; seen used by referrer spam
@@ -142,7 +179,7 @@
 #		added RufusBot Rufus Web Miner http://64.124.122.252.webaroo.com/feedback.html
 #		added Seekbot (http://www.seekbot.net/bot.html)
 #		added Yahoo-MMCrawler/3.x (mms-mmcrawler-support@yahoo-inc.com)
-#               added link for BaiDuSpider
+#		added link for BaiDuSpider
 #		added link for Blogshares Spider
 #		added link for StackRambler http://www.rambler.ru/doc/faq.shtml
 #		added link for WISENutbot
@@ -394,10 +431,10 @@
 #		-- updates
 #		updated AskJeeves to Ask
 # 2012-06-05 Albrecht Mueller
-#              added Grabber from SDSC (San Diego Supercomputer Center).
+#		added Grabber from SDSC (San Diego Supercomputer Center).
 # 2013-09-30 Albrecht Mueller
-# AWStats probably cannot detect this bot as it identifies itself in
-# the referrer field and not in the user agent string.
+#		AWStats probably cannot detect this bot as it identifies itself in
+#		the referrer field and not in the user agent string.
 #92.113.100.35 - - [29/Sep/2013:17:22:46 +0200] "GET /robots.txt HTTP/1.1" 200 516 "-" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0" "-"
 #92.113.100.35 - - [29/Sep/2013:17:22:49 +0200] "GET /tghome.htm HTTP/1.1" 200 4445 "http://extrabot.com/help/frytygativyheku.htm" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0" "-"
 #92.113.100.35 - - [29/Sep/2013:17:22:51 +0200] "GET / HTTP/1.1" 200 5467 "http://extrabot.com/help/frytygativyheku.htm" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0" "-"
@@ -442,13 +479,17 @@
 'Googlebot\-Image/',
 'Googlebot\-Mobile/',
 'Google[\x20]Page[\x20]Speed',
+'Google\-Extended/',
+'Google\-InspectionTool/',
 'google\-sitemaps',
 'Googlebot\-News',
 'Googlebot\-Video/',
+'GoogleOther',
+'Google\-CloudVertexBot',
 'AdsBot\-Google[\x20]\(',
 'AdsBot\-Google\-Mobile\-Apps',
 'Adsbot',
-'Mediapartners-Google',
+'Mediapartners\-Google',
 'Feedfetcher\-Google',
 'Google\-Adwords\-Instant',
 'Firefox/1\.5',
@@ -456,7 +497,7 @@
 'Yahoo![\x20]Slurp',
 'Baiduspider/',
 'Baiduspider\-image',
-'Baiduspider-',
+'Baiduspider\-',
 'YandexBot/',
 'YandexImages/',
 'YandexImageResizer',
@@ -481,12 +522,15 @@
 'arcemedia',
 'AdnormCrawlerCatchBot/',
 'adscanner',
+'AI2Bot',
 'aiHitBot/',
 'aipbot/',
 'AlphaBot',
+'anthropic\-ai/',
 'Apache\-HttpClient/',
 'Apexoo[\x20]Spider',
 'Applebot/',
+'Applebot\-Extended/',
 'archive\.org_bot',
 'Babya[\x20]Discoverer',
 'Barkrowler',
@@ -500,21 +544,25 @@
 'bitlybot',
 'bl\.uk_lddc_bot/',
 'BLEXBot/',
-'bnf.fr_bot',
+'bnf\.fr_bot',
 'boitho\.com\-dc/',
 'BoogleBot',
 'BusinessBot:',
 'BW/',
-'Bytespider',
+'Bytespider/',
 'CatchBot/',
 'CB/Nutch',
 'CCBot/',
+'ChatGPT\-User/',
 'CheckMarkNetwork/',
+'ClaudeBot/',
+'claude\-web/',
 'Cliqzbot/',
 'CMS[\x20]Crawler',
+'cohere\-ai/',
 'Companybook\-Crawler',
 'ConveraCrawler/',
-'Contacts-Crawler',
+'Contacts\-Crawler',
 'contxbot',
 'cosmos/',
 'crawl/Nutch',
@@ -531,6 +579,7 @@
 'daum',
 'Deepnet[\x20]Explorer',
 'DeuSu/',
+'Diffbot/',
 'Digincore',
 'Discordbot/',
 'Dispatch/',
@@ -542,7 +591,8 @@
 'DomainSONOCrawler/',
 'DomainStatsBot/',
 'DotBot/',
-'DuckDuckBot-Https',
+'DuckAssistBot/',
+'DuckDuckBot\-Https',
 'DuckDuckBot',
 'DuckDuckGo\-Favicons\-Bot/',
 'ELinks/',
@@ -636,12 +686,17 @@
 'MegaIndex\.ru/',
 'merzscope',
 'Meta_Bot',
+'meta\-externalads/',
+'meta\-externalagent/',
+'meta\-externalfetcher/',
+'meta\-webindexer/',
 'mfibot/',
 'microsoft.*discovery',
 'missigua_locator',
+'MistralAI\-User/',
 'MixrankBot',
 'MJ12bot/',
-'MojeekBot',
+'MojeekBot/',
 'Mojolicious',
 'MXT/Nutch',
 'My[\x20]Nutch[\x20]Spider/',
@@ -651,16 +706,18 @@
 'NerdyBot',
 'netEstate[\x20]NE[\x20]Crawler',
 'NetResearchServer/',
-'Nimbostratus-Bot',
+'Nimbostratus\-Bot',
 'nominet',
 'NRLCorpusBuilder/Nutch',
 'nutch\-1\.4/',
 'nutch\-1\.8/',
 'NutchCVS/',
 'o\.uk[\x20]robot',
+'OAI\-SearchBot/',
 'ocrawler;',
 'ODP[\x20]link[\x20]checker',
 'Offline[\x20]Explorer/',
+'omgili/',
 'OmniExplorer_Bot/',
 'OrangeBot/',
 'Orliac',
@@ -670,6 +727,8 @@
 'pdffillerbot/',
 'peopleman',
 'PetalBot',
+'PerplexityBot/',
+'Perplexity\-User/',
 'PhantomJS',
 'PHP/5\.2\.8',
 'Pinterestbot',
@@ -685,7 +744,7 @@
 'python_wk_crawler',
 'Python\-urllib/',
 'QCrawl',
-'Quick-Crawler',
+'Quick\-Crawler',
 'ResearchBot',
 'roboto',
 'rogerbot/',
@@ -705,7 +764,7 @@
 'Seekmo',
 'semanticbot',
 'SemrushBot/',
-'SemrushBot-SI',
+'SemrushBot\-SI',
 'seo\-audit\-check\-bot/',
 'Seobility',
 'SEOkicks\-Robot',
@@ -726,6 +785,7 @@
 'SpuhexBot',
 'spyonweb',
 'ssearch_bot',
+'Storebot\-Google/',
 'Streamline3Bot',
 'SurdotlyBot/',
 'SurveyBot/',
@@ -737,6 +797,7 @@
 'Test[\x20]Spider',
 'TestCrawler',
 'The[\x20]Knowledge[\x20]AI',
+'Timpibot/',
 'TkBot',
 'tracemyfile',
 'trendiction',
@@ -744,7 +805,7 @@
 'TurnitinBot',
 'TweetmemeBot/',
 'UCY/Nutch',
-'uni-leipzig\.de',
+'uni\-leipzig\.de',
 'Uptimebot/',
 'UptimeRobot/',
 'URL[\x20]Checker',
@@ -782,6 +843,7 @@
 'yak',
 'YisouSpider',
 'yoozBot',
+'YouBot',
 'Your\-Website\-Sucks',
 'zoominfobot',
 'zspider/',
@@ -992,7 +1054,7 @@
 'extreme[_+\s]picture[_+\s]finder',
 'ezoom',
 'ezresult',
-'facebook',
+'FacebookBot/',
 'facebot',
 'fast\-search\-engine',
 'matrix_s\.p\.a\._\-_fast_enterprise_crawler',
@@ -1625,9 +1687,13 @@
 'Googlebot\-Image/','Googlebot-Image',
 'Googlebot\-Mobile/','Googlebot-Mobile',
 'Google[\x20]Page[\x20]Speed','Google Page Speed',
+'Google\-Extended/', 'Google-Extended (AI indexer, Gemini)',
+'Google\-InspectionTool/', 'Google-InspectionTool',
 'google\-sitemaps','google-sitemaps',
 'Googlebot\-News','Googlebot-News',
 'Googlebot\-Video/','Googlebot-Video',
+'GoogleOther', 'GoogleOther / GoogleOther-Image / GoogleOther-Video',
+'Google\-CloudVertexBot','Google-CloudVertexBot',
 'AdsBot\-Google[\x20]\(','AdsBot-Google',
 'AdsBot\-Google\-Mobile\-Apps','AdsBot-Google-Mobile-Apps',
 'Adsbot','Adsbot',
@@ -1639,7 +1705,7 @@
 'Yahoo![\x20]Slurp','Yahoo! Slurp',
 'Baiduspider/','Baiduspider',
 'Baiduspider\-image','Baiduspider-image',
-'Baiduspider-','Baiduspider ( catchall )',
+'Baiduspider\-','Baiduspider ( catchall )',
 'YandexBot/','YandexBot',
 'YandexImages/','YandexImages',
 'YandexImageResizer','YandexImageResizer',
@@ -1663,12 +1729,15 @@
 'Accoona\-AI\-Agent/','Accoona-AI-Agent',
 'AdnormCrawlerCatchBot/','AdnormCrawlerCatchBot',
 'adscanner','adscanner',
+'AI2Bot','AI2Bot (Allen Institute)',
 'aiHitBot/','aiHitBot',
 'aipbot/','aipbot',
 'AlphaBot','AlphaBot',
+'anthropic\-ai/','anthropic-ai',
 'Apache\-HttpClient/','Apache-HttpClient',
 'Apexoo[\x20]Spider','Apexoo Spider',
 'Applebot/','Applebot',
+'Applebot\-Extended/','Applebot-Extended',
 'arcemedia','AdsBot-ArceMedia',
 'archive\.org_bot','archive.org_bot',
 'Babya[\x20]Discoverer','Babya Discoverer',
@@ -1683,21 +1752,25 @@
 'bitlybot','bit.ly',
 'bl\.uk_lddc_bot/','bl.uk_lddc_bot',
 'BLEXBot/','BLEXBot',
-'bnf.fr_bot','bnf.fr_bot',
+'bnf\.fr_bot','bnf.fr_bot',
 'boitho\.com\-dc/','boitho.com-dc',
 'BoogleBot','BoogleBot',
 'BusinessBot:','BusinessBot:',
 'BW/','BW',
-'Bytespider','Bytespider',
+'Bytespider/','Bytespider (Bytedance)',
 'CatchBot/','CatchBot',
 'CB/Nutch','CB/Nutch',
-'CCBot/','CCBot',
+'CCBot/','CCBot (Common Crawl, open/free AI dataset)',
+'ChatGPT\-User/','ChatGPT-User (OpenAI)',
 'CheckMarkNetwork/','CheckMarkNetwork',
+'ClaudeBot/','ClaudeBot (Anthropic)',
+'claude\-web/','claude-web (Anthropic)',
 'Cliqzbot/','Cliqzbot',
 'CMS[\x20]Crawler','CMS Crawler',
+'cohere\-ai/','cohere-ai',
 'Companybook\-Crawler','Companybook-Crawler',
 'ConveraCrawler/','ConveraCrawler',
-'Contacts-Crawler','Contacts-Crawler',
+'Contacts\-Crawler','Contacts-Crawler',
 'contxbot','contxbot',
 'cosmos/','cosmos',
 'CRMNLCrawlAgent','CRMNLCrawlAgent',
@@ -1714,6 +1787,7 @@
 'daum','daum',
 'Deepnet[\x20]Explorer','Deepnet Explorer',
 'DeuSu/','DeuSu',
+'Diffbot/', 'Diffbot',
 'Digincore','Digincore',
 'Discordbot/','Discordbot',
 'Dispatch/','Dispatch',
@@ -1725,7 +1799,8 @@
 'DomainSONOCrawler/','DomainSONOCrawler',
 'DomainStatsBot/','DomainStatsBot',
 'DotBot/','DotBot',
-'DuckDuckBot-Https','DuckDuckBot-Https',
+'DuckAssistBot/', 'DuckAssist (DuckDuckGo AI)',
+'DuckDuckBot\-Https','DuckDuckBot-Https',
 'DuckDuckBot','DuckDuckBot',
 'DuckDuckGo\-Favicons\-Bot/','DuckDuckGo-Favicons-Bot',
 'ELinks/','ELinks',
@@ -1738,7 +1813,7 @@
 'Exabot/','Exabot',
 'ExtLinksBot','ExtLinksBot',
 'ExperianCrawlUK','ExperianCrawlUK',
-'facebookexternalhit/','facebookexternalhit',
+'facebookexternalhit/','facebookexternalhit (Meta/Facebook/Instagram shared link)',
 'fast_enterprise_crawler.*scrawleradmin\.t\-info@telekom\.de','FAST Enterprise crawleradmin.t-info@telekom.de',
 'fast_enterprise_crawler.*t\-info_bi_cluster_crawleradmin\.t\-info@telekom\.de','FAST Enterprise T-Info_BI_cluster crawleradmin.t-info@telekom.de',
 'FAST\-WebCrawler/','FAST-WebCrawler',
@@ -1796,6 +1871,7 @@
 'Jooblebot','Jooblebot',
 'KomodiaBot/','KomodiaBot',
 'Konqueror/','Konqueror',
+'laserlikebot','laserlikebot',
 'Lightspeed','Lightspeed',
 'linkapediabot','linkapediabot',
 'metager\-linkchecker','metager-linkchecker',
@@ -1818,12 +1894,16 @@
 'MegaIndex\.ru/','MegaIndex.ru',
 'merzscope','merzscope',
 'Meta_Bot','Meta_Bot',
+'meta\-externalads/','meta-externalads (Meta/Facebook/Instagram) ads)',
+'meta\-externalagent/','meta-externalagent (Meta/Facebook/Instagram indexer + AI)',
+'meta\-externalfetcher/','meta-externalfetcher (Meta/Facebook/Instagram user-initiated fetch)',
+'meta\-webindexer/','meta-webindexer (Meta/Facebook/Instagram indexer + AI)',
 'mfibot/','mfibot',
 'microsoft.*discovery','Microsoft Office Protocol Discovery',
 'missigua_locator','missigua_locator',
+'MistralAI\-User/','MistralAI-User',
 'MixrankBot','MixrankBot',
 'MJ12bot/','MJ12bot',
-'mojeek','mojeek',
 'MojeekBot/','MojeekBot',
 'Mojolicious','Mojolicious',
 'MXT/Nutch','MXT/Nutch',
@@ -1834,7 +1914,7 @@
 'NerdyBot','NerdyBot',
 'netEstate[\x20]NE[\x20]Crawler','netEstate NE Crawler',
 'NetResearchServer/','NetResearchServer',
-'Nimbostratus-Bot','Nimbostratus-Bot',
+'Nimbostratus\-Bot','Nimbostratus-Bot',
 'nominet','nominet',
 'NRLCorpusBuilder/Nutch','NRLCorpusBuilder/Nutch',
 'nutch\-1\.4/','nutch-1.4',
@@ -1842,8 +1922,10 @@
 'NutchCVS/','NutchCVS',
 'o\.uk[\x20]robot','o uk.robot',
 'ocrawler;','ocrawler;',
+'OAI\-SearchBot/','OAI-SearchBot (OpenAI)',
 'ODP[\x20]link[\x20]checker','ODP link checker',
 'Offline[\x20]Explorer/','Offline Explorer',
+'omgili/','omgili (webz.io)',
 'OmniExplorer_Bot/','OmniExplorer_Bot',
 'OrangeBot/','OrangeBot',
 'Orliac','Orliac',
@@ -1853,6 +1935,8 @@
 'pdffillerbot/','pdffillerbot',
 'peopleman','peopleman',
 'PetalBot','PetalBot',
+'PerplexityBot/','PerplexityBot',
+'Perplexity\-User/', 'Perplexity-User',
 'PhantomJS','PhantomJS',
 'PHP/5\.2\.8','PHP/5.2.8',
 'Pinterestbot','Pinterestbot',
@@ -1868,7 +1952,7 @@
 'python_wk_crawler','python_wk_crawler',
 'Python\-urllib/','Python-urllib',
 'QCrawl','QCrawl',
-'Quick-Crawler','Quick-Crawler',
+'Quick\-Crawler','Quick-Crawler',
 'ResearchBot','ResearchBot',
 'roboto','roboto',
 'rogerbot/','rogerbot',
@@ -1888,7 +1972,7 @@
 'Seekmo','Seekmo',
 'semanticbot','semanticbot',
 'SemrushBot/','SemrushBot',
-'SemrushBot-SI','SemrushBot-SI',
+'SemrushBot\-SI','SemrushBot-SI',
 'seo\-audit\-check\-bot/','seo-audit-check-bot',
 'Seobility','Seobility',
 'SEOkicks\-Robot','SEOkicks-Robot',
@@ -1909,6 +1993,7 @@
 'SpuhexBot','SpuhexBot',
 'spyonweb','spyonweb',
 'ssearch_bot','ssearch_bot',
+'Storebot\-Google/','Storebot-Google',
 'Streamline3Bot','Streamline3Bot',
 'SurdotlyBot/','SurdotlyBot',
 'SurveyBot/','SurveyBot',
@@ -1920,6 +2005,7 @@
 'Test[\x20]Spider','Test Spider',
 'TestCrawler','TestCrawler',
 'The[\x20]Knowledge[\x20]AI', 'The Knowledge AI',
+'Timpibot/','Timpibot (timpi.io)',
 'TkBot','TkBot',
 'tracemyfile','tracemyfile',
 'trendiction','trendiction',
@@ -1927,7 +2013,7 @@
 'TurnitinBot','TurnitinBot',
 'TweetmemeBot/','TweetmemeBot',
 'UCY/Nutch','UCY/Nutch',
-'uni-leipzig\.de','uni-leipzig.de',
+'uni\-leipzig\.de','uni-leipzig.de',
 'Uptimebot/','Uptimebot',
 'UptimeRobot/','UptimeRobot',
 'URL[\x20]Checker','URL Checker',
@@ -1965,6 +2051,7 @@
 'yak','yak-linkfluence',
 'YisouSpider','YisouSpider',
 'yoozBot','yoozBot',
+'YouBot','YouBot (You.com)',
 'Your\-Website\-Sucks','Your-Website-Sucks',
 'zoominfobot','zoominfobot',
 'zspider/','zspider',
@@ -2172,7 +2259,7 @@
 'extreme[_+\s]picture[_+\s]finder','extreme picture finder',
 'ezoom','ezoom',
 'ezresult','ezresult',
-'facebook','facebook',
+'FacebookBot/','FacebookBot',
 'facebot','facebot',
 'fast\-search\-engine','fast-search-engine',
 'matrix_s\.p\.a\._\-_fast_enterprise_crawler','matrix_s.p.a._-_fast_enterprise_crawler',
