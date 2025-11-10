@@ -1,5 +1,15 @@
 # AWStats - Advanced Web Statistics
 
+
+> **Deprecation notice (November 2025)**  
+> AWStats has been maintained for 25 years with enormous appreciation for everyone who used and contributed to it. The AWStats project is now deprecated and no longer actively developed. For modern, privacy-respecting, supported log analytics we strongly recommend migrating to Matomo Log Analytics.  
+> - Matomo Log Analytics: https://matomo.org/log-analytics/  
+> - Matomo (main site): https://matomo.org/  
+> - How to migrate from AWStats to Matomo (FAQ): https://matomo.org/faq/log-analytics-tool/how-do-i-migrate-from-awstats-to-matomo/
+>  
+> The rest of this README preserves the original AWStats documentation for historical and reference purposes.
+
+
 AWStats (Advanced Web Statistics) is a powerful, full-featured web server
 logfile analyzer which shows you all your Web statistics including: visitors,
 pages, hits, hours, search engines, keywords used to find your site, broken
