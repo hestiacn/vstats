@@ -1,0 +1,739 @@
+name: 发布 AWStats UTF-8 重构版
+
+on:
+  push:
+    tags: 
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-unix:
+    name: 构建 Linux 包
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 检查文件结构
+        run: |
+          echo "📁 当前目录结构："
+          pwd
+          ls -la
+          echo "\n📁 make 目录："
+          ls -la make/ || echo "make 目录不存在"
+          echo "\n📁 make/tgz 目录："
+          ls -la make/tgz/ || echo "tgz 目录不存在"
+          echo "\n📁 make/rpm 目录："
+          ls -la make/rpm/ || echo "rpm 目录不存在"
+      
+      - name: 创建软链接（临时修复）
+        run: |
+          # 创建 awstats 目录链接
+          mkdir -p awstats/wwwroot/cgi-bin
+          cp wwwroot/cgi-bin/awstats.pl awstats/wwwroot/cgi-bin/awstats.pl
+          ls -la awstats/wwwroot/cgi-bin/
+      
+      - name: 安装打包依赖
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            rpm \
+            dpkg-dev \
+            debhelper \
+            build-essential \
+            p7zip-full \
+            tar \
+            gzip \
+            zip \
+            make \
+            libgeo-ip-perl \
+            geoip-database
+          
+          # 验证安装
+          echo "✅ 已安装工具版本："
+          rpmbuild --version || echo "rpmbuild 未安装"
+          dpkg-buildpackage --version || echo "dpkg-buildpackage 未安装"
+          7z --version | head -1 || echo "7z 未安装"
+          dpkg -l debhelper | grep debhelper || echo "debhelper 未安装"
+          # 或者直接检查命令是否存在
+          which dh && echo "dh 已安装" || echo "dh 未安装"
+
+      - name: 安装 Perl 模块
+        run: |
+          sudo cpan install JSON::XS Try::Tiny Encode || echo "CPAN 安装失败，继续"
+      
+      - name: 设置版本号
+        id: version
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/}"
+          VERSION="${VERSION#v}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "构建版本: $VERSION"
+      
+      - name: 修复 RPM spec 文件
+        run: |
+          if [ -f "make/rpm/awstats.spec" ]; then
+            echo "📝 修复 RPM spec 文件..."
+            # 备份原文件
+            cp make/rpm/awstats.spec make/rpm/awstats.spec.bak
+            # 在 %prep 阶段从 docs/images/ 复制图标
+            sed -i '/%prep/a # 复制图标文件\ncp -pr $RPM_BUILD_DIR/%{name}-%{version}/docs/images/* $RPM_BUILD_DIR/%{name}-%{version}/ 2>/dev/null || true' make/rpm/awstats.spec
+            echo "✅ RPM spec 文件已修复"
+          else
+            echo "⚠️ RPM spec 文件不存在，跳过修复"
+          fi
+
+      - name: 复制 RPM spec 文件到正确位置
+        run: |
+          mkdir -p ../../awstats/make/rpm
+          cp make/rpm/awstats.spec ../../awstats/make/rpm/awstats.spec
+          echo "✅ 已复制 RPM spec 文件"
+          ls -la ../../awstats/make/rpm/
+
+      - name: 检查 RPM spec 文件
+        run: |
+          echo "🔍 检查 RPM spec 文件..."
+          if [ -f "make/rpm/awstats.spec" ]; then
+            echo "✅ RPM spec 文件存在"
+            ls -la make/rpm/awstats.spec
+            echo "文件内容预览:"
+            head -20 make/rpm/awstats.spec
+          else
+            echo "❌ RPM spec 文件不存在"
+            echo "📁 make/rpm 目录内容:"
+            ls -la make/rpm/ || echo "目录不存在"
+          fi
+      - name: 显示 RPM 构建日志
+        if: always()
+        run: |
+          echo "📋 RPM 构建日志:"
+          if [ -f "make/rpm-build.log" ]; then
+            cat make/rpm-build.log | grep -E "error|Error|FAILED|failed|No such file|not found" || echo "  无错误信息"
+          else
+            echo "  rpm-build.log 不存在"
+          fi
+      - name: 检测打包依赖
+        id: check-deps
+        run: |
+          echo "🔍 检测打包依赖..."
+          
+          # 检测 7z (ZIP)
+          if command -v 7z &> /dev/null; then
+            ZIP_VER=$(7z | head -1 | cut -d ' ' -f 3)
+            echo "✅ 7z 已安装: $ZIP_VER"
+            echo "HAS_ZIP=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ 7z 未安装 - ZIP 包将无法构建"
+            echo "HAS_ZIP=false" >> $GITHUB_OUTPUT
+          fi
+          
+          # 检测 rpmbuild (RPM)
+          if command -v rpmbuild &> /dev/null; then
+            RPM_VER=$(rpmbuild --version)
+            echo "✅ rpmbuild 已安装: $RPM_VER"
+            echo "HAS_RPM=true" >> $GITHUB_OUTPUT
+            
+            # 检查 RPM 配置
+            echo "  检查 RPM 构建环境:"
+            echo "  HOME: $HOME"
+            if [ -d "$HOME/rpmbuild" ]; then
+              echo "  ✅ rpmbuild 目录存在"
+            else
+              echo "  ⚠️ rpmbuild 目录不存在，将自动创建"
+              mkdir -p $HOME/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
+            fi
+          else
+            echo "❌ rpmbuild 未安装 - RPM 包将无法构建"
+            echo "HAS_RPM=false" >> $GITHUB_OUTPUT
+          fi
+          
+          # 检测 debhelper (DEB)
+          if dpkg -l debhelper &> /dev/null; then
+            DEB_VER=$(dpkg -l debhelper | grep debhelper | awk '{print $3}')
+            echo "✅ debhelper 已安装: $DEB_VER"
+            echo "HAS_DEB=true" >> $GITHUB_OUTPUT
+            
+            # 检查 dpkg-buildpackage
+            if command -v dpkg-buildpackage &> /dev/null; then
+              echo "  ✅ dpkg-buildpackage 已安装"
+            else
+              echo "  ❌ dpkg-buildpackage 未安装 - 需要安装 dpkg-dev"
+              echo "HAS_DEB=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "❌ debhelper 未安装 - DEB 包将无法构建"
+            echo "HAS_DEB=false" >> $GITHUB_OUTPUT
+          fi
+          
+          # 检测 tar (TGZ)
+          if command -v tar &> /dev/null; then
+            TAR_VER=$(tar --version | head -1)
+            echo "✅ tar 已安装: $TAR_VER"
+          fi
+
+      - name: 根据依赖选择打包目标
+        id: targets
+        run: |
+          TARGETS="TGZ"  # TGZ 是基础，总是打包
+          
+          if [[ "${{ steps.check-deps.outputs.HAS_ZIP }}" == "true" ]]; then
+            TARGETS="$TARGETS,ZIP"
+            echo "✅ 添加 ZIP 目标"
+          else
+            echo "❌ 跳过 ZIP 目标 (7z 未安装)"
+          fi
+          
+          if [[ "${{ steps.check-deps.outputs.HAS_RPM }}" == "true" ]]; then
+            TARGETS="$TARGETS,RPM"
+            echo "✅ 添加 RPM 目标"
+          else
+            echo "❌ 跳过 RPM 目标 (rpmbuild 未安装)"
+          fi
+          
+          if [[ "${{ steps.check-deps.outputs.HAS_DEB }}" == "true" ]]; then
+            TARGETS="$TARGETS,DEB"
+            echo "✅ 添加 DEB 目标"
+          else
+            echo "❌ 跳过 DEB 目标 (debhelper 未安装)"
+          fi
+          
+          echo "targets=$TARGETS" >> $GITHUB_OUTPUT
+          echo "最终打包目标: $TARGETS"
+
+      - name: 运行打包脚本（带详细日志）
+        id: build
+        continue-on-error: true
+        env:
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          cd make
+          echo "运行打包脚本，目标: ${{ steps.targets.outputs.targets }}"
+          
+          # 打包指定格式，并保存详细日志
+          perl makepack-awstats.pl --target=${{ steps.targets.outputs.targets }} 2>&1 | tee build.log
+          
+          # 提取各包构建相关日志
+          grep -A 10 -B 5 "Building TGZ package" build.log > tgz-build.log || true
+          grep -A 10 -B 5 "Building ZIP package" build.log > zip-build.log || true
+          grep -A 10 -B 5 "Building RPM package" build.log > rpm-build.log || true
+          grep -A 10 -B 5 "Building DEB package" build.log > deb-build.log || true
+          
+          echo "打包脚本返回码: $?"
+
+      - name: 生成构建报告（Linux）
+        if: always()
+        run: |
+          cd make
+          
+          # 创建构建报告
+          cat > BUILD_REPORT_LINUX.md << EOF
+          # 🔨 Linux 构建报告
+          
+          ## 构建信息
+          - **版本**: ${{ steps.version.outputs.version }}
+          - **目标**: ${{ steps.targets.outputs.targets }}
+          - **时间**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          
+          ## 📦 包生成状态
+          
+          ### 检查生成的文件
+          | 格式 | 状态 | 文件 |
+          |------|------|------|
+          EOF
+          
+          # TGZ
+          if [ -f "awstats-${{ steps.version.outputs.version }}.tar.gz" ]; then
+            echo "| TGZ | ✅ 成功 | \`awstats-${{ steps.version.outputs.version }}.tar.gz\` |" >> BUILD_REPORT_LINUX.md
+          else
+            echo "| TGZ | ❌ 失败 | - |" >> BUILD_REPORT_LINUX.md
+          fi
+          
+          # ZIP
+          if [ -f "awstats-${{ steps.version.outputs.version }}.zip" ]; then
+            echo "| ZIP | ✅ 成功 | \`awstats-${{ steps.version.outputs.version }}.zip\` |" >> BUILD_REPORT_LINUX.md
+          else
+            echo "| ZIP | ❌ 失败 | - |" >> BUILD_REPORT_LINUX.md
+            # 输出错误日志
+            if [ -f "zip-build.log" ] && [ -s "zip-build.log" ]; then
+              echo "" >> BUILD_REPORT_LINUX.md
+              echo "### ❌ ZIP 构建日志" >> BUILD_REPORT_LINUX.md
+              echo '```' >> BUILD_REPORT_LINUX.md
+              cat zip-build.log >> BUILD_REPORT_LINUX.md
+              echo '```' >> BUILD_REPORT_LINUX.md
+            fi
+          fi
+          
+          # RPM
+          if ls *.rpm 1> /dev/null 2>&1; then
+            echo "| RPM | ✅ 成功 | \`$(basename *.rpm)\` |" >> BUILD_REPORT_LINUX.md
+          else
+            echo "| RPM | ❌ 失败 | - |" >> BUILD_REPORT_LINUX.md
+            if [ -f "rpm-build.log" ] && [ -s "rpm-build.log" ]; then
+              echo "" >> BUILD_REPORT_LINUX.md
+              echo "### ❌ RPM 构建日志" >> BUILD_REPORT_LINUX.md
+              echo '```' >> BUILD_REPORT_LINUX.md
+              cat rpm-build.log >> BUILD_REPORT_LINUX.md
+              echo '```' >> BUILD_REPORT_LINUX.md
+            fi
+          fi
+          
+          # DEB
+          if ls *.deb 1> /dev/null 2>&1; then
+            echo "| DEB | ✅ 成功 | \`$(basename *.deb)\` |" >> BUILD_REPORT_LINUX.md
+          else
+            echo "| DEB | ❌ 失败 | - |" >> BUILD_REPORT_LINUX.md
+            if [ -f "deb-build.log" ] && [ -s "deb-build.log" ]; then
+              echo "" >> BUILD_REPORT_LINUX.md
+              echo "### ❌ DEB 构建日志" >> BUILD_REPORT_LINUX.md
+              echo '```' >> BUILD_REPORT_LINUX.md
+              cat deb-build.log >> BUILD_REPORT_LINUX.md
+              echo '```' >> BUILD_REPORT_LINUX.md
+            fi
+          fi
+          
+          # 输出报告
+          echo "📄 Linux 构建报告："
+          cat BUILD_REPORT_LINUX.md
+
+      - name: 查看原始日志
+        if: always()
+        run: |
+          cd make
+          echo "📋 build.log 内容（最后100行）:"
+          tail -100 build.log 2>/dev/null || echo "build.log 不存在"
+          
+          echo -e "\n📋 包含 '7z' 的行:"
+          grep -i "7z" build.log 2>/dev/null || echo "没有找到 7z 相关日志"
+          
+          echo -e "\n📋 包含 'ZIP' 的行:"
+          grep -i "ZIP" build.log 2>/dev/null || echo "没有找到 ZIP 相关日志"
+
+      - name: 分析构建失败原因
+        if: always()
+        run: |
+          echo "🔍 分析构建失败原因..."
+          cd make
+
+          # 列出所有生成的包
+          echo "📦 已生成的包:"
+          ls -la *.tar.gz *.zip *.rpm *.deb 2>/dev/null || echo "  没有找到任何包"
+          
+          echo ""
+
+          # 分析 ZIP 失败原因
+          if [[ "${{ steps.check-deps.outputs.HAS_ZIP }}" == "true" ]]; then
+            if [ ! -f "*.zip" ]; then
+              echo "❌ ZIP 包构建失败，检查日志:"
+              if [ -f "zip-build.log" ]; then
+                echo "  ZIP 构建日志:"
+                cat zip-build.log | grep -E "error|Error|FAILED|failed" || echo "  未找到错误信息"
+              else
+                echo "  ZIP 构建日志不存在，检查主日志:"
+                grep -A 5 -B 5 "ZIP" build.log | grep -E "error|Error|FAILED|failed" || echo "  未找到 ZIP 相关错误"
+              fi
+            else
+              echo "✅ ZIP 包已生成"
+            fi
+          fi
+          
+          echo ""
+          
+          # 分析 RPM 失败原因
+          if [[ "${{ steps.check-deps.outputs.HAS_RPM }}" == "true" ]]; then
+            if [ ! -f "*.rpm" ]; then
+              echo "❌ RPM 包构建失败，检查日志:"
+              if [ -f "rpm-build.log" ]; then
+                echo "  RPM 构建日志:"
+                cat rpm-build.log | grep -E "error|Error|FAILED|failed|No such file|not found" || echo "  未找到错误信息"
+              else
+                echo "  RPM 构建日志不存在，检查主日志:"
+                grep -A 10 -B 5 "RPM" build.log | grep -E "error|Error|FAILED|failed|No such file|not found" || echo "  未找到 RPM 相关错误"
+              fi
+              
+              # 检查 RPM spec 文件
+              if [ -f "make/rpm/awstats.spec" ]; then
+                echo "  RPM spec 文件存在，检查内容:"
+                grep -E "Source|icon|logo" make/rpm/awstats.spec || echo "  未找到图标相关配置"
+              else
+                echo "  ❌ RPM spec 文件不存在: make/rpm/awstats.spec"
+              fi
+            else
+              echo "✅ RPM 包已生成"
+            fi
+          fi
+          
+          # 分析 DEB 失败原因
+          if [[ "${{ steps.check-deps.outputs.HAS_DEB }}" == "true" ]]; then
+            if [ ! -f "*.deb" ]; then
+              echo "❌ DEB 包构建失败，检查日志:"
+              if [ -f "deb-build.log" ]; then
+                echo "  DEB 构建日志:"
+                cat deb-build.log | grep -E "error|Error|FAILED|failed|missing|not found" || echo "  未找到错误信息"
+              else
+                echo "  DEB 构建日志不存在，检查主日志:"
+                grep -A 10 -B 5 "DEB" build.log | grep -E "error|Error|FAILED|failed|missing|not found" || echo "  未找到 DEB 相关错误"
+              fi
+            else
+              echo "✅ DEB 包已生成: $(ls *.deb)"
+            fi
+          fi
+
+      - name: 上传构建日志
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            make/build.log
+            make/tgz-build.log
+            make/zip-build.log
+            make/rpm-build.log
+            make/deb-build.log
+          if-no-files-found: warn
+
+      - name: 检查打包结果
+        if: always()
+        run: |
+          echo "📦 检查生成的文件："
+          cd make
+          
+          # 详细列出每个包
+          echo "TGZ 包:"
+          ls -la *.tar.gz 2>/dev/null || echo "  ❌ 未生成"
+          
+          echo -e "\nZIP 包:"
+          ls -la *.zip 2>/dev/null || echo "  ❌ 未生成"
+          
+          echo -e "\nRPM 包:"
+          ls -la *.rpm 2>/dev/null || echo "  ❌ 未生成"
+          
+          echo -e "\nDEB 包:"
+          ls -la *.deb 2>/dev/null || echo "  ❌ 未生成"
+          
+          echo -e "\n📋 所有文件列表:"
+          ls -la
+          
+          echo "打包脚本执行状态: ${{ steps.build.outcome }}"
+
+      - name: 上传产物
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unix-packages
+          path: |
+            make/*.tar.gz
+            make/*.zip
+            make/*.rpm
+            make/*.deb
+            make/*.txt
+          if-no-files-found: warn
+          retention-days: 1
+
+  build-windows:
+    name: 构建 Windows 包
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 检查文件结构
+        run: |
+          echo "📁 当前目录结构："
+          Get-Location
+          Get-ChildItem
+          echo "`n📁 make 目录："
+          Get-ChildItem make -ErrorAction SilentlyContinue
+        shell: pwsh
+      
+      - name: 安装 Strawberry Perl
+        run: |
+          choco install strawberryperl --no-progress --limit-output
+          echo "Strawberry Perl 安装完成"
+          echo "C:\Strawberry\perl\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          echo "C:\Strawberry\c\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        shell: pwsh
+      
+      - name: 验证 Perl
+        run: |
+          perl --version
+          where perl
+        shell: pwsh
+      
+      - name: 安装 NSIS
+        run: |
+          choco install nsis --no-progress --limit-output --force
+          echo "C:\Program Files (x86)\NSIS\Bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+        shell: pwsh
+
+      - name: 清理 NSI 文件中的重复定义
+        run: |
+          cd make/exe
+          
+          $nsiFile = "awstats.nsi"
+          
+          # 读取文件
+          $lines = Get-Content $nsiFile
+          
+          # 过滤掉所有可能重复的定义
+          $filteredLines = @()
+          $skipPatterns = @(
+            '^Unicode true',
+            '^!charset',
+            '^!define MUI_FONT_HEADER',
+            '^!define MUI_FONT_TITLE', 
+            '^!define MUI_FONT_BOLD'
+          )
+          
+          foreach ($line in $lines) {
+            $skip = $false
+            foreach ($pattern in $skipPatterns) {
+              if ($line -match $pattern) {
+                $skip = $true
+                break
+              }
+            }
+            if (-not $skip) {
+              $filteredLines += $line
+            }
+          }
+          
+          # 添加正确的文件头
+          $header = @"
+          Unicode true
+
+          ; 设置中文字体
+          !define MUI_FONT_HEADER "Microsoft YaHei"
+          !define MUI_FONT_TITLE "Microsoft YaHei"
+          !define MUI_FONT_BOLD "Microsoft YaHei Bold"
+
+          "@
+          
+          $finalContent = $header + ($filteredLines -join "`r`n")
+          
+          # 写入 UTF-8-BOM
+          [System.IO.File]::WriteAllText($nsiFile, $finalContent, (New-Object System.Text.UTF8Encoding $true))
+          
+          Write-Host "✅ 文件清理完成"
+          Write-Host "文件头:"
+          Get-Content $nsiFile -TotalCount 7
+        shell: pwsh
+
+      - name: 运行打包脚本
+        id: build_package
+        env:
+          RELEASE_VERSION: ${{ steps.version.outputs.version }}
+          PERL5OPT: "-Mexperimental=declared_refs"
+        run: |
+          cd make
+          perl makepack-awstats.pl --target=EXE
+          
+          # 查找 EXE
+          $exeFiles = Get-ChildItem -Recurse -Filter "*.exe" | Where-Object { $_.Name -match "awstats" }
+          if ($exeFiles) {
+            foreach ($exe in $exeFiles) {
+              Write-Host "✅ 找到: $($exe.FullName)"
+              Copy-Item $exe.FullName "awstats-8.1.exe" -Force
+            }
+            echo "EXE_FILE=awstats-8.1.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          } else {
+            Write-Host "❌ 没有找到 EXE 文件"
+            exit 1
+          }
+        shell: pwsh
+
+      - name: 上传安装包
+        uses: actions/upload-artifact@v4
+        with:
+          name: awstats-windows-installer
+          path: make/awstats-8.1.exe
+
+  release:
+    name: 发布所有包
+    needs: [build-unix, build-windows]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+    - name: 下载所有产物
+      uses: actions/download-artifact@v4
+      with:
+        path: releases
+    
+    - name: 检查下载的文件
+      run: |
+        echo "📥 下载的文件："
+        find releases -type f | sort
+        echo ""
+        echo "📊 各 job 产物统计："
+        find releases -type d | sort
+    
+    - name: 整理文件
+      run: |
+        mkdir -p final
+        find releases -type f -name "*.tar.gz" -exec cp -v {} final/ \;
+        find releases -type f -name "*.zip" -exec cp -v {} final/ \;
+        find releases -type f -name "*.rpm" -exec cp -v {} final/ \;
+        find releases -type f -name "*.deb" -exec cp -v {} final/ \;
+        find releases -type f -name "*.exe" -exec cp -v {} final/ \;
+        find releases -type f -name "*.txt" -exec cp -v {} final/ \;
+        
+        echo ""
+        echo "✅ 最终文件列表："
+        ls -la final/
+        echo ""
+    
+    - name: 获取版本号
+      id: version
+      run: |
+        VERSION="${GITHUB_REF#refs/tags/}"
+        VERSION="${VERSION#v}"
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "发布版本: $VERSION"
+    
+    - name: 生成详细构建报告
+      id: report
+      run: |
+        # 创建 BUILD_REPORT.md
+        cat > BUILD_REPORT.md << EOF
+        # 📊 AWStats 构建报告
+        
+        ## 构建信息
+        - **版本**: ${{ steps.version.outputs.version }}
+        - **提交**: ${{ github.sha }}
+        - **时间**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        - **触发者**: ${{ github.actor }}
+        
+        ## 📦 包生成状态
+        
+        ### Linux/Unix 包
+        | 格式 | 状态 | 文件 | 大小 |
+        |------|------|------|------|
+        EOF
+        
+        # TGZ
+        if [ -f "final/awstats-${{ steps.version.outputs.version }}.tar.gz" ]; then
+          SIZE=$(du -h "final/awstats-${{ steps.version.outputs.version }}.tar.gz" | cut -f1)
+          echo "| TGZ | ✅ 成功 | \`awstats-${{ steps.version.outputs.version }}.tar.gz\` | $SIZE |" >> BUILD_REPORT.md
+        else
+          echo "| TGZ | ❌ 失败 | - | - |" >> BUILD_REPORT.md
+        fi
+        
+        # ZIP
+        if [ -f "final/awstats-${{ steps.version.outputs.version }}.zip" ]; then
+          SIZE=$(du -h "final/awstats-${{ steps.version.outputs.version }}.zip" | cut -f1)
+          echo "| ZIP | ✅ 成功 | \`awstats-${{ steps.version.outputs.version }}.zip\` | $SIZE |" >> BUILD_REPORT.md
+        else
+          echo "| ZIP | ❌ 失败 | - | - |" >> BUILD_REPORT.md
+        fi
+        
+        # RPM
+        RPM_FOUND=0
+        for file in final/*.rpm; do
+          if [ -f "$file" ]; then
+            SIZE=$(du -h "$file" | cut -f1)
+            NAME=$(basename "$file")
+            echo "| RPM | ✅ 成功 | \`$NAME\` | $SIZE |" >> BUILD_REPORT.md
+            RPM_FOUND=1
+          fi
+        done
+        if [ $RPM_FOUND -eq 0 ]; then
+          echo "| RPM | ❌ 失败 | - | - |" >> BUILD_REPORT.md
+        fi
+        
+        # DEB
+        DEB_FOUND=0
+        for file in final/*.deb; do
+          if [ -f "$file" ]; then
+            SIZE=$(du -h "$file" | cut -f1)
+            NAME=$(basename "$file")
+            echo "| DEB | ✅ 成功 | \`$NAME\` | $SIZE |" >> BUILD_REPORT.md
+            DEB_FOUND=1
+          fi
+        done
+        if [ $DEB_FOUND -eq 0 ]; then
+          echo "| DEB | ❌ 失败 | - | - |" >> BUILD_REPORT.md
+        fi
+        
+        echo "" >> BUILD_REPORT.md
+        echo "### Windows 包" >> BUILD_REPORT.md
+        echo "| 格式 | 状态 | 文件 | 大小 |" >> BUILD_REPORT.md
+        echo "|------|------|------|------|" >> BUILD_REPORT.md
+        
+        # EXE
+        EXE_FOUND=0
+        for file in final/*.exe; do
+          if [ -f "$file" ]; then
+            SIZE=$(du -h "$file" | cut -f1)
+            NAME=$(basename "$file")
+            echo "| EXE | ✅ 成功 | \`$NAME\` | $SIZE |" >> BUILD_REPORT.md
+            EXE_FOUND=1
+          fi
+        done
+        if [ $EXE_FOUND -eq 0 ]; then
+          echo "| EXE | ❌ 失败 | - | - |" >> BUILD_REPORT.md
+        fi
+        
+        echo "" >> BUILD_REPORT.md
+        echo "## 🔍 详细文件列表" >> BUILD_REPORT.md
+        echo '```' >> BUILD_REPORT.md
+        ls -la final/ >> BUILD_REPORT.md
+        echo '```' >> BUILD_REPORT.md
+        
+        echo "" >> BUILD_REPORT.md
+        echo "## 📝 校验和" >> BUILD_REPORT.md
+        echo '```' >> BUILD_REPORT.md
+        if [ -f "final/SHA256SUMS.txt" ]; then
+          cat final/SHA256SUMS.txt >> BUILD_REPORT.md
+        else
+          echo "无校验和文件" >> BUILD_REPORT.md
+        fi
+        echo '```' >> BUILD_REPORT.md
+        
+        # 打印到控制台
+        echo "📄 构建报告："
+        cat BUILD_REPORT.md
+        
+        # 保存报告
+        cp BUILD_REPORT.md final/
+
+    - name: 上传构建报告
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-report
+        path: final/BUILD_REPORT.md
+    
+    - name: 创建 GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: AWStats UTF-8重构版 ${{ steps.version.outputs.version }}
+        body: |
+          # AWStats UTF-8 重构版 ${{ steps.version.outputs.version }}
+          
+          ## ✨ 主要更新
+          - 完全替换 `$Message` 为 `_t()` 函数
+          - 添加明暗模式切换功能
+          - 支持 `.po` 语言文件格式
+          - 新增中文简体、繁体、葡萄牙语翻译
+          - 优化 GeoIP 支持，默认启用 geoipfree
+          
+          ## 📦 构建结果
+          $(cat BUILD_REPORT.md 2>/dev/null || echo "无详细报告")
+          
+          ## 🔧 安装说明
+          详见包内的文档。
+          
+          ## 📋 更新日志
+          查看 [CHANGELOG](https://github.com/${{ github.repository }}/blob/main/docs/awstats_changelog.html) 获取详细更新内容。
+          
+        files: |
+          final/*.tar.gz
+          final/*.zip
+          final/*.rpm
+          final/*.deb
+          final/*.exe
+          final/*.txt
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

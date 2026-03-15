@@ -1,14 +1,26 @@
 # AWStats - Advanced Web Statistics
 
+>This project is a **modernized and refactored version** of the original AWStats (2000-2025).
 
-> **Deprecation notice (November 2025)**  
-> AWStats has been maintained for 25 years with enormous appreciation for everyone who used and contributed to it. The AWStats project is now deprecated and no longer actively developed. For modern, privacy-respecting, supported log analytics we strongly recommend migrating to Matomo Log Analytics.  
-> - Matomo Log Analytics: https://matomo.org/log-analytics/  
-> - Matomo (main site): https://matomo.org/  
-> - How to migrate from AWStats to Matomo (FAQ): https://matomo.org/faq/log-analytics-tool/how-do-i-migrate-from-awstats-to-matomo/
->  
-> The rest of this README preserves the original AWStats documentation for historical and reference purposes.
+>The original AWStats was archived in November 2025 after 25 years of maintenance. We have made the following improvements based on it:
 
+
+### ✨ Refactoring Features
+
+- **Full UTF-8 Support**: Completely solves the character encoding problem
+
+- **Internationalization Translation System**: Replaces the numeric index `$Message[169]` with `_t('key')`
+
+- **Light/Dark Mode Switching**: Supports light/dark themes
+
+### 📊 Comparison with the Original Version
+
+| Features | Original AWStats | Refactored Version |
+|------|--------------|--------|
+| Encoding | GBK | UTF-8 |
+| Translation | Numeric Index | Semantic Key Names |
+| Interface | Fixed Style | Light/Dark Switching |
+| Maintenance Status | Archived | **Continuously Maintained** |
 
 AWStats (Advanced Web Statistics) is a powerful, full-featured web server
 logfile analyzer which shows you all your Web statistics including: visitors,

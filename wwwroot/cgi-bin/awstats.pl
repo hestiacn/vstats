@@ -18,32 +18,38 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #------------------------------------------------------------------------------
-require 5.007;
-
-#$|=1;
-#use warnings;		# Must be used in test mode only. This reduce a little process speed
-#use diagnostics;	# Must be used in test mode only. This reduce a lot of process speed
+use v5.20;
 use strict;
-no strict "refs";
-use Time::Local
-  ; # use Time::Local 'timelocal_nocheck' is faster but not supported by all Time::Local modules
+use warnings;
+use utf8;
+use feature qw(say state);
+
+# 核心模块
+use Time::Local;
 use Socket;
 use Encode;
 use File::Spec;
 use JSON::XS;
 use Try::Tiny;
 
+# 设置 UTF-8
+binmode STDOUT, ':utf8';
+binmode STDERR, ':utf8';
 
-#------------------------------------------------------------------------------
-# Defines
-#------------------------------------------------------------------------------
-use vars qw/ $REVISION $VERSION /;
-$REVISION = '20240604';
-$VERSION  = "8.0 (build $REVISION)";
+# 包变量（现代写法）
+our %LangHash;
+our %translate_map;
+our ($REVISION, $VERSION);
+
+# 初始化
+%LangHash      = ();
+%translate_map = ();
+$REVISION      = '20260310';
+$VERSION       = "8.1 (release $REVISION)";
 
 # ----- Constants -----
 use vars qw/
-  $DEBUGFORCED $NBOFLINESFORBENCHMARK $FRAMEWIDTH $NBOFLASTUPDATELOOKUPTOSAVE
+  $TEST_MODE $DEBUGFORCED $NBOFLINESFORBENCHMARK $FRAMEWIDTH $NBOFLASTUPDATELOOKUPTOSAVE
   $LIMITFLUSH $NEWDAYVISITTIMEOUT $VISITTIMEOUT $NOTSORTEDRECORDTOLERANCE
   $WIDTHCOLICON $TOOLTIPON
   $lastyearbeforeupdate $lastmonthbeforeupdate $lastdaybeforeupdate $lasthourbeforeupdate $lastdatebeforeupdate
@@ -227,7 +233,7 @@ use vars qw/
 	$ShowLinksToWhoIs,
 	$ShowAuthenticatedUsers,
 	$ShowFileSizesStats,
-        $ShowRequestTimesStats,
+	$ShowRequestTimesStats,
 	$ShowScreenSizeStats,
 	$ShowSMTPErrorsStats,
 	$ShowEMailSenders,
@@ -381,6 +387,7 @@ use vars qw/
   %OSFamily %BrowsersFamily @SessionsRange %SessionsAverage
   @PayloadRange %PayloadAverage
   @TimeRange %TimeAverage
+  %LangBrowserToLangFile
   %LangBrowserToLangAwstats %LangAWStatsToFlagAwstats %BrowsersSafariBuildToVersionHash
   @HostAliases @AllowAccessFromWebToFollowingAuthenticatedUsers
   @DefaultFile @SkipDNSLookupFor
@@ -436,48 +443,262 @@ use vars qw/
 # HTTP-Accept or Lang parameter => AWStats code to use for lang
 # ISO-639-1 or 2 or other       => awstats-xx.txt where xx is ISO-639-1
 %LangBrowserToLangAwstats = (
-	'sq'    => 'al',
-	'ar'    => 'ar',
-	'ba'    => 'ba',
-	'bg'    => 'bg',
-	'zh-tw' => 'tw',
-	'zh'    => 'cn',
-	'cs'    => 'cz',
-	'de'    => 'de',
-	'da'    => 'dk',
-	'en'    => 'en',
-	'et'    => 'et',
-	'fi'    => 'fi',
-	'fr'    => 'fr',
-	'gl'    => 'gl',
-	'es'    => 'es',
-	'eu'    => 'eu',
-	'ca'    => 'ca',
-	'el'    => 'gr',
-	'hu'    => 'hu',
-	'is'    => 'is',
-	'in'    => 'id',
-	'it'    => 'it',
-	'ja'    => 'jp',
-	'kr'    => 'ko',
-	'lv'    => 'lv',
-	'nl'    => 'nl',
-	'no'    => 'nb',
-	'nb'    => 'nb',
-	'nn'    => 'nn',
-	'pl'    => 'pl',
-	'pt'    => 'pt',
-	'pt-br' => 'br',
-	'ro'    => 'ro',
-	'ru'    => 'ru',
-	'sr'    => 'sr',
-	'sk'    => 'sk',
-	'sv'    => 'se',
-	'th'    => 'th',
-	'tr'    => 'tr',
-	'uk'    => 'ua',
-	'cy'    => 'cy',
-	'wlk'   => 'cy'
+    # 简体中文 - 处理各种变体
+    'zh'        => 'zh-cn',
+    'zh-cn'     => 'zh-cn',
+    'zh_cn'     => 'zh-cn',
+    'zh-CN'     => 'zh-cn',
+    'zh_CN'     => 'zh-cn',
+    'cn'        => 'zh-cn',
+    'chinese'   => 'zh-cn',
+    'zh-hans'   => 'zh-cn',
+    'zh_hans'   => 'zh-cn',
+    'zh-Hans'   => 'zh-cn',
+    'zh_Hans'   => 'zh-cn',
+    'zh-sg'     => 'zh-cn',
+    'zh_sg'     => 'zh-cn',
+    'zh-SG'     => 'zh-cn',
+    'zh_SG'     => 'zh-cn',
+    
+    # 繁体中文
+    'zh-tw'     => 'zh-tw',
+    'zh_tw'     => 'zh-tw',
+    'zh-TW'     => 'zh-tw',
+    'zh_TW'     => 'zh-tw',
+    'tw'        => 'zh-tw',
+    'zh-hant'   => 'zh-tw',
+    'zh_hant'   => 'zh-tw',
+    'zh-Hant'   => 'zh-tw',
+    'zh_Hant'   => 'zh-tw',
+    'zh-hk'     => 'zh-tw',
+    'zh_hk'     => 'zh-tw',
+    'zh-HK'     => 'zh-tw',
+    'zh_HK'     => 'zh-tw',
+    'zh-mo'     => 'zh-tw',
+    'zh_mo'     => 'zh-tw',
+    'zh-MO'     => 'zh-tw',
+    'zh_MO'     => 'zh-tw',
+    
+    # 葡萄牙语（欧洲）
+    'pt'        => 'pt',
+    'pt-pt'     => 'pt',
+    'pt_pt'     => 'pt',
+    'pt-PT'     => 'pt',
+    'pt_PT'     => 'pt',
+    'portuguese'=> 'pt',
+    
+    # 葡萄牙语（巴西）
+    'pt-br'     => 'pt-br',
+    'pt_br'     => 'pt-br',
+    'pt-BR'     => 'pt-br',
+    'pt_BR'     => 'pt-br',
+    'br'        => 'pt-br',
+    'brazil'    => 'pt-br',
+    
+    # 乌克兰语
+    'uk'        => 'ua',
+    'ua'        => 'ua',
+    'uk-ua'     => 'ua',
+    'uk_ua'     => 'ua',
+    'uk-UA'     => 'ua',
+    'uk_UA'     => 'ua',
+    'ukraine'   => 'ua',
+    
+    # 阿尔巴尼亚语
+    'sq'        => 'al',
+    'al'        => 'al',
+    'albanian'  => 'al',
+    
+    # 阿拉伯语
+    'ar'        => 'ar',
+    'arabic'    => 'ar',
+    
+    # 巴什基尔语
+    'ba'        => 'ba',
+    'bashkir'   => 'ba',
+    
+    # 保加利亚语
+    'bg'        => 'bg',
+    'bulgarian' => 'bg',
+    
+    # 捷克语
+    'cs'        => 'cz',
+    'cz'        => 'cz',
+    'czech'     => 'cz',
+    
+    # 德语
+    'de'        => 'de',
+    'german'    => 'de',
+    
+    # 丹麦语
+    'da'        => 'dk',
+    'dk'        => 'dk',
+    'danish'    => 'dk',
+    
+    # 英语
+    'en'        => 'en',
+    'english'   => 'en',
+    'en-us'     => 'en',
+    'en_us'     => 'en',
+    'en-US'     => 'en',
+    'en_US'     => 'en',
+    'en-gb'     => 'en',
+    'en_gb'     => 'en',
+    'en-GB'     => 'en',
+    'en_GB'     => 'en',
+    
+    # 爱沙尼亚语
+    'et'        => 'et',
+    'estonian'  => 'et',
+    
+    # 芬兰语
+    'fi'        => 'fi',
+    'finnish'   => 'fi',
+    
+    # 法语
+    'fr'        => 'fr',
+    'french'    => 'fr',
+    'fr-fr'     => 'fr',
+    'fr_fr'     => 'fr',
+    'fr-FR'     => 'fr',
+    'fr_FR'     => 'fr',
+    'fr-ca'     => 'fr',
+    'fr_ca'     => 'fr',
+    'fr-CA'     => 'fr',
+    'fr_CA'     => 'fr',
+    
+    # 加利西亚语
+    'gl'        => 'gl',
+    'galician'  => 'gl',
+    
+    # 西班牙语
+    'es'        => 'es',
+    'spanish'   => 'es',
+    'es-es'     => 'es',
+    'es_es'     => 'es',
+    'es-ES'     => 'es',
+    'es_ES'     => 'es',
+    'es-mx'     => 'es',
+    'es_mx'     => 'es',
+    'es-MX'     => 'es',
+    'es_MX'     => 'es',
+    
+    # 巴斯克语
+    'eu'        => 'eu',
+    'basque'    => 'eu',
+    
+    # 加泰罗尼亚语
+    'ca'        => 'ca',
+    'catalan'   => 'ca',
+    
+    # 希腊语
+    'el'        => 'gr',
+    'gr'        => 'gr',
+    'greek'     => 'gr',
+    
+    # 匈牙利语
+    'hu'        => 'hu',
+    'hungarian' => 'hu',
+    
+    # 冰岛语
+    'is'        => 'is',
+    'icelandic' => 'is',
+    
+    # 印度尼西亚语
+    'in'        => 'id',
+    'id'        => 'id',
+    'indonesian'=> 'id',
+    
+    # 意大利语
+    'it'        => 'it',
+    'italian'   => 'it',
+    'it-it'     => 'it',
+    'it_it'     => 'it',
+    'it-IT'     => 'it',
+    'it_IT'     => 'it',
+    
+    # 拉脱维亚语
+    'lv'        => 'lv',
+    'latvian'   => 'lv',
+    
+    # 荷兰语
+    'nl'        => 'nl',
+    'dutch'     => 'nl',
+    'nl-nl'     => 'nl',
+    'nl_nl'     => 'nl',
+    'nl-NL'     => 'nl',
+    'nl_NL'     => 'nl',
+    'nl-be'     => 'nl',
+    'nl_be'     => 'nl',
+    'nl-BE'     => 'nl',
+    'nl_BE'     => 'nl',
+    
+    # 挪威语
+    'no'        => 'nb',
+    'nb'        => 'nb',
+    'norwegian' => 'nb',
+    'nn'        => 'nn',
+    'nynorsk'   => 'nn',
+    
+    # 波兰语
+    'pl'        => 'pl',
+    'polish'    => 'pl',
+    
+    # 罗马尼亚语
+    'ro'        => 'ro',
+    'romanian'  => 'ro',
+    
+    # 俄语
+    'ru'        => 'ru',
+    'russian'   => 'ru',
+    'ru-ru'     => 'ru',
+    'ru_ru'     => 'ru',
+    'ru-RU'     => 'ru',
+    'ru_RU'     => 'ru',
+    
+    # 塞尔维亚语
+    'sr'        => 'sr',
+    'serbian'   => 'sr',
+    
+    # 斯洛伐克语
+    'sk'        => 'sk',
+    'slovak'    => 'sk',
+    
+    # 瑞典语
+    'sv'        => 'se',
+    'se'        => 'se',
+    'swedish'   => 'se',
+    
+    # 泰语
+    'th'        => 'th',
+    'thai'      => 'th',
+    
+    # 土耳其语
+    'tr'        => 'tr',
+    'turkish'   => 'tr',
+    
+    # 日语
+    'ja'        => 'jp',
+    'jp'        => 'jp',
+    'japanese'  => 'jp',
+    'ja-jp'     => 'jp',
+    'ja_jp'     => 'jp',
+    'ja-JP'     => 'jp',
+    'ja_JP'     => 'jp',
+    
+    # 韩语
+    'kr'        => 'ko',
+    'ko'        => 'ko',
+    'korean'    => 'ko',
+    'ko-kr'     => 'ko',
+    'ko_kr'     => 'ko',
+    'ko-KR'     => 'ko',
+    'ko_KR'     => 'ko',
+    
+    # 威尔士语
+    'cy'        => 'cy',
+    'welsh'     => 'cy',
+    'wlk'       => 'cy',
 );
 %LangAWStatsToFlagAwstats =
   (  # If flag (country ISO-3166 two letters) is not same than AWStats Lang code
@@ -762,16 +983,254 @@ use vars qw/ @Message /;
 	',',
  	'Downloads',
  	'Export CSV',
-        'TB',
-        'Frequency[/s]',
-        'Number of requests',
-        'Period',
-        's',
-        'Request average frequency [/s]',
-        'Request size',
-        'Request time'
+	'TB',
+	'Frequency[/s]',
+	'Number of requests',
+	'Period',
+	's',
+	'Request average frequency [/s]',
+	'Request size',
+	'Request time'
 );
-
+#------------------------------------------------------------------------------
+# footer-docs
+#------------------------------------------------------------------------------
+sub detect_terminal_language {
+    # 从环境变量获取
+    my $lang = $ENV{'LANG'} || $ENV{'LANGUAGE'} || $ENV{'LC_ALL'} || $ENV{'LC_MESSAGES'} || '';
+    
+    # 如果没有设置，返回 undef
+    return undef if !$lang;
+    
+    # 去掉编码部分 (zh_CN.UTF-8 -> zh_CN)
+    $lang =~ s/\..*$//;
+    
+    # 转换格式 (zh_CN -> zh-cn)
+    $lang =~ s/_/-/g;
+    $lang = lc($lang);
+    
+    # 检查是否支持该语言
+    my @supported = qw(ar az bg bn bs ca cs da de el en es fa fi fr hr hu id it ja ka ku ko nl no pl pt pt-br ro ru sk sq sr sv th tr uk ur vi zh-cn zh-tw);
+    foreach (@supported) {
+        if ($_ eq $lang) {
+            return $lang;
+        }
+    }
+    
+    # 如果完整语言不支持，尝试主要语言 (zh-cn -> zh)
+    my $primary = (split /-/, $lang)[0];
+    foreach (@supported) {
+        if ($_ eq $primary) {
+            return $primary;
+        }
+    }
+    
+    return undef;
+}
+#==============================================================================
+# 显示帮助信息 - 现代重构版本
+#==============================================================================
+sub print_help {
+    # 检测终端语言
+    if (!$Lang) {
+        my $term_lang = detect_terminal_language();
+        $Lang = $term_lang || 'en';
+        &Read_Language_Data($Lang);
+    }
+    
+    binmode(STDOUT, ':utf8');
+    Read_Ref_Data('domains', 'robots', 'worms', 'operating_systems', 'browsers', 'search_engines');
+    # 获取翻译文本
+    my $title = sprintf(_t("AWStats %s - Advanced Web Statistics"), $VERSION);
+    my $copyright1 = _t("Copyright (c) 2000-2026 Laurent Destailleur");
+    my $copyright2 = _t("Copyright (c) 2025 HestiaCP Enhanced Edition");
+    my $warranty = _t("AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details).");
+    
+    my $syntax = sprintf(_t("Syntax: %s -config=virtualhostname [options]"), $PROG);
+    
+    my $desc1 = sprintf(_t("This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."), $PROG);
+    my $desc2 = sprintf(_t("First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="), $PROG, $PROG, $PROG, $PROG);
+    
+    my $note1 = _t("Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file.");
+    my $note2 = _t("Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL.");
+    my $note3 = _t("See AWStats documentation for all setup instructions.");
+    
+    my $update_title = _t("Options to update statistics:");
+    my $update_update = _t("  -update        to update statistics (default)");
+    my $update_steps = sprintf(_t("  -showsteps     to add benchmark information every %s lines processed"), $NBOFLINESFORBENCHMARK);
+    my $update_corrupted = _t("  -showcorrupted to add output for each corrupted lines found, with reason");
+    my $update_dropped = _t("  -showdropped   to add output for each dropped lines found, with reason");
+    my $update_unknown = _t("  -showunknownorigin  to output referer when it can't be parsed");
+    my $update_direct = _t("  -showdirectorigin   to output log line when origin is a direct access");
+    my $update_for = _t("  -updatefor=n   to stop the update process after parsing n lines");
+    my $update_logfile = _t("  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file");
+    my $update_warn = _t("  Be care to process log files in chronological order when updating statistics.");
+    
+    my $output_title = _t("Options to show statistics:");
+    my $output_main = _t("  -output      to output main HTML report (no update made except with -update)");
+    my $output_x = _t("  -output=x    to output other report pages where x is:");
+    
+    my $output_options = [
+        ["alldomains", _t("build page of all domains/countries")],
+        ["allhosts", _t("build page of all hosts")],
+        ["lasthosts", _t("build page of last hits for hosts")],
+        ["unknownip", _t("build page of all unresolved IP")],
+        ["allemails", _t("build page of all email senders (maillog)")],
+        ["lastemails", _t("build page of last email senders (maillog)")],
+        ["allemailr", _t("build page of all email receivers (maillog)")],
+        ["lastemailr", _t("build page of last email receivers (maillog)")],
+        ["alllogins", _t("build page of all logins used")],
+        ["lastlogins", _t("build page of last hits for logins")],
+        ["allrobots", _t("build page of all robots/spider visits")],
+        ["lastrobots", _t("build page of last hits for robots")],
+        ["urldetail", _t("list most often viewed pages")],
+        ["urldetail:filter", _t("list most often viewed pages matching filter")],
+        ["urlentry", _t("list entry pages")],
+        ["urlentry:filter", _t("list entry pages matching filter")],
+        ["urlexit", _t("list exit pages")],
+        ["urlexit:filter", _t("list exit pages matching filter")],
+        ["osdetail", _t("build page with os detailed versions")],
+        ["browserdetail", _t("build page with browsers detailed versions")],
+        ["unknownbrowser", _t("list 'User Agents' with unknown browser")],
+        ["unknownos", _t("list 'User Agents' with unknown OS")],
+        ["refererse", _t("build page of all refering search engines")],
+        ["refererpages", _t("build page of all refering pages")],
+        ["keyphrases", _t("list all keyphrases used on search engines")],
+        ["keywords", _t("list all keywords used on search engines")],
+        ["errors404", _t("list 'Referers' for 404 errors")],
+        ["allextraX", _t("build page of all values for ExtraSection X")],
+    ];
+    
+    my $staticlinks = _t("  -staticlinks           to have static links in HTML report page");
+    my $staticlinksext = _t("  -staticlinksext=xxx    to have static links with .xxx extension instead of .html");
+    my $lang_opt = _t("  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)");
+    my $month_opt = _t("  -month=MM    to output a HTML report for an old month MM");
+    my $year_opt = _t("  -year=YYYY   to output a HTML report for an old year YYYY");
+    my $date_note = _t("  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year.");
+    
+    my $other_title = _t("Other options:");
+    my $debug_opt = _t("  -debug=X     to add debug informations lesser than level X (speed reduced)");
+    my $version_opt = _t("  -version     show AWStats version");
+    
+    my $supports_title = _t("Now supports/detects:");
+    
+    my @features = (
+        _t("  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"),
+        _t("  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"),
+        _t("  Number of visits, number of unique visitors"),
+        _t("  Visits duration and list of last visits"),
+        _t("  Authenticated users"),
+        _t("  Days of week and rush hours"),
+        _t("  Hosts list and unresolved IP addresses list"),
+        _t("  Most viewed, entry and exit pages"),
+        _t("  Files type and Web compression (mod_gzip, mod_deflate stats)"),
+        _t("  Screen size"),
+        _t("  Ratio of Browsers with support of: Java, Flash, RealG2 reader, Quicktime reader, WMA reader, PDF reader"),
+        _t("  Configurable personalized reports"),
+        sprintf(_t("  %s domains/countries"), scalar keys %DomainsHashIDLib),
+        sprintf(_t("  %s robots"), scalar keys %RobotsHashIDLib),
+        sprintf(_t("  %s worm's families"), scalar keys %WormsHashLib),
+        sprintf(_t("  %s operating systems"), scalar keys %OSHashLib),
+    );
+    
+    # 获取浏览器统计
+    my $browser_count = scalar keys %BrowsersHashIDLib;
+    &Read_Ref_Data('browsers_phone');
+    my $browser_total = scalar keys %BrowsersHashIDLib;
+    my $browser_text = sprintf(_t("  %s browsers (%s with phone browsers database)"), $browser_count, $browser_total);
+    
+    my $se_text = sprintf(_t("  %s search engines (and keyphrases/keywords used from them)"), scalar keys %SearchEnginesHashLib);
+    
+    my @more_features = (
+        _t("  All HTTP errors with last referrer"),
+        _t("  Report by day/month/year"),
+        _t("  Dynamic or static HTML or XHTML reports, static PDF reports"),
+        _t("  Indexed text or XML monthly database"),
+        _t("  And a lot of other advanced features and options..."),
+    );
+    
+    my $footer = _t("New versions and FAQ at http://www.awstats.org");
+    
+    # 输出帮助信息
+    print "\n";
+    print "═══════════════════════════════════════════════════════════════════════════\n";
+    print "  $title\n";
+    print "  $copyright1\n";
+    print "  $copyright2\n";
+    print "═══════════════════════════════════════════════════════════════════════════\n";
+    print "\n";
+    print "  $warranty\n";
+    print "\n";
+    print "  $syntax\n";
+    print "\n";
+    print "  $desc1\n";
+    print "  $desc2\n";
+    print "\n";
+    print "  $note1\n";
+    print "  $note2\n";
+    print "  $note3\n";
+    print "\n";
+    
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $update_title\n";
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $update_update\n";
+    print "  $update_steps\n";
+    print "  $update_corrupted\n";
+    print "  $update_dropped\n";
+    print "  $update_unknown\n";
+    print "  $update_direct\n";
+    print "  $update_for\n";
+    print "  $update_logfile\n";
+    print "  $update_warn\n";
+    print "\n";
+    
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $output_title\n";
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $output_main\n";
+    print "  $output_x\n";
+    
+    foreach my $opt (@$output_options) {
+        printf "    %-20s %s\n", $opt->[0], $opt->[1];
+    }
+    
+    print "\n";
+    print "  $staticlinks\n";
+    print "  $staticlinksext\n";
+    print "  $lang_opt\n";
+    print "  $month_opt\n";
+    print "  $year_opt\n";
+    print "  $date_note\n";
+    print "\n";
+    
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $other_title\n";
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $debug_opt\n";
+    print "  $version_opt\n";
+    print "\n";
+    
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $supports_title\n";
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    
+    foreach my $feature (@features) {
+        print "  $feature\n";
+    }
+    print "  $browser_text\n";
+    print "  $se_text\n";
+    
+    foreach my $feature (@more_features) {
+        print "  $feature\n";
+    }
+    print "\n";
+    
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "  $footer\n";
+    print "───────────────────────────────────────────────────────────────────────────\n";
+    print "\n";
+}
 #------------------------------------------------------------------------------
 # Functions
 #------------------------------------------------------------------------------
@@ -787,280 +1246,1114 @@ sub file_filt (@) {
 }
 
 #------------------------------------------------------------------------------
-# Function:		Write on output header of HTTP answer
-# Parameters:	None
-# Input:		$HeaderHTTPSent $BuildReportFormat $PageCode $Expires
-# Output:		$HeaderHTTPSent=1
-# Return:		None
+# Function:     Send HTTP headers (modern version)
+# Parameters:   None
+# Input:        $HeaderHTTPSent, $PageCode
+# Output:       $HeaderHTTPSent=1
+# Return:       None
 #------------------------------------------------------------------------------
 sub http_head {
-	if ( !$HeaderHTTPSent ) {
-		my $newpagecode = $PageCode ? $PageCode : "utf-8";
-		if ( $BuildReportFormat eq 'xhtml' || $BuildReportFormat eq 'xml' ) {
-			print( $ENV{'HTTP_USER_AGENT'} =~ /MSIE|Googlebot/i
-				? "Content-type: text/html; charset=$newpagecode\n"
-				: "Content-type: text/xml; charset=$newpagecode\n"
-			);
-		}
-		else { print "Content-type: text/html; charset=$newpagecode\n"; }
+    return if $HeaderHTTPSent;
+        # 始终使用 UTF-8，强制现代浏览器标准
+        print "Content-type: text/html; charset=utf-8\n";
+        
+        # 添加安全响应头
+        print "X-Content-Type-Options: nosniff\n";
+        print "X-Frame-Options: SAMEORIGIN\n";
+        print "Referrer-Policy: no-referrer-when-downgrade\n";
+        
+        # 缓存控制
+        if ( $Expires =~ /^\d+$/ ) {
+            print "Cache-Control: public, max-age=$Expires\n";
+            print "Last-Modified: " . gmtime($starttime) . "\n";
+            print "Expires: " . ( gmtime( $starttime + $Expires ) ) . "\n";
+        } else {
+            print "Cache-Control: no-cache, must-revalidate\n";
+        }
+        print "\n";
+    $HeaderHTTPSent++;
+}
 
-# Expires must be GMT ANSI asctime and must be after Content-type to avoid pb with some servers (SAMBAR)
-		if ( $Expires =~ /^\d+$/ ) {
-			print "Cache-Control: public\n";
-			print "Last-Modified: " . gmtime($starttime) . "\n";
-			print "Expires: " . ( gmtime( $starttime + $Expires ) ) . "\n";
-		}
-		print "\n";
-	}
-	$HeaderHTTPSent++;
+
+#------------------------------------------------------------------------------
+# Function:     Get translated text
+# Parameters:   Message ID or string
+# Return:       Translated text
+#------------------------------------------------------------------------------
+sub _t {
+    my $msgid = shift;
+    
+    # 如果是数字索引，从 $Message 数组获取
+    if ( $msgid =~ /^\d+$/ && defined $Message[$msgid] ) {
+        return $Message[$msgid];
+    }
+    
+    # 从翻译映射表获取（如果存在）
+    if ( defined $translate_map{$msgid} ) {
+        return $translate_map{$msgid};
+    }
+    
+    # 返回原文本
+    return $msgid;
 }
 
 #------------------------------------------------------------------------------
-# Function:		Write on output header of HTML page
-# Parameters:	None
-# Input:		%HTMLOutput $PluginMode $Expires $Lang $StyleSheet $HTMLHeadSection $PageCode $PageDir
-# Output:		$HeaderHTMLSent=1
-# Return:		None
+# Function:     Write HTML5 header with RTL/LTR support and theme toggle
+# Parameters:   None
+# Input:        %HTMLOutput, $PluginMode, $Lang, $StyleSheet, $PageDir, etc.
+# Output:       $HeaderHTMLSent=1
+# Return:       None
 #------------------------------------------------------------------------------
 sub html_head {
-	my $dir = $PageDir ? 'right' : 'left';
-	if ($NOHTML) { return; }
-	if ( scalar keys %HTMLOutput || $PluginMode ) {
-		my $periodtitle = " ($YearRequired";
-		$periodtitle .= ( $MonthRequired ne 'all' ? "-$MonthRequired" : "" );
-		$periodtitle .= ( $DayRequired   ne ''    ? "-$DayRequired"   : "" );
-		$periodtitle .= ( $HourRequired  ne ''    ? "-$HourRequired"  : "" );
-		$periodtitle .= ")";
+        return if $NOHTML;
+    return unless ( scalar keys %HTMLOutput || $PluginMode );
 
-		# Write head section
-		if ( $BuildReportFormat eq 'xhtml' || $BuildReportFormat eq 'xml' ) {
-			if ($PageCode) {
-				print "<?xml version=\"1.0\" encoding=\"$PageCode\"?>\n";
-			}
-			else { print "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n"; }
-			if ( $FrameName ne 'index' ) {
-				print
-"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n";
-			}
-			else {
-				print
-"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">\n";
-			}
-			print
-"<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"$Lang\">\n";
-		}
-		else {
-			if ( $FrameName ne 'index' ) {
-				print
-"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
-			}
-			else {
-				print
-"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Frameset//EN\" \"http://www.w3.org/TR/html4/frameset.dtd\">\n";
-			}
-			print '<html lang="' . $Lang . '"'
-			  . ( $PageDir ? ' dir="rtl"' : '' ) . ">\n";
-		}
-		print "<head>\n";
+    my $dir = $PageDir ? 'rtl' : 'ltr';
+        my $periodtitle = " ($YearRequired";
+        $periodtitle .= ( $MonthRequired ne 'all' ? "-$MonthRequired" : "" );
+        $periodtitle .= ( $DayRequired   ne ''    ? "-$DayRequired"   : "" );
+        $periodtitle .= ( $HourRequired  ne ''    ? "-$HourRequired"  : "" );
+        $periodtitle .= ")";
 
-		my $endtag = '>';
-		if ( $BuildReportFormat eq 'xhtml' || $BuildReportFormat eq 'xml' ) {
-			$endtag = ' />';
-		}
-
-		# Affiche tag meta generator
-		print
-"<meta name=\"generator\" content=\"AWStats $VERSION from config file awstats.$SiteConfig.conf (http://www.awstats.org)\"$endtag\n";
-
-		# Affiche tag meta robots
-		if ($MetaRobot) {
-			print "<meta name=\"robots\" content=\""
-			  . ( $FrameName eq 'mainleft' ? 'no' : '' )
-			  . "index,"
-			  . (    $FrameName eq 'mainleft'
-				  || $FrameName eq 'index' ? '' : 'no' )
-			  . "follow\"$endtag\n";
-		}
-		else {
-			print "<meta name=\"robots\" content=\"noindex,nofollow\"$endtag\n";
-		}
-
-		# Affiche tag meta content-type
-		if ( $BuildReportFormat eq 'xhtml' || $BuildReportFormat eq 'xml' ) {
-			print( $ENV{'HTTP_USER_AGENT'} =~ /MSIE|Googlebot/i
-				? "<meta http-equiv=\"content-type\" content=\"text/html; charset="
-				  . ( $PageCode ? $PageCode : "iso-8859-1" )
-				  . "\" />\n"
-				: "<meta http-equiv=\"content-type\" content=\"text/xml; charset="
-				  . ( $PageCode ? $PageCode : "iso-8859-1" )
-				  . "\"$endtag\n"
-			);
-		}
-		else {
-			print
-			  "<meta http-equiv=\"content-type\" content=\"text/html; charset="
-			  . ( $PageCode ? $PageCode : "iso-8859-1" )
-			  . "\"$endtag\n";
-		}
-
-		if ($Expires) {
-			print "<meta http-equiv=\"expires\" content=\""
-			  . ( gmtime( $starttime + $Expires ) )
-			  . "\"$endtag\n";
-		}
-		my @k = keys
-		  %HTMLOutput;    # This is to have a unique title and description page
-		print "<meta http-equiv=\"description\" content=\""
-		  . ucfirst($PROG)
-		  . " - Advanced Web Statistics for $SiteDomain$periodtitle"
-		  . ( $k[0] ? " - " . $k[0] : "" )
-		  . "\"$endtag\n";
-		if ( $MetaRobot && $FrameName ne 'mainleft' ) {
-			print
-"<meta http-equiv=\"keywords\" content=\"$SiteDomain, free, advanced, realtime, web, server, logfile, log, analyzer, analysis, statistics, stats, perl, analyse, performance, hits, visits\"$endtag\n";
-		}
-		print "<title>$Message[7] $SiteDomain$periodtitle"
-		  . ( $k[0] ? " - " . $k[0] : "" )
-		  . "</title>\n";
-		if ( $FrameName ne 'index' ) {
-
-			if ($StyleSheet) {
-				print "<link rel=\"stylesheet\" href=\"$StyleSheet\" />\n";
-			}
-
-# A STYLE section must be in head section. Do not use " for number in a style section
-			print "<style type=\"text/css\">\n";
-
-			if ( !$StyleSheet ) {
-				print
-"body { font: 1.2em verdana, arial, helvetica, sans-serif; background-color: #$color_Background; margin-top: 0; margin-bottom: 0; }\n";
-				print ".aws_bodyl  { }\n";
-				print
-".aws_border { border-collapse: collapse; background-color: #$color_TableBG; padding: 1px 1px "
-				  . (    $BuildReportFormat eq 'xhtml'
-					  || $BuildReportFormat eq 'xml' ? "2px" : "1px" )
-				  . " 1px; margin-top: 0px; margin-bottom: 0px; }\n";
-				print
-".aws_title  { font: 1em verdana, arial, helvetica, sans-serif; font-weight: bold; background-color: #$color_TableBGTitle; text-align: center; margin-top: 0; margin-bottom: 0; padding: 5px; color: #$color_TableTitle; }\n";
-				print
-".aws_blank  { font: 13px verdana, arial, helvetica, sans-serif; background-color: #$color_Background; text-align: center; margin-bottom: 0; padding: 1px 1px 1px 1px; }\n";
-				print <<EOF;
-.aws_data {
-	background-color: #$color_Background;
-	border-top-width: 1px;   
-	border-left-width: 0px;  
-	border-right-width: 0px; 
-	border-bottom-width: 0px;
-}
-.aws_formfield { font: 13px verdana, arial, helvetica; }
-.aws_button {
-	font-family: arial,verdana,helvetica, sans-serif;
-	font-size: 12px;
-	border: 1px solid #ccd7e0;
-	background-image : url($DirIcons/other/button.gif);
-}
-th		{ border-color: #$color_TableBorder; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px; padding: 1px 2px 1px 1px; font: 11px verdana, arial, helvetica, sans-serif; text-align:center; color: #$color_titletext; }
-th.aws	{ border-color: #$color_TableBorder; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px; padding: 1px 2px 1px 1px; font-size: 13px; font-weight: bold; }
-td		{ border-color: #$color_TableBorder; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px; font: 0.9em verdana, arial, helvetica, sans-serif; text-align:center; color: #$color_text; }
-td.aws	{ border-color: #$color_TableBorder; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px; text-align:$dir; color: #$color_text; padding: 6px;}
-td.awsm	{ border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; font: 0.8em verdana, arial, helvetica, sans-serif; text-align:$dir; color: #$color_text; padding: 0px; }
-b { font-weight: bold; }
-a:link    { color: #$color_link; text-decoration: none; }
-a:visited { color: #$color_link; text-decoration: none; }
-a:hover   { color: #$color_hover; text-decoration: underline; }
-.aws_data th { font-size: 0.9em; padding: 5px; }
-.currentday { font-weight: bold; }
-EOF
-			}
-
-			# Call to plugins' function AddHTMLStyles
-			foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLStyles'} } )
-			{
-				my $function = "AddHTMLStyles_$pluginname";
-				&$function();
-			}
-
-			print "</style>\n";
-		}
-
-# les scripts necessaires pour trier avec Tablekit
-#	print "<script type=\"text\/javascript\" src=\"/js/prototype.js\"><\/script>";
-#	print "<script type=\"text\/javascript\" src=\"/js/fabtabulous.js\"><\/script>";
-#	print "<script type=\"text\/javascript\" src=\"/js/mytablekit.js\"><\/script>";
-
-		# Call to plugins' function AddHTMLHeader
-		foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLHeader'} } )
-		{
-			my $function = "AddHTMLHeader_$pluginname";
-			&$function();
-		}
+        # HTML5 文档类型
+        print "<!DOCTYPE html>\n";
+        print "<html lang=\"" . _t($Lang) . "\" dir=\"$dir\">\n";
+        print "<head>\n";
+        
+        # 元数据 - 现代标准
+        print "<meta charset=\"utf-8\">\n";
+        print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+        print "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n";
+        
+        # 生成器标签
+        print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
+        
+        # 机器人控制
+        if ($MetaRobot) {
+            my $index = ($FrameName eq 'mainleft') ? 'noindex' : 'index';
+            my $follow = ($FrameName eq 'mainleft' || $FrameName eq 'index') ? 'follow' : 'nofollow';
+            print "<meta name=\"robots\" content=\"$index, $follow\">\n";
+        } else {
+            print "<meta name=\"robots\" content=\"noindex, nofollow\">\n";
+        }
+        
+        # 过期时间
+            print "<meta http-equiv=\"expires\" content=\"" . gmtime( $starttime + $Expires ) . "\">\n" if $Expires;
+        
+        # 页面描述
+        my @k = keys %HTMLOutput;
+        my $description = sprintf("%s - %s %s%s%s", 
+            ucfirst($PROG),
+            _t("Advanced Web Statistics for"),
+            $SiteDomain,
+            $periodtitle,
+            ($k[0] ? " - " . _t($k[0]) : "")
+        );
+        print "<meta name=\"description\" content=\"" . $description . "\">\n";
+        
+        # 关键词（可选）
+        if ( $MetaRobot && $FrameName ne 'mainleft' ) {
+            print "<meta name=\"keywords\" content=\"$SiteDomain, web statistics, log analyzer, traffic analysis\">\n";
+        }
+        
+        # 页面标题
+        my $title = sprintf("%s %s%s", 
+            _t("Statistics for"),
+            $SiteDomain,
+            ($k[0] ? " - " . _t($k[0]) : "")
+        );
+        print "<title>$title</title>\n";
+        
+        # 样式表
+        if ( $FrameName ne 'index' ) {
+            if ($StyleSheet) {
+                print "<link rel=\"stylesheet\" href=\"$StyleSheet\">\n";
+            } else {
+                # 内置现代 CSS
+                print get_modern_css($dir);
+            }
+            
+            # 获取翻译文本
+            my $light_mode_text = _t("Switch to light mode");
+            my $dark_mode_text = _t("Switch to dark mode");
+        }
+        
+        # 插件钩子
+        foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLHeader'} } ) {
+            my $function = "AddHTMLHeader_$pluginname";
+            &$function();
+        }
+        
+        print "</head>\n";
+        
+        # Body 开始
+        if ( $FrameName ne 'index' ) {
+            my $body_class = ($FrameName eq 'mainleft') ? 'class="aws-sidebar"' : 'class="aws-main"';
+            print "<body $body_class>\n";
+            print "<div class=\"aws-container\">\n";
+            my $light_mode_text = _t("Switch to light mode");
+			my $dark_mode_text = _t("Switch to dark mode");
+			my $title = _t("AWStats Log Viewer");
+			my $nav_home = "AWStats";  # 品牌名通常不翻译
 			
-		print "</head>\n\n";
-		if ( $FrameName ne 'index' ) {
-			print "<body style=\"margin-top: 0px\"";
-			if ( $FrameName eq 'mainleft' ) { print " class=\"aws_bodyl\""; }
-			print ">\n";
-		}
-	}
-	$HeaderHTMLSent++;
+			# 导航分类
+			my $nav_category_basic = _t("nav_category_basic");
+			my $nav_category_guide = _t("nav_category_guide");
+			my $nav_category_reference = _t("nav_category_reference");
+			my $nav_category_integration = _t("nav_category_integration");
+			my $nav_category_dev = _t("nav_category_dev");
+			
+			# 基础文档
+			my $nav_changelog = _t("nav_changelog");
+			my $nav_what = _t("nav_what");
+			my $nav_license = _t("nav_license");
+			my $nav_glossary = _t("nav_glossary");
+			
+			# 使用指南
+			my $nav_setup = _t("nav_setup");
+			my $nav_upgrade = _t("nav_upgrade");
+			my $nav_config = _t("nav_config");
+			my $nav_extra = _t("nav_extra");
+			my $nav_tools = _t("nav_tools");
+			
+			# 参考资源
+			my $nav_faq = _t("nav_faq");
+			my $nav_security = _t("nav_security");
+			my $nav_compare = _t("nav_compare");
+			my $nav_benchmark = _t("nav_benchmark");
+			
+			# 集成与扩展
+			my $nav_webmin = _t("nav_webmin");
+			my $nav_dolibarr = _t("nav_dolibarr");
+			my $nav_contrib = _t("nav_contrib");
+			
+			# 开发者文档
+			my $nav_plugins = _t("nav_plugins");
+			my $nav_hooks = _t("nav_hooks");
+			my $nav_graphs = _t("nav_graphs");
+            # 添加主题切换按钮（放在页面顶部）
+print <<"END_BUTTON";
+<div class="header-right">
+    <div class="dropdown-menu" id="mobileMenu">
+        <div class="dropdown-item">
+            <div class="dropdown-title">📌 $nav_category_basic</div>
+            <div class="dropdown-content">
+                <a href="/vstats/docs/awstats_changelog.html" target="doc-frame">$nav_changelog</a>
+                <a href="/vstats/docs/awstats_what.html" target="doc-frame">$nav_what</a>
+                <a href="/vstats/docs/awstats_license.html" target="doc-frame">$nav_license</a>
+                <a href="/vstats/docs/awstats_glossary.html" target="doc-frame">$nav_glossary</a>
+            </div>
+        </div>
+        <div class="dropdown-item">
+            <div class="dropdown-title">📘 $nav_category_guide</div>
+            <div class="dropdown-content">
+                <a href="/vstats/docs/awstats_setup.html" target="doc-frame">$nav_setup</a>
+                <a href="/vstats/docs/awstats_upgrade.html" target="doc-frame">$nav_upgrade</a>
+                <a href="/vstats/docs/awstats_config.html" target="doc-frame">$nav_config</a>
+                <a href="/vstats/docs/awstats_extra.html" target="doc-frame">$nav_extra</a>
+                <a href="/vstats/docs/awstats_tools.html" target="doc-frame">$nav_tools</a>
+            </div>
+        </div>
+        <div class="dropdown-item">
+            <div class="dropdown-title">📚 $nav_category_reference</div>
+            <div class="dropdown-content">
+                <a href="/vstats/docs/awstats_faq.html" target="doc-frame">$nav_faq</a>
+                <a href="/vstats/docs/awstats_security.html" target="doc-frame">$nav_security</a>
+                <a href="/vstats/docs/awstats_compare.html" target="doc-frame">$nav_compare</a>
+                <a href="/vstats/docs/awstats_benchmark.html" target="doc-frame">$nav_benchmark</a>
+            </div>
+        </div>
+        <div class="dropdown-item">
+            <div class="dropdown-title">🧩 $nav_category_integration</div>
+            <div class="dropdown-content">
+                <a href="/vstats/docs/awstats_webmin.html" target="doc-frame">$nav_webmin</a>
+                <a href="/vstats/docs/awstats_dolibarr.html" target="doc-frame">$nav_dolibarr</a>
+                <a href="/vstats/docs/awstats_contrib.html" target="doc-frame">$nav_contrib</a>
+            </div>
+        </div>
+        <div class="dropdown-item">
+            <div class="dropdown-title">💻 $nav_category_dev</div>
+            <div class="dropdown-content">
+                <a href="/vstats/docs/awstats_dev_plugins.html" target="doc-frame">$nav_plugins</a>
+                <a href="/vstats/docs/awstats_dev_plugins_hooks.html" target="doc-frame">$nav_hooks</a>
+                <a href="/vstats/docs/awstats_dev_plugins_graphs.html" target="doc-frame">$nav_graphs</a>
+            </div>
+        </div>
+    </div>
+    <button id="theme-toggle" 
+            class="theme-toggle" 
+            onclick="toggleTheme()" 
+            data-light-mode="$light_mode_text"
+            data-dark-mode="$dark_mode_text"
+            aria-label="$dark_mode_text">
+        🌙
+    </button>
+</div>
+END_BUTTON
+        }
+	print '<div id="doc-frame-bar" style="display:none; position:sticky; top:60px; z-index:999; background:var(--header-bg); padding:8px 20px; border-bottom:1px solid var(--border-color); margin-top:20px;">';
+	print '<div style="display:flex; justify-content:flex-end; align-items:center;">';
+	print '<span style="flex:1; font-weight:500;">' . _t("Documentation Viewer") . '</span>';
+	print '<button id="doc-frame-close" style="background:none; border:none; cursor:pointer; font-size:16px; color:var(--text-color);" title="' . _t("Close") . '">✖</button>';
+	print '</div>';
+	print '</div>';
+	print '<div id="doc-frame-container" style="display:none;">';
+	print '<iframe name="doc-frame" id="doc-frame" style="width:100%; height:600px; border:1px solid var(--border-color); border-radius:0 0 8px 8px;" title="' . _t("Documentation Viewer") . '"></iframe>';
+	print '</div>';
+    $HeaderHTMLSent++;
 }
 
 #------------------------------------------------------------------------------
-# Function:		Write on output end of HTML page
-# Parameters:	0|1 (0=no list plugins,1=list plugins)
-# Input:		%HTMLOutput $HTMLEndSection $FrameName $BuildReportFormat
-# Output:		None
-# Return:		None
+# Function:     Get modern CSS styles with theme support
+# Parameters:   $dir (ltr/rtl)
+# Return:       CSS string
+#------------------------------------------------------------------------------
+sub get_modern_css {
+    my $dir = shift;
+    
+    return <<'END_CSS';
+<style>
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --text-color: #1f2937;
+    --bg-color: #ffffff;
+    --border-color: #e5e7eb;
+    --hover-color: #dbeafe;
+    --header-bg: #f1f5f9;
+    --card-bg: #ffffff;
+    --alt-row-bg: #f9fafb;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    --link-color: #2563eb;
+    --link-hover: #1e40af;
+    --error-color: #dc2626;
+    --warning-color: #d97706;
+    --success-color: #059669;
+    
+    --color-day-bg: #ECECEC;
+    --color-visits-bg: #F4F090;
+    --color-pages-bg: #4477DD;
+    --color-hits-bg: #66EEFF;
+    --color-bandwidth-bg: #2EA495;
+    --color-weekend-bg: #EAEAEA;
+    --color-table-border: #ECECEC;
+    --color-text-default: #000000;
+    --color-titletext: #000000;
+    --color-link: #0011BB;
+    --color-hover: #605040;
+    --color-table-bg: #CCCCDD;
+    --color-table-title: #000000;
+    --surface-secondary: #f1f5f9;
+    --header-bg-rgb: 241, 245, 249;
+}
+[data-theme="dark"] {
+    --primary-color: #60a5fa;
+    --secondary-color: #3b82f6;
+    --text-color: #f3f4f6;
+    --bg-color: #1f2937;
+    --border-color: #374151;
+    --hover-color: #2d3748;
+    --header-bg: #1e293b;
+    --card-bg: #2d3748;
+    --alt-row-bg: #374151;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3);
+    --link-color: #60a5fa;
+    --link-hover: #93c5fd;
+    --error-color: #f87171;
+    --warning-color: #fbbf24;
+    --success-color: #34d399;
+    --surface-secondary: #334155;
+    --header-bg-rgb: 30, 41, 59; 
+
+    --color-day-bg: #2d3748;
+    --color-visits-bg: #8B5F1C;
+    --color-pages-bg: #1E3A8A;
+    --color-hits-bg: #0B5E6B;
+    --color-bandwidth-bg: #0F5E52;
+    --color-weekend-bg: #374151;
+    --color-table-border: #374151;
+    --color-text-default: #f3f4f6;
+    --color-titletext: #f3f4f6;
+    --color-link: #60a5fa;
+    --color-hover: #93c5fd;
+    --color-table-bg: #1e293b;
+    --color-table-title: #f3f4f6;
+}
+
+#doc-frame-bar {
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#doc-frame-container iframe {
+    border-top: none;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+}
+
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+}
+
+.aws-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.aws-sidebar {
+    background: var(--header-bg);
+    padding: 15px;
+    border-right: 1px solid var(--border-color);
+}
+
+.aws-main {
+    background: var(--bg-color);
+}
+
+.aws-border {
+    background-color: var(--header-bg);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.aws-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: var(--header-bg);
+    border-radius: 6px;
+}
+
+.aws-data {
+    width: 100%;
+    overflow-x: visible;
+    margin-bottom: 20px;
+}
+td.aws:has(img) {
+    text-align: left;
+}
+
+td.aws:has(img) img {
+    display: block;
+    float: left;
+    clear: left;
+    margin: 1px 0;
+}
+.aws-chart {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.aws-whitespace {
+    background: var(--header-bg);
+}
+
+table {
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 100%;
+}
+
+th {
+    background-color: var(--header-bg);
+    color: var(--text-color);
+    font-weight: 600;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 6px 8px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+td.aws {
+    border-color: var(--border-color);
+    border-left-width: 0px;
+    border-right-width: 1px;
+    border-top-width: 0px;
+    border-bottom-width: 1px;
+    font: 11px var(--font-family);
+    text-align: left;
+    color: var(--text-color);
+    padding: 0px;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--card-bg);
+}
+
+table tr:nth-child(odd) {
+    background-color: var(--alt-row-bg);
+}
+
+table tr:hover {
+    background-color: var(--hover-color);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.currentday {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.aws-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.aws-data-table th,
+.aws-data-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.aws-data-table th {
+    background-color: var(--header-bg);
+    font-weight: 600;
+}
+
+.aws-data-table.ip-table th:first-child,
+.aws-data-table.ip-table td:first-child,
+.aws-data-table.robot-table th:first-child,
+.aws-data-table.robot-table td:first-child {
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+    word-break: break-word;
+}
+
+a, a:link, a:visited {
+	text-decoration: none;
+	color: var(--link-color);
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: var(--accent);
+}
+
+a:visited {
+    color: var(--link-color);
+}
+
+.aws-formfield {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.aws-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.aws-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.theme-toggle-container {
+    position: sticky;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.theme-toggle {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    color: var(--text-color);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.aws-footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: 12px;
+}
+
+.aws-footer a {
+    color: var(--primary-color);
+}
+
+.aws-footer-note {
+    margin-top: 10px;
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+.error-text {
+    color: var(--error-color);
+    font-weight: 600;
+}
+
+.warning-message {
+    color: var(--warning-color);
+    border-left: 4px solid var(--warning-color);
+    background-color: var(--card-bg);
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.info-text {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.success-text {
+    color: var(--success-color);
+}
+
+.error-card {
+    background: var(--card-bg);
+    border: 1px solid #ef4444;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: var(--shadow);
+}
+
+.help-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.code-block {
+    background: var(--header-bg);
+    padding: 12px;
+    border-radius: 4px;
+    font-family: monospace;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.aws-note {
+    font-size: 12px;
+    color: var(--text-color);
+    opacity: 0.7;
+    padding: 8px;
+    background: var(--header-bg);
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+[dir="rtl"] .aws-sidebar {
+    border-right: none;
+    border-left: 1px solid var(--border-color);
+}
+
+[dir="rtl"] .theme-toggle-container {
+    left: 10px;
+    right: auto;
+}
+
+[dir="rtl"] th,
+[dir="rtl"] td {
+    text-align: right;
+}
+
+[dir="rtl"] td.number, 
+[dir="rtl"] td.numeric {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    th, td { padding: 4px 6px; font-size: 12px; }
+    .aws-title { font-size: 16px; }
+    .theme-toggle-container { top: 5px; right: 5px; }
+    .theme-toggle { padding: 6px 12px; font-size: 16px; }
+}
+
+[data-theme="dark"] [bgcolor="#ECECEC"],
+[data-theme="dark"] td[bgcolor="#ECECEC"],
+[data-theme="dark"] th[bgcolor="#ECECEC"] {
+    background-color: var(--color-day-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] [bgcolor="#F4F090"],
+[data-theme="dark"] td[bgcolor="#F4F090"],
+[data-theme="dark"] th[bgcolor="#F4F090"] {
+    background-color: var(--color-visits-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] [bgcolor="#4477DD"],
+[data-theme="dark"] td[bgcolor="#4477DD"],
+[data-theme="dark"] th[bgcolor="#4477DD"] {
+    background-color: var(--color-pages-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] [bgcolor="#66EEFF"],
+[data-theme="dark"] td[bgcolor="#66EEFF"],
+[data-theme="dark"] th[bgcolor="#66EEFF"] {
+    background-color: var(--color-hits-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] [bgcolor="#2EA495"],
+[data-theme="dark"] td[bgcolor="#2EA495"],
+[data-theme="dark"] th[bgcolor="#2EA495"] {
+    background-color: var(--color-bandwidth-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] [bgcolor="#EAEAEA"],
+[data-theme="dark"] td[bgcolor="#EAEAEA"] {
+    background-color: var(--color-weekend-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] [bgcolor="#CCCCDD"],
+[data-theme="dark"] td[bgcolor="#CCCCDD"] {
+    background-color: var(--color-table-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] [bgcolor="#F6F6F6"],
+[data-theme="dark"] td[bgcolor="#F6F6F6"] {
+    background-color: var(--header-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .error-text {
+    color: #f87171;
+}
+
+[data-theme="dark"] .error-card {
+    border-color: #f87171;
+}
+
+[data-theme="dark"] .warning-message {
+    border-left-color: #fbbf24;
+}
+
+[data-theme="dark"] .currentday {
+    color: var(--primary-color);
+}
+
+.dropdown-item {
+    position: relative;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--header-bg);
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(10px);
+    background-color: rgba(var(--header-bg-rgb), 0.95);
+}
+.dropdown-title {
+    cursor: pointer;
+    padding: 8px 16px;
+    background: var(--surface-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    transition: all 0.2s;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.dropdown-title:hover {
+    background: var(--hover-color);
+    color: var(--link-color);
+    border-color: var(--link-color);
+}
+.dropdown-menu {
+    display: flex;
+    gap: 15px;
+    position: relative;
+    margin-right: auto;
+    flex-wrap: wrap;
+    z-index: 1001;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: max-content;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    margin-top: 8px;
+}
+
+.dropdown-item.active .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+    background: var(--surface-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.dropdown-content a:hover {
+    background: var(--hover-color);
+    color: var(--link-color);
+    border-color: var(--link-color);
+    transform: translateX(4px);
+}
+@media (max-width: 768px) {
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        z-index: 1001;
+    }
+    
+    .dropdown-menu.mobile-active {
+        display: flex;
+    }
+    
+    .dropdown-item {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .dropdown-title {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .dropdown-title::after {
+        content: "▼";
+        font-size: 0.7rem;
+        transition: transform 0.2s;
+    }
+    
+    .dropdown-item.active .dropdown-title::after {
+        transform: rotate(180deg);
+    }
+    
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        margin-top: 8px;
+        box-shadow: none;
+        border: none;
+        padding: 8px;
+    }
+}
+</style>
+END_CSS
+}
+
+#------------------------------------------------------------------------------
+# Function:     Write HTML footer
+# Parameters:   $listplugins (0/1)
+# Input:        %HTMLOutput, $HTMLEndSection, $FrameName, $color_text
+# Output:       None
+# Return:       None
 #------------------------------------------------------------------------------
 sub html_end {
-	my $listplugins = shift || 0;
-	if ( scalar keys %HTMLOutput ) {
+    my $listplugins = shift || 0;
+    
+    return unless scalar keys %HTMLOutput;
+        
+    # 插件钩子
+    foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLBodyFooter'} } ) {
+        my $function = "AddHTMLBodyFooter_$pluginname";
+        &$function();
+    }
 
-		# Call to plugins' function AddHTMLBodyFooter
-		foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLBodyFooter'} } )
-		{
+    return unless ( $FrameName ne 'index' && $FrameName ne 'mainleft' );
+    
+    print "</div> <!-- .aws-container -->\n";
+    print "<footer class=\"aws-footer\">\n";
+        
+    print "<p class=\"footer-line\">\n";
+    
+    printf("<b>%s %s</b>", _t("Advanced Web Statistics"), $VERSION);
+    
+    printf(" <br> %s &copy; <span id=\"copyright-year\">1997</span> %s", 
+        _t("Copyright"), 
+        _t("AWStats Team")
+    );
+    
+	printf(" | %s <a href=\"https://www.awstats.org\" target=\"_blank\" rel=\"noopener\">%s</a>", 
+		sprintf(_t("Created by"), "Laurent Destailleur"),
+		$PROG
+	);
+    
+    if ($listplugins) {
+        my @plugins = keys %{ $PluginsLoaded{'init'} };
+        if (@plugins) {
+            printf(" (%s: %s)", 
+                _t("plugins"), 
+                join(', ', @plugins)
+            );
+        }
+    }
+    
+    print "</p>\n";
+    
+    print "<p class=\"footer-note-line\">" . _t($HTMLEndSection) . "</p>\n" if $HTMLEndSection;
+    
+    print "</footer>\n";
+    
+    print <<'END_SCRIPT';
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const customSelect = document.querySelector('.custom-select');
+    if (customSelect) {
+        const selected = customSelect.querySelector('.select-selected');
+        const items = customSelect.querySelectorAll('.select-items div');
 
-			# my $function="AddHTMLBodyFooter_$pluginname()";
-			# eval("$function");
-			my $function = "AddHTMLBodyFooter_$pluginname";
-			&$function();
-		}
+        selected.addEventListener('click', function() {
+            customSelect.classList.toggle('active');
+        });
 
-		if ( $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
-			print "$Center<br /><br />\n";
-			print
-"<span dir=\"ltr\" style=\"font: 11px verdana, arial, helvetica; color: #$color_text;\">";
-			print
-"<b>Advanced Web Statistics $VERSION</b> - <a href=\"http://www.awstats.org\" target=\"awstatshome\">";
-			print $Message[169] . " $PROG";
-			if ($listplugins) {
-				my $atleastoneplugin = 0;
-				foreach my $pluginname ( keys %{ $PluginsLoaded{'init'} } ) {
-					if ( !$atleastoneplugin ) {
-						$atleastoneplugin = 1;
-						print " ($Message[170]: ";
-					}
-					else { print ", "; }
-					print "$pluginname";
-				}
-				if ($atleastoneplugin) { print ")"; }
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                const text = this.textContent;
+
+                selected.textContent = text;
+                selected.setAttribute('data-value', value);
+
+                document.getElementById('langSelector').value = value;
+                document.getElementById('langSelector').dispatchEvent(new Event('change'));
+
+                customSelect.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!customSelect.contains(e.target)) {
+                customSelect.classList.remove('active');
+            }
+        });
+    }
+
+    const bar = document.getElementById('doc-frame-bar');
+    const container = document.getElementById('doc-frame-container');
+    const frame = document.getElementById('doc-frame');
+    const closeBtn = document.getElementById('doc-frame-close');
+
+    if (frame) {
+        frame.addEventListener('load', function() {
+            if (this.contentWindow.location.href !== 'about:blank') {
+                bar.style.display = 'block';
+                container.style.display = 'block';
+            }
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            bar.style.display = 'none';
+            container.style.display = 'none';
+            frame.src = 'about:blank';
+        });
+    }
+
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('mobile-active');
+            mobileToggle.innerHTML = mobileMenu.classList.contains('mobile-active') ? '✕' : '☰';
+        });
+    }
+
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.dropdown-item')) {
+            dropdownItems.forEach(item => item.classList.remove('active'));
+        }
+    });
+    dropdownItems.forEach(item => {
+        const title = item.querySelector('.dropdown-title');
+        title.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownItems.forEach(otherItem => {
+                if (otherItem !== item) otherItem.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        });
+        const content = item.querySelector('.dropdown-content');
+        if (content) {
+            content.addEventListener('click', e => e.stopPropagation());
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            dropdownItems.forEach(item => item.classList.remove('active'));
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+	const mobileToggle = document.getElementById('mobileMenuToggle');
+	const mobileMenu = document.getElementById('mobileMenu');
+	
+	if (mobileToggle && mobileMenu) {
+		mobileToggle.addEventListener('click', function() {
+			mobileMenu.classList.toggle('mobile-active');
+			
+			if (mobileMenu.classList.contains('mobile-active')) {
+				mobileToggle.innerHTML = '✕';
+			} else {
+				mobileToggle.innerHTML = '☰';
 			}
-			print "</a></span><br />\n";
-			if ($HTMLEndSection) { print "<br />\n$HTMLEndSection\n"; }
-		}
-		print "\n";
-		if ( $FrameName ne 'index' ) {
-			if ( $FrameName ne 'mainleft' && $BuildReportFormat eq 'html' ) {
-				print "<br />\n";
-			}
-			print "</body>\n";
-		}
-		print "</html>\n";
-
-		#		print "<!-- NEW PAGE --><!-- NEW SHEET -->\n";
+		});
 	}
+});
+(function() {
+    const savedTheme = localStorage.getItem('awstats-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeIcon('dark');
+    } else {
+        updateThemeIcon('light');
+    }
+})();
+
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('awstats-theme', newTheme);
+    updateThemeIcon(newTheme);
+    try {
+        const navFrame = document.getElementById('nav');
+        if (navFrame && navFrame.contentWindow) {
+            navFrame.contentWindow.postMessage({ theme: newTheme }, '*');
+        }
+    } catch(e) {}
 }
 
+function updateThemeIcon(theme) {
+    const btn = document.getElementById('theme-toggle');
+    if (btn) {
+        btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+        btn.setAttribute('aria-label',
+            theme === 'dark' ? btn.dataset.lightMode : btn.dataset.darkMode
+        );
+    }
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('awstats-theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        updateThemeIcon(newTheme);
+        try {
+            const navFrame = document.getElementById('nav');
+            if (navFrame && navFrame.contentWindow) {
+                navFrame.contentWindow.postMessage({ theme: newTheme }, '*');
+            }
+        } catch(e) {}
+    }
+});
+
+(function() {
+    const yearSpan = document.getElementById('copyright-year');
+    if (yearSpan) {
+        const currentYear = new Date().getFullYear();
+        yearSpan.textContent = '1997 - ' + currentYear;
+    }
+})();
+</script>
+END_SCRIPT
+        
+        print "</body>\n";
+        print "</html>\n";
+}
 #------------------------------------------------------------------------------
 # Function:		Print on stdout tab header of a chart
 # Parameters:	$title $tooltipnb [$width percentage of chart title]
@@ -1069,10 +2362,21 @@ sub html_end {
 # Return:		None
 #------------------------------------------------------------------------------
 sub tab_head {
-	my $title     = shift;
-	my $tooltipnb = shift;
-	my $width     = shift || 70;
-	my $class     = shift;
+        my $title     = shift;
+        my $tooltipnb = shift;
+        my $width     = shift || 70;
+        my $class     = shift;
+
+        # 翻译标题
+        $title = _t($title);
+
+        # 根据 $class 设置完整的 class 字符串
+        my $table_class = "aws-data-table";
+        if ($class eq 'hosts' || $class eq 'unknownip') {
+                $table_class = "aws-data-table ip-table";
+        } elsif ($class eq 'robots') {
+                $table_class = "aws-data-table robot-table";
+        }
 
 	# Call to plugins' function TabHeadHTML
 	my $extra_head_html = '';
@@ -1082,34 +2386,27 @@ sub tab_head {
 	}
 
 	if ( $width == 70 && $QueryString =~ /buildpdf/i ) {
-		print
-"<table class=\"aws_border sortable\" border=\"0\" cellpadding=\"2\" cellspacing=\"0\" width=\"800\">\n";
-	}
-	else {
-		print
-"<table class=\"aws_border sortable\" border=\"0\" cellpadding=\"2\" cellspacing=\"0\" width=\"100%\">\n";
+		print "<table class=\"aws-chart\" border=\"0\" cellpadding=\"2\" cellspacing=\"0\" width=\"800\">\n";
+	} else {
+		print "<table class=\"aws-chart\" border=\"0\" cellpadding=\"2\" cellspacing=\"0\" width=\"100%\">\n";
 	}
 
 	if ($tooltipnb) {
-		print "<tr><td class=\"aws_title\" width=\"$width%\""
+		print "<tr><td class=\"aws-title\" width=\"$width%\""
 		  . Tooltip( $tooltipnb, $tooltipnb )
 		  . ">$title "
 		  . $extra_head_html . "</td>";
-	}
-	else {
-		print "<tr><td class=\"aws_title\" width=\"$width%\">$title "
+	} else {
+		print "<tr><td class=\"aws-title\" width=\"$width%\">$title "
 		  . $extra_head_html . "</td>";
 	}
-	print "<td class=\"aws_blank\">&nbsp;</td></tr>\n";
+	print "<td class=\"aws-whitespace\">&nbsp;</td></tr>\n";
 	print "<tr><td colspan=\"2\">\n";
-	if ( $width == 70 && $QueryString =~ /buildpdf/i ) {
-		print
-"<table class=\"aws_data\" border=\"1\" cellpadding=\"2\" cellspacing=\"0\" width=\"796\">\n";
-	}
-	else {
-		print
-"<table class=\"aws_data\" border=\"1\" cellpadding=\"2\" cellspacing=\"0\" width=\"100%\">\n";
-	}
+        if ( $width == 70 && $QueryString =~ /buildpdf/i ) {
+                print "<table class=\"$table_class\" border=\"1\" cellpadding=\"2\" cellspacing=\"0\" width=\"796\">\n";
+        } else {
+                print "<table class=\"$table_class\" border=\"1\" cellpadding=\"2\" cellspacing=\"0\" width=\"100%\">\n";
+        }
 }
 
 #------------------------------------------------------------------------------
@@ -1123,8 +2420,9 @@ sub tab_end {
 	my $string = shift;
 	print "</table></td></tr></table>";
 	if ($string) {
-		print
-"<span style=\"font: 11px verdana, arial, helvetica;\">$string</span><br />\n";
+		# 翻译字符串
+		$string = _t($string);
+		print "<div class=\"aws-note\">$string</div>\n";
 	}
 	print "<br />\n\n";
 }
@@ -1148,171 +2446,126 @@ sub error {
 
 	if ( !$HeaderHTTPSent && $ENV{'GATEWAY_INTERFACE'} ) { http_head(); }
 	if ( !$HeaderHTMLSent && scalar keys %HTMLOutput )   {
-		print "<html><body>\n";
+		print "<!DOCTYPE html>\n<html><head><meta charset=\"utf-8\">\n";
+		print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+		print get_modern_css('ltr');
+		print "</head><body><div class=\"aws-container\">\n";
 		$HeaderHTMLSent = 1;
 	}
+	
 	if ($Debug) { debug( "$message $secondmessage $thirdmessage", 1 ); }
-	my $tagbold     = '';
-	my $tagunbold   = '';
-	my $tagbr       = '';
-	my $tagfontred  = '';
-	my $tagfontgrey = '';
-	my $tagunfont   = '';
-	if ( scalar keys %HTMLOutput ) {
-		$tagbold     = '<b>';
-		$tagunbold   = '</b>';
-		$tagbr       = '<br />';
-		$tagfontred  = '<span style="color: #880000">';
-		$tagfontgrey = '<span style="color: #888888">';
-		$tagunfont   = '</span>';
-	}
+	
+	my $tagbold     = '<strong>';
+	my $tagunbold   = '</strong>';
+	my $tagbr       = '<br>';
+	my $tagfontred  = '<span class="error-text">';
+	my $tagfontgrey = '<span class="info-text">';
+	my $tagunfont   = '</span>';
+	
 	if ( !$ErrorMessages && $message =~ /^Format error$/i ) {
 
 		# Files seems to have bad format
-		if ( scalar keys %HTMLOutput )   { print "<br /><br />\n"; }
+		if ( scalar keys %HTMLOutput )   { print "<div class=\"error-card\">\n"; }
 		if ( $message !~ $LogSeparator ) {
 
 			# Bad LogSeparator parameter
-			print
-"${tagfontred}AWStats did not found the ${tagbold}LogSeparator${tagunbold} in your log records.${tagbr}${tagunfont}\n";
+			print $tagfontred . _t("AWStats did not found the") . " ${tagbold}LogSeparator${tagunbold} " . _t("in your log records.") . "${tagbr}${tagunfont}\n";
 		}
 		else {
 
 			# Bad LogFormat parameter
-			print
-"AWStats did not find any valid log lines that match your ${tagbold}LogFormat${tagunbold} parameter, in the ${NbOfLinesForCorruptedLog}th first non commented lines read of your log.${tagbr}\n";
-			print
-"${tagfontred}Your log file ${tagbold}$thirdmessage${tagunbold} must have a bad format or ${tagbold}LogFormat${tagunbold} parameter setup does not match this format.${tagbr}${tagbr}${tagunfont}\n";
-			print
-			  "Your AWStats ${tagbold}LogFormat${tagunbold} parameter is:\n";
-			print "${tagbold}$LogFormat${tagunbold}${tagbr}\n";
-			print
-			  "This means each line in your web server log file need to have ";
+			print "<p>" . _t("AWStats did not find any valid log lines that match your") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter, in the") . " ${NbOfLinesForCorruptedLog}" . _t("th first non commented lines read of your log.") . "</p>\n";
+			print $tagfontred . "<p>" . _t("Your log file") . " ${tagbold}$thirdmessage${tagunbold} " . _t("must have a bad format or") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter setup does not match this format.") . "</p>${tagbr}${tagunfont}\n";
+			print "<p>" . _t("Your AWStats") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter is:") . "</p>\n";
+			print "<pre class=\"code-block\">$LogFormat</pre>\n";
+			print "<p>" . _t("This means each line in your web server log file need to have:") . "</p>\n";
+			
 			if ( $LogFormat == 1 ) {
-				print
-"${tagbold}\"combined log format\"${tagunbold} like this:${tagbr}\n";
-				print( scalar keys %HTMLOutput ? "$tagfontgrey<i>" : "" );
-				print
-"111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
-				print(
-					scalar keys %HTMLOutput
-					? "</i>$tagunfont${tagbr}${tagbr}\n"
-					: ""
-				);
+				print "<p><strong>" . _t("combined log format") . "</strong> " . _t("like this:") . "</p>\n";
+				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
+				print( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 2 ) {
-				print
-"${tagbold}\"MSIE Extended W3C log format\"${tagunbold} like this:${tagbr}\n";
-				print( scalar keys %HTMLOutput ? "$tagfontgrey<i>" : "" );
-				print
-"date time c-ip c-username cs-method cs-uri-sterm sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)\n";
-				print(
-					scalar keys %HTMLOutput
-					? "</i>$tagunfont${tagbr}${tagbr}\n"
-					: ""
-				);
+				print "<p><strong>" . _t("MSIE Extended W3C log format") . "</strong> " . _t("like this:") . "</p>\n";
+				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print "date time c-ip c-username cs-method cs-uri-sterm sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)\n";
+				print( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 3 ) {
-				print
-"${tagbold}\"WebStar native log format\"${tagunbold}${tagbr}\n";
+				print "<p><strong>" . _t("WebStar native log format") . "</strong></p>\n";
 			}
 			if ( $LogFormat == 4 ) {
-				print
-"${tagbold}\"common log format\"${tagunbold} like this:${tagbr}\n";
-				print( scalar keys %HTMLOutput ? "$tagfontgrey<i><pre>" : "" );
-				print
-"111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234\n";
-				print(
-					scalar keys %HTMLOutput
-					? "</pre></i>$tagunfont${tagbr}${tagbr}\n"
-					: ""
-				);
+				print "<p><strong>" . _t("common log format") . "</strong> " . _t("like this:") . "</p>\n";
+				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234\n";
+				print( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 6 ) {
-				print
-"${tagbold}\"Lotus Notes/Lotus Domino\"${tagunbold}${tagbr}\n";
-				print( scalar keys %HTMLOutput ? "$tagfontgrey<i>" : "" );
-				print
-"111.22.33.44 - Firstname Middlename Lastname [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
-				print(
-					scalar keys %HTMLOutput
-					? "</i></span>${tagbr}${tagbr}\n"
-					: ""
-				);
+				print "<p><strong>" . _t("Lotus Notes/Lotus Domino") . "</strong> " . _t("like this:") . "</p>\n";
+				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print "111.22.33.44 - Firstname Middlename Lastname [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
+				print( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat !~ /^[1-6]$/ ) {
-				print "the following personalized log format:${tagbr}\n";
-				print( scalar keys %HTMLOutput ? "$tagfontgrey<i>" : "" );
+				print "<p>" . _t("the following personalized log format:") . "</p>\n";
+				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
 				print "$LogFormat\n";
-				print(
-					scalar keys %HTMLOutput
-					? "</i>$tagunfont${tagbr}${tagbr}\n"
-					: ""
-				);
+				print( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
-			print
-"And this is an example of records AWStats found in your log file (the record number $NbOfLinesForCorruptedLog in your log):\n";
-			print( scalar keys %HTMLOutput ? "<br />$tagfontgrey<i>" : "" );
+			print "<p>" . _t("And this is an example of records AWStats found in your log file (the record number") . " $NbOfLinesForCorruptedLog " . _t("in your log):") . "</p>\n";
+			print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
 			print "$secondmessage";
-			print(
-				scalar keys %HTMLOutput
-				? "</i>$tagunfont${tagbr}${tagbr}"
-				: ""
-			);
+			print( scalar keys %HTMLOutput ? "</div>" : "" );
 			print "\n";
 		}
-
-#print "Note: If your $NbOfLinesForCorruptedLog first lines in your log files are wrong because of ";
-#print "a worm virus attack, you can increase the NbOfLinesForCorruptedLog parameter in config file.\n";
-#print "\n";
 	}
 	else {
-		print( scalar keys %HTMLOutput ? "<br />$tagfontred\n" : "" );
-		print( $ErrorMessages? "$ErrorMessages" : "Error: $message" );
-		print( scalar keys %HTMLOutput ? "\n</span><br />" : "" );
-		print "\n";
+		print "<div class=\"error-card\">\n";
+		print "<h3>" . _t("Error") . "</h3>\n";
+		print "<p>" . ($ErrorMessages ? $ErrorMessages : _t($message)) . "</p>\n";
+		print "</div>\n";
 	}
+	
 	if ( !$ErrorMessages && !$donotshowsetupinfo ) {
+		print "<div class=\"help-card\">\n";
+		print "<h4>" . _t("Troubleshooting") . "</h4>\n";
+		
 		if ( $message =~ /Couldn.t open config file/i ) {
 			my $dir = $DIR;
 			if ( $dir =~ /^\./ ) { $dir .= '/../..'; }
 			else { $dir =~ s/[\\\/]?wwwroot[\/\\]cgi-bin[\\\/]?//; }
-			print "${tagbr}\n";
+			print "<p>\n";
 			if ( $ENV{'GATEWAY_INTERFACE'} ) {
-				print
-"- ${tagbold}Did you use the correct URL ?${tagunbold}${tagbr}\n";
-				print
-"Example: http://localhost/awstats/awstats.pl?config=mysite${tagbr}\n";
-				print
-"Example: http://127.0.0.1/cgi-bin/awstats.pl?config=mysite${tagbr}\n";
+				print "- <strong>" . _t("Did you use the correct URL?") . "</strong><br>\n";
+				print _t("Example:") . " http://localhost/awstats/awstats.pl?config=mysite<br>\n";
+				print _t("Example:") . " http://127.0.0.1/cgi-bin/awstats.pl?config=mysite<br>\n";
 			}
 			else {
-				print
-"- ${tagbold}Did you use correct config parameter ?${tagunbold}${tagbr}\n";
-				print
-"Example: If your config file is awstats.mysite.conf, use -config=mysite\n";
+				print "- <strong>" . _t("Did you use correct config parameter?") . "</strong><br>\n";
+				print _t("Example: If your config file is awstats.mysite.conf, use -config=mysite") . "<br>\n";
 			}
-			print
-"- ${tagbold}Did you create your config file 'awstats.$SiteConfig.conf' ?${tagunbold}${tagbr}\n";
-			print
-"If not, you can run \"awstats_configure.pl\"\nfrom command line, or create it manually.${tagbr}\n";
-			print "${tagbr}\n";
+			print "- <strong>" . _t("Did you create your config file 'awstats.$SiteConfig.conf'?") . "</strong><br>\n";
+			print _t("If not, you can run \"awstats_configure.pl\" from command line, or create it manually.") . "<br>\n";
+			print "</p>\n";
 		}
 		else {
-			print "${tagbr}${tagbold}Setup ("
+			print "<p><strong>" . _t("Setup") . " ("
 			  . ( $FileConfig ? "'" . $FileConfig . "'" : "Config" )
-			  . " file, web server or permissions) may be wrong.${tagunbold}${tagbr}\n";
+			  . ") " . _t("file, web server or permissions may be wrong.") . "</strong></p>\n";
 		}
-		print
-"Check config file, permissions and AWStats documentation (in 'docs' directory).\n";
+		print "<p>" . _t("Check config file, permissions and AWStats documentation (in 'docs' directory).") . "</p>\n";
+		print "</div>\n";
 	}
 
 	# Remove lock if not a lock message
 	if ( $EnableLockForUpdate && $message !~ /lock file/ ) { &Lock_Update(0); }
-	if ( scalar keys %HTMLOutput ) { print "</body></html>\n"; }
+	
+	if ( scalar keys %HTMLOutput ) { 
+		print "</div></body></html>\n"; 
+	}
 	exit 1;
 }
-
 #------------------------------------------------------------------------------
 # Function:		Write a warning message
 # Parameters:	$message
@@ -1324,15 +2577,17 @@ sub warning {
 	my $messagestring = shift;
 
 	if ($Debug) { debug( "$messagestring", 1 ); }
+	
+	$messagestring = _t($messagestring);
+	
 	if ($WarningMessages) {
 		if ( !$HeaderHTTPSent && $ENV{'GATEWAY_INTERFACE'} ) { http_head(); }
-		if ( !$HeaderHTMLSent )        { html_head(); }
+		if ( !$HeaderHTMLSent ) { html_head(); }
 		if ( scalar keys %HTMLOutput ) {
-			$messagestring =~ s,\n,<br />,g;
-			print "$messagestring<br />\n";
-		}
-		else {
-			print "$messagestring\n";
+			$messagestring =~ s,\n,<br>,g;
+			print "<div class=\"warning-message\">$messagestring</div>\n";
+		} else {
+			print "Warning: $messagestring\n";
 		}
 	}
 }
@@ -1367,7 +2622,7 @@ sub debug {
 		my $debugstring = $_[0];
 		if ( scalar keys %HTMLOutput ) {
 			$debugstring =~ s/^ /&nbsp;&nbsp; /;
-			$debugstring .= "<br />";
+			$debugstring .= "<br>";
 		}
 		print localtime(time) . " - DEBUG $level - $debugstring\n";
 	}
@@ -1880,6 +3135,22 @@ sub Read_Config {
 	# If parameter TrapInfosForHTTPErrorCodes empty, init to default
 	if ( !scalar keys %TrapInfosForHTTPErrorCodes ) {
 		$TrapInfosForHTTPErrorCodes{"404"} = 1;
+	}
+	# ===== 重构版本新增：默认启用 geoipfree 插件 =====
+	# 如果没有任何 geoip 插件被加载，自动启用 geoipfree
+	my $has_geoip = 0;
+	foreach my $plugin (@PluginsToLoad) {
+		if ($plugin =~ /geoip/) {
+			$has_geoip = 1;
+			last;
+		}
+	}
+	
+	if (!$has_geoip) {
+		push @PluginsToLoad, "geoipfree";
+		if ($Debug) {
+			debug("重构版本: 默认启用 geoipfree 插件（无其他 geoip 插件时）");
+		}
 	}
 }
 
@@ -2405,97 +3676,277 @@ sub Read_Ref_Data {
 # Function:     Get the messages for a specified language
 # Parameters:	LanguageId
 # Input:		$DirLang $DIR
-# Output:		$Message table is defined in memory
+# Output:		$Message table is defined in memory, %translate_map is populated
 # Return:		None
 #------------------------------------------------------------------------------
 sub Read_Language_Data {
+    my $lang = shift || 'en';
+    
+    # 如果 $lang 是 'auto'，从浏览器检测
+    if ( $lang eq 'auto' && $ENV{'HTTP_ACCEPT_LANGUAGE'} ) {
+        my @accept = split /,/, $ENV{'HTTP_ACCEPT_LANGUAGE'};
+        foreach my $lang_pref (@accept) {
+            $lang_pref =~ s/;.*//;           # 去掉 q=0.9
+            $lang_pref =~ s/^\s+|\s+$//g;    # 去掉空格
+            $lang_pref = lc($lang_pref);
+            $lang_pref =~ s/_/-/g;            # 统一用 - 分隔符
+            
+            # 1. 尝试完整匹配（zh-cn, pt-br）
+            if ( $LangBrowserToLangAwstats{$lang_pref} ) {
+                $lang = $LangBrowserToLangAwstats{$lang_pref};
+                last;
+            }
+            
+            # 2. 尝试前两个字符（zh, pt）
+            my $short = substr($lang_pref, 0, 2);
+            if ( $LangBrowserToLangAwstats{$short} ) {
+                $lang = $LangBrowserToLangAwstats{$short};
+                last;
+            }
+        }
+        
+        # 3. 如果都没找到，用第一个语言的前两个字符
+        if ( $lang eq 'auto' && $accept[0] ) {
+            my $first = $accept[0];
+            $first =~ s/;.*//;
+            $first =~ s/^\s+|\s+$//g;
+            $first = lc($first);
+            $first =~ s/_/-/g;
+            my $short = substr($first, 0, 2);
+            if ( $LangBrowserToLangAwstats{$short} ) {
+                $lang = $LangBrowserToLangAwstats{$short};
+            }
+        }
+    }
 
-	# Check lang files in common possible directories :
-	# Windows and standard package:         	"$DIR/lang" (lang in same dir than awstats.pl)
-	# Debian package :                    		"/usr/share/awstats/lang"
-	my @PossibleLangDir =
-	  ( "$DirLang", "$DIR/lang", "/usr/share/awstats/lang" );
+    # 检查语言文件的可能目录
+    my @PossibleLangDir = ( "$DirLang", "$DIR/lang", "/usr/share/awstats/lang" );
 
-	my $FileLang = '';
-	foreach (@PossibleLangDir) {
-		my $searchdir = $_;
-		if ( $searchdir =~ /\|/ )		# We refuse path that contains "|" 
-		{
-			error("DirLang parameter can't contains character |");
-			next;	
-		}
-		if ( $searchdir
-			&& ( !( $searchdir =~ /\/$/ ) )
-			&& ( !( $searchdir =~ /\\$/ ) ) )
-		{
-			$searchdir .= "/";
-		}
-		if ( open( LANG, "${searchdir}awstats-$_[0].txt" ) ) {
-			$FileLang = "${searchdir}awstats-$_[0].txt";
-			last;
-		}
+    my $FileLang = '';
+    my $is_po = 0;
+    
+    foreach my $dir (@PossibleLangDir) {
+        my $searchdir = $dir;
+        
+        if ( $searchdir =~ /\|/ ) {
+            error("DirLang parameter can't contains character |");
+            next;
+        }
+        
+        if ( $searchdir && !( $searchdir =~ /\/$/ ) && !( $searchdir =~ /\\$/ ) ) {
+            $searchdir .= "/";
+        }
+        
+        # 尝试 .po 文件
+        my $pofile = "${searchdir}awstats-$lang.po";
+        if ( -f $pofile ) {
+            $FileLang = $pofile;
+            $is_po = 1;
+            last;
+        }
+        
+        # 尝试下划线格式
+        my $lang_underscore = $lang;
+        $lang_underscore =~ s/-/_/g;
+        if ( $lang_underscore ne $lang ) {
+            $pofile = "${searchdir}awstats-${lang_underscore}.po";
+            if ( -f $pofile ) {
+                $FileLang = $pofile;
+                $is_po = 1;
+                last;
+            }
+        }
+        
+        # 回退到 .txt
+        my $txtfile = "${searchdir}awstats-$lang.txt";
+        if ( -f $txtfile ) {
+            $FileLang = $txtfile;
+            $is_po = 0;
+            last;
+        }
+    }
+
+    # 如果没找到，尝试英文
+    if ( !$FileLang ) {
+        foreach my $dir (@PossibleLangDir) {
+            my $searchdir = $dir;
+            if ( $searchdir && !( $searchdir =~ /\/$/ ) && !( $searchdir =~ /\\$/ ) ) {
+                $searchdir .= "/";
+            }
+            
+            my $pofile = "${searchdir}awstats-en.po";
+            if ( -f $pofile ) {
+                $FileLang = $pofile;
+                $is_po = 1;
+                last;
+            }
+            
+            my $txtfile = "${searchdir}awstats-en.txt";
+            if ( -f $txtfile ) {
+                $FileLang = $txtfile;
+                $is_po = 0;
+                last;
+            }
+        }
+    }
+
+    if ($Debug) {
+        debug("Call to Read_Language_Data [FileLang=\"$FileLang\", is_po=$is_po]");
+    }
+
+    if ($FileLang) {
+        if ($is_po) {
+            parse_po_file($FileLang);
+        }
+        else {
+            parse_txt_file($FileLang);
+        }
+    }
+    else {
+        warning( sprintf(
+            _t("Warning: Can't find language files for \"%s\". English will be used."),
+            $lang
+        ));
+    }
+
+    $PageCode = 'utf-8';
+    $PageDir = 0;
+
+    if ( $LogType eq 'M' ) {
+        $translate_map{"First"} = _t("First");
+        $translate_map{"Last"} = _t("Last");
+        $translate_map{"Mails"} = _t("Mails");
+        $translate_map{"Size"} = _t("Size");
+    }
+}
+
+#------------------------------------------------------------------------------
+# Function:     Parse .po file and load messages
+# Parameters:	.po file path
+# Output:		$Message array and %translate_map are populated
+# Return:		None
+#------------------------------------------------------------------------------
+sub parse_po_file {
+	my $pofile = shift;
+	
+	if ( !open(PO, "<:encoding(UTF-8)", $pofile) ) {
+		warning("Warning: Cannot open .po file: $pofile");
+		return;
 	}
-
-	# If file not found, we try english
-	if ( !$FileLang ) {
-		foreach (@PossibleLangDir) {
-			my $searchdir = $_;
-			if (   $searchdir
-				&& ( !( $searchdir =~ /\/$/ ) )
-				&& ( !( $searchdir =~ /\\$/ ) ) )
-			{
-				$searchdir .= "/";
+	
+	my $msgid = '';
+	my $msgstr = '';
+	my $in_msgid = 0;
+	my $in_msgstr = 0;
+	
+	while (<PO>) {
+		chomp;
+		
+		# 跳过注释
+		next if /^#/;
+		
+		if (/^msgid\s+"(.*)"/) {
+			# 保存之前的翻译
+			if ($msgid && $msgstr) {
+				store_translation($msgid, $msgstr);
 			}
-			if ( open( LANG, "${searchdir}awstats-en.txt" ) ) {
-				$FileLang = "${searchdir}awstats-en.txt";
-				last;
+			$msgid = $1;
+			$msgstr = '';
+			$in_msgid = 1;
+			$in_msgstr = 0;
+		}
+		elsif (/^msgstr\s+"(.*)"/) {
+			$msgstr = $1;
+			$in_msgid = 0;
+			$in_msgstr = 1;
+		}
+		elsif (/^"(.*)"/) {
+			if ($in_msgid) {
+				$msgid .= $1;
+			}
+			elsif ($in_msgstr) {
+				$msgstr .= $1;
 			}
 		}
 	}
-	if ($Debug) {
-		debug("Call to Read_Language_Data [FileLang=\"$FileLang\"]");
+	
+	# 保存最后一条翻译
+	if ($msgid && $msgstr) {
+		store_translation($msgid, $msgstr);
 	}
-	if ($FileLang) {
-		my $i = 0;
-		binmode LANG;    # Might avoid 'Malformed UTF-8 errors'
-		my $cregcode    = qr/^PageCode=[\t\s\"\']*([\w-]+)/i;
-		my $cregdir     = qr/^PageDir=[\t\s\"\']*([\w-]+)/i;
-		my $cregmessage = qr/^Message\d+=/i;
-		while (<LANG>) {
-			chomp $_;
-			s/\r//;
-			if ( $_ =~ /$cregcode/o ) { $PageCode = $1; }
-			if ( $_ =~ /$cregdir/o )  { $PageDir  = $1; }
-			if ( $_ =~ s/$cregmessage//o ) {
-				$_ =~ s/^#.*//;       # Remove comments
-				$_ =~ s/\s+#.*//;     # Remove comments
-				$_ =~ tr/\t /  /s;    # Change all blanks into " "
-				$_ =~ s/^\s+//;
-				$_ =~ s/\s+$//;
-				$_ =~ s/^\"//;
-				$_ =~ s/\"$//;
-				$Message[$i] = $_;
-				$i++;
-			}
+	
+	close(PO);
+}
+
+#------------------------------------------------------------------------------
+# Function:     Parse old .txt file and load messages (backward compatibility)
+# Parameters:	.txt file path
+# Output:		$Message array is populated
+# Return:		None
+#------------------------------------------------------------------------------
+sub parse_txt_file {
+	my $txtfile = shift;
+	
+	if ( !open(TXT, "<:encoding(GBK)", $txtfile) ) {
+		warning("Warning: Cannot open .txt file: $txtfile");
+		return;
+	}
+	
+	my $i = 0;
+	my $cregcode    = qr/^PageCode=[\t\s\"\']*([\w-]+)/i;
+	my $cregdir     = qr/^PageDir=[\t\s\"\']*([\w-]+)/i;
+	my $cregmessage = qr/^Message\d+=/i;
+	
+	while (<TXT>) {
+		chomp;
+		s/\r//;
+		
+		if ( $_ =~ /$cregcode/o ) {
+			$PageCode = $1;
+			next;
 		}
-		close(LANG);
+		if ( $_ =~ /$cregdir/o ) {
+			$PageDir = $1;
+			next;
+		}
+		if ( $_ =~ s/$cregmessage//o ) {
+			$_ =~ s/^#.*//;
+			$_ =~ s/\s+#.*//;
+			$_ =~ tr/\t /  /s;
+			$_ =~ s/^\s+//;
+			$_ =~ s/\s+$//;
+			$_ =~ s/^\"//;
+			$_ =~ s/\"$//;
+			$Message[$i] = $_;
+			
+			# 同时存入翻译映射表
+			$translate_map{$i} = $_;
+			$i++;
+		}
 	}
-	else {
-		warning(
-"Warning: Can't find language files for \"$_[0]\". English will be used."
-		);
-	}
+	
+	close(TXT);
+}
 
-	# Some language string changes
-	if ( $LogType eq 'M' ) {    # For mail
-		$Message[8]  = $Message[151];
-		$Message[9]  = $Message[152];
-		$Message[57] = $Message[149];
-		$Message[75] = $Message[150];
-	}
-	if ( $LogType eq 'F' ) {    # For web
-
-	}
+#------------------------------------------------------------------------------
+# Function:     Store translation in appropriate arrays
+# Parameters:	msgid, msgstr
+# Output:		$Message array and %translate_map are updated
+# Return:		None
+#------------------------------------------------------------------------------
+sub store_translation {
+    my ($msgid, $msgstr) = @_;
+    
+    # 存入哈希表
+    $translate_map{$msgid} = $msgstr;
+    
+    # 特殊处理 PageCode 和 PageDir
+    if ( $msgid eq 'PageCode' ) {
+        $PageCode = $msgstr;
+    }
+    elsif ( $msgid eq 'PageDir' ) {
+        $PageDir = $msgstr;
+    }
 }
 
 #------------------------------------------------------------------------------
@@ -2905,7 +4356,7 @@ sub Check_Config {
 		$MaxLengthOfShownURL = 64;
 	}
 	if ( $ShowLinksToWhoIs !~ /[01]/ ) { $ShowLinksToWhoIs = 0; }
-	$Logo     ||= 'awstats_logo6.png';
+	$Logo     ||= 'awstats_logo6.svg';
 	$LogoLink ||= 'https://www.awstats.org';
 	if ( $BarWidth !~ /^\d+/  || $BarWidth < 1 )  { $BarWidth  = 260; }
 	if ( $BarHeight !~ /^\d+/ || $BarHeight < 1 ) { $BarHeight = 90; }
@@ -3385,13 +4836,13 @@ sub Read_Plugins {
 	}
 
 # In output mode, geo ip plugins are not loaded, so message changes are done here (can't be done in plugin init function)
-	if (   $PluginsLoaded{'init'}{'geoip'}
-		|| $PluginsLoaded{'init'}{'geoip6'}
-		|| $PluginsLoaded{'init'}{'geoipfree'}
-		|| $PluginsLoaded{'init'}{'geoip2_country'})
-	{
-		$Message[17] = $Message[25] = $Message[148];
-	}
+#	if (   $PluginsLoaded{'init'}{'geoip'}
+#		|| $PluginsLoaded{'init'}{'geoip6'}
+#		|| $PluginsLoaded{'init'}{'geoipfree'}
+#		|| $PluginsLoaded{'init'}{'geoip2_country'})
+#	{
+#		$Message[17] = $Message[25] = $Message[148];
+#	}
 }
 
 #------------------------------------------------------------------------------
@@ -3467,8 +4918,8 @@ sub Read_History_With_TmpUpdate {
 		'searchwords'           => 25,
 		'keywords'              => 26,
 		'errors'                => 27,
-                'filesize'              => 28,
-                'requesttime'           => 29,
+        'filesize'              => 28,
+        'requesttime'           => 29,
 	);
 
 	my $order = ( scalar keys %allsections ) + 1;
@@ -8288,11 +9739,7 @@ sub Show_Flag_Links {
 		  ? $LangBrowserToLangAwstats{$lng}
 		  : $lng;
 		if ( $lng ne $CurrentLang ) {
-			my %lngtitle = (
-				'en', 'English', 'fr', 'French', 'de', 'German',
-				'it', 'Italian', 'nl', 'Dutch',  'es', 'Spanish'
-			);
-			my $lngtitle = ( $lngtitle{$lng} ? $lngtitle{$lng} : $lng );
+			my $lngtitle = _t("language_$lng") || $lng;
 			my $flag = (
 				  $LangAWStatsToFlagAwstats{$lng}
 				? $LangAWStatsToFlagAwstats{$lng}
@@ -8315,29 +9762,28 @@ sub Show_Flag_Links {
 # Return:       "x.yz MB" or "x.yy KB" or "x Bytes" or "0"
 #------------------------------------------------------------------------------
 sub Format_Bytes {
-	my $bytes = shift || 0;
-	my $fudge = 1;
+    my $bytes = shift || 0;
+    my $fudge = 1;
 
-# Do not use exp/log function to calculate 1024power, function make segfault on some unix/perl versions
-	if ( $bytes >= ( $fudge << 40 ) ) {
-		return sprintf( "%.2f", $bytes / 1099511627776 ) . " $Message[180]";
-	}
-	if ( $bytes >= ( $fudge << 30 ) ) {
-		return sprintf( "%.2f", $bytes / 1073741824 ) . " $Message[110]";
-	}
-	if ( $bytes >= ( $fudge << 20 ) ) {
-		return sprintf( "%.2f", $bytes / 1048576 ) . " $Message[109]";
-	}
-	if ( $bytes >= ( $fudge << 10 ) ) {
-		return sprintf( "%.2f", $bytes / 1024 ) . " $Message[108]";
-	}
-	if ( $bytes < 0 ) { $bytes = "?"; }
-	return int($bytes) . ( int($bytes) ? " $Message[119]" : "" );
+    if ( $bytes >= ( $fudge << 40 ) ) {
+        return sprintf( "%.2f", $bytes / 1099511627776 ) . " " . _t("TB");
+    }
+    if ( $bytes >= ( $fudge << 30 ) ) {
+        return sprintf( "%.2f", $bytes / 1073741824 ) . " " . _t("GB");
+    }
+    if ( $bytes >= ( $fudge << 20 ) ) {
+        return sprintf( "%.2f", $bytes / 1048576 ) . " " . _t("MB");
+    }
+    if ( $bytes >= ( $fudge << 10 ) ) {
+        return sprintf( "%.2f", $bytes / 1024 ) . " " . _t("KB");
+    }
+    if ( $bytes < 0 ) { $bytes = "?"; }
+    return int($bytes) . ( int($bytes) ? " " . _t("Bytes") : "" );
 }
 
 #------------------------------------------------------------------------------
-# Function:		Format a number with commas or any other separator
-#				CL: courtesy of http://www.perlmonks.org/?node_id=2145
+# Function:		Format a number with thousands separator
+# CL: courtesy of http://www.perlmonks.org/?node_id=2145
 # Parameters:   number
 # Input:        None
 # Output:       None
@@ -8348,8 +9794,13 @@ sub Format_Number {
 	$number =~ s/(\d)(\d\d\d)$/$1 $2/;
 	$number =~ s/(\d)(\d\d\d\s\d\d\d)$/$1 $2/;
 	$number =~ s/(\d)(\d\d\d\s\d\d\d\s\d\d\d)$/$1 $2/;
-	my $separator = $Message[177];
-	if ($separator eq '') { $separator=' '; }	# For backward compatibility
+	
+	# 从翻译映射获取千位分隔符，默认为空格
+	my $separator = _t("thousands_separator");
+	if ($separator eq '' || $separator eq "thousands_separator") {
+		$separator = ' ';  # 默认空格
+	}
+	
 	$number =~ s/ /$separator/g;
 	return $number;
 }
@@ -8398,29 +9849,33 @@ sub IsLocalEMail {
 # Return:       Date with format defined by Message[78] and option
 #------------------------------------------------------------------------------
 sub Format_Date {
-	my $date       = shift;
-	my $option     = shift || 0;
-	my $year       = substr( "$date", 0, 4 );
-	my $month      = substr( "$date", 4, 2 );
-	my $day        = substr( "$date", 6, 2 );
-	my $hour       = substr( "$date", 8, 2 );
-	my $min        = substr( "$date", 10, 2 );
-	my $sec        = substr( "$date", 12, 2 );
-	my $dateformat = $Message[78];
-
-	if ( $option == 2 ) {
-		$dateformat =~ s/^[^ymd]+//g;
-		$dateformat =~ s/[^ymd]+$//g;
-	}
-	$dateformat =~ s/yyyy/$year/g;
-	$dateformat =~ s/yy/$year/g;
-	$dateformat =~ s/mmm/$MonthNumLib{$month}/g;
-	$dateformat =~ s/mm/$month/g;
-	$dateformat =~ s/dd/$day/g;
-	$dateformat =~ s/HH/$hour/g;
-	$dateformat =~ s/MM/$min/g;
-	$dateformat =~ s/SS/$sec/g;
-	return "$dateformat";
+    my $date       = shift;
+    my $option     = shift || 0;
+    my $year       = substr( "$date", 0, 4 );
+    my $month      = substr( "$date", 4, 2 );
+    my $day        = substr( "$date", 6, 2 );
+    my $hour       = substr( "$date", 8, 2 );
+    my $min        = substr( "$date", 10, 2 );
+    my $sec        = substr( "$date", 12, 2 );
+    
+    my $dateformat;
+    if ($option == 0) {
+        $dateformat = _t("dateformat_long");
+    }
+    else {
+        $dateformat = _t("dateformat_short");
+    }
+    
+    $dateformat =~ s/yyyy/$year/g;
+    $dateformat =~ s/yy/$year/g;
+    $dateformat =~ s/mmm/_t($MonthNumLib{$month})/ge;
+    $dateformat =~ s/mm/$month/g;
+    $dateformat =~ s/dd/$day/g;
+    $dateformat =~ s/HH/$hour/g;
+    $dateformat =~ s/MM/$min/g;
+    $dateformat =~ s/SS/$sec/g;
+    
+    return "$dateformat";
 }
 
 #------------------------------------------------------------------------------
@@ -8686,7 +10141,7 @@ sub Lock_Update {
 			$newkey =~ s/[\\\/]$//;
 			if ( -f "$newkey/$lock" ) {
 				error(
-"An AWStats update process seems to be already running for this config file. Try later.\nIf this is not true, remove manually lock file '$newkey/$lock'.",
+					_t("An AWStats update process seems to be already running for this config file. Try later.\nIf this is not true, remove manually lock file") . " '$newkey/$lock'.",
 					"", "", 1
 				);
 			}
@@ -8725,7 +10180,8 @@ sub Lock_Update {
 #------------------------------------------------------------------------------
 sub SigHandler {
 	my $signame = shift;
-	print ucfirst($PROG) . " process (ID $$) interrupted by signal $signame.\n";
+	printf _t("%s process (ID %s) interrupted by signal %s.\n"), 
+    ucfirst($PROG), $$, $signame;
 	&Lock_Update(0);
 	exit 1;
 }
@@ -8761,173 +10217,6 @@ sub AtLeastOneNotNull {
 		if ($val) { return 1; }
 	}
 	return 0;
-}
-
-#------------------------------------------------------------------------------
-# Function:     Prints the command line interface help information
-# Parameters:   None
-# Input:        None
-# Output:       None
-# Return:       None
-#------------------------------------------------------------------------------
-sub PrintCLIHelp{
-	&Read_Ref_Data(
-		'browsers',       'domains', 'operating_systems', 'robots',
-		'search_engines', 'worms'
-	);
-	print "----- $PROG $VERSION (c) 2000-2023 Laurent Destailleur -----\n";
-	print
-"AWStats is a free web server logfile analyzer to show you advanced web\n";
-	print "statistics.\n";
-	print
-"AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed\n";
-	print "with a GNU General Public License (See LICENSE file for details).\n";
-	print "\n";
-	print "Syntax: $PROG.$Extension -config=virtualhostname [options]\n";
-	print "\n";
-	print
-"  This runs $PROG in command line to update statistics (-update option) of a\n";
-	print
-"   web site, from the log file defined in AWStats config file, or build a HTML\n";
-	print "   report (-output option).\n";
-	print
-"  First, $PROG tries to read $PROG.virtualhostname.conf as the config file.\n";
-	print "  If not found, $PROG tries to read $PROG.conf, and finally the full path passed to -config=\n";
-	print
-"  Note 1: Config files ($PROG.virtualhostname.conf or $PROG.conf) must be\n";
-	print
-"   in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than\n";
-	print "   awstats.pl script file.\n";
-	print
-"  Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will\n";
-	print
-"   use it as the \"config\" value, whatever is the value on command line or URL.\n";
-	print "   See AWStats documentation for all setup instrutions.\n";
-	print "\n";
-	print "Options to update statistics:\n";
-	print "  -update        to update statistics (default)\n";
-	print
-"  -showsteps     to add benchmark information every $NBOFLINESFORBENCHMARK lines processed\n";
-	print
-"  -showcorrupted to add output for each corrupted lines found, with reason\n";
-	print
-"  -showdropped   to add output for each dropped lines found, with reason\n";
-	print "  -showunknownorigin  to output referer when it can't be parsed\n";
-	print
-"  -showdirectorigin   to output log line when origin is a direct access\n";
-	print "  -updatefor=n   to stop the update process after parsing n lines\n";
-	print
-"  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file\n";
-	print
-"  Be care to process log files in chronological order when updating statistics.\n";
-	print "\n";
-	print "Options to show statistics:\n";
-	print
-"  -output      to output main HTML report (no update made except with -update)\n";
-	print "  -output=x    to output other report pages where x is:\n";
-	print
-"               alldomains       to build page of all domains/countries\n";
-	print "               allhosts         to build page of all hosts\n";
-	print
-	  "               lasthosts        to build page of last hits for hosts\n";
-	print
-	  "               unknownip        to build page of all unresolved IP\n";
-	print
-"               allemails        to build page of all email senders (maillog)\n";
-	print
-"               lastemails       to build page of last email senders (maillog)\n";
-	print
-"               allemailr        to build page of all email receivers (maillog)\n";
-	print
-"               lastemailr       to build page of last email receivers (maillog)\n";
-	print "               alllogins        to build page of all logins used\n";
-	print
-	  "               lastlogins       to build page of last hits for logins\n";
-	print
-"               allrobots        to build page of all robots/spider visits\n";
-	print
-	  "               lastrobots       to build page of last hits for robots\n";
-	print "               urldetail        to list most often viewed pages \n";
-	print
-"               urldetail:filter to list most often viewed pages matching filter\n";
-	print "               urlentry         to list entry pages\n";
-	print
-	  "               urlentry:filter  to list entry pages matching filter\n";
-	print "               urlexit          to list exit pages\n";
-	print
-	  "               urlexit:filter   to list exit pages matching filter\n";
-	print
-"               osdetail         to build page with os detailed versions\n";
-	print
-"               browserdetail    to build page with browsers detailed versions\n";
-	print
-"               unknownbrowser   to list 'User Agents' with unknown browser\n";
-	print
-	  "               unknownos        to list 'User Agents' with unknown OS\n";
-	print
-"               refererse        to build page of all refering search engines\n";
-	print
-	  "               refererpages     to build page of all refering pages\n";
-
- #print "               referersites     to build page of all refering sites\n";
-	print
-"               keyphrases       to list all keyphrases used on search engines\n";
-	print
-"               keywords         to list all keywords used on search engines\n";
-	print "               errors404        to list 'Referers' for 404 errors\n";
-	print
-"               allextraX        to build page of all values for ExtraSection X\n";
-	print "  -staticlinks           to have static links in HTML report page\n";
-	print "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html\n";
-	print
-"  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,...)\n";
-	print "  -month=MM    to output a HTML report for an old month MM\n";
-	print "  -year=YYYY   to output a HTML report for an old year YYYY\n";
-	print
-"  The 'date' options doesn't allow you to process old log file. They only\n";
-	print
-"  allow you to see a past report for a chosen month/year period instead of\n";
-	print "  current month/year.\n";
-	print "\n";
-	print "Other options:\n";
-	print
-"  -debug=X     to add debug informations lesser than level X (speed reduced)\n";
-	print
-"  -version     show AWStats version\n";
-	print "\n";
-	print "Now supports/detects:\n";
-	print
-"  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)\n";
-	print "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup\n";
-	print "  Number of visits, number of unique visitors\n";
-	print "  Visits duration and list of last visits\n";
-	print "  Authenticated users\n";
-	print "  Days of week and rush hours\n";
-	print "  Hosts list and unresolved IP addresses list\n";
-	print "  Most viewed, entry and exit pages\n";
-	print "  Files type and Web compression (mod_gzip, mod_deflate stats)\n";
-	print "  Screen size\n";
-	print "  Ratio of Browsers with support of: Java, Flash, RealG2 reader,\n";
-	print "                        Quicktime reader, WMA reader, PDF reader\n";
-	print "  Configurable personalized reports\n";
-	print "  " . ( scalar keys %DomainsHashIDLib ) . " domains/countries\n";
-	print "  " . ( scalar keys %RobotsHashIDLib ) . " robots\n";
-	print "  " . ( scalar keys %WormsHashLib ) . " worm's families\n";
-	print "  " . ( scalar keys %OSHashLib ) . " operating systems\n";
-	print "  " . ( scalar keys %BrowsersHashIDLib ) . " browsers";
-	&Read_Ref_Data('browsers_phone');
-	print " ("
-	  . ( scalar keys %BrowsersHashIDLib )
-	  . " with phone browsers database)\n";
-	print "  "
-	  . ( scalar keys %SearchEnginesHashLib )
-	  . " search engines (and keyphrases/keywords used from them)\n";
-	print "  All HTTP errors with last referrer\n";
-	print "  Report by day/month/year\n";
-	print "  Dynamic or static HTML or XHTML reports, static PDF reports\n";
-	print "  Indexed text or XML monthly database\n";
-	print "  And a lot of other advanced features and options...\n";
-	print "New versions and FAQ at http://www.awstats.org\n";
 }
 
 #------------------------------------------------------------------------------
@@ -8971,11 +10260,11 @@ sub HTMLShowFormFilter {
 		  . "\" class=\"aws_border\">\n";
 		print
 "<table valign=\"middle\" width=\"99%\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\"><tr>\n";
-		print "<td align=\"left\" width=\"50\">$Message[79]&nbsp;:</td>\n";
+		print "<td align=\"left\" width=\"50\">" . _t("Filter") . "&nbsp;:</td>\n";
 		print
 "<td align=\"left\" width=\"100\"><input type=\"text\" name=\"${fieldfiltername}\" value=\"$fieldfilterinvalue\" class=\"aws_formfield\" /></td>\n";
 		print "<td> &nbsp; </td>";
-		print "<td align=\"left\" width=\"100\">$Message[153]&nbsp;:</td>\n";
+		print "<td align=\"left\" width=\"100\">" . _t("Exclude filter") . "&nbsp;:</td>\n";
 		print
 "<td align=\"left\" width=\"100\"><input type=\"text\" name=\"${fieldfiltername}ex\" value=\"$fieldfilterexvalue\" class=\"aws_formfield\" /></td>\n";
 		print "<td>";
@@ -9017,8 +10306,7 @@ sub HTMLShowFormFilter {
                 if ( $QueryString =~ /(^|&|&amp;)hour=(\d\d)/i) {
                         print "<input type=\"hidden\" name=\"hour\" value=\"$2\" />\n";
                 }
-		print
-"<input type=\"submit\" value=\" $Message[115] \" class=\"aws_button\" /></td>\n";
+		print "<input type=\"submit\" value=\" " . _t("OK") . " \" class=\"aws_button\" /></td>\n";
 		print "<td> &nbsp; </td>";
 		print "</tr></table>\n";
 		print "</form>\n";
@@ -9269,7 +10557,7 @@ sub DefinePerlParsingFormat {
         $PerlParsingFormatJsonMap = JSON::XS->new->utf8->decode($LogFormatJsonMap);
         @fieldlib = keys % {$PerlParsingFormatJsonMap};
         for my $i (0 .. $#fieldlib) {
-            my $f_name = @fieldlib[$i];
+            my $f_name = $fieldlib[$i];
             my $pos_var_suf = $f_name;
             if ($f_name =~ /time[12]/) {
                 $pos_var_suf = "date";
@@ -9802,18 +11090,17 @@ sub HTMLShowEmailSendersChart {
 	print "$Center<a name=\"emailsenders\">&nbsp;</a><br />\n";
 	my $title;
 	if ( $HTMLOutput{'allemails'} || $HTMLOutput{'lastemails'} ) {
-		$title = "$Message[131]";
+		$title = _t("Email Senders");
 	}
 	else {
-		$title =
-"$Message[131] ($Message[77] $MaxNbOf{'EMailsShown'}) &nbsp; - &nbsp; <a href=\""
+		$title = _t("Email Senders") . " (" . _t("Top") . " $MaxNbOf{'EMailsShown'}) &nbsp; - &nbsp; <a href=\""
 		  . (
 			$ENV{'GATEWAY_INTERFACE'}
 			  || !$StaticLinks
 			? XMLEncode("$AWScript${NewLinkParams}output=allemails")
 			: "$StaticLinks.allemails.$StaticExt"
 		  )
-		  . "\"$NewLinkTarget>$Message[80]</a>";
+		  . "\"$NewLinkTarget>" . _t("Full list") . "</a>";
 		if ( $ShowEMailSenders =~ /L/i ) {
 			$title .= " &nbsp; - &nbsp; <a href=\""
 			  . (
@@ -9822,30 +11109,30 @@ sub HTMLShowEmailSendersChart {
 				? XMLEncode("$AWScript${NewLinkParams}output=lastemails")
 				: "$StaticLinks.lastemails.$StaticExt"
 			  )
-			  . "\"$NewLinkTarget>$Message[9]</a>";
+			  . "\"$NewLinkTarget>" . _t("Last") . "</a>";
 		}
 	}
 	&tab_head( "$title", 19, 0, 'emailsenders' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"3\">$Message[131] : "
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"3\">" . _t("Email Senders") . " : "
 	  . ( scalar keys %_emails_h ) . "</th>";
 	if ( $ShowEMailSenders =~ /H/i ) {
 		print "<th rowspan=\"2\" bgcolor=\"#$color_h\" width=\"80\""
 		  . Tooltip(4)
-		  . ">$Message[57]</th>";
+		  . ">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowEMailSenders =~ /B/i ) {
 		print
 "<th class=\"datasize\" rowspan=\"2\" bgcolor=\"#$color_k\" width=\"80\""
 		  . Tooltip(5)
-		  . ">$Message[75]</th>";
+		  . ">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowEMailSenders =~ /M/i ) {
 		print
-"<th rowspan=\"2\" bgcolor=\"#$color_k\" width=\"80\">$Message[106]</th>";
+"<th rowspan=\"2\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Average") . "</th>";
 	}
 	if ( $ShowEMailSenders =~ /L/i ) {
-		print "<th rowspan=\"2\" width=\"120\">$Message[9]</th>";
+		print "<th rowspan=\"2\" width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	print
@@ -9925,7 +11212,7 @@ sub HTMLShowEmailSendersChart {
 	$rest_k = $TotalBytes - $total_k;
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 ) { # All other sender emails
 		print
-"<tr><td colspan=\"3\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td colspan=\"3\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowEMailSenders =~ /H/i ) { print "<td>$rest_h</td>"; }
 		if ( $ShowEMailSenders =~ /B/i ) {
 			print "<td nowrap=\"nowrap\">" . Format_Bytes($rest_k) . "</td>";
@@ -9969,18 +11256,17 @@ sub HTMLShowEmailReceiversChart {
 	print "$Center<a name=\"emailreceivers\">&nbsp;</a><br />\n";
 	my $title;
 	if ( $HTMLOutput{'allemailr'} || $HTMLOutput{'lastemailr'} ) {
-		$title = "$Message[132]";
+		$title = _t("Email Receivers");
 	}
 	else {
-		$title =
-"$Message[132] ($Message[77] $MaxNbOf{'EMailsShown'}) &nbsp; - &nbsp; <a href=\""
+		$title = _t("Email Receivers") . " (" . _t("Top") . " $MaxNbOf{'EMailsShown'}) &nbsp; - &nbsp; <a href=\""
 		  . (
 			$ENV{'GATEWAY_INTERFACE'}
 			  || !$StaticLinks
 			? XMLEncode("$AWScript${NewLinkParams}output=allemailr")
 			: "$StaticLinks.allemailr.$StaticExt"
 		  )
-		  . "\"$NewLinkTarget>$Message[80]</a>";
+		  . "\"$NewLinkTarget>" . _t("Full list") . "</a>";
 		if ( $ShowEMailReceivers =~ /L/i ) {
 			$title .= " &nbsp; - &nbsp; <a href=\""
 			  . (
@@ -9989,30 +11275,30 @@ sub HTMLShowEmailReceiversChart {
 				? XMLEncode("$AWScript${NewLinkParams}output=lastemailr")
 				: "$StaticLinks.lastemailr.$StaticExt"
 			  )
-			  . "\"$NewLinkTarget>$Message[9]</a>";
+			  . "\"$NewLinkTarget>" . _t("Last") . "</a>";
 		}
 	}
 	&tab_head( "$title", 19, 0, 'emailreceivers' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"3\">$Message[132] : "
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"3\">" . _t("Email Receivers") . " : "
 	  . ( scalar keys %_emailr_h ) . "</th>";
 	if ( $ShowEMailReceivers =~ /H/i ) {
 		print "<th rowspan=\"2\" bgcolor=\"#$color_h\" width=\"80\""
 		  . Tooltip(4)
-		  . ">$Message[57]</th>";
+		  . ">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowEMailReceivers =~ /B/i ) {
 		print
 "<th class=\"datasize\" rowspan=\"2\" bgcolor=\"#$color_k\" width=\"80\""
 		  . Tooltip(5)
-		  . ">$Message[75]</th>";
+		  . ">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowEMailReceivers =~ /M/i ) {
 		print
-"<th rowspan=\"2\" bgcolor=\"#$color_k\" width=\"80\">$Message[106]</th>";
+"<th rowspan=\"2\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Average") . "</th>";
 	}
 	if ( $ShowEMailReceivers =~ /L/i ) {
-		print "<th rowspan=\"2\" width=\"120\">$Message[9]</th>";
+		print "<th rowspan=\"2\" width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	print
@@ -10095,7 +11381,7 @@ sub HTMLShowEmailReceiversChart {
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 )
 	{                                   # All other receiver emails
 		print
-"<tr><td colspan=\"3\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td colspan=\"3\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowEMailReceivers =~ /H/i ) { print "<td>$rest_h</td>"; }
 		if ( $ShowEMailReceivers =~ /B/i ) {
 			print "<td nowrap=\"nowrap\">" . Format_Bytes($rest_k) . "</td>";
@@ -10110,6 +11396,2928 @@ sub HTMLShowEmailReceiversChart {
 	&tab_end();
 }
 
+#=============================================================================
+# Function:    返回主题切换的JavaScript代码
+# Description: 生成用于主题管理的JavaScript脚本，实现以下功能：
+#              - 从 localStorage 读取保存的主题并应用
+#              - 监听其他页面的主题变化（storage事件）并同步
+#              - 监听 iframe 消息（postMessage）并同步
+#              - 自动向 nav 和 stats 框架广播主题变化
+# 
+# Return:      HTML script 标签包裹的JavaScript代码
+# Notes:       此脚本会被所有文档页面引入，确保整个应用主题统一
+#=============================================================================
+sub get_theme_script {
+    return <<'END_SCRIPT';
+<script>
+(function() {
+	const savedTheme = localStorage.getItem('awstats-theme');
+	if (savedTheme === 'dark') {
+		document.documentElement.setAttribute('data-theme', 'dark');
+	}
+	
+	window.addEventListener('storage', function(e) {
+		if (e.key === 'awstats-theme') {
+			document.documentElement.setAttribute('data-theme', e.newValue);
+			const navFrame = document.getElementsByName('nav')[0];
+			const statsFrame = document.getElementsByName('stats')[0];
+			if (navFrame && navFrame.contentWindow) {
+				navFrame.contentWindow.postMessage({ theme: e.newValue }, '*');
+			}
+			if (statsFrame && statsFrame.contentWindow) {
+				statsFrame.contentWindow.postMessage({ theme: e.newValue }, '*');
+			}
+		}
+	});
+	
+	window.addEventListener('message', function(e) {
+		if (e.data && e.data.theme) {
+			document.documentElement.setAttribute('data-theme', e.data.theme);
+		}
+	});
+})();
+</script>
+END_SCRIPT
+}
+
+#------------------------------------------------------------------------------
+# 生成导航页面（简洁版，利用语言文件格式化）
+# Parameters:   $dir (统计目录), $current_month (当前月份), $months_ref (月份列表引用)
+# Return:       None
+#------------------------------------------------------------------------------
+sub generate_nav_page {
+    my ($dir, $current_month, $months_ref) = @_;
+    
+    # 获取月份列表
+    my @months = @$months_ref;
+    if (!@months) {
+        opendir(my $dh, $dir) or return;
+        @months = grep { -d "$dir/$_" && /^\d{4}-\d{2}$/ } readdir($dh);
+        closedir $dh;
+        @months = sort { $b cmp $a } @months;
+    }
+    # 构建月份选项
+    my $select_options = '';
+    foreach my $link (@months) {
+        next if $link eq 'icon';
+        my ($year, $mon) = split('-', $link);
+        my $month_name = _t("month_$mon");
+        
+        # 方法1：使用 sprintf
+        my $format = _t("date_format_month");
+        my $display = sprintf($format, $month_name, $year);
+
+        my $selected = ($link eq $current_month) ? ' selected' : '';
+        $select_options .= "<option value=\"$link\"$selected>$display</option>\n";
+    }
+	my $theme_script = get_theme_script();
+	my $lang = $Lang || 'en';
+	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    my $title = _t("AWStats Log Viewer");
+    # 生成 HTML
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+<title>$title</title>
+<style>
+:root{--bg-color:#ffffff;--text-color:#1f2937;--border-color:#e5e7eb;--card-bg:#ffffff}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--border-color:#374151;--card-bg:#2d3748}body{margin:0;padding:10px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background-color:var(--bg-color);color:var(--text-color);transition:background-color 0.3s,color 0.2s}table{width:auto;border-collapse:collapse}img{max-width:120px;height:auto;display:block}select{width:auto;padding:8px 12px;border:1px solid var(--border-color);border-radius:6px;background-color:var(--card-bg);color:var(--text-color);font-size:14px;cursor:pointer}select:hover{border-color:var(--primary-color,#2563eb)}td{padding:2px 5px;white-space:nowrap}
+</style>
+</head>
+<body>
+<table>
+<tr>
+<td>
+<form name="period">
+<select name="select" onchange="changeMonth()">
+$select_options
+</select>
+</form>
+</td>
+</tr>
+</table>
+	$theme_script
+</body>
+</html>
+END_HTML
+    
+    # 写入文件
+    open(my $fh, '>:encoding(UTF-8)', "$dir/nav.html") or return;
+    print $fh $html;
+    close $fh;
+}
+
+#------------------------------------------------------------------------------
+# 生成框架页面 index.html（上下布局）
+# Parameters:   $dir (统计目录), $current_month (当前月份)
+# Return:       None
+#------------------------------------------------------------------------------
+sub generate_index_page {
+    my ($dir, $current_month) = @_;
+    
+    # 获取翻译文本
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $theme_script = get_theme_script();
+    my $browser_support = _t("Your browser does not support frames. Please use a modern browser.");
+    my $view_stats = _t("View statistics directly");
+    my $meta_description = _t("meta.description");
+    my $meta_keywords = _t("meta.keywords");
+    my $meta_author = _t("meta.author");
+    my $og_title = _t("og.title");
+    my $og_description = _t("og.description");
+    my $og_image_alt = _t("og.image.alt");
+	my $chart_emoji = "📊";
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <title>$page_title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="$meta_description">
+    <meta name="keywords" content="$meta_keywords">
+    <meta name="author" content="$meta_author">
+    <meta property="og:title" content="$og_title">
+    <meta property="og:description" content="$og_description">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E$chart_emoji%3C/text%3E%3C/svg%3E">
+    <meta property="og:image:alt" content="$og_image_alt">
+    <meta property="og:locale" content="$lang">
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📊%3C/text%3E%3C/svg%3E">
+	<link rel="icon" type="image/svg+xml" sizes="16x16" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📊%3C/text%3E%3C/svg%3E">
+	<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📊%3C/text%3E%3C/svg%3E">
+	<link rel="icon" sizes="192x192" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📊%3C/text%3E%3C/svg%3E">
+	<link rel="icon" sizes="512x512" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='80'%3E📊%3C/text%3E%3C/svg%3E">    
+	<style>
+	body{margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif;background-color:var(--bg-color);color:var(--text-color)}.no-frames{padding:20px;text-align:center}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa}
+    </style>
+	$theme_script
+</head>
+<frameset rows="60,*" border="0" frameborder="0" framespacing="0">
+    <frame src="nav.html" name="nav" noresize="noresize" scrolling="no" frameborder="0">
+    <frame src="$current_month/index.html" name="stats" noresize="noresize" scrolling="auto" frameborder="0">
+</frameset>
+<noframes>
+    <body>
+        <div class="no-frames">
+            <p>$browser_support</p>
+            <p><a href="$current_month/index.html">$view_stats</a></p>
+        </div>
+    </body>
+</noframes>
+</html>
+END_HTML
+    
+    open(my $fh, '>:encoding(UTF-8)', "$dir/index.html") or return;
+    print $fh $html;
+    close $fh;
+    generate_what_doc($dir);
+    print "DEBUG: Generated index.html in $dir with language $lang\n" if $Debug;
+}
+#------------------------------------------------------------------------------
+# 生成 what 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_what_doc {
+    my ($dir) = @_;
+    
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $theme_script = get_theme_script();
+	my $full_title = _t("docs.what.title") . " - " . "$page_title";
+    my $doc_title = _t("docs.what.title");
+    my $doc_intro = _t("docs.what.intro");
+    my $doc_history = _t("docs.what.history");
+    my $features_title = _t("docs.what.features.title");
+    my $features_list = _t("docs.what.features.list");
+    my $requirements_title = _t("docs.what.requirements.title");
+    my $requirements_list = _t("docs.what.requirements.list");
+    my $compare_link = _t("docs.what.compare.link");
+    my $doc_dir = "$dir/docs"; 
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$full_title</title>
+	<style>
+	body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color)}.doc-nav a{margin-right:20px}.feature-list{columns:2;column-gap:40px}:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    
+    $doc_intro
+    
+    $doc_history
+    
+    <h2>$features_title</h2>
+    <div class="feature-list">
+        $features_list
+    </div>
+    
+    <h2>$requirements_title</h2>
+    $requirements_list
+    
+    <p><a href="awstats_compare.html">🔍 $compare_link</a></p>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+	$theme_script
+</body>
+</html>
+END_HTML
+
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_what.html") or return;
+    print $fh $html;
+    close $fh;
+
+	print "DEBUG: Generated awstats_what.html in $doc_dir with language $lang\n" if $Debug;
+
+}
+#------------------------------------------------------------------------------
+# 生成 changelog 文档页面 (修正版)
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_changelog_doc {
+    my ($dir) = @_;
+    
+    # 获取所有翻译文本 - 用 my 定义变量
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $theme_script = get_theme_script();
+    my $full_title = _t("docs.changelog.title") . " - " . "$page_title";
+    my $doc_title = _t("docs.changelog.title");
+    my $subtitle = _t("docs.changelog.subtitle");
+    my $warning = _t("docs.changelog.warning");
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # 8.x 系列
+    my $changelog_8_1_date = _t("changelog.8.1.date");
+    my $changelog_8_1_version = _t("changelog.8.1.version");
+    my $changelog_8_1_items = _t("changelog.8.1.items");
+    
+    my $changelog_8_0_date = _t("changelog.8.0.date");
+    my $changelog_8_0_version = _t("changelog.8.0.version");
+    my $changelog_8_0_items = _t("changelog.8.0.items");
+    
+    # 7.x 系列
+    my $changelog_7_9_date = _t("changelog.7.9.date");
+    my $changelog_7_9_version = _t("changelog.7.9.version");
+    my $changelog_7_9_items = _t("changelog.7.9.items");
+    
+    my $changelog_7_8_date = _t("changelog.7.8.date");
+    my $changelog_7_8_version = _t("changelog.7.8.version");
+    my $changelog_7_8_items = _t("changelog.7.8.items");
+    
+    my $changelog_7_7_date = _t("changelog.7.7.date");
+    my $changelog_7_7_version = _t("changelog.7.7.version");
+    my $changelog_7_7_items = _t("changelog.7.7.items");
+    
+    my $changelog_7_6_date = _t("changelog.7.6.date");
+    my $changelog_7_6_version = _t("changelog.7.6.version");
+    my $changelog_7_6_items = _t("changelog.7.6.items");
+    
+    my $changelog_7_5_date = _t("changelog.7.5.date");
+    my $changelog_7_5_version = _t("changelog.7.5.version");
+    my $changelog_7_5_items = _t("changelog.7.5.items");
+    
+    my $changelog_7_4_date = _t("changelog.7.4.date");
+    my $changelog_7_4_version = _t("changelog.7.4.version");
+    my $changelog_7_4_items = _t("changelog.7.4.items");
+    
+    my $changelog_7_3_date = _t("changelog.7.3.date");
+    my $changelog_7_3_version = _t("changelog.7.3.version");
+    my $changelog_7_3_items = _t("changelog.7.3.items");
+    
+    my $changelog_7_2_date = _t("changelog.7.2.date");
+    my $changelog_7_2_version = _t("changelog.7.2.version");
+    my $changelog_7_2_items = _t("changelog.7.2.items");
+    
+    my $changelog_7_1_1_date = _t("changelog.7.1.1.date");
+    my $changelog_7_1_1_version = _t("changelog.7.1.1.version");
+    my $changelog_7_1_1_items = _t("changelog.7.1.1.items");
+    
+    my $changelog_7_1_date = _t("changelog.7.1.date");
+    my $changelog_7_1_version = _t("changelog.7.1.version");
+    my $changelog_7_1_items = _t("changelog.7.1.items");
+    
+    my $changelog_7_0_date = _t("changelog.7.0.date");
+    my $changelog_7_0_version = _t("changelog.7.0.version");
+    my $changelog_7_0_items = _t("changelog.7.0.items");
+    
+    # 6.x 系列
+    my $changelog_6_95_date = _t("changelog.6.95.date");
+    my $changelog_6_95_version = _t("changelog.6.95.version");
+    my $changelog_6_95_items = _t("changelog.6.95.items");
+    
+    my $changelog_6_9_date = _t("changelog.6.9.date");
+    my $changelog_6_9_version = _t("changelog.6.9.version");
+    my $changelog_6_9_items = _t("changelog.6.9.items");
+    
+    my $changelog_6_8_date = _t("changelog.6.8.date");
+    my $changelog_6_8_version = _t("changelog.6.8.version");
+    my $changelog_6_8_items = _t("changelog.6.8.items");
+    
+    my $changelog_6_7_date = _t("changelog.6.7.date");
+    my $changelog_6_7_version = _t("changelog.6.7.version");
+    my $changelog_6_7_items = _t("changelog.6.7.items");
+    
+    my $changelog_6_6_date = _t("changelog.6.6.date");
+    my $changelog_6_6_version = _t("changelog.6.6.version");
+    my $changelog_6_6_items = _t("changelog.6.6.items");
+    
+    my $changelog_6_5_date = _t("changelog.6.5.date");
+    my $changelog_6_5_version = _t("changelog.6.5.version");
+    my $changelog_6_5_items = _t("changelog.6.5.items");
+    
+    my $changelog_6_4_date = _t("changelog.6.4.date");
+    my $changelog_6_4_version = _t("changelog.6.4.version");
+    my $changelog_6_4_items = _t("changelog.6.4.items");
+    
+    my $changelog_6_3_date = _t("changelog.6.3.date");
+    my $changelog_6_3_version = _t("changelog.6.3.version");
+    my $changelog_6_3_items = _t("changelog.6.3.items");
+    
+    my $changelog_6_2_date = _t("changelog.6.2.date");
+    my $changelog_6_2_version = _t("changelog.6.2.version");
+    my $changelog_6_2_items = _t("changelog.6.2.items");
+    
+    my $changelog_6_1_date = _t("changelog.6.1.date");
+    my $changelog_6_1_version = _t("changelog.6.1.version");
+    my $changelog_6_1_items = _t("changelog.6.1.items");
+    
+    my $changelog_6_0_date = _t("changelog.6.0.date");
+    my $changelog_6_0_version = _t("changelog.6.0.version");
+    my $changelog_6_0_items = _t("changelog.6.0.items");
+    
+    # 5.x 系列
+    my $changelog_5_9_date = _t("changelog.5.9.date");
+    my $changelog_5_9_version = _t("changelog.5.9.version");
+    my $changelog_5_9_items = _t("changelog.5.9.items");
+    
+    my $changelog_5_8_date = _t("changelog.5.8.date");
+    my $changelog_5_8_version = _t("changelog.5.8.version");
+    my $changelog_5_8_items = _t("changelog.5.8.items");
+    
+    my $changelog_5_7_date = _t("changelog.5.7.date");
+    my $changelog_5_7_version = _t("changelog.5.7.version");
+    my $changelog_5_7_items = _t("changelog.5.7.items");
+    
+    my $changelog_5_6_date = _t("changelog.5.6.date");
+    my $changelog_5_6_version = _t("changelog.5.6.version");
+    my $changelog_5_6_items = _t("changelog.5.6.items");
+    
+    my $changelog_5_5_date = _t("changelog.5.5.date");
+    my $changelog_5_5_version = _t("changelog.5.5.version");
+    my $changelog_5_5_items = _t("changelog.5.5.items");
+    
+    my $changelog_5_4_date = _t("changelog.5.4.date");
+    my $changelog_5_4_version = _t("changelog.5.4.version");
+    my $changelog_5_4_items = _t("changelog.5.4.items");
+    
+    my $changelog_5_3_date = _t("changelog.5.3.date");
+    my $changelog_5_3_version = _t("changelog.5.3.version");
+    my $changelog_5_3_items = _t("changelog.5.3.items");
+    
+    my $changelog_5_2_date = _t("changelog.5.2.date");
+    my $changelog_5_2_version = _t("changelog.5.2.version");
+    my $changelog_5_2_items = _t("changelog.5.2.items");
+    
+    my $changelog_5_1_date = _t("changelog.5.1.date");
+    my $changelog_5_1_version = _t("changelog.5.1.version");
+    my $changelog_5_1_items = _t("changelog.5.1.items");
+    
+    my $changelog_5_0_date = _t("changelog.5.0.date");
+    my $changelog_5_0_version = _t("changelog.5.0.version");
+    my $changelog_5_0_items = _t("changelog.5.0.items");
+    
+    # 4.x 系列
+    my $changelog_4_1_date = _t("changelog.4.1.date");
+    my $changelog_4_1_version = _t("changelog.4.1.version");
+    my $changelog_4_1_items = _t("changelog.4.1.items");
+    
+    my $changelog_4_0_date = _t("changelog.4.0.date");
+    my $changelog_4_0_version = _t("changelog.4.0.version");
+    my $changelog_4_0_items = _t("changelog.4.0.items");
+    
+    # 3.x 系列
+    my $changelog_3_2_date = _t("changelog.3.2.date");
+    my $changelog_3_2_version = _t("changelog.3.2.version");
+    my $changelog_3_2_items = _t("changelog.3.2.items");
+    
+    my $changelog_3_1_date = _t("changelog.3.1.date");
+    my $changelog_3_1_version = _t("changelog.3.1.version");
+    my $changelog_3_1_items = _t("changelog.3.1.items");
+    
+    my $changelog_3_0_date = _t("changelog.3.0.date");
+    my $changelog_3_0_version = _t("changelog.3.0.version");
+    my $changelog_3_0_items = _t("changelog.3.0.items");
+    
+    # 2.x 系列
+    my $changelog_2_24_date = _t("changelog.2.24.date");
+    my $changelog_2_24_version = _t("changelog.2.24.version");
+    my $changelog_2_24_items = _t("changelog.2.24.items");
+    
+    my $changelog_2_23_date = _t("changelog.2.23.date");
+    my $changelog_2_23_version = _t("changelog.2.23.version");
+    my $changelog_2_23_items = _t("changelog.2.23.items");
+    
+    my $changelog_2_1_date = _t("changelog.2.1.date");
+    my $changelog_2_1_version = _t("changelog.2.1.version");
+    my $changelog_2_1_items = _t("changelog.2.1.items");
+    
+    # 1.x 系列
+    my $changelog_1_0_date = _t("changelog.1.0.date");
+    my $changelog_1_0_version = _t("changelog.1.0.version");
+    my $changelog_1_0_items = _t("changelog.1.0.items");
+    
+    # 早期开发阶段
+    my $early_items = _t("changelog.early.1999.items");
+	my $series_8_title = _t("series.8.title");
+	my $series_7_title = _t("series.7.title");
+	my $series_6_title = _t("series.6.title");
+	my $series_5_title = _t("series.5.title");
+	my $series_4_title = _t("series.4.title");
+	my $series_3_title = _t("series.3.title");
+	my $series_2_title = _t("series.2.title");
+	my $series_1_title = _t("series.1.title");
+	my $series_early_title = _t("series.early.title");
+	my $footer_note = _t("footer.note");
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--surface-secondary:#f9fafb;--timeline-color:#3b82f6;--warning-bg:#fff3cd;--warning-border:#ffeeba;--warning-color:#856404;--series-8:#8b5cf6;--series-7:#10b981;--series-6:#f59e0b;--series-5:#ef4444;--series-4:#6366f1;--series-3:#ec4899;--series-2:#14b8a6;--series-1:#f97316;--series-early:#6b7280}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--surface-secondary:#1f2937;--timeline-color:#60a5fa;--warning-bg:#332e1c;--warning-border:#665c2c;--warning-color:#ffd966;--series-8:#a78bfa;--series-7:#34d399;--series-6:#fbbf24;--series-5:#f87171;--series-4:#818cf8;--series-3:#f472b6;--series-2:#2dd4bf;--series-1:#fb923c;--series-early:#9ca3af}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}h1{color:var(--text-color);border-bottom:2px solid var(--timeline-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:20px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px}.doc-nav a:hover{background-color:var(--border-color)}.warning{background-color:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-color);padding:15px;border-radius:8px;margin:20px 0;font-weight:500;font-size:1.1em}.timeline{position:relative;padding:20px 0}.timeline::before{content:'';position:absolute;left:180px;top:0;bottom:0;width:2px;background:var(--timeline-color);opacity:0.3}.series-header{margin:40px 0 20px 180px;font-size:1.5em;font-weight:700;padding-bottom:8px;border-bottom:2px solid}.series-8{border-color:var(--series-8);color:var(--series-8)}.series-7{border-color:var(--series-7);color:var(--series-7)}.series-6{border-color:var(--series-6);color:var(--series-6)}.series-5{border-color:var(--series-5);color:var(--series-5)}.series-4{border-color:var(--series-4);color:var(--series-4)}.series-3{border-color:var(--series-3);color:var(--series-3)}.series-2{border-color:var(--series-2);color:var(--series-2)}.series-1{border-color:var(--series-1);color:var(--series-1)}.series-early{border-color:var(--series-early);color:var(--series-early)}.version-item{position:relative;margin-bottom:30px;padding-left:200px}.version-date{position:absolute;left:0;width:160px;font-weight:600;color:var(--timeline-color);text-align:right;font-size:1.1em;padding-right:20px}.version-marker{position:absolute;left:174px;width:12px;height:12px;border-radius:50%;background:var(--timeline-color);border:2px solid var(--bg-color);box-shadow:0 0 0 2px var(--timeline-color);z-index:2}.version-content{background:var(--header-bg);border:1px solid var(--border-color);border-radius:12px;padding:20px;transition:transform 0.2s,box-shadow 0.2s}.version-content:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.version-header{display:flex;align-items:center;gap:12px;margin-bottom:15px;flex-wrap:wrap}.version-tag{font-size:1.3em;font-weight:700;color:var(--timeline-color)}.version-badge{background:var(--timeline-color);color:white;padding:4px 12px;border-radius:20px;font-size:0.85em;font-weight:500}.version-items{list-style:none;margin:0;padding:0}.version-items li{margin:8px 0;padding:10px 15px 10px 40px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;position:relative;transition:all 0.2s ease}.version-items li:hover{transform:translateX(5px);background-color:var(--border-color);box-shadow:0 4px 8px rgba(0,0,0,0.1)}.version-items li::before{content:"•";position:absolute;left:15px;color:var(--timeline-color);font-weight:bold;font-size:1.2rem}.version-items li em{color:var(--timeline-color);font-style:italic}.series-8 .version-items li{border-left:4px solid var(--series-8)}.series-7 .version-items li{border-left:4px solid var(--series-7)}.series-6 .version-items li{border-left:4px solid var(--series-6)}.series-5 .version-items li{border-left:4px solid var(--series-5)}.series-4 .version-items li{border-left:4px solid var(--series-4)}.series-3 .version-items li{border-left:4px solid var(--series-3)}.series-2 .version-items li{border-left:4px solid var(--series-2)}.series-1 .version-items li{border-left:4px solid var(--series-1)}.series-early .version-items li{border-left:4px solid var(--series-early)}.early-stage{margin:40px 0 20px 180px;padding:20px;background:var(--header-bg);border:1px solid var(--border-color);border-radius:12px;border-left:4px solid var(--series-early)}.early-stage h3{margin-top:0;color:var(--series-early)}.early-stage ul{margin:10px 0 0;padding-left:20px}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}.footer-note{margin-top:40px;padding:20px;background:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);text-align:center;font-size:0.95em;opacity:0.8}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    <div class="warning">$warning</div>
+    <div class="timeline">
+        <div class="series-header series-8">$series_8_title</div>
+        <div class="version-item">
+            <div class="version-date">$changelog_8_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_8_1_version</span>
+                    <span class="version-badge" style="background: var(--series-8);">重构版</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_8_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_8_0_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_8_0_version</span>
+                    <span class="version-badge" style="background: var(--series-8);">最终版本</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_8_0_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="series-header series-7">$series_7_title</div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_9_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_9_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_9_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_8_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_8_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_8_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_7_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_7_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_7_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_6_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_6_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_6_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_5_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_5_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_5_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_4_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_4_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_4_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_3_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_3_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_3_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_2_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_2_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_2_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_1_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_1_1_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_1_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_1_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_7_0_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_7_0_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_7_0_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="series-header series-6">$series_6_title</div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_95_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_95_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_95_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_9_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_9_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_9_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_8_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_8_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_8_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_7_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_7_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_7_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_6_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_6_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_6_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_5_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_5_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_5_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_4_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_4_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_4_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_3_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_3_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_3_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_2_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_2_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_2_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_1_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_6_0_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_6_0_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_6_0_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="series-header series-5">$series_5_title</div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_9_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_9_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_9_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_8_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_8_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_8_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_7_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_7_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_7_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_6_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_6_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_6_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_5_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_5_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_5_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_4_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_4_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_4_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_3_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_3_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_3_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_2_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_2_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_2_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_1_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_5_0_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_5_0_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_5_0_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="series-header series-4">$series_4_title</div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_4_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_4_1_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_4_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_4_0_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_4_0_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_4_0_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="series-header series-3">$series_3_title</div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_3_2_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_3_2_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_3_2_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_3_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_3_1_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_3_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_3_0_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_3_0_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_3_0_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="series-header series-2">$series_2_title</div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_2_24_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_2_24_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_2_24_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_2_23_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_2_23_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_2_23_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_2_1_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_2_1_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_2_1_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="series-header series-1">$series_1_title</div>
+        
+        <div class="version-item">
+            <div class="version-date">$changelog_1_0_date</div>
+            <div class="version-marker"></div>
+            <div class="version-content">
+                <div class="version-header">
+                    <span class="version-tag">$changelog_1_0_version</span>
+                </div>
+                <ul class="version-items">
+                    $changelog_1_0_items
+                </ul>
+            </div>
+        </div>
+        
+        <div class="early-stage">
+            <h3 class="series-early">$series_early_title</h3>
+            <ul>
+                $early_items
+            </ul>
+        </div>
+    </div>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_changelog.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_changelog.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 benchmark 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_benchmark_doc {
+    my ($dir) = @_;
+    
+    
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $theme_script = get_theme_script();
+    # 文档标题和副标题
+    my $doc_title = _t("docs.benchmark.title");
+    my $subtitle = _t("docs.benchmark.subtitle");
+    my $intro = _t("docs.benchmark.intro");
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    my $full_title = "$doc_title - $page_title";
+    my $content = _t("docs.benchmark.content");
+	$content =~ s/\\n/\n/g;
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, benchmark, speed, dns, performance">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--table-header-bg:#1e40af;--table-header-text:#ffffff;--table-border:#d1d5db;--table-stripe:#f3f4f6;--table-hover:#e2e8f0;--warning-bg:#fff3cd;--warning-border:#ffeeba;--warning-color:#856404;--star-color:#fbbf24;--accent:#2563eb;--card-bg:#ffffff;--important-bg:#fee2e2;--important-border:#ef4444}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--table-header-bg:#1e3a8a;--table-header-text:#ffffff;--table-border:#4b5563;--table-stripe:#2d3748;--table-hover:#374151;--warning-bg:#332e1c;--warning-border:#665c2c;--warning-color:#ffd966;--star-color:#fbbf24;--accent:#60a5fa;--card-bg:#1f2937;--important-bg:#451a1a;--important-border:#ef4444}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:2px solid var(--border-color);padding-bottom:10px}h1{font-size:2em}h2{font-size:1.5em;margin-top:30px}h3{font-size:1.3em}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{padding:5px 10px;border-radius:4px}.doc-nav a:hover{background-color:var(--border-color);text-decoration:none}.warning-box{background-color:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-color);padding:15px;border-radius:8px;margin:20px 0;font-weight:500}.benchmark-table{width:100%;border-collapse:collapse;margin:25px 0;font-size:0.95em;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);border-radius:12px;overflow:hidden}.benchmark-table th{background-color:var(--table-header-bg);color:var(--table-header-text);border:1px solid var(--table-border);padding:14px 8px;text-align:center;font-weight:600;font-size:0.95em;white-space:nowrap}.benchmark-table td{border:1px solid var(--table-border);padding:12px 8px;vertical-align:top;background-color:var(--bg-color)}.benchmark-table tr:nth-child(even) td{background-color:var(--table-stripe)}.benchmark-table tr:hover td{background-color:var(--table-hover);transition:background-color 0.15s ease}.benchmark-table tr td:nth-child(3):contains("1"){font-weight:600;color:#dc2626}.benchmark-table tr:last-child td{background-color:var(--important-bg);font-weight:500;text-align:center;font-style:italic}.benchmark-table td br + span{font-size:0.9em;opacity:0.8}.table-notes{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border-left:4px solid var(--link-color)}.table-notes p{margin:8px 0;font-size:0.9em}.table-notes p.warning{color:#dc2626;font-weight:600;background-color:var(--warning-bg);padding:8px 12px;border-radius:6px;border-left:4px solid #dc2626}.benchmark-details{background-color:var(--header-bg);padding:20px;border-radius:12px;margin:20px 0;border:1px solid var(--border-color);display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}.benchmark-details p{margin:0;padding:8px;background-color:var(--bg-color);border-radius:6px}.benchmark-details p strong{color:var(--link-color);margin-right:8px}.important-list{list-style:none;padding:0}.important-list li{margin:12px 0;padding:12px 15px;background-color:var(--header-bg);border-radius:8px;border-left:4px solid var(--link-color)}.important-list li.warning{border-left-color:#dc2626;background-color:var(--warning-bg)}.important-list li b{color:var(--link-color)}.dns-content{background-color:var(--warning-bg);padding:20px;border-radius:12px;margin:20px 0;border:1px solid var(--warning-border)}.dns-content p{margin:0;font-size:1.05em}.dns-content b{color:#dc2626;font-size:1.2em}.advices-list{list-style:none;padding:0}.advices-list li{margin:15px 0;padding:15px 20px;background-color:var(--header-bg);border-radius:10px;border:1px solid var(--border-color);transition:transform 0.2s,box-shadow 0.2s}.advices-list li:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.advices-list li b{color:var(--link-color)}.star{color:var(--star-color);font-size:1.2em;letter-spacing:2px;margin-right:10px}.note{font-size:0.9em;color:var(--text-color);opacity:0.8;margin-top:10px;font-style:italic}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em;border:1px solid var(--border-color)}\@media (max-width:768px){.benchmark-table{display:block;overflow-x:auto;white-space:nowrap}.benchmark-details{grid-template-columns:1fr}.advices-list li{padding:12px}}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="note">$subtitle</div>
+	<div class="section">
+		$content
+	</div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_benchmark.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_benchmark.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 compare 文档页面 (完整版)
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_compare_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.compare.title");
+    my $subtitle = _t("docs.compare.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 表格头部 ==========
+    my $compare_table = _t("compare.table.full");
+    # ========== 注释 ==========
+    my $note_browsers = _t("compare.note.browsers");
+    my $note_robots = _t("compare.note.robots");
+    my $note_searchengines = _t("compare.note.searchengines");
+    my $note_benchmark = _t("compare.note.benchmark");
+    my $note_visitors = _t("compare.note.visitors");
+    my $note_data = _t("compare.note.data");
+    my $note_logformat = _t("compare.note.logformat");
+		$note_logformat =~ s/\\n/\n/g;
+		$note_logformat =~ s/\\\$/\$/g;
+    # ========== 页脚 ==========
+    my $footer_author = _t("compare.footer.author");
+    my $footer_twitter = _t("compare.footer.twitter");
+    my $footer_sponsor = _t("compare.footer.sponsor");
+    
+    # ========== 行内通用值 ==========
+    my $apache_common_note = _t("compare.value.apache.common.note");
+    my $scheduler_common = _t("compare.value.scheduler.common");
+    my $benchmark_dns = _t("compare.value.benchmark.dns");
+    my $visits_basis = _t("compare.value.visits.basis");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    # 构建 HTML
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, compare, analog, webalizer, sawmill, log analyzer">
+    <title>$full_title</title>
+    <style>
+	.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95em;border:1px solid var(--border-color);border-radius:12px;overflow:hidden}.compare-table th{background-color:var(--table-header-bg);color:var(--text-color);padding:12px 8px;text-align:center;font-weight:600;border:1px solid var(--border-color)}.compare-table td{border:1px solid var(--border-color);padding:10px 8px;vertical-align:top}.compare-table tr:nth-child(even){background-color:var(--header-bg)}.compare-table tr:hover{background-color:var(--border-color)}.feature-left{font-weight:600;text-align:left;background-color:var(--header-bg);white-space:nowrap}.feature-yes{color:#059669;font-weight:600}.feature-no{color:#dc2626;font-weight:600}.note-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:12px}.note-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:12px}.note-section ul{margin:0;padding:0;list-style:none}.note-section li{margin:15px 0;padding:12px 20px 12px 40px;line-height:1.6;font-size:0.95em;position:relative;border-radius:8px;transition:transform 0.2s}.note-section li:hover{transform:translateX(5px)}.note-browsers{background-color:rgba(59,130,246,0.1);border-left:4px solid #3b82f6}.note-browsers::before{content:"*";color:#3b82f6;font-weight:bold;font-size:1.5em;position:absolute;left:15px;top:10px}.note-robots{background-color:rgba(16,185,129,0.1);border-left:4px solid #10b981}.note-robots::before{content:"**";color:#10b981;font-weight:bold;font-size:1.2em;position:absolute;left:12px;top:12px}.note-searchengines{background-color:rgba(245,158,11,0.1);border-left:4px solid #f59e0b}.note-searchengines::before{content:"***";color:#f59e0b;font-weight:bold;font-size:1.2em;position:absolute;left:12px;top:12px}.note-benchmark{background-color:rgba(239,68,68,0.1);border-left:4px solid #ef4444}.note-benchmark::before{content:"****";color:#ef4444;font-weight:bold;font-size:1.1em;position:absolute;left:10px;top:12px}.note-visitors{background-color:rgba(139,92,246,0.1);border-left:4px solid #8b5cf6}.note-visitors::before{content:"*****";color:#8b5cf6;font-weight:bold;font-size:1.1em;position:absolute;left:8px;top:12px}.note-data{background-color:rgba(236,72,153,0.1);border-left:4px solid #ec4899}.note-data::before{content:"(a)";color:#ec4899;font-weight:bold;font-size:1.1em;position:absolute;left:12px;top:12px}.note-logformat{background-color:rgba(168,85,247,0.1);border-left:4px solid #a855f7}.note-logformat::before{content:"(b)";color:#a855f7;font-weight:bold;font-size:1.1em;position:absolute;left:12px;top:12px}[data-theme="dark"] .note-browsers{background-color:rgba(59,130,246,0.2)}[data-theme="dark"] .note-robots{background-color:rgba(16,185,129,0.2)}[data-theme="dark"] .note-searchengines{background-color:rgba(245,158,11,0.2)}[data-theme="dark"] .note-benchmark{background-color:rgba(239,68,68,0.2)}[data-theme="dark"] .note-visitors{background-color:rgba(139,92,246,0.2)}[data-theme="dark"] .note-data{background-color:rgba(236,72,153,0.2)}[data-theme="dark"] .note-logformat{background-color:rgba(168,85,247,0.2)}:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--table-header-bg:#e5e7eb;--table-border:#d1d5db;--warning-bg:#fff3cd;--warning-border:#ffeeba;--warning-color:#856404;--star-color:#fbbf24}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--table-header-bg:#2d3748;--table-border:#4b5563;--warning-bg:#332e1c;--warning-border:#665c2c;--warning-color:#ffd966;--star-color:#fbbf24}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}h1{font-size:2em}h2{font-size:1.5em;margin-top:30px}h3{font-size:1.3em}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{padding:5px 10px;border-radius:4px}.doc-nav a:hover{background-color:var(--border-color)}.warning-box{background-color:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-color);padding:15px;border-radius:8px;margin:20px 0}.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95em}.compare-table th{background-color:var(--table-header-bg);border:1px solid var(--table-border);padding:12px 8px;text-align:center;font-weight:600}.compare-table td{border:1px solid var(--table-border);padding:10px 8px;vertical-align:top}.compare-table tr:nth-child(even){background-color:var(--header-bg)}.compare-table tr:hover{background-color:var(--border-color)}.note{font-size:0.9em;color:var(--text-color);opacity:0.8;margin-top:10px}.advice-item{margin:15px 0;padding:10px;background-color:var(--header-bg);border-radius:8px;border-left:4px solid var(--link-color)}.star{color:var(--star-color);font-size:1.2em}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+	li pre {
+		background-color: var(--code-bg);
+		padding: 16px;
+		border-radius: 8px;
+		border: 1px solid var(--border-color);
+		margin: 15px 0;
+		transition: all 0.3s ease;
+		width: calc(100% - 32px);
+		margin-left: 0;
+		margin-right: 0;
+		white-space: pre;
+		overflow-x: auto;
+		overflow-y: hidden;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	li pre:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+		border-color: var(--accent);
+	}
+
+	li pre code {
+		white-space: pre;
+		display: inline-block;
+		min-width: 100%;
+		font-family: 'Courier New', monospace;
+		font-size: 0.9em;
+		line-height: 1.5;
+	}
+	</style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <p class="note">$subtitle</p>
+    
+	<div class="section">
+		$compare_table
+	</div>
+    
+	<div class="note-section">
+		<ul>
+			<li class="note-browsers">$note_browsers</li>
+			<li class="note-robots">$note_robots</li>
+			<li class="note-searchengines">$note_searchengines</li>
+			<li class="note-benchmark">$note_benchmark</li>
+			<li class="note-visitors">$note_visitors</li>
+			<li class="note-data">$note_data</li>
+			<li class="note-logformat">$note_logformat</li>
+		</ul>
+	</div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_compare.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_compare.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 config 文档页面 (时间线版)
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_config_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.config.title");
+    my $subtitle = _t("docs.config.subtitle");
+    my $note = _t("docs.config.note");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 内容 ==========
+	my $config_full = _t("config.full");
+    $config_full =~ s/\\n/\n/g;
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, config, configuration, directives, parameters">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--timeline-color:#3b82f6;--section-core:#8b5cf6;--section-optional:#10b981;--section-accuracy:#f59e0b;--code-bg:#f1f5f9;--version-badge:#6b7280;--card-bg:#ffffff;--accent:#2563eb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--timeline-color:#60a5fa;--section-core:#a78bfa;--section-optional:#34d399;--section-accuracy:#fbbf24;--code-bg:#2d3748;--version-badge:#9ca3af;--card-bg:#1f2937;--accent:#60a5fa}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1400px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--timeline-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:20px;font-size:1.1em}.note{background-color:var(--header-bg);border-left:4px solid var(--timeline-color);padding:15px;border-radius:8px;margin:20px 0}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.timeline{position:relative;padding:20px 0}.timeline::before{content:'';position:absolute;left:200px;top:0;bottom:0;width:2px;background:var(--timeline-color);opacity:0.3}.section-core,.section-optional,.section-accuracy{margin:40px 0 20px 220px;font-size:1.5em;font-weight:700;padding-bottom:8px;border-bottom:2px solid}.section-core{border-color:var(--section-core);color:var(--section-core)}.section-optional{border-color:var(--section-optional);color:var(--section-optional)}.section-accuracy{border-color:var(--section-accuracy);color:var(--section-accuracy)}.config-item{position:relative;margin-bottom:30px;padding-left:220px;min-height:80px}.config-version{position:absolute;left:10px;width:170px;text-align:right;font-weight:600;color:var(--timeline-color);font-size:0.9em;top:20px;padding-right:10px;white-space:normal;word-wrap:break-word;line-height:1.4;background:transparent}.config-marker{position:absolute;left:197px;width:12px;height:12px;border-radius:50%;background:var(--timeline-color);border:2px solid var(--bg-color);box-shadow:0 0 0 2px var(--timeline-color);z-index:2;top:20px}.config-content{background:var(--header-bg);border:1px solid var(--border-color);border-radius:12px;padding:20px;transition:transform 0.2s,box-shadow 0.2s;margin-left:0}.config-content:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.config-name{font-size:1.3em;font-weight:700;color:var(--timeline-color);margin-bottom:10px}.config-desc{margin:10px 0}.config-desc ul{margin:5px 0 10px 0;padding-left:20px}.config-desc li{margin:3px 0}.config-example{background:var(--code-bg);padding:8px 12px;border-radius:6px;font-family:'Monaco','Menlo',monospace;font-size:0.9em;margin:8px 0;border:1px solid var(--border-color)}.config-default{background:var(--code-bg);padding:6px 10px;border-radius:6px;font-size:0.9em;margin:5px 0;border:1px solid var(--border-color);display:inline-block}.section{margin:40px 0;padding:25px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--bg-color);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.donate-button{display:inline-flex;align-items:center;gap:8px;background:var(--link-color);color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:1em;transition:opacity 0.2s}.donate-button:hover{opacity:0.9}\@media (max-width:768px){.timeline::before{left:120px}.config-item{padding-left:140px}.config-version{left:5px;width:100px;font-size:0.8em}.config-marker{left:117px}.section-core,.section-optional,.section-accuracy{margin-left:140px}}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    <div class="note">$note</div>
+	<div class="timeline">
+		$config_full
+	</div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_config.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_config.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 contrib 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_contrib_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.contrib.title");
+    my $subtitle = _t("docs.contrib.subtitle");
+    my $content = _t("docs.contrib.content");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, plugins, contrib, resources, geoip, maxmind">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--plugin-standard:#3b82f6;--plugin-geoip:#10b981;--contrib-bg:#fef3c7;--related-bg:#dbeafe;--doc-bg:#e0f2fe;--sponsor-bg:#fae8ff}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--plugin-standard:#60a5fa;--plugin-geoip:#34d399;--contrib-bg:#5f4c1e;--related-bg:#1e3a5f;--doc-bg:#0b5e6b;--sponsor-bg:#4a1e4a}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px;font-size:1.5em}.section h3{margin:20px 0 10px;color:var(--link-color);font-size:1.2em}.plugin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px;margin:20px 0}.plugin-card{background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;padding:15px;transition:transform 0.2s,box-shadow 0.2s}.plugin-card:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}.plugin-card ul{margin:0;padding:0;list-style:none}.plugin-card li{margin:8px 0;padding-left:20px;position:relative}.plugin-card li::before{content:"•";color:var(--link-color);font-weight:bold;position:absolute;left:4px}.plugin-card li:first-child{margin-top:0}.plugin-card li strong{color:var(--link-color)}.plugin-card.code-block{background-color:var(--code-bg);font-family:monospace;padding:10px;border-radius:4px;margin:10px 0}.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.8em;font-weight:600;margin-right:5px}.badge.standard{background-color:var(--plugin-standard);color:white}.badge.geoip{background-color:var(--plugin-geoip);color:white}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:15px;border-radius:4px;margin:15px 0}.info-box ul,.info-box ol{margin:5px 0;padding-left:20px}.info-box li{margin:5px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}\@media (max-width:768px){.plugin-grid{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    
+    $content
+    
+    <div id="sponsor" class="section">
+        $SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_contrib.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_contrib.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 devgraphs 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_devgraphs_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.devgraphs.title");
+    my $subtitle = _t("docs.devgraphs.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 介绍 ==========
+    my $intro = _t("devgraphs.intro");
+    my $variables_title = _t("devgraphs.variables.title");
+    my $variables_desc = _t("devgraphs.variables.desc");
+    
+    # ========== 变量说明 ==========
+	my $devgraphs_variables = _t("devgraphs.variables.list");
+    
+    # ========== 图形类型 ==========
+    my $devgraphs_types = _t("devgraphs.types.list");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, plugins, development, graphs, charts, maps">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--section-title:#3b82f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--section-title:#60a5fa}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;color:var(--section-title);border-bottom:1px solid var(--border-color);padding-bottom:10px;font-size:1.5em}.section h3{margin:20px 0 10px;color:var(--link-color);font-size:1.2em}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:15px;border-radius:4px;margin:15px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}.variable-list{list-style:none;padding:0;margin:0}.variable-list li{margin:20px 0;padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.variable-list li:hover{transform:translateX(5px);box-shadow:0 2px 8px rgba(0,0,0,0.1)}.variable-list li strong{color:var(--link-color);font-size:1.1em}.type-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px}.type-list li{padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.type-list li:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}.type-list li strong{color:var(--link-color);font-size:1.1em}.type-list ul{margin:10px 0 0;padding-left:20px}.type-list ul li{padding:3px 0;background:none;border:none}.type-list ul li:hover{transform:none;box-shadow:none}pre{background-color:var(--code-bg);padding:10px;border-radius:4px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:'Monaco','Menlo',monospace}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.type-list{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+    <link href="scripts/prettify.css" type="text/css" rel="stylesheet">
+</head>
+<body onload="prettyPrint()">
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    
+    <!-- ==================== 介绍 ==================== -->
+    <div class="section">
+        <div class="info-box">
+            $intro
+        </div>
+    </div>
+    
+    <!-- ==================== 变量说明 ==================== -->
+	<div class="section">
+		$devgraphs_variables
+	</div>
+    
+    <!-- ==================== 图形类型 ==================== -->
+    <div class="section">
+		$devgraphs_types
+	</div>
+		
+    <hr>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+    <script src="scripts/prettify.js"></script>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dev_plugins_graphs.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_dev_plugins_graphs.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 devhooks 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_devhooks_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.devhooks.title");
+    my $subtitle = _t("docs.devhooks.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 内容 ==========
+	my $devhooks_full = _t("devhooks.full");
+    $devhooks_full =~ s/\\n/\n/g;
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, plugins, development, hooks, api">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--section-required:#3b82f6;--section-common:#10b981;--section-processing:#f59e0b;--section-output:#8b5cf6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--section-required:#60a5fa;--section-common:#34d399;--section-processing:#fbbf24;--section-output:#a78bfa}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;padding-bottom:10px;border-bottom:2px solid;font-size:1.5em}.section-required h2{border-color:var(--section-required);color:var(--section-required)}.section-common h2{border-color:var(--section-common);color:var(--section-common)}.section-processing h2{border-color:var(--section-processing);color:var(--section-processing)}.section-output h2{border-color:var(--section-output);color:var(--section-output)}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px;margin:20px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}.hook-list{list-style:none;padding:0;margin:0}.hook-list > li{margin:20px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s,box-shadow 0.2s}.hook-list > li:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.hook-list > li > strong{color:var(--link-color);font-size:1.2em;display:block;margin-bottom:10px}.hook-list ul{margin:10px 0 0;padding-left:20px;list-style:disc}.hook-list ul li{margin:5px 0;padding:0;background:none;border:none}.hook-list ul li:hover{transform:none;box-shadow:none}pre{background-color:var(--code-bg);padding:12px;border-radius:6px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9em;margin:10px 0}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:'Monaco','Menlo',monospace}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.doc-nav{flex-direction:column;gap:5px}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    
+	<div class="container">
+		$devhooks_full
+	</div>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dev_plugins_hooks.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_dev_plugins_hooks.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 devplugins 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_devplugins_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.devplugins.title");
+    my $subtitle = _t("docs.devplugins.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+
+    # ========== 介绍 ==========
+    my $intro = _t("devplugins.intro");
+    
+    # ========== 导航链接 ==========
+    my $nav_location = _t("devplugins.nav.location");
+    my $nav_hooks = _t("devplugins.nav.hooks");
+    my $nav_variables = _t("devplugins.nav.variables");
+    my $nav_accessible_vars = _t("devplugins.nav.accessible_vars");
+    my $nav_accessible_funcs = _t("devplugins.nav.accessible_funcs");
+    
+    # ========== 插件文件位置 ==========
+    my $location_title = _t("devplugins.location.title");
+    my $location_content = _t("devplugins.location.content");
+       $location_content =~ s/\\n/\n/g;
+    # ========== 钩子 ==========
+    my $hooks_title = _t("devplugins.hooks.title");
+    my $hooks_content = _t("devplugins.hooks.content");
+    
+    # ========== 必需变量 ==========
+    my $variables_title = _t("devplugins.variables.title");
+    my $devplugins_variables = _t("devplugins.variables.full");
+	$devplugins_variables =~ s/\\n/\n/g;
+    # ========== 可访问变量 ==========
+    my $accessible_vars_title = _t("devplugins.accessible_vars.title");
+    my $accessible_vars_content = _t("devplugins.accessible_vars.content");
+    
+    # ========== 可访问函数 ==========
+    my $accessible_funcs_title = _t("devplugins.accessible_funcs.title");
+    my $devplugins_functions = _t("devplugins.functions.full");
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, plugins, development, api, hooks">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--section-location:#3b82f6;--section-hooks:#10b981;--section-variables:#f59e0b;--section-accessible:#8b5cf6;--section-functions:#ec4899}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--section-location:#60a5fa;--section-hooks:#34d399;--section-variables:#fbbf24;--section-accessible:#a78bfa;--section-functions:#f472b6}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;padding-bottom:10px;border-bottom:2px solid;font-size:1.5em}.section-location h2{border-color:var(--section-location);color:var(--section-location)}.section-hooks h2{border-color:var(--section-hooks);color:var(--section-hooks)}.section-variables h2{border-color:var(--section-variables);color:var(--section-variables)}.section-accessible-vars h2{border-color:var(--section-accessible);color:var(--section-accessible)}.section-accessible-funcs h2{border-color:var(--section-functions);color:var(--section-functions)}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px;margin:20px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}pre{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9em;margin:15px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace}.variable-list{list-style:none;padding:0;margin:15px 0}.variable-list li{margin:15px 0;padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.variable-list li:hover{transform:translateX(5px);box-shadow:0 2px 8px rgba(0,0,0,0.1)}.variable-list li strong{color:var(--link-color);font-size:1.1em}.variable-list ul{margin:10px 0 0;padding-left:20px}.variable-list ul li{margin:5px 0;padding:0;background:none;border:none}.function-list{list-style:none;padding:0;margin:15px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:15px}.function-list li{padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.function-list li:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.function-list li strong{color:var(--link-color);font-size:1.1em;display:block;margin-bottom:8px}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.function-list{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    
+    <div class="info-box">
+        $intro
+    </div>
+    
+    <div id="location" class="section section-location">
+        <h2>$location_title</h2>
+        <div class="info-box">
+            $location_content
+        </div>
+    </div>
+    
+    <div id="hooks" class="section section-hooks">
+        <h2>$hooks_title</h2>
+        <div class="info-box">
+            $hooks_content
+        </div>
+    </div>
+    
+    <div id="variables" class="section section-variables">
+        <h2>$variables_title</h2>
+		<div class="section">
+			$devplugins_variables
+		</div>
+    </div>
+    
+    <div id="accessible-vars" class="section section-accessible-vars">
+        <h2>$accessible_vars_title</h2>
+        <div class="info-box">
+            $accessible_vars_content
+        </div>
+    </div>
+    
+    <div id="accessible-funcs" class="section section-accessible-funcs">
+        <h2>$accessible_funcs_title</h2>
+        <div class="section">
+			$devplugins_functions
+		</div>
+    </div>
+    
+    <hr>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dev_plugins.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_dev_plugins.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 dolibarr 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_dolibarr_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.dolibarr.title");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 模块介绍 ==========
+	my $dolibarr_full = _t("dolibarr.full");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats Dolibarr 模块文档">
+    <meta name="keywords" content="awstats, dolibarr, erp, crm, module, plugin">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--text-secondary:#6b7280;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--surface:#ffffff;--surface-secondary:#f9fafb;--step-bg:#f3f4f6;--step-number:#3b82f6;--badge-bg:#e5e7eb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--text-secondary:#9ca3af;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--surface:#2d3748;--surface-secondary:#1f2937;--step-bg:#374151;--step-number:#60a5fa;--badge-bg:#374151}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}.container{width:100%}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:30px}h2{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:8px;font-size:1.5em;margin:30px 0 20px}h3{color:var(--text-color);font-size:1.3em;margin:25px 0 15px}.doc-card{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.module-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:20px}.module-description{font-size:1.1rem;margin-bottom:20px}.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.badge{background-color:var(--badge-bg);border:1px solid var(--border-color);border-radius:20px;padding:5px 12px;font-size:0.9rem;font-weight:500}.feature-card{background-color:var(--surface);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin:20px 0}.feature-icon{font-size:2em;margin-bottom:10px}.links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:20px 0}.link-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px;transition:transform 0.2s}.link-card:hover{transform:translateY(-2px)}.link-icon{font-size:1.8em;margin-bottom:10px}.link-title{font-weight:600;font-size:1.1rem;margin-bottom:8px}.link-url{margin:8px 0;word-break:break-all}.link-url a{font-size:0.9rem}.steps-container{display:flex;flex-direction:column;gap:15px;margin:20px 0}.step-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px;position:relative}.step-number{position:absolute;top:-10px;left:20px;background-color:var(--step-number);color:white;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}.step-title{font-weight:600;font-size:1.1rem;margin-top:5px;margin-bottom:10px;padding-left:30px}.params-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin:20px 0}.param-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px}.param-name{font-weight:600;color:var(--accent);margin-bottom:10px;font-size:1rem}.param-desc{font-size:0.95rem;color:var(--text-secondary)}.note-box{background-color:var(--surface-secondary);border-left:4px solid var(--accent);padding:15px;border-radius:4px;margin:20px 0}.code-inline{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.links-grid{grid-template-columns:1fr}.params-grid{grid-template-columns:1fr}}.screenshot-container{margin:20px 0;text-align:center;border:1px solid var(--border-color);border-radius:12px;padding:15px;background-color:var(--surface-secondary)}.screenshot{max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}.screenshot-caption{margin-top:10px;color:var(--text-secondary);font-size:0.9em;font-style:italic}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="doc-card">
+            <h1>$doc_title</h1>
+		<div class="container">
+			$dolibarr_full
+		</div>
+    </div>
+    
+    <hr>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dolibarr.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_dolibarr.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 extra 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_extra_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.extra.title");
+    my $subtitle = _t("docs.extra.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 介绍 ==========
+    my $intro = _t("extra.intro");
+    
+    # ========== 配置说明 ==========
+    my $config_explanation = _t("extra.config.explanation");
+    
+    # ========== 示例导航 ==========
+    my $examples_title = _t("extra.examples.title");
+    my $example_productorders = _t("extra.example.productorders");
+    my $example_bugzilla = _t("extra.example.bugzilla");
+    my $example_awredir = _t("extra.example.awredir");
+    my $example_aborted = _t("extra.example.aborted");
+    my $example_domainaliases = _t("extra.example.domainaliases");
+    my $example_level2dir = _t("extra.example.level2dir");
+    
+    # ========== 示例 1 ==========
+    my $example1_title = _t("extra.example1.title");
+    my $example1_desc = _t("extra.example1.desc");
+    
+    # ========== 示例 2 ==========
+    my $example2_title = _t("extra.example2.title");
+    my $example2_desc = _t("extra.example2.desc");
+    
+    # ========== 示例 3 ==========
+    my $example3_title = _t("extra.example3.title");
+    my $example3_desc = _t("extra.example3.desc");
+    
+    # ========== 示例 4 ==========
+    my $example4_title = _t("extra.example4.title");
+    my $example4_desc = _t("extra.example4.desc");
+    
+    # ========== 示例 5 ==========
+    my $example5_title = _t("extra.example5.title");
+    my $example5_desc = _t("extra.example5.desc");
+    
+    # ========== 示例 6 ==========
+    my $example6_title = _t("extra.example6.title");
+    my $example6_desc = _t("extra.example6.desc");
+    
+    # ========== 配置参数说明 ==========
+    my $config_params_title = _t("extra.config.params.title");
+    my $config_params_desc = _t("extra.config.params.desc");
+    my $config_warning = _t("extra.config.warning");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, extra, sections, reports, customization">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--surface:#ffffff;--surface-secondary:#f9fafb;--example-bg:#f3f4f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--surface:#2d3748;--surface-secondary:#1f2937;--example-bg:#374151}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}h2{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:8px;font-size:1.5em;margin:30px 0 20px}h3{color:var(--text-color);font-size:1.2em;margin:25px 0 15px;color:var(--accent)}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.info-box{background-color:var(--surface-secondary);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}.example-box{background-color:var(--example-bg);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin:20px 0}.example-title{font-size:1.2em;font-weight:600;color:var(--accent);margin-bottom:15px}pre{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9rem;margin:15px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.example-list{list-style:none;padding:0;margin:20px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}.example-list li{margin:0}.example-list a{display:block;padding:10px 15px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:6px;transition:transform 0.2s}.example-list a:hover{transform:translateX(5px);background-color:var(--border-color);text-decoration:none}.param-table{width:100%;border-collapse:collapse;margin:20px 0}.param-table th{background-color:var(--header-bg);padding:10px;text-align:left;border:1px solid var(--border-color)}.param-table td{padding:10px;border:1px solid var(--border-color)}.param-table tr:hover{background-color:var(--surface-secondary)}.warning-note{background-color:#fff3cd;border:1px solid #ffeeba;color:#856404;padding:15px;border-radius:8px;margin:20px 0}[data-theme="dark"] .warning-note{background-color:#332e1c;border-color:#665c2c;color:#ffd966}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.example-list{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    
+    <!-- ==================== 介绍 ==================== -->
+    <div class="info-box">
+        $intro
+    </div>
+    
+    <!-- ==================== 配置说明 ==================== -->
+    <div class="info-box">
+        $config_explanation
+    </div>
+    
+    <!-- ==================== 示例导航 ==================== -->
+    <h2 id="examples">📋 $examples_title</h2>
+    <ul class="example-list">
+        <li><a href="#productorders">$example_productorders</a></li>
+        <li><a href="#bugzilla">$example_bugzilla</a></li>
+        <li><a href="#awredir">$example_awredir</a></li>
+        <li><a href="#aborted">$example_aborted</a></li>
+        <li><a href="#domainaliases">$example_domainaliases</a></li>
+        <li><a href="#level2dir">$example_level2dir</a></li>
+    </ul>
+    
+    <!-- ==================== 示例 1 ==================== -->
+    <h3 id="productorders">📌 $example1_title</h3>
+    <div class="example-box">
+        $example1_desc
+    </div>
+    
+    <!-- ==================== 示例 2 ==================== -->
+    <h3 id="bugzilla">📌 $example2_title</h3>
+    <div class="example-box">
+        $example2_desc
+    </div>
+    
+    <!-- ==================== 示例 3 ==================== -->
+    <h3 id="awredir">📌 $example3_title</h3>
+    <div class="example-box">
+        $example3_desc
+    </div>
+    
+    <!-- ==================== 示例 4 ==================== -->
+    <h3 id="aborted">📌 $example4_title</h3>
+    <div class="example-box">
+        $example4_desc
+    </div>
+    
+    <!-- ==================== 示例 5 ==================== -->
+    <h3 id="domainaliases">📌 $example5_title</h3>
+    <div class="example-box">
+        $example5_desc
+    </div>
+    
+    <!-- ==================== 示例 6 ==================== -->
+    <h3 id="level2dir">📌 $example6_title</h3>
+    <div class="example-box">
+        $example6_desc
+    </div>
+    
+    <!-- ==================== 配置参数说明 ==================== -->
+    <h2 id="extraconfig">⚙️ $config_params_title</h2>
+    <div class="info-box">
+        $config_params_desc
+    </div>
+    
+    <div class="warning-note">
+        $config_warning
+    </div>
+    
+    <hr>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_extra.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_extra.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 faq 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_faq_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.faq.title");
+    my $subtitle = _t("docs.faq.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+	my $faq_content = _t("faq.complete");
+	   $faq_content =~ s/\\n/\n/g;
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, faq, troubleshooting, help, support">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-primary:#ffffff;--bg-secondary:#f8f9fa;--bg-code:#f2f4f6;--text-primary:#212529;--text-secondary:#495057;--text-muted:#6c757d;--link-color:#0d6efd;--link-hover:#0a58ca;--border-color:#dee2e6;--heading-color:#1a2b3c;--accent-light:#e7f1ff;--accent-border:#9ec5fe;--code-color:#d63384;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px rgba(0,0,0,0.1);--card-bg:#ffffff;--header-bg:#f8f9fa;--accent:#0a58ca}[data-theme="dark"]{--bg-primary:#1e1e2f;--bg-secondary:#2d2d3f;--bg-code:#2a2a3c;--text-primary:#e4e6eb;--text-secondary:#b0b3b8;--text-muted:#8c8f94;--link-color:#8cb4ff;--link-hover:#a6c8ff;--border-color:#3e3e5e;--heading-color:#cfd9e6;--accent-light:#2c3a5e;--accent-border:#4f6b9c;--code-color:#f08d8d;--shadow-sm:0 1px 2px rgba(0,0,0,0.3);--shadow-md:0 4px 8px rgba(0,0,0,0.5);--card-bg:#2d2d3f;--header-bg:#2a2a3c;--accent:#a6c8ff}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:var(--text-primary);background-color:var(--bg-primary);margin:0;padding:20px;transition:background-color 0.3s ease,color 0.2s ease;scroll-behavior:smooth;max-width:1200px;margin:0 auto}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}h1{font-size:2.4rem;font-weight:600;color:var(--heading-color);border-bottom:3px solid var(--link-color);padding-bottom:12px;margin:1.5rem 0 0.5rem;letter-spacing:-0.02em}h1:first-of-type{margin-top:0.5rem}.subtitle{font-size:1.2rem;color:var(--text-secondary);margin:-5px 0 25px 0;font-style:italic}h2{font-size:2rem;font-weight:500;color:var(--heading-color);border-left:6px solid var(--link-color);padding-left:16px;margin:2.2rem 0 1.2rem 0;background:linear-gradient(to right,var(--bg-secondary),transparent);padding:12px 0 12px 16px;border-radius:0 8px 8px 0}h3{font-size:1.5rem;font-weight:500;color:var(--heading-color);margin:1.8rem 0 1rem 0;padding-bottom:5px;border-bottom:2px dashed var(--border-color)}h3[id]{scroll-margin-top:20px}h3[id]::before{content:"🔗 ";color:var(--link-color);font-size:1.3rem;opacity:0.7;margin-right:4px}ul,ol{padding-left:1.8rem}li{margin:8px 0;color:var(--text-secondary)}h2 + ul,h2 + ul ul{background:var(--bg-secondary);padding:18px 18px 18px 38px;border-radius:12px;box-shadow:var(--shadow-sm);border:1px solid var(--border-color);list-style-type:none}h2 + ul li{margin:8px 0;position:relative}h2 + ul li::before{content:"▹";color:var(--link-color);font-weight:bold;position:absolute;left:-22px;font-size:1.2rem}p{color:var(--text-primary);margin:1rem 0;line-height:1.7}strong{color:var(--heading-color);font-weight:600}p strong:first-child{color:var(--link-color);font-size:1.05em}code,pre{font-family:"SF Mono",Menlo,Monaco,Consolas,"Courier New",monospace;font-size:0.9em;background-color:var(--bg-code);border:1px solid var(--border-color);border-radius:6px}code{color:var(--code-color);padding:0.2em 0.4em;white-space:nowrap}pre{display:block;padding:16px;margin:16px 0;line-height:1.45;overflow-x:auto;border-radius:8px;white-space:pre;word-wrap:normal;box-shadow:inset 0 0 0 1px var(--border-color);background-color:var(--bg-secondary)}pre code{background:none;border:none;color:var(--text-primary);padding:0;white-space:pre;font-size:0.9rem}blockquote,.note{background:var(--accent-light);border-left:5px solid var(--accent-border);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:0 12px 12px 0;color:var(--text-secondary);font-style:normal;box-shadow:var(--shadow-sm)}blockquote p:last-child,.note p:last-child{margin-bottom:0}hr{border:none;border-top:2px solid var(--border-color);margin:2.5rem 0;opacity:0.5}table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;overflow:hidden}th{background-color:var(--heading-color);color:var(--bg-primary);font-weight:600;padding:12px;text-align:left}td{padding:10px 12px;border-top:1px solid var(--border-color);color:var(--text-primary)}tr:nth-child(even){background-color:var(--bg-code)}html{scroll-padding-top:20px;scroll-behavior:smooth}h2 + ul a{transition:transform 0.2s,color 0.2s;display:inline-block}h2 + ul a:hover{transform:translateX(6px)}[dir="rtl"]{text-align:right}[dir="rtl"] h2{border-left:none;border-right:6px solid var(--link-color);padding-left:0;padding-right:16px;background:linear-gradient(to left,var(--bg-secondary),transparent)}[dir="rtl"] h2 + ul{padding-left:18px;padding-right:38px}[dir="rtl"] h2 + ul li::before{left:auto;right:-22px}[dir="rtl"] blockquote{border-left:none;border-right:5px solid var(--accent-border);border-radius:12px 0 0 12px}\@media (max-width:768px){body{padding:15px}h1{font-size:2rem}h2{font-size:1.6rem}h3{font-size:1.3rem}ul,ol{padding-left:1.2rem}h2 + ul{padding:15px 15px 15px 30px}}\@media (max-width:480px){body{padding:10px}h1{font-size:1.7rem}h2{font-size:1.4rem;padding:8px 0 8px 12px}pre{padding:10px;font-size:0.85rem}code{white-space:normal;word-break:break-word}}\@media print{body{background:white;color:black;padding:0.5in}a{color:black;text-decoration:underline;border:none}pre,code{background:#f5f5f5;border:1px solid #ccc;color:black}h2,h3{page-break-after:avoid}h2 + ul{background:none;border:1px solid #aaa;box-shadow:none}}a[href^="#"]::before{content:"⚓ ";font-size:0.9em;opacity:0.6}h2 + ul a[href^="#"]::before{content:none}[id]{scroll-margin-top:30px}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    $faq_content
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_faq.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_faq.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 glossary 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_glossary_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.glossary.title");
+    my $subtitle = _t("docs.glossary.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 基础术语 ==========
+    my $glossary_unique_visitor = _t("glossary.unique_visitor");
+    my $glossary_visits = _t("glossary.visits");
+    my $glossary_pages = _t("glossary.pages");
+    my $glossary_hits = _t("glossary.hits");
+    my $glossary_bandwidth = _t("glossary.bandwidth");
+    my $glossary_entry_page = _t("glossary.entry_page");
+    my $glossary_exit_page = _t("glossary.exit_page");
+    my $glossary_session_duration = _t("glossary.session_duration");
+    my $glossary_grabber = _t("glossary.grabber");
+    my $glossary_direct_access = _t("glossary.direct_access");
+    my $glossary_add_to_favourites = _t("glossary.add_to_favourites");
+    
+    # ========== HTTP 状态码 ==========
+    my $glossary_http_title = _t("glossary.http.title");
+    my $glossary_http_intro = _t("glossary.http.intro");
+    my $glossary_http_classes = _t("glossary.http.classes");
+    my $glossary_http_1xx = _t("glossary.http.1xx");
+    my $glossary_http_2xx = _t("glossary.http.2xx");
+    my $glossary_http_3xx = _t("glossary.http.3xx");
+    my $glossary_http_4xx = _t("glossary.http.4xx");
+    my $glossary_http_5xx = _t("glossary.http.5xx");
+    
+    # ========== SMTP 状态码 ==========
+    my $glossary_smtp_title = _t("glossary.smtp.title");
+    my $glossary_smtp_intro = _t("glossary.smtp.intro");
+    my $glossary_smtp_2xx = _t("glossary.smtp.2xx");
+    my $glossary_smtp_4xx = _t("glossary.smtp.4xx");
+    my $glossary_smtp_5xx = _t("glossary.smtp.5xx");
+    
+    # ========== 页脚 ==========
+    my $footer_author = _t("glossary.footer.author");
+    my $footer_twitter = _t("glossary.footer.twitter");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, glossary, terms, definitions, http, smtp">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--surface:#ffffff;--surface-secondary:#f9fafb;--glossary-term:#3b82f6;--glossary-http:#10b981;--glossary-smtp:#8b5cf6;--table-header:#e5e7eb;--table-row-even:#f9fafb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--surface:#2d3748;--surface-secondary:#1f2937;--glossary-term:#60a5fa;--glossary-http:#34d399;--glossary-smtp:#a78bfa;--table-header:#374151;--table-row-even:#1f2937}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.glossary-section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.glossary-section h2{margin-top:0;padding-bottom:10px;border-bottom:2px solid;font-size:1.5em}.glossary-basic h2{border-color:var(--glossary-term);color:var(--glossary-term)}.glossary-http h2{border-color:var(--glossary-http);color:var(--glossary-http)}.glossary-smtp h2{border-color:var(--glossary-smtp);color:var(--glossary-smtp)}.term-card{margin:25px 0;padding:20px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s,box-shadow 0.2s;scroll-margin-top:80px}.term-card:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.term-card h3{margin-top:0;color:var(--link-color);font-size:1.3em;border-bottom:1px solid var(--border-color);padding-bottom:8px}.term-card h4{color:var(--text-color);font-size:1.1em;margin:15px 0 10px}.term-card p{margin:10px 0}.term-card ul,.term-card ol{margin:10px 0;padding-left:25px}.term-card li{margin:3px 0}.term-card pre{background-color:var(--code-bg);padding:12px;border-radius:6px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.term-card code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.code-table{width:100%;border-collapse:collapse;margin:15px 0;border:1px solid var(--border-color);border-radius:8px;overflow:hidden}.code-table th{background-color:var(--table-header);padding:10px;text-align:left;font-weight:600}.code-table td{padding:8px 10px;border-top:1px solid var(--border-color)}.code-table tr:nth-child(even){background-color:var(--table-row-even)}.code-table tr:hover{background-color:var(--border-color)}.code-table td:first-child{font-family:'Monaco','Menlo',monospace;font-weight:600;width:80px}.glossary-note{background-color:var(--header-bg);border-left:4px solid var(--accent);padding:15px;border-radius:4px;margin:15px 0}.glossary-note p{margin:5px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}\@media (max-width:768px){.term-card:hover{transform:none}.code-table{font-size:0.9rem}.code-table td:first-child{width:60px}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    
+    <!-- ==================== 基础术语 ==================== -->
+    <div id="basic" class="glossary-section glossary-basic">
+        <div id="UniqueVisitor" class="term-card">$glossary_unique_visitor</div>
+        <div id="Visits" class="term-card">$glossary_visits</div>
+        <div id="Pages" class="term-card">$glossary_pages</div>
+        <div id="Hits" class="term-card">$glossary_hits</div>
+        <div id="Bandwidth" class="term-card">$glossary_bandwidth</div>
+        <div id="EntryPage" class="term-card">$glossary_entry_page</div>
+        <div id="ExitPage" class="term-card">$glossary_exit_page</div>
+        <div id="SessionDuration" class="term-card">$glossary_session_duration</div>
+        <div id="Grabber" class="term-card">$glossary_grabber</div>
+        <div id="Direct" class="term-card">$glossary_direct_access</div>
+        <div id="AddToFavourites" class="term-card">$glossary_add_to_favourites</div>
+    </div>
+    
+    <!-- ==================== HTTP 状态码 ==================== -->
+    <div id="http" class="glossary-section glossary-http">
+        <h2>$glossary_http_title</h2>
+        
+        <div class="term-card">
+            $glossary_http_intro
+            $glossary_http_classes
+        </div>
+        
+        <div id="1xx" class="term-card">$glossary_http_1xx</div>
+        <div id="2xx" class="term-card">$glossary_http_2xx</div>
+        <div id="3xx" class="term-card">$glossary_http_3xx</div>
+        <div id="4xx" class="term-card">$glossary_http_4xx</div>
+        <div id="5xx" class="term-card">$glossary_http_5xx</div>
+    </div>
+    
+    <!-- ==================== SMTP 状态码 ==================== -->
+    <div id="smtp" class="glossary-section glossary-smtp">
+        <h2>$glossary_smtp_title</h2>
+        
+        <div class="term-card">
+            $glossary_smtp_intro
+        </div>
+        
+        <div id="SMTP23" class="term-card">$glossary_smtp_2xx</div>
+        <div id="SMTP4" class="term-card">$glossary_smtp_4xx</div>
+        <div id="SMTP5" class="term-card">$glossary_smtp_5xx</div>
+    </div>
+    
+    <hr>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_glossary.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_glossary.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 license 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_license_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.license.title");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 许可证介绍 ==========
+    my $license_desc = _t("license.intro.desc");
+    my $license_follow = _t("license.intro.follow");
+    my $chart_title = _t("license.chart.title");
+    
+    # ========== 表格头部 ==========
+    my $table_header = _t("license.table.header");
+    
+    # ========== 分类行 ==========
+    my $category_free = _t("license.category.free_software");
+    my $category_semi_free = _t("license.category.semi_free");
+    my $category_proprietary = _t("license.category.proprietary");
+    my $category_modern = _t("license.category.modern_opensource");
+    
+    # ========== 自由软件行 ==========
+    my $row_public_domain = _t("license.row.public_domain");
+    my $row_mit = _t("license.row.mit");
+    my $row_bsd2 = _t("license.row.bsd2");
+    my $row_bsd3 = _t("license.row.bsd3");
+    my $row_apache2 = _t("license.row.apache2");
+    my $row_isc = _t("license.row.isc");
+    my $row_lgpl = _t("license.row.lgpl");
+    my $row_mpl2 = _t("license.row.mpl2");
+    my $row_gpl = _t("license.row.gpl");
+    my $row_agpl3 = _t("license.row.agpl3");
+    my $row_epl2 = _t("license.row.epl2");
+    my $row_cddl1 = _t("license.row.cddl1");
+    
+    # ========== 半自由软件行 ==========
+    my $row_semi_free = _t("license.row.semi_free");
+    
+    # ========== 专有软件行 ==========
+    my $row_freeware = _t("license.row.freeware");
+    my $row_shareware = _t("license.row.shareware");
+    my $row_commercial = _t("license.row.commercial");
+    
+    # ========== 现代开源协议行 ==========
+    my $row_python = _t("license.row.python");
+    my $row_php = _t("license.row.php");
+    my $row_artistic = _t("license.row.artistic");
+    my $row_osl3 = _t("license.row.osl3");
+    
+    # ========== 表格注脚 ==========
+    my $notes_title = _t("license.notes.title");
+    my $note1 = _t("license.note1");
+    my $note2 = _t("license.note2");
+    my $note3 = _t("license.note3");
+    my $note4 = _t("license.note4");
+    my $note5 = _t("license.note5");
+    my $note6 = _t("license.note6");
+    my $note7 = _t("license.note7");
+    my $note8 = _t("license.note8");
+    my $note9 = _t("license.note9");
+    my $note10 = _t("license.note10");
+    my $important_title = _t("license.important.title");
+    my $important_desc = _t("license.important.desc");
+    my $license_date = _t("license.date");
+    
+    # ========== 页脚 ==========
+    my $footer_author = _t("license.footer.author");
+    my $footer_twitter = _t("license.footer.twitter");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, license, gpl, copyright, opensource">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--accent-soft:#dbeafe;--surface:#ffffff;--surface-secondary:#f9fafb;--table-header:#e5e7eb;--table-row-even:#f9fafb;--permission-yes:#059669;--permission-no:#dc2626;--permission-maybe:#d97706;--permission-special:#7c3aed;--badge-bg:#e5e7eb;--category-bg:#f3f4f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--accent-soft:#1e3a5f;--surface:#2d3748;--surface-secondary:#1f2937;--table-header:#374151;--table-row-even:#1f2937;--permission-yes:#34d399;--permission-no:#f87171;--permission-maybe:#fbbf24;--permission-special:#c084fc;--badge-bg:#374151;--category-bg:#2d3748}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1400px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.doc-card{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.license-intro{background-color:var(--accent-soft);padding:24px;border-radius:30px;margin-bottom:30px}.license-intro p{font-size:1.1rem;margin:0}.license-intro p:first-child{margin-bottom:10px}.license-chart-container{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border-color)}.license-table{width:100%;border-collapse:collapse;min-width:1000px}.license-table th{background-color:var(--table-header);color:var(--text-color);padding:12px 8px;text-align:center;font-weight:600;border:1px solid var(--border-color)}.license-table td{padding:10px 8px;border:1px solid var(--border-color);vertical-align:middle}.license-table tr:nth-child(even){background-color:var(--table-row-even)}.license-table tr:hover{background-color:var(--border-color)}.category-row td{background-color:var(--category-bg);font-weight:600;text-align:left;padding:12px 15px}.license-badge{display:inline-block;padding:4px 8px;background-color:var(--badge-bg);border-radius:12px;font-size:0.9rem;font-family:'Monaco','Menlo',monospace}.permission-yes{color:var(--permission-yes);font-weight:600}.permission-no{color:var(--permission-no);font-weight:600}.permission-maybe{color:var(--permission-maybe);font-weight:600}.permission-special{color:var(--permission-special);font-weight:600}.license-notes{margin:30px 0;padding:20px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:12px}.license-notes p{margin:8px 0;line-height:1.5}.note-number{display:inline-block;width:24px;height:24px;background-color:var(--accent);color:white;border-radius:50%;text-align:center;line-height:24px;font-size:0.9rem;margin-right:8px}.license-date{margin-top:20px;padding:15px;background-color:var(--surface-secondary);border-radius:8px;font-style:italic;color:var(--text-color);opacity:0.8;text-align:center}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}sup{font-size:0.7rem;vertical-align:super}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <div class="doc-card">
+        <h1>$doc_title</h1>
+        
+        <div class="license-intro">
+            <p>$license_desc</p>
+            <p style="color: var(--text-secondary);">$license_follow</p>
+        </div>
+        
+        <h2>$chart_title</h2>
+        
+        <!-- 现代化表格 -->
+        <div class="license-chart-container">
+            <table class="license-table">
+                $table_header
+                <tbody>
+                    $category_free
+                    $row_public_domain
+                    $row_mit
+                    $row_bsd2
+                    $row_bsd3
+                    $row_apache2
+                    $row_isc
+                    $row_lgpl
+                    $row_mpl2
+                    $row_gpl
+                    $row_agpl3
+                    $row_epl2
+                    $row_cddl1
+                    
+                    $category_semi_free
+                    $row_semi_free
+                    
+                    $category_proprietary
+                    $row_freeware
+                    $row_shareware
+                    $row_commercial
+                    
+                    $category_modern
+                    $row_python
+                    $row_php
+                    $row_artistic
+                    $row_osl3
+                </tbody>
+            </table>
+        </div>
+        <div class="license-notes">
+            $notes_title
+            $note1
+            $note2
+            $note3
+            $note4
+            $note5
+            $note6
+            $note7
+            $note8
+            $note9
+            $note10
+            <br>
+            $important_title
+            $important_desc
+        </div>
+        
+        <div class="license-date">
+            $license_date
+        </div>
+    </div>
+    
+    <hr>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_license.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_license.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 loganalysispaper 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_loganalysispaper_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.loganalysispaper.title");
+    my $subtitle = _t("docs.loganalysispaper.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    my $SPONSOR_SECTION = _t("sponsor.section");
+    # ========== 引言 ==========
+    my $intro = _t("paper.intro");
+    
+    # ========== 方法总标题 ==========
+    my $methods_title = _t("paper.methods.title");
+    
+    # ========== HTML 标签计数器 ==========
+    my $htmltag_title = _t("paper.method.htmltag.title");
+    my $htmltag_desc = _t("paper.method.htmltag.desc");
+    my $htmltag_pros_title = _t("paper.method.htmltag.pros.title");
+    my $htmltag_pros_list = _t("paper.method.htmltag.pros.list");
+    my $htmltag_cons_title = _t("paper.method.htmltag.cons.title");
+    my $htmltag_cons_list = _t("paper.method.htmltag.cons.list");
+    my $htmltag_summary_title = _t("paper.method.htmltag.summary.title");
+    my $htmltag_summary = _t("paper.method.htmltag.summary");
+    
+    # ========== 日志分析 ==========
+    my $loganalysis_title = _t("paper.method.loganalysis.title");
+    my $loganalysis_desc = _t("paper.method.loganalysis.desc");
+	# ========== 日志分析 - 基础模型 ==========
+	my $loganalysis_basic_title = _t("paper.loganalysis.basic_model.title");
+	my $loganalysis_basic_desc = _t("paper.loganalysis.basic_model.desc");
+
+	# ========== 日志分析 - 缓存 ==========
+	my $loganalysis_cache_title = _t("paper.loganalysis.cache.title");
+	my $loganalysis_cache_desc = _t("paper.loganalysis.cache.desc");
+
+	# ========== 日志分析 - 你能知道什么 ==========
+	my $loganalysis_what_you_know_title = _t("paper.loganalysis.what_you_know.title");
+	my $loganalysis_what_you_know_desc = _t("paper.loganalysis.what_you_know.desc");
+
+	# ========== 日志分析 - 你不能知道什么 ==========
+	my $loganalysis_what_you_dont_know_title = _t("paper.loganalysis.what_you_dont_know.title");
+	my $loganalysis_what_you_dont_know_desc = _t("paper.loganalysis.what_you_dont_know.desc");
+
+	# ========== 日志分析 - 真实数据 ==========
+	my $loganalysis_real_data_title = _t("paper.loganalysis.real_data.title");
+	my $loganalysis_real_data_desc = _t("paper.loganalysis.real_data.desc");
+
+	# ========== 日志分析 - 结论 ==========
+	my $loganalysis_conclusion_title = _t("paper.loganalysis.conclusion.title");
+	my $loganalysis_conclusion_desc = _t("paper.loganalysis.conclusion.desc");
+
+	# ========== 日志分析 - 致谢和进一步阅读 ==========
+	my $loganalysis_acknowledgements_title = _t("paper.loganalysis.acknowledgements.title");
+	my $loganalysis_acknowledgements_desc = _t("paper.loganalysis.acknowledgements.desc");
+    # ========== 应用追踪 ==========
+    my $apptracking_title = _t("paper.method.apptracking.title");
+    my $apptracking_desc = _t("paper.method.apptracking.desc");
+    my $apptracking_pros_title = _t("paper.method.apptracking.pros.title");
+    my $apptracking_pros_list = _t("paper.method.apptracking.pros.list");
+    my $apptracking_cons_title = _t("paper.method.apptracking.cons.title");
+    my $apptracking_cons_list = _t("paper.method.apptracking.cons.list");
+    my $apptracking_summary_title = _t("paper.method.apptracking.summary.title");
+    my $apptracking_summary = _t("paper.method.apptracking.summary");
+    
+    # ========== AWStats 工作原理 ==========
+    my $awstats_title = _t("paper.awstats.howitworks.title");
+    my $awstats_desc = _t("paper.awstats.howitworks.desc");
+    
+    # ========== 结论 ==========
+    my $conclusion_title = _t("paper.conclusion.title");
+    my $conclusion = _t("paper.conclusion");
+    
+    # ========== 其他文章 ==========
+    my $otherarticles_title = _t("paper.otherarticles.title");
+    my $otherarticles_list = _t("paper.otherarticles.list");
+    
+    # ========== 页脚 ==========
+    my $footer_author = _t("paper.footer.author");
+    my $footer_googleplus = _t("paper.footer.googleplus");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, log analysis, web statistics, tracking">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--accent-soft:#dbeafe;--surface:#ffffff;--surface-secondary:#f9fafb;--pros-bg:#e6f7e6;--pros-color:#059669;--cons-bg:#fee9e9;--cons-color:#dc2626;--summary-bg:#e6f3ff}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--accent-soft:#1e3a5f;--surface:#2d3748;--surface-secondary:#1f2937;--pros-bg:#064e3b;--pros-color:#34d399;--cons-bg:#7f1d1d;--cons-color:#f87171;--summary-bg:#1e3a5f}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}h2{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:8px;font-size:1.5em;margin:30px 0 20px}h3{color:var(--text-color);font-size:1.2em;margin:20px 0 10px}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.paper-section{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.intro-box{background-color:var(--accent-soft);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}.pros-box{background-color:var(--pros-bg);border-left:4px solid var(--pros-color);padding:15px;border-radius:8px;margin:15px 0}.pros-box h3{color:var(--pros-color);margin-top:0}.cons-box{background-color:var(--cons-bg);border-left:4px solid var(--cons-color);padding:15px;border-radius:8px;margin:15px 0}.cons-box h3{color:var(--cons-color);margin-top:0}.summary-box{background-color:var(--summary-bg);border-left:4px solid var(--accent);padding:15px;border-radius:8px;margin:15px 0}.summary-box h3{color:var(--accent);margin-top:0}.conclusion-box{background-color:var(--header-bg);border:1px solid var(--border-color);padding:20px;border-radius:8px;margin:20px 0;font-style:italic}ul{margin:10px 0;padding-left:25px}li{margin:5px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}.footer-note a{color:var(--link-color);text-decoration:none}.footer-note a:hover{text-decoration:underline}.work-in-progress{color:var(--text-color);opacity:0.6;font-style:italic;text-align:center;padding:10px}.loganalysis-subsection{margin:30px 0;padding:20px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px}.loganalysis-subsection h3{color:var(--accent);margin-top:0;margin-bottom:15px;font-size:1.2em;border-bottom:1px solid var(--border-color);padding-bottom:8px}.loganalysis-subsection ol,.loganalysis-subsection ul{margin:10px 0;padding-left:25px}.loganalysis-subsection li{margin:5px 0}.loganalysis-subsection p{margin:10px 0}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <div class="paper-section">
+        <h1>$doc_title</h1>
+        
+        <div class="intro-box">
+            $intro
+        </div>
+        
+        $methods_title
+        
+        <div id="htmltag">
+            $htmltag_title
+            $htmltag_desc
+            
+            <div class="pros-box">
+                $htmltag_pros_title
+                $htmltag_pros_list
+            </div>
+            
+            <div class="cons-box">
+                $htmltag_cons_title
+                $htmltag_cons_list
+            </div>
+            
+            <div class="summary-box">
+                $htmltag_summary_title
+                $htmltag_summary
+            </div>
+        </div>
+        
+		<div id="loganalysis">
+			$loganalysis_title
+			
+			<div class="paper-section">
+				$loganalysis_desc
+				
+				<!-- 1. 基础模型 -->
+				<div class="loganalysis-subsection">
+					$loganalysis_basic_title
+					$loganalysis_basic_desc
+				</div>
+				
+				<!-- 2. 缓存 -->
+				<div class="loganalysis-subsection">
+					$loganalysis_cache_title
+					$loganalysis_cache_desc
+				</div>
+				
+				<!-- 3. 你能知道什么 -->
+				<div class="loganalysis-subsection">
+					$loganalysis_what_you_know_title
+					$loganalysis_what_you_know_desc
+				</div>
+				
+				<!-- 4. 你不能知道什么 -->
+				<div class="loganalysis-subsection">
+					$loganalysis_what_you_dont_know_title
+					$loganalysis_what_you_dont_know_desc
+				</div>
+				
+				<!-- 5. 真实数据 -->
+				<div class="loganalysis-subsection">
+					$loganalysis_real_data_title
+					$loganalysis_real_data_desc
+				</div>
+				
+				<!-- 6. 结论 -->
+				<div class="loganalysis-subsection">
+					$loganalysis_conclusion_title
+					$loganalysis_conclusion_desc
+				</div>
+				
+				<!-- 7. 致谢和进一步阅读 -->
+				<div class="loganalysis-subsection">
+					$loganalysis_acknowledgements_title
+					$loganalysis_acknowledgements_desc
+				</div>
+			</div>
+		</div>
+        
+        <!-- ==================== 应用追踪 ==================== -->
+        <div id="apptracking">
+            $apptracking_title
+            $apptracking_desc
+            
+            <div class="pros-box">
+                $apptracking_pros_title
+                $apptracking_pros_list
+            </div>
+            
+            <div class="cons-box">
+                $apptracking_cons_title
+                $apptracking_cons_list
+            </div>
+            
+            <div class="summary-box">
+                $apptracking_summary_title
+                $apptracking_summary
+            </div>
+        </div>
+        
+        <!-- ==================== AWStats 工作原理 ==================== -->
+        <div id="howitworks">
+            $awstats_title
+            <div class="paper-section">
+                $awstats_desc
+            </div>
+        </div>
+        
+        <!-- ==================== 结论 ==================== -->
+        <div class="conclusion-box">
+            $conclusion_title
+            $conclusion
+        </div>
+        
+        <!-- ==================== 其他文章 ==================== -->
+        <h2>$otherarticles_title</h2>
+        <div class="paper-section">
+            $otherarticles_list
+        </div>
+        
+        <hr>
+        
+        <div class="footer-note">
+            <p>$footer_author</p>
+            $footer_googleplus
+        </div>
+    </div>
+    
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+    
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_loganalysispaper.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_loganalysispaper.html in $doc_dir with language $lang\n" if $Debug;
+}
+
+#------------------------------------------------------------------------------
+# 生成 security 文档页面
+# Parameters: $dir (统计目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_security_doc {
+    my ($dir) = @_;
+    
+    # 获取页面标题
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $SPONSOR_SECTION = _t("sponsor.section");
+    my $theme_script = get_theme_script();
+    # ========== 文档基本信息 ==========
+    my $doc_title = _t("docs.security.title");
+    my $subtitle = _t("docs.security.subtitle");
+    my $full_title = "$doc_title - $page_title";
+    # ========== 引言 ==========
+    my $intro = _t("security.intro");
+    
+    # ========== 安全策略 1 ==========
+	my $label_policy = _t("security.label.policy");
+	my $label_advantage = _t("security.label.advantage");
+	my $label_disadvantage = _t("security.label.disadvantage");
+	my $label_how = _t("security.label.how");
+    my $policy1_title = _t("security.policy1.title");
+    my $policy1_policy = _t("security.policy1.policy");
+    my $policy1_advantage = _t("security.policy1.advantage");
+    my $policy1_disadvantage = _t("security.policy1.disadvantage");
+    my $policy1_how = _t("security.policy1.how");
+    
+    # ========== 安全策略 2 ==========
+    my $policy2_title = _t("security.policy2.title");
+    my $policy2_policy = _t("security.policy2.policy");
+    my $policy2_advantage = _t("security.policy2.advantage");
+    my $policy2_disadvantage = _t("security.policy2.disadvantage");
+    my $policy2_how = _t("security.policy2.how");
+    
+    # ========== AWSTATS_FORCE_CONFIG 环境变量 ==========
+    my $force_config = _t("security.force_config");
+    
+    # ========== 安全策略 3 ==========
+    my $policy3_title = _t("security.policy3.title");
+    my $policy3_policy = _t("security.policy3.policy");
+    my $policy3_advantage = _t("security.policy3.advantage");
+    my $policy3_disadvantage = _t("security.policy3.disadvantage");
+    my $policy3_how = _t("security.policy3.how");
+    
+    # ========== 结论 ==========
+    my $conclusion = _t("security.conclusion");
+    
+    # ========== 页脚 ==========
+    my $footer_author = _t("security.footer.author");
+    my $footer_twitter = _t("security.footer.twitter");
+    
+    # 获取语言和方向
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, security, authentication, permissions">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--accent-soft:#dbeafe;--surface:#ffffff;--surface-secondary:#f9fafb;--policy-high:#8b5cf6;--policy-medium:#f59e0b;--policy-none:#6b7280;--policy-high-soft:#ede9fe;--policy-medium-soft:#fef3c7;--policy-none-soft:#f3f4f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--accent-soft:#1e3a5f;--surface:#2d3748;--surface-secondary:#1f2937;--policy-high:#a78bfa;--policy-medium:#fbbf24;--policy-none:#9ca3af;--policy-high-soft:#2d2b4d;--policy-medium-soft:#4d3d1f;--policy-none-soft:#2d3748}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.security-section{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.intro-box{background-color:var(--accent-soft);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}.policy-card{margin:30px 0;padding:25px;border-radius:12px;border-left:6px solid;scroll-margin-top:80px}.policy-card h2{margin-top:0;font-size:1.5em;border-bottom:1px solid var(--border-color);padding-bottom:10px}.policy-high{background-color:var(--policy-high-soft);border-left-color:var(--policy-high)}.policy-medium{background-color:var(--policy-medium-soft);border-left-color:var(--policy-medium)}.policy-none{background-color:var(--policy-none-soft);border-left-color:var(--policy-none)}.policy-high h2{color:var(--policy-high)}.policy-medium h2{color:var(--policy-medium)}.policy-none h2{color:var(--policy-none)}.policy-label{display:inline-block;font-weight:600;margin-top:15px;color:var(--accent)}pre{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9rem;margin:15px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.tip-box{background-color:var(--header-bg);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    
+    <div class="security-section">
+        <!-- ==================== 引言 ==================== -->
+        <div class="intro-box">
+            $intro
+        </div>
+        
+        <!-- ==================== 安全策略 1 ==================== -->
+        <div id="1" class="policy-card policy-high">
+            $policy1_title
+            
+            <div class="policy-label">$label_policy</div>
+            $policy1_policy
+            
+            <div class="policy-label">$label_advantage</div>
+            $policy1_advantage
+            
+            <div class="policy-label">$label_disadvantage</div>
+            $policy1_disadvantage
+            
+            <div class="policy-label">$label_how</div>
+            $policy1_how
+        </div>
+        
+        <!-- ==================== 安全策略 2 ==================== -->
+        <div id="2" class="policy-card policy-medium">
+            $policy2_title
+            
+            <div class="policy-label">$label_policy</div>
+            $policy2_policy
+            
+            <div class="policy-label">$label_advantage</div>
+            $policy2_advantage
+            
+            <div class="policy-label">$label_disadvantage</div>
+            $policy2_disadvantage
+            
+            <div class="policy-label">$label_how</div>
+            $policy2_how
+            
+            <!-- ==================== AWSTATS_FORCE_CONFIG 环境变量 ==================== -->
+            <div class="tip-box">
+                $force_config
+            </div>
+        </div>
+        
+        <!-- ==================== 安全策略 3 ==================== -->
+        <div id="3" class="policy-card policy-none">
+            $policy3_title
+            
+            <div class="policy-label">$label_policy</div>
+            $policy3_policy
+            
+            <div class="policy-label">$label_advantage</div>
+            $policy3_advantage
+            
+            <div class="policy-label">$label_disadvantage</div>
+            $policy3_disadvantage
+            
+            <div class="policy-label">$label_how</div>
+            $policy3_how
+        </div>
+        
+        <!-- ==================== 结论 ==================== -->
+        <div class="tip-box">
+            $conclusion
+        </div>
+    </div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_security.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_security.html in $doc_dir with language $lang\n" if $Debug;
+}
+#------------------------------------------------------------------------------
+# 生成 setup 页面
+# Parameters: $dir (setup目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_setup_doc {
+    my ($dir) = @_;
+    
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $theme_script = get_theme_script();
+    my $doc_title = _t("docs.setup.title");
+    my $subtitle = _t("docs.setup.subtitle");
+    my $content = _t("docs.setup.content");
+       $content =~ s/\\n/\n/g;
+    my $full_title = "$doc_title - $page_title";
+    
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, setup, install, configure">
+    <title>$full_title</title>
+    <style>
+	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3,h4{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.code-block{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:monospace;white-space:pre-wrap;margin:15px 0}.step{margin:25px 0;padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.step-detail{margin:20px 0;padding:15px;background-color:var(--bg-color);border-radius:6px}.note{font-style:italic;opacity:0.8}.conclusion{font-weight:bold;color:var(--link-color)}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:5px 0}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    <div class="section">
+        $content
+    </div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_setup.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_setup.html in $doc_dir with language $lang\n" if $Debug;
+}
+#------------------------------------------------------------------------------
+# 生成 tools 文档页面
+# Parameters: $dir (tools目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_tools_doc {
+    my ($dir) = @_;
+    
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $theme_script = get_theme_script();
+    my $doc_title = _t("docs.tools.title");
+    my $subtitle = _t("docs.tools.subtitle");
+    my $content = _t("docs.tools.content");
+	   $content =~ s/\\n/\n/g;
+    my $full_title = "$doc_title - $page_title";
+    
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, tools, utilities, awstats_updateall, awstats_buildstaticpages, logresolvemerge, maillogconvert, urlaliasbuilder">
+    <title>$full_title</title>
+    <style>
+    :root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--warning-color:#b91c1c}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--warning-color:#f87171}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3,h4{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.code-block{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:monospace;white-space:pre-wrap;margin:15px 0}.tool-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.usage{margin:20px 0;padding:15px;background-color:var(--bg-color);border-radius:6px}.example{margin:20px 0;padding:15px;background-color:var(--bg-color);border-left:4px solid var(--link-color);border-radius:4px}.note{font-style:italic;opacity:0.8;color:var(--link-color)}.warning{color:var(--warning-color);font-weight:bold}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:5px 0}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:monospace}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    <div class="section">
+        $content
+    </div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_tools.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_tools.html in $doc_dir with language $lang\n" if $Debug;
+}
+#------------------------------------------------------------------------------
+# 生成 upgrade 文档页面
+# Parameters: $dir (upgrade目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_upgrade_doc {
+    my ($dir) = @_;
+    
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $theme_script = get_theme_script();
+    my $doc_title = _t("docs.upgrade.title");
+    my $subtitle = _t("docs.upgrade.subtitle");
+    my $content = _t("docs.upgrade.content");
+    $content =~ s/\\n/\n/g;
+    my $full_title = "$doc_title - $page_title";
+    
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, upgrade, update, migration">
+    <title>$full_title</title>
+    <style>
+    :root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--warning-color:#b91c1c;--note-bg:#fef3c7;--note-border:#f59e0b}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--warning-color:#f87171;--note-bg:#4b3d1a;--note-border:#fbbf24}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.step{margin:25px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.step h3{margin-top:0;color:var(--link-color)}.migration-notes{margin:30px 0;padding:20px;background-color:var(--note-bg);border:1px solid var(--note-border);border-radius:8px}.migration-notes h2{color:var(--note-border);border-bottom-color:var(--note-border)}.note-item{margin:15px 0;padding:15px;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px}.note-item u{color:var(--note-border);font-weight:bold}.note{font-style:italic;color:var(--link-color);padding:10px;background-color:var(--header-bg);border-left:4px solid var(--link-color);border-radius:4px}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:5px 0}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:monospace}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    <div class="section">
+        $content
+    </div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_upgrade.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_upgrade.html in $doc_dir with language $lang\n" if $Debug;
+}
+#------------------------------------------------------------------------------
+# 生成 webmin 文档页面
+# Parameters: $dir (webmin目录)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_webmin_doc {
+    my ($dir) = @_;
+    
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $theme_script = get_theme_script();
+    my $doc_title = _t("docs.webmin.title");
+    my $subtitle = _t("docs.webmin.subtitle");
+    my $content = _t("docs.webmin.content");
+    $content =~ s/\\n/\n/g;
+    my $full_title = "$doc_title - $page_title";
+    
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats $doc_title">
+    <meta name="keywords" content="awstats, webmin, module, administration">
+    <title>$full_title</title>
+    <style>
+    :root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--section-border:#9999cc;--result-bg:#e6f3ff;--config-bg:#fef3c7}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--section-border:#6677aa;--result-bg:#1e3a5f;--config-bg:#4b3d1a}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.webmin-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.webmin-section h2{margin-top:0;color:var(--section-border);border-bottom-color:var(--section-border)}.config-details{margin:20px 0;padding:15px;background-color:var(--config-bg);border:1px solid var(--border-color);border-radius:6px}.config-details h4{margin:15px 0 5px;color:var(--link-color)}.config-details h4:first-child{margin-top:0}.result{margin:15px 0;padding:10px;background-color:var(--result-bg);border-left:4px solid var(--link-color);border-radius:4px;font-style:italic}.section-nav{background-color:var(--header-bg);padding:15px;border-radius:8px;border:1px solid var(--border-color);margin:20px 0}.section-nav li{margin:8px 0}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:8px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:0.95em}
+    </style>
+</head>
+<body>
+    <h1>$doc_title</h1>
+    <div class="subtitle">$subtitle</div>
+    <div class="section">
+        $content
+    </div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_webmin.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated awstats_webmin.html in $doc_dir with language $lang\n" if $Debug;
+}
+#------------------------------------------------------------------------------
+# 生成首页内容页面
+# Parameters: $dir (首页介绍)
+# Return: None
+#------------------------------------------------------------------------------
+sub generate_home_doc {
+    my ($dir) = @_;
+    
+    my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
+	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $theme_script = get_theme_script();
+    my $doc_title = _t("docs.home.title");
+    my $subtitle = _t("docs.home.subtitle");
+    my $content = _t("docs.home.content");
+    $content =~ s/\\n/\n/g;
+    my $full_title = "$doc_title - $page_title";
+    
+    my $lang = $Lang || 'en';
+    my $dir_attr = $PageDir ? 'rtl' : 'ltr';
+    
+    my $html = <<"END_HTML";
+<!DOCTYPE html>
+<html lang="$lang" dir="$dir_attr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AWStats - 专业的开源日志分析工具">
+    <meta name="keywords" content="awstats, log analyzer, web statistics, 日志分析, 网站统计">
+    <title>$full_title</title>
+    <style>
+    :root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--primary-color:#3b82f6;--primary-hover:#2563eb;--secondary-color:#8b5cf6;--accent-color:#10b981;--card-bg:#ffffff;--hero-bg:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--hero-text:#ffffff;--new-badge:#ef4444;--improved-badge:#f59e0b}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--primary-color:#3b82f6;--primary-hover:#60a5fa;--secondary-color:#a78bfa;--accent-color:#34d399;--card-bg:#2d3748;--hero-bg:linear-gradient(135deg,#434190 0%,#553c9a 100%);--hero-text:#f3f4f6;--new-badge:#f87171;--improved-badge:#fbbf24}body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.6;margin:0;padding:0;background-color:var(--bg-color);color:var(--text-color)}.home-content{max-width:1200px;margin:0 auto;padding:0 20px}h1,h2,h3{color:var(--text-color)}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.hero-section{background:var(--hero-bg);color:var(--hero-text);border-radius:24px;padding:60px 40px;margin:40px 0;display:flex;align-items:center;gap:40px}.hero-content{flex:1}.hero-title{font-size:3em;margin:0 0 20px;color:white}.hero-description{font-size:1.2em;margin-bottom:30px;opacity:0.95}.hero-stats{font-size:1.1em;margin-bottom:30px;opacity:0.9}.stat-number{font-weight:bold;font-size:1.3em}.hero-buttons{display:flex;gap:15px}.button{display:inline-block;padding:12px 30px;border-radius:30px;font-weight:600;transition:all 0.3s ease}.button-primary{background:white;color:#4c51bf}.button-primary:hover{background:#f0f0f0;transform:translateY(-2px);text-decoration:none}.button-secondary{background:transparent;color:white;border:2px solid white}.button-secondary:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px);text-decoration:none}.button-large{padding:15px 40px;font-size:1.1em}.button-text{padding:0;color:var(--link-color);background:none}.hero-image{flex:1;text-align:center}.dashboard-preview{max-width:100%;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.2)}.section-title{font-size:2.5em;text-align:center;margin:60px 0 20px}.section-subtitle{text-align:center;font-size:1.2em;color:var(--text-color);opacity:0.8;margin-bottom:40px}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin:40px 0}.feature-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px;padding:30px;transition:all 0.3s ease}.feature-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,0.1)}.feature-icon{font-size:3em;margin-bottom:20px}.feature-card h3{margin:0 0 15px;font-size:1.3em}.feature-card p{margin:0;color:var(--text-color);opacity:0.9}.whatsnew-section{background:var(--header-bg);border:1px solid var(--border-color);border-radius:24px;padding:40px;margin:60px 0;position:relative}.whatsnew-badge{position:absolute;top:-15px;left:40px;background:var(--new-badge);color:white;padding:5px 20px;border-radius:30px;font-weight:bold;font-size:1em}.version-date{text-align:center;color:var(--text-color);opacity:0.7;margin-top:-10px}.whatsnew-desc{font-size:1.2em;text-align:center;margin:20px 0 30px}.whatsnew-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:15px}.whatsnew-list li{padding:15px;background:var(--bg-color);border:1px solid var(--border-color);border-radius:12px;line-height:1.5}.new-badge{background:var(--new-badge);color:white;padding:2px 8px;border-radius:12px;font-size:0.8em;font-weight:bold;margin-right:8px;display:inline-block}.improved-badge{background:var(--improved-badge);color:white;padding:2px 8px;border-radius:12px;font-size:0.8em;font-weight:bold;margin-right:8px;display:inline-block}.whatsnew-footer{text-align:center;margin-top:30px}.technical-section{margin:60px 0}.technical-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:20px;margin:40px 0}.technical-item{display:flex;align-items:flex-start;gap:15px;padding:20px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.technical-check{font-size:1.5em}.technical-text{flex:1}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin:40px 0}.stat-card{text-align:center;padding:30px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px}.stat-icon{font-size:3em;margin-bottom:20px}.stat-card h3{margin:0 0 15px}.cta-section{background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);color:white;border-radius:24px;padding:60px;text-align:center;margin:60px 0}.cta-title{font-size:2.5em;margin:0 0 20px;color:white}.cta-desc{font-size:1.2em;margin-bottom:30px;opacity:0.95}.cta-buttons{display:flex;gap:20px;justify-content:center}.home-footer{text-align:center;padding:40px 0;border-top:1px solid var(--border-color);margin-top:40px}.footer-links{margin-top:10px}.footer-links a{color:var(--text-color);opacity:0.8}.footer-links a:hover{opacity:1}\@media (max-width:768px){.hero-section{flex-direction:column;padding:40px 20px}.hero-title{font-size:2em}.whatsnew-list{grid-template-columns:1fr}.cta-section{padding:40px 20px}.cta-buttons{flex-direction:column}}
+    </style>
+</head>
+<body>
+    <div class="home-content">
+        $content
+    </div>
+	<div id="sponsor" class="section">
+	$SPONSOR_SECTION
+    </div>
+$theme_script
+</body>
+</html>
+END_HTML
+
+    my $doc_dir = "$dir/docs";
+    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/index.html") or return;
+    print $fh $html;
+    close $fh;
+
+    print "DEBUG: Generated home page (index.html) in $doc_dir with language $lang\n" if $Debug;
+}
+
 #------------------------------------------------------------------------------
 # Function:     Prints the top banner of the inner frame or static page
 # Parameters:   $WIDTHMENU1
@@ -10120,7 +14328,7 @@ sub HTMLShowEmailReceiversChart {
 sub HTMLTopBanner{
 	my $WIDTHMENU1 = shift;
 	my $frame = ( $FrameName eq 'mainleft' );
-
+	my $title = _t("AWStats Log Viewer");
 	if ($Debug) { debug( "ShowTopBan", 2 ); }
 	print "$Center<a name=\"menu\">&nbsp;</a>\n";
 
@@ -10166,11 +14374,11 @@ sub HTMLTopBanner{
 				  . substr( $SiteDomain, length($SiteDomain) - 5, 5 );
 			}
 			print
-"<tr><td class=\"awsm\"><b>$Message[7]:</b></td></tr><tr><td class=\"aws\"><span style=\"font-size: 12px;\">$shortSiteDomain</span></td>";
+"<tr><td class=\"awsm\"><b>" . _t("Site") . ":</b></td></tr><tr><td class=\"aws\"><span style=\"font-size: 12px;\">$shortSiteDomain</span></td>";
 		}
 		else {
 			print
-"<tr><td class=\"aws\" valign=\"middle\"><b>$Message[7]:</b>&nbsp;</td><td class=\"aws\" valign=\"middle\"><span style=\"font-size: 14px;\">$SiteDomain</span></td>";
+"<tr><td class=\"aws\" valign=\"middle\"><b>" . _t("Site") . ":</b>&nbsp;</td><td class=\"aws\" valign=\"middle\"><span style=\"font-size: 14px;\">$SiteDomain</span></td>";
 		}
 
 		# Logo and flags
@@ -10179,7 +14387,7 @@ sub HTMLTopBanner{
 				print "<td align=\"right\" rowspan=\"3\"><a href=\""
 				  . XMLEncode($LogoLink)
 				  . "\" target=\"awstatshome\"><img src=\"$DirIcons/other/$Logo\" border=\"0\""
-				  . AltTitle( ucfirst($PROG) . " Web Site" )
+				  . AltTitle( ucfirst($PROG) . " " . _t("Web Site") )
 				  . " /></a>";
 			}
 			else {
@@ -10196,7 +14404,7 @@ sub HTMLTopBanner{
 
 		# Print Last Update
 		print
-"<tr valign=\"middle\"><td class=\"aws\" valign=\"middle\" width=\"$WIDTHMENU1\"><b>$Message[35]:</b>&nbsp;</td>";
+"<tr valign=\"middle\"><td class=\"aws\" valign=\"middle\" width=\"$WIDTHMENU1\"><b>" . _t("Last Update") . ":</b>&nbsp;</td>";
 		print
 "<td class=\"aws\" valign=\"middle\"><span style=\"font-size: 12px;\">";
 		if ($LastUpdate) { print Format_Date( $LastUpdate, 0 ); }
@@ -10204,13 +14412,13 @@ sub HTMLTopBanner{
 
 			# Here NbOfOldLines = 0 (because LastUpdate is not defined)
 			if ( !$UpdateStats ) {
-				print "<span style=\"color: #880000\">$Message[24]</span>";
+				print "<span style=\"color: #880000\">" . _t("Never updated") . "</span>";
 			}
 			else {
 				print
- "<span style=\"color: #880000\">No qualified records found in log 
- ($NbOfLinesCorrupted corrupted, $NbOfLinesComment comments, $NbOfLinesBlank Blank, 
- $NbOfLinesDropped dropped)</span>";
+ "<span style=\"color: #880000\">" . _t("No qualified records found in log") . " 
+ ($NbOfLinesCorrupted " . _t("corrupted") . ", $NbOfLinesComment " . _t("comments") . ", $NbOfLinesBlank " . _t("Blank") . ", 
+ $NbOfLinesDropped " . _t("dropped") . ")</span>";
 			}
 		}
 		print "</span>";
@@ -10231,7 +14439,7 @@ sub HTMLTopBanner{
 			print "&nbsp; &nbsp; &nbsp; &nbsp;";
 			print "<a href=\""
 			  . XMLEncode("$AWScript${NewLinkParams}update=1")
-			  . "\">$Message[74]</a>";
+			  . "\">" . _t("Update now") . "</a>";
 		}
 		print "</td>";
 
@@ -10241,7 +14449,7 @@ sub HTMLTopBanner{
 				print "<td align=\"right\" rowspan=\"2\"><a href=\""
 				  . XMLEncode($LogoLink)
 				  . "\" target=\"awstatshome\"><img src=\"$DirIcons/other/$Logo\" border=\"0\""
-				  . AltTitle( ucfirst($PROG) . " Web Site" )
+				  . AltTitle( ucfirst($PROG) . " " . _t("Web Site") )
 				  . " /></a>\n";
 			}
 			else {
@@ -10256,37 +14464,38 @@ sub HTMLTopBanner{
 		print "</tr>\n";
 
 		# Print selected period of analysis (month and year required)
-		print
-"<tr><td class=\"aws\" valign=\"middle\"><b>$Message[133]:</b></td>";
+		print "<tr><td class=\"aws\" valign=\"middle\"><b>" . _t("Period") . ":</b></td>";
 		print "<td class=\"aws\" valign=\"middle\">";
 		if ( $ENV{'GATEWAY_INTERFACE'} || !$StaticLinks ) {
 			print "<select class=\"aws_formfield\" name=\"databasebreak\">\n";
 			print "<option"
 			  . ( $DatabaseBreak eq "month" ? " selected=\"selected\"" : "" )
-			  . " value=\"month\">$Message[5]</option>\n";
+			  . " value=\"month\">" . _t("Month") . "</option>\n";
 			print "<option"
 			  . ( $DatabaseBreak eq "day" ? " selected=\"selected\"" : "" )
-			  . " value=\"day\">$Message[4]</option>\n";
+			  . " value=\"day\">" . _t("Day") . "</option>\n";
 			print "<option"
 			  . ( $DatabaseBreak eq "hour" ? " selected=\"selected\"" : "" )
-			  . " value=\"hour\">$Message[187]</option>\n";
+			  . " value=\"hour\">" . _t("Hour") . "</option>\n";
 			print "</select>\n";
 
 			print "<select class=\"aws_formfield\" name=\"month\">\n";
 			foreach ( 1 .. 12 ) {
 				my $monthix = sprintf( "%02s", $_ );
+				
+				my $month_display = sprintf(_t("date_format_month"), 
+											$MonthNumLib{$monthix}, 
+											$YearRequired);
+				
 				print "<option"
-				  . (
-					  "$MonthRequired" eq "$monthix"
-					? " selected=\"selected\""
-					: ""
-				  )
-				  . " value=\"$monthix\">$MonthNumLib{$monthix}</option>\n";
+					. ( "$MonthRequired" eq "$monthix" ? " selected=\"selected\"" : "" )
+					. " value=\"$monthix\">$month_display</option>\n";
 			}
+			
 			if ( $AllowFullYearView >= 2 ) {
 				print "<option"
 				  . ( $MonthRequired eq 'all' ? " selected=\"selected\"" : "" )
-				  . " value=\"all\">- $Message[6] -</option>\n";
+				  . " value=\"all\">- " . _t("Year") . " -</option>\n";
 			}
 			print "</select>\n";
 			print "<select class=\"aws_formfield\" name=\"year\">\n";
@@ -10351,17 +14560,16 @@ sub HTMLTopBanner{
 "<input type=\"hidden\" name=\"framename\" value=\"index\" />\n";
 			}
 			print
-"<input type=\"submit\" value=\" $Message[115] \" class=\"aws_button\" />";
+"<input type=\"submit\" value=\" " . _t("OK") . " \" class=\"aws_button\" />";
 		}
 		else {
 			print "<span style=\"font-size: 14px;\">";
-			if ($DayRequired) { print "$Message[4] $DayRequired - "; }
+			if ($DayRequired) { print _t("Day") . " $DayRequired - "; }
 			if ( $MonthRequired eq 'all' ) {
-				print "$Message[6] $YearRequired";
+				print _t("Year") . " $YearRequired";
 			}
 			else {
-				print
-				  "$Message[5] $MonthNumLib{$MonthRequired} $YearRequired";
+				print sprintf(_t("date_format_month"), $MonthNumLib{$MonthRequired}, $YearRequired);
 			}
 			print "</span>";
 		}
@@ -10426,7 +14634,7 @@ sub HTMLMenu{
 			if ( $FrameName eq 'mainleft' && $ShowMonthStats ) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-"<a href=\"$linkanchor#top\"$targetpage>$Message[128]</a>";
+"<a href=\"$linkanchor#top\"$targetpage>" . _t("Top") . "</a>";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			my %menu     = ();
@@ -10447,13 +14655,13 @@ sub HTMLMenu{
 				'hours'       => 1
 			);
 			%menutext = (
-				'month'       => $Message[162],
-				'daysofmonth' => $Message[138],
-				'daysofweek'  => $Message[91],
-				'hours'       => $Message[20]
+				'month'       => _t("Month"),
+				'daysofmonth' => _t("Day"),
+				'daysofweek'  => _t("Day of week"),
+				'hours'       => _t("Hours")
 			);
 			HTMLShowMenuCateg(
-				'when',         $Message[93],
+				'when',         _t("When"),
 				'menu4.png',    $frame,
 				$targetpage,    $linkanchor,
 				$NewLinkParams, $NewLinkTarget,
@@ -10468,7 +14676,7 @@ sub HTMLMenu{
 				'visitors'   => $ShowHostsStats   ? 3 : 0,
 				'allhosts'   => $ShowHostsStats   ? 4 : 0,
 				'lasthosts' => ( $ShowHostsStats =~ /L/i ) ? 5 : 0,
-				'unknownip' => $ShowHostsStats         ? 6 : 0,
+                'unknownip' => $ShowHostsStats ? 6 : 0,
 				'logins'    => $ShowAuthenticatedUsers ? 7 : 0,
 				'alllogins' => $ShowAuthenticatedUsers ? 8 : 0,
 				'lastlogins' => ( $ShowAuthenticatedUsers =~ /L/i ) ? 9 : 0,
@@ -10505,28 +14713,28 @@ sub HTMLMenu{
 				'worms'          => 1
 			);
 			%menutext = (
-				'countries'      => $Message[148],
-				'alldomains'     => $Message[80],
-				'visitors'       => $Message[81],
-				'allhosts'       => $Message[80],
-				'lasthosts'      => $Message[9],
-				'unknownip'      => $Message[45],
-				'logins'         => $Message[94],
-				'alllogins'      => $Message[80],
-				'lastlogins'     => $Message[9],
-				'emailsenders'   => $Message[131],
-				'allemails'      => $Message[80],
-				'lastemails'     => $Message[9],
-				'emailreceivers' => $Message[132],
-				'allemailr'      => $Message[80],
-				'lastemailr'     => $Message[9],
-				'robots'         => $Message[53],
-				'allrobots'      => $Message[80],
-				'lastrobots'     => $Message[9],
-				'worms'          => $Message[136]
+				'countries'      => _t("Countries"),
+				'alldomains'     => _t("Full list"),
+				'visitors'       => _t("Visitors"),
+				'allhosts'       => _t("Full list"),
+				'lasthosts'      => _t("Last"),
+				'unknownip'      => _t("Unresolved IP Address"),
+				'logins'         => _t("Login"),
+				'alllogins'      => _t("Full list"),
+				'lastlogins'     => _t("Last"),
+				'emailsenders'   => _t("Email Senders"),
+				'allemails'      => _t("Full list"),
+				'lastemails'     => _t("Last"),
+				'emailreceivers' => _t("Email Receivers"),
+				'allemailr'      => _t("Full list"),
+				'lastemailr'     => _t("Last"),
+				'robots'         => _t("Robots"),
+				'allrobots'      => _t("Full list"),
+				'lastrobots'     => _t("Last"),
+				'worms'          => _t("Worms")
 			);
 			HTMLShowMenuCateg(
-				'who',          $Message[92],
+				'who',          _t("Who"),
 				'menu5.png',    $frame,
 				$targetpage,    $linkanchor,
 				$NewLinkParams, $NewLinkTarget,
@@ -10549,7 +14757,7 @@ sub HTMLMenu{
 					? "<img src=\"$DirIcons/other/menu2.png\" />&nbsp;"
 					: ""
 				  )
-				  . "<b>$Message[72]:</b></td>\n";
+				  . "<b>" . _t("Navigation") . ":</b></td>\n";
 			}
 			if ($linetitle) {
 				print( $frame? "</tr>\n" : "<td class=\"awsm\">" );
@@ -10557,31 +14765,31 @@ sub HTMLMenu{
 			if ($ShowSessionsStats) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-"<a href=\"$linkanchor#sessions\"$targetpage>$Message[117]</a>";
+"<a href=\"$linkanchor#sessions\"$targetpage>" . _t("Visits duration") . "</a>";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
                         if ($ShowFileSizesStats) {
                                 print ( $frame? "<tr><td class=\"awsm\">" : "" );
                                 print
-"<a href=\"$linkanchor#filesizes\"$targetpage>$Message[186]</a>";
+"<a href=\"$linkanchor#filesizes\"$targetpage>" . _t("File size") . "</a>";
                                 print ( $frame? "</td></tr>\n" : " &nbsp; ");
                         }
                         if ($ShowRequestTimesStats) {
                                 print( $frame? "<tr><td class=\"awsm\">" : "" );
                                 print
-"<a href=\"$linkanchor#requesttimes\"$targetpage>$Message[188]</a>";
+"<a href=\"$linkanchor#requesttimes\"$targetpage>" . _t("Request time") . "</a>";
                                 print ($frame? "</td></tr>\n" : " &nbsp; " );
                         }
 			if ($ShowFileTypesStats && $LevelForFileTypesDetection > 0) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-"<a href=\"$linkanchor#filetypes\"$targetpage>$Message[73]</a>";
+"<a href=\"$linkanchor#filetypes\"$targetpage>" . _t("File type") . "</a>";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowDownloadsStats && $LevelForFileTypesDetection > 0) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-"<a href=\"$linkanchor#downloads\"$targetpage>$Message[178]</a>";
+"<a href=\"$linkanchor#downloads\"$targetpage>" . _t("Downloads") . "</a>";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 				print( $frame
 					? "<tr><td class=\"awsm\"> &nbsp; <img height=\"8\" width=\"9\" src=\"$DirIcons/other/page.png\" alt=\"...\" /> "
@@ -10594,13 +14802,13 @@ sub HTMLMenu{
 						"$AWScript${NewLinkParams}output=downloads")
 					: "$StaticLinks.downloads.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[80]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("Full list") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowPagesStats) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-"<a href=\"$linkanchor#urls\"$targetpage>$Message[29]</a>\n";
+"<a href=\"$linkanchor#urls\"$targetpage>" . _t("Viewed pages") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowPagesStats) {
@@ -10615,7 +14823,7 @@ sub HTMLMenu{
 						"$AWScript${NewLinkParams}output=urldetail")
 					: "$StaticLinks.urldetail.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[80]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("Full list") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ( $ShowPagesStats =~ /E/i ) {
@@ -10630,7 +14838,7 @@ sub HTMLMenu{
 						"$AWScript${NewLinkParams}output=urlentry")
 					: "$StaticLinks.urlentry.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[104]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("Entry") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ( $ShowPagesStats =~ /X/i ) {
@@ -10645,13 +14853,13 @@ sub HTMLMenu{
 					? XMLEncode("$AWScript${NewLinkParams}output=urlexit")
 					: "$StaticLinks.urlexit.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[116]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("Exit") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowOSStats) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-				  "<a href=\"$linkanchor#os\"$targetpage>$Message[59]</a>";
+				  "<a href=\"$linkanchor#os\"$targetpage>" . _t("Operating Systems") . "</a>";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowOSStats) {
@@ -10666,7 +14874,7 @@ sub HTMLMenu{
 						"$AWScript${NewLinkParams}output=osdetail")
 					: "$StaticLinks.osdetail.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[58]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("Detailed") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowOSStats) {
@@ -10681,13 +14889,13 @@ sub HTMLMenu{
 						"$AWScript${NewLinkParams}output=unknownos")
 					: "$StaticLinks.unknownos.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[0]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("unknownos") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowBrowsersStats) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-"<a href=\"$linkanchor#browsers\"$targetpage>$Message[21]</a>";
+"<a href=\"$linkanchor#browsers\"$targetpage>" . _t("Browsers") . "</a>";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowBrowsersStats) {
@@ -10702,7 +14910,7 @@ sub HTMLMenu{
 						"$AWScript${NewLinkParams}output=browserdetail")
 					: "$StaticLinks.browserdetail.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[58]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("Detailed") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowBrowsersStats) {
@@ -10717,13 +14925,13 @@ sub HTMLMenu{
 						"$AWScript${NewLinkParams}output=unknownbrowser")
 					: "$StaticLinks.unknownbrowser.$StaticExt"
 				  )
-				  . "\"$NewLinkTarget>$Message[0]</a>\n";
+				  . "\"$NewLinkTarget>" . _t("unknownbrowser") . "</a>\n";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($ShowScreenSizeStats) {
 				print( $frame? "<tr><td class=\"awsm\">" : "" );
 				print
-"<a href=\"$linkanchor#screensizes\"$targetpage>$Message[135]</a>";
+"<a href=\"$linkanchor#screensizes\"$targetpage>" . _t("Screen sizes") . "</a>";
 				print( $frame? "</td></tr>\n" : " &nbsp; " );
 			}
 			if ($linetitle) { print( $frame? "" : "</td></tr>\n" ); }
@@ -10748,15 +14956,15 @@ sub HTMLMenu{
 				'keywords'     => 2
 			);
 			%menutext = (
-				'referer'      => $Message[37],
-				'refererse'    => $Message[126],
-				'refererpages' => $Message[127],
-				'keys'         => $Message[14],
-				'keyphrases'   => $Message[120],
-				'keywords'     => $Message[121]
+				'referer'      => _t("Origin"),
+				'refererse'    => _t("Search Engines"),
+				'refererpages' => _t("External pages"),
+				'keys'         => _t("Keyphrases/Keywords"),
+				'keyphrases'   => _t("Keyphrases"),
+				'keywords'     => _t("Keywords")
 			);
 			HTMLShowMenuCateg(
-				'referers',     $Message[23],
+				'referers',     _t("Referers"),
 				'menu7.png',    $frame,
 				$targetpage,    $linkanchor,
 				$NewLinkParams, $NewLinkTarget,
@@ -10780,21 +14988,21 @@ sub HTMLMenu{
 				'clusters'  => 1
 			);
 			%menutext = (
-				'filetypes' => $Message[98],
-				'misc'      => $Message[139],
+				'filetypes' => _t("Compression"),
+				'misc'      => _t("Misc"),
 				'errors'    =>
-				  ( $ShowSMTPErrorsStats ? $Message[147] : $Message[32] ),
-				'clusters' => $Message[155]
+				  ( $ShowSMTPErrorsStats ? _t("SMTP Error codes") : _t("HTTP Error codes") ),
+				'clusters' => _t("Clusters")
 			);
 			my $idx = 0;
 			foreach ( sort keys %TrapInfosForHTTPErrorCodes ) {
 				$menu{"errors$_"}     = $ShowHTTPErrorsStats ? 4+$idx : 0;
 				$menulink{"errors$_"} = 2;
-				$menutext{"errors$_"} = $Message[49] . ' (' . $_ . ')';
+				$menutext{"errors$_"} = _t("Page detail") . ' (' . $_ . ')';
 				$idx++;
 			}
 			HTMLShowMenuCateg(
-				'others',       $Message[2],
+				'others',       _t("Others"),
 				'menu8.png',    $frame,
 				$targetpage,    $linkanchor,
 				$NewLinkParams, $NewLinkTarget,
@@ -10813,10 +15021,10 @@ sub HTMLMenu{
 				$menutext{"extra$_"}    = $ExtraName[$_];
 				$menu{"allextra$_"}     = $i++;
 				$menulink{"allextra$_"} = 2;
-				$menutext{"allextra$_"} = $Message[80];
+				$menutext{"allextra$_"} = _t("Full list");
 			}
 			HTMLShowMenuCateg(
-				'extra',        $Message[134],
+				'extra',        _t("Extra/Marketing"),
 				'',             $frame,
 				$targetpage,    $linkanchor,
 				$NewLinkParams, $NewLinkTarget,
@@ -10855,11 +15063,18 @@ sub HTMLMenu{
 				? XMLEncode("$AWScript${NewLinkParams}")
 				: "$StaticLinks.$StaticExt"
 			  )
-			  . "\">$Message[76]</a></td></tr>\n";
+			  . "\">" . _t("Back to main page") . "</a></td></tr>\n";
 		}
 		else {
-			print
-"<tr><td class=\"aws\"><a href=\"javascript:parent.window.close();\">$Message[118]</a></td></tr>\n";
+			print "<tr><td class=\"aws\">";
+			print "<a href=\"javascript:if(window.parent && window.parent != window)window.parent.close(); else if(window.opener)window.close(); else history.back();\">" 
+				. _t("Close window") . "</a>";
+			print " | <a href=\"" 
+        . ( $ENV{'GATEWAY_INTERFACE'} || !$StaticLinks
+            ? "/stats/"
+            : "/stats/" )
+        . "\">" . _t("Back page") . "</a>";
+			print "</td></tr>\n";
 		}
 		print "</table>\n";
 		print "\n";
@@ -10883,17 +15098,17 @@ sub HTMLMainFileType{
 	foreach ( keys %_filetypes_h ) { $Totalh += $_filetypes_h{$_}; }
 	my $Totalk = 0;
 	foreach ( keys %_filetypes_k ) { $Totalk += $_filetypes_k{$_}; }
-	my $title = "$Message[73]";
+	my $title = _t("File type");
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
         # extend the title to include the added link 
         $title = "$title &nbsp; - &nbsp; <a href=\"" . (XMLEncode(
            "$AddLinkToExternalCGIWrapper" . "?section=FILETYPES&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     } 
 
-	if ( $ShowFileTypesStats =~ /C/i ) { $title .= " - $Message[98]"; }
+	if ( $ShowFileTypesStats =~ /C/i ) { $title .= " - " . _t("Compression"); }
 	
 	# build keylist at top
 	&BuildKeyList( $MaxRowsInHTMLOutput, 1, \%_filetypes_h,
@@ -10918,7 +15133,7 @@ sub HTMLMainFileType{
 			print "<tr><td colspan=\"7\">";
 			my $function = "ShowGraph_$pluginname";
 			&$function(
-				"$Message[73]",              "filetypes",
+				_t("File type"),              "filetypes",
 				0, 						\@blocklabel,
 				0,           			\@valcolor,
 				0,              		0,
@@ -10929,21 +15144,21 @@ sub HTMLMainFileType{
 	}
 	
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"3\">$Message[73]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"3\">" . _t("File type") . "</th>";
 
 	if ( $ShowFileTypesStats =~ /H/i ) {
 		print "<th bgcolor=\"#$color_h\" width=\"80\""
 		  . Tooltip(4)
-		  . ">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th>";
+		  . ">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th>";
 	}
 	if ( $ShowFileTypesStats =~ /B/i ) {
 		print "<th bgcolor=\"#$color_k\" width=\"80\""
 		  . Tooltip(5)
-		  . ">$Message[75]</th><th bgcolor=\"#$color_k\" width=\"80\">$Message[15]</th>";
+		  . ">" . _t("Bandwidth") . "</th><th bgcolor=\"#$color_k\" width=\"80\">" . _t("Percent") . "</th>";
 	}
 	if ( $ShowFileTypesStats =~ /C/i ) {
 		print
-"<th bgcolor=\"#$color_k\" width=\"100\">$Message[100]</th><th bgcolor=\"#$color_k\" width=\"100\">$Message[101]</th><th bgcolor=\"#$color_k\" width=\"100\">$Message[99]</th>";
+"<th bgcolor=\"#$color_k\" width=\"100\">" . _t("In") . "</th><th bgcolor=\"#$color_k\" width=\"100\">" . _t("Out") . "</th><th bgcolor=\"#$color_k\" width=\"100\">" . _t("Saved") . "</th>";
 	}
 	print "</tr>\n";
 	my $total_con = 0;
@@ -10965,7 +15180,7 @@ sub HTMLMainFileType{
 			  . ( $count ? "" : " width=\"$WIDTHCOLICON\"" )
 			  . "><img src=\"$DirIcons\/mime\/unknown.png\""
 			  . AltTitle("")
-			  . " /></td><td class=\"aws\" colspan=\"2\"><span style=\"color: #$color_other\">$Message[0]</span></td>";
+			  . " /></td><td class=\"aws\" colspan=\"2\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td>";
 		}
 		else {
 			my $nameicon = $MimeHashLib{$key}[0] || "notavailable";
@@ -11021,7 +15236,7 @@ sub HTMLMainFileType{
 		if ( $ShowFileTypesStats =~ /B/i ) { $colspan += 2; }
 		print "<tr>";
 		print
-"<td class=\"aws\" colspan=\"$colspan\"><b>$Message[98]</b></td>";
+"<td class=\"aws\" colspan=\"$colspan\"><b>" . _t("Compression") . "</b></td>";
 		if ( $ShowFileTypesStats =~ /C/i ) {
 			if ($total_con) {
 				my $percent =
@@ -11083,7 +15298,7 @@ sub HTMLMainFileSize{
         if ($periodo) { $request_frequency_average = $number_of_requests/$periodo;}
         else { $request_frequency_average = 0 };
         print "$Center<a name=\"filesizes\">&nbsp;</a><br />\n";
-        my $title = "$Message[186]";
+        my $title = _t("File size");
         &tab_head($title, 19, 0, 'filesizes');
         my $Totals = 0;
         my $average_s = 0;
@@ -11093,7 +15308,7 @@ sub HTMLMainFileSize{
         }
         if ($Totals) { $average_s = int($average_s / $Totals); }
         else { $average_s = '?'; }
-        print "<tr bgcolor=\"#$color_TableBGRowTitle\"".Tooltip(1)."><th>$Message[182]: $number_of_requests - $Message[183]: $periodo $Message[184] - $Message[185]: ".sprintf ("%.6f",$request_frequency_average)."</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[181]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[15]</th></tr>\n";
+        print "<tr bgcolor=\"#$color_TableBGRowTitle\"".Tooltip(1)."><th>" . _t("Total requests") . ": $number_of_requests - " . _t("Period") . ": $periodo " . _t("Seconds") . " - " . _t("Average frequency") . ": ".sprintf ("%.6f",$request_frequency_average)."</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Frequency") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
         my $total_s = 0;
         my $count = 0;
         foreach my $key (@PayloadRange) {
@@ -11113,7 +15328,7 @@ sub HTMLMainFileSize{
         if ($rest_s > 0) {
                 my $p = 0;
                 if ($TotalVisits) { $p = int($rest_s / $TotalVisits * 1000) / 10; }
-                print "<tr".Tooltip(20)."><td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td>";
+                print "<tr".Tooltip(20)."><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td>";
                 print "<td>$rest_s</td>";
                 print "<td>".($rest_s?"$p %":"&nbsp;")."</td>";
                 print "</tr>\n";
@@ -11162,7 +15377,7 @@ sub HTMLMainRequestTime{
         if ($periodo) { $request_frequency_average = $number_of_requests / $periodo;}
         else { $request_frequency_average = 0};
         print "$Center<a name=\"requesttimes\">&nbsp;</a><br />\n";
-        my $title = "$Message[188]";
+        my $title = _t("Request time");
         &tab_head($title, 19, 0, 'requesttimes');
         my $Totals = 0;
         my $average_s = 0;
@@ -11172,7 +15387,7 @@ sub HTMLMainRequestTime{
         }
         if ($Totals) { $average_s = int($average_s / $Totals); }
         else { $average_s = '?'; }
-        print "<tr bgcolor=\"#$color_TableBGRowTitle\"".Tooltip(1)."><th>$Message[182]: $number_of_requests - $Message[183]: $periodo $Message[184] - $Message[185]: ".sprintf ("%.6f",$request_frequency_average)."</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[181]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[15]</th></tr>\n";
+        print "<tr bgcolor=\"#$color_TableBGRowTitle\"".Tooltip(1)."><th>" . _t("Total requests") . ": $number_of_requests - " . _t("Period") . ": $periodo " . _t("Seconds") . " - " . _t("Average frequency") . ": ".sprintf ("%.6f",$request_frequency_average)."</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Frequency") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
         my $total_s = 0;
         my $count = 0;
         foreach my $key (@TimeRange) {
@@ -11192,7 +15407,7 @@ sub HTMLMainRequestTime{
         if ($rest_s > 0) {
                 my $p = 0;
                 if ($TotalVisits) { $p = int($rest_s / $TotalVisits * 1000) / 10; }
-                print "<tr".Tooltip(20)."><td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td>";
+                print "<tr".Tooltip(20)."><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td>";
                 print "<td>$rest_s</td>";
                 print "<td>".($rest_s?"$p %":"&nbsp;")."</td>";
                 print "</tr>\n";
@@ -11211,14 +15426,14 @@ sub HTMLMainRequestTime{
 sub HTMLShowBrowserDetail{
 	# Show browsers versions
 	print "$Center<a name=\"browsersversions\">&nbsp;</a><br />";
-	my $title = "$Message[21]";
+	my $title = _t("Browsers");
 	&tab_head( "$title", 19, 0, 'browsersversions' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">$Message[58]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">" . _t("Detailed") . "</th>";
 	print
-"<th width=\"80\">$Message[111]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th>";
+"<th width=\"80\">" . _t("Unique visitors") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th>";
 	print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th>";
 	print "<th>&nbsp;</th>";
 	print "</tr>\n";
 	my $total_h = 0;
@@ -11316,8 +15531,8 @@ sub HTMLShowBrowserDetail{
 			print "<td>"
 			  . (
 				$BrowsersHereAreGrabbers{$family}
-				? "<b>$Message[112]</b>"
-				: "$Message[113]"
+				? "<b>" . _t("Grabber") . "</b>"
+				: _t("Pages")
 			  )
 			  . "</td>";
 			my $bredde_h = 0;
@@ -11376,7 +15591,7 @@ sub HTMLShowBrowserDetail{
 				$p_h = "$p_h %";
 			}
 			print
-"<tr bgcolor=\"#F6F6F6\"><td class=\"aws\" colspan=\"2\"><b>$Message[2]</b></td>";
+"<tr bgcolor=\"#F6F6F6\"><td class=\"aws\" colspan=\"2\"><b>" . _t("Others") . "</b></td>";
 			print "<td>&nbsp;</td><td><b>"
 			  . Format_Number(( $total_p - $TotalFamily_p ))
 			  . "</b></td><td><b>$p_p</b></td>";
@@ -11402,7 +15617,7 @@ sub HTMLShowBrowserDetail{
 			  . ( $count ? "" : " width=\"$WIDTHCOLICON\"" )
 			  . "><img src=\"$DirIcons\/browser\/unknown.png\""
 			  . AltTitle("")
-			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td><td width=\"80\">?</td>";
+			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td><td width=\"80\">?</td>";
 		}
 		else {
 			my $keywithoutcumul = $key;
@@ -11418,8 +15633,8 @@ sub HTMLShowBrowserDetail{
 			  . " /></td><td class=\"aws\">$libbrowser</td><td>"
 			  . (
 				$BrowsersHereAreGrabbers{$key}
-				? "<b>$Message[112]</b>"
-				: "$Message[113]"
+				? "<b>" . _t("Grabber") . "</b>"
+				: _t("Pages")
 			  )
 			  . "</td>";
 		}
@@ -11469,19 +15684,19 @@ sub HTMLShowBrowserDetail{
 sub HTMLShowBrowserUnknown{
     my $NewLinkTarget = shift;
 	print "$Center<a name=\"unknownbrowser\">&nbsp;</a><br />\n";
-	my $title = "$Message[50]";
+	my $title = _t("Unknown Browser");
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link 
            $title = "$title &nbsp; - &nbsp; <a href=\"" . (XMLEncode(
                "$AddLinkToExternalCGIWrapper" . "?section=UNKNOWNREFERERBROWSER&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     } 
 	&tab_head( "$title", 19, 0, 'unknownbrowser' );
-	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>User agent ("
+	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("User agent") . " ("
 	  . ( scalar keys %_unknownrefererbrowser_l )
-	  . ")</th><th>$Message[9]</th></tr>\n";
+	  . ")</th><th>" . _t("Last") . "</th></tr>\n";
 	my $total_l = 0;
 	my $count = 0;
 	&BuildKeyList( $MaxRowsInHTMLOutput, 1, \%_unknownrefererbrowser_l,
@@ -11498,7 +15713,7 @@ sub HTMLShowBrowserUnknown{
 	my $rest_l = ( scalar keys %_unknownrefererbrowser_l ) - $total_l;
 	if ( $rest_l > 0 ) {
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		print "<td>-</td>";
 		print "</tr>\n";
 	}
@@ -11516,14 +15731,14 @@ sub HTMLShowBrowserUnknown{
 sub HTMLShowOSDetail{
 	# Show os versions
 	print "$Center<a name=\"osversions\">&nbsp;</a><br />";
-	my $title = "$Message[59]";
+	my $title = _t("Operating Systems");
 	&tab_head( "$title", 19, 0, 'osversions' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">$Message[58]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">" . _t("Detailed") . "</th>";
 	print
-"<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th>";
 	print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th>";
 	print "</tr>\n";
 	my $total_h = 0;
 	my $total_p = 0;
@@ -11662,7 +15877,7 @@ sub HTMLShowOSDetail{
 				$p_p = "$p_p %";
 			}
 			print
-"<tr bgcolor=\"#F6F6F6\"><td class=\"aws\" colspan=\"2\"><b>$Message[2]</b></td>";
+"<tr bgcolor=\"#F6F6F6\"><td class=\"aws\" colspan=\"2\"><b>" . _t("Others") . "</b></td>";
 			print "<td><b>"
 			  . Format_Number(( $total_p - $TotalFamily_p ))
 			  . "</b></td><td><b>$p_p</b></td>";
@@ -11688,7 +15903,7 @@ sub HTMLShowOSDetail{
 			  . ( $count ? "" : " width=\"$WIDTHCOLICON\"" )
 			  . "><img src=\"$DirIcons\/browser\/unknown.png\""
 			  . AltTitle("")
-			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td>";
+			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td>";
 		}
 		else {
 			my $keywithoutcumul = $key;
@@ -11743,19 +15958,19 @@ sub HTMLShowOSDetail{
 sub HTMLShowOSUnknown{
     my $NewLinkTarget = shift;
 	print "$Center<a name=\"unknownos\">&nbsp;</a><br />\n";
-	my $title = "$Message[46]";
+	my $title = _t("Unknown OS");
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link 
            $title = "$title &nbsp; - &nbsp; <a href=\"" . (XMLEncode(
                "$AddLinkToExternalCGIWrapper" . "?section=UNKNOWNREFERER&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     } 
     &tab_head( "$title", 19, 0, 'unknownos' );
-	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>User agent ("
+	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("User agent") . " ("
 	  . ( scalar keys %_unknownreferer_l )
-	  . ")</th><th>$Message[9]</th></tr>\n";
+	  . ")</th><th>" . _t("Last") . "</th></tr>\n";
 	my $total_l = 0;
 	my $count = 0;
 	&BuildKeyList( $MaxRowsInHTMLOutput, 1, \%_unknownreferer_l,
@@ -11772,7 +15987,7 @@ sub HTMLShowOSUnknown{
 	my $rest_l = ( scalar keys %_unknownreferer_l ) - $total_l;
 	if ( $rest_l > 0 ) {
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		print "<td>-</td>";
 		print "</tr>\n";
 	}
@@ -11790,22 +16005,22 @@ sub HTMLShowOSUnknown{
 sub HTMLShowReferers{
     my $NewLinkTarget = shift;
 	print "$Center<a name=\"refererse\">&nbsp;</a><br />\n";
-	my $title = "$Message[40]";
+	my $title = _t("Refering search engines");
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link 
            $title = "$title &nbsp; - &nbsp; <a href=\"" . (XMLEncode(
                "$AddLinkToExternalCGIWrapper" . "?section=SEREFERRALS&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     } 
     &tab_head( $title, 19, 0, 'refererse' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th>".Format_Number($TotalDifferentSearchEngines)." $Message[122]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th>".Format_Number($TotalDifferentSearchEngines)." " . _t("Refering pages") . "</th>";
 	print
-"<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th>";
 	print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th>";
 	print "</tr>\n";
 	my $total_s = 0;
 	my $total_p = 0;
@@ -11871,7 +16086,7 @@ sub HTMLShowReferers{
 			$p_h = int( $rest_h / $TotalSearchEnginesHits * 1000 ) / 10;
 		}
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		print "<td>" . ( $rest_p ? Format_Number($rest_p)  : '&nbsp;' ) . "</td>";
 		print "<td>" . ( $rest_p ? "$p_p %" : '&nbsp;' ) . "</td>";
 		print "<td>".Format_Number($rest_h)."</td>";
@@ -11903,14 +16118,14 @@ sub HTMLShowRefererPages{
 		$FilterIn{'refererpages'},
 		$FilterEx{'refererpages'}
 	);
-	my $title = "$Message[41]";
+	my $title = _t("Refering pages");
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link 
            $title = "$title &nbsp; - &nbsp; <a href=\"" . (XMLEncode(
                "$AddLinkToExternalCGIWrapper" . "?section=PAGEREFS&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
     my $cpt   = 0;
 	$cpt = ( scalar keys %_pagesrefs_h );
@@ -11919,30 +16134,30 @@ sub HTMLShowRefererPages{
 	if ( $FilterIn{'refererpages'} || $FilterEx{'refererpages'} ) {
 
 		if ( $FilterIn{'refererpages'} ) {
-			print "$Message[79] <b>$FilterIn{'refererpages'}</b>";
+			print _t("Filter") . " <b>$FilterIn{'refererpages'}</b>";
 		}
 		if ( $FilterIn{'refererpages'} && $FilterEx{'refererpages'} ) {
 			print " - ";
 		}
 		if ( $FilterEx{'refererpages'} ) {
 			print
-			  "Exclude $Message[79] <b>$FilterEx{'refererpages'}</b>";
+			  _t("Exclude filter") . " <b>$FilterEx{'refererpages'}</b>";
 		}
 		if ( $FilterIn{'refererpages'} || $FilterEx{'refererpages'} ) {
 			print ": ";
 		}
-		print "$cpt $Message[28]";
+		print "$cpt " . _t("Different refering pages");
 
 		#if ($MonthRequired ne 'all') {
 		#	if ($HTMLOutput{'refererpages'}) { print "<br />$Message[102]: $TotalDifferentPages $Message[28]"; }
 		#}
 	}
-	else { print "$Message[102]: ".Format_Number($cpt)." $Message[28]"; }
+	else { print _t("Total") . ": ".Format_Number($cpt)." " . _t("Different refering pages"); }
 	print "</th>";
 	print
-"<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th>";
 	print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th>";
 	print "</tr>\n";
 	my $total_s = 0;
 	my $count = 0;
@@ -12009,7 +16224,7 @@ sub HTMLShowRefererPages{
 			$p_h = int( $rest_h / $TotalRefererHits * 1000 ) / 10;
 		}
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		print "<td>" . ( $rest_p ? Format_Number($rest_p)  : '&nbsp;' ) . "</td>";
 		print "<td>" . ( $rest_p ? "$p_p %" : '&nbsp;' ) . "</td>";
 		print "<td>".Format_Number($rest_h)."</td>";
@@ -12030,19 +16245,19 @@ sub HTMLShowRefererPages{
 sub HTMLShowKeyPhrases{
 	my $NewLinkTarget = shift;
 	print "$Center<a name=\"keyphrases\">&nbsp;</a><br />\n";
-    my $title = "$Message[43]";
+    my $title = _t("Keyphrases");
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link 
            $title = "$title &nbsp; - &nbsp; <a href=\"" . (XMLEncode(
                "$AddLinkToExternalCGIWrapper" . "?section=SEARCHWORDS&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     } 
 	&tab_head( $title, 19, 0, 'keyphrases' );
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\""
 	  . Tooltip(15)
-	  . "><th>".Format_Number($TotalDifferentKeyphrases)." $Message[103]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[14]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[15]</th></tr>\n";
+	  . "><th>".Format_Number($TotalDifferentKeyphrases)." " . _t("Different keyphrases") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 	my $total_s = 0;
 	my $count = 0;
 	&BuildKeyList(
@@ -12081,7 +16296,7 @@ sub HTMLShowKeyPhrases{
 			$p = int( $rest_s / $TotalKeyphrases * 1000 ) / 10;
 		}
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[124]</span></td><td>".Format_Number($rest_s)."</td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td><td>".Format_Number($rest_s)."</td>";
 				print "<td>$p %</td></tr>\n";
 	}
 	&tab_end();
@@ -12098,19 +16313,19 @@ sub HTMLShowKeyPhrases{
 sub HTMLShowKeywords{
 	my $NewLinkTarget = shift;
 	print "$Center<a name=\"keywords\">&nbsp;</a><br />\n";
-	my $title = "$Message[44]";
+	my $title = _t("Keywords");
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link 
            $title = "$title &nbsp; - &nbsp; <a href=\"" . (XMLEncode(
                "$AddLinkToExternalCGIWrapper" . "?section=KEYWORDS&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     } 
 	&tab_head( $title, 19, 0, 'keywords' );
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\""
 	  . Tooltip(15)
-	  . "><th>".Format_Number($TotalDifferentKeywords)." $Message[13]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[14]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[15]</th></tr>\n";
+	  . "><th>".Format_Number($TotalDifferentKeywords)." " . _t("Different keywords") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 	my $total_s = 0;
 	my $count = 0;
 	&BuildKeyList( $MaxRowsInHTMLOutput, $MinHit{'Keyword'},
@@ -12146,7 +16361,7 @@ sub HTMLShowKeywords{
 			$p = int( $rest_s / $TotalKeywords * 1000 ) / 10;
 		}
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[30]</span></td><td>".Format_Number($rest_s)."</td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td><td>".Format_Number($rest_s)."</td>";
 		print "<td>$p %</td></tr>\n";
 	}
 	&tab_end();
@@ -12163,20 +16378,20 @@ sub HTMLShowKeywords{
 sub HTMLShowErrorCodes{
 	my $code = shift;
 	my $title;
-	my %customtitles = ( "404", "$Message[47]" );
+	my %customtitles = ( "404", _t("Page not found") );
 	$title = $customtitles{$code} ? $customtitles{$code} :
 	           (join(' ', ( ($httpcodelib{$code} ? $httpcodelib{$code} :
-	           'Unknown error'), "urls (HTTP code " . $code . ")" )));
+	           _t("Unknown error") ), "urls (HTTP code " . $code . ")" )));
 	print "$Center<a name=\"errors$code\">&nbsp;</a><br />\n";
 	&tab_head( $title, 19, 0, "errors$code" );
-	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>URL ("
+	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("URL") . " ("
 	  . Format_Number(( scalar keys %{$_sider_h{$code}} ))
-	  . ")</th><th bgcolor=\"#$color_h\">$Message[49]</th>";
+	  . ")</th><th bgcolor=\"#$color_h\">" . _t("Hits") . "</th>";
 	foreach (split(//, $ShowHTTPErrorsPageDetail)) {
 		if ( $_ =~ /R/i ) {
-			print "<th bgcolor=\"#$color_p\" width=\"80\">$Message[23]</th>";
+			print "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Referer") . "</th>";
 		} elsif ( $_ =~ /H/i ) {
-			print "<th bgcolor=\"#$color_p\" width=\"80\">$Message[81]</th>";
+			print "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Host") . "</th>";
 		}
 	}
 	print "</tr>\n";
@@ -12242,18 +16457,18 @@ sub HTMLShowExtraSections{
 
 			if ( $ExtraStatTypes[$extranum] =~ m/P/i ) {
 				print
-"<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th>";
+"<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 			}
 			if ( $ExtraStatTypes[$extranum] =~ m/H/i ) {
 				print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 			}
 			if ( $ExtraStatTypes[$extranum] =~ m/B/i ) {
 				print
-"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 			}
 			if ( $ExtraStatTypes[$extranum] =~ m/L/i ) {
-				print "<th width=\"120\">$Message[9]</th>";
+				print "<th width=\"120\">" . _t("Last") . "</th>";
 			}
 			print "</tr>\n";
 			$total_p = $total_h = $total_k = 0;
@@ -12332,7 +16547,7 @@ sub HTMLShowExtraSections{
 			# Add average row
 			if ( $ExtraAddAverageRow[$extranum] ) {
 				print "<tr>";
-				print "<td class=\"aws\"><b>$Message[96]</b></td>";
+				print "<td class=\"aws\"><b>" . _t("Average") . "</b></td>";
 				if ( $ExtraStatTypes[$extranum] =~ m/P/i ) {
 					print "<td>"
 					  . ( $count ? Format_Number(( $total_p / $count )) : "&nbsp;" )
@@ -12361,7 +16576,7 @@ sub HTMLShowExtraSections{
 			# Add sum row
 			if ( $ExtraAddSumRow[$extranum] ) {
 				print "<tr>";
-				print "<td class=\"aws\"><b>$Message[102]</b></td>";
+				print "<td class=\"aws\"><b>" . _t("Sum") . "</b></td>";
 				if ( $ExtraStatTypes[$extranum] =~ m/P/i ) {
 					print "<td>" . ($total_p) . "</td>";
 				}
@@ -12401,22 +16616,22 @@ sub HTMLShowRobots{
 	
 	print "$Center<a name=\"robots\">&nbsp;</a><br />\n";
 	my $title = '';
-	if ( $HTMLOutput{'allrobots'} )  { $title .= "$Message[53]"; }
-	if ( $HTMLOutput{'lastrobots'} ) { $title .= "$Message[9]"; }
+	if ( $HTMLOutput{'allrobots'} )  { $title .= _t("Robots"); }
+	if ( $HTMLOutput{'lastrobots'} ) { $title .= _t("Last"); }
 	&tab_head( "$title", 19, 0, 'robots' );
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>"
 	  . Format_Number(( scalar keys %_robot_h ))
-	  . " $Message[51]</th>";
+	  . " " . _t("Different robots") . "</th>";
 	if ( $ShowRobotsStats =~ /H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowRobotsStats =~ /B/i ) {
 		print
-"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowRobotsStats =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	$total_p = $total_h = $total_k = $total_r = 0;
@@ -12482,7 +16697,7 @@ sub HTMLShowRobots{
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 || $rest_r > 0 )
 	{               # All other robots
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowRobotsStats =~ /H/i ) { print "<td>".Format_Number($rest_h)."</td>"; }
 		if ( $ShowRobotsStats =~ /B/i ) {
 			print "<td>" . ( Format_Bytes($rest_k) ) . "</td>";
@@ -12491,7 +16706,7 @@ sub HTMLShowRobots{
 		print "</tr>\n";
 	}
 	&tab_end(
-		"* $Message[156]" . ( $TotalRRobots ? " $Message[157]" : "" ) );
+		"* " . _t("Hits on robots.txt") . ( $TotalRRobots ? " " . _t("Total") : "" ) );
 	&html_end(1);
 }
 
@@ -12523,53 +16738,53 @@ sub HTMLShowURLDetail{
 	my $title = '';
 	my $cpt   = 0;
 	if ( $HTMLOutput{'urldetail'} ) {
-		$title = $Message[19];
+		$title = _t("Viewed pages");
 		$cpt   = ( scalar keys %_url_p );
 	}
 	if ( $HTMLOutput{'urlentry'} ) {
-		$title = $Message[104];
+		$title = _t("Entry");
 		$cpt   = ( scalar keys %_url_e );
 	}
 	if ( $HTMLOutput{'urlexit'} ) {
-		$title = $Message[116];
+		$title = _t("Exit");
 		$cpt   = ( scalar keys %_url_x );
 	}
 	&tab_head( "$title", 19, 0, 'urls' );
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>";
 	if ( $FilterIn{'url'} || $FilterEx{'url'} ) {
 		if ( $FilterIn{'url'} ) {
-			print "$Message[79] <b>$FilterIn{'url'}</b>";
+			print _t("Filter") . " <b>$FilterIn{'url'}</b>";
 		}
 		if ( $FilterIn{'url'} && $FilterEx{'url'} ) { print " - "; }
 		if ( $FilterEx{'url'} ) {
-			print "Exclude $Message[79] <b>$FilterEx{'url'}</b>";
+			print _t("Exclude filter") . " <b>$FilterEx{'url'}</b>";
 		}
 		if ( $FilterIn{'url'} || $FilterEx{'url'} ) { print ": "; }
-		print Format_Number($cpt)." $Message[28]";
+		print Format_Number($cpt)." " . _t("Different pages");
 		if ( $MonthRequired ne 'all' ) {
 			if ( $HTMLOutput{'urldetail'} ) {
 				print
-"<br />$Message[102]: ".Format_Number($TotalDifferentPages)." $Message[28]";
+"<br />" . _t("Total") . ": ".Format_Number($TotalDifferentPages)." " . _t("Different pages");
 			}
 		}
 	}
-	else { print "$Message[102]: ".Format_Number($cpt)." $Message[28]"; }
+	else { print _t("Total") . ": ".Format_Number($cpt)." " . _t("Different pages"); }
 	print "</th>";
 	if ( $ShowPagesStats =~ /P/i ) {
 		print
-		  "<th bgcolor=\"#$color_p\" width=\"80\">$Message[29]</th>";
+		  "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowPagesStats =~ /B/i ) {
 		print
-"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">$Message[106]</th>";
+"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Average") . "</th>";
 	}
 	if ( $ShowPagesStats =~ /E/i ) {
 		print
-		  "<th bgcolor=\"#$color_e\" width=\"80\">$Message[104]</th>";
+		  "<th bgcolor=\"#$color_e\" width=\"80\">" . _t("Entry") . "</th>";
 	}
 	if ( $ShowPagesStats =~ /X/i ) {
 		print
-		  "<th bgcolor=\"#$color_x\" width=\"80\">$Message[116]</th>";
+		  "<th bgcolor=\"#$color_x\" width=\"80\">" . _t("Exit") . "</th>";
 	}
 
 	# Call to plugins' function ShowPagesAddField
@@ -12706,7 +16921,7 @@ sub HTMLShowURLDetail{
 	my $rest_x = $TotalExits - $total_x;
 	if ( $rest_p > 0 || $rest_e > 0 || $rest_k > 0 ) {
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowPagesStats =~ /P/i ) {
 			print "<td>" . ( $rest_p ? Format_Number($rest_p) : "&nbsp;" ) . "</td>";
 		}
@@ -12754,26 +16969,26 @@ sub HTMLShowLogins{
 	my $rest_k = 0;
 	print "$Center<a name=\"logins\">&nbsp;</a><br />\n";
 	my $title = '';
-	if ( $HTMLOutput{'alllogins'} )  { $title .= "$Message[94]"; }
-	if ( $HTMLOutput{'lastlogins'} ) { $title .= "$Message[9]"; }
+	if ( $HTMLOutput{'alllogins'} )  { $title .= _t("Login"); }
+	if ( $HTMLOutput{'lastlogins'} ) { $title .= _t("Last"); }
 	&tab_head( "$title", 19, 0, 'logins' );
-	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>$Message[94] : "
+	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("Login") . " : "
 	  . Format_Number(( scalar keys %_login_h )) . "</th>";
 	&HTMLShowUserInfo('__title__');
 	if ( $ShowAuthenticatedUsers =~ /P/i ) {
 		print
-		  "<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th>";
+		  "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowAuthenticatedUsers =~ /H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowAuthenticatedUsers =~ /B/i ) {
 		print
-"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowAuthenticatedUsers =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	$total_p = $total_h = $total_k = 0;
@@ -12827,7 +17042,7 @@ sub HTMLShowLogins{
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 )
 	{    # All other logins and/or anonymous
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[125]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Anonymous") . "</span></td>";
 		&HTMLShowUserInfo('');
 		if ( $ShowAuthenticatedUsers =~ /P/i ) {
 			print "<td>" . ( $rest_p ? Format_Number($rest_p) : "&nbsp;" ) . "</td>";
@@ -12862,25 +17077,25 @@ sub HTMLShowHostsUnknown{
 	my $rest_h = 0;
 	my $rest_k = 0;
 	print "$Center<a name=\"unknownip\">&nbsp;</a><br />\n";
-	&tab_head( "$Message[45]", 19, 0, 'unknownwip' );
+	&tab_head( _t("Unresolved IP Address"), 19, 0, 'unknownwip' );
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>"
 	  . Format_Number(( scalar keys %_host_h ))
-	  . " $Message[1]</th>";
+	  . " " . _t("Unresolved IP Address") . "</th>";
 	&HTMLShowHostInfo('__title__');
 	if ( $ShowHostsStats =~ /P/i ) {
 		print
-		  "<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th>";
+		  "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /B/i ) {
 		print
-"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	$total_p = $total_h = $total_k = 0;
@@ -12929,7 +17144,7 @@ sub HTMLShowHostsUnknown{
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 )
 	{    # All other visitors (known or not)
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[82]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		&HTMLShowHostInfo('');
 		if ( $ShowHostsStats =~ /P/i ) {
 			print "<td>" . ( $rest_p ? Format_Number($rest_p) : "&nbsp;" ) . "</td>";
@@ -12959,6 +17174,7 @@ sub HTMLShowHosts{
 	my $rest_p = 0;
 	my $rest_h = 0;
 	my $rest_k = 0;
+	my $title = '';
 	print "$Center<a name=\"hosts\">&nbsp;</a><br />\n";
 
 	# Show filter form
@@ -12966,58 +17182,57 @@ sub HTMLShowHosts{
 		$FilterEx{'host'} );
 
 	# Show hosts list
-	my $title = '';
 	my $cpt   = 0;
 	if ( $HTMLOutput{'allhosts'} ) {
-		$title .= "$Message[81]";
+		$title .= _t("Visitors");
 		$cpt = ( scalar keys %_host_h );
 	}
 	if ( $HTMLOutput{'lasthosts'} ) {
-		$title .= "$Message[9]";
+		$title .= _t("Last");
 		$cpt = ( scalar keys %_host_h );
 	}
 	&tab_head( "$title", 19, 0, 'hosts' );
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>";
 	if ( $FilterIn{'host'} || $FilterEx{'host'} ) {    # With filter
 		if ( $FilterIn{'host'} ) {
-			print "$Message[79] '<b>$FilterIn{'host'}</b>'";
+			print _t("Filter") . " '<b>$FilterIn{'host'}</b>'";
 		}
 		if ( $FilterIn{'host'} && $FilterEx{'host'} ) { print " - "; }
 		if ( $FilterEx{'host'} ) {
-			print " Exclude $Message[79] '<b>$FilterEx{'host'}</b>'";
+			print _t("Exclude filter") . " '<b>$FilterEx{'host'}</b>'";
 		}
 		if ( $FilterIn{'host'} || $FilterEx{'host'} ) { print ": "; }
-		print "$cpt $Message[81]";
+		print "$cpt " . _t("Visitors");
 		if ( $MonthRequired ne 'all' ) {
 			if ( $HTMLOutput{'allhosts'} || $HTMLOutput{'lasthosts'} ) {
 				print
-"<br />$Message[102]: ".Format_Number($TotalHostsKnown)." $Message[82], ".Format_Number($TotalHostsUnknown)." $Message[1] - ".Format_Number($TotalUnique)." $Message[11]";
+"<br />" . _t("Total") . ": ".Format_Number($TotalHostsKnown)." " . _t("Known") . ", ".Format_Number($TotalHostsUnknown)." " . _t("Unknown") . " - ".Format_Number($TotalUnique)." " . _t("Unique visitors");
 			}
 		}
 	}
 	else {    # Without filter
 		if ( $MonthRequired ne 'all' ) {
 			print
-"$Message[102] : ".Format_Number($TotalHostsKnown)." $Message[82], ".Format_Number($TotalHostsUnknown)." $Message[1] - ".Format_Number($TotalUnique)." $Message[11]";
+_t("Total") . " : ".Format_Number($TotalHostsKnown)." " . _t("Known") . ", ".Format_Number($TotalHostsUnknown)." " . _t("Unknown") . " - ".Format_Number($TotalUnique)." " . _t("Unique visitors");
 		}
-		else { print "$Message[102] : " . Format_Number(( scalar keys %_host_h )); }
+		else { print _t("Total") . " : " . Format_Number(( scalar keys %_host_h )); }
 	}
 	print "</th>";
 	&HTMLShowHostInfo('__title__');
 	if ( $ShowHostsStats =~ /P/i ) {
 		print
-		  "<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th>";
+		  "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /B/i ) {
 		print
-"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	$total_p = $total_h = $total_k = 0;
@@ -13100,7 +17315,7 @@ sub HTMLShowHosts{
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 )
 	{    # All other visitors (known or not)
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		&HTMLShowHostInfo('');
 		if ( $ShowHostsStats =~ /P/i ) {
 			print "<td>" . ( $rest_p ? Format_Number($rest_p) : "&nbsp;" ) . "</td>";
@@ -13140,31 +17355,31 @@ sub HTMLShowDomains{
 	my $title = '';
 	my $cpt   = 0;
 	if ( $HTMLOutput{'alldomains'} ) {
-		$title .= "$Message[25]";
+		$title .= _t("Countries");
 		$cpt = ( scalar keys %_domener_h );
 	}
 	&tab_head( "$title", 19, 0, 'domains' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th colspan=\"2\">$Message[17]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th colspan=\"2\">" . _t("Domain") . "</th>";
 	if ( $ShowDomainsStats =~ /U/i ) {
 		print
-		  "<th bgcolor=\"#$color_u\" width=\"80\">$Message[11]</th>";
+		  "<th bgcolor=\"#$color_u\" width=\"80\">" . _t("Unique visitors") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /V/i ) {
 		print
-		  "<th bgcolor=\"#$color_v\" width=\"80\">$Message[10]</th>";
+		  "<th bgcolor=\"#$color_v\" width=\"80\">" . _t("Visits") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /P/i ) {
 		print
-		  "<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th>";
+		  "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /B/i ) {
 		print
-"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+"<th class=\"datasize\" bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	print "<th>&nbsp;</th>";
 	print "</tr>\n";
@@ -13205,8 +17420,8 @@ sub HTMLShowDomains{
 		if ( $newkey eq 'ip' || !$DomainsHashIDLib{$newkey} ) {
 			print
 "<tr><td width=\"$WIDTHCOLICON\"><img src=\"$DirIcons\/flags\/ip.png\" height=\"14\""
-			  . AltTitle("$Message[0]")
-			  . " /></td><td class=\"aws\">$Message[0]</td><td>$newkey</td>";
+			  . AltTitle( _t("Unknown") )
+			  . " /></td><td class=\"aws\">" . _t("Unknown") . "</td><td>$newkey</td>";
 		}
 		else {
 			print
@@ -13254,20 +17469,20 @@ sub HTMLShowDomains{
 		if ( $ShowDomainsStats =~ /P/i ) {
 			print
 "<img src=\"$DirIcons\/other\/$BarPng{'hp'}\" width=\"$bredde_p\" height=\"5\""
-			  . AltTitle( "$Message[56]: " . int( $_domener_p{$key} ) )
+			  . AltTitle( _t("Pages") . ": " . int( $_domener_p{$key} ) )
 			  . " /><br />\n";
 		}
 		if ( $ShowDomainsStats =~ /H/i ) {
 			print
 "<img src=\"$DirIcons\/other\/$BarPng{'hh'}\" width=\"$bredde_h\" height=\"5\""
-			  . AltTitle( "$Message[57]: " . int( $_domener_h{$key} ) )
+			  . AltTitle( _t("Hits") . ": " . int( $_domener_h{$key} ) )
 			  . " /><br />\n";
 		}
 		if ( $ShowDomainsStats =~ /B/i ) {
 			print
 "<img src=\"$DirIcons\/other\/$BarPng{'hk'}\" width=\"$bredde_k\" height=\"5\""
 			  . AltTitle(
-				"$Message[75]: " . Format_Bytes( $_domener_k{$key} ) )
+				_t("Bandwidth") . ": " . Format_Bytes( $_domener_k{$key} ) )
 			  . " />";
 		}
 		print "</td>";
@@ -13279,8 +17494,8 @@ sub HTMLShowDomains{
 		$total_k += $_domener_k{$key} || 0;
 		$count++;
 	}
-	my $rest_u = $TotalUnique - $total_u;
-	my $rest_v = $TotalVisits - $total_v;
+	$rest_u = $TotalUnique - $total_u;
+	$rest_v = $TotalVisits - $total_v;
 	$rest_p = $TotalPages - $total_p;
 	$rest_h = $TotalHits - $total_h;
 	$rest_k = $TotalBytes - $total_k;
@@ -13291,7 +17506,7 @@ sub HTMLShowDomains{
 		|| $rest_k > 0 )
 	{    # All other domains (known or not)
 		print
-"<tr><td width=\"$WIDTHCOLICON\">&nbsp;</td><td colspan=\"2\" class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td width=\"$WIDTHCOLICON\">&nbsp;</td><td colspan=\"2\" class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowDomainsStats =~ /U/i ) { print "<td>$rest_u</td>"; }
 		if ( $ShowDomainsStats =~ /V/i ) { print "<td>$rest_v</td>"; }
 		if ( $ShowDomainsStats =~ /P/i ) { print "<td>$rest_p</td>"; }
@@ -13316,13 +17531,13 @@ sub HTMLShowDomains{
 sub HTMLShowDownloads{
 	my $regext         = qr/\.(\w{1,6})$/;
 	print "$Center<a name=\"downloads\">&nbsp;</a><br />\n";
-	&tab_head( $Message[178], 19, 0, "downloads" );
-	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">$Message[178]</th>";
-	if ( $ShowFileTypesStats =~ /H/i ){print "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>"
-		."<th bgcolor=\"#$color_h\" width=\"80\">206 $Message[57]</th>"; }
+	&tab_head( _t("Downloads"), 19, 0, "downloads" );
+	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">" . _t("Downloads") . "</th>";
+	if ( $ShowFileTypesStats =~ /H/i ){print "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>"
+		."<th bgcolor=\"#$color_h\" width=\"80\">206 " . _t("Hits") . "</th>"; }
 	if ( $ShowFileTypesStats =~ /B/i ){
-		print "<th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
-		print "<th bgcolor=\"#$color_k\" width=\"80\">$Message[106]</th>";
+		print "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
+		print "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Average") . "</th>";
 	}
 	print "</tr>\n";
 	my $count = 0;
@@ -13394,7 +17609,7 @@ sub HTMLMainSummary{
 	}
 			
 	#print "$Center<a name=\"summary\">&nbsp;</a><br />\n";
-	my $title = "$Message[128]";
+	my $title = "📊 " . _t("Report Overview");
 	&tab_head( "$title", 0, 0, 'month' );
 
 	my $NewLinkParams = ${QueryString};
@@ -13442,24 +17657,21 @@ sub HTMLMainSummary{
 
 	# Show first/last
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\">";
-	print
-"<td class=\"aws\"><b>$Message[133]</b></td><td class=\"aws\" colspan=\""
+	print "<td class=\"aws\"><b>" . _t("Period") . "</b></td><td class=\"aws\" colspan=\""
 	  . ( $colspan - 1 ) . "\">\n";
 	print( $MonthRequired eq 'all'
-		? "$Message[6] $YearRequired"
-		: "$Message[5] "
-		  . $MonthNumLib{$MonthRequired}
-		  . " $YearRequired"
+		? sprintf(_t("date_format_year"), $YearRequired)
+		: sprintf(_t("date_format_month"), $MonthNumLib{$MonthRequired}, $YearRequired)
 	);
 	print "</td></tr>\n";
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\">";
-	print "<td class=\"aws\"><b>$Message[8]</b></td>\n";
+	print "<td class=\"aws\"><b>" . _t("First visit") . "</b></td>\n";
 	print "<td class=\"aws\" colspan=\""
 	  . ( $colspan - 1 ) . "\">"
 	  . ( $FirstTime ? Format_Date( $FirstTime, 0 ) : "NA" ) . "</td>";
 	print "</tr>\n";
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\">";
-	print "<td class=\"aws\"><b>$Message[9]</b></td>\n";
+	print "<td class=\"aws\"><b>" . _t("Last visit") . "</b></td>\n";
 	print "<td class=\"aws\" colspan=\""
 	  . ( $colspan - 1 ) . "\">"
 	  . ( $LastTime ? Format_Date( $LastTime, 0 ) : "NA" )
@@ -13474,7 +17686,7 @@ sub HTMLMainSummary{
 	if ( $ShowSummary =~ /U/i ) {
 		print "<td width=\"$w%\" bgcolor=\"#$color_u\""
 		  . Tooltip(2)
-		  . ">$Message[11]</td>";
+		  . ">" . _t("Unique visitors") . "</td>";
 	}
 	else {
 		print
@@ -13483,7 +17695,7 @@ sub HTMLMainSummary{
 	if ( $ShowSummary =~ /V/i ) {
 		print "<td width=\"$w%\" bgcolor=\"#$color_v\""
 		  . Tooltip(1)
-		  . ">$Message[10]</td>";
+		  . ">" . _t("Visits") . "</td>";
 	}
 	else {
 		print
@@ -13492,7 +17704,7 @@ sub HTMLMainSummary{
 	if ( $ShowSummary =~ /P/i ) {
 		print "<td width=\"$w%\" bgcolor=\"#$color_p\""
 		  . Tooltip(3)
-		  . ">$Message[56]</td>";
+		  . ">" . _t("Pages") . "</td>";
 	}
 	else {
 		print
@@ -13501,7 +17713,7 @@ sub HTMLMainSummary{
 	if ( $ShowSummary =~ /H/i ) {
 		print "<td width=\"$w%\" bgcolor=\"#$color_h\""
 		  . Tooltip(4)
-		  . ">$Message[57]</td>";
+		  . ">" . _t("Hits") . "</td>";
 	}
 	else {
 		print
@@ -13510,7 +17722,7 @@ sub HTMLMainSummary{
 	if ( $ShowSummary =~ /B/i ) {
 		print "<td width=\"$w%\" bgcolor=\"#$color_k\""
 		  . Tooltip(5)
-		  . ">$Message[75]</td>";
+		  . ">" . _t("Bandwidth") . "</td>";
 	}
 	else {
 		print
@@ -13521,7 +17733,7 @@ sub HTMLMainSummary{
 	# Show main indicators values for viewed traffic
 	print "<tr>";
 	if ( $LogType eq 'M' ) {
-		print "<td class=\"aws\">$Message[165]</td>";
+		print "<td class=\"aws\">" . _t("Viewed") . "</td>";
 		print "<td>&nbsp;<br />&nbsp;</td>\n";
 		print "<td>&nbsp;<br />&nbsp;</td>\n";
 		if ( $ShowSummary =~ /H/i ) {
@@ -13530,7 +17742,7 @@ sub HTMLMainSummary{
 				$LogType eq 'M'
 				? ""
 				: "<br />($RatioHits&nbsp;"
-				  . lc( $Message[57] . "/" . $Message[12] ) . ")"
+				  . _t("Hits") . "/" . _t("Visits") . ")"
 			  )
 			  . "</td>";
 		}
@@ -13538,21 +17750,19 @@ sub HTMLMainSummary{
 		if ( $ShowSummary =~ /B/i ) {
 			print "<td><b>"
 			  . Format_Bytes( int($TotalBytes) )
-			  . "</b><br />($RatioBytes&nbsp;$Message[108]/"
-			  . $Message[ ( $LogType eq 'M' ? 149 : 12 ) ]
-			  . ")</td>";
+			  . "</b><br />($RatioBytes&nbsp;" . _t("KB/Visits") . ")</td>";
 		}
 		else { print "<td>&nbsp;</td>"; }
 	}
 	else {
 		if ( $LogType eq 'W' || $LogType eq 'S' ) {
-			print "<td class=\"aws\">$Message[160]&nbsp;*</td>";
+			print "<td class=\"aws\">" . _t("Viewed traffic *") . "</td>";
 		}
 		if ( $ShowSummary =~ /U/i ) {
 			print "<td>"
 			  . (
 				$MonthRequired eq 'all'
-				? "<b>&lt;= ".Format_Number($TotalUnique)."</b><br />$Message[129]"
+				? "<b>&lt;= ".Format_Number($TotalUnique)."</b><br />" . _t("Unique")
 				: "<b>".Format_Number($TotalUnique)."</b><br />&nbsp;"
 			  )
 			  . "</td>";
@@ -13560,14 +17770,12 @@ sub HTMLMainSummary{
 		else { print "<td>&nbsp;</td>"; }
 		if ( $ShowSummary =~ /V/i ) {
 			print
-"<td><b>".Format_Number($TotalVisits)."</b><br />($RatioVisits&nbsp;$Message[52])</td>";
+"<td><b>".Format_Number($TotalVisits)."</b><br />(" . $RatioVisits . "&nbsp;" . _t("Visits/Visitor") . ")</td>";
 		}
 		else { print "<td>&nbsp;</td>"; }
 		if ( $ShowSummary =~ /P/i ) {
-			print "<td><b>".Format_Number($TotalPages)."</b><br />($RatioPages&nbsp;"
-			  . $Message[56] . "/"
-			  . $Message[12]
-			  . ")</td>";
+			print "<td><b>".Format_Number($TotalPages)."</b><br />(" . $RatioPages . "&nbsp;"
+			  . _t("Pages/Visit") . ")</td>";
 		}
 		else { print "<td>&nbsp;</td>"; }
 		if ( $ShowSummary =~ /H/i ) {
@@ -13575,9 +17783,8 @@ sub HTMLMainSummary{
 			  . (
 				$LogType eq 'M'
 				? ""
-				: "<br />($RatioHits&nbsp;"
-				  . $Message[57] . "/"
-				  . $Message[12] . ")"
+				: "<br />(" . $RatioHits . "&nbsp;"
+				  . _t("Hits/Visit") . ")"
 			  )
 			  . "</td>";
 		}
@@ -13585,9 +17792,7 @@ sub HTMLMainSummary{
 		if ( $ShowSummary =~ /B/i ) {
 			print "<td><b>"
 			  . Format_Bytes( int($TotalBytes) )
-			  . "</b><br />($RatioBytes&nbsp;$Message[108]/"
-			  . $Message[ ( $LogType eq 'M' ? 149 : 12 ) ]
-			  . ")</td>";
+			  . "</b><br />(" . $RatioBytes . "&nbsp;" . _t("KB/Visit") . ")</td>";
 		}
 		else { print "<td>&nbsp;</td>"; }
 	}
@@ -13597,7 +17802,7 @@ sub HTMLMainSummary{
 	if ( $LogType eq 'M' || $LogType eq 'W' || $LogType eq 'S' ) {
 		print "<tr>";
 		if ( $LogType eq 'M' ) {
-			print "<td class=\"aws\">$Message[166]</td>";
+			print "<td class=\"aws\">" . _t("Not viewed") . "</td>";
 			print "<td>&nbsp;<br />&nbsp;</td>\n";
 			print "<td>&nbsp;<br />&nbsp;</td>\n";
 			if ( $ShowSummary =~ /H/i ) {
@@ -13613,7 +17818,7 @@ sub HTMLMainSummary{
 		}
 		else {
 			if ( $LogType eq 'W' || $LogType eq 'S' ) {
-				print "<td class=\"aws\">$Message[161]&nbsp;*</td>";
+				print "<td class=\"aws\">" . _t("Not viewed traffic *") . "</td>";
 			}
 			print "<td colspan=\"2\">&nbsp;<br />&nbsp;</td>\n";
 			if ( $ShowSummary =~ /P/i ) {
@@ -13634,7 +17839,7 @@ sub HTMLMainSummary{
 		print "</tr>\n";
 	}
 	&tab_end($LogType eq 'W'
-		  || $LogType eq 'S' ? "* $Message[159]" : "" );
+		  || $LogType eq 'S' ? "* " . _t("Viewed traffic includes page views, hits and bandwidth on pages") : "" );
 }
 
 #------------------------------------------------------------------------------
@@ -13647,7 +17852,7 @@ sub HTMLMainSummary{
 sub HTMLMainMonthly{
 	if ($Debug) { debug( "ShowMonthStats", 2 ); }
 	print "$Center<a name=\"month\">&nbsp;</a><br />\n";
-	my $title = "$Message[162]";
+	my $title = "📊 " . _t("Monthly Statistics");
 	&tab_head( "$title", 0, 0, 'month' );
 	print "<tr><td align=\"center\">\n";
 	print "<center>\n";
@@ -13698,9 +17903,9 @@ sub HTMLMainMonthly{
 			  "$MonthNumLib{$monthix}\n$YearRequired";
 		}
 		my @vallabel = (
-			"$Message[11]", "$Message[10]",
-			"$Message[56]", "$Message[57]",
-			"$Message[75]"
+			_t("Unique visitors"), _t("Visits"),
+			_t("Pages"), _t("Hits"),
+			_t("Bandwidth")
 		);
 		my @valcolor =
 		  ( "$color_u", "$color_v", "$color_p", "$color_h",
@@ -13782,7 +17987,7 @@ sub HTMLMainMonthly{
 			if ( $ShowMonthStats =~ /U/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vu'}\" height=\"$bredde_u\" width=\"6\""
-				  . AltTitle( "$Message[11]: "
+				  . AltTitle( _t("Unique visitors") . ": "
 					  . ( $MonthUnique{ $YearRequired . $monthix }
 						  || 0 ) )
 				  . " />";
@@ -13790,7 +17995,7 @@ sub HTMLMainMonthly{
 			if ( $ShowMonthStats =~ /V/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vv'}\" height=\"$bredde_v\" width=\"6\""
-				  . AltTitle( "$Message[10]: "
+				  . AltTitle( _t("Visits") . ": "
 					  . ( $MonthVisits{ $YearRequired . $monthix }
 						  || 0 ) )
 				  . " />";
@@ -13798,7 +18003,7 @@ sub HTMLMainMonthly{
 			if ( $ShowMonthStats =~ /P/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vp'}\" height=\"$bredde_p\" width=\"6\""
-				  . AltTitle( "$Message[56]: "
+				  . AltTitle( _t("Pages") . ": "
 					  . ( $MonthPages{ $YearRequired . $monthix } || 0 )
 				  )
 				  . " />";
@@ -13806,7 +18011,7 @@ sub HTMLMainMonthly{
 			if ( $ShowMonthStats =~ /H/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vh'}\" height=\"$bredde_h\" width=\"6\""
-				  . AltTitle( "$Message[57]: "
+				  . AltTitle( _t("Hits") . ": "
 					  . ( $MonthHits{ $YearRequired . $monthix } || 0 )
 				  )
 				  . " />";
@@ -13815,7 +18020,7 @@ sub HTMLMainMonthly{
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vk'}\" height=\"$bredde_k\" width=\"6\""
 					  . AltTitle(
-					"$Message[75]: "
+					_t("Bandwidth") . ": "
 					  . Format_Bytes(
 						$MonthBytes{ $YearRequired . $monthix }
 					  )
@@ -13852,7 +18057,7 @@ sub HTMLMainMonthly{
 				? '<span class="currentday">'
 				: ''
 			  );
-			print "$MonthNumLib{$monthix}<br />$YearRequired";
+			print sprintf(_t("date_format_month"), $MonthNumLib{$monthix}, $YearRequired);
 			print(   !$StaticLinks
 				  && $monthix == $nowmonth
 				  && $YearRequired == $nowyear ? '</span>' : '' );
@@ -13877,31 +18082,31 @@ sub HTMLMainMonthly{
 	if ($AddDataArrayMonthStats) {
 		print "<table>\n";
 		print
-"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">$Message[5]</td>";
+"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">" . _t("Month") . "</td>";
 		if ( $ShowMonthStats =~ /U/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_u\""
 			  . Tooltip(2)
-			  . ">$Message[11]</td>";
+			  . ">" . _t("Unique visitors") . "</td>";
 		}
 		if ( $ShowMonthStats =~ /V/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_v\""
 			  . Tooltip(1)
-			  . ">$Message[10]</td>";
+			  . ">" . _t("Visits") . "</td>";
 		}
 		if ( $ShowMonthStats =~ /P/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_p\""
 			  . Tooltip(3)
-			  . ">$Message[56]</td>";
+			  . ">" . _t("Pages") . "</td>";
 		}
 		if ( $ShowMonthStats =~ /H/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_h\""
 			  . Tooltip(4)
-			  . ">$Message[57]</td>";
+			  . ">" . _t("Hits") . "</td>";
 		}
 		if ( $ShowMonthStats =~ /B/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_k\""
 			  . Tooltip(5)
-			  . ">$Message[75]</td>";
+			  . ">" . _t("Bandwidth") . "</td>";
 		}
 		print "</tr>\n";
 		for ( my $ix = 1 ; $ix <= 12 ; $ix++ ) {
@@ -13957,7 +18162,7 @@ sub HTMLMainMonthly{
 		# TODO
 		# Total row
 		print
-"<tr><td bgcolor=\"#$color_TableBGRowTitle\">$Message[102]</td>";
+"<tr><td bgcolor=\"#$color_TableBGRowTitle\">" . _t("Total") . "</td>";
 		if ( $ShowMonthStats =~ /U/i ) {
 			print
 			  "<td bgcolor=\"#$color_TableBGRowTitle\">".Format_Number($total_u)."</td>";
@@ -14020,7 +18225,7 @@ sub HTMLMainDaily{
 		$NewLinkTarget = " target=\"_parent\"";
 	}
 
-	my $title = "$Message[138]";
+	my $title = "📅 " . _t("Daily Statistics");
 
     if ($AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
         # extend the title to include the added link
@@ -14028,7 +18233,7 @@ sub HTMLMainDaily{
                 "$AddLinkToExternalCGIWrapper". "?section=DAY&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
 
 	&tab_head( "$title", 0, 0, 'daysofmonth' );
@@ -14094,8 +18299,8 @@ sub HTMLMainDaily{
 			  "$day\n$MonthNumLib{$month}$weekend$bold";
 		}
 		my @vallabel = (
-			"$Message[10]", "$Message[56]",
-			"$Message[57]", "$Message[75]"
+			_t("Visits"), _t("Pages"),
+			_t("Hits"), _t("Bandwidth")
 		);
 		my @valcolor =
 		  ( "$color_v", "$color_p", "$color_h", "$color_k" );
@@ -14172,7 +18377,7 @@ sub HTMLMainDaily{
 			if ( $ShowDaysOfMonthStats =~ /V/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vv'}\" height=\"$bredde_v\" width=\"4\""
-				  . AltTitle( "$Message[10]: "
+				  . AltTitle( _t("Visits") . ": "
 					  . int( $DayVisits{ $year . $month . $day } || 0 )
 				  )
 				  . " />";
@@ -14180,14 +18385,14 @@ sub HTMLMainDaily{
 			if ( $ShowDaysOfMonthStats =~ /P/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vp'}\" height=\"$bredde_p\" width=\"4\""
-				  . AltTitle( "$Message[56]: "
+				  . AltTitle( _t("Pages") . ": "
 					  . int( $DayPages{ $year . $month . $day } || 0 ) )
 				  . " />";
 			}
 			if ( $ShowDaysOfMonthStats =~ /H/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vh'}\" height=\"$bredde_h\" width=\"4\""
-				  . AltTitle( "$Message[57]: "
+				  . AltTitle( _t("Hits") . ": "
 					  . int( $DayHits{ $year . $month . $day } || 0 ) )
 				  . " />";
 			}
@@ -14195,7 +18400,7 @@ sub HTMLMainDaily{
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vk'}\" height=\"$bredde_k\" width=\"4\""
 				  . AltTitle(
-					"$Message[75]: "
+					_t("Bandwidth") . ": "
 					  . Format_Bytes(
 						$DayBytes{ $year . $month . $day }
 					  )
@@ -14231,22 +18436,22 @@ sub HTMLMainDaily{
 		if ( $ShowDaysOfMonthStats =~ /V/i ) {
 			print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vv'}\" height=\"$bredde_v\" width=\"4\""
-			  . AltTitle("$Message[10]: $average_v") . " />";
+			  . AltTitle( _t("Visits") . ": $average_v") . " />";
 		}
 		if ( $ShowDaysOfMonthStats =~ /P/i ) {
 			print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vp'}\" height=\"$bredde_p\" width=\"4\""
-			  . AltTitle("$Message[56]: $average_p") . " />";
+			  . AltTitle( _t("Pages") . ": $average_p") . " />";
 		}
 		if ( $ShowDaysOfMonthStats =~ /H/i ) {
 			print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vh'}\" height=\"$bredde_h\" width=\"4\""
-			  . AltTitle("$Message[57]: $average_h") . " />";
+			  . AltTitle( _t("Hits") . ": $average_h") . " />";
 		}
 		if ( $ShowDaysOfMonthStats =~ /B/i ) {
 			print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vk'}\" height=\"$bredde_k\" width=\"4\""
-			  . AltTitle("$Message[75]: $average_k") . " />";
+			  . AltTitle( _t("Bandwidth") . ": $average_k") . " />";
 		}
 		print "</td>\n";
 		print "</tr>\n";
@@ -14294,7 +18499,7 @@ sub HTMLMainDaily{
 		print "<td>&nbsp;</td>";
 		print "<td valign=\"middle\""
 		  . Tooltip(18)
-		  . ">$Message[96]</td>\n";
+		  . ">" . _t("Average") . "</td>\n";
 		print "</tr>\n";
 		print "</table>\n";
 	}
@@ -14304,26 +18509,26 @@ sub HTMLMainDaily{
 	if ($AddDataArrayShowDaysOfMonthStats) {
 		print "<table>\n";
 		print
-"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">$Message[4]</td>";
+"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">" . _t("Day") . "</td>";
 		if ( $ShowDaysOfMonthStats =~ /V/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_v\""
 			  . Tooltip(1)
-			  . ">$Message[10]</td>";
+			  . ">" . _t("Visits") . "</td>";
 		}
 		if ( $ShowDaysOfMonthStats =~ /P/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_p\""
 			  . Tooltip(3)
-			  . ">$Message[56]</td>";
+			  . ">" . _t("Pages") . "</td>";
 		}
 		if ( $ShowDaysOfMonthStats =~ /H/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_h\""
 			  . Tooltip(4)
-			  . ">$Message[57]</td>";
+			  . ">" . _t("Hits") . "</td>";
 		}
 		if ( $ShowDaysOfMonthStats =~ /B/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_k\""
 			  . Tooltip(5)
-			  . ">$Message[75]</td>";
+			  . ">" . _t("Bandwidth") . "</td>";
 		}
 		print "</tr>";
 		foreach
@@ -14388,7 +18593,7 @@ sub HTMLMainDaily{
 
 		# Average row
 		print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><td>$Message[96]</td>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><td>" . _t("Average") . "</td>";
 		if ( $ShowDaysOfMonthStats =~ /V/i ) {
 			print "<td>".Format_Number(int($average_v))."</td>";
 		}
@@ -14405,7 +18610,7 @@ sub HTMLMainDaily{
 
 		# Total row
 		print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><td>$Message[102]</td>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><td>" . _t("Total") . "</td>";
 		if ( $ShowDaysOfMonthStats =~ /V/i ) {
 			print "<td>".Format_Number($total_v)."</td>";
 		}
@@ -14442,7 +18647,7 @@ sub HTMLMainDaysofWeek{
     
 	if ($Debug) { debug( "ShowDaysOfWeekStats", 2 ); }
 			print "$Center<a name=\"daysofweek\">&nbsp;</a><br />\n";
-			my $title = "$Message[91]";
+			my $title = "📈 " . _t("Statistics by Day of Week");
 			&tab_head( "$title", 18, 0, 'daysofweek' );
 			print "<tr>";
 			print "<td align=\"center\">";
@@ -14504,11 +18709,11 @@ sub HTMLMainDaysofWeek{
 			{
 				my @blocklabel = ();
 				for (@DOWIndex) {
-					push @blocklabel,
-					  ( $Message[ $_ + 84 ] . ( $_ =~ /[06]/ ? "!" : "" ) );
+					my $dayname = _t("DayOfWeek_" . $_);
+					push @blocklabel, $dayname . ( $_ =~ /[06]/ ? "!" : "" );
 				}
 				my @vallabel =
-				  ( "$Message[56]", "$Message[57]", "$Message[75]" );
+				  ( _t("Pages"), _t("Hits"), _t("Bandwidth") );
 				my @valcolor = ( "$color_p", "$color_h", "$color_k" );
 				my @valmax = ( int($max_h), int($max_h), int($max_k) );
 				my @valtotal = ( $TotalPages, $TotalHits, $TotalBytes );
@@ -14627,19 +18832,19 @@ sub HTMLMainDaysofWeek{
 					if ( $ShowDaysOfWeekStats =~ /P/i ) {
 						print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vp'}\" height=\"$bredde_p\" width=\"6\""
-						  . AltTitle("$Message[56]: $avg_dayofweek_p[$_]")
+						  . AltTitle(_t("Pages") . ": $avg_dayofweek_p[$_]")
 						  . " />";
 					}
 					if ( $ShowDaysOfWeekStats =~ /H/i ) {
 						print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vh'}\" height=\"$bredde_h\" width=\"6\""
-						  . AltTitle("$Message[57]: $avg_dayofweek_h[$_]")
+						  . AltTitle(_t("Hits") . ": $avg_dayofweek_h[$_]")
 						  . " />";
 					}
 					if ( $ShowDaysOfWeekStats =~ /B/i ) {
 						print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vk'}\" height=\"$bredde_k\" width=\"6\""
-						  . AltTitle( "$Message[75]: "
+						  . AltTitle( _t("Bandwidth") . ": "
 							  . Format_Bytes( $avg_dayofweek_k[$_] ) )
 						  . " />";
 					}
@@ -14648,6 +18853,7 @@ sub HTMLMainDaysofWeek{
 				print "</tr>\n";
 				print "<tr" . Tooltip(17) . ">\n";
 				for (@DOWIndex) {
+					my $dayname = _t("DayOfWeek_" . $_);
 					print "<td"
 					  . ( $_ =~ /[06]/ ? " bgcolor=\"#$color_weekend\"" : "" )
 					  . ">"
@@ -14659,7 +18865,7 @@ sub HTMLMainDaysofWeek{
 						? '<span class="currentday">'
 						: ''
 					  );
-					print $Message[ $_ + 84 ];
+					print $dayname;
 					print(   !$StaticLinks
 						  && $_ == ( $nowwday - 1 )
 						  && $MonthRequired == $nowmonth
@@ -14674,23 +18880,24 @@ sub HTMLMainDaysofWeek{
 			if ($AddDataArrayShowDaysOfWeekStats) {
 				print "<table>\n";
 				print
-"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">$Message[4]</td>";
+"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">" . _t("Day") . "</td>";
 				if ( $ShowDaysOfWeekStats =~ /P/i ) {
 					print "<td width=\"80\" bgcolor=\"#$color_p\""
 					  . Tooltip(3)
-					  . ">$Message[56]</td>";
+					  . ">" . _t("Pages") . "</td>";
 				}
 				if ( $ShowDaysOfWeekStats =~ /H/i ) {
 					print "<td width=\"80\" bgcolor=\"#$color_h\""
 					  . Tooltip(4)
-					  . ">$Message[57]</td>";
+					  . ">" . _t("Hits") . "</td>";
 				}
 				if ( $ShowDaysOfWeekStats =~ /B/i ) {
 					print "<td width=\"80\" bgcolor=\"#$color_k\""
 					  . Tooltip(5)
-					  . ">$Message[75]</td></tr>";
+					  . ">" . _t("Bandwidth") . "</td></tr>";
 				}
 				for (@DOWIndex) {
+					my $dayname = _t("DayOfWeek_" . $_);
 					print "<tr"
 					  . ( $_ =~ /[06]/ ? " bgcolor=\"#$color_weekend\"" : "" )
 					  . ">";
@@ -14703,7 +18910,7 @@ sub HTMLMainDaysofWeek{
 						? '<span class="currentday">'
 						: ''
 					  );
-					print $Message[ $_ + 84 ];
+					print $dayname;
 					print(   !$StaticLinks
 						  && $_ == ( $nowwday - 1 )
 						  && $MonthRequired == $nowmonth
@@ -14746,14 +18953,14 @@ sub HTMLMainDownloads{
 	my $Totalh = 0;
 	if ($MaxNbOf{'DownloadsShown'} < 1){$MaxNbOf{'DownloadsShown'} = 10;}	# default if undefined
 	my $title =
-	  "$Message[178] ($Message[77] $MaxNbOf{'DownloadsShown'}) &nbsp; - &nbsp; <a href=\""
+	  _t("Downloads") . " (" . _t("Top") . " $MaxNbOf{'DownloadsShown'}) &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=downloads")
 		: "$StaticLinks.downloads.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a>";
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a>";
 
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
         # extend the title to include the added link
@@ -14761,7 +18968,7 @@ sub HTMLMainDownloads{
                 "$AddLinkToExternalCGIWrapper" . "?section=DOWNLOADS&baseName=$DirData/$PROG"
             . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
             . "&siteConfig=$SiteConfig" )
-            . "\"$NewLinkTarget>$Message[179]</a>");
+            . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
 	  
 	&tab_head( "$title", 0, 0, 'downloads' );
@@ -14791,7 +18998,7 @@ sub HTMLMainDownloads{
 			print "<tr><td colspan=\"$columns\">";
 			my $function = "ShowGraph_$pluginname";
 			&$function(
-				"$Message[80]",              "downloads",
+				_t("Full list"),       "downloads",
 				0, 						\@blocklabel,
 				0,           			\@valcolor,
 				0,              		0,
@@ -14802,12 +19009,12 @@ sub HTMLMainDownloads{
 	}
 	
 	my $total_dls = scalar keys %_downloads;
-	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">$Message[178]: $total_dls</th>";
-	if ( $ShowDownloadsStats =~ /H/i ){print "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>"
-		."<th bgcolor=\"#$color_h\" width=\"80\">206 $Message[57]</th>"; }
+	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">" . _t("Downloads") . ": $total_dls</th>";
+	if ( $ShowDownloadsStats =~ /H/i ){print "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>"
+		."<th bgcolor=\"#$color_h\" width=\"80\">206 " . _t("Hits") . "</th>"; }
 	if ( $ShowDownloadsStats =~ /B/i ){
-		print "<th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
-		print "<th bgcolor=\"#$color_k\" width=\"80\">$Message[106]</th>"; 
+		print "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
+		print "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Average") . "</th>"; 
 	}
 	print "</tr>\n";
 	my $count   = 0;
@@ -14862,7 +19069,7 @@ sub HTMLMainHours{
         
     if ($Debug) { debug( "ShowHoursStats", 2 ); }
 	print "$Center<a name=\"hours\">&nbsp;</a><br />\n";
-	my $title = "$Message[20]";
+	my $title = "🕒 " . _t("Hourly Page Views");
 	
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link 
@@ -14870,7 +19077,7 @@ sub HTMLMainHours{
                "$AddLinkToExternalCGIWrapper" . "?section=TIME&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     } 
 	
 	if ( $PluginsLoaded{'GetTimeZoneTitle'}{'timezone'} ) {
@@ -14896,10 +19103,10 @@ sub HTMLMainHours{
 	{
 		my @blocklabel = ( 0 .. 23 );
 		my @vallabel   =
-		  ( "$Message[56]", "$Message[57]", "$Message[75]" );
+		  ( _t("Pages"), _t("Hits"), _t("Bandwidth") );
 		my @valcolor = ( "$color_p", "$color_h", "$color_k" );
 		my @valmax = ( int($max_h), int($max_h), int($max_k) );
-		my @valtotal   = ( $TotalPages,   $TotalHits,   $TotalBytes );
+		my @valtotal   = ( $TotalPages, $TotalHits, $TotalBytes );
 		my @valaverage = ( $AveragePages, $AverageHits, $AverageBytes );
 		my @valdata    = ();
 		my $xx         = 0;
@@ -14910,11 +19117,11 @@ sub HTMLMainHours{
 		}
 		my $function = "ShowGraph_$pluginname";
 		&$function(
-			"$title",        "hours",
+			"$title", "hours",
 			$ShowHoursStats, \@blocklabel,
-			\@vallabel,      \@valcolor,
-			\@valmax,        \@valtotal,
-			\@valaverage,    \@valdata
+			\@vallabel, \@valcolor,
+			\@valmax, \@valtotal,
+			\@valaverage, \@valdata
 		);
 		$graphdone=1;
 	}
@@ -14942,20 +19149,20 @@ sub HTMLMainHours{
 			if ( $ShowHoursStats =~ /P/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vp'}\" height=\"$bredde_p\" width=\"6\""
-				  . AltTitle( "$Message[56]: " . int( $_time_p[$ix] ) )
+				  . AltTitle( _t("Pages") . ": " . int( $_time_p[$ix] ) )
 				  . " />";
 			}
 			if ( $ShowHoursStats =~ /H/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vh'}\" height=\"$bredde_h\" width=\"6\""
-				  . AltTitle( "$Message[57]: " . int( $_time_h[$ix] ) )
+				  . AltTitle( _t("Hits") . ": " . int( $_time_h[$ix] ) )
 				  . " />";
 			}
 			if ( $ShowHoursStats =~ /B/i ) {
 				print
 "<img align=\"bottom\" src=\"$DirIcons\/other\/$BarPng{'vk'}\" height=\"$bredde_k\" width=\"6\""
 				  . AltTitle(
-					"$Message[75]: " . Format_Bytes( $_time_k[$ix] ) )
+					_t("Bandwidth") . ": " . Format_Bytes( $_time_k[$ix] ) )
 				  . " />";
 			}
 			print "</td>\n";
@@ -14970,14 +19177,24 @@ sub HTMLMainHours{
 		}
 		print "</tr>\n";
 
-		# Show clock icon
+		# Show clock icon (replaced with emoji)
 		print "<tr" . Tooltip(17) . ">\n";
+		
+		# Define emoji mapping for 24 hours
+		my %hour_emoji = (
+			0 => '🕛', 1 => '🕐', 2 => '🕑', 3 => '🕒', 4 => '🕓', 5 => '🕔',
+			6 => '🕕', 7 => '🕖', 8 => '🕗', 9 => '🕘', 10 => '🕙', 11 => '🕚',
+			12 => '🕛', 13 => '🕐', 14 => '🕑', 15 => '🕒', 16 => '🕓', 17 => '🕔',
+			18 => '🕕', 19 => '🕖', 20 => '🕗', 21 => '🕘', 22 => '🕙', 23 => '🕚'
+		);
+		
 		for ( my $ix = 0 ; $ix <= 23 ; $ix++ ) {
 			my $hrs = ( $ix >= 12 ? $ix - 12 : $ix );
 			my $hre = ( $ix >= 12 ? $ix - 11 : $ix + 1 );
-			my $apm = ( $ix >= 12 ? "pm"     : "am" );
+			my $apm = ( $ix >= 12 ? "pm" : "am" );
+			my $emoji = $hour_emoji{$ix};
 			print
-"<td><img src=\"$DirIcons\/clock\/hr$hre.png\" width=\"12\" alt=\"$hrs:00 - $hre:00 $apm\" /></td>\n";
+"<td style=\"text-align:center; font-size:1.5em;\" title=\"$hrs:00 - $hre:00 $apm\">$emoji</td>\n";
 		}
 		print "</tr>\n";
 		print "</table>\n";
@@ -14991,21 +19208,21 @@ sub HTMLMainHours{
 
 		print "<table>\n";
 		print
-"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">$Message[20]</td>";
+"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">" . _t("Hours") . "</td>";
 		if ( $ShowHoursStats =~ /P/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_p\""
 			  . Tooltip(3)
-			  . ">$Message[56]</td>";
+			  . ">" . _t("Pages") . "</td>";
 		}
 		if ( $ShowHoursStats =~ /H/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_h\""
 			  . Tooltip(4)
-			  . ">$Message[57]</td>";
+			  . ">" . _t("Hits") . "</td>";
 		}
 		if ( $ShowHoursStats =~ /B/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_k\""
 			  . Tooltip(5)
-			  . ">$Message[75]</td>";
+			  . ">" . _t("Bandwidth") . "</td>";
 		}
 		print "</tr>";
 		for ( my $ix = 0 ; $ix <= 11 ; $ix++ ) {
@@ -15036,21 +19253,21 @@ sub HTMLMainHours{
 
 		print "<table>\n";
 		print
-"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">$Message[20]</td>";
+"<tr><td width=\"80\" bgcolor=\"#$color_TableBGRowTitle\">" . _t("Hours") . "</td>";
 		if ( $ShowHoursStats =~ /P/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_p\""
 			  . Tooltip(3)
-			  . ">$Message[56]</td>";
+			  . ">" . _t("Pages") . "</td>";
 		}
 		if ( $ShowHoursStats =~ /H/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_h\""
 			  . Tooltip(4)
-			  . ">$Message[57]</td>";
+			  . ">" . _t("Hits") . "</td>";
 		}
 		if ( $ShowHoursStats =~ /B/i ) {
 			print "<td width=\"80\" bgcolor=\"#$color_k\""
 			  . Tooltip(5)
-			  . ">$Message[75]</td>";
+			  . ">" . _t("Bandwidth") . "</td>";
 		}
 		print "</tr>\n";
 		for ( my $ix = 12 ; $ix <= 23 ; $ix++ ) {
@@ -15097,14 +19314,14 @@ sub HTMLMainCountries{
 	if ($Debug) { debug( "ShowDomainsStats", 2 ); }
 	print "$Center<a name=\"countries\">&nbsp;</a><br />\n";
 	my $title =
-"$Message[25] ($Message[77] $MaxNbOf{'Domain'}) &nbsp; - &nbsp; <a href=\""
+_t("Countries") . " (" . _t("Top") . " $MaxNbOf{'Domain'}) &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=alldomains")
 		: "$StaticLinks.alldomains.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a>";
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a>";
 	  
 
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
@@ -15113,7 +19330,7 @@ sub HTMLMainCountries{
                "$AddLinkToExternalCGIWrapper" . "?section=DOMAIN&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         	  
 	&tab_head( "$title", 19, 0, 'countries' );
@@ -15150,18 +19367,18 @@ sub HTMLMainCountries{
 			print "<tr><td colspan=\"7\" align=\"center\">";
 			my $function = "ShowGraph_$pluginname";
 			&$function(
-				"AWStatsCountryMap",              "countries_map",
-				0, 						\@blocklabel,
-				0,           			0,
-				0,              		0,
-				0,          			\@valdata
+				"AWStatsCountryMap", "countries_map",
+				0, \@blocklabel,
+				0, 0,
+				0, 0,
+				0, \@valdata
 			);
 			print "</td></tr>";
 		}
 	}
 	
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th colspan=\"2\">$Message[17]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th colspan=\"2\">" . _t("Domain") . "</th>";
 
 	## to add unique visitors and number of visits by calculation of average of the relation with total
 	## pages and total hits, and total visits and total unique
@@ -15169,27 +19386,27 @@ sub HTMLMainCountries{
 	if ( $ShowDomainsStats =~ /U/i ) {
 		print "<th bgcolor=\"#$color_u\" width=\"80\""
 		  . Tooltip(2)
-		  . ">$Message[11]</th>";
+		  . ">" . _t("Unique visitors") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /V/i ) {
 		print "<th bgcolor=\"#$color_v\" width=\"80\""
 		  . Tooltip(1)
-		  . ">$Message[10]</th>";
+		  . ">" . _t("Visits") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /P/i ) {
 		print "<th bgcolor=\"#$color_p\" width=\"80\""
 		  . Tooltip(3)
-		  . ">$Message[56]</th>";
+		  . ">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /H/i ) {
 		print "<th bgcolor=\"#$color_h\" width=\"80\""
 		  . Tooltip(4)
-		  . ">$Message[57]</th>";
+		  . ">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowDomainsStats =~ /B/i ) {
 		print "<th bgcolor=\"#$color_k\" width=\"80\""
 		  . Tooltip(5)
-		  . ">$Message[75]</th>";
+		  . ">" . _t("Bandwidth") . "</th>";
 	}
 	print "<th>&nbsp;</th>";
 	print "</tr>\n";
@@ -15221,8 +19438,8 @@ sub HTMLMainCountries{
 		if ( $newkey eq 'ip' || !$DomainsHashIDLib{$newkey} ) {
 			print
 "<tr><td width=\"$WIDTHCOLICON\"><img src=\"$DirIcons\/flags\/ip.png\" height=\"14\""
-			  . AltTitle("$Message[0]")
-			  . " /></td><td class=\"aws\">$Message[0]</td><td>$newkey</td>";
+			  . AltTitle(_t("Unknown"))
+			  . " /></td><td class=\"aws\">" . _t("Unknown") . "</td><td>$newkey</td>";
 		}
 		else {
 			print
@@ -15310,7 +19527,7 @@ sub HTMLMainCountries{
 		|| $rest_k > 0 )
 	{    # All other domains (known or not)
 		print
-"<tr><td width=\"$WIDTHCOLICON\">&nbsp;</td><td colspan=\"2\" class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td width=\"$WIDTHCOLICON\">&nbsp;</td><td colspan=\"2\" class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowDomainsStats =~ /U/i ) { print "<td>$rest_u</td>"; }
 		if ( $ShowDomainsStats =~ /V/i ) { print "<td>$rest_v</td>"; }
 		if ( $ShowDomainsStats =~ /P/i ) { print "<td>$rest_p</td>"; }
@@ -15338,28 +19555,28 @@ sub HTMLMainHosts{
 	if ($Debug) { debug( "ShowHostsStats", 2 ); }
 	print "$Center<a name=\"visitors\">&nbsp;</a><br />\n";
 	my $title =
-"$Message[81] ($Message[77] $MaxNbOf{'HostsShown'}) &nbsp; - &nbsp; <a href=\""
+_t("Visitors") . " (" . _t("Top") . " $MaxNbOf{'HostsShown'}) &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=allhosts")
 		: "$StaticLinks.allhosts.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a> &nbsp; - &nbsp; <a href=\""
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a> &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=lasthosts")
 		: "$StaticLinks.lasthosts.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[9]</a> &nbsp; - &nbsp; <a href=\""
+	  . "\"$NewLinkTarget>" . _t("Last") . "</a> &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=unknownip")
 		: "$StaticLinks.unknownip.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[45]</a>";
+	  . "\"$NewLinkTarget>" . _t("Unresolved IP Address") . "</a>";
 	  
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link
@@ -15367,7 +19584,7 @@ sub HTMLMainHosts{
                "$AddLinkToExternalCGIWrapper" . "?section=VISITOR&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
 	  
 	&tab_head( "$title", 19, 0, 'visitors' );
@@ -15391,7 +19608,7 @@ sub HTMLMainHosts{
                if ($cnt > 4) { last; }
 			}
 			
-			my $cnt = 0;
+			$cnt = 0;
 			foreach my $key (@keylist) {
                push @valdata, int( $_host_h{$key} / $suma * 1000 ) / 10;
                push @blocklabel, "$key";
@@ -15402,11 +19619,11 @@ sub HTMLMainHosts{
 			print "<tr><td colspan=\"7\">";
 			my $function = "ShowGraph_$pluginname";
 			&$function(
-				"Hosts",              "hosts",
-				0, 						\@blocklabel,
-				0,           			\@valcolor,
-				0,              		0,
-				0,          			\@valdata
+				"Hosts", "hosts",
+				0, \@blocklabel,
+				0, \@valcolor,
+				0, 0,
+				0, \@valdata
 			);
 			print "</td></tr>";
 		}
@@ -15416,29 +19633,29 @@ sub HTMLMainHosts{
 	print "<th>";
 	if ( $MonthRequired ne 'all' ) {
 		print
-"$Message[81] : ".Format_Number($TotalHostsKnown)." $Message[82], ".Format_Number($TotalHostsUnknown)." $Message[1]<br />".Format_Number($TotalUnique)." $Message[11]</th>";
+_t("Visitors") . " : ".Format_Number($TotalHostsKnown)." " . _t("Known") . ", ".Format_Number($TotalHostsUnknown)." " . _t("Unknown") . "<br />".Format_Number($TotalUnique)." " . _t("Unique visitors") . "</th>";
 	}
 	else {
-		print "$Message[81] : " . ( scalar keys %_host_h ) . "</th>";
+		print _t("Visitors") . " : " . ( scalar keys %_host_h ) . "</th>";
 	}
 	&HTMLShowHostInfo('__title__');
 	if ( $ShowHostsStats =~ /P/i ) {
 		print "<th bgcolor=\"#$color_p\" width=\"80\""
 		  . Tooltip(3)
-		  . ">$Message[56]</th>";
+		  . ">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /H/i ) {
 		print "<th bgcolor=\"#$color_h\" width=\"80\""
 		  . Tooltip(4)
-		  . ">$Message[57]</th>";
+		  . ">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /B/i ) {
 		print "<th bgcolor=\"#$color_k\" width=\"80\""
 		  . Tooltip(5)
-		  . ">$Message[75]</th>";
+		  . ">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowHostsStats =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	my $total_p = my $total_h = my $total_k = 0;
@@ -15505,7 +19722,7 @@ sub HTMLMainHosts{
 	{    # All other visitors (known or not)
 		print "<tr>";
 		print
-"<td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		&HTMLShowHostInfo('');
 		if ( $ShowHostsStats =~ /P/i ) { print "<td>".Format_Number($rest_p)."</td>"; }
 		if ( $ShowHostsStats =~ /H/i ) { print "<td>".Format_Number($rest_h)."</td>"; }
@@ -15532,14 +19749,14 @@ sub HTMLMainLogins{
 	if ($Debug) { debug( "ShowAuthenticatedUsers", 2 ); }
 	print "$Center<a name=\"logins\">&nbsp;</a><br />\n";
 	my $title =
-"$Message[94] ($Message[77] $MaxNbOf{'LoginShown'}) &nbsp; - &nbsp; <a href=\""
+_t("Login") . " (" . _t("Top") . " $MaxNbOf{'LoginShown'}) &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=alllogins")
 		: "$StaticLinks.alllogins.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a>";
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a>";
 	if ( $ShowAuthenticatedUsers =~ /L/i ) {
 		$title .= " &nbsp; - &nbsp; <a href=\""
 		  . (
@@ -15548,29 +19765,29 @@ sub HTMLMainLogins{
 			? XMLEncode("$AWScript${NewLinkParams}output=lastlogins")
 			: "$StaticLinks.lastlogins.$StaticExt"
 		  )
-		  . "\"$NewLinkTarget>$Message[9]</a>";
+		  . "\"$NewLinkTarget>" . _t("Last") . "</a>";
 	}
 	&tab_head( "$title", 19, 0, 'logins' );
-	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>$Message[94] : "
+	print "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("Login") . " : "
 	  . Format_Number(( scalar keys %_login_h )) . "</th>";
 	&HTMLShowUserInfo('__title__');
 	if ( $ShowAuthenticatedUsers =~ /P/i ) {
 		print "<th bgcolor=\"#$color_p\" width=\"80\""
 		  . Tooltip(3)
-		  . ">$Message[56]</th>";
+		  . ">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowAuthenticatedUsers =~ /H/i ) {
 		print "<th bgcolor=\"#$color_h\" width=\"80\""
 		  . Tooltip(4)
-		  . ">$Message[57]</th>";
+		  . ">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowAuthenticatedUsers =~ /B/i ) {
 		print "<th bgcolor=\"#$color_k\" width=\"80\""
 		  . Tooltip(5)
-		  . ">$Message[75]</th>";
+		  . ">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowAuthenticatedUsers =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	my $total_p = my $total_h = my $total_k = 0;
@@ -15634,7 +19851,7 @@ sub HTMLMainLogins{
 		print
 		  "<tr><td class=\"aws\"><span style=\"color: #$color_other\">"
 		  . ( $PageDir eq 'rtl' ? "<span dir=\"ltr\">" : "" )
-		  . "$Message[125]"
+		  . _t("Anonymous")
 		  . ( $PageDir eq 'rtl' ? "</span>" : "" )
 		  . "</span></td>";
 		&HTMLShowUserInfo('');
@@ -15669,21 +19886,21 @@ sub HTMLMainRobots{
 	if ($Debug) { debug( "ShowRobotStats", 2 ); }
 	print "$Center<a name=\"robots\">&nbsp;</a><br />\n";
 
-	my $title = "$Message[53] ($Message[77] $MaxNbOf{'RobotShown'}) &nbsp; - &nbsp; <a href=\""
+	my $title = _t("Robots") . " (" . _t("Top") . " $MaxNbOf{'RobotShown'}) &nbsp; - &nbsp; <a href=\""
 		  . (
 			$ENV{'GATEWAY_INTERFACE'}
 			  || !$StaticLinks
 			? XMLEncode("$AWScript${NewLinkParams}output=allrobots")
 			: "$StaticLinks.allrobots.$StaticExt"
 		  )
-		  . "\"$NewLinkTarget>$Message[80]</a> &nbsp; - &nbsp; <a href=\""
+		  . "\"$NewLinkTarget>" . _t("Full list") . "</a> &nbsp; - &nbsp; <a href=\""
 		  . (
 			$ENV{'GATEWAY_INTERFACE'}
 			  || !$StaticLinks
 			? XMLEncode("$AWScript${NewLinkParams}output=lastrobots")
 			: "$StaticLinks.lastrobots.$StaticExt"
 		  )
-		  . "\"$NewLinkTarget>$Message[9]</a>";
+		  . "\"$NewLinkTarget>" . _t("Last") . "</a>";
 
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link
@@ -15691,7 +19908,7 @@ sub HTMLMainRobots{
                "$AddLinkToExternalCGIWrapper" . "?section=ROBOT&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         
     &tab_head( "$title", 19, 0, 'robots');
@@ -15699,17 +19916,17 @@ sub HTMLMainRobots{
     print "<tr bgcolor=\"#$color_TableBGRowTitle\""
 	  . Tooltip(16) . "><th>"
 	  . Format_Number(( scalar keys %_robot_h ))
-	  . " $Message[51]*</th>";
+	  . " " . _t("Different robots") . "*</th>";
 	if ( $ShowRobotsStats =~ /H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowRobotsStats =~ /B/i ) {
 		print
-		  "<th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+		  "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowRobotsStats =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	my $total_p = my $total_h = my $total_k = my $total_r = 0;
@@ -15764,7 +19981,7 @@ sub HTMLMainRobots{
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 || $rest_r > 0 )
 	{               # All other robots
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowRobotsStats =~ /H/i ) {
 			print "<td>"
 			  . Format_Number(( $rest_h - $rest_r ))
@@ -15777,7 +19994,7 @@ sub HTMLMainRobots{
 		print "</tr>\n";
 	}
 	&tab_end(
-		"* $Message[156]" . ( $TotalRRobots ? " $Message[157]" : "" ) );
+		"* " . _t("Hits on robots.txt") . ( $TotalRRobots ? " " . _t("Total") : "" ) );
 }
 
 #------------------------------------------------------------------------------
@@ -15790,21 +20007,21 @@ sub HTMLMainRobots{
 sub HTMLMainWorms{
 	if ($Debug) { debug( "ShowWormsStats", 2 ); }
 	print "$Center<a name=\"worms\">&nbsp;</a><br />\n";
-	&tab_head( "$Message[163] ($Message[77] $MaxNbOf{'WormsShown'})",
+	&tab_head( _t("Worms") . " (" . _t("Top") . " $MaxNbOf{'WormsShown'})",
 		19, 0, 'worms' );
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\"" . Tooltip(21) . ">";
-	print "<th>" . Format_Number(( scalar keys %_worm_h )) . " $Message[164]*</th>";
-	print "<th>$Message[167]</th>";
+	print "<th>" . Format_Number(( scalar keys %_worm_h )) . " " . _t("Different worms") . "*</th>";
+	print "<th>" . _t("Target") . "</th>";
 	if ( $ShowWormsStats =~ /H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowWormsStats =~ /B/i ) {
 		print
-		  "<th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+		  "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ShowWormsStats =~ /L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last") . "</th>";
 	}
 	print "</tr>\n";
 	my $total_p = my $total_h = my $total_k = 0;
@@ -15858,7 +20075,7 @@ sub HTMLMainWorms{
 	if ( $rest_p > 0 || $rest_h > 0 || $rest_k > 0 ) { # All other worms
 		print "<tr>";
 		print
-"<td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		print "<td class=\"aws\">-</td>";
 		if ( $ShowWormsStats =~ /H/i ) {
 			print "<td>" . Format_Number(($rest_h)) . "</td>";
@@ -15869,7 +20086,7 @@ sub HTMLMainWorms{
 		if ( $ShowWormsStats =~ /L/i ) { print "<td>&nbsp;</td>"; }
 		print "</tr>\n";
 	}
-	&tab_end("* $Message[158]");
+	&tab_end("* " . _t("Different worms"));
 }
 
 #------------------------------------------------------------------------------
@@ -15882,7 +20099,7 @@ sub HTMLMainWorms{
 sub HTMLMainSessions{
 	if ($Debug) { debug( "ShowSessionsStats", 2 ); }
 	print "$Center<a name=\"sessions\">&nbsp;</a><br />\n";
-	my $title = "$Message[117]";
+	my $title = "⏱️ " . _t("Visits duration");
 	&tab_head( $title, 19, 0, 'sessions' );
 	my $Totals = 0;
 	my $average_s = 0;
@@ -15894,7 +20111,7 @@ sub HTMLMainSessions{
 	else { $average_s = '?'; }
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\""
 	  . Tooltip(1)
-	  . "><th>$Message[10]: ".Format_Number($TotalVisits)." - $Message[96]: ".Format_Number($average_s)." s</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[10]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[15]</th></tr>\n";
+	  . "><th>" . _t("Visits") . ": ".Format_Number($TotalVisits)." - " . _t("Average") . ": ".Format_Number($average_s)." s</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Visits") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 	$average_s = 0;
 	my $total_s   = 0;
 	my $count = 0;
@@ -15920,7 +20137,7 @@ sub HTMLMainSessions{
 		}
 		print "<tr"
 		  . Tooltip(20)
-		  . "><td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td>";
+		  . "><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td>";
 		print "<td>".Format_Number($rest_s)."</td>";
 		print "<td>" . ( $rest_s ? "$p %" : "&nbsp;" ) . "</td>";
 		print "</tr>\n";
@@ -15949,14 +20166,14 @@ sub HTMLMainPages{
 	print
 "$Center<a name=\"urls\">&nbsp;</a><a name=\"entry\">&nbsp;</a><a name=\"exit\">&nbsp;</a><br />\n";
 	my $title =
-"$Message[19] ($Message[77] $MaxNbOf{'PageShown'}) &nbsp; - &nbsp; <a href=\""
+_t("Viewed pages") . " (" . _t("Top") . " $MaxNbOf{'PageShown'}) &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=urldetail")
 		: "$StaticLinks.urldetail.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a>";
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a>";
 	if ( $ShowPagesStats =~ /E/i ) {
 		$title .= " &nbsp; - &nbsp; <a href=\""
 		  . (
@@ -15965,7 +20182,7 @@ sub HTMLMainPages{
 			? XMLEncode("$AWScript${NewLinkParams}output=urlentry")
 			: "$StaticLinks.urlentry.$StaticExt"
 		  )
-		  . "\"$NewLinkTarget>$Message[104]</a>";
+		  . "\"$NewLinkTarget>" . _t("Entry") . "</a>";
 	}
 	if ( $ShowPagesStats =~ /X/i ) {
 		$title .= " &nbsp; - &nbsp; <a href=\""
@@ -15975,7 +20192,7 @@ sub HTMLMainPages{
 			? XMLEncode("$AWScript${NewLinkParams}output=urlexit")
 			: "$StaticLinks.urlexit.$StaticExt"
 		  )
-		  . "\"$NewLinkTarget>$Message[116]</a>";
+		  . "\"$NewLinkTarget>" . _t("Exit") . "</a>";
 	}
 	
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
@@ -15984,31 +20201,31 @@ sub HTMLMainPages{
                "$AddLinkToExternalCGIWrapper" . "?section=SIDER&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         	
 	&tab_head( "$title", 19, 0, 'urls' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th>".Format_Number($TotalDifferentPages)." $Message[28]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th>".Format_Number($TotalDifferentPages)." " . _t("Different pages") . "</th>";
 	if ( $ShowPagesStats =~ /P/i && $LogType ne 'F' ) {
 		print
-		  "<th bgcolor=\"#$color_p\" width=\"80\">$Message[29]</th>";
+		  "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 	}
 	if ( $ShowPagesStats =~ /[PH]/i && $LogType eq 'F' ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ShowPagesStats =~ /B/i ) {
 		print
-		  "<th bgcolor=\"#$color_k\" width=\"80\">$Message[106]</th>";
+		  "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Average") . "</th>";
 	}
 	if ( $ShowPagesStats =~ /E/i ) {
 		print
-		  "<th bgcolor=\"#$color_e\" width=\"80\">$Message[104]</th>";
+		  "<th bgcolor=\"#$color_e\" width=\"80\">" . _t("Entry") . "</th>";
 	}
 	if ( $ShowPagesStats =~ /X/i ) {
 		print
-		  "<th bgcolor=\"#$color_x\" width=\"80\">$Message[116]</th>";
+		  "<th bgcolor=\"#$color_x\" width=\"80\">" . _t("Exit") . "</th>";
 	}
 
 	# Call to plugins' function ShowPagesAddField
@@ -16144,7 +20361,7 @@ sub HTMLMainPages{
 	if ( $rest_p > 0 || $rest_k > 0 || $rest_e > 0 || $rest_x > 0 )
 	{    # All other urls
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		if ( $ShowPagesStats =~ /P/i && $LogType ne 'F' ) {
 			print "<td>".Format_Number($rest_p)."</td>";
 		}
@@ -16213,21 +20430,21 @@ sub HTMLMainOS{
 		$new_os_p{$key} += $_os_p{$key};
 	}
 	my $title =
-"$Message[59] ($Message[77] $MaxNbOf{'OsShown'}) &nbsp; - &nbsp; <a href=\""
+_t("Operating Systems") . " (" . _t("Top") . " $MaxNbOf{'OsShown'}) &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=osdetail")
 		: "$StaticLinks.osdetail.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]/$Message[58]</a> &nbsp; - &nbsp; <a href=\""
+	  . "\"$NewLinkTarget>" . _t("Full list") . "/" . _t("Detailed") . "</a> &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=unknownos")
 		: "$StaticLinks.unknownos.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[0]</a>";
+	  . "\"$NewLinkTarget>" . _t("Unknown") . "</a>";
 	  
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link
@@ -16235,7 +20452,7 @@ sub HTMLMainOS{
                "$AddLinkToExternalCGIWrapper" . "?section=OS&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         	  
 	&tab_head( "$title", 19, 0, 'os' );
@@ -16272,7 +20489,7 @@ sub HTMLMainOS{
 			print "<tr><td colspan=\"5\">";
 			my $function = "ShowGraph_$pluginname";
 			&$function(
-				"Top 5 Operating Systems",       "oss",
+				_t("Top 5 Operating Systems"),       "oss",
 				0, 						\@blocklabel,
 				0,           			\@valcolor,
 				0,              		0,
@@ -16283,11 +20500,11 @@ sub HTMLMainOS{
 	}
 	
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th>$Message[59]</th>";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th>" . _t("Operating Systems") . "</th>";
 	print
-"<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th>";
 	print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th></tr>\n";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 	my $total_h = 0;
 	my $total_p = 0;
 	my $count = 0;
@@ -16308,7 +20525,7 @@ sub HTMLMainOS{
 			  . ( $count ? "" : " width=\"$WIDTHCOLICON\"" )
 			  . "><img src=\"$DirIcons\/os\/unknown.png\""
 			  . AltTitle("")
-			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td>"
+			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td>"
 			  . "<td>".Format_Number($_os_p{$key})."</td><td>$p_p</td><td>".Format_Number($_os_h{$key})."</td><td>$p_h</td></tr>\n";
 		}
 		else {
@@ -16344,7 +20561,7 @@ sub HTMLMainOS{
 		print "<tr>";
 		print "<td>&nbsp;</td>";
 		print
-"<td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td><td>".Format_Number($rest_p)."</td>";
+"<td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td><td>".Format_Number($rest_p)."</td>";
 		print "<td>$p_p %</td><td>".Format_Number($rest_h)."</td><td>$p_h %</td></tr>\n";
 	}
 	&tab_end();
@@ -16381,21 +20598,21 @@ sub HTMLMainBrowsers{
 		$new_browser_p{$key} += $_browser_p{$key};
 	}
 	my $title =
-"$Message[21] ($Message[77] $MaxNbOf{'BrowsersShown'}) &nbsp; - &nbsp; <a href=\""
+_t("Browsers") . " (" . _t("Top") . " $MaxNbOf{'BrowsersShown'}) &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=browserdetail")
 		: "$StaticLinks.browserdetail.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]/$Message[58]</a> &nbsp; - &nbsp; <a href=\""
+	  . "\"$NewLinkTarget>" . _t("Full list") . "/" . _t("Detailed") . "</a> &nbsp; - &nbsp; <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=unknownbrowser")
 		: "$StaticLinks.unknownbrowser.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[0]</a>";
+	  . "\"$NewLinkTarget>" . _t("Unknown") . "</a>";
 	  
 
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
@@ -16404,7 +20621,7 @@ sub HTMLMainBrowsers{
                "$AddLinkToExternalCGIWrapper" . "?section=BROWSER&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         	  
 	&tab_head( "$title", 19, 0, 'browsers' );
@@ -16443,7 +20660,7 @@ sub HTMLMainBrowsers{
 			print "<tr><td colspan=\"5\">";
 			my $function = "ShowGraph_$pluginname";
 			&$function(
-				"Top 5 Browsers",       "browsers",
+				_t("Top 5 Browsers"),       "browsers",
 				0, 						\@blocklabel,
 				0,           			\@valcolor,
 				0,              		0,
@@ -16453,7 +20670,7 @@ sub HTMLMainBrowsers{
 		}
 	}
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th>$Message[21]</th><th width=\"80\">$Message[111]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th></tr>\n";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th width=\"$WIDTHCOLICON\">&nbsp;</th><th>" . _t("Browsers") . "</th><th width=\"80\">" . _t("Unique visitors") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 	my $total_h = 0;
 	my $total_p = 0;
 	my $count = 0;
@@ -16473,7 +20690,7 @@ sub HTMLMainBrowsers{
 			  . ( $count ? "" : " width=\"$WIDTHCOLICON\"" )
 			  . "><img src=\"$DirIcons\/browser\/unknown.png\""
 			  . AltTitle("")
-			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td><td width=\"80\">?</td>"
+			  . " /></td><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td><td width=\"80\">?</td>"
 			  . "<td>".Format_Number($_browser_p{$key})."</td><td>$p_p</td>"
 			  . "<td>".Format_Number($_browser_h{$key})."</td><td>$p_h</td></tr>\n";
 		}
@@ -16498,8 +20715,8 @@ sub HTMLMainBrowsers{
 			  . "</td><td>"
 			  . (
 				$BrowsersHereAreGrabbers{$key}
-				? "<b>$Message[112]</b>"
-				: "$Message[113]"
+				? "<b>" . _t("Grabber") . "</b>"
+				: _t("Pages")
 			  )
 			  . "</td><td>".Format_Number($new_browser_p{$key})."</td><td>$p_p</td><td>".Format_Number($new_browser_h{$key})."</td><td>$p_h</td></tr>\n";
 		}
@@ -16520,7 +20737,7 @@ sub HTMLMainBrowsers{
 		print "<tr>";
 		print "<td>&nbsp;</td>";
 		print
-"<td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td><td>&nbsp;</td><td>$rest_p</td>";
+"<td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td><td>&nbsp;</td><td>$rest_p</td>";
 		print "<td>$p_p %</td><td>$rest_h</td><td>$p_h %</td></tr>\n";
 	}
 	&tab_end();
@@ -16539,10 +20756,10 @@ sub HTMLMainScreenSize{
 	my $Totalh = 0;
 	foreach ( keys %_screensize_h ) { $Totalh += $_screensize_h{$_}; }
 	my $title =
-	  "$Message[135] ($Message[77] $MaxNbOf{'ScreenSizesShown'})";
+	  _t("Screen sizes") . " (" . _t("Top") . " $MaxNbOf{'ScreenSizesShown'})";
 	&tab_head( "$title", 0, 0, 'screensizes' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th>$Message[135]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th></tr>\n";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("Screen sizes") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 	my $total_h = 0;
 	my $count   = 0;
 	&BuildKeyList( $MaxNbOf{'ScreenSizesShown'},
@@ -16558,7 +20775,7 @@ sub HTMLMainScreenSize{
 		print "<tr>";
 		if ( $key eq 'Unknown' ) {
 			print
-"<td class=\"aws\"><span style=\"color: #$color_other\">$Message[0]</span></td>";
+"<td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown") . "</span></td>";
 			print "<td>$p</td>";
 		}
 		else {
@@ -16574,7 +20791,7 @@ sub HTMLMainScreenSize{
 		my $p = 0;
 		if ($Totalh) { $p = int( $rest_h / $Totalh * 1000 ) / 10; }
 		print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td>";
 		print "<td>" . ( $rest_h ? "$p %" : "&nbsp;" ) . "</td>";
 		print "</tr>\n";
 	}
@@ -16609,7 +20826,7 @@ sub HTMLMainReferrers{
 		  : 0;
 	}
 
-    my $title = "$Message[36]";
+    my $title = "🔗 " . _t("Traffic Sources");
 
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link
@@ -16617,7 +20834,7 @@ sub HTMLMainReferrers{
                "$AddLinkToExternalCGIWrapper" . "?section=ORIGIN&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         
 	&tab_head( $title, 19, 0, 'referer' );
@@ -16640,19 +20857,19 @@ sub HTMLMainReferrers{
 		$p_h[5] = int( $_from_h[5] / $Totalh * 1000 ) / 10;
 	}
 	print
-	  "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>$Message[37]</th>";
+	  "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("Origin") . "</th>";
 	if ( $ShowOriginStats =~ /P/i ) {
 		print
-"<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th>";
 	}
 	if ( $ShowOriginStats =~ /H/i ) {
 		print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th>";
 	}
 	print "</tr>\n";
 
 	#------- Referrals by direct address/bookmark/link in email/etc...
-	print "<tr><td class=\"aws\"><b>$Message[38]</b></td>";
+	print "<tr><td class=\"aws\"><b>" . _t("Direct address / Bookmarks") . "</b></td>";
 	if ( $ShowOriginStats =~ /P/i ) {
 		print "<td>"
 		  . ( $_from_p[0] ? Format_Number($_from_p[0]) : "&nbsp;" )
@@ -16670,14 +20887,14 @@ sub HTMLMainReferrers{
 	#------- Referrals by search engines
 	print "<tr"
 	  . Tooltip(13)
-	  . "><td class=\"aws\"><b>$Message[40]</b> - <a href=\""
+	  . "><td class=\"aws\"><b>" . _t("Search Engines") . "</b> - <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=refererse")
 		: "$StaticLinks.refererse.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a><br />\n";
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a><br />\n";
 	if ( scalar keys %_se_referrals_h ) {
 		print "<table>\n";
 		my $total_p = 0;
@@ -16717,7 +20934,7 @@ sub HTMLMainReferrers{
 		my $rest_h = $TotalSearchEnginesHits - $total_h;
 		if ( $rest_p > 0 || $rest_h > 0 ) {
 			print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">- $Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">- " . _t("Others") . "</span></td>";
 			print "<td>".Format_Number($rest_p)."</td>";
 			print "<td> / ".Format_Number($rest_h)."</td>";
 			print "</tr>\n";
@@ -16742,14 +20959,14 @@ sub HTMLMainReferrers{
 	#------- Referrals by external HTML link
 	print "<tr"
 	  . Tooltip(14)
-	  . "><td class=\"aws\"><b>$Message[41]</b> - <a href=\""
+	  . "><td class=\"aws\"><b>" . _t("External pages") . "</b> - <a href=\""
 	  . (
 		$ENV{'GATEWAY_INTERFACE'}
 		  || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=refererpages")
 		: "$StaticLinks.refererpages.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a><br />\n";
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a><br />\n";
 	if ( scalar keys %_pagesrefs_h ) {
 		print "<table>\n";
 		my $total_p = 0;
@@ -16788,7 +21005,7 @@ sub HTMLMainReferrers{
 		my $rest_h = $TotalRefererHits - $total_h;
 		if ( $rest_p > 0 || $rest_h > 0 ) {
 			print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">- $Message[2]</span></td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">- " . _t("Others") . "</span></td>";
 			print "<td>".Format_Number($rest_p)."</td>";
 			print "<td>".Format_Number($rest_h)."</td>";
 			print "</tr>\n";
@@ -16812,7 +21029,7 @@ sub HTMLMainReferrers{
 
 	#------- Referrals by internal HTML link
 	if ($IncludeInternalLinksInOriginSection) {
-		print "<tr><td class=\"aws\"><b>$Message[42]</b></td>";
+		print "<tr><td class=\"aws\"><b>" . _t("Internal pages") . "</b></td>";
 		if ( $ShowOriginStats =~ /P/i ) {
 			print "<td>"
 			  . ( $_from_p[4] ? Format_Number($_from_p[4]) : "&nbsp;" )
@@ -16833,9 +21050,9 @@ sub HTMLMainReferrers{
 	#if ($ShowOriginStats =~ /P/i) { print "<td>".($_from_p[5]?$_from_p[5]:"&nbsp;")."</td><td>".($_from_p[5]?"$p_p[5] %":"&nbsp;")."</td>"; }
 	#if ($ShowOriginStats =~ /H/i) { print "<td>".($_from_h[5]?$_from_h[5]:"&nbsp;")."</td><td>".($_from_h[5]?"$p_h[5] %":"&nbsp;")."</td>"; }
 	#print "</tr>\n";
-	
+
 	#------- Unknown origin
-	print "<tr><td class=\"aws\"><b>$Message[39]</b></td>";
+	print "<tr><td class=\"aws\"><b>" . _t("Unknown origin") . "</b></td>";
 	if ( $ShowOriginStats =~ /P/i ) {
 		print "<td>"
 		  . ( $_from_p[1] ? Format_Number($_from_p[1]) : "&nbsp;" )
@@ -16889,21 +21106,21 @@ sub HTMLMainKeys{
 		}
 		if ($Debug) { debug( "ShowKeyphrasesStats", 2 ); }
 		&tab_head(
-"$Message[120] ($Message[77] $MaxNbOf{'KeyphrasesShown'})<br /><a href=\""
+_t("Keyphrases") . " (" . _t("Top") . " $MaxNbOf{'KeyphrasesShown'})<br /><a href=\""
 			  . (
 				$ENV{'GATEWAY_INTERFACE'}
 				  || !$StaticLinks
 				? XMLEncode("$AWScript${NewLinkParams}output=keyphrases")
 				: "$StaticLinks.keyphrases.$StaticExt"
 			  )
-			  . "\"$NewLinkTarget>$Message[80]</a>",
+			  . "\"$NewLinkTarget>" . _t("Full list") . "</a>",
 			19,
 			( $ShowKeyphrasesStats && $ShowKeywordsStats ) ? 95 : 70,
 			'keyphrases'
 		);
 		print "<tr bgcolor=\"#$color_TableBGRowTitle\""
 		  . Tooltip(15)
-		  . "><th>$TotalDifferentKeyphrases $Message[103]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[14]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[15]</th></tr>\n";
+		  . "><th>" . Format_Number($TotalDifferentKeyphrases) . " " . _t("Different keyphrases") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 		my $total_s = 0;
 		my $count = 0;
 		&BuildKeyList( $MaxNbOf{'KeyphrasesShown'},
@@ -16941,7 +21158,7 @@ sub HTMLMainKeys{
 				$p = int( $rest_s / $TotalKeyphrases * 1000 ) / 10;
 			}
 			print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[124]</span></td><td>$rest_s</td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td><td>$rest_s</td>";
 			print "<td>$p&nbsp;%</td></tr>\n";
 		}
 		&tab_end();
@@ -16960,21 +21177,21 @@ sub HTMLMainKeys{
 		}
 		if ($Debug) { debug( "ShowKeywordsStats", 2 ); }
 		&tab_head(
-"$Message[121] ($Message[77] $MaxNbOf{'KeywordsShown'})<br /><a href=\""
+_t("Keywords") . " (" . _t("Top") . " $MaxNbOf{'KeywordsShown'})<br /><a href=\""
 			  . (
 				$ENV{'GATEWAY_INTERFACE'}
 				  || !$StaticLinks
 				? XMLEncode("$AWScript${NewLinkParams}output=keywords")
 				: "$StaticLinks.keywords.$StaticExt"
 			  )
-			  . "\"$NewLinkTarget>$Message[80]</a>",
+			  . "\"$NewLinkTarget>" . _t("Full list") . "</a>",
 			19,
 			( $ShowKeyphrasesStats && $ShowKeywordsStats ) ? 95 : 70,
 			'keywords'
 		);
 		print "<tr bgcolor=\"#$color_TableBGRowTitle\""
 		  . Tooltip(15)
-		  . "><th>$TotalDifferentKeywords $Message[13]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[14]</th><th bgcolor=\"#$color_s\" width=\"80\">$Message[15]</th></tr>\n";
+		  . "><th>" . Format_Number($TotalDifferentKeywords) . " " . _t("Different keywords") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_s\" width=\"80\">" . _t("Percent") . "</th></tr>\n";
 		my $total_s = 0;
 		my $count = 0;
 		&BuildKeyList( $MaxNbOf{'KeywordsShown'},
@@ -17011,7 +21228,7 @@ sub HTMLMainKeys{
 				$p = int( $rest_s / $TotalKeywords * 1000 ) / 10;
 			}
 			print
-"<tr><td class=\"aws\"><span style=\"color: #$color_other\">$Message[30]</span></td><td>$rest_s</td>";
+"<tr><td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Others") . "</span></td><td>$rest_s</td>";
 			print "<td>$p %</td></tr>\n";
 		}
 		&tab_end();
@@ -17034,23 +21251,23 @@ sub HTMLMainKeys{
 sub HTMLMainMisc{
 	if ($Debug) { debug( "ShowMiscStats", 2 ); }
 	print "$Center<a name=\"misc\">&nbsp;</a><br />\n";
-	my $title = "$Message[139]";
+	my $title = "📌 " . _t("Other Sources");
 	&tab_head( "$title", 19, 0, 'misc' );
 	print
-	  "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>$Message[139]</th>";
+	  "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("Misc") . "</th>";
 	print "<th width=\"100\">&nbsp;</th>";
 	print "<th width=\"100\">&nbsp;</th>";
 	print "</tr>\n";
 	my %label = (
-		'AddToFavourites'           => $Message[137],
-		'JavascriptDisabled'        => $Message[168],
-		'JavaEnabled'               => $Message[140],
-		'DirectorSupport'           => $Message[141],
-		'FlashSupport'              => $Message[142],
-		'RealPlayerSupport'         => $Message[143],
-		'QuickTimeSupport'          => $Message[144],
-		'WindowsMediaPlayerSupport' => $Message[145],
-		'PDFSupport'                => $Message[146]
+		'AddToFavourites'           => _t("Add to favorites"),
+		'JavascriptDisabled'        => _t("JavaScript disabled"),
+		'JavaEnabled'               => _t("Java enabled"),
+		'DirectorSupport'           => _t("Shockwave Support"),
+		'FlashSupport'              => _t("Flash Support"),
+		'RealPlayerSupport'         => _t("RealPlayer Support"),
+		'QuickTimeSupport'          => _t("QuickTime Support"),
+		'WindowsMediaPlayerSupport' => _t("Windows Media Support"),
+		'PDFSupport'                => _t("PDF Support")
 	);
 
 	foreach my $key (@MiscListOrder) {
@@ -17076,12 +21293,12 @@ sub HTMLMainMisc{
 		if ( $MiscListCalc{$key} eq 'v' ) {
 			print "<td>"
 			  . Format_Number(( $_misc_h{$key} || 0 ))
-			  . " / ".Format_Number($total)." $Message[12]</td>";
+			  . " / ".Format_Number($total) . " " . _t("Visits") . "</td>";
 		}
 		if ( $MiscListCalc{$key} eq 'u' ) {
 			print "<td>"
 			  . Format_Number(( $_misc_h{$key} || 0 ))
-			  . " / ".Format_Number($total)." $Message[18]</td>";
+			  . " / ".Format_Number($total) . " " . _t("Unique visitors") . "</td>";
 		}
 		if ( $MiscListCalc{$key} eq 'hm' ) { print "<td>-</td>"; }
 		print "<td>" . ( $total ? "$p %" : "&nbsp;" ) . "</td>";
@@ -17103,7 +21320,7 @@ sub HTMLMainHTTPStatus{
 	
 	if ($Debug) { debug( "ShowHTTPErrorsStats", 2 ); }
 	print "$Center<a name=\"errors\">&nbsp;</a><br />\n";
-	my $title = "$Message[32]";
+	my $title = _t("HTTP Error codes");
 	
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link
@@ -17111,7 +21328,7 @@ sub HTMLMainHTTPStatus{
                "$AddLinkToExternalCGIWrapper" . "?section=ERRORS&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         	
 	&tab_head( "$title", 19, 0, 'errors' );
@@ -17146,7 +21363,7 @@ sub HTMLMainHTTPStatus{
 	}
 	
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">$Message[32]*</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th><th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th></tr>\n";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">" . _t("HTTP Error codes") . "*</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th><th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th></tr>\n";
 	my $total_h = 0;
 	my $count = 0;
 	foreach my $key (@keylist) {
@@ -17165,14 +21382,14 @@ sub HTMLMainHTTPStatus{
 		else { print "<td valign=\"top\">$key</td>"; }
 		print "<td class=\"aws\">"
 		  . (
-			$httpcodelib{$key} ? $httpcodelib{$key} : 'Unknown error' )
+			$httpcodelib{$key} ? $httpcodelib{$key} : _t("Unknown error") )
 		  . "</td><td>".Format_Number($_errors_h{$key})."</td><td>$p %</td><td>"
 		  . Format_Bytes( $_errors_k{$key} ) . "</td>";
 		print "</tr>\n";
 		$total_h += $_errors_h{$key};
 		$count++;
 	}
-	&tab_end("* $Message[154]");
+	&tab_end("* " . _t("HTTP codes 4xx/5xx do not include errors detected before being sent to user"));
 }
 
 #------------------------------------------------------------------------------
@@ -17188,10 +21405,10 @@ sub HTMLMainSMTPStatus{
 	
 	if ($Debug) { debug( "ShowSMTPErrorsStats", 2 ); }
 	print "$Center<a name=\"errors\">&nbsp;</a><br />\n";
-	my $title = "$Message[147]";
+	my $title = _t("SMTP Error codes");
 	&tab_head( "$title", 19, 0, 'errors' );
 	print
-"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">$Message[147]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th><th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th></tr>\n";
+"<tr bgcolor=\"#$color_TableBGRowTitle\"><th colspan=\"2\">" . _t("SMTP Error codes") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th><th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th></tr>\n";
 	my $total_h = 0;
 	my $count = 0;
 	&BuildKeyList( $MaxRowsInHTMLOutput, 1, \%_errors_h, \%_errors_h );
@@ -17202,7 +21419,7 @@ sub HTMLMainSMTPStatus{
 		print "<td valign=\"top\">$key</td>";
 		print "<td class=\"aws\">"
 		  . (
-			$smtpcodelib{$key} ? $smtpcodelib{$key} : 'Unknown error' )
+			$smtpcodelib{$key} ? $smtpcodelib{$key} : _t("Unknown error") )
 		  . "</td><td>".Format_Number($_errors_h{$key})."</td><td>$p %</td><td>"
 		  . Format_Bytes( $_errors_k{$key} ) . "</td>";
 		print "</tr>\n";
@@ -17225,7 +21442,7 @@ sub HTMLMainCluster{
 	
 	if ($Debug) { debug( "ShowClusterStats", 2 ); }
 	print "$Center<a name=\"clusters\">&nbsp;</a><br />\n";
-	my $title = "$Message[155]";
+	my $title = _t("Clusters");
 	
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
        # extend the title to include the added link
@@ -17233,7 +21450,7 @@ sub HTMLMainCluster{
                "$AddLinkToExternalCGIWrapper" . "?section=CLUSTER&baseName=$DirData/$PROG"
            . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
            . "&siteConfig=$SiteConfig" )
-           . "\"$NewLinkTarget>$Message[179]</a>");
+           . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
         	
 	&tab_head( "$title", 19, 0, 'clusters' );
@@ -17268,19 +21485,19 @@ sub HTMLMainCluster{
 	}
 	
 	print
-	  "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>$Message[155]</th>";
+	  "<tr bgcolor=\"#$color_TableBGRowTitle\"><th>" . _t("Clusters") . "</th>";
 	&HTMLShowClusterInfo('__title__');
 	if ( $ShowClusterStats =~ /P/i ) {
 		print
-"<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th><th bgcolor=\"#$color_p\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th><th bgcolor=\"#$color_p\" width=\"80\">" . _t("Percent") . "</th>";
 	}
 	if ( $ShowClusterStats =~ /H/i ) {
 		print
-"<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th><th bgcolor=\"#$color_h\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th><th bgcolor=\"#$color_h\" width=\"80\">" . _t("Percent") . "</th>";
 	}
 	if ( $ShowClusterStats =~ /B/i ) {
 		print
-"<th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th><th bgcolor=\"#$color_k\" width=\"80\">$Message[15]</th>";
+"<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th><th bgcolor=\"#$color_k\" width=\"80\">" . _t("Percent") . "</th>";
 	}
 	print "</tr>\n";
 	my $total_p = my $total_h = my $total_k = 0;
@@ -17298,7 +21515,7 @@ sub HTMLMainCluster{
 		my $p_h = int( $_cluster_h{$key} / $total_h * 1000 ) / 10;
 		my $p_k = int( $_cluster_k{$key} / $total_k * 1000 ) / 10;
 		print "<tr>";
-		print "<td class=\"aws\">Computer $key</td>";
+		print "<td class=\"aws\">" . _t("Computer") . " $key</td>";
 		&HTMLShowClusterInfo($key);
 		if ( $ShowClusterStats =~ /P/i ) {
 			print "<td>"
@@ -17344,7 +21561,7 @@ sub HTMLMainExtra{
 			"$AWScript${NewLinkParams}output=allextra$extranum")
 		: "$StaticLinks.allextra$extranum.$StaticExt"
 	  )
-	  . "\"$NewLinkTarget>$Message[80]</a>";
+	  . "\"$NewLinkTarget>" . _t("Full list") . "</a>";
 	  
     if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
         print "&nbsp; - &nbsp; <a href=\""
@@ -17352,25 +21569,25 @@ sub HTMLMainExtra{
                "$AddLinkToExternalCGIWrapper" . "?section=EXTRA_$extranum&baseName=$DirData/$PROG"
             . "&month=$MonthRequired&year=$YearRequired&day=$DayRequired"
             . "&sectionTitle=$ExtraName[$extranum]&siteConfig=$SiteConfig" )
-            . "\"$NewLinkTarget>$Message[179]</a>");
+            . "\"$NewLinkTarget>" . _t("Export") . "</a>");
     }
   
 	print "</th>";
 
 	if ( $ExtraStatTypes[$extranum] =~ m/P/i ) {
 		print
-		  "<th bgcolor=\"#$color_p\" width=\"80\">$Message[56]</th>";
+		  "<th bgcolor=\"#$color_p\" width=\"80\">" . _t("Pages") . "</th>";
 	}
 	if ( $ExtraStatTypes[$extranum] =~ m/H/i ) {
 		print
-		  "<th bgcolor=\"#$color_h\" width=\"80\">$Message[57]</th>";
+		  "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>";
 	}
 	if ( $ExtraStatTypes[$extranum] =~ m/B/i ) {
 		print
-		  "<th bgcolor=\"#$color_k\" width=\"80\">$Message[75]</th>";
+		  "<th bgcolor=\"#$color_k\" width=\"80\">" . _t("Bandwidth") . "</th>";
 	}
 	if ( $ExtraStatTypes[$extranum] =~ m/L/i ) {
-		print "<th width=\"120\">$Message[9]</th>";
+		print "<th width=\"120\">" . _t("Last visit") . "</th>";
 	}
 	print "</tr>\n";
 	my $total_p = my $total_h = my $total_k = 0;
@@ -17453,7 +21670,7 @@ sub HTMLMainExtra{
 	# Add average row
 	if ( $ExtraAddAverageRow[$extranum] ) {
 		print "<tr>";
-		print "<td class=\"aws\"><b>$Message[96]</b></td>";
+		print "<td class=\"aws\"><b>" . _t("Average") . "</b></td>";
 		if ( $ExtraStatTypes[$extranum] =~ m/P/i ) {
 			print "<td>"
 			  . ( $count ? Format_Number(( $total_p / $count )) : "&nbsp;" ) . "</td>";
@@ -17477,7 +21694,7 @@ sub HTMLMainExtra{
 	# Add sum row
 	if ( $ExtraAddSumRow[$extranum] ) {
 		print "<tr>";
-		print "<td class=\"aws\"><b>$Message[102]</b></td>";
+		print "<td class=\"aws\"><b>" . _t("Sum") . "</b></td>";
 		if ( $ExtraStatTypes[$extranum] =~ m/P/i ) {
 			print "<td>" . Format_Number(($total_p)) . "</td>";
 		}
@@ -17494,10 +21711,11 @@ sub HTMLMainExtra{
 	}
 	&tab_end();
 }
-
+return 1 if $TEST_MODE;
 #------------------------------------------------------------------------------
 # MAIN
 #------------------------------------------------------------------------------
+unless ($TEST_MODE) {
 ( $DIR  = $0 ) =~ s/([^\/\\]+)$//;
 ( $PROG = $1 ) =~ s/\.([^\.]*)$//;
 $Extension = $1;
@@ -17578,7 +21796,8 @@ my @AllowedCLIArgs = (
 	'hostfilter',         'hostfilterex',
 	'urlfilter',          'urlfilterex',
 	'refererpagesfilter', 'refererpagesfilterex',
-	'pluginmode',         'filterrawlog'
+	'pluginmode',         'filterrawlog', 
+	'generate-nav' 
 );
 
 # Parse input parameters and sanitize them for security reasons
@@ -17779,6 +21998,7 @@ else {                             # Run from command line
 	
 	$SiteConfig =~ s/\.\.//g; 
 }
+
 if ( $QueryString =~ /(^|&|&amp;)staticlinks/i ) {
 	$StaticLinks = "$PROG.$SiteConfig";
 }
@@ -17893,9 +22113,10 @@ if ( $QueryString =~ /(^|&|&amp;)version/i ) {
 }
 # Display help information
 if ( ( !$ENV{'GATEWAY_INTERFACE'} ) && ( !$SiteConfig ) ) {
-	&PrintCLIHelp();
+	&print_help();
 	exit 2;
 }
+
 $SiteConfig ||= &Sanitize( $ENV{'SERVER_NAME'} );
 
 #$ENV{'SERVER_NAME'}||=$SiteConfig;	# For thoose who use __SERVER_NAME__ in conf file and use CLI.
@@ -17964,6 +22185,69 @@ if ( !$FrameName ) {
 if ($Debug) { debug( "FrameName=$FrameName", 1 ); }
 if ( $FrameName ne 'index' ) {
 	&Read_Language_Data($Lang);
+	# nav.html
+	if ( ($ENV{'GATEWAY_INTERFACE'} || !$ENV{'GATEWAY_INTERFACE'}) && 
+		$QueryString =~ /(^|&|&amp;|^)generate-nav/i ) {
+		
+		my $dir = '';
+		my @months = ();
+		
+		# 从 QueryString 或命令行参数获取
+		if ( $QueryString =~ /dir=([^&]+)/i ) {
+			$dir = $1;
+		} else {
+			# 尝试从命令行参数获取
+			for my $i (0 .. $#ARGV) {
+				if ($ARGV[$i] =~ /dir=(.+)/) {
+					$dir = $1;
+					last;
+				}
+			}
+		}
+		
+		if ( $QueryString =~ /months=([^&]+)/i ) {
+			@months = split(' ', $1);
+		} else {
+			for my $i (0 .. $#ARGV) {
+				if ($ARGV[$i] =~ /months=(.+)/) {
+					@months = split(' ', $1);
+					last;
+				}
+			}
+		}
+		
+		# 获取当前月份
+		my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+		$year += 1900;
+		$mon += 1;
+		my $current_month = sprintf("%04d-%02d", $year, $mon);
+		
+		generate_nav_page($dir, $current_month, \@months);
+		generate_index_page($dir, $current_month);
+		generate_what_doc($dir);
+		generate_changelog_doc($dir);
+		generate_benchmark_doc($dir);
+		generate_compare_doc($dir);
+		generate_config_doc($dir);
+		generate_contrib_doc($dir);
+		generate_devgraphs_doc($dir);
+		generate_devhooks_doc($dir);
+		generate_devplugins_doc($dir);
+		generate_dolibarr_doc($dir);
+		generate_extra_doc($dir);
+		generate_faq_doc($dir);
+		generate_glossary_doc($dir);
+		generate_license_doc($dir);
+		generate_loganalysispaper_doc($dir);
+		generate_security_doc($dir);
+		generate_setup_doc($dir);
+		generate_tools_doc($dir);
+		generate_upgrade_doc($dir);
+		generate_webmin_doc($dir);
+		generate_home_doc($dir);
+		exit 0;
+	}
+
 	if ( $FrameName ne 'mainleft' ) {
 		my %datatoload = ();
 		my (
@@ -18254,10 +22538,10 @@ if ( $FrameName eq 'index' ) {
 }
 
 %MonthNumLib = (
-	"01", "$Message[60]", "02", "$Message[61]", "03", "$Message[62]",
-	"04", "$Message[63]", "05", "$Message[64]", "06", "$Message[65]",
-	"07", "$Message[66]", "08", "$Message[67]", "09", "$Message[68]",
-	"10", "$Message[69]", "11", "$Message[70]", "12", "$Message[71]"
+	"01", _t("month_01"), "02", _t("month_02"), "03", _t("month_03"),
+	"04", _t("month_04"), "05", _t("month_05"), "06", _t("month_06"),
+	"07", _t("month_07"), "08", _t("month_08"), "09", _t("month_09"),
+	"10", _t("month_10"), "11", _t("month_11"), "12", _t("month_12")
 );
 
 # Build ListOfYears list with all existing years
@@ -18741,22 +23025,24 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' )
 		}
 
 		# Parse line record to get all required fields
-        my $json_error = undef;
-        if (defined $PerlParsingFormatJsonMap) {
-            my $json = undef;
-            try {
-                $json = JSON::XS->new->utf8->decode($line);
-            } catch {
-                $json_error = $_;
-                $json_error =~ s/^\s+|\s+$//g;
-            }
-            @field = ();
-            if ($json) {
-                for my $el (@fieldlib) {
-                    my $json_key = ${$PerlParsingFormatJsonMap}{$el};
-                    push(@field, ${$json}{$json_key});
-                }
-            }
+		my $json_error = undef;
+		if (defined $PerlParsingFormatJsonMap) {
+			my $json = undef;
+			try {
+				$json = JSON::XS->new->utf8->decode($line);
+			}
+			catch {
+				my $err = shift;
+				$json_error = $err;
+				$json_error =~ s/^\s+|\s+$//g;
+			};
+			@field = ();
+			if ($json) {
+				for my $el (@fieldlib) {
+					my $json_key = ${$PerlParsingFormatJsonMap}{$el};
+					push(@field, ${$json}{$json_key});
+				}
+			}
         } else {
             @field = map( /$PerlParsingFormat/, $line );
         }
@@ -21568,18 +25854,18 @@ if ( scalar keys %HTMLOutput ) {
 
 	# Call to plugins' function AddHTMLContentHeader
 	foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLContentHeader'} } )
-	{
-		# to add unique visitors & number of visits, by J Ruano @ CAPSiDE
-		if ( $ShowDomainsStats =~ /U/i ) {
-			print "<th bgcolor=\"#$color_u\" width=\"80\">$Message[11]</th>";
-		}
-		if ( $ShowDomainsStats =~ /V/i ) {
-			print "<th bgcolor=\"#$color_v\" width=\"80\">$Message[10]</th>";
-		}
+		{
+			# to add unique visitors & number of visits, by J Ruano @ CAPSiDE
+			if ( $ShowDomainsStats =~ /U/i ) {
+				print "<th bgcolor=\"#$color_u\" width=\"80\">" . _t("Unique visitors") . "</th>";
+			}
+			if ( $ShowDomainsStats =~ /V/i ) {
+				print "<th bgcolor=\"#$color_v\" width=\"80\">" . _t("Visits") . "</th>";
+			}
 
-		my $function = "AddHTMLContentHeader_$pluginname";
-		&$function();
-	}
+			my $function = "AddHTMLContentHeader_$pluginname";
+			&$function();
+		}
 
 	# Output individual frames or static pages for specific sections
 	#-----------------------
@@ -21908,7 +26194,7 @@ else {
 	print " Found $NbOfOldLines old records,\n";
 	print " Found $NbOfNewLines new qualified records.\n";
 }
-
+} # 结束 unless ($TEST_MODE)
 
 #sleep 10;
 

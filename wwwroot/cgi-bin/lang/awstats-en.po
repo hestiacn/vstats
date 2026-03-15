@@ -1,0 +1,1966 @@
+# AWStats English translation
+# Copyright (C) 2026 AWStats Team
+# This file is distributed under the same license as the AWStats package.
+# Original Author: Laurent Destailleur <eldy@users.sourceforge.net>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.0\n"
+"Report-Msgid-Bugs-To: https://github.com/hestiacn/vstats/issues\n"
+"POT-Creation-Date: 2026-03-04 10:00+0800\n"
+"PO-Revision-Date: 2026-03-04 10:00+0800\n"
+"Last-Translator: AWStats Team <https://github.com/hestiacn/vstats>\n"
+"Language-Team: English <https://github.com/hestiacn/vstats>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# 元数据
+msgid "PageCode"
+msgstr "utf-8"
+
+msgid "PageDir"
+msgstr "0"
+
+# 消息定义
+msgid "0"
+msgstr "Unknown"
+
+msgid "1"
+msgstr "Unknown (unresolved ip)"
+
+msgid "2"
+msgstr "Others"
+
+msgid "3"
+msgstr "View details"
+
+msgid "4"
+msgstr "Day"
+
+msgid "5"
+msgstr "Month"
+
+msgid "6"
+msgstr "Year"
+
+msgid "7"
+msgstr "Statistics for"
+
+msgid "8"
+msgstr "First visit"
+
+msgid "9"
+msgstr "Last visit"
+
+msgid "10"
+msgstr "Number of visits"
+
+msgid "11"
+msgstr "Unique visitors"
+
+msgid "12"
+msgstr "Visit"
+
+msgid "13"
+msgstr "different keywords"
+
+msgid "14"
+msgstr "Search"
+
+msgid "15"
+msgstr "Percent"
+
+msgid "16"
+msgstr "Traffic"
+
+msgid "17"
+msgstr "Domains/Countries"
+
+msgid "18"
+msgstr "Visitors"
+
+msgid "19"
+msgstr "Pages-URL"
+
+msgid "20"
+msgstr "Hours"
+
+msgid "21"
+msgstr "Browsers"
+
+msgid "22"
+msgstr ""
+
+msgid "23"
+msgstr "Referrers"
+
+msgid "24"
+msgstr "Never updated (See 'Build/Update' on awstats_setup.html page)"
+
+msgid "25"
+msgstr "Visitors domains/countries"
+
+msgid "26"
+msgstr "hosts"
+
+msgid "27"
+msgstr "pages"
+
+msgid "28"
+msgstr "different pages-url"
+
+msgid "29"
+msgstr "Viewed"
+
+msgid "30"
+msgstr "Other words"
+
+msgid "31"
+msgstr "Pages not found"
+
+msgid "32"
+msgstr "HTTP Status codes"
+
+msgid "33"
+msgstr "Netscape versions"
+
+msgid "34"
+msgstr "IE versions"
+
+msgid "35"
+msgstr "Last Update"
+
+msgid "36"
+msgstr "Connect to site from"
+
+msgid "37"
+msgstr "Origin"
+
+msgid "38"
+msgstr "Direct address / Bookmark / Link in email..."
+
+msgid "39"
+msgstr "Unknown Origin"
+
+msgid "40"
+msgstr "Links from an Internet Search Engine"
+
+msgid "41"
+msgstr "Links from an external page (other web sites except search engines)"
+
+msgid "42"
+msgstr "Links from an internal page (other page on same site)"
+
+msgid "43"
+msgstr "Keyphrases used on search engines"
+
+msgid "44"
+msgstr "Keywords used on search engines"
+
+msgid "45"
+msgstr "Unresolved IP Address"
+
+msgid "46"
+msgstr "Unknown OS (useragent field)"
+
+msgid "47"
+msgstr "Required but not found URLs (HTTP code 404)"
+
+msgid "48"
+msgstr "IP Address"
+
+msgid "49"
+msgstr "Error&nbsp;Hits"
+
+msgid "50"
+msgstr "Unknown browsers (useragent field)"
+
+msgid "51"
+msgstr "different robots"
+
+msgid "52"
+msgstr "visits/visitor"
+
+msgid "53"
+msgstr "Robots/Spiders visitors"
+
+msgid "54"
+msgstr "Free realtime logfile analyzer for advanced web statistics"
+
+msgid "55"
+msgstr "of"
+
+msgid "56"
+msgstr "Pages"
+
+msgid "57"
+msgstr "Hits"
+
+msgid "58"
+msgstr "Versions"
+
+msgid "59"
+msgstr "Operating Systems"
+
+msgid "60"
+msgstr "Jan"
+
+msgid "61"
+msgstr "Feb"
+
+msgid "62"
+msgstr "Mar"
+
+msgid "63"
+msgstr "Apr"
+
+msgid "64"
+msgstr "May"
+
+msgid "65"
+msgstr "Jun"
+
+msgid "66"
+msgstr "Jul"
+
+msgid "67"
+msgstr "Aug"
+
+msgid "68"
+msgstr "Sep"
+
+msgid "69"
+msgstr "Oct"
+
+msgid "70"
+msgstr "Nov"
+
+msgid "71"
+msgstr "Dec"
+
+msgid "72"
+msgstr "Navigation"
+
+msgid "73"
+msgstr "File type"
+
+msgid "74"
+msgstr "Update now"
+
+msgid "75"
+msgstr "Bandwidth"
+
+msgid "76"
+msgstr "Back to main page"
+
+msgid "77"
+msgstr "Top"
+
+msgid "78"
+msgstr "dd mmm yyyy - HH:MM"
+
+msgid "79"
+msgstr "Filter"
+
+msgid "80"
+msgstr "Full list"
+
+msgid "81"
+msgstr "Hosts"
+
+msgid "82"
+msgstr "Known"
+
+msgid "83"
+msgstr "Robots"
+
+msgid "84"
+msgstr "Sun"
+
+msgid "85"
+msgstr "Mon"
+
+msgid "86"
+msgstr "Tue"
+
+msgid "87"
+msgstr "Wed"
+
+msgid "88"
+msgstr "Thu"
+
+msgid "89"
+msgstr "Fri"
+
+msgid "90"
+msgstr "Sat"
+
+msgid "91"
+msgstr "Days of week"
+
+msgid "92"
+msgstr "Who"
+
+msgid "93"
+msgstr "When"
+
+msgid "94"
+msgstr "Authenticated users"
+
+msgid "95"
+msgstr "Min"
+
+msgid "96"
+msgstr "Average"
+
+msgid "97"
+msgstr "Max"
+
+msgid "98"
+msgstr "Web compression"
+
+msgid "99"
+msgstr "Bandwidth saved"
+
+msgid "100"
+msgstr "Compression on"
+
+msgid "101"
+msgstr "Compression result"
+
+msgid "102"
+msgstr "Total"
+
+msgid "103"
+msgstr "different keyphrases"
+
+msgid "104"
+msgstr "Entry"
+
+msgid "105"
+msgstr "Code"
+
+msgid "106"
+msgstr "Average size"
+
+msgid "107"
+msgstr "Links from a NewsGroup"
+
+msgid "108"
+msgstr "KB"
+
+msgid "109"
+msgstr "MB"
+
+msgid "110"
+msgstr "GB"
+
+msgid "111"
+msgstr "Grabber"
+
+msgid "112"
+msgstr "Yes"
+
+msgid "113"
+msgstr "No"
+
+msgid "114"
+msgstr "Info."
+
+msgid "115"
+msgstr "OK"
+
+msgid "116"
+msgstr "Exit"
+
+msgid "117"
+msgstr "Visits duration"
+
+msgid "118"
+msgstr "Close window"
+
+msgid "119"
+msgstr "Bytes"
+
+msgid "120"
+msgstr "Search&nbsp;Keyphrases"
+
+msgid "121"
+msgstr "Search&nbsp;Keywords"
+
+msgid "122"
+msgstr "different referring search engines"
+
+msgid "123"
+msgstr "different referring sites"
+
+msgid "124"
+msgstr "Other phrases"
+
+msgid "125"
+msgstr "Other logins (and/or anonymous users)"
+
+msgid "126"
+msgstr "Referring search engines"
+
+msgid "127"
+msgstr "Referring sites"
+
+msgid "128"
+msgstr "Summary"
+
+msgid "129"
+msgstr "Exact value not available in 'Year' view"
+
+msgid "130"
+msgstr "Data value arrays"
+
+msgid "131"
+msgstr "Sender EMail"
+
+msgid "132"
+msgstr "Receiver EMail"
+
+msgid "133"
+msgstr "Reported period"
+
+msgid "134"
+msgstr "Extra/Marketing"
+
+msgid "135"
+msgstr "Screen sizes"
+
+msgid "136"
+msgstr "Worm/Virus attacks"
+
+msgid "137"
+msgstr "Successful hits on favicon.ico"
+
+msgid "138"
+msgstr "Days of month"
+
+msgid "139"
+msgstr "Miscellaneous"
+
+msgid "140"
+msgstr "Browsers with Java support"
+
+msgid "141"
+msgstr "Browsers with Macromedia Director Support"
+
+msgid "142"
+msgstr "Browsers with Flash Support"
+
+msgid "143"
+msgstr "Browsers with Real audio playing support"
+
+msgid "144"
+msgstr "Browsers with Quicktime audio playing support"
+
+msgid "145"
+msgstr "Browsers with Windows Media audio playing support"
+
+msgid "146"
+msgstr "Browsers with PDF support"
+
+msgid "147"
+msgstr "SMTP Error codes"
+
+msgid "148"
+msgstr "Countries"
+
+msgid "149"
+msgstr "Mails"
+
+msgid "150"
+msgstr "Size"
+
+msgid "151"
+msgstr "First"
+
+msgid "152"
+msgstr "Last"
+
+msgid "153"
+msgstr "Exclude filter"
+
+msgid "154"
+msgstr "Codes shown here gave hits or traffic \"not viewed\" by visitors, so they are not included in other charts."
+
+msgid "155"
+msgstr "Cluster"
+
+msgid "156"
+msgstr "Robots shown here gave hits or traffic \"not viewed\" by visitors, so they are not included in other charts."
+
+msgid "157"
+msgstr "Numbers after + are successful hits on \"robots.txt\" files."
+
+msgid "158"
+msgstr "Worms shown here gave hits or traffic \"not viewed\" by visitors, so they are not included in other charts."
+
+msgid "159"
+msgstr "Not viewed traffic includes traffic generated by robots, worms, or replies with special HTTP status codes."
+
+msgid "160"
+msgstr "Viewed traffic"
+
+msgid "161"
+msgstr "Not viewed traffic"
+
+msgid "162"
+msgstr "Monthly history"
+
+msgid "163"
+msgstr "Worms"
+
+msgid "164"
+msgstr "different worms"
+
+msgid "165"
+msgstr "Mails successfully sent"
+
+msgid "166"
+msgstr "Mails failed/refused"
+
+msgid "167"
+msgstr "Sensitive targets"
+
+msgid "168"
+msgstr "Javascript disabled"
+
+msgid "169"
+msgstr "Created by"
+
+msgid "170"
+msgstr "plugins"
+
+msgid "171"
+msgstr "Regions"
+
+msgid "172"
+msgstr "Cities"
+
+msgid "173"
+msgstr "Opera versions"
+
+msgid "174"
+msgstr "Safari versions"
+
+msgid "175"
+msgstr "Chrome versions"
+
+msgid "176"
+msgstr "Konqueror versions"
+
+msgid "177"
+msgstr ","
+
+msgid "178"
+msgstr "Downloads"
+
+msgid "179"
+msgstr "Export CSV"
+
+msgid "180"
+msgstr "TB"
+
+msgid "181"
+msgstr "Frequency[/s]"
+
+msgid "182"
+msgstr "Number of requests"
+
+msgid "183"
+msgstr "Period"
+
+msgid "184"
+msgstr "s"
+
+msgid "185"
+msgstr "Request average frequency [/s]"
+
+msgid "186"
+msgstr "Request size"
+
+msgid "187"
+msgstr "Hour"
+
+msgid "188"
+msgstr "Request time"
+
+#------------------------------------------------------------------------------
+# changelog
+#------------------------------------------------------------------------------
+
+msgid "docs.changelog.title"
+msgstr "📋 AWStats Changelog"
+
+msgid "docs.changelog.subtitle"
+msgstr "Compiled from official documentation, SourceForge records, and author's historical data"
+
+msgid "docs.changelog.warning"
+msgstr "⚠️ AWStats 8.0 will be the last version maintained by the original author (Laurent Destailleur - eldy@users.sourceforge.net). Subsequent versions will be maintained by the community."
+
+#------------------------------------------------------------------------------
+# 8.x Series
+#------------------------------------------------------------------------------
+
+# 8.1
+msgid "changelog.8.1.date"
+msgstr "2026-03-10"
+
+msgid "changelog.8.1.version"
+msgstr "8.1"
+
+msgid "changelog.8.1.items"
+msgstr ""
+"<li>Multilingual system refactored - Migrated GBK-encoded txt language files to PO format for better internationalization</li>"
+"<li>Fixed IPv6 compatibility issues - Improved IPv6 address handling</li>"
+"<li>Updated robots.pm database - Added new robot detection</li>"
+"<li>Improved JSON log parsing - Better handling of JSON format logs</li>"
+"<li>Updated browser detection - Added new Edge and Chrome version detection</li>"
+
+# 8.0
+msgid "changelog.8.0.date"
+msgstr "2025-08-26"
+
+msgid "changelog.8.0.version"
+msgstr "8.0"
+
+msgid "changelog.8.0.items"
+msgstr ""
+"<li>Better CSS - Improved stylesheets</li>"
+"<li>Updated robots.pm</li>"
+"<li>Fixes #248</li>"
+"<li>Updated Traditional Chinese translation and migrated it to UTF-8</li>"
+"<li>Sorting tree: Check if the key exists. Do not care about its value.</li>"
+"<li>Allow processing logs in json</li>"
+"<li>Fix default setup for NotPageList</li>"
+"<li>Add report about request time</li>"
+"<li>Fix bad link into doc</li>"
+"<li>Remove native Android and native iOS/OSX Browser's User Agents from robots.pm</li>"
+"<li>GPTBot not being properly identified due to error in robots.pm</li>"
+"<li>Incorrect encoding for Ukrainian Translation</li>"
+"<li><em>AWStats 8.0 will be the last version maintained by original author (Laurent Destailleur - eldy@users.sourceforge.net).</em></li>"
+
+#------------------------------------------------------------------------------
+# 7.x Series
+#------------------------------------------------------------------------------
+
+# 7.9
+msgid "changelog.7.9.date"
+msgstr "2023-01-17"
+
+msgid "changelog.7.9.version"
+msgstr "7.9"
+
+msgid "changelog.7.9.items"
+msgstr ""
+"<li>Add Windows 11 and Android 13 operating systems</li>"
+"<li>Update Hungarian translation and migrate it to UTF-8.</li>"
+"<li>fix cross site scripting</li>"
+"<li>Replace hard coded text with $Message ( Monthly, Daily, Hourly )</li>"
+"<li>Android 11 + 12, MacOS 11 ( Big Sur ) + 12 ( Monterey )</li>"
+"<li>Catch up german translations</li>"
+"<li>Change the substitution that replaces newlines with BR elements so that the syntax works for both HTML and XHTML.</li>"
+"<li>Added a few robots and 1 phone browser. Also corrected some errors in devlop robots.pm</li>"
+"<li>Only look for configuration in dedicated awstats directories</li>"
+"<li>Unwrap SRS e-mail addresses</li>"
+"<li>Fixes #195/CVE-2020-35176</li>"
+"<li>As geoip2_country doesn't have AddHTMLGraph_geoip2_country, it should only generate subpage for geoip2_city.</li>"
+"<li>added support for HaikuOS and Safari based WebPositive browser</li>"
+"<li>Adding missing td-tag opening</li>"
+"<li>Tajik Language Support</li>"
+
+# 7.8
+msgid "changelog.7.8.date"
+msgstr "2020-04-30"
+
+msgid "changelog.7.8.version"
+msgstr "7.8"
+
+msgid "changelog.7.8.items"
+msgstr ""
+"<li>NEW Add SelectBox for DatabaseBreak Mode: month,day and hour.</li>"
+"<li>Update http status codes</li>"
+"<li>Add more file types</li>"
+"<li>Update README.md</li>"
+"<li>Fix geoip2 formatting problem</li>"
+"<li>corner case 99</li>"
+"<li>Fix some incoherent entries in search_engines.pm</li>"
+"<li>Fix geoip2 plugin on windows by renaming it</li>"
+"<li>Update robots.pm with PR118 data. Add:"
+"    - PiplBot bot"
+"    - um-IC & um-LN bot"
+"    - arcemedia"
+"    - bit.ly"
+"    - bidswitchbot"
+"    - bnf.fr_bot"
+"    - contxbot"
+"    - flamingo"
+"    - getintent (variant)"
+"    - laserlikebot"
+"    - mappy"
+"    - mojeek (variant)"
+"    - serendeputy"
+"    - trendiction"
+"    - yak (linkinfluence)"
+"    - zoominfobot</li>"
+"<li>Fixes #104</li>"
+"<li>Change markdown to better readability</li>"
+"<li>Update Copyright year</li>"
+"<li>Change to https links</li>"
+"<li>Fix links for perl download</li>"
+"<li>NEW add %time6 tag in log format to support some IIS log format</li>"
+"<li>geoip2: Fix table formatting error. Missing \"<td>\" item tag.</li>"
+"<li>Changes to robots.pm</li>"
+"<li>Add support for macOS DMG and PKG files</li>"
+"<li>Fix browser detection with HTTP 206 status code</li>"
+"<li>Support for macOS 10.13/10.14 + improved image compression of icons</li>"
+"<li>Fix use the 5 top hits as base 100 for graph to show the top 5 hits.</li>"
+"<li>Clean up geoip2 and geoip2 city modules"
+"    * Correctly convert dns names to ip4 and ip6 address using getaddrinfo (fixes #120, #121, obsoletes #115)"
+"    * Only lookup if the IP is of type public (fixes #122) and catch further lookup errors (obsoletes #123)"
+"    * Store and display the GeoIP City output HTML escaped (fixes #127)"
+"    * Code to perform and cache the actual lookup is consolidated"
+"    * General code improvement and readability</li>"
+"<li>Losslessly reduced size of PNG images by about 33% using zopfli, pngout and oxipng. Also added os icons for macOS 10.13 and 10.14.</li>"
+"<li>Add Robot: The Knowledge AI</li>"
+"<li>Fix Error: Not same number of records of RobotsSearchIDOrder_listx</li>"
+"<li>Robots, Search Engine and Web Page Tracking Modifications</li>"
+"<li>Optimize OptimizeArray</li>"
+"<li>Added UptimeRobot https://uptimerobot.com/</li>"
+"<li>Fix a few grammar errors in the model config</li>"
+"<li>Ignore search phrases longer than 80 characters.</li>"
+"<li>Fix 404 detail page not updating</li>"
+"<li>Decode RFC 3986 \"unreserved chars\" in URLs.</li>"
+"<li>Fix #80</li>"
+"<li>Disable nested includes warnings for Perl > 5.6.</li>"
+"<li>Update domains.pm</li>"
+"<li>Fix two invalid entries in search_engines.pm</li>"
+"<li>Format Tera Bytes</li>"
+"<li>Fix \"Illegal division by zero\" error.</li>"
+"<li>Fix #79</li>"
+"<li>Improving error handling in awstats_buildstaticpages.pl</li>"
+"<li>FIX #90</li>"
+"<li>Exclude private IP addresses since GeoIP2::Reader doesn't support them</li>"
+"<li>Ignore search phrases longer than 80 characters.</li>"
+"<li>Only purge data for the saved section.</li>"
+"<li>Make city plugin more functional</li>"
+"<li>Fix issue with ShowHost section when address is resolved.</li>"
+"<li>Initial implementation of GeoIP2 City lookup.</li>"
+"<li>Fix a few issues with Country lookup.</li>"
+"<li>Initial implementation. Looksup only Country code for IPv4 and IPv6</li>"
+"<li>Update hebrew file</li>"
+"<li>Quite a few additions and modifications. Especially yahoo detection.</li>"
+"<li>Added device pixel ratio ( dpr ) to awstats_misc_tracker.js.</li>"
+"<li>added 37 new robots to robots.pm file using v 7.7 robots.pm file as base file.</li>"
+"<li>Move oBot entry lower as to not incorrectly get picked for other *obot robots.</li>"
+"<li>Decode RFC 3986 \"unreserved chars\" in URLs.  This makes awstats treat \"/foo\" and \"/%66%6f%6f\" as equivalent.</li>"
+"<li>Missing Sint Maarten  flag</li>"
+"<li>Wrong label cf. https://dev.maxmind.com/geoip/legacy/codes/iso3166/</li>"
+"<li>Fix Issue #76 - country name not correct</li>"
+"<li>Fix utf bom files</li>"
+"<li>Fix another vulnerability reported by cPanel Security Team (can execute arbitraty code)</li>"
+"<li>Add more tests</li>"
+
+# 7.7
+msgid "changelog.7.7.date"
+msgstr "2018-01-07"
+
+msgid "changelog.7.7.version"
+msgstr "7.7"
+
+msgid "changelog.7.7.items"
+msgstr ""
+"<li>Security fix: CVE-2017-1000501</li>"
+"<li>Security fix: Missing sanitizing of parameters</li>"
+"<li>Fix LogFormat=4 with url containing spaces.</li>"
+"<li>Fix to window.opener vulnerability in external referral site links.</li>"
+"<li>Add methodurlprot in key to define log format.</li>"
+"<li>Add Dynamic DNS Lookup.</li>"
+"<li>Fix edge support.</li>"
+
+# 7.6
+msgid "changelog.7.6.date"
+msgstr "2016-12-07"
+
+msgid "changelog.7.6.version"
+msgstr "7.6"
+
+msgid "changelog.7.6.items"
+msgstr ""
+"<li>Security fix: \"|\" not allowed into DirLang parameter.</li>"
+"<li>Security fix: More restrictive rule for using AWSTATS_ENABLE_CONFIG_DIR.</li>"
+"<li>Update robots database.</li>"
+"<li>Fix OS database.</li>"
+"<li>Update/fix of documentation.</li>"
+"<li>Add missing country flag for \"el\".</li>"
+"<li>Add partial support for pure-ftpd stats format in method field.</li>"
+"<li>Add support for macOS Sierra.</li>"
+"<li>Add web fonts to default NotPageList, add support for GPX and JSON files</li>"
+
+# 7.5
+msgid "changelog.7.5.date"
+msgstr "2016-04-29"
+
+msgid "changelog.7.5.version"
+msgstr "7.5"
+
+msgid "changelog.7.5.items"
+msgstr ""
+"<li>Compatibility with Perl 5.22</li>"
+"<li>Support detection of Edge browser with detail of version.</li>"
+"<li>Update robots database</li>"
+"<li>Add eot/woff/woff2 to mime.pm as fonts</li>"
+"<li>Add .svgz to image list</li>"
+"<li>Exclude groups.google from search engines</li>"
+"<li>Add %time5 tag to support log format with iso time with timezone.</li>"
+"<li>Add option DynamicDNSLookup to make DNS lookup during output instead of during log analysis processing.</li>"
+"<li>Increase default value for MaxRowsInHTMLOutput</li>"
+
+# 7.4
+msgid "changelog.7.4.date"
+msgstr "2015-11-11"
+
+msgid "changelog.7.4.version"
+msgstr "7.4"
+
+msgid "changelog.7.4.items"
+msgstr ""
+"<li>Add debian patch debian-patches-1019_allow_frame_resize.patch to add option nboflastupdatelookuptosave on command line.</li>"
+"<li>#199 Added geoip6 plugin with support for IPv4 AND IPv6.</li>"
+"<li>Work with Amazon AWS log files (using %time5 tag).</li>"
+"<li>Fixes permission on some .pl scripts.</li>"
+"<li>#205 GetResolvedIP_ipv6 does not strip trailing dot.</li>"
+"<li>#496 tools scripts should print warnings and errors to STDERR.</li>"
+"<li>#919 Referrals not getting tracked due to improperly getting flagged as a search.</li>"
+"<li>Add debian patch 0007_russian_lang.patch.</li>"
+"<li>Add debian patch 2001_awstatsprog_path.patch.</li>"
+"<li>#921 Failure in the help text for geoip_generator.pl</li>"
+"<li>#909 awstats_buildstaticpages.pl noisy debug output.</li>"
+"<li>#680 Invalid data passed to Time::Local causes global destruction.</li>"
+"<li>#212 Fix CVE-2006-2237</li>"
+
+# 7.3
+msgid "changelog.7.3.date"
+msgstr "2015-11-11"
+
+msgid "changelog.7.3.version"
+msgstr "7.3"
+
+msgid "changelog.7.3.items"
+msgstr ""
+"<li>Add command line option -version</li>"
+"<li>Better error management of geoip modules.</li>"
+"<li>Update domains, robots and search engines database:</li>"
+"<li>#877 Windows 8 + iOS Support in AWStats</li>"
+"<li>Detection of 8.1 and IE11.</li>"
+"<li>When using builddate option of script awstats_buildstaticpages, static link is wrong.</li>"
+"<li>Restore detection of Opera browsers versions.</li>"
+"<li>#838 GeoIP Cities page doesnt work.</li>"
+"<li>Add missing icons.</li>"
+"<li>#881 Avoid warning mixed http/https with module graphgooglechartapi.</li>"
+"<li>#918 $MinHit{'Host'} rather than $MinHit{'Login'} used in sub HTMLShowLogins.</li>"
+"<li>Move version system to sourceforge Git instead of CVS.</li>"
+
+# 7.2
+msgid "changelog.7.2.date"
+msgstr "2013-07-09"
+
+msgid "changelog.7.2.version"
+msgstr "7.2"
+
+msgid "changelog.7.2.items"
+msgstr ""
+"<li>Upgrade licence to GPL v3+.</li>"
+"<li>Update documentation.</li>"
+"<li>Support modCloudFlareIIS.</li>"
+"<li>Since updating Webmin to 1.53, the Add New Config File screen layout is totally messed up and unusable.</li>"
+"<li>Update broken links to maxmind.</li>"
+
+# 7.1.1
+msgid "changelog.7.1.1.date"
+msgstr "2013-03-08"
+
+msgid "changelog.7.1.1.version"
+msgstr "7.1.1"
+
+msgid "changelog.7.1.1.items"
+msgstr ""
+"<li>Add windows 8 detection</li>"
+"<li>Add support of %time5 for iso date times.</li>"
+"<li>Fix problems with Perl 5.14</li>"
+
+# 7.1
+msgid "changelog.7.1.date"
+msgstr "2012-12-20"
+
+msgid "changelog.7.1.version"
+msgstr "7.1"
+
+msgid "changelog.7.1.items"
+msgstr ""
+"<li>Update translations.</li>"
+"<li>Update browsers list.</li>"
+"<li>Add example of nginx setup.</li>"
+"<li>Add some patches from debian package.</li>"
+"<li>Rename domain name into documentation to awstats.org</li>"
+"<li>Can allow urls with awredir without using md5 key parameter.</li>"
+"<li>Usage of databasebreak option possible with awstats_buildstaticpages.</li>"
+"<li>Add rel=nofollow on links.</li>"
+"<li>Add option AddLinkToExternalCGIWrapper to add link to a wrapper script into each title of Dolibarr reports. This can be used to add a wrapper to download data into a CSV file for example.</li>"
+"<li>Security fix into awredir.pl</li>"
+"<li>Fix: Case of uk in googlechart api.</li>"
+"<li>Fix: Compatibility with recent perl version.</li>"
+
+# 7.0
+msgid "changelog.7.0.date"
+msgstr "2011-01-08"
+
+msgid "changelog.7.0.version"
+msgstr "7.0"
+
+msgid "changelog.7.0.items"
+msgstr ""
+"<li>Detect Windows 7.</li>"
+"<li>Can format numbers according to language.</li>"
+"<li>More mime types.</li>"
+"<li>Added geoip_asn_maxmind plugin.</li>"
+"<li>Geoip Maxmind city plugin have now override file capabilities to complete missing entries in geoip maxmind database.</li>"
+"<li>Added graphgooglechartapi to use online Google chart api to build graph.</li>"
+"<li>Can show map of country to report countries when using graphgooglechartapi.</li>"
+"<li>Part of codes was change to use more functions and have a cleaner code.</li>"
+"<li>Added parameter to ignore missing log files when merging for a site on multiple servers where a single server may not have created a log for a given day.</li>"
+"<li>Update robots database.</li>"
+"<li>Added Download tracking where certain mime types are defined as downloads and HTTP status 206 is tracked as download continuation</li>"
+"<li>Can use wrapper with parameters in WrapperScript parameter.</li>"
+"<li>Change to allow usage of AWStats inside a plugin for Opensource Dolibarr ERP & CRM software (https://www.dolibarr.org).</li>"
+"<li>Webmin module works with new version of webmin.</li>"
+"<li>Security fix (Traverse directory of LoadPlugin)</li>"
+"<li>Security fix (Limit config to defined directory to avoid access to external config file via a nfs or webdav link).</li>"
+
+#------------------------------------------------------------------------------
+# 6.x Series
+#------------------------------------------------------------------------------
+
+# 6.95
+msgid "changelog.6.95.date"
+msgstr "2009-10-28"
+
+msgid "changelog.6.95.version"
+msgstr "6.95"
+
+msgid "changelog.6.95.items"
+msgstr ""
+"<li>Fix security in awredir.pl script by adding a security key required by default.</li>"
+"<li>Enhance security of parameter sanitizing function.</li>"
+"<li>Add name of config file used to build data files inside data files header.</li>"
+"<li>Added details of version for Chrome, Opera, Safari and Konqueror browsers.</li>"
+"<li>Add AdobeAir detection.</li>"
+"<li>Major update of browsers, robots and search_engines databases (among them, the Bing search engine).</li>"
+"<li>Increase seriously bot detection.</li>"
+"<li>Add Brezhoneg language.</li>"
+"<li>Add a better way to detect Safari versions.</li>"
+"<li>Added subpages for geoip maxmind modules in awstats_buildstaticpages.</li>"
+"<li>Fix typo in polish language file</li>"
+"<li>awstats emmits ton of warnings with new geoipfree - ID: 2794728</li>"
+"<li>Fix: can detect robots with robots.txt url even if file is not root.</li>"
+"<li>Other minor fixes.</li>"
+
+# 6.9
+msgid "changelog.6.9.date"
+msgstr "2008-12-28"
+
+msgid "changelog.6.9.version"
+msgstr "6.9"
+
+msgid "changelog.6.9.items"
+msgstr ""
+"<li>With postfix that support DSN (Delivery Status Notifications) we exclude some lines to avoid counting mails twice in maillogconvert.pl script.</li>"
+"<li>Logresolvemerge.pl support FreeRADIUS logs or anything else using (the fixed length!) ctime format timestamp.</li>"
+"<li>Add option stoponfirsteof in logresolvemerge tool.</li>"
+"<li>Add patch to support host_proxy tag in LogFormat (for Apache LogFormat containing %{X-Forwarded-For}i)</li>"
+"<li>Renamed Add to favourites on \"Hit on favicon\".</li>"
+"<li>Increase robots, search engines database (Added Google Chrome browser, better Vista, WII, detection, ...)</li>"
+"<li>Update languages files.</li>"
+"<li>Added a lot of patch from sourceforge.</li>"
+"<li>Fixed broken maxmind citi, org and isp plugins.</li>"
+"<li>Remove &nbsp; in name html tag to have HtmlHeadSection first.</li>"
+"<li>Fix: [ 2001151 ] Security fix.</li>"
+"<li>Fix: [ 2038681 ] missing <br _/_> in plugins/geoip_org_maxmind.pm</li>"
+"<li>Fix: [ 1921942 ] html footer is missing from the allextraN report.</li>"
+"<li>Fix: [ 1943466 ] error geoip_city_maxmind Can't locate object method \"record_</li>"
+"<li>Fix: [ 1808277 ] Incorrect function call in geoip_isp_maxmind.pm</li>"
+"<li>Fix: Full list of extrasections was not ordered correctly</li>"
+"<li>A lot of other fixes.</li>"
+"<li>Added missing icons</li>"
+
+# 6.8
+msgid "changelog.6.8.date"
+msgstr "2008-07-20"
+
+msgid "changelog.6.8.version"
+msgstr "6.8"
+
+msgid "changelog.6.8.items"
+msgstr ""
+"<li>Added OnlyUsers option.</li>"
+"<li>Can track RPC request.</li>"
+"<li>HTMLHeadSection can accept \\n in string.</li>"
+"<li>Add option MetaRobot.</li>"
+"<li>Increase seriously bot detection.</li>"
+"<li>Better detection of windows OS.</li>"
+"<li>Add condition HOSTINLOG in extra sections.</li>"
+"<li>Can show a full list for extrasection.</li>"
+"<li>Fixed pb in xml output for history files.</li>"
+"<li>Fixed a bug in awstats_configure.pl script.</li>"
+"<li>Updated some language files.</li>"
+"<li>Updated documentation.</li>"
+"<li>Updated browsers database and added following patches: 775988, 1735647, 1735646, 1735639, 1735637, 1533028, 1384243, 1569151, 745359, 1569201, 1569229, 1569208</li>"
+"<li>Added a more complete xslt example.</li>"
+"<li>Remove some deprecated code.</li>"
+"<li>Update status of GeoIP City plugin database. A free version is now available like GeoIP Country database.</li>"
+
+# 6.7
+msgid "changelog.6.7.date"
+msgstr "2007-07-07"
+
+msgid "changelog.6.7.version"
+msgstr "6.7"
+
+msgid "changelog.6.7.items"
+msgstr ""
+"<li>Full support for -day option. To build different report for each day</li>"
+"<li>Added virtualenamequot tag</li>"
+"<li>Added option NotPageList</li>"
+"<li>Addes .jobs and .mobi domains</li>"
+"<li>Minor bug in awstats_configure.pl</li>"
+"<li>Updated some language files.</li>"
+"<li>Updated browsers database.</li>"
+
+# 6.6
+msgid "changelog.6.6.date"
+msgstr "2006-12-24"
+
+msgid "changelog.6.6.version"
+msgstr "6.6"
+
+msgid "changelog.6.6.items"
+msgstr ""
+"<li>All geoip plugins support the PurePerl version.</li>"
+"<li>Possible use of vhost in extra section.</li>"
+"<li>Support IPv6 in AllowAccessFromWebToFollowingIPAddresses parameter.</li>"
+"<li>Added svn family to browsers detection.</li>"
+"<li>Support for IE7.</li>"
+"<li>Remove some Perl warnings.</li>"
+"<li>Remove lc() on translation strings.</li>"
+"<li>Not sanitized migrate parameter.</li>"
+"<li>Not sanitized urlxxx parameters that could be used for XSS attacks.</li>"
+"<li>Added AWStats version in stdout outputs.</li>"
+"<li>Updated some language files.</li>"
+"<li>Updated browsers database.</li>"
+
+# 6.5
+msgid "changelog.6.5.date"
+msgstr "2005-12-24"
+
+msgid "changelog.6.5.version"
+msgstr "6.5"
+
+msgid "changelog.6.5.items"
+msgstr ""
+"<li>Note: If you used the geoip plugin, you must edit your AWStats config file to change the line LoadPlugin=\"geoip GEOIP_STANDARD\" into LoadPlugin=\"geoip GEOIP_STANDARD /pathto/GeoIP.dat\"</li>"
+"<li>Tuning: logresolvemerge.pl is 30 times faster when merging a lot of log files (1000) at same time (Thanks to Dan Armstrong).</li>"
+"<li>Added detection of linux and bsd distributions (redhat, mandriva, ...) Thanks for idea to Sean Carlos.</li>"
+"<li>Added option SkipReferrersBlackList to exlude records from SPAM referrers.</li>"
+"<li>New: RSS catcher/readers in robot database</li>"
+"<li>New: Add option databasebreak to force awstats to use a different database history file for eache day or hour instead of month.</li>"
+"<li>New: geoip_cities plugin report the region when available.</li>"
+"<li>New: LevelForBrowsersDetection can accept value 'allphones' to use file browsers_phone.pm instead of browsers.pm file for AWStats database. This file is specialized in phone/pda browsers.</li>"
+"<li>Qual: geoip plugin now uses open instead of new to allow use of different path for datafiles instead of default. This allow use of personalised path for database file.</li>"
+"<li>New: LogFormat=2 can now change its value dynamically if logformat change.</li>"
+"<li>New: Add way to set ArchiveLogRecords with same tags than LogFile to add suffix to archive log files.</li>"
+"<li>New: Add option SectionsToBeSaved (to ask AWStats to save only particular sections).</li>"
+"<li>Added detection of epiphany and a lot of other new search engines and robots (Thanks to http://www.antezeta.com/awstats-contact.html)</li>"
+"<li>awredir support any protocols (ftp, https...) not only http.</li>"
+"<li>Support in/out method in ftp detection.</li>"
+"<li>Update xsd files and fix xml support to have now a full support of xslt transformations and xml validations.</li>"
+"<li>Added javabestart to browsers.</li>"
+"<li>Fixed: No more increase of Google search engine count when click came from Gmail.</li>"
+"<li>Fixed: [ 1193698 ] Flash detection wrong ?</li>"
+"<li>Fixed: [ 1225425 ] Shiira gets recognized as Safari</li>"
+"<li>Fixed: [ 1232317 ] Missing javaws png file</li>"
+"<li>Fixed: [ 1236547 ] Acrobat 7 PDF detection</li>"
+"<li>Fixed: [ 1239677 ] Incorrect XML output</li>"
+"<li>Fixed: [ 1280667 ] Custom StyleSheet not used</li>"
+"<li>Fixed: [ 1301317 ] Patch for hashfiles plugin to work</li>"
+"<li>Fixed: [ 1305959 ] awstats-6.5 : awstats.pl parsing conf</li>"
+"<li>Fixed: [ 1306075 ] GNUTLS from Lynx mistaken for GNU Hurd</li>"
+"<li>Fixed: [ 1315969 ] German: message153</li>"
+"<li>Fixed: referer changes to referrer</li>"
+"<li>Fixed: [ 1111530 ] Missing description for %host_r in config file</li>"
+"<li>Fixed: [ 1124711 ] env __AWSTATS_CURRENT_CONFIG__ not expanded for include</li>"
+"<li>Fixed: [ 1172485 ] Invalid header characters for DOCTYPE</li>"
+"<li>Fixed: [ 1172494 ] Invalid XHTML in awstats.pl</li>"
+"<li>Fixed: [ 1173816 ] Config file mis-feature</li>"
+"<li>Fixed: [ 1218832 ] XML Strict error (with GeoIP plugin)</li>"
+"<li>Fixed: keyword detection for \"advanced\" search on google</li>"
+"<li>Added style=\"display:none;\" to image link for misc tracker.</li>"
+"<li>Changed stored permission in tar.gz file</li>"
+"<li>Fixed: Better support for gz and bz2 files</li>"
+"<li>Fixed: Added xhtml in mime types.</li>"
+"<li>Fixed: [ 1163590 ] XML parsing error</li>"
+"<li>Fixed: [ 1174728 ] version 6.4: XML parsing error</li>"
+"<li>Fixed: [ 1186582 ] Authentication problem in Windows NT/AD Domains</li>"
+"<li>Fixed: [ 1191805 ] Missing Bot: Add generic detection for user agent bot bot/ and bot-</li>"
+"<li>Avoid bad cells if geoip country does not exists.</li>"
+"<li>Better compatibility of misc_tracker with firefox.</li>"
+"<li>Fixed: Dying process with geoip_city plugin when IP is unknown by plugin.</li>"
+"<li>Fixed: Add error message if option buildpdf option is used with parameter BuildReportFormat=xhtml.</li>"
+"<li>Added Spanish translation for webmin module by Patricio MartÃ­nez Ros.</li>"
+"<li>Added croatian language.</li>"
+"<li>Update russian language file.</li>"
+"<li>Renamed european union by european country.</li>"
+"<li>Review of AWStats documentation.</li>"
+
+# 6.4
+msgid "changelog.6.4.date"
+msgstr "2005-02-25"
+
+msgid "changelog.6.4.version"
+msgstr "6.4"
+
+msgid "changelog.6.4.items"
+msgstr ""
+"<li>Add option ShowSummary.</li>"
+"<li>If Geoip plugin is enabled, add a column in Host report.</li>"
+"<li>Other minor changes on geoip and hostinfo plugins to enhance look.</li>"
+"<li>If LogFormat is 2, AWStats autodetect log format change.</li>"
+"<li>Add a way to set ArchiveLogRecords with same tags than LogFile to add suffix to archived log files.</li>"
+"<li>Fix security hole that allowed a user to read log file content even when plugin rawlog was not enabled.</li>"
+"<li>Fix a possible use of AWStats for a DoS attack.</li>"
+"<li>Fix errors for setup to analyze media servers.</li>"
+"<li>If there is no referer field in the log format, do not use them in the errors reports.</li>"
+"<li>Label of real player (\"media player\", not \"audio player\")</li>"
+"<li>configdir option was broken on windows servers (Pb on Sanitize function on windows local use).</li>"
+"<li>Minor fixes.</li>"
+"<li>Fix: [ 1094056 ] Bad html-output for maillogs</li>"
+"<li>Fix: [ 1094060 ] More bad html/xml output</li>"
+"<li>Fix: [ 1100550 ] Missing flag icon for euskera</li>"
+"<li>Fix: [ 1111817 ] AllowToUpdateStatsFromBrowser defaults to 1 contrary to docs</li>"
+"<li>DebugMessages is by default set to 0 for security reasons.</li>"
+"<li>Updated documentation.</li>"
+"<li>Updated some language files.</li>"
+"<li>Remove deprecated LogFormat 5.</li>"
+
+# 6.3
+msgid "changelog.6.3.date"
+msgstr "2005-02-25"
+
+msgid "changelog.6.3.version"
+msgstr "6.3"
+
+msgid "changelog.6.3.items"
+msgstr ""
+"<li>Added the geoip_isp_maxmind and geoip_org_maxmind plugin to allow rrports by ISP and Organizations.</li>"
+"<li>Details firefox versions.</li>"
+"<li>webmin module: Report GeoIP databases versions.</li>"
+"<li>Support keywords detection for search engines that store search key inside url instead of parameters. This means AWStats can now detect keywords from search engines like a9.com</li>"
+"<li>Removed two security holes.</li>"
+"<li>The geoip_city_maxmind plugin was sometimes bind and towns with space in names are reported correctly.</li>"
+"<li>Restart of apache on debian failed in awstats_configure.pl</li>"
+"<li>Better look for file types tables.</li>"
+"<li>Fix: [ 1066468 ] Translated word gets corupted (&OUML instead of �)</li>"
+"<li>Fix: [ 1074810 ] XML Parsing Error</li>"
+"<li>Fix: [ 991768 ] \"Created by awstats\" not localized</li>"
+"<li>Fix: [ 1092048 ] flash(.swf) in NotPageList(default)</li>"
+"<li>Fix pb when there is spaces in key of ExtraSections</li>"
+"<li>SaveDatabaseFilesWithPermissionsForEveryone is 0 by default instead of 1 for security reasons.</li>"
+"<li>Updated documentation</li>"
+"<li>Updated language files</li>"
+
+# 6.2
+msgid "changelog.6.2.date"
+msgstr "2004-11-06"
+
+msgid "changelog.6.2.version"
+msgstr "6.2"
+
+msgid "changelog.6.2.items"
+msgstr ""
+"<li>awstats_updateall.pl: Added -excludeconf option</li>"
+"<li>Allow plugins to add entry in menu.</li>"
+"<li>Allow plugins to add charts with its own way to compile data inside the update process.</li>"
+"<li>Added the geoip_region_maxmind and geoip_city_maxmind plugins.</li>"
+"<li>maillogconvert.pl: Support postfix 2.1 that change its log format using NOQUEUE string instead of a number for mails that are rejected before being queued.</li>"
+"<li>Little speed improvments.</li>"
+"<li>Counts javascript disabled browsers (A new MiscTracker feature).</li>"
+"<li>When a direct access to last line is successfull, awstats is directly in mode \"NewLine\". No need to find a more recent record for this. This means the NotSortedRecordTolerance works even between end and start of updates.</li>"
+"<li>You can use a particular not used field in your log file to build a personalized report with the ExtraSection feature. Just use a personalized log format and use the tag %extraX (where X is a number) to name field you want to use, then, in ExtraSection parmaters, you can use extraX to tell wich info to use to extract data for building the chart.</li>"
+"<li>Support method \"put\" when analyzing ftp log files.</li>"
+"<li>Added a bold style around current day/month in label of charts.</li>"
+"<li>Fix not recognized %time3 tag in LogFormat. This tag allows to process all FTP xferlog file format.</li>"
+"<li>Fix bad html generated with buildpdf option.</li>"
+"<li>maillogconvert.pl: Added patch to work correctly with sendmail when recipient is redirected through a pipe.</li>"
+"<li>Fix Bug 985977: Failed to rename temp history file if contains special char like \"+\".</li>"
+"<li>Patch 984087 for new year jump</li>"
+"<li>Fix Bug 983994: Tooltips aren't shown.</li>"
+"<li>Fix Bug 982803: Bad display in Netscape 4.75 with Awstats version 6.1</li>"
+"<li>Fix Bug 975059: Timezone Plugin Runtime Error</li>"
+"<li>Fix Bug 971129: Bug in regexp handling for | in ExtraSections Now for OR in ExtraSectionCondition you must use double pipe.</li>"
+"<li>Some fix to have correct flag for lang with code lang different of country flag.</li>"
+"<li>Updated documentation.</li>"
+"<li>Updated robot, browsers, os recognition databases.</li>"
+"<li>Better log messages in plugins.</li>"
+"<li>Renamed configure.pl into awstats_configure.pl.</li>"
+"<li>Reduce code size.</li>"
+"<li>The NOTSORTEDRECORDTOLERANCE has been increased to 2 hours to be sure to have no problem for users that change their hour by one.</li>"
+
+# 6.1
+msgid "changelog.6.1.date"
+msgstr "2004-05-15"
+
+msgid "changelog.6.1.version"
+msgstr "6.1"
+
+msgid "changelog.6.1.items"
+msgstr ""
+"<li>The BuildHistoryFormat can now accept xml to build the AWStats database in xml. The XML schema is available in tools/xslt directory.</li>"
+"<li>Added an example of xslt style sheet to use AWStats XML database.</li>"
+"<li>Added %time4 flag for LogFormat to support unix timestamp date format.</li>"
+"<li>Added Firefox to browser database.</li>"
+"<li>Added option IncludeInternalLinksInOriginSection (defined to 0 by default).</li>"
+"<li>Added field to choose size of list limit (rawlog plugin).</li>"
+"<li>Added ExtraSectionCodeFilterX parameters.</li>"
+"<li>PDF detection works also for browsers that support PDF 6 only.</li>"
+"<li>maillogconvert.pl: Added an automatic year adjustment for sendmail/postfix log files that does not store the log. This solve problems for mail analyses around new year.</li>"
+"<li>Added tooltips for mail reports (tooltips plugin). Changed look of the summary report to prepare add of new informations.</li>"
+"<li>Added failed mails number in the summary.</li>"
+"<li>AllowAccessFromWebToFollowingAuthenticatedUsers is no more case sensitive.</li>"
+"<li>Added new functions for plugins: AddHTMLMenuHeader, AddHTMLMenuFooter, AddHTMLContentHeader, AddHTMLContentFooter</li>"
+"<li>Added detection of Camino web browser (old Chimera).</li>"
+"<li>Full updated robots database.</li>"
+"<li>Removed warning \"Bizarre copy of ARRAY\" with new Perl 5.8.4.</li>"
+"<li>Fixed syntax error in Year view when xhtml output is selected.</li>"
+"<li>Fixed a problem of not working misc feature when using IIS and when URLWithQuery was set to 0.</li>"
+"<li>Now all non ISO-8859-1 languages are shown correctly even with Apache2, whatever is the value of the AddDefaultCharset directive.</li>"
+"<li>Some plugins broke the xhtml output.</li>"
+"<li>Fixed wrong results for compression ratios when using mod_gzip and %gzip_ratio tag.</li>"
+"<li>Fixed old bug showing string \"SCALAR(0x8badae4)\" inside html reports when using mod_perl.</li>"
+"<li>Fixed the not allowed GET method when LogType=S.</li>"
+"<li>maillogconvert.pl: Better management of error records with sendmail and postfix (some \"reject\" records were discarded).</li>"
+"<li>maillogconvert.pl: Fixed important bug where records were discarded when server name was a FQDN.</li>"
+"<li>configure.pl: Now works also on Mac OS X</li>"
+"<li>configure.pl: If /etc/awstats directory does not exist, try to create it. If /etc/awstats.model.conf not found on Linux, try to find it in cgi-bin directory.</li>"
+"<li>Fixed some bugs when BuildReportOutput is set to xhtml (rawlog plugin) plugin.</li>"
+"<li>Number of shown lines were one more than required (rawlog plugin).</li>"
+"<li>xhtml output broken for some 404 reports.</li>"
+"<li>BuildReportOutput=xml renamed into BuildReportOutput=xhtml</li>"
+"<li>Added arabic language file.</li>"
+"<li>Updated language file.</li>"
+"<li>Updated documentation.</li>"
+"<li>maillogconvert.pl: Update value of NBOFENTRYFOFLUSH</li>"
+
+# 6.0
+msgid "changelog.6.0.date"
+msgstr "2004-01-25"
+
+msgid "changelog.6.0.version"
+msgstr "6.0"
+
+msgid "changelog.6.0.items"
+msgstr ""
+"<li>Fixed bug 599388: Search engines are not detected if domain is IP address.</li>"
+"<li>Fixed bug 711758.</li>"
+"<li>Fixed bug 812681: bad case for ENV expansion in awstats.conf.</li>"
+"<li>Fixed bug 813908: Incomplete documentation</li>"
+"<li>Fixed bug 816267: onedigit dayofmonth breaks syslog regex</li>"
+"<li>Fixed bug 817287,830458: wrong regexp in Read_DNS_Cache subroutine</li>"
+"<li>Fixed bug 817388: lib/referer_spam.pm & lib/robots.pm</li>"
+"<li>Fixed bug 818704: Warning in IPv6 plugin when no reverse DNS</li>"
+"<li>Fixed bug 841877: regex bug for parsing log lines</li>"
+"<li>Fixed bug 846365: relative path not working for DirData.</li>"
+"<li>Fixed value for ValueSMTPCodes if not defined in config file.</li>"
+"<li>Fixed pb when country code is not same than lang code (example: estonian has lang code 'et' and country code 'ee').</li>"
+"<li>Replaced Kb/visits to Kb/mails for mail log analysis.</li>"
+"<li>Remove some warnings that appears when running perl -W</li>"
+"<li>Other minor bugs (814970,823064,823323,831438,836315).</li>"
+"<li>Fixed bug in counting hits for miscellanous and clusters chart when a temporary flush was done on disk during a long update.</li>"
+"<li>ExtraSections now works on all records whatever is the status code.</li>"
+"<li>Click on \"Summary\" now returns to top of page even with rawlog plugin.</li>"
+"<li>Fix in log parsing that should reduce dropped records to only records that match a dropping criteria (SkipFiles, Skip..., Only...).</li>"
+"<li>Click on \"Summary\" now returns to top of page even with rawlog plugin.</li>"
+"<li>Fixed AmigaVoyager detection.</li>"
+"<li>Fixed bug in SkipHosts filter for mail log files.</li>"
+"<li>Fixed not working link for search keywords/keyphrase in menu with FireBird.</li>"
+"<li>Fixed pb in loading plugins with mod_perl2.</li>"
+"<li>Fixed not found relative DirData path with some Perl/OS versions.</li>"
+"<li>Fixed error in awstats_updateall.pl when current directory, while running it, is where awstats.pl is stored.</li>"
+"<li>Increased speed by 10 to 20%.</li>"
+"<li>Added a Worms report (Added LevelForWormsDetection and ShowWormsStats parameter).</li>"
+"<li>Added report for \"not viewed\" traffic in Summary report.</li>"
+"<li>Monthly history report has been extracted from the Summary report.</li>"
+"<li>Some changes to make AWStats to be XML compliant ready. Need to set the new parameter BuildReportFormat to 'xml' in config file. Added also the BuildHistoryFormat parameter (Even if only 'text' is supported for the moment).</li>"
+"<li>A lot of part of codes have been rewritten to make code more easy to understand and reduce unknown bugs.</li>"
+"<li>The link to whois informations for a host, provided by hostinfo plugin, has been replaced by an internal 'whois' showing in a popup window full whois informations whatever is the TLD of IP or host name.</li>"
+"<li>A new search engine database to allow several \"match id\" for same search engine. Example: All google ip referer id are recognised.</li>"
+"<li>Can use UA and HOST fields to build personalized ExtraSection reports.</li>"
+"<li>Added support for AND conditions in personalized ExtraSection config.</li>"
+"<li>Support for right to left languages. Added 'he' language.</li>"
+"<li>Added LevelForSearchEnginesDetection parameter to choose between 2 possible levels of detection for search engines (like LevelForRobotsDetection). Also, added LevelForFileTypesDetection parameter (2 possible levels).</li>"
+"<li>Added percent column for file types.</li>"
+"<li>The robot chart now shows details between hits on robots.txt file and other hits.</li>"
+"<li>Count of keywords/keyphrases does not increment counter for hits made on images from a google cached page.</li>"
+"<li>Added patch 857319: Allow several IPs and IP ranges in AllowAccessFromWebToFollowingIPAddresses parameter.</li>"
+"<li>Added experimental graphapplet plugin (graph are built by applet).</li>"
+"<li>Webmin module updated to 1.210 to integrate all new parameters.</li>"
+"<li>Better setup error messages for newbie.</li>"
+"<li>Reports look better on Mozilla browsers.</li>"
+"<li>Added decodeUTFkeys plugin to AWStats to show correctly (in language charset) keywords/keyphrases strings even if they were UTF8 coded by the referer search engine.</li>"
+"<li>Added/updated a lot of os, browser and country icons.</li>"
+"<li>Added Hebrew and Galician language.</li>"
+"<li>configure.pl: A new script to configure AWStats and Apache and build a simple config file.</li>"
+"<li>awstats_buildstaticpages.pl: The -date option has been replaced by the -buildate=%YY%MM%DD option so you can choose your own date format.</li>"
+"<li>awstats_buildstaticpages.pl: Added the -configdir option.</li>"
+"<li>awstats_exportlib.pl: Changes to be compatible with new AWStats databases.</li>"
+"<li>logresolvemerge.pl: can use several threads for reverse DNS lookup with Perl 5.8.</li>"
+"<li>maillogconvert.pl: Allow to process qmail log preprocessed by tai64nlocal tool.</li>"
+"<li>maillogconvert.pl: Added support for MDaemon mail server log files.</li>"
+"<li>A httpd.conf sample to configure AWStats is provided.</li>"
+"<li>Added example for analyzing awredir.pl hits by ExtraSections.</li>"
+"<li>Updated database: wget is known as a \"grabber\" browser, no more as a robots. netcaptor and apt-get added in browser database. asmx and aspx added in mime.pm file. Microsoft URL Control added in robot list.</li>"
+"<li>Documentation seriously updated.</li>"
+"<li>FAQ updated.</li>"
+"<li>Note 0: Perl 5.007 or higher is a requirement to use AWStats 6.9 or higher.</li>"
+"<li>Note 1: When migrating to 6.x series, if you use the ExtraSections feature, you must check that the parameter(s) ExtraSectionConditionX use a full REGEX syntax (with 5.x series, this parameter could contain simple string values). If not, feature will be broken.</li>"
+"<li>Note 2: When migrating to 6.x series, if you use the Misc feature, you must check that your ShowMiscStats parameter is set to \"ajdfrqwp\", if you want to have all miscellanous info reported (you must also have added the awstats_misc_tracker.js script in your home page as described in MiscTrackerUrl parameter description). Otherwise the new default value \"a\" will be used (only the \"Add to favourites\" will be reported).</li>"
+"<li>Note 3: In 6.x series, MaxLengthOfURL parameter has been renamed into MaxLengthOfShownURL.</li>"
+"<li>Note 4: When migrating to 6.x series, to enable the new worm detection, you must add parameter LevelForWormsDetection=2 in your config file.</li>"
+"<li>Note 5: When migrating to 6.x series, if you used the urlalias or userinfo plugin, you must move the urlalias.*.txt or userinfo.*.txt file from Plugins directory to DirData directory.</li>"
+
+#------------------------------------------------------------------------------
+# 5.x Series
+#------------------------------------------------------------------------------
+
+# 5.9
+msgid "changelog.5.9.date"
+msgstr "2003-09-22"
+
+msgid "changelog.5.9.version"
+msgstr "5.9"
+
+msgid "changelog.5.9.items"
+msgstr ""
+"<li>Several fixes in maillogconvert.pl: Fixed wrong parsing for qmail log files. Support mail errors in qmail log files. Return code for postfix log were all reported in error for mails sent to several recipients when one recipient was in error.</li>"
+"<li>Fixed wrong percentage in cluster report.</li>"
+"<li>Fixed wrong parsing for qmail log files.</li>"
+"<li>Return code for postfix log were all reported in error for mails sent to several recipients when one recipient was in error.</li>"
+"<li>Fix a not closing HTML TR tag in full list of hosts.</li>"
+"<li>awstats_buildstaticpages.pl can accept month on 1 digit.</li>"
+"<li>awstats_buildstaticpages.pl no more try to build pages awstats.misc.html and awstats.filetypes.html that does not exists.</li>"
+"<li>A lot of fix in PDF export: Graph in PDF export are no more inverted. The link \"close window\" in generated PDF pages is replaced by \"back to main page\". Infos popup window from hostinfo plugin is not included in PDF export. Popup can't work into PDF. PDF export seems to work correctly now.</li>"
+"<li>mail.yahoo.* and hotmail.msn.* refering pages are not more reported as search engines.</li>"
+"<li>AWStats Webmin module updated to 1.1</li>"
+"<li>Added the AllowFullYearView parameter.</li>"
+"<li>Year entry in combo box is now the localized text for \"Year\" instead of '---'</li>"
+"<li>Support of some exchange format in maillogconvert.pl</li>"
+"<li>Option -noloadplugin of awstats_buildstaticpages.pl can accept a list of plugins separated by comma.</li>"
+"<li>Support mail errors for qmail log files.</li>"
+"<li>Added the -diricons option from awstats_buildstaticpages.pl</li>"
+"<li>Added rpm, deb and msi mime types</li>"
+"<li>Added documentation page for using AWStats Webmin module</li>"
+
+# 5.8
+msgid "changelog.5.8.date"
+msgstr "2003-09-16"
+
+msgid "changelog.5.8.version"
+msgstr "5.8"
+
+msgid "changelog.5.8.items"
+msgstr ""
+"<li>mod_deflate compression reported bandwith saved instead of bandwidth used.</li>"
+"<li>Fixed wrong number of column for \"other\" row in host chart.</li>"
+"<li>Fixed problem of parsing with uabracket and refererquot.</li>"
+"<li>Fixed wrong use of config file in rawlog plugin.</li>"
+"<li>Some changes on maillogconvert.pl: maillogconvert support more exotic sendmail log files (Thanks to W-Mark Kubacki). Fixed wrong parsing of qmail syslog files. Fixed pb of '-' in relay hostname. When a mail is sent to 2 different receivers, now report 2 records. When a forward is active, report the original receiver, not the \"forwarded to\".</li>"
+"<li>Fixed not working timezone plugin with 5.7.</li>"
+"<li>Fixed missing propagated configdir parameter when changing month/year.</li>"
+"<li>Error when loading database pm file with some cygwin perl version.</li>"
+"<li>Fixed not working file type detection for default pages.</li>"
+"<li>Fixed not working awstats_updateall.pl on Windows platforms.</li>"
+"<li>Added a Webmin module.</li>"
+"<li>Enhance the 'Extra' feature with parameters ExtraSectionFirstColumnFormatX, ExtraSectionAddAverageRowX, ExtraSectionAddSumRowX. Also add a dedicated page in documentation.</li>"
+"<li>Added %lognamequot tag for LogFormat parameter.</li>"
+"<li>Added OnlyUserAgents parameter.</li>"
+"<li>Selection of virtualhost records in a log is no more case sensitive on SiteDomain nor HostAliases.</li>"
+"<li>Added awredir.pl tool.</li>"
+"<li>Added a Cluster Report for load balancing systems. Added %cluster tag in LogFormat.</li>"
+"<li>Deprecated %time1b tag (%time1 can be used).</li>"
+"<li>Minor look change.</li>"
+"<li>Updated documentation.</li>"
+
+# 5.7
+msgid "changelog.5.7.date"
+msgstr "2003-08-23"
+
+msgid "changelog.5.7.version"
+msgstr "5.7"
+
+msgid "changelog.5.7.items"
+msgstr ""
+"<li>The -configdir parameter in awstats_updateall.pl is now working coorectly.</li>"
+"<li>Fix failing call to ipv6 plugin.</li>"
+"<li>Pb with some regex value used in the new REGEX fields added in 5.6.</li>"
+"<li>Better support for WebStar log files.</li>"
+"<li>Count for add to favourites is done on hits to favicon.ico for IE only. This avoid counting wrong \"Add\" done by browsers that hit the file even when no add is done. Value reported is the (count for IE) / (ratio of IE among all other browsers).</li>"
+"<li>Count for Browsers with WMA audio playing support now works.</li>"
+"<li>Fix problem with default ShowFlagLinks defined to 1 instead of '' when not included in config file.</li>"
+"<li>Road runner browsers detection problems.</li>"
+"<li>syslog tag can accept hostname with not only a-z chars.</li>"
+"<li>\"&nbsp\" changed to \"&nbsp;\" in miscellanous chart.</li>"
+"<li>Geoip lookup is always done (as it should) on ip when ip is known, even if DNSLookup is enabled and successfull. This increase seriously AWStats speed when DNSLookup and Geoip are both enabled.</li>"
+"<li>Chars < and > inside reported values are no more removed but coded with &lt; and &gt; in html built page.</li>"
+"<li>Added 'rawlog' plugin to add a form to show raw log content with filter capabilities.</li>"
+"<li>Added a dynamic exclude filter on CGI full list report pages.</li>"
+"<li>Added maillogconvert.pl for analyzing mail log files (better support for sendmail, postfix and qmail log files).</li>"
+"<li>Added -addfilenum option in logresolvemerge.pl</li>"
+"<li>Added -updatefor option to limit number of lines parsed in one update session.</li>"
+"<li>Added support for Darwin streaming server.</li>"
+"<li>Added Firebird browser detection.</li>"
+"<li>awstats_buildstaticpages.pl can also build a PDF file (need htmldoc).</li>"
+"<li>Better management of plugin load failure.</li>"
+"<li>Added LogType parameter.</li>"
+"<li>Added option -dnscache= in logresolvemerge.pl to use dns static file.</li>"
+"<li>Minor bug fixes.</li>"
+"<li>The HostAliases list parameter is used to check if a log that contains %virutalhost field should be qualified.</li>"
+"<li>Added %MO tag for LogFile parameter to be replaced by the three first letter of month.</li>"
+"<li>The \"Popup WhoIs link\" code is now handled by new 'hostinfo' plugin.</li>"
+"<li>Added mp4 mime type.</li>"
+"<li>Updated documentation.</li>"
+"<li>Note 1: The ShowLinksToWhoIs parameter has been removed. You must enable the plugin 'hostinfo' to get the same result, if it was used.</li>"
+
+# 5.6
+msgid "changelog.5.6.date"
+msgstr "2003-06-28"
+
+msgid "changelog.5.6.version"
+msgstr "5.6"
+
+msgid "changelog.5.6.items"
+msgstr ""
+"<li>Domain with no pages hits were always reported as other in domain chart.</li>"
+"<li>percent for other in full list of \"links for internet search engines\" has been fixed.</li>"
+"<li>Report compression ratios with mod_deflate feature (Apache 2).</li>"
+"<li>A better browser detection.</li>"
+"<li>Can add regex values for a lot of list parameters (HostAliases, SkipDNSLookupFor, ...)</li>"
+"<li>StyleSheet parameter works completely now and sample of CSS files are provided.</li>"
+"<li>Add meta tags robots noindex,nofollow to avoid indexing of stats pages by compliant robots.</li>"
+"<li>Added a \"Miscellanous chart\" to report ratio of Browsers that support: Java, Flash, Real reader, Quicktime reader, WMA reader, PDF reader.</li>"
+"<li>\"Miscellanous chart\" also report the \"Add to favourites\" (must remove the \"robots.txt\" and \"favicon.ico\" entries off your SkipFiles parameter in your config file to have this feature working.</li>"
+"<li>Update process now try a direct access at last updated record when a new update is ran. If it fails (file changed or wrong checksum of record), then it does a scan from the beginning of file until a new date has been reached (This was the only way of working on older version). So now update process is very much faster for those who don't purge/rotate their log file between two update process (direct access is faster than full scan).</li>"
+"<li>Better look for report pages on Netscape/Mozilla browsers.</li>"
+"<li>Updated documentation.</li>"
+"<li>Update wap/imode browser list.</li>"
+"<li>Note 1: You should remove the \"robots.txt\" and \"favicon.ico\" entries in the SkipFiles parameter in your config files after upgrading to 5.6.</li>"
+
+# 5.5
+msgid "changelog.5.5.date"
+msgstr "2003-05-25"
+
+msgid "changelog.5.5.version"
+msgstr "5.5"
+
+msgid "changelog.5.5.items"
+msgstr ""
+"<li>Summary robots list was limited to MaxNbOfLoginShown instead of being limited to MaxNbOfRobotShown value.</li>"
+"<li>Fixed a bug when using HBL codes in ShowRobotsStats parameter.</li>"
+"<li>AllowAccessFromWebToFollowingAuthenticatedUsers now works for users with space in name.</li>"
+"<li>Bug 730996. When URLWithQueryWithoutFollowingParameters was used with a value and another parameter was ended with this value, the wrong parameter was truncated from URL.</li>"
+"<li>Added a 'Screen Size' report.</li>"
+"<li>Group OS by families. Added a detailed OS version chart.</li>"
+"<li>Better 404 errors management. URLs are always cleaned from their parameter to build '404 not found' URLs list (because parameters are not interesting as they can't have effect as page is not found). Referrer URLs list for '404 not found' URLs are kept with parameters only if URLReferrerWithQuery is set to 1. This make this report more useful.</li>"
+"<li>Added 'geoipfree' plugin (same than 'geoip' plugin but using the free Perl module Geo::IPfree).</li>"
+"<li>'geoip' plugin can works with Perl module Geo::IP but also with Perl module Geo::IP::PurePerl).</li>"
+"<li>Added 'userinfo' plugin to add information from a text file (like lastname, office department,...) in authenticated user chart.</li>"
+"<li>month parameter can accept format -month=D, not only -month=DD</li>"
+"<li>Optimized code size.</li>"
+"<li>Optimized HTML output report size.</li>"
+"<li>Added plugin ipv6 to fully support IPv6 (included reverse DNS lookup).</li>"
+"<li>Split month summary chart and days of month chart in two different charts in main page. This also means that ShowDaysOfMonthStats and AddDataArrayShowDaysOfMonthStats parameters were added.</li>"
+"<li>Added -staticlinksext to build static pages with another extension than default .html</li>"
+"<li>Added QMail support and better working support for Postfix and Sendmail (SMA preprocessor was replaced by maillogconv.pl).</li>"
+"<li>AWStats default install directory is /usr/local/awstats for unix like OS.</li>"
+"<li>Added Isle of Man, Monserat, and Palestinian flag icon.</li>"
+"<li>Added \"local network host\" and \"Satellite access host\" in label of possible countries and icons (They appears when using geoip plugins).</li>"
+"<li>Better management of parsed lines counting. The last line number is also stored in history file, for a future use.</li>"
+"<li>Removed LogFormat=5 option for ISA log file because I am fed up of supporting bugged and non standard MS products. Sorry but this takes me too many times. To use AWStats with an ISA server, just use now a preprocessor tool to convert into a W3C log file.</li>"
+"<li>Added estonian, serban and icelandic language files.</li>"
+"<li>Updated documentation.</li>"
+
+# 5.4
+msgid "changelog.5.4.date"
+msgstr "2003-02-23"
+
+msgid "changelog.5.4.version"
+msgstr "5.4"
+
+msgid "changelog.5.4.items"
+msgstr ""
+"<li>File name with space inside were not correctly reported when doing FTP log server analysis.</li>"
+"<li>Problem in %Wy tag for ten first weeks of year (coded on 1 char instead of 2: First week should be \"00\" instead of \"0\").</li>"
+"<li>Tooltips now works correctly with Netscape (>= 5.0).</li>"
+"<li>Better parsing of parameters (Solved bug 635962).</li>"
+"<li>Users did not appear in Authenticated users list if hits on pages were 0.</li>"
+"<li>Value of title \"Top x\" for domains chart was not always correct.</li>"
+"<li>Fixed bug 620040 that prevented to use \"#\" char in HTMLHeadSection.</li>"
+"<li>Whois link did not work for jp, au, uk and nz domains.</li>"
+"<li>WhoIs link did not work if host name contained a \"-\" char.</li>"
+"<li>Fixed a bug in mod_gzip stats when only ratio was given in log.</li>"
+"<li>Lang parameter accepts 'auto' value (Choose first available language accepted by browser).</li>"
+"<li>Little support for realmedia server.</li>"
+"<li>Added urlaliasbuilder.pl tool.</li>"
+"<li>Added URL in possible values for ExtraSection first column.</li>"
+"<li>New parameter: URLWithAnchor (set to 0 by default).</li>"
+"<li>Export tooltips features in a plugin (plugin tooltips disabled by default).</li>"
+"<li>Added average session length in Visit Duration report.</li>"
+"<li>Added percentage in Visit Duration report.</li>"
+"<li>logresolvemerge.pl can read .gz or .bz2 files.</li>"
+"<li>Added icons and Mime label for file types report.</li>"
+"<li>Added parameters AddDataArrayMonthDayStats, AddDataArrayShowDaysOfWeekStats, and AddDataArrayShowHoursStats.</li>"
+"<li>Added the Whois info in a centered popup window.</li>"
+"<li>Cosmetic change of browsers reports (group by family and add bar in browserdetail).</li>"
+"<li>Other minor cosmetic change (remove ShowHeader parameter).</li>"
+"<li>Authenticated user field in log file can contain space with LogFormat=1, and they are purged of \" with Logformat=6 (Lotus Notes/Domino).</li>"
+"<li>The AWSTATS_CURRENT_CONFIG environment variable is now always defined into AWStats environment with value of config (Can be used inside config file like other environment variables).</li>"
+"<li>Added offset of last log line read and a signature of line into the history file after the LastLine date.</li>"
+"<li>Better error report in load of plugins.</li>"
+"<li>AWSTATS_CONFIG environment variable renamed into AWSTATS_FORCE_CONFIG.</li>"
+"<li>Replaced -month=year option by -month=all.</li>"
+"<li>Added an error message if a -migrate is done on an history file with wrong file name.</li>"
+"<li>GeoIP memory cache code is now stored inside plugin code.</li>"
+"<li>Added list of loaded plugins in AWStats copyright string.</li>"
+"<li>Added European and Sao Tome And Principe country flag.</li>"
+"<li>Added Safari browser icon.</li>"
+"<li>Updated documentation.</li>"
+"<li>Note 1: Old deprecated values for -lang option (-lang=0, -lang=1...) has been removed. Use -lang=code_language instead (-lang=en, -lang=fr, ...).</li>"
+"<li>Note 2: Old deprecated -month=year option must be replaced by -month=all when used on command line.</li>"
+
+# 5.3
+msgid "changelog.5.3.date"
+msgstr "2003-01-02"
+
+msgid "changelog.5.3.version"
+msgstr "5.3"
+
+msgid "changelog.5.3.items"
+msgstr ""
+"<li>Fixed: Bad documentation for use of ExtraSection.</li>"
+"<li>Fixed: Bug in ValidSMTPCodes parameter.</li>"
+"<li>Fixed: Remove AWStats header on left frame if ShowHeader=0.</li>"
+"<li>Fixed: 29th february 2004 will be correctly handled.</li>"
+"<li>Fixed: Another try to fix the #include not working correctly.</li>"
+"<li>Fixed: Columns not aligned in unknownip view when not all fields are choosed.</li>"
+"<li>Fixed: Columns not aligned in allhosts and lasthosts view when not all fields are choosed.</li>"
+"<li>Added awstats_exportlib.pl tool.</li>"
+"<li>Added 'Full list' view for Domains/Country report.</li>"
+"<li>Added 'Full list' and 'Last visits' for email senders/receivers chart.</li>"
+"<li>Added a memory cache for GeoIP plugin resolution (geoip is faster).</li>"
+"<li>New parameter: Added AuthenticatedUsersNotCaseSensitive.</li>"
+"<li>Speed increased when ExtraSection is used.</li>"
+"<li>Updates to AWStats robots, os, browsers, search_engines databases.</li>"
+"<li>Added awstats_logo3.png</li>"
+"<li>Added X11 as Unknown Unix OS, and Atari OS.</li>"
+"<li>Change way of reading -output= parameter to prepare build of several output with same running process.</li>"
+"<li>Updated documentation.</li>"
+
+# 5.2
+msgid "changelog.5.2.date"
+msgstr "2002-12-03"
+
+msgid "changelog.5.2.version"
+msgstr "5.2"
+
+msgid "changelog.5.2.items"
+msgstr ""
+"<li>Added urlalias plugin to replace URL values in URL reports by a text.</li>"
+"<li>Added geoip plugin to track countries from IP location instead of domain value.</li>"
+"<li>Support for postfix mail log.</li>"
+"<li>Added total and average row at bottom of day data array.</li>"
+"<li>Added dynamic filter in Host and Referer pages when used as CGI like in Url report.</li>"
+"<li>Removed \"Bytes\" text when values is 0.</li>"
+"<li>Reduced main page size.</li>"
+"<li>New parameter: Added OnlyHosts parameter.</li>"
+"<li>New parameter: Added ErrorMessages to use a personalized error message.</li>"
+"<li>New parameter: Added DebugMessages to not allow debug messages.</li>"
+"<li>New parameter: Added URLQuerySeparators parameter.</li>"
+"<li>New parameter: Added UseHTTPSLinkForUrl parameter.</li>"
+"<li>Report for robots accept codes like others charts ('HBL').</li>"
+"<li>Can use \"char+\" instead of \"char\" for LogSeparator.</li>"
+"<li>Records with bad http code for Microsoft Index Servers (on 1 digit instead of 3) are no more reported as corrupted records.</li>"
+"<li>Little support for IPv6.</li>"
+"<li>Static string changed from \"string\" to 'string'.</li>"
+"<li>Fixed: Fix a bug when using IIS and %query or cs-query-string tag in LogFormat and URLWithQuery=1.</li>"
+"<li>Fixed: #include now works correctly.</li>"
+"<li>Added Albanian, Bulgarian and Welsh language.</li>"
+"<li>Added Seychelles flag.</li>"
+
+# 5.1
+msgid "changelog.5.1.date"
+msgstr "2002-10-26"
+
+msgid "changelog.5.1.version"
+msgstr "5.1"
+
+msgid "changelog.5.1.items"
+msgstr ""
+"<li>Better support for ftp log files.</li>"
+"<li>Better support for mail log files.</li>"
+"<li>Can analyze streaming log files (Windows Media Server).</li>"
+"<li>Added choice of month and year in list boxes (when used as CGI).</li>"
+"<li>The data values for month and days are reported in main page under the graph, no need to change page.</li>"
+"<li>New feature: ShowxxxStats parameters accept codes to decide which columns to show in chart.</li>"
+"<li>New parameter: Added SkipUserAgents parameter to exclude some user agent from statistics.</li>"
+"<li>New parameter: Added URLNotCaseSensitive.</li>"
+"<li>New parameter: Added URLWithQueryWithoutFollowingParameters to exclude some parameters from URL when URLWithQuery is on.</li>"
+"<li>New parameter: Added URLReferrerWithquery.</li>"
+"<li>Added tag %Wm-n for LogFile parameter (replaced with the week number in month but differs from %WM-n because start with 0).</li>"
+"<li>Added tag %Wy-n for LogFile parameter (replaced with the week number in year but differs from %WY-n because start with 0).</li>"
+"<li>Added tag %Dw-n for LogFile parameter (replaced with the day number in week but differs from %DW-n because start with 0).</li>"
+"<li>Fixed: Log analyze is no more stopped if log file contains binary chars.</li>"
+"<li>Fixed: -debug option is allowed in migrate.</li>"
+"<li>Fixed: Wrong window was opened when clicking on flag link when UseFramesWhenCGI was on.</li>"
+"<li>Fixed: Fixed pb in refreshing page when clicking on \"Update Now\" link (no need to force the refresh).</li>"
+"<li>Fixed: a bug which makes the keywords report loaded twice when page viewed as a cgi after an update now click.</li>"
+"<li>Fixed: Pb with SAMBAR server ('Expires' line appears at the top of pages).</li>"
+"<li>Fixed: Now last update DNS cache file is saved with same permissions than history files so it depends on SaveDatabaseFilesWithPermissionsForEveryone.</li>"
+"<li>Fixed: Some sorting function were still using old 4.1 algorithm. Now all sorts use new 5.0 algorithm (so speed and memory use again increase above all for large web sites with a lot of referers).</li>"
+"<li>Fixed: Remove DecodeEncodedString on parameters sent by command line.</li>"
+"<li>Rewrite plugins to match the same standard for all of them (All use an init function + AWStats version check + no need of global vars in awstats.pl).</li>"
+"<li>Can use the #include \"configfile\" directive in config files.</li>"
+"<li>Added week-end color on week-end days in monthdayvalues report.</li>"
+"<li>Added 'spider' and 'crawler' as generic robots.</li>"
+"<li>Added awstats_updateall.pl tool.</li>"
+"<li>Remove common2combined.pl tool (useless).</li>"
+"<li>Updated graph colors.</li>"
+"<li>Updated documentation.</li>"
+"<li>Updated database.</li>"
+"<li>Updated language files.</li>"
+"<li>Note 1: AWStats 5.x are compatible with previous versions (3.x or 4.x). However if you use awstats 5.x runtime to read statistics for old month build with 3.x or 4.x, speed will be a little bit reduce but data will be reported correctly. To benefit the speed/memory improvement of 5.x (2 to 8 times faster when reading stats, less memory use) you can migrate (after backup) your history files with the command : awstats.pl -migrate=\"/fullpath/awstatsMMYYYY.configval.txt\"</li>"
+"<li>Note 2: Old deprecated command line parameters -h and site= have been removed. Use config= instead.</li>"
+
+# 5.0
+msgid "changelog.5.0.date"
+msgstr "2002-10-06"
+
+msgid "changelog.5.0.version"
+msgstr "5.0"
+
+msgid "changelog.5.0.items"
+msgstr ""
+"<li>Complete rewrite of update process and code to read/save history files. AWStats 5.0 is compatible with previous versions (3.x or 4.x). However if you use awstats 5.0 runtime to read statistics for old month build with 3.x or 4.x, speed will be a little bit reduce but data will be reported correctly. To benefit the speed/memory improvement of 5.0 (2 to 8 times faster when reading stats, less memory use) you can migrate your history files with the command : awstats.pl -migrate=\"/fullpath/awstatsMMYYYY.configval.txt\"</li>"
+"<li>Fixed: pb when using several tags with different offset in LogFile name.</li>"
+"<li>Fixed: Create of directory with CreateDataDirIfNotExists is made with 0766 instead of 0666.</li>"
+"<li>New feature: Track detailed minor and major version for browsers.</li>"
+"<li>New feature: Added bandwidth report for robots and errors.</li>"
+"<li>New feature: Support DNS cache files for DNS lookup.</li>"
+"<li>New feature: Added Plugins support and several working plugins: A GMT correcter, A hash file DNS cache saver/reader...</li>"
+"<li>New feature: Use framed report (new UseFramesWhenCGI parameter).</li>"
+"<li>\"Never updated\" and \"Exact value ...\" are now in language files.</li>"
+"<li>Reduce number of global vars in code.</li>"
+"<li>New feature: DefaultFile parameter accepts several values.</li>"
+"<li>New feature: Added all robots and last robots full list report.</li>"
+"<li>New feature: Added all logins and last logins full list report.</li>"
+"<li>New feature: Added url entry and url exit full list report.</li>"
+"<li>New feature: Added AllowAccessFromWebToFollowingIPAddresses parameter</li>"
+"<li>New parameter: LogSeparator for log files with exotic separators.</li>"
+"<li>New parameter: EnableLockForUpdate to allow lock for update process.</li>"
+"<li>New parameter: DecodeUA to make AWStats work correctly with Roxen.</li>"
+"<li>New tag for logfile: %WY is replaced by week number in year.</li>"
+"<li>Added slovak, spanish (catalan) language files and updated a lot of language files.</li>"
+"<li>Made changes to allow FTP log analysis.</li>"
+"<li>Made changes to prepare sendmail log analysis.</li>"
+"<li>Updated belarus flag.</li>"
+"<li>Updated os, browsers, robots, search engines database.</li>"
+"<li>Added a map of history files at beginning of files to allow other tools to read AWStats history files or part of them very quickly.</li>"
+"<li>Other minor changes and bug fixes.</li>"
+
+#------------------------------------------------------------------------------
+# 4.x Series
+#------------------------------------------------------------------------------
+
+# 4.1
+msgid "changelog.4.1.date"
+msgstr "2002-07-09"
+
+msgid "changelog.4.1.version"
+msgstr "4.1"
+
+msgid "changelog.4.1.items"
+msgstr ""
+"<li>Fixed: -logfile option can be anywhere on command line and accept space in log file names.</li>"
+"<li>Fixed: A bug vampired memory and caused abnormal disk swapping in logresolvemerge.pl</li>"
+"<li>Fixed: Reduce nb of dropped records for log files not 'completely' sorted.</li>"
+"<li>New tag for logfile: %virtualname allows you to share same log file for several virtual servers.</li>"
+"<li>New feature: A 'pipe' can be used in LogFile name parameter.</li>"
+"<li>New feature: Added full list for refering search engines and refering pages.</li>"
+"<li>New feature: Report keywords AND keyphrases. No need to choose one or else.</li>"
+"<li>New feature: Report exit pages.</li>"
+"<li>New feature: Report visits duration.</li>"
+"<li>New option: Added -dir option to choose destination directory for awstats_buildstaticpages.pl</li>"
+"<li>New option: Added AWStats common options to awstats_buildstaticpages.pl</li>"
+"<li>Updated AWStats databases (renamed into .pm files and moved to lib dir).</li>"
+"<li>Updated documentation.</li>"
+
+# 4.0
+msgid "changelog.4.0.date"
+msgstr "2002-04-21"
+
+msgid "changelog.4.0.version"
+msgstr "4.0"
+
+msgid "changelog.4.0.items"
+msgstr ""
+"<li>WARNING: 4.0 is not compatible with OLD history data files. If you use 4.0 to read statistics for old month, report for \"visitors\" will be wrong as all old unresolved ip processed with AWStats 3.2 will not be counted when viewed with 4.0.</li>"
+"<li>Increased speed and reduce memory use for very large web sites.</li>"
+"<li>Unresolved ip are now processed like resolved one.</li>"
+"<li>Added icons in browsers chart.</li>"
+"<li>Personalized log format can also have tab separator (not only space).</li>"
+"<li>New ways to manage security/privacy with updated docs and new parameters: AllowAccessFromWebToAuthenticatedUsersOnly, AllowAccessFromWebToFollowingAuthenticatedUsers</li>"
+"<li>New feature: Added mark on \"grabber browsers\" in browsers chart.</li>"
+"<li>New feature: Added average files size in Pages/URL report chart.</li>"
+"<li>New feature: You can put dynamic environnement variables into config file.</li>"
+"<li>New feature: Keyphrases list can be viewed entirely (not only most used).</li>"
+"<li>New parameter: WrapperScript</li>"
+"<li>New parameter: CreateDirDataIfNotExists</li>"
+"<li>New parameter: ValidHTTPCodes</li>"
+"<li>New parameter: MaxRowsInHTMLOutput</li>"
+"<li>New parameter: ShowLinksToWhoIs</li>"
+"<li>New parameter: LinksToWhoIs</li>"
+"<li>New parameter: StyleSheet</li>"
+"<li>New option: -staticlinks to build static links in report page (to use AWStats with no web servers).</li>"
+"<li>New tool: common2combined.pl (A log format converter)</li>"
+"<li>New tool: awstats_buildstaticpages.pl</li>"
+"<li>Fixed: wrong size of bar in \"average\" report when average value was < 1.</li>"
+"<li>Fixed: pb of \"Error: Not same number of records\" when using some version of mod_perl.</li>"
+"<li>Fixed: pb in logresolvemerge.pl</li>"
+"<li>Fixed: Security against CSSA.</li>"
+"<li>No more need to use \. to say . in config file.</li>"
+"<li>Documentation seriously updated.</li>"
+
+#------------------------------------------------------------------------------
+# 3.x Series
+#------------------------------------------------------------------------------
+
+# 3.2
+msgid "changelog.3.2.date"
+msgstr "2001-12-29"
+
+msgid "changelog.3.2.version"
+msgstr "3.2"
+
+msgid "changelog.3.2.items"
+msgstr ""
+"<li>Increased speed (19% faster than 3.1).</li>"
+"<li>Fixed: AWStats history file is no more corrupted by hits made from a search engines using a URL with URL encoded binary chars.</li>"
+"<li>Fixed: AWStats history file is no more corrupted when a reverse DNS lookup return a corrupted hostname (Happens with some DNS systems).</li>"
+"<li>Fixed: Security fix. No more possible to update stats from a browser using direct url (awstats.pl?update=1) when AllowToUpdateStatsFromBrowser is off.</li>"
+"<li>New feature: Added various tags to use dynamic log file name in conf file according to current but also older date/time (%YYYY-n,%YY-n,%MM-n,%DD-n...)</li>"
+"<li>New feature: Added NotPageList parameter to choose which file extensions to count as \"hit only\" (and not reported in the \"Page-URL viewed\" report).</li>"
+"<li>New feature: Added KeepBackupOfHistoricFiles option.</li>"
+"<li>New feature: Number of visits is also visible in days stats.</li>"
+"<li>New feature: Added stats for day of week.</li>"
+"<li>New feature: Added stats for file types.</li>"
+"<li>New feature: Added stats for entry pages.</li>"
+"<li>New feature: Added stats for web compression (mod_gzip).</li>"
+"<li>New feature: Added stats for authenticated users/logins.</li>"
+"<li>New feature: Added parameters to choose which report to see in main page.</li>"
+"<li>New feature: Added URLWithQuery option to differentiate http://mysite/sameurl?param=x of http://mysite/sameurl?param=y</li>"
+"<li>New feature: ShowFlagLinks can now accept list of all wanted flags for translation link.</li>"
+"<li>New feature: Support standard ISA server log format.</li>"
+"<li>New tool: Add logresolvemerge tool to merge split log files from a load balancing web server before running awstats.</li>"
+"<li>New parameter: HTMLHeadSection allows you to add HTML code in header report.</li>"
+"<li>New parameter: NbOfLinesForCorruptedLog.</li>"
+"<li>Fixed: no more warning/error messages when runned with option perl -w.</li>"
+"<li>Reference database (robots, os, browsers, search engines, domains) has been extracted in external files.</li>"
+"<li>Other minor updates (new flags, reference database updates, ...)</li>"
+"<li>Fixed: Parameter MaxNbOfHostsShown was not working correctly.</li>"
+"<li>New languages.</li>"
+"<li>Added an HTML documentation.</li>"
+
+# 3.1
+msgid "changelog.3.1.date"
+msgstr "2001-09"
+
+msgid "changelog.3.1.version"
+msgstr "3.1"
+
+msgid "changelog.3.1.items"
+msgstr ""
+"<li>Increased seriously speed for update process (above all for large web sites).</li>"
+"<li>Increased VERY seriously speed for viewing stats from a browser.</li>"
+"<li>Reduced amount of memory used.</li>"
+"<li>AWStats search config file in directories: current dir, then /etc/opt/awstats, then /etc/awstats, then /etc</li>"
+"<li>New feature: AWStats can analyze NCSA common log files.</li>"
+"<li>New feature: List of last access.</li>"
+"<li>New feature: Full list of url scores.</li>"
+"<li>New feature: Date format can be chosen according to local country.</li>"
+"<li>New parameter: DirLang allows to choose directory for language files.</li>"
+"<li>New parameter: Expires allows to add a meta-tag EXPIRES in HTML report page.</li>"
+"<li>New parameter: LogoLink parameter to choose link used for clicking on logo.</li>"
+"<li>New parameter: color_weekend option to show week-end days in different colors.</li>"
+"<li>New option: -update and -output to update and/or output a report.</li>"
+"<li>New option: -showsteps to follow advancement of update process.</li>"
+"<li>Fixed: OS detection now works correctly (Windows ME reported correctly).</li>"
+"<li>Fixed: Bad value were reported in daily chart when no pages were viewed.</li>"
+"<li>Added WAP browsers in AWStats database.</li>"
+"<li>New languages.</li>"
+
+# 3.0
+msgid "changelog.3.0.date"
+msgstr "2001-07-22"
+
+msgid "changelog.3.0.version"
+msgstr "3.0"
+
+msgid "changelog.3.0.items"
+msgstr ""
+"<li>New look</li>"
+"<li>Added daily report for pages, hits and bytes.</li>"
+"<li>AWStats can use its own conversion array to make some reverse DNS lookup.</li>"
+"<li>Added also SkipDNSLookupFor option.</li>"
+"<li>Added OnlyFiles option.</li>"
+"<li>AWStats works with personalized log file format (support also Webstar native log format). New log format parsing algorithm.</li>"
+"<li>Now update is not made by default when stats are read from a browser. Added an \"update now\" button on HTML report page if new option AllowToUpdateStatsFromBrowser is on.</li>"
+"<li>Tooltips now works also with Netscape 6, Opera and most browsers.</li>"
+"<li>Update browsers database to add a lot of \"audio\" browsers and more.</li>"
+"<li>Update OS database (Added Windows ME, OpenBSD).</li>"
+"<li>Robots database updated.</li>"
+"<li>Support new domains (biz, museum, coop, info, aero...).</li>"
+"<li>Added some missing flags icons.</li>"
+"<li>Rewrite UnescapeURL function to works with all encoded URLs, cyrillic URL.</li>"
+"<li>Some minor changes.</li>"
+"<li>Added translation for some \"not translated\" words.</li>"
+"<li>Bytes reported are auto-scaled (Bytes, KB, MB, GB).</li>"
+"<li>Fixed problem of colors (styles) not working with some browsers.</li>"
+"<li>Added new languages (Korean, Danish, ...). Now 14 different languages.</li>"
+"<li>Fixed bug of bad link in TOP pages links when viewed page is of another virtual host.</li>"
+"<li>259 domains/countries, 60 browsers database, 26 OS, 258 robots, 47 search engines.</li>"
+
+#------------------------------------------------------------------------------
+# 2.x Series
+#------------------------------------------------------------------------------
+
+# 2.24
+msgid "changelog.2.24.date"
+msgstr "2001-03-09"
+
+msgid "changelog.2.24.version"
+msgstr "2.24"
+
+msgid "changelog.2.24.items"
+msgstr ""
+"<li>Added a way to include dynamic current year, month, day and hour in LogFile parameter.</li>"
+"<li>Option to choose month, year and language is also available from command line.</li>"
+"<li>https request are correctly reported.</li>"
+"<li>Added initialization of parameters to avoid problem of bad cache with mod_perl.</li>"
+"<li>Fixed check of parameters to avoid 'Cross Site Scripting attacks'.</li>"
+"<li>Added flags for Mongolia, Maldives, San Marino, Senegal.</li>"
+"<li>New keyword detection algorithm (Now use a search engine url database like Webalizer AND old algorithm of AWStats for unknown search engines).</li>"
+"<li>Added option to report keywords used from search engine as separate words or as full search strings.</li>"
+"<li>Added Greek, Czech and Portuguese translation (now 9 different languages supported).</li>"
+"<li>A better and faster config file parsing. Solve the problem of \"=\" into the HTMLEndSection parameter.</li>"
+"<li>AWStats is no more sensitive to DOS-UNIX config files.</li>"
+"<li>Disable DNS lookup only if host has at least 1 alphabetical char.</li>"
+"<li>Better management of corrupted log files.</li>"
+"<li>Make difference between windows NT and windows 2000.</li>"
+"<li>Added OmniWeb and iCab browser. Better MacOS detection.</li>"
+"<li>Make AWStats still working even when MS IndexServer return a bad HTTP return code (like \"1\" instead of a \"three digits\" number).</li>"
+"<li>Fixed problem of missing year=yyyy in some links.</li>"
+"<li>Fixed a bug of empty page when domain has \"info\" in its name.</li>"
+"<li>A lot of minor changes.</li>"
+"<li>252 domains/countries, 44 browsers database, 24 OS, 252 robots, 39 search engines.</li>"
+
+# 2.23
+msgid "changelog.2.23.date"
+msgstr "2001-02-10"
+
+msgid "changelog.2.23.version"
+msgstr "2.23"
+
+msgid "changelog.2.23.items"
+msgstr ""
+"<li>Use of configuration file.</li>"
+"<li>Now AWStats can process old log files (however, you must keep order).</li>"
+"<li>Month-to-month basis statistics works now correctly.</li>"
+"<li>Old years now can also be viewed from AWStats report page.</li>"
+"<li>Working directory (with write permissions) can be chosen (you can use another directory than cgi-bin).</li>"
+"<li>Added PurgeLogFile option (you can choose if AWStats purge log file or not).</li>"
+"<li>awstats.pl can be renamed into awstats.plx (for ActiveState perl) and still works.</li>"
+"<li>Statistic page generated from command line has no more bad links.</li>"
+"<li>Added a link to choose full year view.</li>"
+"<li>Domain and page reports are sorted on pages (no more on hits)</li>"
+"<li>Automatic disabling of reverse DNS lookup if this is already done in your log file.</li>"
+"<li>Can add your own HTML code at the end of awstats (ban advert for example).</li>"
+"<li>Added Italian, German, Polish language (now 7 different languages supported).</li>"
+"<li>252 domains/countries, 40 browsers database, 22 OS, 252 robots, 35 search engines.</li>"
+"<li>Setup instructions are cleaner</li>"
+
+# 2.1
+msgid "changelog.2.1.date"
+msgstr "2001-01-01"
+
+msgid "changelog.2.1.version"
+msgstr "2.1"
+
+msgid "changelog.2.1.items"
+msgstr ""
+"<li>AWStats considers myserver and www.myserver as the same, even if \"HostAliases\" setup is wrong.</li>"
+"<li>Fixed a bug making unique visitors counter too high.</li>"
+"<li>Added ArchiveLog parameter to archive processed records into backup files.</li>"
+"<li>Make difference between unknown browsers and unknown OS.</li>"
+"<li>Robots stats are isolated from the rest of visitors.</li>"
+"<li>Better keywords detection algorithm.</li>"
+"<li>Added last time connection for each hosts</li>"
+"<li>Added list of URL for HTTP Error 404</li>"
+"<li>Added pages, hits and KB for each statistics</li>"
+"<li>Added colors and links</li>"
+"<li>Works also with IIS</li>"
+"<li>Code a little bit cleaner and faster.</li>"
+"<li>Images are in .png format.</li>"
+"<li>4 languages: English, French, Dutch, Spanish</li>"
+"<li>252 domains/countries, 40 browsers database, 22 OS, 250 robots, 32 search engines.</li>"
+
+#------------------------------------------------------------------------------
+# 1.x Series
+#------------------------------------------------------------------------------
+
+# 1.0
+msgid "changelog.1.0.date"
+msgstr "2000-05-02"
+
+msgid "changelog.1.0.version"
+msgstr "1.0"
+
+msgid "changelog.1.0.items"
+msgstr ""
+"<li>First version, not distributed</li>"
+
+#------------------------------------------------------------------------------
+# Early Development Stage (1995-1999)
+#------------------------------------------------------------------------------
+
+msgid "changelog.early.1999.title"
+msgstr "📜 Early Development Stage (1995-1999)"
+
+msgid "changelog.early.1999.items"
+msgstr ""
+"<li><strong>1999 - Open Source Eve:</strong> Standardized architecture to adapt to different server environments, completing the final transformation from \"personal tool\" to \"standardized product\". Enhanced detection: Significantly expanded crawler recognition library; Fixed mode: Improved CGI script runtime mode; Community testing: Conducted testing among a small circle of peers, completed code cleanup and documentation drafting based on feedback.</li>"
+"<li><strong>1998 - Functional Deepening:</strong> Refined data dimensions and improved processing efficiency, entering high-frequency internal private iterations. Asynchronous processing: Established the \"offline log parsing\" logic to ensure statistics don't occupy web server real-time resources; Dimension expansion: Added recognition capabilities for browser types, operating systems, and HTTP status codes; Code optimization: Leveraged Perl's cross-platform features to test compatibility in Unix/Linux and Windows environments.</li>"
+"<li><strong>1997 - Project Inception:</strong> Officially recognized in documentation as the project's founding year, transitioning from \"scattered scripts\" to \"analysis engine\". Architecture definition: Established static report generation mode, first time outputting analysis results as HTML pages with graphical interface; Feature library building: Began establishing initial recognition rule libraries for search engines and robots; Environmental adaptation: Benefiting from the standardization of Common Log Format (CLF), scripts began to have generalization capabilities.</li>"
+"<li><strong>1995-1996 - Concept Germination:</strong> Responding to the need for access.log analysis after the popularity of Apache HTTP Server (1995). No formal project name yet, mainly experimental code snippets by author Laurent Destailleur. Written in early Perl 5, implementing basic regex matching for counting total hits and simple file type filtering (e.g., distinguishing .html from .gif). Used only for internal traffic observation on the author's personal website (such as early chiensderace.com prototype).</li>"

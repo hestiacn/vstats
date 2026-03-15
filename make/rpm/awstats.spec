@@ -1,29 +1,24 @@
 %define name awstats
-%define version	__VERSION__
-# For all other distrib
+%define version __VERSION__
 %define release 1
 
 Name: %{name}
 Version: %{version}
 Release: %{release}
+Source0: %{name}-%{version}.tgz
 Summary: AWStats is a free powerful and featureful server logfile analyzer.
 
 License: GPL
 Packager: Laurent Destailleur (Eldy) <eldy@users.sourceforge.net>
 Vendor: Laurent Destailleur
 
-URL: http://%{name}.sourceforge.net
-Source: http://dl.sf.net/awstats/%{name}-%{version}.tgz
 BuildArchitectures: noarch
 BuildRoot: /tmp/%{name}-buildroot
-Icon: awstats_logo1.gif
-
-# For all other distrib
 Group: Applications/Internet
 
-#Requires=perl
+Requires: perl, perl(Time::Local), perl(Socket), perl(Encode)
+Requires: perl(JSON::XS), perl(Try::Tiny)
 AutoReqProv: yes
-
 
 %description
 AWStats (Advanced Web Statistics) is a free powerful and featureful
@@ -50,38 +45,38 @@ features.
 
 %description -l pl
 awstats (Advanced Web Statistics - zaawansowane statystyki WWW) to
-pot�ne i bogate w mo�liwo�ci narz�dzie generuj�ce zaawansowane
-graficzne statystyki serwera WWW. Ten analizator log�w serwera
-dzia�a z linii polece� lub jako CGI i pokazuje wszystkie informacje
-zawarte w logu w postaci graficznych stron WWW. Mo�e analizowa� logi
-wielu serwer�w WWW/WAP/proxy, takich jak Apache, IIS, Weblogic,
-Webstar, Squid... ale tak�e serwer�w pocztowych lub ftp.
+potężne i bogate w możliwości narzędzie generujące zaawansowane
+graficzne statystyki serwera WWW. Ten analizator logów serwera
+działa z linii poleceń lub jako CGI i pokazuje wszystkie informacje
+zawarte w logu w postaci graficznych stron WWW. Może analizować logi
+wielu serwerów WWW/WAP/proxy, takich jak Apache, IIS, Weblogic,
+Webstar, Squid... ale także serwerów pocztowych lub ftp.
 
-Ten program mo�e mierzy� odwiedziny, odwiedzaj�cych, uwierzytelnionych
-u�ytkownik�w, strony, domeny/kraje, najbardziej zaj�te godziny,
-odwiedziny robot�w, rodzaje plik�w, u�ywane wyszukiwarki i s�owa
-kluczowe, czasy trwania odwiedzin, b��dy HTTP... a nawet wi�cej.
-Statystyki mog� by� uaktualniane z przegl�darki lub schedulera.
-Program obs�uguje tak�e serwery wirtualne, wtyczki i wiele innych
+Ten program może mierzyć odwiedziny, odwiedzających, uwierzytelnionych
+użytkowników, strony, domeny/kraje, najbardziej zajęte godziny,
+odwiedziny robotów, rodzaje plików, używane wyszukiwarki i słowa
+kluczowe, czasy trwania odwiedzin, błędy HTTP... a nawet więcej.
+Statystyki mogą być uaktualniane z przeglądarki lub schedulera.
+Program obsługuje także serwery wirtualne, wtyczki i wiele innych
 rzeczy.
 
 %description -l fr
-AWStats (Advanced Web Statistics) est un outils pour g�n�rer des 
-statistiques avanc�s d'un serveur web (mais aussi ftp ou mail)
-de mani�re graphique.
+AWStats (Advanced Web Statistics) est un outil pour générer des 
+statistiques avancées d'un serveur web (mais aussi ftp ou mail)
+de manière graphique.
 
 Cet analyseur de log fonctionne en CGI ou en ligne de commande
-et synt�tise toutes les informations que vos logs contiennent en
+et synthétise toutes les informations que vos logs contiennent en
 quelques pages comme les visites, visiteurs uniques, logins,
 pages vues, domaines/pays, heures de pointes, visites des robots, 
-type de fichiers, moteurs de recherche, mots et phrases cl�s,
-dur�e des visites, r�partition clusters, erreurs HTTP mais aussi
-support java,flash,etc des navigateurs, r�solution d'�cran,
+type de fichiers, moteurs de recherche, mots et phrases clés,
+durée des visites, répartition clusters, erreurs HTTP mais aussi
+support java,flash,etc des navigateurs, résolution d'écran,
 estimation des ajouts aux favoris, etc...
 
-Les statistiques peuvent etre mise � jour par un navigateur ou un
-s�quenceur.
-AWStats g�n�re un fichier d'informations consolid�s pour pouvoir
+Les statistiques peuvent etre mise à jour par un navigateur ou un
+séquenceur.
+AWStats génère un fichier d'informations consolidés pour pouvoir
 traiter de large sites souvent et rapidement.
 
 Il peut analyser des logs IIS (W3C log format), fichier log Apache
@@ -89,134 +84,80 @@ Il peut analyser des logs IIS (W3C log format), fichier log Apache
 plupart des logs de serveur web, proxy, wap, streaming serveurs
 (et aussi serveurs ftp et de mails).
 Ce programme supporte de plus les serveurs virtuels, des plugins
-et de nombreuses fonctionalit�s.
-
-
-
+et de nombreuses fonctionnalités.
 
 #---- prep
 %prep
-%setup -q
-
+%setup -q -n %{name}-%{version}
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/docs/images/* $RPM_BUILD_DIR/%{name}-%{version}/ 2>/dev/null || true
 
 #---- build
 %build
 # Nothing to build
 
-
 #---- install
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/tools
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/tools/webmin
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/tools/xslt
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/classes
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/classes/src
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lib
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/plugins
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/plugins/example
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/css
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/browser
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/clock
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/cpu
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/flags
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/mime
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/os
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/other
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/js
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang/tooltips_f
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang/tooltips_m
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang/tooltips_w
-#mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/lang
-#mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/man
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/docs
-mkdir -p $RPM_BUILD_ROOT/usr/local/awstats/docs/images
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/awstats
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/cron.daily
-mkdir -p /var/lib/awstats
 
-install -m 444 tools/httpd_conf $RPM_BUILD_ROOT/usr/local/awstats/tools/httpd_conf
-install -m 755 tools/logresolvemerge.pl $RPM_BUILD_ROOT/usr/local/awstats/tools/logresolvemerge.pl
-install -m 755 tools/maillogconvert.pl $RPM_BUILD_ROOT/usr/local/awstats/tools/maillogconvert.pl
-install -m 755 tools/urlaliasbuilder.pl $RPM_BUILD_ROOT/usr/local/awstats/tools/urlaliasbuilder.pl
-install -m 755 tools/awstats_buildstaticpages.pl $RPM_BUILD_ROOT/usr/local/awstats/tools/awstats_buildstaticpages.pl
-install -m 755 tools/awstats_configure.pl $RPM_BUILD_ROOT/usr/local/awstats/tools/awstats_configure.pl
-install -m 755 tools/awstats_exportlib.pl $RPM_BUILD_ROOT/usr/local/awstats/tools/awstats_exportlib.pl
-install -m 755 tools/awstats_updateall.pl $RPM_BUILD_ROOT/usr/local/awstats/tools/awstats_updateall.pl
-install -m 755 tools/webmin/* $RPM_BUILD_ROOT/usr/local/awstats/tools/webmin
-install -m 755 tools/xslt/* $RPM_BUILD_ROOT/usr/local/awstats/tools/xslt
-install -m 755 wwwroot/classes/awgraphapplet.jar $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/classes/awgraphapplet.jar
-install -m 755 wwwroot/classes/src/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/classes/src
-install -m 755 wwwroot/cgi-bin/awstats.pl $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/awstats.pl
-install -m 755 wwwroot/cgi-bin/awredir.pl $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/awredir.pl
-install -m 755 wwwroot/cgi-bin/lib/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lib
-install -m 755 wwwroot/cgi-bin/plugins/*.pm $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/plugins
-install -m 755 wwwroot/cgi-bin/plugins/example/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/plugins/example
-install -m 644 wwwroot/cgi-bin/awstats.model.conf $RPM_BUILD_ROOT/%{_sysconfdir}/awstats/awstats.model.conf
-install -m 444 wwwroot/css/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/css
-install -m 444 wwwroot/icon/browser/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/browser
-install -m 444 wwwroot/icon/clock/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/clock
-install -m 444 wwwroot/icon/cpu/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/cpu
-install -m 444 wwwroot/icon/flags/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/flags
-install -m 444 wwwroot/icon/mime/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/mime
-install -m 444 wwwroot/icon/os/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/os
-install -m 444 wwwroot/icon/other/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/icon/other
-install -m 444 wwwroot/js/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/js
-install -m 444 wwwroot/cgi-bin/lang/tooltips_f/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang/tooltips_f
-install -m 444 wwwroot/cgi-bin/lang/tooltips_m/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang/tooltips_m
-install -m 444 wwwroot/cgi-bin/lang/tooltips_w/* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang/tooltips_w
-install -m 444 wwwroot/cgi-bin/lang/awstats* $RPM_BUILD_ROOT/usr/local/awstats/wwwroot/cgi-bin/lang
-install -m 444 README.md  $RPM_BUILD_ROOT/usr/local/awstats/README.md
-#install -m 644 README.md  $RPM_BUILD_ROOT/usr/share/awstats/man
-install -m 444 docs/*.* $RPM_BUILD_ROOT/usr/local/awstats/docs
-install -m 444 docs/images/* $RPM_BUILD_ROOT/usr/local/awstats/docs/images
+# 创建标准目录结构
+mkdir -p $RPM_BUILD_ROOT/usr/share/awstats
+mkdir -p $RPM_BUILD_ROOT/usr/lib/cgi-bin
+mkdir -p $RPM_BUILD_ROOT/etc/awstats
+mkdir -p $RPM_BUILD_ROOT/var/lib/awstats
+mkdir -p $RPM_BUILD_ROOT/var/log/awstats
+
+# 批量复制所有文件
+cp -pr docs $RPM_BUILD_ROOT/usr/share/awstats/
+cp -pr wwwroot $RPM_BUILD_ROOT/usr/share/awstats/
+cp -pr tools $RPM_BUILD_ROOT/usr/share/awstats/
+cp -pr README.md $RPM_BUILD_ROOT/usr/share/awstats/
+
+# 复制配置文件
+echo "Current directory: $(pwd)"
+echo "Files in wwwroot/cgi-bin:"
+ls -la wwwroot/cgi-bin/ || echo "No files found"
+
+# 复制配置文件（智能判断）
+cp -pr wwwroot/cgi-bin/awstats.conf $RPM_BUILD_ROOT/etc/awstats/awstats.conf
+cp -pr wwwroot/cgi-bin/awstats.model.conf $RPM_BUILD_ROOT/etc/awstats/awstats.model.conf
+
+echo "Verifying copied files:"
+ls -la $RPM_BUILD_ROOT/etc/awstats/
+
+# 创建符号链接
+ln -sf /usr/share/awstats/wwwroot/cgi-bin/awstats.pl $RPM_BUILD_ROOT/usr/lib/cgi-bin/awstats.pl
+ln -sf /usr/share/awstats/wwwroot/cgi-bin/awredir.pl $RPM_BUILD_ROOT/usr/lib/cgi-bin/awredir.pl
 
 #---- clean
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
 #---- files
 %files
 %defattr(-,root,root)
 %doc README.md
-%doc /usr/local/awstats/docs/*
-%config /%{_sysconfdir}/awstats/*
-%dir /usr/local/awstats/wwwroot
-%dir /usr/local/awstats/tools
-
-/usr/local/awstats/README.md
-/usr/local/awstats/wwwroot/*
-/usr/local/awstats/tools/*
-
+%doc /usr/share/awstats/docs/*
+%config /etc/awstats/awstats.conf
+%config /etc/awstats/awstats.model.conf
+/usr/share/awstats/*
+/usr/lib/cgi-bin/awstats.pl
+/usr/lib/cgi-bin/awredir.pl
+/var/lib/awstats
+/var/log/awstats
 
 #---- post
 %post
-
-# Create a config file
-#if [ 1 -eq 1 ]; then
-#  if [ ! -f /%{_sysconfdir}/awstats/awstats.`hostname`.conf ]; then
-#    /bin/cat /%{_sysconfdir}/awstats/awstats.model.conf | \
-#      /usr/bin/perl -p -e 's|^SiteDomain=.*$|SiteDomain="'`hostname`'"|;
-#                       s|^HostAliases=.*$|HostAliases="REGEX[^.*'${HOSTNAME//./\\\\.}'\$]"|;
-#                      ' > /%{_sysconfdir}/awstats/awstats.`hostname`.conf || :
-#  fi
-#fi
-
-# Show result
 echo
 echo ----- AWStats %version - Laurent Destailleur -----
-echo AWStats files have been installed in /usr/local/awstats
+echo AWStats files have been installed in /usr/share/awstats
+echo Configuration files are in /etc/awstats
+echo CGI scripts are in /usr/lib/cgi-bin/
 echo
 echo If first install, follow instructions in documentation
-echo \(/usr/local/awstats/docs/index.html\) to setup AWStats in 3 steps:
+echo \(/usr/share/awstats/docs/index.html\) to setup AWStats in 3 steps:
 echo Step 1 : Install and Setup with awstats_configure.pl \(or manually\)
 echo Step 2 : Build/Update Statistics with awstats.pl
 echo Step 3 : Read Statistics
 echo
 
-
 %changelog
-
