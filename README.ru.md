@@ -189,8 +189,8 @@ HestiaCP уже включает AWStats, просто обновите и ус�
 - Файл шаблона: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
 - Конфигурация домена: каталог `/etc/awstats/`
 - Скрипт обновления: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- Справочный шаблон скрипта: [v-update-web-domain-stat](test/awstats/conf/v-update-web-domain-stat)
-- Справочный шаблон конфигурации: [awstats.tpl](test/awstats/conf/awstats.tpl)
+- Справочный шаблон скрипта: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
+- Справочный шаблон конфигурации: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
 
 #### Скачать и установить
 

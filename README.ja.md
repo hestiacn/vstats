@@ -189,8 +189,8 @@ HestiaCP には AWStats が元から含まれています。debパッケージ�
 - テンプレートファイル：`/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
 - ドメイン設定：`/etc/awstats/` ディレクトリ内
 - 更新スクリプト：`/usr/local/hestia/bin/v-update-web-domain-stat`
-- 参考スクリプトテンプレート：[v-update-web-domain-stat](test/awstats/conf/v-update-web-domain-stat)
-- 参考設定テンプレート：[awstats.tpl](test/awstats/conf/awstats.tpl)
+- 参考スクリプトテンプレート：[v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
+- 参考設定テンプレート：[awstats.tpl](/make/test/awstats/conf/awstats.tpl)
 
 #### ダウンロードしてインストール
 

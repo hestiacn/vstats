@@ -198,8 +198,8 @@ Supports official [Debian](https://github.com/hestiacp/hestiacp) and community [
 - Template file: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
 - Domain configuration: `/etc/awstats/` directory
 - Update script: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- Reference script template: [v-update-web-domain-stat](test/awstats/conf/v-update-web-domain-stat)
-- Reference config template: [awstats.tpl](test/awstats/conf/awstats.tpl)
+- Reference script template: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
+- Reference config template: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
 
 #### Download and Install
 

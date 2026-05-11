@@ -189,8 +189,8 @@ Ondersteunt officiële [Debian](https://github.com/hestiacp/hestiacp) en enthous
 - Templates bestand: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
 - Domeinconfiguratie: map `/etc/awstats/`
 - Update script: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- Referentie script template: [v-update-web-domain-stat](test/awstats/conf/v-update-web-domain-stat)
-- Referentie configuratie template: [awstats.tpl](test/awstats/conf/awstats.tpl)
+- Referentie script template: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
+- Referentie configuratie template: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
 
 #### Downloaden en installeren
 

@@ -188,8 +188,8 @@ HestiaCP 已自帶 AWStats，只需更新安裝 deb 套件。
 - 模板檔案：`/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
 - 網域設定：`/etc/awstats/` 目錄下
 - 更新腳本：`/usr/local/hestia/bin/v-update-web-domain-stat`
-- 參考腳本模板：[v-update-web-domain-stat](test/awstats/conf/v-update-web-domain-stat)
-- 參考設定模板：[awstats.tpl](test/awstats/conf/awstats.tpl)
+- 參考腳本模板：[v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
+- 參考設定模板：[awstats.tpl](/make/test/awstats/conf/awstats.tpl)
 
 #### 下載並安裝
 

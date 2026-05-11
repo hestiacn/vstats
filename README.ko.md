@@ -189,8 +189,8 @@ HestiaCP에는 이미 AWStats가 포함되어 있습니다. deb 패키지를 업
 - 템플릿 파일: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
 - 도메인 설정: `/etc/awstats/` 디렉토리
 - 업데이트 스크립트: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- 참조 스크립트 템플릿: [v-update-web-domain-stat](test/awstats/conf/v-update-web-domain-stat)
-- 참조 설정 템플릿: [awstats.tpl](test/awstats/conf/awstats.tpl)
+- 참조 스크립트 템플릿: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
+- 참조 설정 템플릿: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
 
 #### 다운로드 및 설치
 

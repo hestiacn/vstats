@@ -189,8 +189,8 @@ HestiaCP يأتي بالفعل مع AWStats، ما عليك سوى تحديث ح
 - ملف القالب: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
 - تكوين النطاق: دليل `/etc/awstats/`
 - برنامج التحديث النصي: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- قالب البرنامج النصي المرجعي: [v-update-web-domain-stat](test/awstats/conf/v-update-web-domain-stat)
-- قالب التكوين المرجعي: [awstats.tpl](test/awstats/conf/awstats.tpl)
+- قالب البرنامج النصي المرجعي: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
+- قالب التكوين المرجعي: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
 
 #### التحميل والتثبيت
 
