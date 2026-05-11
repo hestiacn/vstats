@@ -1,0 +1,3294 @@
+# AWStats Ukrainian (uk) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#------------------------------------------------------------------------------
+# Назви місяців
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "січ"
+
+msgid "month_02"
+msgstr "лют"
+
+msgid "month_03"
+msgstr "бер"
+
+msgid "month_04"
+msgstr "кві"
+
+msgid "month_05"
+msgstr "тра"
+
+msgid "month_06"
+msgstr "чер"
+
+msgid "month_07"
+msgstr "лип"
+
+msgid "month_08"
+msgstr "сер"
+
+msgid "month_09"
+msgstr "вер"
+
+msgid "month_10"
+msgstr "жов"
+
+msgid "month_11"
+msgstr "лис"
+
+msgid "month_12"
+msgstr "гру"
+
+#------------------------------------------------------------------------------
+# Назви днів тижня
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "нд"
+
+msgid "DayOfWeek_1"
+msgstr "пн"
+
+msgid "DayOfWeek_2"
+msgstr "вт"
+
+msgid "DayOfWeek_3"
+msgstr "ср"
+
+msgid "DayOfWeek_4"
+msgstr "чт"
+
+msgid "DayOfWeek_5"
+msgstr "пт"
+
+msgid "DayOfWeek_6"
+msgstr "сб"
+
+#------------------------------------------------------------------------------
+# Елементи інтерфейсу
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "Розширена веб-статистика для"
+
+msgid "Statistics for"
+msgstr "Статистика для"
+
+msgid "main"
+msgstr "головна"
+
+msgid "Switch to light mode"
+msgstr "Перемкнути на світлий режим"
+
+msgid "Switch to dark mode"
+msgstr "Перемкнути на темний режим"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "Байт"
+
+msgid "Filter"
+msgstr "Фільтр"
+
+msgid "Exclude filter"
+msgstr "Фільтр виключення"
+
+msgid "Top"
+msgstr "Найвищі"
+
+msgid "Full list"
+msgstr "Повний список"
+
+msgid "Last"
+msgstr "Останні"
+
+msgid "Average"
+msgstr "Середнє"
+
+msgid "Export"
+msgstr "Експорт"
+
+msgid "Details"
+msgstr "Деталі"
+
+msgid "Version"
+msgstr "Версія"
+
+msgid "thousands_separator"
+msgstr " "
+
+msgid "dateformat_long"
+msgstr "dd.mm.yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd.mm.yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "%s"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# Панель навігації
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "Вибір місяця AWStats"
+
+msgid "nav_category_basic"
+msgstr "Основні документи"
+
+msgid "nav_category_guide"
+msgstr "Посібник користувача"
+
+msgid "nav_category_reference"
+msgstr "Довідкові ресурси"
+
+msgid "nav_category_integration"
+msgstr "Інтеграція та розширення"
+
+msgid "nav_category_dev"
+msgstr "Документація для розробників"
+
+msgid "nav_changelog"
+msgstr "Журнал змін"
+
+msgid "nav_what"
+msgstr "Що таке AWStats"
+
+msgid "nav_license"
+msgstr "Ліцензія"
+
+msgid "nav_glossary"
+msgstr "Глосарій"
+
+msgid "nav_setup"
+msgstr "Встановлення та налаштування"
+
+msgid "nav_upgrade"
+msgstr "Посібник з оновлення"
+
+msgid "nav_config"
+msgstr "Параметри конфігурації"
+
+msgid "nav_extra"
+msgstr "Додаткові розділи"
+
+msgid "nav_tools"
+msgstr "Інші інструменти"
+
+msgid "nav_faq"
+msgstr "Питання та відповіді"
+
+msgid "nav_security"
+msgstr "Поради з безпеки"
+
+msgid "nav_compare"
+msgstr "Порівняння"
+
+msgid "nav_benchmark"
+msgstr "Тести продуктивності"
+
+msgid "nav_webmin"
+msgstr "Модуль Webmin"
+
+msgid "nav_dolibarr"
+msgstr "Модуль Dolibarr"
+
+msgid "nav_contrib"
+msgstr "Ресурси внесків"
+
+msgid "nav_plugins"
+msgstr "Розробка плагінів"
+
+msgid "nav_hooks"
+msgstr "Гаки плагінів"
+
+msgid "nav_graphs"
+msgstr "Графіки плагінів"
+
+msgid "Back to top"
+msgstr "Повернутися вгору"
+
+msgid "nav_select_month"
+msgstr "Виберіть місяць"
+
+#------------------------------------------------------------------------------
+# Основні статистичні показники
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "Унікальні відвідувачі"
+
+msgid "Visits"
+msgstr "Візити"
+
+msgid "Visits duration"
+msgstr "Тривалість візитів"
+
+msgid "First visit"
+msgstr "Перший візит"
+
+msgid "Last visit"
+msgstr "Останній візит"
+
+msgid "Visits/Visitor"
+msgstr "Візитів/Відвідувач"
+
+msgid "Pages/Visit"
+msgstr "Сторінок/Візит"
+
+msgid "Hits/Visit"
+msgstr "Хітів/Візит"
+
+msgid "KB/Visit"
+msgstr "КБ/Візит"
+
+msgid "KB/Visits"
+msgstr "КБ/Візити"
+
+msgid "Pages"
+msgstr "Сторінки"
+
+msgid "Hits"
+msgstr "Хіти"
+
+msgid "Bandwidth"
+msgstr "Пропускна здатність"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "с"
+
+msgid "unit_min"
+msgstr "хв"
+
+msgid "unit_h"
+msgstr "год"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "Типи пристроїв"
+
+msgid "Device Type"
+msgstr "Тип пристрою"
+
+msgid "Percent"
+msgstr "Відсоток"
+
+msgid "Mobile"
+msgstr "Мобільний телефон"
+
+msgid "Pause & Go"
+msgstr "Пауза та продовження"
+
+msgid "Complete"
+msgstr "Завершити"
+
+msgid "Tablet"
+msgstr "Планшет"
+
+msgid "Tv"
+msgstr "Телевізор"
+
+msgid "Wearable"
+msgstr "Носимий пристрій"
+
+msgid "Bot"
+msgstr "Бот"
+
+msgid "Desktop"
+msgstr "Настільний комп'ютер"
+
+msgid "Normal browsing traffic"
+msgstr "Нормальний трафік перегляду"
+
+msgid "Abnormal browsing traffic"
+msgstr "Аномальний трафік перегляду"
+
+msgid "Viewed"
+msgstr "Переглянуто"
+
+msgid "Not viewed"
+msgstr "Не переглянуто"
+
+msgid "Abnormal browsing traffic note"
+msgstr "Аномальний трафік перегляду включає: роботи пошукових систем, AI-навчальні роботи, сканери вразливостей та запити, що не відповідають специфікаціям HTTP/HTTPS"
+
+msgid "File size"
+msgstr "Розмір файлу"
+
+msgid "File type"
+msgstr "Тип файлу"
+
+msgid "Downloads"
+msgstr "Завантаження"
+
+msgid "Request time"
+msgstr "Час запиту"
+
+msgid "Total requests"
+msgstr "Загальна кількість запитів"
+
+msgid "Frequency"
+msgstr "Частота"
+
+msgid "Average frequency"
+msgstr "Середня частота"
+
+msgid "Seconds"
+msgstr "Секунди"
+
+msgid "First"
+msgstr "Перший"
+
+msgid "Mails"
+msgstr "Листи"
+
+msgid "Size"
+msgstr "Розмір"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "Попередження: Видалення цього файлу призведе до того, що вся статистика за дату"
+
+msgid "will be lost/reset."
+msgstr "буде втрачена/скинута!"
+
+msgid "Last config file used to build this data file was"
+msgstr "Останнім файлом конфігурації, використаним для створення цього файлу даних, був"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "Позиція (зміщення в байтах) у цьому файлі для початку кожного розділу для"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "прямого доступу введення-виведення. Якщо ви внесли зміни десь у цьому файлі, ви повинні"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "також повністю видалити розділ MAP (AWStats перезапише його при наступному оновленні)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = Дата останнього обробленого запису - Номер рядка останнього запису в останньому журналі - Зміщення останнього запису в останньому журналі - Значення підпису останнього запису"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = Дата першого відвідування для файлу історії"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = Дата останнього відвідування для файлу історії"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = Дата останнього оновлення - Кількість оброблених записів - Кількість оброблених старих записів - Кількість оброблених нових записів - Кількість оброблених пошкоджених - Кількість оброблених відкинутих"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = Кількість візитів"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = Кількість унікальних відвідувачів"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = Кількість відомих хостів"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = Кількість невідомих хостів"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "ID кластера - Сторінки - Хіти - Пропускна здатність"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "Година - Сторінки - Хіти - Пропускна здатність - Непереглянуті сторінки - Непереглянуті хіти - Непереглянута пропускна здатність"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "Дата - Сторінки - Хіти - Пропускна здатність - Візити"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "Домен - Сторінки - Хіти - Пропускна здатність"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "Головна сторінка показує лише перші %s сторінок за кількістю переглядів, повний список знаходиться на сторінці деталей."
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "Хост - Сторінки - Хіти - Пропускна здатність - Дата останнього відвідування - [Дата початку останнього відвідування] - [Остання сторінка останнього відвідування]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[Дата початку останнього відвідування] та [Остання сторінка останнього відвідування] зберігаються лише якщо сесія не завершена"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "Головна сторінка показує лише перші %s записів за кількістю хітів, повний список знаходиться на сторінці деталей."
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "Вхід - Сторінки - Хіти - Пропускна здатність - Останній візит"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "ID робота - Хіти - Пропускна здатність - Останній візит - Хіти на robots.txt"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "ID черв'яка - Хіти - Пропускна здатність - Останній візит"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "Електронна пошта - Хіти - Пропускна здатність - Останній візит"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "Головна сторінка показує лише перші %s електронних листів за кількістю хітів, повний список знаходиться на сторінці деталей."
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - Сторінки - Пропускна здатність - Вхід - Вихід"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "Тип файлів - Хіти - Пропускна здатність - Пропускна здатність без стиснення - Пропускна здатність після стиснення"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "Діапазон часу запиту - Частота часу запиту"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "Діапазон корисного навантаження - Частота корисного навантаження"
+
+msgid "Session range - Number of visits"
+msgstr "Діапазон сесії - Кількість візитів"
+
+msgid "URL with %s errors - Hits"
+msgstr "URL з помилками %s - Хіти"
+
+msgid "Last URL referrer"
+msgstr "Останній реферер URL"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "Помилки - Хіти - Пропускна здатність"
+
+msgid "Search keywords - Number of search"
+msgstr "Ключові слова пошуку - Кількість пошуків"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "Головна сторінка показує лише перші %s ключових слів за кількістю пошуків, повний список знаходиться на сторінці деталей."
+
+msgid "Search keyphrases - Number of search"
+msgstr "Ключові фрази пошуку - Кількість пошуків"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "Головна сторінка показує лише перші %s ключових фраз за кількістю пошуків, повний список знаходиться на сторінці деталей."
+
+msgid "External page referers - Pages - Hits"
+msgstr "Реферери зовнішніх сторінок - Сторінки - Хіти"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "Головна сторінка показує лише перші %s зовнішніх реферерів за кількістю сторінок, повний список знаходиться на сторінці деталей."
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "ID реферерів пошукових систем - Сторінки - Хіти"
+
+msgid "Origin - Pages - Hits"
+msgstr "Походження - Сторінки - Хіти"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "Невідомий браузер реферера - Дата останнього відвідування"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "Невідома ОС реферера - Дата останнього відвідування"
+
+msgid "Screen size - Hits"
+msgstr "Розмір екрану - Хіти"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ID браузера - Хіти - Сторінки"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "Завантаження - Хіти - Пропускна здатність"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "Протокол - Хіти - Пропускна здатність"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "Стан іконки - Тип:200:404:Інше"
+
+#------------------------------------------------------------------------------
+# Переклади часових періодів
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "Північ · AWStats спить, а ви все ще дивитеся дані? Неймовірно"
+
+msgid "period_01"
+msgstr "1 година ночі · Ви не можете спати чи щойно закінчили роботу?"
+
+msgid "period_02"
+msgstr "2 година ночі · Навіть боти працьовитіші за вас"
+
+msgid "period_03"
+msgstr "3 година ночі · Місто спить, сервер працює понаднормово"
+
+msgid "period_04"
+msgstr "4 година ранку · Що яскравіше, ваш екран чи індикатор сервера?"
+
+msgid "period_05"
+msgstr "5 година ранку · Рання пташка ловить черв'яка"
+
+msgid "period_06"
+msgstr "6 година ранку · Хтось прокидається, хтось ще не лягав спати"
+
+msgid "period_07"
+msgstr "7 година ранку · Час для серфінгу в дорозі на роботу"
+
+msgid "period_08"
+msgstr "8 година ранку · Перша справа: перевірити вчорашні дані"
+
+msgid "period_09"
+msgstr "9 година ранку · Золотий час, найкращий час для роботи"
+
+msgid "period_10"
+msgstr "10 година ранку · Час кави, перевірити, чи зріс трафік"
+
+msgid "period_11"
+msgstr "11 година ранку · Ще година до обіду, трішки потерпіть"
+
+msgid "period_12"
+msgstr "12 година дня · Сервер: всі пішли на обід, я трохи відпочину"
+
+msgid "period_13"
+msgstr "13 година · Сонливість накочує, але дані не сплять"
+
+msgid "period_14"
+msgstr "14 година · Час полуденку, з даними смачніше"
+
+msgid "period_15"
+msgstr "15 година · Сьогоднішній графік трафіку схожий на зміну вашого настрою"
+
+msgid "period_16"
+msgstr "16 година · До кінця робочого дня залишилося X годин, трафік прискорюється"
+
+msgid "period_17"
+msgstr "17 година · Робочий день закінчився! Але сервер продовжує працювати"
+
+msgid "period_18"
+msgstr "18 година · Час вечері"
+
+msgid "period_19"
+msgstr "19 година · Прайм-тайм, піковий трафік"
+
+msgid "period_20"
+msgstr "20 година · Розвалившись на дивані, ви відвідувач номер 114514"
+
+msgid "period_21"
+msgstr "21 година · Ніч поглиблюється, нічна сова, яка таємно дивиться дані +1"
+
+msgid "period_22"
+msgstr "22 година · Сьогоднішні дані майже готові, ви нервуєте?"
+
+msgid "period_23"
+msgstr "23 година · AWStats: час спати, завтра знову треба працювати"
+
+#------------------------------------------------------------------------------
+# Часові виміри
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "Період"
+
+msgid "Year"
+msgstr "Рік"
+
+msgid "Month"
+msgstr "Місяць"
+
+msgid "Months"
+msgstr "Місяці"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Day"
+msgstr "День"
+
+msgid "Hour"
+msgstr "Година"
+
+msgid "Hours"
+msgstr "Години"
+
+msgid "Day of week"
+msgstr "День тижня"
+
+msgid "When"
+msgstr "Коли"
+
+msgid "%s Server Management Panel"
+msgstr "Панель керування сервером %s "
+
+msgid "Server Administration"
+msgstr "Просте та ефективне серверне рішення"
+
+#------------------------------------------------------------------------------
+# Виміри відвідувачів
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "Недійсні параметри URL"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "Запитувану сторінку неможливо завантажити через недійсні або неправильно форматовані параметри URL."
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "Це може бути викликано введенням неправильної URL-адреси, відсутністю розділювачів параметрів або використанням недійсної назви конфігурації."
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "Будь ласка, перевірте введену URL-адресу та переконайтеся, що всі параметри правильно відформатовані."
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "Параметр SiteDomain не визначено у вашому файлі config/domain, або ви можете не мати дозволу на виконання цього файлу."
+
+msgid "Please run as Administrator to set permissions"
+msgstr "Запустіть як Адміністратор, щоб встановити дозволи"
+
+msgid "Please set execute permission"
+msgstr "Будь ласка, встановіть дозвіл на виконання"
+
+msgid "Or if you prefer numeric mode"
+msgstr "Або якщо ви віддаєте перевагу числовому режиму"
+
+msgid "View Report Directly"
+msgstr "Переглянути звіт безпосередньо"
+
+msgid "AWStats Log Viewer"
+msgstr "Переглядач журналів AWStats"
+
+msgid "Month Selection"
+msgstr "Вибір місяця"
+
+msgid "Who"
+msgstr "Хто"
+
+msgid "Visitors"
+msgstr "Відвідувачі"
+
+msgid "Countries"
+msgstr "Країни"
+
+msgid "flag_icon"
+msgstr "прапор"
+
+msgid "Country-Region-City"
+msgstr "Країна-Регіон-Місто"
+
+msgid "Code"
+msgstr "Код"
+
+msgid "Known"
+msgstr "Відомий"
+
+msgid "unknownos"
+msgstr "невідома ОС"
+
+msgid "unknownbrowser"
+msgstr "невідомий браузер"
+
+msgid "Unresolved IP Address"
+msgstr "Нерозв'язана IP-адреса"
+
+msgid "Unknown File Type"
+msgstr "Невідомий тип файлу"
+
+msgid "Unknown Size"
+msgstr "Невідомий розмір"
+
+msgid "Unknown Time"
+msgstr "Невідомий час"
+
+msgid "Unknown Browser"
+msgstr "Невідомий браузер"
+
+msgid "Unknown OS"
+msgstr "Невідома ОС"
+
+msgid "Unknown Visitor"
+msgstr "Невідомий відвідувач"
+
+msgid "Unknown Visitor (Total)"
+msgstr "Невідомий відвідувач (Всього)"
+
+msgid "Unknown Country"
+msgstr "Невідома країна"
+
+msgid "Unknown Country (Region)"
+msgstr "Невідома країна (Регіон)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "Невідомий відвідувач (заголовок)"
+
+msgid "PageStayTime"
+msgstr "Неможливо оцінити час перебування на сторінці"
+
+msgid "Unknown OS (Link)"
+msgstr "Невідома ОС (посилання)"
+
+msgid "Unknown OS (Row)"
+msgstr "невідома операційна система"
+
+msgid "Unknown Browser (Link)"
+msgstr "Невідомий браузер (посилання)"
+
+msgid "Unknown Browser (Row)"
+msgstr "невідомий браузер"
+
+msgid "Unknown Screen"
+msgstr "Невідомий розмір екрану"
+
+msgid "Login"
+msgstr "Логін"
+
+msgid "Anonymous"
+msgstr "Анонімний"
+
+msgid "Robots"
+msgstr "Роботи"
+
+msgid "Different robots"
+msgstr "Різні роботи"
+
+msgid "Hits on robots.txt"
+msgstr "Трафік від роботів пошукових систем, перелічених вище, категоризований як \"аномальний трафік перегляду\", не включений до інших таблиць та графіків. Число після знаку \"+\" представляє кількість успішних запитів до файлу robots.txt"
+
+msgid "Worms"
+msgstr "Черв'яки"
+
+msgid "Different worms"
+msgstr "Різні черв'яки"
+
+msgid "Target"
+msgstr "Ціль"
+
+msgid "Grabber"
+msgstr "Граббер"
+
+#------------------------------------------------------------------------------
+# Опис форматів
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "Текстовий файл (стандартизований ASCII у 1963 році, неформатований чистий текст. Основа всього вихідного коду, конфігурацій та журналів. Unix використовує LF, Windows використовує CRLF для нового рядка, досі найуніверсальніший формат даних у комп'ютерах)"
+
+msgid "mime_log"
+msgstr "Файл журналу (чистий текстовий файл, який записує інформацію про роботу системи та додатків, часто використовується для усунення несправностей, аналізу продуктивності, аудиту безпеки. Стандартні формати: Apache combined log, Nginx access log, syslog тощо)"
+
+msgid "mime_page"
+msgstr "HTML веб-сторінка (Тім Бернерс-Лі винайшов WWW у 1989 році, визначив три технології HTML/HTTP/URL у 1990 році, безкоштовно відкрив їх без патенту. У 2014 році HTML5 став офіційним стандартом W3C, підтримує відображення, мультимедіа та друк. Отримав премію Тюрінга у 2016 році)"
+
+msgid "mime_khtml"
+msgstr "Рушій веб-сторінок KHTML (KDE 2.0 було випущено у 1998 році, рушій рендерингу браузера Konqueror. У 2001 році Apple створила WebKit на основі KHTML, у 2008 році Google створив Blink з WebKit, який став ядром браузерів Chrome, Edge, Safari та інших. KHTML є прикладом того, як спільнота відкритого коду заклала основи для сучасних браузерних рушіїв, його технологічна спадщина продовжується через WebKit/Blink)"
+
+msgid "mime_script"
+msgstr "Динамічний скрипт (інтерпретована мова, не потребує компіляції. Включає ASP, JSP, CGI, ColdFusion, Tcl, VBScript тощо, широко використовувався в ранній веб-розробці, системному адмініструванні, автоматизації завдань. Сучасні скриптові мови, такі як Python, Ruby, JavaScript, розвинулися в основні інструменти для повноциклової розробки)"
+
+msgid "mime_js"
+msgstr "Скрипт JavaScript (Брендан Ейх створив його за 10 днів у Netscape у 1995 році, рідна мова програмування браузерів. У 1997 році ECMAScript було стандартизовано, у 2009 році з'явився Node.js, який зробив його мовою повноциклової розробки, npm є найбільшим менеджером пакетів у світі. Протягом багатьох років найпопулярніша мова програмування на GitHub)"
+
+msgid "mime_py"
+msgstr "Скрипт Python (створений Гвідо ван Россумом у 1991 році, відомий примусовими відступами та чистим синтаксисом. Широко використовується у веб-розробці, науці про дані, штучному інтелекті, автоматизованих операціях. Багаторазовий переможець премії TIOBE за мову програмування року)"
+
+msgid "mime_sh"
+msgstr "Скрипт Shell (Unix народився у 1971 році, командний скриптова мова. Використовується для системного адміністрування, автоматизації завдань, запуску служб, скриптів розгортання. Основна навичка для адміністраторів Linux)"
+
+msgid "mime_rb"
+msgstr "Скрипт Ruby (створений Юкіхіро Мацумото у 1995 році, зосереджується на щасті розробника. Фреймворк Ruby on Rails відкрив парадигму розробки \"конвенція замість конфігурації\", вплинув на дизайн сучасних веб-фреймворків)"
+
+msgid "mime_pl"
+msgstr "Скрипт Perl (створений Ларрі Воллом у 1987 році, відомий своїм прагматизмом, названий \"швейцарським ножем\". CPAN був піонером сучасних менеджерів пакетів мов, мав глибокий вплив на обробку тексту, системне адміністрування та сферу CGI)"
+
+msgid "mime_php"
+msgstr "Динамічна сторінка PHP (створена Расмусом Лердорфом у 1995 році, спеціально розроблена для веб-розробки. Понад 70% веб-сайтів у світі використовують її, працює на таких платформах, як WordPress, Facebook, Wikipedia. PHP 8 представив JIT-компіляцію, значно покращивши продуктивність)"
+
+msgid "mime_image"
+msgstr "Файл зображення"
+
+msgid "mime_document"
+msgstr "Файл документа"
+
+msgid "mime_package"
+msgstr "Програмний пакет"
+
+msgid "mime_archive"
+msgstr "Стиснений файл Gzip (проект GNU з 1992 року, заснований на алгоритмі DEFLATE. У вебі використовується для динамічного стиснення вмісту відповідей, ступінь стиснення зазвичай 60-90%. Після 2015 року в деяких сценаріях замінений на Brotli, але залишається найбільш підтримуваним форматом стиснення на стороні сервера)"
+
+msgid "mime_audio"
+msgstr "Аудіофайл"
+
+msgid "mime_video"
+msgstr "Відеофайл"
+
+msgid "mime_jscript"
+msgstr "JavaScript (розроблений Бренданом Ейхом у 1995 році)"
+
+msgid "mime_json"
+msgstr "Дані JSON (запропоновані Дугласом Крокфордом у 2001 році, легкий формат обміну даними, фактичний стандарт для веб-API)"
+
+msgid "mime_vbs"
+msgstr "VBScript (розроблений компанією Microsoft у 1996 році, мова скриптів Windows, використовується для сторінок ASP та скриптів адміністрування Windows. З поширенням PowerShell та JavaScript поступово виводиться з експлуатації)"
+
+msgid "mime_conf"
+msgstr "Файл конфігурації (текстовий формат для зберігання конфігурації програмного забезпечення, поширені формати: INI, JSON, YAML, TOML, XML. Конфігурації систем Linux переважно знаходяться в каталозі /etc)"
+
+msgid "mime_css"
+msgstr "Таблиця стилів CSS (W3C випустила CSS1 як перший офіційний стандарт у грудні 1996 року, CSS2 додав позиціонування та типи медіа у 1998 році, з 2011 року CSS3 модульно впровадив закруглені кути, анімації, гнучкі блоки, сіткове розташування та адаптивний дизайн. Разом з HTML та JavaScript є трьома основними технологіями фронтенду, всі сучасні браузери (Chrome, Firefox, Safari, Edge) підтримують його нативно, є єдиним стандартом для визначення веб-стилів)"
+
+msgid "mime_xsl"
+msgstr "Таблиця стилів XSL (стандарт W3C з 1999 року, мова перетворення документів XML, може конвертувати XML в HTML/PDF/текст. Після поширення JSON використання зменшилося)"
+
+msgid "mime_runtime"
+msgstr "Виконуваний файл (виконувані формати операційної системи, такі як EXE, ELF, Mach-O, містять машинний код та інформацію про завантаження)"
+
+msgid "mime_library"
+msgstr "Файл бібліотеки (DLL, SO, dylib та інші динамічно пов'язувані бібліотеки, код, який завантажується під час виконання програми)"
+
+msgid "mime_swf"
+msgstr "Flash-анімація (розроблена компанією Macromedia у 1996 році, пізніше перейшла до Adobe. Стандарт інтерактивної веб-анімації, колись домінував в інтернет-анімації та іграх. Недоліки: залежність від плагіна, відсутність підтримки на мобільних пристроях, високий ризик безпеки. У 2017 році Adobe оголосила про припинення підтримки, у 2020 році підтримку було повністю припинено, замінено на HTML5/CSS3/JS)"
+
+msgid "mime_dtd"
+msgstr "Визначення типу документа DTD (специфікація XML, визначає структуру документа XML, використовується для перевірки легітимності XML)"
+
+msgid "mime_csv"
+msgstr "Формат даних CSV (значення, розділені комами, універсальний формат для табличних даних, стандарт імпорту/експорту в Excel та базах даних)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (запускач програм Java, технологія розповсюдження настільних додатків Java з 2000-х років, зараз виведена з експлуатації)"
+
+msgid "mime_lit"
+msgstr "Електронна книга Microsoft Reader (випущена компанією Microsoft у 2000 році, формат LIT, виведена з експлуатації)"
+
+msgid "mime_svg"
+msgstr "Векторна графіка SVG (стандарт W3C з 1999 року, оскільки Microsoft довго просував власний формат VML, браузер IE підтримував його лише у 2011 році, що затримало поширення. Після 2015 року, з виведенням IE з експлуатації та поширенням HD-екранів, став бажаним форматом для іконок та логотипів)"
+
+msgid "mime_ai"
+msgstr "Векторна графіка Adobe Illustrator (випущена у 1987 році, галузевий стандарт формату векторної графіки, перший вибір для дизайну друку, логотипів та іконок)"
+
+msgid "mime_phshop"
+msgstr "Зображення Photoshop (випущене компанією Adobe у 1990 році, вихідний формат Photoshop PSD, галузевий стандарт обробки зображень)"
+
+msgid "mime_ttf"
+msgstr "Шрифт TrueType (спільно розроблений Apple та Microsoft у 1989 році, векторний формат шрифтів, послідовне відображення на екрані та при друку, стандартний формат шрифтів сучасних операційних систем)"
+
+msgid "mime_fon"
+msgstr "Веб-шрифт WOFF2 (рекомендація W3C з 2014 року, використовує алгоритм стиснення Brotli, порівняно зі старим WOFF об'єм зменшується приблизно на 30%, порівняно з TTF/OTF зменшується більш ніж на 50%, наразі всі сучасні браузери підтримують його, є бажаним форматом для сучасних веб-шрифтів, підтримується понад 98% браузерів)"
+
+msgid "mime_pdf"
+msgstr "PDF-документ (розроблений компанією Adobe у 1993 році, став міжнародним стандартом ISO у 2008 році. Незалежний від платформи формат документа, зберігає консистентність форматування, глобальний стандарт для розповсюдження електронних документів)"
+
+msgid "mime_dotnet"
+msgstr "Динамічна сторінка ASP.NET (випущена компанією Microsoft у 2002 році, технологія динамічного вебу для платформи Windows, частина .NET Framework)"
+
+msgid "mime_mdb"
+msgstr "База даних Access (файл бази даних Microsoft Access, випущений у 1992 році, настільне рішення для баз даних Windows)"
+
+msgid "mime_md"
+msgstr "Документ Markdown (створений Джоном Грубером у 2004 році, дизайн синтаксису був під впливом reStructuredText та Setext. Основна філософія дизайну - 'читабельність є відтворенням', оригінальна реалізація Markdown.pl написана на Perl та виконує трансформацію тексту на основі регулярних виразів. Похідні специфікації включають GFM (2013), CommonMark (2017), Pandoc Markdown тощо. Живить екосистеми, такі як GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, ставши фактичним стандартним форматом для статичних генераторів веб-сайтів та документації розробників)"
+
+msgid "mime_crystal"
+msgstr "Формат звітів Crystal Reports (звіт SAP business intelligence, стандартний формат корпоративних звітів)"
+
+msgid "mime_libreoffice"
+msgstr "Документ LibreOffice (розроблений The Document Foundation у 2010 році, гілка OpenOffice, реалізація стандарту ODF, основний офісний пакет з відкритим кодом)"
+
+msgid "mime_encrypt"
+msgstr "Зашифрований файл (файл, який потрібно розшифрувати для перегляду, поширені розширення: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "Дані GPS-треку (формат обміну GPS, записує інформацію про географічне розташування, універсальний формат для спортивних годинників та навігаційних пристроїв)"
+
+msgid "mime_diskimage"
+msgstr "Образ диска (DMG, ISO, IMG та інші файли образів оптичних дисків/дисків, використовуються для розповсюдження програмного забезпечення або резервного копіювання носіїв даних)"
+
+msgid "mime_vm"
+msgstr "Образ віртуальної машини (VMDK, VDI, VHDX, OVA та інші файли віртуальних дисків, формати платформ віртуалізації, таких як VMware, VirtualBox, Hyper-V)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent торрент-файл (винайдений Брамом Коеном у 2001 році, P2P-файл індексу завантаження, містить метадані файлу та інформацію про трекер)"
+
+msgid "mime_gis"
+msgstr "Дані ГІС (Shapefile, GeoJSON та інші геопросторові формати даних, використовуються для карт та просторового аналізу)"
+
+msgid "mime_ebook"
+msgstr "Електронна книга (EPUB, MOBI, AZW та інші формати електронних книг. EPUB є міжнародним стандартом, MOBI/AZW є форматом Amazon Kindle)"
+
+msgid "mime_avif"
+msgstr "Зображення AVIF (випущений Альянсом відкритих медіа у 2019 році, заснований на кодуванні AV1, ступінь стиснення на 50% кращий, ніж WebP, стандарт зображень нового покоління для вебу)"
+
+msgid "mime_markdown"
+msgstr "Документ Markdown (розроблений Джоном Грубером у 2004 році, легка мова розмітки, універсальний формат для GitHub README, технічної документації, дописів на форумах)"
+
+msgid "mime_yaml"
+msgstr "Конфігурація YAML (розроблена Кларком Евансом у 2001 році, читаний людиною формат серіалізації даних, стандартний формат файлів конфігурації для Kubernetes, Ansible, Docker Compose)"
+
+msgid "mime_toml"
+msgstr "Конфігурація TOML (розроблена Томом Престоном-Вернером у 2013 році, \"Tom's Obvious Minimal Language\", формат файлу конфігурації для сучасних інструментів, таких як Rust/Cargo, Python/pip, Go)"
+
+msgid "mime_vue"
+msgstr "Файл компонента Vue (представлений у 2014 році Еваном Ю, прогресивний JavaScript-фреймворк. За допомогою однокомпонентних файлів (SFC) він ідеально поєднує HTML, CSS та JS, значно підвищуючи ефективність розробки. Це один із найпопулярніших фронтенд-фреймворків у світі. Також як ядро сучасних генераторів статичних сайтів, таких як VitePress, він широко використовується для створення інтерактивної технічної документації та блогів.)"
+
+msgid "mime_wasm"
+msgstr "Модуль WebAssembly (стандарт W3C з 2017 року, високопродуктивний виконавчий формат у браузері, C/C++/Rust/R можуть компілюватися до цілі, продуктивність близька до нативної)"
+
+msgid "mime_jsx"
+msgstr "Компонент React JSX (Facebook представив JavaScript XML у 2013 році, синтаксис компонентів фреймворку React, інноваційна парадигма для написання HTML у JavaScript)"
+
+msgid "mime_tsx"
+msgstr "Компонент TypeScript TSX (розроблений компанією Microsoft у 2012 році, TypeScript + JSX, стандартний спосіб розробки React з безпекою типів)"
+
+msgid "mime_heif"
+msgstr "Зображення HEIF (стандарт MPEG з 2015 року, ефективний формат файлу зображень, широко використовується в екосистемі Apple)"
+
+msgid "mime_heic"
+msgstr "Зображення HEIC (реалізація HEIF від Apple, стандартний формат фотографій iPhone, рідна підтримка на iOS/macOS)"
+
+msgid "mime_gltf"
+msgstr "3D-модель GLTF (формат передачі GL, \"JPEG для 3D-світу\", випущений компанією Khronos Group у 2015 році, стандартний формат для веб-3D)"
+
+msgid "mime_glb"
+msgstr "Бінарна 3D-модель GLB (бінарна версія GLTF, один файл містить усі ресурси, використовується для розповсюдження 3D-сцен)"
+
+msgid "mime_gls"
+msgstr "Глосарій GLOSSARY (файл визначень термінів, використовується для управління термінологією в системах документації)"
+
+msgid "mime_cbz"
+msgstr "Книга коміксів CBZ (стиснені ZIP-ом зображення коміксів, універсальний формат для колекціонування коміксів)"
+
+msgid "mime_cbr"
+msgstr "Книга коміксів CBR (стиснені RAR-ом зображення коміксів, універсальний формат для колекціонування коміксів)"
+
+msgid "mime_fb2"
+msgstr "Електронна книга FB2 (FictionBook 2.0, російський формат електронних книг, структура XML, широко підтримується читачами з відкритим кодом)"
+
+msgid "mime_kepub"
+msgstr "Електронна книга KEPUB (специфічний формат EPUB для Kobo, оптимізований формат для читачів електронних книг Kobo)"
+
+msgid "mime_m4b"
+msgstr "Аудіокнига M4B (формат аудіокниг MPEG-4, підтримує закладки, формат аудіокниг iTunes)"
+
+msgid "mime_kfx"
+msgstr "Формат Kindle KFX (випущений компанією Amazon у 2015 році, спеціальний формат для електронних книг Kindle, підтримує покращену типографіку та швидке перегортання сторінок)"
+
+msgid "mime_chm"
+msgstr "Довідковий файл CHM (випущений компанією Microsoft у 1997 році, скомпільований формат HTML-довідки, стандарт для довідкової документації програмного забезпечення Windows)"
+
+msgid "mime_mht"
+msgstr "Веб-архів MHT (випущений компанією Microsoft у 1999 році, односторінковий веб-формат, формат збереження веб-сторінок браузером IE)"
+
+msgid "mime_wml"
+msgstr "Мова бездротової розмітки WML (стандарт WAP з 1999 року, використовувався для файлів веб-сторінок ранніх функціональних телефонів, виведений з експлуатації)"
+
+msgid "mime_xhtml"
+msgstr "Веб-сторінка XHTML (стандарт W3C з 2000 року, XML-версія HTML, суворіший синтаксис. У 2009 році W3C припинив підтримку, зосередившись на HTML5)"
+
+msgid "mime_xml"
+msgstr "XML-документ (стандарт W3C з 1998 року, розширювана мова розмітки, основний формат для веб-служб, файлів конфігурації, обміну даними)"
+
+msgid "mime_sgml"
+msgstr "SGML-документ (стандарт ISO з 1986 року, попередник HTML, стандартна узагальнена мова розмітки, як XML, так і HTML походять від SGML)"
+
+msgid "mime_apng"
+msgstr "Анімація APNG (розроблена Mozilla у 2004 році, анімаційне розширення PNG, сучасна заміна GIF, підтримує справжні кольори та прозорість)"
+
+msgid "mime_bmp"
+msgstr "Растрове зображення BMP (растровий формат Windows, рідно підтримується з Windows 1.0. Нестиснутий, великий розмір файлу, але завдяки простій структурі та відсутності потреби в додаткових кодеків, досі використовується в засобі фрагментації Windows 11, програмі Paint, ресурсах іконок у пакунках встановлення EXE/MSI, файлах курсорів та деяких старих драйверах. При однаковій якості зображення розмір файлу приблизно в 3-10 разів більший, ніж PNG. У більшості випадків замінений на PNG/JPEG, але екосистема Windows все ще зберігає широку сумісність)"
+
+msgid "mime_cdr"
+msgstr "Векторна графіка CDR (специфічний формат CorelDRAW, канадська компанія Corel, програмне забезпечення для дизайну векторної графіки)"
+
+msgid "mime_gif"
+msgstr "Зображення GIF (розроблене CompuServe у 1987 році, 256-кольоровий анімаційний формат зображень. Недоліки: мало кольорів, груба якість зображення, не підтримує прозорість, великий файл, низька частота кадрів. Замінений сучасними анімаційними форматами зображень, такими як APNG, WebP)"
+
+msgid "mime_ico"
+msgstr "Іконка ICO (формат файлу іконок Windows, підтримує кілька роздільних здатностей, стандартний формат для favicon веб-сайтів)"
+
+msgid "mime_jpeg"
+msgstr "Зображення JPEG (стандарт ISO з 1992 року, формат стиснення з втратами для фотографій, фактичний стандарт для фотографій в Інтернеті)"
+
+msgid "mime_jpg"
+msgstr "Зображення JPEG (стандарт ISO з 1992 року, формат стиснення з втратами для фотографій, фактичний стандарт для фотографій в Інтернеті)"
+
+msgid "mime_png"
+msgstr "Зображення PNG (рекомендація W3C з 1996 року, підтримує справжні кольори та прозорість, статична заміна для GIF, стандарт зображень без втрат в Інтернеті)"
+
+msgid "mime_ps"
+msgstr "Файл опису сторінки PostScript (випущений компанією Adobe у 1985 році, мова опису сторінки, попередник PDF, використовується для друку та публікації)"
+
+msgid "mime_psb"
+msgstr "Великий документ PSB (формат надвеликих зображень Adobe Photoshop, підтримує гігантські зображення понад 2 ГБ або 30000 пікселів)"
+
+msgid "mime_psd"
+msgstr "Зображення PSD (вихідний файл Adobe Photoshop, підтримує шари, канали, шляхи, галузевий стандартний формат обробки зображень)"
+
+msgid "mime_webp"
+msgstr "Зображення WebP (розроблене компанією Google у 2010 році, формат веб-зображень, підтримує стиснення з втратами/без втрат та анімацію, ступінь стиснення на 25-35% кращий, ніж PNG, на 25% кращий, ніж JPEG)"
+
+msgid "mime_woff"
+msgstr "Веб-шрифт WOFF (створений у 2009 році, стандарт W3C з 2018 року. Стиснення на основі TrueType/OpenType, оптимізація завантаження веб-шрифтів, стандартний формат для іконок сучасних веб-сайтів)"
+
+msgid "mime_7z"
+msgstr "Стиснений пакунок 7z (розроблений Ігорем Павловим у 1999 році, спеціальний формат програми 7-Zip. Алгоритм LZMA, високе стиснення, відкритий код та безкоштовний. Формат 7z при однаковому ступені стиснення зазвичай на 30-50% менший, ніж ZIP, поширений формат у спільноті відкритого коду та для розповсюдження програмного забезпечення)"
+
+msgid "mime_ace"
+msgstr "Стиснений пакунок ACE (розроблений у 1990-х роках, формат програми WinACE. Колись конкурував з RAR, відносно високий ступінь стиснення. Розробку припинено у 2007 році, зараз замінений на 7z/RAR, використовується рідко)"
+
+msgid "mime_bz2"
+msgstr "Стиснений пакунок BZIP2 (розроблений Джуліаном Сьюардом у 1996 році, алгоритм стиснення з сортуванням блоків. Ступінь стиснення на 15-20% кращий, ніж GZIP, але повільніший. Вихідний код ядра Linux, пакунки з відкритим кодом часто використовують цей формат, розширення .bz2)"
+
+msgid "mime_cab"
+msgstr "Стиснений пакунок CAB (розроблений компанією Microsoft у 1995 році, формат кабінету. Формат пакунків встановлення системи Windows, використовується для драйверів, розповсюдження системних файлів. Windows Installer (MSI) внутрішньо використовує CAB для зберігання файлів)"
+
+msgid "mime_dmg"
+msgstr "Образ диска DMG (випущений компанією Apple у 1980-х роках, формат Disk Image. Стандартний формат розповсюдження програмного забезпечення для macOS, подвійним клацанням монтується як віртуальний диск, перетягуванням встановлюється додаток. Підтримує стиснення та шифрування, основний формат завантаження програмного забезпечення для Mac)"
+
+msgid "mime_emz"
+msgstr "Стиснене зображення EMZ (стиснений покращений метафайл Windows, стиснена версія EMF. Формат зберігання векторної графіки в документах Office, по суті це стиснений GZIP файл EMF)"
+
+msgid "mime_gz"
+msgstr "Стиснений пакунок GZIP (розроблений Жан-Лу Гайї та Марком Адлером у 1992 році, проект GNU. Стандартний інструмент стиснення Unix/Linux, поширений формат для стиснення HTTP-передачі. Розширення .gz, часто використовується разом з TAR)"
+
+msgid "mime_jar"
+msgstr "Стиснений пакунок JAR (випущений Sun Microsystems у 1997 році, формат Java ARchive. По суті є стисненим ZIP-пакунком, використовується для пакування бібліотек класів Java та додатків. Основний формат в екосистемі Java, таких як Maven, Gradle, Android також використовує JAR)"
+
+msgid "mime_lzma"
+msgstr "Стиснений пакунок LZMA (розроблений Ігорем Павловим у 1998 році, алгоритм ланцюга Лемпеля-Зіва-Маркова. Основний алгоритм стиснення формату 7z, високе стиснення, швидке розпакування. Використовується для мікропрограм, розповсюдження програмного забезпечення для вбудованих систем)"
+
+msgid "mime_rar"
+msgstr "Стиснений пакунок RAR (розроблений Юджином Рошалом у 1993 році, формат Roshal ARchive. Високе стиснення, підтримує розбиття на томи, записи відновлення. Формат програми WinRAR, стиснення краще, ніж ZIP, але потребує платного програмного забезпечення, інструменти з відкритим кодом, такі як unrar, можуть розпаковувати)"
+
+msgid "mime_tar"
+msgstr "Архів TAR (представлений у Unix V7 у 1979 році, формат Tape ARchive. Формат стрічкового архіву, не стискає, лише пакує, часто використовується разом з GZIP/BZIP2/XZ. Вихідний код пакунків Linux, зберігання шарів образів Docker використовує формат TAR)"
+
+msgid "mime_tgz"
+msgstr "Стиснений пакунок TGZ (комбінований формат TAR + GZIP, розширення .tgz або .tar.gz. Найуніверсальніший формат розповсюдження пакунків Unix/Linux, широко використовується для пакунків вихідного коду, бінарних пакунків, представник \"розпакуй та використовуй\")"
+
+msgid "mime_tbz2"
+msgstr "Стиснений пакунок TBZ2 (комбінований формат TAR + BZIP2, розширення .tbz2 або .tar.bz2. Ступінь стиснення на 15-20% кращий, ніж TGZ, підходить для розповсюдження великих файлів, вихідний код ядра Linux довгий час використовував цей формат)"
+
+msgid "mime_xz"
+msgstr "Стиснений пакунок XZ (випущений у 2009 році, заснований на алгоритмі LZMA2. Надзвичайно високе стиснення, на 30-50% краще, ніж GZIP, відносно швидке розпакування. Широко використовується в ядрі Linux, менеджерах пакунків (наприклад, всередині .deb Debian), рекомендований формат для поточної екосистеми Linux)"
+
+msgid "mime_z"
+msgstr "Стиснений пакунок Z (формат команди compress Unix з 1985 року, алгоритм LZW. Ранній формат стиснення Unix, замінений на GZIP. Розширення .Z, рідко використовується в сучасних системах)"
+
+msgid "mime_zip"
+msgstr "Стиснений пакунок ZIP (розроблений Філом Кацем у 1989 році, формат PKZIP. Рідно підтримується Windows, найуніверсальніший формат стиснення в Інтернеті. Підтримує кілька файлів, структуру каталогів, можна вибрати алгоритм стиснення. JAR Java, APK Android, документи Office DOCX/XLSX засновані на форматі ZIP)"
+
+msgid "mime_zst"
+msgstr "Стиснений пакунок Zstandard (розроблений компанією Facebook у 2015 році, розроблений Янном Колле. Високошвидкісний алгоритм стиснення, ступінь стиснення близький до LZMA, швидкість набагато перевищує GZIP. Ядро Linux 5.9+ підтримує, Arch Linux pacman, Debian APT поступово впроваджують, нове покоління стандарту стиснення)"
+
+msgid "mime_lz4"
+msgstr "Стиснений пакунок LZ4 (розроблений Янном Колле у 2011 році, надзвичайно швидкий алгоритм стиснення. Швидкість стиснення більш ніж у 10 разів швидша за GZIP, підходить для сценаріїв стиснення в реальному часі. Широко використовується в ядрі Linux, OpenZFS, Hadoop, перший вибір для сценаріїв, де швидкість є пріоритетом)"
+
+msgid "mime_lzo"
+msgstr "Стиснений пакунок LZO (розроблений Маркусом Оберхюмером у 1996 році, алгоритм Лемпеля-Зіва-Оберхюмера. Швидкість розпакування надзвичайно висока, ступінь стиснення середній. Ядро Linux Squashfs, мікропрограма OpenWrt використовують його, підходить для вбудованих систем)"
+
+msgid "mime_msi"
+msgstr "Інсталяційний пакунок MSI (випущений компанією Microsoft у 1999 році, формат пакунка Windows Installer. Стандартний формат встановлення для додатків Windows, підтримує відкат транзакцій, управління компонентами, тихе встановлення. Бажаний формат для розповсюдження програмного забезпечення на рівні підприємства, досі є основним для встановлення програмного забезпечення Windows)"
+
+msgid "mime_pkg"
+msgstr "Інсталяційний пакунок PKG (формат інсталяційного пакунка для додатків macOS, заснований на технології Installer від Apple. Стандартний формат розповсюдження програмного забезпечення macOS, підтримує вибір компонентів, скрипти встановлення, функцію видалення. Двічі клацніть файл .pkg для встановлення, поширений спосіб розповсюдження для програмного забезпечення поза Mac App Store)"
+
+msgid "mime_apk"
+msgstr "Пакунок додатків Android APK (випущений компанією Google у 2008 році, традиційний формат встановлення додатків для Android. APK по суті є ZIP-пакунком, містить код, ресурси, файл маніфесту. З 2021 року Google Play вимагає, щоб нові додатки використовували формат AAB, але APK все ще використовується для розробки та налагодження, сторонніх магазинів та бічного встановлення)"
+
+msgid "mime_ipa"
+msgstr "Пакунок додатків iOS IPA (iOS App Store Package, формат встановлення для додатків iOS/iPadOS. Випущений у 2008 році разом з iPhone SDK. Має розповсюджуватися через App Store або бути підписаним корпоративним сертифікатом. Містить виконуваний файл, ресурси, Info.plist та інформацію про підпис)"
+
+msgid "mime_hap"
+msgstr "Пакунок додатків HarmonyOS HAP (HarmonyOS Ability Package, базова одиниця додатка HarmonyOS. Випущений у 2020 році з HarmonyOS 2.0. Підтримує два типи: entry та feature, формат розповсюдження для телефонів Huawei, планшетів, смарт-годинників та інших пристроїв HarmonyOS)"
+
+msgid "mime_har"
+msgstr "Статична спільна бібліотека HarmonyOS HAR (HarmonyOS Archive, статична спільна бібліотека HarmonyOS, може використовуватися кількома пакунками HAP, використовується для компонентно-орієнтованої розробки та повторного використання модулів)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (випущений компанією Google у 2018 році, з 2021 року Google Play вимагає, щоб нові додатки використовували цей формат. AAB є форматом розповсюдження, Google Play генерує оптимізовані APK відповідно до конфігурації пристрою (архітектура CPU, щільність екрану, мова), розмір пакунка встановлення зменшується в середньому на 35%. Розробники завантажують AAB, користувачі завантажують APK)"
+
+msgid "mime_xapk"
+msgstr "Пакунок додатків XAPK (розширювальний пакунок для сторонніх додатків Android, містить APK + файли даних OBB. Використовується для великих ігор та складних додатків, вирішує обмеження в 100 МБ для одного файлу APK. Поширений у сторонніх магазинах додатків, таких як APKPure, APKMirror, не є офіційним форматом Google)"
+
+msgid "mime_appx"
+msgstr "Пакунок додатків Windows (випущений компанією Microsoft у 2012 році, формат встановлення додатків для Windows 8/10/11. Підтримує конвертацію UWP та настільних додатків, розповсюджується через Microsoft Store. У 2024 році Microsoft представила MSIX як наступний формат, поступово замінюючи APPX)"
+
+msgid "mime_msix"
+msgstr "Пакунок додатків MSIX (випущений компанією Microsoft у 2018 році, новий формат пакування додатків для Windows. Поєднує переваги APPX та MSI, підтримує всі типи додатків Windows, може розповсюджуватися через Microsoft Store або бічним встановленням, рекомендований формат для Windows 11)"
+
+msgid "mime_appimage"
+msgstr "Пакунок додатків AppImage (випущений у 2004 році, формат додатків Linux без встановлення. \"Один додаток, один файл\", не потребує встановлення, працює безпосередньо, підтримує більшість дистрибутивів Linux, поширений спосіб розповсюдження Linux-програмного забезпечення для розробників)"
+
+msgid "mime_flatpak"
+msgstr "Пакунок додатків Flatpak (випущений у 2015 році, формат додатків Linux у пісочниці. Працює на різних дистрибутивах, ізольований від хост-системи, керований Fedora, Red Hat, стандартний формат центру програмного забезпечення GNOME)"
+
+msgid "mime_snap"
+msgstr "Пакунок додатків Snap (випущений компанією Canonical у 2014 році, материнська компанія Ubuntu, універсальний формат додатків для Linux. Автоматичні оновлення, ізоляція в пісочниці, підтримує понад 40 дистрибутивів Linux, стандартний формат центру програмного забезпечення Ubuntu)"
+
+msgid "mime_deb"
+msgstr "Пакунок програмного забезпечення Debian (випущений проектом Debian у 1993 році, стандартний формат встановлення для Debian/Ubuntu та їх похідних. Керується за допомогою dpkg, APT є його інтерфейсом менеджера пакунків, один з найбільш зрілих форматів пакунків в екосистемі Linux, досі є основним у сімействі Debian)"
+
+msgid "mime_rpm"
+msgstr "Пакунок програмного забезпечення RPM (випущений компанією Red Hat у 1997 році, стандартний формат для дистрибутивів Red Hat/Fedora/CentOS/SUSE та інших. RPM розшифровується як \"Red Hat Package Manager\", разом з DEB є двома великими форматами пакунків в Linux, досі є основним у сімействі RHEL)"
+
+msgid "mime_pacman"
+msgstr "Пакунок програмного забезпечення Arch (випущений Arch Linux у 2002 році, формат .pkg.tar.zst, який використовується менеджером пакунків pacman. Ядро безперервного випуску Arch Linux, відомий своєю простотою та принципом KISS, AUR (Архів користувачів Arch) є його відмінною рисою)"
+
+msgid "mime_exe"
+msgstr "Виконуваний файл EXE (формат виконуваних програм Windows, скорочення від \"Executable\". Рідний виконуваний формат операційної системи Windows, містить структуру PE. Походить від формату MZ з MS-DOS, у 1993 році Windows NT представила формат PE (Portable Executable), який використовується досі. Пакунки встановлення програмного забезпечення, додатки, системні інструменти використовують цей формат. Користувач може запустити його подвійним клацанням, найпоширеніший виконуваний формат у світі)"
+
+msgid "mime_dll"
+msgstr "Динамічна бібліотека DLL (випущена компанією Microsoft у 1993 році, Dynamic Link Library. Спільна бібліотека коду Windows, завантажується динамічно під час виконання програми, економить пам'ять та місце на диску. Системні компоненти, плагіни додатків, драйвери використовують формат DLL. Основний спосіб реалізації API Windows, проблема DLL Hell була пом'якшена в епоху .NET)"
+
+msgid "mime_com"
+msgstr "Виконуваний файл COM (виконуваний формат з епохи MS-DOS, скорочення від \"Command\". Проста структура файлу, обмеження 64 КБ, основний формат до Windows 3.x. Виведений з експлуатації, сучасний Windows використовує формат EXE, розширення COM все ще використовується для деяких файлів компонентів)"
+
+msgid "mime_aac"
+msgstr "Аудіо AAC (стандарт MPEG з 1997 року, Advanced Audio Coding. Наступник MP3, якість звуку краща, ніж MP3 при однаковому бітрейті, стандартний аудіоформат для YouTube, iTunes, Nintendo Switch)"
+
+msgid "mime_alac"
+msgstr "Аудіо ALAC (розроблений компанією Apple у 2004 році, Apple Lossless Audio Codec. Безвтратний формат Apple, відкритий код у 2011 році, стандартний формат для безвтратного аудіо в iTunes та Apple Music)"
+
+msgid "mime_flac"
+msgstr "Аудіо FLAC (розроблений Xiph.Org Foundation у 2001 році, Free Lossless Audio Codec. Безвтратне стиснення, якість звуку як у CD, розмір файлу приблизно вдвічі менший за оригінальний WAV. Відкритий код без патентів, бажаний формат для аудіофілів та колекціонерів цифрової музики)"
+
+msgid "mime_mp3"
+msgstr "Аудіо MP3 (розроблений Інститутом Фраунгофера у 1993 році, MPEG-1 Audio Layer 3. Формат стиснення з втратами, невеликий файл прийнятної якості, основний формат цифрової музичної революції 2000-х років, рушійна сила iPod та Napster. Патент закінчився у 2017 році, став форматом суспільного надбання)"
+
+msgid "mime_oga"
+msgstr "Аудіо Ogg Audio (розроблений Xiph.Org Foundation, чистий аудіоформат контейнера Ogg, використовує кодування Vorbis. Відкритий код без патентів, ефективність стиснення краща, ніж MP3, широко використовується в проектах з відкритим кодом)"
+
+msgid "mime_ogg"
+msgstr "Аудіо OGG (розроблений Xiph.Org Foundation у 2000 році, формат Ogg Vorbis. Відкритий код без патентів, ефективність стиснення краща, ніж MP3, ранній користувач - Spotify, широко використовується для звукових ефектів в іграх)"
+
+msgid "mime_opus"
+msgstr "Аудіо Opus (стандартизований IETF у 2012 році, відкритий код без патентів. Поєднує технології SILK та CELT, надзвичайно низька затримка, найвища ефективність стиснення, стандартний аудіоформат для WebRTC, WhatsApp, Discord)"
+
+msgid "mime_wav"
+msgstr "Аудіо WAV (розроблений Microsoft та IBM у 1991 році, рідний аудіоформат Windows. Кодування PCM без стиснення, безвтратна якість звуку, але величезний розмір файлу, стандартний формат професійного редагування аудіо)"
+
+msgid "mime_wma"
+msgstr "Аудіо WMA (розроблений компанією Microsoft у 1999 році, Windows Media Audio. Дві версії: з втратами та без втрат, рідна підтримка Windows, поширився з Windows Media Player. Зараз маргіналізований, замінений на MP3/AAC)"
+
+msgid "mime_dsf"
+msgstr "Аудіо DSF (формат Direct Stream Digital, розроблений Sony та Philips. Висока частота дискретизації 1 біт, стандартний формат аудіо DSD, цифрова версія SACD, високоякісний аудіоформат для аудіофілів, величезний розмір файлу)"
+
+msgid "mime_ape"
+msgstr "Аудіо APE (розроблений Monkey's Audio у 2000 році, формат стиснення без втрат. Вищий ступінь стиснення, ніж FLAC, але повільніше кодування, досі використовується на платформі Windows та серед аудіоентузіастів)"
+
+msgid "mime_mid"
+msgstr "Аудіо MIDI (визначено Асоціацією MIDI у 1983 році, Musical Instrument Digital Interface. Формат нот, а не запис, дуже маленькі файли, стандарт для електронних інструментів, рингтонів мобільних телефонів, звукових ефектів в іграх. У 1991 році стандартизовано General MIDI, визначено 128 тембрів інструментів)"
+
+msgid "mime_m4a"
+msgstr "Аудіо M4A (MPEG-4 Audio, контейнерний формат для AAC. Стандартний формат магазину iTunes Music Store, основний аудіоформат в екосистемі Apple, підтримує захист DRM)"
+
+msgid "mime_m3u"
+msgstr "Список відтворення M3U (формат списку відтворення URL MP3, чистий текстовий файл, записує шляхи до аудіофайлів. Стандарт епохи Winamp, використовується для інтернет-радіо, потокового передавання музики онлайн. M3U8 є його UTF-8 версією, використовується для HTTP Live Streaming)"
+
+msgid "mime_asf"
+msgstr "Потокове передавання ASF (розроблене компанією Microsoft у 1996 році, Advanced Systems Format. Потоковий контейнер Windows Media, підтримує синхронну передачу аудіо та відео. Використовується для прямих трансляцій та потокового відео на вимогу, WMA/WMV засновані на контейнері ASF)"
+
+msgid "mime_avi"
+msgstr "Відео AVI (випущене компанією Microsoft у 1992 році, ранній відеостандарт для Windows. \"Audio Video Interleave\", перехресне зберігання аудіо та відео, найпопулярніший відеоформат у 1990-2000-х роках, зараз замінений на MP4/MKV)"
+
+msgid "mime_divx"
+msgstr "Відео DivX (розроблене компанією DivX у 1998 році, формат кодування відео на основі MPEG-4. Основний формат обміну відео в Інтернеті у 2000-х роках, перша технологія, яка стиснула якість DVD до розміру CD. Через суперечки щодо авторських прав пізніше перетворився на комерційний кодек)"
+
+msgid "mime_mp4"
+msgstr "Відео MP4 (стандарт MPEG з 2001 року, MPEG-4 Частина 14. Найуніверсальніший відеоформат у світі, підтримує кодування H.264/H.265, стандартний формат для інтернет-відео, запису з телефону, YouTube)"
+
+msgid "mime_m4v"
+msgstr "Відео M4V (відеоформат iTunes, варіант MP4. Відеоформат в екосистемі Apple, стандартний формат для фільмів, телепрограм в iTunes Store, підтримує захист авторських прав DRM)"
+
+msgid "mime_mpeg"
+msgstr "Відео MPEG (визначено організацією MPEG у 1988 році, Moving Picture Experts Group. Засновник стандартів цифрового стиснення відео, глибокий вплив MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (інтернет-відео))"
+
+msgid "mime_mkv"
+msgstr "Відео MKV (розроблене проектом Matroska у 2002 році, відкритий мультимедійний контейнер. Підтримує кілька аудіодоріжок, кілька субтитрів, розділи, \"засіб пакування\", бажаний формат для обміну HD-фільмами)"
+
+msgid "mime_mpg"
+msgstr "Відео MPEG (розширення відео MPEG-1/MPEG-2, стандартний формат для VCD та DVD. Основний відеоформат на оптичних дисках у 1990-2000-х роках, зараз замінений на H.264/H.265)"
+
+msgid "mime_ogv"
+msgstr "Відео Ogg Video (розроблене Xiph.Org Foundation, відеоформат контейнера Ogg, використовує кодування Theora. Відкритий код без патентів, один з ранніх стандартів для відео HTML5, рідна підтримка Firefox)"
+
+msgid "mime_ogx"
+msgstr "Мультимедійний контейнер Ogg (розроблений Xiph.Org Foundation, універсальне розширення контейнера Ogg, може містити кілька доріжок: аудіо, відео, субтитри тощо. Відкритий мультимедійний стандарт, використовується для ігор, потокового передавання)"
+
+msgid "mime_rm"
+msgstr "Відео RealMedia (розроблене компанією RealNetworks у 1995 році, формат RealMedia. Піонер інтернет-потокового передавання у 1990-2000-х роках, основний формат програвача RealPlayer. Недоліки: потребує спеціального програвача, низька якість стиснення, пізніше замінений на Flash/MP4)"
+
+msgid "mime_flv"
+msgstr "Відео Flash (формат з'явився у 2002 році, формат Flash Video. Колись був основним форматом інтернет-відео, ранній користувач - YouTube. Недоліки: потребує плагіна Flash, низька продуктивність, багато прогалин у безпеці. З 2015 року основні веб-сайти перейшли на відео HTML5, зараз виведений з експлуатації)"
+
+msgid "mime_f4v"
+msgstr "Відео F4V (формат Flash відео, розроблений Adobe, наступник FLV. Заснований на стандарті MPEG-4, підтримує кодування H.264. Разом з технологією Flash виведений з експлуатації, Adobe припинила підтримку у 2020 році)"
+
+msgid "mime_wmv"
+msgstr "Відео WMV (розроблене компанією Microsoft у 1999 році, Windows Media Video. Рідна підтримка Windows, оптимізований для потокової передачі, поширений формат раннього онлайн-відео, зараз маргіналізований)"
+
+msgid "mime_wmf"
+msgstr "Медіаформат WMF (Windows Media Format, медіаплатформа Microsoft. Включає загальну назву для відео WMV та аудіо WMA, рідна підтримка Windows Media Player)"
+
+msgid "mime_mov"
+msgstr "Відео MOV (розроблене компанією Apple у 1991 році, контейнерний формат QuickTime. Стандартний формат професійного редагування відео, підтримує кілька кодеків, рідна підтримка Final Cut Pro, Premiere)"
+
+msgid "mime_qt"
+msgstr "Відео QuickTime (випущене компанією Apple у 1991 році, формат QuickTime. Відеостандарт для платформи Mac, MOV є його контейнером, програвач QuickTime був широко використовуваним. У 2016 році Apple припинила розробку версії для Windows, поступово замінюється на MP4)"
+
+msgid "mime_webm"
+msgstr "Відео WebM (випущене компанією Google у 2010 році, відкритий безпатентний відеоформат. Заснований на контейнері Matroska, кодуванні VP8/VP9, стандартний формат для відео HTML5, стандартний формат веб-відтворення YouTube)"
+
+msgid "mime_3gp"
+msgstr "Відео 3GP (визначено 3GPP у 2000 році, відеоформат для мобільних пристроїв. Дуже малий розмір файлу, низька якість, формат запису відео ранніми мобільними телефонами, використовується для надсилання MMS)"
+
+#------------------------------------------------------------------------------
+# Технічні виміри
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "Операційні системи"
+
+msgid "Top 5 Operating Systems"
+msgstr "Топ-5 операційних систем"
+
+msgid "Unknown Robot"
+msgstr "Невідомий клієнт"
+
+msgid "User agent"
+msgstr "Агент користувача"
+
+msgid "Browsers"
+msgstr "Браузери"
+
+msgid "Top 5 Browsers"
+msgstr "Топ-5 браузерів"
+
+msgid "Unknown Robot RH"
+msgstr "Невідомий заголовок запиту"
+
+msgid "Detailed"
+msgstr "Детально"
+
+msgid "DetailedOS"
+msgstr "Версія операційної системи"
+
+msgid "DetailedBS"
+msgstr "Версія браузера"
+
+msgid "Screen sizes"
+msgstr "Розміри екрану"
+
+msgid "Compression"
+msgstr "Стиснення"
+
+msgid "In"
+msgstr "Вхід"
+
+msgid "Out"
+msgstr "Вихід"
+
+msgid "Saved"
+msgstr "Збережено"
+
+#------------------------------------------------------------------------------
+# Виміри джерел
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "Походження"
+
+msgid "Referers"
+msgstr "Реферери"
+
+msgid "meta.description"
+msgstr "AWStats - розширений аналізатор веб-журналів - моніторинг трафіку веб-сайту в реальному часі, аналіз відвідувачів, ключові слова пошукових систем, статистика сторінок помилок. Підтримує темний режим, багатомовний інтерфейс, надає комплексний аналіз даних для адміністраторів веб-сайтів."
+
+msgid "meta.keywords"
+msgstr "AWStats,веб-статистика,аналіз журналів,моніторинг трафіку,статистика відвідувань,SEO-аналіз,інструмент аналізу веб-сайтів,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - Аналіз веб-журналів"
+
+msgid "og.description"
+msgstr "📊 Професійний інструмент веб-статистики з відкритим кодом, аналізує трафік вашого веб-сайту та поведінку відвідувачів у реальному часі."
+
+msgid "og.image.alt"
+msgstr "Статистичні графіки AWStats"
+
+msgid "Created by"
+msgstr "Створено %s"
+
+msgid "plugins"
+msgstr "плагіни"
+
+msgid "dbip by"
+msgstr "дані з"
+
+msgid "IPDB by"
+msgstr "Дані геолокації надані DB-IP"
+
+# Здоров'я
+msgid "Configured"
+msgstr "Налаштовано"
+
+msgid "Missing"
+msgstr "Відсутнє"
+
+msgid "OK"
+msgstr "Добре"
+
+msgid "Unused"
+msgstr "Не використовується"
+
+msgid "Overall Health"
+msgstr "Загальний стан здоров'я"
+
+msgid "Excellent"
+msgstr "Відмінно"
+
+msgid "Good"
+msgstr "Добре"
+
+msgid "Fair"
+msgstr "Задовільно"
+
+msgid "Poor"
+msgstr "Погано"
+
+msgid "Missing icon types"
+msgstr "Відсутні типи іконок"
+
+msgid "See"
+msgstr "Див."
+
+msgid "Expected Path"
+msgstr "Очікуваний шлях"
+
+msgid "column for file locations"
+msgstr "стовпець для отримання розташувань файлів"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "Порада: Якщо вам потрібно згенерувати пов'язані іконки, ви можете використати %s для завантаження зображення логотипу, і він автоматично згенерує всі вищезазначені пов'язані файли іконок"
+
+msgid "200: success, 404: failure"
+msgstr "200 - кількість успіхів, 404 - кількість невдач"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png або /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg або /logo.png (має бути вказано в HTML/JSON-LD)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest або /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg тощо"
+
+msgid "Favicon"
+msgstr "Іконка веб-сайту"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "Іконка Apple Touch (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "Логотип веб-сайту"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "Маніфест веб-додатку (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "Конфігурація браузера Windows"
+
+msgid "Safari Pinned Tab"
+msgstr "Іконка закріпленої вкладки Safari"
+
+msgid "Social Icon"
+msgstr "Іконка соціальної платформи"
+
+msgid "Icon Files Status"
+msgstr "Стан файлів іконок"
+
+msgid "Icon Type"
+msgstr "Тип іконки"
+
+msgid "Total"
+msgstr "Всього"
+
+msgid "Advanced Web Statistics"
+msgstr "Розширений аналізатор журналів"
+
+msgid "Advanced Web Statistics %s"
+msgstr "%s Розширений аналізатор журналів"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "Ваш браузер не підтримує фрейми. Будь ласка, використовуйте сучасний браузер."
+
+msgid "View statistics directly"
+msgstr "Переглянути статистику безпосередньо"
+
+msgid "Close"
+msgstr "Закрити"
+
+msgid "Documentation Viewer"
+msgstr "Переглядач документації"
+
+msgid "Direct address / Bookmarks"
+msgstr "Пряма адреса / Закладки"
+
+msgid "Search Engines"
+msgstr "Пошукові системи"
+
+msgid "Refering search engines"
+msgstr "Реферуючі пошукові системи"
+
+msgid "External pages"
+msgstr "Зовнішні сторінки"
+
+msgid "Refering pages"
+msgstr "Реферуючі сторінки"
+
+msgid "Internal pages"
+msgstr "Внутрішні сторінки"
+
+msgid "UnknownAccessSource"
+msgstr "Невідоме джерело доступу"
+
+msgid "Different refering pages"
+msgstr "Різні реферуючі сторінки"
+
+msgid "Keyphrases"
+msgstr "Ключові фрази"
+
+msgid "Keywords"
+msgstr "Ключові слова"
+
+msgid "Keyphrases/Keywords"
+msgstr "Ключові фрази/Ключові слова"
+
+msgid "Different keyphrases"
+msgstr "Різні ключові фрази"
+
+msgid "Different keywords"
+msgstr "Різні ключові слова"
+
+#------------------------------------------------------------------------------
+# Виміри сторінок
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "Переглянуті сторінки"
+
+msgid "Different pages"
+msgstr "Різні сторінки"
+
+msgid "Entry"
+msgstr "Вхід"
+
+msgid "Exit"
+msgstr "Вихід"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "Реферер"
+
+msgid "Host"
+msgstr "Хост"
+
+#------------------------------------------------------------------------------
+# Помилки та стани
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "Помилка"
+
+msgid "HTTP Status Statistics"
+msgstr "Статистика кодів стану HTTP"
+
+msgid "SMTP Error codes"
+msgstr "Коди помилок SMTP"
+
+msgid "Page not found"
+msgstr "Запитану сторінку не знайдено"
+
+msgid "Unknown error"
+msgstr "Невідома помилка"
+
+msgid "Abnormal traffic note"
+msgstr "Аномальний трафік перегляду включає: роботи пошукових систем, AI-навчальні роботи, сканери вразливостей та запити, що не відповідають стандартам"
+
+msgid "Page detail"
+msgstr "Деталі сторінки"
+
+# Детальні повідомлення про помилки
+msgid "AWStats did not found the"
+msgstr "AWStats не знайшов"
+
+msgid "in your log records."
+msgstr "у ваших записах журналу."
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats не знайшов жодного дійсного рядка журналу, який відповідає вашому"
+
+msgid "parameter, in the"
+msgstr "параметру, у"
+
+msgid "th first non commented lines read of your log."
+msgstr " перших не закоментованих рядках, прочитаних з вашого журналу."
+
+msgid "Your log file"
+msgstr "Ваш файл журналу"
+
+msgid "must have a bad format or"
+msgstr "ймовірно, має неправильний формат або"
+
+msgid "parameter setup does not match this format."
+msgstr "налаштування параметра не відповідає цьому формату."
+
+msgid "Your AWStats"
+msgstr "Ваш параметр AWStats"
+
+msgid "parameter is:"
+msgstr "Параметр є:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "Це означає, що кожен рядок у файлі журналу вашого веб-сервера повинен містити:"
+
+msgid "combined log format"
+msgstr "комбінований формат журналу"
+
+msgid "MSIE Extended W3C log format"
+msgstr "розширений формат журналу MSIE W3C"
+
+msgid "WebStar native log format"
+msgstr "рідний формат журналу WebStar"
+
+msgid "common log format"
+msgstr "звичайний формат журналу"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "наступний персоналізований формат журналу:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "Ось приклад записів, які AWStats знайшов у вашому файлі журналу (номер запису"
+
+msgid "in your log):"
+msgstr "у вашому журналі):"
+
+#------------------------------------------------------------------------------
+# Різне
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "Додатково/Маркетинг"
+
+#------------------------------------------------------------------------------
+# Тексти інтерфейсу
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "Поточний сайт"
+
+msgid "Web Site"
+msgstr "Веб-сайт"
+
+msgid "Last Update"
+msgstr "Останнє оновлення"
+
+msgid "Never updated"
+msgstr "Ніколи не оновлювалося"
+
+msgid "No qualified records found in log"
+msgstr "У журналі не знайдено відповідних записів"
+
+msgid "corrupted"
+msgstr "пошкоджені"
+
+msgid "comments"
+msgstr "коментарі"
+
+msgid "Blank"
+msgstr "Порожні"
+
+msgid "dropped"
+msgstr "відкинуті"
+
+msgid "Update now"
+msgstr "Оновити зараз"
+
+msgid "Back to main page"
+msgstr "Повернутися на головну сторінку"
+
+msgid "Close window"
+msgstr "Закрити вікно"
+
+msgid "Back page"
+msgstr "Попередня сторінка"
+
+msgid "Navigation"
+msgstr "Навігація"
+
+msgid "Summary"
+msgstr "Підсумок"
+
+msgid "Local"
+msgstr "Локальні"
+
+msgid "External"
+msgstr "Зовнішні"
+
+msgid "Others (email senders)"
+msgstr "Інші (відправники)"
+
+msgid "Others (email receivers)"
+msgstr "Інші (отримувачі)"
+
+msgid "Others"
+msgstr "Інші"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "Наразі відображається лише 10 рядків даних браузера, повний список див. на сторінці деталей"
+
+msgid "Others (unknown browsers)"
+msgstr "Інші (невідомі браузери)"
+
+msgid "Others (operating systems)"
+msgstr "Інші (операційні системи)"
+
+msgid "Others (unknown OS)"
+msgstr "Інші (невідома ОС)"
+
+msgid "Others (search engines)"
+msgstr "Інші (пошукові системи)"
+
+msgid "Others (referring pages)"
+msgstr "Інші (реферуючі сторінки)"
+
+msgid "Others (keyphrases)"
+msgstr "Інші (фрази)"
+
+msgid "Others (keywords)"
+msgstr "Інші (ключові слова)"
+
+msgid "Only first 10 robots shown"
+msgstr "Показано лише перших 10 роботів, повний список див. на сторінці деталей"
+
+msgid "Failed to obtain access record"
+msgstr "Не вдалося отримати запис входу"
+
+msgid "Failed to obtain leave record"
+msgstr "Не вдалося отримати запис виходу"
+
+msgid "Other pages"
+msgstr "Інші сторінки"
+
+msgid "Low Traffic IP Summary"
+msgstr "Підсумок невідомих IP з низьким трафіком"
+
+msgid "Failed to obtain IP data"
+msgstr "Підсумок інших відомих IP"
+
+msgid "Failed to obtain the relevant data"
+msgstr "Не вдалося отримати відповідні дані"
+
+msgid "Limited list of countries and regions"
+msgstr "Наразі відображається лише 10 рядків даних, повний список країн та регіонів див. на сторінці деталей"
+
+msgid "currentVisitorData"
+msgstr "Наразі відображається лише 10 рядків даних відвідувачів, повний список див. на сторінці деталей"
+
+msgid "Others (robots main)"
+msgstr "Інші (роботи)"
+
+msgid "Others (worms)"
+msgstr "Інші (черв'яки)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "Наразі відображається лише 10 сторінок, повний список див. на сторінці деталей"
+
+msgid "Others (OS main)"
+msgstr "Інші (системи)"
+
+msgid "Others (browsers main)"
+msgstr "Інші (браузери)"
+
+msgid "Others (screen sizes)"
+msgstr "Інші (розміри)"
+
+msgid "Others (search engines main)"
+msgstr "Інші (пошукові системи)"
+
+msgid "Others (referring pages main)"
+msgstr "Інші (реферуючі сторінки)"
+
+msgid "Others (keyphrases main)"
+msgstr "Інші (фрази)"
+
+msgid "Others (keywords main)"
+msgstr "Інші (ключові слова)"
+
+# 1xx
+msgid "Continue"
+msgstr "Продовжити"
+
+msgid "Switching Protocols"
+msgstr "Перемикання протоколів"
+
+msgid "Processing (WebDAV)"
+msgstr "Обробка (WebDAV)"
+
+msgid "Early Hints"
+msgstr "Ранні підказки"
+
+# 2xx
+msgid "[Miscellaneous successes]"
+msgstr "[Інші успішні стани]"
+
+msgid "Request successful"
+msgstr "Запит успішний"
+
+msgid "Created successfully"
+msgstr "Успішно створено"
+
+msgid "Accepted - processing"
+msgstr "Прийнято - обробляється"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "Неавторитетна інформація (з кешу)"
+
+msgid "Success, no content returned"
+msgstr "Успішно, вміст не повернуто"
+
+msgid "Reset content"
+msgstr "Скинути вміст"
+
+msgid "Partial content (resume download)"
+msgstr "Частковий вміст (відновити завантаження)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "Мульти-стан (WebDAV)"
+
+msgid "Already reported (WebDAV)"
+msgstr "Вже повідомлено (WebDAV)"
+
+msgid "IM used"
+msgstr "IM використано"
+
+# 3xx
+msgid "[Miscellaneous redirections]"
+msgstr "[Інші перенаправлення]"
+
+msgid "Multiple choices"
+msgstr "Кілька варіантів"
+
+msgid "Moved permanently - update your links"
+msgstr "Переміщено назавжди - оновіть свої посилання"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "Тимчасове перенаправлення - URL не змінено"
+
+msgid "See other"
+msgstr "Див. інше"
+
+msgid "Not modified - using cached version"
+msgstr "Не змінено - використовується кешована версія"
+
+msgid "Use proxy"
+msgstr "Використовувати проксі"
+
+msgid "Switch proxy"
+msgstr "Змінити проксі"
+
+msgid "Temporary redirect (keep method)"
+msgstr "Тимчасове перенаправлення (зберегти метод)"
+
+msgid "Permanent redirect - update your links"
+msgstr "Постійне перенаправлення - оновіть свої посилання"
+
+# 4xx
+msgid "[Miscellaneous client/user errors]"
+msgstr "[Інші помилки клієнта/користувача]"
+
+msgid "Bad request"
+msgstr "Неправильний запит"
+
+msgid "Unauthorized - please log in"
+msgstr "Не авторизовано - будь ласка, увійдіть"
+
+msgid "Payment required"
+msgstr "Потрібна оплата"
+
+msgid "Forbidden - access denied"
+msgstr "Заборонено - доступ заборонено"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "Сторінку не знайдено (404) - перевірте розірвані посилання"
+
+msgid "Method not allowed"
+msgstr "Метод не дозволено"
+
+msgid "Not acceptable"
+msgstr "Не прийнятно"
+
+msgid "Proxy authentication required"
+msgstr "Потрібна автентифікація проксі"
+
+msgid "Request timeout"
+msgstr "Час запиту вичерпано"
+
+msgid "Conflict - please try again"
+msgstr "Конфлікт - будь ласка, спробуйте ще раз"
+
+msgid "Gone - permanently deleted"
+msgstr "Зник - остаточно видалено"
+
+msgid "Length required"
+msgstr "Потрібна довжина"
+
+msgid "Precondition failed"
+msgstr "Передумова не виконана"
+
+msgid "Payload too large"
+msgstr "Корисне навантаження занадто велике"
+
+msgid "URI too long"
+msgstr "URI занадто довгий"
+
+msgid "Unsupported media type"
+msgstr "Непідтримуваний тип носія"
+
+msgid "Range not satisfiable"
+msgstr "Діапазон не може бути задоволений"
+
+msgid "Expectation failed"
+msgstr "Очікування не виправдалося"
+
+msgid "I am a teapot (April Fools)"
+msgstr "Я - чайник (жарт на 1 квітня)"
+
+msgid "Page expired (Laravel)"
+msgstr "Термін дії сторінки минув (Laravel)"
+
+msgid "Method failure (Spring)"
+msgstr "Помилка методу (Spring)"
+
+msgid "Misdirected request"
+msgstr "Неправильно спрямований запит"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "Необроблюваний об'єкт (WebDAV)"
+
+msgid "Locked (WebDAV)"
+msgstr "Заблоковано (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "Невдала залежність (WebDAV)"
+
+msgid "Too early"
+msgstr "Занадто рано"
+
+msgid "Upgrade required"
+msgstr "Потрібне оновлення"
+
+msgid "Precondition required"
+msgstr "Потрібна передумова"
+
+msgid "Too many requests - slow down"
+msgstr "Занадто багато запитів - сповільніться"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "Поля заголовка запиту занадто великі (Shopify)"
+
+msgid "Request header too large"
+msgstr "Заголовок запиту занадто великий"
+
+msgid "Login timeout (IIS)"
+msgstr "Час входу вичерпано (IIS)"
+
+msgid "No response (nginx)"
+msgstr "Немає відповіді (nginx)"
+
+msgid "Retry with (IIS)"
+msgstr "Повторити з (IIS)"
+
+msgid "Blocked by Windows parental controls"
+msgstr "Заблоковано батьківським контролем Windows"
+
+msgid "Unavailable for legal reasons"
+msgstr "Недоступно з юридичних причин"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "Клієнт закрив з'єднання до закінчення часу простою (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "Заголовок X-Forwarded-For з більш ніж 30 IP-адресами (AWS ELB)"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "Несумісні версії протоколу (AWS ELB)"
+
+msgid "Request header too large (nginx)"
+msgstr "Заголовок запиту занадто великий (nginx)"
+
+msgid "SSL certificate error (nginx)"
+msgstr "Помилка сертифіката SSL (nginx)"
+
+msgid "SSL certificate required (nginx)"
+msgstr "Потрібен сертифікат SSL (nginx)"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP-запит надіслано на порт HTTPS (nginx)"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "Недійсний токен (ArcGIS)"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "Потрібен токен (ArcGIS) / Клієнт закрив запит (nginx)"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "Досягнуто ліміту ресурсів (cPanel)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "Перевищено ліміт пропускної здатності (Apache/cPanel)"
+
+# 5xx
+msgid "[Miscellaneous server errors]"
+msgstr "[Інші помилки сервера]"
+
+msgid "Internal server error - check logs"
+msgstr "Внутрішня помилка сервера - перевірте журнали"
+
+msgid "Not implemented"
+msgstr "Не реалізовано"
+
+msgid "Bad gateway - backend error"
+msgstr "Неправильний шлюз - помилка бекенду"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "Послуга недоступна - технічне обслуговування або перевантаження"
+
+msgid "Gateway timeout"
+msgstr "Час очікування шлюзу вичерпано"
+
+msgid "HTTP version not supported"
+msgstr "Версія HTTP не підтримується"
+
+msgid "Variant also negotiates"
+msgstr "Варіант також веде переговори"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "Недостатньо місця для зберігання (WebDAV)"
+
+msgid "Loop detected (WebDAV)"
+msgstr "Виявлено цикл (WebDAV)"
+
+msgid "Not extended"
+msgstr "Не розширено"
+
+msgid "Network authentication required"
+msgstr "Потрібна мережева автентифікація"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "Невідома помилка (Cloudflare)"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "Веб-сервер не працює (Cloudflare)"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "Час з'єднання вичерпано (Cloudflare)"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "Джерело недоступне (Cloudflare)"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "Сталося перевищення часу очікування (Cloudflare)"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "Рукостискання SSL не вдалося (Cloudflare)"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "Недійсний сертифікат SSL (Cloudflare)"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Помилка Railgun (Cloudflare - застаріло)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "Сайт перевантажений (SSLLabs)"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "Помилка DNS джерела (Cloudflare) / Сайт заморожено (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "Тимчасово вимкнено (Shopify)"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "Не авторизовано (AWS ELB)"
+
+msgid "Network read timeout error"
+msgstr "Помилка часу читання мережі"
+
+msgid "Network connect timeout error"
+msgstr "Помилка часу підключення до мережі"
+
+msgid "Unexpected token (Shopify)"
+msgstr "Неочікуваний токен (Shopify)"
+
+msgid "Request denied (LinkedIn)"
+msgstr "Запит відхилено (LinkedIn)"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 GOAWAY (AWS ELB)"
+
+msgid "[Unknown]"
+msgstr "[Невідомо]"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "Нестандартна успішна відповідь (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "Стан системи або відповідь системної допомоги"
+
+msgid "Help message"
+msgstr "Повідомлення довідки"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "Служба SMTP готова (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "Служба готова - сервер готовий отримувати пошту"
+
+msgid "Service closing - connection is being closed"
+msgstr "Служба закривається - з'єднання закривається"
+
+msgid "Authentication successful"
+msgstr "Автентифікація успішна"
+
+msgid "Requested mail action taken and completed"
+msgstr "Запитану дію з поштою виконано та завершено"
+
+msgid "User not local - will forward to another address"
+msgstr "Користувач не локальний - буде перенаправлено на іншу адресу"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "Не вдається підтвердити отримувача, але спробу виконати доставку буде зроблено"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "Повідомлення прийнято для доставки (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "Ім'я користувача є поштовою скринькою"
+
+msgid "Authentication challenge - please respond"
+msgstr "Виклик автентифікації - будь ласка, відповідайте"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "Почніть введення пошти - закінчіть на <CRLF>.<CRLF>"
+
+msgid "Continue (LMTP)"
+msgstr "Продовжити (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "Служба недоступна - з'єднання закривається, спробуйте пізніше"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "Поштова скринька зайнята або тимчасово недоступна (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "Перевищено ліміт швидкості з'єднань (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "Занадто багато одночасних з'єднань (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "Не вдалося встановити з'єднання (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "Час з'єднання вичерпано (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "З'єднання розірвано через помилку (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "Поштову скриньку тимчасово заблоковано (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "Занадто багато отримувачів (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "Помилка поштового сервера (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "Виявлено цикл отримання (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "Занадто велика кількість переходів (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "Пошук DNS не вдався (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "Не вдається автентифікувати (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "Рукостискання TLS не вдалося (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "Порушення протоколу SMTP (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "Розмір повідомлення перевищує ліміт (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "Перевищено ліміт швидкості повідомлень (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "Перевищено квоту поштової скриньки - тимчасово"
+
+msgid "Domain not found (Postfix)"
+msgstr "Домен не знайдено (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "Заголовок повідомлення недійсний (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "Виявлено цикл відскоку (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "Не вдається маршрутизувати (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "Домен відправника не знайдено (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "Домен отримувача не знайдено (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "Сірий список у процесі - будь ласка, спробуйте ще раз (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "Фільтрація спаму виконується (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "Сканування на віруси виконується (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "Поштова скринька недоступна - спробуйте пізніше"
+
+msgid "Requested action aborted - error in processing"
+msgstr "Запитану дію перервано - помилка під час обробки"
+
+msgid "Insufficient system storage - try again later"
+msgstr "Недостатньо системного сховища - спробуйте пізніше"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "Занадто багато повідомлень для цього отримувача (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS недоступний (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "Сервер не може приймати повідомлення (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "Тимчасова помилка під час пошуку DNS (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "Перевищено квоту - тимчасово"
+
+msgid "Message too big - temporary"
+msgstr "Повідомлення занадто велике - тимчасово"
+
+msgid "Too many messages per connection"
+msgstr "Занадто багато повідомлень на одне з'єднання"
+
+msgid "Load average too high (Postfix)"
+msgstr "Середнє навантаження занадто високе (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "У з'єднанні відмовлено (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "Перевищено ліміт швидкості надсилання (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "Перевищено ліміт швидкості отримувача (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "Перевищено ліміт швидкості відправника (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "Перевищено ліміт швидкості IP-адреси (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "Пошук MX не вдався (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "Пошук A-запису не вдався (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "Пошук PTR-запису не вдався (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "Сірий список активний - будь ласка, спробуйте ще раз (Postgrey)"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "Адресу відправника відхилено - домен не підтверджено (DMARC очікує)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "Адресу отримувача відхилено - домен не підтверджено (DMARC очікує)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "Перевірка DKIM очікує - тимчасова помилка"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "Перевірка SPF очікує - тимчасова помилка"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "Перевірка DMARC очікує - тимчасова помилка"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "Тимчасова помилка пошуку DNSBL"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "Тимчасова помилка пошуку RHSBL"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "Тимчасова помилка пошуку URI DNSBL"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "Тимчасова помилка автентифікації (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "Тимчасова помилка авторизації (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "Перевищено ліміт швидкості на відправника (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "Перевищено ліміт швидкості на отримувача (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "Перевищено ліміт швидкості на домен (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "Перевищено ліміт швидкості на IP (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "Повідомлення поставлено в чергу для пізнішої доставки (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "Доставку затримано через політику (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "Тимчасова помилка у фільтрі вмісту"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "Тимчасова помилка в антивірусному сканері"
+
+msgid "Temporary failure in spam filter"
+msgstr "Тимчасова помилка в спам-фільтрі"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Тимчасова помилка в milter (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Сірий список - спробуйте пізніше"
+
+msgid "DDoS protection active - try again later"
+msgstr "Активовано захист від DDoS - спробуйте пізніше"
+
+msgid "SMTP policy violation - temporary"
+msgstr "Порушення політики SMTP - тимчасове"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "Тимчасова помилка під час обробки RCPT TO"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "Тимчасова помилка під час обробки MAIL FROM"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "Тимчасова помилка під час обробки EHLO/HELO"
+
+msgid "Temporary error in DATA processing"
+msgstr "Тимчасова помилка під час обробки DATA"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "Тимчасова помилка - служба зайнята, спробуйте пізніше"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "Синтаксична помилка - команду не розпізнано або вона занадто довга"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "Синтаксична помилка в параметрах або аргументах"
+
+msgid "Command not implemented"
+msgstr "Команду не реалізовано"
+
+msgid "Bad sequence of commands"
+msgstr "Неправильна послідовність команд"
+
+msgid "Command parameter not implemented"
+msgstr "Параметр команди не реалізовано"
+
+msgid "Version not supported (ESMTP)"
+msgstr "Версію не підтримано (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "Шлях до поштової скриньки недійсний (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "Занадто багато команд у цій сесії (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "Перевищено ліміт отримувачів (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "Перевищено ліміт відправників (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "Перевищено ліміт доменів (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "Поштова скринька не існує (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "Помилка DNS - постійна"
+
+msgid "Address type not supported (Postfix)"
+msgstr "Тип адреси не підтримується (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "Не вдається відкрити поштову скриньку (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "Поштову скриньку заблоковано - постійно"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "Повідомлення відхилено через політику (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "Вміст відхилено - постійно"
+
+msgid "Attachment type not allowed"
+msgstr "Тип вкладення не дозволено"
+
+msgid "Message encoding not supported"
+msgstr "Кодування повідомлення не підтримується"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "Домен відправника не існує - постійно"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "Домен не приймає пошту або закривається"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "Домен отримувача не існує - постійно"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "Перевищено квоту поштової скриньки - постійно"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "Розмір повідомлення перевищує ліміт - постійно"
+
+msgid "Authentication required (Sendmail)"
+msgstr "Потрібна автентифікація (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "Автентифікацію не вдалося (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "Механізм автентифікації не підтримується"
+
+msgid "Authentication credentials invalid"
+msgstr "Облікові дані автентифікації недійсні"
+
+msgid "Authentication account expired"
+msgstr "Термін дії облікового запису автентифікації минув"
+
+msgid "Access denied - authentication required"
+msgstr "Доступ заборонено - потрібна автентифікація"
+
+msgid "Access denied (Sendmailism)"
+msgstr "Доступ заборонено (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "Доступ заборонено - не автентифіковано"
+
+msgid "Access denied - account locked"
+msgstr "Доступ заборонено - обліковий запис заблоковано"
+
+msgid "Access denied - account disabled"
+msgstr "Доступ заборонено - обліковий запис вимкнено"
+
+msgid "Authentication failed"
+msgstr "Автентифікацію не вдалося"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "Для ретрансляції потрібна автентифікація (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "Автентифікацію для ретрансляції не вдалося (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "Потрібне шифрування (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "Для цього отримувача потрібен TLS"
+
+msgid "Encryption strength insufficient"
+msgstr "Сила шифрування недостатня"
+
+msgid "Certificate validation failed"
+msgstr "Перевірку сертифіката не вдалося"
+
+msgid "Invalid TLS certificate"
+msgstr "Недійсний сертифікат TLS"
+
+msgid "TLS protocol version not supported"
+msgstr "Версія протоколу TLS не підтримується"
+
+msgid "Cipher suite not supported"
+msgstr "Набір шифрів не підтримується"
+
+msgid "Access denied - no valid recipient"
+msgstr "Доступ заборонено - немає дійсного отримувача"
+
+msgid "Access denied - no valid sender"
+msgstr "Доступ заборонено - немає дійсного відправника"
+
+msgid "Access denied - domain not allowed"
+msgstr "Доступ заборонено - домен не дозволено"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "Доступ заборонено - IP-адресу заблоковано (постійно)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "Доступ заборонено - домен відправника в чорному списку"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "Поштова скринька недоступна - запитану дію не виконано"
+
+msgid "User not local - please try forwarding address"
+msgstr "Користувач не локальний - будь ласка, спробуйте адресу пересилання"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "Запитану дію перервано - перевищено виділення пам'яті"
+
+msgid "Mailbox name not allowed"
+msgstr "Назва поштової скриньки не дозволена"
+
+msgid "Requested action rejected - access denied"
+msgstr "Запитану дію відхилено - доступ заборонено"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "Параметри MAIL FROM/RCPT TO не розпізнано"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "Домену не дозволено надсилати (відхилення DMARC)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "Занадто багато дублікатів повідомлень - постійно"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "Адресу відправника відхилено - домен не в SPF"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "Адресу відправника відхилено - перевірку DKIM не вдалося"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "Адресу відправника відхилено - політика DMARC відхиляє"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "Адресу отримувача відхилено - політика DMARC відхиляє"
+
+msgid "Message rejected due to spam content"
+msgstr "Повідомлення відхилено через вміст спаму"
+
+msgid "Message rejected due to virus detected"
+msgstr "Повідомлення відхилено через виявлений вірус"
+
+msgid "Message rejected due to malicious content"
+msgstr "Повідомлення відхилено через шкідливий вміст"
+
+msgid "Message rejected due to phishing detection"
+msgstr "Повідомлення відхилено через виявлений фішинг"
+
+msgid "Message rejected due to malware detection"
+msgstr "Повідомлення відхилено через виявлене шкідливе програмне забезпечення"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "Повідомлення відхилено через політику - постійно"
+
+msgid "Message rejected due to content filtering"
+msgstr "Повідомлення відхилено через фільтрацію вмісту"
+
+msgid "Message rejected due to reputation"
+msgstr "Повідомлення відхилено через репутацію"
+
+msgid "Access denied - access_map violation"
+msgstr "Доступ заборонено - порушення access_map"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "Доступ заборонено - клієнта SMTP внесено до RBL"
+
+msgid "Access denied - relay not authorized"
+msgstr "Доступ заборонено - ретранслятор не авторизовано"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "Доступ заборонено - невідоме ім'я хоста клієнта SMTP"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "Доступ заборонено - неправильний синтаксис для імені хоста HELO клієнта"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "Доступ заборонено - ім'я хоста клієнта SMTP відхилено"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "Доступ заборонено - невідомий домен для відправника чи отримувача"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "Доступ заборонено - невідоме ім'я хоста HELO клієнта"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "Доступ заборонено - недійсний домен (не FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "Доступ заборонено - домен не кваліфіковано"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "Доступ заборонено - поштовий сервер неправильно налаштовано"
+
+msgid "Access denied - open relay not allowed"
+msgstr "Доступ заборонено - відкриту ретрансляцію не дозволено"
+
+msgid "Access denied - proxy not allowed"
+msgstr "Доступ заборонено - проксі не дозволено"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "Доступ заборонено - динамічну IP не дозволено"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "Доступ заборонено - домашню IP не дозволено"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "Доступ заборонено - виявлено VPN/Tor"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "Доступ заборонено - внесено до Spamhaus DROP"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "Доступ заборонено - URL внесено до URIBL"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "Доступ заборонено - домен у RHSBL"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "Доступ заборонено - IP у DNSWL (політика)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "Доставку не вдалося - поштову скриньку не знайдено"
+
+msgid "Delivery failed - recipient not local"
+msgstr "Доставку не вдалося - отримувач не локальний"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "Доставку не вдалося - отримувача відхилено"
+
+msgid "Delivery failed - sender rejected"
+msgstr "Доставку не вдалося - відправника відхилено"
+
+msgid "Delivery failed - relay rejected"
+msgstr "Доставку не вдалося - ретранслятор відхилено"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "Доставку не вдалося - постійна помилка DNS"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "Доставку не вдалося - постійна помилка MX"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "Доставку не вдалося - постійна помилка A-запису"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "Доставку не вдалося - постійна помилка PTR-запису"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "Доставку не вдалося - постійна помилка політики"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: Успішно - сповіщення про стан доставки"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: Доставку затримано"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: Доставку не вдалося - постійно"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: Доставку не вдалося - тимчасово"
+
+msgid "DSN: Message expired"
+msgstr "DSN: Термін дії повідомлення минув"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: Повідомлення повернулося"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: Повідомлення відкинуто"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: Повідомлення відфільтровано"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: Повідомлення поміщено в карантин"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: Повідомлення утримується для перевірки"
+
+msgid "MTA-STS policy required"
+msgstr "Потрібна політика MTA-STS"
+
+msgid "MTA-STS policy validation failed"
+msgstr "Перевірку політики MTA-STS не вдалося"
+
+msgid "TLS reporting required"
+msgstr "Потрібне звітування TLS"
+
+msgid "TLS report requested"
+msgstr "Запит на звіт TLS"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "Активовано сувору безпеку транспорту SMTP MTA"
+
+msgid "DANE validation required"
+msgstr "Потрібна перевірка DANE"
+
+msgid "DANE validation failed"
+msgstr "Перевірку DANE не вдалося"
+
+msgid "TLSA record missing"
+msgstr "Запис TLSA відсутній"
+
+msgid "Certificate name mismatch"
+msgstr "Невідповідність імені сертифіката"
+
+msgid "Certificate expired"
+msgstr "Термін дії сертифіката минув"
+
+msgid "AUTH LOGIN required"
+msgstr "Потрібен AUTH LOGIN"
+
+msgid "AUTH PLAIN required"
+msgstr "Потрібен AUTH PLAIN"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "Потрібен AUTH CRAM-MD5"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "Потрібен AUTH DIGEST-MD5"
+
+msgid "AUTH GSSAPI required"
+msgstr "Потрібен AUTH GSSAPI"
+
+msgid "AUTH NTLM required"
+msgstr "Потрібен AUTH NTLM"
+
+msgid "AUTH SCRAM required"
+msgstr "Потрібен AUTH SCRAM"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "Потрібен AUTH OAUTHBEARER"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "Потрібен AUTH XOAUTH2"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: Помилка бази даних поштової скриньки"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: Помилка драйвера сховища"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: Помилка транспортного агента"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: Помилка перетворення вмісту"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: Помилка маршрутизації"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: Потік пошти зупинено"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: Помилка тіньової надмірності"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: Помилка запобіжної сітки"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: Помилка бази даних черги"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: Повідомлення обмежено"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: Помилка черги відскоку"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: Помилка відкладеної черги"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: Помилка черги утримання"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: Помилка вхідної черги"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: Помилка активної черги"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: Пошкоджений файл черги"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: Помилка виконавця черги"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: Помилка бази даних псевдонімів"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: Помилка таблиці віртуальних користувачів"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: Помилка визначення поштової програми"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: Помилка конфігурації маршрутизатора"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: Помилка конфігурації транспорту"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: Помилка конфігурації директора"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: Помилка конфігурації повторних спроб"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: Помилка конфігурації переписування"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: Помилка конфігурації автентифікації"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: Помилка конфігурації ACL"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Помилка конфігурації Local_scan"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: Помилка конфігурації пошуку"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: Помилка конфігурації розширення"
+
+msgid "HTTP Protocol Versions"
+msgstr "Версії протоколу HTTP"
+
+msgid "Protocol"
+msgstr "Протокол"
+
+msgid "Request %"
+msgstr "Частка запитів"
+
+msgid "Bandwidth %"
+msgstr "Частка пропускної здатності"
+
+msgid "Each request requires a new connection"
+msgstr "Кожен запит потребує нового з'єднання"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "Кілька запитів можуть повторно використовувати одне з'єднання"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "Кілька запитів паралельно через одне з'єднання"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "Швидше з'єднання, краща продуктивність у поганих мережах"
+
+msgid "No protocol data available"
+msgstr "Немає даних протоколу"
+
+msgid "of requests use HTTP/1.0"
+msgstr "запитів використовують HTTP/1.0"
+
+msgid "From access logs"
+msgstr "З журналів доступу"
+
+msgid "No HTTP/2 requests detected"
+msgstr "Не виявлено запитів HTTP/2"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "Усі запити HTTP/1.0, немає запитів HTTP/2"
+
+msgid "HTTP/3 not detected"
+msgstr "HTTP/3 не виявлено"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "усі запити не включають запити протоколу QUIC/HTTP/3"
+
+msgid "Mail Authentication Statistics"
+msgstr "Статистика автентифікації пошти"
+
+msgid "Authentication"
+msgstr "Тип автентифікації"
+
+msgid "Pass"
+msgstr "Пройдено"
+
+msgid "Fail"
+msgstr "Невдача"
+
+msgid "Softfail"
+msgstr "М'яка невдача"
+
+msgid "Neutral"
+msgstr "Нейтрально"
+
+msgid "None"
+msgstr "Немає"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "Статистика затримки черги пошти"
+
+msgid "Delay Range"
+msgstr "Діапазон затримки"
+
+msgid "Count"
+msgstr "Кількість"
+
+msgid "Percentage"
+msgstr "Відсоток"
+
+msgid "TLS Encryption Statistics"
+msgstr "Статистика шифрування TLS"
+
+msgid "TLS Versions"
+msgstr "Версії TLS"
+
+msgid "Top Ciphers"
+msgstr "Найкращі шифри"
+
+msgid "robot_hits_detail_both"
+msgstr "Загальна кількість запитів: %s (звичайні сторінки: %s, robots.txt: %s)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "Лише запити robots.txt: %s, інших сторінок немає"
+
+msgid "robot_hits_detail_normal"
+msgstr "Звичайні запити сторінок: %s"
+
+# Довідка та підказки
+msgid "Troubleshooting"
+msgstr "Усунення несправностей"
+
+msgid "Did you use the correct URL?"
+msgstr "Ви використали правильний URL?"
+
+msgid "Example:"
+msgstr "Приклад:"
+
+msgid "Did you use correct config parameter?"
+msgstr "Ви використали правильний параметр конфігурації?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "Приклад: Якщо ваш файл конфігурації - awstats.mysite.conf, використовуйте -config=mysite"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "Ви створили свій файл конфігурації 'awstats.$SiteConfig.conf'?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "Якщо ні, ви можете запустити \"awstats_configure.pl\" з командного рядка або створити його вручну."
+
+msgid "Setup"
+msgstr "Налаштування"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "файл, веб-сервер або дозволи можуть бути неправильними."
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "Перевірте файл конфігурації, дозволи та документацію AWStats (у каталозі 'docs')."
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "Попередження: Не вдається знайти мовні файли для \"%s\". Буде використано англійську."
+
+#------------------------------------------------------------------------------
+# Обробка помилок та сигналів
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "Процес %s (ID %s) перервано сигналом %s."
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "Схоже, процес оновлення AWStats вже працює для цього файлу конфігурації. Спробуйте пізніше. Якщо це не так, вилучіть файл блокування вручну"
+
+#------------------------------------------------------------------------------
+# Нові статистичні заголовки
+#------------------------------------------------------------------------------
+
+msgid "Report Overview"
+msgstr "Огляд звіту"
+
+msgid "Monthly Statistics"
+msgstr "Місячна статистика"
+
+msgid "Daily Statistics"
+msgstr "Денна статистика"
+
+msgid "Statistics by Day of Week"
+msgstr "Статистика за днями тижня"
+
+msgid "Hourly Page Views"
+msgstr "Перегляди сторінок за годину"
+
+msgid "Traffic Sources"
+msgstr "Джерела трафіку"
+
+msgid "Other Sources"
+msgstr "Інші джерела"
+
+msgid "tooltip_1"
+msgstr "Кількість сесій відвідувачів на веб-сайті. Нова сесія зараховується, якщо відвідувач повертається після більш ніж 30 хвилин бездіяльності."
+
+msgid "tooltip_2"
+msgstr "Кількість різних відвідувачів, які відвідали ваш веб-сайт за вибраний період. Засновано на IP-адресі."
+
+msgid "tooltip_3"
+msgstr "Кількість запитів, які вважаються сторінками (HTML, PHP, ASP тощо), за винятком зображень, CSS, JS."
+
+msgid "tooltip_4"
+msgstr "Загальна кількість усіх запитів до сервера, включаючи сторінки, зображення, CSS, JS та всі файли."
+
+msgid "tooltip_5"
+msgstr "Загальний обсяг даних, переданих сервером у відповідь на запити користувачів."
+
+msgid "tooltip_13"
+msgstr "Статистика джерел трафіку з пошукових систем. Показує, які пошукові системи приносять вам трафік і які пошукові терміни використовують відвідувачі."
+
+msgid "tooltip_14"
+msgstr "Статистика джерел трафіку із зовнішніх посилань з інших веб-сайтів. Показує, які сайти посилаються на вас і який трафік вони приносять."
+
+msgid "tooltip_15"
+msgstr "Пошукові терміни, які відвідувачі використовують, щоб знайти вас через пошукові системи. Ключові слова - це окремі слова, ключові фрази - це комбінації слів."
+
+msgid "tooltip_16"
+msgstr "Автоматизовані програми, такі як роботи пошукових систем, AI-навчальні роботи, сканери вразливостей тощо. Числа в дужках вказують кількість звичайних запитів сторінок і запитів robots.txt."
+
+msgid "tooltip_17"
+msgstr "24-годинний розподіл трафіку. Показує, коли ваш веб-сайт найбільш відвідуваний, допомагає зрозуміти активний час користувачів."
+
+msgid "tooltip_18"
+msgstr "Цей стовпець показує середні денні/тижневі значення за вибраний період часу, допомагаючи зрозуміти загальну тенденцію."
+
+msgid "tooltip_19"
+msgstr "Клацніть на елементах графіка, щоб побачити детальну інформацію. Наведіть курсор на елементи графіка, щоб побачити значення."
+
+msgid "tooltip_20"
+msgstr "Дані, які неможливо класифікувати в існуючі діапазони, зазвичай через аномальний або відсутній формат даних."
+
+msgid "tooltip_21"
+msgstr "Записи про виявлені атаки черв'яків. Черв'як - це програма, що самовідтворюється, яка зазвичай поширюється через мережеві вразливості."
+
+#------------------------------------------------------------------------------
+# Відображення довідкової інформації - видання спільноти
+#------------------------------------------------------------------------------
+
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - Розширена веб-статистика"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "Авторське право (c) 2000-2025 Лоран Дестайєр"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "Авторське право (c) 2026-останнє видання спільноти"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats постачається БЕЗ ЖОДНИХ ГАРАНТІЙ. Це вільне програмне забезпечення, що розповсюджується за ліцензією GNU General Public License (Детальніше див. у файлі LICENSE)."
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "Синтаксис: %s -config=ім'я_віртуального_хоста [параметри]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "Це запускає %s у командному рядку для оновлення статистики (параметр -update) веб-сайту з файлу журналу, визначеного у файлі конфігурації AWStats, або для створення HTML-звіту (параметр -output)."
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "Спочатку %s намагається прочитати %s.ім'я_віртуального_хоста.conf як файл конфігурації. Якщо не знайдено, %s намагається прочитати %s.conf, і нарешті повний шлях, переданий у -config="
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "Примітка 1: Файли конфігурації (*.conf) повинні знаходитися в /etc/awstats, /usr/local/etc/awstats, /etc або в тому самому каталозі, що й файл скрипту awstats.pl."
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "Примітка 2: Якщо визначено змінну середовища AWSTATS_FORCE_CONFIG, AWStats використовуватиме її як значення 'config', незалежно від значення в командному рядку або URL."
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "Усі інструкції з налаштування див. у документації AWStats."
+
+msgid "Options to update statistics:"
+msgstr "Параметри для оновлення статистики:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        оновити статистику (стандартно)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     додавати інформацію про тестування кожні %s оброблених рядків"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted додавати вихідні дані для кожного знайденого пошкодженого рядка з причиною"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   додавати вихідні дані для кожного знайденого відкинутого рядка з причиною"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin  виводити реферер, коли його неможливо проаналізувати"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin   виводити рядок журналу, коли джерелом є прямий доступ"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n   зупинити процес оновлення після аналізу n рядків"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x     змінити журнал для аналізу незалежно від того, що таке 'LogFile' у файлі конфігурації"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  Будьте обережні, обробляйте файли журналу в хронологічному порядку під час оновлення статистики."
+
+msgid "Options to show statistics:"
+msgstr "Параметри для відображення статистики:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output      вивести основний HTML-звіт (оновлення не виконується, крім випадків з -update)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x    вивести інші сторінки звіту, де x:"
+
+msgid "build page of all domains/countries"
+msgstr "створити сторінку всіх доменів/країн"
+
+msgid "build page of all hosts"
+msgstr "створити сторінку всіх хостів"
+
+msgid "build page of last hits for hosts"
+msgstr "створити сторінку останніх хітів для хостів"
+
+msgid "build page of all unresolved IP"
+msgstr "створити сторінку всіх нерозв'язаних IP-адрес"
+
+msgid "build page of all email senders (maillog)"
+msgstr "створити сторінку всіх відправників електронної пошти (журнал пошти)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "створити сторінку останніх відправників електронної пошти (журнал пошти)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "створити сторінку всіх отримувачів електронної пошти (журнал пошти)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "створити сторінку останніх отримувачів електронної пошти (журнал пошти)"
+
+msgid "build page of all logins used"
+msgstr "створити сторінку всіх використаних логінів"
+
+msgid "build page of last hits for logins"
+msgstr "створити сторінку останніх хітів для логінів"
+
+msgid "build page of all robots/spider visits"
+msgstr "створити сторінку всіх відвідувань роботів/павуків"
+
+msgid "build page of last hits for robots"
+msgstr "створити сторінку останніх хітів для роботів"
+
+msgid "list most often viewed pages"
+msgstr "список найбільш часто переглянутих сторінок"
+
+msgid "list most often viewed pages matching filter"
+msgstr "список найбільш часто переглянутих сторінок, що відповідають фільтру"
+
+msgid "list entry pages"
+msgstr "список вхідних сторінок"
+
+msgid "list entry pages matching filter"
+msgstr "список вхідних сторінок, що відповідають фільтру"
+
+msgid "list exit pages"
+msgstr "список вихідних сторінок"
+
+msgid "list exit pages matching filter"
+msgstr "список вихідних сторінок, що відповідають фільтру"
+
+msgid "build page with os detailed versions"
+msgstr "створити сторінку з детальними версіями операційної системи"
+
+msgid "build page with browsers detailed versions"
+msgstr "створити сторінку з детальними версіями браузерів"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "список 'User Agents' з невідомим браузером"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "список 'User Agents' з невідомою ОС"
+
+msgid "build page of all refering search engines"
+msgstr "створити сторінку всіх реферуючих пошукових систем"
+
+msgid "build page of all refering pages"
+msgstr "створити сторінку всіх реферуючих сторінок"
+
+msgid "list all keyphrases used on search engines"
+msgstr "список усіх ключових фраз, використаних у пошукових системах"
+
+msgid "list all keywords used on search engines"
+msgstr "список усіх ключових слів, використаних у пошукових системах"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "список 'Referers' для помилок 404"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "створити сторінку всіх значень для ExtraSection X"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           мати статичні посилання на сторінці HTML-звіту"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    мати статичні посилання з розширенням .xxx замість .html"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     вивести HTML-звіт мовою LL (uk,en,de,fr,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    вивести HTML-звіт за старий місяць MM"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   вивести HTML-звіт за старий рік YYYY"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  Параметри 'date' не дозволяють обробляти старий файл журналу. Вони дозволяють лише переглянути минулий звіт за вибраний період місяць/рік замість поточного місяця/року."
+
+msgid "Other options:"
+msgstr "Інші параметри:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     додавати інформацію налагодження менше рівня X (швидкість знижено)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     показати версію AWStats"
+
+msgid "Now supports/detects:"
+msgstr "Зараз підтримує/виявляє:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Аналіз журналів сервера Web/Ftp/Пошта/потокове передавання (і збалансовані файли журналу)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  Зворотний пошук DNS (IPv4 та IPv6) і GeoIP пошук"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  Кількість візитів, кількість унікальних відвідувачів"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  Тривалість візитів і список останніх візитів"
+
+msgid "  Authenticated users"
+msgstr "  Автентифіковані користувачі"
+
+msgid "  Days of week and rush hours"
+msgstr "  Дні тижня та години пік"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  Список хостів та список нерозв'язаних IP-адрес"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  Найбільш переглянуті, вхідні та вихідні сторінки"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  Тип файлів і веб-стиснення (статистика mod_gzip, mod_deflate)"
+
+msgid "  Configured Database Statistics"
+msgstr "  Налаштована статистика бази даних"
+
+msgid "  %s domains/countries"
+msgstr "  %s доменів/країн"
+
+msgid "  %s robots"
+msgstr "  %s роботів"
+
+msgid "  %s worm's families"
+msgstr "  %s сімейств черв'яків"
+
+msgid "  %s operating systems"
+msgstr "  %s операційних систем"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s браузерів (%s з базою даних браузерів телефонів)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s пошукових систем (і ключових фраз/слів, використаних з них)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  Усі HTTP-помилки з останнім реферером"
+
+msgid "  Report by day/month/year"
+msgstr "  Звіт за день/місяць/рік"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  Динамічні або статичні HTML або XHTML звіти, статичні PDF-звіти"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  Індексована текстова або XML місячна база даних"
+
+msgid "  And a lot of other advanced features and options..."
+msgstr "  І багато інших розширених функцій та параметрів..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  Нові версії та поширені запитання на https://github.com/hestiacn/vstats/issues"

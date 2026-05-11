@@ -1,0 +1,3291 @@
+# AWStats Kazakh (kk) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Kazakh\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#------------------------------------------------------------------------------
+# Ай аттары
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "қаң"
+
+msgid "month_02"
+msgstr "ақп"
+
+msgid "month_03"
+msgstr "нау"
+
+msgid "month_04"
+msgstr "сәу"
+
+msgid "month_05"
+msgstr "мам"
+
+msgid "month_06"
+msgstr "мау"
+
+msgid "month_07"
+msgstr "шіл"
+
+msgid "month_08"
+msgstr "там"
+
+msgid "month_09"
+msgstr "қыр"
+
+msgid "month_10"
+msgstr "қаз"
+
+msgid "month_11"
+msgstr "қар"
+
+msgid "month_12"
+msgstr "жел"
+
+#------------------------------------------------------------------------------
+# Апта күндерінің аттары
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "жек"
+
+msgid "DayOfWeek_1"
+msgstr "дүй"
+
+msgid "DayOfWeek_2"
+msgstr "сей"
+
+msgid "DayOfWeek_3"
+msgstr "сәр"
+
+msgid "DayOfWeek_4"
+msgstr "бей"
+
+msgid "DayOfWeek_5"
+msgstr "жұм"
+
+msgid "DayOfWeek_6"
+msgstr "сен"
+
+#------------------------------------------------------------------------------
+# Интерфейс элементтері
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "үшін Кеңейтілген Веб Статистикасы"
+
+msgid "Statistics for"
+msgstr "Статистикасы"
+
+msgid "main"
+msgstr "негізгі"
+
+msgid "Switch to light mode"
+msgstr "Жарық режимге ауысу"
+
+msgid "Switch to dark mode"
+msgstr "Қараңғы режимге ауысу"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "Байт"
+
+msgid "Filter"
+msgstr "Сүзгі"
+
+msgid "Exclude filter"
+msgstr "Шығару сүзгісі"
+
+msgid "Top"
+msgstr "Ең жоғары"
+
+msgid "Full list"
+msgstr "Толық тізім"
+
+msgid "Last"
+msgstr "Соңғы"
+
+msgid "Average"
+msgstr "Орташа"
+
+msgid "Export"
+msgstr "Экспорттау"
+
+msgid "Details"
+msgstr "Мәліметтер"
+
+msgid "Version"
+msgstr "Нұсқа"
+
+msgid "thousands_separator"
+msgstr " "
+
+msgid "dateformat_long"
+msgstr "dd.mm.yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd.mm.yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "%s ж"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s ж"
+
+#------------------------------------------------------------------------------
+# Навигация панелі
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "AWStats Ай Таңдағышы"
+
+msgid "nav_category_basic"
+msgstr "Негізгі құжаттар"
+
+msgid "nav_category_guide"
+msgstr "Пайдаланушы нұсқаулығы"
+
+msgid "nav_category_reference"
+msgstr "Анықтамалық ресурстар"
+
+msgid "nav_category_integration"
+msgstr "Интеграция және кеңейтулер"
+
+msgid "nav_category_dev"
+msgstr "Әзірлеуші құжаттамасы"
+
+msgid "nav_changelog"
+msgstr "Өзгерістер журналы"
+
+msgid "nav_what"
+msgstr "AWStats дегеніміз не"
+
+msgid "nav_license"
+msgstr "Лицензия"
+
+msgid "nav_glossary"
+msgstr "Глоссарий"
+
+msgid "nav_setup"
+msgstr "Орнату және конфигурациялау"
+
+msgid "nav_upgrade"
+msgstr "Жаңарту нұсқаулығы"
+
+msgid "nav_config"
+msgstr "Конфигурация параметрлері"
+
+msgid "nav_extra"
+msgstr "Қосымша бөлімдер"
+
+msgid "nav_tools"
+msgstr "Басқа құралдар"
+
+msgid "nav_faq"
+msgstr "Жиі Қойылатын Сұрақтар"
+
+msgid "nav_security"
+msgstr "Қауіпсіздік кеңестері"
+
+msgid "nav_compare"
+msgstr "Салыстыру"
+
+msgid "nav_benchmark"
+msgstr "Өнімділік сынақтары"
+
+msgid "nav_webmin"
+msgstr "Webmin модулі"
+
+msgid "nav_dolibarr"
+msgstr "Dolibarr модулі"
+
+msgid "nav_contrib"
+msgstr "Үлес ресурстары"
+
+msgid "nav_plugins"
+msgstr "Плагин әзірлеу"
+
+msgid "nav_hooks"
+msgstr "Плагин ілмектері"
+
+msgid "nav_graphs"
+msgstr "Плагин графиктері"
+
+msgid "Back to top"
+msgstr "Жоғары қайту"
+
+msgid "nav_select_month"
+msgstr "Айды таңдаңыз"
+
+#------------------------------------------------------------------------------
+# Негізгі статистикалық көрсеткіштер
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "Бірегей келушілер"
+
+msgid "Visits"
+msgstr "Келулер"
+
+msgid "Visits duration"
+msgstr "Келу ұзақтығы"
+
+msgid "First visit"
+msgstr "Бірінші келу"
+
+msgid "Last visit"
+msgstr "Соңғы келу"
+
+msgid "Visits/Visitor"
+msgstr "Келулер/Келуші"
+
+msgid "Pages/Visit"
+msgstr "Беттер/Келу"
+
+msgid "Hits/Visit"
+msgstr "Соққылар/Келу"
+
+msgid "KB/Visit"
+msgstr "КБ/Келу"
+
+msgid "KB/Visits"
+msgstr "КБ/Келулер"
+
+msgid "Pages"
+msgstr "Беттер"
+
+msgid "Hits"
+msgstr "Соққылар"
+
+msgid "Bandwidth"
+msgstr "Өткізу қабілеттілігі"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "с"
+
+msgid "unit_min"
+msgstr "мин"
+
+msgid "unit_h"
+msgstr "сағ"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "Құрылғы түрлері"
+
+msgid "Device Type"
+msgstr "Құрылғы түрі"
+
+msgid "Percent"
+msgstr "Пайыз"
+
+msgid "Mobile"
+msgstr "Мобильді"
+
+msgid "Pause & Go"
+msgstr "Кідірту және жалғастыру"
+
+msgid "Complete"
+msgstr "Аяқталды"
+
+msgid "Tablet"
+msgstr "Планшет"
+
+msgid "Tv"
+msgstr "Теледидар"
+
+msgid "Wearable"
+msgstr "Киілетін құрылғы"
+
+msgid "Bot"
+msgstr "Бот"
+
+msgid "Desktop"
+msgstr "Үстелдік компьютер"
+
+msgid "Normal browsing traffic"
+msgstr "Қалыпты шолу трафигі"
+
+msgid "Abnormal browsing traffic"
+msgstr "Қалыптан тыс шолу трафигі"
+
+msgid "Viewed"
+msgstr "Қаралды"
+
+msgid "Not viewed"
+msgstr "Қаралмады"
+
+msgid "Abnormal browsing traffic note"
+msgstr "Қалыптан тыс шолу трафигі мыналарды қамтиды: іздеу жүйесі роботтары, AI оқыту роботтары, осалдық сканерлері және HTTP/HTTPS спецификацияларына сәйкес келмейтін сұраулар"
+
+msgid "File size"
+msgstr "Файл өлшемі"
+
+msgid "File type"
+msgstr "Файл түрі"
+
+msgid "Downloads"
+msgstr "Жүктеулер"
+
+msgid "Request time"
+msgstr "Сұрау уақыты"
+
+msgid "Total requests"
+msgstr "Сұраулар саны"
+
+msgid "Frequency"
+msgstr "Жиілік"
+
+msgid "Average frequency"
+msgstr "Орташа жиілік"
+
+msgid "Seconds"
+msgstr "Секунд"
+
+msgid "First"
+msgstr "Бірінші"
+
+msgid "Mails"
+msgstr "Хаттар"
+
+msgid "Size"
+msgstr "Өлшемі"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "Ескерту: Бұл файлды жойсаңыз, күні бойынша барлық статистика"
+
+msgid "will be lost/reset."
+msgstr "жоғалады/қалпына келтіріледі!"
+
+msgid "Last config file used to build this data file was"
+msgstr "Осы деректер файлын құру үшін пайдаланылған соңғы конфигурация файлы"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "Әр бөлімнің басы үшін осы файлдағы позициясы (байттардағы ығысу) үшін"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "тікелей I/O қолжетімділігі. Осы файлдың бір жерінде өзгерістер енгізсеңіз, сіз"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "сонымен қатар MAP бөлімін толығымен жойыңыз (AWStats оны келесі жаңартуда қайта жазады)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = Өңделген соңғы жазбаның күні - Соңғы журналдағы соңғы жазбаның жол нөмірі - Соңғы журналдағы соңғы жазбаның ығысуы - Соңғы жазбаның қолтаңба мәні"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = Тарих файлы үшін бірінші келу күні"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = Тарих файлы үшін соңғы келу күні"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = Соңғы жаңарту күні - Талданған жазбалар саны - Талданған ескі жазбалар саны - Талданған жаңа жазбалар саны - Талданған бүлінгендер саны - Талданған тасталғандар саны"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = Келулер саны"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = Бірегей келушілер саны"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = Белгілі хосттар саны"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = Белгісіз хосттар саны"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "Кластер ID - Беттер - Соққылар - Өткізу қабілеттілігі"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "Сағат - Беттер - Соққылар - Өткізу қабілеттілігі - Қаралмаған беттер - Қаралмаған соққылар - Қаралмаған өткізу қабілеттілігі"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "Күн - Беттер - Соққылар - Өткізу қабілеттілігі - Келулер"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "Домен - Беттер - Соққылар - Өткізу қабілеттілігі"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "Негізгі бет тек бет саны бойынша алғашқы %s бетті көрсетеді, толық тізімді мәліметтер бетінен қараңыз."
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "Хост - Беттер - Соққылар - Өткізу қабілеттілігі - Соңғы келу күні - [Соңғы келудің басталу күні] - [Соңғы келудің соңғы беті]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[Соңғы келудің басталу күні] және [Соңғы келудің соңғы беті] сессия аяқталмаған жағдайда ғана сақталады"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "Негізгі бет тек соққылар саны бойынша алғашқы %s жазбаны көрсетеді, толық тізімді мәліметтер бетінен қараңыз."
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "Кіру - Беттер - Соққылар - Өткізу қабілеттілігі - Соңғы келу"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "Робот ID - Соққылар - Өткізу қабілеттілігі - Соңғы келу - robots.txt соққылары"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "Құрт ID - Соққылар - Өткізу қабілеттілігі - Соңғы келу"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "Электрондық пошта - Соққылар - Өткізу қабілеттілігі - Соңғы келу"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "Негізгі бет тек соққылар саны бойынша алғашқы %s электрондық поштаны көрсетеді, толық тізімді мәліметтер бетінен қараңыз."
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - Беттер - Өткізу қабілеттілігі - Кіру - Шығу"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "Файл түрі - Соққылар - Өткізу қабілеттілігі - Сығылмағанға дейінгі өткізу қабілеттілігі - Сығылғаннан кейінгі өткізу қабілеттілігі"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "Сұрау уақыт ауқымы - Сұрау уақыт жиілігі"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "Жүктеме ауқымы - Жүктеме жиілігі"
+
+msgid "Session range - Number of visits"
+msgstr "Сессия ауқымы - Келулер саны"
+
+msgid "URL with %s errors - Hits"
+msgstr "%s қателері бар URL - Соққылар"
+
+msgid "Last URL referrer"
+msgstr "Соңғы URL сілтемешісі"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "Қателер - Соққылар - Өткізу қабілеттілігі"
+
+msgid "Search keywords - Number of search"
+msgstr "Іздеу кілт сөздері - Іздеу саны"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "Негізгі бет тек іздеу саны бойынша алғашқы %s кілт сөзді көрсетеді, толық тізімді мәліметтер бетінен қараңыз."
+
+msgid "Search keyphrases - Number of search"
+msgstr "Іздеу кілт сөз тіркестері - Іздеу саны"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "Негізгі бет тек іздеу саны бойынша алғашқы %s кілт сөз тіркесін көрсетеді, толық тізімді мәліметтер бетінен қараңыз."
+
+msgid "External page referers - Pages - Hits"
+msgstr "Сыртқы бет сілтемешілері - Беттер - Соққылар"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "Негізгі бет тек бет саны бойынша алғашқы %s сыртқы сілтемешіні көрсетеді, толық тізімді мәліметтер бетінен қараңыз."
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "Іздеу жүйесі сілтемешілерінің ID - Беттер - Соққылар"
+
+msgid "Origin - Pages - Hits"
+msgstr "Шығу тегі - Беттер - Соққылар"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "Белгісіз сілтемеші браузері - Соңғы келу күні"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "Белгісіз сілтемеші ОЖ - Соңғы келу күні"
+
+msgid "Screen size - Hits"
+msgstr "Экран өлшемі - Соққылар"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "Браузер ID - Соққылар - Беттер"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "Жүктеулер - Соққылар - Өткізу қабілеттілігі"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "Хаттама - Соққылар - Өткізу қабілеттілігі"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "Иконка Күйі - Түрі:200:404:Басқа"
+
+#------------------------------------------------------------------------------
+# Уақыт кезеңінің аудармалары
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "Түн ортасы · AWStats ұйықтап жатыр, сіз әлі деректерге қарап отырсыз? Нанғысыз"
+
+msgid "period_01"
+msgstr "Таңғы 1 · Ұйықтамай отырсыз ба әлде жұмыстан жаңа шықтыңыз ба?"
+
+msgid "period_02"
+msgstr "Таңғы 2 · Тіпті боттар сізден де көп жұмыс істейді"
+
+msgid "period_03"
+msgstr "Таңғы 3 · Қала ұйықтап жатыр, сервер үстеме уақытта жұмыс істейді"
+
+msgid "period_04"
+msgstr "Таңғы 4 · Не жарқырауық, сіздің экраныңыз ба әлде сервер шамы ма?"
+
+msgid "period_05"
+msgstr "Таңғы 5 · Ерте тұрған құс құртты жейді"
+
+msgid "period_06"
+msgstr "Таңғы 6 · Біреу оянды, біреу әлі ұйықтаған жоқ"
+
+msgid "period_07"
+msgstr "Таңғы 7 · Жұмысқа бара жатып интернетті шарлау уақыты"
+
+msgid "period_08"
+msgstr "Таңғы 8 · Бірінші іс: кешегі деректерді тексеру"
+
+msgid "period_09"
+msgstr "Таңғы 9 · Алтын уақыт, жұмыс істеудің ең жақсы уақыты"
+
+msgid "period_10"
+msgstr "Таңғы 10 · Кофе уақыты, трафиктің өскенін тексеру"
+
+msgid "period_11"
+msgstr "Таңғы 11 · Түскі асқа бір сағат қалды, тағы біраз шыда"
+
+msgid "period_12"
+msgstr "Түскі 12 · Сервер: бәрі түскі асқа кетті, мен біраз демалайын"
+
+msgid "period_13"
+msgstr "Түстен кейін 13 · Ұйқышылдық келеді, бірақ деректер ұйықтамайды"
+
+msgid "period_14"
+msgstr "Түстен кейін 14 · Шай уақыты, деректермен бірге дәмді"
+
+msgid "period_15"
+msgstr "Түстен кейін 15 · Бүгінгі трафик графигі сіздің көңіл-күйіңізге ұқсайды"
+
+msgid "period_16"
+msgstr "Түстен кейін 16 · Жұмыс уақытының аяқталуына X сағат қалды, трафик жылдамдайды"
+
+msgid "period_17"
+msgstr "Кешкі 17 · Жұмыс бітті! Бірақ сервер жұмыс істеуді жалғастырады"
+
+msgid "period_18"
+msgstr "Кешкі 18 · Кешкі ас уақыты"
+
+msgid "period_19"
+msgstr "Кешкі 19 · Алтын уақыт, пик трафик"
+
+msgid "period_20"
+msgstr "Кешкі 20 · Диванға жату, сіз 114514-ші келушісіз"
+
+msgid "period_21"
+msgstr "Кешкі 21 · Түн тереңдейді, жасырын деректерге қарайтын түнгі үкі +1"
+
+msgid "period_22"
+msgstr "Кешкі 22 · Бүгінгі деректер жақында дайын болады, қобалжып тұрсыз ба?"
+
+msgid "period_23"
+msgstr "Кешкі 23 · AWStats: ұйықтайтын уақыт, ертең қайтадан жұмыс істеу керек"
+
+#------------------------------------------------------------------------------
+# Уақыт өлшемдері
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "Кезең"
+
+msgid "Year"
+msgstr "Жыл"
+
+msgid "Month"
+msgstr "Ай"
+
+msgid "Months"
+msgstr "Айлар"
+
+msgid "Date"
+msgstr "Күн"
+
+msgid "Day"
+msgstr "Күн"
+
+msgid "Hour"
+msgstr "Сағат"
+
+msgid "Hours"
+msgstr "Сағаттар"
+
+msgid "Day of week"
+msgstr "Апта күні"
+
+msgid "When"
+msgstr "Қашан"
+
+msgid "%s Server Management Panel"
+msgstr "%s  серверін басқару панелі"
+
+msgid "Server Administration"
+msgstr "Қарапайым және тиімді сервер шешімі"
+
+#------------------------------------------------------------------------------
+# Келуші өлшемдері
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "Жарамсыз URL параметрлері"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "Сұралған бетті жарамсыз немесе қате пішімделген URL параметрлері себебінен жүктеу мүмкін емес."
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "Бұл қате URL тергеннен, параметр бөлгіштердің жетіспеушілігінен немесе жарамсыз конфигурация атауын пайдаланудан туындауы мүмкін."
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "Енгізген URL-ді тексеріп, барлық параметрлердің дұрыс пішімделгеніне көз жеткізіңіз."
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "SiteDomain параметрі сіздің config/domain файлыңызда анықталмаған немесе сізде файлды орындау рұқсаты болмауы мүмкін."
+
+msgid "Please run as Administrator to set permissions"
+msgstr "Рұқсаттарды орнату үшін Әкімші ретінде іске қосыңыз"
+
+msgid "Please set execute permission"
+msgstr "Орындау рұқсатын орнатыңыз"
+
+msgid "Or if you prefer numeric mode"
+msgstr "Немесе сандық режимді қаласаңыз"
+
+msgid "View Report Directly"
+msgstr "Есепті тікелей көру"
+
+msgid "AWStats Log Viewer"
+msgstr "AWStats журнал қарау құралы"
+
+msgid "Month Selection"
+msgstr "Айды таңдау"
+
+msgid "Who"
+msgstr "Кім"
+
+msgid "Visitors"
+msgstr "Келушілер"
+
+msgid "Countries"
+msgstr "Елдер"
+
+msgid "flag_icon"
+msgstr "ту"
+
+msgid "Country-Region-City"
+msgstr "Ел-Аймақ-Қала"
+
+msgid "Code"
+msgstr "Код"
+
+msgid "Known"
+msgstr "Белгілі"
+
+msgid "unknownos"
+msgstr "белгісіз ОЖ"
+
+msgid "unknownbrowser"
+msgstr "белгісіз браузер"
+
+msgid "Unresolved IP Address"
+msgstr "Шешілмеген IP мекенжайы"
+
+msgid "Unknown File Type"
+msgstr "Белгісіз файл түрі"
+
+msgid "Unknown Size"
+msgstr "Белгісіз өлшем"
+
+msgid "Unknown Time"
+msgstr "Белгісіз уақыт"
+
+msgid "Unknown Browser"
+msgstr "Белгісіз браузер"
+
+msgid "Unknown OS"
+msgstr "Белгісіз ОЖ"
+
+msgid "Unknown Visitor"
+msgstr "Белгісіз келуші"
+
+msgid "Unknown Visitor (Total)"
+msgstr "Белгісіз келуші (Барлығы)"
+
+msgid "Unknown Country"
+msgstr "Белгісіз ел"
+
+msgid "Unknown Country (Region)"
+msgstr "Белгісіз ел (Аймақ)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "Белгісіз келуші (тақырып)"
+
+msgid "PageStayTime"
+msgstr "Бетте қалу уақытын бағалау мүмкін емес"
+
+msgid "Unknown OS (Link)"
+msgstr "Белгісіз ОЖ (сілтеме)"
+
+msgid "Unknown OS (Row)"
+msgstr "белгісіз операциялық жүйе"
+
+msgid "Unknown Browser (Link)"
+msgstr "Белгісіз браузер (сілтеме)"
+
+msgid "Unknown Browser (Row)"
+msgstr "белгісіз браузер"
+
+msgid "Unknown Screen"
+msgstr "Белгісіз экран өлшемі"
+
+msgid "Login"
+msgstr "Кіру аты"
+
+msgid "Anonymous"
+msgstr "Аноним"
+
+msgid "Robots"
+msgstr "Роботтар"
+
+msgid "Different robots"
+msgstr "Әртүрлі роботтар"
+
+msgid "Hits on robots.txt"
+msgstr "Жоғарыда тізімделген іздеу жүйесі роботтарының \"қалыптан тыс шолу\" санатына жататын трафигі басқа кестелер мен графиктерге қосылмайды. \"+\" белгісінен кейінгі сан robots.txt файлына сәтті сұраулар санын көрсетеді"
+
+msgid "Worms"
+msgstr "Құрттар"
+
+msgid "Different worms"
+msgstr "Әртүрлі құрттар"
+
+msgid "Target"
+msgstr "Мақсат"
+
+msgid "Grabber"
+msgstr "Граббер"
+
+#------------------------------------------------------------------------------
+# Пішім сипаттамалары
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "Мәтіндік файл (1963 жылы ASCII стандартталған, пішімделмеген таза мәтін. Барлық бастапқы кодтың, конфигурацияның және журналдардың негізі. Unix LF пайдаланады, Windows жаңа жол үшін CRLF пайдаланады, бүгінгі күнге дейін компьютерлердің ең әмбебап деректер форматы)"
+
+msgid "mime_log"
+msgstr "Журнал файлы (жүйе мен қолданбалардың жұмыс істеу ақпаратын жазатын таза мәтіндік файл, ақауларды жою, өнімділікті талдау және қауіпсіздік аудиті үшін жиі қолданылады. Стандартты пішімдерге Apache combined log, Nginx access log, syslog және т.б. кіреді)"
+
+msgid "mime_page"
+msgstr "HTML веб-беті (1989 жылы Тим Бернерс-Ли WWW-ді ойлап тапты, 1990 жылы HTML/HTTP/URL үш негізгі технологияны анықтады, патентсіз тегін ұсынды. 2014 жылы HTML5 W3C ресми стандарты болды, дисплейді, мультимедияны және басып шығаруды қолдайды. 2016 жылы Тьюринг сыйлығын алды)"
+
+msgid "mime_khtml"
+msgstr "KHTML веб-бет қозғалтқышы (1998 жылы KDE 2.0 шығарылды, Konqueror браузерінің көрсету қозғалтқышы. 2001 жылы Apple KHTML негізінде WebKit жасады, 2008 жылы Google WebKit-тен Blink бөліп шығарды, бұл Chrome, Edge, Safari және басқа браузерлердің ядросына айналды. KHTML - ашық бастапқы код қауымдастығының заманауи браузер қозғалтқыштарына іргетасын қалауының үлгісі, оның технологиялық мұрасы WebKit/Blink арқылы жалғасуда)"
+
+msgid "mime_script"
+msgstr "Динамикалық скрипт (интерпретацияланатын тіл, құрастыруды қажет етпейді. ASP, JSP, CGI, ColdFusion, Tcl, VBScript және т.б. қамтиды, ерте веб-дамытуда, жүйе әкімшілігінде, тапсырмаларды автоматтандыруда кеңінен қолданылды. Python, Ruby, JavaScript сияқты заманауи скрипт тілдері толық стекті әзірлеудің негізгі құралдарына айналды)"
+
+msgid "mime_js"
+msgstr "JavaScript скрипті (1995 жылы Брендан Айх Netscape-те 10 күнде жасады, браузерлердің тума бағдарламалау тілі. 1997 жылы ECMAScript стандартталды, 2009 жылы Node.js пайда болып, оны толық стекті тілге айналдырды, npm - әлемдегі ең үлкен пакет менеджері. Бірнеше жыл қатарынан GitHub-тағы ең танымал бағдарламалау тілі)"
+
+msgid "mime_py"
+msgstr "Python скрипті (1991 жылы Гвидо ван Россум жасаған, мәжбүрлі шегініс және таза синтаксиспен танымал. Веб-дамытуда, деректер ғылымында, жасанды интеллектте, автоматтандырылған жедел басқаруда кеңінен қолданылады. TIOBE жыл бағдарламалау тілін бірнеше рет жеңіп алған)"
+
+msgid "mime_sh"
+msgstr "Shell скрипті (1971 жылы Unix пайда болды, командалық скрипт тілі. Жүйе әкімшілігінде, тапсырмаларды автоматтандыруда, қызметтерді іске қосуда, орналастыру скрипттерінде қолданылады. Linux әкімшілері үшін маңызды дағды)"
+
+msgid "mime_rb"
+msgstr "Ruby скрипті (1995 жылы Юкихиро Мацумото жасаған, әзірлеушінің бақытына назар аударады. Ruby on Rails каркасы конфигурациядан гөрі конвенция парадигмасын ашты, заманауи веб-каркастардың жобалануына әсер етті)"
+
+msgid "mime_pl"
+msgstr "Perl скрипті (1987 жылы Ларри Уолл жасаған, прагматизмімен танымал, \"Швейцариялық әскер пышағы\" деп аталады. CPAN заманауи тіл пакет менеджерлерінің ізашары болды, мәтінді өңдеу, жүйе әкімшілендіру және CGI саласында терең әсер етті)"
+
+msgid "mime_php"
+msgstr "PHP динамикалық беті (1995 жылы Расмус Лердорф жасаған, арнайы веб-дамытуға арналған. Әлемдегі веб-сайттардың 70%-дан астамы пайдаланады, WordPress, Facebook, Wikipedia және т.б. платформаларды басқарады. PHP 8 JIT құрастыруды енгізді, өнімділікті айтарлықтай арттырды)"
+
+msgid "mime_image"
+msgstr "Сурет файлы"
+
+msgid "mime_document"
+msgstr "Құжат файлы"
+
+msgid "mime_package"
+msgstr "Бағдарламалық жасақтама пакеті"
+
+msgid "mime_archive"
+msgstr "Gzip сығылған файлы (1992 жылы GNU жобасы, DEFLATE алгоритміне негізделген. Веб-те жауап мазмұнын динамикалық сығу үшін қолданылады, сығу дәрежесі әдетте 60-90%. 2015 жылдан кейін кейбір сценарийлерде Brotli алмастырылды, бірақ сервер жағында ең кең қолданылатын сығу пішімі болып қала береді)"
+
+msgid "mime_audio"
+msgstr "Аудио файл"
+
+msgid "mime_video"
+msgstr "Бейне файл"
+
+msgid "mime_jscript"
+msgstr "JavaScript (1995 жылы Брендан Айх әзірлеген)"
+
+msgid "mime_json"
+msgstr "JSON деректері (2001 жылы Дуглас Крокфорд ұсынған, жеңіл деректер алмасу пішімі, Веб API үшін де-факто стандарт)"
+
+msgid "mime_vbs"
+msgstr "VBScript (1996 жылы Microsoft әзірлеген, Windows скрипт тілі, ASP беттері мен Windows басқару скрипттері үшін қолданылады. PowerShell және JavaScript таралуымен бірте-бірте қолданыстан шығарылды)"
+
+msgid "mime_conf"
+msgstr "Конфигурация файлы (бағдарламалық жасақтама конфигурациясын сақтауға арналған мәтіндік пішім, жиі кездесетін пішімдер: INI, JSON, YAML, TOML, XML. Linux жүйе конфигурациялары негізінен /etc каталогында болады)"
+
+msgid "mime_css"
+msgstr "CSS стильдер кестесі (1996 жылдың желтоқсанында W3C CSS1 бірінші ресми стандарт ретінде шығарды, 1998 жылы CSS2 позициялау мен медиа түрлерін қосты, 2011 жылдан бастап CSS3 модульді түрде дөңгелек бұрыштарды, анимацияларды, икемді қораптарды, торлы орналасуды және бейімделгіш дизайнды енгізді. HTML және JavaScript-пен бірге фронт-үштің үш негізгі технологиясы болып табылады, барлық заманауи браузерлер (Chrome, Firefox, Safari, Edge) тума түрде қолдайды, веб-стильдерді анықтаудың жалғыз стандарты)"
+
+msgid "mime_xsl"
+msgstr "XSL стильдер кестесі (1999 жылы W3C стандарты, XML құжатты түрлендіру тілі, XML-ді HTML/PDF/мәтінге түрлендіре алады. JSON таралғаннан кейін қолданылуы азайды)"
+
+msgid "mime_runtime"
+msgstr "Орындалатын файл (EXE, ELF, Mach-O және операциялық жүйенің басқа орындалатын пішімдері, машиналық код пен жүктеу ақпаратын қамтиды)"
+
+msgid "mime_library"
+msgstr "Кітапхана файлы (DLL, SO, dylib және басқа динамикалық байланыстырылған кітапханалар, бағдарлама орындалу барысында жүктелетін ортақ код)"
+
+msgid "mime_swf"
+msgstr "Flash анимациясы (1996 жылы Macromedia әзірлеген, кейін Adobe-ға өтті. Интерактивті веб-анимация стандарты, бір кездері интернет анимация мен ойындарда үстемдік етті. Қиындықтар: плагинге тәуелді, мобильдіде қолдау жоқ, жоғары қауіпсіздік тәуекелі. 2017 жылы Adobe жою туралы жариялады, 2020 жылы толығымен тоқтатылды, HTML5/CSS3/JS алмастырылды)"
+
+msgid "mime_dtd"
+msgstr "DTD құжат түрін анықтау (XML спецификациясы, XML құжат құрылымын анықтайды, XML заңдылығын тексеру үшін қолданылады)"
+
+msgid "mime_csv"
+msgstr "CSV деректер пішімі (үтірмен бөлінген мәндер, кестелік мәліметтерге арналған әмбебап пішім, Excel және дерекқор импорт/экспорт стандарты)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (Java қолданбасын іске қосқыш, 2000-шы жылдардағы Java үстелдік қолданбаны тарату технологиясы, қазір жойылды)"
+
+msgid "mime_lit"
+msgstr "Microsoft Reader электронды кітабы (2000 жылы Microsoft шығарған, LIT пішімі, жойылды)"
+
+msgid "mime_svg"
+msgstr "SVG векторлық графикасы (1999 жылы W3C стандарты, Microsoft ұзақ уақыт өзінің VML пішімін насихаттағандықтан, IE браузері 2011 жылға дейін қолдамады, бұл таралуын кешіктірді. 2015 жылдан кейін IE жойылуымен және жоғары ажыратымдылықты экрандардың таралуымен иконалар мен логотиптер үшін таңдаулы пішімге айналды)"
+
+msgid "mime_ai"
+msgstr "Adobe Illustrator векторлық графикасы (1987 жылы шығарылған, салалық стандарт векторлық графика пішімі, баспа дизайны, логотиптер мен иконалар үшін таңдаулы)"
+
+msgid "mime_phshop"
+msgstr "Photoshop суреті (1990 жылы Adobe шығарған, Photoshop бастапқы файл пішімі PSD, кескінді өңдеудің салалық стандарты)"
+
+msgid "mime_ttf"
+msgstr "TrueType қарпі (1989 жылы Apple және Microsoft бірлесіп әзірлеген, векторлық қаріп пішімі, экранда көрсету мен басып шығару біркелкі, заманауи операциялық жүйелердің әдепкі қаріп пішімі)"
+
+msgid "mime_fon"
+msgstr "WOFF2 веб-қарпі (2014 жылы W3C ұсынысы, Brotli қысу алгоритмін қолданады, ескі WOFF-пен салыстырғанда көлемі шамамен 30% азаяды, TTF/OTF-мен салыстырғанда 50%-дан астам азаяды, қазіргі уақытта барлық заманауи браузерлер қолдайды, заманауи веб-қаріптердің таңдаулы пішімі, браузерлердің 98%-дан астамы қолдайды)"
+
+msgid "mime_pdf"
+msgstr "PDF құжаты (1993 жылы Adobe әзірлеген, 2008 жылы ISO халықаралық стандартына айналды. Платформа тәуелсіз құжат пішімі, пішім біркелкілігін сақтайды, электрондық құжаттарды таратудың жаһандық стандарты)"
+
+msgid "mime_dotnet"
+msgstr "ASP.NET динамикалық беті (2002 жылы Microsoft шығарған, Windows платформасына арналған динамикалық веб-технология, .NET Framework бөлігі)"
+
+msgid "mime_mdb"
+msgstr "Access дерекқоры (Microsoft Access дерекқор файлы, 1992 жылы шығарылған, Windows үстелдік дерекқор шешімі)"
+
+msgid "mime_md"
+msgstr "Markdown құжаты (2004 жылы Джон Грубер жасаған, синтаксис дизайны reStructuredText және Setext-тен әсерленген. Негізгі дизайн философиясы 'оқылатын нәрсе көрсетіледі', бастапқы іске асыру Markdown.pl Perl тілінде жазылған және тұрақты өрнектер негізінде мәтінді түрлендіруді жүзеге асырған. Туынды спецификациялар GFM (2013), CommonMark (2017), Pandoc Markdown және т.б. қамтиды. GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress сияқты экожүйелерді басқарады, статикалық веб-сайт генераторлары мен әзірлеуші құжаттамасы үшін де-факто стандартты пішімге айналды)"
+
+msgid "mime_crystal"
+msgstr "Crystal Reports есеп пішімі (SAP бизнес аналитика есебі, корпоративтік есеп стандартты пішімі)"
+
+msgid "mime_libreoffice"
+msgstr "LibreOffice құжаты (2010 жылы The Document Foundation әзірлеген, OpenOffice тармағы, ODF стандартының іске асырылуы, негізгі ашық бастапқы кодты кеңсе пакеті)"
+
+msgid "mime_encrypt"
+msgstr "Шифрланған файл (көру үшін шифрін ашу қажет файл, жиі кездесетін кеңейтімдер: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "GPS траектория деректері (GPS алмасу пішімі, географиялық орналасу ақпаратын жазады, спорттық сағаттар мен навигациялық құрылғыларға арналған әмбебап пішім)"
+
+msgid "mime_diskimage"
+msgstr "Диск кескіні (DMG, ISO, IMG және басқа оптикалық диск/диск кескін файлдары, бағдарламалық жасақтаманың таратылуы немесе сақтау медиасын резервтік көшіру үшін қолданылады)"
+
+msgid "mime_vm"
+msgstr "Виртуалды машина кескіні (VMDK, VDI, VHDX, OVA және т.б. виртуалды диск файлдары, VMware, VirtualBox, Hyper-V сияқты виртуализация платформаларының пішімдері)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent шеткі файлы (2001 жылы Брэм Коэн ойлап тапқан, P2P жүктеу индекс файлы, файл метадеректері мен Трекер ақпаратын қамтиды)"
+
+msgid "mime_gis"
+msgstr "GIS географиялық ақпараттық жүйесінің деректері (Shapefile, GeoJSON және басқа геокеңістіктік деректер пішімдері, карталар мен кеңістіктік талдау үшін қолданылады)"
+
+msgid "mime_ebook"
+msgstr "Электрондық кітап (EPUB, MOBI, AZW және басқа электрондық кітап пішімдері. EPUB халықаралық стандарт, MOBI/AZW Amazon Kindle пішімі)"
+
+msgid "mime_avif"
+msgstr "AVIF кескіні (2019 жылы Ашық Медиа Альянсы шығарған, AV1 кодтауына негізделген, сығу дәрежесі WebP-ден 50% жақсы, жаңа буын веб-кескін стандарты)"
+
+msgid "mime_markdown"
+msgstr "Markdown құжаты (2004 жылы Джон Грубер жобалаған, жеңіл белгілеу тілі, GitHub README, техникалық құжаттама, форум жазбалары үшін әмбебап пішім)"
+
+msgid "mime_yaml"
+msgstr "YAML конфигурациясы (2001 жылы Кларк Эванс жобалаған, адам оқи алатын деректерді сериализациялау пішімі, Kubernetes, Ansible, Docker Compose конфигурация файлдарына арналған стандартты пішім)"
+
+msgid "mime_toml"
+msgstr "TOML конфигурациясы (2013 жылы Том Престон-Вернер жобалаған, 'Tom's Obvious Minimal Language', Rust/Cargo, Python/pip, Go сияқты заманауи құралдардың конфигурация файл пішімі)"
+
+msgid "mime_vue"
+msgstr "Vue компонент файлы (2014 жылы Эван Ю ұсынған, прогрессивті JavaScript фреймворкі. Бір файлды компоненттер (SFC) арқылы HTML, CSS және JS-ті тамаша біріктіріп, әзірлеу тиімділігін айтарлықтай арттырады. Бұл әлемдегі ең танымал frontend фреймворктерінің бірі. Сонымен қатар, VitePress сияқты заманауи статикалық сайт генераторларының өзегі ретінде интерактивті техникалық құжаттама мен блогтарды басқару үшін кеңінен қолданылады.)"
+
+msgid "mime_wasm"
+msgstr "WebAssembly модулі (2017 жылы W3C стандарты, браузерде жоғары өнімділікті орындау пішімі, C/C++/Rust/R нысанаға құрастырыла алады, өнімділігі тумаға жақын)"
+
+msgid "mime_jsx"
+msgstr "React JSX компоненті (2013 жылы Facebook JavaScript XML-ді ұсынды, React каркасының компонент синтаксисі, HTML-ді JavaScript-те жазудың инновациялық парадигмасы)"
+
+msgid "mime_tsx"
+msgstr "TypeScript TSX компоненті (2012 жылы Microsoft әзірлеген, TypeScript + JSX, React типтік қауіпсіздікті әзірлеудің стандартты тәсілі)"
+
+msgid "mime_heif"
+msgstr "HEIF кескіні (2015 жылы MPEG стандарты, тиімді кескін файл пішімі, Apple экожүйесінде кеңінен қолданылады)"
+
+msgid "mime_heic"
+msgstr "HEIC кескіні (Apple HEIF іске асыруы, iPhone-ның әдепкі фото пішімі, iOS/macOS тума қолдайды)"
+
+msgid "mime_gltf"
+msgstr "GLTF 3D моделі (GL тасымалдау пішімі, '3D әлемінің JPEG-і', 2015 жылы Khronos Group шығарған, веб 3D стандартты пішімі)"
+
+msgid "mime_glb"
+msgstr "GLB бинарлық 3D моделі (GLTF бинарлы нұсқасы, бір файл барлық ресурстарды қамтиды, 3D көріністерді тарату үшін қолданылады)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY глоссарийі (термин анықтама файлы, құжаттама жүйелерінде терминологияны басқару үшін қолданылады)"
+
+msgid "mime_cbz"
+msgstr "CBZ комиксі (ZIP сығылған комикс кескіндері, комикс коллекциясына арналған әмбебап пішім)"
+
+msgid "mime_cbr"
+msgstr "CBR комиксі (RAR сығылған комикс кескіндері, комикс коллекциясына арналған әмбебап пішім)"
+
+msgid "mime_fb2"
+msgstr "FB2 электронды кітабы (FictionBook 2.0, ресейлік электронды кітап пішімі, XML құрылымы, ашық бастапқы кодты оқу құралдары кеңінен қолдайды)"
+
+msgid "mime_kepub"
+msgstr "KEPUB электронды кітабы (Kobo-ға тән EPUB пішімі, Kobo электронды кітап оқу құралдарына арналған оңтайландырылған пішім)"
+
+msgid "mime_m4b"
+msgstr "M4B аудио кітап (MPEG-4 аудио кітап пішімі, бетбелгілерді қолдайды, iTunes аудио кітап пішімі)"
+
+msgid "mime_kfx"
+msgstr "Kindle KFX пішімі (2015 жылы Amazon шығарған, Kindle электронды кітаптарына арналған арнайы пішім, кеңейтілген типографика мен жылдам бет айналдыруды қолдайды)"
+
+msgid "mime_chm"
+msgstr "CHM анықтама файлы (1997 жылы Microsoft шығарған, құрастырылған HTML анықтама пішімі, Windows бағдарламалық жасақтамасының анықтамалық құжаттамасына арналған стандарт)"
+
+msgid "mime_mht"
+msgstr "MHT веб-архиві (1999 жылы Microsoft шығарған, бірыңғай файлды веб пішімі, IE браузерінің веб-беттерді сақтау пішімі)"
+
+msgid "mime_wml"
+msgstr "WML сымсыз белгілеу тілі (1999 жылы WAP стандарты, ерте функционалды телефондардың веб-бет файлдары үшін қолданылды, жойылды)"
+
+msgid "mime_xhtml"
+msgstr "XHTML веб-беті (2000 жылы W3C стандарты, HTML-дің XML нұсқасы, синтаксисі қатаңырақ. 2009 жылы W3C техникалық қызмет көрсетуді тоқтатты, назар HTML5-ке аударылды)"
+
+msgid "mime_xml"
+msgstr "XML құжаты (1998 жылы W3C стандарты, кеңейтілетін белгілеу тілі, веб-қызметтер, конфигурация файлдары, деректер алмасу үшін негізгі пішімі)"
+
+msgid "mime_sgml"
+msgstr "SGML құжаты (1986 жылы ISO стандарты, HTML-дің ізашары, стандартты жалпы белгілеу тілі, XML және HTML екеуі де SGML-ден шыққан)"
+
+msgid "mime_apng"
+msgstr "APNG анимациясы (2004 жылы Mozilla әзірлеген, PNG анимациялық кеңейтімі, GIF-тің заманауи баламасы, нақты түстер мен мөлдірлікті қолдайды)"
+
+msgid "mime_bmp"
+msgstr "BMP битмапы (Windows битмап пішімі, Windows 1.0-ден бастап тума қолдау табады. Сығылмаған, файл өлшемі үлкен, бірақ қарапайым құрылымы мен қосымша кодектерді қажет етпеуіне байланысты, Windows 11-дің Сурет үзінділері құралында, Paint бағдарламасында, EXE/MSI орнату пакеттеріндегі иконка ресурстарында, курсор файлдарында және кейбір ескі драйверлерде әлі күнге дейін қолданылады. Бірдей кескін сапасында файл өлшемі PNG-ден шамамен 3-10 есе үлкен. Көп жағдайда PNG/JPEG-мен ауыстырылған, бірақ Windows экожүйесі әлі кең үйлесімділікті сақтайды)"
+
+msgid "mime_cdr"
+msgstr "CDR векторлық графикасы (CorelDRAW-ға тән пішім, канадалық Corel компаниясы, векторлық графикалық дизайн бағдарламалық жасақтамасы)"
+
+msgid "mime_gif"
+msgstr "GIF кескіні (1987 жылы CompuServe әзірлеген, 256 түсті анимациялық кескін пішімі. Қиындықтар: түстер аз, кескін сапасы өрескел, мөлдірлікті қолдамайды, файл үлкен, кадр жиілігі төмен. APNG, WebP сияқты заманауи анимациялық кескін пішімдерімен алмастырылды)"
+
+msgid "mime_ico"
+msgstr "ICO иконкасы (Windows иконка файл пішімі, көп ажыратымдылықты қолдайды, веб-сайт favicon стандартты пішімі)"
+
+msgid "mime_jpeg"
+msgstr "JPEG кескіні (1992 жылы ISO стандарты, шығынды сығу фотосурет пішімі, интернет фотосуреттерінің де-факто стандарты)"
+
+msgid "mime_jpg"
+msgstr "JPEG кескіні (1992 жылы ISO стандарты, шығынды сығу фотосурет пішімі, интернет фотосуреттерінің де-факто стандарты)"
+
+msgid "mime_png"
+msgstr "PNG кескіні (1996 жылы W3C ұсынысы, нақты түстер мен мөлдірлікті қолдайды, GIF-тің статикалық баламасы, интернет шығынсыз кескін стандарты)"
+
+msgid "mime_ps"
+msgstr "PostScript бет сипаттамасы файлы (1985 жылы Adobe шығарған, бет сипаттау тілі, PDF-тің ізашары, басып шығару және баспа ісі үшін қолданылады)"
+
+msgid "mime_psb"
+msgstr "PSB үлкен құжат (Adobe Photoshop үлкен кескін пішімі, 2 ГБ-тан астам немесе 30000 пиксельден асатын алып кескіндерді қолдайды)"
+
+msgid "mime_psd"
+msgstr "PSD кескіні (Adobe Photoshop бастапқы файлы, қабаттарды, арналарды, жолдарды қолдайды, кескінді өңдеудің салалық стандарт пішімі)"
+
+msgid "mime_webp"
+msgstr "WebP кескіні (2010 жылы Google әзірлеген, веб-кескін пішімі, шығынды/шығынсыз сығуды және анимацияны қолдайды, сығу дәрежесі PNG-ден 25-35%, JPEG-ден 25% жақсы)"
+
+msgid "mime_woff"
+msgstr "WOFF веб-қарпі (2009 жылы жасалған, 2018 жылы W3C стандарты. TrueType/OpenType негізінде сығу, веб-қаріптерді жүктеуді оңтайландыру, заманауи веб-сайт иконка қаріптерінің стандартты пішімі)"
+
+msgid "mime_7z"
+msgstr "7z сығылған пакеті (1999 жылы Игорь Павлов әзірлеген, 7-Zip бағдарламасының меншікті пішімі. LZMA алгоритмі, жоғары сығу дәрежесі, ашық бастапқы код және тегін. Дәл осы сығу дәрежесінде 7z пішімі әдетте ZIP-тен 30-50% кіші, ашық бастапқы код қауымдастығында және бағдарламалық жасақтаманы таратуда жиі қолданылатын пішім)"
+
+msgid "mime_ace"
+msgstr "ACE сығылған пакеті (1990-шы жылдары әзірленген, WinACE бағдарламасының пішімі. Бір кездері RAR-мен бәсекелесті, салыстырмалы түрде жоғары сығу дәрежесі. 2007 жылы дамуы тоқтатылды, қазір 7z/RAR алмастырылған, сирек қолданылады)"
+
+msgid "mime_bz2"
+msgstr "BZIP2 сығылған пакеті (1996 жылы Джулиан Сьюард әзірлеген, блоктық сұрыптау сығу алгоритмі. Сығу дәрежесі GZIP-тен 15-20% жақсы, бірақ баяу. Linux ядросының бастапқы коды, ашық бастапқы код пакеттері үшін жиі қолданылатын пішім, кеңейтімі .bz2)"
+
+msgid "mime_cab"
+msgstr "CAB сығылған пакеті (1995 жылы Microsoft әзірлеген, Кабинет пішімі. Windows жүйесінің орнату пакеттерінің пішімі, драйверлер, жүйелік файлдарды тарату үшін қолданылады. Windows Installer (MSI) іштей CAB файлдарын сақтау үшін пайдаланады)"
+
+msgid "mime_dmg"
+msgstr "DMG диск кескіні (1980-ші жылдары Apple шығарған, Disk Image пішімі. macOS бағдарламалық жасақтамасын таратудың стандартты пішімі, екі рет басқанда виртуалды диск ретінде ілінеді, сүйреп апару арқылы қолданбаны орнатуға болады. Сығуды және шифрлауды қолдайды, Mac бағдарламалық жасақтамасын жүктеудің негізгі пішімі)"
+
+msgid "mime_emz"
+msgstr "EMZ сығылған кескін (Windows сығылған жетілдірілген метафайлы, EMF сығылған нұсқасы. Office құжаттарында векторлық графиканы сақтау пішімі, мәні бойынша GZIP сығылған EMF файлы)"
+
+msgid "mime_gz"
+msgstr "GZIP сығылған пакеті (1992 жылы Жан-Лу Гейли және Марк Адлер әзірлеген, GNU жобасы. Unix/Linux стандартты сығу құралы, HTTP тасымалындағы сығу үшін жиі қолданылатын пішім. Кеңейтімі .gz, жиі TAR-мен бірге қолданылады)"
+
+msgid "mime_jar"
+msgstr "JAR сығылған пакеті (1997 жылы Sun Microsystems шығарған, Java ARchive пішімі. Мәні бойынша ZIP сығылған пакеті, Java класстық кітапханалары мен қолданбаларын пакеттеу үшін қолданылады. Maven, Gradle сияқты Java экожүйесінің негізгі пішімі, Android JAR-ды да пайдаланады)"
+
+msgid "mime_lzma"
+msgstr "LZMA сығылған пакеті (1998 жылы Игорь Павлов әзірлеген, Lempel-Ziv-Markov тізбегі алгоритмі. 7z пішімінің негізгі сығу алгоритмі, жоғары сығу дәрежесі, жылдам ашу. Бекітілген бағдарламалық жасақтама, енгізілген жүйелерге арналған бағдарламалық жасақтаманы тарату үшін қолданылады)"
+
+msgid "mime_rar"
+msgstr "RAR сығылған пакеті (1993 жылы Юджин Рошал әзірлеген, Roshal ARchive пішімі. Жоғары сығу дәрежесі, томдарға бөлуді, қалпына келтіру жазбаларын қолдайды. WinRAR бағдарламасының пішімі, сығу дәрежесі ZIP-тен жақсы, бірақ ақылы бағдарламалық жасақтаманы қажет етеді, unrar сияқты ашық бастапқы код құралдары аша алады)"
+
+msgid "mime_tar"
+msgstr "TAR мұрағаты (1979 жылы Unix V7 енгізілген, Tape ARchive пішімі. Таспалы мұрағат пішімі, сығамайды тек пакеттейді, жиі GZIP/BZIP2/XZ бірге қолданылады. Linux пакеттерінің бастапқы коды, Docker кескін қабаттарын сақтау TAR пішімін пайдаланады)"
+
+msgid "mime_tgz"
+msgstr "TGZ сығылған пакеті (TAR + GZIP біріктірілген пішімі, кеңейтімі .tgz немесе .tar.gz. Unix/Linux пакеттерін таратудың ең әмбебап пішімі, бастапқы код пакеттері, екілік пакеттер үшін кеңінен қолданылады, 'ашып ал да қолдан' өкілі)"
+
+msgid "mime_tbz2"
+msgstr "TBZ2 сығылған пакеті (TAR + BZIP2 біріктірілген пішімі, кеңейтімі .tbz2 немесе .tar.bz2. Сығу дәрежесі TGZ-тен 15-20% жақсы, үлкен файлдарды таратуға жарамды, Linux ядросының бастапқы коды ұзақ уақыт осы пішімді пайдаланған)"
+
+msgid "mime_xz"
+msgstr "XZ сығылған пакеті (2009 жылы шығарылған, LZMA2 алгоритміне негізделген. Өте жоғары сығу дәрежесі, GZIP-тен 30-50% жақсы, ашу жылдамдығы салыстырмалы түрде жылдам. Linux ядросы, пакет менеджерлері (мысалы, Debian .deb ішінде) кеңінен қолданылады, қазіргі Linux экожүйесі үшін ұсынылатын пішім)"
+
+msgid "mime_z"
+msgstr "Z сығылған пакеті (1985 жылы Unix compress командасының пішімі, LZW алгоритмі. Ерте Unix сығу пішімі, GZIP алмастырды. Кеңейтімі .Z, қазіргі жүйелерде сирек қолданылады)"
+
+msgid "mime_zip"
+msgstr "ZIP сығылған пакеті (1989 жылы Фил Кац әзірлеген, PKZIP пішімі. Windows тума қолдайды, интернеттегі ең әмбебап сығу пішімі. Бірнеше файлдарды, каталог құрылымын қолдайды, сығу алгоритмін таңдауға болады. Java JAR, Android APK, Office құжаттарының DOCX/XLSX пішімі ZIP негізінде құрастырылған)"
+
+msgid "mime_zst"
+msgstr "Zstandard сығылған пакеті (2015 жылы Facebook әзірлеген, Ян Колле жобалаған. Жоғары жылдамдықты сығу алгоритмі, сығу дәрежесі LZMA-ға жақын, жылдамдығы GZIP-тен әлдеқайда жоғары. Linux ядросы 5.9+ қолдайды, Arch Linux pacman, Debian APT бірте-бірте қабылдап жатыр, жаңа буын сығу стандарты)"
+
+msgid "mime_lz4"
+msgstr "LZ4 сығылған пакеті (2011 жылы Ян Колле әзірлеген, өте жылдам сығу алгоритмі. Сығу жылдамдығы GZIP-тен 10 еседен астам жылдам, нақты уақыттағы сығу сценарийлеріне жарамды. Linux ядросы, OpenZFS, Hadoop кеңінен қолданады, жылдамдық басым сценарийлер үшін таңдау)"
+
+msgid "mime_lzo"
+msgstr "LZO сығылған пакеті (1996 жылы Маркус Оберхюмер әзірлеген, Lempel-Ziv-Oberhumer алгоритмі. Ашу жылдамдығы өте жоғары, сығу дәрежесі орташа. Linux ядросы Squashfs, OpenWrt микробағдарламасы пайдаланады, енгізілген жүйелерге жарамды)"
+
+msgid "mime_msi"
+msgstr "MSI орнату пакеті (1999 жылы Microsoft шығарған, Windows Installer пакет пішімі. Windows қолданбаларын орнатудың стандартты пішімі, транзакцияларды қайтаруды, компоненттерді басқаруды, үнсіз орнатуды қолдайды. Кәсіпорын деңгейіндегі бағдарламалық жасақтаманы таратудың таңдаулы пішімі, бүгінгі күнге дейін Windows бағдарламалық жасақтамасын орнатудың негізгі ағыны)"
+
+msgid "mime_pkg"
+msgstr "PKG орнату пакеті (macOS қолданбасын орнату пакетінің пішімі, Apple-дың Installer технологиясына негізделген. macOS бағдарламалық жасақтамасын таратудың стандартты пішімі, компоненттерді таңдауды, орнату скрипттерін, жою функциясын қолдайды. .pkg файлын екі рет басу арқылы орнатуға болады, Mac App Store-дан тыс бағдарламалық жасақтаманы таратудың кең таралған тәсілі)"
+
+msgid "mime_apk"
+msgstr "APK Android қолданба пакеті (2008 жылы Google шығарған, Android жүйесінің дәстүрлі қолданба орнату пішімі. APK мәні бойынша ZIP пакеті, кодты, ресурстарды және манифест файлын қамтиды. 2021 жылдан бастап Google Play жаңа қолданбалардың AAB пішімін пайдалануын талап етеді, бірақ APK әлі де жөндеу, үшінші тарап дүкендері және бүйірлік орнату үшін қолданылады)"
+
+msgid "mime_ipa"
+msgstr "IPA iOS қолданба пакеті (iOS App Store Package, iOS/iPadOS қолданбаларын орнату пішімі. 2008 жылы iPhone SDK бірге шықты. App Store арқылы таратылуы немесе кәсіпорын сертификатымен қол қойылуы керек. Орындалатын файлды, ресурстарды, Info.plist және қолтаңба ақпаратын қамтиды)"
+
+msgid "mime_hap"
+msgstr "HAP HarmonyOS қолданба пакеті (HarmonyOS Ability Package, HarmonyOS қолданбасының негізгі бірлігі. 2020 жылы HarmonyOS 2.0 бірге шықты. Екі түрді қолдайды: entry және feature, Huawei телефондары, планшеттері, ақылды сағаттары және басқа HarmonyOS құрылғылары үшін тарату пішімі)"
+
+msgid "mime_har"
+msgstr "HAR HarmonyOS статикалық ортақ кітапханасы (HarmonyOS Archive, HarmonyOS статикалық ортақ кітапханасы, бірнеше HAP пакеттерімен бөлісуге болады, компонентке негізделген әзірлеу және модульдерді қайта пайдалану үшін қолданылады)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (2018 жылы Google шығарған, 2021 жылдан бастап Google Play жаңа қолданбаларды осы пішімді пайдалануға міндеттейді. AAB тарату пішімі, Google Play құрылғы конфигурациясына (CPU архитектурасы, экран тығыздығы, тіл) сәйкес оңтайландырылған APK файлдарын жасайды, орнату пакетінің көлемі орта есеппен 35% азаяды. Әзірлеушілер AAB жүктейді, пайдаланушылар APK жүктейді)"
+
+msgid "mime_xapk"
+msgstr "XAPK қолданба пакеті (үшінші тарап Android қолданбасын кеңейту пакеті, APK + OBB деректер файлдарын қамтиды. Үлкен ойындар мен күрделі қолданбалар үшін қолданылады, бір файлды APK 100MB шектеуін шешеді. APKPure, APKMirror сияқты үшінші тарап қолданба дүкендерінде жиі кездеседі, Google-дың ресми пішімі емес)"
+
+msgid "mime_appx"
+msgstr "Windows қолданба пакеті (2012 жылы Microsoft шығарған, Windows 8/10/11 қолданбаларын орнату пішімі. UWP және үстелдік қолданбаларды түрлендіруді қолдайды, Microsoft Store арқылы таратылады. 2024 жылы Microsoft MSIX мұрагер пішім ретінде шығарды, APPX-ті бірте-бірте алмастыруда)"
+
+msgid "mime_msix"
+msgstr "MSIX қолданба пакеті (2018 жылы Microsoft шығарған, Windows үшін жаңа буын қолданбаларды пакеттеу пішімі. APPX және MSI артықшылықтарын біріктіреді, барлық Windows қолданба түрлерін қолдайды, Microsoft Store арқылы немесе бүйірлік орнату арқылы таратыла алады, Windows 11 ұсынылған пішімі)"
+
+msgid "mime_appimage"
+msgstr "AppImage қолданба пакеті (2004 жылы шығарылған, Linux орнатуды қажет етпейтін қолданба пішімі. 'Бір қолданба бір файл', орнатуды қажет етпейді, тікелей орындалады, Linux дистрибутивтерінің көпшілігін қолдайды, әзірлеушілердің Linux бағдарламалық жасақтамасын таратудың кең таралған тәсілі)"
+
+msgid "mime_flatpak"
+msgstr "Flatpak қолданба пакеті (2015 жылы шығарылған, Linux қоршауланған орта қолданба пішімі. Дистрибутивтер арасында жұмыс істейді, негізгі жүйеден оқшауланған, Fedora, Red Hat басқарады, GNOME Бағдарламалық жасақтама Орталығының әдепкі пішімі)"
+
+msgid "mime_snap"
+msgstr "Snap қолданба пакеті (2014 жылы Canonical шығарған, Ubuntu бас компаниясы, Linux әмбебап қолданба пішімі. Автоматты жаңартулар, қоршауланған орта оқшаулауы, 40+ Linux дистрибутивтерін қолдайды, Ubuntu Бағдарламалық жасақтама Орталығының әдепкі пішімі)"
+
+msgid "mime_deb"
+msgstr "Debian бағдарламалық жасақтама пакеті (1993 жылы Debian жобасы шығарған, Debian/Ubuntu және олардың туындылары үшін стандартты орнату пішімі. dpkg көмегімен басқарылады, APT - оның пакет менеджерінің алдыңғы бөлігі, Linux экожүйесіндегі ең жетілген пакет пішімдерінің бірі, бүгінгі күнге дейін Debian тобының негізгі ағыны)"
+
+msgid "mime_rpm"
+msgstr "RPM бағдарламалық жасақтама пакеті (1997 жылы Red Hat шығарған, Red Hat/Fedora/CentOS/SUSE және басқа дистрибутивтер үшін стандартты пішім. RPM 'Red Hat Package Manager' сөзінің қысқартылуы, DEB-мен бірге Linux-тың екі үлкен пакет пішімінің бірі, бүгінгі күнге дейін RHEL тобының негізгі ағыны)"
+
+msgid "mime_pacman"
+msgstr "Arch бағдарламалық жасақтама пакеті (2002 жылы Arch Linux шығарған, pacman пакет менеджері қолданатын .pkg.tar.zst пішімі. Arch Linux-тың жаңартылып отыратын шығарылымының ядросы, қарапайымдылығымен және KISS принципімен танымал, AUR (Arch User Repository) - оның ерекшелігі)"
+
+msgid "mime_exe"
+msgstr "EXE орындалатын файлы (Windows орындалатын бағдарлама пішімі, 'Executable' сөзінің қысқартылуы. Windows операциялық жүйесінің тума орындалатын пішімі, PE құрылымын қамтиды. MS-DOS MZ пішімінен дамыған, 1993 жылы Windows NT PE (Portable Executable) пішімін енгізді және бүгінгі күнге дейін қолданылады. Бағдарламалық жасақтаманы орнату пакеттері, қолданбалар, жүйелік құралдар осы пішімді пайдаланады. Пайдаланушы екі рет басу арқылы орындай алады, әлемдегі ең кең таралған орындалатын пішім)"
+
+msgid "mime_dll"
+msgstr "DLL динамикалық байланыстырылған кітапхана (1993 жылы Microsoft шығарған, Dynamic Link Library. Windows ортақ код кітапханасы, бағдарлама орындалу барысында динамикалық түрде жүктеледі, жады мен диск орнын үнемдейді. Жүйе компоненттері, қолданба плагиндері, драйверлер DLL пішімін пайдаланады. Windows API-ді іске асырудың негізгі тәсілі, DLL Hell мәселесі .NET дәуірінде жеңілдетілді)"
+
+msgid "mime_com"
+msgstr "COM орындалатын файлы (MS-DOS дәуірінің орындалатын пішімі, 'Command' сөзінің қысқартылуы. Қарапайым файл құрылымы, 64KB шектеуі, Windows 3.x дейінгі негізгі пішім. Жойылды, заманауи Windows EXE пішімін пайдаланады, COM кеңейтімі әлі күнге дейін кейбір компонент файлдары үшін қолданылады)"
+
+msgid "mime_aac"
+msgstr "AAC аудиосы (1997 жылы MPEG стандарты, Advanced Audio Coding. MP3-тің мұрагері, бірдей бит жылдамдығында дыбыс сапасы MP3-тен жақсы, YouTube, iTunes, Nintendo Switch әдепкі аудио пішімі)"
+
+msgid "mime_alac"
+msgstr "ALAC аудиосы (2004 жылы Apple әзірлеген, Apple Lossless Audio Codec. Apple шығынсыз пішімі, 2011 жылы ашық бастапқы кодқа айналды, iTunes және Apple Music шығынсыз аудионың әдепкі пішімі)"
+
+msgid "mime_flac"
+msgstr "FLAC аудиосы (2001 жылы Xiph.Org Қоры әзірлеген, Free Lossless Audio Codec. Шығынсыз сығу, CD-мен бірдей дыбыс сапасы, файл түпнұсқа WAV-ның шамамен жартысына тең. Ашық бастапқы код, патентсіз, аудиофилдер мен цифрлық музыка коллекционерлерінің таңдаулы пішімі)"
+
+msgid "mime_mp3"
+msgstr "MP3 аудиосы (1993 жылы Fraunhofer Институты әзірлеген, MPEG-1 Audio Layer 3. Шығынды сығу пішімі, кішкентай файл өлшемі, қолайлы сапа, 2000-шы жылдардағы цифрлық музыка төңкерісінің негізгі пішімі, iPod және Napster-дің іргетасы. 2017 жылы патенті бітті, қоғамдық қолданыс пішіміне айналды)"
+
+msgid "mime_oga"
+msgstr "Ogg Audio аудиосы (Xiph.Org Қоры әзірлеген, Ogg контейнерінің таза аудио пішімі, Vorbis кодтауын пайдаланады. Ашық бастапқы код, патентсіз, сығу тиімділігі MP3-тен жақсы, ашық бастапқы код жобаларында кеңінен қолданылады)"
+
+msgid "mime_ogg"
+msgstr "OGG аудиосы (2000 жылы Xiph.Org Қоры әзірлеген, Ogg Vorbis пішімі. Ашық бастапқы код, патентсіз, сығу тиімділігі MP3-тен жақсы, Spotify ерте кезеңде қолданған, ойын дыбыс эффектілерінде кеңінен қолданылады)"
+
+msgid "mime_opus"
+msgstr "Opus аудиосы (2012 жылы IETF стандарттаған, ашық бастапқы код, патентсіз аудио пішімі. SILK және CELT технологияларын біріктіреді, кешігу өте төмен, сығу тиімділігі ең жоғары, WebRTC, WhatsApp, Discord әдепкі аудио пішімі)"
+
+msgid "mime_wav"
+msgstr "WAV аудиосы (1991 жылы Microsoft және IBM әзірлеген, Windows тума аудио пішімі. Сығылмаған PCM кодтауы, шығынсыз дыбыс сапасы, бірақ файлдар өте үлкен, кәсіби аудио өңдеудің стандартты пішімі)"
+
+msgid "mime_wma"
+msgstr "WMA аудиосы (1999 жылы Microsoft әзірлеген, Windows Media Audio. Шығынды/шығынсыз екі нұсқасы бар, Windows тума қолдайды, Windows Media Player арқылы тарады. Қазір шетке ығыстырылды, MP3/AAC алмастырылды)"
+
+msgid "mime_dsf"
+msgstr "DSF аудиосы (Direct Stream Digital пішімі, Sony және Philips әзірлеген. 1bit жоғары дискретизация жиілігі, DSD аудио стандартты пішімі, SACD цифрлық нұсқасы, аудиофилдердің жоғары деңгейлі аудио пішімі, файлдар өте үлкен)"
+
+msgid "mime_ape"
+msgstr "APE Аудио (2000 жылы Monkey's Audio әзірлеген, жоғалтпай қысу форматы. FLAC-қа қарағанда жоғары қысу, бірақ баяу кодтау, әлі күнге дейін Windows платформасында және аудио әуесқойлары арасында қолданылады)"
+
+msgid "mime_mid"
+msgstr "MIDI аудиосы (1983 жылы MIDI Ассоциациясы жасаған, Musical Instrument Digital Interface. Ноталық пішім, дыбыс жазбасы емес, файлдар өте кішкентай, электронды аспаптар, ұялы телефон қоңыраулары, ойын дыбыс эффектілері үшін стандарт. 1991 жылы General MIDI стандартталды, 128 аспап үнін анықтады)"
+
+msgid "mime_m4a"
+msgstr "M4A аудиосы (MPEG-4 Audio, AAC контейнер пішімі. iTunes музыка дүкенінің стандартты пішімі, Apple экожүйесінің негізгі аудио пішімі, DRM қорғанысын қолдайды)"
+
+msgid "mime_m3u"
+msgstr "M3U ойнату тізімі (MP3 URL ойнату тізімінің пішімі, таза мәтіндік файл, аудио файл жолдарын жазады. Winamp дәуірінің стандарты, интернет радиосы, онлайн музыка ағыны үшін қолданылады. M3U8 - оның UTF-8 нұсқасы, HTTP Live Streaming үшін қолданылады)"
+
+msgid "mime_asf"
+msgstr "ASF ағыны (1996 жылы Microsoft әзірлеген, Advanced Systems Format. Windows Media ағын контейнері, аудио-бейнені синхронды тасымалдауды қолдайды. Тікелей эфир және ағын бойынша бейне тарату үшін қолданылады, WMA/WMV ASF контейнеріне негізделген)"
+
+msgid "mime_avi"
+msgstr "AVI бейнесі (1992 жылы Microsoft шығарған, Windows ерте бейне стандарты. 'Audio Video Interleave', аудио-бейне кезектесіп сақталуы, 1990-2000 жылдарындағы ең танымал бейне пішімі, қазір MP4/MKV алмастырылды)"
+
+msgid "mime_divx"
+msgstr "DivX бейнесі (1998 жылы DivX компаниясы әзірлеген, MPEG-4 негізіндегі бейне кодтау пішімі. 2000-шы жылдардағы интернет бейне бөлісудің негізгі пішімі, DVD сапасын CD өлшеміне сығатын алғашқы технология. Авторлық құқық дауларына байланысты кейін коммерциялық кодтауышқа айналды)"
+
+msgid "mime_mp4"
+msgstr "MP4 бейнесі (2001 жылы MPEG стандарты, MPEG-4 Part 14. Әлемдегі ең әмбебап бейне пішімі, H.264/H.265 кодтауын қолдайды, интернет бейне, ұялы телефон түсірілімі, YouTube әдепкі пішімі)"
+
+msgid "mime_m4v"
+msgstr "M4V бейнесі (iTunes бейне пішімі, MP4 нұсқасы. Apple экожүйесіндегі бейне пішімі, iTunes Store фильмдері, телебағдарламаларының стандартты пішімі, DRM авторлық құқық қорғанысын қолдайды)"
+
+msgid "mime_mpeg"
+msgstr "MPEG бейнесі (1988 жылы MPEG ұйымы жасаған, Moving Picture Experts Group. Цифрлық бейне сығу стандарттарының негізін қалаушы, MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (интернет бейне) терең әсер етті)"
+
+msgid "mime_mkv"
+msgstr "MKV бейнесі (2002 жылы Matroska жобасы әзірлеген, ашық бастапқы кодты мультимедиа контейнері. Бірнеше аудио тректерді, бірнеше субтитрлерді, тарауларды қолдайды, 'орау шебері', HD фильмдерді бөлісудің таңдаулы пішімі)"
+
+msgid "mime_mpg"
+msgstr "MPEG бейнесі (MPEG-1/MPEG-2 бейне кеңейтімі, VCD және DVD стандартты пішімі. 1990-2000 жылдары оптикалық дискілердегі негізгі бейне пішімі болды, қазір H.264/H.265 алмастырылды)"
+
+msgid "mime_ogv"
+msgstr "Ogg Video бейнесі (Xiph.Org Қоры әзірлеген, Ogg контейнерінің бейне пішімі, Theora кодтауын пайдаланады. Ашық бастапқы код, патентсіз, HTML5 бейнесінің алғашқы стандарттарының бірі, Firefox тума қолдайды)"
+
+msgid "mime_ogx"
+msgstr "Ogg мультимедиа контейнері (Xiph.Org Қоры әзірлеген, Ogg контейнерінің әмбебап кеңейтімі, аудио, бейне, субтитр және т.б. бірнеше тректерді қамтуы мүмкін. Ашық бастапқы кодты мультимедиа стандарты, ойындар, ағындық тарату үшін қолданылады)"
+
+msgid "mime_rm"
+msgstr "RealMedia бейнесі (1995 жылы RealNetworks әзірлеген, RealMedia пішімі. 1990-2000 жылдары интернет ағынының пионері, RealPlayer ойнатқышының негізгі пішімі. Қиындықтар: арнайы ойнатқышты қажет етеді, сығу сапасы нашар, кейін Flash/MP4 алмастырылды)"
+
+msgid "mime_flv"
+msgstr "Flash бейнесі (2002 жылы пішім пайда болды, Flash Video пішімі. Бір кездері интернет бейнесінің негізгі пішімі болды, YouTube ерте кезеңде қолданған. Қиындықтар: Flash плагинін қажет етеді, өнімділігі нашар, қауіпсіздік осалдықтары көп. 2015 жылдан бастап негізгі веб-сайттар HTML5 бейнеге көшті, қазір жойылды)"
+
+msgid "mime_f4v"
+msgstr "F4V бейнесі (Adobe әзірлеген Flash бейне пішімі, FLV мұрагері. MPEG-4 стандартына негізделген, H.264 кодтауын қолдайды. Flash технологиясымен бірге жойылды, Adobe 2020 жылы қолдауды тоқтатты)"
+
+msgid "mime_wmv"
+msgstr "WMV бейнесі (1999 жылы Microsoft әзірлеген, Windows Media Video. Windows тума қолдайды, ағындық тасымалдауға оңтайландырылған, ерте онлайн бейнелерде жиі қолданылған, қазір шетке ығыстырылды)"
+
+msgid "mime_wmf"
+msgstr "WMF медиа пішімі (Windows Media Format, Microsoft медиа каркасы. WMV бейнесі мен WMA аудиосын қамтиды, Windows Media Player тума қолдайды)"
+
+msgid "mime_mov"
+msgstr "MOV бейнесі (1991 жылы Apple әзірлеген, QuickTime контейнер пішімі. Кәсіби бейне монтаждаудың стандартты пішімі, бірнеше кодектерді қолдайды, Final Cut Pro, Premiere тума қолдайды)"
+
+msgid "mime_qt"
+msgstr "QuickTime бейнесі (1991 жылы Apple шығарған, QuickTime пішімі. Mac платформасының бейне стандарты, MOV оның контейнері, QuickTime ойнатқышы кеңінен қолданылған. 2016 жылы Apple Windows нұсқасын әзірлеуді тоқтатты, бірте-бірте MP4 алмастырылуда)"
+
+msgid "mime_webm"
+msgstr "WebM бейнесі (2010 жылы Google шығарған, ашық бастапқы код, патентсіз бейне пішімі. Matroska контейнеріне негізделген, VP8/VP9 кодтауы, HTML5 бейне стандартты пішімі, YouTube веб-ойнатудың әдепкі пішімі)"
+
+msgid "mime_3gp"
+msgstr "3GP бейнесі (2000 жылы 3GPP жасаған, мобильді құрылғыларға арналған бейне пішімі. Файлдар өте кішкентай, сапасы төмен, ерте функционалды телефондардың бейне түсіру пішімі, MMS жіберу үшін қолданылды)"
+
+#------------------------------------------------------------------------------
+# Техникалық өлшемдер
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "Операциялық жүйелер"
+
+msgid "Top 5 Operating Systems"
+msgstr "Ең үздік 5 операциялық жүйе"
+
+msgid "Unknown Robot"
+msgstr "Белгісіз клиент"
+
+msgid "User agent"
+msgstr "Пайдаланушы агенті"
+
+msgid "Browsers"
+msgstr "Браузерлер"
+
+msgid "Top 5 Browsers"
+msgstr "Ең үздік 5 браузер"
+
+msgid "Unknown Robot RH"
+msgstr "Белгісіз сұрау тақырыбы"
+
+msgid "Detailed"
+msgstr "Егжей-тегжейлі"
+
+msgid "DetailedOS"
+msgstr "Операциялық жүйе нұсқасы"
+
+msgid "DetailedBS"
+msgstr "Браузер нұсқасы"
+
+msgid "Screen sizes"
+msgstr "Экран өлшемдері"
+
+msgid "Compression"
+msgstr "Сығу"
+
+msgid "In"
+msgstr "Кіру"
+
+msgid "Out"
+msgstr "Шығу"
+
+msgid "Saved"
+msgstr "Сақталды"
+
+#------------------------------------------------------------------------------
+# Шығу тегі өлшемдері
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "Шығу тегі"
+
+msgid "Referers"
+msgstr "Сілтемешілер"
+
+msgid "meta.description"
+msgstr "AWStats кеңейтілген веб-журнал анализаторы - веб-сайт трафигін нақты уақытта бақылау, келушілерді талдау, іздеу жүйесінің кілт сөздері, қате беттерінің статистикасы. Қараңғы режимді, көптілді интерфейсті қолдайды, веб-сайт әкімшілеріне жан-жақты деректер талдауын ұсынады."
+
+msgid "meta.keywords"
+msgstr "AWStats,веб-статистика,журнал талдау,трафикті бақылау,келу статистикасы,SEO талдау,веб-сайт талдау құралы,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - Веб-журнал талдауы"
+
+msgid "og.description"
+msgstr "📊 Веб-сайтыңыздың трафигін және келушілер әрекетін нақты уақытта талдайтын кәсіби ашық бастапқы кодты веб-статистика құралы."
+
+msgid "og.image.alt"
+msgstr "AWStats статистикалық графиктері"
+
+msgid "Created by"
+msgstr "Құрастырған: %s"
+
+msgid "plugins"
+msgstr "плагиндер"
+
+msgid "dbip by"
+msgstr "деректер"
+
+msgid "IPDB by"
+msgstr "Географиялық деректерді DB-IP ұсынады"
+
+msgid "Configured"
+msgstr "Конфигурацияланған"
+
+msgid "Missing"
+msgstr "Жетіспейді"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Unused"
+msgstr "Қолданылмаған"
+
+msgid "Overall Health"
+msgstr "Жалпы Денсаулық"
+
+msgid "Excellent"
+msgstr "Өте жақсы"
+
+msgid "Good"
+msgstr "Жақсы"
+
+msgid "Fair"
+msgstr "Қанағаттанарлық"
+
+msgid "Poor"
+msgstr "Нашар"
+
+msgid "Missing icon types"
+msgstr "Жетіспейтін иконка түрлері"
+
+msgid "See"
+msgstr "Толығырақ"
+
+msgid "Expected Path"
+msgstr "Күтілетін жол"
+
+msgid "column for file locations"
+msgstr "файл орналасқан жерлерін алу үшін баған"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "Кеңес: Қатысты иконкаларды жасау қажет болса, %s логотип кескінін жүктеу үшін пайдалануға болады, ол автоматты түрде жоғарыдағы барлық қатысты иконка файлдарын жасайды"
+
+msgid "200: success, 404: failure"
+msgstr "200 - сәттіліктер саны, 404 - сәтсіздіктер саны"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png немесе /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg немесе /logo.png (HTML/JSON-LD сілтемесі қажет)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest немесе /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg және т.б."
+
+msgid "Favicon"
+msgstr "Веб-сайт иконкасы"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "Apple Touch иконкасы (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "Веб-сайт логотипі"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "Веб-Қолданба Маніфесті (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "Windows Браузер Конфигурациясы"
+
+msgid "Safari Pinned Tab"
+msgstr "Safari бекітілген қойынша иконкасы"
+
+msgid "Social Icon"
+msgstr "Әлеуметтік платформа иконкасы"
+
+msgid "Icon Files Status"
+msgstr "Иконка Файлдарының Күйі"
+
+msgid "Icon Type"
+msgstr "Иконка Түрі"
+
+msgid "Total"
+msgstr "Барлығы"
+
+msgid "Advanced Web Statistics"
+msgstr "Кеңейтілген журнал анализаторы"
+
+msgid "Advanced Web Statistics %s"
+msgstr "%s Кеңейтілген журнал анализаторы"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "Сіздің браузеріңіз жақтауларды қолдамайды. Заманауи браузерді пайдаланыңыз."
+
+msgid "View statistics directly"
+msgstr "Статистиканы тікелей қарау"
+
+msgid "Close"
+msgstr "Жабу"
+
+msgid "Documentation Viewer"
+msgstr "Құжаттама Көрушісі"
+
+msgid "Direct address / Bookmarks"
+msgstr "Тікелей мекенжай / Бетбелгілер"
+
+msgid "Search Engines"
+msgstr "Іздеу жүйелері"
+
+msgid "Refering search engines"
+msgstr "Сілтемеші іздеу жүйелері"
+
+msgid "External pages"
+msgstr "Сыртқы беттер"
+
+msgid "Refering pages"
+msgstr "Сілтемеші беттер"
+
+msgid "Internal pages"
+msgstr "Ішкі беттер"
+
+msgid "UnknownAccessSource"
+msgstr "Белгісіз қолжетімділік көзі"
+
+msgid "Different refering pages"
+msgstr "Әртүрлі сілтемеші беттер"
+
+msgid "Keyphrases"
+msgstr "Кілт сөз тіркестері"
+
+msgid "Keywords"
+msgstr "Кілт сөздер"
+
+msgid "Keyphrases/Keywords"
+msgstr "Кілт сөз тіркестері/Кілт сөздер"
+
+msgid "Different keyphrases"
+msgstr "Әртүрлі кілт сөз тіркестері"
+
+msgid "Different keywords"
+msgstr "Әртүрлі кілт сөздер"
+
+#------------------------------------------------------------------------------
+# Бет өлшемдері
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "Қаралған беттер"
+
+msgid "Different pages"
+msgstr "Әртүрлі беттер"
+
+msgid "Entry"
+msgstr "Кіру орны"
+
+msgid "Exit"
+msgstr "Шығу орны"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "Сілтемеші"
+
+msgid "Host"
+msgstr "Хост"
+
+#------------------------------------------------------------------------------
+# Қателер мен күйлер
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "Қате"
+
+msgid "HTTP Status Statistics"
+msgstr "HTTP күй кодтарының статистикасы"
+
+msgid "SMTP Error codes"
+msgstr "SMTP қате кодтары"
+
+msgid "Page not found"
+msgstr "Сұралған бет табылмады"
+
+msgid "Unknown error"
+msgstr "Белгісіз қате"
+
+msgid "Abnormal traffic note"
+msgstr "Қалыптан тыс шолу трафигі мыналарды қамтиды: іздеу жүйесі роботтары, AI оқыту роботтары, осалдық сканерлері және стандарттарға сәйкес келмейтін сұраулар"
+
+msgid "Page detail"
+msgstr "Бет мәліметтері"
+
+msgid "AWStats did not found the"
+msgstr "AWStats таппады"
+
+msgid "in your log records."
+msgstr "журнал жазбаларыңызда."
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats сіздің параметріңізге сәйкес келетін ешбір жарамды журнал жолын таппады"
+
+msgid "parameter, in the"
+msgstr "келесіде"
+
+msgid "th first non commented lines read of your log."
+msgstr " журналыңыздың алғашқы түсініктемесіз жолдарында."
+
+msgid "Your log file"
+msgstr "Журнал файлыңыз"
+
+msgid "must have a bad format or"
+msgstr "пішімі дұрыс емес немесе"
+
+msgid "parameter setup does not match this format."
+msgstr "параметр параметрлері осы пішімге сәйкес келмейді."
+
+msgid "Your AWStats"
+msgstr "AWStats параметріңіз"
+
+msgid "parameter is:"
+msgstr "мынау:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "Бұл веб-сервер журнал файлының әр жолында келесілер болуы керек дегенді білдіреді:"
+
+msgid "combined log format"
+msgstr "біріктірілген журнал пішімі"
+
+msgid "MSIE Extended W3C log format"
+msgstr "MSIE Кеңейтілген W3C журнал пішімі"
+
+msgid "WebStar native log format"
+msgstr "WebStar тума журнал пішімі"
+
+msgid "common log format"
+msgstr "жалпы журнал пішімі"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "келесі дербес журнал пішімі:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "Міне, AWStats журнал файлыңыздан тапқан жазбалардың мысалы (жазба нөмірі"
+
+msgid "in your log):"
+msgstr "журналыңызда):"
+
+#------------------------------------------------------------------------------
+# Әртүрлі
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "Қосымша/Маркетинг"
+
+#------------------------------------------------------------------------------
+# Интерфейс мәтіндері
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "Ағымдағы сайт"
+
+msgid "Web Site"
+msgstr "Веб-сайт"
+
+msgid "Last Update"
+msgstr "Соңғы жаңарту"
+
+msgid "Never updated"
+msgstr "Ешқашан жаңартылмаған"
+
+msgid "No qualified records found in log"
+msgstr "Журналдан жарамды жазбалар табылмады"
+
+msgid "corrupted"
+msgstr "бүлінген"
+
+msgid "comments"
+msgstr "пікірлер"
+
+msgid "Blank"
+msgstr "Бос"
+
+msgid "dropped"
+msgstr "тасталды"
+
+msgid "Update now"
+msgstr "Қазір жаңарту"
+
+msgid "Back to main page"
+msgstr "Басты бетке оралу"
+
+msgid "Close window"
+msgstr "Терезені жабу"
+
+msgid "Back page"
+msgstr "Алдыңғы бет"
+
+msgid "Navigation"
+msgstr "Навигация"
+
+msgid "Summary"
+msgstr "Қысқаша мазмұны"
+
+msgid "Local"
+msgstr "Жергілікті"
+
+msgid "External"
+msgstr "Сыртқы"
+
+msgid "Others (email senders)"
+msgstr "Басқалары (жіберушілер)"
+
+msgid "Others (email receivers)"
+msgstr "Басқалары (алушылар)"
+
+msgid "Others"
+msgstr "Басқалары"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "Қазіргі уақытта браузер деректерінің тек 10 жолы көрсетіледі, толық тізімді мәліметтер бетінен қараңыз"
+
+msgid "Others (unknown browsers)"
+msgstr "Басқалары (белгісіз браузерлер)"
+
+msgid "Others (operating systems)"
+msgstr "Басқалары (операциялық жүйелер)"
+
+msgid "Others (unknown OS)"
+msgstr "Басқалары (белгісіз ОЖ)"
+
+msgid "Others (search engines)"
+msgstr "Басқалары (іздеу жүйелері)"
+
+msgid "Others (referring pages)"
+msgstr "Басқалары (сілтемеші беттер)"
+
+msgid "Others (keyphrases)"
+msgstr "Басқалары (сөз тіркестері)"
+
+msgid "Others (keywords)"
+msgstr "Басқалары (кілт сөздер)"
+
+msgid "Only first 10 robots shown"
+msgstr "Қазіргі уақытта алғашқы 10 робот көрсетіледі, толық тізімді мәліметтер бетінен қараңыз"
+
+msgid "Failed to obtain access record"
+msgstr "Кіру жазбасын алу мүмкін болмады"
+
+msgid "Failed to obtain leave record"
+msgstr "Шығу жазбасын алу мүмкін болмады"
+
+msgid "Other pages"
+msgstr "Басқа беттер"
+
+msgid "Low Traffic IP Summary"
+msgstr "Төмен Трафикті Белгісіз IP Қорытындысы"
+
+msgid "Failed to obtain IP data"
+msgstr "Басқа белгілі IP қорытындысы"
+
+msgid "Failed to obtain the relevant data"
+msgstr "Тиісті деректерді алу мүмкін болмады"
+
+msgid "Limited list of countries and regions"
+msgstr "Қазіргі уақытта барлығы 10 дерек жолы көрсетіледі, толық тізімді мәліметтер бетінен қараңыз"
+
+msgid "currentVisitorData"
+msgstr "Қазіргі уақытта келуші деректерінің тек 10 жолы көрсетіледі, толық тізімді мәліметтер бетінен қараңыз"
+
+msgid "Others (robots main)"
+msgstr "Басқалары (роботтар)"
+
+msgid "Others (worms)"
+msgstr "Басқалары (құрттар)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "Қазіргі уақытта тек 10 бет көрсетіледі, толық тізімді мәліметтер бетінен қараңыз"
+
+msgid "Others (OS main)"
+msgstr "Басқалары (жүйелер)"
+
+msgid "Others (browsers main)"
+msgstr "Басқалары (браузерлер)"
+
+msgid "Others (screen sizes)"
+msgstr "Басқалары (өлшемдер)"
+
+msgid "Others (search engines main)"
+msgstr "Басқалары (іздеу жүйелері)"
+
+msgid "Others (referring pages main)"
+msgstr "Басқалары (сілтемеші беттер)"
+
+msgid "Others (keyphrases main)"
+msgstr "Басқалары (сөз тіркестері)"
+
+msgid "Others (keywords main)"
+msgstr "Басқалары (кілт сөздер)"
+
+# 1xx
+msgid "Continue"
+msgstr "Жалғастыру"
+
+msgid "Switching Protocols"
+msgstr "Хаттамаларды ауыстыру"
+
+msgid "Processing (WebDAV)"
+msgstr "Өңделуде (WebDAV)"
+
+msgid "Early Hints"
+msgstr "Алғашқы нұсқаулар"
+
+# 2xx
+msgid "[Miscellaneous successes]"
+msgstr "Басқа сәттілік күйлері"
+
+msgid "Request successful"
+msgstr "Сұрау сәтті орындалды"
+
+msgid "Created successfully"
+msgstr "Сәтті құрылды"
+
+msgid "Accepted - processing"
+msgstr "Қабылданды - өңделуде"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "Билікті емес ақпарат (кешіруден)"
+
+msgid "Success, no content returned"
+msgstr "Сәтті, мазмұн қайтарылмады"
+
+msgid "Reset content"
+msgstr "Мазмұнды қалпына келтіру"
+
+msgid "Partial content (resume download)"
+msgstr "Ішінара мазмұн (жүктеуді жалғастыру)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "Көп күйлі (WebDAV)"
+
+msgid "Already reported (WebDAV)"
+msgstr "Бұрын хабарланған (WebDAV)"
+
+msgid "IM used"
+msgstr "IM пайдаланылды"
+
+# 3xx
+msgid "[Miscellaneous redirections]"
+msgstr "Басқа қайта бағыттаулар"
+
+msgid "Multiple choices"
+msgstr "Көп таңдаулар"
+
+msgid "Moved permanently - update your links"
+msgstr "Тұрақты түрде жылжытылды - сілтемелеріңізді жаңартыңыз"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "Уақытша қайта бағыттау - URL өзгерген жоқ"
+
+msgid "See other"
+msgstr "Басқаны қараңыз"
+
+msgid "Not modified - using cached version"
+msgstr "Өзгертілмеген - кешірілген нұсқаны пайдалану"
+
+msgid "Use proxy"
+msgstr "Прокси пайдаланыңыз"
+
+msgid "Switch proxy"
+msgstr "Прокси ауыстырыңыз"
+
+msgid "Temporary redirect (keep method)"
+msgstr "Уақытша қайта бағыттау (әдісті сақта)"
+
+msgid "Permanent redirect - update your links"
+msgstr "Тұрақты қайта бағыттау - сілтемелеріңізді жаңартыңыз"
+
+# 4xx
+msgid "[Miscellaneous client/user errors]"
+msgstr "Басқа клиент/пайдаланушы қателері"
+
+msgid "Bad request"
+msgstr "Қате сұрау"
+
+msgid "Unauthorized - please log in"
+msgstr "Рұқсат етілмеген - кіріңіз"
+
+msgid "Payment required"
+msgstr "Төлем қажет"
+
+msgid "Forbidden - access denied"
+msgstr "Тыйым салынған - рұқсат етілмеді"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "Бет табылмады (404) - үзілген сілтемелерді тексеріңіз"
+
+msgid "Method not allowed"
+msgstr "Әдіске рұқсат етілмеген"
+
+msgid "Not acceptable"
+msgstr "Қабылданбайды"
+
+msgid "Proxy authentication required"
+msgstr "Прокси аутентификациясы қажет"
+
+msgid "Request timeout"
+msgstr "Сұрау уақытының аяқталуы"
+
+msgid "Conflict - please try again"
+msgstr "Қақтығыс - қайталап көріңіз"
+
+msgid "Gone - permanently deleted"
+msgstr "Жоғалды - тұрақты түрде жойылды"
+
+msgid "Length required"
+msgstr "Ұзындық талап етіледі"
+
+msgid "Precondition failed"
+msgstr "Алғы шарт орындалмады"
+
+msgid "Payload too large"
+msgstr "Жүктеме тым үлкен"
+
+msgid "URI too long"
+msgstr "URI тым ұзын"
+
+msgid "Unsupported media type"
+msgstr "Қолдау көрсетілмейтін медиа түрі"
+
+msgid "Range not satisfiable"
+msgstr "Ауқым орындалмайды"
+
+msgid "Expectation failed"
+msgstr "Күту орындалмады"
+
+msgid "I am a teapot (April Fools)"
+msgstr "Мен шәйнекпін (Сәуір қалжыңы)"
+
+msgid "Page expired (Laravel)"
+msgstr "Беттің мерзімі өткен (Laravel)"
+
+msgid "Method failure (Spring)"
+msgstr "Әдістің орындалмауы (Spring)"
+
+msgid "Misdirected request"
+msgstr "Қате бағытталған сұрау"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "Өңдеу мүмкін емес нысан (WebDAV)"
+
+msgid "Locked (WebDAV)"
+msgstr "Құлыпталған (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "Орындалмаған тәуелділік (WebDAV)"
+
+msgid "Too early"
+msgstr "Тым ерте"
+
+msgid "Upgrade required"
+msgstr "Жаңарту қажет"
+
+msgid "Precondition required"
+msgstr "Алғы шарт қажет"
+
+msgid "Too many requests - slow down"
+msgstr "Тым көп сұрау - баяулаңыз"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "Сұрау тақырыбы өрістері тым үлкен (Shopify)"
+
+msgid "Request header too large"
+msgstr "Сұрау тақырыбы тым үлкен"
+
+msgid "Login timeout (IIS)"
+msgstr "Кіру уақытының аяқталуы (IIS)"
+
+msgid "No response (nginx)"
+msgstr "Жауап жоқ (nginx)"
+
+msgid "Retry with (IIS)"
+msgstr "Қайталап көріңіз (IIS)"
+
+msgid "Blocked by Windows parental controls"
+msgstr "Windows ата-аналық бақылауымен бұғатталған"
+
+msgid "Unavailable for legal reasons"
+msgstr "Заңды себептермен қолжетімсіз"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "Клиент бос тұру уақыты аяқталмай тұрып қосылымды жапты (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "30-дан астам IP мекенжайы бар X-Forwarded-For тақырыбы (AWS ELB)"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "Үйлеспейтін хаттама нұсқалары (AWS ELB)"
+
+msgid "Request header too large (nginx)"
+msgstr "Сұрау тақырыбы тым үлкен (nginx)"
+
+msgid "SSL certificate error (nginx)"
+msgstr "SSL сертификаты қатесі (nginx)"
+
+msgid "SSL certificate required (nginx)"
+msgstr "SSL сертификаты қажет (nginx)"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP сұрауы HTTPS портына жіберілді (nginx)"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "Жарамсыз токен (ArcGIS)"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "Токен қажет (ArcGIS) / Клиент сұрауды жапты (nginx)"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "Ресурс лимитіне жетті (cPanel)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "Өткізу қабілеттілігі лимиті асып кетті (Apache/cPanel)"
+
+# 5xx
+msgid "[Miscellaneous server errors]"
+msgstr "Басқа сервер қателері"
+
+msgid "Internal server error - check logs"
+msgstr "Ішкі сервер қатесі - журналдарды тексеріңіз"
+
+msgid "Not implemented"
+msgstr "Іске асырылмаған"
+
+msgid "Bad gateway - backend error"
+msgstr "Жаман шлюз - артқы жазық қатесі"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "Қызмет қолжетімсіз - техникалық қызмет көрсету немесе шамадан тыс жүктеме"
+
+msgid "Gateway timeout"
+msgstr "Шлюз уақытының аяқталуы"
+
+msgid "HTTP version not supported"
+msgstr "HTTP нұсқасы қолдау көрсетілмейді"
+
+msgid "Variant also negotiates"
+msgstr "Вариант та келіседі"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "Сақтау орны жеткіліксіз (WebDAV)"
+
+msgid "Loop detected (WebDAV)"
+msgstr "Цикл анықталды (WebDAV)"
+
+msgid "Not extended"
+msgstr "Кеңейтілмеген"
+
+msgid "Network authentication required"
+msgstr "Желі аутентификациясы қажет"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "Белгісіз қате (Cloudflare)"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "Веб-сервер өшіп тұр (Cloudflare)"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "Қосылым уақытының аяқталуы (Cloudflare)"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "Шығу тегіне қол жеткізу мүмкін емес (Cloudflare)"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "Уақыт аяқталуы орын алды (Cloudflare)"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "SSL қол алысуы сәтсіз аяқталды (Cloudflare)"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "Жарамсыз SSL сертификаты (Cloudflare)"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Railgun қатесі (Cloudflare - ескірген)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "Сайт шамадан тыс жүктелген (SSLLabs)"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "Шығу тегі DNS қатесі (Cloudflare) / Сайт мұздатылған (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "Уақытша өшірілген (Shopify)"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "Рұқсат етілмеген (AWS ELB)"
+
+msgid "Network read timeout error"
+msgstr "Желі оқу уақытының аяқталу қатесі"
+
+msgid "Network connect timeout error"
+msgstr "Желіге қосылу уақытының аяқталу қатесі"
+
+msgid "Unexpected token (Shopify)"
+msgstr "Күтпеген токен (Shopify)"
+
+msgid "Request denied (LinkedIn)"
+msgstr "Сұрау қабылданбады (LinkedIn)"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 GOAWAY (AWS ELB)"
+
+msgid "[Unknown]"
+msgstr "[Белгісіз]"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "Стандартты емес сәттілік жауабы (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "Жүйе күйі немесе жүйелік көмек жауабы"
+
+msgid "Help message"
+msgstr "Көмек хабарламасы"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "SMTP қызметі дайын (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "Қызмет дайын - сервер пошта қабылдауға дайын"
+
+msgid "Service closing - connection is being closed"
+msgstr "Қызмет жабылуда - қосылым жабылуда"
+
+msgid "Authentication successful"
+msgstr "Аутентификация сәтті өтті"
+
+msgid "Requested mail action taken and completed"
+msgstr "Сұралған пошта әрекеті орындалды және аяқталды"
+
+msgid "User not local - will forward to another address"
+msgstr "Пайдаланушы жергілікті емес - басқа мекенжайға жіберіледі"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "Алушыны растау мүмкін емес, бірақ жеткізу әрекеті жасалады"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "Хабарлама жеткізуге қабылданды (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "Пайдаланушы аты - пошта жәшігі"
+
+msgid "Authentication challenge - please respond"
+msgstr "Аутентификация сұрауы - жауап беріңіз"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "Пошта кірісін бастау - <CRLF>.<CRLF> аяқтау"
+
+msgid "Continue (LMTP)"
+msgstr "Жалғастыру (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "Қызмет қолжетімсіз - қосылым жабылуда, кейінірек қайталап көріңіз"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "Пошта жәшігі бос емес немесе уақытша қолжетімсіз (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "Қосылу жылдамдығының лимиті асып кетті (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "Тым көп бір мезгілдегі қосылымдар (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "Қосылым орнату мүмкін емес (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "Қосылымның уақыты аяқталды (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "Қатеге байланысты қосылым үзілді (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "Пошта жәшігі уақытша құлыпталған (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "Тым көп алушылар (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "Пошта серверінің қатесі (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "Қабылдау циклі анықталды (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "Тым көп hop саны (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "DNS іздеу сәтсіз аяқталды (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "Аутентификациядан өту мүмкін емес (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "TLS қол алысуы сәтсіз аяқталды (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "SMTP хаттамасының бұзылуы (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "Хабарлама өлшемі лимиттен асып түседі (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "Хабарлама жылдамдығының лимиті асып кетті (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "Пошта жәшігінің квотасы асып кетті - уақытша"
+
+msgid "Domain not found (Postfix)"
+msgstr "Домен табылмады (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "Хабарлама тақырыбы жарамсыз (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "Қайтару циклі анықталды (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "Маршруттау мүмкін емес (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "Жіберушінің домені табылмады (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "Алушының домені табылмады (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "Сұр тізімге енгізу жүріп жатыр - қайталап көріңіз (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "Спам сүзгілеу жүріп жатыр (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "Вирус сканерлеу жүріп жатыр (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "Пошта жәшігі қолжетімсіз - кейінірек қайталап көріңіз"
+
+msgid "Requested action aborted - error in processing"
+msgstr "Сұралған әрекет тоқтатылды - өңдеу кезінде қате"
+
+msgid "Insufficient system storage - try again later"
+msgstr "Жүйелік сақтау орны жеткіліксіз - кейінірек қайталап көріңіз"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "Осы алушы үшін тым көп хабарламалар (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS қолжетімді емес (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "Сервер хабарламаларды қабылдай алмайды (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "DNS іздеуде уақытша сәтсіздік (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "Квота асып кетті - уақытша"
+
+msgid "Message too big - temporary"
+msgstr "Хабарлама тым үлкен - уақытша"
+
+msgid "Too many messages per connection"
+msgstr "Байланысқа тым көп хабарлама"
+
+msgid "Load average too high (Postfix)"
+msgstr "Орташа жүктеме тым жоғары (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "Қосылым қабылданбады (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "Жіберу жылдамдығының лимиті асып кетті (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "Алушының жылдамдық лимиті асып кетті (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "Жіберушінің жылдамдық лимиті асып кетті (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "IP мекенжайының жылдамдық лимиті асып кетті (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "MX іздеу сәтсіз аяқталды (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "A жазбасын іздеу сәтсіз аяқталды (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "PTR жазбасын іздеу сәтсіз аяқталды (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "Сұр тізімге енгізу белсенді - қайталап көріңіз (Postgrey)"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "Жіберушінің мекенжайы қабылданбады - домен расталмаған (DMARC күтілуде)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "Алушының мекенжайы қабылданбады - домен расталмаған (DMARC күтілуде)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "DKIM тексеруі күтілуде - уақытша сәтсіздік"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "SPF тексеруі күтілуде - уақытша сәтсіздік"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "DMARC тексеруі күтілуде - уақытша сәтсіздік"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "DNSBL іздеу уақытша сәтсіздігі"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "RHSBL іздеу уақытша сәтсіздігі"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "URI DNSBL іздеу уақытша сәтсіздігі"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "Уақытша аутентификация сәтсіздігі (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "Уақытша авторизация сәтсіздігі (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "Әр жіберуші үшін жылдамдық лимиті асып кетті (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "Әр алушы үшін жылдамдық лимиті асып кетті (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "Әр домен үшін жылдамдық лимиті асып кетті (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "Әр IP үшін жылдамдық лимиті асып кетті (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "Хабарлама кейінгі жеткізу үшін кезекке қойылды (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "Саясатқа байланысты жеткізу кешіктірілді (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "Мазмұн сүзгісінде уақытша сәтсіздік"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "Антивирус сканерде уақытша сәтсіздік"
+
+msgid "Temporary failure in spam filter"
+msgstr "Спам сүзгісінде уақытша сәтсіздік"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter-де уақытша сәтсіздік (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Сұр тізімге енгізу - кейінірек қайталап көріңіз"
+
+msgid "DDoS protection active - try again later"
+msgstr "DDoS қорғанысы белсенді - кейінірек қайталап көріңіз"
+
+msgid "SMTP policy violation - temporary"
+msgstr "SMTP саясатының бұзылуы - уақытша"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "RCPT TO өңдеуде уақытша қате"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "MAIL FROM өңдеуде уақытша қате"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "EHLO/HELO өңдеуде уақытша қате"
+
+msgid "Temporary error in DATA processing"
+msgstr "DATA өңдеуде уақытша қате"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "Уақытша қате - қызмет бос емес, кейінірек қайталап көріңіз"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "Синтаксис қатесі - команда танылмады немесе тым ұзын"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "Параметрлерде немесе аргументтерде синтаксис қатесі"
+
+msgid "Command not implemented"
+msgstr "Команда іске асырылмаған"
+
+msgid "Bad sequence of commands"
+msgstr "Командалардың қате реттілігі"
+
+msgid "Command parameter not implemented"
+msgstr "Команда параметрі іске асырылмаған"
+
+msgid "Version not supported (ESMTP)"
+msgstr "Нұсқа қолдау көрсетілмейді (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "Пошта жәшігінің жолы жарамсыз (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "Бұл сессияда тым көп командалар (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "Алушы лимиті асып кетті (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "Жіберуші лимиті асып кетті (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "Домен лимиті асып кетті (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "Пошта жәшігі жоқ (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS сәтсіздігі - тұрақты"
+
+msgid "Address type not supported (Postfix)"
+msgstr "Мекенжай түрі қолдау көрсетілмейді (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "Пошта жәшігін ашу мүмкін емес (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "Пошта жәшігі құлыпталған - тұрақты"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "Саясатқа байланысты хабарлама қабылданбады (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "Мазмұн қабылданбады - тұрақты"
+
+msgid "Attachment type not allowed"
+msgstr "Тіркеме түріне рұқсат етілмеген"
+
+msgid "Message encoding not supported"
+msgstr "Хабарлама кодтауы қолдау көрсетілмейді"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "Жіберушінің домені жоқ - тұрақты"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "Домен поштаны қабылдамайды немесе жабылуда"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "Алушының домені жоқ - тұрақты"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "Пошта жәшігінің квотасы асып кетті - тұрақты"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "Хабарлама өлшемі лимиттен асып түседі - тұрақты"
+
+msgid "Authentication required (Sendmail)"
+msgstr "Аутентификация қажет (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "Аутентификация сәтсіз аяқталды (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "Аутентификация механизмі қолдау көрсетілмейді"
+
+msgid "Authentication credentials invalid"
+msgstr "Аутентификация тіркелгі деректері жарамсыз"
+
+msgid "Authentication account expired"
+msgstr "Аутентификация тіркелгісінің мерзімі өткен"
+
+msgid "Access denied - authentication required"
+msgstr "Қатынау рұқсат етілмеді - аутентификация қажет"
+
+msgid "Access denied (Sendmailism)"
+msgstr "Қатынау рұқсат етілмеді (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "Қатынау рұқсат етілмеді - аутентификациядан өтпеген"
+
+msgid "Access denied - account locked"
+msgstr "Қатынау рұқсат етілмеді - тіркелгі құлыпталған"
+
+msgid "Access denied - account disabled"
+msgstr "Қатынау рұқсат етілмеді - тіркелгі өшірілген"
+
+msgid "Authentication failed"
+msgstr "Аутентификация сәтсіз аяқталды"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "Реле үшін аутентификация қажет (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "Реле үшін аутентификация сәтсіз аяқталды (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "Шифрлау қажет (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "Осы алушы үшін TLS қажет"
+
+msgid "Encryption strength insufficient"
+msgstr "Шифрлау күші жеткіліксіз"
+
+msgid "Certificate validation failed"
+msgstr "Сертификатты тексеру сәтсіз аяқталды"
+
+msgid "Invalid TLS certificate"
+msgstr "Жарамсыз TLS сертификаты"
+
+msgid "TLS protocol version not supported"
+msgstr "TLS хаттама нұсқасы қолдау көрсетілмейді"
+
+msgid "Cipher suite not supported"
+msgstr "Шифр жиынтығы қолдау көрсетілмейді"
+
+msgid "Access denied - no valid recipient"
+msgstr "Қатынау рұқсат етілмеді - жарамды алушы жоқ"
+
+msgid "Access denied - no valid sender"
+msgstr "Қатынау рұқсат етілмеді - жарамды жіберуші жоқ"
+
+msgid "Access denied - domain not allowed"
+msgstr "Қатынау рұқсат етілмеді - доменге рұқсат етілмеген"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "Қатынау рұқсат етілмеді - IP мекенжайы бұғатталған (тұрақты)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "Қатынау рұқсат етілмеді - жіберушінің домені қара тізімде"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "Пошта жәшігі қолжетімсіз - сұралған әрекет орындалмады"
+
+msgid "User not local - please try forwarding address"
+msgstr "Пайдаланушы жергілікті емес - жіберу мекенжайын пайдаланыңыз"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "Сұралған әрекет тоқтатылды - сақтау бөлінуі асып кетті"
+
+msgid "Mailbox name not allowed"
+msgstr "Пошта жәшігінің атауына рұқсат етілмеген"
+
+msgid "Requested action rejected - access denied"
+msgstr "Сұралған әрекет қабылданбады - қатынау рұқсат етілмеді"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "MAIL FROM/RCPT TO параметрлері танылмады"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "Доменге жіберуге рұқсат етілмеген (DMARC қабылдамады)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "Тым көп қайталанатын хабарламалар - тұрақты"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "Жіберушінің мекенжайы қабылданбады - домен SPF-те жоқ"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "Жіберушінің мекенжайы қабылданбады - DKIM тексеруі сәтсіз аяқталды"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "Жіберушінің мекенжайы қабылданбады - DMARC саясаты қабылдамады"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "Алушының мекенжайы қабылданбады - DMARC саясаты қабылдамады"
+
+msgid "Message rejected due to spam content"
+msgstr "Спам мазмұнына байланысты хабарлама қабылданбады"
+
+msgid "Message rejected due to virus detected"
+msgstr "Вирус анықталғандықтан хабарлама қабылданбады"
+
+msgid "Message rejected due to malicious content"
+msgstr "Зиянды мазмұнға байланысты хабарлама қабылданбады"
+
+msgid "Message rejected due to phishing detection"
+msgstr "Фишинг анықталғандықтан хабарлама қабылданбады"
+
+msgid "Message rejected due to malware detection"
+msgstr "Зиянды бағдарлама анықталғандықтан хабарлама қабылданбады"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "Саясатқа байланысты хабарлама қабылданбады - тұрақты"
+
+msgid "Message rejected due to content filtering"
+msgstr "Мазмұн сүзгілеуге байланысты хабарлама қабылданбады"
+
+msgid "Message rejected due to reputation"
+msgstr "Беделге байланысты хабарлама қабылданбады"
+
+msgid "Access denied - access_map violation"
+msgstr "Қатынау рұқсат етілмеді - access_map бұзылуы"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "Қатынау рұқсат етілмеді - SMTP клиенті RBL тізімінде"
+
+msgid "Access denied - relay not authorized"
+msgstr "Қатынау рұқсат етілмеді - реле авторизацияланбаған"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "Қатынау рұқсат етілмеді - белгісіз SMTP клиентінің хост атауы"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "Қатынау рұқсат етілмеді - клиенттің HELO хост атауының синтаксисі қате"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "Қатынау рұқсат етілмеді - SMTP клиентінің хост атауы қабылданбады"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "Қатынау рұқсат етілмеді - жіберуші немесе алушы үшін белгісіз домен"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "Қатынау рұқсат етілмеді - белгісіз клиенттің HELO хост атауы"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "Қатынау рұқсат етілмеді - жарамсыз домен (FQDN емес)"
+
+msgid "Access denied - domain not qualified"
+msgstr "Қатынау рұқсат етілмеді - домен білікті емес"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "Қатынау рұқсат етілмеді - пошта сервері қате конфигурацияланған"
+
+msgid "Access denied - open relay not allowed"
+msgstr "Қатынау рұқсат етілмеді - ашық релеге рұқсат етілмеген"
+
+msgid "Access denied - proxy not allowed"
+msgstr "Қатынау рұқсат етілмеді - проксиге рұқсат етілмеген"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "Қатынау рұқсат етілмеді - динамикалық IP рұқсат етілмеген"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "Қатынау рұқсат етілмеді - тұрғын үй IP рұқсат етілмеген"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "Қатынау рұқсат етілмеді - VPN/Tor анықталды"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "Қатынау рұқсат етілмеді - Spamhaus DROP тізімінде"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "Қатынау рұқсат етілмеді - URL URIBL тізімінде"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "Қатынау рұқсат етілмеді - домен RHSBL тізімінде"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "Қатынау рұқсат етілмеді - IP DNSWL тізімінде (саясат)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "Жеткізу сәтсіз аяқталды - пошта жәшігі табылмады"
+
+msgid "Delivery failed - recipient not local"
+msgstr "Жеткізу сәтсіз аяқталды - алушы жергілікті емес"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "Жеткізу сәтсіз аяқталды - алушы қабылданбады"
+
+msgid "Delivery failed - sender rejected"
+msgstr "Жеткізу сәтсіз аяқталды - жіберуші қабылданбады"
+
+msgid "Delivery failed - relay rejected"
+msgstr "Жеткізу сәтсіз аяқталды - реле қабылданбады"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "Жеткізу сәтсіз аяқталды - DNS тұрақты қатесі"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "Жеткізу сәтсіз аяқталды - MX тұрақты қатесі"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "Жеткізу сәтсіз аяқталды - A жазбасының тұрақты қатесі"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "Жеткізу сәтсіз аяқталды - PTR жазбасының тұрақты қатесі"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "Жеткізу сәтсіз аяқталды - саясаттың тұрақты қатесі"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: Сәттілік - жеткізу күйі туралы хабарлама"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: Жеткізу кешіктірілді"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: Жеткізу сәтсіз аяқталды - тұрақты"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: Жеткізу сәтсіз аяқталды - уақытша"
+
+msgid "DSN: Message expired"
+msgstr "DSN: Хабарламаның мерзімі өтті"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: Хабарлама қайтарылды"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: Хабарлама тасталды"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: Хабарлама сүзілді"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: Хабарлама карантинге алынды"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: Хабарлама тексеруге ұсталды"
+
+msgid "MTA-STS policy required"
+msgstr "MTA-STS саясаты қажет"
+
+msgid "MTA-STS policy validation failed"
+msgstr "MTA-STS саясатын тексеру сәтсіз аяқталды"
+
+msgid "TLS reporting required"
+msgstr "TLS есептілігі қажет"
+
+msgid "TLS report requested"
+msgstr "TLS есебі сұралды"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA Қатаң Тасымалдау Қауіпсіздігі белсенді"
+
+msgid "DANE validation required"
+msgstr "DANE тексеруі қажет"
+
+msgid "DANE validation failed"
+msgstr "DANE тексеруі сәтсіз аяқталды"
+
+msgid "TLSA record missing"
+msgstr "TLSA жазбасы жетіспейді"
+
+msgid "Certificate name mismatch"
+msgstr "Сертификат атауы сәйкес келмеуі"
+
+msgid "Certificate expired"
+msgstr "Сертификаттың мерзімі өткен"
+
+msgid "AUTH LOGIN required"
+msgstr "AUTH LOGIN қажет"
+
+msgid "AUTH PLAIN required"
+msgstr "AUTH PLAIN қажет"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "AUTH CRAM-MD5 қажет"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "AUTH DIGEST-MD5 қажет"
+
+msgid "AUTH GSSAPI required"
+msgstr "AUTH GSSAPI қажет"
+
+msgid "AUTH NTLM required"
+msgstr "AUTH NTLM қажет"
+
+msgid "AUTH SCRAM required"
+msgstr "AUTH SCRAM қажет"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "AUTH OAUTHBEARER қажет"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "AUTH XOAUTH2 қажет"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: Пошта жәшігінің дерекқорының қатесі"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: Дүкен драйверінің қатесі"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: Көлік агентінің қатесі"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: Мазмұнды түрлендіру қатесі"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: Маршруттау қатесі"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: Пошта ағыны тоқтап қалды"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: Көлеңке артықшылық қатесі"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: Қауіпсіздік торының қатесі"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: Кезек дерекқорының қатесі"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: Хабарлама шектелді"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: Қайтару кезегінің қатесі"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: Кейінге қалдырылған кезектің қатесі"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: Ұсталған кезектің қатесі"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: Кіріс кезегінің қатесі"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: Белсенді кезектің қатесі"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: Бүлінген кезек файлы"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: Кезек жүгірткішінің қатесі"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: Алиас дерекқорының қатесі"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: Virtuser кестесінің қатесі"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: Пошта жіберушінің анықтамасының қатесі"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: Маршрутизатор конфигурациясының қатесі"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: Көлік конфигурациясының қатесі"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: Директор конфигурациясының қатесі"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: Қайталау конфигурациясының қатесі"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: Қайта жазу конфигурациясының қатесі"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: Аутентификация конфигурациясының қатесі"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ACL конфигурациясының қатесі"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Local_scan конфигурациясының қатесі"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: Іздеу конфигурациясының қатесі"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: Кеңейту конфигурациясының қатесі"
+
+msgid "HTTP Protocol Versions"
+msgstr "HTTP хаттама нұсқалары"
+
+msgid "Protocol"
+msgstr "Хаттама"
+
+msgid "Request %"
+msgstr "Сұрау үлесі"
+
+msgid "Bandwidth %"
+msgstr "Өткізу қабілеттілігі үлесі"
+
+msgid "Each request requires a new connection"
+msgstr "Әр сұрау жаңа қосылымды қажет етеді"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "Бірнеше сұрау бір қосылымды қайта пайдалана алады"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "Бір қосылым арқылы параллельді бірнеше сұрау"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "Жылдамырақ қосылым, нашар желілерде жақсырақ өнімділік"
+
+msgid "No protocol data available"
+msgstr "Хаттама деректері жоқ"
+
+msgid "of requests use HTTP/1.0"
+msgstr "сұрау HTTP/1.0 пайдаланады"
+
+msgid "From access logs"
+msgstr "Қолжетімділік журналдарынан"
+
+msgid "No HTTP/2 requests detected"
+msgstr "HTTP/2 сұраулары анықталмады"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "Барлық сұраулар HTTP/1.0, HTTP/2 сұраулары жоқ"
+
+msgid "HTTP/3 not detected"
+msgstr "HTTP/3 анықталмады"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "барлық сұраулар QUIC/HTTP/3 хаттама сұрауларын қамтымайды"
+
+msgid "Mail Authentication Statistics"
+msgstr "Пошта Аутентификациясының Статистикасы"
+
+msgid "Authentication"
+msgstr "Аутентификация түрі"
+
+msgid "Pass"
+msgstr "Өтті"
+
+msgid "Fail"
+msgstr "Сәтсіз"
+
+msgid "Softfail"
+msgstr "Жұмсақ сәтсіздік"
+
+msgid "Neutral"
+msgstr "Бейтарап"
+
+msgid "None"
+msgstr "Жоқ"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "Пошта Кезегінің Кідіріс Статистикасы"
+
+msgid "Delay Range"
+msgstr "Кідіріс ауқымы"
+
+msgid "Count"
+msgstr "Саны"
+
+msgid "Percentage"
+msgstr "Пайыз"
+
+msgid "TLS Encryption Statistics"
+msgstr "TLS Шифрлау Статистикасы"
+
+msgid "TLS Versions"
+msgstr "TLS нұсқалары"
+
+msgid "Top Ciphers"
+msgstr "Ең көп қолданылатын шифрлер"
+
+msgid "robot_hits_detail_both"
+msgstr "Жалпы сұраулар саны: %s (қалыпты беттер: %s, robots.txt: %s)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "Тек robots.txt сұраулары: %s, басқа беттер жоқ"
+
+msgid "robot_hits_detail_normal"
+msgstr "Қалыпты бет сұраулары: %s"
+
+# Көмек және кеңестер
+msgid "Troubleshooting"
+msgstr "Ақаулықтарды жою"
+
+msgid "Did you use the correct URL?"
+msgstr "Сіз дұрыс URL пайдаландыңыз ба?"
+
+msgid "Example:"
+msgstr "Мысал:"
+
+msgid "Did you use correct config parameter?"
+msgstr "Сіз дұрыс конфигурация параметрін пайдаландыңыз ба?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "Мысал: Егер сіздің конфигурация файлыңыз awstats.mysite.conf болса, -config=mysite пайдаланыңыз"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "Сіз 'awstats.$SiteConfig.conf' конфигурация файлын жасадыңыз ба?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "Жоқ болса, командалық жолдан \"awstats_configure.pl\" іске қосуға немесе қолмен жасауға болады."
+
+msgid "Setup"
+msgstr "Орнату"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "файл, веб-сервер немесе рұқсаттар қате болуы мүмкін."
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "Конфигурация файлын, рұқсаттарды және AWStats құжаттамасын ('docs' каталогында) тексеріңіз."
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "Ескерту: \"%s\" үшін тіл файлдары табылмады. Ағылшын тілі қолданылады."
+
+#------------------------------------------------------------------------------
+# Қателер мен сигналдарды өңдеу
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "%s процесі (ID %s) %s сигналымен үзілді."
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "Бұл конфигурация файлы үшін AWStats жаңарту процесі қазірдің өзінде жұмыс істеп тұрған сияқты. Кейінірек қайталап көріңіз. Егер бұл дұрыс болмаса, құлыптау файлын қолмен жойыңыз"
+
+#------------------------------------------------------------------------------
+# Статистикалық тақырыптар
+#------------------------------------------------------------------------------
+
+msgid "Report Overview"
+msgstr "Есеп шолуы"
+
+msgid "Monthly Statistics"
+msgstr "Айлық статистика"
+
+msgid "Daily Statistics"
+msgstr "Күндік статистика"
+
+msgid "Statistics by Day of Week"
+msgstr "Апта күндері бойынша статистика"
+
+msgid "Hourly Page Views"
+msgstr "Сағаттық бет көріністері"
+
+msgid "Traffic Sources"
+msgstr "Трафик көздері"
+
+msgid "Other Sources"
+msgstr "Басқа көздер"
+
+msgid "tooltip_1"
+msgstr "Келушілердің веб-сайттағы сессияларының саны. Бір келуші 30 минуттан астам әрекетсіз болғаннан кейін қайта келсе, бұл жаңа келу болып есептеледі."
+
+msgid "tooltip_2"
+msgstr "Таңдалған уақыт кезеңінде веб-сайтыңызға келген әртүрлі келушілердің саны. IP мекенжайы негізінде есептеледі."
+
+msgid "tooltip_3"
+msgstr "Беттер деп саналатын сұраулар саны (HTML, PHP, ASP және т.б.), суреттер, CSS, JS және т.б. статикалық файлдарды қоспағанда."
+
+msgid "tooltip_4"
+msgstr "Серверге жіберілген барлық сұраулардың жалпы саны, беттер, суреттер, CSS, JS және барлық файлдарды қоса алғанда."
+
+msgid "tooltip_5"
+msgstr "Сервердің пайдаланушы сұрауларына жауап ретінде жіберген деректерінің жалпы көлемі."
+
+msgid "tooltip_13"
+msgstr "Іздеу жүйелері арқылы веб-сайтыңызға келетін трафик көздерінің статистикасы. Қандай іздеу жүйелері сізге трафик әкелетінін және келушілер қандай іздеу сөздерін қолданатынын көрсетеді."
+
+msgid "tooltip_14"
+msgstr "Басқа веб-сайттардың сыртқы сілтемелері арқылы веб-сайтыңызға келетін трафик көздерінің статистикасы. Қандай сайттар сізге сілтеме жасайтынын және олар әкелетін трафикті көрсетеді."
+
+msgid "tooltip_15"
+msgstr "Келушілердің сізді іздеу жүйелері арқылы табу үшін пайдаланған іздеу терминдері. Кілт сөздер - бір сөз, кілт сөз тіркестері - бірнеше сөздің комбинациясы."
+
+msgid "tooltip_16"
+msgstr "Іздеу жүйесі роботтары, AI жаттықтыру роботтары, осалдық сканерлері сияқты автоматтандырылған бағдарламалар. Жақшадағы сандар қалыпты бет сұрауларының және robots.txt сұрауларының санын көрсетеді."
+
+msgid "tooltip_17"
+msgstr "24 сағаттық трафик бөлінісі. Веб-сайтыңыздың тәуліктің қай уақытында көбірек келетінін көрсетеді, пайдаланушылардың белсенді уақытын түсінуге көмектеседі."
+
+msgid "tooltip_18"
+msgstr "Бұл баған таңдалған уақыт кезеңіндегі күнделікті/апталық орташа мәндерді көрсетеді, жалпы трендті түсінуге көмектеседі."
+
+msgid "tooltip_19"
+msgstr "Егжей-тегжейлі ақпарат алу үшін графиктегі элементтерді басыңыз. Мәндерді көру үшін тышқанды график элементтерінің үстіне апарыңыз."
+
+msgid "tooltip_20"
+msgstr "Бар ауқымдарға жіктеу мүмкін емес деректер, әдетте деректер пішімінің қалыптан тыс немесе жетіспеуіне байланысты болады."
+
+msgid "tooltip_21"
+msgstr "Анықталған құрт вирусының шабуыл жазбалары. Құрт - өзін-өзі тарататын зиянды бағдарлама, әдетте желілік осалдықтар арқылы таралады."
+
+#------------------------------------------------------------------------------
+# Көмек ақпаратын көрсету - Қауымдастық басылымы
+#------------------------------------------------------------------------------
+
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - Кеңейтілген Веб Статистикасы"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "Авторлық құқық (c) 2000-2025 Лоран Дестайер"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "Авторлық құқық (c) 2026-соңғы Қауымдастық басылымы"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats ЕШҚАНДАЙ КЕПІЛДІКСІЗ КЕЛЕДІ. Бұл GNU Жалпы Жұртшылық Лицензиясы бойынша таратылатын еркін бағдарламалық жасақтама (Егжей-тегжейлер үшін LICENSE файлын қараңыз)."
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "Синтаксис: %s -config=виртуалды_хост_атауы [опциялар]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "Бұл AWStats конфигурация файлында анықталған журнал файлынан веб-сайт статистикасын жаңарту үшін (-update опциясы) немесе HTML есебін құру үшін (-output опциясы) %s командалық жолында жұмыс істейді."
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "Алдымен, %s конфигурация файлы ретінде %s.виртуалды_хост_атауы.conf оқуға тырысады. Табылмаса, %s %s.conf оқуға тырысады, және соңында -config= параметріне берілген толық жолды оқиды."
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "Ескерту 1: Конфигурация файлдары (*.conf) /etc/awstats, /usr/local/etc/awstats, /etc немесе awstats.pl скрипт файлымен бірдей каталогта болуы керек."
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "Ескерту 2: Егер AWSTATS_FORCE_CONFIG қоршаған орта айнымалысы анықталса, AWStats оны 'config' мәні ретінде пайдаланады, командалық жолдағы немесе URL-дегі мән қандай болса да."
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "Барлық орнату нұсқаулары үшін AWStats құжаттамасын қараңыз."
+
+msgid "Options to update statistics:"
+msgstr "Статистиканы жаңарту опциялары:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        статистиканы жаңарту (әдепкі)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     әр %s жол өңделген сайын эталондық ақпарат қосу"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted табылған әрбір бүлінген жол үшін себебімен бірге шығыс қосу"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   табылған әрбір тасталған жол үшін себебімен бірге шығыс қосу"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin  сілтемешіні талдау мүмкін болмаған кезде оны шығару"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin   шығу тегі тікелей қолжетімділік болған кезде журнал жолын шығару"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n   n жолды талдағаннан кейін жаңарту процесін тоқтату"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x     конфигурация файлындағы 'LogFile' қандай болса да, талдау үшін журналды өзгерту"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  Статистиканы жаңарту кезінде журнал файлдарын хронологиялық ретпен өңдеуге абай болыңыз."
+
+msgid "Options to show statistics:"
+msgstr "Статистиканы көрсету опциялары:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output      негізгі HTML есебін шығару (-update болмаса, жаңарту жасалмайды)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x    басқа есеп беттерін шығару, мұндағы x:"
+
+msgid "build page of all domains/countries"
+msgstr "барлық домендердің/елдердің бетін құру"
+
+msgid "build page of all hosts"
+msgstr "барлық хосттардың бетін құру"
+
+msgid "build page of last hits for hosts"
+msgstr "хосттар үшін соңғы соққылар бетін құру"
+
+msgid "build page of all unresolved IP"
+msgstr "барлық шешілмеген IP мекенжайларының бетін құру"
+
+msgid "build page of all email senders (maillog)"
+msgstr "барлық электрондық пошта жіберушілердің бетін құру (пошта журналы)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "соңғы электрондық пошта жіберушілердің бетін құру (пошта журналы)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "барлық электрондық пошта алушылардың бетін құру (пошта журналы)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "соңғы электрондық пошта алушылардың бетін құру (пошта журналы)"
+
+msgid "build page of all logins used"
+msgstr "пайдаланылған барлық кіру атауларының бетін құру"
+
+msgid "build page of last hits for logins"
+msgstr "кіру атаулары үшін соңғы соққылар бетін құру"
+
+msgid "build page of all robots/spider visits"
+msgstr "барлық робот/өрмекші келулерінің бетін құру"
+
+msgid "build page of last hits for robots"
+msgstr "роботтар үшін соңғы соққылар бетін құру"
+
+msgid "list most often viewed pages"
+msgstr "жиі қаралатын беттердің тізімін беру"
+
+msgid "list most often viewed pages matching filter"
+msgstr "сүзгіге сәйкес келетін жиі қаралатын беттердің тізімін беру"
+
+msgid "list entry pages"
+msgstr "кіру беттерінің тізімін беру"
+
+msgid "list entry pages matching filter"
+msgstr "сүзгіге сәйкес келетін кіру беттерінің тізімін беру"
+
+msgid "list exit pages"
+msgstr "шығу беттерінің тізімін беру"
+
+msgid "list exit pages matching filter"
+msgstr "сүзгіге сәйкес келетін шығу беттерінің тізімін беру"
+
+msgid "build page with os detailed versions"
+msgstr "операциялық жүйенің егжей-тегжейлі нұсқаларымен бет құру"
+
+msgid "build page with browsers detailed versions"
+msgstr "браузерлердің егжей-тегжейлі нұсқаларымен бет құру"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "белгісіз браузері бар 'User Agents' тізімін беру"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "белгісіз ОЖ бар 'User Agents' тізімін беру"
+
+msgid "build page of all refering search engines"
+msgstr "барлық сілтемеші іздеу жүйелерінің бетін құру"
+
+msgid "build page of all refering pages"
+msgstr "барлық сілтемеші беттердің бетін құру"
+
+msgid "list all keyphrases used on search engines"
+msgstr "іздеу жүйелерінде пайдаланылған барлық кілт сөз тіркестерінің тізімін беру"
+
+msgid "list all keywords used on search engines"
+msgstr "іздеу жүйелерінде пайдаланылған барлық кілт сөздердің тізімін беру"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "404 қателері үшін 'Сілтемешілердің' тізімін беру"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "ExtraSection X үшін барлық мәндердің бетін құру"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           HTML есеп бетінде статикалық сілтемелерді пайдалану"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    .html орнына .xxx кеңейтімі бар статикалық сілтемелерді пайдалану"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     HTML есебін LL тілінде шығару (kk,en,de,fr,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    ескі MM айы үшін HTML есебін шығару"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   ескі YYYY жылы үшін HTML есебін шығару"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  'Күн' опциялары ескі журнал файлын өңдеуге мүмкіндік бермейді. Олар ағымдағы ай/жылдың орнына таңдалған ай/жыл кезеңі үшін өткен есепті көруге ғана мүмкіндік береді."
+
+msgid "Other options:"
+msgstr "Басқа опциялар:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     X деңгейінен аз жөндеу ақпаратын қосу (жылдамдық төмендейді)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     AWStats нұсқасын көрсету"
+
+msgid "Now supports/detects:"
+msgstr "Қазір қолдайды/анықтайды:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Web/FTP/Пошта/ағын серверінің журналын талдау (және жүктеме теңгерілген журнал файлдары)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  Кері DNS іздеу (IPv4 және IPv6) және GeoIP іздеу"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  Келулер саны, бірегей келушілер саны"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  Келу ұзақтығы және соңғы келулер тізімі"
+
+msgid "  Authenticated users"
+msgstr "  Аутентификацияланған пайдаланушылар"
+
+msgid "  Days of week and rush hours"
+msgstr "  Апта күндері және ең көп сағаттар"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  Хосттар тізімі және шешілмеген IP мекенжайларының тізімі"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  Ең көп қаралған, кіру және шығу беттері"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  Файл түрлері және Веб сығу (mod_gzip, mod_deflate статистикасы)"
+
+msgid "  Configured Database Statistics"
+msgstr "  Конфигурацияланған Дерекқор Статистикасы"
+
+msgid "  %s domains/countries"
+msgstr "  %s домен/ел"
+
+msgid "  %s robots"
+msgstr "  %s робот"
+
+msgid "  %s worm's families"
+msgstr "  %s құрт тұқымдасы"
+
+msgid "  %s operating systems"
+msgstr "  %s операциялық жүйе"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s браузер (телефон браузерлерінің дерекқорымен бірге %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s іздеу жүйесі (және олардан пайдаланылған кілт сөз тіркестері/кілт сөздер)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  Соңғы сілтемешімен барлық HTTP қателері"
+
+msgid "  Report by day/month/year"
+msgstr "  Күн/ай/жыл бойынша есеп"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  Динамикалық немесе статикалық HTML немесе XHTML есептері, статикалық PDF есептері"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  Индекстелген мәтін немесе XML айлық дерекқор"
+
+msgid "  And a lot of other advanced features and options..."
+msgstr "  Және көптеген басқа кеңейтілген мүмкіндіктер мен опциялар..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  Жаңа нұсқалар және ЖҚС (FAQ) https://github.com/hestiacn/vstats/issues мекенжайында"

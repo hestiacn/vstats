@@ -1,0 +1,3288 @@
+# AWStats Khmer (km) translations
+# Copyright (C) 2026 AWStats
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Khmer\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#------------------------------------------------------------------------------
+# ឈ្មោះខែ
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "មករា"
+
+msgid "month_02"
+msgstr "កុម្ភៈ"
+
+msgid "month_03"
+msgstr "មីនា"
+
+msgid "month_04"
+msgstr "មេសា"
+
+msgid "month_05"
+msgstr "ឧសភា"
+
+msgid "month_06"
+msgstr "មិថុនា"
+
+msgid "month_07"
+msgstr "កក្កដា"
+
+msgid "month_08"
+msgstr "សីហា"
+
+msgid "month_09"
+msgstr "កញ្ញា"
+
+msgid "month_10"
+msgstr "តុលា"
+
+msgid "month_11"
+msgstr "វិច្ឆិកា"
+
+msgid "month_12"
+msgstr "ធ្នូ"
+
+#------------------------------------------------------------------------------
+# ឈ្មោះថ្ងៃ
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "អាទិត្យ"
+
+msgid "DayOfWeek_1"
+msgstr "ច័ន្ទ"
+
+msgid "DayOfWeek_2"
+msgstr "អង្គារ"
+
+msgid "DayOfWeek_3"
+msgstr "ពុធ"
+
+msgid "DayOfWeek_4"
+msgstr "ព្រហស្បតិ៍"
+
+msgid "DayOfWeek_5"
+msgstr "សុក្រ"
+
+msgid "DayOfWeek_6"
+msgstr "សៅរ៍"
+
+#------------------------------------------------------------------------------
+# ធាតុចំណុចប្រទាក់អ្នកប្រើ
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "ស្ថិតិគេហទំព័រកម្រិតខ្ពស់សម្រាប់"
+
+msgid "Statistics for"
+msgstr "ស្ថិតិសម្រាប់"
+
+msgid "main"
+msgstr "ទិដ្ឋភាពទូទៅ"
+
+msgid "Switch to light mode"
+msgstr "ប្តូរទៅរបៀបភ្លឺ"
+
+msgid "Switch to dark mode"
+msgstr "ប្តូរទៅរបៀបងងឹត"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "បៃ"
+
+msgid "Filter"
+msgstr "តម្រង"
+
+msgid "Exclude filter"
+msgstr "មិនរាប់បញ្ចូលតម្រង"
+
+msgid "Top"
+msgstr "កំពូល"
+
+msgid "Full list"
+msgstr "បញ្ជីពេញលេញ"
+
+msgid "Last"
+msgstr "ចុងក្រោយ"
+
+msgid "Average"
+msgstr "មធ្យម"
+
+
+msgid "Export"
+msgstr "នាំចេញ"
+
+msgid "Details"
+msgstr "ព័ត៌មានលម្អិត"
+
+msgid "Version"
+msgstr "កំណែ"
+
+msgid "thousands_separator"
+msgstr ","
+
+msgid "dateformat_long"
+msgstr "dd/MM/yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd/MM/yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "ព.ស. %s"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# របាររុករក
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "ឧបករណ៍ជ្រើសរើសខែ AWStats"
+
+msgid "nav_category_basic"
+msgstr "ឯកសារមូលដ្ឋាន"
+
+msgid "nav_category_guide"
+msgstr "មគ្គុទ្ទេសក៍ប្រើប្រាស់"
+
+msgid "nav_category_reference"
+msgstr "ធនធានយោង"
+
+msgid "nav_category_integration"
+msgstr "ការរួមបញ្ចូលនិងផ្នែកបន្ថែម"
+
+msgid "nav_category_dev"
+msgstr "ឯកសារអ្នកអភិវឌ្ឍន៍"
+
+msgid "nav_changelog"
+msgstr "កំណត់ហេតុនៃការផ្លាស់ប្តូរ"
+
+msgid "nav_what"
+msgstr "តើ AWStats ជាអ្វី"
+
+msgid "nav_license"
+msgstr "អាជ្ញាប័ណ្ណ"
+
+msgid "nav_glossary"
+msgstr "សទ្ទានុក្រម"
+
+msgid "nav_setup"
+msgstr "ការដំឡើងនិងកំណត់រចនាសម្ព័ន្ធ"
+
+msgid "nav_upgrade"
+msgstr "មគ្គុទ្ទេសក៍ធ្វើឱ្យប្រសើរ"
+
+msgid "nav_config"
+msgstr "ប៉ារ៉ាម៉ែត្រកំណត់រចនាសម្ព័ន្ធ"
+
+msgid "nav_extra"
+msgstr "ផ្នែកបន្ថែម"
+
+msgid "nav_tools"
+msgstr "ឧបករណ៍ផ្សេងទៀត"
+
+msgid "nav_faq"
+msgstr "សំណួរដែលគេសួរញឹកញាប់"
+
+msgid "nav_security"
+msgstr "ដំបូន្មានសុវត្ថិភាព"
+
+msgid "nav_compare"
+msgstr "ការប្រៀបធៀប"
+
+msgid "nav_benchmark"
+msgstr "ការវាស់ស្ទង់ដំណើរការ"
+
+msgid "nav_webmin"
+msgstr "ម៉ូឌុល Webmin"
+
+msgid "nav_dolibarr"
+msgstr "ម៉ូឌុល Dolibarr"
+
+msgid "nav_contrib"
+msgstr "ធនធានពីអ្នករួមចំណែក"
+
+msgid "nav_plugins"
+msgstr "ការអភិវឌ្ឍន៍កម្មវិធីជំនួយ"
+
+msgid "nav_hooks"
+msgstr "ទំពក់កម្មវិធីជំនួយ"
+
+msgid "nav_graphs"
+msgstr "ក្រាហ្វកម្មវិធីជំនួយ"
+
+msgid "Back to top"
+msgstr "ត្រឡប់ទៅកំពូល"
+
+msgid "nav_select_month"
+msgstr "ជ្រើសរើសខែ"
+
+#------------------------------------------------------------------------------
+# សូចនាករសំខាន់ៗ
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "អ្នកទស្សនាតែមួយគត់"
+
+msgid "Visits"
+msgstr "ចំនួនទស្សនា"
+
+msgid "Visits duration"
+msgstr "រយៈពេលទស្សនា"
+
+msgid "First visit"
+msgstr "បច្ចុប្បន្នភាពដំបូង"
+
+msgid "Last visit"
+msgstr "បច្ចុប្បន្នភាពចុងក្រោយ"
+
+msgid "Visits/Visitor"
+msgstr "ទស្សនា/អ្នកទស្សនា"
+
+msgid "Pages/Visit"
+msgstr "ទំព័រ/ទស្សនា"
+
+msgid "Hits/Visit"
+msgstr "សំណើ/ទស្សនា"
+
+msgid "KB/Visit"
+msgstr "គីឡូបៃ/ទស្សនា"
+
+msgid "KB/Visits"
+msgstr "គីឡូបៃ/ចំនួនទស្សនា"
+
+msgid "Pages"
+msgstr "ចំនួនទំព័រ"
+
+msgid "Hits"
+msgstr "ចំនួនសំណើ"
+
+msgid "Bandwidth"
+msgstr "កម្រិតបញ្ជូន"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "វិនាទី"
+
+msgid "unit_min"
+msgstr "នាទី"
+
+msgid "unit_h"
+msgstr "ម៉ោង"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "ប្រភេទឧបករណ៍"
+
+msgid "Device Type"
+msgstr "ប្រភេទឧបករណ៍"
+
+msgid "Percent"
+msgstr "ភាគរយ"
+
+msgid "Mobile"
+msgstr "ទូរស័ព្ទដៃ"
+
+msgid "Pause & Go"
+msgstr "ផ្អាកនិងបន្ត"
+
+msgid "Complete"
+msgstr "ពេញលេញ"
+
+msgid "Tablet"
+msgstr "ថេប្លេត"
+
+msgid "Tv"
+msgstr "ទូរទស្សន៍"
+
+msgid "Wearable"
+msgstr "ឧបករណ៍ពាក់"
+
+msgid "Bot"
+msgstr "រម"
+
+msgid "Desktop"
+msgstr "កុំព្យូទ័រលើតុ"
+
+msgid "Normal browsing traffic"
+msgstr "ចរាចរណ៍ទស្សនាធម្មតា"
+
+msgid "Abnormal browsing traffic"
+msgstr "ចរាចរណ៍ទស្សនាមិនធម្មតា"
+
+msgid "Viewed"
+msgstr "បានមើល"
+
+msgid "Not viewed"
+msgstr "មិនទាន់មើល"
+
+msgid "Abnormal browsing traffic note"
+msgstr "ចរាចរណ៍ទស្សនាមិនធម្មតារួមមាន៖ រមស្វែងរក រមបណ្តុះបណ្តាល AI ឧបករណ៍ស្កេនរកចំណុចខ្សោយ និងសំណើដែលមិនអនុលោមតាមស្តង់ដារ HTTP/HTTPS"
+
+msgid "File size"
+msgstr "ទំហំឯកសារ"
+
+msgid "File type"
+msgstr "ប្រភេទឯកសារ"
+
+msgid "Downloads"
+msgstr "ទាញយក"
+
+msgid "Request time"
+msgstr "ពេលវេលាស្នើសុំ"
+
+msgid "Total requests"
+msgstr "ចំនួនសំណើសរុប"
+
+msgid "Frequency"
+msgstr "ភាពញឹកញាប់"
+
+msgid "Average frequency"
+msgstr "ភាពញឹកញាប់មធ្យម"
+
+msgid "Seconds"
+msgstr "វិនាទី"
+
+msgid "First"
+msgstr "លើកដំបូង"
+
+msgid "Mails"
+msgstr "ចំនួនអ៊ីមែល"
+
+msgid "Size"
+msgstr "ទំហំ"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "ព្រមាន៖ ការលុបឯកសារនេះនឹងធ្វើឱ្យស្ថិតិទាំងអស់នៃកាលបរិច្ឆេទ"
+
+msgid "will be lost/reset."
+msgstr "បាត់បង់/កំណត់ឡើងវិញជាអចិន្ត្រៃយ៍!"
+
+msgid "Last config file used to build this data file was"
+msgstr "ឯកសារកំណត់រចនាសម្ព័ន្ធចុងក្រោយដែលប្រើដើម្បីបង្កើតឯកសារទិន្នន័យនេះគឺ"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "ផ្នែក MAP នៅក្នុងឯកសារនេះកត់ត្រាទីតាំងអុហ្វសិតបៃសម្រាប់ការចាប់ផ្តើមនៃផ្នែកនីមួយៗ ដើម្បីឱ្យ"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats អាចចូលដំណើរការទិន្នន័យដោយផ្ទាល់។ ប្រសិនបើអ្នកបានកែប្រែកន្លែងណាមួយនៅក្នុងឯកសារនេះ អ្នកគួរតែ"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "លុបផ្នែក MAP ទាំងស្រុងផងដែរ (AWStats នឹងសរសេរវាឡើងវិញនៅពេលធ្វើបច្ចុប្បន្នភាពបន្ទាប់)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = កាលបរិច្ឆេទនៃកំណត់ត្រាចុងក្រោយដែលបានដំណើរការ - លេខបន្ទាត់កំណត់ត្រាចុងក្រោយក្នុងកំណត់ហេតុចុងក្រោយ - អុហ្វសិតកំណត់ត្រាចុងក្រោយក្នុងកំណត់ហេតុចុងក្រោយ - តម្លៃហត្ថលេខាកំណត់ត្រាចុងក្រោយ"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = កាលបរិច្ឆេទទស្សនាលើកដំបូងសម្រាប់ឯកសារប្រវត្តិ"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = កាលបរិច្ឆេទទស្សនាចុងក្រោយសម្រាប់ឯកសារប្រវត្តិ"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = កាលបរិច្ឆេទធ្វើបច្ចុប្បន្នភាពចុងក្រោយ - ចំនួនកំណត់ត្រាដែលបានញែក - ចំនួនកំណត់ត្រាចាស់ដែលបានញែក - ចំនួនកំណត់ត្រាថ្មីដែលបានញែក - ចំនួនដែលខូចដែលបានញែក - ចំនួនដែលបានទម្លាក់ដែលបានញែក"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = ចំនួនទស្សនា"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = ចំនួនអ្នកទស្សនាតែមួយគត់"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = ចំនួនម៉ាស៊ីនដែលស្គាល់"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = ចំនួនម៉ាស៊ីនដែលមិនស្គាល់"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "លេខសម្គាល់ក្ល៊ីស័រ - ចំនួនទំព័រ - ចំនួនសំណើ - កម្រិតបញ្ជូន"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "ម៉ោង - ចំនួនទំព័រ - ចំនួនសំណើ - កម្រិតបញ្ជូន - ទំព័រដែលមិនបានមើល - សំណើដែលមិនបានមើល - កម្រិតបញ្ជូនដែលមិនបានមើល"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "កាលបរិច្ឆេទ - ចំនួនទំព័រ - ចំនួនសំណើ - កម្រិតបញ្ជូន - ទស្សនា"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "ដែន - ចំនួនទំព័រ - ចំនួនសំណើ - កម្រិតបញ្ជូន"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "ទំព័រដើមនឹងបង្ហាញតែ %s ទំព័រខ្ពស់បំផុតប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់នៅក្នុងទំព័រលម្អិត"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "ម៉ាស៊ីន - ចំនួនទំព័រ - ចំនួនសំណើ - កម្រិតបញ្ជូន - ពេលវេលាទស្សនាចុងក្រោយ - [ពេលវេលាចាប់ផ្តើមនៃការទស្សនាចុងក្រោយ] - [ទំព័រចុងក្រោយនៃការទស្សនាចុងក្រោយ]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[ពេលវេលាចាប់ផ្តើមនៃការទស្សនាចុងក្រោយ] និង [ទំព័រចុងក្រោយនៃការទស្សនាចុងក្រោយ] នឹងត្រូវបានរក្សាទុតែនៅពេលវគ្គមិនទាន់បញ្ចប់ប៉ុណ្ណោះ"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "ទំព័រដើមនឹងបង្ហាញតែ %s ធាតុសំណើខ្ពស់បំផុតប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់នៅក្នុងទំព័រលម្អិត"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "អ្នកប្រើដែលបានចូល - ចំនួនទំព័រ - ចំនួនសំណើ - កម្រិតបញ្ជូន - ពេលវេលាទស្សនាចុងក្រោយ"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "លេខសម្គាល់រម - ចំនួនសំណើ - កម្រិតបញ្ជូន - ពេលវេលាទស្សនាចុងក្រោយ - ចំនួនសំណើ robots.txt"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "លេខសម្គាល់ដង្កូវ - ចំនួនសំណើ - កម្រិតបញ្ជូន - ពេលវេលាទស្សនាចុងក្រោយ"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "អ៊ីមែល - ចំនួនសំណើ - កម្រិតបញ្ជូន - ពេលវេលាទស្សនាចុងក្រោយ"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "ទំព័រដើមនឹងបង្ហាញតែ %s អ៊ីមែលសំណើខ្ពស់បំផុតប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់នៅក្នុងទំព័រលម្អិត"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - ចំនួនទំព័រ - កម្រិតបញ្ជូន - ចូល - ចេញ"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "ប្រភេទឯកសារ - ចំនួនសំណើ - កម្រិតបញ្ជូន - កម្រិតបញ្ជូនមុនបង្ហាប់ - កម្រិតបញ្ជូនក្រោយបង្ហាប់"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "ជួរពេលវេលាស្នើសុំ - ភាពញឹកញាប់នៃពេលវេលាស្នើសុំ"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "ជួរទំហំឯកសារ - ចំនួនឯកសារ"
+
+msgid "Session range - Number of visits"
+msgstr "ជួររយៈពេលវគ្គ - ចំនួនទស្សនា"
+
+msgid "URL with %s errors - Hits"
+msgstr "URL ដែលមានកំហុស %s - ចំនួនសំណើ"
+
+msgid "Last URL referrer"
+msgstr "អ្នកយោង URL ចុងក្រោយ"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "កំហុស - ចំនួនសំណើ - កម្រិតបញ្ជូន"
+
+msgid "Search keywords - Number of search"
+msgstr "ពាក្យគន្លឹះ - ចំនួនស្វែងរក"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "ទំព័រដើមនឹងបង្ហាញតែ %s ពាក្យគន្លឹះខ្ពស់បំផុត (តម្រៀបតាមចំនួនស្វែងរក)។ សូមមើលបញ្ជីទាំងអស់នៅក្នុងទំព័រលម្អិត"
+
+msgid "Search keyphrases - Number of search"
+msgstr "ឃ្លាគន្លឹះ - ចំនួនស្វែងរក"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "ទំព័រដើមនឹងបង្ហាញតែ %s ឃ្លាគន្លឹះខ្ពស់បំផុត (តម្រៀបតាមចំនួនស្វែងរក)។ សូមមើលបញ្ជីទាំងអស់នៅក្នុងទំព័រលម្អិត"
+
+msgid "External page referers - Pages - Hits"
+msgstr "អ្នកយោងទំព័រខាងក្រៅ - ចំនួនទំព័រ - ចំនួនសំណើ"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "ទំព័រដើមនឹងបង្ហាញតែ %s ប្រភពយោងខាងក្រៅខ្ពស់បំផុត (តម្រៀបតាមចំនួនទំព័រ)។ សូមមើលបញ្ជីទាំងអស់នៅក្នុងទំព័រលម្អិត"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "លេខសម្គាល់អ្នកយោងម៉ាស៊ីនស្វែងរក - ចំនួនទំព័រ - ចំនួនសំណើ"
+
+msgid "Origin - Pages - Hits"
+msgstr "ប្រភពដើម - ចំនួនទំព័រ - ចំនួនសំណើ"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "កម្មវិធីរុករកអ្នកយោងដែលមិនស្គាល់ - ពេលវេលាទស្សនាចុងក្រោយ"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "ប្រព័ន្ធប្រតិបត្តិការអ្នកយោងដែលមិនស្គាល់ - ពេលវេលាទស្សនាចុងក្រោយ"
+
+msgid "Screen size - Hits"
+msgstr "ទំហំអេក្រង់ - ចំនួនសំណើ"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "លេខសម្គាល់កម្មវិធីរុករក - ចំនួនចុច - ចំនួនទំព័រ"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "ទាញយក - ចំនួនសំណើ - កម្រិតបញ្ជូន"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "ពិធីការ - ចំនួនសំណើ - កម្រិតបញ្ជូន"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "ស្ថានភាពរូបតំណាង - ប្រភេទ:200:404:ផ្សេងទៀត"
+
+#------------------------------------------------------------------------------
+# ការបកប្រែរយៈពេល
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "អធ្រាត្រ · AWStats ដេកលក់អស់ហើយ អ្នកនៅមើលទិន្នន័យទៀត? ស្នេហ៍ពិតមែន"
+
+msgid "period_01"
+msgstr "ម៉ោង ១ យប់ · ចូលទស្សនាម៉ោងនេះ? អ្នកគេងមិនលក់ ឬទើបចេញពីធ្វើការ"
+
+msgid "period_02"
+msgstr "ម៉ោង ២ យប់ · រមនៅឧស្សាហ៍ជាងអ្នកទៅទៀត វានៅតែធ្វើការនៅឡើយ"
+
+msgid "period_03"
+msgstr "ម៉ោង ៣ យប់ · ទីក្រុងកំពុងដេក ម៉ាស៊ីនបម្រើកំពុងធ្វើការថែមម៉ោង តើអ្នកណាអាក្រក់ជាង?"
+
+msgid "period_04"
+msgstr "ម៉ោង ៤ យប់ · តារាភ្លឺបំផុតក្នុងភាពងងឹត គឺអេក្រង់របស់អ្នក ឬពន្លឺសូចនាករម៉ាស៊ីនបម្រើ"
+
+msgid "period_05"
+msgstr "ម៉ោង ៥ ព្រឹក · បក្សីដែលភ្ញាក់ពីព្រលឹម មានដង្កូវស៊ី រមដែលភ្ញាក់ពីព្រលឹម មានទិន្នន័យប្រមូល"
+
+msgid "period_06"
+msgstr "ម៉ោង ៦ ព្រឹក · អ្នកខ្លះក្រោកពីគេង អ្នកខ្លះមិនទាន់ដេក អ៊ីនធឺណិតមិនដែលបិទ"
+
+msgid "period_07"
+msgstr "ម៉ោង ៧ ព្រឹក · ម៉ោងកក្រៀករថភ្លើងក៏ជាម៉ោងលេងបណ្តាញដែរ"
+
+msgid "period_08"
+msgstr "ម៉ោង ៨ ព្រឹក · រឿងដំបូងដែលត្រូវធ្វើនៅពេលចាប់ផ្តើមការងារ: មើលទិន្នន័យកាលពីម្សិលមិញ"
+
+msgid "period_09"
+msgstr "ម៉ោង ៩ ព្រឹក · ម៉ោងមាស ការខំប្រឹងក៏ត្រូវមានគោលការណ៍"
+
+msgid "period_10"
+msgstr "ម៉ោង ១០ ព្រឹក · ម៉ោងកាហ្វេ មើលថាចរាចរណ៍កើនឡើងឬអត់"
+
+msgid "period_11"
+msgstr "ម៉ោង ១១ ព្រឹក · នៅមួយម៉ោងទៀតនឹងដល់ម៉ោងបាយ អត់ធ្មត់បន្តិចទៀត"
+
+msgid "period_12"
+msgstr "ថ្ងៃត្រង់ · ម៉ាស៊ីនបម្រើ: អ្នកទៅបាយអស់ហើយ ខ្ញុំសុំសម្រាកខ្លះ"
+
+msgid "period_13"
+msgstr "ម៉ោង ១ រសៀល · ងងុយដេកក្រោយបាយថ្ងៃត្រង់ តែទិន្នន័យមិនដេក"
+
+msgid "period_14"
+msgstr "ម៉ោង ២ រសៀល · ម៉ោងតែពេលរសៀល"
+
+msgid "period_15"
+msgstr "ម៉ោង ៣ រសៀល · ក្រាហ្វនិន្នាការចរាចរណ៍ថ្ងៃនេះ ដូចក្រាហ្វអារម្មណ៍របស់អ្នកដែរឬទេ?"
+
+msgid "period_16"
+msgstr "ម៉ោង ៤ រសៀល · នៅ X ម៉ោងទៀតនឹងដល់ម៉ោងចេញពីការងារ ចរាចរណ៍ចាប់ផ្តើមប្រណាំង"
+
+msgid "period_17"
+msgstr "ម៉ោង ៥ ល្ងាច · ចេញពីការងារហើយ! តែម៉ាស៊ីនបម្រើនៅតែត្រូវធ្វើការបន្ត"
+
+msgid "period_18"
+msgstr "ម៉ោង ៦ ល្ងាច · ម៉ោងបាយល្ងាច មើលវីដេអូបន្តិច សម្រាកលំហែកាយ"
+
+msgid "period_19"
+msgstr "ម៉ោង ៧ យប់ · ម៉ោងមាស ចរាចរណ៍កើនឡើងខ្ពស់ ម៉ាស៊ីនបម្រើ: ខ្ញុំទ្រាំបាន"
+
+msgid "period_20"
+msgstr "ម៉ោង ៨ យប់ · ដេកលើកៅអី សាឡុង អ្នកគឺជាអ្នកទស្សនាលេខ ១១៤៥១៤"
+
+msgid "period_21"
+msgstr "ម៉ោង ៩ យប់ · យប់ស្ងាត់ មនុស្សលប់មើលទិន្នន័យ +១"
+
+msgid "period_22"
+msgstr "ម៉ោង ១០ យប់ · ទិន្នន័យថ្ងៃនេះនឹងចេញហើយ តើរំភើបទេ?"
+
+msgid "period_23"
+msgstr "ម៉ោង ១១ យប់ · AWStats: គួរតែចូលគេងហើយ ស្អែកនៅតែត្រូវធ្វើការទៀត"
+
+#------------------------------------------------------------------------------
+# វិមាត្រពេលវេលា
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "រយៈពេលស្ថិតិ"
+
+msgid "Year"
+msgstr "ឆ្នាំ"
+
+msgid "Month"
+msgstr "ខែ"
+
+msgid "Months"
+msgstr "ខែ"
+
+msgid "Date"
+msgstr "កាលបរិច្ឆេទ"
+
+msgid "Day"
+msgstr "ថ្ងៃ"
+
+msgid "Hour"
+msgstr "ម៉ោង"
+
+msgid "Hours"
+msgstr "ម៉ោង"
+
+msgid "Day of week"
+msgstr "ថ្ងៃក្នុងសប្តាហ៍"
+
+msgid "When"
+msgstr "ពេលវេលា"
+
+msgid "%s Server Management Panel"
+msgstr "ផ្ទាំងគ្រប់គ្រងម៉ាស៊ីនបម្រើ %s "
+
+msgid "Server Administration"
+msgstr "ដំណោះស្រាយម៉ាស៊ីនបម្រើសាមញ្ញ និងមានប្រសិទ្ធភាព"
+
+#------------------------------------------------------------------------------
+# វិមាត្រអ្នកទស្សនា
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "ប៉ារ៉ាម៉ែត្រ URL មិនត្រឹមត្រូវ"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "ទំព័រដែលបានស្នើសុំមិនអាចផ្ទុកបានទេ ដោយសារប៉ារ៉ាម៉ែត្រ URL មិនត្រឹមត្រូវ ឬមានទ្រង់ទ្រាយមិនត្រឹមត្រូវ។"
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "នេះអាចបណ្តាលមកពីការវាយ URL មិនត្រឹមត្រូវ ការបាត់សញ្ញាបំបែកប៉ារ៉ាម៉ែត្រ ឬការប្រើឈ្មោះកំណត់រចនាសម្ព័ន្ធមិនត្រឹមត្រូវ។"
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "សូមពិនិត្យ URL ដែលអ្នកបានបញ្ចូល និងធានាថាប៉ារ៉ាម៉ែត្រទាំងអស់ត្រូវបានធ្វើទ្រង់ទ្រាយត្រឹមត្រូវ។"
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "ប៉ារ៉ាម៉ែត្រ SiteDomain មិនត្រូវបានកំណត់នៅក្នុងឯកសារ config/domain របស់អ្នកទេ ឬអ្នកប្រហែលជាមិនមានសិទ្ធិប្រតិបត្តិលើឯកសារនោះទេ។"
+
+msgid "Please run as Administrator to set permissions"
+msgstr "សូមដំណើរការជាអ្នកគ្រប់គ្រង ដើម្បីកំណត់សិទ្ធិ"
+
+msgid "Please set execute permission"
+msgstr "សូមកំណត់សិទ្ធិប្រតិបត្តិ"
+
+msgid "Or if you prefer numeric mode"
+msgstr "ឬប្រសិនបើអ្នកចូលចិត្តរបៀបលេខ"
+
+msgid "View Report Directly"
+msgstr "មើលរបាយការណ៍ដោយផ្ទាល់"
+
+msgid "AWStats Log Viewer"
+msgstr "កម្មវិធីមើលកំណត់ហេតុ AWStats"
+
+msgid "Month Selection"
+msgstr "ការជ្រើសរើសខែ"
+
+msgid "Who"
+msgstr "អ្នកណា"
+
+msgid "Visitors"
+msgstr "អ្នកទស្សនា"
+
+msgid "Countries"
+msgstr "ប្រទេស/តំបន់"
+
+msgid "flag_icon"
+msgstr "ទង់ជាតិ"
+
+msgid "Country-Region-City"
+msgstr "ប្រទេស/តំបន់/ក្រុង"
+
+msgid "Code"
+msgstr "កូដ"
+
+msgid "Known"
+msgstr "ស្គាល់"
+
+msgid "unknownos"
+msgstr "ប្រព័ន្ធប្រតិបត្តិការមិនស្គាល់"
+
+msgid "unknownbrowser"
+msgstr "កម្មវិធីរុករកមិនស្គាល់"
+
+msgid "Unresolved IP Address"
+msgstr "អាសយដ្ឋាន IP ដែលមិនទាន់ដោះស្រាយ"
+
+msgid "Unknown File Type"
+msgstr "ប្រភេទឯកសារមិនស្គាល់"
+
+msgid "Unknown Size"
+msgstr "ទំហំឯកសារមិនស្គាល់"
+
+msgid "Unknown Time"
+msgstr "ពេលវេលាស្នើសុំមិនស្គាល់"
+
+msgid "Unknown Browser"
+msgstr "កម្មវិធីរុករកមិនស្គាល់"
+
+msgid "Unknown OS"
+msgstr "ប្រព័ន្ធប្រតិបត្តិការមិនស្គាល់"
+
+msgid "Unknown Visitor"
+msgstr "អ្នកទស្សនាមិនស្គាល់"
+
+msgid "Unknown Visitor (Total)"
+msgstr "អ្នកទស្សនាមិនស្គាល់ (សរុប)"
+
+msgid "Unknown Country"
+msgstr "ប្រទេស/តំបន់មិនស្គាល់"
+
+msgid "Unknown Country (Region)"
+msgstr "ប្រទេស/តំបន់មិនស្គាល់ (សរុប)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "អ្នកទស្សនាមិនស្គាល់ (ចំណងជើង)"
+
+msgid "PageStayTime"
+msgstr "មិនអាចប៉ាន់ស្មានរយៈពេលស្នាក់នៅលើទំព័រ"
+
+msgid "Unknown OS (Link)"
+msgstr "ប្រព័ន្ធប្រតិបត្តិការមិនស្គាល់ (តំណ)"
+
+msgid "Unknown OS (Row)"
+msgstr "ប្រព័ន្ធប្រតិបត្តិការមិនស្គាល់ (បញ្ជី)"
+
+msgid "Unknown Browser (Link)"
+msgstr "កម្មវិធីរុករកមិនស្គាល់ (តំណ)"
+
+msgid "Unknown Browser (Row)"
+msgstr "កម្មវិធីរុករកមិនស្គាល់ (បញ្ជី)"
+
+msgid "Unknown Screen"
+msgstr "ទំហំអេក្រង់មិនស្គាល់"
+
+msgid "Login"
+msgstr "ឈ្មោះអ្នកប្រើ"
+
+msgid "Anonymous"
+msgstr "អនាមិក"
+
+msgid "Robots"
+msgstr "រម"
+
+msgid "Different robots"
+msgstr "រមផ្សេងៗ"
+
+msgid "Hits on robots.txt"
+msgstr "ចរាចរណ៍មិនធម្មតាពីរមម៉ាស៊ីនស្វែងរកដែលបានបង្ហាញខាងលើមិនត្រូវបានរាប់បញ្ចូលក្នុងក្រាហ្វផ្សេងទៀតទេ លេខបន្ទាប់ពី '+' គឺជាចំនួនកំណត់ត្រានៃការចូលដំណើរការ 'robots.txt' ដែលទទួលបានជោគជ័យ"
+
+msgid "Worms"
+msgstr "ដង្កូវ"
+
+msgid "Different worms"
+msgstr "ដង្កូវផ្សេងៗ"
+
+msgid "Target"
+msgstr "គោលដៅ"
+
+msgid "Grabber"
+msgstr "ឧបករណ៍ទាញយកទិន្នន័យ"
+
+#------------------------------------------------------------------------------
+# ការពិពណ៌នាទម្រង់
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "ឯកសារអត្ថបទ (បានស្តង់ដារ ASCII ក្នុងឆ្នាំ 1963 គ្មានទម្រង់ អត្ថបទធម្មតា មូលដ្ឋាននៃលេខកូដប្រភព ឯកសារកំណត់រចនាសម្ព័ន្ធ និងកំណត់ហេតុទាំងអស់ Unix ប្រើ LF, Windows ប្រើ CRLF សម្រាប់បន្ទាត់ថ្មី នៅតែជាទម្រង់ទិន្នន័យទូទៅបំផុតរបស់កុំព្យូទ័រ)"
+
+msgid "mime_log"
+msgstr "ឯកសារកំណត់ហេតុ (ឯកសារអត្ថបទធម្មតាដែលកត់ត្រាទិន្នន័យប្រព័ន្ធ ប្រតិបត្តិការកម្មវិធី ប្រើសម្រាប់ការដោះស្រាយបញ្ហា វិភាគដំណើរការ ត្រួតពិនិត្យសុវត្ថិភាព ទម្រង់ស្តង់ដារដូចជា Apache combined log, Nginx access log, syslog ជាដើម)"
+
+msgid "mime_page"
+msgstr "ទំព័របណ្តាញ HTML (Tim Berners-Lee បង្កើតវើលវ៉ាយវ៉េបនៅឆ្នាំ 1989 បានកំណត់បច្ចេកវិទ្យា HTML/HTTP/URL ក្នុងឆ្នាំ 1990 ដោយមិនគិតថ្លៃ និងមិនបានដាក់ពាក្យសុំប៉ាតង់ HTML5 បានក្លាយជាស្តង់ដារ W3C ក្នុងឆ្នាំ 2014 គាំទ្រការបង្ហាញ ពហុមេឌា និងការបោះពុម្ព បានទទួលរង្វាន់ Turing Award ក្នុងឆ្នាំ 2016)"
+
+msgid "mime_khtml"
+msgstr "ម៉ាស៊ីនទំព័របណ្តាញ KHTML (បានចេញផ្សាយក្នុង KDE 2.0 ក្នុងឆ្នាំ 1998 ម៉ាស៊ីនរ៉េនដឺរនៃកម្មវិធីរុករក Konqueror។ Apple បានបង្កើត WebKit ដោយផ្អែកលើ KHTML ក្នុងឆ្នាំ 2001។ Google បានបង្កើត Blink ពី WebKit ក្នុងឆ្នាំ 2008 ក្លាយជាស្នូលសំខាន់នៃកម្មវិធីរុករក Chrome, Edge, Safari។ KHTML គឺជាគំរូរបស់សហគមន៍បើកចំហដែលបានដាក់គ្រឹះសម្រាប់ម៉ាស៊ីនកម្មវិធីរុករកទំនើប បេតិកភណ្ឌបច្ចេកវិទ្យានៅតែបន្តតាមរយៈ WebKit/Blink)"
+
+msgid "mime_script"
+msgstr "ស្គ្រីបថាមវន្ត (ភាសាបកប្រែ មិនចាំបាច់ត្រូវចងក្រង រួមទាំង ASP, JSP, CGI, ColdFusion, Tcl, VBScript ជាដើម ប្រើប្រាស់យ៉ាងទូលំទូលាយក្នុងការអភិវឌ្ឍន៍បណ្តាញដំបូង ការគ្រប់គ្រងប្រព័ន្ធ ការងារស្វ័យប្រវត្តិ។ ភាសាស្គ្រីបទំនើបដូចជា Python, Ruby, JavaScript បានអភិវឌ្ឍទៅជាភាសាចម្បងក្នុងការអភិវឌ្ឍន៍ full-stack)"
+
+msgid "mime_js"
+msgstr "ស្គ្រីប JavaScript (Brendan Eich បានបង្កើតក្នុងរយៈពេល 10 ថ្ងៃនៅ Netscape ក្នុងឆ្នាំ 1995 ភាសាសរសេរកម្មវិធីដើមនៃកម្មវិធីរុករក។ ECMAScript បានក្លាយជាស្តង់ដារក្នុងឆ្នាំ 1997។ Node.js បានកើតនៅឆ្នាំ 2009 ធ្វើឱ្យវាក្លាយជាភាសា full-stack។ npm គឺជាកម្មវិធីគ្រប់គ្រងកញ្ចប់ធំជាងគេបំផុតក្នុងពិភពលោក។ ភាសាសរសេរកម្មវិធីពេញនិយមបំផុតរាប់ឆ្នាំជាប់ៗគ្នានៅលើ GitHub)"
+
+msgid "mime_py"
+msgstr "ស្គ្រីប Python (Guido van Rossum បានបង្កើតក្នុងឆ្នាំ 1991 ល្បីល្បាញដោយសារការចូលបន្ទាត់ដោយបង្ខំ វាក្យសម្ពន្ធសាមញ្ញ។ ប្រើប្រាស់យ៉ាងទូលំទូលាយក្នុងការអភិវឌ្ឍន៍បណ្តាញ វិទ្យាសាស្ត្រទិន្នន័យ បញ្ញាសិប្បនិម្មិត ស្វ័យប្រវត្តិកម្មប្រតិបត្តិការ។ បានទទួលពានរង្វាន់ TIOBE Programming Language of the Year ជាច្រើនដង)"
+
+msgid "mime_sh"
+msgstr "ស្គ្រីប Shell (Unix បានកើតក្នុងឆ្នាំ 1971 ភាសាស្គ្រីបពាក្យបញ្ជា ប្រើសម្រាប់ការគ្រប់គ្រងប្រព័ន្ធ ការងារស្វ័យប្រវត្តិ ការចាប់ផ្តើមសេវាកម្ម ស្គ្រីបដាក់ពង្រាយ។ ជំនាញសំខាន់សម្រាប់ការថែទាំប្រព័ន្ធ Linux)"
+
+msgid "mime_rb"
+msgstr "ស្គ្រីប Ruby (Yukihiro Matsumoto បានបង្កើតក្នុងឆ្នាំ 1995 ផ្តោតលើសុភមង្គលរបស់អ្នកអភិវឌ្ឍន៍។ ក្របខ័ណ្ឌ Ruby on Rails បានផ្តួចផ្តើមគំរូនៃការអភិវឌ្ឍន៍ 'កំណត់រចនាសម្ព័ន្ធច្រើនជាងការកំណត់' មានឥទ្ធិពលលើការរចនាក្របខ័ណ្ឌបណ្តាញទំនើប)"
+
+msgid "mime_pl"
+msgstr "ស្គ្រីប Perl (Larry Wall បានបង្កើតក្នុងឆ្នាំ 1987 ល្បីល្បាញដោយសារការអនុវត្តជាក់ស្តែង ទទួលបានរហស្សនាមថា 'កាំបិតកងទ័ពស្វីស'។ CPAN គឺជាអ្នកត្រួសត្រាយនៃកម្មវិធីគ្រប់គ្រងកញ្ចប់ភាសាទំនើប មានឥទ្ធិពលយ៉ាងជ្រាលជ្រៅក្នុងវិស័យដំណើរការអត្ថបទ ការគ្រប់គ្រងប្រព័ន្ធ និង CGI)"
+
+msgid "mime_php"
+msgstr "ទំព័របណ្តាញថាមវន្ត PHP (Rasmus Lerdorf បានបង្កើតក្នុងឆ្នាំ 1995 ត្រូវបានរចនាឡើងសម្រាប់ការអភិវឌ្ឍន៍បណ្តាញជាពិសេស។ គេហទំព័រជាង 70% នៅទូទាំងពិភពលោកប្រើប្រាស់ ដំណើរការវេទិកាដូចជា WordPress, Facebook, Wikipedia។ PHP 8 បានណែនាំការចងក្រង JIT បង្កើនដំណើរការយ៉ាងខ្លាំង)"
+
+msgid "mime_image"
+msgstr "ឯកសាររូបភាព"
+
+msgid "mime_document"
+msgstr "ឯកសារឯកសារ"
+
+msgid "mime_package"
+msgstr "កញ្ចប់កម្មវិធី"
+
+msgid "mime_archive"
+msgstr "ឯកសារបង្ហាប់ Gzip (គម្រោង GNU ក្នុងឆ្នាំ 1992 ផ្អែកលើក្បួនដោះស្រាយ DEFLATE ប្រើក្នុងបណ្តាញដើម្បីបង្ហាប់មាតិកាការឆ្លើយតបថាមវន្ត អត្រាបង្ហាប់ជាទូទៅ 60-90%។ បន្ទាប់ពីឆ្នាំ 2015 ក្នុងករណីខ្លះត្រូវបានជំនួសដោយ Brotli ប៉ុន្តែនៅតែជាទម្រង់បង្ហាប់ដែលគាំទ្រយ៉ាងទូលំទូលាយបំផុតនៅខាងម៉ាស៊ីនបម្រើ)"
+
+msgid "mime_audio"
+msgstr "ឯកសារសំឡេង"
+
+msgid "mime_video"
+msgstr "ឯកសារវីដេអូ"
+
+msgid "mime_jscript"
+msgstr "JavaScript (បង្កើតដោយ Brendan Eich ក្នុងឆ្នាំ 1995)"
+
+msgid "mime_json"
+msgstr "ទិន្នន័យ JSON (Douglas Crockford បានស្នើក្នុងឆ្នាំ 2001 ទម្រង់ផ្លាស់ប្តូរទិន្នន័យទម្ងន់ស្រាល ស្តង់ដារ de facto នៃ Web API)"
+
+msgid "mime_vbs"
+msgstr "VBScript (Microsoft បានបង្កើតក្នុងឆ្នាំ 1996 ភាសាស្គ្រីប Windows ប្រើសម្រាប់ទំព័របណ្តាញ ASP និងស្គ្រីបគ្រប់គ្រង Windows។ បច្ចុប្បន្នត្រូវបានបោះបង់ចោល ដោយសារ PowerShell និង JavaScript រីករាលដាល)"
+
+msgid "mime_conf"
+msgstr "ឯកសារកំណត់រចនាសម្ព័ន្ធ (រក្សាទុកការកំណត់រចនាសម្ព័ន្ធកម្មវិធីក្នុងទម្រង់អត្ថបទ ទម្រង់ទូទៅ៖ INI, JSON, YAML, TOML, XML។ ឯកសារកំណត់រចនាសម្ព័ន្ធប្រព័ន្ធ Linux ភាគច្រើនស្ថិតនៅក្នុងថត /etc)"
+
+msgid "mime_css"
+msgstr "សន្លឹកស្ទីល CSS (W3C បានចេញផ្សាយ CSS1 ស្តង់ដារដំបូងក្នុងខែធ្នូ ឆ្នាំ 1996។ CSS2 បានបន្ថែមការកំណត់ទីតាំង និងប្រភេទមេឌៀក្នុងឆ្នាំ 1998។ ចាប់ពីឆ្នាំ 2011 មក CSS3 បែបម៉ូឌុលបានណែនាំការបង្គត់ជ្រុង អានីម៉េសិន Flexbox Grid Layout និង Responsive Design។ វាជាផ្នែកមួយនៃបច្ចេកវិទ្យាចម្បងទាំងបីនៃផ្នែកខាងមុខ រួមជាមួយ HTML និង JavaScript។ កម្មវិធីរុករកទំនើបទាំងអស់ (Chrome, Firefox, Safari, Edge) គាំទ្រដើម ជាស្តង់ដារតែមួយគត់សម្រាប់កំណត់ស្ទីលទំព័របណ្តាញ)"
+
+msgid "mime_xsl"
+msgstr "សន្លឹកស្ទីល XSL (ស្តង់ដារ W3C ក្នុងឆ្នាំ 1999 ភាសាបំប្លែងឯកសារ XML អាចបំប្លែង XML ទៅជា HTML/PDF/អត្ថបទ។ ការប្រើប្រាស់ថយចុះបន្ទាប់ពី JSON រីករាលដាល)"
+
+msgid "mime_runtime"
+msgstr "ឯកសារប្រតិបត្តិ (ទម្រង់ប្រតិបត្តិនៃប្រព័ន្ធប្រតិបត្តិការ ដូចជា EXE, ELF, Mach-O មានកូដម៉ាស៊ីន និងទិន្នន័យផ្ទុក)"
+
+msgid "mime_library"
+msgstr "ឯកសារបណ្ណាល័យ (DLL, SO, dylib ជាដើម បណ្ណាល័យភ្ជាប់ថាមវន្ត កូដដែលប្រើរួមគ្នាដែលត្រូវបានផ្ទុកនៅពេលកម្មវិធីដំណើរការ)"
+
+msgid "mime_swf"
+msgstr "អានីម៉េសិន Flash (Macromedia បានបង្កើតក្នុងឆ្នាំ 1996 ក្រោយមកជារបស់ Adobe។ ស្តង់ដារអានីម៉េសិនបណ្តាញអន្តរកម្ម ធ្លាប់គ្រប់គ្រងហ្គេម និងអានីម៉េសិននៅលើអ៊ីនធឺណិត។ ចំណុចខ្សោយ៖ ត្រូវការកម្មវិធីជំនួយ មិនគាំទ្រទូរស័ព្ទដៃ ហានិភ័យសុវត្ថិភាពខ្ពស់។ Adobe បានប្រកាសបញ្ឈប់ការគាំទ្រក្នុងឆ្នាំ 2017 បញ្ឈប់ការគាំទ្រទាំងស្រុងក្នុងឆ្នាំ 2020 ត្រូវបានជំនួសដោយ HTML5/CSS3/JS)"
+
+msgid "mime_dtd"
+msgstr "DTD (និយមន័យប្រភេទឯកសារ) (លក្ខណៈបច្ចេកទេស XML កំណត់រចនាសម្ព័ន្ធឯកសារ XML ប្រើសម្រាប់ផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវនៃ XML)"
+
+msgid "mime_csv"
+msgstr "ទម្រង់ទិន្នន័យ CSV (តម្លៃបំបែកដោយសញ្ញាក្បៀស ទម្រង់ទិន្នន័យតារាងទូទៅ ស្តង់ដារនាំចូល និងនាំចេញ Excel និងមូលដ្ឋានទិន្នន័យ)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (កម្មវិធីចាប់ផ្តើមកម្មវិធី Java បច្ចេកវិទ្យាចែកចាយកម្មវិធី Java លើផ្ទៃតុក្នុងទសវត្សរ៍ឆ្នាំ 2000 បច្ចុប្បន្នត្រូវបានបោះបង់ចោល)"
+
+msgid "mime_lit"
+msgstr "សៀវភៅអេឡិចត្រូនិច Microsoft Reader (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 2000 ទម្រង់ LIT ត្រូវបានបោះបង់ចោល)"
+
+msgid "mime_svg"
+msgstr "ក្រាហ្វិកវ៉ិចទ័រ SVG (ស្តង់ដារ W3C ក្នុងឆ្នាំ 1999 ដោយសារតែ Microsoft បានជំរុញទម្រង់ VML ផ្ទាល់ខ្លួនអស់រយៈពេលជាយូរ កម្មវិធីរុករក IE គាំទ្ររហូតដល់ឆ្នាំ 2011 ដែលធ្វើឱ្យការរីករាលដាលយឺតយ៉ាវ។ បន្ទាប់ពីឆ្នាំ 2015 នៅពេលដែល IE ត្រូវបានបោះបង់ចោល ហើយអេក្រង់គុណភាពបង្ហាញខ្ពស់រីករាលដាល វាបានក្លាយជាទម្រង់ដំបូងសម្រាប់រូបតំណាង និងឡូហ្គោ)"
+
+msgid "mime_ai"
+msgstr "ក្រាហ្វិកវ៉ិចទ័រ Adobe Illustrator (ចេញផ្សាយក្នុងឆ្នាំ 1987 ទម្រង់ក្រាហ្វិកវ៉ិចទ័រស្តង់ដារនៃឧស្សាហកម្ម ដំបូងសម្រាប់ការរចនាបោះពុម្ព ឡូហ្គោ រូបតំណាង)"
+
+msgid "mime_phshop"
+msgstr "រូបភាព Photoshop (Adobe បានចេញផ្សាយក្នុងឆ្នាំ 1990 ទម្រង់ឯកសារដើម PSD របស់ Photoshop ស្តង់ដារឧស្សាហកម្មសម្រាប់ដំណើរការរូបភាព)"
+
+msgid "mime_ttf"
+msgstr "ពុម្ពអក្សរ TrueType (Apple និង Microsoft បានអភិវឌ្ឍរួមគ្នាក្នុងឆ្នាំ 1989 ទម្រង់ពុម្ពអក្សរវ៉ិចទ័រ ការបង្ហាញនៅលើអេក្រង់ និងការបោះពុម្ពត្រូវគ្នាគ្នា។ ទម្រង់ពុម្ពអក្សរលំនាំដើមនៃប្រព័ន្ធប្រតិបត្តិការទំនើប)"
+
+msgid "mime_fon"
+msgstr "ពុម្ពអក្សរបណ្តាញ WOFF2 (W3C បានណែនាំក្នុងឆ្នាំ 2014 ប្រើក្បួនដោះស្រាយការបង្ហាប់ Brotli ទំហំថយចុះប្រហែល 30% បើប្រៀបធៀបទៅនឹង WOFF ចាស់ និងច្រើនជាង 50% បើប្រៀបធៀបទៅនឹង TTF/OTF។ បច្ចុប្បន្នកម្មវិធីរុករកទំនើបទាំងអស់គាំទ្រ ជាទម្រង់ដំបូងសម្រាប់ពុម្ពអក្សរបណ្តាញទំនើប គាំទ្រដោយកម្មវិធីរុករកជាង 98%)"
+
+msgid "mime_pdf"
+msgstr "ឯកសារ PDF (Adobe បានអភិវឌ្ឍក្នុងឆ្នាំ 1993 បានក្លាយជាស្តង់ដារ ISO ក្នុងឆ្នាំ 2008។ ទម្រង់ឯកសារឆ្លងវេទិកា រក្សាភាពស៊ីសង្វាក់នៃទម្រង់ ជាស្តង់ដារសកលសម្រាប់ការចែកចាយឯកសារអេឡិចត្រូនិច)"
+
+msgid "mime_dotnet"
+msgstr "ទំព័របណ្តាញថាមវន្ត ASP.NET (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 2002 បច្ចេកវិទ្យាទំព័របណ្តាញថាមវន្តនៅលើវេទិកា Windows ដែលជាផ្នែកមួយនៃ .NET Framework)"
+
+msgid "mime_mdb"
+msgstr "មូលដ្ឋានទិន្នន័យ Access (ឯកសារមូលដ្ឋានទិន្នន័យ Microsoft Access ចេញផ្សាយក្នុងឆ្នាំ 1992 ដំណោះស្រាយមូលដ្ឋានទិន្នន័យនៅលើផ្ទៃតុ Windows)"
+
+msgid "mime_md"
+msgstr "ឯកសារ Markdown (John Gruber បានបង្កើតក្នុងឆ្នាំ 2004 ការរចនាវេយ្យាករណ៍ទទួលឥទ្ធិពលពី reStructuredText និង Setext។ ទស្សនវិជ្ជាការរចនាសំខាន់គឺ 'អានបានគឺបង្ហាញបាន'។ ការអនុវត្តដើម Markdown.pl ប្រើកន្សោមនិយ័តករ Perl។ លក្ខណៈបច្ចេកទេសដែលកើតចេញពីនេះរួមមាន GFM (2013), CommonMark (2017), Pandoc Markdown ជាដើម។ ដំណើរការប្រព័ន្ធអេកូឡូស៊ីដូចជា GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress ក្លាយជាទម្រង់ស្តង់ដារសម្រាប់ឧបករណ៍បង្កើតគេហទំព័រឋិតិវន្ត និងឯកសារអ្នកអភិវឌ្ឍន៍)"
+
+msgid "mime_crystal"
+msgstr "ទម្រង់របាយការណ៍ Crystal Reports (របាយការណ៍ធុរកិច្ចស៊ើបការណ៍របស់ SAP ទម្រង់របាយការណ៍ស្តង់ដារសហគ្រាស)"
+
+msgid "mime_libreoffice"
+msgstr "ឯកសារ LibreOffice (The Document Foundation បានអភិវឌ្ឍក្នុងឆ្នាំ 2010 សាខារបស់ OpenOffice ការអនុវត្តស្តង់ដារ ODF ឈុតកម្មវិធីការិយាល័យប្រភពបើកចំហសំខាន់)"
+
+msgid "mime_encrypt"
+msgstr "ឯកសារដែលបានអ៊ិនគ្រីប (ត្រូវតែឌិគ្រីបទើបអាចមើលឯកសារបាន ផ្នែកបន្ថែមទូទៅ៖ .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "ទិន្នន័យផ្លូវ GPS (ទម្រង់ផ្លាស់ប្តូរ GPS កត់ត្រាទិន្នន័យទីតាំងភូមិសាស្ត្រ ទម្រង់ទូទៅសម្រាប់នាឡិកាកីឡា និងឧបករណ៍រុករក)"
+
+msgid "mime_diskimage"
+msgstr "រូបភាពថាស (ឯកសាររូបភាពថាស/ស៊ីឌីរ៉ូម ដូចជា DMG, ISO, IMG ប្រើសម្រាប់ចែកចាយកម្មវិធី ឬបម្រុងទុកប្រព័ន្ធផ្ទុកទិន្នន័យ)"
+
+msgid "mime_vm"
+msgstr "រូបភាពម៉ាស៊ីននិម្មិត (ឯកសារថាសម៉ាស៊ីននិម្មិត ដូចជា VMDK, VDI, VHDX, OVA ទម្រង់សម្រាប់វេទិកា virtualization ដូចជា VMware, VirtualBox, Hyper-V)"
+
+msgid "mime_torrent"
+msgstr "ឯកសារ BitTorrent (Bram Cohen បានបង្កើតក្នុងឆ្នាំ 2001 ឯកសារសន្ទស្សន៍ទាញយក P2P មានទិន្នន័យមេតានៃឯកសារ និងព័ត៌មាន Tracker)"
+
+msgid "mime_gis"
+msgstr "ទិន្នន័យប្រព័ន្ធព័ត៌មានភូមិសាស្ត្រ GIS (ទិន្នន័យលំហភូមិសាស្ត្រ ដូចជា Shapefile, GeoJSON ប្រើសម្រាប់ផែនទី និងការវិភាគលំហ)"
+
+msgid "mime_ebook"
+msgstr "សៀវភៅអេឡិចត្រូនិច (ទម្រង់សៀវភៅអេឡិចត្រូនិច ដូចជា EPUB, MOBI, AZW។ EPUB ជាស្តង់ដារអន្តរជាតិ MOBI/AZW ជាទម្រង់សម្រាប់ Amazon Kindle)"
+
+msgid "mime_avif"
+msgstr "រូបភាព AVIF (Alliance for Open Media បានចេញផ្សាយក្នុងឆ្នាំ 2019 ផ្អែកលើការអ៊ិនកូដ AV1 អត្រាបង្ហាប់ខ្ពស់ជាង WebP 50% ស្តង់ដាររូបភាពបណ្តាញជំនាន់ថ្មី)"
+
+msgid "mime_markdown"
+msgstr "ឯកសារ Markdown (John Gruber បានរចនាក្នុងឆ្នាំ 2004 ភាសាសម្គាល់ទម្ងន់ស្រាល ទម្រង់ទូទៅសម្រាប់ README នៅលើ GitHub ឯកសារបច្ចេកទេស ការបង្ហោះក្នុងវេទិកា)"
+
+msgid "mime_yaml"
+msgstr "ការកំណត់រចនាសម្ព័ន្ធ YAML (Clark Evans បានរចនាក្នុងឆ្នាំ 2001 ទម្រង់បន្តបន្ទាប់ទិន្នន័យដែលមនុស្សអាចអានបាន ស្តង់ដារឯកសារកំណត់រចនាសម្ព័ន្ធសម្រាប់ Kubernetes, Ansible, Docker Compose)"
+
+msgid "mime_toml"
+msgstr "ការកំណត់រចនាសម្ព័ន្ធ TOML (Tom Preston-Werner បានរចនាក្នុងឆ្នាំ 2013 'Tom's Obvious Minimal Language' ទម្រង់ឯកសារកំណត់រចនាសម្ព័ន្ធសម្រាប់ឧបករណ៍ទំនើបដូចជា Rust/Cargo, Python/pip, Go)"
+
+msgid "mime_vue"
+msgstr "ឯកសារសមាសភាគ Vue (ណែនាំក្នុងឆ្នាំ 2014 ដោយ Evan You, ហ្វ្រេមវខ្មែរ JavaScript ដែលរីកចម្រើន។ តាមរយៈសមាសភាគឯកសារតែមួយ (SFC) វារួមបញ្ចូល HTML, CSS និង JS យ៉ាងល្អឥតខ្ចោះ បង្កើនប្រសិទ្ធភាពនៃការអភិវឌ្ឍន៍យ៉ាងខ្លាំង។ វាគឺជាហ្វ្រេមវខ្មែរផ្នែកខាងមុខដ៏ពេញនិយមបំផុតមួយនៅលើពិភពលោក។ លើសពីនេះទៀត ក្នុងនាមជាស្នូលនៃម៉ាស៊ីនបង្កើតគេហទំព័រឋិតិវន្តទំនើបដូចជា VitePress វាត្រូវបានប្រើប្រាស់យ៉ាងទូលំទូលាយដើម្បីជំរុញឯកសារបច្ចេកទេសអន្តរកម្ម និងប្លក់។)"
+
+msgid "mime_wasm"
+msgstr "ម៉ូឌុល WebAssembly (ស្តង់ដារ W3C ក្នុងឆ្នាំ 2017 ទម្រង់ដំណើរការប្រសិទ្ធភាពខ្ពស់នៅក្នុងកម្មវិធីរុករក C/C++/Rust/R អាចចងក្រងជាគោលដៅបាន ដំណើរការជិតស្និទ្ធនឹងដើម)"
+
+msgid "mime_jsx"
+msgstr "សមាសភាគ React JSX (Facebook បានចេញផ្សាយ JavaScript XML ក្នុងឆ្នាំ 2013 វេយ្យាករណ៍សមាសភាគនៃក្របខ័ណ្ឌ React ការបង្កើតថ្មីដែលនាំ HTML ទៅសរសេរក្នុង JavaScript)"
+
+msgid "mime_tsx"
+msgstr "សមាសភាគ TypeScript TSX (Microsoft បានអភិវឌ្ឍក្នុងឆ្នាំ 2012 TypeScript + JSX វិធីសាស្ត្រសរសេរស្តង់ដារសម្រាប់ការអភិវឌ្ឍន៍ React បែបសុវត្ថិភាពប្រភេទ)"
+
+msgid "mime_heif"
+msgstr "រូបភាព HEIF (ស្តង់ដារ MPEG ក្នុងឆ្នាំ 2015 ទម្រង់ឯកសាររូបភាពដែលមានប្រសិទ្ធភាពខ្ពស់ ប្រើប្រាស់យ៉ាងទូលំទូលាយនៅក្នុងប្រព័ន្ធអេកូឡូស៊ីរបស់ Apple)"
+
+msgid "mime_heic"
+msgstr "រូបភាព HEIC (ការអនុវត្ត HEIF របស់ Apple ទម្រង់រូបថតលំនាំដើមរបស់ iPhone គាំទ្រដើមនៅក្នុង iOS/macOS)"
+
+msgid "mime_gltf"
+msgstr "ម៉ូដែល 3D GLTF (ទម្រង់បញ្ជូន GL 'JPEG នៃពិភព 3D' Khronos Group បានចេញផ្សាយក្នុងឆ្នាំ 2015 ទម្រង់ស្តង់ដារ Web 3D)"
+
+msgid "mime_glb"
+msgstr "ម៉ូដែល 3D GLB គោលពីរ (កំណែគោលពីររបស់ GLTF ឯកសារតែមួយមានធនធានទាំងអស់ ប្រើសម្រាប់ចែកចាយឈុត 3D)"
+
+msgid "mime_gls"
+msgstr "សទ្ទានុក្រម GLOSSARY (ឯកសារនិយមន័យពាក្យ ប្រើសម្រាប់ការគ្រប់គ្រងពាក្យក្នុងប្រព័ន្ធឯកសារ)"
+
+msgid "mime_cbz"
+msgstr "សៀវភៅកំប្លែ CBZ (រូបភាពកំប្លែដែលបានបង្ហាប់ជាមួយ ZIP ទម្រង់ទូទៅសម្រាប់ការប្រមូលសៀវភៅកំប្លែ)"
+
+msgid "mime_cbr"
+msgstr "សៀវភៅកំប្លែ CBR (រូបភាពកំប្លែដែលបានបង្ហាប់ជាមួយ RAR ទម្រង់ទូទៅសម្រាប់ការប្រមូលសៀវភៅកំប្លែ)"
+
+msgid "mime_fb2"
+msgstr "សៀវភៅអេឡិចត្រូនិច FB2 (FictionBook 2.0 ទម្រង់សៀវភៅអេឡិចត្រូនិចរបស់រុស្ស៊ី រចនាសម្ព័ន្ធ XML គាំទ្រយ៉ាងទូលំទូលាយដោយកម្មវិធីអានប្រភពបើកចំហ)"
+
+msgid "mime_kepub"
+msgstr "សៀវភៅអេឡិចត្រូនិច KEPUB (ទម្រង់ EPUB ជាក់លាក់របស់ Kobo ទម្រង់ដែលបានកែសម្រួលសម្រាប់ឧបករណ៍អានសៀវភៅអេឡិចត្រូនិច Kobo)"
+
+msgid "mime_m4b"
+msgstr "សៀវភៅសំឡេង M4B (ទម្រង់សៀវភៅសំឡេង MPEG-4 គាំទ្រចំណាំទំព័រ ទម្រង់សៀវភៅសំឡេងរបស់ iTunes)"
+
+msgid "mime_kfx"
+msgstr "ទម្រង់ Kindle KFX (Amazon បានចេញផ្សាយក្នុងឆ្នាំ 2015 ទម្រង់សៀវភៅអេឡិចត្រូនិចជាក់លាក់របស់ Kindle គាំទ្រប្លង់ដែលបានអភិវឌ្ឍ និងការបង្វិលទំព័រយ៉ាងរហ័ស)"
+
+msgid "mime_chm"
+msgstr "ឯកសារជំនួយ CHM (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 1997 ទម្រង់ HTML Help ដែលបានចងក្រងរួច ស្តង់ដារឯកសារជំនួយកម្មវិធី Windows)"
+
+msgid "mime_mht"
+msgstr "ប័ណ្ណសារទំព័របណ្តាញ MHT (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 1999 ទម្រង់ទំព័របណ្តាញឯកសារតែមួយ ទម្រង់រក្សាទុកទំព័របណ្តាញរបស់កម្មវិធីរុករក IE)"
+
+msgid "mime_wml"
+msgstr "WML (ភាសាសម្គាល់ឥតខ្សែ) (ស្តង់ដារ WAP ក្នុងឆ្នាំ 1999 ប្រើសម្រាប់ឯកសារទំព័របណ្តាញនៃទូរស័ព្ទដៃជំនាន់ចាស់ ត្រូវបានបោះបង់ចោល)"
+
+msgid "mime_xhtml"
+msgstr "ទំព័របណ្តាញ XHTML (ស្តង់ដារ W3C ក្នុងឆ្នាំ 2000 កំណែ XML នៃ HTML វេយ្យាករណ៍តឹងរ៉ឹងជាង។ W3C បានបញ្ឈប់ការថែទាំក្នុងឆ្នាំ 2009 ផ្លាស់ប្តូរការផ្តោតទៅ HTML5)"
+
+msgid "mime_xml"
+msgstr "ឯកសារ XML (ស្តង់ដារ W3C ក្នុងឆ្នាំ 1998 ភាសាសម្គាល់ដែលអាចពង្រីកបាន ទម្រង់មូលដ្ឋានសម្រាប់សេវាកម្មបណ្តាញ ឯកសារកំណត់រចនាសម្ព័ន្ធ ការផ្លាស់ប្តូរទិន្នន័យ)"
+
+msgid "mime_sgml"
+msgstr "ឯកសារ SGML (ស្តង់ដារ ISO ក្នុងឆ្នាំ 1986 ជំនាន់មុននៃ HTML ភាសាសម្គាល់ទូទៅស្តង់ដារ XML និង HTML បានមកពី SGML)"
+
+msgid "mime_apng"
+msgstr "អានីម៉េសិន APNG (Mozilla បានអភិវឌ្ឍក្នុងឆ្នាំ 2004 ផ្នែកបន្ថែមអានីម៉េសិននៃ PNG ជម្រើសទំនើបរបស់ GIF គាំទ្រពណ៌ពិត និងតម្លាភាព)"
+
+msgid "mime_bmp"
+msgstr "BMP ប៊ីតម៉ាប់ (ទម្រង់ប៊ីតម៉ាប់របស់ Windows, គាំទ្រដោយប្រព័ន្ធតាំងពី Windows 1.0។ មិនបានបង្ហាប់, ទំហំឯកសារធំ, ប៉ុន្តែដោយសាររចនាសម្ព័ន្ធសាមញ្ញ និងមិនត្រូវការ codec បន្ថែម, វានៅតែត្រូវបានប្រើប្រាស់នៅក្នុងឧបករណ៍កាត់រូបភាពរបស់ Windows 11, កម្មវិធី Paint, ធនធានរូបតំណាងនៅក្នុងកញ្ចប់ដំឡើង EXE/MSI, ឯកសារទស្សន៍ទ្រនិច, និងកម្មវិធីបញ្ជាចាស់ៗមួយចំនួន។ ជាមួយនឹងគុណភាពរូបភាពដូចគ្នា, ទំហំឯកសារគឺធំជាង PNG ប្រហែល 3-10 ដង។ ក្នុងករណីភាគច្រើនវាត្រូវបានជំនួសដោយ PNG/JPEG, ប៉ុន្តែប្រព័ន្ធអេកូឡូស៊ី Windows នៅតែរក្សាភាពឆបគ្នាយ៉ាងទូលំទូលាយ)"
+
+msgid "mime_cdr"
+msgstr "ក្រាហ្វិកវ៉ិចទ័រ CDR (ទម្រង់ជាក់លាក់របស់ CorelDRAW ក្រុមហ៊ុន Corel នៃប្រទេសកាណាដា កម្មវិធីរចនាក្រាហ្វិកវ៉ិចទ័រ)"
+
+msgid "mime_gif"
+msgstr "រូបភាព GIF (CompuServe បានអភិវឌ្ឍក្នុងឆ្នាំ 1987 ទម្រង់រូបភាពចលនា 256 ពណ៌។ ចំណុចខ្សោយ៖ ពណ៌តិច គុណភាពរូបភាពរដុប មិនគាំទ្រតម្លាភាព ឯកសារធំ អត្រាហ្វ្រេមទាប។ ត្រូវបានជំនួសដោយទម្រង់រូបភាពចលនាទំនើបដូចជា APNG, WebP)"
+
+msgid "mime_ico"
+msgstr "រូបតំណាង ICO (ទម្រង់ឯកសាររូបតំណាង Windows គាំទ្រគុណភាពបង្ហាញច្រើន ទម្រង់ស្តង់ដារ favicon នៃគេហទំព័រ)"
+
+msgid "mime_jpeg"
+msgstr "រូបភាព JPEG (ស្តង់ដារ ISO ក្នុងឆ្នាំ 1992 ទម្រង់បង្ហាប់បែបបាត់បង់គុណភាពសម្រាប់រូបថត ស្តង់ដារ de facto សម្រាប់រូបថតនៅលើអ៊ីនធឺណិត)"
+
+msgid "mime_jpg"
+msgstr "រូបភាព JPEG (ស្តង់ដារ ISO ក្នុងឆ្នាំ 1992 ទម្រង់បង្ហាប់បែបបាត់បង់គុណភាពសម្រាប់រូបថត ស្តង់ដារ de facto សម្រាប់រូបថតនៅលើអ៊ីនធឺណិត)"
+
+msgid "mime_png"
+msgstr "រូបភាព PNG (W3C បានណែនាំក្នុងឆ្នាំ 1996 គាំទ្រពណ៌ពិត និងតម្លាភាព ជម្រើសឋិតិវន្តរបស់ GIF ស្តង់ដាររូបភាពបែបមិនបាត់បង់គុណភាពនៅលើអ៊ីនធឺណិត)"
+
+msgid "mime_ps"
+msgstr "ឯកសារ Page Description PostScript (Adobe បានចេញផ្សាយក្នុងឆ្នាំ 1985 ភាសា Page Description ជំនាន់មុននៃ PDF ប្រើសម្រាប់ការបោះពុម្ព និងការបោះពុម្ពផ្សាយ)"
+
+msgid "mime_psb"
+msgstr "ឯកសារធំ PSB (ទម្រង់រូបភាពធំពិសេសរបស់ Adobe Photoshop គាំទ្ររូបភាពយក្សដែលមានទំហំធំជាង 2GB ឬ 30000 ភីកសែល)"
+
+msgid "mime_psd"
+msgstr "រូបភាព PSD (ឯកសារដើម Adobe Photoshop គាំទ្រស្រទាប់ ឆានែល ផ្លូវ ទម្រង់ស្តង់ដារនៃឧស្សាហកម្មដំណើរការរូបភាព)"
+
+msgid "mime_webp"
+msgstr "រូបភាព WebP (Google បានអភិវឌ្ឍក្នុងឆ្នាំ 2010 ទម្រង់រូបភាពបណ្តាញ គាំទ្រការបង្ហាប់បែបបាត់បង់/មិនបាត់បង់គុណភាព និងអានីម៉េសិន អត្រាបង្ហាប់ខ្ពស់ជាង PNG 25-35% និងខ្ពស់ជាង JPEG 25%)"
+
+msgid "mime_woff"
+msgstr "ពុម្ពអក្សរបណ្តាញ WOFF (បង្កើតក្នុងឆ្នាំ 2009 ស្តង់ដារ W3C ក្នុងឆ្នាំ 2018 បង្ហាប់លើមូលដ្ឋាននៃ TrueType/OpenType កែសម្រួលសម្រាប់ការផ្ទុកពុម្ពអក្សរបណ្តាញ ទម្រង់ស្តង់ដារសម្រាប់រូបតំណាងពុម្ពអក្សរនៃគេហទំព័រទំនើប)"
+
+msgid "mime_7z"
+msgstr "ឯកសារបង្ហាប់ 7z (Igor Pavlov បានអភិវឌ្ឍក្នុងឆ្នាំ 1999 ទម្រង់ជាក់លាក់របស់កម្មវិធី 7-Zip ក្បួនដោះស្រាយ LZMA អត្រាបង្ហាប់ខ្ពស់ ប្រភពបើកចំហឥតគិតថ្លៃ។ ទម្រង់ 7z ដែលមានអត្រាបង្ហាប់ដូចគ្នា ជាធម្មតាតូចជាង ZIP 30-50% ជាទម្រង់ទូទៅសម្រាប់សហគមន៍ប្រភពបើកចំហ និងការចែកចាយកម្មវិធី)"
+
+msgid "mime_ace"
+msgstr "ឯកសារបង្ហាប់ ACE (ត្រូវបានអភិវឌ្ឍក្នុងទសវត្សរ៍ឆ្នាំ 1990 ទម្រង់កម្មវិធី WinACE ធ្លាប់ប្រកួតប្រជែងជាមួយ RAR អត្រាបង្ហាប់ខ្ពស់គួរសម។ បានបញ្ឈប់ការអភិវឌ្ឍន៍ក្នុងឆ្នាំ 2007 បច្ចុប្បន្នត្រូវបានជំនួសដោយ 7z/RAR ប្រើតិចតួច)"
+
+msgid "mime_bz2"
+msgstr "ឯកសារបង្ហាប់ BZIP2 (Julian Seward បានអភិវឌ្ឍក្នុងឆ្នាំ 1996 ក្បួនដោះស្រាយការបង្ហាប់បែបប្លុក អត្រាបង្ហាប់ខ្ពស់ជាង GZIP 15-20% ប៉ុន្តែយឺតជាង។ ទម្រង់ទូទៅសម្រាប់កូដប្រភព Linux kernel កញ្ចប់កម្មវិធីប្រភពបើកចំហ ផ្នែកបន្ថែម .bz2)"
+
+msgid "mime_cab"
+msgstr "ឯកសារបង្ហាប់ CAB (Microsoft បានអភិវឌ្ឍក្នុងឆ្នាំ 1995 ទម្រង់ Cabinet ទម្រង់កញ្ចប់ដំឡើង Windows ប្រើសម្រាប់កម្មវិធីបញ្ជា ការចែកចាយឯកសារប្រព័ន្ធ។ Windows Installer (MSI) ប្រើ CAB នៅខាងក្នុងដើម្បីរក្សាទុកឯកសារ)"
+
+msgid "mime_dmg"
+msgstr "រូបភាពថាស DMG (Apple បានចេញផ្សាយក្នុងទសវត្សរ៍ឆ្នាំ 1980 ទម្រង់រូបភាពថាស ទម្រង់ស្តង់ដារការចែកចាយកម្មវិធី macOS។ ចុចពីរដងដើម្បី Mount ជាថាសនិម្មិត អូសនិងទម្លាក់ដើម្បីដំឡើងកម្មវិធី។ គាំទ្រការបង្ហាប់ និងការអ៊ិនគ្រីប ជាទម្រង់សំខាន់សម្រាប់ការទាញយកកម្មវិធី Mac)"
+
+msgid "mime_emz"
+msgstr "រូបភាពបង្ហាប់ EMZ (Windows compressed Enhanced Metafile កំណែបង្ហាប់នៃ EMF ទម្រង់ផ្ទុកក្រាហ្វិកវ៉ិចទ័រក្នុងឯកសារ Office ដោយខ្លឹមសារគឺជាឯកសារ EMF ដែលត្រូវបានបង្ហាប់ជាមួយ GZIP)"
+
+msgid "mime_gz"
+msgstr "ឯកសារបង្ហាប់ GZIP (Jean-loup Gailly និង Mark Adler បានអភិវឌ្ឍក្នុងឆ្នាំ 1992 គម្រោង GNU ឧបករណ៍បង្ហាប់ស្តង់ដាររបស់ Unix/Linux ទម្រង់ទូទៅសម្រាប់ការបង្ហាប់ការបញ្ជូន HTTP ផ្នែកបន្ថែម .gz ជារឿយៗប្រើរួមគ្នាជាមួយ TAR)"
+
+msgid "mime_jar"
+msgstr "ឯកសារបង្ហាប់ JAR (Sun Microsystems បានចេញផ្សាយក្នុងឆ្នាំ 1997 ទម្រង់ Java ARchive ដោយខ្លឹមសារគឺជាឯកសារ ZIP ប្រើសម្រាប់វេចខ្ចប់បណ្ណាល័យ និងកម្មវិធី Java។ ជាទម្រង់សំខាន់នៃប្រព័ន្ធអេកូឡូស៊ី Java ដូចជា Maven, Gradle។ Android ក៏ប្រើ JAR ផងដែរ)"
+
+msgid "mime_lzma"
+msgstr "ឯកសារបង្ហាប់ LZMA (Igor Pavlov បានអភិវឌ្ឍក្នុងឆ្នាំ 1998 ក្បួនដោះស្រាយ Lempel-Ziv-Markov chain ក្បួនដោះស្រាយសំខាន់នៃទម្រង់ 7z អត្រាបង្ហាប់ខ្ពស់ ល្បឿនបំបាត់ការបង្ហាប់លឿន។ ប្រើសម្រាប់ចែកចាយកម្មវិធីបង្កប់ និងប្រព័ន្ធដែលបង្កប់)"
+
+msgid "mime_rar"
+msgstr "ឯកសារបង្ហាប់ RAR (Eugene Roshal បានអភិវឌ្ឍក្នុងឆ្នាំ 1993 ទម្រង់ Roshal ARchive អត្រាបង្ហាប់ខ្ពស់ គាំទ្រការបែងចែកកម្រិតសំឡេង និងកំណត់ត្រាសង្គ្រោះ។ ទម្រង់កម្មវិធី WinRAR អត្រាបង្ហាប់ប្រសើរជាង ZIP ប៉ុន្តែត្រូវការកម្មវិធីបង់ប្រាក់ ឧបករណ៍ប្រភពបើកចំហដូចជា unrar អាចបំបាត់ការបង្ហាប់បាន)"
+
+msgid "mime_tar"
+msgstr "ឯកសារប្រមូល TAR (Unix V7 បានណែនាំក្នុងឆ្នាំ 1979 ទម្រង់ Tape ARchive ទម្រង់ប្រមូលកាសែត មិនបង្ហាប់ គ្រាន់តែវេចខ្ចប់ ជារឿយៗប្រើរួមគ្នាជាមួយ GZIP/BZIP2/XZ។ កូដប្រភពកញ្ចប់ Linux ការផ្ទុកស្រទាប់រូបភាព Docker សុទ្ធតែប្រើទម្រង់ TAR)"
+
+msgid "mime_tgz"
+msgstr "ឯកសារបង្ហាប់ TGZ (ទម្រង់រួមបញ្ចូល TAR + GZIP ផ្នែកបន្ថែម .tgz ឬ .tar.gz។ ទម្រង់ចែកចាយទូទៅបំផុតសម្រាប់កញ្ចប់កម្មវិធី Unix/Linux កូដប្រភពកញ្ចប់ កញ្ចប់គោលពីរ ប្រើប្រាស់យ៉ាងទូលំទូលាយ តំណាងនៃ 'បំបាត់ការបង្ហាប់រួចប្រើបាន')"
+
+msgid "mime_tbz2"
+msgstr "ឯកសារបង្ហាប់ TBZ2 (ទម្រង់រួមបញ្ចូល TAR + BZIP2 ផ្នែកបន្ថែម .tbz2 ឬ .tar.bz2។ អត្រាបង្ហាប់ខ្ពស់ជាង TGZ 15-20% សមស្របសម្រាប់ការចែកចាយឯកសារធំៗ។ Linux kernel ប្រើទម្រង់នេះជាយូរមកហើយ)"
+
+msgid "mime_xz"
+msgstr "ឯកសារបង្ហាប់ XZ (បានចេញផ្សាយក្នុងឆ្នាំ 2009 ផ្អែកលើក្បួនដោះស្រាយ LZMA2 អត្រាបង្ហាប់ខ្ពស់ណាស់ ខ្ពស់ជាង GZIP 30-50% ល្បឿនបំបាត់ការបង្ហាប់លឿន។ Linux kernel, កម្មវិធីគ្រប់គ្រងកញ្ចប់ (ដូចជានៅខាងក្នុង .deb របស់ Debian) ប្រើប្រាស់យ៉ាងទូលំទូលាយ ជាទម្រង់ដែលបានណែនាំនៅក្នុងប្រព័ន្ធអេកូឡូស៊ី Linux បច្ចុប្បន្ន)"
+
+msgid "mime_z"
+msgstr "ឯកសារបង្ហាប់ Z (ទម្រង់ពាក្យបញ្ជា Unix compress ក្នុងឆ្នាំ 1985 ក្បួនដោះស្រាយ LZW ទម្រង់បង្ហាប់ Unix ជំនាន់ដំបូង ត្រូវបានជំនួសដោយ GZIP ផ្នែកបន្ថែម .Z ប្រព័ន្ធទំនើបប្រើតិចតួច)"
+
+msgid "mime_zip"
+msgstr "ឯកសារបង្ហាប់ ZIP (Phil Katz បានអភិវឌ្ឍក្នុងឆ្នាំ 1989 ទម្រង់ PKZIP គាំទ្រដើមនៅក្នុង Windows ទម្រង់បង្ហាប់ទូទៅបំផុតនៅលើអ៊ីនធឺណិត។ គាំទ្រឯកសារច្រើន រចនាសម្ព័ន្ធថត អាចជ្រើសរើសក្បួនដោះស្រាយបង្ហាប់។ JAR របស់ Java, APK របស់ Android, DOCX/XLSX នៃឯកសារ Office សុទ្ធតែផ្អែកលើទម្រង់ ZIP)"
+
+msgid "mime_zst"
+msgstr "ឯកសារបង្ហាប់ Zstandard (Facebook បានអភិវឌ្ឍក្នុងឆ្នាំ 2015 រចនាដោយ Yann Collet ក្បួនដោះស្រាយការបង្ហាប់ល្បឿនលឿន អត្រាបង្ហាប់ជិតស្និទ្ធនឹង LZMA ល្បឿនលឿនជាង GZIP ច្រើន។ Linux kernel 5.9+ គាំទ្រ, Arch Linux pacman, Debian APT កំពុងត្រូវបានអនុម័តបន្តិចម្តងៗ ជាស្តង់ដារបង្ហាប់ជំនាន់ថ្មី)"
+
+msgid "mime_lz4"
+msgstr "ឯកសារបង្ហាប់ LZ4 (Yann Collet បានអភិវឌ្ឍក្នុងឆ្នាំ 2011 ក្បួនដោះស្រាយការបង្ហាប់លឿនបំផុត ល្បឿនបង្ហាប់លឿនជាង GZIP 10 ដងឡើងទៅ សមស្របសម្រាប់ស្ថានភាពបង្ហាប់ពេលវេលាជាក់ស្តែង។ Linux kernel, OpenZFS, Hadoop ប្រើប្រាស់យ៉ាងទូលំទូលាយ ជាជម្រើសដំបូងសម្រាប់ស្ថានភាពដែលផ្តោតលើល្បឿន)"
+
+msgid "mime_lzo"
+msgstr "ឯកសារបង្ហាប់ LZO (Markus Oberhumer បានអភិវឌ្ឍក្នុងឆ្នាំ 1996 ក្បួនដោះស្រាយ Lempel-Ziv-Oberhumer ល្បឿនបំបាត់ការបង្ហាប់លឿនណាស់ អត្រាបង្ហាប់ទូទៅ។ Linux kernel Squashfs, ប្រព័ន្ធបង្កប់ OpenWrt ប្រើប្រាស់ សមស្របសម្រាប់ប្រព័ន្ធដែលបង្កប់)"
+
+msgid "mime_msi"
+msgstr "កញ្ចប់ដំឡើង MSI (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 1999 ទម្រង់កញ្ចប់ Windows Installer ទម្រង់ដំឡើងកម្មវិធី Windows ស្តង់ដារ គាំទ្រការត្រឡប់ក្រោយប្រតិបត្តិការ ការគ្រប់គ្រងសមាសភាគ ការដំឡើងស្ងាត់។ ជាទម្រង់ដំបូងសម្រាប់ការចែកចាយកម្មវិធីកម្រិតសហគ្រាស នៅតែជាចរន្តសំខាន់សម្រាប់ការដំឡើងកម្មវិធី Windows រហូតដល់បច្ចុប្បន្ន)"
+
+msgid "mime_pkg"
+msgstr "កញ្ចប់ដំឡើង PKG (ទម្រង់កញ្ចប់ដំឡើងកម្មវិធី macOS យោងតាមបច្ចេកវិទ្យា Installer របស់ Apple។ ទម្រង់ស្តង់ដារការចែកចាយកម្មវិធី macOS គាំទ្រការជ្រើសរើសសមាសភាគ ស្គ្រីបដំឡើង មុខងារលុប។ ចុចពីរដងលើឯកសារ .pkg ដើម្បីដំឡើង ជាវិធីសាស្ត្រចែកចាយទូទៅសម្រាប់កម្មវិធីនៅខាងក្រៅ Mac App Store)"
+
+msgid "mime_apk"
+msgstr "កញ្ចប់កម្មវិធី Android APK (ណែនាំដោយ Google ក្នុងឆ្នាំ 2008, ទម្រង់ដំឡើងកម្មវិធី Android បែបប្រពៃណី។ APK គឺជាកញ្ចប់ ZIP ដែលមានកូដ, ធនធាន, និងឯកសារ Manifest។ ចាប់ពីឆ្នាំ 2021, Google Play តម្រូវឱ្យកម្មវិធីថ្មីប្រើទម្រង់ AAB, ប៉ុន្តែ APK នៅតែប្រើសម្រាប់ការបំបាត់កំហុស, ហាងភាគីទីបី, និងការដំឡើងតាមបណ្តោយ)"
+
+msgid "mime_ipa"
+msgstr "កញ្ចប់កម្មវិធី iOS IPA (iOS App Store Package, ទម្រង់ដំឡើងកម្មវិធី iOS/iPadOS។ ណែនាំក្នុងឆ្នាំ 2008 ជាមួយ iPhone SDK។ ត្រូវតែចែកចាយតាមរយៈ App Store ឬចុះហត្ថលេខាជាមួយវិញ្ញាបនបត្រសហគ្រាស។ មានឯកសារដំណើរការ, ធនធាន, Info.plist, និងព័ត៌មានហត្ថលេខា)"
+
+msgid "mime_hap"
+msgstr "កញ្ចប់កម្មវិធី HarmonyOS HAP (HarmonyOS Ability Package, ឯកតាមូលដ្ឋាននៃកម្មវិធី HarmonyOS។ ណែនាំក្នុងឆ្នាំ 2020 ជាមួយ HarmonyOS 2.0។ គាំទ្រពីរប្រភេទ៖ entry និង feature, ទម្រង់ចែកចាយសម្រាប់ទូរស័ព្ទ Huawei, ថេប្លេត, នាឡិកាឆ្លាតវៃ, និងឧបករណ៍ HarmonyOS ផ្សេងទៀត)"
+
+msgid "mime_har"
+msgstr "បណ្ណាល័យចែករំលែកឋិតិវន្ត HarmonyOS HAR (HarmonyOS Archive, បណ្ណាល័យចែករំលែកឋិតិវន្តរបស់ HarmonyOS, អាចចែករំលែកដោយកញ្ចប់ HAP ច្រើន, ប្រើសម្រាប់ការអភិវឌ្ឍតាមសមាសភាគ និងការប្រើប្រាស់ម៉ូឌុលឡើងវិញ)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (Google បានចេញផ្សាយក្នុងឆ្នាំ 2018 និងបានកំណត់ឱ្យកម្មវិធីថ្មីដែលផ្ញើទៅកាន់ Google Play ប្រើទម្រង់នេះចាប់ពីឆ្នាំ 2021។ AAB គឺជាទម្រង់សម្រាប់ការចែកចាយ Google Play នឹងបង្កើត APK ដែលបានកែសម្រួលតាមការកំណត់រចនាសម្ព័ន្ធឧបករណ៍ (ស្ថាបត្យកម្ម CPU, ដង់ស៊ីតេអេក្រង់, ភាសា) ដោយទំហំកញ្ចប់ជាមធ្យមថយចុះ 35%។ អ្នកអភិវឌ្ឍន៍បង្ហោះ AAB អ្នកប្រើប្រាស់ទាញយក APK)"
+
+msgid "mime_xapk"
+msgstr "កញ្ចប់កម្មវិធី XAPK (កញ្ចប់បន្ថែមកម្មវិធី Android របស់ភាគីទីបី មាន APK + ឯកសារទិន្នន័យ OBB។ ប្រើសម្រាប់ហ្គេមធំៗ និងកម្មវិធីស្មុគស្មាញ ដោះស្រាយបញ្ហាកំណត់ 100MB នៃឯកសារ APK តែមួយ។ ជាទូទៅឃើញនៅក្នុងហាងកម្មវិធីភាគីទីបីដូចជា APKPure, APKMirror មិនមែនជាទម្រង់ផ្លូវការរបស់ Google)"
+
+msgid "mime_appx"
+msgstr "កញ្ចប់កម្មវិធី Windows (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 2012 ទម្រង់ដំឡើងកម្មវិធី Windows 8/10/11 គាំទ្រកម្មវិធី UWP និងការបំប្លែងកម្មវិធីផ្ទៃតុ ចែកចាយតាមរយៈ Microsoft Store។ នៅឆ្នាំ 2024 Microsoft បានចេញផ្សាយ MSIX ជាទម្រង់បន្តបន្ទាប់ ជំនួស APPX បន្តិចម្តងៗ)"
+
+msgid "mime_msix"
+msgstr "កញ្ចប់កម្មវិធី MSIX (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 2018 ទម្រង់វេចខ្ចប់កម្មវិធី Windows ជំនាន់ថ្មី រួមបញ្ចូលគុណសម្បត្តិរបស់ APPX និង MSI គាំទ្រកម្មវិធី Windows គ្រប់ប្រភេទ អាចចែកចាយតាមរយៈ Microsoft Store ឬការដំឡើងបែប side-load ទម្រង់ដែលបានណែនាំសម្រាប់ Windows 11)"
+
+msgid "mime_appimage"
+msgstr "កញ្ចប់កម្មវិធី AppImage (បានចេញផ្សាយក្នុងឆ្នាំ 2004 ទម្រង់កម្មវិធី Linux ដែលមិនចាំបាច់ដំឡើង 'មួយកម្មវិធីមួយឯកសារ' អាចដំណើរការបានភ្លាមៗដោយមិនចាំបាច់ដំឡើង គាំទ្រការចែកចាយ Linux ភាគច្រើន ជាវិធីសាស្ត្រទូទៅសម្រាប់អ្នកអភិវឌ្ឍន៍ក្នុងការចែកចាយកម្មវិធី Linux)"
+
+msgid "mime_flatpak"
+msgstr "កញ្ចប់កម្មវិធី Flatpak (បានចេញផ្សាយក្នុងឆ្នាំ 2015 ទម្រង់កម្មវិធី Linux បែប sandbox ដំណើរការឆ្លងការចែកចាយ ដាច់ដោយឡែកពីប្រព័ន្ធម៉ាស៊ីន អភិវឌ្ឍន៍ដោយ Fedora, Red Hat ជាទម្រង់លំនាំដើមនៃមជ្ឈមណ្ឌលកម្មវិធី GNOME)"
+
+msgid "mime_snap"
+msgstr "កញ្ចប់កម្មវិធី Snap (Canonical បានចេញផ្សាយក្នុងឆ្នាំ 2014 ក្រុមហ៊ុនមេរបស់ Ubuntu បានអភិវឌ្ឍ ទម្រង់កម្មវិធី Linux បែបទូទៅ អាប់ដេតដោយស្វ័យប្រវត្តិ, sandbox ដាច់ដោយឡែក គាំទ្រការចែកចាយ Linux 40+ ជាទម្រង់លំនាំដើមនៃ Ubuntu Software Center)"
+
+msgid "mime_deb"
+msgstr "កញ្ចប់កម្មវិធី Debian (Debian Project បានចេញផ្សាយក្នុងឆ្នាំ 1993 ទម្រង់ដំឡើងស្តង់ដារសម្រាប់ Debian/Ubuntu និងកំណែដេរីវេ គ្រប់គ្រងដោយ dpkg, APT គឺជាផ្នែកខាងមុខរបស់កម្មវិធីគ្រប់គ្រងកញ្ចប់ ទម្រង់កញ្ចប់ដែលចាស់ទុំបំផុតមួយនៅក្នុងប្រព័ន្ធអេកូឡូស៊ី Linux នៅតែជាចរន្តសំខាន់នៅក្នុងត្រកូល Debian រហូតដល់បច្ចុប្បន្ន)"
+
+msgid "mime_rpm"
+msgstr "កញ្ចប់កម្មវិធី RPM (Red Hat បានចេញផ្សាយក្នុងឆ្នាំ 1997 ទម្រង់ស្តង់ដារសម្រាប់ការចែកចាយដូចជា Red Hat/Fedora/CentOS/SUSE។ RPM ជាអក្សរកាត់សម្រាប់ 'Red Hat Package Manager' គឺជាទម្រង់កញ្ចប់សំខាន់មួយក្នុងចំណោមពីររបស់ Linux រួមជាមួយ DEB នៅតែជាចរន្តសំខាន់នៅក្នុងត្រកូល RHEL រហូតដល់បច្ចុប្បន្ន)"
+
+msgid "mime_pacman"
+msgstr "កញ្ចប់កម្មវិធី Arch (Arch Linux បានចេញផ្សាយក្នុងឆ្នាំ 2002 ទម្រង់ .pkg.tar.zst ដែលប្រើដោយកម្មវិធីគ្រប់គ្រងកញ្ចប់ pacman ស្នូលសំខាន់នៃ Arch Linux rolling release ល្បីល្បាញដោយសារភាពសាមញ្ញ និងគោលការណ៍ KISS។ AUR (Arch User Repository) គឺជាលក្ខណៈពិសេស)"
+
+msgid "mime_exe"
+msgstr "ឯកសារប្រតិបត្តិ EXE (ទម្រង់កម្មវិធីប្រតិបត្តិ Windows អក្សរកាត់មកពី 'Executable' ទម្រង់ដើមកំណើតនៃប្រព័ន្ធប្រតិបត្តិការ Windows មានរចនាសម្ព័ន្ធ PE បានវិវត្តមកពីទម្រង់ MZ នៃ MS-DOS។ Windows NT បានណែនាំទម្រង់ PE (Portable Executable) ក្នុងឆ្នាំ 1993 និងប្រើប្រាស់រហូតដល់បច្ចុប្បន្ន។ កញ្ចប់ដំឡើងកម្មវិធី កម្មវិធី ឧបករណ៍ប្រព័ន្ធសុទ្ធតែប្រើទម្រង់នេះ។ អ្នកប្រើប្រាស់ចុចពីរដងដើម្បីដំណើរការ។ ជាទម្រង់ប្រតិបត្តិដែលប្រើប្រាស់យ៉ាងទូលំទូលាយបំផុតក្នុងពិភពលោក)"
+
+msgid "mime_dll"
+msgstr "បណ្ណាល័យភ្ជាប់ថាមវន្ត DLL (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 1993 Dynamic Link Library បណ្ណាល័យកូដដែលប្រើរួមគ្នារបស់ Windows ផ្ទុកថាមវន្តនៅពេលកម្មវិធីដំណើរការ សន្សំសំចៃអង្គចងចាំ និងទំហំថាស។ សមាសភាគប្រព័ន្ធ កម្មវិធីជំនួយកម្មវិធី កម្មវិធីបញ្ជាសុទ្ធតែប្រើទម្រង់ DLL។ ជាវិធីសាស្ត្រសំខាន់ក្នុងការប្រើប្រាស់ Windows API។ បញ្ហា DLL Hell ត្រូវបានដោះស្រាយក្នុងសម័យ .NET)"
+
+msgid "mime_com"
+msgstr "ឯកសារប្រតិបត្តិ COM (ទម្រង់ប្រតិបត្តិសម័យ MS-DOS អក្សរកាត់មកពី 'Command' រចនាសម្ព័ន្ធឯកសារសាមញ្ញ កំណត់ 64KB ទម្រង់សំខាន់មុន Windows 3.x ត្រូវបានបោះបង់ចោល។ Windows សម័យទំនើបប្រើទម្រង់ EXE ផ្នែកបន្ថែម COM នៅតែប្រើសម្រាប់ឯកសារសមាសភាគមួយចំនួន)"
+
+msgid "mime_aac"
+msgstr "សំឡេង AAC (ស្តង់ដារ MPEG ក្នុងឆ្នាំ 1997 Advanced Audio Coding អ្នកស្នងតំណែងរបស់ MP3 គុណភាពសំឡេងប្រសើរជាង MP3 ក្នុងអត្រាប៊ីតដូចគ្នា ទម្រង់សំឡេងលំនាំដើមរបស់ YouTube, iTunes, Nintendo Switch)"
+
+msgid "mime_alac"
+msgstr "សំឡេង ALAC (Apple បានអភិវឌ្ឍក្នុងឆ្នាំ 2004 Apple Lossless Audio Codec ទម្រង់មិនបាត់បង់គុណភាពរបស់ Apple បានបើកប្រភពក្នុងឆ្នាំ 2011 ទម្រង់លំនាំដើមសម្រាប់សំឡេងមិនបាត់បង់គុណភាពក្នុង iTunes និង Apple Music)"
+
+msgid "mime_flac"
+msgstr "សំឡេង FLAC (Xiph.Org Foundation បានអភិវឌ្ឍក្នុងឆ្នាំ 2001 Free Lossless Audio Codec បង្ហាប់បែបមិនបាត់បង់គុណភាព គុណភាពសំឡេងស្មើនឹងស៊ីឌី ទំហំឯកសារប្រហែលពាក់កណ្តាលនៃ WAV ដើម។ គ្មានថ្លៃអាជ្ញាប័ណ្ណ ប្រភពបើកចំហ ជាទម្រង់ដំបូងសម្រាប់អ្នកស្ម័គ្រចិត្ត និងការប្រមូលតន្ត្រីឌីជីថល)"
+
+msgid "mime_mp3"
+msgstr "សំឡេង MP3 (Fraunhofer Institute បានអភិវឌ្ឍក្នុងឆ្នាំ 1993 MPEG-1 Audio Layer 3 ទម្រង់បង្ហាប់បែបបាត់បង់គុណភាព ទំហំឯកសារតូច គុណភាពសំឡេងសមរម្យ ទម្រង់សំខាន់នៃបដិវត្តន៍តន្ត្រីឌីជីថលក្នុងទសវត្សរ៍ឆ្នាំ 2000 ជាស្នាដៃរបស់ iPod និង Napster។ ប៉ាតង់បានផុតកំណត់ក្នុងឆ្នាំ 2017 ក្លាយជាទម្រង់សាធារណៈ)"
+
+msgid "mime_oga"
+msgstr "សំឡេង Ogg Audio (Xiph.Org Foundation បានអភិវឌ្ឍ ទម្រង់សំឡេងសុទ្ធនៃកុងតឺន័រ Ogg ប្រើការអ៊ិនកូដ Vorbis ប្រភពបើកចំហគ្មានថ្លៃអាជ្ញាប័ណ្ណ ប្រសិទ្ធភាពបង្ហាប់ប្រសើរជាង MP3 ប្រើប្រាស់យ៉ាងទូលំទូលាយក្នុងគម្រោងប្រភពបើកចំហ)"
+
+msgid "mime_ogg"
+msgstr "សំឡេង OGG (Xiph.Org Foundation បានអភិវឌ្ឍក្នុងឆ្នាំ 2000 ទម្រង់ Ogg Vorbis ប្រភពបើកចំហគ្មានថ្លៃអាជ្ញាប័ណ្ណ ប្រសិទ្ធភាពបង្ហាប់ប្រសើរជាង MP3 Spotify ដំបូងបានប្រើ ប្រើប្រាស់យ៉ាងទូលំទូលាយក្នុងបែបផែនសំឡេងហ្គេម)"
+
+msgid "mime_opus"
+msgstr "សំឡេង Opus (IETF បានធ្វើស្តង់ដារក្នុងឆ្នាំ 2012 ទម្រង់សំឡេងប្រភពបើកចំហគ្មានថ្លៃអាជ្ញាប័ណ្ណ រួមបញ្ចូលបច្ចេកវិទ្យា SILK និង CELT ការពន្យារពេលទាបបំផុត ប្រសិទ្ធភាពបង្ហាប់ខ្ពស់បំផុត ទម្រង់សំឡេងលំនាំដើមរបស់ WebRTC, WhatsApp, Discord)"
+
+msgid "mime_wav"
+msgstr "សំឡេង WAV (Microsoft និង IBM បានអភិវឌ្ឍក្នុងឆ្នាំ 1991 ទម្រង់សំឡេងដើមរបស់ Windows ការអ៊ិនកូដ PCM មិនបង្ហាប់ គុណភាពសំឡេងមិនបាត់បង់ ប៉ុន្តែឯកសារធំណាស់ ទម្រង់ស្តង់ដារសម្រាប់ការកាត់តសំឡេងកម្រិតវិជ្ជាជីវៈ)"
+
+msgid "mime_wma"
+msgstr "សំឡេង WMA (Microsoft បានអភិវឌ្ឍក្នុងឆ្នាំ 1999 Windows Media Audio មានទាំងកំណែបាត់បង់/មិនបាត់បង់គុណភាព គាំទ្រដើមក្នុង Windows បានរីករាលដាលជាមួយ Windows Media Player បច្ចុប្បន្នត្រូវបានជំនួសដោយ MP3/AAC)"
+
+msgid "mime_dsf"
+msgstr "សំឡេង DSF (ទម្រង់ Direct Stream Digital អភិវឌ្ឍដោយ Sony និង Philips គំរូប្រេកង់ខ្ពស់ 1 ប៊ីត ទម្រង់ស្តង់ដារសំឡេង DSD កំណែឌីជីថលរបស់ SACD ទម្រង់សំឡេងកម្រិតខ្ពស់សម្រាប់អ្នកស្ម័គ្រចិត្ត ឯកសារធំណាស់)"
+
+msgid "mime_ape"
+msgstr "អូឌីយ៉ូ APE (បង្កើតឡើងដោយ Monkey's Audio ក្នុងឆ្នាំ 2000 ទ្រង់ទ្រាយបង្ហាប់គ្មានការបាត់បង់។ ការបង្ហាប់ខ្ពស់ជាង FLAC ប៉ុន្តែការអ៊ិនកូដយឺតជាង នៅតែប្រើនៅលើវេទិកា Windows និងក្នុងចំណោមអ្នកចូលចិត្តអូឌីយ៉ូ)"
+
+msgid "mime_mid"
+msgstr "សំឡេង MIDI (MIDI Association បានកំណត់ក្នុងឆ្នាំ 1983 Musical Instrument Digital Interface ទម្រង់កំណត់ចំណាំតន្ត្រីជំនួសឱ្យការថតសំឡេង ឯកសារតូចណាស់ ស្តង់ដារសម្រាប់ឧបករណ៍តន្ត្រីអេឡិចត្រូនិច សំឡេងរោទ៍ទូរស័ព្ទដៃ បែបផែនសំឡេងហ្គេម។ General MIDI បានធ្វើស្តង់ដារក្នុងឆ្នាំ 1991 កំណត់សំឡេងឧបករណ៍ចំនួន 128)"
+
+msgid "mime_m4a"
+msgstr "សំឡេង M4A (MPEG-4 Audio ទម្រង់កុងតឺន័ររបស់ AAC ទម្រង់ស្តង់ដារនៃ iTunes Music Store ទម្រង់សំឡេងសំខាន់នៅក្នុងប្រព័ន្ធអេកូឡូស៊ី Apple គាំទ្រការការពារ DRM)"
+
+msgid "mime_m3u"
+msgstr "បញ្ជីចាក់ M3U (ទម្រង់បញ្ជីចាក់ URL MP3 ឯកសារអត្ថបទធម្មតា កត់ត្រាផ្លូវឯកសារសំឡេង ស្តង់ដារសម័យ Winamp ប្រើសម្រាប់វិទ្យុតាមអ៊ីនធឺណិត ស្ទ្រីមតន្ត្រីតាមអ៊ីនធឺណិត។ M3U8 គឺជាកំណែ UTF-8 ប្រើសម្រាប់ HTTP Live Streaming)"
+
+msgid "mime_asf"
+msgstr "ស្ទ្រីម ASF (Microsoft បានអភិវឌ្ឍក្នុងឆ្នាំ 1996 Advanced Systems Format កុងតឺន័រស្ទ្រីម Windows Media គាំទ្រការបញ្ជូនសំឡេង និងវីដេអូក្នុងពេលដំណាលគ្នា ប្រើសម្រាប់ការផ្សាយផ្ទាល់តាមអ៊ីនធឺណិត និងស្ទ្រីមវីដេអូតាមតម្រូវការ។ WMA/WMV ផ្អែកលើកុងតឺន័រ ASF)"
+
+msgid "mime_avi"
+msgstr "វីដេអូ AVI (Microsoft បានចេញផ្សាយក្នុងឆ្នាំ 1992 ស្តង់ដារវីដេអូ Windows ជំនាន់ដំបូង 'និយតកម្មសំឡេងនិងវីដេអូឆ្លាស់គ្នា' រក្សាទុកសំឡេងនិងវីដេអូឆ្លាស់គ្នា ទម្រង់វីដេអូដែលទទួលបានប្រជាប្រិយភាពខ្ពស់បំផុតក្នុងកំឡុងឆ្នាំ 1990-2000 បច្ចុប្បន្នត្រូវបានជំនួសដោយ MP4/MKV)"
+
+msgid "mime_divx"
+msgstr "វីដេអូ DivX (DivX Corporation បានអភិវឌ្ឍក្នុងឆ្នាំ 1998 ទម្រង់អ៊ិនកូដវីដេអូតាម MPEG-4 ទម្រង់សំខាន់នៃការចែករំលែកវីដេអូតាមអ៊ីនធឺណិតក្នុងទសវត្សរ៍ឆ្នាំ 2000 ជាបច្ចេកវិទ្យាដំបូងគេដែលបង្ហាប់គុណភាព DVD ឱ្យនៅក្នុងទំហំស៊ីឌី។ ដោយសារតែជម្លោះកម្មសិទ្ធិបញ្ញា ក្រោយមកបានប្តូរទៅជាកម្មវិធីអ៊ិនកូដពាណិជ្ជកម្ម)"
+
+msgid "mime_mp4"
+msgstr "វីដេអូ MP4 (ស្តង់ដារ MPEG ក្នុងឆ្នាំ 2001 MPEG-4 Part 14 ទម្រង់វីដេអូទូទៅបំផុតក្នុងពិភពលោក គាំទ្រការអ៊ិនកូដ H.264/H.265 ទម្រង់លំនាំដើមសម្រាប់វីដេអូនៅលើអ៊ីនធឺណិត ការថតទូរស័ព្ទដៃ YouTube)"
+
+msgid "mime_m4v"
+msgstr "វីដេអូ M4V (ទម្រង់វីដេអូរបស់ iTunes បំរែបំរួលនៃ MP4 ទម្រង់វីដេអូនៅក្នុងប្រព័ន្ធអេកូឡូស៊ី Apple ភាពយន្ត និងកម្មវិធីទូរទស្សន៍ស្តង់ដារនៃ iTunes Store គាំទ្រការការពារកម្មសិទ្ធិ DRM)"
+
+msgid "mime_mpeg"
+msgstr "វីដេអូ MPEG (អង្គការ MPEG បានកំណត់ក្នុងឆ្នាំ 1988 Moving Picture Experts Group អ្នកដាក់គ្រឹះស្តង់ដារការបង្ហាប់វីដេអូឌីជីថល MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (វីដេអូអនឡាញ) មានឥទ្ធិពលយ៉ាងជ្រាលជ្រៅ)"
+
+msgid "mime_mkv"
+msgstr "វីដេអូ MKV (គម្រោង Matroska បានអភិវឌ្ឍក្នុងឆ្នាំ 2002 ទម្រង់កុងតឺន័រពហុមេឌាប្រភពបើកចំហ គាំទ្រផ្លូវសំឡេងច្រើន ចំណងជើងរងច្រើន ជំពូក 'ឧបករណ៍រុំ' ទម្រង់ដំបូងសម្រាប់ការចែករំលែកភាពយន្តគុណភាពខ្ពស់)"
+
+msgid "mime_mpg"
+msgstr "វីដេអូ MPEG (ផ្នែកបន្ថែមវីដេអូ MPEG-1/MPEG-2 ទម្រង់ស្តង់ដារសម្រាប់ VCD និង DVD ទម្រង់សំខាន់សម្រាប់វីដេអូនៅលើឌីសក្នុងទសវត្សរ៍ឆ្នាំ 1990-2000 បច្ចុប្បន្នត្រូវបានជំនួសដោយ H.264/H.265)"
+
+msgid "mime_ogv"
+msgstr "វីដេអូ Ogg Video (Xiph.Org Foundation បានអភិវឌ្ឍ ទម្រង់វីដេអូនៃកុងតឺន័រ Ogg ប្រើការអ៊ិនកូដ Theora ប្រភពបើកចំហគ្មានថ្លៃអាជ្ញាប័ណ្ណ មួយក្នុងចំណោមស្តង់ដារដំបូងនៃវីដេអូ HTML5 គាំទ្រដើមនៅក្នុង Firefox)"
+
+msgid "mime_ogx"
+msgstr "កុងតឺន័រពហុមេឌា Ogg (Xiph.Org Foundation បានអភិវឌ្ឍ ផ្នែកបន្ថែមទូទៅនៃកុងតឺន័រ Ogg អាចមានផ្លូវច្រើនដូចជា សំឡេង វីដេអូ ចំណងជើងរង ស្តង់ដារពហុមេឌាប្រភពបើកចំហ ប្រើសម្រាប់ហ្គេម ស្ទ្រីម)"
+
+msgid "mime_rm"
+msgstr "វីដេអូ RealMedia (RealNetworks បានអភិវឌ្ឍក្នុងឆ្នាំ 1995 ទម្រង់ RealMedia អ្នកត្រួសត្រាយស្ទ្រីមនៅលើអ៊ីនធឺណិតក្នុងទសវត្សរ៍ឆ្នាំ 1990-2000 ទម្រង់សំខាន់របស់កម្មវិធីចាក់ RealPlayer។ ចំណុចខ្សោយ៖ ត្រូវការកម្មវិធីចាក់ជាក់លាក់ គុណភាពបង្ហាប់មិនល្អ ត្រូវបានជំនួសដោយ Flash/MP4)"
+
+msgid "mime_flv"
+msgstr "វីដេអូ Flash (ទម្រង់បានចាប់ផ្តើមនៅឆ្នាំ 2002 ទម្រង់ Flash Video ធ្លាប់ជាទម្រង់សំខាន់នៃវីដេអូអនឡាញ YouTube ដំបូងប្រើប្រាស់។ ចំណុចខ្សោយ៖ ត្រូវការកម្មវិធីជំនួយ Flash ដំណើរការទាប ចំណុចខ្សោយសុវត្ថិភាពជាច្រើន។ ចាប់ពីឆ្នាំ 2015 តទៅ គេហទំព័រសំខាន់ៗបានប្តូរទៅប្រើវីដេអូ HTML5 បច្ចុប្បន្នត្រូវបានបោះបង់ចោល)"
+
+msgid "mime_f4v"
+msgstr "វីដេអូ F4V (ទម្រង់វីដេអូ Flash ដែលត្រូវបានបង្កើតឡើងដោយ Adobe ដែលជាអ្នកស្នងតំណែងរបស់ FLV ផ្អែកលើស្តង់ដារ MPEG-4 គាំទ្រការអ៊ិនកូដ H.264 ត្រូវបានបោះបង់ចោលរួមជាមួយបច្ចេកវិទ្យា Flash Adobe បានបញ្ឈប់ការគាំទ្រក្នុងឆ្នាំ 2020)"
+
+msgid "mime_wmv"
+msgstr "វីដេអូ WMV (Microsoft បានអភិវឌ្ឍក្នុងឆ្នាំ 1999 Windows Media Video គាំទ្រដើមក្នុង Windows កែសម្រួលសម្រាប់ការបញ្ជូនស្ទ្រីម ទម្រង់ដែលប្រើជាទូទៅក្នុងវីដេអូអនឡាញដំបូង បច្ចុប្បន្នត្រូវបានជំនួស)"
+
+msgid "mime_wmf"
+msgstr "ទម្រង់មេឌា WMF (Windows Media Format ស៊ុមមេឌារបស់ Microsoft រួមទាំងវីដេអូ WMV, សំឡេង WMA គាំទ្រដើមដោយ Windows Media Player)"
+
+msgid "mime_mov"
+msgstr "វីដេអូ MOV (Apple បានអភិវឌ្ឍក្នុងឆ្នាំ 1991 ទម្រង់កុងតឺន័រ QuickTime ស្តង់ដារសម្រាប់ការកាត់តវីដេអូកម្រិតវិជ្ជាជីវៈ គាំទ្រកម្មវិធីបំប្លែងសញ្ញាច្រើន គាំទ្រដើមដោយ Final Cut Pro, Premiere)"
+
+msgid "mime_qt"
+msgstr "វីដេអូ QuickTime (Apple បានចេញផ្សាយក្នុងឆ្នាំ 1991 ទម្រង់ QuickTime ស្តង់ដារវីដេអូនៅលើវេទិកា Mac MOV គឺជាកុងតឺន័រ កម្មវិធីចាក់ QuickTime ត្រូវបានប្រើប្រាស់យ៉ាងទូលំទូលាយ។ Apple បានបញ្ឈប់ការអភិវឌ្ឍន៍សម្រាប់ Windows ក្នុងឆ្នាំ 2016 ត្រូវបានជំនួសដោយ MP4 បន្តិចម្តងៗ)"
+
+msgid "mime_webm"
+msgstr "វីដេអូ WebM (Google បានចេញផ្សាយក្នុងឆ្នាំ 2010 ទម្រង់វីដេអូប្រភពបើកចំហគ្មានថ្លៃអាជ្ញាប័ណ្ណ ផ្អែកលើកុងតឺន័រ Matroska ការអ៊ិនកូដ VP8/VP9 ទម្រង់ស្តង់ដារវីដេអូ HTML5 ទម្រង់ចាក់លំនាំដើមរបស់ YouTube នៅលើបណ្តាញ)"
+
+msgid "mime_3gp"
+msgstr "វីដេអូ 3GP (3GPP បានកំណត់ក្នុងឆ្នាំ 2000 ទម្រង់វីដេអូសម្រាប់ឧបករណ៍ចល័ត ទំហំឯកសារតូចណាស់ គុណភាពរូបភាពទាប ទម្រង់ថតវីដេអូរបស់ទូរស័ព្ទដៃជំនាន់ចាស់ ប្រើសម្រាប់ផ្ញើ MMS)"
+
+#------------------------------------------------------------------------------
+# វិមាត្របច្ចេកទេស
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "ប្រព័ន្ធប្រតិបត្តិការ"
+
+msgid "Top 5 Operating Systems"
+msgstr "ប្រព័ន្ធប្រតិបត្តិការ 5 កំពូល"
+
+msgid "Unknown Robot"
+msgstr "អតិថិជនមិនស្គាល់"
+
+msgid "User agent"
+msgstr "អ្នកប្រើប្រាស់ភ្នាក់ងារ"
+
+msgid "Browsers"
+msgstr "កម្មវិធីរុករក"
+
+msgid "Top 5 Browsers"
+msgstr "កម្មវិធីរុករក 5 កំពូល"
+
+msgid "Unknown Robot RH"
+msgstr "បឋមកថាសំណើមិនស្គាល់"
+
+msgid "Detailed"
+msgstr "កំណែឧបករណ៍ដែលចូលដំណើរការ"
+
+msgid "DetailedOS"
+msgstr "កំណែប្រព័ន្ធប្រតិបត្តិការ"
+
+msgid "DetailedBS"
+msgstr "កំណែកម្មវិធីរុករក"
+
+msgid "Screen sizes"
+msgstr "ទំហំអេក្រង់"
+
+msgid "Compression"
+msgstr "ការបង្ហាប់"
+
+msgid "In"
+msgstr "បញ្ចូល"
+
+msgid "Out"
+msgstr "ទិន្នផល"
+
+msgid "Saved"
+msgstr "សន្សំ"
+
+#------------------------------------------------------------------------------
+# វិមាត្រប្រភព
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "ប្រភពដើម"
+
+msgid "Referers"
+msgstr "ប្រភព"
+
+msgid "meta.description"
+msgstr "AWStats កម្មវិធីវិភាគកំណត់ហេតុគេហទំព័រកម្រិតខ្ពស់ - ត្រួតពិនិត្យចរាចរណ៍គេហទំព័រតាមពេលវេលាជាក់ស្តែង វិភាគអ្នកទស្សនា ពាក្យគន្លឹះម៉ាស៊ីនស្វែងរក ស្ថិតិទំព័រកំហុស។ គាំទ្ររបៀបងងឹត ចំណុចប្រទាក់ពហុភាសា ផ្តល់ការវិភាគទិន្នន័យដ៏ទូលំទូលាយសម្រាប់អ្នកគ្រប់គ្រងគេហទំព័រ។"
+
+msgid "meta.keywords"
+msgstr "AWStats,ស្ថិតិគេហទំព័រ,ការវិភាគកំណត់ហេតុ,ការត្រួតពិនិត្យចរាចរណ៍,ស្ថិតិការចូលដំណើរការ,ការវិភាគ SEO,ឧបករណ៍វិភាគគេហទំព័រ,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - ការវិភាគកំណត់ហេតុគេហទំព័រ"
+
+msgid "og.description"
+msgstr "📊 ឧបករណ៍ស្ថិតិគេហទំព័រប្រភពបើកចំហប្រកបដោយវិជ្ជាជីវៈ វិភាគចរាចរណ៍គេហទំព័រ និងឥរិយាបថអ្នកទស្សនារបស់អ្នកតាមពេលវេលាជាក់ស្តែង"
+
+msgid "og.image.alt"
+msgstr "ក្រាហ្វស្ថិតិ AWStats"
+
+msgid "Created by"
+msgstr "បង្កើតដោយ %s"
+
+msgid "plugins"
+msgstr "កម្មវិធីជំនួយ"
+
+msgid "dbip by"
+msgstr "ទិន្នន័យពី"
+
+msgid "IPDB by"
+msgstr "ទិន្នន័យទីតាំងភូមិសាស្ត្រដោយ DB-IP"
+
+msgid "Configured"
+msgstr "បានកំណត់រចនាសម្ព័ន្ធ"
+
+msgid "Missing"
+msgstr "បាត់"
+
+msgid "OK"
+msgstr "ជោគជ័យ"
+
+msgid "Unused"
+msgstr "មិនប្រើ"
+
+msgid "Overall Health"
+msgstr "សុខភាពទូទៅ"
+
+msgid "Excellent"
+msgstr "ល្អឥតខ្ចោះ"
+
+msgid "Good"
+msgstr "ល្អ"
+
+msgid "Fair"
+msgstr "មធ្យម"
+
+msgid "Poor"
+msgstr "ខ្សោយ"
+
+msgid "Missing icon types"
+msgstr "ប្រភេទរូបតំណាងដែលបាត់"
+
+msgid "See"
+msgstr "សូមមើលលម្អិត"
+
+msgid "Expected Path"
+msgstr "ការពិពណ៌នាផ្លូវ"
+
+msgid "column for file locations"
+msgstr "ជួរឈរដើម្បីទទួលទីតាំងឯកសារ"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "គន្លឹះ៖ ប្រសិនបើអ្នកត្រូវការបង្កើតរូបតំណាងដែលពាក់ព័ន្ធ អ្នកអាចប្រើ %s ដើម្បីបង្ហោះរូបភាពឡូហ្គោ ហើយវានឹងបង្កើតឯកសាររូបតំណាងដែលពាក់ព័ន្ធទាំងអស់ខាងលើដោយស្វ័យប្រវត្តិ"
+
+msgid "200: success, 404: failure"
+msgstr "200 គឺចំនួនជោគជ័យ 404 គឺចំនួនបរាជ័យ"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png ឬ /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg ឬ /logo.png (ត្រូវតែយោងក្នុង HTML/JSON-LD)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest ឬ /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg ជាដើម"
+
+msgid "Favicon"
+msgstr "រូបតំណាងគេហទំព័រ"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "រូបតំណាង Apple Touch (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "ឡូហ្គោគេហទំព័រ"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "ឯកសារ Manifest នៃកម្មវិធីបណ្តាញ (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "ការកំណត់រចនាសម្ព័ន្ធកម្មវិធីរុករក Windows"
+
+msgid "Safari Pinned Tab"
+msgstr "រូបតំណាងផ្ទាំងដែលបានបោះយុថ្កា Safari"
+
+msgid "Social Icon"
+msgstr "រូបតំណាងប្រព័ន្ធផ្សព្វផ្សាយសង្គម"
+
+msgid "Icon Files Status"
+msgstr "ស្ថានភាពឯកសាររូបតំណាង"
+
+msgid "Icon Type"
+msgstr "ប្រភេទរូបតំណាង"
+
+msgid "Total"
+msgstr "សរុប"
+
+msgid "Advanced Web Statistics"
+msgstr "កម្មវិធីវិភាគកំណត់ហេតុកម្រិតខ្ពស់"
+
+msgid "Advanced Web Statistics %s"
+msgstr "កម្មវិធីវិភាគកំណត់ហេតុកម្រិតខ្ពស់ %s"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "កម្មវិធីរុករករបស់អ្នកមិនគាំទ្រស៊ុមទេ។ សូមប្រើកម្មវិធីរុករកទំនើប។"
+
+msgid "View statistics directly"
+msgstr "មើលស្ថិតិដោយផ្ទាល់"
+
+msgid "Close"
+msgstr "បិទ"
+
+msgid "Documentation Viewer"
+msgstr "កម្មវិធីមើលឯកសារ"
+
+msgid "Direct address / Bookmarks"
+msgstr "អាសយដ្ឋានចូលដំណើរការដោយផ្ទាល់ / ទំព័រចំណាំ"
+
+msgid "Search Engines"
+msgstr "ម៉ាស៊ីនស្វែងរក"
+
+msgid "Refering search engines"
+msgstr "ម៉ាស៊ីនស្វែងរកដែលយោង"
+
+msgid "External pages"
+msgstr "ទំព័រខាងក្រៅ"
+
+msgid "Refering pages"
+msgstr "ទំព័រយោង"
+
+msgid "Internal pages"
+msgstr "ទំព័រខាងក្នុង"
+
+msgid "UnknownAccessSource"
+msgstr "ប្រភពចូលដំណើរការមិនស្គាល់"
+
+msgid "Different refering pages"
+msgstr "ទំព័រយោងផ្សេងៗ"
+
+msgid "Keyphrases"
+msgstr "ឃ្លាគន្លឹះ"
+
+msgid "Keywords"
+msgstr "ពាក្យគន្លឹះ"
+
+msgid "Keyphrases/Keywords"
+msgstr "ឃ្លាគន្លឹះ/ពាក្យគន្លឹះ"
+
+msgid "Different keyphrases"
+msgstr "ឃ្លាគន្លឹះផ្សេងៗ"
+
+msgid "Different keywords"
+msgstr "ពាក្យគន្លឹះផ្សេងៗ"
+
+#------------------------------------------------------------------------------
+# វិមាត្រទំព័រ
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "ទំព័រដែលបានមើល"
+
+msgid "Different pages"
+msgstr "ទំព័រផ្សេងៗ"
+
+msgid "Entry"
+msgstr "ទីតាំងចូល"
+
+msgid "Exit"
+msgstr "ទីតាំងចេញ"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "អ្នកយោង"
+
+msgid "Host"
+msgstr "ម៉ាស៊ីន"
+
+#------------------------------------------------------------------------------
+# កំហុសនិងស្ថានភាព
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "កំហុស"
+
+msgid "HTTP Status Statistics"
+msgstr "ស្ថិតិកូដស្ថានភាព HTTP"
+
+msgid "SMTP Error codes"
+msgstr "កូដកំហុស SMTP"
+
+msgid "Page not found"
+msgstr "រកមិនឃើញទំព័រដែលបានស្នើសុំ"
+
+msgid "Unknown error"
+msgstr "កំហុសមិនស្គាល់"
+
+msgid "Abnormal traffic note"
+msgstr "ចរាចរណ៍ទស្សនាមិនធម្មតារួមមាន៖ រមស្វែងរក រមបណ្តុះបណ្តាល AI ឧបករណ៍ស្កេនរកចំណុចខ្សោយ និងសំណើដែលមិនអនុលោមតាមលក្ខណៈបច្ចេកទេស"
+
+msgid "Page detail"
+msgstr "ព័ត៌មានលម្អិតទំព័រ"
+
+msgid "AWStats did not found the"
+msgstr "AWStats រកមិនឃើញ"
+
+msgid "in your log records."
+msgstr "នៅក្នុងកំណត់ត្រាកំណត់ហេតុរបស់អ្នក"
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats រកមិនឃើញបន្ទាត់កំណត់ហេតុត្រឹមត្រូវដែលត្រូវនឹង"
+
+msgid "parameter, in the"
+msgstr "ប៉ារ៉ាម៉ែត្រ ក្នុង"
+
+msgid "th first non commented lines read of your log."
+msgstr "បន្ទាត់ដំបូងដែលមិនមែនជាមតិយោបល់ដែលបានអានពីកំណត់ហេតុរបស់អ្នក"
+
+msgid "Your log file"
+msgstr "ឯកសារកំណត់ហេតុរបស់អ្នក"
+
+msgid "must have a bad format or"
+msgstr "អាចមានទម្រង់មិនត្រឹមត្រូវ ឬ"
+
+msgid "parameter setup does not match this format."
+msgstr "ការកំណត់ប៉ារ៉ាម៉ែត្រមិនត្រូវគ្នានឹងទម្រង់នេះ"
+
+msgid "Your AWStats"
+msgstr "AWStats របស់អ្នក"
+
+msgid "parameter is:"
+msgstr "ប៉ារ៉ាម៉ែត្រគឺ៖"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "ដែលមានន័យថាបន្ទាត់នីមួយៗក្នុងឯកសារកំណត់ហេតុម៉ាស៊ីនបម្រើបណ្តាញរបស់អ្នកត្រូវមាន៖"
+
+msgid "combined log format"
+msgstr "ទម្រង់កំណត់ហេតុរួមបញ្ចូល"
+
+msgid "MSIE Extended W3C log format"
+msgstr "ទម្រង់កំណត់ហេតុ W3C បន្ថែមរបស់ MSIE"
+
+msgid "WebStar native log format"
+msgstr "ទម្រង់កំណត់ហេតុដើមរបស់ WebStar"
+
+msgid "common log format"
+msgstr "ទម្រង់កំណត់ហេតុទូទៅ"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "ទម្រង់កំណត់ហេតុផ្ទាល់ខ្លួនដូចខាងក្រោម៖"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "ហើយនេះគឺជាឧទាហរណ៍កំណត់ត្រាដែល AWStats បានរកឃើញក្នុងឯកសារកំណត់ហេតុរបស់អ្នក (លេខកំណត់ត្រា"
+
+msgid "in your log):"
+msgstr "ក្នុងកំណត់ហេតុរបស់អ្នក)៖"
+
+#------------------------------------------------------------------------------
+# បន្ថែម
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "បន្ថែម/ទីផ្សារ"
+
+#------------------------------------------------------------------------------
+# អត្ថបទចំណុចប្រទាក់
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "គេហទំព័របច្ចុប្បន្ន"
+
+msgid "Web Site"
+msgstr "គេហទំព័រ"
+
+msgid "Last Update"
+msgstr "បច្ចុប្បន្នភាពចុងក្រោយ"
+
+msgid "Never updated"
+msgstr "មិនដែលបានធ្វើបច្ចុប្បន្នភាព"
+
+msgid "No qualified records found in log"
+msgstr "រកមិនឃើញកំណត់ត្រាដែលមានលក្ខណៈសម្បត្តិក្នុងកំណត់ហេតុ"
+
+msgid "corrupted"
+msgstr "ខូច"
+
+msgid "comments"
+msgstr "មតិយោបល់"
+
+msgid "Blank"
+msgstr "ទទេ"
+
+msgid "dropped"
+msgstr "បានទម្លាក់"
+
+msgid "Update now"
+msgstr "ធ្វើបច្ចុប្បន្នភាពឥឡូវនេះ"
+
+msgid "Back to main page"
+msgstr "ត្រឡប់ទៅទំព័រដើម"
+
+msgid "Close window"
+msgstr "បិទបង្អួច"
+
+msgid "Back page"
+msgstr "ត្រឡប់ទៅទំព័រមុន"
+
+msgid "Navigation"
+msgstr "ការរុករក"
+
+msgid "Summary"
+msgstr "សង្ខេប"
+
+msgid "Local"
+msgstr "ក្នុងស្រុក"
+
+msgid "External"
+msgstr "ខាងក្រៅ"
+
+msgid "Others (email senders)"
+msgstr "ផ្សេងទៀត (អ្នកផ្ញើអ៊ីមែល)"
+
+msgid "Others (email receivers)"
+msgstr "ផ្សេងទៀត (អ្នកទទួលអ៊ីមែល)"
+
+msgid "Others"
+msgstr "ផ្សេងទៀត"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "បច្ចុប្បន្នបង្ហាញទិន្នន័យកម្មវិធីរុករកត្រឹមតែ 10 បន្ទាត់ប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់"
+
+msgid "Others (unknown browsers)"
+msgstr "ផ្សេងទៀត (កម្មវិធីរុករកមិនស្គាល់)"
+
+msgid "Others (operating systems)"
+msgstr "ផ្សេងទៀត (ប្រព័ន្ធប្រតិបត្តិការ)"
+
+msgid "Others (unknown OS)"
+msgstr "ផ្សេងទៀត (ប្រព័ន្ធប្រតិបត្តិការមិនស្គាល់)"
+
+msgid "Others (search engines)"
+msgstr "ផ្សេងទៀត (ម៉ាស៊ីនស្វែងរក)"
+
+msgid "Others (referring pages)"
+msgstr "ផ្សេងទៀត (ទំព័រយោង)"
+
+msgid "Others (keyphrases)"
+msgstr "ផ្សេងទៀត (ឃ្លាគន្លឹះ)"
+
+msgid "Others (keywords)"
+msgstr "ផ្សេងទៀត (ពាក្យគន្លឹះ)"
+
+msgid "Only first 10 robots shown"
+msgstr "បញ្ជីបច្ចុប្បន្នបង្ហាញទិន្នន័យរមត្រឹមតែ 10 ប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់"
+
+msgid "Failed to obtain access record"
+msgstr "មិនអាចទទួលបានកំណត់ត្រាចូល"
+
+msgid "Failed to obtain leave record"
+msgstr "មិនអាចទទួលបានកំណត់ត្រាចេញ"
+
+msgid "Other pages"
+msgstr "ទំព័រផ្សេងទៀត"
+
+msgid "Low Traffic IP Summary"
+msgstr "សង្ខេប IP ដែលមិនស្គាល់ដែលចូលទស្សនាតិច"
+
+msgid "Failed to obtain IP data"
+msgstr "សង្ខេប IP ដែលស្គាល់ផ្សេងទៀត"
+
+msgid "Failed to obtain the relevant data"
+msgstr "មិនបានទទួលទិន្នន័យដែលពាក់ព័ន្ធ"
+
+msgid "Limited list of countries and regions"
+msgstr "បច្ចុប្បន្នបង្ហាញត្រឹមតែ 10 បន្ទាត់ប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់សម្រាប់ប្រទេស និងតំបន់បន្ថែម"
+
+msgid "currentVisitorData"
+msgstr "បច្ចុប្បន្នបង្ហាញទិន្នន័យអ្នកទស្សនាត្រឹមតែ 10 បន្ទាត់ប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់"
+
+msgid "Others (robots main)"
+msgstr "ផ្សេងទៀត (រម)"
+
+msgid "Others (worms)"
+msgstr "ផ្សេងទៀត (ដង្កូវ)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "បញ្ជីបច្ចុប្បន្នបង្ហាញទំព័រត្រឹមតែ 10 ទំព័រប៉ុណ្ណោះ សូមមើលបញ្ជីទាំងអស់"
+
+msgid "Others (OS main)"
+msgstr "ផ្សេងទៀត (ប្រព័ន្ធ)"
+
+msgid "Others (browsers main)"
+msgstr "ផ្សេងទៀត (កម្មវិធីរុករក)"
+
+msgid "Others (screen sizes)"
+msgstr "ផ្សេងទៀត (ទំហំ)"
+
+msgid "Others (search engines main)"
+msgstr "ផ្សេងទៀត (ម៉ាស៊ីនស្វែងរក)"
+
+msgid "Others (referring pages main)"
+msgstr "ផ្សេងទៀត (ទំព័រយោង)"
+
+msgid "Others (keyphrases main)"
+msgstr "ផ្សេងទៀត (ឃ្លាគន្លឹះ)"
+
+msgid "Others (keywords main)"
+msgstr "ផ្សេងទៀត (ពាក្យគន្លឹះ)"
+
+# 1xx (កូដព័ត៌មាន)
+msgid "Continue"
+msgstr "បន្តផ្ញើមាតិកាដែលនៅសល់"
+
+msgid "Switching Protocols"
+msgstr "កំពុងប្តូរពិធីការ"
+
+msgid "Processing (WebDAV)"
+msgstr "កំពុងដំណើរការ (សូមរង់ចាំបន្តិច)"
+
+msgid "Early Hints"
+msgstr "ម៉ាស៊ីនបម្រើកំពុងរៀបចំធនធាន"
+
+# 2xx (កូដជោគជ័យ)
+msgid "[Miscellaneous successes]"
+msgstr "ស្ថានភាពជោគជ័យផ្សេងទៀត"
+
+msgid "Request successful"
+msgstr "សំណើទទួលបានជោគជ័យ"
+
+msgid "Created successfully"
+msgstr "បង្កើតដោយជោគជ័យ"
+
+msgid "Accepted - processing"
+msgstr "ទទួលយកហើយ កំពុងដំណើរការ"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "ព័ត៌មានមិនផ្លូវការ (ពីឃ្លាំងសម្ងាត់)"
+
+msgid "Success, no content returned"
+msgstr "ទទួលបានជោគជ័យ មិនមានមាតិកាផ្ញើត្រឡប់ទេ"
+
+msgid "Reset content"
+msgstr "សូមកំណត់ទម្រង់ឡើងវិញ"
+
+msgid "Partial content (resume download)"
+msgstr "មាតិកាមួយផ្នែក (គាំទ្រការបន្តទាញយក)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "ពហុស្ថានភាព (ប្រតិបត្តិការជាក្រុម WebDAV)"
+
+msgid "Already reported (WebDAV)"
+msgstr "បានរាយការណ៍រួចហើយ"
+
+msgid "IM used"
+msgstr "បានប្រើផ្នែកបន្ថែមពិធីការ IM"
+
+# 3xx (កូដប្តូរទិស)
+msgid "[Miscellaneous redirections]"
+msgstr "ការប្តូរទិសផ្សេងទៀត"
+
+msgid "Multiple choices"
+msgstr "ជម្រើសច្រើន"
+
+msgid "Moved permanently - update your links"
+msgstr "បានផ្លាស់ទីជាអចិន្ត្រៃយ៍ សូមធ្វើបច្ចុប្បន្នភាពតំណភ្ជាប់របស់អ្នក"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "ប្តូរទិសបណ្តោះអាសន្ន អាសយដ្ឋានមិនផ្លាស់ប្តូរ"
+
+msgid "See other"
+msgstr "សូមមើលអាសយដ្ឋានផ្សេងទៀត"
+
+msgid "Not modified - using cached version"
+msgstr "មិនមានការកែប្រែ ប្រើកំណែឃ្លាំងសម្ងាត់"
+
+msgid "Use proxy"
+msgstr "សូមប្រើប្រូកស៊ី"
+
+msgid "Switch proxy"
+msgstr "សូមប្តូរប្រូកស៊ី"
+
+msgid "Temporary redirect (keep method)"
+msgstr "ប្តូរទិសបណ្តោះអាសន្ន (រក្សាវិធីសាស្ត្រស្នើសុំ)"
+
+msgid "Permanent redirect - update your links"
+msgstr "ប្តូរទិសជាអចិន្ត្រៃយ៍ សូមធ្វើបច្ចុប្បន្នភាពតំណភ្ជាប់របស់អ្នក"
+
+# 4xx (កូដកំហុសអតិថិជន)
+msgid "[Miscellaneous client/user errors]"
+msgstr "កំហុសអតិថិជនផ្សេងទៀត"
+
+msgid "Bad request"
+msgstr "ទម្រង់សំណើមិនត្រឹមត្រូវ"
+
+msgid "Unauthorized - please log in"
+msgstr "មិនបានអនុញ្ញាត សូមចូលប្រព័ន្ធជាមុន"
+
+msgid "Payment required"
+msgstr "ត្រូវបង់ប្រាក់"
+
+msgid "Forbidden - access denied"
+msgstr "ត្រូវបានហាមឃាត់មិនឱ្យចូល សិទ្ធិមិនគ្រប់គ្រាន់"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "រកមិនឃើញទំព័រ សូមពិនិត្យមើលតំណដែលខូច"
+
+msgid "Method not allowed"
+msgstr "មិនអនុញ្ញាតវិធីសាស្ត្រស្នើសុំ"
+
+msgid "Not acceptable"
+msgstr "ទម្រង់ការឆ្លើយតបដែលមិនអាចទទួលយកបាន"
+
+msgid "Proxy authentication required"
+msgstr "ត្រូវឆ្លងកាត់ការផ្ទៀងផ្ទាត់ប្រូកស៊ី"
+
+msgid "Request timeout"
+msgstr "សំណើអស់ពេល"
+
+msgid "Conflict - please try again"
+msgstr "សំណើប៉ះទង្គិចគ្នា សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "Gone - permanently deleted"
+msgstr "ធនធានត្រូវបានលុបជាអចិន្ត្រៃយ៍ហើយ"
+
+msgid "Length required"
+msgstr "ត្រូវបញ្ជាក់ប្រវែងនៃមាតិកា"
+
+msgid "Precondition failed"
+msgstr "លក្ខខណ្ឌបឋមមិនបានបំពេញ"
+
+msgid "Payload too large"
+msgstr "មាតិកាសំណើធំពេក"
+
+msgid "URI too long"
+msgstr "URI វែងពេក"
+
+msgid "Unsupported media type"
+msgstr "មិនគាំទ្រប្រភេទឯកសារ"
+
+msgid "Range not satisfiable"
+msgstr "ជួរសំណើមិនត្រឹមត្រូវ"
+
+msgid "Expectation failed"
+msgstr "មិនអាចបំពេញតាមការរំពឹងទុក"
+
+msgid "I am a teapot (April Fools)"
+msgstr "ខ្ញុំគឺជាកំសៀវ (រឿងកំប្លែងថ្ងៃ April Fools)"
+
+msgid "Page expired (Laravel)"
+msgstr "ទំព័របានផុតកំណត់ហើយ សូមធ្វើឱ្យស្រស់ ហើយព្យាយាមម្តងទៀត"
+
+msgid "Method failure (Spring)"
+msgstr "វិធីសាស្ត្របរាជ័យ"
+
+msgid "Misdirected request"
+msgstr "សំណើត្រូវបានបញ្ជូនបន្តខុស"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "ទម្រង់សំណើត្រឹមត្រូវ ប៉ុន្តែមិនអាចដំណើរការបាន"
+
+msgid "Locked (WebDAV)"
+msgstr "ធនធានត្រូវបានចាក់សោ (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "ប្រតិបត្តិការដែលពឹងផ្អែកបរាជ័យ"
+
+msgid "Too early"
+msgstr "ផ្ញើសំណើលឿនពេក"
+
+msgid "Upgrade required"
+msgstr "ត្រូវធ្វើឱ្យប្រសើរពិធីការ"
+
+msgid "Precondition required"
+msgstr "ខ្វះលក្ខខណ្ឌបឋមដែលចាំបាច់"
+
+msgid "Too many requests - slow down"
+msgstr "សំណើញឹកញាប់ពេក សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "វាលបឋមកថាសំណើធំពេក"
+
+msgid "Request header too large"
+msgstr "បឋមកថាសំណើធំពេក"
+
+msgid "Login timeout (IIS)"
+msgstr "អស់ពេលចូលប្រព័ន្ធ សូមចូលប្រព័ន្ធម្តងទៀត"
+
+msgid "No response (nginx)"
+msgstr "ម៉ាស៊ីនបម្រើមិនឆ្លើយតប"
+
+msgid "Retry with (IIS)"
+msgstr "សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "Blocked by Windows parental controls"
+msgstr "ត្រូវបានរារាំងដោយការគ្រប់គ្រងដោយមាតាបិតារបស់ Windows"
+
+msgid "Unavailable for legal reasons"
+msgstr "មិនអាចចូលដំណើរការបានដោយសារហេតុផលផ្លូវច្បាប់"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "អតិថិជនបានបិទការតភ្ជាប់មុនពេលអស់ពេលទំនេរ (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "ខ្សែសង្វាក់បញ្ជូនបន្តមានអាសយដ្ឋាន IP ច្រើនជាង 30"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "កំណែពិធីការមិនឆបគ្នា"
+
+msgid "Request header too large (nginx)"
+msgstr "បឋមកថាសំណើធំពេក"
+
+msgid "SSL certificate error (nginx)"
+msgstr "កំហុសវិញ្ញាបនបត្រ SSL"
+
+msgid "SSL certificate required (nginx)"
+msgstr "ត្រូវការវិញ្ញាបនបត្រ SSL"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "បានផ្ញើសំណើ HTTP ទៅកាន់ច្រក HTTPS"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "តូខិនមិនត្រឹមត្រូវ"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "ត្រូវការតូខិន / អតិថិជនបានបិទសំណើ"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "ដល់ដែនកំណត់ធនធាន (CPU/អង្គចងចាំ)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "លើសដែនកំណត់កម្រិតបញ្ជូន"
+
+# 5xx (កូដកំហុសម៉ាស៊ីនបម្រើ)
+msgid "[Miscellaneous server errors]"
+msgstr "កំហុសម៉ាស៊ីនបម្រើផ្សេងទៀត"
+
+msgid "Internal server error - check logs"
+msgstr "កំហុសខាងក្នុងម៉ាស៊ីនបម្រើ សូមពិនិត្យកំណត់ហេតុ"
+
+msgid "Not implemented"
+msgstr "ម៉ាស៊ីនបម្រើមិនគាំទ្រមុខងារនេះ"
+
+msgid "Bad gateway - backend error"
+msgstr "កំហុសច្រកទ្វារ សេវាកម្មខាងក្រោយខុសប្រក្រតី"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "សេវាកម្មមិនអាចប្រើបាន កំពុងថែទាំ ឬផ្ទុកលើសទម្ងន់"
+
+msgid "Gateway timeout"
+msgstr "ច្រកទ្វារឆ្លើយតបអស់ពេល"
+
+msgid "HTTP version not supported"
+msgstr "មិនគាំទ្រកំណែពិធីការ HTTP"
+
+msgid "Variant also negotiates"
+msgstr "បំរែបំរួលក៏ចូលរួមក្នុងការចរចាផងដែរ (កំហុសការកំណត់រចនាសម្ព័ន្ធ)"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "កន្លែងផ្ទុកមិនគ្រប់គ្រាន់"
+
+msgid "Loop detected (WebDAV)"
+msgstr "បានរកឃើញការយោងជារង្វង់"
+
+msgid "Not extended"
+msgstr "ត្រូវការការបន្ថែមបន្ថែម"
+
+msgid "Network authentication required"
+msgstr "ត្រូវការការផ្ទៀងផ្ទាត់បណ្តាញ"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "កំហុសមិនស្គាល់"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "ម៉ាស៊ីនបម្រើបណ្តាញបានបិទ"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "អស់ពេលការតភ្ជាប់"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "មិនអាចចូលដំណើរការប្រភពដើមបាន"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "បានកើតឡើងអស់ពេល"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "ការចាប់ដៃ SSL បរាជ័យ"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "វិញ្ញាបនបត្រ SSL មិនត្រឹមត្រូវ"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "កំហុស Railgun (បានបោះបង់ចោល)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "គេហទំព័រផ្ទុកលើសទម្ងន់"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "កំហុស DNS ប្រភពដើម (Cloudflare) / គេហទំព័រត្រូវបានផ្អាក (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "បានបិទជាបណ្តោះអាសន្ន"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "មិនបានអនុញ្ញាត"
+
+msgid "Network read timeout error"
+msgstr "កំហុសអស់ពេលអានបណ្តាញ"
+
+msgid "Network connect timeout error"
+msgstr "កំហុសអស់ពេលតភ្ជាប់បណ្តាញ"
+
+msgid "Unexpected token (Shopify)"
+msgstr "តូខិនដែលមិនបានរំពឹងទុក"
+
+msgid "Request denied (LinkedIn)"
+msgstr "សំណើត្រូវបានបដិសេធ"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "បិទការតភ្ជាប់ HTTP/2"
+
+msgid "[Unknown]"
+msgstr "កូដស្ថានភាពមិនស្គាល់"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "ការឆ្លើយតបជោគជ័យដែលមិនមានស្តង់ដារ (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "ស្ថានភាពប្រព័ន្ធ ឬសារជំនួយប្រព័ន្ធ"
+
+msgid "Help message"
+msgstr "សារជំនួយ"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "សេវាកម្ម SMTP រួចរាល់ហើយ (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "សេវាកម្មរួចរាល់ហើយ - ម៉ាស៊ីនបម្រើអ៊ីមែលរួចរាល់ក្នុងការទទួលអ៊ីមែល"
+
+msgid "Service closing - connection is being closed"
+msgstr "សេវាកម្មកំពុងបិទ - ការតភ្ជាប់កំពុងត្រូវបានបិទ"
+
+msgid "Authentication successful"
+msgstr "ការផ្ទៀងផ្ទាត់ទទួលបានជោគជ័យ"
+
+msgid "Requested mail action taken and completed"
+msgstr "សកម្មភាពអ៊ីមែលដែលបានស្នើសុំត្រូវបានអនុវត្ត និងបញ្ចប់"
+
+msgid "User not local - will forward to another address"
+msgstr "អ្នកប្រើមិននៅលើម៉ាស៊ីនបម្រើនេះ - នឹងបញ្ជូនបន្តទៅអាសយដ្ឋានផ្សេង"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "មិនអាចផ្ទៀងផ្ទាត់អ្នកទទួលបាន ប៉ុន្តែនឹងព្យាយាមផ្ញើ"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "អ៊ីមែលត្រូវបានទទួលយកឱ្យផ្ញើ (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "ឈ្មោះអ្នកប្រើគឺជាប្រអប់សំបុត្រ"
+
+msgid "Authentication challenge - please respond"
+msgstr "ការប្រឈមនៃការផ្ទៀងផ្ទាត់ - សូមឆ្លើយតប"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "ចាប់ផ្តើមបញ្ចូលមាតិកាអ៊ីមែល - បញ្ចប់ដោយ <CRLF>.<CRLF>"
+
+msgid "Continue (LMTP)"
+msgstr "បន្ត (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "សេវាកម្មមិនអាចប្រើបាន - បិទការតភ្ជាប់ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "ប្រអប់សំបុត្ររវល់ ឬមិនអាចប្រើបានជាបណ្តោះអាសន្ន (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អត្រាការតភ្ជាប់ (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "ចំនួនការតភ្ជាប់ដំណាលគ្នាច្រើនពេក (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "មិនអាចបង្កើតការតភ្ជាប់បាន (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "អស់ពេលការតភ្ជាប់ (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "ការតភ្ជាប់ត្រូវបានបោះបង់ចោលដោយសារកំហុស (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "ប្រអប់សំបុត្រត្រូវបានចាក់សោជាបណ្តោះអាសន្ន (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "ចំនួនអ្នកទទួលច្រើនពេក (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "កំហុសម៉ាស៊ីនបម្រើអ៊ីមែល (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "បានរកឃើញការទទួលជារង្វង់ (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "ចំនួននៃការលោតច្រើនពេក (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "ការស្វែងរក DNS បរាជ័យ (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "មិនអាចផ្ទៀងផ្ទាត់បាន (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "ការចាប់ដៃ TLS បរាជ័យ (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "ការរំលោភពិធីការ SMTP (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "ទំហំអ៊ីមែលលើសដែនកំណត់ (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អត្រាអ៊ីមែល (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "កូតាប្រអប់សំបុត្រពេញហើយ - ស្ថានភាពបណ្តោះអាសន្ន"
+
+msgid "Domain not found (Postfix)"
+msgstr "រកមិនឃើញដែន (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "បឋមកថាអ៊ីមែលមិនត្រឹមត្រូវ (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "បានរកឃើញការត្រឡប់ជារង្វង់ (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "មិនអាចកំណត់ផ្លូវបាន (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "រកមិនឃើញដែនអ្នកផ្ញើ (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "រកមិនឃើញដែនអ្នកទទួល (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "កំពុងពិនិត្យ Greylisting - សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "កំពុងត្រងស្ប៉ាម (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "កំពុងស្កេនមេរោគ (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "ប្រអប់សំបុត្រមិនអាចប្រើបាន - សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "Requested action aborted - error in processing"
+msgstr "សកម្មភាពដែលបានស្នើសុំត្រូវបានបោះបង់ចោល - មានកំហុសក្នុងពេលដំណើរការ"
+
+msgid "Insufficient system storage - try again later"
+msgstr "កន្លែងផ្ទុកប្រព័ន្ធមិនគ្រប់គ្រាន់ - សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "អ៊ីមែលសម្រាប់អ្នកទទួលនេះច្រើនពេក (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS មិនអាចប្រើបាន (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "ម៉ាស៊ីនបម្រើមិនអាចទទួលអ៊ីមែលបាន (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "ការបរាជ័យបណ្តោះអាសន្នក្នុងការស្វែងរក DNS (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "លើសកូតា - ស្ថានភាពបណ្តោះអាសន្ន"
+
+msgid "Message too big - temporary"
+msgstr "អ៊ីមែលធំពេក - ស្ថានភាពបណ្តោះអាសន្ន"
+
+msgid "Too many messages per connection"
+msgstr "ចំនួនអ៊ីមែលក្នុងមួយការតភ្ជាប់ច្រើនពេក"
+
+msgid "Load average too high (Postfix)"
+msgstr "តម្លៃមធ្យមផ្ទុកខ្ពស់ពេក (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "ការតភ្ជាប់ត្រូវបានបដិសេធ (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អត្រាការផ្ញើ (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អត្រាអ្នកទទួល (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អត្រាអ្នកផ្ញើ (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អត្រាអាសយដ្ឋាន IP (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "ការស្វែងរក MX បរាជ័យ (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "ការស្វែងរក A record បរាជ័យ (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "ការស្វែងរក PTR record បរាជ័យ (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "បានបើកដំណើរការ Greylisting - សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ (Postgrey)"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនស្គាល់ដែនសម្រាប់អ្នកផ្ញើ ឬអ្នកទទួល"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "អាសយដ្ឋានអ្នកផ្ញើត្រូវបានបដិសេធ - ដែនមិនត្រូវបានផ្ទៀងផ្ទាត់ (DMARC រង់ចាំ)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "អាសយដ្ឋានអ្នកទទួលត្រូវបានបដិសេធ - ដែនមិនត្រូវបានផ្ទៀងផ្ទាត់ (DMARC រង់ចាំ)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "ការផ្ទៀងផ្ទាត់ DKIM រង់ចាំ - ការបរាជ័យបណ្តោះអាសន្ន"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "ការផ្ទៀងផ្ទាត់ SPF រង់ចាំ - ការបរាជ័យបណ្តោះអាសន្ន"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "ការផ្ទៀងផ្ទាត់ DMARC រង់ចាំ - ការបរាជ័យបណ្តោះអាសន្ន"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "ការស្វែងរក DNSBL បរាជ័យបណ្តោះអាសន្ន"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "ការស្វែងរក RHSBL បរាជ័យបណ្តោះអាសន្ន"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "ការស្វែងរក URI DNSBL បរាជ័យបណ្តោះអាសន្ន"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "ការផ្ទៀងផ្ទាត់បរាជ័យបណ្តោះអាសន្ន (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "ការអនុញ្ញាតបរាជ័យបណ្តោះអាសន្ន (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "លើសដែនកំណត់អត្រាក្នុងមួយអ្នកផ្ញើ (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "លើសដែនកំណត់អត្រាក្នុងមួយអ្នកទទួល (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "លើសដែនកំណត់អត្រាក្នុងមួយដែន (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "លើសដែនកំណត់អត្រាក្នុងមួយ IP (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "អ៊ីមែលត្រូវបានដាក់ក្នុងជួរដើម្បីផ្ញើនៅពេលក្រោយ (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "ការផ្ញើយឺតយ៉ាវដោយសារគោលការណ៍ (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "តម្រងមាតិកាបរាជ័យបណ្តោះអាសន្ន"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "ម៉ាស៊ីនស្កេនកម្មវិធីការពារមេរោគបរាជ័យបណ្តោះអាសន្ន"
+
+msgid "Temporary failure in spam filter"
+msgstr "តម្រងស្ប៉ាមបរាជ័យបណ្តោះអាសន្ន"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter បរាជ័យបណ្តោះអាសន្ន (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Greylisting - សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "DDoS protection active - try again later"
+msgstr "បានបើកដំណើរការការពារ DDoS - សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "SMTP policy violation - temporary"
+msgstr "ការរំលោភគោលការណ៍ SMTP - ស្ថានភាពបណ្តោះអាសន្ន"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "កំហុសបណ្តោះអាសន្នក្នុងដំណើរការ RCPT TO"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "កំហុសបណ្តោះអាសន្នក្នុងដំណើរការ MAIL FROM"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "កំហុសបណ្តោះអាសន្នក្នុងដំណើរការ EHLO/HELO"
+
+msgid "Temporary error in DATA processing"
+msgstr "កំហុសបណ្តោះអាសន្នក្នុងដំណើរការ DATA"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "កំហុសបណ្តោះអាសន្ន - សេវាកម្មរវល់ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "កំហុសវេយ្យាករណ៍ - មិនស្គាល់ពាក្យបញ្ជា ឬវែងពេក"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "កំហុសវេយ្យាករណ៍ក្នុងប៉ារ៉ាម៉ែត្រ ឬអាគុយម៉ង់"
+
+msgid "Command not implemented"
+msgstr "មិនបានប្រើពាក្យបញ្ជា"
+
+msgid "Bad sequence of commands"
+msgstr "លំដាប់ពាក្យបញ្ជាមិនត្រឹមត្រូវ"
+
+msgid "Command parameter not implemented"
+msgstr "មិនបានប្រើប៉ារ៉ាម៉ែត្រពាក្យបញ្ជា"
+
+msgid "Version not supported (ESMTP)"
+msgstr "មិនគាំទ្រកំណែ (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "ផ្លូវប្រអប់សំបុត្រមិនត្រឹមត្រូវ (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "ពាក្យបញ្ជាក្នុងវគ្គនេះច្រើនពេក (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អ្នកទទួល (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់អ្នកផ្ញើ (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "លើសដែនកំណត់ដែន (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "មិនមានប្រអប់សំបុត្រ (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS បរាជ័យ - កំហុសអចិន្ត្រៃយ៍"
+
+msgid "Address type not supported (Postfix)"
+msgstr "មិនគាំទ្រប្រភេទអាសយដ្ឋាន (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "មិនអាចបើកប្រអប់សំបុត្របាន (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "ប្រអប់សំបុត្រត្រូវបានចាក់សោ - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសារគោលការណ៍ (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "មាតិកាត្រូវបានបដិសេធ - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Attachment type not allowed"
+msgstr "មិនអនុញ្ញាតប្រភេទឯកសារភ្ជាប់"
+
+msgid "Message encoding not supported"
+msgstr "មិនគាំទ្រការអ៊ិនកូដអ៊ីមែល"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "ដែនអ្នកផ្ញើមិនមានទេ - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "ដែនមិនទទួលអ៊ីមែល ឬកំពុងបិទ"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "ដែនអ្នកទទួលមិនមានទេ - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "កូតាប្រអប់សំបុត្រពេញហើយ - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "ទំហំអ៊ីមែលលើសដែនកំណត់ - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Authentication required (Sendmail)"
+msgstr "ត្រូវការការផ្ទៀងផ្ទាត់ (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "ការផ្ទៀងផ្ទាត់បរាជ័យ (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "មិនគាំទ្រយន្តការផ្ទៀងផ្ទាត់"
+
+msgid "Authentication credentials invalid"
+msgstr "ព័ត៌មានសម្គាល់ការផ្ទៀងផ្ទាត់មិនត្រឹមត្រូវ"
+
+msgid "Authentication account expired"
+msgstr "គណនីផ្ទៀងផ្ទាត់បានផុតកំណត់ហើយ"
+
+msgid "Access denied - authentication required"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ត្រូវការការផ្ទៀងផ្ទាត់"
+
+msgid "Access denied (Sendmailism)"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនបានឆ្លងកាត់ការផ្ទៀងផ្ទាត់"
+
+msgid "Access denied - account locked"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - គណនីត្រូវបានចាក់សោ"
+
+msgid "Access denied - account disabled"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - គណនីត្រូវបានបិទដំណើរការ"
+
+msgid "Authentication failed"
+msgstr "ការផ្ទៀងផ្ទាត់បរាជ័យ"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "ការបញ្ជូនបន្តត្រូវការការផ្ទៀងផ្ទាត់ (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "ការផ្ទៀងផ្ទាត់សម្រាប់ការបញ្ជូនបន្តបរាជ័យ (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "ត្រូវការការតភ្ជាប់ដែលបានអ៊ិនគ្រីប (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "អ្នកទទួលនេះត្រូវការការអ៊ិនគ្រីប TLS"
+
+msgid "Encryption strength insufficient"
+msgstr "កម្លាំងនៃការអ៊ិនគ្រីបមិនគ្រប់គ្រាន់"
+
+msgid "Certificate validation failed"
+msgstr "ការផ្ទៀងផ្ទាត់វិញ្ញាបនបត្របរាជ័យ"
+
+msgid "Invalid TLS certificate"
+msgstr "វិញ្ញាបនបត្រ TLS មិនត្រឹមត្រូវ"
+
+msgid "TLS protocol version not supported"
+msgstr "មិនគាំទ្រកំណែពិធីការ TLS"
+
+msgid "Cipher suite not supported"
+msgstr "មិនគាំទ្រសំណុំស៊ីហ្វឺ"
+
+msgid "Access denied - no valid recipient"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - គ្មានអ្នកទទួលត្រឹមត្រូវ"
+
+msgid "Access denied - no valid sender"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - គ្មានអ្នកផ្ញើត្រឹមត្រូវ"
+
+msgid "Access denied - domain not allowed"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនអនុញ្ញាតដែន"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - អាសយដ្ឋាន IP ត្រូវបានរារាំង (អចិន្ត្រៃយ៍)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ដែនអ្នកផ្ញើស្ថិតក្នុងបញ្ជីខ្មៅ"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "ប្រអប់សំបុត្រមិនអាចប្រើបាន - មិនបានអនុវត្តសកម្មភាពតាមការស្នើសុំ"
+
+msgid "User not local - please try forwarding address"
+msgstr "អ្នកប្រើមិននៅលើម៉ាស៊ីនបម្រើនេះ - សូមប្រើអាសយដ្ឋានសម្រាប់ការបញ្ជូនបន្ត"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "សកម្មភាពដែលបានស្នើសុំត្រូវបានបោះបង់ចោល - លើសការបែងចែកកន្លែងផ្ទុក"
+
+msgid "Mailbox name not allowed"
+msgstr "មិនអនុញ្ញាតឈ្មោះប្រអប់សំបុត្រ"
+
+msgid "Requested action rejected - access denied"
+msgstr "សកម្មភាពដែលបានស្នើសុំត្រូវបានបដិសេធ - ការចូលដំណើរការត្រូវបានបដិសេធ"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "មិនស្គាល់ប៉ារ៉ាម៉ែត្រ MAIL FROM/RCPT TO"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "មិនអនុញ្ញាតឱ្យដែនផ្ញើ (DMARC reject)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "អ៊ីមែលស្ទួនច្រើនពេក - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "អាសយដ្ឋានអ្នកផ្ញើត្រូវបានបដិសេធ - ដែនមិនស្ថិតក្នុង SPF"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "អាសយដ្ឋានអ្នកផ្ញើត្រូវបានបដិសេធ - ការផ្ទៀងផ្ទាត់ DKIM បរាជ័យ"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "អាសយដ្ឋានអ្នកផ្ញើត្រូវបានបដិសេធ - គោលការណ៍ DMARC បដិសេធ"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "អាសយដ្ឋានអ្នកទទួលត្រូវបានបដិសេធ - គោលការណ៍ DMARC បដិសេធ"
+
+msgid "Message rejected due to spam content"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសារមាតិកាស្ប៉ាម"
+
+msgid "Message rejected due to virus detected"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសាររកឃើញមេរោគ"
+
+msgid "Message rejected due to malicious content"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសារមាតិកាគ្រោះថ្នាក់"
+
+msgid "Message rejected due to phishing detection"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសាររកឃើញការក្លែងបន្លំ"
+
+msgid "Message rejected due to malware detection"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសាររកឃើញម៉ាល់វ៉េរ"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសារគោលការណ៍ - ស្ថានភាពអចិន្ត្រៃយ៍"
+
+msgid "Message rejected due to content filtering"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសារតម្រងមាតិកា"
+
+msgid "Message rejected due to reputation"
+msgstr "អ៊ីមែលត្រូវបានបដិសេធដោយសារកេរ្តិ៍ឈ្មោះ"
+
+msgid "Access denied - access_map violation"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - បំពាន access_map"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - អតិថិជន SMTP ស្ថិតក្នុង RBL"
+
+msgid "Access denied - relay not authorized"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ការបញ្ជូនបន្តមិនត្រូវបានអនុញ្ញាត"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនស្គាល់ឈ្មោះម៉ាស៊ីនអតិថិជន SMTP"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - វេយ្យាករណ៍មិនត្រឹមត្រូវសម្រាប់ឈ្មោះម៉ាស៊ីន HELO របស់អតិថិជន"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ឈ្មោះម៉ាស៊ីនអតិថិជន SMTP ត្រូវបានបដិសេធ"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនស្គាល់ឈ្មោះម៉ាស៊ីន HELO របស់អតិថិជន"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ដែនមិនត្រឹមត្រូវ (មិនមែន FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ដែនគ្មានលក្ខណៈសម្បត្តិ"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - កំណត់រចនាសម្ព័ន្ធម៉ាស៊ីនបម្រើអ៊ីមែលមិនត្រឹមត្រូវ"
+
+msgid "Access denied - open relay not allowed"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនអនុញ្ញាត open relay"
+
+msgid "Access denied - proxy not allowed"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនអនុញ្ញាតឱ្យប្រើប្រូកស៊ី"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនអនុញ្ញាត IP ថាមវន្ត"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - មិនអនុញ្ញាត IP លំនៅដ្ឋាន"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - បានរកឃើញ VPN/Tor"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ស្ថិតក្នុងបញ្ជី Spamhaus DROP"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - URL ស្ថិតក្នុង URIBL"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - ដែនស្ថិតក្នុង RHSBL"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "ការចូលដំណើរការត្រូវបានបដិសេធ - IP ស្ថិតក្នុង DNSWL (គោលការណ៍)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "ការផ្ញើបរាជ័យ - រកមិនឃើញប្រអប់សំបុត្រ"
+
+msgid "Delivery failed - recipient not local"
+msgstr "ការផ្ញើបរាជ័យ - អ្នកទទួលមិននៅលើម៉ាស៊ីនបម្រើនេះ"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "ការផ្ញើបរាជ័យ - អ្នកទទួលត្រូវបានបដិសេធ"
+
+msgid "Delivery failed - sender rejected"
+msgstr "ការផ្ញើបរាជ័យ - អ្នកផ្ញើត្រូវបានបដិសេធ"
+
+msgid "Delivery failed - relay rejected"
+msgstr "ការផ្ញើបរាជ័យ - ការបញ្ជូនបន្តត្រូវបានបដិសេធ"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "ការផ្ញើបរាជ័យ - កំហុស DNS អចិន្ត្រៃយ៍"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "ការផ្ញើបរាជ័យ - កំហុស MX អចិន្ត្រៃយ៍"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "ការផ្ញើបរាជ័យ - កំហុស A record អចិន្ត្រៃយ៍"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "ការផ្ញើបរាជ័យ - កំហុស PTR record អចិន្ត្រៃយ៍"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "ការផ្ញើបរាជ័យ - កំហុសគោលការណ៍អចិន្ត្រៃយ៍"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: ជោគជ័យ - ការជូនដំណឹងស្ថានភាពការផ្ញើ"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: ការផ្ញើយឺតយ៉ាវ"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: ការផ្ញើបរាជ័យ - អចិន្ត្រៃយ៍"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: ការផ្ញើបរាជ័យ - បណ្តោះអាសន្ន"
+
+msgid "DSN: Message expired"
+msgstr "DSN: អ៊ីមែលបានផុតកំណត់ហើយ"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: អ៊ីមែលត្រូវបានត្រឡប់"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: អ៊ីមែលត្រូវបានបោះបង់"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: អ៊ីមែលត្រូវបានត្រង"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: អ៊ីមែលត្រូវបានដាក់ឱ្យនៅដាច់ដោយឡែក"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: អ៊ីមែលត្រូវបានព្យួររង់ចាំការត្រួតពិនិត្យ"
+
+msgid "MTA-STS policy required"
+msgstr "ត្រូវការគោលការណ៍ MTA-STS"
+
+msgid "MTA-STS policy validation failed"
+msgstr "ការផ្ទៀងផ្ទាត់គោលការណ៍ MTA-STS បរាជ័យ"
+
+msgid "TLS reporting required"
+msgstr "ត្រូវការរបាយការណ៍ TLS"
+
+msgid "TLS report requested"
+msgstr "បានស្នើសុំរបាយការណ៍ TLS"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "បានបើកដំណើរការ SMTP MTA Strict Transport Security"
+
+msgid "DANE validation required"
+msgstr "ត្រូវការការផ្ទៀងផ្ទាត់ DANE"
+
+msgid "DANE validation failed"
+msgstr "ការផ្ទៀងផ្ទាត់ DANE បរាជ័យ"
+
+msgid "TLSA record missing"
+msgstr "ខ្វះ TLSA record"
+
+msgid "Certificate name mismatch"
+msgstr "ឈ្មោះវិញ្ញាបនបត្រមិនត្រូវគ្នា"
+
+msgid "Certificate expired"
+msgstr "វិញ្ញាបនបត្របានផុតកំណត់ហើយ"
+
+msgid "AUTH LOGIN required"
+msgstr "ត្រូវការ AUTH LOGIN"
+
+msgid "AUTH PLAIN required"
+msgstr "ត្រូវការ AUTH PLAIN"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "ត្រូវការ AUTH CRAM-MD5"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "ត្រូវការ AUTH DIGEST-MD5"
+
+msgid "AUTH GSSAPI required"
+msgstr "ត្រូវការ AUTH GSSAPI"
+
+msgid "AUTH NTLM required"
+msgstr "ត្រូវការ AUTH NTLM"
+
+msgid "AUTH SCRAM required"
+msgstr "ត្រូវការ AUTH SCRAM"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "ត្រូវការ AUTH OAUTHBEARER"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "ត្រូវការ AUTH XOAUTH2"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: កំហុសមូលដ្ឋានទិន្នន័យប្រអប់សំបុត្រ"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: កំហុសកម្មវិធីបញ្ជាកន្លែងផ្ទុក"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: កំហុសភ្នាក់ងារដឹកជញ្ជូន"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: កំហុសបំប្លែងមាតិកា"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: កំហុសកំណត់ផ្លូវ"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: លំហូរអ៊ីមែលជាប់គាំង"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: កំហុស Shadow redundancy"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: កំហុសសុវត្ថិភាព"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: កំហុសមូលដ្ឋានទិន្នន័យជួរ"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: អ៊ីមែលត្រូវបានកំណត់អត្រា"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: កំហុសជួរត្រឡប់"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: កំហុសជួរពន្យាពេល"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: កំហុសជួរព្យួរ"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: កំហុសជួរទទួលចូល"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: កំហុសជួរដែលកំពុងប្រើ"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: ឯកសារជួរខូច"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: កំហុសអ្នករត់ជួរ"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: កំហុសមូលដ្ឋានទិន្នន័យឈ្មោះហៅក្រៅ"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: កំហុសតារាងអ្នកប្រើនិម្មិត"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: កំហុសនិយមន័យកម្មវិធីផ្ញើសំបុត្រ"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធរ៉ោតទ័រ"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធការដឹកជញ្ជូន"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធនាយក"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធការព្យាយាមម្តងទៀត"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធការសរសេរឡើងវិញ"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធការផ្ទៀងផ្ទាត់"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធ ACL"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធ Local_scan"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធការស្វែងរក"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: កំហុសការកំណត់រចនាសម្ព័ន្ធការពង្រីក"
+
+msgid "HTTP Protocol Versions"
+msgstr "កំណែពិធីការ HTTP"
+
+msgid "Protocol"
+msgstr "ពិធីការ"
+
+msgid "Request %"
+msgstr "សមាមាត្រសំណើ"
+
+msgid "Bandwidth %"
+msgstr "សមាមាត្រកម្រិតបញ្ជូន"
+
+msgid "Each request requires a new connection"
+msgstr "សំណើនីមួយៗត្រូវបង្កើតការតភ្ជាប់ថ្មី"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "សំណើច្រើនអាចប្រើការតភ្ជាប់ដូចគ្នាឡើងវិញបាន"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "អាចដំណើរការសំណើច្រើនបែបស្របគ្នាតាមរយៈការតភ្ជាប់តែមួយ"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "ការតភ្ជាប់លឿនជាងមុន ដំណើរការប្រសើរជាងមុននៅលើបណ្តាញដែលមិនល្អ"
+
+msgid "No protocol data available"
+msgstr "មិនមានទិន្នន័យពិធីការ"
+
+msgid "of requests use HTTP/1.0"
+msgstr "នៃសំណើប្រើពិធីការ HTTP/1.0"
+
+msgid "From access logs"
+msgstr "ពីកំណត់ហេតុការចូលដំណើរការ"
+
+msgid "No HTTP/2 requests detected"
+msgstr "មិនបានរកឃើញសំណើពិធីការ HTTP/2"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "បច្ចុប្បន្នសំណើទាំងអស់គឺ HTTP/1.0 គ្មានសំណើ HTTP/2"
+
+msgid "HTTP/3 not detected"
+msgstr "មិនបានរកឃើញសំណើពិធីការ HTTP/3"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "បច្ចុប្បន្នសំណើទាំងអស់គ្មានសំណើពិធីការ QUIC/HTTP/3"
+
+msgid "Mail Authentication Statistics"
+msgstr "ស្ថិតិការផ្ទៀងផ្ទាត់អ៊ីមែល"
+
+msgid "Authentication"
+msgstr "ប្រភេទនៃការផ្ទៀងផ្ទាត់"
+
+msgid "Pass"
+msgstr "ឆ្លង"
+
+msgid "Fail"
+msgstr "បរាជ័យ"
+
+msgid "Softfail"
+msgstr "បរាជ័យតិចតួច"
+
+msgid "Neutral"
+msgstr "អព្យាក្រឹត"
+
+msgid "None"
+msgstr "គ្មាន"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "ស្ថិតិពន្យាពេលក្នុងជួរអ៊ីមែល"
+
+msgid "Delay Range"
+msgstr "ជួរពន្យាពេល"
+
+msgid "Count"
+msgstr "ចំនួន"
+
+msgid "Percentage"
+msgstr "ភាគរយ"
+
+msgid "TLS Encryption Statistics"
+msgstr "ស្ថិតិការអ៊ិនគ្រីប TLS"
+
+msgid "TLS Versions"
+msgstr "កំណែ TLS"
+
+msgid "Top Ciphers"
+msgstr "សំណុំស៊ីហ្វឺដែលប្រើញឹកញាប់"
+
+msgid "robot_hits_detail_both"
+msgstr "សំណើសរុប: %s ដង (ទំព័រធម្មតា: %s ដង, robots.txt: %s ដង)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "ចូលដំណើរការតែ robots.txt: %s ដង មិនបានទាញយកទិន្នន័យទំព័រផ្សេងទៀត"
+
+msgid "robot_hits_detail_normal"
+msgstr "សំណើទំព័រធម្មតា: %s ដង"
+
+msgid "Troubleshooting"
+msgstr "ការដោះស្រាយបញ្ហា"
+
+msgid "Did you use the correct URL?"
+msgstr "តើអ្នកបានប្រើ URL ត្រឹមត្រូវទេ?"
+
+msgid "Example:"
+msgstr "ឧទាហរណ៍:"
+
+msgid "Did you use correct config parameter?"
+msgstr "តើអ្នកបានប្រើប៉ារ៉ាម៉ែត្រកំណត់រចនាសម្ព័ន្ធត្រឹមត្រូវទេ?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "ឧទាហរណ៍៖ ប្រសិនបើឯកសារកំណត់រចនាសម្ព័ន្ធរបស់អ្នកគឺ awstats.mysite.conf សូមប្រើ -config=mysite"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "តើអ្នកបានបង្កើតឯកសារកំណត់រចនាសម្ព័ន្ធ 'awstats.$SiteConfig.conf' ដែរឬទេ?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "ប្រសិនបើមិនទាន់មាន អ្នកអាចដំណើរការ \"awstats_configure.pl\" ពីបន្ទាត់ពាក្យបញ្ជា ឬបង្កើតវាដោយខ្លួនឯង"
+
+msgid "Setup"
+msgstr "ការកំណត់"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "ឯកសារ ម៉ាស៊ីនបម្រើបណ្តាញ ឬសិទ្ធិអាចមិនត្រឹមត្រូវ"
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "ពិនិត្យឯកសារកំណត់រចនាសម្ព័ន្ធ សិទ្ធិ និងឯកសារ AWStats (ក្នុងថត 'docs')"
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "ការព្រមាន៖ រកមិនឃើញឯកសារភាសាសម្រាប់ \"%s\" ទេ។ នឹងប្រើភាសាអង់គ្លេស"
+
+#------------------------------------------------------------------------------
+# ការគ្រប់គ្រងកំហុសនិងសញ្ញា
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "ដំណើរការ %s (លេខសម្គាល់ %s) ត្រូវបានរំខានដោយសញ្ញា %s"
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "ហាក់ដូចជាដំណើរការធ្វើបច្ចុប្បន្នភាព AWStats សម្រាប់ឯកសារកំណត់រចនាសម្ព័ន្ធនេះកំពុងដំណើរការរួចហើយ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។ ប្រសិនបើមិនពិតមែនទេ សូមលុបឯកសារចាក់សោដោយដៃ"
+
+#------------------------------------------------------------------------------
+# ចំណងជើងស្ថិតិថ្មី
+#------------------------------------------------------------------------------
+msgid "Report Overview"
+msgstr "ទិដ្ឋភាពទូទៅនៃរបាយការណ៍"
+
+msgid "Monthly Statistics"
+msgstr "ស្ថិតិប្រចាំខែ"
+
+msgid "Daily Statistics"
+msgstr "ស្ថិតិប្រចាំថ្ងៃ"
+
+msgid "Statistics by Day of Week"
+msgstr "ស្ថិតិតាមថ្ងៃក្នុងសប្តាហ៍"
+
+msgid "Hourly Page Views"
+msgstr "ចំនួនដងនៃការមើលក្នុងមួយម៉ោង"
+
+msgid "Traffic Sources"
+msgstr "ប្រភពនៃការចូលទស្សនា"
+
+msgid "Other Sources"
+msgstr "ប្រភពផ្សេងទៀត"
+
+msgid "tooltip_1"
+msgstr "ចំនួនវគ្គរបស់អ្នកទស្សនានៅលើគេហទំព័រ។ អ្នកទស្សនាដដែលដែលត្រឡប់មកទស្សនាម្តងទៀតបន្ទាប់ពីគ្មានសកម្មភាពលើសពី 30 នាទី នឹងត្រូវបានរាប់ជាការទស្សនាថ្មី"
+
+msgid "tooltip_2"
+msgstr "ចំនួនអ្នកទស្សនាផ្សេងគ្នាដែលបានទស្សនាគេហទំព័ររបស់អ្នកក្នុងរយៈពេលដែលបានជ្រើសរើស។ ផ្អែកលើអាសយដ្ឋាន IP"
+
+msgid "tooltip_3"
+msgstr "ចំនួនសំណើដែលរាប់ជាទំព័រ (ដូចជា HTML, PHP, ASP ជាដើម) មិនរាប់បញ្ចូលឯកសារឋិតិវន្តដូចជា រូបភាព, CSS, JS"
+
+msgid "tooltip_4"
+msgstr "ចំនួនសំណើសរុបដែលបានផ្ញើទៅកាន់ម៉ាស៊ីនបម្រើ រួមទាំងទំព័រទាំងអស់ រូបភាព, CSS, JS និងឯកសារផ្សេងទៀត"
+
+msgid "tooltip_5"
+msgstr "បរិមាណទិន្នន័យសរុបដែលម៉ាស៊ីនបម្រើផ្ញើនៅពេលឆ្លើយតបទៅនឹងសំណើរបស់អ្នកប្រើប្រាស់"
+
+msgid "tooltip_13"
+msgstr "ស្ថិតិប្រភពនៃការចូលទស្សនាគេហទំព័ររបស់អ្នកតាមរយៈម៉ាស៊ីនស្វែងរក។ បង្ហាញថាម៉ាស៊ីនស្វែងរកណាខ្លះនាំមកនូវការចូលទស្សនា និងពាក្យស្វែងរកដែលអ្នកប្រើប្រាស់បានប្រើ"
+
+msgid "tooltip_14"
+msgstr "ស្ថិតិប្រភពនៃការចូលទស្សនាគេហទំព័ររបស់អ្នកតាមរយៈតំណភ្ជាប់ខាងក្រៅពីគេហទំព័រផ្សេង។ បង្ហាញថាគេហទំព័រណាខ្លះមានតំណភ្ជាប់មកកាន់អ្នក និងបរិមាណនៃការចូលទស្សនាដែលនាំមក"
+
+msgid "tooltip_15"
+msgstr "ពាក្យស្វែងរកដែលអ្នកប្រើប្រាស់ប្រើនៅពេលស្វែងរកគេហទំព័ររបស់អ្នកតាមរយៈម៉ាស៊ីនស្វែងរក។ ពាក្យគន្លឹះគឺជាពាក្យតែមួយ ឃ្លាគន្លឹះគឺជាការរួមបញ្ចូលគ្នានៃពាក្យជាច្រើន"
+
+msgid "tooltip_16"
+msgstr "កម្មវិធីស្វ័យប្រវត្តិ ដូចជា រមស្វែងរក រមបណ្តុះបណ្តាល AI ឧបករណ៍ស្កេនរកចំណុចខ្សោយ។ លេខក្នុងវង់ក្រចកបង្ហាញពីចំនួនសំណើទំព័រធម្មតា និងសំណើ robots.txt"
+
+msgid "tooltip_17"
+msgstr "ក្រាហ្វការចែកចាយចរាចរណ៍ 24 ម៉ោង។ បង្ហាញការចូលទស្សនាគេហទំព័ររបស់អ្នកក្នុងម៉ោងនីមួយៗ ជួយឱ្យយល់ពីពេលវេលាដែលអ្នកប្រើប្រាស់ប្រើប្រាស់"
+
+msgid "tooltip_18"
+msgstr "ជួរឈរនេះបង្ហាញតម្លៃមធ្យមប្រចាំថ្ងៃ/ប្រចាំសប្តាហ៍ក្នុងរយៈពេលដែលបានជ្រើសរើស ជួយឱ្យអ្នកយល់ពីនិន្នាការទូទៅ"
+
+msgid "tooltip_19"
+msgstr "ចុចលើធាតុក្នុងក្រាហ្វដើម្បីមើលព័ត៌មានលម្អិត។ រំកិលកណ្ដុរទៅលើធាតុក្រាហ្វដើម្បីមើលតម្លៃជាក់លាក់"
+
+msgid "tooltip_20"
+msgstr "ទិន្នន័យដែលមិនអាចចាត់ថ្នាក់ទៅក្នុងជួរដែលមាន ជារឿយៗកើតឡើងដោយសារទម្រង់ទិន្នន័យខុសប្រក្រតី ឬបាត់"
+
+msgid "tooltip_21"
+msgstr "កំណត់ត្រានៃការវាយប្រហាររបស់ដង្កូវមេរោគដែលបានរកឃើញ។ ដង្កូវមេរោគគឺជាកម្មវិធីដែលបង្កគ្រោះថ្នាក់ដែលសាយភាយដោយខ្លួនឯង ជារឿយៗសាយភាយតាមរយៈចំណុចខ្សោយនៃបណ្តាញ"
+
+#------------------------------------------------------------------------------
+# បង្ហាញសារជំនួយ - Community Edition
+#------------------------------------------------------------------------------
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - ស្ថិតិគេហទំព័រកម្រិតខ្ពស់"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "រក្សាសិទ្ធិ (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "រក្សាសិទ្ធិ (c) 2026-បច្ចុប្បន្ន Community Edition"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats មិនមានការធានាណាមួយឡើយ។ វាជាកម្មវិធីសេរីដែលត្រូវបានចែកចាយក្រោមអាជ្ញាប័ណ្ណសាធារណៈទូទៅរបស់ GNU (សូមមើលឯកសារ LICENSE សម្រាប់ព័ត៌មានលម្អិត)"
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "ទម្រង់ពាក្យបញ្ជា៖ %s -config=ឈ្មោះម៉ាស៊ីននិម្មិត [ជម្រើស]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "ពាក្យបញ្ជានេះដំណើរការ %s ក្នុងបន្ទាត់ពាក្យបញ្ជាដើម្បីធ្វើបច្ចុប្បន្នភាពស្ថិតិនៃគេហទំព័រ (-update option) ពីឯកសារកំណត់ហេតុដែលបានកំណត់ក្នុងឯកសារកំណត់រចនាសម្ព័ន្ធ AWStats ឬបង្កើតរបាយការណ៍ HTML (-output option)"
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "ជំហានដំបូង %s ព្យាយាមអាន %s.ឈ្មោះម៉ាស៊ីននិម្មិត.conf ជាឯកសារកំណត់រចនាសម្ព័ន្ធ។ ប្រសិនបើរកមិនឃើញ %s ព្យាយាមអាន %s.conf ហើយចុងក្រោយគឺផ្លូវពេញលេញដែលបានផ្ញើទៅ -config="
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "ចំណាំ 1: ឯកសារកំណត់រចនាសម្ព័ន្ធ (*.conf) ត្រូវតែស្ថិតនៅក្នុង /etc/awstats, /usr/local/etc/awstats, /etc ឬថតដូចគ្នានឹងឯកសារស្គ្រីប awstats.pl"
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "ចំណាំ 2: ប្រសិនបើបានកំណត់អថេរបរិស្ថាន AWSTATS_FORCE_CONFIG AWStats នឹងប្រើវាជាតម្លៃ 'config' មិនថាតម្លៃដែលបានផ្ញើក្នុងបន្ទាត់ពាក្យបញ្ជា ឬ URL នោះទេ"
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "សូមមើលឯកសារ AWStats សម្រាប់សេចក្តីណែនាំអំពីការដំឡើងទាំងអស់"
+
+msgid "Options to update statistics:"
+msgstr "ជម្រើសសម្រាប់ធ្វើបច្ចុប្បន្នភាពស្ថិតិ៖"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        ធ្វើបច្ចុប្បន្នភាពស្ថិតិ (លំនាំដើម)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     បន្ថែមព័ត៌មានវាស់ស្ទង់ដំណើរការរាល់ %s បន្ទាត់ដែលបានដំណើរការ"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted បន្ថែមទិន្នផលសម្រាប់បន្ទាត់ដែលខូចនីមួយៗដែលបានរកឃើញ ជាមួយហេតុផល"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   បន្ថែមទិន្នផលសម្រាប់បន្ទាត់ដែលត្រូវបានទម្លាក់នីមួយៗដែលបានរកឃើញ ជាមួយហេតុផល"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin   បង្ហាញទិន្នន័យយោងនៅពេលដែលមិនអាចញែកបាន"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin    បង្ហាញបន្ទាត់កំណត់ហេតុនៅពេលដែលប្រភពដើមគឺជាការចូលដោយផ្ទាល់"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n    បញ្ឈប់ដំណើរការធ្វើបច្ចុប្បន្នភាពបន្ទាប់ពីញែក n បន្ទាត់"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x      ប្តូរកំណត់ហេតុដែលត្រូវវិភាគជំនួស 'LogFile' ក្នុងឯកសារកំណត់រចនាសម្ព័ន្ធ"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  សូមប្រយ័ត្នក្នុងការដំណើរការឯកសារកំណត់ហេតុតាមលំដាប់កាលបរិច្ឆេទនៅពេលធ្វើបច្ចុប្បន្នភាពស្ថិតិ"
+
+msgid "Options to show statistics:"
+msgstr "ជម្រើសសម្រាប់បង្ហាញស្ថិតិ៖"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output      បញ្ចេញរបាយការណ៍ HTML មេ (មិនមានការធ្វើបច្ចុប្បន្នភាពទេ លើកលែងតែប្រើ -update)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x    បញ្ចេញទំព័ររបាយការណ៍ផ្សេងទៀត ដោយ x គឺ៖"
+
+msgid "build page of all domains/countries"
+msgstr "បង្កើតទំព័រនៃដែន/ប្រទេសទាំងអស់"
+
+msgid "build page of all hosts"
+msgstr "បង្កើតទំព័រនៃម៉ាស៊ីនទាំងអស់"
+
+msgid "build page of last hits for hosts"
+msgstr "បង្កើតទំព័រនៃការចុចចុងក្រោយសម្រាប់ម៉ាស៊ីន"
+
+msgid "build page of all unresolved IP"
+msgstr "បង្កើតទំព័រនៃ IP ដែលមិនត្រូវបានដោះស្រាយទាំងអស់"
+
+msgid "build page of all email senders (maillog)"
+msgstr "បង្កើតទំព័រនៃអ្នកផ្ញើអ៊ីមែលទាំងអស់ (maillog)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "បង្កើតទំព័រនៃអ្នកផ្ញើអ៊ីមែលចុងក្រោយ (maillog)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "បង្កើតទំព័រនៃអ្នកទទួលអ៊ីមែលទាំងអស់ (maillog)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "បង្កើតទំព័រនៃអ្នកទទួលអ៊ីមែលចុងក្រោយ (maillog)"
+
+msgid "build page of all logins used"
+msgstr "បង្កើតទំព័រនៃឈ្មោះអ្នកប្រើដែលបានប្រើទាំងអស់"
+
+msgid "build page of last hits for logins"
+msgstr "បង្កើតទំព័រនៃការចុចចុងក្រោយសម្រាប់ឈ្មោះអ្នកប្រើ"
+
+msgid "build page of all robots/spider visits"
+msgstr "បង្កើតទំព័រនៃការទស្សនារបស់រម/ស្ពៃដឺរទាំងអស់"
+
+msgid "build page of last hits for robots"
+msgstr "បង្កើតទំព័រនៃការចុចចុងក្រោយសម្រាប់រម"
+
+msgid "list most often viewed pages"
+msgstr "បង្ហាញទំព័រដែលត្រូវបានចូលទស្សនាញឹកញាប់បំផុត"
+
+msgid "list most often viewed pages matching filter"
+msgstr "បង្ហាញទំព័រដែលត្រូវបានចូលទស្សនាញឹកញាប់បំផុតដែលត្រូវនឹងតម្រង"
+
+msgid "list entry pages"
+msgstr "បង្ហាញទំព័រចូល"
+
+msgid "list entry pages matching filter"
+msgstr "បង្ហាញទំព័រចូលដែលត្រូវនឹងតម្រង"
+
+msgid "list exit pages"
+msgstr "បង្ហាញទំព័រចេញ"
+
+msgid "list exit pages matching filter"
+msgstr "បង្ហាញទំព័រចេញដែលត្រូវនឹងតម្រង"
+
+msgid "build page with os detailed versions"
+msgstr "បង្កើតទំព័រជាមួយកំណែលម្អិតនៃប្រព័ន្ធប្រតិបត្តិការ"
+
+msgid "build page with browsers detailed versions"
+msgstr "បង្កើតទំព័រជាមួយកំណែលម្អិតនៃកម្មវិធីរុករក"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "បង្ហាញ 'User Agents' ដែលមានកម្មវិធីរុករកមិនស្គាល់"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "បង្ហាញ 'User Agents' ដែលមានប្រព័ន្ធប្រតិបត្តិការមិនស្គាល់"
+
+msgid "build page of all refering search engines"
+msgstr "បង្កើតទំព័រនៃម៉ាស៊ីនស្វែងរកដែលបានយោងទាំងអស់"
+
+msgid "build page of all refering pages"
+msgstr "បង្កើតទំព័រនៃទំព័រយោងទាំងអស់"
+
+msgid "list all keyphrases used on search engines"
+msgstr "បង្ហាញឃ្លាគន្លឹះទាំងអស់ដែលបានប្រើនៅលើម៉ាស៊ីនស្វែងរក"
+
+msgid "list all keywords used on search engines"
+msgstr "បង្ហាញពាក្យគន្លឹះទាំងអស់ដែលបានប្រើនៅលើម៉ាស៊ីនស្វែងរក"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "បង្ហាញ 'Referers' សម្រាប់កំហុស 404"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "បង្កើតទំព័រនៃតម្លៃទាំងអស់សម្រាប់ ExtraSection X"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           មានតំណភ្ជាប់ឋិតិវន្តនៅក្នុងទំព័ររបាយការណ៍ HTML"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    មានតំណភ្ជាប់ឋិតិវន្តដែលមានផ្នែកបន្ថែម .xxx ជំនួសឱ្យ .html"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     បញ្ចេញរបាយការណ៍ HTML ជាភាសា LL (en,de,es,fr,it,nl,kh,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    បញ្ចេញរបាយការណ៍ HTML សម្រាប់ខែ MM ដែលកន្លងមក"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   បញ្ចេញរបាយការណ៍ HTML សម្រាប់ឆ្នាំ YYYY ដែលកន្លងមក"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  ជម្រើស 'date' មិនអនុញ្ញាតឱ្យអ្នកដំណើរការឯកសារកំណត់ហេតុចាស់ទេ។ វាអនុញ្ញាតឱ្យអ្នកមើលរបាយការណ៍កន្លងមកសម្រាប់រយៈពេលខែ/ឆ្នាំដែលបានជ្រើសរើសជំនួសឱ្យខែ/ឆ្នាំបច្ចុប្បន្ន"
+
+msgid "Other options:"
+msgstr "ជម្រើសផ្សេងទៀត៖"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     បន្ថែមព័ត៌មានបំបាត់កំហុសដែលតិចជាងកម្រិត X (ល្បឿនថយចុះ)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     បង្ហាញកំណែ AWStats"
+
+msgid "Now supports/detects:"
+msgstr "បច្ចុប្បន្នគាំទ្រ/រកឃើញ៖"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  ការវិភាគកំណត់ហេតុម៉ាស៊ីនបម្រើ Web/FTP/អ៊ីមែល/ស្ទ្រីម (និងឯកសារកំណត់ហេតុ Load Balancer)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  ការស្វែងរក DNS បញ្ច្រាស (IPv4 និង IPv6) និងការស្វែងរក GeoIP"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  ចំនួននៃការទស្សនា, ចំនួនអ្នកទស្សនាតែមួយគត់"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  រយៈពេលនៃការទស្សនា និងបញ្ជីនៃការទស្សនាចុងក្រោយ"
+
+msgid "  Authenticated users"
+msgstr "  អ្នកប្រើដែលបានផ្ទៀងផ្ទាត់"
+
+msgid "  Days of week and rush hours"
+msgstr "  ថ្ងៃនៅក្នុងសប្តាហ៍ និងម៉ោងប្រញាប់"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  បញ្ជីម៉ាស៊ីន និងបញ្ជីអាសយដ្ឋាន IP ដែលមិនទាន់ដោះស្រាយ"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  ទំព័រដែលត្រូវបានចូលទស្សនាច្រើនបំផុត ទំព័រចូល និងទំព័រចេញ"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  ប្រភេទឯកសារ និងការបង្ហាប់បណ្តាញ (ស្ថិតិ mod_gzip, mod_deflate)"
+
+msgid "  Configured Database Statistics"
+msgstr "  ស្ថិតិមូលដ្ឋានទិន្នន័យដែលបានកំណត់រចនាសម្ព័ន្ធ"
+
+msgid "  %s domains/countries"
+msgstr "  %s ដែន/ប្រទេស"
+
+msgid "  %s robots"
+msgstr "  %s រម"
+
+msgid "  %s worm's families"
+msgstr "  %s ត្រកូលដង្កូវ"
+
+msgid "  %s operating systems"
+msgstr "  %s ប្រព័ន្ធប្រតិបត្តិការ"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s កម្មវិធីរុករក (រួមទាំងមូលដ្ឋានទិន្នន័យកម្មវិធីរុករកទូរស័ព្ទដៃ %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s ម៉ាស៊ីនស្វែងរក (និងឃ្លាគន្លឹះ/ពាក្យគន្លឹះដែលប្រើពីពួកវា)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  កំហុស HTTP ទាំងអស់ជាមួយអ្នកយោងចុងក្រោយ"
+
+msgid "  Report by day/month/year"
+msgstr "  របាយការណ៍ប្រចាំថ្ងៃ/ខែ/ឆ្នាំ"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  របាយការណ៍ HTML ឬ XHTML ថាមវន្ត ឬឋិតិវន្ត របាយការណ៍ PDF ឋិតិវន្ត"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  មូលដ្ឋានទិន្នន័យប្រចាំខែអត្ថបទ ឬ XML ដែលមានសន្ទស្សន៍"
+
+msgid "  And a lot of other advanced features and options..."  
+msgstr "  និងលក្ខណៈពិសេស និងជម្រើសកម្រិតខ្ពស់ផ្សេងទៀតជាច្រើនទៀត..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  កំណែថ្មី និងសំណួរដែលគេសួរញឹកញាប់នៅ https://github.com/hestiacn/vstats/issues"

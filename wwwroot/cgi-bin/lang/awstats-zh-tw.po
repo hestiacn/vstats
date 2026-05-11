@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AWStats 8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-10 12:00+0000\n"
-"PO-Revision-Date: 2026-03-10 12:00+0000\n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
@@ -16,259 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#==============================================================================
-# 幫助資訊
-#==============================================================================
-
-msgid "AWStats %s - Advanced Web Statistics"
-msgstr "AWStats %s - 進階Web統計"
-
-msgid "Copyright (c) 1997-latest Laurent Destailleur"
-msgstr "版權所有 (c) 1997-latest Laurent Destailleur"
-
-msgid "USAGE:"
-msgstr "使用方法:"
-
-msgid "-config=vhostname [options]"
-msgstr "-config=虛擬主機名 [選項]"
-
-msgid "BASIC OPTIONS:"
-msgstr "基本選項:"
-
-msgid "name"
-msgstr "名稱"
-
-msgid "Specify site configuration to analyze (e.g., -config=mysite.com)"
-msgstr "指定要分析的網站設定 (例如: -config=mysite.com)"
-
-msgid "Update statistics (default for command line)"
-msgstr "更新統計資訊 (命令列預設)"
-
-msgid "Generate HTML report (default for CGI)"
-msgstr "產生HTML報告 (CGI預設)"
-
-msgid "code"
-msgstr "語言代碼"
-
-msgid "Specify language (e.g., -lang=en, -lang=fr, -lang=zh-cn)"
-msgstr "指定語言 (例如: -lang=zh-tw, -lang=en, -lang=fr)"
-
-msgid "Display this help message"
-msgstr "顯示此說明資訊"
-
-msgid "Display version information"
-msgstr "顯示版本資訊"
-
-msgid "REPORT OPTIONS:"
-msgstr "報告選項:"
-
-msgid "Generate HTML report with static links"
-msgstr "產生靜態連結的HTML報告"
-
-msgid "Specify static file extension (default: html)"
-msgstr "指定靜態檔案副檔名 (預設: html)"
-
-msgid "Specify month (01-12 or all)"
-msgstr "指定月份 (01-12 或 all)"
-
-msgid "Specify year"
-msgstr "指定年份"
-
-msgid "Specify day (advanced option)"
-msgstr "指定日期 (進階選項)"
-
-msgid "Specify hour (advanced option)"
-msgstr "指定小時 (進階選項)"
-
-msgid "Specify frame name (mainleft/mainright/index)"
-msgstr "指定框架名稱 (mainleft/mainright/index)"
-
-msgid "FILTER OPTIONS:"
-msgstr "過濾選項:"
-
-msgid "rule"
-msgstr "規則"
-
-msgid "Filter hosts list"
-msgstr "過濾主機清單"
-
-msgid "Exclude hosts list"
-msgstr "排除主機清單"
-
-msgid "Filter URL list"
-msgstr "過濾URL清單"
-
-msgid "Exclude URL list"
-msgstr "排除URL清單"
-
-msgid "Filter referer pages"
-msgstr "過濾來源頁面"
-
-msgid "Exclude referer pages"
-msgstr "排除來源頁面"
-
-msgid "OUTPUT OPTIONS:"
-msgstr "輸出選項:"
-
-msgid "Show all domains/countries"
-msgstr "顯示所有網域/國家"
-
-msgid "Show all hosts"
-msgstr "顯示所有主機"
-
-msgid "Show last visited hosts"
-msgstr "顯示最後訪問的主機"
-
-msgid "Show unresolved IP addresses"
-msgstr "顯示未解析的IP位址"
-
-msgid "Show all robots"
-msgstr "顯示所有機器人"
-
-msgid "Show last visited robots"
-msgstr "顯示最後訪問的機器人"
-
-msgid "Show page details"
-msgstr "顯示頁面詳情"
-
-msgid "Show entry pages"
-msgstr "顯示入口頁面"
-
-msgid "Show exit pages"
-msgstr "顯示出口頁面"
-
-msgid "Show OS details"
-msgstr "顯示作業系統詳情"
-
-msgid "Show browser details"
-msgstr "顯示瀏覽器詳情"
-
-msgid "Show unknown OS"
-msgstr "顯示未知作業系統"
-
-msgid "Show unknown browsers"
-msgstr "顯示未知瀏覽器"
-
-msgid "Show search engines referers"
-msgstr "顯示搜尋引擎來源"
-
-msgid "Show external pages referers"
-msgstr "顯示外部頁面來源"
-
-msgid "Show keyphrases"
-msgstr "顯示關鍵詞組"
-
-msgid "Show keywords"
-msgstr "顯示關鍵字"
-
-msgid "Show 404 error details"
-msgstr "顯示404錯誤詳情"
-
-msgid "DEBUG OPTIONS:"
-msgstr "偵錯選項:"
-
-msgid "level"
-msgstr "層級"
-
-msgid "Set debug level (1-5)"
-msgstr "設定偵錯層級 (1-5)"
-
-msgid "Show processing progress"
-msgstr "顯示處理進度"
-
-msgid "Show corrupted records"
-msgstr "顯示損毀的記錄"
-
-msgid "Show dropped records"
-msgstr "顯示被丟棄的記錄"
-
-msgid "Show unknown origin"
-msgstr "顯示未知來源"
-
-msgid "Show direct access"
-msgstr "顯示直接訪問"
-
-msgid "lines"
-msgstr "行數"
-
-msgid "Process only specified number of lines"
-msgstr "只處理指定行數"
-
-msgid "PERFORMANCE OPTIONS:"
-msgstr "效能選項:"
-
-msgid "value"
-msgstr "數值"
-
-msgid "Set memory flush threshold"
-msgstr "設定記憶體重新整理閾值"
-
-msgid "type"
-msgstr "類型"
-
-msgid "Database break method (month/day/hour)"
-msgstr "資料庫分割方式 (month/day/hour)"
-
-msgid "Number of last lookups to save"
-msgstr "儲存最後查詢次數"
-
-msgid "PLUGIN OPTIONS:"
-msgstr "外掛選項:"
-
-msgid "Load specified plugin"
-msgstr "載入指定外掛"
-
-msgid "Do not load specified plugin"
-msgstr "不載入指定外掛"
-
-msgid "mode"
-msgstr "模式"
-
-msgid "Plugin operation mode"
-msgstr "外掛運作模式"
-
-msgid "CONFIGURATION FILE LOCATIONS:"
-msgstr "設定檔位置:"
-
-msgid "ENVIRONMENT VARIABLES:"
-msgstr "環境變數:"
-
-msgid "Specify language (overrides config file)"
-msgstr "指定語言 (覆蓋設定檔)"
-
-msgid "Force use of specified config file"
-msgstr "強制使用指定的設定檔"
-
-msgid "Force command line mode"
-msgstr "強制命令列模式"
-
-msgid "EXAMPLES:"
-msgstr "範例:"
-
-msgid "Basic update:"
-msgstr "基本更新:"
-
-msgid "Generate Chinese report:"
-msgstr "產生中文報告:"
-
-msgid "View specific month:"
-msgstr "檢視特定月份:"
-
-msgid "View all hosts:"
-msgstr "檢視所有主機:"
-
-msgid "Debug mode:"
-msgstr "偵錯模式:"
-
-msgid "More information: %s"
-msgstr "更多資訊請造訪: %s"
-
-msgid "Report issues: %s"
-msgstr "回報問題: %s"
-
-#==============================================================================
+#------------------------------------------------------------------------------
 # 月份名稱
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "month_01"
 msgstr "1月"
@@ -306,34 +56,43 @@ msgstr "11月"
 msgid "month_12"
 msgstr "12月"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 星期名稱
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "DayOfWeek_0"
-msgstr "週日"
+msgstr "禮拜日"
 
 msgid "DayOfWeek_1"
-msgstr "週一"
+msgstr "拜一"
 
 msgid "DayOfWeek_2"
-msgstr "週二"
+msgstr "拜二"
 
 msgid "DayOfWeek_3"
-msgstr "週三"
+msgstr "拜三"
 
 msgid "DayOfWeek_4"
-msgstr "週四"
+msgstr "拜四"
 
 msgid "DayOfWeek_5"
-msgstr "週五"
+msgstr "拜五"
 
 msgid "DayOfWeek_6"
-msgstr "週六"
+msgstr "拜六"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 介面元素
-#==============================================================================
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "高級網站統計"
+
+msgid "Statistics for"
+msgstr "統計報告"
+
+msgid "main"
+msgstr "概覽"
 
 # 主題切換
 msgid "Switch to light mode"
@@ -358,34 +117,12 @@ msgstr "KB"
 msgid "Bytes"
 msgstr "位元組"
 
-# 語言名稱
-msgid "language_en"
-msgstr "英語"
-
-msgid "language_fr"
-msgstr "法語"
-
-msgid "language_de"
-msgstr "德語"
-
-msgid "language_it"
-msgstr "義大利語"
-
-msgid "language_es"
-msgstr "西班牙語"
-
-msgid "language_nl"
-msgstr "荷蘭語"
-
 # 表單元素
 msgid "Filter"
 msgstr "過濾"
 
 msgid "Exclude filter"
 msgstr "排除過濾"
-
-msgid "OK"
-msgstr "確定"
 
 msgid "Top"
 msgstr "前"
@@ -398,12 +135,6 @@ msgstr "最近"
 
 msgid "Average"
 msgstr "平均"
-
-msgid "Total"
-msgstr "總計"
-
-msgid "Percent"
-msgstr "百分比"
 
 msgid "Export"
 msgstr "匯出"
@@ -432,154 +163,9 @@ msgstr "%s年"
 msgid "date_format_month"
 msgstr "%2$s年%1$s"
 
-msgid "Switch to light mode"
-msgstr "切換到亮色模式"
-
-msgid "Switch to dark mode"
-msgstr "切換到暗色模式"
-
-#==============================================================================
-# 更新腳本翻譯相關
-#==============================================================================
-
-msgid "Process already running"
-msgstr "程序已在執行中"
-
-msgid "Start updating statistics"
-msgstr "開始更新統計資訊"
-
-msgid "User"
-msgstr "使用者"
-
-msgid "System language"
-msgstr "系統語言"
-
-msgid "AWStats language file not found"
-msgstr "AWStats 語言檔不存在"
-
-msgid "Using AWStats language"
-msgstr "使用 AWStats 語言"
-
-msgid "Verification passed"
-msgstr "驗證通過"
-
-msgid "Config file doesn't exist"
-msgstr "設定檔不存在"
-
-msgid "Create statistics directory"
-msgstr "建立統計目錄"
-
-msgid "Using AWStats version"
-msgstr "使用 AWStats 版本"
-
-msgid "Using WWWROOT"
-msgstr "使用 WWWROOT"
-
-msgid "AWStats not found or not executable"
-msgstr "AWStats 不存在或不可執行"
-
-msgid "File not exist!"
-msgstr "檔案不存在！"
-
-msgid "Current month"
-msgstr "目前月份"
-
-msgid "History months"
-msgstr "歷史月份"
-
-msgid "Add current month to process list"
-msgstr "新增目前月份到處理清單"
-
-msgid "No history months, process current only"
-msgstr "沒有歷史月份，只處理目前月份"
-
-msgid "Months to process"
-msgstr "將要處理的月份"
-
-msgid "Processing month"
-msgstr "處理月份"
-
-msgid "Updating statistics..."
-msgstr "更新統計資料..."
-
-msgid "Execute update command"
-msgstr "執行更新指令"
-
-msgid "Update success"
-msgstr "更新成功"
-
-msgid "Update failed"
-msgstr "更新失敗"
-
-msgid "Copy logo.svg"
-msgstr "複製 logo.svg"
-
-msgid "Copy icon directory"
-msgstr "複製 icon 目錄"
-
-msgid "Generating main page..."
-msgstr "產生主頁面..."
-
-msgid "Generate main page"
-msgstr "產生主頁面"
-
-msgid "Main page generated successfully"
-msgstr "主頁面產生成功"
-
-msgid "Main page generation failed"
-msgstr "主頁面產生失敗"
-
-msgid "Generating"
-msgstr "產生"
-
-msgid "Generate page"
-msgstr "產生頁面"
-
-msgid "Success"
-msgstr "成功"
-
-msgid "Failed"
-msgstr "失敗"
-
-msgid "No data"
-msgstr "沒有資料"
-
-msgid "Page generated successfully"
-msgstr "頁面產生成功"
-
-msgid "Page generation failed"
-msgstr "頁面產生失敗"
-
-msgid "Finished processing month"
-msgstr "完成處理月份"
-
-msgid "Generate index page"
-msgstr "產生索引頁面"
-
-msgid "Generate navigation page"
-msgstr "產生導航頁面"
-
-msgid "AWStats update completed"
-msgstr "AWStats 更新完成"
-
-msgid "Statistics type"
-msgstr "統計類型"
-
-msgid "Unsupported statistics type"
-msgstr "不支援的統計類型"
-
-msgid "Set directory permissions"
-msgstr "設定目錄權限"
-
-msgid "Domain statistics update completed"
-msgstr "網域統計資訊更新完成"
-
-#==============================================================================
+#------------------------------------------------------------------------------
 # 導航列
-#==============================================================================
-
-msgid "AWStats Log Viewer"
-msgstr "AWStats 日誌檢視器"
+#------------------------------------------------------------------------------
 
 msgid "nav_category_basic"
 msgstr "基礎文件"
@@ -653,12 +239,15 @@ msgstr "外掛鉤子"
 msgid "nav_graphs"
 msgstr "外掛圖形"
 
+msgid "Back to top"
+msgstr "返回頂部"
+
 msgid "nav_select_month"
 msgstr "選擇月份"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 主要統計指標
-#==============================================================================
+#------------------------------------------------------------------------------
 
 # 訪問相關
 msgid "Unique visitors"
@@ -701,11 +290,59 @@ msgstr "點擊數"
 msgid "Bandwidth"
 msgstr "頻寬"
 
-msgid "Viewed traffic *"
-msgstr "已檢視流量 *"
+msgid "duration_format"
+msgstr "%s-%s"
 
-msgid "Not viewed traffic *"
-msgstr "未檢視流量 *"
+msgid "unit_s"
+msgstr "秒"
+
+msgid "unit_min"
+msgstr "分鐘"
+
+msgid "unit_h"
+msgstr "小時"
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "裝置類型"
+
+msgid "Device Type"
+msgstr "裝置類型"
+
+msgid "Percent"
+msgstr "百分比"
+
+# Device Type Names
+msgid "Mobile"
+msgstr "手機"
+
+msgid "Pause & Go"
+msgstr "斷點續傳"
+
+msgid "Complete"
+msgstr "完成"
+
+msgid "Tablet"
+msgstr "平板電腦"
+
+msgid "Tv"
+msgstr "電視"
+
+msgid "Wearable"
+msgstr "穿戴式裝置"
+
+msgid "Bot"
+msgstr "爬蟲"
+
+msgid "Desktop"
+msgstr "桌上型電腦"
+
+msgid "Normal browsing traffic"
+msgstr "正常瀏覽流量"
+
+msgid "Abnormal browsing traffic"
+msgstr "非正常瀏覽流量"
 
 msgid "Viewed"
 msgstr "已檢視"
@@ -713,8 +350,8 @@ msgstr "已檢視"
 msgid "Not viewed"
 msgstr "未檢視"
 
-msgid "Viewed traffic includes page views, hits and bandwidth on pages"
-msgstr "已檢視流量包括頁面瀏覽、點擊和頻寬"
+msgid "Abnormal browsing traffic note"
+msgstr "非正常瀏覽流量包括：搜尋引擎爬蟲、AI訓練爬蟲、漏洞掃描器及不符合HTTP/HTTPS規範的請求"
 
 # 檔案相關
 msgid "File size"
@@ -751,18 +388,250 @@ msgstr "郵件數"
 msgid "Size"
 msgstr "大小"
 
-#==============================================================================
+msgid "If you remove this file, all statistics for date"
+msgstr "警告: 刪除此檔案將導致日期"
+
+msgid "will be lost/reset."
+msgstr "的所有統計資料永久遺失/重置！"
+
+msgid "Last config file used to build this data file was"
+msgstr "本資料檔案最後使用的設定檔是"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "本檔案中的 MAP 段記錄了各章節的位元組偏移位置，用於"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats 快速直接存取資料。如果您手動修改了本檔案的任何內容，您應該"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "完全刪除 MAP 段（AWStats 將在下次更新時重寫 MAP 段）。"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = 最後處理的記錄日期 - 最後日誌中的行號 - 最後日誌中的偏移量 - 最後記錄簽名值"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = 歷史檔案中首次訪問的日期"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = 歷史檔案中最後訪問的日期"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = 最後更新日期 - 解析記錄數 - 舊記錄數 - 新記錄數 - 損壞記錄數 - 丟棄記錄數"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = 訪問次數"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = 唯一訪問者數"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = 已知主機數"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = 未知主機數"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "叢集 ID - 頁面數 - 點擊數 - 頻寬"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "小時 - 頁面數 - 點擊數 - 頻寬 - 未檢視頁面數 - 未檢視點擊數 - 未檢視頻寬"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "日期 - 頁面數 - 點擊數 - 頻寬 - 訪問數"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "網域 - 頁面數 - 點擊數 - 頻寬"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "主頁僅顯示頁面數最高的前 %s 個頁面，完整列表請查看詳情頁面。"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "主機 - 頁面數 - 點擊數 - 頻寬 - 最後訪問時間 - [最後訪問開始時間] - [最後訪問頁面]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[最後訪問開始時間] 和 [最後訪問頁面] 僅在工作階段未結束時保存"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "主頁僅顯示點擊數最高的前 %s 個條目，完整列表請查看詳情頁面。"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "登入使用者 - 頁面數 - 點擊數 - 頻寬 - 最後訪問時間"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "機器人 ID - 點擊數 - 頻寬 - 最後訪問時間 - robots.txt 點擊數"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "蠕蟲 ID - 點擊數 - 頻寬 - 最後訪問時間"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "電子郵件 - 點擊數 - 頻寬 - 最後訪問時間"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "主頁僅顯示點擊數最高的前 %s 個電子郵件，完整列表請查看詳情頁面。"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - 頁面數 - 頻寬 - 入口 - 出口"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "檔案類型 - 點擊數 - 頻寬 - 壓縮前頻寬 - 壓縮後頻寬"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "請求時間範圍 - 請求次數"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "檔案大小範圍 - 檔案數量"
+
+msgid "Session range - Number of visits"
+msgstr "工作階段時長範圍 - 訪問數"
+
+msgid "URL with %s errors - Hits"
+msgstr "含有 %s 錯誤的 URL - 點擊數"
+
+msgid "Last URL referrer"
+msgstr "最後來源 URL"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "錯誤 - 點擊數 - 頻寬"
+
+msgid "Search keywords - Number of search"
+msgstr "搜尋關鍵字 - 搜尋次數"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "主頁僅顯示搜尋次數最高的前 %s 個關鍵字，完整列表請查看詳情頁面。"
+
+msgid "Search keyphrases - Number of search"
+msgstr "搜尋關鍵詞組 - 搜尋次數"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "主頁僅顯示搜尋次數最高的前 %s 個關鍵詞組，完整列表請查看詳情頁面。"
+
+msgid "External page referers - Pages - Hits"
+msgstr "外部頁面來源 - 頁面數 - 點擊數"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "主頁僅顯示引用頁面數最高的前 %s 個外部來源，完整列表請查看詳情頁面。"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "搜尋引擎來源 ID - 頁面數 - 點擊數"
+
+msgid "Origin - Pages - Hits"
+msgstr "來源 - 頁面數 - 點擊數"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "未知來源瀏覽器 - 最後訪問時間"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "未知來源作業系統 - 最後訪問時間"
+
+msgid "Screen size - Hits"
+msgstr "螢幕解析度 - 點擊數"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "瀏覽器 ID - 點擊量 - 頁面數"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "下載 - 點擊數 - 頻寬"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "協議 - 點擊數 - 帶寬"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "圖示 狀態 - 類型：200:404:其他"
+
+#------------------------------------------------------------------------------
+# 時段翻譯 | Time Period Translations
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "午夜零點 · AWStats 都睡了，你還在看資料？真愛啊"
+
+msgid "period_01"
+msgstr "凌晨一點 · 這個點還在訪問？你是失眠還是剛下班"
+
+msgid "period_02"
+msgstr "凌晨兩點 · 爬蟲都比你勤奮，人家還在工作呢"
+
+msgid "period_03"
+msgstr "凌晨三點 · 城市在睡覺，伺服器在加班，誰更慘？"
+
+msgid "period_04"
+msgstr "凌晨四點 · 黑暗中最亮的星，是你的螢幕還是伺服器指示燈"
+
+msgid "period_05"
+msgstr "清晨五點 · 早起的鳥兒有蟲吃，早起的爬蟲有資料爬"
+
+msgid "period_06"
+msgstr "早晨六點 · 有人起床了，有人還沒睡，網際網路從不打烊"
+
+msgid "period_07"
+msgstr "早上七點 · 擠捷運的時間，也是刷網頁的時間"
+
+msgid "period_08"
+msgstr "上午八點 · 開工第一件事：先看一眼昨天的資料"
+
+msgid "period_09"
+msgstr "上午九點 · 黃金時段，薪水小偷也要講基本法"
+
+msgid "period_10"
+msgstr "上午十點 · 咖啡時間，順便看看流量漲了沒"
+
+msgid "period_11"
+msgstr "上午十一點 · 還有一個小時吃飯，再堅持一下"
+
+msgid "period_12"
+msgstr "正午十二點 · 伺服器：你們都去吃飯了，我先瞇一下"
+
+msgid "period_13"
+msgstr "下午一點 · 午睏來襲，資料可不會打瞌睡"
+
+msgid "period_14"
+msgstr "下午兩點 · 下午茶時間，配資料更香"
+
+msgid "period_15"
+msgstr "下午三點 · 今日流量走勢圖，像不像你的心情曲線？"
+
+msgid "period_16"
+msgstr "下午四點 · 距離下班還有 X 小時，流量開始衝刺"
+
+msgid "period_17"
+msgstr "傍晚五點 · 下班啦！但伺服器還要繼續做苦工"
+
+msgid "period_18"
+msgstr "晚上六點 · 晚飯時間，刷個影片放鬆一下"
+
+msgid "period_19"
+msgstr "晚上七點 · 黃金檔，流量高峰，伺服器：我頂得住"
+
+msgid "period_20"
+msgstr "晚上八點 · 癱在沙發上，你是第 114514 位訪客"
+
+msgid "period_21"
+msgstr "晚上九點 · 夜深人靜，偷偷看資料的夜貓子+1"
+
+msgid "period_22"
+msgstr "晚上十點 · 今日資料即將出爐，緊張嗎？"
+
+msgid "period_23"
+msgstr "深夜十一點 · AWStats：該睡了，明天還要打工呢"
+
+#------------------------------------------------------------------------------
 # 時間維度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Period"
-msgstr "報表產生時間"
+msgstr "統計週期"
 
 msgid "Year"
 msgstr "年"
 
 msgid "Month"
 msgstr "月"
+
+msgid "Months"
+msgstr "月份"
+
+msgid "Date"
+msgstr "日期"
 
 msgid "Day"
 msgstr "日"
@@ -774,14 +643,53 @@ msgid "Hours"
 msgstr "小時"
 
 msgid "Day of week"
-msgstr "星期"
+msgstr "禮拜"
 
 msgid "When"
 msgstr "何時"
 
-#==============================================================================
+msgid "%s Server Management Panel"
+msgstr "%s  伺服器管理面板"
+
+msgid "Server Administration"
+msgstr "簡單高效的伺服器解決方案"
+
+#------------------------------------------------------------------------------
 # 訪客維度
-#==============================================================================
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "無效的 URL 參數"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "由於 URL 參數無效或格式錯誤，無法載入請求的頁面。"
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "這可能是由於輸入了錯誤的 URL、缺少參數分隔符，或使用了無效的設定名稱所導致。"
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "請檢查您輸入的 URL，並確保所有參數格式正確。"
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "SiteDomain 參數未在您的 config/domain 檔案中定義，或者您可能沒有對檔案添加執行權限。"
+
+msgid "Please run as Administrator to set permissions"
+msgstr "請以系統管理員身分執行以設定權限"
+
+msgid "Please set execute permission"
+msgstr "請設定執行權限"
+
+msgid "Or if you prefer numeric mode"
+msgstr "或者如果您更喜歡數字模式"
+
+msgid "View Report Directly"
+msgstr "直接檢視報告"
+
+msgid "AWStats Log Viewer"
+msgstr "AWStats 日誌檢視器"
+
+msgid "Month Selection"
+msgstr "月份選擇"
 
 msgid "Who"
 msgstr "誰"
@@ -792,14 +700,17 @@ msgstr "訪客"
 msgid "Countries"
 msgstr "國家/地區"
 
-msgid "Domain"
-msgstr "網域"
+msgid "flag_icon"
+msgstr "國旗"
+
+msgid "Country-Region-City"
+msgstr "國家/地區/城市"
+
+msgid "Code"
+msgstr "代碼"
 
 msgid "Known"
 msgstr "已知"
-
-msgid "Unknown"
-msgstr "未知"
 
 msgid "unknownos"
 msgstr "無法得知的作業系統"
@@ -809,6 +720,51 @@ msgstr "無法得知的瀏覽器"
 
 msgid "Unresolved IP Address"
 msgstr "未解析的IP位址"
+
+msgid "Unknown File Type"
+msgstr "未知檔案類型"
+
+msgid "Unknown Size"
+msgstr "未知檔案大小"
+
+msgid "Unknown Time"
+msgstr "未知請求時間"
+
+msgid "Unknown Browser"
+msgstr "未知瀏覽器"
+
+msgid "Unknown Visitor"
+msgstr "未知訪客"
+
+msgid "Unknown Visitor (Total)"
+msgstr "未知訪客(總計)"
+
+msgid "Unknown Country"
+msgstr "未知國家"
+
+msgid "Unknown Country (Region)"
+msgstr "未知國家(總計)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "未知访客（标题）"
+
+msgid "Unknown Duration"
+msgstr "未知時長"
+
+msgid "Unknown OS (Link)"
+msgstr "未知作業系統(連結)"
+
+msgid "Unknown OS (Row)"
+msgstr "未知作業系統（列表）"
+
+msgid "Unknown Browser (Link)"
+msgstr "未知瀏覽器（連結）"
+
+msgid "Unknown Browser (Row)"
+msgstr "未知瀏覽器（清單）"
+
+msgid "Unknown Screen"
+msgstr "未知螢幕尺寸"
 
 msgid "Login"
 msgstr "登入名"
@@ -837,9 +793,484 @@ msgstr "目標"
 msgid "Grabber"
 msgstr "抓取工具"
 
-#==============================================================================
+#------------------------------------------------------------------------------
+# 格式說明
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "文字檔案 (1963年 ASCII 標準化，無格式純文字。所有原始碼、設定檔、日誌的基礎。Unix 用 LF，Windows 用 CRLF 換行，至今仍是電腦最通用的資料格式)"
+
+msgid "mime_log"
+msgstr "日誌檔案 (記錄系統、應用程式執行資訊的純文字檔案，常用於故障排除、效能分析、安全稽核。標準格式如 Apache combined log、Nginx access log、syslog 等)"
+
+msgid "mime_page"
+msgstr "HTML 網頁 (1989年 Tim Berners-Lee 發明全球資訊網，1990年定義 HTML/HTTP/URL 三大技術，無償開放未申請專利。2014年 HTML5 成為 W3C 正式標準，支援顯示、多媒體與列印。獲2016年圖靈獎)"
+
+msgid "mime_khtml"
+msgstr "KHTML 網頁引擎 (1998年 KDE 2.0 發佈，Konqueror 瀏覽器渲染引擎。2001年蘋果基於 KHTML 建立 WebKit，2008年 Google 從 WebKit 分支建立 Blink，成為 Chrome、Edge、Safari 等瀏覽器的核心。KHTML 是開源社群奠基現代瀏覽器引擎的典範，其技術遺產透過 WebKit/Blink 延續至今)"
+
+msgid "mime_script"
+msgstr "動態腳本 (直譯式語言，無需編譯。包括 ASP、JSP、CGI、ColdFusion、Tcl、VBScript 等，廣泛用於早期網頁開發、系統管理、自動化任務。現代腳本語言如 Python、Ruby、JavaScript 已發展為全端開發主力)"
+
+msgid "mime_js"
+msgstr "JavaScript 腳本 (1995年 Brendan Eich 在 Netscape 用10天創造，瀏覽器原生程式語言。1997年 ECMAScript 標準化，2009年 Node.js 誕生使其成為全端語言，npm 是全球最大套件管理器。連續多年 GitHub 最熱門程式語言)"
+
+msgid "mime_py"
+msgstr "Python 腳本 (1991年 Guido van Rossum 創建，以強制縮排、簡潔語法著稱。廣泛用於網頁開發、資料科學、人工智慧、自動化維運。TIOBE 年度程式語言多次獲獎者)"
+
+msgid "mime_sh"
+msgstr "Shell 腳本 (1971年 Unix 誕生，命令腳本語言。用於系統管理、自動化任務、服務啟動、部署腳本。Linux 維運必備技能)"
+
+msgid "mime_rb"
+msgstr "Ruby 腳本 (1995年 Yukihiro Matsumoto 創建，注重開發者幸福感。Ruby on Rails 框架開創了約定優於配置的開發典範，影響現代網頁框架設計)"
+
+msgid "mime_pl"
+msgstr "Perl 腳本 (1987年 Larry Wall 創建，以實用主義著稱，被譽為『瑞士軍刀』。CPAN 是現代語言套件管理器的先驅，在文字處理、系統管理、CGI 領域影響深遠)"
+
+msgid "mime_php"
+msgstr "PHP 動態網頁 (1995年 Rasmus Lerdorf 創建，專為網頁開發設計。全球超過 70% 網站使用，驅動 WordPress、Facebook、Wikipedia 等平台。PHP 8 引入 JIT 編譯，效能大幅提升)"
+
+msgid "mime_image"
+msgstr "圖片檔案"
+
+msgid "mime_document"
+msgstr "文件檔案"
+
+msgid "mime_package"
+msgstr "軟體套件"
+
+msgid "mime_archive"
+msgstr "Gzip 壓縮檔案 (1992年 GNU 專案，基於 DEFLATE 演算法。Web 中用於動態壓縮回應內容，壓縮率通常 60-90%。2015 年後部分場景被 Brotli 取代，但仍是伺服器端最廣泛支持的壓縮格式)"
+
+msgid "mime_audio"
+msgstr "音訊檔案"
+
+msgid "mime_video"
+msgstr "視訊檔案"
+
+msgid "mime_jscript"
+msgstr "JavaScript (1995年 Brendan Eich 開發)"
+
+msgid "mime_json"
+msgstr "JSON 資料 (2001年 Douglas Crockford 提出，輕量級資料交換格式，Web API 事實標準)"
+
+msgid "mime_vbs"
+msgstr "VBScript (1996年 Microsoft 開發，Windows 腳本語言，用於 ASP 網頁和 Windows 管理腳本。隨著 PowerShell 和 JavaScript 普及，已逐漸淘汰)"
+
+msgid "mime_conf"
+msgstr "設定檔 (文字格式儲存軟體設定，常見格式：INI、JSON、YAML、TOML、XML。Linux 系統設定多在 /etc 目錄)"
+
+msgid "mime_css"
+msgstr "CSS 樣式表 (1996年12月 W3C 發布 CSS1 首個正式標準，1998年 CSS2 增加定位和媒體類型，2011年起 CSS3 模組化引入圓角、動畫、彈性盒、網格佈局和響應式設計。與 HTML、JavaScript 並稱前端三大核心技術，所有現代瀏覽器（Chrome、Firefox、Safari、Edge）均原生支援，是網頁樣式定義的唯一標準)"
+
+msgid "mime_xsl"
+msgstr "XSL 樣式表 (1999年 W3C 標準，XML 文件轉換語言，可將 XML 轉為 HTML/PDF/文字。在 JSON 普及後使用減少)"
+
+msgid "mime_runtime"
+msgstr "可執行檔 (EXE、ELF、Mach-O 等作業系統可執行格式，包含機器碼和載入資訊)"
+
+msgid "mime_library"
+msgstr "程式庫檔案 (DLL、SO、dylib 等動態連結程式庫，程式執行時載入的共享程式碼)"
+
+msgid "mime_swf"
+msgstr "Flash 動畫 (1996年 Macromedia 開發，後歸 Adobe。互動式網頁動畫標準，曾統治網際網路動畫和遊戲。痛點：依賴外掛、行動裝置不支援、安全風險高。2017年 Adobe 宣佈淘汰，2020年全面停止支援，被 HTML5/CSS3/JS 取代)"
+
+msgid "mime_dtd"
+msgstr "DTD 文件類型定義 (XML 規範，定義 XML 文件結構，用於驗證 XML 合法性)"
+
+msgid "mime_csv"
+msgstr "CSV 資料格式 (逗號分隔值，表格資料通用格式，Excel 和資料庫匯入匯出標準)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (Java 應用程式啟動器，2000年代 Java 桌面應用分發技術，現已淘汰)"
+
+msgid "mime_lit"
+msgstr "Microsoft Reader 電子書 (2000年微軟推出，LIT 格式，已淘汰)"
+
+msgid "mime_svg"
+msgstr "SVG 向量圖 (1999年 W3C 標準，因微軟長期推自家 VML 格式，IE 瀏覽器直至 2011 年才支援，導致普及延遲。2015 年後隨著 IE 淘汰和高解析度螢幕普及，成為圖示、Logo 首選格式)"
+
+msgid "mime_ai"
+msgstr "Adobe Illustrator 向量圖 (1987年推出，業界標準向量圖形格式，印刷設計、Logo、圖示首選)"
+
+msgid "mime_phshop"
+msgstr "Photoshop 圖片 (1990年 Adobe 推出，Photoshop 原始檔格式 PSD，影像處理業界標準)"
+
+msgid "mime_ttf"
+msgstr "TrueType 字型 (1989年 Apple 和 Microsoft 聯合開發，向量字型格式，螢幕顯示與列印一致，現代作業系統預設字型格式)"
+
+msgid "mime_fon"
+msgstr "字型檔案 (Windows 點陣字型格式，已淘汰)"
+
+msgid "mime_pdf"
+msgstr "PDF 文件 (1993年 Adobe 開發，2008年成為 ISO 國際標準。跨平台文件格式，保持格式一致性，是電子文件分發的全球標準)"
+
+msgid "mime_dotnet"
+msgstr "ASP.NET 動態頁面 (2002年 Microsoft 推出，Windows 平台動態網頁技術，.NET Framework 的一部分)"
+
+msgid "mime_mdb"
+msgstr "Access 資料庫 (Microsoft Access 資料庫檔案，1992年推出，Windows 桌面資料庫解決方案)"
+
+msgid "mime_md"
+msgstr "Markdown 文件 (2004年由 John Gruber 創建，語法設計受 reStructuredText 和 Setext 影響。核心設計哲學為‘可讀即渲染’，原始實現 Markdown.pl 採用 Perl 正則表達式。衍生規範包括 GFM (2013)、CommonMark (2017)、Pandoc Markdown 等。驅動 GitHub、GitLab、Stack Overflow、Jupyter Notebook、Obsidian、Hugo、VitePress 等生態，成為靜態網站生成器和開發者文件的事實標準格式)"
+
+msgid "mime_crystal"
+msgstr "Crystal Reports 報表格式 (SAP 商業智慧報表，企業報表標準格式)"
+
+msgid "mime_libreoffice"
+msgstr "LibreOffice 文件 (2010年 The Document Foundation 開發，OpenOffice 分支，ODF 標準實現，主流開源辦公套件)"
+
+msgid "mime_encrypt"
+msgstr "加密檔案 (需解密才能檢視的檔案，常見副檔名：.enc、.crypt、.pgp、.gpg)"
+
+msgid "mime_gpx"
+msgstr "GPS 軌跡資料 (GPS 交換格式，記錄地理位置資訊，運動手錶、導航裝置通用格式)"
+
+msgid "mime_diskimage"
+msgstr "磁碟映像檔 (DMG、ISO、IMG 等光碟/磁碟映像檔案，用於分發軟體或備份儲存媒體)"
+
+msgid "mime_vm"
+msgstr "虛擬機器映像檔 (VMDK、VDI、VHDX、OVA 等虛擬機器磁碟檔案，VMware、VirtualBox、Hyper-V 等虛擬化平台格式)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent 種子檔案 (2001年 Bram Cohen 發明，P2P 下載索引檔案，包含檔案元資料和 Tracker 資訊)"
+
+msgid "mime_gis"
+msgstr "GIS 地理資訊系統資料 (Shapefile、GeoJSON 等地理空間資料格式，用於地圖和空間分析)"
+
+msgid "mime_ebook"
+msgstr "電子書 (EPUB、MOBI、AZW 等電子書格式。EPUB 為國際標準，MOBI/AZW 為 Amazon Kindle 格式)"
+
+msgid "mime_avif"
+msgstr "AVIF 影像 (2019年開放媒體聯盟推出，基於 AV1 編碼，壓縮率比 WebP 高 50%，新一代網頁影像標準)"
+
+msgid "mime_markdown"
+msgstr "Markdown 文件 (2004年 John Gruber 設計，輕量級標記語言，GitHub README、技術文件、論壇貼文的通用格式)"
+
+msgid "mime_yaml"
+msgstr "YAML 設定檔 (2001年 Clark Evans 設計，人類可讀的資料序列化格式，Kubernetes、Ansible、Docker Compose 設定檔標準)"
+
+msgid "mime_toml"
+msgstr "TOML 設定檔 (2013年 Tom Preston-Werner 設計，『Tom's Obvious Minimal Language』，Rust/Cargo、Python/pip、Go 等現代工具的設定檔格式)"
+
+msgid "mime_vue"
+msgstr "Vue 元件檔 (2014 年由尤雨溪推出，漸進式 JavaScript 框架。透過單一檔案元件 (SFC) 將 HTML、CSS、JS 完美結合，極大提升了開發效率，是全球最流行的前端框架之一。同時作為 VitePress 等現代靜態網站產生器的核心，廣泛用於驅動互動式技術文件與部落格)"
+
+msgid "mime_wasm"
+msgstr "WebAssembly 模組 (2017年 W3C 標準，瀏覽器高效能執行格式，C/C++/Rust/R 可編譯為目標，效能接近原生)"
+
+msgid "mime_jsx"
+msgstr "React JSX 元件 (2013年 Facebook 推出 JavaScript XML，React 框架元件語法，將 HTML 寫入 JavaScript 的創新典範)"
+
+msgid "mime_tsx"
+msgstr "TypeScript TSX 元件 (2012年 Microsoft 開發，TypeScript + JSX，React 型別安全開發的標準寫法)"
+
+msgid "mime_heif"
+msgstr "HEIF 影像 (2015年 MPEG 標準，高效影像檔案格式，蘋果生態廣泛使用)"
+
+msgid "mime_heic"
+msgstr "HEIC 影像 (蘋果 HEIF 實作，iPhone 預設照片格式，iOS/macOS 原生支援)"
+
+msgid "mime_gltf"
+msgstr "GLTF 3D 模型 (GL傳輸格式，『3D 界的 JPEG』，2015年 Khronos Group 發佈，Web 3D 標準格式)"
+
+msgid "mime_glb"
+msgstr "GLB 二進位 3D 模型 (GLTF 的二進位版本，單檔案包含所有資源，用於 3D 場景分發)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY 詞彙表 (術語定義檔案，用於文件系統的術語管理)"
+
+msgid "mime_cbz"
+msgstr "CBZ 漫畫書 (ZIP 壓縮的漫畫影像，漫畫收藏通用格式)"
+
+msgid "mime_cbr"
+msgstr "CBR 漫畫書 (RAR 壓縮的漫畫影像，漫畫收藏通用格式)"
+
+msgid "mime_fb2"
+msgstr "FB2 電子書 (FictionBook 2.0，俄羅斯電子書格式，XML 結構，開源閱讀器廣泛支援)"
+
+msgid "mime_kepub"
+msgstr "KEPUB 電子書 (Kobo 專用 EPUB 格式，Kobo 電子書閱讀器最佳化格式)"
+
+msgid "mime_m4b"
+msgstr "M4B 有聲書 (MPEG-4 音訊書籍格式，支援書籤，iTunes 有聲書格式)"
+
+msgid "mime_kfx"
+msgstr "Kindle KFX 格式 (2015年 Amazon 推出，Kindle 專用電子書格式，支援增強排版和快速翻頁)"
+
+msgid "mime_chm"
+msgstr "CHM 說明檔案 (1997年 Microsoft 推出，編譯的 HTML 說明格式，Windows 軟體說明文件標準)"
+
+msgid "mime_mht"
+msgstr "MHT 網頁封存檔 (1999年 Microsoft 推出，單一檔案網頁格式，IE 瀏覽器儲存網頁格式)"
+
+msgid "mime_wml"
+msgstr "WML 無線標記語言 (1999年 WAP 標準，用於早期功能型手機網頁檔案，已淘汰)"
+
+msgid "mime_xhtml"
+msgstr "XHTML 網頁 (2000年 W3C 標準，HTML 的 XML 版本，語法更嚴格。2009年 W3C 停止維護，重心轉向 HTML5)"
+
+msgid "mime_xml"
+msgstr "XML 文件 (1998年 W3C 標準，可擴充標記語言，Web 服務、設定檔、資料交換的基礎格式)"
+
+msgid "mime_sgml"
+msgstr "SGML 文件 (1986年 ISO 標準，HTML 的前身，標準通用標記語言，XML 和 HTML 均派生自 SGML)"
+
+msgid "mime_apng"
+msgstr "APNG 動畫 (2004年 Mozilla 開發，PNG 的動畫擴充，GIF 的現代替代，支援真彩色和半透明)"
+
+msgid "mime_bmp"
+msgstr "BMP 點陣圖 (Windows 點陣圖格式，自 Windows 1.0 起原生支援。無壓縮，檔案較大，但因結構簡單、無需額外編解碼器，Windows 11 截圖工具、小畫家、EXE/MSI 安裝套件的圖示資源、游標檔案及部分舊版驅動程式仍在使用。相同畫質下檔案比 PNG 大約 3-10 倍，多數場合已被 PNG/JPEG 取代，但 Windows 生態仍保留廣泛相容性)"
+
+msgid "mime_cdr"
+msgstr "CDR 向量圖 (CorelDRAW 專用格式，加拿大 Corel 公司，向量圖形設計軟體)"
+
+msgid "mime_gif"
+msgstr "GIF 影像 (1987年 CompuServe 開發，256色動圖格式。痛點：色彩少、畫質粗糙、不支援半透明、檔案大、幀率低。被 APNG、WebP 等現代動圖格式取代)"
+
+msgid "mime_ico"
+msgstr "ICO 圖示 (Windows 圖示檔案格式，支援多解析度，網站 favicon 標準格式)"
+
+msgid "mime_jpeg"
+msgstr "JPEG 影像 (1992年 ISO 標準，有損壓縮照片格式，網際網路照片事實標準)"
+
+msgid "mime_jpg"
+msgstr "JPEG 影像 (1992年 ISO 標準，有損壓縮照片格式，網際網路照片事實標準)"
+
+msgid "mime_png"
+msgstr "PNG 影像 (1996年 W3C 推薦，支援真彩色和半透明，GIF 的靜態替代，網際網路無損影像標準)"
+
+msgid "mime_ps"
+msgstr "PostScript 頁面描述檔案 (1985年 Adobe 推出，頁面描述語言，PDF 的前身，用於列印和出版)"
+
+msgid "mime_psb"
+msgstr "PSB 大型文件 (Adobe Photoshop 超大影像格式，支援超過 2GB 或 30000 像素的巨型影像)"
+
+msgid "mime_psd"
+msgstr "PSD 影像 (Adobe Photoshop 原始檔，支援圖層、色版、路徑，影像處理業界標準格式)"
+
+msgid "mime_webp"
+msgstr "WebP 影像 (2010年 Google 開發，網頁影像格式，支援有損/無損壓縮和動畫，壓縮率比 PNG 高 25-35%，比 JPEG 高 25%)"
+
+msgid "mime_woff"
+msgstr "WOFF 網頁字型 (2009年創建，2018年 W3C 標準。基於 TrueType/OpenType 壓縮，Web 字型載入最佳化，現代網站圖示字型標準格式)"
+
+msgid "mime_7z"
+msgstr "7z 壓縮檔 (1999年 Igor Pavlov 開發，7-Zip 程式專有格式。LZMA 演算法，高壓縮率，開源免費。7z 格式在相同壓縮率下通常比 ZIP 小 30-50%，是開源社群和軟體分發的常用格式)"
+
+msgid "mime_ace"
+msgstr "ACE 壓縮檔 (1990年代開發，WinACE 程式格式。曾與 RAR 競爭，壓縮率較高。2007年停止開發，現已被 7z/RAR 取代，較少使用)"
+
+msgid "mime_bz2"
+msgstr "BZIP2 壓縮檔 (1996年 Julian Seward 開發，塊排序壓縮演算法。壓縮率比 GZIP 高 15-20%，但速度較慢。Linux 核心原始碼、開源軟體套件常用格式，副檔名 .bz2)"
+
+msgid "mime_cab"
+msgstr "CAB 壓縮檔 (1995年 Microsoft 開發，Cabinet 格式。Windows 系統安裝套件格式，用於驅動程式、系統檔案分發。Windows Installer (MSI) 內部使用 CAB 儲存檔案)"
+
+msgid "mime_dmg"
+msgstr "DMG 磁碟映像檔 (1980年代 Apple 推出，Disk Image 格式。macOS 軟體分發標準格式，雙擊掛載為虛擬磁碟，拖曳即可安裝應用程式。支援壓縮和加密，是 Mac 軟體下載的主流格式)"
+
+msgid "mime_emz"
+msgstr "EMZ 壓縮圖片 (Windows 壓縮增強圖元檔案，EMF 的壓縮版本。Office 文件中向量圖形儲存格式，本質是 GZIP 壓縮的 EMF 檔案)"
+
+msgid "mime_gz"
+msgstr "GZIP 壓縮檔 (1992年 Jean-loup Gailly 和 Mark Adler 開發，GNU 專案。Unix/Linux 標準壓縮工具，HTTP 傳輸壓縮常用格式。副檔名 .gz，常與 TAR 配合使用)"
+
+msgid "mime_jar"
+msgstr "JAR 壓縮檔 (1997年 Sun Microsystems 推出，Java ARchive 格式。本質是 ZIP 壓縮包，用於打包 Java 類別庫和應用程式。Maven、Gradle 等 Java 生態的核心格式，Android 也使用 JAR)"
+
+msgid "mime_lzma"
+msgstr "LZMA 壓縮檔 (1998年 Igor Pavlov 開發，Lempel-Ziv-Markov chain 演算法。7z 格式的核心壓縮演算法，高壓縮率，解壓速度快。用於韌體、嵌入式系統軟體分發)"
+
+msgid "mime_rar"
+msgstr "RAR 壓縮檔 (1993年 Eugene Roshal 開發，Roshal ARchive 格式。高壓縮率，支援分割壓縮、恢復記錄。WinRAR 程式格式，壓縮率優於 ZIP，但需付費軟體支援，開源工具如 unrar 可解壓)"
+
+msgid "mime_tar"
+msgstr "TAR 歸檔包 (1979年 Unix V7 引入，Tape ARchive 格式。磁帶歸檔格式，不壓縮僅打包，常與 GZIP/BZIP2/XZ 配合使用。Linux 軟體套件原始碼、Docker 映像檔分層儲存均使用 TAR 格式)"
+
+msgid "mime_tgz"
+msgstr "TGZ 壓縮檔 (TAR + GZIP 組合格式，副檔名 .tgz 或 .tar.gz。Unix/Linux 軟體套件最通用分發格式，原始碼套件、二進位套件廣泛使用，『解壓即用』的代表)"
+
+msgid "mime_tbz2"
+msgstr "TBZ2 壓縮檔 (TAR + BZIP2 組合格式，副檔名 .tbz2 或 .tar.bz2。壓縮率比 TGZ 高 15-20%，適合大檔案分發，Linux 核心原始碼長期使用此格式)"
+
+msgid "mime_xz"
+msgstr "XZ 壓縮檔 (2009年推出，基於 LZMA2 演算法。壓縮率極高，比 GZIP 高 30-50%，解壓速度較快。Linux 核心、套件管理器（如 Debian 的 .deb 內部）廣泛使用，是當前 Linux 生態推薦格式)"
+
+msgid "mime_z"
+msgstr "Z 壓縮檔 (1985年 Unix compress 指令格式，LZW 演算法。早期 Unix 壓縮格式，已被 GZIP 取代。副檔名 .Z，現代系統較少使用)"
+
+msgid "mime_zip"
+msgstr "ZIP 壓縮檔 (1989年 Phil Katz 開發，PKZIP 格式。Windows 原生支援，網際網路最通用壓縮格式。支援多檔案、目錄結構，可選擇壓縮演算法。Java 的 JAR、Android 的 APK、Office 文件的 DOCX/XLSX 均基於 ZIP 格式)"
+
+msgid "mime_zst"
+msgstr "Zstandard 壓縮檔 (2015年 Facebook 開發，Yann Collet 設計。高速壓縮演算法，壓縮率接近 LZMA，速度遠超 GZIP。Linux 核心 5.9+ 支援，Arch Linux pacman、Debian APT 逐步採用，是新一代壓縮標準)"
+
+msgid "mime_lz4"
+msgstr "LZ4 壓縮檔 (2011年 Yann Collet 開發，極速壓縮演算法。壓縮速度比 GZIP 快 10 倍以上，適合即時壓縮場景。Linux 核心、OpenZFS、Hadoop 廣泛使用，是速度優先場景的首選)"
+
+msgid "mime_lzo"
+msgstr "LZO 壓縮檔 (1996年 Markus Oberhumer 開發，Lempel-Ziv-Oberhumer 演算法。解壓速度極快，壓縮率一般。Linux 核心 Squashfs、OpenWrt 韌體使用，適合嵌入式系統)"
+
+msgid "mime_msi"
+msgstr "MSI 安裝套件 (1999年 Microsoft 推出，Windows Installer 套件格式。Windows 應用程式標準安裝格式，支援交易回溯、元件管理、靜默安裝。企業級軟體分發首選格式，至今仍是 Windows 軟體安裝主流)"
+
+msgid "mime_pkg"
+msgstr "PKG 安裝套件 (macOS 應用安裝套件格式，基於 Apple 的 Installer 技術。macOS 軟體分發標準格式，支援元件選擇、安裝腳本、解除安裝功能。.pkg 檔案雙擊即可安裝，Mac App Store 之外軟體常用分發方式)"
+
+msgid "mime_apk"
+msgstr "APK 安卓應用套件 (2008年 Google 推出，Android 系統傳統應用安裝格式。APK 本質是 ZIP 壓縮包，包含程式碼、資源、清單檔案。2021年起 Google Play 要求新應用改用 AAB 格式，但 APK 仍用於開發除錯、第三方商店和側載安裝)"
+
+msgid "mime_ipa"
+msgstr "IPA 蘋果應用套件 (iOS App Store Package，iOS/iPadOS 應用安裝格式。2008年隨 iPhone SDK 發布。需透過 App Store 分發或企業憑證簽名。包含可執行檔、資源、Info.plist 簽名資訊)"
+
+msgid "mime_hap"
+msgstr "HAP 鴻蒙應用套件 (HarmonyOS Ability Package，鴻蒙應用基本單元。2020年隨 HarmonyOS 2.0 發布。支援 entry 和 feature 兩種型態，華為手機、平板、智慧手錶等鴻蒙裝置分發格式)"
+
+msgid "mime_har"
+msgstr "HAR 鴻蒙靜態共享函式庫 (HarmonyOS Archive，鴻蒙靜態共享函式庫，可被多個 HAP 套件共享，用於元件化開發和模組複用)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (2018年 Google 推出，2021年起 Google Play 強制新應用使用此格式。AAB 是分發格式，Google Play 根據裝置設定（CPU架構、螢幕密度、語言）動態產生最佳化 APK，安裝包體積平均減少 35%。開發者上傳 AAB，使用者下載 APK)"
+
+msgid "mime_xapk"
+msgstr "XAPK 應用套件 (第三方 Android 應用擴充套件包，包含 APK + OBB 資料檔案。用於大型遊戲和複雜應用，解決 APK 單檔案 100MB 限制。常見於 APKPure、APKMirror 等第三方應用商店，非 Google 官方格式)"
+
+msgid "mime_appx"
+msgstr "Windows 應用套件 (2012年 Microsoft 推出，Windows 8/10/11 應用安裝格式。支援 UWP 和桌面應用轉換，透過 Microsoft Store 分發。2024年 Microsoft 推出 MSIX 作為後繼格式，逐步取代 APPX)"
+
+msgid "mime_msix"
+msgstr "MSIX 應用套件 (2018年 Microsoft 推出，Windows 新一代應用打包格式。結合 APPX 和 MSI 優點，支援所有 Windows 應用類型，可透過 Microsoft Store 或側載安裝，Windows 11 推薦格式)"
+
+msgid "mime_appimage"
+msgstr "AppImage 應用套件 (2004年推出，Linux 免安裝應用格式。『一個應用一個檔案』，無需安裝直接執行，支援大多數 Linux 發行版，開發者分發 Linux 軟體的常用方式)"
+
+msgid "mime_flatpak"
+msgstr "Flatpak 應用套件 (2015年推出，Linux 沙盒化應用格式。跨發行版執行，與主機系統隔離，Fedora、Red Hat 主導開發，GNOME 軟體中心預設格式)"
+
+msgid "mime_snap"
+msgstr "Snap 應用套件 (2014年 Canonical 推出，Ubuntu 母公司開發，Linux 通用應用格式。自動更新、沙盒隔離，支援 40+ Linux 發行版，Ubuntu 軟體中心預設格式)"
+
+msgid "mime_deb"
+msgstr "Debian 軟體套件 (1993年 Debian 專案推出，Debian/Ubuntu 及其衍生版標準安裝格式。使用 dpkg 管理，APT 是其套件管理器前端，Linux 生態最成熟的套件格式之一，至今仍是 Debian 系主流)"
+
+msgid "mime_rpm"
+msgstr "RPM 軟體套件 (1997年 Red Hat 推出，Red Hat/Fedora/CentOS/SUSE 等發行版標準格式。RPM 全稱『Red Hat Package Manager』，與 DEB 並稱 Linux 兩大套件格式，至今仍是 RHEL 系主流)"
+
+msgid "mime_pacman"
+msgstr "Arch 軟體套件 (2002年 Arch Linux 推出，pacman 套件管理器使用的 .pkg.tar.zst 格式。Arch Linux 滾動發行版的核心，以簡潔和 KISS 原則著稱，AUR（Arch User Repository）是其特色)"
+
+msgid "mime_exe"
+msgstr "EXE 可執行檔 (Windows 可執行程式格式，『Executable』的縮寫。Windows 作業系統原生執行格式，包含 PE 結構。從 MS-DOS 的 MZ 格式演變而來，1993年 Windows NT 引入 PE（Portable Executable）格式並沿用至今。軟體安裝套件、應用程式、系統工具均使用此格式。使用者雙擊即可執行，是全球最廣泛使用的可執行格式)"
+
+msgid "mime_dll"
+msgstr "DLL 動態連結程式庫 (1993年 Microsoft 推出，Dynamic Link Library。Windows 共享程式碼庫，程式執行時動態載入，節省記憶體和磁碟空間。系統元件、應用程式外掛、驅動程式均使用 DLL 格式。Windows API 的核心實作方式，DLL Hell 問題在 .NET 時代得到緩解)"
+
+msgid "mime_com"
+msgstr "COM 可執行檔 (MS-DOS 時代可執行格式，『Command』的縮寫。檔案結構簡單，64KB 限制，Windows 3.x 前主流格式。已淘汰，現代 Windows 使用 EXE 格式，COM 副檔名仍用於某些元件檔案)"
+
+msgid "mime_aac"
+msgstr "AAC 音訊 (1997年 MPEG 標準，Advanced Audio Coding。MP3 的後繼者，同碼率下音質優於 MP3，YouTube、iTunes、Nintendo Switch 預設音訊格式)"
+
+msgid "mime_alac"
+msgstr "ALAC 音訊 (2004年 Apple 開發，Apple Lossless Audio Codec。蘋果無損格式，2011年開源，iTunes 和 Apple Music 無損音訊預設格式)"
+
+msgid "mime_flac"
+msgstr "FLAC 音訊 (2001年 Xiph.Org 基金會開發，Free Lossless Audio Codec。無損壓縮，音質與 CD 相同，檔案約為原 WAV 的一半。開源免專利，發燒友和數位音樂收藏首選格式)"
+
+msgid "mime_mp3"
+msgstr "MP3 音訊 (1993年 Fraunhofer 研究院開發，MPEG-1 Audio Layer 3。有損壓縮格式，檔案小音質尚可，2000年代數位音樂革命的核心格式，iPod 和 Napster 的功臣。2017年專利過期，成為公共領域格式)"
+
+msgid "mime_oga"
+msgstr "Ogg Audio 音訊 (Xiph.Org 基金會開發，Ogg 容器的純音訊格式，使用 Vorbis 編碼。開源免專利，壓縮效率優於 MP3，開源專案廣泛使用)"
+
+msgid "mime_ogg"
+msgstr "OGG 音訊 (2000年 Xiph.Org 基金會開發，Ogg Vorbis 格式。開源免專利，壓縮效率優於 MP3，Spotify 早期採用，遊戲音效廣泛使用)"
+
+msgid "mime_opus"
+msgstr "Opus 音訊 (2012年 IETF 標準化，開源免專利音訊格式。結合 SILK 和 CELT 技術，延遲極低，壓縮效率最高，WebRTC、WhatsApp、Discord 預設音訊格式)"
+
+msgid "mime_wav"
+msgstr "WAV 音訊 (1991年 Microsoft 和 IBM 開發，Windows 原生音訊格式。無壓縮 PCM 編碼，音質無損但檔案巨大，專業音訊編輯標準格式)"
+
+msgid "mime_wma"
+msgstr "WMA 音訊 (1999年 Microsoft 開發，Windows Media Audio。有損/無損兩種版本，Windows 原生支援，隨著 Windows Media Player 普及。現已邊緣化，被 MP3/AAC 取代)"
+
+msgid "mime_dsf"
+msgstr "DSF 音訊 (Direct Stream Digital 格式，索尼和飛利浦開發。1bit 高取樣率，DSD 音訊標準格式，SACD 數位版，發燒友高階音訊格式，檔案巨大)"
+
+msgid "mime_ape"
+msgstr "APE 音訊 (2000年 Monkey's Audio 開發，無損壓縮格式。壓縮率高於 FLAC 但編碼較慢，仍在 Windows 平台和音訊愛好者中使用)"
+
+msgid "mime_mid"
+msgstr "MIDI 音訊 (1983年 MIDI 協會制定，Musical Instrument Digital Interface。樂譜格式而非錄音，檔案極小，電子樂器、手機鈴聲、遊戲音效標準。1991年 General MIDI 標準化，定義了 128 種樂器音色)"
+
+msgid "mime_m4a"
+msgstr "M4A 音訊 (MPEG-4 Audio，AAC 的容器格式。iTunes 音樂商店標準格式，Apple 生態主流音訊格式，支援 DRM 保護)"
+
+msgid "mime_m3u"
+msgstr "M3U 播放清單 (MP3 URL 播放清單格式，純文字檔案，記錄音訊檔案路徑。Winamp 時代標準，用於網路廣播、線上音樂串流。M3U8 是其 UTF-8 版本，用於 HTTP Live Streaming)"
+
+msgid "mime_asf"
+msgstr "ASF 串流媒體 (1996年 Microsoft 開發，Advanced Systems Format。Windows Media 串流媒體容器，支援音視訊同步傳輸。用於網路直播和串流媒體點播，WMA/WMV 均基於 ASF 容器)"
+
+msgid "mime_avi"
+msgstr "AVI 視訊 (1992年 Microsoft 推出，Windows 早期視訊標準。『Audio Video Interleave』，音視訊交錯儲存，1990-2000年代最流行視訊格式，現被 MP4/MKV 取代)"
+
+msgid "mime_divx"
+msgstr "DivX 視訊 (1998年 DivX 公司開發，基於 MPEG-4 的視訊編碼格式。2000年代網路視訊分享主流格式，首個將 DVD 畫質壓縮到 CD 大小的技術。因版權爭議，後轉型為商業編碼器)"
+
+msgid "mime_mp4"
+msgstr "MP4 視訊 (2001年 MPEG 標準，MPEG-4 Part 14。全球最通用視訊格式，支援 H.264/H.265 編碼，網際網路視訊、手機拍攝、YouTube 預設格式)"
+
+msgid "mime_m4v"
+msgstr "M4V 視訊 (iTunes 視訊格式，MP4 的變體。Apple 生態視訊格式，iTunes Store 電影、電視節目標準格式，支援 DRM 版權保護)"
+
+msgid "mime_mpeg"
+msgstr "MPEG 視訊 (1988年 MPEG 組織制定，Moving Picture Experts Group。數位視訊壓縮標準奠基者，MPEG-1（VCD）、MPEG-2（DVD）、MPEG-4（網路視訊）影響深遠)"
+
+msgid "mime_mkv"
+msgstr "MKV 視訊 (2002年 Matroska 專案開發，開源多媒體容器格式。支援多音軌、多字幕、章節，『封裝神器』，高畫質電影分享首選格式)"
+
+msgid "mime_mpg"
+msgstr "MPEG 視訊 (MPEG-1/MPEG-2 視訊副檔名，VCD 和 DVD 標準格式。1990-2000年代光碟視訊主流格式，現被 H.264/H.265 取代)"
+
+msgid "mime_ogv"
+msgstr "Ogg Video 視訊 (Xiph.Org 基金會開發，Ogg 容器的視訊格式，使用 Theora 編碼。開源免專利，HTML5 視訊早期標準之一，Firefox 原生支援)"
+
+msgid "mime_ogx"
+msgstr "Ogg 多媒體容器 (Xiph.Org 基金會開發，Ogg 容器的通用擴充，可包含音訊、視訊、字幕等多軌道。開源多媒體標準，用於遊戲、串流媒體)"
+
+msgid "mime_rm"
+msgstr "RealMedia 視訊 (1995年 RealNetworks 開發，RealMedia 格式。1990-2000年代網路串流媒體先驅，RealPlayer 播放器核心格式。痛點：需專用播放器、壓縮品質差，後被 Flash/MP4 取代)"
+
+msgid "mime_flv"
+msgstr "Flash 視訊 (2002年格式出現，Flash Video 格式。曾為網路視訊主流，YouTube 早期採用。痛點：需 Flash 外掛、效能差、安全漏洞多。2015年起主流網站轉向 HTML5 視訊，現已淘汰)"
+
+msgid "mime_f4v"
+msgstr "F4V 視訊 (Adobe 開發的 Flash 視訊格式，FLV 的後繼者。基於 MPEG-4 標準，支援 H.264 編碼。隨 Flash 技術一同淘汰，Adobe 2020年停止支援)"
+
+msgid "mime_wmv"
+msgstr "WMV 視訊 (1999年 Microsoft 開發，Windows Media Video。Windows 原生支援，串流媒體傳輸最佳化，早期線上視訊常用格式，現已邊緣化)"
+
+msgid "mime_wmf"
+msgstr "WMF 媒體格式 (Windows Media Format，微軟媒體框架。包含 WMV 視訊、WMA 音訊的統稱，Windows Media Player 原生支援)"
+
+msgid "mime_mov"
+msgstr "MOV 視訊 (1991年 Apple 開發，QuickTime 容器格式。專業視訊剪輯標準格式，支援多種編解碼器，Final Cut Pro、Premiere 原生支援)"
+
+msgid "mime_qt"
+msgstr "QuickTime 視訊 (1991年 Apple 推出，QuickTime 格式。Mac 平台視訊標準，MOV 是其容器，QuickTime 播放器曾廣泛使用。2016年 Apple 停止 Windows 版開發，逐步被 MP4 取代)"
+
+msgid "mime_webm"
+msgstr "WebM 視訊 (2010年 Google 推出，開源免專利視訊格式。基於 Matroska 容器，VP8/VP9 編碼，HTML5 視訊標準格式，YouTube 預設 Web 播放格式)"
+
+msgid "mime_3gp"
+msgstr "3GP 視訊 (2000年 3GPP 制定，行動裝置視訊格式。檔案極小，畫質低，早期功能型手機拍攝視訊格式，用於 MMS 彩信發送)"
+
+#------------------------------------------------------------------------------
 # 技術維度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Operating Systems"
 msgstr "作業系統"
@@ -850,17 +1281,26 @@ msgstr "前5個作業系統"
 msgid "Unknown OS"
 msgstr "未知作業系統"
 
+msgid "User agent"
+msgstr "存取來源"
+
 msgid "Browsers"
 msgstr "瀏覽器"
 
 msgid "Top 5 Browsers"
 msgstr "前5個瀏覽器"
 
-msgid "Unknown Browser"
-msgstr "未知瀏覽器"
+msgid "Unknown Robot RH"
+msgstr "未知的請求標頭"
 
 msgid "Detailed"
-msgstr "訪問裝置版本"
+msgstr "存取裝置版本"
+
+msgid "DetailedOS"
+msgstr "作業系統版本"
+
+msgid "DetailedBS"
+msgstr "瀏覽器版本"
 
 msgid "Screen sizes"
 msgstr "螢幕尺寸"
@@ -877,9 +1317,9 @@ msgstr "輸出"
 msgid "Saved"
 msgstr "節省"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 來源維度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Origin"
 msgstr "來源"
@@ -910,6 +1350,114 @@ msgstr "由 %s 建立"
 
 msgid "plugins"
 msgstr "外掛"
+
+msgid "dbip by"
+msgstr "資料來自"
+
+msgid "IPDB by"
+msgstr "地理位置資料由 DB-IP 提供"
+
+# 健康度
+msgid "Configured"
+msgstr "已設定"
+
+msgid "Missing"
+msgstr "遺失"
+
+msgid "OK"
+msgstr "成功"
+
+msgid "Unused"
+msgstr "未使用"
+
+# 其他
+msgid "Overall Health"
+msgstr "整體健康度"
+
+msgid "Excellent"
+msgstr "優秀"
+
+msgid "Good"
+msgstr "良好"
+
+msgid "Fair"
+msgstr "普通"
+
+msgid "Poor"
+msgstr "較差"
+
+msgid "Missing icon types"
+msgstr "遺失的圖示類型"
+
+msgid "See"
+msgstr "詳見"
+
+msgid "Expected Path"
+msgstr "預期路徑"
+
+msgid "column for file locations"
+msgstr "欄位取得檔案位置"
+
+# 提示
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "提示：如果您需要產生相關圖示，可使用 %s 上傳一張標誌圖片，它會自動產生上述所有相關圖示檔案"
+
+msgid "200: success, 404: failure"
+msgstr "200為成功次數 404為失敗次數"
+
+# 期望路徑
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png 或 /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg 或 /logo.png（需在 HTML/JSON-LD 中引用）"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest 或 /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg、/images/paypal.svg 等"
+
+# 圖示類型名稱
+msgid "Favicon"
+msgstr "網站圖示"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "蘋果觸控圖示（iPhone/iPad/Mac）"
+
+msgid "Site Logo"
+msgstr "網站標誌"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "Web 應用程式清單（Android/Chrome）"
+
+msgid "Windows Browser Config"
+msgstr "Windows 瀏覽器設定"
+
+msgid "Safari Pinned Tab"
+msgstr "Safari 釘選標籤頁圖示"
+
+msgid "Social Icon"
+msgstr "社群平台圖示"
+
+# 表頭
+msgid "Icon Files Status"
+msgstr "圖示檔案狀態"
+
+msgid "Icon Type"
+msgstr "圖示類型"
+
+msgid "Total"
+msgstr "總計"
 
 msgid "Advanced Web Statistics"
 msgstr "先進的日誌分析器"
@@ -947,8 +1495,8 @@ msgstr "來源頁面"
 msgid "Internal pages"
 msgstr "內部頁面"
 
-msgid "Unknown origin"
-msgstr "未知來源"
+msgid "UnknownAccessSource
+msgstr "未知位址來源"
 
 msgid "Different refering pages"
 msgstr "不同來源頁面"
@@ -968,9 +1516,9 @@ msgstr "不同關鍵詞組"
 msgid "Different keywords"
 msgstr "不同關鍵字"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 頁面維度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Viewed pages"
 msgstr "已檢視頁面"
@@ -993,12 +1541,15 @@ msgstr "來源"
 msgid "Host"
 msgstr "主機"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 錯誤和狀態
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Error"
 msgstr "錯誤"
+
+msgid "HTTP Status Statistics"
+msgstr "HTTP 狀態碼統計"
 
 msgid "HTTP Error codes"
 msgstr "HTTP錯誤代碼"
@@ -1006,11 +1557,14 @@ msgstr "HTTP錯誤代碼"
 msgid "SMTP Error codes"
 msgstr "SMTP錯誤代碼"
 
+msgid "Page not found"
+msgstr "請求頁面未找到"
+
 msgid "Unknown error"
 msgstr "未知錯誤"
 
-msgid "HTTP codes 4xx/5xx do not include errors detected before being sent to user"
-msgstr "HTTP 4xx/5xx代碼不包括發送給使用者之前檢測到的錯誤"
+msgid "Abnormal traffic note"
+msgstr "非正常瀏覽流量包括：搜尋引擎爬蟲、AI訓練爬蟲、漏洞掃描器及不符合規範的請求"
 
 msgid "Page detail"
 msgstr "頁面詳情"
@@ -1073,55 +1627,19 @@ msgstr "以下是 AWStats 在您的日誌檔中找到的記錄範例（記錄號
 msgid "in your log):"
 msgstr "在您的日誌中）："
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 雜項
-#==============================================================================
-
-msgid "Misc"
-msgstr "雜項"
-
-msgid "Clusters"
-msgstr "叢集"
-
-msgid "Computer"
-msgstr "電腦"
+#------------------------------------------------------------------------------
 
 msgid "Extra/Marketing"
 msgstr "額外/行銷"
 
-msgid "Add to favorites"
-msgstr "新增到我的最愛"
-
-msgid "JavaScript disabled"
-msgstr "停用JavaScript"
-
-msgid "Java enabled"
-msgstr "啟用Java"
-
-msgid "Shockwave Support"
-msgstr "Shockwave支援"
-
-msgid "Flash Support"
-msgstr "Flash支援"
-
-msgid "RealPlayer Support"
-msgstr "RealPlayer支援"
-
-msgid "QuickTime Support"
-msgstr "QuickTime支援"
-
-msgid "Windows Media Support"
-msgstr "Windows Media支援"
-
-msgid "PDF Support"
-msgstr "PDF支援"
-
-#==============================================================================
+#------------------------------------------------------------------------------
 # 介面文字
-#==============================================================================
+#------------------------------------------------------------------------------
 
-msgid "Site"
-msgstr "網站"
+msgid "Current site"
+msgstr "當前站點"
 
 msgid "Web Site"
 msgstr "網站"
@@ -1171,8 +1689,1261 @@ msgstr "本地"
 msgid "External"
 msgstr "外部"
 
+msgid "Others (email senders)"
+msgstr "其他(寄件者)"
+
+msgid "Others (email receivers)"
+msgstr "其他(收件人)"
+
 msgid "Others"
 msgstr "其他"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "當前僅展示10行瀏覽器數據，更多請查看完整列表"
+
+msgid "Others (unknown browsers)"
+msgstr "其他(未知瀏覽器)"
+
+msgid "Others (operating systems)"
+msgstr "其他(作業系統)"
+
+msgid "Others (unknown OS)"
+msgstr "其他(未知系統)"
+
+msgid "Others (search engines)"
+msgstr "其他(搜尋引擎)"
+
+msgid "Others (referring pages)"
+msgstr "其他(引用頁)"
+
+msgid "Others (keyphrases)"
+msgstr "其他(短語)"
+
+msgid "Others (keywords)"
+msgstr "其他(關鍵字)"
+
+msgid "Only first 10 robots shown"
+msgstr "當前列表僅支持顯示10行機器人數據，更多請查看完整列表"
+
+msgid "Failed to obtain access record"
+msgstr "無法獲取進入記錄"
+
+msgid "Failed to obtain leave record"
+msgstr "無法獲取離開記錄"
+
+msgid "Other pages"
+msgstr "其他頁面"
+
+msgid "Low Traffic IP Summary"
+msgstr "低訪問未知 IP 彙總"
+
+msgid "Failed to obtain IP data"
+msgstr "其他已知 IP 彙總"
+
+msgid "Failed to obtain the relevant data"
+msgstr "未成功獲取到相關資料"
+
+msgid "Limited list of countries and regions"
+msgstr "當前僅展示10行數據，更多國家地區請查看完整列表"
+
+msgid "currentVisitorData"
+msgstr "當前僅展示10行訪客數據，更多請查看完整列表"
+
+msgid "Others (robots main)"
+msgstr "其他(機器人)"
+
+msgid "Others (worms)"
+msgstr "其他(蠕蟲)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "當前列表僅支持顯示10行頁面，更多請查看完整列表"
+
+msgid "Others (OS main)"
+msgstr "其他(系統)"
+
+msgid "Others (browsers main)"
+msgstr "其他(瀏覽器)"
+
+msgid "Others (screen sizes)"
+msgstr "其他(尺寸)"
+
+msgid "Others (search engines main)"
+msgstr "其他(搜尋引擎)"
+
+msgid "Others (referring pages main)"
+msgstr "其他(來源頁)"
+
+msgid "Others (keyphrases main)"
+msgstr "其他(短語)"
+
+msgid "Others (keywords main)"
+msgstr "其他(關鍵字)"
+
+# 1xx - 資訊
+msgid "Continue"
+msgstr "繼續"
+
+msgid "Switching Protocols"
+msgstr "切換協定"
+
+msgid "Processing (WebDAV)"
+msgstr "處理中 (WebDAV)"
+
+msgid "Early Hints"
+msgstr "早期提示"
+
+# 2xx - 成功
+msgid "[Miscellaneous successes]"
+msgstr "[其他成功狀態]"
+
+msgid "Request successful"
+msgstr "請求成功"
+
+msgid "Created successfully"
+msgstr "建立成功"
+
+msgid "Accepted - processing"
+msgstr "已接受 - 處理中"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "非權威資訊（來自快取）"
+
+msgid "Success, no content returned"
+msgstr "成功，無回傳內容"
+
+msgid "Reset content"
+msgstr "重設內容"
+
+msgid "Partial content (resume download)"
+msgstr "部分內容（支援斷點續傳）"
+
+msgid "Multi-status (WebDAV)"
+msgstr "多狀態 (WebDAV)"
+
+msgid "Already reported (WebDAV)"
+msgstr "已回報 (WebDAV)"
+
+msgid "IM used"
+msgstr "已使用 IM"
+
+# 3xx - 重定向
+msgid "[Miscellaneous redirections]"
+msgstr "[其他重定向]"
+
+msgid "Multiple choices"
+msgstr "多種選擇"
+
+msgid "Moved permanently - update your links"
+msgstr "已永久移動 - 請更新您的連結"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "臨時重定向 - URL 不變"
+
+msgid "See other"
+msgstr "請查看其他位置"
+
+msgid "Not modified - using cached version"
+msgstr "未修改 - 使用快取版本"
+
+msgid "Use proxy"
+msgstr "使用代理"
+
+msgid "Switch proxy"
+msgstr "切換代理"
+
+msgid "Temporary redirect (keep method)"
+msgstr "臨時重定向（保持請求方法）"
+
+msgid "Permanent redirect - update your links"
+msgstr "永久重定向 - 請更新您的連結"
+
+# 4xx - 客戶端錯誤
+msgid "[Miscellaneous client/user errors]"
+msgstr "[其他客戶端/使用者錯誤]"
+
+msgid "Bad request"
+msgstr "錯誤請求"
+
+msgid "Unauthorized - please log in"
+msgstr "未授權 - 請先登入"
+
+msgid "Payment required"
+msgstr "需要付款"
+
+msgid "Forbidden - access denied"
+msgstr "禁止 - 存取被拒"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "頁面不存在 (404) - 請檢查失效連結"
+
+msgid "Method not allowed"
+msgstr "方法不允許"
+
+msgid "Not acceptable"
+msgstr "無法接受的回應格式"
+
+msgid "Proxy authentication required"
+msgstr "需要代理認證"
+
+msgid "Request timeout"
+msgstr "請求逾時"
+
+msgid "Conflict - please try again"
+msgstr "衝突 - 請稍後重試"
+
+msgid "Gone - permanently deleted"
+msgstr "已消失 - 永久刪除"
+
+msgid "Length required"
+msgstr "需要指定內容長度"
+
+msgid "Precondition failed"
+msgstr "前提條件不滿足"
+
+msgid "Payload too large"
+msgstr "請求內容過大"
+
+msgid "URI too long"
+msgstr "請求位址過長"
+
+msgid "Unsupported media type"
+msgstr "不支援的檔案類型"
+
+msgid "Range not satisfiable"
+msgstr "請求範圍無效"
+
+msgid "Expectation failed"
+msgstr "無法滿足 Expect 要求"
+
+msgid "I am a teapot (April Fools)"
+msgstr "我是茶壺（愚人節玩笑）"
+
+msgid "Page expired (Laravel)"
+msgstr "頁面已過期 (Laravel)"
+
+msgid "Method failure (Spring)"
+msgstr "方法失敗 (Spring)"
+
+msgid "Misdirected request"
+msgstr "請求被錯誤引導"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "請求格式正確但無法處理 (WebDAV)"
+
+msgid "Locked (WebDAV)"
+msgstr "資源已被鎖定 (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "依賴操作失敗 (WebDAV)"
+
+msgid "Too early"
+msgstr "請求發送過早"
+
+msgid "Upgrade required"
+msgstr "需要升級協定"
+
+msgid "Precondition required"
+msgstr "缺少必要的前提條件"
+
+msgid "Too many requests - slow down"
+msgstr "請求過於頻繁 - 請降低速度"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "請求標頭欄位過大 (Shopify)"
+
+msgid "Request header too large"
+msgstr "請求標頭過大"
+
+msgid "Login timeout (IIS)"
+msgstr "登入逾時 (IIS)"
+
+msgid "No response (nginx)"
+msgstr "伺服器無回應 (nginx)"
+
+msgid "Retry with (IIS)"
+msgstr "請稍後重試 (IIS)"
+
+msgid "Blocked by Windows parental controls"
+msgstr "被 Windows 家長監護封鎖"
+
+msgid "Unavailable for legal reasons"
+msgstr "因法律原因無法存取"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "客戶端在閒置逾時前關閉連線 (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "X-Forwarded-For 標頭包含超過 30 個 IP 位址 (AWS ELB)"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "協定版本不相容 (AWS ELB)"
+
+msgid "Request header too large (nginx)"
+msgstr "請求標頭過大 (nginx)"
+
+msgid "SSL certificate error (nginx)"
+msgstr "SSL 憑證錯誤 (nginx)"
+
+msgid "SSL certificate required (nginx)"
+msgstr "需要 SSL 憑證 (nginx)"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP 請求發送到 HTTPS 連接埠 (nginx)"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "無效的令牌 (ArcGIS)"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "需要令牌 (ArcGIS) / 客戶端已關閉請求 (nginx)"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "達到資源限制 (cPanel)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "超出頻寬限制 (Apache/cPanel)"
+
+# 5xx - 伺服器錯誤
+msgid "[Miscellaneous server errors]"
+msgstr "[其他伺服器錯誤]"
+
+msgid "Internal server error - check logs"
+msgstr "伺服器內部錯誤 - 請檢查日誌"
+
+msgid "Not implemented"
+msgstr "伺服器不支援該功能"
+
+msgid "Bad gateway - backend error"
+msgstr "閘道錯誤 - 後端服務異常"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "服務不可用 - 維護或過載"
+
+msgid "Gateway timeout"
+msgstr "閘道回應逾時"
+
+msgid "HTTP version not supported"
+msgstr "不支援的 HTTP 協定版本"
+
+msgid "Variant also negotiates"
+msgstr "變體也參與協商（配置錯誤）"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "儲存空間不足 (WebDAV)"
+
+msgid "Loop detected (WebDAV)"
+msgstr "檢測到循環引用 (WebDAV)"
+
+msgid "Not extended"
+msgstr "需要進一步擴展"
+
+msgid "Network authentication required"
+msgstr "需要網路身份驗證"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "未知錯誤 (Cloudflare)"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "Web 伺服器已關閉 (Cloudflare)"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "連線逾時 (Cloudflare)"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "源站無法存取 (Cloudflare)"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "發生逾時 (Cloudflare)"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "SSL 握手失敗 (Cloudflare)"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "SSL 憑證無效 (Cloudflare)"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Railgun 錯誤 (Cloudflare - 已棄用)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "站點過載 (SSLLabs)"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "源站 DNS 錯誤 (Cloudflare) / 站點已凍結 (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "暫時停用 (Shopify)"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "未授權 (AWS ELB)"
+
+msgid "Network read timeout error"
+msgstr "網路讀取逾時錯誤"
+
+msgid "Network connect timeout error"
+msgstr "網路連線逾時錯誤"
+
+msgid "Unexpected token (Shopify)"
+msgstr "意外的令牌 (Shopify)"
+
+msgid "Request denied (LinkedIn)"
+msgstr "請求被拒絕 (LinkedIn)"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 連線關閉 (AWS ELB)"
+
+msgid "[Unknown]"
+msgstr "[未知狀態碼]"
+
+# SMTP
+msgid "Nonstandard success response (ESMTP)"
+msgstr "非標準成功回應 (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "系統狀態或幫助資訊"
+
+msgid "Help message"
+msgstr "幫助訊息"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "SMTP 服務已就緒 (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "服務已就緒 - 郵件伺服器可以接收郵件"
+
+msgid "Service closing - connection is being closed"
+msgstr "服務正在關閉 - 連線即將中斷"
+
+msgid "Authentication successful"
+msgstr "身份驗證成功"
+
+msgid "Requested mail action taken and completed"
+msgstr "請求的郵件操作已執行並完成"
+
+msgid "User not local - will forward to another address"
+msgstr "使用者不在本伺服器 - 將轉發到其他地址"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "無法驗證收件人，但會嘗試投遞"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "郵件已接受投遞 (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "使用者名稱是一個郵箱"
+
+msgid "Authentication challenge - please respond"
+msgstr "身份驗證挑戰 - 請回應"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "開始輸入郵件內容 - 以 <CRLF>.<CRLF> 結束"
+
+msgid "Continue (LMTP)"
+msgstr "繼續 (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "服務不可用 - 連線關閉，請稍後重試"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "郵箱忙碌或暫時不可用 (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "連線頻率超限 (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "並發連線數過多 (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "無法建立連線 (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "連線逾時 (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "連線因錯誤而中斷 (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "郵箱暫時被鎖定 (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "收件人數過多 (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "郵件伺服器錯誤 (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "檢測到接收循環 (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "跳轉次數過多 (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "DNS 查詢失敗 (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "無法進行身份驗證 (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "TLS 握手失敗 (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "SMTP 協定違規 (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "郵件大小超限 (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "郵件頻率超限 (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "郵箱配額已滿 - 暫時狀態"
+
+msgid "Domain not found (Postfix)"
+msgstr "網域名稱未找到 (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "郵件標頭無效 (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "檢測到退信循環 (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "無法路由 (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "寄件人網域名稱未找到 (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "收件人網域名稱未找到 (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "灰名單檢查中 - 請稍後重試 (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "垃圾郵件過濾中 (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "病毒掃描中 (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "郵箱不可用 - 請稍後重試"
+
+msgid "Requested action aborted - error in processing"
+msgstr "請求的操作已中止 - 處理過程中出錯"
+
+msgid "Insufficient system storage - try again later"
+msgstr "系統儲存空間不足 - 請稍後重試"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "該收件人的郵件過多 (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS 不可用 (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "伺服器無法接收郵件 (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "DNS 查詢暫時失敗 (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "配額超限 - 暫時狀態"
+
+msgid "Message too big - temporary"
+msgstr "郵件過大 - 暫時狀態"
+
+msgid "Too many messages per connection"
+msgstr "單一連線郵件數過多"
+
+msgid "Load average too high (Postfix)"
+msgstr "系統負載過高 (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "連線被拒絕 (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "發送頻率超限 (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "收件人頻率超限 (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "寄件人頻率超限 (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "IP 位址頻率超限 (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "MX 查詢失敗 (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "A 記錄查詢失敗 (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "PTR 記錄查詢失敗 (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "灰名單已啟動 - 請稍後重試 (Postgrey)"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "存取被拒 - 寄件人或收件人網域名稱未知"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "寄件地址被拒 - 網域名稱未驗證 (DMARC 待定)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "收件地址被拒 - 網域名稱未驗證 (DMARC 待定)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "DKIM 驗證待定 - 暫時失敗"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "SPF 驗證待定 - 暫時失敗"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "DMARC 驗證待定 - 暫時失敗"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "DNSBL 查詢暫時失敗"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "RHSBL 查詢暫時失敗"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "URI DNSBL 查詢暫時失敗"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "暫時身份驗證失敗 (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "暫時授權失敗 (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "單一寄件人頻率超限 (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "單一收件人頻率超限 (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "單一網域名稱頻率超限 (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "單一 IP 頻率超限 (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "郵件已排入佇列等待稍後投遞 (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "因策略原因投遞延遲 (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "內容過濾器暫時失敗"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "防病毒掃描器暫時失敗"
+
+msgid "Temporary failure in spam filter"
+msgstr "垃圾郵件過濾器暫時失敗"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter 暫時失敗 (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "灰名單檢查 - 請稍後重試"
+
+msgid "DDoS protection active - try again later"
+msgstr "DDoS 防護已啟動 - 請稍後重試"
+
+msgid "SMTP policy violation - temporary"
+msgstr "SMTP 策略違規 - 暫時狀態"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "RCPT TO 處理暫時錯誤"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "MAIL FROM 處理暫時錯誤"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "EHLO/HELO 處理暫時錯誤"
+
+msgid "Temporary error in DATA processing"
+msgstr "DATA 處理暫時錯誤"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "暫時錯誤 - 服務繁忙，請稍後重試"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "語法錯誤 - 命令無法識別或過長"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "參數或引數語法錯誤"
+
+msgid "Command not implemented"
+msgstr "命令未實現"
+
+msgid "Bad sequence of commands"
+msgstr "命令順序錯誤"
+
+msgid "Command parameter not implemented"
+msgstr "命令參數未實現"
+
+msgid "Version not supported (ESMTP)"
+msgstr "版本不支援 (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "郵箱路徑無效 (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "本會話中命令過多 (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "收件人數超限 (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "寄件人數超限 (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "網域名稱數量超限 (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "郵箱不存在 (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS 失敗 - 永久錯誤"
+
+msgid "Address type not supported (Postfix)"
+msgstr "地址類型不支援 (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "無法開啟郵箱 (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "郵箱被鎖定 - 永久狀態"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "郵件因策略原因被拒絕 (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "內容被拒絕 - 永久狀態"
+
+msgid "Attachment type not allowed"
+msgstr "附件類型不允許"
+
+msgid "Message encoding not supported"
+msgstr "郵件編碼不支援"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "寄件人網域名稱不存在 - 永久狀態"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "網域名稱不接受郵件或正在關閉"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "收件人網域名稱不存在 - 永久狀態"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "郵箱配額已滿 - 永久狀態"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "郵件大小超限 - 永久狀態"
+
+msgid "Authentication required (Sendmail)"
+msgstr "需要身份驗證 (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "身份驗證失敗 (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "身份驗證機制不支援"
+
+msgid "Authentication credentials invalid"
+msgstr "身份驗證憑證無效"
+
+msgid "Authentication account expired"
+msgstr "身份驗證帳戶已過期"
+
+msgid "Access denied - authentication required"
+msgstr "存取被拒 - 需要身份驗證"
+
+msgid "Access denied (Sendmailism)"
+msgstr "存取被拒 (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "存取被拒 - 未通過身份驗證"
+
+msgid "Access denied - account locked"
+msgstr "存取被拒 - 帳戶已鎖定"
+
+msgid "Access denied - account disabled"
+msgstr "存取被拒 - 帳戶已停用"
+
+msgid "Authentication failed"
+msgstr "身份驗證失敗"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "中繼轉發需要身份驗證 (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "中繼轉發身份驗證失敗 (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "需要加密連線 (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "該收件人需要 TLS 加密"
+
+msgid "Encryption strength insufficient"
+msgstr "加密強度不足"
+
+msgid "Certificate validation failed"
+msgstr "憑證驗證失敗"
+
+msgid "Invalid TLS certificate"
+msgstr "TLS 憑證無效"
+
+msgid "TLS protocol version not supported"
+msgstr "TLS 協定版本不支援"
+
+msgid "Cipher suite not supported"
+msgstr "加密套件不支援"
+
+msgid "Access denied - no valid recipient"
+msgstr "存取被拒 - 無有效收件人"
+
+msgid "Access denied - no valid sender"
+msgstr "存取被拒 - 無有效寄件人"
+
+msgid "Access denied - domain not allowed"
+msgstr "存取被拒 - 網域名稱不允許"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "存取被拒 - IP 位址已被封鎖 (永久)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "存取被拒 - 寄件人網域名稱在黑名單中"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "郵箱不可用 - 請求的操作未執行"
+
+msgid "User not local - please try forwarding address"
+msgstr "使用者不在本伺服器 - 請使用轉發地址"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "請求的操作已中止 - 超出儲存分配"
+
+msgid "Mailbox name not allowed"
+msgstr "郵箱名稱不允許"
+
+msgid "Requested action rejected - access denied"
+msgstr "請求的操作被拒絕 - 存取被拒"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "MAIL FROM/RCPT TO 參數無法識別"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "網域名稱不允許發送 (DMARC 拒絕)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "重複郵件過多 - 永久狀態"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "寄件地址被拒 - 網域名稱不在 SPF 中"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "寄件地址被拒 - DKIM 驗證失敗"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "寄件地址被拒 - DMARC 策略拒絕"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "收件地址被拒 - DMARC 策略拒絕"
+
+msgid "Message rejected due to spam content"
+msgstr "郵件因垃圾內容被拒絕"
+
+msgid "Message rejected due to virus detected"
+msgstr "郵件因檢測到病毒被拒絕"
+
+msgid "Message rejected due to malicious content"
+msgstr "郵件因惡意內容被拒絕"
+
+msgid "Message rejected due to phishing detection"
+msgstr "郵件因檢測到釣魚被拒絕"
+
+msgid "Message rejected due to malware detection"
+msgstr "郵件因檢測到惡意軟體被拒絕"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "郵件因策略原因被拒絕 - 永久狀態"
+
+msgid "Message rejected due to content filtering"
+msgstr "郵件因內容過濾被拒絕"
+
+msgid "Message rejected due to reputation"
+msgstr "郵件因信譽原因被拒絕"
+
+msgid "Access denied - access_map violation"
+msgstr "存取被拒 - access_map 違規"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "存取被拒 - SMTP 客戶端在 RBL 中"
+
+msgid "Access denied - relay not authorized"
+msgstr "存取被拒 - 中繼轉發未授權"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "存取被拒 - 未知的 SMTP 客戶端主機名稱"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "存取被拒 - 客戶端 HELO 主機名稱語法錯誤"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "存取被拒 - SMTP 客戶端主機名稱被拒絕"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "存取被拒 - 未知的客戶端 HELO 主機名稱"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "存取被拒 - 無效網域名稱 (非 FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "存取被拒 - 網域名稱不合格"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "存取被拒 - 郵件伺服器配置錯誤"
+
+msgid "Access denied - open relay not allowed"
+msgstr "存取被拒 - 不允許開放中繼"
+
+msgid "Access denied - proxy not allowed"
+msgstr "存取被拒 - 不允許使用代理"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "存取被拒 - 不允許動態 IP"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "存取被拒 - 不允許住宅 IP"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "存取被拒 - 檢測到 VPN/Tor"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "存取被拒 - 在 Spamhaus DROP 列表中"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "存取被拒 - URL 在 URIBL 中"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "存取被拒 - 網域名稱在 RHSBL 中"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "存取被拒 - IP 在 DNSWL 中 (策略)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "投遞失敗 - 郵箱未找到"
+
+msgid "Delivery failed - recipient not local"
+msgstr "投遞失敗 - 收件人不在本伺服器"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "投遞失敗 - 收件人被拒絕"
+
+msgid "Delivery failed - sender rejected"
+msgstr "投遞失敗 - 寄件人被拒絕"
+
+msgid "Delivery failed - relay rejected"
+msgstr "投遞失敗 - 中繼被拒絕"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "投遞失敗 - DNS 永久錯誤"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "投遞失敗 - MX 永久錯誤"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "投遞失敗 - A 記錄永久錯誤"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "投遞失敗 - PTR 記錄永久錯誤"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "投遞失敗 - 策略永久錯誤"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: 成功 - 投遞狀態通知"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: 投遞延遲"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: 投遞失敗 - 永久"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: 投遞失敗 - 暫時"
+
+msgid "DSN: Message expired"
+msgstr "DSN: 郵件已過期"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: 郵件被退回"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: 郵件已丟棄"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: 郵件已被過濾"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: 郵件已被隔離"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: 郵件已被暫留待審"
+
+msgid "MTA-STS policy required"
+msgstr "需要 MTA-STS 策略"
+
+msgid "MTA-STS policy validation failed"
+msgstr "MTA-STS 策略驗證失敗"
+
+msgid "TLS reporting required"
+msgstr "需要 TLS 報告"
+
+msgid "TLS report requested"
+msgstr "已請求 TLS 報告"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA 嚴格傳輸安全已啟動"
+
+msgid "DANE validation required"
+msgstr "需要 DANE 驗證"
+
+msgid "DANE validation failed"
+msgstr "DANE 驗證失敗"
+
+msgid "TLSA record missing"
+msgstr "TLSA 記錄缺失"
+
+msgid "Certificate name mismatch"
+msgstr "憑證名稱不匹配"
+
+msgid "Certificate expired"
+msgstr "憑證已過期"
+
+msgid "AUTH LOGIN required"
+msgstr "需要 AUTH LOGIN 認證"
+
+msgid "AUTH PLAIN required"
+msgstr "需要 AUTH PLAIN 認證"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "需要 AUTH CRAM-MD5 認證"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "需要 AUTH DIGEST-MD5 認證"
+
+msgid "AUTH GSSAPI required"
+msgstr "需要 AUTH GSSAPI 認證"
+
+msgid "AUTH NTLM required"
+msgstr "需要 AUTH NTLM 認證"
+
+msgid "AUTH SCRAM required"
+msgstr "需要 AUTH SCRAM 認證"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "需要 AUTH OAUTHBEARER 認證"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "需要 AUTH XOAUTH2 認證"
+
+# Exchange
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: 郵箱資料庫錯誤"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: 儲存驅動程式錯誤"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: 傳輸代理錯誤"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: 內容轉換錯誤"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: 路由錯誤"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: 郵件流停滯"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: 影子冗餘錯誤"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: 安全網錯誤"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: 佇列資料庫錯誤"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: 郵件被限流"
+
+# Postfix
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: 退信佇列錯誤"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: 延遲佇列錯誤"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: 保持佇列錯誤"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: 接收佇列錯誤"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: 活動佇列錯誤"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: 佇列檔案損壞"
+
+# Sendmail
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: 佇列執行器錯誤"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: 別名資料庫錯誤"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: 虛擬使用者表格錯誤"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: 郵件程式定義錯誤"
+
+# Exim
+msgid "Exim: Router configuration error"
+msgstr "Exim: 路由配置錯誤"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: 傳輸配置錯誤"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: 導向器配置錯誤"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: 重試配置錯誤"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: 重寫配置錯誤"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: 認證配置錯誤"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ACL 配置錯誤"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Local_scan 配置錯誤"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: 查詢配置錯誤"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: 擴展配置錯誤"
+
+msgid "HTTP Protocol Versions"
+msgstr "HTTP 協定版本"
+
+msgid "Protocol"
+msgstr "協定"
+
+msgid "Request %"
+msgstr "請求佔比"
+
+msgid "Bandwidth %"
+msgstr "頻寬佔比"
+
+msgid "Each request requires a new connection"
+msgstr "每個請求需要新建連線"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "多個請求可共用同一條連線"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "單一連線內可並行處理多個請求"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "連線更快，弱網環境下效能更佳"
+
+msgid "No protocol data available"
+msgstr "暫無協定資料"
+
+msgid "of requests use HTTP/1.0"
+msgstr "的請求使用了 HTTP/1.0 協定"
+
+msgid "From access logs"
+msgstr "來自訪問日誌"
+
+msgid "No HTTP/2 requests detected"
+msgstr "未偵測到 HTTP/2 協定請求"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "目前所有請求均為 HTTP/1.0，無 HTTP/2 請求"
+
+msgid "HTTP/3 not detected"
+msgstr "未偵測到 HTTP/3 協定請求"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "目前所有請求無 QUIC/HTTP/3 協定請求"
+
+msgid "Mail Authentication Statistics"
+msgstr "郵件認證統計"
+
+msgid "Authentication"
+msgstr "認證類型"
+
+msgid "Pass"
+msgstr "通過"
+
+msgid "Fail"
+msgstr "失敗"
+
+msgid "Softfail"
+msgstr "軟失敗"
+
+msgid "Neutral"
+msgstr "中立"
+
+msgid "None"
+msgstr "無"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "郵件佇列延遲統計"
+
+msgid "Delay Range"
+msgstr "延遲範圍"
+
+msgid "Count"
+msgstr "數量"
+
+msgid "Percentage"
+msgstr "百分比"
+
+msgid "TLS Encryption Statistics"
+msgstr "TLS 加密統計"
+
+msgid "TLS Versions"
+msgstr "TLS 版本"
+
+msgid "Top Ciphers"
+msgstr "常用加密套件"
+
+msgid "robot_hits_detail_both"
+msgstr "總請求: %s 次 (正常頁面: %s 次, robots.txt: %s 次)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "僅存取 robots.txt: %s 次，未抓取其他頁面"
+
+msgid "robot_hits_detail_normal"
+msgstr "正常頁面請求: %s 次"
 
 # 幫助和提示
 msgid "Troubleshooting"
@@ -1208,19 +2979,19 @@ msgstr "檢查設定檔、權限和 AWStats 文件（在 'docs' 目錄中）。"
 msgid "Warning: Can't find language files for \"%s\". English will be used."
 msgstr "警告：找不到 \"%s\" 的語言檔。將使用英文。"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 錯誤和訊號處理
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "%s process (ID %s) interrupted by signal %s."
 msgstr "%s 行程 (ID %s) 被訊號 %s 中斷。"
 
-msgid "An AWStats update process seems to be already running for this config file. Try later.If this is not true, remove manually lock file"
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
 msgstr "此設定檔的 AWStats 更新行程似乎已在執行。請稍後再試。如果不是，請手動刪除鎖定檔"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 新增統計標題
-#==============================================================================
+#------------------------------------------------------------------------------
 msgid "Report Overview"
 msgstr "報告概覽"
 
@@ -1242,17 +3013,59 @@ msgstr "訪問來源"
 msgid "Other Sources"
 msgstr "其他來源"
 
-#=============================================================================
-# 顯示說明資訊 - 現代重構版本
-#=============================================================================
+msgid "tooltip_1"
+msgstr "訪客在網站上的會話次數。同一訪客超過30分鐘無活動後再次訪問，會被計為新的訪問"
+
+msgid "tooltip_2"
+msgstr "在選定時間段內訪問您網站的不同訪客數量。基於IP地址統計"
+
+msgid "tooltip_3"
+msgstr "被視為頁面的請求數量（如HTML、PHP、ASP等），不包括圖片、CSS、JS等靜態文件"
+
+msgid "tooltip_4"
+msgstr "向伺服器發出的所有請求總數，包括頁面、圖片、CSS、JS等所有文件"
+
+msgid "tooltip_5"
+msgstr "伺服器響應用戶請求時傳輸的數據總量"
+
+msgid "tooltip_13"
+msgstr "透過搜尋引擎訪問您網站的來源統計。顯示哪些搜尋引擎為您帶來了流量，以及訪客使用的搜尋詞。"
+
+msgid "tooltip_14"
+msgstr "透過其他網站的外部連結訪問您網站的來源統計。顯示哪些網站連結到您，以及它們帶來的流量。"
+
+msgid "tooltip_15"
+msgstr "訪客透過搜尋引擎找到您網站時使用的搜尋詞。關鍵字是單個詞，關鍵字組是多個詞的組合。"
+
+msgid "tooltip_16"
+msgstr "搜尋引擎爬蟲、AI訓練爬蟲、漏洞掃描器等自動化程式。括號中的數字表示正常頁面請求和 robots.txt 請求次數。"
+
+msgid "tooltip_17"
+msgstr "24小時流量分佈圖。顯示您網站在一天中各時段的訪問情況，幫助了解用戶活躍時間。"
+
+msgid "tooltip_18"
+msgstr "該列顯示的是選定時間段內每日/每週的平均值，幫助您了解整體趨勢。"
+
+msgid "tooltip_19"
+msgstr "點擊圖表中的項目可查看詳細資訊。滑鼠懸停在圖表元素上可查看具體數值。"
+
+msgid "tooltip_20"
+msgstr "無法歸類到已有範圍的資料，通常是由於資料格式異常或缺失導致。"
+
+msgid "tooltip_21"
+msgstr "檢測到的蠕蟲病毒攻擊記錄。蠕蟲是一種自我傳播的惡意程式，通常透過網路漏洞進行傳播。"
+
+#------------------------------------------------------------------------------
+# 顯示說明資訊 - 社区版
+#------------------------------------------------------------------------------
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - 進階Web統計"
 
-msgid "Copyright (c) 2000-2026 Laurent Destailleur"
-msgstr "版權所有 (c) 2000-2026 Laurent Destailleur"
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "版權所有 (c) 2000-2025 Laurent Destailleur"
 
-msgid "Copyright (c) 2025 HestiaCP Enhanced Edition"
-msgstr "版權所有 (c) 2025 HestiaCP 增強版"
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "版權所有 (c) 2026-latest 社區版"
 
 msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
 msgstr "AWStats 絕對不提供任何擔保。它是根據 GNU 通用公共授權條款分發的自由軟體（詳見 LICENSE 檔）。"
@@ -1423,7 +3236,7 @@ msgid "  -debug=X     to add debug informations lesser than level X (speed reduc
 msgstr "  -debug=X     加入層級小於 X 的偵錯資訊（會降低速度）"
 
 msgid "  -version     show AWStats version"
-msgstr "  -version     顯示 AWStats 版本"
+msgstr "  -version, -v     顯示 AWStats 版本"
 
 msgid "Now supports/detects:"
 msgstr "目前支援/檢測："
@@ -1455,14 +3268,8 @@ msgstr "  最常檢視的頁面、入口頁面和出口頁面"
 msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
 msgstr "  檔案類型和 Web 壓縮（mod_gzip、mod_deflate 統計）"
 
-msgid "  Screen size"
-msgstr "  螢幕尺寸"
-
-msgid "  Ratio of Browsers with support of: Java, Flash, RealG2 reader, Quicktime reader, WMA reader, PDF reader"
-msgstr "  瀏覽器支援比例：Java、Flash、RealG2 播放器、Quicktime 播放器、WMA 播放器、PDF 閱讀器"
-
-msgid "  Configurable personalized reports"
-msgstr "  可設定的個人化報告"
+msgid " Configured Database Statistics"
+msgstr " 已配置的資料庫統計信息"
 
 msgid "  %s domains/countries"
 msgstr "  %s 個網域/國家"
@@ -1497,172 +3304,242 @@ msgstr "  索引文字或 XML 月度資料庫"
 msgid "  And a lot of other advanced features and options..."
 msgstr "  以及許多其他進階功能和選項..."
 
-msgid "New versions and FAQ at http://www.awstats.org"
-msgstr "新版本和常見問題請造訪 http://www.awstats.org"
+msgid "New versions and FAQ at https://www.awstats.org"
+msgstr "新版本和常見問題請造訪 https://github.com/hestiacn/vstats/issues"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 什麼是 AWStats
-#==============================================================================
-
-#=============================================================================
-# 什麼是 AWStats 文件
-#=============================================================================
-
-msgid "docs.what.title"
-msgstr "什麼是 AWStats / 功能概覽"
+#------------------------------------------------------------------------------
 
 msgid "docs.what.subtitle"
-msgstr "瞭解 AWStats 的功能和特點"
+msgstr "了解 AWStats 的功能和特點"
 
-msgid "docs.what.intro"
+msgid "docs.what.content"
 msgstr ""
-"<div class='intro-box'>"
-"  <p>AWStats 是 <u>A</u>dvanced <u>W</u>eb <u>Stat</u>istic<u>s</u>（進階網站統計）的縮寫。"
-"  <b>AWStats 是一個功能強大的開源日誌分析器</b>，能夠為網站、FTP、郵件和串流媒體伺服器產生"
-"  <b>詳細且直觀的統計報告</b>。它透過分析伺服器日誌檔，將原始資料轉化為"
-"  <b>易於理解的圖形化網頁</b>。</p>"
-"  <p>無論是個人部落格、企業網站還是大型入口網站，AWStats 都能幫助您深入了解訪客行為，"
-"  最佳化網站內容和行銷策略。</p>"
+"<div class='what-content'>"
+""
+"    <div class='page-header'>"
+"        <h1>什麼是 AWStats？</h1>"
+"        <p class='subtitle'>了解這個擁有 30 多年歷史的開源日誌分析工具</p>"
+"    </div>"
+""
+"    <div class='intro-section'>"
+"        <h2>📌 簡介</h2>"
+"        <div class='intro-box'>"
+"            <p>AWStats 是 <u>A</u>dvanced <u>W</u>eb <u>Stat</u>istic<u>s</u>（進階網站統計）的縮寫。"
+"            <b>AWStats 是一個功能強大的開源日誌分析器</b>，能夠為網站、FTP、郵件和串流媒體伺服器產生"
+"            <b>詳細且直觀的統計報表</b>。它透過分析伺服器日誌檔案，將原始資料轉化為"
+"            <b>易於理解的圖形化網頁</b>。</p>"
+"            <p>無論是個人部落格、企業網站還是大型入口網站，AWStats 都能幫助您深入了解訪客行為，"
+"            最佳化網站內容和行銷策略。</p>"
+"        </div>"
+"    </div>"
+""
+"    <div class='history-section'>"
+"        <h2>📜 專案歷史</h2>"
+"        <div class='history-box'>"
+"            <p>AWStats 專案始於 <strong>1997 年</strong>，由 <a href='https://www.destailleur.fr' target='_blank' rel='noopener noreferrer'>Laurent Destailleur</a> 個人建立並持續維護。"
+"            經過 30 多年的發展，AWStats 已成為全球數百萬網站信賴的日誌分析工具。</p>"
+"            <p>專案原作者 Laurent Destailleur 於 2025-08-26 16:20 宣布 8.0 是他最後維護的一個版本。</p>"
+"            <p>目前，專案由原作者和全球開發者社群共同維護，定期發佈更新和修復。"
+"            最新的 8.x 版本帶來了現代化的介面、響應式設計和更好的使用者體驗。</p>"
+"            <p>查看 <a href='awstats_changelog.html'>更新日誌</a> 了解完整的版本歷史。</p>"
+"        </div>"
+"    </div>"
+""
+"    <div class='features-section'>"
+"        <h2>✨ 核心功能</h2>"
+"        <div class='features-grid'>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>👥</div>"
+"                <h4>訪客分析</h4>"
+"                <ul>"
+"                    <li><u>獨立訪客</u>和<u>訪問次數</u>統計</li>"
+"                    <li><u>訪問時長</u>分析</li>"
+"                    <li><u>認證使用者</u>追蹤</li>"
+"                    <li>最近訪問記錄</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>📊</div>"
+"                <h4>流量分析</h4>"
+"                <ul>"
+"                    <li>按<u>月份</u>、<u>星期</u>、<u>小時</u>統計</li>"
+"                    <li><u>頁面瀏覽量</u>和<u>點擊量</u></li>"
+"                    <li><u>頻寬使用</u>統計</li>"
+"                    <li><u>入口/出口頁面</u>分析</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>🌍</div>"
+"                <h4>地理位置</h4>"
+"                <ul>"
+"                    <li>訪客<u>國家/地區</u>分佈</li>"
+"                    <li><u>GeoIP</u> 地理位置識別</li>"
+"                    <li><u>城市</u>級別定位（需外掛）</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>💻</div>"
+"                <h4>用戶端資訊</h4>"
+"                <ul>"
+"                    <li><u>瀏覽器</u>類型和版本</li>"
+"                    <li><u>作業系統</u>統計</li>"
+"                    <li><u>螢幕解析度</u></li>"
+"                    <li><u>裝置類型</u>（桌機/行動）</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>🤖</div>"
+"                <h4>爬蟲識別</h4>"
+"                <ul>"
+"                    <li>識別 500+ 種<u>搜尋引擎爬蟲</u></li>"
+"                    <li><u>機器人</u>訪問統計</li>"
+"                    <li>過濾爬蟲流量</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>🔍</div>"
+"                <h4>來源分析</h4>"
+"                <ul>"
+"                    <li><u>搜尋引擎</u>來源</li>"
+"                    <li><u>關鍵字</u>和<u>片語</u>統計</li>"
+"                    <li><u>外部連結</u>來源</li>"
+"                    <li><u>直接訪問</u>統計</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>📁</div>"
+"                <h4>檔案類型</h4>"
+"                <ul>"
+"                    <li>按<u>檔案類型</u>統計</li>"
+"                    <li><u>下載</u>統計</li>"
+"                    <li><u>壓縮</u>統計（mod_gzip/mod_deflate）</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>⚠️</div>"
+"                <h4>錯誤分析</h4>"
+"                <ul>"
+"                    <li><u>HTTP錯誤</u>統計（404等）</li>"
+"                    <li><u>錯誤來源</u>分析</li>"
+"                    <li><u>蠕蟲</u>攻擊檢測</li>"
+"                </ul>"
+"            </div>"
+"        </div>"
+"    </div>"
+""
+"    <div class='requirements-section'>"
+"        <h2>📋 系統需求</h2>"
+"        <div class='requirements-box'>"
+"            <h4>基本需求</h4>"
+"            <ul>"
+"                <li>✅ 能夠存取要分析的伺服器日誌檔案（Web/FTP/郵件）</li>"
+"                <li>✅ Perl 5.20 或更高版本（建議 Perl 5.32+）</li>"
+"                <li>✅ 命令列和/或 CGI 環境</li>"
+"            </ul>"
+"            "
+"            <h4>支援的作業系統</h4>"
+"            <ul>"
+"                <li>🐧 Linux/Unix（Ubuntu、Debian、CentOS、RHEL等）</li>"
+"                <li>🪟 Windows（Windows 10/11、Windows Server 2019/2022）</li>"
+"                <li>🍎 macOS</li>"
+"                <li>🔵 FreeBSD、OpenBSD</li>"
+"            </ul>"
+"            "
+"            <h4>支援的伺服器</h4>"
+"            <ul>"
+"                <li>🌐 網頁伺服器：Apache 2.4+、Nginx、IIS 10+、Caddy、Lighttpd</li>"
+"                <li>📁 FTP伺服器：ProFTPd、vsFTPd、Pure-FTPd</li>"
+"                <li>📧 郵件伺服器：Postfix、Sendmail、QMail、Exim</li>"
+"                <li>🎥 串流媒體伺服器：RealMedia、Windows Media Server、Darwin</li>"
+"            </ul>"
+"            "
+"            <h4>支援的瀏覽器</h4>"
+"            <ul>"
+"                <li>🌐 Chrome、Firefox、Edge、Safari（所有現代瀏覽器）</li>"
+"                <li>📱 行動版瀏覽器（響應式設計）</li>"
+"            </ul>"
+"            "
+"            <p class='note'><strong>註：</strong>AWStats 8.x 採用響應式設計，在手機和平板上也能完美顯示。</p>"
+"        </div>"
+"    </div>"
+""
+"    <div class='scenarios-section'>"
+"        <h2>🎯 適用場景</h2>"
+"        <div class='scenarios-grid'>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>📝</div>"
+"                <h3>個人部落格/小型網站</h3>"
+"                <p>輕量級執行，每日更新一次即可。輕鬆了解訪客來源、熱門文章和訪問趨勢，無需複雜設定。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>🏢</div>"
+"                <h3>企業網站/電商平台</h3>"
+"                <p>每6小時更新一次，即時掌握流量變化。透過詳細的來源分析和關鍵字統計，最佳化行銷策略。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>🌐</div>"
+"                <h3>大型入口網站/CDN網路</h3>"
+"                <p>支援叢集日誌合併分析，可處理每月數百萬訪問量。強大的 DNS 快取和 GeoIP 功能，提供精確的地理位置報表。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>📧</div>"
+"                <h3>郵件伺服器</h3>"
+"                <p>分析 Postfix、Sendmail 等郵件日誌，統計傳送/接收數量、郵件大小、寄件人/收件人排名等。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>📁</div>"
+"                <h3>FTP伺服器</h3>"
+"                <p>監控檔案下載情況，統計熱門檔案、使用者下載量、頻寬使用等，適合軟體映像站、資源分享站。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>🎥</div>"
+"                <h3>串流媒體伺服器</h3>"
+"                <p>分析 RealMedia、Windows Media Server 等串流媒體日誌，了解視訊/音訊檔案的播放情況。</p>"
+"            </div>"
+"        </div>"
+"    </div>"
+""
+"    <div class='more-section'>"
+"        <h2>🔍 了解更多</h2>"
+"        <div class='more-links'>"
+"            <a href='awstats_compare.html' class='more-link'>"
+"                <span class='more-icon'>📊</span>"
+"                <span class='more-text'>各種分析器對比</span>"
+"            </a>"
+"            <a href='awstats_setup.html' class='more-link'>"
+"                <span class='more-icon'>⚙️</span>"
+"                <span class='more-text'>安裝指南</span>"
+"            </a>"
+"            <a href='awstats_config.html' class='more-link'>"
+"                <span class='more-icon'>📝</span>"
+"                <span class='more-text'>設定說明</span>"
+"            </a>"
+"            <a href='awstats_faq.html' class='more-link'>"
+"                <span class='more-icon'>❓</span>"
+"                <span class='more-text'>常見問題</span>"
+"            </a>"
+"            <a href='awstats_changelog.html' class='more-link'>"
+"                <span class='more-icon'>📋</span>"
+"                <span class='more-text'>更新日誌</span>"
+"            </a>"
+"            <a href='awstats_license.html' class='more-link'>"
+"                <span class='more-icon'>📜</span>"
+"                <span class='more-text'>授權條款</span>"
+"            </a>"
+"            <a href='https://github.com/eldy/AWStats/issues' class='more-link' target='_blank' rel='noopener noreferrer'>"
+"                <span class='more-icon'>🐛</span>"
+"                <span class='more-text'>問題回報</span>"
+"            </a>"
+"        </div>"
+"    </div>"
+""
 "</div>"
 
-msgid "docs.what.history"
-msgstr ""
-"<div class='history-box'>"
-"  <h3>📜 專案歷史</h3>"
-"  <p>AWStats 專案始於 1997 年，由 <a href='https://www.destailleur.fr' target='_blank' rel='noopener noreferrer'>Laurent Destailleur</a> 建立並持續維護。"
-"  經過 20 多年的發展，AWStats 已成為全球數百萬網站信賴的日誌分析工具。</p>"
-"  <p>目前，專案由原作者和全球開發者社群共同維護，定期發布更新和修復。"
-"  最新的 8.x 版本帶來了現代化的介面、響應式設計和更好的使用者體驗。</p>"
-"  <p>檢視 <a href='awstats_changelog.html'>更新日誌</a> 了解完整的版本歷史。</p>"
-"</div>"
-
-msgid "docs.what.features.title"
-msgstr "✨ 核心功能"
-
-msgid "docs.what.features.list"
-msgstr ""
-"<div class='features-grid'>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>👥</div>"
-"    <h4>訪客分析</h4>"
-"    <ul>"
-"      <li><u>不重複訪客</u>和<u>訪問次數</u>統計</li>"
-"      <li><u>訪問時長</u>分析</li>"
-"      <li><u>認證使用者</u>追蹤</li>"
-"      <li>最近訪問記錄</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>📊</div>"
-"    <h4>流量分析</h4>"
-"    <ul>"
-"      <li>按<u>月份</u>、<u>星期</u>、<u>小時</u>統計</li>"
-"      <li><u>頁面瀏覽量</u>和<u>點擊量</u></li>"
-"      <li><u>頻寬使用</u>統計</li>"
-"      <li><u>入口/出口頁面</u>分析</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>🌍</div>"
-"    <h4>地理位置</h4>"
-"    <ul>"
-"      <li>訪客<u>國家/地區</u>分佈</li>"
-"      <li><u>GeoIP</u> 地理位置識別</li>"
-"      <li><u>城市</u>級別定位（需外掛）</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>💻</div>"
-"    <h4>用戶端資訊</h4>"
-"    <ul>"
-"      <li><u>瀏覽器</u>類型和版本</li>"
-"      <li><u>作業系統</u>統計</li>"
-"      <li><u>螢幕解析度</u></li>"
-"      <li><u>裝置類型</u>（桌面/行動）</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>🤖</div>"
-"    <h4>爬蟲識別</h4>"
-"    <ul>"
-"      <li>識別 500+ 種<u>搜尋引擎爬蟲</u></li>"
-"      <li><u>機器人</u>訪問統計</li>"
-"      <li>過濾爬蟲流量</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>🔍</div>"
-"    <h4>來源分析</h4>"
-"    <ul>"
-"      <li><u>搜尋引擎</u>來源</li>"
-"      <li><u>關鍵詞</u>和<u>詞組</u>統計</li>"
-"      <li><u>外部連結</u>來源</li>"
-"      <li><u>直接訪問</u>統計</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>📁</div>"
-"    <h4>檔案類型</h4>"
-"    <ul>"
-"      <li>按<u>檔案類型</u>統計</li>"
-"      <li><u>下載</u>統計</li>"
-"      <li><u>壓縮</u>統計（mod_gzip/mod_deflate）</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>⚠️</div>"
-"    <h4>錯誤分析</h4>"
-"    <ul>"
-"      <li><u>HTTP錯誤</u>統計（404等）</li>"
-"      <li><u>錯誤來源</u>分析</li>"
-"      <li><u>蠕蟲</u>攻擊檢測</li>"
-"    </ul>"
-"  </div>"
-"</div>"
-
-msgid "docs.what.requirements.title"
-msgstr "📋 系統需求"
-
-msgid "docs.what.requirements.list"
-msgstr ""
-"<div class='requirements-box'>"
-"  <h4>基本要求</h4>"
-"  <ul>"
-"    <li>✅ 能夠訪問要分析的伺服器日誌檔（Web/FTP/郵件）</li>"
-"    <li>✅ Perl 5.20 或更高版本（推薦 Perl 5.32+）</li>"
-"    <li>✅ 命令列和/或 CGI 環境</li>"
-"  </ul>"
-"  "
-"  <h4>支援的作業系統</h4>"
-"  <ul>"
-"    <li>🐧 Linux/Unix（Ubuntu、Debian、CentOS、RHEL等）</li>"
-"    <li>🪟 Windows（Windows 10/11、Windows Server 2019/2022）</li>"
-"    <li>🍎 macOS</li>"
-"    <li>🔵 FreeBSD、OpenBSD</li>"
-"  </ul>"
-"  "
-"  <h4>支援的伺服器</h4>"
-"  <ul>"
-"    <li>🌐 Web伺服器：Apache 2.4+、Nginx、IIS 10+、Caddy、Lighttpd</li>"
-"    <li>📁 FTP伺服器：ProFTPd、vsFTPd、Pure-FTPd</li>"
-"    <li>📧 郵件伺服器：Postfix、Sendmail、QMail、Exim</li>"
-"    <li>🎥 串流媒體伺服器：RealMedia、Windows Media Server、Darwin</li>"
-"  </ul>"
-"  "
-"  <h4>支援的瀏覽器</h4>"
-"  <ul>"
-"    <li>🌐 Chrome、Firefox、Edge、Safari（所有現代瀏覽器）</li>"
-"    <li>📱 行動端瀏覽器（響應式設計）</li>"
-"  </ul>"
-"  "
-"  <p class='note'><strong>註：</strong>AWStats 8.x 採用響應式設計，在手機和平板上也能完美顯示。</p>"
-"</div>"
-
-msgid "docs.what.compare.link"
-msgstr "與其他日誌分析器對比"
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 效能基準測試
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.benchmark.title"
 msgstr "📊 效能基準測試"
@@ -1985,9 +3862,9 @@ msgstr ""
 "    </div>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 日誌分析器對比
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.compare.title"
 msgstr "📊 日誌分析器對比"
@@ -2905,96 +4782,108 @@ msgstr ""
 
 msgid "compare.note.browsers"
 msgstr ""
-"<li class='note-browsers'>"
 "<strong>瀏覽器檢測數量：</strong> 此數字表示產品能夠識別的瀏覽器家族數量，而非實際檢測到的瀏覽器版本數量。"
 "所有主流日誌分析工具都能透過使用者代理字串檢測瀏覽器，但識別的精細度不同。"
 "AWStats 能夠識別 210+ 種瀏覽器及其版本，包括 Chrome、Firefox、Safari、Edge 等現代瀏覽器，"
 "以及行動裝置和特殊瀏覽器（如電視、遊戲機等）。檢測精度可在設定檔中調整。"
-"</li>"
 
 msgid "compare.note.robots"
 msgstr ""
-"<li class='note-robots'>"
 "<strong>機器人檢測：</strong> AWStats 內建了包含 500+ 種爬蟲的資料庫，能夠準確識別搜尋引擎爬蟲、"
-"社交媒體抓取工具（如 Facebook Crawler、Twitterbot）、AI 訓練爬蟲（如 GPTBot、ClaudeBot）等。"
+"社群媒體抓取工具（如 Facebook Crawler、Twitterbot）、AI 訓練爬蟲（如 GPTBot、ClaudeBot）等。"
 "這項功能對於準確統計人類訪客至關重要——例如，如果您的網站每月有 2000 次人類訪問，"
 "同時有 500 次爬蟲訪問，沒有機器人檢測能力的工具會錯誤地報告 2500 次訪問（25% 的誤差！）。"
 "AWStats 則能正確區分：500 次爬蟲訪問，2000 次人類訪客訪問。"
-"其他工具如 GoAccess 也支援爬蟲識別，Matomo 則透過 User Agent 解析庫實現類似功能。"
-"</li>"
+"其他工具如 GoAccess 也支援爬蟲識別，Matomo 則透過使用者代理解析程式庫實現類似功能。"
 
 msgid "compare.note.searchengines"
 msgstr ""
-"<li class='note-searchengines'>"
-"<strong>搜尋引擎檢測：</strong> AWStats 內建了 228+ 種搜尋引擎的 URL 語法規則，能夠準確識別來自 Google、Bing、"
-"百度、Yandex、DuckDuckGo 等搜尋引擎的流量，並擷取搜尋關鍵詞。對於未知搜尋引擎，AWStats 也有"
-"啟發式演算法嘗試識別關鍵詞。Matomo 和 GoAccess 同樣具備搜尋引擎識別能力，但規則庫規模可能不同。"
-"</li>"
+"<strong>&nbsp;&nbsp;搜尋引擎檢測：</strong> AWStats 內建了 228+ 種搜尋引擎的 URL 語法規則，能夠準確識別來自 Google、Bing、"
+"Yandex、DuckDuckGo 等搜尋引擎的流量，並提取搜尋關鍵字。對於未知搜尋引擎，AWStats 也有"
+"啟發式演算法嘗試識別關鍵字。Matomo 和 GoAccess 同樣具備搜尋引擎識別能力，但規則庫規模可能不同。"
 
 msgid "compare.note.benchmark"
 msgstr ""
-"<li class='note-benchmark'>"
-"<strong>基準測試說明：</strong> 不同日誌分析工具的功能集差異較大，因此基準測試結果需要結合功能來解讀。"
+"<strong>&nbsp;&nbsp;&nbsp;基準測試說明：</strong> 不同日誌分析工具的功能集差異較大，因此基準測試結果需要結合功能來解讀。"
 "本測試使用 AWStats 的機器人、搜尋引擎、作業系統和瀏覽器資料庫對其他工具進行了補充，"
 "以儘量公平地比較核心處理速度。測試環境為：Intel Xeon 3.0GHz / 4GB RAM / SSD / Linux / Perl 5.36，"
 "處理 100 萬行 combined (XLF/CLF) 格式日誌。實際效能可能因硬體、Perl 版本、日誌格式而不同。"
 "<br><br>"
-"<span class='note-highlight'>⚠️ 特別注意：</span> DNS 查詢對效能影響巨大（可使處理速度降低 40-100 倍），因此基準測試中已禁用 DNS 查詢。"
-"如果您的日誌檔中主機尚未解析且啟用了 DNS 查詢，無論選擇哪個工具，整個過程都會顯著變慢。"
-"</li>"
+"<span class='note-highlight'>⚠️ 特別注意：</span> DNS 查找對效能影響巨大（可使處理速度降低 40-100 倍），因此基準測試中已停用 DNS 查找。"
+"如果您的日誌檔案中主機尚未解析且啟用了 DNS 查找，無論選擇哪個工具，整個過程都會顯著變慢。"
 
 msgid "compare.note.visitors"
 msgstr ""
-"<li class='note-visitors'>"
-"<strong>不重複訪客統計方法：</strong> 統計不重複訪客有多種方法，不同工具採用不同策略："
+"<strong>&nbsp;&nbsp;&nbsp;&nbsp;不重複訪客統計方法：</strong> 統計不重複訪客有多種方法，不同工具採用不同策略："
 "<ul class='note-sublist'>"
-"  <li><strong>AWStats：</strong>基於對 HTML 頁面的訪問（忽略圖片、CSS、JS 等請求），透過工作階段逾時演算法識別訪客。</li>"
-"  <li><strong>GoAccess：</strong>基於 IP 位址和 User Agent 組合，透過設定的時間視窗識別訪客。</li>"
-"  <li><strong>Matomo：</strong>使用第一方 Cookie 追蹤訪客，這是最準確的方法，但需要在前端嵌入 JavaScript。</li>"
+"<li><strong>AWStats：</strong>基於對 HTML 頁面的訪問（忽略圖片、CSS、JS 等請求），透過工作階段逾時演算法識別訪客。</li>"
+"<li><strong>GoAccess：</strong>基於 IP 位址和使用者代理字串組合，透過設定的時間視窗識別訪客。</li>"
+"<li><strong>Matomo：</strong>使用第一方 Cookie 追蹤訪客，這是最準確的方法，但需要在前端嵌入 JavaScript。</li>"
 "</ul>"
 "每種方法都有其優缺點。基於 IP 的方法可能因代理、NAT 或動態 IP 而產生誤差；基於 Cookie 的方法"
 "可能因使用者清除 Cookie 或隱私模式而失效。建議根據實際需求選擇合適的方法。"
-"</li>"
 
 msgid "compare.note.data"
 msgstr ""
-"<li class='note-data'>"
 "<strong>資料來源：</strong> 對比資料由 AWStats 團隊根據官方文件和實際測試整理。Sawmill 相關資訊參考其官方文件。"
-"</li>"
 
 msgid "compare.note.logformat"
 msgstr ""
-"<li class='note-logformat'>"
-"<strong>日誌格式限制：</strong> 使用 Apache 通用日誌格式 (CLF) 時，日誌檔中不包含 User Agent、Referer 等資訊，"
-"因此無法產生瀏覽器、作業系統、來源網站等報告。推薦使用 Apache 組合日誌格式 (combined/XLF/ELF)，"
+"<strong>日誌格式限制：</strong> 使用 Apache 通用日誌格式 (CLF) 時，日誌檔案中不包含 User Agent、Referer 等資訊，"
+"因此無法產生瀏覽器、作業系統、來源網站等報表。推薦使用 Apache 組合日誌格式 (combined/XLF/ELF)，"
 "或在 Nginx 中設定包含 <code>$http_user_agent</code>、<code>$http_referer</code> 等變數的日誌格式，以充分發揮日誌分析工具的功能。"
 "<br>"
 "<span class='note-example'>例如 Nginx 設定：</span>"
 "<h4>1. 啟用 Nginx 訪問日誌</h4>"
-"<p>使用 sed 指令，將所有 Nginx 設定檔中的 <code>access_log off;</code>（無論 off 前面有多少個空格）替換為 <code>access_log /var/log/nginx/access.log main;</code></p>"
-"<pre><code>sed -i 's/access_log[[:space:]]\\+off;/access_log \\/var\\/log\\/nginx\\/access.log main;/g' /etc/nginx/conf.d/*.conf</code></pre>"
+"<p>使用 sed 指令，將所有 Nginx 設定檔中的 <code>access_log off;</code>（無論 off 前面有多少個空格）取代為 <code>access_log /var/log/nginx/access.log main;</code></p>"
+"<pre><code>sed -i 's/access_log[[:space:]]\+off;/access_log \/var\/log\/nginx\/access.log main;/g' /etc/nginx/conf.d/*.conf</code></pre>"
 ""
-"<h4>2. 設定國內伺服器 DNS（中國大陸伺服器最佳化）</h4>"
-"<p>⚠️ <strong>重要提示：</strong> 此設定僅適用於伺服器位於中國大陸的情況。如果您的伺服器在海外，請保留原有的 8.8.8.8 和 1.1.1.1 或其他當地 DNS。</p>"
-"<p>如果您的伺服器位於中國大陸，預設的 8.8.8.8 (Google) 和 1.1.1.1 (Cloudflare) DNS 可能無法穩定訪問，會導致網站解析變慢甚至逾時。建議修改為以下國內公共 DNS：</p>"
+"<h4>2. DNS 設定最佳化</h4>"
+"<p>⚠️ <strong>重要提示：</strong> DNS 解析速度直接影響網站載入時間。在某些國家或網路環境中，由於當地網路政策或基礎設施限制，公共 DNS 伺服器（如 8.8.8.8、1.1.1.1）可能被封鎖、限速或延遲較高。</p>"
+""
+"<p><strong>全球通用（通常可用）：</strong></p>"
 "<ul>"
-"  <li><strong>223.5.5.5 / 223.6.6.6</strong> - 阿里雲 DNS（推薦，速度快、穩定）</li>"
-"  <li><strong>114.114.114.114</strong> - 114 DNS（國內老牌公共 DNS）</li>"
+"  <li><strong>8.8.8.8 / 8.8.4.4</strong> - Google 公共 DNS（全球）</li>"
+"  <li><strong>1.1.1.1 / 1.0.0.1</strong> - Cloudflare DNS（全球，注重隱私）</li>"
+"  <li><strong>9.9.9.9</strong> - Quad9（安全防護，全球）</li>"
+"  <li><strong>208.67.222.222 / 208.67.220.220</strong> - OpenDNS (Cisco)（全球）</li>"
 "</ul>"
-"<pre><code>resolver 223.5.5.5 223.6.6.6 114.114.114.114 valid=300s ipv6=off;</code></pre>"
-"<p class='note'>修改後執行 <code>nginx -t</code> 測試設定，然後 <code>systemctl reload nginx</code> 重新載入生效。如果伺服器不在中國大陸，請忽略此步驟。</p>"
+""
+"<p><strong>關於 DNS 選擇的現實說明：</strong></p>"
+"<p>在全球範圍內，公共 DNS 服務的存取體驗並不一致。在某些國家或地區，由於網路管理策略、基礎設施差異或國際鏈路品質等原因，這些 DNS 伺服器可能存在存取受限、回應緩慢等現象，極端情況下也存在被劫持的風險。</p>"
+"<p>如果您所在的地區無法穩定使用預設國際公共 DNS，建議：</p>"
+"<ul>"
+"  <li>優先使用託管商或本地 ISP 提供的 DNS</li>"
+"  <li>嘗試使用地區性公共 DNS（如下所示）</li>"
+"  <li>如果均不可用，請諮詢您的網路管理員或託管服務商</li>"
+"</ul>"
+"<p>這不是技術問題，而是現實。AWStats 無法解決網路基礎設施的差異，但我們希望這份文件能如實反映您可能遇到的情況。</p>"
+"<p>以下列出部分國家和地區的公共 DNS 供參考（非完整列表，請根據實際情況測試可用性）</p>"
+"<p><strong>部分國家和地區性 DNS（根據伺服器位置選擇）：</strong></p>"
+"<ul>"
+"  <li><strong>歐洲：</strong> 194.242.2.2 / 194.242.2.3 (dns0.eu)</li>"
+"  <li><strong>德國：</strong> 217.237.151.161 / 217.237.148.162 (DNS:NET)</li>"
+"  <li><strong>荷蘭：</strong> 213.154.224.1 / 213.154.224.2 (NLnet Labs)</li>"
+"  <li><strong>俄羅斯：</strong> 77.88.8.8 / 77.88.8.1 (Yandex DNS)</li>"
+"  <li><strong>中國：</strong> 223.5.5.5 / 223.6.6.6 (阿里雲) / 119.29.29.29 (DNSPod 騰訊雲) / 114.114.114.114 / 114.114.115.115 (114 DNS)</li>"
+"  <li><strong>印度：</strong> 1.186.4.9 / 1.186.4.10 (BSNL)</li>"
+"  <li><strong>巴西：</strong> 189.38.96.2 / 189.38.96.3 (NIC.br)</li>"
+"  <li><strong>南非：</strong> 196.10.120.22 / 196.10.120.23 (AFRINIC)</li>"
+"</ul>"
+"<p><strong>建議：</strong> 優先使用託管商或 ISP 提供的本地 DNS——在受限環境中通常最穩定、最快。如果不確定，請諮詢您的託管服務商。</p>"
+"<pre><code>resolver 8.8.8.8 1.1.1.1 valid=300s ipv6=off;</code></pre>"
+"<p class='note'>修改後執行 <code>nginx -t</code> 測試設定，然後 <code>systemctl reload nginx</code> 重新載入生效。如果您所在國家或地區的網路環境對預設 DNS 存在存取限制，請根據實際情況調整 resolver 中的 DNS 位址，或諮詢您的託管服務商取得推薦設定。</p>"
 ""
 "<h4>3. Nginx 日誌格式設定（增強版 combined 格式）</h4>"
 "<p>設定包含真實 IP 欄位的日誌格式（這是增強版的 combined 格式，比標準版多記錄了真實用戶端 IP）：</p>"
 "<pre><code>"
-"log_format                      main '$remote_addr - $remote_user [$time_local] $request \"$status\" $body_bytes_sent \"$http_referer\" \"$http_user_agent\" \"$http_x_forwarded_for\"';\n"
+"log_format                      main '$remote_addr - $remote_user [$time_local] $request "$status" $body_bytes_sent "$http_referer" "$http_user_agent" "$http_x_forwarded_for"';\n"
 "</code></pre>"
 "<p class='note'>💡 這個格式包含了 $http_x_forwarded_for 欄位，當網站使用 CDN（如 Cloudflare）或代理時，可以記錄真實的訪客 IP。</p>"
-"</li>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 設定指令
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.config.title"
 msgstr "⚙️ AWStats 設定指令大全"
@@ -3894,9 +5783,9 @@ msgstr ""
 "  </div>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 外掛與貢獻資源
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.contrib.title"
 msgstr "🧩 外掛、貢獻與相關資源"
@@ -4262,9 +6151,9 @@ msgstr ""
 "  <li><a href='https://www.ballanger-dermatologue.fr' rel='noopener noreferrer' target='_blank'>ballanger-dermatologue.fr</a> - 皮膚科醫生</li>"
 "</ul>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 外掛開發 - 圖表
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.devgraphs.title"
 msgstr "📊 外掛開發 - 圖表"
@@ -4386,9 +6275,9 @@ msgstr ""
 "  </ul></li>"
 "</ul>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 外掛開發 - 鉤子
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.devhooks.title"
 msgstr "🧩 外掛開發 - 鉤子"
@@ -4680,9 +6569,9 @@ msgstr ""
 "</ul>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 外掛開發
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.devplugins.title"
 msgstr "🧩 外掛開發"
@@ -4852,9 +6741,9 @@ msgstr ""
 "  </li>"
 "</ul>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - AWStats Dolibarr 模組
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.dolibarr.title"
 msgstr "📊 AWStats Dolibarr ERP-CRM 模組"
@@ -4989,9 +6878,9 @@ msgstr ""
 "  <p><strong>先決條件：</strong> 在使用此模組之前，您需要先安裝和設定 AWStats 日誌分析器。AWStats 的安裝和設定不在本文件範圍內，請參考 AWStats 主文件。</p>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 擴充報表功能
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.extra.title"
 msgstr "📊 使用 ExtraSection 功能加入擴充報表"
@@ -5139,13 +7028,14 @@ msgstr ""
 #------------------------------------------------------------------------------
 
 msgid "extra.example4.title"
-msgstr "範例 4：追蹤中止下載"
+msgstr "範例 4：追蹤部分內容請求（斷點續傳）"
 
 msgid "extra.example4.desc"
 msgstr ""
-"<p>中止下載在日誌檔中由 206 錯誤報告，因此以下是設定 ExtraSection 加入此類追蹤圖表的方法：</p>"
+"<p>HTTP 206 狀態碼表示伺服器成功傳回了請求的部分內容（例如使用者暫停後續傳，或下載工具使用多執行緒分塊下載）。"
+"以下是設定 ExtraSection 來追蹤這些部分內容請求的範例：</p>"
 "<pre><code>"
-"ExtraSectionName1=\"中止下載清單\"\n"
+"ExtraSectionName1=\"部分內容請求清單\"\n"
 "ExtraSectionCodeFilter1=\"206\"\n"
 "ExtraSectionCondition1=\"\"\n"
 "ExtraSectionFirstColumnTitle1=\"URL\"\n"
@@ -5154,6 +7044,7 @@ msgstr ""
 "MaxNbOfExtra1=100\n"
 "MinHitExtra1=1\n"
 "</code></pre>"
+"<p class='note'>📝 <strong>說明：</strong> HTTP 206 常被誤描述為「中止下載錯誤」。實際上，它是一個<strong>成功</strong>狀態碼，表示部分內容傳輸。真正的下載中斷（如連線中斷）在標準日誌中通常不會記錄為特定狀態碼。</p>"
 
 #------------------------------------------------------------------------------
 # 範例 5：追蹤最常請求的網域別名
@@ -5263,9 +7154,9 @@ msgstr ""
 "對於所有 AWStats 版本，ExtraSectionFirstColumnValuesX 也需要正規表示式值。</p>"
 "<p>返回 <a href='#examples'>範例</a> 查看語法使用的範例。</p>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 常見問題與故障排除
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.faq.title"
 msgstr "❓ 常見問題與故障排除"
@@ -5793,9 +7684,9 @@ msgstr ""
 "    require valid-user\n"
 "&lt;/Files&gt;</code></pre>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 詞彙表
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.glossary.title"
 msgstr "📚 AWStats 詞彙表"
@@ -5809,25 +7700,25 @@ msgstr "AWStats 報告中使用的術語定義和說明"
 
 msgid "glossary.unique_visitor"
 msgstr ""
-"<h3 id='UniqueVisitor'>👤 不重複訪客 (Unique Visitor)</h3>"
-"<p>不重複訪客是指在目前報告顯示期間，至少對您網站的某個頁面進行了 1 次點擊的個人或電腦（主機）。"
-"如果該使用者在在此期間進行了多次訪問，只計算一次。訪客透過 IP 位址追蹤，因此如果多個使用者從同一個 IP 訪問您的網站"
-"（例如家庭或辦公室網路），他們將被計為一個不重複訪客。</p>"
-"<p>AWStats 報告的預設期間是目前月份。如果您將 AWStats 作為 CGI 使用，可以點擊「年度」連結檢視全年的報告。"
-"在這種情況下，期間為全年，不重複訪客是指在年內至少對您網站的某個頁面進行了 1 次點擊的主機數量。</p>"
-"<p><strong>註：</strong>隨著 IPv6 的普及，每個裝置可能有獨立的 IP 位址，這可能影響不重複訪客的統計準確性。建議結合其他方法（如 Cookie、User Agent）綜合判斷。</p>"
+“<h3 id='UniqueVisitor'> 👤 獨立訪客 （Unique Visitor）</h3>”
+“<p>獨立訪客是指在當前報告顯示期間，至少對您網站的某個頁面進行了 1 次點擊的個人或計算機（主機）。”
+“如果該使用者在此期間進行了多次訪問，只計算一次。 訪客通過IP位址跟蹤，因此如果多個使用者從同一個IP訪問您的網站”
+“（例如家庭或辦公室網络），他們將被計為一個獨立訪客。 </p>"
+“<p>AWStats 報告的默認期間是當前月份。 如果您將 AWStats 作為 CGI 使用，可以點擊「年度」連結查看全年的報告。 "
+“在這種情況下，期間為全年，獨立訪客是指在年內至少對您網站的某個頁面進行了 1 次點擊的主機數量。 </p>"
+“<p><strong>注：</strong>隨著 IPv6 的普及，每個設備可能有獨立的 IP 位址，這可能影響獨立訪客的統計準確性。 建議結合其他方法（如 Cookie、User Agent）綜合判斷。 </p>"
 
 msgid "glossary.visits"
 msgstr ""
 "<h3 id='Visits'>🔄 訪問次數 (Visits)</h3>"
 "<p>所有訪客進行的訪問次數。可以理解為「工作階段」，例如一個唯一 IP 訪問了一個頁面，然後在一小時內請求了其他三個頁面。"
-"所有這些「頁面」都包含在一次訪問中，因此您應該預期每次訪問有多個頁面，每個不重複訪客有多次訪問"
+"所有這些「頁面」都包含在一次訪問中，因此您應該預期每次訪問有多個頁面，每個獨立訪客有多次訪問"
 "（假設某些唯一 IP 的請求間隔超過一小時）。</p>"
 
 msgid "glossary.pages"
 msgstr ""
 "<h3 id='Pages'>📄 頁面數 (Pages)</h3>"
-"<p>訪客檢視的「頁面」數量。頁面通常是 HTML、PHP 或 ASP 檔案，而不是作為載入「頁面」結果請求的圖像或其他檔案"
+"<p>訪客查看的「頁面」數量。頁面通常是 HTML、PHP 或 ASP 檔案，而不是作為載入「頁面」結果請求的圖像或其他檔案"
 "（如 js、css 檔案）。在 NotPageList 設定參數中列出的檔案（如果使用 OnlyFiles 參數，還要匹配其條目）不計為「頁面」。</p>"
 
 msgid "glossary.hits"
@@ -5840,21 +7731,21 @@ msgstr ""
 "<h3 id='Bandwidth'>📊 頻寬 (Bandwidth)</h3>"
 "<p>網頁瀏覽下載的頁面、圖像和檔案的總位元組數。</p>"
 "<p><strong>註1：</strong>此數字僅包括 Web 流量（或僅郵件、僅 FTP，取決於 LogType 的值）。</p>"
-"<p><strong>註2：</strong>此數字不包括 HTTP 或 HTTPS 協定內部使用的技術頭部資料大小，也不包括較低層級協定"
+"<p><strong>註2：</strong>此數字不包括 HTTP 或 HTTPS 協定內部使用的技術標頭資料大小，也不包括較低層級協定"
 "（TCP、IP 等）的資料大小。由於以上兩點，此數字通常低於您的提供商報告的頻寬（提供商大多數情況下計算較低層級的頻寬，"
 "包括所有 IP 和 UDP 流量）。</p>"
 
 msgid "glossary.entry_page"
 msgstr ""
 "<h3 id='EntryPage'>🚪 入口頁面 (Entry Page)</h3>"
-"<p>訪客在一次訪問中檢視的第一個頁面。</p>"
+"<p>訪客在一次訪問中查看的第一個頁面。</p>"
 "<p><strong>註：</strong>當一次訪問從月末開始到次月初結束時，月度報告可能有入口頁面但沒有出口頁面。"
 "這就是為什麼入口頁面可能與出口頁面不同的原因。</p>"
 
 msgid "glossary.exit_page"
 msgstr ""
 "<h3 id='ExitPage'>🚪 出口頁面 (Exit Page)</h3>"
-"<p>訪客在一次訪問中檢視的最後一個頁面。</p>"
+"<p>訪客在一次訪問中查看的最後一個頁面。</p>"
 "<p><strong>註：</strong>當一次訪問從月末開始到次月初結束時，月度報告可能有入口頁面但沒有出口頁面。"
 "這就是為什麼入口頁面可能與出口頁面不同的原因。</p>"
 
@@ -5870,7 +7761,7 @@ msgstr ""
 msgid "glossary.grabber"
 msgstr ""
 "<h3 id='Grabber'>🤖 抓取器 (Grabber)</h3>"
-"<p>主要用於在本地複製整個網站的瀏覽器，包括例如「teleport」、「webcapture」、「webcopier」等。</p>"
+"<p>主要用於在本機複製整個網站的瀏覽器，包括例如「teleport」、「webcapture」、「webcopier」等。</p>"
 
 msgid "glossary.direct_access"
 msgstr ""
@@ -5886,6 +7777,7 @@ msgstr ""
 msgid "glossary.add_to_favourites"
 msgstr ""
 "<h3 id='AddToFavourites'>⭐ 新增到我的最愛 (Add To Favourites)</h3>"
+"<div class='aws-note'>📌 <strong>提示：</strong>「新增到我的最愛」統計功能已在此版本中移除，以下說明僅供歷史參考。</div>"
 "<p>此值在「雜項圖表」中可用，是一個估計指標，用於了解訪客將您的網站新增到其我的最愛的次數。技術規則如下公式：</p>"
 "<pre><code>新增到我的最愛次數 = round((x + y) / r)</code></pre>"
 "<p>其中：</p>"
@@ -5895,10 +7787,10 @@ msgstr ""
 "  <li>r = IE 瀏覽器點擊數佔所有瀏覽器點擊數之比 (r ≤ 1)</li>"
 "</ul>"
 "<p>從公式可以看出，只有 IE 被用於計算可靠的「新增」，其他瀏覽器的「新增到我的最愛」是透過其他瀏覽器使用率與 IE 使用率之比估算的。"
-"原因是只有 IE 幾乎在使用者將頁面新增到我的最愛時才點擊 favicon.ico。其他瀏覽器也經常因其他原因點擊此檔案，"
+"原因是只有 IE 幾乎在用將頁面新增到我的最愛時才點擊 favicon.ico。其他瀏覽器也經常因其他原因點擊此檔案，"
 "所以我們不能將一個「點擊」計為一個「新增」，因為它可能是其他原因的點擊。</p>"
 "<p>AWStats 還區分有錯誤和無錯誤的點擊，以避免在路徑更深目錄中找不到 favicon.ico 檔案時遞迴向上路徑造成的多次點擊。</p>"
-"<p>注意，此數字只是一個指標，大多數情況下高於真實值，因為即使是 IE 瀏覽器有時也會在沒有使用者「新增到我的最愛」操作的情況下點擊 favicon。</p>"
+"<p>注意，此數字只是一個指標，大多數情況下高於真實值，因為即使是 IE 瀏覽器有時也會在沒有用戶「新增到我的最愛」操作的情況下點擊 favicon。</p>"
 
 #------------------------------------------------------------------------------
 # HTTP 狀態碼
@@ -5910,9 +7802,9 @@ msgstr "🌐 HTTP 狀態碼"
 msgid "glossary.http.intro"
 msgstr ""
 "<h3 id='HTTP'>HTTP 狀態碼</h3>"
-"<p>HTTP 狀態碼由 Web 伺服器返回，用於指示請求的狀態。代碼 <strong>200</strong> 和 <strong>304</strong> 用於告訴瀏覽器頁面可以檢視。"
+"<p>HTTP 狀態碼由 Web 伺服器回傳，用於指示請求的狀態。代碼 <strong>200</strong> 和 <strong>304</strong> 用於告訴瀏覽器頁面可以查看。"
 "<strong>206</strong> 代碼表示內容部分下載，在下載部分報告。所有其他代碼產生的點擊和流量對訪客是「不可見的」。"
-"例如，返回碼 301 或 302 會告訴瀏覽器請求另一個頁面。瀏覽器將進行另一次點擊，最終應該收到返回碼 <strong>200</strong> 或 <strong>304</strong> 的頁面。</p>"
+"例如，回傳碼 301 或 302 會告訴瀏覽器請求另一個頁面。瀏覽器將進行另一次點擊，最終應該收到回傳碼 <strong>200</strong> 或 <strong>304</strong> 的頁面。</p>"
 "<p>所有「不可見」流量的代碼被 AWStats 隔離在 HTTP 狀態報告圖表中，由設定檔中的 ShowHTTPErrorsStats 指令啟用。"
 "您也可以透過 ValidHTTPcodes 指令更改「非錯誤」點擊的值（預設為 200 和 304）。</p>"
 "<p>以下是 HTTP/1.1 草案規範中定義的所有狀態碼，詳見 <a href='http://www.w3.org/Protocols/rfc2068/rfc2068' target='_blank' rel='noopener noreferrer'>IETF rfc 2068</a>。"
@@ -5924,86 +7816,151 @@ msgstr ""
 "  <li><a href='#1xx'>1xx - 資訊性</a></li>"
 "  <li><a href='#2xx'>2xx - 成功</a></li>"
 "  <li><a href='#3xx'>3xx - 重定向</a></li>"
-"  <li><a href='#4xx'>4xx - 用戶端錯誤</a></li>"
+"  <li><a href='#4xx'>4xx - 客戶端錯誤</a></li>"
 "  <li><a href='#5xx'>5xx - 伺服器錯誤</a></li>"
 "</ul>"
 
 msgid "glossary.http.1xx"
 msgstr ""
-"<h4 id='1xx'>1xx 類 - 資訊性</h4>"
-"<p>資訊性狀態碼是 Web 伺服器的暫時回應，讓用戶端了解伺服器的處理狀態。資訊性代碼不表示錯誤條件。</p>"
+"<h4 id='1xx'>1xx 類別 - 資訊性</h4>"
+"<p>資訊性狀態碼是 Web 伺服器的暫時回應，讓客戶端了解伺服器的處理狀態。資訊性代碼不表示錯誤條件。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>100</td><td>100 Continue - 繼續發送請求</td></tr>"
-"  <tr><td>101</td><td>101 Switching Protocols - 切換協定</td></tr>"
+"  <tr><td>100</td><td>100 Continue - 繼續</td></tr>"
+"  <tr><td>101</td><td>101 Switching Protocols - 切換協定</p></td></tr>"
+"  <tr><td>102</td><td>102 Processing (WebDAV) - 處理中 (WebDAV)</p></td></tr>"
+"  <tr><td>103</td><td>103 Early Hints - 早期提示 (RFC 8297)</p></td></tr>"
 "</table>"
 
 msgid "glossary.http.2xx"
 msgstr ""
-"<h4 id='2xx'>2xx 類 - 成功</h4>"
-"<p>此類狀態碼表示用戶端的請求已被成功接收、理解和處理。</p>"
+"<h4 id='2xx'>2xx 類別 - 成功</h4>"
+"<p>此類狀態碼表示客戶端的請求已被成功接收、理解和處理。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>200</td><td>200 OK - 成功</td></tr>"
-"  <tr><td>201</td><td>201 Created - 已建立</td></tr>"
-"  <tr><td>202</td><td>202 Accepted - 已接受</td></tr>"
-"  <tr><td>203</td><td>203 Non-Authoritative Information - 非權威資訊</td></tr>"
-"  <tr><td>204</td><td>204 No Content - 無內容</td></tr>"
-"  <tr><td>205</td><td>205 Reset Content - 重置內容</td></tr>"
-"  <tr><td>206</td><td>206 Partial Content - 部分內容（用戶端正在下載多部分文件或大檔案的一部分）</td></tr>"
+"  <tr><td>2xx</td><td>[Miscellaneous successes] - [其他成功狀態]</p></td></tr>"
+"  <tr><td>200</td><td>200 OK - 成功</p></td></tr>"
+"  <tr><td>201</td><td>201 Created - 已建立</p></td></tr>"
+"  <tr><td>202</td><td>202 Accepted - 已接受</p></td></tr>"
+"  <tr><td>203</td><td>203 Non-authoritative information (from cache) - 非權威資訊</p></td></tr>"
+"  <tr><td>204</td><td>204 No Content - 無內容</p></td></tr>"
+"  <tr><td>205</td><td>205 Reset Content - 重設內容</p></td></tr>"
+"  <tr><td>206</td><td>206 Partial Content - 部分內容</p></td></tr>"
+"  <tr><td>207</td><td>207 Multi-Status (WebDAV) - 多狀態 (WebDAV)</p></td></tr>"
+"  <tr><td>208</td><td>208 Already Reported (WebDAV) - 已報告 (WebDAV)</p></td></tr>"
+"  <tr><td>226</td><td>226 IM Used - IM 已使用</p></td></tr>"
 "</table>"
 
 msgid "glossary.http.3xx"
 msgstr ""
-"<h4 id='3xx'>3xx 類 - 重定向</h4>"
-"<p>此類代碼告訴用戶端，瀏覽器應重定向到另一個 URL 以完成請求。這不是錯誤條件。</p>"
+"<h4 id='3xx'>3xx 類別 - 重定向</h4>"
+"<p>此類代碼告訴客戶端，瀏覽器應重定向到另一個 URL 以完成請求。這不是錯誤條件。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>300</td><td>300 Multiple Choices - 多種選擇</td></tr>"
-"  <tr><td>301</td><td>301 Moved Permanently - 永久移動</td></tr>"
-"  <tr><td>302</td><td>302 Moved Temporarily - 暫時移動</td></tr>"
-"  <tr><td>303</td><td>303 See Other - 檢視其他</td></tr>"
-"  <tr><td>304</td><td>304 Not Modified - 未修改</td></tr>"
-"  <tr><td>305</td><td>305 Use Proxy - 使用代理</td></tr>"
+"  <tr><td>3xx</td><td>[Miscellaneous redirections] - [其他重定向狀態]</p></td></tr>"
+"  <tr><td>300</td><td>300 Multiple Choices - 多種選擇</p></td></tr>"
+"  <tr><td>301</td><td>301 Moved Permanently (redirect) - 永久移動 (重定向)</p></td></tr>"
+"  <tr><td>302</td><td>302 The file (which was temporarily moved previously) has been found - 已找到該檔案（之前曾被暫時移動過）</p></td></tr>"
+"  <tr><td>303</td><td>303 See Other - 參見其他</p></td></tr>"
+"  <tr><td>304</td><td>304 Not Modified (since last retrieval) - 未修改 (自上次請求後)</p></td></tr>"
+"  <tr><td>305</td><td>305 Use Proxy - 使用代理</p></td></tr>"
+"  <tr><td>306</td><td>306 Switch Proxy - 切換代理</p></td></tr>"
+"  <tr><td>307</td><td>307 Temporary Redirect - 暫時重定向</p></td></tr>"
+"  <tr><td>308</td><td>308 Permanent Redirect - 永久重定向</p></td></tr>"
 "</table>"
 
 msgid "glossary.http.4xx"
 msgstr ""
-"<h4 id='4xx'>4xx 類 - 用戶端錯誤</h4>"
-"<p>此類狀態碼表示用戶端向伺服器發送了錯誤資料或格式錯誤的請求。用戶端錯誤通常發生在用戶端嘗試使用錯誤的使用者名稱和密碼訪問受保護區域時。</p>"
+"<h4 id='4xx'>4xx 類別 - 客戶端錯誤</h4>"
+"<p>此類狀態碼表示客戶端向伺服器發送了錯誤資料或格式錯誤的請求。客戶端錯誤通常發生在客戶端嘗試使用錯誤的用戶名和密碼訪問受保護區域時。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>400</td><td>400 Bad Request - 錯誤請求</td></tr>"
-"  <tr><td>401</td><td>401 Unauthorized - 未授權</td></tr>"
-"  <tr><td>402</td><td>402 Payment Required - 需要付款</td></tr>"
-"  <tr><td>403</td><td>403 Forbidden - 禁止訪問</td></tr>"
-"  <tr><td>404</td><td>404 Not Found - 未找到</td></tr>"
-"  <tr><td>405</td><td>405 Method Not Allowed - 方法不允許</td></tr>"
-"  <tr><td>406</td><td>406 Not Acceptable - 不可接受</td></tr>"
-"  <tr><td>407</td><td>407 Proxy Authentication Required - 需要代理認證</td></tr>"
-"  <tr><td>408</td><td>408 Request Timeout - 請求逾時</td></tr>"
-"  <tr><td>409</td><td>409 Conflict - 衝突</td></tr>"
-"  <tr><td>410</td><td>410 Gone - 已消失</td></tr>"
-"  <tr><td>411</td><td>411 Length Required - 需要長度</td></tr>"
-"  <tr><td>412</td><td>412 Precondition Failed - 前提條件失敗</td></tr>"
-"  <tr><td>413</td><td>413 Request Entity Too Large - 請求實體過大</td></tr>"
-"  <tr><td>414</td><td>414 Request-URI Too Long - 請求 URI 過長</td></tr>"
-"  <tr><td>415</td><td>415 Unsupported Media Type - 不支援的媒體類型</td></tr>"
-"  <tr><td>429</td><td>429 Too Many Requests - 請求過多（限流）</td></tr>"
+"  <tr><td>4xx</td><td>[Miscellaneous client/user errors] - [其他客戶端/用戶錯誤]</p></td></tr>"
+"  <tr><td>400</td><td>400 Bad Request - 錯誤請求</p></td></tr>"
+"  <tr><td>401</td><td>401 Unauthorized - 未授權</p></td></tr>"
+"  <tr><td>402</td><td>402 Payment Required - 需要付款</p></td></tr>"
+"  <tr><td>403</td><td>403 Forbidden - 禁止訪問</p></td></tr>"
+"  <tr><td>404</td><td>404 Not Found (hits on favicon excluded) - 未找到頁面/資源 (已排除 favicon 請求)</p></td></tr>"
+"  <tr><td>405</td><td>405 Method Not Allowed - 方法不允許</p></td></tr>"
+"  <tr><td>406</td><td>406 Not Acceptable - 無法接受</p></td></tr>"
+"  <tr><td>407</td><td>407 Proxy Authentication Required - 需要代理認證</p></td></tr>"
+"  <tr><td>408</td><td>408 Request Timeout - 請求逾時</p></td></tr>"
+"  <tr><td>409</td><td>409 Conflict - 衝突</p></td></tr>"
+"  <tr><td>410</td><td>410 Gone - 已不存在</p></td></tr>"
+"  <tr><td>411</td><td>411 Length Required - 需要內容長度</p></td></tr>"
+"  <tr><td>412</td><td>412 Precondition Failed - 前提條件失敗</p></td></tr>"
+"  <tr><td>413</td><td>413 Payload Too Large - 請求主體過大</p></td></tr>"
+"  <tr><td>414</td><td>414 URI Too Long - 請求 URI 過長</p></td></tr>"
+"  <tr><td>415</td><td>415 Unsupported Media Type - 不支援的媒體類型</p></td></tr>"
+"  <tr><td>416</td><td>416 Range Not Satisfiable - 請求範圍無法滿足</p></td></tr>"
+"  <tr><td>417</td><td>417 Expectation Failed - 期望失敗</p></td></tr>"
+"  <tr><td>418</td><td>418 I am a teapot - 我是茶壺 (愚人節玩笑)</p></td></tr>"
+"  <tr><td>419</td><td>419 Page Expired (Laravel) - 頁面已過期 (Laravel)</p></td></tr>"
+"  <tr><td>420</td><td>420 Method Failure (Spring) / Enhance Your Calm (Twitter - deprecated) - 方法失敗 (Spring) / 請冷靜 (Twitter - 已棄用)</p></td></tr>"
+"  <tr><td>421</td><td>421 Misdirected Request - 請求被錯誤引導</p></td></tr>"
+"  <tr><td>422</td><td>422 Unprocessable Entity (WebDAV) - 無法處理的實體 (WebDAV)</p></td></tr>"
+"  <tr><td>423</td><td>423 Locked (WebDAV) - 已鎖定 (WebDAV)</p></td></tr>"
+"  <tr><td>424</td><td>424 Failed Dependency (WebDAV) - 依賴失敗 (WebDAV)</p></td></tr>"
+"  <tr><td>425</td><td>425 Too Early (RFC 8470) - 請求發送過早 (RFC 8470)</p></td></tr>"
+"  <tr><td>426</td><td>426 Upgrade Required - 需要升級</p></td></tr>"
+"  <tr><td>428</td><td>428 Precondition Required (RFC 6585) - 需要前提條件 (RFC 6585)</p></td></tr>"
+"  <tr><td>429</td><td>429 Too Many Requests (RFC 6585) - 請求過多 (RFC 6585)</p></td></tr>"
+"  <tr><td>430</td><td>430 Request Header Fields Too Large (Shopify) - 請求標頭欄位過大 (Shopify)</p></td></tr>"
+"  <tr><td>431</td><td>431 Request Header Fields Too Large (RFC 6585) - 請求標頭欄位過大 (RFC 6585)</p></td></tr>"
+"  <tr><td>440</td><td>440 Login Time-out (IIS) - 登入逾時 (IIS)</p></td></tr>"
+"  <tr><td>444</td><td>444 No Response (nginx) - 無回應 (nginx)</p></td></tr>"
+"  <tr><td>449</td><td>449 Retry With (IIS) - 請重試 (IIS)</p></td></tr>"
+"  <tr><td>450</td><td>450 Blocked by Windows Parental Controls (Microsoft) - 被 Windows 家長監護阻止 (Microsoft)</p></td></tr>"
+"  <tr><td>451</td><td>451 Unavailable For Legal Reasons (RFC 7725) - 因法律原因不可用 (RFC 7725)</p></td></tr>"
+"  <tr><td>460</td><td>460 Client closed connection before idle timeout (AWS ELB) - 客戶端在空閒逾時前關閉連線 (AWS ELB)</p></td></tr>"
+"  <tr><td>463</td><td>463 X-Forwarded-For header with >30 IP addresses (AWS ELB) - X-Forwarded-For 標頭包含超過30個IP位址 (AWS ELB)</p></td></tr>"
+"  <tr><td>464</td><td>464 Incompatible protocol versions (AWS ELB) - 協定版本不相容 (AWS ELB)</p></td></tr>"
+"  <tr><td>494</td><td>494 Request header too large (nginx) - 請求標頭過大 (nginx)</p></td></tr>"
+"  <tr><td>495</td><td>495 SSL Certificate Error (nginx) - SSL 憑證錯誤 (nginx)</p></td></tr>"
+"  <tr><td>496</td><td>496 SSL Certificate Required (nginx) - 需要 SSL 憑證 (nginx)</p></td></tr>"
+"  <tr><td>497</td><td>497 HTTP Request Sent to HTTPS Port (nginx) - HTTP 請求發送到 HTTPS 連接埠 (nginx)</p></td></tr>"
+"  <tr><td>498</td><td>498 Invalid Token (ArcGIS) - 無效的令牌 (ArcGIS)</p></td></tr>"
+"  <tr><td>499</td><td>499 Token Required (ArcGIS) / Client Closed Request (nginx) - 需要令牌 (ArcGIS) / 客戶端關閉請求 (nginx)</p></td></tr>"
+"  <tr><td>508</td><td>508 Resource Limit Is Reached (cPanel) - 達到資源限制 (cPanel)</p></td></tr>"
+"  <tr><td>509</td><td>509 Bandwidth Limit Exceeded (Apache/cPanel) - 超出頻寬限制 (Apache/cPanel)</p></td></tr>"
 "</table>"
 
 msgid "glossary.http.5xx"
 msgstr ""
-"<h4 id='5xx'>5xx 類 - 伺服器錯誤</h4>"
-"<p>此類狀態碼表示由於 Web 伺服器內部錯誤，無法成功處理用戶端的請求。這些錯誤碼可能表示 Web 伺服器存在嚴重問題。</p>"
+"<h4 id='5xx'>5xx 類別 - 伺服器錯誤</h4>"
+"<p>此類狀態碼表示由於 Web 伺服器內部錯誤，無法成功處理客戶端的請求。這些錯誤碼可能表示 Web 伺服器存在嚴重問題。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>500</td><td>500 Internal Server Error - 內部伺服器錯誤（最常見原因是嘗試執行有語法錯誤的腳本）</td></tr>"
-"  <tr><td>501</td><td>501 Not Implemented - 未實現</td></tr>"
-"  <tr><td>502</td><td>502 Bad Gateway - 錯誤閘道</td></tr>"
-"  <tr><td>503</td><td>503 Service Unavailable - 服務不可用</td></tr>"
-"  <tr><td>504</td><td>504 Gateway Timeout - 閘道逾時</td></tr>"
-"  <tr><td>505</td><td>505 HTTP Version Not Supported - HTTP 版本不支援</td></tr>"
+"  <tr><td>5xx</td><td>[Miscellaneous server errors] - [其他伺服器錯誤]</p></td></tr>"
+"  <tr><td>500</td><td>500 Internal Server Error - 內部伺服器錯誤</p></td></tr>"
+"  <tr><td>501</td><td>501 Not Implemented - 未實作</p></td></tr>"
+"  <tr><td>502</td><td>502 Bad Gateway - 閘道錯誤</p></td></tr>"
+"  <tr><td>503</td><td>503 Service Unavailable - 服務不可用</p></td></tr>"
+"  <tr><td>504</td><td>504 Gateway Timeout - 閘道逾時</p></td></tr>"
+"  <tr><td>505</td><td>505 HTTP Version Not Supported - HTTP 版本不支援</p></td></tr>"
+"  <tr><td>506</td><td>506 Variant Also Negotiates - 變體也參與協商</p></td></tr>"
+"  <tr><td>507</td><td>507 Insufficient Storage (WebDAV) - 儲存空間不足 (WebDAV)</p></td></tr>"
+"  <tr><td>508</td><td>508 Loop Detected (WebDAV) - 偵測到循環 (WebDAV)</p></td></tr>"
+"  <tr><td>510</td><td>510 Not Extended - 未擴展</p></td></tr>"
+"  <tr><td>511</td><td>511 Network Authentication Required (RFC 6585) - 需要網路身份驗證 (RFC 6585)</p></td></tr>"
+"  <tr><td>520</td><td>520 Unknown Error (Cloudflare) - 未知錯誤 (Cloudflare)</p></td></tr>"
+"  <tr><td>521</td><td>521 Web Server Is Down (Cloudflare) - Web 伺服器已關閉 (Cloudflare)</p></td></tr>"
+"  <tr><td>522</td><td>522 Connection Timed Out (Cloudflare) - 連線逾時 (Cloudflare)</p></td></tr>"
+"  <tr><td>523</td><td>523 Origin Is Unreachable (Cloudflare) - 源站不可達 (Cloudflare)</p></td></tr>"
+"  <tr><td>524</td><td>524 A Timeout Occurred (Cloudflare) - 發生逾時 (Cloudflare)</p></td></tr>"
+"  <tr><td>525</td><td>525 SSL Handshake Failed (Cloudflare) - SSL 握手失敗 (Cloudflare)</p></td></tr>"
+"  <tr><td>526</td><td>526 Invalid SSL Certificate (Cloudflare) - 無效的 SSL 憑證 (Cloudflare)</p></td></tr>"
+"  <tr><td>527</td><td>527 Railgun Error (Cloudflare - obsolete) - Railgun 錯誤 (Cloudflare - 已棄用)</p></td></tr>"
+"  <tr><td>529</td><td>529 Site is overloaded (SSLLabs) - 站點過載 (SSLLabs)</p></td></tr>"
+"  <tr><td>530</td><td>530 Origin DNS Error (Cloudflare) / Site is frozen (Pantheon) - 源站 DNS 錯誤 (Cloudflare) / 站點已凍結 (Pantheon)</p></td></tr>"
+"  <tr><td>540</td><td>540 Temporarily Disabled (Shopify) - 暫時停用 (Shopify)</p></td></tr>"
+"  <tr><td>561</td><td>561 Unauthorized (AWS ELB) - 未授權 (AWS ELB)</p></td></tr>"
+"  <tr><td>598</td><td>598 (Informal convention) Network read timeout error - (非正式約定) 網路讀取逾時錯誤</p></td></tr>"
+"  <tr><td>599</td><td>599 (Informal convention) Network connect timeout error - (非正式約定) 網路連線逾時錯誤</p></td></tr>"
+"  <tr><td>783</td><td>783 Unexpected Token (Shopify) - 意外的令牌 (Shopify)</p></td></tr>"
+"  <tr><td>999</td><td>999 Request denied (LinkedIn) - 請求被拒絕 (LinkedIn)</p></td></tr>"
+"  <tr><td>000</td><td>000 HTTP/2 GOAWAY (AWS ELB) - HTTP/2 GOAWAY (AWS ELB)</p></td></tr>"
+"  <tr><td>xxx</td><td>[Unknown] - [未知狀態碼]</p></td></tr>"
 "</table>"
 
 #------------------------------------------------------------------------------
@@ -6016,70 +7973,340 @@ msgstr "📧 SMTP 狀態碼"
 msgid "glossary.smtp.intro"
 msgstr ""
 "<h3 id='SMTP'>SMTP 狀態碼</h3>"
-"<p>SMTP 狀態碼由郵件伺服器返回，用於指示發送/接收郵件的狀態。狀態碼取決於郵件伺服器和用於分析日誌檔的預處理器。</p>"
+"<p>SMTP 狀態碼由郵件伺服器回傳，用於指示發送/接收郵件的狀態。狀態碼取決於郵件伺服器和用於分析日誌檔案的預處理器。</p>"
 "<p>所有表示失敗的代碼被 AWStats 隔離在 SMTP 狀態報告圖表中，由 AWStats 設定檔中的 ShowSMTPErrorsStats 指令啟用。"
 "您可以透過 ValidSMTPCodes 指令決定哪些代碼是成功郵件傳輸，不應出現在此圖表中。</p>"
-"<p>以下是大多數郵件伺服器報告的值（當使用 maillogconvert.pl 預處理郵件日誌檔時也應如此）。SMTP 錯誤分為 3 類：</p>"
+"<p>以下是現代郵件伺服器（Postfix、Sendmail、Exim、Exchange 等）報告的 SMTP 狀態碼。SMTP 回應分為以下幾類：</p>"
 "<ul>"
-"  <li><a href='#SMTP23'>2xx/3xx - 成功</a></li>"
-"  <li><a href='#SMTP4'>4xx - 暫時錯誤（要求發送方稍後重試）</a></li>"
-"  <li><a href='#SMTP5'>5xx - 永久錯誤</a></li>"
+"  <li><a href='#SMTP2'>2xx - 成功</a></li>"
+"  <li><a href='#SMTP3'>3xx - 中間狀態</a></li>"
+"  <li><a href='#SMTP4'>4xx - 暫時失敗（可重試）</a></li>"
+"  <li><a href='#SMTP5'>5xx - 永久失敗（不重試）</a></li>"
+"  <li><a href='#SMTP6'>6xx - 協定狀態 (DSN 送達狀態通知)</a></li>"
+"  <li><a href='#SMTP7'>7xx - 安全狀態 (MTA-STS, DANE, TLS)</a></li>"
+"  <li><a href='#SMTP8'>8xx - 認證狀態</a></li>"
+"  <li><a href='#SMTP9'>9xx - 應用特定 (Exchange, Postfix, Sendmail, Exim)</a></li>"
 "</ul>"
 
 msgid "glossary.smtp.2xx"
 msgstr ""
-"<h4 id='SMTP23'>2xx/3xx 類 - 成功</h4>"
-"<p>這些是 SMTP 協定的成功回應。</p>"
+"<h4 id='SMTP2'>2xx - 成功</h4>"
+"<p>這些是 SMTP 協定的成功回應，表示請求的操作已成功完成。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>200</td><td>200 Non-standard success response - 非標準成功回應</td></tr>"
-"  <tr><td>211</td><td>211 System status, or system help reply - 系統狀態或系統幫助回覆</td></tr>"
-"  <tr><td>214</td><td>214 Help message - 幫助資訊</td></tr>"
-"  <tr><td>220</td><td>220 <domain> Service ready - 服務就緒</td></tr>"
-"  <tr><td>221</td><td>221 <domain> Service closing transmission channel - 服務關閉傳輸通道</td></tr>"
-"  <tr><td>250</td><td>250 Requested mail action taken and completed - 請求的郵件操作已完成</td></tr>"
-"  <tr><td>251</td><td>251 User not local: will forward to <forward-path> - 使用者非本地，將轉發</td></tr>"
-"  <tr><td>252</td><td>252 Recipient cannot be verified - 收件人無法驗證，但將嘗試投遞</td></tr>"
-"  <tr><td>354</td><td>354 Start mail input and end with <crlf>.<crlf> - 開始郵件輸入</td></tr>"
+"  <tr><td>200</td><td>200 Nonstandard success response (ESMTP) - 非標準成功回應 (ESMTP)</p></td></tr>"
+"  <tr><td>211</td><td>211 System status, or system help reply - 系統狀態或系統幫助回覆</p></td></tr>"
+"  <tr><td>214</td><td>214 Help message - 幫助訊息</p></td></tr>"
+"  <tr><td>215</td><td>215 SMTP service ready (LMTP) - SMTP 服務就緒 (LMTP)</p></td></tr>"
+"  <tr><td>220</td><td>220 Service ready - server is ready to receive mail - 服務就緒</p></td></tr>"
+"  <tr><td>221</td><td>221 Service closing - connection is being closed") - 服務關閉傳輸通道</p></td></tr>"
+"  <tr><td>235</td><td>235 Authentication successful - 認證成功 (ESMTP AUTH)</p></td></tr>"
+"  <tr><td>250</td><td>250 Requested mail action taken and completed - 請求的郵件操作已完成</p></td></tr>"
+"  <tr><td>251</td><td>251 User not local - will forward to another address - 用戶非本地，將轉發</p></forward-path></td></tr>"
+"  <tr><td>252</td><td>252 Cannot verify recipient, but will attempt delivery - 收件人無法驗證，但將接受並嘗試投遞</p></forward-path></td></tr>"
+"  <tr><td>253</td><td>253 Message accepted for delivery (DSN) - 郵件已接受投遞 (DSN)</p></td></tr>"
+"  <tr><td>257</td><td>257 User name is a mailbox - 用戶名是信箱地址</p></td></tr>"
+"</table>"
+
+msgid "glossary.smtp.3xx"
+msgstr ""
+"<h4 id='SMTP3'>3xx - 中間狀態</h4>"
+"<p>這些是中間狀態回應，表示伺服器要求客戶端提供更多資訊或繼續操作。</p>"
+"<table class='code-table'>"
+"  <tr><th>代碼</th><th>說明</th><tr>"
+"  <tr><td>334</td><td>334 Authentication challenge - please respond - 認證挑戰 (AUTH)</p></td></tr>"
+"  <tr><td>354</td><td>354 Start mail input - end with <CRLF>.<CRLF> - 開始郵件輸入，以 &lt;CRLF&gt;.&lt;CRLF&gt; 結束</p></CRLF></td></tr>"
+"  <tr><td>355</td><td>355 Continue (LMTP) - 繼續 (LMTP)</p></td></tr>"
 "</table>"
 
 msgid "glossary.smtp.4xx"
 msgstr ""
-"<h4 id='SMTP4'>4xx 類 - 暫時錯誤</h4>"
+"<h4 id='SMTP4'>4xx - 暫時失敗（可重試）</h4>"
 "<p>這些是暫時錯誤訊息，用於告訴用戶端發送方發生錯誤，但可以稍後重試。收到此類代碼的用戶端通常會將郵件保留在佇列中稍後重試。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>421</td><td>421 <domain> Service not available, closing transmission channel - 服務不可用，關閉傳輸通道</td></tr>"
-"  <tr><td>450</td><td>450 Requested mail action not taken: mailbox busy or access denied - 郵箱忙或訪問被拒絕</td></tr>"
-"  <tr><td>451</td><td>451 Requested mail action aborted: error in processing - 處理錯誤，操作中止</td></tr>"
-"  <tr><td>452</td><td>452 Requested mail action not taken: insufficient system storage - 系統儲存不足</td></tr>"
-"  <tr><td>453</td><td>453 Too many messages - 訊息過多</td></tr>"
+"  <tr><td>421</td><td>421 Service not available - connection closing, try again later - 服務不可用，關閉傳輸通道</p></td></tr>"
+"  <tr><td>422</td><td>422 Mailbox busy or temporarily unavailable (Exchange) - 信箱忙碌或暫時不可用 (Exchange)</p></td></tr>"
+"  <tr><td>423</td><td>423 Connection rate limit exceeded (Postfix) - 連線速率限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>424</td><td>424 Too many concurrent connections (Postfix) - 並發連線過多 (Postfix)</p></td></tr>"
+"  <tr><td>425</td><td>425 Unable to establish connection (Postfix) - 無法建立連線 (Postfix)</p></td></tr>"
+"  <tr><td>426</td><td>426 Connection timed out (Postfix) - 連線逾時 (Postfix)</p></td></tr>"
+"  <tr><td>427</td><td>427 Connection dropped due to error (Postfix) - 連線因錯誤中斷 (Postfix)</p></td></tr>"
+"  <tr><td>428</td><td>428 Mailbox temporarily locked (Exchange) - 信箱暫時鎖定 (Exchange)</p></td></tr>"
+"  <tr><td>429</td><td>429 Too many recipients (Postfix/Exim) - 收件人過多 (Postfix/Exim)</p></td></tr>"
+"  <tr><td>431</td><td>431 Mail server error (Exchange) - 郵件伺服器錯誤 (Exchange)</p></td></tr>"
+"  <tr><td>432</td><td>432 Received loop detected (Exim) - 偵測到接收循環 (Exim)</p></td></tr>"
+"  <tr><td>433</td><td>433 Too many hop count (Exim) - 跳數過多 (Exim)</p></td></tr>"
+"  <tr><td>434</td><td>434 DNS lookup failed (Postfix) - DNS 查找失敗 (Postfix)</p></td></tr>"
+"  <tr><td>435</td><td>435 Unable to authenticate (Postfix) - 無法認證 (Postfix)</p></td></tr>"
+"  <tr><td>436</td><td>436 TLS handshake failed (Postfix) - TLS 握手失敗 (Postfix)</p></td></tr>"
+"  <tr><td>437</td><td>437 SMTP protocol violation (Postfix) - SMTP 協定違規 (Postfix)</p></td></tr>"
+"  <tr><td>438</td><td>438 Message size exceeds limit (Exchange) - 郵件大小超出限制 (Exchange)</p></td></tr>"
+"  <tr><td>439</td><td>439 Message rate limit exceeded (Postfix) - 郵件速率限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>440</td><td>440 Mailbox Quota exceeded - temporary - 信箱配額超出（暫時）</p></td></tr>"
+"  <tr><td>441</td><td>441 Domain not found (Postfix) - 網域名稱未找到 (Postfix)</p></td></tr>"
+"  <tr><td>442</td><td>442 Message header invalid (Postfix) - 郵件標頭無效 (Postfix)</p></td></tr>"
+"  <tr><td>443</td><td>443 Bounce loop detected (Postfix) - 偵測到退信循環 (Postfix)</p></td></tr>"
+"  <tr><td>444</td><td>444 Unable to route (Postfix) - 無法路由 (Postfix)</p></td></tr>"
+"  <tr><td>445</td><td>445 Sender domain not found (Postfix) - 發件人網域名稱未找到 (Postfix)</p></td></tr>"
+"  <tr><td>446</td><td>446 Recipient domain not found (Postfix) - 收件人網域名稱未找到 (Postfix)</p></td></tr>"
+"  <tr><td>447</td><td>447 Greylisting in progress (Postgrey) - 灰名單處理中 (Postgrey)</p></td></tr>"
+"  <tr><td>448</td><td>448 Spam filtering in progress (SpamAssassin) - 垃圾郵件過濾中 (SpamAssassin)</p></td></tr>"
+"  <tr><td>449</td><td>449 Virus scanning in progress (ClamAV) - 病毒掃描中 (ClamAV)</p></td></tr>"
+"  <tr><td>450</td><td>450 Mailbox unavailable - try again later - 請求的郵件操作未執行：信箱不可用</p></td></tr>"
+"  <tr><td>451</td><td>451 Requested action aborted - error in processing - 請求的郵件操作中止：處理錯誤</p></td></tr>"
+"  <tr><td>452</td><td>452 Insufficient system storage - try again later - 請求的郵件操作未執行：系統儲存不足</p></td></tr>"
+"  <tr><td>453</td><td>453 Too many messages for this recipient (Exchange) - 此收件人郵件過多 (Exchange)</p></td></tr>"
+"  <tr><td>454</td><td>454 TLS not available (Postfix) - TLS 不可用 (Postfix)</p></td></tr>"
+"  <tr><td>455</td><td>455 Server unable to accept messages (Postfix) - 伺服器無法接收郵件 (Postfix)</p></td></tr>"
+"  <tr><td>456</td><td>456 Temporary failure in DNS lookup (Exim) - DNS 查找暫時失敗 (Exim)</p></td></tr>"
+"  <tr><td>457</td><td>457 Quota exceeded - temporary - 配額超出（暫時）</p></td></tr>"
+"  <tr><td>458</td><td>458 Message too big - temporary - 郵件過大（暫時）</p></td></tr>"
+"  <tr><td>459</td><td>459 Too many messages per connection - 每連線郵件過多</p></td></tr>"
+"  <tr><td>460</td><td>460 Load average too high (Postfix) - 負載過高 (Postfix)</p></td></tr>"
+"  <tr><td>461</td><td>461 Connection refused (Postfix) - 連線被拒絕 (Postfix)</p></td></tr>"
+"  <tr><td>462</td><td>462 Send rate limit exceeded (Postfix) - 發送速率限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>463</td><td>463 Recipient rate limit exceeded (Postfix) - 收件人速率限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>464</td><td>464 Sender rate limit exceeded (Postfix) - 發件人速率限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>465</td><td>465 IP address rate limit exceeded (Postfix) - IP 位址速率限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>466</td><td>466 MX lookup failed (Postfix) - MX 查找失敗 (Postfix)</p></td></tr>"
+"  <tr><td>467</td><td>467 A record lookup failed (Postfix) - A 記錄查找失敗 (Postfix)</p></td></tr>"
+"  <tr><td>468</td><td>468 PTR record lookup failed (Postfix) - PTR 記錄查找失敗 (Postfix)</p></td></tr>"
+"  <tr><td>469</td><td>469 Greylisting active - please try again (Postgrey) - 灰名單啟動中 (Postgrey)</p></td></tr>"
+"  <tr><td>470</td><td>470 DNSBL lookup temporary failure - DNSBL 查詢暫時失敗</p></domain></td><tr>"
+"  <tr><td>471</td><td>471 RHSBL lookup temporary failure - RHSBL 查詢暫時失敗</p></td></tr>"
+"  <tr><td>472</td><td>472 DKIM verification temporary failure - DKIM 驗證暫時失敗</p></td></tr>"
+"  <tr><td>473</td><td>473 SPF verification temporary failure - SPF 驗證暫時失敗</p></td></tr>"
+"  <tr><td>474</td><td>474 DMARC verification temporary failure - DMARC 驗證暫時失敗</p></td></tr>"
+"  <tr><td>475</td><td>475 Greylisting: try again later - 灰名單：請稍後重試</p></td></tr>"
+"  <tr><td>476</td><td>476 DDoS protection active, try again later - DDoS 防護已啟動，請稍後重試</p></td></tr>"
+"  <tr><td>477</td><td>477 SMTP policy violation (temporary) - SMTP 策略違規（暫時）</p></td></tr>"
+"  <tr><td>478</td><td>478 Temporary error in RCPT TO processing - RCPT TO 處理暫時錯誤</p></td></tr>"
+"  <tr><td>479</td><td>479 Temporary error in MAIL FROM processing - MAIL FROM 處理暫時錯誤</p></td></tr>"
+"  <tr><td>480</td><td>480 Temporary error in EHLO/HELO processing - EHLO/HELO 處理暫時錯誤</p></td></tr>"
+"  <tr><td>481</td><td>481 Temporary error in DATA processing - DATA 處理暫時錯誤</p></td></tr>"
+"  <tr><td>482</td><td>482 Temporary error - service busy - 暫時錯誤 - 服務忙碌</p></td></tr>"
+"  <tr><td>483</td><td>483 Rate limit exceeded (per sender) - 速率限制超出（按發件人）</p></td></tr>"
+"  <tr><td>484</td><td>484 Rate limit exceeded (per recipient) - 速率限制超出（按收件人）</p></td></tr>"
+"  <tr><td>485</td><td>485 Rate limit exceeded (per domain) - 速率限制超出（按網域名稱）</p></td></tr>"
+"  <tr><td>486</td><td>486 Rate limit exceeded (per IP) - 速率限制超出（按 IP）</p></td></tr>"
+"  <tr><td>487</td><td>487 Content filter temporary failure - 內容過濾器暫時失敗</p></td></tr>"
+"  <tr><td>488</td><td>488 Antivirus scanner temporary failure - 防毒掃描器暫時失敗</p></td></tr>"
+"  <tr><td>489</td><td>489 Spam filter temporary failure - 垃圾郵件過濾器暫時失敗</p></td></tr>"
+"  <tr><td>490</td><td>490 Milter temporary failure - Milter 暫時失敗</p></td></tr>"
+"  <tr><td>491</td><td>491 Policy service temporary failure - 策略服務暫時失敗</p></domain></td></td>"
+"  <tr><td>492</td><td>492 DNS temporary failure - DNS 暫時失敗</p></td></tr>"
+"  <tr><td>493</td><td>493 Routing temporary failure - 路由暫時失敗</p></td></tr>"
+"  <tr><td>494</td><td>494 Delivery temporary failure - 投遞暫時失敗</p></td></tr>"
+"  <tr><td>495</td><td>495 Queue temporary failure - 佇列暫時失敗</p></td></tr>"
+"  <tr><td>496</td><td>496 Storage temporary failure - 儲存暫時失敗</p></td></tr>"
+"  <tr><td>497</td><td>497 Authentication service temporary failure - 認證服務暫時失敗</p></td></tr>"
+"  <tr><td>498</td><td>498 Authorization service temporary failure - 授權服務暫時失敗</p></td></tr>"
+"  <tr><td>499</td><td>499 Temporary failure - please try again later - 暫時失敗 - 請稍後重試</p></td></tr>"
 "</table>"
 
 msgid "glossary.smtp.5xx"
 msgstr ""
-"<h4 id='SMTP5'>5xx 類 - 永久錯誤</h4>"
+"<h4 id='SMTP5'>5xx - 永久失敗（不重試）</h4>"
 "<p>這些是永久錯誤代碼。郵件傳輸已完全失敗，不會再次嘗試。</p>"
 "<table class='code-table'>"
 "  <tr><th>代碼</th><th>說明</th></tr>"
-"  <tr><td>500</td><td>500 Syntax error, command unrecognized or command line too long - 語法錯誤，指令無法識別或命令列過長</td></tr>"
-"  <tr><td>501</td><td>501 Syntax error in parameters or arguments - 參數或參數語法錯誤</td></tr>"
-"  <tr><td>502</td><td>502 Command not implemented - 指令未實現</td></tr>"
-"  <tr><td>503</td><td>503 Server encountered bad sequence of commands - 伺服器遇到錯誤的指令序列</td></tr>"
-"  <tr><td>504</td><td>504 Command parameter not implemented - 指令參數未實現</td></tr>"
-"  <tr><td>521</td><td>521 <domain> does not accept mail or closing transmission channel - 不接受郵件或關閉傳輸通道</td></tr>"
-"  <tr><td>530</td><td>530 Access denied - 訪問被拒絕</td></tr>"
-"  <tr><td>550</td><td>550 Requested mail action not taken (Relaying not allowed, Unknown recipient user, ...) - 請求的郵件操作未執行（不允許中繼、未知收件人等）</td></tr>"
-"  <tr><td>551</td><td>551 User not local: please try <forward-path> or Invalid Address: Relay request denied - 使用者非本地，請嘗試轉發路徑或無效位址：中繼請求被拒絕</td></tr>"
-"  <tr><td>552</td><td>552 Requested mail action aborted: exceeded storage allocation - 超出儲存分配，操作中止</td></tr>"
-"  <tr><td>553</td><td>553 Requested mail action not taken: mailbox name not allowed - 郵箱名稱不允許，操作未執行</td></tr>"
-"  <tr><td>554</td><td>554 Requested mail action rejected: access denied - 請求的郵件操作被拒絕：訪問被拒絕</td></tr>"
-"  <tr><td>557</td><td>557 Too many duplicate messages - 重複訊息過多</td></tr>"
+"  <tr><td>500</td><td>500 Syntax error - command unrecognized or too long - 語法錯誤，命令無法識別或命令列過長</p></td></tr>"
+"  <tr><td>501</td><td>501 Syntax error in parameters or arguments - 參數或參數語法錯誤</p></td></tr>"
+"  <tr><td>502</td><td>502 Command not implemented - 命令未實作</p></td></tr>"
+"  <tr><td>503</td><td>503 Bad sequence of commands - 命令順序錯誤</p></td></tr>"
+"  <tr><td>504</td><td>504 Command parameter not implemented - 命令參數未實作</p></td></tr>"
+"  <tr><td>505</td><td>505 Version not supported (ESMTP) - 版本不支援 (ESMTP)</p></td></tr>"
+"  <tr><td>506</td><td>506 Mailbox path invalid (LMTP) - 信箱路徑無效 (LMTP)</p></td></tr>"
+"  <tr><td>507</td><td>507 Too many commands in this session (Postfix) - 此工作階段中命令過多 (Postfix)</p></td></tr>"
+"  <tr><td>508</td><td>508 Recipient limit exceeded (Postfix) - 收件人限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>509</td><td>509 Sender limit exceeded (Postfix) - 發件人限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>510</td><td>510 Domain limit exceeded (Postfix) - 網域名稱限制超出 (Postfix)</p></td></tr>"
+"  <tr><td>511</td><td>511 Mailbox does not exist (Exchange) - 信箱不存在 (Exchange)</p></td></tr>"
+"  <tr><td>512</td><td>512 DNS failure - permanent - DNS解析失敗（永久）</p></td></tr>"
+"  <tr><td>513</td><td>513 Address type not supported (Postfix) - 位址類型不支援 (Postfix)</p></td></tr>"
+"  <tr><td>514</td><td>514 Unable to open mailbox (Postfix) - 無法開啟信箱 (Postfix)</p></td></tr>"
+"  <tr><td>515</td><td>515 Mailbox locked - permanent - 信箱被鎖定（永久）</p></td></tr>"
+"  <tr><td>516</td><td>516 Message rejected due to policy (Exchange) - 訊息因策略被拒絕 (Exchange)</p></td></tr>"
+"  <tr><td>517</td><td>517 Content rejected - permanent - 內容被拒絕（永久）</p></domain></td></td>"
+"  <tr><td>518</td><td>518 Attachment type not allowed - 附件類型不允許</p></td></tr>"
+"  <tr><td>519</td><td>519 Message encoding not supported - 訊息編碼不支援</p></td></tr>"
+"  <tr><td>520</td><td>520 Sender domain does not exist - permanent - 發件人網域名稱不存在（永久）</p></td></tr>"
+"  <tr><td>521</td><td>521 Domain does not accept mail or is closing - 網域名稱不接受郵件或關閉傳輸通道</p></td></tr>"
+"  <tr><td>522</td><td>522 Recipient domain does not exist - permanent - 收件人網域名稱不存在（永久）</p></td></tr>"
+"  <tr><td>523</td><td>523 Mailbox quota exceeded - permanent - 信箱配額超出（永久）</p></td></tr>"
+"  <tr><td>524</td><td>524 Message size exceeds limit - permanent - 訊息大小超出限制（永久）</p></td></tr>"
+"  <tr><td>525</td><td>525 Authentication required (Sendmail) - 需要認證 (Sendmail)</p></td></tr>"
+"  <tr><td>526</td><td>526 Authentication failed (Sendmail) - 認證失敗 (Sendmail)</p></td></tr>"
+"  <tr><td>527</td><td>527 Authentication mechanism not supported - 認證機制不支援</p></td></tr>"
+"  <tr><td>528</td><td>528 Authentication credentials invalid - 認證憑證無效</p></td></tr>"
+"  <tr><td>529</td><td>529 Authentication account expired - 認證帳戶已過期</p></td></tr>"
+"  <tr><td>530</td><td>530 Access denied - authentication required - 訪問被拒絕（需要認證）</p></td></tr>"
+"  <tr><td>531</td><td>531 Access denied (Sendmailism) - 訪問被拒絕 (Sendmail)</p></td></tr>"
+"  <tr><td>532</td><td>532 Access denied - not authenticated - 訪問被拒絕：未認證</p></td></tr>"
+"  <tr><td>533</td><td>533 Access denied - account locked - 訪問被拒絕：帳戶已鎖定</p></td></tr>"
+"  <tr><td>534</td><td>534 Access denied - account disabled - 訪問被拒絕：帳戶已停用</p></td></tr>"
+"  <tr><td>535</td><td>535 Authentication failed - 認證失敗 (AUTH)</p></td></tr>"
+"  <tr><td>536</td><td>536 Authentication required for relay (Postfix) - 中繼需要認證 (Postfix)</p></td></tr>"
+"  <tr><td>537</td><td>537 Authentication failed for relay (Postfix) - 中繼認證失敗 (Postfix)</p></td></tr>"
+"  <tr><td>538</td><td>538 Encryption required (STARTTLS) - 需要加密 (STARTTLS)</p></td></tr>"
+"  <tr><td>539</td><td>539 TLS required for this recipient - 此收件人需要TLS</p></td></tr>"
+"  <tr><td>540</td><td>540 Encryption strength insufficient - 加密強度不足</p></td></tr>"
+"  <tr><td>541</td><td>541 Certificate validation failed - 憑證驗證失敗</p></td></tr>"
+"  <tr><td>542</td><td>542 Invalid TLS certificate - 無效的TLS憑證</p></td></tr>"
+"  <tr><td>543</td><td>543 TLS protocol version not supported - TLS協定版本不支援</p></td></tr>"
+"  <tr><td>544</td><td>544 Cipher suite not supported - 密碼套件不支援</p></td></tr>"
+"  <tr><td>545</td><td>545 Access denied - no valid recipient - 訪問被拒絕：無有效收件人</p></td></tr>"
+"  <tr><td>546</td><td>546 Access denied - no valid sender - 訪問被拒絕：無有效發件人</p></td></tr>"
+"  <tr><td>547</td><td>547 Access denied - domain not allowed - 訪問被拒絕：網域名稱不允許</p></td></tr>"
+"  <tr><td>548</td><td>548 Access denied - IP address blocked (permanent) - 訪問被拒絕：IP位址被阻止（永久）</p></td></tr>"
+"  <tr><td>549</td><td>549 Access denied - sender domain blacklisted - 訪問被拒絕：發件人網域名稱黑名單</p></td></tr>"
+"  <tr><td>550</td><td>550 Mailbox unavailable - try again later - 請求的郵件操作未執行：信箱不可用</p></td></tr>"
+"  <tr><td>551</td><td>551 User not local: please try <forward-path> - 用戶非本地：請嘗試轉發路徑</p></forward-path></td></tr>"
+"  <tr><td>552</td><td>552 Requested action aborted - exceeded storage allocation - 請求的郵件操作中止：超出儲存分配</p></td></tr>"
+"  <tr><td>553</td><td>553 Mailbox name not allowed - 請求的郵件操作未執行：信箱名稱不允許</p></domain></td></table>"
+"  <tr><td>554</td><td>554 Requested action rejected - access denied - 請求的郵件操作被拒絕：訪問被拒絕</p></td></tr>"
+"  <tr><td>555</td><td>555 MAIL FROM/RCPT TO parameters not recognized - MAIL FROM/RCPT TO參數無法識別</p></td></tr>"
+"  <tr><td>556</td><td>556 Domain not allowed to send (DMARC reject) - 網域名稱不允許發送 (DMARC拒絕)</p></td></tr>"
+"  <tr><td>557</td><td>557 Too many duplicate messages - permanent - 重複訊息過多（永久）</p></td></tr>"
+"  <tr><td>558</td><td>558 Sender address rejected - domain not in SPF - 發件人位址被拒絕：網域名稱不在SPF中</p></td></tr>"
+"  <tr><td>559</td><td>559 Sender address rejected - DKIM verification failed - 發件人位址被拒絕：DKIM驗證失敗</p></td></tr>"
+"  <tr><td>560</td><td>560 Sender address rejected - DMARC policy reject - 發件人位址被拒絕：DMARC策略拒絕</p></td></tr>"
+"  <tr><td>561</td><td>561 Recipient address rejected - DMARC policy reject - 收件人位址被拒絕：DMARC策略拒絕</p></td></tr>"
+"  <tr><td>562</td><td>562 Message rejected due to spam content - 訊息因垃圾郵件內容被拒絕</p></td></tr>"
+"  <tr><td>563</td><td>563 Message rejected due to virus detected - 訊息因偵測到病毒被拒絕</p></td></tr>"
+"  <tr><td>564</td><td>564 Message rejected due to malicious content - 訊息因惡意內容被拒絕</p></td></tr>"
+"  <tr><td>565</td><td>565 Message rejected due to phishing detection - 訊息因偵測到釣魚被拒絕</p></domain></td><tr>"
+"  <tr><td>566</td><td>566 Message rejected due to malware detection - 訊息因偵測到惡意軟體被拒絕</p></td></tr>"
+"  <tr><td>567</td><td>567 Message rejected due to policy - permanent - 訊息因策略被拒絕（永久）</p></td></tr>"
+"  <tr><td>568</td><td>568 Message rejected due to content filtering - 訊息因內容過濾被拒絕</p></td></tr>"
+"  <tr><td>569</td><td>569 Message rejected due to reputation - 訊息因信譽被拒絕</p></td></tr>"
+"  <tr><td>570</td><td>570 Access denied: access_map violation - 訪問被拒絕：access_map違規</p></td></tr>"
+"  <tr><td>571</td><td>571 Access denied: SMTP client listed in RBL - 訪問被拒絕：SMTP客戶端在RBL中</p></td></tr>"
+"  <tr><td>572</td><td>572 Access denied: Relay not authorized - 訪問被拒絕：中繼未授權</p></td></tr>"
+"  <tr><td>573</td><td>573 Access denied - unknown SMTP client hostname - 訪問被拒絕：未知SMTP客戶端主機名稱</p></td></tr>"
+"  <tr><td>574</td><td>574 Access denied: Bad syntax for client HELO hostname - 訪問被拒絕：客戶端HELO主機名稱語法錯誤</p></td></tr>"
+"  <tr><td>575</td><td>575 Access denied: SMTP client hostname rejected - 訪問被拒絕：SMTP客戶端主機名稱被拒絕</p></td></tr>"
+"  <tr><td>576</td><td>576 Access denied: Unknown domain for sender or recipient - 訪問被拒絕：發件人或收件人網域名稱未知</p></td></tr>"
+"  <tr><td>577</td><td>577 Access denied: Unknown client HELO hostname - 訪問被拒絕：未知客戶端HELO主機名稱</p></td></tr>"
+"  <tr><td>578</td><td>578 Access denied: Invalid domain (not FQDN) - 訪問被拒絕：無效網域名稱（非FQDN）</p></td></tr>"
+"  <tr><td>579</td><td>579 Access denied: Domain not qualified - 訪問被拒絕：網域名稱不合格</p></td></tr>"
+"  <tr><td>580</td><td>580 Access denied: Mail server misconfigured - 訪問被拒絕：郵件伺服器設定錯誤</p></td></tr>"
+"  <tr><td>581</td><td>581 Access denied: Open relay not allowed - 訪問被拒絕：開放中繼不允許</p></td></tr>"
+"  <tr><td>582</td><td>582 Access denied: Proxy not allowed - 訪問被拒絕：代理不允許</p></td></tr>"
+"  <tr><td>583</td><td>583 Access denied: Dynamic IP not allowed - 訪問被拒絕：動態IP不允許</p></td></tr>"
+"  <tr><td>584</td><td>584 Access denied: Residential IP not allowed - 訪問被拒絕：住宅IP不允許</p></td></tr>"
+"  <tr><td>585</td><td>585 Access denied: VPN/Tor detected - 訪問被拒絕：偵測到VPN/Tor</p></td></tr>"
+"  <tr><td>586</td><td>586 Access denied: Spamhaus DROP listed - 訪問被拒絕：Spamhaus DROP列表</p></td></tr>"
+"  <tr><td>587</td><td>587 Access denied: URL listed in URIBL - 訪問被拒絕：URL在URIBL中</p></td></tr>"
+"  <tr><td>588</td><td>588 Access denied: Domain in RHSBL - 訪問被拒絕：網域名稱在RHSBL中</p></td></tr>"
+"  <tr><td>589</td><td>589 Access denied: IP in DNSWL? (policy) - 訪問被拒絕：IP在DNSWL中？(策略)</p></td></tr>"
+"  <tr><td>590</td><td>590 Delivery failed: Mailbox not found - 投遞失敗：信箱未找到</p></td></tr>"
+"  <tr><td>591</td><td>591 Delivery failed: Recipient not local - 投遞失敗：收件人非本地</p></td></tr>"
+"  <tr><td>592</td><td>592 Delivery failed: Recipient rejected - 投遞失敗：收件人被拒絕</p></domain></td></td>"
+"  <tr><td>593</td><td>593 Delivery failed: Sender rejected - 投遞失敗：發件人被拒絕</p></td></tr>"
+"  <tr><td>594</td><td>594 Delivery failed: Relay rejected - 投遞失敗：中繼被拒絕</p></td></tr>"
+"  <tr><td>595</td><td>595 Delivery failed: DNS permanent error - 投遞失敗：DNS永久錯誤</p></td></tr>"
+"  <tr><td>596</td><td>596 Delivery failed: MX permanent error - 投遞失敗：MX永久錯誤</p></domain></td></td>"
+"  <tr><td>597</td><td>597 Delivery failed: A record permanent error - 投遞失敗：A記錄永久錯誤</p></td></tr>"
+"  <tr><td>598</td><td>598 Delivery failed: PTR record permanent error - 投遞失敗：PTR記錄永久錯誤</p></td></tr>"
+"  <tr><td>599</td><td>599 Delivery failed: Policy permanent error - 投遞失敗：策略永久錯誤</p></td></tr>"
 "</table>"
 
-#==============================================================================
+msgid "glossary.smtp.6xx"
+msgstr ""
+"<h4 id='SMTP6'>6xx - 協定狀態（DSN 送達狀態通知）</h4>"
+"<p>這些是 RFC 2034 定義的送達狀態通知代碼，用於詳細說明郵件投遞狀態。</p>"
+"<table class='code-table'>"
+"  <tr><th>代碼</th><th>說明</th></tr>"
+"  <tr><td>600</td><td>600 DSN: Success (Delivery Status Notification) - DSN：成功（投遞狀態通知）</p></td></tr>"
+"  <tr><td>601</td><td>601 DSN: Delivery delayed - DSN：投遞延遲</p></td></tr>"
+"  <tr><td>602</td><td>602 DSN: Delivery failed (permanent) - DSN：投遞失敗（永久）</p></td></tr>"
+"  <tr><td>603</td><td>603 DSN: Delivery failed (temporary) - DSN：投遞失敗（暫時）</p></domain></td></td>"
+"  <tr><td>604</td><td>604 DSN: Message expired - DSN：訊息過期</p></td></tr>"
+"  <tr><td>605</td><td>605 DSN: Message bounced - DSN：訊息退回</p></td></tr>"
+"  <tr><td>606</td><td>606 DSN: Message discarded - DSN：訊息丟棄</p></td></tr>"
+"  <tr><td>607</td><td>607 DSN: Message filtered - DSN：訊息過濾</p></domain></td></td>"
+"  <tr><td>608</td><td>608 DSN: Message quarantined - DSN：訊息隔離</p></td></tr>"
+"  <tr><td>609</td><td>609 DSN: Message held for review - DSN：訊息待審核</p></td></tr>"
+"</table>"
+
+msgid "glossary.smtp.7xx"
+msgstr ""
+"<h4 id='SMTP7'>7xx - 安全狀態（MTA-STS, DANE, TLS）</h4>"
+"<p>這些是 MTA-STS、DANE、TLS 等安全協定相關的狀態碼。</p>"
+"<table class='code-table'>"
+"  <tr><th>代碼</th><th>說明</th></tr>"
+"  <tr><td>700</td><td>700 MTA-STS policy required - 需要MTA-STS策略</p></td></tr>"
+"  <tr><td>701</td><td>701 MTA-STS policy validation failed - MTA-STS策略驗證失敗</p></td></tr>"
+"  <tr><td>702</td><td>702 TLS reporting required - 需要TLS報告</p></td></tr>"
+"  <tr><td>703</td><td>703 TLS report requested - 已請求TLS報告</p></td></tr>"
+"  <tr><td>704</td><td>704 SMTP MTA Strict Transport Security active - SMTP MTA嚴格傳輸安全已啟動</p></td></tr>"
+"  <tr><td>705</td><td>705 DANE validation required - 需要DANE驗證</p></td></tr>"
+"  <tr><td>706</td><td>706 DANE validation failed - DANE驗證失敗</p></domain></td></table>"
+"  <tr><td>707</td><td>707 TLSA record missing - TLSA記錄缺失</p></td></tr>"
+"  <tr><td>708</td><td>708 Certificate name mismatch - 憑證名稱不匹配</p></td></tr>"
+"  <tr><td>709</td><td>709 Certificate expired - 憑證已過期</p></td></tr>"
+"</table>"
+
+msgid "glossary.smtp.8xx"
+msgstr ""
+"<h4 id='SMTP8'>8xx - 認證狀態</h4>"
+"<p>這些是 SMTP 認證相關的狀態碼，指示需要何種認證機制或認證失敗原因。</p>"
+"<table class='code-table'>"
+"  <tr><th>代碼</th><th>說明</th></tr>"
+"  <tr><td>800</td><td>800 AUTH LOGIN required - 需要AUTH LOGIN</p></td></tr>"
+"  <tr><td>801</td><td>801 AUTH PLAIN required - 需要AUTH PLAIN</p></td></tr>"
+"  <tr><td>802</td><td>802 AUTH CRAM-MD5 required - 需要AUTH CRAM-MD5</p></td></tr>"
+"  <tr><td>803</td><td>803 AUTH DIGEST-MD5 required - 需要AUTH DIGEST-MD5</p></td></tr>"
+"  <tr><td>804</td><td>804 AUTH GSSAPI required - 需要AUTH GSSAPI</p></td></tr>"
+"  <tr><td>805</td><td>805 AUTH NTLM required - 需要AUTH NTLM</p></td></tr>"
+"  <tr><td>806</td><td>806 AUTH SCRAM required - 需要AUTH SCRAM</p></td></tr>"
+"  <tr><td>807</td><td>807 AUTH OAUTHBEARER required - 需要AUTH OAUTHBEARER</p></td></tr>"
+"  <tr><td>808</td><td>808 AUTH XOAUTH2 required - 需要AUTH XOAUTH2</p></td></tr>"
+"</table>"
+
+msgid "glossary.smtp.9xx"
+msgstr ""
+"<h4 id='SMTP9'>9xx - 應用特定（Exchange, Postfix, Sendmail, Exim）</h4>"
+"<p>這些是特定郵件伺服器的擴充狀態碼，用於診斷特定 MTA 的問題。</p>"
+"<table class='code-table'>"
+"  <tr><th>代碼</th><th>說明</th></tr>"
+"  <tr><td>900</td><td>900 Exchange: Mailbox database error - Exchange：信箱資料庫錯誤</p></td></tr>"
+"  <tr><td>901</td><td>901 Exchange: Store driver error - Exchange：儲存驅動程式錯誤</p></td></tr>"
+"  <tr><td>902</td><td>902 Exchange: Transport agent error - Exchange：傳輸代理錯誤</p></domain></td><tr>"
+"  <tr><td>903</td><td>903 Exchange: Content conversion error - Exchange：內容轉換錯誤</p></td></tr>"
+"  <tr><td>904</td><td>904 Exchange: Routing error - Exchange：路由錯誤</p></td></tr>"
+"  <tr><td>905</td><td>905 Exchange: Mail flow stalled - Exchange：郵件流停滯</p></td></tr>"
+"  <tr><td>906</td><td>906 Exchange: Shadow redundancy error - Exchange：影子冗餘錯誤</p></domain></td><tr>"
+"  <tr><td>907</td><td>907 Exchange: Safety net error - Exchange：安全網錯誤</p></td></tr>"
+"  <tr><td>908</td><td>908 Exchange: Queue database error - Exchange：佇列資料庫錯誤</p></td></tr>"
+"  <tr><td>909</td><td>909 Exchange: Message throttled - Exchange：訊息被限流</p></td></tr>"
+"  <tr><td>910</td><td>910 Postfix: Bounce queue error - Postfix：退回佇列錯誤</p></td></tr>"
+"  <tr><td>911</td><td>911 Postfix: Deferred queue error - Postfix：延遲佇列錯誤</p></td></tr>"
+"  <tr><td>912</td><td>912 Postfix: Hold queue error - Postfix：保持佇列錯誤</p></domain></td></td>"
+"  <tr><td>913</td><td>913 Postfix: Incoming queue error - Postfix：接收佇列錯誤</p></td></tr>"
+"  <tr><td>914</td><td>914 Postfix: Active queue error - Postfix：活動佇列錯誤</p></td></tr>"
+"  <tr><td>915</td><td>915 Postfix: Corrupted queue file - Postfix：佇列檔案損壞</p></td></tr>"
+"  <tr><td>916</td><td>916 Sendmail: Queue runner error - Sendmail：佇列執行器錯誤</p></td></tr>"
+"  <tr><td>917</td><td>917 Sendmail: Alias database error - Sendmail：別名資料庫錯誤</p></td></tr>"
+"  <tr><td>918</td><td>918 Sendmail: Virtuser table error - Sendmail：虛擬用戶表錯誤</p></td></tr>"
+"  <tr><td>919</td><td>919 Sendmail: Mailer definition error - Sendmail：郵件程式定義錯誤</p></td></tr>"
+"  <tr><td>920</td><td>920 Exim: Router configuration error - Exim：路由器設定錯誤</p></td></tr>"
+"  <tr><td>921</td><td>921 Exim: Transport configuration error - Exim：傳輸設定錯誤</p></td></tr>"
+"  <tr><td>922</td><td>922 Exim: Director configuration error - Exim：定向器設定錯誤</p></td></tr>"
+"  <tr><td>923</td><td>923 Exim: Retry configuration error - Exim：重試設定錯誤</p></td></tr>"
+"  <tr><td>924</td><td>924 Exim: Rewrite configuration error - Exim：重寫設定錯誤</p></td></tr>"
+"  <tr><td>925</td><td>925 Exim: Authentication configuration error - Exim：認證設定錯誤</p></td></tr>"
+"  <tr><td>926</td><td>926 Exim: ACL configuration error - Exim：ACL設定錯誤</p></td></tr>"
+"  <tr><td>927</td><td>927 Exim: Local_scan configuration error - Exim：本地掃描設定錯誤</p></td></tr>"
+"  <tr><td>928</td><td>928 Exim: Lookup configuration error - Exim：查找設定錯誤</p></td></tr>"
+"  <tr><td>929</td><td>929 Exim: Expansion configuration error - Exim：擴充設定錯誤</p></td></tr>"
+"</table>"
+
+#------------------------------------------------------------------------------
 # 文件 - 授權條款 / 版權
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.license.title"
 msgstr "⚖️ AWStats 授權條款 / 版權"
@@ -6101,9 +8328,9 @@ msgstr "📊 授權條款分類與權限對照表"
 # 表格頭部
 #------------------------------------------------------------------------------
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 授權條款表格
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "license.table.header"
 msgstr ""
@@ -6540,9 +8767,9 @@ msgstr "<p>別忘了，「免費」軟體所指的是使用與分發的「自由
 msgid "license.date"
 msgstr "<div class='license-date'>* 授權條款表已於2026年3月14日更新，補充了現代開源協議並更新了軟體範例</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 日誌分析論文
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.loganalysispaper.title"
 msgstr "📄 網站統計獲取指南"
@@ -6865,9 +9092,9 @@ msgstr ""
 "<a href='http://www.nlc-bnc.ca/publications/1/p1-256-f.html' target='_blank' rel='noopener noreferrer'>法文版</a>。</p>"
 "（以上相關連結由於年代久遠已失效，建議搜尋相關主題）"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文件 - 安全建議
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.security.title"
 msgstr "🔒 AWStats 安全建議"
@@ -6933,6 +9160,22 @@ msgstr ""
 "<p>然後，檢查設定檔中的 <a href='awstats_config.html#SaveDatabaseFilesWithPermissionsForEveryone'>SaveDatabaseFilesWithPermissionsForEveryone</a> 參數設定為 0。</p>"
 "<p>如果 config/domain1 的 AWStats 資料庫檔案/目錄是讀保護的，只有授權使用者才能檢視 config/domain1 的統計資訊。"
 "如果它們是寫保護的，只有授權使用者才能更新 config/domain1 的統計資訊。</p>"
+"<p class='tip-box'>💡 <strong>特別提示：</strong>如果你使用 HestiaCP 控制面板，以下操作可以一鍵完成！不需要去單獨配置</p>"
+"<h2 id='hestia'>🚀 HestiaCP 整合方案</h2>"
+"<p><strong style='color: var(--accent)'>如果你使用 HestiaCP 控制台：</strong></p>"
+"<p>HestiaCP 內建了 AWStats 支持，你只需在網域設定中勾選「啟用統計」即可自動設定：</p>"
+"<pre><code># HestiaCP 自動完成以下動作\n"
+"1. 產生 AWStats 設定檔到 /home/user/conf/web/domain/awstats.conf\n"
+"2. 建立軟體連結到 /etc/awstats/awstats.domain.conf\n"
+"3. 將網域加入統計更新佇列\n"
+"4. 立即產生首次統計報表</code></pre>"
+"<p><strong>啟用存取限制（密碼保護）：</strong></p>"
+"<p><strong>查看統計：</strong> 造訪 <i>https://domain.tld/vstats/</i> 即可查看統計報表。</p>"
+"<p>這種整合方式對應本文檔的：</p>"
+"<ul>"
+"<li><strong>中等安全策略（策略2）</strong> - 預設情況下，統計頁面可透過 Web 訪問，無需密碼</li>"
+"<li><strong>高度安全策略（政策1）</strong> - 新增密碼保護後，只有授權使用者可查看</li>"
+"</ul>"
 
 #------------------------------------------------------------------------------
 # 安全策略 2：中等安全策略
@@ -7031,9 +9274,10 @@ msgid "security.conclusion"
 msgstr ""
 "<p>AWStats 提供了多種可能的使用方式，結合其所有選項/參數以及所有 Web 伺服器的選項/參數和作業系統的安全功能。"
 "只需選擇您需要的那一種即可...</p>"
-#=============================================================================
+
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.setup.title"
 msgstr "AWStats 安裝、設定和報告產生"
@@ -7041,9 +9285,9 @@ msgstr "AWStats 安裝、設定和報告產生"
 msgid "docs.setup.subtitle"
 msgstr "AWStats 日誌分析器 7.8 文件"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整內容塊
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.setup.content"
 msgstr ""
 "<div class='setup-content'>"
@@ -7059,7 +9303,7 @@ msgstr ""
 "        <h2>I. 安裝設定：使用 awstats_configure.pl</h2>"
 "        "
 "        <div class='subsection'>"
-"            <h3>A) Apache 或相容 Web 伺服器安裝（Unix/Linux, Windows, MacOS...）</h3>"
+"            <h3>A  Apache 或相容 Web 伺服器安裝（Unix/Linux, Windows, MacOS...）</h3>"
 "            "
 "            <div class='step'>"
 "                <h4>* 步驟 1：</h4>"
@@ -7193,7 +9437,6 @@ msgstr ""
 "        </div>"
 "    </div>"
 ""
-"    <!-- ==================== 更新統計部分 ==================== -->"
 "    <div id='BUILD_UPDATE' class='setup-section'>"
 "        <h2>II. 處理日誌：建構/更新統計資料庫</h2>"
 "        "
@@ -7287,18 +9530,18 @@ msgstr ""
 ""
 "</div>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.tools.title"
 msgstr "AWStats 輔助工具"
 
 msgid "docs.tools.subtitle"
 msgstr "AWStats 日誌分析器 7.8 文件"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整內容塊
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.tools.content"
 msgstr ""
 "<div class='tools-content'>"
@@ -7475,18 +9718,18 @@ msgstr ""
 ""
 "</div>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.upgrade.title"
 msgstr "升級 AWStats 從舊版本"
 
 msgid "docs.upgrade.subtitle"
 msgstr "AWStats 日誌分析器 7.8 文件"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整內容塊
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.upgrade.content"
 msgstr ""
 "<div class='upgrade-content'>"
@@ -7583,18 +9826,18 @@ msgstr ""
 ""
 "</div>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.webmin.title"
 msgstr "AWStats Webmin 模組"
 
 msgid "docs.webmin.subtitle"
 msgstr "AWStats 日誌分析器 8.1 文件"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整內容塊
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.webmin.content"
 msgstr ""
 "<div class='webmin-content'>"
@@ -7609,7 +9852,6 @@ msgstr ""
 "        <li><a href='#USEMODULE'>使用 AWStats Webmin 模組</a></li>"
 "    </ul>"
 ""
-"    <!-- ==================== 加入模組 ==================== -->"
 "    <div id='ADDMODULE' class='webmin-section'>"
 "        <h2><u>將 AWStats Webmin 模組加入到 Webmin 介面</u></h2>"
 "        <ol>"
@@ -7622,7 +9864,6 @@ msgstr ""
 "        <p class='result'>完成後，您的 Webmin 選單中應該會出現一個新的 <b>AWStats 日誌分析</b> 條目。</p>"
 "    </div>"
 ""
-"    <!-- ==================== 設定模組 ==================== -->"
 "    <div id='SETUPMODULE' class='webmin-section'>"
 "        <h2><u>AWStats Webmin 模組的設定</u></h2>"
 "        <ol>"
@@ -7646,7 +9887,6 @@ msgstr ""
 "        </div>"
 "    </div>"
 ""
-"    <!-- ==================== 使用模組 ==================== -->"
 "    <div id='USEMODULE' class='webmin-section'>"
 "        <h2><u>使用 AWStats Webmin 模組</u></h2>"
 "        <ol>"
@@ -7657,192 +9897,187 @@ msgstr ""
 "    </div>"
 ""
 "</div>"
-#=============================================================================
+
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.home.title"
 msgstr "AWStats - 專業的開源日誌分析工具"
 
 msgid "docs.home.subtitle"
 msgstr "即時分析 Web、FTP、郵件伺服器日誌，產生直觀的統計報告"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整首頁內容塊
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.home.content"
 msgstr ""
-"<div class='home-content'>"
+" <div class='home-content'>"
 ""
-"    <!-- ==================== Hero Section ==================== -->"
-"    <div class='hero-section'>"
-"        <div class='hero-content'>"
-"            <h1 class='hero-title'>了解您的網站訪客</h1>"
-"            <p class='hero-description'>AWStats 是一個強大而免費的開源日誌分析工具，將雜亂的伺服器日誌轉化為清晰、直觀的可視化報告，幫助您深入了解網站訪客行為。</p>"
-"            <div class='hero-stats'>已處理 <span class='stat-number'>數十億</span> 條日誌記錄 | <span class='stat-number'>100+</span> 國家/地區 | <span class='stat-number'>20+</span> 年技術積累</div>"
-"            <div class='hero-buttons'>"
-"                <a href='awstats_setup.html' class='button button-primary'>快速開始</a>"
-"                <a href='awstats_what1.html' class='button button-secondary'>查看演示</a>"
-"            </div>"
-"        </div>"
-"        <div class='hero-image'>"
-"            <img src='images/awstats_dashboard_preview.png' alt='AWStats 儀表板預覽' class='dashboard-preview'>"
-"        </div>"
-"    </div>"
+"     <div class='hero-section'>"
+"         <div class='hero-content'>"
+"             <h1 class='hero-title'>了解您的網站訪客</h1>"
+"             <p class='hero-description'>AWStats（Advanced Web Statistics）是一個<strong>功能強大的開源日誌分析器</strong>，能夠為網站、FTP、郵件和串流媒體伺服器生成<strong>詳細且直觀的統計報表</strong>。它透過分析伺服器日誌檔案，將原始資料轉化為<strong>易於理解的圖形化網頁</strong>，幫助您深入了解訪客行為，最佳化網站內容和行銷策略。</p>"
+"             <div class='hero-stats'>✅ 自1997年發佈以來持續維護 | 處理 <span class='stat-number'>數十億</span> 條日誌記錄 | <span class='stat-number'>100+</span> 國家/地區使用 | <span class='stat-number'>25+</span> 年技術積累</div>"
+"             <div class='hero-buttons'>"
+"                 <a href='awstats_setup.html' class='button button-primary'>快速開始</a>"
+"                 <a href='awstats_what.html' class='button button-secondary'>了解功能</a>"
+"             </div>"
+"         </div>"
+"         <div class='hero-image'>"
+"             <img src='images/awstats_dashboard_preview.png' alt='AWStats 儀表板預覽' class='dashboard-preview'>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== Features Section ==================== -->"
-"    <div class='features-section'>"
-"        <h2 class='section-title'>為什麼選擇 AWStats？</h2>"
-"        <p class='section-subtitle'>專業、可靠、易用——全球數百萬網站的選擇</p>"
+"     <div class='whatsnew-section'>"
+"         <div class='whatsnew-badge'>最新版本</div>"
+"         <h2 class='section-title'>🎉 AWStats 8.1 全新發佈</h2>"
+"         <p class='version-date'>8.1 (2026-05-10)</p>"
+"         <p class='whatsnew-desc'>這是 AWStats 的一次重大更新，帶來了現代化的介面、更好的使用者體驗和更強大的功能：</p>"
+"         <ul class='whatsnew-list'>"
+"             <li><span class='new-badge'>新</span> 📱 <b>響應式設計</b> - 採用 HTML5 標準，完美適配手機、平板和電腦</li>"
+"             <li><span class='new-badge'>新</span> 🌙 <b>深色/淺色主題</b> - 一鍵切換，使用 CSS 變數定義主題顏色，保護眼睛</li>"
+"             <li><span class='new-badge'>新</span> 🧭 <b>導航選單</b> - 新增導航選單，內建官方文件，支援多語言閱讀</li>"
+"             <li><span class='new-badge'>新</span> 📖 <b>文件檢視器</b> - 點擊選單連結在頁面內檢視文件，支援關閉按鈕，無需離開目前頁面</li>"
+"             <li><span class='new-badge'>新</span> 🚀 <b>國際化重構</b> - 完全替換 `$Message` 為 `_t()` 函式，語言檔案從 GBK 編碼的 `.txt` 升級為 UTF-8 編碼的 `.po` 格式，基於 gettext 標準</li>"
+"             <li><span class='new-badge'>新</span> 📋 <b>更新歷史頁面</b> - 新增 awstats_changelog.html，按版本分類展示完整更新歷史</li>"
+"             <li><span class='new-badge'>新</span> 🌍 <b>新增翻譯</b> - 新增中文簡體、中文繁體、葡萄牙語（巴西）翻譯</li>"
+"             <li><span class='improved-badge'>優化</span> 🛡️ <b>安全性增強</b> - 預設新增安全回應頭：X-Content-Type-Options, X-Frame-Options, Referrer-Policy</li>"
+"             <li><span class='improved-badge'>優化</span> 🎨 <b>介面美化</b> - 表格樣式現代化：圓角、懸停效果，國家/地區旗幟圖示全面替換為 Emoji</li>"
+"             <li><span class='improved-badge'>優化</span> ⚡ <b>效能提升</b> - 最佳化 DNS 快取機制，改進 try/catch 例外處理，避免 JSON 解析崩潰</li>"
+"             <li><span class='improved-badge'>優化</span> 🌐 <b>GeoIP 自動啟用</b> - 若未載入任何 GeoIP 外掛，自動啟用 geoipfree 外掛，支援 DB-IP 免費資料庫</li>"
+"             <li><span class='improved-badge'>優化</span> 📡 <b>IPv6 支援</b> - 增強對 IPv6 和 CloudFlare 真實 IP 標頭的支援</li>"
+"             <li><span class='improved-badge'>優化</span> ⬆️ <b>Perl 版本要求</b> - 最低版本從 5.007 提升至 5.20，啟用 use warnings 和 use utf8</li>"
+"             <li><span class='improved-badge'>優化</span> 📊 <b>圖表引擎重構</b> - 移除 PNG 圖片依賴，改用純 CSS 實現橫向進度條和豎向長條圖</li>"
+"             <li><span class='improved-badge'>優化</span> 🖼️ <b>圖示系統升級</b> - 所有 PNG 圖示替換為向量 SVG 格式，支援任意縮放和深色模式自動適配</li>"
+"             <li><span class='improved-badge'>優化</span> 🎨 <b>裝置圖示庫升級</b> - 新增手機品牌、Linux 發行版、遊戲主機、開發工具、文字瀏覽器等 200+ 識別</li>"
+"             <li><span class='improved-badge'>優化</span> 🕷️ <b>AI/ML 爬蟲識別</b> - 新增 ClaudeBot、GPTBot、Applebot-Extended、Google-Extended、Amazonbot 等 AI 爬蟲識別</li>"
+"             <li><span class='improved-badge'>優化</span> 📈 <b>下載統計重構</b> - 支援斷點續傳（206 狀態碼）識別、行動裝置下載統計、串流媒體播放與下載智慧區分</li>"
+"             <li><span class='improved-badge'>優化</span> 🔧 <b>副檔名設定外部化</b> - 下載檔案和串流媒體副檔名支援從設定檔讀取，便於自訂</li>"
+"             <li><span class='improved-badge'>優化</span> 🔝 <b>返回頂端按鈕</b> - 滾動超過 300px 自動顯示，點擊平滑返回頂端</li>"
+"             <li><span class='improved-badge'>優化</span> 🕐 <b>小時圖表最佳化</b> - 24 小時獨立文案，滑鼠懸停顯示結合 AWStats 特色與人文關懷的提示</li>"
+"             <li><span class='fix-badge'>修復</span> 🐛 <b>Bug 修復</b> - 修復未宣告變數導致的編譯錯誤，修正 Try::Tiny 語法錯誤，修正語言載入邏輯等</li>"
+"         </ul>"
+"         <div class='whatsnew-footer'>"
+"             <a href='awstats_changelog.html' class='button button-text'>查看完整更新歷史 →</a>"
+"         </div>"
+"     </div>"
 ""
-"        <div class='features-grid'>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>📊</div>"
-"                <h3>全面的統計報告</h3>"
-"                <p>提供訪客、頁面、點擊量、頻寬、訪問時長、來源網站、搜尋引擎關鍵詞等20+種詳細報告，全方位了解網站營運狀況。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>⚡</div>"
-"                <h3>即時更新</h3>"
-"                <p>支援命令列和瀏覽器兩種更新方式，可整合到計劃任務中，實現定時自動更新，隨時查看最新統計資料。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🌐</div>"
-"                <h3>智慧 DNS 解析</h3>"
-"                <p>內建 DNS 快取機制，支援靜態快取和動態解析，可將 IP 位址轉換為主機名，讓訪客來源更清晰。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🗺️</div>"
-"                <h3>地理位置識別</h3>"
-"                <p>自動啟用 geoipfree 外掛，無需額外設定即可識別訪客所在國家/地區。支援 MaxMind GeoIP 資料庫，提供更精確的地理位置資訊。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🧩</div>"
-"                <h3>外掛擴充</h3>"
-"                <p>豐富的外掛系統，支援工具提示、URL別名、使用者資訊、叢集統計、圖形圖表等功能，可根據需求靈活擴充。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>📄</div>"
-"                <h3>多格式支援</h3>"
-"                <p>支援 Apache（common/combined）、IIS（W3C）、WebStar、Squid 等多種日誌格式，以及 FTP、郵件、串流媒體伺服器日誌。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🌍</div>"
-"                <h3>多語言支援</h3>"
-"                <p>內建20+種語言翻譯，採用現代化的 .po 格式，支援 UTF-8 編碼，可根據瀏覽器語言自動切換介面。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🔒</div>"
-"                <h3>安全可靠</h3>"
-"                <p>內建多種安全策略，支援使用者認證和 IP 訪問控制，保護您的統計資料不被未授權訪問。</p>"
-"            </div>"
-"        </div>"
-"    </div>"
+"     <div class='geoip-section'>"
+"         <h2 class='section-title'>🌍 精準的地理位置識別</h2>"
+"         <p class='section-subtitle'>基於 DB-IP 免費資料庫，提供國家、省、市級別的訪客分佈統計</p>"
+"         "
+"         <div class='geoip-features'>"
+"             <div class='geoip-feature'>"
+"                 <h4>🌍 DB-IP 城市級定位支援</h4>"
+"                 <p>整合 DB-IP 免費資料庫（<a href='https://db-ip.com' target='_blank' rel='noopener noreferrer'>https://db-ip.com</a>），提供國家、地區、城市級別的精準訪客分佈統計</p>"
+"                 <ul>"
+"                     <li><strong>格式升級</strong>：從舊版 <code>.dat</code>（GeoIP Legacy 文字格式）升級為 <code>.mmdb</code>（MaxMind DB 二進位格式）</li>"
+"                     <li><strong>舊版痛點</strong>：<code>.dat</code> 格式查詢速度慢（平均 50-100 微秒），資料不夠完整（約 1MB），僅支援國家，資料多年未更新</li>"
+"                     <li><strong>新版優勢</strong>：<code>.mmdb</code> 格式查詢速度快 10 倍以上（平均 3-5 微秒），檔案稍大（約 120MB），支援國家、省、市級，每月更新，支援城市級別定位</li>"
+"                 </ul>"
+"             </div>"
+"             "
+"             <div class='geoip-feature'>"
+"                 <h4>📊 增強的地理位置顯示</h4>"
+"                 <p>支援顯示國家/地區、省份/州、市三級位置資訊，智慧處理未知地點</p>"
+"             </div>"
+"             "
+"             <div class='geoip-feature'>"
+"                 <h4>🚀 智慧快取機制</h4>"
+"                 <p>使用 <code>%TmpDomainLookup</code> 快取已查詢 IP，避免重複查詢；使用 <code>%TmpDomainFullLocation</code> 儲存完整位置資訊（國家、省份、市）</p>"
+"             </div>"
+"             "
+"             <div class='geoip-feature'>"
+"                 <h4>🔧 外掛自動啟用</h4>"
+"                 <p>未載入任何 GeoIP 外掛時自動啟用 geoipfree 外掛，開箱即用</p>"
+"             </div>"
+"         </div>"
+"         "
+"         <div class='geoip-note'>"
+"             <p>🎨 使用 Emoji 國旗圖示，無需維護圖片資源，支援深色模式自動適配</p>"
+"             <p>⚡ 基於 MaxMind DB 格式，查詢速度快，記憶體佔用低</p>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== What's New Section (8.1) ==================== -->"
-"    <div class='whatsnew-section'>"
-"        <div class='whatsnew-badge'>最新版本</div>"
-"        <h2 class='section-title'>🎉 AWStats 8.1 全新發布</h2>"
-"        <p class='version-date'>8.1 (2026-03-10)</p>"
-"        <p class='whatsnew-desc'>這是 AWStats 的一次重大更新，帶來了現代化的介面、更好的使用者體驗和更強大的功能：</p>"
-"        <ul class='whatsnew-list'>"
-"            <li><span class='new-badge'>新</span> 📱 <b>響應式設計</b> - 採用 HTML5 標準，完美適配手機、平板和電腦</li>"
-"            <li><span class='new-badge'>新</span> 🌙 <b>深色/淺色主題</b> - 一鍵切換，保護眼睛，夜間使用更舒適</li>"
-"            <li><span class='new-badge'>新</span> 🧭 <b>導航選單</b> - 內建官方文件，支援多語言閱讀</li>"
-"            <li><span class='new-badge'>新</span> 📖 <b>文件檢視器</b> - 點擊選單連結直接在頁面內查看文件，無需離開</li>"
-"            <li><span class='new-badge'>新</span> 🚀 <b>現代化的翻譯系統</b> - 採用 .po 格式和 UTF-8 編碼，翻譯更準確</li>"
-"            <li><span class='new-badge'>新</span> 📋 <b>更新歷史頁面</b> - 新增 changelog 頁面，按版本分類展示</li>"
-"            <li><span class='improved-badge'>優化</span> 🛡️ <b>安全性增強</b> - 預設加入安全回應頭，保護您的資料</li>"
-"            <li><span class='improved-badge'>優化</span> 🎨 <b>介面美化</b> - 圓角表格、懸停效果，圖示全面替換為 emoji</li>"
-"            <li><span class='improved-badge'>優化</span> ⚡ <b>效能提升</b> - 優化 DNS 快取，改進例外處理</li>"
-"            <li><span class='improved-badge'>優化</span> 🌐 <b>GeoIP 自動啟用</b> - 無需額外設定即可識別訪客國家</li>"
-"            <li><span class='improved-badge'>優化</span> 📡 <b>IPv6 支援</b> - 增強對 IPv6 和 CloudFlare 真實 IP 的支援</li>"
-"        </ul>"
-"        <div class='whatsnew-footer'>"
-"            <a href='awstats_changelog.html' class='button button-text'>查看完整更新歷史 →</a>"
-"        </div>"
-"    </div>"
+"     <div class='requirements-section'>"
+"         <h2 class='section-title'>📋 系統需求</h2>"
+"         <div class='requirements-grid'>"
+"             <div class='requirements-col'>"
+"                 <h3>基本需求</h3>"
+"                 <ul>"
+"                     <li>✅ 能夠存取要分析的伺服器日誌檔案（Web/FTP/郵件）</li>"
+"                     <li>✅ Perl 5.20 或更高版本（建議 Perl 5.32+）</li>"
+"                     <li>✅ 命令列和/或 CGI 環境</li>"
+"                 </ul>"
+"             </div>"
+"             <div class='requirements-col'>"
+"                 <h3>支援的作業系統</h3>"
+"                 <ul>"
+"                     <li>🐧 Linux/Unix（Ubuntu、Debian、CentOS、RHEL等）</li>"
+"                     <li>🪟 Windows（Windows 10/11、Windows Server）</li>"
+"                     <li>🍎 macOS</li>"
+"                     <li>🔵 FreeBSD、OpenBSD</li>"
+"                 </ul>"
+"             </div>"
+"             <div class='requirements-col'>"
+"                 <h3>支援的伺服器</h3>"
+"                 <ul>"
+"                     <li>🌐 Web：Apache、Nginx、IIS、Caddy、Lighttpd</li>"
+"                     <li>📁 FTP：ProFTPd、vsFTPd、Pure-FTPd</li>"
+"                     <li>📧 郵件：Postfix、Sendmail、QMail、Exim</li>"
+"                     <li>🎥 串流媒體：RealMedia、Windows Media Server</li>"
+"                 </ul>"
+"             </div>"
+"         </div>"
+"         <p class='note'>註：AWStats 8.x 採用響應式設計，在手機和平板上也能完美顯示。地理位置功能需要安裝 Geo::IPfree 模組和 DB-IP 資料庫。</p>"
+"     </div>"
 ""
-"    <!-- ==================== Technical Excellence Section ==================== -->"
-"    <div class='technical-section'>"
-"        <h2 class='section-title'>⚙️ 技術卓越</h2>"
-"        <p class='section-subtitle'>20年技術積累，打造專業級的日誌分析工具</p>"
-"        <div class='technical-grid'>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>✅</div>"
-"                <div class='technical-text'><b>成熟穩定</b> - 自2000年發布以來，持續維護更新，全球數百萬網站驗證</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>🚀</div>"
-"                <div class='technical-text'><b>高效能</b> - 每秒可處理數千條日誌記錄，支援大型網站的海量日誌分析</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>🔒</div>"
-"                <div class='technical-text'><b>安全可靠</b> - 內建多種安全策略，支援使用者認證和 IP 訪問控制</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>📈</div>"
-"                <div class='technical-text'><b>可擴充</b> - 外掛架構設計，可根據需求靈活擴充功能</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>💾</div>"
-"                <div class='technical-text'><b>資料持久化</b> - 將統計資料儲存在本地資料庫檔案中，便於歷史對比和長期分析</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>🔄</div>"
-"                <div class='technical-text'><b>靈活的更新方式</b> - 支援命令列和 CGI 兩種模式，可整合到各種自動化流程中</div>"
-"            </div>"
-"        </div>"
-"    </div>"
+"     <div class='stats-section'>"
+"         <h2 class='section-title'>📈 適合各種規模的網站</h2>"
+"         <div class='stats-grid'>"
+"             <div class='stat-card'>"
+"                 <div class='stat-icon'>📝</div>"
+"                 <h3>個人部落格/小型網站</h3>"
+"                 <p>每日更新一次，輕鬆了解訪客來源和熱門內容。輕量級執行，不影響伺服器效能。</p>"
+"             </div>"
+"             <div class='stat-card'>"
+"                 <div class='stat-icon'>🏢</div>"
+"                 <h3>企業網站/電商平台</h3>"
+"                 <p>即時掌握流量變化。詳細報告幫助最佳化行銷策略和使用者體驗。</p>"
+"             </div>"
+"             <div class='stat-card'>"
+"                 <div class='stat-icon'>🌐</div>"
+"                 <h3>大型入口網站/CDN網路</h3>"
+"                 <p>可處理每月數百萬訪問量，支援叢集日誌合併分析。強大的 DNS 快取和 GeoIP 功能。</p>"
+"             </div>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== Usage Statistics ==================== -->"
-"    <div class='stats-section'>"
-"        <h2 class='section-title'>📈 適合各種規模的網站</h2>"
-"        <div class='stats-grid'>"
-"            <div class='stat-card'>"
-"                <div class='stat-icon'>📝</div>"
-"                <h3>個人部落格/小型網站</h3>"
-"                <p>每日更新一次，輕鬆了解訪客來源和熱門內容。輕量級執行，不影響伺服器效能。</p>"
-"            </div>"
-"            <div class='stat-card'>"
-"                <div class='stat-icon'>🏢</div>"
-"                <h3>企業網站/電商平台</h3>"
-"                <p>每6小時更新一次，即時掌握流量變化。詳細報告幫助最佳化行銷策略和使用者體驗。</p>"
-"            </div>"
-"            <div class='stat-card'>"
-"                <div class='stat-icon'>🌐</div>"
-"                <h3>大型入口網站/CDN網路</h3>"
-"                <p>可處理每月數百萬訪問量，支援叢集日誌合併分析。強大的 DNS 快取和 GeoIP 功能。</p>"
-"            </div>"
-"        </div>"
-"    </div>"
+"     <div class='cta-section'>"
+"         <h2 class='cta-title'>開始使用 AWStats</h2>"
+"         <p class='cta-desc'>開源免費，立即下載，幾分鐘內即可完成安裝設定</p>"
+"         <div class='cta-buttons'>"
+"             <a href='https://github.com/hestiacn/vstats/releases/latest' class='button button-large button-primary'>下載 AWStats 8.1</a>"
+"             <a href='awstats_setup.html' class='button button-large button-secondary'>閱讀文件</a>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== Call to Action ==================== -->"
-"    <div class='cta-section'>"
-"        <h2 class='cta-title'>開始使用 AWStats</h2>"
-"        <p class='cta-desc'>開源免費，立即下載，幾分鐘內即可完成安裝設定</p>"
-"        <div class='cta-buttons'>"
-"            <a href='https://www.awstats.org' class='button button-large button-primary'>下載 AWStats 8.1</a>"
-"            <a href='awstats_setup.html' class='button button-large button-secondary'>閱讀文件</a>"
-"        </div>"
-"    </div>"
-""
-"    <!-- ==================== Footer ==================== -->"
-"    <div class='home-footer'>"
-"        <p>© 2000-2025 AWStats 團隊 | 基於 GPL 授權條款開源發布</p>"
-"        <p class='footer-links'>"
-"            <a href='awstats_what1.html'>關於我們</a> | "
-"            <a href='awstats_license.html'>授權條款</a> | "
-"            <a href='awstats_contrib.html'>貢獻</a> | "
-"            <a href='https://github.com/eldy/AWStats/issues'>問題回饋</a>"
-"        </p>"
-"    </div>"
+"     <div class='home-footer'>"
+"         <p>© 1997-2026 AWStats 團隊 | 基於 GPL 授權條款開源發佈</p>"
+"         <p class='footer-links'>"
+"             <a href='awstats_what.html'>關於我們</a> | "
+"             <a href='awstats_license.html'>授權條款</a> | "
+"             <a href='awstats_contrib.html'>貢獻</a> | "
+"             <a href='https://github.com/hestiacn/vstats/issues'>問題回報</a>"
+"         </p>"
+"     </div>"
 ""
 "</div>"
 
-#添加位置
-#==============================================================================
+#------------------------------------------------------------------------------
 # 更新文件 - 版本
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.changelog.title"
 msgstr "📋 AWStats 版本更新發布記錄"
@@ -7858,7 +10093,7 @@ msgstr "⚠️ AWStats 8.0 將是原作者（Laurent Destailleur）維護的最�
 #------------------------------------------------------------------------------
 
 msgid "series.8.title"
-msgstr "🚀 8.x 系列 (2024-latest)"
+msgstr "🚀 8.x 系列 (2026-latest)"
 
 msgid "series.7.title"
 msgstr "📦 7.x 系列 (2011-2023)"
@@ -7893,38 +10128,60 @@ msgstr "📋 重構版本進行補充的僅供參考 • 產品演變期 → 邏
 
 # 8.1
 msgid "changelog.8.1.date"
-msgstr "2026-03-10"
+msgstr "2026-05-10"
 
 msgid "changelog.8.1.version"
 msgstr "8.1"
 
+msgid "Community Edition"
+msgstr "社群版"
+
+msgid "Final Version (Original Author)"
+msgstr "最終版本（原作者）"
+
 msgid "changelog.8.1.items"
 msgstr ""
 "<li>📱 採用 HTML5 標準，支援響應式設計</li>"
-"<li>🌙 新增深色/淺色主題切換功能</li>"
-"<li>🧭 新增導航選單，網站部署人員可使用本土化語言查看官方文件</li>"
-"<li>📖 新增文件檢視器（iframe），點擊選單連結在頁面內查看文件，支援關閉按鈕</li>"
-"<li>♻️ 重構英文硬編碼文件，使用者可根據語言喜好閱讀文件，基於官方文件利用 <a href='https://www.deepseek.com' target='_blank' rel='noopener noreferrer'>deepseek</a> 翻譯。如有錯誤翻譯，歡迎回饋至 <a href='mailto:hestiacn@tuta.io'>hestiacn@tuta.io</a></li>"
-"<li>🚀 語言檔案從 GBK 編碼的 .txt 格式，改為全新現代的 UTF-8 編碼的 .po 格式，基於 gettext 標準，便於維護和翻譯</li>"
-"<li>🛡️ 預設加入安全回應頭：X-Content-Type-Options, X-Frame-Options, Referrer-Policy</li>"
-"<li>🌐 若未載入任何 GeoIP 外掛，自動啟用 geoipfree 外掛</li>"
-"<li>⬆️ 最低 Perl 版本要求從 5.007 提升至 5.020</li>"
+"<li>🌙 新增深色/淺色主題切換功能，支援跟隨系統主題</li>"
+"<li>🧭 新增導航選單，網站部署人員可用母語查閱官方文件</li>"
+"<li>📖 新增文件檢視器（iframe），點擊選單連結在頁面內檢視文件，支援關閉按鈕</li>"
+"<li>♻️ 重構英文硬編碼文件，實現多語言本地化。基於官方文件使用 <a href='https://www.deepseek.com' target='_blank' rel='noopener noreferrer'>DeepSeek</a> 翻譯，如有錯誤歡迎回饋至 <a href='mailto:hestiacn@tuta.io'>hestiacn@tuta.io</a></li>"
+"<li>🚀 語言檔案從 GBK 編碼的 .txt 格式升級為 UTF-8 編碼的 .po 格式，基於 gettext 標準，便於維護和翻譯</li>"
+"<li>🛡️ 預設新增安全回應頭：X-Content-Type-Options、X-Frame-Options、Referrer-Policy</li>"
+"<li>🛡️ XSS 防護全面增強：CleanXSS 新增 javascript: 協定過濾與事件處理器清理，完善 HTML 特殊字元轉義</li>"
+"<li>🛡️ URL 解碼安全加固：DecodeEncodedString 解碼後自動呼叫 CleanXSS 過濾，防止解碼繞過</li>"
+"<li>🛡️ 輸入過濾強化：Sanitize 函數採用更嚴格的白名單策略</li>"
+"<li>🛡️ UTF-8 編碼安全：EncodeToPageCode 增加錯誤捕獲，編碼失敗時優雅降級</li>"
+"<li>🛡️ 設定檔讀取標準化：統一指定 UTF-8 編碼，避免編碼不一致問題</li>"
+"<li>🌐 未載入任何 GeoIP 外掛時自動啟用 geoipfree 外掛</li>"
+"<li>⬆️ 最低 Perl 版本要求從 5.007 提升至 5.20</li>"
 "<li>🔧 啟用 use warnings 和 use utf8，統一 UTF-8 編碼輸出</li>"
-"<li>🎨 使用 CSS 變數定義主題顏色，支援一鍵切換</li>"
-"<li>📊 表格樣式現代化：圓角、懸停效果</li>"
-"<li>😊 圖示全面替換為 emoji</li>"
-"<li>⚡ 優化 DNS 快取機制，減少重複解析</li>"
-"<li>🔄 改進 try/catch 例外處理，避免 JSON 解析崩潰</li>"
-"<li>📡 增強對 IPv6 和 CloudFlare 真實 IP 頭部的支援</li>"
-"<li>📚 幫助資訊更新，增加產生中文報告等範例</li>"
+"<li>🎨 使用 CSS 變數定義主題顏色，支援一鍵切換深色/淺色模式</li>"
+"<li>😊 國家/地區旗幟圖示全面替換為 Emoji，更現代輕量，無需維護圖片資源</li>"
+"<li>📊 圖表引擎重構：移除 PNG 圖片依賴，改用純 CSS 實現橫向進度條和豎向長條圖，載入更快、支援主題色自動適配</li>"
+"<li>🖼️ 圖示系統全面升級：所有 PNG 圖示替換為向量 SVG 格式，支援任意縮放，深色模式下自動適配顏色</li>"
+"<li>⚡ 最佳化 DNS 快取機制，減少重複解析，提升處理速度</li>"
+"<li>🔄 改進 try/catch 例外處理，避免 JSON 日誌解析崩潰</li>"
+"<li>📡 增強 IPv6 和 CloudFlare 真實 IP 標頭（CF-Connecting-IP）支援</li>"
 "<li>📋 新增版本更新歷史頁面 awstats_changelog.html，按版本分類展示</li>"
 "<li>🐛 修復未宣告變數 $lang 和 $dir_attr 導致的編譯錯誤</li>"
 "<li>🔨 修正 Try::Tiny 語法錯誤，確保 try/catch 正確解析</li>"
 "<li>📐 單獨控制 IP 和機器人列表表格第一列寬度，避免佈局變形</li>"
-"<li>🚪 文件檢視器不再預設佔用空白區域，點擊連結後顯示並增加關閉按鈕</li>"
-"<li>🌏 修正語言載入邏輯，auto 模式下正確回退到英文</li>"
-"<li>📅 版權年份根據目前年份自動更新</li>"
-"<li>🧹 移除過時的 PrintCLIHelp，統一使用 print_help</li>"
+"<li>🚪 文件檢視器預設不佔用空白區域，點擊連結後動態顯示，支援關閉按鈕</li>"
+"<li>📅 新增頁尾版權資訊區域，新增作者 Laurent Destailleur 及專案資訊</li>"
+"<li>🧹 移除過時的 PrintCLIHelp，統一使用 print_help 函數，現在您可以使用 awstats.pl -h 觸發幫助說明。</li>"
+"<li>🎨 作業系統/裝置圖示庫全面升級，新增手機品牌、Linux 發行版、遊戲主機、開發工具、文字瀏覽器等 200+ 識別</li>"
+"<li>🤖 修復 robots.pm 資料庫不一致問題，確保 RobotsSearchIDOrder_listx 與 RobotsHashIDLib 條目數匹配</li>"
+"<li>🕷️ 新增 AI/ML 爬蟲識別：ClaudeBot、GPTBot、OAI-SearchBot、PerplexityBot、Applebot-Extended、Google-Extended、Amazonbot、Anthropic-ai、cohere-ai、AI2Bot、YouBot 等</li>"
+"<li>📊 最佳化爬蟲分類，區分 AI 爬蟲、社群媒體爬蟲、SEO 工具、監控服務</li>"
+"<li>🔧 移除重複的機器人規則（AhrefsBot、Exabot、XoviBot），消除資料庫校驗錯誤</li>"
+"<li>🎨 為各爬蟲新增專屬圖示和友好描述，報表更直觀</li>"
+"<li>📈 下載統計模組重構：支援斷點續傳（206 狀態碼）識別、行動裝置下載統計、串流媒體播放與下載智慧區分</li>"
+"<li>📦 副檔名設定外部化：下載檔案和串流媒體副檔名支援從設定檔讀取，便於自訂</li>"
+"<li>🔝 新增返回頂端按鈕：滾動超過 300px 自動顯示，點擊平滑返回頂端，支援深色模式和 RTL 佈局</li>"
+"<li>🕐 小時圖表滑鼠懸停提示最佳化：24 小時獨立文案，結合 AWStats 特色與人文關懷</li>"
+"<li>📄 設定檔註解新增簡體中文說明：所有設定參數增加詳細的中英文說明和範例</li>"
+"<li>🔧 最佳化 NotPageList 設定邏輯：新增 UseDefaultNotPageList 選項，設為 1 時自動使用內建完整靜態資源列表，避免設定檔重複維護大量副檔名</li>"
 
 # 8.0
 msgid "changelog.8.0.date"
@@ -7948,6 +10205,7 @@ msgstr ""
 "<li>🗑️ 從 robots.pm 中移除原生 Android 和原生 iOS/OSX 瀏覽器的 User Agent</li>"
 "<li>🔧 修復 robots.pm 中 GPTBot 識別錯誤的問題</li>"
 "<li>🔧修復烏克蘭語翻譯的編碼問題</li>"
+
 
 #------------------------------------------------------------------------------
 # 7.x 系列

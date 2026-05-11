@@ -1,42 +1,321 @@
 # 📋 AWStats 版本更新发布记录
 
-*基于官方文档、SourceForge 记录和作者历史资料整理*
+*基于官方文档、SourceForge 记录和作者历史资料整理，部分日期可能与实际不符。如需查看原始更新，请访问 [SourceForge](https://sourceforge.net/projects/awstats/)。*
 
-⚠️ **AWStats 8.0 将是原作者（Laurent Destailleur）维护的最后一个版本，后续版本由社区维护。**
+⚠️ **AWStats 8.0 将是原作者(Laurent Destailleur)维护的最后一个版本，后续版本由社区维护。**
+
+## 🚀 8.x 系列(2026-latest)
+
+### 8.1 - 2026-05-10
+
+### 🏷️ 新增功能：自定义品牌展示
+
+> **🚀 vstats: 让统计充满温度**
+AWStats 不再只是一个冷冰冰的数据页面。现在，您可以轻松将品牌标识植入报告顶部。配合强大的 73 国语言翻译与 13 种历法适配，让全球用户都能跨越文化与语言的障碍。
+
+### 🚀 品牌化特性
+
+- **全平台适配**：不论是主流 Linux 发行版、各类操作系统，均能完美显示
+- **视觉一致性**：支持矢量 SVG Logo，确保在各种分辨率(甚至是 Retina 屏)下都能清晰锐利
+- **智能拼接**：系统会自动将您的品牌名与多语言包中的 `Server Management Panel` 字段拼接，实现全语种的品牌本地化
+
+### 🖼️ 适用场景示例
+
+| 类型 | 示例 |
+|:---:|:---:|
+| 🐧 Linux 发行版 | `RHEL`、`Debian`、`Ubuntu`、`CentOS`、`Arch Linux`、`Fedora`、`Rocky Linux` |
+| 🖥️ 操作系统 | `macOS`、`Windows`、`FreeBSD` |
+| ☁️ 云主机商 | `Aliyun`、`Tencent`、`AWS`、`Azure`、`Google Cloud` |
+
+### 📝 配置示例
+
+在 AWStats 配置文件（如 `/etc/awstats/awstats.yourdomain.conf`）中添加以下参数：
+
+**💡 快速参考**：您可以直接查看经过优化的 [awstats.tpl 标准配置模板](/make/test/awstats/conf/awstats.tpl)，它包含了推荐的品牌化设置与性能优化参数。
+
+```perl
+# --- 品牌自定义设置 ---
+BrandLink="https://your-company.com"   # 点击 Logo 跳转的网址
+BrandPlatform="HestiaCP"               # 您的平台名称（建议英文字符）
+StatsUrl="/vstats"                     # AWStats 部署的 Web 路径 用于导航栏的文档链接映射生成
+```
+
+### 🌐 自动化本地化效果
+
+**vstats** 会自动将 `BrandPlatform` 嵌入到 73 种母语语境中，实现真正的品牌全球化：
+
+| 语言 | 实时渲染效果预览 |
+| :---: | :--- |
+| **简体中文** | `HestiaCP 服务器管理面板` |
+| **English** | `HestiaCP Server Management Panel` |
+| **Kannada** | `HestiaCP ಸರ್ವರ್ ನಿರ್ವಹಣಾ ಫಲಕ` |
+| **Georgian** | `HestiaCP სერვერის მართვის පැනელი` |
+| **Arabic** | `لوحة إدارة خوادم HestiaCP` |
+
+> 📌 **注**：系统会自动处理不同语言的语序（如阿拉伯语的从右往左显示），确保品牌展示在任何文化背景下都显得专业且地道。
+
+**效果**
+- BrandPlatform="HestiaCP" → 显示 **"HestiaCP 服务器管理面板"**
+- BrandPlatform="cPanel" → 显示 **"cPanel 服务器管理面板"**
+- BrandPlatform="Plesk" → 显示 **"Plesk 服务器管理面板"**
+- BrandPlatform="DirectAdmin" → 显示 **"DirectAdmin 服务器管理面板"**
+- BrandPlatform="CyberPanel" → 显示 **"CyberPanel 服务器管理面板"**
+- BrandPlatform="aapanel" → 显示 **"aapanel 服务器管理面板"**
+- BrandPlatform="Portainer" → 显示 **"Portainer 服务器管理面板"**
+- BrandPlatform="CasaOS" → 显示 **"CasaOS 服务器管理面板"**
+- BrandPlatform="NPM" → 显示 **"NPM 服务器管理面板"**
 
 
+### ⚠️ 激活条件
 
-## 🚀 8.x 系列 (2024-latest)
+为保持页面简洁，品牌展示区域**仅在检测到 `logo.svg` 文件存在且可读时**才会激活。
 
-### 8.1 - 2026-03-10
-- 📱 采用 HTML5 标准，支持响应式设计
-- 🌙 新增深色/浅色主题切换功能
+- **文件位置**：请将您的品牌图标命名为 `logo.svg` 并放置在站点 AWStats 目录下
+- **默认链接**：若未配置 `BrandLink`，系统将指向 `https://hestiacp.com`
+
+### 🗓️ **新增 localdate 日历插件** 根据用户语言自动切换历法显示
+
+> **默认开启**，如需关闭请在配置文件中添加 `EnableLocaldatePlugin=0`
+> ⚠️ **注意**：日本年号需要手动配置起始日期，详见`plugins/localdate.pm`内注释。
+- 🇯🇵 日本年号(令和)：打开 `plugins/localdate.pm` 找到第 80-86 行，删除需要启用的年号前的 `#` 注释，并填写正确的起始年月日(`start_year`、`start_month`、`start_day`)。同时在 `lang/awstats-ja.po` 中添加对应年号翻译键(`calendar_era_2` → `新年号名称`)，后续年号依次类推(`calendar_era_3`、`calendar_era_4`...)
+- 🇹🇭 佛历(泰国、柬埔寨、老挝)
+- 🇹🇼 民国纪年
+- 🇨🇳 甲子纪年(天干地支 + 生肖)
+- 🇻🇳 越南甲子纪年(天干地支 + 生肖，兔→猫)
+- 🇰🇷 檀君纪年
+- 🕌 伊斯兰历(希吉拉历)
+- 🇮🇷 波斯历
+- 🇲🇲 缅甸历
+- 🇳🇵 维克拉姆历
+- 🇮🇳 萨卡历
+- 🇪🇹 埃塞俄比亚历
+- 🇧🇩 孟加拉历
+- ✡️ 希伯来历
+
+> 📌 **埃塞俄比亚历**：前 12 个月各 30 天，第 13 个月闰年 6 天平年 5 天。
+> 📌 **希伯来历**：19 年 7 闰，闰年增加一个月(Adar I，30 天)，共 13 个月。
+
+如有错误，欢迎在[issues](https://github.com/hestiacn/vstats/issues)提交问题反馈。此功能让报告日期的历法显示自动匹配站点当前语言(如阿拉伯语显示伊斯兰历、日语显示日本年号)，无需额外配置。
+
+#### 🎨 界面与体验
+- 📱 采用 HTML5 标准，支持响应式设计，完美适配手机、平板和电脑
+- 🌙 新增深色/浅色主题切换功能，支持跟随系统主题，保护眼睛
 - 🧭 新增导航菜单，网站部署人员可使用本土化语言查看官方文档
-- 📖 新增文档查看器（iframe），点击菜单链接在页面内查看文档，支持关闭按钮
-- ♻️ 重构英文硬编码文档，用户可根据语言喜好阅读文档，基于官方文档利用 [deepseek](https://www.deepseek.com) 翻译。如有错误翻译，欢迎反馈至 [hestiacn@tuta.io](mailto:hestiacn@tuta.io)
-- 🚀 语言文件从 GBK 编码的 .txt 格式，改为全新现代的 UTF-8 编码的 .po 格式，基于 gettext 标准，便于维护和翻译
-- 🛡️ 默认添加安全响应头：X-Content-Type-Options, X-Frame-Options, Referrer-Policy
-- 🌐 若未加载任何 GeoIP 插件，自动启用 geoipfree 插件
-- ⬆️ 最低 Perl 版本要求从 5.007 提升至 5.020
+- 📖 新增文档查看器(iframe)，点击菜单链接在页面内查看文档，支持关闭按钮，无需离开当前页
+- 😊 国家/地区旗帜图标全面替换为 Emoji，更现代轻量，无需维护图片资源
+- 📊 表格样式现代化：圆角边框、悬停高亮效果
+- 🎨 使用 CSS 变量定义主题颜色，支持一键切换深色/浅色模式
+- 📊 图表引擎重构：移除 PNG 图片依赖，改用纯 CSS 实现横向进度条和竖向柱状图，加载更快、支持主题色自动适配
+- 🖼️ 图标系统全面升级：所有 PNG 图标替换为矢量 SVG 格式，支持任意缩放，深色模式下自动适配颜色
+- 🎨 操作系统/设备图标库全面升级，新增手机品牌、Linux 发行版、游戏主机、开发工具、文本浏览器等 200+ 识别
+- 🔝 新增返回顶部按钮：滚动超过 300px 自动显示，点击平滑返回顶部，支持深色模式和 RTL 布局
+- 🕐 小时图表鼠标悬停提示优化：24 小时独立文案，结合 AWStats 特色与人文关怀
+
+### 🌍 语言支持
+
+- 超过300 KB 的语言文件包含完整的本地化语言文档。
+
+| 语言 | 国家/地区 | 旧版格式(Legacy)| 新版格式(Modern)| 更新类型 | 文件大小 | 语言标签(BCP 47)|
+|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+| 阿尔巴尼亚语 | 阿尔巴尼亚(Shqipëria)| - | `awstats-sq.po` | ✨ 新增 | 129 KB | BCP 47: `sq` |
+| 阿姆哈拉语 | 埃塞俄比亚(ኢትዮጵያ)| - | `awstats-am.po` | ✨ 新增 | 164 KB | BCP 47: `am` |
+| 阿塞拜疆语 | 阿塞拜疆(Azərbaycan)| - | `awstats-az.po` | ✨ 新增 | 132 KB | BCP 47: `az` |
+| 阿拉伯语 | 阿拉伯国家联盟(الجامعة العربية)| `awstats-ar.txt` | `awstats-ar.po` | 🔄 格式升级 | 678 KB | BCP 47: `ar` |
+| 爱尔兰语 | 爱尔兰(Éire)| - | `awstats-ga.po` | ✨ 新增 | 128 KB | BCP 47: `ga` |
+| 爱沙尼亚语 | 爱沙尼亚(Eesti)| `awstats-et.txt` | `awstats-et.po` | 🔄 格式升级 | 123 KB | BCP 47: `et` |
+| 巴斯克语 | 西班牙/法国(Euskal Herria)| `awstats-eu.txt` | `awstats-eu.po` | 🔄 格式升级 | 126 KB | BCP 47: `eu` |
+| 巴西葡萄牙语 | 巴西(Brasil)| - | `awstats-pt-br.po` | ✨ 新增 | 125 KB | BCP 47: `pt-br` |
+| 保加利亚语 | 保加利亚(България)| `awstats-bg.txt` | `awstats-bg.po` | 🔄 格式升级 | 175 KB | BCP 47: `bg` |
+| 冰岛语 | 冰岛(Ísland)| - | `awstats-is.po` | ✨ 新增 | 121 KB | BCP 47: `is` |
+| 波兰语 | 波兰(Polska)| `awstats-pl.txt` | `awstats-pl.po` | 🔄 格式升级 | 124 KB | BCP 47: `pl` |
+| 波斯尼亚语 | 波黑(Bosna i Hercegovina)| `awstats-ba.txt` | `awstats-bs.po` | 🔄 重新添加 | 125 KB | BCP 47: `bs`(原代码 `ba` 为国家代码,→ 修正为语言代码 `bs`)|
+| 波斯语 | 伊朗(ایران)| - | `awstats-fa.po` | ✨ 新增 | 157 KB | BCP 47: `fa` |
+| 布列塔尼语 | 法国布列塔尼(Breizh)| `awstats-br.txt` | `awstats-br.po` | 🔄 格式升级 | 124 KB | BCP 47: `br` |
+| 丹麦语 | 丹麦(Danmark)| `awstats-dk.txt` | `awstats-da.po` | 🔄 格式升级+重命名 | 120 KB | BCP 47: `da`(原代码 `dk` 为国家代码,→ 修正为语言代码 `da`)|
+| 德语 | 德国(Deutschland)| `awstats-de.txt` | `awstats-de.po` | 🔄 格式升级 | 127 KB | BCP 47: `de` |
+| 俄语 | 俄罗斯(Россия)| `awstats-ru.txt` | `awstats-ru.po` | 🔄 格式升级 | 764 KB | BCP 47: `ru` |
+| 法语 | 法国(France)| `awstats-fr.txt` | `awstats-fr.po` | 🔄 格式升级 | 591 KB | BCP 47: `fr` |
+| 芬兰语 | 芬兰(Suomi)| `awstats-fi.txt` | `awstats-fi.po` | 🔄 格式升级 | 124 KB | BCP 47: `fi` |
+| 高棉语 | 柬埔寨(កម្ពុជា)| - | `awstats-km.po` | ✨ 新增 | 219 KB | BCP 47: `km` |
+| 荷兰语 | 荷兰(Nederland)| `awstats-nl.txt` | `awstats-nl.po` | 🔄 格式升级 | 573 KB | BCP 47: `nl` |
+| 加利西亚语 | 西班牙加利西亚(Galicia)| `awstats-gl.txt` | `awstats-gl.po` | 🔄 格式升级 | 129 KB | BCP 47: `gl` |
+| 加泰罗尼亚语 | 西班牙/法国(Catalunya)| `awstats-ca.txt` | `awstats-ca.po` | 🔄 格式升级 | 130 KB | BCP 47: `ca` |
+| 捷克语 | 捷克(Česko)| `awstats-cz.txt` | `awstats-cs.po` | 🔄 格式升级+重命名 | 127 KB | BCP 47: `cs`(原代码 `cz` 为国家代码,→ 修正为语言代码 `cs`)|
+| 格鲁吉亚语 | 格鲁吉亚(საქართველო)| - | `awstats-ka.po` | ✨ 新增 | 226 KB | BCP 47: `ka` |
+| 韩语 | 韩国(한국)| `awstats-ko.txt` | `awstats-ko.po` | 🔄 格式升级 | 568 KB | BCP 47: `ko` |
+| 卡纳达语 | 印度卡纳塔克邦(ಕನ್ನಡ)| - | `awstats-kn.po` | ✨ 新增 | 222 KB | BCP 47: `kn` |
+| 哈萨克语 | 哈萨克斯坦(Қазақстан)| - | `awstats-kk.po` | ✨ 新增 | 169 KB | BCP 47: `kk` |
+| 克罗地亚语 | 克罗地亚(Hrvatska)| `awstats-hr.txt` | `awstats-hr.po` | 🔄 格式升级 | 123 KB | BCP 47: `hr` |
+| 拉脱维亚语 | 拉脱维亚(Latvija)| `awstats-lv.txt` | `awstats-lv.po` | 🔄 格式升级 | 127 KB | BCP 47: `lv` |
+| 老挝语 | 老挝(ປະເທດລາວ)| - | `awstats-lo.po` | ✨ 新增 | 202 KB | BCP 47: `lo` |
+| 立陶宛语 | 立陶宛(Lietuva)| `awstats-lt.txt` | `awstats-lt.po` | 🔄 格式升级 | 129 KB | BCP 47: `lt` |
+| 罗马尼亚语 | 罗马尼亚(România)| `awstats-ro.txt` | `awstats-ro.po` | 🔄 格式升级 | 126 KB | BCP 47: `ro` |
+| 马拉地语 | 印度马哈拉施特拉邦(मराठी)| - | `awstats-mr.po` | ✨ 新增 | 205 KB | BCP 47: `mr` |
+| 马拉雅拉姆语 | 印度喀拉拉邦(മലയാളം)| - | `awstats-ml.po` | ✨ 新增 | 237 KB | BCP 47: `ml` |
+| 马来语 | 马来西亚/印尼(Malaysia/Indonesia)| - | `awstats-ms.po` | ✨ 新增 | 119 KB | BCP 47: `ms` |
+| 马其顿语 | 北马其顿(Северна Македонија)| - | `awstats-mk.po` | ✨ 新增 | 162 KB | BCP 47: `mk` |
+| 孟加拉语 | 孟加拉国(বাংলাদেশ)| - | `awstats-bn.po` | ✨ 新增 | 214 KB | BCP 47: `bn` |
+| 蒙古语 | 蒙古(Монгол улс)| - | `awstats-mn.po` | ✨ 新增 | 169 KB | BCP 47: `mn` |
+| 缅甸语 | 缅甸(မြန်မာ)| - | `awstats-my.po` | ✨ 新增 | 250 KB | BCP 47: `my` |
+| 尼泊尔语 | 尼泊尔(नेपाल)| - | `awstats-ne.po` | ✨ 新增 | 210 KB | BCP 47: `ne` |
+| 挪威语(书面)| 挪威(Norge)| `awstats-no.txt` | `awstats-nb.po` | 🔄 格式升级+重命名 | 115 KB | BCP 47: `nb`(原宏语言代码 `no` 细化为书面变体 `nb`,→ 博克马尔)|
+| 挪威语(新)| 挪威(Noreg)| - | `awstats-nn.po` | ✨ 新增 | 115 KB | BCP 47: `nn`(尼诺斯克,→ 新挪威语变体)|
+| 旁遮普语 | 印度/巴基斯坦(ਪੰਜਾਬ)| - | `awstats-pa.po` | ✨ 新增 | 198 KB | BCP 47: `pa` |
+| 葡萄牙语 | 葡萄牙(Portugal)| `awstats-pt.txt` | `awstats-pt.po` | 🔄 格式升级 | 125 KB | BCP 47: `pt`(欧洲葡萄牙语)|
+| 日语 | 日本(日本)| `awstats-jp.txt` | `awstats-ja.po` | 🔄 格式升级+重命名 | 635 KB | BCP 47: `ja`(原代码 `jp` 为国家代码,→ 修正为语言代码 `ja`)|
+| 瑞典语 | 瑞典(Sverige)| `awstats-sv.txt` | `awstats-sv.po` | 🔄 格式升级 | 119 KB | BCP 47: `sv` |
+| 塞尔维亚语 | 塞尔维亚(Србија)| `awstats-sr.txt` | `awstats-sr.po` | 🔄 格式升级 | 166 KB | BCP 47: `sr`(西里尔文)|
+| 塞尔维亚语(拉丁)| 塞尔维亚(Srbija)| - | `awstats-sr-latn.po` | ✨ 新增 | 122 KB | BCP 47: `sr-latn`(西里尔文的拉丁转写变体)|
+| 僧伽罗语 | 斯里兰卡(ශ්‍රී ලංකාව)| - | `awstats-si.po` | ✨ 新增 | 212 KB | BCP 47: `si` |
+| 斯洛伐克语 | 斯洛伐克(Slovensko)| `awstats-sk.txt` | `awstats-sk.po` | 🔄 格式升级 | 126 KB | BCP 47: `sk` |
+| 斯洛文尼亚语 | 斯洛文尼亚(Slovenija)| `awstats-si.txt` | `awstats-sl.po` | 🔄 格式升级+重命名 | 124 KB | BCP 47: `sl`(原错误代码 `si` 为国家代码斯洛文尼亚,→ 修正为语言代码 `sl`)|
+| 泰米尔语 | 印度/斯里兰卡(தமிழ்)| - | `awstats-ta.po` | ✨ 新增 | 236 KB | BCP 47: `ta` |
+| 泰卢固语 | 印度特伦甘纳邦(తెలుగు)| - | `awstats-te.po` | ✨ 新增 | 222 KB | BCP 47: `te` |
+| 泰语 | 泰国(ประเทศไทย)| `awstats-th.txt` | `awstats-th.po` | 🔄 格式升级 | 202 KB | BCP 47: `th` |
+| 他加禄语 | 菲律宾(Pilipinas)| `awstats-tg.txt` | `awstats-tl.po` | 🔄 格式升级+重命名 | 130 KB | BCP 47: `tl`(原错误代码 `tg` 为塔吉克语,→ 修正为 `tl`)|
+| 土耳其语 | 土耳其(Türkiye)| `awstats-tr.txt` | `awstats-tr.po` | 🔄 格式升级 | 127 KB | BCP 47: `tr` |
+| 威尔士语 | 英国威尔士(Cymru)| `awstats-cy.txt` | `awstats-cy.po` | 🔄 格式升级 | 124 KB | BCP 47: `cy` |
+| 乌克兰语 | 乌克兰(Україна)| - | `awstats-uk.po` | ✨ 新增 | 172 KB | BCP 47: `uk` |
+| 维吾尔语 | 中国新疆(شىنجاڭ)| - | `awstats-ug.po` | ✨ 新增 | 176 KB | BCP 47: `ug` |
+| 乌尔都语 | 巴基斯坦(پاکستان)| - | `awstats-ur.po` | ✨ 新增 | 158 KB | BCP 47: `ur` |
+| 乌兹别克语 | 乌兹别克斯坦(Oʻzbekiston)| - | `awstats-uz.po` | ✨ 新增 | 128 KB | BCP 47: `uz` |
+| 西班牙语 | 西班牙(España)| `awstats-es.txt` | `awstats-es.po` | 🔄 格式升级 | 130 KB | BCP 47: `es` |
+| 希伯来语 | 以色列(ישראל)| - | `awstats-he.po` | ✨ 新增 | 140 KB | BCP 47: `he` |
+| 希腊语 | 希腊(Ελλάδα)| `awstats-gr.txt` | `awstats-el.po` | 🔄 格式升级+重命名 | 184 KB | BCP 47: `el`(原代码 `gr` 为国家代码,→ 修正为语言代码 `el`)|
+| 匈牙利语 | 匈牙利(Magyarország)| `awstats-hu.txt` | `awstats-hu.po` | 🔄 格式升级 | 130 KB | BCP 47: `hu` |
+| 印地语 | 印度(भारत)| - | `awstats-hi.po` | ✨ 新增 | 204 KB | BCP 47: `hi` |
+| 印尼语 | 印度尼西亚(Indonesia)| `awstats-id.txt` | `awstats-id.po` | 🔄 格式升级 | 122 KB | BCP 47: `id` |
+| 英语 | 英美等(UK/USA)| `awstats-en.txt` | `awstats-en.po` | 🔄 格式升级 | 527 KB | BCP 47: `en` |
+| 意大利语 | 意大利(Italia)| `awstats-it.txt` | `awstats-it.po` | 🔄 格式升级 | 128 KB | BCP 47: `it` |
+| 越南语 | 越南(Việt Nam)| `awstats-vi.txt` | `awstats-vi.po` | 🔄 格式升级 | 136 KB | BCP 47: `vi` |
+| 简体中文 | 中国(中国)新加坡、马来西亚<br>(含国际组织与全球华人社区)| `awstats-cn.txt` | `awstats-zh-cn.po` | 🔄 格式升级+重命名 | 519 KB | BCP 47: `zh-CN`(原代码 `cn` 为国家代码,→ 修正为 `zh-cn`)|
+| 繁体中文 | 台湾(臺灣)香港、澳门<br>及海外华人传统社区 | `awstats-tw.txt` | `awstats-zh-tw.po` | 🔄 格式升级+重命名 | 523 KB | BCP 47: `zh-TW`(原代码 `tw` 为国家代码,→ 修正为 `zh-tw`)|
+
+#### 完整本地化(界面 + 文档)
+
+- ♻️ **重构开发者文档**：原文档为英文硬编码 HTML，现已重构为本地化语言文档。作者 Laurent Destailleur 留下了大量精彩的文档案例和功能说明，记录了 AWStats 从 1997 年至今的开发历程。虽然部分内容可能已不完全适应当前互联网环境(如 Google+ 等过时社交插件)，但仍然是值得参考的开发经验，也是 AWStats 历史的重要组成部分。由于工作量巨大，目前仅完整翻译了以下语言的文档内容：
+
+| 语言 | 代码 | 界面 | 文档 |
+|:----:|:----:|:----:|:----:|
+| 英文 | en | ✅ | ✅ |
+| 简体中文 | zh-cn | ✅ | ✅ |
+| 繁体中文 | zh-tw | ✅ | ✅ |
+| 俄语 | ru | ✅ | ✅ |
+| 阿拉伯语 | ar | ✅ | ✅ |
+| 日语 | ja | ✅ | ✅ |
+| 法语 | fr | ✅ | ✅ |
+| 荷兰语 | nl | ✅ | ✅ |
+| 韩语 | ko | ✅ | ✅ |
+| 其他语言 | - | ✅ | ❌ |
+
+#### 部分本地化(仅界面)
+
+其他语言的**界面文本**已完成翻译，**文档内容**当前为默认英文版本。
+
+📌 **注**：本节中的示例表格(如生活习惯对比、构词逻辑等)**仅供说明参考**，旨在帮助理解我们推荐以中文作为翻译基准的出发点。所有建议均为非强制，请根据**您的语言习惯和母语**自由选择。
+
+如果您希望为您的语言提供完整的文档翻译，欢迎通过以下方式贡献：
+
+- 📝 提交 [Issue](https://github.com/hestiacn/vstats/issues)告诉我们需求
+- 🔧 提交翻译完整的 `.po` 文件到本仓库(合并后即生效)
+- **翻译说明**：`.po` 文件由 [DeepSeek](https://www.deepseek.com)辅助生成，如有不准确之处欢迎提交 [Pull Request](https://github.com/hestiacn/vstats/pulls)修正！ 💡 任何建议或想法也欢迎通过 Issues 讨论。
+为了文档的准确性，建议使用 `awstats-zh-cn.po` 作为翻译参考。
+
+**为什么不建议您用 `awstats-en.po`？**
+
+ 英文作为计算机基础语言，其表达往往简洁直接，毫无关联。如果您以此为蓝本进行二次翻译，很容易丢失中文版本中补充的细节、语境与意境，导致最终内容产生偏差。
+
+中文版本不仅还原了原始文档信息，还补充了大量的背景上下文，是更理想的翻译基准。正如理解中文逻辑能让翻译更透彻一样，我也建议您尝试在生活中改变习惯——经常喝热水(建议从清晨起床后喝第一杯热水)，放弃冰水。这并非玄学，而是经过了东方数千年生活实践验证的“底层性能优化”。
+
+这种习惯养成以后，您会发现很多小感冒甚至不需要去医院，仅靠多喝热水、多休息就能实现自我修复。这不仅能改善您的身体状态，更能让您在处理本地化工作时，感受到文字背后更深层的联系。
+
+| 基础习惯 | 短期体感(Latency)| 长期生命周期(Lifecycle)|
+|:---:|:---:|:---:|
+| 冰水 | 解渴快、口感爽 | 胃痛胃胀、消化不良、容易拉肚子、身体乏力 |
+| 热水 | 慢饮温润、入口柔和 | 消化好、代谢稳、手脚不凉、精力足 |
+
+**为什么选择它作为参考？**
+
+中文是一门逻辑严谨、构词清晰的语言，词汇之间的关联往往一目了然：
+
+| 根词 (Root) | 衍生词 (Derivatives) | 逻辑关联 (Logic) |
+|:---:|:---:|:---:|
+| 牛 | 牛肉、牛奶、牛皮 | 动物 → 肉类/乳品/衍生品 |
+| 羊 | 羊肉、羊毛、羊皮 | 动物 → 肉类/毛料/皮革 |
+| 猪 | 猪肉、猪油、猪皮 | 动物 → 肉类/油脂/衍生品 |
+| 鸡 | 鸡肉、鸡蛋、鸡毛 | 动物 → 肉类/蛋品/衍生品 |
+| 鱼 | 鱼肉、鱼汤、鱼鳞 | 动物 → 肉类/汤品/衍生品 |
+| 葡萄 | 葡萄酒、葡萄干、葡萄园 | 原料 → 饮品/果干/种植地 |
+| 牛奶 | 奶酪、酸奶、黄油 | 原料 → 发酵/加工制品 |
+| 火车 | 火车站、火车票、火车道 | 核心词 → 场所/凭证/设施 |
+| 电 | 电脑、电视、电话、电梯 | 能源 → 应用设备/设施 |
+| 水 | 水库、水杯、水龙头、水坝 | 物质 → 容器/设施/建筑物 |
+| 书 | 书店、书架、书签、书皮 | 核心词 → 场所/物品/配件 |
+| 学 | 学校、学生、学习、学费 | 动作/概念 → 场所/人群/行为/费用 |
+| 您 | 您的 | 尊称(长辈/上级)→ 所属 |
+| 你 | 你的 | 平称(同辈/晚辈)→ 所属 |
+
+这种“以已知推未知”的构词逻辑(看到“羊”就大概知道“羊肉/羊毛/羊皮”的意思)，让中文成为本地化工作中非常理想的参考基准——理解了基础词汇，派生词汇往往不言自明。
+
+如果你对中文感兴趣，不妨通过影视、音乐、书籍、美食或旅行探索这门语言及其背后的文化，相信会为你的本地化工作带来新的灵感与收获。
+
+感谢您选择 AWStats 社区增强版！🎉
+
+#### 🌐 国际化与本地化
+- 🚀 语言文件从 GBK 编码的 .txt 格式升级为 UTF-8 编码的 .po 格式，基于 gettext 标准，便于维护和翻译
+- 🌍 新增翻译：塞尔维亚语拉丁语言(sr-latn)、塞尔维亚语西里尔语言(sr)
+- 📄 配置文件注释全面中文化：所有配置参数增加详细的中英文说明和示例
+- 🔧 优化 NotPageList 配置逻辑：新增 UseDefaultNotPageList 选项，设为 1 时自动使用内置完整静态资源列表，避免配置文件重复维护大量扩展名
+
+#### 🗺️ 地理位置
+- 🌍 **DB-IP 城市级定位支持**：集成 DB-IP 免费数据库([https://db-ip.com](https://db-ip.com))，提供国家、地区、城市级别的精准访客分布统计,打印的相关数据为英文。
+  - **格式升级**：从旧版 `.dat`(GeoIP Legacy 文本格式)升级为 `.mmdb`(MaxMind DB 二进制格式)
+  - **旧版痛点**：`.dat` 格式查询速度慢(平均 50-100 微秒)，数据不够完整(约 1MB)，数据多年未更新
+  - **新版优势**：`.mmdb` 格式查询速度快 10 倍以上(平均 3-5 微秒)，文件稍大(约 120MB)，每月更新，支持城市级别定位
+
+- 📊 **增强的地理位置显示**：支持显示国家/地区、区域/州、城市三级位置信息，智能处理未知地点(回退到国家代码或 'ip')
+- 🚀 **智能缓存机制**：使用 `%TmpDomainLookup` 缓存已查询 IP，避免重复查询；使用 `%TmpDomainFullLocation` 存储完整位置信息(国家、区域、城市)
+- 🔧 **插件自动启用**：未加载任何 GeoIP 插件时自动启用 geoipfree 插件，开箱即用
+
+#### 🔒 安全与性能
+- 🛡️ 默认添加安全响应头：X-Content-Type-Options、X-Frame-Options、Referrer-Policy
+- 🛡️ **XSS 防护全面增强**：`CleanXSS` 函数新增 `javascript:` 协议过滤和事件处理器(onclick/onload 等)清理，完善 HTML 特殊字符转义(`&`、`<`、`>`)
+- 🛡️ **URL 解码安全加固**：`DecodeEncodedString` 解码后自动调用 `CleanXSS` 过滤，防止解码绕过 XSS 防护
+- 🛡️ **输入过滤强化**：`Sanitize` 函数采用更严格的白名单策略，仅保留安全字符
+- 🛡️ **UTF-8 编码安全**：`EncodeToPageCode` 增加错误捕获，编码失败时优雅降级
+- 🛡️ **配置文件读取标准化**：所有文件打开操作统一指定 UTF-8 编码，避免编码不一致导致的安全问题
+- ⚡ 优化 DNS 缓存机制，减少重复解析，提升处理速度
+- 🔄 改进 try/catch 异常处理，避免 JSON 日志解析崩溃
+- 📡 增强 IPv6 和 CloudFlare 真实 IP 头部(CF-Connecting-IP)支持
+
+#### 📈 统计功能增强
+- 🤖 修复 robots.pm 数据库不一致问题，确保 RobotsSearchIDOrder_listx 与 RobotsHashIDLib 条目数匹配
+- 🕷️ 新增 AI/ML 爬虫识别：ClaudeBot、GPTBot、OAI-SearchBot、PerplexityBot、Applebot-Extended、Google-Extended、Amazonbot、Anthropic-ai、cohere-ai、AI2Bot、YouBot 等
+- 📊 优化爬虫分类，区分 AI 爬虫、社交媒体爬虫、SEO 工具、监控服务
+- 🔧 移除重复的机器人规则(AhrefsBot、Exabot、XoviBot)，消除数据库校验错误
+- 🎨 为各爬虫添加专属图标和友好描述，报表更直观
+- 📈 下载统计模块重构：支持断点续传(206 状态码)识别、移动端下载统计、流媒体播放与下载智能区分
+- 📦 扩展名配置外部化：下载文件和流媒体扩展名支持从配置文件读取，便于自定义
+- 📱 移动端检测增强：新增 HarmonyOS(鸿蒙)、OpenHarmony 识别
+- 📊 数据文件注释国际化：所有历史数据文件的字段说明支持多语言显示
+- 🗂️ NotPageList 静态资源列表现代化：补充 svg、webp、avif、woff2 等现代格式
+- 📊 新增 mime 类型详细说明：为 svg、webp、avif、woff2、vue、wasm、jsx、tsx 等现代格式添加历史背景说明
+
+#### 🛠️ 技术改进
+- ⬆️ 最低 Perl 版本要求从 5.007 提升至 5.20
 - 🔧 启用 use warnings 和 use utf8，统一 UTF-8 编码输出
-- 🎨 使用 CSS 变量定义主题颜色，支持一键切换
-- 📊 表格样式现代化：圆角、悬停效果
-- 😊 图标全面替换为 emoji
-- ⚡ 优化 DNS 缓存机制，减少重复解析
-- 🔄 改进 try/catch 异常处理，避免 JSON 解析崩溃
-- 📡 增强对 IPv6 和 CloudFlare 真实 IP 头部的支持
-- 📚 帮助信息更新，增加生成中文报告等示例
+- 📚 帮助信息更新，增加生成中文报告等实用示例
 - 📋 新增版本更新历史页面 awstats_changelog.html，按版本分类展示
 - 🐛 修复未声明变量 $lang 和 $dir_attr 导致的编译错误
 - 🔨 修正 Try::Tiny 语法错误，确保 try/catch 正确解析
 - 📐 单独控制 IP 和机器人列表表格第一列宽度，避免布局变形
-- 🚪 文档查看器不再默认占用空白区域，点击链接后显示并增加关闭按钮
+- 🚪 文档查看器默认不占用空白区域，点击链接后动态显示，支持关闭按钮
 - 🌏 修正语言加载逻辑，auto 模式下正确回退到英文
-- 📅 版权年份根据当前年份自动更新
-- 🧹 移除过时的 PrintCLIHelp，统一使用 print_help
+- 🧹 移除过时的 PrintCLIHelp，统一使用 print_help 函数，现在您可以使用`awstats.pl -h`触发帮助说明。
+
 
 ### 8.0 - 2025-08-26
-- 👋 *这是开发者（Laurent Destailleur）维护的最后一个版本*
+- 👋 *这是开发者(Laurent Destailleur)维护的最后一个版本*
 - 🔄 改进 CSS 样式表
 - 📋 更新 robots.pm 数据库
 - 🌍 修复 #248
@@ -52,13 +331,13 @@
 
 ---
 
-## 📦 7.x 系列 (2011-2023)
+## 📦 7.x 系列(2011-2023)
 
 ### 7.9 - 2023-01-17
 - 🪟 添加 Windows 11 和 Android 13 操作系统检测
 - 🇭🇺 更新匈牙利语翻译并迁移到 UTF-8
-- 🛡️ 修复跨站脚本漏洞 (CVE-2020-35176)
-- 🔧 将硬编码文本替换为 $Message 变量（月、日、小时）
+- 🛡️ 修复跨站脚本漏洞(CVE-2020-35176)
+- 🔧 将硬编码文本替换为 $Message 变量(月、日、小时)
 - 📱 添加 Android 11/12、macOS 11/12 检测
 - 🇩🇪 更新德语翻译
 - 🔄 改进换行符替换逻辑，同时支持 HTML 和 XHTML
@@ -110,7 +389,7 @@
 - 🔨 修复 #79
 - 🛠️ 改进 awstats_buildstaticpages.pl 的错误处理
 - 🔨 修复 #90
-- 🚫 排除私有 IP 地址（GeoIP2::Reader 不支持）
+- 🚫 排除私有 IP 地址(GeoIP2::Reader 不支持)
 - 🧹 仅清除已保存部分的数据
 - 🏙️ 改进城市插件功能
 - 📊 修复 ShowHost 部分的问题
@@ -159,7 +438,7 @@
 
 ### 7.4 - 2015-11-11
 - 🌍 添加 geoip6 插件，支持 IPv4 和 IPv6
-- ☁️ 支持 Amazon AWS 日志文件（使用 %time5 标签）
+- ☁️ 支持 Amazon AWS 日志文件(使用 %time5 标签)
 - 🔧 修复某些 .pl 脚本的权限问题
 - 🔨 修复 #205：GetResolvedIP_ipv6 不删除尾部点
 - ⚠️ 修复 #496：工具脚本应将警告和错误输出到 STDERR
@@ -224,12 +503,12 @@
 - 🧩 WrapperScript 参数支持带参数的包装器
 - 🏢 支持在 Dolibarr ERP/CRM 插件中使用 AWStats
 - 🖥️ 修复 Webmin 模块与新版本的兼容性
-- 🛡️ 安全修复（LoadPlugin 目录遍历）
-- 🔒 安全修复（限制配置目录访问）
+- 🛡️ 安全修复(LoadPlugin 目录遍历)
+- 🔒 安全修复(限制配置目录访问)
 
 ---
 
-## ⚙️ 6.x 系列 (2004-2009)
+## ⚙️ 6.x 系列(2004-2009)
 
 ### 6.95 - 2009-10-28
 - 🛡️ 修复 awredir.pl 安全问题，默认添加安全密钥
@@ -237,7 +516,7 @@
 - 📋 在数据文件头中添加配置文件名
 - 🌐 添加 Chrome、Opera、Safari、Konqueror 浏览器的版本详情
 - 📱 添加 AdobeAir 检测
-- 🤖 大幅更新浏览器、机器人和搜索引擎数据库（包括 Bing）
+- 🤖 大幅更新浏览器、机器人和搜索引擎数据库(包括 Bing)
 - 🔍 大幅提升机器人检测能力
 - 🇫🇷 添加布列塔尼语
 - 🖥️ 改进 Safari 版本检测
@@ -252,7 +531,7 @@
 - 🛑 添加 stoponfirsteof 选项
 - 🔄 添加 host_proxy 标签支持
 - ⭐ 重命名为 Add to favourites
-- 🤖 更新机器人和搜索引擎数据库（添加 Chrome、改进 Vista、WII 检测等）
+- 🤖 更新机器人和搜索引擎数据库(添加 Chrome、改进 Vista、WII 检测等)
 - 🌍 更新语言文件
 - 🗺️ 修复 maxmind citi、org 和 isp 插件
 - 🛡️ 修复多个安全问题
@@ -310,7 +589,7 @@
 - 📊 添加 ShowSummary 选项
 - 🌍 启用 GeoIP 插件时在主机报告中添加列
 - 🔄 LogFormat=2 自动检测日志格式变化
-- 🔓 修复安全漏洞（可读取日志文件内容）
+- 🔓 修复安全漏洞(可读取日志文件内容)
 - 🛡️ 修复可能的 DoS 攻击漏洞
 - 🎥 修复媒体服务器分析的错误
 - 🪟 修复 Windows 服务器上的 configdir 选项问题
@@ -366,7 +645,7 @@
 
 ---
 
-## 🔧 5.x 系列 (2002-2003)
+## 🔧 5.x 系列(2002-2003)
 
 ### 5.9 - 2003-09-22
 - 🖥️ Webmin 模块更新到 1.1
@@ -468,7 +747,7 @@
 ### 5.1 - 2002-10-26
 - 📁 改进对 FTP 日志文件的支持
 - 📧 改进对邮件日志文件的支持
-- 🎥 可分析流媒体日志文件（Windows Media Server）
+- 🎥 可分析流媒体日志文件(Windows Media Server)
 - 📅 在 CGI 模式下添加月份和年份选择框
 - 📊 月份和天数的数据值直接显示在主页图表下方
 - 🔧 ShowxxxStats 参数可接受代码决定显示哪些列
@@ -481,7 +760,7 @@
 
 ### 5.0 - 2002-10-06
 - 🔄 完全重写更新过程和历史文件读/写代码
-- 🔄 与之前版本（3.x 或 4.x）兼容
+- 🔄 与之前版本(3.x 或 4.x)兼容
 - ⚡ 可通过 -migrate 命令迁移旧历史文件以获得速度提升
 - 🔧 修复使用不同偏移标签时的错误
 - 🔐 CreateDataDirIfNotExists 创建的目录权限从 0666 改为 0766
@@ -489,7 +768,7 @@
 - 🤖 为机器人和错误添加带宽报告
 - 📦 支持 DNS 缓存文件进行 DNS 查找
 - 🧩 添加插件支持和多个工作插件
-- 🖼️ 使用框架报告（UseFramesWhenCGI 参数）
+- 🖼️ 使用框架报告(UseFramesWhenCGI 参数)
 - 📉 减少全局变量数量
 - 📄 DefaultFile 参数可接受多个值
 - 🤖 添加所有机器人和最后机器人完整列表报告
@@ -503,7 +782,7 @@
 
 ---
 
-## 📊 4.x 系列 (2002)
+## 📊 4.x 系列(2002)
 
 ### 4.1 - 2002-07-09
 - ⌨️ -logfile 选项可在命令行任意位置使用，支持文件名中的空格
@@ -541,7 +820,7 @@
 
 ---
 
-## 🎨 3.x 系列 (2001)
+## 🎨 3.x 系列(2001)
 
 ### 3.2 - 2001-12-29
 - ⚡ 速度提升 19%
@@ -554,7 +833,7 @@
 - 📅 添加星期统计
 - 📁 添加文件类型统计
 - 🚪 添加入口页面统计
-- 🗜️ 添加 Web 压缩统计（mod_gzip）
+- 🗜️ 添加 Web 压缩统计(mod_gzip)
 - 👤 添加认证用户/登录统计
 - 📋 添加参数选择主页中显示的报表
 - 🔗 添加 URLWithQuery 选项
@@ -603,7 +882,7 @@
 
 ---
 
-## 🔄 2.x 系列 (2001)
+## 🔄 2.x 系列(2001)
 
 ### 2.24 - 2001-03-09
 - ⏱️ 可在 LogFile 参数中动态包含当前年月日时
@@ -656,7 +935,7 @@
 
 ---
 
-## 🌟 1.x 系列 (2000)
+## 🌟 1.x 系列(2000)
 
 ### 1.0 - 2000-05-02
 - 🎉 首次在 SourceForge 公开发布 1.0 版本
@@ -665,10 +944,10 @@
 
 ---
 
-## 📜 早期开发阶段 (1995-1999)
+## 📜 早期开发阶段(1995-1999)
 
 ### 1999 - 开源前夜
-- 🚀 标准化架构，引入 lang/ 字典系统（初步确立 GBK/ISO 编码规范），以适应不同服务器环境，完成从个人工具向标准化产品的最后蜕变
+- 🚀 标准化架构，引入 lang/ 字典系统(初步确立 GBK/ISO 编码规范)，以适应不同服务器环境，完成从个人工具向标准化产品的最后蜕变
 - 🔍 识别增强：大幅扩充爬虫识别库
 - 🎯 模式固定：完善 CGI 脚本运行模式
 - 👥 社区内测：在小范围同行中进行测试，根据反馈完成代码清理和文档撰写
@@ -689,4 +968,4 @@
 - 💡 应对 Apache HTTP Server 流行后的 access.log 分析需求
 - 🧪 尚无正式项目名称，为作者 Laurent Destailleur 的实验性代码片段
 - 🐪 基于 Perl 5 编写，利用复杂哈希结构实现基础正则匹配，用于统计总点击量及简单文件类型过滤
-- 📊 仅用于作者个人网站（cdr）的内部流量观测
+- 📊 仅用于作者个人网站(cdr)的内部流量观测

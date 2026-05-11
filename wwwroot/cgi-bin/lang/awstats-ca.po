@@ -1,168 +1,3308 @@
-# Catalan message file (Temu-BCN temujinnn@hotmail.com)
-# $Revision$ - $Date$
-PageCode=iso-8859-1
-message0=Desconegut
-message1=Desconegut (Adre�a IP desconeguda)
-message2=Altres
-message3=Veure detalls
-message4=Dia
-message5=Mes
-message6=Any
-message7=Estad�stiques del lloc
-message8=Primera visita
-message9=�ltima visita
-message10=Nombre de visites
-message11=Visitants diferents
-message12=Visita
-message13=Paraula clau (keyword)
-message14=Cerques
-message15=Percentatge
-message16=Tr�fic
-message17=Dominis/Pa�sos
-message18=Visitants
-message19=P�gines/URLs
-message20=Visites per Hores
-message21=Navegadors
-message22=
-message23=Enlla�os
-message24=Mai utilitzats (Miri 'Build/Update' a la p�gina awstats_setup.html)
-message25=Visites por Dominis/Pa�sos
-message26=servidors
-message27=p�gines
-message28=p�gines diferents
-message29=Accessos
-message30=Altres paraules
-message31=P�gines no trobades
-message32=Codis d'error del Protocol HTTP
-message33=Versions de Netscape
-message34=Versions de MS Internet Explorer
-message35=�ltima actualitzaci�
-message36=Connectat al lloc desde
-message37=Origen de l'enlla�
-message38=Des de direcci� directa o Preferits
-message39=Origen desconegut
-message40=Enlla�os des d'algun motor de cerca
-message41=Enlla�os des de p�gines externes (excepte motors de cerca)
-message42=Enlla�os des de p�gines internes (altres p�gines del lloc)
-message43=Paraules clau utilitzades pel motor de cerca
-message44=Paraules utilitzades pel motor de cerca
-message45=Direcci� IP no identificada
-message46=Sistema Operatiu desconegut (camp de refer�ncia)
-message47=URLs sol�licitades per� no trobades (codi 404 del protocol HTTP)
-message48=Direcci� IP
-message49=Sol�licituds&nbsp;err�nies
-message50=Navegadors desconeguts (camp de refer�ncia)
-message51=Visites de Robots
-message52=Visites/Visitant
-message53=Visites de Robots/Spiders (indexadors)
-message54=Analitzador gratu�t de hist�rics per a estad�stiques Web avan�ades
-message55=de
-message56=P�gines
-message57=Sol�licituds
-message58=Versions
-message59=Sistemes Operatius
-message60=Gen
-message61=Feb
-message62=Mar
-message63=Abr
-message64=Mai
-message65=Jun
-message66=Jul
-message67=Ago
-message68=Sep
-message69=Oct
-message70=Nov
-message71=Des
-message72=Navegaci�
-message73=Tipus de fitxer
-message74=Actualitzar ara
-message75=Ample de banda
-message76=Tornar a la p�gina principal
-message77=Top
-message78=dd mmm yyyy - HH:MM
-message79=Filtre
-message80=Llista completa
-message81=Servidors
-message82=Coneguts
-message83=Robots
-message84=Diu
-message85=Dil
-message86=Dim
-message87=Dmc
-message88=Djs
-message89=Div
-message90=Dis
-message91=Dies de la setmana
-message92=Qui
-message93=Quan
-message94=Usuaris Autentificats
-message95=Min
-message96=Mitja
-message97=Max
-message98=Compressi� Web
-message99=Ample de banda estalviat
-message100=Abans de la compressi�
-message101=Despr�s de la compressi�
-message102=Total
-message103=Paraules clau diferents
-message104=P�gina d'entrada
-message105=Codi
-message106=Volum mitj�
-message107=Enlla�os des d'un grup de not�cies
-message108=KB
-message109=MB
-message110=GB
-message111=Grabber
-message112=S�
-message113=No
-message114=Informaci� WhoIs
-message115=Acceptar
-message116=Sortida
-message117=Durada de les visites
-message118=Tancar finestra
-message119=Bytes
-message120=Motors de cerca&nbsp;frases clau
-message121=Motors de cerca&nbsp;paraules clau
-message122=enlla�os des de motors de cerca diferents
-message123=enlla�os des d'altres llocs
-message124=Altres frases de cerca
-message125=Altres usuaris (i/o usuaris an�nims)
-message126=Enlla�os des de motors de cerca
-message127=Llocs d'enlla�os
-message128=Sumari
-message129=Valor exacte no disponible a la vista d'any
-message130=Matrius de dades
-message131=EMail del emissor
-message132=EMail del receptor
-message133=Per�ode reportat
-message134=Extra/Marketing
-message135=Mides de pantalla
-message136=Atacs de Cucs/Virus
-message137=Inclosos a favorits (estimat)
-message138=Dies del mes
-message139=Miscel�lanis
-message140=Cercadors amb suport Java
-message141=Cercadors amb suport Macromedia Director
-message142=Cercadors amb suport Flash
-message143=Cercadors amb suport de reproducci� Real �udio
-message144=Cercadors amb suport de reproducci� Quicktime audio
-message145=Cercadors amb suport de reproducci� Windows Media audio
-message146=Cercadors amb suport PDF
-message147=Codis d'error SMTP
-message148=Pa�sos
-message149=Correus
-message150=Volum
-message151=Primer
-message152=�ltim
-message153=Excloure filtre
-message154=Els codis mostrats aqu� son donats per sol�licituds o tr�fic "no vist" per els visitants, es troben en aquest apartat.
-message155=Cluster
-message156=Els Robots comptats aqu� son donats per sol�licituds o tr�fic "no vist" per els visitants, es troben en aquest apartat.
-message157=N�meros despr�s de + son sol�licituds correctes en els arxius �robots.txt�.
-message158=Els Cucs comptats aqu� son donats per sol�licituds o tr�fic "no vist" per els visitants, es troben en aquest apartat.
-message159=El tr�fic no vist es tr�fic generat per robots, cucs o respostes de codi especial d'estat HTTP.
-message160=Tr�fic vist
-message161=Tr�fic no vist
-message162=Hist�ric  Mensual
-message163=Cucs
-message164=Cucs diferents
+# AWStats Catalan (ca) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Catalan\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#------------------------------------------------------------------------------
+# Noms dels mesos
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "Gener"
+
+msgid "month_02"
+msgstr "Febrer"
+
+msgid "month_03"
+msgstr "Març"
+
+msgid "month_04"
+msgstr "Abril"
+
+msgid "month_05"
+msgstr "Maig"
+
+msgid "month_06"
+msgstr "Juny"
+
+msgid "month_07"
+msgstr "Juliol"
+
+msgid "month_08"
+msgstr "Agost"
+
+msgid "month_09"
+msgstr "Setembre"
+
+msgid "month_10"
+msgstr "Octubre"
+
+msgid "month_11"
+msgstr "Novembre"
+
+msgid "month_12"
+msgstr "Desembre"
+
+#------------------------------------------------------------------------------
+# Noms dels dies de la setmana
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "Diumenge"
+
+msgid "DayOfWeek_1"
+msgstr "Dilluns"
+
+msgid "DayOfWeek_2"
+msgstr "Dimarts"
+
+msgid "DayOfWeek_3"
+msgstr "Dimecres"
+
+msgid "DayOfWeek_4"
+msgstr "Dijous"
+
+msgid "DayOfWeek_5"
+msgstr "Divendres"
+
+msgid "DayOfWeek_6"
+msgstr "Dissabte"
+
+#------------------------------------------------------------------------------
+# Elements de la interfície
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "Estadístiques web avançades per a"
+
+msgid "Statistics for"
+msgstr "Estadístiques per a"
+
+msgid "main"
+msgstr "Resum"
+
+# Canvi de tema
+msgid "Switch to light mode"
+msgstr "Canvia al mode clar"
+
+msgid "Switch to dark mode"
+msgstr "Canvia al mode fosc"
+
+# Unitats de capacitat
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "Bytes"
+
+# Elements de formulari
+msgid "Filter"
+msgstr "Filtra"
+
+msgid "Exclude filter"
+msgstr "Exclou filtre"
+
+msgid "Top"
+msgstr "Top"
+
+msgid "Full list"
+msgstr "Llista completa"
+
+msgid "Last"
+msgstr "Últim"
+
+msgid "Average"
+msgstr "Mitjana"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Percent"
+msgstr "Percentatge"
+
+msgid "Export"
+msgstr "Exporta"
+
+msgid "Details"
+msgstr "Detalls"
+
+msgid "Version"
+msgstr "Versió"
+
+# Separador de milers
+msgid "thousands_separator"
+msgstr "."
+
+# Format de data llarg (per a última actualització, primera visita, etc.)
+msgid "dateformat_long"
+msgstr "dd/mm/yyyy HH:MM:SS"
+
+# Format de data curt (per a etiquetes de gràfics, etc.)
+msgid "dateformat_short"
+msgstr "dd/mm/yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "%s"
+
+msgid "date_format_month"
+msgstr "%1$s de %2$s"
+
+#------------------------------------------------------------------------------
+# Barra de navegació
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "Selector de mes d'AWStats"
+
+msgid "nav_category_basic"
+msgstr "Documentació bàsica"
+
+msgid "nav_category_guide"
+msgstr "Guia d'ús"
+
+msgid "nav_category_reference"
+msgstr "Recursos de referència"
+
+msgid "nav_category_integration"
+msgstr "Integració i extensió"
+
+msgid "nav_category_dev"
+msgstr "Documentació per a desenvolupadors"
+
+msgid "nav_changelog"
+msgstr "Registre de canvis"
+
+msgid "nav_what"
+msgstr "Què és AWStats"
+
+msgid "nav_license"
+msgstr "Llicència"
+
+msgid "nav_glossary"
+msgstr "Glossari"
+
+msgid "nav_setup"
+msgstr "Instal·lació i configuració"
+
+msgid "nav_upgrade"
+msgstr "Guia d'actualització"
+
+msgid "nav_config"
+msgstr "Paràmetres de configuració"
+
+msgid "nav_extra"
+msgstr "Seccions addicionals"
+
+msgid "nav_tools"
+msgstr "Altres eines"
+
+msgid "nav_faq"
+msgstr "PMF"
+
+msgid "nav_security"
+msgstr "Consells de seguretat"
+
+msgid "nav_compare"
+msgstr "Comparació"
+
+msgid "nav_benchmark"
+msgstr "Benchmark"
+
+msgid "nav_webmin"
+msgstr "Mòdul Webmin"
+
+msgid "nav_dolibarr"
+msgstr "Mòdul Dolibarr"
+
+msgid "nav_contrib"
+msgstr "Recursos de col·laboració"
+
+msgid "nav_plugins"
+msgstr "Desenvolupament de plugins"
+
+msgid "nav_hooks"
+msgstr "Hooks de plugins"
+
+msgid "nav_graphs"
+msgstr "Gràfics de plugins"
+
+msgid "Back to top"
+msgstr "Torna a dalt"
+
+msgid "nav_select_month"
+msgstr "Selecciona mes"
+
+#------------------------------------------------------------------------------
+# Mètriques principals
+#------------------------------------------------------------------------------
+
+# Visites
+msgid "Unique visitors"
+msgstr "Visitants únics"
+
+msgid "Visits"
+msgstr "Visites"
+
+msgid "Visits duration"
+msgstr "Durada de les visites"
+
+msgid "First visit"
+msgstr "Primera actualització"
+
+msgid "Last visit"
+msgstr "Darrera actualització"
+
+msgid "Visits/Visitor"
+msgstr "Visites/Visitant"
+
+msgid "Pages/Visit"
+msgstr "Pàgines/Visita"
+
+msgid "Hits/Visit"
+msgstr "Sol·licituds/Visita"
+
+msgid "KB/Visit"
+msgstr "KB/Visita"
+
+msgid "KB/Visits"
+msgstr "KB/Visites"
+
+# Trànsit
+msgid "Pages"
+msgstr "Pàgines"
+
+msgid "Hits"
+msgstr "Sol·licituds"
+
+msgid "Bandwidth"
+msgstr "Ample de banda"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "s"
+
+msgid "unit_min"
+msgstr "min"
+
+msgid "unit_h"
+msgstr "h"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "Tipus de dispositiu"
+
+msgid "Device Type"
+msgstr "Tipus de dispositiu"
+
+# Noms dels tipus de dispositiu
+msgid "Mobile"
+msgstr "Mòbil"
+
+msgid "Pause & Go"
+msgstr "Pausa i continua"
+
+msgid "Complete"
+msgstr "Complet"
+
+msgid "Tablet"
+msgstr "Tauleta"
+
+msgid "Tv"
+msgstr "Televisió"
+
+msgid "Wearable"
+msgstr "Dispositiu portable"
+
+msgid "Bot"
+msgstr "Bot"
+
+msgid "Desktop"
+msgstr "Ordinador de sobretaula"
+
+msgid "Normal browsing traffic"
+msgstr "Trànsit de navegació normal"
+
+msgid "Abnormal browsing traffic"
+msgstr "Trànsit de navegació anormal"
+
+msgid "Viewed"
+msgstr "Visualitzat"
+
+msgid "Not viewed"
+msgstr "No visualitzat"
+
+msgid "Abnormal browsing traffic note"
+msgstr "El trànsit de navegació anormal inclou: robots de cerca, bots d'entrenament d'IA, escanejadors de vulnerabilitats i sol·licituds que no compleixen les especificacions HTTP/HTTPS"
+
+# Fitxers
+msgid "File size"
+msgstr "Mida del fitxer"
+
+msgid "File type"
+msgstr "Tipus de fitxer"
+
+msgid "Downloads"
+msgstr "Descàrregues"
+
+msgid "Request time"
+msgstr "Temps de sol·licitud"
+
+msgid "Total requests"
+msgstr "Total de sol·licituds"
+
+msgid "Frequency"
+msgstr "Freqüència"
+
+msgid "Average frequency"
+msgstr "Freqüència mitjana"
+
+msgid "Seconds"
+msgstr "Segons"
+
+# Correu electrònic (per a LogType eq 'M')
+msgid "First"
+msgstr "Primer"
+
+msgid "Mails"
+msgstr "Correus"
+
+msgid "Size"
+msgstr "Mida"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "Avís: Si elimineu aquest fitxer, totes les estadístiques per a la data"
+
+msgid "will be lost/reset."
+msgstr "es perdran/reiniciaran permanentment."
+
+msgid "Last config file used to build this data file was"
+msgstr "L'últim fitxer de configuració utilitzat per crear aquest fitxer de dades va ser"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "La secció MAP d'aquest fitxer registra les posicions de desplaçament en bytes per a l'inici de cada secció perquè"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats pugui accedir ràpidament a les dades. Si heu fet canvis manuals en qualsevol lloc d'aquest fitxer, hauríeu"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "d'eliminar completament la secció MAP (AWStats la reescriurà en la propera actualització)."
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = Data de l'últim registre processat - Número de línia de l'últim registre a l'últim log - Desplaçament de l'últim registre a l'últim log - Valor de la signatura de l'últim registre"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = Data de la primera visita per al fitxer d'historial"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = Data de l'última visita per al fitxer d'historial"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = Data de l'última actualització - Nombre de registres processats - Nombre de registres antics processats - Nombre de registres nous processats - Nombre de registres malmesos - Nombre de registres descartats"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = Nombre de visites"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = Nombre de visitants únics"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = Nombre d'amfitrions coneguts"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = Nombre d'amfitrions desconeguts"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "ID del clúster - Pàgines - Sol·licituds - Ample de banda"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "Hora - Pàgines - Sol·licituds - Ample de banda - Pàgines no vistes - Sol·licituds no vistes - Ample de banda no vist"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "Data - Pàgines - Sol·licituds - Ample de banda - Visites"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "Domini - Pàgines - Sol·licituds - Ample de banda"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "La pàgina principal només mostra les primeres %s pàgines amb més visualitzacions. Consulteu la llista completa a la pàgina de detalls."
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "Amfitrió - Pàgines - Sol·licituds - Ample de banda - Data de l'última visita - [Data d'inici de l'última visita] - [Última pàgina de l'última visita]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[Data d'inici de l'última visita] i [Última pàgina de l'última visita] només es guarden si la sessió no ha finalitzat"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "La pàgina principal només mostra les primeres %s entrades amb més sol·licituds. Consulteu la llista completa a la pàgina de detalls."
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "Usuari autenticat - Pàgines - Sol·licituds - Ample de banda - Hora de l'última visita"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "ID del robot - Sol·licituds - Ample de banda - Hora de l'última visita - Sol·licituds a robots.txt"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "ID del cuc - Sol·licituds - Ample de banda - Hora de l'última visita"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "Correu electrònic - Sol·licituds - Ample de banda - Hora de l'última visita"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "La pàgina principal només mostra les primeres %s sol·licituds de correu electrònic. Consulteu la llista completa a la pàgina de detalls."
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - Pàgines - Ample de banda - Entrada - Sortida"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "Tipus de fitxer - Sol·licituds - Ample de banda - Ample de banda sense compressió - Ample de banda després de la compressió"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "Rang de temps de sol·licitud - Freqüència de temps de sol·licitud"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "Rang de mida de fitxer - Nombre de fitxers"
+
+msgid "Session range - Number of visits"
+msgstr "Rang de durada de sessió - Nombre de visites"
+
+msgid "URL with %s errors - Hits"
+msgstr "URL amb %s errors - Sol·licituds"
+
+msgid "Last URL referrer"
+msgstr "Darrer URL referent"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "Errors - Sol·licituds - Ample de banda"
+
+msgid "Search keywords - Number of search"
+msgstr "Paraules clau - Nombre de cerques"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "La pàgina principal només mostra les %s paraules clau principals (ordenades per nombre de cerques). Consulteu la llista completa a la pàgina de detalls."
+
+msgid "Search keyphrases - Number of search"
+msgstr "Frases clau - Nombre de cerques"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "La pàgina principal només mostra les %s frases clau principals (ordenades per nombre de cerques). Consulteu la llista completa a la pàgina de detalls."
+
+msgid "External page referers - Pages - Hits"
+msgstr "Referents externs - Pàgines - Sol·licituds"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "La pàgina principal només mostra els %s referents externs principals (ordenats per nombre de pàgines). Consulteu la llista completa a la pàgina de detalls."
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "ID del referent del cercador - Pàgines - Sol·licituds"
+
+msgid "Origin - Pages - Hits"
+msgstr "Origen - Pàgines - Sol·licituds"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "Navegador referent desconegut - Data de l'última visita"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "SO referent desconegut - Data de l'última visita"
+
+msgid "Screen size - Hits"
+msgstr "Resolució de pantalla - Sol·licituds"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ID del navegador - Clics - Pàgines"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "Descàrregues - Sol·licituds - Ample de banda"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "Protocol - Sol·licituds - Ample de banda"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "Estat de la icona - Tipus:200:404:Altres"
+
+#------------------------------------------------------------------------------
+# Traduccions dels períodes horaris
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "Mitjanit · L'AWStats està dormint, però tu encara mires les dades? Amor veritable"
+
+msgid "period_01"
+msgstr "1a hora · Visites a aquesta hora? Insomni o acabat de sortir de la feina"
+
+msgid "period_02"
+msgstr "2a hora · Els bots són més treballadors que tu, encara estan funcionant"
+
+msgid "period_03"
+msgstr "3a hora · La ciutat dorm, el servidor fa hores extres, qui està pitjor?"
+
+msgid "period_04"
+msgstr "4a hora · L'estrella més brillant a la foscor, és la teva pantalla o el llum indicador del servidor"
+
+msgid "period_05"
+msgstr "5a hora · L'ocell matiner troba el cuc, el bot matiner recull les dades"
+
+msgid "period_06"
+msgstr "6a hora · Algú es lleva, algú encara no ha dormit, Internet mai tanca"
+
+msgid "period_07"
+msgstr "7a hora · Hora d'apretar-se al metro, també hora de navegar per la web"
+
+msgid "period_08"
+msgstr "8a hora · La primera feina en començar: fes una ullada a les dades d'ahir"
+
+msgid "period_09"
+msgstr "9a hora · L'hora daurada, fins i tot el relax té les seves regles"
+
+msgid "period_10"
+msgstr "10a hora · Hora del cafè, aprofita per veure si ha augmentat el trànsit"
+
+msgid "period_11"
+msgstr "11a hora · Falta una hora per dinar, aguanta una mica més"
+
+msgid "period_12"
+msgstr "Migdia · Servidor: Tots heu anat a dinar, jo descanso una estona"
+
+msgid "period_13"
+msgstr "13a hora · Son postdinar, però les dades no dormen"
+
+msgid "period_14"
+msgstr "14a hora · Hora del berenar, amb dades és més saborós"
+
+msgid "period_15"
+msgstr "15a hora · El gràfic de tendència del trànsit d'avui, s'assembla a la teva corba d'humor?"
+
+msgid "period_16"
+msgstr "16a hora · Falten X hores per acabar la feina, el trànsit comença a córrer"
+
+msgid "period_17"
+msgstr "17a hora · S'ha acabat la feina! Però el servidor continua treballant"
+
+msgid "period_18"
+msgstr "18a hora · Hora de sopar, mira un vídeo per relaxar-te"
+
+msgid "period_19"
+msgstr "19a hora · Horari d'audiència màxima, pics de trànsit, servidor: Aguanto"
+
+msgid "period_20"
+msgstr "20a hora · Arraïnat al sofà, ets el visitant número 114514"
+
+msgid "period_21"
+msgstr "21a hora · De nit, els qui miren dades d'amagat, mussols nocturns +1"
+
+msgid "period_22"
+msgstr "22a hora · Les dades d'aviat sortiran, nerviós?"
+
+msgid "period_23"
+msgstr "23a hora · AWStats: Hora de dormir, demà toca treballar"
+
+#------------------------------------------------------------------------------
+# Dimensions temporals
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "Període estadístic"
+
+msgid "Year"
+msgstr "Any"
+
+msgid "Month"
+msgstr "Mes"
+
+msgid "Months"
+msgstr "Mesos"
+
+msgid "Date"
+msgstr "Data"
+
+msgid "Day"
+msgstr "Dia"
+
+msgid "Hour"
+msgstr "Hora"
+
+msgid "Hours"
+msgstr "Hores"
+
+msgid "Day of week"
+msgstr "Dia de la setmana"
+
+msgid "When"
+msgstr "Quan"
+
+msgid "%s Server Management Panel"
+msgstr "Panell d'Administració de Servidors %s "
+
+msgid "Server Administration"
+msgstr "Solució de servidor senzilla i eficient"
+
+#------------------------------------------------------------------------------
+# Dimensions del visitant
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "Paràmetres d'URL no vàlids"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "No es pot carregar la pàgina sol·licitada a causa de paràmetres d'URL no vàlids o mal formats."
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "Això pot ser causat per escriure una URL incorrecta, separadors de paràmetres que falten o utilitzar un nom de configuració no vàlid."
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "Si us plau, comproveu la URL que heu introduït i assegureu-vos que tots els paràmetres estiguin formats correctament."
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "El paràmetre SiteDomain no està definit al vostre fitxer config/domain, o potser no teniu permís d'execució en el fitxer."
+
+msgid "Please run as Administrator to set permissions"
+msgstr "Executeu com a Administrador per establir els permisos"
+
+msgid "Please set execute permission"
+msgstr "Si us plau, establiu el permís d'execució"
+
+msgid "Or if you prefer numeric mode"
+msgstr "O si preferiu el mode numèric"
+
+msgid "View Report Directly"
+msgstr "Veure l'informe directament"
+
+msgid "AWStats Log Viewer"
+msgstr "Visualitzador de registres AWStats"
+
+msgid "Month Selection"
+msgstr "Selecció de mes"
+
+msgid "Who"
+msgstr "Qui"
+
+msgid "Visitors"
+msgstr "Visitants"
+
+msgid "Countries"
+msgstr "Països/Regions"
+
+msgid "flag_icon"
+msgstr "Bandera"
+
+msgid "Country-Region-City"
+msgstr "País/Regió/Ciutat"
+
+msgid "Code"
+msgstr "Codi"
+
+msgid "Known"
+msgstr "Conegut"
+
+msgid "unknownos"
+msgstr "Sistema operatiu desconegut"
+
+msgid "unknownbrowser"
+msgstr "Navegador desconegut"
+
+msgid "Unresolved IP Address"
+msgstr "Adreça IP no resolta"
+
+msgid "Unknown File Type"
+msgstr "Tipus de fitxer desconegut"
+
+msgid "Unknown Size"
+msgstr "Mida desconeguda"
+
+msgid "Unknown Time"
+msgstr "Temps de sol·licitud desconegut"
+
+msgid "Unknown Browser"
+msgstr "Navegador desconegut"
+
+msgid "Unknown OS"
+msgstr "Sistema operatiu desconegut"
+
+msgid "Unknown Visitor"
+msgstr "Visitant desconegut"
+
+msgid "Unknown Visitor (Total)"
+msgstr "Visitant desconegut (Total)"
+
+msgid "Unknown Country"
+msgstr "País/Regió desconegut"
+
+msgid "Unknown Country (Region)"
+msgstr "País/Regió desconegut (Total)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "Visitant desconegut (Títol)"
+
+msgid "PageStayTime"
+msgstr "No es pot estimar el temps de permanència a la pàgina"
+
+msgid "Unknown OS (Link)"
+msgstr "Sistema operatiu desconegut (enllaç)"
+
+msgid "Unknown OS (Row)"
+msgstr "Sistema operatiu desconegut (llista)"
+
+msgid "Unknown Browser (Link)"
+msgstr "Navegador desconegut (enllaç)"
+
+msgid "Unknown Browser (Row)"
+msgstr "Navegador desconegut (llista)"
+
+msgid "Unknown Screen"
+msgstr "Mida de pantalla desconeguda"
+
+msgid "Login"
+msgstr "Nom d'usuari"
+
+msgid "Anonymous"
+msgstr "Anònim"
+
+msgid "Robots"
+msgstr "Robots"
+
+msgid "Different robots"
+msgstr "Robots diferents"
+
+msgid "Hits on robots.txt"
+msgstr "Els robots dels cercadors esmentats anteriorment generen un trànsit de navegació \"anormal\" que no està inclòs en altres gràfics. El número després del '+' és el nombre d'accés correcte al fitxer \"robots.txt\"."
+
+msgid "Worms"
+msgstr "Cucs"
+
+msgid "Different worms"
+msgstr "Cucs diferents"
+
+msgid "Target"
+msgstr "Objectiu"
+
+msgid "Grabber"
+msgstr "Eina de captura"
+
+#------------------------------------------------------------------------------
+# Descripcions de formats
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "Fitxer de text (estandardització ASCII el 1963, text sense format). Base de tot el codi font, configuracions, registres. Unix utilitza LF, Windows utilitza CRLF per al salt de línia, encara avui el format de dades més comú en informàtica)"
+
+msgid "mime_log"
+msgstr "Fitxer de registre (log) (fitxer de text simple que registra informació del sistema i de l'execució d'aplicacions, s'utilitza per a resolució de problemes, anàlisi de rendiment, auditoria de seguretat. Formats estàndard com Apache combined log, Nginx access log, syslog, etc.)"
+
+msgid "mime_page"
+msgstr "Pàgina HTML (Tim Berners-Lee va inventar la World Wide Web el 1989, va definir les tres tecnologies HTML/HTTP/URL el 1990, les va oferir gratuïtament sense patent. El 2014 HTML5 es va convertir en l'estàndard oficial de la W3C, amb suport per a visualització, multimèdia i impressió. Guardonat amb el premi Turing el 2016)"
+
+msgid "mime_khtml"
+msgstr "Motor de pàgines web KHTML (publicat amb KDE 2.0 el 1998, motor de renderització del navegador Konqueror. Apple va crear WebKit basat en KHTML el 2001, Google va crear Blink a partir de WebKit el 2008, convertint-se en el nucli de navegadors com Chrome, Edge, Safari. KHTML és un exemple de com la comunitat de codi obert va establir les bases dels motors de navegador moderns, el seu llegat tecnològic continua a través de WebKit/Blink)"
+
+msgid "mime_script"
+msgstr "Script dinàmic (llenguatge interpretat, no requereix compilació. Inclou ASP, JSP, CGI, ColdFusion, Tcl, VBScript, etc., àmpliament utilitzat en el desenvolupament web inicial, administració de sistemes, tasques automatitzades. Llenguatges script moderns com Python, Ruby, JavaScript han evolucionat fins a convertir-se en els principals llenguatges per al desenvolupament full-stack)"
+
+msgid "mime_js"
+msgstr "Script JavaScript (Brendan Eich el va crear en 10 dies a Netscape el 1995, llenguatge de programació natiu del navegador. ECMAScript es va estandarditzar el 1997, el naixement de Node.js el 2009 el va convertir en un llenguatge full-stack, npm és el gestor de paquets més gran del món. Durant anys, el llenguatge de programació més popular a GitHub)"
+
+msgid "mime_py"
+msgstr "Script Python (creat per Guido van Rossum el 1991, conegut per la sagnia forçada i la sintaxi senzilla. Àmpliament utilitzat en desenvolupament web, ciència de dades, intel·ligència artificial, operacions automatitzades. Guanyador múltiple del premi TIOBE al llenguatge de programació de l'any)"
+
+msgid "mime_sh"
+msgstr "Script Shell (naixement d'Unix el 1971, llenguatge de script per a comandes. S'utilitza per a l'administració de sistemes, tasques automatitzades, inici de serveis, scripts de desplegament. Habilitat essencial per a l'administració de Linux)"
+
+msgid "mime_rb"
+msgstr "Script Ruby (creat per Yukihiro Matsumoto el 1995, centrat en la felicitat del desenvolupador. El marc Ruby on Rails va iniciar la paradigma 'convenció sobre configuració', influint en el disseny dels marcs web moderns)"
+
+msgid "mime_pl"
+msgstr "Script Perl (creat per Larry Wall el 1987, conegut pel seu pragmatisme, anomenat 'navalla suïssa'. CPAN va ser el pioner dels gestors de paquets de llenguatges moderns, amb una profunda influència en el processament de text, l'administració de sistemes i el CGI)"
+
+msgid "mime_php"
+msgstr "Pàgina web dinàmica PHP (creada per Rasmus Lerdorf el 1995, dissenyada específicament per al desenvolupament web. Més del 70% dels llocs web del món l'utilitzen, impulsant plataformes com WordPress, Facebook, Wikipedia. PHP 8 introdueix compilació JIT, millorant significativament el rendiment)"
+
+msgid "mime_image"
+msgstr "Fitxer d'imatge"
+
+msgid "mime_document"
+msgstr "Fitxer de document"
+
+msgid "mime_package"
+msgstr "Paquet de programari"
+
+msgid "mime_archive"
+msgstr "Fitxer comprimit Gzip (projecte GNU de 1992, basat en l'algorisme DEFLATE. S'utilitza al web per a la compressió dinàmica del contingut de resposta, la taxa de compressió sol ser del 60-90%. Després del 2015, en alguns escenaris ha estat substituït per Brotli, però continua sent el format de compressió més àmpliament compatible al costat del servidor)"
+
+msgid "mime_audio"
+msgstr "Fitxer d'àudio"
+
+msgid "mime_video"
+msgstr "Fitxer de vídeo"
+
+msgid "mime_jscript"
+msgstr "JavaScript (desenvolupat per Brendan Eich el 1995)"
+
+msgid "mime_json"
+msgstr "Dades JSON (proposat per Douglas Crockford el 2001, format lleuger d'intercanvi de dades, estàndard de fet per a les API web)"
+
+msgid "mime_vbs"
+msgstr "VBScript (desenvolupat per Microsoft el 1996, llenguatge script de Windows, utilitzat per a pàgines web ASP i scripts d'administració de Windows. Amb la popularització de PowerShell i JavaScript, està en desús)"
+
+msgid "mime_conf"
+msgstr "Fitxer de configuració (emmagatzema la configuració del programari en format de text, formats habituals: INI, JSON, YAML, TOML, XML. La configuració del sistema Linux es troba principalment al directori /etc)"
+
+msgid "mime_css"
+msgstr "Full d'estil CSS (la W3C va publicar el primer estàndard oficial CSS1 el desembre de 1996, CSS2 va afegir posicionament i tipus de mitjans el 1998, a partir del 2011 CSS3 modular va introduir cantonades arrodonides, animacions, caixa flexible, disseny de graella i disseny responsiu. Juntament amb HTML i JavaScript, és una de les tres principals tecnologies front-end, tots els navegadors moderns (Chrome, Firefox, Safari, Edge) el suporten de manera nativa, és l'únic estàndard per definir l'estil de les pàgines web)"
+
+msgid "mime_xsl"
+msgstr "Full d'estil XSL (estàndard de la W3C de 1999, llenguatge de transformació de documents XML, pot convertir XML a HTML/PDF/text. El seu ús ha disminuït després de la popularització del JSON)"
+
+msgid "mime_runtime"
+msgstr "Fitxer executable (format executable del sistema operatiu com EXE, ELF, Mach-O, conté codi màquina i informació de càrrega)"
+
+msgid "mime_library"
+msgstr "Fitxer de biblioteca (DLL, SO, dylib, etc., biblioteques enllaçades dinàmicament, codi compartit que el programa carrega durant l'execució)"
+
+msgid "mime_swf"
+msgstr "Animació Flash (Macromedia la va desenvolupar el 1996, posteriorment propietat d'Adobe. Estàndard d'animació web interactiva, va dominar les animacions i jocs d'Internet en el seu moment. Inconvenients: requereix un connector, no compatible amb dispositius mòbils, alt risc de seguretat. Adobe va anunciar la seva retirada el 2017, va suspendre completament el suport el 2020, substituït per HTML5/CSS3/JS)"
+
+msgid "mime_dtd"
+msgstr "DTD (definició de tipus de document) (especificació XML, defineix l'estructura del document XML, s'utilitza per validar la legalitat de l'XML)"
+
+msgid "mime_csv"
+msgstr "Format de dades CSV (valors separats per comes, format comú per a dades tabulars, estàndard per a la importació/exportació d'Excel i bases de dades)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (iniciador d'aplicacions Java, tecnologia de distribució d'aplicacions d'escriptori Java dels anys 2000, actualment en desús)"
+
+msgid "mime_lit"
+msgstr "Llibre electrònic Microsoft Reader (Microsoft el va llançar el 2000, format LIT, en desús)"
+
+msgid "mime_svg"
+msgstr "Gràfic vectorial SVG (estàndard de la W3C de 1999, a causa que Microsoft va promocionar durant molt de temps el seu propi format VML, el navegador IE no el va suportar fins al 2011, cosa que va retardar la seva adopció. Després del 2015, amb la desaparició d'IE i la popularització de les pantalles d'alta resolució, s'ha convertit en el format preferit per a icones i logotips)"
+
+msgid "mime_ai"
+msgstr "Gràfic vectorial Adobe Illustrator (llançat el 1987, format de gràfic vectorial estàndard de la indústria, preferit per al disseny d'impressió, logotips, icones)"
+
+msgid "mime_phshop"
+msgstr "Imatge Photoshop (Adobe la va llançar el 1990, format d'arxiu font de Photoshop PSD, estàndard de la indústria per al processament d'imatges)"
+
+msgid "mime_ttf"
+msgstr "Tipus de lletra TrueType (Apple i Microsoft van desenvolupar conjuntament el 1989, format de font vectorial, la visualització a la pantalla i la impressió són consistents, format de font per defecte dels sistemes operatius moderns)"
+
+msgid "mime_fon"
+msgstr "Font web WOFF2 (recomanat per la W3C el 2014, utilitza l'algorisme de compressió Brotli, en comparació amb l'antic WOFF la mida es redueix un 30%, en comparació amb TTF/OTF es redueix més d'un 50%, actualment tots els navegadors moderns el suporten, és el format preferit per a les fonts web modernes, compatible amb més del 98% dels navegadors)"
+
+msgid "mime_pdf"
+msgstr "Document PDF (Adobe el va desenvolupar el 1993, es va convertir en estàndard ISO el 2008. Format de document multiplataforma, manté la consistència del format, és l'estàndard global per a la distribució de documents electrònics)"
+
+msgid "mime_dotnet"
+msgstr "Pàgina dinàmica ASP.NET (Microsoft la va llançar el 2002, tecnologia de pàgines web dinàmiques a la plataforma Windows, part de .NET Framework)"
+
+msgid "mime_mdb"
+msgstr "Base de dades Access (fitxer de base de dades de Microsoft Access, llançat el 1992, solució de base de dades d'escriptori per a Windows)"
+
+msgid "mime_md"
+msgstr "Document Markdown (creat per John Gruber el 2004, el disseny de la sintaxi va estar influït per reStructuredText i Setext. La filosofia de disseny principal és 'llegible significa renderitzable', la implementació original Markdown.pl utilitza expressions regulars de Perl. Les especificacions derivades inclouen GFM (2013), CommonMark (2017), Pandoc Markdown, etc. Impulsa ecosistemes com GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, convertint-se en el format estàndard de fet per als generadors de llocs estàtics i la documentació per a desenvolupadors)"
+
+msgid "mime_crystal"
+msgstr "Format d'informe Crystal Reports (informes d'intel·ligència empresarial de SAP, format estàndard per a informes empresarials)"
+
+msgid "mime_libreoffice"
+msgstr "Document LibreOffice (The Document Foundation el va desenvolupar el 2010, branca d'OpenOffice, implementació de l'estàndard ODF, principal paquet ofimàtic de codi obert)"
+
+msgid "mime_encrypt"
+msgstr "Fitxer xifrat (cal desxifrar-lo per veure'l, extensions habituals: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "Dades de trajecte GPS (format d'intercanvi de GPS, registra informació geogràfica, format comú per a rellotges esportius i dispositius de navegació)"
+
+msgid "mime_diskimage"
+msgstr "Imatge de disc (fitxers d'imatge de disc/CD-ROM com DMG, ISO, IMG, s'utilitzen per distribuir programari o fer còpies de seguretat de suports d'emmagatzematge)"
+
+msgid "mime_vm"
+msgstr "Imatge de màquina virtual (fitxers de disc virtual com VMDK, VDI, VHDX, OVA, formats per a plataformes de virtualització com VMware, VirtualBox, Hyper-V)"
+
+msgid "mime_torrent"
+msgstr "Fitxer torrent BitTorrent (Bram Cohen el va inventar el 2001, fitxer índex per a descàrregues P2P, conté metadades del fitxer i informació del Tracker)"
+
+msgid "mime_gis"
+msgstr "Dades del sistema d'informació geogràfica GIS (dades geoespacials com Shapefile, GeoJSON, s'utilitzen per a mapes i anàlisi espacial)"
+
+msgid "mime_ebook"
+msgstr "Llibre electrònic (formats de llibre electrònic com EPUB, MOBI, AZW. EPUB és l'estàndard internacional, MOBI/AZW són els formats per a Amazon Kindle)"
+
+msgid "mime_avif"
+msgstr "Imatge AVIF (llançada per l'Alliance for Open Media el 2019, basada en la codificació AV1, la taxa de compressió és un 50% millor que WebP, nou estàndard d'imatges web)"
+
+msgid "mime_markdown"
+msgstr "Document Markdown (dissenyat per John Gruber el 2004, llenguatge de marcatge lleuger, format comú per als README de GitHub, documentació tècnica, missatges de fòrum)"
+
+msgid "mime_yaml"
+msgstr "Configuració YAML (dissenyada per Clark Evans el 2001, format de serialització de dades llegible pels humans, estàndard per a fitxers de configuració de Kubernetes, Ansible, Docker Compose)"
+
+msgid "mime_toml"
+msgstr "Configuració TOML (dissenyada per Tom Preston-Werner el 2013, 'Tom's Obvious Minimal Language', format de fitxer de configuració per a eines modernes com Rust/Cargo, Python/pip, Go)"
+
+msgid "mime_vue"
+msgstr "Fitxer de component Vue (creat el 2014 per Evan You, framework progressiu de JavaScript. Mitjançant components d'un sol fitxer (SFC) combina perfectament HTML, CSS i JS, augmentant enormement l'eficiència del desenvolupament. És un dels frameworks frontend més populars del món. També, com a nucli de generadors de llocs estàtics moderns com VitePress, s'utilitza àmpliament per impulsar documentació tècnica interactiva i blocs.)"
+
+msgid "mime_wasm"
+msgstr "Mòdul WebAssembly (estàndard de la W3C de 2017, format d'execució d'alt rendiment al navegador, C/C++/Rust/R es poden compilar com a objectiu, rendiment proper al natiu)"
+
+msgid "mime_jsx"
+msgstr "Component React JSX (Facebook va llançar JavaScript XML el 2013, sintaxi de component del marc React, paradigma innovador que introdueix HTML a JavaScript)"
+
+msgid "mime_tsx"
+msgstr "Component TypeScript TSX (desenvolupat per Microsoft el 2012, TypeScript + JSX, forma estàndard d'escriptura per al desenvolupament de React amb seguretat de tipus)"
+
+msgid "mime_heif"
+msgstr "Imatge HEIF (estàndard MPEG de 2015, format de fitxer d'imatge d'alta eficiència, àmpliament utilitzat a l'ecosistema d'Apple)"
+
+msgid "mime_heic"
+msgstr "Imatge HEIC (implementació d'Apple de HEIF, format d'imatge per defecte de l'iPhone, compatible de manera nativa amb iOS/macOS)"
+
+msgid "mime_gltf"
+msgstr "Model 3D GLTF (format de transferència GL, 'JPEG del món 3D', publicat per Khronos Group el 2015, format estàndard per al Web 3D)"
+
+msgid "mime_glb"
+msgstr "Model 3D binari GLB (versió binària de GLTF, un sol fitxer conté tots els recursos, s'utilitza per a la distribució d'escenes 3D)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY vocabulari (fitxer de definicions de termes, per a la gestió de termes en sistemes de documentació)"
+
+msgid "mime_cbz"
+msgstr "Llibre de còmics CBZ (imatges de còmic comprimides amb ZIP, format comú per a la col·lecció de còmics)"
+
+msgid "mime_cbr"
+msgstr "Llibre de còmics CBR (imatges de còmic comprimides amb RAR, format comú per a la col·lecció de còmics)"
+
+msgid "mime_fb2"
+msgstr "Llibre electrònic FB2 (FictionBook 2.0, format de llibre electrònic rus, estructura XML, àmpliament compatible amb lectors de codi obert)"
+
+msgid "mime_kepub"
+msgstr "Llibre electrònic KEPUB (format EPUB específic per a Kobo, format optimitzat per al lector de llibres electrònics Kobo)"
+
+msgid "mime_m4b"
+msgstr "Audiollibre M4B (format d'àudio MPEG-4 per a llibres, compatible amb marcadors, format d'audiollibre d'iTunes)"
+
+msgid "mime_kfx"
+msgstr "Format Kindle KFX (Amazon el va llançar el 2015, format específic de llibre electrònic per a Kindle, compatible amb maquetació avançada i pas ràpid de pàgines)"
+
+msgid "mime_chm"
+msgstr "Fitxer d'ajuda CHM (Microsoft el va llançar el 1997, format d'ajuda HTML compilat, estàndard per a la documentació d'ajuda del programari Windows)"
+
+msgid "mime_mht"
+msgstr "Arxiu web MHT (Microsoft el va llançar el 1999, format de pàgina web en un sol fitxer, format per desar pàgines web del navegador IE)"
+
+msgid "mime_wml"
+msgstr "Llenguatge de marcatge sense fil WML (estàndard WAP de 1999, utilitzat per a pàgines web en telèfons mòbils antics, en desús)"
+
+msgid "mime_xhtml"
+msgstr "Pàgina web XHTML (estàndard de la W3C de 2000, versió XML de l'HTML, sintaxi més estricta. La W3C va deixar de mantenir-lo el 2009, centrant-se en HTML5)"
+
+msgid "mime_xml"
+msgstr "Document XML (estàndard de la W3C de 1998, llenguatge de marcatge extensible, format bàsic per a serveis web, fitxers de configuració, intercanvi de dades)"
+
+msgid "mime_sgml"
+msgstr "Document SGML (estàndard ISO de 1986, predecessor de l'HTML, llenguatge de marcatge general estàndard, XML i HTML deriven de SGML)"
+
+msgid "mime_apng"
+msgstr "Animació APNG (Mozilla la va desenvolupar el 2004, extensió d'animació del PNG, alternativa moderna al GIF, compatible amb color real i transparència)"
+
+msgid "mime_bmp"
+msgstr "BMP mapa de bits (format de mapa de bits de Windows, compatible nativament des de Windows 1.0. Sense compressió, mida de fitxer gran, però a causa de l'estructura senzilla i la manca de necessitat de còdecs addicionals, encara s'utilitza a l'eina de retalls de Windows 11, al programa Paint, als recursos d'icones dels paquets d'instal·lació EXE/MSI, als fitxers de cursor i a alguns controladors antics. Amb la mateixa qualitat d'imatge, la mida del fitxer és unes 3-10 vegades més gran que PNG. En la majoria dels casos ha estat substituït per PNG/JPEG, però l'ecosistema de Windows encara manté una àmplia compatibilitat)"
+
+msgid "mime_cdr"
+msgstr "Gràfic vectorial CDR (format específic de CorelDRAW, empresa canadenca Corel, programari de disseny de gràfics vectorials)"
+
+msgid "mime_gif"
+msgstr "Imatge GIF (CompuServe la va desenvolupar el 1987, format d'imatge animada de 256 colors. Inconvenients: pocs colors, qualitat d'imatge grollera, no compatible amb transparència, fitxer gran, baixa freqüència de fotogrames. Substituït per formats d'imatge animada moderns com APNG, WebP)"
+
+msgid "mime_ico"
+msgstr "Icona ICO (format d'icona de Windows, compatible amb múltiples resolucions, format estàndard per a la favicon d'un lloc web)"
+
+msgid "mime_jpeg"
+msgstr "Imatge JPEG (estàndard ISO de 1992, format de compressió amb pèrdua per a fotografies, estàndard de fet per a les fotografies a Internet)"
+
+msgid "mime_jpg"
+msgstr "Imatge JPEG (estàndard ISO de 1992, format de compressió amb pèrdua per a fotografies, estàndard de fet per a les fotografies a Internet)"
+
+msgid "mime_png"
+msgstr "Imatge PNG (recomanada per la W3C el 1996, compatible amb color real i transparència, alternativa estàtica al GIF, estàndard d'imatge sense pèrdua a Internet)"
+
+msgid "mime_ps"
+msgstr "Fitxer de descripció de pàgina PostScript (Adobe el va llançar el 1985, llenguatge de descripció de pàgina, predecessor del PDF, s'utilitza per a la impressió i l'edició)"
+
+msgid "mime_psb"
+msgstr "Document gran PSB (format d'Adobe Photoshop per a imatges extremadament grans, compatible amb imatges gegants de més de 2 GB o 30000 píxels)"
+
+msgid "mime_psd"
+msgstr "Imatge PSD (fitxer original d'Adobe Photoshop, compatible amb capes, canals, trajectes, format estàndard de la indústria per al processament d'imatges)"
+
+msgid "mime_webp"
+msgstr "Imatge WebP (Google la va desenvolupar el 2010, format d'imatge web, compatible amb compressió amb pèrdua/sense pèrdua i animació, la taxa de compressió és un 25-35% millor que PNG i un 25% millor que JPEG)"
+
+msgid "mime_woff"
+msgstr "Font web WOFF (creada el 2009, estàndard de la W3C de 2018. Comprimida basant-se en TrueType/OpenType, optimitzada per a la càrrega de fonts web, format estàndard per a les fonts d'icones dels llocs web moderns)"
+
+msgid "mime_7z"
+msgstr "Paquet comprimit 7z (Igor Pavlov el va desenvolupar el 1999, format específic del programa 7-Zip. Algorisme LZMA, alta taxa de compressió, de codi obert i gratuït. El format 7z és habitualment un 30-50% més petit que ZIP a la mateixa taxa de compressió, format comú per a la comunitat de codi obert i la distribució de programari)"
+
+msgid "mime_ace"
+msgstr "Paquet comprimit ACE (desenvolupat a la dècada de 1990, format del programa WinACE. Va competir amb RAR en el seu moment, la taxa de compressió era bastant alta. El desenvolupament es va aturar el 2007, ara substituït per 7z/RAR, s'utilitza poc)"
+
+msgid "mime_bz2"
+msgstr "Paquet comprimit BZIP2 (Julian Seward el va desenvolupar el 1996, algorisme de compressió per ordenació de blocs. La taxa de compressió és un 15-20% més alta que GZIP però més lent. Format habitual per al codi font del nucli de Linux, paquets de programari de codi obert, extensió .bz2)"
+
+msgid "mime_cab"
+msgstr "Paquet comprimit CAB (Microsoft el va desenvolupar el 1995, format Cabinet. Format de paquet d'instal·lació per a Windows, s'utilitza per a controladors, distribució de fitxers del sistema. Windows Installer (MSI) utilitza internament CAB per emmagatzemar fitxers)"
+
+msgid "mime_dmg"
+msgstr "Imatge de disc DMG (Apple la va llançar a la dècada de 1980, format Disk Image. Format estàndard per a la distribució de programari de macOS, doble clic per muntar com a disc virtual, arrossegar i deixar anar per instal·lar l'aplicació. Compatible amb compressió i xifrat, és el format principal per a la descàrrega de programari per a Mac)"
+
+msgid "mime_emz"
+msgstr "Imatge comprimida EMZ (metafitxer millorat comprimit de Windows, versió comprimida de l'EMF. Format d'emmagatzematge de gràfics vectorials en documents d'Office, essencialment és un fitxer EMF comprimit amb GZIP)"
+
+msgid "mime_gz"
+msgstr "Paquet comprimit GZIP (Jean-loup Gailly i Mark Adler el van desenvolupar el 1992, projecte GNU. Eina de compressió estàndard a Unix/Linux, format habitual per a la compressió de la transferència HTTP. Extensió .gz, sovint s'utilitza juntament amb TAR)"
+
+msgid "mime_jar"
+msgstr "Paquet comprimit JAR (Sun Microsystems el va llançar el 1997, format Java ARchive. Essencialment és un fitxer ZIP, s'utilitza per empaquetar biblioteques i aplicacions Java. Format principal de l'ecosistema Java com Maven, Gradle. Android també utilitza JAR)"
+
+msgid "mime_lzma"
+msgstr "Paquet comprimit LZMA (Igor Pavlov el va desenvolupar el 1998, algorisme Lempel-Ziv-Markov chain. Algorisme de compressió principal del format 7z, alta taxa de compressió, velocitat de descompressió ràpida. S'utilitza per a la distribució de firmware i programari per a sistemes encastats)"
+
+msgid "mime_rar"
+msgstr "Paquet comprimit RAR (Eugene Roshal el va desenvolupar el 1993, format Roshal ARchive. Alta taxa de compressió, compatible amb compressió per volums i registres de recuperació. Format del programa WinRAR, la taxa de compressió és millor que ZIP però requereix programari de pagament, eines de codi obert com unrar poden descomprimir)"
+
+msgid "mime_tar"
+msgstr "Arxiu TAR (Unix V7 el va introduir el 1979, format Tape ARchive. Arxiu de cinta, només empaqueta sense comprimir, sovint s'utilitza juntament amb GZIP/BZIP2/XZ. El codi font dels paquets de Linux, l'emmagatzematge per capes de les imatges de Docker utilitzen el format TAR)"
+
+msgid "mime_tgz"
+msgstr "Paquet comprimit TGZ (format combinat TAR + GZIP, extensió .tgz o .tar.gz. El format més comú per a la distribució de paquets de programari Unix/Linux, paquets de codi font, paquets binaris, àmpliament utilitzat, representant 'descomprimeix i utilitza')"
+
+msgid "mime_tbz2"
+msgstr "Paquet comprimit TBZ2 (format combinat TAR + BZIP2, extensió .tbz2 o .tar.bz2. La taxa de compressió és un 15-20% més alta que TGZ, adequat per a la distribució de fitxers grans, el nucli de Linux ha utilitzat aquest format durant molt de temps)"
+
+msgid "mime_xz"
+msgstr "Paquet comprimit XZ (llançat el 2009, basat en l'algorisme LZMA2. Taxa de compressió extremadament alta, un 30-50% millor que GZIP, velocitat de descompressió relativament ràpida. El nucli de Linux, els gestors de paquets (com dins dels fitxers .deb de Debian) l'utilitzen àmpliament, format recomanat a l'ecosistema Linux actual)"
+
+msgid "mime_z"
+msgstr "Paquet comprimit Z (format de la comanda Unix compress de 1985, algorisme LZW. Format de compressió antic d'Unix, substituït per GZIP. Extensió .Z, s'utilitza poc als sistemes moderns)"
+
+msgid "mime_zip"
+msgstr "Paquet comprimit ZIP (Phil Katz el va desenvolupar el 1989, format PKZIP. Compatible de manera nativa amb Windows, el format de compressió més comú a Internet. Compatible amb múltiples fitxers, estructura de directoris, pot triar l'algorisme de compressió. El JAR de Java, l'APK d'Android, els DOCX/XLSX dels documents d'Office es basen en el format ZIP)"
+
+msgid "mime_zst"
+msgstr "Paquet comprimit Zstandard (Facebook el va desenvolupar el 2015, dissenyat per Yann Collet. Algorisme de compressió d'alta velocitat, taxa de compressió propera a LZMA, velocitat molt superior a GZIP. El nucli de Linux 5.9+ el suporta, Arch Linux pacman, Debian APT l'adopten gradualment, nova generació d'estàndard de compressió)"
+
+msgid "mime_lz4"
+msgstr "Paquet comprimit LZ4 (Yann Collet el va desenvolupar el 2011, algorisme de compressió extremadament ràpid. La velocitat de compressió és més de 10 vegades més ràpida que GZIP, adequat per a escenaris de compressió en temps real. El nucli de Linux, OpenZFS, Hadoop l'utilitzen àmpliament, és la primera opció per a escenaris on la velocitat és prioritària)"
+
+msgid "mime_lzo"
+msgstr "Paquet comprimit LZO (Markus Oberhumer el va desenvolupar el 1996, algorisme Lempel-Ziv-Oberhumer. La velocitat de descompressió és extremadament ràpida, la taxa de compressió és mitjana. El nucli de Linux Squashfs, el firmware d'OpenWrt l'utilitzen, adequat per a sistemes encastats)"
+
+msgid "mime_msi"
+msgstr "Paquet d'instal·lació MSI (Microsoft el va llançar el 1999, format de paquet de Windows Installer. Format estàndard per a la instal·lació d'aplicacions Windows, compatible amb la reversió de transaccions, gestió de components, instal·lació silenciosa. Primera opció per a la distribució de programari a nivell empresarial, encara és el principal per a la instal·lació de programari Windows avui dia)"
+
+msgid "mime_pkg"
+msgstr "Paquet d'instal·lació PKG (format de paquet d'instal·lació d'aplicacions de macOS, basat en la tecnologia Installer d'Apple. Format estàndard per a la distribució de programari de macOS, compatible amb la selecció de components, scripts d'instal·lació, funció de desinstal·lació. Doble clic al fitxer .pkg per instal·lar, mètode de distribució habitual per al programari fora de la Mac App Store)"
+
+msgid "mime_apk"
+msgstr "Paquet d'aplicació Android APK (Google el va llançar el 2008, format d'instal·lació tradicional per a aplicacions Android. APK és essencialment un paquet ZIP que conté codi, recursos i fitxer manifest. A partir del 2021, Google Play requereix que les noves aplicacions utilitzin el format AAB, però APK encara s'utilitza per a depuració, botigues de tercers i instal·lació lateral)"
+
+msgid "mime_ipa"
+msgstr "Paquet d'aplicació iOS IPA (iOS App Store Package, format d'instal·lació per a aplicacions iOS/iPadOS. Llançat el 2008 amb el SDK d'iPhone. S'ha de distribuir a través de l'App Store o signar-se amb un certificat d'empresa. Conté un fitxer executable, recursos, Info.plist i informació de signatura)"
+
+msgid "mime_hap"
+msgstr "Paquet d'aplicació HarmonyOS HAP (HarmonyOS Ability Package, unitat bàsica d'una aplicació HarmonyOS. Llançat el 2020 amb HarmonyOS 2.0. Suporta dos tipus: entry i feature, format de distribució per a telèfons Huawei, tauletes, rellotges intel·ligents i altres dispositius HarmonyOS)"
+
+msgid "mime_har"
+msgstr "Biblioteca compartida estàtica HarmonyOS HAR (HarmonyOS Archive, biblioteca compartida estàtica de HarmonyOS, pot ser compartida per múltiples paquets HAP, utilitzada per al desenvolupament basat en components i la reutilització de mòduls)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (Google el va llançar el 2018, a partir del 2021 Google Play obliga les noves aplicacions a utilitzar aquest format. L'AAB és un format de distribució, Google Play genera APK optimitzats segons la configuració del dispositiu (arquitectura de la CPU, densitat de pantalla, idioma), la mida del paquet es redueix de mitjana un 35%. Els desenvolupadors pugen l'AAB, els usuaris descarreguen l'APK)"
+
+msgid "mime_xapk"
+msgstr "Paquet d'aplicació XAPK (paquet d'extensió d'aplicacions Android de tercers, conté APK + fitxers de dades OBB. S'utilitza per a jocs grans i aplicacions complexes, resol el límit de 100 MB per a un sol fitxer APK. Comú a botigues d'aplicacions de tercers com APKPure, APKMirror, no és un format oficial de Google)"
+
+msgid "mime_appx"
+msgstr "Paquet d'aplicació Windows (Microsoft el va llançar el 2012, format per a la instal·lació d'aplicacions per a Windows 8/10/11. Compatible amb aplicacions UWP i conversió d'aplicacions d'escriptori, es distribueix a través de Microsoft Store. El 2024, Microsoft va llançar MSIX com a format successor, substituint progressivament APPX)"
+
+msgid "mime_msix"
+msgstr "Paquet d'aplicació MSIX (Microsoft el va llançar el 2018, nova generació de format per a l'empaquetament d'aplicacions Windows. Combina els avantatges d'APPX i MSI, compatible amb tots els tipus d'aplicacions Windows, es pot distribuir a través de Microsoft Store o mitjançant instal·lació lateral, format recomanat per a Windows 11)"
+
+msgid "mime_appimage"
+msgstr "Paquet d'aplicació AppImage (llançat el 2004, format d'aplicació Linux sense instal·lació. 'Una aplicació - un fitxer', s'executa directament sense instal·lació, compatible amb la majoria de distribucions de Linux, mètode habitual perquè els desenvolupadors distribueixin programari Linux)"
+
+msgid "mime_flatpak"
+msgstr "Paquet d'aplicació Flatpak (llançat el 2015, format d'aplicació Linux en entorn restringit (sandbox). Funciona a través de distribucions, aïllat del sistema amfitrió, el desenvolupament està liderat per Fedora i Red Hat, format per defecte del centre de programari GNOME)"
+
+msgid "mime_snap"
+msgstr "Paquet d'aplicació Snap (Canonical el va llançar el 2014, l'empresa matriu d'Ubuntu el va desenvolupar, format d'aplicació Linux universal. Actualització automàtica, aïllament en entorn restringit (sandbox), compatible amb més de 40 distribucions de Linux, format per defecte del centre de programari d'Ubuntu)"
+
+msgid "mime_deb"
+msgstr "Paquet de programari Debian (el projecte Debian el va llançar el 1993, format estàndard per a la instal·lació per a Debian/Ubuntu i les seves derivades. Es gestiona mitjançant dpkg, APT és el seu gestor de paquets frontal, un dels formats de paquet més madurs de l'ecosistema Linux, encara és el principal a la família Debian avui dia)"
+
+msgid "mime_rpm"
+msgstr "Paquet de programari RPM (Red Hat el va llançar el 1997, format estàndard per a distribucions com Red Hat/Fedora/CentOS/SUSE. RPM significa 'Red Hat Package Manager', juntament amb DEB un dels dos principals formats de paquet de Linux, encara és el principal a la família RHEL avui dia)"
+
+msgid "mime_pacman"
+msgstr "Paquet de programari Arch (Arch Linux el va llançar el 2002, format .pkg.tar.zst que utilitza el gestor de paquets pacman. El nucli de les distribucions rolling release d'Arch Linux, conegut per la seva simplicitat i el principi KISS, l'AUR (Arch User Repository) és la seva característica)"
+
+msgid "mime_exe"
+msgstr "Fitxer executable EXE (format executable de programari Windows, abreviatura de 'Executable'. Format executable natiu del sistema operatiu Windows, conté l'estructura PE. Va evolucionar del format MZ de MS-DOS, Windows NT va introduir el format PE (Portable Executable) el 1993 i s'utilitza fins avui. Els paquets d'instal·lació de programari, les aplicacions, les eines del sistema utilitzen aquest format. L'usuari fa doble clic per executar-lo, és el format executable més àmpliament utilitzat al món)"
+
+msgid "mime_dll"
+msgstr "Biblioteca d'enllaç dinàmic DLL (Microsoft la va introduir el 1993, Dynamic Link Library. Biblioteca de codi compartit de Windows, es carrega dinàmicament durant l'execució del programa, estalvia memòria i espai en disc. Els components del sistema, els complements d'aplicacions, els controladors utilitzen el format DLL. Principal mètode d'implementació de l'API de Windows, el problema de l' 'infern de les DLL' es va alleujar en l'era .NET)"
+
+msgid "mime_com"
+msgstr "Fitxer executable COM (format executable de l'era MS-DOS, abreviatura de 'Command'. Estructura de fitxer molt simple, límit de 64KB, principal format abans de Windows 3.x, en desús. Els Windows moderns utilitzen el format EXE, l'extensió COM encara s'utilitza per a alguns fitxers components)"
+
+msgid "mime_aac"
+msgstr "Àudio AAC (estàndard MPEG de 1997, Advanced Audio Coding. Successor del MP3, la qualitat del so és millor que MP3 a la mateixa velocitat de bits, format d'àudio per defecte de YouTube, iTunes, Nintendo Switch)"
+
+msgid "mime_alac"
+msgstr "Àudio ALAC (Apple el va desenvolupar el 2004, Apple Lossless Audio Codec. Format d'Apple sense pèrdua, es va fer de codi obert el 2011, format per defecte per a àudio sense pèrdua a iTunes i Apple Music)"
+
+msgid "mime_flac"
+msgstr "Àudio FLAC (Xiph.Org Foundation el va desenvolupar el 2001, Free Lossless Audio Codec. Compressió sense pèrdua, qualitat de so igual que el CD, la mida del fitxer és aproximadament la meitat de l'WAV original. De codi obert i sense patents, format preferit per als audiòfils i la col·lecció de música digital)"
+
+msgid "mime_mp3"
+msgstr "Àudio MP3 (Fraunhofer Institute el va desenvolupar el 1993, MPEG-1 Audio Layer 3. Format de compressió amb pèrdua, fitxer petit de qualitat de so acceptable, format principal de la revolució de la música digital dels anys 2000, responsable de l'iPod i Napster. Les patents van expirar el 2017, va passar a ser de domini públic)"
+
+msgid "mime_oga"
+msgstr "Àudio Ogg Audio (desenvolupat per Xiph.Org Foundation, format d'àudio pur del contenidor Ogg, utilitza codificació Vorbis. De codi obert i sense patents, eficiència de compressió millor que MP3, àmpliament utilitzat en projectes de codi obert)"
+
+msgid "mime_ogg"
+msgstr "Àudio OGG (Xiph.Org Foundation el va desenvolupar el 2000, format Ogg Vorbis. De codi obert i sense patents, eficiència de compressió millor que MP3, el primer Spotify el va utilitzar, àmpliament utilitzat en efectes de so per a jocs)"
+
+msgid "mime_opus"
+msgstr "Àudio Opus (estandarditzat per l'IETF el 2012, format d'àudio de codi obert sense patents, combinació de les tecnologies SILK i CELT, latència molt baixa, la més alta eficiència de compressió, format d'àudio per defecte de WebRTC, WhatsApp, Discord)"
+
+msgid "mime_wav"
+msgstr "Àudio WAV (Microsoft i IBM el van desenvolupar el 1991, format d'àudio natiu de Windows. Codificació PCM sense compressió, qualitat de so sense pèrdua però fitxer molt gran, format estàndard per a l'edició d'àudio professional)"
+
+msgid "mime_wma"
+msgstr "Àudio WMA (Microsoft el va desenvolupar el 1999, Windows Media Audio. Té versions amb pèrdua/sense pèrdua, compatible de manera nativa amb Windows, es va estendre amb Windows Media Player. Ara està marginalitzat, substituït per MP3/AAC)"
+
+msgid "mime_dsf"
+msgstr "Àudio DSF (format Direct Stream Digital, desenvolupat per Sony i Philips. Alta freqüència de mostreig d'1 bit, format d'àudio DSD estàndard, versió digital del SACD, format d'àudio d'alta qualitat per a audiòfils, fitxer molt gran)"
+
+msgid "mime_ape"
+msgstr "Àudio APE (desenvolupat per Monkey's Audio el 2000, format de compressió sense pèrdua. Compressió més alta que FLAC però codificació més lenta, encara s'utilitza a la plataforma Windows i entre els entusiastes de l'àudio)"
+
+msgid "mime_mid"
+msgstr "Àudio MIDI (l'Associació MIDI el va establir el 1983, Musical Instrument Digital Interface. Format de partitura musical, no un enregistrament, fitxer molt petit, estàndard per a instruments electrònics, tons de trucada del telèfon, efectes de so en jocs. General MIDI es va estandarditzar el 1991, definint 128 instruments)"
+
+msgid "mime_m4a"
+msgstr "Àudio M4A (MPEG-4 Audio, format contenidor d'AAC. Format estàndard de la botiga de música d'iTunes, format d'àudio principal a l'ecosistema d'Apple, compatible amb la protecció DRM)"
+
+msgid "mime_m3u"
+msgstr "Llista de reproducció M3U (format de llista de reproducció d'URL de MP3, fitxer de text simple, registra les rutes dels fitxers d'àudio. Estàndard de l'era Winamp, s'utilitza per a ràdio per Internet, transmissió de música en línia. M3U8 és la seva versió UTF-8, s'utilitza per a HTTP Live Streaming)"
+
+msgid "mime_asf"
+msgstr "Streaming ASF (Microsoft el va desenvolupar el 1996, Advanced Systems Format. Contenidor de streaming de Windows Media, compatible amb la transmissió síncrona d'àudio i vídeo. S'utilitza per a emissions en directe per Internet i vídeo sota demanda, WMA/WMV es basen en el contenidor ASF)"
+
+msgid "mime_avi"
+msgstr "Vídeo AVI (Microsoft el va llançar el 1992, primer estàndard de vídeo de Windows. 'Audio Video Interleave', alterna àudio i vídeo, va ser el format de vídeo més popular dels anys 1990-2000, ara substituït per MP4/MKV)"
+
+msgid "mime_divx"
+msgstr "Vídeo DivX (DivX Corporation el va desenvolupar el 1998, format de còdec de vídeo basat en MPEG-4. Principal format per a la compartició de vídeo en línia dels anys 2000, primera tecnologia que va comprimir la qualitat de DVD a la mida d'un CD. A causa de controvèrsies sobre drets d'autor, més tard es va transformar en un codificador comercial)"
+
+msgid "mime_mp4"
+msgstr "Vídeo MP4 (estàndard MPEG de 2001, MPEG-4 Part 14. El format de vídeo més comú del món, compatible amb la codificació H.264/H.265, format per defecte per a vídeo per Internet, enregistrament amb telèfon mòbil, YouTube)"
+
+msgid "mime_m4v"
+msgstr "Vídeo M4V (format de vídeo d'iTunes, variant d'MP4. Format de vídeo a l'ecosistema d'Apple, format estàndard per a pel·lícules i programes de televisió a la botiga d'iTunes, compatible amb la protecció DRM dels drets d'autor)"
+
+msgid "mime_mpeg"
+msgstr "Vídeo MPEG (l'organització MPEG el va establir el 1988, Moving Picture Experts Group. Va establir les bases dels estàndards de compressió de vídeo digital, MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (vídeo en línia) tenen una profunda influència)"
+
+msgid "mime_mkv"
+msgstr "Vídeo MKV (el projecte Matroska el va desenvolupar el 2002, contenidor multimèdia de codi obert. Compatible amb múltiples pistes d'àudio, múltiples subtítols, capítols, 'eina d'embolcall', format preferit per a la compartició de pel·lícules d'alta resolució)"
+
+msgid "mime_mpg"
+msgstr "Vídeo MPEG (extensions de vídeo MPEG-1/MPEG-2, format estàndard per a VCD i DVD. Principal format de vídeo en disc dels anys 1990-2000, ara substituït per H.264/H.265)"
+
+msgid "mime_ogv"
+msgstr "Vídeo Ogg Video (desenvolupat per Xiph.Org Foundation, format de vídeo del contenidor Ogg, utilitza codificació Theora. De codi obert i sense patents, un dels primers estàndards per a vídeo HTML5, Firefox el suporta de manera nativa)"
+
+msgid "mime_ogx"
+msgstr "Contenidor multimèdia Ogg (desenvolupat per Xiph.Org Foundation, extensió general del contenidor Ogg, pot contenir múltiples pistes com àudio, vídeo, subtítols. Estàndard multimèdia de codi obert, s'utilitza per a jocs, transmissions)"
+
+msgid "mime_rm"
+msgstr "Vídeo RealMedia (RealNetworks el va desenvolupar el 1995, format RealMedia. Pioner de la transmissió en línia dels anys 1990-2000, format principal del reproductor RealPlayer. Inconvenients: requereix un reproductor específic, mala qualitat de compressió, posteriorment substituït per Flash/MP4)"
+
+msgid "mime_flv"
+msgstr "Vídeo Flash (el format va aparèixer el 2002, format Flash Video. Va ser el format principal de vídeo en línia. El primer YouTube el va utilitzar. Inconvenients: necessitat del connector Flash, baix rendiment, moltes vulnerabilitats de seguretat. A partir del 2015, els principals llocs web van passar a vídeo HTML5, ara està obsolet)"
+
+msgid "mime_f4v"
+msgstr "Vídeo F4V (format de vídeo Flash desenvolupat per Adobe, successor del FLV. Basat en l'estàndard MPEG-4, compatible amb la codificació H.264. Obsolet juntament amb la tecnologia Flash, Adobe va suspendre el suport el 2020)"
+
+msgid "mime_wmv"
+msgstr "Vídeo WMV (Microsoft el va desenvolupar el 1999, Windows Media Video. Compatible de manera nativa amb Windows, optimitzat per a la transmissió, va ser un format habitual en el vídeo en línia primerenc, ara està marginalitzat)"
+
+msgid "mime_wmf"
+msgstr "Format multimèdia WMF (Windows Media Format, marc multimèdia de Microsoft, inclou vídeo WMV, àudio WMA, compatible de manera nativa amb Windows Media Player)"
+
+msgid "mime_mov"
+msgstr "Vídeo MOV (Apple el va desenvolupar el 1991, format contenidor QuickTime. Format estàndard per a l'edició professional de vídeo, compatible amb múltiples còdecs, compatible de manera nativa amb Final Cut Pro, Premiere)"
+
+msgid "mime_qt"
+msgstr "Vídeo QuickTime (Apple el va llançar el 1991, format QuickTime. Estàndard de vídeo a la plataforma Mac, MOV és el seu contenidor, el reproductor QuickTime va ser àmpliament utilitzat. Apple va suspendre el desenvolupament de la versió Windows el 2016, substituint-lo progressivament per MP4)"
+
+msgid "mime_webm"
+msgstr "Vídeo WebM (Google el va llançar el 2010, format de vídeo de codi obert sense patents. Basat en el contenidor Matroska, codificació VP8/VP9, format estàndard de vídeo HTML5, format per defecte per a la reproducció a YouTube al web)"
+
+msgid "mime_3gp"
+msgstr "Vídeo 3GP (3GPP el va establir el 2000, format de vídeo per a dispositius mòbils. Fitxer molt petit, qualitat baixa, format per a l'enregistrament de vídeo en telèfons mòbils antics, s'utilitzava per a l'enviament de MMS)"
+
+#------------------------------------------------------------------------------
+# Dimensions tècniques
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "Sistemes operatius"
+
+msgid "Top 5 Operating Systems"
+msgstr "Top 5 sistemes operatius"
+
+msgid "Unknown Robot"
+msgstr "Client desconegut"
+
+msgid "User agent"
+msgstr "Agent d'usuari"
+
+msgid "Browsers"
+msgstr "Navegadors"
+
+msgid "Top 5 Browsers"
+msgstr "Top 5 navegadors"
+
+msgid "Unknown Robot RH"
+msgstr "Capçalera de sol·licitud desconeguda"
+
+msgid "Detailed"
+msgstr "Versió del dispositiu que accedeix"
+
+msgid "DetailedOS"
+msgstr "Versió del sistema operatiu"
+
+msgid "DetailedBS"
+msgstr "Versió del navegador"
+
+msgid "Screen sizes"
+msgstr "Mides de pantalla"
+
+msgid "Compression"
+msgstr "Compressió"
+
+msgid "In"
+msgstr "Entrada"
+
+msgid "Out"
+msgstr "Sortida"
+
+msgid "Saved"
+msgstr "Estalviat"
+
+#------------------------------------------------------------------------------
+# Dimensions d'origen
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "Origen"
+
+msgid "Referers"
+msgstr "Referents"
+
+msgid "meta.description"
+msgstr "AWStats analitzador avançat de registres web - supervisió del trànsit del lloc web en temps real, anàlisi de visitants, paraules clau dels cercadors, estadístiques de pàgines d'error. Compatible amb el mode fosc, interfície multilingüe, proporciona una anàlisi completa de dades per als administradors de llocs web."
+
+msgid "meta.keywords"
+msgstr "AWStats,estadístiques web,anàlisi de registres,supervisió de trànsit,estadístiques d'accés,anàlisi SEO,eina d'anàlisi web,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - Anàlisi de registres web"
+
+msgid "og.description"
+msgstr "📊 Eina professional d'estadístiques web de codi obert, analitza el trànsit del vostre lloc web i el comportament dels visitants en temps real."
+
+msgid "og.image.alt"
+msgstr "Gràfics estadístics d'AWStats"
+
+msgid "Created by"
+msgstr "Creat per %s"
+
+msgid "plugins"
+msgstr "complements"
+
+msgid "dbip by"
+msgstr "dades de"
+
+msgid "IPDB by"
+msgstr "dades d'ubicació geogràfica proporcionades per DB-IP"
+
+# Estat de salut
+msgid "Configured"
+msgstr "Configurat"
+
+msgid "Missing"
+msgstr "Falta"
+
+msgid "OK"
+msgstr "Correcte"
+
+msgid "Unused"
+msgstr "No utilitzat"
+
+# Altres
+msgid "Overall Health"
+msgstr "Salut general"
+
+msgid "Excellent"
+msgstr "Excel·lent"
+
+msgid "Good"
+msgstr "Bé"
+
+msgid "Fair"
+msgstr "Regular"
+
+msgid "Poor"
+msgstr "Dolent"
+
+msgid "Missing icon types"
+msgstr "Tipus d'icones que falten"
+
+msgid "See"
+msgstr "Vegeu detalls"
+
+msgid "Expected Path"
+msgstr "Descripció del camí"
+
+msgid "column for file locations"
+msgstr "columna per obtenir les ubicacions dels fitxers"
+
+# Suggeriment
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "Consell: Si necessiteu generar icones relacionades, podeu utilitzar %s per carregar una imatge de logotip, i generarà automàticament tots els fitxers d'icones relacionats anteriors"
+
+msgid "200: success, 404: failure"
+msgstr "200 és el nombre d'èxits, 404 és el nombre de fracassos"
+
+# Camins esperats
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png o /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg o /logo.png (cal referenciar-lo a HTML/JSON-LD)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest o /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg, etc."
+
+# Noms dels tipus d'icones
+msgid "Favicon"
+msgstr "Icona del lloc web"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "Icona Apple Touch (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "Logotip del lloc"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "Fitxer manifest de l'aplicació web (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "Configuració del navegador Windows"
+
+msgid "Safari Pinned Tab"
+msgstr "Icona de la pestanya fixada al Safari"
+
+msgid "Social Icon"
+msgstr "Icona de xarxes socials"
+
+# Capçaleres
+msgid "Icon Files Status"
+msgstr "Estat dels fitxers d'icones"
+
+msgid "Icon Type"
+msgstr "Tipus d'icona"
+
+msgid "Advanced Web Statistics"
+msgstr "Analitzador avançat de registres"
+
+msgid "Advanced Web Statistics %s"
+msgstr "Analitzador avançat de registres %s"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "El vostre navegador no és compatible amb marcs. Si us plau, utilitzeu un navegador modern."
+
+msgid "View statistics directly"
+msgstr "Visualització directa de les estadístiques"
+
+msgid "Close"
+msgstr "Tanca"
+
+msgid "Documentation Viewer"
+msgstr "Visor de documentació"
+
+msgid "Direct address / Bookmarks"
+msgstr "Adreça directa / Adreces d'interès"
+
+msgid "Search Engines"
+msgstr "Cercadors"
+
+msgid "Refering search engines"
+msgstr "Cercadors que refereixen"
+
+msgid "External pages"
+msgstr "Pàgines externes"
+
+msgid "Refering pages"
+msgstr "Pàgines que refereixen"
+
+msgid "Internal pages"
+msgstr "Pàgines internes"
+
+msgid "UnknownAccessSource"
+msgstr "Font d'accés desconeguda"
+
+msgid "Different refering pages"
+msgstr "Diferents pàgines que refereixen"
+
+msgid "Keyphrases"
+msgstr "Frases clau"
+
+msgid "Keywords"
+msgstr "Paraules clau"
+
+msgid "Keyphrases/Keywords"
+msgstr "Frases clau/Paraules clau"
+
+msgid "Different keyphrases"
+msgstr "Diferents frases clau"
+
+msgid "Different keywords"
+msgstr "Diferents paraules clau"
+
+#------------------------------------------------------------------------------
+# Dimension de pàgina
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "Pàgines vistes"
+
+msgid "Different pages"
+msgstr "Pàgines diferents"
+
+msgid "Entry"
+msgstr "Posició d'entrada"
+
+msgid "Exit"
+msgstr "Posició de sortida"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "Referent"
+
+msgid "Host"
+msgstr "Amfitrió"
+
+#------------------------------------------------------------------------------
+# Errors i estats
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "Error"
+
+msgid "HTTP Status Statistics"
+msgstr "Estadístiques del codi d'estat HTTP"
+
+msgid "SMTP Error codes"
+msgstr "Codis d'error SMTP"
+
+msgid "Page not found"
+msgstr "Pàgina sol·licitada no trobada"
+
+msgid "Unknown error"
+msgstr "Error desconegut"
+
+msgid "Abnormal traffic note"
+msgstr "El trànsit de navegació anormal inclou: robots de cerca, bots d'entrenament d'IA, escanejadors de vulnerabilitats i sol·licituds que no compleixen les especificacions"
+
+msgid "Page detail"
+msgstr "Detalls de la pàgina"
+
+# Detalls del missatge d'error
+msgid "AWStats did not found the"
+msgstr "AWStats no ha trobat el"
+
+msgid "in your log records."
+msgstr "en els vostres registres."
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats no ha trobat cap línia de registre vàlida que coincideixi amb el vostre"
+
+msgid "parameter, in the"
+msgstr "paràmetre, a les"
+
+msgid "th first non commented lines read of your log."
+msgstr "primeres línies no comentades llegides del vostre registre."
+
+msgid "Your log file"
+msgstr "El vostre fitxer de registre"
+
+msgid "must have a bad format or"
+msgstr "probablement té un format incorrecte o"
+
+msgid "parameter setup does not match this format."
+msgstr "la configuració del paràmetre no coincideix amb aquest format."
+
+msgid "Your AWStats"
+msgstr "El vostre AWStats"
+
+msgid "parameter is:"
+msgstr "paràmetre és:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "Això significa que cada línia del vostre fitxer de registre del servidor web ha de contenir:"
+
+msgid "combined log format"
+msgstr "format de registre combinat"
+
+msgid "MSIE Extended W3C log format"
+msgstr "format de registre W3C estès MSIE"
+
+msgid "WebStar native log format"
+msgstr "format de registre natiu WebStar"
+
+msgid "common log format"
+msgstr "format de registre comú"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "el següent format de registre personalitzat:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "I aquest és un exemple dels registres que AWStats ha trobat al vostre fitxer de registre (el número de registre"
+
+msgid "in your log):"
+msgstr "al vostre registre):"
+
+#------------------------------------------------------------------------------
+# Miscel·lània
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "Addicional/Màrqueting"
+
+#------------------------------------------------------------------------------
+# Text de la interfície
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "Lloc actual"
+
+msgid "Web Site"
+msgstr "Lloc web"
+
+msgid "Last Update"
+msgstr "Darrera actualització"
+
+msgid "Never updated"
+msgstr "Mai actualitzat"
+
+msgid "No qualified records found in log"
+msgstr "No s'han trobat registres qualificats al registre"
+
+msgid "corrupted"
+msgstr "corromput"
+
+msgid "comments"
+msgstr "comentaris"
+
+msgid "Blank"
+msgstr "En blanc"
+
+msgid "dropped"
+msgstr "descartat"
+
+msgid "Update now"
+msgstr "Actualitza ara"
+
+msgid "Back to main page"
+msgstr "Torna a la pàgina principal"
+
+msgid "Close window"
+msgstr "Tanca la finestra"
+
+msgid "Back page"
+msgstr "Torna a la pàgina anterior"
+
+msgid "Navigation"
+msgstr "Navegació"
+
+msgid "Summary"
+msgstr "Resum"
+
+msgid "Local"
+msgstr "Local"
+
+msgid "External"
+msgstr "Extern"
+
+msgid "Others (email senders)"
+msgstr "Altres (remitents de correu electrònic)"
+
+msgid "Others (email receivers)"
+msgstr "Altres (destinataris de correu electrònic)"
+
+msgid "Others"
+msgstr "Altres"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "Actualment només es mostren 10 línies de dades del navegador, consulteu la llista completa"
+
+msgid "Others (unknown browsers)"
+msgstr "Altres (navegadors desconeguts)"
+
+msgid "Others (operating systems)"
+msgstr "Altres (sistemes operatius)"
+
+msgid "Others (unknown OS)"
+msgstr "Altres (sistema operatiu desconegut)"
+
+msgid "Others (search engines)"
+msgstr "Altres (cercadors)"
+
+msgid "Others (referring pages)"
+msgstr "Altres (pàgines referents)"
+
+msgid "Others (keyphrases)"
+msgstr "Altres (frases clau)"
+
+msgid "Others (keywords)"
+msgstr "Altres (paraules clau)"
+
+msgid "Only first 10 robots shown"
+msgstr "La llista actual només mostra 10 robots, consulteu la llista completa"
+
+msgid "Failed to obtain access record"
+msgstr "No s'ha pogut obtenir el registre d'entrada"
+
+msgid "Failed to obtain leave record"
+msgstr "No s'ha pogut obtenir el registre de sortida"
+
+msgid "Other pages"
+msgstr "Altres pàgines"
+
+msgid "Low Traffic IP Summary"
+msgstr "Resum d'adreces IP desconegudes de baix trànsit"
+
+msgid "Failed to obtain IP data"
+msgstr "Resum d'altres adreces IP conegudes"
+
+msgid "Failed to obtain the relevant data"
+msgstr "No s'han pogut obtenir les dades rellevants"
+
+msgid "Limited list of countries and regions"
+msgstr "Actualment només es mostren 10 línies, consulteu la llista completa per a més països i regions"
+
+msgid "currentVisitorData"
+msgstr "Actualment només es mostren 10 línies de dades de visitants, consulteu la llista completa"
+
+msgid "Others (robots main)"
+msgstr "Altres (robots)"
+
+msgid "Others (worms)"
+msgstr "Altres (cucs)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "La llista actual només mostra 10 pàgines, consulteu la llista completa"
+
+msgid "Others (OS main)"
+msgstr "Altres (sistema)"
+
+msgid "Others (browsers main)"
+msgstr "Altres (navegadors)"
+
+msgid "Others (screen sizes)"
+msgstr "Altres (mida)"
+
+msgid "Others (search engines main)"
+msgstr "Altres (cercadors)"
+
+msgid "Others (referring pages main)"
+msgstr "Altres (pàgines que refereixen)"
+
+msgid "Others (keyphrases main)"
+msgstr "Altres (frases clau)"
+
+msgid "Others (keywords main)"
+msgstr "Altres (paraules clau)"
+
+# 1xx
+msgid "Continue"
+msgstr "Continua enviant el contingut restant"
+
+msgid "Switching Protocols"
+msgstr "Canviant de protocol"
+
+msgid "Processing (WebDAV)"
+msgstr "Processant (si us plau, espereu)"
+
+msgid "Early Hints"
+msgstr "El servidor està preparant recursos"
+
+# 2xx
+msgid "[Miscellaneous successes]"
+msgstr "Altres estats d'èxit"
+
+msgid "Request successful"
+msgstr "Sol·licitud correcta"
+
+msgid "Created successfully"
+msgstr "Creat correctament"
+
+msgid "Accepted - processing"
+msgstr "Acceptat, processant"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "Informació no autoritativa (des de la memòria cau)"
+
+msgid "Success, no content returned"
+msgstr "Èxit, no s'ha retornat contingut"
+
+msgid "Reset content"
+msgstr "Si us plau, restableix el formulari"
+
+msgid "Partial content (resume download)"
+msgstr "Contingut parcial (admet la represa de la descàrrega)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "Multi-estat (operacions per lots WebDAV)"
+
+msgid "Already reported (WebDAV)"
+msgstr "Ja notificat (evita la duplicació)"
+
+msgid "IM used"
+msgstr "S'ha utilitzat l'extensió de protocol IM"
+
+# 3xx
+msgid "[Miscellaneous redirections]"
+msgstr "Altres redireccions"
+
+msgid "Multiple choices"
+msgstr "Múltiples opcions"
+
+msgid "Moved permanently - update your links"
+msgstr "Mogut permanentment, si us plau, actualitzeu els vostres enllaços"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "Redirecció temporal, l'adreça no canvia"
+
+msgid "See other"
+msgstr "Si us plau, consulteu una altra adreça"
+
+msgid "Not modified - using cached version"
+msgstr "No modificat, s'utilitza la versió emmagatzemada a la memòria cau"
+
+msgid "Use proxy"
+msgstr "Si us plau, utilitzeu un servidor intermediari"
+
+msgid "Switch proxy"
+msgstr "Si us plau, canvieu el servidor intermediari"
+
+msgid "Temporary redirect (keep method)"
+msgstr "Redirecció temporal (conserva el mètode de sol·licitud)"
+
+msgid "Permanent redirect - update your links"
+msgstr "Redirecció permanent, si us plau, actualitzeu els vostres enllaços"
+
+# 4xx
+msgid "[Miscellaneous client/user errors]"
+msgstr "Altres errors del client"
+
+msgid "Bad request"
+msgstr "El format de la sol·licitud és incorrecte"
+
+msgid "Unauthorized - please log in"
+msgstr "No autoritzat, si us plau, inicieu sessió primer"
+
+msgid "Payment required"
+msgstr "Es requereix pagament"
+
+msgid "Forbidden - access denied"
+msgstr "Accés denegat, permisos insuficients"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "La pàgina no existeix, si us plau, comproveu els enllaços trencats"
+
+msgid "Method not allowed"
+msgstr "El mètode de sol·licitud no està permès"
+
+msgid "Not acceptable"
+msgstr "Format de resposta no acceptable"
+
+msgid "Proxy authentication required"
+msgstr "Es requereix autenticació a través del servidor intermediari"
+
+msgid "Request timeout"
+msgstr "Temps d'espera de la sol·licitud esgotat"
+
+msgid "Conflict - please try again"
+msgstr "Conflicte de sol·licitud, si us plau, torneu-ho a provar més tard"
+
+msgid "Gone - permanently deleted"
+msgstr "El recurs s'ha eliminat permanentment"
+
+msgid "Length required"
+msgstr "Cal especificar la longitud del contingut"
+
+msgid "Precondition failed"
+msgstr "No es compleixen les condicions prèvies"
+
+msgid "Payload too large"
+msgstr "El contingut de la sol·licitud és massa gran"
+
+msgid "URI too long"
+msgstr "L'adreça de la sol·licitud és massa llarga"
+
+msgid "Unsupported media type"
+msgstr "El tipus de fitxer no és compatible"
+
+msgid "Range not satisfiable"
+msgstr "L'interval de sol·licitud no és vàlid"
+
+msgid "Expectation failed"
+msgstr "No es pot complir l'expectativa"
+
+msgid "I am a teapot (April Fools)"
+msgstr "Sóc una tetera (broma del dia d'enganyar)"
+
+msgid "Page expired (Laravel)"
+msgstr "La pàgina ha caducat, si us plau, actualitzeu i torneu-ho a provar"
+
+msgid "Method failure (Spring)"
+msgstr "El mètode ha fallat"
+
+msgid "Misdirected request"
+msgstr "La sol·licitud s'ha redirigit incorrectament"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "El format de la sol·licitud és correcte però no es pot processar"
+
+msgid "Locked (WebDAV)"
+msgstr "El recurs està bloquejat"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "L'operació dependent ha fallat"
+
+msgid "Too early"
+msgstr "La sol·licitud s'ha enviat massa aviat"
+
+msgid "Upgrade required"
+msgstr "Cal actualitzar el protocol"
+
+msgid "Precondition required"
+msgstr "Falten les condicions prèvies necessàries"
+
+msgid "Too many requests - slow down"
+msgstr "Les sol·licituds són massa freqüents, si us plau, torneu-ho a provar més tard"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "Els camps de la capçalera de la sol·licitud són massa grans"
+
+msgid "Request header too large"
+msgstr "La capçalera de la sol·licitud és massa gran"
+
+msgid "Login timeout (IIS)"
+msgstr "Temps d'espera d'inici de sessió esgotat, si us plau, torneu a iniciar sessió"
+
+msgid "No response (nginx)"
+msgstr "El servidor no respon"
+
+msgid "Retry with (IIS)"
+msgstr "Si us plau, torneu-ho a provar més tard"
+
+msgid "Blocked by Windows parental controls"
+msgstr "Bloquejat pels controls parentals de Windows"
+
+msgid "Unavailable for legal reasons"
+msgstr "No disponible per raons legals"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "El client ha tancat la connexió abans que expirés el temps d'inactivitat"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "La cadena de reenviament té més de 30 adreces IP"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "Les versions del protocol són incompatibles"
+
+msgid "Request header too large (nginx)"
+msgstr "La capçalera de la sol·licitud és massa gran"
+
+msgid "SSL certificate error (nginx)"
+msgstr "Error del certificat SSL"
+
+msgid "SSL certificate required (nginx)"
+msgstr "Es requereix un certificat SSL"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "S'ha enviat una sol·licitud HTTP al port HTTPS"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "Token invàlid"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "Es requereix un token / El client ha tancat la sol·licitud"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "S'ha assolit el límit de recursos (CPU/memòria)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "S'ha superat el límit d'ample de banda"
+
+# 5xx
+msgid "[Miscellaneous server errors]"
+msgstr "Altres errors del servidor"
+
+msgid "Internal server error - check logs"
+msgstr "Error intern del servidor, si us plau, comproveu els registres"
+
+msgid "Not implemented"
+msgstr "El servidor no és compatible amb aquesta funció"
+
+msgid "Bad gateway - backend error"
+msgstr "Error de passarel·la, el servei backend és anormal"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "Servei no disponible, manteniment o sobrecàrrega"
+
+msgid "Gateway timeout"
+msgstr "Temps d'espera de la passarel·la esgotat"
+
+msgid "HTTP version not supported"
+msgstr "La versió del protocol HTTP no és compatible"
+
+msgid "Variant also negotiates"
+msgstr "La variant també participa en la negociació (error de configuració)"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "Espai d'emmagatzematge insuficient"
+
+msgid "Loop detected (WebDAV)"
+msgstr "S'ha detectat una referència circular"
+
+msgid "Not extended"
+msgstr "Cal una extensió addicional"
+
+msgid "Network authentication required"
+msgstr "Es requereix autenticació de xarxa"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "Error desconegut"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "El servidor web està aturat"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "Temps de connexió esgotat"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "L'origen no està disponible"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "S'ha produït un temps d'espera esgotat"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "L'enllaç SSL ha fallat"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "Certificat SSL invàlid"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Error de Railgun (obsolet)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "El lloc web està sobrecarregat"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "Error DNS d'origen (Cloudflare) / Lloc web congelat (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "Temporalment desactivat"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "No autoritzat"
+
+msgid "Network read timeout error"
+msgstr "Error de temps d'espera de lectura de xarxa"
+
+msgid "Network connect timeout error"
+msgstr "Error de temps d'espera de connexió de xarxa"
+
+msgid "Unexpected token (Shopify)"
+msgstr "Token inesperat"
+
+msgid "Request denied (LinkedIn)"
+msgstr "Sol·licitud denegada"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "Tancament de la connexió HTTP/2"
+
+msgid "[Unknown]"
+msgstr "Codi d'estat desconegut"
+
+# SMTP i correu
+msgid "Nonstandard success response (ESMTP)"
+msgstr "Resposta d'èxit no estàndard (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "Estat del sistema o missatge d'ajuda del sistema"
+
+msgid "Help message"
+msgstr "Missatge d'ajuda"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "Servei SMTP a punt (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "Servei a punt - el servidor de correu està preparat per rebre correus"
+
+msgid "Service closing - connection is being closed"
+msgstr "El servei s'està tancant - la connexió es tancarà"
+
+msgid "Authentication successful"
+msgstr "Autenticació correcta"
+
+msgid "Requested mail action taken and completed"
+msgstr "L'acció de correu sol·licitada s'ha realitzat i completat"
+
+msgid "User not local - will forward to another address"
+msgstr "L'usuari no és local - es reenviarà a una altra adreça"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "No es pot verificar el destinatari, però s'intentarà l'enviament"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "Correu acceptat per a l'enviament (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "El nom d'usuari és una bústia de correu"
+
+msgid "Authentication challenge - please respond"
+msgstr "Repte d'autenticació - si us plau, responeu"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "Començeu l'entrada del contingut del correu - acabeu amb <CRLF>.<CRLF>"
+
+msgid "Continue (LMTP)"
+msgstr "Continua (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "Servei no disponible - la connexió es tancarà, torneu-ho a provar més tard"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "La bústia de correu està ocupada o temporalment no disponible (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "S'ha superat el límit de freqüència de connexió (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "Massa connexions simultànies (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "No es pot establir la connexió (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "Temps de connexió esgotat (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "Connexió interrompuda a causa d'un error (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "Bústia de correu temporalment bloquejada (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "Massa destinataris (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "Error del servidor de correu (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "S'ha detectat un bucle de recepció (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "Massa salts (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "La cerca DNS ha fallat (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "No es pot autenticar (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "L'enllaç TLS ha fallat (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "Violació del protocol SMTP (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "La mida del correu supera el límit (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "S'ha superat el límit de freqüència de correus (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "Quota de la bústia plena - estat temporal"
+
+msgid "Domain not found (Postfix)"
+msgstr "Domini no trobat (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "Capçalera del correu invàlida (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "S'ha detectat un bucle de rebot (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "No es pot encaminar (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "Domini del remitent no trobat (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "Domini del destinatari no trobat (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "Llista grisa en curs - torneu-ho a provar més tard (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "Filtratge de correu brossa en curs (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "Escaneig de virus en curs (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "Bústia de correu no disponible - torneu-ho a provar més tard"
+
+msgid "Requested action aborted - error in processing"
+msgstr "L'acció sol·licitada s'ha avortat - error durant el processament"
+
+msgid "Insufficient system storage - try again later"
+msgstr "Espai d'emmagatzematge del sistema insuficient - torneu-ho a provar més tard"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "Massa correus per a aquest destinatari (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS no disponible (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "El servidor no pot acceptar correus (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "Error temporal en la cerca DNS (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "Quota superada - estat temporal"
+
+msgid "Message too big - temporary"
+msgstr "Correu massa gran - estat temporal"
+
+msgid "Too many messages per connection"
+msgstr "Massa correus per connexió"
+
+msgid "Load average too high (Postfix)"
+msgstr "La càrrega mitjana del sistema és massa alta (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "Connexió denegada (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "S'ha superat el límit de freqüència d'enviament (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "S'ha superat el límit de freqüència del destinatari (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "S'ha superat el límit de freqüència del remitent (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "S'ha superat el límit de freqüència de l'adreça IP (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "La cerca MX ha fallat (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "La cerca del registre A ha fallat (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "La cerca del registre PTR ha fallat (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "Llista grisa activa - torneu-ho a provar més tard (Postgrey)"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "Accés denegat - nom del client SMTP desconegut"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "Accés denegat - domini desconegut per al remitent o destinatari"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "Accés denegat - sintaxi incorrecta per al nom de l'amfitrió HELO del client"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "Accés denegat - nom de l'amfitrió del client SMTP rebutjat"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "Adreça del remitent rebutjada - domini no verificat (DMARC pendent)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "Adreça del destinatari rebutjada - domini no verificat (DMARC pendent)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "Verificació DKIM pendent - error temporal"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "Verificació SPF pendent - error temporal"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "Verificació DMARC pendent - error temporal"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "Cerca DNSBL - error temporal"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "Cerca RHSBL - error temporal"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "Cerca URI DNSBL - error temporal"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "Error temporal d'autenticació (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "Error temporal d'autorització (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "S'ha superat el límit de freqüència per remitent (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "S'ha superat el límit de freqüència per destinatari (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "S'ha superat el límit de freqüència per domini (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "S'ha superat el límit de freqüència per adreça IP (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "Correu a la cua per a l'enviament posterior (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "Enviament retardat a causa de la política (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "Error temporal del filtre de contingut"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "Error temporal de l'escanejador antivirus"
+
+msgid "Temporary failure in spam filter"
+msgstr "Error temporal del filtre de correu brossa"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Error temporal al milter (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Llista grisa - torneu-ho a provar més tard"
+
+msgid "DDoS protection active - try again later"
+msgstr "Protecció DDoS activa - torneu-ho a provar més tard"
+
+msgid "SMTP policy violation - temporary"
+msgstr "Violació de la política SMTP - estat temporal"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "Error temporal en el processament de RCPT TO"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "Error temporal en el processament de MAIL FROM"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "Error temporal en el processament d'EHLO/HELO"
+
+msgid "Temporary error in DATA processing"
+msgstr "Error temporal en el processament de DATA"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "Error temporal - el servei està ocupat, torneu-ho a provar més tard"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "Error de sintaxi - comanda no reconeguda o massa llarga"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "Error de sintaxi en els paràmetres o arguments"
+
+msgid "Command not implemented"
+msgstr "Comanda no implementada"
+
+msgid "Bad sequence of commands"
+msgstr "Ordre incorrecte de les comandes"
+
+msgid "Command parameter not implemented"
+msgstr "Paràmetre de comanda no implementat"
+
+msgid "Version not supported (ESMTP)"
+msgstr "Versió no compatible (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "Camí de la bústia de correu invàlid (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "Massa comandes en aquesta sessió (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "Límit de destinataris superat (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "Límit de remitents superat (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "Límit de dominis superat (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "La bústia de correu no existeix (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "Error DNS - permanent"
+
+msgid "Address type not supported (Postfix)"
+msgstr "Tipus d'adreça no compatible (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "No es pot obrir la bústia de correu (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "Bústia de correu bloquejada - estat permanent"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "Correu rebutjat a causa de la política (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "Contingut rebutjat - permanent"
+
+msgid "Attachment type not allowed"
+msgstr "Tipus de fitxer adjunt no permès"
+
+msgid "Message encoding not supported"
+msgstr "Codificació del correu no compatible"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "El domini del remitent no existeix - permanent"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "El domini no accepta correus o s'està tancant"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "El domini del destinatari no existeix - permanent"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "Quota de la bústia plena - permanent"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "La mida del correu supera el límit - permanent"
+
+msgid "Authentication required (Sendmail)"
+msgstr "Es requereix autenticació (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "L'autenticació ha fallat (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "Mecanisme d'autenticació no compatible"
+
+msgid "Authentication credentials invalid"
+msgstr "Credencials d'autenticació invàlides"
+
+msgid "Authentication account expired"
+msgstr "El compte d'autenticació ha caducat"
+
+msgid "Access denied - authentication required"
+msgstr "Accés denegat - es requereix autenticació"
+
+msgid "Access denied (Sendmailism)"
+msgstr "Accés denegat (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "Accés denegat - no autenticat"
+
+msgid "Access denied - account locked"
+msgstr "Accés denegat - compte bloquejat"
+
+msgid "Access denied - account disabled"
+msgstr "Accés denegat - compte desactivat"
+
+msgid "Authentication failed"
+msgstr "L'autenticació ha fallat"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "Es requereix autenticació per al relé (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "L'autenticació per al relé ha fallat (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "Es requereix connexió xifrada (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "Aquest destinatari requereix xifratge TLS"
+
+msgid "Encryption strength insufficient"
+msgstr "Força del xifratge insuficient"
+
+msgid "Certificate validation failed"
+msgstr "La verificació del certificat ha fallat"
+
+msgid "Invalid TLS certificate"
+msgstr "Certificat TLS invàlid"
+
+msgid "TLS protocol version not supported"
+msgstr "Versió del protocol TLS no compatible"
+
+msgid "Cipher suite not supported"
+msgstr "Suite de xifratge no compatible"
+
+msgid "Access denied - no valid recipient"
+msgstr "Accés denegat - no hi ha destinatari vàlid"
+
+msgid "Access denied - no valid sender"
+msgstr "Accés denegat - no hi ha remitent vàlid"
+
+msgid "Access denied - domain not allowed"
+msgstr "Accés denegat - domini no permès"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "Accés denegat - adreça IP bloquejada (permanent)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "Accés denegat - domini del remitent a la llista negra"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "Bústia de correu no disponible - l'acció sol·licitada no s'ha realitzat"
+
+msgid "User not local - please try forwarding address"
+msgstr "L'usuari no és local - si us plau, utilitzeu l'adreça de reenviament"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "L'acció sol·licitada s'ha avortat - s'ha superat l'assignació d'emmagatzematge"
+
+msgid "Mailbox name not allowed"
+msgstr "El nom de la bústia de correu no està permès"
+
+msgid "Requested action rejected - access denied"
+msgstr "L'acció sol·licitada ha estat rebutjada - accés denegat"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "Paràmetres MAIL FROM/RCPT TO no reconeguts"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "No es permet que el domini enviï (rebuig DMARC)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "Massa missatges duplicats - permanent"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "Adreça del remitent rebutjada - domini no a l'SPF"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "Adreça del remitent rebutjada - verificació DKIM fallida"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "Adreça del remitent rebutjada - política DMARC de rebuig"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "Adreça del destinatari rebutjada - política DMARC de rebuig"
+
+msgid "Message rejected due to spam content"
+msgstr "Correu rebutjat a causa del contingut de correu brossa"
+
+msgid "Message rejected due to virus detected"
+msgstr "Correu rebutjat a causa d'un virus detectat"
+
+msgid "Message rejected due to malicious content"
+msgstr "Correu rebutjat a causa del contingut maliciós"
+
+msgid "Message rejected due to phishing detection"
+msgstr "Correu rebutjat a causa d'un intent de pesca detectat"
+
+msgid "Message rejected due to malware detection"
+msgstr "Correu rebutjat a causa de programari maliciós detectat"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "Correu rebutjat a causa de la política - permanent"
+
+msgid "Message rejected due to content filtering"
+msgstr "Correu rebutjat a causa del filtratge de contingut"
+
+msgid "Message rejected due to reputation"
+msgstr "Correu rebutjat a causa de la reputació"
+
+msgid "Access denied - access_map violation"
+msgstr "Accés denegat - violació de access_map"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "Accés denegat - client SMTP a la llista RBL"
+
+msgid "Access denied - relay not authorized"
+msgstr "Accés denegat - relé no autoritzat"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "Accés denegat - nom d'amfitrió HELO del client desconegut"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "Accés denegat - domini invàlid (no és FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "Accés denegat - domini no qualificat"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "Accés denegat - servidor de correu mal configurat"
+
+msgid "Access denied - open relay not allowed"
+msgstr "Accés denegat - relé obert no permès"
+
+msgid "Access denied - proxy not allowed"
+msgstr "Accés denegat - servidor intermediari no permès"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "Accés denegat - adreça IP dinàmica no permesa"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "Accés denegat - adreça IP residencial no permesa"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "Accés denegat - s'ha detectat VPN/Tor"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "Accés denegat - a la llista DROP de Spamhaus"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "Accés denegat - URL a la llista URIBL"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "Accés denegat - domini a la llista RHSBL"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "Accés denegat - adreça IP a la llista DNSWL (política)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "L'enviament ha fallat - bústia de correu no trobada"
+
+msgid "Delivery failed - recipient not local"
+msgstr "L'enviament ha fallat - el destinatari no és local"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "L'enviament ha fallat - destinatari rebutjat"
+
+msgid "Delivery failed - sender rejected"
+msgstr "L'enviament ha fallat - remitent rebutjat"
+
+msgid "Delivery failed - relay rejected"
+msgstr "L'enviament ha fallat - relé rebutjat"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "L'enviament ha fallat - error permanent de DNS"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "L'enviament ha fallat - error permanent de MX"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "L'enviament ha fallat - error permanent del registre A"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "L'enviament ha fallat - error permanent del registre PTR"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "L'enviament ha fallat - error permanent de la política"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: Èxit - notificació d'estat de l'enviament"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: Enviament endarrerit"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: Enviament fallit - permanent"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: Enviament fallit - temporal"
+
+msgid "DSN: Message expired"
+msgstr "DSN: El missatge ha caducat"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: Missatge retornat"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: Missatge descartat"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: Missatge filtrat"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: Missatge en quarantena"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: Missatge retingut per a revisió"
+
+msgid "MTA-STS policy required"
+msgstr "Política MTA-STS requerida"
+
+msgid "MTA-STS policy validation failed"
+msgstr "La validació de la política MTA-STS ha fallat"
+
+msgid "TLS reporting required"
+msgstr "Es requereix informes TLS"
+
+msgid "TLS report requested"
+msgstr "S'ha sol·licitat l'informe TLS"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA Strict Transport Security actiu"
+
+msgid "DANE validation required"
+msgstr "Es requereix verificació DANE"
+
+msgid "DANE validation failed"
+msgstr "La verificació DANE ha fallat"
+
+msgid "TLSA record missing"
+msgstr "Falta el registre TLSA"
+
+msgid "Certificate name mismatch"
+msgstr "El nom del certificat no coincideix"
+
+msgid "Certificate expired"
+msgstr "El certificat ha caducat"
+
+msgid "AUTH LOGIN required"
+msgstr "Es requereix AUTH LOGIN"
+
+msgid "AUTH PLAIN required"
+msgstr "Es requereix AUTH PLAIN"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "Es requereix AUTH CRAM-MD5"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "Es requereix AUTH DIGEST-MD5"
+
+msgid "AUTH GSSAPI required"
+msgstr "Es requereix AUTH GSSAPI"
+
+msgid "AUTH NTLM required"
+msgstr "Es requereix AUTH NTLM"
+
+msgid "AUTH SCRAM required"
+msgstr "Es requereix AUTH SCRAM"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "Es requereix AUTH OAUTHBEARER"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "Es requereix AUTH XOAUTH2"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: Error de la base de dades de la bústia"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: Error del controlador d'emmagatzematge"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: Error de l'agent de transport"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: Error de conversió de contingut"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: Error d'encaminament"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: Flux de correu aturat"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: Error de redundància ombra"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: Error de xarxa de seguretat"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: Error de la base de dades de la cua"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: Missatge limitat"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: Error de la cua de rebots"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: Error de la cua de correus diferits"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: Error de la cua de retinguts"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: Error de la cua d'entrada"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: Error de la cua activa"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: Fitxer de cua malmès"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: Error de l'executor de la cua"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: Error de la base de dades d'àlies"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: Error de la taula d'usuaris virtuals"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: Error de definició del programa d'enviament"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: Error de configuració de l'encaminador"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: Error de configuració del transport"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: Error de configuració del director"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: Error de configuració de reintents"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: Error de configuració de reescriptura"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: Error de configuració de l'autenticació"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: Error de configuració de l'ACL"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Error de configuració de Local_scan"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: Error de configuració de la cerca"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: Error de configuració de l'expansió"
+
+msgid "HTTP Protocol Versions"
+msgstr "Versions del protocol HTTP"
+
+msgid "Protocol"
+msgstr "Protocol"
+
+msgid "Request %"
+msgstr "Percentatge de sol·licituds"
+
+msgid "Bandwidth %"
+msgstr "Percentatge d'ample de banda"
+
+msgid "Each request requires a new connection"
+msgstr "Cada sol·licitud requereix una nova connexió"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "Múltiples sol·licituds poden reutilitzar una mateixa connexió"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "Múltiples sol·licituds en paral·lel a través d'una connexió"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "Connexió més ràpida, millor rendiment en xarxes deficients"
+
+msgid "No protocol data available"
+msgstr "No hi ha dades de protocol disponibles"
+
+msgid "of requests use HTTP/1.0"
+msgstr "de les sol·licituds utilitzen el protocol HTTP/1.0"
+
+msgid "From access logs"
+msgstr "A partir dels registres d'accés"
+
+msgid "No HTTP/2 requests detected"
+msgstr "No s'han detectat sol·licituds HTTP/2"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "Totes les sol·licituds actuals són HTTP/1.0, no hi ha sol·licituds HTTP/2"
+
+msgid "HTTP/3 not detected"
+msgstr "No s'han detectat sol·licituds HTTP/3"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "actualment totes les sol·licituds no inclouen sol·licituds del protocol QUIC/HTTP/3"
+
+msgid "Mail Authentication Statistics"
+msgstr "Estadístiques d'autenticació de correu"
+
+msgid "Authentication"
+msgstr "Tipus d'autenticació"
+
+msgid "Pass"
+msgstr "Correcte"
+
+msgid "Fail"
+msgstr "Fallit"
+
+msgid "Softfail"
+msgstr "Fallit tou"
+
+msgid "Neutral"
+msgstr "Neutral"
+
+msgid "None"
+msgstr "Cap"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "Estadístiques de retard de la cua de correu"
+
+msgid "Delay Range"
+msgstr "Rang de retard"
+
+msgid "Count"
+msgstr "Nombre"
+
+msgid "Percentage"
+msgstr "Percentatge"
+
+msgid "TLS Encryption Statistics"
+msgstr "Estadístiques de xifratge TLS"
+
+msgid "TLS Versions"
+msgstr "Versions TLS"
+
+msgid "Top Ciphers"
+msgstr "Conjunts de xifratge més comuns"
+
+msgid "robot_hits_detail_both"
+msgstr "Total de sol·licituds: %s (pàgines normals: %s, robots.txt: %s)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "Només robots.txt: %s vegades, sense obtenir altres pàgines"
+
+msgid "robot_hits_detail_normal"
+msgstr "Sol·licituds de pàgines normals: %s"
+
+# Ajuda i consells
+msgid "Troubleshooting"
+msgstr "Resolució de problemes"
+
+msgid "Did you use the correct URL?"
+msgstr "Heu utilitzat l'URL correcta?"
+
+msgid "Example:"
+msgstr "Per exemple:"
+
+msgid "Did you use correct config parameter?"
+msgstr "Heu utilitzat el paràmetre de configuració correcte?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "Per exemple: si el vostre fitxer de configuració es diu awstats.elsitweb.conf, utilitzeu -config=elsitweb"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "Heu creat el fitxer de configuració 'awstats.$SiteConfig.conf'?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "Si no, podeu executar \"awstats_configure.pl\" des de la línia d'ordres o crear-lo manualment."
+
+msgid "Setup"
+msgstr "Configuració"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "fitxer, servidor web o permisos poden ser incorrectes."
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "Comproveu el fitxer de configuració, els permisos i la documentació d'AWStats (al directori 'docs')."
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "Avís: No es poden trobar els fitxers d'idioma per a \"%s\". S'utilitzarà l'anglès."
+
+#------------------------------------------------------------------------------
+# Gestió d'errors i senyals
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "El procés %s (ID %s) ha estat interromput pel senyal %s."
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "Sembla que ja s'està executant un procés d'actualització d'AWStats per a aquest fitxer de configuració. Torneu-ho a provar més tard. Si no és cert, elimineu manualment el fitxer de bloqueig"
+
+#------------------------------------------------------------------------------
+# Nous títols estadístics
+#------------------------------------------------------------------------------
+msgid "Report Overview"
+msgstr "Visió general de l'informe"
+
+msgid "Monthly Statistics"
+msgstr "Estadístiques mensuals"
+
+msgid "Daily Statistics"
+msgstr "Estadístiques diàries"
+
+msgid "Statistics by Day of Week"
+msgstr "Estadístiques per dia de la setmana"
+
+msgid "Hourly Page Views"
+msgstr "Visualitzacions de pàgines per hora"
+
+msgid "Traffic Sources"
+msgstr "Fonts de trànsit"
+
+msgid "Other Sources"
+msgstr "Altres fonts"
+
+msgid "tooltip_1"
+msgstr "Nombre de sessions dels visitants al lloc. Si el mateix visitant torna a accedir després de més de 30 minuts d'inactivitat, es comptabilitza com una nova visita"
+
+msgid "tooltip_2"
+msgstr "Nombre de visitants diferents que han accedit al vostre lloc durant el període de temps seleccionat. Basat en adreces IP"
+
+msgid "tooltip_3"
+msgstr "Nombre de sol·licituds que es consideren pàgines (com HTML, PHP, ASP), no inclou fitxers estàtics com imatges, CSS, JS"
+
+msgid "tooltip_4"
+msgstr "Nombre total de totes les sol·licituds enviades al servidor, incloent pàgines, imatges, CSS, JS i tots els altres fitxers"
+
+msgid "tooltip_5"
+msgstr "Quantitat total de dades transferides mentre el servidor respon a les sol·licituds dels usuaris"
+
+msgid "tooltip_13"
+msgstr "Estadístiques d'origen que provenen de cercadors. Mostra quins cercadors aporten trànsit i quines paraules utilitzen els visitants."
+
+msgid "tooltip_14"
+msgstr "Estadístiques d'origen que provenen d'enllaços externs d'altres llocs. Mostra quins llocs enllacen al vostre i quin trànsit aporten."
+
+msgid "tooltip_15"
+msgstr "Paraules que els visitants utilitzen quan us troben a través de cercadors. Les paraules clau són paraules individuals, les frases clau són combinacions de múltiples paraules."
+
+msgid "tooltip_16"
+msgstr "Programes automàtics com ara robots de cerca, bots d'entrenament d'IA, escanejadors de vulnerabilitats. Els números entre parèntesis indiquen les sol·licituds de pàgines normals i de robots.txt."
+
+msgid "tooltip_17"
+msgstr "Gràfic de distribució del trànsit de 24 hores. Mostra la visitació del vostre lloc en diferents moments del dia, ajuda a entendre els horaris d'activitat dels usuaris."
+
+msgid "tooltip_18"
+msgstr "Aquesta columna mostra les mitjanes diàries/setmanals en el període de temps seleccionat, ajuda a entendre la tendència general."
+
+msgid "tooltip_19"
+msgstr "Feu clic a un element del gràfic per veure'n els detalls. Mantingueu el cursor del ratolí sobre un element del gràfic per veure els valors concrets."
+
+msgid "tooltip_20"
+msgstr "Dades que no es poden classificar en les categories existents, normalment a causa d'un format anormal de les dades o d'informació que falta."
+
+msgid "tooltip_21"
+msgstr "Registres d'atacs de cucs detectats. Els cucs són programes maliciosos que s'autorepliquen i normalment es propaguen a través de vulnerabilitats de xarxa."
+
+#------------------------------------------------------------------------------
+# Mostra informació d'ajuda - Community Edition
+#------------------------------------------------------------------------------
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - Estadístiques web avançades"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "Copyright (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "Copyright (c) 2026-actual Community Edition"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats NO OFEREIX CAP GARANTIA. És un programari lliure distribuït sota la Llicència Pública General de GNU (Consulteu el fitxer LICENSE per a més detalls)."
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "Sintaxi: %s -config=nom_del_host_virtual [opcions]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "Aquesta ordre executa %s a la línia d'ordres per actualitzar les estadístiques (opció -update) d'un lloc web, des del fitxer de registre definit al fitxer de configuració d'AWStats, o per generar un informe HTML (opció -output)."
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "Primer, %s intenta llegir %s.nom_del_host_virtual.conf com a fitxer de configuració. Si no es troba, %s intenta llegir %s.conf, i finalment el camí complet passat a -config="
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "Nota 1: Els fitxers de configuració (*.conf) han d'estar a /etc/awstats, /usr/local/etc/awstats, /etc o al mateix directori que el fitxer de script awstats.pl."
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "Nota 2: Si la variable d'entorn AWSTATS_FORCE_CONFIG està definida, AWStats la utilitzarà com a valor 'config', independentment del valor que hi hagi a la línia d'ordres o a l'URL."
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "Totes les instruccions d'instal·lació es poden consultar a la documentació d'AWStats."
+
+msgid "Options to update statistics:"
+msgstr "Opcions per actualitzar les estadístiques:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        actualitza les estadístiques (per defecte)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     afegeix informació de referència cada %s línies processades"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted afegeix una sortida per a cada línia malmesa trobada, amb el motiu"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   afegeix una sortida per a cada línia descartada trobada, amb el motiu"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin   mostra el referent quan no es pot analitzar"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin    mostra la línia de registre quan l'origen és un accés directe"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n   atura el procés d'actualització després d'analitzar n línies"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x     canvia el fitxer de registre per analitzar-lo, independentment del valor de 'LogFile' al fitxer de configuració"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  Assegureu-vos de processar els fitxers de registre en ordre cronològic quan actualitzeu les estadístiques."
+
+msgid "Options to show statistics:"
+msgstr "Opcions per mostrar les estadístiques:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output       mostra l'informe HTML principal (no s'actualitza excepte si s'utilitza -update)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x     mostra altres pàgines d'informe on x és:"
+
+msgid "build page of all domains/countries"
+msgstr "construeix la pàgina de tots els dominis/països"
+
+msgid "build page of all hosts"
+msgstr "construeix la pàgina de tots els amfitrions"
+
+msgid "build page of last hits for hosts"
+msgstr "construeix la pàgina de les darreres sol·licituds per als amfitrions"
+
+msgid "build page of all unresolved IP"
+msgstr "construeix la pàgina de totes les adreces IP no resoltes"
+
+msgid "build page of all email senders (maillog)"
+msgstr "construeix la pàgina de tots els remitents de correu electrònic (maillog)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "construeix la pàgina dels darrers remitents de correu electrònic (maillog)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "construeix la pàgina de tots els destinataris de correu electrònic (maillog)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "construeix la pàgina dels darrers destinataris de correu electrònic (maillog)"
+
+msgid "build page of all logins used"
+msgstr "construeix la pàgina de tots els inicis de sessió utilitzats"
+
+msgid "build page of last hits for logins"
+msgstr "construeix la pàgina de les darreres sol·licituds per als inicis de sessió"
+
+msgid "build page of all robots/spider visits"
+msgstr "construeix la pàgina de totes les visites de robots/aranyes"
+
+msgid "build page of last hits for robots"
+msgstr "construeix la pàgina de les darreres sol·licituds per a robots"
+
+msgid "list most often viewed pages"
+msgstr "llista les pàgines més vistes"
+
+msgid "list most often viewed pages matching filter"
+msgstr "llista les pàgines més vistes que coincideixen amb el filtre"
+
+msgid "list entry pages"
+msgstr "llista les pàgines d'entrada"
+
+msgid "list entry pages matching filter"
+msgstr "llista les pàgines d'entrada que coincideixen amb el filtre"
+
+msgid "list exit pages"
+msgstr "llista les pàgines de sortida"
+
+msgid "list exit pages matching filter"
+msgstr "llista les pàgines de sortida que coincideixen amb el filtre"
+
+msgid "build page with os detailed versions"
+msgstr "construeix la pàgina amb les versions detallades del SO"
+
+msgid "build page with browsers detailed versions"
+msgstr "construeix la pàgina amb les versions detallades dels navegadors"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "llista els 'User Agents' amb navegador desconegut"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "llista els 'User Agents' amb SO desconegut"
+
+msgid "build page of all refering search engines"
+msgstr "construeix la pàgina de tots els cercadors que refereixen"
+
+msgid "build page of all refering pages"
+msgstr "construeix la pàgina de totes les pàgines que refereixen"
+
+msgid "list all keyphrases used on search engines"
+msgstr "llista totes les frases clau utilitzades en cercadors"
+
+msgid "list all keywords used on search engines"
+msgstr "llista totes les paraules clau utilitzades en cercadors"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "llista els 'Referents' per a errors 404"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "construeix la pàgina de tots els valors per a ExtraSection X"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           utilitza enllaços estàtics a la pàgina d'informe HTML"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    utilitza enllaços estàtics amb extensió .xxx en lloc de .html"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     mostra l'informe HTML en l'idioma LL (ca,en,de,es,fr,it,nl,zh-cn,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    mostra un informe HTML per a un mes antic MM"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   mostra un informe HTML per a un any antic YYYY"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  Les opcions 'date' no us permeten processar fitxers de registre antics. Només us permeten veure un informe passat per a un període de mes/any escollit en lloc del mes/any actual."
+
+msgid "Other options:"
+msgstr "Altres opcions:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     afegeix informació de depuració de nivell inferior a X (la velocitat es redueix)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     mostra la versió d'AWStats"
+
+msgid "Now supports/detects:"
+msgstr "Actualment admet/detecta:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Anàlisi de registres de servidors web/FTP/correu/streaming (i fitxers de registre equilibrats en càrrega)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  Cerca DNS inversa (IPv4 i IPv6) i cerca GeoIP"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  Nombre de visites, nombre de visitants únics"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  Durada de les visites i llista de les darreres visites"
+
+msgid "  Authenticated users"
+msgstr "  Usuaris autenticats"
+
+msgid "  Days of week and rush hours"
+msgstr "  Dies de la setmana i hores punta"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  Llista d'amfitrions i llista d'adreces IP no resoltes"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  Pàgines més vistes, d'entrada i de sortida"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  Tipus de fitxers i compressió web (estadístiques mod_gzip, mod_deflate)"
+
+msgid "  Configured Database Statistics"
+msgstr "  Estadístiques de bases de dades configurades"
+
+msgid "  %s domains/countries"
+msgstr "  %s dominis/països"
+
+msgid "  %s robots"
+msgstr "  %s robots"
+
+msgid "  %s worm's families"
+msgstr "  %s famílies de cucs"
+
+msgid "  %s operating systems"
+msgstr "  %s sistemes operatius"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s navegadors (inclosa la base de dades de navegadors mòbils %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s cercadors (i les frases/paraules clau utilitzades des d'ells)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  Tots els errors HTTP amb l'últim referent"
+
+msgid "  Report by day/month/year"
+msgstr "  Informe per dia/mes/any"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  Informes HTML o XHTML dinàmics o estàtics, informes PDF estàtics"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  Base de dades mensual de text indexat o XML"
+
+msgid "  And a lot of other advanced features and options..."  
+msgstr "  I moltes altres funcions i opcions avançades..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  Noves versions i PMF a https://github.com/hestiacn/vstats/issues"
