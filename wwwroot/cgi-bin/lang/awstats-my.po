@@ -1,0 +1,3288 @@
+# AWStats Myanmar (my) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Myanmar\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#------------------------------------------------------------------------------
+# လအမည်များ
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "ဇန်နဝါရီ"
+
+msgid "month_02"
+msgstr "ဖေဖော်ဝါရီ"
+
+msgid "month_03"
+msgstr "မတ်"
+
+msgid "month_04"
+msgstr "ဧပြီ"
+
+msgid "month_05"
+msgstr "မေ"
+
+msgid "month_06"
+msgstr "ဇွန်"
+
+msgid "month_07"
+msgstr "ဇူလိုင်"
+
+msgid "month_08"
+msgstr "သြဂုတ်"
+
+msgid "month_09"
+msgstr "စက်တင်ဘာ"
+
+msgid "month_10"
+msgstr "အောက်တိုဘာ"
+
+msgid "month_11"
+msgstr "နိုဝင်ဘာ"
+
+msgid "month_12"
+msgstr "ဒီဇင်ဘာ"
+
+#------------------------------------------------------------------------------
+# ရက်သတ္တပတ် အမည်များ
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "တနင်္ဂနွေ"
+
+msgid "DayOfWeek_1"
+msgstr "တနင်္လာ"
+
+msgid "DayOfWeek_2"
+msgstr "အင်္ဂါ"
+
+msgid "DayOfWeek_3"
+msgstr "ဗုဒ္ဓဟူး"
+
+msgid "DayOfWeek_4"
+msgstr "ကြာသပတေး"
+
+msgid "DayOfWeek_5"
+msgstr "သောကြာ"
+
+msgid "DayOfWeek_6"
+msgstr "စနေ"
+
+#------------------------------------------------------------------------------
+# အသုံးပြုသူ အင်တာဖေ့စ် အစိတ်အပိုင်းများ
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "အတွက် အဆင့်မြင့် ဝဘ်စာရင်းအင်း"
+
+msgid "Statistics for"
+msgstr "အတွက် စာရင်းအင်း"
+
+msgid "main"
+msgstr "ခြုံငုံသုံးသပ်ချက်"
+
+msgid "Switch to light mode"
+msgstr "အလင်းမုဒ်သို့ ပြောင်းရန်"
+
+msgid "Switch to dark mode"
+msgstr "အမှောင်မုဒ်သို့ ပြောင်းရန်"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "ဘိုက်"
+
+msgid "Filter"
+msgstr "စစ်ထုတ်ရန်"
+
+msgid "Exclude filter"
+msgstr "စစ်ထုတ်မှုကို ဖယ်ကြဉ်ရန်"
+
+msgid "Top"
+msgstr "ထိပ်ဆုံး"
+
+msgid "Full list"
+msgstr "စာရင်းအပြည့်အစုံ"
+
+msgid "Last"
+msgstr "နောက်ဆုံး"
+
+msgid "Average"
+msgstr "ပျမ်းမျှ"
+
+msgid "Export"
+msgstr "တင်ပို့ရန်"
+
+msgid "Details"
+msgstr "အသေးစိတ်"
+
+msgid "Version"
+msgstr "ဗားရှင်း"
+
+msgid "thousands_separator"
+msgstr ","
+
+msgid "dateformat_long"
+msgstr "dd/mm/yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd/mm/yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "ခုနှစ် %s"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# လမ်းညွှန်ဘား
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "AWStats လရွေးချယ်မှု"
+
+msgid "nav_category_basic"
+msgstr "အခြေခံစာရွက်စာတမ်းများ"
+
+msgid "nav_category_guide"
+msgstr "အသုံးပြုမှုလမ်းညွှန်"
+
+msgid "nav_category_reference"
+msgstr "ကိုးကားချက်အရင်းအမြစ်များ"
+
+msgid "nav_category_integration"
+msgstr "ပေါင်းစည်းမှုနှင့် တိုးချဲ့မှုများ"
+
+msgid "nav_category_dev"
+msgstr "တီထွင်သူစာရွက်စာတမ်းများ"
+
+msgid "nav_changelog"
+msgstr "ပြောင်းလဲမှုမှတ်တမ်း"
+
+msgid "nav_what"
+msgstr "AWStats ဆိုတာဘာလဲ"
+
+msgid "nav_license"
+msgstr "လိုင်စင်"
+
+msgid "nav_glossary"
+msgstr "ဝေါဟာရ"
+
+msgid "nav_setup"
+msgstr "တပ်ဆင်ခြင်းနှင့် ဖွဲ့စည်းမှု"
+
+msgid "nav_upgrade"
+msgstr "အဆင့်မြှင့်တင်မှုလမ်းညွှန်"
+
+msgid "nav_config"
+msgstr "ဖွဲ့စည်းမှု ကန့်သတ်ချက်များ"
+
+msgid "nav_extra"
+msgstr "အပိုအပိုင်း"
+
+msgid "nav_tools"
+msgstr "အခြားကိရိယာများ"
+
+msgid "nav_faq"
+msgstr "အမေးများသောမေးခွန်းများ"
+
+msgid "nav_security"
+msgstr "လုံခြုံရေးအကြံပြုချက်များ"
+
+msgid "nav_compare"
+msgstr "နှိုင်းယှဉ်မှု"
+
+msgid "nav_benchmark"
+msgstr "စွမ်းဆောင်ရည် စံသတ်မှတ်ချက်"
+
+msgid "nav_webmin"
+msgstr "Webmin မော်ဂျူး"
+
+msgid "nav_dolibarr"
+msgstr "Dolibarr မော်ဂျူး"
+
+msgid "nav_contrib"
+msgstr "ပံ့ပိုးသူများ၏ အရင်းအမြစ်များ"
+
+msgid "nav_plugins"
+msgstr "ပလပ်အင်း ဖွံ့ဖြိုးတိုးတက်ရေး"
+
+msgid "nav_hooks"
+msgstr "ပလပ်အင်း ဟုတ်များ"
+
+msgid "nav_graphs"
+msgstr "ပလပ်အင်း ဂရပ်များ"
+
+msgid "Back to top"
+msgstr "အပေါ်သို့ ပြန်သွားရန်"
+
+msgid "nav_select_month"
+msgstr "လရွေးချယ်ရန်"
+
+#------------------------------------------------------------------------------
+# အဓိက ညွှန်းကိန်းများ
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "ထူးခြားသော လာရောက်သူများ"
+
+msgid "Visits"
+msgstr "လာရောက်မှုအရေအတွက်"
+
+msgid "Visits duration"
+msgstr "လာရောက်မှုကြာချိန်"
+
+msgid "First visit"
+msgstr "ပထမဆုံး အပ်ဒိတ်"
+
+msgid "Last visit"
+msgstr "နောက်ဆုံး အပ်ဒိတ်"
+
+msgid "Visits/Visitor"
+msgstr "လာရောက်မှု/လာရောက်သူ"
+
+msgid "Pages/Visit"
+msgstr "စာမျက်နှာ/လာရောက်မှု"
+
+msgid "Hits/Visit"
+msgstr "တောင်းဆိုမှု/လာရောက်မှု"
+
+msgid "KB/Visit"
+msgstr "ကီလိုဘိုက်/လာရောက်မှု"
+
+msgid "KB/Visits"
+msgstr "ကီလိုဘိုက်/လာရောက်မှုအရေအတွက်"
+
+msgid "Pages"
+msgstr "စာမျက်နှာအရေအတွက်"
+
+msgid "Hits"
+msgstr "တောင်းဆိုမှုအရေအတွက်"
+
+msgid "Bandwidth"
+msgstr "ဘန်းဝစ်"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "စက္ကန့်"
+
+msgid "unit_min"
+msgstr "မိနစ်"
+
+msgid "unit_h"
+msgstr "နာရီ"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "စက်ပစ္စည်းအမျိုးအစားများ"
+
+msgid "Device Type"
+msgstr "စက်ပစ္စည်းအမျိုးအစား"
+
+msgid "Percent"
+msgstr "ရာခိုင်နှုန်း"
+
+msgid "Mobile"
+msgstr "မိုဘိုင်းလ်ဖုန်း"
+
+msgid "Pause & Go"
+msgstr "ရပ်နားပြီး ဆက်လုပ်ရန်"
+
+msgid "Complete"
+msgstr "ပြီးပြည့်စုံသည်"
+
+msgid "Tablet"
+msgstr "တက်ဘလက်"
+
+msgid "Tv"
+msgstr "ရုပ်မြင်သံကြား"
+
+msgid "Wearable"
+msgstr "ဝတ်ဆင်နိုင်သော စက်ပစ္စည်း"
+
+msgid "Bot"
+msgstr "ဘော့"
+
+msgid "Desktop"
+msgstr "ဒက်စ်တော့"
+
+msgid "Normal browsing traffic"
+msgstr "ပုံမှန်ကြည့်ရှုမှု အသွားအလာ"
+
+msgid "Abnormal browsing traffic"
+msgstr "ပုံမှန်မဟုတ်သော ကြည့်ရှုမှု အသွားအလာ"
+
+msgid "Viewed"
+msgstr "ကြည့်ရှုပြီး"
+
+msgid "Not viewed"
+msgstr "မကြည့်ရှူရသေး"
+
+msgid "Abnormal browsing traffic note"
+msgstr "ပုံမှန်မဟုတ်သော ကြည့်ရှုမှု အသွားအလာတွင် ပါဝင်သည်: ရှာဖွေရေးဘော့များ၊ AI လေ့ကျင့်ရေးဘော့များ၊ အားနည်းချက်စကင်နာများနှင့် HTTP/HTTPS စံနှုန်းများနှင့် မကိုက်ညီသော တောင်းဆိုမှုများ"
+
+msgid "File size"
+msgstr "ဖိုင်အရွယ်အစား"
+
+msgid "File type"
+msgstr "ဖိုင်အမျိုးအစား"
+
+msgid "Downloads"
+msgstr "ဒေါင်းလုဒ်များ"
+
+msgid "Request time"
+msgstr "တောင်းဆိုချိန်"
+
+msgid "Total requests"
+msgstr "စုစုပေါင်း တောင်းဆိုမှုများ"
+
+msgid "Frequency"
+msgstr "အကြိမ်ရေ"
+
+msgid "Average frequency"
+msgstr "ပျမ်းမျှ အကြိမ်ရေ"
+
+msgid "Seconds"
+msgstr "စက္ကန့်"
+
+msgid "First"
+msgstr "ပထမ"
+
+msgid "Mails"
+msgstr "အီးမေးလ်အရေအတွက်"
+
+msgid "Size"
+msgstr "အရွယ်အစား"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "သတိပေးချက်: ဤဖိုင်ကို ဖျက်ပါက ရက်စွဲ၏ စာရင်းအင်းများအားလုံး"
+
+msgid "will be lost/reset."
+msgstr "အပြီးအပိုင် ဆုံးရှုံး/ပြန်လည်သတ်မှတ်သွားမည်!"
+
+msgid "Last config file used to build this data file was"
+msgstr "ဤဒေတာဖိုင်ကိုတည်ဆောက်ရန် အသုံးပြုခဲ့သော နောက်ဆုံးဖွဲ့စည်းပုံဖိုင်မှာ"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "ဤဖိုင်ရှိ MAP အပိုင်းသည် အပိုင်းတစ်ခုစီ၏အစအတွက် ဘိုက်အော့ဖ်ဆက်တည်နေရာကို မှတ်တမ်းတင်ထားပြီး"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats သည် ဒေတာကို တိုက်ရိုက်ဝင်ရောက်နိုင်ရန်အတွက်ဖြစ်သည်။ ဤဖိုင်တွင် တစ်နေရာရာ၌ ပြောင်းလဲမှုများ ပြုလုပ်ပါက"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "MAP အပိုင်းကိုလည်း လုံးဝဖျက်ပစ်ရန် (AWStats သည် နောက်အပ်ဒိတ်တွင် ၎င်းကို ပြန်လည်ရေးသားမည်)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = လုပ်ဆောင်ပြီးနောက်ဆုံးမှတ်တမ်း၏ ရက်စွဲ - နောက်ဆုံးမှတ်တမ်း၏ နောက်ဆုံးလိုင်းနံပါတ် - နောက်ဆုံးမှတ်တမ်း၏ နောက်ဆုံးအော့ဖ်ဆက် - နောက်ဆုံးမှတ်တမ်း၏ လက်မှတ်တန်ဖိုး"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = မှတ်တမ်းဖိုင်အတွက် ပထမဆုံးလာရောက်မှု၏ ရက်စွဲ"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = မှတ်တမ်းဖိုင်အတွက် နောက်ဆုံးလာရောက်မှု၏ ရက်စွဲ"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = နောက်ဆုံးအပ်ဒိတ်ရက်စွဲ - ခွဲခြမ်းစိတ်ဖြာထားသော မှတ်တမ်းအရေအတွက် - ခွဲခြမ်းစိတ်ဖြာထားသော မှတ်တမ်းဟောင်းအရေအတွက် - ခွဲခြမ်းစိတ်ဖြာထားသော မှတ်တမ်းအသစ်အရေအတွက် - ခွဲခြမ်းစိတ်ဖြာထားသော ပျက်စီးမှုအရေအတွက် - ခွဲခြမ်းစိတ်ဖြာထားသော ပယ်ချမှုအရေအတွက်"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = လာရောက်မှုအရေအတွက်"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = ထူးခြားသော လာရောက်သူအရေအတွက်"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = သိထားသော ဟော့စ်အရေအတွက်"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = မသိသော ဟော့စ်အရေအတွက်"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "Cluster ID - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ်"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "နာရီ - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - မကြည့်ရသေးသော စာမျက်နှာများ - မကြည့်ရသေးသော တောင်းဆိုမှုများ - မကြည့်ရသေးသော ဘန်းဝစ်"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "ရက်စွဲ - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - လာရောက်မှုများ"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "ဒိုမိန်း - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ်"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "ပင်မစာမျက်နှာသည် ထိပ်ဆုံး %s စာမျက်နှာများကိုသာ ပြသမည်၊ အသေးစိတ်စာမျက်နှာတွင် စာရင်းအပြည့်အစုံကို ကြည့်ရှုပါ"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "ဟော့စ် - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - နောက်ဆုံးလာရောက်ချိန် - [နောက်ဆုံးလာရောက်မှုစတင်ချိန်] - [နောက်ဆုံးလာရောက်မှု၏ နောက်ဆုံးစာမျက်နှာ]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[နောက်ဆုံးလာရောက်မှုစတင်ချိန်] နှင့် [နောက်ဆုံးလာရောက်မှု၏ နောက်ဆုံးစာမျက်နှာ] တို့သည် session မပြီးဆုံးမှသာ သိမ်းဆည်းမည်"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "ပင်မစာမျက်နှာသည် ထိပ်ဆုံး %s တောင်းဆိုမှုအရာများကိုသာ ပြသမည်၊ အသေးစိတ်စာမျက်နှာတွင် စာရင်းအပြည့်အစုံကို ကြည့်ရှုပါ"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "ဝင်ရောက်ထားသော အသုံးပြုသူ - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - နောက်ဆုံးလာရောက်ချိန်"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "စက်ရုပ် ID - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - နောက်ဆုံးလာရောက်ချိန် - robots.txt တောင်းဆိုမှုများ"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "Worm ID - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - နောက်ဆုံးလာရောက်ချိန်"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "အီးမေး - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - နောက်ဆုံးလာရောက်ချိန်"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "ပင်မစာမျက်နှာသည် ထိပ်ဆုံး %s အီးမေးတောင်းဆိုမှုများကိုသာ ပြသမည်၊ အသေးစိတ်စာမျက်နှာတွင် စာရင်းအပြည့်အစုံကို ကြည့်ရှုပါ"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - စာမျက်နှာအရေအတွက် - ဘန်းဝစ် - ဝင်ရောက်မှု - ထွက်ပေါက်"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "ဖိုင်အမျိုးအစား - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ် - ချုံ့မခံရမီ ဘန်းဝစ် - ချုံ့ပြီးနောက် ဘန်းဝစ်"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "တောင်းဆိုချိန် အတိုင်းအတာ - တောင်းဆိုချိန် ကြိမ်နှုန်း"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "ဖိုင်အရွယ်အစား အတိုင်းအတာ - ဖိုင်အရေအတွက်"
+
+msgid "Session range - Number of visits"
+msgstr "session ကြာချိန် အတိုင်းအတာ - လာရောက်မှုအရေအတွက်"
+
+msgid "URL with %s errors - Hits"
+msgstr "%s အမှားများရှိသော URL - တောင်းဆိုမှုအရေအတွက်"
+
+msgid "Last URL referrer"
+msgstr "နောက်ဆုံး URL ရည်ညွှန်းချက်"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "အမှားများ - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ်"
+
+msgid "Search keywords - Number of search"
+msgstr "သော့ချက်စာလုံးများ - ရှာဖွေမှုအရေအတွက်"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "ပင်မစာမျက်နှာတွင် ထိပ်ဆုံး %s သော့ချက်စာလုံးများကိုသာ ပြသသည် (ရှာဖွေမှုအရေအတွက်အလိုက် စီထားသည်)။ အသေးစိတ်စာမျက်နှာတွင် စာရင်းအပြည့်အစုံကို ကြည့်ရှုပါ"
+
+msgid "Search keyphrases - Number of search"
+msgstr "သော့ချက်စာစုများ - ရှာဖွေမှုအရေအတွက်"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "ပင်မစာမျက်နှာတွင် ထိပ်ဆုံး %s သော့ချက်စာစုများကိုသာ ပြသသည် (ရှာဖွေမှုအရေအတွက်အလိုက် စီထားသည်)။ အသေးစိတ်စာမျက်နှာတွင် စာရင်းအပြည့်အစုံကို ကြည့်ရှုပါ"
+
+msgid "External page referers - Pages - Hits"
+msgstr "ပြင်ပစာမျက်နှာ ရည်ညွှန်းချက်များ - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက်"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "ပင်မစာမျက်နှာတွင် ထိပ်ဆုံး %s ပြင်ပရည်ညွှန်းချက်များကိုသာ ပြသသည် (စာမျက်နှာအရေအတွက်အလိုက် စီထားသည်)။ အသေးစိတ်စာမျက်နှာတွင် စာရင်းအပြည့်အစုံကို ကြည့်ရှုပါ"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "ရှာဖွေရေးအင်ဂျင် ရည်ညွှန်းချက် ID - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက်"
+
+msgid "Origin - Pages - Hits"
+msgstr "အရင်းအမြစ် - စာမျက်နှာအရေအတွက် - တောင်းဆိုမှုအရေအတွက်"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "မသိသော ရည်ညွှန်းဘရောင်ဇာ - နောက်ဆုံးလာရောက်ချိန်"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "မသိသော ရည်ညွှန်းလည်ပတ်မှုစနစ် - နောက်ဆုံးလာရောက်ချိန်"
+
+msgid "Screen size - Hits"
+msgstr "မျက်နှာပြင်အရွယ်အစား - တောင်းဆိုမှုအရေအတွက်"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ဘရောင်ဇာ ID - နှိပ်မှုအရေအတွက် - စာမျက်နှာအရေအတွက်"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "ဒေါင်းလုဒ်များ - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ်"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "ပရိုတိုကော - တောင်းဆိုမှုအရေအတွက် - ဘန်းဝစ်"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "အိုင်ကွန်အခြေအနေ - အမျိုးအစား:200:404:အခြား"
+
+#------------------------------------------------------------------------------
+# အချိန်ကာလများ ဘာသာပြန်ချက်
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "သန်းခေါင်ယံ · AWStats အားလုံးအိပ်ပျော်နေပြီ၊ မင်းဒေတာကြည့်နေသေးလား? မေတ္တာအစစ်ပဲ"
+
+msgid "period_01"
+msgstr "ည ၁ နာရီ · ဒီအချိန်မှာ ဝင်ကြည့်တာ? အိပ်မပျော်ဘူးလား ဒါမှမဟုတ် အလုပ်ပြန်ထွက်လာတာလား"
+
+msgid "period_02"
+msgstr "ည ၂ နာရီ · ဘော့က မင်းထက်တောင် ဝီရိယရှိတယ်၊ အလုပ်လုပ်နေသေးတယ်"
+
+msgid "period_03"
+msgstr "ည ၃ နာရီ · မြို့တော်အိပ်နေပြီ၊ ဆာဗာအလုပ်ပိုလုပ်နေတယ်၊ ဘယ်သူပိုဆိုးလဲ?"
+
+msgid "period_04"
+msgstr "ည ၄ နာရီ · အမှောင်ထုထဲက အတောက်ပဆုံးကြယ်၊ မင်းရဲ့မျက်နှာပြင်လား ဒါမှမဟုတ် ဆာဗာအချက်ပြမီးလား"
+
+msgid "period_05"
+msgstr "နံနက် ၅ နာရီ · စောစောထတဲ့ငှက် တီကောင်စားတယ်၊ စောစောထတဲ့ဘော့ ဒေတာကောက်တယ်"
+
+msgid "period_06"
+msgstr "နံနက် ၆ နာရီ · တစ်ယောက်အိပ်ရာနိုးတယ်၊ တစ်ယောက်မအိပ်ရသေးဘူး၊ အင်တာနက်ဘယ်တော့မှ မပိတ်"
+
+msgid "period_07"
+msgstr "နံနက် ၇ နာရီ · ရထားကျပ်နေချိန်၊ ဝဘ်လှည့်တဲ့အချိန်လည်းဖြစ်တယ်"
+
+msgid "period_08"
+msgstr "နံနက် ၈ နာရီ · အလုပ်စတဲ့အခါ ပထမဆုံးလုပ်စရာ: မနေ့ကဒေတာကိုကြည့်တာ"
+
+msgid "period_09"
+msgstr "နံနက် ၉ နာရီ · အချိန်ကောင်း၊ အလုပ်ပြောင်ရတာလည်း စည်းကမ်းရှိရမယ်"
+
+msgid "period_10"
+msgstr "နံနက် ၁၀ နာရီ · ကော်ဖီအချိန်၊ အသွားအလာတက်လားကြည့်"
+
+msgid "period_11"
+msgstr "နံနက် ၁၁ နာရီ · နောက်တစ်နာရီဆို နေ့လယ်စာချိန်ရောက်ပြီ၊ နည်းနည်းထပ်သည်းခံပါ"
+
+msgid "period_12"
+msgstr "မွန်းတည့် · ဆာဗာ: မင်းတို့အားလုံး ထမင်းစားသွားကြပြီ၊ ငါနည်းနည်းအနားယူမယ်"
+
+msgid "period_13"
+msgstr "နေ့လယ် ၁ နာရီ · နေ့လယ်စာစားပြီးအိပ်ငိုက်တယ်၊ ဒါပေမယ့် ဒေတာကတော့ မအိပ်"
+
+msgid "period_14"
+msgstr "နေ့လယ် ၂ နာရီ · လက်ဖက်ရည် အချိန်"
+
+msgid "period_15"
+msgstr "နေ့လယ် ၃ နာရီ · ဒီကနေ့အသွားအလာလမ်းကြောင်းဂရပ်၊ မင်းရဲ့ခံစားချက်ဂရပ်နဲ့တူလား?"
+
+msgid "period_16"
+msgstr "နေ့လယ် ၄ နာရီ · နောက် X နာရီဆို အလုပ်ချိန်ကုန်ပြီ၊ အသွားအလာစပြိုင်လာပြီ"
+
+msgid "period_17"
+msgstr "ညနေ ၅ နာရီ · အလုပ်ချိန်ကုန်ပြီ! ဒါပေမယ့် ဆာဗာကတော့ ဆက်လုပ်နေရဦးမယ်"
+
+msgid "period_18"
+msgstr "ညနေ ၆ နာရီ · ညစာစားချိန်၊ ဗီဒီယိုနည်းနည်းကြည့်၊ အပန်းဖြေ"
+
+msgid "period_19"
+msgstr "ည ၇ နာရီ · အချိန်ကောင်း၊ အသွားအလာများလာတယ်၊ ဆာဗာ: ငါခံနိုင်တယ်"
+
+msgid "period_20"
+msgstr "ည ၈ နာရီ · ဆိုဖာပေါ်လှဲလျောင်း၊ မင်းက လာရောက်သူအမှတ် ၁၁၄၅၁၄ ပါ"
+
+msgid "period_21"
+msgstr "ည ၉ နာရီ · ညဆိတ်ဆိတ်၊ ဒေတာခိုးကြည့်တဲ့ညဉ့်အိပ်ငှက်များ +၁"
+
+msgid "period_22"
+msgstr "ည ၁၀ နာရီ · ဒီကနေ့ဒေတာထွက်တော့မယ်၊ စိတ်လှုပ်ရှားနေလား?"
+
+msgid "period_23"
+msgstr "ည ၁၁ နာရီ · AWStats: အိပ်ချိန်ရောက်ပြီ၊ မနက်ဖြန်လည်း အလုပ်လုပ်ရဦးမယ်"
+
+#------------------------------------------------------------------------------
+# အချိန်အတိုင်းအတာ
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "စာရင်းအင်းကာလ"
+
+msgid "Year"
+msgstr "နှစ်"
+
+msgid "Month"
+msgstr "လ"
+
+msgid "Months"
+msgstr "လများ"
+
+msgid "Date"
+msgstr "ရက်စွဲ"
+
+msgid "Day"
+msgstr "ရက်"
+
+msgid "Hour"
+msgstr "နာရီ"
+
+msgid "Hours"
+msgstr "နာရီများ"
+
+msgid "Day of week"
+msgstr "ရက်သတ္တပတ်၏နေ့"
+
+msgid "When"
+msgstr "ဘယ်အချိန်"
+
+msgid "%s Server Management Panel"
+msgstr "%s  ဆာဗာစီမံခန့်ခွဲမှုဘောင်အကန့်"
+
+msgid "Server Administration"
+msgstr "ရိုးရှင်းပြီး ထိရောက်သော ဆာဗာအဖြေ"
+
+#------------------------------------------------------------------------------
+# ဧည့်သည်အတိုင်းအတာများ
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "URL ဘောင်းဘီများ မမှန်ကန်ပါ"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "မမှန်ကန်သော သို့မဟုတ် ပုံစံမကျသော URL ဘောင်းဘီများကြောင့် တောင်းဆိုထားသော စာမျက်နှာကို ဖွင့်၍မရပါ။"
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "၎င်းသည် မှားယွင်းသော URL ရိုက်ထည့်ခြင်း၊ ဘောင်းဘီခြားနေရာများ ပျောက်ဆုံးခြင်း သို့မဟုတ် မမှန်ကန်သော ဖွဲ့စည်းပုံအမည်ကို အသုံးပြုခြင်းတို့ကြောင့် ဖြစ်နိုင်ပါသည်။"
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "ကျေးဇူးပြု၍ သင်ရိုက်ထည့်ထားသော URL ကို စစ်ဆေးပြီး ဘောင်းဘီအားလုံး မှန်ကန်စွာ ပုံစံကျကြောင်း သေချာပါစေ။"
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "သင့် config/domain ဖိုင်တွင် SiteDomain ပါရာမီတာ သတ်မှတ်မထားပါ၊ သို့မဟုတ် ဖိုင်တွင် execute လုပ်ပိုင်ခွင့် သင့်တွင် မရှိနိုင်ပါ။"
+
+msgid "Please run as Administrator to set permissions"
+msgstr "ခွင့်ပြုချက်များ သတ်မှတ်ရန် စီမံခန့်ခွဲသူအဖြစ် ဖွင့်ပါ"
+
+msgid "Please set execute permission"
+msgstr "ကျေးဇူးပြု၍ execute လုပ်ပိုင်ခွင့် သတ်မှတ်ပါ"
+
+msgid "Or if you prefer numeric mode"
+msgstr "သို့မဟုတ် ဂဏန်းမုဒ်ကို နှစ်သက်ပါက"
+
+msgid "View Report Directly"
+msgstr "အစီရင်ခံစာကို တိုက်ရိုက်ကြည့်ရန်"
+
+msgid "AWStats Log Viewer"
+msgstr "AWStats မှတ်တမ်းကြည့်ရှုသူ"
+
+msgid "Month Selection"
+msgstr "လရွေးချယ်မှု"
+
+msgid "Who"
+msgstr "ဘယ်သူ"
+
+msgid "Visitors"
+msgstr "လာရောက်သူများ"
+
+msgid "Countries"
+msgstr "နိုင်ငံ/ဒေသ"
+
+msgid "flag_icon"
+msgstr "နိုင်ငံတော်အလံ"
+
+msgid "Country-Region-City"
+msgstr "နိုင်ငံ/ဒေသ/မြို့"
+
+msgid "Code"
+msgstr "ကုဒ်"
+
+msgid "Known"
+msgstr "သိထားသည်"
+
+msgid "unknownos"
+msgstr "မသိသော လည်ပတ်မှုစနစ်"
+
+msgid "unknownbrowser"
+msgstr "မသိသော ဘရောင်ဇာ"
+
+msgid "Unresolved IP Address"
+msgstr "မဖြေရှင်းရသေးသော IP လိပ်စာ"
+
+msgid "Unknown File Type"
+msgstr "မသိသော ဖိုင်အမျိုးအစား"
+
+msgid "Unknown Size"
+msgstr "မသိသော ဖိုင်အရွယ်အစား"
+
+msgid "Unknown Time"
+msgstr "မသိသော တောင်းဆိုချိန်"
+
+msgid "Unknown Browser"
+msgstr "မသိသော ဘရောင်ဇာ"
+
+msgid "Unknown OS"
+msgstr "မသိသော လည်ပတ်မှုစနစ်"
+
+msgid "Unknown Visitor"
+msgstr "မသိသော လာရောက်သူ"
+
+msgid "Unknown Visitor (Total)"
+msgstr "မသိသော လာရောက်သူ (စုစုပေါင်း)"
+
+msgid "Unknown Country"
+msgstr "မသိသော နိုင်ငံ/ဒေသ"
+
+msgid "Unknown Country (Region)"
+msgstr "မသိသော နိုင်ငံ/ဒေသ (စုစုပေါင်း)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "မသိသော လာရောက်သူ (ခေါင်းစဉ်)"
+
+msgid "PageStayTime"
+msgstr "စာမျက်နှာပေါ်တွင်နေထိုင်ချိန်ကို ခန့်မှန်း၍မရပါ"
+
+msgid "Unknown OS (Link)"
+msgstr "မသိသော လည်ပတ်မှုစနစ် (လင့်ခ်)"
+
+msgid "Unknown OS (Row)"
+msgstr "မသိသော လည်ပတ်မှုစနစ် (စာရင်း)"
+
+msgid "Unknown Browser (Link)"
+msgstr "မသိသော ဘရောင်ဇာ (လင့်ခ်)"
+
+msgid "Unknown Browser (Row)"
+msgstr "မသိသော ဘရောင်ဇာ (စာရင်း)"
+
+msgid "Unknown Screen"
+msgstr "မသိသော မျက်နှာပြင်အရွယ်အစား"
+
+msgid "Login"
+msgstr "အကောင့်အမည်"
+
+msgid "Anonymous"
+msgstr "အမည်မဖော်လို"
+
+msgid "Robots"
+msgstr "စက်ရုပ်များ"
+
+msgid "Different robots"
+msgstr "မတူညီသော စက်ရုပ်များ"
+
+msgid "Hits on robots.txt"
+msgstr "အထက်တွင်ဖော်ပြထားသော ရှာဖွေရေးအင်ဂျင်စက်ရုပ်များမှ ပုံမှန်မဟုတ်သော အသွားအလာများကို အခြားဇယားများတွင် မထည့်သွင်းထားပါ။ '+' နောက်မှ ဂဏန်းသည် 'robots.txt' သို့ အောင်မြင်စွာဝင်ရောက်မှု မှတ်တမ်းအရေအတွက်ဖြစ်သည်"
+
+msgid "Worms"
+msgstr "ကွန်ပျူတာပိုးများ"
+
+msgid "Different worms"
+msgstr "မတူညီသော ကွန်ပျူတာပိုးများ"
+
+msgid "Target"
+msgstr "ပစ်မှတ်"
+
+msgid "Grabber"
+msgstr "ဒေတာဆွဲထုတ်ရေးကိရိယာ"
+
+#------------------------------------------------------------------------------
+# ဖော်မတ် ဖော်ပြချက်များ
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "စာသားဖိုင် (၁၉၆၃ ခုနှစ်တွင် စံသတ်မှတ်ထားသော ASCII၊ ဖော်မတ်မပါသော ရိုးရိုးစာသား။ ဆိုက်ကုဒ်၊ ဖွဲ့စည်းပုံဖိုင်များနှင့် မှတ်တမ်းများ၏ အခြေခံ။ Unix က LF သုံးသည်၊ Windows က CRLF သုံးပြီး စာကြောင်းခွဲသည်၊ ယနေ့ထိ ကွန်ပျူတာ၏ အသုံးအများဆုံး ဒေတာဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_log"
+msgstr "မှတ်တမ်းဖိုင် (စနစ်ဒေတာ၊ အပလီကေးရှင်းလုပ်ဆောင်ချက်အချက်အလက်များကို မှတ်တမ်းတင်သော ရိုးရိုးစာသားဖိုင်၊ ပြဿနာဖြေရှင်းခြင်း၊ စွမ်းဆောင်ရည်ခွဲခြမ်းစိတ်ဖြာခြင်း၊ လုံခြုံရေးစစ်ဆေးခြင်းအတွက် အသုံးပြုသည်။ စံဖော်မတ်များဖြစ်သော Apache combined log၊ Nginx access log၊ syslog စသည်)"
+
+msgid "mime_page"
+msgstr "HTML ဝဘ်စာမျက်နှာ (Tim Berners-Lee သည် ၁၉၈၉ ခုနှစ်တွင် World Wide Web ကို တီထွင်ခဲ့ပြီး ၁၉၉၀ ခုနှစ်တွင် HTML/HTTP/URL နည်းပညာသုံးမျိုးကို သတ်မှတ်ခဲ့သည်၊ မူပိုင်ခွင်မတောင်းဘဲ အခမဲ့ ပေးအပ်ခဲ့သည်။ HTML5 သည် ၂၀၁၄ ခုနှစ်တွင် W3C စံသို့ ရောက်ရှိခဲ့ပြီး ပြသခြင်း၊ မာလ်တီမီဒီယာနှင့် ပုံနှိပ်ခြင်းကို ပံ့ပိုးသည်။ ၂၀၁၆ ခုနှစ်တွင် တူရင်ဆုရရှိခဲ့သည်)"
+
+msgid "mime_khtml"
+msgstr "KHTML ဝဘ်စာမျက်နှာ အင်ဂျင် (၁၉၉၈ ခုနှစ်တွင် KDE 2.0 တွင်ထုတ်ပြန်ခဲ့သည်၊ Konqueror ဘရောင်ဇာ၏ ပြန်ဆိုအင်ဂျင်။ Apple သည် ၂၀၀၁ ခုနှစ်တွင် KHTML ကိုအခြေခံ၍ WebKit ကိုဖန်တီးခဲ့သည်။ Google သည် ၂၀၀၈ ခုနှစ်တွင် WebKit မှ Blink ကိုခွဲထုတ်ဖန်တီးခဲ့ပြီး Chrome၊ Edge၊ Safari စသည့် ဘရောင်ဇာများ၏ အဓိကအချက်အချာဖြစ်လာသည်။ KHTML သည် ခေတ်မီဘရောင်ဇာအင်ဂျင်များအတွက် အုတ်မြစ်ချပေးသော ပွင့်လင်းရင်းမြစ်အသိုင်းအဝိုင်း၏ စံပြဖြစ်ပြီး ၎င်း၏နည်းပညာအမွေအနှစ်သည် WebKit/Blink မှတစ်ဆင့် ယနေ့တိုင်တည်ရှိနေသည်)"
+
+msgid "mime_script"
+msgstr "ဒိုင်နမစ် စကရစ် (အဓိပ္ပာယ်ပြန်ဆိုသော ဘာသာစကား၊ ကွန်ပါလ်ပြုလုပ်ရန်မလို။ ASP၊ JSP၊ CGI၊ ColdFusion၊ Tcl၊ VBScript စသည်တို့ပါဝင်ပြီး အစောပိုင်း ဝဘ်ဖွံ့ဖြိုးရေး၊ စနစ်စီမံခန့်ခွဲမှု၊ အလိုအလျောက်လုပ်ဆောင်ခြင်းလုပ်ငန်းများတွင် ကျယ်ကျယ်ပြန့်ပြန့်အသုံးပြုသည်။ Python၊ Ruby၊ JavaScript ကဲ့သို့သော ခေတ်မီစကရစ်ဘာသာစကားများသည် full-stack ဖွံ့ဖြိုးရေးတွင် အဓိကဘာသာစကားများအဖြစ် ဖွံ့ဖြိုးလာသည်)"
+
+msgid "mime_js"
+msgstr "JavaScript စကရစ် (Brendan Eich သည် ၁၉၉၅ ခုနှစ်တွင် Netscape ၌ ၁၀ ရက်အတွင်း ဖန်တီးခဲ့သည်၊ ဘရောင်ဇာ၏ ဇာတိပရိုဂရမ်းမင်းဘာသာစကား။ ECMAScript ကို ၁၉၉၇ ခုနှစ်တွင် စံသတ်မှတ်ခဲ့သည်။ Node.js သည် ၂၀၀၉ ခုနှစ်တွင် ပေါ်ထွန်းလာပြီး ၎င်းကို full-stack ဘာသာစကားဖြစ်စေခဲ့သည်။ npm သည် ကမ္ဘာ့အကြီးဆုံး ပက်ကေ့ချ်မန်နေဂျာဖြစ်သည်။ GitHub တွင် နှစ်ပေါင်းများစွာ ဆက်တိုက် လူကြိုက်အများဆုံး ပရိုဂရမ်းမင်းဘာသာစကား)"
+
+msgid "mime_py"
+msgstr "Python စကရစ် (Guido van Rossum က ၁၉၉၁ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ အကြိုသတ်မှတ်ထားသော အကွက်ထိုးခြင်း၊ ရိုးရှင်းသော syntax ဖြင့် ကျော်ကြားသည်။ ဝဘ်ဖွံ့ဖြိုးရေး၊ ဒေတာသိပ္ပံ၊ ဉာဏ်ရည်တု၊ အလိုအလျောက်လည်ပတ်ခြင်းတို့တွင် ကျယ်ကျယ်ပြန့်ပြန့်အသုံးပြုသည်။ TIOBE ၏ နှစ်စဉ်ပရိုဂရမ်းမင်းဘာသာစကားဆုကို အကြိမ်များစွာ ရရှိခဲ့သည်)"
+
+msgid "mime_sh"
+msgstr "Shell စကရစ် (Unix ကို ၁၉၇၁ ခုနှစ်တွင် စတင်ခဲ့သည်၊ ညွှန်ကြားချက်စကရစ်ဘာသာစကား။ စနစ်စီမံခန့်ခွဲမှု၊ အလိုအလျောက်လုပ်ဆောင်ခြင်း၊ ဝန်ဆောင်မှုစတင်ခြင်း၊ ဖြန့်ကျက်စကရစ်များအတွက် အသုံးပြုသည်။ Linux စီမံခန့်ခွဲမှုအတွက် မရှိမဖြစ်ကျွမ်းကျင်မှု)"
+
+msgid "mime_rb"
+msgstr "Ruby စကရစ် (Yukihiro Matsumoto က ၁၉၉၅ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ developer များ၏ ပျော်ရွှင်မှုကို အလေးထားသည်။ Ruby on Rails framework သည် 'သတ်မှတ်ချက်ထက် ဖွဲ့စည်းမှု' ဟူသော ဖွံ့ဖြိုးရေးစံနမူနာကို စတင်ခဲ့ပြီး ခေတ်မီဝဘ် framework ဒီဇိုင်းကို လွှမ်းမိုးခဲ့သည်)"
+
+msgid "mime_pl"
+msgstr "Perl စကရစ် (Larry Wall က ၁၉၈၇ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ လက်တွေ့ကျမှုဖြင့် ကျော်ကြားပြီး 'Swiss Army ဓား' ဟု အမည်တွင်သည်။ CPAN သည် ခေတ်မီဘာသာစကား ပက်ကေ့ချ်မန်နေဂျာများ၏ ရှေ့ဆောင်ဖြစ်ပြီး စာသားလုပ်ဆောင်ခြင်း၊ စနစ်စီမံခန့်ခွဲမှုနှင့် CGI နယ်ပယ်များတွင် နက်ရှိုင်းစွာ လွှမ်းမိုးမှုရှိသည်)"
+
+msgid "mime_php"
+msgstr "PHP ဒိုင်နမစ်ဝဘ်စာမျက်နှာ (Rasmus Lerdorf က ၁၉၉၅ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ ဝဘ်ဖွံ့ဖြိုးရေးအတွက် အထူးဒီဇိုင်းထုတ်ထားသည်။ ကမ္ဘာပေါ်ရှိ ဝဘ်ဆိုက်များ၏ ၇၀% ကျော်က အသုံးပြုပြီး WordPress၊ Facebook၊ Wikipedia စသည့် ပလက်ဖောင်းများကို မောင်းနှင်ပေးသည်။ PHP 8 သည် JIT ကွန်ပါလ်ကို မိတ်ဆက်ခဲ့ပြီး စွမ်းဆောင်ရည်ကို သိသိသာသာ မြှင့်တင်ပေးခဲ့သည်)"
+
+msgid "mime_image"
+msgstr "ပုံဖိုင်"
+
+msgid "mime_document"
+msgstr "စာရွက်စာတမ်းဖိုင်"
+
+msgid "mime_package"
+msgstr "ဆော့ဖ်ဝဲလ် ပက်ကေ့ချ်"
+
+msgid "mime_archive"
+msgstr "Gzip ဖိုင်ချုံ့ (၁၉၉၂ ခုနှစ်တွင် GNU ပရောဂျက်၊ DEFLATE အယ်လဂိုရီသမ်ကို အခြေခံသည်။ ဝဘ်တွင် ဒိုင်နမစ်တုံ့ပြန်မှု အကြောင်းအရာကို ချုံ့ရန် အသုံးပြုသည်၊ ချုံ့နှုန်းမှာ ပုံမှန်အားဖြင့် ၆၀-၉၀% ဖြစ်သည်။ ၂၀၁၅ ခုနှစ်နောက်ပိုင်း အချို့ကိစ္စများတွင် Brotli ဖြင့် အစားထိုးခဲ့သော်လည်း ဆာဗာဘက်တွင် အကျယ်ပြန့်ဆုံးပံ့ပိုးထားသော ချုံ့ဖော်မတ်အဖြစ် ရှိနေဆဲဖြစ်သည်)"
+
+msgid "mime_audio"
+msgstr "အသံဖိုင်"
+
+msgid "mime_video"
+msgstr "ဗီဒီယိုဖိုင်"
+
+msgid "mime_jscript"
+msgstr "JavaScript (Brendan Eich မှ ၁၉၉၅ ခုနှစ်တွင် တီထွင်ခဲ့သည်)"
+
+msgid "mime_json"
+msgstr "JSON ဒေတာ (Douglas Crockford က ၂၀၀၁ ခုနှစ်တွင် အဆိုပြုခဲ့သည်၊ ပေါ့ပါးသော ဒေတာဖလှယ်မှုဖော်မတ်၊ Web API ၏ တကယ့်စံနှုန်း)"
+
+msgid "mime_vbs"
+msgstr "VBScript (Microsoft က ၁၉၉၆ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Windows စကရစ်ဘာသာစကား၊ ASP ဝဘ်စာမျက်နှာများနှင့် Windows စီမံခန့်ခွဲမှုစကရစ်များအတွက် အသုံးပြုသည်။ PowerShell နှင့် JavaScript များ ကျယ်ပြန့်လာသည်နှင့်အမျှ တဖြည်းဖြည်း ခေတ်နောက်ကျသွားပြီဖြစ်သည်)"
+
+msgid "mime_conf"
+msgstr "ဖွဲ့စည်းပုံဖိုင် (စာသားဖော်မတ်ဖြင့် ဆော့ဖ်ဝဲလ်ဖွဲ့စည်းပုံကို သိမ်းဆည်းသည်၊ အသုံးများသော ဖော်မတ်များ- INI၊ JSON၊ YAML၊ TOML၊ XML။ Linux စနစ်ဖွဲ့စည်းပုံများသည် /etc လမ်းညွှန်တွင် အများစုရှိသည်)"
+
+msgid "mime_css"
+msgstr "CSS စတိုင်စာရွက် (W3C သည် ၁၉၉၆ ခုနှစ် ဒီဇင်ဘာလတွင် CSS1 ပထမဆုံးတရားဝင်စံနှုန်းကို ထုတ်ပြန်ခဲ့သည်၊ CSS2 သည် ၁၉၉၈ ခုနှစ်တွင် နေရာချခြင်းနှင့် မီဒီယာအမျိုးအစားများကို ထည့်သွင်းခဲ့သည်၊ ၂၀၁၁ ခုနှစ်မှစ၍ CSS3 မော်ဂျူလာသည် ထောင့်ဝိုင်းခြင်း၊ ကာတွန်း၊ ပြောင်းသေတ္တာ၊ ဇယားကွက်အပြင်အဆင်နှင့် တုံ့ပြန်မှုဒီဇိုင်းတို့ကို မိတ်ဆက်ခဲ့သည်။ HTML နှင့် JavaScript တို့နှင့်အတူ front-end ၏ အဓိကနည်းပညာသုံးခုမှတစ်ခုဖြစ်ပြီး ခေတ်မီဘရောင်ဇာများအားလုံး (Chrome၊ Firefox၊ Safari၊ Edge) က ဇာတိအဖြစ် ပံ့ပိုးထားကာ ဝဘ်စာမျက်နှာစတိုင်သတ်မှတ်ခြင်း၏ တစ်ခုတည်းသော စံနှုန်းဖြစ်သည်)"
+
+msgid "mime_xsl"
+msgstr "XSL စတိုင်စာရွက် (၁၉၉၉ ခုနှစ်တွင် W3C စံနှုန်း၊ XML စာရွက်စာတမ်းပြောင်းလဲခြင်းဘာသာစကား၊ XML ကို HTML/PDF/စာသားအဖြစ်သို့ ပြောင်းလဲနိုင်သည်။ JSON ကျယ်ပြန့်လာပြီးနောက် အသုံးပြုမှုလျော့နည်းသွားသည်)"
+
+msgid "mime_runtime"
+msgstr "လုပ်ဆောင်နိုင်သောဖိုင် (EXE၊ ELF၊ Mach-O စသည့် လည်ပတ်မှုစနစ်၏ လုပ်ဆောင်နိုင်သော ဖော်မတ်၊ စက်ကုဒ်နှင့် loading အချက်အလက်များ ပါဝင်သည်)"
+
+msgid "mime_library"
+msgstr "လိုင်ဘရေရီဖိုင် (DLL၊ SO၊ dylib စသည့် ဒိုင်နမစ်လင့်ခ်လိုင်ဘရေရီများ၊ ပရိုဂရမ်လည်ပတ်နေချိန်တွင် loading လုပ်သော မျှဝေထားသည့်ကုဒ်)"
+
+msgid "mime_swf"
+msgstr "Flash ကာတွန်း (Macromedia က ၁၉၉၆ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ နောက်ပိုင်း Adobe ပိုင်ဆိုင်သည်။ အပြန်အလှန်တုံ့ပြန်နိုင်သော ဝဘ်ကာတွန်းစံနှုန်း၊ တစ်ချိန်က အင်တာနက်ပေါ်ရှိ ဂိမ်းများနှင့် ကာတွန်းများကို လွှမ်းမိုးခဲ့သည်။ အားနည်းချက်များ- plugin ပေါ်မှီခိုမှု၊ မိုဘိုင်းပံ့ပိုးမှုမရှိ၊ လုံခြုံရေးအန္တရာယ်မြင့်မားမှု။ Adobe က ၂၀၁၇ ခုနှစ်တွင် ဖယ်ရှားမည်ဟုကြေငြာခဲ့ပြီး ၂၀၂၀ ခုနှစ်တွင် ပံ့ပိုးမှုအားလုံးကို ရပ်ဆိုင်းခဲ့ကာ HTML5/CSS3/JS ဖြင့် အစားထိုးခဲ့သည်)"
+
+msgid "mime_dtd"
+msgstr "DTD (Document Type Definition) (XML သတ်မှတ်ချက်၊ XML စာရွက်စာတမ်းဖွဲ့စည်းပုံကို သတ်မှတ်သည်၊ XML ၏ မှန်ကန်မှုကို အတည်ပြုရန် အသုံးပြုသည်)"
+
+msgid "mime_csv"
+msgstr "CSV ဒေတာဖော်မတ် (comma-separated values၊ အသုံးများသော စားပွဲဒေတာဖော်မတ်၊ Excel နှင့် ဒေတာဘေ့စ် တင်သွင်းခြင်းနှင့် ထုတ်ယူခြင်း စံနှုန်း)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (Java အပလီကေးရှင်း စတင်သည့်ကိရိယာ၊ ၂၀၀၀ ပြည့်လွန်နှစ်များတွင် Java desktop အပလီကေးရှင်း ဖြန့်ချိရေးနည်းပညာ၊ ယခုအခါ ဖယ်ရှားပြီးဖြစ်သည်)"
+
+msgid "mime_lit"
+msgstr "Microsoft Reader အီးဘွတ်ခ် (Microsoft က ၂၀၀၀ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်، LIT ဖော်မတ်၊ ဖယ်ရှားပြီးဖြစ်သည်)"
+
+msgid "mime_svg"
+msgstr "SVG ဗက်တာဂရပ်ဖစ် (၁၉၉၉ ခုနှစ်တွင် W3C စံနှုန်း၊ Microsoft က ၎င်း၏ကိုယ်ပိုင် VML ဖော်မတ်ကို ကြာရှည်စွာ တွန်းအားပေးခဲ့သောကြောင့် IE ဘရောင်ဇာသည် ၂၀၁၁ ခုနှစ်အထိ ပံ့ပိုးမှုရှိခဲ့ကာ ဖြန့်ကျက်မှုကို နှောင့်နှေးစေခဲ့သည်။ ၂၀၁၅ ခုနှစ်နောက်ပိုင်း IE ဖယ်ရှားခံရပြီး မြင့်မားသော ရုပ်ထွက်မျက်နှာပြင်များ ဖြန့်ကျက်လာသည်နှင့်အမျှ အိုင်ကွန်များနှင့် လိုဂိုများအတွက် ရွေးချယ်စရာဖော်မတ်ဖြစ်လာသည်)"
+
+msgid "mime_ai"
+msgstr "Adobe Illustrator ဗက်တာဂရပ်ဖစ် (၁၉၈၇ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ စက်မှုလုပ်ငန်းသုံး ဗက်တာဂရပ်ဖစ်ဖော်မတ်၊ ပုံနှိပ်ဒီဇိုင်း၊ လိုဂို၊ အိုင်ကွန်များအတွက် ရွေးချယ်စရာ)"
+
+msgid "mime_phshop"
+msgstr "Photoshop ရုပ်ပုံ (Adobe က ၁၉၉၀ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Photoshop ၏ မူရင်းဖိုင်ဖော်မတ် PSD၊ ရုပ်ပုံလုပ်ဆောင်ခြင်း စက်မှုလုပ်ငန်းစံနှုန်း)"
+
+msgid "mime_ttf"
+msgstr "TrueType ဖောင့် (Apple နှင့် Microsoft တို့က ၁၉၈၉ ခုနှစ်တွင် ပူးတွဲဖန်တီးခဲ့သည်၊ ဗက်တာဖောင့်ဖော်မတ်၊ မျက်နှာပြင်ပေါ်တွင်ပြသခြင်းနှင့် ပုံနှိပ်ခြင်းတို့ တူညီသည်၊ ခေတ်မီလည်ပတ်မှုစနစ်များ၏ မူရင်းဖောင့်ဖော်မတ်)"
+
+msgid "mime_fon"
+msgstr "WOFF2 ဝဘ်ဖောင့် (W3C က ၂၀၁၄ ခုနှစ်တွင် အကြံပြုခဲ့သည်၊ Brotli ချုံ့အယ်လဂိုရီသမ်ကို အသုံးပြုသည်၊ WOFF အဟောင်းနှင့် နှိုင်းယှဉ်ပါက အရွယ်အစား ၃၀% ခန့် လျော့ကျပြီး TTF/OTF နှင့် နှိုင်းယှဉ်ပါက ၅၀% ကျော် လျော့ကျသည်၊ ယခုအခါ ခေတ်မီဘရောင်ဇာများအားလုံးက ပံ့ပိုးထားပြီး ခေတ်မီဝဘ်ဖောင့်အတွက် ရွေးချယ်စရာဖော်မတ်ဖြစ်ကာ ဘရောင်ဇာ ၉၈% ကျော်က ပံ့ပိုးထားသည်)"
+
+msgid "mime_pdf"
+msgstr "PDF စာရွက်စာတမ်း (Adobe က ၁၉၉၃ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ ၂၀၀၈ ခုနှစ်တွင် ISO စံနှုန်းဖြစ်လာသည်။ Cross-platform စာရွက်စာတမ်းဖော်မတ်၊ ဖော်မတ်တစ်ပုံစံတည်းကို ထိန်းသိမ်းထားပြီး အီလက်ထရွန်းနစ်စာရွက်စာတမ်းဖြန့်ချိရေး၏ ကမ္ဘာ့စံနှုန်းဖြစ်သည်)"
+
+msgid "mime_dotnet"
+msgstr "ASP.NET ဒိုင်နမစ်စာမျက်နှာ (Microsoft က ၂၀၀၂ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Windows ပလက်ဖောင်းပေါ်ရှိ ဒိုင်နမစ်ဝဘ်စာမျက်နှာနည်းပညာ၊ .NET Framework ၏ အစိတ်အပိုင်းတစ်ခု)"
+
+msgid "mime_mdb"
+msgstr "Access ဒေတာဘေ့စ် (Microsoft Access ဒေတာဘေ့စ်ဖိုင်၊ ၁၉၉၂ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Windows desktop ဒေတာဘေ့စ်ဖြေရှင်းချက်)"
+
+msgid "mime_md"
+msgstr "Markdown စာရွက်စာတမ်း (John Gruber က ၂၀၀၄ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ syntax ဒီဇိုင်းသည် reStructuredText နှင့် Setext တို့၏ လွှမ်းမိုးမှုကို ခံခဲ့ရသည်။ အဓိကဒီဇိုင်းအတွေးအခေါ်မှာ 'ဖတ်နိုင်သည် သက်ရောက်နိုင်သည်' ဖြစ်သည်။ မူရင်း Markdown.pl သည် Perl ပုံမှန်အသုံးအနှုန်းကို အသုံးပြုသည်။ ဆက်ခံသတ်မှတ်ချက်များတွင် GFM (၂၀၁၃)၊ CommonMark (၂၀၁၇)၊ Pandoc Markdown စသည်တို့ ပါဝင်သည်။ GitHub၊ GitLab၊ Stack Overflow၊ Jupyter Notebook၊ Obsidian၊ Hugo၊ VitePress ကဲ့သို့သော ဂေဟစနစ်များကို မောင်းနှင်ပေးပြီး static site generator များနှင့် developer စာရွက်စာတမ်းများအတွက် တကယ့်စံနှုန်းဖော်မတ်ဖြစ်လာသည်)"
+
+msgid "mime_crystal"
+msgstr "Crystal Reports အစီရင်ခံစာဖော်မတ် (SAP ၏ လုပ်ငန်းဆိုင်ရာ ဉာဏ်ရည်အစီရင်ခံစာ၊ စံသတ်မှတ်ထားသော လုပ်ငန်းသုံးအစီရင်ခံစာဖော်မတ်)"
+
+msgid "mime_libreoffice"
+msgstr "LibreOffice စာရွက်စာတမ်း (The Document Foundation က ၂၀၁၀ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ OpenOffice ၏ အကိုင်းအခက်တစ်ခု၊ ODF စံနှုန်းကို အကောင်အထည်ဖော်သည်၊ ပင်မရေစီးကြောင်း open-source ရုံးသုံးအစီအစဉ်အစု)"
+
+msgid "mime_encrypt"
+msgstr "စာဝှက်ဖိုင် (ဖိုင်ကိုကြည့်ရှုရန် စာဝှက်ဖြေရမည်၊ အသုံးများသော extension များ- .enc၊ .crypt၊ .pgp၊ .gpg)"
+
+msgid "mime_gpx"
+msgstr "GPS လမ်းကြောင်းဒေတာ (GPS ဖလှယ်မှုဖော်မတ်၊ ပထဝီဝင်တည်နေရာဒေတာကို မှတ်တမ်းတင်သည်၊ အားကစားနာရီများနှင့် လမ်းညွှန်ကိရိယာများအတွက် အသုံးများသော ဖော်မတ်)"
+
+msgid "mime_diskimage"
+msgstr "ဒစ်ခ်ပုံရိပ် (DMG၊ ISO၊ IMG စသည့် optical disk/disk image ဖိုင်များ၊ ဆော့ဖ်ဝဲလ်ဖြန့်ချိရန် သို့မဟုတ် သိုလှောင်မီဒီယာ အရန်သိမ်းရန် အသုံးပြုသည်)"
+
+msgid "mime_vm"
+msgstr "virtual machine ပုံရိပ် (VMDK၊ VDI၊ VHDX၊ OVA စသည့် virtual machine disk ဖိုင်များ၊ VMware၊ VirtualBox၊ Hyper-V ကဲ့သို့သော virtualization ပလက်ဖောင်းများအတွက် ဖော်မတ်)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent အစေ့ဖိုင် (Bram Cohen က ၂၀၀၁ ခုနှစ်တွင် တီထွင်ခဲ့သည်၊ P2P ဒေါင်းလုဒ် အညွှန်းဖိုင်၊ ဖိုင် meta data နှင့် Tracker အချက်အလက်များ ပါဝင်သည်)"
+
+msgid "mime_gis"
+msgstr "GIS ပထဝီဝင်အချက်အလက်စနစ်ဒေတာ (Shapefile၊ GeoJSON စသည့် ပထဝီဝင်နေရာဒေသဆိုင်ရာ ဒေတာဖော်မတ်များ၊ မြေပုံနှင့် spatial analysis အတွက် အသုံးပြုသည်)"
+
+msgid "mime_ebook"
+msgstr "အီးဘွတ်ခ် (EPUB၊ MOBI၊ AZW စသည့် အီးဘွတ်ခ်ဖော်မတ်များ။ EPUB သည် နိုင်ငံတကာစံနှုန်းဖြစ်ပြီး MOBI/AZW သည် Amazon Kindle အတွက် ဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_avif"
+msgstr "AVIF ရုပ်ပုံ (Alliance for Open Media က ၂၀၁၉ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ AV1 ကုဒ်အခြေခံထားပြီး WebP ထက် ၅၀% ပိုမိုမြင့်မားသော ချုံ့နှုန်းရှိသည်၊ မျိုးဆက်သစ် ဝဘ်ရုပ်ပုံစံနှုန်း)"
+
+msgid "mime_markdown"
+msgstr "Markdown စာရွက်စာတမ်း (John Gruber က ၂၀၀၄ ခုနှစ်တွင် ဒီဇိုင်းထုတ်ခဲ့သည်၊ ပေါ့ပါးသော markup ဘာသာစကား၊ GitHub README၊ နည်းပညာစာရွက်စာတမ်းများ၊ ဖိုရမ်ပို့စ်များအတွက် အသုံးများသော ဖော်မတ်)"
+
+msgid "mime_yaml"
+msgstr "YAML ဖွဲ့စည်းမှု (Clark Evans က ၂၀၀၁ ခုနှစ်တွင် ဒီဇိုင်းထုတ်ခဲ့သည်၊ လူဖတ်နိုင်သော ဒေတာ serialization ဖော်မတ်၊ Kubernetes၊ Ansible၊ Docker Compose တို့အတွက် ဖွဲ့စည်းမှုဖိုင်စံနှုန်း)"
+
+msgid "mime_toml"
+msgstr "TOML ဖွဲ့စည်းမှု (Tom Preston-Werner က ၂၀၁၃ ခုနှစ်တွင် ဒီဇိုင်းထုတ်ခဲ့သည်၊ 'Tom's Obvious Minimal Language'၊ Rust/Cargo၊ Python/pip၊ Go စသည့် ခေတ်မီကိရိယာများအတွက် ဖွဲ့စည်းမှုဖိုင်ဖော်မတ်)"
+
+msgid "mime_vue"
+msgstr "Vue ကွန်ပိုနင့်ဖိုင် (Evan You မှ 2014 ခုနှစ်တွင် မိတ်ဆက်ခဲ့သော တိုးတက်သော JavaScript frame work ။ Single-file component (SFC) များမှတစ်ဆင့် HTML, CSS နှင့် JS တို့ကို ပြီးပြည့်စုံစွာ ပေါင်းစပ်ကာ ဖွံ့ဖြိုးရေး စွမ်းဆောင်ရည်ကို များစွာ မြှင့်တင်ပေးသည်။ ၎င်းသည် ကမ္ဘာ့အကျော်ကြားဆုံး frontend frame work များထဲမှ တစ်ခုဖြစ်သည်။ ထို့အပြင် VitePress ကဲ့သို့သော ခေတ်မီ static site generator များ၏ core အဖြစ် interactive technical documentation နှင့် blog များကို မောင်းနှင်ရန် ကျယ်ကျယ်ပြန့်ပြန့် အသုံးပြုသည်။)"
+
+msgid "mime_wasm"
+msgstr "WebAssembly module (၂၀၁၇ ခုနှစ်တွင် W3C စံနှုန်း၊ ဘရောင်ဇာတွင် စွမ်းဆောင်ရည်မြင့်မားစွာ လုပ်ဆောင်နိုင်သော ဖော်မတ်၊ C/C++/Rust/R ကို ပစ်မှတ်အဖြစ် ကွန်ပါလ်ပြုလုပ်နိုင်ပြီး ဇာတိစွမ်းဆောင်ရည်နှင့် နီးစပ်သည်)"
+
+msgid "mime_jsx"
+msgstr "React JSX အစိတ်အပိုင်း (Facebook က ၂၀၁၃ ခုနှစ်တွင် JavaScript XML ကို မိတ်ဆက်ခဲ့သည်၊ React framework ၏ အစိတ်အပိုင်း syntax၊ HTML ကို JavaScript တွင် ရေးသားနိုင်သော ဆန်းသစ်မှု)"
+
+msgid "mime_tsx"
+msgstr "TypeScript TSX အစိတ်အပိုင်း (Microsoft က ၂၀၁၂ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ TypeScript + JSX၊ React အမျိုးအစား-လုံခြုံရေး ဖွံ့ဖြိုးရေးအတွက် စံရေးနည်း)"
+
+msgid "mime_heif"
+msgstr "HEIF ရုပ်ပုံ (၂၀၁၅ ခုနှစ်တွင် MPEG စံနှုန်း၊ စွမ်းဆောင်ရည်မြင့် ရုပ်ပုံဖိုင်ဖော်မတ်၊ Apple ဂေဟစနစ်တွင် ကျယ်ကျယ်ပြန့်ပြန့် အသုံးပြုသည်)"
+
+msgid "mime_heic"
+msgstr "HEIC ရုပ်ပုံ (Apple ၏ HEIF အကောင်အထည်ဖော်မှု၊ iPhone ၏ မူရင်းဓာတ်ပုံဖော်မတ်၊ iOS/macOS တွင် ဇာတိပံ့ပိုးမှုရှိသည်)"
+
+msgid "mime_gltf"
+msgstr "GLTF 3D မော်ဒယ် (GL transmission format၊ '3D ၏ JPEG'၊ Khronos Group က ၂၀၁၅ ခုနှစ်တွင် ထုတ်ပြန်ခဲ့သည်၊ Web 3D စံဖော်မတ်)"
+
+msgid "mime_glb"
+msgstr "GLB binary 3D မော်ဒယ် (GLTF ၏ binary ဗားရှင်း၊ ဖိုင်တစ်ခုတည်းတွင် အရင်းအမြစ်အားလုံးပါဝင်ပြီး 3D မြင်ကွင်းများ ဖြန့်ချိရန် အသုံးပြုသည်)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY ဝေါဟာရ (ဝေါဟာရအဓိပ္ပာယ်ဖွင့်ဆိုချက်ဖိုင်၊ စာရွက်စာတမ်းစနစ်တွင် ဝေါဟာရများကို စီမံခန့်ခွဲရန် အသုံးပြုသည်)"
+
+msgid "mime_cbz"
+msgstr "CBZ ရုပ်ပြ (ZIP ဖြင့် ချုံ့ထားသော ရုပ်ပြပုံများ၊ ရုပ်ပြစုဆောင်းမှုအတွက် အသုံးများသော ဖော်မတ်)"
+
+msgid "mime_cbr"
+msgstr "CBR ရုပ်ပြ (RAR ဖြင့် ချုံ့ထားသော ရုပ်ပြပုံများ၊ ရုပ်ပြစုဆောင်းမှုအတွက် အသုံးများသော ဖော်မတ်)"
+
+msgid "mime_fb2"
+msgstr "FB2 အီးဘွတ်ခ် (FictionBook 2.0၊ ရုရှားအီးဘွတ်ခ်ဖော်မတ်၊ XML ဖွဲ့စည်းပုံ၊ open-source စာဖတ်သူများက ကျယ်ကျယ်ပြန့်ပြန့် ပံ့ပိုးထားသည်)"
+
+msgid "mime_kepub"
+msgstr "KEPUB အီးဘွတ်ခ် (Kobo အတွက် သီးသန့် EPUB ဖော်မတ်၊ Kobo အီးဘွတ်ခ်စာဖတ်သူအတွက် အကောင်းဆုံးဖြစ်အောင် ပြုလုပ်ထားသော ဖော်မတ်)"
+
+msgid "mime_m4b"
+msgstr "M4B အသံစာအုပ် (MPEG-4 အသံစာအုပ်ဖော်မတ်၊ စာညှပ်များကို ပံ့ပိုးသည်၊ iTunes အသံစာအုပ်ဖော်မတ်)"
+
+msgid "mime_kfx"
+msgstr "Kindle KFX ဖော်မတ် (Amazon က ၂၀၁၅ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Kindle အတွက် သီးသန့်အီးဘွတ်ခ်ဖော်မတ်၊ ပိုမိုကောင်းမွန်သော အပြင်အဆင်နှင့် စာမျက်နှာအမြန်လှန်ခြင်းကို ပံ့ပိုးသည်)"
+
+msgid "mime_chm"
+msgstr "CHM အကူအညီဖိုင် (Microsoft က ၁၉၉၇ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ စုစည်းထားသော HTML အကူအညီဖော်မတ်၊ Windows ဆော့ဖ်ဝဲလ် အကူအညီစာရွက်စာတမ်း စံနှုန်း)"
+
+msgid "mime_mht"
+msgstr "MHT ဝဘ်မော်ကွန်း (Microsoft က ၁၉၉၉ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ ဖိုင်တစ်ခုတည်းပါဝင်သော ဝဘ်စာမျက်နှာဖော်မတ်၊ IE ဘရောင်ဇာ၏ ဝဘ်စာမျက်နှာသိမ်းဆည်းမှုဖော်မတ်)"
+
+msgid "mime_wml"
+msgstr "WML ကြိုးမဲ့အမှတ်အသားဘာသာစကား (၁၉၉၉ ခုနှစ်တွင် WAP စံနှုန်း၊ အစောပိုင်း အခြေခံဖုန်းများ၏ ဝဘ်စာမျက်နှာဖိုင်များအတွက် အသုံးပြုခဲ့ပြီး ဖယ်ရှားပြီးဖြစ်သည်)"
+
+msgid "mime_xhtml"
+msgstr "XHTML ဝဘ်စာမျက်နှာ (၂၀၀၀ ခုနှစ်တွင် W3C စံနှုန်း၊ HTML ၏ XML ဗားရှင်း၊ syntax ပိုမိုတင်းကျပ်သည်။ W3C က ၂၀၀၉ ခုနှစ်တွင် ပြုပြင်ထိန်းသိမ်းမှုကို ရပ်ဆိုင်းခဲ့ပြီး အာရုံစိုက်မှုကို HTML5 သို့ ပြောင်းလဲခဲ့သည်)"
+
+msgid "mime_xml"
+msgstr "XML စာရွက်စာတမ်း (၁၉၉၈ ခုနှစ်တွင် W3C စံနှုန်း၊ portable markup ဘာသာစကား၊ ဝဘ်ဝန်ဆောင်မှုများ၊ ဖွဲ့စည်းပုံဖိုင်များ၊ ဒေတာဖလှယ်ခြင်းအတွက် အခြေခံဖော်မတ်)"
+
+msgid "mime_sgml"
+msgstr "SGML စာရွက်စာတမ်း (၁၉၈၆ ခုနှစ်တွင် ISO စံနှုန်း၊ HTML ၏ ရှေ့ပြေးပုံစံ၊ စံသတ်မှတ်ထားသော ယေဘုယျ markup ဘာသာစကား၊ XML နှင့် HTML နှစ်ခုစလုံးသည် SGML မှ ဆင်းသက်လာသည်)"
+
+msgid "mime_apng"
+msgstr "APNG ကာတွန်း (Mozilla က ၂၀၀၄ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ PNG ၏ ကာတွန်း extension၊ GIF ၏ ခေတ်မီအစားထိုး၊ အရောင်အစစ်နှင့် ပွင့်လင်းမြင်သာမှုကို ပံ့ပိုးသည်)"
+
+msgid "mime_bmp"
+msgstr "BMP ဘစ်မြေပုံ (Windows ဘစ်မြေပုံဖော်မတ်၊ Windows 1.0 မှ စတင်၍ ပင်ကိုယ်ပံ့ပိုးထားသည်။ ချုံ့မထားသော၊ ဖိုင်အရွယ်အစားကြီးမားသော်လည်း၊ ရိုးရှင်းသောဖွဲ့စည်းပုံနှင့် ကုဒ်ဒက်များ ထပ်မံမလိုအပ်သောကြောင့်၊ Windows 11 ၏ ဖြတ်တောက်ရေးကိရိယာ၊ Paint ပရိုဂရမ်၊ EXE/MSI တပ်ဆင်မှုပက်ကေ့ချ်များရှိ အိုင်ကွန်အရင်းအမြစ်များ၊ ကာဆာဖိုင်များနှင့် ဒရိုက်ဗာအဟောင်းအချို့တွင် ယနေ့တိုင် အသုံးပြုဆဲဖြစ်သည်။ တူညီသောရုပ်ပုံအရည်အသွေးတွင်၊ ဖိုင်အရွယ်အစားသည် PNG ထက် ၃-၁၀ ဆ ခန့် ပိုကြီးသည်။ ကိစ္စအများစုတွင် PNG/JPEG ဖြင့် အစားထိုးခံရပြီးဖြစ်သော်လည်း၊ Windows ဂေဟစနစ်သည် ကျယ်ပြန့်သော လိုက်ဖက်ညီမှုကို ဆက်လက်ထိန်းသိမ်းထားဆဲဖြစ်သည်)"
+
+msgid "mime_cdr"
+msgstr "CDR ဗက်တာဂရပ်ဖစ် (CorelDRAW အတွက် သီးသန့်ဖော်မတ်၊ ကနေဒါနိုင်ငံ Corel ကုမ္ပဏီ၊ ဗက်တာဂရပ်ဖစ်ဒီဇိုင်းဆော့ဖ်ဝဲလ်)"
+
+msgid "mime_gif"
+msgstr "GIF ရုပ်ပုံ (CompuServe က ၁၉၈၇ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ ၂၅၆ ရောင်ရှိသော ကာတွန်းရုပ်ပုံဖော်မတ်။ အားနည်းချက်များ- အရောင်နည်းခြင်း၊ ရုပ်ပုံအရည်အသွေး ကြမ်းတမ်းခြင်း၊ ပွင့်လင်းမြင်သာမှုကို မပံ့ပိုးခြင်း၊ ဖိုင်ကြီးခြင်း၊ frame rate နိမ့်ခြင်း။ APNG၊ WebP ကဲ့သို့သော ခေတ်မီကာတွန်းရုပ်ပုံဖော်မတ်များဖြင့် အစားထိုးခဲ့သည်)"
+
+msgid "mime_ico"
+msgstr "ICO အိုင်ကွန် (Windows အိုင်ကွန်ဖိုင်ဖော်မတ်၊ ဘက်စုံကြည်လင်ပြတ်သားမှုကို ပံ့ပိုးသည်၊ ဝဘ်ဆိုက် favicon အတွက် စံဖော်မတ်)"
+
+msgid "mime_jpeg"
+msgstr "JPEG ရုပ်ပုံ (၁၉၉၂ ခုနှစ်တွင် ISO စံနှုန်း၊ ဓာတ်ပုံများအတွက် ဆုံးရှုံးမှုရှိသော ချုံ့ဖော်မတ်၊ အင်တာနက်ပေါ်ရှိ ဓာတ်ပုံများအတွက် တကယ့်စံနှုန်း)"
+
+msgid "mime_jpg"
+msgstr "JPEG ရုပ်ပုံ (၁၉၉၂ ခုနှစ်တွင် ISO စံနှုန်း၊ ဓာတ်ပုံများအတွက် ဆုံးရှုံးမှုရှိသော ချုံ့ဖော်မတ်၊ အင်တာနက်ပေါ်ရှိ ဓာတ်ပုံများအတွက် တကယ့်စံနှုန်း)"
+
+msgid "mime_png"
+msgstr "PNG ရုပ်ပုံ (W3C က ၁၉၉၆ ခုနှစ်တွင် အကြံပြုခဲ့သည်၊ အရောင်အစစ်နှင့် ပွင့်လင်းမြင်သာမှုကို ပံ့ပိုးသည်၊ GIF ၏ တည်ငြိမ်သော အစားထိုး၊ အင်တာနက်ပေါ်ရှိ ဆုံးရှုံးမှုမရှိသော ရုပ်ပုံစံနှုန်း)"
+
+msgid "mime_ps"
+msgstr "PostScript စာမျက်နှာဖော်ပြချက်ဖိုင် (Adobe က ၁၉၈၅ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ စာမျက်နှာဖော်ပြချက်ဘာသာစကား၊ PDF ၏ ရှေ့ပြေးပုံစံ၊ ပုံနှိပ်ခြင်းနှင့် ထုတ်ဝေခြင်းအတွက် အသုံးပြုသည်)"
+
+msgid "mime_psb"
+msgstr "PSB ကြီးမားသောစာရွက်စာတမ်း (Adobe Photoshop ၏ အလွန်ကြီးမားသော ရုပ်ပုံဖော်မတ်၊ ၂ GB သို့မဟုတ် ၃၀၀၀၀ pixel ထက်ကြီးသော ဧရာမရုပ်ပုံများကို ပံ့ပိုးသည်)"
+
+msgid "mime_psd"
+msgstr "PSD ရုပ်ပုံ (Adobe Photoshop ၏ မူရင်းဖိုင်၊ အလွှာများ၊ ချန်နယ်များ၊ လမ်းကြောင်းများကို ပံ့ပိုးသည်၊ ရုပ်ပုံလုပ်ဆောင်ခြင်း စက်မှုလုပ်ငန်းစံဖော်မတ်)"
+
+msgid "mime_webp"
+msgstr "WebP ရုပ်ပုံ (Google က ၂၀၁၀ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ ဝဘ်ရုပ်ပုံဖော်မတ်၊ ဆုံးရှုံးမှုရှိ/မရှိ ချုံ့ခြင်းနှင့် ကာတွန်းကို ပံ့ပိုးသည်၊ PNG ထက် ၂၅-၃၅% နှင့် JPEG ထက် ၂၅% ပိုမိုမြင့်မားသော ချုံ့နှုန်းရှိသည်)"
+
+msgid "mime_woff"
+msgstr "WOFF ဝဘ်ဖောင့် (၂၀၀၉ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ ၂၀၁၈ ခုနှစ်တွင် W3C စံနှုန်း။ TrueType/OpenType ကိုအခြေခံပြီး ချုံ့ထားသည်၊ ဝဘ်ဖောင့်တင်ခြင်းအတွက် အကောင်းဆုံးဖြစ်အောင်ပြုလုပ်ထားပြီး ခေတ်မီဝဘ်ဆိုက်အိုင်ကွန်ဖောင့်များအတွက် စံဖော်မတ်)"
+
+msgid "mime_7z"
+msgstr "7z ချုံ့ထားသောဖိုင် (Igor Pavlov က ၁၉၉၉ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ 7-Zip ပရိုဂရမ်၏ သီးသန့်ဖော်မတ်။ LZMA algorithm၊ မြင့်မားသော ချုံ့နှုန်း၊ open-source နှင့် အခမဲ့။ ချုံ့နှုန်းတူညီသော 7z ဖော်မတ်သည် ZIP ထက် ၃၀-၅၀% သေးငယ်လေ့ရှိပြီး open-source အသိုင်းအဝိုင်းနှင့် ဆော့ဖ်ဝဲလ်ဖြန့်ချိမှုအတွက် အသုံးများသော ဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_ace"
+msgstr "ACE ချုံ့ထားသောဖိုင် (၁၉၉၀ ပြည့်လွန်နှစ်များတွင် ဖန်တီးခဲ့သည်၊ WinACE ပရိုဂရမ်ဖော်မတ်။ RAR နှင့် တစ်ချိန်က ယှဉ်ပြိုင်ခဲ့ပြီး ချုံ့နှုန်းအတော်အတန်မြင့်မားသည်။ ၂၀၀၇ ခုနှစ်တွင် ဖွံ့ဖြိုးတိုးတက်မှုရပ်ဆိုင်းခဲ့ပြီး ယခုအခါ 7z/RAR ဖြင့် အစားထိုးခဲ့ကာ အသုံးနည်းပါးလာသည်)"
+
+msgid "mime_bz2"
+msgstr "BZIP2 ချုံ့ထားသောဖိုင် (Julian Seward က ၁၉၉၆ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ block sorting compression algorithm။ GZIP ထက် ၁၅-၂၀% ပိုမိုမြင့်မားသော ချုံ့နှုန်းရှိသော်လည်း နှေးကွေးသည်။ Linux kernel source code, open-source ဆော့ဖ်ဝဲလ်ပက်ကေ့ချ်များအတွက် အသုံးများသော ဖော်မတ်၊ extension .bz2)"
+
+msgid "mime_cab"
+msgstr "CAB ချုံ့ထားသောဖိုင် (Microsoft က ၁၉၉၅ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Cabinet ဖော်မတ်။ Windows တပ်ဆင်မှုပက်ကေ့ချ်ဖော်မတ်၊ driver များ၊ system files ဖြန့်ချိမှုအတွက် အသုံးပြုသည်။ Windows Installer (MSI) သည် ဖိုင်များကို သိမ်းဆည်းရန် CAB ကို အတွင်းပိုင်းတွင် အသုံးပြုသည်)"
+
+msgid "mime_dmg"
+msgstr "DMG disk image (Apple က ၁၉၈၀ ပြည့်လွန်နှစ်များတွင် မိတ်ဆက်ခဲ့သည်၊ Disk Image ဖော်မတ်။ macOS ဆော့ဖ်ဝဲလ်ဖြန့်ချိမှု စံဖော်မတ်၊ ဒက်စ်တော့ပေါ်တွင် double-click နှိပ်ခြင်းဖြင့် virtual disk တစ်ခုအဖြစ် တပ်ဆင်ပေးပြီး ဆွဲချခြင်းဖြင့် အပလီကေးရှင်းကို တပ်ဆင်နိုင်သည်။ ချုံ့ခြင်းနှင့် စာဝှက်ခြင်းကို ပံ့ပိုးပြီး Mac ဆော့ဖ်ဝဲလ်ဒေါင်းလုဒ်အတွက် အဓိကဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_emz"
+msgstr "EMZ ချုံ့ထားသောရုပ်ပုံ (Windows compressed Enhanced Metafile, EMF ၏ ချုံ့ထားသောဗားရှင်း။ Office စာရွက်စာတမ်းများတွင် ဗက်တာဂရပ်ဖစ်သိုလှောင်မှုဖော်မတ်၊ အခြေခံအားဖြင့် GZIP ဖြင့် ချုံ့ထားသော EMF ဖိုင်ဖြစ်သည်)"
+
+msgid "mime_gz"
+msgstr "GZIP ချုံ့ထားသောဖိုင် (Jean-loup Gailly နှင့် Mark Adler တို့က ၁၉၉၂ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ GNU ပရောဂျက်။ Unix/Linux ၏ စံချုံ့ကိရိယာ၊ HTTP transmission ချုံ့မှုအတွက် အသုံးများသော ဖော်မတ်။ extension .gz၊ TAR နှင့် မကြာခဏ တွဲဖက်အသုံးပြုသည်)"
+
+msgid "mime_jar"
+msgstr "JAR ချုံ့ထားသောဖိုင် (Sun Microsystems က ၁၉၉၇ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Java ARchive ဖော်မတ်။ အခြေခံအားဖြင့် ZIP ဖိုင်ဖြစ်ပြီး Java လိုင်ဘရေရီများနှင့် အပလီကေးရှင်းများကို ထုပ်ပိုးရန် အသုံးပြုသည်။ Maven, Gradle စသည့် Java ဂေဟစနစ်၏ အဓိကဖော်မတ်၊ Android ကလည်း JAR ကို အသုံးပြုသည်)"
+
+msgid "mime_lzma"
+msgstr "LZMA ချုံ့ထားသောဖိုင် (Igor Pavlov က ၁၉၉၈ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Lempel-Ziv-Markov chain algorithm။ 7z ဖော်မတ်၏ အဓိက compression algorithm၊ မြင့်မားသော ချုံ့နှုန်း၊ ဖြုတ်ချခြင်းအမြန်နှုန်း။ firmware နှင့် embedded system ဆော့ဖ်ဝဲလ်ဖြန့်ချိမှုအတွက် အသုံးပြုသည်)"
+
+msgid "mime_rar"
+msgstr "RAR ချုံ့ထားသောဖိုင် (Eugene Roshal က ၁၉၉၃ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Roshal ARchive ဖော်မတ်။ မြင့်မားသော ချုံ့နှုန်း၊ volume splitting နှင့် recovery record ကို ပံ့ပိုးသည်။ WinRAR ပရိုဂရမ်ဖော်မတ်၊ ZIP ထက် ပိုမိုကောင်းမွန်သော ချုံ့နှုန်းရှိသော်လည်း အခပေးဆော့ဖ်ဝဲလ် လိုအပ်ပြီး unrar ကဲ့သို့သော open-source ကိရိယာများဖြင့် ဖြုတ်ချနိုင်သည်)"
+
+msgid "mime_tar"
+msgstr "TAR မော်ကွန်းဖိုင် (Unix V7 က ၁၉၇၉ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Tape ARchive ဖော်မတ်။ တိပ်မော်ကွန်းဖော်မတ်၊ ချုံ့ခြင်းမပြုဘဲ ထုပ်ပိုးရုံသာဖြစ်ပြီး GZIP/BZIP2/XZ တို့နှင့် မကြာခဏ တွဲဖက်အသုံးပြုသည်။ Linux ပက်ကေ့ချ် source code, Docker image layer သိုလှောင်မှုတို့သည် TAR ဖော်မတ်ကို အသုံးပြုသည်)"
+
+msgid "mime_tgz"
+msgstr "TGZ ချုံ့ထားသောဖိုင် (TAR + GZIP ပေါင်းစပ်ဖော်မတ်၊ extension .tgz သို့မဟုတ် .tar.gz။ Unix/Linux ဆော့ဖ်ဝဲလ်ပက်ကေ့ချ်များအတွက် အသုံးအများဆုံး ဖြန့်ချိဖော်မတ်၊ source code ပက်ကေ့ချ်များ၊ binary ပက်ကေ့ချ်များ၊ ကျယ်ကျယ်ပြန့်ပြန့်အသုံးပြုကြပြီး 'ဖြုတ်ပြီးသုံးပါ' ၏ ကိုယ်စားလှယ်ဖြစ်သည်)"
+
+msgid "mime_tbz2"
+msgstr "TBZ2 ချုံ့ထားသောဖိုင် (TAR + BZIP2 ပေါင်းစပ်ဖော်မတ်၊ extension .tbz2 သို့မဟုတ် .tar.bz2။ TGZ ထက် ၁၅-၂၀% ပိုမိုမြင့်မားသော ချုံ့နှုန်းရှိပြီး ကြီးမားသောဖိုင်များ ဖြန့်ချိရန်အတွက် သင့်လျော်သည်၊ Linux kernel သည် ဤဖော်မတ်ကို ကာလကြာရှည်စွာ အသုံးပြုခဲ့သည်)"
+
+msgid "mime_xz"
+msgstr "XZ ချုံ့ထားသောဖိုင် (၂၀၀၉ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ LZMA2 algorithm ကို အခြေခံသည်။ အလွန်မြင့်မားသော ချုံ့နှုန်း၊ GZIP ထက် ၃၀-၅၀% ပိုမိုမြင့်မားပြီး ဖြုတ်ချခြင်းအမြန်နှုန်းမှာ အတော်အတန်မြန်ဆန်သည်။ Linux kernel, package managers (Debian ၏ .deb အတွင်းပိုင်းကဲ့သို့) တို့က ကျယ်ကျယ်ပြန့်ပြန့်အသုံးပြုကြပြီး လက်ရှိ Linux ဂေဟစနစ်တွင် အကြံပြုထားသော ဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_z"
+msgstr "Z ချုံ့ထားသောဖိုင် (၁၉၈၅ ခုနှစ်တွင် Unix compress command ဖော်မတ်၊ LZW algorithm။ အစောပိုင်း Unix ချုံ့ဖော်မတ်၊ GZIP ဖြင့် အစားထိုးခဲ့ပြီးဖြစ်သည်။ extension .Z၊ ခေတ်မီစနစ်များတွင် အသုံးနည်းပါးလာသည်)"
+
+msgid "mime_zip"
+msgstr "ZIP ချုံ့ထားသောဖိုင် (Phil Katz က ၁၉၈၉ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ PKZIP ဖော်မတ်။ Windows တွင် ဇာတိပံ့ပိုးမှုရှိပြီး အင်တာနက်ပေါ်တွင် အသုံးအများဆုံး ချုံ့ဖော်မတ်ဖြစ်သည်။ ဖိုင်များစွာ၊ လမ်းညွှန်ဖွဲ့စည်းပုံကို ပံ့ပိုးပြီး ချုံ့ algorithm ကို ရွေးချယ်နိုင်သည်။ Java ၏ JAR၊ Android ၏ APK၊ Office စာရွက်စာတမ်းများ၏ DOCX/XLSX တို့သည် ZIP ဖော်မတ်ကို အခြေခံထားသည်)"
+
+msgid "mime_zst"
+msgstr "Zstandard ချုံ့ထားသောဖိုင် (Facebook က ၂၀၁၅ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Yann Collet က ဒီဇိုင်းထုတ်သည်။ မြန်နှုန်းမြင့် compression algorithm၊ ချုံ့နှုန်းသည် LZMA နှင့် နီးစပ်ပြီး အမြန်နှုန်းမှာ GZIP ထက် များစွာပိုမိုမြန်ဆန်သည်။ Linux kernel 5.9+ က ပံ့ပိုးထားပြီး Arch Linux pacman, Debian APT တို့က တဖြည်းဖြည်း လက်ခံကျင့်သုံးလာကြသည်၊ မျိုးဆက်သစ် compression စံနှုန်းဖြစ်သည်)"
+
+msgid "mime_lz4"
+msgstr "LZ4 ချုံ့ထားသောဖိုင် (Yann Collet က ၂၀၁၁ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ အလွန်မြန်ဆန်သော compression algorithm။ compression အမြန်နှုန်းသည် GZIP ထက် ၁၀ ဆပိုမိုမြန်ဆန်ပြီး real-time compression အခြေအနေများအတွက် သင့်လျော်သည်။ Linux kernel, OpenZFS, Hadoop တို့က ကျယ်ကျယ်ပြန့်ပြန့်အသုံးပြုကြပြီး အမြန်နှုန်းကိုအလေးပေးသော အခြေအနေများအတွက် ရွေးချယ်စရာဖြစ်သည်)"
+
+msgid "mime_lzo"
+msgstr "LZO ချုံ့ထားသောဖိုင် (Markus Oberhumer က ၁၉၉၆ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Lempel-Ziv-Oberhumer algorithm။ ဖြုတ်ချခြင်းအမြန်နှုန်းသည် အလွန်မြန်ဆန်ပြီး ချုံ့နှုန်းမှာ ယေဘုယျအားဖြင့်ဖြစ်သည်။ Linux kernel Squashfs, OpenWrt firmware တို့က အသုံးပြုကြပြီး embedded system များအတွက် သင့်လျော်သည်)"
+
+msgid "mime_msi"
+msgstr "MSI တပ်ဆင်မှုပက်ကေ့ချ် (Microsoft က ၁၉၉၉ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Windows Installer ပက်ကေ့ချ်ဖော်မတ်။ Windows အပလီကေးရှင်း တပ်ဆင်မှု စံဖော်မတ်၊ transaction rollback, component management, silent installation ကို ပံ့ပိုးသည်။ လုပ်ငန်းသုံး ဆော့ဖ်ဝဲလ်ဖြန့်ချိမှုအတွက် ရွေးချယ်စရာဖော်မတ်ဖြစ်ပြီး ယနေ့ထိ Windows ဆော့ဖ်ဝဲလ်တပ်ဆင်မှု၏ ပင်မရေစီးကြောင်းဖြစ်နေဆဲဖြစ်သည်)"
+
+msgid "mime_pkg"
+msgstr "PKG တပ်ဆင်မှုပက်ကေ့ချ် (macOS အပလီကေးရှင်း တပ်ဆင်မှုပက်ကေ့ချ်ဖော်မတ်၊ Apple ၏ Installer နည်းပညာကို အခြေခံသည်။ macOS ဆော့ဖ်ဝဲလ်ဖြန့်ချိမှု စံဖော်မတ်၊ component selection, installation script, uninstall function ကို ပံ့ပိုးသည်။ .pkg ဖိုင်ကို double-click နှိပ်ခြင်းဖြင့် တပ်ဆင်နိုင်ပြီး Mac App Store ပြင်ပရှိ ဆော့ဖ်ဝဲလ်များအတွက် အသုံးများသော ဖြန့်ချိမှုနည်းလမ်းဖြစ်သည်)"
+
+msgid "mime_apk"
+msgstr "APK Android အက်ပလီကေးရှင်းပက်ကေ့ခ်ျ (Google မှ ၂၀၀၈ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Android စနစ်၏ ရိုးရာအက်ပလီကေးရှင်း ထည့်သွင်းခြင်းပုံစံ။ APK သည် အခြေခံအားဖြင့် ZIP ပက်ကေ့ခ်ျဖြစ်ပြီး ကုဒ်၊ အရင်းအမြစ်များနှင့် မန်နီဖတ်စ်ဖိုင်ပါဝင်သည်။ ၂၀၂၁ ခုနှစ်မှစ၍ Google Play သည် အက်ပ်အသစ်များကို AAB ပုံစံအသုံးပြုရန် လိုအပ်သော်လည်း APK ကို အမှားရှာခြင်း၊ တတိယပါတီစတိုးများနှင့် ဘေးထွက်တင်ဆောင်ခြင်းအတွက် ဆက်လက်အသုံးပြုနေဆဲဖြစ်သည်)"
+
+msgid "mime_ipa"
+msgstr "IPA iOS အက်ပလီကေးရှင်းပက်ကေ့ခ်ျ (iOS App Store Package၊ iOS/iPadOS အက်ပလီကေးရှင်းများ ထည့်သွင်းခြင်းပုံစံ။ ၂၀၀၈ ခုနှစ်တွင် iPhone SDK နှင့်အတူ မိတ်ဆက်ခဲ့သည်။ App Store မှတစ်ဆင့် ဖြန့်ဝေရန် သို့မဟုတ် လုပ်ငန်းလက်မှတ်ဖြင့် လက်မှတ်ထိုးရန် လိုအပ်သည်။ လုပ်ဆောင်နိုင်သောဖိုင်၊ အရင်းအမြစ်များ၊ Info.plist နှင့် လက်မှတ်အချက်အလက်များ ပါဝင်သည်)"
+
+msgid "mime_hap"
+msgstr "HAP HarmonyOS အက်ပလီကေးရှင်းပက်ကေ့ခ်ျ (HarmonyOS Ability Package၊ HarmonyOS အက်ပလီကေးရှင်းတစ်ခု၏ အခြေခံယူနစ်။ ၂၀၂၀ ခုနှစ်တွင် HarmonyOS 2.0 နှင့်အတူ မိတ်ဆက်ခဲ့သည်။ အမျိုးအစားနှစ်မျိုးကို ပံ့ပိုးသည်- entry နှင့် feature၊ Huawei ဖုန်းများ၊ တက်ဘလက်များ၊ စမတ်နာရီများနှင့် အခြား HarmonyOS စက်ပစ္စည်းများအတွက် ဖြန့်ချိမှုပုံစံ)"
+
+msgid "mime_har"
+msgstr "HAR HarmonyOS static မျှဝေထားသော စာကြည့်တိုက် (HarmonyOS Archive၊ HarmonyOS ၏ static မျှဝေထားသော စာကြည့်တိုက်၊ HAP ပက်ကေ့ခ်ျများစွာမှ မျှဝေနိုင်သည်၊ အစိတ်အပိုင်းအခြေခံ ဖွံ့ဖြိုးတိုးတက်မှုနှင့် module များ ပြန်လည်အသုံးပြုခြင်းအတွက် အသုံးပြုသည်)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (Google က ၂၀၁၈ ခုနှစ်တွင် မိတ်ဆက်ခဲ့ပြီး ၂၀၂၁ ခုနှစ်မှစ၍ Google Play သို့ တင်သွင်းသော အပလီကေးရှင်းအသစ်များကို ဤဖော်မတ်သုံးရန် ပြဌာန်းခဲ့သည်။ AAB သည် ဖြန့်ချိမှုဖော်မတ်ဖြစ်ပြီး Google Play က စက်ပစ္စည်းဖွဲ့စည်းပုံ (CPU architecture, screen density, language) အရ ပြောင်းလဲပြီး အကောင်းဆုံးဖြစ်အောင် APK ကို ထုတ်လုပ်ပေးကာ ပက်ကေ့ချ်အရွယ်အစားကို ပျမ်းမျှ ၃၅% လျှော့ချပေးသည်။ developer များက AAB ကို အပ်လုဒ်တင်ပြီး အသုံးပြုသူများက APK ကို ဒေါင်းလုဒ်လုပ်ကြသည်)"
+
+msgid "mime_xapk"
+msgstr "XAPK အပလီကေးရှင်း ပက်ကေ့ချ် (တတိယပုဂ္ဂိုလ် Android အပလီကေးရှင်း extension ပက်ကေ့ချ်၊ APK + OBB ဒေတာဖိုင်များ ပါဝင်သည်။ ကြီးမားသောဂိမ်းများနှင့် ရှုပ်ထွေးသော အပလီကေးရှင်းများအတွက် အသုံးပြုပြီး ဖိုင်တစ်ခုတည်း APK ၏ 100MB ကန့်သတ်ချက်ကို ဖြေရှင်းပေးသည်။ APKPure, APKMirror ကဲ့သို့သော တတိယပုဂ္ဂိုလ် အပလီကေးရှင်းစတိုးများတွင် အများအားဖြင့်တွေ့ရပြီး Google ၏ တရားဝင်ဖော်မတ် မဟုတ်ပါ)"
+
+msgid "mime_appx"
+msgstr "Windows အပလီကေးရှင်း ပက်ကေ့ချ် (Microsoft က ၂၀၁၂ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Windows 8/10/11 အပလီကေးရှင်း တပ်ဆင်မှုဖော်မတ်။ UWP အပလီကေးရှင်းများနှင့် desktop အပလီကေးရှင်း conversion ကို ပံ့ပိုးပြီး Microsoft Store မှတစ်ဆင့် ဖြန့်ချိသည်။ ၂၀၂၄ ခုနှစ်တွင် Microsoft က MSIX ကို ဆက်ခံဖော်မတ်အဖြစ် မိတ်ဆက်ခဲ့ပြီး APPX ကို တဖြည်းဖြည်းအစားထိုးသွားမည်)"
+
+msgid "mime_msix"
+msgstr "MSIX အပလီကေးရှင်း ပက်ကေ့ချ် (Microsoft က ၂၀၁၈ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Windows ပက်ကေ့ချ်ဖော်မတ်အသစ်။ APPX နှင့် MSI တို့၏ အားသာချက်များကို ပေါင်းစပ်ထားပြီး Windows အပလီကေးရှင်းအမျိုးအစားအားလုံးကို ပံ့ပိုးကာ Microsoft Store မှတစ်ဆင့် သို့မဟုတ် side-load ဖြင့် တပ်ဆင်နိုင်ပြီး Windows 11 အတွက် အကြံပြုထားသော ဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_appimage"
+msgstr "AppImage အပလီကေးရှင်း ပက်ကေ့ချ် (၂၀၀၄ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Linux တပ်ဆင်ရန်မလိုသော အပလီကေးရှင်းဖော်မတ်။ 'တစ်ခုသော အပလီကေးရှင်းအတွက် ဖိုင်တစ်ခု'၊ တပ်ဆင်ရန်မလိုဘဲ တိုက်ရိုက်လည်ပတ်နိုင်ပြီး Linux ဖြန့်ချိမှုအများစုကို ပံ့ပိုးကာ developer များအတွက် Linux ဆော့ဖ်ဝဲလ်ဖြန့်ချိရန် အသုံးများသောနည်းလမ်းဖြစ်သည်)"
+
+msgid "mime_flatpak"
+msgstr "Flatpak အပလီကေးရှင်း ပက်ကေ့ချ် (၂၀၁၅ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Linux sandbox အပလီကေးရှင်းဖော်မတ်။ ဖြန့်ချိမှုများကိုဖြတ်၍ လည်ပတ်နိုင်ပြီး host system မှ သီးခြားဖြစ်ကာ Fedora, Red Hat တို့က ဦးဆောင်ဖန်တီးထားပြီး GNOME Software Center ၏ မူရင်းဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_snap"
+msgstr "Snap အပလီကေးရှင်း ပက်ကေ့ချ် (Canonical က ၂၀၁၄ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Ubuntu မိခင်ကုမ္ပဏီက ဖန်တီးထားပြီး Linux အထွေထွေသုံး အပလီကေးရှင်းဖော်မတ်ဖြစ်သည်။ အလိုအလျောက် အပ်ဒိတ်လုပ်ခြင်း, sandbox isolation, Linux ဖြန့်ချိမှု ၄၀ ကျော်ကို ပံ့ပိုးပြီး Ubuntu Software Center ၏ မူရင်းဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_deb"
+msgstr "Debian ဆော့ဖ်ဝဲလ် ပက်ကေ့ချ် (Debian Project က ၁၉၉၃ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Debian/Ubuntu နှင့် ၎င်းတို့၏ အကိုင်းအခက်များအတွက် စံတပ်ဆင်မှုဖော်မတ်။ dpkg ဖြင့် စီမံခန့်ခွဲပြီး APT သည် ၎င်း၏ package manager front-end ဖြစ်ကာ Linux ဂေဟစနစ်တွင် အတော်ဆုံးသော package ဖော်မတ်များထဲမှတစ်ခုဖြစ်ပြီး ယနေ့ထိ Debian မိသားစုတွင် ပင်မရေစီးကြောင်းဖြစ်နေဆဲဖြစ်သည်)"
+
+msgid "mime_rpm"
+msgstr "RPM ဆော့ဖ်ဝဲလ် ပက်ကေ့ချ် (Red Hat က ၁၉၉၇ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Red Hat/Fedora/CentOS/SUSE စသည့် ဖြန့်ချိမှုများအတွက် စံဖော်မတ်။ RPM သည် 'Red Hat Package Manager' ၏ အတိုကောက်ဖြစ်ပြီး DEB နှင့်အတူ Linux ၏ အဓိက package ဖော်မတ်နှစ်ခုထဲမှတစ်ခုဖြစ်ကာ ယနေ့ထိ RHEL မိသားစုတွင် ပင်မရေစီးကြောင်းဖြစ်နေဆဲဖြစ်သည်)"
+
+msgid "mime_pacman"
+msgstr "Arch ဆော့ဖ်ဝဲလ် ပက်ကေ့ချ် (Arch Linux က ၂၀၀၂ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ pacman package manager မှ အသုံးပြုသော .pkg.tar.zst ဖော်မတ်။ Arch Linux rolling release ၏ အဓိကအချက်အချာဖြစ်ပြီး ရိုးရှင်းမှုနှင့် KISS နိယာမတို့ဖြင့် ကျော်ကြားကာ AUR (Arch User Repository) သည် ၎င်း၏ထူးခြားချက်ဖြစ်သည်)"
+
+msgid "mime_exe"
+msgstr "EXE လုပ်ဆောင်နိုင်သောဖိုင် (Windows လုပ်ဆောင်နိုင်သော ပရိုဂရမ်ဖော်မတ်၊ 'Executable' ၏ အတိုကောက်။ Windows လည်ပတ်မှုစနစ်၏ ဇာတိလုပ်ဆောင်မှုဖော်မတ်၊ PE structure ပါဝင်သည်။ MS-DOS ၏ MZ ဖော်မတ်မှ ဆင့်ကဲပြောင်းလဲလာပြီး ၁၉၉၃ ခုနှစ်တွင် Windows NT က PE (Portable Executable) ဖော်မတ်ကို မိတ်ဆက်ခဲ့ကာ ယနေ့ထိ အသုံးပြုနေဆဲဖြစ်သည်။ ဆော့ဖ်ဝဲလ်တပ်ဆင်မှုပက်ကေ့ချ်များ၊ အပလီကေးရှင်းများ၊ စနစ်ကိရိယာများအားလုံးသည် ဤဖော်မတ်ကို အသုံးပြုကြသည်။ အသုံးပြုသူက double-click နှိပ်ခြင်းဖြင့် စတင်နိုင်ပြီး ကမ္ဘာပေါ်တွင် အသုံးအများဆုံးသော လုပ်ဆောင်နိုင်သောဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_dll"
+msgstr "DLL ဒိုင်နမစ်လင့်ခ်လိုင်ဘရေရီ (Microsoft က ၁၉၉၃ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Dynamic Link Library။ Windows ၏ မျှဝေကုဒ်စုစည်းမှု၊ ပရိုဂရမ်လည်ပတ်နေချိန်တွင် ဒိုင်နမစ်လင့်ခ်လုပ်ကာ memory နှင့် disk space ကို သက်သာစေသည်။ စနစ်အစိတ်အပိုင်းများ၊ အပလီကေးရှင်း plugin များ၊ driver များအားလုံးသည် DLL ဖော်မတ်ကို အသုံးပြုကြသည်။ Windows API ၏ အဓိကအကောင်အထည်ဖော်မှုနည်းလမ်းဖြစ်ပြီး DLL Hell ပြဿနာကို .NET ခေတ်တွင် သက်သာလာစေခဲ့သည်)"
+
+msgid "mime_com"
+msgstr "COM လုပ်ဆောင်နိုင်သောဖိုင် (MS-DOS ခေတ်၏ လုပ်ဆောင်နိုင်သောဖော်မတ်၊ 'Command' ၏ အတိုကောက်။ ဖိုင်ဖွဲ့စည်းပုံရိုးရှင်းပြီး 64KB ကန့်သတ်ချက်ရှိပြီး Windows 3.x မတိုင်မီက အဓိကဖော်မတ်ဖြစ်ခဲ့ကာ ဖယ်ရှားပြီးဖြစ်သည်။ ခေတ်မီ Windows များသည် EXE ဖော်မတ်ကို အသုံးပြုကြပြီး COM extension ကို အချို့သော အစိတ်အပိုင်းဖိုင်များအတွက် ဆက်လက်အသုံးပြုနေဆဲဖြစ်သည်)"
+
+msgid "mime_aac"
+msgstr "AAC အသံ (၁၉၉၇ ခုနှစ်တွင် MPEG စံနှုန်း၊ Advanced Audio Coding။ MP3 ၏ ဆက်ခံသူ၊ bit rate တူညီပါက MP3 ထက် အသံအရည်အသွေးပိုမိုကောင်းမွန်ပြီး YouTube, iTunes, Nintendo Switch တို့၏ မူရင်းအသံဖော်မတ်)"
+
+msgid "mime_alac"
+msgstr "ALAC အသံ (Apple က ၂၀၀၄ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Apple Lossless Audio Codec။ Apple ၏ lossless ဖော်မတ်၊ ၂၀၁၁ ခုနှစ်တွင် open-source ဖြစ်လာပြီး iTunes နှင့် Apple Music ရှိ lossless အသံအတွက် မူရင်းဖော်မတ်)"
+
+msgid "mime_flac"
+msgstr "FLAC အသံ (Xiph.Org Foundation က ၂၀၀၁ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Free Lossless Audio Codec။ lossless compression၊ အသံအရည်အသွေးသည် CD နှင့် တူညီပြီး ဖိုင်အရွယ်အစားမှာ မူရင်း WAV ၏ ထက်ဝက်ခန့်ရှိသည်။ open-source နှင့် မူပိုင်ခွင့်ကင်းပြီး အသံဝါသနာရှင်များနှင့် ဒစ်ဂျစ်တယ်ဂီတစုဆောင်းမှုအတွက် ရွေးချယ်စရာဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_mp3"
+msgstr "MP3 အသံ (Fraunhofer Institute က ၁၉၉၃ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ MPEG-1 Audio Layer 3။ lossy compression ဖော်မတ်၊ ဖိုင်သေးသော်လည်း အသံအရည်အသွေးအတော်အတန်ကောင်းမွန်ပြီး ၂၀၀၀ ပြည့်လွန်နှစ်များ၏ ဒစ်ဂျစ်တယ်ဂီတတော်လှန်ရေး၏ အဓိကဖော်မတ်ဖြစ်ကာ iPod နှင့် Napster ၏ သူရဲကောင်းဖြစ်သည်။ မူပိုင်ခွင့်များ ၂၀၁၇ ခုနှစ်တွင် သက်တမ်းကုန်ဆုံးခဲ့ပြီး အများပိုင် domain ဖော်မတ်ဖြစ်လာသည်)"
+
+msgid "mime_oga"
+msgstr "Ogg Audio အသံ (Xiph.Org Foundation က ဖန်တီးခဲ့သည်၊ Ogg container ၏ သီးသန့်အသံဖော်မတ်၊ Vorbis encoding ကို အသုံးပြုသည်။ open-source နှင့် မူပိုင်ခွင့်ကင်းပြီး MP3 ထက် ပိုမိုကောင်းမွန်သော compression စွမ်းဆောင်ရည်ရှိကာ open-source ပရောဂျက်များတွင် ကျယ်ကျယ်ပြန့်ပြန့်အသုံးပြုသည်)"
+
+msgid "mime_ogg"
+msgstr "OGG အသံ (Xiph.Org Foundation က ၂၀၀၀ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Ogg Vorbis ဖော်မတ်။ open-source နှင့် မူပိုင်ခွင့်ကင်းပြီး MP3 ထက် ပိုမိုကောင်းမွန်သော compression စွမ်းဆောင်ရည်ရှိကာ Spotify အစောပိုင်းက အသုံးပြုခဲ့ပြီး ဂိမ်းအသံအကျိုးသက်ရောက်မှုများတွင် ကျယ်ကျယ်ပြန့်ပြန့်အသုံးပြုသည်)"
+
+msgid "mime_opus"
+msgstr "Opus အသံ (IETF က ၂၀၁၂ ခုနှစ်တွင် စံသတ်မှတ်ခဲ့သည်၊ open-source နှင့် မူပိုင်ခွင့်ကင်းသော အသံဖော်မတ်၊ SILK နှင့် CELT နည်းပညာများကို ပေါင်းစပ်ထားပြီး latency အလွန်နည်းကာ compression စွမ်းဆောင်ရည် အမြင့်ဆုံးဖြစ်ပြီး WebRTC, WhatsApp, Discord တို့၏ မူရင်းအသံဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_wav"
+msgstr "WAV အသံ (Microsoft နှင့် IBM တို့က ၁၉၉၁ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Windows ၏ ဇာတိအသံဖော်မတ်။ PCM encoding ချုံ့ခြင်းမပြုဘဲ အသံအရည်အသွေးမှာ lossless ဖြစ်သော်လည်း ဖိုင်အလွန်ကြီးမားပြီး ပရော်ဖက်ရှင်နယ်အသံတည်းဖြတ်မှုအတွက် စံဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_wma"
+msgstr "WMA အသံ (Microsoft က ၁၉၉၉ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Windows Media Audio။ lossy/lossless ဗားရှင်းနှစ်မျိုးစလုံးရှိပြီး Windows တွင် ဇာတိပံ့ပိုးမှုရှိကာ Windows Media Player နှင့်အတူ ပျံ့နှံ့လာခဲ့သည်။ ယခုအခါ ဘေးသို့ရောက်သွားပြီး MP3/AAC တို့ဖြင့် အစားထိုးခဲ့သည်)"
+
+msgid "mime_dsf"
+msgstr "DSF အသံ (Direct Stream Digital ဖော်မတ်၊ Sony နှင့် Philips တို့က ဖန်တီးခဲ့သည်။ 1-bit မြင့်မားသော နမူနာနှုန်း၊ DSD အသံစံဖော်မတ်၊ SACD ၏ ဒစ်ဂျစ်တယ်ဗားရှင်း၊ အသံဝါသနာရှင်များအတွက် high-end အသံဖော်မတ်၊ ဖိုင်အလွန်ကြီးမားသည်)"
+
+msgid "mime_ape"
+msgstr "APE အသံ (၂၀၀၀ ခုနှစ်တွင် Monkey's Audio မှ တီထွင်ခဲ့သည်၊ ဆုံးရှုံးမှုမရှိသော ချုံ့သည့်ပုံစံ။ FLAC ထက် ချုံ့မှုပိုများသော်လည်း ကုဒ်သွင်းမှုနှေးကွေးသည်၊ Windows ပလက်ဖောင်းနှင့် အသံဝါသနာရှင်များကြားတွင် ဆက်လက်အသုံးပြုနေဆဲ)"
+
+msgid "mime_mid"
+msgstr "MIDI အသံ (MIDI Association က ၁၉၈၃ ခုနှစ်တွင် သတ်မှတ်ခဲ့သည်၊ Musical Instrument Digital Interface။ အသံသွင်းခြင်းမဟုတ်ဘဲ ဂီတမှတ်စုဖော်မတ်၊ ဖိုင်အလွန်သေးငယ်ပြီး အီလက်ထရွန်နစ်ဂီတကိရိယာများ၊ ဖုန်းမြည်သံများ၊ ဂိမ်းအသံအကျိုးသက်ရောက်မှုများအတွက် စံနှုန်းဖြစ်သည်။ General MIDI ကို ၁၉၉၁ ခုနှစ်တွင် စံသတ်မှတ်ခဲ့ပြီး ဂီတကိရိယာအမျိုးအစား ၁၂၈ ခုကို သတ်မှတ်ခဲ့သည်)"
+
+msgid "mime_m4a"
+msgstr "M4A အသံ (MPEG-4 Audio, AAC ၏ container ဖော်မတ်။ iTunes Music Store ၏ စံဖော်မတ်၊ Apple ဂေဟစနစ်၏ ပင်မအသံဖော်မတ်၊ DRM ကာကွယ်ရေးကို ပံ့ပိုးသည်)"
+
+msgid "mime_m3u"
+msgstr "M3U ဖွင့်စဉ်စာရင်း (MP3 URL ဖွင့်စဉ်စာရင်းဖော်မတ်၊ စာသားဖိုင်အကြမ်းစာ၊ အသံဖိုင်လမ်းကြောင်းများကို မှတ်တမ်းတင်သည်။ Winamp ခေတ်၏ စံနှုန်း၊ အွန်လိုင်းရေဒီယို၊ အွန်လိုင်းဂီတ streaming အတွက် အသုံးပြုသည်။ M3U8 သည် ၎င်း၏ UTF-8 ဗားရှင်းဖြစ်ပြီး HTTP Live Streaming အတွက် အသုံးပြုသည်)"
+
+msgid "mime_asf"
+msgstr "ASF streaming မီဒီယာ (Microsoft က ၁၉၉၆ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Advanced Systems Format။ Windows Media streaming container၊ အသံနှင့် ဗီဒီယို တစ်ပြိုင်တည်း ထုတ်လွှင့်မှုကို ပံ့ပိုးသည်။ အွန်လိုင်း live broadcast နှင့် video-on-demand streaming အတွက် အသုံးပြုပြီး WMA/WMV နှစ်ခုစလုံးသည် ASF container ကို အခြေခံထားသည်)"
+
+msgid "mime_avi"
+msgstr "AVI ဗီဒီယို (Microsoft က ၁၉၉၂ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ Windows ၏ အစောပိုင်းဗီဒီယိုစံနှုန်း။ 'Audio Video Interleave'၊ အသံနှင့် ဗီဒီယိုကို အလှည့်ကျ သိမ်းဆည်းပြီး ၁၉၉၀-၂၀၀၀ ပြည့်လွန်နှစ်များတွင် လူကြိုက်အများဆုံး ဗီဒီယိုဖော်မတ်ဖြစ်ခဲ့ကာ ယခုအခါ MP4/MKV ဖြင့် အစားထိုးခဲ့သည်)"
+
+msgid "mime_divx"
+msgstr "DivX ဗီဒီယို (DivX Corporation က ၁၉၉၈ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ MPEG-4 ကိုအခြေခံသော ဗီဒီယို codec ဖော်မတ်။ ၂၀၀၀ ပြည့်လွန်နှစ်များ၏ အွန်လိုင်းဗီဒီယိုမျှဝေခြင်း၏ အဓိကဖော်မတ်ဖြစ်ပြီး DVD အရည်အသွေးကို CD အရွယ်အစားသို့ ချုံ့ပေးနိုင်သော ပထမဆုံးသောနည်းပညာဖြစ်သည်။ မူပိုင်ခွင့်အငြင်းပွားမှုများကြောင့် နောက်ပိုင်းတွင် စီးပွားဖြစ် encoder အဖြစ် ပြောင်းလဲခဲ့သည်)"
+
+msgid "mime_mp4"
+msgstr "MP4 ဗီဒီယို (၂၀၀၁ ခုနှစ်တွင် MPEG စံနှုန်း၊ MPEG-4 Part 14။ ကမ္ဘာပေါ်တွင် အသုံးအများဆုံး ဗီဒီယိုဖော်မတ်၊ H.264/H.265 encoding ကို ပံ့ပိုးပြီး အင်တာနက်ဗီဒီယို၊ ဖုန်းရိုက်ကူးချက်၊ YouTube တို့၏ မူရင်းဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_m4v"
+msgstr "M4V ဗီဒီယို (iTunes ၏ ဗီဒီယိုဖော်မတ်၊ MP4 ၏ မူကွဲတစ်ခု။ Apple ဂေဟစနစ်ရှိ ဗီဒီယိုဖော်မတ်၊ iTunes Store ရှိ ရုပ်ရှင်များနှင့် တီဗွီရှိုးများ၏ စံဖော်မတ်ဖြစ်ပြီး DRM မူပိုင်ခွင့်ကာကွယ်ရေးကို ပံ့ပိုးသည်)"
+
+msgid "mime_mpeg"
+msgstr "MPEG ဗီဒီယို (MPEG အဖွဲ့အစည်းက ၁၉၈၈ ခုနှစ်တွင် သတ်မှတ်ခဲ့သည်၊ Moving Picture Experts Group။ ဒစ်ဂျစ်တယ်ဗီဒီယိုချုံ့ခြင်း စံနှုန်းများ၏ အုတ်မြစ်ချသူဖြစ်ပြီး MPEG-1 (VCD)၊ MPEG-2 (DVD)၊ MPEG-4 (အွန်လိုင်းဗီဒီယို) တို့သည် နက်ရှိုင်းစွာ လွှမ်းမိုးမှုရှိခဲ့သည်)"
+
+msgid "mime_mkv"
+msgstr "MKV ဗီဒီယို (Matroska ပရောဂျက်က ၂၀၀၂ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ open-source မာလ်တီမီဒီယာ container ဖော်မတ်။ အသံအပိုင်းများစွာ၊ စာတန်းထိုးများစွာ၊ အခန်းကြီးများကို ပံ့ပိုးပြီး 'ထုပ်ပိုးသည့်ကိရိယာ' ဟုခေါ်ကာ ရုပ်ရှင်အရည်အသွေးမြင့် မျှဝေခြင်းအတွက် ရွေးချယ်စရာဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_mpg"
+msgstr "MPEG ဗီဒီယို (MPEG-1/MPEG-2 ဗီဒီယို extension, VCD နှင့် DVD အတွက် စံဖော်မတ်။ ၁၉၉၀-၂၀၀၀ ပြည့်လွန်နှစ်များအတွင်း disk ပေါ်ရှိ ဗီဒီယိုအတွက် အဓိကဖော်မတ်ဖြစ်ခဲ့ပြီး ယခုအခါ H.264/H.265 ဖြင့် အစားထိုးခဲ့သည်)"
+
+msgid "mime_ogv"
+msgstr "Ogg Video ဗီဒီယို (Xiph.Org Foundation က ဖန်တီးခဲ့သည်၊ Ogg container ၏ ဗီဒီယိုဖော်မတ်၊ Theora encoding ကို အသုံးပြုသည်။ open-source နှင့် မူပိုင်ခွင့်ကင်းပြီး HTML5 ဗီဒီယို၏ အစောပိုင်းစံနှုန်းများထဲမှတစ်ခုဖြစ်ကာ Firefox က ဇာတိပံ့ပိုးမှုရှိသည်)"
+
+msgid "mime_ogx"
+msgstr "Ogg မာလ်တီမီဒီယာ container (Xiph.Org Foundation က ဖန်တီးခဲ့သည်၊ Ogg container ၏ အထွေထွေ extension၊ အသံ၊ ဗီဒီယို၊ စာတန်းထိုးစသည့် အပိုင်းများစွာ ပါဝင်နိုင်သည်။ open-source မာလ်တီမီဒီယာစံနှုန်း၊ ဂိမ်းများ၊ streaming များအတွက် အသုံးပြုသည်)"
+
+msgid "mime_rm"
+msgstr "RealMedia ဗီဒီယို (RealNetworks က ၁၉၉၅ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ RealMedia ဖော်မတ်။ ၁၉၉၀-၂၀၀၀ ပြည့်လွန်နှစ်များအတွင်း အွန်လိုင်း streaming ၏ ရှေ့ဆောင်ဖြစ်ပြီး RealPlayer ၏ အဓိကဖော်မတ်ဖြစ်သည်။ အားနည်းချက်များ- သီးသန့် player လိုအပ်မှု၊ ချုံ့အရည်အသွေးညံ့ဖျင်းမှု၊ နောက်ပိုင်းတွင် Flash/MP4 ဖြင့် အစားထိုးခဲ့သည်)"
+
+msgid "mime_flv"
+msgstr "Flash ဗီဒီယို (၂၀၀၂ ခုနှစ်တွင် ဖော်မတ်စတင်ပေါ်ပေါက်ခဲ့သည်၊ Flash Video ဖော်မတ်။ တစ်ချိန်က အွန်လိုင်းဗီဒီယို၏ အဓိကဖော်မတ်ဖြစ်ခဲ့ပြီး YouTube အစောပိုင်းက အသုံးပြုခဲ့သည်။ အားနည်းချက်များ- Flash plugin လိုအပ်မှု၊ စွမ်းဆောင်ရည်ညံ့ဖျင်းမှု၊ လုံခြုံရေးအားနည်းချက်များစွာ။ ၂၀၁၅ ခုနှစ်မှစ၍ အဓိကဝဘ်ဆိုက်များသည် HTML5 ဗီဒီယိုသို့ ပြောင်းလဲခဲ့ပြီး ယခုအခါ ဖယ်ရှားပြီးဖြစ်သည်)"
+
+msgid "mime_f4v"
+msgstr "F4V ဗီဒီယို (Adobe မှ ဖန်တီးထားသော Flash ဗီဒီယိုဖော်မတ်၊ FLV ၏ ဆက်ခံသူ။ MPEG-4 စံနှုန်းကို အခြေခံပြီး H.264 encoding ကို ပံ့ပိုးသည်။ Flash နည်းပညာနှင့်အတူ ဖယ်ရှားခဲ့ပြီး Adobe က ၂၀၂၀ ခုနှစ်တွင် ပံ့ပိုးမှုရပ်ဆိုင်းခဲ့သည်)"
+
+msgid "mime_wmv"
+msgstr "WMV ဗီဒီယို (Microsoft က ၁၉၉၉ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ Windows Media Video။ Windows တွင် ဇာတိပံ့ပိုးမှုရှိပြီး streaming transmission အတွက် အကောင်းဆုံးဖြစ်အောင် ပြုလုပ်ထားကာ အစောပိုင်းအွန်လိုင်းဗီဒီယိုများတွင် အသုံးများသောဖော်မတ်ဖြစ်ခဲ့သော်လည်း ယခုအခါ ဘေးသို့ရောက်သွားပြီဖြစ်သည်)"
+
+msgid "mime_wmf"
+msgstr "WMF မီဒီယာဖော်မတ် (Windows Media Format, Microsoft ၏ မီဒီယာဘောင်၊ WMV ဗီဒီယို၊ WMA အသံတို့ကို ခြုံငုံပြီး Windows Media Player က ဇာတိပံ့ပိုးမှုရှိသည်)"
+
+msgid "mime_mov"
+msgstr "MOV ဗီဒီယို (Apple က ၁၉၉၁ ခုနှစ်တွင် ဖန်တီးခဲ့သည်၊ QuickTime container ဖော်မတ်။ ပရော်ဖက်ရှင်နယ် ဗီဒီယိုတည်းဖြတ်ခြင်းအတွက် စံဖော်မတ်ဖြစ်ပြီး codec အမျိုးမျိုးကို ပံ့ပိုးကာ Final Cut Pro, Premiere တို့က ဇာတိပံ့ပိုးမှုရှိသည်)"
+
+msgid "mime_qt"
+msgstr "QuickTime ဗီဒီယို (Apple က ၁၉၉၁ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ QuickTime ဖော်မတ်။ Mac ပလက်ဖောင်းပေါ်ရှိ ဗီဒီယိုစံနှုန်း၊ MOV သည် ၎င်း၏ container ဖြစ်ပြီး QuickTime player ကို ကျယ်ကျယ်ပြန့်ပြန့် အသုံးပြုခဲ့ကြသည်။ Apple က ၂၀၁၆ ခုနှစ်တွင် Windows ဗားရှင်း ဖွံ့ဖြိုးရေးကို ရပ်ဆိုင်းခဲ့ပြီး MP4 ဖြင့် တဖြည်းဖြည်း အစားထိုးခဲ့သည်)"
+
+msgid "mime_webm"
+msgstr "WebM ဗီဒီယို (Google က ၂၀၁၀ ခုနှစ်တွင် မိတ်ဆက်ခဲ့သည်၊ open-source နှင့် မူပိုင်ခွင့်ကင်းသော ဗီဒီယိုဖော်မတ်။ Matroska container ကို အခြေခံပြီး VP8/VP9 encoding၊ HTML5 ဗီဒီယို၏ စံဖော်မတ်၊ YouTube ၏ web ပေါ်ရှိ မူရင်းဖွင့်စဉ်ဖော်မတ်ဖြစ်သည်)"
+
+msgid "mime_3gp"
+msgstr "3GP ဗီဒီယို (3GPP က ၂၀၀၀ ခုနှစ်တွင် သတ်မှတ်ခဲ့သည်၊ မိုဘိုင်းစက်ပစ္စည်းများအတွက် ဗီဒီယိုဖော်မတ်။ ဖိုင်အလွန်သေးငယ်ပြီး အရည်အသွေးနိမ့်ကာ အစောပိုင်း အခြေခံဖုန်းများ၏ ဗီဒီယိုရိုက်ကူးမှုဖော်မတ်ဖြစ်ပြီး MMS ပေးပို့ရန်အတွက် အသုံးပြုခဲ့သည်)"
+
+#------------------------------------------------------------------------------
+# နည်းပညာပိုင်း အတိုင်းအတာ
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "လည်ပတ်မှုစနစ်များ"
+
+msgid "Top 5 Operating Systems"
+msgstr "ထိပ်ဆုံး လည်ပတ်မှုစနစ် ၅ ခု"
+
+msgid "Unknown Robot"
+msgstr "မသိသော ကလိုင်းယင့်"
+
+msgid "User agent"
+msgstr "User agent"
+
+msgid "Browsers"
+msgstr "ဘရောင်ဇာများ"
+
+msgid "Top 5 Browsers"
+msgstr "ထိပ်ဆုံး ဘရောင်ဇာ ၅ ခု"
+
+msgid "Unknown Robot RH"
+msgstr "မသိသော တောင်းဆိုမှု ခေါင်းစီး"
+
+msgid "Detailed"
+msgstr "ဝင်ရောက်သည့် စက်ပစ္စည်းဗားရှင်း"
+
+msgid "DetailedOS"
+msgstr "လည်ပတ်မှုစနစ် ဗားရှင်း"
+
+msgid "DetailedBS"
+msgstr "ဘရောင်ဇာ ဗားရှင်း"
+
+msgid "Screen sizes"
+msgstr "မျက်နှာပြင်အရွယ်အစား"
+
+msgid "Compression"
+msgstr "ချုံ့ခြင်း"
+
+msgid "In"
+msgstr "ထည့်သွင်းမှု"
+
+msgid "Out"
+msgstr "ထွက်ရှိမှု"
+
+msgid "Saved"
+msgstr "ချွေတာမှု"
+
+#------------------------------------------------------------------------------
+# အရင်းအမြစ် အတိုင်းအတာ
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "အရင်းအမြစ်"
+
+msgid "Referers"
+msgstr "အရင်းအမြစ်များ"
+
+msgid "meta.description"
+msgstr "AWStats အဆင့်မြင့် ဝဘ်မှတ်တမ်း ခွဲခြမ်းစိတ်ဖြာသူ - အချိန်နှင့်တပြေးညီ ဝဘ်အသွားအလာကို စောင့်ကြည့်ခြင်း၊ လာရောက်သူခွဲခြမ်းစိတ်ဖြာခြင်း၊ ရှာဖွေရေးအင်ဂျင် သော့ချက်စာလုံးများ၊ အမှားစာမျက်နှာ စာရင်းအင်းများ။ အမှောင်မုဒ်ကို ပံ့ပိုးပြီး ဘာသာစကားမျိုးစုံ အင်တာဖေ့စ်ဖြင့် ဝဘ်ဆိုက်စီမံခန့်ခွဲသူများအတွက် ပြည့်စုံသော ဒေတာခွဲခြမ်းစိတ်ဖြာမှုကို ပေးအပ်သည်။"
+
+msgid "meta.keywords"
+msgstr "AWStats,ဝဘ်စာရင်းအင်း,မှတ်တမ်းခွဲခြမ်းစိတ်ဖြာခြင်း,အသွားအလာစောင့်ကြည့်ခြင်း,ဝင်ရောက်မှုစာရင်းအင်း,SEO ခွဲခြမ်းစိတ်ဖြာခြင်း,ဝဘ်ခွဲခြမ်းစိတ်ဖြာရေးကိရိယာ,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - ဝဘ်မှတ်တမ်း ခွဲခြမ်းစိတ်ဖြာခြင်း"
+
+msgid "og.description"
+msgstr "📊 ပရော်ဖက်ရှင်နယ် open-source ဝဘ်စာရင်းအင်းကိရိယာ၊ သင့်ဝဘ်ဆိုက်၏ အသွားအလာနှင့် လာရောက်သူအပြုအမူကို အချိန်နှင့်တပြေးညီ ခွဲခြမ်းစိတ်ဖြာပေးသည်။"
+
+msgid "og.image.alt"
+msgstr "AWStats စာရင်းအင်းဂရပ်များ"
+
+msgid "Created by"
+msgstr "%s မှ ဖန်တီးသည်"
+
+msgid "plugins"
+msgstr "ပလပ်အင်းများ"
+
+msgid "dbip by"
+msgstr "ဒေတာမှ"
+
+msgid "IPDB by"
+msgstr "ပထဝီဝင်တည်နေရာဒေတာကို DB-IP မှ"
+
+msgid "Configured"
+msgstr "ပြင်ဆင်ပြီး"
+
+msgid "Missing"
+msgstr "ပျောက်ဆုံးနေသည်"
+
+msgid "OK"
+msgstr "အောင်မြင်သည်"
+
+msgid "Unused"
+msgstr "အသုံးမပြုရသေး"
+
+msgid "Overall Health"
+msgstr "အလုံးစုံကျန်းမာရေး"
+
+msgid "Excellent"
+msgstr "အလွန်ကောင်းမွန်"
+
+msgid "Good"
+msgstr "ကောင်းမွန်"
+
+msgid "Fair"
+msgstr "အလယ်အလတ်"
+
+msgid "Poor"
+msgstr "ညံ့ဖျင်း"
+
+msgid "Missing icon types"
+msgstr "ပျောက်ဆုံးနေသော အိုင်ကွန်အမျိုးအစားများ"
+
+msgid "See"
+msgstr "အသေးစိတ်ကိုကြည့်ရန်"
+
+msgid "Expected Path"
+msgstr "လမ်းကြောင်းဖော်ပြချက်"
+
+msgid "column for file locations"
+msgstr "ဖိုင်တည်နေရာများရယူရန် ကော်လံ"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "အကြံပြုချက်: သင်သည် ဆက်စပ်အိုင်ကွန်များ ထုတ်လုပ်ရန် လိုအပ်ပါက %s ကို အသုံးပြု၍ လိုဂိုပုံကို အပ်လုဒ်လုပ်နိုင်ပြီး ၎င်းသည် အထက်ပါ ဆက်စပ်အိုင်ကွန်ဖိုင်များအားလုံးကို အလိုအလျောက် ထုတ်လုပ်ပေးလိမ့်မည်"
+
+msgid "200: success, 404: failure"
+msgstr "200 သည် အောင်မြင်မှုအရေအတွက် 404 သည် ကျရှုံးမှုအရေအတွက်"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png သို့မဟုတ် /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg သို့မဟုတ် /logo.png (HTML/JSON-LD တွင် ညွှန်းဆိုရန် လိုအပ်သည်)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest သို့မဟုတ် /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg စသည်"
+
+msgid "Favicon"
+msgstr "ဝဘ်ဆိုက်အိုင်ကွန်"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "Apple Touch အိုင်ကွန် (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "ဆိုက်လိုဂို"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "ဝဘ်အက်ပ် မနီဖက်စ်ဖိုင် (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "Windows ဘရောင်ဇာ ဖွဲ့စည်းမှု"
+
+msgid "Safari Pinned Tab"
+msgstr "Safari စွဲကပ်ထားသော တဘ်အိုင်ကွန်"
+
+msgid "Social Icon"
+msgstr "လူမှုမီဒီယာအိုင်ကွန်"
+
+msgid "Icon Files Status"
+msgstr "အိုင်ကွန်ဖိုင်များ အခြေအနေ"
+
+msgid "Icon Type"
+msgstr "အိုင်ကွန်အမျိုးအစား"
+
+msgid "Total"
+msgstr "စုစုပေါင်း"
+
+msgid "Advanced Web Statistics"
+msgstr "အဆင့်မြင့် မှတ်တမ်းခွဲခြမ်းစိတ်ဖြာသူ"
+
+msgid "Advanced Web Statistics %s"
+msgstr "အဆင့်မြင့် မှတ်တမ်းခွဲခြမ်းစိတ်ဖြာသူ %s"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "သင့်ဘရောင်ဇာသည် frames ကို မပံ့ပိုးပါ။ ခေတ်မီဘရောင်ဇာကို ကျေးဇူးပြု၍ အသုံးပြုပါ။"
+
+msgid "View statistics directly"
+msgstr "စာရင်းအင်းများကို တိုက်ရိုက်ကြည့်ရှုရန်"
+
+msgid "Close"
+msgstr "ပိတ်ရန်"
+
+msgid "Documentation Viewer"
+msgstr "စာရွက်စာတမ်းကြည့်ရှုသူ"
+
+msgid "Direct address / Bookmarks"
+msgstr "တိုက်ရိုက်လိပ်စာ / မှတ်သားချက်များ"
+
+msgid "Search Engines"
+msgstr "ရှာဖွေရေးအင်ဂျင်များ"
+
+msgid "Refering search engines"
+msgstr "ရည်ညွှန်းနေသော ရှာဖွေရေးအင်ဂျင်များ"
+
+msgid "External pages"
+msgstr "ပြင်ပစာမျက်နှာများ"
+
+msgid "Refering pages"
+msgstr "ရည်ညွှန်းစာမျက်နှာများ"
+
+msgid "Internal pages"
+msgstr "အတွင်းစာမျက်နှာများ"
+
+msgid "UnknownAccessSource"
+msgstr "မသိသော ဝင်ရောက်မှုအရင်းအမြစ်"
+
+msgid "Different refering pages"
+msgstr "မတူညီသော ရည်ညွှန်းစာမျက်နှာများ"
+
+msgid "Keyphrases"
+msgstr "သော့ချက်စာစုများ"
+
+msgid "Keywords"
+msgstr "သော့ချက်စာလုံးများ"
+
+msgid "Keyphrases/Keywords"
+msgstr "သော့ချက်စာစုများ/သော့ချက်စာလုံးများ"
+
+msgid "Different keyphrases"
+msgstr "မတူညီသော သော့ချက်စာစုများ"
+
+msgid "Different keywords"
+msgstr "မတူညီသော သော့ချက်စာလုံးများ"
+
+#------------------------------------------------------------------------------
+# စာမျက်နှာ အတိုင်းအတာ
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "ကြည့်ရှုပြီးသော စာမျက်နှာများ"
+
+msgid "Different pages"
+msgstr "မတူညီသော စာမျက်နှာများ"
+
+msgid "Entry"
+msgstr "ဝင်ရောက်မှုနေရာ"
+
+msgid "Exit"
+msgstr "ထွက်ပေါက်နေရာ"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "ရည်ညွှန်းသူ"
+
+msgid "Host"
+msgstr "ဟော့စ်"
+
+#------------------------------------------------------------------------------
+# အမှားများနှင့် အခြေအနေများ
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "အမှား"
+
+msgid "HTTP Status Statistics"
+msgstr "HTTP အခြေအနေကုဒ် စာရင်းအင်း"
+
+msgid "SMTP Error codes"
+msgstr "SMTP အမှားကုဒ်များ"
+
+msgid "Page not found"
+msgstr "တောင်းဆိုထားသော စာမျက်နှာကို ရှာမတွေ့ပါ"
+
+msgid "Unknown error"
+msgstr "မသိသော အမှား"
+
+msgid "Abnormal traffic note"
+msgstr "ပုံမှန်မဟုတ်သော အသွားအလာတွင် ပါဝင်သည်: ရှာဖွေရေးဘော့များ၊ AI လေ့ကျင့်ရေးဘော့များ၊ အားနည်းချက်စကင်နာများနှင့် သတ်မှတ်ချက်နှင့် မကိုက်ညီသော တောင်းဆိုမှုများ"
+
+msgid "Page detail"
+msgstr "စာမျက်နှာအသေးစိတ်"
+
+msgid "AWStats did not found the"
+msgstr "AWStats က ရှာမတွေ့ပါ"
+
+msgid "in your log records."
+msgstr "သင့်မှတ်တမ်းများတွင်"
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats သည် သင်၏ နှင့် ကိုက်ညီသော မှန်ကန်သည့် မှတ်တမ်းလိုင်းများကို ရှာမတွေ့ပါ"
+
+msgid "parameter, in the"
+msgstr "ဘောင်ကို၊"
+
+msgid "th first non commented lines read of your log."
+msgstr "သင့်မှတ်တမ်းမှ ဖတ်ရှုပြီးသော ပထမဆုံး မှတ်ချက်မဟုတ်သော လိုင်းများ"
+
+msgid "Your log file"
+msgstr "သင့်မှတ်တမ်းဖိုင်"
+
+msgid "must have a bad format or"
+msgstr "ပုံစံမကျသော ဖော်မတ်ရှိနိုင်သည် သို့မဟုတ်"
+
+msgid "parameter setup does not match this format."
+msgstr "ဘောင်သတ်မှတ်ချက်သည် ဤဖော်မတ်နှင့် မကိုက်ညီပါ"
+
+msgid "Your AWStats"
+msgstr "သင်၏ AWStats"
+
+msgid "parameter is:"
+msgstr "ဘောင်မှာ:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "ဆိုလိုသည်မှာ သင့်ဝဘ်ဆာဗာ မှတ်တမ်းဖိုင်ရှိ လိုင်းတိုင်းတွင် ပါဝင်ရန်လိုအပ်သည်:"
+
+msgid "combined log format"
+msgstr "ပေါင်းစပ် မှတ်တမ်းဖော်မတ်"
+
+msgid "MSIE Extended W3C log format"
+msgstr "MSIE Extended W3C မှတ်တမ်းဖော်မတ်"
+
+msgid "WebStar native log format"
+msgstr "WebStar ဇာတိ မှတ်တမ်းဖော်မတ်"
+
+msgid "common log format"
+msgstr "အသုံးများ မှတ်တမ်းဖော်မတ်"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "အောက်ပါ စိတ်ကြိုက် မှတ်တမ်းဖော်မတ်:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "၎င်းမှာ AWStats က သင့်မှတ်တမ်းဖိုင်တွင် တွေ့ရှိခဲ့သော မှတ်တမ်းများ၏ နမူနာဖြစ်သည် (မှတ်တမ်းနံပါတ်"
+
+msgid "in your log):"
+msgstr "သင့်မှတ်တမ်းတွင်):"
+
+#------------------------------------------------------------------------------
+# အထွေထွေ
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "အပို/စျေးကွက်ချဲ့ထွင်ခြင်း"
+
+#------------------------------------------------------------------------------
+# အင်တာဖေ့စ် စာသား
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "လက်ရှိဆိုက်"
+
+msgid "Web Site"
+msgstr "ဝဘ်ဆိုက်"
+
+msgid "Last Update"
+msgstr "နောက်ဆုံး အပ်ဒိတ်"
+
+msgid "Never updated"
+msgstr "ဘယ်တုန်းကမှ အပ်ဒိတ်မလုပ်ဖူးပါ"
+
+msgid "No qualified records found in log"
+msgstr "မှတ်တမ်းတွင် အရည်အချင်းပြည့်မီသော မှတ်တမ်းများ ရှာမတွေ့ပါ"
+
+msgid "corrupted"
+msgstr "ပျက်စီးနေသည်"
+
+msgid "comments"
+msgstr "မှတ်ချက်များ"
+
+msgid "Blank"
+msgstr "ဗလာ"
+
+msgid "dropped"
+msgstr "ပယ်ချထားသည်"
+
+msgid "Update now"
+msgstr "ယခု အပ်ဒိတ်လုပ်ရန်"
+
+msgid "Back to main page"
+msgstr "ပင်မစာမျက်နှာသို့ ပြန်သွားရန်"
+
+msgid "Close window"
+msgstr "ပြတင်းပေါက်ပိတ်ရန်"
+
+msgid "Back page"
+msgstr "ယခင်စာမျက်နှာသို့ ပြန်သွားရန်"
+
+msgid "Navigation"
+msgstr "လမ်းညွှန်ခြင်း"
+
+msgid "Summary"
+msgstr "အကျဉ်းချုပ်"
+
+msgid "Local"
+msgstr "ပြည်တွင်း"
+
+msgid "External"
+msgstr "ပြင်ပ"
+
+msgid "Others (email senders)"
+msgstr "အခြား (အီးမေးလ်ပေးပို့သူများ)"
+
+msgid "Others (email receivers)"
+msgstr "အခြား (အီးမေးလ်လက်ခံသူများ)"
+
+msgid "Others"
+msgstr "အခြား"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "လက်ရှိတွင် ဘရောင်ဇာဒေတာ ၁၀ လိုင်းသာ ပြသထားသည်၊ ကျေးဇူးပြု၍ အပြည့်အစုံစာရင်းကို ကြည့်ပါ"
+
+msgid "Others (unknown browsers)"
+msgstr "အခြား (မသိသော ဘရောင်ဇာများ)"
+
+msgid "Others (operating systems)"
+msgstr "အခြား (လည်ပတ်မှုစနစ်များ)"
+
+msgid "Others (unknown OS)"
+msgstr "အခြား (မသိသော လည်ပတ်မှုစနစ်)"
+
+msgid "Others (search engines)"
+msgstr "အခြား (ရှာဖွေရေးအင်ဂျင်များ)"
+
+msgid "Others (referring pages)"
+msgstr "အခြား (ရည်ညွှန်းစာမျက်နှာများ)"
+
+msgid "Others (keyphrases)"
+msgstr "အခြား (သော့ချက်စာစုများ)"
+
+msgid "Others (keywords)"
+msgstr "အခြား (သော့ချက်စာလုံးများ)"
+
+msgid "Only first 10 robots shown"
+msgstr "လက်ရှိစာရင်းတွင် စက်ရုပ် ၁၀ ခုသာ ပြသထားသည်၊ ကျေးဇူးပြု၍ အပြည့်အစုံစာရင်းကို ကြည့်ပါ"
+
+msgid "Failed to obtain access record"
+msgstr "ဝင်ရောက်မှုမှတ်တမ်း ရယူရန် မအောင်မြင်ပါ"
+
+msgid "Failed to obtain leave record"
+msgstr "ထွက်ခွာမှုမှတ်တမ်း ရယူရန် မအောင်မြင်ပါ"
+
+msgid "Other pages"
+msgstr "အခြားစာမျက်နှာများ"
+
+msgid "Low Traffic IP Summary"
+msgstr "အသွားအလာနည်းသော မသိရသေးသော IP အကျဉ်းချုပ်"
+
+msgid "Failed to obtain IP data"
+msgstr "အခြားသိရှိထားသော IP အကျဉ်းချုပ်"
+
+msgid "Failed to obtain the relevant data"
+msgstr "သက်ဆိုင်ရာ ဒေတာကို ရယူရန် မအောင်မြင်ပါ"
+
+msgid "Limited list of countries and regions"
+msgstr "လက်ရှိတွင် လိုင်း ၁၀ ကြောင်းသာ ပြသထားသည်၊ ကျေးဇူးပြု၍ နိုင်ငံများနှင့် ဒေသများအတွက် အပြည့်အစုံစာရင်းကို ကြည့်ပါ"
+
+msgid "currentVisitorData"
+msgstr "လက်ရှိတွင် လာရောက်သူဒေတာ ၁၀ လိုင်းသာ ပြသထားသည်၊ ကျေးဇူးပြု၍ အပြည့်အစုံစာရင်းကို ကြည့်ပါ"
+
+msgid "Others (robots main)"
+msgstr "အခြား (စက်ရုပ်များ)"
+
+msgid "Others (worms)"
+msgstr "အခြား (ကွန်ပျူတာပိုးများ)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "လက်ရှိစာရင်းတွင် စာမျက်နှာ ၁၀ ခုသာ ပြသထားသည်၊ ကျေးဇူးပြု၍ အပြည့်အစုံစာရင်းကို ကြည့်ပါ"
+
+msgid "Others (OS main)"
+msgstr "အခြား (စနစ်)"
+
+msgid "Others (browsers main)"
+msgstr "အခြား (ဘရောင်ဇာများ)"
+
+msgid "Others (screen sizes)"
+msgstr "အခြား (အရွယ်အစား)"
+
+msgid "Others (search engines main)"
+msgstr "အခြား (ရှာဖွေရေးအင်ဂျင်များ)"
+
+msgid "Others (referring pages main)"
+msgstr "အခြား (ရည်ညွှန်းစာမျက်နှာများ)"
+
+msgid "Others (keyphrases main)"
+msgstr "အခြား (သော့ချက်စာစုများ)"
+
+msgid "Others (keywords main)"
+msgstr "အခြား (သော့ချက်စာလုံးများ)"
+
+# 1xx
+msgid "Continue"
+msgstr "ကျန်ရှိသောအကြောင်းအရာများကို ဆက်လက်ပေးပို့ရန်"
+
+msgid "Switching Protocols"
+msgstr "ပရိုတိုကော ပြောင်းလဲနေသည်"
+
+msgid "Processing (WebDAV)"
+msgstr "လုပ်ဆောင်နေသည် (ကျေးဇူးပြု၍ စောင့်မျှော်ပါ)"
+
+msgid "Early Hints"
+msgstr "ဆာဗာသည် အရင်းအမြစ်များကို ပြင်ဆင်နေသည်"
+
+# 2xx
+msgid "[Miscellaneous successes]"
+msgstr "အခြားအောင်မြင်မှုအခြေအနေများ"
+
+msgid "Request successful"
+msgstr "တောင်းဆိုမှု အောင်မြင်သည်"
+
+msgid "Created successfully"
+msgstr "အောင်မြင်စွာ ဖန်တီးနိုင်ခဲ့သည်"
+
+msgid "Accepted - processing"
+msgstr "လက်ခံပြီး လုပ်ဆောင်နေသည်"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "တရားဝင်မဟုတ်သော အချက်အလက် (cache မှ)"
+
+msgid "Success, no content returned"
+msgstr "အောင်မြင်သည်၊ အကြောင်းအရာ ပြန်မပို့ပါ"
+
+msgid "Reset content"
+msgstr "ကျေးဇူးပြု၍ ဖောင်ကို ပြန်လည်သတ်မှတ်ပါ"
+
+msgid "Partial content (resume download)"
+msgstr "တစ်စိတ်တစ်ပိုင်း အကြောင်းအရာ (ဒေါင်းလုဒ်ဆက်လက်ခြင်းကို ပံ့ပိုးသည်)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "အခြေအနေမျိုးစုံ (WebDAV အစုလိုက်လုပ်ဆောင်ချက်များ)"
+
+msgid "Already reported (WebDAV)"
+msgstr "အစီရင်ခံပြီးဖြစ်သည် (ထပ်နေခြင်းကို ရှောင်ရှားရန်)"
+
+msgid "IM used"
+msgstr "IM ပရိုတိုကော တိုးချဲ့မှုကို အသုံးပြုထားသည်"
+
+# 3xx
+msgid "[Miscellaneous redirections]"
+msgstr "အခြားလမ်းကြောင်းပြောင်းခြင်းများ"
+
+msgid "Multiple choices"
+msgstr "ရွေးချယ်စရာများစွာ"
+
+msgid "Moved permanently - update your links"
+msgstr "အမြဲတမ်းရွှေ့ပြောင်းပြီးဖြစ်သည်၊ ကျေးဇူးပြု၍ သင့်လင့်ခ်များကို အပ်ဒိတ်လုပ်ပါ"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "ယာယီလမ်းကြောင်းပြောင်းခြင်း၊ လိပ်စာ မပြောင်းလဲပါ"
+
+msgid "See other"
+msgstr "ကျေးဇူးပြု၍ အခြားလိပ်စာကို ကြည့်ပါ"
+
+msgid "Not modified - using cached version"
+msgstr "ပြုပြင်မွမ်းမံမှုမရှိပါ၊ cache ဗားရှင်းကို အသုံးပြုနေသည်"
+
+msgid "Use proxy"
+msgstr "ကျေးဇူးပြု၍ ပရောက်စီကို အသုံးပြုပါ"
+
+msgid "Switch proxy"
+msgstr "ကျေးဇူးပြု၍ ပရောက်စီကို ပြောင်းပါ"
+
+msgid "Temporary redirect (keep method)"
+msgstr "ယာယီလမ်းကြောင်းပြောင်းခြင်း (တောင်းဆိုမှုနည်းလမ်းကို ထိန်းသိမ်းမည်)"
+
+msgid "Permanent redirect - update your links"
+msgstr "အမြဲတမ်းလမ်းကြောင်းပြောင်းခြင်း၊ ကျေးဇူးပြု၍ သင့်လင့်ခ်များကို အပ်ဒိတ်လုပ်ပါ"
+
+# 4xx
+msgid "[Miscellaneous client/user errors]"
+msgstr "အခြားကလိုင်းယင့်အမှားများ"
+
+msgid "Bad request"
+msgstr "တောင်းဆိုမှုပုံစံ မှားယွင်းနေသည်"
+
+msgid "Unauthorized - please log in"
+msgstr "ခွင့်ပြုချက်မရှိပါ၊ ကျေးဇူးပြု၍ ဦးစွာဝင်ရောက်ပါ"
+
+msgid "Payment required"
+msgstr "ငွေပေးချေရန် လိုအပ်သည်"
+
+msgid "Forbidden - access denied"
+msgstr "ဝင်ရောက်ခွင့် ပိတ်ပင်ထားသည်၊ ခွင့်ပြုချက် မလုံလောက်ပါ"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "စာမျက်နှာ မတွေ့ပါ၊ ကျေးဇူးပြု၍ ကျိုးနေသော လင့်ခ်များကို စစ်ဆေးပါ"
+
+msgid "Method not allowed"
+msgstr "တောင်းဆိုမှုနည်းလမ်းကို ခွင့်မပြုပါ"
+
+msgid "Not acceptable"
+msgstr "လက်ခံနိုင်သော တုံ့ပြန်မှုပုံစံ မဟုတ်ပါ"
+
+msgid "Proxy authentication required"
+msgstr "ပရောက်စီမှတစ်ဆင့် စစ်မှန်ကြောင်းအထောက်အထားပြရန် လိုအပ်သည်"
+
+msgid "Request timeout"
+msgstr "တောင်းဆိုမှု အချိန်ကုန်ဆုံးသည်"
+
+msgid "Conflict - please try again"
+msgstr "တောင်းဆိုမှု ပဋိပက္ခဖြစ်နေသည်၊ ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "Gone - permanently deleted"
+msgstr "အရင်းအမြစ်ကို အပြီးတိုင်ဖျက်ပစ်လိုက်ပြီ"
+
+msgid "Length required"
+msgstr "အကြောင်းအရာအရှည်ကို သတ်မှတ်ရန် လိုအပ်သည်"
+
+msgid "Precondition failed"
+msgstr "ကြိုတင်သတ်မှတ်ချက်များ မပြည့်မီပါ"
+
+msgid "Payload too large"
+msgstr "တောင်းဆိုမှုအကြောင်းအရာ အလွန်ကြီးမားနေသည်"
+
+msgid "URI too long"
+msgstr "တောင်းဆိုမှုလိပ်စာ အလွန်ရှည်လျားနေသည်"
+
+msgid "Unsupported media type"
+msgstr "ဖိုင်အမျိုးအစားကို မပံ့ပိုးပါ"
+
+msgid "Range not satisfiable"
+msgstr "တောင်းဆိုမှုအတိုင်းအတာ မမှန်ကန်ပါ"
+
+msgid "Expectation failed"
+msgstr "မျှော်လင့်ချက်ကို ဖြည့်ဆည်းပေးနိုင်ခြင်းမရှိပါ"
+
+msgid "I am a teapot (April Fools)"
+msgstr "ကျွန်ုပ်သည် လက်ဖက်ရည်အိုးဖြစ်သည် (ဧပြီလလိမ်နေ့ နောက်ပြောင်)"
+
+msgid "Page expired (Laravel)"
+msgstr "စာမျက်နှာ သက်တမ်းကုန်ဆုံးသွားပြီ၊ ကျေးဇူးပြု၍ ပြန်လည်စတင်ပြီး ထပ်စမ်းကြည့်ပါ"
+
+msgid "Method failure (Spring)"
+msgstr "နည်းလမ်း ကျရှုံးသည်"
+
+msgid "Misdirected request"
+msgstr "တောင်းဆိုမှုကို မှားယွင်းစွာ လမ်းကြောင်းပြောင်းထားသည်"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "တောင်းဆိုမှုပုံစံမှန်ကန်သော်လည်း လုပ်ဆောင်၍မရပါ"
+
+msgid "Locked (WebDAV)"
+msgstr "အရင်းအမြစ် လော့ခ်ကျနေသည် (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "မှီခိုနေသော လုပ်ဆောင်ချက် ကျရှုံးသည်"
+
+msgid "Too early"
+msgstr "တောင်းဆိုမှု အလွန်စောစွာ ပေးပို့နေသည်"
+
+msgid "Upgrade required"
+msgstr "ပရိုတိုကော အဆင့်မြှင့်ရန် လိုအပ်သည်"
+
+msgid "Precondition required"
+msgstr "လိုအပ်သော ကြိုတင်သတ်မှတ်ချက်များ ပျောက်ဆုံးနေသည်"
+
+msgid "Too many requests - slow down"
+msgstr "တောင်းဆိုမှုများ လွန်ကဲစွာ မကြာခဏဖြစ်နေသည်၊ ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "တောင်းဆိုမှု header အကွက်များ အလွန်ကြီးမားနေသည်"
+
+msgid "Request header too large"
+msgstr "တောင်းဆိုမှု header အလွန်ကြီးမားနေသည်"
+
+msgid "Login timeout (IIS)"
+msgstr "ဝင်ရောက်ချိန် ကုန်ဆုံးသွားပြီ၊ ကျေးဇူးပြု၍ ပြန်လည်ဝင်ရောက်ပါ"
+
+msgid "No response (nginx)"
+msgstr "ဆာဗာက တုံ့ပြန်မှုမရှိပါ"
+
+msgid "Retry with (IIS)"
+msgstr "ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "Blocked by Windows parental controls"
+msgstr "Windows မိဘထိန်းချုပ်မှုမှ ပိတ်ဆို့ထားသည်"
+
+msgid "Unavailable for legal reasons"
+msgstr "ဥပဒေရေးရာ အကြောင်းပြချက်များကြောင့် ဝင်ရောက်၍မရပါ"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "ကလိုင်းယင့်သည် အလုပ်မလုပ်ဘဲနေချိန် ကုန်ဆုံးခြင်းမတိုင်မီ အဆက်အသွယ်ကိုပိတ်လိုက်သည် (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "ထပ်ဆင့်ပို့သည့်ကွင်းဆက်တွင် IP လိပ်စာ ၃၀ ကျော်ရှိသည်"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "ပရိုတိုကောဗားရှင်းများ သဟဇာတမဖြစ်ပါ"
+
+msgid "Request header too large (nginx)"
+msgstr "တောင်းဆိုမှု header အလွန်ကြီးမားနေသည်"
+
+msgid "SSL certificate error (nginx)"
+msgstr "SSL လက်မှတ် အမှား"
+
+msgid "SSL certificate required (nginx)"
+msgstr "SSL လက်မှတ် လိုအပ်သည်"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP တောင်းဆိုမှုကို HTTPS ဆိပ်ကမ်းသို့ ပေးပို့ထားသည်"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "တိုကင် မမှန်ကန်ပါ"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "တိုကင် လိုအပ်သည် / ကလိုင်းယင့်က တောင်းဆိုမှုကို ပိတ်လိုက်သည်"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "အရင်းအမြစ်ကန့်သတ်ချက် (CPU/မှတ်ဉာဏ်) သို့ ရောက်ရှိသွားပြီ"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "ဘန်းဝစ်ကန့်သတ်ချက် ကျော်လွန်သွားသည်"
+
+# 5xx
+msgid "[Miscellaneous server errors]"
+msgstr "အခြားဆာဗာအမှားများ"
+
+msgid "Internal server error - check logs"
+msgstr "ဆာဗာအတွင်းပိုင်းအမှား၊ ကျေးဇူးပြု၍ မှတ်တမ်းများကို စစ်ဆေးပါ"
+
+msgid "Not implemented"
+msgstr "ဆာဗာသည် ဤလုပ်ဆောင်ချက်ကို မပံ့ပိုးပါ"
+
+msgid "Bad gateway - backend error"
+msgstr "ဂိတ်ဝေးအမှား၊ backend ဝန်ဆောင်မှု ပုံမှန်မဟုတ်ပါ"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "ဝန်ဆောင်မှုကို အသုံးမပြုနိုင်ပါ၊ ပြုပြင်ထိန်းသိမ်းခြင်း သို့မဟုတ် ဝန်ပိုနေသည်"
+
+msgid "Gateway timeout"
+msgstr "ဂိတ်ဝေးက တုံ့ပြန်မှု အချိန်ကုန်ဆုံးသည်"
+
+msgid "HTTP version not supported"
+msgstr "HTTP ပရိုတိုကောဗားရှင်းကို မပံ့ပိုးပါ"
+
+msgid "Variant also negotiates"
+msgstr "မူကွဲသည်လည်း ညှိနှိုင်းမှုတွင် ပါဝင်နေသည် (ဖွဲ့စည်းမှုအမှား)"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "သိုလှောင်မှုနေရာ မလုံလောက်ပါ"
+
+msgid "Loop detected (WebDAV)"
+msgstr "ကွင်းဆက်ညွှန်းခြင်း တွေ့ရှိခဲ့သည်"
+
+msgid "Not extended"
+msgstr "နောက်ထပ် တိုးချဲ့ရန် လိုအပ်သည်"
+
+msgid "Network authentication required"
+msgstr "ကွန်ရက်စစ်မှန်ကြောင်းအထောက်အထားပြရန် လိုအပ်သည်"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "မသိသော အမှား"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "ဝဘ်ဆာဗာ ပိတ်ထားသည်"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "အဆက်အသွယ် အချိန်ကုန်ဆုံးသည်"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "ရင်းမြစ်သို့ ဝင်ရောက်၍မရပါ"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "အချိန်ကုန်ဆုံးခြင်း ဖြစ်ပွားခဲ့သည်"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "SSL လက်ဆွဲနှုတ်ဆက်ခြင်း မအောင်မြင်ပါ"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "SSL လက်မှတ် မမှန်ကန်ပါ"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Railgun အမှား (ခေတ်နောက်ကျသွားပြီ)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "ဝဘ်ဆိုက် ဝန်ပိုနေသည်"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "ရင်းမြစ် DNS အမှား (Cloudflare) / ဝဘ်ဆိုက် ရပ်တန့်သွားသည် (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "ယာယီ ပိတ်ထားသည်"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "ခွင့်ပြုချက်မရှိပါ"
+
+msgid "Network read timeout error"
+msgstr "ကွန်ရက်ဖတ်ချိန် ကုန်ဆုံးမှုအမှား"
+
+msgid "Network connect timeout error"
+msgstr "ကွန်ရက်ချိတ်ဆက်ချိန် ကုန်ဆုံးမှုအမှား"
+
+msgid "Unexpected token (Shopify)"
+msgstr "မမျှော်လင့်သော တိုကင်"
+
+msgid "Request denied (LinkedIn)"
+msgstr "တောင်းဆိုမှုကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 အဆက်အသွယ်ကို ပိတ်သည်"
+
+msgid "[Unknown]"
+msgstr "မသိသော အခြေအနေကုဒ်"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "စံမဟုတ်သော အောင်မြင်မှုတုံ့ပြန်ချက် (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "စနစ်အခြေအနေ သို့မဟုတ် စနစ်အကူအညီစာတိုင်"
+
+msgid "Help message"
+msgstr "အကူအညီစာတိုင်"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "SMTP ဝန်ဆောင်မှု အသင့်ရှိသည် (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "ဝန်ဆောင်မှု အသင့်ရှိသည် - အီးမေးလ်ဆာဗာသည် အီးမေးလ်လက်ခံရန် အသင့်ရှိသည်"
+
+msgid "Service closing - connection is being closed"
+msgstr "ဝန်ဆောင်မှု ပိတ်နေသည် - အဆက်အသွယ်ကို ပိတ်နေသည်"
+
+msgid "Authentication successful"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း အောင်မြင်သည်"
+
+msgid "Requested mail action taken and completed"
+msgstr "တောင်းဆိုထားသော အီးမေးလ်လုပ်ဆောင်ချက်ကို လုပ်ဆောင်ပြီး ပြီးစီးခဲ့သည်"
+
+msgid "User not local - will forward to another address"
+msgstr "အသုံးပြုသူသည် ဤဆာဗာတွင်မရှိပါ - အခြားလိပ်စာသို့ ထပ်ဆင့်ပို့မည်"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "လက်ခံသူကို အတည်မပြုနိုင်သော်လည်း ပေးပို့ရန် ကြိုးစားမည်"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "အီးမေးလ်ကို ပေးပို့ရန် လက်ခံထားသည် (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "အသုံးပြုသူအမည်သည် စာတိုက်ပုံးတစ်ခုဖြစ်သည်"
+
+msgid "Authentication challenge - please respond"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြရန် စိန်ခေါ်မှု - ကျေးဇူးပြု၍ တုံ့ပြန်ပါ"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "အီးမေးလ်အကြောင်းအရာ စတင်ထည့်သွင်းရန် - <CRLF>.<CRLF> ဖြင့် အဆုံးသတ်ပါ"
+
+msgid "Continue (LMTP)"
+msgstr "ဆက်လုပ်ရန် (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "ဝန်ဆောင်မှု မရရှိနိုင်ပါ - အဆက်အသွယ်ပိတ်နေသည်၊ ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "စာတိုက်ပုံး အလုပ်ရှုပ်နေသည် သို့မဟုတ် ယာယီမရရှိနိုင်ပါ (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "အဆက်အသွယ်နှုန်း ကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "တစ်ပြိုင်နက်တည်း အဆက်အသွယ်အရေအတွက် အလွန်များနေသည် (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "အဆက်အသွယ် မတည်ဆောက်နိုင်ပါ (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "အဆက်အသွယ် အချိန်ကုန်ဆုံးသည် (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "အမှားကြောင့် အဆက်အသွယ်ကို ဖြတ်တောက်လိုက်သည် (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "စာတိုက်ပုံးကို ယာယီလော့ခ်ချထားသည် (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "လက်ခံသူအရေအတွက် အလွန်များနေသည် (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "အီးမေးလ်ဆာဗာအမှား (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "ကွင်းဆက်ပုံစံ လက်ခံခြင်း တွေ့ရှိခဲ့သည် (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "ခုန်ချေအရေအတွက် အလွန်များနေသည် (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "DNS ရှာဖွေခြင်း မအောင်မြင်ပါ (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထား မပြနိုင်ပါ (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "TLS လက်ဆွဲနှုတ်ဆက်ခြင်း မအောင်မြင်ပါ (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "SMTP ပရိုတိုကော ချိုးဖောက်မှု (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "အီးမေးလ်အရွယ်အစား ကန့်သတ်ချက်ကျော်လွန်နေသည် (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "အီးမေးလ်နှုန်း ကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "စာတိုက်ပုံးခွဲတမ်း ပြည့်နေသည် - ယာယီအခြေအနေ"
+
+msgid "Domain not found (Postfix)"
+msgstr "ဒိုမိန်း မတွေ့ပါ (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "အီးမေးလ် ခေါင်းစီး မမှန်ကန်ပါ (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "ပြန်ခုန်ခြင်း ကွင်းဆက်ပုံစံ တွေ့ရှိခဲ့သည် (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "လမ်းကြောင်းသတ်မှတ်၍မရပါ (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "ပေးပို့သူဒိုမိန်း မတွေ့ပါ (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "လက်ခံသူဒိုမိန်း မတွေ့ပါ (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "Greylisting စစ်ဆေးနေသည် - ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "စပမ်စစ်ထုတ်နေသည် (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "ဗိုင်းရပ်စ် စကင်န်ဖတ်နေသည် (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "စာတိုက်ပုံး မရရှိနိုင်ပါ - ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "Requested action aborted - error in processing"
+msgstr "တောင်းဆိုထားသော လုပ်ဆောင်ချက်ကို ဖျက်သိမ်းလိုက်သည် - လုပ်ဆောင်နေစဉ် အမှားတစ်ခု ဖြစ်ပွားခဲ့သည်"
+
+msgid "Insufficient system storage - try again later"
+msgstr "စနစ်သိုလှောင်မှုနေရာ မလုံလောက်ပါ - ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "ဤလက်ခံသူအတွက် အီးမေးလ်အရေအတွက် အလွန်များနေသည် (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS မရရှိနိုင်ပါ (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "ဆာဗာက အီးမေးလ် လက်ခံနိုင်စွမ်းမရှိပါ (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "DNS ရှာဖွေခြင်းတွင် ယာယီကျရှုံးမှု (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "ခွဲတမ်း ကျော်လွန်သွားသည် - ယာယီအခြေအနေ"
+
+msgid "Message too big - temporary"
+msgstr "အီးမေးလ် အလွန်ကြီးမားနေသည် - ယာယီအခြေအနေ"
+
+msgid "Too many messages per connection"
+msgstr "အဆက်အသွယ်တစ်ခုလျှင် အီးမေးလ်အရေအတွက် အလွန်များနေသည်"
+
+msgid "Load average too high (Postfix)"
+msgstr "ပျမ်းမျှဝန် အလွန်မြင့်မားနေသည် (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "အဆက်အသွယ်ကို ငြင်းပယ်ခဲ့သည် (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "ပို့ဆောင်နှုန်း ကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "လက်ခံသူနှုန်း ကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "ပေးပို့သူနှုန်း ကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "IP လိပ်စာနှုန်း ကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "MX ရှာဖွေခြင်း မအောင်မြင်ပါ (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "A record ရှာဖွေခြင်း မအောင်မြင်ပါ (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "PTR record ရှာဖွေခြင်း မအောင်မြင်ပါ (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "Greylisting ကို ဖွင့်ထားသည် - ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ (Postgrey)"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - ပေးပို့သူ သို့မဟုတ် လက်ခံသူအတွက် ဒိုမိန်း မသိရပါ"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "ပေးပို့သူလိပ်စာ ငြင်းပယ်ခံရသည် - ဒိုမိန်း အတည်မပြုရသေးပါ (DMARC ဆိုင်းငံ့နေသည်)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "လက်ခံသူလိပ်စာ ငြင်းပယ်ခံရသည် - ဒိုမိန်း အတည်မပြုရသေးပါ (DMARC ဆိုင်းငံ့နေသည်)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "DKIM အတည်ပြုခြင်း ဆိုင်းငံ့နေသည် - ယာယီကျရှုံးမှု"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "SPF အတည်ပြုခြင်း ဆိုင်းငံ့နေသည် - ယာယီကျရှုံးမှု"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "DMARC အတည်ပြုခြင်း ဆိုင်းငံ့နေသည် - ယာယီကျရှုံးမှု"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "DNSBL ရှာဖွေခြင်း ယာယီကျရှုံးမှု"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "RHSBL ရှာဖွေခြင်း ယာယီကျရှုံးမှု"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "URI DNSBL ရှာဖွေခြင်း ယာယီကျရှုံးမှု"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း ယာယီကျရှုံးမှု (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "ခွင့်ပြုချက် ယာယီကျရှုံးမှု (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "ပေးပို့သူတစ်ဦးချင်းစီအတွက် နှုန်းကန့်သတ်ချက် ကျော်လွန်သွားသည် (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "လက်ခံသူတစ်ဦးချင်းစီအတွက် နှုန်းကန့်သတ်ချက် ကျော်လွန်သွားသည် (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "ဒိုမိန်းတစ်ခုချင်းစီအတွက် နှုန်းကန့်သတ်ချက် ကျော်လွန်သွားသည် (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "IP တစ်ခုချင်းစီအတွက် နှုန်းကန့်သတ်ချက် ကျော်လွန်သွားသည် (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "အီးမေးလ်ကို နောက်မှပေးပို့ရန် တန်းစီထားသည် (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "မူဝါဒကြောင့် ပေးပို့မှု နှောင့်နှေးနေသည် (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "အကြောင်းအရာစစ်ထုတ်မှု ယာယီကျရှုံးမှု"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "ဗိုင်းရပ်စ်ပိုးသတ်စကင်နာ ယာယီကျရှုံးမှု"
+
+msgid "Temporary failure in spam filter"
+msgstr "စပမ်စစ်ထုတ်မှု ယာယီကျရှုံးမှု"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter ယာယီကျရှုံးမှု (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Greylisting - ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "DDoS protection active - try again later"
+msgstr "DDoS ကာကွယ်ရေး ဖွင့်ထားသည် - ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "SMTP policy violation - temporary"
+msgstr "SMTP မူဝါဒချိုးဖောက်မှု - ယာယီအခြေအနေ"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "RCPT TO လုပ်ဆောင်ခြင်းတွင် ယာယီအမှား"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "MAIL FROM လုပ်ဆောင်ခြင်းတွင် ယာယီအမှား"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "EHLO/HELO လုပ်ဆောင်ခြင်းတွင် ယာယီအမှား"
+
+msgid "Temporary error in DATA processing"
+msgstr "DATA လုပ်ဆောင်ခြင်းတွင် ယာယီအမှား"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "ယာယီအမှား - ဝန်ဆောင်မှုအလုပ်ရှုပ်နေသည်၊ ကျေးဇူးပြု၍ နောက်မှ ထပ်စမ်းကြည့်ပါ"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "သဒ္ဒါအမှား - ညွှန်ကြားချက်ကို မှတ်မိခြင်းမရှိ သို့မဟုတ် အလွန်ရှည်လျားနေသည်"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "ဘောင်များ သို့မဟုတ် arguments များတွင် သဒ္ဒါအမှား"
+
+msgid "Command not implemented"
+msgstr "ညွှန်ကြားချက်ကို အသုံးမပြုရသေးပါ"
+
+msgid "Bad sequence of commands"
+msgstr "ညွှန်ကြားချက်အစီအစဉ် မမှန်ကန်ပါ"
+
+msgid "Command parameter not implemented"
+msgstr "ညွှန်ကြားချက်ဘောင်ကို အသုံးမပြုရသေးပါ"
+
+msgid "Version not supported (ESMTP)"
+msgstr "ဗားရှင်းကို မပံ့ပိုးပါ (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "စာတိုက်ပုံးလမ်းကြောင်း မမှန်ကန်ပါ (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "ဤ session တွင် ညွှန်ကြားချက်များ အလွန်များနေသည် (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "လက်ခံသူကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "ပေးပို့သူကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "ဒိုမိန်းကန့်သတ်ချက် ကျော်လွန်သွားသည် (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "စာတိုက်ပုံး မရှိပါ (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS ကျရှုံးသည် - အမြဲတမ်းအမှား"
+
+msgid "Address type not supported (Postfix)"
+msgstr "လိပ်စာအမျိုးအစားကို မပံ့ပိုးပါ (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "စာတိုက်ပုံးကို မဖွင့်နိုင်ပါ (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "စာတိုက်ပုံး လော့ခ်ကျနေသည် - အမြဲတမ်းအခြေအနေ"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "မူဝါဒကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည် (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "အကြောင်းအရာကို ငြင်းပယ်ခဲ့သည် - အမြဲတမ်းအခြေအနေ"
+
+msgid "Attachment type not allowed"
+msgstr "ဖိုင်တွဲအမျိုးအစားကို ခွင့်မပြုပါ"
+
+msgid "Message encoding not supported"
+msgstr "အီးမေးလ် encoding ကို မပံ့ပိုးပါ"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "ပေးပို့သူဒိုမိန်း မရှိပါ - အမြဲတမ်းအခြေအနေ"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "ဒိုမိန်းသည် အီးမေးလ်ကို လက်မခံပါ သို့မဟုတ် ပိတ်နေသည်"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "လက်ခံသူဒိုမိန်း မရှိပါ - အမြဲတမ်းအခြေအနေ"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "စာတိုက်ပုံးခွဲတမ်း ပြည့်နေသည် - အမြဲတမ်းအခြေအနေ"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "အီးမေးလ်အရွယ်အစား ကန့်သတ်ချက်ကျော်လွန်နေသည် - အမြဲတမ်းအခြေအနေ"
+
+msgid "Authentication required (Sendmail)"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြရန် လိုအပ်သည် (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း မအောင်မြင်ပါ (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြသည့် ယန္တရားကို မပံ့ပိုးပါ"
+
+msgid "Authentication credentials invalid"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြသည့် အချက်အလက်များ မမှန်ကန်ပါ"
+
+msgid "Authentication account expired"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြသည့် အကောင့် သက်တမ်းကုန်ဆုံးသွားပြီ"
+
+msgid "Access denied - authentication required"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - စစ်မှန်ကြောင်းအထောက်အထားပြရန် လိုအပ်သည်"
+
+msgid "Access denied (Sendmailism)"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - အတည်မပြုရသေးပါ"
+
+msgid "Access denied - account locked"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - အကောင့် လော့ခ်ကျနေသည်"
+
+msgid "Access denied - account disabled"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - အကောင့်ကို ပိတ်ထားသည်"
+
+msgid "Authentication failed"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း မအောင်မြင်ပါ"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "ထပ်ဆင့်ပို့ရန် စစ်မှန်ကြောင်းအထောက်အထားပြရန် လိုအပ်သည် (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "ထပ်ဆင့်ပို့ရန်အတွက် စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း မအောင်မြင်ပါ (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "စာဝှက်ထားသော အဆက်အသွယ်လိုအပ်သည် (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "ဤလက်ခံသူသည် TLS စာဝှက်ခြင်းကို လိုအပ်သည်"
+
+msgid "Encryption strength insufficient"
+msgstr "စာဝှက်ခြင်းအားကောင်းမှု မလုံလောက်ပါ"
+
+msgid "Certificate validation failed"
+msgstr "လက်မှတ်အတည်ပြုခြင်း မအောင်မြင်ပါ"
+
+msgid "Invalid TLS certificate"
+msgstr "TLS လက်မှတ် မမှန်ကန်ပါ"
+
+msgid "TLS protocol version not supported"
+msgstr "TLS ပရိုတိုကောဗားရှင်းကို မပံ့ပိုးပါ"
+
+msgid "Cipher suite not supported"
+msgstr "Cipher အစုံကို မပံ့ပိုးပါ"
+
+msgid "Access denied - no valid recipient"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - မှန်ကန်သော လက်ခံသူ မရှိပါ"
+
+msgid "Access denied - no valid sender"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - မှန်ကန်သော ပေးပို့သူ မရှိပါ"
+
+msgid "Access denied - domain not allowed"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - ဒိုမိန်းကို ခွင့်မပြုပါ"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - IP လိပ်စာကို ပိတ်ဆို့ထားသည် (အမြဲတမ်း)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - ပေးပို့သူဒိုမိန်းသည် blacklist တွင်ရှိသည်"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "စာတိုက်ပုံး မရရှိနိုင်ပါ - တောင်းဆိုထားသည့် လုပ်ဆောင်ချက်ကို မလုပ်ဆောင်ပါ"
+
+msgid "User not local - please try forwarding address"
+msgstr "အသုံးပြုသူသည် ဤဆာဗာတွင်မရှိပါ - ကျေးဇူးပြု၍ ထပ်ဆင့်ပို့လိပ်စာကို အသုံးပြုပါ"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "တောင်းဆိုထားသော လုပ်ဆောင်ချက်ကို ဖျက်သိမ်းလိုက်သည် - သိုလှောင်မှုခွဲဝေမှု ကျော်လွန်သွားသည်"
+
+msgid "Mailbox name not allowed"
+msgstr "စာတိုက်ပုံးအမည်ကို ခွင့်မပြုပါ"
+
+msgid "Requested action rejected - access denied"
+msgstr "တောင်းဆိုထားသော လုပ်ဆောင်ချက်ကို ငြင်းပယ်ခဲ့သည် - ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည်"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "MAIL FROM/RCPT TO ဘောင်များကို မှတ်မိခြင်းမရှိပါ"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "ဒိုမိန်းကို ပေးပို့ခွင့်မပြုပါ (DMARC ငြင်းပယ်ချက်)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "ထပ်နေသော အီးမေးလ်များ အလွန်များနေသည် - အမြဲတမ်းအခြေအနေ"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "ပေးပို့သူလိပ်စာ ငြင်းပယ်ခံရသည် - ဒိုမိန်းသည် SPF တွင်မရှိပါ"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "ပေးပို့သူလိပ်စာ ငြင်းပယ်ခံရသည် - DKIM အတည်ပြုခြင်း မအောင်မြင်ပါ"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "ပေးပို့သူလိပ်စာ ငြင်းပယ်ခံရသည် - DMARC မူဝါဒက ငြင်းပယ်သည်"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "လက်ခံသူလိပ်စာ ငြင်းပယ်ခံရသည် - DMARC မူဝါဒက ငြင်းပယ်သည်"
+
+msgid "Message rejected due to spam content"
+msgstr "စပမ်အကြောင်းအရာကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Message rejected due to virus detected"
+msgstr "ဗိုင်းရပ်စ်တွေ့ရှိသောကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Message rejected due to malicious content"
+msgstr "အန္တရာယ်ရှိသော အကြောင်းအရာကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Message rejected due to phishing detection"
+msgstr "လိမ်လည်မှုတွေ့ရှိသောကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Message rejected due to malware detection"
+msgstr "malware တွေ့ရှိသောကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "မူဝါဒကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည် - အမြဲတမ်းအခြေအနေ"
+
+msgid "Message rejected due to content filtering"
+msgstr "အကြောင်းအရာစစ်ထုတ်မှုကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Message rejected due to reputation"
+msgstr "ဂုဏ်သတင်းကြောင့် အီးမေးလ်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Access denied - access_map violation"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - access_map ကို ချိုးဖောက်မှု"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - SMTP ကလိုင်းယင့်သည် RBL တွင်ရှိသည်"
+
+msgid "Access denied - relay not authorized"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - ထပ်ဆင့်ပို့မှုကို ခွင့်မပြုပါ"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - SMTP ကလိုင်းယင့် ဟော့စ်အမည် မသိရပါ"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - client HELO hostname အတွက် သဒ္ဒါမမှန်ကန်ပါ"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - SMTP ကလိုင်းယင့် ဟော့စ်အမည်ကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - client HELO hostname မသိရပါ"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - ဒိုမိန်း မမှန်ကန်ပါ (FQDN မဟုတ်ပါ)"
+
+msgid "Access denied - domain not qualified"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - ဒိုမိန်း အရည်အချင်းမပြည့်မီပါ"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - အီးမေးလ်ဆာဗာ ဖွဲ့စည်းမှု မှားယွင်းနေသည်"
+
+msgid "Access denied - open relay not allowed"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - open relay ကို ခွင့်မပြုပါ"
+
+msgid "Access denied - proxy not allowed"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - proxy အသုံးပြုခွင့် မပြုပါ"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - dynamic IP ကို ခွင့်မပြုပါ"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - နေအိမ်သုံး IP ကို ခွင့်မပြုပါ"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - VPN/Tor တွေ့ရှိခဲ့သည်"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - Spamhaus DROP စာရင်းတွင်ရှိသည်"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - URL သည် URIBL တွင်ရှိသည်"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - ဒိုမိန်းသည် RHSBL တွင်ရှိသည်"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "ဝင်ရောက်ခွင့် ငြင်းပယ်ခံရသည် - IP သည် DNSWL တွင်ရှိသည် (မူဝါဒ)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - စာတိုက်ပုံး မတွေ့ပါ"
+
+msgid "Delivery failed - recipient not local"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - လက်ခံသူသည် ဤဆာဗာတွင်မရှိပါ"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - လက်ခံသူကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Delivery failed - sender rejected"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - ပေးပို့သူကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Delivery failed - relay rejected"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - ထပ်ဆင့်ပို့မှုကို ငြင်းပယ်ခဲ့သည်"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - အမြဲတမ်း DNS အမှား"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - အမြဲတမ်း MX အမှား"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - အမြဲတမ်း A record အမှား"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - အမြဲတမ်း PTR record အမှား"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "ပေးပို့မှု မအောင်မြင်ပါ - အမြဲတမ်း မူဝါဒအမှား"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: အောင်မြင်သည် - ပေးပို့မှုအခြေအနေ အသိပေးချက်"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: ပေးပို့မှု နှောင့်နှေးနေသည်"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: ပေးပို့မှု မအောင်မြင်ပါ - အမြဲတမ်း"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: ပေးပို့မှု မအောင်မြင်ပါ - ယာယီ"
+
+msgid "DSN: Message expired"
+msgstr "DSN: အီးမေးလ် သက်တမ်းကုန်ဆုံးသွားပြီ"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: အီးမေးလ် ပြန်ခုန်လာသည်"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: အီးမေးလ်ကို စွန့်ပစ်လိုက်သည်"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: အီးမေးလ်ကို စစ်ထုတ်လိုက်သည်"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: အီးမေးလ်ကို သီးခြားခွဲထားသည်"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: ပြန်လည်သုံးသပ်ရန် အီးမေးလ်ကို ဆိုင်းငံ့ထားသည်"
+
+msgid "MTA-STS policy required"
+msgstr "MTA-STS မူဝါဒ လိုအပ်သည်"
+
+msgid "MTA-STS policy validation failed"
+msgstr "MTA-STS မူဝါဒ အတည်ပြုခြင်း မအောင်မြင်ပါ"
+
+msgid "TLS reporting required"
+msgstr "TLS အစီရင်ခံစာ လိုအပ်သည်"
+
+msgid "TLS report requested"
+msgstr "TLS အစီရင်ခံစာကို တောင်းဆိုထားသည်"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA Strict Transport Security ကို ဖွင့်ထားသည်"
+
+msgid "DANE validation required"
+msgstr "DANE အတည်ပြုခြင်း လိုအပ်သည်"
+
+msgid "DANE validation failed"
+msgstr "DANE အတည်ပြုခြင်း မအောင်မြင်ပါ"
+
+msgid "TLSA record missing"
+msgstr "TLSA record ပျောက်ဆုံးနေသည်"
+
+msgid "Certificate name mismatch"
+msgstr "လက်မှတ်အမည် မကိုက်ညီပါ"
+
+msgid "Certificate expired"
+msgstr "လက်မှတ် သက်တမ်းကုန်ဆုံးသွားပြီ"
+
+msgid "AUTH LOGIN required"
+msgstr "AUTH LOGIN လိုအပ်သည်"
+
+msgid "AUTH PLAIN required"
+msgstr "AUTH PLAIN လိုအပ်သည်"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "AUTH CRAM-MD5 လိုအပ်သည်"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "AUTH DIGEST-MD5 လိုအပ်သည်"
+
+msgid "AUTH GSSAPI required"
+msgstr "AUTH GSSAPI လိုအပ်သည်"
+
+msgid "AUTH NTLM required"
+msgstr "AUTH NTLM လိုအပ်သည်"
+
+msgid "AUTH SCRAM required"
+msgstr "AUTH SCRAM လိုအပ်သည်"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "AUTH OAUTHBEARER လိုအပ်သည်"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "AUTH XOAUTH2 လိုအပ်သည်"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: စာတိုက်ပုံးဒေတာဘေ့စ် အမှား"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: သိုလှောင်မှု driver error"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: ပို့ဆောင်ရေး agent အမှား"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: အကြောင်းအရာပြောင်းလဲခြင်း အမှား"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: လမ်းကြောင်းသတ်မှတ်ခြင်း အမှား"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: အီးမေးလ်စီးဆင်းမှု ရပ်တန့်နေသည်"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: Shadow redundancy အမှား"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: ဘေးကင်းရေးကွန်ရက် အမှား"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: တန်းစီဒေတာဘေ့စ် အမှား"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: အီးမေးလ်ကို နှုန်းကန့်သတ်ထားသည်"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: ပြန်ခုန်တန်းစီ အမှား"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: ရွှေ့ဆိုင်းတန်းစီ အမှား"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: ဆိုင်းငံ့တန်းစီ အမှား"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: ဝင်လာတန်းစီ အမှား"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: လှုပ်ရှားနေသော တန်းစီ အမှား"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: ပျက်စီးနေသော တန်းစီဖိုင်"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: တန်းစီပြေးသူ အမှား"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: Alias ဒေတာဘေ့စ် အမှား"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: Virtuser ဇယား အမှား"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: Mailer အဓိပ္ပာယ်ဖွင့်ဆိုချက် အမှား"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: Router ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: Transport ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: Director ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: Retry ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: Rewrite ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ACL ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Local_scan ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: Lookup ဖွဲ့စည်းမှု အမှား"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: Expansion ဖွဲ့စည်းမှု အမှား"
+
+msgid "HTTP Protocol Versions"
+msgstr "HTTP ပရိုတိုကော ဗားရှင်းများ"
+
+msgid "Protocol"
+msgstr "ပရိုတိုကော"
+
+msgid "Request %"
+msgstr "တောင်းဆိုမှု ရာခိုင်နှုန်း"
+
+msgid "Bandwidth %"
+msgstr "ဘန်းဝစ် ရာခိုင်နှုန်း"
+
+msgid "Each request requires a new connection"
+msgstr "တောင်းဆိုမှုတစ်ခုစီသည် အဆက်အသွယ်အသစ်တစ်ခု ဖန်တီးရန် လိုအပ်သည်"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "တောင်းဆိုမှုများစွာသည် အဆက်အသွယ်တစ်ခုတည်းကို ပြန်လည်အသုံးပြုနိုင်သည်"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "တောင်းဆိုမှုများစွာကို အဆက်အသွယ်တစ်ခုတည်းမှတစ်ဆင့် အပြိုင်လုပ်ဆောင်နိုင်သည်"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "ပိုမိုမြန်ဆန်သော အဆက်အသွယ်၊ အားနည်းသောကွန်ရက်များတွင် ပိုမိုကောင်းမွန်သော စွမ်းဆောင်ရည်"
+
+msgid "No protocol data available"
+msgstr "ပရိုတိုကောဒေတာ မရရှိနိုင်ပါ"
+
+msgid "of requests use HTTP/1.0"
+msgstr "၏ တောင်းဆိုမှုများသည် HTTP/1.0 ပရိုတိုကောကို အသုံးပြုသည်"
+
+msgid "From access logs"
+msgstr "ဝင်ရောက်မှုမှတ်တမ်းများမှ"
+
+msgid "No HTTP/2 requests detected"
+msgstr "HTTP/2 ပရိုတိုကော တောင်းဆိုမှုများ မတွေ့ရှိပါ"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "လက်ရှိတောင်းဆိုမှုများအားလုံးသည် HTTP/1.0 ဖြစ်ပြီး HTTP/2 တောင်းဆိုမှုများ မရှိပါ"
+
+msgid "HTTP/3 not detected"
+msgstr "HTTP/3 ပရိုတိုကော တောင်းဆိုမှုများ မတွေ့ရှိပါ"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "လက်ရှိတောင်းဆိုမှုများအားလုံးတွင် QUIC/HTTP/3 ပရိုတိုကော တောင်းဆိုမှုများ မပါဝင်ပါ"
+
+msgid "Mail Authentication Statistics"
+msgstr "အီးမေးလ် စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း စာရင်းအင်း"
+
+msgid "Authentication"
+msgstr "စစ်မှန်ကြောင်းအထောက်အထားပြခြင်း အမျိုးအစား"
+
+msgid "Pass"
+msgstr "အောင်မြင်သည်"
+
+msgid "Fail"
+msgstr "ကျရှုံးသည်"
+
+msgid "Softfail"
+msgstr "အနည်းငယ်ကျရှုံးသည်"
+
+msgid "Neutral"
+msgstr "ဘက်မလိုက်"
+
+msgid "None"
+msgstr "မရှိ"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "အီးမေးလ်တန်းစီ နှောင့်နှေးမှု စာရင်းအင်း"
+
+msgid "Delay Range"
+msgstr "နှောင့်နှေးမှုအတိုင်းအတာ"
+
+msgid "Count"
+msgstr "အရေအတွက်"
+
+msgid "Percentage"
+msgstr "ရာခိုင်နှုန်း"
+
+msgid "TLS Encryption Statistics"
+msgstr "TLS စာဝှက်ခြင်း စာရင်းအင်း"
+
+msgid "TLS Versions"
+msgstr "TLS ဗားရှင်းများ"
+
+msgid "Top Ciphers"
+msgstr "အသုံးများသော Cipher အစုံများ"
+
+msgid "robot_hits_detail_both"
+msgstr "စုစုပေါင်းတောင်းဆိုမှု: %s ကြိမ် (ပုံမှန်စာမျက်နှာ: %s ကြိမ်, robots.txt: %s ကြိမ်)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "robots.txt ကိုသာ ဝင်ရောက်သည်: %s ကြိမ်၊ အခြားစာမျက်နှာ အချက်အလက် မရယူပါ"
+
+msgid "robot_hits_detail_normal"
+msgstr "ပုံမှန်စာမျက်နှာ တောင်းဆိုမှု: %s ကြိမ်"
+
+msgid "Troubleshooting"
+msgstr "ပြဿနာဖြေရှင်းခြင်း"
+
+msgid "Did you use the correct URL?"
+msgstr "သင်သည် မှန်ကန်သော URL ကို အသုံးပြုခဲ့ပါသလား။"
+
+msgid "Example:"
+msgstr "ဥပမာ:"
+
+msgid "Did you use correct config parameter?"
+msgstr "သင်သည် မှန်ကန်သော ဖွဲ့စည်းမှု ဘောင်ကို အသုံးပြုခဲ့ပါသလား။"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "ဥပမာ: သင်၏ ဖွဲ့စည်းမှုဖိုင်သည် awstats.mysite.conf ဖြစ်ပါက -config=mysite ကို အသုံးပြုပါ"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "သင်သည် 'awstats.$SiteConfig.conf' ဖွဲ့စည်းမှုဖိုင်ကို ဖန်တီးပြီးပြီလား။"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "မရှိသေးပါက၊ သင်သည် command line မှ \"awstats_configure.pl\" ကို run နိုင်သည် သို့မဟုတ် လက်ဖြင့် ဖန်တီးနိုင်သည်။"
+
+msgid "Setup"
+msgstr "ပြင်ဆင်သတ်မှတ်ခြင်း"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "ဖိုင်၊ ဝဘ်ဆာဗာ သို့မဟုတ် ခွင့်ပြုချက်များ မှားယွင်းနေနိုင်သည်။"
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "ဖွဲ့စည်းမှုဖိုင်၊ ခွင့်ပြုချက်များနှင့် AWStats စာရွက်စာတမ်း ('docs' လမ်းညွှန်တွင်ရှိသည်) ကို စစ်ဆေးပါ။"
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "သတိပေးချက်: \"%s\" အတွက် ဘာသာစကားဖိုင်များ ရှာမတွေ့ပါ။ အင်္ဂလိပ်စာကို အသုံးပြုပါမည်။"
+
+#------------------------------------------------------------------------------
+# အမှားနှင့် အချက်ပြမှု စီမံခန့်ခွဲခြင်း
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "%s လုပ်ငန်းစဉ် (ID %s) ကို signal %s ဖြင့် ကြားဖြတ်လိုက်သည်။"
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "ဤဖွဲ့စည်းမှုဖိုင်အတွက် AWStats အပ်ဒိတ်လုပ်ငန်းစဉ်တစ်ခု လည်ပတ်နေပြီဖြစ်ပုံရသည်။ နောက်မှ ထပ်စမ်းကြည့်ပါ။ မမှန်ပါက lock ဖိုင်ကို လက်ဖြင့် ဖျက်ပစ်ပါ"
+
+#------------------------------------------------------------------------------
+# စာရင်းအင်းခေါင်းစဉ်အသစ်များ
+#------------------------------------------------------------------------------
+msgid "Report Overview"
+msgstr "အစီရင်ခံစာ ခြုံငုံသုံးသပ်ချက်"
+
+msgid "Monthly Statistics"
+msgstr "လစဉ်စာရင်းအင်း"
+
+msgid "Daily Statistics"
+msgstr "နေ့စဉ်စာရင်းအင်း"
+
+msgid "Statistics by Day of Week"
+msgstr "ရက်သတ္တပတ်၏နေ့အလိုက် စာရင်းအင်း"
+
+msgid "Hourly Page Views"
+msgstr "တစ်နာရီလျှင် ကြည့်ရှူမှုအရေအတွက်"
+
+msgid "Traffic Sources"
+msgstr "အသွားအလာ အရင်းအမြစ်များ"
+
+msgid "Other Sources"
+msgstr "အခြားအရင်းအမြစ်များ"
+
+msgid "tooltip_1"
+msgstr "ဝဘ်ဆိုက်ပေါ်ရှိ လာရောက်သူ၏ session အရေအတွက်။ တူညီသောလာရောက်သူသည် လှုပ်ရှားမှုမရှိဘဲ မိနစ် ၃၀ ကျော်ပြီးနောက် ပြန်လည်လာရောက်ပါက လာရောက်မှုအသစ်အဖြစ် သတ်မှတ်သည်"
+
+msgid "tooltip_2"
+msgstr "ရွေးချယ်ထားသော အချိန်အတွင်းတွင် သင့်ဝဘ်ဆိုက်သို့ လာရောက်ခဲ့သော မတူညီသော လာရောက်သူအရေအတွက်။ IP လိပ်စာကို အခြေခံသည်"
+
+msgid "tooltip_3"
+msgstr "စာမျက်နှာအဖြစ် သတ်မှတ်သော တောင်းဆိုမှုအရေအတွက် (HTML, PHP, ASP စသည်ဖြင့်)၊ ရုပ်ပုံများ၊ CSS၊ JS ကဲ့သို့သော static ဖိုင်များ မပါဝင်ပါ"
+
+msgid "tooltip_4"
+msgstr "ဆာဗာသို့ ပေးပို့သော စုစုပေါင်းတောင်းဆိုမှုအရေအတွက်၊ စာမျက်နှာများ၊ ရုပ်ပုံများ၊ CSS၊ JS နှင့် အခြားဖိုင်များ အားလုံး ပါဝင်သည်"
+
+msgid "tooltip_5"
+msgstr "အသုံးပြုသူ၏ တောင်းဆိုမှုကို တုံ့ပြန်သည့်အခါ ဆာဗာမှ ပေးပို့သော စုစုပေါင်းဒေတာပမာဏ"
+
+msgid "tooltip_13"
+msgstr "ရှာဖွေရေးအင်ဂျင်များမှတစ်ဆင့် သင့်ဝဘ်ဆိုက်သို့ ရောက်ရှိလာသော အသွားအလာ၏ အရင်းအမြစ်စာရင်းအင်း။ မည်သည့်ရှာဖွေရေးအင်ဂျင်က သင့်ထံသို့ အသွားအလာများ ယူဆောင်လာသည်နှင့် အသုံးပြုသူများ အသုံးပြုသော ရှာဖွေရေးစာလုံးများကို ပြသသည်"
+
+msgid "tooltip_14"
+msgstr "အခြားဝဘ်ဆိုက်များမှ ပြင်ပလင့်ခ်များမှတစ်ဆင့် သင့်ဝဘ်ဆိုက်သို့ ရောက်ရှိလာသော အသွားအလာ၏ အရင်းအမြစ်စာရင်းအင်း။ မည်သည့်ဝဘ်ဆိုက်များက သင့်ထံသို့ လင့်ခ်ချိတ်ဆက်ထားသည်နှင့် ၎င်းတို့ယူဆောင်လာသော အသွားအလာပမာဏကို ပြသသည်"
+
+msgid "tooltip_15"
+msgstr "အသုံးပြုသူများသည် ရှာဖွေရေးအင်ဂျင်များမှတစ်ဆင့် သင့်ဝဘ်ဆိုက်ကို ရှာဖွေသည့်အခါ အသုံးပြုသော ရှာဖွေရေးစာလုံးများ။ သော့ချက်စာလုံးသည် စာလုံးတစ်လုံးတည်းဖြစ်ပြီး သော့ချက်စာစုသည် စာလုံးများစွာ၏ ပေါင်းစပ်မှုဖြစ်သည်"
+
+msgid "tooltip_16"
+msgstr "အလိုအလျောက်ပရိုဂရမ်များဖြစ်သော ရှာဖွေရေးဘော့များ၊ AI လေ့ကျင့်ရေးဘော့များ၊ အားနည်းချက်စကင်နာများစသည်။ ကွင်းစကွင်းပိတ်အတွင်းရှိ ဂဏန်းများသည် ပုံမှန်စာမျက်နှာတောင်းဆိုမှုအရေအတွက်နှင့် robots.txt တောင်းဆိုမှုအရေအတွက်ကို ပြသသည်"
+
+msgid "tooltip_17"
+msgstr "၂၄ နာရီအသွားအလာ ဖြန့်ဖြူးမှုဇယား။ သင့်ဝဘ်ဆိုက်သို့ တစ်နေ့တာ၏ အချိန်တိုင်းတွင် မည်မျှအသွားအလာရှိသည်ကို ပြသပြီး အသုံးပြုသူများ၏ လှုပ်ရှားချိန်ကို နားလည်စေရန် ကူညီပေးသည်"
+
+msgid "tooltip_18"
+msgstr "ဤကော်လံသည် ရွေးချယ်ထားသော အချိန်အတွင်းရှိ နေ့စဉ်/အပတ်စဉ် ပျမ်းမျှတန်ဖိုးများကို ပြသပြီး အလုံးစုံလမ်းကြောင်းကို နားလည်စေရန် ကူညီပေးသည်"
+
+msgid "tooltip_19"
+msgstr "အသေးစိတ်အချက်အလက်များကိုကြည့်ရန် ဇယားရှိအရာများကို နှိပ်ပါ။ တိကျသောတန်ဖိုးများကိုကြည့်ရန် မောက်စ်ကို ဇယားဒြပ်စင်များပေါ်တွင် ဝေ့ထားပါ"
+
+msgid "tooltip_20"
+msgstr "လက်ရှိရှိသော အတိုင်းအတာများထဲသို့ ခွဲခြား၍မရသော ဒေတာများ၊ အများအားဖြင့် ဒေတာပုံစံမမှန်ခြင်း သို့မဟုတ် ပျောက်ဆုံးခြင်းကြောင့် ဖြစ်ပေါ်လာသည်"
+
+msgid "tooltip_21"
+msgstr "တွေ့ရှိရသော ကွန်ပျူတာပိုးများ၏ တိုက်ခိုက်မှုမှတ်တမ်းများ။ ကွန်ပျူတာပိုးသည် မိမိဘာသာ ပြန့်ပွားတတ်သော အန္တရာယ်ရှိသည့် ပရိုဂရမ်ဖြစ်ပြီး များသောအားဖြင့် ကွန်ရက်အားနည်းချက်များမှတစ်ဆင့် ပြန့်ပွားသည်"
+
+#------------------------------------------------------------------------------
+# အကူအညီမက်ဆေ့ချ်ကို ပြသရန် - Community Edition
+#------------------------------------------------------------------------------
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - အဆင့်မြင့် ဝဘ်စာရင်းအင်း"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "မူပိုင်ခွင့် (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "မူပိုင်ခွင့် (c) 2026-ယခုအထိ Community Edition"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats သည် လုံးဝအာမခံချက်မရှိပါ။ ၎င်းသည် GNU General Public License ဖြင့် ဖြန့်ချိသော အခမဲ့ဆော့ဖ်ဝဲလ်ဖြစ်သည် (အသေးစိတ်အတွက် LICENSE ဖိုင်ကို ကြည့်ပါ)။"
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "Syntax: %s -config=virtualhostname [ရွေးချယ်စရာများ]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "၎င်းသည် AWStats ဖွဲ့စည်းမှုဖိုင်တွင် သတ်မှတ်ထားသော မှတ်တမ်းဖိုင်မှ ဝဘ်ဆိုက်တစ်ခု၏ စာရင်းအင်းများကို အပ်ဒိတ်လုပ်ရန် (-update option) သို့မဟုတ် HTML အစီရင်ခံစာ (-output option) တစ်ခုကို တည်ဆောက်ရန် command line တွင် %s ကို run သည်။"
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "ပထမဦးစွာ၊ %s သည် %s.virtualhostname.conf ကို ဖွဲ့စည်းမှုဖိုင်အဖြစ် ဖတ်ရန် ကြိုးစားသည်။ မတွေ့ပါက %s သည် %s.conf ကို ဖတ်ရန် ကြိုးစားပြီး နောက်ဆုံးတွင် -config= သို့ ပေးပို့ထားသော full path ကို ဖတ်သည်။"
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "မှတ်ချက် 1: ဖွဲ့စည်းမှုဖိုင်များ (*.conf) သည် /etc/awstats, /usr/local/etc/awstats, /etc သို့မဟုတ် awstats.pl script ဖိုင်တည်ရှိရာ တူညီသောလမ်းညွှန်တွင် ရှိရမည်။"
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "မှတ်ချက် 2: AWSTATS_FORCE_CONFIG ပတ်ဝန်းကျင်ကိန်းရှင်ကို သတ်မှတ်ထားပါက AWStats သည် command line သို့မဟုတ် URL ရှိတန်ဖိုးကို မည်သို့ပင်ဖြစ်စေ ၎င်းကို 'config' တန်ဖိုးအဖြစ် အသုံးပြုမည်။"
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "တပ်ဆင်မှုညွှန်ကြားချက်အားလုံးအတွက် AWStats စာရွက်စာတမ်းကို ကြည့်ပါ။"
+
+msgid "Options to update statistics:"
+msgstr "စာရင်းအင်းများ အပ်ဒိတ်လုပ်ရန် ရွေးချယ်စရာများ:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        စာရင်းအင်းများကို အပ်ဒိတ်လုပ်ရန် (မူရင်း)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     လုပ်ဆောင်ပြီးစီးတိုင်း %s လိုင်းတိုင်းတွင် benchmark အချက်အလက်များ ထည့်သွင်းရန်"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted တွေ့ရှိသော ပျက်စီးနေသည့်လိုင်းတစ်ခုစီအတွက် အကြောင်းရင်းနှင့်အတူ output ထည့်သွင်းရန်"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   တွေ့ရှိသော ပယ်ချထားသည့်လိုင်းတစ်ခုစီအတွက် အကြောင်းရင်းနှင့်အတူ output ထည့်သွင်းရန်"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin   referer ကို parse မလုပ်နိုင်သောအခါ output ထုတ်ရန်"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin    origin သည် direct access ဖြစ်သောအခါ log line ကို output ထုတ်ရန်"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n    n လိုင်းများကို parse လုပ်ပြီးနောက် update process ကို ရပ်ရန်"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x      config file ရှိ 'LogFile' ကို ခွဲခြမ်းစိတ်ဖြာရန် log ကို ပြောင်းလဲရန်"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  စာရင်းအင်းများကို အပ်ဒိတ်လုပ်သည့်အခါ log ဖိုင်များကို အချိန်အစဉ်လိုက် လုပ်ဆောင်ရန် သတိပြုပါ။"
+
+msgid "Options to show statistics:"
+msgstr "စာရင်းအင်းများကိုပြသရန် ရွေးချယ်စရာများ:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output      main HTML report ကို output ထုတ်ရန် (-update မှလွဲ၍ update မလုပ်ပါ)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x    အခြားအစီရင်ခံစာစာမျက်နှာများကို output ထုတ်ရန် ဤနေရာတွင် x သည်:"
+
+msgid "build page of all domains/countries"
+msgstr "ဒိုမိန်း/နိုင်ငံအားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of all hosts"
+msgstr "ဟော့စ်အားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of last hits for hosts"
+msgstr "ဟော့စ်များအတွက် နောက်ဆုံးတောင်းဆိုမှုများ၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of all unresolved IP"
+msgstr "မဖြေရှင်းရသေးသော IP အားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of all email senders (maillog)"
+msgstr "အီးမေးလ်ပေးပို့သူအားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန် (maillog)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "နောက်ဆုံးအီးမေးလ်ပေးပို့သူများ၏ စာမျက်နှာကို တည်ဆောက်ရန် (maillog)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "အီးမေးလ်လက်ခံသူအားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန် (maillog)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "နောက်ဆုံးအီးမေးလ်လက်ခံသူများ၏ စာမျက်နှာကို တည်ဆောက်ရန် (maillog)"
+
+msgid "build page of all logins used"
+msgstr "အသုံးပြုထားသော အကောင့်ဝင်အမည်အားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of last hits for logins"
+msgstr "အကောင့်ဝင်အမည်များအတွက် နောက်ဆုံးတောင်းဆိုမှုများ၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of all robots/spider visits"
+msgstr "စက်ရုပ်/ပင့်ကူများ၏ လာရောက်မှုအားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of last hits for robots"
+msgstr "စက်ရုပ်များအတွက် နောက်ဆုံးတောင်းဆိုမှုများ၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "list most often viewed pages"
+msgstr "အကြိမ်အများဆုံးကြည့်ရှုသော စာမျက်နှာများကို စာရင်းပြုစုရန်"
+
+msgid "list most often viewed pages matching filter"
+msgstr "filer နှင့်ကိုက်ညီသော အကြိမ်အများဆုံးကြည့်ရှုသည့် စာမျက်နှာများကို စာရင်းပြုစုရန်"
+
+msgid "list entry pages"
+msgstr "ဝင်ရောက်စာမျက်နှာများကို စာရင်းပြုစုရန်"
+
+msgid "list entry pages matching filter"
+msgstr "filter နှင့်ကိုက်ညီသော ဝင်ရောက်စာမျက်နှာများကို စာရင်းပြုစုရန်"
+
+msgid "list exit pages"
+msgstr "ထွက်ပေါက်စာမျက်နှာများကို စာရင်းပြုစုရန်"
+
+msgid "list exit pages matching filter"
+msgstr "filter နှင့်ကိုက်ညီသော ထွက်ပေါက်စာမျက်နှာများကို စာရင်းပြုစုရန်"
+
+msgid "build page with os detailed versions"
+msgstr "လည်ပတ်မှုစနစ်၏ အသေးစိတ်ဗားရှင်းများပါသော စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page with browsers detailed versions"
+msgstr "ဘရောင်ဇာများ၏ အသေးစိတ်ဗားရှင်းများပါသော စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "ဘရောင်ဇာအမည်မသိသော 'User Agents' များကို စာရင်းပြုစုရန်"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "လည်ပတ်မှုစနစ်အမည်မသိသော 'User Agents' များကို စာရင်းပြုစုရန်"
+
+msgid "build page of all refering search engines"
+msgstr "ရည်ညွှန်းထားသော ရှာဖွေရေးအင်ဂျင်အားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "build page of all refering pages"
+msgstr "ရည်ညွှန်းထားသော စာမျက်နှာအားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "list all keyphrases used on search engines"
+msgstr "ရှာဖွေရေးအင်ဂျင်များပေါ်တွင် အသုံးပြုသော သော့ချက်စာစုများအားလုံးကို စာရင်းပြုစုရန်"
+
+msgid "list all keywords used on search engines"
+msgstr "ရှာဖွေရေးအင်ဂျင်များပေါ်တွင် အသုံးပြုသော သော့ချက်စာလုံးများအားလုံးကို စာရင်းပြုစုရန်"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "404 အမှားများအတွက် 'Referers' များကို စာရင်းပြုစုရန်"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "ExtraSection X အတွက် တန်ဖိုးအားလုံး၏ စာမျက်နှာကို တည်ဆောက်ရန်"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           HTML အစီရင်ခံစာစာမျက်နှာတွင် static လင့်ခ်များ ထားရှိရန်"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    .html အစား .xxx extension ပါသော static လင့်ခ်များ ထားရှိရန်"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     LL ဘာသာစကားဖြင့် HTML အစီရင်ခံစာကို output ထုတ်ရန် (en,de,es,fr,it,nl,my,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    MM လအတွက် HTML အစီရင်ခံစာကို output ထုတ်ရန်"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   YYYY နှစ်အတွက် HTML အစီရင်ခံစာကို output ထုတ်ရန်"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  'date' ရွေးချယ်စရာများသည် သင်အား မှတ်တမ်းဖိုင်ဟောင်းကို လုပ်ဆောင်ခွင့်မပြုပါ။ ၎င်းတို့သည် လက်ရှိလ/နှစ်အစား ရွေးချယ်ထားသော လ/နှစ်ကာလအတွက် အတိတ်အစီရင်ခံစာကို ကြည့်ရှုခွင့်သာ ပေးသည်။"
+
+msgid "Other options:"
+msgstr "အခြားရွေးချယ်စရာများ:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     level X ထက်နည်းသော debug information များကို ထည့်သွင်းရန် (အမြန်နှုန်း လျော့ကျမည်)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     AWStats ဗားရှင်းကို ပြသရန်"
+
+msgid "Now supports/detects:"
+msgstr "ယခု ပံ့ပိုးထားသည်/တွေ့ရှိသည်:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Web/FTP/အီးမေး/streaming ဆာဗာ log ခွဲခြမ်းစိတ်ဖြာခြင်း (load balanced log ဖိုင်များအပါအဝင်)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  Reverse DNS lookup (IPv4 and IPv6) နှင့် GeoIP lookup"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  လာရောက်မှုအရေအတွက်၊ ထူးခြားသောလာရောက်သူအရေအတွက်"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  လာရောက်မှုကြာချိန်နှင့် နောက်ဆုံးလာရောက်မှုစာရင်း"
+
+msgid "  Authenticated users"
+msgstr "  အတည်ပြုပြီးသော အသုံးပြုသူများ"
+
+msgid "  Days of week and rush hours"
+msgstr "  ရက်သတ္တပတ်၏နေ့များနှင့် အလုပ်ရှုပ်ချိန်များ"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  ဟော့စ်စာရင်းနှင့် မဖြေရှင်းရသေးသော IP လိပ်စာစာရင်း"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  အကြိမ်အများဆုံးကြည့်ရှုသော စာမျက်နှာများ၊ ဝင်ရောက်စာမျက်နှာများနှင့် ထွက်ပေါက်စာမျက်နှာများ"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  ဖိုင်အမျိုးအစားနှင့် ဝဘ်ချုံ့ခြင်း (mod_gzip, mod_deflate စာရင်းအင်းများ)"
+
+msgid "  Configured Database Statistics"
+msgstr "  ဖွဲ့စည်းထားသော ဒေတာဘေ့စ် စာရင်းအင်းများ"
+
+msgid "  %s domains/countries"
+msgstr "  %s ဒိုမိန်း/နိုင်ငံများ"
+
+msgid "  %s robots"
+msgstr "  %s စက်ရုပ်များ"
+
+msgid "  %s worm's families"
+msgstr "  %s worm မျိုးရင်းများ"
+
+msgid "  %s operating systems"
+msgstr "  %s လည်ပတ်မှုစနစ်များ"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s ဘရောင်ဇာများ (ဖုန်းဘရောင်ဇာဒေတာဘေ့စ်အပါအဝင် %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s ရှာဖွေရေးအင်ဂျင်များ (နှင့် ၎င်းတို့မှ အသုံးပြုသော သော့ချက်စာစုများ/သော့ချက်စာလုံးများ)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  နောက်ဆုံး referrer နှင့်အတူ HTTP အမှားအားလုံး"
+
+msgid "  Report by day/month/year"
+msgstr "  နေ့/လ/နှစ်အလိုက် အစီရင်ခံစာ"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  Dynamic သို့မဟုတ် static HTML သို့မဟုတ် XHTML အစီရင်ခံစာများ၊ static PDF အစီရင်ခံစာများ"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  အညွှန်းသတ်မှတ်ထားသော စာသား သို့မဟုတ် XML လစဉ်ဒေတာဘေ့စ်"
+
+msgid "  And a lot of other advanced features and options..."  
+msgstr "  နှင့် အခြားသော အဆင့်မြင့် အင်္ဂါရပ်များနှင့် ရွေးချယ်စရာများစွာ..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  ဗားရှင်းအသစ်များနှင့် FAQ ကို https://github.com/hestiacn/vstats/issues တွင် ကြည့်ရှုပါ"

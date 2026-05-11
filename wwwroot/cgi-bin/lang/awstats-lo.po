@@ -1,0 +1,3288 @@
+# AWStats Lao (lo) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Lao\n"
+"Language: lo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#------------------------------------------------------------------------------
+# ຊື່ເດືອນ
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "ມັງກອນ"
+
+msgid "month_02"
+msgstr "ກຸມພາ"
+
+msgid "month_03"
+msgstr "ມີນາ"
+
+msgid "month_04"
+msgstr "ເມສາ"
+
+msgid "month_05"
+msgstr "ພຶດສະພາ"
+
+msgid "month_06"
+msgstr "ມິຖຸນາ"
+
+msgid "month_07"
+msgstr "ກໍລະກົດ"
+
+msgid "month_08"
+msgstr "ສິງຫາ"
+
+msgid "month_09"
+msgstr "ກັນຍາ"
+
+msgid "month_10"
+msgstr "ຕຸລາ"
+
+msgid "month_11"
+msgstr "ພະຈິກ"
+
+msgid "month_12"
+msgstr "ທັນວາ"
+
+#------------------------------------------------------------------------------
+# ຊື່ວັນ
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "ອາທິດ"
+
+msgid "DayOfWeek_1"
+msgstr "ຈັນ"
+
+msgid "DayOfWeek_2"
+msgstr "ອັງຄານ"
+
+msgid "DayOfWeek_3"
+msgstr "ພຸດ"
+
+msgid "DayOfWeek_4"
+msgstr "ພະຫັດ"
+
+msgid "DayOfWeek_5"
+msgstr "ສຸກ"
+
+msgid "DayOfWeek_6"
+msgstr "ເສົາ"
+
+#------------------------------------------------------------------------------
+# ອົງປະກອບສ່ວນຕິດຕໍ່ຜູ້ໃຊ້
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "ສະຖິຕິເວັບໄຊທ໌ຂັ້ນສູງສຳລັບ"
+
+msgid "Statistics for"
+msgstr "ສະຖິຕິສຳລັບ"
+
+msgid "main"
+msgstr "ພາບລວມ"
+
+msgid "Switch to light mode"
+msgstr "ປ່ຽນໄປໂໝດສະຫວ່າງ"
+
+msgid "Switch to dark mode"
+msgstr "ປ່ຽນໄປໂໝດມືດ"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "ບາຍ"
+
+msgid "Filter"
+msgstr "ກັ່ນຕອງ"
+
+msgid "Exclude filter"
+msgstr "ບໍ່ລວມການກັ່ນຕອງ"
+
+msgid "Top"
+msgstr "ສູງສຸດ"
+
+msgid "Full list"
+msgstr "ລາຍຊື່ທັງໝົດ"
+
+msgid "Last"
+msgstr "ຫຼ້າສຸດ"
+
+msgid "Average"
+msgstr "ສະເລ່ຍ"
+
+msgid "Export"
+msgstr "ສົ່ງອອກ"
+
+msgid "Details"
+msgstr "ລາຍລະອຽດ"
+
+msgid "Version"
+msgstr "ເວີຊັນ"
+
+msgid "thousands_separator"
+msgstr ","
+
+msgid "dateformat_long"
+msgstr "dd/MM/yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd/MM/yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "ພ.ສ. %s"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# ແຖບນຳທາງ
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "ຕົວເລືອກເດືອນ AWStats"
+
+msgid "nav_category_basic"
+msgstr "ເອກະສານພື້ນຖານ"
+
+msgid "nav_category_guide"
+msgstr "ຄູ່ມືການໃຊ້ງານ"
+
+msgid "nav_category_reference"
+msgstr "ຊັບພະຍາກອນອ້າງອີງ"
+
+msgid "nav_category_integration"
+msgstr "ການເຊື່ອມໂຍງ ແລະສ່ວນຂະຫຍາຍ"
+
+msgid "nav_category_dev"
+msgstr "ເອກະສານນັກພັດທະນາ"
+
+msgid "nav_changelog"
+msgstr "ບັນທຶກການປ່ຽນແປງ"
+
+msgid "nav_what"
+msgstr "AWStats ແມ່ນຫຍັງ"
+
+msgid "nav_license"
+msgstr "ໃບອະນຸຍາດ"
+
+msgid "nav_glossary"
+msgstr "ສາລານຸກົມ"
+
+msgid "nav_setup"
+msgstr "ການຕິດຕັ້ງ ແລະຕັ້ງຄ່າ"
+
+msgid "nav_upgrade"
+msgstr "ຄູ່ມືການອັບເກຣດ"
+
+msgid "nav_config"
+msgstr "ພາຣາມິເຕີການຕັ້ງຄ່າ"
+
+msgid "nav_extra"
+msgstr "ພາກສ່ວນພິເສດ"
+
+msgid "nav_tools"
+msgstr "ເຄື່ອງມືອື່ນໆ"
+
+msgid "nav_faq"
+msgstr "ຄຳຖາມທີ່ພົບເລື້ອຍ"
+
+msgid "nav_security"
+msgstr "ຄຳແນະນຳດ້ານຄວາມປອດໄພ"
+
+msgid "nav_compare"
+msgstr "ການປຽບທຽບ"
+
+msgid "nav_benchmark"
+msgstr "ການວັດແທກປະສິດທິພາບ"
+
+msgid "nav_webmin"
+msgstr "ໂມດູນ Webmin"
+
+msgid "nav_dolibarr"
+msgstr "ໂມດູນ Dolibarr"
+
+msgid "nav_contrib"
+msgstr "ຊັບພະຍາກອນຈາກຜູ້ປະກອບສ່ວນ"
+
+msgid "nav_plugins"
+msgstr "ການພັດທະນາປລັກອິນ"
+
+msgid "nav_hooks"
+msgstr "ຮຸກຂອງປລັກອິນ"
+
+msgid "nav_graphs"
+msgstr "ກຣາຟຂອງປລັກອິນ"
+
+msgid "Back to top"
+msgstr "ກັບຄືນສູ່ເທິງ"
+
+msgid "nav_select_month"
+msgstr "ເລືອກເດືອນ"
+
+#------------------------------------------------------------------------------
+# ຕົວຊີ້ວັດຫຼັກ
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "ຜູ້ເຂົ້າຊົມທີ່ບໍ່ຊ້ຳກັນ"
+
+msgid "Visits"
+msgstr "ຈຳນວນເຂົ້າຊົມ"
+
+msgid "Visits duration"
+msgstr "ໄລຍະເວລາເຂົ້າຊົມ"
+
+msgid "First visit"
+msgstr "ອັບເດດຄັ້ງທຳອິດ"
+
+msgid "Last visit"
+msgstr "ອັບເດດຄັ້ງຫຼ້າສຸດ"
+
+msgid "Visits/Visitor"
+msgstr "ເຂົ້າຊົມ/ຜູ້ເຂົ້າຊົມ"
+
+msgid "Pages/Visit"
+msgstr "ໜ້າ/ເຂົ້າຊົມ"
+
+msgid "Hits/Visit"
+msgstr "ຄຳຮ້ອງຂໍ/ເຂົ້າຊົມ"
+
+msgid "KB/Visit"
+msgstr "ກິໂລໄບ/ເຂົ້າຊົມ"
+
+msgid "KB/Visits"
+msgstr "ກິໂລໄບ/ຈຳນວນເຂົ້າຊົມ"
+
+msgid "Pages"
+msgstr "ຈຳນວນໜ້າ"
+
+msgid "Hits"
+msgstr "ຈຳນວນຄຳຮ້ອງຂໍ"
+
+msgid "Bandwidth"
+msgstr "ແບນວິດ"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "ວິນາທີ"
+
+msgid "unit_min"
+msgstr "ນາທີ"
+
+msgid "unit_h"
+msgstr "ຊົ່ວໂມງ"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "ປະເພດອຸປະກອນ"
+
+msgid "Device Type"
+msgstr "ປະເພດອຸປະກອນ"
+
+msgid "Percent"
+msgstr "ສ່ວນຮ້ອຍ"
+
+msgid "Mobile"
+msgstr "ໂທລະສັບມືຖື"
+
+msgid "Pause & Go"
+msgstr "ຢຸດຊົ່ວຄາວ ແລະສືບຕໍ່"
+
+msgid "Complete"
+msgstr "ສົມບູນ"
+
+msgid "Tablet"
+msgstr "ແທັບເລັດ"
+
+msgid "Tv"
+msgstr "ໂທລະພາບ"
+
+msgid "Wearable"
+msgstr "ອຸປະກອນສວມໃສ່"
+
+msgid "Bot"
+msgstr "ບອດ"
+
+msgid "Desktop"
+msgstr "ຄອມພິວເຕີຕັ້ງໂຕະ"
+
+msgid "Normal browsing traffic"
+msgstr "ການເຂົ້າຊົມແບບປົກກະຕິ"
+
+msgid "Abnormal browsing traffic"
+msgstr "ການເຂົ້າຊົມທີ່ຜິດປົກກະຕິ"
+
+msgid "Viewed"
+msgstr "ເບິ່ງແລ້ວ"
+
+msgid "Not viewed"
+msgstr "ຍັງບໍ່ເຄີຍເບິ່ງ"
+
+msgid "Abnormal browsing traffic note"
+msgstr "ການເຂົ້າຊົມທີ່ຜິດປົກກະຕິລວມມີ: ບອດຊອກຫາ ບອດຝຶກອົບຮົມ AI ເຄື່ອງສະແກນຊ່ອງໂຕ້ໂຕງ ແລະຄຳຮ້ອງຂໍທີ່ບໍ່ປະຕິບັດຕາມມາດຕະຖານ HTTP/HTTPS"
+
+msgid "File size"
+msgstr "ຂະໜາດໄຟລ໌"
+
+msgid "File type"
+msgstr "ປະເພດໄຟລ໌"
+
+msgid "Downloads"
+msgstr "ດາວໂຫຼດ"
+
+msgid "Request time"
+msgstr "ເວລາໃນການຮ້ອງຂໍ"
+
+msgid "Total requests"
+msgstr "ຈຳນວນຄຳຮ້ອງຂໍທັງໝົດ"
+
+msgid "Frequency"
+msgstr "ຄວາມຖີ່"
+
+msgid "Average frequency"
+msgstr "ຄວາມຖີ່ສະເລ່ຍ"
+
+msgid "Seconds"
+msgstr "ວິນາທີ"
+
+msgid "First"
+msgstr "ຄັ້ງທຳອິດ"
+
+msgid "Mails"
+msgstr "ຈຳນວນອີເມວ"
+
+msgid "Size"
+msgstr "ຂະໜາດ"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "ຄຳເຕືອນ: ການລຶບໄຟລ໌ນີ້ຈະເຮັດໃຫ້ສະຖິຕິທັງໝົດຂອງວັນທີ"
+
+msgid "will be lost/reset."
+msgstr "ສູນຫາຍ/ຣີເຊັດຢ່າງຖາວອນ!"
+
+msgid "Last config file used to build this data file was"
+msgstr "ໄຟລ໌ຕັ້ງຄ່າຫຼ້າສຸດທີ່ໃຊ້ສ້າງໄຟລ໌ຂໍ້ມູນນີ້ແມ່ນ"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "ສ່ວນ MAP ໃນໄຟລ໌ນີ້ບັນທຶກຕຳແໜ່ງອອຟເຊັດໄບສຳລັບຈຸດເລີ່ມຕົ້ນຂອງແຕ່ລະພາກ ເພື່ອໃຫ້"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats ສາມາດເຂົ້າເຖິງຂໍ້ມູນໄດ້ໂດຍກົງ. ຖ້າທ່ານແກ້ໄຂບ່ອນໃດກໍ່ຕາມໃນໄຟລ໌ນີ້ ທ່ານຄວນ"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "ລຶບສ່ວນ MAP ທັງໝົດນຳ (AWStats ຈະຂຽນມັນຄືນໃໝ່ໃນການອັບເດດຄັ້ງຕໍ່ໄປ)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = ວັນທີຂອງບັນທຶກຫຼ້າສຸດທີ່ປະມວນຜົນ - ເລກແຖວບັນທຶກຫຼ້າສຸດໃນບັນທຶກຫຼ້າສຸດ - ອອຟເຊັດບັນທຶກຫຼ້າສຸດໃນບັນທຶກຫຼ້າສຸດ - ຄ່າລາຍເຊັນບັນທຶກຫຼ້າສຸດ"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = ວັນທີເຂົ້າຊົມຄັ້ງທຳອິດສຳລັບໄຟລ໌ປະຫວັດ"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = ວັນທີເຂົ້າຊົມຄັ້ງຫຼ້າສຸດສຳລັບໄຟລ໌ປະຫວັດ"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = ວັນທີອັບເດດຫຼ້າສຸດ - ຈຳນວນບັນທຶກທີ່ວິເຄາະ - ຈຳນວນບັນທຶກເກົ່າທີ່ວິເຄາະ - ຈຳນວນບັນທຶກໃໝ່ທີ່ວິເຄາະ - ຈຳນວນທີ່ເສຍຫາຍທີ່ວິເຄາະ - ຈຳນວນທີ່ຖືກຍົກເລີກທີ່ວິເຄາະ"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = ຈຳນວນເຂົ້າຊົມ"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = ຈຳນວນຜູ້ເຂົ້າຊົມທີ່ບໍ່ຊ້ຳກັນ"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = ຈຳນວນໂຮດທີ່ຮູ້ຈັກ"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = ຈຳນວນໂຮດທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "ລະຫັດຄລັບເຕີ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "ຊົ່ວໂມງ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ໜ້າທີ່ບໍ່ໄດ້ເບິ່ງ - ຄຳຮ້ອງຂໍທີ່ບໍ່ໄດ້ເບິ່ງ - ແບນວິດທີ່ບໍ່ໄດ້ເບິ່ງ"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "ວັນທີ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ເຂົ້າຊົມ"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "ໂດເມນ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "ໜ້າຫຼັກຈະສະແດງສະເພາະ %s ໜ້າສູງສຸດເທົ່ານັ້ນ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດໃນໜ້າລາຍລະອຽດ"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "ໂຮດ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ເວລາເຂົ້າຊົມຫຼ້າສຸດ - [ເວລາເລີ່ມຕົ້ນຂອງການເຂົ້າຊົມຫຼ້າສຸດ] - [ໜ້າສຸດທ້າຍຂອງການເຂົ້າຊົມຫຼ້າສຸດ]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[ເວລາເລີ່ມຕົ້ນຂອງການເຂົ້າຊົມຫຼ້າສຸດ] ແລະ [ໜ້າສຸດທ້າຍຂອງການເຂົ້າຊົມຫຼ້າສຸດ] ຈະຖືກບັນທຶກເມື່ອເຊດຊັນຍັງບໍ່ທັນສິ້ນສຸດເທົ່ານັ້ນ"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "ໜ້າຫຼັກຈະສະແດງສະເພາະ %s ລາຍການຄຳຮ້ອງຂໍສູງສຸດເທົ່ານັ້ນ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດໃນໜ້າລາຍລະອຽດ"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "ຜູ້ໃຊ້ທີ່ເຂົ້າສູ່ລະບົບ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ເວລາເຂົ້າຊົມຫຼ້າສຸດ"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "ລະຫັດຫຸ່ນຍົນ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ເວລາເຂົ້າຊົມຫຼ້າສຸດ - ຈຳນວນຄຳຮ້ອງຂໍ robots.txt"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "ລະຫັດແມ່ທ້ອງ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ເວລາເຂົ້າຊົມຫຼ້າສຸດ"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "ອີເມວ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ເວລາເຂົ້າຊົມຫຼ້າສຸດ"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "ໜ້າຫຼັກຈະສະແດງສະເພາະ %s ອີເມວຄຳຮ້ອງຂໍສູງສຸດເທົ່ານັ້ນ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດໃນໜ້າລາຍລະອຽດ"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - ຈຳນວນໜ້າ - ແບນວິດ - ເຂົ້າ - ອອກ"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "ປະເພດໄຟລ໌ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ - ແບນວິດກ່ອນບີບອັດ - ແບນວິດຫຼັງບີບອັດ"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "ຊ່ວງເວລາໃນການຮ້ອງຂໍ - ຄວາມຖີ່ຂອງເວລາໃນການຮ້ອງຂໍ"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "ຊ່ວງຂະໜາດໄຟລ໌ - ຈຳນວນໄຟລ໌"
+
+msgid "Session range - Number of visits"
+msgstr "ຊ່ວງໄລຍະເວລາເຊດຊັນ - ຈຳນວນເຂົ້າຊົມ"
+
+msgid "URL with %s errors - Hits"
+msgstr "URL ທີ່ມີຂໍ້ຜິດພາດ %s - ຈຳນວນຄຳຮ້ອງຂໍ"
+
+msgid "Last URL referrer"
+msgstr "ຕົວອ້າງອີງ URL ຫຼ້າສຸດ"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "ຂໍ້ຜິດພາດ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ"
+
+msgid "Search keywords - Number of search"
+msgstr "ຄຳສຳຄັນ - ຈຳນວນການຊອກຫາ"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "ໜ້າຫຼັກຈະສະແດງສະເພາະ %s ຄຳສຳຄັນສູງສຸດ (ຈັດລຽງຕາມຈຳນວນການຊອກຫາ). ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດໃນໜ້າລາຍລະອຽດ"
+
+msgid "Search keyphrases - Number of search"
+msgstr "ກຸ່ມຄຳສຳຄັນ - ຈຳນວນການຊອກຫາ"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "ໜ້າຫຼັກຈະສະແດງສະເພາະ %s ກຸ່ມຄຳສຳຄັນສູງສຸດ (ຈັດລຽງຕາມຈຳນວນການຊອກຫາ). ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດໃນໜ້າລາຍລະອຽດ"
+
+msgid "External page referers - Pages - Hits"
+msgstr "ຕົວອ້າງອີງໜ້າພາຍນອກ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "ໜ້າຫຼັກຈະສະແດງສະເພາະ %s ແຫຼ່ງອ້າງອີງພາຍນອກສູງສຸດ (ຈັດລຽງຕາມຈຳນວນໜ້າ). ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດໃນໜ້າລາຍລະອຽດ"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "ລະຫັດຕົວອ້າງອີງຈາກເຄື່ອງຈັກຊອກຫາ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ"
+
+msgid "Origin - Pages - Hits"
+msgstr "ແຫຼ່ງທີ່ມາ - ຈຳນວນໜ້າ - ຈຳນວນຄຳຮ້ອງຂໍ"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "ບຣາວເຊີຕົວອ້າງອີງທີ່ບໍ່ຮູ້ຈັກ - ເວລາເຂົ້າຊົມຫຼ້າສຸດ"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "ລະບົບປະຕິບັດການຕົວອ້າງອີງທີ່ບໍ່ຮູ້ຈັກ - ເວລາເຂົ້າຊົມຫຼ້າສຸດ"
+
+msgid "Screen size - Hits"
+msgstr "ຂະໜາດໜ້າຈໍ - ຈຳນວນຄຳຮ້ອງຂໍ"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ລະຫັດບຣາວເຊີ - ຈຳນວນຄລິກ - ຈຳນວນໜ້າ"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "ດາວໂຫຼດ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "ໂປຣໂຕຄໍ - ຈຳນວນຄຳຮ້ອງຂໍ - ແບນວິດ"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "ສະຖານະໄອຄອນ - ປະເພດ:200:404:ອື່ນໆ"
+
+#------------------------------------------------------------------------------
+# ການແປຊ່ວງເວລາ
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "ທ່ຽງຄືນ · AWStats ນອນຫຼັບໝົດແລ້ວ ເຈົ້າຍັງເບິ່ງຂໍ້ມູນຢູ່ບໍ? ຮັກແທ້ໆ"
+
+msgid "period_01"
+msgstr "ຕີ 1 · ເຂົ້າຊົມຕອນນີ້? ເຈົ້ານອນບໍ່ຫຼັບ ຫຼື ຫາກໍ່ເລີກວຽກ"
+
+msgid "period_02"
+msgstr "ຕີ 2 · ບອດຍັງຂະຫຍັນກວ່າເຈົ້າອີກ ມັນຍັງເຮັດວຽກຢູ່ເລີຍ"
+
+msgid "period_03"
+msgstr "ຕີ 3 · ເມືອງກຳລັງນອນ ເຊີຟເວີກຳລັງເຮັດວຽກລ່ວງເວລາ ໃຜຮ້າຍກວ່າກັນ?"
+
+msgid "period_04"
+msgstr "ຕີ 4 · ດາວທີ່ສະຫວ່າງທີ່ສຸດໃນຄວາມມືດ ຄືໜ້າຈໍຂອງເຈົ້າ ຫຼື ໄຟສະແດງສະຖານະເຊີຟເວີ"
+
+msgid "period_05"
+msgstr "ຕີ 5 · ນົກທີ່ຕື່ນແຕ່ເຊົ້າມີຫຼອດກິນ ບອດທີ່ຕື່ນແຕ່ເຊົ້າມີຂໍ້ມູນເກັບ"
+
+msgid "period_06"
+msgstr "6 ໂມງເຊົ້າ · ບາງຄົນຕື່ນນອນ ບາງຄົນຍັງບໍ່ທັນນອນ ອິນເຕີເນັດບໍ່ເຄີຍປິດ"
+
+msgid "period_07"
+msgstr "7 ໂມງເຊົ້າ · ເວລາແອອັດລົດໄຟ ກໍ່ແມ່ນເວລາຫຼິ້ນເວັບຄືກັນ"
+
+msgid "period_08"
+msgstr "8 ໂມງເຊົ້າ · ສິ່ງທຳອິດທີ່ຕ້ອງເຮັດເມື່ອເລີ່ມເຮັດວຽກ: ເບິ່ງຂໍ້ມູນມື້ວານ"
+
+msgid "period_09"
+msgstr "9 ໂມງເຊົ້າ · ເວລາຄຳ ການຫຼີ້ນວຽກກໍ່ຕ້ອງມີຫຼັກການ"
+
+msgid "period_10"
+msgstr "10 ໂມງເຊົ້າ · ເວລາກາເຟ ເບິ່ງວ່າທຣາຟຟິກເພີ່ມຂຶ້ນບໍ່"
+
+msgid "period_11"
+msgstr "11 ໂມງເຊົ້າ · ອີກ 1 ຊົ່ວໂມງກໍ່ຮອດເວລາເຂົ້າ ອົດທົນອີກນ້ອຍໜຶ່ງ"
+
+msgid "period_12"
+msgstr "ທ່ຽງວັນ · ເຊີຟເວີ: ເຈົ້າເຂົ້າໄປກິນເຂົ້າໝົດແລ້ວ ຂ້ອຍຂໍພັກແດ່"
+
+msgid "period_13"
+msgstr "13 ໂມງ · ງ່ວງຫຼັງອາຫານທ່ຽງ ແຕ່ຂໍ້ມູນບໍ່ງ່ວງ"
+
+msgid "period_14"
+msgstr "14 ໂມງ · ເວລານ້ຳຊາຕອນບ່າຍ"
+
+msgid "period_15"
+msgstr "15 ໂມງ · ກຣາຟແນວໂນ້ມການເຂົ້າຊົມມື້ນີ້ ຄືກັບກຣາຟອາລົມຂອງເຈົ້າບໍ່?"
+
+msgid "period_16"
+msgstr "16 ໂມງ · ອີກ X ຊົ່ວໂມງກໍ່ຮອດເວລາເລີກວຽກ ທຣາຟຟິກເລີ່ມແຂ່ງຂັນ"
+
+msgid "period_17"
+msgstr "17 ໂມງ · ເລີກວຽກແລ້ວ! ແຕ່ເຊີຟເວີຍັງຕ້ອງເຮັດວຽກຕໍ່"
+
+msgid "period_18"
+msgstr "18 ໂມງ · ເວລາເຂົ້າແລງ ເບິ່ງວີດີໂອນ້ອຍໜຶ່ງ ຜ່ອນຄາຍ"
+
+msgid "period_19"
+msgstr "19 ໂມງ · ເວລາຄຳ ທຣາຟຟິກພຸ່ງສູງ ເຊີຟເວີ: ຂ້ອຍໄຫວ"
+
+msgid "period_20"
+msgstr "20 ໂມງ · ນອນບ່ອນນັ່ງ ໂຊຟາ ເຈົ້າແມ່ນຜູ້ເຂົ້າຊົມເລກທີ 114514"
+
+msgid "period_21"
+msgstr "21 ໂມງ · ກາງຄືນງຽບສະຫງົບ ຄົນແອບເບິ່ງຂໍ້ມູນນົກຮູກ +1"
+
+msgid "period_22"
+msgstr "22 ໂມງ · ຂໍ້ມູນມື້ນີ້ຈະອອກແລ້ວ ຕື່ນເຕັ້ນບໍ່?"
+
+msgid "period_23"
+msgstr "23 ໂມງ · AWStats: ຄວນເຂົ້ານອນແລ້ວ ມື້ອື່ນຍັງຕ້ອງເຮັດວຽກອີກ"
+
+#------------------------------------------------------------------------------
+# ມິຕິດ້ານເວລາ
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "ໄລຍະເວລາສະຖິຕິ"
+
+msgid "Year"
+msgstr "ປີ"
+
+msgid "Month"
+msgstr "ເດືອນ"
+
+msgid "Months"
+msgstr "ເດືອນ"
+
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgid "Day"
+msgstr "ມື້"
+
+msgid "Hour"
+msgstr "ຊົ່ວໂມງ"
+
+msgid "Hours"
+msgstr "ຊົ່ວໂມງ"
+
+msgid "Day of week"
+msgstr "ມື້ໃນອາທິດ"
+
+msgid "When"
+msgstr "ເວລາ"
+
+msgid "%s Server Management Panel"
+msgstr "ກະດານຄຸ້ມຄອງເຊີບເວີ %s "
+
+msgid "Server Administration"
+msgstr "ວິທີແກ້ໄຂເຊີບເວີທີ່ງ່າຍດາຍ ແລະ ມີປະສິດທິພາບ"
+
+#------------------------------------------------------------------------------
+# ມິຕິຂອງຜູ້ມາຢ້ຽມຊົມ
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "ພາຣາມິເຕີ URL ບໍ່ຖືກຕ້ອງ"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "ບໍ່ສາມາດໂຫຼດໜ້າທີ່ຮ້ອງຂໍໄດ້ ເນື່ອງຈາກພາຣາມິເຕີ URL ບໍ່ຖືກຕ້ອງ ຫຼື ຮູບແບບບໍ່ຖືກຕ້ອງ."
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "ອັນນີ້ອາດເກີດຈາກການພິມ URL ທີ່ບໍ່ຖືກຕ້ອງ, ຂາດຕົວຄັນພາຣາມິເຕີ, ຫຼື ການໃຊ້ຊື່ຄັນຟິກທີ່ບໍ່ຖືກຕ້ອງ."
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "ກະລຸນາກວດສອບ URL ທີ່ທ່ານປ້ອນ ແລະ ໃຫ້ແນ່ໃຈວ່າພາຣາມິເຕີທັງໝົດຖືກຕ້ອງຕາມຮູບແບບ."
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "ຕົວກຳນົດ SiteDomain ບໍ່ໄດ້ຖືກກຳນົດໄວ້ໃນໄຟລ໌ config/domain ຂອງທ່ານ, ຫຼື ທ່ານອາດຈະບໍ່ມີສິດອະນຸຍາດໃຫ້ປະຕິບັດການໃສ່ໄຟລ໌."
+
+msgid "Please run as Administrator to set permissions"
+msgstr "ກະລຸນາແລ່ນເປັນຜູ້ເບິ່ງແຍງລະບົບ ເພື່ອຕັ້ງຄ່າສິດອະນຸຍາດ"
+
+msgid "Please set execute permission"
+msgstr "ກະລຸນາຕັ້ງຄ່າສິດອະນຸຍາດປະຕິບັດການ"
+
+msgid "Or if you prefer numeric mode"
+msgstr "ຫຼື ຖ້າທ່ານຕ້ອງການໂໝດຕົວເລກ"
+
+msgid "View Report Directly"
+msgstr "ເບິ່ງລາຍງານໂດຍກົງ"
+
+msgid "AWStats Log Viewer"
+msgstr "ໂຕເບິ່ງບັນທຶກ AWStats"
+
+msgid "Month Selection"
+msgstr "ການເລືອກເດືອນ"
+
+msgid "Who"
+msgstr "ໃຜ"
+
+msgid "Visitors"
+msgstr "ຜູ້ເຂົ້າຊົມ"
+
+msgid "Countries"
+msgstr "ປະເທດ/ພາກພື້ນ"
+
+msgid "flag_icon"
+msgstr "ທຸງຊາດ"
+
+msgid "Country-Region-City"
+msgstr "ປະເທດ/ພາກພື້ນ/ເມືອງ"
+
+msgid "Code"
+msgstr "ລະຫັດ"
+
+msgid "Known"
+msgstr "ຮູ້ຈັກ"
+
+msgid "unknownos"
+msgstr "ລະບົບປະຕິບັດການທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "unknownbrowser"
+msgstr "ບຣາວເຊີທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unresolved IP Address"
+msgstr "ທີ່ຢູ່ IP ທີ່ບໍ່ທັນແກ້ໄຂ"
+
+msgid "Unknown File Type"
+msgstr "ປະເພດໄຟລ໌ທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unknown Size"
+msgstr "ຂະໜາດໄຟລ໌ທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unknown Time"
+msgstr "ເວລາໃນການຮ້ອງຂໍທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unknown Browser"
+msgstr "ບຣາວເຊີທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unknown OS"
+msgstr "ລະບົບປະຕິບັດການທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unknown Visitor"
+msgstr "ຜູ້ເຂົ້າຊົມທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unknown Visitor (Total)"
+msgstr "ຜູ້ເຂົ້າຊົມທີ່ບໍ່ຮູ້ຈັກ (ລວມ)"
+
+msgid "Unknown Country"
+msgstr "ປະເທດ/ພາກພື້ນທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Unknown Country (Region)"
+msgstr "ປະເທດ/ພາກພື້ນທີ່ບໍ່ຮູ້ຈັກ (ລວມ)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "ຜູ້ເຂົ້າຊົມທີ່ບໍ່ຮູ້ຈັກ (ຫົວຂໍ້)"
+
+msgid "PageStayTime"
+msgstr "ບໍ່ສາມາດປະມານໄລຍະເວລາທີ່ຢູ່ເທິງໜ້າ"
+
+msgid "Unknown OS (Link)"
+msgstr "ລະບົບປະຕິບັດການທີ່ບໍ່ຮູ້ຈັກ (ລິ້ງ)"
+
+msgid "Unknown OS (Row)"
+msgstr "ລະບົບປະຕິບັດການທີ່ບໍ່ຮູ້ຈັກ (ລາຍການ)"
+
+msgid "Unknown Browser (Link)"
+msgstr "ບຣາວເຊີທີ່ບໍ່ຮູ້ຈັກ (ລິ້ງ)"
+
+msgid "Unknown Browser (Row)"
+msgstr "ບຣາວເຊີທີ່ບໍ່ຮູ້ຈັກ (ລາຍການ)"
+
+msgid "Unknown Screen"
+msgstr "ຂະໜາດໜ້າຈໍທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Login"
+msgstr "ຊື່ຜູ້ໃຊ້"
+
+msgid "Anonymous"
+msgstr "ນິລະນາມ"
+
+msgid "Robots"
+msgstr "ຫຸ່ນຍົນ"
+
+msgid "Different robots"
+msgstr "ຫຸ່ນຍົນຕ່າງໆ"
+
+msgid "Hits on robots.txt"
+msgstr "ການເຂົ້າຊົມທີ່ຜິດປົກກະຕິຈາກຫຸ່ນຍົນເຄື່ອງຈັກຊອກຫາທີ່ສະແດງຂ້າງເທິງບໍ່ຖືກລວມໄວ້ໃນກຣາຟອື່ນໆ ເລກຫຼັງ '+' ແມ່ນຈຳນວນບັນທຶກການເຂົ້າເຖິງ 'robots.txt' ທີ່ສຳເລັດ"
+
+msgid "Worms"
+msgstr "ແມ່ທ້ອງ"
+
+msgid "Different worms"
+msgstr "ແມ່ທ້ອງຕ່າງໆ"
+
+msgid "Target"
+msgstr "ເປົ້າໝາຍ"
+
+msgid "Grabber"
+msgstr "ເຄື່ອງມືດຶງຂໍ້ມູນ"
+
+#------------------------------------------------------------------------------
+# ຄຳອະທິບາຍຮູບແບບ
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "ໄຟລ໌ຂໍ້ຄວາມ (ໄດ້ມາດຕະຖານ ASCII ໃນປີ 1963 ບໍ່ມີຮູບແບບ ຂໍ້ຄວາມທຳມະດາ ພື້ນຖານຂອງລະຫັດແຫຼ່ງ ໄຟລ໌ຕັ້ງຄ່າ ແລະບັນທຶກທັງໝົດ Unix ໃຊ້ LF, Windows ໃຊ້ CRLF ສຳລັບຂຶ້ນບັນທັດໃໝ່ ຍັງຄົງເປັນຮູບແບບຂໍ້ມູນທົ່ວໄປທີ່ສຸດຂອງຄອມພິວເຕີ)"
+
+msgid "mime_log"
+msgstr "ໄຟລ໌ບັນທຶກ (ໄຟລ໌ຂໍ້ຄວາມທຳມະດາທີ່ບັນທຶກຂໍ້ມູນລະບົບ ການເຮັດວຽກຂອງແອັບພລິເຄຊັນ ໃຊ້ສຳລັບການແກ້ໄຂບັນຫາ ວິເຄາະປະສິດທິພາບ ກວດກາຄວາມປອດໄພ ຮູບແບບມາດຕະຖານເຊັ່ນ Apache combined log, Nginx access log, syslog ແລະອື່ນໆ)"
+
+msgid "mime_page"
+msgstr "ໜ້າເວັບ HTML (Tim Berners-Lee ປະດິດເວິລ໌ວາຍເວັບໃນປີ 1989 ໄດ້ກຳນົດເຕັກໂນໂລຢີ HTML/HTTP/URL ໃນປີ 1990 ໂດຍບໍ່ເສຍຄ່າ ແລະບໍ່ໄດ້ຍື່ນຂໍສິດທິບັດ HTML5 ໄດ້ກາຍເປັນມາດຕະຖານ W3C ໃນປີ 2014 ຮອງຮັບການສະແດງຜົນ ມັນຕິມີເດຍ ແລະການພິມ ໄດ້ຮັບລາງວັນ Turing Award ໃນປີ 2016)"
+
+msgid "mime_khtml"
+msgstr "ເອນຈິນໜ້າເວັບ KHTML (ເຜີຍແຜ່ໃນ KDE 2.0 ໃນປີ 1998 ເອນຈິນເຣນເດີຂອງບຣາວເຊີ Konqueror. Apple ໄດ້ສ້າງ WebKit ໂດຍອີງໃສ່ KHTML ໃນປີ 2001. Google ໄດ້ສ້າງ Blink ຈາກ WebKit ໃນປີ 2008 ກາຍເປັນແກນຫຼັກຂອງບຣາວເຊີ Chrome, Edge, Safari. KHTML ເປັນແບບຢ່າງຂອງຊຸມຊົນໂອເພັນຊອດທີ່ໄດ້ວາງຮາກຖານໃຫ້ກັບເອນຈິນບຣາວເຊີທັນສະໄໝ ມໍລະດົກທາງເຕັກໂນໂລຢີຍັງສືບຕໍ່ຜ່ານ WebKit/Blink)"
+
+msgid "mime_script"
+msgstr "ສະຄຣິບແບບໄດນາມິກ (ພາສາແບບແປຄວາມ ບໍ່ຕ້ອງຄອມໄພ ລວມທັງ ASP, JSP, CGI, ColdFusion, Tcl, VBScript ແລະອື່ນໆ ໃຊ້ກັນຢ່າງກວ້າງຂວາງໃນການພັດທະນາເວັບຍຸກທຳອິດ ການຈັດການລະບົບ ວຽກອັດຕະໂນມັດ. ພາສາສະຄຣິບທັນສະໄໝຢ່າງ Python, Ruby, JavaScript ໄດ້ພັດທະນາໄປເປັນພາສາຫຼັກໃນການພັດທະນາ full-stack)"
+
+msgid "mime_js"
+msgstr "ສະຄຣິບ JavaScript (Brendan Eich ສ້າງໃນ 10 ວັນທີ່ Netscape ໃນປີ 1995 ພາສາຂຽນໂປຣແກຣມຕົ້ນສະບັບຂອງບຣາວເຊີ ECMAScript ໄດ້ມາດຕະຖານໃນປີ 1997 Node.js ຖືກກຳເນີດໃນປີ 2009 ເຮັດໃຫ້ມັນກາຍເປັນພາສາ full-stack npm ເປັນຕົວຈັດການແພັກເກດທີ່ໃຫຍ່ທີ່ສຸດໃນໂລກ ພາສາຂຽນໂປຣແກຣມທີ່ໄດ້ຮັບຄວາມນິຍົມສູງສຸດຫຼາຍປີຕິດຕໍ່ກັນເທິງ GitHub)"
+
+msgid "mime_py"
+msgstr "ສະຄຣິບ Python (Guido van Rossum ສ້າງໃນປີ 1991 ຂຶ້ນຊື່ລືຊອງຍ້ອນການຍ່ອນແບບບັງຄັບ ໄວຍາກອນງ່າຍດາຍ ໃຊ້ກັນຢ່າງກວ້າງຂວາງໃນການພັດທະນາເວັບ ວິທະຍາສາດຂໍ້ມູນ ປັນຍາປະດິດ ການເຮັດວຽກອັດຕະໂນມັດຂອງລະບົບປະຕິບັດການ ໄດ້ຮັບລາງວັນ TIOBE Programming Language of the Year ຫຼາຍຄັ້ງ)"
+
+msgid "mime_sh"
+msgstr "ສະຄຣິບ Shell (Unix ຖືກກຳເນີດໃນປີ 1971 ພາສາສະຄຣິບຄຳສັ່ງ ໃຊ້ສຳລັບການຈັດການລະບົບ ວຽກອັດຕະໂນມັດ ການເລີ່ມຕົ້ນບໍລິການ ສະຄຣິບປະຕິບັດການ ທັກສະສຳຄັນສຳລັບການດູແລລະບົບ Linux)"
+
+msgid "mime_rb"
+msgstr "ສະຄຣິບ Ruby (Yukihiro Matsumoto ສ້າງໃນປີ 1995 ເນັ້ນຄວາມສຸກຂອງນັກພັດທະນາ. ເຟຣມເວີກ Ruby on Rails ໄດ້ລິເລີ່ມແບບຢ່າງການພັດທະນາທີ່ 'ກຳນົດຄ່າຫຼາຍກວ່າການກຳນົດ' ມີອິດທິພົນຕໍ່ການອອກແບບເຟຣມເວີກເວັບທັນສະໄໝ)"
+
+msgid "mime_pl"
+msgstr "ສະຄຣິບ Perl (Larry Wall ສ້າງໃນປີ 1987 ຂຶ້ນຊື່ລືຊອງຍ້ອນການປະຕິບັດຕົວຈິງ ໄດ້ຮັບນາມມະຍົດວ່າ 'ມີດສະວິດຂອງກອງທັບ' CPAN ເປັນຜູ້ບຸກເບີກຕົວຈັດການແພັກເກດພາສາທັນສະໄໝ ມີອິດທິພົນຢ່າງເລິກເຊິ່ງໃນດ້ານການປະມວນຜົນຂໍ້ຄວາມ ການຈັດການລະບົບ ແລະ CGI)"
+
+msgid "mime_php"
+msgstr "ໜ້າເວັບແບບໄດນາມິກ PHP (Rasmus Lerdorf ສ້າງໃນປີ 1995 ຖືກອອກແບບມາສຳລັບການພັດທະນາເວັບໂດຍສະເພາະ ເວັບໄຊທ໌ຫຼາຍກວ່າ 70% ທົ່ວໂລກໃຊ້ ຂັບເຄື່ອນແພລດຟອມຢ່າງ WordPress, Facebook, Wikipedia PHP 8 ນຳສະເໜີ JIT compilation ເພີ່ມປະສິດທິພາບຢ່າງຫຼວງຫຼາຍ)"
+
+msgid "mime_image"
+msgstr "ໄຟລ໌ຮູບພາບ"
+
+msgid "mime_document"
+msgstr "ໄຟລ໌ເອກະສານ"
+
+msgid "mime_package"
+msgstr "ແພັກເກດຊອບແວ"
+
+msgid "mime_archive"
+msgstr "ໄຟລ໌ບີບອັດ Gzip (ໂຄງການ GNU ໃນປີ 1992 ອີງຕາມຂັ້ນຕອນວິທີ DEFLATE ໃຊ້ໃນເວັບເພື່ອບີບອັດເນື້ອໃນການຕອບສະໜອງແບບໄດນາມິກ ອັດຕາການບີບອັດໂດຍທົ່ວໄປ 60-90% ຫຼັງປີ 2015 ບາງສະຖານະການຖືກແທນທີ່ດ້ວຍ Brotli ແຕ່ຍັງຄົງເປັນຮູບແບບການບີບອັດທີ່ຮອງຮັບຢ່າງກວ້າງຂວາງທີ່ສຸດຝັ່ງເຊີຟເວີ)"
+
+msgid "mime_audio"
+msgstr "ໄຟລ໌ສຽງ"
+
+msgid "mime_video"
+msgstr "ໄຟລ໌ວີດີໂອ"
+
+msgid "mime_jscript"
+msgstr "JavaScript (ພັດທະນາໂດຍ Brendan Eich ໃນປີ 1995)"
+
+msgid "mime_json"
+msgstr "ຂໍ້ມູນ JSON (Douglas Crockford ໄດ້ສະເໜີໃນປີ 2001 ຮູບແບບການແລກປ່ຽນຂໍ້ມູນນ້ຳໜັກເບົາ ມາດຕະຖານ de facto ຂອງ Web API)"
+
+msgid "mime_vbs"
+msgstr "VBScript (Microsoft ພັດທະນາໃນປີ 1996 ພາສາສະຄຣິບ Windows ໃຊ້ສຳລັບໜ້າເວັບ ASP ແລະສະຄຣິບການຈັດການ Windows ປັດຈຸບັນຖືກເລີກໃຊ້ແລ້ວ ເນື່ອງຈາກ PowerShell ແລະ JavaScript ແຜ່ຫຼາຍ)"
+
+msgid "mime_conf"
+msgstr "ໄຟລ໌ຕັ້ງຄ່າ (ເກັບຮັກສາການຕັ້ງຄ່າຊອບແວໃນຮູບແບບຂໍ້ຄວາມ ຮູບແບບທົ່ວໄປ: INI, JSON, YAML, TOML, XML ໄຟລ໌ຕັ້ງຄ່າລະບົບ Linux ສ່ວນຫຼາຍຢູ່ໃນໄດເລກທໍຣີ /etc)"
+
+msgid "mime_css"
+msgstr "ຊີດສະໄຕລ໌ຊີດ CSS (W3C ເຜີຍແຜ່ CSS1 ມາດຕະຖານທຳອິດໃນເດືອນທັນວາ ປີ 1996 CSS2 ເພີ່ມການຈັດວາງ ແລະປະເພດສື່ໃນປີ 1998 ນັບແຕ່ປີ 2011 ເປັນຕົ້ນມາ CSS3 ແບບໂມດູນນຳສະເໜີການປັດມຸມ ອານິເມຊັນ Flexbox Grid Layout ແລະ Responsive Design ເປັນໜຶ່ງໃນສາມເຕັກໂນໂລຢີຫຼັກຂອງດ້ານໜ້າ ຮ່ວມກັບ HTML ແລະ JavaScript ບຣາວເຊີທັນສະໄໝທັງໝົດ (Chrome, Firefox, Safari, Edge) ຮອງຮັບແບບດັ້ງເດີມ ເປັນມາດຕະຖານດຽວສຳລັບການກຳນົດສະໄຕລ໌ໜ້າເວັບ)"
+
+msgid "mime_xsl"
+msgstr "ຊີດສະໄຕລ໌ຊີດ XSL (ມາດຕະຖານ W3C ໃນປີ 1999 ພາສາປ່ຽນແປງເອກະສານ XML ສາມາດປ່ຽນ XML ໄປເປັນ HTML/PDF/ຂໍ້ຄວາມ ການໃຊ້ງານຫຼຸດລົງຫຼັງຈາກ JSON ແຜ່ຫຼາຍ)"
+
+msgid "mime_runtime"
+msgstr "ໄຟລ໌ປະຕິບັດການ (ຮູບແບບປະຕິບັດການຂອງລະບົບປະຕິບັດການ ເຊັ່ນ EXE, ELF, Mach-O ປະກອບດ້ວຍລະຫັດເຄື່ອງ ແລະຂໍ້ມູນການໂຫຼດ)"
+
+msgid "mime_library"
+msgstr "ໄຟລ໌ໄລບຣາຣີ (DLL, SO, dylib ແລະອື່ນໆ ໄລບຣາຣີເຊື່ອມຕໍ່ແບບໄດນາມິກ ລະຫັດທີ່ໃຊ້ຮ່ວມກັນເຊິ່ງຖືກໂຫຼດເມື່ອໂປຣແກຣມເຮັດວຽກ)"
+
+msgid "mime_swf"
+msgstr "ອານິເມຊັນ Flash (Macromedia ພັດທະນາໃນປີ 1996 ຕໍ່ມາເປັນຂອງ Adobe ມາດຕະຖານອານິເມຊັນເວັບແບບໂຕ້ຕອບ ເຄີຍຄອບຄອງເກມ ແລະອານິເມຊັນເທິງອິນເຕີເນັດ ຈຸດອ່ອນ: ຕ້ອງການປລັກອິນ ບໍ່ຮອງຮັບມືຖື ຄວາມສ່ຽງດ້ານຄວາມປອດໄພສູງ Adobe ປະກາດຢຸດການສະໜັບສະໜູນໃນປີ 2017 ຢຸດສະໜັບສະໜູນທັງໝົດໃນປີ 2020 ຖືກແທນທີ່ດ້ວຍ HTML5/CSS3/JS)"
+
+msgid "mime_dtd"
+msgstr "DTD (ນິຍາມປະເພດເອກະສານ) (ຂໍ້ກຳນົດ XML ກຳນົດໂຄງສ້າງເອກະສານ XML ໃຊ້ສຳລັບກວດສອບຄວາມຖືກຕ້ອງຂອງ XML)"
+
+msgid "mime_csv"
+msgstr "ຮູບແບບຂໍ້ມູນ CSV (ຄ່າຄັ້ນດ້ວຍເຄື່ອງໝາຍຈຸດ ຮູບແບບຂໍ້ມູນຕາຕະລາງທົ່ວໄປ ມາດຕະຖານການນຳເຂົ້າ ແລະສົ່ງອອກ Excel ແລະຖານຂໍ້ມູນ)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (ຕົວເລີ່ມແອັບພລິເຄຊັນ Java ເຕັກໂນໂລຢີແຈກຢາຍແອັບພລິເຄຊັນ Java ເທິງເດັສກ໌ທັອບໃນທົດສະວັດປີ 2000 ປັດຈຸບັນຖືກເລີກໃຊ້ແລ້ວ)"
+
+msgid "mime_lit"
+msgstr "e-book Microsoft Reader (Microsoft ເປີດຕົວໃນປີ 2000 ຮູບແບບ LIT ຖືກເລີກໃຊ້ແລ້ວ)"
+
+msgid "mime_svg"
+msgstr "ກຣາຟິກແບບເວັກເຕີ SVG (ມາດຕະຖານ W3C ໃນປີ 1999 ເນື່ອງຈາກ Microsoft ຜັກດັນຮູບແບບ VML ຂອງຕົນເອງເປັນເວລາດົນນານ ບຣາວເຊີ IE ຮອງຮັບຈົນຮອດປີ 2011 ເຮັດໃຫ້ການແຜ່ຫຼາຍຊັກຊ້າ ຫຼັງປີ 2015 ເມື່ອ IE ຖືກເລີກໃຊ້ ແລະໜ້າຈໍຄວາມລະອຽດສູງແຜ່ຫຼາຍ ມັນຈຶ່ງກາຍເປັນຮູບແບບທຳອິດສຳລັບໄອຄອນ ແລະໂລໂກ້)"
+
+msgid "mime_ai"
+msgstr "ກຣາຟິກແບບເວັກເຕີ Adobe Illustrator (ເປີດຕົວໃນປີ 1987 ຮູບແບບກຣາຟິກເວັກເຕີມາດຕະຖານຂອງອຸດສາຫະກຳ ທຳອິດສຳລັບການອອກແບບສິ່ງພິມ ໂລໂກ້ ໄອຄອນ)"
+
+msgid "mime_phshop"
+msgstr "ຮູບພາບ Photoshop (Adobe ເປີດຕົວໃນປີ 1990 ຮູບແບບໄຟລ໌ຕົ້ນສະບັບ PSD ຂອງ Photoshop ມາດຕະຖານອຸດສາຫະກຳສຳລັບການປະມວນຜົນຮູບພາບ)"
+
+msgid "mime_ttf"
+msgstr "ຟອນ TrueType (Apple ແລະ Microsoft ພັດທະນາຮ່ວມກັນໃນປີ 1989 ຮູບແບບຟອນແບບເວັກເຕີ ການສະແດງຜົນເທິງໜ້າຈໍ ແລະການພິມກົງກັນ ຮູບແບບຟອນເລີ່ມຕົ້ນຂອງລະບົບປະຕິບັດການທັນສະໄໝ)"
+
+msgid "mime_fon"
+msgstr "ຟອນເວັບ WOFF2 (W3C ແນະນຳໃນປີ 2014 ໃຊ້ຂັ້ນຕອນວິທີການບີບອັດ Brotli ຂະໜາດຫຼຸດລົງປະມານ 30% ເມື່ອທຽບກັບ WOFF ລຸ້ນເກົ່າ ແລະຫຼາຍກວ່າ 50% ເມື່ອທຽບກັບ TTF/OTF ປັດຈຸບັນບຣາວເຊີທັນສະໄໝທັງໝົດຮອງຮັບ ເປັນຮູບແບບທຳອິດສຳລັບຟອນເວັບທັນສະໄໝ ຮອງຮັບໂດຍບຣາວເຊີຫຼາຍກວ່າ 98%)"
+
+msgid "mime_pdf"
+msgstr "ເອກະສານ PDF (Adobe ພັດທະນາໃນປີ 1993 ກາຍເປັນມາດຕະຖານ ISO ໃນປີ 2008 ຮູບແບບເອກະສານຂ້າມແພລດຟອມ ຮັກສາຄວາມສອດຄ່ອງຂອງຮູບແບບ ເປັນມາດຕະຖານລະດັບໂລກສຳລັບການເຜີຍແຜ່ເອກະສານເອເລັກໂຕຣນິກ)"
+
+msgid "mime_dotnet"
+msgstr "ໜ້າເວັບແບບໄດນາມິກ ASP.NET (Microsoft ເປີດຕົວໃນປີ 2002 ເຕັກໂນໂລຢີໜ້າເວັບແບບໄດນາມິກເທິງແພລດຟອມ Windows ສ່ວນໜຶ່ງຂອງ .NET Framework)"
+
+msgid "mime_mdb"
+msgstr "ຖານຂໍ້ມູນ Access (ໄຟລ໌ຖານຂໍ້ມູນ Microsoft Access ເປີດຕົວໃນປີ 1992 ໂຊລູຊັນຖານຂໍ້ມູນເທິງເດັສກ໌ທັອບ Windows)"
+
+msgid "mime_md"
+msgstr "ເອກະສານ Markdown (John Gruber ສ້າງໃນປີ 2004 ການອອກແບບໄວຍາກອນໄດ້ຮັບອິດທິພົນຈາກ reStructuredText ແລະ Setext ປັດຊະຍາການອອກແບບຫຼັກແມ່ນ 'ອ່ານໄດ້ຄືສະແດງຜົນໄດ້' ການນຳໃຊ້ແບບດັ້ງເດີມ Markdown.pl ໃຊ້ນິພົດສະມົນ Perl ຂໍ້ກຳນົດທີ່ສືບຕໍ່ມາໄດ້ແກ່ GFM (2013), CommonMark (2017), Pandoc Markdown ແລະອື່ນໆ ຂັບເຄື່ອນລະບົບນິເວດເຊັ່ນ GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress ກາຍເປັນຮູບແບບມາດຕະຖານ de facto ສຳລັບຕົວສ້າງເວັບໄຊທ໌ແບບຄົງທີ່ ແລະເອກະສານນັກພັດທະນາ)"
+
+msgid "mime_crystal"
+msgstr "ຮູບແບບລາຍງານ Crystal Reports (ລາຍງານທຸລະກິດສືບລາດຂອງ SAP ຮູບແບບລາຍງານອົງກອນມາດຕະຖານ)"
+
+msgid "mime_libreoffice"
+msgstr "ເອກະສານ LibreOffice (The Document Foundation ພັດທະນາໃນປີ 2010 ສາຂາຂອງ OpenOffice ການນຳໃຊ້ມາດຕະຖານ ODF ຊຸດໂປຣແກຣມສຳນັກງານໂອເພັນຊອດຫຼັກ)"
+
+msgid "mime_encrypt"
+msgstr "ໄຟລ໌ທີ່ຖືກເຂົ້າລະຫັດ (ຕ້ອງຖອດລະຫັດຈຶ່ງຈະເບິ່ງໄຟລ໌ໄດ້ ສ່ວນຂະຫຍາຍທົ່ວໄປ: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "ຂໍ້ມູນເສັ້ນທາງ GPS (ຮູບແບບການແລກປ່ຽນ GPS ບັນທຶກຂໍ້ມູນຕຳແໜ່ງທາງພູມິສາດ ຮູບແບບທົ່ວໄປສຳລັບໂມງກິລາ ແລະອຸປະກອນນຳທາງ)"
+
+msgid "mime_diskimage"
+msgstr "ອິມິດຈະດີສ (ໄຟລ໌ອິມິດຈະດີສ/ຊີດີຣອມ ເຊັ່ນ DMG, ISO, IMG ໃຊ້ສຳລັບແຈກຢາຍຊອບແວ ຫຼືສຳຮອງສື່ຈັດເກັບຂໍ້ມູນ)"
+
+msgid "mime_vm"
+msgstr "ອິມິດຈະເຄື່ອງສະເໝືອນ (ໄຟລ໌ດີສຂອງເຄື່ອງສະເໝືອນ ເຊັ່ນ VMDK, VDI, VHDX, OVA ຮູບແບບສຳລັບແພລດຟອມ virtualization ເຊັ່ນ VMware, VirtualBox, Hyper-V)"
+
+msgid "mime_torrent"
+msgstr "ໄຟລ໌ BitTorrent (Bram Cohen ປະດິດໃນປີ 2001 ໄຟລ໌ດັດຊະນີການດາວໂຫຼດ P2P ປະກອບດ້ວຍຂໍ້ມູນເມຕາຂອງໄຟລ໌ ແລະຂໍ້ມູນ Tracker)"
+
+msgid "mime_gis"
+msgstr "ຂໍ້ມູນລະບົບສານສະເຕີພູມິສາດ GIS (ຂໍ້ມູນພື້ນທີ່ທາງພູມິສາດ ເຊັ່ນ Shapefile, GeoJSON ໃຊ້ສຳລັບແຜນທີ່ ແລະການວິເຄາະພື້ນທີ່)"
+
+msgid "mime_ebook"
+msgstr "e-book (ຮູບແບບ e-book ເຊັ່ນ EPUB, MOBI, AZW EPUB ເປັນມາດຕະຖານສາກົນ MOBI/AZW ເປັນຮູບແບບສຳລັບ Amazon Kindle)"
+
+msgid "mime_avif"
+msgstr "ຮູບພາບ AVIF (Alliance for Open Media ເປີດຕົວໃນປີ 2019 ອີງຕາມການເຂົ້າລະຫັດ AV1 ອັດຕາການບີບອັດສູງກວ່າ WebP 50% ມາດຕະຖານຮູບພາບເວັບລຸ້ນໃໝ່)"
+
+msgid "mime_markdown"
+msgstr "ເອກະສານ Markdown (John Gruber ອອກແບບໃນປີ 2004 ພາສາມາກອັບນ້ຳໜັກເບົາ ຮູບແບບທົ່ວໄປສຳລັບ README ເທິງ GitHub ເອກະສານທາງດ້ານເຕັກນິກ ການໂພສໃນຟອຣັມ)"
+
+msgid "mime_yaml"
+msgstr "ການຕັ້ງຄ່າ YAML (Clark Evans ອອກແບບໃນປີ 2001 ຮູບແບບການຈັດລຽງລຳດັບຂໍ້ມູນທີ່ມະນຸດອ່ານໄດ້ ມາດຕະຖານໄຟລ໌ຕັ້ງຄ່າສຳລັບ Kubernetes, Ansible, Docker Compose)"
+
+msgid "mime_toml"
+msgstr "ການຕັ້ງຄ່າ TOML (Tom Preston-Werner ອອກແບບໃນປີ 2013 'Tom's Obvious Minimal Language' ຮູບແບບໄຟລ໌ຕັ້ງຄ່າສຳລັບເຄື່ອງມືທັນສະໄໝຢ່າງ Rust/Cargo, Python/pip, Go)"
+
+msgid "mime_vue"
+msgstr "ໄຟລ໌ອົງປະກອບ Vue (ແນະນຳໃນປີ 2014 ໂດຍ Evan You, ຟຣາເມວອກ JavaScript ແບບກ້າວໜ້າ. ຜ່ານອົງປະກອບຮູບແບບໄຟລ໌ດຽວ (SFC) ມັນລວມເອົາ HTML, CSS ແລະ JS ເຂົ້າກັນຢ່າງສົມບູນ, ເພີ່ມປະສິດທິພາບການພັດທະນາຢ່າງຫຼວງຫຼາຍ. ມັນເປັນໜຶ່ງໃນຟຣາເມວອກດ້ານໜ້າທີ່ດັງທີ່ສຸດໃນໂລກ. ນອກຈາກນັ້ນ, ໃນຖານະເປັນຫຼັກຂອງເຄື່ອງຈັກສ້າງເວັບໄຊສະຖິດທີ່ທັນສະໄໝເຊັ່ນ VitePress, ມັນຖືກນຳໃຊ້ຢ່າງກວ້າງຂວາງເພື່ອຂັບເຄື່ອນເອກະສານທາງວິຊາການແບບໂຕ້ຕອບ ແລະ ບລັອກ.)"
+
+msgid "mime_wasm"
+msgstr "ໂມດູນ WebAssembly (ມາດຕະຖານ W3C ໃນປີ 2017 ຮູບແບບການເຮັດວຽກປະສິດທິພາບສູງໃນບຣາວເຊີ C/C++/Rust/R ສາມາດຄອມໄພເປັນເປົ້າໝາຍໄດ້ ປະສິດທິພາບໃກ້ຄຽງກັບພື້ນເມືອງ)"
+
+msgid "mime_jsx"
+msgstr "ຄອມໂພເນນຕ໌ React JSX (Facebook ເປີດຕົວ JavaScript XML ໃນປີ 2013 ໄວຍາກອນຄອມໂພເນນຕ໌ຂອງເຟຣມເວີກ React ນະວັດຕະກຳທີ່ນຳ HTML ມາຂຽນໃນ JavaScript)"
+
+msgid "mime_tsx"
+msgstr "ຄອມໂພເນນຕ໌ TypeScript TSX (Microsoft ພັດທະນາໃນປີ 2012 TypeScript + JSX ວິທີການຂຽນມາດຕະຖານສຳລັບການພັດທະນາ React ແບບຄວາມປອດໄພປະເພດ)"
+
+msgid "mime_heif"
+msgstr "ຮູບພາບ HEIF (ມາດຕະຖານ MPEG ໃນປີ 2015 ຮູບແບບໄຟລ໌ຮູບພາບທີ່ມີປະສິດທິພາບສູງ ໃຊ້ກັນຢ່າງກວ້າງຂວາງໃນລະບົບນິເວດຂອງ Apple)"
+
+msgid "mime_heic"
+msgstr "ຮູບພາບ HEIC (ການນຳໃຊ້ HEIF ຂອງ Apple ຮູບແບບຮູບຖ່າຍເລີ່ມຕົ້ນຂອງ iPhone ຮອງຮັບແບບດັ້ງເດີມໃນ iOS/macOS)"
+
+msgid "mime_gltf"
+msgstr "ໂມເດວ 3D GLTF (ຮູບແບບການສົ່ງ GL 'JPEG ຂອງໂລກ 3D' Khronos Group ເຜີຍແຜ່ໃນປີ 2015 ຮູບແບບມາດຕະຖານ Web 3D)"
+
+msgid "mime_glb"
+msgstr "ໂມເດວ 3D GLB ຖານສອງ (ເວີຊັນຖານສອງຂອງ GLTF ໄຟລ໌ດຽວມີຊັບພະຍາກອນທັງໝົດ ໃຊ້ສຳລັບການເຜີຍແຜ່ຊຸດ 3D)"
+
+msgid "mime_gls"
+msgstr "ສາລານຸກົມ GLOSSARY (ໄຟລ໌ນິຍາມຄຳສັບ ໃຊ້ສຳລັບການຈັດການຄຳສັບໃນລະບົບເອກະສານ)"
+
+msgid "mime_cbz"
+msgstr "ປຶ້ມກາຕູນ CBZ (ຮູບພາບກາຕູນທີ່ຖືກບີບອັດດ້ວຍ ZIP ຮູບແບບທົ່ວໄປສຳລັບການເກັບສະສົມປຶ້ມກາຕູນ)"
+
+msgid "mime_cbr"
+msgstr "ປຶ້ມກາຕູນ CBR (ຮູບພາບກາຕູນທີ່ຖືກບີບອັດດ້ວຍ RAR ຮູບແບບທົ່ວໄປສຳລັບການເກັບສະສົມປຶ້ມກາຕູນ)"
+
+msgid "mime_fb2"
+msgstr "e-book FB2 (FictionBook 2.0 ຮູບແບບ e-book ຂອງຣັດເຊຍ ໂຄງສ້າງ XML ຮອງຮັບຢ່າງກວ້າງຂວາງໂດຍໂປຣແກຣມອ່ານໂອເພັນຊອດ)"
+
+msgid "mime_kepub"
+msgstr "e-book KEPUB (ຮູບແບບ EPUB ສະເພາະຂອງ Kobo ຮູບແບບທີ່ປັບປຸງສຳລັບອຸປະກອນອ່ານ e-book Kobo)"
+
+msgid "mime_m4b"
+msgstr "ປຶ້ມສຽງ M4B (ຮູບແບບປຶ້ມສຽງ MPEG-4 ຮອງຮັບບຸກມາກ ຮູບແບບປຶ້ມສຽງຂອງ iTunes)"
+
+msgid "mime_kfx"
+msgstr "ຮູບແບບ Kindle KFX (Amazon ເປີດຕົວໃນປີ 2015 ຮູບແບບ e-book ສະເພາະຂອງ Kindle ຮອງຮັບການຈັດວາງທີ່ພັດທະນາແລ້ວ ແລະການພິກໜ້າຢ່າງວ່ອງໄວ)"
+
+msgid "mime_chm"
+msgstr "ໄຟລ໌ຊ່ວຍເຫຼືອ CHM (Microsoft ເປີດຕົວໃນປີ 1997 ຮູບແບບ HTML Help ທີ່ຖືກຄອມໄພແລ້ວ ມາດຕະຖານເອກະສານຊ່ວຍເຫຼືອຊອບແວ Windows)"
+
+msgid "mime_mht"
+msgstr "ຄັງເກັບໜ້າເວັບ MHT (Microsoft ເປີດຕົວໃນປີ 1999 ຮູບແບບໜ້າເວັບໄຟລ໌ດຽວ ຮູບແບບການບັນທຶກໜ້າເວັບຂອງບຣາວເຊີ IE)"
+
+msgid "mime_wml"
+msgstr "WML (ພາສາມາກອັບຮູບແບບໄຮ້ສາຍ) (ມາດຕະຖານ WAP ໃນປີ 1999 ໃຊ້ສຳລັບໄຟລ໌ໜ້າເວັບຂອງໂທລະສັບມືຖືລຸ້ນເກົ່າ ຖືກເລີກໃຊ້ແລ້ວ)"
+
+msgid "mime_xhtml"
+msgstr "ໜ້າເວັບ XHTML (ມາດຕະຖານ W3C ໃນປີ 2000 ເວີຊັນ XML ຂອງ HTML ໄວຍາກອນທີ່ເຄັ່ງຄັດກວ່າ W3C ຢຸດການບຳລຸງຮັກສາໃນປີ 2009 ປ່ຽນໂຟກັດໄປທີ່ HTML5)"
+
+msgid "mime_xml"
+msgstr "ເອກະສານ XML (ມາດຕະຖານ W3C ໃນປີ 1998 ພາສາມາກອັບທີ່ສາມາດຂະຫຍາຍໄດ້ ຮູບແບບພື້ນຖານສຳລັບບໍລິການເວັບ ໄຟລ໌ຕັ້ງຄ່າ ການແລກປ່ຽນຂໍ້ມູນ)"
+
+msgid "mime_sgml"
+msgstr "ເອກະສານ SGML (ມາດຕະຖານ ISO ໃນປີ 1986 ລຸ້ນກ່ອນຂອງ HTML ພາສາມາກອັບທົ່ວໄປມາດຕະຖານ XML ແລະ HTML ໄດ້ມາຈາກ SGML)"
+
+msgid "mime_apng"
+msgstr "ອານິເມຊັນ APNG (Mozilla ພັດທະນາໃນປີ 2004 ສ່ວນຂະຫຍາຍອານິເມຊັນຂອງ PNG ທາງເລືອກທັນສະໄໝຂອງ GIF ຮອງຮັບສີຈິງ ແລະຄວາມໂປ່ງໃສ)"
+
+msgid "mime_bmp"
+msgstr "BMP ບິດແມັບ (ຮູບແບບບິດແມັບຂອງ Windows, ຮອງຮັບແບບດັ້ງເດີມຕັ້ງແຕ່ Windows 1.0. ບໍ່ມີການບີບອັດ, ຂະໜາດໄຟລ໌ໃຫຍ່, ແຕ່ຍ້ອນວ່າໂຄງສ້າງງ່າຍດາຍ ແລະ ບໍ່ຕ້ອງການ codec ເພີ່ມເຕີມ, ມັນຍັງຖືກໃຊ້ຢູ່ໃນເຄື່ອງມືຕັດຮູບຂອງ Windows 11, ໂປຣແກຣມ Paint, ຊັບພະຍາກອນໄອຄອນໃນຊຸດຕິດຕັ້ງ EXE/MSI, ໄຟລ໌ຕົວຊີ້, ແລະ ໄດເວີເກົ່າໆບາງອັນ. ດ້ວຍຄຸນນະພາບຮູບພາບດຽວກັນ, ຂະໜາດໄຟລ໌ໃຫຍ່ກວ່າ PNG ປະມານ 3-10 ເທົ່າ. ໃນກໍລະນີສ່ວນໃຫຍ່ມັນຖືກແທນທີ່ໂດຍ PNG/JPEG, ແຕ່ລະບົບນິເວດ Windows ຍັງຮັກສາຄວາມເຂົ້າກັນໄດ້ຢ່າງກວ້າງຂວາງ)"
+
+msgid "mime_cdr"
+msgstr "ກຣາຟິກແບບເວັກເຕີ CDR (ຮູບແບບສະເພາະຂອງ CorelDRAW ບໍລິສັດ Corel ຂອງການາດາ ຊອບແວອອກແບບກຣາຟິກແບບເວັກເຕີ)"
+
+msgid "mime_gif"
+msgstr "ຮູບພາບ GIF (CompuServe ພັດທະນາໃນປີ 1987 ຮູບແບບຮູບພາບເຄື່ອນໄຫວ 256 ສີ ຈຸດອ່ອນ: ສີໜ້ອຍ ຄຸນນະພາບຮູບພາບຫຍາບ ບໍ່ຮອງຮັບຄວາມໂປ່ງໃສ ໄຟລ໌ໃຫຍ່ ອັດຕາເຟຣມຕໍ່າ ຖືກແທນທີ່ດ້ວຍຮູບແບບຮູບພາບເຄື່ອນໄຫວທັນສະໄໝຢ່າງ APNG, WebP)"
+
+msgid "mime_ico"
+msgstr "ໄອຄອນ ICO (ຮູບແບບໄຟລ໌ໄອຄອນ Windows ຮອງຮັບຫຼາຍຄວາມລະອຽດ ຮູບແບບມາດຕະຖານ favicon ຂອງເວັບໄຊທ໌)"
+
+msgid "mime_jpeg"
+msgstr "ຮູບພາບ JPEG (ມາດຕະຖານ ISO ໃນປີ 1992 ຮູບແບບການບີບອັດແບບສູນເສຍສຳລັບຮູບຖ່າຍ ມາດຕະຖານ de facto ສຳລັບຮູບຖ່າຍເທິງອິນເຕີເນັດ)"
+
+msgid "mime_jpg"
+msgstr "ຮູບພາບ JPEG (ມາດຕະຖານ ISO ໃນປີ 1992 ຮູບແບບການບີບອັດແບບສູນເສຍສຳລັບຮູບຖ່າຍ ມາດຕະຖານ de facto ສຳລັບຮູບຖ່າຍເທິງອິນເຕີເນັດ)"
+
+msgid "mime_png"
+msgstr "ຮູບພາບ PNG (W3C ແນະນຳໃນປີ 1996 ຮອງຮັບສີຈິງ ແລະຄວາມໂປ່ງໃສ ທາງເລືອກແບບຄົງທີ່ຂອງ GIF ມາດຕະຖານຮູບພາບແບບບໍ່ສູນເສຍຄຸນນະພາບເທິງອິນເຕີເນັດ)"
+
+msgid "mime_ps"
+msgstr "ໄຟລ໌ Page Description PostScript (Adobe ເປີດຕົວໃນປີ 1985 ພາສາ Page Description ລຸ້ນກ່ອນຂອງ PDF ໃຊ້ສຳລັບການພິມ ແລະການຈັດພິມ)"
+
+msgid "mime_psb"
+msgstr "ເອກະສານໃຫຍ່ PSB (ຮູບແບບຮູບພາບໃຫຍ່ພິເສດຂອງ Adobe Photoshop ຮອງຮັບຮູບພາບຂະໜາດໃຫຍ່ທີ່ມີຂະໜາດໃຫຍ່ກວ່າ 2GB ຫຼື 30000 ພິກເຊວ)"
+
+msgid "mime_psd"
+msgstr "ຮູບພາບ PSD (ໄຟລ໌ຕົ້ນສະບັບ Adobe Photoshop ຮອງຮັບເລເຢີ ຊ່ອງ ເສັ້ນທາງ ຮູບແບບມາດຕະຖານຂອງອຸດສາຫະກຳການປະມວນຜົນຮູບພາບ)"
+
+msgid "mime_webp"
+msgstr "ຮູບພາບ WebP (Google ພັດທະນາໃນປີ 2010 ຮູບແບບຮູບພາບເວັບ ຮອງຮັບການບີບອັດແບບສູນເສຍ/ບໍ່ສູນເສຍຄຸນນະພາບ ແລະອານິເມຊັນ ອັດຕາການບີບອັດສູງກວ່າ PNG 25-35% ແລະສູງກວ່າ JPEG 25%)"
+
+msgid "mime_woff"
+msgstr "ຟອນເວັບ WOFF (ສ້າງໃນປີ 2009 ມາດຕະຖານ W3C ໃນປີ 2018 ບີບອັດເທິງພື້ນຖານຂອງ TrueType/OpenType ປັບປຸງສຳລັບການໂຫຼດຟອນເວັບ ຮູບແບບມາດຕະຖານສຳລັບໄອຄອນຟອນຂອງເວັບໄຊທ໌ທັນສະໄໝ)"
+
+msgid "mime_7z"
+msgstr "ໄຟລ໌ບີບອັດ 7z (Igor Pavlov ພັດທະນາໃນປີ 1999 ຮູບແບບສະເພາະຂອງໂປຣແກຣມ 7-Zip ຂັ້ນຕອນວິທີ LZMA ອັດຕາການບີບອັດສູງ ໂອເພັນຊອດຟຣີ ຮູບແບບ 7z ທີ່ອັດຕາການບີບອັດເທົ່າກັນ ປົກກະຕິແລ້ວຈະນ້ອຍກວ່າ ZIP 30-50% ເປັນຮູບແບບທົ່ວໄປສຳລັບຊຸມຊົນໂອເພັນຊອດ ແລະການແຈກຢາຍຊອບແວ)"
+
+msgid "mime_ace"
+msgstr "ໄຟລ໌ບີບອັດ ACE (ຖືກພັດທະນາໃນທົດສະວັດປີ 1990 ຮູບແບບໂປຣແກຣມ WinACE ເຄີຍແຂ່ງຂັນກັບ RAR ອັດຕາການບີບອັດສູງພໍສົມຄວນ ຢຸດການພັດທະນາໃນປີ 2007 ປັດຈຸບັນຖືກແທນທີ່ໂດຍ 7z/RAR ໃຊ້ໜ້ອຍລົງ)"
+
+msgid "mime_bz2"
+msgstr "ໄຟລ໌ບີບອັດ BZIP2 (Julian Seward ພັດທະນາໃນປີ 1996 ຂັ້ນຕອນວິທີການບີບອັດແບບບລັອກ ອັດຕາການບີບອັດສູງກວ່າ GZIP 15-20% ແຕ່ຊ້າກວ່າ ຮູບແບບທົ່ວໄປສຳລັບລະຫັດແຫຼ່ງ Linux kernel ແພັກເກດຊອບແວໂອເພັນຊອດ ສ່ວນຂະຫຍາຍ .bz2)"
+
+msgid "mime_cab"
+msgstr "ໄຟລ໌ບີບອັດ CAB (Microsoft ພັດທະນາໃນປີ 1995 ຮູບແບບ Cabinet ຮູບແບບແພັກເກດຕິດຕັ້ງ Windows ໃຊ້ສຳລັບໄດເວີ ການແຈກຢາຍໄຟລ໌ລະບົບ Windows Installer (MSI) ໃຊ້ CAB ພາຍໃນເພື່ອເກັບຮັກສາໄຟລ໌)"
+
+msgid "mime_dmg"
+msgstr "ອິມິດຈະດີສ DMG (Apple ເປີດຕົວໃນທົດສະວັດປີ 1980 ຮູບແບບ Disk Image ຮູບແບບມາດຕະຖານການແຈກຢາຍຊອບແວ macOS ຄລິກສອງເທື່ອເພື່ອຕິດຕັ້ງເປັນດີສສະເໝືອນ ລາກແລະວາງເພື່ອຕິດຕັ້ງແອັບ ຮອງຮັບການບີບອັດ ແລະການເຂົ້າລະຫັດ ເປັນຮູບແບບຫຼັກສຳລັບການດາວໂຫຼດຊອບແວ Mac)"
+
+msgid "mime_emz"
+msgstr "ຮູບພາບບີບອັດ EMZ (Windows compressed Enhanced Metafile ເວີຊັນບີບອັດຂອງ EMF ຮູບແບບການເກັບຮັກສາກຣາຟິກແບບເວັກເຕີໃນເອກະສານ Office ໂດຍເນື້ອແທ້ແລ້ວແມ່ນໄຟລ໌ EMF ທີ່ຖືກບີບອັດດ້ວຍ GZIP)"
+
+msgid "mime_gz"
+msgstr "ໄຟລ໌ບີບອັດ GZIP (Jean-loup Gailly ແລະ Mark Adler ພັດທະນາໃນປີ 1992 ໂຄງການ GNU ເຄື່ອງມືບີບອັດມາດຕະຖານຂອງ Unix/Linux ຮູບແບບທົ່ວໄປສຳລັບການບີບອັດການສົ່ງ HTTP ສ່ວນຂະຫຍາຍ .gz ມັກໃຊ້ຮ່ວມກັບ TAR)"
+
+msgid "mime_jar"
+msgstr "ໄຟລ໌ບີບອັດ JAR (Sun Microsystems ເປີດຕົວໃນປີ 1997 ຮູບແບບ Java ARchive ໂດຍເນື້ອແທ້ແລ້ວແມ່ນໄຟລ໌ ZIP ໃຊ້ສຳລັບການຫໍ່ໄລບຣາຣີ ແລະແອັບພລິເຄຊັນ Java ເປັນຮູບແບບຫຼັກຂອງລະບົບນິເວດ Java ເຊັ່ນ Maven, Gradle Android ກໍ່ໃຊ້ JAR ເຊັ່ນດຽວກັນ)"
+
+msgid "mime_lzma"
+msgstr "ໄຟລ໌ບີບອັດ LZMA (Igor Pavlov ພັດທະນາໃນປີ 1998 ຂັ້ນຕອນວິທີ Lempel-Ziv-Markov chain ຂັ້ນຕອນວິທີຫຼັກຂອງຮູບແບບ 7z ອັດຕາການບີບອັດສູງ ຄວາມໄວໃນການຄລາຍການບີບອັດໄວ ໃຊ້ສຳລັບການແຈກຢາຍຊອບແວເຟີມແວ ແລະລະບົບຝັງຕົວ)"
+
+msgid "mime_rar"
+msgstr "ໄຟລ໌ບີບອັດ RAR (Eugene Roshal ພັດທະນາໃນປີ 1993 ຮູບແບບ Roshal ARchive ອັດຕາການບີບອັດສູງ ຮອງຮັບການແບ່ງລະດັບສຽງ ແລະບັນທຶກການກູ້ຄືນ ຮູບແບບໂປຣແກຣມ WinRAR ອັດຕາການບີບອັດດີກວ່າ ZIP ແຕ່ຕ້ອງການຊອບແວທີ່ຕ້ອງຈ່າຍເງິນ ເຄື່ອງມືໂອເພັນຊອດເຊັ່ນ unrar ສາມາດຄລາຍການບີບອັດໄດ້)"
+
+msgid "mime_tar"
+msgstr "ໄຟລ໌ຈັດເກັບ TAR (Unix V7 ນຳໃຊ້ໃນປີ 1979 ຮູບແບບ Tape ARchive ຮູບແບບການຈັດເກັບເທບ ບໍ່ບີບອັດ ພຽງແຕ່ຫໍ່ເທົ່ານັ້ນ ມັກໃຊ້ຮ່ວມກັບ GZIP/BZIP2/XZ ລະຫັດແຫຼ່ງແພັກເກດ Linux ການເກັບຮັກສາເລເຢີຂອງຮູບພາບ Docker ກໍ່ໃຊ້ຮູບແບບ TAR)"
+
+msgid "mime_tgz"
+msgstr "ໄຟລ໌ບີບອັດ TGZ (ຮູບແບບການລວມ TAR + GZIP ສ່ວນຂະຫຍາຍ .tgz ຫຼື .tar.gz ຮູບແບບການແຈກຢາຍທົ່ວໄປທີ່ສຸດສຳລັບແພັກເກດຊອບແວ Unix/Linux ລະຫັດແຫຼ່ງແພັກເກດ ແພັກເກດຖານສອງ ໃຊ້ກັນຢ່າງກວ້າງຂວາງ ຕົວແທນຂອງ 'ຄລາຍແລ້ວໃຊ້ງານໄດ້')"
+
+msgid "mime_tbz2"
+msgstr "ໄຟລ໌ບີບອັດ TBZ2 (ຮູບແບບການລວມ TAR + BZIP2 ສ່ວນຂະຫຍາຍ .tbz2 ຫຼື .tar.bz2 ອັດຕາການບີບອັດສູງກວ່າ TGZ 15-20% ເໝາະສຳລັບການແຈກຢາຍໄຟລ໌ຂະໜາດໃຫຍ່ Linux kernel ໃຊ້ຮູບແບບນີ້ມາເປັນເວລາດົນນານ)"
+
+msgid "mime_xz"
+msgstr "ໄຟລ໌ບີບອັດ XZ (ເປີດຕົວໃນປີ 2009 ອີງຕາມຂັ້ນຕອນວິທີ LZMA2 ອັດຕາການບີບອັດສູງຫຼາຍ ສູງກວ່າ GZIP 30-50% ຄວາມໄວໃນການຄລາຍການບີບອັດໄວ Linux kernel, ຕົວຈັດການແພັກເກດ (ເຊັ່ນພາຍໃນ .deb ຂອງ Debian) ໃຊ້ກັນຢ່າງກວ້າງຂວາງ ເປັນຮູບແບບທີ່ແນະນຳໃນລະບົບນິເວດ Linux ປັດຈຸບັນ)"
+
+msgid "mime_z"
+msgstr "ໄຟລ໌ບີບອັດ Z (ຮູບແບບຄຳສັ່ງ Unix compress ໃນປີ 1985 ຂັ້ນຕອນວິທີ LZW ຮູບແບບການບີບອັດ Unix ລຸ້ນທຳອິດ ຖືກແທນທີ່ໂດຍ GZIP ສ່ວນຂະຫຍາຍ .Z ລະບົບທັນສະໄໝໃຊ້ໜ້ອຍລົງ)"
+
+msgid "mime_zip"
+msgstr "ໄຟລ໌ບີບອັດ ZIP (Phil Katz ພັດທະນາໃນປີ 1989 ຮູບແບບ PKZIP ຮອງຮັບແບບດັ້ງເດີມໃນ Windows ຮູບແບບການບີບອັດທົ່ວໄປທີ່ສຸດເທິງອິນເຕີເນັດ ຮອງຮັບຫຼາຍໄຟລ໌ ໂຄງສ້າງໄດເລກທໍຣີ ສາມາດເລືອກຂັ້ນຕອນວິທີການບີບອັດ JAR ຂອງ Java, APK ຂອງ Android, DOCX/XLSX ຂອງເອກະສານ Office ລ້ວນແຕ່ອີງໃສ່ຮູບແບບ ZIP)"
+
+msgid "mime_zst"
+msgstr "ໄຟລ໌ບີບອັດ Zstandard (Facebook ພັດທະນາໃນປີ 2015 ອອກແບບໂດຍ Yann Collet ຂັ້ນຕອນວິທີການບີບອັດຄວາມໄວສູງ ອັດຕາການບີບອັດໃກ້ຄຽງກັບ LZMA ຄວາມໄວສູງກວ່າ GZIP ຫຼາຍ Linux kernel 5.9+ ຮອງຮັບ, Arch Linux pacman, Debian APT ກຳລັງຖືກນຳໃຊ້ເທື່ອລະກ້າວ ເປັນມາດຕະຖານການບີບອັດລຸ້ນໃໝ່)"
+
+msgid "mime_lz4"
+msgstr "ໄຟລ໌ບີບອັດ LZ4 (Yann Collet ພັດທະນາໃນປີ 2011 ຂັ້ນຕອນວິທີການບີບອັດທີ່ໄວຫຼາຍ ຄວາມໄວໃນການບີບອັດໄວກວ່າ GZIP 10 ເທົ່າຂຶ້ນໄປ ເໝາະສຳລັບສະຖານະການບີບອັດແບບຈິງເວລາ Linux kernel, OpenZFS, Hadoop ໃຊ້ກັນຢ່າງກວ້າງຂວາງ ເປັນທາງເລືອກທຳອິດສຳລັບສະຖານະການທີ່ເນັ້ນຄວາມໄວ)"
+
+msgid "mime_lzo"
+msgstr "ໄຟລ໌ບີບອັດ LZO (Markus Oberhumer ພັດທະນາໃນປີ 1996 ຂັ້ນຕອນວິທີ Lempel-Ziv-Oberhumer ຄວາມໄວໃນການຄລາຍການບີບອັດໄວຫຼາຍ ອັດຕາການບີບອັດທົ່ວໄປ Linux kernel Squashfs, ຊອບແວເຟີມແວ OpenWrt ໃຊ້ ເໝາະສຳລັບລະບົບຝັງຕົວ)"
+
+msgid "mime_msi"
+msgstr "ແພັກເກດຕິດຕັ້ງ MSI (Microsoft ເປີດຕົວໃນປີ 1999 ຮູບແບບແພັກເກດ Windows Installer ຮູບແບບການຕິດຕັ້ງແອັບພລິເຄຊັນ Windows ມາດຕະຖານ ຮອງຮັບການກັບຄືນທຸລະກຳ ການຈັດການຄອມໂພເນນຕ໌ ການຕິດຕັ້ງແບບງຽບ ເປັນຮູບແບບທຳອິດສຳລັບການແຈກຢາຍຊອບແວລະດັບອົງກອນ ຍັງຄົງເປັນກະແສຫຼັກສຳລັບການຕິດຕັ້ງຊອບແວ Windows ຈົນຮອດປັດຈຸບັນ)"
+
+msgid "mime_pkg"
+msgstr "ແພັກເກດຕິດຕັ້ງ PKG (ຮູບແບບແພັກເກດຕິດຕັ້ງແອັບພລິເຄຊັນ macOS ອີງຕາມເຕັກໂນໂລຢີ Installer ຂອງ Apple ຮູບແບບມາດຕະຖານການແຈກຢາຍຊອບແວ macOS ຮອງຮັບການເລືອກຄອມໂພເນນຕ໌ ສະຄຣິບຕິດຕັ້ງ ຟັງຊັນການລຶບ ຄລິກສອງເທື່ອໃສ່ໄຟລ໌ .pkg ເພື່ອຕິດຕັ້ງ ເປັນວິທີການແຈກຢາຍທົ່ວໄປສຳລັບຊອບແວນອກ Mac App Store)"
+
+msgid "mime_apk"
+msgstr "ຊຸດແອັບພລິເຄຊັນ Android APK (ແນະນຳໂດຍ Google ໃນປີ 2008, ຮູບແບບການຕິດຕັ້ງແອັບພລິເຄຊັນ Android ແບບດັ້ງເດີມ. APK ແມ່ນຊຸດ ZIP ທີ່ປະກອບດ້ວຍລະຫັດ, ຊັບພະຍາກອນ, ແລະໄຟລ໌ລາຍການ. ນັບແຕ່ປີ 2021, Google Play ຮຽກຮ້ອງໃຫ້ແອັບພລິເຄຊັນໃໝ່ໃຊ້ຮູບແບບ AAB, ແຕ່ APK ຍັງຖືກໃຊ້ສຳລັບການແກ້ໄຂຂໍ້ຜິດພາດ, ຮ້ານຄ້າພາກສ່ວນທີສາມ, ແລະການຕິດຕັ້ງແບບຂ້າງຄຽງ)"
+
+msgid "mime_ipa"
+msgstr "ຊຸດແອັບພລິເຄຊັນ iOS IPA (iOS App Store Package, ຮູບແບບການຕິດຕັ້ງສຳລັບແອັບພລິເຄຊັນ iOS/iPadOS. ແນະນຳໃນປີ 2008 ພ້ອມກັບ iPhone SDK. ຕ້ອງຖືກແຈກຢາຍຜ່ານ App Store ຫຼືລົງນາມດ້ວຍໃບຢັ້ງຢືນວິສາຫະກິດ. ປະກອບດ້ວຍໄຟລ໌ທີ່ສາມາດປະຕິບັດໄດ້, ຊັບພະຍາກອນ, Info.plist, ແລະຂໍ້ມູນການລົງນາມ)"
+
+msgid "mime_hap"
+msgstr "ຊຸດແອັບພລິເຄຊັນ HarmonyOS HAP (HarmonyOS Ability Package, ຫົວໜ່ວຍພື້ນຖານຂອງແອັບພລິເຄຊັນ HarmonyOS. ແນະນຳໃນປີ 2020 ພ້ອມກັບ HarmonyOS 2.0. ຮອງຮັບສອງປະເພດ: entry ແລະ feature, ຮູບແບບການແຈກຢາຍສຳລັບໂທລະສັບ Huawei, ແທັບເລັດ, ນາຫຼິກາອັດສະລິຍະ, ແລະອຸປະກອນ HarmonyOS ອື່ນໆ)"
+
+msgid "mime_har"
+msgstr "ຫ້ອງສະໝຸດຮ່ວມສະຖິດ HarmonyOS HAR (HarmonyOS Archive, ຫ້ອງສະໝຸດຮ່ວມສະຖິດຂອງ HarmonyOS, ສາມາດແບ່ງປັນໂດຍຊຸດ HAP ຫຼາຍຊຸດ, ໃຊ້ສຳລັບການພັດທະນາທີ່ອີງໃສ່ອົງປະກອບ ແລະການນຳໃຊ້ໂມດູນຄືນໃໝ່)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (Google ເປີດຕົວໃນປີ 2018 ແລະໄດ້ກຳນົດໃຫ້ແອັບໃໝ່ທີ່ສົ່ງໄປຍັງ Google Play ໃຊ້ຮູບແບບນີ້ນັບແຕ່ປີ 2021 AAB ເປັນຮູບແບບສຳລັບການແຈກຢາຍ Google Play ຈະສ້າງ APK ທີ່ປັບປຸງຕາມການຕັ້ງຄ່າອຸປະກອນ (ສະຖາປັດຕະຍະກຳ CPU, ຄວາມໜາແໜ້ນຂອງໜ້າຈໍ, ພາສາ) ໂດຍຂະໜາດແພັກເກດສະເລ່ຍຫຼຸດລົງ 35% ນັກພັດທະນາອັບໂຫຼດ AAB ຜູ້ໃຊ້ດາວໂຫຼດ APK)"
+
+msgid "mime_xapk"
+msgstr "ແພັກເກດແອັບ XAPK (ແພັກເກດສ່ວນຂະຫຍາຍແອັບ Android ຂອງພາກສ່ວນທີສາມ ປະກອບດ້ວຍ APK + ໄຟລ໌ຂໍ້ມູນ OBB ໃຊ້ສຳລັບເກມໃຫຍ່ ແລະແອັບພລິເຄຊັນທີ່ສັບສົນ ແກ້ໄຂບັນຫາຂໍ້ຈຳກັດ 100MB ຂອງໄຟລ໌ APK ດຽວ ພົບໄດ້ທົ່ວໄປໃນຮ້ານຄ້າແອັບຂອງພາກສ່ວນທີສາມ ເຊັ່ນ APKPure, APKMirror ບໍ່ແມ່ນຮູບແບບທາງການຂອງ Google)"
+
+msgid "mime_appx"
+msgstr "ແພັກເກດແອັບ Windows (Microsoft ເປີດຕົວໃນປີ 2012 ຮູບແບບການຕິດຕັ້ງແອັບ Windows 8/10/11 ຮອງຮັບແອັບ UWP ແລະການປ່ຽນແປງແອັບເດັສກ໌ທັອບ ແຈກຢາຍຜ່ານ Microsoft Store ໃນປີ 2024 Microsoft ເປີດຕົວ MSIX ເປັນຮູບແບບສືບຕໍ່ ແທນທີ່ APPX ເທື່ອລະກ້າວ)"
+
+msgid "mime_msix"
+msgstr "ແພັກເກດແອັບ MSIX (Microsoft ເປີດຕົວໃນປີ 2018 ຮູບແບບການຫໍ່ແອັບ Windows ລຸ້ນໃໝ່ ລວມຂໍ້ດີຂອງ APPX ແລະ MSI ຮອງຮັບແອັບ Windows ທຸກປະເພດ ສາມາດແຈກຢາຍຜ່ານ Microsoft Store ຫຼືການຕິດຕັ້ງແບບ side-load ຮູບແບບທີ່ແນະນຳສຳລັບ Windows 11)"
+
+msgid "mime_appimage"
+msgstr "ແພັກເກດແອັບ AppImage (ເປີດຕົວໃນປີ 2004 ຮູບແບບແອັບ Linux ທີ່ບໍ່ຕ້ອງຕິດຕັ້ງ 'ໜຶ່ງແອັບໜຶ່ງໄຟລ໌' ເຮັດວຽກໄດ້ທັນທີໂດຍບໍ່ຕ້ອງຕິດຕັ້ງ ຮອງຮັບການແຈກຢາຍ Linux ສ່ວນໃຫຍ່ ເປັນວິທີການທົ່ວໄປສຳລັບນັກພັດທະນາໃນການແຈກຢາຍຊອບແວ Linux)"
+
+msgid "mime_flatpak"
+msgstr "ແພັກເກດແອັບ Flatpak (ເປີດຕົວໃນປີ 2015 ຮູບແບບແອັບ Linux ແບບ sandbox ເຮັດວຽກຂ້າມການແຈກຢາຍ ແຍກອອກຈາກລະບົບໂຮດ ພັດທະນາໂດຍ Fedora, Red Hat ເປັນຮູບແບບເລີ່ມຕົ້ນຂອງສູນຊອບແວ GNOME)"
+
+msgid "mime_snap"
+msgstr "ແພັກເກດແອັບ Snap (Canonical ເປີດຕົວໃນປີ 2014 ບໍລິສັດແມ່ຂອງ Ubuntu ພັດທະນາ ຮູບແບບແອັບ Linux ແບບທົ່ວໄປ ອັບເດດອັດຕະໂນມັດ, sandbox ແຍກ ຮອງຮັບການແຈກຢາຍ Linux 40+ ເປັນຮູບແບບເລີ່ມຕົ້ນຂອງ Ubuntu Software Center)"
+
+msgid "mime_deb"
+msgstr "ແພັກເກດຊອບແວ Debian (Debian Project ເປີດຕົວໃນປີ 1993 ຮູບແບບການຕິດຕັ້ງມາດຕະຖານສຳລັບ Debian/Ubuntu ແລະລຸ້ນທີ່ສືບຕໍ່ ຈັດການໂດຍ dpkg, APT ເປັນສ່ວນຕິດຕໍ່ໜ້າຂອງຕົວຈັດການແພັກເກດ ເປັນຮູບແບບແພັກເກດທີ່ເຕັມທີ່ທີ່ສຸດຮູບແບບໜຶ່ງໃນລະບົບນິເວດ Linux ຍັງຄົງເປັນກະແສຫຼັກໃນຕະກູນ Debian ຈົນຮອດປັດຈຸບັນ)"
+
+msgid "mime_rpm"
+msgstr "ແພັກເກດຊອບແວ RPM (Red Hat ເປີດຕົວໃນປີ 1997 ຮູບແບບມາດຕະຖານສຳລັບການແຈກຢາຍເຊັ່ນ Red Hat/Fedora/CentOS/SUSE RPM ແມ່ນຕົວຫຍໍ້ຂອງ 'Red Hat Package Manager' ເປັນໜຶ່ງໃນສອງຮູບແບບແພັກເກດຫຼັກຂອງ Linux ຮ່ວມກັບ DEB ຍັງຄົງເປັນກະແສຫຼັກໃນຕະກູນ RHEL ຈົນຮອດປັດຈຸບັນ)"
+
+msgid "mime_pacman"
+msgstr "ແພັກເກດຊອບແວ Arch (Arch Linux ເປີດຕົວໃນປີ 2002 ຮູບແບບ .pkg.tar.zst ທີ່ໃຊ້ໂດຍຕົວຈັດການແພັກເກດ pacman ແກນຫຼັກຂອງ Arch Linux rolling release ມີຊື່ສຽງໃນດ້ານຄວາມງ່າຍດາຍ ແລະຫຼັກການ KISS AUR (Arch User Repository) ເປັນຈຸດເດັ່ນ)"
+
+msgid "mime_exe"
+msgstr "ໄຟລ໌ປະຕິບັດການ EXE (ຮູບແບບໂປຣແກຣມປະຕິບັດການ Windows ຕົວຫຍໍ້ມາຈາກ 'Executable' ຮູບແບບການເຮັດວຽກພື້ນເມືອງຂອງລະບົບປະຕິບັດການ Windows ປະກອບດ້ວຍໂຄງສ້າງ PE ໄດ້ພັດທະນາມາຈາກຮູບແບບ MZ ຂອງ MS-DOS Windows NT ໄດ້ນຳສະເໜີຮູບແບບ PE (Portable Executable) ໃນປີ 1993 ແລະໃຊ້ມາຈົນຮອດປັດຈຸບັນ ແພັກເກດຕິດຕັ້ງຊອບແວ ແອັບພລິເຄຊັນ ເຄື່ອງມືລະບົບ ລ້ວນແຕ່ໃຊ້ຮູບແບບນີ້ ຜູ້ໃຊ້ຄລິກສອງເທື່ອເພື່ອເຮັດວຽກ ເປັນຮູບແບບປະຕິບັດການທີ່ໃຊ້ກັນຢ່າງກວ້າງຂວາງທີ່ສຸດໃນໂລກ)"
+
+msgid "mime_dll"
+msgstr "ໄລບຣາຣີເຊື່ອມຕໍ່ແບບໄດນາມິກ DLL (Microsoft ເປີດຕົວໃນປີ 1993 Dynamic Link Library ໄລບຣາຣີລະຫັດທີ່ໃຊ້ຮ່ວມກັນຂອງ Windows ໂຫຼດແບບໄດນາມິກເມື່ອໂປຣແກຣມເຮັດວຽກ ປະຫຍັດຫນ່ວຍຄວາມຈຳ ແລະພື້ນທີ່ດີສ ຄອມໂພເນນຕ໌ລະບົບ ປລັກອິນແອັບພລິເຄຊັນ ໄດເວີ ລ້ວນແຕ່ໃຊ້ຮູບແບບ DLL ເປັນວິທີການຫຼັກໃນການໃຊ້ງານ Windows API ບັນຫາ DLL Hell ໄດ້ຮັບການແກ້ໄຂໃນຍຸກ .NET)"
+
+msgid "mime_com"
+msgstr "ໄຟລ໌ປະຕິບັດການ COM (ຮູບແບບປະຕິບັດການສະໄໝ MS-DOS ຕົວຫຍໍ້ມາຈາກ 'Command' ໂຄງສ້າງໄຟລ໌ງ່າຍດາຍ ຈຳກັດ 64KB ຮູບແບບຫຼັກກ່ອນ Windows 3.x ຖືກເລີກໃຊ້ແລ້ວ Windows ທັນສະໄໝໃຊ້ຮູບແບບ EXE ສ່ວນຂະຫຍາຍ COM ຍັງຄົງໃຊ້ສຳລັບໄຟລ໌ຄອມໂພເນນຕ໌ບາງປະເພດ)"
+
+msgid "mime_aac"
+msgstr "ສຽງ AAC (ມາດຕະຖານ MPEG ໃນປີ 1997 Advanced Audio Coding ຜູ້ສືບທອດຂອງ MP3 ຄຸນນະພາບສຽງດີກວ່າ MP3 ໃນອັດຕາບິດດຽວກັນ ຮູບແບບສຽງເລີ່ມຕົ້ນຂອງ YouTube, iTunes, Nintendo Switch)"
+
+msgid "mime_alac"
+msgstr "ສຽງ ALAC (Apple ພັດທະນາໃນປີ 2004 Apple Lossless Audio Codec ຮູບແບບບໍ່ສູນເສຍຄຸນນະພາບຂອງ Apple ເປີດແຫຼ່ງໃນປີ 2011 ຮູບແບບເລີ່ມຕົ້ນສຳລັບສຽງບໍ່ສູນເສຍຄຸນນະພາບໃນ iTunes ແລະ Apple Music)"
+
+msgid "mime_flac"
+msgstr "ສຽງ FLAC (Xiph.Org Foundation ພັດທະນາໃນປີ 2001 Free Lossless Audio Codec ບີບອັດແບບບໍ່ສູນເສຍຄຸນນະພາບ ຄຸນນະພາບສຽງເທົ່າກັບ CD ຂະໜາດໄຟລ໌ປະມານເຄິ່ງໜຶ່ງຂອງ WAV ແບບດັ້ງເດີມ ບໍ່ມີຄ່າລິຂະສິດ ໂອເພັນຊອດ ເປັນຮູບແບບທຳອິດສຳລັບຜູ້ມັກສຽງ ແລະການສະສົມເພງດິຈິຕອລ)"
+
+msgid "mime_mp3"
+msgstr "ສຽງ MP3 (Fraunhofer Institute ພັດທະນາໃນປີ 1993 MPEG-1 Audio Layer 3 ຮູບແບບການບີບອັດແບບສູນເສຍຄຸນນະພາບ ຂະໜາດໄຟລ໌ນ້ອຍ ຄຸນນະພາບສຽງພໍໃຊ້ໄດ້ ຮູບແບບຫຼັກຂອງການປະຕິວັດເພງດິຈິຕອລໃນທົດສະວັດປີ 2000 ເປັນຜົນງານຂອງ iPod ແລະ Napster ສິດທິບັດໝົດອາຍຸໃນປີ 2017 ກາຍເປັນຮູບແບບສາທາລະນະ)"
+
+msgid "mime_oga"
+msgstr "ສຽງ Ogg Audio (Xiph.Org Foundation ພັດທະນາ ຮູບແບບສຽງບໍລິສຸດຂອງຄອນເທນເນີ Ogg ໃຊ້ການເຂົ້າລະຫັດ Vorbis ໂອເພັນຊອດບໍ່ມີຄ່າລິຂະສິດ ປະສິດທິພາບການບີບອັດດີກວ່າ MP3 ໃຊ້ກັນຢ່າງກວ້າງຂວາງໃນໂຄງການໂອເພັນຊອດ)"
+
+msgid "mime_ogg"
+msgstr "ສຽງ OGG (Xiph.Org Foundation ພັດທະນາໃນປີ 2000 ຮູບແບບ Ogg Vorbis ໂອເພັນຊອດບໍ່ມີຄ່າລິຂະສິດ ປະສິດທິພາບການບີບອັດດີກວ່າ MP3 Spotify ຍຸກທຳອິດໃຊ້ ໃຊ້ກັນຢ່າງກວ້າງຂວາງໃນເອັບເຟັກສຽງເກມ)"
+
+msgid "mime_opus"
+msgstr "ສຽງ Opus (IETF ໄດ້ມາດຕະຖານໃນປີ 2012 ຮູບແບບສຽງໂອເພັນຊອດບໍ່ມີຄ່າລິຂະສິດ ລວມເຕັກໂນໂລຢີ SILK ແລະ CELT ການຊັກຊ້າຕ່ຳທີ່ສຸດ ປະສິດທິພາບການບີບອັດສູງສຸດ ຮູບແບບສຽງເລີ່ມຕົ້ນຂອງ WebRTC, WhatsApp, Discord)"
+
+msgid "mime_wav"
+msgstr "ສຽງ WAV (Microsoft ແລະ IBM ພັດທະນາໃນປີ 1991 ຮູບແບບສຽງດັ້ງເດີມຂອງ Windows ການເຂົ້າລະຫັດ PCM ບໍ່ບີບອັດ ຄຸນນະພາບສຽງບໍ່ສູນເສຍ ແຕ່ໄຟລ໌ໃຫຍ່ຫຼາຍ ຮູບແບບມາດຕະຖານສຳລັບການຕັດຕໍ່ສຽງລະດັບມືອາຊີບ)"
+
+msgid "mime_wma"
+msgstr "ສຽງ WMA (Microsoft ພັດທະນາໃນປີ 1999 Windows Media Audio ມີທັງເວີຊັນສູນເສຍ/ບໍ່ສູນເສຍຄຸນນະພາບ ຮອງຮັບແບບດັ້ງເດີມໃນ Windows ແຜ່ຫຼາຍໄປກັບ Windows Media Player ປັດຈຸບັນຖືກແທນທີ່ໂດຍ MP3/AAC)"
+
+msgid "mime_dsf"
+msgstr "ສຽງ DSF (ຮູບແບບ Direct Stream Digital ພັດທະນາໂດຍ Sony ແລະ Philips ຕົວຢ່າງຄວາມຖີ່ສູງ 1 ບິດ ຮູບແບບມາດຕະຖານສຽງ DSD ເວີຊັນດິຈິຕອລຂອງ SACD ຮູບແບບສຽງລະດັບສູງສຳລັບຜູ້ມັກສຽງ ໄຟລ໌ໃຫຍ່ຫຼາຍ)"
+
+msgid "mime_ape"
+msgstr "ສຽງ APE (ພັດທະນາໂດຍ Monkey's Audio ໃນປີ 2000, ຮູບແບບການບີບອັດແບບບໍ່ສູນເສຍ. ການບີບອັດສູງກວ່າ FLAC ແຕ່ການເຂົ້າລະຫັດຊ້າກວ່າ, ຍັງໃຊ້ຢູ່ໃນເວທີ Windows ແລະໃນບັນດາຜູ້ມັກສຽງ)"
+
+msgid "mime_mid"
+msgstr "ສຽງ MIDI (MIDI Association ກຳນົດໃນປີ 1983 Musical Instrument Digital Interface ຮູບແບບໂນ້ດເພງແທນທີ່ຈະເປັນການບັນທຶກ ໄຟລ໌ນ້ອຍຫຼາຍ ມາດຕະຖານສຳລັບເຄື່ອງດົນຕີເອເລັກໂຕຣນິກ ສຽງລະຄັງໂທລະສັບມືຖື ເອັບເຟັກສຽງເກມ General MIDI ໄດ້ມາດຕະຖານໃນປີ 1991 ກຳນົດສຽງເຄື່ອງດົນຕີ 128 ສຽງ)"
+
+msgid "mime_m4a"
+msgstr "ສຽງ M4A (MPEG-4 Audio ຮູບແບບຄອນເທນເນີຂອງ AAC ຮູບແບບມາດຕະຖານຂອງ iTunes Music Store ຮູບແບບສຽງຫຼັກໃນລະບົບນິເວດ Apple ຮອງຮັບການປ້ອງກັນ DRM)"
+
+msgid "mime_m3u"
+msgstr "ລາຍການຫຼິ້ນ M3U (ຮູບແບບລາຍການຫຼິ້ນ URL MP3 ໄຟລ໌ຂໍ້ຄວາມທຳມະດາ ບັນທຶກເສັ້ນທາງໄຟລ໌ສຽງ ມາດຕະຖານສະໄໝ Winamp ໃຊ້ສຳລັບວິທະຍຸອອນລາຍ ສະຕີມເພງອອນລາຍ M3U8 ເປັນເວີຊັນ UTF-8 ໃຊ້ສຳລັບ HTTP Live Streaming)"
+
+msgid "mime_asf"
+msgstr "ສະຕີມ ASF (Microsoft ພັດທະນາໃນປີ 1996 Advanced Systems Format ຄອນເທນເນີສະຕີມ Windows Media ຮອງຮັບການສົ່ງສຽງ ແລະວີດີໂອພ້ອມກັນ ໃຊ້ສຳລັບການຖ່າຍທອດສົດທາງອິນເຕີເນັດ ແລະສະຕີມວີດີໂອຕາມຄວາມຕ້ອງການ WMA/WMV ອີງຕາມຄອນເທນເນີ ASF)"
+
+msgid "mime_avi"
+msgstr "ວີດີໂອ AVI (Microsoft ເປີດຕົວໃນປີ 1992 ມາດຕະຖານວີດີໂອ Windows ລຸ້ນທຳອິດ 'ການສະຫຼັບສຽງແລະວີດີໂອ' ເກັບຮັກສາສຽງ ແລະວີດີໂອສະຫຼັບກັນ ຮູບແບບວີດີໂອທີ່ໄດ້ຮັບຄວາມນິຍົມສູງສຸດໃນໄລຍະປີ 1990-2000 ປັດຈຸບັນຖືກແທນທີ່ໂດຍ MP4/MKV)"
+
+msgid "mime_divx"
+msgstr "ວີດີໂອ DivX (DivX Corporation ພັດທະນາໃນປີ 1998 ຮູບແບບການເຂົ້າລະຫັດວີດີໂອຕາມ MPEG-4 ຮູບແບບຫຼັກຂອງການແບ່ງປັນວີດີໂອອອນລາຍໃນທົດສະວັດປີ 2000 ເປັນເຕັກໂນໂລຢີທຳອິດທີ່ບີບອັດຄຸນນະພາບ DVD ໃຫ້ຢູ່ໃນຂະໜາດ CD ເນື່ອງຈາກຂໍ້ພິພາດດ້ານລິຂະສິດ ຕໍ່ມາປ່ຽນໄປເປັນຕົວເຂົ້າລະຫັດທາງການຄ້າ)"
+
+msgid "mime_mp4"
+msgstr "ວີດີໂອ MP4 (ມາດຕະຖານ MPEG ໃນປີ 2001 MPEG-4 Part 14 ຮູບແບບວີດີໂອທົ່ວໄປທີ່ສຸດໃນໂລກ ຮອງຮັບການເຂົ້າລະຫັດ H.264/H.265 ຮູບແບບເລີ່ມຕົ້ນສຳລັບວີດີໂອບົນອິນເຕີເນັດ ການບັນທຶກໂທລະສັບມືຖື YouTube)"
+
+msgid "mime_m4v"
+msgstr "ວີດີໂອ M4V (ຮູບແບບວີດີໂອຂອງ iTunes ຕົວແປຂອງ MP4 ຮູບແບບວີດີໂອໃນລະບົບນິເວດ Apple ຮູບເງົາ ແລະລາຍການໂທລະພາບມາດຕະຖານຂອງ iTunes Store ຮອງຮັບການປ້ອງກັນລິຂະສິດ DRM)"
+
+msgid "mime_mpeg"
+msgstr "ວີດີໂອ MPEG (ອົງການ MPEG ກຳນົດໃນປີ 1988 Moving Picture Experts Group ຜູ້ວາງຮາກຖານມາດຕະຖານການບີບອັດວີດີໂອດິຈິຕອລ MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (ວີດີໂອອອນລາຍ) ມີອິດທິພົນຢ່າງເລິກເຊິ່ງ)"
+
+msgid "mime_mkv"
+msgstr "ວີດີໂອ MKV (ໂຄງການ Matroska ພັດທະນາໃນປີ 2002 ຮູບແບບຄອນເທນເນີມັນຕິມີເດຍໂອເພັນຊອດ ຮອງຮັບຫຼາຍແທຣັກສຽງ ຫຼາຍຄຳບັນຍາຍ ບົດ 'ເຄື່ອງມືຫໍ່' ຮູບແບບທຳອິດສຳລັບການແບ່ງປັນຮູບເງົາຄວາມລະອຽດສູງ)"
+
+msgid "mime_mpg"
+msgstr "ວີດີໂອ MPEG (ສ່ວນຂະຫຍາຍວີດີໂອ MPEG-1/MPEG-2 ຮູບແບບມາດຕະຖານສຳລັບ VCD ແລະ DVD ຮູບແບບຫຼັກສຳລັບວີດີໂອເທິງດີສໃນທົດສະວັດປີ 1990-2000 ປັດຈຸບັນຖືກແທນທີ່ໂດຍ H.264/H.265)"
+
+msgid "mime_ogv"
+msgstr "ວີດີໂອ Ogg Video (Xiph.Org Foundation ພັດທະນາ ຮູບແບບວີດີໂອຂອງຄອນເທນເນີ Ogg ໃຊ້ການເຂົ້າລະຫັດ Theora ໂອເພັນຊອດບໍ່ມີຄ່າລິຂະສິດ ໜຶ່ງໃນມາດຕະຖານທຳອິດຂອງວີດີໂອ HTML5 ຮອງຮັບແບບດັ້ງເດີມໃນ Firefox)"
+
+msgid "mime_ogx"
+msgstr "ຄອນເທນເນີມັນຕິມີເດຍ Ogg (Xiph.Org Foundation ພັດທະນາ ສ່ວນຂະຫຍາຍທົ່ວໄປຂອງຄອນເທນເນີ Ogg ສາມາດມີຫຼາຍແທຣັກເຊັ່ນ ສຽງ ວີດີໂອ ຄຳບັນຍາຍ ມາດຕະຖານມັນຕິມີເດຍໂອເພັນຊອດ ໃຊ້ສຳລັບເກມ ສະຕີມ)"
+
+msgid "mime_rm"
+msgstr "ວີດີໂອ RealMedia (RealNetworks ພັດທະນາໃນປີ 1995 ຮູບແບບ RealMedia ຜູ້ບຸກເບີກສະຕີມເທິງອິນເຕີເນັດໃນທົດສະວັດປີ 1990-2000 ຮູບແບບຫຼັກຂອງເຄື່ອງຫຼິ້ນ RealPlayer ຈຸດອ່ອນ: ຕ້ອງການເຄື່ອງຫຼິ້ນສະເພາະ ຄຸນນະພາບການບີບອັດບໍ່ດີ ຖືກແທນທີ່ໂດຍ Flash/MP4)"
+
+msgid "mime_flv"
+msgstr "ວີດີໂອ Flash (ຮູບແບບເລີ່ມມີໃນປີ 2002 ຮູບແບບ Flash Video ເຄີຍເປັນຮູບແບບຫຼັກຂອງວີດີໂອອອນລາຍ YouTube ຍຸກທຳອິດໃຊ້ ຈຸດອ່ອນ: ຕ້ອງການປລັກອິນ Flash ປະສິດທິພາບຕ່ຳ ຊ່ອງໂຕ້ທາງຄວາມປອດໄພຫຼາຍ ນັບແຕ່ປີ 2015 ເປັນຕົ້ນມາ ເວັບໄຊທ໌ຫຼັກປ່ຽນໄປໃຊ້ວີດີໂອ HTML5 ປັດຈຸບັນຖືກເລີກໃຊ້ແລ້ວ)"
+
+msgid "mime_f4v"
+msgstr "ວີດີໂອ F4V (ຮູບແບບວີດີໂອ Flash ທີ່ຖືກພັດທະນາໂດຍ Adobe ເຊິ່ງເປັນຜູ້ສືບທອດຂອງ FLV ອີງຕາມມາດຕະຖານ MPEG-4 ຮອງຮັບການເຂົ້າລະຫັດ H.264 ຖືກເລີກໃຊ້ພ້ອມກັບເຕັກໂນໂລຢີ Flash Adobe ຢຸດການສະໜັບສະໜູນໃນປີ 2020)"
+
+msgid "mime_wmv"
+msgstr "ວີດີໂອ WMV (Microsoft ພັດທະນາໃນປີ 1999 Windows Media Video ຮອງຮັບແບບດັ້ງເດີມໃນ Windows ປັບປຸງສຳລັບການສົ່ງສະຕີມ ຮູບແບບທີ່ໃຊ້ທົ່ວໄປໃນວີດີໂອອອນລາຍຍຸກທຳອິດ ປັດຈຸບັນຖືກແທນທີ່)"
+
+msgid "mime_wmf"
+msgstr "ຮູບແບບມີເດຍ WMF (Windows Media Format ກອບມີເດຍຂອງ Microsoft ລວມທັງວີດີໂອ WMV, ສຽງ WMA ຮອງຮັບແບບດັ້ງເດີມໂດຍ Windows Media Player)"
+
+msgid "mime_mov"
+msgstr "ວີດີໂອ MOV (Apple ພັດທະນາໃນປີ 1991 ຮູບແບບຄອນເທນເນີ QuickTime ມາດຕະຖານສຳລັບການຕັດຕໍ່ວີດີໂອລະດັບມືອາຊີບ ຮອງຮັບຕົວປ່ຽນສັນຍານຫຼາຍຕົວ ຮອງຮັບແບບດັ້ງເດີມໂດຍ Final Cut Pro, Premiere)"
+
+msgid "mime_qt"
+msgstr "ວີດີໂອ QuickTime (Apple ເປີດຕົວໃນປີ 1991 ຮູບແບບ QuickTime ມາດຕະຖານວີດີໂອເທິງແພລດຟອມ Mac MOV ເປັນຄອນເທນເນີ ເຄື່ອງຫຼິ້ນ QuickTime ຖືກໃຊ້ກັນຢ່າງກວ້າງຂວາງ Apple ຢຸດການພັດທະນາສຳລັບ Windows ໃນປີ 2016 ຖືກແທນທີ່ໂດຍ MP4 ເທື່ອລະກ້າວ)"
+
+msgid "mime_webm"
+msgstr "ວີດີໂອ WebM (Google ເປີດຕົວໃນປີ 2010 ຮູບແບບວີດີໂອໂອເພັນຊອດບໍ່ມີຄ່າລິຂະສິດ ອີງຕາມຄອນເທນເນີ Matroska ການເຂົ້າລະຫັດ VP8/VP9 ຮູບແບບມາດຕະຖານວີດີໂອ HTML5 ຮູບແບບການຫຼິ້ນເລີ່ມຕົ້ນຂອງ YouTube ເທິງເວັບ)"
+
+msgid "mime_3gp"
+msgstr "ວີດີໂອ 3GP (3GPP ກຳນົດໃນປີ 2000 ຮູບແບບວີດີໂອສຳລັບອຸປະກອນພົກພາ ຂະໜາດໄຟລ໌ນ້ອຍຫຼາຍ ຄຸນນະພາບຮູບພາບຕ່ຳ ຮູບແບບການບັນທຶກວີດີໂອຂອງໂທລະສັບມືຖືລຸ້ນເກົ່າ ໃຊ້ສຳລັບສົ່ງ MMS)"
+
+#------------------------------------------------------------------------------
+# ມິຕິດ້ານເຕັກນິກ
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "ລະບົບປະຕິບັດການ"
+
+msgid "Top 5 Operating Systems"
+msgstr "ລະບົບປະຕິບັດການ 5 ອັນດັບຕົ້ນ"
+
+msgid "Unknown Robot"
+msgstr "ລູກຄ້າທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "User agent"
+msgstr "ຕົວແທນຜູ້ໃຊ້"
+
+msgid "Browsers"
+msgstr "ບຣາວເຊີ"
+
+msgid "Top 5 Browsers"
+msgstr "ບຣາວເຊີ 5 ອັນດັບຕົ້ນ"
+
+msgid "Unknown Robot RH"
+msgstr "ສ່ວນຫົວຂໍ້ມູນຄຳຮ້ອງຂໍທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Detailed"
+msgstr "ເວີຊັນຂອງອຸປະກອນທີ່ເຂົ້າເຖິງ"
+
+msgid "DetailedOS"
+msgstr "ເວີຊັນລະບົບປະຕິບັດການ"
+
+msgid "DetailedBS"
+msgstr "ເວີຊັນບຣາວເຊີ"
+
+msgid "Screen sizes"
+msgstr "ຂະໜາດໜ້າຈໍ"
+
+msgid "Compression"
+msgstr "ການບີບອັດ"
+
+msgid "In"
+msgstr "ປ້ອນຂໍ້ມູນ"
+
+msgid "Out"
+msgstr "ຜົນລັບ"
+
+msgid "Saved"
+msgstr "ປະຫຍັດ"
+
+#------------------------------------------------------------------------------
+# ມິຕິດ້ານແຫຼ່ງທີ່ມາ
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "ແຫຼ່ງທີ່ມາ"
+
+msgid "Referers"
+msgstr "ແຫຼ່ງທີ່ມາ"
+
+msgid "meta.description"
+msgstr "AWStats ຕົວວິເຄາະບັນທຶກເວັບໄຊທ໌ຂັ້ນສູງ - ຕິດຕາມກວດກາການເຂົ້າຊົມເວັບໄຊທ໌ແບບຈິງເວລາ ວິເຄາະຜູ້ເຂົ້າຊົມ ຄຳສຳຄັນຂອງເຄື່ອງຈັກຊອກຫາ ສະຖິຕິໜ້າຂໍ້ຜິດພາດ ຮອງຮັບໂໝດມືດ ສ່ວນຕິດຕໍ່ຫຼາຍພາສາ ໃຫ້ການວິເຄາະຂໍ້ມູນທີ່ຄົບຖ້ວນສຳລັບຜູ້ເບິ່ງແຍງເວັບໄຊທ໌"
+
+msgid "meta.keywords"
+msgstr "AWStats,ສະຖິຕິເວັບໄຊທ໌,ການວິເຄາະບັນທຶກ,ການຕິດຕາມກວດກາຈະລາຈອນ,ສະຖິຕິການເຂົ້າເຖິງ,ການວິເຄາະ SEO,ເຄື່ອງມືວິເຄາະເວັບໄຊທ໌,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - ການວິເຄາະບັນທຶກເວັບໄຊທ໌"
+
+msgid "og.description"
+msgstr "📊 ເຄື່ອງມືສະຖິຕິເວັບໄຊທ໌ໂອເພັນຊອດລະດັບມືອາຊີບ ວິເຄາະການເຂົ້າຊົມເວັບໄຊທ໌ ແລະພຶດຕິກຳຜູ້ເຂົ້າຊົມຂອງທ່ານແບບຈິງເວລາ"
+
+msgid "og.image.alt"
+msgstr "ກຣາຟສະຖິຕິ AWStats"
+
+msgid "Created by"
+msgstr "ສ້າງໂດຍ %s"
+
+msgid "plugins"
+msgstr "ປລັກອິນ"
+
+msgid "dbip by"
+msgstr "ຂໍ້ມູນຈາກ"
+
+msgid "IPDB by"
+msgstr "ຂໍ້ມູນຕຳແໜ່ງທາງພູມິສາດໂດຍ DB-IP"
+
+msgid "Configured"
+msgstr "ຕັ້ງຄ່າແລ້ວ"
+
+msgid "Missing"
+msgstr "ຂາດຫາຍ"
+
+msgid "OK"
+msgstr "ສຳເລັດ"
+
+msgid "Unused"
+msgstr "ບໍ່ໄດ້ໃຊ້"
+
+msgid "Overall Health"
+msgstr "ຄວາມສົມບູນໂດຍລວມ"
+
+msgid "Excellent"
+msgstr "ດີເລີດ"
+
+msgid "Good"
+msgstr "ດີ"
+
+msgid "Fair"
+msgstr "ປານກາງ"
+
+msgid "Poor"
+msgstr "ບໍ່ດີ"
+
+msgid "Missing icon types"
+msgstr "ປະເພດໄອຄອນທີ່ຂາດຫາຍ"
+
+msgid "See"
+msgstr "ເບິ່ງລາຍລະອຽດ"
+
+msgid "Expected Path"
+msgstr "ຄຳອະທິບາຍເສັ້ນທາງ"
+
+msgid "column for file locations"
+msgstr "ຖັນເພື່ອຮັບຕຳແໜ່ງໄຟລ໌"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "ຄຳແນະນຳ: ຖ້າທ່ານຕ້ອງການສ້າງໄອຄອນທີ່ກ່ຽວຂ້ອງ ທ່ານສາມາດໃຊ້ %s ເພື່ອອັບໂຫຼດຮູບພາບໂລໂກ້ ແລະມັນຈະສ້າງໄຟລ໌ໄອຄອນທີ່ກ່ຽວຂ້ອງທັງໝົດຂ້າງເທິງໂດຍອັດຕະໂນມັດ"
+
+msgid "200: success, 404: failure"
+msgstr "200 ແມ່ນຈຳນວນຄວາມສຳເລັດ 404 ແມ່ນຈຳນວນຄວາມລົ້ມເຫຼວ"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png ຫຼື /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg ຫຼື /logo.png (ຕ້ອງອ້າງອີງໃນ HTML/JSON-LD)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest ຫຼື /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg ແລະອື່ນໆ"
+
+msgid "Favicon"
+msgstr "ໄອຄອນເວັບໄຊທ໌"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "ໄອຄອນ Apple Touch (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "ໂລໂກ້ເວັບໄຊທ໌"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "ໄຟລ໌ Manifest ຂອງແອັບເວັບ (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "ການຕັ້ງຄ່າບຣາວເຊີ Windows"
+
+msgid "Safari Pinned Tab"
+msgstr "ໄອຄອນແທັບທີ່ປັກໝຸດ Safari"
+
+msgid "Social Icon"
+msgstr "ໄອຄອນສື່ສັງຄົມ"
+
+msgid "Icon Files Status"
+msgstr "ສະຖານະໄຟລ໌ໄອຄອນ"
+
+msgid "Icon Type"
+msgstr "ປະເພດໄອຄອນ"
+
+msgid "Total"
+msgstr "ລວມ"
+
+msgid "Advanced Web Statistics"
+msgstr "ຕົວວິເຄາະບັນທຶກຂັ້ນສູງ"
+
+msgid "Advanced Web Statistics %s"
+msgstr "ຕົວວິເຄາະບັນທຶກຂັ້ນສູງ %s"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "ບຣາວເຊີຂອງທ່ານບໍ່ຮອງຮັບເຟຣມ ກະລຸນາໃຊ້ບຣາວເຊີທີ່ທັນສະໄໝ"
+
+msgid "View statistics directly"
+msgstr "ເບິ່ງສະຖິຕິໂດຍກົງ"
+
+msgid "Close"
+msgstr "ປິດ"
+
+msgid "Documentation Viewer"
+msgstr "ໂປຣແກຣມເບິ່ງເອກະສານ"
+
+msgid "Direct address / Bookmarks"
+msgstr "ທີ່ຢູ່ທີ່ເຂົ້າເຖິງໂດຍກົງ / ໜ້າຄັ່ງຫຼັກໝາຍ"
+
+msgid "Search Engines"
+msgstr "ເຄື່ອງຈັກຊອກຫາ"
+
+msgid "Refering search engines"
+msgstr "ເຄື່ອງຈັກຊອກຫາທີ່ອ້າງອີງ"
+
+msgid "External pages"
+msgstr "ໜ້າພາຍນອກ"
+
+msgid "Refering pages"
+msgstr "ໜ້າທີ່ອ້າງອີງ"
+
+msgid "Internal pages"
+msgstr "ໜ້າພາຍໃນ"
+
+msgid "UnknownAccessSource"
+msgstr "ແຫຼ່ງທີ່ມາການເຂົ້າເຖິງທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Different refering pages"
+msgstr "ໜ້າທີ່ອ້າງອີງຕ່າງໆ"
+
+msgid "Keyphrases"
+msgstr "ກຸ່ມຄຳສຳຄັນ"
+
+msgid "Keywords"
+msgstr "ຄຳສຳຄັນ"
+
+msgid "Keyphrases/Keywords"
+msgstr "ກຸ່ມຄຳສຳຄັນ/ຄຳສຳຄັນ"
+
+msgid "Different keyphrases"
+msgstr "ກຸ່ມຄຳສຳຄັນຕ່າງໆ"
+
+msgid "Different keywords"
+msgstr "ຄຳສຳຄັນຕ່າງໆ"
+
+#------------------------------------------------------------------------------
+# ມິຕິດ້ານໜ້າ
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "ໜ້າທີ່ເບິ່ງແລ້ວ"
+
+msgid "Different pages"
+msgstr "ໜ້າຕ່າງໆ"
+
+msgid "Entry"
+msgstr "ຕຳແໜ່ງເຂົ້າ"
+
+msgid "Exit"
+msgstr "ຕຳແໜ່ງອອກ"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "ຕົວອ້າງອີງ"
+
+msgid "Host"
+msgstr "ໂຮດ"
+
+#------------------------------------------------------------------------------
+# ຂໍ້ຜິດພາດ ແລະສະຖານະ
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "ຂໍ້ຜິດພາດ"
+
+msgid "HTTP Status Statistics"
+msgstr "ສະຖິຕິລະຫັດສະຖານະ HTTP"
+
+msgid "SMTP Error codes"
+msgstr "ລະຫັດຂໍ້ຜິດພາດ SMTP"
+
+msgid "Page not found"
+msgstr "ບໍ່ພົບໜ້າທີ່ຮ້ອງຂໍ"
+
+msgid "Unknown error"
+msgstr "ຂໍ້ຜິດພາດທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Abnormal traffic note"
+msgstr "ການເຂົ້າຊົມທີ່ຜິດປົກກະຕິລວມມີ: ບອດຊອກຫາ ບອດຝຶກອົບຮົມ AI ອຸປະກອນສະແກນຊ່ອງໂຕ້ໂຕງ ແລະຄຳຮ້ອງຂໍທີ່ບໍ່ປະຕິບັດຕາມຂໍ້ກຳນົດ"
+
+msgid "Page detail"
+msgstr "ລາຍລະອຽດໜ້າ"
+
+msgid "AWStats did not found the"
+msgstr "AWStats ບໍ່ພົບ"
+
+msgid "in your log records."
+msgstr "ໃນບັນທຶກຂອງທ່ານ"
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats ບໍ່ພົບແຖວບັນທຶກທີ່ຖືກຕ້ອງຊຶ່ງກົງກັບ"
+
+msgid "parameter, in the"
+msgstr "ພາຣາມິເຕີ, ໃນ"
+
+msgid "th first non commented lines read of your log."
+msgstr "ແຖວທຳອິດທີ່ບໍ່ແມ່ນຄຳເຫັນທີ່ອ່ານຈາກບັນທຶກຂອງທ່ານ"
+
+msgid "Your log file"
+msgstr "ໄຟລ໌ບັນທຶກຂອງທ່ານ"
+
+msgid "must have a bad format or"
+msgstr "ອາດຈະມີຮູບແບບບໍ່ຖືກຕ້ອງ ຫຼື"
+
+msgid "parameter setup does not match this format."
+msgstr "ການຕັ້ງຄ່າພາຣາມິເຕີບໍ່ກົງກັບຮູບແບບນີ້"
+
+msgid "Your AWStats"
+msgstr "AWStats ຂອງທ່ານ"
+
+msgid "parameter is:"
+msgstr "ພາຣາມິເຕີແມ່ນ:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "ຊຶ່ງໝາຍຄວາມວ່າແຕ່ລະແຖວໃນໄຟລ໌ບັນທຶກເວັບເຊີຟເວີຂອງທ່ານຕ້ອງມີ:"
+
+msgid "combined log format"
+msgstr "ຮູບແບບບັນທຶກແບບລວມ"
+
+msgid "MSIE Extended W3C log format"
+msgstr "ຮູບແບບບັນທຶກ W3C ແບບຂະຫຍາຍຂອງ MSIE"
+
+msgid "WebStar native log format"
+msgstr "ຮູບແບບບັນທຶກດັ້ງເດີມຂອງ WebStar"
+
+msgid "common log format"
+msgstr "ຮູບແບບບັນທຶກທົ່ວໄປ"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "ຮູບແບບບັນທຶກສ່ວນຕົວດັ່ງຕໍ່ໄປນີ້:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "ແລະນີ້ແມ່ນຕົວຢ່າງບັນທຶກທີ່ AWStats ພົບໃນໄຟລ໌ບັນທຶກຂອງທ່ານ (ເລກທີ່ບັນທຶກ"
+
+msgid "in your log):"
+msgstr "ໃນບັນທຶກຂອງທ່ານ):"
+
+#------------------------------------------------------------------------------
+# ເບ້ຍເດັດ
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "ພິເສດ/ການຕະຫຼາດ"
+
+#------------------------------------------------------------------------------
+# ຂໍ້ຄວາມໃນສ່ວນຕິດຕໍ່ຜູ້ໃຊ້
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "ເວັບໄຊທ໌ປະຈຸບັນ"
+
+msgid "Web Site"
+msgstr "ເວັບໄຊທ໌"
+
+msgid "Last Update"
+msgstr "ອັບເດດຫຼ້າສຸດ"
+
+msgid "Never updated"
+msgstr "ບໍ່ເຄີຍອັບເດດ"
+
+msgid "No qualified records found in log"
+msgstr "ບໍ່ພົບບັນທຶກທີ່ມີຄຸນສົມບັດໃນບັນທຶກ"
+
+msgid "corrupted"
+msgstr "ເສຍຫາຍ"
+
+msgid "comments"
+msgstr "ຄຳເຫັນ"
+
+msgid "Blank"
+msgstr "ຫວ່າງເປົ່າ"
+
+msgid "dropped"
+msgstr "ຖືກຍົກເລີກ"
+
+msgid "Update now"
+msgstr "ອັບເດດດຽວນີ້"
+
+msgid "Back to main page"
+msgstr "ກັບຄືນໄປໜ້າຫຼັກ"
+
+msgid "Close window"
+msgstr "ປິດປ່ອງຢ້ຽມ"
+
+msgid "Back page"
+msgstr "ກັບຄືນໄປໜ້າກ່ອນ"
+
+msgid "Navigation"
+msgstr "ການນຳທາງ"
+
+msgid "Summary"
+msgstr "ສະຫຼຸບ"
+
+msgid "Local"
+msgstr "ພາຍໃນ"
+
+msgid "External"
+msgstr "ພາຍນອກ"
+
+msgid "Others (email senders)"
+msgstr "ອື່ນໆ (ຜູ້ສົ່ງອີເມວ)"
+
+msgid "Others (email receivers)"
+msgstr "ອື່ນໆ (ຜູ້ຮັບອີເມວ)"
+
+msgid "Others"
+msgstr "ອື່ນໆ"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "ປັດຈຸບັນສະແດງຂໍ້ມູນບຣາວເຊີພຽງ 10 ແຖວ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດ"
+
+msgid "Others (unknown browsers)"
+msgstr "ອື່ນໆ (ບຣາວເຊີທີ່ບໍ່ຮູ້ຈັກ)"
+
+msgid "Others (operating systems)"
+msgstr "ອື່ນໆ (ລະບົບປະຕິບັດການ)"
+
+msgid "Others (unknown OS)"
+msgstr "ອື່ນໆ (ລະບົບປະຕິບັດການທີ່ບໍ່ຮູ້ຈັກ)"
+
+msgid "Others (search engines)"
+msgstr "ອື່ນໆ (ເຄື່ອງຈັກຊອກຫາ)"
+
+msgid "Others (referring pages)"
+msgstr "ອື່ນໆ (ໜ້າຕົວອ້າງອີງ)"
+
+msgid "Others (keyphrases)"
+msgstr "ອື່ນໆ (ກຸ່ມຄຳສຳຄັນ)"
+
+msgid "Others (keywords)"
+msgstr "ອື່ນໆ (ຄຳສຳຄັນ)"
+
+msgid "Only first 10 robots shown"
+msgstr "ລາຍການປັດຈຸບັນສະແດງຂໍ້ມູນຫຸ່ນຍົນພຽງ 10 ຕົວ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດ"
+
+msgid "Failed to obtain access record"
+msgstr "ບໍ່ສາມາດຮັບບັນທຶກການເຂົ້າ"
+
+msgid "Failed to obtain leave record"
+msgstr "ບໍ່ສາມາດຮັບບັນທຶກການອອກ"
+
+msgid "Other pages"
+msgstr "ໜ້າອື່ນໆ"
+
+msgid "Low Traffic IP Summary"
+msgstr "ສະຫຼຸບ IP ທີ່ບໍ່ຮູ້ຈັກທີ່ເຂົ້າຊົມຕ່ຳ"
+
+msgid "Failed to obtain IP data"
+msgstr "ສະຫຼຸບ IP ທີ່ຮູ້ຈັກອື່ນໆ"
+
+msgid "Failed to obtain the relevant data"
+msgstr "ບໍ່ໄດ້ຮັບຂໍ້ມູນທີ່ກ່ຽວຂ້ອງ"
+
+msgid "Limited list of countries and regions"
+msgstr "ປັດຈຸບັນສະແດງພຽງ 10 ແຖວ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດສຳລັບປະເທດ ແລະພາກພື້ນເພີ່ມເຕີມ"
+
+msgid "currentVisitorData"
+msgstr "ປັດຈຸບັນສະແດງຂໍ້ມູນຜູ້ເຂົ້າຊົມພຽງ 10 ແຖວ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດ"
+
+msgid "Others (robots main)"
+msgstr "ອື່ນໆ (ຫຸ່ນຍົນ)"
+
+msgid "Others (worms)"
+msgstr "ອື່ນໆ (ແມ່ທ້ອງ)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "ລາຍການປັດຈຸບັນສະແດງໜ້າພຽງ 10 ໜ້າ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດ"
+
+msgid "Others (OS main)"
+msgstr "ອື່ນໆ (ລະບົບ)"
+
+msgid "Others (browsers main)"
+msgstr "ອື່ນໆ (ບຣາວເຊີ)"
+
+msgid "Others (screen sizes)"
+msgstr "ອື່ນໆ (ຂະໜາດ)"
+
+msgid "Others (search engines main)"
+msgstr "ອື່ນໆ (ເຄື່ອງຈັກຊອກຫາ)"
+
+msgid "Others (referring pages main)"
+msgstr "ອື່ນໆ (ໜ້າຕົວອ້າງອີງ)"
+
+msgid "Others (keyphrases main)"
+msgstr "ອື່ນໆ (ກຸ່ມຄຳສຳຄັນ)"
+
+msgid "Others (keywords main)"
+msgstr "ອື່ນໆ (ຄຳສຳຄັນ)"
+
+# 1xx (ລະຫັດຂໍ້ມູນຂ່າວສານ)
+msgid "Continue"
+msgstr "ສົ່ງເນື້ອໃນທີ່ເຫຼືອຕໍ່"
+
+msgid "Switching Protocols"
+msgstr "ກຳລັງປ່ຽນໂປຣໂຕຄໍ"
+
+msgid "Processing (WebDAV)"
+msgstr "ກຳລັງປະມວນຜົນ (ກະລຸນາລໍຖ້າສັກຄູ່)"
+
+msgid "Early Hints"
+msgstr "ເຊີຟເວີກຳລັງກະກຽມຊັບພະຍາກອນ"
+
+# 2xx (ລະຫັດຄວາມສຳເລັດ)
+msgid "[Miscellaneous successes]"
+msgstr "ສະຖານະຄວາມສຳເລັດອື່ນໆ"
+
+msgid "Request successful"
+msgstr "ຄຳຮ້ອງຂໍສຳເລັດ"
+
+msgid "Created successfully"
+msgstr "ສ້າງສຳເລັດ"
+
+msgid "Accepted - processing"
+msgstr "ຍອມຮັບແລ້ວ ກຳລັງປະມວນຜົນ"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "ຂໍ້ມູນທີ່ບໍ່ເປັນທາງການ (ຈາກ cache)"
+
+msgid "Success, no content returned"
+msgstr "ສຳເລັດ ບໍ່ມີເນື້ອໃນສົ່ງກັບ"
+
+msgid "Reset content"
+msgstr "ກະລຸນາຣີເຊັດຟອມ"
+
+msgid "Partial content (resume download)"
+msgstr "ເນື້ອໃນບາງສ່ວນ (ຮອງຮັບການດາວໂຫຼດຕໍ່)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "ຫຼາຍສະຖານະ (ການດຳເນີນການເປັນກຸ່ມ WebDAV)"
+
+msgid "Already reported (WebDAV)"
+msgstr "ລາຍງານແລ້ວ (ຫຼີກລ່ຽງການຊ້ຳຊ້ອນ)"
+
+msgid "IM used"
+msgstr "ໃຊ້ສ່ວນຂະຫຍາຍໂປຣໂຕຄໍ IM"
+
+# 3xx (ລະຫັດປ່ຽນເສັ້ນທາງ)
+msgid "[Miscellaneous redirections]"
+msgstr "ການປ່ຽນເສັ້ນທາງອື່ນໆ"
+
+msgid "Multiple choices"
+msgstr "ຫຼາຍທາງເລືອກ"
+
+msgid "Moved permanently - update your links"
+msgstr "ຍ້າຍຖາວອນແລ້ວ ກະລຸນາອັບເດດລິ້ງຂອງທ່ານ"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "ປ່ຽນເສັ້ນທາງຊົ່ວຄາວ ທີ່ຢູ່ບໍ່ປ່ຽນແປງ"
+
+msgid "See other"
+msgstr "ກະລຸນາເບິ່ງທີ່ຢູ່ອື່ນ"
+
+msgid "Not modified - using cached version"
+msgstr "ບໍ່ມີການແກ້ໄຂ ໃຊ້ເວີຊັນ cache"
+
+msgid "Use proxy"
+msgstr "ກະລຸນາໃຊ້ພຣັອກຊີ"
+
+msgid "Switch proxy"
+msgstr "ກະລຸນາປ່ຽນພຣັອກຊີ"
+
+msgid "Temporary redirect (keep method)"
+msgstr "ປ່ຽນເສັ້ນທາງຊົ່ວຄາວ (ຮັກສາວິທີການຮ້ອງຂໍ)"
+
+msgid "Permanent redirect - update your links"
+msgstr "ປ່ຽນເສັ້ນທາງຖາວອນ ກະລຸນາອັບເດດລິ້ງຂອງທ່ານ"
+
+# 4xx (ລະຫັດຂໍ້ຜິດພາດຂອງລູກຄ້າ)
+msgid "[Miscellaneous client/user errors]"
+msgstr "ຂໍ້ຜິດພາດຂອງລູກຄ້າອື່ນໆ"
+
+msgid "Bad request"
+msgstr "ຮູບແບບຄຳຮ້ອງຂໍຜິດພາດ"
+
+msgid "Unauthorized - please log in"
+msgstr "ບໍ່ໄດ້ຮັບອະນຸຍາດ ກະລຸນາເຂົ້າສູ່ລະບົບກ່ອນ"
+
+msgid "Payment required"
+msgstr "ຕ້ອງຊຳລະເງິນ"
+
+msgid "Forbidden - access denied"
+msgstr "ຖືກຫ້າມເຂົ້າເຖິງ ສິດທິບໍ່ພຽງພໍ"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "ບໍ່ມີໜ້າ ກະລຸນາກວດສອບລິ້ງທີ່ແຕກ"
+
+msgid "Method not allowed"
+msgstr "ບໍ່ອະນຸຍາດວິທີການຮ້ອງຂໍ"
+
+msgid "Not acceptable"
+msgstr "ຮູບແບບການຕອບສະໜອງທີ່ບໍ່ສາມາດຍອມຮັບໄດ້"
+
+msgid "Proxy authentication required"
+msgstr "ຕ້ອງຜ່ານການຢັ້ງຢືນຕົວຕົນຂອງພຣັອກຊີ"
+
+msgid "Request timeout"
+msgstr "ຄຳຮ້ອງຂໍໝົດເວລາ"
+
+msgid "Conflict - please try again"
+msgstr "ຄຳຮ້ອງຂໍຂັດແຍ່ງກັນ ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "Gone - permanently deleted"
+msgstr "ຊັບພະຍາກອນຖືກລຶບຖາວອນແລ້ວ"
+
+msgid "Length required"
+msgstr "ຕ້ອງລະບຸຄວາມຍາວຂອງເນື້ອໃນ"
+
+msgid "Precondition failed"
+msgstr "ເງື່ອນໄຂເບື້ອງຕົ້ນບໍ່ສຳເລັດ"
+
+msgid "Payload too large"
+msgstr "ເນື້ອໃນຄຳຮ້ອງຂໍໃຫຍ່ເກີນໄປ"
+
+msgid "URI too long"
+msgstr "URI ຍາວເກີນໄປ"
+
+msgid "Unsupported media type"
+msgstr "ບໍ່ຮອງຮັບປະເພດໄຟລ໌"
+
+msgid "Range not satisfiable"
+msgstr "ຊ່ວງຄຳຮ້ອງຂໍບໍ່ຖືກຕ້ອງ"
+
+msgid "Expectation failed"
+msgstr "ບໍ່ສາມາດຕອບສະໜອງຄວາມຄາດຫວັງ"
+
+msgid "I am a teapot (April Fools)"
+msgstr "ຂ້ອຍແມ່ນໝໍ້ນ້ຳ (ເລື່ອງຕະຫຼົກວັນ April Fools)"
+
+msgid "Page expired (Laravel)"
+msgstr "ໜ້າໝົດອາຍຸແລ້ວ ກະລຸນາຣີເຟຣດ ແລະລອງໃໝ່ອີກຄັ້ງ"
+
+msgid "Method failure (Spring)"
+msgstr "ວິທີການລົ້ມເຫຼວ"
+
+msgid "Misdirected request"
+msgstr "ຄຳຮ້ອງຂໍຖືກນຳທາງຜິດ"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "ຮູບແບບຄຳຮ້ອງຂໍຖືກຕ້ອງ ແຕ່ບໍ່ສາມາດປະມວນຜົນໄດ້"
+
+msgid "Locked (WebDAV)"
+msgstr "ຊັບພະຍາກອນຖືກລັອກ (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "ການດຳເນີນການທີ່ຂຶ້ນກັບລົ້ມເຫຼວ"
+
+msgid "Too early"
+msgstr "ສົ່ງຄຳຮ້ອງຂໍໄວເກີນໄປ"
+
+msgid "Upgrade required"
+msgstr "ຕ້ອງອັບເກຣດໂປຣໂຕຄໍ"
+
+msgid "Precondition required"
+msgstr "ຂາດເງື່ອນໄຂເບື້ອງຕົ້ນທີ່ຈຳເປັນ"
+
+msgid "Too many requests - slow down"
+msgstr "ຄຳຮ້ອງຂໍເລື້ອຍເກີນໄປ ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "ຟີວດສ່ວນຫົວຄຳຮ້ອງຂໍໃຫຍ່ເກີນໄປ"
+
+msgid "Request header too large"
+msgstr "ສ່ວນຫົວຄຳຮ້ອງຂໍໃຫຍ່ເກີນໄປ"
+
+msgid "Login timeout (IIS)"
+msgstr "ໝົດເວລາເຂົ້າສູ່ລະບົບ ກະລຸນາເຂົ້າສູ່ລະບົບອີກຄັ້ງ"
+
+msgid "No response (nginx)"
+msgstr "ເຊີຟເວີບໍ່ຕອບສະໜອງ"
+
+msgid "Retry with (IIS)"
+msgstr "ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "Blocked by Windows parental controls"
+msgstr "ຖືກບລັອກໂດຍການຄວບຄຸມໂດຍພໍ່ແມ່ຂອງ Windows"
+
+msgid "Unavailable for legal reasons"
+msgstr "ບໍ່ສາມາດເຂົ້າເຖິງໄດ້ເນື່ອງຈາກເຫດຜົນທາງກົດໝາຍ"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "ລູກຄ້າໄດ້ປິດການເຊື່ອມຕໍ່ກ່ອນໝົດເວລາບໍ່ເຄື່ອນໄຫວ (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "ລະບົບຕ່ອງໂສ້ການສົ່ງຕໍ່ມີທີ່ຢູ່ IP ຫຼາຍກວ່າ 30"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "ເວີຊັນໂປຣໂຕຄໍບໍ່ເຂົ້າກັນ"
+
+msgid "Request header too large (nginx)"
+msgstr "ສ່ວນຫົວຄຳຮ້ອງຂໍໃຫຍ່ເກີນໄປ"
+
+msgid "SSL certificate error (nginx)"
+msgstr "ຂໍ້ຜິດພາດໃບຢັ້ງຢືນ SSL"
+
+msgid "SSL certificate required (nginx)"
+msgstr "ຕ້ອງໃຊ້ໃບຢັ້ງຢືນ SSL"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "ສົ່ງຄຳຮ້ອງຂໍ HTTP ໄປຍັງພອດ HTTPS"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "ໂທເຄັນບໍ່ຖືກຕ້ອງ"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "ຕ້ອງການໂທເຄັນ / ລູກຄ້າປິດຄຳຮ້ອງຂໍແລ້ວ"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "ເຖິງຂີດຈຳກັດຊັບພະຍາກອນ (CPU/ຫນ່ວຍຄວາມຈຳ)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "ເກີນຂີດຈຳກັດແບນວິດ"
+
+# 5xx (ລະຫັດຂໍ້ຜິດພາດຂອງເຊີຟເວີ)
+msgid "[Miscellaneous server errors]"
+msgstr "ຂໍ້ຜິດພາດຂອງເຊີຟເວີອື່ນໆ"
+
+msgid "Internal server error - check logs"
+msgstr "ຂໍ້ຜິດພາດພາຍໃນເຊີຟເວີ ກະລຸນາກວດສອບບັນທຶກ"
+
+msgid "Not implemented"
+msgstr "ເຊີຟເວີບໍ່ຮອງຮັບຟັງຊັນນີ້"
+
+msgid "Bad gateway - backend error"
+msgstr "ຂໍ້ຜິດພາດເກດເວ ບໍລິການ backend ຜິດປົກກະຕິ"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "ບໍລິການບໍ່ສາມາດໃຊ້ງານໄດ້ ກຳລັງບຳລຸງຮັກສາ ຫຼື overload"
+
+msgid "Gateway timeout"
+msgstr "ເກດເວຕອບສະໜອງໝົດເວລາ"
+
+msgid "HTTP version not supported"
+msgstr "ບໍ່ຮອງຮັບເວີຊັນໂປຣໂຕຄໍ HTTP"
+
+msgid "Variant also negotiates"
+msgstr "ຕົວປ່ຽນຍັງເຂົ້າຮ່ວມການເຈລະຈານຳ (ຂໍ້ຜິດພາດການຕັ້ງຄ່າ)"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "ພື້ນທີ່ຈັດເກັບບໍ່ພຽງພໍ"
+
+msgid "Loop detected (WebDAV)"
+msgstr "ກວດພົບການອ້າງອີງແບບວົງຈອນ"
+
+msgid "Not extended"
+msgstr "ຕ້ອງການການຂະຫຍາຍເພີ່ມເຕີມ"
+
+msgid "Network authentication required"
+msgstr "ຕ້ອງການການຢັ້ງຢືນຕົວຕົນຂອງເຄືອຂ່າຍ"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "ຂໍ້ຜິດພາດທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "ເວັບເຊີຟເວີປິດຢູ່"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "ໝົດເວລາການເຊື່ອມຕໍ່"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "ບໍ່ສາມາດເຂົ້າເຖິງຕົ້ນທາງ"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "ເກີດການໝົດເວລາ"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "ການຈັບມື SSL ລົ້ມເຫຼວ"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "ໃບຢັ້ງຢືນ SSL ບໍ່ຖືກຕ້ອງ"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "ຂໍ້ຜິດພາດ Railgun (ຖືກເລີກໃຊ້ແລ້ວ)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "ເວັບໄຊທ໌ overload"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "ຂໍ້ຜິດພາດ DNS ຕົ້ນທາງ (Cloudflare) / ເວັບໄຊທ໌ຖືກລະງັບ (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "ປິດໃຊ້ງານຊົ່ວຄາວ"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "ບໍ່ໄດ້ຮັບອະນຸຍາດ"
+
+msgid "Network read timeout error"
+msgstr "ຂໍ້ຜິດພາດໝົດເວລາການອ່ານເຄືອຂ່າຍ"
+
+msgid "Network connect timeout error"
+msgstr "ຂໍ້ຜິດພາດໝົດເວລາການເຊື່ອມຕໍ່ເຄືອຂ່າຍ"
+
+msgid "Unexpected token (Shopify)"
+msgstr "ໂທເຄັນທີ່ບໍ່ຄາດຄິດ"
+
+msgid "Request denied (LinkedIn)"
+msgstr "ຄຳຮ້ອງຂໍຖືກປະຕິເສດ"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "ປິດການເຊື່ອມຕໍ່ HTTP/2"
+
+msgid "[Unknown]"
+msgstr "ລະຫັດສະຖານະທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "ການຕອບສະໜອງຄວາມສຳເລັດທີ່ບໍ່ມາດຕະຖານ (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "ສະຖານະລະບົບ ຫຼືຂໍ້ຄວາມຊ່ວຍເຫຼືອລະບົບ"
+
+msgid "Help message"
+msgstr "ຂໍ້ຄວາມຊ່ວຍເຫຼືອ"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "ບໍລິການ SMTP ພ້ອມແລ້ວ (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "ບໍລິການພ້ອມແລ້ວ - ເຊີຟເວີອີເມວພ້ອມຮັບອີເມວ"
+
+msgid "Service closing - connection is being closed"
+msgstr "ບໍລິການກຳລັງປິດ - ການເຊື່ອມຕໍ່ກຳລັງຖືກປິດ"
+
+msgid "Authentication successful"
+msgstr "ການຢັ້ງຢືນຕົວຕົນສຳເລັດ"
+
+msgid "Requested mail action taken and completed"
+msgstr "ການດຳເນີນການອີເມວທີ່ຮ້ອງຂໍໄດ້ຖືກປະຕິບັດ ແລະສຳເລັດ"
+
+msgid "User not local - will forward to another address"
+msgstr "ຜູ້ໃຊ້ບໍ່ຢູ່ໃນເຊີຟເວີນີ້ - ຈະສົ່ງຕໍ່ໄປຍັງທີ່ຢູ່ອື່ນ"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "ບໍ່ສາມາດກວດສອບຜູ້ຮັບໄດ້ ແຕ່ຈະພະຍາຍາມສົ່ງ"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "ອີເມວໄດ້ຮັບການຍອມຮັບໃຫ້ສົ່ງ (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "ຊື່ຜູ້ໃຊ້ແມ່ນກ່ອງຈົດໝາຍ"
+
+msgid "Authentication challenge - please respond"
+msgstr "ສິ່ງທ້າທາຍການຢັ້ງຢືນຕົວຕົນ - ກະລຸນາຕອບສະໜອງ"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "ເລີ່ມປ້ອນເນື້ອໃນອີເມວ - ສິ້ນສຸດດ້ວຍ <CRLF>.<CRLF>"
+
+msgid "Continue (LMTP)"
+msgstr "ສືບຕໍ່ (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "ບໍລິການບໍ່ສາມາດໃຊ້ງານໄດ້ - ປິດການເຊື່ອມຕໍ່ ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "ກ່ອງຈົດໝາຍຫຍຸ້ງ ຫຼືບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາການເຊື່ອມຕໍ່ (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "ຈຳນວນການເຊື່ອມຕໍ່ພ້ອມກັນຫຼາຍເກີນໄປ (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "ບໍ່ສາມາດສ້າງການເຊື່ອມຕໍ່ໄດ້ (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "ໝົດເວລາການເຊື່ອມຕໍ່ (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "ການເຊື່ອມຕໍ່ຖືກຍົກເລີກເນື່ອງຈາກຂໍ້ຜິດພາດ (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "ກ່ອງຈົດໝາຍຖືກລັອກຊົ່ວຄາວ (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "ຈຳນວນຜູ້ຮັບຫຼາຍເກີນໄປ (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "ຂໍ້ຜິດພາດເຊີຟເວີອີເມວ (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "ກວດພົບການຮັບແບບວົງຈອນ (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "ຈຳນວນການກະໂດດຫຼາຍເກີນໄປ (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "ການຊອກຫາ DNS ລົ້ມເຫຼວ (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "ບໍ່ສາມາດຢັ້ງຢືນຕົວຕົນໄດ້ (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "ການຈັບມື TLS ລົ້ມເຫຼວ (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "ການລະເມີດໂປຣໂຕຄໍ SMTP (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "ຂະໜາດອີເມວເກີນຂີດຈຳກັດ (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາອີເມວ (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "ໂກຕາກ່ອງຈົດໝາຍເຕັມແລ້ວ - ສະຖານະຊົ່ວຄາວ"
+
+msgid "Domain not found (Postfix)"
+msgstr "ບໍ່ພົບໂດເມນ (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "ສ່ວນຫົວອີເມວບໍ່ຖືກຕ້ອງ (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "ກວດພົບການຕີກັບແບບວົງຈອນ (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "ບໍ່ສາມາດກຳນົດເສັ້ນທາງໄດ້ (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "ບໍ່ພົບໂດເມນຜູ້ສົ່ງ (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "ບໍ່ພົບໂດເມນຜູ້ຮັບ (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "ກຳລັງກວດສອບ Greylisting - ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "ກຳລັງກັ່ນຕອງສະແປມ (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "ກຳລັງສະແກນໄວຣັສ (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "ກ່ອງຈົດໝາຍບໍ່ສາມາດໃຊ້ງານໄດ້ - ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "Requested action aborted - error in processing"
+msgstr "ການດຳເນີນການທີ່ຮ້ອງຂໍຖືກຍົກເລີກ - ມີຂໍ້ຜິດພາດໃນລະຫວ່າງການປະມວນຜົນ"
+
+msgid "Insufficient system storage - try again later"
+msgstr "ພື້ນທີ່ຈັດເກັບລະບົບບໍ່ພຽງພໍ - ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "ອີເມວສຳລັບຜູ້ຮັບນີ້ຫຼາຍເກີນໄປ (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS ບໍ່ສາມາດໃຊ້ງານໄດ້ (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "ເຊີຟເວີບໍ່ສາມາດຮັບອີເມວໄດ້ (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "ຄວາມລົ້ມເຫຼວຊົ່ວຄາວໃນການຊອກຫາ DNS (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "ເກີນໂກຕາ - ສະຖານະຊົ່ວຄາວ"
+
+msgid "Message too big - temporary"
+msgstr "ອີເມວໃຫຍ່ເກີນໄປ - ສະຖານະຊົ່ວຄາວ"
+
+msgid "Too many messages per connection"
+msgstr "ຈຳນວນອີເມວຕໍ່ການເຊື່ອມຕໍ່ຫຼາຍເກີນໄປ"
+
+msgid "Load average too high (Postfix)"
+msgstr "ຄ່າສະເລ່ຍການໂຫຼດສູງເກີນໄປ (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "ການເຊື່ອມຕໍ່ຖືກປະຕິເສດ (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາການສົ່ງ (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາຜູ້ຮັບ (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາຜູ້ສົ່ງ (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາທີ່ຢູ່ IP (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "ການຊອກຫາ MX ລົ້ມເຫຼວ (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "ການຊອກຫາ A record ລົ້ມເຫຼວ (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "ການຊອກຫາ PTR record ລົ້ມເຫຼວ (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "ເປີດໃຊ້ງານ Greylisting ແລ້ວ - ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ (Postgrey)"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ຮູ້ຈັກໂດເມນສຳລັບຜູ້ສົ່ງ ຫຼືຜູ້ຮັບ"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "ທີ່ຢູ່ຜູ້ສົ່ງຖືກປະຕິເສດ - ໂດເມນບໍ່ໄດ້ຮັບການຢັ້ງຢືນ (DMARC ລໍຖ້າ)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "ທີ່ຢູ່ຜູ້ຮັບຖືກປະຕິເສດ - ໂດເມນບໍ່ໄດ້ຮັບການຢັ້ງຢືນ (DMARC ລໍຖ້າ)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "ການຢັ້ງຢືນ DKIM ລໍຖ້າ - ຄວາມລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "ການຢັ້ງຢືນ SPF ລໍຖ້າ - ຄວາມລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "ການຢັ້ງຢືນ DMARC ລໍຖ້າ - ຄວາມລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "ການຊອກຫາ DNSBL ລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "ການຊອກຫາ RHSBL ລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "ການຊອກຫາ URI DNSBL ລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "ການຢັ້ງຢືນຕົວຕົນລົ້ມເຫຼວຊົ່ວຄາວ (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "ການອະນຸຍາດລົ້ມເຫຼວຊົ່ວຄາວ (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາຕໍ່ຜູ້ສົ່ງ (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາຕໍ່ຜູ້ຮັບ (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາຕໍ່ໂດເມນ (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "ເກີນຂີດຈຳກັດອັດຕາຕໍ່ IP (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "ອີເມວຖືກຈັດໃສ່ຄິວເພື່ອສົ່ງພາຍຫຼັງ (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "ການສົ່ງຊັກຊ້າເນື່ອງຈາກນະໂຍບາຍ (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "ຕົວກັ່ນຕອງເນື້ອໃນລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "ເຄື່ອງສະແກນປ້ອງກັນໄວຣັສລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "Temporary failure in spam filter"
+msgstr "ຕົວກັ່ນຕອງສະແປມລົ້ມເຫຼວຊົ່ວຄາວ"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter ລົ້ມເຫຼວຊົ່ວຄາວ (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Greylisting - ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "DDoS protection active - try again later"
+msgstr "ເປີດໃຊ້ງານການປ້ອງກັນ DDoS ແລ້ວ - ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "SMTP policy violation - temporary"
+msgstr "ການລະເມີດນະໂຍບາຍ SMTP - ສະຖານະຊົ່ວຄາວ"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "ຂໍ້ຜິດພາດຊົ່ວຄາວໃນການປະມວນຜົນ RCPT TO"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "ຂໍ້ຜິດພາດຊົ່ວຄາວໃນການປະມວນຜົນ MAIL FROM"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "ຂໍ້ຜິດພາດຊົ່ວຄາວໃນການປະມວນຜົນ EHLO/HELO"
+
+msgid "Temporary error in DATA processing"
+msgstr "ຂໍ້ຜິດພາດຊົ່ວຄາວໃນການປະມວນຜົນ DATA"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "ຂໍ້ຜິດພາດຊົ່ວຄາວ - ບໍລິການຫຍຸ້ງ ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "ຂໍ້ຜິດພາດທາງໄວຍາກອນ - ບໍ່ຮູ້ຈັກຄຳສັ່ງ ຫຼືຍາວເກີນໄປ"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "ຂໍ້ຜິດພາດທາງໄວຍາກອນໃນພາຣາມິເຕີ ຫຼືອາກິວເມັນ"
+
+msgid "Command not implemented"
+msgstr "ບໍ່ໄດ້ໃຊ້ຄຳສັ່ງ"
+
+msgid "Bad sequence of commands"
+msgstr "ລຳດັບຄຳສັ່ງບໍ່ຖືກຕ້ອງ"
+
+msgid "Command parameter not implemented"
+msgstr "ບໍ່ໄດ້ໃຊ້ພາຣາມິເຕີຄຳສັ່ງ"
+
+msgid "Version not supported (ESMTP)"
+msgstr "ບໍ່ຮອງຮັບເວີຊັນ (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "ເສັ້ນທາງກ່ອງຈົດໝາຍບໍ່ຖືກຕ້ອງ (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "ຄຳສັ່ງໃນເຊດຊັນນີ້ຫຼາຍເກີນໄປ (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດຜູ້ຮັບ (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດຜູ້ສົ່ງ (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "ເກີນຂີດຈຳກັດໂດເມນ (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "ບໍ່ມີກ່ອງຈົດໝາຍ (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS ລົ້ມເຫຼວ - ຂໍ້ຜິດພາດຖາວອນ"
+
+msgid "Address type not supported (Postfix)"
+msgstr "ບໍ່ຮອງຮັບປະເພດທີ່ຢູ່ (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "ບໍ່ສາມາດເປີດກ່ອງຈົດໝາຍໄດ້ (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "ກ່ອງຈົດໝາຍຖືກລັອກ - ສະຖານະຖາວອນ"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກນະໂຍບາຍ (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "ເນື້ອໃນຖືກປະຕິເສດ - ສະຖານະຖາວອນ"
+
+msgid "Attachment type not allowed"
+msgstr "ບໍ່ອະນຸຍາດປະເພດໄຟລ໌ແນບ"
+
+msgid "Message encoding not supported"
+msgstr "ບໍ່ຮອງຮັບການເຂົ້າລະຫັດອີເມວ"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "ໂດເມນຜູ້ສົ່ງບໍ່ມີຢູ່ - ສະຖານະຖາວອນ"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "ໂດເມນບໍ່ຮັບອີເມວ ຫຼືກຳລັງປິດ"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "ໂດເມນຜູ້ຮັບບໍ່ມີຢູ່ - ສະຖານະຖາວອນ"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "ໂກຕາກ່ອງຈົດໝາຍເຕັມແລ້ວ - ສະຖານະຖາວອນ"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "ຂະໜາດອີເມວເກີນຂີດຈຳກັດ - ສະຖານະຖາວອນ"
+
+msgid "Authentication required (Sendmail)"
+msgstr "ຕ້ອງການການຢັ້ງຢືນຕົວຕົນ (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "ການຢັ້ງຢືນຕົວຕົນລົ້ມເຫຼວ (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "ບໍ່ຮອງຮັບກົນໄກການຢັ້ງຢືນຕົວຕົນ"
+
+msgid "Authentication credentials invalid"
+msgstr "ຂໍ້ມູນປະຈຳຕົວການຢັ້ງຢືນຕົວຕົນບໍ່ຖືກຕ້ອງ"
+
+msgid "Authentication account expired"
+msgstr "ບັນຊີການຢັ້ງຢືນຕົວຕົນໝົດອາຍຸແລ້ວ"
+
+msgid "Access denied - authentication required"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ຕ້ອງການການຢັ້ງຢືນຕົວຕົນ"
+
+msgid "Access denied (Sendmailism)"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ໄດ້ຜ່ານການຢັ້ງຢືນຕົວຕົນ"
+
+msgid "Access denied - account locked"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບັນຊີຖືກລັອກ"
+
+msgid "Access denied - account disabled"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບັນຊີຖືກປິດໃຊ້ງານ"
+
+msgid "Authentication failed"
+msgstr "ການຢັ້ງຢືນຕົວຕົນລົ້ມເຫຼວ"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "ການສົ່ງຕໍ່ຕ້ອງການການຢັ້ງຢືນຕົວຕົນ (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "ການຢັ້ງຢືນຕົວຕົນສຳລັບການສົ່ງຕໍ່ລົ້ມເຫຼວ (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "ຕ້ອງການການເຊື່ອມຕໍ່ທີ່ເຂົ້າລະຫັດ (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "ຜູ້ຮັບນີ້ຕ້ອງການການເຂົ້າລະຫັດ TLS"
+
+msgid "Encryption strength insufficient"
+msgstr "ຄວາມເຂັ້ມແຂງຂອງການເຂົ້າລະຫັດບໍ່ພຽງພໍ"
+
+msgid "Certificate validation failed"
+msgstr "ການກວດສອບໃບຢັ້ງຢືນລົ້ມເຫຼວ"
+
+msgid "Invalid TLS certificate"
+msgstr "ໃບຢັ້ງຢືນ TLS ບໍ່ຖືກຕ້ອງ"
+
+msgid "TLS protocol version not supported"
+msgstr "ບໍ່ຮອງຮັບເວີຊັນໂປຣໂຕຄໍ TLS"
+
+msgid "Cipher suite not supported"
+msgstr "ບໍ່ຮອງຮັບຊຸດຊີຟເຟີ"
+
+msgid "Access denied - no valid recipient"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ມີຜູ້ຮັບທີ່ຖືກຕ້ອງ"
+
+msgid "Access denied - no valid sender"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ມີຜູ້ສົ່ງທີ່ຖືກຕ້ອງ"
+
+msgid "Access denied - domain not allowed"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ອະນຸຍາດໂດເມນ"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ທີ່ຢູ່ IP ຖືກບລັອກ (ຖາວອນ)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ໂດເມນຜູ້ສົ່ງຢູ່ໃນບັນຊີດຳ"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "ກ່ອງຈົດໝາຍບໍ່ສາມາດໃຊ້ງານໄດ້ - ບໍ່ໄດ້ປະຕິບັດຕາມການຮ້ອງຂໍ"
+
+msgid "User not local - please try forwarding address"
+msgstr "ຜູ້ໃຊ້ບໍ່ຢູ່ໃນເຊີຟເວີນີ້ - ກະລຸນາໃຊ້ທີ່ຢູ່ສຳລັບການສົ່ງຕໍ່"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "ການດຳເນີນການທີ່ຮ້ອງຂໍຖືກຍົກເລີກ - ເກີນການຈັດສັນພື້ນທີ່ຈັດເກັບ"
+
+msgid "Mailbox name not allowed"
+msgstr "ບໍ່ອະນຸຍາດຊື່ກ່ອງຈົດໝາຍ"
+
+msgid "Requested action rejected - access denied"
+msgstr "ການດຳເນີນການທີ່ຮ້ອງຂໍຖືກປະຕິເສດ - ການເຂົ້າເຖິງຖືກປະຕິເສດ"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "ບໍ່ຮູ້ຈັກພາຣາມິເຕີ MAIL FROM/RCPT TO"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "ບໍ່ອະນຸຍາດໃຫ້ໂດເມນສົ່ງ (DMARC reject)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "ອີເມວຊ້ຳຊ້ອນຫຼາຍເກີນໄປ - ສະຖານະຖາວອນ"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "ທີ່ຢູ່ຜູ້ສົ່ງຖືກປະຕິເສດ - ໂດເມນບໍ່ຢູ່ໃນ SPF"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "ທີ່ຢູ່ຜູ້ສົ່ງຖືກປະຕິເສດ - ການຢັ້ງຢືນ DKIM ລົ້ມເຫຼວ"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "ທີ່ຢູ່ຜູ້ສົ່ງຖືກປະຕິເສດ - ນະໂຍບາຍ DMARC ປະຕິເສດ"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "ທີ່ຢູ່ຜູ້ຮັບຖືກປະຕິເສດ - ນະໂຍບາຍ DMARC ປະຕິເສດ"
+
+msgid "Message rejected due to spam content"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກເນື້ອໃນສະແປມ"
+
+msgid "Message rejected due to virus detected"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກກວດພົບໄວຣັສ"
+
+msgid "Message rejected due to malicious content"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກເນື້ອໃນທີ່ເປັນອັນຕະລາຍ"
+
+msgid "Message rejected due to phishing detection"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກກວດພົບການຫຼອກລວງ"
+
+msgid "Message rejected due to malware detection"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກກວດພົບມາລແວ"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກນະໂຍບາຍ - ສະຖານະຖາວອນ"
+
+msgid "Message rejected due to content filtering"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກຕົວກັ່ນຕອງເນື້ອໃນ"
+
+msgid "Message rejected due to reputation"
+msgstr "ອີເມວຖືກປະຕິເສດເນື່ອງຈາກຊື່ສຽງ"
+
+msgid "Access denied - access_map violation"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ລະເມີດ access_map"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ລູກຄ້າ SMTP ຢູ່ໃນ RBL"
+
+msgid "Access denied - relay not authorized"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ການສົ່ງຕໍ່ບໍ່ໄດ້ຮັບອະນຸຍາດ"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ຮູ້ຈັກຊື່ໂຮດລູກຄ້າ SMTP"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ໄວຍາກອນບໍ່ຖືກຕ້ອງສຳລັບຊື່ໂຮດ HELO ຂອງລູກຄ້າ"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ຊື່ໂຮດລູກຄ້າ SMTP ຖືກປະຕິເສດ"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ຮູ້ຈັກຊື່ໂຮດ HELO ຂອງລູກຄ້າ"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ໂດເມນບໍ່ຖືກຕ້ອງ (ບໍ່ແມ່ນ FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ໂດເມນບໍ່ມີຄຸນສົມບັດ"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ຕັ້ງຄ່າເຊີຟເວີອີເມວບໍ່ຖືກຕ້ອງ"
+
+msgid "Access denied - open relay not allowed"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ອະນຸຍາດ open relay"
+
+msgid "Access denied - proxy not allowed"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ອະນຸຍາດໃຫ້ໃຊ້ພຣັອກຊີ"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ອະນຸຍາດ IP ແບບໄດນາມິກ"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ບໍ່ອະນຸຍາດ IP ທີ່ຢູ່ອາໄສ"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ກວດພົບ VPN/Tor"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ຢູ່ໃນບັນຊີລາຍຊື່ Spamhaus DROP"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - URL ຢູ່ໃນ URIBL"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - ໂດເມນຢູ່ໃນ RHSBL"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "ການເຂົ້າເຖິງຖືກປະຕິເສດ - IP ຢູ່ໃນ DNSWL (ນະໂຍບາຍ)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ບໍ່ພົບກ່ອງຈົດໝາຍ"
+
+msgid "Delivery failed - recipient not local"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຜູ້ຮັບບໍ່ຢູ່ໃນເຊີຟເວີນີ້"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຜູ້ຮັບຖືກປະຕິເສດ"
+
+msgid "Delivery failed - sender rejected"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຜູ້ສົ່ງຖືກປະຕິເສດ"
+
+msgid "Delivery failed - relay rejected"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ການສົ່ງຕໍ່ຖືກປະຕິເສດ"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຂໍ້ຜິດພາດ DNS ຖາວອນ"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຂໍ້ຜິດພາດ MX ຖາວອນ"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຂໍ້ຜິດພາດ A record ຖາວອນ"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຂໍ້ຜິດພາດ PTR record ຖາວອນ"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "ການສົ່ງລົ້ມເຫຼວ - ຂໍ້ຜິດພາດນະໂຍບາຍຖາວອນ"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: ສຳເລັດ - ການແຈ້ງເຕືອນສະຖານະການສົ່ງ"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: ການສົ່ງຊັກຊ້າ"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: ການສົ່ງລົ້ມເຫຼວ - ຖາວອນ"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: ການສົ່ງລົ້ມເຫຼວ - ຊົ່ວຄາວ"
+
+msgid "DSN: Message expired"
+msgstr "DSN: ອີເມວໝົດອາຍຸແລ້ວ"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: ອີເມວຖືກຕີກັບ"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: ອີເມວຖືກຍົກເລີກ"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: ອີເມວຖືກກັ່ນຕອງ"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: ອີເມວຖືກກັກກັນ"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: ອີເມວຖືກລະງັບລໍຖ້າການກວດສອບ"
+
+msgid "MTA-STS policy required"
+msgstr "ຕ້ອງການນະໂຍບາຍ MTA-STS"
+
+msgid "MTA-STS policy validation failed"
+msgstr "ການກວດສອບນະໂຍບາຍ MTA-STS ລົ້ມເຫຼວ"
+
+msgid "TLS reporting required"
+msgstr "ຕ້ອງການລາຍງານ TLS"
+
+msgid "TLS report requested"
+msgstr "ໄດ້ຮ້ອງຂໍລາຍງານ TLS"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "ເປີດໃຊ້ງານ SMTP MTA Strict Transport Security ແລ້ວ"
+
+msgid "DANE validation required"
+msgstr "ຕ້ອງການການກວດສອບ DANE"
+
+msgid "DANE validation failed"
+msgstr "ການກວດສອບ DANE ລົ້ມເຫຼວ"
+
+msgid "TLSA record missing"
+msgstr "ຂາດ TLSA record"
+
+msgid "Certificate name mismatch"
+msgstr "ຊື່ໃບຢັ້ງຢືນບໍ່ກົງກັນ"
+
+msgid "Certificate expired"
+msgstr "ໃບຢັ້ງຢືນໝົດອາຍຸແລ້ວ"
+
+msgid "AUTH LOGIN required"
+msgstr "ຕ້ອງການ AUTH LOGIN"
+
+msgid "AUTH PLAIN required"
+msgstr "ຕ້ອງການ AUTH PLAIN"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "ຕ້ອງການ AUTH CRAM-MD5"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "ຕ້ອງການ AUTH DIGEST-MD5"
+
+msgid "AUTH GSSAPI required"
+msgstr "ຕ້ອງການ AUTH GSSAPI"
+
+msgid "AUTH NTLM required"
+msgstr "ຕ້ອງການ AUTH NTLM"
+
+msgid "AUTH SCRAM required"
+msgstr "ຕ້ອງການ AUTH SCRAM"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "ຕ້ອງການ AUTH OAUTHBEARER"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "ຕ້ອງການ AUTH XOAUTH2"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: ຂໍ້ຜິດພາດຖານຂໍ້ມູນກ່ອງຈົດໝາຍ"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: ຂໍ້ຜິດພາດໄດເວີພື້ນທີ່ຈັດເກັບ"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: ຂໍ້ຜິດພາດຕົວແທນການຂົນສົ່ງ"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: ຂໍ້ຜິດພາດການປ່ຽນແປງເນື້ອໃນ"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: ຂໍ້ຜິດພາດການກຳນົດເສັ້ນທາງ"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: ການໄຫຼຂອງອີເມວຕິດຂັດ"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: ຂໍ້ຜິດພາດ Shadow redundancy"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: ຂໍ້ຜິດພາດຄວາມປອດໄພ"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: ຂໍ້ຜິດພາດຖານຂໍ້ມູນຄິວ"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: ອີເມວຖືກຈຳກັດອັດຕາ"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: ຂໍ້ຜິດພາດຄິວຕີກັບ"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: ຂໍ້ຜິດພາດຄິວເລ່ືອນ"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: ຂໍ້ຜິດພາດຄິວລະງັບ"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: ຂໍ້ຜິດພາດຄິວຮັບເຂົ້າ"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: ຂໍ້ຜິດພາດຄິວທີ່ກຳລັງໃຊ້ງານ"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: ໄຟລ໌ຄິວເສຍຫາຍ"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: ຂໍ້ຜິດພາດຜູ້ແລ່ນຄິວ"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: ຂໍ້ຜິດພາດຖານຂໍ້ມູນຊື່ຫຼິ້ນ"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: ຂໍ້ຜິດພາດຕາຕະລາງຜູ້ໃຊ້ເສມືອນ"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: ຂໍ້ຜິດພາດນິຍາມຕົວສົ່ງຈົດໝາຍ"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າເຣາເຕີ"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າການຂົນສົ່ງ"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າຜູ້ອຳນວຍການ"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າການລອງໃໝ່"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າການຂຽນຄືນ"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າການຢັ້ງຢືນຕົວຕົນ"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າ ACL"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າ Local_scan"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າການຊອກຫາ"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: ຂໍ້ຜິດພາດການຕັ້ງຄ່າການຂະຫຍາຍ"
+
+msgid "HTTP Protocol Versions"
+msgstr "ເວີຊັນໂປຣໂຕຄໍ HTTP"
+
+msgid "Protocol"
+msgstr "ໂປຣໂຕຄໍ"
+
+msgid "Request %"
+msgstr "ສັດສ່ວນຄຳຮ້ອງຂໍ"
+
+msgid "Bandwidth %"
+msgstr "ສັດສ່ວນແບນວິດ"
+
+msgid "Each request requires a new connection"
+msgstr "ແຕ່ລະຄຳຮ້ອງຂໍຕ້ອງສ້າງການເຊື່ອມຕໍ່ໃໝ່"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "ຫຼາຍຄຳຮ້ອງຂໍສາມາດໃຊ້ການເຊື່ອມຕໍ່ດຽວຄືນໃໝ່ໄດ້"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "ສາມາດປະມວນຜົນຫຼາຍຄຳຮ້ອງຂໍແບບຂະໜານຜ່ານການເຊື່ອມຕໍ່ດຽວ"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "ການເຊື່ອມຕໍ່ທີ່ໄວຂຶ້ນ ປະສິດທິພາບດີຂຶ້ນເທິງເຄືອຂ່າຍທີ່ບໍ່ດີ"
+
+msgid "No protocol data available"
+msgstr "ບໍ່ມີຂໍ້ມູນໂປຣໂຕຄໍ"
+
+msgid "of requests use HTTP/1.0"
+msgstr "ຂອງຄຳຮ້ອງຂໍໃຊ້ໂປຣໂຕຄໍ HTTP/1.0"
+
+msgid "From access logs"
+msgstr "ຈາກບັນທຶກການເຂົ້າເຖິງ"
+
+msgid "No HTTP/2 requests detected"
+msgstr "ບໍ່ກວດພົບຄຳຮ້ອງຂໍໂປຣໂຕຄໍ HTTP/2"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "ປັດຈຸບັນຄຳຮ້ອງຂໍທັງໝົດເປັນ HTTP/1.0 ບໍ່ມີຄຳຮ້ອງຂໍ HTTP/2"
+
+msgid "HTTP/3 not detected"
+msgstr "ບໍ່ກວດພົບຄຳຮ້ອງຂໍໂປຣໂຕຄໍ HTTP/3"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "ປັດຈຸບັນຄຳຮ້ອງຂໍທັງໝົດບໍ່ມີຄຳຮ້ອງຂໍໂປຣໂຕຄໍ QUIC/HTTP/3"
+
+msgid "Mail Authentication Statistics"
+msgstr "ສະຖິຕິການຢັ້ງຢືນຕົວຕົນອີເມວ"
+
+msgid "Authentication"
+msgstr "ປະເພດຂອງການຢັ້ງຢືນຕົວຕົນ"
+
+msgid "Pass"
+msgstr "ຜ່ານ"
+
+msgid "Fail"
+msgstr "ລົ້ມເຫຼວ"
+
+msgid "Softfail"
+msgstr "ລົ້ມເຫຼວເລັກນ້ອຍ"
+
+msgid "Neutral"
+msgstr "ເປັນກາງ"
+
+msgid "None"
+msgstr "ບໍ່ມີ"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "ສະຖິຕິຄວາມຊັກຊ້າໃນຄິວອີເມວ"
+
+msgid "Delay Range"
+msgstr "ຊ່ວງຄວາມຊັກຊ້າ"
+
+msgid "Count"
+msgstr "ຈຳນວນ"
+
+msgid "Percentage"
+msgstr "ສ່ວນຮ້ອຍ"
+
+msgid "TLS Encryption Statistics"
+msgstr "ສະຖິຕິການເຂົ້າລະຫັດ TLS"
+
+msgid "TLS Versions"
+msgstr "ເວີຊັນ TLS"
+
+msgid "Top Ciphers"
+msgstr "ຊຸດຊີຟເຟີທີ່ໃຊ້ທົ່ວໄປ"
+
+msgid "robot_hits_detail_both"
+msgstr "ຄຳຮ້ອງຂໍທັງໝົດ: %s ຄັ້ງ (ໜ້າປົກກະຕິ: %s ຄັ້ງ, robots.txt: %s ຄັ້ງ)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "ເຂົ້າເຖິງສະເພາະ robots.txt: %s ຄັ້ງ ບໍ່ໄດ້ດຶງຂໍ້ມູນໜ້າອື່ນ"
+
+msgid "robot_hits_detail_normal"
+msgstr "ຄຳຮ້ອງຂໍໜ້າປົກກະຕິ: %s ຄັ້ງ"
+
+msgid "Troubleshooting"
+msgstr "ການແກ້ໄຂບັນຫາ"
+
+msgid "Did you use the correct URL?"
+msgstr "ທ່ານໄດ້ໃຊ້ URL ທີ່ຖືກຕ້ອງບໍ່?"
+
+msgid "Example:"
+msgstr "ຕົວຢ່າງ:"
+
+msgid "Did you use correct config parameter?"
+msgstr "ທ່ານໄດ້ໃຊ້ພາຣາມິເຕີການຕັ້ງຄ່າທີ່ຖືກຕ້ອງບໍ່?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "ຕົວຢ່າງ: ຖ້າໄຟລ໌ຕັ້ງຄ່າຂອງທ່ານແມ່ນ awstats.mysite.conf ໃຫ້ໃຊ້ -config=mysite"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "ທ່ານໄດ້ສ້າງໄຟລ໌ຕັ້ງຄ່າ 'awstats.$SiteConfig.conf' ແລ້ວບໍ່?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "ຖ້າຍັງບໍ່ທັນມີ ທ່ານສາມາດດຳເນີນການ \"awstats_configure.pl\" ຈາກແຖວຄຳສັ່ງ ຫຼືສ້າງມັນດ້ວຍຕົນເອງ"
+
+msgid "Setup"
+msgstr "ການຕັ້ງຄ່າ"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "ໄຟລ໌ ເຊີຟເວີເວັບ ຫຼືສິດທິອາດຈະບໍ່ຖືກຕ້ອງ"
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "ກວດສອບໄຟລ໌ຕັ້ງຄ່າ ສິດທິ ແລະເອກະສານ AWStats (ໃນໄດເລກທໍຣີ 'docs')"
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "ຄຳເຕືອນ: ບໍ່ພົບໄຟລ໌ພາສາສຳລັບ \"%s\" ຈະໃຊ້ພາສາອັງກິດ"
+
+#------------------------------------------------------------------------------
+# ການຈັດການຂໍ້ຜິດພາດ ແລະສັນຍານ
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "ຂະບວນການ %s (ລະຫັດ %s) ຖືກຂັດຈັງຫວະໂດຍສັນຍານ %s"
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "ເບິ່ງຄືວ່າຂະບວນການອັບເດດ AWStats ສຳລັບໄຟລ໌ຕັ້ງຄ່ານີ້ກຳລັງດຳເນີນຢູ່ແລ້ວ ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນພາຍຫຼັງ ຖ້າບໍ່ແມ່ນຄວາມຈິງ ກະລຸນາລຶບໄຟລ໌ລັອກດ້ວຍຕົນເອງ"
+
+#------------------------------------------------------------------------------
+# ຫົວຂໍ້ສະຖິຕິໃໝ່
+#------------------------------------------------------------------------------
+msgid "Report Overview"
+msgstr "ພາບລວມລາຍງານ"
+
+msgid "Monthly Statistics"
+msgstr "ສະຖິຕິປະຈຳເດືອນ"
+
+msgid "Daily Statistics"
+msgstr "ສະຖິຕິປະຈຳວັນ"
+
+msgid "Statistics by Day of Week"
+msgstr "ສະຖິຕິຕາມມື້ໃນອາທິດ"
+
+msgid "Hourly Page Views"
+msgstr "ຈຳນວນຄັ້ງຂອງການເບິ່ງຕໍ່ຊົ່ວໂມງ"
+
+msgid "Traffic Sources"
+msgstr "ແຫຼ່ງທີ່ມາຂອງການເຂົ້າຊົມ"
+
+msgid "Other Sources"
+msgstr "ແຫຼ່ງອື່ນໆ"
+
+msgid "tooltip_1"
+msgstr "ຈຳນວນເຊດຊັນຂອງຜູ້ເຂົ້າຊົມເທິງເວັບໄຊທ໌ ຜູ້ເຂົ້າຊົມຄົນດຽວກັນທີ່ກັບມາເຂົ້າຊົມອີກຄັ້ງຫຼັງຈາກບໍ່ມີກິດຈະກຳເກີນ 30 ນາທີ ຈະຖືກນັບເປັນການເຂົ້າຊົມໃໝ່"
+
+msgid "tooltip_2"
+msgstr "ຈຳນວນຜູ້ເຂົ້າຊົມທີ່ແຕກຕ່າງກັນທີ່ໄດ້ເຂົ້າຊົມເວັບໄຊທ໌ຂອງທ່ານໃນໄລຍະເວລາທີ່ເລືອກ ອີງຕາມທີ່ຢູ່ IP"
+
+msgid "tooltip_3"
+msgstr "ຈຳນວນຄຳຮ້ອງຂໍທີ່ນັບເປັນໜ້າ (ເຊັ່ນ HTML, PHP, ASP ແລະອື່ນໆ) ບໍ່ລວມໄຟລ໌ຄົງທີ່ເຊັ່ນ ຮູບພາບ, CSS, JS"
+
+msgid "tooltip_4"
+msgstr "ຈຳນວນຄຳຮ້ອງຂໍທັງໝົດທີ່ສົ່ງໄປຍັງເຊີຟເວີ ລວມທັງໜ້າທັງໝົດ ຮູບພາບ, CSS, JS ແລະໄຟລ໌ອື່ນໆ"
+
+msgid "tooltip_5"
+msgstr "ປະລິມານຂໍ້ມູນທັງໝົດທີ່ເຊີຟເວີສົ່ງເມື່ອຕອບສະໜອງຕໍ່ຄຳຮ້ອງຂໍຂອງຜູ້ໃຊ້"
+
+msgid "tooltip_13"
+msgstr "ສະຖິຕິແຫຼ່ງທີ່ມາຂອງການເຂົ້າຊົມເວັບໄຊທ໌ຂອງທ່ານຜ່ານເຄື່ອງຈັກຊອກຫາ ສະແດງວ່າເຄື່ອງຈັກຊອກຫາໃດນຳພາການເຂົ້າຊົມມາຍັງທ່ານ ແລະຄຳຄົ້ນຫາທີ່ຜູ້ໃຊ້ໃຊ້"
+
+msgid "tooltip_14"
+msgstr "ສະຖິຕິແຫຼ່ງທີ່ມາຂອງການເຂົ້າຊົມເວັບໄຊທ໌ຂອງທ່ານຜ່ານລິ້ງພາຍນອກຈາກເວັບໄຊທ໌ອື່ນ ສະແດງວ່າເວັບໄຊທ໌ໃດມີລິ້ງມາຍັງທ່ານ ແລະປະລິມານການເຂົ້າຊົມທີ່ນຳມາ"
+
+msgid "tooltip_15"
+msgstr "ຄຳຄົ້ນຫາທີ່ຜູ້ໃຊ້ໃຊ້ເມື່ອຄົ້ນຫາເວັບໄຊທ໌ຂອງທ່ານຜ່ານເຄື່ອງຈັກຊອກຫາ ຄຳສຳຄັນແມ່ນຄຳດຽວ ກຸ່ມຄຳສຳຄັນແມ່ນການລວມກັນຂອງຫຼາຍຄຳ"
+
+msgid "tooltip_16"
+msgstr "ໂປຣແກຣມອັດຕະໂນມັດ ເຊັ່ນ ບອດຄົ້ນຫາ ບອດຝຶກອົບຮົມ AI ເຄື່ອງສະແກນຊ່ອງໂຕ້ໂຕງ ເລກໃນວົງເລັບສະແດງເຖິງຈຳນວນຄຳຮ້ອງຂໍໜ້າປົກກະຕິ ແລະຄຳຮ້ອງຂໍ robots.txt"
+
+msgid "tooltip_17"
+msgstr "ກຣາຟການແຈກຢາຍການເຂົ້າຊົມ 24 ຊົ່ວໂມງ ສະແດງການເຂົ້າຊົມເວັບໄຊທ໌ຂອງທ່ານໃນແຕ່ລະໄລຍະເວລາ ຊ່ວຍໃຫ້ເຂົ້າໃຈເວລາທີ່ຜູ້ໃຊ້ໃຊ້ງານ"
+
+msgid "tooltip_18"
+msgstr "ຖັນນີ້ສະແດງຄ່າສະເລ່ຍປະຈຳວັນ/ປະຈຳອາທິດໃນໄລຍະເວລາທີ່ເລືອກ ຊ່ວຍໃຫ້ທ່ານເຂົ້າໃຈແນວໂນ້ມໂດຍລວມ"
+
+msgid "tooltip_19"
+msgstr "ຄລິກລາຍການໃນກຣາຟເພື່ອເບິ່ງລາຍລະອຽດ ເລື່ອນເມົ້າໄປເທິງອົງປະກອບກຣາຟເພື່ອເບິ່ງຄ່າສະເພາະ"
+
+msgid "tooltip_20"
+msgstr "ຂໍ້ມູນທີ່ບໍ່ສາມາດຈັດໝວດໝູ່ໃສ່ໃນຊ່ວງທີ່ມີຢູ່ ມັກເກີດຂຶ້ນຍ້ອນຮູບແບບຂໍ້ມູນຜິດປົກກະຕິ ຫຼືຂາດຫາຍ"
+
+msgid "tooltip_21"
+msgstr "ບັນທຶກການໂຈມຕີຂອງແມ່ທ້ອງທີ່ກວດພົບ ແມ່ທ້ອງແມ່ນໂປຣແກຣມທີ່ສ້າງອັນຕະລາຍທີ່ແຜ່ລາມດ້ວຍຕົນເອງ ມັກແຜ່ລາມຜ່ານຊ່ອງໂຕ້ໂຕງຂອງເຄືອຂ່າຍ"
+
+#------------------------------------------------------------------------------
+# ສະແດງຂໍ້ຄວາມຊ່ວຍເຫຼືອ - Community Edition
+#------------------------------------------------------------------------------
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - ສະຖິຕິເວັບໄຊທ໌ຂັ້ນສູງ"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "ສະຫງວນລິຂະສິດ (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "ສະຫງວນລິຂະສິດ (c) 2026-ປັດຈຸບັນ Community Edition"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats ບໍ່ມີການຮັບປະກັນໃດໆ ເປັນຊອບແວຟຣີທີ່ແຈກຢາຍພາຍໃຕ້ໃບອະນຸຍາດສາທາລະນະທົ່ວໄປຂອງ GNU (ເບິ່ງໄຟລ໌ LICENSE ສຳລັບລາຍລະອຽດ)"
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "ຮູບແບບຄຳສັ່ງ: %s -config=ຊື່ໂຮດສະເໝືອນ [ຕົວເລືອກ]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "ຄຳສັ່ງນີ້ດຳເນີນການ %s ໃນແຖວຄຳສັ່ງເພື່ອອັບເດດສະຖິຕິຂອງເວັບໄຊທ໌ (-update option) ຈາກໄຟລ໌ບັນທຶກທີ່ກຳນົດໄວ້ໃນໄຟລ໌ຕັ້ງຄ່າ AWStats ຫຼືສ້າງລາຍງານ HTML (-output option)"
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "ຂັ້ນຕອນທຳອິດ %s ພະຍາຍາມອ່ານ %s.ຊື່ໂຮດສະເໝືອນ.conf ເປັນໄຟລ໌ຕັ້ງຄ່າ ຖ້າບໍ່ພົບ %s ພະຍາຍາມອ່ານ %s.conf ແລະສຸດທ້າຍແມ່ນເສັ້ນທາງເຕັມທີ່ສົ່ງໃຫ້ -config="
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "ຫມາຍເຫດ 1: ໄຟລ໌ຕັ້ງຄ່າ (*.conf) ຕ້ອງຢູ່ໃນ /etc/awstats, /usr/local/etc/awstats, /etc ຫຼືໄດເລກທໍຣີດຽວກັນກັບໄຟລ໌ສະຄຣິບ awstats.pl"
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "ຫມາຍເຫດ 2: ຖ້າໄດ້ກຳນົດຕົວແປສະພາບແວດລ້ອມ AWSTATS_FORCE_CONFIG AWStats ຈະໃຊ້ມັນເປັນຄ່າ 'config' ບໍ່ວ່າຄ່າທີ່ສົ່ງໃນແຖວຄຳສັ່ງ ຫຼື URL ກໍ່ຕາມ"
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "ເບິ່ງເອກະສານ AWStats ສຳລັບຄຳແນະນຳການຕັ້ງຄ່າທັງໝົດ"
+
+msgid "Options to update statistics:"
+msgstr "ຕົວເລືອກສຳລັບອັບເດດສະຖິຕິ:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        ອັບເດດສະຖິຕິ (ຄ່າເລີ່ມຕົ້ນ)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     ເພີ່ມຂໍ້ມູນການວັດແທກປະສິດທິພາບທຸກໆ %s ແຖວທີ່ປະມວນຜົນ"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted ເພີ່ມຜົນລັບສຳລັບແຕ່ລະແຖວທີ່ເສຍຫາຍທີ່ພົບ ພ້ອມເຫດຜົນ"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   ເພີ່ມຜົນລັບສຳລັບແຕ່ລະແຖວທີ່ຖືກຍົກເລີກທີ່ພົບ ພ້ອມເຫດຜົນ"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin   ສະແດງຂໍ້ມູນອ້າງອີງເມື່ອບໍ່ສາມາດວິເຄາະໄດ້"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin    ສະແດງແຖວບັນທຶກເມື່ອແຫຼ່ງທີ່ມາແມ່ນການເຂົ້າເຖິງໂດຍກົງ"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n    ຢຸດຂະບວນການອັບເດດຫຼັງຈາກວິເຄາະ n ແຖວ"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x      ປ່ຽນບັນທຶກທີ່ຈະວິເຄາະແທນທີ່ 'LogFile' ໃນໄຟລ໌ຕັ້ງຄ່າ"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  ກະລຸນາລະມັດລະວັງໃນການປະມວນຜົນໄຟລ໌ບັນທຶກຕາມລຳດັບເວລາເມື່ອອັບເດດສະຖິຕິ"
+
+msgid "Options to show statistics:"
+msgstr "ຕົວເລືອກສຳລັບສະແດງສະຖິຕິ:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output      ສົ່ງອອກລາຍງານ HTML ຫຼັກ (ບໍ່ມີການອັບເດດເວັ້ນເສຍແຕ່ໃຊ້ -update)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x    ສົ່ງອອກໜ້າລາຍງານອື່ນໆ ໂດຍ x ແມ່ນ:"
+
+msgid "build page of all domains/countries"
+msgstr "ສ້າງໜ້າຂອງໂດເມນ/ປະເທດທັງໝົດ"
+
+msgid "build page of all hosts"
+msgstr "ສ້າງໜ້າຂອງໂຮດທັງໝົດ"
+
+msgid "build page of last hits for hosts"
+msgstr "ສ້າງໜ້າຂອງການຄລິກຄັ້ງຫຼ້າສຸດສຳລັບໂຮດ"
+
+msgid "build page of all unresolved IP"
+msgstr "ສ້າງໜ້າຂອງ IP ທີ່ບໍ່ທັນໄດ້ຮັບການແກ້ໄຂທັງໝົດ"
+
+msgid "build page of all email senders (maillog)"
+msgstr "ສ້າງໜ້າຂອງຜູ້ສົ່ງອີເມວທັງໝົດ (maillog)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "ສ້າງໜ້າຂອງຜູ້ສົ່ງອີເມວຄັ້ງຫຼ້າສຸດ (maillog)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "ສ້າງໜ້າຂອງຜູ້ຮັບອີເມວທັງໝົດ (maillog)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "ສ້າງໜ້າຂອງຜູ້ຮັບອີເມວຄັ້ງຫຼ້າສຸດ (maillog)"
+
+msgid "build page of all logins used"
+msgstr "ສ້າງໜ້າຂອງຊື່ຜູ້ໃຊ້ທີ່ໃຊ້ທັງໝົດ"
+
+msgid "build page of last hits for logins"
+msgstr "ສ້າງໜ້າຂອງການຄລິກຄັ້ງຫຼ້າສຸດສຳລັບຊື່ຜູ້ໃຊ້"
+
+msgid "build page of all robots/spider visits"
+msgstr "ສ້າງໜ້າຂອງການເຂົ້າຊົມຂອງຫຸ່ນຍົນ/ສະໄປເດີທັງໝົດ"
+
+msgid "build page of last hits for robots"
+msgstr "ສ້າງໜ້າຂອງການຄລິກຄັ້ງຫຼ້າສຸດສຳລັບຫຸ່ນຍົນ"
+
+msgid "list most often viewed pages"
+msgstr "ສະແດງໜ້າທີ່ຖືກເຂົ້າຊົມເລື້ອຍທີ່ສຸດ"
+
+msgid "list most often viewed pages matching filter"
+msgstr "ສະແດງໜ້າທີ່ຖືກເຂົ້າຊົມເລື້ອຍທີ່ສຸດທີ່ກົງກັບຕົວກັ່ນຕອງ"
+
+msgid "list entry pages"
+msgstr "ສະແດງໜ້າເຂົ້າ"
+
+msgid "list entry pages matching filter"
+msgstr "ສະແດງໜ້າເຂົ້າທີ່ກົງກັບຕົວກັ່ນຕອງ"
+
+msgid "list exit pages"
+msgstr "ສະແດງໜ້າອອກ"
+
+msgid "list exit pages matching filter"
+msgstr "ສະແດງໜ້າອອກທີ່ກົງກັບຕົວກັ່ນຕອງ"
+
+msgid "build page with os detailed versions"
+msgstr "ສ້າງໜ້າພ້ອມເວີຊັນລາຍລະອຽດຂອງລະບົບປະຕິບັດການ"
+
+msgid "build page with browsers detailed versions"
+msgstr "ສ້າງໜ້າພ້ອມເວີຊັນລາຍລະອຽດຂອງບຣາວເຊີ"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "ສະແດງ 'User Agents' ທີ່ມີບຣາວເຊີທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "ສະແດງ 'User Agents' ທີ່ມີລະບົບປະຕິບັດການທີ່ບໍ່ຮູ້ຈັກ"
+
+msgid "build page of all refering search engines"
+msgstr "ສ້າງໜ້າຂອງເຄື່ອງຈັກຊອກຫາທີ່ໄດ້ອ້າງອີງທັງໝົດ"
+
+msgid "build page of all refering pages"
+msgstr "ສ້າງໜ້າຂອງໜ້າທີ່ອ້າງອີງທັງໝົດ"
+
+msgid "list all keyphrases used on search engines"
+msgstr "ສະແດງກຸ່ມຄຳສຳຄັນທັງໝົດທີ່ໃຊ້ເທິງເຄື່ອງຈັກຊອກຫາ"
+
+msgid "list all keywords used on search engines"
+msgstr "ສະແດງຄຳສຳຄັນທັງໝົດທີ່ໃຊ້ເທິງເຄື່ອງຈັກຊອກຫາ"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "ສະແດງ 'Referers' ສຳລັບຂໍ້ຜິດພາດ 404"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "ສ້າງໜ້າຂອງຄ່າທັງໝົດສຳລັບ ExtraSection X"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           ມີລິ້ງຄົງທີ່ໃນໜ້າລາຍງານ HTML"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    ມີລິ້ງຄົງທີ່ທີ່ມີສ່ວນຂະຫຍາຍ .xxx ແທນ .html"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     ສົ່ງອອກລາຍງານ HTML ເປັນພາສາ LL (en,de,es,fr,it,nl,lo,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    ສົ່ງອອກລາຍງານ HTML ສຳລັບເດືອນ MM ທີ່ຜ່ານມາ"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   ສົ່ງອອກລາຍງານ HTML ສຳລັບປີ YYYY ທີ່ຜ່ານມາ"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  ຕົວເລືອກ 'date' ບໍ່ອະນຸຍາດໃຫ້ທ່ານປະມວນຜົນໄຟລ໌ບັນທຶກເກົ່າ ພວກມັນອະນຸຍາດໃຫ້ທ່ານເບິ່ງລາຍງານໃນອະດີດສຳລັບໄລຍະເດືອນ/ປີທີ່ເລືອກແທນທີ່ຈະເປັນເດືອນ/ປີປັດຈຸບັນ"
+
+msgid "Other options:"
+msgstr "ຕົວເລືອກອື່ນໆ:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     ເພີ່ມຂໍ້ມູນການແກ້ບັກທີ່ນ້ອຍກວ່າລະດັບ X (ຄວາມໄວຫຼຸດລົງ)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     ສະແດງເວີຊັນ AWStats"
+
+msgid "Now supports/detects:"
+msgstr "ປັດຈຸບັນຮອງຮັບ/ກວດພົບ:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  ການວິເຄາະບັນທຶກເຊີຟເວີ Web/FTP/ອີເມວ/ສະຕີມ (ແລະໄຟລ໌ບັນທຶກ Load Balancer)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  ການຊອກຫາ DNS ແບບຍ້ອນກັບ (IPv4 ແລະ IPv6) ແລະການຊອກຫາ GeoIP"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  ຈຳນວນການເຂົ້າຊົມ, ຈຳນວນຜູ້ເຂົ້າຊົມທີ່ບໍ່ຊ້ຳກັນ"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  ໄລຍະເວລາຂອງການເຂົ້າຊົມ ແລະລາຍຊື່ຂອງການເຂົ້າຊົມຄັ້ງຫຼ້າສຸດ"
+
+msgid "  Authenticated users"
+msgstr "  ຜູ້ໃຊ້ທີ່ໄດ້ຮັບການຢັ້ງຢືນຕົວຕົນ"
+
+msgid "  Days of week and rush hours"
+msgstr "  ມື້ໃນອາທິດ ແລະຊົ່ວໂມງຮີບດ່ວນ"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  ລາຍຊື່ໂຮດ ແລະລາຍຊື່ທີ່ຢູ່ IP ທີ່ຍັງບໍ່ທັນແກ້ໄຂ"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  ໜ້າທີ່ຖືກເຂົ້າຊົມຫຼາຍທີ່ສຸດ ໜ້າເຂົ້າ ແລະໜ້າອອກ"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  ປະເພດໄຟລ໌ ແລະການບີບອັດເວັບ (ສະຖິຕິ mod_gzip, mod_deflate)"
+
+msgid "  Configured Database Statistics"
+msgstr "  ສະຖິຕິຖານຂໍ້ມູນທີ່ໄດ້ຕັ້ງຄ່າ"
+
+msgid "  %s domains/countries"
+msgstr "  %s ໂດເມນ/ປະເທດ"
+
+msgid "  %s robots"
+msgstr "  %s ຫຸ່ນຍົນ"
+
+msgid "  %s worm's families"
+msgstr "  %s ຕະກຸນແມ່ທ້ອງ"
+
+msgid "  %s operating systems"
+msgstr "  %s ລະບົບປະຕິບັດການ"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s ບຣາວເຊີ (ລວມທັງຖານຂໍ້ມູນບຣາວເຊີໂທລະສັບມືຖື %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s ເຄື່ອງຈັກຊອກຫາ (ແລະກຸ່ມຄຳສຳຄັນ/ຄຳສຳຄັນທີ່ໃຊ້ຈາກພວກມັນ)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  ຂໍ້ຜິດພາດ HTTP ທັງໝົດພ້ອມຕົວອ້າງອີງຄັ້ງຫຼ້າສຸດ"
+
+msgid "  Report by day/month/year"
+msgstr "  ລາຍງານປະຈຳວັນ/ເດືອນ/ປີ"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  ລາຍງານ HTML ຫຼື XHTML ແບບໄດນາມິກ ຫຼືຄົງທີ່ ລາຍງານ PDF ຄົງທີ່"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  ຖານຂໍ້ມູນປະຈຳເດືອນແບບຂໍ້ຄວາມ ຫຼື XML ທີ່ມີດັດຊະນີ"
+
+msgid "  And a lot of other advanced features and options..."  
+msgstr "  ແລະຄຸນສົມບັດ ແລະຕົວເລືອກຂັ້ນສູງອື່ນໆອີກຫຼາຍ..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  ເວີຊັນໃໝ່ ແລະຄຳຖາມທີ່ພົບເລື້ອຍທີ່ https://github.com/hestiacn/vstats/issues"

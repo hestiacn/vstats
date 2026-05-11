@@ -1,0 +1,3284 @@
+# AWStats Georgian (ka) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Georgian\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#------------------------------------------------------------------------------
+# თვეების სახელები
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "იანვარი"
+
+msgid "month_02"
+msgstr "თებერვალი"
+
+msgid "month_03"
+msgstr "მარტი"
+
+msgid "month_04"
+msgstr "აპრილი"
+
+msgid "month_05"
+msgstr "მაისი"
+
+msgid "month_06"
+msgstr "ივნისი"
+
+msgid "month_07"
+msgstr "ივლისი"
+
+msgid "month_08"
+msgstr "აგვისტო"
+
+msgid "month_09"
+msgstr "სექტემბერი"
+
+msgid "month_10"
+msgstr "ოქტომბერი"
+
+msgid "month_11"
+msgstr "ნოემბერი"
+
+msgid "month_12"
+msgstr "დეკემბერი"
+
+#------------------------------------------------------------------------------
+# კვირის დღეების სახელები
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "კვირა"
+
+msgid "DayOfWeek_1"
+msgstr "ორშაბათი"
+
+msgid "DayOfWeek_2"
+msgstr "სამშაბათი"
+
+msgid "DayOfWeek_3"
+msgstr "ოთხშაბათი"
+
+msgid "DayOfWeek_4"
+msgstr "ხუთშაბათი"
+
+msgid "DayOfWeek_5"
+msgstr "პარასკევი"
+
+msgid "DayOfWeek_6"
+msgstr "შაბათი"
+
+#------------------------------------------------------------------------------
+# ინტერფეისის ელემენტები
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "ვებ სტატისტიკის მოწინავე ანალიზატორი"
+
+msgid "Statistics for"
+msgstr "სტატისტიკური ანგარიში"
+
+msgid "main"
+msgstr "მიმოხილვა"
+
+msgid "Switch to light mode"
+msgstr "ნათელ რეჟიმზე გადართვა"
+
+msgid "Switch to dark mode"
+msgstr "მუქ რეჟიმზე გადართვა"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "ბაიტი"
+
+msgid "Filter"
+msgstr "ფილტრი"
+
+msgid "Exclude filter"
+msgstr "გამორიცხვის ფილტრი"
+
+msgid "Top"
+msgstr "პირველი"
+
+msgid "Full list"
+msgstr "სრული სია"
+
+msgid "Last"
+msgstr "ბოლო"
+
+msgid "Average"
+msgstr "საშუალო"
+
+msgid "Export"
+msgstr "ექსპორტი"
+
+msgid "Details"
+msgstr "დეტალები"
+
+msgid "Version"
+msgstr "ვერსია"
+
+msgid "thousands_separator"
+msgstr " "
+
+msgid "dateformat_long"
+msgstr "dd.mm.yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd.mm.yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "%s წელი"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# ნავიგაციის ზოლი
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "AWStats თვის ამომრჩევი"
+
+msgid "nav_category_basic"
+msgstr "ძირითადი დოკუმენტაცია"
+
+msgid "nav_category_guide"
+msgstr "გამოყენების სახელმძღვანელო"
+
+msgid "nav_category_reference"
+msgstr "საცნობარო რესურსები"
+
+msgid "nav_category_integration"
+msgstr "ინტეგრაცია და გაფართოებები"
+
+msgid "nav_category_dev"
+msgstr "დეველოპერის დოკუმენტაცია"
+
+msgid "nav_changelog"
+msgstr "ცვლილებების ისტორია"
+
+msgid "nav_what"
+msgstr "რა არის AWStats"
+
+msgid "nav_license"
+msgstr "ლიცენზია"
+
+msgid "nav_glossary"
+msgstr "ტერმინთა ლექსიკონი"
+
+msgid "nav_setup"
+msgstr "ინსტალაცია და კონფიგურაცია"
+
+msgid "nav_upgrade"
+msgstr "განახლების სახელმძღვანელო"
+
+msgid "nav_config"
+msgstr "კონფიგურაციის პარამეტრები"
+
+msgid "nav_extra"
+msgstr "დამატებითი ნაწილები"
+
+msgid "nav_tools"
+msgstr "სხვა ინსტრუმენტები"
+
+msgid "nav_faq"
+msgstr "ხშირი კითხვები"
+
+msgid "nav_security"
+msgstr "უსაფრთხოების რეკომენდაციები"
+
+msgid "nav_compare"
+msgstr "შედარება"
+
+msgid "nav_benchmark"
+msgstr "შესრულების ტესტირება"
+
+msgid "nav_webmin"
+msgstr "Webmin მოდული"
+
+msgid "nav_dolibarr"
+msgstr "Dolibarr მოდული"
+
+msgid "nav_contrib"
+msgstr "წვლილის რესურსები"
+
+msgid "nav_plugins"
+msgstr "პლაგინების შემუშავება"
+
+msgid "nav_hooks"
+msgstr "პლაგინების ჩამკეტები"
+
+msgid "nav_graphs"
+msgstr "პლაგინების გრაფიკები"
+
+msgid "Back to top"
+msgstr "ზევით დაბრუნება"
+
+msgid "nav_select_month"
+msgstr "თვის არჩევა"
+
+#------------------------------------------------------------------------------
+# ძირითადი სტატისტიკური მაჩვენებლები
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "უნიკალური ვიზიტორები"
+
+msgid "Visits"
+msgstr "ვიზიტები"
+
+msgid "Visits duration"
+msgstr "ვიზიტების ხანგრძლივობა"
+
+msgid "First visit"
+msgstr "პირველი ვიზიტი"
+
+msgid "Last visit"
+msgstr "ბოლო ვიზიტი"
+
+msgid "Visits/Visitor"
+msgstr "ვიზიტები/ვიზიტორი"
+
+msgid "Pages/Visit"
+msgstr "გვერდები/ვიზიტი"
+
+msgid "Hits/Visit"
+msgstr "მოთხოვნები/ვიზიტი"
+
+msgid "KB/Visit"
+msgstr "კბ/ვიზიტი"
+
+msgid "KB/Visits"
+msgstr "კბ/ვიზიტები"
+
+msgid "Pages"
+msgstr "გვერდები"
+
+msgid "Hits"
+msgstr "მოთხოვნები"
+
+msgid "Bandwidth"
+msgstr "გამტარუნარიანობა"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "წმ"
+
+msgid "unit_min"
+msgstr "წთ"
+
+msgid "unit_h"
+msgstr "სთ"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "მოწყობილობების ტიპები"
+
+msgid "Device Type"
+msgstr "მოწყობილობის ტიპი"
+
+msgid "Percent"
+msgstr "პროცენტი"
+
+msgid "Mobile"
+msgstr "მობილური"
+
+msgid "Pause & Go"
+msgstr "პაუზა და გაგრძელება"
+
+msgid "Complete"
+msgstr "დასრულებული"
+
+msgid "Tablet"
+msgstr "პლანშეტი"
+
+msgid "Tv"
+msgstr "ტელევიზორი"
+
+msgid "Wearable"
+msgstr "სამოსადი მოწყობილობა"
+
+msgid "Bot"
+msgstr "ბოტი"
+
+msgid "Desktop"
+msgstr "დესკტოპ კომპიუტერი"
+
+msgid "Normal browsing traffic"
+msgstr "ნორმალური დათვალიერების ტრაფიკი"
+
+msgid "Abnormal browsing traffic"
+msgstr "არანორმალური დათვალიერების ტრაფიკი"
+
+msgid "Viewed"
+msgstr "ნანახი"
+
+msgid "Not viewed"
+msgstr "არანახი"
+
+msgid "Abnormal browsing traffic note"
+msgstr "არანორმალური ტრაფიკი მოიცავს: საძიებო სისტემების ბოტებს, ხელოვნური ინტელექტის სასწავლო ბოტებს, დაუცველობების სკანერებს და HTTP/HTTPS სტანდარტების შეუსაბამო მოთხოვნებს"
+
+msgid "File size"
+msgstr "ფაილის ზომა"
+
+msgid "File type"
+msgstr "ფაილის ტიპი"
+
+msgid "Downloads"
+msgstr "ჩამოტვირთვები"
+
+msgid "Request time"
+msgstr "მოთხოვნის დრო"
+
+msgid "Total requests"
+msgstr "მოთხოვნების საერთო რაოდენობა"
+
+msgid "Frequency"
+msgstr "სიხშირე"
+
+msgid "Average frequency"
+msgstr "საშუალო სიხშირე"
+
+msgid "Seconds"
+msgstr "წამი"
+
+msgid "First"
+msgstr "პირველი"
+
+msgid "Mails"
+msgstr "წერილები"
+
+msgid "Size"
+msgstr "ზომა"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "გაფრთხილება: ამ ფაილის წაშლა გამოიწვევს თარიღის"
+
+msgid "will be lost/reset."
+msgstr "ყველა სტატისტიკის სამუდამოდ დაკარგვას/გადატვირთვას"
+
+msgid "Last config file used to build this data file was"
+msgstr "ამ მონაცემთა ფაილის შესაქმნელად გამოყენებული ბოლო კონფიგურაციის ფაილი იყო"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "ამ ფაილში MAP სეგმენტი განსაზღვრავს თითოეული ნაწილის ბაიტურ ოფსეტურ პოზიციას"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats-ის პირდაპირი წვდომისთვის. თუ თქვენ შეიტანეთ ცვლილებები ამ ფაილში, უნდა"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "მთლიანად წაშალოთ MAP სეგმენტი (AWStats ხელახლა შექმნის მას შემდეგი განახლებისას)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = ბოლო ჩანაწერის თარიღი - ბოლო ჟურნალის ბოლო ჩანაწერის ხაზის ნომერი - ბოლო ჟურნალის ბოლო ჩანაწერის ოფსეტი - ბოლო ჩანაწერის ხელმოწერის მნიშვნელობა"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = ისტორიის ფაილში პირველი ვიზიტის თარიღი"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = ისტორიის ფაილში ბოლო ვიზიტის თარიღი"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = ბოლო განახლების თარიღი - გამოყენებული ჩანაწერების რაოდენობა - ძველი ჩანაწერების რაოდენობა - ახალი ჩანაწერების რაოდენობა - დაზიანებული ჩანაწერების რაოდენობა - გამოტოვებული ჩანაწერების რაოდენობა"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = ვიზიტების რაოდენობა"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = უნიკალური ვიზიტორების რაოდენობა"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = ცნობილი ჰოსტების რაოდენობა"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = უცნობი ჰოსტების რაოდენობა"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "კლასტერის ID - გვერდები - მოთხოვნები - გამტარუნარიანობა"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "საათი - გვერდები - მოთხოვნები - გამტარუნარიანობა - არანახი გვერდები - არანახი მოთხოვნები - არანახი გამტარუნარიანობა"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "თარიღი - გვერდები - მოთხოვნები - გამტარუნარიანობა - ვიზიტები"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "დომენი - გვერდები - მოთხოვნები - გამტარუნარიანობა"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "მთავარ გვერდზე ნაჩვენებია მხოლოდ პირველი %s ყველაზე ნანახი გვერდი, სრული სია იხილეთ დეტალების გვერდზე"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "ჰოსტი - გვერდები - მოთხოვნები - გამტარუნარიანობა - ბოლო ვიზიტის თარიღი - [ბოლო ვიზიტის დაწყების თარიღი] - [ბოლო ვიზიტის ბოლო გვერდი]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[ბოლო ვიზიტის დაწყების თარიღი] და [ბოლო ვიზიტის ბოლო გვერდი] ინახება მხოლოდ იმ შემთხვევაში, თუ სესია არ არის დასრულებული"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "მთავარ გვერდზე ნაჩვენებია მხოლოდ პირველი %s ყველაზე მოთხოვნადი ჩანაწერი, სრული სია იხილეთ დეტალების გვერდზე"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "მომხმარებელი - გვერდები - მოთხოვნები - გამტარუნარიანობა - ბოლო ვიზიტი"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "რობოტის ID - მოთხოვნები - გამტარუნარიანობა - ბოლო ვიზიტი - robots.txt-ზე მოთხოვნები"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "ჭიის ID - მოთხოვნები - გამტარუნარიანობა - ბოლო ვიზიტი"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "ელ.ფოსტა - მოთხოვნები - გამტარუნარიანობა - ბოლო ვიზიტი"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "მთავარ გვერდზე ნაჩვენებია მხოლოდ პირველი %s ყველაზე მოთხოვნადი ელ.ფოსტა, სრული სია იხილეთ დეტალების გვერდზე"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - გვერდები - გამტარუნარიანობა - შესვლა - გასვლა"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "ფაილების ტიპი - მოთხოვნები - გამტარუნარიანობა - გამტარუნარიანობა შეკუმშვის გარეშე - გამტარუნარიანობა შეკუმშვის შემდეგ"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "მოთხოვნის დროის დიაპაზონი - მოთხოვნების სიხშირე"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "ფაილის ზომის დიაპაზონი - ფაილების რაოდენობა"
+
+msgid "Session range - Number of visits"
+msgstr "სესიის ხანგრძლივობის დიაპაზონი - ვიზიტების რაოდენობა"
+
+msgid "URL with %s errors - Hits"
+msgstr "URL %s შეცდომებით - მოთხოვნები"
+
+msgid "Last URL referrer"
+msgstr "ბოლო URL წყარო"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "შეცდომები - მოთხოვნები - გამტარუნარიანობა"
+
+msgid "Search keywords - Number of search"
+msgstr "საძიებო სიტყვები - ძიების რაოდენობა"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "მთავარ გვერდზე ნაჩვენებია მხოლოდ %s ყველაზე პოპულარული საძიებო სიტყვა (დალაგებული ძიების რაოდენობის მიხედვით). სრული სია იხილეთ დეტალების გვერდზე"
+
+msgid "Search keyphrases - Number of search"
+msgstr "საძიებო ფრაზები - ძიების რაოდენობა"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "მთავარ გვერდზე ნაჩვენებია მხოლოდ %s ყველაზე პოპულარული საძიებო ფრაზა (დალაგებული ძიების რაოდენობის მიხედვით). სრული სია იხილეთ დეტალების გვერდზე"
+
+msgid "External page referers - Pages - Hits"
+msgstr "გარე გვერდების წყაროები - გვერდები - მოთხოვნები"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "მთავარ გვერდზე ნაჩვენებია მხოლოდ %s ყველაზე მეტად მითითებული გარე წყარო (დალაგებული გვერდების რაოდენობის მიხედვით). სრული სია იხილეთ დეტალების გვერდზე"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "საძიებო სისტემის წყაროს ID - გვერდები - მოთხოვნები"
+
+msgid "Origin - Pages - Hits"
+msgstr "წყარო - გვერდები - მოთხოვნები"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "უცნობი წყაროს ბრაუზერი - ბოლო ვიზიტის თარიღი"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "უცნობი წყაროს ოპერაციული სისტემა - ბოლო ვიზიტის თარიღი"
+
+msgid "Screen size - Hits"
+msgstr "ეკრანის ზომა - მოთხოვნები"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ბრაუზერის ID - მოთხოვნები - გვერდები"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "ჩამოტვირთვები - მოთხოვნები - გამტარუნარიანობა"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "პროტოკოლი - მოთხოვნები - გამტარუნარიანობა"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "ხატულის სტატუსი - ტიპი:200:404:სხვა"
+
+#------------------------------------------------------------------------------
+# დროის მონაკვეთების თარგმანი
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "შუაღამე · AWStats-ს სძინავს, შენ კი მონაცემებს უყურებ? ნამდვილი ერთგულება"
+
+msgid "period_01"
+msgstr "ღამის 1 საათი · ამ დროს ხარ აქ? უძილობაა თუ ახლახან დაბრუნდი სამსახურიდან"
+
+msgid "period_02"
+msgstr "ღამის 2 საათი · ბოტებიც კი შენზე მონდომებულები არიან, ისინი ჯერ კიდევ მუშაობენ"
+
+msgid "period_03"
+msgstr "ღამის 3 საათი · ქალაქს სძინავს, სერვერი კი ზეგანაკვეთურად მუშაობს, ვინ არის უფრო დაჩაგრული"
+
+msgid "period_04"
+msgstr "ღამის 4 საათი · ყველაზე ბნელ საათში ყველაზე კაშკაშა ვარსკვლავი შენი ეკრანია თუ სერვერის ინდიკატორი"
+
+msgid "period_05"
+msgstr "დილის 5 საათი · ვინც ადრე დგება, ბედი ეღიმება, ვინც ადრე დგება - ბოტებს მონაცემები მოჰყავთ"
+
+msgid "period_06"
+msgstr "დილის 6 საათი · ვიღაც იღვიძებს, ვიღაცას ჯერ არ დაუძინია, ინტერნეტი არასდროს იკეტება"
+
+msgid "period_07"
+msgstr "დილის 7 საათი · მეტროში ხალხის ჭყლეტის დრო, ასევე ვებ გვერდების დათვალიერების დრო"
+
+msgid "period_08"
+msgstr "დილის 8 საათი · სამუშაო დღის პირველი საქმე: გუშინდელი მონაცემების ნახვა"
+
+msgid "period_09"
+msgstr "დილის 9 საათი · ოქროს საათი, უსაქმურობასაც აქვს თავისი წესები"
+
+msgid "period_10"
+msgstr "დილის 10 საათი · ყავის დრო, სანამ ნახე ტრაფიკი გაიზარდა თუ არა"
+
+msgid "period_11"
+msgstr "დილის 11 საათი · სადილამდე ერთი საათია, კიდევ ცოტა ხანს გაძლე"
+
+msgid "period_12"
+msgstr "შუადღე · სერვერი: ყველა წახვედით საჭმელად, მეც დავისვენებ"
+
+msgid "period_13"
+msgstr "დღის 1 საათი · შუადღის ძილი გეძლევა, მონაცემებს კი არ სძინავთ"
+
+msgid "period_14"
+msgstr "დღის 2 საათი · შუადღის ჩაის დრო, მონაცემებთან ერთად უფრო გემრიელია"
+
+msgid "period_15"
+msgstr "დღის 3 საათი · დღევანდელი ტრაფიკის გრაფიკი შენი განწყობის მრუდს ჰგავს"
+
+msgid "period_16"
+msgstr "დღის 4 საათი · სამუშაოს დასრულებამდე X საათია, ტრაფიკი აჩქარებას იწყებს"
+
+msgid "period_17"
+msgstr "საღამოს 5 საათი · სამსახური დამთავრდა, სერვერმა კი აგური უნდა ატაროს"
+
+msgid "period_18"
+msgstr "საღამოს 6 საათი · ვახშმის დრო, დაისვენე და ნახე ვიდეო"
+
+msgid "period_19"
+msgstr "საღამოს 7 საათი · პრაიმ-თაიმი, ტრაფიკის პიკი, სერვერი: მე გავუძლებ"
+
+msgid "period_20"
+msgstr "საღამოს 8 საათი · დივანზე გაწვოლილი, შენ ხარ 114514-ე ვიზიტორი"
+
+msgid "period_21"
+msgstr "საღამოს 9 საათი · დრო გვიანია, ვინც ფარულად უყურებს მონაცემებს, კიდევ ერთი ღამის ფარდა"
+
+msgid "period_22"
+msgstr "საღამოს 10 საათი · დღევანდელი მონაცემები მზადაა, გაწუხებს"
+
+msgid "period_23"
+msgstr "ღამის 11 საათი · AWStats: დროა დასაძინებლად, ხვალ ისევ უნდა ვიმუშაოთ"
+
+#------------------------------------------------------------------------------
+# დროის განზომილებები
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "სტატისტიკის პერიოდი"
+
+msgid "Year"
+msgstr "წელი"
+
+msgid "Month"
+msgstr "თვე"
+
+msgid "Months"
+msgstr "თვეები"
+
+msgid "Date"
+msgstr "თარიღი"
+
+msgid "Day"
+msgstr "დღე"
+
+msgid "Hour"
+msgstr "საათი"
+
+msgid "Hours"
+msgstr "საათები"
+
+msgid "Day of week"
+msgstr "კვირის დღე"
+
+msgid "When"
+msgstr "როდის"
+
+msgid "%s Server Management Panel"
+msgstr "%s სერვერის მართვის პანელი"
+
+msgid "Server Administration"
+msgstr "მარტივი და ეფექტური სერვერის გადაწყვეტა"
+
+#------------------------------------------------------------------------------
+# ვიზიტორების განზომილება
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "არასწორი URL პარამეტრები"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "მოთხოვნილი გვერდის ჩატვირთვა შეუძლებელია URL პარამეტრების არასწორი ან არასწორი ფორმატის გამო"
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "ეს შეიძლება გამოწვეული იყოს არასწორი URL-ის შეყვანით, პარამეტრების გამყოფების არარსებობით ან არასწორი კონფიგურაციის სახელის გამოყენებით"
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "გთხოვთ, შეამოწმოთ თქვენს მიერ შეყვანილი URL და დარწმუნდეთ, რომ ყველა პარამეტრი სწორად არის ფორმატირებული"
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "SiteDomain პარამეტრი არ არის განსაზღვრული თქვენს config/domain ფაილში, ან შესაძლოა არ გქონდეთ ფაილზე შესრულების ნებართვა."
+
+msgid "Please run as Administrator to set permissions"
+msgstr "ნებართვების დასაყენებლად გაუშვით ადმინისტრატორის სახით"
+
+msgid "Please set execute permission"
+msgstr "გთხოვთ, დააყენოთ შესრულების ნებართვა"
+
+msgid "Or if you prefer numeric mode"
+msgstr "ან თუ გირჩევნიათ რიცხვითი რეჟიმი"
+
+msgid "View Report Directly"
+msgstr "პირდაპირ ანგარიშის ნახვა"
+
+msgid "AWStats Log Viewer"
+msgstr "AWStats ჟურნალის მაყურებელი"
+
+msgid "Month Selection"
+msgstr "თვის შერჩევა"
+
+msgid "Who"
+msgstr "ვინ"
+
+msgid "Visitors"
+msgstr "ვიზიტორები"
+
+msgid "Countries"
+msgstr "ქვეყნები/რეგიონები"
+
+msgid "flag_icon"
+msgstr "დროშა"
+
+msgid "Country-Region-City"
+msgstr "ქვეყანა/რეგიონი/ქალაქი"
+
+msgid "Code"
+msgstr "კოდი"
+
+msgid "Known"
+msgstr "ცნობილი"
+
+msgid "unknownos"
+msgstr "უცნობი ოპერაციული სისტემა"
+
+msgid "unknownbrowser"
+msgstr "უცნობი ბრაუზერი"
+
+msgid "Unresolved IP Address"
+msgstr "გადაუჭრელი IP მისამართი"
+
+msgid "Unknown File Type"
+msgstr "უცნობი ფაილის ტიპი"
+
+msgid "Unknown Size"
+msgstr "უცნობი ზომა"
+
+msgid "Unknown Time"
+msgstr "უცნობი მოთხოვნის დრო"
+
+msgid "Unknown Browser"
+msgstr "უცნობი ბრაუზერი"
+
+msgid "Unknown OS"
+msgstr "უცნობი ოპერაციული სისტემა"
+
+msgid "Unknown Visitor"
+msgstr "უცნობი ვიზიტორი"
+
+msgid "Unknown Visitor (Total)"
+msgstr "უცნობი ვიზიტორი (სულ)"
+
+msgid "Unknown Country"
+msgstr "უცნობი ქვეყანა/რეგიონი"
+
+msgid "Unknown Country (Region)"
+msgstr "უცნობი ქვეყანა/რეგიონი (სულ)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "უცნობი ვიზიტორი (სათაური)"
+
+msgid "PageStayTime"
+msgstr "გვერდზე დარჩენის დროის გამოთვლა შეუძლებელია"
+
+msgid "Unknown OS (Link)"
+msgstr "უცნობი ოპერაციული სისტემა (ბმული)"
+
+msgid "Unknown OS (Row)"
+msgstr "უცნობი ოპერაციული სისტემა (სია)"
+
+msgid "Unknown Browser (Link)"
+msgstr "უცნობი ბრაუზერი (ბმული)"
+
+msgid "Unknown Browser (Row)"
+msgstr "უცნობი ბრაუზერი (სია)"
+
+msgid "Unknown Screen"
+msgstr "უცნობი ეკრანის ზომა"
+
+msgid "Login"
+msgstr "მომხმარებელი"
+
+msgid "Anonymous"
+msgstr "ანონიმური"
+
+msgid "Robots"
+msgstr "რობოტები"
+
+msgid "Different robots"
+msgstr "სხვადასხვა რობოტები"
+
+msgid "Hits on robots.txt"
+msgstr "ზემოთ ჩამოთვლილი საძიებო სისტემების რობოტების მიერ წარმოქმნილი "არანორმალური" ტრაფიკი არ შედის სხვა დიაგრამებში. "+"-ის შემდეგ რიცხვი წარმოადგენს "robots.txt"-ზე წარმატებული წვდომის რაოდენობას"
+
+msgid "Worms"
+msgstr "ჭიები"
+
+msgid "Different worms"
+msgstr "სხვადასხვა ჭიები"
+
+msgid "Target"
+msgstr "სამიზნე"
+
+msgid "Grabber"
+msgstr "გრაბერი"
+
+#------------------------------------------------------------------------------
+# ფორმატების აღწერა
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "ტექსტური ფაილი (1963 წელს ASCII სტანდარტიზებული, ფორმატირების გარეშე ჩვეულებრივი ტექსტი. ყველა წყაროს კოდის, კონფიგურაციის, ჟურნალის საფუძველი. Unix-ში გამოიყენება LF, Windows-ში CRLF, დღემდე ყველაზე გავრცელებული მონაცემთა ფორმატი კომპიუტერებში)"
+
+msgid "mime_log"
+msgstr "ჟურნალის ფაილი (აღრიცხავს სისტემის, აპლიკაციის მუშაობის ინფორმაციას, ხშირად გამოიყენება ხარვეზების მოძიების, მუშაობის ანალიზის, უსაფრთხოების აუდიტისთვის. სტანდარტული ფორმატები: Apache combined log, Nginx access log, syslog)"
+
+msgid "mime_page"
+msgstr "HTML ვებ გვერდი (1989 წელს ტიმ ბერნერს-ლიმ გამოიგონა მსოფლიო ქსელი, 1990 წელს განსაზღვრა სამი ძირითადი ტექნოლოგია HTML/HTTP/URL, უფასოდ გახსნა პატენტის გარეშე. 2014 წელს HTML5 გახდა W3C ოფიციალური სტანდარტი. მიიღო ტიურინგის პრემია 2016 წელს)"
+
+msgid "mime_khtml"
+msgstr "KHTML-ის ვებ ძრავა (1998 წელს KDE 2.0-ში გამოვიდა, Konqueror ბრაუზერის გადმოცემის ძრავა. 2001 წელს Apple-მა KHTML-ის ბაზაზე შექმნა WebKit, 2008 წელს Google-მა WebKit-იდან გამოყო Blink, რაც გახდა Chrome-ის, Edge-ის, Safari-ს ბირთვი. KHTML არის ღია წყაროს საზოგადოების მაგალითი, რომელმაც საფუძველი ჩაუყარა თანამედროვე ბრაუზერების ძრავებს)"
+
+msgid "mime_script"
+msgstr "დინამიკური სკრიპტი (ინტერპრეტირებადი ენა, კომპილაციის გარეშე. მოიცავს ASP, JSP, CGI, ColdFusion, Tcl, VBScript, ფართოდ გამოიყენებოდა ადრეულ ვებ დეველოპმენტში, სისტემის მართვაში, ავტომატიზაციაში. თანამედროვე სკრიპტის ენები Python, Ruby, JavaScript უკვე სრულფასოვანი პროგრამირების ენებია)"
+
+msgid "mime_js"
+msgstr "JavaScript სკრიპტი (1995 წელს Brendan Eich-მა შექმნა Netscape-ში 10 დღეში, ბრაუზერის მშობლიური პროგრამირების ენა. 1997 წელს ECMAScript სტანდარტიზებული იქნა, 2009 წელს Node.js-ის შექმნამ ის გახადა სრულფასოვანი ენა, npm არის მსოფლიოში ყველაზე დიდი პაკეტების მენეჯერი. GitHub-ის ყველაზე პოპულარული პროგრამირების ენა)"
+
+msgid "mime_py"
+msgstr "Python სკრიპტი (1991 წელს Guido van Rossum-მა შექმნა, იძულებითი ჩაწევით და მარტივი სინტაქსით. ფართოდ გამოიყენება ვებ დეველოპმენტში, მონაცემთა მეცნიერებაში, ხელოვნურ ინტელექტში, ავტომატიზაციაში. TIOBE-ის წლის პროგრამირების ენა მრავალჯერ)"
+
+msgid "mime_sh"
+msgstr "Shell სკრიპტი (1971 წელს Unix-ის შექმნასთან ერთად, ბრძანებების სკრიპტის ენა. გამოიყენება სისტემის მართვის, ავტომატიზაციის, სერვისების გაშვების, განლაგების სკრიპტებისთვის. Linux-ის ადმინისტრირების აუცილებელი უნარი)"
+
+msgid "mime_rb"
+msgstr "Ruby სკრიპტი (1995 წელს Yukihiro Matsumoto-მა შექმნა, აქცენტი დეველოპერების კმაყოფილებაზე. Ruby on Rails-ის ჩარჩომ შემოიღო "კონვენცია კონფიგურაციაზე უკეთესია" პარადიგმა, რამაც გავლენა მოახდინა თანამედროვე ვებ ჩარჩოების დიზაინზე)"
+
+msgid "mime_pl"
+msgstr "Perl სკრიპტი (1987 წელს Larry Wall-მა შექმნა, პრაგმატულობით გამოირჩევა, "შვეიცარიულ დანად" მოიხსენიება. CPAN იყო თანამედროვე ენების პაკეტების მენეჯერების წინამორბედი, ტექსტის დამუშავების, სისტემის მართვის, CGI-ის სფეროებში მნიშვნელოვანი გავლენა იქონია)"
+
+msgid "mime_php"
+msgstr "PHP დინამიკური გვერდი (1995 წელს Rasmus Lerdorf-მა შექმნა, სპეციალურად ვებ დეველოპმენტისთვის. მსოფლიოში ვებსაიტების 70% იყენებს, მათ შორის WordPress, Facebook, Wikipedia. PHP 8-მა შემოიტანა JIT კომპილაცია, მნიშვნელოვნად გააუმჯობესა შესრულება)"
+
+msgid "mime_image"
+msgstr "სურათის ფაილი"
+
+msgid "mime_document"
+msgstr "დოკუმენტის ფაილი"
+
+msgid "mime_package"
+msgstr "პროგრამული პაკეტი"
+
+msgid "mime_archive"
+msgstr "Gzip შეკუმშული ფაილი (1992 წელს GNU პროექტი, DEFLATE ალგორითმის ბაზაზე. ვებში გამოიყენება დინამიკური შეკუმშვისთვის, შეკუმშვის მაჩვენებელი ჩვეულებრივ 60-90%. 2015 წლის შემდეგ ნაწილობრივ შეიცვალა Brotli-თი, მაგრამ მაინც ყველაზე გავრცელებული შეკუმშვის ფორმატია სერვერებზე)"
+
+msgid "mime_audio"
+msgstr "აუდიო ფაილი"
+
+msgid "mime_video"
+msgstr "ვიდეო ფაილი"
+
+msgid "mime_jscript"
+msgstr "JavaScript (1995 წელს Brendan Eich-მა შექმნა)"
+
+msgid "mime_json"
+msgstr "JSON მონაცემი (2001 წელს Douglas Crockford-მა შემოგვთავაზა, მსუბუქი მონაცემთა გაცვლის ფორმატი, Web API-ს ფაქტობრივი სტანდარტი)"
+
+msgid "mime_vbs"
+msgstr "VBScript (1996 წელს Microsoft-მა შეიმუშავა, Windows-ის სკრიპტის ენა, გამოიყენება ASP გვერდებსა და Windows-ის მართვის სკრიპტებში. PowerShell-ისა და JavaScript-ის გავრცელებასთან ერთად, თანდათან მოძველდა)"
+
+msgid "mime_conf"
+msgstr "კონფიგურაციის ფაილი (ტექსტური ფორმატით ინახავს პროგრამის კონფიგურაციას, ხშირი ფორმატები: INI, JSON, YAML, TOML, XML. Linux სისტემის კონფიგურაციები ძირითადად /etc დირექტორიაშია)"
+
+msgid "mime_css"
+msgstr "CSS სტილის ცხრილი (1996 წლის დეკემბერში W3C-მა გამოსცა CSS1 პირველი ოფიციალური სტანდარტი, 1998 წელს CSS2-მა დაამატა განლაგება და მედია ტიპები, 2011 წლიდან CSS3 მოდულარულმა ვერსიამ შემოიტანა მომრგვალებული კუთხეები, ანიმაცია, Flexbox, Grid განლაგება და რესპონსიული დიზაინი. HTML-თან და JavaScript-თან ერთად არის ფრონტ-ენდის სამი ძირითადი ტექნოლოგია, ყველა თანამედროვე ბრაუზერი (Chrome, Firefox, Safari, Edge) მშობლიურად უჭერს მხარს, არის გვერდის სტილის განსაზღვრის ერთადერთი სტანდარტი)"
+
+msgid "mime_xsl"
+msgstr "XSL სტილის ცხრილი (1999 წელს W3C სტანდარტი, XML დოკუმენტების ტრანსფორმაციის ენა, შეუძლია XML-ის HTML/PDF/ტექსტში გადაყვანა. JSON-ის გავრცელების შემდეგ გამოყენება შემცირდა)"
+
+msgid "mime_runtime"
+msgstr "შესრულებადი ფაილი (EXE, ELF, Mach-O ოპერაციული სისტემის შესრულებადი ფორმატები, შეიცავენ მანქანურ კოდს და ჩატვირთვის ინფორმაციას)"
+
+msgid "mime_library"
+msgstr "ბიბლიოთეკის ფაილი (DLL, SO, dylib დინამიკური ბმულების ბიბლიოთეკები, პროგრამის გაშვების დროს ჩაიტვირთება)"
+
+msgid "mime_swf"
+msgstr "Flash ანიმაცია (1996 წელს Macromedia-მ შეიმუშავა, შემდგომ Adobe-მ შეიძინა. ინტერაქტიული ვებ ანიმაციის სტანდარტი, დომინირებდა ინტერნეტ ანიმაციასა და თამაშებში. ნაკლოვანებები: პლაგინზე დამოკიდებულება, მობილურ მოწყობილობებზე არ მუშაობდა, უსაფრთხოების მაღალი რისკი. 2017 წელს Adobe-მ გამოაცხადა მხარდაჭერის შეწყვეტა, 2020 წელს მთლიანად შეწყდა, შეიცვალა HTML5/CSS3/JS-ით)"
+
+msgid "mime_dtd"
+msgstr "DTD დოკუმენტის ტიპის განსაზღვრა (XML სპეციფიკაცია, განსაზღვრავს XML დოკუმენტის სტრუქტურას, XML-ის ლეგიტიმურობის შესამოწმებლად)"
+
+msgid "mime_csv"
+msgstr "CSV მონაცემთა ფორმატი (მძიმით გამოყოფილი მნიშვნელობები, ცხრილის მონაცემების საყოველთაო ფორმატი, Excel-ისა და მონაცემთა ბაზების იმპორტის/ექსპორტის სტანდარტი)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (Java აპლიკაციის გამშვები, 2000-იან წლებში Java დესკტოპ აპლიკაციების გავრცელების ტექნოლოგია, ახლა უკვე მოძველებულია)"
+
+msgid "mime_lit"
+msgstr "Microsoft Reader ელექტრონული წიგნი (2000 წელს Microsoft-მა გამოუშვა, LIT ფორმატი, უკვე მოძველებულია)"
+
+msgid "mime_svg"
+msgstr "SVG ვექტორული გრაფიკა (1999 წელს W3C სტანდარტი, Microsoft-ის მიერ საკუთარი VML ფორმატის ხანგრძლივი პოპულარიზაციის გამო, IE ბრაუზერმა მხოლოდ 2011 წელს დაიწყო მხარდაჭერა, რამაც გააჭიანურა გავრცელება. 2015 წლის შემდეგ, IE-ის შეწყვეტისა და მაღალი გარჩევადობის ეკრანების გავრცელების შედეგად, გახდა ხატების, ლოგოების სასურველი ფორმატი)"
+
+msgid "mime_ai"
+msgstr "Adobe Illustrator ვექტორული გრაფიკა (1987 წელს გამოვიდა, ინდუსტრიის სტანდარტის ვექტორული გრაფიკის ფორმატი, ბეჭდვის დიზაინის, ლოგოების, ხატების ფავორიტი)"
+
+msgid "mime_phshop"
+msgstr "Photoshop სურათი (1990 წელს Adobe-მ გამოუშვა, Photoshop-ის წყაროს ფაილი PSD, სურათების დამუშავების ინდუსტრიის სტანდარტი)"
+
+msgid "mime_ttf"
+msgstr "TrueType შრიფტი (1989 წელს Apple-მა და Microsoft-მა ერთობლივად შეიმუშავეს, ვექტორული შრიფტის ფორმატი, ეკრანზე ჩვენებაとბეჭდვა ერთნაირია, თანამედროვე ოპერაციული სისტემების სტანდარტული შრიფტის ფორმატი)"
+
+msgid "mime_fon"
+msgstr "WOFF2 ვებ შრიფტი (2014 წელს W3C-მა დაამტკიცა, იყენებს Brotli შეკუმშვის ალგორითმს, წინა WOFF ფორმატთან შედარებით ზომა მცირდება დაახლოებით 30%-ით, TTF/OTF-თან შედარებით 50%-ზე მეტით, ყველა თანამედროვე ბრაუზერი უჭერს მხარს, არის თანამედროვე ვებ შრიფტების სასურველი ფორმატი, გამოიყენება ბრაუზერების 98%-ზე მეტით)"
+
+msgid "mime_pdf"
+msgstr "PDF დოკუმენტი (1993 წელს Adobe-მ შეიმუშავა, 2008 წელს გახდა ISO საერთაშორისო სტანდარტი. პლატფორმათშორისი დოკუმენტის ფორმატი, ინარჩუნებს ფორმატირების ერთგვაროვნებას, არის ელექტრონული დოკუმენტების გავრცელების გლობალური სტანდარტი)"
+
+msgid "mime_dotnet"
+msgstr "ASP.NET დინამიკური გვერდი (2002 წელს Microsoft-მა გამოუშვა, Windows პლატფორმის დინამიკური ვებ გვერდების ტექნოლოგია, .NET Framework-ის ნაწილი)"
+
+msgid "mime_mdb"
+msgstr "Access მონაცემთა ბაზა (Microsoft Access მონაცემთა ბაზის ფაილი, 1992 წელს გამოვიდა, Windows-ის დესკტოპ მონაცემთა ბაზის გადაწყვეტა)"
+
+msgid "mime_md"
+msgstr "Markdown დოკუმენტი (2004 წელს John Gruber-მა შექმნა, რომლის სინტაქსის დიზაინზე გავლენა მოახდინა reStructuredText-მა. ძირითადი დიზაინის ფილოსოფიაა 'წაკითხვადი რენდერი', თავდაპირველი იმპლემენტაცია Markdown.pl იყენებდა Perl რეგულარულ გამოსახულებებს. წარმოებული სპეციფიკაციები მოიცავს GFM (2013), CommonMark (2017), Pandoc Markdown და სხვ. აღძრავს GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress და სხვა ეკოსისტემებს, გახდა სტატიკური საიტების გენერატორებისა და დეველოპერების დოკუმენტაციის ფაქტობრივ სტანდარტულ ფორმატად)"
+
+msgid "mime_crystal"
+msgstr "Crystal Reports ანგარიშის ფორმატი (SAP-ის ბიზნეს ინტელექტის ანგარიშები, კორპორატიული ანგარიშების სტანდარტული ფორმატი)"
+
+msgid "mime_libreoffice"
+msgstr "LibreOffice დოკუმენტი (2010 წელს The Document Foundation-მა შეიმუშავა, OpenOffice-ის განშტოება, ODF სტანდარტის იმპლემენტაცია, მთავარი ღია წყაროს საოფისე პაკეტი)"
+
+msgid "mime_encrypt"
+msgstr "დაშიფრული ფაილი (გაშიფრვას საჭიროებს ნახვისთვის, ხშირი გაფართოებები: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "GPS ტრასის მონაცემი (GPS გაცვლის ფორმატი, ინახავს გეოგრაფიული მდებარეობის ინფორმაციას, სპორტული საათების, ნავიგაციის მოწყობილობების საყოველთაო ფორმატი)"
+
+msgid "mime_diskimage"
+msgstr "დისკის სურათი (DMG, ISO, IMG და სხვა დისკის სურათის ფაილები, გამოიყენება პროგრამების გასავრცელებლად ან მედიის სარეზერვო ასლების შესაქმნელად)"
+
+msgid "mime_vm"
+msgstr "ვირტუალური მანქანის სურათი (VMDK, VDI, VHDX, OVA და სხვა ვირტუალური მანქანის დისკის ფაილები, VMware, VirtualBox, Hyper-V ვირტუალიზაციის პლატფორმების ფორმატები)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent torrent ფაილი (2001 წელს Bram Cohen-მა გამოიგონა, P2P ჩამოტვირთვის ინდექსის ფაილი, შეიცავს ფაილების მეტა მონაცემებს და Tracker-ის ინფორმაციას)"
+
+msgid "mime_gis"
+msgstr "GIS გეოგრაფიული საინფორმაციო სისტემის მონაცემი (Shapefile, GeoJSON და სხვა გეოსივრცითი მონაცემების ფორმატები, გამოიყენება რუქებისა და სივრცითი ანალიზისთვის)"
+
+msgid "mime_ebook"
+msgstr "ელექტრონული წიგნი (EPUB, MOBI, AZW ელექტრონული წიგნების ფორმატები. EPUB არის საერთაშორისო სტანდარტი, MOBI/AZW არის Amazon Kindle-ის ფორმატი)"
+
+msgid "mime_avif"
+msgstr "AVIF სურათი (2019 წელს Open Media Alliance-მა გამოუშვა, AV1-ზე დაფუძნებული, შეკუმშვის მაჩვენებელი 50%-ით უკეთესია ვიდრე WebP, ახალი თაობის ვებ სურათების სტანდარტი)"
+
+msgid "mime_markdown"
+msgstr "Markdown დოკუმენტი (2004 წელს John Gruber-მა შექმნა, მსუბუქი მარკირების ენა, GitHub README-ის, ტექნიკური დოკუმენტაციის, ფორუმების პოსტების საყოველთაო ფორმატი)"
+
+msgid "mime_yaml"
+msgstr "YAML კონფიგურაცია (2001 წელს Clark Evans-მა შექმნა, ადამიანისთვის წასაკითხი მონაცემთა სერიალიზაციის ფორმატი, Kubernetes-ის, Ansible-ის, Docker Compose-ის კონფიგურაციის ფაილების სტანდარტი)"
+
+msgid "mime_toml"
+msgstr "TOML კონფიგურაცია (2013 წელს Tom Preston-Werner-მა შექმნა, 'Tom's Obvious Minimal Language', Rust/Cargo-ს, Python/pip-ის, Go-ს თანამედროვე ინსტრუმენტების კონფიგურაციის ფაილების ფორმატი)"
+
+msgid "mime_vue"
+msgstr "Vue კომპონენტის ფაილი (შემოღებულია 2014 წელს ევან იუს მიერ, პროგრესული JavaScript ფრეიმვორკი. ერთფაილიანი კომპონენტების (SFC) საშუალებით იგი აერთიანებს HTML, CSS და JS-ს, მნიშვნელოვნად ზრდის განვითარების ეფექტურობას. ეს არის ერთ-ერთი ყველაზე პოპულარული frontend ფრეიმვორკი მსოფლიოში. ასევე, როგორც თანამედროვე სტატიკური საიტების გენერატორების (როგორიცაა VitePress) ბირთვი, იგი ფართოდ გამოიყენება ინტერაქტიული ტექნიკური დოკუმენტაციისა და ბლოგების გასაძლიერებლად.)"
+
+msgid "mime_wasm"
+msgstr "WebAssembly მოდული (2017 წელს W3C სტანდარტი, ბრაუზერის მაღალეფექტური შესრულების ფორმატი, C/C++/Rust/R შეიძლება იყოს კომპილირებული, მუშაობა ახლოს არის მშობლიურ კოდთან)"
+
+msgid "mime_jsx"
+msgstr "React JSX კომპონენტი (2013 წელს Facebook-მა გამოუშვა JavaScript XML, React ჩარჩოს კომპონენტის სინტაქსი, ინოვაციური პარადიგმა HTML-ის JavaScript-ში ჩაწერისთვის)"
+
+msgid "mime_tsx"
+msgstr "TypeScript TSX კომპონენტი (2012 წელს Microsoft-მა შეიმუშავა, TypeScript + JSX, React-ის ტიპების უსაფრთხო შემუშავების სტანდარტული წერა)"
+
+msgid "mime_heif"
+msgstr "HEIF სურათი (2015 წელს MPEG სტანდარტი, მაღალეფექტური სურათის ფაილის ფორმატი, ფართოდ გამოიყენება Apple-ის ეკოსისტემაში)"
+
+msgid "mime_heic"
+msgstr "HEIC სურათი (Apple-ის HEIF იმპლემენტაცია, iPhone-ის სტანდარტული ფოტო ფორმატი, iOS/macOS-ის მშობლიური მხარდაჭერა)"
+
+msgid "mime_gltf"
+msgstr "GLTF 3D მოდელი (GL გადაცემის ფორმატი, '3D-ის JPEG', 2015 წელს Khronos Group-მა გამოუშვა, ვებ 3D-ის სტანდარტული ფორმატი)"
+
+msgid "mime_glb"
+msgstr "GLB ორობითი 3D მოდელი (GLTF-ის ორობითი ვერსია, ერთი ფაილი შეიცავს ყველა რესურსს, გამოიყენება 3D სცენების გასავრცელებლად)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY ტერმინთა ლექსიკონი (ტერმინთა განმარტების ფაილი, გამოიყენება დოკუმენტაციის სისტემების ტერმინთა მართვისთვის)"
+
+msgid "mime_cbz"
+msgstr "CBZ კომიქსის წიგნი (ZIP-ში შეკუმშული კომიქსის სურათები, კომიქსების კოლექციონირების საყოველთაო ფორმატი)"
+
+msgid "mime_cbr"
+msgstr "CBR კომიქსის წიგნი (RAR-ში შეკუმშული კომიქსის სურათები, კომიქსების კოლექციონირების საყოველთაო ფორმატი)"
+
+msgid "mime_fb2"
+msgstr "FB2 ელექტრონული წიგნი (FictionBook 2.0, რუსული ელექტრონული წიგნის ფორმატი, XML სტრუქტურა, ფართოდ არის მხარდაჭერილი ღია წყაროს მკითხველების მიერ)"
+
+msgid "mime_kepub"
+msgstr "KEPUB ელექტრონული წიგნი (Kobo-ს სპეციალური EPUB ფორმატი, Kobo ელექტრონული წიგნის მკითხველის ოპტიმიზებული ფორმატი)"
+
+msgid "mime_m4b"
+msgstr "M4B აუდიო წიგნი (MPEG-4 აუდიო წიგნის ფორმატი, მხარს უჭერს სანიშნეებს, iTunes-ის აუდიო წიგნის ფორმატი)"
+
+msgid "mime_kfx"
+msgstr "Kindle KFX ფორმატი (2015 წელს Amazon-მა გამოუშვა, Kindle-ის სპეციალური ელექტრონული წიგნის ფორმატი, მხარს უჭერს გაუმჯობესებულ განლაგებას და სწრაფად ფურცლას)"
+
+msgid "mime_chm"
+msgstr "CHM დახმარების ფაილი (1997 წელს Microsoft-მა გამოუშვა, კომპილირებული HTML დახმარების ფორმატი, Windows-ის პროგრამების დახმარების დოკუმენტაციის სტანდარტი)"
+
+msgid "mime_mht"
+msgstr "MHT ვებ არქივი (1999 წელს Microsoft-მა გამოუშვა, ერთფაილიანი ვებ გვერდის ფორმატი, IE ბრაუზერის მიერ გვერდების შესანახად გამოყენებული ფორმატი)"
+
+msgid "mime_wml"
+msgstr "WML უსადენო მარკირების ენა (1999 წელს WAP სტანდარტი, გამოიყენებოდა ადრეული ფუნქციური მობილური ტელეფონების ვებ გვერდებისთვის, უკვე მოძველებულია)"
+
+msgid "mime_xhtml"
+msgstr "XHTML ვებ გვერდი (2000 წელს W3C სტანდარტი, HTML-ის XML ვერსია, უფრო მკაცრი სინტაქსით. 2009 წელს W3C-მ შეწყვიტა მხარდაჭერა, აქცენტი გადაიტანა HTML5-ზე)"
+
+msgid "mime_xml"
+msgstr "XML დოკუმენტი (1998 წელს W3C სტანდარტი, გაფართოებადი მარკირების ენა, ვებ სერვისების, კონფიგურაციის ფაილების, მონაცემთა გაცვლის ძირითადი ფორმატი)"
+
+msgid "mime_sgml"
+msgstr "SGML დოკუმენტი (1986 წელს ISO სტანდარტი, HTML-ის წინამორბედი, სტანდარტული გენერალური მარკირების ენა, XML და HTML ორივე SGML-დან არის წარმოშობილი)"
+
+msgid "mime_apng"
+msgstr "APNG ანიმაცია (2004 წელს Mozilla-მ შეიმუშავა, PNG-ის ანიმაციური გაფართოება, GIF-ის თანამედროვე შემცვლელი, მხარს უჭერს ნამდვილ ფერებს და ნახევრად გამჭვირვალობას)"
+
+msgid "mime_bmp"
+msgstr "BMP ბიტრუკი (Windows-ის ბიტრუკის ფორმატი, მშობლიური მხარდაჭერა Windows 1.0-დან. შეკუმშვის გარეშე, ფაილი შედარებით დიდია, მაგრამ მარტივი სტრუქტურის გამო და დამატებითი კოდეკების საჭიროების არარსებობის გამო, Windows 11-ის ეკრანის ანაბეჭდის ინსტრუმენტი, საღებავის პროგრამა, EXE/MSI ინსტალაციის პაკეტების ხატულების რესურსები, კურსორის ფაილები და ზოგიერთი ძველი დრაივერი დღემდე იყენებს. იგივე ხარისხის სურათისთვის ფაილი PNG-ზე დაახლოებით 3-10-ჯერ დიდია, უმეტეს შემთხვევაში უკვე შეცვლილია PNG/JPEG-ით, მაგრამ Windows-ის ეკოსისტემაში ჯერ კიდევ ინარჩუნებს ფართო თავსებადობას)"
+
+msgid "mime_cdr"
+msgstr "CDR ვექტორული გრაფიკა (CorelDRAW-ის სპეციალური ფორმატი, კანადური Corel კომპანია, ვექტორული გრაფიკის დიზაინის პროგრამა)"
+
+msgid "mime_gif"
+msgstr "GIF სურათი (1987 წელს CompuServe-მა შეიმუშავა, 256 ფერის მოძრავი სურათების ფორმატი. ნაკლოვანებები: ცოტა ფერი, ხარისხი დაბალი, არ უჭერს მხარს ნახევრად გამჭვირვალობას, ფაილი დიდი, კადრების სიხშირე დაბალი. შეიცვალა APNG, WebP თანამედროვე მოძრავი სურათების ფორმატებით)"
+
+msgid "mime_ico"
+msgstr "ICO ხატულა (Windows-ის ხატულის ფაილის ფორმატი, მხარს უჭერს მრავალ გარჩევადობას, ვებსაიტის favicon-ის სტანდარტული ფორმატი)"
+
+msgid "mime_jpeg"
+msgstr "JPEG სურათი (1992 წელს ISO სტანდარტი, დაკარგვითი შეკუმშვის ფოტო ფორმატი, ინტერნეტ ფოტოების ფაქტობრივი სტანდარტი)"
+
+msgid "mime_jpg"
+msgstr "JPEG სურათი (1992 წელს ISO სტანდარტი, დაკარგვითი შეკუმშვის ფოტო ფორმატი, ინტერნეტ ფოტოების ფაქტობრივი სტანდარტი)"
+
+msgid "mime_png"
+msgstr "PNG სურათი (1996 წელს W3C-ის რეკომენდაცია, მხარს უჭერს ნამდვილ ფერებს და ნახევრად გამჭვირვალობას, GIF-ის სტატიკური შემცვლელი, ინტერნეტის უდანაკარგო სურათის სტანდარტი)"
+
+msgid "mime_ps"
+msgstr "PostScript გვერდის აღწერის ფაილი (1985 წელს Adobe-მ გამოუშვა, გვერდის აღწერის ენა, PDF-ის წინამორბედი, გამოიყენება ბეჭდვისა და გამოცემისთვის)"
+
+msgid "mime_psb"
+msgstr "PSB დიდი დოკუმენტი (Adobe Photoshop-ის ძალიან დიდი სურათის ფორმატი, მხარს უჭერს 2GB-ზე ან 30000 პიქსელზე დიდ სურათებს)"
+
+msgid "mime_psd"
+msgstr "PSD სურათი (Adobe Photoshop-ის წყაროს ფაილი, მხარს უჭერს ფენებს, არხებს, ბილიკებს, სურათების დამუშავების ინდუსტრიის სტანდარტული ფორმატი)"
+
+msgid "mime_webp"
+msgstr "WebP სურათი (2010 წელს Google-მა შეიმუშავა, ვებ სურათების ფორმატი, მხარს უჭერს დაკარგვით/უდანაკარგო შეკუმშვას და ანიმაციას, შეკუმშვის მაჩვენებელი 25-35%-ით უკეთესია ვიდრე PNG, 25%-ით ვიდრე JPEG)"
+
+msgid "mime_woff"
+msgstr "WOFF ვებ შრიფტი (2009 წელს შეიქმნა, 2018 წელს W3C სტანდარტი. TrueType/OpenType-ის ბაზაზე შეკუმშული, ვებ შრიფტების ჩატვირთვის ოპტიმიზაცია, თანამედროვე ვებსაიტების ხატულების შრიფტების სტანდარტული ფორმატი)"
+
+msgid "mime_7z"
+msgstr "7z შეკუმშული არქივი (1999 წელს Igor Pavlov-მა შეიმუშავა, 7-Zip პროგრამის სპეციალური ფორმატი. LZMA ალგორითმი, მაღალი შეკუმშვის მაჩვენებელი, ღია წყარო და უფასო. 7z ფორმატი იმავე შეკუმშვის დონეზე ჩვეულებრივ 30-50%-ით პატარაა ვიდრე ZIP, არის ღია წყაროს საზოგადოებისა და პროგრამების გავრცელების ხშირი ფორმატი)"
+
+msgid "mime_ace"
+msgstr "ACE შეკუმშული არქივი (1990-იან წლებში შეიქმნა, WinACE პროგრამის ფორმატი. კონკურენციას უწევდა RAR-ს, შეკუმშვის მაჩვენებელი საკმაოდ მაღალი იყო. 2007 წელს შეწყდა განვითარება, ახლა უკვე შეცვლილია 7z/RAR-ით, იშვიათად გამოიყენება)"
+
+msgid "mime_bz2"
+msgstr "BZIP2 შეკუმშული არქივი (1996 წელს Julian Seward-მა შეიმუშავა, ბლოკების დალაგების შეკუმშვის ალგორითმი. შეკუმშვის მაჩვენებელი 15-20%-ით უკეთესია ვიდრე GZIP, მაგრამ სიჩქარე ნელი. Linux-ის ბირთვის წყაროს კოდის, ღია წყაროს პაკეტების ხშირი ფორმატი, გაფართოება .bz2)"
+
+msgid "mime_cab"
+msgstr "CAB შეკუმშული არქივი (1995 წელს Microsoft-მა შეიმუშავა, Cabinet ფორმატი. Windows-ის სისტემის ინსტალაციის პაკეტის ფორმატი, გამოიყენება დრაივერების, სისტემის ფაილების გასავრცელებლად. Windows Installer (MSI) შიდა იყენებს CAB-ს ფაილების შესანახად)"
+
+msgid "mime_dmg"
+msgstr "DMG დისკის სურათი (1980-იან წლებში Apple-მა გამოუშვა, Disk Image ფორმატი. macOS-ის პროგრამების გავრცელების სტანდარტული ფორმატი, ორმაგი დაწკაპუნებით მონტაჟდება როგორც ვირტუალური დისკი, აპლიკაციის დასაყენებლად საკმარისია გადათრევა. მხარს უჭერს შეკუმშვას და დაშიფვრას, არის Mac-ის პროგრამების ჩამოტვირთვის მთავარი ფორმატი)"
+
+msgid "mime_emz"
+msgstr "EMZ შეკუმშული სურათი (Windows-ის შეკუმშული გაუმჯობესებული მეტაფაილი, EMF-ის შეკუმშული ვერსია. Office-ის დოკუმენტებში ვექტორული გრაფიკის შესანახი ფორმატი, არსებითად არის GZIP-ით შეკუმშული EMF ფაილი)"
+
+msgid "mime_gz"
+msgstr "GZIP შეკუმშული არქივი (1992 წელს Jean-loup Gailly-მა და Mark Adler-მა შეიმუშავეს, GNU პროექტი. Unix/Linux-ის სტანდარტული შეკუმშვის ინსტრუმენტი, HTTP-ის გადაცემის შეკუმშვის ხშირი ფორმატი. გაფართოება .gz, ხშირად გამოიყენება TAR-თან ერთად)"
+
+msgid "mime_jar"
+msgstr "JAR შეკუმშული არქივი (1997 წელს Sun Microsystems-მა გამოუშვა, Java ARchive ფორმატი. არსებითად არის ZIP შეკუმშული არქივი, გამოიყენება Java-ს კლასების ბიბლიოთეკებისა და აპლიკაციების შესაფუთად. Maven-ის, Gradle-ის Java-ს ეკოსისტემის ძირითადი ფორმატი, Android-იც იყენებს JAR-ს)"
+
+msgid "mime_lzma"
+msgstr "LZMA შეკუმშული არქივი (1998 წელს Igor Pavlov-მა შეიმუშავა, Lempel-Ziv-Markov chain ალგორითმი. 7z ფორმატის ძირითადი შეკუმშვის ალგორითმი, მაღალი შეკუმშვის მაჩვენებელი, გაშიფვრის სიჩქარე სწრაფია. გამოიყენება firmware-ის, ჩაშენებული სისტემების პროგრამების გასავრცელებლად)"
+
+msgid "mime_rar"
+msgstr "RAR შეკუმშული არქივი (1993 წელს Eugene Roshal-მა შეიმუშავა, Roshal ARchive ფორმატი. მაღალი შეკუმშვის მაჩვენებელი, მხარს უჭერს მრავალნაწილიან შეკუმშვას, აღდგენის ჩანაწერებს. WinRAR პროგრამის ფორმატი, შეკუმშვის მაჩვენებელი უკეთესია ვიდრე ZIP, მაგრამ საჭიროებს ფასიან პროგრამას, ღია წყაროს ინსტრუმენტებს, როგორიცაა unrar, შეუძლიათ მისი გაშიფვრა)"
+
+msgid "mime_tar"
+msgstr "TAR არქივი (1979 წელს Unix V7-ში შემოვიდა, Tape ARchive ფორმატი. ლენტის არქივის ფორმატი, არ შეკუმშავს მხოლოდ აფუთავს, ხშირად გამოიყენება GZIP/BZIP2/XZ-თან ერთად. Linux-ის პროგრამული პაკეტების წყაროს კოდი, Docker-ის კონტეინერების ფენების შესანახი იყენებენ TAR ფორმატს)"
+
+msgid "mime_tgz"
+msgstr "TGZ შეკუმშული არქივი (TAR + GZIP კომბინაციის ფორმატი, გაფართოება .tgz ან .tar.gz. Unix/Linux-ის პროგრამული პაკეტების ყველაზე გავრცელებული გავრცელების ფორმატი, წყაროს კოდის პაკეტები, ორობითი პაკეტები ფართოდ გამოიყენება, 'გაშიფვრა და გამოყენება' წარმომადგენელი)"
+
+msgid "mime_tbz2"
+msgstr "TBZ2 შეკუმშული არქივი (TAR + BZIP2 კომბინაციის ფორმატი, გაფართოება .tbz2 ან .tar.bz2. შეკუმშვის მაჩვენებელი 15-20%-ით უკეთესია ვიდრე TGZ, შესაფერისია დიდი ფაილებისთვის, Linux-ის ბირთვის წყაროს კოდი დიდი ხნის განმავლობაში იყენებდა ამ ფორმატს)"
+
+msgid "mime_xz"
+msgstr "XZ შეკუმშული არქივი (2009 წელს გამოვიდა, LZMA2 ალგორითმის ბაზაზე. შეკუმშვის მაჩვენებელი ძალიან მაღალია, 30-50%-ით უკეთესი ვიდრე GZIP, გაშიფვრის სიჩქარე შედარებით სწრაფი. Linux-ის ბირთვი, პაკეტების მენეჯერები (როგორიცაა Debian-ის .deb შიდა) ფართოდ იყენებენ, არის Linux-ის ეკოსისტემის ამჟამინდელი რეკომენდებული ფორმატი)"
+
+msgid "mime_z"
+msgstr "Z შეკუმშული არქივი (1985 წელს Unix-ის compress ბრძანების ფორმატი, LZW ალგორითმი. ადრეული Unix-ის შეკუმშვის ფორმატი, უკვე შეცვლილია GZIP-ით. გაფართოება .Z, თანამედროვე სისტემებში იშვიათად გამოიყენება)"
+
+msgid "mime_zip"
+msgstr "ZIP შეკუმშული არქივი (1989 წელს Phil Katz-მა შეიმუშავა, PKZIP ფორმატი. Windows-ის მშობლიური მხარდაჭერა, ინტერნეტის ყველაზე გავრცელებული შეკუმშვის ფორმატი. მხარს უჭერს მრავალ ფაილს, დირექტორიის სტრუქტურას, შეკუმშვის ალგორითმის არჩევის შესაძლებლობას. Java-ს JAR, Android-ის APK, Office-ის დოკუმენტების DOCX/XLSX ყველა ZIP ფორმატს ეფუძნება)"
+
+msgid "mime_zst"
+msgstr "Zstandard შეკუმშული არქივი (2015 წელს Facebook-მა შეიმუშავა, Yann Collet-ის დიზაინი. მაღალსიჩქარიანი შეკუმშვის ალგორითმი, შეკუმშვის მაჩვენებელი ახლოს არის LZMA-სთან, სიჩქარით ბევრად აღემატება GZIP-ს. Linux-ის ბირთვი 5.9+ მხარს უჭერს, Arch Linux pacman, Debian APT თანდათან იღებენ, არის ახალი თაობის შეკუმშვის სტანდარტი)"
+
+msgid "mime_lz4"
+msgstr "LZ4 შეკუმშული არქივი (2011 წელს Yann Collet-მა შეიმუშავა, ექსტრა სწრაფი შეკუმშვის ალგორითმი. შეკუმშვის სიჩქარე 10-ჯერ უფრო სწრაფია ვიდრე GZIP, შესაფერისია რეალურ დროში შეკუმშვისთვის. Linux-ის ბირთვი, OpenZFS, Hadoop ფართოდ იყენებენ, არის სიჩქარის პრიორიტეტის შემთხვევების ფავორიტი)"
+
+msgid "mime_lzo"
+msgstr "LZO შეკუმშული არქივი (1996 წელს Markus Oberhumer-მა შეიმუშავა, Lempel-Ziv-Oberhumer ალგორითმი. გაშიფვრის სიჩქარე ძალიან სწრაფია, შეკუმშვის მაჩვენებელი საშუალო. Linux-ის ბირთვის Squashfs, OpenWrt firmware იყენებს, შესაფერისია ჩაშენებული სისტემებისთვის)"
+
+msgid "mime_msi"
+msgstr "MSI ინსტალაციის პაკეტი (1999 წელს Microsoft-მა გამოუშვა, Windows Installer პაკეტის ფორმატი. Windows-ის აპლიკაციების სტანდარტული ინსტალაციის ფორმატი, მხარს უჭერს ტრანზაქციების დაბრუნებას, კომპონენტების მართვას, ჩუმ ინსტალაციას. კორპორატიული დონის პროგრამების გავრცელების სასურველი ფორმატი, დღემდე Windows-ის პროგრამების ინსტალაციის მთავარი ფორმატია)"
+
+msgid "mime_pkg"
+msgstr "PKG ინსტალაციის პაკეტი (macOS-ის აპლიკაციის ინსტალაციის ფორმატი, Apple-ის Installer ტექნოლოგიაზე დაფუძნებული. macOS-ის პროგრამების გავრცელების სტანდარტული ფორმატი, მხარს უჭერს კომპონენტების არჩევას, ინსტალაციის სკრიპტებს, დეინსტალაციის ფუნქციას. .pkg ფაილის ორმაგი დაწკაპუნებით შესაძლებელია ინსტალაცია, Mac App Store-ის გარეთ პროგრამების გავრცელების ხშირი საშუალება)"
+
+msgid "mime_apk"
+msgstr "APK Android-ის აპლიკაციის პაკეტი (2008 წელს Google-მა გამოუშვა, Android-ის სისტემის ტრადიციული აპლიკაციის ინსტალაციის ფორმატი. APK არსებითად არის ZIP შეკუმშული არქივი, შეიცავს კოდს, რესურსებს, მანიფესტის ფაილს. 2021 წლიდან Google Play-მ მოითხოვა, რომ ახალი აპლიკაციები გადავიდნენ AAB ფორმატზე, მაგრამ APK დღემდე გამოიყენება შემუშავებისა და გამართვისთვის, მესამე მხარის მაღაზიებისთვის და გვერდითი ინსტალაციისთვის)"
+
+msgid "mime_ipa"
+msgstr "IPA Apple-ის აპლიკაციის პაკეტი (iOS App Store Package, iOS/iPadOS-ის აპლიკაციის ინსტალაციის ფორმატი. 2008 წელს iPhone SDK-სთან ერთად გამოვიდა. საჭიროებს App Store-ის საშუალებით გავრცელებას ან კორპორატიული სერთიფიკატით ხელმოწერას. შეიცავს შესრულებად ფაილს, რესურსებს, Info.plist-ს და ხელმოწერის ინფორმაციას)"
+
+msgid "mime_hap"
+msgstr "HAP HarmonyOS-ის აპლიკაციის პაკეტი (HarmonyOS Ability Package, HarmonyOS-ის აპლიკაციის ძირითადი ერთეული. 2020 წელს HarmonyOS 2.0-სთან ერთად გამოვიდა. მხარს უჭერს entry და feature ორ ტიპს, Huawei-ის ტელეფონების, პლანშეტების, ჭკვიანი საათების HarmonyOS-ის მოწყობილობების გავრცელების ფორმატი)"
+
+msgid "mime_har"
+msgstr "HAR HarmonyOS-ის სტატიკური გაზიარების პაკეტი (HarmonyOS Archive, HarmonyOS-ის სტატიკური გაზიარების ბიბლიოთეკა, შეიძლება გაზიარდეს რამდენიმე HAP-ს შორის, გამოიყენება კომპონენტებზე ორიენტირებული შემუშავებისა და მოდულების გამეორებისთვის)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (2018 წელს Google-მა გამოუშვა, 2021 წლიდან Google Play-მ აიძულა ახალმა აპლიკაციებმა გამოიყენონ ეს ფორმატი. AAB არის გავრცელების ფორმატი, Google Play მოწყობილობის კონფიგურაციის მიხედვით (CPU არქიტექტურა, ეკრანის სიმკვრივე, ენა) დინამიკურად ქმნის ოპტიმიზებულ APK-ს, ინსტალაციის პაკეტის ზომა საშუალოდ მცირდება 35%-ით. დეველოპერი ატვირთავს AAB-ს, მომხმარებელი ჩამოტვირთავს APK-ს)"
+
+msgid "mime_xapk"
+msgstr "XAPK აპლიკაციის პაკეტი (მესამე მხარის Android-ის აპლიკაციის გაფართოებული პაკეტი, შეიცავს APK + OBB მონაცემთა ფაილებს. გამოიყენება დიდი თამაშებისა და რთული აპლიკაციებისთვის, გადაჭრის APK-ის 100MB ლიმიტის პრობლემას. გავრცელებულია APKPure, APKMirror მესამე მხარის აპლიკაციების მაღაზიებში, არ არის Google-ის ოფიციალური ფორმატი)"
+
+msgid "mime_appx"
+msgstr "Windows-ის აპლიკაციის პაკეტი (2012 წელს Microsoft-მა გამოუშვა, Windows 8/10/11-ის აპლიკაციის ინსტალაციის ფორმატი. მხარს უჭერს UWP და დესკტოპის აპლიკაციების ტრანსფორმაციას, ვრცელდება Microsoft Store-ის საშუალებით. 2024 წელს Microsoft-მა გამოუშვა MSIX, როგორც მემკვიდრე ფორმატი, თანდათან შეცვლის APPX-ს)"
+
+msgid "mime_msix"
+msgstr "MSIX აპლიკაციის პაკეტი (2018 წელს Microsoft-მა გამოუშვა, Windows-ის ახალი თაობის აპლიკაციის შესაფუთი ფორმატი. აერთიანებს APPX-ისა და MSI-ს უპირატესობებს, მხარს უჭერს Windows-ის ყველა ტიპის აპლიკაციას, შესაძლებელია Microsoft Store-ის საშუალებით ან გვერდითი ინსტალაციით, Windows 11-ის რეკომენდებული ფორმატი)"
+
+msgid "mime_appimage"
+msgstr "AppImage აპლიკაციის პაკეტი (2004 წელს გამოვიდა, Linux-ის დაყენების გარეშე აპლიკაციის ფორმატი. 'ერთი აპლიკაცია ერთ ფაილში', ინსტალაციის გარეშე პირდაპირ გაშვება, მხარს უჭერს Linux-ის უმეტეს დისტრიბუტივებს, დეველოპერების მიერ Linux-ის პროგრამების გავრცელების ხშირი საშუალება)"
+
+msgid "mime_flatpak"
+msgstr "Flatpak აპლიკაციის პაკეტი (2015 წელს გამოვიდა, Linux-ის ქვიშის ყუთში მოთავსებული აპლიკაციის ფორმატი. მუშაობს დისტრიბუტივებს შორის, იზოლირებულია მასპინძელი სისტემისგან, Fedora, Red Hat ლიდერობს შემუშავებას, GNOME Software-ის ცენტრის ნაგულისხმევი ფორმატი)"
+
+msgid "mime_snap"
+msgstr "Snap აპლიკაციის პაკეტი (2014 წელს Canonical-მა გამოუშვა, Ubuntu-ს მშობელი კომპანია, Linux-ის საყოველთაო აპლიკაციის ფორმატი. ავტომატური განახლება, ქვიშის ყუთში მოთავსება, მხარს უჭერს 40+ Linux-ის დისტრიბუტივს, Ubuntu Software-ის ცენტრის ნაგულისხმევი ფორმატი)"
+
+msgid "mime_deb"
+msgstr "Debian-ის პროგრამული პაკეტი (1993 წელს Debian-ის პროექტმა გამოუშვა, Debian/Ubuntu და მათი წარმოებულების სტანდარტული ინსტალაციის ფორმატი. მართვა ხდება dpkg-ით, APT არის მისი პაკეტების მენეჯერის ფრონტ-ენდი, Linux-ის ეკოსისტემის ერთ-ერთი ყველაზე სექსუალური პაკეტის ფორმატი, დღემდე Debian-ის ოჯახის მთავარი ფორმატია)"
+
+msgid "mime_rpm"
+msgstr "RPM პროგრამული პაკეტი (1997 წელს Red Hat-მა გამოუშვა, Red Hat/Fedora/CentOS/SUSE და სხვა დისტრიბუტივების სტანდარტული ფორმატი. RPM სრულად 'Red Hat Package Manager'-ია, DEB-თან ერთად Linux-ის ორი მთავარი პაკეტის ფორმატია, დღემდე RHEL-ის ოჯახის მთავარი ფორმატია)"
+
+msgid "mime_pacman"
+msgstr "Arch-ის პროგრამული პაკეტი (2002 წელს Arch Linux-მა გამოუშვა, pacman პაკეტების მენეჯერის მიერ გამოყენებული .pkg.tar.zst ფორმატი. Arch Linux-ის მოძრავი გამოშვების ბირთვი, ცნობილია სიმარტივითა და KISS პრინციპით, AUR (Arch User Repository) მისი განსაკუთრებული თვისებაა)"
+
+msgid "mime_exe"
+msgstr "EXE შესრულებადი ფაილი (Windows-ის შესრულებადი პროგრამის ფორმატი, 'Executable'-ის შემოკლება. Windows-ის ოპერაციული სისტემის მშობლიური შესრულების ფორმატი, შეიცავს PE სტრუქტურას. წარმოშობილია MS-DOS-ის MZ ფორმატიდან, 1993 წელს Windows NT-მა შემოიტანა PE (Portable Executable) ფორმატი, რომელიც დღემდე გამოიყენება. პროგრამების ინსტალაციის პაკეტები, აპლიკაციები, სისტემის ინსტრუმენტები ყველა იყენებს ამ ფორმატს. მომხმარებელს ორმაგი დაწკაპუნებით შეუძლია გაშვება, არის მსოფლიოში ყველაზე ფართოდ გავრცელებული შესრულების ფორმატი)"
+
+msgid "mime_dll"
+msgstr "DLL დინამიკური ბმულების ბიბლიოთეკა (1993 წელს Microsoft-მა გამოუშვა, Dynamic Link Library. Windows-ის გაზიარებული კოდის ბიბლიოთეკა, პროგრამის გაშვების დროს დინამიკურად იტვირთება, ზოგავს მეხსიერებას და დისკის ადგილს. სისტემის კომპონენტები, აპლიკაციების პლაგინები, დრაივერები ყველა იყენებს DLL ფორმატს. Windows API-ს ძირითადი იმპლემენტაციის გზა, DLL Hell-ის პრობლემა .NET-ის ეპოქაში შემსუბუქდა)"
+
+msgid "mime_com"
+msgstr "COM შესრულებადი ფაილი (MS-DOS-ის ეპოქის შესრულებადი ფორმატი, 'Command'-ის შემოკლება. ფაილის სტრუქტურა მარტივია, 64KB ლიმიტით, გავრცელებული იყო Windows 3.x-მდე. უკვე მოძველებულია, თანამედროვე Windows იყენებს EXE ფორმატს, COM გაფართოება დღემდე გამოიყენება ზოგიერთი კომპონენტის ფაილისთვის)"
+
+msgid "mime_aac"
+msgstr "AAC აუდიო (1997 წელს MPEG სტანდარტი, Advanced Audio Coding. MP3-ის მემკვიდრე, იმავე ბიტრეიტზე ხარისხით აღემატება MP3-ს, YouTube-ის, iTunes-ის, Nintendo Switch-ის ნაგულისხმევი აუდიო ფორმატი)"
+
+msgid "mime_alac"
+msgstr "ALAC აუდიო (2004 წელს Apple-მა შეიმუშავა, Apple Lossless Audio Codec. Apple-ის უდანაკარგო ფორმატი, 2011 წელს გახდა ღია წყარო, iTunes-ისა და Apple Music-ის უდანაკარგო აუდიოს ნაგულისხმევი ფორმატი)"
+
+msgid "mime_flac"
+msgstr "FLAC აუდიო (2001 წელს Xiph.Org ფონდმა შეიმუშავა, Free Lossless Audio Codec. უდანაკარგო შეკუმშვა, ხარისხი იგივეა რაც CD, ფაილი დაახლოებით WAV-ის ნახევარია. ღია წყარო და პატენტების გარეშე, აუდიოფილებისა და ციფრული მუსიკის კოლექციონერების სასურველი ფორმატი)"
+
+msgid "mime_mp3"
+msgstr "MP3 აუდიო (1993 წელს Fraunhofer-ის ინსტიტუტმა შეიმუშავა, MPEG-1 Audio Layer 3. დაკარგვითი შეკუმშვის ფორმატი, ფაილი მცირეა ხარისხი მისაღები, 2000-იან წლებში ციფრული მუსიკის რევოლუციის ძირითადი ფორმატი, iPod-ისა და Napster-ის დამსახურება. 2017 წელს პატენტი ვადაგასულია, გახდა საზოგადოებრივი დომენის ფორმატი)"
+
+msgid "mime_oga"
+msgstr "Ogg Audio აუდიო (Xiph.Org ფონდმა შეიმუშავა, Ogg კონტეინერის სუფთა აუდიო ფორმატი, იყენებს Vorbis კოდირებას. ღია წყარო და პატენტების გარეშე, შეკუმშვის ეფექტურობა აღემატება MP3-ს, ფართოდ გამოიყენება ღია წყაროს პროექტებში)"
+
+msgid "mime_ogg"
+msgstr "OGG აუდიო (2000 წელს Xiph.Org ფონდმა შეიმუშავა, Ogg Vorbis ფორმატი. ღია წყარო და პატენტების გარეშე, შეკუმშვის ეფექტურობა აღემატება MP3-ს, Spotify-მ ადრეულ ეტაპზე გამოიყენა, თამაშების ხმოვან ეფექტებში ფართოდ გამოიყენება)"
+
+msgid "mime_opus"
+msgstr "Opus აუდიო (2012 წელს IETF-მა სტანდარტიზაცია მოახდინა, ღია წყარო და პატენტების გარეშე აუდიო ფორმატი. აერთიანებს SILK და CELT ტექნოლოგიებს, ძალიან დაბალი შეყოვნება, ყველაზე მაღალი შეკუმშვის ეფექტურობა, WebRTC-ის, WhatsApp-ის, Discord-ის ნაგულისხმევი აუდიო ფორმატი)"
+
+msgid "mime_wav"
+msgstr "WAV აუდიო (1991 წელს Microsoft-მა და IBM-მა შეიმუშავეს, Windows-ის მშობლიური აუდიო ფორმატი. შეკუმშვის გარეშე PCM კოდირება, ხარისხი უდანაკარგოა მაგრამ ფაილი ძალიან დიდი, პროფესიონალური აუდიო რედაქტირების სტანდარტული ფორმატი)"
+
+msgid "mime_wma"
+msgstr "WMA აუდიო (1999 წელს Microsoft-მა შეიმუშავა, Windows Media Audio. დაკარგვითი/უდანაკარგო ორივე ვერსია, Windows-ის მშობლიური მხარდაჭერა, გავრცელდა Windows Media Player-თან ერთად. ახლა უკვე მარგინალიზებულია, შეიცვალა MP3/AAC-ით)"
+
+msgid "mime_dsf"
+msgstr "DSF აუდიო (Direct Stream Digital ფორმატი, Sony-მა და Philips-მა შეიმუშავეს. 1bit მაღალი ნიმუშის სიხშირე, DSD აუდიოს სტანდარტული ფორმატი, SACD-ის ციფრული ვერსია, აუდიოფილების მაღალი დონის ფორმატი, ფაილი უზარმაზარი)"
+
+msgid "mime_ape"
+msgstr "APE აუდიო (შემუშავებული Monkey's Audio-ს მიერ 2000 წელს, უარყოფითი შეკუმშვის ფორმატი. უფრო მაღალი შეკუმშვა ვიდრე FLAC, მაგრამ ნელი კოდირება, ჯერ კიდევ გამოიყენება Windows პლატფორმაზე და აუდიო მოყვარულებს შორის)"
+
+msgid "mime_mid"
+msgstr "MIDI აუდიო (1983 წელს MIDI ასოციაციამ დაადგინა, Musical Instrument Digital Interface. ნოტების ფორმატი, არა აუდიო ჩანაწერი, ფაილი ძალიან პატარა, ელექტრონული ინსტრუმენტების, მობილური ტელეფონების ზარების, თამაშების ხმოვანი ეფექტების სტანდარტი. 1991 წელს General MIDI სტანდარტიზებული იქნა, განსაზღვრა 128 ინსტრუმენტის ტემბრი)"
+
+msgid "mime_m4a"
+msgstr "M4A აუდიო (MPEG-4 Audio, AAC-ის კონტეინერის ფორმატი. iTunes Music Store-ის სტანდარტული ფორმატი, Apple-ის ეკოსისტემის მთავარი აუდიო ფორმატი, მხარს უჭერს DRM დაცვას)"
+
+msgid "mime_m3u"
+msgstr "M3U დაკვრის სია (MP3 URL დაკვრის სიის ფორმატი, ჩვეულებრივი ტექსტის ფაილი, აღრიცხავს აუდიო ფაილების ბილიკებს. Winamp-ის ეპოქის სტანდარტი, გამოიყენება ინტერნეტ რადიოსთვის, ონლაინ მუსიკის სტრიმინგისთვის. M3U8 არის მისი UTF-8 ვერსია, გამოიყენება HTTP Live Streaming-ისთვის)"
+
+msgid "mime_asf"
+msgstr "ASF სტრიმინგის ფორმატი (1996 წელს Microsoft-მა შეიმუშავა, Advanced Systems Format. Windows Media-ს სტრიმინგის კონტეინერი, მხარს უჭერს აუდიოსა და ვიდეოს სინქრონულ გადაცემას. გამოიყენება ინტერნეტ ტრანსლაციებისა და სტრიმინგისთვის, WMA/WMV ორივე ASF კონტეინერს ეფუძნება)"
+
+msgid "mime_avi"
+msgstr "AVI ვიდეო (1992 წელს Microsoft-მა გამოუშვა, Windows-ის ადრეული ვიდეოს სტანდარტი. 'Audio Video Interleave', აუდიოსა და ვიდეოს მონაცვლეობით შენახვა, 1990-2000-იან წლებში ყველაზე პოპულარული ვიდეო ფორმატი, ახლა უკვე შეცვლილია MP4/MKV-ით)"
+
+msgid "mime_divx"
+msgstr "DivX ვიდეო (1998 წელს DivX კომპანიამ შეიმუშავა, MPEG-4-ზე დაფუძნებული ვიდეო კოდირების ფორმატი. 2000-იან წლებში ინტერნეტ ვიდეოების გაზიარების მთავარი ფორმატი, პირველი ტექნოლოგია, რომელმაც DVD-ის ხარისხი CD-ის ზომამდე შეკუმშა. საავტორო უფლებების დავების გამო, მოგვიანებით გადავიდა კომერციულ კოდირებაზე)"
+
+msgid "mime_mp4"
+msgstr "MP4 ვიდეო (2001 წელს MPEG სტანდარტი, MPEG-4 Part 14. მსოფლიოში ყველაზე გავრცელებული ვიდეო ფორმატი, მხარს უჭერს H.264/H.265 კოდირებას, ინტერნეტ ვიდეოების, მობილური ტელეფონების ჩანაწერების, YouTube-ის ნაგულისხმევი ფორმატი)"
+
+msgid "mime_m4v"
+msgstr "M4V ვიდეო (iTunes-ის ვიდეო ფორმატი, MP4-ის ვარიანტი. Apple-ის ეკოსისტემის ვიდეო ფორმატი, iTunes Store-ის ფილმების, სატელევიზიო შოუების სტანდარტული ფორმატი, მხარს უჭერს DRM საავტორო უფლებების დაცვას)"
+
+msgid "mime_mpeg"
+msgstr "MPEG ვიდეო (1988 წელს MPEG ორგანიზაციამ დაადგინა, Moving Picture Experts Group. ციფრული ვიდეოს შეკუმშვის სტანდარტის ფუძემდებელი, MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (ინტერნეტ ვიდეო) მნიშვნელოვანი გავლენა მოახდინეს)"
+
+msgid "mime_mkv"
+msgstr "MKV ვიდეო (2002 წელს Matroska-ს პროექტმა შეიმუშავა, ღია წყაროს მულტიმედიური კონტეინერის ფორმატი. მხარს უჭერს მრავალ აუდიო ჩანაწერს, მრავალ სუბტიტრს, თავებს, 'შესაფუთი ოსტატი', მაღალი გარჩევადობის ფილმების გაზიარების სასურველი ფორმატი)"
+
+msgid "mime_mpg"
+msgstr "MPEG ვიდეო (MPEG-1/MPEG-2 ვიდეოს გაფართოება, VCD-ისა და DVD-ის სტანდარტული ფორმატი. 1990-2000-იან წლებში ოპტიკური დისკების ვიდეოს მთავარი ფორმატი, ახლა უკვე შეცვლილია H.264/H.265-ით)"
+
+msgid "mime_ogv"
+msgstr "Ogg Video ვიდეო (Xiph.Org ფონდმა შეიმუშავა, Ogg კონტეინერის ვიდეო ფორმატი, იყენებს Theora კოდირებას. ღია წყარო და პატენტების გარეშე, HTML5 ვიდეოს ადრეული სტანდარტი, Firefox-ის მშობლიური მხარდაჭერა)"
+
+msgid "mime_ogx"
+msgstr "Ogg მულტიმედიური კონტეინერი (Xiph.Org ფონდმა შეიმუშავა, Ogg კონტეინერის საყოველთაო გაფართოება, შეიძლება შეიცავდეს აუდიოს, ვიდეოს, სუბტიტრების მრავალ ჩანაწერს. ღია წყაროს მულტიმედიური სტანდარტი, გამოიყენება თამაშებში, სტრიმინგში)"
+
+msgid "mime_rm"
+msgstr "RealMedia ვიდეო (1995 წელს RealNetworks-მა შეიმუშავა, RealMedia ფორმატი. 1990-2000-იან წლებში ინტერნეტ სტრიმინგის პიონერი, RealPlayer-ის ძირითადი ფორმატი. ნაკლოვანებები: საჭიროებდა სპეციალურ პლეერს, შეკუმშვის ხარისხი დაბალი, მოგვიანებით შეიცვალა Flash/MP4-ით)"
+
+msgid "mime_flv"
+msgstr "Flash ვიდეო (2002 წელს ფორმატი გამოჩნდა, Flash Video ფორმატი. ოდესღაც ინტერნეტ ვიდეოს მთავარი ფორმატი, YouTube-მა ადრეულ ეტაპზე გამოიყენა. ნაკლოვანებები: საჭიროებდა Flash პლაგინს, შესრულება ცუდი, უსაფრთხოების ხარვეზები. 2015 წლიდან მთავარმა ვებსაიტებმა გადაინაცვლეს HTML5 ვიდეოზე, ახლა უკვე მოძველებულია)"
+
+msgid "mime_f4v"
+msgstr "F4V ვიდეო (Adobe-ის მიერ შემუშავებული Flash ვიდეო ფორმატი, FLV-ის მემკვიდრე. MPEG-4 სტანდარტზე დაფუძნებული, მხარს უჭერს H.264 კოდირებას. Flash ტექნოლოგიასთან ერთად მოძველდა, Adobe-მ მხარდაჭერა შეწყვიტა 2020 წელს)"
+
+msgid "mime_wmv"
+msgstr "WMV ვიდეო (1999 წელს Microsoft-მა შეიმუშავა, Windows Media Video. Windows-ის მშობლიური მხარდაჭერა, სტრიმინგისთვის ოპტიმიზებული, ადრეულ ონლაინ ვიდეოებში ხშირი ფორმატი, ახლა უკვე მარგინალიზებულია)"
+
+msgid "mime_wmf"
+msgstr "WMF მედია ფორმატი (Windows Media Format, Microsoft-ის მედია ჩარჩო. მოიცავს WMV ვიდეოს, WMA აუდიოს, Windows Media Player-ის მშობლიური მხარდაჭერა)"
+
+msgid "mime_mov"
+msgstr "MOV ვიდეო (1991 წელს Apple-მა შეიმუშავა, QuickTime კონტეინერის ფორმატი. პროფესიონალური ვიდეო მონტაჟის სტანდარტული ფორმატი, მხარს უჭერს მრავალ კოდეკს, Final Cut Pro-ს, Premiere-ის მშობლიური მხარდაჭერა)"
+
+msgid "mime_qt"
+msgstr "QuickTime ვიდეო (1991 წელს Apple-მა გამოუშვა, QuickTime ფორმატი. Mac-ის პლატფორმის ვიდეოს სტანდარტი, MOV არის მისი კონტეინერი, QuickTime პლეერი ფართოდ გამოიყენებოდა. 2016 წელს Apple-მა შეწყვიტა Windows-ის ვერსიის შემუშავება, თანდათან შეიცვალა MP4-ით)"
+
+msgid "mime_webm"
+msgstr "WebM ვიდეო (2010 წელს Google-მა გამოუშვა, ღია წყარო და პატენტების გარეშე ვიდეო ფორმატი. Matroska-ს კონტეინერზე დაფუძნებული, VP8/VP9 კოდირება, HTML5 ვიდეოს სტანდარტული ფორმატი, YouTube-ის ნაგულისხმევი ვებ პლეერის ფორმატი)"
+
+msgid "mime_3gp"
+msgstr "3GP ვიდეო (2000 წელს 3GPP-მა დაადგინა, მობილური მოწყობილობების ვიდეო ფორმატი. ფაილი ძალიან პატარა, ხარისხი დაბალი, ადრეული ფუნქციური მობილური ტელეფონების ვიდეო გადაღების ფორმატი, გამოიყენებოდა MMS-ის გზავნილების გასაგზავნად)"
+
+#------------------------------------------------------------------------------
+# ტექნიკური განზომილება
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "ოპერაციული სისტემები"
+
+msgid "Top 5 Operating Systems"
+msgstr "პირველი 5 ოპერაციული სისტემა"
+
+msgid "Unknown Robot"
+msgstr "უცნობი კლიენტი"
+
+msgid "User agent"
+msgstr "წვდომის წყარო"
+
+msgid "Browsers"
+msgstr "ბრაუზერები"
+
+msgid "Top 5 Browsers"
+msgstr "პირველი 5 ბრაუზერი"
+
+msgid "Unknown Robot RH"
+msgstr "უცნობი მოთხოვნის სათაური"
+
+msgid "Detailed"
+msgstr "წვდომის მოწყობილობის ვერსია"
+
+msgid "DetailedOS"
+msgstr "ოპერაციული სისტემის ვერსია"
+
+msgid "DetailedBS"
+msgstr "ბრაუზერის ვერსია"
+
+msgid "Screen sizes"
+msgstr "ეკრანის ზომები"
+
+msgid "Compression"
+msgstr "შეკუმშვა"
+
+msgid "In"
+msgstr "შემავალი"
+
+msgid "Out"
+msgstr "გამომავალი"
+
+msgid "Saved"
+msgstr "დაზოგული"
+
+#------------------------------------------------------------------------------
+# წყაროს განზომილება
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "წყარო"
+
+msgid "Referers"
+msgstr "წყარო"
+
+msgid "meta.description"
+msgstr "AWStats მოწინავე ვებსაიტის ჟურნალის ანალიზატორი - რეალურ დროში თვალყური ადევნეთ ვებსაიტის ტრაფიკს, ვიზიტორთა ანალიზს, საძიებო სისტემების საკვანძო სიტყვებს, შეცდომების გვერდების სტატისტიკას. მხარს უჭერს მუქ რეჟიმს, მრავალენოვან ინტერფეისს, გთავაზობთ მონაცემთა ყოვლისმომცველ ანალიზს ვებსაიტის ადმინისტრატორებისთვის"
+
+msgid "meta.keywords"
+msgstr "AWStats,ვებსაიტის სტატისტიკა,ჟურნალის ანალიზი,ტრაფიკის მონიტორინგი,წვდომის სტატისტიკა,SEO ანალიზი,ვებსაიტის ანალიზის ინსტრუმენტები,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - ვებსაიტის ჟურნალის ანალიზი"
+
+msgid "og.description"
+msgstr "📊 პროფესიონალური ღია წყაროს სტატისტიკის ინსტრუმენტი, რეალურ დროში გააანალიზეთ თქვენი ვებსაიტის ტრაფიკი და ვიზიტორების ქცევა"
+
+msgid "og.image.alt"
+msgstr "AWStats სტატისტიკის გრაფიკი"
+
+msgid "Created by"
+msgstr "შექმნილია %s-ის მიერ"
+
+msgid "plugins"
+msgstr "პლაგინები"
+
+msgid "dbip by"
+msgstr "მონაცემები %s-დან"
+
+msgid "IPDB by"
+msgstr "გეოგრაფიული მდებარეობის მონაცემები მოწოდებულია DB-IP-ის მიერ"
+
+msgid "Configured"
+msgstr "კონფიგურირებული"
+
+msgid "Missing"
+msgstr "დაკარგული"
+
+msgid "OK"
+msgstr "წარმატებული"
+
+msgid "Unused"
+msgstr "არ გამოიყენება"
+
+msgid "Overall Health"
+msgstr "საერთო ჯანმრთელობის მდგომარეობა"
+
+msgid "Excellent"
+msgstr "შესანიშნავი"
+
+msgid "Good"
+msgstr "კარგი"
+
+msgid "Fair"
+msgstr "საშუალო"
+
+msgid "Poor"
+msgstr "ცუდი"
+
+msgid "Missing icon types"
+msgstr "დაკარგული ხატულის ტიპები"
+
+msgid "See"
+msgstr "იხილეთ"
+
+msgid "Expected Path"
+msgstr "მოსალოდნელი გზა"
+
+msgid "column for file locations"
+msgstr "სვეტი ფაილის ადგილმდებარეობის მისაღებად"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "რჩევა: თუ გჭირდებათ შესაბამისი ხატულების გენერირება, შეგიძლიათ გამოიყენოთ %s ლოგოს სურათის ასატვირთად, ის ავტომატურად გენერირებს ყველა ზემოთ ჩამოთვლილ შესაბამის ხატულის ფაილს"
+
+msgid "200: success, 404: failure"
+msgstr "200: წარმატებული რაოდენობა, 404: წარუმატებელი რაოდენობა"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png ან /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg ან /logo.png (საჭიროა HTML/JSON-LD-ში მითითება)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest ან /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg და ა.შ"
+
+msgid "Favicon"
+msgstr "ვებსაიტის ხატულა"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "Apple-ის შეხების ხატულა (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "ვებსაიტის ლოგო"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "ვებ აპლიკაციის მანიფესტი (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "Windows-ის ბრაუზერის კონფიგურაცია"
+
+msgid "Safari Pinned Tab"
+msgstr "Safari-ის დამაგრებული ჩანართის ხატულა"
+
+msgid "Social Icon"
+msgstr "სოციალური პლატფორმის ხატულა"
+
+msgid "Icon Files Status"
+msgstr "ხატულის ფაილების სტატუსი"
+
+msgid "Icon Type"
+msgstr "ხატულის ტიპი"
+
+msgid "Total"
+msgstr "სულ"
+
+msgid "Advanced Web Statistics"
+msgstr "მოწინავე ჟურნალის ანალიზატორი"
+
+msgid "Advanced Web Statistics %s"
+msgstr "%s მოწინავე ჟურნალის ანალიზატორი"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "თქვენი ბრაუზერი არ უჭერს მხარს ჩარჩოებს. გთხოვთ გამოიყენოთ თანამედროვე ბრაუზერი"
+
+msgid "View statistics directly"
+msgstr "პირდაპირ სტატისტიკის ნახვა"
+
+msgid "Close"
+msgstr "დახურვა"
+
+msgid "Documentation Viewer"
+msgstr "დოკუმენტაციის მაყურებელი"
+
+msgid "Direct address / Bookmarks"
+msgstr "პირდაპირი მისამართი/სანიშნეები"
+
+msgid "Search Engines"
+msgstr "საძიებო სისტემები"
+
+msgid "Refering search engines"
+msgstr "წყაროს საძიებო სისტემები"
+
+msgid "External pages"
+msgstr "გარე გვერდები"
+
+msgid "Refering pages"
+msgstr "წყაროს გვერდები"
+
+msgid "Internal pages"
+msgstr "შიდა გვერდები"
+
+msgid "UnknownAccessSource"
+msgstr "უცნობი წვდომის წყარო"
+
+msgid "Different refering pages"
+msgstr "სხვადასხვა წყაროს გვერდები"
+
+msgid "Keyphrases"
+msgstr "საკვანძო ფრაზები"
+
+msgid "Keywords"
+msgstr "საკვანძო სიტყვები"
+
+msgid "Keyphrases/Keywords"
+msgstr "საკვანძო ფრაზები/სიტყვები"
+
+msgid "Different keyphrases"
+msgstr "სხვადასხვა საკვანძო ფრაზები"
+
+msgid "Different keywords"
+msgstr "სხვადასხვა საკვანძო სიტყვები"
+
+#------------------------------------------------------------------------------
+# გვერდის განზომილება
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "ნანახი გვერდები"
+
+msgid "Different pages"
+msgstr "სხვადასხვა გვერდები"
+
+msgid "Entry"
+msgstr "შესვლის ადგილი"
+
+msgid "Exit"
+msgstr "გასვლის ადგილი"
+
+msgid "URL"
+msgstr "მისამართი"
+
+msgid "Referer"
+msgstr "წყარო"
+
+msgid "Host"
+msgstr "ჰოსტი"
+
+#------------------------------------------------------------------------------
+# შეცდომები და სტატუსები
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "შეცდომა"
+
+msgid "HTTP Status Statistics"
+msgstr "HTTP სტატუსის კოდების სტატისტიკა"
+
+msgid "SMTP Error codes"
+msgstr "SMTP შეცდომის კოდები"
+
+msgid "Page not found"
+msgstr "მოთხოვნილი გვერდი არ მოიძებნა"
+
+msgid "Unknown error"
+msgstr "უცნობი შეცდომა"
+
+msgid "Abnormal traffic note"
+msgstr "არანორმალური ტრაფიკი მოიცავს: საძიებო სისტემების რობოტებს, ხელოვნური ინტელექტის სასწავლო ბოტებს, დაუცველობების სკანერებს და HTTP/HTTPS სტანდარტების შეუსაბამო მოთხოვნებს"
+
+msgid "Page detail"
+msgstr "გვერდის დეტალები"
+
+msgid "AWStats did not found the"
+msgstr "AWStats-მა ვერ იპოვა"
+
+msgid "in your log records."
+msgstr "თქვენს ჟურნალის ჩანაწერებში"
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats-მა ვერ იპოვა არცერთი სწორი ჟურნალის ხაზი, რომელიც შეესაბამება თქვენს"
+
+msgid "parameter, in the"
+msgstr "პარამეტრს, ჟურნალის"
+
+msgid "th first non commented lines read of your log."
+msgstr "პირველ არაკომენტირებულ ხაზებში"
+
+msgid "Your log file"
+msgstr "თქვენი ჟურნალის ფაილი"
+
+msgid "must have a bad format or"
+msgstr "შესაძლოა არასწორი ფორმატის იყოს, ან"
+
+msgid "parameter setup does not match this format."
+msgstr "პარამეტრის კონფიგურაცია არ შეესაბამება ამ ფორმატს"
+
+msgid "Your AWStats"
+msgstr "თქვენი AWStats-ის"
+
+msgid "parameter is:"
+msgstr "პარამეტრია："
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "ეს ნიშნავს, რომ თქვენი ვებ სერვერის ჟურნალის ფაილის თითოეულ ხაზს უნდა ჰქონდეს："
+
+msgid "combined log format"
+msgstr "კომბინირებული ჟურნალის ფორმატი"
+
+msgid "MSIE Extended W3C log format"
+msgstr "MSIE გაფართოებული W3C ჟურნალის ფორმატი"
+
+msgid "WebStar native log format"
+msgstr "WebStar-ის მშობლიური ჟურნალის ფორმატი"
+
+msgid "common log format"
+msgstr "საყოველთაო ჟურნალის ფორმატი"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "შემდეგი პერსონალიზებული ჟურნალის ფორმატი："
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "აქ მოცემულია AWStats-ის მიერ თქვენს ჟურნალის ფაილში ნაპოვნი ჩანაწერების მაგალითი (ჩანაწერის ნომერი"
+
+msgid "in your log):"
+msgstr "თქვენს ჟურნალში）："
+
+#------------------------------------------------------------------------------
+# სხვადასხვა
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "დამატებითი/მარკეტინგი"
+
+#------------------------------------------------------------------------------
+# ინტერფეისის ტექსტები
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "მიმდინარე საიტი"
+
+msgid "Web Site"
+msgstr "ვებსაიტი"
+
+msgid "Last Update"
+msgstr "ბოლო განახლება"
+
+msgid "Never updated"
+msgstr "არასდროს განახლებულა"
+
+msgid "No qualified records found in log"
+msgstr "ჟურნალში ვერ მოიძებნა შესაბამისი ჩანაწერები"
+
+msgid "corrupted"
+msgstr "დაზიანებული"
+
+msgid "comments"
+msgstr "კომენტარები"
+
+msgid "Blank"
+msgstr "ცარიელი"
+
+msgid "dropped"
+msgstr "გამოტოვებული"
+
+msgid "Update now"
+msgstr "დაუყოვნებლივ განახლება"
+
+msgid "Back to main page"
+msgstr "მთავარ გვერდზე დაბრუნება"
+
+msgid "Close window"
+msgstr "ფანჯრის დახურვა"
+
+msgid "Back page"
+msgstr "წინა გვერდზე დაბრუნება"
+
+msgid "Navigation"
+msgstr "ნავიგაცია"
+
+msgid "Summary"
+msgstr "რეზიუმე"
+
+msgid "Local"
+msgstr "ლოკალური"
+
+msgid "External"
+msgstr "გარე"
+
+msgid "Others (email senders)"
+msgstr "სხვა (გამომგზავნები)"
+
+msgid "Others (email receivers)"
+msgstr "სხვა (მიმღებები)"
+
+msgid "Others"
+msgstr "სხვა"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "ამჟამად ნაჩვენებია მხოლოდ 10 ხაზი ბრაუზერის მონაცემები, მეტი იხილეთ სრულ სიაში"
+
+msgid "Others (unknown browsers)"
+msgstr "სხვა (უცნობი ბრაუზერები)"
+
+msgid "Others (operating systems)"
+msgstr "სხვა (ოპერაციული სისტემები)"
+
+msgid "Others (unknown OS)"
+msgstr "სხვა (უცნობი სისტემები)"
+
+msgid "Others (search engines)"
+msgstr "სხვა (საძიებო სისტემები)"
+
+msgid "Others (referring pages)"
+msgstr "სხვა (ციტირებადი გვერდები)"
+
+msgid "Others (keyphrases)"
+msgstr "სხვა (ფრაზები)"
+
+msgid "Others (keywords)"
+msgstr "სხვა (სიტყვები)"
+
+msgid "Only first 10 robots shown"
+msgstr "ამჟამად ნაჩვენებია მხოლოდ 10 რობოტის მონაცემები, მეტი იხილეთ სრულ სიაში"
+
+msgid "Failed to obtain access record"
+msgstr "ვერ მოხერხდა შესვლის ჩანაწერის მიღება"
+
+msgid "Failed to obtain leave record"
+msgstr "ვერ მოხერხდა გასვლის ჩანაწერის მიღება"
+
+msgid "Other pages"
+msgstr "სხვა გვერდები"
+
+msgid "Low Traffic IP Summary"
+msgstr "დაბალი ტრაფიკის უცნობი IP-ების შეჯამება"
+
+msgid "Failed to obtain IP data"
+msgstr "ვერ მოხერხდა IP მონაცემების მიღება"
+
+msgid "Failed to obtain the relevant data"
+msgstr "ვერ მოხერხდა შესაბამისი მონაცემების მიღება"
+
+msgid "Limited list of countries and regions"
+msgstr "ამჟამად ნაჩვენებია მხოლოდ 10 ხაზი მონაცემები, მეტი ქვეყანა/რეგიონი იხილეთ სრულ სიაში"
+
+msgid "currentVisitorData"
+msgstr "ამჟამად ნაჩვენებია მხოლოდ 10 ხაზი ვიზიტორის მონაცემები, მეტი იხილეთ სრულ სიაში"
+
+msgid "Others (robots main)"
+msgstr "სხვა (რობოტები)"
+
+msgid "Others (worms)"
+msgstr "სხვა (ჭიები)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "ამჟამად ნაჩვენებია მხოლოდ 10 გვერდი, მეტი იხილეთ სრულ სიაში"
+
+msgid "Others (OS main)"
+msgstr "სხვა (სისტემები)"
+
+msgid "Others (browsers main)"
+msgstr "სხვა (ბრაუზერები)"
+
+msgid "Others (screen sizes)"
+msgstr "სხვა (ზომები)"
+
+msgid "Others (search engines main)"
+msgstr "სხვა (საძიებო სისტემები)"
+
+msgid "Others (referring pages main)"
+msgstr "სხვა (წყაროს გვერდები)"
+
+msgid "Others (keyphrases main)"
+msgstr "სხვა (ფრაზები)"
+
+msgid "Others (keywords main)"
+msgstr "სხვა (სიტყვები)"
+
+msgid "Continue"
+msgstr "გააგრძელეთ დარჩენილი შინაარსის გაგზავნა"
+
+msgid "Switching Protocols"
+msgstr "პროტოკოლის გადართვა მიმდინარეობს"
+
+msgid "Processing (WebDAV)"
+msgstr "მუშავდება (გთხოვთ მოიცადოთ)"
+
+msgid "Early Hints"
+msgstr "სერვერი ამზადებს რესურსებს"
+
+msgid "[Miscellaneous successes]"
+msgstr "სხვა წარმატებული სტატუსები"
+
+msgid "Request successful"
+msgstr "მოთხოვნა წარმატებით შესრულდა"
+
+msgid "Created successfully"
+msgstr "წარმატებით შეიქმნა"
+
+msgid "Accepted - processing"
+msgstr "მიღებულია, მუშავდება"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "არაავტორიტეტული ინფორმაცია (ქეშიდან)"
+
+msgid "Success, no content returned"
+msgstr "წარმატებული, შინაარსი არ დაბრუნებულა"
+
+msgid "Reset content"
+msgstr "გთხოვთ ფორმის გადატვირთვა"
+
+msgid "Partial content (resume download)"
+msgstr "ნაწილობრივი შინაარსი (წყვეტილ ჩამოტვირთვას მხარს უჭერს)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "მრავალ სტატუსი (WebDAV ჯგუფური ოპერაციები)"
+
+msgid "Already reported (WebDAV)"
+msgstr "უკვე მოხსენებულია (გამეორების თავიდან ასაცილებლად)"
+
+msgid "IM used"
+msgstr "გამოყენებულია IM გაფართოების პროტოკოლი"
+
+msgid "[Miscellaneous redirections]"
+msgstr "სხვა გადამისამართებები"
+
+msgid "Multiple choices"
+msgstr "მრავალარჩევანი"
+
+msgid "Moved permanently - update your links"
+msgstr "სამუდამოდ გადატანილია, გთხოვთ განაახლოთ ბმულები"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "დროებითი გადამისამართება, მისამართი უცვლელია"
+
+msgid "See other"
+msgstr "გთხოვთ იხილოთ სხვა მისამართი"
+
+msgid "Not modified - using cached version"
+msgstr "შეცვლილი არ არის, გამოიყენეთ ქეშირებული ვერსია"
+
+msgid "Use proxy"
+msgstr "გთხოვთ გამოიყენოთ პროქსი"
+
+msgid "Switch proxy"
+msgstr "გთხოვთ შეცვალოთ პროქსი"
+
+msgid "Temporary redirect (keep method)"
+msgstr "დროებითი გადამისამართება (შეინახეთ მოთხოვნის მეთოდი)"
+
+msgid "Permanent redirect - update your links"
+msgstr "სამუდამო გადამისამართება, გთხოვთ განაახლოთ ბმულები"
+
+msgid "[Miscellaneous client/user errors]"
+msgstr "სხვა კლიენტის შეცდომები"
+
+msgid "Bad request"
+msgstr "მოთხოვნის ფორმატი არასწორია"
+
+msgid "Unauthorized - please log in"
+msgstr "ავტორიზაცია არ არის, გთხოვთ ჯერ შეხვიდეთ"
+
+msgid "Payment required"
+msgstr "საჭიროა გადახდა"
+
+msgid "Forbidden - access denied"
+msgstr "წვდომა აკრძალულია, უფლებები არ არის საკმარისი"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "გვერდი არ არსებობს, გთხოვთ შეამოწმოთ მკვდარი ბმულები"
+
+msgid "Method not allowed"
+msgstr "მოთხოვნის მეთოდი დაუშვებელია"
+
+msgid "Not acceptable"
+msgstr "მიუღებელი პასუხის ფორმატი"
+
+msgid "Proxy authentication required"
+msgstr "საჭიროა პროქსის ავთენტიფიკაცია"
+
+msgid "Request timeout"
+msgstr "მოთხოვნის დრო ამოიწურა"
+
+msgid "Conflict - please try again"
+msgstr "მოთხოვნის კონფლიქტი, გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "Gone - permanently deleted"
+msgstr "რესურსი სამუდამოდ წაიშალა"
+
+msgid "Length required"
+msgstr "საჭიროა შინაარსის სიგრძის მითითება"
+
+msgid "Precondition failed"
+msgstr "წინაპირობა არ არის დაკმაყოფილებული"
+
+msgid "Payload too large"
+msgstr "მოთხოვნის შინაარსი ძალიან დიდია"
+
+msgid "URI too long"
+msgstr "მოთხოვნის მისამართი ძალიან გრძელია"
+
+msgid "Unsupported media type"
+msgstr "არ არის მხარდაჭერილი ფაილის ტიპი"
+
+msgid "Range not satisfiable"
+msgstr "მოთხოვნის დიაპაზონი არასწორია"
+
+msgid "Expectation failed"
+msgstr "ვერ დაკმაყოფილდა Expect მოთხოვნა"
+
+msgid "I am a teapot (April Fools)"
+msgstr "მე ვარ ჩაიდანი (პირველაპრილული ხუმრობა)"
+
+msgid "Page expired (Laravel)"
+msgstr "გვერდის ვადა ამოიწურა, გთხოვთ განაახლოთ და სცადოთ"
+
+msgid "Method failure (Spring)"
+msgstr "მეთოდი წარუმატებელია"
+
+msgid "Misdirected request"
+msgstr "მოთხოვნა არასწორად არის გადამისამართებული"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "მოთხოვნის ფორმატი სწორია მაგრამ დამუშავება შეუძლებელია"
+
+msgid "Locked (WebDAV)"
+msgstr "რესურსი უკვე დაბლოკილია"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "დამოკიდებული ოპერაცია წარუმატებელია"
+
+msgid "Too early"
+msgstr "მოთხოვნა ძალიან ადრე გაიგზავნა"
+
+msgid "Upgrade required"
+msgstr "საჭიროა პროტოკოლის განახლება"
+
+msgid "Precondition required"
+msgstr "აკლია საჭირო წინაპირობა"
+
+msgid "Too many requests - slow down"
+msgstr "მოთხოვნები ძალიან ხშირია, გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "მოთხოვნის სათაურის ველები ძალიან დიდია"
+
+msgid "Request header too large"
+msgstr "მოთხოვნის სათაური ძალიან დიდია"
+
+msgid "Login timeout (IIS)"
+msgstr "შესვლის დრო ამოიწურა, გთხოვთ ხელახლა შეხვიდეთ"
+
+msgid "No response (nginx)"
+msgstr "სერვერი არ პასუხობს"
+
+msgid "Retry with (IIS)"
+msgstr "გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "Blocked by Windows parental controls"
+msgstr "დაბლოკილია მშობლის კონტროლის მიერ"
+
+msgid "Unavailable for legal reasons"
+msgstr "სამართლებრივი მიზეზების გამო მიუწვდომელია"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "კლიენტმა დამოუკიდებლად გაწყვიტა კავშირი"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "გადამისამართების ჯაჭვი აღემატება 30 IP მისამართს"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "პროტოკოლის ვერსიები შეუთავსებელია"
+
+msgid "Request header too large (nginx)"
+msgstr "მოთხოვნის სათაური ძალიან დიდია"
+
+msgid "SSL certificate error (nginx)"
+msgstr "SSL სერთიფიკატის შეცდომა"
+
+msgid "SSL certificate required (nginx)"
+msgstr "საჭიროა SSL სერთიფიკატი"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP მოთხოვნა გაიგზავნა HTTPS პორტზე"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "არასწორი ტოკენი"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "საჭიროა ტოკენი / კლიენტმა დახურა მოთხოვნა"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "მიღწეულია რესურსების ლიმიტი (CPU/მეხსიერება)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "გადაჭარბებულია გამტარუნარიანობის ლიმიტი"
+
+msgid "[Miscellaneous server errors]"
+msgstr "სხვა სერვერის შეცდომები"
+
+msgid "Internal server error - check logs"
+msgstr "სერვერის შიდა შეცდომა, გთხოვთ შეამოწმოთ ჟურნალი"
+
+msgid "Not implemented"
+msgstr "სერვერი არ უჭერს მხარს ამ ფუნქციას"
+
+msgid "Bad gateway - backend error"
+msgstr "კარიბჭის შეცდომა, უკანა მხარის სერვისი გაუმართავია"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "სერვისი მიუწვდომელია, მოვლა ან გადატვირთულობა"
+
+msgid "Gateway timeout"
+msgstr "კარიბჭის პასუხის დრო ამოიწურა"
+
+msgid "HTTP version not supported"
+msgstr "არ არის მხარდაჭერილი HTTP პროტოკოლის ვერსია"
+
+msgid "Variant also negotiates"
+msgstr "ვარიანტი ასევე მონაწილეობს მოლაპარაკებაში (კონფიგურაციის შეცდომა)"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "შენახვის ადგილი არ არის საკმარისი"
+
+msgid "Loop detected (WebDAV)"
+msgstr "გამოვლინდა ციკლური მითითება"
+
+msgid "Not extended"
+msgstr "საჭიროა შემდგომი გაფართოება"
+
+msgid "Network authentication required"
+msgstr "საჭიროა ქსელის პირადობის დამოწმება"
+
+msgid "Unknown error (Cloudflare)"
+msgstr "უცნობი შეცდომა"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "ვებ სერვერი გამორთულია"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "კავშირის დრო ამოიწურა"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "წყაროს სერვერთან კავშირი შეუძლებელია"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "მოხდა დროის ამოწურვა"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "SSL ხელის ჩამორთმევა წარუმატებელია"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "SSL სერთიფიკატი არასწორია"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Railgun შეცდომა (მოძველებულია)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "საიტი გადატვირთულია"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "წყაროს DNS შეცდომა / საიტი გაყინულია"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "დროებით გამორთულია"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "ავტორიზაცია არ არის"
+
+msgid "Network read timeout error"
+msgstr "ქსელის წაკითხვის დრო ამოიწურა"
+
+msgid "Network connect timeout error"
+msgstr "ქსელთან კავშირის დრო ამოიწურა"
+
+msgid "Unexpected token (Shopify)"
+msgstr "მოულოდნელი ტოკენი"
+
+msgid "Request denied (LinkedIn)"
+msgstr "მოთხოვნა უარყოფილია"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 კავშირი დაიხურა"
+
+msgid "[Unknown]"
+msgstr "უცნობი სტატუსის კოდი"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "არასტანდარტული წარმატებული პასუხი (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "სისტემის სტატუსი ან დახმარების ინფორმაცია"
+
+msgid "Help message"
+msgstr "დახმარების ინფორმაცია"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "SMTP სერვისი მზად არის (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "სერვისი მზად არის - ფოსტის სერვერს შეუძლია მიიღოს წერილები"
+
+msgid "Service closing - connection is being closed"
+msgstr "სერვისი იხურება - კავშირი წყდება"
+
+msgid "Authentication successful"
+msgstr "პირადობის დამოწმება წარმატებულია"
+
+msgid "Requested mail action taken and completed"
+msgstr "მოთხოვნილი საფოსტო ოპერაცია შესრულდა და დასრულდა"
+
+msgid "User not local - will forward to another address"
+msgstr "მომხმარებელი არ არის ამ სერვერზე - გადაისამართდება სხვა მისამართზე"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "ვერ მოხერხდა მიმღების დამოწმება, მაგრამ მიწოდება მაინც იქნება მცდელობა"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "წერილი მიღებულია გადასაცემად (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "მომხმარებლის სახელი არის საფოსტო ყუთი"
+
+msgid "Authentication challenge - please respond"
+msgstr "პირადობის დამოწმების გამოწვევა - გთხოვთ უპასუხოთ"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "დაიწყეთ წერილის შინაარსის შეყვანა - დაასრულეთ <CRLF>.<CRLF>"
+
+msgid "Continue (LMTP)"
+msgstr "გაგრძელება (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "სერვისი მიუწვდომელია - კავშირი იხურება, გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "საფოსტო ყუთი დაკავებულია ან დროებით მიუწვდომელია (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "კავშირის სიხშირის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "ერთდროული კავშირების რაოდენობა ძალიან ბევრია (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "ვერ მოხერხდა კავშირის დამყარება (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "კავშირის დრო ამოიწურა (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "კავშირი შეცდომის გამო შეწყდა (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "საფოსტო ყუთი დროებით დაბლოკილია (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "მიმღებების რაოდენობა ძალიან ბევრია (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "ფოსტის სერვერის შეცდომა (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "გამოვლინდა მიღების ციკლი (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "გადამისამართების რაოდენობა ძალიან ბევრია (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "DNS მოთხოვნა წარუმატებელია (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "ვერ მოხერხდა ავთენტიფიკაცია (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "TLS ხელის ჩამორთმევა წარუმატებელია (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "SMTP პროტოკოლის დარღვევა (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "წერილის ზომა აღემატება ლიმიტს (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "წერილების სიხშირის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "საფოსტო ყუთის კვოტა შევსებულია - დროებითი სტატუსი"
+
+msgid "Domain not found (Postfix)"
+msgstr "დომენი ვერ მოიძებნა (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "წერილის სათაური არასწორია (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "გამოვლინდა დაბრუნების ციკლი (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "ვერ მოხერხდა მარშრუტიზაცია (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "გამომგზავნის დომენი ვერ მოიძებნა (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "მიმღების დომენი ვერ მოიძებნა (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "გრეის სიის შემოწმება მიმდინარეობს - გთხოვთ მოგვიანებით სცადოთ (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "სპამის ფილტრაცია მიმდინარეობს (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "ვირუსების სკანირება მიმდინარეობს (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "საფოსტო ყუთი მიუწვდომელია - გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "Requested action aborted - error in processing"
+msgstr "მოთხოვნილი ოპერაცია შეწყდა - დამუშავებისას მოხდა შეცდომა"
+
+msgid "Insufficient system storage - try again later"
+msgstr "სისტემის შენახვის ადგილი არ არის საკმარისი - გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "ამ მიმღებისთვის წერილების რაოდენობა ძალიან ბევრია (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS მიუწვდომელია (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "სერვერს არ შეუძლია წერილების მიღება (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "DNS მოთხოვნის დროებითი წარუმატებლობა (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "კვოტა გადაჭარბებულია - დროებითი სტატუსი"
+
+msgid "Message too big - temporary"
+msgstr "წერილი ძალიან დიდია - დროებითი სტატუსი"
+
+msgid "Too many messages per connection"
+msgstr "ერთ კავშირზე წერილების რაოდენობა ძალიან ბევრია"
+
+msgid "Load average too high (Postfix)"
+msgstr "სისტემის დატვირთვა ძალიან მაღალია (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "კავშირი უარყოფილია (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "გაგზავნის სიხშირის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "მიმღების სიხშირის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "გამომგზავნის სიხშირის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "IP მისამართის სიხშირის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "MX მოთხოვნა წარუმატებელია (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "A ჩანაწერის მოთხოვნა წარუმატებელია (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "PTR ჩანაწერის მოთხოვნა წარუმატებელია (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "გრეის სიის შემოწმება გააქტიურებულია - გთხოვთ მოგვიანებით სცადოთ (Postgrey)"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "გამომგზავნის მისამართი უარყოფილია - დომენი არ არის დამოწმებული (DMARC მოლოდინშია)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "მიმღების მისამართი უარყოფილია - დომენი არ არის დამოწმებული (DMARC მოლოდინშია)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "DKIM დამოწმება მოლოდინშია - დროებითი წარუმატებლობა"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "SPF დამოწმება მოლოდინშია - დროებითი წარუმატებლობა"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "DMARC დამოწმება მოლოდინშია - დროებითი წარუმატებლობა"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "DNSBL მოთხოვნის დროებითი წარუმატებლობა"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "RHSBL მოთხოვნის დროებითი წარუმატებლობა"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "URI DNSBL მოთხოვნის დროებითი წარუმატებლობა"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "დროებითი ავთენტიფიკაციის წარუმატებლობა (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "დროებითი ავტორიზაციის წარუმატებლობა (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "ერთი გამომგზავნის სიხშირის ლიმიტი გადაჭარბებულია (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "ერთი მიმღების სიხშირის ლიმიტი გადაჭარბებულია (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "ერთი დომენის სიხშირის ლიმიტი გადაჭარბებულია (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "ერთი IP-ს სიხშირის ლიმიტი გადაჭარბებულია (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "წერილი რიგშია შემდგომი მიწოდებისთვის (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "მიწოდება შეფერხებულია პოლიტიკის გამო (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "შინაარსის ფილტრის დროებითი წარუმატებლობა"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "ანტივირუსული სკანერის დროებითი წარუმატებლობა"
+
+msgid "Temporary failure in spam filter"
+msgstr "სპამის ფილტრის დროებითი წარუმატებლობა"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter-ის დროებითი წარუმატებლობა (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "გრეის სია - გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "DDoS protection active - try again later"
+msgstr "DDoS დაცვა გააქტიურებულია - გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "SMTP policy violation - temporary"
+msgstr "SMTP პოლიტიკის დარღვევა - დროებითი სტატუსი"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "RCPT TO დამუშავების დროებითი შეცდომა"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "MAIL FROM დამუშავების დროებითი შეცდომა"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "EHLO/HELO დამუშავების დროებითი შეცდომა"
+
+msgid "Temporary error in DATA processing"
+msgstr "DATA დამუშავების დროებითი შეცდომა"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "დროებითი შეცდომა - სერვისი დაკავებულია, გთხოვთ მოგვიანებით სცადოთ"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "სინტაქსის შეცდომა - ბრძანება არ არის ამოცნობილი ან ძალიან გრძელია"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "პარამეტრების ან არგუმენტების სინტაქსის შეცდომა"
+
+msgid "Command not implemented"
+msgstr "ბრძანება არ არის დანერგილი"
+
+msgid "Bad sequence of commands"
+msgstr "ბრძანებების თანმიმდევრობა არასწორია"
+
+msgid "Command parameter not implemented"
+msgstr "ბრძანების პარამეტრი არ არის დანერგილი"
+
+msgid "Version not supported (ESMTP)"
+msgstr "ვერსია არ არის მხარდაჭერილი (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "საფოსტო ყუთის გზა არასწორია (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "ამ სესიაში ბრძანებების რაოდენობა ძალიან ბევრია (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "მიმღებების რაოდენობის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "გამომგზავნების რაოდენობის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "დომენების რაოდენობის ლიმიტი გადაჭარბებულია (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "საფოსტო ყუთი არ არსებობს (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS წარუმატებლობა - მუდმივი შეცდომა"
+
+msgid "Address type not supported (Postfix)"
+msgstr "მისამართის ტიპი არ არის მხარდაჭერილი (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "ვერ მოხერხდა საფოსტო ყუთის გახსნა (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "საფოსტო ყუთი დაბლოკილია - მუდმივი სტატუსი"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "წერილი უარყოფილია პოლიტიკის გამო (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "შინაარსი უარყოფილია - მუდმივი სტატუსი"
+
+msgid "Attachment type not allowed"
+msgstr "ამაგრების ტიპი დაუშვებელია"
+
+msgid "Message encoding not supported"
+msgstr "წერილის კოდირება არ არის მხარდაჭერილი"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "გამომგზავნის დომენი არ არსებობს - მუდმივი სტატუსი"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "დომენი არ იღებს წერილებს ან იხურება"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "მიმღების დომენი არ არსებობს - მუდმივი სტატუსი"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "საფოსტო ყუთის კვოტა შევსებულია - მუდმივი სტატუსი"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "წერილის ზომა აღემატება ლიმიტს - მუდმივი სტატუსი"
+
+msgid "Authentication required (Sendmail)"
+msgstr "საჭიროა ავთენტიფიკაცია (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "ავთენტიფიკაცია წარუმატებელია (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "ავთენტიფიკაციის მექანიზმი არ არის მხარდაჭერილი"
+
+msgid "Authentication credentials invalid"
+msgstr "ავთენტიფიკაციის მონაცემები არასწორია"
+
+msgid "Authentication account expired"
+msgstr "ავთენტიფიკაციის ანგარიშის ვადა ამოიწურა"
+
+msgid "Access denied - authentication required"
+msgstr "წვდომა უარყოფილია - საჭიროა ავთენტიფიკაცია"
+
+msgid "Access denied (Sendmailism)"
+msgstr "წვდომა უარყოფილია (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "წვდომა უარყოფილია - არ არის ავთენტიფიცირებული"
+
+msgid "Access denied - account locked"
+msgstr "წვდომა უარყოფილია - ანგარიში დაბლოკილია"
+
+msgid "Access denied - account disabled"
+msgstr "წვდომა უარყოფილია - ანგარიში გამორთულია"
+
+msgid "Authentication failed"
+msgstr "ავთენტიფიკაცია წარუმატებელია"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "რელეზე გადასამართებლად საჭიროა ავთენტიფიკაცია (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "რელეზე გადასამართების ავთენტიფიკაცია წარუმატებელია (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "საჭიროა დაშიფრული კავშირი (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "ამ მიმღებისთვის საჭიროა TLS დაშიფვრა"
+
+msgid "Encryption strength insufficient"
+msgstr "დაშიფვრის სიძლიერე არასაკმარისია"
+
+msgid "Certificate validation failed"
+msgstr "სერთიფიკატის დამოწმება წარუმატებელია"
+
+msgid "Invalid TLS certificate"
+msgstr "TLS სერთიფიკატი არასწორია"
+
+msgid "TLS protocol version not supported"
+msgstr "TLS პროტოკოლის ვერსია არ არის მხარდაჭერილი"
+
+msgid "Cipher suite not supported"
+msgstr "შიფრის ნაკრები არ არის მხარდაჭერილი"
+
+msgid "Access denied - no valid recipient"
+msgstr "წვდომა უარყოფილია - არ არის სწორი მიმღები"
+
+msgid "Access denied - no valid sender"
+msgstr "წვდომა უარყოფილია - არ არის სწორი გამომგზავნი"
+
+msgid "Access denied - domain not allowed"
+msgstr "წვდომა უარყოფილია - დომენი დაუშვებელია"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "წვდომა უარყოფილია - IP მისამართი დაბლოკილია (მუდმივად)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "წვდომა უარყოფილია - გამომგზავნის დომენი შავ სიაშია"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "საფოსტო ყუთი მიუწვდომელია - მოთხოვნილი ოპერაცია არ შესრულებულა"
+
+msgid "User not local - please try forwarding address"
+msgstr "მომხმარებელი არ არის ამ სერვერზე - გთხოვთ გამოიყენოთ გადამისამართების მისამართი"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "მოთხოვნილი ოპერაცია შეწყდა - გადაჭარბებულია შენახვის გამოყოფა"
+
+msgid "Mailbox name not allowed"
+msgstr "საფოსტო ყუთის სახელი დაუშვებელია"
+
+msgid "Requested action rejected - access denied"
+msgstr "მოთხოვნილი ოპერაცია უარყოფილია - წვდომა აკრძალულია"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "MAIL FROM/RCPT TO პარამეტრები არ არის ამოცნობილი"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "დომენს არ აქვს უფლება გაგზავნას (DMARC უარყოფა)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "გამეორებული წერილების რაოდენობა ძალიან ბევრია - მუდმივი სტატუსი"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "გამომგზავნის მისამართი უარყოფილია - დომენი არ არის SPF-ში"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "გამომგზავნის მისამართი უარყოფილია - DKIM დამოწმება წარუმატებელია"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "გამომგზავნის მისამართი უარყოფილია - DMARC პოლიტიკის უარყოფა"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "მიმღების მისამართი უარყოფილია - DMARC პოლიტიკის უარყოფა"
+
+msgid "Message rejected due to spam content"
+msgstr "წერილი უარყოფილია სპამის შინაარსის გამო"
+
+msgid "Message rejected due to virus detected"
+msgstr "წერილი უარყოფილია ვირუსის გამოვლენის გამო"
+
+msgid "Message rejected due to malicious content"
+msgstr "წერილი უარყოფილია მავნე შინაარსის გამო"
+
+msgid "Message rejected due to phishing detection"
+msgstr "წერილი უარყოფილია ფიშინგის გამოვლენის გამო"
+
+msgid "Message rejected due to malware detection"
+msgstr "წერილი უარყოფილია მავნე პროგრამის გამოვლენის გამო"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "წერილი უარყოფილია პოლიტიკის გამო - მუდმივი სტატუსი"
+
+msgid "Message rejected due to content filtering"
+msgstr "წერილი უარყოფილია შინაარსის ფილტრაციის გამო"
+
+msgid "Message rejected due to reputation"
+msgstr "წერილი უარყოფილია რეპუტაციის გამო"
+
+msgid "Access denied - access_map violation"
+msgstr "წვდომა უარყოფილია - access_map-ის დარღვევა"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "წვდომა უარყოფილია - SMTP კლიენტი RBL-შია"
+
+msgid "Access denied - relay not authorized"
+msgstr "წვდომა უარყოფილია - რელეზე გადამისამართება არ არის ავტორიზებული"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "წვდომა უარყოფილია - უცნობი SMTP კლიენტის ჰოსტის სახელი"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "წვდომა უარყოფილია - კლიენტის HELO ჰოსტის სახელის სინტაქსის შეცდომა"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "წვდომა უარყოფილია - SMTP კლიენტის ჰოსტის სახელი უარყოფილია"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "წვდომა უარყოფილია - გამომგზავნის ან მიმღების დომენი უცნობია"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "წვდომა უარყოფილია - უცნობი კლიენტის HELO ჰოსტის სახელი"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "წვდომა უარყოფილია - არასწორი დომენი (არ არის FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "წვდომა უარყოფილია - დომენი არ არის კვალიფიცირებული"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "წვდომა უარყოფილია - ფოსტის სერვერი არასწორად არის კონფიგურირებული"
+
+msgid "Access denied - open relay not allowed"
+msgstr "წვდომა უარყოფილია - ღია რელე დაუშვებელია"
+
+msgid "Access denied - proxy not allowed"
+msgstr "წვდომა უარყოფილია - პროქსის გამოყენება დაუშვებელია"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "წვდომა უარყოფილია - დინამიკური IP დაუშვებელია"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "წვდომა უარყოფილია - საცხოვრებელი IP დაუშვებელია"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "წვდომა უარყოფილია - გამოვლინდა VPN/Tor"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "წვდომა უარყოფილია - Spamhaus DROP-ის სიაშია"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "წვდომა უარყოფილია - URL URIBL-ის სიაშია"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "წვდომა უარყოფილია - დომენი RHSBL-ის სიაშია"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "წვდომა უარყოფილია - IP DNSWL-ის სიაშია (პოლიტიკა)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "მიწოდება წარუმატებელია - საფოსტო ყუთი ვერ მოიძებნა"
+
+msgid "Delivery failed - recipient not local"
+msgstr "მიწოდება წარუმატებელია - მიმღები არ არის ამ სერვერზე"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "მიწოდება წარუმატებელია - მიმღები უარყოფილია"
+
+msgid "Delivery failed - sender rejected"
+msgstr "მიწოდება წარუმატებელია - გამომგზავნი უარყოფილია"
+
+msgid "Delivery failed - relay rejected"
+msgstr "მიწოდება წარუმატებელია - რელე უარყოფილია"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "მიწოდება წარუმატებელია - DNS მუდმივი შეცდომა"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "მიწოდება წარუმატებელია - MX მუდმივი შეცდომა"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "მიწოდება წარუმატებელია - A ჩანაწერის მუდმივი შეცდომა"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "მიწოდება წარუმატებელია - PTR ჩანაწერის მუდმივი შეცდომა"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "მიწოდება წარუმატებელია - პოლიტიკის მუდმივი შეცდომა"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: წარმატება - მიწოდების სტატუსის შეტყობინება"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: მიწოდება შეფერხებულია"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: მიწოდება წარუმატებელია - მუდმივი"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: მიწოდება წარუმატებელია - დროებითი"
+
+msgid "DSN: Message expired"
+msgstr "DSN: წერილის ვადა ამოიწურა"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: წერილი დაბრუნდა"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: წერილი გაუქმდა"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: წერილი გაფილტრულია"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: წერილი იზოლირებულია"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: წერილი შეჩერებულია განხილვისთვის"
+
+msgid "MTA-STS policy required"
+msgstr "საჭიროა MTA-STS პოლიტიკა"
+
+msgid "MTA-STS policy validation failed"
+msgstr "MTA-STS პოლიტიკის დამოწმება წარუმატებელია"
+
+msgid "TLS reporting required"
+msgstr "საჭიროა TLS ანგარიში"
+
+msgid "TLS report requested"
+msgstr "მოთხოვნილია TLS ანგარიში"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA მკაცრი ტრანსპორტის უსაფრთხოება გააქტიურებულია"
+
+msgid "DANE validation required"
+msgstr "საჭიროა DANE დამოწმება"
+
+msgid "DANE validation failed"
+msgstr "DANE დამოწმება წარუმატებელია"
+
+msgid "TLSA record missing"
+msgstr "TLSA ჩანაწერი აკლია"
+
+msgid "Certificate name mismatch"
+msgstr "სერთიფიკატის სახელი არ ემთხვევა"
+
+msgid "Certificate expired"
+msgstr "სერთიფიკატის ვადა ამოიწურა"
+
+msgid "AUTH LOGIN required"
+msgstr "საჭიროა AUTH LOGIN ავთენტიფიკაცია"
+
+msgid "AUTH PLAIN required"
+msgstr "საჭიროა AUTH PLAIN ავთენტიფიკაცია"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "საჭიროა AUTH CRAM-MD5 ავთენტიფიკაცია"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "საჭიროა AUTH DIGEST-MD5 ავთენტიფიკაცია"
+
+msgid "AUTH GSSAPI required"
+msgstr "საჭიროა AUTH GSSAPI ავთენტიფიკაცია"
+
+msgid "AUTH NTLM required"
+msgstr "საჭიროა AUTH NTLM ავთენტიფიკაცია"
+
+msgid "AUTH SCRAM required"
+msgstr "საჭიროა AUTH SCRAM ავთენტიფიკაცია"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "საჭიროა AUTH OAUTHBEARER ავთენტიფიკაცია"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "საჭიროა AUTH XOAUTH2 ავთენტიფიკაცია"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: საფოსტო ყუთის მონაცემთა ბაზის შეცდომა"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: შენახვის დრაივერის შეცდომა"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: ტრანსპორტის აგენტის შეცდომა"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: შინაარსის კონვერტაციის შეცდომა"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: მარშრუტიზაციის შეცდომა"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: ფოსტის ნაკადი შეჩერებულია"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: ჩრდილოვანი სიჭარბის შეცდომა"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: უსაფრთხოების ბადის შეცდომა"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: რიგის მონაცემთა ბაზის შეცდომა"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: წერილი შეზღუდულია"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: დაბრუნების რიგის შეცდომა"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: გადავადებული რიგის შეცდომა"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: შეჩერებული რიგის შეცდომა"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: შემომავალი რიგის შეცდომა"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: აქტიური რიგის შეცდომა"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: რიგის ფაილი დაზიანებულია"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: რიგის გამშვების შეცდომა"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: ალიასის მონაცემთა ბაზის შეცდომა"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: ვირტუალური მომხმარებლის ცხრილის შეცდომა"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: ფოსტის გამგზავნის განსაზღვრის შეცდომა"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: როუტერის კონფიგურაციის შეცდომა"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: ტრანსპორტის კონფიგურაციის შეცდომა"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: დირექტორის კონფიგურაციის შეცდომა"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: ხელახალი მცდელობის კონფიგურაციის შეცდომა"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: გადაწერის კონფიგურაციის შეცდომა"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: ავთენტიფიკაციის კონფიგურაციის შეცდომა"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ACL კონფიგურაციის შეცდომა"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Local_scan კონფიგურაციის შეცდომა"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: მოთხოვნის კონფიგურაციის შეცდომა"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: გაფართოების კონფიგურაციის შეცდომა"
+
+msgid "HTTP Protocol Versions"
+msgstr "HTTP პროტოკოლის ვერსიები"
+
+msgid "Protocol"
+msgstr "პროტოკოლი"
+
+msgid "Request %"
+msgstr "მოთხოვნების წილი"
+
+msgid "Bandwidth %"
+msgstr "გამტარუნარიანობის წილი"
+
+msgid "Each request requires a new connection"
+msgstr "თითოეულ მოთხოვნას სჭირდება ახალი კავშირი"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "მრავალ მოთხოვნას შეუძლია ერთი კავშირის ხელახლა გამოყენება"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "ერთ კავშირზე შესაძლებელია მრავალი მოთხოვნის პარალელურად დამუშავება"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "კავშირი უფრო სწრაფია, ცუდ ქსელზე შესრულება უკეთესი"
+
+msgid "No protocol data available"
+msgstr "პროტოკოლის მონაცემები არ არის"
+
+msgid "of requests use HTTP/1.0"
+msgstr "მოთხოვნებიდან იყენებს HTTP/1.0 პროტოკოლს"
+
+msgid "From access logs"
+msgstr "წვდომის ჟურნალებიდან"
+
+msgid "No HTTP/2 requests detected"
+msgstr "HTTP/2 პროტოკოლის მოთხოვნები არ არის გამოვლენილი"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "ყველა მოთხოვნა არის HTTP/1.0, HTTP/2 მოთხოვნები არ არის"
+
+msgid "HTTP/3 not detected"
+msgstr "HTTP/3 პროტოკოლის მოთხოვნები არ არის გამოვლენილი"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "ყველა მოთხოვნა არ შეიცავს QUIC/HTTP/3 პროტოკოლის მოთხოვნებს"
+
+msgid "Mail Authentication Statistics"
+msgstr "ფოსტის ავთენტიფიკაციის სტატისტიკა"
+
+msgid "Authentication"
+msgstr "ავთენტიფიკაციის ტიპი"
+
+msgid "Pass"
+msgstr "გავლილი"
+
+msgid "Fail"
+msgstr "წარუმატებელი"
+
+msgid "Softfail"
+msgstr "რბილი წარუმატებლობა"
+
+msgid "Neutral"
+msgstr "ნეიტრალური"
+
+msgid "None"
+msgstr "არ არის"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "ფოსტის რიგის დაყოვნების სტატისტიკა"
+
+msgid "Delay Range"
+msgstr "დაყოვნების დიაპაზონი"
+
+msgid "Count"
+msgstr "რაოდენობა"
+
+msgid "Percentage"
+msgstr "პროცენტული წილი"
+
+msgid "TLS Encryption Statistics"
+msgstr "TLS დაშიფვრის სტატისტიკა"
+
+msgid "TLS Versions"
+msgstr "TLS ვერსიები"
+
+msgid "Top Ciphers"
+msgstr "ხშირად გამოყენებული შიფრის ნაკრები"
+
+msgid "robot_hits_detail_both"
+msgstr "სულ მოთხოვნა: %s (ნორმალური გვერდი: %s, robots.txt: %s)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "მხოლოდ robots.txt-ზე წვდომა: %s, სხვა გვერდები არ არის მოთხოვნილი"
+
+msgid "robot_hits_detail_normal"
+msgstr "ნორმალური გვერდების მოთხოვნა: %s"
+
+msgid "Troubleshooting"
+msgstr "ხარვეზების მოძიება"
+
+msgid "Did you use the correct URL?"
+msgstr "თქვენ გამოიყენეთ სწორი URL?"
+
+msgid "Example:"
+msgstr "მაგალითად:"
+
+msgid "Did you use correct config parameter?"
+msgstr "თქვენ გამოიყენეთ სწორი კონფიგურაციის პარამეტრი?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "მაგალითად: თუ თქვენი კონფიგურაციის ფაილია awstats.mysite.conf, გამოიყენეთ -config=mysite"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "თქვენ შექმენით კონფიგურაციის ფაილი 'awstats.$SiteConfig.conf'?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "თუ არა, შეგიძლიათ გაუშვათ \"awstats_configure.pl\" ბრძანების სტრიქონიდან, ან შექმნათ ხელით"
+
+msgid "Setup"
+msgstr "კონფიგურაცია"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "ფაილი, ვებ სერვერი ან უფლებები შესაძლოა არასწორი იყოს"
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "შეამოწმეთ კონფიგურაციის ფაილი, ნებართვები და AWStats დოკუმენტაცია ('docs' დირექტორიაში)"
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "გაფრთხილება：ვერ მოიძებნა \"%s\"-ის ენობრივი ფაილი. გამოყენებული იქნება ინგლისური"
+
+#------------------------------------------------------------------------------
+# შეცდომები და სიგნალების დამუშავება
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "%s პროცესი (ID %s) შეწყდა სიგნალით %s"
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "ამ კონფიგურაციის ფაილისთვის AWStats-ის განახლების პროცესი უკვე გაშვებულია. გთხოვთ მოგვიანებით სცადოთ. თუ ეს ასე არ არის, ხელით წაშალეთ ჩაკეტვის ფაილი"
+
+#------------------------------------------------------------------------------
+# ახალი სტატისტიკის სათაურები
+#------------------------------------------------------------------------------
+
+msgid "Report Overview"
+msgstr "ანგარიშის მიმოხილვა"
+
+msgid "Monthly Statistics"
+msgstr "თვეების მიხედვით სტატისტიკა"
+
+msgid "Daily Statistics"
+msgstr "თარიღების მიხედვით სტატისტიკა"
+
+msgid "Statistics by Day of Week"
+msgstr "კვირის დღეების მიხედვით სტატისტიკა"
+
+msgid "Hourly Page Views"
+msgstr "ყოველსაათიანი ნახვების რაოდენობა"
+
+msgid "Traffic Sources"
+msgstr "წვდომის წყაროები"
+
+msgid "Other Sources"
+msgstr "სხვა წყაროები"
+
+msgid "tooltip_1"
+msgstr "ვიზიტორის სესიების რაოდენობა საიტზე. ერთი და იგივე ვიზიტორი 30 წუთზე მეტი უმოქმედობის შემდეგ ხელახლა ვიზიტისას ჩაითვლება ახალ ვიზიტად"
+
+msgid "tooltip_2"
+msgstr "არჩეულ დროის მონაკვეთში თქვენს ვებსაიტზე მოსული სხვადასხვა ვიზიტორების რაოდენობა. გამოითვლება IP მისამართის მიხედვით"
+
+msgid "tooltip_3"
+msgstr "გვერდად ჩათვლილი მოთხოვნების რაოდენობა (როგორიცაა HTML, PHP, ASP), არ მოიცავს სურათებს, CSS, JS სტატიკურ ფაილებს"
+
+msgid "tooltip_4"
+msgstr "სერვერისკენ გაგზავნილი ყველა მოთხოვნის საერთო რაოდენობა, მათ შორის ყველა ტიპის ფაილი"
+
+msgid "tooltip_5"
+msgstr "სერვერის მიერ მომხმარებლის მოთხოვნებზე პასუხის გაცემისას გადაცემული მონაცემების მოცულობა"
+
+msgid "tooltip_13"
+msgstr "საძიებო სისტემების საშუალებით თქვენს საიტზე მოსული წყაროების სტატისტიკა. აჩვენებს, რომელ საძიებო სისტემებს მოგაქვთ ტრაფიკი და რა საძიებო სიტყვები გამოიყენეს"
+
+msgid "tooltip_14"
+msgstr "სხვა ვებსაიტების გარე ბმულებით თქვენს საიტზე მოსული წყაროების სტატისტიკა. აჩვენებს, რომელი საიტები ბმულობენ თქვენთან და რა ტრაფიკი მოაქვთ"
+
+msgid "tooltip_15"
+msgstr "ვიზიტორების მიერ საძიებო სისტემებში გამოყენებული საძიებო სიტყვები. საკვანძო სიტყვა არის ერთი სიტყვა, საკვანძო ფრაზა არის მრავალი სიტყვის კომბინაცია"
+
+msgid "tooltip_16"
+msgstr "საძიებო სისტემების ბოტები, ხელოვნური ინტელექტის სასწავლო ბოტები, დაუცველობების სკანერები (ავტომატური პროგრამები). ფრჩხილებში მოცემული რიცხვი აღნიშნავს ნორმალური გვერდების და robots.txt-ის მოთხოვნების რაოდენობას"
+
+msgid "tooltip_17"
+msgstr "24-საათიანი ტრაფიკის განაწილების დიაგრამა. აჩვენებს თქვენი ვებსაიტის მონახულების მდგომარეობას დღის საათების მიხედვით, ეხმარება მომხმარებლების აქტიური დროის გაგებაში"
+
+msgid "tooltip_18"
+msgstr "ეს სვეტი აჩვენებს ყოველდღიურ/ყოველკვირეულ საშუალო მნიშვნელობებს არჩეულ დროის მონაკვეთში, ეხმარება მთლიანი ტენდენციის გაგებაში"
+
+msgid "tooltip_19"
+msgstr "დიაგრამაზე ელემენტებზე დაწკაპუნებით შეგიძლიათ იხილოთ დეტალური ინფორმაცია. დიაგრამის ელემენტებზე მაუსის გადატანით შეგიძლიათ იხილოთ კონკრეტული მნიშვნელობები"
+
+msgid "tooltip_20"
+msgstr "მონაცემები, რომლებიც ვერ მოხვდება არსებულ კატეგორიებში, ჩვეულებრივ გამოწვეულია მონაცემთა ფორმატის დარღვევით ან მათი არარსებობით"
+
+msgid "tooltip_21"
+msgstr "გამოვლენილი ჭიის ვირუსის შეტევების ჩანაწერები. ჭია არის თვითგავრცელებადი მავნე პროგრამა, რომელიც ჩვეულებრივ ვრცელდება ქსელის დაუცველობების საშუალებით"
+
+#------------------------------------------------------------------------------
+# დახმარების ინფორმაცია - საზოგადოების გამოცემა
+#------------------------------------------------------------------------------
+
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - მოწინავე ვებ სტატისტიკა"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "საავტორო უფლებები (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "საავტორო უფლებები (c) 2026-დღემდე საზოგადოების გამოცემა"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats აბსოლუტურად არ იძლევა არანაირ გარანტიას. ის არის GNU General Public License-ით გავრცელებული თავისუფალი პროგრამა (დეტალებისთვის იხილეთ LICENSE ფაილი)"
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "სინტაქსი：%s -config=ვირტუალური ჰოსტის სახელი [ოფციები]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "ეს ბრძანება გაუშვებს %s-ს ბრძანების სტრიქონიდან, AWStats-ის კონფიგურაციის ფაილში განსაზღვრული ჟურნალის ფაილიდან ვებსაიტის სტატისტიკის განახლებისთვის (-update ოფცია), ან HTML ანგარიშის გენერირებისთვის (-output ოფცია)"
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "პირველ რიგში, %s ცდილობს წაიკითხოს %s.ვირტუალური ჰოსტის სახელი.conf, როგორც კონფიგურაციის ფაილი. თუ არ მოიძებნა, %s ცდილობს წაიკითხოს %s.conf, და ბოლოს -config= პარამეტრით გადაცემული სრული გზა"
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "შენიშვნა 1: კონფიგურაციის ფაილები (*.conf) უნდა იყოს /etc/awstats, /usr/local/etc/awstats, /etc ან awstats.pl სკრიპტის ფაილის იმავე დირექტორიაში"
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "შენიშვნა 2: თუ განსაზღვრულია AWSTATS_FORCE_CONFIG გარემოს ცვლადი, AWStats გამოიყენებს მას როგორც 'config' მნიშვნელობას, მიუხედავად იმისა, რა მნიშვნელობაა გადაცემული ბრძანების სტრიქონზე ან URL-ში"
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "ყველა ინსტალაციის ინსტრუქციისთვის იხილეთ AWStats დოკუმენტაცია"
+
+msgid "Options to update statistics:"
+msgstr "სტატისტიკის განახლების ოფციები:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        სტატისტიკის განახლება (ნაგულისხმევი)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps      გაშვებისას ყოველ %s ხაზზე მიმდინარე მონაცემების მოხსენება"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted   ყოველი ნაპოვნი დაზიანებული ხაზის მიზეზით გამოტანა"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped     ყოველი ნაპოვნი გამოტოვებული ხაზის მიზეზით გამოტანა"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin    როდესაც წყაროს ანალიზი შეუძლებელია, მისი ინფორმაციის გამოტანა"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin     როდესაც წყარო პირდაპირი წვდომაა, ჟურნალის ხაზის გამოტანა"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n    n ხაზის ანალიზის შემდეგ განახლების პროცესის შეწყვეტა"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x      შეცვალოს გასაანალიზებელი ჟურნალი, მიუხედავად კონფიგურაციის ფაილში 'LogFile'-ისა"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  სტატისტიკის განახლებისას დარწმუნდით, რომ ჟურნალის ფაილები დამუშავდა ქრონოლოგიური თანმიმდევრობით"
+
+msgid "Options to show statistics:"
+msgstr "სტატისტიკის ჩვენების ოფციები:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output       მთავარი HTML ანგარიშის გამოტანა (არანაირი განახლება, გარდა -update-თან ერთად გამოყენებისა)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x     სხვა ანგარიშის გვერდების გამოტანა, სადაც x არის："
+
+msgid "build page of all domains/countries"
+msgstr "ყველა დომენის/ქვეყნის გვერდის აგება"
+
+msgid "build page of all hosts"
+msgstr "ყველა ჰოსტის გვერდის აგება"
+
+msgid "build page of last hits for hosts"
+msgstr "ჰოსტების ბოლო მოთხოვნების გვერდის აგება"
+
+msgid "build page of all unresolved IP"
+msgstr "ყველა გადაუჭრელი IP-ის გვერდის აგება"
+
+msgid "build page of all email senders (maillog)"
+msgstr "ყველა წერილის გამომგზავნის გვერდის აგება (ფოსტის ჟურნალი)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "ბოლო წერილის გამომგზავნების გვერდის აგება (ფოსტის ჟურნალი)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "ყველა წერილის მიმღების გვერდის აგება (ფოსტის ჟურნალი)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "ბოლო წერილის მიმღების გვერდის აგება (ფოსტის ჟურნალი)"
+
+msgid "build page of all logins used"
+msgstr "ყველა გამოყენებული მომხმარებლის გვერდის აგება"
+
+msgid "build page of last hits for logins"
+msgstr "მომხმარებლების ბოლო მოთხოვნების გვერდის აგება"
+
+msgid "build page of all robots/spider visits"
+msgstr "ყველა რობოტის/ობობის ვიზიტის გვერდის აგება"
+
+msgid "build page of last hits for robots"
+msgstr "რობოტების ბოლო მოთხოვნების გვერდის აგება"
+
+msgid "list most often viewed pages"
+msgstr "ყველაზე ხშირად ნანახი გვერდების სია"
+
+msgid "list most often viewed pages matching filter"
+msgstr "ფილტრს შესაბამისი ყველაზე ხშირად ნანახი გვერდების სია"
+
+msgid "list entry pages"
+msgstr "შესვლის გვერდების სია"
+
+msgid "list entry pages matching filter"
+msgstr "ფილტრს შესაბამისი შესვლის გვერდების სია"
+
+msgid "list exit pages"
+msgstr "გასვლის გვერდების სია"
+
+msgid "list exit pages matching filter"
+msgstr "ფილტრს შესაბამისი გასვლის გვერდების სია"
+
+msgid "build page with os detailed versions"
+msgstr "ოპერაციული სისტემების დეტალური ვერსიების გვერდის აგება"
+
+msgid "build page with browsers detailed versions"
+msgstr "ბრაუზერების დეტალური ვერსიების გვერდის აგება"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "უცნობი ბრაუზერის მომხმარებლის აგენტების სია"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "უცნობი ოპერაციული სისტემის მომხმარებლის აგენტების სია"
+
+msgid "build page of all refering search engines"
+msgstr "ყველა წყაროს საძიებო სისტემის გვერდის აგება"
+
+msgid "build page of all refering pages"
+msgstr "ყველა წყაროს გვერდის აგება"
+
+msgid "list all keyphrases used on search engines"
+msgstr "საძიებო სისტემებში გამოყენებული ყველა საკვანძო ფრაზის სია"
+
+msgid "list all keywords used on search engines"
+msgstr "საძიებო სისტემებში გამოყენებული ყველა საკვანძო სიტყვის სია"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "404 შეცდომების წყაროების სია"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "ExtraSection X-ის ყველა მნიშვნელობის გვერდის აგება"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           HTML ანგარიშის გვერდზე სტატიკური ბმულების გამოყენება"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    .html-ის ნაცვლად .xxx გაფართოების სტატიკური ბმულების გამოყენება"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL      HTML ანგარიშის LL ენაზე გამოტანა (en,de,es,fr,it,nl,zh-cn,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM     MM თვის HTML ანგარიშის გამოტანა"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY    YYYY წლის HTML ანგარიშის გამოტანა"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  'date' ოფციები არ გაძლევთ საშუალებას დაამუშაოთ ძველი ჟურნალის ფაილი. ისინი მხოლოდ საშუალებას გაძლევთ იხილოთ არჩეული თვის/წლის წინა ანგარიში მიმდინარე თვის/წლის ნაცვლად"
+
+msgid "Other options:"
+msgstr "სხვა ოფციები:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X      X-ზე დაბალი დონის გამართვის ინფორმაციის დამატება (შეამცირებს სიჩქარეს)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     AWStats-ის ვერსიის ჩვენება"
+
+msgid "Now supports/detects:"
+msgstr "ამჟამად მხარდაჭერილი/აღმოჩენილი："
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Web/FTP/ფოსტა/სტრიმინგ სერვერის ჟურნალის ანალიზი (და დატვირთვის ბალანსირების ჟურნალის ფაილები)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  შებრუნებული DNS მოთხოვნა (IPv4 და IPv6) და GeoIP მოთხოვნა"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  ვიზიტების რაოდენობა, უნიკალური ვიზიტორების რაოდენობა"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  ვიზიტების ხანგრძლივობა და ბოლო ვიზიტების სია"
+
+msgid "  Authenticated users"
+msgstr "  ავთენტიფიცირებული მომხმარებლები"
+
+msgid "  Days of week and rush hours"
+msgstr "  კვირის დღეები და პიკის საათები"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  ჰოსტების სია და გადაუჭრელი IP მისამართების სია"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  ყველაზე ხშირად ნანახი გვერდები, შესვლისა და გასვლის გვერდები"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  ფაილების ტიპი და ვებ შეკუმშვა (mod_gzip, mod_deflate სტატისტიკა)"
+
+msgid "  Configured Database Statistics"
+msgstr "  კონფიგურირებული მონაცემთა ბაზის სტატისტიკა"
+
+msgid "  %s domains/countries"
+msgstr "  %s დომენი/ქვეყანა"
+
+msgid "  %s robots"
+msgstr "  %s რობოტი"
+
+msgid "  %s worm's families"
+msgstr "  %s ჭიის ოჯახი"
+
+msgid "  %s operating systems"
+msgstr "  %s ოპერაციული სისტემა"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s ბრაუზერი (მობილური ბრაუზერების მონაცემთა ბაზის ჩათვლით %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s საძიებო სისტემა (და მათ მიერ გამოყენებული საკვანძო ფრაზები/სიტყვები)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  ყველა HTTP შეცდომა ბოლო წყაროსთან ერთად"
+
+msgid "  Report by day/month/year"
+msgstr "  ანგარიში დღის/თვის/წლის მიხედვით"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  დინამიკური ან სტატიკური HTML ან XHTML ანგარიშები, სტატიკური PDF ანგარიშები"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  ინდექსირებული ტექსტის ან XML თვიური მონაცემთა ბაზა"
+
+msgid "  And a lot of other advanced features and options..."  
+msgstr "  და მრავალი სხვა მოწინავე ფუნქცია..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  ახალი ვერსიები და ხშირი კითხვები: https://github.com/hestiacn/vstats/issues"

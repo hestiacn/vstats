@@ -1,0 +1,3284 @@
+# AWStats Malayalam (ml) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Malayalam\n"
+"Language: ml\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#------------------------------------------------------------------------------
+# മാസങ്ങളുടെ പേരുകൾ
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "ജനുവരി"
+
+msgid "month_02"
+msgstr "ഫെബ്രുവരി"
+
+msgid "month_03"
+msgstr "മാർച്ച്"
+
+msgid "month_04"
+msgstr "ഏപ്രിൽ"
+
+msgid "month_05"
+msgstr "മേയ്"
+
+msgid "month_06"
+msgstr "ജൂൺ"
+
+msgid "month_07"
+msgstr "ജൂലൈ"
+
+msgid "month_08"
+msgstr "ഓഗസ്റ്റ്"
+
+msgid "month_09"
+msgstr "സെപ്റ്റംബർ"
+
+msgid "month_10"
+msgstr "ഒക്ടോബർ"
+
+msgid "month_11"
+msgstr "നവംബർ"
+
+msgid "month_12"
+msgstr "ഡിസംബർ"
+
+#------------------------------------------------------------------------------
+# ആഴ്ചയിലെ ദിവസങ്ങളുടെ പേരുകൾ
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "ഞായർ"
+
+msgid "DayOfWeek_1"
+msgstr "തിങ്കൾ"
+
+msgid "DayOfWeek_2"
+msgstr "ചൊവ്വ"
+
+msgid "DayOfWeek_3"
+msgstr "ബുധൻ"
+
+msgid "DayOfWeek_4"
+msgstr "വ്യാഴം"
+
+msgid "DayOfWeek_5"
+msgstr "വെള്ളി"
+
+msgid "DayOfWeek_6"
+msgstr "ശനി"
+
+#------------------------------------------------------------------------------
+# ഇന്റർഫേസ് ഘടകങ്ങൾ
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "വെബ് സ്ഥിതിവിവരക്കണക്കുകളുടെ നൂതന വിശകലന ഉപകരണം"
+
+msgid "Statistics for"
+msgstr "സ്ഥിതിവിവരക്കണക്ക് റിപ്പോർട്ട്"
+
+msgid "main"
+msgstr "അവലോകനം"
+
+msgid "Switch to light mode"
+msgstr "ലൈറ്റ് മോഡിലേക്ക് മാറ്റുക"
+
+msgid "Switch to dark mode"
+msgstr "ഡാർക്ക് മോഡിലേക്ക് മാറ്റുക"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "ബൈറ്റുകൾ"
+
+msgid "Filter"
+msgstr "ഫിൽറ്റർ"
+
+msgid "Exclude filter"
+msgstr "ഒഴിവാക്കൽ ഫിൽറ്റർ"
+
+msgid "Top"
+msgstr "ആദ്യം"
+
+msgid "Full list"
+msgstr "പൂർണ്ണ പട്ടിക"
+
+msgid "Last"
+msgstr "അവസാന"
+
+msgid "Average"
+msgstr "ശരാശരി"
+
+msgid "Export"
+msgstr "കയറ്റുമതി"
+
+msgid "Details"
+msgstr "വിശദാംശങ്ങൾ"
+
+msgid "Version"
+msgstr "പതിപ്പ്"
+
+msgid "thousands_separator"
+msgstr ","
+
+msgid "dateformat_long"
+msgstr "dd-mm-yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd-mm-yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "%s"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# നാവിഗേഷൻ ബാർ
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "AWStats മാസ തിരഞ്ഞെടുക്കൽ"
+
+msgid "nav_category_basic"
+msgstr "അടിസ്ഥാന രേഖകൾ"
+
+msgid "nav_category_guide"
+msgstr "ഉപയോഗ ഗൈഡ്"
+
+msgid "nav_category_reference"
+msgstr "റഫറൻസ് വിഭവങ്ങൾ"
+
+msgid "nav_category_integration"
+msgstr "സംയോജനവും വിപുലീകരണങ്ങളും"
+
+msgid "nav_category_dev"
+msgstr "ഡെവലപ്പർ രേഖകൾ"
+
+msgid "nav_changelog"
+msgstr "മാറ്റങ്ങളുടെ ചരിത്രം"
+
+msgid "nav_what"
+msgstr "എന്താണ് AWStats"
+
+msgid "nav_license"
+msgstr "ലൈസൻസ്"
+
+msgid "nav_glossary"
+msgstr "നിഘണ്ടു"
+
+msgid "nav_setup"
+msgstr "ഇൻസ്റ്റലേഷനും കോൺഫിഗറേഷനും"
+
+msgid "nav_upgrade"
+msgstr "അപ്ഗ്രേഡ് ഗൈഡ്"
+
+msgid "nav_config"
+msgstr "കോൺഫിഗറേഷൻ പാരാമീറ്ററുകൾ"
+
+msgid "nav_extra"
+msgstr "അധിക ഭാഗങ്ങൾ"
+
+msgid "nav_tools"
+msgstr "മറ്റ് ഉപകരണങ്ങൾ"
+
+msgid "nav_faq"
+msgstr "പതിവ് ചോദ്യങ്ങൾ"
+
+msgid "nav_security"
+msgstr "സുരക്ഷാ ശുപാർശകൾ"
+
+msgid "nav_compare"
+msgstr "താരതമ്യം"
+
+msgid "nav_benchmark"
+msgstr "പ്രകടന പരിശോധന"
+
+msgid "nav_webmin"
+msgstr "Webmin മൊഡ്യൂൾ"
+
+msgid "nav_dolibarr"
+msgstr "Dolibarr മൊഡ്യൂൾ"
+
+msgid "nav_contrib"
+msgstr "സംഭാവന വിഭവങ്ങൾ"
+
+msgid "nav_plugins"
+msgstr "പ്ലഗിൻ വികസനം"
+
+msgid "nav_hooks"
+msgstr "പ്ലഗിൻ ഹുക്കുകൾ"
+
+msgid "nav_graphs"
+msgstr "പ്ലഗിൻ ഗ്രാഫുകൾ"
+
+msgid "Back to top"
+msgstr "മുകളിലേക്ക് മടങ്ങുക"
+
+msgid "nav_select_month"
+msgstr "മാസം തിരഞ്ഞെടുക്കുക"
+
+#------------------------------------------------------------------------------
+# പ്രധാന സ്ഥിതിവിവരക്കണക്കുകൾ
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "തനതായ സന്ദർശകർ"
+
+msgid "Visits"
+msgstr "സന്ദർശനങ്ങൾ"
+
+msgid "Visits duration"
+msgstr "സന്ദർശന ദൈർഘ്യം"
+
+msgid "First visit"
+msgstr "ആദ്യ സന്ദർശനം"
+
+msgid "Last visit"
+msgstr "അവസാന സന്ദർശനം"
+
+msgid "Visits/Visitor"
+msgstr "സന്ദർശനങ്ങൾ/സന്ദർശകൻ"
+
+msgid "Pages/Visit"
+msgstr "പേജുകൾ/സന്ദർശനം"
+
+msgid "Hits/Visit"
+msgstr "ഹിറ്റുകൾ/സന്ദർശനം"
+
+msgid "KB/Visit"
+msgstr "കെബി/സന്ദർശനം"
+
+msgid "KB/Visits"
+msgstr "കെബി/സന്ദർശനങ്ങൾ"
+
+msgid "Pages"
+msgstr "പേജുകൾ"
+
+msgid "Hits"
+msgstr "ഹിറ്റുകൾ"
+
+msgid "Bandwidth"
+msgstr "ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "സെ"
+
+msgid "unit_min"
+msgstr "മി"
+
+msgid "unit_h"
+msgstr "മ"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "ഉപകരണങ്ങളുടെ തരങ്ങൾ"
+
+msgid "Device Type"
+msgstr "ഉപകരണത്തിന്റെ തരം"
+
+msgid "Percent"
+msgstr "ശതമാനം"
+
+msgid "Mobile"
+msgstr "മൊബൈൽ"
+
+msgid "Pause & Go"
+msgstr "താൽക്കാലിക നിർത്തലും തുടരലും"
+
+msgid "Complete"
+msgstr "പൂർത്തിയായി"
+
+msgid "Tablet"
+msgstr "ടാബ്ലെറ്റ്"
+
+msgid "Tv"
+msgstr "ടിവി"
+
+msgid "Wearable"
+msgstr "ധരിക്കാവുന്ന ഉപകരണം"
+
+msgid "Bot"
+msgstr "ബോട്ട്"
+
+msgid "Desktop"
+msgstr "ഡെസ്ക്ടോപ്പ് കമ്പ്യൂട്ടർ"
+
+msgid "Normal browsing traffic"
+msgstr "സാധാരണ ബ്രൗസിംഗ് ട്രാഫിക്"
+
+msgid "Abnormal browsing traffic"
+msgstr "അസാധാരണ ബ്രൗസിംഗ് ട്രാഫിക്"
+
+msgid "Viewed"
+msgstr "കണ്ടു"
+
+msgid "Not viewed"
+msgstr "കണ്ടില്ല"
+
+msgid "Abnormal browsing traffic note"
+msgstr "അസാധാരണ ട്രാഫിക്കിൽ ഉൾപ്പെടുന്നു: സെർച്ച് എഞ്ചിൻ ബോട്ടുകൾ, ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ് പരിശീലന ബോട്ടുകൾ, കേടുപാടുകൾ സ്കാൻ ചെയ്യുന്നവ, HTTP/HTTPS മാനദണ്ഡങ്ങൾ പാലിക്കാത്ത അഭ്യർത്ഥനകൾ"
+
+msgid "File size"
+msgstr "ഫയലിന്റെ വലിപ്പം"
+
+msgid "File type"
+msgstr "ഫയൽ തരം"
+
+msgid "Downloads"
+msgstr "ഡൗൺലോഡുകൾ"
+
+msgid "Request time"
+msgstr "അഭ്യർത്ഥന സമയം"
+
+msgid "Total requests"
+msgstr "ആകെ അഭ്യർത്ഥനകൾ"
+
+msgid "Frequency"
+msgstr "ആവൃത്തി"
+
+msgid "Average frequency"
+msgstr "ശരാശരി ആവൃത്തി"
+
+msgid "Seconds"
+msgstr "സെക്കൻഡുകൾ"
+
+msgid "First"
+msgstr "ആദ്യ"
+
+msgid "Mails"
+msgstr "ഇമെയിലുകൾ"
+
+msgid "Size"
+msgstr "വലിപ്പം"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "മുന്നറിയിപ്പ്: ഈ ഫയൽ നീക്കം ചെയ്യുന്നത് തീയതിയിലെ"
+
+msgid "will be lost/reset."
+msgstr "എല്ലാ സ്ഥിതിവിവരക്കണക്കുകളും ശാശ്വതമായി നഷ്ടപ്പെടും/പുനഃസജ്ജമാകും"
+
+msgid "Last config file used to build this data file was"
+msgstr "ഈ ഡാറ്റ ഫയൽ നിർമ്മിക്കാൻ ഉപയോഗിച്ച അവസാന കോൺഫിഗ് ഫയൽ ഇതായിരുന്നു"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "ഈ ഫയലിലെ MAP വിഭാഗം ഓരോ ഭാഗത്തിന്റെയും ബൈറ്റ് ഓഫ്സെറ്റ് സ്ഥാനം നിർണ്ണയിക്കുന്നു"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats നേരിട്ടുള്ള പ്രവേശനത്തിനായി. നിങ്ങൾ ഈ ഫയലിൽ എവിടെയെങ്കിലും മാറ്റങ്ങൾ വരുത്തിയിട്ടുണ്ടെങ്കിൽ, നിങ്ങൾ"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "MAP വിഭാഗം പൂർണ്ണമായും നീക്കം ചെയ്യണം (AWStats അടുത്ത അപ്ഡേറ്റിൽ അത് പുനഃസൃഷ്ടിക്കും)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = അവസാന രേഖയുടെ തീയതി - അവസാന ലോഗിലെ അവസാന രേഖയുടെ വരി നമ്പർ - അവസാന ലോഗിലെ അവസാന രേഖയുടെ ഓഫ്സെറ്റ് - അവസാന രേഖയുടെ ഒപ്പിന്റെ മൂല്യം"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = ചരിത്ര ഫയലിലെ ആദ്യ സന്ദർശനത്തിന്റെ തീയതി"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = ചരിത്ര ഫയലിലെ അവസാന സന്ദർശനത്തിന്റെ തീയതി"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = അവസാന അപ്ഡേറ്റിന്റെ തീയതി - വിശകലനം ചെയ്ത രേഖകളുടെ എണ്ണം - പഴയ രേഖകളുടെ എണ്ണം - പുതിയ രേഖകളുടെ എണ്ണം - കേടായ രേഖകളുടെ എണ്ണം - ഒഴിവാക്കിയ രേഖകളുടെ എണ്ണം"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = സന്ദർശനങ്ങളുടെ എണ്ണം"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = തനതായ സന്ദർശകരുടെ എണ്ണം"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = അറിയപ്പെടുന്ന ഹോസ്റ്റുകളുടെ എണ്ണം"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = അജ്ഞാത ഹോസ്റ്റുകളുടെ എണ്ണം"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "ക്ലസ്റ്റർ ID - പേജുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "മണിക്കൂർ - പേജുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - കാണാത്ത പേജുകൾ - കാണാത്ത ഹിറ്റുകൾ - കാണാത്ത ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "തീയതി - പേജുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - സന്ദർശനങ്ങൾ"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "ഡൊമെയ്ൻ - പേജുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "പ്രധാന പേജിൽ ആദ്യ %s ഏറ്റവും കൂടുതൽ കണ്ട പേജുകൾ മാത്രമേ കാണിക്കൂ, പൂർണ്ണ പട്ടികയ്ക്കായി വിശദാംശ പേജ് കാണുക"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "ഹോസ്റ്റ് - പേജുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - അവസാന സന്ദർശനത്തിന്റെ തീയതി - [അവസാന സന്ദർശനത്തിന്റെ ആരംഭ തീയതി] - [അവസാന സന്ദർശനത്തിന്റെ അവസാന പേജ്]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[അവസാന സന്ദർശനത്തിന്റെ ആരംഭ തീയതി] കൂടാതെ [അവസാന സന്ദർശനത്തിന്റെ അവസാന പേജ്] സെഷൻ പൂർത്തിയായിട്ടില്ലെങ്കിൽ മാത്രമേ സംരക്ഷിക്കപ്പെടുകയുള്ളൂ"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "പ്രധാന പേജിൽ ആദ്യ %s ഏറ്റവും കൂടുതൽ അഭ്യർത്ഥിച്ച രേഖകൾ മാത്രമേ കാണിക്കൂ, പൂർണ്ണ പട്ടികയ്ക്കായി വിശദാംശ പേജ് കാണുക"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "ഉപയോക്താവ് - പേജുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - അവസാന സന്ദർശനം"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "റോബോട്ട് ID - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - അവസാന സന്ദർശനം - robots.txt-ലെ ഹിറ്റുകൾ"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "വേം ID - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - അവസാന സന്ദർശനം"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "ഇമെയിൽ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - അവസാന സന്ദർശനം"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "പ്രധാന പേജിൽ ആദ്യ %s ഏറ്റവും കൂടുതൽ അഭ്യർത്ഥിച്ച ഇമെയിലുകൾ മാത്രമേ കാണിക്കൂ, പൂർണ്ണ പട്ടികയ്ക്കായി വിശദാംശ പേജ് കാണുക"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - പേജുകൾ - ബാൻഡ്വിഡ്ത്ത് - പ്രവേശനം - പുറത്തുകടക്കൽ"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "ഫയലുകളുടെ തരം - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത് - കംപ്രസ് ചെയ്യാത്ത ബാൻഡ്വിഡ്ത്ത് - കംപ്രസ് ചെയ്തതിന് ശേഷമുള്ള ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "അഭ്യർത്ഥന സമയ പരിധി - അഭ്യർത്ഥനകളുടെ ആവൃത്തി"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "ഫയൽ വലിപ്പ പരിധി - ഫയലുകളുടെ എണ്ണം"
+
+msgid "Session range - Number of visits"
+msgstr "സെഷൻ ദൈർഘ്യ പരിധി - സന്ദർശനങ്ങളുടെ എണ്ണം"
+
+msgid "URL with %s errors - Hits"
+msgstr "%s പിശകുകളുള്ള URL - ഹിറ്റുകൾ"
+
+msgid "Last URL referrer"
+msgstr "അവസാന URL ഉറവിടം"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "പിശകുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "Search keywords - Number of search"
+msgstr "തിരയൽ കീവേഡുകൾ - തിരയലുകളുടെ എണ്ണം"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "പ്രധാന പേജിൽ ആദ്യ %s ഏറ്റവും ജനപ്രിയമായ തിരയൽ കീവേഡുകൾ മാത്രമേ കാണിക്കൂ (തിരയലുകളുടെ എണ്ണം അനുസരിച്ച് ക്രമീകരിച്ചിരിക്കുന്നു). പൂർണ്ണ പട്ടികയ്ക്കായി വിശദാംശ പേജ് കാണുക"
+
+msgid "Search keyphrases - Number of search"
+msgstr "തിരയൽ ശൈലികൾ - തിരയലുകളുടെ എണ്ണം"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "പ്രധാന പേജിൽ ആദ്യ %s ഏറ്റവും ജനപ്രിയമായ തിരയൽ ശൈലികൾ മാത്രമേ കാണിക്കൂ (തിരയലുകളുടെ എണ്ണം അനുസരിച്ച് ക്രമീകരിച്ചിരിക്കുന്നു). പൂർണ്ണ പട്ടികയ്ക്കായി വിശദാംശ പേജ് കാണുക"
+
+msgid "External page referers - Pages - Hits"
+msgstr "ബാഹ്യ പേജ് ഉറവിടങ്ങൾ - പേജുകൾ - ഹിറ്റുകൾ"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "പ്രധാന പേജിൽ ആദ്യ %s ഏറ്റവും കൂടുതൽ റഫർ ചെയ്ത ബാഹ്യ ഉറവിടങ്ങൾ മാത്രമേ കാണിക്കൂ (പേജുകളുടെ എണ്ണം അനുസരിച്ച് ക്രമീകരിച്ചിരിക്കുന്നു). പൂർണ്ണ പട്ടികയ്ക്കായി വിശദാംശ പേജ് കാണുക"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "സെർച്ച് എഞ്ചിൻ ഉറവിട ID - പേജുകൾ - ഹിറ്റുകൾ"
+
+msgid "Origin - Pages - Hits"
+msgstr "ഉറവിടം - പേജുകൾ - ഹിറ്റുകൾ"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "അജ്ഞാത ഉറവിട ബ്രൗസർ - അവസാന സന്ദർശന തീയതി"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "അജ്ഞാത ഉറവിട ഓപ്പറേറ്റിംഗ് സിസ്റ്റം - അവസാന സന്ദർശന തീയതി"
+
+msgid "Screen size - Hits"
+msgstr "സ്ക്രീൻ വലിപ്പം - ഹിറ്റുകൾ"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ബ്രൗസർ ID - ഹിറ്റുകൾ - പേജുകൾ"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "ഡൗൺലോഡുകൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "പ്രോട്ടോക്കോൾ - ഹിറ്റുകൾ - ബാൻഡ്വിഡ്ത്ത്"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "ഐക്കൺ സ്റ്റാറ്റസ് - തരം:200:404:മറ്റുള്ളവ"
+
+#------------------------------------------------------------------------------
+# സമയ ഇടവേള വിവർത്തനങ്ങൾ
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "അർദ്ധരാത്രി · AWStats ഉറങ്ങുന്നു, നിങ്ങൾ ഇപ്പോഴും ഡാറ്റ കാണുകയാണോ? യഥാർത്ഥ ആരാധകൻ"
+
+msgid "period_01"
+msgstr "രാത്രി 1 മണി · ഈ സമയത്ത് ഇവിടെയുണ്ടോ? ഉറക്കമില്ലായ്മയോ അതോ ജോലി കഴിഞ്ഞ് വന്നതോ"
+
+msgid "period_02"
+msgstr "രാത്രി 2 മണി · ബോട്ടുകൾ പോലും നിങ്ങളേക്കാൾ കൂടുതൽ ഉത്സാഹത്തോടെ പണിയെടുക്കുന്നു"
+
+msgid "period_03"
+msgstr "രാത്രി 3 മണി · നഗരം ഉറങ്ങുന്നു, സെർവർ ഓവർടൈം ജോലി ചെയ്യുന്നു, ആരാണ് കൂടുതൽ ദുരിതമനുഭവിക്കുന്നത്"
+
+msgid "period_04"
+msgstr "രാത്രി 4 മണി · ഇരുട്ടിൽ ഏറ്റവും തിളക്കമുള്ള നക്ഷത്രം നിങ്ങളുടെ സ്ക്രീനോ സെർവറിന്റെ ഇൻഡിക്കേറ്ററോ"
+
+msgid "period_05"
+msgstr "രാവിലെ 5 മണി · നേരത്തെ എഴുന്നേൽക്കുന്നവൻ ഭാഗ്യവാൻ, നേരത്തെ എഴുന്നേൽക്കുന്ന ബോട്ടുകൾ ഡാറ്റ ശേഖരിക്കുന്നു"
+
+msgid "period_06"
+msgstr "രാവിലെ 6 മണി · ആരെങ്കിലും ഉണരുന്നു, ആരെങ്കിലും ഇതുവരെ ഉറങ്ങിയിട്ടില്ല, ഇന്റർനെറ്റ് ഒരിക്കലും അടയുന്നില്ല"
+
+msgid "period_07"
+msgstr "രാവിലെ 7 മണി · മെട്രോയിലെ തിരക്കിന്റെ സമയം, അതുപോലെ വെബ്സൈറ്റുകൾ ബ്രൗസ് ചെയ്യുന്ന സമയം"
+
+msgid "period_08"
+msgstr "രാവിലെ 8 മണി · ജോലി ദിവസത്തിലെ ആദ്യ ജോലി: ഇന്നലത്തെ ഡാറ്റ നോക്കുക"
+
+msgid "period_09"
+msgstr "രാവിലെ 9 മണി · സുവർണ്ണ സമയം, അലസതയ്ക്കും അതിന്റേതായ നിയമങ്ങളുണ്ട്"
+
+msgid "period_10"
+msgstr "രാവിലെ 10 മണി · കാപ്പി സമയം, ട്രാഫിക് വർദ്ധിച്ചിട്ടുണ്ടോ എന്ന് നോക്കുക"
+
+msgid "period_11"
+msgstr "രാവിലെ 11 മണി · ഉച്ചഭക്ഷണത്തിന് ഇനിയും ഒരു മണിക്കൂർ ബാക്കി, കുറച്ചുകൂടി ക്ഷമിക്കുക"
+
+msgid "period_12"
+msgstr "ഉച്ചകഴിഞ്ഞ് · സെർവർ: എല്ലാവരും ഭക്ഷണത്തിന് പോയി, ഞാനും അൽപ്പം വിശ്രമിക്കാം"
+
+msgid "period_13"
+msgstr "ഉച്ചകഴിഞ്ഞ് 1 മണി · മധ്യാഹ്ന മയക്കം വരുന്നു, എന്നാൽ ഡാറ്റ ഉറങ്ങുന്നില്ല"
+
+msgid "period_14"
+msgstr "ഉച്ചകഴിഞ്ഞ് 2 മണി · മധ്യാഹ്ന ചായ സമയം, ഡാറ്റയ്ക്കൊപ്പം കൂടുതൽ രസകരം"
+
+msgid "period_15"
+msgstr "ഉച്ചകഴിഞ്ഞ് 3 മണി · ഇന്നത്തെ ട്രാഫിക് ഗ്രാഫ് നിങ്ങളുടെ മാനസികാവസ്ഥയുടെ വക്രം പോലെയാണ്"
+
+msgid "period_16"
+msgstr "ഉച്ചകഴിഞ്ഞ് 4 മണി · ജോലി കഴിയാൻ X മണിക്കൂറുകൾ, ട്രാഫിക് വേഗത്തിലാകുന്നു"
+
+msgid "period_17"
+msgstr "വൈകുന്നേരം 5 മണി · ജോലി കഴിഞ്ഞു! സെർവർ ഇനിയും ജോലി ചെയ്യണം"
+
+msgid "period_18"
+msgstr "വൈകുന്നേരം 6 മണി · അത്താഴ സമയം, അൽപ്പം വിശ്രമിക്കുകയും ഒരു വീഡിയോ കാണുകയും ചെയ്യുക"
+
+msgid "period_19"
+msgstr "വൈകുന്നേരം 7 മണി · പ്രൈം ടൈം, ട്രാഫിക് പീക്ക്, സെർവർ: ഞാൻ തടുക്കും"
+
+msgid "period_20"
+msgstr "രാത്രി 8 മണി · സോഫയിൽ കിടന്ന്, നിങ്ങൾ 114514-ാമത്തെ സന്ദർശകനാണ്"
+
+msgid "period_21"
+msgstr "രാത്രി 9 മണി · വൈകി, രഹസ്യമായി ഡാറ്റ കാണുന്ന രാത്രി കൂടി"
+
+msgid "period_22"
+msgstr "രാത്രി 10 മണി · ഇന്നത്തെ ഡാറ്റ തയ്യാറാണ്, നിങ്ങൾക്ക് ജിജ്ഞാസയുണ്ടോ"
+
+msgid "period_23"
+msgstr "രാത്രി 11 മണി · AWStats: ഉറങ്ങാനുള്ള സമയം, നാളെ വീണ്ടും ജോലി ചെയ്യണം"
+
+#------------------------------------------------------------------------------
+# സമയ മാനങ്ങൾ
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "സ്ഥിതിവിവരക്കണക്ക് കാലയളവ്"
+
+msgid "Year"
+msgstr "വർഷം"
+
+msgid "Month"
+msgstr "മാസം"
+
+msgid "Months"
+msgstr "മാസങ്ങൾ"
+
+msgid "Date"
+msgstr "തീയതി"
+
+msgid "Day"
+msgstr "ദിവസം"
+
+msgid "Hour"
+msgstr "മണിക്കൂർ"
+
+msgid "Hours"
+msgstr "മണിക്കൂറുകൾ"
+
+msgid "Day of week"
+msgstr "ആഴ്ചയിലെ ദിവസം"
+
+msgid "When"
+msgstr "എപ്പോൾ"
+
+msgid "%s Server Management Panel"
+msgstr "%s സെർവർ മാനേജ്മെന്റ് പാനൽ"
+
+msgid "Server Administration"
+msgstr "ലളിതവും കാര്യക്ഷമവുമായ സെർവർ പരിഹാരം"
+
+#------------------------------------------------------------------------------
+# സന്ദർശക മാനം
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "അസാധുവായ URL പാരാമീറ്ററുകൾ"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "URL പാരാമീറ്ററുകൾ അസാധുവായതിനാലോ തെറ്റായ ഫോർമാറ്റിലായതിനാലോ അഭ്യർത്ഥിച്ച പേജ് ലോഡ് ചെയ്യാൻ കഴിയില്ല"
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "ഇത് തെറ്റായ URL ടൈപ്പ് ചെയ്യുന്നത്, പാരാമീറ്റർ വേർതിരിക്കലുകൾ നഷ്ടപ്പെടുന്നത്, അല്ലെങ്കിൽ അസാധുവായ കോൺഫിഗറേഷൻ പേര് ഉപയോഗിക്കുന്നത് എന്നിവ മൂലമുണ്ടാകാം"
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "ദയവായി നിങ്ങൾ നൽകിയ URL പരിശോധിച്ച് എല്ലാ പാരാമീറ്ററുകളും ശരിയായി ഫോർമാറ്റ് ചെയ്തിട്ടുണ്ടെന്ന് ഉറപ്പാക്കുക"
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "നിങ്ങളുടെ config/domain ഫയലിൽ SiteDomain പാരാമീറ്റർ നിർവചിച്ചിട്ടില്ല, അല്ലെങ്കിൽ ഫയലിൽ എക്സിക്യൂട്ട് അനുമതി നിങ്ങൾക്ക് ഇല്ലായിരിക്കാം."
+
+msgid "Please run as Administrator to set permissions"
+msgstr "അനുമതികൾ സജ്ജീകരിക്കാൻ ദയവായി അഡ്മിനിസ്ട്രേറ്ററായി പ്രവർത്തിപ്പിക്കുക"
+
+msgid "Please set execute permission"
+msgstr "ദയവായി എക്സിക്യൂട്ട് അനുമതി സജ്ജീകരിക്കുക"
+
+msgid "Or if you prefer numeric mode"
+msgstr "അല്ലെങ്കിൽ നിങ്ങൾ സംഖ്യാ മോഡ് ഇഷ്ടപ്പെടുന്നെങ്കിൽ"
+
+msgid "View Report Directly"
+msgstr "നേരിട്ട് റിപ്പോർട്ട് കാണുക"
+
+msgid "AWStats Log Viewer"
+msgstr "AWStats ലോഗ് വ്യൂവർ"
+
+msgid "Month Selection"
+msgstr "മാസം തിരഞ്ഞെടുക്കൽ"
+
+msgid "Who"
+msgstr "ആര്"
+
+msgid "Visitors"
+msgstr "സന്ദർശകർ"
+
+msgid "Countries"
+msgstr "രാജ്യങ്ങൾ/പ്രദേശങ്ങൾ"
+
+msgid "flag_icon"
+msgstr "പതാക"
+
+msgid "Country-Region-City"
+msgstr "രാജ്യം/പ്രദേശം/നഗരം"
+
+msgid "Code"
+msgstr "കോഡ്"
+
+msgid "Known"
+msgstr "അറിയപ്പെടുന്ന"
+
+msgid "unknownos"
+msgstr "അജ്ഞാത ഓപ്പറേറ്റിംഗ് സിസ്റ്റം"
+
+msgid "unknownbrowser"
+msgstr "അജ്ഞാത ബ്രൗസർ"
+
+msgid "Unresolved IP Address"
+msgstr "പരിഹരിക്കാനാകാത്ത IP വിലാസം"
+
+msgid "Unknown File Type"
+msgstr "അജ്ഞാത ഫയൽ തരം"
+
+msgid "Unknown Size"
+msgstr "അജ്ഞാത വലിപ്പം"
+
+msgid "Unknown Time"
+msgstr "അജ്ഞാത അഭ്യർത്ഥന സമയം"
+
+msgid "Unknown Browser"
+msgstr "അജ്ഞാത ബ്രൗസർ"
+
+msgid "Unknown OS"
+msgstr "അജ്ഞാത ഓപ്പറേറ്റിംഗ് സിസ്റ്റം"
+
+msgid "Unknown Visitor"
+msgstr "അജ്ഞാത സന്ദർശകൻ"
+
+msgid "Unknown Visitor (Total)"
+msgstr "അജ്ഞാത സന്ദർശകൻ (ആകെ)"
+
+msgid "Unknown Country"
+msgstr "അജ്ഞാത രാജ്യം/പ്രദേശം"
+
+msgid "Unknown Country (Region)"
+msgstr "അജ്ഞാത രാജ്യം/പ്രദേശം (ആകെ)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "അജ്ഞാത സന്ദർശകൻ (തലക്കെട്ട്)"
+
+msgid "PageStayTime"
+msgstr "പേജിൽ തങ്ങുന്ന സമയം കണക്കാക്കാൻ കഴിയില്ല"
+
+msgid "Unknown OS (Link)"
+msgstr "അജ്ഞാത ഓപ്പറേറ്റിംഗ് സിസ്റ്റം (ലിങ്ക്)"
+
+msgid "Unknown OS (Row)"
+msgstr "അജ്ഞാത ഓപ്പറേറ്റിംഗ് സിസ്റ്റം (പട്ടിക)"
+
+msgid "Unknown Browser (Link)"
+msgstr "അജ്ഞാത ബ്രൗസർ (ലിങ്ക്)"
+
+msgid "Unknown Browser (Row)"
+msgstr "അജ്ഞാത ബ്രൗസർ (പട്ടിക)"
+
+msgid "Unknown Screen"
+msgstr "അജ്ഞാത സ്ക്രീൻ വലിപ്പം"
+
+msgid "Login"
+msgstr "ഉപയോക്താവ്"
+
+msgid "Anonymous"
+msgstr "അജ്ഞാതൻ"
+
+msgid "Robots"
+msgstr "റോബോട്ടുകൾ"
+
+msgid "Different robots"
+msgstr "വിവിധ റോബോട്ടുകൾ"
+
+msgid "Hits on robots.txt"
+msgstr "മുകളിൽ പട്ടികപ്പെടുത്തിയ സെർച്ച് എഞ്ചിൻ റോബോട്ടുകൾ സൃഷ്ടിക്കുന്ന "അസാധാരണ" ട്രാഫിക് മറ്റ് ചാർട്ടുകളിൽ ഉൾപ്പെടുത്തിയിട്ടില്ല. "+" ന് ശേഷമുള്ള സംഖ്യ "robots.txt"-ലേക്കുള്ള വിജയകരമായ പ്രവേശനങ്ങളുടെ എണ്ണത്തെ പ്രതിനിധീകരിക്കുന്നു"
+
+msgid "Worms"
+msgstr "വേമുകൾ"
+
+msgid "Different worms"
+msgstr "വിവിധ വേമുകൾ"
+
+msgid "Target"
+msgstr "ലക്ഷ്യം"
+
+msgid "Grabber"
+msgstr "ഗ്രാബർ"
+
+#------------------------------------------------------------------------------
+# ഫോർമാറ്റ് വിവരണങ്ങൾ
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "ടെക്സ്റ്റ് ഫയൽ (1963-ൽ ASCII മാനകീകരിക്കപ്പെട്ടു, ഫോർമാറ്റിംഗ് ഇല്ലാത്ത ലളിതമായ ടെക്സ്റ്റ്. എല്ലാ സോഴ്സ് കോഡ്, കോൺഫിഗറേഷൻ, ലോഗുകളുടെ അടിസ്ഥാനം. Unix-ൽ LF, Windows-ൽ CRLF ഉപയോഗിക്കുന്നു, ഇന്നും കമ്പ്യൂട്ടറുകളിൽ ഏറ്റവും സാധാരണമായ ഡാറ്റ ഫോർമാറ്റ്)"
+
+msgid "mime_log"
+msgstr "ലോഗ് ഫയൽ (സിസ്റ്റം, അപ്ലിക്കേഷന്റെ വിവരങ്ങൾ രേഖപ്പെടുത്തുന്നു, സാധാരണയായി പിശകുകൾ കണ്ടെത്തൽ, പ്രകടന വിശകലനം, സുരക്ഷാ ഓഡിറ്റിംഗ് എന്നിവയ്ക്ക് ഉപയോഗിക്കുന്നു. സ്റ്റാൻഡേർഡ് ഫോർമാറ്റുകൾ: Apache combined log, Nginx access log, syslog)"
+
+msgid "mime_page"
+msgstr "HTML വെബ് പേജ് (1989-ൽ ടിം ബെർണേഴ്സ്-ലീ വേൾഡ് വൈഡ് വെബ് കണ്ടുപിടിച്ചു, 1990-ൽ HTML/HTTP/URL എന്നീ മൂന്ന് മൂല സാങ്കേതികവിദ്യകൾ നിർവചിച്ചു, പേറ്റന്റ് ഇല്ലാതെ സൗജന്യമായി തുറന്നുകൊടുത്തു. 2014-ൽ HTML5 W3C ഔദ്യോഗിക മാനകമായി. 2016-ൽ ട്യൂറിംഗ് പുരസ്കാരം നേടി)"
+
+msgid "mime_khtml"
+msgstr "KHTML വെബ് എഞ്ചിൻ (1998-ൽ KDE 2.0-നൊപ്പം പുറത്തിറങ്ങി, Konqueror ബ്രൗസറിന്റെ റെൻഡറിംഗ് എഞ്ചിൻ. 2001-ൽ ആപ്പിൾ KHTML അടിസ്ഥാനമാക്കി WebKit സൃഷ്ടിച്ചു, 2008-ൽ ഗൂഗിൾ WebKit-ൽ നിന്ന് Blink ഫോർക്ക് ചെയ്തു, ഇത് Chrome, Edge, Safari ബ്രൗസറുകളുടെ കോർ ആയി. KHTML ഓപ്പൺ സോഴ്സ് കമ്മ്യൂണിറ്റിയുടെ ഉദാഹരണമാണ്, ഇത് ആധുനിക ബ്രൗസർ എഞ്ചിനുകൾക്ക് അടിത്തറ പാകി)"
+
+msgid "mime_script"
+msgstr "ഡൈനാമിക് സ്ക്രിപ്റ്റ് (കമ്പൈൽ ചെയ്യാതെ, ഇന്റർപ്രെറ്റ് ചെയ്യപ്പെടുന്ന ഭാഷ. ASP, JSP, CGI, ColdFusion, Tcl, VBScript എന്നിവ ഉൾപ്പെടുന്നു, ആദ്യകാല വെബ് വികസനത്തിൽ, സിസ്റ്റം മാനേജ്മെന്റിൽ, ഓട്ടോമേഷൻ ജോലികളിൽ വ്യാപകമായി ഉപയോഗിച്ചിരുന്നു. ആധുനിക സ്ക്രിപ്റ്റിംഗ് ഭാഷകളായ Python, Ruby, JavaScript ഇപ്പോൾ പൂർണ്ണ തോതിലുള്ള പ്രോഗ്രാമിംഗ് ഭാഷകളാണ്)"
+
+msgid "mime_js"
+msgstr "JavaScript സ്ക്രിപ്റ്റ് (1995-ൽ Brendan Eich Netscape-ൽ 10 ദിവസത്തിനുള്ളിൽ സൃഷ്ടിച്ചു, ബ്രൗസറിന്റെ നേറ്റീവ് പ്രോഗ്രാമിംഗ് ഭാഷ. 1997-ൽ ECMAScript മാനകീകരിക്കപ്പെട്ടു, 2009-ൽ Node.js സൃഷ്ടിക്കപ്പെട്ടതോടെ ഇത് പൂർണ്ണ തോതിലുള്ള ഭാഷയായി മാറി, npm ലോകത്തിലെ ഏറ്റവും വലിയ പാക്കേജ് മാനേജറാണ്. GitHub-ലെ ഏറ്റവും ജനപ്രിയമായ പ്രോഗ്രാമിംഗ് ഭാഷ)"
+
+msgid "mime_py"
+msgstr "Python സ്ക്രിപ്റ്റ് (1991-ൽ Guido van Rossum സൃഷ്ടിച്ചു, നിർബന്ധിത ഇൻഡന്റേഷൻ, ലളിതമായ സിന്റാക്സ് എന്നിവയാൽ സവിശേഷത. വെബ് വികസനം, ഡാറ്റ സയൻസ്, ആർട്ടിഫിഷ്യൽ ഇന്റലിജൻസ്, ഓട്ടോമേഷൻ എന്നിവയിൽ വ്യാപകമായി ഉപയോഗിക്കുന്നു. TIOBE വാർഷിക പ്രോഗ്രാമിംഗ് ഭാഷാ പുരസ്കാരം പലതവണ നേടിയിട്ടുണ്ട്)"
+
+msgid "mime_sh"
+msgstr "ഷെൽ സ്ക്രിപ്റ്റ് (1971-ൽ Unix-നൊപ്പം, കമാൻഡ് സ്ക്രിപ്റ്റിംഗ് ഭാഷ. സിസ്റ്റം മാനേജ്മെന്റ്, ഓട്ടോമേഷൻ ജോലികൾ, സേവനങ്ങൾ ആരംഭിക്കൽ, വിന്യാസ സ്ക്രിപ്റ്റുകൾ എന്നിവയ്ക്ക് ഉപയോഗിക്കുന്നു. Linux അഡ്മിനിസ്ട്രേഷനിലെ അനിവാര്യ കഴിവ്)"
+
+msgid "mime_rb"
+msgstr "Ruby സ്ക്രിപ്റ്റ് (1995-ൽ Yukihiro Matsumoto സൃഷ്ടിച്ചു, ഡെവലപ്പർമാരുടെ സന്തോഷത്തിൽ ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്നു. Ruby on Rails ഫ്രെയിംവർക്ക് "സംപ്രദായത്തേക്കാൾ കോൺഫിഗറേഷൻ മികച്ചത്" എന്ന മാതൃക അവതരിപ്പിച്ചു, ഇത് ആധുനിക വെബ് ഫ്രെയിംവർക്കുകളുടെ രൂപകൽപ്പനയെ സ്വാധീനിച്ചു)"
+
+msgid "mime_pl"
+msgstr "Perl സ്ക്രിപ്റ്റ് (1987-ൽ Larry Wall സൃഷ്ടിച്ചു, പ്രായോഗികതയ്ക്ക് പേരുകേട്ടതാണ്, "സ്വിസ് ആർമി നൈഫ്" എന്ന് വിളിക്കപ്പെടുന്നു. CPAN ആധുനിക ഭാഷാ പാക്കേജ് മാനേജർമാരുടെ മുൻഗാമിയായിരുന്നു, ടെക്സ്റ്റ് പ്രോസസ്സിംഗ്, സിസ്റ്റം മാനേജ്മെന്റ്, CGI എന്നീ മേഖലകളിൽ പ്രധാന സ്വാധീനം ചെലുത്തി)"
+
+msgid "mime_php"
+msgstr "PHP ഡൈനാമിക് പേജ് (1995-ൽ Rasmus Lerdorf സൃഷ്ടിച്ചു, പ്രത്യേകിച്ച് വെബ് വികസനത്തിനായി. ലോകത്തിലെ വെബ്സൈറ്റുകളിൽ 70% ഉപയോഗിക്കുന്നു, WordPress, Facebook, Wikipedia എന്നിവ ഉൾപ്പെടെ. PHP 8 JIT കമ്പൈലേഷൻ അവതരിപ്പിച്ചു, പ്രകടനം ഗണ്യമായി മെച്ചപ്പെടുത്തി)"
+
+msgid "mime_image"
+msgstr "ചിത്ര ഫയൽ"
+
+msgid "mime_document"
+msgstr "പ്രമാണ ഫയൽ"
+
+msgid "mime_package"
+msgstr "സോഫ്റ്റ്വെയർ പാക്കേജ്"
+
+msgid "mime_archive"
+msgstr "Gzip കംപ്രസ് ചെയ്ത ഫയൽ (1992-ൽ GNU പ്രോജക്റ്റ്, DEFLATE അൽഗോരിതത്തെ അടിസ്ഥാനമാക്കി. വെബിൽ ഡൈനാമിക് കംപ്രഷനായി ഉപയോഗിക്കുന്നു, കംപ്രഷൻ നിരക്ക് സാധാരണയായി 60-90%. 2015-ന് ശേഷം Brotli കൊണ്ട് ഭാഗികമായി മാറ്റിസ്ഥാപിച്ചു, എന്നാൽ ഇപ്പോഴും സെർവറുകളിൽ ഏറ്റവും സാധാരണമായ കംപ്രഷൻ ഫോർമാറ്റാണ്)"
+
+msgid "mime_audio"
+msgstr "ഓഡിയോ ഫയൽ"
+
+msgid "mime_video"
+msgstr "വീഡിയോ ഫയൽ"
+
+msgid "mime_jscript"
+msgstr "JavaScript (1995-ൽ Brendan Eich സൃഷ്ടിച്ചു)"
+
+msgid "mime_json"
+msgstr "JSON ഡാറ്റ (2001-ൽ Douglas Crockford നിർദ്ദേശിച്ചു, ലഘുവായ ഡാറ്റ കൈമാറ്റ ഫോർമാറ്റ്, Web API യുടെ യഥാർത്ഥ മാനകം)"
+
+msgid "mime_vbs"
+msgstr "VBScript (1996-ൽ Microsoft വികസിപ്പിച്ചെടുത്തു, വിൻഡോസ് സ്ക്രിപ്റ്റിംഗ് ഭാഷ, ASP പേജുകളിലും വിൻഡോസ് മാനേജ്മെന്റ് സ്ക്രിപ്റ്റുകളിലും ഉപയോഗിക്കുന്നു. PowerShell, JavaScript എന്നിവയുടെ വ്യാപനത്തോടെ, ക്രമേണ പഴയതായി മാറി)"
+
+msgid "mime_conf"
+msgstr "കോൺഫിഗറേഷൻ ഫയൽ (സോഫ്റ്റ്വെയർ കോൺഫിഗറേഷൻ ടെക്സ്റ്റ് ഫോർമാറ്റിൽ സംഭരിക്കുന്നു, സാധാരണ ഫോർമാറ്റുകൾ: INI, JSON, YAML, TOML, XML. Linux സിസ്റ്റം കോൺഫിഗറേഷനുകൾ മിക്കവയും /etc ഡയറക്ടറിയിലാണ്)"
+
+msgid "mime_css"
+msgstr "CSS സ്റ്റൈൽ ഷീറ്റ് (1996 ഡിസംബറിൽ W3C ആദ്യ ഔദ്യോഗിക മാനകമായ CSS1 പ്രസിദ്ധീകരിച്ചു, 1998-ൽ CSS2 ലേഔട്ടും മീഡിയ തരങ്ങളും ചേർത്തു, 2011 മുതൽ CSS3 മൊഡ്യൂളർ പതിപ്പ് റൗണ്ട് കോണുകൾ, അനിമേഷൻ, Flexbox, Grid ലേഔട്ട്, റെസ്പോൺസീവ് ഡിസൈൻ എന്നിവ അവതരിപ്പിച്ചു. HTML, JavaScript എന്നിവയ്ക്കൊപ്പം ഫ്രണ്ട്-എൻഡിന്റെ മൂന്ന് പ്രധാന സാങ്കേതികവിദ്യകളിൽ ഒന്നാണ്, എല്ലാ ആധുനിക ബ്രൗസറുകളും (Chrome, Firefox, Safari, Edge) സ്വദേശിയമായി പിന്തുണയ്ക്കുന്നു, പേജ് ശൈലി നിർവചിക്കുന്നതിനുള്ള ഏക മാനകമാണ്)"
+
+msgid "mime_xsl"
+msgstr "XSL സ്റ്റൈൽ ഷീറ്റ് (1999-ൽ W3C മാനകം, XML പ്രമാണ രൂപാന്തരീകരണ ഭാഷ, XML-നെ HTML/PDF/ടെക്സ്റ്റാക്കി മാറ്റാൻ കഴിയും. JSON വ്യാപിച്ചതിന് ശേഷം ഉപയോഗം കുറഞ്ഞു)"
+
+msgid "mime_runtime"
+msgstr "എക്സിക്യൂട്ടബിൾ ഫയൽ (EXE, ELF, Mach-O ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിന്റെ എക്സിക്യൂട്ട് ചെയ്യാവുന്ന ഫോർമാറ്റുകൾ, മെഷീൻ കോഡും ലോഡിംഗ് വിവരങ്ങളും ഉൾക്കൊള്ളുന്നു)"
+
+msgid "mime_library"
+msgstr "ലൈബ്രറി ഫയൽ (DLL, SO, dylib ഡൈനാമിക് ലിങ്ക് ലൈബ്രറികൾ, പ്രോഗ്രാം പ്രവർത്തിപ്പിക്കുമ്പോൾ ലോഡ് ചെയ്യുന്നു)"
+
+msgid "mime_swf"
+msgstr "Flash അനിമേഷൻ (1996-ൽ Macromedia വികസിപ്പിച്ചു, പിന്നീട് Adobe ഏറ്റെടുത്തു. സംവേദനാത്മക വെബ് അനിമേഷന്റെ മാനകം, ഇൻറർനെറ്റ് അനിമേഷനിലും ഗെയിമുകളിലും ആധിപത്യം സ്ഥാപിച്ചു. ന്യൂനതകൾ: പ്ലഗിനെ ആശ്രയിക്കുന്നു, മൊബൈൽ ഉപകരണങ്ങളിൽ പ്രവർത്തിച്ചിരുന്നില്ല, ഉയർന്ന സുരക്ഷാ അപകടസാധ്യത. 2017-ൽ Adobe പിന്തുണ നിർത്തലാക്കുന്നതായി പ്രഖ്യാപിച്ചു, 2020-ൽ പൂർണ്ണമായും നിർത്തലാക്കപ്പെട്ടു, HTML5/CSS3/JS കൊണ്ട് മാറ്റിസ്ഥാപിച്ചു)"
+
+msgid "mime_dtd"
+msgstr "DTD ഡോക്യുമെന്റ് തരം നിർവചനം (XML വിവരണം, XML ഡോക്യുമെന്റിന്റെ ഘടന നിർവചിക്കുന്നു, XML-ന്റെ സാധുത പരിശോധിക്കുന്നതിന്)"
+
+msgid "mime_csv"
+msgstr "CSV ഡാറ്റ ഫോർമാറ്റ് (കോമ കൊണ്ട് വേർതിരിച്ച മൂല്യങ്ങൾ, പട്ടിക ഡാറ്റയുടെ സാർവത്രിക ഫോർമാറ്റ്, Excel, ഡാറ്റാബേസ് ഇറക്കുമതി/കയറ്റുമതി മാനകം)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (ജാവ അപ്ലിക്കേഷൻ ലോഞ്ചർ, 2000-കളിൽ ജാവ ഡെസ്ക്ടോപ്പ് അപ്ലിക്കേഷനുകൾ വിതരണം ചെയ്യുന്നതിനുള്ള സാങ്കേതികവിദ്യ, ഇപ്പോൾ പഴയതായി മാറി)"
+
+msgid "mime_lit"
+msgstr "Microsoft Reader ഇ-ബുക്ക് (2000-ൽ Microsoft പുറത്തിറക്കി, LIT ഫോർമാറ്റ്, ഇപ്പോൾ പഴയതായി മാറി)"
+
+msgid "mime_svg"
+msgstr "SVG വെക്റ്റർ ഗ്രാഫിക്സ് (1999-ൽ W3C മാനകം, Microsoft അതിന്റെ സ്വന്തം VML ഫോർമാറ്റ് ദീർഘകാലം പ്രചരിപ്പിച്ചതിനാൽ, IE ബ്രൗസർ 2011 വരെ പിന്തുണച്ചിരുന്നില്ല, ഇത് വ്യാപനത്തെ വൈകിപ്പിച്ചു. 2015-ന് ശേഷം, IE നിർത്തലാക്കലും ഉയർന്ന റെസലൂഷൻ സ്ക്രീനുകളുടെ വ്യാപനവും കാരണം, ഐക്കണുകൾ, ലോഗോകൾ എന്നിവയ്ക്കുള്ള ഇഷ്ടപ്പെട്ട ഫോർമാറ്റായി മാറി)"
+
+msgid "mime_ai"
+msgstr "Adobe Illustrator വെക്റ്റർ ഗ്രാഫിക്സ് (1987-ൽ പുറത്തിറങ്ങി, വ്യവസായ മാനക വെക്റ്റർ ഗ്രാഫിക്സ് ഫോർമാറ്റ്, പ്രിന്റ് ഡിസൈൻ, ലോഗോകൾ, ഐക്കണുകൾ എന്നിവയ്ക്ക് ഇഷ്ടപ്പെട്ടത്)"
+
+msgid "mime_phshop"
+msgstr "ഫോട്ടോഷോപ്പ് ചിത്രം (1990-ൽ Adobe പുറത്തിറക്കി, ഫോട്ടോഷോപ്പിന്റെ സോഴ്സ് ഫയൽ PSD, ചിത്ര പ്രോസസ്സിംഗ് വ്യവസായത്തിന്റെ മാനകം)"
+
+msgid "mime_ttf"
+msgstr "TrueType ഫോണ്ട് (1989-ൽ Apple-ഉം Microsoft-ഉം സംയുക്തമായി വികസിപ്പിച്ചെടുത്തു, വെക്റ്റർ ഫോണ്ട് ഫോർമാറ്റ്, സ്ക്രീൻ ഡിസ്പ്ലേയും പ്രിന്റിംഗും ഒരുപോലെയാണ്, ആധുനിക ഓപ്പറേറ്റിംഗ് സിസ്റ്റങ്ങളുടെ സ്റ്റാൻഡേർഡ് ഫോണ്ട് ഫോർമാറ്റ്)"
+
+msgid "mime_fon"
+msgstr "WOFF2 വെബ് ഫോണ്ട് (2014-ൽ W3C അംഗീകരിച്ചു, Brotli കംപ്രഷൻ അൽഗോരിതം ഉപയോഗിക്കുന്നു, മുൻ WOFF ഫോർമാറ്റിനേക്കാൾ ഏകദേശം 30% ചെറുതാണ്, TTF/OTF-നേക്കാൾ 50% ൽ കൂടുതൽ, എല്ലാ ആധുനിക ബ്രൗസറുകളും പിന്തുണയ്ക്കുന്നു, ആധുനിക വെബ് ഫോണ്ടുകളുടെ ഇഷ്ടപ്പെട്ട ഫോർമാറ്റാണ്, ബ്രൗസറുകളുടെ 98% ൽ കൂടുതൽ ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_pdf"
+msgstr "PDF പ്രമാണം (1993-ൽ Adobe വികസിപ്പിച്ചെടുത്തു, 2008-ൽ ISO അന്താരാഷ്ട്ര മാനകമായി. ക്രോസ്-പ്ലാറ്റ്ഫോം പ്രമാണ ഫോർമാറ്റ്, ഫോർമാറ്റിംഗ് സ്ഥിരത നിലനിർത്തുന്നു, ഇലക്ട്രോണിക് പ്രമാണങ്ങളുടെ വിതരണത്തിന്റെ ആഗോള മാനകമാണ്)"
+
+msgid "mime_dotnet"
+msgstr "ASP.NET ഡൈനാമിക് പേജ് (2002-ൽ Microsoft പുറത്തിറക്കി, വിൻഡോസ് പ്ലാറ്റ്ഫോമിന്റെ ഡൈനാമിക് വെബ് പേജ് സാങ്കേതികവിദ്യ, .NET Framework-ന്റെ ഭാഗം)"
+
+msgid "mime_mdb"
+msgstr "Access ഡാറ്റാബേസ് (Microsoft Access database file, 1992-ൽ പുറത്തിറങ്ങി, വിൻഡോസ് ഡെസ്ക്ടോപ്പ് ഡാറ്റാബേസ് പരിഹാരം)"
+
+msgid "mime_md"
+msgstr "Markdown പ്രമാണം (2004-ൽ John Gruber സൃഷ്ടിച്ചു, GitHub README, സാങ്കേതിക പ്രമാണീകരണം, ഫോറം പോസ്റ്റുകളുടെ സാർവത്രിക ഫോർമാറ്റ്)"
+
+msgid "mime_crystal"
+msgstr "Crystal Reports റിപ്പോർട്ട് ഫോർമാറ്റ് (SAP ബിസിനസ് ഇന്റലിജൻസ് റിപ്പോർട്ടുകൾ, കോർപ്പറേറ്റ് റിപ്പോർട്ടുകളുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്)"
+
+msgid "mime_libreoffice"
+msgstr "LibreOffice പ്രമാണം (2010-ൽ The Document Foundation വികസിപ്പിച്ചെടുത്തു, OpenOffice ഫോർക്ക്, ODF മാനകത്തിന്റെ നടപ്പാക്കൽ, പ്രധാന ഓപ്പൺ സോഴ്സ് ഓഫീസ് സ്യൂട്ട്)"
+
+msgid "mime_encrypt"
+msgstr "എൻക്രിപ്റ്റ് ചെയ്ത ഫയൽ (കാണുന്നതിന് ഡീക്രിപ്റ്റ് ചെയ്യേണ്ടതുണ്ട്, സാധാരണ വിപുലീകരണങ്ങൾ: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "GPS ട്രാക്ക് ഡാറ്റാ (GPS കൈമാറ്റ ഫോർമാറ്റ്, ഭൂമിശാസ്ത്രപരമായ സ്ഥാന വിവരങ്ങൾ സംഭരിക്കുന്നു, സ്പോർട്സ് വാച്ചുകൾ, നാവിഗേഷൻ ഉപകരണങ്ങളുടെ സാർവത്രിക ഫോർമാറ്റ്)"
+
+msgid "mime_diskimage"
+msgstr "ഡിസ്ക് ഇമേജ് (DMG, ISO, IMG, മറ്റ് ഡിസ്ക് ഇമേജ് ഫയലുകൾ, സോഫ്റ്റ്വെയർ വിതരണം ചെയ്യുന്നതിനോ മീഡിയ ബാക്കപ്പിനോ ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_vm"
+msgstr "വെർച്ച്വൽ മെഷീൻ ഇമേജ് (VMDK, VDI, VHDX, OVA, മറ്റ് വെർച്ച്വൽ മെഷീൻ ഡിസ്ക് ഫയലുകൾ, VMware, VirtualBox, Hyper-V വെർച്ച്വലൈസേഷൻ പ്ലാറ്റ്ഫോമുകളുടെ ഫോർമാറ്റുകൾ)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent ടോറന്റ് ഫയൽ (2001-ൽ Bram Cohen കണ്ടുപിടിച്ചു, P2P ഡൗൺലോഡ് സൂചിക ഫയൽ, ഫയൽ മെറ്റാഡാറ്റയും ട്രാക്കർ വിവരങ്ങളും ഉൾക്കൊള്ളുന്നു)"
+
+msgid "mime_gis"
+msgstr "GIS ജിയോഗ്രാഫിക് ഇൻഫർമേഷൻ സിസ്റ്റത്തിന്റെ ഡാറ്റ (Shapefile, GeoJSON, മറ്റ് ജിയോസ്പേഷ്യൽ ഡാറ്റാ ഫോർമാറ്റുകൾ, മാപ്പുകൾക്കും സ്പേഷ്യൽ വിശകലനത്തിനും ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_ebook"
+msgstr "ഇ-ബുക്ക് (EPUB, MOBI, AZW ഇ-ബുക്ക് ഫോർമാറ്റുകൾ. EPUB അന്താരാഷ്ട്ര മാനകമാണ്, MOBI/AZW Amazon Kindle ഫോർമാറ്റാണ്)"
+
+msgid "mime_avif"
+msgstr "AVIF ചിത്രം (2019-ൽ ഓപ്പൺ മീഡിയ അലയൻസ് പുറത്തിറക്കി, AV1 അടിസ്ഥാനമാക്കി, കംപ്രഷൻ നിരക്ക് WebP-യേക്കാൾ 50% മികച്ചതാണ്, പുതിയ തലമുറയിലെ വെബ് ചിത്രങ്ങളുടെ മാനകം)"
+
+msgid "mime_markdown"
+msgstr "Markdown പ്രമാണം (2004-ൽ John Gruber രൂപകൽപ്പന ചെയ്തു, ലഘുവായ മാർക്ക്അപ്പ് ഭാഷ, GitHub README, സാങ്കേതിക പ്രമാണീകരണം, ഫോറം പോസ്റ്റുകളുടെ സാർവത്രിക ഫോർമാറ്റ്)"
+
+msgid "mime_yaml"
+msgstr "YAML കോൺഫിഗറേഷൻ (2001-ൽ Clark Evans രൂപകൽപ്പന ചെയ്തു, മനുഷ്യന് വായിക്കാൻ കഴിയുന്ന ഡാറ്റാ സീരിയലൈസേഷൻ ഫോർമാറ്റ്, Kubernetes, Ansible, Docker Compose കോൺഫിഗറേഷൻ ഫയലുകളുടെ മാനകം)"
+
+msgid "mime_toml"
+msgstr "TOML കോൺഫിഗറേഷൻ (2013-ൽ Tom Preston-Werner രൂപകൽപ്പന ചെയ്തു, 'Tom's Obvious Minimal Language', Rust/Cargo, Python/pip, Go തുടങ്ങിയ ആധുനിക ഉപകരണങ്ങളുടെ കോൺഫിഗറേഷൻ ഫയൽ ഫോർമാറ്റ്)"
+
+msgid "mime_vue"
+msgstr "Vue കമ്പോണന്റ് ഫയൽ (2014-ൽ ഇവാൻ യു അവതരിപ്പിച്ചു, പ്രോഗ്രസീവ് JavaScript ഫ്രെയിംവർക്ക്. സിംഗിൾ-ഫയൽ കമ്പോണന്റുകൾ (SFC) വഴി HTML, CSS, JS എന്നിവ തികച്ചും സംയോജിപ്പിക്കുന്നു, വികസന കാര്യക്ഷമത വളരെയധികം വർദ്ധിപ്പിക്കുന്നു. ലോകത്തിലെ ഏറ്റവും ജനപ്രിയമായ ഫ്രണ്ടെന്റ് ഫ്രെയിംവർക്കുകളിൽ ഒന്നാണിത്. കൂടാതെ, VitePress പോലുള്ള ആധുനിക സ്റ്റാറ്റിക് സൈറ്റ് ജനറേറ്ററുകളുടെ കേന്ദ്രമായി, സംവേദനാത്മക സാങ്കേതിക ഡോക്യുമെന്റേഷനും ബ്ലോഗുകളും പ്രവർത്തിപ്പിക്കുന്നതിന് വ്യാപകമായി ഉപയോഗിക്കുന്നു.)"
+
+msgid "mime_wasm"
+msgstr "WebAssembly മൊഡ്യൂൾ (2017-ൽ W3C മാനകം, ബ്രൗസറിന്റെ ഉയർന്ന പ്രകടന രൂപ ഫോർമാറ്റ്, C/C++/Rust/R കമ്പൈൽ ചെയ്യാം, പ്രകടനം നേറ്റീവ് കോഡിനോട് അടുത്താണ്)"
+
+msgid "mime_jsx"
+msgstr "React JSX ഘടകം (2013-ൽ Facebook പുറത്തിറക്കി, JavaScript XML, React ഫ്രെയിംവർക്ക് ഘടക സിന്റാക്സ്, HTML JavaScript-ൽ എഴുതുന്നതിനുള്ള നൂതന മാതൃക)"
+
+msgid "mime_tsx"
+msgstr "TypeScript TSX ഘടകം (2012-ൽ Microsoft വികസിപ്പിച്ചെടുത്തു, TypeScript + JSX, React-ന്റെ ടൈപ്പ് സുരക്ഷിത വികസനത്തിന്റെ സ്റ്റാൻഡേർഡ് രീതി)"
+
+msgid "mime_heif"
+msgstr "HEIF ചിത്രം (2015-ൽ MPEG മാനകം, ഉയർന്ന കാര്യക്ഷമതയുള്ള ചിത്ര ഫയൽ ഫോർമാറ്റ്, ആപ്പിൾ ആവാസവ്യവസ്ഥയിൽ വ്യാപകമായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_heic"
+msgstr "HEIC ചിത്രം (Apple-ന്റെ HEIF നടപ്പാക്കൽ, iPhone-ന്റെ ഡിഫോൾട്ട് ഫോട്ടോ ഫോർമാറ്റ്, iOS/macOS സ്വദേശി പിന്തുണ)"
+
+msgid "mime_gltf"
+msgstr "GLTF 3D മോഡൽ (GL ട്രാൻസ്ഫർ ഫോർമാറ്റ്, '3D-യുടെ JPEG', 2015-ൽ Khronos Group പുറത്തിറക്കി, വെബ് 3D-യുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്)"
+
+msgid "mime_glb"
+msgstr "GLB ബൈനറി 3D മോഡൽ (GLTF-ന്റെ ബൈനറി പതിപ്പ്, ഒരൊറ്റ ഫയലിൽ എല്ലാ വിഭവങ്ങളും ഉൾക്കൊള്ളുന്നു, 3D രംഗങ്ങൾ വിതരണം ചെയ്യുന്നതിന് ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY പദാവലി (പദ നിർവചന ഫയൽ, പ്രമാണീകരണ സംവിധാനങ്ങളുടെ പദ മാനേജ്മെന്റിനായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_cbz"
+msgstr "CBZ കോമിക് പുസ്തകം (ZIP-ൽ കംപ്രസ് ചെയ്ത കോമിക് ചിത്രങ്ങൾ, കോമിക് ശേഖരണത്തിന്റെ സാർവത്രിക ഫോർമാറ്റ്)"
+
+msgid "mime_cbr"
+msgstr "CBR കോമിക് പുസ്തകം (RAR-ൽ കംപ്രസ് ചെയ്ത കോമിക് ചിത്രങ്ങൾ, കോമിക് ശേഖരണത്തിന്റെ സാർവത്രിക ഫോർമാറ്റ്)"
+
+msgid "mime_fb2"
+msgstr "FB2 ഇ-ബുക്ക് (FictionBook 2.0, റഷ്യൻ ഇ-ബുക്ക് ഫോർമാറ്റ്, XML ഘടന, ഓപ്പൺ സോഴ്സ് റീഡറുകളിൽ വ്യാപകമായി പിന്തുണയ്ക്കുന്നു)"
+
+msgid "mime_kepub"
+msgstr "KEPUB ഇ-ബുക്ക് (Kobo-യുടെ പ്രത്യേക EPUB ഫോർമാറ്റ്, Kobo ഇ-ബുക്ക് റീഡറിന്റെ ഒപ്റ്റിമൈസ് ചെയ്ത ഫോർമാറ്റ്)"
+
+msgid "mime_m4b"
+msgstr "M4B ഓഡിയോ പുസ്തകം (MPEG-4 ഓഡിയോ പുസ്തക ഫോർമാറ്റ്, ബുക്ക്മാർക്കുകളെ പിന്തുണയ്ക്കുന്നു, iTunes ഓഡിയോ പുസ്തക ഫോർമാറ്റ്)"
+
+msgid "mime_kfx"
+msgstr "Kindle KFX ഫോർമാറ്റ് (2015-ൽ Amazon പുറത്തിറക്കി, Kindle-ന്റെ പ്രത്യേക ഇ-ബുക്ക് ഫോർമാറ്റ്, മെച്ചപ്പെട്ട ലേഔട്ടും വേഗത്തിലുള്ള പേജ് മറിച്ചിലും പിന്തുണയ്ക്കുന്നു)"
+
+msgid "mime_chm"
+msgstr "CHM സഹായ ഫയൽ (1997-ൽ Microsoft പുറത്തിറക്കി, കംപൈൽ ചെയ്ത HTML സഹായ ഫോർമാറ്റ്, വിൻഡോസ് സോഫ്റ്റ്വെയർ സഹായ പ്രമാണീകരണത്തിന്റെ മാനകം)"
+
+msgid "mime_mht"
+msgstr "MHT വെബ് ആർക്കൈവ് (1999-ൽ Microsoft പുറത്തിറക്കി, ഒറ്റ ഫയൽ വെബ് പേജ് ഫോർമാറ്റ്, IE ബ്രൗസർ പേജുകൾ സംരക്ഷിക്കുന്നതിന് ഉപയോഗിക്കുന്ന ഫോർമാറ്റ്)"
+
+msgid "mime_wml"
+msgstr "WML വയർലെസ് മാർക്ക്അപ്പ് ലാംഗ്വേജ് (1999-ൽ WAP മാനകം, ആദ്യകാല ഫീച്ചർ ഫോണുകളുടെ വെബ് പേജുകൾക്കായി ഉപയോഗിച്ചിരുന്നു, ഇപ്പോൾ പഴയതായി മാറി)"
+
+msgid "mime_xhtml"
+msgstr "XHTML വെബ് പേജ് (2000-ൽ W3C മാനകം, HTML-ന്റെ XML പതിപ്പ്, കൂടുതൽ കർശനമായ സിന്റാക്സോടെ. 2009-ൽ W3C പിന്തുണ നിർത്തി, ശ്രദ്ധ HTML5-ലേക്ക് മാറ്റി)"
+
+msgid "mime_xml"
+msgstr "XML പ്രമാണം (1998-ൽ W3C മാനകം, എക്സ്റ്റെൻസിബിൾ മാർക്ക്അപ്പ് ലാംഗ്വേജ്, വെബ് സേവനങ്ങൾ, കോൺഫിഗറേഷൻ ഫയലുകൾ, ഡാറ്റാ കൈമാറ്റത്തിന്റെ അടിസ്ഥാന ഫോർമാറ്റ്)"
+
+msgid "mime_sgml"
+msgstr "SGML പ്രമാണം (1986-ൽ ISO മാനകം, HTML-ന്റെ പൂർവ്വികൻ, സ്റ്റാൻഡേർഡ് ജനറലൈസ്ഡ് മാർക്ക്അപ്പ് ലാംഗ്വേജ്, XML, HTML എന്നിവ SGML-ൽ നിന്ന് ഉരുത്തിരിഞ്ഞവയാണ്)"
+
+msgid "mime_apng"
+msgstr "APNG അനിമേഷൻ (2004-ൽ Mozilla വികസിപ്പിച്ചെടുത്തു, PNG-യുടെ അനിമേറ്റഡ് വിപുലീകരണം, GIF-ന്റെ ആധുനിക പകരംവയ്പ്പ്, യഥാർത്ഥ നിറങ്ങളെയും അർദ്ധസുതാര്യതയെയും പിന്തുണയ്ക്കുന്നു)"
+
+msgid "mime_bmp"
+msgstr "BMP ബിറ്റ്മാപ്പ് (വിൻഡോസ് ബിറ്റ്മാപ്പ് ഫോർമാറ്റ്, Windows 1.0 മുതൽ സ്വദേശി പിന്തുണ. കംപ്രസ് ചെയ്തിട്ടില്ല, ഫയൽ താരതമ്യേന വലുതാണ്, എന്നാൽ ലളിതമായ ഘടനയും അധിക കോഡെക്കുകളുടെ ആവശ്യമില്ലാത്തതും കാരണം, Windows 11 സ്ക്രീൻഷോട്ട് ടൂൾ, പെയിന്റ് പ്രോഗ്രാം, EXE/MSI ഇൻസ്റ്റലേഷൻ പാക്കേജ് ഐക്കൺ റിസോഴ്സുകൾ, കഴ്സർ ഫയലുകൾ, ചില പഴയ ഡ്രൈവറുകൾ ഇപ്പോഴും ഉപയോഗിക്കുന്നു. അതേ ഗുണമേന്മയുള്ള ചിത്രത്തിന് ഫയൽ PNG-യേക്കാൾ ഏകദേശം 3-10 മടങ്ങ് വലുതാണ്, മിക്ക സാഹചര്യങ്ങളിലും PNG/JPEG കൊണ്ട് മാറ്റിസ്ഥാപിച്ചിട്ടുണ്ട്, എന്നാൽ Windows പരിസ്ഥിതി വ്യവസ്ഥയിൽ ഇപ്പോഴും വിശാലമായ അനുയോജ്യത നിലനിർത്തുന്നു)"
+
+msgid "mime_cdr"
+msgstr "CDR വെക്റ്റർ ഗ്രാഫിക്സ് (CorelDRAW-ന്റെ സ്പെഷ്യൽ ഫോർമാറ്റ്, കനേഡിയൻ Corel കമ്പനി, വെക്റ്റർ ഗ്രാഫിക്സ് ഡിസൈൻ സോഫ്റ്റ്വെയർ)"
+
+msgid "mime_gif"
+msgstr "GIF ചിത്രം (1987-ൽ CompuServe വികസിപ്പിച്ചെടുത്തു, 256 നിറങ്ങളുള്ള ചലിക്കുന്ന ചിത്ര ഫോർമാറ്റ്. ന്യൂനതകൾ: കുറഞ്ഞ നിറങ്ങൾ, കുറഞ്ഞ ഗുണമേന്മ, അർദ്ധസുതാര്യത ഇല്ല, വലിയ ഫയൽ, കുറഞ്ഞ ഫ്രെയിം നിരക്ക്. APNG, WebP, തുടങ്ങിയ ആധുനിക ചലിക്കുന്ന ചിത്ര ഫോർമാറ്റുകളാൽ മാറ്റിസ്ഥാപിക്കപ്പെട്ടു)"
+
+msgid "mime_ico"
+msgstr "ICO ഐക്കൺ (വിൻഡോസ് ഐക്കൺ ഫയൽ ഫോർമാറ്റ്, ബഹുറെസലൂഷനുകളെ പിന്തുണയ്ക്കുന്നു, വെബ്സൈറ്റ് ഫാവിക്കോണിന്റെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്)"
+
+msgid "mime_jpeg"
+msgstr "JPEG ചിത്രം (1992-ൽ ISO മാനകം, നഷ്ടമുള്ള കംപ്രഷൻ ഫോട്ടോ ഫോർമാറ്റ്, ഇന്റർനെറ്റ് ഫോട്ടോകളുടെ യഥാർത്ഥ മാനകം)"
+
+msgid "mime_jpg"
+msgstr "JPEG ചിത്രം (1992-ൽ ISO മാനകം, നഷ്ടമുള്ള കംപ്രഷൻ ഫോട്ടോ ഫോർമാറ്റ്, ഇന്റർനെറ്റ് ഫോട്ടോകളുടെ യഥാർത്ഥ മാനകം)"
+
+msgid "mime_png"
+msgstr "PNG ചിത്രം (1996-ൽ W3C ശുപാർശ, യഥാർത്ഥ നിറങ്ങളെയും അർദ്ധസുതാര്യതയെയും പിന്തുണയ്ക്കുന്നു, GIF-ന്റെ സ്റ്റാറ്റിക് പകരംവയ്പ്പ്, ഇന്റർനെറ്റിന്റെ നഷ്ടമില്ലാത്ത ചിത്ര മാനകം)"
+
+msgid "mime_ps"
+msgstr "PostScript പേജ് വിവരണ ഫയൽ (1985-ൽ Adobe പുറത്തിറക്കി, പേജ് വിവരണ ഭാഷ, PDF-ന്റെ പൂർവ്വികൻ, പ്രിന്റിംഗിനും പ്രസിദ്ധീകരണത്തിനും ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_psb"
+msgstr "PSB വലിയ പ്രമാണം (Adobe Photoshop-ന്റെ വളരെ വലിയ ചിത്ര ഫോർമാറ്റ്, 2GB അല്ലെങ്കിൽ 30000 പിക്സലുകളിൽ കൂടുതലുള്ള വലിയ ചിത്രങ്ങളെ പിന്തുണയ്ക്കുന്നു)"
+
+msgid "mime_psd"
+msgstr "PSD ചിത്രം (Adobe Photoshop-ന്റെ സോഴ്സ് ഫയൽ, ലെയറുകൾ, ചാനലുകൾ, പാതകൾ എന്നിവയെ പിന്തുണയ്ക്കുന്നു, ചിത്ര സംസ്കരണ വ്യവസായത്തിന്റെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്)"
+
+msgid "mime_webp"
+msgstr "WebP ചിത്രം (2010-ൽ Google വികസിപ്പിച്ചെടുത്തു, വെബ് ചിത്ര ഫോർമാറ്റ്, നഷ്ടമുള്ള/നഷ്ടമില്ലാത്ത കംപ്രഷനും അനിമേഷനും പിന്തുണയ്ക്കുന്നു, കംപ്രഷൻ നിരക്ക് PNG-യേക്കാൾ 25-35% മികച്ചതാണ്, JPEG-യേക്കാൾ 25% മികച്ചതാണ്)"
+
+msgid "mime_woff"
+msgstr "WOFF വെബ് ഫോണ്ട് (2009-ൽ സൃഷ്ടിക്കപ്പെട്ടു, 2018-ൽ W3C മാനകം. TrueType/OpenType-നെ അടിസ്ഥാനമാക്കി കംപ്രസ് ചെയ്തത്, വെബ് ഫോണ്ട് ലോഡിംഗ് ഒപ്റ്റിമൈസേഷൻ, ആധുനിക വെബ്സൈറ്റ് ഐക്കൺ ഫോണ്ടുകളുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്)"
+
+msgid "mime_7z"
+msgstr "7z കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1999-ൽ Igor Pavlov വികസിപ്പിച്ചെടുത്തു, 7-Zip പ്രോഗ്രാമിന്റെ പ്രത്യേക ഫോർമാറ്റ്. LZMA അൽഗോരിതം, ഉയർന്ന കംപ്രഷൻ നിരക്ക്, ഓപ്പൺ സോഴ്സും സൗജന്യവുമാണ്. 7z ഫോർമാറ്റ് അതേ കംപ്രഷൻ ലെവലിൽ സാധാരണയായി ZIP-നേക്കാൾ 30-50% ചെറുതാണ്, ഓപ്പൺ സോഴ്സ് കമ്മ്യൂണിറ്റിയുടെയും സോഫ്റ്റ്വെയർ വിതരണത്തിന്റെയും സാധാരണ ഫോർമാറ്റാണ്)"
+
+msgid "mime_ace"
+msgstr "ACE കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1990-കളിൽ സൃഷ്ടിക്കപ്പെട്ടു, WinACE പ്രോഗ്രാം ഫോർമാറ്റ്. RAR-മായി മത്സരിച്ചു, കംപ്രഷൻ നിരക്ക് വളരെ ഉയർന്നതായിരുന്നു. 2007-ൽ വികസനം നിർത്തി, ഇപ്പോൾ 7z/RAR കൊണ്ട് മാറ്റിസ്ഥാപിച്ചു, അപൂർവ്വമായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_bz2"
+msgstr "BZIP2 കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1996-ൽ Julian Seward വികസിപ്പിച്ചെടുത്തു, ബ്ലോക്ക് സോർട്ടിംഗ് കംപ്രഷൻ അൽഗോരിതം. കംപ്രഷൻ നിരക്ക് GZIP-നേക്കാൾ 15-20% മികച്ചതാണ്, എന്നാൽ വേഗത മന്ദഗതിയിലാണ്. Linux കേർണൽ സോഴ്സ് കോഡ്, ഓപ്പൺ സോഴ്സ് പാക്കേജുകളുടെ സാധാരണ ഫോർമാറ്റ്, വിപുലീകരണം .bz2)"
+
+msgid "mime_cab"
+msgstr "CAB കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1995-ൽ Microsoft വികസിപ്പിച്ചെടുത്തു, കാബിനറ്റ് ഫോർമാറ്റ്. വിൻഡോസ് സിസ്റ്റം ഇൻസ്റ്റലേഷൻ പാക്കേജ് ഫോർമാറ്റ്, ഡ്രൈവറുകൾ, സിസ്റ്റം ഫയലുകൾ വിതരണം ചെയ്യുന്നതിന് ഉപയോഗിക്കുന്നു. Windows Installer (MSI) ആന്തരികമായി CAB ഉപയോഗിച്ച് ഫയലുകൾ സംഭരിക്കുന്നു)"
+
+msgid "mime_dmg"
+msgstr "DMG ഡിസ്ക് ഇമേജ് (1980-കളിൽ Apple പുറത്തിറക്കി, ഡിസ്ക് ഇമേജ് ഫോർമാറ്റ്. macOS സോഫ്റ്റ്വെയർ വിതരണത്തിന്റെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്, ഡബിൾ ക്ലിക്ക് ചെയ്യുന്നത് വെർച്ച്വൽ ഡിസ്കായി മൗണ്ട് ചെയ്യും, അപ്ലിക്കേഷൻ ഇൻസ്റ്റാൾ ചെയ്യുന്നതിന് വലിച്ചിട്ട് വിട്ടാൽ മതി. കംപ്രഷനും എൻക്രിപ്ഷനും പിന്തുണയ്ക്കുന്നു, മാക് സോഫ്റ്റ്വെയർ ഡൗൺലോഡുകളുടെ പ്രധാന ഫോർമാറ്റാണ്)"
+
+msgid "mime_emz"
+msgstr "EMZ കംപ്രസ് ചെയ്ത ചിത്രം (വിൻഡോസ് കംപ്രസ് ചെയ്ത മെച്ചപ്പെടുത്തിയ മെറ്റാഫയൽ, EMF-ന്റെ കംപ്രസ്ഡ് പതിപ്പ്. Office പ്രമാണങ്ങളിൽ വെക്റ്റർ ഗ്രാഫിക്സ് സംഭരിക്കുന്ന ഫോർമാറ്റ്, അടിസ്ഥാനപരമായി GZIP കംപ്രസ് ചെയ്ത EMF ഫയലാണ്)"
+
+msgid "mime_gz"
+msgstr "GZIP കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1992-ൽ Jean-loup Gailly-ഉം Mark Adler-ഉം വികസിപ്പിച്ചെടുത്തു, GNU പ്രോജക്റ്റ്. Unix/Linux-ന്റെ സ്റ്റാൻഡേർഡ് കംപ്രഷൻ ഉപകരണം, HTTP ട്രാൻസ്മിഷൻ കംപ്രഷന്റെ സാധാരണ ഫോർമാറ്റ്. വിപുലീകരണം .gz, സാധാരണയായി TAR-മായി ചേർത്ത് ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_jar"
+msgstr "JAR കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1997-ൽ Sun Microsystems പുറത്തിറക്കി, Java ARchive ഫോർമാറ്റ്. അടിസ്ഥാനപരമായി ZIP കംപ്രസ് ചെയ്ത ആർക്കൈവ്, ജാവ ക്ലാസ് ലൈബ്രറികളും അപ്ലിക്കേഷനുകളും പാക്കേജ് ചെയ്യുന്നതിന് ഉപയോഗിക്കുന്നു. Maven, Gradle തുടങ്ങിയ ജാവ ആവാസവ്യവസ്ഥയുടെ അടിസ്ഥാന ഫോർമാറ്റ്, Android-ഉം JAR ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_lzma"
+msgstr "LZMA കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1998-ൽ Igor Pavlov വികസിപ്പിച്ചെടുത്തു, Lempel-Ziv-Markov chain അൽഗോരിതം. 7z ഫോർമാറ്റിന്റെ അടിസ്ഥാന കംപ്രഷൻ അൽഗോരിതം, ഉയർന്ന കംപ്രഷൻ നിരക്ക്, ഡീകംപ്രഷൻ വേഗത വേഗമാണ്. ഫേംവെയർ, എംബഡഡ് സിസ്റ്റങ്ങളുടെ സോഫ്റ്റ്വെയർ വിതരണം എന്നിവയ്ക്കായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_rar"
+msgstr "RAR കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1993-ൽ Eugene Roshal വികസിപ്പിച്ചെടുത്തു, Roshal ARchive ഫോർമാറ്റ്. ഉയർന്ന കംപ്രഷൻ നിരക്ക്, ബഹുഭാഗ കംപ്രഷൻ, പുനഃസ്ഥാപന രേഖകൾ എന്നിവയെ പിന്തുണയ്ക്കുന്നു. WinRAR പ്രോഗ്രാം ഫോർമാറ്റ്, കംപ്രഷൻ നിരക്ക് ZIP-നേക്കാൾ മികച്ചതാണ്, എന്നാൽ പണമടച്ചുള്ള സോഫ്റ്റ്വെയർ ആവശ്യമാണ്, unrar പോലുള്ള ഓപ്പൺ സോഴ്സ് ഉപകരണങ്ങൾ ഇത് ഡീകംപ്രസ് ചെയ്യാൻ കഴിയും)"
+
+msgid "mime_tar"
+msgstr "TAR ആർക്കൈവ് (1979-ൽ Unix V7-ൽ അവതരിപ്പിച്ചു, ടേപ്പ് ആർക്കൈവ് ഫോർമാറ്റ്. ടേപ്പ് ആർക്കൈവ് ഫോർമാറ്റ്, കംപ്രസ് ചെയ്യുന്നില്ല, പായ്ക്ക് മാത്രം ചെയ്യുന്നു, സാധാരണയായി GZIP/BZIP2/XZ-മായി ചേർത്ത് ഉപയോഗിക്കുന്നു. Linux സോഫ്റ്റ്വെയർ പാക്കേജുകളുടെ സോഴ്സ് കോഡ്, ഡോക്കർ കണ്ടെയ്നർ ലെയറുകളുടെ സംഭരണം എന്നിവ TAR ഫോർമാറ്റ് ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_tgz"
+msgstr "TGZ കംപ്രസ് ചെയ്ത ആർക്കൈവ് (TAR + GZIP കോമ്പിനേഷൻ ഫോർമാറ്റ്, വിപുലീകരണം .tgz അല്ലെങ്കിൽ .tar.gz. Unix/Linux സോഫ്റ്റ്വെയർ പാക്കേജുകളുടെ ഏറ്റവും സാധാരണമായ വിതരണ ഫോർമാറ്റ്, സോഴ്സ് കോഡ് പാക്കേജുകൾ, ബൈനറി പാക്കേജുകൾ എന്നിവ വ്യാപകമായി ഉപയോഗിക്കുന്നു, 'അൺപാക്ക് ചെയ്ത് ഉപയോഗിക്കുക' പ്രതിനിധി)"
+
+msgid "mime_tbz2"
+msgstr "TBZ2 കംപ്രസ് ചെയ്ത ആർക്കൈവ് (TAR + BZIP2 കോമ്പിനേഷൻ ഫോർമാറ്റ്, വിപുലീകരണം .tbz2 അല്ലെങ്കിൽ .tar.bz2. കംപ്രഷൻ നിരക്ക് TGZ-നേക്കാൾ 15-20% മികച്ചതാണ്, വലിയ ഫയലുകൾക്ക് അനുയോജ്യമാണ്, Linux കേർണൽ സോഴ്സ് കോഡ് വളരെക്കാലം ഈ ഫോർമാറ്റ് ഉപയോഗിച്ചിരുന്നു)"
+
+msgid "mime_xz"
+msgstr "XZ കംപ്രസ് ചെയ്ത ആർക്കൈവ് (2009-ൽ പുറത്തിറങ്ങി, LZMA2 അൽഗോരിതത്തെ അടിസ്ഥാനമാക്കി. കംപ്രഷൻ നിരക്ക് വളരെ ഉയർന്നതാണ്, GZIP-നേക്കാൾ 30-50% മികച്ചതാണ്, ഡീകംപ്രഷൻ വേഗത താരതമ്യേന വേഗമാണ്. Linux കേർണൽ, പാക്കേജ് മാനേജർമാർ (ഉദാ. Debian-ന്റെ .deb ഉള്ളിൽ) വ്യാപകമായി ഉപയോഗിക്കുന്നു, നിലവിൽ Linux ആവാസവ്യവസ്ഥയുടെ ശുപാർശിത ഫോർമാറ്റാണ്)"
+
+msgid "mime_z"
+msgstr "Z കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1985-ൽ Unix കംപ്രസ് കമാൻഡിന്റെ ഫോർമാറ്റ്, LZW അൽഗോരിതം. ആദ്യകാല Unix കംപ്രഷൻ ഫോർമാറ്റ്, ഇതിനകം GZIP കൊണ്ട് മാറ്റിസ്ഥാപിച്ചു. വിപുലീകരണം .Z, ആധുനിക സിസ്റ്റങ്ങളിൽ വിരളമായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_zip"
+msgstr "ZIP കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1989-ൽ Phil Katz വികസിപ്പിച്ചെടുത്തു, PKZIP ഫോർമാറ്റ്. വിൻഡോസ് സ്വദേശി പിന്തുണ, ഇന്റർനെറ്റിലെ ഏറ്റവും സാധാരണമായ കംപ്രഷൻ ഫോർമാറ്റ്. ഒന്നിലധികം ഫയലുകളെയും ഡയറക്ടറി ഘടനയെയും പിന്തുണയ്ക്കുന്നു, കംപ്രഷൻ അൽഗോരിതം തിരഞ്ഞെടുക്കാനുള്ള കഴിവുണ്ട്. ജാവയുടെ JAR, Android-ന്റെ APK, ഓഫീസ് പ്രമാണങ്ങളുടെ DOCX/XLSX എല്ലാം ZIP ഫോർമാറ്റിനെ അടിസ്ഥാനമാക്കിയുള്ളവയാണ്)"
+
+msgid "mime_zst"
+msgstr "Zstandard കംപ്രസ് ചെയ്ത ആർക്കൈവ് (2015-ൽ Facebook വികസിപ്പിച്ചെടുത്തു, Yann Collet രൂപകൽപ്പന. ഉയർന്ന വേഗതയുള്ള കംപ്രഷൻ അൽഗോരിതം, കംപ്രഷൻ നിരക്ക് LZMA-യോട് അടുത്താണ്, വേഗതയിൽ GZIP-നെ വളരെയധികം മറികടക്കുന്നു. Linux കേർണൽ 5.9+ പിന്തുണയ്ക്കുന്നു, Arch Linux pacman, Debian APT ക്രമേണ സ്വീകരിക്കുന്നു, പുതിയ തലമുറയിലെ കംപ്രഷൻ മാനകമാണ്)"
+
+msgid "mime_lz4"
+msgstr "LZ4 കംപ്രസ് ചെയ്ത ആർക്കൈവ് (2011-ൽ Yann Collet വികസിപ്പിച്ചെടുത്തു, എക്സ്ട്രാ വേഗതയുള്ള കംപ്രഷൻ അൽഗോരിതം. കംപ്രഷൻ വേഗത GZIP-നേക്കാൾ 10 മടങ്ങ് വേഗമാണ്, തത്സമയ കംപ്രഷന് അനുയോജ്യമാണ്. Linux കേർണൽ, OpenZFS, Hadoop എന്നിവ വ്യാപകമായി ഉപയോഗിക്കുന്നു, വേഗതയ്ക്ക് മുൻഗണന നൽകുന്ന സന്ദർഭങ്ങളിൽ ഇഷ്ടപ്പെട്ട ഫോർമാറ്റാണ്)"
+
+msgid "mime_lzo"
+msgstr "LZO കംപ്രസ് ചെയ്ത ആർക്കൈവ് (1996-ൽ Markus Oberhumer വികസിപ്പിച്ചെടുത്തു, Lempel-Ziv-Oberhumer അൽഗോരിതം. ഡീകംപ്രഷൻ വേഗത വളരെ വേഗമാണ്, കംപ്രഷൻ നിരക്ക് ഇടത്തരമാണ്. Linux കേർണലിന്റെ Squashfs, OpenWrt ഫേംവെയർ എന്നിവ ഉപയോഗിക്കുന്നു, എംബഡഡ് സിസ്റ്റങ്ങൾക്ക് അനുയോജ്യമാണ്)"
+
+msgid "mime_msi"
+msgstr "MSI ഇൻസ്റ്റലേഷൻ പാക്കേജ് (1999-ൽ Microsoft പുറത്തിറക്കി, വിൻഡോസ് ഇൻസ്റ്റാളർ പാക്കേജ് ഫോർമാറ്റ്. വിൻഡോസ് അപ്ലിക്കേഷനുകളുടെ സ്റ്റാൻഡേർഡ് ഇൻസ്റ്റലേഷൻ ഫോർമാറ്റ്, ട്രാൻസാക്ഷൻ റോൾബാക്ക്, കമ്പോണന്റ് മാനേജ്മെന്റ്, നിശ്ശബ്ദ ഇൻസ്റ്റലേഷൻ എന്നിവയെ പിന്തുണയ്ക്കുന്നു. കോർപ്പറേറ്റ് തലത്തിലെ സോഫ്റ്റ്വെയർ വിതരണത്തിനുള്ള ഇഷ്ടപ്പെട്ട ഫോർമാറ്റ്, ഇന്നും വിൻഡോസ് സോഫ്റ്റ്വെയർ ഇൻസ്റ്റലേഷന്റെ പ്രധാന ഫോർമാറ്റാണ്)"
+
+msgid "mime_pkg"
+msgstr "PKG ഇൻസ്റ്റലേഷൻ പാക്കേജ് (macOS അപ്ലിക്കേഷൻ ഇൻസ്റ്റലേഷൻ ഫോർമാറ്റ്, Apple-ന്റെ ഇൻസ്റ്റാളർ സാങ്കേതികവിദ്യയെ അടിസ്ഥാനമാക്കി. macOS സോഫ്റ്റ്വെയർ വിതരണത്തിന്റെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്, കമ്പോണന്റ് തിരഞ്ഞെടുക്കൽ, ഇൻസ്റ്റലേഷൻ സ്ക്രിപ്റ്റുകൾ, അൺഇൻസ്റ്റലേഷൻ ഫംഗ്ഷൻ എന്നിവയെ പിന്തുണയ്ക്കുന്നു. .pkg ഫയൽ ഡബിൾ ക്ലിക്ക് ചെയ്യുന്നത് ഇൻസ്റ്റാൾ ചെയ്യും, Mac App Store-ന് പുറത്തുള്ള സോഫ്റ്റ്വെയർ വിതരണത്തിന്റെ സാധാരണ മാർഗ്ഗമാണ്)"
+
+msgid "mime_apk"
+msgstr "APK Android അപ്ലിക്കേഷൻ പാക്കേജ് (2008-ൽ Google പുറത്തിറക്കി, Android സിസ്റ്റത്തിന്റെ പരമ്പരാഗത അപ്ലിക്കേഷൻ ഇൻസ്റ്റലേഷൻ ഫോർമാറ്റ്. APK അടിസ്ഥാനപരമായി ZIP കംപ്രസ് ചെയ്ത ആർക്കൈവാണ്, കോഡ്, വിഭവങ്ങൾ, മാനിഫെസ്റ്റ് ഫയൽ എന്നിവ ഉൾക്കൊള്ളുന്നു. 2021 മുതൽ Google Play പുതിയ അപ്ലിക്കേഷനുകൾ AAB ഫോർമാറ്റിലേക്ക് മാറണമെന്ന് നിർബന്ധിക്കുന്നു, എന്നാൽ APK ഡെവലപ്മെന്റും ഡീബഗ്ഗിംഗും മൂന്നാം കക്ഷി സ്റ്�ോറുകൾക്കും സൈഡ്ലോഡിംഗിനും ഇപ്പോഴും ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_ipa"
+msgstr "IPA ആപ്പിൾ അപ്ലിക്കേഷൻ പാക്കേജ് (iOS App Store Package, iOS/iPadOS അപ്ലിക്കേഷൻ ഇൻസ്റ്റലേഷൻ ഫോർമാറ്റ്. 2008-ൽ iPhone SDK-യ്ക്കൊപ്പം പുറത്തിറങ്ങി. App Store വഴി വിതരണം ചെയ്യുകയോ കോർപ്പറേറ്റ് സർട്ടിഫിക്കറ്റ് ഉപയോഗിച്ച് സൈൻ ചെയ്യുകയോ വേണം. എക്സിക്യൂട്ടബിൾ ഫയൽ, വിഭവങ്ങൾ, Info.plist, സൈനിംഗ് വിവരങ്ങൾ എന്നിവ ഉൾക്കൊള്ളുന്നു)"
+
+msgid "mime_hap"
+msgstr "HAP ഹാർമണി OS അപ്ലിക്കേഷൻ പാക്കേജ് (HarmonyOS കഴിവ് പാക്കേജ്, ഹാർമണി OS അപ്ലിക്കേഷന്റെ അടിസ്ഥാന യൂണിറ്റ്. 2020-ൽ ഹാർമണി OS 2.0-നൊപ്പം പുറത്തിറങ്ങി. എൻട്രി, ഫീച്ചർ എന്നീ രണ്ട് തരങ്ങളെ പിന്തുണയ്ക്കുന്നു, ഹുവാവേ ഫോണുകൾ, ടാബ്ലെറ്റുകൾ, സ്മാർട്ട് വാച്ചുകൾ എന്നിവയുൾപ്പെടെയുള്ള ഹാർമണി OS ഉപകരണങ്ങളുടെ വിതരണ ഫോർമാറ്റ്)"
+
+msgid "mime_har"
+msgstr "HAR ഹാർമണി OS സ്റ്റാറ്റിക് ഷെയർഡ് പാക്കേജ് (HarmonyOS ആർക്കൈവ്, ഹാർമണി OS സ്റ്റാറ്റിക് ഷെയർഡ് ലൈബ്രറി, ഒന്നിലധികം HAP-കൾക്കിടയിൽ പങ്കിടാൻ കഴിയും, കമ്പോണന്റ് അധിഷ്ഠിത വികസനത്തിനും മൊഡ്യൂൾ പുനരുപയോഗത്തിനും ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (2018-ൽ Google പുറത്തിറക്കി, 2021 മുതൽ Google Play പുതിയ അപ്ലിക്കേഷനുകൾ ഈ ഫോർമാറ്റ് ഉപയോഗിക്കണമെന്ന് നിർബന്ധിക്കുന്നു. AAB വിതരണ ഫോർമാറ്റാണ്, Google Play ഉപകരണ കോൺഫിഗറേഷനെ അടിസ്ഥാനമാക്കി (CPU ആർക്കിടെക്ചർ, സ്ക്രീൻ ഡെൻസിറ്റി, ഭാഷ) ഡൈനാമിക് ആയി ഒപ്റ്റിമൈസ് ചെയ്ത APK സൃഷ്ടിക്കുന്നു, ഇൻസ്റ്റലേഷൻ പാക്കേജ് വലിപ്പം ശരാശരി 35% കുറയുന്നു. ഡെവലപ്പർ AAB അപ്ലോഡ് ചെയ്യുന്നു, ഉപയോക്താവ് APK ഡൗൺലോഡ് ചെയ്യുന്നു)"
+
+msgid "mime_xapk"
+msgstr "XAPK അപ്ലിക്കേഷൻ പാക്കേജ് (മൂന്നാം കക്ഷി Android അപ്ലിക്കേഷൻ വിപുലീകൃത പാക്കേജ്, APK + OBB ഡാറ്റ ഫയലുകൾ ഉൾക്കൊള്ളുന്നു. വലിയ ഗെയിമുകൾക്കും സങ്കീർണ്ണമായ അപ്ലിക്കേഷനുകൾക്കും ഉപയോഗിക്കുന്നു, APK-യുടെ 100MB പരിധി പ്രശ്നം പരിഹരിക്കുന്നു. APKPure, APKMirror മൂന്നാം കക്ഷി അപ്ലിക്കേഷൻ സ്റ്റോറുകളിൽ സാധാരണമാണ്, Google-ന്റെ ഔദ്യോഗിക ഫോർമാറ്റല്ല)"
+
+msgid "mime_appx"
+msgstr "വിൻഡോസ് അപ്ലിക്കേഷൻ പാക്കേജ് (2012-ൽ Microsoft പുറത്തിറക്കി, Windows 8/10/11 അപ്ലിക്കേഷൻ ഇൻസ്റ്റലേഷൻ ഫോർമാറ്റ്. UWP, ഡെസ്ക്ടോപ്പ് അപ്ലിക്കേഷൻ പരിവർത്തനം എന്നിവയെ പിന്തുണയ്ക്കുന്നു, Microsoft Store വഴി വിതരണം ചെയ്യുന്നു. 2024-ൽ Microsoft MSIX-നെ പിൻഗാമി ഫോർമാറ്റായി പുറത്തിറക്കി, ക്രമേണ APPX-നെ മാറ്റിസ്ഥാപിക്കുന്നു)"
+
+msgid "mime_msix"
+msgstr "MSIX അപ്ലിക്കേഷൻ പാക്കേജ് (2018-ൽ Microsoft പുറത്തിറക്കി, വിൻഡോസിന്റെ പുതിയ തലമുറ അപ്ലിക്കേഷൻ പാക്കേജിംഗ് ഫോർമാറ്റ്. APPX, MSI എന്നിവയുടെ ഗുണങ്ങൾ സംയോജിപ്പിക്കുന്നു, എല്ലാ വിൻഡോസ് അപ്ലിക്കേഷൻ തരങ്ങളെയും പിന്തുണയ്ക്കുന്നു, Microsoft Store വഴിയോ സൈഡ്ലോഡിംഗ് വഴിയോ ഇൻസ്റ്റാൾ ചെയ്യാൻ കഴിയും, Windows 11-ന്റെ ശുപാർശിത ഫോർമാറ്റാണ്)"
+
+msgid "mime_appimage"
+msgstr "AppImage അപ്ലിക്കേഷൻ പാക്കേജ് (2004-ൽ പുറത്തിറങ്ങി, Linux-ന്റെ ഇൻസ്റ്റാൾ ചെയ്യാത്ത അപ്ലിക്കേഷൻ ഫോർമാറ്റ്. 'ഒരു അപ്ലിക്കേഷൻ ഒരു ഫയൽ', ഇൻസ്റ്റാൾ ചെയ്യാതെ തന്നെ നേരിട്ട് പ്രവർത്തിപ്പിക്കാം, മിക്ക Linux വിതരണങ്ങളെയും പിന്തുണയ്ക്കുന്നു, ഡെവലപ്പർമാർ Linux സോഫ്റ്റ്വെയർ വിതരണം ചെയ്യുന്നതിനുള്ള സാധാരണ മാർഗ്ഗമാണ്)"
+
+msgid "mime_flatpak"
+msgstr "Flatpak അപ്ലിക്കേഷൻ പാക്കേജ് (2015-ൽ പുറത്തിറങ്ങി, Linux-ന്റെ സാൻഡ്ബോക്സ് ചെയ്ത അപ്ലിക്കേഷൻ ഫോർമാറ്റ്. വിതരണങ്ങൾക്കിടയിൽ പ്രവർത്തിക്കുന്നു, ഹോസ്റ്റ് സിസ്റ്റത്തിൽ നിന്ന് വേർതിരിച്ചിരിക്കുന്നു, Fedora, Red Hat എന്നിവ വികസനത്തിൽ മുന്നിട്ടുനിൽക്കുന്നു, GNOME സോഫ്റ്റ്വെയർ സെന്ററിന്റെ ഡിഫോൾട്ട് ഫോർമാറ്റ്)"
+
+msgid "mime_snap"
+msgstr "Snap അപ്ലിക്കേഷൻ പാക്കേജ് (2014-ൽ Canonical പുറത്തിറക്കി, ഉബുണ്ടു മാതൃ കമ്പനി, Linux-ന്റെ സാർവത്രിക അപ്ലിക്കേഷൻ ഫോർമാറ്റ്. ഓട്ടോമാറ്റിക് അപ്ഡേറ്റ്, സാൻഡ്ബോക്സ് വേർതിരിവ്, 40-ലധികം Linux വിതരണങ്ങളെ പിന്തുണയ്ക്കുന്നു, ഉബുണ്ടു സോഫ്റ്റ്വെയർ സെന്ററിന്റെ ഡിഫോൾട്ട് ഫോർമാറ്റ്)"
+
+msgid "mime_deb"
+msgstr "ഡെബിയൻ സോഫ്റ്റ്വെയർ പാക്കേജ് (1993-ൽ ഡെബിയൻ പ്രോജക്റ്റ് പുറത്തിറക്കി, Debian/Ubuntu, അവയുടെ വകഭേദങ്ങളുടെ സ്റ്റാൻഡേർഡ് ഇൻസ്റ്റലേഷൻ ഫോർമാറ്റ്. dpkg ഉപയോഗിച്ച് മാനേജ് ചെയ്യുന്നു, APT അതിന്റെ പാക്കേജ് മാനേജറിന്റെ ഫ്രണ്ട്-എൻഡ് ആണ്, Linux ആവാസവ്യവസ്ഥയിലെ ഏറ്റവും പഴക്കമേറിയ പാക്കേജ് ഫോർമാറ്റുകളിൽ ഒന്നാണ്, ഇന്നും Debian കുടുംബത്തിന്റെ പ്രധാന ഫോർമാറ്റാണ്)"
+
+msgid "mime_rpm"
+msgstr "RPM സോഫ്റ്റ്വെയർ പാക്കേജ് (1997-ൽ Red Hat പുറത്തിറക്കി, Red Hat/Fedora/CentOS/SUSE, മറ്റ് വിതരണങ്ങളുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്. RPM പൂർണ്ണമായും 'Red Hat Package Manager' ആണ്, DEB-നൊപ്പം Linux-ന്റെ രണ്ട് പ്രധാന പാക്കേജ് ഫോർമാറ്റുകളിൽ ഒന്നാണ്, ഇന്നും RHEL കുടുംബത്തിന്റെ പ്രധാന ഫോർമാറ്റാണ്)"
+
+msgid "mime_pacman"
+msgstr "ആർക്ക് സോഫ്റ്റ്വെയർ പാക്കേജ് (2002-ൽ Arch Linux പുറത്തിറക്കി, pacman പാക്കേജ് മാനേജർ ഉപയോഗിക്കുന്ന .pkg.tar.zst ഫോർമാറ്റ്. Arch Linux-ന്റെ റോളിംഗ് റിലീസിന്റെ കേർണൽ, ലാളിത്യത്തിനും KISS തത്വത്തിനും പേരുകേട്ടതാണ്, AUR (Arch User Repository) ഇതിന്റെ പ്രത്യേക സവിശേഷതയാണ്)"
+
+msgid "mime_exe"
+msgstr "EXE എക്സിക്യൂട്ടബിൾ ഫയൽ (വിൻഡോസ് എക്സിക്യൂട്ടബിൾ പ്രോഗ്രാം ഫോർമാറ്റ്, 'എക്സിക്യൂട്ടബിൾ' എന്നതിന്റെ ചുരുക്കരൂപം. വിൻഡോസ് ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിന്റെ സ്വദേശി എക്സിക്യൂഷൻ ഫോർമാറ്റ്, PE ഘടന ഉൾക്കൊള്ളുന്നു. MS-DOS-ന്റെ MZ ഫോർമാറ്റിൽ നിന്ന് ഉരുത്തിരിഞ്ഞതാണ്, 1993-ൽ Windows NT PE (Portable Executable) ഫോർമാറ്റ് അവതരിപ്പിച്ചു, ഇത് ഇന്നും ഉപയോഗിക്കുന്നു. സോഫ്റ്റ്വെയർ ഇൻസ്റ്റലേഷൻ പാക്കേജുകൾ, അപ്ലിക്കേഷനുകൾ, സിസ്റ്റം ഉപകരണങ്ങൾ എന്നിവ ഈ ഫോർമാറ്റ് ഉപയോഗിക്കുന്നു. ഉപയോക്താവിന് ഡബിൾ ക്ലിക്ക് ചെയ്യുന്നത് പ്രവർത്തിപ്പിക്കാൻ കഴിയും, ലോകത്തിലെ ഏറ്റവും വ്യാപകമായി ഉപയോഗിക്കുന്ന എക്സിക്യൂഷൻ ഫോർമാറ്റാണിത്)"
+
+msgid "mime_dll"
+msgstr "DLL ഡൈനാമിക് ലിങ്ക് ലൈബ്രറി (1993-ൽ Microsoft പുറത്തിറക്കി, ഡൈനാമിക് ലിങ്ക് ലൈബ്രറി. വിൻഡോസിന്റെ പങ്കിട്ട കോഡ് ലൈബ്രറി, പ്രോഗ്രാം പ്രവർത്തിപ്പിക്കുമ്പോൾ ഡൈനാമിക് ആയി ലോഡ് ചെയ്യുന്നു, മെമ്മറിയും ഡിസ്ക് സ്ഥലവും ലാഭിക്കുന്നു. സിസ്റ്റം കമ്പോണന്റുകൾ, അപ്ലിക്കേഷൻ പ്ലഗിനുകൾ, ഡ്രൈവറുകൾ എല്ലാം DLL ഫോർമാറ്റ് ഉപയോഗിക്കുന്നു. Windows API-യുടെ അടിസ്ഥാന നടപ്പാക്കൽ മാർഗ്ഗം, DLL Hell പ്രശ്നം .NET യുഗത്തിൽ ലഘൂകരിക്കപ്പെട്ടു)"
+
+msgid "mime_com"
+msgstr "COM എക്സിക്യൂട്ടബിൾ ഫയൽ (MS-DOS യുഗത്തിന്റെ എക്സിക്യൂട്ടബിൾ ഫോർമാറ്റ്, 'കമാൻഡ്' എന്നതിന്റെ ചുരുക്കരൂപം. ഫയൽ ഘടന ലളിതമാണ്, 64KB പരിധിയോടെ, Windows 3.x വരെ സാധാരണമായിരുന്നു. ഇപ്പോൾ പഴയതായി മാറി, ആധുനിക Windows EXE ഫോർമാറ്റ് ഉപയോഗിക്കുന്നു, COM വിപുലീകരണം ചില കമ്പോണന്റ് ഫയലുകൾക്കായി ഇപ്പോഴും ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_aac"
+msgstr "AAC ഓഡിയോ (1997-ൽ MPEG മാനകം, അഡ്വാൻസ്ഡ് ഓഡിയോ കോഡിംഗ്. MP3-യുടെ പിൻഗാമി, ഒരേ ബിറ്റ്രേറ്റിൽ ഗുണമേന്മയിൽ MP3-യെക്കാൾ മികച്ചതാണ്, YouTube, iTunes, നിന്റെൻഡോ സ്വിച്ചിന്റെ ഡിഫോൾട്ട് ഓഡിയോ ഫോർമാറ്റ്)"
+
+msgid "mime_alac"
+msgstr "ALAC ഓഡിയോ (2004-ൽ Apple വികസിപ്പിച്ചെടുത്തു, ആപ്പിൾ ലോസ്ലെസ് ഓഡിയോ കോഡെക്. Apple-ന്റെ നഷ്ടരഹിത ഫോർമാറ്റ്, 2011-ൽ ഓപ്പൺ സോഴ്സ് ആയി, iTunes, Apple Music എന്നിവയുടെ നഷ്ടരഹിത ഓഡിയോയുടെ ഡിഫോൾട്ട് ഫോർമാറ്റ്)"
+
+msgid "mime_flac"
+msgstr "FLAC ഓഡിയോ (2001-ൽ Xiph.Org ഫൗണ്ടേഷൻ വികസിപ്പിച്ചെടുത്തു, ഫ്രീ ലോസ്ലെസ് ഓഡിയോ കോഡെക്. നഷ്ടരഹിത കംപ്രഷൻ, ഗുണമേന്മ CD-യ്ക്ക് തുല്യമാണ്, ഫയൽ ഏകദേശം WAV-ന്റെ പകുതിയാണ്. ഓപ്പൺ സോഴ്സും പേറ്റന്റ് രഹിതവുമാണ്, ഓഡിയോഫൈലുകളും ഡിജിറ്റൽ സംഗീത ശേഖരണക്കാരും ഇഷ്ടപ്പെടുന്ന ഫോർമാറ്റാണ്)"
+
+msgid "mime_mp3"
+msgstr "MP3 ഓഡിയോ (1993-ൽ Fraunhofer ഇൻസ്റ്റിറ്റ്യൂട്ട് വികസിപ്പിച്ചെടുത്തു, MPEG-1 ഓഡിയോ ലെയർ 3. നഷ്ടമുള്ള കംപ്രഷൻ ഫോർമാറ്റ്, ഫയൽ ചെറുതും ഗുണമേന്മ സ്വീകാര്യവുമാണ്, 2000-കളിലെ ഡിജിറ്റൽ സംഗീത വിപ്ലവത്തിന്റെ അടിസ്ഥാന ഫോർമാറ്റ്, ഐപോഡിന്റെയും നാപ്സ്റ്ററിന്റെയും നേട്ടം. 2017-ൽ പേറ്റന്റ് കാലഹരണപ്പെട്ടു, പൊതു ഡൊമെയ്ൻ ഫോർമാറ്റായി മാറി)"
+
+msgid "mime_oga"
+msgstr "Ogg Audio ഓഡിയോ (Xiph.Org ഫൗണ്ടേഷൻ വികസിപ്പിച്ചെടുത്തു, Ogg കണ്ടെയ്നറിന്റെ ശുദ്ധ ഓഡിയോ ഫോർമാറ്റ്, Vorbis എൻകോഡിംഗ് ഉപയോഗിക്കുന്നു. ഓപ്പൺ സോഴ്സും പേറ്റന്റ് രഹിതവുമാണ്, കംപ്രഷൻ ദക്ഷത MP3-നെക്കാൾ മികച്ചതാണ്, ഓപ്പൺ സോഴ്സ് പ്രോജക്റ്റുകളിൽ വ്യാപകമായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_ogg"
+msgstr "OGG ഓഡിയോ (2000-ൽ Xiph.Org ഫൗണ്ടേഷൻ വികസിപ്പിച്ചെടുത്തു, Ogg Vorbis ഫോർമാറ്റ്. ഓപ്പൺ സോഴ്സും പേറ്റന്റ് രഹിതവുമാണ്, കംപ്രഷൻ ദക്ഷത MP3-നെക്കാൾ മികച്ചതാണ്, Spotify ആദ്യകാലത്ത് ഉപയോഗിച്ചു, ഗെയിമുകളുടെ ശബ്ദ ഇഫക്റ്റുകളിൽ വ്യാപകമായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_opus"
+msgstr "Opus ഓഡിയോ (2012-ൽ IETF മാനകീകരിച്ചു, ഓപ്പൺ സോഴ്സും പേറ്റന്റ് രഹിതവുമായ ഓഡിയോ ഫോർമാറ്റ്. SILK, CELT സാങ്കേതികവിദ്യകൾ സംയോജിപ്പിക്കുന്നു, വളരെ കുറഞ്ഞ ലേറ്റൻസി, ഏറ്റവും ഉയർന്ന കംപ്രഷൻ ദക്ഷത, WebRTC, WhatsApp, ഡിസ്കോർഡിന്റെ ഡിഫോൾട്ട് ഓഡിയോ ഫോർമാറ്റ്)"
+
+msgid "mime_wav"
+msgstr "WAV ഓഡിയോ (1991-ൽ Microsoft-ഉം IBM-ഉം വികസിപ്പിച്ചെടുത്തു, വിൻഡോസിന്റെ സ്വദേശി ഓഡിയോ ഫോർമാറ്റ്. കംപ്രസ് ചെയ്യാത്ത PCM എൻകോഡിംഗ്, ഗുണമേന്മ നഷ്ടരഹിതമാണെങ്കിലും ഫയൽ വളരെ വലുതാണ്, പ്രൊഫഷണൽ ഓഡിയോ എഡിറ്റിംഗിന്റെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്)"
+
+msgid "mime_wma"
+msgstr "WMA ഓഡിയോ (1999-ൽ Microsoft വികസിപ്പിച്ചെടുത്തു, വിൻഡോസ് മീഡിയ ഓഡിയോ. നഷ്ട/നഷ്ടരഹിത രണ്ട് പതിപ്പുകൾ, വിൻഡോസിന്റെ സ്വദേശി പിന്തുണ, വിൻഡോസ് മീഡിയ പ്ലെയറിനൊപ്പം വ്യാപിച്ചു. ഇപ്പോൾ അവഗണിക്കപ്പെട്ടു, MP3/AAC കൊണ്ട് മാറ്റിസ്ഥാപിച്ചു)"
+
+msgid "mime_dsf"
+msgstr "DSF ഓഡിയോ (ഡയറക്ട് സ്ട്രീം ഡിജിറ്റൽ ഫോർമാറ്റ്, സോണിയും ഫിലിപ്സും വികസിപ്പിച്ചെടുത്തു. 1bit ഉയർന്ന സാമ്പിൾ നിരക്ക്, DSD ഓഡിയോയുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്, SACD-യുടെ ഡിജിറ്റൽ പതിപ്പ്, ഓഡിയോഫൈലുകളുടെ ഉയർന്ന നിലവാരമുള്ള ഫോർമാറ്റ്, ഫയൽ ഭീമാകാരമാണ്)"
+
+msgid "mime_ape"
+msgstr "APE ഓഡിയോ (2000-ൽ Monkey's Audio വികസിപ്പിച്ചെടുത്തു, നഷ്ടരഹിത കംപ്രഷൻ ഫോർമാറ്റ്. FLAC-നേക്കാൾ ഉയർന്ന കംപ്രഷൻ എന്നാൽ മന്ദഗതിയിലുള്ള എൻകോഡിംഗ്, ഇപ്പോഴും Windows പ്ലാറ്റ്ഫോമിലും ഓഡിയോ പ്രേമികൾക്കിടയിലും ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_mid"
+msgstr "MIDI ഓഡിയോ (1983-ൽ MIDI അസോസിയേഷൻ നിർണ്ണയിച്ചു, മ്യൂസിക്കൽ ഇൻസ്ട്രുമെന്റ് ഡിജിറ്റൽ ഇന്റർഫേസ്. നോട്ട് ഫോർമാറ്റ്, ഓഡിയോ റെക്കോർഡിംഗ് അല്ല, ഫയൽ വളരെ ചെറുതാണ്, ഇലക്ട്രോണിക് ഉപകരണങ്ങൾ, മൊബൈൽ ഫോൺ റിംഗ്ടോണുകൾ, ഗെയിം ശബ്ദ ഇഫക്റ്റുകളുടെ മാനകം. 1991-ൽ ജനറൽ MIDI മാനകീകരിക്കപ്പെട്ടു, 128 ഉപകരണങ്ങളുടെ തടി നിർവചിച്ചു)"
+
+msgid "mime_m4a"
+msgstr "M4A ഓഡിയോ (MPEG-4 ഓഡിയോ, AAC-യുടെ കണ്ടെയ്നർ ഫോർമാറ്റ്. iTunes മ്യൂസിക് സ്റ്�ോറിന്റെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്, Apple ആവാസവ്യവസ്ഥയുടെ പ്രധാന ഓഡിയോ ഫോർമാറ്റ്, DRM സംരക്ഷണത്തെ പിന്തുണയ്ക്കുന്നു)"
+
+msgid "mime_m3u"
+msgstr "M3U പ്ലേലിസ്റ്റ് (MP3 URL പ്ലേലിസ്റ്റ് ഫോർമാറ്റ്, ലളിതമായ ടെക്സ്റ്റ് ഫയൽ, ഓഡിയോ ഫയൽ പാതകൾ രേഖപ്പെടുത്തുന്നു. വിനാംപ് യുഗത്തിന്റെ മാനകം, ഇന്റർനെറ്റ് റേഡിയോ, ഓൺലൈൻ സംഗീത സ്ട്രീമിംഗിനായി ഉപയോഗിക്കുന്നു. M3U8 അതിന്റെ UTF-8 പതിപ്പാണ്, HTTP ലൈവ് സ്ട്രീമിംഗിനായി ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_asf"
+msgstr "ASF സ്ട്രീമിംഗ് ഫോർമാറ്റ് (1996-ൽ Microsoft വികസിപ്പിച്ചെടുത്തു, അഡ്വാൻസ്ഡ് സിസ്റ്റംസ് ഫോർമാറ്റ്. വിൻഡോസ് മീഡിയയുടെ സ്ട്രീമിംഗ് കണ്ടെയ്നർ, ഓഡിയോയും വീഡിയോയും സിൻക്രണസ് ആയി കൈമാറുന്നതിനെ പിന്തുണയ്ക്കുന്നു. ഇന്റർനെറ്റ് ട്രാൻസ്മിഷനുകൾക്കും സ്ട്രീമിംഗിനും ഉപയോഗിക്കുന്നു, WMA/WMV എന്നിവ ASF കണ്ടെയ്നറിനെ അടിസ്ഥാനമാക്കിയുള്ളവയാണ്)"
+
+msgid "mime_avi"
+msgstr "AVI വീഡിയോ (1992-ൽ Microsoft പുറത്തിറക്കി, വിൻഡോസിന്റെ ആദ്യകാല വീഡിയോ മാനകം. 'ഓഡിയോ വീഡിയോ ഇന്റർലീവ്', ഓഡിയോയും വീഡിയോയും മാറിമാറി സംഭരിക്കുന്നു, 1990-2000-കളിൽ ഏറ്റവും ജനപ്രിയമായ വീഡിയോ ഫോർമാറ്റ്, ഇപ്പോൾ MP4/MKV കൊണ്ട് മാറ്റിസ്ഥാപിച്ചു)"
+
+msgid "mime_divx"
+msgstr "DivX വീഡിയോ (1998-ൽ DivX കമ്പനി വികസിപ്പിച്ചെടുത്തു, MPEG-4 അടിസ്ഥാനമാക്കിയുള്ള വീഡിയോ എൻകോഡിംഗ് ഫോർമാറ്റ്. 2000-കളിൽ ഇന്റർനെറ്റ് വീഡിയോ പങ്കിടലിന്റെ പ്രധാന ഫോർമാറ്റ്, DVD ഗുണമേന്മ CD വലിപ്പത്തിൽ എൻകോഡ് ചെയ്ത ആദ്യ സാങ്കേതികവിദ്യ. പകർപ്പവകാശ തർക്കങ്ങൾ കാരണം, പിന്നീട് വാണിജ്യ എൻകോഡിംഗിലേക്ക് മാറി)"
+
+msgid "mime_mp4"
+msgstr "MP4 വീഡിയോ (2001-ൽ MPEG മാനകം, MPEG-4 ഭാഗം 14. ലോകത്തിലെ ഏറ്റവും സാധാരണമായ വീഡിയോ ഫോർമാറ്റ്, H.264/H.265 എൻകോഡിംഗിനെ പിന്തുണയ്ക്കുന്നു, ഇന്റർനെറ്റ് വീഡിയോകൾ, മൊബൈൽ ഫോൺ റെക്കോർഡിംഗുകൾ, YouTube-ന്റെ ഡിഫോൾട്ട് ഫോർമാറ്റ്)"
+
+msgid "mime_m4v"
+msgstr "M4V വീഡിയോ (iTunes വീഡിയോ ഫോർമാറ്റ്, MP4-ന്റെ വകഭേദം. Apple ആവാസവ്യവസ്ഥയുടെ വീഡിയോ ഫോർമാറ്റ്, iTunes Store സിനിമകൾ, ടെലിവിഷൻ പരിപാടികളുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്, DRM പകർപ്പവകാശ സംരക്ഷണത്തെ പിന്തുണയ്ക്കുന്നു)"
+
+msgid "mime_mpeg"
+msgstr "MPEG വീഡിയോ (1988-ൽ MPEG സംഘടന നിർണ്ണയിച്ചു, മൂവിംഗ് പിക്ചർ എക്സ്പേർട്ട്സ് ഗ്രൂപ്പ്. ഡിജിറ്റൽ വീഡിയോ കംപ്രഷൻ മാനകത്തിന്റെ സ്ഥാപകൻ, MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (ഇന്റർനെറ്റ് വീഡിയോ) എന്നിവ പ്രധാന സ്വാധീനം ചെലുത്തി)"
+
+msgid "mime_mkv"
+msgstr "MKV വീഡിയോ (2002-ൽ Matroska പ്രോജക്റ്റ് വികസിപ്പിച്ചെടുത്തു, ഓപ്പൺ സോഴ്സ് മൾട്ടിമീഡിയ കണ്ടെയ്നർ ഫോർമാറ്റ്. ഒന്നിലധികം ഓഡിയോ ട്രാക്കുകൾ, ഒന്നിലധികം സബ്ടൈറ്റിലുകൾ, അധ്യായങ്ങൾ എന്നിവയെ പിന്തുണയ്ക്കുന്നു, 'പാക്കേജിംഗിന്റെ മാന്ത്രികൻ', ഉയർന്ന റെസലൂഷൻ സിനിമകൾ പങ്കിടുന്നതിനുള്ള ഇഷ്ടപ്പെട്ട ഫോർമാറ്റ്)"
+
+msgid "mime_mpg"
+msgstr "MPEG വീഡിയോ (MPEG-1/MPEG-2 വീഡിയോ വിപുലീകരണം, VCD, DVD എന്നിവയുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്. 1990-2000-കളിൽ ഒപ്റ്റിക്കൽ ഡിസ്ക് വീഡിയോയുടെ പ്രധാന ഫോർമാറ്റ്, ഇപ്പോൾ H.264/H.265 കൊണ്ട് മാറ്റിസ്ഥാപിച്ചു)"
+
+msgid "mime_ogv"
+msgstr "Ogg Video വീഡിയോ (Xiph.Org ഫൗണ്ടേഷൻ വികസിപ്പിച്ചെടുത്തു, Ogg കണ്ടെയ്നറിന്റെ വീഡിയോ ഫോർമാറ്റ്, Theora എൻകോഡിംഗ് ഉപയോഗിക്കുന്നു. ഓപ്പൺ സോഴ്സും പേറ്റന്റ് രഹിതവുമാണ്, HTML5 വീഡിയോയുടെ ആദ്യകാല മാനകം, Firefox-ന്റെ സ്വദേശി പിന്തുണ)"
+
+msgid "mime_ogx"
+msgstr "Ogg മൾട്ടിമീഡിയ കണ്ടെയ്നർ (Xiph.Org ഫൗണ്ടേഷൻ വികസിപ്പിച്ചെടുത്തു, Ogg കണ്ടെയ്നറിന്റെ സാർവത്രിക വിപുലീകരണം, ഓഡിയോ, വീഡിയോ, സബ്ടൈറ്റിലുകളുടെ ഒന്നിലധികം ട്രാക്കുകൾ ഉൾക്കൊള്ളാൻ കഴിയും. ഓപ്പൺ സോഴ്സ് മൾട്ടിമീഡിയ മാനകം, ഗെയിമുകൾ, സ്ട്രീമിംഗ് എന്നിവയിൽ ഉപയോഗിക്കുന്നു)"
+
+msgid "mime_rm"
+msgstr "RealMedia വീഡിയോ (1995-ൽ RealNetworks വികസിപ്പിച്ചെടുത്തു, RealMedia ഫോർമാറ്റ്. 1990-2000-കളിൽ ഇന്റർനെറ്റ് സ്ട്രീമിംഗിന്റെ പയനിയർ, RealPlayer-ന്റെ പ്രധാന ഫോർമാറ്റ്. ന്യൂനതകൾ: പ്രത്യേക പ്ലെയർ ആവശ്യമായിരുന്നു, കംപ്രഷൻ ഗുണമേന്മ കുറവായിരുന്നു, പിന്നീട് Flash/MP4 കൊണ്ട് മാറ്റിസ്ഥാപിക്കപ്പെട്ടു)"
+
+msgid "mime_flv"
+msgstr "Flash വീഡിയോ (2002-ൽ ഫോർമാറ്റ് പ്രത്യക്ഷപ്പെട്ടു, ഫ്ലാഷ് വീഡിയോ ഫോർമാറ്റ്. ഒരുകാലത്ത് ഇന്റർനെറ്റ് വീഡിയോയുടെ പ്രധാന ഫോർമാറ്റ്, YouTube ആദ്യകാലത്ത് ഉപയോഗിച്ചു. ന്യൂനതകൾ: ഫ്ലാഷ് പ്ലഗിൻ ആവശ്യമായിരുന്നു, പ്രകടനം മോശമായിരുന്നു, സുരക്ഷാ വിടവുകൾ ഉണ്ടായിരുന്നു. 2015 മുതൽ പ്രധാന വെബ്സൈറ്റുകൾ HTML5 വീഡിയോയിലേക്ക് മാറി, ഇപ്പോൾ പഴയതായി മാറി)"
+
+msgid "mime_f4v"
+msgstr "F4V വീഡിയോ (Adobe വികസിപ്പിച്ചെടുത്ത ഫ്ലാഷ് വീഡിയോ ഫോർമാറ്റ്, FLV-യുടെ പിൻഗാമി. MPEG-4 മാനകത്തെ അടിസ്ഥാനമാക്കിയുള്ളതാണ്, H.264 എൻകോഡിംഗിനെ പിന്തുണയ്ക്കുന്നു. ഫ്ലാഷ് സാങ്കേതികവിദ്യയ്ക്കൊപ്പം പഴയതായി മാറി, Adobe 2020-ൽ പിന്തുണ നിർത്തി)"
+
+msgid "mime_wmv"
+msgstr "WMV വീഡിയോ (1999-ൽ Microsoft വികസിപ്പിച്ചെടുത്തു, വിൻഡോസ് മീഡിയ വീഡിയോ. വിൻഡോസിന്റെ സ്വദേശി പിന്തുണ, സ്ട്രീമിംഗിനായി ഒപ്റ്റിമൈസ് ചെയ്തിരിക്കുന്നു, ആദ്യകാല ഓൺലൈൻ വീഡിയോകളിൽ സാധാരണ ഫോർമാറ്റായിരുന്നു, ഇപ്പോൾ അവഗണിക്കപ്പെട്ടു)"
+
+msgid "mime_wmf"
+msgstr "WMF മീഡിയ ഫോർമാറ്റ് (വിൻഡോസ് മീഡിയ ഫോർമാറ്റ്, Microsoft-ന്റെ മീഡിയ ഫ്രെയിംവർക്ക്. WMV വീഡിയോ, WMA ഓഡിയോ എന്നിവ ഉൾക്കൊള്ളുന്നു, വിൻഡോസ് മീഡിയ പ്ലെയറിന്റെ സ്വദേശി പിന്തുണ)"
+
+msgid "mime_mov"
+msgstr "MOV വീഡിയോ (1991-ൽ Apple വികസിപ്പിച്ചെടുത്തു, ക്വിക്ടൈം കണ്ടെയ്നർ ഫോർമാറ്റ്. പ്രൊഫഷണൽ വീഡിയോ എഡിറ്റിംഗിന്റെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്, ഒന്നിലധികം കോഡെക്കുകളെ പിന്തുണയ്ക്കുന്നു, ഫൈനൽ കട്ട് പ്രോ, പ്രീമിയർ എന്നിവയുടെ സ്വദേശി പിന്തുണ)"
+
+msgid "mime_qt"
+msgstr "ക്വിക്ടൈം വീഡിയോ (1991-ൽ Apple പുറത്തിറക്കി, ക്വിക്ടൈം ഫോർമാറ്റ്. മാക് പ്ലാറ്റ്ഫോമിന്റെ വീഡിയോ മാനകം, MOV അതിന്റെ കണ്ടെയ്നറാണ്, ക്വിക്ടൈം പ്ലെയർ വ്യാപകമായി ഉപയോഗിച്ചിരുന്നു. 2016-ൽ Apple വിൻഡോസ് പതിപ്പിന്റെ വികസനം നിർത്തി, ക്രമേണ MP4 കൊണ്ട് മാറ്റിസ്ഥാപിക്കപ്പെട്ടു)"
+
+msgid "mime_webm"
+msgstr "WebM വീഡിയോ (2010-ൽ Google പുറത്തിറക്കി, ഓപ്പൺ സോഴ്സും പേറ്റന്റ് രഹിതവുമായ വീഡിയോ ഫോർമാറ്റ്. Matroska കണ്ടെയ്നറിനെ അടിസ്ഥാനമാക്കിയുള്ളതാണ്, VP8/VP9 എൻകോഡിംഗ്, HTML5 വീഡിയോയുടെ സ്റ്റാൻഡേർഡ് ഫോർമാറ്റ്, YouTube-ന്റെ ഡിഫോൾട്ട് വെബ് പ്ലെയറിന്റെ ഫോർമാറ്റ്)"
+
+msgid "mime_3gp"
+msgstr "3GP വീഡിയോ (2000-ൽ 3GPP നിർണ്ണയിച്ചു, മൊബൈൽ ഉപകരണങ്ങളുടെ വീഡിയോ ഫോർമാറ്റ്. ഫയൽ വളരെ ചെറുതാണ്, ഗുണമേന്മ കുറവാണ്, ആദ്യകാല ഫീച്ചർ ഫോണുകളുടെ വീഡിയോ റെക്കോർഡിംഗ് ഫോർമാറ്റ്, MMS സന്ദേശങ്ങൾ അയയ്ക്കുന്നതിന് ഉപയോഗിച്ചിരുന്നു)"
+
+#------------------------------------------------------------------------------
+# സാങ്കേതിക മാനം
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "ഓപ്പറേറ്റിംഗ് സിസ്റ്റങ്ങൾ"
+
+msgid "Top 5 Operating Systems"
+msgstr "ആദ്യത്തെ 5 ഓപ്പറേറ്റിംഗ് സിസ്റ്റങ്ങൾ"
+
+msgid "Unknown Robot"
+msgstr "അജ്ഞാത ക്ലൈന്റ്"
+
+msgid "User agent"
+msgstr "പ്രവേശന ഉറവിടം"
+
+msgid "Browsers"
+msgstr "ബ്രൗസറുകൾ"
+
+msgid "Top 5 Browsers"
+msgstr "ആദ്യത്തെ 5 ബ്രൗസറുകൾ"
+
+msgid "Unknown Robot RH"
+msgstr "അജ്ഞാത അഭ്യർത്ഥന ശീർഷകം"
+
+msgid "Detailed"
+msgstr "പ്രവേശന ഉപകരണത്തിന്റെ പതിപ്പ്"
+
+msgid "DetailedOS"
+msgstr "ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിന്റെ പതിപ്പ്"
+
+msgid "DetailedBS"
+msgstr "ബ്രൗസറിന്റെ പതിപ്പ്"
+
+msgid "Screen sizes"
+msgstr "സ്ക്രീൻ വലിപ്പങ്ങൾ"
+
+msgid "Compression"
+msgstr "കംപ്രഷൻ"
+
+msgid "In"
+msgstr "ഇൻപുട്ട്"
+
+msgid "Out"
+msgstr "ഔട്ട്പുട്ട്"
+
+msgid "Saved"
+msgstr "സംരക്ഷിച്ചു"
+
+#------------------------------------------------------------------------------
+# ഉറവിട മാനം
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "ഉറവിടം"
+
+msgid "Referers"
+msgstr "ഉറവിടം"
+
+msgid "meta.description"
+msgstr "AWStats നൂതന വെബ്സൈറ്റ് ലോഗ് അനലൈസർ - തത്സമയം വെബ്സൈറ്റ് ട്രാഫിക്, സന്ദർശക വിശകലനം, സെർച്ച് എഞ്ചിൻ കീവേഡുകൾ, പിശക് പേജുകളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ എന്നിവ നിരീക്ഷിക്കുക. ഡാർക്ക് മോഡിനെ പിന്തുണയ്ക്കുന്നു, ബഹുഭാഷാ ഇന്റർഫേസ്, വെബ്സൈറ്റ് അഡ്മിനിസ്ട്രേറ്റർമാർക്കായി സമഗ്രമായ ഡാറ്റ വിശകലനം നൽകുന്നു"
+
+msgid "meta.keywords"
+msgstr "AWStats,വെബ്സൈറ്റ് സ്ഥിതിവിവരക്കണക്കുകൾ,ലോഗ് വിശകലനം,ട്രാഫിക് നിരീക്ഷണം,പ്രവേശന സ്ഥിതിവിവരക്കണക്കുകൾ,SEO വിശകലനം,വെബ്സൈറ്റ് വിശകലന ഉപകരണങ്ങൾ,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - വെബ്സൈറ്റ് ലോഗ് വിശകലനം"
+
+msgid "og.description"
+msgstr "📊 പ്രൊഫഷണൽ ഓപ്പൺ സോഴ്സ് സ്ഥിതിവിവരക്കണക്ക് ഉപകരണം, നിങ്ങളുടെ വെബ്സൈറ്റ് ട്രാഫികും സന്ദർശകരുടെ പെരുമാറ്റവും തത്സമയം വിശകലനം ചെയ്യുക"
+
+msgid "og.image.alt"
+msgstr "AWStats സ്ഥിതിവിവരക്കണക്ക് ഗ്രാഫ്"
+
+msgid "Created by"
+msgstr "%s സൃഷ്ടിച്ചത്"
+
+msgid "plugins"
+msgstr "പ്ലഗിനുകൾ"
+
+msgid "dbip by"
+msgstr "ഡാറ്റ %s-ൽ നിന്ന്"
+
+msgid "IPDB by"
+msgstr "ഭൂമിശാസ്ത്രപരമായ സ്ഥല ഡാറ്റ DB-IP നൽകിയിരിക്കുന്നു"
+
+msgid "Configured"
+msgstr "കോൺഫിഗർ ചെയ്തു"
+
+msgid "Missing"
+msgstr "നഷ്ടപ്പെട്ടു"
+
+msgid "OK"
+msgstr "വിജയകരം"
+
+msgid "Unused"
+msgstr "ഉപയോഗിച്ചിട്ടില്ല"
+
+msgid "Overall Health"
+msgstr "മൊത്തത്തിലുള്ള ആരോഗ്യ നില"
+
+msgid "Excellent"
+msgstr "മികച്ചത്"
+
+msgid "Good"
+msgstr "നല്ലത്"
+
+msgid "Fair"
+msgstr "മിതമായത്"
+
+msgid "Poor"
+msgstr "മോശം"
+
+msgid "Missing icon types"
+msgstr "നഷ്ടപ്പെട്ട ഐക്കൺ തരങ്ങൾ"
+
+msgid "See"
+msgstr "കാണുക"
+
+msgid "Expected Path"
+msgstr "പ്രതീക്ഷിക്കുന്ന പാത"
+
+msgid "column for file locations"
+msgstr "ഫയൽ സ്ഥാനങ്ങൾ ലഭിക്കുന്നതിനുള്ള കോളം"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "നുറുങ്ങ്: നിങ്ങൾക്ക് ബന്ധപ്പെട്ട ഐക്കണുകൾ സൃഷ്ടിക്കണമെങ്കിൽ, നിങ്ങൾക്ക് %s ഉപയോഗിച്ച് ഒരു ലോഗോ ചിത്രം അപ്ലോഡ് ചെയ്യാം, അത് സ്വയമേവ മുകളിലുള്ള എല്ലാ ബന്ധപ്പെട്ട ഐക്കൺ ഫയലുകളും സൃഷ്ടിക്കും"
+
+msgid "200: success, 404: failure"
+msgstr "200: വിജയകരമായ എണ്ണം, 404: പരാജയപ്പെട്ട എണ്ണം"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png അല്ലെങ്കിൽ /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg അല്ലെങ്കിൽ /logo.png (HTML/JSON-LD-ൽ റഫർ ചെയ്യേണ്ടതുണ്ട്)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest അല്ലെങ്കിൽ /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg തുടങ്ങിയവ"
+
+msgid "Favicon"
+msgstr "വെബ്സൈറ്റ് ഐക്കൺ"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "ആപ്പിൾ ടച്ച് ഐക്കൺ (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "വെബ്സൈറ്റ് ലോഗോ"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "വെബ് അപ്ലിക്കേഷൻ മാനിഫെസ്റ്റ് (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "വിൻഡോസ് ബ്രൗസർ കോൺഫിഗറേഷൻ"
+
+msgid "Safari Pinned Tab"
+msgstr "സഫാരി പിൻ ചെയ്ത ടാബ് ഐക്കൺ"
+
+msgid "Social Icon"
+msgstr "സോഷ്യൽ പ്ലാറ്റ്ഫോം ഐക്കൺ"
+
+msgid "Icon Files Status"
+msgstr "ഐക്കൺ ഫയലുകളുടെ സ്ഥിതി"
+
+msgid "Icon Type"
+msgstr "ഐക്കൺ തരം"
+
+msgid "Total"
+msgstr "ആകെ"
+
+msgid "Advanced Web Statistics"
+msgstr "നൂതന ലോഗ് അനലൈസർ"
+
+msgid "Advanced Web Statistics %s"
+msgstr "%s നൂതന ലോഗ് അനലൈസർ"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "നിങ്ങളുടെ ബ്രൗസർ ഫ്രെയിമുകളെ പിന്തുണയ്ക്കുന്നില്ല. ദയവായി ആധുനിക ബ്രൗസർ ഉപയോഗിക്കുക"
+
+msgid "View statistics directly"
+msgstr "നേരിട്ട് സ്ഥിതിവിവരക്കണക്കുകൾ കാണുക"
+
+msgid "Close"
+msgstr "അടയ്ക്കുക"
+
+msgid "Documentation Viewer"
+msgstr "പ്രമാണീകരണ വ്യൂവർ"
+
+msgid "Direct address / Bookmarks"
+msgstr "നേരിട്ടുള്ള വിലാസം/ബുക്ക്മാർക്കുകൾ"
+
+msgid "Search Engines"
+msgstr "സെർച്ച് എഞ്ചിനുകൾ"
+
+msgid "Refering search engines"
+msgstr "ഉറവിട സെർച്ച് എഞ്ചിനുകൾ"
+
+msgid "External pages"
+msgstr "ബാഹ്യ പേജുകൾ"
+
+msgid "Refering pages"
+msgstr "ഉറവിട പേജുകൾ"
+
+msgid "Internal pages"
+msgstr "ആന്തരിക പേജുകൾ"
+
+msgid "UnknownAccessSource"
+msgstr "അജ്ഞാത പ്രവേശന ഉറവിടം"
+
+msgid "Different refering pages"
+msgstr "വിവിധ ഉറവിട പേജുകൾ"
+
+msgid "Keyphrases"
+msgstr "കീവേർഡ് ശൈലികൾ"
+
+msgid "Keywords"
+msgstr "കീവേഡുകൾ"
+
+msgid "Keyphrases/Keywords"
+msgstr "കീവേർഡ് ശൈലികൾ/പദങ്ങൾ"
+
+msgid "Different keyphrases"
+msgstr "വിവിധ കീവേർഡ് ശൈലികൾ"
+
+msgid "Different keywords"
+msgstr "വിവിധ കീവേഡുകൾ"
+
+#------------------------------------------------------------------------------
+# പേജ് മാനം
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "കണ്ട പേജുകൾ"
+
+msgid "Different pages"
+msgstr "വിവിധ പേജുകൾ"
+
+msgid "Entry"
+msgstr "പ്രവേശന സ്ഥലം"
+
+msgid "Exit"
+msgstr "പുറത്തുകടക്കൽ സ്ഥലം"
+
+msgid "URL"
+msgstr "വിലാസം"
+
+msgid "Referer"
+msgstr "ഉറവിടം"
+
+msgid "Host"
+msgstr "ഹോസ്റ്റ്"
+
+#------------------------------------------------------------------------------
+# പിശകുകളും സ്റ്റാറ്റസുകളും
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "പിശക്"
+
+msgid "HTTP Status Statistics"
+msgstr "HTTP സ്റ്റാറ്റസ് കോഡുകളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "SMTP Error codes"
+msgstr "SMTP പിശക് കോഡുകൾ"
+
+msgid "Page not found"
+msgstr "അഭ്യർത്ഥിച്ച പേജ് കണ്ടെത്തിയില്ല"
+
+msgid "Unknown error"
+msgstr "അജ്ഞാത പിശക്"
+
+msgid "Abnormal traffic note"
+msgstr "അസാധാരണ ട്രാഫിക്കിൽ ഉൾപ്പെടുന്നു: സെർച്ച് എഞ്ചിൻ ബോട്ടുകൾ, കൃത്രിമ ബുദ്ധി പരിശീലന ബോട്ടുകൾ, കേടുപാടുകൾ സ്കാൻ ചെയ്യുന്നവ, HTTP/HTTPS മാനദണ്ഡങ്ങൾക്ക് അനുയോജ്യമല്ലാത്ത അഭ്യർത്ഥനകൾ"
+
+msgid "Page detail"
+msgstr "പേജിന്റെ വിശദാംശങ്ങൾ"
+
+msgid "AWStats did not found the"
+msgstr "AWStats കണ്ടെത്തിയില്ല"
+
+msgid "in your log records."
+msgstr "നിങ്ങളുടെ ലോഗ് രേഖകളിൽ"
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "നിങ്ങളുടെ"
+
+msgid "parameter, in the"
+msgstr "പാരാമീറ്ററുമായി പൊരുത്തപ്പെടുന്ന യാതൊരു സാധുവായ ലോഗ് വരികളും AWStats കണ്ടെത്തിയില്ല"
+
+msgid "th first non commented lines read of your log."
+msgstr "ആദ്യത്തെ വരികളിൽ പോലും"
+
+msgid "Your log file"
+msgstr "നിങ്ങളുടെ ലോഗ് ഫയൽ"
+
+msgid "must have a bad format or"
+msgstr "തെറ്റായ ഫോർമാറ്റിൽ ആയിരിക്കാം അല്ലെങ്കിൽ"
+
+msgid "parameter setup does not match this format."
+msgstr "പാരാമീറ്റർ കോൺഫിഗറേഷൻ ഈ ഫോർമാറ്റുമായി പൊരുത്തപ്പെടുന്നില്ല"
+
+msgid "Your AWStats"
+msgstr "നിങ്ങളുടെ AWStats-ന്റെ"
+
+msgid "parameter is:"
+msgstr "പാരാമീറ്റർ ഇതാണ്:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "ഇതിന്റെ അർത്ഥം നിങ്ങളുടെ വെബ് സെർവർ ലോഗ് ഫയലിലെ ഓരോ വരിയിലും ഉണ്ടായിരിക്കേണ്ടത്:"
+
+msgid "combined log format"
+msgstr "കോമ്പൈൻഡ് ലോഗ് ഫോർമാറ്റ്"
+
+msgid "MSIE Extended W3C log format"
+msgstr "MSIE വിപുലീകരിച്ച W3C ലോഗ് ഫോർമാറ്റ്"
+
+msgid "WebStar native log format"
+msgstr "WebStar-ന്റെ സ്വദേശി ലോഗ് ഫോർമാറ്റ്"
+
+msgid "common log format"
+msgstr "സാധാരണ ലോഗ് ഫോർമാറ്റ്"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "ലോട്ടസ് നോട്ട്സ്/ലോട്ടസ് ഡൊമിനോ"
+
+msgid "the following personalized log format:"
+msgstr "ഇനിപ്പറയുന്ന വ്യക്തിഗതമാക്കിയ ലോഗ് ഫോർമാറ്റ്:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "നിങ്ങളുടെ ലോഗ് ഫയലിൽ AWStats കണ്ടെത്തിയ രേഖകളുടെ ഉദാഹരണമാണിത് (രേഖ നമ്പർ"
+
+msgid "in your log):"
+msgstr "നിങ്ങളുടെ ലോഗിൽ):"
+
+#------------------------------------------------------------------------------
+# മറ്റുള്ളവ
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "അധിക/മാർക്കറ്റിംഗ്"
+
+#------------------------------------------------------------------------------
+# ഇന്റർഫേസ് ടെക്സ്റ്റുകൾ
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "നിലവിലെ സൈറ്റ്"
+
+msgid "Web Site"
+msgstr "വെബ്സൈറ്റ്"
+
+msgid "Last Update"
+msgstr "അവസാന അപ്ഡേറ്റ്"
+
+msgid "Never updated"
+msgstr "ഒരിക്കലും അപ്ഡേറ്റ് ചെയ്തിട്ടില്ല"
+
+msgid "No qualified records found in log"
+msgstr "ലോഗിൽ യോഗ്യതയുള്ള രേഖകളൊന്നും കണ്ടെത്തിയില്ല"
+
+msgid "corrupted"
+msgstr "കേടായത്"
+
+msgid "comments"
+msgstr "കമന്റുകൾ"
+
+msgid "Blank"
+msgstr "ശൂന്യം"
+
+msgid "dropped"
+msgstr "ഒഴിവാക്കിയത്"
+
+msgid "Update now"
+msgstr "ഉടൻ അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "Back to main page"
+msgstr "പ്രധാന പേജിലേക്ക് മടങ്ങുക"
+
+msgid "Close window"
+msgstr "വിൻഡോ അടയ്ക്കുക"
+
+msgid "Back page"
+msgstr "മുൻ പേജിലേക്ക് മടങ്ങുക"
+
+msgid "Navigation"
+msgstr "നാവിഗേഷൻ"
+
+msgid "Summary"
+msgstr "സംഗ്രഹം"
+
+msgid "Local"
+msgstr "പ്രാദേശികം"
+
+msgid "External"
+msgstr "ബാഹ്യം"
+
+msgid "Others (email senders)"
+msgstr "മറ്റുള്ളവ (അയയ്ക്കുന്നവർ)"
+
+msgid "Others (email receivers)"
+msgstr "മറ്റുള്ളവ (സ്വീകർത്താക്കൾ)"
+
+msgid "Others"
+msgstr "മറ്റുള്ളവ"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "നിലവിൽ 10 വരികളുടെ ബ്രൗസർ ഡാറ്റ മാത്രമേ കാണിക്കുന്നുള്ളൂ, കൂടുതൽ വിവരങ്ങൾക്ക് പൂർണ്ണ പട്ടിക കാണുക"
+
+msgid "Others (unknown browsers)"
+msgstr "മറ്റുള്ളവ (അജ്ഞാത ബ്രൗസറുകൾ)"
+
+msgid "Others (operating systems)"
+msgstr "മറ്റുള്ളവ (ഓപ്പറേറ്റിംഗ് സിസ്റ്റങ്ങൾ)"
+
+msgid "Others (unknown OS)"
+msgstr "മറ്റുള്ളവ (അജ്ഞാത സിസ്റ്റങ്ങൾ)"
+
+msgid "Others (search engines)"
+msgstr "മറ്റുള്ളവ (സെർച്ച് എഞ്ചിനുകൾ)"
+
+msgid "Others (referring pages)"
+msgstr "മറ്റുള്ളവ (ഉദ്ധരിക്കുന്ന പേജുകൾ)"
+
+msgid "Others (keyphrases)"
+msgstr "മറ്റുള്ളവ (ശൈലികൾ)"
+
+msgid "Others (keywords)"
+msgstr "മറ്റുള്ളവ (പദങ്ങൾ)"
+
+msgid "Only first 10 robots shown"
+msgstr "നിലവിൽ ആദ്യത്തെ 10 റോബോട്ടുകളുടെ ഡാറ്റ മാത്രമേ കാണിക്കുന്നുള്ളൂ, കൂടുതൽ വിവരങ്ങൾക്ക് പൂർണ്ണ പട്ടിക കാണുക"
+
+msgid "Failed to obtain access record"
+msgstr "പ്രവേശന രേഖ ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+msgid "Failed to obtain leave record"
+msgstr "പുറത്തുകടക്കൽ രേഖ ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+msgid "Other pages"
+msgstr "മറ്റ് പേജുകൾ"
+
+msgid "Low Traffic IP Summary"
+msgstr "കുറഞ്ഞ ട്രാഫിക് അജ്ഞാത IP-കളുടെ സംഗ്രഹം"
+
+msgid "Failed to obtain IP data"
+msgstr "IP ഡാറ്റ ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+msgid "Failed to obtain the relevant data"
+msgstr "ഉചിതമായ ഡാറ്റ ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+msgid "Limited list of countries and regions"
+msgstr "നിലവിൽ 10 വരികളുടെ ഡാറ്റ മാത്രമേ കാണിക്കുന്നുള്ളൂ, കൂടുതൽ രാജ്യങ്ങൾ/പ്രദേശങ്ങൾക്കായി പൂർണ്ണ പട്ടിക കാണുക"
+
+msgid "currentVisitorData"
+msgstr "നിലവിൽ 10 വരികളുടെ സന്ദർശക ഡാറ്റ മാത്രമേ കാണിക്കുന്നുള്ളൂ, കൂടുതൽ വിവരങ്ങൾക്ക് പൂർണ്ണ പട്ടിക കാണുക"
+
+msgid "Others (robots main)"
+msgstr "മറ്റുള്ളവ (റോബോട്ടുകൾ)"
+
+msgid "Others (worms)"
+msgstr "മറ്റുള്ളവ (വേമുകൾ)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "നിലവിൽ 10 പേജുകൾ മാത്രമേ കാണിക്കുന്നുള്ളൂ, കൂടുതൽ വിവരങ്ങൾക്ക് പൂർണ്ണ പട്ടിക കാണുക"
+
+msgid "Others (OS main)"
+msgstr "മറ്റുള്ളവ (സിസ്റ്റങ്ങൾ)"
+
+msgid "Others (browsers main)"
+msgstr "മറ്റുള്ളവ (ബ്രൗസറുകൾ)"
+
+msgid "Others (screen sizes)"
+msgstr "മറ്റുള്ളവ (വലിപ്പങ്ങൾ)"
+
+msgid "Others (search engines main)"
+msgstr "മറ്റുള്ളവ (സെർച്ച് എഞ്ചിനുകൾ)"
+
+msgid "Others (referring pages main)"
+msgstr "മറ്റുള്ളവ (ഉറവിട പേജുകൾ)"
+
+msgid "Others (keyphrases main)"
+msgstr "മറ്റുള്ളവ (ശൈലികൾ)"
+
+msgid "Others (keywords main)"
+msgstr "മറ്റുള്ളവ (പദങ്ങൾ)"
+
+msgid "Continue"
+msgstr "ബാക്കിയുള്ള ഉള്ളടക്കം അയയ്ക്കുന്നത് തുടരുക"
+
+msgid "Switching Protocols"
+msgstr "പ്രോട്ടോക്കോൾ മാറ്റുന്നു"
+
+msgid "Processing (WebDAV)"
+msgstr "പ്രോസസ്സ് ചെയ്യുന്നു (ദയവായി കാത്തിരിക്കുക)"
+
+msgid "Early Hints"
+msgstr "സെർവർ വിഭവങ്ങൾ തയ്യാറാക്കുന്നു"
+
+msgid "[Miscellaneous successes]"
+msgstr "മറ്റ് വിജയകരമായ സ്റ്റാറ്റസുകൾ"
+
+msgid "Request successful"
+msgstr "അഭ്യർത്ഥന വിജയകരമായി പൂർത്തിയായി"
+
+msgid "Created successfully"
+msgstr "വിജയകരമായി സൃഷ്ടിച്ചു"
+
+msgid "Accepted - processing"
+msgstr "സ്വീകരിച്ചു, പ്രോസസ്സ് ചെയ്യുന്നു"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "അനധികൃത വിവരങ്ങൾ (കാഷിൽ നിന്ന്)"
+
+msgid "Success, no content returned"
+msgstr "വിജയകരം, ഉള്ളടക്കം തിരികെ നൽകിയിട്ടില്ല"
+
+msgid "Reset content"
+msgstr "ദയവായി ഫോം റീസെറ്റ് ചെയ്യുക"
+
+msgid "Partial content (resume download)"
+msgstr "ഭാഗിക ഉള്ളടക്കം (തടസ്സപ്പെട്ട ഡൗൺലോഡിനെ പിന്തുണയ്ക്കുന്നു)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "ബഹു-സ്റ്റാറ്റസ് (WebDAV ഗ്രൂപ്പ് പ്രവർത്തനങ്ങൾ)"
+
+msgid "Already reported (WebDAV)"
+msgstr "ഇതിനകം റിപ്പോർട്ട് ചെയ്തു (ആവർത്തനം ഒഴിവാക്കാൻ)"
+
+msgid "IM used"
+msgstr "IM വിപുലീകരണ പ്രോട്ടോക്കോൾ ഉപയോഗിച്ചു"
+
+msgid "[Miscellaneous redirections]"
+msgstr "മറ്റ് റീഡയറക്ഷനുകൾ"
+
+msgid "Multiple choices"
+msgstr "ബഹുമുഖ ഓപ്ഷനുകൾ"
+
+msgid "Moved permanently - update your links"
+msgstr "ശാശ്വതമായി നീക്കിയിരിക്കുന്നു, ദയവായി നിങ്ങളുടെ ലിങ്കുകൾ അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "താൽക്കാലിക റീഡയറക്ഷൻ, വിലാസം മാറ്റമില്ല"
+
+msgid "See other"
+msgstr "ദയവായി മറ്റ് വിലാസം കാണുക"
+
+msgid "Not modified - using cached version"
+msgstr "മാറ്റം വരുത്തിയിട്ടില്ല, കാഷ് ചെയ്ത പതിപ്പ് ഉപയോഗിക്കുക"
+
+msgid "Use proxy"
+msgstr "ദയവായി പ്രോക്സി ഉപയോഗിക്കുക"
+
+msgid "Switch proxy"
+msgstr "ദയവായി പ്രോക്സി മാറ്റുക"
+
+msgid "Temporary redirect (keep method)"
+msgstr "താൽക്കാലിക റീഡയറക്ഷൻ (അഭ്യർത്ഥന രീതി നിലനിർത്തുക)"
+
+msgid "Permanent redirect - update your links"
+msgstr "ശാശ്വത റീഡയറക്ഷൻ, ദയവായി നിങ്ങളുടെ ലിങ്കുകൾ അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "[Miscellaneous client/user errors]"
+msgstr "മറ്റ് ക്ലൈന്റ് പിശകുകൾ"
+
+msgid "Bad request"
+msgstr "അഭ്യർത്ഥന ഫോർമാറ്റ് തെറ്റാണ്"
+
+msgid "Unauthorized - please log in"
+msgstr "അംഗീകാരമില്ല, ദയവായി ആദ്യം ലോഗിൻ ചെയ്യുക"
+
+msgid "Payment required"
+msgstr "പണമടയ്ക്കൽ ആവശ്യമാണ്"
+
+msgid "Forbidden - access denied"
+msgstr "പ്രവേശനം നിരസിച്ചു, അനുമതികൾ മതിയാകുന്നില്ല"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "പേജ് നിലവിലില്ല, ദയവായി തകർന്ന ലിങ്കുകൾ പരിശോധിക്കുക"
+
+msgid "Method not allowed"
+msgstr "അഭ്യർത്ഥന രീതി അനുവദനീയമല്ല"
+
+msgid "Not acceptable"
+msgstr "സ്വീകാര്യമല്ലാത്ത പ്രതികരണ ഫോർമാറ്റ്"
+
+msgid "Proxy authentication required"
+msgstr "പ്രോക്സി അംഗീകാരം ആവശ്യമാണ്"
+
+msgid "Request timeout"
+msgstr "അഭ്യർത്ഥനയുടെ സമയം കഴിഞ്ഞു"
+
+msgid "Conflict - please try again"
+msgstr "അഭ്യർത്ഥന സംഘർഷം, ദയവായി കുറച്ച് സമയത്തിന് ശേഷം വീണ്ടും ശ്രമിക്കുക"
+
+msgid "Gone - permanently deleted"
+msgstr "വിഭവം ശാശ്വതമായി ഇല്ലാതാക്കി"
+
+msgid "Length required"
+msgstr "ഉള്ളടക്കത്തിന്റെ ദൈർഘ്യം സൂചിപ്പിക്കേണ്ടതുണ്ട്"
+
+msgid "Precondition failed"
+msgstr "മുൻവ്യവസ്ഥ പാലിക്കപ്പെട്ടിട്ടില്ല"
+
+msgid "Payload too large"
+msgstr "അഭ്യർത്ഥനയുടെ ഉള്ളടക്കം വളരെ വലുതാണ്"
+
+msgid "URI too long"
+msgstr "അഭ്യർത്ഥനയുടെ വിലാസം വളരെ നീളമുള്ളതാണ്"
+
+msgid "Unsupported media type"
+msgstr "പിന്തുണയ്ക്കാത്ത ഫയൽ തരം"
+
+msgid "Range not satisfiable"
+msgstr "അഭ്യർത്ഥനയുടെ പരിധി തെറ്റാണ്"
+
+msgid "Expectation failed"
+msgstr "Expect ആവശ്യകത പാലിക്കാൻ കഴിഞ്ഞില്ല"
+
+msgid "I am a teapot (April Fools)"
+msgstr "ഞാൻ ഒരു ടീപ്പോട്ട് ആണ് (ഏപ്രിൽ ഫൂൾസ് തമാശ)"
+
+msgid "Page expired (Laravel)"
+msgstr "പേജിന്റെ കാലാവധി കഴിഞ്ഞു, ദയവായി റീഫ്രഷ് ചെയ്ത് വീണ്ടും ശ്രമിക്കുക"
+
+msgid "Method failure (Spring)"
+msgstr "രീതി പരാജയപ്പെട്ടു"
+
+msgid "Misdirected request"
+msgstr "അഭ്യർത്ഥന തെറ്റായി റീഡയറക്ട് ചെയ്തു"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "അഭ്യർത്ഥന ഫോർമാറ്റ് ശരിയാണെങ്കിലും പ്രോസസ്സ് ചെയ്യാൻ കഴിയില്ല"
+
+msgid "Locked (WebDAV)"
+msgstr "വിഭവം ഇതിനകം ലോക്ക് ചെയ്തിരിക്കുന്നു"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "ആശ്രിത പ്രവർത്തനം പരാജയപ്പെട്ടു"
+
+msgid "Too early"
+msgstr "അഭ്യർത്ഥന വളരെ നേരത്തെ അയച്ചു"
+
+msgid "Upgrade required"
+msgstr "പ്രോട്ടോക്കോൾ അപ്ഗ്രേഡ് ആവശ്യമാണ്"
+
+msgid "Precondition required"
+msgstr "ആവശ്യമായ മുൻവ്യവസ്ഥ കാണുന്നില്ല"
+
+msgid "Too many requests - slow down"
+msgstr "അഭ്യർത്ഥനകൾ വളരെ ഇടയ്ക്കിടെയാണ്, ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "അഭ്യർത്ഥന ഹെഡർ ഫീൽഡുകൾ വളരെ വലുതാണ്"
+
+msgid "Request header too large"
+msgstr "അഭ്യർത്ഥന ഹെഡർ വളരെ വലുതാണ്"
+
+msgid "Login timeout (IIS)"
+msgstr "ലോഗിൻ സമയം കഴിഞ്ഞു, ദയവായി വീണ്ടും ലോഗിൻ ചെയ്യുക"
+
+msgid "No response (nginx)"
+msgstr "സെർവർ പ്രതികരിക്കുന്നില്ല"
+
+msgid "Retry with (IIS)"
+msgstr "ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "Blocked by Windows parental controls"
+msgstr "രക്ഷാകർതൃ നിയന്ത്രണത്താൽ തടഞ്ഞു"
+
+msgid "Unavailable for legal reasons"
+msgstr "നിയമപരമായ കാരണങ്ങളാൽ പ്രവേശിക്കാൻ കഴിയില്ല"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "ക്ലൈന്റ് സ്വന്തമായി കണക്ഷൻ വിച്ഛേദിച്ചു"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "റീഡയറക്ഷൻ ശൃംഖലയിൽ 30-ൽ കൂടുതൽ IP വിലാസങ്ങൾ ഉണ്ട്"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "പ്രോട്ടോക്കോൾ പതിപ്പുകൾ പൊരുത്തപ്പെടുന്നില്ല"
+
+msgid "Request header too large (nginx)"
+msgstr "അഭ്യർത്ഥന ഹെഡർ വളരെ വലുതാണ്"
+
+msgid "SSL certificate error (nginx)"
+msgstr "SSL സർട്ടിഫിക്കറ്റ് പിശക്"
+
+msgid "SSL certificate required (nginx)"
+msgstr "SSL സർട്ടിഫിക്കറ്റ് ആവശ്യമാണ്"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP അഭ്യർത്ഥന HTTPS പോർട്ടിലേക്ക് അയച്ചു"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "അസാധുവായ ടോക്കൺ"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "ടോക്കൺ ആവശ്യമാണ് / ക്ലൈന്റ് അഭ്യർത്ഥന അടച്ചു"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "വിഭവ പരിധി എത്തി (CPU/മെമ്മറി)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "ബാൻഡ്വിഡ്ത്ത് പരിധി കവിഞ്ഞു"
+
+msgid "[Miscellaneous server errors]"
+msgstr "മറ്റ് സെർവർ പിശകുകൾ"
+
+msgid "Internal server error - check logs"
+msgstr "സെർവർ ആന്തരിക പിശക്, ദയവായി ലോഗ് പരിശോധിക്കുക"
+
+msgid "Not implemented"
+msgstr "സെർവർ ഈ പ്രവർത്തനത്തെ പിന്തുണയ്ക്കുന്നില്ല"
+
+msgid "Bad gateway - backend error"
+msgstr "ഗേറ്റ്വേ പിശക്, ബാക്കെൻഡ് സേവനം പ്രവർത്തിക്കുന്നില്ല"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "സേവനം ലഭ്യമല്ല, അറ്റകുറ്റപ്പണി അല്ലെങ്കിൽ അമിത ലോഡ്"
+
+msgid "Gateway timeout"
+msgstr "ഗേറ്റ്വേ പ്രതികരണ സമയം കഴിഞ്ഞു"
+
+msgid "HTTP version not supported"
+msgstr "HTTP പ്രോട്ടോക്കോൾ പതിപ്പിനെ പിന്തുണയ്ക്കുന്നില്ല"
+
+msgid "Variant also negotiates"
+msgstr "വേരിയന്റും ചർച്ചയിൽ പങ്കെടുക്കുന്നു (കോൺഫിഗറേഷൻ പിശക്)"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "സംഭരണ സ്ഥലം മതിയാകുന്നില്ല"
+
+msgid "Loop detected (WebDAV)"
+msgstr "ലൂപ്പ് റഫറൻസ് കണ്ടെത്തി"
+
+msgid "Not extended"
+msgstr "കൂടുതൽ വിപുലീകരണം ആവശ്യമാണ്"
+
+msgid "Network authentication required"
+msgstr "നെറ്റ്വർക്ക് ഐഡന്റിറ്റി സ്ഥിരീകരണം ആവശ്യമാണ്"
+
+msgid "Unknown error (Cloudflare)"
+msgstr "അജ്ഞാത പിശക്"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "വെബ് സെർവർ ഓഫാണ്"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "കണക്ഷൻ സമയം കഴിഞ്ഞു"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "ഉറവിട സെർവറുമായി ബന്ധിപ്പിക്കാൻ കഴിയില്ല"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "സമയപരിധി സംഭവിച്ചു"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "SSL ഹാൻഡ്ഷേക്ക് പരാജയപ്പെട്ടു"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "SSL സർട്ടിഫിക്കറ്റ് അസാധുവാണ്"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Railgun പിശക് (കാലഹരണപ്പെട്ടു)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "സൈറ്റ് ഓവർലോഡ് ചെയ്തു"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "ഉറവിട DNS പിശക് / സൈറ്റ് മരവിപ്പിച്ചു"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "താൽക്കാലികമായി പ്രവർത്തനരഹിതമാക്കി"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "അംഗീകാരമില്ല"
+
+msgid "Network read timeout error"
+msgstr "നെറ്റ്വർക്ക് വായന സമയപരിധി പിശക്"
+
+msgid "Network connect timeout error"
+msgstr "നെറ്റ്വർക്കിലേക്കുള്ള കണക്ഷൻ സമയപരിധി പിശക്"
+
+msgid "Unexpected token (Shopify)"
+msgstr "അപ്രതീക്ഷിത ടോക്കൺ"
+
+msgid "Request denied (LinkedIn)"
+msgstr "അഭ്യർത്ഥന നിരസിച്ചു"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 കണക്ഷൻ അടച്ചു"
+
+msgid "[Unknown]"
+msgstr "അജ്ഞാത സ്റ്റാറ്റസ് കോഡ്"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "നിലവാരമില്ലാത്ത വിജയകരമായ പ്രതികരണം (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "സിസ്റ്റം സ്റ്റാറ്റസ് അല്ലെങ്കിൽ സഹായ വിവരങ്ങൾ"
+
+msgid "Help message"
+msgstr "സഹായ വിവരങ്ങൾ"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "SMTP സേവനം തയ്യാറാണ് (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "സേവനം തയ്യാറാണ് - മെയിൽ സെർവറിന് മെയിലുകൾ സ്വീകരിക്കാൻ കഴിയും"
+
+msgid "Service closing - connection is being closed"
+msgstr "സേവനം അടയ്ക്കുന്നു - കണക്ഷൻ വിച്ഛേദിക്കപ്പെടുന്നു"
+
+msgid "Authentication successful"
+msgstr "ഐഡന്റിറ്റി സ്ഥിരീകരണം വിജയകരമാണ്"
+
+msgid "Requested mail action taken and completed"
+msgstr "അഭ്യർത്ഥിച്ച മെയിൽ പ്രവർത്തനം നടപ്പിലാക്കുകയും പൂർത്തിയാക്കുകയും ചെയ്തു"
+
+msgid "User not local - will forward to another address"
+msgstr "ഉപയോക്താവ് ഈ സെർവറിൽ ഇല്ല - മറ്റൊരു വിലാസത്തിലേക്ക് റീഡയറക്ട് ചെയ്യും"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "സ്വീകർത്താവിനെ പരിശോധിക്കാൻ കഴിഞ്ഞില്ല, എന്നാൽ ഡെലിവറി ശ്രമിക്കും"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "മെയിൽ ഡെലിവറിക്കായി സ്വീകരിച്ചു (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "ഉപയോക്താവിന്റെ പേര് ഒരു മെയിൽബോക്സാണ്"
+
+msgid "Authentication challenge - please respond"
+msgstr "ഐഡന്റിറ്റി സ്ഥിരീകരണ വെല്ലുവിളി - ദയവായി പ്രതികരിക്കുക"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "മെയിലിന്റെ ഉള്ളടക്കം നൽകാൻ ആരംഭിക്കുക - <CRLF>.<CRLF> ഉപയോഗിച്ച് അവസാനിപ്പിക്കുക"
+
+msgid "Continue (LMTP)"
+msgstr "തുടരുക (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "സേവനം ലഭ്യമല്ല - കണക്ഷൻ അടയ്ക്കുന്നു, ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "മെയിൽബോക്സ് തിരക്കിലാണ് അല്ലെങ്കിൽ താൽക്കാലികമായി ലഭ്യമല്ല (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "കണക്ഷൻ ആവൃത്തി പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "ഒരേസമയം കണക്ഷനുകളുടെ എണ്ണം വളരെ കൂടുതലാണ് (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "കണക്ഷൻ സ്ഥാപിക്കാൻ കഴിഞ്ഞില്ല (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "കണക്ഷൻ സമയം കഴിഞ്ഞു (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "പിശക് കാരണം കണക്ഷൻ വിച്ഛേദിച്ചു (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "മെയിൽബോക്സ് താൽക്കാലികമായി ലോക്ക് ചെയ്തു (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "സ്വീകർത്താക്കളുടെ എണ്ണം വളരെ കൂടുതലാണ് (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "മെയിൽ സെർവർ പിശക് (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "സ്വീകരിക്കുന്ന ലൂപ്പ് കണ്ടെത്തി (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "റീഡയറക്ഷനുകളുടെ എണ്ണം വളരെ കൂടുതലാണ് (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "DNS അന്വേഷണം പരാജയപ്പെട്ടു (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "സ്ഥിരീകരിക്കാൻ കഴിഞ്ഞില്ല (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "TLS ഹാൻഡ്ഷേക്ക് പരാജയപ്പെട്ടു (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "SMTP പ്രോട്ടോക്കോൾ ലംഘനം (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "മെയിലിന്റെ വലിപ്പം പരിധി കവിഞ്ഞു (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "മെയിലുകളുടെ ആവൃത്തി പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "മെയിൽബോക്സ് കോട്ട നിറഞ്ഞു - താൽക്കാലിക സ്റ്റാറ്റസ്"
+
+msgid "Domain not found (Postfix)"
+msgstr "ഡൊമെയ്ൻ കണ്ടെത്തിയില്ല (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "മെയിലിന്റെ ഹെഡർ തെറ്റാണ് (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "ബൗൻസ് ലൂപ്പ് കണ്ടെത്തി (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "പാത നിർണ്ണയിക്കാൻ കഴിഞ്ഞില്ല (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "അയച്ചയാളുടെ ഡൊമെയ്ൻ കണ്ടെത്തിയില്ല (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "സ്വീകർത്താവിന്റെ ഡൊമെയ്ൻ കണ്ടെത്തിയില്ല (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "ഗ്രേലിസ്റ്റ് പരിശോധന നടക്കുന്നു - ദയവായി കുറച്ച് സമയത്തിന് ശേഷം വീണ്ടും ശ്രമിക്കുക (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "സ്പാം ഫിൽട്ടറിംഗ് നടക്കുന്നു (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "വൈറസ് സ്കാനിംഗ് നടക്കുന്നു (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "മെയിൽബോക്സ് ലഭ്യമല്ല - ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "Requested action aborted - error in processing"
+msgstr "അഭ്യർത്ഥിച്ച പ്രവർത്തനം നിർത്തലാക്കി - പ്രോസസ്സ് ചെയ്യുമ്പോൾ പിശക് സംഭവിച്ചു"
+
+msgid "Insufficient system storage - try again later"
+msgstr "സിസ്റ്റത്തിന്റെ സംഭരണ സ്ഥലം മതിയാകുന്നില്ല - ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "ഈ സ്വീകർത്താവിന് മെയിലുകളുടെ എണ്ണം വളരെ കൂടുതലാണ് (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS ലഭ്യമല്ല (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "സെർവറിന് മെയിലുകൾ സ്വീകരിക്കാൻ കഴിയില്ല (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "DNS അന്വേഷണത്തിന്റെ താൽക്കാലിക പരാജയം (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "കോട്ട കവിഞ്ഞു - താൽക്കാലിക സ്റ്റാറ്റസ്"
+
+msgid "Message too big - temporary"
+msgstr "മെയിൽ വളരെ വലുതാണ് - താൽക്കാലിക സ്റ്റാറ്റസ്"
+
+msgid "Too many messages per connection"
+msgstr "ഒരു കണക്ഷനിൽ മെയിലുകളുടെ എണ്ണം വളരെ കൂടുതലാണ്"
+
+msgid "Load average too high (Postfix)"
+msgstr "സിസ്റ്റം ലോഡ് വളരെ കൂടുതലാണ് (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "കണക്ഷൻ നിരസിച്ചു (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "അയയ്ക്കുന്നതിന്റെ ആവൃത്തി പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "സ്വീകർത്താവിന്റെ ആവൃത്തി പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "അയച്ചയാളുടെ ആവൃത്തി പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "IP വിലാസത്തിന്റെ ആവൃത്തി പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "MX അന്വേഷണം പരാജയപ്പെട്ടു (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "A രേഖയുടെ അന്വേഷണം പരാജയപ്പെട്ടു (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "PTR രേഖയുടെ അന്വേഷണം പരാജയപ്പെട്ടു (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "ഗ്രേലിസ്റ്റ് പരിശോധന സജീവമാക്കി - ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക (Postgrey)"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "അയച്ചയാളുടെ വിലാസം നിരസിച്ചു - ഡൊമെയ്ൻ പരിശോധിച്ചിട്ടില്ല (DMARC കാത്തിരിക്കുന്നു)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "സ്വീകർത്താവിന്റെ വിലാസം നിരസിച്ചു - ഡൊമെയ്ൻ പരിശോധിച്ചിട്ടില്ല (DMARC കാത്തിരിക്കുന്നു)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "DKIM പരിശോധന കാത്തിരിക്കുന്നു - താൽക്കാലിക പരാജയം"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "SPF പരിശോധന കാത്തിരിക്കുന്നു - താൽക്കാലിക പരാജയം"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "DMARC പരിശോധന കാത്തിരിക്കുന്നു - താൽക്കാലിക പരാജയം"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "DNSBL അന്വേഷണത്തിന്റെ താൽക്കാലിക പരാജയം"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "RHSBL അന്വേഷണത്തിന്റെ താൽക്കാലിക പരാജയം"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "URI DNSBL അന്വേഷണത്തിന്റെ താൽക്കാലിക പരാജയം"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "താൽക്കാലിക പ്രാമാണീകരണ പരാജയം (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "താൽക്കാലിക അധികാര പരാജയം (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "ഒരു അയച്ചയാളുടെ ആവൃത്തി പരിധി കവിഞ്ഞു (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "ഒരു സ്വീകർത്താവിന്റെ ആവൃത്തി പരിധി കവിഞ്ഞു (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "ഒരു ഡൊമെയ്നിന്റെ ആവൃത്തി പരിധി കവിഞ്ഞു (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "ഒരു IP യുടെ ആവൃത്തി പരിധി കവിഞ്ഞു (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "മെയിൽ പിന്നീടുള്ള ഡെലിവറിക്കായി ക്യൂവിൽ ഇട്ടു (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "നയം കാരണം ഡെലിവറി വൈകി (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "ഉള്ളടക്ക ഫിൽട്ടറിന്റെ താൽക്കാലിക പരാജയം"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "ആന്റിവൈറസ് സ്കാനറിന്റെ താൽക്കാലിക പരാജയം"
+
+msgid "Temporary failure in spam filter"
+msgstr "സ്പാം ഫിൽട്ടറിന്റെ താൽക്കാലിക പരാജയം"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter-ന്റെ താൽക്കാലിക പരാജയം (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "ഗ്രേലിസ്റ്റ് - ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "DDoS protection active - try again later"
+msgstr "DDoS സംരക്ഷണം സജീവമാക്കി - ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "SMTP policy violation - temporary"
+msgstr "SMTP നയ ലംഘനം - താൽക്കാലിക സ്റ്റാറ്റസ്"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "RCPT TO പ്രോസസ്സിംഗിന്റെ താൽക്കാലിക പിശക്"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "MAIL FROM പ്രോസസ്സിംഗിന്റെ താൽക്കാലിക പിശക്"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "EHLO/HELO പ്രോസസ്സിംഗിന്റെ താൽക്കാലിക പിശക്"
+
+msgid "Temporary error in DATA processing"
+msgstr "DATA പ്രോസസ്സിംഗിന്റെ താൽക്കാലിക പിശക്"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "താൽക്കാലിക പിശക് - സേവനം തിരക്കിലാണ്, ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "സിന്റാക്സ് പിശക് - കമാൻഡ് തിരിച്ചറിഞ്ഞില്ല അല്ലെങ്കിൽ വളരെ നീളമുണ്ട്"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "പാരാമീറ്ററുകളുടെയോ ആർഗ്യുമെന്റുകളുടെയോ സിന്റാക്സ് പിശക്"
+
+msgid "Command not implemented"
+msgstr "കമാൻഡ് നടപ്പിലാക്കിയിട്ടില്ല"
+
+msgid "Bad sequence of commands"
+msgstr "കമാൻഡുകളുടെ ക്രമം തെറ്റാണ്"
+
+msgid "Command parameter not implemented"
+msgstr "കമാൻഡിന്റെ പാരാമീറ്റർ നടപ്പിലാക്കിയിട്ടില്ല"
+
+msgid "Version not supported (ESMTP)"
+msgstr "പതിപ്പിനെ പിന്തുണയ്ക്കുന്നില്ല (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "മെയിൽബോക്സ് പാത അസാധുവാണ് (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "ഈ സെഷനിൽ കമാൻഡുകളുടെ എണ്ണം വളരെ കൂടുതലാണ് (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "സ്വീകർത്താക്കളുടെ എണ്ണത്തിന്റെ പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "അയച്ചയാളുകളുടെ എണ്ണത്തിന്റെ പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "ഡൊമെയ്നുകളുടെ എണ്ണത്തിന്റെ പരിധി കവിഞ്ഞു (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "മെയിൽബോക്സ് നിലവിലില്ല (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS പരാജയം - ശാശ്വത പിശക്"
+
+msgid "Address type not supported (Postfix)"
+msgstr "വിലാസ തരത്തെ പിന്തുണയ്ക്കുന്നില്ല (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "മെയിൽബോക്സ് തുറക്കാൻ കഴിഞ്ഞില്ല (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "മെയിൽബോക്സ് ലോക്ക് ചെയ്തു - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "നയം കാരണം മെയിൽ നിരസിച്ചു (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "ഉള്ളടക്കം നിരസിച്ചു - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Attachment type not allowed"
+msgstr "അറ്റാച്ച്മെന്റ് തരം അനുവദനീയമല്ല"
+
+msgid "Message encoding not supported"
+msgstr "മെയിലിന്റെ എൻകോഡിംഗിനെ പിന്തുണയ്ക്കുന്നില്ല"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "അയച്ചയാളുടെ ഡൊമെയ്ൻ നിലവിലില്ല - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "ഡൊമെയ്ൻ മെയിലുകൾ സ്വീകരിക്കുന്നില്ല അല്ലെങ്കിൽ അടയ്ക്കുന്നു"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "സ്വീകർത്താവിന്റെ ഡൊമെയ്ൻ നിലവിലില്ല - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "മെയിൽബോക്സ് കോട്ട നിറഞ്ഞു - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "മെയിലിന്റെ വലിപ്പം പരിധി കവിഞ്ഞു - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Authentication required (Sendmail)"
+msgstr "പ്രാമാണീകരണം ആവശ്യമാണ് (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "പ്രാമാണീകരണം പരാജയപ്പെട്ടു (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "പ്രാമാണീകരണ സംവിധാനത്തെ പിന്തുണയ്ക്കുന്നില്ല"
+
+msgid "Authentication credentials invalid"
+msgstr "പ്രാമാണീകരണ രേഖകൾ തെറ്റാണ്"
+
+msgid "Authentication account expired"
+msgstr "പ്രാമാണീകരണ അക്കൗണ്ടിന്റെ കാലാവധി കഴിഞ്ഞു"
+
+msgid "Access denied - authentication required"
+msgstr "പ്രവേശനം നിരസിച്ചു - പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "Access denied (Sendmailism)"
+msgstr "പ്രവേശനം നിരസിച്ചു (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "പ്രവേശനം നിരസിച്ചു - പ്രാമാണീകരിച്ചിട്ടില്ല"
+
+msgid "Access denied - account locked"
+msgstr "പ്രവേശനം നിരസിച്ചു - അക്കൗണ്ട് ലോക്ക് ചെയ്തു"
+
+msgid "Access denied - account disabled"
+msgstr "പ്രവേശനം നിരസിച്ചു - അക്കൗണ്ട് പ്രവർത്തനരഹിതമാക്കി"
+
+msgid "Authentication failed"
+msgstr "പ്രാമാണീകരണം പരാജയപ്പെട്ടു"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "റിലേ റീഡയറക്ഷനായി പ്രാമാണീകരണം ആവശ്യമാണ് (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "റിലേ റീഡയറക്ഷന്റെ പ്രാമാണീകരണം പരാജയപ്പെട്ടു (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "എൻക്രിപ്റ്റ് ചെയ്ത കണക്ഷൻ ആവശ്യമാണ് (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "ഈ സ്വീകർത്താവിന് TLS എൻക്രിപ്ഷൻ ആവശ്യമാണ്"
+
+msgid "Encryption strength insufficient"
+msgstr "എൻക്രിപ്ഷൻ ശേഷി അപര്യാപ്തമാണ്"
+
+msgid "Certificate validation failed"
+msgstr "സർട്ടിഫിക്കറ്റ് പരിശോധന പരാജയപ്പെട്ടു"
+
+msgid "Invalid TLS certificate"
+msgstr "TLS സർട്ടിഫിക്കറ്റ് അസാധുവാണ്"
+
+msgid "TLS protocol version not supported"
+msgstr "TLS പ്രോട്ടോക്കോൾ പതിപ്പിനെ പിന്തുണയ്ക്കുന്നില്ല"
+
+msgid "Cipher suite not supported"
+msgstr "സൈഫർ സെറ്റിനെ പിന്തുണയ്ക്കുന്നില്ല"
+
+msgid "Access denied - no valid recipient"
+msgstr "പ്രവേശനം നിരസിച്ചു - സാധുവായ സ്വീകർത്താവില്ല"
+
+msgid "Access denied - no valid sender"
+msgstr "പ്രവേശനം നിരസിച്ചു - സാധുവായ അയച്ചയാളില്ല"
+
+msgid "Access denied - domain not allowed"
+msgstr "പ്രവേശനം നിരസിച്ചു - ഡൊമെയ്ൻ അനുവദനീയമല്ല"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "പ്രവേശനം നിരസിച്ചു - IP വിലാസം തടഞ്ഞു (ശാശ്വതമായി)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "പ്രവേശനം നിരസിച്ചു - അയച്ചയാളുടെ ഡൊമെയ്ൻ ബ്ലാക്ക്ലിസ്റ്റിലാണ്"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "മെയിൽബോക്സ് ലഭ്യമല്ല - അഭ്യർത്ഥിച്ച പ്രവർത്തനം നടപ്പിലാക്കിയിട്ടില്ല"
+
+msgid "User not local - please try forwarding address"
+msgstr "ഉപയോക്താവ് ഈ സെർവറിൽ ഇല്ല - ദയവായി ഫോർവേഡിംഗ് വിലാസം ഉപയോഗിക്കുക"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "അഭ്യർത്ഥിച്ച പ്രവർത്തനം നിർത്തലാക്കി - സംഭരണ വിഹിതം കവിഞ്ഞു"
+
+msgid "Mailbox name not allowed"
+msgstr "മെയിൽബോക്സിന്റെ പേര് അനുവദനീയമല്ല"
+
+msgid "Requested action rejected - access denied"
+msgstr "അഭ്യർത്ഥിച്ച പ്രവർത്തനം നിരസിച്ചു - പ്രവേശനം നിരോധിച്ചു"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "MAIL FROM/RCPT TO പാരാമീറ്ററുകൾ തിരിച്ചറിഞ്ഞില്ല"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "ഡൊമെയ്നിന് അയയ്ക്കാൻ അനുമതി ഇല്ല (DMARC നിരസിക്കൽ)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "ആവർത്തിച്ചുള്ള മെയിലുകളുടെ എണ്ണം വളരെ കൂടുതലാണ് - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "അയച്ചയാളുടെ വിലാസം നിരസിച്ചു - ഡൊമെയ്ൻ SPF-ൽ ഇല്ല"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "അയച്ചയാളുടെ വിലാസം നിരസിച്ചു - DKIM പരിശോധന പരാജയപ്പെട്ടു"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "അയച്ചയാളുടെ വിലാസം നിരസിച്ചു - DMARC നയ നിരസിക്കൽ"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "സ്വീകർത്താവിന്റെ വിലാസം നിരസിച്ചു - DMARC നയ നിരസിക്കൽ"
+
+msgid "Message rejected due to spam content"
+msgstr "സ്പാം ഉള്ളടക്കം കാരണം മെയിൽ നിരസിച്ചു"
+
+msgid "Message rejected due to virus detected"
+msgstr "വൈറസ് കണ്ടെത്തിയതിനാൽ മെയിൽ നിരസിച്ചു"
+
+msgid "Message rejected due to malicious content"
+msgstr "ദുരുദ്ദേശ്യപരമായ ഉള്ളടക്കം കാരണം മെയിൽ നിരസിച്ചു"
+
+msgid "Message rejected due to phishing detection"
+msgstr "ഫിഷിംഗ് കണ്ടെത്തിയതിനാൽ മെയിൽ നിരസിച്ചു"
+
+msgid "Message rejected due to malware detection"
+msgstr "മാൽവെയർ കണ്ടെത്തിയതിനാൽ മെയിൽ നിരസിച്ചു"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "നയം കാരണം മെയിൽ നിരസിച്ചു - ശാശ്വത സ്റ്റാറ്റസ്"
+
+msgid "Message rejected due to content filtering"
+msgstr "ഉള്ളടക്ക ഫിൽട്ടറിംഗ് കാരണം മെയിൽ നിരസിച്ചു"
+
+msgid "Message rejected due to reputation"
+msgstr "പ്രശസ്തി കാരണം മെയിൽ നിരസിച്ചു"
+
+msgid "Access denied - access_map violation"
+msgstr "പ്രവേശനം നിരസിച്ചു - access_map ലംഘനം"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "പ്രവേശനം നിരസിച്ചു - SMTP ക്ലൈന്റ് RBL-ൽ ഉണ്ട്"
+
+msgid "Access denied - relay not authorized"
+msgstr "പ്രവേശനം നിരസിച്ചു - റിലേ റീഡയറക്ഷൻ അംഗീകരിച്ചിട്ടില്ല"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "പ്രവേശനം നിരസിച്ചു - അജ്ഞാത SMTP ക്ലൈന്റ് ഹോസ്റ്റിന്റെ പേര്"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "പ്രവേശനം നിരസിച്ചു - ക്ലൈന്റ് HELO ഹോസ്റ്റിന്റെ പേരിന്റെ സിന്റാക്സ് പിശക്"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "പ്രവേശനം നിരസിച്ചു - SMTP ക്ലൈന്റ് ഹോസ്റ്റിന്റെ പേര് നിരസിച്ചു"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "പ്രവേശനം നിരസിച്ചു - അയച്ചയാളുടെയോ സ്വീകർത്താവിന്റെയോ ഡൊമെയ്ൻ അജ്ഞാതമാണ്"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "പ്രവേശനം നിരസിച്ചു - അജ്ഞാത ക്ലൈന്റ് HELO ഹോസ്റ്റിന്റെ പേര്"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "പ്രവേശനം നിരസിച്ചു - അസാധുവായ ഡൊമെയ്ൻ (FQDN അല്ല)"
+
+msgid "Access denied - domain not qualified"
+msgstr "പ്രവേശനം നിരസിച്ചു - ഡൊമെയ്ൻ യോഗ്യത നേടിയിട്ടില്ല"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "പ്രവേശനം നിരസിച്ചു - മെയിൽ സെർവർ തെറ്റായി കോൺഫിഗർ ചെയ്തു"
+
+msgid "Access denied - open relay not allowed"
+msgstr "പ്രവേശനം നിരസിച്ചു - ഓപ്പൺ റിലേ അനുവദനീയമല്ല"
+
+msgid "Access denied - proxy not allowed"
+msgstr "പ്രവേശനം നിരസിച്ചു - പ്രോക്സി ഉപയോഗം അനുവദനീയമല്ല"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "പ്രവേശനം നിരസിച്ചു - ഡൈനാമിക് IP അനുവദനീയമല്ല"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "പ്രവേശനം നിരസിച്ചു - റെസിഡൻഷ്യൽ IP അനുവദനീയമല്ല"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "പ്രവേശനം നിരസിച്ചു - VPN/Tor കണ്ടെത്തി"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "പ്രവേശനം നിരസിച്ചു - Spamhaus DROP ലിസ്റ്റിലാണ്"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "പ്രവേശനം നിരസിച്ചു - URL URIBL ലിസ്റ്റിലാണ്"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "പ്രവേശനം നിരസിച്ചു - ഡൊമെയ്ൻ RHSBL ലിസ്റ്റിലാണ്"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "പ്രവേശനം നിരസിച്ചു - IP DNSWL ലിസ്റ്റിലാണ് (നയം)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - മെയിൽബോക്സ് കണ്ടെത്തിയില്ല"
+
+msgid "Delivery failed - recipient not local"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - സ്വീകർത്താവ് ഈ സെർവറിൽ ഇല്ല"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - സ്വീകർത്താവിനെ നിരസിച്ചു"
+
+msgid "Delivery failed - sender rejected"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - അയച്ചയാളെ നിരസിച്ചു"
+
+msgid "Delivery failed - relay rejected"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - റിലേ നിരസിച്ചു"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - DNS ശാശ്വത പിശക്"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - MX ശാശ്വത പിശക്"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - A രേഖയുടെ ശാശ്വത പിശക്"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - PTR രേഖയുടെ ശാശ്വത പിശക്"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "ഡെലിവറി പരാജയപ്പെട്ടു - നയത്തിന്റെ ശാശ്വത പിശക്"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: വിജയം - ഡെലിവറി സ്റ്റാറ്റസ് അറിയിപ്പ്"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: ഡെലിവറി വൈകി"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: ഡെലിവറി പരാജയപ്പെട്ടു - ശാശ്വത"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: ഡെലിവറി പരാജയപ്പെട്ടു - താൽക്കാലിക"
+
+msgid "DSN: Message expired"
+msgstr "DSN: മെയിലിന്റെ കാലാവധി കഴിഞ്ഞു"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: മെയിൽ തിരിച്ചയച്ചു"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: മെയിൽ റദ്ദാക്കി"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: മെയിൽ ഫിൽട്ടർ ചെയ്തു"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: മെയിൽ ക്വാറന്റൈൻ ചെയ്തു"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: മെയിൽ അവലോകനത്തിനായി തടഞ്ഞുവച്ചു"
+
+msgid "MTA-STS policy required"
+msgstr "MTA-STS നയം ആവശ്യമാണ്"
+
+msgid "MTA-STS policy validation failed"
+msgstr "MTA-STS നയത്തിന്റെ പരിശോധന പരാജയപ്പെട്ടു"
+
+msgid "TLS reporting required"
+msgstr "TLS റിപ്പോർട്ട് ആവശ്യമാണ്"
+
+msgid "TLS report requested"
+msgstr "TLS റിപ്പോർട്ട് അഭ്യർത്ഥിച്ചു"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA കർക്കശമായ ഗതാഗത സുരക്ഷ സജീവമാക്കി"
+
+msgid "DANE validation required"
+msgstr "DANE പരിശോധന ആവശ്യമാണ്"
+
+msgid "DANE validation failed"
+msgstr "DANE പരിശോധന പരാജയപ്പെട്ടു"
+
+msgid "TLSA record missing"
+msgstr "TLSA രേഖ നഷ്ടപ്പെട്ടു"
+
+msgid "Certificate name mismatch"
+msgstr "സർട്ടിഫിക്കറ്റിന്റെ പേര് പൊരുത്തപ്പെടുന്നില്ല"
+
+msgid "Certificate expired"
+msgstr "സർട്ടിഫിക്കറ്റിന്റെ കാലാവധി കഴിഞ്ഞു"
+
+msgid "AUTH LOGIN required"
+msgstr "AUTH LOGIN പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH PLAIN required"
+msgstr "AUTH PLAIN പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "AUTH CRAM-MD5 പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "AUTH DIGEST-MD5 പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH GSSAPI required"
+msgstr "AUTH GSSAPI പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH NTLM required"
+msgstr "AUTH NTLM പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH SCRAM required"
+msgstr "AUTH SCRAM പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "AUTH OAUTHBEARER പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "AUTH XOAUTH2 പ്രാമാണീകരണം ആവശ്യമാണ്"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: മെയിൽബോക്സ് ഡാറ്റാബേസ് പിശക്"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: സ്റ്റോർ ഡ്രൈവർ പിശക്"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: ഗതാഗത ഏജന്റ് പിശക്"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: ഉള്ളടക്ക പരിവർത്തന പിശക്"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: റൂട്ടിംഗ് പിശക്"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: മെയിൽ ഫ്ലോ തടസ്സപ്പെട്ടു"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: ഷാഡോ ആവർത്തന പിശക്"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: സുരക്ഷാ വല പിശക്"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: ക്യൂ ഡാറ്റാബേസ് പിശക്"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: മെയിൽ പരിമിതപ്പെടുത്തി"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: ബൗൻസ് ക്യൂ പിശക്"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: വൈകിപ്പിച്ച ക്യൂ പിശക്"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: തടഞ്ഞുവച്ച ക്യൂ പിശക്"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: ഇൻകമിംഗ് ക്യൂ പിശക്"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: സജീവ ക്യൂ പിശക്"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: ക്യൂ ഫയൽ കേടായി"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: ക്യൂ റണ്ണർ പിശക്"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: അലിയാസ് ഡാറ്റാബേസ് പിശക്"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: വെർച്ച്വൽ ഉപയോക്തൃ പട്ടിക പിശക്"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: മെയിലർ നിർവചന പിശക്"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: റൗട്ടർ കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: ഗതാഗത കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: ഡയറക്ടർ കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: വീണ്ടും ശ്രമിക്കൽ കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: പുനരെഴുത്ത് കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: പ്രാമാണീകരണ കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ACL കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Local_scan കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: അന്വേഷണ കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: വികസന കോൺഫിഗറേഷൻ പിശക്"
+
+msgid "HTTP Protocol Versions"
+msgstr "HTTP പ്രോട്ടോക്കോൾ പതിപ്പുകൾ"
+
+msgid "Protocol"
+msgstr "പ്രോട്ടോക്കോൾ"
+
+msgid "Request %"
+msgstr "അഭ്യർത്ഥനകളുടെ വിഹിതം"
+
+msgid "Bandwidth %"
+msgstr "ബാൻഡ്വിഡ്ത്തിന്റെ വിഹിതം"
+
+msgid "Each request requires a new connection"
+msgstr "ഓരോ അഭ്യർത്ഥനയ്ക്കും പുതിയ കണക്ഷൻ ആവശ്യമാണ്"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "ഒന്നിലധികം അഭ്യർത്ഥനകൾക്ക് ഒരേ കണക്ഷൻ പുനരുപയോഗിക്കാൻ കഴിയും"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "ഒരു കണക്ഷനിൽ ഒന്നിലധികം അഭ്യർത്ഥനകൾ സമാന്തരമായി പ്രോസസ്സ് ചെയ്യാൻ കഴിയും"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "കണക്ഷൻ വേഗതയേറിയതാണ്, മോശം നെറ്റ്വർക്കിൽ പ്രകടനം മികച്ചതാണ്"
+
+msgid "No protocol data available"
+msgstr "പ്രോട്ടോക്കോൾ ഡാറ്റ ലഭ്യമല്ല"
+
+msgid "of requests use HTTP/1.0"
+msgstr "അഭ്യർത്ഥനകളിൽ HTTP/1.0 പ്രോട്ടോക്കോൾ ഉപയോഗിക്കുന്നു"
+
+msgid "From access logs"
+msgstr "പ്രവേശന ലോഗുകളിൽ നിന്ന്"
+
+msgid "No HTTP/2 requests detected"
+msgstr "HTTP/2 പ്രോട്ടോക്കോൾ അഭ്യർത്ഥനകളൊന്നും കണ്ടെത്തിയില്ല"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "എല്ലാ അഭ്യർത്ഥനകളും HTTP/1.0 ആണ്, HTTP/2 അഭ്യർത്ഥനകളില്ല"
+
+msgid "HTTP/3 not detected"
+msgstr "HTTP/3 പ്രോട്ടോക്കോൾ അഭ്യർത്ഥനകളൊന്നും കണ്ടെത്തിയില്ല"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "എല്ലാ അഭ്യർത്ഥനകളിലും QUIC/HTTP/3 പ്രോട്ടോക്കോൾ അഭ്യർത്ഥനകൾ ഉൾപ്പെടുന്നില്ല"
+
+msgid "Mail Authentication Statistics"
+msgstr "മെയിൽ പ്രാമാണീകരണ സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "Authentication"
+msgstr "പ്രാമാണീകരണത്തിന്റെ തരം"
+
+msgid "Pass"
+msgstr "വിജയകരം"
+
+msgid "Fail"
+msgstr "പരാജയപ്പെട്ടു"
+
+msgid "Softfail"
+msgstr "മൃദു പരാജയം"
+
+msgid "Neutral"
+msgstr "നിഷ്പക്ഷം"
+
+msgid "None"
+msgstr "ഇല്ല"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "മെയിൽ ക്യൂ കാലതാമസ സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "Delay Range"
+msgstr "കാലതാമസത്തിന്റെ വ്യാപ്തി"
+
+msgid "Count"
+msgstr "എണ്ണം"
+
+msgid "Percentage"
+msgstr "ശതമാന വിഹിതം"
+
+msgid "TLS Encryption Statistics"
+msgstr "TLS എൻക്രിപ്ഷൻ സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "TLS Versions"
+msgstr "TLS പതിപ്പുകൾ"
+
+msgid "Top Ciphers"
+msgstr "സാധാരണയായി ഉപയോഗിക്കുന്ന സൈഫർ സെറ്റ്"
+
+msgid "robot_hits_detail_both"
+msgstr "ആകെ അഭ്യർത്ഥനകൾ: %s (സാധാരണ പേജ്: %s, robots.txt: %s)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "robots.txt-ലേക്ക് മാത്രമുള്ള പ്രവേശനം: %s തവണ, മറ്റ് പേജുകളൊന്നും അഭ്യർത്ഥിച്ചിട്ടില്ല"
+
+msgid "robot_hits_detail_normal"
+msgstr "സാധാരണ പേജുകളുടെ അഭ്യർത്ഥനകൾ: %s"
+
+msgid "Troubleshooting"
+msgstr "പിശക് പരിഹാരം"
+
+msgid "Did you use the correct URL?"
+msgstr "നിങ്ങൾ ശരിയായ URL ഉപയോഗിച്ചോ?"
+
+msgid "Example:"
+msgstr "ഉദാഹരണം:"
+
+msgid "Did you use correct config parameter?"
+msgstr "നിങ്ങൾ ശരിയായ കോൺഫിഗറേഷൻ പാരാമീറ്റർ ഉപയോഗിച്ചോ?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "ഉദാഹരണം: നിങ്ങളുടെ കോൺഫിഗറേഷൻ ഫയൽ awstats.mysite.conf ആണെങ്കിൽ, -config=mysite ഉപയോഗിക്കുക"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "നിങ്ങൾ 'awstats.$SiteConfig.conf' കോൺഫിഗറേഷൻ ഫയൽ സൃഷ്ടിച്ചിട്ടുണ്ടോ?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "ഇല്ലെങ്കിൽ, നിങ്ങൾക്ക് \"awstats_configure.pl\" കമാൻഡ് ലൈനിൽ നിന്ന് റൺ ചെയ്യാം, അല്ലെങ്കിൽ സ്വമേധയാ സൃഷ്ടിക്കാം"
+
+msgid "Setup"
+msgstr "കോൺഫിഗറേഷൻ"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "ഫയൽ, വെബ് സെർവർ അല്ലെങ്കിൽ അനുമതികൾ തെറ്റായിരിക്കാം"
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "കോൺഫിഗറേഷൻ ഫയൽ, അനുമതികൾ, AWStats പ്രമാണീകരണം ('docs' ഡയറക്ടറിയിൽ) എന്നിവ പരിശോധിക്കുക"
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "മുന്നറിയിപ്പ്: \"%s\"-നുള്ള ഭാഷാ ഫയൽ കണ്ടെത്തിയില്ല. ഇംഗ്ലീഷ് ഉപയോഗിക്കും"
+
+#------------------------------------------------------------------------------
+# പിശകുകളും സിഗ്നൽ സംസ്കരണവും
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "%s പ്രക്രിയ (ID %s) സിഗ്നൽ %s മുഖേന തടസ്സപ്പെടുത്തി"
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "ഈ കോൺഫിഗറേഷൻ ഫയലിനായി AWStats അപ്ഡേറ്റ് പ്രക്രിയ ഇതിനകം പ്രവർത്തിക്കുന്നതായി തോന്നുന്നു. ദയവായി കുറച്ച് സമയത്തിന് ശേഷം ശ്രമിക്കുക. ഇത് ശരിയല്ലെങ്കിൽ, ലോക്ക് ഫയൽ സ്വമേധയാ നീക്കം ചെയ്യുക"
+
+#------------------------------------------------------------------------------
+# പുതിയ സ്ഥിതിവിവരക്കണക്ക് ശീർഷകങ്ങൾ
+#------------------------------------------------------------------------------
+
+msgid "Report Overview"
+msgstr "റിപ്പോർട്ടിന്റെ അവലോകനം"
+
+msgid "Monthly Statistics"
+msgstr "മാസങ്ങൾ അനുസരിച്ചുള്ള സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "Daily Statistics"
+msgstr "തീയതികൾ അനുസരിച്ചുള്ള സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "Statistics by Day of Week"
+msgstr "ആഴ്ചയിലെ ദിവസങ്ങൾ അനുസരിച്ചുള്ള സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "Hourly Page Views"
+msgstr "മണിക്കൂറിലെ കാഴ്ചകളുടെ എണ്ണം"
+
+msgid "Traffic Sources"
+msgstr "പ്രവേശന ഉറവിടങ്ങൾ"
+
+msgid "Other Sources"
+msgstr "മറ്റ് ഉറവിടങ്ങൾ"
+
+msgid "tooltip_1"
+msgstr "സൈറ്റിലെ സന്ദർശക സെഷനുകളുടെ എണ്ണം. ഒരു സന്ദർശകൻ 30 മിനിറ്റിലധികം നിഷ്ക്രിയത്വത്തിന് ശേഷം വീണ്ടും സന്ദർശിക്കുമ്പോൾ, അത് ഒരു പുതിയ സന്ദർശനമായി കണക്കാക്കപ്പെടുന്നു"
+
+msgid "tooltip_2"
+msgstr "തിരഞ്ഞെടുത്ത സമയ ഇടവേളയിൽ നിങ്ങളുടെ വെബ്സൈറ്റ് സന്ദർശിച്ച വ്യത്യസ്ത സന്ദർശകരുടെ എണ്ണം. IP വിലാസത്തിന്റെ അടിസ്ഥാനത്തിൽ കണക്കാക്കുന്നു"
+
+msgid "tooltip_3"
+msgstr "പേജ് ആയി കണക്കാക്കുന്ന അഭ്യർത്ഥനകളുടെ എണ്ണം (ഉദാ. HTML, PHP, ASP), ചിത്രങ്ങൾ, CSS, JS സ്റ്റാറ്റിക് ഫയലുകൾ എന്നിവ ഉൾപ്പെടുന്നില്ല"
+
+msgid "tooltip_4"
+msgstr "സെർവറിലേക്ക് അയച്ച എല്ലാ അഭ്യർത്ഥനകളുടെയും ആകെ എണ്ണം, എല്ലാ തരത്തിലുള്ള ഫയലുകളും ഉൾപ്പെടുന്നു"
+
+msgid "tooltip_5"
+msgstr "ഉപയോക്താവിന്റെ അഭ്യർത്ഥനകൾക്ക് മറുപടിയായി സെർവർ കൈമാറിയ ഡാറ്റയുടെ അളവ്"
+
+msgid "tooltip_13"
+msgstr "സെർച്ച് എഞ്ചിനുകൾ വഴി നിങ്ങളുടെ സൈറ്റിലേക്ക് വരുന്ന ഉറവിടങ്ങളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ. ഏതൊക്കെ സെർച്ച് എഞ്ചിനുകൾ നിങ്ങൾക്ക് ട്രാഫിക് കൊണ്ടുവരുന്നു, അവ ഏതൊക്കെ തിരയൽ പദങ്ങൾ ഉപയോഗിച്ചു എന്ന് കാണിക്കുന്നു"
+
+msgid "tooltip_14"
+msgstr "മറ്റ് വെബ്സൈറ്റുകളുടെ ബാഹ്യ ലിങ്കുകൾ വഴി നിങ്ങളുടെ സൈറ്റിലേക്ക് വരുന്ന ഉറവിടങ്ങളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ. ഏതൊക്കെ സൈറ്റുകൾ നിങ്ങളിലേക്ക് ലിങ്ക് ചെയ്യുന്നു, ഏതൊക്കെ ട്രാഫിക് അവ കൊണ്ടുവരുന്നു എന്ന് കാണിക്കുന്നു"
+
+msgid "tooltip_15"
+msgstr "സന്ദർശകർ സെർച്ച് എഞ്ചിനുകളിൽ ഉപയോഗിച്ച തിരയൽ പദങ്ങൾ. കീവേർഡ് ഒരൊറ്റ പദമാണ്, കീവേർഡ് ശൈലി ബഹുപദങ്ങളുടെ സംയോജനമാണ്"
+
+msgid "tooltip_16"
+msgstr "സെർച്ച് എഞ്ചിൻ ബോട്ടുകൾ, കൃത്രിമ ബുദ്ധി പരിശീലന ബോട്ടുകൾ, കേടുപാടുകൾ സ്കാൻ ചെയ്യുന്നവ (യാന്ത്രിക പ്രോഗ്രാമുകൾ). ബ്രാക്കറ്റിലെ സംഖ്യ സാധാരണ പേജുകൾക്കും robots.txt-നുമുള്ള അഭ്യർത്ഥനകളുടെ എണ്ണത്തെ സൂചിപ്പിക്കുന്നു"
+
+msgid "tooltip_17"
+msgstr "24-മണിക്കൂർ ട്രാഫിക് വിതരണ ഗ്രാഫ്. നിങ്ങളുടെ വെബ്സൈറ്റിന്റെ സന്ദർശനങ്ങളുടെ അവസ്ഥ ദിവസത്തിലെ മണിക്കൂറുകൾ അനുസരിച്ച് കാണിക്കുന്നു, ഉപയോക്താക്കളുടെ സജീവ സമയം മനസ്സിലാക്കാൻ സഹായിക്കുന്നു"
+
+msgid "tooltip_18"
+msgstr "ഈ കോളം തിരഞ്ഞെടുത്ത സമയ ഇടവേളയിലെ ദൈനംദിന/ആഴ്ചപ്പതിപ്പ് ശരാശരി മൂല്യങ്ങൾ കാണിക്കുന്നു, മൊത്തത്തിലുള്ള പ്രവണത മനസ്സിലാക്കാൻ സഹായിക്കുന്നു"
+
+msgid "tooltip_19"
+msgstr "ഗ്രാഫിലെ ഇനങ്ങളിൽ ക്ലിക്ക് ചെയ്യുന്നതിലൂടെ വിശദമായ വിവരങ്ങൾ കാണാൻ കഴിയും. ഗ്രാഫിലെ ഇനങ്ങളിലേക്ക് മൗസ് നീക്കുന്നതിലൂടെ നിർദ്ദിഷ്ട മൂല്യങ്ങൾ കാണാൻ കഴിയും"
+
+msgid "tooltip_20"
+msgstr "നിലവിലുള്ള വിഭാഗങ്ങളിൽ പെടാത്ത ഡാറ്റ, സാധാരണയായി ഡാറ്റാ ഫോർമാറ്റിന്റെ ലംഘനം അല്ലെങ്കിൽ അതിന്റെ അഭാവം മൂലം ഉണ്ടാകുന്നു"
+
+msgid "tooltip_21"
+msgstr "കണ്ടെത്തിയ വേം വൈറസ് ആക്രമണങ്ങളുടെ രേഖകൾ. വേം എന്നത് സ്വയം പ്രസരിക്കുന്ന മാൽവെയറാണ്, സാധാരണയായി നെറ്റ്വർക്ക് കേടുപാടുകളിലൂടെ പടരുന്നു"
+
+#------------------------------------------------------------------------------
+# സഹായ വിവരങ്ങൾ - കമ്മ്യൂണിറ്റി പതിപ്പ്
+#------------------------------------------------------------------------------
+
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - നൂതന വെബ് സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "പകർപ്പവകാശം (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "പകർപ്പവകാശം (c) 2026-ഇതുവരെ കമ്മ്യൂണിറ്റി പതിപ്പ്"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats-ന് യാതൊരു വാറന്റിയും ഇല്ല. ഇത് GNU ജനറൽ പബ്ലിക് ലൈസൻസിന് കീഴിൽ വിതരണം ചെയ്യുന്ന ഒരു സ്വതന്ത്ര സോഫ്റ്റ്വെയറാണ് (വിവരങ്ങൾക്കായി LICENSE ഫയൽ കാണുക)"
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "സിന്റാക്സ്: %s -config=വെർച്ച്വൽ ഹോസ്റ്റിന്റെ പേര് [ഓപ്ഷനുകൾ]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "ഈ കമാൻഡ് AWStats കോൺഫിഗറേഷൻ ഫയലിൽ നിർവചിച്ചിരിക്കുന്ന ലോഗ് ഫയലിൽ നിന്ന് വെബ്സൈറ്റിന്റെ സ്ഥിതിവിവരക്കണക്കുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിനോ (-update ഓപ്ഷൻ) അല്ലെങ്കിൽ HTML റിപ്പോർട്ട് നിർമ്മിക്കുന്നതിനോ (-output ഓപ്ഷൻ) %s-നെ കമാൻഡ് ലൈനിൽ റൺ ചെയ്യുന്നു"
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "ആദ്യം, %s കോൺഫിഗറേഷൻ ഫയലായി %s.വെർച്ച്വൽ ഹോസ്റ്റിന്റെ പേര്.conf വായിക്കാൻ ശ്രമിക്കുന്നു. കണ്ടെത്തിയില്ലെങ്കിൽ, %s %s.conf വായിക്കാൻ ശ്രമിക്കുന്നു, ഒടുവിൽ -config= പാരാമീറ്ററിലേക്ക് കൈമാറിയ പൂർണ്ണ പാത ശ്രമിക്കുന്നു"
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "കുറിപ്പ് 1: കോൺഫിഗറേഷൻ ഫയലുകൾ (*.conf) /etc/awstats, /usr/local/etc/awstats, /etc അല്ലെങ്കിൽ awstats.pl സ്ക്രിപ്റ്റ് ഫയലിന്റെ അതേ ഡയറക്ടറിയിൽ ആയിരിക്കണം"
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "കുറിപ്പ് 2: AWSTATS_FORCE_CONFIG പാരിസ്ഥിതിക വേരിയബിൾ നിർവചിച്ചിട്ടുണ്ടെങ്കിൽ, AWStats അതിനെ 'config' മൂല്യമായി ഉപയോഗിക്കും, കമാൻഡ് ലൈനിലോ URL-ലോ എന്ത് മൂല്യമാണ് കൈമാറിയത് എന്നത് പരിഗണിക്കാതെ"
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "എല്ലാ ഇൻസ്റ്റലേഷൻ നിർദ്ദേശങ്ങൾക്കും AWStats പ്രമാണീകരണം കാണുക"
+
+msgid "Options to update statistics:"
+msgstr "സ്ഥിതിവിവരക്കണക്കുകൾ അപ്ഡേറ്റ് ചെയ്യുന്നതിനുള്ള ഓപ്ഷനുകൾ:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        സ്ഥിതിവിവരക്കണക്കുകൾ അപ്ഡേറ്റ് ചെയ്യുക (സ്വതേ)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps      ഓരോ %s വരികൾ പ്രോസസ്സ് ചെയ്യുമ്പോഴും ബെഞ്ച്മാർക്ക് വിവരങ്ങൾ ചേർക്കുക"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted   കണ്ടെത്തുന്ന ഓരോ കേടായ വരിക്കും, കാരണത്തോടെ ഔട്ട്പുട്ട് ചേർക്കുക"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped     കണ്ടെത്തുന്ന ഓരോ ഒഴിവാക്കിയ വരിക്കും, കാരണത്തോടെ ഔട്ട്പുട്ട് ചേർക്കുക"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin    ഉറവിടം പാർസ് ചെയ്യാൻ കഴിയാത്തപ്പോൾ, അതിന്റെ വിവരങ്ങൾ ഔട്ട്പുട്ട് ചെയ്യുക"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin     ഉറവിടം നേരിട്ടുള്ള പ്രവേശനമാകുമ്പോൾ, ലോഗ് വരി ഔട്ട്പുട്ട് ചെയ്യുക"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n    n വരികൾ പാർസ് ചെയ്തതിന് ശേഷം അപ്ഡേറ്റ് പ്രക്രിയ നിർത്തുക"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x      വിശകലനം ചെയ്യേണ്ട ലോഗ് മാറ്റുക, കോൺഫിഗറേഷൻ ഫയലിലെ 'LogFile' എന്താണെന്നത് പരിഗണിക്കാതെ"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  സ്ഥിതിവിവരക്കണക്കുകൾ അപ്ഡേറ്റ് ചെയ്യുമ്പോൾ, ലോഗ് ഫയലുകൾ കാലക്രമത്തിൽ പ്രോസസ്സ് ചെയ്തിട്ടുണ്ടെന്ന് ഉറപ്പാക്കുക"
+
+msgid "Options to show statistics:"
+msgstr "സ്ഥിതിവിവരക്കണക്കുകൾ കാണിക്കുന്നതിനുള്ള ഓപ്ഷനുകൾ:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output       പ്രധാന HTML റിപ്പോർട്ട് ഔട്ട്പുട്ട് ചെയ്യുക (-update-നൊപ്പം ഉപയോഗിച്ചില്ലെങ്കിൽ യാതൊരു അപ്ഡേറ്റും ഉണ്ടാകില്ല)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x     മറ്റ് റിപ്പോർട്ട് പേജുകൾ ഔട്ട്പുട്ട് ചെയ്യുക, x ഇതാണ്:"
+
+msgid "build page of all domains/countries"
+msgstr "എല്ലാ ഡൊമെയ്നുകളുടെ/രാജ്യങ്ങളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of all hosts"
+msgstr "എല്ലാ ഹോസ്റ്റുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of last hits for hosts"
+msgstr "ഹോസ്റ്റുകളുടെ അവസാന ഹിറ്റുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of all unresolved IP"
+msgstr "എല്ലാ പരിഹരിക്കപ്പെടാത്ത IP-കളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of all email senders (maillog)"
+msgstr "എല്ലാ ഇമെയിൽ അയച്ചയാളുകളുടെ പേജ് നിർമ്മിക്കുക (മെയിൽ ലോഗ്)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "അവസാന ഇമെയിൽ അയച്ചയാളുകളുടെ പേജ് നിർമ്മിക്കുക (മെയിൽ ലോഗ്)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "എല്ലാ ഇമെയിൽ സ്വീകർത്താക്കളുടെ പേജ് നിർമ്മിക്കുക (മെയിൽ ലോഗ്)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "അവസാന ഇമെയിൽ സ്വീകർത്താക്കളുടെ പേജ് നിർമ്മിക്കുക (മെയിൽ ലോഗ്)"
+
+msgid "build page of all logins used"
+msgstr "ഉപയോഗിച്ച എല്ലാ ലോഗിനുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of last hits for logins"
+msgstr "ലോഗിനുകളുടെ അവസാന ഹിറ്റുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of all robots/spider visits"
+msgstr "എല്ലാ റോബോട്ട്/സ്പൈഡർ സന്ദർശനങ്ങളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of last hits for robots"
+msgstr "റോബോട്ടുകളുടെ അവസാന ഹിറ്റുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "list most often viewed pages"
+msgstr "ഏറ്റവും കൂടുതൽ തവണ കണ്ട പേജുകളുടെ പട്ടിക"
+
+msgid "list most often viewed pages matching filter"
+msgstr "ഫിൽട്ടറുമായി പൊരുത്തപ്പെടുന്ന ഏറ്റവും കൂടുതൽ തവണ കണ്ട പേജുകളുടെ പട്ടിക"
+
+msgid "list entry pages"
+msgstr "പ്രവേശന പേജുകളുടെ പട്ടിക"
+
+msgid "list entry pages matching filter"
+msgstr "ഫിൽട്ടറുമായി പൊരുത്തപ്പെടുന്ന പ്രവേശന പേജുകളുടെ പട്ടിക"
+
+msgid "list exit pages"
+msgstr "പുറത്തുകടക്കൽ പേജുകളുടെ പട്ടിക"
+
+msgid "list exit pages matching filter"
+msgstr "ഫിൽട്ടറുമായി പൊരുത്തപ്പെടുന്ന പുറത്തുകടക്കൽ പേജുകളുടെ പട്ടിക"
+
+msgid "build page with os detailed versions"
+msgstr "ഓപ്പറേറ്റിംഗ് സിസ്റ്റങ്ങളുടെ വിശദമായ പതിപ്പുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page with browsers detailed versions"
+msgstr "ബ്രൗസറുകളുടെ വിശദമായ പതിപ്പുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "അജ്ഞാത ബ്രൗസറിന്റെ യൂസർ ഏജന്റുകളുടെ പട്ടിക"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "അജ്ഞാത ഓപ്പറേറ്റിംഗ് സിസ്റ്റത്തിന്റെ യൂസർ ഏജന്റുകളുടെ പട്ടിക"
+
+msgid "build page of all refering search engines"
+msgstr "എല്ലാ ഉറവിട സെർച്ച് എഞ്ചിനുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "build page of all refering pages"
+msgstr "എല്ലാ ഉറവിട പേജുകളുടെ പേജ് നിർമ്മിക്കുക"
+
+msgid "list all keyphrases used on search engines"
+msgstr "സെർച്ച് എഞ്ചിനുകളിൽ ഉപയോഗിച്ച എല്ലാ കീവേർഡ് ശൈലികളുടെ പട്ടിക"
+
+msgid "list all keywords used on search engines"
+msgstr "സെർച്ച് എഞ്ചിനുകളിൽ ഉപയോഗിച്ച എല്ലാ കീവേഡുകളുടെ പട്ടിക"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "404 പിശകുകളുടെ ഉറവിടങ്ങളുടെ പട്ടിക"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "ExtraSection X-ന്റെ എല്ലാ മൂല്യങ്ങളുടെയും പേജ് നിർമ്മിക്കുക"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           HTML റിപ്പോർട്ട് പേജിൽ സ്റ്റാറ്റിക് ലിങ്കുകൾ ഉപയോഗിക്കുക"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    .html-ന് പകരം .xxx വിപുലീകരണത്തോടെയുള്ള സ്റ്റാറ്റിക് ലിങ്കുകൾ ഉപയോഗിക്കുക"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL      HTML റിപ്പോർട്ട് LL ഭാഷയിൽ ഔട്ട്പുട്ട് ചെയ്യുക (en,de,es,fr,it,nl,zh-cn,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM     MM മാസത്തിലെ HTML റിപ്പോർട്ട് ഔട്ട്പുട്ട് ചെയ്യുക"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY    YYYY വർഷത്തിലെ HTML റിപ്പോർട്ട് ഔട്ട്പുട്ട് ചെയ്യുക"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  'date' ഓപ്ഷനുകൾ പഴയ ലോഗ് ഫയൽ പ്രോസസ്സ് ചെയ്യാൻ നിങ്ങളെ അനുവദിക്കുന്നില്ല. അവ നിലവിലെ മാസം/വർഷത്തിന് പകരം തിരഞ്ഞെടുത്ത മാസം/വർഷത്തിലെ പഴയ റിപ്പോർട്ട് കാണാൻ മാത്രമേ അനുവദിക്കുന്നുള്ളൂ"
+
+msgid "Other options:"
+msgstr "മറ്റ് ഓപ്ഷനുകൾ:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X      X-നേക്കാൾ കുറഞ്ഞ ലെവലിലുള്ള ഡീബഗ് വിവരങ്ങൾ ചേർക്കുക (വേഗത കുറയ്ക്കും)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     AWStats-ന്റെ പതിപ്പ് കാണിക്കുക"
+
+msgid "Now supports/detects:"
+msgstr "ഇപ്പോൾ പിന്തുണയ്ക്കുന്നു/കണ്ടെത്തുന്നു:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Web/FTP/മെയിൽ/സ്ട്രീമിംഗ് സെർവർ ലോഗ് വിശകലനം (ലോഡ് ബാലൻസിംഗ് ലോഗ് ഫയലുകൾ ഉൾപ്പെടെ)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  റിവേഴ്സ് DNS അന്വേഷണം (IPv4, IPv6) GeoIP അന്വേഷണം"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  സന്ദർശനങ്ങളുടെ എണ്ണം, തനതായ സന്ദർശകരുടെ എണ്ണം"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  സന്ദർശനങ്ങളുടെ ദൈർഘ്യവും അവസാന സന്ദർശനങ്ങളുടെ പട്ടികയും"
+
+msgid "  Authenticated users"
+msgstr "  പ്രാമാണീകരിക്കപ്പെട്ട ഉപയോക്താക്കൾ"
+
+msgid "  Days of week and rush hours"
+msgstr "  ആഴ്ചയിലെ ദിവസങ്ങളും തിരക്കുള്ള സമയങ്ങളും"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  ഹോസ്റ്റുകളുടെ പട്ടികയും പരിഹരിക്കപ്പെടാത്ത IP വിലാസങ്ങളുടെ പട്ടികയും"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  ഏറ്റവും കൂടുതൽ കണ്ട പേജുകൾ, പ്രവേശന, പുറത്തുകടക്കൽ പേജുകൾ"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  ഫയൽ തരവും വെബ് കംപ്രഷനും (mod_gzip, mod_deflate സ്ഥിതിവിവരക്കണക്കുകൾ)"
+
+msgid "  Configured Database Statistics"
+msgstr "  കോൺഫിഗർ ചെയ്ത ഡാറ്റാബേസ് സ്ഥിതിവിവരക്കണക്കുകൾ"
+
+msgid "  %s domains/countries"
+msgstr "  %s ഡൊമെയ്നുകൾ/രാജ്യങ്ങൾ"
+
+msgid "  %s robots"
+msgstr "  %s റോബോട്ടുകൾ"
+
+msgid "  %s worm's families"
+msgstr "  %s വേം കുടുംബങ്ങൾ"
+
+msgid "  %s operating systems"
+msgstr "  %s ഓപ്പറേറ്റിംഗ് സിസ്റ്റങ്ങൾ"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s ബ്രൗസറുകൾ (മൊബൈൽ ബ്രൗസർ ഡാറ്റാബേസ് ഉൾപ്പെടെ %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s സെർച്ച് എഞ്ചിനുകൾ (അവ ഉപയോഗിച്ച കീവേർഡ് ശൈലികൾ/പദങ്ങൾ ഉൾപ്പെടെ)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  എല്ലാ HTTP പിശകുകളും അവസാന ഉറവിടത്തോടൊപ്പം"
+
+msgid "  Report by day/month/year"
+msgstr "  ദിവസം/മാസം/വർഷം അനുസരിച്ചുള്ള റിപ്പോർട്ട്"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  ഡൈനാമിക് അല്ലെങ്കിൽ സ്റ്റാറ്റിക് HTML അല്ലെങ്കിൽ XHTML റിപ്പോർട്ടുകൾ, സ്റ്റാറ്റിക് PDF റിപ്പോർട്ടുകൾ"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  സൂചികയിലാക്കിയ പഠ്യഭാഗമോ XML പ്രതിമാസ ഡാറ്റാബേസോ"
+
+msgid "  And a lot of other advanced features and options..."  
+msgstr "  കൂടാതെ നിരവധി മറ്റ് നൂതന സവിശേഷതകളും ഓപ്ഷനുകളും..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  പുതിയ പതിപ്പുകളും പതിവ് ചോദ്യങ്ങളും: https://github.com/hestiacn/vstats/issues"

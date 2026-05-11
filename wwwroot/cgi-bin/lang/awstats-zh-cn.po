@@ -4,271 +4,21 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: AWStats 8.1"
-"Report-Msgid-Bugs-To: "
-"POT-Creation-Date: 2026-03-10 12:00+0000"
-"PO-Revision-Date: 2026-03-10 12:00+0000"
-"Last-Translator: "
-"Language-Team: Chinese"
-"Language: zh_CN"
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=UTF-8"
-"Content-Transfer-Encoding: 8bit"
-"Plural-Forms: nplurals=1; plural=0;"
-
-#==============================================================================
-# 帮助信息
-#==============================================================================
-
-msgid "AWStats %s - Advanced Web Statistics"
-msgstr "AWStats %s - 高级Web统计"
-
-msgid "Copyright (c) 1997-latest Laurent Destailleur"
-msgstr "版权所有 (c) 1997-latest Laurent Destailleur"
-
-msgid "USAGE:"
-msgstr "使用方法:"
-
-msgid "-config=vhostname [options]"
-msgstr "-config=虚拟主机名 [选项]"
-
-msgid "BASIC OPTIONS:"
-msgstr "基本选项:"
-
-msgid "name"
-msgstr "名称"
-
-msgid "Specify site configuration to analyze (e.g., -config=mysite.com)"
-msgstr "指定要分析的网站配置 (例如: -config=mysite.com)"
-
-msgid "Update statistics (default for command line)"
-msgstr "更新统计信息 (命令行默认)"
-
-msgid "Generate HTML report (default for CGI)"
-msgstr "生成HTML报告 (CGI默认)"
-
-msgid "code"
-msgstr "语言代码"
-
-msgid "Specify language (e.g., -lang=en, -lang=fr, -lang=zh-cn)"
-msgstr "指定语言 (例如: -lang=zh-cn, -lang=en, -lang=fr)"
-
-msgid "Display this help message"
-msgstr "显示此帮助信息"
-
-msgid "Display version information"
-msgstr "显示版本信息"
-
-msgid "REPORT OPTIONS:"
-msgstr "报告选项:"
-
-msgid "Generate HTML report with static links"
-msgstr "生成静态链接的HTML报告"
-
-msgid "Specify static file extension (default: html)"
-msgstr "指定静态文件扩展名 (默认: html)"
-
-msgid "Specify month (01-12 or all)"
-msgstr "指定月份 (01-12 或 all)"
-
-msgid "Specify year"
-msgstr "指定年份"
-
-msgid "Specify day (advanced option)"
-msgstr "指定日期 (高级选项)"
-
-msgid "Specify hour (advanced option)"
-msgstr "指定小时 (高级选项)"
-
-msgid "Specify frame name (mainleft/mainright/index)"
-msgstr "指定框架名称 (mainleft/mainright/index)"
-
-msgid "FILTER OPTIONS:"
-msgstr "过滤选项:"
-
-msgid "rule"
-msgstr "规则"
-
-msgid "Filter hosts list"
-msgstr "过滤主机列表"
-
-msgid "Exclude hosts list"
-msgstr "排除主机列表"
-
-msgid "Filter URL list"
-msgstr "过滤URL列表"
-
-msgid "Exclude URL list"
-msgstr "排除URL列表"
-
-msgid "Filter referer pages"
-msgstr "过滤来源页面"
-
-msgid "Exclude referer pages"
-msgstr "排除来源页面"
-
-msgid "OUTPUT OPTIONS:"
-msgstr "输出选项:"
-
-msgid "Show all domains/countries"
-msgstr "显示所有域名/国家"
-
-msgid "Show all hosts"
-msgstr "显示所有主机"
-
-msgid "Show last visited hosts"
-msgstr "显示最后访问的主机"
-
-msgid "Show unresolved IP addresses"
-msgstr "显示未解析的IP地址"
-
-msgid "Show all robots"
-msgstr "显示所有机器人"
-
-msgid "Show last visited robots"
-msgstr "显示最后访问的机器人"
-
-msgid "Show page details"
-msgstr "显示页面详情"
-
-msgid "Show entry pages"
-msgstr "显示入口页面"
-
-msgid "Show exit pages"
-msgstr "显示出口页面"
-
-msgid "Show OS details"
-msgstr "显示操作系统详情"
-
-msgid "Show browser details"
-msgstr "显示浏览器详情"
-
-msgid "Show unknown OS"
-msgstr "显示未知操作系统"
-
-msgid "Show unknown browsers"
-msgstr "显示未知浏览器"
-
-msgid "Show search engines referers"
-msgstr "显示搜索引擎来源"
-
-msgid "Show external pages referers"
-msgstr "显示外部页面来源"
-
-msgid "Show keyphrases"
-msgstr "显示关键词组"
-
-msgid "Show keywords"
-msgstr "显示关键字"
-
-msgid "Show 404 error details"
-msgstr "显示404错误详情"
-
-msgid "DEBUG OPTIONS:"
-msgstr "调试选项:"
-
-msgid "level"
-msgstr "级别"
-
-msgid "Set debug level (1-5)"
-msgstr "设置调试级别 (1-5)"
-
-msgid "Show processing progress"
-msgstr "显示处理进度"
-
-msgid "Show corrupted records"
-msgstr "显示损坏的记录"
-
-msgid "Show dropped records"
-msgstr "显示被丢弃的记录"
-
-msgid "Show unknown origin"
-msgstr "显示未知来源"
-
-msgid "Show direct access"
-msgstr "显示直接访问"
-
-msgid "lines"
-msgstr "行数"
-
-msgid "Process only specified number of lines"
-msgstr "只处理指定行数"
-
-msgid "PERFORMANCE OPTIONS:"
-msgstr "性能选项:"
-
-msgid "value"
-msgstr "数值"
-
-msgid "Set memory flush threshold"
-msgstr "设置内存刷新阈值"
-
-msgid "type"
-msgstr "类型"
-
-msgid "Database break method (month/day/hour)"
-msgstr "数据库分割方式 (month/day/hour)"
-
-msgid "Number of last lookups to save"
-msgstr "保存最后查找次数"
-
-msgid "PLUGIN OPTIONS:"
-msgstr "插件选项:"
-
-msgid "Load specified plugin"
-msgstr "加载指定插件"
-
-msgid "Do not load specified plugin"
-msgstr "不加载指定插件"
-
-msgid "mode"
-msgstr "模式"
-
-msgid "Plugin operation mode"
-msgstr "插件运行模式"
-
-msgid "CONFIGURATION FILE LOCATIONS:"
-msgstr "配置文件位置:"
-
-msgid "ENVIRONMENT VARIABLES:"
-msgstr "环境变量:"
-
-msgid "Specify language (overrides config file)"
-msgstr "指定语言 (覆盖配置文件)"
-
-msgid "Force use of specified config file"
-msgstr "强制使用指定的配置文件"
-
-msgid "Force command line mode"
-msgstr "强制命令行模式"
-
-msgid "EXAMPLES:"
-msgstr "示例:"
-
-msgid "Basic update:"
-msgstr "基本更新:"
-
-msgid "Generate Chinese report:"
-msgstr "生成中文报告:"
-
-msgid "View specific month:"
-msgstr "查看特定月份:"
-
-msgid "View all hosts:"
-msgstr "查看所有主机:"
-
-msgid "Debug mode:"
-msgstr "调试模式:"
-
-msgid "More information: %s"
-msgstr "更多信息请访问: %s"
-
-msgid "Report issues: %s"
-msgstr "报告问题: %s"
-
-#==============================================================================
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Chinese\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#------------------------------------------------------------------------------
 # 月份名称
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "month_01"
 msgstr "1月"
@@ -306,9 +56,9 @@ msgstr "11月"
 msgid "month_12"
 msgstr "12月"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 星期名称
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "DayOfWeek_0"
 msgstr "周日"
@@ -331,9 +81,18 @@ msgstr "周五"
 msgid "DayOfWeek_6"
 msgstr "周六"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 界面元素
-#==============================================================================
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "高级网站统计"
+
+msgid "Statistics for"
+msgstr "统计报告"
+
+msgid "main"
+msgstr "概览"
 
 # 主题切换
 msgid "Switch to light mode"
@@ -358,34 +117,12 @@ msgstr "KB"
 msgid "Bytes"
 msgstr "字节"
 
-# 语言名称
-msgid "language_en"
-msgstr "英语"
-
-msgid "language_fr"
-msgstr "法语"
-
-msgid "language_de"
-msgstr "德语"
-
-msgid "language_it"
-msgstr "意大利语"
-
-msgid "language_es"
-msgstr "西班牙语"
-
-msgid "language_nl"
-msgstr "荷兰语"
-
 # 表单元素
 msgid "Filter"
 msgstr "过滤"
 
 msgid "Exclude filter"
 msgstr "排除过滤"
-
-msgid "OK"
-msgstr "确定"
 
 msgid "Top"
 msgstr "前"
@@ -398,12 +135,6 @@ msgstr "最近"
 
 msgid "Average"
 msgstr "平均"
-
-msgid "Total"
-msgstr "总计"
-
-msgid "Percent"
-msgstr "百分比"
 
 msgid "Export"
 msgstr "导出"
@@ -432,154 +163,12 @@ msgstr "%s年"
 msgid "date_format_month"
 msgstr "%2$s年%1$s"
 
-msgid "Switch to light mode"
-msgstr "切换到亮色模式"
-
-msgid "Switch to dark mode"
-msgstr "切换到暗色模式"
-
-#==============================================================================
-# 更新脚本翻译相关
-#==============================================================================
-
-msgid "Process already running"
-msgstr "进程已在运行"
-
-msgid "Start updating statistics"
-msgstr "开始更新统计信息"
-
-msgid "User"
-msgstr "用户"
-
-msgid "System language"
-msgstr "系统语言"
-
-msgid "AWStats language file not found"
-msgstr "AWStats 语言文件不存在"
-
-msgid "Using AWStats language"
-msgstr "使用 AWStats 语言"
-
-msgid "Verification passed"
-msgstr "验证通过"
-
-msgid "Config file doesn't exist"
-msgstr "配置文件不存在"
-
-msgid "Create statistics directory"
-msgstr "创建统计目录"
-
-msgid "Using AWStats version"
-msgstr "使用 AWStats 版本"
-
-msgid "Using WWWROOT"
-msgstr "使用 WWWROOT"
-
-msgid "AWStats not found or not executable"
-msgstr "AWStats 不存在或不可执行"
-
-msgid "File not exist!"
-msgstr "文件不存在！"
-
-msgid "Current month"
-msgstr "当前月份"
-
-msgid "History months"
-msgstr "历史月份"
-
-msgid "Add current month to process list"
-msgstr "添加当前月份到处理列表"
-
-msgid "No history months, process current only"
-msgstr "没有历史月份，只处理当前月份"
-
-msgid "Months to process"
-msgstr "将要处理的月份"
-
-msgid "Processing month"
-msgstr "处理月份"
-
-msgid "Updating statistics..."
-msgstr "更新统计数据..."
-
-msgid "Execute update command"
-msgstr "执行更新命令"
-
-msgid "Update success"
-msgstr "更新成功"
-
-msgid "Update failed"
-msgstr "更新失败"
-
-msgid "Copy logo.svg"
-msgstr "复制 logo.svg"
-
-msgid "Copy icon directory"
-msgstr "复制 icon 目录"
-
-msgid "Generating main page..."
-msgstr "生成主页面..."
-
-msgid "Generate main page"
-msgstr "生成主页面"
-
-msgid "Main page generated successfully"
-msgstr "主页面生成成功"
-
-msgid "Main page generation failed"
-msgstr "主页面生成失败"
-
-msgid "Generating"
-msgstr "生成"
-
-msgid "Generate page"
-msgstr "生成页面"
-
-msgid "Success"
-msgstr "成功"
-
-msgid "Failed"
-msgstr "失败"
-
-msgid "No data"
-msgstr "没有数据"
-
-msgid "Page generated successfully"
-msgstr "页面生成成功"
-
-msgid "Page generation failed"
-msgstr "页面生成失败"
-
-msgid "Finished processing month"
-msgstr "完成处理月份"
-
-msgid "Generate index page"
-msgstr "生成索引页面"
-
-msgid "Generate navigation page"
-msgstr "生成导航页面"
-
-msgid "AWStats update completed"
-msgstr "AWStats 更新完成"
-
-msgid "Statistics type"
-msgstr "统计类型"
-
-msgid "Unsupported statistics type"
-msgstr "不支持的统计类型"
-
-msgid "Set directory permissions"
-msgstr "设置目录权限"
-
-msgid "Domain statistics update completed"
-msgstr "域名统计信息更新完成"
-
-#==============================================================================
+#------------------------------------------------------------------------------
 # 导航栏
-#==============================================================================
+#------------------------------------------------------------------------------
 
-msgid "AWStats Log Viewer"
-msgstr "AWStats 日志查看器"
+msgid "AWStats Month Selector"
+msgstr "AWStats 月份选择器"
 
 msgid "nav_category_basic"
 msgstr "基础文档"
@@ -653,12 +242,15 @@ msgstr "插件钩子"
 msgid "nav_graphs"
 msgstr "插件图形"
 
+msgid "Back to top"
+msgstr "返回顶部"
+
 msgid "nav_select_month"
 msgstr "选择月份"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 主要统计指标
-#==============================================================================
+#------------------------------------------------------------------------------
 
 # 访问相关
 msgid "Unique visitors"
@@ -701,11 +293,60 @@ msgstr "点击数"
 msgid "Bandwidth"
 msgstr "带宽"
 
-msgid "Viewed traffic *"
-msgstr "已查看流量 *"
+msgid "duration_format"
+msgstr "%s-%s"
 
-msgid "Not viewed traffic *"
-msgstr "未查看流量 *"
+msgid "unit_s"
+msgstr "秒"
+
+msgid "unit_min"
+msgstr "分钟"
+
+msgid "unit_h"
+msgstr "小时"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "设备类型"
+
+msgid "Device Type"
+msgstr "设备类型"
+
+msgid "Percent"
+msgstr "百分比"
+
+# Device Type Names
+msgid "Mobile"
+msgstr "手机"
+
+msgid "Pause & Go"
+msgstr "断点续传"
+
+msgid "Complete"
+msgstr "完成"
+
+msgid "Tablet"
+msgstr "平板电脑"
+
+msgid "Tv"
+msgstr "电视"
+
+msgid "Wearable"
+msgstr "可穿戴设备"
+
+msgid "Bot"
+msgstr "爬虫"
+
+msgid "Desktop"
+msgstr "桌面电脑"
+
+msgid "Normal browsing traffic"
+msgstr "正常浏览流量"
+
+msgid "Abnormal browsing traffic"
+msgstr "非正常浏览流量"
 
 msgid "Viewed"
 msgstr "已查看"
@@ -713,8 +354,8 @@ msgstr "已查看"
 msgid "Not viewed"
 msgstr "未查看"
 
-msgid "Viewed traffic includes page views, hits and bandwidth on pages"
-msgstr "已查看流量包括页面浏览、点击和带宽"
+msgid "Abnormal browsing traffic note"
+msgstr "非正常浏览流量包括：搜索引擎爬虫、AI训练爬虫、漏洞扫描器及不符合HTTP/HTTPS规范的请求"
 
 # 文件相关
 msgid "File size"
@@ -751,18 +392,250 @@ msgstr "邮件数"
 msgid "Size"
 msgstr "大小"
 
-#==============================================================================
+msgid "If you remove this file, all statistics for date"
+msgstr "警告: 删除此文件将导致日期"
+
+msgid "will be lost/reset."
+msgstr "的所有统计数据永久丢失/重置！"
+
+msgid "Last config file used to build this data file was"
+msgstr "本数据文件最后使用的配置文件是"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "本文件中的 MAP 段记录了各章节的字节偏移位置，用于"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats 快速直接访问数据。如果您手动修改了本文件的任何内容，您应该"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "完全删除 MAP 段（AWStats 将在下次更新时重写 MAP 段）。"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = 最后处理的记录日期 - 最后日志中的行号 - 最后日志中的偏移量 - 最后记录签名值"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = 历史文件中首次访问的日期"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = 历史文件中最后访问的日期"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = 最后更新日期 - 解析记录数 - 旧记录数 - 新记录数 - 损坏记录数 - 丢弃记录数"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = 访问次数"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = 唯一访问者数"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = 已知主机数"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = 未知主机数"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "集群 ID - 页面数 - 点击数 - 带宽"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "小时 - 页面数 - 点击数 - 带宽 - 未查看页面数 - 未查看点击数 - 未查看带宽"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "日期 - 页面数 - 点击数 - 带宽 - 访问数"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "域名 - 页面数 - 点击数 - 带宽"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "主页仅显示页面数最高的前 %s 个页面，完整列表请查看详情页面。"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "主机 - 页面数 - 点击数 - 带宽 - 最后访问时间 - [最后访问开始时间] - [最后访问页面]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[最后访问开始时间] 和 [最后访问页面] 仅在会话未结束时保存"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "主页仅显示点击数最高的前 %s 个条目，完整列表请查看详情页面。"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "登录用户 - 页面数 - 点击数 - 带宽 - 最后访问时间"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "机器人 ID - 点击数 - 带宽 - 最后访问时间 - robots.txt 点击数"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "蠕虫 ID - 点击数 - 带宽 - 最后访问时间"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "电子邮件 - 点击数 - 带宽 - 最后访问时间"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "主页仅显示点击数最高的前 %s 个电子邮件，完整列表请查看详情页面。"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - 页面数 - 带宽 - 入口 - 出口"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "文件类型 - 点击数 - 带宽 - 压缩前带宽 - 压缩后带宽"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "请求时间范围 - 请求次数"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "文件大小范围 - 文件数量"
+
+msgid "Session range - Number of visits"
+msgstr "会话时长范围 - 访问数"
+
+msgid "URL with %s errors - Hits"
+msgstr "含有 %s 错误的 URL - 点击数"
+
+msgid "Last URL referrer"
+msgstr "最后来源 URL"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "错误 - 点击数 - 带宽"
+
+msgid "Search keywords - Number of search"
+msgstr "搜索关键字 - 搜索次数"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "主页仅显示搜索次数最高的前 %s 个关键字，完整列表请查看详情页面。"
+
+msgid "Search keyphrases - Number of search"
+msgstr "搜索关键词组 - 搜索次数"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "主页仅显示搜索次数最高的前 %s 个关键词组，完整列表请查看详情页面。"
+
+msgid "External page referers - Pages - Hits"
+msgstr "外部页面来源 - 页面数 - 点击数"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "主页仅显示引用页面数最高的前 %s 个外部来源，完整列表请查看详情页面。"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "搜索引擎来源 ID - 页面数 - 点击数"
+
+msgid "Origin - Pages - Hits"
+msgstr "来源 - 页面数 - 点击数"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "未知来源浏览器 - 最后访问时间"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "未知来源操作系统 - 最后访问时间"
+
+msgid "Screen size - Hits"
+msgstr "屏幕分辨率 - 点击数"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "浏览器 ID - 点击量 - 页面数"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "下载 - 点击数 - 带宽"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "协议 - 点击数 - 带宽"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "图标 状态 - 类型：200:404:其他"
+
+#------------------------------------------------------------------------------
+# 时间段翻译 | Time Period Translations
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "午夜零点 · AWStats 都睡了，你还在看数据？真爱啊"
+
+msgid "period_01"
+msgstr "凌晨一点 · 这个点还在访问？你是失眠还是刚下班"
+
+msgid "period_02"
+msgstr "凌晨两点 · 爬虫都比你勤奋，人家还在工作呢"
+
+msgid "period_03"
+msgstr "凌晨三点 · 城市在睡觉，服务器在加班，谁更惨？"
+
+msgid "period_04"
+msgstr "凌晨四点 · 黑暗中最亮的星，是你的屏幕还是服务器指示灯"
+
+msgid "period_05"
+msgstr "清晨五点 · 早起的鸟儿有虫吃，早起的爬虫有数据爬"
+
+msgid "period_06"
+msgstr "早晨六点 · 有人起床了，有人还没睡，互联网从不打烊"
+
+msgid "period_07"
+msgstr "早上七点 · 挤地铁的时间，也是刷网页的时间"
+
+msgid "period_08"
+msgstr "上午八点 · 开工第一件事：先看一眼昨天的数据"
+
+msgid "period_09"
+msgstr "上午九点 · 黄金时段，摸鱼也要讲基本法"
+
+msgid "period_10"
+msgstr "上午十点 · 咖啡时间，顺便看看流量涨了没"
+
+msgid "period_11"
+msgstr "上午十一点 · 还有一个小时吃饭，再坚持一下"
+
+msgid "period_12"
+msgstr "正午十二点 · 服务器：你们都去吃饭了，我歇会儿"
+
+msgid "period_13"
+msgstr "下午一点 · 午困来袭，数据可不会打瞌睡"
+
+msgid "period_14"
+msgstr "下午两点 · 下午茶时间，配数据更香"
+
+msgid "period_15"
+msgstr "下午三点 · 今日流量走势图，像不像你的心情曲线？"
+
+msgid "period_16"
+msgstr "下午四点 · 距离下班还有 X 小时，流量开始冲刺"
+
+msgid "period_17"
+msgstr "傍晚五点 · 下班啦！但服务器还要继续搬砖"
+
+msgid "period_18"
+msgstr "晚上六点 · 晚饭时间，刷个视频放松一下"
+
+msgid "period_19"
+msgstr "晚上七点 · 黄金档，流量高峰，服务器：我顶得住"
+
+msgid "period_20"
+msgstr "晚上八点 · 瘫在沙发上，你是第 114514 位访客"
+
+msgid "period_21"
+msgstr "晚上九点 · 夜深人静，偷偷看数据的夜猫子+1"
+
+msgid "period_22"
+msgstr "晚上十点 · 今日数据即将出炉，紧张吗？"
+
+msgid "period_23"
+msgstr "深夜十一点 · AWStats：该睡了，明天还要打工呢"
+
+#------------------------------------------------------------------------------
 # 时间维度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Period"
-msgstr "报表生成时间"
+msgstr "统计周期"
 
 msgid "Year"
 msgstr "年"
 
 msgid "Month"
 msgstr "月"
+
+msgid "Months"
+msgstr "月份"
+
+msgid "Date"
+msgstr "日期"
 
 msgid "Day"
 msgstr "日"
@@ -779,9 +652,48 @@ msgstr "星期"
 msgid "When"
 msgstr "何时"
 
-#==============================================================================
-# 访问者维度
-#==============================================================================
+msgid "%s Server Management Panel"
+msgstr "%s 服务器管理面板"
+
+msgid "Server Administration"
+msgstr "简单高效的服务器解决方案"
+
+#------------------------------------------------------------------------------
+# 访客维度
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "无效的 URL 参数"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "由于 URL 参数无效或格式错误，无法加载请求的页面。"
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "这可能是由于输入了错误的 URL、缺少参数分隔符或使用了无效的配置名称。"
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "请检查您输入的 URL，确保所有参数格式正确。"
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "SiteDomain 参数未在您的配置/域文件中定义，或者您可能没有对文件添加执行权限。"
+
+msgid "Please run as Administrator to set permissions"
+msgstr "请以管理员身份运行以设置权限"
+
+msgid "Please set execute permission"
+msgstr "请设置执行权限"
+
+msgid "Or if you prefer numeric mode"
+msgstr "或者如果你更喜欢数字模式"
+
+msgid "View Report Directly"
+msgstr "直接查看报告"
+
+msgid "AWStats Log Viewer"
+msgstr "AWStats 日志查看器"
+
+msgid "Month Selection"
+msgstr "月份选择"
 
 msgid "Who"
 msgstr "谁"
@@ -792,23 +704,74 @@ msgstr "访问者"
 msgid "Countries"
 msgstr "国家/地区"
 
-msgid "Domain"
-msgstr "域名"
+msgid "flag_icon"
+msgstr "国旗"
+
+msgid "Country-Region-City"
+msgstr "国家/地区/城市"
+
+msgid "Code"
+msgstr "代码"
 
 msgid "Known"
 msgstr "已知"
 
-msgid "Unknown"
-msgstr "未知"
-
 msgid "unknownos"
-msgstr "无法得知的操作系统"
+msgstr "未知操作系统"
 
 msgid "unknownbrowser"
-msgstr "无法得知的浏览器"
+msgstr "未知浏览器"
 
 msgid "Unresolved IP Address"
 msgstr "未解析的IP地址"
+
+msgid "Unknown File Type"
+msgstr "未知文件类型"
+
+msgid "Unknown Size"
+msgstr "未知文件大小"
+
+msgid "Unknown Time"
+msgstr "未知请求时间"
+
+msgid "Unknown Browser"
+msgstr "未知浏览器"
+
+msgid "Unknown OS"
+msgstr "未知操作系统"
+
+msgid "Unknown Visitor"
+msgstr "未知访客"
+
+msgid "Unknown Visitor (Total)"
+msgstr "未知访客(总计)"
+
+msgid "Unknown Country"
+msgstr "未知国家/地区"
+
+msgid "Unknown Country (Region)"
+msgstr "未知国家/地区(总计)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "未知访客（标题）"
+
+msgid "PageStayTime"
+msgstr "无法估算页面停留时间"
+
+msgid "Unknown OS (Link)"
+msgstr "未知操作系统(链接)"
+
+msgid "Unknown OS (Row)"
+msgstr "未知操作系统（列表）"
+
+msgid "Unknown Browser (Link)"
+msgstr "未知浏览器（链接）"
+
+msgid "Unknown Browser (Row)"
+msgstr "未知浏览器（列表）"
+
+msgid "Unknown Screen"
+msgstr "未知屏幕尺寸"
 
 msgid "Login"
 msgstr "登录名"
@@ -823,7 +786,7 @@ msgid "Different robots"
 msgstr "不同机器人"
 
 msgid "Hits on robots.txt"
-msgstr "robots.txt点击数"
+msgstr "以上列出的搜索引擎机器人产生的“非正常浏览”流量并未包含在其他图表中 “+” 后的数字为成功访问“robots.txt”的次数记录"
 
 msgid "Worms"
 msgstr "蠕虫"
@@ -837,9 +800,484 @@ msgstr "目标"
 msgid "Grabber"
 msgstr "抓取工具"
 
-#==============================================================================
+#------------------------------------------------------------------------------
+# 格式说明
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "文本文件 (1963年 ASCII 标准化，无格式纯文本。所有源代码、配置、日志的基础。Unix 用 LF，Windows 用 CRLF 换行，至今仍是计算机最通用的数据格式)"
+
+msgid "mime_log"
+msgstr "日志文件 (记录系统、应用程序运行信息的纯文本文件，常用于故障排查、性能分析、安全审计。标准格式如 Apache combined log、Nginx access log、syslog 等)"
+
+msgid "mime_page"
+msgstr "HTML 网页 (1989年 Tim Berners-Lee 发明万维网，1990年定义 HTML/HTTP/URL 三大技术，无偿开放未申请专利。2014年 HTML5 成为 W3C 正式标准，支持显示、多媒体与打印。获2016年图灵奖)"
+
+msgid "mime_khtml"
+msgstr "KHTML 网页引擎 (1998年 KDE 2.0 发布，Konqueror 浏览器渲染引擎。2001年苹果基于 KHTML 创建 WebKit，2008年谷歌从 WebKit 分支创建 Blink，成为 Chrome、Edge、Safari 等浏览器的核心。KHTML 是开源社区奠基现代浏览器引擎的典范，其技术遗产通过 WebKit/Blink 延续至今)"
+
+msgid "mime_script"
+msgstr "动态脚本 (解释型语言，无需编译。包括 ASP、JSP、CGI、ColdFusion、Tcl、VBScript 等，广泛用于早期 Web 开发、系统管理、自动化任务。现代脚本语言如 Python、Ruby、JavaScript 已发展为全栈开发主力)"
+
+msgid "mime_js"
+msgstr "JavaScript 脚本 (1995年 Brendan Eich 在 Netscape 用10天创造，浏览器原生编程语言。1997年 ECMAScript 标准化，2009年 Node.js 诞生使其成为全栈语言，npm 是全球最大包管理器。连续多年 GitHub 最流行编程语言)"
+
+msgid "mime_py"
+msgstr "Python 脚本 (1991年 Guido van Rossum 创建，以强制缩进、简洁语法著称。广泛用于 Web 开发、数据科学、人工智能、自动化运维。TIOBE 年度编程语言多次获得者)"
+
+msgid "mime_sh"
+msgstr "Shell 脚本 (1971年 Unix 诞生，命令脚本语言。用于系统管理、自动化任务、服务启动、部署脚本。Linux 运维必备技能)"
+
+msgid "mime_rb"
+msgstr "Ruby 脚本 (1995年 Yukihiro Matsumoto 创建，注重开发者幸福感。Ruby on Rails 框架开创了约定优于配置的开发范式，影响现代 Web 框架设计)"
+
+msgid "mime_pl"
+msgstr "Perl 脚本 (1987年 Larry Wall 创建，以实用主义著称，被誉为『瑞士军刀』。CPAN 是现代语言包管理器的先驱，在文本处理、系统管理、CGI 领域影响深远)"
+
+msgid "mime_php"
+msgstr "PHP 动态网页 (1995年 Rasmus Lerdorf 创建，专为 Web 开发设计。全球超过 70% 网站使用，驱动 WordPress、Facebook、Wikipedia 等平台。PHP 8 引入 JIT 编译，性能大幅提升)"
+
+msgid "mime_image"
+msgstr "图片文件"
+
+msgid "mime_document"
+msgstr "文档文件"
+
+msgid "mime_package"
+msgstr "软件包"
+
+msgid "mime_archive"
+msgstr "Gzip 压缩文件 (1992年 GNU 项目，基于 DEFLATE 算法。Web 中用于动态压缩响应内容，压缩率通常 60-90%。2015 年后部分场景被 Brotli 替代，但仍是服务器端最广泛支持的压缩格式)"
+
+msgid "mime_audio"
+msgstr "音频文件"
+
+msgid "mime_video"
+msgstr "视频文件"
+
+msgid "mime_jscript"
+msgstr "JavaScript (1995年 Brendan Eich 开发)"
+
+msgid "mime_json"
+msgstr "JSON 数据 (2001年 Douglas Crockford 提出，轻量级数据交换格式，Web API 事实标准)"
+
+msgid "mime_vbs"
+msgstr "VBScript (1996年 Microsoft 开发，Windows 脚本语言，用于 ASP 网页和 Windows 管理脚本。随着 PowerShell 和 JavaScript 普及，已逐渐淘汰)"
+
+msgid "mime_conf"
+msgstr "配置文件 (文本格式存储软件配置，常见格式：INI、JSON、YAML、TOML、XML。Linux 系统配置多在 /etc 目录)"
+
+msgid "mime_css"
+msgstr "CSS 样式表 (1996年12月 W3C 发布 CSS1 首个正式标准，1998年 CSS2 增加定位和媒体类型，2011年起 CSS3 模块化引入圆角、动画、弹性盒、网格布局和响应式设计。与 HTML、JavaScript 并称前端三大核心技术，所有现代浏览器（Chrome、Firefox、Safari、Edge）均原生支持，是网页样式定义的唯一标准)"
+
+msgid "mime_xsl"
+msgstr "XSL 样式表 (1999年 W3C 标准，XML 文档转换语言，可将 XML 转为 HTML/PDF/文本。在 JSON 普及后使用减少)"
+
+msgid "mime_runtime"
+msgstr "可执行文件 (EXE、ELF、Mach-O 等操作系统可执行格式，包含机器码和加载信息)"
+
+msgid "mime_library"
+msgstr "库文件 (DLL、SO、dylib 等动态链接库，程序运行时加载的共享代码)"
+
+msgid "mime_swf"
+msgstr "Flash 动画 (1996年 Macromedia 开发，后归 Adobe。交互式网页动画标准，曾统治互联网动画和游戏。痛点：依赖插件、移动端不支持、安全风险高。2017年 Adobe 宣布淘汰，2020年全面停止支持，被 HTML5/CSS3/JS 取代)"
+
+msgid "mime_dtd"
+msgstr "DTD 文档类型定义 (XML 规范，定义 XML 文档结构，用于验证 XML 合法性)"
+
+msgid "mime_csv"
+msgstr "CSV 数据格式 (逗号分隔值，表格数据通用格式，Excel 和数据库导入导出标准)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (Java 应用程序启动器，2000年代 Java 桌面应用分发技术，现已淘汰)"
+
+msgid "mime_lit"
+msgstr "Microsoft Reader 电子书 (2000年微软推出，LIT 格式，已淘汰)"
+
+msgid "mime_svg"
+msgstr "SVG 矢量图 (1999年 W3C 标准，因微软长期推自家 VML 格式，IE 浏览器直至 2011 年才支持，导致普及延迟。2015 年后随着 IE 淘汰和高清屏普及，成为图标、Logo 首选格式)"
+
+msgid "mime_ai"
+msgstr "Adobe Illustrator 矢量图 (1987年推出，行业标准矢量图形格式，印刷设计、Logo、图标首选)"
+
+msgid "mime_phshop"
+msgstr "Photoshop 图片 (1990年 Adobe 推出，Photoshop 源文件格式 PSD，图像处理行业标准)"
+
+msgid "mime_ttf"
+msgstr "TrueType 字体 (1989年 Apple 和 Microsoft 联合开发，矢量字体格式，屏幕显示与打印一致，现代操作系统默认字体格式)"
+
+msgid "mime_fon"
+msgstr "WOFF2 网页字体 (2014年 W3C 推荐，采用 Brotli 压缩算法，相比旧版 WOFF 体积减小约 30%，相比 TTF/OTF 减小超 50%，目前所有现代浏览器均已支持，是当前现代网页字体的首选格式，被 98% 以上浏览器支持)"
+
+msgid "mime_pdf"
+msgstr "PDF 文档 (1993年 Adobe 开发，2008年成为 ISO 国际标准。跨平台文档格式，保持格式一致性，是电子文档分发的全球标准)"
+
+msgid "mime_dotnet"
+msgstr "ASP.NET 动态页面 (2002年 Microsoft 推出，Windows 平台动态网页技术，.NET Framework 的一部分)"
+
+msgid "mime_mdb"
+msgstr "Access 数据库 (Microsoft Access 数据库文件，1992年推出，Windows 桌面数据库解决方案)"
+
+msgid "mime_md"
+msgstr "Markdown 文档 (2004年由 John Gruber 创建，语法设计受 reStructuredText 和 Setext 影响。核心设计哲学为‘可读即渲染’，原始实现 Markdown.pl 采用 Perl 正则表达式。衍生规范包括 GFM (2013)、CommonMark (2017)、Pandoc Markdown 等。驱动 GitHub、GitLab、Stack Overflow、Jupyter Notebook、Obsidian、Hugo、VitePress 等生态，成为静态网站生成器和开发者文档的事实标准格式)"
+
+msgid "mime_crystal"
+msgstr "Crystal Reports 报表格式 (SAP 商业智能报表，企业报表标准格式)"
+
+msgid "mime_libreoffice"
+msgstr "LibreOffice 文档 (2010年 The Document Foundation 开发，OpenOffice 分支，ODF 标准实现，主流开源办公套件)"
+
+msgid "mime_encrypt"
+msgstr "加密文件 (需解密才能查看的文件，常见扩展名：.enc、.crypt、.pgp、.gpg)"
+
+msgid "mime_gpx"
+msgstr "GPS 轨迹数据 (GPS 交换格式，记录地理位置信息，运动手表、导航设备通用格式)"
+
+msgid "mime_diskimage"
+msgstr "磁盘镜像 (DMG、ISO、IMG 等光盘/磁盘映像文件，用于分发软件或备份存储介质)"
+
+msgid "mime_vm"
+msgstr "虚拟机镜像 (VMDK、VDI、VHDX、OVA 等虚拟机磁盘文件，VMware、VirtualBox、Hyper-V 等虚拟化平台格式)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent 种子文件 (2001年 Bram Cohen 发明，P2P 下载索引文件，包含文件元数据和 Tracker 信息)"
+
+msgid "mime_gis"
+msgstr "GIS 地理信息系统数据 (Shapefile、GeoJSON 等地理空间数据格式，用于地图和空间分析)"
+
+msgid "mime_ebook"
+msgstr "电子书 (EPUB、MOBI、AZW 等电子书格式。EPUB 为国际标准，MOBI/AZW 为 Amazon Kindle 格式)"
+
+msgid "mime_avif"
+msgstr "AVIF 图像 (2019年开放媒体联盟推出，基于 AV1 编码，压缩率比 WebP 高 50%，新一代网页图像标准)"
+
+msgid "mime_markdown"
+msgstr "Markdown 文档 (2004年 John Gruber 设计，轻量级标记语言，GitHub README、技术文档、论坛帖子的通用格式)"
+
+msgid "mime_yaml"
+msgstr "YAML 配置 (2001年 Clark Evans 设计，人类可读的数据序列化格式，Kubernetes、Ansible、Docker Compose 配置文件标准)"
+
+msgid "mime_toml"
+msgstr "TOML 配置 (2013年 Tom Preston-Werner 设计，『Tom's Obvious Minimal Language』，Rust/Cargo、Python/pip、Go 等现代工具的配置文件格式)"
+
+msgid "mime_vue"
+msgstr "Vue 组件文件 (2014年尤雨溪推出，渐进式 JavaScript 框架。通过单文件组件 (SFC) 将 HTML、CSS、JS 完美结合，极大提升了开发效率，是全球最流行的前端框架之一。同时作为 VitePress 等现代静态站点生成器的核心，广泛用于驱动交互式技术文档与博客)"
+
+msgid "mime_wasm"
+msgstr "WebAssembly 模块 (2017年 W3C 标准，浏览器高性能执行格式，C/C++/Rust/R 可编译为目标，性能接近原生)"
+
+msgid "mime_jsx"
+msgstr "React JSX 组件 (2013年 Facebook 推出 JavaScript XML，React 框架组件语法，将 HTML 写入 JavaScript 的创新范式)"
+
+msgid "mime_tsx"
+msgstr "TypeScript TSX 组件 (2012年 Microsoft 开发，TypeScript + JSX，React 类型安全开发的标准写法)"
+
+msgid "mime_heif"
+msgstr "HEIF 图像 (2015年 MPEG 标准，高效图像文件格式，苹果生态广泛使用)"
+
+msgid "mime_heic"
+msgstr "HEIC 图像 (苹果 HEIF 实现，iPhone 默认照片格式，iOS/macOS 原生支持)"
+
+msgid "mime_gltf"
+msgstr "GLTF 3D 模型 (GL传输格式，『3D 界的 JPEG』，2015年 Khronos Group 发布，Web 3D 标准格式)"
+
+msgid "mime_glb"
+msgstr "GLB 二进制 3D 模型 (GLTF 的二进制版本，单文件包含所有资源，用于 3D 场景分发)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY 词汇表 (术语定义文件，用于文档系统的术语管理)"
+
+msgid "mime_cbz"
+msgstr "CBZ 漫画书 (ZIP 压缩的漫画图像，漫画收藏通用格式)"
+
+msgid "mime_cbr"
+msgstr "CBR 漫画书 (RAR 压缩的漫画图像，漫画收藏通用格式)"
+
+msgid "mime_fb2"
+msgstr "FB2 电子书 (FictionBook 2.0，俄罗斯电子书格式，XML 结构，开源阅读器广泛支持)"
+
+msgid "mime_kepub"
+msgstr "KEPUB 电子书 (Kobo 专用 EPUB 格式，Kobo 电子书阅读器优化格式)"
+
+msgid "mime_m4b"
+msgstr "M4B 有声书 (MPEG-4 音频书籍格式，支持书签，iTunes 有声书格式)"
+
+msgid "mime_kfx"
+msgstr "Kindle KFX 格式 (2015年 Amazon 推出，Kindle 专用电子书格式，支持增强排版和快速翻页)"
+
+msgid "mime_chm"
+msgstr "CHM 帮助文件 (1997年 Microsoft 推出，编译的 HTML 帮助格式，Windows 软件帮助文档标准)"
+
+msgid "mime_mht"
+msgstr "MHT 网页存档 (1999年 Microsoft 推出，单一文件网页格式，IE 浏览器保存网页格式)"
+
+msgid "mime_wml"
+msgstr "WML 无线标记语言 (1999年 WAP 标准，用于早期功能手机网页文件，已淘汰)"
+
+msgid "mime_xhtml"
+msgstr "XHTML 网页 (2000年 W3C 标准，HTML 的 XML 版本，语法更严格。2009年 W3C 停止维护，重心转向 HTML5)"
+
+msgid "mime_xml"
+msgstr "XML 文档 (1998年 W3C 标准，可扩展标记语言，Web 服务、配置文件、数据交换的基础格式)"
+
+msgid "mime_sgml"
+msgstr "SGML 文档 (1986年 ISO 标准，HTML 的前身，标准通用标记语言，XML 和 HTML 均派生自 SGML)"
+
+msgid "mime_apng"
+msgstr "APNG 动画 (2004年 Mozilla 开发，PNG 的动画扩展，GIF 的现代替代，支持真彩色和半透明)"
+
+msgid "mime_bmp"
+msgstr "BMP 位图 (Windows 位图格式，自 Windows 1.0 起原生支持。无压缩，文件较大，但因结构简单、无需额外编解码器，Windows 11 截图工具、画图程序、EXE/MSI 安装包图标资源、光标文件及部分旧驱动程序仍在使用。同等画质下文件比 PNG 大约 3-10 倍，多数场景已被 PNG/JPEG 取代，但 Windows 生态仍保留广泛兼容性)"
+
+msgid "mime_cdr"
+msgstr "CDR 矢量图 (CorelDRAW 专用格式，加拿大 Corel 公司，矢量图形设计软件)"
+
+msgid "mime_gif"
+msgstr "GIF 图像 (1987年 CompuServe 开发，256色动图格式。痛点：色彩少、画质粗糙、不支持半透明、文件大、帧率低。被 APNG、WebP 等现代动图格式取代)"
+
+msgid "mime_ico"
+msgstr "ICO 图标 (Windows 图标文件格式，支持多分辨率，网站 favicon 标准格式)"
+
+msgid "mime_jpeg"
+msgstr "JPEG 图像 (1992年 ISO 标准，有损压缩照片格式，互联网照片事实标准)"
+
+msgid "mime_jpg"
+msgstr "JPEG 图像 (1992年 ISO 标准，有损压缩照片格式，互联网照片事实标准)"
+
+msgid "mime_png"
+msgstr "PNG 图像 (1996年 W3C 推荐，支持真彩色和半透明，GIF 的静态替代，互联网无损图像标准)"
+
+msgid "mime_ps"
+msgstr "PostScript 页面描述文件 (1985年 Adobe 推出，页面描述语言，PDF 的前身，用于打印和出版)"
+
+msgid "mime_psb"
+msgstr "PSB 大型文档 (Adobe Photoshop 超大图像格式，支持超过 2GB 或 30000 像素的巨型图像)"
+
+msgid "mime_psd"
+msgstr "PSD 图像 (Adobe Photoshop 源文件，支持图层、通道、路径，图像处理行业标准格式)"
+
+msgid "mime_webp"
+msgstr "WebP 图像 (2010年 Google 开发，网页图像格式，支持有损/无损压缩和动画，压缩率比 PNG 高 25-35%，比 JPEG 高 25%)"
+
+msgid "mime_woff"
+msgstr "WOFF 网页字体 (2009年创建，2018年 W3C 标准。基于 TrueType/OpenType 压缩，Web 字体加载优化，现代网站图标字体标准格式)"
+
+msgid "mime_7z"
+msgstr "7z 压缩包 (1999年 Igor Pavlov 开发，7-Zip 程序专有格式。LZMA 算法，高压缩率，开源免费。7z 格式在相同压缩率下通常比 ZIP 小 30-50%，是开源社区和软件分发的常用格式)"
+
+msgid "mime_ace"
+msgstr "ACE 压缩包 (1990年代开发，WinACE 程序格式。曾与 RAR 竞争，压缩率较高。2007年停止开发，现已被 7z/RAR 取代，较少使用)"
+
+msgid "mime_bz2"
+msgstr "BZIP2 压缩包 (1996年 Julian Seward 开发，块排序压缩算法。压缩率比 GZIP 高 15-20%，但速度较慢。Linux 内核源码、开源软件包常用格式，扩展名 .bz2)"
+
+msgid "mime_cab"
+msgstr "CAB 压缩包 (1995年 Microsoft 开发，Cabinet 格式。Windows 系统安装包格式，用于驱动程序、系统文件分发。Windows Installer (MSI) 内部使用 CAB 存储文件)"
+
+msgid "mime_dmg"
+msgstr "DMG 磁盘镜像 (1980年代 Apple 推出，Disk Image 格式。macOS 软件分发标准格式，双击挂载为虚拟磁盘，拖拽即可安装应用。支持压缩和加密，是 Mac 软件下载的主流格式)"
+
+msgid "mime_emz"
+msgstr "EMZ 压缩图片 (Windows 压缩增强图元文件，EMF 的压缩版本。Office 文档中矢量图形存储格式，本质是 GZIP 压缩的 EMF 文件)"
+
+msgid "mime_gz"
+msgstr "GZIP 压缩包 (1992年 Jean-loup Gailly 和 Mark Adler 开发，GNU 项目。Unix/Linux 标准压缩工具，HTTP 传输压缩常用格式。扩展名 .gz，常与 TAR 配合使用)"
+
+msgid "mime_jar"
+msgstr "JAR 压缩包 (1997年 Sun Microsystems 推出，Java ARchive 格式。本质是 ZIP 压缩包，用于打包 Java 类库和应用。Maven、Gradle 等 Java 生态的核心格式，Android 也使用 JAR)"
+
+msgid "mime_lzma"
+msgstr "LZMA 压缩包 (1998年 Igor Pavlov 开发，Lempel-Ziv-Markov chain 算法。7z 格式的核心压缩算法，高压缩率，解压速度快。用于固件、嵌入式系统软件分发)"
+
+msgid "mime_rar"
+msgstr "RAR 压缩包 (1993年 Eugene Roshal 开发，Roshal ARchive 格式。高压缩率，支持分卷压缩、恢复记录。WinRAR 程序格式，压缩率优于 ZIP，但需付费软件支持，开源工具如 unrar 可解压)"
+
+msgid "mime_tar"
+msgstr "TAR 归档包 (1979年 Unix V7 引入，Tape ARchive 格式。磁带归档格式，不压缩仅打包，常与 GZIP/BZIP2/XZ 配合使用。Linux 软件包源码、Docker 镜像分层存储均使用 TAR 格式)"
+
+msgid "mime_tgz"
+msgstr "TGZ 压缩包 (TAR + GZIP 组合格式，扩展名 .tgz 或 .tar.gz。Unix/Linux 软件包最通用分发格式，源码包、二进制包广泛使用，『解压即用』的代表)"
+
+msgid "mime_tbz2"
+msgstr "TBZ2 压缩包 (TAR + BZIP2 组合格式，扩展名 .tbz2 或 .tar.bz2。压缩率比 TGZ 高 15-20%，适合大文件分发，Linux 内核源码长期使用此格式)"
+
+msgid "mime_xz"
+msgstr "XZ 压缩包 (2009年推出，基于 LZMA2 算法。压缩率极高，比 GZIP 高 30-50%，解压速度较快。Linux 内核、包管理器（如 Debian 的 .deb 内部）广泛使用，是当前 Linux 生态推荐格式)"
+
+msgid "mime_z"
+msgstr "Z 压缩包 (1985年 Unix compress 命令格式，LZW 算法。早期 Unix 压缩格式，已被 GZIP 取代。扩展名 .Z，现代系统较少使用)"
+
+msgid "mime_zip"
+msgstr "ZIP 压缩包 (1989年 Phil Katz 开发，PKZIP 格式。Windows 原生支持，互联网最通用压缩格式。支持多文件、目录结构，可选择压缩算法。Java 的 JAR、Android 的 APK、Office 文档的 DOCX/XLSX 均基于 ZIP 格式)"
+
+msgid "mime_zst"
+msgstr "Zstandard 压缩包 (2015年 Facebook 开发，Yann Collet 设计。高速压缩算法，压缩率接近 LZMA，速度远超 GZIP。Linux 内核 5.9+ 支持，Arch Linux pacman、Debian APT 逐步采用，是新一代压缩标准)"
+
+msgid "mime_lz4"
+msgstr "LZ4 压缩包 (2011年 Yann Collet 开发，极速压缩算法。压缩速度比 GZIP 快 10 倍以上，适合实时压缩场景。Linux 内核、OpenZFS、Hadoop 广泛使用，是速度优先场景的首选)"
+
+msgid "mime_lzo"
+msgstr "LZO 压缩包 (1996年 Markus Oberhumer 开发，Lempel-Ziv-Oberhumer 算法。解压速度极快，压缩率一般。Linux 内核 Squashfs、OpenWrt 固件使用，适合嵌入式系统)"
+
+msgid "mime_msi"
+msgstr "MSI 安装包 (1999年 Microsoft 推出，Windows Installer 包格式。Windows 应用程序标准安装格式，支持事务回滚、组件管理、静默安装。企业级软件分发首选格式，至今仍是 Windows 软件安装主流)"
+
+msgid "mime_pkg"
+msgstr "PKG 安装包 (macOS 应用安装包格式，基于 Apple 的 Installer 技术。macOS 软件分发标准格式，支持组件选择、安装脚本、卸载功能。.pkg 文件双击即可安装，Mac App Store 之外软件常用分发方式)"
+
+msgid "mime_apk"
+msgstr "APK 安卓应用包 (2008年 Google 推出，Android 系统传统应用安装格式。APK 本质是 ZIP 压缩包，包含代码、资源、清单文件。2021年起 Google Play 要求新应用改用 AAB 格式，但 APK 仍用于开发调试、第三方商店和侧载安装)"
+
+msgid "mime_ipa"
+msgstr "IPA 苹果应用包 (iOS App Store Package，iOS/iPadOS 应用安装格式。2008年随 iPhone SDK 发布。需通过 App Store 分发或企业证书签名。包含可执行文件、资源、Info.plist 签名信息)"
+
+msgid "mime_hap"
+msgstr "HAP 鸿蒙应用包 (HarmonyOS Ability Package，鸿蒙应用基本单元。2020年随 HarmonyOS 2.0 发布。支持 entry 和 feature 两种类型，华为手机、平板、智能手表等鸿蒙设备分发格式)"
+
+msgid "mime_har"
+msgstr "HAR 鸿蒙静态共享包 (HarmonyOS Archive，鸿蒙静态共享库，可被多个 HAP 共享，用于组件化开发和模块复用)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (2018年 Google 推出，2021年起 Google Play 强制新应用使用此格式。AAB 是分发格式，Google Play 根据设备配置（CPU架构、屏幕密度、语言）动态生成优化 APK，安装包体积平均减小 35%。开发者上传 AAB，用户下载 APK)"
+
+msgid "mime_xapk"
+msgstr "XAPK 应用包 (第三方 Android 应用扩展包，包含 APK + OBB 数据文件。用于大型游戏和复杂应用，解决 APK 单文件 100MB 限制。常见于 APKPure、APKMirror 等第三方应用商店，非 Google 官方格式)"
+
+msgid "mime_appx"
+msgstr "Windows 应用包 (2012年 Microsoft 推出，Windows 8/10/11 应用安装格式。支持 UWP 和桌面应用转换，通过 Microsoft Store 分发。2024年 Microsoft 推出 MSIX 作为后继格式，逐步替代 APPX)"
+
+msgid "mime_msix"
+msgstr "MSIX 应用包 (2018年 Microsoft 推出，Windows 新一代应用打包格式。结合 APPX 和 MSI 优点，支持所有 Windows 应用类型，可通过 Microsoft Store 或侧载安装，Windows 11 推荐格式)"
+
+msgid "mime_appimage"
+msgstr "AppImage 应用包 (2004年推出，Linux 免安装应用格式。『一个应用一个文件』，无需安装直接运行，支持大多数 Linux 发行版，开发者分发 Linux 软件的常用方式)"
+
+msgid "mime_flatpak"
+msgstr "Flatpak 应用包 (2015年推出，Linux 沙盒化应用格式。跨发行版运行，与主机系统隔离，Fedora、Red Hat 主导开发，GNOME 软件中心默认格式)"
+
+msgid "mime_snap"
+msgstr "Snap 应用包 (2014年 Canonical 推出，Ubuntu 母公司开发，Linux 通用应用格式。自动更新、沙盒隔离，支持 40+ Linux 发行版，Ubuntu 软件中心默认格式)"
+
+msgid "mime_deb"
+msgstr "Debian 软件包 (1993年 Debian 项目推出，Debian/Ubuntu 及其衍生版标准安装格式。使用 dpkg 管理，APT 是其包管理器前端，Linux 生态最成熟的包格式之一，至今仍是 Debian 系主流)"
+
+msgid "mime_rpm"
+msgstr "RPM 软件包 (1997年 Red Hat 推出，Red Hat/Fedora/CentOS/SUSE 等发行版标准格式。RPM 全称『Red Hat Package Manager』，与 DEB 并称 Linux 两大包格式，至今仍是 RHEL 系主流)"
+
+msgid "mime_pacman"
+msgstr "Arch 软件包 (2002年 Arch Linux 推出，pacman 包管理器使用的 .pkg.tar.zst 格式。Arch Linux 滚动发行版的核心，以简洁和 KISS 原则著称，AUR（Arch User Repository）是其特色)"
+
+msgid "mime_exe"
+msgstr "EXE 可执行文件 (Windows 可执行程序格式，『Executable』的缩写。Windows 操作系统原生执行格式，包含 PE 结构。从 MS-DOS 的 MZ 格式演变而来，1993年 Windows NT 引入 PE（Portable Executable）格式并沿用至今。软件安装包、应用程序、系统工具均使用此格式。用户双击即可运行，是全球最广泛使用的可执行格式)"
+
+msgid "mime_dll"
+msgstr "DLL 动态链接库 (1993年 Microsoft 推出，Dynamic Link Library。Windows 共享代码库，程序运行时动态加载，节省内存和磁盘空间。系统组件、应用程序插件、驱动程序均使用 DLL 格式。Windows API 的核心实现方式，DLL Hell 问题在 .NET 时代得到缓解)"
+
+msgid "mime_com"
+msgstr "COM 可执行文件 (MS-DOS 时代可执行格式，『Command』的缩写。文件结构简单，64KB 限制，Windows 3.x 前主流格式。已淘汰，现代 Windows 使用 EXE 格式，COM 扩展名仍用于某些组件文件)"
+
+msgid "mime_aac"
+msgstr "AAC 音频 (1997年 MPEG 标准，Advanced Audio Coding。MP3 的后继者，同码率下音质优于 MP3，YouTube、iTunes、Nintendo Switch 默认音频格式)"
+
+msgid "mime_alac"
+msgstr "ALAC 音频 (2004年 Apple 开发，Apple Lossless Audio Codec。苹果无损格式，2011年开源，iTunes 和 Apple Music 无损音频默认格式)"
+
+msgid "mime_flac"
+msgstr "FLAC 音频 (2001年 Xiph.Org 基金会开发，Free Lossless Audio Codec。无损压缩，音质与 CD 相同，文件约为原 WAV 的一半。开源免专利，发烧友和数字音乐收藏首选格式)"
+
+msgid "mime_mp3"
+msgstr "MP3 音频 (1993年 Fraunhofer 研究院开发，MPEG-1 Audio Layer 3。有损压缩格式，文件小音质尚可，2000年代数字音乐革命的核心格式，iPod 和 Napster 的功臣。2017年专利过期，成为公共领域格式)"
+
+msgid "mime_oga"
+msgstr "Ogg Audio 音频 (Xiph.Org 基金会开发，Ogg 容器的纯音频格式，使用 Vorbis 编码。开源免专利，压缩效率优于 MP3，开源项目广泛使用)"
+
+msgid "mime_ogg"
+msgstr "OGG 音频 (2000年 Xiph.Org 基金会开发，Ogg Vorbis 格式。开源免专利，压缩效率优于 MP3，Spotify 早期采用，游戏音效广泛使用)"
+
+msgid "mime_opus"
+msgstr "Opus 音频 (2012年 IETF 标准化，开源免专利音频格式。结合 SILK 和 CELT 技术，延迟极低，压缩效率最高，WebRTC、WhatsApp、Discord 默认音频格式)"
+
+msgid "mime_wav"
+msgstr "WAV 音频 (1991年 Microsoft 和 IBM 开发，Windows 原生音频格式。无压缩 PCM 编码，音质无损但文件巨大，专业音频编辑标准格式)"
+
+msgid "mime_wma"
+msgstr "WMA 音频 (1999年 Microsoft 开发，Windows Media Audio。有损/无损两种版本，Windows 原生支持，随着 Windows Media Player 普及。现已边缘化，被 MP3/AAC 取代)"
+
+msgid "mime_dsf"
+msgstr "DSF 音频 (Direct Stream Digital 格式，索尼和飞利浦开发。1bit 高采样率，DSD 音频标准格式，SACD 数字版，发烧友高端音频格式，文件巨大)"
+
+msgid "mime_ape"
+msgstr "APE 音频 (2000年 Monkey's Audio 开发，无损压缩格式。压缩率高于 FLAC 但编码慢，在 Windows 平台和部分音乐爱好者中仍有使用)"
+
+msgid "mime_mid"
+msgstr "MIDI 音频 (1983年 MIDI 协会制定，Musical Instrument Digital Interface。乐谱格式而非录音，文件极小，电子乐器、手机铃声、游戏音效标准。1991年 General MIDI 标准化，定义了 128 种乐器音色)"
+
+msgid "mime_m4a"
+msgstr "M4A 音频 (MPEG-4 Audio，AAC 的容器格式。iTunes 音乐商店标准格式，Apple 生态主流音频格式，支持 DRM 保护)"
+
+msgid "mime_m3u"
+msgstr "M3U 播放列表 (MP3 URL 播放列表格式，纯文本文件，记录音频文件路径。Winamp 时代标准，用于网络广播、在线音乐流媒体。M3U8 是其 UTF-8 版本，用于 HTTP Live Streaming)"
+
+msgid "mime_asf"
+msgstr "ASF 流媒体 (1996年 Microsoft 开发，Advanced Systems Format。Windows Media 流媒体容器，支持音频视频同步传输。用于网络直播和流媒体点播，WMA/WMV 均基于 ASF 容器)"
+
+msgid "mime_avi"
+msgstr "AVI 视频 (1992年 Microsoft 推出，Windows 早期视频标准。『Audio Video Interleave』，音视频交错存储，1990-2000年代最流行视频格式，现被 MP4/MKV 取代)"
+
+msgid "mime_divx"
+msgstr "DivX 视频 (1998年 DivX 公司开发，基于 MPEG-4 的视频编码格式。2000年代网络视频分享主流格式，首个将 DVD 画质压缩到 CD 大小的技术。因版权争议，后转型为商业编码器)"
+
+msgid "mime_mp4"
+msgstr "MP4 视频 (2001年 MPEG 标准，MPEG-4 Part 14。全球最通用视频格式，支持 H.264/H.265 编码，互联网视频、手机拍摄、YouTube 默认格式)"
+
+msgid "mime_m4v"
+msgstr "M4V 视频 (iTunes 视频格式，MP4 的变体。Apple 生态视频格式，iTunes Store 电影、电视节目标准格式，支持 DRM 版权保护)"
+
+msgid "mime_mpeg"
+msgstr "MPEG 视频 (1988年 MPEG 组织制定，Moving Picture Experts Group。数字视频压缩标准奠基者，MPEG-1（VCD）、MPEG-2（DVD）、MPEG-4（网络视频）影响深远)"
+
+msgid "mime_mkv"
+msgstr "MKV 视频 (2002年 Matroska 项目开发，开源多媒体容器格式。支持多音轨、多字幕、章节，『封装神器』，高清电影分享首选格式)"
+
+msgid "mime_mpg"
+msgstr "MPEG 视频 (MPEG-1/MPEG-2 视频扩展名，VCD 和 DVD 标准格式。1990-2000年代光盘视频主流格式，现被 H.264/H.265 取代)"
+
+msgid "mime_ogv"
+msgstr "Ogg Video 视频 (Xiph.Org 基金会开发，Ogg 容器的视频格式，使用 Theora 编码。开源免专利，HTML5 视频早期标准之一，Firefox 原生支持)"
+
+msgid "mime_ogx"
+msgstr "Ogg 多媒体容器 (Xiph.Org 基金会开发，Ogg 容器的通用扩展，可包含音频、视频、字幕等多轨道。开源多媒体标准，用于游戏、流媒体)"
+
+msgid "mime_rm"
+msgstr "RealMedia 视频 (1995年 RealNetworks 开发，RealMedia 格式。1990-2000年代网络流媒体先驱，RealPlayer 播放器核心格式。痛点：需专用播放器、压缩质量差，后被 Flash/MP4 取代)"
+
+msgid "mime_flv"
+msgstr "Flash 视频 (2002年格式出现，Flash Video 格式。曾为网络视频主流，YouTube 早期采用。痛点：需 Flash 插件、性能差、安全漏洞多。2015年起主流网站转向 HTML5 视频，现已淘汰)"
+
+msgid "mime_f4v"
+msgstr "F4V 视频 (Adobe 开发的 Flash 视频格式，FLV 的后继者。基于 MPEG-4 标准，支持 H.264 编码。随 Flash 技术一同淘汰，Adobe 2020年停止支持)"
+
+msgid "mime_wmv"
+msgstr "WMV 视频 (1999年 Microsoft 开发，Windows Media Video。Windows 原生支持，流媒体传输优化，早期在线视频常用格式，现已边缘化)"
+
+msgid "mime_wmf"
+msgstr "WMF 媒体格式 (Windows Media Format，微软媒体框架。包含 WMV 视频、WMA 音频的统称，Windows Media Player 原生支持)"
+
+msgid "mime_mov"
+msgstr "MOV 视频 (1991年 Apple 开发，QuickTime 容器格式。专业视频剪辑标准格式，支持多种编解码器，Final Cut Pro、Premiere 原生支持)"
+
+msgid "mime_qt"
+msgstr "QuickTime 视频 (1991年 Apple 推出，QuickTime 格式。Mac 平台视频标准，MOV 是其容器，QuickTime 播放器曾广泛使用。2016年 Apple 停止 Windows 版开发，逐步被 MP4 取代)"
+
+msgid "mime_webm"
+msgstr "WebM 视频 (2010年 Google 推出，开源免专利视频格式。基于 Matroska 容器，VP8/VP9 编码，HTML5 视频标准格式，YouTube 默认 Web 播放格式)"
+
+msgid "mime_3gp"
+msgstr "3GP 视频 (2000年 3GPP 制定，移动设备视频格式。文件极小，画质低，早期功能手机拍摄视频格式，用于 MMS 彩信发送)"
+
+#------------------------------------------------------------------------------
 # 技术维度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Operating Systems"
 msgstr "操作系统"
@@ -847,8 +1285,11 @@ msgstr "操作系统"
 msgid "Top 5 Operating Systems"
 msgstr "前5个操作系统"
 
-msgid "Unknown OS"
-msgstr "未知操作系统"
+msgid "Unknown Robot"
+msgstr "未知的客户端"
+
+msgid "User agent"
+msgstr "访问来源"
 
 msgid "Browsers"
 msgstr "浏览器"
@@ -856,11 +1297,17 @@ msgstr "浏览器"
 msgid "Top 5 Browsers"
 msgstr "前5个浏览器"
 
-msgid "Unknown Browser"
-msgstr "未知浏览器"
+msgid "Unknown Robot RH"
+msgstr "未知的请求头"
 
 msgid "Detailed"
 msgstr "访问设备版本"
+
+msgid "DetailedOS"
+msgstr "操作系统版本"
+
+msgid "DetailedBS"
+msgstr "浏览器版本"
 
 msgid "Screen sizes"
 msgstr "屏幕尺寸"
@@ -877,9 +1324,9 @@ msgstr "输出"
 msgid "Saved"
 msgstr "节省"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 来源维度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Origin"
 msgstr "来源"
@@ -911,6 +1358,114 @@ msgstr "由 %s 创建"
 msgid "plugins"
 msgstr "插件"
 
+msgid "dbip by"
+msgstr "数据来自"
+
+msgid "IPDB by"
+msgstr "地理位置数据由 DB-IP 提供"
+
+# 健康度
+msgid "Configured"
+msgstr "已配置"
+
+msgid "Missing"
+msgstr "缺失"
+
+msgid "OK"
+msgstr "成功"
+
+msgid "Unused"
+msgstr "未使用"
+
+# 其他
+msgid "Overall Health"
+msgstr "总体健康度"
+
+msgid "Excellent"
+msgstr "优秀"
+
+msgid "Good"
+msgstr "良好"
+
+msgid "Fair"
+msgstr "一般"
+
+msgid "Poor"
+msgstr "较差"
+
+msgid "Missing icon types"
+msgstr "缺失的图标类型"
+
+msgid "See"
+msgstr "详见"
+
+msgid "Expected Path"
+msgstr "路径说明"
+
+msgid "column for file locations"
+msgstr "列获取文件位置"
+
+# 提示 
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "提示：如果您需要生成相关图标，可使用 %s 上传一张 logo 图片，它会自动生成上述所有相关图标文件"
+
+msgid "200: success, 404: failure"
+msgstr "200为成功次数 404为失败次数"
+
+# 期望路径
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png 或 /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg 或 /logo.png（需在 HTML/JSON-LD 中引用）"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest 或 /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg、/images/paypal.svg 等"
+
+# 图标类型名称
+msgid "Favicon"
+msgstr "网站图标"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "苹果触摸图标（iPhone/iPad/Mac）"
+
+msgid "Site Logo"
+msgstr "网站标志"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "Web 应用清单（Android/Chrome）"
+
+msgid "Windows Browser Config"
+msgstr "Windows 浏览器配置"
+
+msgid "Safari Pinned Tab"
+msgstr "Safari 固定标签页图标"
+
+msgid "Social Icon"
+msgstr "社交平台图标"
+
+# 表头
+msgid "Icon Files Status"
+msgstr "图标文件状态"
+
+msgid "Icon Type"
+msgstr "图标类型"
+
+msgid "Total"
+msgstr "总计"
+
 msgid "Advanced Web Statistics"
 msgstr "先进的日志分析器"
 
@@ -930,7 +1485,7 @@ msgid "Documentation Viewer"
 msgstr "文档查看器"
 
 msgid "Direct address / Bookmarks"
-msgstr "直接地址/书签"
+msgstr "直接访问地址/书签"
 
 msgid "Search Engines"
 msgstr "搜索引擎"
@@ -947,8 +1502,8 @@ msgstr "来源页面"
 msgid "Internal pages"
 msgstr "内部页面"
 
-msgid "Unknown origin"
-msgstr "未知来源"
+msgid "UnknownAccessSource"
+msgstr "未知访问来源"
 
 msgid "Different refering pages"
 msgstr "不同来源页面"
@@ -968,9 +1523,9 @@ msgstr "不同关键词"
 msgid "Different keywords"
 msgstr "不同关键字"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 页面维度
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Viewed pages"
 msgstr "已查看页面"
@@ -993,25 +1548,27 @@ msgstr "来源"
 msgid "Host"
 msgstr "主机"
 
-
-#==============================================================================
+#------------------------------------------------------------------------------
 # 错误和状态
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "Error"
 msgstr "错误"
 
-msgid "HTTP Error codes"
-msgstr "HTTP错误代码"
+msgid "HTTP Status Statistics"
+msgstr "HTTP 状态码统计"
 
 msgid "SMTP Error codes"
 msgstr "SMTP错误代码"
 
+msgid "Page not found"
+msgstr "请求页面未找到"
+
 msgid "Unknown error"
 msgstr "未知错误"
 
-msgid "HTTP codes 4xx/5xx do not include errors detected before being sent to user"
-msgstr "HTTP 4xx/5xx代码不包括发送给用户之前检测到的错误"
+msgid "Abnormal traffic note"
+msgstr "非正常浏览流量包括：搜索引擎爬虫、AI训练爬虫、漏洞扫描器及不符合规范的请求"
 
 msgid "Page detail"
 msgstr "页面详情"
@@ -1074,55 +1631,19 @@ msgstr "以下是 AWStats 在您的日志文件中找到的记录示例（记录
 msgid "in your log):"
 msgstr "在您的日志中）："
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 杂项
-#==============================================================================
-
-msgid "Misc"
-msgstr "杂项"
-
-msgid "Clusters"
-msgstr "集群"
-
-msgid "Computer"
-msgstr "计算机"
+#------------------------------------------------------------------------------
 
 msgid "Extra/Marketing"
 msgstr "额外/营销"
 
-msgid "Add to favorites"
-msgstr "添加到收藏夹"
-
-msgid "JavaScript disabled"
-msgstr "禁用JavaScript"
-
-msgid "Java enabled"
-msgstr "启用Java"
-
-msgid "Shockwave Support"
-msgstr "Shockwave支持"
-
-msgid "Flash Support"
-msgstr "Flash支持"
-
-msgid "RealPlayer Support"
-msgstr "RealPlayer支持"
-
-msgid "QuickTime Support"
-msgstr "QuickTime支持"
-
-msgid "Windows Media Support"
-msgstr "Windows Media支持"
-
-msgid "PDF Support"
-msgstr "PDF支持"
-
-#==============================================================================
+#------------------------------------------------------------------------------
 # 界面文本
-#==============================================================================
+#------------------------------------------------------------------------------
 
-msgid "Site"
-msgstr "网站"
+msgid "Current site"
+msgstr "当前站点"
 
 msgid "Web Site"
 msgstr "网站"
@@ -1172,8 +1693,1256 @@ msgstr "本地"
 msgid "External"
 msgstr "外部"
 
+msgid "Others (email senders)"
+msgstr "其他(发件人)"
+
+msgid "Others (email receivers)"
+msgstr "其他(收件人)"
+
 msgid "Others"
 msgstr "其他"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "当前仅展示10行浏览器数据，更多请查看完整列表"
+
+msgid "Others (unknown browsers)"
+msgstr "其他(未知浏览器)"
+
+msgid "Others (operating systems)"
+msgstr "其他(操作系统)"
+
+msgid "Others (unknown OS)"
+msgstr "其他(未知系统)"
+
+msgid "Others (search engines)"
+msgstr "其他(搜索引擎)"
+
+msgid "Others (referring pages)"
+msgstr "其他(引用页)"
+
+msgid "Others (keyphrases)"
+msgstr "其他(短语)"
+
+msgid "Others (keywords)"
+msgstr "其他(关键词)"
+
+msgid "Only first 10 robots shown"
+msgstr "当前列表仅支持显示10行机器人数据，更多请查看完整列表"
+
+msgid "Failed to obtain access record"
+msgstr "无法获取进入记录"
+
+msgid "Failed to obtain leave record"
+msgstr "无法获取离开记录"
+
+msgid "Other pages"
+msgstr "其他页面"
+
+msgid "Low Traffic IP Summary"
+msgstr "低访问未知 IP 汇总"
+
+msgid "Failed to obtain IP data"
+msgstr "其他已知 IP 汇总"
+
+msgid "Failed to obtain the relevant data"
+msgstr "未成功获取到相关数据"
+
+msgid "Limited list of countries and regions"
+msgstr "当前仅展示10行数据，更多国家地区请查看完整列表"
+
+msgid "currentVisitorData"
+msgstr "当前仅展示10行访客数据，更多请查看完整列表"
+
+msgid "Others (robots main)"
+msgstr "其他(机器人)"
+
+msgid "Others (worms)"
+msgstr "其他(蠕虫)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "当前列表仅支持显示10行页面，更多请查看完整列表"
+
+msgid "Others (OS main)"
+msgstr "其他(系统)"
+
+msgid "Others (browsers main)"
+msgstr "其他(浏览器)"
+
+msgid "Others (screen sizes)"
+msgstr "其他(尺寸)"
+
+msgid "Others (search engines main)"
+msgstr "其他(搜索引擎)"
+
+msgid "Others (referring pages main)"
+msgstr "其他(来源页)"
+
+msgid "Others (keyphrases main)"
+msgstr "其他(短语)"
+
+msgid "Others (keywords main)"
+msgstr "其他(关键词)"
+
+# 1xx
+msgid "Continue"
+msgstr "继续发送剩余内容"
+
+msgid "Switching Protocols"
+msgstr "正在切换协议"
+
+msgid "Processing (WebDAV)"
+msgstr "正在处理（请稍候）"
+
+msgid "Early Hints"
+msgstr "服务器正在准备资源"
+
+# 2xx
+msgid "[Miscellaneous successes]"
+msgstr "其他成功状态"
+
+msgid "Request successful"
+msgstr "请求成功"
+
+msgid "Created successfully"
+msgstr "创建成功"
+
+msgid "Accepted - processing"
+msgstr "已接受，正在处理"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "非权威信息（来自缓存）"
+
+msgid "Success, no content returned"
+msgstr "成功，无返回内容"
+
+msgid "Reset content"
+msgstr "请重置表单"
+
+msgid "Partial content (resume download)"
+msgstr "部分内容（支持断点续传）"
+
+msgid "Multi-status (WebDAV)"
+msgstr "多状态（WebDAV批量操作）"
+
+msgid "Already reported (WebDAV)"
+msgstr "已报告（避免重复）"
+
+msgid "IM used"
+msgstr "使用了IM扩展协议"
+
+# 3xx
+msgid "[Miscellaneous redirections]"
+msgstr "其他重定向"
+
+msgid "Multiple choices"
+msgstr "多种选择"
+
+msgid "Moved permanently - update your links"
+msgstr "已永久移动，请更新链接"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "临时重定向，地址未变更"
+
+msgid "See other"
+msgstr "请查看其他地址"
+
+msgid "Not modified - using cached version"
+msgstr "未修改，使用缓存版本"
+
+msgid "Use proxy"
+msgstr "请使用代理"
+
+msgid "Switch proxy"
+msgstr "请切换代理"
+
+msgid "Temporary redirect (keep method)"
+msgstr "临时重定向（保持请求方法）"
+
+msgid "Permanent redirect - update your links"
+msgstr "永久重定向，请更新链接"
+
+# 4xx
+msgid "[Miscellaneous client/user errors]"
+msgstr "其他客户端错误"
+
+msgid "Bad request"
+msgstr "请求格式错误"
+
+msgid "Unauthorized - please log in"
+msgstr "未授权，请先登录"
+
+msgid "Payment required"
+msgstr "需要付费"
+
+msgid "Forbidden - access denied"
+msgstr "禁止访问，权限不足"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "页面不存在，请检查死链"
+
+msgid "Method not allowed"
+msgstr "请求方法不允许"
+
+msgid "Not acceptable"
+msgstr "无法接受的响应格式"
+
+msgid "Proxy authentication required"
+msgstr "需要通过代理认证"
+
+msgid "Request timeout"
+msgstr "请求超时"
+
+msgid "Conflict - please try again"
+msgstr "请求冲突，请稍后重试"
+
+msgid "Gone - permanently deleted"
+msgstr "资源已永久删除"
+
+msgid "Length required"
+msgstr "需要指定内容长度"
+
+msgid "Precondition failed"
+msgstr "前提条件不满足"
+
+msgid "Payload too large"
+msgstr "请求内容过大"
+
+msgid "URI too long"
+msgstr "请求地址过长"
+
+msgid "Unsupported media type"
+msgstr "不支持的文件类型"
+
+msgid "Range not satisfiable"
+msgstr "请求范围无效"
+
+msgid "Expectation failed"
+msgstr "无法满足Expect要求"
+
+msgid "I am a teapot (April Fools)"
+msgstr "我是茶壶（愚人节玩笑）"
+
+msgid "Page expired (Laravel)"
+msgstr "页面已过期，请刷新重试"
+
+msgid "Method failure (Spring)"
+msgstr "方法失败"
+
+msgid "Misdirected request"
+msgstr "请求被错误引导"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "请求格式正确但无法处理"
+
+msgid "Locked (WebDAV)"
+msgstr "资源已被锁定"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "依赖操作失败"
+
+msgid "Too early"
+msgstr "请求发送过早"
+
+msgid "Upgrade required"
+msgstr "需要升级协议"
+
+msgid "Precondition required"
+msgstr "缺少必要的前提条件"
+
+msgid "Too many requests - slow down"
+msgstr "请求过于频繁，请稍后再试"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "请求头字段过大"
+
+msgid "Request header too large"
+msgstr "请求头过大"
+
+msgid "Login timeout (IIS)"
+msgstr "登录超时，请重新登录"
+
+msgid "No response (nginx)"
+msgstr "服务器无响应"
+
+msgid "Retry with (IIS)"
+msgstr "请稍后重试"
+
+msgid "Blocked by Windows parental controls"
+msgstr "被家长控制阻止"
+
+msgid "Unavailable for legal reasons"
+msgstr "因法律原因不可访问"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "客户端主动断开连接"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "转发链超过30个IP地址"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "协议版本不兼容"
+
+msgid "Request header too large (nginx)"
+msgstr "请求头过大"
+
+msgid "SSL certificate error (nginx)"
+msgstr "SSL证书错误"
+
+msgid "SSL certificate required (nginx)"
+msgstr "需要SSL证书"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP请求发送到了HTTPS端口"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "无效的令牌"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "需要令牌 / 客户端已关闭请求"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "达到资源限制（CPU/内存）"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "超出带宽限制"
+
+# 5xx
+msgid "[Miscellaneous server errors]"
+msgstr "其他服务器错误"
+
+msgid "Internal server error - check logs"
+msgstr "服务器内部错误，请检查日志"
+
+msgid "Not implemented"
+msgstr "服务器不支持该功能"
+
+msgid "Bad gateway - backend error"
+msgstr "网关错误，后端服务异常"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "服务不可用，维护或过载"
+
+msgid "Gateway timeout"
+msgstr "网关响应超时"
+
+msgid "HTTP version not supported"
+msgstr "不支持的HTTP协议版本"
+
+msgid "Variant also negotiates"
+msgstr "变体也参与协商（配置错误）"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "存储空间不足"
+
+msgid "Loop detected (WebDAV)"
+msgstr "检测到循环引用"
+
+msgid "Not extended"
+msgstr "需要进一步扩展"
+
+msgid "Network authentication required"
+msgstr "需要网络身份验证"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "未知错误"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "Web服务器已关闭"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "连接超时"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "源站无法访问"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "发生超时"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "SSL握手失败"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "SSL证书无效"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Railgun错误（已弃用）"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "站点过载"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "源站DNS错误 / 站点已冻结"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "临时禁用"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "未授权"
+
+msgid "Network read timeout error"
+msgstr "网络读取超时"
+
+msgid "Network connect timeout error"
+msgstr "网络连接超时"
+
+msgid "Unexpected token (Shopify)"
+msgstr "意外的令牌"
+
+msgid "Request denied (LinkedIn)"
+msgstr "请求被拒绝"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2连接关闭"
+
+msgid "[Unknown]"
+msgstr "未知状态码"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "非标准成功响应 (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "系统状态或帮助信息"
+
+msgid "Help message"
+msgstr "帮助信息"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "SMTP 服务已就绪 (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "服务已就绪 - 邮件服务器可以接收邮件"
+
+msgid "Service closing - connection is being closed"
+msgstr "服务正在关闭 - 连接即将断开"
+
+msgid "Authentication successful"
+msgstr "身份验证成功"
+
+msgid "Requested mail action taken and completed"
+msgstr "请求的邮件操作已执行并完成"
+
+msgid "User not local - will forward to another address"
+msgstr "用户不在本服务器 - 将转发到其他地址"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "无法验证收件人，但会尝试投递"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "邮件已接受投递 (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "用户名是一个邮箱"
+
+msgid "Authentication challenge - please respond"
+msgstr "身份验证挑战 - 请回应"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "开始输入邮件内容 - 以 <CRLF>.<CRLF> 结束"
+
+msgid "Continue (LMTP)"
+msgstr "继续 (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "服务不可用 - 连接关闭，请稍后重试"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "邮箱繁忙或暂时不可用 (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "连接频率超限 (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "并发连接数过多 (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "无法建立连接 (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "连接超时 (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "连接因错误而中断 (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "邮箱暂时被锁定 (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "收件人数量过多 (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "邮件服务器错误 (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "检测到接收循环 (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "跳转次数过多 (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "DNS 查询失败 (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "无法进行身份验证 (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "TLS 握手失败 (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "SMTP 协议违规 (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "邮件大小超限 (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "邮件频率超限 (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "邮箱配额已满 - 临时状态"
+
+msgid "Domain not found (Postfix)"
+msgstr "域名未找到 (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "邮件头无效 (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "检测到退信循环 (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "无法路由 (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "发件人域名未找到 (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "收件人域名未找到 (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "灰度检查中 - 请稍后重试 (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "垃圾邮件过滤中 (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "病毒扫描中 (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "邮箱不可用 - 请稍后重试"
+
+msgid "Requested action aborted - error in processing"
+msgstr "请求的操作已中止 - 处理过程中出错"
+
+msgid "Insufficient system storage - try again later"
+msgstr "系统存储空间不足 - 请稍后重试"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "该收件人的邮件过多 (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS 不可用 (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "服务器无法接收邮件 (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "DNS 查询临时失败 (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "配额超限 - 临时状态"
+
+msgid "Message too big - temporary"
+msgstr "邮件过大 - 临时状态"
+
+msgid "Too many messages per connection"
+msgstr "单连接邮件数过多"
+
+msgid "Load average too high (Postfix)"
+msgstr "系统负载过高 (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "连接被拒绝 (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "发送频率超限 (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "收件人频率超限 (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "发件人频率超限 (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "IP 地址频率超限 (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "MX 查询失败 (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "A 记录查询失败 (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "PTR 记录查询失败 (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "灰度检查已激活 - 请稍后重试 (Postgrey)"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "发件地址被拒绝 - 域名未验证 (DMARC 待定)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "收件地址被拒绝 - 域名未验证 (DMARC 待定)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "DKIM 验证待定 - 临时失败"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "SPF 验证待定 - 临时失败"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "DMARC 验证待定 - 临时失败"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "DNSBL 查询临时失败"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "RHSBL 查询临时失败"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "URI DNSBL 查询临时失败"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "临时身份验证失败 (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "临时授权失败 (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "单个发件人频率超限 (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "单个收件人频率超限 (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "单个域名频率超限 (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "单个 IP 频率超限 (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "邮件已排队等待稍后投递 (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "因策略原因投递延迟 (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "内容过滤器临时失败"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "防病毒扫描器临时失败"
+
+msgid "Temporary failure in spam filter"
+msgstr "垃圾邮件过滤器临时失败"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Milter 临时失败 (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "灰度检查 - 请稍后重试"
+
+msgid "DDoS protection active - try again later"
+msgstr "DDoS 防护已激活 - 请稍后重试"
+
+msgid "SMTP policy violation - temporary"
+msgstr "SMTP 策略违规 - 临时状态"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "RCPT TO 处理临时错误"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "MAIL FROM 处理临时错误"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "EHLO/HELO 处理临时错误"
+
+msgid "Temporary error in DATA processing"
+msgstr "DATA 处理临时错误"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "临时错误 - 服务繁忙，请稍后重试"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "语法错误 - 命令无法识别或过长"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "参数或自变量语法错误"
+
+msgid "Command not implemented"
+msgstr "命令未实现"
+
+msgid "Bad sequence of commands"
+msgstr "命令顺序错误"
+
+msgid "Command parameter not implemented"
+msgstr "命令参数未实现"
+
+msgid "Version not supported (ESMTP)"
+msgstr "版本不支持 (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "邮箱路径无效 (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "本会话中命令过多 (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "收件人数量超限 (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "发件人数量超限 (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "域名数量超限 (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "邮箱不存在 (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS 失败 - 永久错误"
+
+msgid "Address type not supported (Postfix)"
+msgstr "地址类型不支持 (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "无法打开邮箱 (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "邮箱被锁定 - 永久状态"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "邮件因策略原因被拒绝 (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "内容被拒绝 - 永久状态"
+
+msgid "Attachment type not allowed"
+msgstr "附件类型不允许"
+
+msgid "Message encoding not supported"
+msgstr "邮件编码不支持"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "发件人域名不存在 - 永久状态"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "域名不接受邮件或正在关闭"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "收件人域名不存在 - 永久状态"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "邮箱配额已满 - 永久状态"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "邮件大小超限 - 永久状态"
+
+msgid "Authentication required (Sendmail)"
+msgstr "需要身份验证 (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "身份验证失败 (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "身份验证机制不支持"
+
+msgid "Authentication credentials invalid"
+msgstr "身份验证凭证无效"
+
+msgid "Authentication account expired"
+msgstr "身份验证账户已过期"
+
+msgid "Access denied - authentication required"
+msgstr "访问被拒绝 - 需要身份验证"
+
+msgid "Access denied (Sendmailism)"
+msgstr "访问被拒绝 (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "访问被拒绝 - 未通过身份验证"
+
+msgid "Access denied - account locked"
+msgstr "访问被拒绝 - 账户已锁定"
+
+msgid "Access denied - account disabled"
+msgstr "访问被拒绝 - 账户已禁用"
+
+msgid "Authentication failed"
+msgstr "身份验证失败"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "中继转发需要身份验证 (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "中继转发身份验证失败 (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "需要加密连接 (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "该收件人需要 TLS 加密"
+
+msgid "Encryption strength insufficient"
+msgstr "加密强度不足"
+
+msgid "Certificate validation failed"
+msgstr "证书验证失败"
+
+msgid "Invalid TLS certificate"
+msgstr "TLS 证书无效"
+
+msgid "TLS protocol version not supported"
+msgstr "TLS 协议版本不支持"
+
+msgid "Cipher suite not supported"
+msgstr "加密套件不支持"
+
+msgid "Access denied - no valid recipient"
+msgstr "访问被拒绝 - 无有效收件人"
+
+msgid "Access denied - no valid sender"
+msgstr "访问被拒绝 - 无有效发件人"
+
+msgid "Access denied - domain not allowed"
+msgstr "访问被拒绝 - 域名不允许"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "访问被拒绝 - IP 地址已被屏蔽 (永久)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "访问被拒绝 - 发件人域名在黑名单中"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "邮箱不可用 - 请求的操作未执行"
+
+msgid "User not local - please try forwarding address"
+msgstr "用户不在本服务器 - 请使用转发地址"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "请求的操作已中止 - 超出存储分配"
+
+msgid "Mailbox name not allowed"
+msgstr "邮箱名称不允许"
+
+msgid "Requested action rejected - access denied"
+msgstr "请求的操作被拒绝 - 访问被拒绝"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "MAIL FROM/RCPT TO 参数无法识别"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "域名不允许发送 (DMARC 拒绝)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "重复邮件过多 - 永久状态"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "发件地址被拒绝 - 域名不在 SPF 中"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "发件地址被拒绝 - DKIM 验证失败"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "发件地址被拒绝 - DMARC 策略拒绝"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "收件地址被拒绝 - DMARC 策略拒绝"
+
+msgid "Message rejected due to spam content"
+msgstr "邮件因垃圾内容被拒绝"
+
+msgid "Message rejected due to virus detected"
+msgstr "邮件因检测到病毒被拒绝"
+
+msgid "Message rejected due to malicious content"
+msgstr "邮件因恶意内容被拒绝"
+
+msgid "Message rejected due to phishing detection"
+msgstr "邮件因检测到钓鱼被拒绝"
+
+msgid "Message rejected due to malware detection"
+msgstr "邮件因检测到恶意软件被拒绝"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "邮件因策略原因被拒绝 - 永久状态"
+
+msgid "Message rejected due to content filtering"
+msgstr "邮件因内容过滤被拒绝"
+
+msgid "Message rejected due to reputation"
+msgstr "邮件因信誉原因被拒绝"
+
+msgid "Access denied - access_map violation"
+msgstr "访问被拒绝 - access_map 违规"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "访问被拒绝 - SMTP 客户端在 RBL 中"
+
+msgid "Access denied - relay not authorized"
+msgstr "访问被拒绝 - 中继转发未授权"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "访问被拒绝 - 未知的 SMTP 客户端主机名"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "访问被拒绝 - 客户端 HELO 主机名语法错误"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "访问被拒绝 - SMTP 客户端主机名被拒绝"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "访问被拒绝 - 发件人或收件人域名未知"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "访问被拒绝 - 未知的客户端 HELO 主机名"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "访问被拒绝 - 无效域名 (非 FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "访问被拒绝 - 域名不合格"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "访问被拒绝 - 邮件服务器配置错误"
+
+msgid "Access denied - open relay not allowed"
+msgstr "访问被拒绝 - 不允许开放中继"
+
+msgid "Access denied - proxy not allowed"
+msgstr "访问被拒绝 - 不允许使用代理"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "访问被拒绝 - 不允许动态 IP"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "访问被拒绝 - 不允许住宅 IP"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "访问被拒绝 - 检测到 VPN/Tor"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "访问被拒绝 - 在 Spamhaus DROP 列表中"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "访问被拒绝 - URL 在 URIBL 中"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "访问被拒绝 - 域名在 RHSBL 中"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "访问被拒绝 - IP 在 DNSWL 中 (策略)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "投递失败 - 邮箱未找到"
+
+msgid "Delivery failed - recipient not local"
+msgstr "投递失败 - 收件人不在本服务器"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "投递失败 - 收件人被拒绝"
+
+msgid "Delivery failed - sender rejected"
+msgstr "投递失败 - 发件人被拒绝"
+
+msgid "Delivery failed - relay rejected"
+msgstr "投递失败 - 中继被拒绝"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "投递失败 - DNS 永久错误"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "投递失败 - MX 永久错误"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "投递失败 - A 记录永久错误"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "投递失败 - PTR 记录永久错误"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "投递失败 - 策略永久错误"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: 成功 - 投递状态通知"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: 投递延迟"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: 投递失败 - 永久"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: 投递失败 - 临时"
+
+msgid "DSN: Message expired"
+msgstr "DSN: 邮件已过期"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: 邮件被退回"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: 邮件已丢弃"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: 邮件已被过滤"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: 邮件已被隔离"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: 邮件已被暂留待审"
+
+msgid "MTA-STS policy required"
+msgstr "需要 MTA-STS 策略"
+
+msgid "MTA-STS policy validation failed"
+msgstr "MTA-STS 策略验证失败"
+
+msgid "TLS reporting required"
+msgstr "需要 TLS 报告"
+
+msgid "TLS report requested"
+msgstr "已请求 TLS 报告"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA 严格传输安全已激活"
+
+msgid "DANE validation required"
+msgstr "需要 DANE 验证"
+
+msgid "DANE validation failed"
+msgstr "DANE 验证失败"
+
+msgid "TLSA record missing"
+msgstr "TLSA 记录缺失"
+
+msgid "Certificate name mismatch"
+msgstr "证书名称不匹配"
+
+msgid "Certificate expired"
+msgstr "证书已过期"
+
+msgid "AUTH LOGIN required"
+msgstr "需要 AUTH LOGIN 认证"
+
+msgid "AUTH PLAIN required"
+msgstr "需要 AUTH PLAIN 认证"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "需要 AUTH CRAM-MD5 认证"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "需要 AUTH DIGEST-MD5 认证"
+
+msgid "AUTH GSSAPI required"
+msgstr "需要 AUTH GSSAPI 认证"
+
+msgid "AUTH NTLM required"
+msgstr "需要 AUTH NTLM 认证"
+
+msgid "AUTH SCRAM required"
+msgstr "需要 AUTH SCRAM 认证"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "需要 AUTH OAUTHBEARER 认证"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "需要 AUTH XOAUTH2 认证"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: 邮箱数据库错误"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: 存储驱动错误"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: 传输代理错误"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: 内容转换错误"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: 路由错误"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: 邮件流停滞"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: 影子冗余错误"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: 安全网错误"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: 队列数据库错误"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: 邮件被限流"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: 退信队列错误"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: 延迟队列错误"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: 保持队列错误"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: 接收队列错误"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: 活动队列错误"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: 队列文件损坏"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: 队列运行器错误"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: 别名数据库错误"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: 虚拟用户表错误"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: 邮件程序定义错误"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: 路由配置错误"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: 传输配置错误"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: 导向器配置错误"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: 重试配置错误"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: 重写配置错误"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: 认证配置错误"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ACL 配置错误"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Local_scan 配置错误"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: 查找配置错误"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: 扩展配置错误"
+
+msgid "HTTP Protocol Versions"
+msgstr "HTTP 协议版本"
+
+msgid "Protocol"
+msgstr "协议"
+
+msgid "Request %"
+msgstr "请求占比"
+
+msgid "Bandwidth %"
+msgstr "带宽占比"
+
+msgid "Each request requires a new connection"
+msgstr "每个请求需要新建连接"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "多个请求可复用同一连接"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "一个连接内可并行处理多个请求"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "连接更快，弱网环境下性能更佳"
+
+msgid "No protocol data available"
+msgstr "暂无协议数据"
+
+msgid "of requests use HTTP/1.0"
+msgstr "的请求使用了 HTTP/1.0 协议"
+
+msgid "From access logs"
+msgstr "来自访问日志"
+
+msgid "No HTTP/2 requests detected"
+msgstr "未检测到 HTTP/2 协议请求"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "当前所有请求均为 HTTP/1.0，无 HTTP/2 请求"
+
+msgid "HTTP/3 not detected"
+msgstr "未检测到 HTTP/3 协议请求"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "当前所有请求无QUIC/HTTP/3协议请求"
+
+msgid "Mail Authentication Statistics"
+msgstr "邮件认证统计"
+
+msgid "Authentication"
+msgstr "认证类型"
+
+msgid "Pass"
+msgstr "通过"
+
+msgid "Fail"
+msgstr "失败"
+
+msgid "Softfail"
+msgstr "软失败"
+
+msgid "Neutral"
+msgstr "中立"
+
+msgid "None"
+msgstr "无"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "邮件队列延迟统计"
+
+msgid "Delay Range"
+msgstr "延迟范围"
+
+msgid "Count"
+msgstr "数量"
+
+msgid "Percentage"
+msgstr "百分比"
+
+msgid "TLS Encryption Statistics"
+msgstr "TLS 加密统计"
+
+msgid "TLS Versions"
+msgstr "TLS 版本"
+
+msgid "Top Ciphers"
+msgstr "常用加密套件"
+
+msgid "robot_hits_detail_both"
+msgstr "总请求: %s 次 (正常页面: %s 次, robots.txt: %s 次)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "仅访问 robots.txt: %s 次，未抓取其他页面"
+
+msgid "robot_hits_detail_normal"
+msgstr "正常页面请求: %s 次"
 
 # 帮助和提示
 msgid "Troubleshooting"
@@ -1209,19 +2978,20 @@ msgstr "检查配置文件、权限和 AWStats 文档（在 'docs' 目录中）�
 msgid "Warning: Can't find language files for \"%s\". English will be used."
 msgstr "警告：找不到 \"%s\" 的语言文件。将使用英文。"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 错误和信号处理
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "%s process (ID %s) interrupted by signal %s."
 msgstr "%s 进程 (ID %s) 被信号 %s 中断。"
 
-msgid "An AWStats update process seems to be already running for this config file. Try later.If this is not true, remove manually lock file"
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
 msgstr "此配置文件的 AWStats 更新进程似乎已在运行。请稍后再试。如果不是，请手动删除锁文件"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 新增统计标题
-#==============================================================================
+#------------------------------------------------------------------------------
+
 msgid "Report Overview"
 msgstr "报告概览"
 
@@ -1243,17 +3013,60 @@ msgstr "访问来源"
 msgid "Other Sources"
 msgstr "其他来源"
 
-#=============================================================================
-# 显示帮助信息 - 现代重构版本
-#=============================================================================
+msgid "tooltip_1"
+msgstr "访客在网站上的会话次数。同一访客超过30分钟无活动后再次访问，会被计为新的访问"
+
+msgid "tooltip_2"
+msgstr "在选定时间段内访问您网站的不同访客数量。基于IP地址统计"
+
+msgid "tooltip_3"
+msgstr "被视为页面的请求数量（如HTML、PHP、ASP等），不包括图片、CSS、JS等静态文件"
+
+msgid "tooltip_4"
+msgstr "向服务器发出的所有请求总数，包括页面、图片、CSS、JS等所有文件"
+
+msgid "tooltip_5"
+msgstr "服务器响应用户请求时传输的数据总量"
+
+msgid "tooltip_13"
+msgstr "通过搜索引擎访问您网站的来源统计。显示哪些搜索引擎为您带来了流量，以及访客使用的搜索词。"
+
+msgid "tooltip_14"
+msgstr "通过其他网站的外部链接访问您网站的来源统计。显示哪些网站链接到您，以及它们带来的流量。"
+
+msgid "tooltip_15"
+msgstr "访客通过搜索引擎找到您网站时使用的搜索词。关键词是单个词，关键词组是多个词的组合。"
+
+msgid "tooltip_16"
+msgstr "搜索引擎爬虫、AI训练爬虫、漏洞扫描器等自动化程序。括号中的数字表示正常页面请求和 robots.txt 请求次数。"
+
+msgid "tooltip_17"
+msgstr "24小时流量分布图。显示您网站在一天中各时段的访问情况，帮助了解用户活跃时间。"
+
+msgid "tooltip_18"
+msgstr "该列显示的是所选时间段内每日/每周的平均值，帮助您了解整体趋势。"
+
+msgid "tooltip_19"
+msgstr "点击图表中的项目可查看详细信息。鼠标悬停在图表元素上可查看具体数值。"
+
+msgid "tooltip_20"
+msgstr "无法归类到已有范围的数据，通常是由于数据格式异常或缺失导致。"
+
+msgid "tooltip_21"
+msgstr "检测到的蠕虫病毒攻击记录。蠕虫是一种自我传播的恶意程序，通常通过网络漏洞进行传播。"
+
+#------------------------------------------------------------------------------
+# 显示帮助信息 - 社区版
+#------------------------------------------------------------------------------
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - 高级Web统计"
 
-msgid "Copyright (c) 2000-2026 Laurent Destailleur"
-msgstr "版权所有 (c) 2000-2026 Laurent Destailleur"
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "版权所有 (c) 2000-2025 Laurent Destailleur"
 
-msgid "Copyright (c) 2025 HestiaCP Enhanced Edition"
-msgstr "版权所有 (c) 2025 HestiaCP 增强版"
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "版权所有 (c) 2026-latest 社区版"
 
 msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
 msgstr "AWStats 绝对不提供任何担保。它是根据 GNU 通用公共许可证分发的自由软件（详见 LICENSE 文件）。"
@@ -1424,7 +3237,7 @@ msgid "  -debug=X     to add debug informations lesser than level X (speed reduc
 msgstr "  -debug=X     添加级别小于 X 的调试信息（会降低速度）"
 
 msgid "  -version     show AWStats version"
-msgstr "  -version     显示 AWStats 版本"
+msgstr "  -version, -v     显示 AWStats 版本"
 
 msgid "Now supports/detects:"
 msgstr "目前支持/检测："
@@ -1456,14 +3269,8 @@ msgstr "  最常查看的页面、入口页面和出口页面"
 msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
 msgstr "  文件类型和 Web 压缩（mod_gzip、mod_deflate 统计）"
 
-msgid "  Screen size"
-msgstr "  屏幕尺寸"
-
-msgid "  Ratio of Browsers with support of: Java, Flash, RealG2 reader, Quicktime reader, WMA reader, PDF reader"
-msgstr "  浏览器支持比例：Java、Flash、RealG2 播放器、Quicktime 播放器、WMA 播放器、PDF 阅读器"
-
-msgid "  Configurable personalized reports"
-msgstr "  可配置的个性化报告"
+msgid "  Configured Database Statistics"
+msgstr "  已配置的数据库统计信息"
 
 msgid "  %s domains/countries"
 msgstr "  %s 个域名/国家"
@@ -1495,176 +3302,245 @@ msgstr "  动态或静态 HTML/XHTML 报告，静态 PDF 报告"
 msgid "  Indexed text or XML monthly database"
 msgstr "  索引文本或 XML 月度数据库"
 
-msgid "  And a lot of other advanced features and options..."
+msgid "  And a lot of other advanced features and options..."  
 msgstr "  以及许多其他高级功能和选项..."
 
-msgid "New versions and FAQ at http://www.awstats.org"
-msgstr "新版本和常见问题请访问 http://www.awstats.org"
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  新版本和常见问题请访问 https://github.com/hestiacn/vstats/issues"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 什么是 AWStats
-#==============================================================================
-
-#=============================================================================
-# 什么是 AWStats 文档
-#=============================================================================
-
-msgid "docs.what.title"
-msgstr "什么是 AWStats / 功能概览"
+#------------------------------------------------------------------------------
 
 msgid "docs.what.subtitle"
 msgstr "了解 AWStats 的功能和特点"
 
-msgid "docs.what.intro"
+msgid "docs.what.content"
 msgstr ""
-"<div class='intro-box'>"
-"  <p>AWStats 是 <u>A</u>dvanced <u>W</u>eb <u>Stat</u>istic<u>s</u>（高级网站统计）的缩写。"
-"  <b>AWStats 是一个功能强大的开源日志分析器</b>，能够为网站、FTP、邮件和流媒体服务器生成"
-"  <b>详细且直观的统计报告</b>。它通过分析服务器日志文件，将原始数据转化为"
-"  <b>易于理解的图形化网页</b>。</p>"
-"  <p>无论是个人博客、企业网站还是大型门户，AWStats 都能帮助您深入了解访客行为，"
-"  优化网站内容和营销策略。</p>"
+"<div class='what-content'>"
+""
+"    <div class='page-header'>"
+"        <h1>什么是 AWStats？</h1>"
+"        <p class='subtitle'>了解这个拥有 30 多年历史的开源日志分析工具</p>"
+"    </div>"
+""
+"    <div class='intro-section'>"
+"        <h2>📌 简介</h2>"
+"        <div class='intro-box'>"
+"            <p>AWStats 是 <u>A</u>dvanced <u>W</u>eb <u>Stat</u>istic<u>s</u>（高级网站统计）的缩写。"
+"            <b>AWStats 是一个功能强大的开源日志分析器</b>，能够为网站、FTP、邮件和流媒体服务器生成"
+"            <b>详细且直观的统计报告</b>。它通过分析服务器日志文件，将原始数据转化为"
+"            <b>易于理解的图形化网页</b>。</p>"
+"            <p>无论是个人博客、企业网站还是大型门户，AWStats 都能帮助您深入了解访客行为，"
+"            优化网站内容和营销策略。</p>"
+"        </div>"
+"    </div>"
+""
+"    <div class='history-section'>"
+"        <h2>📜 项目历史</h2>"
+"        <div class='history-box'>"
+"            <p>AWStats 项目始于 <strong>1997 年</strong>，由 <a href='https://www.destailleur.fr' target='_blank' rel='noopener noreferrer'>Laurent Destailleur</a> 个人创建并持续维护。"
+"            经过 30 多年的发展，AWStats 已成为全球数百万网站信赖的日志分析工具。</p>"
+"            <p>项目原作者Laurent Destailleur于2025-08-26 16:20宣布8.0是他最后维护的一个版本。</p>"
+"            <p>目前，项目由原作者和全球开发者社区共同维护，定期发布更新和修复。"
+"            最新的 8.x 版本带来了现代化的界面、响应式设计和更好的用户体验。</p>"
+"            <p>查看 <a href='awstats_changelog.html'>更新日志</a> 了解完整的版本历史。</p>"
+"        </div>"
+"    </div>"
+""
+"    <div class='features-section'>"
+"        <h2>✨ 核心功能</h2>"
+"        <div class='features-grid'>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>👥</div>"
+"                <h4>访客分析</h4>"
+"                <ul>"
+"                    <li><u>独立访客</u>和<u>访问次数</u>统计</li>"
+"                    <li><u>访问时长</u>分析</li>"
+"                    <li><u>认证用户</u>追踪</li>"
+"                    <li>最近访问记录</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>📊</div>"
+"                <h4>流量分析</h4>"
+"                <ul>"
+"                    <li>按<u>月份</u>、<u>星期</u>、<u>小时</u>统计</li>"
+"                    <li><u>页面浏览量</u>和<u>点击量</u></li>"
+"                    <li><u>带宽使用</u>统计</li>"
+"                    <li><u>入口/出口页面</u>分析</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>🌍</div>"
+"                <h4>地理位置</h4>"
+"                <ul>"
+"                    <li>访客<u>国家/地区</u>分布</li>"
+"                    <li><u>GeoIP</u> 地理位置识别</li>"
+"                    <li><u>城市</u>级别定位（需插件）</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>💻</div>"
+"                <h4>客户端信息</h4>"
+"                <ul>"
+"                    <li><u>浏览器</u>类型和版本</li>"
+"                    <li><u>操作系统</u>统计</li>"
+"                    <li><u>屏幕分辨率</u></li>"
+"                    <li><u>设备类型</u>（桌面/移动）</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>🤖</div>"
+"                <h4>爬虫识别</h4>"
+"                <ul>"
+"                    <li>识别 500+ 种<u>搜索引擎爬虫</u></li>"
+"                    <li><u>机器人</u>访问统计</li>"
+"                    <li>过滤爬虫流量</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>🔍</div>"
+"                <h4>来源分析</h4>"
+"                <ul>"
+"                    <li><u>搜索引擎</u>来源</li>"
+"                    <li><u>关键词</u>和<u>短语</u>统计</li>"
+"                    <li><u>外部链接</u>来源</li>"
+"                    <li><u>直接访问</u>统计</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>📁</div>"
+"                <h4>文件类型</h4>"
+"                <ul>"
+"                    <li>按<u>文件类型</u>统计</li>"
+"                    <li><u>下载</u>统计</li>"
+"                    <li><u>压缩</u>统计（mod_gzip/mod_deflate）</li>"
+"                </ul>"
+"            </div>"
+"            <div class='feature-item'>"
+"                <div class='feature-icon'>⚠️</div>"
+"                <h4>错误分析</h4>"
+"                <ul>"
+"                    <li><u>HTTP错误</u>统计（404等）</li>"
+"                    <li><u>错误来源</u>分析</li>"
+"                    <li><u>蠕虫</u>攻击检测</li>"
+"                </ul>"
+"            </div>"
+"        </div>"
+"    </div>"
+""
+"    <div class='requirements-section'>"
+"        <h2>📋 系统要求</h2>"
+"        <div class='requirements-box'>"
+"            <h4>基本要求</h4>"
+"            <ul>"
+"                <li>✅ 能够访问要分析的服务器日志文件（Web/FTP/邮件）</li>"
+"                <li>✅ Perl 5.20 或更高版本（推荐 Perl 5.32+）</li>"
+"                <li>✅ 命令行和/或 CGI 环境</li>"
+"            </ul>"
+"            "
+"            <h4>支持的操作系统</h4>"
+"            <ul>"
+"                <li>🐧 Linux/Unix（Ubuntu、Debian、CentOS、RHEL等）</li>"
+"                <li>🪟 Windows（Windows 10/11、Windows Server 2019/2022）</li>"
+"                <li>🍎 macOS</li>"
+"                <li>🔵 FreeBSD、OpenBSD</li>"
+"            </ul>"
+"            "
+"            <h4>支持的服务器</h4>"
+"            <ul>"
+"                <li>🌐 Web服务器：Apache 2.4+、Nginx、IIS 10+、Caddy、Lighttpd</li>"
+"                <li>📁 FTP服务器：ProFTPd、vsFTPd、Pure-FTPd</li>"
+"                <li>📧 邮件服务器：Postfix、Sendmail、QMail、Exim</li>"
+"                <li>🎥 流媒体服务器：RealMedia、Windows Media Server、Darwin</li>"
+"            </ul>"
+"            "
+"            <h4>支持的浏览器</h4>"
+"            <ul>"
+"                <li>🌐 Chrome、Firefox、Edge、Safari（所有现代浏览器）</li>"
+"                <li>📱 移动端浏览器（响应式设计）</li>"
+"            </ul>"
+"            "
+"            <p class='note'><strong>注：</strong>AWStats 8.x 采用响应式设计，在手机和平板上也能完美显示。</p>"
+"        </div>"
+"    </div>"
+""
+"    <div class='scenarios-section'>"
+"        <h2>🎯 适用场景</h2>"
+"        <div class='scenarios-grid'>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>📝</div>"
+"                <h3>个人博客/小型网站</h3>"
+"                <p>轻量级运行，每日更新一次即可。轻松了解访客来源、热门文章和访问趋势，无需复杂配置。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>🏢</div>"
+"                <h3>企业网站/电商平台</h3>"
+"                <p>每6小时更新一次，实时掌握流量变化。通过详细的来源分析和关键词统计，优化营销策略。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>🌐</div>"
+"                <h3>大型门户/CDN网络</h3>"
+"                <p>支持集群日志合并分析，可处理每月数百万访问量。强大的 DNS 缓存和 GeoIP 功能，提供精确的地理位置报告。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>📧</div>"
+"                <h3>邮件服务器</h3>"
+"                <p>分析 Postfix、Sendmail 等邮件日志，统计发送/接收数量、邮件大小、发件人/收件人排名等。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>📁</div>"
+"                <h3>FTP服务器</h3>"
+"                <p>监控文件下载情况，统计热门文件、用户下载量、带宽使用等，适合软件镜像站、资源分享站。</p>"
+"            </div>"
+"            <div class='scenario-card'>"
+"                <div class='scenario-icon'>🎥</div>"
+"                <h3>流媒体服务器</h3>"
+"                <p>分析 RealMedia、Windows Media Server 等流媒体日志，了解视频/音频文件的播放情况。</p>"
+"            </div>"
+"        </div>"
+"    </div>"
+""
+"    <div class='more-section'>"
+"        <h2>🔍 了解更多</h2>"
+"        <div class='more-links'>"
+"            <a href='awstats_compare.html' class='more-link'>"
+"                <span class='more-icon'>📊</span>"
+"                <span class='more-text'>各种分析器对比</span>"
+"            </a>"
+"            <a href='awstats_setup.html' class='more-link'>"
+"                <span class='more-icon'>⚙️</span>"
+"                <span class='more-text'>安装指南</span>"
+"            </a>"
+"            <a href='awstats_config.html' class='more-link'>"
+"                <span class='more-icon'>📝</span>"
+"                <span class='more-text'>配置说明</span>"
+"            </a>"
+"            <a href='awstats_faq.html' class='more-link'>"
+"                <span class='more-icon'>❓</span>"
+"                <span class='more-text'>常见问题</span>"
+"            </a>"
+"            <a href='awstats_changelog.html' class='more-link'>"
+"                <span class='more-icon'>📋</span>"
+"                <span class='more-text'>更新日志</span>"
+"            </a>"
+"            <a href='awstats_license.html' class='more-link'>"
+"                <span class='more-icon'>📜</span>"
+"                <span class='more-text'>许可证</span>"
+"            </a>"
+"            <a href='https://github.com/eldy/AWStats/issues' class='more-link' target='_blank' rel='noopener noreferrer'>"
+"                <span class='more-icon'>🐛</span>"
+"                <span class='more-text'>问题反馈</span>"
+"            </a>"
+"        </div>"
+"    </div>"
+""
 "</div>"
 
-msgid "docs.what.history"
-msgstr ""
-"<div class='history-box'>"
-"  <h3>📜 项目历史</h3>"
-"  <p>AWStats 项目始于 1997 年，由 <a href='https://www.destailleur.fr' target='_blank' rel='noopener noreferrer'>Laurent Destailleur</a> 创建并持续维护。"
-"  经过 20 多年的发展，AWStats 已成为全球数百万网站信赖的日志分析工具。</p>"
-"  <p>目前，项目由原作者和全球开发者社区共同维护，定期发布更新和修复。"
-"  最新的 8.x 版本带来了现代化的界面、响应式设计和更好的用户体验。</p>"
-"  <p>查看 <a href='awstats_changelog.html'>更新日志</a> 了解完整的版本历史。</p>"
-"</div>"
-
-msgid "docs.what.features.title"
-msgstr "✨ 核心功能"
-
-msgid "docs.what.features.list"
-msgstr ""
-"<div class='features-grid'>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>👥</div>"
-"    <h4>访客分析</h4>"
-"    <ul>"
-"      <li><u>独立访客</u>和<u>访问次数</u>统计</li>"
-"      <li><u>访问时长</u>分析</li>"
-"      <li><u>认证用户</u>追踪</li>"
-"      <li>最近访问记录</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>📊</div>"
-"    <h4>流量分析</h4>"
-"    <ul>"
-"      <li>按<u>月份</u>、<u>星期</u>、<u>小时</u>统计</li>"
-"      <li><u>页面浏览量</u>和<u>点击量</u></li>"
-"      <li><u>带宽使用</u>统计</li>"
-"      <li><u>入口/出口页面</u>分析</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>🌍</div>"
-"    <h4>地理位置</h4>"
-"    <ul>"
-"      <li>访客<u>国家/地区</u>分布</li>"
-"      <li><u>GeoIP</u> 地理位置识别</li>"
-"      <li><u>城市</u>级别定位（需插件）</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>💻</div>"
-"    <h4>客户端信息</h4>"
-"    <ul>"
-"      <li><u>浏览器</u>类型和版本</li>"
-"      <li><u>操作系统</u>统计</li>"
-"      <li><u>屏幕分辨率</u></li>"
-"      <li><u>设备类型</u>（桌面/移动）</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>🤖</div>"
-"    <h4>爬虫识别</h4>"
-"    <ul>"
-"      <li>识别 500+ 种<u>搜索引擎爬虫</u></li>"
-"      <li><u>机器人</u>访问统计</li>"
-"      <li>过滤爬虫流量</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>🔍</div>"
-"    <h4>来源分析</h4>"
-"    <ul>"
-"      <li><u>搜索引擎</u>来源</li>"
-"      <li><u>关键词</u>和<u>短语</u>统计</li>"
-"      <li><u>外部链接</u>来源</li>"
-"      <li><u>直接访问</u>统计</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>📁</div>"
-"    <h4>文件类型</h4>"
-"    <ul>"
-"      <li>按<u>文件类型</u>统计</li>"
-"      <li><u>下载</u>统计</li>"
-"      <li><u>压缩</u>统计（mod_gzip/mod_deflate）</li>"
-"    </ul>"
-"  </div>"
-"  <div class='feature-item'>"
-"    <div class='feature-icon'>⚠️</div>"
-"    <h4>错误分析</h4>"
-"    <ul>"
-"      <li><u>HTTP错误</u>统计（404等）</li>"
-"      <li><u>错误来源</u>分析</li>"
-"      <li><u>蠕虫</u>攻击检测</li>"
-"    </ul>"
-"  </div>"
-"</div>"
-
-msgid "docs.what.requirements.title"
-msgstr "📋 系统要求"
-
-msgid "docs.what.requirements.list"
-msgstr ""
-"<div class='requirements-box'>"
-"  <h4>基本要求</h4>"
-"  <ul>"
-"    <li>✅ 能够访问要分析的服务器日志文件（Web/FTP/邮件）</li>"
-"    <li>✅ Perl 5.20 或更高版本（推荐 Perl 5.32+）</li>"
-"    <li>✅ 命令行和/或 CGI 环境</li>"
-"  </ul>"
-"  "
-"  <h4>支持的操作系统</h4>"
-"  <ul>"
-"    <li>🐧 Linux/Unix（Ubuntu、Debian、CentOS、RHEL等）</li>"
-"    <li>🪟 Windows（Windows 10/11、Windows Server 2019/2022）</li>"
-"    <li>🍎 macOS</li>"
-"    <li>🔵 FreeBSD、OpenBSD</li>"
-"  </ul>"
-"  "
-"  <h4>支持的服务器</h4>"
-"  <ul>"
-"    <li>🌐 Web服务器：Apache 2.4+、Nginx、IIS 10+、Caddy、Lighttpd</li>"
-"    <li>📁 FTP服务器：ProFTPd、vsFTPd、Pure-FTPd</li>"
-"    <li>📧 邮件服务器：Postfix、Sendmail、QMail、Exim</li>"
-"    <li>🎥 流媒体服务器：RealMedia、Windows Media Server、Darwin</li>"
-"  </ul>"
-"  "
-"  <h4>支持的浏览器</h4>"
-"  <ul>"
-"    <li>🌐 Chrome、Firefox、Edge、Safari（所有现代浏览器）</li>"
-"    <li>📱 移动端浏览器（响应式设计）</li>"
-"  </ul>"
-"  "
-"  <p class='note'><strong>注：</strong>AWStats 8.x 采用响应式设计，在手机和平板上也能完美显示。</p>"
-"</div>"
-
-msgid "docs.what.compare.link"
-msgstr "与其他日志分析器对比"
-
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 性能基准测试
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.benchmark.title"
 msgstr "📊 性能基准测试"
@@ -1987,9 +3863,9 @@ msgstr ""
 "    </div>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 日志分析器对比
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.compare.title"
 msgstr "📊 日志分析器对比"
@@ -2907,66 +4783,53 @@ msgstr ""
 
 msgid "compare.note.browsers"
 msgstr ""
-"<li class="note-browsers">"
 "<strong>浏览器检测数量：</strong> 此数字表示产品能够识别的浏览器家族数量，而非实际检测到的浏览器版本数量。"
 "所有主流日志分析工具都能通过用户代理字符串检测浏览器，但识别的精细度不同。"
 "AWStats 能够识别 210+ 种浏览器及其版本，包括 Chrome、Firefox、Safari、Edge 等现代浏览器，"
 "以及移动设备和特殊浏览器（如电视、游戏机等）。检测精度可在配置文件中调整。"
-"</li>"
 
 msgid "compare.note.robots"
 msgstr ""
-"<li class="note-robots">"
 "<strong>机器人检测：</strong> AWStats 内置了包含 500+ 种爬虫的数据库，能够准确识别搜索引擎爬虫、"
 "社交媒体抓取工具（如 Facebook Crawler、Twitterbot）、AI 训练爬虫（如 GPTBot、ClaudeBot）等。"
 "这一功能对于准确统计人类访客至关重要——例如，如果您的网站每月有 2000 次人类访问，"
 "同时有 500 次爬虫访问，没有机器人检测能力的工具会错误地报告 2500 次访问（25% 的误差！）。"
 "AWStats 则能正确区分：500 次爬虫访问，2000 次人类访客访问。"
 "其他工具如 GoAccess 也支持爬虫识别，Matomo 则通过 User Agent 解析库实现类似功能。"
-"</li>"
 
 msgid "compare.note.searchengines"
 msgstr ""
-"<li class="note-searchengines">"
-"<strong>搜索引擎检测：</strong> AWStats 内置了 228+ 种搜索引擎的 URL 语法规则，能够准确识别来自 Google、Bing、"
-"百度、Yandex、DuckDuckGo 等搜索引擎的流量，并提取搜索关键词。对于未知搜索引擎，AWStats 也有"
+"<strong>&nbsp;&nbsp;搜索引擎检测：</strong> AWStats 内置了 228+ 种搜索引擎的 URL 语法规则，能够准确识别来自 Google、Bing、"
+"Yandex、DuckDuckGo 等搜索引擎的流量，并提取搜索关键词。对于未知搜索引擎，AWStats 也有"
 "启发式算法尝试识别关键词。Matomo 和 GoAccess 同样具备搜索引擎识别能力，但规则库规模可能不同。"
-"</li>"
 
 msgid "compare.note.benchmark"
 msgstr ""
-"<li class="note-benchmark">"
-"<strong>基准测试说明：</strong> 不同日志分析工具的功能集差异较大，因此基准测试结果需要结合功能来解读。"
+"<strong>&nbsp;&nbsp;&nbsp;基准测试说明：</strong> 不同日志分析工具的功能集差异较大，因此基准测试结果需要结合功能来解读。"
 "本测试使用 AWStats 的机器人、搜索引擎、操作系统和浏览器数据库对其他工具进行了补充，"
 "以尽量公平地比较核心处理速度。测试环境为：Intel Xeon 3.0GHz / 4GB RAM / SSD / Linux / Perl 5.36，"
 "处理 100 万行 combined (XLF/CLF) 格式日志。实际性能可能因硬件、Perl 版本、日志格式而不同。"
 "<br><br>"
 "<span class='note-highlight'>⚠️ 特别注意：</span> DNS 查找对性能影响巨大（可使处理速度降低 40-100 倍），因此基准测试中已禁用 DNS 查找。"
 "如果您的日志文件中主机尚未解析且启用了 DNS 查找，无论选择哪个工具，整个过程都会显著变慢。"
-"</li>"
 
 msgid "compare.note.visitors"
 msgstr ""
-"<li class="note-visitors">"
-"<strong>唯一访客统计方法：</strong> 统计唯一访客有多种方法，不同工具采用不同策略："
+"<strong>&nbsp;&nbsp;&nbsp;&nbsp;唯一访客统计方法：</strong> 统计唯一访客有多种方法，不同工具采用不同策略："
 "<ul class='note-sublist'>"
-"  <li><strong>AWStats：</strong>基于对 HTML 页面的访问（忽略图片、CSS、JS 等请求），通过会话超时算法识别访客。</li>"
-"  <li><strong>GoAccess：</strong>基于 IP 地址和 User Agent 组合，通过配置的时间窗口识别访客。</li>"
-"  <li><strong>Matomo：</strong>使用第一方 Cookie 追踪访客，这是最准确的方法，但需要在前端嵌入 JavaScript。</li>"
+"<li><strong>AWStats：</strong>基于对 HTML 页面的访问（忽略图片、CSS、JS 等请求），通过会话超时算法识别访客。</li>"
+"<li><strong>GoAccess：</strong>基于 IP 地址和 User Agent 组合，通过配置的时间窗口识别访客。</li>"
+"<li><strong>Matomo：</strong>使用第一方 Cookie 追踪访客，这是最准确的方法，但需要在前端嵌入 JavaScript。</li>"
 "</ul>"
 "每种方法都有其优缺点。基于 IP 的方法可能因代理、NAT 或动态 IP 而产生误差；基于 Cookie 的方法"
 "可能因用户清除 Cookie 或隐私模式而失效。建议根据实际需求选择合适的方法。"
-"</li>"
 
 msgid "compare.note.data"
 msgstr ""
-"<li class="note-data">"
 "<strong>数据来源：</strong> 对比数据由 AWStats 团队根据官方文档和实际测试整理。Sawmill 相关信息参考其官方文档。"
-"</li>"
 
 msgid "compare.note.logformat"
 msgstr ""
-"<li class="note-logformat">"
 "<strong>日志格式限制：</strong> 使用 Apache 通用日志格式 (CLF) 时，日志文件中不包含 User Agent、Referer 等信息，"
 "因此无法生成浏览器、操作系统、来源网站等报告。推荐使用 Apache 组合日志格式 (combined/XLF/ELF)，"
 "或在 Nginx 中配置包含 <code>$http_user_agent</code>、<code>$http_referer</code> 等变量的日志格式，以充分发挥日志分析工具的功能。"
@@ -2976,15 +4839,41 @@ msgstr ""
 "<p>使用 sed 命令，将所有 Nginx 配置文件中的 <code>access_log off;</code>（无论 off 前面有多少个空格）替换为 <code>access_log /var/log/nginx/access.log main;</code></p>"
 "<pre><code>sed -i 's/access_log[[:space:]]\+off;/access_log \/var\/log\/nginx\/access.log main;/g' /etc/nginx/conf.d/*.conf</code></pre>"
 ""
-"<h4>2. 配置国内服务器 DNS（中国大陆服务器优化）</h4>"
-"<p>⚠️ <strong>重要提示：</strong> 此配置仅适用于服务器位于中国大陆的情况。如果您的服务器在海外，请保留原有的 8.8.8.8 和 1.1.1.1 或其他当地 DNS。</p>"
-"<p>如果您的服务器位于中国大陆，默认的 8.8.8.8 (Google) 和 1.1.1.1 (Cloudflare) DNS 可能无法稳定访问，会导致网站解析变慢甚至超时。建议修改为以下国内公共 DNS：</p>"
+"<h4>2. DNS 配置优化</h4>"
+"<p>⚠️ <strong>重要提示：</strong> DNS 解析速度直接影响网站加载时间。在某些国家或网络环境中，由于当地网络政策或基础设施限制，公共 DNS 服务器（如 8.8.8.8、1.1.1.1）可能被屏蔽、限速或延迟较高。</p>"
+""
+"<p><strong>全球通用（通常可用）：</strong></p>"
 "<ul>"
-"  <li><strong>223.5.5.5 / 223.6.6.6</strong> - 阿里云 DNS（推荐，速度快、稳定）</li>"
-"  <li><strong>114.114.114.114</strong> - 114 DNS（国内老牌公共 DNS）</li>"
+"  <li><strong>8.8.8.8 / 8.8.4.4</strong> - Google 公共 DNS（全球）</li>"
+"  <li><strong>1.1.1.1 / 1.0.0.1</strong> - Cloudflare DNS（全球，注重隐私）</li>"
+"  <li><strong>9.9.9.9</strong> - Quad9（安全防护，全球）</li>"
+"  <li><strong>208.67.222.222 / 208.67.220.220</strong> - OpenDNS (Cisco)（全球）</li>"
 "</ul>"
-"<pre><code>resolver 223.5.5.5 223.6.6.6 114.114.114.114 valid=300s ipv6=off;</code></pre>"
-"<p class='note'>修改后执行 <code>nginx -t</code> 测试配置，然后 <code>systemctl reload nginx</code> 重载生效。如果服务器不在中国大陆，请忽略此步骤。</p>"
+""
+"<p><strong>关于 DNS 选择的现实说明：</strong></p>"
+"<p>在全球范围内，公共 DNS 服务的访问体验并不一致。在某些国家或地区，由于网络管理策略、基础设施差异或国际链路质量等原因，这些 DNS 服务器可能存在访问受限、响应缓慢等现象，极端情况下也存在被劫持的风险。</p>"
+"<p>如果您所在的地区无法稳定使用默认国际公共 DNS，建议：</p>"
+"<ul>"
+"  <li>优先使用托管商或本地 ISP 提供的 DNS</li>"
+"  <li>尝试使用地区性公共 DNS（如下所示）</li>"
+"  <li>如果均不可用，请咨询您的网络管理员或托管服务商</li>"
+"</ul>"
+"<p>这不是技术问题，而是现实。AWStats 无法解决网络基础设施的差异，但我们希望这份文档能如实反映您可能遇到的情况。</p>"
+"<p>以下列出部分国家和地区的公共 DNS 供参考（非完整列表，请根据实际情况测试可用性）</p>"
+"<p><strong>部分国家和地区性 DNS（根据服务器位置选择）：</strong></p>"
+"<ul>"
+"  <li><strong>欧洲：</strong> 194.242.2.2 / 194.242.2.3 (dns0.eu)</li>"
+"  <li><strong>德国：</strong> 217.237.151.161 / 217.237.148.162 (DNS:NET)</li>"
+"  <li><strong>荷兰：</strong> 213.154.224.1 / 213.154.224.2 (NLnet Labs)</li>"
+"  <li><strong>俄罗斯：</strong> 77.88.8.8 / 77.88.8.1 (Yandex DNS)</li>"
+"  <li><strong>中国：</strong> 223.5.5.5 / 223.6.6.6 (阿里云) / 119.29.29.29 (DNSPod 腾讯云) / 114.114.114.114 / 114.114.115.115 (114 DNS)</li>"
+"  <li><strong>印度：</strong> 1.186.4.9 / 1.186.4.10 (BSNL)</li>"
+"  <li><strong>巴西：</strong> 189.38.96.2 / 189.38.96.3 (NIC.br)</li>"
+"  <li><strong>南非：</strong> 196.10.120.22 / 196.10.120.23 (AFRINIC)</li>"
+"</ul>"
+"<p><strong>建议：</strong> 优先使用托管商或 ISP 提供的本地 DNS——在受限环境中通常最稳定、最快。如果不确定，请咨询您的托管服务商。</p>"
+"<pre><code>resolver 8.8.8.8 1.1.1.1 valid=300s ipv6=off;</code></pre>"
+"<p class='note'>修改后执行 <code>nginx -t</code> 测试配置，然后 <code>systemctl reload nginx</code> 重载生效。如果您所在国家或地区的网络环境对默认 DNS 存在访问限制，请根据实际情况调整 resolver 中的 DNS 地址，或咨询您的托管服务商获取推荐配置。</p>"
 ""
 "<h4>3. Nginx 日志格式配置（增强版 combined 格式）</h4>"
 "<p>配置包含真实 IP 字段的日志格式（这是增强版的 combined 格式，比标准版多记录了真实客户端 IP）：</p>"
@@ -2992,11 +4881,10 @@ msgstr ""
 "log_format                      main '$remote_addr - $remote_user [$time_local] $request "$status" $body_bytes_sent "$http_referer" "$http_user_agent" "$http_x_forwarded_for"';\n"
 "</code></pre>"
 "<p class='note'>💡 这个格式包含了 $http_x_forwarded_for 字段，当网站使用 CDN（如 Cloudflare）或代理时，可以记录真实的访客 IP。</p>"
-"</li>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 配置指令
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.config.title"
 msgstr "⚙️ AWStats 配置指令大全"
@@ -3896,9 +5784,9 @@ msgstr ""
 "  </div>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 插件与贡献资源
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.contrib.title"
 msgstr "🧩 插件、贡献与相关资源"
@@ -4264,9 +6152,9 @@ msgstr ""
 "  <li><a href='https://www.ballanger-dermatologue.fr' rel='noopener noreferrer' target='_blank'>ballanger-dermatologue.fr</a> - 皮肤科医生</li>"
 "</ul>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 插件开发 - 图表
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.devgraphs.title"
 msgstr "📊 插件开发 - 图表"
@@ -4388,9 +6276,9 @@ msgstr ""
 "  </ul></li>"
 "</ul>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 插件开发 - 钩子
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.devhooks.title"
 msgstr "🧩 插件开发 - 钩子"
@@ -4682,9 +6570,9 @@ msgstr ""
 "</ul>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 插件开发
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.devplugins.title"
 msgstr "🧩 插件开发"
@@ -4854,9 +6742,9 @@ msgstr ""
 "  </li>"
 "</ul>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - AWStats Dolibarr 模块
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.dolibarr.title"
 msgstr "📊 AWStats Dolibarr ERP-CRM 模块"
@@ -4991,9 +6879,9 @@ msgstr ""
 "  <p><strong>先决条件：</strong> 在使用此模块之前，您需要先安装和配置 AWStats 日志分析器。AWStats 的安装和配置不在本文档范围内，请参考 AWStats 主文档。</p>"
 "</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 扩展报表功能
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.extra.title"
 msgstr "📊 使用 ExtraSection 功能添加扩展报表"
@@ -5018,9 +6906,9 @@ msgid "extra.config.explanation"
 msgstr ""
 "<p><strong>如何在配置文件中添加/编辑扩展报表</strong></p>"
 "<p>在 AWStats 配置文件中找到以下部分：</p>"
-"<pre><code>#-----------------------------------------------------------------------------"
+"<pre><code>"
 "# 扩展报表"
-"#-----------------------------------------------------------------------------</code></pre>"
+"</code></pre>"
 "<p>阅读此点之后配置文件中的所有说明，它们将解释如何通过在配置文件中添加 ExtraSection 配置来添加扩展报表，"
 "或点击 <a href='#extraconfig'>此处</a> 跳转到这些说明的副本。</p>"
 
@@ -5141,13 +7029,14 @@ msgstr ""
 #------------------------------------------------------------------------------
 
 msgid "extra.example4.title"
-msgstr "示例 4：跟踪中止下载"
+msgstr "示例 4：跟踪部分内容请求（断点续传）"
 
 msgid "extra.example4.desc"
 msgstr ""
-"<p>中止下载在日志文件中由 206 错误报告，因此以下是设置 ExtraSection 添加此类跟踪图表的方法：</p>"
+"<p>HTTP 206 状态码表示服务器成功返回了请求的部分内容（例如用户暂停后续传，或下载工具使用多线程分块下载）。"
+"以下是如何设置 ExtraSection 来跟踪这些部分内容请求的示例：</p>"
 "<pre><code>"
-"ExtraSectionName1=\"中止下载列表\"\n"
+"ExtraSectionName1=\"部分内容请求列表\"\n"
 "ExtraSectionCodeFilter1=\"206\"\n"
 "ExtraSectionCondition1=\"\"\n"
 "ExtraSectionFirstColumnTitle1=\"URL\"\n"
@@ -5156,6 +7045,7 @@ msgstr ""
 "MaxNbOfExtra1=100\n"
 "MinHitExtra1=1\n"
 "</code></pre>"
+"<p class='note'>📝 <strong>说明：</strong> HTTP 206 常被误描述为“中止下载错误”。实际上，它是一个<strong>成功</strong>状态码，表示部分内容传输。真正的下载中断（如连接断开）在标准日志中通常不会记录为特定状态码。</p>"
 
 #------------------------------------------------------------------------------
 # 示例 5：跟踪最常请求的域名别名
@@ -5265,9 +7155,9 @@ msgstr ""
 "对于所有 AWStats 版本，ExtraSectionFirstColumnValuesX 也需要正则表达式值。</p>"
 "<p>返回 <a href='#examples'>示例</a> 查看语法使用的示例。</p>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 常见问题与故障排除
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.faq.title"
 msgstr "❓ 常见问题与故障排除"
@@ -5795,9 +7685,9 @@ msgstr ""
 "    require valid-user\n"
 "&lt;/Files&gt;</code></pre>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 词汇表
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.glossary.title"
 msgstr "📚 AWStats 词汇表"
@@ -5872,7 +7762,7 @@ msgstr ""
 msgid "glossary.grabber"
 msgstr ""
 "<h3 id='Grabber'>🤖 抓取器 (Grabber)</h3>"
-"<p>主要用于在本地复制整个网站的浏览器，包括例如“teleport”、“webcapture”、“webcopier”等。</p>"
+"<p>主要用于在本地复制整个网站的浏览器，包括例如「teleport」、「webcapture」、「webcopier」等。</p>"
 
 msgid "glossary.direct_access"
 msgstr ""
@@ -5886,8 +7776,9 @@ msgstr ""
 "</ul>"
 
 msgid "glossary.add_to_favourites"
-strstr ""
+msgstr ""
 "<h3 id='AddToFavourites'>⭐ 添加到收藏夹 (Add To Favourites)</h3>"
+"<div class='aws-note'>📌 <strong>提示：</strong>“添加到收藏夹”统计功能已在此版本中移除，以下说明仅供历史参考。</div>"
 "<p>此值在“杂项图表”中可用，是一个估计指标，用于了解访客将您的网站添加到其收藏夹的次数。技术规则如下公式：</p>"
 "<pre><code>添加到收藏夹次数 = round((x + y) / r)</code></pre>"
 "<p>其中：</p>"
@@ -5936,8 +7827,10 @@ msgstr ""
 "<p>信息性状态码是 Web 服务器的临时响应，让客户端了解服务器的处理状态。信息性代码不表示错误条件。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
-"  <tr><td>100</td><td>100 Continue - 继续发送请求</td></tr>"
+"  <tr><td>100</td><td>100 Continue - 继续</td></tr>"
 "  <tr><td>101</td><td>101 Switching Protocols - 切换协议</td></tr>"
+"  <tr><td>102</td><td>102 Processing (WebDAV) - 处理中 (WebDAV)</td></tr>"
+"  <tr><td>103</td><td>103 Early Hints - 早期提示 (RFC 8297)</td></tr>"
 "</table>"
 
 msgid "glossary.http.2xx"
@@ -5946,13 +7839,17 @@ msgstr ""
 "<p>此类状态码表示客户端的请求已被成功接收、理解和处理。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>2xx</td><td>[Miscellaneous successes] - [其他成功状态]</td></tr>"
 "  <tr><td>200</td><td>200 OK - 成功</td></tr>"
 "  <tr><td>201</td><td>201 Created - 已创建</td></tr>"
 "  <tr><td>202</td><td>202 Accepted - 已接受</td></tr>"
-"  <tr><td>203</td><td>203 Non-Authoritative Information - 非权威信息</td></tr>"
+"  <tr><td>203</td><td>203 Non-authoritative information (from cache) - 非权威信息</td></tr>"
 "  <tr><td>204</td><td>204 No Content - 无内容</td></tr>"
 "  <tr><td>205</td><td>205 Reset Content - 重置内容</td></tr>"
-"  <tr><td>206</td><td>206 Partial Content - 部分内容（客户端正在下载多部分文档或大文件的一部分）</td></tr>"
+"  <tr><td>206</td><td>206 Partial Content - 部分内容</td></tr>"
+"  <tr><td>207</td><td>207 Multi-Status (WebDAV) - 多状态 (WebDAV)</td></tr>"
+"  <tr><td>208</td><td>208 Already Reported (WebDAV) - 已报告 (WebDAV)</td></tr>"
+"  <tr><td>226</td><td>226 IM Used - IM 已使用</td></tr>"
 "</table>"
 
 msgid "glossary.http.3xx"
@@ -5961,12 +7858,16 @@ msgstr ""
 "<p>此类代码告诉客户端，浏览器应重定向到另一个 URL 以完成请求。这不是错误条件。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>3xx</td><td>[Miscellaneous redirections] - [其他重定向状态]</td></tr>"
 "  <tr><td>300</td><td>300 Multiple Choices - 多种选择</td></tr>"
-"  <tr><td>301</td><td>301 Moved Permanently - 永久移动</td></tr>"
-"  <tr><td>302</td><td>302 Moved Temporarily - 临时移动</td></tr>"
-"  <tr><td>303</td><td>303 See Other - 查看其他</td></tr>"
-"  <tr><td>304</td><td>304 Not Modified - 未修改</td></tr>"
+"  <tr><td>301</td><td>301 Moved Permanently (redirect) - 永久移动 (重定向)</td></tr>"
+"  <tr><td>302</td><td>302 The file (which was temporarily moved previously) has been found - 已找到该文件（之前曾被临时移动过）</td></tr>"
+"  <tr><td>303</td><td>303 See Other - 参见其他</td></tr>"
+"  <tr><td>304</td><td>304 Not Modified (since last retrieval) - 未修改 (自上次请求后)</td></tr>"
 "  <tr><td>305</td><td>305 Use Proxy - 使用代理</td></tr>"
+"  <tr><td>306</td><td>306 Switch Proxy - 切换代理</td></tr>"
+"  <tr><td>307</td><td>307 Temporary Redirect - 临时重定向</td></tr>"
+"  <tr><td>308</td><td>308 Permanent Redirect - 永久重定向</td></tr>"
 "</table>"
 
 msgid "glossary.http.4xx"
@@ -5975,23 +7876,54 @@ msgstr ""
 "<p>此类状态码表示客户端向服务器发送了错误数据或格式错误的请求。客户端错误通常发生在客户端尝试使用错误的用户名和密码访问受保护区域时。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>4xx</td><td>[Miscellaneous client/user errors] - [其他客户端/用户错误]</td></tr>"
 "  <tr><td>400</td><td>400 Bad Request - 错误请求</td></tr>"
 "  <tr><td>401</td><td>401 Unauthorized - 未授权</td></tr>"
 "  <tr><td>402</td><td>402 Payment Required - 需要付款</td></tr>"
 "  <tr><td>403</td><td>403 Forbidden - 禁止访问</td></tr>"
-"  <tr><td>404</td><td>404 Not Found - 未找到</td></tr>"
+"  <tr><td>404</td><td>404 Not Found (hits on favicon excluded) - 未找到页面/资源 (已排除 favicon 请求)</td></tr>"
 "  <tr><td>405</td><td>405 Method Not Allowed - 方法不允许</td></tr>"
-"  <tr><td>406</td><td>406 Not Acceptable - 不可接受</td></tr>"
+"  <tr><td>406</td><td>406 Not Acceptable - 无法接受</td></tr>"
 "  <tr><td>407</td><td>407 Proxy Authentication Required - 需要代理认证</td></tr>"
 "  <tr><td>408</td><td>408 Request Timeout - 请求超时</td></tr>"
 "  <tr><td>409</td><td>409 Conflict - 冲突</td></tr>"
-"  <tr><td>410</td><td>410 Gone - 已消失</td></tr>"
-"  <tr><td>411</td><td>411 Length Required - 需要长度</td></tr>"
+"  <tr><td>410</td><td>410 Gone - 已不存在</td></tr>"
+"  <tr><td>411</td><td>411 Length Required - 需要内容长度</td></tr>"
 "  <tr><td>412</td><td>412 Precondition Failed - 前提条件失败</td></tr>"
-"  <tr><td>413</td><td>413 Request Entity Too Large - 请求实体过大</td></tr>"
-"  <tr><td>414</td><td>414 Request-URI Too Long - 请求 URI 过长</td></tr>"
+"  <tr><td>413</td><td>413 Payload Too Large - 请求体过大</td></tr>"
+"  <tr><td>414</td><td>414 URI Too Long - 请求 URI 过长</td></tr>"
 "  <tr><td>415</td><td>415 Unsupported Media Type - 不支持的媒体类型</td></tr>"
-"  <tr><td>429</td><td>429 Too Many Requests - 请求过多（限流）</td></tr>"
+"  <tr><td>416</td><td>416 Range Not Satisfiable - 请求范围无法满足</td></tr>"
+"  <tr><td>417</td><td>417 Expectation Failed - 期望失败</td></tr>"
+"  <tr><td>418</td><td>418 I am a teapot - 我是茶壶 (愚人节玩笑)</td></tr>"
+"  <tr><td>419</td><td>419 Page Expired (Laravel) - 页面已过期 (Laravel)</td></tr>"
+"  <tr><td>420</td><td>420 Method Failure (Spring) / Enhance Your Calm (Twitter - deprecated) - 方法失败 (Spring) / 请冷静 (Twitter - 已弃用)</td></tr>"
+"  <tr><td>421</td><td>421 Misdirected Request - 请求被错误引导</td></tr>"
+"  <tr><td>422</td><td>422 Unprocessable Entity (WebDAV) - 无法处理的实体 (WebDAV)</td></tr>"
+"  <tr><td>423</td><td>423 Locked (WebDAV) - 已锁定 (WebDAV)</td></tr>"
+"  <tr><td>424</td><td>424 Failed Dependency (WebDAV) - 依赖失败 (WebDAV)</td></tr>"
+"  <tr><td>425</td><td>425 Too Early (RFC 8470) - 请求发送过早 (RFC 8470)</td></tr>"
+"  <tr><td>426</td><td>426 Upgrade Required - 需要升级</td></tr>"
+"  <tr><td>428</td><td>428 Precondition Required (RFC 6585) - 需要前提条件 (RFC 6585)</td></tr>"
+"  <tr><td>429</td><td>429 Too Many Requests (RFC 6585) - 请求过多 (RFC 6585)</td></tr>"
+"  <tr><td>430</td><td>430 Request Header Fields Too Large (Shopify) - 请求头字段过大 (Shopify)</td></tr>"
+"  <tr><td>431</td><td>431 Request Header Fields Too Large (RFC 6585) - 请求头字段过大 (RFC 6585)</td></tr>"
+"  <tr><td>440</td><td>440 Login Time-out (IIS) - 登录超时 (IIS)</td></tr>"
+"  <tr><td>444</td><td>444 No Response (nginx) - 无响应 (nginx)</td></tr>"
+"  <tr><td>449</td><td>449 Retry With (IIS) - 请重试 (IIS)</td></tr>"
+"  <tr><td>450</td><td>450 Blocked by Windows Parental Controls (Microsoft) - 被 Windows 家长控制阻止 (Microsoft)</td></tr>"
+"  <tr><td>451</td><td>451 Unavailable For Legal Reasons (RFC 7725) - 因法律原因不可用 (RFC 7725)</td></tr>"
+"  <tr><td>460</td><td>460 Client closed connection before idle timeout (AWS ELB) - 客户端在空闲超时前关闭连接 (AWS ELB)</td></tr>"
+"  <tr><td>463</td><td>463 X-Forwarded-For header with >30 IP addresses (AWS ELB) - X-Forwarded-For 头包含超过30个IP地址 (AWS ELB)</td></tr>"
+"  <tr><td>464</td><td>464 Incompatible protocol versions (AWS ELB) - 协议版本不兼容 (AWS ELB)</td></tr>"
+"  <tr><td>494</td><td>494 Request header too large (nginx) - 请求头过大 (nginx)</td></tr>"
+"  <tr><td>495</td><td>495 SSL Certificate Error (nginx) - SSL 证书错误 (nginx)</td></tr>"
+"  <tr><td>496</td><td>496 SSL Certificate Required (nginx) - 需要 SSL 证书 (nginx)</td></tr>"
+"  <tr><td>497</td><td>497 HTTP Request Sent to HTTPS Port (nginx) - HTTP 请求发送到 HTTPS 端口 (nginx)</td></tr>"
+"  <tr><td>498</td><td>498 Invalid Token (ArcGIS) - 无效的令牌 (ArcGIS)</td></tr>"
+"  <tr><td>499</td><td>499 Token Required (ArcGIS) / Client Closed Request (nginx) - 需要令牌 (ArcGIS) / 客户端关闭请求 (nginx)</td></tr>"
+"  <tr><td>508</td><td>508 Resource Limit Is Reached (cPanel) - 达到资源限制 (cPanel)</td></tr>"
+"  <tr><td>509</td><td>509 Bandwidth Limit Exceeded (Apache/cPanel) - 超出带宽限制 (Apache/cPanel)</td></tr>"
 "</table>"
 
 msgid "glossary.http.5xx"
@@ -6000,12 +7932,36 @@ msgstr ""
 "<p>此类状态码表示由于 Web 服务器内部错误，无法成功处理客户端的请求。这些错误码可能表示 Web 服务器存在严重问题。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
-"  <tr><td>500</td><td>500 Internal Server Error - 内部服务器错误（最常见原因是尝试执行有语法错误的脚本）</td></tr>"
+"  <tr><td>5xx</td><td>[Miscellaneous server errors] - [其他服务器错误]</td></tr>"
+"  <tr><td>500</td><td>500 Internal Server Error - 内部服务器错误</td></tr>"
 "  <tr><td>501</td><td>501 Not Implemented - 未实现</td></tr>"
-"  <tr><td>502</td><td>502 Bad Gateway - 错误网关</td></tr>"
+"  <tr><td>502</td><td>502 Bad Gateway - 网关错误</td></tr>"
 "  <tr><td>503</td><td>503 Service Unavailable - 服务不可用</td></tr>"
 "  <tr><td>504</td><td>504 Gateway Timeout - 网关超时</td></tr>"
 "  <tr><td>505</td><td>505 HTTP Version Not Supported - HTTP 版本不支持</td></tr>"
+"  <tr><td>506</td><td>506 Variant Also Negotiates - 变体也参与协商</td></tr>"
+"  <tr><td>507</td><td>507 Insufficient Storage (WebDAV) - 存储空间不足 (WebDAV)</td></tr>"
+"  <tr><td>508</td><td>508 Loop Detected (WebDAV) - 检测到循环 (WebDAV)</td></tr>"
+"  <tr><td>510</td><td>510 Not Extended - 未扩展</td></tr>"
+"  <tr><td>511</td><td>511 Network Authentication Required (RFC 6585) - 需要网络身份验证 (RFC 6585)</td></tr>"
+"  <tr><td>520</td><td>520 Unknown Error (Cloudflare) - 未知错误 (Cloudflare)</td></tr>"
+"  <tr><td>521</td><td>521 Web Server Is Down (Cloudflare) - Web 服务器已关闭 (Cloudflare)</td></tr>"
+"  <tr><td>522</td><td>522 Connection Timed Out (Cloudflare) - 连接超时 (Cloudflare)</td></tr>"
+"  <tr><td>523</td><td>523 Origin Is Unreachable (Cloudflare) - 源站不可达 (Cloudflare)</td></tr>"
+"  <tr><td>524</td><td>524 A Timeout Occurred (Cloudflare) - 发生超时 (Cloudflare)</td></tr>"
+"  <tr><td>525</td><td>525 SSL Handshake Failed (Cloudflare) - SSL 握手失败 (Cloudflare)</td></tr>"
+"  <tr><td>526</td><td>526 Invalid SSL Certificate (Cloudflare) - 无效的 SSL 证书 (Cloudflare)</td></tr>"
+"  <tr><td>527</td><td>527 Railgun Error (Cloudflare - obsolete) - Railgun 错误 (Cloudflare - 已弃用)</td></tr>"
+"  <tr><td>529</td><td>529 Site is overloaded (SSLLabs) - 站点过载 (SSLLabs)</td></tr>"
+"  <tr><td>530</td><td>530 Origin DNS Error (Cloudflare) / Site is frozen (Pantheon) - 源站 DNS 错误 (Cloudflare) / 站点已冻结 (Pantheon)</td></tr>"
+"  <tr><td>540</td><td>540 Temporarily Disabled (Shopify) - 临时禁用 (Shopify)</td></tr>"
+"  <tr><td>561</td><td>561 Unauthorized (AWS ELB) - 未授权 (AWS ELB)</td></tr>"
+"  <tr><td>598</td><td>598 (Informal convention) Network read timeout error - (非正式约定) 网络读取超时错误</td></tr>"
+"  <tr><td>599</td><td>599 (Informal convention) Network connect timeout error - (非正式约定) 网络连接超时错误</td></tr>"
+"  <tr><td>783</td><td>783 Unexpected Token (Shopify) - 意外的令牌 (Shopify)</td></tr>"
+"  <tr><td>999</td><td>999 Request denied (LinkedIn) - 请求被拒绝 (LinkedIn)</td></tr>"
+"  <tr><td>000</td><td>000 HTTP/2 GOAWAY (AWS ELB) - HTTP/2 GOAWAY (AWS ELB)</td></tr>"
+"  <tr><td>xxx</td><td>[Unknown] - [未知状态码]</td></tr>"
 "</table>"
 
 #------------------------------------------------------------------------------
@@ -6021,67 +7977,337 @@ msgstr ""
 "<p>SMTP 状态码由邮件服务器返回，用于指示发送/接收邮件的状态。状态码取决于邮件服务器和用于分析日志文件的预处理器。</p>"
 "<p>所有表示失败的代码被 AWStats 隔离在 SMTP 状态报告图表中，由 AWStats 配置文件中的 ShowSMTPErrorsStats 指令启用。"
 "您可以通过 ValidSMTPCodes 指令决定哪些代码是成功邮件传输，不应出现在此图表中。</p>"
-"<p>以下是大多数邮件服务器报告的值（当使用 maillogconvert.pl 预处理邮件日志文件时也应如此）。SMTP 错误分为 3 类：</p>"
+"<p>以下是现代邮件服务器（Postfix、Sendmail、Exim、Exchange 等）报告的 SMTP 状态码。SMTP 响应分为以下几类：</p>"
 "<ul>"
-"  <li><a href='#SMTP23'>2xx/3xx - 成功</a></li>"
-"  <li><a href='#SMTP4'>4xx - 临时错误（要求发送方稍后重试）</a></li>"
-"  <li><a href='#SMTP5'>5xx - 永久错误</a></li>"
+"  <li><a href='#SMTP2'>2xx - 成功</a></li>"
+"  <li><a href='#SMTP3'>3xx - 中间状态</a></li>"
+"  <li><a href='#SMTP4'>4xx - 临时失败（可重试）</a></li>"
+"  <li><a href='#SMTP5'>5xx - 永久失败（不重试）</a></li>"
+"  <li><a href='#SMTP6'>6xx - 协议状态 (DSN 送达状态通知)</a></li>"
+"  <li><a href='#SMTP7'>7xx - 安全状态 (MTA-STS, DANE, TLS)</a></li>"
+"  <li><a href='#SMTP8'>8xx - 认证状态</a></li>"
+"  <li><a href='#SMTP9'>9xx - 应用特定 (Exchange, Postfix, Sendmail, Exim)</a></li>"
 "</ul>"
 
 msgid "glossary.smtp.2xx"
 msgstr ""
-"<h4 id='SMTP23'>2xx/3xx 类 - 成功</h4>"
-"<p>这些是 SMTP 协议的成功响应。</p>"
+"<h4 id='SMTP2'>2xx - 成功</h4>"
+"<p>这些是 SMTP 协议的成功响应，表示请求的操作已成功完成。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
-"  <tr><td>200</td><td>200 Non-standard success response - 非标准成功响应</td></tr>"
+"  <tr><td>200</td><td>200 Nonstandard success response (ESMTP) - 非标准成功响应 (ESMTP)</td></tr>"
 "  <tr><td>211</td><td>211 System status, or system help reply - 系统状态或系统帮助回复</td></tr>"
 "  <tr><td>214</td><td>214 Help message - 帮助信息</td></tr>"
-"  <tr><td>220</td><td>220 <domain> Service ready - 服务就绪</td></tr>"
-"  <tr><td>221</td><td>221 <domain> Service closing transmission channel - 服务关闭传输通道</td></tr>"
+"  <tr><td>215</td><td>215 SMTP service ready (LMTP) - SMTP 服务就绪 (LMTP)</td></tr>"
+"  <tr><td>220</td><td>220 Service ready - server is ready to receive mail - 服务就绪</td></tr>"
+"  <tr><td>221</td><td>221 Service closing - connection is being closed") - 服务关闭传输通道</td></tr>"
+"  <tr><td>235</td><td>235 Authentication successful - 认证成功 (ESMTP AUTH)</td></tr>"
 "  <tr><td>250</td><td>250 Requested mail action taken and completed - 请求的邮件操作已完成</td></tr>"
-"  <tr><td>251</td><td>251 User not local: will forward to <forward-path> - 用户非本地，将转发</td></tr>"
-"  <tr><td>252</td><td>252 Recipient cannot be verified - 收件人无法验证，但将尝试投递</td></tr>"
-"  <tr><td>354</td><td>354 Start mail input and end with <crlf>.<crlf> - 开始邮件输入</td></tr>"
+"  <tr><td>251</td><td>251 User not local - will forward to another address - 用户非本地，将转发</forward-path></td></tr>"
+"  <tr><td>252</td><td>252 Cannot verify recipient, but will attempt delivery - 收件人无法验证，但将接受并尝试投递</forward-path></td></tr>"
+"  <tr><td>253</td><td>253 Message accepted for delivery (DSN) - 邮件已接受投递 (DSN)</td></tr>"
+"  <tr><td>257</td><td>257 User name is a mailbox - 用户名是邮箱地址</td></tr>"
+"</table>"
+
+msgid "glossary.smtp.3xx"
+msgstr ""
+"<h4 id='SMTP3'>3xx - 中间状态</h4>"
+"<p>这些是中间状态响应，表示服务器要求客户端提供更多信息或继续操作。</p>"
+"<table class='code-table'>"
+"  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>334</td><td>334 Authentication challenge - please respond - 认证挑战 (AUTH)</td></tr>"
+"  <tr><td>354</td><td>354 Start mail input - end with <CRLF>.<CRLF> - 开始邮件输入，以 <CRLF>.<CRLF> 结束</CRLF></td></tr>"
+"  <tr><td>355</td><td>355 Continue (LMTP) - 继续 (LMTP)</td></tr>"
 "</table>"
 
 msgid "glossary.smtp.4xx"
 msgstr ""
-"<h4 id='SMTP4'>4xx 类 - 临时错误</h4>"
+"<h4 id='SMTP4'>4xx - 临时失败（可重试）</h4>"
 "<p>这些是临时错误消息，用于告诉客户端发送方发生错误，但可以稍后重试。收到此类代码的客户端通常会将邮件保留在队列中稍后重试。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
-"  <tr><td>421</td><td>421 <domain> Service not available, closing transmission channel - 服务不可用，关闭传输通道</td></tr>"
-"  <tr><td>450</td><td>450 Requested mail action not taken: mailbox busy or access denied - 邮箱忙或访问被拒绝</td></tr>"
-"  <tr><td>451</td><td>451 Requested mail action aborted: error in processing - 处理错误，操作中止</td></tr>"
-"  <tr><td>452</td><td>452 Requested mail action not taken: insufficient system storage - 系统存储不足</td></tr>"
-"  <tr><td>453</td><td>453 Too many messages - 消息过多</td></tr>"
+"  <tr><td>421</td><td>421 Service not available - connection closing, try again later - 服务不可用，关闭传输通道</td></tr>"
+"  <tr><td>422</td><td>422 Mailbox busy or temporarily unavailable (Exchange) - 邮箱忙或暂时不可用 (Exchange)</td></tr>"
+"  <tr><td>423</td><td>423 Connection rate limit exceeded (Postfix) - 连接速率限制超出 (Postfix)</td></tr>"
+"  <tr><td>424</td><td>424 Too many concurrent connections (Postfix) - 并发连接过多 (Postfix)</td></tr>"
+"  <tr><td>425</td><td>425 Unable to establish connection (Postfix) - 无法建立连接 (Postfix)</td></tr>"
+"  <tr><td>426</td><td>426 Connection timed out (Postfix) - 连接超时 (Postfix)</td></tr>"
+"  <tr><td>427</td><td>427 Connection dropped due to error (Postfix) - 连接因错误中断 (Postfix)</td></tr>"
+"  <tr><td>428</td><td>428 Mailbox temporarily locked (Exchange) - 邮箱临时锁定 (Exchange)</td></tr>"
+"  <tr><td>429</td><td>429 Too many recipients (Postfix/Exim) - 收件人过多 (Postfix/Exim)</td></tr>"
+"  <tr><td>431</td><td>431 Mail server error (Exchange) - 邮件服务器错误 (Exchange)</td></tr>"
+"  <tr><td>432</td><td>432 Received loop detected (Exim) - 检测到接收循环 (Exim)</td></tr>"
+"  <tr><td>433</td><td>433 Too many hop count (Exim) - 跳数过多 (Exim)</td></tr>"
+"  <tr><td>434</td><td>434 DNS lookup failed (Postfix) - DNS 查找失败 (Postfix)</td></tr>"
+"  <tr><td>435</td><td>435 Unable to authenticate (Postfix) - 无法认证 (Postfix)</td></tr>"
+"  <tr><td>436</td><td>436 TLS handshake failed (Postfix) - TLS 握手失败 (Postfix)</td></tr>"
+"  <tr><td>437</td><td>437 SMTP protocol violation (Postfix) - SMTP 协议违规 (Postfix)</td></tr>"
+"  <tr><td>438</td><td>438 Message size exceeds limit (Exchange) - 邮件大小超出限制 (Exchange)</td></tr>"
+"  <tr><td>439</td><td>439 Message rate limit exceeded (Postfix) - 邮件速率限制超出 (Postfix)</td></tr>"
+"  <tr><td>440</td><td>440 Mailbox Quota exceeded - temporary - 邮箱配额超出（临时）</td></tr>"
+"  <tr><td>441</td><td>441 Domain not found (Postfix) - 域名未找到 (Postfix)</td></tr>"
+"  <tr><td>442</td><td>442 Message header invalid (Postfix) - 邮件头无效 (Postfix)</td></tr>"
+"  <tr><td>443</td><td>443 Bounce loop detected (Postfix) - 检测到退信循环 (Postfix)</td></tr>"
+"  <tr><td>444</td><td>444 Unable to route (Postfix) - 无法路由 (Postfix)</td></tr>"
+"  <tr><td>445</td><td>445 Sender domain not found (Postfix) - 发件人域名未找到 (Postfix)</td></tr>"
+"  <tr><td>446</td><td>446 Recipient domain not found (Postfix) - 收件人域名未找到 (Postfix)</td></tr>"
+"  <tr><td>447</td><td>447 Greylisting in progress (Postgrey) - 灰名单处理中 (Postgrey)</td></tr>"
+"  <tr><td>448</td><td>448 Spam filtering in progress (SpamAssassin) - 垃圾邮件过滤中 (SpamAssassin)</td></tr>"
+"  <tr><td>449</td><td>449 Virus scanning in progress (ClamAV) - 病毒扫描中 (ClamAV)</td></tr>"
+"  <tr><td>450</td><td>450 Mailbox unavailable - try again later - 请求的邮件操作未执行：邮箱不可用</td></tr>"
+"  <tr><td>451</td><td>451 Requested action aborted - error in processing - 请求的邮件操作中止：处理错误</td></tr>"
+"  <tr><td>452</td><td>452 Insufficient system storage - try again later - 请求的邮件操作未执行：系统存储不足</td></tr>"
+"  <tr><td>453</td><td>453 Too many messages for this recipient (Exchange) - 此收件人邮件过多 (Exchange)</td></tr>"
+"  <tr><td>454</td><td>454 TLS not available (Postfix) - TLS 不可用 (Postfix)</td></tr>"
+"  <tr><td>455</td><td>455 Server unable to accept messages (Postfix) - 服务器无法接收邮件 (Postfix)</td></tr>"
+"  <tr><td>456</td><td>456 Temporary failure in DNS lookup (Exim) - DNS 查找临时失败 (Exim)</td></tr>"
+"  <tr><td>457</td><td>457 Quota exceeded - temporary - 配额超出（临时）</td></tr>"
+"  <tr><td>458</td><td>458 Message too big - temporary - 邮件过大（临时）</td></tr>"
+"  <tr><td>459</td><td>459 Too many messages per connection - 每连接邮件过多</td></tr>"
+"  <tr><td>460</td><td>460 Load average too high (Postfix) - 负载过高 (Postfix)</td></tr>"
+"  <tr><td>461</td><td>461 Connection refused (Postfix) - 连接被拒绝 (Postfix)</td></tr>"
+"  <tr><td>462</td><td>462 Send rate limit exceeded (Postfix) - 发送速率限制超出 (Postfix)</td></tr>"
+"  <tr><td>463</td><td>463 Recipient rate limit exceeded (Postfix) - 收件人速率限制超出 (Postfix)</td></tr>"
+"  <tr><td>464</td><td>464 Sender rate limit exceeded (Postfix) - 发件人速率限制超出 (Postfix)</td></tr>"
+"  <tr><td>465</td><td>465 IP address rate limit exceeded (Postfix) - IP 地址速率限制超出 (Postfix)</td></tr>"
+"  <tr><td>466</td><td>466 MX lookup failed (Postfix) - MX 查找失败 (Postfix)</td></tr>"
+"  <tr><td>467</td><td>467 A record lookup failed (Postfix) - A 记录查找失败 (Postfix)</td></tr>"
+"  <tr><td>468</td><td>468 PTR record lookup failed (Postfix) - PTR 记录查找失败 (Postfix)</td></tr>"
+"  <tr><td>469</td><td>469 Greylisting active - please try again (Postgrey) - 灰名单激活中 (Postgrey)</td></tr>"
+"  <tr><td>470</td><td>470 DNSBL lookup temporary failure - DNSBL 查询临时失败</td></tr>"
+"  <tr><td>471</td><td>471 RHSBL lookup temporary failure - RHSBL 查询临时失败</td></tr>"
+"  <tr><td>472</td><td>472 DKIM verification temporary failure - DKIM 验证临时失败</td></tr>"
+"  <tr><td>473</td><td>473 SPF verification temporary failure - SPF 验证临时失败</td></tr>"
+"  <tr><td>474</td><td>474 DMARC verification temporary failure - DMARC 验证临时失败</td></tr>"
+"  <tr><td>475</td><td>475 Greylisting: try again later - 灰名单：请稍后重试</td></tr>"
+"  <tr><td>476</td><td>476 DDoS protection active, try again later - DDoS 防护已激活，请稍后重试</td></tr>"
+"  <tr><td>477</td><td>477 SMTP policy violation (temporary) - SMTP 策略违规（临时）</td></tr>"
+"  <tr><td>478</td><td>478 Temporary error in RCPT TO processing - RCPT TO 处理临时错误</td></tr>"
+"  <tr><td>479</td><td>479 Temporary error in MAIL FROM processing - MAIL FROM 处理临时错误</td></tr>"
+"  <tr><td>480</td><td>480 Temporary error in EHLO/HELO processing - EHLO/HELO 处理临时错误</td></tr>"
+"  <tr><td>481</td><td>481 Temporary error in DATA processing - DATA 处理临时错误</td></tr>"
+"  <tr><td>482</td><td>482 Temporary error - service busy - 临时错误 - 服务繁忙</td></tr>"
+"  <tr><td>483</td><td>483 Rate limit exceeded (per sender) - 速率限制超出（按发件人）</td></tr>"
+"  <tr><td>484</td><td>484 Rate limit exceeded (per recipient) - 速率限制超出（按收件人）</td></tr>"
+"  <tr><td>485</td><td>485 Rate limit exceeded (per domain) - 速率限制超出（按域名）</td></tr>"
+"  <tr><td>486</td><td>486 Rate limit exceeded (per IP) - 速率限制超出（按 IP）</td></tr>"
+"  <tr><td>487</td><td>487 Content filter temporary failure - 内容过滤器临时失败</td></tr>"
+"  <tr><td>488</td><td>488 Antivirus scanner temporary failure - 防病毒扫描器临时失败</td></tr>"
+"  <tr><td>489</td><td>489 Spam filter temporary failure - 垃圾邮件过滤器临时失败</td></tr>"
+"  <tr><td>490</td><td>490 Milter temporary failure - Milter 临时失败</td></tr>"
+"  <tr><td>491</td><td>491 Policy service temporary failure - 策略服务临时失败</td></tr>"
+"  <tr><td>492</td><td>492 DNS temporary failure - DNS 临时失败</td></tr>"
+"  <tr><td>493</td><td>493 Routing temporary failure - 路由临时失败</td></tr>"
+"  <tr><td>494</td><td>494 Delivery temporary failure - 投递临时失败</td></tr>"
+"  <tr><td>495</td><td>495 Queue temporary failure - 队列临时失败</td></tr>"
+"  <tr><td>496</td><td>496 Storage temporary failure - 存储临时失败</td></tr>"
+"  <tr><td>497</td><td>497 Authentication service temporary failure - 认证服务临时失败</td></tr>"
+"  <tr><td>498</td><td>498 Authorization service temporary failure - 授权服务临时失败</td></tr>"
+"  <tr><td>499</td><td>499 Temporary failure - please try again later - 临时失败 - 请稍后重试</td></tr>"
 "</table>"
 
 msgid "glossary.smtp.5xx"
 msgstr ""
-"<h4 id='SMTP5'>5xx 类 - 永久错误</h4>"
+"<h4 id='SMTP5'>5xx - 永久失败（不重试）</h4>"
 "<p>这些是永久错误代码。邮件传输已完全失败，不会再次尝试。</p>"
 "<table class='code-table'>"
 "  <tr><th>代码</th><th>说明</th></tr>"
-"  <tr><td>500</td><td>500 Syntax error, command unrecognized or command line too long - 语法错误，命令无法识别或命令行过长</td></tr>"
+"  <tr><td>500</td><td>500 Syntax error - command unrecognized or too long - 语法错误，命令无法识别或命令行过长</td></tr>"
 "  <tr><td>501</td><td>501 Syntax error in parameters or arguments - 参数或参数语法错误</td></tr>"
 "  <tr><td>502</td><td>502 Command not implemented - 命令未实现</td></tr>"
-"  <tr><td>503</td><td>503 Server encountered bad sequence of commands - 服务器遇到错误的命令序列</td></tr>"
+"  <tr><td>503</td><td>503 Bad sequence of commands - 命令顺序错误</td></tr>"
 "  <tr><td>504</td><td>504 Command parameter not implemented - 命令参数未实现</td></tr>"
-"  <tr><td>521</td><td>521 <domain> does not accept mail or closing transmission channel - 不接受邮件或关闭传输通道</td></tr>"
-"  <tr><td>530</td><td>530 Access denied - 访问被拒绝</td></tr>"
-"  <tr><td>550</td><td>550 Requested mail action not taken (Relaying not allowed, Unknown recipient user, ...) - 请求的邮件操作未执行（不允许中继、未知收件人等）</td></tr>"
-"  <tr><td>551</td><td>551 User not local: please try <forward-path> or Invalid Address: Relay request denied - 用户非本地，请尝试转发路径或无效地址：中继请求被拒绝</td></tr>"
-"  <tr><td>552</td><td>552 Requested mail action aborted: exceeded storage allocation - 超出存储分配，操作中止</td></tr>"
-"  <tr><td>553</td><td>553 Requested mail action not taken: mailbox name not allowed - 邮箱名称不允许，操作未执行</td></tr>"
-"  <tr><td>554</td><td>554 Requested mail action rejected: access denied - 请求的邮件操作被拒绝：访问被拒绝</td></tr>"
-"  <tr><td>557</td><td>557 Too many duplicate messages - 重复消息过多</td></tr>"
+"  <tr><td>505</td><td>505 Version not supported (ESMTP) - 版本不支持 (ESMTP)</td></tr>"
+"  <tr><td>506</td><td>506 Mailbox path invalid (LMTP) - 邮箱路径无效 (LMTP)</td></tr>"
+"  <tr><td>507</td><td>507 Too many commands in this session (Postfix) - 此会话中命令过多 (Postfix)</td></tr>"
+"  <tr><td>508</td><td>508 Recipient limit exceeded (Postfix) - 收件人限制超出 (Postfix)</td></tr>"
+"  <tr><td>509</td><td>509 Sender limit exceeded (Postfix) - 发件人限制超出 (Postfix)</td></tr>"
+"  <tr><td>510</td><td>510 Domain limit exceeded (Postfix) - 域名限制超出 (Postfix)</td></tr>"
+"  <tr><td>511</td><td>511 Mailbox does not exist (Exchange) - 邮箱不存在 (Exchange)</td></tr>"
+"  <tr><td>512</td><td>512 DNS failure - permanent - DNS解析失败（永久）</td></tr>"
+"  <tr><td>513</td><td>513 Address type not supported (Postfix) - 地址类型不支持 (Postfix)</td></tr>"
+"  <tr><td>514</td><td>514 Unable to open mailbox (Postfix) - 无法打开邮箱 (Postfix)</td></tr>"
+"  <tr><td>515</td><td>515 Mailbox locked - permanent - 邮箱被锁定（永久）</td></tr>"
+"  <tr><td>516</td><td>516 Message rejected due to policy (Exchange) - 消息因策略被拒绝 (Exchange)</td></tr>"
+"  <tr><td>517</td><td>517 Content rejected - permanent - 内容被拒绝（永久）</td></tr>"
+"  <tr><td>518</td><td>518 Attachment type not allowed - 附件类型不允许</td></tr>"
+"  <tr><td>519</td><td>519 Message encoding not supported - 消息编码不支持</td></tr>"
+"  <tr><td>520</td><td>520 Sender domain does not exist - permanent - 发件人域名不存在（永久）</td></tr>"
+"  <tr><td>521</td><td>521 Domain does not accept mail or is closing - 域名不接受邮件或关闭传输通道</td></tr>"
+"  <tr><td>522</td><td>522 Recipient domain does not exist - permanent - 收件人域名不存在（永久）</td></tr>"
+"  <tr><td>523</td><td>523 Mailbox quota exceeded - permanent - 邮箱配额超出（永久）</td></tr>"
+"  <tr><td>524</td><td>524 Message size exceeds limit - permanent - 消息大小超出限制（永久）</td></tr>"
+"  <tr><td>525</td><td>525 Authentication required (Sendmail) - 需要认证 (Sendmail)</td></tr>"
+"  <tr><td>526</td><td>526 Authentication failed (Sendmail) - 认证失败 (Sendmail)</td></tr>"
+"  <tr><td>527</td><td>527 Authentication mechanism not supported - 认证机制不支持</td></tr>"
+"  <tr><td>528</td><td>528 Authentication credentials invalid - 认证凭据无效</td></tr>"
+"  <tr><td>529</td><td>529 Authentication account expired - 认证账户已过期</td></tr>"
+"  <tr><td>530</td><td>530 Access denied - authentication required - 访问被拒绝（需要认证）</td></tr>"
+"  <tr><td>531</td><td>531 Access denied (Sendmailism) - 访问被拒绝 (Sendmail)</td></tr>"
+"  <tr><td>532</td><td>532 Access denied - not authenticated - 访问被拒绝：未认证</td></tr>"
+"  <tr><td>533</td><td>533 Access denied - account locked - 访问被拒绝：账户已锁定</td></tr>"
+"  <tr><td>534</td><td>534 Access denied - account disabled - 访问被拒绝：账户已禁用</td></tr>"
+"  <tr><td>535</td><td>535 Authentication failed - 认证失败 (AUTH)</td></tr>"
+"  <tr><td>536</td><td>536 Authentication required for relay (Postfix) - 中继需要认证 (Postfix)</td></tr>"
+"  <tr><td>537</td><td>537 Authentication failed for relay (Postfix) - 中继认证失败 (Postfix)</td></tr>"
+"  <tr><td>538</td><td>538 Encryption required (STARTTLS) - 需要加密 (STARTTLS)</td></tr>"
+"  <tr><td>539</td><td>539 TLS required for this recipient - 此收件人需要TLS</td></tr>"
+"  <tr><td>540</td><td>540 Encryption strength insufficient - 加密强度不足</td></tr>"
+"  <tr><td>541</td><td>541 Certificate validation failed - 证书验证失败</td></tr>"
+"  <tr><td>542</td><td>542 Invalid TLS certificate - 无效的TLS证书</td></tr>"
+"  <tr><td>543</td><td>543 TLS protocol version not supported - TLS协议版本不支持</td></tr>"
+"  <tr><td>544</td><td>544 Cipher suite not supported - 密码套件不支持</td></tr>"
+"  <tr><td>545</td><td>545 Access denied - no valid recipient - 访问被拒绝：无有效收件人</td></tr>"
+"  <tr><td>546</td><td>546 Access denied - no valid sender - 访问被拒绝：无有效发件人</td></tr>"
+"  <tr><td>547</td><td>547 Access denied - domain not allowed - 访问被拒绝：域名不允许</td></tr>"
+"  <tr><td>548</td><td>548 Access denied - IP address blocked (permanent) - 访问被拒绝：IP地址被阻止（永久）</td></tr>"
+"  <tr><td>549</td><td>549 Access denied - sender domain blacklisted - 访问被拒绝：发件人域名黑名单</td></tr>"
+"  <tr><td>550</td><td>550 Mailbox unavailable - try again later - 请求的邮件操作未执行：邮箱不可用</td></tr>"
+"  <tr><td>551</td><td>551 User not local: please try <forward-path> - 用户非本地：请尝试转发路径</td></tr>"
+"  <tr><td>552</td><td>552 Requested action aborted - exceeded storage allocation - 请求的邮件操作中止：超出存储分配</td></tr>"
+"  <tr><td>553</td><td>553 Mailbox name not allowed - 请求的邮件操作未执行：邮箱名称不允许</td></tr>"
+"  <tr><td>554</td><td>554 Requested action rejected - access denied - 请求的邮件操作被拒绝：访问被拒绝</td></tr>"
+"  <tr><td>555</td><td>555 MAIL FROM/RCPT TO parameters not recognized - MAIL FROM/RCPT TO参数无法识别</td></tr>"
+"  <tr><td>556</td><td>556 Domain not allowed to send (DMARC reject) - 域名不允许发送 (DMARC拒绝)</td></tr>"
+"  <tr><td>557</td><td>557 Too many duplicate messages - permanent - 重复消息过多（永久）</td></tr>"
+"  <tr><td>558</td><td>558 Sender address rejected - domain not in SPF - 发件人地址被拒绝：域名不在SPF中</td></tr>"
+"  <tr><td>559</td><td>559 Sender address rejected - DKIM verification failed - 发件人地址被拒绝：DKIM验证失败</td></tr>"
+"  <tr><td>560</td><td>560 Sender address rejected - DMARC policy reject - 发件人地址被拒绝：DMARC策略拒绝</td></tr>"
+"  <tr><td>561</td><td>561 Recipient address rejected - DMARC policy reject - 收件人地址被拒绝：DMARC策略拒绝</td></tr>"
+"  <tr><td>562</td><td>562 Message rejected due to spam content - 消息因垃圾邮件内容被拒绝</td></tr>"
+"  <tr><td>563</td><td>563 Message rejected due to virus detected - 消息因检测到病毒被拒绝</td></tr>"
+"  <tr><td>564</td><td>564 Message rejected due to malicious content - 消息因恶意内容被拒绝</td></tr>"
+"  <tr><td>565</td><td>565 Message rejected due to phishing detection - 消息因检测到钓鱼被拒绝</td></tr>"
+"  <tr><td>566</td><td>566 Message rejected due to malware detection - 消息因检测到恶意软件被拒绝</td></tr>"
+"  <tr><td>567</td><td>567 Message rejected due to policy - permanent - 消息因策略被拒绝（永久）</td></tr>"
+"  <tr><td>568</td><td>568 Message rejected due to content filtering - 消息因内容过滤被拒绝</td></tr>"
+"  <tr><td>569</td><td>569 Message rejected due to reputation - 消息因信誉被拒绝</td></tr>"
+"  <tr><td>570</td><td>570 Access denied: access_map violation - 访问被拒绝：access_map违规</td></tr>"
+"  <tr><td>571</td><td>571 Access denied: SMTP client listed in RBL - 访问被拒绝：SMTP客户端在RBL中</td></tr>"
+"  <tr><td>572</td><td>572 Access denied: Relay not authorized - 访问被拒绝：中继未授权</td></tr>"
+"  <tr><td>573</td><td>573 Access denied - unknown SMTP client hostname - 访问被拒绝：未知SMTP客户端主机名</td></tr>"
+"  <tr><td>574</td><td>574 Access denied: Bad syntax for client HELO hostname - 访问被拒绝：客户端HELO主机名语法错误</td></tr>"
+"  <tr><td>575</td><td>575 Access denied: SMTP client hostname rejected - 访问被拒绝：SMTP客户端主机名被拒绝</td></tr>"
+"  <tr><td>576</td><td>576 Access denied: Unknown domain for sender or recipient - 访问被拒绝：发件人或收件人域名未知</td></tr>"
+"  <tr><td>577</td><td>577 Access denied: Unknown client HELO hostname - 访问被拒绝：未知客户端HELO主机名</td></tr>"
+"  <tr><td>578</td><td>578 Access denied: Invalid domain (not FQDN) - 访问被拒绝：无效域名（非FQDN）</td></tr>"
+"  <tr><td>579</td><td>579 Access denied: Domain not qualified - 访问被拒绝：域名不合格</td></tr>"
+"  <tr><td>580</td><td>580 Access denied: Mail server misconfigured - 访问被拒绝：邮件服务器配置错误</td></tr>"
+"  <tr><td>581</td><td>581 Access denied: Open relay not allowed - 访问被拒绝：开放中继不允许</td></tr>"
+"  <tr><td>582</td><td>582 Access denied: Proxy not allowed - 访问被拒绝：代理不允许</td></tr>"
+"  <tr><td>583</td><td>583 Access denied: Dynamic IP not allowed - 访问被拒绝：动态IP不允许</td></tr>"
+"  <tr><td>584</td><td>584 Access denied: Residential IP not allowed - 访问被拒绝：住宅IP不允许</td></tr>"
+"  <tr><td>585</td><td>585 Access denied: VPN/Tor detected - 访问被拒绝：检测到VPN/Tor</td></tr>"
+"  <tr><td>586</td><td>586 Access denied: Spamhaus DROP listed - 访问被拒绝：Spamhaus DROP列表</td></tr>"
+"  <tr><td>587</td><td>587 Access denied: URL listed in URIBL - 访问被拒绝：URL在URIBL中</td></tr>"
+"  <tr><td>588</td><td>588 Access denied: Domain in RHSBL - 访问被拒绝：域名在RHSBL中</td></tr>"
+"  <tr><td>589</td><td>589 Access denied: IP in DNSWL? (policy) - 访问被拒绝：IP在DNSWL中？(策略)</td></tr>"
+"  <tr><td>590</td><td>590 Delivery failed: Mailbox not found - 投递失败：邮箱未找到</td></tr>"
+"  <tr><td>591</td><td>591 Delivery failed: Recipient not local - 投递失败：收件人非本地</td></tr>"
+"  <tr><td>592</td><td>592 Delivery failed: Recipient rejected - 投递失败：收件人被拒绝</td></tr>"
+"  <tr><td>593</td><td>593 Delivery failed: Sender rejected - 投递失败：发件人被拒绝</td></tr>"
+"  <tr><td>594</td><td>594 Delivery failed: Relay rejected - 投递失败：中继被拒绝</td></tr>"
+"  <tr><td>595</td><td>595 Delivery failed: DNS permanent error - 投递失败：DNS永久错误</td></tr>"
+"  <tr><td>596</td><td>596 Delivery failed: MX permanent error - 投递失败：MX永久错误</td></tr>"
+"  <tr><td>597</td><td>597 Delivery failed: A record permanent error - 投递失败：A记录永久错误</td></tr>"
+"  <tr><td>598</td><td>598 Delivery failed: PTR record permanent error - 投递失败：PTR记录永久错误</td></tr>"
+"  <tr><td>599</td><td>599 Delivery failed: Policy permanent error - 投递失败：策略永久错误</td></tr>"
 "</table>"
 
-#==============================================================================
+msgid "glossary.smtp.6xx"
+msgstr ""
+"<h4 id='SMTP6'>6xx - 协议状态（DSN 送达状态通知）</h4>"
+"<p>这些是 RFC 2034 定义的送达状态通知代码，用于详细说明邮件投递状态。</p>"
+"<table class='code-table'>"
+"  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>600</td><td>600 DSN: Success (Delivery Status Notification) - DSN：成功（投递状态通知）</td></tr>"
+"  <tr><td>601</td><td>601 DSN: Delivery delayed - DSN：投递延迟</td></tr>"
+"  <tr><td>602</td><td>602 DSN: Delivery failed (permanent) - DSN：投递失败（永久）</td></tr>"
+"  <tr><td>603</td><td>603 DSN: Delivery failed (temporary) - DSN：投递失败（临时）</td></tr>"
+"  <tr><td>604</td><td>604 DSN: Message expired - DSN：消息过期</td></tr>"
+"  <tr><td>605</td><td>605 DSN: Message bounced - DSN：消息退回</td></tr>"
+"  <tr><td>606</td><td>606 DSN: Message discarded - DSN：消息丢弃</td></tr>"
+"  <tr><td>607</td><td>607 DSN: Message filtered - DSN：消息过滤</td></tr>"
+"  <tr><td>608</td><td>608 DSN: Message quarantined - DSN：消息隔离</td></tr>"
+"  <tr><td>609</td><td>609 DSN: Message held for review - DSN：消息待审核</td></tr>"
+"</table>"
+
+msgid "glossary.smtp.7xx"
+msgstr ""
+"<h4 id='SMTP7'>7xx - 安全状态（MTA-STS, DANE, TLS）</h4>"
+"<p>这些是 MTA-STS、DANE、TLS 等安全协议相关的状态码。</p>"
+"<table class='code-table'>"
+"  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>700</td><td>700 MTA-STS policy required - 需要MTA-STS策略</td></tr>"
+"  <tr><td>701</td><td>701 MTA-STS policy validation failed - MTA-STS策略验证失败</td></tr>"
+"  <tr><td>702</td><td>702 TLS reporting required - 需要TLS报告</td></tr>"
+"  <tr><td>703</td><td>703 TLS report requested - 已请求TLS报告</td></tr>"
+"  <tr><td>704</td><td>704 SMTP MTA Strict Transport Security active - SMTP MTA严格传输安全已激活</td></tr>"
+"  <tr><td>705</td><td>705 DANE validation required - 需要DANE验证</td></tr>"
+"  <tr><td>706</td><td>706 DANE validation failed - DANE验证失败</td></tr>"
+"  <tr><td>707</td><td>707 TLSA record missing - TLSA记录缺失</td></tr>"
+"  <tr><td>708</td><td>708 Certificate name mismatch - 证书名称不匹配</td></tr>"
+"  <tr><td>709</td><td>709 Certificate expired - 证书已过期</td></tr>"
+"</table>"
+
+msgid "glossary.smtp.8xx"
+msgstr ""
+"<h4 id='SMTP8'>8xx - 认证状态</h4>"
+"<p>这些是 SMTP 认证相关的状态码，指示需要何种认证机制或认证失败原因。</p>"
+"<table class='code-table'>"
+"  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>800</td><td>800 AUTH LOGIN required - 需要AUTH LOGIN</td></tr>"
+"  <tr><td>801</td><td>801 AUTH PLAIN required - 需要AUTH PLAIN</td></tr>"
+"  <tr><td>802</td><td>802 AUTH CRAM-MD5 required - 需要AUTH CRAM-MD5</td></tr>"
+"  <tr><td>803</td><td>803 AUTH DIGEST-MD5 required - 需要AUTH DIGEST-MD5</td></tr>"
+"  <tr><td>804</td><td>804 AUTH GSSAPI required - 需要AUTH GSSAPI</td></tr>"
+"  <tr><td>805</td><td>805 AUTH NTLM required - 需要AUTH NTLM</td></tr>"
+"  <tr><td>806</td><td>806 AUTH SCRAM required - 需要AUTH SCRAM</td></tr>"
+"  <tr><td>807</td><td>807 AUTH OAUTHBEARER required - 需要AUTH OAUTHBEARER</td></tr>"
+"  <tr><td>808</td><td>808 AUTH XOAUTH2 required - 需要AUTH XOAUTH2</td></tr>"
+"</table>"
+
+msgid "glossary.smtp.9xx"
+msgstr ""
+"<h4 id='SMTP9'>9xx - 应用特定（Exchange, Postfix, Sendmail, Exim）</h4>"
+"<p>这些是特定邮件服务器的扩展状态码，用于诊断特定 MTA 的问题。</p>"
+"<table class='code-table'>"
+"  <tr><th>代码</th><th>说明</th></tr>"
+"  <tr><td>900</td><td>900 Exchange: Mailbox database error - Exchange：邮箱数据库错误</td></tr>"
+"  <tr><td>901</td><td>901 Exchange: Store driver error - Exchange：存储驱动程序错误</td></tr>"
+"  <tr><td>902</td><td>902 Exchange: Transport agent error - Exchange：传输代理错误</td></tr>"
+"  <tr><td>903</td><td>903 Exchange: Content conversion error - Exchange：内容转换错误</td></tr>"
+"  <tr><td>904</td><td>904 Exchange: Routing error - Exchange：路由错误</td></tr>"
+"  <tr><td>905</td><td>905 Exchange: Mail flow stalled - Exchange：邮件流停滞</td></tr>"
+"  <tr><td>906</td><td>906 Exchange: Shadow redundancy error - Exchange：影子冗余错误</td></tr>"
+"  <tr><td>907</td><td>907 Exchange: Safety net error - Exchange：安全网错误</td></tr>"
+"  <tr><td>908</td><td>908 Exchange: Queue database error - Exchange：队列数据库错误</td></tr>"
+"  <tr><td>909</td><td>909 Exchange: Message throttled - Exchange：消息被限流</td></tr>"
+"  <tr><td>910</td><td>910 Postfix: Bounce queue error - Postfix：退回队列错误</td></tr>"
+"  <tr><td>911</td><td>911 Postfix: Deferred queue error - Postfix：延迟队列错误</td></tr>"
+"  <tr><td>912</td><td>912 Postfix: Hold queue error - Postfix：保持队列错误</td></tr>"
+"  <tr><td>913</td><td>913 Postfix: Incoming queue error - Postfix：接收队列错误</td></tr>"
+"  <tr><td>914</td><td>914 Postfix: Active queue error - Postfix：活动队列错误</td></tr>"
+"  <tr><td>915</td><td>915 Postfix: Corrupted queue file - Postfix：队列文件损坏</td></tr>"
+"  <tr><td>916</td><td>916 Sendmail: Queue runner error - Sendmail：队列运行器错误</td></tr>"
+"  <tr><td>917</td><td>917 Sendmail: Alias database error - Sendmail：别名数据库错误</td></tr>"
+"  <tr><td>918</td><td>918 Sendmail: Virtuser table error - Sendmail：虚拟用户表错误</td></tr>"
+"  <tr><td>919</td><td>919 Sendmail: Mailer definition error - Sendmail：邮件程序定义错误</td></tr>"
+"  <tr><td>920</td><td>920 Exim: Router configuration error - Exim：路由器配置错误</td></tr>"
+"  <tr><td>921</td><td>921 Exim: Transport configuration error - Exim：传输配置错误</td></tr>"
+"  <tr><td>922</td><td>922 Exim: Director configuration error - Exim：定向器配置错误</td></tr>"
+"  <tr><td>923</td><td>923 Exim: Retry configuration error - Exim：重试配置错误</td></tr>"
+"  <tr><td>924</td><td>924 Exim: Rewrite configuration error - Exim：重写配置错误</td></tr>"
+"  <tr><td>925</td><td>925 Exim: Authentication configuration error - Exim：认证配置错误</td></tr>"
+"  <tr><td>926</td><td>926 Exim: ACL configuration error - Exim：ACL配置错误</td></tr>"
+"  <tr><td>927</td><td>927 Exim: Local_scan configuration error - Exim：本地扫描配置错误</td></tr>"
+"  <tr><td>928</td><td>928 Exim: Lookup configuration error - Exim：查找配置错误</td></tr>"
+"  <tr><td>929</td><td>929 Exim: Expansion configuration error - Exim：扩展配置错误</td></tr>"
+"</table>"
+
+#------------------------------------------------------------------------------
 # 文档 - 许可证 / 版权
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.license.title"
 msgstr "⚖️ AWStats 许可证 / 版权"
@@ -6099,13 +8325,10 @@ msgstr "因此您应遵循“自由软件 - Copyleft - GPL”的原则，了解 
 msgid "license.chart.title"
 msgstr "📊 许可证分类与权限对照表"
 
-#------------------------------------------------------------------------------
-# 表格头部
-#------------------------------------------------------------------------------
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 许可证表格
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "license.table.header"
 msgstr ""
@@ -6542,9 +8765,9 @@ msgstr "<p>别忘了，“免费”软件所指的是使用与分发的“自由
 msgid "license.date"
 msgstr "<div class='license-date'>* 许可证表已于2026年3月14日更新，补充了现代开源协议并更新了软件示例</div>"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 日志分析论文
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.loganalysispaper.title"
 msgstr "📄 网站统计获取指南"
@@ -6867,9 +9090,9 @@ msgstr ""
 "<a href='http://www.nlc-bnc.ca/publications/1/p1-256-f.html' target='_blank' rel='noopener noreferrer'>法文版</a>。</p>"
 "（以上相关链接由于年代久远已失效，建议搜索相关主题）"
 
-#==============================================================================
+#------------------------------------------------------------------------------
 # 文档 - 安全建议
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.security.title"
 msgstr "🔒 AWStats 安全建议"
@@ -6935,6 +9158,22 @@ msgstr ""
 "<p>然后，检查配置文件中的 <a href='awstats_config.html#SaveDatabaseFilesWithPermissionsForEveryone'>SaveDatabaseFilesWithPermissionsForEveryone</a> 参数设置为 0。</p>"
 "<p>如果 config/domain1 的 AWStats 数据库文件/目录是读保护的，只有授权用户才能查看 config/domain1 的统计信息。"
 "如果它们是写保护的，只有授权用户才能更新 config/domain1 的统计信息。</p>"
+"<p class='tip-box'>💡 <strong>特别提示：</strong>如果你使用 HestiaCP 控制面板，以下操作可以一键完成！不需要去单独配置</p>"
+"<h2 id='hestia'>🚀 HestiaCP 集成方案</h2>"
+"<p><strong style='color: var(--accent)'>如果你使用 HestiaCP 控制面板：</strong></p>"
+"<p>HestiaCP 内置了 AWStats 支持，你只需在域名设置中勾选“启用统计”即可自动配置：</p>"
+"<pre><code># HestiaCP 自动完成以下操作\n"
+"1. 生成 AWStats 配置文件到 /home/user/conf/web/domain/awstats.conf\n"
+"2. 创建软链接到 /etc/awstats/awstats.domain.conf\n"
+"3. 将域名加入统计更新队列\n"
+"4. 立即生成首次统计报表</code></pre>"
+"<p><strong>启用访问限制（密码保护）：</strong></p>"
+"<p><strong>查看统计：</strong> 访问 <i>https://domain.tld/vstats/</i> 即可查看统计报表。</p>"
+"<p>这种集成方式对应本文档的：</p>"
+"<ul>"
+"<li><strong>中等安全策略（策略2）</strong> - 默认情况下，统计页面可通过 Web 访问，无需密码</li>"
+"<li><strong>高度安全策略（策略1）</strong> - 添加密码保护后，只有授权用户可查看</li>"
+"</ul>"
 
 #------------------------------------------------------------------------------
 # 安全策略 2：中等安全策略
@@ -7034,9 +9273,9 @@ msgstr ""
 "<p>AWStats 提供了多种可能的使用方式，结合其所有选项/参数以及所有 Web 服务器的选项/参数和操作系统的安全功能。"
 "只需选择您需要的那一种即可...</p>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.setup.title"
 msgstr "AWStats 安装、配置和报告生成"
@@ -7044,9 +9283,9 @@ msgstr "AWStats 安装、配置和报告生成"
 msgid "docs.setup.subtitle"
 msgstr "AWStats 日志分析器 7.8 文档"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整内容块
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.setup.content"
 msgstr ""
 "<div class='setup-content'>"
@@ -7062,7 +9301,7 @@ msgstr ""
 "        <h2>I. 安装配置：使用 awstats_configure.pl</h2>"
 "        "
 "        <div class='subsection'>"
-"            <h3>A) Apache 或兼容 Web 服务器安装（Unix/Linux, Windows, MacOS...）</h3>"
+"            <h3>A Apache 或兼容 Web 服务器安装（Unix/Linux, Windows, MacOS...）</h3>"
 "            "
 "            <div class='step'>"
 "                <h4>* 步骤 1：</h4>"
@@ -7073,7 +9312,7 @@ msgstr ""
 "                <p><u>脚本会执行以下操作（如果您愿意，也可以手动完成所有这些步骤）：</u></p>"
 "                "
 "                <div class='step-detail'>"
-"                    <p><b>A)</b> awstats_configure.pl 会尝试从 Apache 配置文件 httpd.conf 中确定当前的日志格式。如果使用 <b>common</b> 日志格式，脚本会建议改为 <b>NCSA combined/XLF/ELF</b> 格式。如果回答 yes，脚本会修改 httpd.conf：</p>"
+"                    <p><b>A </b> awstats_configure.pl 会尝试从 Apache 配置文件 httpd.conf 中确定当前的日志格式。如果使用 <b>common</b> 日志格式，脚本会建议改为 <b>NCSA combined/XLF/ELF</b> 格式。如果回答 yes，脚本会修改 httpd.conf：</p>"
 "                    <p class='indent'>从<br><i>CustomLog /yourlogpath/yourlogfile common</i><br>改为<br><i>CustomLog /yourlogpath/yourlogfile combined</i></p>"
 "                </div>"
 "                "
@@ -7196,7 +9435,6 @@ msgstr ""
 "        </div>"
 "    </div>"
 ""
-"    <!-- ==================== 更新统计部分 ==================== -->"
 "    <div id='BUILD_UPDATE' class='setup-section'>"
 "        <h2>II. 处理日志：构建/更新统计数据库</h2>"
 "        "
@@ -7290,18 +9528,18 @@ msgstr ""
 ""
 "</div>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.tools.title"
 msgstr "AWStats 辅助工具"
 
 msgid "docs.tools.subtitle"
 msgstr "AWStats 日志分析器 7.8 文档"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整内容块
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.tools.content"
 msgstr ""
 "<div class='tools-content'>"
@@ -7478,18 +9716,18 @@ msgstr ""
 ""
 "</div>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.upgrade.title"
 msgstr "升级 AWStats 从旧版本"
 
 msgid "docs.upgrade.subtitle"
 msgstr "AWStats 日志分析器 7.8 文档"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整内容块
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.upgrade.content"
 msgstr ""
 "<div class='upgrade-content'>"
@@ -7586,18 +9824,18 @@ msgstr ""
 ""
 "</div>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.webmin.title"
 msgstr "AWStats Webmin 模块"
 
 msgid "docs.webmin.subtitle"
 msgstr "AWStats 日志分析器 8.1 文档"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整内容块
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.webmin.content"
 msgstr ""
 "<div class='webmin-content'>"
@@ -7612,7 +9850,6 @@ msgstr ""
 "        <li><a href='#USEMODULE'>使用 AWStats Webmin 模块</a></li>"
 "    </ul>"
 ""
-"    <!-- ==================== 添加模块 ==================== -->"
 "    <div id='ADDMODULE' class='webmin-section'>"
 "        <h2><u>将 AWStats Webmin 模块添加到 Webmin 界面</u></h2>"
 "        <ol>"
@@ -7625,7 +9862,6 @@ msgstr ""
 "        <p class='result'>完成后，您的 Webmin 菜单中应该会出现一个新的 <b>AWStats 日志分析</b> 条目。</p>"
 "    </div>"
 ""
-"    <!-- ==================== 配置模块 ==================== -->"
 "    <div id='SETUPMODULE' class='webmin-section'>"
 "        <h2><u>AWStats Webmin 模块的配置</u></h2>"
 "        <ol>"
@@ -7649,7 +9885,6 @@ msgstr ""
 "        </div>"
 "    </div>"
 ""
-"    <!-- ==================== 使用模块 ==================== -->"
 "    <div id='USEMODULE' class='webmin-section'>"
 "        <h2><u>使用 AWStats Webmin 模块</u></h2>"
 "        <ol>"
@@ -7661,192 +9896,186 @@ msgstr ""
 ""
 "</div>"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Document Metadata
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.home.title"
 msgstr "AWStats - 专业的开源日志分析工具"
 
 msgid "docs.home.subtitle"
 msgstr "实时分析 Web、FTP、邮件服务器日志，生成直观的统计报告"
 
-#=============================================================================
+#------------------------------------------------------------------------------
 # Main Content - 完整首页内容块
-#=============================================================================
+#------------------------------------------------------------------------------
 msgid "docs.home.content"
 msgstr ""
-"<div class='home-content'>"
+" <div class='home-content'>"
 ""
-"    <!-- ==================== Hero Section ==================== -->"
-"    <div class='hero-section'>"
-"        <div class='hero-content'>"
-"            <h1 class='hero-title'>了解您的网站访客</h1>"
-"            <p class='hero-description'>AWStats 是一个强大而免费的开源日志分析工具，将杂乱的服务器日志转化为清晰、直观的可视化报告，帮助您深入了解网站访客行为。</p>"
-"            <div class='hero-stats'>已处理 <span class='stat-number'>数十亿</span> 条日志记录 | <span class='stat-number'>100+</span> 国家/地区 | <span class='stat-number'>20+</span> 年技术积累</div>"
-"            <div class='hero-buttons'>"
-"                <a href='awstats_setup.html' class='button button-primary'>快速开始</a>"
-"                <a href='awstats_what1.html' class='button button-secondary'>查看演示</a>"
-"            </div>"
-"        </div>"
-"        <div class='hero-image'>"
-"            <img src='images/awstats_dashboard_preview.png' alt='AWStats 仪表盘预览' class='dashboard-preview'>"
-"        </div>"
-"    </div>"
+"     <div class='hero-section'>"
+"         <div class='hero-content'>"
+"             <h1 class='hero-title'>了解您的网站访客</h1>"
+"             <p class='hero-description'>AWStats（Advanced Web Statistics）是一个<strong>功能强大的开源日志分析器</strong>，能够为网站、FTP、邮件和流媒体服务器生成<strong>详细且直观的统计报告</strong>。它通过分析服务器日志文件，将原始数据转化为<strong>易于理解的图形化网页</strong>，帮助您深入了解访客行为，优化网站内容和营销策略。</p>"
+"             <div class='hero-stats'>✅ 自1997年发布以来持续维护 | 处理 <span class='stat-number'>数十亿</span> 条日志记录 | <span class='stat-number'>100+</span> 国家/地区使用 | <span class='stat-number'>25+</span> 年技术积累</div>"
+"             <div class='hero-buttons'>"
+"                 <a href='awstats_setup.html' class='button button-primary'>快速开始</a>"
+"                 <a href='awstats_what.html' class='button button-secondary'>了解功能</a>"
+"             </div>"
+"         </div>"
+"         <div class='hero-image'>"
+"             <img src='images/awstats_dashboard_preview.png' alt='AWStats 仪表板预览' class='dashboard-preview'>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== Features Section ==================== -->"
-"    <div class='features-section'>"
-"        <h2 class='section-title'>为什么选择 AWStats？</h2>"
-"        <p class='section-subtitle'>专业、可靠、易用——全球数百万网站的选择</p>"
+"     <div class='whatsnew-section'>"
+"         <div class='whatsnew-badge'>最新版本</div>"
+"         <h2 class='section-title'>🎉 AWStats 8.1 全新发布</h2>"
+"         <p class='version-date'>8.1 (2026-05-10)</p>"
+"         <p class='whatsnew-desc'>这是 AWStats 的一次重大更新，带来了现代化的界面、更好的用户体验和更强大的功能：</p>"
+"         <ul class='whatsnew-list'>"
+"             <li><span class='new-badge'>新</span> 📱 <b>响应式设计</b> - 采用 HTML5 标准，完美适配手机、平板和电脑</li>"
+"             <li><span class='new-badge'>新</span> 🌙 <b>深色/浅色主题</b> - 一键切换，使用 CSS 变量定义主题颜色，保护眼睛</li>"
+"             <li><span class='new-badge'>新</span> 🧭 <b>导航菜单</b> - 新增导航菜单，内置官方文档，支持多语言阅读</li>"
+"             <li><span class='new-badge'>新</span> 📖 <b>文档查看器</b> - 点击菜单链接在页面内查看文档，支持关闭按钮，无需离开当前页</li>"
+"             <li><span class='new-badge'>新</span> 🚀 <b>国际化重构</b> - 完全替换 `$Message` 为 `_t()` 函数，语言文件从 GBK 编码的 `.txt` 升级为 UTF-8 编码的 `.po` 格式，基于 gettext 标准</li>"
+"             <li><span class='new-badge'>新</span> 📋 <b>更新历史页面</b> - 新增 awstats_changelog.html，按版本分类展示完整更新历史</li>"
+"             <li><span class='new-badge'>新</span> 🌍 <b>新增翻译</b> - 新增中文简体、中文繁体、葡萄牙语（巴西）翻译</li>"
+"             <li><span class='improved-badge'>优化</span> 🛡️ <b>安全性增强</b> - 默认添加安全响应头：X-Content-Type-Options, X-Frame-Options, Referrer-Policy</li>"
+"             <li><span class='improved-badge'>优化</span> 🎨 <b>界面美化</b> - 表格样式现代化：圆角、悬停效果，国家/地区旗帜图标全面替换为 Emoji</li>"
+"             <li><span class='improved-badge'>优化</span> ⚡ <b>性能提升</b> - 优化 DNS 缓存机制，改进 try/catch 异常处理，避免 JSON 解析崩溃</li>"
+"             <li><span class='improved-badge'>优化</span> 🌐 <b>GeoIP 自动启用</b> - 若未加载任何 GeoIP 插件，自动启用 geoipfree 插件，支持 DB-IP 免费数据库</li>"
+"             <li><span class='improved-badge'>优化</span> 📡 <b>IPv6 支持</b> - 增强对 IPv6 和 CloudFlare 真实 IP 头部的支持</li>"
+"             <li><span class='improved-badge'>优化</span> ⬆️ <b>Perl 版本要求</b> - 最低版本从 5.007 提升至 5.20，启用 use warnings 和 use utf8</li>"
+"             <li><span class='improved-badge'>优化</span> 📊 <b>图表引擎重构</b> - 移除 PNG 图片依赖，改用纯 CSS 实现横向进度条和竖向柱状图</li>"
+"             <li><span class='improved-badge'>优化</span> 🖼️ <b>图标系统升级</b> - 所有 PNG 图标替换为矢量 SVG 格式，支持任意缩放和深色模式自动适配</li>"
+"             <li><span class='improved-badge'>优化</span> 🎨 <b>设备图标库升级</b> - 新增手机品牌、Linux 发行版、游戏主机、开发工具、文本浏览器等 200+ 识别</li>"
+"             <li><span class='improved-badge'>优化</span> 🕷️ <b>AI/ML 爬虫识别</b> - 新增 ClaudeBot、GPTBot、Applebot-Extended、Google-Extended、Amazonbot 等 AI 爬虫识别</li>"
+"             <li><span class='improved-badge'>优化</span> 📈 <b>下载统计重构</b> - 支持断点续传（206 状态码）识别、移动端下载统计、流媒体播放与下载智能区分</li>"
+"             <li><span class='improved-badge'>优化</span> 🔧 <b>扩展名配置外部化</b> - 下载文件和流媒体扩展名支持从配置文件读取，便于自定义</li>"
+"             <li><span class='improved-badge'>优化</span> 🔝 <b>返回顶部按钮</b> - 滚动超过 300px 自动显示，点击平滑返回顶部</li>"
+"             <li><span class='improved-badge'>优化</span> 🕐 <b>小时图表优化</b> - 24 小时独立文案，鼠标悬停显示结合 AWStats 特色与人文关怀的提示</li>"
+"             <li><span class='fix-badge'>修复</span> 🐛 <b>Bug 修复</b> - 修复未声明变量导致的编译错误，修正 Try::Tiny 语法错误，修正语言加载逻辑等</li>"
+"         </ul>"
+"         <div class='whatsnew-footer'>"
+"             <a href='awstats_changelog.html' class='button button-text'>查看完整更新历史 →</a>"
+"         </div>"
+"     </div>"
 ""
-"        <div class='features-grid'>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>📊</div>"
-"                <h3>全面的统计报告</h3>"
-"                <p>提供访客、页面、点击量、带宽、访问时长、来源网站、搜索引擎关键词等20+种详细报告，全方位了解网站运营状况。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>⚡</div>"
-"                <h3>实时更新</h3>"
-"                <p>支持命令行和浏览器两种更新方式，可集成到计划任务中，实现定时自动更新，随时查看最新统计数据。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🌐</div>"
-"                <h3>智能 DNS 解析</h3>"
-"                <p>内置 DNS 缓存机制，支持静态缓存和动态解析，可将 IP 地址转换为主机名，让访客来源更清晰。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🗺️</div>"
-"                <h3>地理位置识别</h3>"
-"                <p>自动启用 geoipfree 插件，无需额外配置即可识别访客所在国家/地区。支持 MaxMind GeoIP 数据库，提供更精确的地理位置信息。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🧩</div>"
-"                <h3>插件扩展</h3>"
-"                <p>丰富的插件系统，支持工具提示、URL别名、用户信息、集群统计、图形图表等功能，可根据需要灵活扩展。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>📄</div>"
-"                <h3>多格式支持</h3>"
-"                <p>支持 Apache（common/combined）、IIS（W3C）、WebStar、Squid 等多种日志格式，以及 FTP、邮件、流媒体服务器日志。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🌍</div>"
-"                <h3>多语言支持</h3>"
-"                <p>内置20+种语言翻译，采用现代化的 .po 格式，支持 UTF-8 编码，可根据浏览器语言自动切换界面。</p>"
-"            </div>"
-"            <div class='feature-card'>"
-"                <div class='feature-icon'>🔒</div>"
-"                <h3>安全可靠</h3>"
-"                <p>内置多种安全策略，支持用户认证和 IP 访问控制，保护您的统计数据不被未授权访问。</p>"
-"            </div>"
-"        </div>"
-"    </div>"
+"     <div class='geoip-section'>"
+"         <h2 class='section-title'>🌍 精准的地理位置识别</h2>"
+"         <p class='section-subtitle'>基于 DB-IP 免费数据库，提供国家、省、市级别的访客分布统计</p>"
+"         "
+"         <div class='geoip-features'>"
+"             <div class='geoip-feature'>"
+"                 <h4>🌍 DB-IP 城市级定位支持</h4>"
+"                 <p>集成 DB-IP 免费数据库（<a href='https://db-ip.com' target='_blank' rel='noopener noreferrer'>https://db-ip.com</a>），提供国家、地区、城市级别的精准访客分布统计</p>"
+"                 <ul>"
+"                     <li><strong>格式升级</strong>：从旧版 <code>.dat</code>（GeoIP Legacy 文本格式）升级为 <code>.mmdb</code>（MaxMind DB 二进制格式）</li>"
+"                     <li><strong>旧版痛点</strong>：<code>.dat</code> 格式查询速度慢（平均 50-100 微秒），数据不够完整（约 1MB），仅支持国家，数据多年未更新</li>"
+"                     <li><strong>新版优势</strong>：<code>.mmdb</code> 格式查询速度快 10 倍以上（平均 3-5 微秒），文件稍大（约 120MB），支持国家、地区、市级，每月更新，支持城市级别定位</li>"
+"                 </ul>"
+"             </div>"
+"             "
+"             <div class='geoip-feature'>"
+"                 <h4>📊 增强的地理位置显示</h4>"
+"                 <p>支持显示国家/地区、地区/州、市三级位置信息，智能处理未知地点</p>"
+"             </div>"
+"             "
+"             <div class='geoip-feature'>"
+"                 <h4>🚀 智能缓存机制</h4>"
+"                 <p>使用 <code>%TmpDomainLookup</code> 缓存已查询 IP，避免重复查询；使用 <code>%TmpDomainFullLocation</code> 存储完整位置信息（国家、地区、市）</p>"
+"             </div>"
+"             "
+"             <div class='geoip-feature'>"
+"                 <h4>🔧 插件自动启用</h4>"
+"                 <p>未加载任何 GeoIP 插件时自动启用 geoipfree 插件，开箱即用</p>"
+"             </div>"
+"         </div>"
+"         "
+"         <div class='geoip-note'>"
+"             <p>🎨 使用 Emoji 国旗图标，无需维护图片资源，支持深色模式自动适配</p>"
+"             <p>⚡ 基于 MaxMind DB 格式，查询速度快，内存占用低</p>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== What's New Section (8.1) ==================== -->"
-"    <div class='whatsnew-section'>"
-"        <div class='whatsnew-badge'>最新版本</div>"
-"        <h2 class='section-title'>🎉 AWStats 8.1 全新发布</h2>"
-"        <p class='version-date'>8.1 (2026-03-10)</p>"
-"        <p class='whatsnew-desc'>这是 AWStats 的一次重大更新，带来了现代化的界面、更好的用户体验和更强大的功能：</p>"
-"        <ul class='whatsnew-list'>"
-"            <li><span class='new-badge'>新</span> 📱 <b>响应式设计</b> - 采用 HTML5 标准，完美适配手机、平板和电脑</li>"
-"            <li><span class='new-badge'>新</span> 🌙 <b>深色/浅色主题</b> - 一键切换，保护眼睛，夜间使用更舒适</li>"
-"            <li><span class='new-badge'>新</span> 🧭 <b>导航菜单</b> - 内置官方文档，支持多语言阅读</li>"
-"            <li><span class='new-badge'>新</span> 📖 <b>文档查看器</b> - 点击菜单链接直接在页面内查看文档，无需离开</li>"
-"            <li><span class='new-badge'>新</span> 🚀 <b>现代化的翻译系统</b> - 采用 .po 格式和 UTF-8 编码，翻译更准确</li>"
-"            <li><span class='new-badge'>新</span> 📋 <b>更新历史页面</b> - 新增 changelog 页面，按版本分类展示</li>"
-"            <li><span class='improved-badge'>优化</span> 🛡️ <b>安全性增强</b> - 默认添加安全响应头，保护您的数据</li>"
-"            <li><span class='improved-badge'>优化</span> 🎨 <b>界面美化</b> - 圆角表格、悬停效果，图标全面替换为 emoji</li>"
-"            <li><span class='improved-badge'>优化</span> ⚡ <b>性能提升</b> - 优化 DNS 缓存，改进异常处理</li>"
-"            <li><span class='improved-badge'>优化</span> 🌐 <b>GeoIP 自动启用</b> - 无需额外配置即可识别访客国家</li>"
-"            <li><span class='improved-badge'>优化</span> 📡 <b>IPv6 支持</b> - 增强对 IPv6 和 CloudFlare 真实 IP 的支持</li>"
-"        </ul>"
-"        <div class='whatsnew-footer'>"
-"            <a href='awstats_changelog.html' class='button button-text'>查看完整更新历史 →</a>"
-"        </div>"
-"    </div>"
+"     <div class='requirements-section'>"
+"         <h2 class='section-title'>📋 系统要求</h2>"
+"         <div class='requirements-grid'>"
+"             <div class='requirements-col'>"
+"                 <h3>基本要求</h3>"
+"                 <ul>"
+"                     <li>✅ 能够访问要分析的服务器日志文件（Web/FTP/邮件）</li>"
+"                     <li>✅ Perl 5.20 或更高版本（推荐 Perl 5.32+）</li>"
+"                     <li>✅ 命令行和/或 CGI 环境</li>"
+"                 </ul>"
+"             </div>"
+"             <div class='requirements-col'>"
+"                 <h3>支持的操作系统</h3>"
+"                 <ul>"
+"                     <li>🐧 Linux/Unix（Ubuntu、Debian、CentOS、RHEL等）</li>"
+"                     <li>🪟 Windows（Windows 10/11、Windows Server）</li>"
+"                     <li>🍎 macOS</li>"
+"                     <li>🔵 FreeBSD、OpenBSD</li>"
+"                 </ul>"
+"             </div>"
+"             <div class='requirements-col'>"
+"                 <h3>支持的服务器</h3>"
+"                 <ul>"
+"                     <li>🌐 Web：Apache、Nginx、IIS、Caddy、Lighttpd</li>"
+"                     <li>📁 FTP：ProFTPd、vsFTPd、Pure-FTPd</li>"
+"                     <li>📧 邮件：Postfix、Sendmail、QMail、Exim</li>"
+"                     <li>🎥 流媒体：RealMedia、Windows Media Server</li>"
+"                 </ul>"
+"             </div>"
+"         </div>"
+"         <p class='note'>注：AWStats 8.x 采用响应式设计，在手机和平板上也能完美显示。地理位置功能需要安装 Geo::IPfree 模块和 DB-IP 数据库。</p>"
+"     </div>"
 ""
-"    <!-- ==================== Technical Excellence Section ==================== -->"
-"    <div class='technical-section'>"
-"        <h2 class='section-title'>⚙️ 技术卓越</h2>"
-"        <p class='section-subtitle'>20年技术积累，打造专业级的日志分析工具</p>"
-"        <div class='technical-grid'>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>✅</div>"
-"                <div class='technical-text'><b>成熟稳定</b> - 自2000年发布以来，持续维护更新，全球数百万网站验证</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>🚀</div>"
-"                <div class='technical-text'><b>高性能</b> - 每秒可处理数千条日志记录，支持大型网站的海量日志分析</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>🔒</div>"
-"                <div class='technical-text'><b>安全可靠</b> - 内置多种安全策略，支持用户认证和 IP 访问控制</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>📈</div>"
-"                <div class='technical-text'><b>可扩展</b> - 插件架构设计，可根据需求灵活扩展功能</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>💾</div>"
-"                <div class='technical-text'><b>数据持久化</b> - 将统计数据保存在本地数据库文件中，便于历史对比和长期分析</div>"
-"            </div>"
-"            <div class='technical-item'>"
-"                <div class='technical-check'>🔄</div>"
-"                <div class='technical-text'><b>灵活的更新方式</b> - 支持命令行和 CGI 两种模式，可集成到各种自动化流程中</div>"
-"            </div>"
-"        </div>"
-"    </div>"
+"     <div class='stats-section'>"
+"         <h2 class='section-title'>📈 适合各种规模的网站</h2>"
+"         <div class='stats-grid'>"
+"             <div class='stat-card'>"
+"                 <div class='stat-icon'>📝</div>"
+"                 <h3>个人博客/小型网站</h3>"
+"                 <p>每日更新一次，轻松了解访客来源和热门内容。轻量级运行，不影响服务器性能。</p>"
+"             </div>"
+"             <div class='stat-card'>"
+"                 <div class='stat-icon'>🏢</div>"
+"                 <h3>企业网站/电商平台</h3>"
+"                 <p>实时掌握流量变化。详细报告帮助优化营销策略和用户体验。</p>"
+"             </div>"
+"             <div class='stat-card'>"
+"                 <div class='stat-icon'>🌐</div>"
+"                 <h3>大型门户/CDN网络</h3>"
+"                 <p>可处理每月数百万访问量，支持集群日志合并分析。强大的 DNS 缓存和 GeoIP 功能。</p>"
+"             </div>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== Usage Statistics ==================== -->"
-"    <div class='stats-section'>"
-"        <h2 class='section-title'>📈 适合各种规模的网站</h2>"
-"        <div class='stats-grid'>"
-"            <div class='stat-card'>"
-"                <div class='stat-icon'>📝</div>"
-"                <h3>个人博客/小型网站</h3>"
-"                <p>每日更新一次，轻松了解访客来源和热门内容。轻量级运行，不影响服务器性能。</p>"
-"            </div>"
-"            <div class='stat-card'>"
-"                <div class='stat-icon'>🏢</div>"
-"                <h3>企业网站/电商平台</h3>"
-"                <p>每6小时更新一次，实时掌握流量变化。详细报告帮助优化营销策略和用户体验。</p>"
-"            </div>"
-"            <div class='stat-card'>"
-"                <div class='stat-icon'>🌐</div>"
-"                <h3>大型门户/CDN网络</h3>"
-"                <p>可处理每月数百万访问量，支持集群日志合并分析。强大的 DNS 缓存和 GeoIP 功能。</p>"
-"            </div>"
-"        </div>"
-"    </div>"
+"     <div class='cta-section'>"
+"         <h2 class='cta-title'>开始使用 AWStats</h2>"
+"         <p class='cta-desc'>开源免费，立即下载，几分钟内即可完成安装配置</p>"
+"         <div class='cta-buttons'>"
+"             <a href='https://github.com/hestiacn/vstats/releases/latest' class='button button-large button-primary'>下载 AWStats 8.1</a>"
+"             <a href='awstats_setup.html' class='button button-large button-secondary'>阅读文档</a>"
+"         </div>"
+"     </div>"
 ""
-"    <!-- ==================== Call to Action ==================== -->"
-"    <div class='cta-section'>"
-"        <h2 class='cta-title'>开始使用 AWStats</h2>"
-"        <p class='cta-desc'>开源免费，立即下载，几分钟内即可完成安装配置</p>"
-"        <div class='cta-buttons'>"
-"            <a href='https://www.awstats.org' class='button button-large button-primary'>下载 AWStats 8.1</a>"
-"            <a href='awstats_setup.html' class='button button-large button-secondary'>阅读文档</a>"
-"        </div>"
-"    </div>"
-""
-"    <!-- ==================== Footer ==================== -->"
-"    <div class='home-footer'>"
-"        <p>© 2000-2025 AWStats 团队 | 基于 GPL 许可证开源发布</p>"
-"        <p class='footer-links'>"
-"            <a href='awstats_what1.html'>关于我们</a> | "
-"            <a href='awstats_license.html'>许可证</a> | "
-"            <a href='awstats_contrib.html'>贡献</a> | "
-"            <a href='https://github.com/eldy/AWStats/issues'>问题反馈</a>"
-"        </p>"
-"    </div>"
+"     <div class='home-footer'>"
+"         <p>© 1997-2026 AWStats 团队 | 基于 GPL 许可证开源发布</p>"
+"         <p class='footer-links'>"
+"             <a href='awstats_what.html'>关于我们</a> | "
+"             <a href='awstats_license.html'>许可证</a> | "
+"             <a href='awstats_contrib.html'>贡献</a> | "
+"             <a href='https://github.com/hestiacn/vstats/issues'>问题反馈</a>"
+"         </p>"
+"     </div>"
 ""
 "</div>"
 
-#添加位置
-#==============================================================================
+#------------------------------------------------------------------------------
 # 更新文档 - 版本
-#==============================================================================
+#------------------------------------------------------------------------------
 
 msgid "docs.changelog.title"
 msgstr "📋 AWStats 版本更新发布记录"
@@ -7857,12 +10086,8 @@ msgstr "基于官方文档、SourceForge 记录和作者历史资料整理"
 msgid "docs.changelog.warning"
 msgstr "⚠️ AWStats 8.0 将是原作者（Laurent Destailleur）维护的最后一个版本，后续版本由社区维护。"
 
-#------------------------------------------------------------------------------
-# 版本系列标题
-#------------------------------------------------------------------------------
-
 msgid "series.8.title"
-msgstr "🚀 8.x 系列 (2024-latest)"
+msgstr "🚀 8.x 系列 (2026-latest)"
 
 msgid "series.7.title"
 msgstr "📦 7.x 系列 (2011-2023)"
@@ -7889,46 +10114,64 @@ msgid "series.early.title"
 msgstr "📜 早期开发阶段 (1995-1999)"
 
 msgid "footer.note"
-msgstr "📋 重构版本进行补充的仅供参考 • 产品演变期 → 逻辑成型期 → 引擎奠基期 → 概念萌芽期"
-
-#------------------------------------------------------------------------------
-# 8.x 系列
-#------------------------------------------------------------------------------
+msgstr "📋 社区版本进行补充的仅供参考 • 产品演变期 → 逻辑成型期 → 引擎奠基期 → 概念萌芽期"
 
 # 8.1
 msgid "changelog.8.1.date"
-msgstr "2026-03-10"
+msgstr "2026-05-10"
 
 msgid "changelog.8.1.version"
 msgstr "8.1"
 
+msgid "Community Edition"
+msgstr "社区版"
+
+msgid "Final Version (Original Author)"
+msgstr "最终版（原作者）"
+
 msgid "changelog.8.1.items"
 msgstr ""
 "<li>📱 采用 HTML5 标准，支持响应式设计</li>"
-"<li>🌙 新增深色/浅色主题切换功能</li>"
-"<li>🧭 新增导航菜单，网站部署人员可使用本土化语言查看官方文档</li>"
+"<li>🌙 新增深色/浅色主题切换功能，支持跟随系统主题</li>"
+"<li>🧭 新增导航菜单，网站部署人员可用母语查阅官方文档</li>"
 "<li>📖 新增文档查看器（iframe），点击菜单链接在页面内查看文档，支持关闭按钮</li>"
-"<li>♻️ 重构英文硬编码文档，用户可根据语言喜好阅读文档，基于官方文档利用 <a href='https://www.deepseek.com' target='_blank' rel='noopener noreferrer'>deepseek</a> 翻译。如有错误翻译，欢迎反馈至 <a href='mailto:hestiacn@tuta.io'>hestiacn@tuta.io</a></li>"
-"<li>🚀 语言文件从 GBK 编码的 .txt 格式,改为全新现代的 UTF-8 编码的 .po 格式，基于 gettext 标准，便于维护和翻译</li>"
-"<li>🛡️ 默认添加安全响应头：X-Content-Type-Options, X-Frame-Options, Referrer-Policy</li>"
-"<li>🌐 若未加载任何 GeoIP 插件，自动启用 geoipfree 插件</li>"
-"<li>⬆️ 最低 Perl 版本要求从 5.007 提升至 5.020</li>"
+"<li>♻️ 重构英文硬编码文档，实现多语言本地化。基于官方文档使用 <a href='https://www.deepseek.com' target='_blank' rel='noopener noreferrer'>DeepSeek</a> 翻译，如有错误欢迎反馈至 <a href='mailto:hestiacn@tuta.io'>hestiacn@tuta.io</a></li>"
+"<li>🚀 语言文件从 GBK 编码的 .txt 格式升级为 UTF-8 编码的 .po 格式，基于 gettext 标准，便于维护和翻译</li>"
+"<li>🛡️ 默认添加安全响应头：X-Content-Type-Options、X-Frame-Options、Referrer-Policy</li>"
+"<li>🛡️ XSS 防护全面增强：CleanXSS 新增 javascript: 协议过滤和事件处理器清理，完善 HTML 特殊字符转义</li>"
+"<li>🛡️ URL 解码安全加固：DecodeEncodedString 解码后自动调用 CleanXSS 过滤，防止解码绕过</li>"
+"<li>🛡️ 输入过滤强化：Sanitize 函数采用更严格的白名单策略</li>"
+"<li>🛡️ UTF-8 编码安全：EncodeToPageCode 增加错误捕获，编码失败时优雅降级</li>"
+"<li>🛡️ 配置文件读取标准化：统一指定 UTF-8 编码，避免编码不一致问题</li>"
+"<li>🌐 未加载任何 GeoIP 插件时自动启用 geoipfree 插件</li>"
+"<li>⬆️ 最低 Perl 版本要求从 5.007 提升至 5.20</li>"
 "<li>🔧 启用 use warnings 和 use utf8，统一 UTF-8 编码输出</li>"
-"<li>🎨 使用 CSS 变量定义主题颜色，支持一键切换</li>"
-"<li>📊 表格样式现代化：圆角、悬停效果</li>"
-"<li>😊 图标全面替换为 emoji</li>"
-"<li>⚡ 优化 DNS 缓存机制，减少重复解析</li>"
-"<li>🔄 改进 try/catch 异常处理，避免 JSON 解析崩溃</li>"
-"<li>📡 增强对 IPv6 和 CloudFlare 真实 IP 头部的支持</li>"
-"<li>📚 帮助信息更新，增加生成中文报告等示例</li>"
+"<li>🎨 使用 CSS 变量定义主题颜色，支持一键切换深色/浅色模式</li>"
+"<li>😊 旗帜图标全面替换为 Emoji，更现代轻量</li>"
+"<li>📊 图表引擎重构：移除 PNG 图片依赖，改用纯 CSS 实现横向进度条和竖向柱状图，加载更快、支持主题色自动适配</li>"
+"<li>🖼️ 图标系统全面升级：所有 PNG 图标替换为矢量 SVG 格式，适应现代化浏览器环境，支持任意缩放无锯齿，告别传统 PNG 图标在各分辨率下的显示问题</li>"
+"<li>⚡ 优化 DNS 缓存机制，减少重复解析，提升处理速度</li>"
+"<li>🔄 改进 try/catch 异常处理，避免 JSON 日志解析崩溃</li>"
+"<li>📡 增强 IPv6 和 CloudFlare 真实 IP 头部（CF-Connecting-IP）支持</li>"
 "<li>📋 新增版本更新历史页面 awstats_changelog.html，按版本分类展示</li>"
 "<li>🐛 修复未声明变量 $lang 和 $dir_attr 导致的编译错误</li>"
 "<li>🔨 修正 Try::Tiny 语法错误，确保 try/catch 正确解析</li>"
 "<li>📐 单独控制 IP 和机器人列表表格第一列宽度，避免布局变形</li>"
-"<li>🚪 文档查看器不再默认占用空白区域，点击链接后显示并增加关闭按钮</li>"
-"<li>🌏 修正语言加载逻辑，auto 模式下正确回退到英文</li>"
-"<li>📅 版权年份根据当前年份自动更新</li>"
-"<li>🧹 移除过时的 PrintCLIHelp，统一使用 print_help</li>"
+"<li>🚪 文档查看器默认不占用空白区域，点击链接后动态显示，支持关闭按钮</li>"
+"<li>📅 新增页脚版权信息区域，添加作者 Laurent Destailleur 及项目信息</li>"
+"<li>🧹 移除过时的 PrintCLIHelp，统一使用 print_help 函数，现在您可以使用 awstats.pl -h 触发帮助说明。</li>"
+"<li>🎨 操作系统/设备图标库全面升级，新增手机品牌、Linux 发行版、游戏主机、开发工具、文本浏览器等 200+ 识别</li>"
+"<li>🤖 修复 robots.pm 数据库不一致问题，确保 RobotsSearchIDOrder_listx 与 RobotsHashIDLib 条目数匹配</li>"
+"<li>🕷️ 新增 AI/ML 爬虫识别：ClaudeBot、GPTBot、OAI-SearchBot、PerplexityBot、Applebot-Extended、Google-Extended、Amazonbot、Anthropic-ai、cohere-ai、AI2Bot、YouBot 等</li>"
+"<li>📊 优化爬虫分类，区分 AI 爬虫、社交媒体爬虫、SEO 工具、监控服务</li>"
+"<li>🔧 移除重复的机器人规则（AhrefsBot、Exabot、XoviBot），消除数据库校验错误</li>"
+"<li>🎨 为各爬虫添加专属图标和友好描述，报表更直观</li>"
+"<li>📈 下载统计模块重构：支持断点续传（206 状态码）识别、移动端下载统计、流媒体播放与下载智能区分</li>"
+"<li>📦 扩展名配置外部化：下载文件和流媒体扩展名支持从配置文件读取，便于自定义</li>"
+"<li>🔝 新增返回顶部按钮：滚动超过 300px 自动显示，点击平滑返回顶部，支持深色模式和 RTL 布局</li>"
+"<li>🕐 小时图表鼠标悬停提示优化：24 小时独立文案，结合 AWStats 特色与人文关怀</li>"
+"<li>📄 配置文件注释添加简体中文说明：所有配置参数增加详细的中英文说明和示例</li>"
+"<li>🔧 优化 NotPageList 配置逻辑：新增 UseDefaultNotPageList 选项，设为 1 时自动使用内置完整静态资源列表，避免配置文件重复维护大量扩展名</li>"
 
 # 8.0
 msgid "changelog.8.0.date"
@@ -7952,11 +10195,6 @@ msgstr ""
 "<li>🗑️ 从 robots.pm 中移除原生 Android 和原生 iOS/OSX 浏览器的 User Agent</li>"
 "<li>🔧 修复 robots.pm 中 GPTBot 识别错误的问题</li>"
 "<li>🔧修复乌克兰语翻译的编码问题</li>"
-
-
-#------------------------------------------------------------------------------
-# 7.x 系列
-#------------------------------------------------------------------------------
 
 # 7.9
 msgid "changelog.7.9.date"
@@ -8219,10 +10457,6 @@ msgstr ""
 "<li>🛡️ 安全修复（LoadPlugin 目录遍历）</li>"
 "<li>🔒 安全修复（限制配置目录访问）</li>"
 
-#------------------------------------------------------------------------------
-# 6.x 系列
-#------------------------------------------------------------------------------
-
 # 6.95
 msgid "changelog.6.95.date"
 msgstr "2009-10-28"
@@ -8444,10 +10678,6 @@ msgstr ""
 "<li>📊 添加文件类型百分比列</li>"
 "<li>🔨 修复多个 bug</li>"
 
-#------------------------------------------------------------------------------
-# 5.x 系列
-#------------------------------------------------------------------------------
-
 # 5.9
 msgid "changelog.5.9.date"
 msgstr "2003-09-22"
@@ -8661,10 +10891,6 @@ msgstr ""
 "<li>🔤 添加 DecodeUA 参数</li>"
 "<li>🏷️ 添加 %WY 标签</li>"
 
-#------------------------------------------------------------------------------
-# 4.x 系列
-#------------------------------------------------------------------------------
-
 # 4.1
 msgid "changelog.4.1.date"
 msgstr "2002-07-09"
@@ -8714,10 +10940,6 @@ msgstr ""
 "<li>🔗 添加 -staticlinks 选项</li>"
 "<li>🛠️ 添加 common2combined.pl 工具</li>"
 "<li>🛠️ 添加 awstats_buildstaticpages.pl 工具</li>"
-
-#------------------------------------------------------------------------------
-# 3.x 系列
-#------------------------------------------------------------------------------
 
 # 3.2
 msgid "changelog.3.2.date"
@@ -8801,10 +11023,6 @@ msgstr ""
 "<li>🎨 修复样式问题</li>"
 "<li>🌐 添加新语言</li>"
 
-#------------------------------------------------------------------------------
-# 2.x 系列
-#------------------------------------------------------------------------------
-
 # 2.24
 msgid "changelog.2.24.date"
 msgstr "2001-03-09"
@@ -8878,10 +11096,6 @@ msgstr ""
 "<li>🖼️ 图像为 .png 格式</li>"
 "<li>🌐 4 种语言</li>"
 
-#------------------------------------------------------------------------------
-# 1.x 系列
-#------------------------------------------------------------------------------
-
 # 1.0
 msgid "changelog.1.0.date"
 msgstr "2000-05-02"
@@ -8894,10 +11108,6 @@ msgstr ""
 "<li>🎉 首次在 SourceForge 公开发布 1.0 版本</li>"
 "<li>📄 支持 Apache 日志格式</li>"
 "<li>📊 基本统计功能：访问量、页面数、文件数</li>"
-
-#------------------------------------------------------------------------------
-# 早期开发阶段 (1995-1999)
-#------------------------------------------------------------------------------
 
 msgid "changelog.early.1999.title"
 msgstr "📜 早期开发阶段 (1995-1999)"

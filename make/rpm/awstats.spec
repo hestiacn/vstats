@@ -16,8 +16,12 @@ BuildArchitectures: noarch
 BuildRoot: /tmp/%{name}-buildroot
 Group: Applications/Internet
 
-Requires: perl, perl(Time::Local), perl(Socket), perl(Encode)
-Requires: perl(JSON::XS), perl(Try::Tiny)
+# 依赖
+Requires: perl >= 1:5.020
+Requires: perl(JSON::XS)
+Requires: perl(Try::Tiny)
+Requires: wget
+Recommends: cron, httpd, ca-certificates
 AutoReqProv: yes
 
 %description
@@ -99,34 +103,197 @@ cp -pr $RPM_BUILD_DIR/%{name}-%{version}/docs/images/* $RPM_BUILD_DIR/%{name}-%{
 %install
 rm -rf $RPM_BUILD_ROOT
 
-# 创建标准目录结构
+# 创建目录
 mkdir -p $RPM_BUILD_ROOT/usr/share/awstats
+mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/icon
+mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/css
+mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/js
+mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/classes
+mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/tools
 mkdir -p $RPM_BUILD_ROOT/usr/lib/cgi-bin
+mkdir -p $RPM_BUILD_ROOT/usr/local/bin
 mkdir -p $RPM_BUILD_ROOT/etc/awstats
+mkdir -p $RPM_BUILD_ROOT/etc/cron.d
+mkdir -p $RPM_BUILD_ROOT/etc/cron.monthly
+mkdir -p $RPM_BUILD_ROOT/etc/logrotate.d
 mkdir -p $RPM_BUILD_ROOT/var/lib/awstats
 mkdir -p $RPM_BUILD_ROOT/var/log/awstats
+mkdir -p $RPM_BUILD_ROOT/usr/share/perl5/Geo
+mkdir -p $RPM_BUILD_ROOT/usr/share/doc/awstats
 
-# 批量复制所有文件
-cp -pr docs $RPM_BUILD_ROOT/usr/share/awstats/
-cp -pr wwwroot $RPM_BUILD_ROOT/usr/share/awstats/
-cp -pr tools $RPM_BUILD_ROOT/usr/share/awstats/
-cp -pr README.md $RPM_BUILD_ROOT/usr/share/awstats/
+# 创建 Apache 配置文件
+mkdir -p $RPM_BUILD_ROOT/etc/httpd/conf.d
+cat > $RPM_BUILD_ROOT/etc/httpd/conf.d/awstats.conf << 'EOF'
+Alias /awstatsclasses "/usr/share/awstats/wwwroot/classes/"
+Alias /awstatscss "/usr/share/awstats/wwwroot/css/"
+Alias /awstatsicons "/usr/share/awstats/wwwroot/icon/"
+Alias /awstatsdocs "/usr/share/doc/awstats/"
+ScriptAlias /awstats/ "/usr/share/awstats/wwwroot/cgi-bin/"
+
+<Directory "/usr/share/awstats/wwwroot">
+    Options None
+    AllowOverride None
+    Require all granted
+</Directory>
+
+<IfModule mod_env.c>
+    SetEnv PERL5LIB /usr/share/awstats/lib:/usr/share/awstats/plugins
+</IfModule>
+EOF
+
+# 复制 webmin 模块 - 使用绝对路径
+if [ -d "$RPM_BUILD_DIR/%{name}-%{version}/tools/webmin/awstats" ]; then
+    mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/tools/webmin
+    cd $RPM_BUILD_DIR/%{name}-%{version}/tools/webmin
+    tar -czf awstats-2.0.wbm awstats/
+    cp awstats-2.0.wbm $RPM_BUILD_ROOT/usr/share/awstats/tools/webmin/
+    cd $RPM_BUILD_DIR/%{name}-%{version}
+fi
+
+# 复制 MaxMind 模块到 Perl 库路径
+MAXMIND_SRC="$RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/MaxMind"
+if [ -d "$MAXMIND_SRC" ]; then
+    mkdir -p $RPM_BUILD_ROOT/usr/share/perl5/vendor_perl
+    cp -pr "$MAXMIND_SRC" $RPM_BUILD_ROOT/usr/share/perl5/vendor_perl/
+    echo "✓ Copied MaxMind module to Perl library path"
+else
+    echo "⚠ ERROR: MaxMind source directory not found at $MAXMIND_SRC"
+    echo "  Contents of $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/:"
+    ls -la $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/ || true
+    exit 1
+fi
+
+# 批量复制所有文件 - 使用绝对路径
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/docs/* $RPM_BUILD_ROOT/usr/share/doc/awstats/ 2>/dev/null || true
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/tools $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/README.md $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true
+
+# 移动 lang/lib/plugins 到正确位置
+if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lang" ]; then
+    mv $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lang $RPM_BUILD_ROOT/usr/share/awstats/lang
+fi
+if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lib" ]; then
+    mv $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lib $RPM_BUILD_ROOT/usr/share/awstats/lib
+fi
+if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/plugins" ]; then
+    mv $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/plugins $RPM_BUILD_ROOT/usr/share/awstats/plugins
+fi
+
+# 删除空目录
+rm -rf $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lang 2>/dev/null || true
+rm -rf $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lib 2>/dev/null || true
+rm -rf $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/plugins 2>/dev/null || true
 
 # 复制配置文件
-echo "Current directory: $(pwd)"
-echo "Files in wwwroot/cgi-bin:"
-ls -la wwwroot/cgi-bin/ || echo "No files found"
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/awstats.conf $RPM_BUILD_ROOT/etc/awstats/awstats.conf
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/awstats.model.conf $RPM_BUILD_ROOT/etc/awstats/awstats.model.conf
 
-# 复制配置文件（智能判断）
-cp -pr wwwroot/cgi-bin/awstats.conf $RPM_BUILD_ROOT/etc/awstats/awstats.conf
-cp -pr wwwroot/cgi-bin/awstats.model.conf $RPM_BUILD_ROOT/etc/awstats/awstats.model.conf
-
-echo "Verifying copied files:"
-ls -la $RPM_BUILD_ROOT/etc/awstats/
+# 创建空配置文件
+touch $RPM_BUILD_ROOT/etc/awstats/awstats.local.conf
 
 # 创建符号链接
 ln -sf /usr/share/awstats/wwwroot/cgi-bin/awstats.pl $RPM_BUILD_ROOT/usr/lib/cgi-bin/awstats.pl
 ln -sf /usr/share/awstats/wwwroot/cgi-bin/awredir.pl $RPM_BUILD_ROOT/usr/lib/cgi-bin/awredir.pl
+ln -sf /usr/share/awstats/wwwroot/cgi-bin/awstats-update $RPM_BUILD_ROOT/usr/lib/cgi-bin/awstats-update
+
+# 复制 IPfree 模块 - 使用绝对路径
+if [ -f $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pm ]; then
+    cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pm $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pm
+    chmod 644 $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pm
+    echo "✓ Installed Geo::IPfree module"
+fi
+
+if [ -f $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pod ]; then
+    cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pod $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pod
+    chmod 644 $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pod
+    echo "✓ Installed Geo::IPfree documentation"
+fi
+
+# 创建 CLI 包装脚本
+cat > $RPM_BUILD_ROOT/usr/local/bin/awstats << 'EOF'
+#!/bin/bash
+perl /usr/lib/cgi-bin/awstats.pl "$@"
+EOF
+chmod 755 $RPM_BUILD_ROOT/usr/local/bin/awstats
+
+# 创建 cron 任务
+cat > $RPM_BUILD_ROOT/etc/cron.d/awstats << 'EOF'
+# AWStats cron job
+# Run AWStats update daily at 1:00 AM
+0 1 * * * root [ -x /usr/share/awstats/tools/awstats_updateall.pl ] && /usr/share/awstats/tools/awstats_updateall.pl now > /dev/null 2>&1
+EOF
+
+# 创建 logrotate 配置
+cat > $RPM_BUILD_ROOT/etc/logrotate.d/awstats << 'EOF'
+/var/log/awstats/*.log {
+    weekly
+    missingok
+    rotate 52
+    compress
+    delaycompress
+    notifempty
+    create 644 root root
+    sharedscripts
+    postrotate
+        /usr/share/awstats/tools/awstats_updateall.pl now > /dev/null 2>&1 || true
+    endscript
+}
+EOF
+
+# 创建 DB-IP 数据库更新脚本
+cat > $RPM_BUILD_ROOT/etc/cron.monthly/update-dbip << 'EOF'
+#!/bin/bash
+# ------------------------------------------------------------------------------
+# Monthly DB-IP database update script
+# Runs on the 1st of each month via cron.monthly
+# Generated by AWStats, do not edit manually
+# 由 AWStats 自动生成，请勿手动编辑
+# To disable automatic updates, please delete this file
+# 若需禁用自动更新，请删除此文件
+# ------------------------------------------------------------------------------
+
+YEAR_MONTH=$(date +%Y-%m)
+DBIP_DIR="/usr/share/perl5/Geo"
+DBIP_DEST="$DBIP_DIR/dbip-city.mmdb"
+DBIP_TEMP_GZ="$DBIP_DIR/dbip-city.mmdb.tmp.gz"
+DBIP_TEMP="$DBIP_DIR/dbip-city.mmdb.tmp"
+LOG_FILE="/var/log/dbip-update.log"
+
+if [ -f "$LOG_FILE" ] && [ $(wc -l < "$LOG_FILE") -gt 30 ]; then
+    tail -n 30 "$LOG_FILE" > "$LOG_FILE.tmp"
+    mv "$LOG_FILE.tmp" "$LOG_FILE"
+fi
+
+mkdir -p "$DBIP_DIR"
+cd "$DBIP_DIR"
+
+if ! command -v wget > /dev/null 2>&1; then
+    echo "$(date): wget not installed, skipping update" >> "$LOG_FILE"
+    exit 1
+fi
+
+echo "$(date): Downloading DB-IP database for ${YEAR_MONTH}..." >> "$LOG_FILE"
+wget -q -O "$DBIP_TEMP_GZ" "https://download.db-ip.com/free/dbip-city-lite-${YEAR_MONTH}.mmdb.gz" 2>/dev/null
+
+if [ -s "$DBIP_TEMP_GZ" ]; then
+    gunzip -f "$DBIP_TEMP_GZ"
+    if [ -f "$DBIP_TEMP" ]; then
+        mv "$DBIP_TEMP" "$DBIP_DEST"
+        chmod 644 "$DBIP_DEST"
+        echo "$(date): Successfully updated to ${YEAR_MONTH}" >> "$LOG_FILE"
+        echo "✓ DB-IP database updated to ${YEAR_MONTH}"
+    else
+        echo "$(date): Gunzip failed for ${YEAR_MONTH}" >> "$LOG_FILE"
+        echo "⚠ DB-IP database decompression failed"
+    fi
+else
+    rm -f "$DBIP_TEMP_GZ"
+    echo "$(date): Download failed for ${YEAR_MONTH}" >> "$LOG_FILE"
+    echo "⚠ DB-IP database update failed"
+fi
+EOF
+chmod 755 $RPM_BUILD_ROOT/etc/cron.monthly/update-dbip
 
 #---- clean
 %clean
@@ -136,28 +303,137 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc README.md
-%doc /usr/share/awstats/docs/*
-%config /etc/awstats/awstats.conf
-%config /etc/awstats/awstats.model.conf
-/usr/share/awstats/*
-/usr/lib/cgi-bin/awstats.pl
-/usr/lib/cgi-bin/awredir.pl
+%config(noreplace) /etc/awstats/awstats.conf
+%config(noreplace) /etc/awstats/awstats.model.conf
+%config(noreplace) /etc/awstats/awstats.local.conf
+%config(noreplace) /etc/httpd/conf.d/awstats.conf
+%config(noreplace) /etc/cron.d/awstats
+%config(noreplace) /etc/logrotate.d/awstats
+%config(noreplace) /etc/cron.monthly/update-dbip
+/usr/share/doc/awstats/
+/usr/share/awstats/
+/usr/lib/cgi-bin/
+/usr/local/bin/awstats
 /var/lib/awstats
 /var/log/awstats
+/usr/share/perl5/Geo/
+/usr/share/perl5/vendor_perl/MaxMind/
 
 #---- post
 %post
-echo
-echo ----- AWStats %version - Laurent Destailleur -----
-echo AWStats files have been installed in /usr/share/awstats
-echo Configuration files are in /etc/awstats
-echo CGI scripts are in /usr/lib/cgi-bin/
-echo
-echo If first install, follow instructions in documentation
-echo \(/usr/share/awstats/docs/index.html\) to setup AWStats in 3 steps:
-echo Step 1 : Install and Setup with awstats_configure.pl \(or manually\)
-echo Step 2 : Build/Update Statistics with awstats.pl
-echo Step 3 : Read Statistics
-echo
+#!/bin/sh
+set -e
+
+case "$1" in
+    1)  # 首次安装
+        echo ""
+        echo "-----------------------------------------"
+        echo " AWStats %{version} - DB-IP Database Setup"
+        echo "-----------------------------------------"
+        echo ""
+        
+        # 创建目录
+        mkdir -p /usr/share/perl5/Geo
+        mkdir -p /var/lib/awstats
+        mkdir -p /var/log/awstats
+        chmod 755 /var/lib/awstats
+        chmod 755 /var/log/awstats
+        
+        # 确保 CGI 脚本可执行
+        if [ -f /usr/lib/cgi-bin/awstats.pl ]; then
+            chmod 755 /usr/lib/cgi-bin/awstats.pl
+        fi
+        if [ -f /usr/lib/cgi-bin/awredir.pl ]; then
+            chmod 755 /usr/lib/cgi-bin/awredir.pl
+        fi
+        
+        # 首次下载 DB-IP 数据库
+        DBIP_DEST="/usr/share/perl5/Geo/dbip-city.mmdb"
+        if [ ! -f "$DBIP_DEST" ]; then
+            echo "Downloading DB-IP City Lite database..."
+            YEAR=$(date +%Y)
+            MONTH=$(date +%m)
+            DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${YEAR}-${MONTH}.mmdb.gz"
+            DBIP_TEMP_GZ="/usr/share/perl5/Geo/dbip-city-temp.mmdb.gz"
+            
+            if command -v wget > /dev/null 2>&1; then
+                if wget -q --show-progress -O "$DBIP_TEMP_GZ" "$DBIP_URL" 2>/dev/null; then
+                    if gunzip -f "$DBIP_TEMP_GZ"; then
+                        mv /usr/share/perl5/Geo/dbip-city-temp.mmdb "$DBIP_DEST"
+                        chmod 644 "$DBIP_DEST"
+                        echo "✓ GeoIP database downloaded successfully"
+                    else
+                        echo "⚠️ Failed to decompress database"
+                    fi
+                else
+                    echo "⚠️ GeoIP database download failed"
+                    echo "  URL: $DBIP_URL"
+                    echo "  Please check internet connection"
+                fi
+            else
+                echo "⚠️ wget not installed, skipping GeoIP database download"
+            fi
+        fi
+        
+        # 设置每月自动更新脚本
+        if [ -f /etc/cron.monthly/update-dbip ]; then
+            chmod +x /etc/cron.monthly/update-dbip
+            echo "✓ Monthly GeoIP update script installed"
+        fi
+
+        # 生成 awredir.pl 随机密钥
+        if [ -f /usr/lib/cgi-bin/awredir.pl ]; then
+            if command -v openssl >/dev/null 2>&1; then
+                KEY=$(openssl rand -hex 16 2>/dev/null)
+                sed -i "s/YOURKEYFORMD5/$KEY/" /usr/lib/cgi-bin/awredir.pl
+                echo "✓ Random key generated for awredir.pl"
+            fi
+        fi
+        
+        if [ -x /usr/sbin/a2enmod ]; then
+            a2enmod cgi > /dev/null 2>&1 || true
+            if command -v systemctl >/dev/null 2>&1; then
+                systemctl try-reload-or-restart httpd >/dev/null 2>&1 || true
+            fi
+        fi
+        ;;
+esac
+
+echo ""
+echo "-----------------------------------------"
+echo " AWStats %{version} installation complete"
+echo "-----------------------------------------"
+echo ""
+echo " Main directory: /usr/share/awstats"
+echo " Configuration: /etc/awstats"
+echo " CGI scripts: /usr/lib/cgi-bin"
+echo " CLI wrapper: /usr/local/bin/awstats"
+echo ""
+echo " Web access: http://your-domain/vstats/"
+echo " Cron job: /etc/cron.d/awstats (daily at 1 AM)"
+echo " DB-IP database: /usr/share/perl5/Geo/dbip-city.mmdb"
+echo " Data directory: /var/lib/awstats"
+echo " Log directory: /var/log/awstats"
+echo ""
+echo " Monthly DB-IP update: /etc/cron.monthly/update-dbip"
+echo ""
+echo " No control panel? Try HestiaCP - https://hestiadocs.brepo.ru"
+echo " HestiaCP is designed for Red Hat series (RHEL/RockyLinux/AlmaLinux/CentOS)"
+echo " AWStats works out of the box with HestiaCP, no manual config needed."
+echo "-----------------------------------------"
+echo ""
+
+%postun
+#!/bin/sh
+if [ "$1" = "0" ]; then
+    # 卸载时清理
+    rm -f /usr/share/perl5/Geo/dbip-city.mmdb 2>/dev/null || true
+    rm -f /usr/share/perl5/Geo/dbip-city.mmdb.bak 2>/dev/null || true
+fi
 
 %changelog
+* __CHANGELOG_DATE__ Laurent Destailleur <eldy@users.sourceforge.net> %{version}-%{release}
+- Add DB-IP database support with monthly updates
+- Add city-level geolocation support
+- Add mobile device detection
+- Add download statistics with resume support

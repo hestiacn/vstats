@@ -1,0 +1,276 @@
+#!/bin/bash
+# info: update domain statistics
+# options: USER DOMAIN
+
+user=$1
+domain=$2
+domain_idn=$2
+
+# 为不同域名使用不同的日志文件名
+LOG_DIR="/var/log/awstats"
+mkdir -p "$LOG_DIR" 2>/dev/null
+chmod 755 "$LOG_DIR" 2>/dev/null
+
+LOG_FILE="$LOG_DIR/awstats-update-${domain}.log"
+> "$LOG_FILE" 2>/dev/null 
+
+log_message() {
+    local level="$1"
+    local message="$2"
+    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "[$timestamp] [$level] $message" >> "$LOG_FILE"
+}
+
+log_message "INFO" "开始更新域名 $domain 的统计信息"
+log_message "INFO" "用户: $user"
+
+#----------------------------------------------------------#
+#                    锁文件检查和清理                        #
+#----------------------------------------------------------#
+
+LOCK_FILE="/tmp/awstats-update-${domain}.lock"
+
+if [ -f "$LOCK_FILE" ]; then
+    LOCK_PID=$(cat "$LOCK_FILE" 2>/dev/null)
+    if [ -n "$LOCK_PID" ] && kill -0 "$LOCK_PID" 2>/dev/null; then
+        log_message "ERROR" "AWStats 更新进程正在运行中 (PID: $LOCK_PID, 锁文件: $LOCK_FILE)"
+        exit 1
+    else
+        log_message "WARNING" "发现残留锁文件 (PID: $LOCK_PID 已不存在)，正在清理..."
+        rm -f "$LOCK_FILE"
+        log_message "INFO" "已清理残留锁文件: $LOCK_FILE"
+    fi
+fi
+
+# 创建新的锁文件
+exec 200>"$LOCK_FILE"
+flock -n 200 || {
+    log_message "ERROR" "AWStats 更新进程正在运行中 (锁文件: $LOCK_FILE)"
+    exit 1
+}
+
+echo $$ >&200
+log_message "INFO" "获取锁文件: $LOCK_FILE (PID: $$)"
+
+trap 'rm -f "$LOCK_FILE"; exec 200>&-; log_message "INFO" "释放锁文件: $LOCK_FILE"' EXIT
+
+source /etc/hestiacp/hestia.conf
+source $HESTIA/func/main.sh
+source $HESTIA/func/domain.sh
+source_conf "$HESTIA/conf/hestia.conf"
+
+current_lang="${LANGUAGE:-en}"
+log_message "INFO" "系统语言: $current_lang"
+
+case "$current_lang" in
+    zh-cn|zh-sg)      awstats_lang="zh-cn" ;;
+    zh-tw|zh-hk|zh-mo) awstats_lang="zh-tw" ;;
+    pt-br)            awstats_lang="pt-br" ;;
+    no|nb|nn)         awstats_lang="nb" ;;
+    *)                awstats_lang=$(echo "$current_lang" | cut -c1-2) ;;
+esac
+
+# Additional argument formatting
+format_domain
+format_domain_idn
+
+#----------------------------------------------------------#
+#                    Verifications                         #
+#----------------------------------------------------------#
+
+check_args '2' "$#" 'USER DOMAIN'
+is_format_valid 'user' 'domain'
+is_system_enabled "$WEB_SYSTEM" 'WEB_SYSTEM'
+is_object_valid 'user' 'USER' "$user"
+is_object_unsuspended 'user' 'USER' "$user"
+is_object_valid 'web' 'DOMAIN' "$domain"
+is_object_unsuspended 'web' 'DOMAIN' "$domain"
+is_object_value_exist 'web' 'DOMAIN' "$domain" '$STATS'
+
+log_message "INFO" "验证通过"
+
+#----------------------------------------------------------#
+#                       Action                             #
+#----------------------------------------------------------#
+
+get_domain_values 'web'
+
+# Checking config
+config="$HOMEDIR/$user/conf/web/$domain/$STATS.conf"
+if [ ! -e "$config" ]; then
+    check_result $E_NOTEXISTS "$config doesn't exist"
+fi
+
+# Checking statistics directory
+dir="$HOMEDIR/$user/web/$domain/stats"
+if [ ! -e "$dir" ]; then
+    mkdir -p $dir
+fi
+
+#----------------------------------------------------------#
+#                 AWStats 构建函数                          #
+#----------------------------------------------------------#
+
+build_awstats() {
+    awstats="/usr/lib/cgi-bin/awstats.pl"
+    wwwroot="/usr/share/awstats"
+    
+    echo "使用 AWStats: $awstats"
+    echo "使用 WWWROOT: $wwwroot"
+    log_message "INFO" "使用 AWStats: $awstats"
+    log_message "INFO" "使用 WWWROOT: $wwwroot"
+
+    if [ ! -x "$awstats" ]; then
+        echo "错误: AWStats 不存在或不可执行: $awstats" >&2
+        log_message "ERROR" "AWStats 不存在或不可执行: $awstats"
+        return 1
+    fi
+
+    # 获取所有历史月份
+    all_months=$(find "$dir" -maxdepth 1 -type d -name "????-??" -exec basename {} \; | sort -r)
+    current_month=$(date "+%Y-%m")
+    
+    log_message "INFO" "当前月份: $current_month"
+    log_message "INFO" "历史月份目录: $all_months"
+    
+    # 确定需要处理的月份
+    if [ -n "$all_months" ]; then
+        months_to_process="$all_months"
+        if [[ ! "$all_months" =~ "$current_month" ]]; then
+            months_to_process="$current_month $months_to_process"
+            log_message "INFO" "添加当前月份到处理列表"
+        fi
+    else
+        months_to_process="$current_month"
+        log_message "INFO" "没有历史月份，只处理当前月份"
+    fi
+    
+    log_message "INFO" "将要处理的月份: $months_to_process"
+    
+    # 定义输出页面列表
+    output_pages="alldomains allhosts lasthosts unknownip allrobots lastrobots urldetail urlentry urlexit osdetail browserdetail unknownbrowser unknownos refererse refererpages keyphrases keywords errors404 downloads"
+    
+    # 循环处理每个月份
+    for month in $months_to_process; do
+        echo "处理月份: $month"
+        log_message "INFO" "开始处理月份: $month"
+        
+        year=$(echo $month | cut -d'-' -f1)
+        mon=$(echo $month | cut -d'-' -f2)
+        data_file="$dir/awstats${mon}${year}.${domain_idn}.txt"
+        
+        # 检查数据文件是否存在
+        if [ ! -f "$data_file" ]; then
+            echo "数据文件不存在，执行首次更新（不使用 -databasepath）"
+            log_message "INFO" "数据文件不存在，执行首次更新"
+            
+            # 首次更新：不使用 -databasepath，让 AWStats 创建数据文件
+            if $awstats -config="$domain_idn" -lang="$awstats_lang" -year="$year" -month="$mon" -update >> "$LOG_FILE" 2>&1; then
+                log_message "INFO" "首次更新成功: $month"
+                # 更新文件权限
+                if [ -f "$data_file" ]; then
+                    chown $user:$(groups "$user" | cut -f 3 -d ' ') "$data_file" 2>/dev/null
+                fi
+                if [ -f "${data_file}.bak" ]; then
+                    chown $user:$(groups "$user" | cut -f 3 -d ' ') "${data_file}.bak" 2>/dev/null
+                fi
+            else
+                log_message "ERROR" "首次更新失败: $month"
+                continue
+            fi
+        else
+            echo "数据文件已存在，执行增量更新（使用 -databasepath）"
+            log_message "INFO" "数据文件已存在，执行增量更新"
+            
+            # 增量更新：使用 -databasepath
+            if $awstats -config="$domain_idn" -lang="$awstats_lang" -year="$year" -month="$mon" -update -databasepath="$data_file" >> "$LOG_FILE" 2>&1; then
+                log_message "INFO" "增量更新成功: $month"
+                chown $user:$(groups "$user" | cut -f 3 -d ' ') "$data_file" 2>/dev/null
+                if [ -f "${data_file}.bak" ]; then
+                    chown $user:$(groups "$user" | cut -f 3 -d ' ') "${data_file}.bak" 2>/dev/null
+                fi
+            else
+                log_message "ERROR" "增量更新失败: $month"
+                continue
+            fi
+        fi
+        
+        # 创建月份目录
+        mkdir -p "$dir/$month"
+        
+		# Docs directory check
+		if [ ! -e "$dir/docs" ]; then
+		    ln -s /usr/share/doc/awstats/html/ "$dir/docs" 2>/dev/null
+		    chown -h $user:$(groups "$user" | cut -f 3 -d ' ') "$dir/docs" 2>/dev/null
+		fi
+		
+		# Icon directory check
+		if [ ! -e "$dir/icon" ]; then
+		    ln -s "$wwwroot/icon" "$dir/icon" 2>/dev/null
+		fi
+		
+		# Logo file check
+		if [ ! -e "$dir/logo.svg" ]; then
+		    ln -s "$HESTIA/web/images/logo.svg" "$dir/logo.svg" 2>/dev/null
+		fi
+        
+        # 生成主统计页面
+        echo "生成主页面..."
+        log_message "INFO" "生成主页面: $month"
+        
+        if $awstats -config="$domain_idn" -lang="$awstats_lang" -year="$year" -month="$mon" -staticlinks -output -databasepath="$data_file" -dir="$dir" > "$dir/$month/index.html.tmp" 2>/dev/null; then
+            sed -i "s%awstats.$domain.%%g" "$dir/$month/index.html.tmp"
+            mv "$dir/$month/index.html.tmp" "$dir/$month/index.html"
+            echo "✓ 主页面生成成功"
+            log_message "INFO" "主页面生成成功: $month"
+        else
+            echo "✗ 主页面生成失败"
+            log_message "ERROR" "主页面生成失败: $month"
+            rm -f "$dir/$month/index.html.tmp"
+        fi
+        
+        # 生成补充统计页面
+        for format in $output_pages; do
+            echo "生成: $format"
+            log_message "INFO" "生成页面: $format - $month"
+            
+            if $awstats -config="$domain_idn" -lang="$awstats_lang" -year="$year" -month="$mon" -staticlinks -output="$format" -databasepath="$data_file" -dir="$dir" > "$dir/$month/${format}.html.tmp" 2>/dev/null; then
+                sed -i "s%awstats.$domain.%%g" "$dir/$month/${format}.html.tmp"
+                mv "$dir/$month/${format}.html.tmp" "$dir/$month/${format}.html"
+                echo "  ✓ 成功"
+                log_message "INFO" "页面生成成功: $format"
+            else
+                echo "  ✗ 失败（可能没有数据）"
+                log_message "WARNING" "页面生成失败: $format (可能没有数据)"
+                rm -f "$dir/$month/${format}.html.tmp"
+            fi
+        done
+        
+        log_message "INFO" "完成处理月份: $month"
+    done
+    
+    # 创建导航页面
+    if [ -f "$WEBTPL/awstats/nav.tpl" ]; then
+        months=$(find "$dir" -maxdepth 1 -type d -name "????-??" -exec basename {} \; | sort -r)
+        $awstats -config="$domain_idn" -lang="$awstats_lang" -dir="$dir" -months="$months" -generate-nav 2>/dev/null
+        log_message "INFO" "生成导航页面"
+    fi
+    
+    echo "AWStats 更新完成"
+    log_message "INFO" "AWStats 更新完成"
+}
+
+# Switching on statistics type
+case $STATS in
+	awstats) build_awstats ;;
+esac
+
+# Chown
+groups=$(groups "$user" | cut -f 3 -d ' ')
+chown -R $user:$groups "$dir"
+
+#----------------------------------------------------------#
+#                       Hestia                             #
+#----------------------------------------------------------#
+
+exit

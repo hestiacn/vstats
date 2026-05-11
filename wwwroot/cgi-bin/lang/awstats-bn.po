@@ -1,0 +1,3288 @@
+# AWStats Bengali (bn) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Bengali\n"
+"Language: bn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#------------------------------------------------------------------------------
+# মাসের নাম
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "জানুয়ারি"
+
+msgid "month_02"
+msgstr "ফেব্রুয়ারি"
+
+msgid "month_03"
+msgstr "মার্চ"
+
+msgid "month_04"
+msgstr "এপ্রিল"
+
+msgid "month_05"
+msgstr "মে"
+
+msgid "month_06"
+msgstr "জুন"
+
+msgid "month_07"
+msgstr "জুলাই"
+
+msgid "month_08"
+msgstr "আগস্ট"
+
+msgid "month_09"
+msgstr "সেপ্টেম্বর"
+
+msgid "month_10"
+msgstr "অক্টোবর"
+
+msgid "month_11"
+msgstr "নভেম্বর"
+
+msgid "month_12"
+msgstr "ডিসেম্বর"
+
+#------------------------------------------------------------------------------
+# সপ্তাহের দিনের নাম
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "রবিবার"
+
+msgid "DayOfWeek_1"
+msgstr "সোমবার"
+
+msgid "DayOfWeek_2"
+msgstr "মঙ্গলবার"
+
+msgid "DayOfWeek_3"
+msgstr "বুধবার"
+
+msgid "DayOfWeek_4"
+msgstr "বৃহস্পতিবার"
+
+msgid "DayOfWeek_5"
+msgstr "শুক্রবার"
+
+msgid "DayOfWeek_6"
+msgstr "শনিবার"
+
+#------------------------------------------------------------------------------
+# ব্যবহারকারী ইন্টারফেস উপাদান
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "এর জন্য উন্নত ওয়েব পরিসংখ্যান"
+
+msgid "Statistics for"
+msgstr "এর জন্য পরিসংখ্যান"
+
+msgid "main"
+msgstr "সামগ্রিক দৃশ্য"
+
+msgid "Switch to light mode"
+msgstr "হালকা মোডে স্যুইচ করুন"
+
+msgid "Switch to dark mode"
+msgstr "অন্ধকার মোডে স্যুইচ করুন"
+
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "বাইট"
+
+msgid "Filter"
+msgstr "ফিল্টার"
+
+msgid "Exclude filter"
+msgstr "ফিল্টার বাদ দিন"
+
+msgid "Top"
+msgstr "শীর্ষ"
+
+msgid "Full list"
+msgstr "সম্পূর্ণ তালিকা"
+
+msgid "Last"
+msgstr "সর্বশেষ"
+
+msgid "Average"
+msgstr "গড়"
+
+msgid "Export"
+msgstr "রপ্তানি করুন"
+
+msgid "Details"
+msgstr "বিবরণ"
+
+msgid "Version"
+msgstr "সংস্করণ"
+
+msgid "thousands_separator"
+msgstr ","
+
+msgid "dateformat_long"
+msgstr "dd/MM/yyyy HH:MM:SS"
+
+msgid "dateformat_short"
+msgstr "dd/MM/yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "%s সাল"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# নেভিগেশন বার
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "AWStats মাস নির্বাচক"
+
+msgid "nav_category_basic"
+msgstr "মৌলিক ডকুমেন্টেশন"
+
+msgid "nav_category_guide"
+msgstr "ব্যবহার নির্দেশিকা"
+
+msgid "nav_category_reference"
+msgstr "রেফারেন্স সম্পদ"
+
+msgid "nav_category_integration"
+msgstr "একীকরণ এবং এক্সটেনশন"
+
+msgid "nav_category_dev"
+msgstr "ডেভেলপার ডকুমেন্টেশন"
+
+msgid "nav_changelog"
+msgstr "পরিবর্তন লগ"
+
+msgid "nav_what"
+msgstr "AWStats কি"
+
+msgid "nav_license"
+msgstr "লাইসেন্স"
+
+msgid "nav_glossary"
+msgstr "শব্দকোষ"
+
+msgid "nav_setup"
+msgstr "ইনস্টলেশন এবং কনফিগারেশন"
+
+msgid "nav_upgrade"
+msgstr "আপগ্রেড নির্দেশিকা"
+
+msgid "nav_config"
+msgstr "কনফিগারেশন পরামিতি"
+
+msgid "nav_extra"
+msgstr "অতিরিক্ত অংশ"
+
+msgid "nav_tools"
+msgstr "অন্যান্য সরঞ্জাম"
+
+msgid "nav_faq"
+msgstr "ঘনঘন জিজ্ঞাসিত প্রশ্ন"
+
+msgid "nav_security"
+msgstr "নিরাপত্তা সুপারিশ"
+
+msgid "nav_compare"
+msgstr "তুলনা"
+
+msgid "nav_benchmark"
+msgstr "বেঞ্চমার্ক"
+
+msgid "nav_webmin"
+msgstr "Webmin মডিউল"
+
+msgid "nav_dolibarr"
+msgstr "Dolibarr মডিউল"
+
+msgid "nav_contrib"
+msgstr "অবদানকারী সম্পদ"
+
+msgid "nav_plugins"
+msgstr "প্লাগইন উন্নয়ন"
+
+msgid "nav_hooks"
+msgstr "প্লাগইন হুক"
+
+msgid "nav_graphs"
+msgstr "প্লাগইন গ্রাফ"
+
+msgid "Back to top"
+msgstr "শীর্ষে ফিরে যান"
+
+msgid "nav_select_month"
+msgstr "মাস নির্বাচন করুন"
+
+#------------------------------------------------------------------------------
+# প্রধান সূচক
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "স্বতন্ত্র দর্শক"
+
+msgid "Visits"
+msgstr "দর্শন সংখ্যা"
+
+msgid "Visits duration"
+msgstr "দর্শন সময়কাল"
+
+msgid "First visit"
+msgstr "প্রথম আপডেট"
+
+msgid "Last visit"
+msgstr "শেষ আপডেট"
+
+msgid "Visits/Visitor"
+msgstr "দর্শন/দর্শক"
+
+msgid "Pages/Visit"
+msgstr "পৃষ্ঠা/দর্শন"
+
+msgid "Hits/Visit"
+msgstr "অনুরোধ/দর্শন"
+
+msgid "KB/Visit"
+msgstr "কিলোবাইট/দর্শন"
+
+msgid "KB/Visits"
+msgstr "কিলোবাইট/দর্শন সংখ্যা"
+
+msgid "Pages"
+msgstr "পৃষ্ঠার সংখ্যা"
+
+msgid "Hits"
+msgstr "অনুরোধের সংখ্যা"
+
+msgid "Bandwidth"
+msgstr "ব্যান্ডউইথ"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "সেকেন্ড"
+
+msgid "unit_min"
+msgstr "মিনিট"
+
+msgid "unit_h"
+msgstr "ঘন্টা"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "ডিভাইসের ধরন"
+
+msgid "Device Type"
+msgstr "ডিভাইসের ধরন"
+
+msgid "Percent"
+msgstr "শতাংশ"
+
+msgid "Mobile"
+msgstr "মোবাইল ফোন"
+
+msgid "Pause & Go"
+msgstr "থামুন এবং চালিয়ে যান"
+
+msgid "Complete"
+msgstr "সম্পূর্ণ"
+
+msgid "Tablet"
+msgstr "ট্যাবলেট"
+
+msgid "Tv"
+msgstr "টেলিভিশন"
+
+msgid "Wearable"
+msgstr "পরিধানযোগ্য ডিভাইস"
+
+msgid "Bot"
+msgstr "বট"
+
+msgid "Desktop"
+msgstr "ডেস্কটপ"
+
+msgid "Normal browsing traffic"
+msgstr "স্বাভাবিক ব্রাউজিং ট্রাফিক"
+
+msgid "Abnormal browsing traffic"
+msgstr "অস্বাভাবিক ব্রাউজিং ট্রাফিক"
+
+msgid "Viewed"
+msgstr "দেখা হয়েছে"
+
+msgid "Not viewed"
+msgstr "দেখা হয়নি"
+
+msgid "Abnormal browsing traffic note"
+msgstr "অস্বাভাবিক ব্রাউজিং ট্রাফিকের অন্তর্ভুক্ত: সার্চ বট, এআই প্রশিক্ষণ বট, দুর্বলতা স্ক্যানার এবং HTTP/HTTPS মানগুলির সাথে সঙ্গতিপূর্ণ নয় এমন অনুরোধ"
+
+msgid "File size"
+msgstr "ফাইলের আকার"
+
+msgid "File type"
+msgstr "ফাইলের ধরন"
+
+msgid "Downloads"
+msgstr "ডাউনলোড"
+
+msgid "Request time"
+msgstr "অনুরোধের সময়"
+
+msgid "Total requests"
+msgstr "মোট অনুরোধ"
+
+msgid "Frequency"
+msgstr "ফ্রিকোয়েন্সি"
+
+msgid "Average frequency"
+msgstr "গড় ফ্রিকোয়েন্সি"
+
+msgid "Seconds"
+msgstr "সেকেন্ড"
+
+msgid "First"
+msgstr "প্রথম"
+
+msgid "Mails"
+msgstr "ইমেইলের সংখ্যা"
+
+msgid "Size"
+msgstr "আকার"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "সতর্কতা: এই ফাইলটি মুছে ফেললে তারিখের সমস্ত পরিসংখ্যান"
+
+msgid "will be lost/reset."
+msgstr "স্থায়ীভাবে হারিয়ে যাবে/রিসেট হবে!"
+
+msgid "Last config file used to build this data file was"
+msgstr "এই ডেটা ফাইল তৈরি করতে ব্যবহৃত শেষ কনফিগারেশন ফাইলটি ছিল"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "এই ফাইলের MAP বিভাগটি প্রতিটি বিভাগের শুরুর জন্য বাইট অফসেট অবস্থান রেকর্ড করে যাতে"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "AWStats সরাসরি ডেটা অ্যাক্সেস করতে পারে। আপনি যদি এই ফাইলের কোথাও পরিবর্তন করেন তবে আপনার"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "MAP বিভাগটি সম্পূর্ণরূপে মুছে ফেলুন (AWStats পরবর্তী আপডেটে এটি পুনরায় লিখবে)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = শেষ প্রক্রিয়াকৃত রেকর্ডের তারিখ - শেষ লগে শেষ রেকর্ডের লাইন নম্বর - শেষ লগে শেষ রেকর্ডের অফসেট - শেষ রেকর্ডের স্বাক্ষর মান"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = ইতিহাস ফাইলের জন্য প্রথম দর্শনের তারিখ"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = ইতিহাস ফাইলের জন্য শেষ দর্শনের তারিখ"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = শেষ আপডেটের তারিখ - পার্স করা রেকর্ডের সংখ্যা - পার্স করা পুরানো রেকর্ডের সংখ্যা - পার্স করা নতুন রেকর্ডের সংখ্যা - পার্স করা দূষিতের সংখ্যা - পার্স করা বাতিলের সংখ্যা"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = দর্শনের সংখ্যা"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = স্বতন্ত্র দর্শকের সংখ্যা"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = পরিচিত হোস্টের সংখ্যা"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = অজানা হোস্টের সংখ্যা"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "ক্লাস্টার আইডি - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা - ব্যান্ডউইথ"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "ঘন্টা - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা - ব্যান্ডউইথ - না দেখা পৃষ্ঠা - না দেখা অনুরোধ - না দেখা ব্যান্ডউইথ"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "তারিখ - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা - ব্যান্ডউইথ - দর্শন"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "ডোমেইন - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা - ব্যান্ডউইথ"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "মূল পৃষ্ঠা শুধুমাত্র %s শীর্ষ পৃষ্ঠা দেখাবে, অনুগ্রহ করে বিস্তারিত পৃষ্ঠায় সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "হোস্ট - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা - ব্যান্ডউইথ - শেষ দর্শনের সময় - [শেষ দর্শনের শুরু সময়] - [শেষ দর্শনের শেষ পৃষ্ঠা]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "[শেষ দর্শনের শুরু সময়] এবং [শেষ দর্শনের শেষ পৃষ্ঠা] শুধুমাত্র সেশন শেষ না হলে সংরক্ষণ করা হয়"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "মূল পৃষ্ঠা শুধুমাত্র %s শীর্ষ অনুরোধ আইটেম দেখাবে, অনুগ্রহ করে বিস্তারিত পৃষ্ঠায় সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "লগইন করা ব্যবহারকারী - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা - ব্যান্ডউইথ - শেষ দর্শনের সময়"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "রোবট আইডি - অনুরোধের সংখ্যা - ব্যান্ডউইথ - শেষ দর্শনের সময় - robots.txt অনুরোধ"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "কৃমি আইডি - অনুরোধের সংখ্যা - ব্যান্ডউইথ - শেষ দর্শনের সময়"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "ইমেইল - অনুরোধের সংখ্যা - ব্যান্ডউইথ - শেষ দর্শনের সময়"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "মূল পৃষ্ঠা শুধুমাত্র %s শীর্ষ ইমেইল অনুরোধ দেখাবে, অনুগ্রহ করে বিস্তারিত পৃষ্ঠায় সম্পূর্ণ তালিকা দেখুন"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - পৃষ্ঠার সংখ্যা - ব্যান্ডউইথ - প্রবেশ - প্রস্থান"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "ফাইলের ধরন - অনুরোধের সংখ্যা - ব্যান্ডউইথ - সংকোচনের আগে ব্যান্ডউইথ - সংকোচনের পরে ব্যান্ডউইথ"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "অনুরোধ সময়ের পরিসর - অনুরোধ সময়ের ফ্রিকোয়েন্সি"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "ফাইলের আকারের পরিসর - ফাইলের সংখ্যা"
+
+msgid "Session range - Number of visits"
+msgstr "সেশনের সময়কালের পরিসর - দর্শনের সংখ্যা"
+
+msgid "URL with %s errors - Hits"
+msgstr "%s ত্রুটি সহ URL - অনুরোধের সংখ্যা"
+
+msgid "Last URL referrer"
+msgstr "শেষ URL রেফারার"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "ত্রুটি - অনুরোধের সংখ্যা - ব্যান্ডউইথ"
+
+msgid "Search keywords - Number of search"
+msgstr "কীওয়ার্ড - অনুসন্ধানের সংখ্যা"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "মূল পৃষ্ঠা শুধুমাত্র %s শীর্ষ কীওয়ার্ড দেখায় (অনুসন্ধান সংখ্যা অনুসারে সাজানো)। অনুগ্রহ করে বিস্তারিত পৃষ্ঠায় সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Search keyphrases - Number of search"
+msgstr "কীওয়ার্ড বাক্যাংশ - অনুসন্ধানের সংখ্যা"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "মূল পৃষ্ঠা শুধুমাত্র %s শীর্ষ কীওয়ার্ড বাক্যাংশ দেখায় (অনুসন্ধান সংখ্যা অনুসারে সাজানো)। অনুগ্রহ করে বিস্তারিত পৃষ্ঠায় সম্পূর্ণ তালিকা দেখুন"
+
+msgid "External page referers - Pages - Hits"
+msgstr "বাহ্যিক পৃষ্ঠা রেফারার - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "মূল পৃষ্ঠা শুধুমাত্র %s শীর্ষ বাহ্যিক রেফারার দেখায় (পৃষ্ঠার সংখ্যা অনুসারে সাজানো)। অনুগ্রহ করে বিস্তারিত পৃষ্ঠায় সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "সার্চ ইঞ্জিন রেফারার আইডি - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা"
+
+msgid "Origin - Pages - Hits"
+msgstr "উৎস - পৃষ্ঠার সংখ্যা - অনুরোধের সংখ্যা"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "অজানা রেফারার ব্রাউজার - শেষ দর্শনের সময়"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "অজানা রেফারার অপারেটিং সিস্টেম - শেষ দর্শনের সময়"
+
+msgid "Screen size - Hits"
+msgstr "স্ক্রিন রেজোলিউশন - অনুরোধের সংখ্যা"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ব্রাউজার আইডি - ক্লিকের সংখ্যা - পৃষ্ঠার সংখ্যা"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "ডাউনলোড - অনুরোধের সংখ্যা - ব্যান্ডউইথ"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "প্রোটোকল - অনুরোধের সংখ্যা - ব্যান্ডউইথ"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "আইকনের অবস্থা - ধরন:200:404:অন্যান্য"
+
+#------------------------------------------------------------------------------
+# সময়কাল অনুবাদ
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "মধ্যরাত · AWStats সবাই ঘুমিয়ে পড়েছে, তুমি এখনও ডেটা দেখছ? সত্যিকারের ভালোবাসা"
+
+msgid "period_01"
+msgstr "সকাল ১টা · এই সময়ে দর্শন? ঘুম আসছে না নাকি সবেমাত্র কাজ শেষ করেছ"
+
+msgid "period_02"
+msgstr "সকাল ২টা · বট তোমার চেয়েও পরিশ্রমী, এটা এখনও কাজ করছে"
+
+msgid "period_03"
+msgstr "সকাল ৩টা · শহর ঘুমিয়ে পড়েছে, সার্ভার ওভারটাইম করছে, কে খারাপ?"
+
+msgid "period_04"
+msgstr "সকাল ৪টা · অন্ধকারের সবচেয়ে উজ্জ্বল তারা, তোমার স্ক্রিন নাকি সার্ভার নির্দেশক বাতি"
+
+msgid "period_05"
+msgstr "সকাল ৫টা · তাড়াতাড়ি ওঠা পাখি পোকা খায়, তাড়াতাড়ি ওঠা বট ডেটা সংগ্রহ করে"
+
+msgid "period_06"
+msgstr "সকাল ৬টা · কেউ ঘুম থেকে ওঠে, কেউ এখনও ঘুমায়নি, ইন্টারনেট কখনও বন্ধ হয় না"
+
+msgid "period_07"
+msgstr "সকাল ৭টা · ট্রেনে ভিড়ের সময়, ওয়েব ব্রাউজ করার সময়ও"
+
+msgid "period_08"
+msgstr "সকাল ৮টা · কাজ শুরু করার সময় প্রথম কাজ: গতকালের ডেটা দেখা"
+
+msgid "period_09"
+msgstr "সকাল ৯টা · সোনালী সময়, কাজ ফাঁকি দেওয়ারও নিয়ম আছে"
+
+msgid "period_10"
+msgstr "সকাল ১০টা · কফির সময়, ট্রাফিক বেড়েছে কিনা দেখ"
+
+msgid "period_11"
+msgstr "সকাল ১১টা · আর এক ঘন্টা পরে খাবারের সময়, আর একটু ধৈর্য ধর"
+
+msgid "period_12"
+msgstr "দুপুর · সার্ভার: তোমরা সবাই খেতে গেলে, আমি немного বিশ্রাম নিই"
+
+msgid "period_13"
+msgstr "দুপুর ১টা · খাওয়ার পরে ঘুম পায়, কিন্তু ডেটা ঘুমায় না"
+
+msgid "period_14"
+msgstr "দুপুর ২টা · চায়ের সময়"
+
+msgid "period_15"
+msgstr "দুপুর ৩টা · আজকের ট্রাফিক প্রবণতা গ্রাফ, তোমার আবেগ গ্রাফের মতো না?"
+
+msgid "period_16"
+msgstr "দুপুর ৪টা · আরও X ঘন্টা পরে কাজ শেষ হবে, ট্রাফিক দৌড় শুরু করে"
+
+msgid "period_17"
+msgstr "সন্ধ্যা ৫টা · কাজ শেষ! কিন্তু সার্ভারকে এখনও কাজ করতে হবে"
+
+msgid "period_18"
+msgstr "সন্ধ্যা ৬টা · রাতের খাবারের সময়, একটু ভিডিও দেখ, আরাম কর"
+
+msgid "period_19"
+msgstr "রাত ৭টা · সোনালী সময়, ট্রাফিক বেড়ে যায়, সার্ভার: আমি সহ্য করতে পারি"
+
+msgid "period_20"
+msgstr "রাত ৮টা · সোফায় শুয়ে, তুমি দর্শক সংখ্যা ১১৪৫১৪"
+
+msgid "period_21"
+msgstr "রাত ৯টা · শান্ত রাত, লুকিয়ে ডেটা দেখার রাতের পেঁচা +১"
+
+msgid "period_22"
+msgstr "রাত ১০টা · আজকের ডেটা আসতে চলেছে, উত্তেজিত?"
+
+msgid "period_23"
+msgstr "রাত ১১টা · AWStats: ঘুমানোর সময় হয়েছে, কাল আবার কাজ করতে হবে"
+
+#------------------------------------------------------------------------------
+# সময় মাত্রা
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "পরিসংখ্যান সময়কাল"
+
+msgid "Year"
+msgstr "বছর"
+
+msgid "Month"
+msgstr "মাস"
+
+msgid "Months"
+msgstr "মাস"
+
+msgid "Date"
+msgstr "তারিখ"
+
+msgid "Day"
+msgstr "দিন"
+
+msgid "Hour"
+msgstr "ঘন্টা"
+
+msgid "Hours"
+msgstr "ঘন্টা"
+
+msgid "Day of week"
+msgstr "সপ্তাহের দিন"
+
+msgid "When"
+msgstr "কখন"
+
+msgid "%s Server Management Panel"
+msgstr "%s  সার্ভার ব্যবস্থাপনা প্যানেল"
+
+msgid "Server Administration"
+msgstr "সরল ও কার্যকর সার্ভার সমাধান"
+
+#------------------------------------------------------------------------------
+# দর্শকের মাত্রা
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "অবৈধ URL প্যারামিটার"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "অবৈধ বা ভুল ফরম্যাটের URL প্যারামিটারের কারণে অনুরোধকৃত পৃষ্ঠাটি লোড করা যায়নি।"
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "এটি ভুল URL টাইপ করা, অনুপস্থিত প্যারামিটার সেপারেটর, বা অবৈধ কনফিগারেশন নাম ব্যবহার করার কারণে হতে পারে।"
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "আপনি যে URL টি entered করেছেন তা পরীক্ষা করুন এবং নিশ্চিত করুন যে সমস্ত প্যারামিটার সঠিকভাবে ফরম্যাট করা আছে।"
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "আপনার কনফিগ/ডোমেইন ফাইলে SiteDomain প্যারামিটারটি সংজ্ঞায়িত নেই, অথবা ফাইলটিতে এক্সিকিউট করার অনুমতি আপনার নাও থাকতে পারে।"
+
+msgid "Please run as Administrator to set permissions"
+msgstr "অনুমতি সেট করতে দয়া করে অ্যাডমিনিস্ট্রেটর হিসেবে চালান।"
+
+msgid "Please set execute permission"
+msgstr "দয়া করে এক্সিকিউট অনুমতি সেট করুন।"
+
+msgid "Or if you prefer numeric mode"
+msgstr "অথবা যদি আপনি নিউমেরিক মোড পছন্দ করেন"
+
+msgid "View Report Directly"
+msgstr "সরাসরি প্রতিবেদন দেখুন"
+
+msgid "AWStats Log Viewer"
+msgstr "AWStats লগ দর্শক"
+
+msgid "Month Selection"
+msgstr "মাস নির্বাচন"
+
+msgid "Who"
+msgstr "কে"
+
+msgid "Visitors"
+msgstr "দর্শক"
+
+msgid "Countries"
+msgstr "দেশ/অঞ্চল"
+
+msgid "flag_icon"
+msgstr "জাতীয় পতাকা"
+
+msgid "Country-Region-City"
+msgstr "দেশ/অঞ্চল/শহর"
+
+msgid "Code"
+msgstr "কোড"
+
+msgid "Known"
+msgstr "পরিচিত"
+
+msgid "unknownos"
+msgstr "অজানা অপারেটিং সিস্টেম"
+
+msgid "unknownbrowser"
+msgstr "অজানা ব্রাউজার"
+
+msgid "Unresolved IP Address"
+msgstr "অমীমাংসিত আইপি ঠিকানা"
+
+msgid "Unknown File Type"
+msgstr "অজানা ফাইলের ধরন"
+
+msgid "Unknown Size"
+msgstr "অজানা ফাইলের আকার"
+
+msgid "Unknown Time"
+msgstr "অজানা অনুরোধ সময়"
+
+msgid "Unknown Browser"
+msgstr "অজানা ব্রাউজার"
+
+msgid "Unknown OS"
+msgstr "অজানা অপারেটিং সিস্টেম"
+
+msgid "Unknown Visitor"
+msgstr "অজানা দর্শক"
+
+msgid "Unknown Visitor (Total)"
+msgstr "অজানা দর্শক (মোট)"
+
+msgid "Unknown Country"
+msgstr "অজানা দেশ/অঞ্চল"
+
+msgid "Unknown Country (Region)"
+msgstr "অজানা দেশ/অঞ্চল (মোট)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "অজানা দর্শক (শিরোনাম)"
+
+msgid "PageStayTime"
+msgstr "পৃষ্ঠায় অবস্থানের সময় অনুমান করা যাচ্ছে না"
+
+msgid "Unknown OS (Link)"
+msgstr "অজানা অপারেটিং সিস্টেম (লিংক)"
+
+msgid "Unknown OS (Row)"
+msgstr "অজানা অপারেটিং সিস্টেম (তালিকা)"
+
+msgid "Unknown Browser (Link)"
+msgstr "অজানা ব্রাউজার (লিংক)"
+
+msgid "Unknown Browser (Row)"
+msgstr "অজানা ব্রাউজার (তালিকা)"
+
+msgid "Unknown Screen"
+msgstr "অজানা স্ক্রিনের আকার"
+
+msgid "Login"
+msgstr "ব্যবহারকারীর নাম"
+
+msgid "Anonymous"
+msgstr "বেনামী"
+
+msgid "Robots"
+msgstr "রোবট"
+
+msgid "Different robots"
+msgstr "বিভিন্ন রোবট"
+
+msgid "Hits on robots.txt"
+msgstr "উপরে দেখানো সার্চ ইঞ্জিন রোবট থেকে অস্বাভাবিক ট্রাফিক অন্যান্য চার্টে অন্তর্ভুক্ত করা হয়নি। '+' এর পরে সংখ্যাটি 'robots.txt' এ সফল অ্যাক্সেস রেকর্ডের সংখ্যা"
+
+msgid "Worms"
+msgstr "কৃমি"
+
+msgid "Different worms"
+msgstr "বিভিন্ন কৃমি"
+
+msgid "Target"
+msgstr "লক্ষ্য"
+
+msgid "Grabber"
+msgstr "ডেটা টেনে আনার সরঞ্জাম"
+
+#------------------------------------------------------------------------------
+# ফরম্যাট বিবরণ
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "টেক্সট ফাইল (১৯৬৩ সালে ASCII মানীকৃত, ফরম্যাটবিহীন প্লেইন টেক্সট। সোর্স কোড, কনফিগারেশন ফাইল এবং লগের ভিত্তি। ইউনিক্স LF ব্যবহার করে, উইন্ডোজ CRLF ব্যবহার করে, এখনও কম্পিউটারের সবচেয়ে সাধারণ ডেটা ফরম্যাট)"
+
+msgid "mime_log"
+msgstr "লগ ফাইল (সিস্টেম ডেটা, অ্যাপ্লিকেশন অপারেশন তথ্য রেকর্ডকারী প্লেইন টেক্সট ফাইল, সমস্যা সমাধান, কর্মক্ষমতা বিশ্লেষণ, নিরাপত্তা অডিটের জন্য ব্যবহৃত হয়। মানক ফরম্যাট যেমন Apache combined log, Nginx access log, syslog ইত্যাদি)"
+
+msgid "mime_page"
+msgstr "HTML ওয়েব পৃষ্ঠা (টিম বার্নার্স-লি ১৯৮৯ সালে ওয়ার্ল্ড ওয়াইড ওয়েব আবিষ্কার করেন, ১৯৯০ সালে HTML/HTTP/URL তিনটি প্রযুক্তি সংজ্ঞায়িত করেন, পেটেন্ট ছাড়া বিনামূল্যে প্রদান করেন। HTML5 ২০১৪ সালে W3C মানক হয়, প্রদর্শন, মাল্টিমিডিয়া এবং মুদ্রণ সমর্থন করে। ২০১৬ সালে টুরিং পুরস্কার অর্জন)"
+
+msgid "mime_khtml"
+msgstr "KHTML ওয়েব পৃষ্ঠা ইঞ্জিন (১৯৯৮ সালে KDE 2.0 এ প্রকাশিত, Konqueror ব্রাউজারের রেন্ডারিং ইঞ্জিন। অ্যাপল ২০০১ সালে KHTML এর ভিত্তিতে WebKit তৈরি করে। গুগল ২০০৮ সালে WebKit থেকে Blink তৈরি করে, যা Chrome, Edge, Safari ব্রাউজারের মূল হয়ে ওঠে। KHTML ওপেন সোর্স সম্প্রদায়ের একটি আদর্শ যা আধুনিক ব্রাউজার ইঞ্জিনের ভিত্তি স্থাপন করেছে, এর প্রযুক্তিগত উত্তরাধিকার WebKit/Blink এর মাধ্যমে অব্যাহত রয়েছে)"
+
+msgid "mime_script"
+msgstr "ডায়নামিক স্ক্রিপ্ট (ব্যাখ্যামূলক ভাষা, কম্পাইল করার প্রয়োজন নেই। ASP, JSP, CGI, ColdFusion, Tcl, VBScript ইত্যাদি অন্তর্ভুক্ত, প্রাথমিক ওয়েব উন্নয়ন, সিস্টেম ব্যবস্থাপনা, স্বয়ংক্রিয় কাজে ব্যাপকভাবে ব্যবহৃত হয়। Python, Ruby, JavaScript এর মতো আধুনিক স্ক্রিপ্ট ভাষা full-stack উন্নয়নের মূল ভাষা হিসাবে বিকশিত হয়েছে)"
+
+msgid "mime_js"
+msgstr "JavaScript স্ক্রিপ্ট (ব্রেন্ডান আইক ১৯৯৫ সালে Netscape এ ১০ দিনে তৈরি করেন, ব্রাউজারের মূল প্রোগ্রামিং ভাষা। ECMAScript ১৯৯৭ সালে মানীকৃত হয়। Node.js ২০০৯ সালে জন্ম নেয় এবং এটিকে full-stack ভাষা বানায়। npm বিশ্বের বৃহত্তম প্যাকেজ ম্যানেজার। GitHub এ টানা কয়েক বছর ধরে সবচেয়ে জনপ্রিয় প্রোগ্রামিং ভাষা)"
+
+msgid "mime_py"
+msgstr "Python স্ক্রিপ্ট (গুইডো ভ্যান রোসাম ১৯৯১ সালে তৈরি করেন, বাধ্যতামূলক ইনডেন্টেশন, সরল সিনট্যাক্সের জন্য বিখ্যাত। ওয়েব উন্নয়ন, ডেটা সায়েন্স, কৃত্রিম বুদ্ধিমত্তা, স্বয়ংক্রিয় অপারেশনে ব্যাপকভাবে ব্যবহৃত হয়। TIOBE এর বার্ষিক প্রোগ্রামিং ভাষা পুরস্কার বহুবার অর্জন করেছে)"
+
+msgid "mime_sh"
+msgstr "শেল স্ক্রিপ্ট (ইউনিক্স ১৯৭১ সালে জন্ম নেয়, কমান্ড স্ক্রিপ্ট ভাষা। সিস্টেম ব্যবস্থাপনা, স্বয়ংক্রিয় কাজ, পরিষেবা শুরু, স্থাপনা স্ক্রিপ্টের জন্য ব্যবহৃত হয়। Linux প্রশাসনের জন্য প্রয়োজনীয় দক্ষতা)"
+
+msgid "mime_rb"
+msgstr "রুবি স্ক্রিপ্ট (ইউকিহিরো মাতসুমোতো ১৯৯৫ সালে তৈরি করেন, ডেভেলপারের সুখের উপর ফোকাস করেন। রুবি অন রেলস ফ্রেমওয়ার্ক 'কনফিগারেশনের চেয়ে কনভেনশন' উন্নয়ন দৃষ্টান্ত শুরু করে, আধুনিক ওয়েব ফ্রেমওয়ার্ক ডিজাইনকে প্রভাবিত করেছে)"
+
+msgid "mime_pl"
+msgstr "পার্ল স্ক্রিপ্ট (ল্যারি ওয়াল ১৯৮৭ সালে তৈরি করেন, ব্যবহারিকতার জন্য বিখ্যাত, 'সুইস আর্মি ছুরি' নামে পরিচিত। CPAN আধুনিক ভাষা প্যাকেজ ম্যানেজারের অগ্রদূত, টেক্সট প্রসেসিং, সিস্টেম ব্যবস্থাপনা এবং CGI তে গভীর প্রভাব রয়েছে)"
+
+msgid "mime_php"
+msgstr "PHP ডায়নামিক ওয়েব পৃষ্ঠা (রাসমাস লেরডর্ফ ১৯৯৫ সালে তৈরি করেন, বিশেষভাবে ওয়েব উন্নয়নের জন্য ডিজাইন করা হয়েছে। বিশ্বের ৭০% এর বেশি ওয়েবসাইট ব্যবহার করে, WordPress, Facebook, Wikipedia এর মতো প্ল্যাটফর্ম চালায়। PHP 8 JIT কম্পাইল প্রবর্তন করেছে, কর্মক্ষমতা উল্লেখযোগ্যভাবে উন্নত করেছে)"
+
+msgid "mime_image"
+msgstr "ছবির ফাইল"
+
+msgid "mime_document"
+msgstr "ডকুমেন্ট ফাইল"
+
+msgid "mime_package"
+msgstr "সফটওয়্যার প্যাকেজ"
+
+msgid "mime_archive"
+msgstr "Gzip সংকুচিত ফাইল (১৯৯২ সালে GNU প্রকল্প, DEFLATE অ্যালগরিদমের ভিত্তিতে। ওয়েবে ডায়নামিক প্রতিক্রিয়া বিষয়বস্তু সংকুচিত করতে ব্যবহৃত হয়, সংকোচনের হার সাধারণত ৬০-৯০%। ২০১৫ সালের পরে কিছু ক্ষেত্রে Brotli দ্বারা প্রতিস্থাপিত হয়েছে, তবে সার্ভার পাশে সবচেয়ে ব্যাপকভাবে সমর্থিত সংকোচন ফরম্যাট হিসাবে রয়ে গেছে)"
+
+msgid "mime_audio"
+msgstr "অডিও ফাইল"
+
+msgid "mime_video"
+msgstr "ভিডিও ফাইল"
+
+msgid "mime_jscript"
+msgstr "জাভাস্ক্রিপ্ট (ব্রেন্ডান আইক ১৯৯৫ সালে তৈরি করেন)"
+
+msgid "mime_json"
+msgstr "JSON ডেটা (ডগলাস ক্রকফোর্ড ২০০১ সালে প্রস্তাব করেন, হালকা ওজনের ডেটা আদানপ্রদান ফরম্যাট, Web API এর প্রকৃত মানক)"
+
+msgid "mime_vbs"
+msgstr "VBScript (মাইক্রোসফট ১৯৯৬ সালে তৈরি করে, উইন্ডোজ স্ক্রিপ্ট ভাষা, ASP ওয়েব পৃষ্ঠা এবং উইন্ডোজ ব্যবস্থাপনা স্ক্রিপ্টের জন্য ব্যবহৃত হয়। PowerShell এবং JavaScript এর বিস্তারের সাথে ধীরে ধীরে বিলুপ্ত হয়ে গেছে)"
+
+msgid "mime_conf"
+msgstr "কনফিগারেশন ফাইল (টেক্সট ফরম্যাটে সফটওয়্যার কনফিগারেশন সংরক্ষণ করে, সাধারণ ফরম্যাট: INI, JSON, YAML, TOML, XML। Linux সিস্টেম কনফিগারেশন বেশিরভাগ /etc ডিরেক্টরিতে থাকে)"
+
+msgid "mime_css"
+msgstr "CSS স্টাইল শীট (W3C ১৯৯৬ সালের ডিসেম্বরে CSS1 প্রথম আনুষ্ঠানিক মানক প্রকাশ করে, CSS2 ১৯৯৮ সালে অবস্থান নির্ধারণ এবং মিডিয়া টাইপ যোগ করে, ২০১১ সাল থেকে CSS3 মডুলার কোণ গোলাকার করা, অ্যানিমেশন, ফ্লেক্সবক্স, গ্রিড লেআউট এবং প্রতিক্রিয়াশীল ডিজাইন প্রবর্তন করে। HTML এবং JavaScript এর সাথে front-end এর তিনটি প্রধান প্রযুক্তির একটি, সমস্ত আধুনিক ব্রাউজার (Chrome, Firefox, Safari, Edge) স্থানীয়ভাবে সমর্থন করে, ওয়েব পৃষ্ঠা শৈলী সংজ্ঞায়িত করার একমাত্র মানক)"
+
+msgid "mime_xsl"
+msgstr "XSL স্টাইল শীট (১৯৯৯ সালে W3C মানক, XML ডকুমেন্ট রূপান্তর ভাষা, XML কে HTML/PDF/টেক্সট এ রূপান্তর করতে পারে। JSON এর প্রসারের পরে ব্যবহার কমেছে)"
+
+msgid "mime_runtime"
+msgstr "এক্সিকিউটেবল ফাইল (EXE, ELF, Mach-O এর মতো অপারেটিং সিস্টেমের এক্সিকিউটেবল ফরম্যাট, মেশিন কোড এবং লোডিং তথ্য অন্তর্ভুক্ত)"
+
+msgid "mime_library"
+msgstr "লাইব্রেরি ফাইল (DLL, SO, dylib ইত্যাদি ডায়নামিক লিংক লাইব্রেরি, প্রোগ্রাম চলাকালীন লোড হওয়া ভাগ করা কোড)"
+
+msgid "mime_swf"
+msgstr "Flash অ্যানিমেশন (Macromedia ১৯৯৬ সালে তৈরি করে, পরে Adobe এর মালিকানায়। ইন্টারেক্টিভ ওয়েব অ্যানিমেশন মানক, এক সময় ইন্টারনেটে গেম এবং অ্যানিমেশনে আধিপত্য বিস্তার করেছিল। দুর্বলতা: প্লাগইন নির্ভরতা, মোবাইল সমর্থনের অভাব, উচ্চ সুরক্ষা ঝুঁকি। Adobe ২০১৭ সালে বিলুপ্তির ঘোষণা দেয়, ২০২০ সালে সম্পূর্ণ সমর্থন বন্ধ করে, HTML5/CSS3/JS দ্বারা প্রতিস্থাপিত হয়)"
+
+msgid "mime_dtd"
+msgstr "DTD (ডকুমেন্ট টাইপ ডেফিনিশন) (XML স্পেসিফিকেশন, XML ডকুমেন্ট কাঠামো সংজ্ঞায়িত করে, XML এর বৈধতা যাচাই করতে ব্যবহৃত হয়)"
+
+msgid "mime_csv"
+msgstr "CSV ডেটা ফরম্যাট (কমা দ্বারা পৃথক মান, সাধারণ টেবিল ডেটা ফরম্যাট, Excel এবং ডাটাবেস আমদানি রপ্তানি মানক)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (Java অ্যাপ্লিকেশন লঞ্চার, ২০০০ এর দশকে Java ডেস্কটপ অ্যাপ্লিকেশন বিতরণ প্রযুক্তি, এখন বিলুপ্ত)"
+
+msgid "mime_lit"
+msgstr "Microsoft Reader ই-বুক (মাইক্রোসফট ২০০০ সালে চালু করে, LIT ফরম্যাট, বিলুপ্ত)"
+
+msgid "mime_svg"
+msgstr "SVG ভেক্টর গ্রাফিক্স (১৯৯৯ সালে W3C মানক, মাইক্রোসফট দীর্ঘ সময় নিজস্ব VML ফরম্যাট প্রচার করার কারণে, IE ব্রাউজার ২০১১ সাল পর্যন্ত সমর্থন করে, যা প্রসার বিলম্বিত করে। ২০১৫ সালের পরে IE বিলুপ্ত হওয়ার পরে এবং উচ্চ রেজোলিউশন স্ক্রিনের প্রসারের সাথে, এটি আইকন এবং লোগোর জন্য পছন্দের ফরম্যাট হয়ে উঠেছে)"
+
+msgid "mime_ai"
+msgstr "Adobe Illustrator ভেক্টর গ্রাফিক্স (১৯৮৭ সালে চালু হয়, শিল্প মানক ভেক্টর গ্রাফিক্স ফরম্যাট, মুদ্রণ নকশা, লোগো, আইকনের জন্য পছন্দের)"
+
+msgid "mime_phshop"
+msgstr "Photoshop ছবি (Adobe ১৯৯০ সালে চালু করে, Photoshop এর মূল ফাইল ফরম্যাট PSD, ছবি প্রক্রিয়াকরণ শিল্প মানক)"
+
+msgid "mime_ttf"
+msgstr "TrueType ফন্ট (Apple এবং Microsoft ১৯৮৯ সালে যৌথভাবে তৈরি করে, ভেক্টর ফন্ট ফরম্যাট, স্ক্রিন প্রদর্শন এবং মুদ্রণ একই, আধুনিক অপারেটিং সিস্টেমের ডিফল্ট ফন্ট ফরম্যাট)"
+
+msgid "mime_fon"
+msgstr "WOFF2 ওয়েব ফন্ট (W3C ২০১৪ সালে সুপারিশ করে, Brotli সংকোচন অ্যালগরিদম ব্যবহার করে, পুরানো WOFF এর তুলনায় আকার প্রায় ৩০% কমে, TTF/OTF এর তুলনায় ৫০% এর বেশি কমে, বর্তমানে সমস্ত আধুনিক ব্রাউজার সমর্থন করে, আধুনিক ওয়েব ফন্টের জন্য পছন্দের ফরম্যাট, ৯৮% এর বেশি ব্রাউজার দ্বারা সমর্থিত)"
+
+msgid "mime_pdf"
+msgstr "PDF ডকুমেন্ট (Adobe ১৯৯৩ সালে তৈরি করে, ২০০৮ সালে ISO মানক হয়। ক্রস-প্ল্যাটফর্ম ডকুমেন্ট ফরম্যাট, ফরম্যাটের সামঞ্জস্য বজায় রাখে, ইলেকট্রনিক ডকুমেন্ট বিতরণের বিশ্বব্যাপী মানক)"
+
+msgid "mime_dotnet"
+msgstr "ASP.NET ডায়নামিক পৃষ্ঠা (মাইক্রোসফট ২০০২ সালে চালু করে, উইন্ডোজ প্ল্যাটফর্মে ডায়নামিক ওয়েব পৃষ্ঠা প্রযুক্তি, .NET ফ্রেমওয়ার্কের একটি অংশ)"
+
+msgid "mime_mdb"
+msgstr "Access ডেটাবেস (Microsoft Access ডেটাবেস ফাইল, ১৯৯২ সালে চালু হয়, উইন্ডোজ ডেস্কটপ ডেটাবেস সমাধান)"
+
+msgid "mime_md"
+msgstr "Markdown ডকুমেন্ট (জন গ্রুবার ২০০৪ সালে তৈরি করেন, সিনট্যাক্স ডিজাইন reStructuredText এবং Setext দ্বারা প্রভাবিত। মূল ডিজাইন দর্শন 'পড়া যায় এমন হওয়া মানে রেন্ডার করা যায় এমন হওয়া'। মূল বাস্তবায়ন Markdown.pl পার্ল রেগুলার এক্সপ্রেশন ব্যবহার করে। উদ্ভূত স্পেসিফিকেশনগুলির মধ্যে রয়েছে GFM (২০১৩), CommonMark (২০১৭), Pandoc Markdown ইত্যাদি। GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress এর মতো ইকোসিস্টেম চালায়, স্ট্যাটিক ওয়েবসাইট জেনারেটর এবং ডেভেলপার ডকুমেন্টেশনের জন্য ডি ফ্যাক্টো মানক ফরম্যাট হয়ে উঠেছে)"
+
+msgid "mime_crystal"
+msgstr "Crystal Reports রিপোর্ট ফরম্যাট (SAP এর ব্যবসায়িক বুদ্ধিমত্তা রিপোর্ট, এন্টারপ্রাইজ রিপোর্ট মানক ফরম্যাট)"
+
+msgid "mime_libreoffice"
+msgstr "LibreOffice ডকুমেন্ট (The Document Foundation ২০১০ সালে তৈরি করে, OpenOffice এর শাখা, ODF মানকের বাস্তবায়ন, মূলধারার ওপেন সোর্স অফিস স্যুট)"
+
+msgid "mime_encrypt"
+msgstr "এনক্রিপ্ট করা ফাইল (ফাইল দেখতে ডিক্রিপ্ট করতে হবে, সাধারণ এক্সটেনশন: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "GPS ট্র্যাক ডেটা (GPS বিনিময় ফরম্যাট, ভৌগলিক অবস্থান ডেটা রেকর্ড করে, খেলার ঘড়ি এবং নেভিগেশন ডিভাইসের জন্য সাধারণ ফরম্যাট)"
+
+msgid "mime_diskimage"
+msgstr "ডিস্ক ইমেজ (DMG, ISO, IMG এর মতো অপটিক্যাল ডিস্ক/ডিস্ক ইমেজ ফাইল, সফটওয়্যার বিতরণ বা স্টোরেজ মিডিয়া ব্যাকআপের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_vm"
+msgstr "ভার্চুয়াল মেশিন ইমেজ (VMDK, VDI, VHDX, OVA এর মতো ভার্চুয়াল মেশিন ডিস্ক ফাইল, VMware, VirtualBox, Hyper-V এর মতো ভার্চুয়ালাইজেশন প্ল্যাটফর্মের জন্য ফরম্যাট)"
+
+msgid "mime_torrent"
+msgstr "BitTorrent বীজ ফাইল (ব্রাম কোহেন ২০০১ সালে আবিষ্কার করেন, P2P ডাউনলোড সূচক ফাইল, ফাইল মেটাডেটা এবং ট্র্যাকার তথ্য অন্তর্ভুক্ত)"
+
+msgid "mime_gis"
+msgstr "GIS ভৌগলিক তথ্য ব্যবস্থা ডেটা (Shapefile, GeoJSON এর মতো ভৌগলিক অবস্থান ডেটা ফরম্যাট, মানচিত্র এবং স্থানিক বিশ্লেষণের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_ebook"
+msgstr "ই-বুক (EPUB, MOBI, AZW এর মতো ই-বুক ফরম্যাট। EPUB আন্তর্জাতিক মানক, MOBI/AZW Amazon Kindle এর জন্য ফরম্যাট)"
+
+msgid "mime_avif"
+msgstr "AVIF ছবি (Alliance for Open Media ২০১৯ সালে চালু করে, AV1 কোডেকের ভিত্তিতে, WebP থেকে ৫০% বেশি সংকোচনের হার, নতুন প্রজন্মের ওয়েব ছবির মানক)"
+
+msgid "mime_markdown"
+msgstr "Markdown ডকুমেন্ট (জন গ্রুবার ২০০৪ সালে ডিজাইন করেন, হালকা মার্কআপ ভাষা, GitHub README, প্রযুক্তিগত ডকুমেন্টেশন, ফোরাম পোস্টের জন্য সাধারণ ফরম্যাট)"
+
+msgid "mime_yaml"
+msgstr "YAML কনফিগারেশন (ক্লার্ক ইভান্স ২০০১ সালে ডিজাইন করেন, মানব-পাঠযোগ্য ডেটা সিরিয়ালাইজেশন ফরম্যাট, Kubernetes, Ansible, Docker Compose এর জন্য কনফিগারেশন ফাইল মানক)"
+
+msgid "mime_toml"
+msgstr "TOML কনফিগারেশন (টম প্রেস্টন-ওয়ার্নার ২০১৩ সালে ডিজাইন করেন, 'টমের সুস্পষ্ট ন্যূনতম ভাষা', Rust/Cargo, Python/pip, Go এর মতো আধুনিক সরঞ্জামের জন্য কনফিগারেশন ফাইল ফরম্যাট)"
+
+msgid "mime_vue"
+msgstr "Vue কম্পোনেন্ট ফাইল (২০১৪ সালে ইভ ইউশি প্রবর্তিত, প্রগ্রেসিভ জাভাস্ক্রিপ্ট ফ্রেমওয়ার্ক। সিঙ্গল-ফাইল কম্পোনেন্ট (এসএফসি)-এর মাধ্যমে এইচটিএমএল, সিএসএস, জেএস-কে নিখুঁতভাবে একীভূত করে, ডেভেলপমেন্টের দক্ষতা ব্যাপকভাবে বৃদ্ধি করে, যা বিশ্বের সবচেয়ে জনপ্রিয় ফ্রন্টএন্ড ফ্রেমওয়ার্কগুলির মধ্যে একটি। একইসঙ্গে ভাইটপ্রেসের মতো আধুনিক স্ট্যাটিক সাইট জেনারেটরের মূল হিসেবে ইন্টারঅ্যাকটিভ টেকনিক্যাল ডকুমেন্টেশন ও ব্লগ চালানোর জন্য ব্যাপকভাবে ব্যবহৃত।)"
+
+msgid "mime_wasm"
+msgstr "WebAssembly মডিউল (২০১৭ সালে W3C মানক, ব্রাউজারে উচ্চ কর্মক্ষমতা এক্সিকিউশন ফরম্যাট, C/C++/Rust/R লক্ষ্য হিসাবে কম্পাইল করা যেতে পারে, কর্মক্ষমতা স্থানীয়ের কাছাকাছি)"
+
+msgid "mime_jsx"
+msgstr "React JSX কম্পোনেন্ট (Facebook ২০১৩ সালে JavaScript XML চালু করে, React ফ্রেমওয়ার্কের কম্পোনেন্ট সিনট্যাক্স, HTML কে JavaScript এ লেখার উদ্ভাবনী দৃষ্টান্ত)"
+
+msgid "mime_tsx"
+msgstr "TypeScript TSX কম্পোনেন্ট (মাইক্রোসফট ২০১২ সালে তৈরি করে, TypeScript + JSX, React টাইপ-নিরাপদ উন্নয়নের জন্য মানক লেখার পদ্ধতি)"
+
+msgid "mime_heif"
+msgstr "HEIF ছবি (২০১৫ সালে MPEG মানক, উচ্চ দক্ষতা ছবি ফাইল ফরম্যাট, Apple ইকোসিস্টেমে ব্যাপকভাবে ব্যবহৃত হয়)"
+
+msgid "mime_heic"
+msgstr "HEIC ছবি (Apple এর HEIF বাস্তবায়ন, iPhone এর ডিফল্ট ফটো ফরম্যাট, iOS/macOS এ স্থানীয়ভাবে সমর্থিত)"
+
+msgid "mime_gltf"
+msgstr "GLTF 3D মডেল (GL ট্রান্সমিশন ফরম্যাট, '3D এর JPEG', Khronos Group ২০১৫ সালে প্রকাশ করে, Web 3D মানক ফরম্যাট)"
+
+msgid "mime_glb"
+msgstr "GLB বাইনারি 3D মডেল (GLTF এর বাইনারি সংস্করণ, একটি ফাইল সমস্ত সম্পদ ধারণ করে, 3D দৃশ্য বিতরণের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_gls"
+msgstr "GLOSSARY শব্দকোষ (শব্দ সংজ্ঞা ফাইল, ডকুমেন্ট সিস্টেমে শব্দ ব্যবস্থাপনার জন্য ব্যবহৃত হয়)"
+
+msgid "mime_cbz"
+msgstr "CBZ কমিক বই (ZIP সংকুচিত কমিক ছবি, কমিক সংগ্রহে সাধারণ ফরম্যাট)"
+
+msgid "mime_cbr"
+msgstr "CBR কমিক বই (RAR সংকুচিত কমিক ছবি, কমিক সংগ্রহে সাধারণ ফরম্যাট)"
+
+msgid "mime_fb2"
+msgstr "FB2 ই-বুক (FictionBook 2.0, রুশ ই-বুক ফরম্যাট, XML কাঠামো, ওপেন সোর্স পাঠকদের দ্বারা ব্যাপকভাবে সমর্থিত)"
+
+msgid "mime_kepub"
+msgstr "KEPUB ই-বুক (Kobo এর জন্য বিশেষ EPUB ফরম্যাট, Kobo ই-বুক পাঠকের জন্য অনুকূলিত ফরম্যাট)"
+
+msgid "mime_m4b"
+msgstr "M4B অডিও বই (MPEG-4 অডিও বই ফরম্যাট, বুকমার্ক সমর্থন করে, iTunes অডিও বই ফরম্যাট)"
+
+msgid "mime_kfx"
+msgstr "Kindle KFX ফরম্যাট (Amazon ২০১৫ সালে চালু করে, Kindle এর জন্য বিশেষ ই-বুক ফরম্যাট, উন্নত লেআউট এবং দ্রুত পৃষ্ঠা উল্টানো সমর্থন করে)"
+
+msgid "mime_chm"
+msgstr "CHM সহায়তা ফাইল (মাইক্রোসফট ১৯৯৭ সালে চালু করে, কম্পাইল করা HTML সহায়তা ফরম্যাট, উইন্ডোজ সফটওয়্যার সহায়তা ডকুমেন্টেশন মানক)"
+
+msgid "mime_mht"
+msgstr "MHT ওয়েব আর্কাইভ (মাইক্রোসফট ১৯৯৯ সালে চালু করে, একক ফাইল ওয়েব পৃষ্ঠা ফরম্যাট, IE ব্রাউজারের ওয়েব পৃষ্ঠা সংরক্ষণ ফরম্যাট)"
+
+msgid "mime_wml"
+msgstr "WML ওয়্যারলেস মার্কআপ ভাষা (১৯৯৯ সালে WAP মানক, প্রাথমিক ফিচার ফোনের ওয়েব পৃষ্ঠা ফাইলের জন্য ব্যবহৃত হত, বিলুপ্ত)"
+
+msgid "mime_xhtml"
+msgstr "XHTML ওয়েব পৃষ্ঠা (২০০০ সালে W3C মানক, HTML এর XML সংস্করণ, কঠোর সিনট্যাক্স। W3C ২০০৯ সালে রক্ষণাবেক্ষণ বন্ধ করে, মনোযোগ HTML5 এ স্থানান্তর করে)"
+
+msgid "mime_xml"
+msgstr "XML ডকুমেন্ট (১৯৯৮ সালে W3C মানক, এক্সটেনসিবল মার্কআপ ভাষা, ওয়েব পরিষেবা, কনফিগারেশন ফাইল, ডেটা আদানপ্রদানের জন্য মৌলিক ফরম্যাট)"
+
+msgid "mime_sgml"
+msgstr "SGML ডকুমেন্ট (১৯৮৬ সালে ISO মানক, HTML এর পূর্বসূরি, মানক সাধারণ মার্কআপ ভাষা, XML এবং HTML উভয়ই SGML থেকে উদ্ভূত)"
+
+msgid "mime_apng"
+msgstr "APNG অ্যানিমেশন (Mozilla ২০০৪ সালে তৈরি করে, PNG এর অ্যানিমেশন এক্সটেনশন, GIF এর আধুনিক বিকল্প, সত্য রঙ এবং স্বচ্ছতা সমর্থন করে)"
+
+msgid "mime_bmp"
+msgstr "BMP বিটম্যাপ (উইন্ডোজ বিটম্যাপ ফরম্যাট, উইন্ডোজ 1.0 থেকে স্থানীয়ভাবে সমর্থিত। আঁটসাঁট না করা, ফাইলের আকার বড়, কিন্তু সরল কাঠামো এবং অতিরিক্ত কোডেকের প্রয়োজন না থাকার কারণে, উইন্ডোজ 11-এর স্ক্রিনশট টুল, পেইন্ট প্রোগ্রাম, EXE/MSI ইনস্টলেশন প্যাকেজের আইকন রিসোর্স, কার্সার ফাইল এবং কিছু পুরনো ড্রাইভারে এখনও ব্যবহৃত হয়। একই ছবির মানের তুলনায়, PNG থেকে প্রায় 3-10 গুণ বড়। বেশিরভাগ ক্ষেত্রে PNG/JPEG দ্বারা প্রতিস্থাপিত হয়েছে, কিন্তু উইন্ডোজ ইকোসিস্টেম এখনও বিস্তৃত সামঞ্জস্য বজায় রাখে)"
+
+msgid "mime_cdr"
+msgstr "CDR ভেক্টর গ্রাফিক্স (CorelDRAW এর জন্য বিশেষ ফরম্যাট, কানাডার কোরেল কোম্পানি, ভেক্টর গ্রাফিক্স ডিজাইন সফটওয়্যার)"
+
+msgid "mime_gif"
+msgstr "GIF ছবি (CompuServe ১৯৮৭ সালে তৈরি করে, ২৫৬ রঙের অ্যানিমেটেড ছবি ফরম্যাট। দুর্বলতা: কম রঙ, খারাপ ছবির গুণমান, স্বচ্ছতা সমর্থন করে না, বড় ফাইল, কম ফ্রেম রেট। APNG, WebP এর মতো আধুনিক অ্যানিমেটেড ছবি ফরম্যাট দ্বারা প্রতিস্থাপিত)"
+
+msgid "mime_ico"
+msgstr "ICO আইকন (উইন্ডোজ আইকন ফাইল ফরম্যাট, মাল্টি-রেজোলিউশন সমর্থন করে, ওয়েবসাইট favicon এর জন্য মানক ফরম্যাট)"
+
+msgid "mime_jpeg"
+msgstr "JPEG ছবি (১৯৯২ সালে ISO মানক, ফটোর জন্য ক্ষতিকর সংকোচন ফরম্যাট, ইন্টারনেটে ফটোর প্রকৃত মানক)"
+
+msgid "mime_jpg"
+msgstr "JPEG ছবি (১৯৯২ সালে ISO মানক, ফটোর জন্য ক্ষতিকর সংকোচন ফরম্যাট, ইন্টারনেটে ফটোর প্রকৃত মানক)"
+
+msgid "mime_png"
+msgstr "PNG ছবি (W3C ১৯৯৬ সালে সুপারিশ করে, সত্য রঙ এবং স্বচ্ছতা সমর্থন করে, GIF এর স্থির বিকল্প, ইন্টারনেটে ক্ষতিহীন ছবির মানক)"
+
+msgid "mime_ps"
+msgstr "PostScript পৃষ্ঠা বিবরণ ফাইল (Adobe ১৯৮৫ সালে চালু করে, পৃষ্ঠা বিবরণ ভাষা, PDF এর পূর্বসূরি, মুদ্রণ এবং প্রকাশনার জন্য ব্যবহৃত হয়)"
+
+msgid "mime_psb"
+msgstr "PSB বড় ডকুমেন্ট (Adobe Photoshop এর অতি বড় ছবি ফরম্যাট, ২ জিবি বা ৩০০০০ পিক্সেলের চেয়ে বড় বিশাল ছবি সমর্থন করে)"
+
+msgid "mime_psd"
+msgstr "PSD ছবি (Adobe Photoshop এর মূল ফাইল, স্তর, চ্যানেল, পাথ সমর্থন করে, ছবি প্রক্রিয়াকরণ শিল্প মানক ফরম্যাট)"
+
+msgid "mime_webp"
+msgstr "WebP ছবি (গুগল ২০১০ সালে তৈরি করে, ওয়েব ছবি ফরম্যাট, ক্ষতিকর/ক্ষতিহীন সংকোচন এবং অ্যানিমেশন সমর্থন করে, PNG থেকে ২৫-৩৫% এবং JPEG থেকে ২৫% বেশি সংকোচনের হার)"
+
+msgid "mime_woff"
+msgstr "WOFF ওয়েব ফন্ট (২০০৯ সালে তৈরি, ২০১৮ সালে W3C মানক। TrueType/OpenType এর ভিত্তিতে সংকুচিত, ওয়েব ফন্ট লোডিং অপ্টিমাইজেশন, আধুনিক ওয়েবসাইট আইকন ফন্টের জন্য মানক ফরম্যাট)"
+
+msgid "mime_7z"
+msgstr "7z সংকুচিত ফাইল (ইগর পাভলভ ১৯৯৯ সালে তৈরি করেন, 7-Zip প্রোগ্রামের বিশেষ ফরম্যাট। LZMA অ্যালগরিদম, উচ্চ সংকোচনের হার, ওপেন সোর্স এবং বিনামূল্যে। একই সংকোচনের হারে 7z ফরম্যাট সাধারণত ZIP থেকে ৩০-৫০% ছোট হয়, ওপেন সোর্স সম্প্রদায় এবং সফটওয়্যার বিতরণের জন্য সাধারণ ফরম্যাট)"
+
+msgid "mime_ace"
+msgstr "ACE সংকুচিত ফাইল (১৯৯০ এর দশকে তৈরি, WinACE প্রোগ্রাম ফরম্যাট। এক সময় RAR এর সাথে প্রতিযোগিতা করত, সংকোচনের হার বেশ উচ্চ ছিল। ২০০৭ সালে উন্নয়ন বন্ধ হয়, এখন 7z/RAR দ্বারা প্রতিস্থাপিত, কম ব্যবহৃত হয়)"
+
+msgid "mime_bz2"
+msgstr "BZIP2 সংকুচিত ফাইল (জুলিয়ান সেওয়ার্ড ১৯৯৬ সালে তৈরি করেন, ব্লক সাজানোর সংকোচন অ্যালগরিদম। GZIP থেকে ১৫-২০% বেশি সংকোচনের হার কিন্তু ধীর। Linux kernel সোর্স কোড, ওপেন সোর্স সফটওয়্যার প্যাকেজের জন্য সাধারণ ফরম্যাট, এক্সটেনশন .bz2)"
+
+msgid "mime_cab"
+msgstr "CAB সংকুচিত ফাইল (মাইক্রোসফট ১৯৯৫ সালে তৈরি করে, ক্যাবিনেট ফরম্যাট। উইন্ডোজ ইনস্টলেশন প্যাকেজ ফরম্যাট, ড্রাইভার, সিস্টেম ফাইল বিতরণের জন্য ব্যবহৃত হয়। উইন্ডোজ ইনস্টলার (MSI) ফাইল সংরক্ষণের জন্য অভ্যন্তরীণভাবে CAB ব্যবহার করে)"
+
+msgid "mime_dmg"
+msgstr "DMG ডিস্ক ইমেজ (Apple ১৯৮০ এর দশকে চালু করে, ডিস্ক ইমেজ ফরম্যাট। macOS সফটওয়্যার বিতরণ মানক ফরম্যাট, ভার্চুয়াল ডিস্ক হিসাবে মাউন্ট করতে ডাবল-ক্লিক করুন, অ্যাপ্লিকেশন ইনস্টল করতে টেনে এনে ফেলে দিন। সংকোচন এবং এনক্রিপশন সমর্থন করে, ম্যাক সফটওয়্যার ডাউনলোডের জন্য প্রধান ফরম্যাট)"
+
+msgid "mime_emz"
+msgstr "EMZ সংকুচিত ছবি (উইন্ডোজ সংকুচিত বর্ধিত মেটাফাইল, EMF এর সংকুচিত সংস্করণ। অফিস ডকুমেন্টে ভেক্টর গ্রাফিক্স স্টোরেজ ফরম্যাট, মূলত GZIP সংকুচিত EMF ফাইল)"
+
+msgid "mime_gz"
+msgstr "GZIP সংকুচিত ফাইল (জিন-লুপ গেইলি এবং মার্ক অ্যাডলার ১৯৯২ সালে তৈরি করেন, GNU প্রকল্প। ইউনিক্স/লিনাক্সের মানক সংকোচন সরঞ্জাম, HTTP ট্রান্সমিশন সংকোচনের জন্য সাধারণ ফরম্যাট। এক্সটেনশন .gz, প্রায়শই TAR এর সাথে সংমিশ্রণে ব্যবহৃত হয়)"
+
+msgid "mime_jar"
+msgstr "JAR সংকুচিত ফাইল (সান মাইক্রোসিস্টেম ১৯৯৭ সালে চালু করে, Java ARchive ফরম্যাট। মূলত ZIP ফাইল, Java লাইব্রেরি এবং অ্যাপ্লিকেশন প্যাকেজ করতে ব্যবহৃত হয়। Maven, Gradle এর মতো Java ইকোসিস্টেমের প্রধান ফরম্যাট, Android ও JAR ব্যবহার করে)"
+
+msgid "mime_lzma"
+msgstr "LZMA সংকুচিত ফাইল (ইগর পাভলভ ১৯৯৮ সালে তৈরি করেন, Lempel-Ziv-Markov chain অ্যালগরিদম। 7z ফরম্যাটের প্রধান সংকোচন অ্যালগরিদম, উচ্চ সংকোচনের হার, ডিকম্প্রেশন গতি দ্রুত। ফার্মওয়্যার এবং এম্বেডেড সিস্টেম সফটওয়্যার বিতরণের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_rar"
+msgstr "RAR সংকুচিত ফাইল (ইউজিন রোশাল ১৯৯৩ সালে তৈরি করেন, Roshal ARchive ফরম্যাট। উচ্চ সংকোচনের হার, ভলিউম বিভাজন এবং পুনরুদ্ধার রেকর্ড সমর্থন করে। WinRAR প্রোগ্রাম ফরম্যাট, সংকোচনের হার ZIP থেকে ভাল কিন্তু পেমেন্ট সফটওয়্যার প্রয়োজন, unrar এর মতো ওপেন সোর্স সরঞ্জাম ডিকম্প্রেস করতে পারে)"
+
+msgid "mime_tar"
+msgstr "TAR আর্কাইভ ফাইল (ইউনিক্স V7 ১৯৭৯ সালে প্রবর্তন করে, টেপ আর্কাইভ ফরম্যাট। টেপ আর্কাইভ ফরম্যাট, সংকুচিত করে না শুধু প্যাকেজ করে, প্রায়শই GZIP/BZIP2/XZ এর সাথে সংমিশ্রণে ব্যবহৃত হয়। Linux প্যাকেজ সোর্স কোড, ডকার ইমেজ লেয়ার স্টোরেজ সব TAR ফরম্যাট ব্যবহার করে)"
+
+msgid "mime_tgz"
+msgstr "TGZ সংকুচিত ফাইল (TAR + GZIP সংমিশ্রণ ফরম্যাট, এক্সটেনশন .tgz বা .tar.gz। ইউনিক্স/লিনাক্স সফটওয়্যার প্যাকেজের জন্য সবচেয়ে সাধারণ বিতরণ ফরম্যাট, সোর্স কোড প্যাকেজ, বাইনারি প্যাকেজ, ব্যাপকভাবে ব্যবহৃত হয়, 'ডিকম্প্রেস করুন এবং ব্যবহার করুন' এর প্রতিনিধি)"
+
+msgid "mime_tbz2"
+msgstr "TBZ2 সংকুচিত ফাইল (TAR + BZIP2 সংমিশ্রণ ফরম্যাট, এক্সটেনশন .tbz2 বা .tar.bz2। TGZ থেকে ১৫-২০% বেশি সংকোচনের হার, বড় ফাইল বিতরণের জন্য উপযুক্ত, Linux kernel দীর্ঘ সময় ধরে এই ফরম্যাট ব্যবহার করে আসছে)"
+
+msgid "mime_xz"
+msgstr "XZ সংকুচিত ফাইল (২০০৯ সালে চালু হয়, LZMA2 অ্যালগরিদমের ভিত্তিতে। অত্যন্ত উচ্চ সংকোচনের হার, GZIP থেকে ৩০-৫০% বেশি, ডিকম্প্রেশন গতি তুলনামূলকভাবে দ্রুত। Linux kernel, প্যাকেজ ম্যানেজার (যেমন ডেবিয়ানের .deb এর ভিতরে) ব্যাপকভাবে ব্যবহার করে, বর্তমান Linux ইকোসিস্টেমে সুপারিশকৃত ফরম্যাট)"
+
+msgid "mime_z"
+msgstr "Z সংকুচিত ফাইল (১৯৮৫ সালে ইউনিক্স compress কমান্ড ফরম্যাট, LZW অ্যালগরিদম। প্রাথমিক ইউনিক্স সংকোচন ফরম্যাট, GZIP দ্বারা প্রতিস্থাপিত। এক্সটেনশন .Z, আধুনিক সিস্টেমে কম ব্যবহৃত হয়)"
+
+msgid "mime_zip"
+msgstr "ZIP সংকুচিত ফাইল (ফিল কাটজ ১৯৮৯ সালে তৈরি করেন, PKZIP ফরম্যাট। উইন্ডোজে স্থানীয়ভাবে সমর্থিত, ইন্টারনেটে সবচেয়ে সাধারণ সংকোচন ফরম্যাট। একাধিক ফাইল, ডিরেক্টরি কাঠামো সমর্থন করে, সংকোচন অ্যালগরিদম নির্বাচন করতে পারে। Java এর JAR, Android এর APK, অফিস ডকুমেন্টের DOCX/XLSX সব ZIP ফরম্যাটের ভিত্তিতে তৈরি)"
+
+msgid "mime_zst"
+msgstr "Zstandard সংকুচিত ফাইল (ফেসবুক ২০১৫ সালে তৈরি করে, ইয়ান কোলেট ডিজাইন করেন। উচ্চ-গতির সংকোচন অ্যালগরিদম, সংকোচনের হার LZMA এর কাছাকাছি, গতি GZIP থেকে অনেক বেশি। লিনাক্স কার্নেল 5.9+ সমর্থন করে, আর্চ লিনাক্স pacman, ডেবিয়ান APT ধীরে ধীরে গ্রহণ করছে, নতুন প্রজন্মের সংকোচন মানক)"
+
+msgid "mime_lz4"
+msgstr "LZ4 সংকুচিত ফাইল (ইয়ান কোলেট ২০১১ সালে তৈরি করেন, অত্যন্ত দ্রুত সংকোচন অ্যালগরিদম। সংকোচনের গতি GZIP থেকে ১০ গুণের বেশি দ্রুত, রিয়েল-টাইম সংকোচন পরিস্থিতির জন্য উপযুক্ত। লিনাক্স কার্নেল, OpenZFS, Hadoop ব্যাপকভাবে ব্যবহার করে, গতি-অগ্রাধিকার পরিস্থিতির জন্য প্রথম পছন্দ)"
+
+msgid "mime_lzo"
+msgstr "LZO সংকুচিত ফাইল (মার্কাস ওবারহিউমার ১৯৯৬ সালে তৈরি করেন, Lempel-Ziv-Oberhumer অ্যালগরিদম। ডিকম্প্রেশন গতি অত্যন্ত দ্রুত, সংকোচনের হার সাধারণ। লিনাক্স কার্নেল Squashfs, OpenWrt ফার্মওয়্যার ব্যবহার করে, এম্বেডেড সিস্টেমের জন্য উপযুক্ত)"
+
+msgid "mime_msi"
+msgstr "MSI ইনস্টলেশন প্যাকেজ (মাইক্রোসফট ১৯৯৯ সালে চালু করে, উইন্ডোজ ইনস্টলার প্যাকেজ ফরম্যাট। উইন্ডোজ অ্যাপ্লিকেশন ইনস্টলেশন মানক ফরম্যাট, লেনদেন রোলব্যাক, কম্পোনেন্ট ম্যানেজমেন্ট, নীরব ইনস্টলেশন সমর্থন করে। এন্টারপ্রাইজ-স্তরের সফটওয়্যার বিতরণের জন্য প্রথম পছন্দের ফরম্যাট, এখনও উইন্ডোজ সফটওয়্যার ইনস্টলেশনের জন্য মূলধারার ফরম্যাট)"
+
+msgid "mime_pkg"
+msgstr "PKG ইনস্টলেশন প্যাকেজ (macOS অ্যাপ্লিকেশন ইনস্টলেশন প্যাকেজ ফরম্যাট, Apple এর ইনস্টলার প্রযুক্তির ভিত্তিতে। macOS সফটওয়্যার বিতরণ মানক ফরম্যাট, কম্পোনেন্ট নির্বাচন, ইনস্টলেশন স্ক্রিপ্ট, আনইনস্টল ফাংশন সমর্থন করে। .pkg ফাইল ডাবল-ক্লিক করে ইনস্টল করুন, ম্যাক অ্যাপ স্টোরের বাইরের সফটওয়্যারের জন্য সাধারণ বিতরণ পদ্ধতি)"
+
+msgid "mime_apk"
+msgstr "এপিকে অ্যান্ড্রয়েড অ্যাপ্লিকেশন প্যাকেজ (২০০৮ সালে গুগল চালু করে, অ্যান্ড্রয়েড সিস্টেমের ঐতিহ্যবাহী অ্যাপ্লিকেশন ইনস্টলেশন ফরম্যাট। এপিকে মূলত একটি জিপ প্যাকেজ, যা কোড, রিসোর্স এবং ম্যানিফেস্ট ফাইল ধারণ করে। ২০২১ সাল থেকে গুগল প্লে নতুন অ্যাপ্লিকেশনগুলিকে এএবি ফরম্যাট ব্যবহার করতে বাধ্য করে, কিন্তু এপিকে এখনও ডিবাগিং, তৃতীয়-পক্ষের স্টোর এবং সাইড-লোডিংয়ের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_ipa"
+msgstr "আইপিএ অ্যাপল অ্যাপ্লিকেশন প্যাকেজ (আইওএস অ্যাপ স্টোর প্যাকেজ, আইওএস/আইপ্যাডওএস অ্যাপ্লিকেশন ইনস্টলেশন ফরম্যাট। ২০০৮ সালে আইফোন এসডিকে সহ চালু হয়। অ্যাপ স্টোরের মাধ্যমে বিতরণ করতে হবে বা এন্টারপ্রাইজ সার্টিফিকেট দিয়ে স্বাক্ষর করতে হবে। এক্সিকিউটেবল ফাইল, রিসোর্স, ইনফো.পিএলআইস্ট এবং স্বাক্ষরের তথ্য ধারণ করে)"
+
+msgid "mime_hap"
+msgstr "এইচএপি হারমনিওএস অ্যাপ্লিকেশন প্যাকেজ (হারমনিওএস অ্যাবিলিটি প্যাকেজ, হারমনিওএস অ্যাপ্লিকেশনের মৌলিক একক। ২০২০ সালে হারমনিওএস ২.০ সহ চালু হয়। এন্ট্রি এবং ফিচার নামে দুটি ধরন সমর্থন করে, হুয়াওয়ে ফোন, ট্যাবলেট, স্মার্টওয়াচ এবং অন্যান্য হারমনিওএস ডিভাইসের জন্য বিতরণ ফরম্যাট)"
+
+msgid "mime_har"
+msgstr "এইচএআর হারমনিওএস স্ট্যাটিক শেয়ার্ড লাইব্রেরি (হারমনিওএস আর্কাইভ, হারমনিওএসের স্ট্যাটিক শেয়ার্ড লাইব্রেরি, একাধিক এইচএপি প্যাকেজের দ্বারা ভাগ করা যায়, কম্পোনেন্ট-ভিত্তিক উন্নয়ন এবং মডিউল পুনঃব্যবহারের জন্য ব্যবহৃত)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (গুগল ২০১৮ সালে চালু করে, ২০২১ সাল থেকে গুগল প্লেতে নতুন অ্যাপ্লিকেশন এই ফরম্যাট ব্যবহার করতে বাধ্য। AAB বিতরণ ফরম্যাট, গুগল প্লে ডিভাইস কনফিগারেশন (সিপিইউ আর্কিটেকচার, স্ক্রিন ঘনত্ব, ভাষা) অনুসারে অনুকূলিত APK তৈরি করে, প্যাকেজের আকার গড়ে ৩৫% হ্রাস পায়। ডেভেলপার AAB আপলোড করে, ব্যবহারকারী APK ডাউনলোড করে)"
+
+msgid "mime_xapk"
+msgstr "XAPK অ্যাপ্লিকেশন প্যাকেজ (তৃতীয়-পক্ষের Android অ্যাপ্লিকেশন এক্সটেনশন প্যাকেজ, APK + OBB ডেটা ফাইল ধারণ করে। বড় গেম এবং জটিল অ্যাপ্লিকেশনের জন্য ব্যবহৃত হয়, একক-ফাইল APK এর ১০০MB সীমা সমাধান করে। APKPure, APKMirror এর মতো তৃতীয়-পক্ষের অ্যাপ্লিকেশন স্টোরে সাধারণত পাওয়া যায়, গুগলের অফিসিয়াল ফরম্যাট নয়)"
+
+msgid "mime_appx"
+msgstr "উইন্ডোজ অ্যাপ্লিকেশন প্যাকেজ (মাইক্রোসফট ২০১২ সালে চালু করে, উইন্ডোজ 8/10/11 অ্যাপ্লিকেশন ইনস্টলেশন ফরম্যাট। UWP অ্যাপ্লিকেশন এবং ডেস্কটপ অ্যাপ্লিকেশন রূপান্তর সমর্থন করে, মাইক্রোসফট স্টোরের মাধ্যমে বিতরণ করা হয়। ২০২৪ সালে মাইক্রোসফট MSIX কে উত্তরসূরি ফরম্যাট হিসাবে চালু করে, ধীরে ধীরে APPX প্রতিস্থাপন করছে)"
+
+msgid "mime_msix"
+msgstr "MSIX অ্যাপ্লিকেশন প্যাকেজ (মাইক্রোসফট ২০১৮ সালে চালু করে, উইন্ডোজের নতুন প্রজন্মের অ্যাপ্লিকেশন প্যাকেজিং ফরম্যাট। APPX এবং MSI এর সুবিধাগুলি একত্রিত করে, সমস্ত উইন্ডোজ অ্যাপ্লিকেশন টাইপ সমর্থন করে, মাইক্রোসফট স্টোর বা সাইড-লোডের মাধ্যমে বিতরণ করা যেতে পারে, উইন্ডোজ 11 এর জন্য সুপারিশকৃত ফরম্যাট)"
+
+msgid "mime_appimage"
+msgstr "AppImage অ্যাপ্লিকেশন প্যাকেজ (২০০৪ সালে চালু হয়, Linux ইনস্টলেশন-মুক্ত অ্যাপ্লিকেশন ফরম্যাট। 'এক অ্যাপ্লিকেশন একটি ফাইল', ইনস্টলেশন ছাড়াই সরাসরি চলে, অধিকাংশ Linux ডিস্ট্রিবিউশন সমর্থন করে, ডেভেলপারদের জন্য Linux সফটওয়্যার বিতরণের সাধারণ পদ্ধতি)"
+
+msgid "mime_flatpak"
+msgstr "Flatpak অ্যাপ্লিকেশন প্যাকেজ (২০১৫ সালে চালু হয়, Linux স্যান্ডবক্স অ্যাপ্লিকেশন ফরম্যাট। ডিস্ট্রিবিউশন জুড়ে চলে, হোস্ট সিস্টেম থেকে পৃথক, Fedora, Red Hat দ্বারা নেতৃত্বাধীন উন্নয়ন, GNOME সফটওয়্যার সেন্টারের ডিফল্ট ফরম্যাট)"
+
+msgid "mime_snap"
+msgstr "Snap অ্যাপ্লিকেশন প্যাকেজ (ক্যানোনিকাল ২০১৪ সালে চালু করে, উবুন্টুর মূল সংস্থা তৈরি করে, Linux সাধারণ অ্যাপ্লিকেশন ফরম্যাট। স্বয়ংক্রিয় আপডেট, স্যান্ডবক্স বিচ্ছিন্নতা, ৪০+ Linux ডিস্ট্রিবিউশন সমর্থন করে, উবুন্টু সফটওয়্যার সেন্টারের ডিফল্ট ফরম্যাট)"
+
+msgid "mime_deb"
+msgstr "Debian সফটওয়্যার প্যাকেজ (ডেবিয়ান প্রকল্প ১৯৯৩ সালে চালু করে, ডেবিয়ান/উবুন্টু এবং তাদের উদ্ভূত সংস্করণগুলির জন্য মানক ইনস্টলেশন ফরম্যাট। dpkg দ্বারা পরিচালিত, APT এর প্যাকেজ ম্যানেজার ফ্রন্ট-এন্ড, Linux ইকোসিস্টেমের সবচেয়ে পরিপক্ক প্যাকেজ ফরম্যাটগুলির মধ্যে একটি, এখনও ডেবিয়ান পরিবারে মূলধারার ফরম্যাট)"
+
+msgid "mime_rpm"
+msgstr "RPM সফটওয়্যার প্যাকেজ (রেড হ্যাট ১৯৯৭ সালে চালু করে, রেড হ্যাট/ফেডোরা/সেন্টওএস/সুসের মতো ডিস্ট্রিবিউশনের জন্য মানক ফরম্যাট। RPM এর পূর্ণরূপ 'রেড হ্যাট প্যাকেজ ম্যানেজার', DEB এর সাথে Linux এর দুটি প্রধান প্যাকেজ ফরম্যাটের একটি, এখনও RHEL পরিবারে মূলধারার ফরম্যাট)"
+
+msgid "mime_pacman"
+msgstr "Arch সফটওয়্যার প্যাকেজ (আর্চ লিনাক্স ২০০২ সালে চালু করে, pacman প্যাকেজ ম্যানেজার দ্বারা ব্যবহৃত .pkg.tar.zst ফরম্যাট। আর্চ লিনাক্স রোলিং রিলিজের মূল, সরলতা এবং KISS নীতির জন্য বিখ্যাত, AUR (Arch ব্যবহারকারী সংগ্রহস্থল) এর বৈশিষ্ট্য)"
+
+msgid "mime_exe"
+msgstr "EXE এক্সিকিউটেবল ফাইল (উইন্ডোজ এক্সিকিউটেবল প্রোগ্রাম ফরম্যাট, 'Executable' এর সংক্ষিপ্ত রূপ। উইন্ডোজ অপারেটিং সিস্টেমের স্থানীয় এক্সিকিউশন ফরম্যাট, PE কাঠামো অন্তর্ভুক্ত। MS-DOS এর MZ ফরম্যাট থেকে বিবর্তিত, ১৯৯৩ সালে উইন্ডোজ এনটি PE (পোর্টেবল এক্সিকিউটেবল) ফরম্যাট প্রবর্তন করে এবং আজ পর্যন্ত ব্যবহার করছে। সফটওয়্যার ইনস্টলেশন প্যাকেজ, অ্যাপ্লিকেশন, সিস্টেম সরঞ্জাম সব এই ফরম্যাট ব্যবহার করে। ব্যবহারকারী ডাবল-ক্লিক করে চালায়, বিশ্বের সবচেয়ে ব্যাপকভাবে ব্যবহৃত এক্সিকিউটেবল ফরম্যাট)"
+
+msgid "mime_dll"
+msgstr "DLL ডায়নামিক লিংক লাইব্রেরি (মাইক্রোসফট ১৯৯৩ সালে চালু করে, ডায়নামিক লিংক লাইব্রেরি। উইন্ডোজের ভাগ করা কোড লাইব্রেরি, প্রোগ্রাম চলাকালীন ডায়নামিকভাবে লোড হয়, মেমরি এবং ডিস্ক স্থান বাঁচায়। সিস্টেম কম্পোনেন্ট, অ্যাপ্লিকেশন প্লাগইন, ড্রাইভার সব DLL ফরম্যাট ব্যবহার করে। উইন্ডোজ এপিআই এর প্রধান বাস্তবায়ন পদ্ধতি, DLL Hell সমস্যা .NET যুগে প্রশমিত হয়েছে)"
+
+msgid "mime_com"
+msgstr "COM এক্সিকিউটেবল ফাইল (MS-DOS যুগের এক্সিকিউটেবল ফরম্যাট, 'Command' এর সংক্ষিপ্ত রূপ। ফাইল কাঠামো সরল, ৬৪KB সীমা, উইন্ডোজ 3.x এর আগে প্রধান ফরম্যাট ছিল, বিলুপ্ত। আধুনিক উইন্ডোজ EXE ফরম্যাট ব্যবহার করে, COM এক্সটেনশন এখনও কিছু কম্পোনেন্ট ফাইলের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_aac"
+msgstr "AAC অডিও (১৯৯৭ সালে MPEG মানক, অ্যাডভান্সড অডিও কোডিং। MP3 এর উত্তরসূরি, একই বিট রেটে MP3 থেকে ভাল অডিও গুণমান, YouTube, iTunes, নিন্টেন্ডো সুইচের ডিফল্ট অডিও ফরম্যাট)"
+
+msgid "mime_alac"
+msgstr "ALAC অডিও (অ্যাপল ২০০৪ সালে তৈরি করে, অ্যাপল লসলেস অডিও কোডেক। অ্যাপলের ক্ষতিহীন ফরম্যাট, ২০১১ সালে ওপেন সোর্স হয়, iTunes এবং অ্যাপল মিউজিকে ক্ষতিহীন অডিওর জন্য ডিফল্ট ফরম্যাট)"
+
+msgid "mime_flac"
+msgstr "FLAC অডিও (Xiph.Org ফাউন্ডেশন ২০০১ সালে তৈরি করে, ফ্রি লসলেস অডিও কোডেক। ক্ষতিহীন সংকোচন, অডিও গুণমান সিডির সমান, ফাইলের আকার মূল WAV এর প্রায় অর্ধেক। ওপেন সোর্স এবং পেটেন্ট-মুক্ত, অডিও উত্সাহী এবং ডিজিটাল সঙ্গীত সংগ্রহের জন্য প্রথম পছন্দের ফরম্যাট)"
+
+msgid "mime_mp3"
+msgstr "MP3 অডিও (ফ্রাউনহোফার ইনস্টিটিউট ১৯৯৩ সালে তৈরি করে, MPEG-1 অডিও লেয়ার 3। ক্ষতিকর সংকোচন ফরম্যাট, ছোট ফাইল কিন্তু গ্রহণযোগ্য অডিও গুণমান, ২০০০ এর দশকের ডিজিটাল সঙ্গীত বিপ্লবের প্রধান ফরম্যাট, আইপড এবং ন্যাপস্টারের অবদানকারী। পেটেন্ট ২০১৭ সালে মেয়াদোত্তীর্ণ হয়, পাবলিক ডোমেইন ফরম্যাট হয়ে যায়)"
+
+msgid "mime_oga"
+msgstr "Ogg Audio অডিও (Xiph.Org ফাউন্ডেশন দ্বারা তৈরি, Ogg কন্টেইনারের বিশুদ্ধ অডিও ফরম্যাট, Vorbis কোডেক ব্যবহার করে। ওপেন সোর্স এবং পেটেন্ট-মুক্ত, সংকোচন দক্ষতা MP3 থেকে ভাল, ওপেন সোর্স প্রকল্পে ব্যাপকভাবে ব্যবহৃত হয়)"
+
+msgid "mime_ogg"
+msgstr "OGG অডিও (Xiph.Org ফাউন্ডেশন ২০০০ সালে তৈরি করে, Ogg Vorbis ফরম্যাট। ওপেন সোর্স এবং পেটেন্ট-মুক্ত, সংকোচন দক্ষতা MP3 থেকে ভাল, প্রাথমিক Spotify এটি ব্যবহার করত, গেম অডিও ইফেক্টে ব্যাপকভাবে ব্যবহৃত হয়)"
+
+msgid "mime_opus"
+msgstr "Opus অডিও (IETF ২০১২ সালে মানীকৃত করে, ওপেন সোর্স এবং পেটেন্ট-মুক্ত অডিও ফরম্যাট, SILK এবং CELT প্রযুক্তির সমন্বয়, খুব কম বিলম্ব, সর্বোচ্চ সংকোচন দক্ষতা, WebRTC, WhatsApp, Discord এর ডিফল্ট অডিও ফরম্যাট)"
+
+msgid "mime_wav"
+msgstr "WAV অডিও (মাইক্রোসফট এবং আইবিএম ১৯৯১ সালে তৈরি করে, উইন্ডোজের স্থানীয় অডিও ফরম্যাট। PCM এনকোডিং, সংকুচিত নয়, ক্ষতিহীন অডিও গুণমান কিন্তু ফাইল খুব বড়, পেশাদার অডিও সম্পাদনার জন্য মানক ফরম্যাট)"
+
+msgid "mime_wma"
+msgstr "WMA অডিও (মাইক্রোসফট ১৯৯৯ সালে তৈরি করে, উইন্ডোজ মিডিয়া অডিও। ক্ষতিকর/ক্ষতিহীন উভয় সংস্করণ রয়েছে, উইন্ডোজে স্থানীয়ভাবে সমর্থিত, উইন্ডোজ মিডিয়া প্লেয়ারের সাথে ছড়িয়ে পড়ে। এখন প্রান্তিক হয়ে গেছে, MP3/AAC দ্বারা প্রতিস্থাপিত)"
+
+msgid "mime_dsf"
+msgstr "DSF অডিও (ডাইরেক্ট স্ট্রিম ডিজিটাল ফরম্যাট, সনি এবং ফিলিপস দ্বারা তৈরি। ১-বিট উচ্চ নমুনা হার, DSD অডিও মানক ফরম্যাট, SACD এর ডিজিটাল সংস্করণ, অডিও উত্সাহীদের জন্য উচ্চ-স্তরের অডিও ফরম্যাট, ফাইল খুব বড়)"
+
+msgid "mime_ape"
+msgstr "APE অডিও (2000 সালে Monkey's Audio দ্বারা বিকশিত, লসলেস কম্প্রেশন ফরম্যাট। FLAC-এর চেয়ে উচ্চতর কম্প্রেশন কিন্তু ধীর এনকোডিং, এখনও উইন্ডোজ প্ল্যাটফর্ম এবং সঙ্গীত উত্সাহীদের মধ্যে ব্যবহৃত হচ্ছে)"
+
+msgid "mime_mid"
+msgstr "MIDI অডিও (MIDI অ্যাসোসিয়েশন ১৯৮৩ সালে নির্ধারণ করে, মিউজিক্যাল ইন্সট্রুমেন্ট ডিজিটাল ইন্টারফেস। রেকর্ডিং নয় বরং সঙ্গীত নোট ফরম্যাট, ফাইল খুব ছোট, ইলেকট্রনিক বাদ্যযন্ত্র, ফোন রিংটোন, গেম অডিও ইফেক্টের জন্য মানক। জেনারেল MIDI ১৯৯১ সালে মানীকৃত হয়, ১২৮টি বাদ্যযন্ত্রের শব্দ সংজ্ঞায়িত করে)"
+
+msgid "mime_m4a"
+msgstr "M4A অডিও (MPEG-4 অডিও, AAC এর কন্টেইনার ফরম্যাট। আইটিউনস মিউজিক স্টোরের মানক ফরম্যাট, অ্যাপল ইকোসিস্টেমের প্রধান অডিও ফরম্যাট, DRM সুরক্ষা সমর্থন করে)"
+
+msgid "mime_m3u"
+msgstr "M3U প্লেলিস্ট (MP3 URL প্লেলিস্ট ফরম্যাট, প্লেইন টেক্সট ফাইল, অডিও ফাইল পাথ রেকর্ড করে। উইনাম্প যুগের মানক, অনলাইন রেডিও, অনলাইন মিউজিক স্ট্রিমিংয়ের জন্য ব্যবহৃত হয়। M3U8 এর UTF-8 সংস্করণ, HTTP লাইভ স্ট্রিমিংয়ের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_asf"
+msgstr "ASF স্ট্রিমিং মিডিয়া (মাইক্রোসফট ১৯৯৬ সালে তৈরি করে, অ্যাডভান্সড সিস্টেম ফরম্যাট। উইন্ডোজ মিডিয়া স্ট্রিমিং কন্টেইনার, অডিও এবং ভিডিও সমলয় ট্রান্সমিশন সমর্থন করে। অনলাইন লাইভ সম্প্রচার এবং ভিডিও-অন-ডিমান্ড স্ট্রিমিংয়ের জন্য ব্যবহৃত হয়, WMA/WMV উভয়ই ASF কন্টেইনারের ভিত্তিতে তৈরি)"
+
+msgid "mime_avi"
+msgstr "AVI ভিডিও (মাইক্রোসফট ১৯৯২ সালে চালু করে, উইন্ডোজের প্রাথমিক ভিডিও মানক। 'অডিও ভিডিও ইন্টারলিভ', অডিও এবং ভিডিও পর্যায়ক্রমে সংরক্ষণ করে, ১৯৯০-২০০০ এর দশকে সবচেয়ে জনপ্রিয় ভিডিও ফরম্যাট ছিল, এখন MP4/MKV দ্বারা প্রতিস্থাপিত)"
+
+msgid "mime_divx"
+msgstr "DivX ভিডিও (DivX কর্পোরেশন ১৯৯৮ সালে তৈরি করে, MPEG-4 এর ভিত্তিতে ভিডিও কোডেক ফরম্যাট। ২০০০ এর দশকের অনলাইন ভিডিও ভাগাভাগির প্রধান ফরম্যাট, ডিভিডি কোয়ালিটি সিডি আকারে সংকুচিত করার প্রথম প্রযুক্তি। কপিরাইট বিরোধের কারণে, পরে বাণিজ্যিক এনকোডারে রূপান্তরিত হয়)"
+
+msgid "mime_mp4"
+msgstr "MP4 ভিডিও (২০০১ সালে MPEG মানক, MPEG-4 পার্ট 14। বিশ্বের সবচেয়ে সাধারণ ভিডিও ফরম্যাট, H.264/H.265 এনকোডিং সমর্থন করে, ইন্টারনেট ভিডিও, ফোন রেকর্ডিং, ইউটিউবের ডিফল্ট ফরম্যাট)"
+
+msgid "mime_m4v"
+msgstr "M4V ভিডিও (আইটিউনসের ভিডিও ফরম্যাট, MP4 এর একটি ভিন্নতা। অ্যাপল ইকোসিস্টেমের ভিডিও ফরম্যাট, আইটিউনস স্টোরের চলচ্চিত্র এবং টেলিভিশন অনুষ্ঠানের মানক ফরম্যাট, DRM কপিরাইট সুরক্ষা সমর্থন করে)"
+
+msgid "mime_mpeg"
+msgstr "MPEG ভিডিও (MPEG সংস্থা ১৯৮৮ সালে নির্ধারণ করে, মুভিং পিকচার এক্সপার্ট গ্রুপ। ডিজিটাল ভিডিও সংকোচন মানকগুলির ভিত্তি স্থাপনকারী, MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (অনলাইন ভিডিও) গভীর প্রভাব ফেলেছে)"
+
+msgid "mime_mkv"
+msgstr "MKV ভিডিও (মাত্রোস্কা প্রকল্প ২০০২ সালে তৈরি করে, ওপেন সোর্স মাল্টিমিডিয়া কন্টেইনার ফরম্যাট। একাধিক অডিও ট্র্যাক, একাধিক সাবটাইটেল, অধ্যায় সমর্থন করে, 'র্যাপার টুল', উচ্চ-রেজোলিউশন চলচ্চিত্র ভাগাভাগির জন্য প্রথম পছন্দের ফরম্যাট)"
+
+msgid "mime_mpg"
+msgstr "MPEG ভিডিও (MPEG-1/MPEG-2 ভিডিও এক্সটেনশন, VCD এবং DVD এর জন্য মানক ফরম্যাট। ১৯৯০-২০০০ এর দশকে ডিস্কে ভিডিওর প্রধান ফরম্যাট ছিল, এখন H.264/H.265 দ্বারা প্রতিস্থাপিত)"
+
+msgid "mime_ogv"
+msgstr "Ogg Video ভিডিও (Xiph.Org ফাউন্ডেশন দ্বারা তৈরি, Ogg কন্টেইনারের ভিডিও ফরম্যাট, থিওরা কোডেক ব্যবহার করে। ওপেন সোর্স এবং পেটেন্ট-মুক্ত, HTML5 ভিডিওর প্রাথমিক মানকগুলির মধ্যে একটি, ফায়ারফক্স স্থানীয়ভাবে সমর্থন করে)"
+
+msgid "mime_ogx"
+msgstr "Ogg মাল্টিমিডিয়া কন্টেইনার (Xiph.Org ফাউন্ডেশন দ্বারা তৈরি, Ogg কন্টেইনারের সাধারণ এক্সটেনশন, অডিও, ভিডিও, সাবটাইটেলের মতো একাধিক ট্র্যাক ধারণ করতে পারে। ওপেন সোর্স মাল্টিমিডিয়া মানক, গেম, স্ট্রিমিংয়ের জন্য ব্যবহৃত হয়)"
+
+msgid "mime_rm"
+msgstr "রিয়েল মিডিয়া ভিডিও (রিয়েল নেটওয়ার্কস ১৯৯৫ সালে তৈরি করে, রিয়েল মিডিয়া ফরম্যাট। ১৯৯০-২০০০ এর দশকে অনলাইন স্ট্রিমিংয়ের অগ্রদূত, রিয়েল প্লেয়ারের প্রধান ফরম্যাট। দুর্বলতা: বিশেষ প্লেয়ার প্রয়োজন, দুর্বল সংকোচনের গুণমান, পরে Flash/MP4 দ্বারা প্রতিস্থাপিত)"
+
+msgid "mime_flv"
+msgstr "Flash ভিডিও (২০০২ সালে ফরম্যাট দেখা দেয়, ফ্ল্যাশ ভিডিও ফরম্যাট। এক সময় অনলাইন ভিডিওর প্রধান ফরম্যাট ছিল, প্রাথমিক YouTube এটি ব্যবহার করত। দুর্বলতা: Flash প্লাগইনের প্রয়োজন, দুর্বল কর্মক্ষমতা, অনেক সুরক্ষা দুর্বলতা। ২০১৫ সাল থেকে প্রধান ওয়েবসাইটগুলি HTML5 ভিডিওতে স্যুইচ করেছে, এখন বিলুপ্ত)"
+
+msgid "mime_f4v"
+msgstr "F4V ভিডিও (Adobe দ্বারা তৈরি Flash ভিডিও ফরম্যাট, FLV এর উত্তরসূরি। MPEG-4 মানকের ভিত্তিতে, H.264 এনকোডিং সমর্থন করে। Flash প্রযুক্তির সাথে বিলুপ্ত, Adobe ২০২০ সালে সমর্থন বন্ধ করে)"
+
+msgid "mime_wmv"
+msgstr "WMV ভিডিও (মাইক্রোসফট ১৯৯৯ সালে তৈরি করে, উইন্ডোজ মিডিয়া ভিডিও। উইন্ডোজে স্থানীয়ভাবে সমর্থিত, স্ট্রিমিং ট্রান্সমিশনের জন্য অনুকূলিত, প্রাথমিক অনলাইন ভিডিওতে সাধারণ ফরম্যাট ছিল, এখন প্রান্তিক হয়ে গেছে)"
+
+msgid "mime_wmf"
+msgstr "WMF মিডিয়া ফরম্যাট (উইন্ডোজ মিডিয়া ফরম্যাট, মাইক্রোসফটের মিডিয়া ফ্রেমওয়ার্ক, WMV ভিডিও, WMA অডিও অন্তর্ভুক্ত, উইন্ডোজ মিডিয়া প্লেয়ার দ্বারা স্থানীয়ভাবে সমর্থিত)"
+
+msgid "mime_mov"
+msgstr "MOV ভিডিও (অ্যাপল ১৯৯১ সালে তৈরি করে, কুইকটাইম কন্টেইনার ফরম্যাট। পেশাদার ভিডিও সম্পাদনার জন্য মানক ফরম্যাট, একাধিক কোডেক সমর্থন করে, ফাইনাল কাট প্রো, প্রিমিয়ার দ্বারা স্থানীয়ভাবে সমর্থিত)"
+
+msgid "mime_qt"
+msgstr "কুইকটাইম ভিডিও (অ্যাপল ১৯৯১ সালে চালু করে, কুইকটাইম ফরম্যাট। ম্যাক প্ল্যাটফর্মের ভিডিও মানক, MOV এর কন্টেইনার, কুইকটাইম প্লেয়ার এক সময় ব্যাপকভাবে ব্যবহৃত হত। অ্যাপল ২০১৬ সালে উইন্ডোজ সংস্করণ উন্নয়ন বন্ধ করে, ধীরে ধীরে MP4 দ্বারা প্রতিস্থাপিত)"
+
+msgid "mime_webm"
+msgstr "WebM ভিডিও (গুগল ২০১০ সালে চালু করে, ওপেন সোর্স এবং পেটেন্ট-মুক্ত ভিডিও ফরম্যাট। মাত্রোস্কা কন্টেইনারের ভিত্তিতে, VP8/VP9 এনকোডিং, HTML5 ভিডিও মানক ফরম্যাট, ইউটিউবের ওয়েবে ডিফল্ট প্লেব্যাক ফরম্যাট)"
+
+msgid "mime_3gp"
+msgstr "3GP ভিডিও (3GPP ২০০০ সালে নির্ধারণ করে, মোবাইল ডিভাইসের জন্য ভিডিও ফরম্যাট। ফাইল খুব ছোট, কম গুণমান, প্রাথমিক ফিচার ফোনের ভিডিও রেকর্ডিং ফরম্যাট, MMS পাঠানোর জন্য ব্যবহৃত হত)"
+
+#------------------------------------------------------------------------------
+# প্রযুক্তিগত মাত্রা
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "অপারেটিং সিস্টেম"
+
+msgid "Top 5 Operating Systems"
+msgstr "শীর্ষ 5 অপারেটিং সিস্টেম"
+
+msgid "Unknown Robot"
+msgstr "অজানা ক্লায়েন্ট"
+
+msgid "User agent"
+msgstr "ইউজার এজেন্ট"
+
+msgid "Browsers"
+msgstr "ব্রাউজার"
+
+msgid "Top 5 Browsers"
+msgstr "শীর্ষ 5 ব্রাউজার"
+
+msgid "Unknown Robot RH"
+msgstr "অজানা অনুরোধ হেডার"
+
+msgid "Detailed"
+msgstr "অ্যাক্সেস করা ডিভাইসের সংস্করণ"
+
+msgid "DetailedOS"
+msgstr "অপারেটিং সিস্টেমের সংস্করণ"
+
+msgid "DetailedBS"
+msgstr "ব্রাউজারের সংস্করণ"
+
+msgid "Screen sizes"
+msgstr "স্ক্রিনের আকার"
+
+msgid "Compression"
+msgstr "সংকোচন"
+
+msgid "In"
+msgstr "ইনপুট"
+
+msgid "Out"
+msgstr "আউটপুট"
+
+msgid "Saved"
+msgstr "সঞ্চয়"
+
+#------------------------------------------------------------------------------
+# উৎস মাত্রা
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "উৎস"
+
+msgid "Referers"
+msgstr "উৎস"
+
+msgid "meta.description"
+msgstr "AWStats উন্নত ওয়েব লগ বিশ্লেষক - রিয়েল-টাইমে ওয়েব ট্রাফিক পর্যবেক্ষণ, দর্শক বিশ্লেষণ, সার্চ ইঞ্জিন কীওয়ার্ড, ত্রুটি পৃষ্ঠার পরিসংখ্যান। ডার্ক মোড, বহুভাষিক ইন্টারফেস সমর্থন করে, ওয়েব প্রশাসকদের জন্য ব্যাপক ডেটা বিশ্লেষণ প্রদান করে।"
+
+msgid "meta.keywords"
+msgstr "AWStats,ওয়েব পরিসংখ্যান,লগ বিশ্লেষণ,ট্রাফিক পর্যবেক্ষণ,অ্যাক্সেস পরিসংখ্যান,SEO বিশ্লেষণ,ওয়েব বিশ্লেষণ সরঞ্জাম,Web Analytics,Log Analyzer"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - ওয়েব লগ বিশ্লেষণ"
+
+msgid "og.description"
+msgstr "📊 পেশাদার ওপেন সোর্স ওয়েব পরিসংখ্যান সরঞ্জাম, আপনার ওয়েবসাইটের ট্রাফিক এবং দর্শক আচরণ রিয়েল-টাইমে বিশ্লেষণ করে।"
+
+msgid "og.image.alt"
+msgstr "AWStats পরিসংখ্যান চার্ট"
+
+msgid "Created by"
+msgstr "%s দ্বারা তৈরি"
+
+msgid "plugins"
+msgstr "প্লাগইন"
+
+msgid "dbip by"
+msgstr "থেকে ডেটা"
+
+msgid "IPDB by"
+msgstr "ভৌগলিক অবস্থান ডেটা DB-IP দ্বারা"
+
+msgid "Configured"
+msgstr "কনফিগার করা হয়েছে"
+
+msgid "Missing"
+msgstr "অনুপস্থিত"
+
+msgid "OK"
+msgstr "ঠিক আছে"
+
+msgid "Unused"
+msgstr "অব্যবহৃত"
+
+msgid "Overall Health"
+msgstr "সামগ্রিক স্বাস্থ্য"
+
+msgid "Excellent"
+msgstr "চমৎকার"
+
+msgid "Good"
+msgstr "ভাল"
+
+msgid "Fair"
+msgstr "মধ্যম"
+
+msgid "Poor"
+msgstr "দুর্বল"
+
+msgid "Missing icon types"
+msgstr "অনুপস্থিত আইকনের ধরন"
+
+msgid "See"
+msgstr "বিস্তারিত দেখুন"
+
+msgid "Expected Path"
+msgstr "পাথ বিবরণ"
+
+msgid "column for file locations"
+msgstr "ফাইলের অবস্থান পেতে কলাম"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "টিপ: আপনার যদি সম্পর্কিত আইকন তৈরি করার প্রয়োজন হয়, আপনি একটি লোগো ছবি আপলোড করতে %s ব্যবহার করতে পারেন, এবং এটি স্বয়ংক্রিয়ভাবে উপরের সমস্ত সম্পর্কিত আইকন ফাইল তৈরি করবে"
+
+msgid "200: success, 404: failure"
+msgstr "200 সাফল্যের সংখ্যা 404 ব্যর্থতার সংখ্যা"
+
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png বা /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg বা /logo.png (HTML/JSON-LD এ উল্লেখ করা প্রয়োজন)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest বা /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg ইত্যাদি"
+
+msgid "Favicon"
+msgstr "ওয়েবসাইট আইকন"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "অ্যাপল টাচ আইকন (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "সাইট লোগো"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "ওয়েব অ্যাপ ম্যানিফেস্ট ফাইল (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "উইন্ডোজ ব্রাউজার কনফিগারেশন"
+
+msgid "Safari Pinned Tab"
+msgstr "সাফারি পিন করা ট্যাব আইকন"
+
+msgid "Social Icon"
+msgstr "সামাজিক মিডিয়া আইকন"
+
+msgid "Icon Files Status"
+msgstr "আইকন ফাইলের অবস্থা"
+
+msgid "Icon Type"
+msgstr "আইকনের ধরন"
+
+msgid "Total"
+msgstr "মোট"
+
+msgid "Advanced Web Statistics"
+msgstr "উন্নত লগ বিশ্লেষক"
+
+msgid "Advanced Web Statistics %s"
+msgstr "উন্নত লগ বিশ্লেষক %s"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "আপনার ব্রাউজার ফ্রেম সমর্থন করে না। একটি আধুনিক ব্রাউজার ব্যবহার করুন।"
+
+msgid "View statistics directly"
+msgstr "সরাসরি পরিসংখ্যান দেখুন"
+
+msgid "Close"
+msgstr "বন্ধ করুন"
+
+msgid "Documentation Viewer"
+msgstr "ডকুমেন্টেশন দর্শক"
+
+msgid "Direct address / Bookmarks"
+msgstr "সরাসরি ঠিকানা / বুকমার্ক"
+
+msgid "Search Engines"
+msgstr "সার্চ ইঞ্জিন"
+
+msgid "Refering search engines"
+msgstr "রেফারিং সার্চ ইঞ্জিন"
+
+msgid "External pages"
+msgstr "বাহ্যিক পৃষ্ঠা"
+
+msgid "Refering pages"
+msgstr "রেফারেন্স পৃষ্ঠা"
+
+msgid "Internal pages"
+msgstr "অভ্যন্তরীণ পৃষ্ঠা"
+
+msgid "UnknownAccessSource"
+msgstr "অজানা অ্যাক্সেস উৎস"
+
+msgid "Different refering pages"
+msgstr "বিভিন্ন রেফারেন্স পৃষ্ঠা"
+
+msgid "Keyphrases"
+msgstr "কীওয়ার্ড বাক্যাংশ"
+
+msgid "Keywords"
+msgstr "কীওয়ার্ড"
+
+msgid "Keyphrases/Keywords"
+msgstr "কীওয়ার্ড বাক্যাংশ/কীওয়ার্ড"
+
+msgid "Different keyphrases"
+msgstr "বিভিন্ন কীওয়ার্ড বাক্যাংশ"
+
+msgid "Different keywords"
+msgstr "বিভিন্ন কীওয়ার্ড"
+
+#------------------------------------------------------------------------------
+# পৃষ্ঠা মাত্রা
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "দেখা পৃষ্ঠা"
+
+msgid "Different pages"
+msgstr "বিভিন্ন পৃষ্ঠা"
+
+msgid "Entry"
+msgstr "প্রবেশ অবস্থান"
+
+msgid "Exit"
+msgstr "প্রস্থান অবস্থান"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "রেফারার"
+
+msgid "Host"
+msgstr "হোস্ট"
+
+#------------------------------------------------------------------------------
+# ত্রুটি এবং অবস্থা
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "ত্রুটি"
+
+msgid "HTTP Status Statistics"
+msgstr "HTTP অবস্থা কোড পরিসংখ্যান"
+
+msgid "SMTP Error codes"
+msgstr "SMTP ত্রুটি কোড"
+
+msgid "Page not found"
+msgstr "অনুরোধ করা পৃষ্ঠা পাওয়া যায়নি"
+
+msgid "Unknown error"
+msgstr "অজানা ত্রুটি"
+
+msgid "Abnormal traffic note"
+msgstr "অস্বাভাবিক ট্রাফিকের অন্তর্ভুক্ত: সার্চ বট, এআই প্রশিক্ষণ বট, দুর্বলতা স্ক্যানার এবং স্পেসিফিকেশন অনুসরণ করে না এমন অনুরোধ"
+
+msgid "Page detail"
+msgstr "পৃষ্ঠার বিবরণ"
+
+msgid "AWStats did not found the"
+msgstr "AWStats খুঁজে পায়নি"
+
+msgid "in your log records."
+msgstr "আপনার লগ রেকর্ডে"
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "AWStats আপনার সাথে মেলে এমন কোন বৈধ লগ লাইন খুঁজে পায়নি"
+
+msgid "parameter, in the"
+msgstr "প্যারামিটার, এ"
+
+msgid "th first non commented lines read of your log."
+msgstr "আপনার লগ থেকে পড়া প্রথম নন-মন্তব্য লাইন"
+
+msgid "Your log file"
+msgstr "আপনার লগ ফাইল"
+
+msgid "must have a bad format or"
+msgstr "খারাপ ফরম্যাট থাকতে পারে বা"
+
+msgid "parameter setup does not match this format."
+msgstr "প্যারামিটার সেটআপ এই ফরম্যাটের সাথে মেলে না"
+
+msgid "Your AWStats"
+msgstr "আপনার AWStats"
+
+msgid "parameter is:"
+msgstr "প্যারামিটার হল:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "এর মানে হল আপনার ওয়েব সার্ভার লগ ফাইলের প্রতিটি লাইনে থাকা প্রয়োজন:"
+
+msgid "combined log format"
+msgstr "সংযুক্ত লগ ফরম্যাট"
+
+msgid "MSIE Extended W3C log format"
+msgstr "MSIE এক্সটেন্ডেড W3C লগ ফরম্যাট"
+
+msgid "WebStar native log format"
+msgstr "WebStar নেটিভ লগ ফরম্যাট"
+
+msgid "common log format"
+msgstr "সাধারণ লগ ফরম্যাট"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "লোটাস নোটস/লোটাস ডোমিনো"
+
+msgid "the following personalized log format:"
+msgstr "নিম্নলিখিত ব্যক্তিগতকৃত লগ ফরম্যাট:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "এবং এটি AWStats আপনার লগ ফাইলে পাওয়া রেকর্ডগুলির একটি উদাহরণ (রেকর্ড নম্বর"
+
+msgid "in your log):"
+msgstr "আপনার লগে):"
+
+#------------------------------------------------------------------------------
+# বিবিধ
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "অতিরিক্ত/মার্কেটিং"
+
+#------------------------------------------------------------------------------
+# ইন্টারফেস টেক্সট
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "বর্তমান সাইট"
+
+msgid "Web Site"
+msgstr "ওয়েবসাইট"
+
+msgid "Last Update"
+msgstr "শেষ আপডেট"
+
+msgid "Never updated"
+msgstr "কখনও আপডেট করা হয়নি"
+
+msgid "No qualified records found in log"
+msgstr "লগে কোন যোগ্য রেকর্ড পাওয়া যায়নি"
+
+msgid "corrupted"
+msgstr "দূষিত"
+
+msgid "comments"
+msgstr "মন্তব্য"
+
+msgid "Blank"
+msgstr "ফাঁকা"
+
+msgid "dropped"
+msgstr "বাতিল"
+
+msgid "Update now"
+msgstr "এখন আপডেট করুন"
+
+msgid "Back to main page"
+msgstr "মূল পৃষ্ঠায় ফিরে যান"
+
+msgid "Close window"
+msgstr "উইন্ডো বন্ধ করুন"
+
+msgid "Back page"
+msgstr "পূর্ববর্তী পৃষ্ঠায় ফিরে যান"
+
+msgid "Navigation"
+msgstr "নেভিগেশন"
+
+msgid "Summary"
+msgstr "সারাংশ"
+
+msgid "Local"
+msgstr "স্থানীয়"
+
+msgid "External"
+msgstr "বাহ্যিক"
+
+msgid "Others (email senders)"
+msgstr "অন্যান্য (ইমেইল প্রেরক)"
+
+msgid "Others (email receivers)"
+msgstr "অন্যান্য (ইমেইল প্রাপক)"
+
+msgid "Others"
+msgstr "অন্যান্য"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "বর্তমানে শুধুমাত্র 10 লাইন ব্রাউজার ডেটা দেখানো হচ্ছে, অনুগ্রহ করে সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Others (unknown browsers)"
+msgstr "অন্যান্য (অজানা ব্রাউজার)"
+
+msgid "Others (operating systems)"
+msgstr "অন্যান্য (অপারেটিং সিস্টেম)"
+
+msgid "Others (unknown OS)"
+msgstr "অন্যান্য (অজানা অপারেটিং সিস্টেম)"
+
+msgid "Others (search engines)"
+msgstr "অন্যান্য (সার্চ ইঞ্জিন)"
+
+msgid "Others (referring pages)"
+msgstr "অন্যান্য (রেফারেন্স পৃষ্ঠা)"
+
+msgid "Others (keyphrases)"
+msgstr "অন্যান্য (কীওয়ার্ড বাক্যাংশ)"
+
+msgid "Others (keywords)"
+msgstr "অন্যান্য (কীওয়ার্ড)"
+
+msgid "Only first 10 robots shown"
+msgstr "বর্তমান তালিকা শুধুমাত্র 10 রোবট দেখায়, অনুগ্রহ করে সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Failed to obtain access record"
+msgstr "প্রবেশ রেকর্ড প্রাপ্ত করতে ব্যর্থ"
+
+msgid "Failed to obtain leave record"
+msgstr "প্রস্থান রেকর্ড প্রাপ্ত করতে ব্যর্থ"
+
+msgid "Other pages"
+msgstr "অন্যান্য পৃষ্ঠা"
+
+msgid "Low Traffic IP Summary"
+msgstr "কম ট্রাফিক অজানা IP সারাংশ"
+
+msgid "Failed to obtain IP data"
+msgstr "অন্যান্য পরিচিত IP সারাংশ"
+
+msgid "Failed to obtain the relevant data"
+msgstr "প্রাসঙ্গিক ডেটা প্রাপ্ত করতে ব্যর্থ"
+
+msgid "Limited list of countries and regions"
+msgstr "বর্তমানে শুধুমাত্র 10 লাইন দেখানো হচ্ছে, অনুগ্রহ করে অতিরিক্ত দেশ এবং অঞ্চলের জন্য সম্পূর্ণ তালিকা দেখুন"
+
+msgid "currentVisitorData"
+msgstr "বর্তমানে শুধুমাত্র 10 লাইন দর্শক ডেটা দেখানো হচ্ছে, অনুগ্রহ করে সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Others (robots main)"
+msgstr "অন্যান্য (রোবট)"
+
+msgid "Others (worms)"
+msgstr "অন্যান্য (কৃমি)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "বর্তমান তালিকা শুধুমাত্র 10 পৃষ্ঠা দেখায়, অনুগ্রহ করে সম্পূর্ণ তালিকা দেখুন"
+
+msgid "Others (OS main)"
+msgstr "অন্যান্য (সিস্টেম)"
+
+msgid "Others (browsers main)"
+msgstr "অন্যান্য (ব্রাউজার)"
+
+msgid "Others (screen sizes)"
+msgstr "অন্যান্য (আকার)"
+
+msgid "Others (search engines main)"
+msgstr "অন্যান্য (সার্চ ইঞ্জিন)"
+
+msgid "Others (referring pages main)"
+msgstr "অন্যান্য (রেফারেন্স পৃষ্ঠা)"
+
+msgid "Others (keyphrases main)"
+msgstr "অন্যান্য (কীওয়ার্ড বাক্যাংশ)"
+
+msgid "Others (keywords main)"
+msgstr "অন্যান্য (কীওয়ার্ড)"
+
+# 1xx
+msgid "Continue"
+msgstr "অবশিষ্ট সামগ্রী পাঠানো চালিয়ে যান"
+
+msgid "Switching Protocols"
+msgstr "প্রোটোকল পরিবর্তন হচ্ছে"
+
+msgid "Processing (WebDAV)"
+msgstr "প্রক্রিয়াকরণ (অনুগ্রহ করে অপেক্ষা করুন)"
+
+msgid "Early Hints"
+msgstr "সার্ভার সম্পদ প্রস্তুত করছে"
+
+# 2xx
+msgid "[Miscellaneous successes]"
+msgstr "অন্যান্য সাফল্যের অবস্থা"
+
+msgid "Request successful"
+msgstr "অনুরোধ সফল হয়েছে"
+
+msgid "Created successfully"
+msgstr "সফলভাবে তৈরি হয়েছে"
+
+msgid "Accepted - processing"
+msgstr "গৃহীত হয়েছে, প্রক্রিয়াকরণ"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "অ-আধিকারিক তথ্য (ক্যাশে থেকে)"
+
+msgid "Success, no content returned"
+msgstr "সফল, কোন বিষয়বস্তু ফেরত দেওয়া হয়নি"
+
+msgid "Reset content"
+msgstr "অনুগ্রহ করে ফর্ম রিসেট করুন"
+
+msgid "Partial content (resume download)"
+msgstr "আংশিক বিষয়বস্তু (ডাউনলোড পুনরায় শুরু সমর্থন করে)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "বহু-অবস্থা (WebDAV ব্যাচ অপারেশন)"
+
+msgid "Already reported (WebDAV)"
+msgstr "ইতিমধ্যে রিপোর্ট করা হয়েছে (পুনরাবৃত্তি এড়াতে)"
+
+msgid "IM used"
+msgstr "IM প্রোটোকল এক্সটেনশন ব্যবহার করা হয়েছে"
+
+# 3xx
+msgid "[Miscellaneous redirections]"
+msgstr "অন্যান্য পুনর্নির্দেশ"
+
+msgid "Multiple choices"
+msgstr "একাধিক পছন্দ"
+
+msgid "Moved permanently - update your links"
+msgstr "স্থায়ীভাবে সরানো হয়েছে, অনুগ্রহ করে আপনার লিংক আপডেট করুন"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "অস্থায়ী পুনর্নির্দেশ, ঠিকানা অপরিবর্তিত"
+
+msgid "See other"
+msgstr "অনুগ্রহ করে অন্য ঠিকানা দেখুন"
+
+msgid "Not modified - using cached version"
+msgstr "পরিবর্তিত নয়, ক্যাশে সংস্করণ ব্যবহার করছে"
+
+msgid "Use proxy"
+msgstr "অনুগ্রহ করে প্রক্সি ব্যবহার করুন"
+
+msgid "Switch proxy"
+msgstr "অনুগ্রহ করে প্রক্সি পরিবর্তন করুন"
+
+msgid "Temporary redirect (keep method)"
+msgstr "অস্থায়ী পুনর্নির্দেশ (অনুরোধ পদ্ধতি রাখুন)"
+
+msgid "Permanent redirect - update your links"
+msgstr "স্থায়ী পুনর্নির্দেশ, অনুগ্রহ করে আপনার লিংক আপডেট করুন"
+
+# 4xx
+msgid "[Miscellaneous client/user errors]"
+msgstr "অন্যান্য ক্লায়েন্ট ত্রুটি"
+
+msgid "Bad request"
+msgstr "অনুরোধ ফরম্যাট ভুল"
+
+msgid "Unauthorized - please log in"
+msgstr "অনুমোদিত নয়, অনুগ্রহ করে প্রথমে লগইন করুন"
+
+msgid "Payment required"
+msgstr "পেমেন্ট প্রয়োজন"
+
+msgid "Forbidden - access denied"
+msgstr "অ্যাক্সেস নিষিদ্ধ, যথেষ্ট অনুমতি নেই"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "পৃষ্ঠা বিদ্যমান নেই, অনুগ্রহ করে ভাঙা লিংক পরীক্ষা করুন"
+
+msgid "Method not allowed"
+msgstr "অনুরোধ পদ্ধতি অনুমোদিত নয়"
+
+msgid "Not acceptable"
+msgstr "গ্রহণযোগ্য প্রতিক্রিয়া ফরম্যাট নয়"
+
+msgid "Proxy authentication required"
+msgstr "প্রক্সির মাধ্যমে প্রমাণীকরণ প্রয়োজন"
+
+msgid "Request timeout"
+msgstr "অনুরোধের সময় শেষ"
+
+msgid "Conflict - please try again"
+msgstr "অনুরোধ দ্বন্দ্ব, অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "Gone - permanently deleted"
+msgstr "সম্পদ স্থায়ীভাবে মুছে ফেলা হয়েছে"
+
+msgid "Length required"
+msgstr "বিষয়বস্তুর দৈর্ঘ্য নির্দিষ্ট করতে হবে"
+
+msgid "Precondition failed"
+msgstr "পূর্বশর্তগুলি পূরণ হয়নি"
+
+msgid "Payload too large"
+msgstr "অনুরোধের বিষয়বস্তু খুব বড়"
+
+msgid "URI too long"
+msgstr "অনুরোধের ঠিকানা খুব দীর্ঘ"
+
+msgid "Unsupported media type"
+msgstr "ফাইলের ধরন সমর্থিত নয়"
+
+msgid "Range not satisfiable"
+msgstr "অনুরোধের পরিসর অবৈধ"
+
+msgid "Expectation failed"
+msgstr "প্রত্যাশা পূরণ করতে অক্ষম"
+
+msgid "I am a teapot (April Fools)"
+msgstr "আমি একটি চায়ের পাত্র (এপ্রিল ফুলের মজা)"
+
+msgid "Page expired (Laravel)"
+msgstr "পৃষ্ঠার মেয়াদ শেষ হয়ে গেছে, অনুগ্রহ করে রিফ্রেশ করে আবার চেষ্টা করুন"
+
+msgid "Method failure (Spring)"
+msgstr "পদ্ধতি ব্যর্থ"
+
+msgid "Misdirected request"
+msgstr "অনুরোধ ভুলভাবে পুনর্নির্দেশিত হয়েছে"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "অনুরোধের ফরম্যাট সঠিক কিন্তু প্রক্রিয়া করা যাবে না"
+
+msgid "Locked (WebDAV)"
+msgstr "সম্পদ লক করা হয়েছে (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "নির্ভরশীল অপারেশন ব্যর্থ"
+
+msgid "Too early"
+msgstr "অনুরোধ খুব তাড়াতাড়ি পাঠানো হয়েছে"
+
+msgid "Upgrade required"
+msgstr "প্রোটোকল আপগ্রেড প্রয়োজন"
+
+msgid "Precondition required"
+msgstr "প্রয়োজনীয় পূর্বশর্ত অনুপস্থিত"
+
+msgid "Too many requests - slow down"
+msgstr "অনুরোধগুলি অত্যন্ত ঘন ঘন, অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "অনুরোধ হেডার ফিল্ডগুলি খুব বড়"
+
+msgid "Request header too large"
+msgstr "অনুরোধ হেডার খুব বড়"
+
+msgid "Login timeout (IIS)"
+msgstr "লগইন সময় শেষ, অনুগ্রহ করে পুনরায় লগইন করুন"
+
+msgid "No response (nginx)"
+msgstr "সার্ভার সাড়া দিচ্ছে না"
+
+msgid "Retry with (IIS)"
+msgstr "অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "Blocked by Windows parental controls"
+msgstr "উইন্ডোজ প্যারেন্টাল কন্ট্রোল দ্বারা অবরুদ্ধ"
+
+msgid "Unavailable for legal reasons"
+msgstr "আইনি কারণে অ্যাক্সেসযোগ্য নয়"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "ক্লায়েন্ট নিষ্ক্রিয়তা সময়সীমা শেষ হওয়ার আগে সংযোগ বন্ধ করে দিয়েছে (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "ফরওয়ার্ডিং চেইনে 30 টির বেশি IP ঠিকানা রয়েছে"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "প্রোটোকল সংস্করণগুলি বেমানান"
+
+msgid "Request header too large (nginx)"
+msgstr "অনুরোধ হেডার খুব বড়"
+
+msgid "SSL certificate error (nginx)"
+msgstr "SSL সার্টিফিকেট ত্রুটি"
+
+msgid "SSL certificate required (nginx)"
+msgstr "SSL সার্টিফিকেট প্রয়োজন"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "HTTP অনুরোধ HTTPS পোর্টে পাঠানো হয়েছে"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "টোকেন অবৈধ"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "টোকেন প্রয়োজন / ক্লায়েন্ট অনুরোধ বন্ধ করেছে"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "সম্পদ সীমা (CPU/মেমরি) পৌঁছে গেছে"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "ব্যান্ডউইথ সীমা অতিক্রম করেছে"
+
+# 5xx
+msgid "[Miscellaneous server errors]"
+msgstr "অন্যান্য সার্ভার ত্রুটি"
+
+msgid "Internal server error - check logs"
+msgstr "অভ্যন্তরীণ সার্ভার ত্রুটি, অনুগ্রহ করে লগ পরীক্ষা করুন"
+
+msgid "Not implemented"
+msgstr "সার্ভার এই ফাংশন সমর্থন করে না"
+
+msgid "Bad gateway - backend error"
+msgstr "গেটওয়ে ত্রুটি, ব্যাকএন্ড পরিষেবা অস্বাভাবিক"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "পরিষেবা উপলব্ধ নয়, রক্ষণাবেক্ষণ বা অতিরিক্ত লোড"
+
+msgid "Gateway timeout"
+msgstr "গেটওয়ে প্রতিক্রিয়া সময় শেষ"
+
+msgid "HTTP version not supported"
+msgstr "HTTP প্রোটোকল সংস্করণ সমর্থিত নয়"
+
+msgid "Variant also negotiates"
+msgstr "ভেরিয়েন্টও আলোচনায় অংশ নেয় (কনফিগারেশন ত্রুটি)"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "অপর্যাপ্ত স্টোরেজ স্থান"
+
+msgid "Loop detected (WebDAV)"
+msgstr "লুপ রেফারেন্স পাওয়া গেছে"
+
+msgid "Not extended"
+msgstr "আরও এক্সটেনশন প্রয়োজন"
+
+msgid "Network authentication required"
+msgstr "নেটওয়ার্ক প্রমাণীকরণ প্রয়োজন"
+
+# Cloudflare
+msgid "Unknown error (Cloudflare)"
+msgstr "অজানা ত্রুটি"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "ওয়েব সার্ভার বন্ধ"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "সংযোগ সময় শেষ"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "উৎসে পৌঁছানো যাচ্ছে না"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "একটি সময়সীমা ঘটেছে"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "SSL হ্যান্ডশেক ব্যর্থ"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "অবৈধ SSL সার্টিফিকেট"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "রেলগান ত্রুটি (অপ্রচলিত)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "ওয়েবসাইট অতিরিক্ত লোড হয়েছে"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "উৎস DNS ত্রুটি (Cloudflare) / ওয়েবসাইট স্থির হয়ে গেছে (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "অস্থায়ীভাবে নিষ্ক্রিয় করা হয়েছে"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "অনুমোদিত নয়"
+
+msgid "Network read timeout error"
+msgstr "নেটওয়ার্ক পড়ার সময়সীমা ত্রুটি"
+
+msgid "Network connect timeout error"
+msgstr "নেটওয়ার্ক সংযোগ সময়সীমা ত্রুটি"
+
+msgid "Unexpected token (Shopify)"
+msgstr "অপ্রত্যাশিত টোকেন"
+
+msgid "Request denied (LinkedIn)"
+msgstr "অনুরোধ প্রত্যাখ্যান করা হয়েছে"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 সংযোগ বন্ধ করা হচ্ছে"
+
+msgid "[Unknown]"
+msgstr "অজানা অবস্থা কোড"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "অ-মানক সাফল্য প্রতিক্রিয়া (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "সিস্টেম অবস্থা, বা সিস্টেম সহায়তা বার্তা"
+
+msgid "Help message"
+msgstr "সহায়তা বার্তা"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "SMTP পরিষেবা প্রস্তুত (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "পরিষেবা প্রস্তুত - মেইল সার্ভার মেইল গ্রহণের জন্য প্রস্তুত"
+
+msgid "Service closing - connection is being closed"
+msgstr "পরিষেবা বন্ধ হচ্ছে - সংযোগ বন্ধ করা হচ্ছে"
+
+msgid "Authentication successful"
+msgstr "প্রমাণীকরণ সফল"
+
+msgid "Requested mail action taken and completed"
+msgstr "অনুরোধ করা মেইল পদক্ষেপ নেওয়া হয়েছে এবং সম্পন্ন হয়েছে"
+
+msgid "User not local - will forward to another address"
+msgstr "ব্যবহারকারী এই সার্ভারে নেই - অন্য ঠিকানায় ফরওয়ার্ড করবে"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "প্রাপক যাচাই করতে পারে না, কিন্তু বিতরণের চেষ্টা করবে"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "মেইল বিতরণের জন্য গ্রহণ করা হয়েছে (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "ব্যবহারকারীর নাম একটি মেইলবক্স"
+
+msgid "Authentication challenge - please respond"
+msgstr "প্রমাণীকরণ চ্যালেঞ্জ - অনুগ্রহ করে সাড়া দিন"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "মেইল বিষয়বস্তু প্রবেশ করানো শুরু করুন - <CRLF>.<CRLF> দিয়ে শেষ করুন"
+
+msgid "Continue (LMTP)"
+msgstr "চালিয়ে যান (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "পরিষেবা উপলব্ধ নয় - সংযোগ বন্ধ হচ্ছে, অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "মেইলবক্স ব্যস্ত বা অস্থায়ীভাবে অনুপলব্ধ (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "সংযোগের হার সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "অনেকগুলি সমবর্তী সংযোগ (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "সংযোগ স্থাপন করতে অক্ষম (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "সংযোগের সময় শেষ (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "ত্রুটির কারণে সংযোগ বাতিল করা হয়েছে (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "মেইলবক্স অস্থায়ীভাবে লক করা হয়েছে (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "অনেকগুলি প্রাপক (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "মেইল সার্ভার ত্রুটি (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "লুপ প্রাপ্তি পাওয়া গেছে (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "অনেকগুলি হপ সংখ্যা (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "DNS অনুসন্ধান ব্যর্থ (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "প্রমাণীকরণ করতে অক্ষম (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "TLS হ্যান্ডশেক ব্যর্থ (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "SMTP প্রোটোকল লঙ্ঘন (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "মেইলের আকার সীমা অতিক্রম করেছে (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "মেইলের হার সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "মেইলবক্স কোটা পূর্ণ হয়েছে - অস্থায়ী অবস্থা"
+
+msgid "Domain not found (Postfix)"
+msgstr "ডোমেন পাওয়া যায়নি (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "মেইল হেডার অবৈধ (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "বাউন্স লুপ পাওয়া গেছে (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "রুট করতে অক্ষম (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "প্রেরকের ডোমেন পাওয়া যায়নি (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "প্রাপকের ডোমেন পাওয়া যায়নি (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "Greylisting পরীক্ষা চলছে - অনুগ্রহ করে পরে আবার চেষ্টা করুন (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "স্প্যাম ফিল্টারিং চলছে (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "ভাইরাস স্ক্যানিং চলছে (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "মেইলবক্স অনুপলব্ধ - অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "Requested action aborted - error in processing"
+msgstr "অনুরোধ করা পদক্ষেপ বাতিল করা হয়েছে - প্রক্রিয়াকরণের সময় ত্রুটি"
+
+msgid "Insufficient system storage - try again later"
+msgstr "অপর্যাপ্ত সিস্টেম স্টোরেজ - অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "এই প্রাপকের জন্য অনেকগুলি মেইল (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS উপলব্ধ নয় (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "সার্ভার মেইল গ্রহণ করতে অক্ষম (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "DNS অনুসন্ধানে অস্থায়ী ব্যর্থতা (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "কোটা অতিক্রম করেছে - অস্থায়ী অবস্থা"
+
+msgid "Message too big - temporary"
+msgstr "মেইল খুব বড় - অস্থায়ী অবস্থা"
+
+msgid "Too many messages per connection"
+msgstr "প্রতি সংযোগে অনেকগুলি মেইল"
+
+msgid "Load average too high (Postfix)"
+msgstr "গড় লোড খুব বেশি (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "সংযোগ প্রত্যাখ্যান করা হয়েছে (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "প্রেরণের হার সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "প্রাপকের হার সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "প্রেরকের হার সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "IP ঠিকানার হার সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "MX অনুসন্ধান ব্যর্থ (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "A রেকর্ড অনুসন্ধান ব্যর্থ (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "PTR রেকর্ড অনুসন্ধান ব্যর্থ (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "Greylisting সক্রিয় - অনুগ্রহ করে পরে আবার চেষ্টা করুন (Postgrey)"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "অ্যাক্সেস অস্বীকৃত - প্রেরক বা প্রাপকের জন্য অজানা ডোমেন"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "প্রেরকের ঠিকানা প্রত্যাখ্যান করা হয়েছে - ডোমেন যাচাই করা হয়নি (DMARC পেন্ডিং)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "প্রাপকের ঠিকানা প্রত্যাখ্যান করা হয়েছে - ডোমেন যাচাই করা হয়নি (DMARC পেন্ডিং)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "DKIM যাচাই পেন্ডিং - অস্থায়ী ব্যর্থতা"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "SPF যাচাই পেন্ডিং - অস্থায়ী ব্যর্থতা"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "DMARC যাচাই পেন্ডিং - অস্থায়ী ব্যর্থতা"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "DNSBL অনুসন্ধান অস্থায়ী ব্যর্থতা"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "RHSBL অনুসন্ধান অস্থায়ী ব্যর্থতা"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "URI DNSBL অনুসন্ধান অস্থায়ী ব্যর্থতা"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "অস্থায়ী প্রমাণীকরণ ব্যর্থতা (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "অস্থায়ী অনুমোদন ব্যর্থতা (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "প্রতি প্রেরকে হার সীমা অতিক্রম করেছে (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "প্রতি প্রাপকে হার সীমা অতিক্রম করেছে (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "প্রতি ডোমেনে হার সীমা অতিক্রম করেছে (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "প্রতি আইপিতে হার সীমা অতিক্রম করেছে (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "মেইল পরে বিতরণের জন্য সারিবদ্ধ করা হয়েছে (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "নীতির কারণে বিতরণ বিলম্বিত (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "বিষয়বস্তু ফিল্টারে অস্থায়ী ব্যর্থতা"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "অ্যান্টিভাইরাস স্ক্যানারে অস্থায়ী ব্যর্থতা"
+
+msgid "Temporary failure in spam filter"
+msgstr "স্প্যাম ফিল্টারে অস্থায়ী ব্যর্থতা"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "মিল্টারে অস্থায়ী ব্যর্থতা (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Greylisting - অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "DDoS protection active - try again later"
+msgstr "DDoS সুরক্ষা সক্রিয় - অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "SMTP policy violation - temporary"
+msgstr "SMTP নীতি লঙ্ঘন - অস্থায়ী অবস্থা"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "RCPT TO প্রক্রিয়াকরণে অস্থায়ী ত্রুটি"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "MAIL FROM প্রক্রিয়াকরণে অস্থায়ী ত্রুটি"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "EHLO/HELO প্রক্রিয়াকরণে অস্থায়ী ত্রুটি"
+
+msgid "Temporary error in DATA processing"
+msgstr "DATA প্রক্রিয়াকরণে অস্থায়ী ত্রুটি"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "অস্থায়ী ত্রুটি - পরিষেবা ব্যস্ত, অনুগ্রহ করে পরে আবার চেষ্টা করুন"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "সিনট্যাক্স ত্রুটি - কমান্ড অজানা বা খুব দীর্ঘ"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "প্যারামিটার বা আর্গুমেন্টে সিনট্যাক্স ত্রুটি"
+
+msgid "Command not implemented"
+msgstr "কমান্ড ব্যবহার করা হয়নি"
+
+msgid "Bad sequence of commands"
+msgstr "কমান্ডের ক্রম ভুল"
+
+msgid "Command parameter not implemented"
+msgstr "কমান্ড প্যারামিটার ব্যবহার করা হয়নি"
+
+msgid "Version not supported (ESMTP)"
+msgstr "সংস্করণ সমর্থিত নয় (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "মেইলবক্স পাথ অবৈধ (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "এই সেশনে অনেকগুলি কমান্ড (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "প্রাপক সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "প্রেরক সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "ডোমেন সীমা অতিক্রম করেছে (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "মেইলবক্স বিদ্যমান নেই (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "DNS ব্যর্থ - স্থায়ী ত্রুটি"
+
+msgid "Address type not supported (Postfix)"
+msgstr "ঠিকানা প্রকার সমর্থিত নয় (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "মেইলবক্স খুলতে অক্ষম (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "মেইলবক্স লক করা হয়েছে - স্থায়ী অবস্থা"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "নীতির কারণে মেইল প্রত্যাখ্যান করা হয়েছে (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "বিষয়বস্তু প্রত্যাখ্যান করা হয়েছে - স্থায়ী অবস্থা"
+
+msgid "Attachment type not allowed"
+msgstr "সংযুক্তি ফাইলের ধরন অনুমোদিত নয়"
+
+msgid "Message encoding not supported"
+msgstr "মেইল এনকোডিং সমর্থিত নয়"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "প্রেরকের ডোমেন বিদ্যমান নেই - স্থায়ী অবস্থা"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "ডোমেন মেইল গ্রহণ করে না বা বন্ধ হচ্ছে"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "প্রাপকের ডোমেন বিদ্যমান নেই - স্থায়ী অবস্থা"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "মেইলবক্স কোটা পূর্ণ হয়েছে - স্থায়ী অবস্থা"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "মেইলের আকার সীমা অতিক্রম করেছে - স্থায়ী অবস্থা"
+
+msgid "Authentication required (Sendmail)"
+msgstr "প্রমাণীকরণ প্রয়োজন (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "প্রমাণীকরণ ব্যর্থ (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "প্রমাণীকরণ প্রক্রিয়া সমর্থিত নয়"
+
+msgid "Authentication credentials invalid"
+msgstr "প্রমাণীকরণ শংসাপত্র অবৈধ"
+
+msgid "Authentication account expired"
+msgstr "প্রমাণীকরণ অ্যাকাউন্টের মেয়াদ শেষ হয়েছে"
+
+msgid "Access denied - authentication required"
+msgstr "অ্যাক্সেস অস্বীকৃত - প্রমাণীকরণ প্রয়োজন"
+
+msgid "Access denied (Sendmailism)"
+msgstr "অ্যাক্সেস অস্বীকৃত (Sendmail)"
+
+msgid "Access denied - not authenticated"
+msgstr "অ্যাক্সেস অস্বীকৃত - প্রমাণীকৃত নয়"
+
+msgid "Access denied - account locked"
+msgstr "অ্যাক্সেস অস্বীকৃত - অ্যাকাউন্ট লক করা হয়েছে"
+
+msgid "Access denied - account disabled"
+msgstr "অ্যাক্সেস অস্বীকৃত - অ্যাকাউন্ট নিষ্ক্রিয় করা হয়েছে"
+
+msgid "Authentication failed"
+msgstr "প্রমাণীকরণ ব্যর্থ"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "রিলের জন্য প্রমাণীকরণ প্রয়োজন (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "রিলের জন্য প্রমাণীকরণ ব্যর্থ (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "এনক্রিপ্ট করা সংযোগ প্রয়োজন (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "এই প্রাপকের TLS এনক্রিপশন প্রয়োজন"
+
+msgid "Encryption strength insufficient"
+msgstr "এনক্রিপশন শক্তি যথেষ্ট নয়"
+
+msgid "Certificate validation failed"
+msgstr "সার্টিফিকেট বৈধতা ব্যর্থ"
+
+msgid "Invalid TLS certificate"
+msgstr "অবৈধ TLS সার্টিফিকেট"
+
+msgid "TLS protocol version not supported"
+msgstr "TLS প্রোটোকল সংস্করণ সমর্থিত নয়"
+
+msgid "Cipher suite not supported"
+msgstr "সাইফার স্যুট সমর্থিত নয়"
+
+msgid "Access denied - no valid recipient"
+msgstr "অ্যাক্সেস অস্বীকৃত - কোন বৈধ প্রাপক নেই"
+
+msgid "Access denied - no valid sender"
+msgstr "অ্যাক্সেস অস্বীকৃত - কোন বৈধ প্রেরক নেই"
+
+msgid "Access denied - domain not allowed"
+msgstr "অ্যাক্সেস অস্বীকৃত - ডোমেন অনুমোদিত নয়"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "অ্যাক্সেস অস্বীকৃত - IP ঠিকানা অবরুদ্ধ (স্থায়ী)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "অ্যাক্সেস অস্বীকৃত - প্রেরকের ডোমেন কালো তালিকাভুক্ত"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "মেইলবক্স অনুপলব্ধ - অনুরোধ করা পদক্ষেপ নেওয়া হয়নি"
+
+msgid "User not local - please try forwarding address"
+msgstr "ব্যবহারকারী স্থানীয় নয় - অনুগ্রহ করে ফরওয়ার্ডিং ঠিকানা চেষ্টা করুন"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "অনুরোধ করা পদক্ষেপ বাতিল করা হয়েছে - স্টোরেজ বরাদ্দ অতিক্রম করেছে"
+
+msgid "Mailbox name not allowed"
+msgstr "মেইলবক্সের নাম অনুমোদিত নয়"
+
+msgid "Requested action rejected - access denied"
+msgstr "অনুরোধ করা পদক্ষেপ প্রত্যাখ্যান করা হয়েছে - অ্যাক্সেস অস্বীকৃত"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "MAIL FROM/RCPT TO প্যারামিটার চিহ্নিত করা যায়নি"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "ডোমেন পাঠানোর অনুমতি নেই (DMARC প্রত্যাখ্যান)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "অনেকগুলি সদৃশ বার্তা - স্থায়ী অবস্থা"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "প্রেরকের ঠিকানা প্রত্যাখ্যান করা হয়েছে - ডোমেন SPF-তে নেই"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "প্রেরকের ঠিকানা প্রত্যাখ্যান করা হয়েছে - DKIM যাচাই ব্যর্থ"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "প্রেরকের ঠিকানা প্রত্যাখ্যান করা হয়েছে - DMARC নীতি প্রত্যাখ্যান"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "প্রাপকের ঠিকানা প্রত্যাখ্যান করা হয়েছে - DMARC নীতি প্রত্যাখ্যান"
+
+msgid "Message rejected due to spam content"
+msgstr "স্প্যাম বিষয়বস্তুর কারণে মেইল প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Message rejected due to virus detected"
+msgstr "ভাইরাস সনাক্তকরণের কারণে মেইল প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Message rejected due to malicious content"
+msgstr "দূষিত বিষয়বস্তুর কারণে মেইল প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Message rejected due to phishing detection"
+msgstr "ফিশিং সনাক্তকরণের কারণে মেইল প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Message rejected due to malware detection"
+msgstr "ম্যালওয়্যার সনাক্তকরণের কারণে মেইল প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "নীতির কারণে মেইল প্রত্যাখ্যান করা হয়েছে - স্থায়ী অবস্থা"
+
+msgid "Message rejected due to content filtering"
+msgstr "বিষয়বস্তু ফিল্টারিংয়ের কারণে মেইল প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Message rejected due to reputation"
+msgstr "খ্যাতির কারণে মেইল প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Access denied - access_map violation"
+msgstr "অ্যাক্সেস অস্বীকৃত - access_map লঙ্ঘন"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "অ্যাক্সেস অস্বীকৃত - SMTP ক্লায়েন্ট RBL-তে তালিকাভুক্ত"
+
+msgid "Access denied - relay not authorized"
+msgstr "অ্যাক্সেস অস্বীকৃত - রিলে অনুমোদিত নয়"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "অ্যাক্সেস অস্বীকৃত - অজানা SMTP ক্লায়েন্ট হোস্টনাম"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "অ্যাক্সেস অস্বীকৃত - ক্লায়েন্ট HELO হোস্টনামের জন্য ভুল সিনট্যাক্স"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "অ্যাক্সেস অস্বীকৃত - SMTP ক্লায়েন্ট হোস্টনাম প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "অ্যাক্সেস অস্বীকৃত - অজানা ক্লায়েন্ট HELO হোস্টনাম"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "অ্যাক্সেস অস্বীকৃত - ডোমেন অবৈধ (FQDN নয়)"
+
+msgid "Access denied - domain not qualified"
+msgstr "অ্যাক্সেস অস্বীকৃত - ডোমেন যোগ্য নয়"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "অ্যাক্সেস অস্বীকৃত - মেইল সার্ভার ভুল কনফিগার করা হয়েছে"
+
+msgid "Access denied - open relay not allowed"
+msgstr "অ্যাক্সেস অস্বীকৃত - উন্মুক্ত রিলে অনুমোদিত নয়"
+
+msgid "Access denied - proxy not allowed"
+msgstr "অ্যাক্সেস অস্বীকৃত - প্রক্সি অনুমোদিত নয়"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "অ্যাক্সেস অস্বীকৃত - ডায়নামিক আইপি অনুমোদিত নয়"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "অ্যাক্সেস অস্বীকৃত - আবাসিক আইপি অনুমোদিত নয়"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "অ্যাক্সেস অস্বীকৃত - VPN/Tor সনাক্ত করা হয়েছে"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "অ্যাক্সেস অস্বীকৃত - Spamhaus DROP-তে তালিকাভুক্ত"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "অ্যাক্সেস অস্বীকৃত - URL URIBL-তে তালিকাভুক্ত"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "অ্যাক্সেস অস্বীকৃত - ডোমেন RHSBL-তে আছে"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "অ্যাক্সেস অস্বীকৃত - আইপি DNSWL-তে আছে (নীতি)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "বিতরণ ব্যর্থ - মেইলবক্স পাওয়া যায়নি"
+
+msgid "Delivery failed - recipient not local"
+msgstr "বিতরণ ব্যর্থ - প্রাপক স্থানীয় নয়"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "বিতরণ ব্যর্থ - প্রাপক প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Delivery failed - sender rejected"
+msgstr "বিতরণ ব্যর্থ - প্রেরক প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Delivery failed - relay rejected"
+msgstr "বিতরণ ব্যর্থ - রিলে প্রত্যাখ্যান করা হয়েছে"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "বিতরণ ব্যর্থ - স্থায়ী DNS ত্রুটি"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "বিতরণ ব্যর্থ - স্থায়ী MX ত্রুটি"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "বিতরণ ব্যর্থ - স্থায়ী A রেকর্ড ত্রুটি"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "বিতরণ ব্যর্থ - স্থায়ী PTR রেকর্ড ত্রুটি"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "বিতরণ ব্যর্থ - স্থায়ী নীতি ত্রুটি"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: সফল - বিতরণ অবস্থা বিজ্ঞপ্তি"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: বিতরণ বিলম্বিত"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: বিতরণ ব্যর্থ - স্থায়ী"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: বিতরণ ব্যর্থ - অস্থায়ী"
+
+msgid "DSN: Message expired"
+msgstr "DSN: মেইলের মেয়াদ শেষ হয়েছে"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: মেইল ফিরে এসেছে"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: মেইল বাতিল করা হয়েছে"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: মেইল ফিল্টার করা হয়েছে"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: মেইল কোয়ারেন্টাইন করা হয়েছে"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: পর্যালোচনার জন্য মেইল আটকানো হয়েছে"
+
+msgid "MTA-STS policy required"
+msgstr "MTA-STS নীতি প্রয়োজন"
+
+msgid "MTA-STS policy validation failed"
+msgstr "MTA-STS নীতি বৈধতা ব্যর্থ"
+
+msgid "TLS reporting required"
+msgstr "TLS রিপোর্টিং প্রয়োজন"
+
+msgid "TLS report requested"
+msgstr "TLS রিপোর্ট অনুরোধ করা হয়েছে"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "SMTP MTA Strict Transport Security সক্রিয়"
+
+msgid "DANE validation required"
+msgstr "DANE বৈধতা প্রয়োজন"
+
+msgid "DANE validation failed"
+msgstr "DANE বৈধতা ব্যর্থ"
+
+msgid "TLSA record missing"
+msgstr "TLSA রেকর্ড অনুপস্থিত"
+
+msgid "Certificate name mismatch"
+msgstr "সার্টিফিকেটের নাম মেলেনি"
+
+msgid "Certificate expired"
+msgstr "সার্টিফিকেটের মেয়াদ শেষ হয়েছে"
+
+msgid "AUTH LOGIN required"
+msgstr "AUTH LOGIN প্রয়োজন"
+
+msgid "AUTH PLAIN required"
+msgstr "AUTH PLAIN প্রয়োজন"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "AUTH CRAM-MD5 প্রয়োজন"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "AUTH DIGEST-MD5 প্রয়োজন"
+
+msgid "AUTH GSSAPI required"
+msgstr "AUTH GSSAPI প্রয়োজন"
+
+msgid "AUTH NTLM required"
+msgstr "AUTH NTLM প্রয়োজন"
+
+msgid "AUTH SCRAM required"
+msgstr "AUTH SCRAM প্রয়োজন"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "AUTH OAUTHBEARER প্রয়োজন"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "AUTH XOAUTH2 প্রয়োজন"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: মেইলবক্স ডেটাবেস ত্রুটি"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: স্টোর ড্রাইভার ত্রুটি"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: ট্রান্সপোর্ট এজেন্ট ত্রুটি"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: বিষয়বস্তু রূপান্তর ত্রুটি"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: রাউটিং ত্রুটি"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: মেইল প্রবাহ স্থির"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: শ্যাডো রিডান্ডেন্সি ত্রুটি"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: নিরাপত্তা জাল ত্রুটি"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: সারি ডেটাবেস ত্রুটি"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: মেইল সীমিত করা হয়েছে"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: বাউন্স সারি ত্রুটি"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: স্থগিত সারি ত্রুটি"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: হোল্ড সারি ত্রুটি"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: আগত সারি ত্রুটি"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: সক্রিয় সারি ত্রুটি"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: দূষিত সারি ফাইল"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: সারি রানার ত্রুটি"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: উপনাম ডেটাবেস ত্রুটি"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: ভার্চুয়াল ব্যবহারকারী টেবিল ত্রুটি"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: মেইলার সংজ্ঞা ত্রুটি"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: রাউটার কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: ট্রান্সপোর্ট কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: ডিরেক্টর কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: পুনরায় চেষ্টা কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: পুনর্লিখন কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: প্রমাণীকরণ কনফিগারেশন ত্রুটি"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: ACL কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Local_scan কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: অনুসন্ধান কনফিগারেশন ত্রুটি"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: এক্সপেনশন কনফিগারেশন ত্রুটি"
+
+msgid "HTTP Protocol Versions"
+msgstr "HTTP প্রোটোকল সংস্করণ"
+
+msgid "Protocol"
+msgstr "প্রোটোকল"
+
+msgid "Request %"
+msgstr "অনুরোধ শতাংশ"
+
+msgid "Bandwidth %"
+msgstr "ব্যান্ডউইথ শতাংশ"
+
+msgid "Each request requires a new connection"
+msgstr "প্রতিটি অনুরোধের জন্য নতুন সংযোগ তৈরি করতে হবে"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "একাধিক অনুরোধ একটি সংযোগ পুনরায় ব্যবহার করতে পারে"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "একটি সংযোগে একাধিক অনুরোধ সমান্তরালভাবে প্রক্রিয়া করা যেতে পারে"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "দ্রুত সংযোগ, দুর্বল নেটওয়ার্কে ভাল কর্মক্ষমতা"
+
+msgid "No protocol data available"
+msgstr "কোন প্রোটোকল ডেটা উপলব্ধ নেই"
+
+msgid "of requests use HTTP/1.0"
+msgstr "অনুরোধের HTTP/1.0 প্রোটোকল ব্যবহার করে"
+
+msgid "From access logs"
+msgstr "অ্যাক্সেস লগ থেকে"
+
+msgid "No HTTP/2 requests detected"
+msgstr "কোন HTTP/2 প্রোটোকল অনুরোধ সনাক্ত করা যায়নি"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "সমস্ত অনুরোধ HTTP/1.0, কোন HTTP/2 অনুরোধ নেই"
+
+msgid "HTTP/3 not detected"
+msgstr "কোন HTTP/3 প্রোটোকল অনুরোধ সনাক্ত করা যায়নি"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "সমস্ত অনুরোধ QUIC/HTTP/3 প্রোটোকল অনুরোধ অন্তর্ভুক্ত করে না"
+
+msgid "Mail Authentication Statistics"
+msgstr "মেইল প্রমাণীকরণ পরিসংখ্যান"
+
+msgid "Authentication"
+msgstr "প্রমাণীকরণ প্রকার"
+
+msgid "Pass"
+msgstr "পাস"
+
+msgid "Fail"
+msgstr "ব্যর্থ"
+
+msgid "Softfail"
+msgstr "নরম ব্যর্থ"
+
+msgid "Neutral"
+msgstr "নিরপেক্ষ"
+
+msgid "None"
+msgstr "কোনটি নয়"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "মেইল সারি বিলম্ব পরিসংখ্যান"
+
+msgid "Delay Range"
+msgstr "বিলম্বের পরিসর"
+
+msgid "Count"
+msgstr "সংখ্যা"
+
+msgid "Percentage"
+msgstr "শতাংশ"
+
+msgid "TLS Encryption Statistics"
+msgstr "TLS এনক্রিপশন পরিসংখ্যান"
+
+msgid "TLS Versions"
+msgstr "TLS সংস্করণ"
+
+msgid "Top Ciphers"
+msgstr "সাধারণ সাইফার স্যুট"
+
+msgid "robot_hits_detail_both"
+msgstr "মোট অনুরোধ: %s বার (সাধারণ পৃষ্ঠা: %s বার, robots.txt: %s বার)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "শুধুমাত্র robots.txt এ অ্যাক্সেস করেছে: %s বার, অন্য পৃষ্ঠার ডেটা পাওয়া যায়নি"
+
+msgid "robot_hits_detail_normal"
+msgstr "সাধারণ পৃষ্ঠার অনুরোধ: %s বার"
+
+msgid "Troubleshooting"
+msgstr "সমস্যা সমাধান"
+
+msgid "Did you use the correct URL?"
+msgstr "আপনি কি সঠিক URL ব্যবহার করেছেন?"
+
+msgid "Example:"
+msgstr "উদাহরণ:"
+
+msgid "Did you use correct config parameter?"
+msgstr "আপনি কি সঠিক কনফিগারেশন প্যারামিটার ব্যবহার করেছেন?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "উদাহরণ: আপনার কনফিগারেশন ফাইল awstats.mysite.conf হলে, -config=mysite ব্যবহার করুন"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "আপনি কি 'awstats.$SiteConfig.conf' কনফিগারেশন ফাইল তৈরি করেছেন?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "যদি না করে থাকেন, আপনি কমান্ড লাইন থেকে \"awstats_configure.pl\" চালাতে পারেন, অথবা ম্যানুয়ালি তৈরি করতে পারেন।"
+
+msgid "Setup"
+msgstr "সেটআপ"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "ফাইল, ওয়েব সার্ভার বা অনুমতি ভুল হতে পারে।"
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "কনফিগারেশন ফাইল, অনুমতি এবং AWStats ডকুমেন্টেশন ('docs' ডিরেক্টরিতে) পরীক্ষা করুন।"
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "সতর্কতা: \"%s\" এর জন্য ভাষা ফাইল পাওয়া যায়নি। ইংরেজি ব্যবহার করা হবে।"
+
+#------------------------------------------------------------------------------
+# ত্রুটি এবং সংকেত ব্যবস্থাপনা
+#------------------------------------------------------------------------------
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "%s প্রক্রিয়া (ID %s) সংকেত %s দ্বারা বাধাপ্রাপ্ত হয়েছে।"
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "এই কনফিগারেশন ফাইলের জন্য একটি AWStats আপডেট প্রক্রিয়া ইতিমধ্যে চলমান বলে মনে হচ্ছে। অনুগ্রহ করে পরে চেষ্টা করুন। যদি এটি সত্য না হয়, লক ফাইলটি ম্যানুয়ালি সরিয়ে ফেলুন"
+
+#------------------------------------------------------------------------------
+# নতুন পরিসংখ্যান শিরোনাম
+#------------------------------------------------------------------------------
+msgid "Report Overview"
+msgstr "রিপোর্ট সামগ্রিক দৃশ্য"
+
+msgid "Monthly Statistics"
+msgstr "মাসিক পরিসংখ্যান"
+
+msgid "Daily Statistics"
+msgstr "দৈনিক পরিসংখ্যান"
+
+msgid "Statistics by Day of Week"
+msgstr "সপ্তাহের দিন অনুযায়ী পরিসংখ্যান"
+
+msgid "Hourly Page Views"
+msgstr "প্রতি ঘন্টায় দেখা সংখ্যা"
+
+msgid "Traffic Sources"
+msgstr "ট্রাফিক উৎস"
+
+msgid "Other Sources"
+msgstr "অন্যান্য উৎস"
+
+msgid "tooltip_1"
+msgstr "ওয়েবসাইটে দর্শকের সেশন সংখ্যা। 30 মিনিটের বেশি নিষ্ক্রিয়তার পরে একই দর্শক আবার এলে তা নতুন দর্শন হিসাবে গণনা করা হয়"
+
+msgid "tooltip_2"
+msgstr "নির্বাচিত সময়ের মধ্যে আপনার ওয়েবসাইটে আসা বিভিন্ন দর্শকের সংখ্যা। আইপি ঠিকানার ভিত্তিতে"
+
+msgid "tooltip_3"
+msgstr "পৃষ্ঠা হিসাবে গণনা করা অনুরোধের সংখ্যা (যেমন HTML, PHP, ASP ইত্যাদি), ছবি, CSS, JS এর মতো স্থির ফাইল বাদ দিয়ে"
+
+msgid "tooltip_4"
+msgstr "সার্ভারে পাঠানো মোট অনুরোধের সংখ্যা, সমস্ত পৃষ্ঠা, ছবি, CSS, JS এবং অন্যান্য ফাইল সহ"
+
+msgid "tooltip_5"
+msgstr "সার্ভার ব্যবহারকারীর অনুরোধের জবাব দিতে যে মোট ডেটা পরিমাণ পাঠায়"
+
+msgid "tooltip_13"
+msgstr "সার্চ ইঞ্জিনের মাধ্যমে আপনার ওয়েবসাইটে আসা ট্রাফিকের উৎস পরিসংখ্যান। কোন সার্চ ইঞ্জিন আপনার জন্য ট্রাফিক এনেছে এবং ব্যবহারকারীরা কোন অনুসন্ধান শব্দ ব্যবহার করেছে তা দেখায়"
+
+msgid "tooltip_14"
+msgstr "অন্যান্য ওয়েবসাইট থেকে বাহ্যিক লিংকের মাধ্যমে আপনার ওয়েবসাইটে আসা ট্রাফিকের উৎস পরিসংখ্যান। কোন ওয়েবসাইটগুলি আপনার সাথে লিংক করে এবং তারা কত ট্রাফিক নিয়ে আসে তা দেখায়"
+
+msgid "tooltip_15"
+msgstr "ব্যবহারকারীরা সার্চ ইঞ্জিনের মাধ্যমে আপনার ওয়েবসাইট অনুসন্ধান করার সময় যে অনুসন্ধান শব্দ ব্যবহার করে। কীওয়ার্ড একটি শব্দ, কীওয়ার্ড বাক্যাংশ একাধিক শব্দের সংমিশ্রণ"
+
+msgid "tooltip_16"
+msgstr "স্বয়ংক্রিয় প্রোগ্রাম যেমন সার্চ বট, এআই প্রশিক্ষণ বট, দুর্বলতা স্ক্যানার। বন্ধনীর ভিতরের সংখ্যা সাধারণ পৃষ্ঠার অনুরোধ এবং robots.txt অনুরোধের সংখ্যা দেখায়"
+
+msgid "tooltip_17"
+msgstr "24 ঘন্টা ট্রাফিক বিতরণ চার্ট। দিনের প্রতিটি সময়ে আপনার ওয়েবসাইটের ট্রাফিক দেখায়, ব্যবহারকারীদের সক্রিয় সময় বুঝতে সাহায্য করে"
+
+msgid "tooltip_18"
+msgstr "এই কলামটি নির্বাচিত সময়ের মধ্যে দৈনিক/সাপ্তাহিক গড় মান দেখায়, সামগ্রিক প্রবণতা বুঝতে আপনাকে সাহায্য করে"
+
+msgid "tooltip_19"
+msgstr "বিস্তারিত দেখতে চার্টের আইটেমে ক্লিক করুন। নির্দিষ্ট মান দেখতে মাউসকে চার্ট এলিমেন্টের উপর ঘোরান"
+
+msgid "tooltip_20"
+msgstr "যে ডেটা বিদ্যমান পরিসরে শ্রেণীবদ্ধ করা যায় না, সাধারণত অস্বাভাবিক ডেটা ফরম্যাট বা অনুপস্থিতির কারণে ঘটে"
+
+msgid "tooltip_21"
+msgstr "সনাক্ত করা কীট আক্রমণের রেকর্ড। কীট একটি ক্ষতিকারক প্রোগ্রাম যা নিজে নিজে ছড়ায়, সাধারণত নেটওয়ার্ক দুর্বলতার মাধ্যমে ছড়ায়"
+
+#------------------------------------------------------------------------------
+# সহায়তা বার্তা দেখান - কমিউনিটি সংস্করণ
+#------------------------------------------------------------------------------
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - উন্নত ওয়েব পরিসংখ্যান"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "কপিরাইট (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "কপিরাইট (c) 2026-বর্তমান কমিউনিটি সংস্করণ"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "AWStats কোনো ওয়ারেন্টি ছাড়াই আসে। এটি একটি GNU জেনারেল পাবলিক লাইসেন্সের অধীনে বিতরণ করা একটি বিনামূল্যের সফটওয়্যার (বিস্তারিত জানতে LICENSE ফাইল দেখুন)।"
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "সিনট্যাক্স: %s -config=ভার্চুয়ালহোস্টনাম [বিকল্পগুলি]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "এটি কমান্ড লাইনে %s চালায় AWStats কনফিগারেশন ফাইলে সংজ্ঞায়িত লগ ফাইল থেকে ওয়েবসাইটের পরিসংখ্যান আপডেট করতে (-update বিকল্প), অথবা একটি HTML রিপোর্ট তৈরি করতে (-output বিকল্প)।"
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "প্রথমে, %s কনফিগারেশন ফাইল হিসাবে %s.virtualhostname.conf পড়ার চেষ্টা করে। না পাওয়া গেলে, %s %s.conf পড়ার চেষ্টা করে, এবং শেষে -config= এ দেওয়া সম্পূর্ণ পাথ পড়ে"
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "নোট 1: কনফিগারেশন ফাইল (*.conf) /etc/awstats, /usr/local/etc/awstats, /etc বা awstats.pl স্ক্রিপ্ট ফাইলের মতো একই ডিরেক্টরিতে থাকতে হবে।"
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "নোট 2: AWSTATS_FORCE_CONFIG এনভায়রনমেন্ট ভেরিয়েবল সংজ্ঞায়িত করা থাকলে, AWStats এটিকে 'config' মান হিসাবে ব্যবহার করবে, কমান্ড লাইন বা ইউআরএলে যাই হোক না কেন।"
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "সমস্ত সেটআপ নির্দেশনার জন্য AWStats ডকুমেন্টেশন দেখুন।"
+
+msgid "Options to update statistics:"
+msgstr "পরিসংখ্যান আপডেট করার বিকল্প:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        পরিসংখ্যান আপডেট করুন (ডিফল্ট)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     প্রতি %s লাইন প্রক্রিয়াকরণের পরে বেঞ্চমার্ক তথ্য যোগ করুন"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted পাওয়া প্রতিটি দূষিত লাইনের জন্য কারণসহ আউটপুট যোগ করুন"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   পাওয়া প্রতিটি বাতিল লাইনের জন্য কারণসহ আউটপুট যোগ করুন"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin   রেফারার পার্স করা না গেলে আউটপুট করুন"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin    উৎস সরাসরি অ্যাক্সেস হলে লগ লাইন আউটপুট করুন"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n    n লাইন পার্স করার পরে আপডেট প্রক্রিয়া বন্ধ করুন"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x      কনফিগারেশন ফাইলে 'LogFile' যা আছে তা বিশ্লেষণ করতে লগ পরিবর্তন করুন"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  পরিসংখ্যান আপডেট করার সময় লগ ফাইলগুলি কালানুক্রমিক ক্রমে প্রক্রিয়া করতে সতর্ক থাকুন।"
+
+msgid "Options to show statistics:"
+msgstr "পরিসংখ্যান দেখানোর বিকল্প:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output      মূল HTML রিপোর্ট আউটপুট করুন (-update ছাড়া কোন আপডেট হয় না)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x    অন্যান্য রিপোর্ট পৃষ্ঠা আউটপুট করুন যেখানে x হল:"
+
+msgid "build page of all domains/countries"
+msgstr "সমস্ত ডোমেইন/দেশের পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of all hosts"
+msgstr "সমস্ত হোস্টের পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of last hits for hosts"
+msgstr "হোস্টের জন্য শেষ অনুরোধের পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of all unresolved IP"
+msgstr "সমস্ত অমীমাংসিত আইপির পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of all email senders (maillog)"
+msgstr "সমস্ত ইমেইল প্রেরকের পৃষ্ঠা তৈরি করুন (maillog)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "শেষ ইমেইল প্রেরকের পৃষ্ঠা তৈরি করুন (maillog)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "সমস্ত ইমেইল প্রাপকের পৃষ্ঠা তৈরি করুন (maillog)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "শেষ ইমেইল প্রাপকের পৃষ্ঠা তৈরি করুন (maillog)"
+
+msgid "build page of all logins used"
+msgstr "ব্যবহৃত সমস্ত লগইনের পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of last hits for logins"
+msgstr "লগইনের জন্য শেষ অনুরোধের পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of all robots/spider visits"
+msgstr "সমস্ত রোবট/স্পাইডার দর্শনের পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of last hits for robots"
+msgstr "রোবটের জন্য শেষ অনুরোধের পৃষ্ঠা তৈরি করুন"
+
+msgid "list most often viewed pages"
+msgstr "সবচেয়ে বেশি দেখা পৃষ্ঠাগুলির তালিকা তৈরি করুন"
+
+msgid "list most often viewed pages matching filter"
+msgstr "ফিল্টারের সাথে মেলে এমন সবচেয়ে বেশি দেখা পৃষ্ঠাগুলির তালিকা তৈরি করুন"
+
+msgid "list entry pages"
+msgstr "প্রবেশ পৃষ্ঠাগুলির তালিকা তৈরি করুন"
+
+msgid "list entry pages matching filter"
+msgstr "ফিল্টারের সাথে মেলে এমন প্রবেশ পৃষ্ঠাগুলির তালিকা তৈরি করুন"
+
+msgid "list exit pages"
+msgstr "প্রস্থান পৃষ্ঠাগুলির তালিকা তৈরি করুন"
+
+msgid "list exit pages matching filter"
+msgstr "ফিল্টারের সাথে মেলে এমন প্রস্থান পৃষ্ঠাগুলির তালিকা তৈরি করুন"
+
+msgid "build page with os detailed versions"
+msgstr "অপারেটিং সিস্টেমের বিস্তারিত সংস্করণ সহ পৃষ্ঠা তৈরি করুন"
+
+msgid "build page with browsers detailed versions"
+msgstr "ব্রাউজারের বিস্তারিত সংস্করণ সহ পৃষ্ঠা তৈরি করুন"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "অজানা ব্রাউজার সহ 'User Agents' এর তালিকা তৈরি করুন"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "অজানা অপারেটিং সিস্টেম সহ 'User Agents' এর তালিকা তৈরি করুন"
+
+msgid "build page of all refering search engines"
+msgstr "সমস্ত রেফারিং সার্চ ইঞ্জিনের পৃষ্ঠা তৈরি করুন"
+
+msgid "build page of all refering pages"
+msgstr "সমস্ত রেফারেন্স পৃষ্ঠার পৃষ্ঠা তৈরি করুন"
+
+msgid "list all keyphrases used on search engines"
+msgstr "সার্চ ইঞ্জিনে ব্যবহৃত সমস্ত কীওয়ার্ড বাক্যাংশের তালিকা তৈরি করুন"
+
+msgid "list all keywords used on search engines"
+msgstr "সার্চ ইঞ্জিনে ব্যবহৃত সমস্ত কীওয়ার্ডের তালিকা তৈরি করুন"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "404 ত্রুটির জন্য 'Referers' এর তালিকা তৈরি করুন"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "ExtraSection X এর জন্য সমস্ত মানের পৃষ্ঠা তৈরি করুন"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           HTML রিপোর্ট পৃষ্ঠায় স্থির লিংক থাকবে"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    .html এর পরিবর্তে .xxx এক্সটেনশন সহ স্থির লিংক থাকবে"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     LL ভাষায় একটি HTML রিপোর্ট আউটপুট করুন (en,de,es,fr,it,nl,bn,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    পুরানো মাস MM এর জন্য একটি HTML রিপোর্ট আউটপুট করুন"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   পুরানো বছর YYYY এর জন্য একটি HTML রিপোর্ট আউটপুট করুন"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  'date' বিকল্পগুলি আপনাকে পুরানো লগ ফাইল প্রক্রিয়া করতে দেয় না। তারা আপনাকে বর্তমান মাস/বছরের পরিবর্তে নির্বাচিত মাস/বছরের সময়ের জন্য একটি অতীত রিপোর্ট দেখতে দেয়।"
+
+msgid "Other options:"
+msgstr "অন্যান্য বিকল্প:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     স্তর X এর চেয়ে কম ডিবাগ তথ্য যোগ করুন (গতি হ্রাস পাবে)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v     AWStats সংস্করণ দেখান"
+
+msgid "Now supports/detects:"
+msgstr "এখন সমর্থন করে/সনাক্ত করে:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Web/FTP/মেইল/স্ট্রিমিং সার্ভার লগ বিশ্লেষণ (এবং লোড ব্যালেন্সড লগ ফাইল)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  রিভার্স ডিএনএস লুকআপ (IPv4 এবং IPv6) এবং জিওআইপি লুকআপ"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  দর্শনের সংখ্যা, স্বতন্ত্র দর্শকের সংখ্যা"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  দর্শনের সময়কাল এবং শেষ দর্শনের তালিকা"
+
+msgid "  Authenticated users"
+msgstr "  প্রমাণীকৃত ব্যবহারকারী"
+
+msgid "  Days of week and rush hours"
+msgstr "  সপ্তাহের দিন এবং ব্যস্ত সময়"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  হোস্টের তালিকা এবং অমীমাংসিত আইপি ঠিকানার তালিকা"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  সবচেয়ে বেশি দেখা, প্রবেশ এবং প্রস্থান পৃষ্ঠা"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  ফাইলের ধরন এবং ওয়েব সংকোচন (mod_gzip, mod_deflate পরিসংখ্যান)"
+
+msgid "  Configured Database Statistics"
+msgstr "  কনফিগার করা ডেটাবেস পরিসংখ্যান"
+
+msgid "  %s domains/countries"
+msgstr "  %s ডোমেইন/দেশ"
+
+msgid "  %s robots"
+msgstr "  %s রোবট"
+
+msgid "  %s worm's families"
+msgstr "  %s কৃমি পরিবার"
+
+msgid "  %s operating systems"
+msgstr "  %s অপারেটিং সিস্টেম"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s ব্রাউজার (ফোন ব্রাউজার ডেটাবেস সহ %s)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s সার্চ ইঞ্জিন (এবং এগুলি থেকে ব্যবহৃত কীওয়ার্ড বাক্যাংশ/কীওয়ার্ড)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  শেষ রেফারার সহ সমস্ত HTTP ত্রুটি"
+
+msgid "  Report by day/month/year"
+msgstr "  দিন/মাস/বছর অনুযায়ী রিপোর্ট"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  ডায়নামিক বা স্ট্যাটিক HTML বা XHTML রিপোর্ট, স্ট্যাটিক PDF রিপোর্ট"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  সূচীকৃত টেক্সট বা XML মাসিক ডেটাবেস"
+
+msgid "  And a lot of other advanced features and options..."  
+msgstr "  এবং অন্যান্য অনেক উন্নত বৈশিষ্ট্য এবং বিকল্প..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  নতুন সংস্করণ এবং প্রায়শই জিজ্ঞাসিত প্রশ্ন https://github.com/hestiacn/vstats/issues এ দেখুন"

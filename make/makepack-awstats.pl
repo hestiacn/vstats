@@ -8,13 +8,14 @@
 use strict;
 use warnings;
 use v5.20;
+$| = 1;
 use Cwd;
 use experimental qw(declared_refs);
 use File::Path qw(remove_tree make_path);
 use File::Copy;
 use File::Basename;
 use Getopt::Long;
-use POSIX qw/strftime/;
+use POSIX qw(strftime);
 use Digest::SHA qw(sha256_hex);
 use Cwd qw(abs_path);
 use File::Spec;
@@ -304,7 +305,15 @@ sub init {
 
 # 准备构建目录
 sub prepare_buildroot {
-    print "Preparing build directory...\n";
+    my $skip_copy = shift || 0;
+    
+    if ($skip_copy) {
+        print "Skipping buildroot preparation (using source directly for TGZ/ZIP)\n";
+        $BUILDROOT = $SOURCE;
+        return;
+    }
+    
+    print "Preparing build directory for RPM/DEB/EXE...\n";
     
     remove_tree($BUILDROOT) if -d $BUILDROOT;
     make_path($BUILDROOT);
@@ -312,19 +321,28 @@ sub prepare_buildroot {
     my $target_dir = "$BUILDROOT/$PROJECT-$MAJOR.$MINOR";
     make_path($target_dir);
     
-    # 复制所有需要的目录
-    my @dirs = qw(README.md docs tools wwwroot);
-    foreach my $item (@dirs) {
+    # 复制所有需要的顶层目录（保持原有结构）
+    my @top_dirs = qw(docs tools wwwroot);
+    foreach my $item (@top_dirs) {
         my $src = File::Spec->catfile($SOURCE, $item);
         if (-e $src) {
-            print "Copying $item...\n";
+            print "Copying $item/ ...\n";
             system("cp -pr '$src' '$target_dir/'");
         } else {
             print "Warning: $src not found\n";
         }
     }
     
-    # 显式复制配置文件（确保它们存在）
+    # 复制 README 文件
+    foreach my $readme (qw(README.md README-zh_CN.md README-zh_TW.md)) {
+        my $src = File::Spec->catfile($SOURCE, $readme);
+        if (-f $src) {
+            print "Copying $readme...\n";
+            copy($src, "$target_dir/$readme") or warn "Failed to copy $readme: $!";
+        }
+    }
+    
+    # 复制配置文件（它们应该在 wwwroot/cgi-bin/ 下）
     my @config_files = qw(awstats.conf awstats.model.conf);
     foreach my $conf (@config_files) {
         my $src = File::Spec->catfile($SOURCE, 'wwwroot', 'cgi-bin', $conf);
@@ -337,11 +355,7 @@ sub prepare_buildroot {
         }
     }
     
-    # 验证文件是否复制成功
-    print "Verifying config files in buildroot:\n";
-    system("ls -la $target_dir/wwwroot/cgi-bin/ | grep -E 'awstats\\.conf|awstats\\.model\\.conf' || echo '  ⚠️ Config files missing!'");
-    
-    # 执行完整清理（简化版）
+    # 清理不需要的文件
     cleanup_buildroot($BUILDROOT, "$MAJOR.$MINOR");
     
     print "Build directory ready: $target_dir\n\n";
@@ -354,77 +368,45 @@ sub cleanup_buildroot {
     my $target_dir = "$build_dir/$PROJECT-$version";
     print "Cleaning files in $target_dir...\n";
     
-    # 通用清理
+    # 删除版本控制文件和备份
     my @patterns = (
-        'ChangeLog', '.cvsignore', '*.inc', '*.demo.conf',
-        '*.mail.conf', '*.ftp.conf', '*.test*.conf', 'Thumbs.db',
-        'CVS*', '.svn', '.git', '*.bak', '*~', '*.old'
+        '.git', '.svn', 'CVS',
+        '.github', '.settings',
+        '*.bak', '*~', '*.old',
+        '.cvsignore', '.gitignore',
+        '.project', '.gitattributes',
+        'Thumbs.db', '.DS_Store'
     );
     
     foreach my $pattern (@patterns) {
         system("find '$target_dir' -name '$pattern' -exec rm -rf {} \\; 2>/dev/null");
     }
     
-    # 旧版本中的特定文件清理
+    # 删除特定文件
     my @specific_files = (
-        "$target_dir/ChangeLog",
-        "$target_dir/docs/awstats_loganalysispaper.html",
-        "$target_dir/tools/urlalias.txt",
-        "$target_dir/tools/xferlogconvert.pl",
-        "$target_dir/tools/xslt/awstats*.sps",
-        "$target_dir/tools/xslt/gen*.*",
-        "$target_dir/wwwroot/cgi-bin/*.inc",
-        # "$target_dir/wwwroot/cgi-bin/$PROJECT.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.demo.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.mail.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.ftp.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.www*.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.map24.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.common.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.test*.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.*com.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT.*net.conf",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT??????.txt",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT??.*",
-        "$target_dir/wwwroot/cgi-bin/$PROJECT*.athena.*",
-        "$target_dir/wwwroot/cgi-bin/smallprof.*",
-        "$target_dir/wwwroot/cgi-bin/.smallprof*",
-        "$target_dir/wwwroot/cgi-bin/plugins/etf1*",
-        "$target_dir/wwwroot/cgi-bin/plugins/readgz*",
-        "$target_dir/wwwroot/cgi-bin/plugins/urlalias.txt",
-        "$target_dir/wwwroot/cgi-bin/plugins/detectrefererspam.pm",
-        "$target_dir/wwwroot/cgi-bin/plugins/testxxx.pm",
-        "$target_dir/wwwroot/classes/src/AWGraphApplet.class",
+        "$target_dir/git2cvs.sh",
+        "$target_dir/wwwroot/cgi-bin/.cvsignore",
+        "$target_dir/wwwroot/classes/src/.cvsignore",
+        "$target_dir/docs/images/.cvsignore",
+        "$target_dir/tools/webmin/.cvsignore",
+        "$target_dir/tools/webmin/awstats/images/.cvsignore",
     );
     
     foreach my $file (@specific_files) {
-        system("rm -f $file 2>/dev/null");
+        unlink $file if -f $file;
     }
     
-    # 删除特定目录
+    # 删除不需要的目录
     my @remove_dirs = (
-        "$target_dir/wwwroot/cgi-bin/plugins/testgeo*",
-        "$target_dir/wwwroot/cgi-bin/plugins/Geo",
-        "$target_dir/wwwroot/php",
         "$target_dir/make",
         "$target_dir/test",
     );
     
     foreach my $dir (@remove_dirs) {
-        system("rm -fr $dir 2>/dev/null");
+        system("rm -rf '$dir' 2>/dev/null");
     }
     
-    # 处理 webmin 目录
-    if (-d "$target_dir/tools/webmin/awstats") {
-        system("rm -fr $target_dir/tools/webmin/awstats 2>/dev/null");
-    }
-    
-    # 检查 WBM 文件
-    my $wbm_file = "$target_dir/tools/webmin/awstats-$WBMVERSION.wbm";
-    if (! -f $wbm_file) {
-        print "⚠ Warning: WBM file not found: $wbm_file\n";
-        print "  You may need to run makepack-awstats_webmin.pl first\n";
-    }
+    print "Cleanup completed\n";
 }
 
 # 检查依赖工具
@@ -436,7 +418,6 @@ sub check_requirements {
     
     if ($OS eq 'windows') {
         $req .= ".exe" if $req !~ /\.exe$/;
-        # Windows 上直接检查文件是否存在
         my $found = 0;
         foreach my $path (split(/;/, $ENV{PATH})) {
             if (-f "$path\\$req") {
@@ -452,7 +433,6 @@ sub check_requirements {
             return 0;
         }
     } else {
-        # Linux/Unix 保持原样
         my $ret = system("$req --version > /dev/null 2>&1");
         if ($ret == 0) {
             print "OK\n";
@@ -471,84 +451,111 @@ sub build_tgz {
     my $output_file = "$DESTI/$filename.tar.gz";
     
     print "\nBuilding TGZ package: $filename\n";
+    print "Using source directory directly (no copy): $SOURCE\n";
     
-    unlink "$BUILDROOT/$filename.tar.gz";
+    # 跳过复制，直接使用源码目录
+    prepare_buildroot(1);
     
-    my $exclude_file = "$SOURCE/make/tgz/tar.exclude";
-    my $exclude_opt = -f $exclude_file ? "--exclude-from='$exclude_file'" : "";
+    # 删除旧的输出文件
+    unlink $output_file if -f $output_file;
     
-    my $cmd = "tar $exclude_opt --directory='$BUILDROOT' --mode=go-w -czvf '$BUILDROOT/$filename.tar.gz' $filename 2>&1";
-
-    system($cmd) == 0 or warn "TGZ build failed";
+    # 切换到源码目录
+    chdir($SOURCE);
     
-    move("$BUILDROOT/$filename.tar.gz", $output_file) or warn "Failed to move TGZ file";
-    return $output_file;
+    # 排除不需要的文件和目录
+    my @excludes = (
+        '.git', '.github', '.settings',
+        'make', 'test',
+        '.gitignore', '.gitattributes',
+        '.project', '.cvsignore',
+        'git2cvs.sh',
+        '*.bak', '*~', '*.old'
+    );
+    
+    my $exclude_args = '';
+    foreach my $ex (@excludes) {
+        $exclude_args .= " --exclude='$ex'";
+    }
+    
+    # 打包命令：将当前目录打包，并在 tar 内重命名为项目名
+    my $cmd = "tar $exclude_args -czvf '$output_file' --transform='s/^/$filename\\//' . 2>&1";
+    
+    print "Running: tar $exclude_args -czvf '$output_file' --transform='s/^/$filename\\//' .\n";
+    my $result = system($cmd);
+    
+    if ($result != 0) {
+        warn "TGZ build failed with code $result";
+        return undef;
+    }
+    
+    # 验证输出文件
+    if (-f $output_file) {
+        my $size = -s $output_file;
+        print "✅ TGZ package created: $output_file (" . int($size/1024) . " KB)\n";
+        return $output_file;
+    } else {
+        print "❌ TGZ package not created\n";
+        return undef;
+    }
 }
 
 # 构建 ZIP 包
 sub build_zip {
     my $version = "$MAJOR.$MINOR";
     my $filename = "$PROJECT-$version";
-    my $output = "$DESTI/$filename.zip";
+    my $output_file = "$DESTI/$filename.zip";
     
     print "\nBuilding ZIP package: $filename\n";
-    print "  PATH: $ENV{PATH}\n";
-    print "  which 7z: " . `which 7z 2>&1`;
-    # 调试信息
-    print "  Checking 7z command...\n";
-    my $which_7z = `which 7z 2>&1`;
-    print "  which 7z: $which_7z";
-    
-    my $version_check = `7z --version 2>&1`;
-    print "  7z --version: $version_check";
+    print "Using source directory directly (no copy): $SOURCE\n";
     
     # 检查 7z 是否可用
-    if ($which_7z =~ /not found/i || $version_check =~ /not found/i) {
-        print "  ⚠️ 7z command not found, skipping ZIP build\n";
+    my $which_7z = `which 7z 2>&1`;
+    if ($which_7z =~ /not found/i) {
+        print "⚠️ 7z command not found, skipping ZIP build\n";
         return undef;
     }
     
-    # 检查源目录
-    my $source_dir = "$BUILDROOT/$filename";
-    if (!-d $source_dir) {
-        print "  ❌ Source directory not found: $source_dir\n";
-        return undef;
+    # 跳过复制，直接使用源码目录
+    prepare_buildroot(1);
+    
+    # 删除旧的输出文件
+    unlink $output_file if -f $output_file;
+    
+    # 切换到源码目录
+    chdir($SOURCE);
+    
+    # 排除不需要的文件和目录
+    my @excludes = (
+        '.git', '.github', '.settings',
+        'make', 'test',
+        '.gitignore', '.gitattributes',
+        '.project', '.cvsignore',
+        'git2cvs.sh'
+    );
+    
+    my $exclude_args = '';
+    foreach my $ex (@excludes) {
+        $exclude_args .= " -xr!$ex";
     }
     
-    # 列出源目录内容（调试）
-    print "  Source directory contents:\n";
-    system("ls -la '$source_dir' | head -20");
+    # 使用 7z 打包
+    my $cmd = "7z a -r -tzip -mx '$output_file' . $exclude_args 2>&1";
+    print "Running: $cmd\n";
     
-    unlink "$BUILDROOT/$filename.zip";
-    
-    chdir($BUILDROOT);
-    my $cmd = "7z a -r -tzip -mx '$BUILDROOT/$filename.zip' '$filename' 2>&1";
-    print "  Running: $cmd\n";
     my $result = system($cmd);
-    print "  Return code: $result\n";
     
     if ($result != 0) {
         warn "ZIP build failed with code $result";
-        # 尝试用不同参数重试
-        print "  Retrying with different parameters...\n";
-        $cmd = "7z a -r -tzip '$BUILDROOT/$filename.zip' '$filename/*' 2>&1";
-        print "  Running: $cmd\n";
-        $result = system($cmd);
-        print "  Return code: $result\n";
-        
-        if ($result != 0) {
-            return undef;
-        }
+        return undef;
     }
     
-    # 检查生成的 ZIP 文件
-    if (-f "$BUILDROOT/$filename.zip") {
-        my $size = -s "$BUILDROOT/$filename.zip";
-        print "  ✅ ZIP file created, size: " . int($size/1024) . " KB\n";
-        move("$BUILDROOT/$filename.zip", $output) or warn "Failed to move ZIP file";
-        return $output;
+    # 验证输出文件
+    if (-f $output_file) {
+        my $size = -s $output_file;
+        print "✅ ZIP package created: $output_file (" . int($size/1024) . " KB)\n";
+        return $output_file;
     } else {
-        print "  ❌ ZIP file not created\n";
+        print "❌ ZIP package not created\n";
         return undef;
     }
 }
@@ -677,34 +684,29 @@ sub build_rpm {
 sub build_deb {
     my $version = "$MAJOR.$MINOR";
     my $filename = "$PROJECT-$version";
-    my $output = "$DESTI/${PROJECT}_$version\_all.deb";
+    my $output = "$DESTI/${PROJECT}_$version-${RPMSUBVERSION}_all.deb";  # 注意：DEB 格式用 - 不是 _
     
     print "\n🔨 Building DEB package: $filename\n";
     print "=" x 60, "\n";
     
     # 步骤1: 检查依赖工具
     print "📋 Step 1: Checking build dependencies...\n";
-    
-    # 检查 dpkg-buildpackage
     my $dpkg_check = system("dpkg-buildpackage --version > /dev/null 2>&1");
     if ($dpkg_check != 0) {
         print "  ❌ dpkg-buildpackage not found. Please install dpkg-dev\n";
+        print "  💡 Run: sudo apt-get install dpkg-dev debhelper\n";
         return undef;
     }
     print "  ✅ dpkg-buildpackage found\n";
     
-    # 检查 debhelper - 直接使用 which 命令更可靠
     my $dh_check = system("which dh > /dev/null 2>&1");
     if ($dh_check != 0) {
-        print "  ⚠️ dh command not found via which, trying dh --version...\n";
-        my $dh_version_check = system("dh --version > /dev/null 2>&1");
-        if ($dh_version_check != 0) {
-            print "  ❌ debhelper not found. Please install debhelper\n";
-            return undef;
-        }
+        print "  ❌ debhelper not found. Please install debhelper\n";
+        print "  💡 Run: sudo apt-get install debhelper\n";
+        return undef;
     }
     print "  ✅ debhelper found\n";
-
+    
     # 步骤2: 创建构建目录
     print "\n📋 Step 2: Creating build directories...\n";
     my $deb_buildroot = "$BUILDROOT/deb-build";
@@ -731,291 +733,42 @@ sub build_deb {
     }
     print "  ✅ Source files copied\n";
     
-    # 步骤4: 创建 debian 目录
-    print "\n📋 Step 4: Creating debian packaging files...\n";
-    make_path("$deb_packageroot/debian");
-    print "  ✅ debian directory created\n";
-    
-    # 步骤5: 生成 control 文件
-    print "  📄 Generating control file...\n";
-    open my $fh, '>', "$deb_packageroot/debian/control" or do {
-        print "  ❌ Cannot create control file: $!\n";
+    # 步骤4: 解析模板生成 debian 目录
+    print "\n📋 Step 4: Generating debian packaging files from template...\n";
+    my $spec_template = "$SOURCE/make/deb/awstats.spec";  # 使用绝对路径
+    if (! -f $spec_template) {
+        print "  ❌ DEB spec template not found: $spec_template\n";
+        print "  Looking in: " . Cwd::getcwd() . "/make/deb/awstats.spec\n";
         return undef;
-    };
-    print $fh <<"EOF";
-Source: $PROJECT
-Section: web
-Priority: optional
-Maintainer: Laurent Destailleur <eldy\@users.sourceforge.net>
-Build-Depends: debhelper (>= 13)
-Standards-Version: 4.7.0
-Rules-Requires-Root: no
-Homepage: https://$PROJECT.org
-
-Package: $PROJECT
-Architecture: all
-Depends: perl,
-         libgeo-ip-perl,
-         libgeo-ipfree-perl,
-         geoip-database,
-         libtimelocal-perl,
-         libsocket-perl,
-         libencode-perl,
-         libjson-xs-perl,
-         libtry-tiny-perl,
-         \${misc:Depends}
-Description: powerful and featureful web server log analyzer
- AWStats (Advanced Web Statistics) is a free powerful and featureful
- tool that generates advanced web (but also ftp or mail) server
- statistics, graphically.
- .
- This log analyzer works as a CGI or from command line and shows you
- all possible information your log contains, in few graphical web
- pages.
-EOF
-    close $fh;
-    print "  ✅ control file created\n";
+    }
+    print "  ✅ Using template: $spec_template\n";
     
-    # 步骤6: 生成 changelog 文件
-    print "  📄 Generating changelog file...\n";
-    my $date = strftime("%a, %d %b %Y %H:%M:%S %z", localtime);
-    open $fh, '>', "$deb_packageroot/debian/changelog" or do {
-        print "  ❌ Cannot create changelog: $!\n";
+    # 解析模板并生成文件
+    my $gen_result = parse_deb_template($spec_template, $deb_packageroot, $version, $RPMSUBVERSION);
+    unless ($gen_result) {
+        print "  ❌ Failed to generate debian files\n";
         return undef;
-    };
-    print $fh <<"EOF";
-$PROJECT ($version-1) unstable; urgency=medium
-
-  * New upstream release
-
- -- Laurent Destailleur <eldy\@users.sourceforge.net>  $date
-EOF
-    close $fh;
-    print "  ✅ changelog file created\n";
+    }
+    print "  ✅ Debian files generated\n";
     
-    # 步骤7: 生成 compat 文件
-    print "  📄 Generating compat file...\n";
-    open $fh, '>', "$deb_packageroot/debian/compat" or do {
-        print "  ❌ Cannot create compat: $!\n";
-        return undef;
-    };
-    print $fh "13\n";
-    close $fh;
-    print "  ✅ compat file created (level 13)\n";
-    
-    # 步骤8: 生成 copyright 文件
-    print "  📄 Generating copyright file...\n";
-    open $fh, '>', "$deb_packageroot/debian/copyright" or do {
-        print "  ❌ Cannot create copyright: $!\n";
-        return undef;
-    };
-    print $fh <<"EOF";
-Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: $PROJECT
-Source: https://github.com/$GITHUB_REPO
-
-Files: *
-Copyright: 2000-2026 Laurent Destailleur <eldy\@users.sourceforge.net>
-License: GPL-2+
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- (at your option) any later version.
- .
- On Debian systems, the full text of the GNU General Public License
- version 2 can be found in the file /usr/share/common-licenses/GPL-2.
-EOF
-    close $fh;
-    print "  ✅ copyright file created\n";
-    
-    # 步骤9: 生成 rules 文件
-    print "  📄 Generating rules file...\n";
-    open $fh, '>', "$deb_packageroot/debian/rules" or do {
-        print "  ❌ Cannot create rules: $!\n";
-        return undef;
-    };
-    print $fh <<"EOF";
-#!/usr/bin/make -f
-
-%:
-	dh \$@
-
-override_dh_auto_install:
-	# 创建必要的目录
-	mkdir -p debian/$PROJECT/etc/$PROJECT
-	mkdir -p debian/$PROJECT/usr/lib/cgi-bin
-	mkdir -p debian/$PROJECT/var/lib/$PROJECT
-	mkdir -p debian/$PROJECT/var/log/$PROJECT
-	mkdir -p debian/$PROJECT/usr/share/doc/$PROJECT
-	mkdir -p debian/$PROJECT/usr/share/$PROJECT
-	
-	# 复制文件
-	cp -pr wwwroot/* debian/$PROJECT/usr/share/$PROJECT/ 2>/dev/null || true
-	cp -pr docs/* debian/$PROJECT/usr/share/doc/$PROJECT/ 2>/dev/null || true
-	cp -pr tools/* debian/$PROJECT/usr/share/$PROJECT/tools/ 2>/dev/null || true
-	
-	# 配置文件
-	if [ -f wwwroot/cgi-bin/awstats.model.conf ]; then \\
-		cp wwwroot/cgi-bin/awstats.model.conf debian/$PROJECT/etc/$PROJECT/awstats.conf; \\
-	fi
-	
-	# 创建符号链接
-	ln -sf /usr/share/$PROJECT/cgi-bin/awstats.pl debian/$PROJECT/usr/lib/cgi-bin/awstats.pl
-	ln -sf /usr/share/$PROJECT/cgi-bin/awredir.pl debian/$PROJECT/usr/lib/cgi-bin/awredir.pl
-
-override_dh_installchangelogs:
-	dh_installchangelogs docs/CHANGELOG.md
-
-override_dh_installdocs:
-	dh_installdocs --link-doc=$PROJECT
-EOF
-    close $fh;
-    chmod 0755, "$deb_packageroot/debian/rules";
-    print "  ✅ rules file created and set executable\n";
-    
-    # 步骤10: 生成 install 文件
-    print "  📄 Generating install file...\n";
-    open $fh, '>', "$deb_packageroot/debian/install" or do {
-        print "  ❌ Cannot create install: $!\n";
-        return undef;
-    };
-    print $fh <<"EOF";
-wwwroot/cgi-bin/awstats.pl usr/share/$PROJECT/cgi-bin/
-wwwroot/cgi-bin/awredir.pl usr/share/$PROJECT/cgi-bin/
-wwwroot/cgi-bin/plugins/* usr/share/$PROJECT/plugins/
-wwwroot/cgi-bin/lib/* usr/share/$PROJECT/lib/
-wwwroot/cgi-bin/lang/* usr/share/$PROJECT/lang/
-wwwroot/icon/* usr/share/$PROJECT/icon/
-wwwroot/css/* usr/share/$PROJECT/css/
-wwwroot/js/* usr/share/$PROJECT/js/
-wwwroot/classes/* usr/share/$PROJECT/classes/
-tools/* usr/share/$PROJECT/tools/
-README.md usr/share/doc/$PROJECT/
-EOF
-    close $fh;
-    print "  ✅ install file created\n";
-    
-    # 步骤11: 生成 postinst 脚本
-    print "  📄 Generating postinst script...\n";
-    open $fh, '>', "$deb_packageroot/debian/postinst" or do {
-        print "  ❌ Cannot create postinst: $!\n";
-        return undef;
-    };
-    print $fh <<"EOF";
-#!/bin/sh
-set -e
-
-case "\$1" in
-    configure)
-        mkdir -p /var/lib/awstats
-        mkdir -p /var/log/awstats
-        chmod 755 /usr/lib/cgi-bin/awstats.pl
-        chmod 755 /usr/lib/cgi-bin/awredir.pl
-        
-        # 检查并下载 GeoIP 数据库
-        if [ ! -f /usr/share/GeoIP/GeoLite2-City.mmdb ]; then
-            echo "First-time setup: Downloading GeoLite2-City.mmdb (60MB)..."
-            wget -q --show-progress -O /usr/share/GeoIP/GeoLite2-City.mmdb \
-                https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb
-        else
-            echo "✓ GeoLite2-City.mmdb already exists, skipping download"
-        fi
-        
-        # 启用 Apache CGI 模块
-        if [ -x /usr/sbin/a2enmod ]; then
-            a2enmod cgi > /dev/null 2>&1 || true
-        fi
-
-        # 生成 awredir.pl 的随机密钥
-        if [ -f /usr/share/awstats/cgi-bin/awredir.pl ]; then
-            echo "Generating random key for awredir.pl..."
-            KEY=\$(perl -e 'use Digest::MD5 qw(md5_hex); print md5_hex(rand().time().\$\$)' 2>/dev/null || echo "defaultkey")
-            if [ -n "\$KEY" ]; then
-                sed -i "s/YOURKEYFORMD5/\$KEY/" /usr/share/awstats/cgi-bin/awredir.pl
-                echo "✓ Random key generated for awredir.pl"
-            fi
-        fi
-
-        echo
-        echo "----- AWStats $version - UTF-8重构版 -----"
-        echo "AWStats has been installed in /usr/share/awstats"
-        echo "Configuration files are in /etc/awstats"
-        echo "Documentation is in /usr/share/doc/awstats"
-        echo "To configure AWStats, run: /usr/share/awstats/tools/awstats_configure.pl"
-        echo
-        ;;
-esac
-
-exit 0
-EOF
-    close $fh;
-    chmod 0755, "$deb_packageroot/debian/postinst";
-    print "  ✅ postinst script created\n";
-    
-    # 步骤12: 生成 prerm 脚本
-    print "  📄 Generating prerm script...\n";
-    open $fh, '>', "$deb_packageroot/debian/prerm" or do {
-        print "  ❌ Cannot create prerm: $!\n";
-        return undef;
-    };
-    print $fh <<"EOF";
-#!/bin/sh
-set -e
-
-case "\$1" in
-    remove|upgrade)
-        # 卸载前清理（如果需要）
-        ;;
-esac
-
-exit 0
-EOF
-    close $fh;
-    chmod 0755, "$deb_packageroot/debian/prerm";
-    print "  ✅ prerm script created\n";
-
-    # 生成 preinst 脚本
-    print "  📄 Generating preinst script...\n";
-    open $fh, '>', "$deb_packageroot/debian/preinst" or do {
-        print "  ❌ Cannot create preinst: $!\n";
-        return undef;
-    };
-    print $fh <<"EOF";
-#!/bin/sh
-set -e
-
-case "\$1" in
-    install|upgrade)
-        # 安装前准备工作
-        ;;
-esac
-
-exit 0
-EOF
-    close $fh;
-    chmod 0755, "$deb_packageroot/debian/preinst";
-    print "  ✅ preinst script created\n";
-
-    # 步骤13: 检查所有必需文件
-    print "\n📋 Step 13: Verifying all required files...\n";
-    my @required_files = qw(
-        debian/control
-        debian/changelog
-        debian/compat
-        debian/copyright
-        debian/rules
-        debian/install
-        debian/postinst
-        debian/prerm
-    );
-    
+    # 步骤5: 验证所有必需文件
+    print "\n📋 Step 5: Verifying required files...\n";
+    my @required = qw(control changelog compat copyright rules);
+    my @optional = qw(postinst prerm preinst install watch);
     my $all_ok = 1;
-    foreach my $file (@required_files) {
-        if (-f "$deb_packageroot/$file") {
+    
+    foreach my $file (@required) {
+        if (-f "$deb_packageroot/debian/$file") {
             print "  ✅ $file\n";
         } else {
             print "  ❌ $file MISSING\n";
             $all_ok = 0;
+        }
+    }
+    
+    foreach my $file (@optional) {
+        if (-f "$deb_packageroot/debian/$file") {
+            print "  ✅ $file (optional)\n";
         }
     }
     
@@ -1024,11 +777,12 @@ EOF
         return undef;
     }
     
-    # 步骤14: 构建 DEB 包
-    print "\n📋 Step 14: Building DEB package...\n";
-    chdir($deb_packageroot);
-    
+    # 步骤6: 构建 DEB 包
+    print "\n📋 Step 6: Building DEB package...\n";
     print "  Running: dpkg-buildpackage -us -uc -b\n";
+    
+    chdir($deb_packageroot) or die "Cannot chdir to $deb_packageroot: $!";
+    
     my $build_output = `dpkg-buildpackage -us -uc -b 2>&1`;
     my $build_status = $?;
     
@@ -1042,8 +796,8 @@ EOF
     }
     print "  ✅ Build completed successfully\n";
     
-    # 步骤15: 查找生成的 .deb 文件
-    print "\n📋 Step 15: Locating generated .deb file...\n";
+    # 步骤7: 查找并移动 .deb 文件
+    print "\n📋 Step 7: Locating generated .deb file...\n";
     opendir my $dh, $deb_buildroot or do {
         print "  ❌ Cannot open directory: $deb_buildroot\n";
         return undef;
@@ -1053,7 +807,8 @@ EOF
     while (my $file = readdir $dh) {
         if ($file =~ /\.deb$/) {
             my $src = "$deb_buildroot/$file";
-            print "  ✅ Found: $src\n";
+            my $size = -s $src;
+            print "  ✅ Found: $src (" . int($size/1024) . " KB)\n";
             print "  Moving to: $output\n";
             move($src, $output) or warn "  ❌ Failed to move: $!";
             $found = 1;
@@ -1069,17 +824,68 @@ EOF
         return undef;
     }
     
-    # 步骤16: 验证输出文件
-    print "\n📋 Step 16: Verifying output file...\n";
+    # 步骤8: 验证输出文件
     if (-f $output) {
         my $size = -s $output;
-        print "  ✅ DEB package created successfully\n";
-        print "  📦 $output (" . int($size/1024) . " KB)\n";
+        print "\n✅ DEB package created successfully\n";
+        print "📦 $output (" . int($size/1024) . " KB)\n";
         return $output;
     } else {
         print "  ❌ Output file not found: $output\n";
         return undef;
     }
+}
+
+# 解析 DEB 模板文件
+sub parse_deb_template {
+    my ($template_file, $target_root, $version, $release) = @_;
+    
+    print "  Parsing template: $template_file\n";
+    
+    open my $fh, '<', $template_file or die "Cannot open template: $template_file";
+    my $content = do { local $/; <$fh> };
+    close $fh;
+    
+    # 替换变量
+    my $maintainer = "Laurent Destailleur <eldy\@users.sourceforge.net>";
+    my $date = strftime("%a, %d %b %Y %H:%M:%S %z", localtime);
+    my $project = $PROJECT || "awstats";
+    
+    $content =~ s/__VERSION__/$version/g;
+    $content =~ s/__RELEASE__/$release/g;
+    $content =~ s/__MAINTAINER__/$maintainer/g;
+    $content =~ s/__DATE__/$date/g;
+    $content =~ s/__PROJECT__/$project/g;
+    
+    # 解析 [FILE:filename] 块
+    my $debian_dir = "$target_root/debian";
+    make_path($debian_dir);
+    
+    my $file_count = 0;
+    while ($content =~ /\[FILE:([^\]]+)\]\n(.*?)\n\[FILE:\1\]/gs) {
+        my ($filename, $file_content) = ($1, $2);
+        my $filepath = "$debian_dir/$filename";
+        
+        # 确保父目录存在
+        my $dir = dirname($filepath);
+        make_path($dir) unless -d $dir;
+        
+        open my $out, '>', $filepath or die "Cannot create $filepath: $!";
+        print $out $file_content;
+        close $out;
+        
+        # 设置可执行权限
+        if ($filename =~ /^(postinst|prerm|preinst|rules)$/) {
+            chmod 0755, $filepath;
+            print "    Generated: $filename (executable)\n";
+        } else {
+            print "    Generated: $filename\n";
+        }
+        $file_count++;
+    }
+    
+    print "  Generated $file_count files in $debian_dir\n";
+    return $file_count > 0;
 }
 
 # 构建 EXE 包（带调试）

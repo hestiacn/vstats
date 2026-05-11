@@ -1,4 +1,4 @@
-name: AWStats UTF-8 重构版完整测试
+name: AWStats UTF-8 社区版完整测试
 
 on:
   push:
@@ -301,7 +301,7 @@ jobs:
         # 创建汇总报告
         REPORT="test/reports/FULL_TEST_REPORT_${{ matrix.perl-version }}.md"
         
-        echo "# AWStats UTF-8重构版完整测试报告" > $REPORT
+        echo "# AWStats UTF-8社区版完整测试报告" > $REPORT
         echo "" >> $REPORT
         echo "## 测试信息" >> $REPORT
         echo "" >> $REPORT

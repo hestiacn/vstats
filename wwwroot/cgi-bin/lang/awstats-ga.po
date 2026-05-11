@@ -1,0 +1,3284 @@
+# AWStats Irish (Gaeilge) translations
+# Copyright (C) 2026 AWStats
+# This file is distributed under the same license as the AWStats package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: AWStats 8.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-10 12:00+0000\n"
+"PO-Revision-Date: 2026-05-10 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Irish\n"
+"Language: ga\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : n<20 ? 4 : 5;\n"
+
+#------------------------------------------------------------------------------
+# Ainmneacha na míonna
+#------------------------------------------------------------------------------
+
+msgid "month_01"
+msgstr "Eanáir"
+
+msgid "month_02"
+msgstr "Feabhra"
+
+msgid "month_03"
+msgstr "Márta"
+
+msgid "month_04"
+msgstr "Aibreán"
+
+msgid "month_05"
+msgstr "Bealtaine"
+
+msgid "month_06"
+msgstr "Meitheamh"
+
+msgid "month_07"
+msgstr "Iúil"
+
+msgid "month_08"
+msgstr "Lúnasa"
+
+msgid "month_09"
+msgstr "Meán Fómhair"
+
+msgid "month_10"
+msgstr "Deireadh Fómhair"
+
+msgid "month_11"
+msgstr "Samhain"
+
+msgid "month_12"
+msgstr "Nollaig"
+
+#------------------------------------------------------------------------------
+# Ainmneacha na laethanta seachtaine
+#------------------------------------------------------------------------------
+
+msgid "DayOfWeek_0"
+msgstr "Domhnach"
+
+msgid "DayOfWeek_1"
+msgstr "Dé Luain"
+
+msgid "DayOfWeek_2"
+msgstr "Dé Máirt"
+
+msgid "DayOfWeek_3"
+msgstr "Dé Céadaoin"
+
+msgid "DayOfWeek_4"
+msgstr "Déardaoin"
+
+msgid "DayOfWeek_5"
+msgstr "Dé hAoine"
+
+msgid "DayOfWeek_6"
+msgstr "Dé Sathairn"
+
+#------------------------------------------------------------------------------
+# Eilimintí comhéadain
+#------------------------------------------------------------------------------
+
+msgid "Advanced Web Statistics for"
+msgstr "Staitisticí Gréasáin Casta do"
+
+msgid "Statistics for"
+msgstr "Staitisticí do"
+
+msgid "main"
+msgstr "Forbhreathnú"
+
+# Aistriú téama
+msgid "Switch to light mode"
+msgstr "Athraigh go mód solais"
+
+msgid "Switch to dark mode"
+msgstr "Athraigh go mód dorcha"
+
+# Aonaid acmhainne
+msgid "TB"
+msgstr "TB"
+
+msgid "GB"
+msgstr "GB"
+
+msgid "MB"
+msgstr "MB"
+
+msgid "KB"
+msgstr "KB"
+
+msgid "Bytes"
+msgstr "Beart"
+
+# Eilimintí foirm
+msgid "Filter"
+msgstr "Scagaire"
+
+msgid "Exclude filter"
+msgstr "Scagaire eisiaimh"
+
+msgid "Top"
+msgstr "Barr"
+
+msgid "Full list"
+msgstr "Liosta iomlán"
+
+msgid "Last"
+msgstr "Deireanach"
+
+msgid "Average"
+msgstr "Meán"
+
+msgid "Export"
+msgstr "Easpórtáil"
+
+msgid "Details"
+msgstr "Sonraí"
+
+msgid "Version"
+msgstr "Leagan"
+
+# Deighilteoir mílte
+msgid "thousands_separator"
+msgstr ","
+
+# Formáid fada dáta
+msgid "dateformat_long"
+msgstr "dd/mm/yyyy HH:MM:SS"
+
+# Formáid ghearr dáta
+msgid "dateformat_short"
+msgstr "dd/mm/yyyy HH:MM"
+
+msgid "date_format_year"
+msgstr "%s"
+
+msgid "date_format_month"
+msgstr "%1$s %2$s"
+
+#------------------------------------------------------------------------------
+# Barra nascleanúna
+#------------------------------------------------------------------------------
+
+msgid "AWStats Month Selector"
+msgstr "Roghnóir Míosa AWStats"
+
+msgid "nav_category_basic"
+msgstr "Cáipéisíocht Bhunúsach"
+
+msgid "nav_category_guide"
+msgstr "Treoracha Úsáide"
+
+msgid "nav_category_reference"
+msgstr "Ábhair Thagartha"
+
+msgid "nav_category_integration"
+msgstr "Comhtháthú agus Síneadh"
+
+msgid "nav_category_dev"
+msgstr "Cáipéisíocht Fhorbróra"
+
+msgid "nav_changelog"
+msgstr "Loga Athruithe"
+
+msgid "nav_what"
+msgstr "Cad é AWStats"
+
+msgid "nav_license"
+msgstr "Ceadúnas"
+
+msgid "nav_glossary"
+msgstr "Gluaiseacht Téarmaí"
+
+msgid "nav_setup"
+msgstr "Suiteáil agus Cumraíocht"
+
+msgid "nav_upgrade"
+msgstr "Treoir Uasghrádaithe"
+
+msgid "nav_config"
+msgstr "Paraiméadair Chumraíochta"
+
+msgid "nav_extra"
+msgstr "Rannóga Breise"
+
+msgid "nav_tools"
+msgstr "Uirlisí Eile"
+
+msgid "nav_faq"
+msgstr "Ceisteanna Coitianta"
+
+msgid "nav_security"
+msgstr "Moltaí Slándála"
+
+msgid "nav_compare"
+msgstr "Comparáid"
+
+msgid "nav_benchmark"
+msgstr "Tástáil Feidhmíochta"
+
+msgid "nav_webmin"
+msgstr "Modúl Webmin"
+
+msgid "nav_dolibarr"
+msgstr "Modúl Dolibarr"
+
+msgid "nav_contrib"
+msgstr "Acmhainní Ranníocaíochta"
+
+msgid "nav_plugins"
+msgstr "Forbairt Breiseán"
+
+msgid "nav_hooks"
+msgstr "Hooks Breiseán"
+
+msgid "nav_graphs"
+msgstr "Grafaicí Breiseán"
+
+msgid "Back to top"
+msgstr "Ar ais go dtí an barr"
+
+msgid "nav_select_month"
+msgstr "Roghnaigh mhí"
+
+#------------------------------------------------------------------------------
+# Príomhtháscairí staidrimh
+#------------------------------------------------------------------------------
+
+msgid "Unique visitors"
+msgstr "Cuairteoirí uathúla"
+
+msgid "Visits"
+msgstr "Cuairteanna"
+
+msgid "Visits duration"
+msgstr "Fad na gcuairteanna"
+
+msgid "First visit"
+msgstr "Céad chuairt"
+
+msgid "Last visit"
+msgstr "Cuairt dheireanach"
+
+msgid "Visits/Visitor"
+msgstr "Cuairteanna/Cuairteoir"
+
+msgid "Pages/Visit"
+msgstr "Leathanaigh/Cuairt"
+
+msgid "Hits/Visit"
+msgstr "Iontrálacha/Cuairt"
+
+msgid "KB/Visit"
+msgstr "KB/Cuairt"
+
+msgid "KB/Visits"
+msgstr "KB/Cuairteanna"
+
+msgid "Pages"
+msgstr "Leathanaigh"
+
+msgid "Hits"
+msgstr "Iontrálacha"
+
+msgid "Bandwidth"
+msgstr "Leithead banda"
+
+msgid "duration_format"
+msgstr "%s-%s"
+
+msgid "unit_s"
+msgstr "soic"
+
+msgid "unit_min"
+msgstr "nóim"
+
+msgid "unit_h"
+msgstr "h"
+
+msgid "and"
+msgstr "-"
+
+msgid "Device Types"
+msgstr "Cineálacha Gléas"
+
+msgid "Device Type"
+msgstr "Cineál Gléas"
+
+msgid "Percent"
+msgstr "Céatadán"
+
+msgid "Mobile"
+msgstr "Fón Póca"
+
+msgid "Pause & Go"
+msgstr "Sos agus Lean"
+
+msgid "Complete"
+msgstr "Iomlán"
+
+msgid "Tablet"
+msgstr "Taibléad"
+
+msgid "Tv"
+msgstr "Teilifís"
+
+msgid "Wearable"
+msgstr "Gléas Inchaite"
+
+msgid "Bot"
+msgstr "Róbó"
+
+msgid "Desktop"
+msgstr "Ríomhaire Deisce"
+
+msgid "Normal browsing traffic"
+msgstr "Trácht brabhsála gnáth"
+
+msgid "Abnormal browsing traffic"
+msgstr "Trácht brabhsála neamhghnách"
+
+msgid "Viewed"
+msgstr "Amharc"
+
+msgid "Not viewed"
+msgstr "Gan amharc"
+
+msgid "Abnormal browsing traffic note"
+msgstr "Áirítear le trácht brabhsála neamhghnách: róbónna inneall cuardaigh, róbónna oiliúna AI, scanóirí leochaileachtaí agus iarratais nach gcloíonn le caighdeáin HTTP/HTTPS"
+
+msgid "File size"
+msgstr "Méid comhaid"
+
+msgid "File type"
+msgstr "Cineál comhaid"
+
+msgid "Downloads"
+msgstr "Íoslódálacha"
+
+msgid "Request time"
+msgstr "Am iarratais"
+
+msgid "Total requests"
+msgstr "Iarratais iomlána"
+
+msgid "Frequency"
+msgstr "Minicíocht"
+
+msgid "Average frequency"
+msgstr "Meánmhinicíocht"
+
+msgid "Seconds"
+msgstr "Soicind"
+
+msgid "First"
+msgstr "Céad"
+
+msgid "Mails"
+msgstr "Ríomhphoist"
+
+msgid "Size"
+msgstr "Méid"
+
+msgid "If you remove this file, all statistics for date"
+msgstr "Má scriosann tú an comhad seo, caillfear na staitisticí go léir don dáta"
+
+msgid "will be lost/reset."
+msgstr "caillfear/athshocrófar iad!"
+
+msgid "Last config file used to build this data file was"
+msgstr "Ba é an comhad cumraíochta deireanach a úsáideadh chun an comhad sonraí seo a thógáil"
+
+msgid "Position (offset in bytes) in this file for beginning of each section for"
+msgstr "Ionad (cúiteamh i mbeart) sa comhad seo do thús gach rannóige do"
+
+msgid "direct I/O access. If you made changes somewhere in this file, you should"
+msgstr "rochtain I/O dhíreach. Má rinne tú athruithe áit éigin sa comhad seo, ba cheart duit"
+
+msgid "also remove completely the MAP section (AWStats will rewrite it at next update)"
+msgstr "an rannóg MAP a bhaint go hiomlán freisin (scríobhfaidh AWStats arís é ar an gcéad nuashonrú eile)"
+
+msgid "LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value"
+msgstr "LastLine    = Dáta an taifid dheireanaigh próiseáilte - Uimhir líne an taifid dheireanaigh sa loga deireanach - Cúiteamh an taifid dheireanaigh sa loga deireanach - Luach sínithe an taifid dheireanaigh"
+
+msgid "FirstTime   = Date of first visit for history file"
+msgstr "FirstTime   = Dáta na chéad chuairte don comhad stairiúil"
+
+msgid "LastTime    = Date of last visit for history file"
+msgstr "LastTime    = Dáta na cuairte deireanaí don comhad stairiúil"
+
+msgid "LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped"
+msgstr "LastUpdate  = Dáta an nuashonraithe dheireanaigh - Nb de thaifid pharsáilte - Nb de sheanthaifid pharsáilte - Nb de thaifid nua pharsáilte - Nb de chomhaid truaillithe pharsáilte - Nb de thaifid scriosta pharsáilte"
+
+msgid "TotalVisits = Number of visits"
+msgstr "TotalVisits = Líon na gcuairteanna"
+
+msgid "TotalUnique = Number of unique visitors"
+msgstr "TotalUnique = Líon na gcuairteoirí uathúla"
+
+msgid "MonthHostsKnown   = Number of hosts known"
+msgstr "MonthHostsKnown   = Líon na n-óstach aitheanta"
+
+msgid "MonthHostsUnKnown = Number of hosts unknown"
+msgstr "MonthHostsUnKnown = Líon na n-óstach anaithnid"
+
+msgid "Cluster ID - Pages - Hits - Bandwidth"
+msgstr "ID an Chlub - Leathanaigh - Iontrálacha - Leithead banda"
+
+msgid "Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth"
+msgstr "Uair - Leathanaigh - Iontrálacha - Leithead banda - Leathanaigh neamhamharc - Iontrálacha neamhamharc - Leithead banda neamhamharc"
+
+msgid "Date - Pages - Hits - Bandwidth - Visits"
+msgstr "Dáta - Leathanaigh - Iontrálacha - Leithead banda - Cuairteanna"
+
+msgid "Domain - Pages - Hits - Bandwidth"
+msgstr "Fearann - Leathanaigh - Iontrálacha - Leithead banda"
+
+msgid "The %s first Pages must be first (order not required for others)"
+msgstr "Caithfidh na chéad %s leathanach a bheith ar dtús (ní gá ord do na cinn eile)"
+
+msgid "Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]"
+msgstr "Óstach - Leathanaigh - Iontrálacha - Leithead banda - Dáta na cuairte deireanaí - [Dáta tosaigh na cuairte deireanaí] - [Leathanach deireanach na cuairte deireanaí]"
+
+msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
+msgstr "Sábháiltear [Dáta tosaigh na cuairte deireanaí] agus [Leathanach deireanach na cuairte deireanaí] ach amháin mura bhfuil an seisiún críochnaithe"
+
+msgid "The %s first Hits must be first (order not required for others)"
+msgstr "Caithfidh na chéad %s iontrálacha a bheith ar dtús (ní gá ord do na cinn eile)"
+
+msgid "Login - Pages - Hits - Bandwidth - Last visit"
+msgstr "Logáil Isteach - Leathanaigh - Iontrálacha - Leithead banda - Cuairt dheireanach"
+
+msgid "Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt"
+msgstr "ID Róbó - Iontrálacha - Leithead banda - Cuairt dheireanach - Iontrálacha ar robots.txt"
+
+msgid "Worm ID - Hits - Bandwidth - Last visit"
+msgstr "ID Péiste - Iontrálacha - Leithead banda - Cuairt dheireanach"
+
+msgid "EMail - Hits - Bandwidth - Last visit"
+msgstr "Ríomhphost - Iontrálacha - Leithead banda - Cuairt dheireanach"
+
+msgid "The %s first hits must be first (order not required for others)"
+msgstr "Caithfidh na chéad %s iontrálacha a bheith ar dtús (ní gá ord do na cinn eile)"
+
+msgid "URL - Pages - Bandwidth - Entry - Exit"
+msgstr "URL - Leathanaigh - Leithead banda - Iontráil - Scoir"
+
+msgid "Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression"
+msgstr "Cineál comhaid - Iontrálacha - Leithead banda - Leithead banda gan chomhbhrú - Leithead banda tar éis comhbhrú"
+
+msgid "Request Time Range - Request Time Frequency"
+msgstr "Raon Ama Iarratais - Minicíocht Ama Iarratais"
+
+msgid "Payload Range - Payload Frequency"
+msgstr "Raon Earra - Minicíocht Earra"
+
+msgid "Session range - Number of visits"
+msgstr "Raon seisiúin - Líon na gcuairteanna"
+
+msgid "URL with %s errors - Hits"
+msgstr "URL le hearráidí %s - Iontrálacha"
+
+msgid "Last URL referrer"
+msgstr "Tagaire URL deireanach"
+
+msgid "Errors - Hits - Bandwidth"
+msgstr "Earráidí - Iontrálacha - Leithead banda"
+
+msgid "Search keywords - Number of search"
+msgstr "Eochairfhocail chuardaigh - Líon na gcuardach"
+
+msgid "Only top %s keywords shown on main page (sorted by search count). See full list on detail page."
+msgstr "Ní thaispeántar ach na príomh-eochairfhocail %s ar an leathanach príomhúil (sórtáilte de réir chomhaireamh cuardaigh). Féach an liosta iomlán ar leathanach na sonraí."
+
+msgid "Search keyphrases - Number of search"
+msgstr "Cumasc eochairfhocail chuardaigh - Líon na gcuardach"
+
+msgid "Only top %s keyphrases shown on main page (sorted by search count). See full list on detail page."
+msgstr "Ní thaispeántar ach na príomh-chumasc eochairfhocail %s ar an leathanach príomhúil (sórtáilte de réir chomhaireamh cuardaigh). Féach an liosta iomlán ar leathanach na sonraí."
+
+msgid "External page referers - Pages - Hits"
+msgstr "Tagairtí leathanach seachtracha - Leathanaigh - Iontrálacha"
+
+msgid "Only top %s external referrers shown on main page (sorted by pages). See full list on detail page."
+msgstr "Ní thaispeántar ach na príomh-thagairtí seachtracha %s ar an leathanach príomhúil (sórtáilte de réir leathanach). Féach an liosta iomlán ar leathanach na sonraí."
+
+msgid "Search engine referers ID - Pages - Hits"
+msgstr "ID tagairtí inneall cuardaigh - Leathanaigh - Iontrálacha"
+
+msgid "Origin - Pages - Hits"
+msgstr "Bunús - Leathanaigh - Iontrálacha"
+
+msgid "Unknown referer Browser - Last visit date"
+msgstr "Brabhsálaí tagartha anaithnid - Dáta na cuairte deireanaí"
+
+msgid "Unknown referer OS - Last visit date"
+msgstr "OS tagartha anaithnid - Dáta na cuairte deireanaí"
+
+msgid "Screen size - Hits"
+msgstr "Méid scáileáin - Iontrálacha"
+
+msgid "Browser ID - Hits - Pages"
+msgstr "ID Brabhsálaí - Iontrálacha - Leathanaigh"
+
+msgid "Downloads - Hits - Bandwidth"
+msgstr "Íoslódálacha - Iontrálacha - Leithead banda"
+
+msgid "Protocol - Hits - Bandwidth"
+msgstr "Prótacal - Iontrálacha - Leithead banda"
+
+msgid "Icon Status - Type:200:404:Other"
+msgstr "Stádas Deilbhín - Cineál:200:404:Eile"
+
+#------------------------------------------------------------------------------
+# Aistriúcháin thréimhsí ama
+#------------------------------------------------------------------------------
+
+msgid "period_00"
+msgstr "Meánoíche · Tá AWStats codlata cheana, ach tá tú fós ag féachaint ar shonraí? Fíor-leantóir"
+
+msgid "period_01"
+msgstr "01:00 · Fós ag rochtain ag an am seo? Tá tú gan chodladh nó díreach tar éis éirí as an obair"
+
+msgid "period_02"
+msgstr "02:00 · Tá na róbónna níos díograisí ná tusa, tá siad fós ag obair"
+
+msgid "period_03"
+msgstr "03:00 · Tá an chathair ag codladh, tá an freastalaí ag déanamh ragobair, cé atá níos measa?"
+
+msgid "period_04"
+msgstr "04:00 · Is é an réalta is gile sa dorchadas do scáileán nó solas an fhreastalaí"
+
+msgid "period_05"
+msgstr "05:00 · Faigheann an luath-éan an phéist, faigheann an luath-róbó sonraí le bailiú"
+
+msgid "period_06"
+msgstr "06:00 · Dúisíonn cuid, níor chodail cuid eile fós, ní dhúnann an t-idirlíon go deo"
+
+msgid "period_07"
+msgstr "07:00 · Am chun an meitreo a fháil, freisin am chun brabhsáil ar an ngréasán"
+
+msgid "period_08"
+msgstr "08:00 · An chéad rud ag tosú na hoibre: féach ar shonraí inné"
+
+msgid "period_09"
+msgstr "09:00 · Tréimhse uasal, fiú ag cur amú ama tá teorainneacha ann"
+
+msgid "period_10"
+msgstr "10:00 · Am caife, bain sult as féachaint an bhfuil an trácht méadaithe"
+
+msgid "period_11"
+msgstr "11:00 · Uair amháin go dtí lón, coinnigh ort beagán eile"
+
+msgid "period_12"
+msgstr "12:00 · Freastalaí: rachaidh tú go léir chun lón, beidh mé ag scíth beagán"
+
+msgid "period_13"
+msgstr "13:00 · Codlatacht iar-lóin, ach ní chodlaíonn na sonraí"
+
+msgid "period_14"
+msgstr "14:00 · Am sneaiceanna tráthnóna, níos fearr é a phéireáil le sonraí"
+
+msgid "period_15"
+msgstr "15:00 · Tá graf tráchta an lae inniu cosúil le cuar do ghiúmar"
+
+msgid "period_16"
+msgstr "16:00 · X uair go dtí deireadh na hoibre, tosaíonn an trácht ag ardú"
+
+msgid "period_17"
+msgstr "17:00 · Am le imeacht! Ach caithfidh an freastalaí leanúint ar aghaidh ag obair"
+
+msgid "period_18"
+msgstr "18:00 · Am dinnéir, féach ar fhíseán chun scíth a ligean"
+
+msgid "period_19"
+msgstr "19:00 · Príomh-am, buaic-tráchta, freastalaí: is féidir liom é"
+
+msgid "period_20"
+msgstr "20:00 · Sínte ar an tolg, is tusa an cuairteoir uimhir 114514"
+
+msgid "period_21"
+msgstr "21:00 · Oíche chiúin, ulchabhán eile ag breathnú ar shonraí i bhfolach"
+
+msgid "period_22"
+msgstr "22:00 · Tá sonraí an lae inniu beagnach réidh, néarógach?"
+
+msgid "period_23"
+msgstr "23:00 · AWStats: am codlata, caithfidh tú oibriú amárach freisin"
+
+#------------------------------------------------------------------------------
+# Toisí ama
+#------------------------------------------------------------------------------
+
+msgid "Period"
+msgstr "Tréimhse"
+
+msgid "Year"
+msgstr "Bliain"
+
+msgid "Month"
+msgstr "Mí"
+
+msgid "Months"
+msgstr "Míonna"
+
+msgid "Date"
+msgstr "Dáta"
+
+msgid "Day"
+msgstr "Lá"
+
+msgid "Hour"
+msgstr "Uair"
+
+msgid "Hours"
+msgstr "Uaireanta"
+
+msgid "Day of week"
+msgstr "Lá na seachtaine"
+
+msgid "When"
+msgstr "Cathain"
+
+msgid "%s Server Management Panel"
+msgstr "Painéal Bainistíochta Freastalaí %s"
+
+msgid "Server Administration"
+msgstr "Réiteach freastalaí simplí agus éifeachtach"
+
+#------------------------------------------------------------------------------
+# Toise an chuairteora
+#------------------------------------------------------------------------------
+
+msgid "Invalid URL Parameters"
+msgstr "Paraiméadair URL Neamhbhailí"
+
+msgid "The requested page cannot be loaded due to invalid or malformed URL parameters."
+msgstr "Ní féidir an leathanach iarrtha a lódáil mar gheall ar pharaiméadair URL neamhbhailí nó mí-dhealraithe."
+
+msgid "This may be caused by typing an incorrect URL, missing parameter separators, or using an invalid configuration name."
+msgstr "D'fhéadfadh sé seo a bheith mar thoradh ar chlóscríobh URL mícheart, easpa deighilteoirí paraiméadar, nó úsáid ainm cumraíochta neamhbhailí."
+
+msgid "Please check the URL you entered and ensure all parameters are correctly formatted."
+msgstr "Seiceáil an URL a chuir tú isteach agus cinntigh go bhfuil na paraiméadair go léir formáidithe i gceart."
+
+msgid "SiteDomain parameter not defined in your config/domain file, or you may not have execution permission on the file."
+msgstr "Níl an paraiméadar SiteDomain sainithe i do chomhad config/domain, nó b'fhéidir nach bhfuil cead feidhmithe agat ar an gcomhad."
+
+msgid "Please run as Administrator to set permissions"
+msgstr "Rith mar Riarthóir le ceadanna a shocrú"
+
+msgid "Please set execute permission"
+msgstr "Le do thoil, socraigh cead feidhmithe"
+
+msgid "Or if you prefer numeric mode"
+msgstr "Nó más fearr leat mód uimhriúil"
+
+msgid "View Report Directly"
+msgstr "Féach ar Thuarascáil go Díreach"
+
+msgid "AWStats Log Viewer"
+msgstr "Amharcóir Loga AWStats"
+
+msgid "Month Selection"
+msgstr "Roghnú Míosa"
+
+msgid "Who"
+msgstr "Cé"
+
+msgid "Visitors"
+msgstr "Cuairteoirí"
+
+msgid "Countries"
+msgstr "Tíortha/Réigiúin"
+
+msgid "flag_icon"
+msgstr "Bratach"
+
+msgid "Country-Region-City"
+msgstr "Tír/Réigiún/Cathair"
+
+msgid "Code"
+msgstr "Cód"
+
+msgid "Known"
+msgstr "Aitheanta"
+
+msgid "unknownos"
+msgstr "OS anaithnid"
+
+msgid "unknownbrowser"
+msgstr "Brabhsálaí anaithnid"
+
+msgid "Unresolved IP Address"
+msgstr "Seoladh IP Neamhréiteach"
+
+msgid "Unknown File Type"
+msgstr "Cineál Comhaid Anaithnid"
+
+msgid "Unknown Size"
+msgstr "Méid Anaithnid"
+
+msgid "Unknown Time"
+msgstr "Am Anaithnid"
+
+msgid "Unknown Browser"
+msgstr "Brabhsálaí Anaithnid"
+
+msgid "Unknown OS"
+msgstr "OS Anaithnid"
+
+msgid "Unknown Visitor"
+msgstr "Cuairteoir Anaithnid"
+
+msgid "Unknown Visitor (Total)"
+msgstr "Cuairteoir Anaithnid (Iomlán)"
+
+msgid "Unknown Country"
+msgstr "Tír Anaithnid"
+
+msgid "Unknown Country (Region)"
+msgstr "Tír Anaithnid (Réigiún)"
+
+msgid "Unknown Visitor (Title)"
+msgstr "Cuairteoir Anaithnid (Teideal)"
+
+msgid "PageStayTime"
+msgstr "Ní féidir meastachán a dhéanamh ar an am a chaitear ar an leathanach"
+
+msgid "Unknown OS (Link)"
+msgstr "OS Anaithnid (Nasc)"
+
+msgid "Unknown OS (Row)"
+msgstr "OS Anaithnid (Liosta)"
+
+msgid "Unknown Browser (Link)"
+msgstr "Brabhsálaí Anaithnid (Nasc)"
+
+msgid "Unknown Browser (Row)"
+msgstr "Brabhsálaí Anaithnid (Liosta)"
+
+msgid "Unknown Screen"
+msgstr "Méid Scáileáin Anaithnid"
+
+msgid "Login"
+msgstr "Logáil Isteach"
+
+msgid "Anonymous"
+msgstr "Anaithnid"
+
+msgid "Robots"
+msgstr "Róbónna"
+
+msgid "Different robots"
+msgstr "Róbónna éagsúla"
+
+msgid "Hits on robots.txt"
+msgstr "Iontrálacha ar robots.txt"
+
+msgid "Worms"
+msgstr "Péisteanna"
+
+msgid "Different worms"
+msgstr "Péisteanna éagsúla"
+
+msgid "Target"
+msgstr "Sprioc"
+
+msgid "Grabber"
+msgstr "Greamaire"
+
+#------------------------------------------------------------------------------
+# Cur síos ar chineálacha MIME
+#------------------------------------------------------------------------------
+
+msgid "mime_text"
+msgstr "Comhad téacs (caighdeánaithe ASCII i 1963, téacs simplí gan formáid. Bunús do gach cód foinse, cumraíocht agus loga. Úsáideann Unix LF, úsáideann Windows CRLF le haghaidh brislíne, fós an fhormáid sonraí is uilíche san ríomhaireacht)"
+
+msgid "mime_log"
+msgstr "Comhad loga (taifeadann sé faisnéis um fhorghníomhú córas agus feidhmchlár i dtéacs simplí, a úsáidtear le haghaidh dífhabhtaithe, anailíse feidhmíochta agus iniúchta slándála. Formáidí caighdeánacha mar Apache combined log, Nginx access log, syslog, srl.)"
+
+msgid "mime_page"
+msgstr "Leathanach HTML (cheap Tim Berners-Lee an Gréasán Domhanda i 1989, shainigh sé na trí theicneolaíocht HTML/HTTP/URL i 1990 agus chuir sé ar fáil iad saor in aisce gan phaitinn. Rinneadh HTML5 mar chaighdeán oifigiúil W3C i 2014, ag tacú le taispeáint, ilmheáin agus cló. Buateoir Ghradam Turing 2016)"
+
+msgid "mime_khtml"
+msgstr "Inneall leathanach gréasáin KHTML (seolta le KDE 2.0 i 1998, inneall rindreála an bhrabhsálaí Konqueror. I 2001, chruthaigh Apple WebKit bunaithe ar KHTML, agus i 2008 chruthaigh Google Blink ó WebKit, agus é mar chroílár na mbrabhsálaithe Chrome, Edge, Safari, srl. Is sampla é KHTML den phobal foinse oscailte a leag bunchlocha d'innill nua-aimseartha bhrabhsálaithe, agus leanann a oidhreacht theicniúil ar aghaidh trí WebKit/Blink)"
+
+msgid "mime_script"
+msgstr "Script dinimiciúil (teanga ateangaireachta, gan gá le tiomsú. Áirítear ASP, JSP, CGI, ColdFusion, Tcl, VBScript, srl., a úsáidtear go forleathan i bhforbairt gréasáin luath, riarachán córas agus tascanna uathoibrithe. Tá teangacha scripte nua-aimseartha ar nós Python, Ruby agus JavaScript tagtha chun cinn mar phríomhuirlisí forbartha iomlán an chruach)"
+
+msgid "mime_js"
+msgstr "Script JavaScript (chruthaigh Brendan Eich ag Netscape i 10 lá i 1995, teanga ríomhchlárúcháin dhúchasach an bhrabhsálaí. Caighdeánaithe mar ECMAScript i 1997, le breith Node.js i 2009 rinneadh teanga iomlán an chruach de, agus is é npm an bainisteoir pacáistí is mó ar domhan. Is í an teanga is mó a bhfuil tóir uirthi ar GitHub le roinnt blianta anuas)"
+
+msgid "mime_py"
+msgstr "Script Python (chruthaigh Guido van Rossum é i 1991, aitheanta as a eangú éigeantach agus a chomhréir bheacht. Úsáidtear go forleathan é i bhforbairt gréasáin, eolaíocht sonraí, intleacht shaorga agus uathoibriú oibríochtaí. Buaiteoir iolrach Theanga na Bliana TIOBE)"
+
+msgid "mime_sh"
+msgstr "Script Shell (a rugadh le Unix i 1971, teanga scriptithe ordaithe. Úsáidtear é le haghaidh riarachán córas, tascanna uathoibrithe, tosú seirbhísí agus scripteanna imscaradh. Inniúlacht riachtanach d'oibríochtaí Linux)"
+
+msgid "mime_rb"
+msgstr "Script Ruby (chruthaigh Yukihiro Matsumoto i 1995, díríonn sé ar shástacht an ríomhchláraitheora. Bhí creat Ruby on Rails ina cheannródaí ar pharadigm forbartha trí chomhaontú seachas cumraíocht, agus chuaigh sé i bhfeidhm go mór ar dhearadh chreatanna gréasáin nua-aimseartha)"
+
+msgid "mime_pl"
+msgstr "Script Perl (chruthaigh Larry Wall i 1987, aitheanta as a pragmatachas, ar a dtugtar 'Scian Arm na hEilvéise'. Bhí CPAN ina cheannródaí ar bhainisteoirí pacáistí teanga nua-aimseartha, le tionchar mór ar phróiseáil téacs, riarachán córas agus CGI)"
+
+msgid "mime_php"
+msgstr "Leathanach gréasáin PHP (chruthaigh Rasmus Lerdorf é i 1995, deartha go sonrach d'fhorbairt gréasáin. Úsáideann níos mó ná 70% de na láithreáin ghréasáin ar domhan PHP, ag tiomáint ardáin mar WordPress, Facebook agus Wikipedia. Thug PHP 8 isteach tiomsú JIT, ag feabhsú feidhmíochta go suntasach)"
+
+msgid "mime_image"
+msgstr "Comhad íomhá"
+
+msgid "mime_document"
+msgstr "Comhad doiciméid"
+
+msgid "mime_package"
+msgstr "Pacáiste bogearraí"
+
+msgid "mime_archive"
+msgstr "Comhad comhbhrúite Gzip (tionscadal GNU 1992, bunaithe ar algartam DEFLATE. Úsáidtear ar an ngréasán le haghaidh comhbhrú freagraí dinimiciúil, ag comhbhrú 60-90% de ghnáth. Tar éis 2015, cuireadh Brotli ina ionad go páirteach i gcásanna áirithe, ach fós is é an fhormáid chomhbhrú is mó a dtacaítear léi ar thaobh an fhreastalaí)"
+
+msgid "mime_audio"
+msgstr "Comhad fuaime"
+
+msgid "mime_video"
+msgstr "Comhad físe"
+
+msgid "mime_jscript"
+msgstr "JavaScript (d'fhorbair Brendan Eich i 1995)"
+
+msgid "mime_json"
+msgstr "Sonraí JSON (mhol Douglas Crockford i 2001, formáid idirmhalartaithe sonraí éadrom, caighdeán de facto le haghaidh APIanna gréasáin)"
+
+msgid "mime_vbs"
+msgstr "VBScript (d'fhorbair Microsoft i 1996, teanga scripte Windows, a úsáidtear i leathanaigh ghréasáin ASP agus scripteanna riaracháin Windows. Le tóiriú PowerShell agus JavaScript, tá sé ag dul i léig de réir a chéile)"
+
+msgid "mime_conf"
+msgstr "Comhad cumraíochta (stórálann sé cumraíochtaí bogearraí i bhformáid téacs, formáidí coitianta: INI, JSON, YAML, TOML, XML. Bíonn cumraíochtaí córas Linux sa chomhadlann /etc de ghnáth)"
+
+msgid "mime_css"
+msgstr "Bileog stíle CSS (D'fhoilsigh W3C an chéad chaighdeán oifigiúil CSS1 i mí na Nollag 1996, chuir CSS2 suíomh agus cineálacha meán leis i 1998, agus ó 2011 i leith thug modúlú CSS3 isteach cúinní cruinne, beochtaí, flexbox, leagan amach greille agus dearadh freagrúil. Mar aon le HTML agus JavaScript, is iad na trí phríomhtheicneolaíocht tosaigh iad, tacaithe go dúchasach ag gach brabhsálaí nua-aimseartha (Chrome, Firefox, Safari, Edge), agus is é an t-aon chaighdeán amháin é le haghaidh sainmhíniú stíle leathanach gréasáin)"
+
+msgid "mime_xsl"
+msgstr "Bileog stíle XSL (caighdeán W3C 1999, teanga chlaochlaithe doiciméad XML, is féidir XML a thiontú go HTML/PDF/téacs. Níos lú úsáide tar éis tóiriú JSON)"
+
+msgid "mime_runtime"
+msgstr "Comhad inrite (formáidí inrite an chórais oibriúcháin mar EXE, ELF, Mach-O, ina bhfuil cód meaisín agus faisnéis lódála)"
+
+msgid "mime_library"
+msgstr "Comhad leabharlainne (leabharlanna nascáil dhinimiciúil mar DLL, SO, dylib, cód roinnte a lódáiltear le linn fhorghníomhú an chláir)"
+
+msgid "mime_swf"
+msgstr "Beochan Flash (d'fhorbair Macromedia i 1996, a fuair Adobe níos déanaí. Caighdeán beochana gréasáin idirghníomhach, a bhí ceannasach ar an idirlíon i mbeochana agus i gcluichí. Fadhbanna: spleáchas ar bhreiseán, easpa tacaíochta ar ghléasanna soghluaiste, riosca ard slándála. D'fhógair Adobe deireadh tacaíochta i 2017, scor go hiomlán i 2020, agus cuireadh HTML5/CSS3/JS ina ionad)"
+
+msgid "mime_dtd"
+msgstr "DTD (Sainmhíniú Cineáil Doiciméid, sonraíocht XML a shainmhíníonn struchtúr doiciméad XML, a úsáidtear chun dlisteanacht XML a bhailíochtú)"
+
+msgid "mime_csv"
+msgstr "Formáid sonraí CSV (luachanna scartha le camóga, formáid uilíoch sonraí táblacha, caighdeán le haghaidh allmhairiú/easpórtáil in Excel agus bunachair shonraí)"
+
+msgid "mime_jnlp"
+msgstr "Java Web Start (seoltóir feidhmchlár Java, teicneolaíocht dáileacháin feidhmchlár deisce Java sna 2000í, anois as feidhm)"
+
+msgid "mime_lit"
+msgstr "Ríomhleabhar Microsoft Reader (formáid LIT a d'eisigh Microsoft i 2000, as feidhm)"
+
+msgid "mime_svg"
+msgstr "Grafaic veicteora SVG (caighdeán W3C 1999, moillithe mar gheall ar chur chun cinn formáid VML ag Microsoft, níor tacaíodh leis in Internet Explorer go dtí 2011. Tar éis 2015, le scor IE agus tóiriú scáileáin ardtaifigh, tháinig sé chun bheith ina fhormáid roghnaithe le haghaidh deilbhíní agus lógónna)"
+
+msgid "mime_ai"
+msgstr "Grafaic veicteora Adobe Illustrator (seolta i 1987, formáid veicteora chaighdeánach an tionscail, is fearr le haghaidh dearadh cló, lógónna agus deilbhíní)"
+
+msgid "mime_phshop"
+msgstr "Íomhá Photoshop (a d'eisigh Adobe i 1990, formáid PSD de chomhaid foinse Photoshop, caighdeán an tionscail um phróiseáil íomhánna)"
+
+msgid "mime_ttf"
+msgstr "Cló TrueType (d'fhorbair Apple agus Microsoft le chéile i 1989, formáid chló veicteora, comhsheasmhach idir taispeáint ar scáileán agus cló, formáid chló réamhshocraithe i gcórais oibriúcháin nua-aimseartha)"
+
+msgid "mime_fon"
+msgstr "Cló gréasáin WOFF2 (molta ag W3C i 2014, úsáideann algartam comhbhrú Brotli, laghdú thart ar 30% i gcomparáid le WOFF sean agus níos mó ná 50% i gcomparáid le TTF/OTF, tacaithe ag gach brabhsálaí nua-aimseartha faoi láthair, is é an fhormáid roghnaithe le haghaidh clónna gréasáin nua-aimseartha é, tacaithe ag níos mó ná 98% de na brabhsálaithe)"
+
+msgid "mime_pdf"
+msgstr "Doiciméad PDF (d'fhorbair Adobe i 1993, rinneadh caighdeán ISO de i 2008. Formáid doiciméid thar ardán a choinníonn comhsheasmhacht formáide, is é an caighdeán domhanda é do dháileadh doiciméad leictreonach)"
+
+msgid "mime_dotnet"
+msgstr "Leathanach dinimiciúil ASP.NET (a d'eisigh Microsoft i 2002, teicneolaíocht leathanach gréasáin dinimiciúil d'ardán Windows, cuid de .NET Framework)"
+
+msgid "mime_mdb"
+msgstr "Bunachar sonraí Access (comhad bunachar sonraí Microsoft Access, a eisíodh i 1992, réiteach bunachar sonraí deisce Windows)"
+
+msgid "mime_md"
+msgstr "Doiciméad Markdown (ceaptha ag John Gruber i 2004, faoi thionchar reStructuredText agus Setext. Fealsúnacht deartha lárnach: 'is inléite é a rindreáil', cur i bhfeidhm bunaidh Markdown.pl i Perl regex. Áirítear le sonraíochtaí díorthaithe GFM (2013), CommonMark (2017), Pandoc Markdown, srl. Cumhachtaíonn sé éiceachórais mar GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, agus é an fhormáid chaighdeánach do ghineadóirí láithreán statacha agus doiciméadú ríomhchláraitheoirí)"
+
+msgid "mime_crystal"
+msgstr "Formáid tuarascála Crystal Reports (tuarascálacha faisnéise gnó SAP, formáid chaighdeánach tuarascála fiontair)"
+
+msgid "mime_libreoffice"
+msgstr "Doiciméad LibreOffice (d'fhorbair The Document Foundation i 2010, brainse de OpenOffice, cur i bhfeidhm chaighdeán ODF, príomhshraith oifige foinse oscailte)"
+
+msgid "mime_encrypt"
+msgstr "Comhad criptithe (éilíonn díchriptiú le féachaint, síntí coitianta: .enc, .crypt, .pgp, .gpg)"
+
+msgid "mime_gpx"
+msgstr "Sonraí traíochta GPS (formáid idirmhalartaithe GPS, taifeadann sé faisnéis shuíomh geografach, formáid uilíoch do uaireadóirí spóirt agus gléasanna nascleanúna)"
+
+msgid "mime_diskimage"
+msgstr "Íomhá diosca (comhaid íomhá diosca/mheán optúil mar DMG, ISO, IMG, a úsáidtear le haghaidh dáileadh bogearraí nó cúltaca meán stórála)"
+
+msgid "mime_vm"
+msgstr "Íomhá meaisín fíorúil (comhaid diosca meaisín fíorúil mar VMDK, VDI, VHDX, OVA, formáidí d'ardáin fhíorúlaithe VMware, VirtualBox, Hyper-V)"
+
+msgid "mime_torrent"
+msgstr "Comhad torrent BitTorrent (cumtha ag Bram Cohen i 2001, comhad innéacs aistrithe P2P, ina bhfuil meiteashonraí comhaid agus faisnéis Tracker)"
+
+msgid "mime_gis"
+msgstr "Sonraí córais faisnéise geografaí GIS (formáidí sonraí geo-spásúla mar Shapefile, GeoJSON, a úsáidtear le haghaidh léarscáileanna agus anailís spásúil)"
+
+msgid "mime_ebook"
+msgstr "Ríomhleabhar (formáidí ríomhleabhar mar EPUB, MOBI, AZW. Is caighdeán idirnáisiúnta é EPUB, is formáidí Kindle Amazon iad MOBI/AZW)"
+
+msgid "mime_avif"
+msgstr "Íomhá AVIF (a d'eisigh Open Media Alliance i 2019, bunaithe ar chódú AV1, ráta comhbhrú 50% níos airde ná WebP, caighdeán nua d'íomhánna gréasáin den chéad ghlúin eile)"
+
+msgid "mime_markdown"
+msgstr "Doiciméad Markdown (ceaptha ag John Gruber i 2004, teanga mharcála éadrom, formáid uilíoch do README GitHub, doiciméadú teicniúil, postálacha fóraim)"
+
+msgid "mime_yaml"
+msgstr "Cumraíocht YAML (ceaptha ag Clark Evans i 2001, formáid shrathaithe sonraí inléite ag an duine, caighdeán comhad cumraíochta do Kubernetes, Ansible, Docker Compose)"
+
+msgid "mime_toml"
+msgstr "Cumraíocht TOML (ceaptha ag Tom Preston-Werner i 2013, 'Tom's Obvious Minimal Language', formáid comhad cumraíochta d'uirlisí nua-aimseartha mar Rust/Cargo, Python/pip, Go)"
+
+msgid "mime_vue"
+msgstr "Comhad comhpháirte Vue (a tugadh isteach in 2014 ag Evan You, creat forásach JavaScript. Trí chomhpháirteanna aonchomhaid (SFC), comhcheanglaíonn sé HTML, CSS, agus JS go foirfe, ag cur feabhas mór ar éifeachtúlacht forbartha. Tá sé ar cheann de na creataí tosaigh is mó tóir ar domhan. Chomh maith leis sin, mar chroí-ghineadóirí suíomhanna statacha nua-aimseartha cosúil le VitePress, úsáidtear go forleathan é chun doiciméadú teicniúil idirghníomhach agus blaganna a thiomáint.)"
+
+msgid "mime_wasm"
+msgstr "Modúl WebAssembly (caighdeán W3C 2017, formáid fhorghníomhaithe ardfheidhmíochta sa bhrabhsálaí, is féidir C/C++/Rust/R a thiomsú don sprioc seo, feidhmíocht gar don dúchas)"
+
+msgid "mime_jsx"
+msgstr "Comhpháirt React JSX (a d'eisigh Facebook i 2013, JavaScript XML, comhréir chomhpháirt an chreata React, paradigma nuálach a chomhtháthaíonn HTML i JavaScript)"
+
+msgid "mime_tsx"
+msgstr "Comhpháirt TypeScript TSX (d'fhorbair Microsoft i 2012, TypeScript + JSX, scríbhneoireacht chaighdeánach d'fhorbairt React le sábháilteacht chineáil)"
+
+msgid "mime_heif"
+msgstr "Íomhá HEIF (caighdeán MPEG 2015, formáid chomhaid íomhá éifeachtach, a úsáidtear go forleathan in éiceachóras Apple)"
+
+msgid "mime_heic"
+msgstr "Íomhá HEIC (cur i bhfeidhm HEIF ag Apple, formáid ghrianghraf réamhshocraithe iPhone, tacaithe go dúchasach ag iOS/macOS)"
+
+msgid "mime_gltf"
+msgstr "Samhail 3D GLTF (formáid iompair GL, 'JPEG an domhain 3D', a d'eisigh an Grúpa Khronos i 2015, formáid chaighdeánach don ngréasán 3D)"
+
+msgid "mime_glb"
+msgstr "Samhail 3D dhénártha GLB (leagan dénártha de GLTF, comhad aonair ina bhfuil gach acmhainn, a úsáidtear le haghaidh dáileadh radharc 3D)"
+
+msgid "mime_gls"
+msgstr "Gluaiseacht Téarmaí (comhad sainmhínithe téarmaí, a úsáidtear le haghaidh bainistíochta téarmaíochta i gcórais doiciméadaithe)"
+
+msgid "mime_cbz"
+msgstr "Coimic CBZ (íomhánna coimice comhbhrúite i ZIP, formáid uilíoch do bhailiúcháin coimicí)"
+
+msgid "mime_cbr"
+msgstr "Coimic CBR (íomhánna coimice comhbhrúite i RAR, formáid uilíoch do bhailiúcháin coimicí)"
+
+msgid "mime_fb2"
+msgstr "Ríomhleabhar FB2 (FictionBook 2.0, formáid ríomhleabhar Rúiseach, struchtúr XML, tacaithe go forleathan ag léitheoirí foinse oscailte)"
+
+msgid "mime_kepub"
+msgstr "Ríomhleabhar KEPUB (formáid Kobo eisiach do EPUB, formáid optamaithe do léitheoirí ríomhleabhar Kobo)"
+
+msgid "mime_m4b"
+msgstr "Closleabhar M4B (formáid fuaime MPEG-4 do leabhair, tacaíonn sé le leabharmharcanna, formáid chlosleabhar iTunes)"
+
+msgid "mime_kfx"
+msgstr "Formáid KFX Kindle (a d'eisigh Amazon i 2015, formáid ríomhleabhar eisiach Kindle, tacaíonn sé le formáidiú feabhsaithe agus le casadh tapa leathanach)"
+
+msgid "mime_chm"
+msgstr "Comhad cabhrach CHM (a d'eisigh Microsoft i 1997, formáid chabhrach HTML tiomsaithe, caighdeán doiciméadaithe cabhrach do bhogearraí Windows)"
+
+msgid "mime_mht"
+msgstr "Cartlann ghréasáin MHT (formáid leathanach gréasáin comhaid aonair a d'eisigh Microsoft i 1999, formáid shábhála leathanaigh Internet Explorer)"
+
+msgid "mime_wml"
+msgstr "Teanga mharcála WML (caighdeán WAP 1999, a úsáidtear le haghaidh comhad gréasáin ar sheanfhóin phóca, as feidhm)"
+
+msgid "mime_xhtml"
+msgstr "Leathanach gréasáin XHTML (caighdeán W3C 2000, leagan XML de HTML, comhréir níos déine. Chuir W3C stop le cothabháil i 2009, agus d'aistrigh an fócas go HTML5)"
+
+msgid "mime_xml"
+msgstr "Doiciméad XML (caighdeán W3C 1998, teanga mharcála insínte, formáid bhunúsach do sheirbhísí gréasáin, comhaid chumraíochta agus idirmhalartú sonraí)"
+
+msgid "mime_sgml"
+msgstr "Doiciméad SGML (caighdeán ISO 1986, réamhtheachtaí HTML, teanga mharcála ghinearálta chaighdeánaithe, díorthaítear XML agus HTML ó SGML)"
+
+msgid "mime_apng"
+msgstr "Beochan APNG (d'fhorbair Mozilla i 2004, síneadh beochana ar PNG, rogha eile nua-aimseartha ar GIF, tacaíonn sé le fíordhathanna agus trédhearcacht)"
+
+msgid "mime_bmp"
+msgstr "Íomhá BMP (formáid ghiotánmhapála Windows, tacaithe go dúchasach ó Windows 1.0. Gan chomhbhrú, comhaid níos mó, ach mar gheall ar struchtúr simplí agus easpa gá le cóidigh bhreise, úsáidtear fós é in Uirlis Gabhála Windows 11, Paint, acmhainní deilbhín in suiteálaithe EXE/MSI, cúrsóirí agus roinnt tiománaithe sean. Is ionann caighdeán comhionann agus comhad thart ar 3-10 n-uaire níos mó ná PNG, ionad PNG/JPEG air i bhformhór na gcásanna, ach coinníonn éiceachóras Windows comhoiriúnacht leathan fós)"
+
+msgid "mime_cdr"
+msgstr "Grafaic veicteora CDR (formáid eisiach CorelDRAW, cuideachta Corel Cheanada, bogearraí deartha grafaicí veicteora)"
+
+msgid "mime_gif"
+msgstr "Íomhá GIF (d'fhorbair CompuServe i 1987, formáid bheochana le 256 dath. Fadhbanna: beagán dathanna, cáilíocht íomhá lag, gan tacaíocht do thrédhearcacht, comhaid mhóra, ráta frámaí íseal. Tá formáidí beochana nua-aimseartha ar nós APNG agus WebP curtha ina ionad)"
+
+msgid "mime_ico"
+msgstr "Deilbhín ICO (formáid comhaid deilbhín Windows, tacaíonn sé le réitigh iolracha, formáid chaighdeánach le haghaidh favicon láithreán)"
+
+msgid "mime_jpeg"
+msgstr "Íomhá JPEG (caighdeán ISO 1992, formáid ghrianghraf le comhbhrú caillteanach, caighdeán de facto do ghrianghraif ar an idirlíon)"
+
+msgid "mime_jpg"
+msgstr "Íomhá JPEG (caighdeán ISO 1992, formáid ghrianghraf le comhbhrú caillteanach, caighdeán de facto do ghrianghraif ar an idirlíon)"
+
+msgid "mime_png"
+msgstr "Íomhá PNG (molta ag W3C i 1996, tacaíonn sé le fíordhathanna agus trédhearcacht, rogha eile statach ar GIF, caighdeán íomhánna gan chailliúint ar an idirlíon)"
+
+msgid "mime_ps"
+msgstr "Comhad tuairisceán leathanaigh PostScript (a d'eisigh Adobe i 1985, teanga tuairisceán leathanaigh, réamhtheachtaí PDF, a úsáidtear le haghaidh cló agus foilsitheoireachta)"
+
+msgid "mime_psb"
+msgstr "Doiciméad mór PSB (formáid íomhá de mhéid breise Adobe Photoshop, tacaíonn sé le híomhánna ollmhóra os cionn 2GB nó 30000 picteilín)"
+
+msgid "mime_psd"
+msgstr "Íomhá PSD (comhad foinse Adobe Photoshop, tacaíonn sé le sraitheanna, cainéil agus cosáin, formáid chaighdeánach an tionscail um phróiseáil íomhánna)"
+
+msgid "mime_webp"
+msgstr "Íomhá WebP (d'fhorbair Google i 2010, formáid íomhá gréasáin, tacaíonn sé le comhbhrú le/gan cailliúint agus beochan, ráta comhbhrú 25-35% níos airde ná PNG agus 25% níos airde ná JPEG)"
+
+msgid "mime_woff"
+msgstr "Cló gréasáin WOFF (cruthaíodh é i 2009, caighdeán W3C i 2018. Bunaithe ar chomhbhrú TrueType/OpenType, optamaithe le haghaidh lódáil clónna gréasáin, formáid chaighdeánach do chlónna deilbhín ar láithreáin nua-aimseartha)"
+
+msgid "mime_7z"
+msgstr "Pacáiste comhbhrúite 7z (d'fhorbair Igor Pavlov i 1999, formáid eisiach an chláir 7-Zip. Algartam LZMA, ardchóimheas comhbhrú, foinse oscailte agus saor in aisce. De ghnáth bíonn formáid 7z 30-50% níos lú ná ZIP don chóimheas comhbhrú céanna, agus is formáid choitianta é do dháileadh bogearraí sa phobal foinse oscailte)"
+
+msgid "mime_ace"
+msgstr "Pacáiste comhbhrúite ACE (d'fhorbair sé sna 90idí, formáid an chláir WinACE. Bhí sé in iomaíocht le RAR, le cóimheas comhbhrú réasúnta ard. Cuireadh stop le forbairt i 2007, cuireadh 7z/RAR ina ionad anois, beagán úsáide)"
+
+msgid "mime_bz2"
+msgstr "Pacáiste comhbhrúite BZIP2 (d'fhorbair Julian Seward i 1996, algartam comhbhrú trí shórtáil bhloc. Cóimheas comhbhrú 15-20% níos airde ná GZIP, ach níos moille. Formáid choitianta do chód foinse chroí Linux, pacáistí bogearraí foinse oscailte, síneadh .bz2)"
+
+msgid "mime_cab"
+msgstr "Pacáiste comhbhrúite CAB (d'fhorbair Microsoft i 1995, formáid Cabinet. Formáid phacáiste suiteála Windows, a úsáidtear le haghaidh dáileadh tiománaithe agus comhad córais. Úsáideann Suiteálaí Windows (MSI) úsáid inmheánach as CAB chun comhaid a stóráil)"
+
+msgid "mime_dmg"
+msgstr "Íomhá diosca DMG (a d'eisigh Apple sna 80idí, formáid Disk Image. Formáid chaighdeánach do dháileadh bogearraí macOS, gléasann sé mar dhiosca fíorúil nuair a chliceáiltear faoi dhó, tarraing chun an feidhmchlár a shuiteáil. Tacaíonn sé le comhbhrú agus criptiú, is é an phríomhfhormáid é do íoslódálacha bogearraí Mac)"
+
+msgid "mime_emz"
+msgstr "Íomhá chomhbhrúite EMZ (meitichomhad feabhsaithe comhbhrúite Windows, leagan comhbhrúite de EMF. Formáid stórála do ghrafaicí veicteora i ndoiciméid Office, go bunúsach comhad EMF comhbhrúite le GZIP)"
+
+msgid "mime_gz"
+msgstr "Pacáiste comhbhrúite GZIP (d'fhorbair Jean-loup Gailly agus Mark Adler i 1992, tionscadal GNU. Uirlis chomhbhrú chaighdeánach Unix/Linux, formáid choitianta do chomhbhrú aistrithe HTTP. Síneadh .gz, a úsáidtear go minic le TAR)"
+
+msgid "mime_jar"
+msgstr "Pacáiste comhbhrúite JAR (a d'eisigh Sun Microsystems i 1997, formáid Java ARchive. Go bunúsach pacáiste ZIP, a úsáidtear le haghaidh pacáistiú leabharlann agus feidhmchlár Java. Formáid lárnach d'éiceachóras Java mar Maven agus Gradle, a úsáideann Android freisin)"
+
+msgid "mime_lzma"
+msgstr "Pacáiste comhbhrúite LZMA (d'fhorbair Igor Pavlov i 1998, algartam Lempel-Ziv-Markov chain. Algartam comhbhrú lárnach formáid 7z, ardchóimheas comhbhrú, luas dí-chomhbhrú tapa. Úsáidtear é le haghaidh dáileadh bogearraí do fhirmware agus córais leabaithe)"
+
+msgid "mime_rar"
+msgstr "Pacáiste comhbhrúite RAR (d'fhorbair Eugene Roshal i 1993, formáid Roshal ARchive. Ardchóimheas comhbhrú, tacaíonn sé le himleabhair roinnte agus taifid aisghabhála. Formáid an chláir WinRAR, cóimheas comhbhrú níos airde ná ZIP, ach éilíonn sé bogearraí íoctha, is féidir le huirlisí foinse oscailte mar unrar dí-chomhbhrú)"
+
+msgid "mime_tar"
+msgstr "Cartlann TAR (a tugadh isteach in Unix V7 i 1979, formáid Tape ARchive. Formáid chartlainne téipe, ní dhéanann sé comhbhrú ach pacáistiú, a úsáidtear go minic le GZIP/BZIP2/XZ. Úsáideann cód foinse phacáistí bogearraí Linux agus stóráil sraitheanna íomhánna Docker formáid TAR)"
+
+msgid "mime_tgz"
+msgstr "Pacáiste comhbhrúite TGZ (formáid chomhcheangailte TAR + GZIP, síneadh .tgz nó .tar.gz. An fhormáid dháileacháin is uilíche do phacáistí Unix/Linux, a úsáidtear go forleathan do chód foinse agus pacáistí dénártha, ionadaí ar 'dí-chomhbhrú agus úsáid')"
+
+msgid "mime_tbz2"
+msgstr "Pacáiste comhbhrúite TBZ2 (formáid chomhcheangailte TAR + BZIP2, síneadh .tbz2 nó .tar.bz2. Cóimheas comhbhrú 15-20% níos airde ná TGZ, oiriúnach do dháileadh comhad mór, d'úsáid cód foinse chroí Linux an fhormáid seo ar feadh i bhfad)"
+
+msgid "mime_xz"
+msgstr "Pacáiste comhbhrúite XZ (a eisíodh i 2009, bunaithe ar algartam LZMA2. Cóimheas comhbhrú thar a bheith ard, 30-50% níos airde ná GZIP, luas dí-chomhbhrú réasúnta tapa. Úsáidtear go forleathan é ag croí Linux agus bainisteoirí pacáistí (mar .deb Debian go hinmheánach), is é an fhormáid mholta faoi láthair in éiceachóras Linux)"
+
+msgid "mime_z"
+msgstr "Pacáiste comhbhrúite Z (formáid an ordaithe compress Unix ó 1985, algartam LZW. Formáid chomhbhrú Unix sean, cuireadh GZIP ina ionad. Síneadh .Z, níos lú úsáide i gcórais nua-aimseartha)"
+
+msgid "mime_zip"
+msgstr "Pacáiste comhbhrúite ZIP (d'fhorbair Phil Katz i 1989, formáid PKZIP. Tacaithe go dúchasach ag Windows, an fhormáid chomhbhrú is uilíche ar an idirlíon. Tacaíonn sé le comhaid iolracha, struchtúr eolaire agus algartaim chomhbhrú roghnacha. Tá JAR Java, APK Android agus DOCX/XLSX doiciméad Office go léir bunaithe ar fhormáid ZIP)"
+
+msgid "mime_zst"
+msgstr "Pacáiste comhbhrúite Zstandard (d'fhorbair Facebook i 2015, le Yann Collet. Algartam comhbhrú ardluais, cóimheas comhbhrú gar do LZMA, luas i bhfad níos airde ná GZIP. Tacaithe ag croí Linux 5.9+, agus é á ghlacadh de réir a chéile ag Arch Linux pacman, Debian APT, is é an caighdeán nua comhbhrú don chéad ghlúin eile)"
+
+msgid "mime_lz4"
+msgstr "Pacáiste comhbhrúite LZ4 (d'fhorbair Yann Collet i 2011, algartam comhbhrú thar a bheith tapa. Luas comhbhrú níos mó ná 10 n-uaire níos airde ná GZIP, oiriúnach do chásanna comhbhrú fíor-ama. Úsáidtear go forleathan é i gcroí Linux, OpenZFS, Hadoop, is é an rogha is fearr do chásanna ina bhfuil tosaíocht ag luas)"
+
+msgid "mime_lzo"
+msgstr "Pacáiste comhbhrúite LZO (d'fhorbair Markus Oberhumer i 1996, algartam Lempel-Ziv-Oberhumer. Luas dí-chomhbhrú thar a bheith tapa, cóimheas comhbhrú meánach. Úsáideann Squashfs chroí Linux agus firmware OpenWrt LZO, oiriúnach do chórais leabaithe)"
+
+msgid "mime_msi"
+msgstr "Pacáiste suiteála MSI (a d'eisigh Microsoft i 1999, formáid Windows Installer. Formáid chaighdeánach suiteála d'fheidhmchláir Windows, tacaíonn sé le haisiompú idirbheart, bainistíocht comhpháirteanna agus suiteáil chiúin. Formáid is fearr do dháileadh bogearraí fiontair, is é an phríomhfhormáid é fós le haghaidh suiteáil bogearraí Windows)"
+
+msgid "mime_pkg"
+msgstr "Pacáiste suiteála PKG (formáid phacáiste suiteála feidhmchlár macOS, bunaithe ar theicneolaíocht Installer Apple. Formáid chaighdeánach do dháileadh bogearraí macOS, tacaíonn sé le roghnú comhpháirteanna, scripteanna suiteála agus feidhmiúlacht dhíshuiteála. Is féidir comhaid .pkg a shuiteáil le cliceáil faoi dhó, agus is foirm choitianta iad do dháileadh bogearraí lasmuigh den Mac App Store)"
+
+msgid "mime_apk"
+msgstr "Pacáiste feidhmchláir Android APK (a d'eisigh Google i 2008, formáid suiteála traidisiúnta d'fheidhmchláir Android. Is pacáiste ZIP go bunúsach é APK, ina bhfuil cód, acmhainní agus comhad an fhorais. Ó 2021 ar aghaidh, éilíonn Google Play go n-úsáidfeadh feidhmchláir nua formáid AAB, ach úsáidtear APK fós le haghaidh forbartha, dífhabhtaithe, siopaí tríú páirtí agus suiteáil thaobhach)"
+
+msgid "mime_ipa"
+msgstr "Pacáiste feidhmchláir Apple IPA (iOS App Store Package, formáid suiteála d'fheidhmchláir iOS/iPadOS. Eisithe le iOS SDK i 2008. Éilíonn dáileadh tríd an App Store nó síniú teastais fhiontair. Ina bhfuil inrite, acmhainní, Info.plist agus faisnéis shínithe)"
+
+msgid "mime_hap"
+msgstr "Pacáiste feidhmchláir HarmonyOS HAP (HarmonyOS Ability Package, aonad bunúsach feidhmchláir HarmonyOS. Eisithe le HarmonyOS 2.0 i 2020. Tacaíonn sé le cineálacha entry agus feature, formáid dháileacháin do ghutháin Huawei, taibléid, uaireadóirí cliste agus gléasanna eile HarmonyOS)"
+
+msgid "mime_har"
+msgstr "Pacáiste statach roinnte HarmonyOS HAR (HarmonyOS Archive, leabharlann statach roinnte HarmonyOS, is féidir é a roinnt le HAPanna iolracha, a úsáidtear le haghaidh forbairt bhunaithe ar chomhpháirteanna agus athúsáid modúl)"
+
+msgid "mime_aab"
+msgstr "Android App Bundle (a d'eisigh Google i 2018, ó 2021 ar aghaidh éilíonn Google Play go n-úsáidfeadh feidhmchláir nua an fhormáid seo. Is formáid dháileacháin é AAB, gineann Google Play APKanna optamaithe go dinimiciúil bunaithe ar chumraíocht an ghléis (ailtireacht LAP, dlús scáileáin, teanga), ag laghdú méid an phacáiste suiteála 35% ar an meán. Seolann forbróirí AAB, íoslódálann úsáideoirí APK)"
+
+msgid "mime_xapk"
+msgstr "Pacáiste feidhmchláir XAPK (pacáiste síneadh feidhmchláir Android tríú páirtí, ina bhfuil APK + comhaid sonraí OBB. Úsáidtear le haghaidh cluichí móra agus feidhmchláir chasta, réitíonn sé an teorainn 100MB APK. Coitianta i siopaí feidhmchlár tríú páirtí ar nós APKPure, APKMirror, ní formáid oifigiúil Google í)"
+
+msgid "mime_appx"
+msgstr "Pacáiste feidhmchláir Windows APPX (a d'eisigh Microsoft i 2012, formáid suiteála d'fheidhmchláir Windows 8/10/11. Tacaíonn sé le feidhmchláir UWP agus tiontú feidhmchlár deisce, dáilte tríd an Microsoft Store. I 2024, d'eisigh Microsoft MSIX mar fhormáid chomharbais, ag cur APPX in ionad de réir a chéile)"
+
+msgid "mime_msix"
+msgstr "Pacáiste feidhmchláir MSIX (a d'eisigh Microsoft i 2018, formáid nua phacáistiú Windows. Comhcheanglaíonn sé buntáistí APPX agus MSI, tacaíonn sé le gach cineál feidhmchlár Windows, is féidir é a dháileadh tríd an Microsoft Store nó suiteáil thaobhach, formáid mholta do Windows 11)"
+
+msgid "mime_appimage"
+msgstr "Pacáiste feidhmchláir AppImage (a eisíodh i 2004, formáid feidhmchláir Linux nach dteastaíonn suiteáil. 'Feidhmchlár amháin comhad amháin', ní gá é a shuiteáil, inrite go díreach, tacaíonn sé le formhór na ndáiltí Linux, foirm choitianta d'fhorbróirí chun bogearraí Linux a dháileadh)"
+
+msgid "mime_flatpak"
+msgstr "Pacáiste feidhmchláir Flatpak (a eisíodh i 2015, formáid feidhmchláir Linux i mbosca gainimh. Ritheann sé thar dháiltí éagsúla, iargúlta ó chóras an óstaigh, d'fhorbair Fedora agus Red Hat é, formáid réamhshocraithe ionad bogearraí GNOME)"
+
+msgid "mime_snap"
+msgstr "Pacáiste feidhmchláir Snap (a d'eisigh Canonical i 2014, máthairchuideachta Ubuntu, formáid feidhmchláir Linux uilíoch. Nuashonruithe uathoibríocha, iargúltacht i mbosca gainimh, tacaíonn sé le níos mó ná 40 dáileadh Linux, formáid réamhshocraithe ionad bogearraí Ubuntu)"
+
+msgid "mime_deb"
+msgstr "Pacáiste bogearraí Debian (a d'eisigh tionscadal Debian i 1993, formáid suiteála chaighdeánach do Debian/Ubuntu agus díorthaigh. Bainistithe le dpkg, is é APT a chomhéadan tosaigh bainisteoir pacáistí, ceann de na formáidí pacáiste is aibí in éiceachóras Linux, is é an phríomhfhormáid fós do theaghlach Debian)"
+
+msgid "mime_rpm"
+msgstr "Pacáiste bogearraí RPM (a d'eisigh Red Hat i 1997, formáid chaighdeánach do dháiltí Red Hat/Fedora/CentOS/SUSE. Ciallaíonn RPM 'Red Hat Package Manager', le DEB foirmíonn siad an dá fhormáid mhóra pacáiste Linux, is é an phríomhfhormáid fós do theaghlach RHEL)"
+
+msgid "mime_pacman"
+msgstr "Pacáiste bogearraí Arch (a d'eisigh Arch Linux i 2002, formáid .pkg.tar.zst a úsáideann an bainisteoir pacáistí pacman. Croílár na dáilte scaoilte rollta Arch Linux, aitheanta as a shimplíocht agus prionsabal KISS, is é AUR a shaintréith idirdhealaitheach)"
+
+msgid "mime_exe"
+msgstr "Comhad inrite EXE (formáid chláir inrite Windows, giorrúchán 'Executable'. Formáid fhorghníomhaithe dhúchasach chóras oibriúcháin Windows, ina bhfuil struchtúr PE. Tháinig sé chun cinn ó fhormáid MZ MS-DOS, agus thug Windows NT isteach formáid PE (Portable Executable) i 1993, fós in úsáid inniu. Úsáideann pacáistí suiteála bogearraí, feidhmchláir, uirlisí córais an fhormáid seo. Is féidir leis an úsáideoir rith le cliceáil faoi dhó, is í an fhormáid inrite is forleithne ar domhan í)"
+
+msgid "mime_dll"
+msgstr "Leabharlann nascáil dhinimiciúil DLL (a d'eisigh Microsoft i 1993, Dynamic Link Library. Cód roinnte Windows, a lódáiltear go dinimiciúil le linn fhorghníomhú an chláir, sábhálann sé cuimhne agus spás diosca. Úsáideann comhpháirteanna an chórais, breiseáin feidhmchlár, tiománaithe formáid DLL. Foirm lárnach chur i bhfeidhm API Windows, maolaíodh an fhadhb 'DLL Hell' le ré .NET)"
+
+msgid "mime_com"
+msgstr "Comhad inrite COM (formáid inrite ó ré MS-DOS, giorrúchán 'Command'. Struchtúr comhad simplí, teorainn 64KB, príomhfhormáid roimh Windows 3.x. As feidhm, úsáideann Windows nua-aimseartha formáid EXE, úsáidtear an síneadh COM fós le haghaidh comhaid chomhpháirteacha áirithe)"
+
+msgid "mime_aac"
+msgstr "Fuaim AAC (caighdeán MPEG 1997, Advanced Audio Coding. Comharba MP3, cáilíocht fuaime níos fearr ná MP3 leis an ráta giotán céanna, formáid fuaime réamhshocraithe do YouTube, iTunes, Nintendo Switch)"
+
+msgid "mime_alac"
+msgstr "Fuaim ALAC (d'fhorbair Apple i 2004, Apple Lossless Audio Codec. Formáid gan chailliúint Apple, foinse oscailte ó 2011, formáid réamhshocraithe d'fhuaim gan chailliúint in iTunes agus Apple Music)"
+
+msgid "mime_flac"
+msgstr "Fuaim FLAC (d'fhorbair Fondúireacht Xiph.Org i 2001, Free Lossless Audio Codec. Comhbhrú gan chailliúint, cáilíocht fuaime comhionann le CD, comhad thart ar leath de WAV bunaidh. Foinse oscailte agus saor ó phaitinní, formáid is fearr le closphilí agus bailiúcháin ceoil dhigitigh)"
+
+msgid "mime_mp3"
+msgstr "Fuaim MP3 (d'fhorbair Institiúid Fraunhofer i 1993, MPEG-1 Audio Layer 3. Formáid chomhbhrúite le cailliúint, comhaid bheaga le cáilíocht inghlactha, foirm lárnach réabhlóid cheoil dhigitigh sna 2000í, á thiomáint ag iPod agus Napster. Chuaigh an phaitinn in éag i 2017, agus rinneadh formáid dhen chuid phoiblí de)"
+
+msgid "mime_oga"
+msgstr "Fuaim Ogg Audio (d'fhorbair Fondúireacht Xiph.Org, formáid fuaime íon d'umar Ogg, ag úsáid códú Vorbis. Foinse oscailte agus saor ó phaitinní, éifeachtúlacht chomhbhrú níos fearr ná MP3, a úsáidtear go forleathan i dtionscadail foinse oscailte)"
+
+msgid "mime_ogg"
+msgstr "Fuaim OGG (d'fhorbair Fondúireacht Xiph.Org i 2000, formáid Ogg Vorbis. Foinse oscailte agus saor ó phaitinní, éifeachtúlacht chomhbhrú níos fearr ná MP3, ghlac Spotify leis go luath, a úsáidtear go forleathan i bhfuaim cluichí)"
+
+msgid "mime_opus"
+msgstr "Fuaim Opus (caighdeán IETF 2012, formáid fuaime foinse oscailte agus saor ó phaitinní. Comhcheanglaíonn sé teicneolaíochtaí SILK agus CELT, latency thar a bheith íseal, an éifeachtúlacht chomhbhrú is airde, formáid fuaime chaighdeánach do WebRTC, WhatsApp, Discord)"
+
+msgid "mime_wav"
+msgstr "Fuaim WAV (d'fhorbair Microsoft agus IBM i 1991, formáid fuaime dhúchasach Windows. Códú PCM gan chomhbhrú, cáilíocht fuaime gan chailliúint ach comhaid ollmhóra, formáid chaighdeánach d'eagarthóireacht fuaime ghairmiúil)"
+
+msgid "mime_wma"
+msgstr "Fuaim WMA (d'fhorbair Microsoft i 1999, Windows Media Audio. Leaganacha le/gan chailliúint, tacaithe go dúchasach ag Windows, a ndearnadh tóir air le Windows Media Player. Imillithe faoi láthair, cuireadh MP3/AAC ina ionad)"
+
+msgid "mime_dsf"
+msgstr "Fuaim DSF (formáid Direct Stream Digital, d'fhorbair Sony agus Philips. Sampláil 1 ghiotán d'ardráta, formáid chaighdeánach fuaime DSD, leagan digiteach de SACD, formáid fuaime ardcháilíochta do chlosphilí, comhaid ollmhóra)"
+
+msgid "mime_ape"
+msgstr "Fuaim APE (d'fhorbair Monkey's Audio in 2000, formáid chomhbhrúite gan chaillteanas. Comhbhrú níos airde ná FLAC ach ionchódú níos moille, fós in úsáid ar ardán Windows agus i measc díograiseoirí fuaime)"
+
+msgid "mime_mid"
+msgstr "Fuaim MIDI (caighdeán Chumann MIDI 1983, Musical Instrument Digital Interface. Formáid scóir seachas taifeadta, comhaid an-bheaga, caighdeán d'uirlisí leictreonacha, fuaimeanna fóin phóca, fuaime cluichí. Rinneadh General MIDI a chaighdeánú i 1991, ag sainmhíniú 128 timbre uirlisí)"
+
+msgid "mime_m4a"
+msgstr "Fuaim M4A (MPEG-4 Audio, formáid umar AAC. Formáid chaighdeánach iTunes Music Store, formáid fuaime phríomhúil éiceachóras Apple, tacaíonn sé le cosaint DRM)"
+
+msgid "mime_m3u"
+msgstr "Seinnliosta M3U (formáid sheinnliosta URL MP3, comhad téacs simplí, taifeadann sé cosáin chomhad fuaime. Caighdeán ré Winamp, a úsáidtear le haghaidh raidió ar an idirlíon, sruthú ceoil ar líne. Is é M3U8 a leagan UTF-8, a úsáidtear le haghaidh Sruthú Beo HTTP)"
+
+msgid "mime_asf"
+msgstr "Sruthú ASF (d'fhorbair Microsoft i 1996, Advanced Systems Format. Umar sruthú Windows Media, tacaíonn sé le tarchur comhuaineach fuaime agus físe. Úsáidtear le haghaidh craoladh beo ar an idirlíon agus físeán ar éileamh, tá WMA/WMV bunaithe ar umar ASF)"
+
+msgid "mime_avi"
+msgstr "Físeán AVI (a d'eisigh Microsoft i 1992, caighdeán físe luath Windows. 'Audio Video Interleave', stóráil idirleata fuaime agus físe, an fhormáid físe is mó tóir sna 1990-2000, anois cuireadh MP4/MKV ina ionad)"
+
+msgid "mime_divx"
+msgstr "Físeán DivX (d'fhorbair DivX Inc. i 1998, formáid chódaithe físe bunaithe ar MPEG-4. Príomhfhormáid roinnte físe ar an idirlíon sna 2000í, an chéad teicneolaíocht chun cáilíocht DVD a chomhbhrú go méid CD. Mar gheall ar chonspóidí cóipchirt, d'iompaigh sé ina chódóir tráchtála)"
+
+msgid "mime_mp4"
+msgstr "Físeán MP4 (caighdeán MPEG 2001, MPEG-4 Cuid 14. An fhormáid físe is uilíche ar domhan, tacaíonn sé le códú H.264/H.265, formáid chaighdeánach d'fhíseán ar an idirlíon, thaifeadadh ar fhón póca, YouTube)"
+
+msgid "mime_m4v"
+msgstr "Físeán M4V (formáid físe iTunes, malairt MP4. Formáid físe éiceachóras Apple, formáid chaighdeánach do scannáin agus cláir teilifíse ar an iTunes Store, tacaíonn sé le cosaint DRM cóipchirt)"
+
+msgid "mime_mpeg"
+msgstr "Físeán MPEG (caighdeán ghrúpa MPEG 1988, Moving Picture Experts Group. Bunaitheoir caighdeán comhbhrú físe digiteach, bhí tionchar mór ag MPEG-1 (VCD), MPEG-2 (DVD), MPEG-4 (físeán ar an idirlíon))"
+
+msgid "mime_mkv"
+msgstr "Físeán MKV (d'fhorbair tionscadal Matroska i 2002, formáid umar ilmheáin foinse oscailte. Tacaíonn sé le rianta fuaime iolracha, fotheidil, caibidlí, 'déantóir iontas fillte', formáid is fearr le haghaidh roinnt scannán ardshainmhínithe)"
+
+msgid "mime_mpg"
+msgstr "Físeán MPEG (síneadh físe MPEG-1/MPEG-2, formáid chaighdeánach do VCD agus DVD. Príomhfhormáid físe ar dhiosca sna 1990-2000, anois cuireadh H.264/H.265 ina ionad)"
+
+msgid "mime_ogv"
+msgstr "Físeán Ogg Video (d'fhorbair Fondúireacht Xiph.Org, formáid físe d'umar Ogg, ag úsáid códú Theora. Foinse oscailte agus saor ó phaitinní, ceann de na chéad chaighdeáin físe HTML5, tacaithe go dúchasach ag Firefox)"
+
+msgid "mime_ogx"
+msgstr "Umar ilmheáin Ogg (d'fhorbair Fondúireacht Xiph.Org, síneadh ginearálta umar Ogg, is féidir leis rianta iolracha fuaime, físe, fotheidil a bheith ann. Caighdeán ilmheáin foinse oscailte, a úsáidtear i gcluichí agus sruthú)"
+
+msgid "mime_rm"
+msgstr "Físeán RealMedia (d'fhorbair RealNetworks i 1995, formáid RealMedia. Ceannródaí sruthú ar an idirlíon sna 1990-2000, formáid lárnach an tseinneora RealPlayer. Fadhbanna: gá le seinnteoir speisialaithe, cáilíocht chomhbhrú lag, cuireadh Flash/MP4 ina ionad)"
+
+msgid "mime_flv"
+msgstr "Físeán Flash (formáid 2002, Flash Video. Ba í an fhormáid cheannasach d'fhíseán ar an idirlíon, ghlac YouTube leis go luath. Fadhbanna: gá le breiseán Flash, feidhmíocht íseal, go leor leochaileachtaí slándála. Ó 2015, chuaigh mórláithreáin ar aghaidh go físeán HTML5, anois as feidhm)"
+
+msgid "mime_f4v"
+msgstr "Físeán F4V (formáid físe Flash a d'fhorbair Adobe, comharba FLV. Bunaithe ar chaighdeán MPEG-4, tacaíonn sé le códú H.264. Dífhostaithe le teicneolaíocht Flash, chuir Adobe stop le tacaíocht i 2020)"
+
+msgid "mime_wmv"
+msgstr "Físeán WMV (d'fhorbair Microsoft i 1999, Windows Media Video. Tacaithe go dúchasach ag Windows, optamaithe le haghaidh tarchur sruthú, formáid choitianta d'fhíseán ar líne sna blianta luatha, anois imillithe)"
+
+msgid "mime_wmf"
+msgstr "Formáid ilmheáin WMF (Windows Media Format, córas meán Microsoft. Áirítear físeán WMV, fuaim WMA, tacaithe go dúchasach ag Windows Media Player)"
+
+msgid "mime_mov"
+msgstr "Físeán MOV (d'fhorbair Apple i 1991, formáid umar QuickTime. Formáid chaighdeánach d'eagarthóireacht físe ghairmiúil, tacaíonn sé le cóidigh iolracha, tacaithe go dúchasach ag Final Cut Pro agus Premiere)"
+
+msgid "mime_qt"
+msgstr "Físeán QuickTime (a d'eisigh Apple i 1991, formáid QuickTime. Caighdeán físe d'ardán Mac, is é MOV a umar, bhí an seinnteoir QuickTime in úsáid go forleathan. Chuir Apple stop le forbairt do Windows i 2016, agus cuireadh MP4 ina ionad de réir a chéile)"
+
+msgid "mime_webm"
+msgstr "Físeán WebM (a d'eisigh Google i 2010, formáid físe foinse oscailte agus saor ó phaitinní. Bunaithe ar umar Matroska, códú VP8/VP9, formáid chaighdeánach físe HTML5, formáid athsheinm gréasáin chaighdeánach YouTube)"
+
+msgid "mime_3gp"
+msgstr "Físeán 3GP (caighdeán 3GPP 2000, formáid físe do ghléasanna soghluaiste. Comhaid an-bheag, cáilíocht íomhá íseal, formáid thaifeadta físe do sheanfhóin phóca, a úsáidtear le haghaidh seolta trí MMS)"
+
+#------------------------------------------------------------------------------
+# Toisí teicniúla
+#------------------------------------------------------------------------------
+
+msgid "Operating Systems"
+msgstr "Córais Oibriúcháin"
+
+msgid "Top 5 Operating Systems"
+msgstr "Barr 5 Chóras Oibriúcháin"
+
+msgid "Unknown Robot"
+msgstr "Cliant anaithnid"
+
+msgid "User agent"
+msgstr "Gníomhaire úsáideora"
+
+msgid "Browsers"
+msgstr "Brabhsálaithe"
+
+msgid "Top 5 Browsers"
+msgstr "Barr 5 Bhrabhsálaí"
+
+msgid "Unknown Robot RH"
+msgstr "Ceanntásc iarratais anaithnid"
+
+msgid "Detailed"
+msgstr "Leagan gléas rochtana"
+
+msgid "DetailedOS"
+msgstr "Leagan córas oibriúcháin"
+
+msgid "DetailedBS"
+msgstr "Leagan brabhsálaí"
+
+msgid "Screen sizes"
+msgstr "Méideanna scáileáin"
+
+msgid "Compression"
+msgstr "Comhbhrú"
+
+msgid "In"
+msgstr "Iontráil"
+
+msgid "Out"
+msgstr "Scoir"
+
+msgid "Saved"
+msgstr "Sábháilte"
+
+#------------------------------------------------------------------------------
+# Toisí foinse
+#------------------------------------------------------------------------------
+
+msgid "Origin"
+msgstr "Bunús"
+
+msgid "Referers"
+msgstr "Tagarthóirí"
+
+msgid "meta.description"
+msgstr "Anailísí Loga Gréasáin Casta AWStats - Monatóireacht fíor-ama ar thrácht an tsuímh, anailís ar chuairteoirí, eochairfhocail inneall cuardaigh, staitisticí leathanach earráide. Tacaíonn sé le mód dorcha, comhéadan ilteangach, ag soláthar anailís chuimsitheach sonraí do riarthóirí suímh."
+
+msgid "meta.keywords"
+msgstr "AWStats,staitisticí suímh,anailís loga,monatóireacht tráchta,staitisticí cuairteanna,anailís SEO,uirlis anailíse suímh,Anailís Gréasáin,Anailísí Loga"
+
+msgid "meta.author"
+msgstr "AWStats"
+
+msgid "og.title"
+msgstr "AWStats - Anailís Loga Suímh"
+
+msgid "og.description"
+msgstr "📊 Uirlis staitisticí suímh ghairmiúil foinse oscailte, anailís fíor-ama ar thrácht do shuímh agus ar iompar cuairteoirí."
+
+msgid "og.image.alt"
+msgstr "Grafaicí staitistiúla AWStats"
+
+msgid "Created by"
+msgstr "Cruthaithe ag %s"
+
+msgid "plugins"
+msgstr "breiseáin"
+
+msgid "dbip by"
+msgstr "sonraí arna soláthar ag"
+
+msgid "IPDB by"
+msgstr "Soláthraíonn DB-IP sonraí suímh gheografaigh"
+
+# Méadracht shláinte
+msgid "Configured"
+msgstr "Cumraithe"
+
+msgid "Missing"
+msgstr "Ar iarraidh"
+
+msgid "OK"
+msgstr "Rath"
+
+msgid "Unused"
+msgstr "Ní úsáidtear"
+
+msgid "Overall Health"
+msgstr "Sláinte Ghinearálta"
+
+msgid "Excellent"
+msgstr "Sármhaith"
+
+msgid "Good"
+msgstr "Maith"
+
+msgid "Fair"
+msgstr "Meánach"
+
+msgid "Poor"
+msgstr "Lag"
+
+msgid "Missing icon types"
+msgstr "Cineálacha deilbhín ar iarraidh"
+
+msgid "See"
+msgstr "Féach"
+
+msgid "Expected Path"
+msgstr "Míniú ar an gcosán"
+
+msgid "column for file locations"
+msgstr "colún le haghaidh suíomhanna comhad"
+
+msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
+msgstr "Leid: Más gá duit deilbhíní gaolmhara a ghiniúint, is féidir leat %s a úsáid chun íomhá lógó a uaslódáil, agus ginfidh sé go huathoibríoch na comhaid deilbhín ghaolmhara thuas go léir"
+
+msgid "200: success, 404: failure"
+msgstr "200 ionadaíonn comhaireamh ratha, 404 ionadaíonn comhaireamh teipe"
+
+# Cosáin ionchais
+msgid "_PATH_FAVICON"
+msgstr "/favicon.ico"
+
+msgid "_PATH_APPLE_TOUCH"
+msgstr "/apple-touch-icon.png nó /apple-touch-icon-180x180.png"
+
+msgid "_PATH_LOGO"
+msgstr "/logo.svg nó /logo.png (ní mór tagairt a dhéanamh dó i HTML/JSON-LD)"
+
+msgid "_PATH_WEBMANIFEST"
+msgstr "/site.webmanifest nó /manifest.json"
+
+msgid "_PATH_BROWSERCONFIG"
+msgstr "/browserconfig.xml"
+
+msgid "_PATH_SAFARI_PINNED"
+msgstr "/safari-pinned-tab.svg"
+
+msgid "_PATH_SOCIAL_ICON"
+msgstr "/images/github.svg, /images/paypal.svg, srl."
+
+# Ainmneacha cineálacha deilbhín
+msgid "Favicon"
+msgstr "Deilbhín suímh"
+
+msgid "Apple Touch Icon (iOS/macOS)"
+msgstr "Deilbhín tadhaill Apple (iPhone/iPad/Mac)"
+
+msgid "Site Logo"
+msgstr "Lógó suímh"
+
+msgid "Web App Manifest (Android/Chrome)"
+msgstr "Forógra feidhmchláir ghréasáin (Android/Chrome)"
+
+msgid "Windows Browser Config"
+msgstr "Cumraíocht bhrabhsálaí Windows"
+
+msgid "Safari Pinned Tab"
+msgstr "Deilbhín cluaisín statach Safari"
+
+msgid "Social Icon"
+msgstr "Deilbhín ardáin shóisialta"
+
+# Ceanntásca tábla
+msgid "Icon Files Status"
+msgstr "Stádas comhad deilbhín"
+
+msgid "Icon Type"
+msgstr "Cineál deilbhín"
+
+msgid "Total"
+msgstr "Iomlán"
+
+msgid "Advanced Web Statistics"
+msgstr "Anailísí Casta Loga"
+
+msgid "Advanced Web Statistics %s"
+msgstr "Anailísí Casta Loga %s"
+
+msgid "Your browser does not support frames. Please use a modern browser."
+msgstr "Ní thacaíonn do bhrabhsálaí le frámaí. Úsáid brabhsálaí nua-aimseartha le do thoil."
+
+msgid "View statistics directly"
+msgstr "Féach ar staitisticí go díreach"
+
+msgid "Close"
+msgstr "Dún"
+
+msgid "Documentation Viewer"
+msgstr "Amharcóir Cáipéisíochta"
+
+msgid "Direct address / Bookmarks"
+msgstr "Seoladh díreach / Leabharmharcanna"
+
+msgid "Search Engines"
+msgstr "Innill Chuardaigh"
+
+msgid "Refering search engines"
+msgstr "Innill chuardaigh foinse"
+
+msgid "External pages"
+msgstr "Leathanaigh sheachtracha"
+
+msgid "Refering pages"
+msgstr "Leathanaigh fhoinse"
+
+msgid "Internal pages"
+msgstr "Leathanaigh inmheánacha"
+
+msgid "UnknownAccessSource"
+msgstr "Foinse rochtana anaithnid"
+
+msgid "Different refering pages"
+msgstr "Leathanaigh fhoinse éagsúla"
+
+msgid "Keyphrases"
+msgstr "Cumasc eochairfhocail"
+
+msgid "Keywords"
+msgstr "Eochairfhocail"
+
+msgid "Keyphrases/Keywords"
+msgstr "Cumasc eochairfhocail/Eochairfhocail"
+
+msgid "Different keyphrases"
+msgstr "Cumasc eochairfhocail éagsúla"
+
+msgid "Different keywords"
+msgstr "Eochairfhocail éagsúla"
+
+#------------------------------------------------------------------------------
+# Toisí leathanaigh
+#------------------------------------------------------------------------------
+
+msgid "Viewed pages"
+msgstr "Leathanaigh amharc"
+
+msgid "Different pages"
+msgstr "Leathanaigh éagsúla"
+
+msgid "Entry"
+msgstr "Pointe iontrála"
+
+msgid "Exit"
+msgstr "Pointe scoir"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Referer"
+msgstr "Tagarthóir"
+
+msgid "Host"
+msgstr "Óstach"
+
+#------------------------------------------------------------------------------
+# Earráidí agus stádais
+#------------------------------------------------------------------------------
+
+msgid "Error"
+msgstr "Earráid"
+
+msgid "HTTP Status Statistics"
+msgstr "Staitisticí chód stádais HTTP"
+
+msgid "SMTP Error codes"
+msgstr "Cóid earráide SMTP"
+
+msgid "Page not found"
+msgstr "Leathanach iarrtha gan aimsiú"
+
+msgid "Unknown error"
+msgstr "Earráid anaithnid"
+
+msgid "Abnormal traffic note"
+msgstr "Áirítear le trácht brabhsála neamhghnách: róbónna inneall cuardaigh, róbónna oiliúna AI, scanóirí leochaileachtaí agus iarratais nach gcloíonn le HTTP/HTTPS"
+
+msgid "Page detail"
+msgstr "Sonraí leathanaigh"
+
+# Earráidí agus stádais - Sonraí earráide
+msgid "AWStats did not found the"
+msgstr "Níor aimsigh AWStats an"
+
+msgid "in your log records."
+msgstr "i do thaifid loga."
+
+msgid "AWStats did not find any valid log lines that match your"
+msgstr "Níor aimsigh AWStats aon líne loga bailí a mheaitseálann do"
+
+msgid "parameter, in the"
+msgstr "pharaiméadar, sna"
+
+msgid "th first non commented lines read of your log."
+msgstr "chéad línte neamhthuairimithe de do loga."
+
+msgid "Your log file"
+msgstr "Do chomhad loga"
+
+msgid "must have a bad format or"
+msgstr "caithfidh formáid dona a bheith air nó"
+
+msgid "parameter setup does not match this format."
+msgstr "ní mheaitseálann socrú an pharaiméadair an fhormáid seo."
+
+msgid "Your AWStats"
+msgstr "Do AWStats"
+
+msgid "parameter is:"
+msgstr "paraiméadar ná:"
+
+msgid "This means each line in your web server log file need to have:"
+msgstr "Ciallaíonn sé seo go gcaithfidh gach líne i do chomhad loga freastalaí gréasáin a bheith:"
+
+msgid "combined log format"
+msgstr "formáid loga chomhcheangailte"
+
+msgid "MSIE Extended W3C log format"
+msgstr "formáid loga W3C leathnaithe MSIE"
+
+msgid "WebStar native log format"
+msgstr "formáid loga dhúchasach WebStar"
+
+msgid "common log format"
+msgstr "formáid loga choitianta"
+
+msgid "Lotus Notes/Lotus Domino"
+msgstr "Lotus Notes/Lotus Domino"
+
+msgid "the following personalized log format:"
+msgstr "an fhormáid loga phearsantaithe seo a leanas:"
+
+msgid "And this is an example of records AWStats found in your log file (the record number"
+msgstr "Agus seo sampla de thaifid a d'aimsigh AWStats i do chomhad loga (uimhir an taifid"
+
+msgid "in your log):"
+msgstr "i do loga):"
+
+#------------------------------------------------------------------------------
+# Ilghnéitheach
+#------------------------------------------------------------------------------
+
+msgid "Extra/Marketing"
+msgstr "Breise/Margaíocht"
+
+#------------------------------------------------------------------------------
+# Téacsanna comhéadain
+#------------------------------------------------------------------------------
+
+msgid "Current site"
+msgstr "Suíomh reatha"
+
+msgid "Web Site"
+msgstr "Suíomh Gréasáin"
+
+msgid "Last Update"
+msgstr "Nuashonrú Deireanach"
+
+msgid "Never updated"
+msgstr "Riamh nuashonraithe"
+
+msgid "No qualified records found in log"
+msgstr "Níor aimsíodh aon taifead cáilithe sa loga"
+
+msgid "corrupted"
+msgstr "truaillithe"
+
+msgid "comments"
+msgstr "tuairimí"
+
+msgid "Blank"
+msgstr "Bán"
+
+msgid "dropped"
+msgstr "scriosta"
+
+msgid "Update now"
+msgstr "Nuashonraigh anois"
+
+msgid "Back to main page"
+msgstr "Ar ais go dtí an leathanach príomhúil"
+
+msgid "Close window"
+msgstr "Dúin an fhuinneog"
+
+msgid "Back page"
+msgstr "Leathanach roimhe seo"
+
+msgid "Navigation"
+msgstr "Nascleanúint"
+
+msgid "Summary"
+msgstr "Achoimre"
+
+msgid "Local"
+msgstr "Áitiúil"
+
+msgid "External"
+msgstr "Seachtrach"
+
+msgid "Others (email senders)"
+msgstr "Eile (seoltóirí ríomhphoist)"
+
+msgid "Others (email receivers)"
+msgstr "Eile (faighteoirí ríomhphoist)"
+
+msgid "Others"
+msgstr "Eile"
+
+msgid "Only 10 lines of browser data are currently displayed"
+msgstr "Ní thaispeántar ach 10 líne de shonraí brabhsálaí faoi láthair"
+
+msgid "Others (unknown browsers)"
+msgstr "Eile (brabhsálaithe anaithnide)"
+
+msgid "Others (operating systems)"
+msgstr "Eile (córais oibriúcháin)"
+
+msgid "Others (unknown OS)"
+msgstr "Eile (OS anaithnid)"
+
+msgid "Others (search engines)"
+msgstr "Eile (innill chuardaigh)"
+
+msgid "Others (referring pages)"
+msgstr "Eile (leathanaigh thagartha)"
+
+msgid "Others (keyphrases)"
+msgstr "Eile (cumasc eochairfhocal)"
+
+msgid "Others (keywords)"
+msgstr "Eile (eochairfhocail)"
+
+msgid "Only first 10 robots shown"
+msgstr "Ní thaispeántar ach na chéad 10 róbó"
+
+msgid "Failed to obtain access record"
+msgstr "Theip ar thaifead rochtana a fháil"
+
+msgid "Failed to obtain leave record"
+msgstr "Theip ar thaifead scoir a fháil"
+
+msgid "Other pages"
+msgstr "Leathanaigh eile"
+
+msgid "Low Traffic IP Summary"
+msgstr "Achoimre IPanna Tráchta Íseal"
+
+msgid "Failed to obtain IP data"
+msgstr "Theip ar shonraí IP a fháil"
+
+msgid "Failed to obtain the relevant data"
+msgstr "Theip ar na sonraí ábhartha a fháil"
+
+msgid "Limited list of countries and regions"
+msgstr "Liosta teoranta tíortha agus réigiún"
+
+msgid "currentVisitorData"
+msgstr "Sonraí cuairteora reatha"
+
+msgid "Others (robots main)"
+msgstr "Eile (príomh-róbónna)"
+
+msgid "Others (worms)"
+msgstr "Eile (péisteanna)"
+
+msgid "Displaying10RowsPageMorePleaseViewFullList"
+msgstr "Ag taispeáint 10 líne. Le haghaidh níos mó, féach an liosta iomlán"
+
+msgid "Others (OS main)"
+msgstr "Eile (príomh-OS)"
+
+msgid "Others (browsers main)"
+msgstr "Eile (príomh-bhrabhsálaithe)"
+
+msgid "Others (screen sizes)"
+msgstr "Eile (méideanna scáileáin)"
+
+msgid "Others (search engines main)"
+msgstr "Eile (príomh-innill chuardaigh)"
+
+msgid "Others (referring pages main)"
+msgstr "Eile (príomh-leathanaigh thagartha)"
+
+msgid "Others (keyphrases main)"
+msgstr "Eile (príomh-chumasc eochairfhocal)"
+
+msgid "Others (keywords main)"
+msgstr "Eile (príomh-eochairfhocail)"
+
+# 1xx
+msgid "Continue"
+msgstr "Leanúint"
+
+msgid "Switching Protocols"
+msgstr "Ag aistriú prótacail"
+
+msgid "Processing (WebDAV)"
+msgstr "Á phróiseáil (WebDAV)"
+
+msgid "Early Hints"
+msgstr "Leideanna luatha"
+
+msgid "[Miscellaneous successes]"
+msgstr "[Ratha éagsúla]"
+
+msgid "Request successful"
+msgstr "D'éirigh leis an iarraidh"
+
+msgid "Created successfully"
+msgstr "Cruthaithe go rathúil"
+
+msgid "Accepted - processing"
+msgstr "Glactha - á phróiseáil"
+
+msgid "Non-authoritative information (from cache) (from cache)"
+msgstr "Faisnéis neamhúdarásach (ón taisce)"
+
+msgid "Success, no content returned"
+msgstr "Rath, gan ábhar ar ais"
+
+msgid "Reset content"
+msgstr "Athshocraigh ábhar"
+
+msgid "Partial content (resume download)"
+msgstr "Ábhar páirteach (atosú íoslódála)"
+
+msgid "Multi-status (WebDAV)"
+msgstr "Il-stádas (WebDAV)"
+
+msgid "Already reported (WebDAV)"
+msgstr "Tuairiscíodh cheana (WebDAV)"
+
+msgid "IM used"
+msgstr "IM úsáidte"
+
+msgid "[Miscellaneous redirections]"
+msgstr "[Atreoruithe éagsúla]"
+
+msgid "Multiple choices"
+msgstr "Rogha iolrach"
+
+msgid "Moved permanently - update your links"
+msgstr "Bogadh go buan - nuashonraigh do naisc"
+
+msgid "Temporary redirect - URL unchanged"
+msgstr "Atreorú sealadach - URL gan athrú"
+
+msgid "See other"
+msgstr "Féach ceann eile"
+
+msgid "Not modified - using cached version"
+msgstr "Gan athrú - ag úsáid leagan taisce"
+
+msgid "Use proxy"
+msgstr "Úsáid seachfhreastalaí"
+
+msgid "Switch proxy"
+msgstr "Athraigh seachfhreastalaí"
+
+msgid "Temporary redirect (keep method)"
+msgstr "Atreorú sealadach (coinnigh modh)"
+
+msgid "Permanent redirect - update your links"
+msgstr "Atreorú buan - nuashonraigh do naisc"
+
+msgid "[Miscellaneous client/user errors]"
+msgstr "[Earráidí éagsúla cliant/úsáideora]"
+
+msgid "Bad request"
+msgstr "Iarratas neamhbhailí"
+
+msgid "Unauthorized - please log in"
+msgstr "Neamhúdaraithe - logáil isteach le do thoil"
+
+msgid "Payment required"
+msgstr "Íocaíocht ag teastáil"
+
+msgid "Forbidden - access denied"
+msgstr "Toirmiscthe - rochtain diúltaithe"
+
+msgid "Page not found (404) - check for broken links"
+msgstr "Leathanach gan aimsiú (404) - seiceáil le haghaidh naisc briste"
+
+msgid "Method not allowed"
+msgstr "Modh neamhcheadaithe"
+
+msgid "Not acceptable"
+msgstr "Neamh-inghlactha"
+
+msgid "Proxy authentication required"
+msgstr "Fíordheimhniú seachfhreastalaí ag teastáil"
+
+msgid "Request timeout"
+msgstr "Teorainn ama iarratais sáraithe"
+
+msgid "Conflict - please try again"
+msgstr "Coimhlint - bain triail eile as le do thoil"
+
+msgid "Gone - permanently deleted"
+msgstr "Imithe - scriosta go buan"
+
+msgid "Length required"
+msgstr "Fad ag teastáil"
+
+msgid "Precondition failed"
+msgstr "Theip ar réamhchoinníoll"
+
+msgid "Payload too large"
+msgstr "Ualach rómhór"
+
+msgid "URI too long"
+msgstr "URI rófhada"
+
+msgid "Unsupported media type"
+msgstr "Cineál meán neamhthacaithe"
+
+msgid "Range not satisfiable"
+msgstr "Raion neamhshásúil"
+
+msgid "Expectation failed"
+msgstr "Theip ar ionchas"
+
+msgid "I am a teapot (April Fools)"
+msgstr "Is citeal tae mé (Lá na nAmadán)"
+
+msgid "Page expired (Laravel)"
+msgstr "Leathanach imithe in éag (Laravel)"
+
+msgid "Method failure (Spring)"
+msgstr "Teip modha (Spring)"
+
+msgid "Misdirected request"
+msgstr "Iarratas míthreoraithe"
+
+msgid "Unprocessable entity (WebDAV)"
+msgstr "Eintiteas neamhphróiseáilte (WebDAV)"
+
+msgid "Locked (WebDAV)"
+msgstr "Glasáilte (WebDAV)"
+
+msgid "Failed dependency (WebDAV)"
+msgstr "Theip ar spleáchas (WebDAV)"
+
+msgid "Too early"
+msgstr "Ró-luath"
+
+msgid "Upgrade required"
+msgstr "Uasghrádú ag teastáil"
+
+msgid "Precondition required"
+msgstr "Réamhchoinníoll ag teastáil"
+
+msgid "Too many requests - slow down"
+msgstr "An iomarca iarratas - maolaigh"
+
+msgid "Request header fields too large (Shopify)"
+msgstr "Réimsí ceanntásc iarratais rómhór (Shopify)"
+
+msgid "Request header too large"
+msgstr "Ceanntásc iarratais rómhór"
+
+msgid "Login timeout (IIS)"
+msgstr "Teorainn ama logáil isteach sáraithe (IIS)"
+
+msgid "No response (nginx)"
+msgstr "Gan freagra (nginx)"
+
+msgid "Retry with (IIS)"
+msgstr "Bain triail eile as le (IIS)"
+
+msgid "Blocked by Windows parental controls"
+msgstr "Blocáilte ag rialuithe tuismitheora Windows"
+
+msgid "Unavailable for legal reasons"
+msgstr "Neamh-infhaighte ar chúiseanna dlí"
+
+msgid "Client closed connection before idle timeout (AWS ELB)"
+msgstr "Dhún an cliant an nasc roimh theorainn ama díomhaoin (AWS ELB)"
+
+msgid "X-Forwarded-For header with >30 IP addresses (AWS ELB)"
+msgstr "Ceanntásc X-Forwarded-For le >30 seoladh IP (AWS ELB)"
+
+msgid "Incompatible protocol versions (AWS ELB)"
+msgstr "Leaganacha prótacail neamh-chomhoiriúnacha (AWS ELB)"
+
+msgid "Request header too large (nginx)"
+msgstr "Ceanntásc iarratais rómhór (nginx)"
+
+msgid "SSL certificate error (nginx)"
+msgstr "Earráid teastais SSL (nginx)"
+
+msgid "SSL certificate required (nginx)"
+msgstr "Teastas SSL ag teastáil (nginx)"
+
+msgid "HTTP request sent to HTTPS port (nginx)"
+msgstr "Iarratas HTTP seolta chuig port HTTPS (nginx)"
+
+msgid "Invalid token (ArcGIS)"
+msgstr "Ceadúnas neamhbhailí (ArcGIS)"
+
+msgid "Token required (ArcGIS) / Client closed request (nginx)"
+msgstr "Ceadúnas ag teastáil (ArcGIS) / Dhún an cliant an t-iarratas (nginx)"
+
+msgid "Resource limit reached (cPanel)"
+msgstr "Teorainn acmhainní bainte amach (cPanel)"
+
+msgid "Bandwidth limit exceeded (Apache/cPanel)"
+msgstr "Teorainn leithead banda sáraithe (Apache/cPanel)"
+
+msgid "[Miscellaneous server errors]"
+msgstr "[Earráidí éagsúla freastalaí]"
+
+msgid "Internal server error - check logs"
+msgstr "Earráid inmheánach freastalaí - seiceáil na logaí"
+
+msgid "Not implemented"
+msgstr "Gan chur i bhfeidhm"
+
+msgid "Bad gateway - backend error"
+msgstr "Geata dona - earráid cúltaca"
+
+msgid "Service unavailable - maintenance or overload"
+msgstr "Seirbhís neamh-infhaighte - cothabháil nó ró-ualach"
+
+msgid "Gateway timeout"
+msgstr "Teorainn ama geata sáraithe"
+
+msgid "HTTP version not supported"
+msgstr "Leagan HTTP neamhthacaithe"
+
+msgid "Variant also negotiates"
+msgstr "Idirbheartaíonn an mhalairt freisin"
+
+msgid "Insufficient storage (WebDAV)"
+msgstr "Stóras neamhleor (WebDAV)"
+
+msgid "Loop detected (WebDAV)"
+msgstr "Lúb braite (WebDAV)"
+
+msgid "Not extended"
+msgstr "Gan síneadh"
+
+msgid "Network authentication required"
+msgstr "Fíordheimhniú líonra ag teastáil"
+
+msgid "Unknown error (Cloudflare)"
+msgstr "Earráid anaithnid (Cloudflare)"
+
+msgid "Web server is down (Cloudflare)"
+msgstr "Tá freastalaí gréasáin síos (Cloudflare)"
+
+msgid "Connection timeout (Cloudflare)"
+msgstr "Teorainn ama ceangail (Cloudflare)"
+
+msgid "Origin is unreachable (Cloudflare)"
+msgstr "Tionscnamh dorochtana (Cloudflare)"
+
+msgid "A timeout occurred (Cloudflare)"
+msgstr "Tharla teorainn ama (Cloudflare)"
+
+msgid "SSL handshake failed (Cloudflare)"
+msgstr "Theip ar chroitheadh láimhe SSL (Cloudflare)"
+
+msgid "Invalid SSL certificate (Cloudflare)"
+msgstr "Teastas SSL neamhbhailí (Cloudflare)"
+
+msgid "Railgun error (Cloudflare - obsolete)"
+msgstr "Earráid Railgun (Cloudflare - as feidhm)"
+
+msgid "Site is overloaded (SSLLabs)"
+msgstr "Tá an suíomh ró-ualaithe (SSLLabs)"
+
+msgid "Origin DNS error (Cloudflare) / Site is frozen (Pantheon)"
+msgstr "Earráid DNS tionscnaimh (Cloudflare) / Suíomh reoite (Pantheon)"
+
+msgid "Temporarily disabled (Shopify)"
+msgstr "Díchumasaíodh go sealadach (Shopify)"
+
+msgid "Unauthorized (AWS ELB)"
+msgstr "Neamhúdaraithe (AWS ELB)"
+
+msgid "Network read timeout error"
+msgstr "Earráid teorainn ama léite líonra"
+
+msgid "Network connect timeout error"
+msgstr "Earráid teorainn ama ceangail líonra"
+
+msgid "Unexpected token (Shopify)"
+msgstr "Ceadúnas gan choinne (Shopify)"
+
+msgid "Request denied (LinkedIn)"
+msgstr "Iarratas diúltaithe (LinkedIn)"
+
+msgid "HTTP/2 GOAWAY (AWS ELB)"
+msgstr "HTTP/2 GOAWAY (AWS ELB)"
+
+msgid "[Unknown]"
+msgstr "[Anaithnid]"
+
+msgid "Nonstandard success response (ESMTP)"
+msgstr "Freagra ratha neamhchaighdeánach (ESMTP)"
+
+msgid "System status, or system help reply"
+msgstr "Stádas an chórais, nó freagra cabhrach an chórais"
+
+msgid "Help message"
+msgstr "Teachtaireacht chabhrach"
+
+msgid "SMTP service ready (LMTP)"
+msgstr "Seirbhís SMTP réidh (LMTP)"
+
+msgid "Service ready - server is ready to receive mail"
+msgstr "Seirbhís réidh - freastalaí réidh le ríomhphost a fháil"
+
+msgid "Service closing - connection is being closed"
+msgstr "Seirbhís ag dúnadh - nasc á dhúnadh"
+
+msgid "Authentication successful"
+msgstr "Fíordheimhniú rathúil"
+
+msgid "Requested mail action taken and completed"
+msgstr "Gníomh ríomhphoist iarrtha déanta agus críochnaithe"
+
+msgid "User not local - will forward to another address"
+msgstr "Úsáideoir neamh-áitiúil - cuirfear ar aghaidh chuig seoladh eile é"
+
+msgid "Cannot verify recipient, but will attempt delivery"
+msgstr "Ní féidir an faighteoir a fhíorú, ach déanfar iarracht seachadta"
+
+msgid "Message accepted for delivery (DSN)"
+msgstr "Glacadh le teachtaireacht le haghaidh seachadta (DSN)"
+
+msgid "User name is a mailbox"
+msgstr "Is bosca poist é ainm úsáideora"
+
+msgid "Authentication challenge - please respond"
+msgstr "Dúshlán fíordheimhnithe - freagair le do thoil"
+
+msgid "Start mail input - end with <CRLF>.<CRLF>"
+msgstr "Tosaigh ionchur ríomhphoist - críochnaigh le <CRLF>.<CRLF>"
+
+msgid "Continue (LMTP)"
+msgstr "Lean ar aghaidh (LMTP)"
+
+msgid "Service not available - connection closing, try again later"
+msgstr "Seirbhís neamh-infhaighte - nasc ag dúnadh, bain triail eile as níos déanaí"
+
+msgid "Mailbox busy or temporarily unavailable (Exchange)"
+msgstr "Bosca poist gnóthach nó neamh-infhaighte go sealadach (Exchange)"
+
+msgid "Connection rate limit exceeded (Postfix)"
+msgstr "Teorainn ráta ceangail sáraithe (Postfix)"
+
+msgid "Too many concurrent connections (Postfix)"
+msgstr "An iomarca nasc comhthráthach (Postfix)"
+
+msgid "Unable to establish connection (Postfix)"
+msgstr "Níorbh fhéidir nasc a bhunú (Postfix)"
+
+msgid "Connection timed out (Postfix)"
+msgstr "Teorainn ama an cheangail sáraithe (Postfix)"
+
+msgid "Connection dropped due to error (Postfix)"
+msgstr "Nasc scaoilte mar gheall ar earráid (Postfix)"
+
+msgid "Mailbox temporarily locked (Exchange)"
+msgstr "Bosca poist glasáilte go sealadach (Exchange)"
+
+msgid "Too many recipients (Postfix/Exim)"
+msgstr "An iomarca faighteoirí (Postfix/Exim)"
+
+msgid "Mail server error (Exchange)"
+msgstr "Earráid freastalaí ríomhphoist (Exchange)"
+
+msgid "Received loop detected (Exim)"
+msgstr "Lúb faighte braite (Exim)"
+
+msgid "Too many hop count (Exim)"
+msgstr "Comhaireamh hop ró-ard (Exim)"
+
+msgid "DNS lookup failed (Postfix)"
+msgstr "Theip ar chuardach DNS (Postfix)"
+
+msgid "Unable to authenticate (Postfix)"
+msgstr "Níorbh fhéidir fíordheimhniú (Postfix)"
+
+msgid "TLS handshake failed (Postfix)"
+msgstr "Theip ar chroitheadh láimhe TLS (Postfix)"
+
+msgid "SMTP protocol violation (Postfix)"
+msgstr "Sárú prótacail SMTP (Postfix)"
+
+msgid "Message size exceeds limit (Exchange)"
+msgstr "Sáraíonn méid na teachtaireachta an teorainn (Exchange)"
+
+msgid "Message rate limit exceeded (Postfix)"
+msgstr "Teorainn ráta teachtaireachta sáraithe (Postfix)"
+
+msgid "Mailbox quota exceeded - temporary"
+msgstr "Cuóta bosca poist sáraithe - sealadach"
+
+msgid "Domain not found (Postfix)"
+msgstr "Fearann gan aimsiú (Postfix)"
+
+msgid "Message header invalid (Postfix)"
+msgstr "Ceanntásc teachtaireachta neamhbhailí (Postfix)"
+
+msgid "Bounce loop detected (Postfix)"
+msgstr "Lúb preabtha braite (Postfix)"
+
+msgid "Unable to route (Postfix)"
+msgstr "Níorbh fhéidir ródú (Postfix)"
+
+msgid "Sender domain not found (Postfix)"
+msgstr "Fearann seoltóra gan aimsiú (Postfix)"
+
+msgid "Recipient domain not found (Postfix)"
+msgstr "Fearann faighteora gan aimsiú (Postfix)"
+
+msgid "Greylisting in progress - please try again (Postgrey)"
+msgstr "Liostú liath ar siúl - bain triail eile as le do thoil (Postgrey)"
+
+msgid "Spam filtering in progress (SpamAssassin)"
+msgstr "Scagadh turscair ar siúl (SpamAssassin)"
+
+msgid "Virus scanning in progress (ClamAV)"
+msgstr "Scanadh víreas ar siúl (ClamAV)"
+
+msgid "Mailbox unavailable - try again later"
+msgstr "Bosca poist neamh-infhaighte - bain triail eile as níos déanaí"
+
+msgid "Requested action aborted - error in processing"
+msgstr "Gníomh iarrtha ar ceal - earráid sa phróiseáil"
+
+msgid "Insufficient system storage - try again later"
+msgstr "Stóras córais neamhleor - bain triail eile as níos déanaí"
+
+msgid "Too many messages for this recipient (Exchange)"
+msgstr "An iomarca teachtaireachtaí don fhaighteoir seo (Exchange)"
+
+msgid "TLS not available (Postfix)"
+msgstr "TLS neamh-infhaighte (Postfix)"
+
+msgid "Server unable to accept messages (Postfix)"
+msgstr "Freastalaí neamhábaltach teachtaireachtaí a ghlacadh (Postfix)"
+
+msgid "Temporary failure in DNS lookup (Exim)"
+msgstr "Teip shealadach i gcuardach DNS (Exim)"
+
+msgid "Quota exceeded - temporary"
+msgstr "Cuóta sáraithe - sealadach"
+
+msgid "Message too big - temporary"
+msgstr "Teachtaireacht ró-mhór - sealadach"
+
+msgid "Too many messages per connection"
+msgstr "An iomarca teachtaireachtaí in aghaidh an cheangail"
+
+msgid "Load average too high (Postfix)"
+msgstr "Meánualach ró-ard (Postfix)"
+
+msgid "Connection refused (Postfix)"
+msgstr "Nasc diúltaithe (Postfix)"
+
+msgid "Send rate limit exceeded (Postfix)"
+msgstr "Teorainn ráta seolta sáraithe (Postfix)"
+
+msgid "Recipient rate limit exceeded (Postfix)"
+msgstr "Teorainn ráta faighteora sáraithe (Postfix)"
+
+msgid "Sender rate limit exceeded (Postfix)"
+msgstr "Teorainn ráta seoltóra sáraithe (Postfix)"
+
+msgid "IP address rate limit exceeded (Postfix)"
+msgstr "Teorainn ráta seoltaí IP sáraithe (Postfix)"
+
+msgid "MX lookup failed (Postfix)"
+msgstr "Theip ar chuardach MX (Postfix)"
+
+msgid "A record lookup failed (Postfix)"
+msgstr "Theip ar chuardach taifid A (Postfix)"
+
+msgid "PTR record lookup failed (Postfix)"
+msgstr "Theip ar chuardach taifid PTR (Postfix)"
+
+msgid "Greylisting active - please try again (Postgrey)"
+msgstr "Liostú liath gníomhach - bain triail eile as le do thoil (Postgrey)"
+
+msgid "Sender address rejected - domain not verified (DMARC pending)"
+msgstr "Seoladh seoltóra diúltaithe - fearann neamhfhíoraithe (DMARC ar feitheamh)"
+
+msgid "Recipient address rejected - domain not verified (DMARC pending)"
+msgstr "Seoladh faighteora diúltaithe - fearann neamhfhíoraithe (DMARC ar feitheamh)"
+
+msgid "DKIM verification pending - temporary failure"
+msgstr "Fíorú DKIM ar feitheamh - teip shealadach"
+
+msgid "SPF verification pending - temporary failure"
+msgstr "Fíorú SPF ar feitheamh - teip shealadach"
+
+msgid "DMARC verification pending - temporary failure"
+msgstr "Fíorú DMARC ar feitheamh - teip shealadach"
+
+msgid "DNSBL lookup temporary failure"
+msgstr "Teip shealadach cuardaigh DNSBL"
+
+msgid "RHSBL lookup temporary failure"
+msgstr "Teip shealadach cuardaigh RHSBL"
+
+msgid "URI DNSBL lookup temporary failure"
+msgstr "Teip shealadach cuardaigh URI DNSBL"
+
+msgid "Temporary authentication failure (Dovecot)"
+msgstr "Teip fíordheimhnithe shealadach (Dovecot)"
+
+msgid "Temporary authorization failure (Sendmail)"
+msgstr "Teip údaraithe shealadach (Sendmail)"
+
+msgid "Rate limit exceeded per sender (Exim)"
+msgstr "Teorainn ráta in aghaidh an tseoltóra sáraithe (Exim)"
+
+msgid "Rate limit exceeded per recipient (Exim)"
+msgstr "Teorainn ráta in aghaidh an fhaighteora sáraithe (Exim)"
+
+msgid "Rate limit exceeded per domain (Exim)"
+msgstr "Teorainn ráta in aghaidh an fhearainn sáraithe (Exim)"
+
+msgid "Rate limit exceeded per IP (Exim)"
+msgstr "Teorainn ráta in aghaidh an IP sáraithe (Exim)"
+
+msgid "Message queued for later delivery (Postfix)"
+msgstr "Teachtaireacht curtha i scuaine le haghaidh seachadta níos déanaí (Postfix)"
+
+msgid "Delivery delayed due to policy (Exchange)"
+msgstr "Seachadadh moillithe mar gheall ar bheartas (Exchange)"
+
+msgid "Temporary failure in content filter"
+msgstr "Teip shealadach sa scagaire ábhair"
+
+msgid "Temporary failure in antivirus scanner"
+msgstr "Teip shealadach sa scanóir frithvíreas"
+
+msgid "Temporary failure in spam filter"
+msgstr "Teip shealadach sa scagaire turscair"
+
+msgid "Temporary failure in milter (Postfix)"
+msgstr "Teip shealadach sa milter (Postfix)"
+
+msgid "Greylisting - try again later"
+msgstr "Liostú liath - bain triail eile as níos déanaí"
+
+msgid "DDoS protection active - try again later"
+msgstr "Cosaint DDoS gníomhach - bain triail eile as níos déanaí"
+
+msgid "SMTP policy violation - temporary"
+msgstr "Sárú beartais SMTP - sealadach"
+
+msgid "Temporary error in RCPT TO processing"
+msgstr "Earráid shealadach i bpróiseáil RCPT TO"
+
+msgid "Temporary error in MAIL FROM processing"
+msgstr "Earráid shealadach i bpróiseáil MAIL FROM"
+
+msgid "Temporary error in EHLO/HELO processing"
+msgstr "Earráid shealadach i bpróiseáil EHLO/HELO"
+
+msgid "Temporary error in DATA processing"
+msgstr "Earráid shealadach i bpróiseáil DATA"
+
+msgid "Temporary error - service busy, try again later"
+msgstr "Earráid shealadach - seirbhís gnóthach, bain triail eile as níos déanaí"
+
+msgid "Syntax error - command unrecognized or too long"
+msgstr "Earráid comhréire - ordaithe neamhaitheanta nó rófhada"
+
+msgid "Syntax error in parameters or arguments"
+msgstr "Earráid chomhréire i bparaiméadair nó argóintí"
+
+msgid "Command not implemented"
+msgstr "Ordú gan chur i bhfeidhm"
+
+msgid "Bad sequence of commands"
+msgstr "Seicheamh droch-ordaithe"
+
+msgid "Command parameter not implemented"
+msgstr "Paraiméadar ordaithe gan chur i bhfeidhm"
+
+msgid "Version not supported (ESMTP)"
+msgstr "Leagan neamhthacaithe (ESMTP)"
+
+msgid "Mailbox path invalid (LMTP)"
+msgstr "Cosán bosca poist neamhbhailí (LMTP)"
+
+msgid "Too many commands in this session (Postfix)"
+msgstr "An iomarca orduithe sa seisiún seo (Postfix)"
+
+msgid "Recipient limit exceeded (Postfix)"
+msgstr "Teorainn faighteoirí sáraithe (Postfix)"
+
+msgid "Sender limit exceeded (Postfix)"
+msgstr "Teorainn seoltóirí sáraithe (Postfix)"
+
+msgid "Domain limit exceeded (Postfix)"
+msgstr "Teorainn fearann sáraithe (Postfix)"
+
+msgid "Mailbox does not exist (Exchange)"
+msgstr "Níl bosca poist ann (Exchange)"
+
+msgid "DNS failure - permanent"
+msgstr "Teip DNS - buan"
+
+msgid "Address type not supported (Postfix)"
+msgstr "Cineál seolta neamhthacaithe (Postfix)"
+
+msgid "Unable to open mailbox (Postfix)"
+msgstr "Níorbh fhéidir bosca poist a oscailt (Postfix)"
+
+msgid "Mailbox locked - permanent"
+msgstr "Bosca poist glasáilte - buan"
+
+msgid "Message rejected due to policy (Exchange)"
+msgstr "Teachtaireacht diúltaithe mar gheall ar bheartas (Exchange)"
+
+msgid "Content rejected - permanent"
+msgstr "Ábhar diúltaithe - buan"
+
+msgid "Attachment type not allowed"
+msgstr "Ní cheadaítear cineál ceangaltáin""
+
+msgid "Message encoding not supported"
+msgstr "Ionchódú teachtaireachta neamhthacaithe"
+
+msgid "Sender domain does not exist - permanent"
+msgstr "Níl fearann seoltóra ann - buan"
+
+msgid "Domain does not accept mail or is closing"
+msgstr "Ní ghlacann fearann le ríomhphost nó tá sé ag dúnadh"
+
+msgid "Recipient domain does not exist - permanent"
+msgstr "Níl fearann faighteora ann - buan"
+
+msgid "Mailbox quota exceeded - permanent"
+msgstr "Cuóta bosca poist sáraithe - buan"
+
+msgid "Message size exceeds limit - permanent"
+msgstr "Sáraíonn méid teachtaireachta an teorainn - buan"
+
+msgid "Authentication required (Sendmail)"
+msgstr "Fíordheimhniú ag teastáil (Sendmail)"
+
+msgid "Authentication failed (Sendmail)"
+msgstr "Theip ar fhíordheimhniú (Sendmail)"
+
+msgid "Authentication mechanism not supported"
+msgstr "Meicníocht fíordheimhnithe neamhthacaithe"
+
+msgid "Authentication credentials invalid"
+msgstr "Créachtais fhíordheimhnithe neamhbhailí"
+
+msgid "Authentication account expired"
+msgstr "Cuntas fíordheimhnithe imithe in éag"
+
+msgid "Access denied - authentication required"
+msgstr "Rochtain diúltaithe - fíordheimhniú ag teastáil"
+
+msgid "Access denied (Sendmailism)"
+msgstr "Rochtain diúltaithe (Sendmailism)"
+
+msgid "Access denied - not authenticated"
+msgstr "Rochtain diúltaithe - neamhfhíordheimhnithe"
+
+msgid "Access denied - account locked"
+msgstr "Rochtain diúltaithe - cuntas glasáilte"
+
+msgid "Access denied - account disabled"
+msgstr "Rochtain diúltaithe - cuntas díchumasaithe"
+
+msgid "Authentication failed"
+msgstr "Theip ar fhíordheimhniú"
+
+msgid "Authentication required for relay (Postfix)"
+msgstr "Fíordheimhniú ag teastáil le haghaidh sealaíochta (Postfix)"
+
+msgid "Authentication failed for relay (Postfix)"
+msgstr "Theip ar fhíordheimhniú le haghaidh sealaíochta (Postfix)"
+
+msgid "Encryption required (STARTTLS)"
+msgstr "Criptiú ag teastáil (STARTTLS)"
+
+msgid "TLS required for this recipient"
+msgstr "TLS ag teastáil don fhaighteoir seo"
+
+msgid "Encryption strength insufficient"
+msgstr "Neart criptithe neamhleor"
+
+msgid "Certificate validation failed"
+msgstr "Theip ar bhailíochtú teastais"
+
+msgid "Invalid TLS certificate"
+msgstr "Teastas TLS neamhbhailí"
+
+msgid "TLS protocol version not supported"
+msgstr "Leagan prótacail TLS neamhthacaithe"
+
+msgid "Cipher suite not supported"
+msgstr "Sraith cipir neamhthacaithe"
+
+msgid "Access denied - no valid recipient"
+msgstr "Rochtain diúltaithe - gan faighteoir bailí"
+
+msgid "Access denied - no valid sender"
+msgstr "Rochtain diúltaithe - gan seoltóir bailí"
+
+msgid "Access denied - domain not allowed"
+msgstr "Rochtain diúltaithe - fearann neamhcheadaithe"
+
+msgid "Access denied - IP address blocked (permanent)"
+msgstr "Rochtain diúltaithe - seoladh IP blocáilte (buan)"
+
+msgid "Access denied - sender domain blacklisted"
+msgstr "Rochtain diúltaithe - fearann seoltóra ar liosta dubh"
+
+msgid "Mailbox unavailable - requested action not taken"
+msgstr "Bosca poist neamh-infhaighte - níor glacadh an gníomh iarrtha"
+
+msgid "User not local - please try forwarding address"
+msgstr "Úsáideoir neamh-áitiúil - bain triail as seoladh cur ar aghaidh le do thoil"
+
+msgid "Requested action aborted - exceeded storage allocation"
+msgstr "Gníomh iarrtha ar ceal - sáraíodh leithdháileadh stórais"
+
+msgid "Mailbox name not allowed"
+msgstr "Ainm bosca poist neamhcheadaithe"
+
+msgid "Requested action rejected - access denied"
+msgstr "Gníomh iarrtha diúltaithe - rochtain diúltaithe"
+
+msgid "MAIL FROM/RCPT TO parameters not recognized"
+msgstr "Paraiméadair MAIL FROM/RCPT TO neamhaitheanta"
+
+msgid "Domain not allowed to send (DMARC reject)"
+msgstr "Fearann neamhcheadaithe a sheoladh (DMARC reject)"
+
+msgid "Too many duplicate messages - permanent"
+msgstr "An iomarca teachtaireachtaí dúblacha - buan"
+
+msgid "Sender address rejected - domain not in SPF"
+msgstr "Seoladh seoltóra diúltaithe - fearann neamh-i-SPF"
+
+msgid "Sender address rejected - DKIM verification failed"
+msgstr "Seoladh seoltóra diúltaithe - theip ar fhíorú DKIM"
+
+msgid "Sender address rejected - DMARC policy reject"
+msgstr "Seoladh seoltóra diúltaithe - diúltaíonn beartas DMARC"
+
+msgid "Recipient address rejected - DMARC policy reject"
+msgstr "Seoladh faighteora diúltaithe - diúltaíonn beartas DMARC"
+
+msgid "Message rejected due to spam content"
+msgstr "Teachtaireacht diúltaithe mar gheall ar ábhar turscair"
+
+msgid "Message rejected due to virus detected"
+msgstr "Teachtaireacht diúltaithe mar gheall ar víreas braite"
+
+msgid "Message rejected due to malicious content"
+msgstr "Teachtaireacht diúltaithe mar gheall ar ábhar mailíseach"
+
+msgid "Message rejected due to phishing detection"
+msgstr "Teachtaireacht diúltaithe mar gheall ar bhrath fioshcearrtha"
+
+msgid "Message rejected due to malware detection"
+msgstr "Teachtaireacht diúltaithe mar gheall ar bhrath malware"
+
+msgid "Message rejected due to policy - permanent"
+msgstr "Teachtaireacht diúltaithe mar gheall ar bheartas - buan"
+
+msgid "Message rejected due to content filtering"
+msgstr "Teachtaireacht diúltaithe mar gheall ar scagadh ábhair"
+
+msgid "Message rejected due to reputation"
+msgstr "Teachtaireacht diúltaithe mar gheall ar cháil"
+
+msgid "Access denied - access_map violation"
+msgstr "Rochtain diúltaithe - sárú access_map"
+
+msgid "Access denied - SMTP client listed in RBL"
+msgstr "Rochtain diúltaithe - cliant SMTP liostaithe i RBL"
+
+msgid "Access denied - relay not authorized"
+msgstr "Rochtain diúltaithe - sealaíocht neamhúdaraithe"
+
+msgid "Access denied - unknown SMTP client hostname"
+msgstr "Rochtain diúltaithe - ainm óstach cliant SMTP anaithnid"
+
+msgid "Access denied - bad syntax for client HELO hostname"
+msgstr "Rochtain diúltaithe - comhréir dona le haghaidh ainm óstach HELO cliant"
+
+msgid "Access denied - SMTP client hostname rejected"
+msgstr "Rochtain diúltaithe - ainm óstach cliant SMTP diúltaithe"
+
+msgid "Access denied - unknown domain for sender or recipient"
+msgstr "Rochtain diúltaithe - fearann anaithnid do sheoltóir nó faighteoir"
+
+msgid "Access denied - unknown client HELO hostname"
+msgstr "Rochtain diúltaithe - ainm óstach HELO cliant anaithnid"
+
+msgid "Access denied - invalid domain (not FQDN)"
+msgstr "Rochtain diúltaithe - fearann neamhbhailí (ní FQDN)"
+
+msgid "Access denied - domain not qualified"
+msgstr "Rochtain diúltaithe - fearann neamhcháilithe"
+
+msgid "Access denied - mail server misconfigured"
+msgstr "Rochtain diúltaithe - freastalaí ríomhphoist mí-chumraithe"
+
+msgid "Access denied - open relay not allowed"
+msgstr "Rochtain diúltaithe - sealaíocht oscailte neamhcheadaithe"
+
+msgid "Access denied - proxy not allowed"
+msgstr "Rochtain diúltaithe - seachfhreastalaí neamhcheadaithe"
+
+msgid "Access denied - dynamic IP not allowed"
+msgstr "Rochtain diúltaithe - IP dinimiciúil neamhcheadaithe"
+
+msgid "Access denied - residential IP not allowed"
+msgstr "Rochtain diúltaithe - IP cónaithe neamhcheadaithe"
+
+msgid "Access denied - VPN/Tor detected"
+msgstr "Rochtain diúltaithe - VPN/Tor braite"
+
+msgid "Access denied - Spamhaus DROP listed"
+msgstr "Rochtain diúltaithe - liostaithe i Spamhaus DROP"
+
+msgid "Access denied - URL listed in URIBL"
+msgstr "Rochtain diúltaithe - URL liostaithe i URIBL"
+
+msgid "Access denied - domain in RHSBL"
+msgstr "Rochtain diúltaithe - fearann i RHSBL"
+
+msgid "Access denied - IP in DNSWL (policy)"
+msgstr "Rochtain diúltaithe - IP i DNSWL (beartas)"
+
+msgid "Delivery failed - mailbox not found"
+msgstr "Theip ar sheachadadh - bosca poist gan aimsiú"
+
+msgid "Delivery failed - recipient not local"
+msgstr "Theip ar sheachadadh - faighteoir neamh-áitiúil"
+
+msgid "Delivery failed - recipient rejected"
+msgstr "Theip ar sheachadadh - faighteoir diúltaithe"
+
+msgid "Delivery failed - sender rejected"
+msgstr "Theip ar sheachadadh - seoltóir diúltaithe"
+
+msgid "Delivery failed - relay rejected"
+msgstr "Theip ar sheachadadh - sealaíocht diúltaithe"
+
+msgid "Delivery failed - DNS permanent error"
+msgstr "Theip ar sheachadadh - earráid bhuan DNS"
+
+msgid "Delivery failed - MX permanent error"
+msgstr "Theip ar sheachadadh - earráid bhuan MX"
+
+msgid "Delivery failed - A record permanent error"
+msgstr "Theip ar sheachadadh - earráid bhuan taifid A"
+
+msgid "Delivery failed - PTR record permanent error"
+msgstr "Theip ar sheachadadh - earráid bhuan taifid PTR"
+
+msgid "Delivery failed - policy permanent error"
+msgstr "Theip ar sheachadadh - earráid bhuan bheartais"
+
+msgid "DSN: Success - delivery status notification"
+msgstr "DSN: Rath - fógra stádais seachadta"
+
+msgid "DSN: Delivery delayed"
+msgstr "DSN: Seachadadh moillithe"
+
+msgid "DSN: Delivery failed - permanent"
+msgstr "DSN: Theip ar sheachadadh - buan"
+
+msgid "DSN: Delivery failed - temporary"
+msgstr "DSN: Theip ar sheachadadh - sealadach"
+
+msgid "DSN: Message expired"
+msgstr "DSN: Teachtaireacht imithe in éag"
+
+msgid "DSN: Message bounced"
+msgstr "DSN: Teachtaireacht preabtha"
+
+msgid "DSN: Message discarded"
+msgstr "DSN: Teachtaireacht scriosta"
+
+msgid "DSN: Message filtered"
+msgstr "DSN: Teachtaireacht scagtha"
+
+msgid "DSN: Message quarantined"
+msgstr "DSN: Teachtaireacht i gcoraintín"
+
+msgid "DSN: Message held for review"
+msgstr "DSN: Teachtaireacht coinnithe le haghaidh athbhreithnithe"
+
+msgid "MTA-STS policy required"
+msgstr "Beartas MTA-STS ag teastáil"
+
+msgid "MTA-STS policy validation failed"
+msgstr "Theip ar bhailíochtú beartas MTA-STS"
+
+msgid "TLS reporting required"
+msgstr "Tuairisciú TLS ag teastáil"
+
+msgid "TLS report requested"
+msgstr "Tuairisc TLS iarrtha"
+
+msgid "SMTP MTA Strict Transport Security active"
+msgstr "Slándáil Iompair Dhian MTA SMTP gníomhach"
+
+msgid "DANE validation required"
+msgstr "Fíorú DANE ag teastáil"
+
+msgid "DANE validation failed"
+msgstr "Theip ar fhíorú DANE"
+
+msgid "TLSA record missing"
+msgstr "Taifead TLSA ar iarraidh"
+
+msgid "Certificate name mismatch"
+msgstr "Ainm teastais neamhréireach"
+
+msgid "Certificate expired"
+msgstr "Teastas imithe in éag"
+
+msgid "AUTH LOGIN required"
+msgstr "AUTH LOGIN ag teastáil"
+
+msgid "AUTH PLAIN required"
+msgstr "AUTH PLAIN ag teastáil"
+
+msgid "AUTH CRAM-MD5 required"
+msgstr "AUTH CRAM-MD5 ag teastáil"
+
+msgid "AUTH DIGEST-MD5 required"
+msgstr "AUTH DIGEST-MD5 ag teastáil"
+
+msgid "AUTH GSSAPI required"
+msgstr "AUTH GSSAPI ag teastáil"
+
+msgid "AUTH NTLM required"
+msgstr "AUTH NTLM ag teastáil"
+
+msgid "AUTH SCRAM required"
+msgstr "AUTH SCRAM ag teastáil"
+
+msgid "AUTH OAUTHBEARER required"
+msgstr "AUTH OAUTHBEARER ag teastáil"
+
+msgid "AUTH XOAUTH2 required"
+msgstr "AUTH XOAUTH2 ag teastáil"
+
+msgid "Exchange: Mailbox database error"
+msgstr "Exchange: Earráid bhunachar sonraí bosca poist"
+
+msgid "Exchange: Store driver error"
+msgstr "Exchange: Earráid tiománaí stórais"
+
+msgid "Exchange: Transport agent error"
+msgstr "Exchange: Earráid gníomhaire iompair"
+
+msgid "Exchange: Content conversion error"
+msgstr "Exchange: Earráid tiontaithe ábhair"
+
+msgid "Exchange: Routing error"
+msgstr "Exchange: Earráid ródaithe"
+
+msgid "Exchange: Mail flow stalled"
+msgstr "Exchange: Sreabhadh ríomhphoist stoptha"
+
+msgid "Exchange: Shadow redundancy error"
+msgstr "Exchange: Earráid iomarcaíochta scátha"
+
+msgid "Exchange: Safety net error"
+msgstr "Exchange: Earráid líon sábháilteachta"
+
+msgid "Exchange: Queue database error"
+msgstr "Exchange: Earráid bhunachar sonraí scuaine"
+
+msgid "Exchange: Message throttled"
+msgstr "Exchange: Teachtaireacht srianta"
+
+msgid "Postfix: Bounce queue error"
+msgstr "Postfix: Earráid scuaine preabtha"
+
+msgid "Postfix: Deferred queue error"
+msgstr "Postfix: Earráid scuaine iarchurtha"
+
+msgid "Postfix: Hold queue error"
+msgstr "Postfix: Earráid scuaine choinneála"
+
+msgid "Postfix: Incoming queue error"
+msgstr "Postfix: Earráid scuaine isteach"
+
+msgid "Postfix: Active queue error"
+msgstr "Postfix: Earráid scuaine ghníomhach"
+
+msgid "Postfix: Corrupted queue file"
+msgstr "Postfix: Comhad scuaine truaillithe"
+
+msgid "Sendmail: Queue runner error"
+msgstr "Sendmail: Earráid rithire scuaine"
+
+msgid "Sendmail: Alias database error"
+msgstr "Sendmail: Earráid bhunachar sonraí ailias"
+
+msgid "Sendmail: Virtuser table error"
+msgstr "Sendmail: Earráid tábla úsáideora fhíorúil"
+
+msgid "Sendmail: Mailer definition error"
+msgstr "Sendmail: Earráid sainmhínithe seoltóra"
+
+msgid "Exim: Router configuration error"
+msgstr "Exim: Earráid chumraíochta ródaire"
+
+msgid "Exim: Transport configuration error"
+msgstr "Exim: Earráid chumraíochta iompair"
+
+msgid "Exim: Director configuration error"
+msgstr "Exim: Earráid chumraíochta stiúrthóra"
+
+msgid "Exim: Retry configuration error"
+msgstr "Exim: Earráid chumraíochta atriail"
+
+msgid "Exim: Rewrite configuration error"
+msgstr "Exim: Earráid chumraíochta athscríofa"
+
+msgid "Exim: Authentication configuration error"
+msgstr "Exim: Earráid chumraíochta fíordheimhnithe"
+
+msgid "Exim: ACL configuration error"
+msgstr "Exim: Earráid chumraíochta ACL"
+
+msgid "Exim: Local_scan configuration error"
+msgstr "Exim: Earráid chumraíochta Local_scan"
+
+msgid "Exim: Lookup configuration error"
+msgstr "Exim: Earráid chumraíochta cuardaigh"
+
+msgid "Exim: Expansion configuration error"
+msgstr "Exim: Earráid chumraíochta fairsingithe"
+
+msgid "HTTP Protocol Versions"
+msgstr "Leaganacha prótacail HTTP"
+
+msgid "Protocol"
+msgstr "Prótacal"
+
+msgid "Request %"
+msgstr "Céatadán iarrataí"
+
+msgid "Bandwidth %"
+msgstr "Céatadán leithead banda"
+
+msgid "Each request requires a new connection"
+msgstr "Teastaíonn nasc nua le gach iarratas"
+
+msgid "Multiple requests can reuse one connection"
+msgstr "Is féidir le hiarratais iolracha nasc amháin a athúsáid"
+
+msgid "Multiple requests in parallel over one connection"
+msgstr "Iarratais iolracha i gcomhthreo thar nasc amháin"
+
+msgid "Faster connection, better performance on poor networks"
+msgstr "Nasc níos tapúla, feidhmíocht níos fearr ar líonraí lag"
+
+msgid "No protocol data available"
+msgstr "Gan sonraí prótacail ar fáil"
+
+msgid "of requests use HTTP/1.0"
+msgstr "d'iarrataí a úsáideann HTTP/1.0"
+
+msgid "From access logs"
+msgstr "Ó logaí rochtana"
+
+msgid "No HTTP/2 requests detected"
+msgstr "Níor braitheadh aon iarratas HTTP/2"
+
+msgid "All requests are HTTP/1.0, no HTTP/2 requests"
+msgstr "Is iarratais HTTP/1.0 iad na hiarratais go léir, gan aon iarratas HTTP/2"
+
+msgid "HTTP/3 not detected"
+msgstr "HTTP/3 gan bhrath"
+
+msgid "all requests do not include QUIC/HTTP/3 protocol requests"
+msgstr "ní chuimsíonn na hiarratais go léir iarratais prótacail QUIC/HTTP/3"
+
+msgid "Mail Authentication Statistics"
+msgstr "Staitisticí Fíordheimhnithe Ríomhphoist"
+
+msgid "Authentication"
+msgstr "Cineál fíordheimhnithe"
+
+msgid "Pass"
+msgstr "Ceadaithe"
+
+msgid "Fail"
+msgstr "Theip"
+
+msgid "Softfail"
+msgstr "Teip bhog"
+
+msgid "Neutral"
+msgstr "Neodrach"
+
+msgid "None"
+msgstr "Ar bith"
+
+msgid "Mail Queue Delay Statistics"
+msgstr "Staitisticí Moille Scuaine Ríomhphoist"
+
+msgid "Delay Range"
+msgstr "Raon moille"
+
+msgid "Count"
+msgstr "Líon"
+
+msgid "Percentage"
+msgstr "Céatadán"
+
+msgid "TLS Encryption Statistics"
+msgstr "Staitisticí Criptithe TLS"
+
+msgid "TLS Versions"
+msgstr "Leaganacha TLS"
+
+msgid "Top Ciphers"
+msgstr "Sraitheanna cipir is mó úsáid"
+
+msgid "robot_hits_detail_both"
+msgstr "Iarratais iomlána: %s uair (gnáthleathanaigh: %s uair, robots.txt: %s uair)"
+
+msgid "robot_hits_detail_only_robots"
+msgstr "Níor rochtain ach robots.txt: %s uair, níor bhailigh leathanaigh eile"
+
+msgid "robot_hits_detail_normal"
+msgstr "Iarratais ar ghnáthleathanaigh: %s uair"
+
+msgid "Troubleshooting"
+msgstr "Fabhtcheartú"
+
+msgid "Did you use the correct URL?"
+msgstr "Ar úsáid tú an URL ceart?"
+
+msgid "Example:"
+msgstr "Sampla:"
+
+msgid "Did you use correct config parameter?"
+msgstr "Ar úsáid tú an paraiméadar cumraíochta ceart?"
+
+msgid "Example: If your config file is awstats.mysite.conf, use -config=mysite"
+msgstr "Sampla: Más é awstats.mysite.conf ainm do chomhad cumraíochta, úsáid -config=mysite"
+
+msgid "Did you create your config file 'awstats.$SiteConfig.conf'?"
+msgstr "Ar chruthaigh tú an comhad cumraíochta 'awstats.$SiteConfig.conf'?"
+
+msgid "If not, you can run \"awstats_configure.pl\" from command line, or create it manually."
+msgstr "Más rud é nach bhfuil, is féidir leat \"awstats_configure.pl\" a rith ón líne ordaithe, nó é a chruthú de láimh."
+
+msgid "Setup"
+msgstr "Socrú"
+
+msgid "file, web server or permissions may be wrong."
+msgstr "d'fhéadfadh an comhad, an freastalaí gréasáin nó na ceadanna a bheith mícheart."
+
+msgid "Check config file, permissions and AWStats documentation (in 'docs' directory)."
+msgstr "Seiceáil an comhad cumraíochta, na ceadanna agus doiciméadú AWStats (san eolaire 'docs')."
+
+msgid "Warning: Can't find language files for \"%s\". English will be used."
+msgstr "Rabhadh: Ní féidir comhaid teanga a aimsiú do \"%s\". Úsáidfear Béarla."
+
+msgid "%s process (ID %s) interrupted by signal %s."
+msgstr "Cuireadh isteach ar phróiseas %s (ID %s) ag comhartha %s."
+
+msgid "An AWStats update process seems to be already running for this config file. Try later. If this is not true, remove manually lock file"
+msgstr "Is cosúil go bhfuil próiseas nuashonraithe AWStats ag rith cheana féin don comhad cumraíochta seo. Bain triail eile as níos déanaí. Mura fíor é seo, bain an comhad glasála de láimh"
+
+msgid "Report Overview"
+msgstr "Forbhreathnú ar an Tuarascáil"
+
+msgid "Monthly Statistics"
+msgstr "Staitisticí Míosúla"
+
+msgid "Daily Statistics"
+msgstr "Staitisticí Laethúla"
+
+msgid "Statistics by Day of Week"
+msgstr "Staitisticí de réir Lae na Seachtaine"
+
+msgid "Hourly Page Views"
+msgstr "Amharcanna Leathanaigh in aghaidh na hUaire"
+
+msgid "Traffic Sources"
+msgstr "Foinsí Tráchta"
+
+msgid "Other Sources"
+msgstr "Foinsí Eile"
+
+msgid "tooltip_1"
+msgstr "Líon seisiún an chuairteora ar an suíomh. Má fhanann an cuairteoir céanna neamhghníomhach ar feadh níos mó ná 30 nóiméad agus má thagann sé ar ais, áireofar é mar chuairt nua"
+
+msgid "tooltip_2"
+msgstr "Líon na gcuairteoirí éagsúla a rochtain do shuíomh sa tréimhse roghnaithe. Bunaithe ar an seoladh IP"
+
+msgid "tooltip_3"
+msgstr "Líon na n-iarratas a mheastar a bheith ina leathanaigh (cosúil le HTML, PHP, ASP, srl.), gan comhaid statacha cosúil le híomhánna, CSS, JS a áireamh"
+
+msgid "tooltip_4"
+msgstr "Líon iomlán na n-iarratas go léir ar an bhfreastalaí, lena n-áirítear leathanaigh, íomhánna, CSS, JS agus gach comhad eile"
+
+msgid "tooltip_5"
+msgstr "Cainníocht iomlán na sonraí a aistríonn an freastalaí agus é ag freagairt d'iarratais na n-úsáideoirí"
+
+msgid "tooltip_13"
+msgstr "Staitisticí ar fhoinsí a rochtain do shuíomh trí innill chuardaigh. Taispeánann sé cinn innill chuardaigh a thugann trácht duit agus na téarmaí cuardaigh a úsáideann na cuairteoirí."
+
+msgid "tooltip_14"
+msgstr "Staitisticí ar fhoinsí a rochtain do shuíomh trí naisc sheachtracha ó shuíomhanna eile. Taispeánann sé cinn suíomhanna a bhfuil naisc acu le do shuíomh agus an trácht a thugann siad."
+
+msgid "tooltip_15"
+msgstr "Téarmaí cuardaigh a d'úsáid cuairteoirí chun do shuíomh a fháil trí innill chuardaigh. Is téarmaí aonair iad eochairfhocail, is teaglamaí d'fhocail iolracha iad cumasc eochairfhocail."
+
+msgid "tooltip_16"
+msgstr "Róbónna inneall cuardaigh, róbónna oiliúna AI, scanóirí leochaileachtaí agus cláir uathoibrithe eile. Léiríonn na huimhreacha idir lúibíní iarratais ghnáthleathanaigh agus iarratais robots.txt."
+
+msgid "tooltip_17"
+msgstr "Dáileadh tráchta thar 24 uair. Taispeánann sé patrúin rochtana do shuíomh thar uaireanta an lae, ag cuidiú le tréimhsí gníomhaíochta na n-úsáideoirí a thuiscint."
+
+msgid "tooltip_18"
+msgstr "Taispeánann an colún seo an mheán laethúil/seachtainiúil sa tréimhse roghnaithe, ag cuidiú le treocht ghinearálta a thuiscint."
+
+msgid "tooltip_19"
+msgstr "Cliceáil ar mhíreanna sa ghraf chun faisnéis mhionsonraithe a fheiceáil. Bog an luch thar eilimintí an ghraif chun luachanna sonracha a fheiceáil."
+
+msgid "tooltip_20"
+msgstr "Sonraí nach féidir a rangú i gcatagóirí atá ann cheana, de ghnáth mar gheall ar fhormáid neamhghnách nó sonraí in easnamh."
+
+msgid "tooltip_21"
+msgstr "Taifid ar ionsaithe péisteanna braite. Is cláir mhailíseacha iad péisteanna a scaipeann go huathoibríoch, de ghnáth trí leochaileachtaí líonra."
+
+msgid "AWStats %s - Advanced Web Statistics"
+msgstr "AWStats %s - Staitisticí Casta Gréasáin"
+
+msgid "Copyright (c) 2000-2025 Laurent Destailleur"
+msgstr "Cóipcheart (c) 2000-2025 Laurent Destailleur"
+
+msgid "Copyright (c) 2026-latest Community Edition"
+msgstr "Cóipcheart (c) 2026-is déanaí Eagrán Pobail"
+
+msgid "AWStats comes with ABSOLUTELY NO WARRANTY. It's a free software distributed with a GNU General Public License (See LICENSE file for details)."
+msgstr "Tagann AWStats GAN AON BHARÁNTAS GO HUILÍOCH. Is bogearraí saor in aisce é a dháiltear le Ceadúnas Ginearálta Poiblí GNU (Féach comhad LICENSE le haghaidh sonraí)."
+
+msgid "Syntax: %s -config=virtualhostname [options]"
+msgstr "Comhréir: %s -config=ainm_óstach_fhíorúil [roghanna]"
+
+msgid "This runs %s in command line to update statistics (-update option) of a web site, from the log file defined in AWStats config file, or build a HTML report (-output option)."
+msgstr "Ritheann sé seo %s ar líne ordaithe chun staitisticí suímh ghréasáin a nuashonrú (rogha -update), ón gcomhad loga atá sainithe i gcomhad cumraíochta AWStats, nó chun tuarascáil HTML a thógáil (rogha -output)."
+
+msgid "First, %s tries to read %s.virtualhostname.conf as the config file. If not found, %s tries to read %s.conf, and finally the full path passed to -config="
+msgstr "Ar dtús, déanann %s iarracht %s.ainm_óstach_fhíorúil.conf a léamh mar chomhad cumraíochta. Mura bhfaightear é, déanann %s iarracht %s.conf a léamh, agus ar deireadh an cosán iomlán a cuireadh ar aghaidh chuig -config="
+
+msgid "Note 1: Config files (*.conf) must be in /etc/awstats, /usr/local/etc/awstats, /etc or same directory than awstats.pl script file."
+msgstr "Nóta 1: Ní mór do chomhaid chumraíochta (*.conf) a bheith in /etc/awstats, /usr/local/etc/awstats, /etc nó san eolaire céanna le comhad scripte awstats.pl."
+
+msgid "Note 2: If AWSTATS_FORCE_CONFIG environment variable is defined, AWStats will use it as the 'config' value, whatever is the value on command line or URL."
+msgstr "Nóta 2: Má shainmhínítear athróg timpeallachta AWSTATS_FORCE_CONFIG, úsáidfidh AWStats é mar luach 'config', is cuma cén luach atá ar líne ordaithe nó URL."
+
+msgid "See AWStats documentation for all setup instructions."
+msgstr "Féach ar dhoiciméadú AWStats le haghaidh gach treoir socraithe."
+
+msgid "Options to update statistics:"
+msgstr "Roghanna chun staitisticí a nuashonrú:"
+
+msgid "  -update        to update statistics (default)"
+msgstr "  -update        staitisticí a nuashonrú (réamhshocrú)"
+
+msgid "  -showsteps     to add benchmark information every %s lines processed"
+msgstr "  -showsteps     faisnéis tagarmhairc a chur leis gach %s líne a phróiseáiltear"
+
+msgid "  -showcorrupted to add output for each corrupted lines found, with reason"
+msgstr "  -showcorrupted aschur a chur leis do gach líne thruaillithe a aimsítear, le cúis"
+
+msgid "  -showdropped   to add output for each dropped lines found, with reason"
+msgstr "  -showdropped   aschur a chur leis do gach líne scriosta a aimsítear, le cúis"
+
+msgid "  -showunknownorigin  to output referer when it can't be parsed"
+msgstr "  -showunknownorigin  an tagarthóir a aschur nuair nach féidir é a pharsáil"
+
+msgid "  -showdirectorigin   to output log line when origin is a direct access"
+msgstr "  -showdirectorigin   an líne loga a aschur nuair is rochtain dhíreach é an bunús"
+
+msgid "  -updatefor=n   to stop the update process after parsing n lines"
+msgstr "  -updatefor=n   stop a chur leis an bpróiseas nuashonraithe tar éis n líne a pharsáil"
+
+msgid "  -LogFile=x     to change log to analyze whatever is 'LogFile' in config file"
+msgstr "  -LogFile=x     an loga le hanailísiú a athrú, is cuma cad é 'LogFile' sa chomhad cumraíochta"
+
+msgid "  Be care to process log files in chronological order when updating statistics."
+msgstr "  Bí cúramach agus comhaid loga á bpróiseáil in ord croineolaíoch agus staitisticí á nuashonrú."
+
+msgid "Options to show statistics:"
+msgstr "Roghanna chun staitisticí a thaispeáint:"
+
+msgid "  -output      to output main HTML report (no update made except with -update)"
+msgstr "  -output      príomhthuarascáil HTML a aschur (gan aon nuashonrú déanta ach amháin le -update)"
+
+msgid "  -output=x    to output other report pages where x is:"
+msgstr "  -output=x    leathanaigh tuarascála eile a aschur nuair is é x:"
+
+msgid "build page of all domains/countries"
+msgstr "leathanach de gach fearann/tír a thógáil"
+
+msgid "build page of all hosts"
+msgstr "leathanach de gach óstach a thógáil"
+
+msgid "build page of last hits for hosts"
+msgstr "leathanach de na hiontrálacha deiridh d'óstach a thógáil"
+
+msgid "build page of all unresolved IP"
+msgstr "leathanach de gach IP neamhréiteach a thógáil"
+
+msgid "build page of all email senders (maillog)"
+msgstr "leathanach de gach seoltóir ríomhphoist a thógáil (loga ríomhphoist)"
+
+msgid "build page of last email senders (maillog)"
+msgstr "leathanach de na seoltóirí ríomhphoist deiridh a thógáil (loga ríomhphoist)"
+
+msgid "build page of all email receivers (maillog)"
+msgstr "leathanach de gach faighteoir ríomhphoist a thógáil (loga ríomhphoist)"
+
+msgid "build page of last email receivers (maillog)"
+msgstr "leathanach de na faighteoirí ríomhphoist deiridh a thógáil (loga ríomhphoist)"
+
+msgid "build page of all logins used"
+msgstr "leathanach de gach logáil isteach a úsáideadh a thógáil"
+
+msgid "build page of last hits for logins"
+msgstr "leathanach de na hiontrálacha deiridh de réir logáil isteach a thógáil"
+
+msgid "build page of all robots/spider visits"
+msgstr "leathanach de gach cuairt róbónna/ damháin alla a thógáil"
+
+msgid "build page of last hits for robots"
+msgstr "leathanach de na hiontrálacha deiridh de róbónna a thógáil"
+
+msgid "list most often viewed pages"
+msgstr "liosta de na leathanaigh is minice a bhreathnaítear orthu"
+
+msgid "list most often viewed pages matching filter"
+msgstr "liosta de na leathanaigh is minice a bhreathnaítear orthu a mheaitseálann an scagaire"
+
+msgid "list entry pages"
+msgstr "liosta de leathanaigh iontrála"
+
+msgid "list entry pages matching filter"
+msgstr "liosta de leathanaigh iontrála a mheaitseálann an scagaire"
+
+msgid "list exit pages"
+msgstr "liosta de leathanaigh scoir"
+
+msgid "list exit pages matching filter"
+msgstr "liosta de leathanaigh scoir a mheaitseálann an scagaire"
+
+msgid "build page with os detailed versions"
+msgstr "leathanach a thógáil le leaganacha mionsonraithe OS"
+
+msgid "build page with browsers detailed versions"
+msgstr "leathanach a thógáil le leaganacha mionsonraithe brabhsálaithe"
+
+msgid "list 'User Agents' with unknown browser"
+msgstr "liosta 'Gníomhairí Úsáideora' le brabhsálaí anaithnid"
+
+msgid "list 'User Agents' with unknown OS"
+msgstr "liosta 'Gníomhairí Úsáideora' le OS anaithnid"
+
+msgid "build page of all refering search engines"
+msgstr "leathanach de gach inneall cuardaigh foinse a thógáil"
+
+msgid "build page of all refering pages"
+msgstr "leathanach de gach leathanach foinse a thógáil"
+
+msgid "list all keyphrases used on search engines"
+msgstr "liosta de gach cumasc eochairfhocal a úsáidtear ar innill chuardaigh"
+
+msgid "list all keywords used on search engines"
+msgstr "liosta de gach eochairfhocal a úsáidtear ar innill chuardaigh"
+
+msgid "list 'Referers' for 404 errors"
+msgstr "liosta 'Tagarthóirí' le haghaidh earráidí 404"
+
+msgid "build page of all values for ExtraSection X"
+msgstr "leathanach de gach luach do Rannóg Bhreise X a thógáil"
+
+msgid "  -staticlinks           to have static links in HTML report page"
+msgstr "  -staticlinks           naisc statacha a bheith ar leathanach tuarascála HTML"
+
+msgid "  -staticlinksext=xxx    to have static links with .xxx extension instead of .html"
+msgstr "  -staticlinksext=xxx    naisc statacha a bheith le síneadh .xxx in ionad .html"
+
+msgid "  -lang=LL     to output a HTML report in language LL (en,de,es,fr,it,nl,zh-cn,...)"
+msgstr "  -lang=LL     tuarascáil HTML a aschur i dteanga LL (ga,en,de,es,fr,it,nl,zh-cn,...)"
+
+msgid "  -month=MM    to output a HTML report for an old month MM"
+msgstr "  -month=MM    tuarascáil HTML do mhí shean MM a aschur"
+
+msgid "  -year=YYYY   to output a HTML report for an old year YYYY"
+msgstr "  -year=YYYY   tuarascáil HTML do bhliain shean YYYY a aschur"
+
+msgid "  The 'date' options doesn't allow you to process old log file. They only allow you to see a past report for a chosen month/year period instead of current month/year."
+msgstr "  Ní cheadaíonn na roghanna 'dáta' duit comhad loga sean a phróiseáil. Ní cheadaíonn siad duit ach tuarascáil a fheiceáil do thréimhse mhí/bhliain roghnaithe in ionad na míosa/bliana reatha."
+
+msgid "Other options:"
+msgstr "Roghanna eile:"
+
+msgid "  -debug=X     to add debug informations lesser than level X (speed reduced)"
+msgstr "  -debug=X     faisnéis dífhabhtaithe níos lú ná leibhéal X a chur leis (luas laghdaithe)"
+
+msgid "  -version     show AWStats version"
+msgstr "  -version, -v    leagan AWStats a thaispeáint"
+
+msgid "Now supports/detects:"
+msgstr "Tacaíonn/braitheann sé anois le:"
+
+msgid "  Web/Ftp/Mail/streaming server log analyzis (and load balanced log files)"
+msgstr "  Anailís loga freastalaí Gréasáin/FTP/Ríomhphoist/stríomhaireachta (agus comhaid loga chothromaithe ualaigh)"
+
+msgid "  Reverse DNS lookup (IPv4 and IPv6) and GeoIP lookup"
+msgstr "  Cuardach DNS droim ar ais (IPv4 agus IPv6) agus cuardach GeoIP"
+
+msgid "  Number of visits, number of unique visitors"
+msgstr "  Líon na gcuairteanna, líon na gcuairteoirí uathúla"
+
+msgid "  Visits duration and list of last visits"
+msgstr "  Fad na gcuairteanna agus liosta na gcuairteanna deiridh"
+
+msgid "  Authenticated users"
+msgstr "  Úsáideoirí fíordheimhnithe"
+
+msgid "  Days of week and rush hours"
+msgstr "  Laethanta na seachtaine agus uaireanta brostaithe"
+
+msgid "  Hosts list and unresolved IP addresses list"
+msgstr "  Liosta óstach agus liosta seoltaí IP neamhréitigh"
+
+msgid "  Most viewed, entry and exit pages"
+msgstr "  Leathanaigh is mó a bhreathnaítear orthu, iontrála agus scoir"
+
+msgid "  Files type and Web compression (mod_gzip, mod_deflate stats)"
+msgstr "  Cineál comhad agus comhbhrú Gréasáin (staitisticí mod_gzip, mod_deflate)"
+
+msgid "  Configured Database Statistics"
+msgstr "  Staitisticí Bunachar Sonraí Cumraithe"
+
+msgid "  %s domains/countries"
+msgstr "  %s fearainn/tíortha"
+
+msgid "  %s robots"
+msgstr "  %s róbónna"
+
+msgid "  %s worm's families"
+msgstr "  %s teaghlaigh péisteanna"
+
+msgid "  %s operating systems"
+msgstr "  %s córas oibriúcháin"
+
+msgid "  %s browsers (%s with phone browsers database)"
+msgstr "  %s brabhsálaithe (%s le bunachar sonraí brabhsálaithe fóin)"
+
+msgid "  %s search engines (and keyphrases/keywords used from them)"
+msgstr "  %s innill chuardaigh (agus cumasc eochairfhocal/eochairfhocail a úsáidtear uathu)"
+
+msgid "  All HTTP errors with last referrer"
+msgstr "  Gach earráid HTTP le tagarthóir deireanach"
+
+msgid "  Report by day/month/year"
+msgstr "  Tuarascáil de réir lá/mí/bhliain"
+
+msgid "  Dynamic or static HTML or XHTML reports, static PDF reports"
+msgstr "  Tuarascálacha HTML nó XHTML dinimiciúla nó statacha, tuarascálacha PDF statacha"
+
+msgid "  Indexed text or XML monthly database"
+msgstr "  Bunachar sonraí míosúil i dtéacs innéacsaithe nó XML"
+
+msgid "  And a lot of other advanced features and options..."
+msgstr "  Agus a lán gnéithe agus roghanna casta eile..."
+
+msgid "  New versions and FAQ at http://www.awstats.org"
+msgstr "  Leaganacha nua agus Ceisteanna Coitianta ag https://github.com/hestiacn/vstats/issues"
