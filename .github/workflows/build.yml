@@ -709,11 +709,23 @@ jobs:
           }
         shell: pwsh
 
+      - name: 生成 exe 校验和文件
+        run: |
+          cd make
+          $hash = (Get-FileHash "awstats-8.1.exe" -Algorithm SHA256).Hash.ToLower()
+          "$hash  awstats-8.1.exe" | Out-File -FilePath SHA256SUMS.txt -Encoding ascii
+          Write-Host "✅ 已生成 SHA256SUMS.txt"
+        shell: pwsh
+
       - name: 上传安装包
         uses: actions/upload-artifact@v7
         with:
-          name: awstats-windows-installer
-          path: make/awstats-8.1.exe
+          name: windows-packages
+          path: |
+            make/*.exe
+            make/SHA256SUMS.txt
+          if-no-files-found: warn
+          retention-days: 1
 
   release:
     name: 发布所有包
@@ -725,6 +737,34 @@ jobs:
       uses: actions/download-artifact@v8
       with:
         path: releases
+    - name: 合并校验和
+      run: |
+        echo "=== 合并校验和文件 ==="
+        # 复制 Linux 的校验和（4个包）
+        if [ -f "releases/unix-packages/SHA256SUMS.txt" ]; then
+          cp releases/unix-packages/SHA256SUMS.txt SHA256SUMS.txt
+          echo "✅ 已添加 Linux 包校验和"
+        else
+          echo "⚠️ Linux 校验和文件不存在"
+          > SHA256SUMS.txt
+        fi
+        
+        # 追加 Windows 的校验和（exe）
+        if [ -f "releases/windows-packages/SHA256SUMS.txt" ]; then
+          cat releases/windows-packages/SHA256SUMS.txt >> SHA256SUMS.txt
+          echo "✅ 已添加 Windows 包校验和"
+        else
+          echo "⚠️ Windows 校验和文件不存在"
+        fi
+        
+        # 排序去重
+        sort -u SHA256SUMS.txt -o SHA256SUMS.txt
+        
+        echo ""
+        echo "=== 最终校验和 ==="
+        cat SHA256SUMS.txt
+        echo ""
+        echo "✅ 校验和行数: $(wc -l < SHA256SUMS.txt)"
     
     - name: 检查下载的文件
       run: |
@@ -776,23 +816,7 @@ jobs:
         | 格式 | 状态 | 文件 | 大小 |
         |------|------|------|------|
         EOF
-        
-        # TGZ
-        if [ -f "final/awstats-${{ steps.version.outputs.version }}.tar.gz" ]; then
-          SIZE=$(du -h "final/awstats-${{ steps.version.outputs.version }}.tar.gz" | cut -f1)
-          echo "| TGZ | ✅ 成功 | \`awstats-${{ steps.version.outputs.version }}.tar.gz\` | $SIZE |" >> BUILD_REPORT.md
-        else
-          echo "| TGZ | ❌ 失败 | - | - |" >> BUILD_REPORT.md
-        fi
-        
-        # ZIP
-        if [ -f "final/awstats-${{ steps.version.outputs.version }}.zip" ]; then
-          SIZE=$(du -h "final/awstats-${{ steps.version.outputs.version }}.zip" | cut -f1)
-          echo "| ZIP | ✅ 成功 | \`awstats-${{ steps.version.outputs.version }}.zip\` | $SIZE |" >> BUILD_REPORT.md
-        else
-          echo "| ZIP | ❌ 失败 | - | - |" >> BUILD_REPORT.md
-        fi
-        
+
         # RPM
         RPM_FOUND=0
         for file in final/*.rpm; do
