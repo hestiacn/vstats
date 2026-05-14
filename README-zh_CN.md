@@ -180,16 +180,26 @@ perl /usr/share/awstats/tools/awstats_convert-zh.pl --help
 
 #### HestiaCP 用户（推荐）
 
-HestiaCP 已自带 AWStats，只需更新安装 deb 包。
+> **注意**：本脚本仅适配 HestiaCP 面板。如果您使用其他控制面板或没有面板管理，请参考脚本中的 `build_awstats()` 函数，根据实际环境自行调整。
 
-支持官方 [Debian](https://github.com/hestiacp/hestiacp) 和爱好者 [RHEL](https://github.com/bayrepo/hestiacp-rpm)
+HestiaCP 已自带 AWStats，更新安装打包好的 `deb` 和 `rpm` 程序即可体验全新社区版本。
 
-**您需要调整的文件**：
-- 模板文件：`/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
-- 域名配置：`/etc/awstats/` 目录下
-- 更新脚本：`/usr/local/hestia/bin/v-update-web-domain-stat`
-- 参考脚本模板：[v-update-web-domain-stat](/make//make/test/awstats/conf/v-update-web-domain-stat)
-- 参考配置模板：[awstats.tpl](/make//make/test/awstats/conf/awstats.tpl)
+**支持发行版**：
+- 官方支持：[Debian/Ubuntu](https://github.com/hestiacp/hestiacp)
+- 社区支持：[RHEL/CentOS/Alma/Rocky](https://github.com/bayrepo/hestiacp-rpm)
+
+**需要手动调整的文件**：
+
+| 文件类型 | 路径 | 参考示例 |
+|:---:|:---:|:---:|
+| 模板文件 | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| 域名配置目录 | `/etc/awstats/` | - |
+| 更新脚本 (Debian/Ubuntu 及其衍生版) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
+| 更新脚本 (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+
+> 📌 **说明**：Debian 和 RHEL 系列的脚本相关程序代码不同，请根据您的操作系统选择对应的参考示例进行修改。
+
+> 💡 **提示**：修改脚本后，如遇到权限问题，请执行 `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`
 
 #### 下载并安装
 
@@ -357,5 +367,7 @@ awstats -h
 - DB-IP 数据库：[https://db-ip.com](https://db-ip.com)
 
 ---
-
+<!--
+## © 1997-2025 Laurent Destailleur | 2026-{{YEAR}} 社区版持续维护中
+-->
 ## © 1997-2026 AWStats 团队 | 社区版持续维护中

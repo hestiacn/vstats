@@ -41,6 +41,7 @@ binmode STDERR, ':utf8';
 our %LangHash;
 our %translate_map;
 our $BrandPlatform;
+our $SiteConfig;
 our ($REVISION, $VERSION);
 our $UseDefaultNotPageList = 0;
 our $EnableLocaldatePlugin = 1;
@@ -1702,6 +1703,15 @@ sub html_head {
 			my $nav_hooks = _t("nav_hooks");
 			my $nav_graphs = _t("nav_graphs");
 			my $back_to_top_text = _t("Back to top");
+			my ($sec, $min, $hour, $mday, $mon, $year_num, $wday, $yday, $isdst) = localtime(time);
+			my $year = $year_num + 1900;
+			my $month = sprintf("%02d", $mon + 1);
+			if (!$SiteConfig) {
+				$SiteConfig = $ENV{'HTTP_HOST'} || $ENV{'SERVER_NAME'} || 'default';
+				$SiteConfig =~ s/:\d+$//;
+			}
+			Read_Config();
+			my $target = "/cgi-bin/awstats.pl?config=$SiteConfig&framename=mainright&year=$year&month=$month";
 
 print <<"END_BUTTON";
 <div class="header-right">
@@ -1709,45 +1719,45 @@ print <<"END_BUTTON";
         <div class="dropdown-item">
             <div class="dropdown-title">📌 $nav_category_basic</div>
             <div class="dropdown-content">
-                <a href="$StatsUrl/docs/awstats_changelog.html" target="doc-frame">$nav_changelog</a>
-                <a href="$StatsUrl/docs/awstats_what.khtml" target="doc-frame">$nav_what</a>
-                <a href="$StatsUrl/docs/awstats_license.html" target="doc-frame">$nav_license</a>
-                <a href="$StatsUrl/docs/awstats_glossary.html" target="doc-frame">$nav_glossary</a>
+                <a href="$target&doc=changelog" target="doc-frame">$nav_changelog</a>
+                <a href="$target&doc=what" target="doc-frame">$nav_what</a>
+                <a href="$target&doc=license" target="doc-frame">$nav_license</a>
+                <a href="$target&doc=glossary" target="doc-frame">$nav_glossary</a>
             </div>
         </div>
         <div class="dropdown-item">
             <div class="dropdown-title">📘 $nav_category_guide</div>
             <div class="dropdown-content">
-                <a href="$StatsUrl/docs/awstats_setup.html" target="doc-frame">$nav_setup</a>
-                <a href="$StatsUrl/docs/awstats_upgrade.html" target="doc-frame">$nav_upgrade</a>
-                <a href="$StatsUrl/docs/awstats_config.html" target="doc-frame">$nav_config</a>
-                <a href="$StatsUrl/docs/awstats_extra.html" target="doc-frame">$nav_extra</a>
-                <a href="$StatsUrl/docs/awstats_tools.html" target="doc-frame">$nav_tools</a>
+                <a href="$target&doc=setup" target="doc-frame">$nav_setup</a>
+                <a href="$target&doc=upgrade" target="doc-frame">$nav_upgrade</a>
+                <a href="$target&doc=config" target="doc-frame">$nav_config</a>
+                <a href="$target&doc=extra" target="doc-frame">$nav_extra</a>
+                <a href="$target&doc=tools" target="doc-frame">$nav_tools</a>
             </div>
         </div>
         <div class="dropdown-item">
             <div class="dropdown-title">📚 $nav_category_reference</div>
             <div class="dropdown-content">
-                <a href="$StatsUrl/docs/awstats_faq.html" target="doc-frame">$nav_faq</a>
-                <a href="$StatsUrl/docs/awstats_security.html" target="doc-frame">$nav_security</a>
-                <a href="$StatsUrl/docs/awstats_compare.html" target="doc-frame">$nav_compare</a>
-                <a href="$StatsUrl/docs/awstats_benchmark.html" target="doc-frame">$nav_benchmark</a>
+                <a href="$target&doc=faq" target="doc-frame">$nav_faq</a>
+                <a href="$target&doc=security" target="doc-frame">$nav_security</a>
+                <a href="$target&doc=compare" target="doc-frame">$nav_compare</a>
+                <a href="$target&doc=benchmark" target="doc-frame">$nav_benchmark</a>
             </div>
         </div>
         <div class="dropdown-item">
             <div class="dropdown-title">🧩 $nav_category_integration</div>
             <div class="dropdown-content">
-                <a href="$StatsUrl/docs/awstats_webmin.html" target="doc-frame">$nav_webmin</a>
-                <a href="$StatsUrl/docs/awstats_dolibarr.html" target="doc-frame">$nav_dolibarr</a>
-                <a href="$StatsUrl/docs/awstats_contrib.html" target="doc-frame">$nav_contrib</a>
+                <a href="$target&doc=webmin" target="doc-frame">$nav_webmin</a>
+                <a href="$target&doc=dolibarr" target="doc-frame">$nav_dolibarr</a>
+                <a href="$target&doc=contrib" target="doc-frame">$nav_contrib</a>
             </div>
         </div>
         <div class="dropdown-item">
             <div class="dropdown-title">💻 $nav_category_dev</div>
             <div class="dropdown-content">
-                <a href="$StatsUrl/docs/awstats_dev_plugins.html" target="doc-frame">$nav_plugins</a>
-                <a href="$StatsUrl/docs/awstats_dev_plugins_hooks.html" target="doc-frame">$nav_hooks</a>
-                <a href="$StatsUrl/docs/awstats_dev_plugins_graphs.html" target="doc-frame">$nav_graphs</a>
+                <a href="$target&doc=dev_plugins" target="doc-frame">$nav_plugins</a>
+                <a href="$target&doc=dev_hooks" target="doc-frame">$nav_hooks</a>
+                <a href="$target&doc=dev_graphs" target="doc-frame">$nav_graphs</a>
             </div>
         </div>
     </div>
@@ -4164,7 +4174,6 @@ sub Parse_Config {
 		}
 		if ( $param =~ /^BrandPlatform$/i ) {
 			$BrandPlatform = $value;
-			print "DEBUG: Loaded BrandPlatform = '$value'\n";
 			next;
 		}
 		if ( $param =~ /^StatsUrl$/i ) {
@@ -12055,13 +12064,7 @@ sub generate_what_doc {
 </body>
 </html>
 END_HTML
-
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_what.khtml") or return;
-    print $fh $html;
-    close $fh;
-
-	print "DEBUG: Generated awstats_what.khtml in $doc_dir with language $lang\n" if $Debug;
-
+	print $html;
 }
 #------------------------------------------------------------------------------
 # 生成 changelog 文档页面 (修正版)
@@ -12879,13 +12882,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_changelog.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_changelog.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -12937,13 +12934,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_benchmark.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_benchmark.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13019,13 +13010,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_compare.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_compare.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13077,13 +13062,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_config.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_config.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13133,13 +13112,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_contrib.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_contrib.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13213,13 +13186,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dev_plugins_graphs.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_dev_plugins_graphs.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13271,13 +13238,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dev_plugins_hooks.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_dev_plugins_hooks.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13383,13 +13344,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dev_plugins.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_dev_plugins.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13440,13 +13395,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_dolibarr.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_dolibarr.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13591,13 +13540,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_extra.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_extra.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13645,13 +13588,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_faq.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_faq.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13769,13 +13706,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_glossary.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_glossary.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -13930,13 +13861,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_license.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_license.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -14149,13 +14074,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_loganalysispaper.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_loganalysispaper.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -14291,13 +14210,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_security.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_security.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 #------------------------------------------------------------------------------
 # 生成 setup 页面
@@ -14345,13 +14258,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_setup.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_setup.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 #------------------------------------------------------------------------------
 # 生成 tools 文档页面
@@ -14399,13 +14306,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_tools.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_tools.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 #------------------------------------------------------------------------------
 # 生成 upgrade 文档页面
@@ -14453,13 +14354,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_upgrade.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_upgrade.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 #------------------------------------------------------------------------------
 # 生成 webmin 文档页面
@@ -14507,13 +14402,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/awstats_webmin.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated awstats_webmin.html in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 #------------------------------------------------------------------------------
 # 生成首页内容页面
@@ -14559,13 +14448,7 @@ $theme_script
 </body>
 </html>
 END_HTML
-
-    my $doc_dir = "$dir/docs";
-    open(my $fh, '>:encoding(UTF-8)', "$doc_dir/index.html") or return;
-    print $fh $html;
-    close $fh;
-
-    print "DEBUG: Generated home page (index.html) in $doc_dir with language $lang\n" if $Debug;
+	print $html;
 }
 
 #------------------------------------------------------------------------------
@@ -23139,6 +23022,75 @@ else {
 	# Read config file (SiteConfig must be defined)
 	&Read_Config($DirConfig);
 
+	if ($QueryString =~ /doc=([\w-]+)/) {
+		my $doc = $1;
+		&Read_Language_Data($Lang);
+		http_head();
+		html_head();
+		print "<div class='document-container'>\n";
+		
+		if ($doc eq 'changelog') {
+			&generate_changelog_doc();
+		}
+		elsif ($doc eq 'what') {
+			&generate_what_doc();
+		}
+		elsif ($doc eq 'license') {
+			&generate_license_doc();
+		}
+		elsif ($doc eq 'glossary') {
+			&generate_glossary_doc();
+		}
+		elsif ($doc eq 'setup') {
+			&generate_setup_doc();
+		}
+		elsif ($doc eq 'upgrade') {
+			&generate_upgrade_doc();
+		}
+		elsif ($doc eq 'config') {
+			&generate_config_doc();
+		}
+		elsif ($doc eq 'extra') {
+			&generate_extra_doc();
+		}
+		elsif ($doc eq 'tools') {
+			&generate_tools_doc();
+		}
+		elsif ($doc eq 'faq') {
+			&generate_faq_doc();
+		}
+		elsif ($doc eq 'security') {
+			&generate_security_doc();
+		}
+		elsif ($doc eq 'compare') {
+			&generate_compare_doc();
+		}
+		elsif ($doc eq 'benchmark') {
+			&generate_benchmark_doc();
+		}
+		elsif ($doc eq 'webmin') {
+			&generate_webmin_doc();
+		}
+		elsif ($doc eq 'dolibarr') {
+			&generate_dolibarr_doc();
+		}
+		elsif ($doc eq 'contrib') {
+			&generate_contrib_doc();
+		}
+		elsif ($doc eq 'dev_plugins') {
+			&generate_devplugins_doc();
+		}
+		elsif ($doc eq 'dev_hooks') {
+			&generate_devhooks_doc();
+		}
+		elsif ($doc eq 'dev_graphs') {
+			&generate_devgraphs_doc();
+		}
+		
+		print "</div>\n";
+		html_end();
+		exit 0;
+	}
 	# Check language
 	if ( $QueryString =~ /(^|&|&amp;)lang=([^&]+)/i ) { $Lang = "$2"; }
 	# If lang not defined or forced to auto

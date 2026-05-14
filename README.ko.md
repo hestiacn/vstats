@@ -181,16 +181,26 @@ perl /usr/share/awstats/tools/awstats_convert-en.pl --help
 
 #### HestiaCP 사용자 (권장)
 
-HestiaCP에는 이미 AWStats가 포함되어 있습니다. deb 패키지를 업데이트하여 설치하기만 하면 됩니다.
+> **참고**: 이 스크립트는 HestiaCP 패널 전용으로 조정되었습니다. 다른 제어판을 사용하거나 패널 없이 관리하는 경우 스크립트의 `build_awstats()` 함수를 참조하여 실제 환경에 맞게 조정하세요.
 
-공식 [Debian](https://github.com/hestiacp/hestiacp) 및 애호가용 [RHEL](https://github.com/bayrepo/hestiacp-rpm)을 지원합니다.
+HestiaCP에는 AWStats가 이미 포함되어 있습니다. 빌드된 `deb` 및 `rpm` 패키지를 업데이트하고 설치하기만 하면 새로운 커뮤니티 버전을 경험할 수 있습니다.
 
-**조정해야 할 파일**:
-- 템플릿 파일: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
-- 도메인 설정: `/etc/awstats/` 디렉토리
-- 업데이트 스크립트: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- 참조 스크립트 템플릿: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
-- 참조 설정 템플릿: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
+**지원 배포판**:
+- 공식 지원: [Debian/Ubuntu](https://github.com/hestiacp/hestiacp)
+- 커뮤니티 지원: [RHEL/CentOS/Alma/Rocky](https://github.com/bayrepo/hestiacp-rpm)
+
+**수동으로 조정해야 하는 파일**:
+
+| 파일 유형 | 경로 | 참고 예제 |
+|:---:|:---:|:---:|
+| 템플릿 파일 | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| 도메인 설정 디렉토리 | `/etc/awstats/` | - |
+| 업데이트 스크립트 (Debian/Ubuntu 및 파생판) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
+| 업데이트 스크립트 (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+
+> 📌 **설명**: Debian 계열과 RHEL 계열의 스크립트 코드가 다릅니다. 사용 중인 운영체제에 따라 적절한 참고 예제를 선택하세요.
+
+> 💡 **힌트**: 스크립트 수정 후 권한 문제가 발생하면 `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`을 실행하세요.
 
 #### 다운로드 및 설치
 

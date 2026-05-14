@@ -175,22 +175,32 @@ perl /usr/share/awstats/tools/awstats_convert-en.pl --help
 
 ---
 
-## 🚀 البدء السريع
+## 🚀 بداية سريعة
 
 ### 1. التثبيت
 
-#### مستخدمو HestiaCP (موصى به)
+#### لمستخدمي HestiaCP (موصى به)
 
-HestiaCP يأتي بالفعل مع AWStats، ما عليك سوى تحديث حزمة deb وتثبيتها.
+> **ملاحظة**: هذا السكربت مخصص فقط للوحة تحكم HestiaCP. إذا كنت تستخدم لوحة تحكم أخرى أو لا تستخدم لوحة تحكم، يرجى الرجوع إلى دالة `build_awstats()` في السكربت والتعديل وفقًا لبيئتك الفعلية.
 
-يدعم [Debian](https://github.com/hestiacp/hestiacp) الرسمي وإصدار [RHEL](https://github.com/bayrepo/hestiacp-rpm) للهواة
+HestiaCP يأتي مدمجًا مع AWStats، ما عليك سوى تحديث وتثبيت حزم `deb` و `rpm` المعدة مسبقًا لتجربة الإصدار المجتمعي الجديد.
 
-**الملفات التي تحتاج إلى تعديل**:
-- ملف القالب: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
-- تكوين النطاق: دليل `/etc/awstats/`
-- برنامج التحديث النصي: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- قالب البرنامج النصي المرجعي: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
-- قالب التكوين المرجعي: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
+**التوزيعات المدعومة**:
+- دعم رسمي: [Debian/Ubuntu](https://github.com/hestiacp/hestiacp)
+- دعم مجتمعي: [RHEL/CentOS/Alma/Rocky](https://github.com/bayrepo/hestiacp-rpm)
+
+**الملفات التي تحتاج إلى تعديل يدوي**:
+
+| نوع الملف | المسار | مثال مرجعي |
+|:---:|:---:|:---:|
+| ملف القالب | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| دليل إعدادات النطاق | `/etc/awstats/` | - |
+| سكربت التحديث (Debian/Ubuntu ومشتقاتهما) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
+| سكربت التحديث (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+
+> 📌 **توضيح**: أكواد سكربتات Debian و RHEL مختلفة، يرجى اختيار المثال المرجعي المناسب وفقًا لنظام التشغيل الخاص بك.
+
+> 💡 **تلميح**: بعد تعديل السكربت، إذا واجهت مشكلة في الصلاحيات، قم بتنفيذ الأمر `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`
 
 #### التحميل والتثبيت
 

@@ -213,7 +213,7 @@ fi
 # 创建 CLI 包装脚本
 cat > $RPM_BUILD_ROOT/usr/local/bin/awstats << 'EOF'
 #!/bin/bash
-perl /usr/lib/cgi-bin/awstats.pl "$@"
+perl /usr/share/awstats/wwwroot/cgi-bin/awstats.pl "$@"
 EOF
 chmod 755 $RPM_BUILD_ROOT/usr/local/bin/awstats
 

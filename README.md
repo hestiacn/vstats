@@ -60,7 +60,7 @@ Supports **13 calendar systems** including Japanese era, Buddhist calendar, Repu
 > 📌 **Ethiopian calendar**: First 12 months have 30 days each, the 13th month has 6 days in leap years and 5 days in common years.
 > 📌 **Hebrew calendar**: 7 leap years in a 19-year cycle, adding Adar I (30 days) in leap years, forming 13 months.
 
-### 6. Custom Branding Display 🏷️
+### 6. Custom Branding Display 🏷🏷️
 
 > **For Hosting Providers and Enterprise Users**
 
@@ -190,16 +190,26 @@ perl /usr/share/awstats/tools/awstats_convert-en.pl --help
 
 #### For HestiaCP Users (Recommended)
 
-HestiaCP already includes AWStats, just update by installing the deb package.
+> **Note**: This script is specifically adapted for the HestiaCP control panel. If you are using another control panel or no panel at all, please refer to the `build_awstats()` function within the script and adjust according to your actual environment.
 
-Supports official [Debian](https://github.com/hestiacp/hestiacp) and community [RHEL](https://github.com/bayrepo/hestiacp-rpm) versions.
+HestiaCP already includes AWStats. Simply update and install the pre-built `deb` and `rpm` packages to experience the new community edition.
 
-**Files you may need to adjust**:
-- Template file: `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
-- Domain configuration: `/etc/awstats/` directory
-- Update script: `/usr/local/hestia/bin/v-update-web-domain-stat`
-- Reference script template: [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
-- Reference config template: [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
+**Supported Distributions**:
+- Official Support: [Debian/Ubuntu](https://github.com/hestiacp/hestiacp)
+- Community Support: [RHEL/CentOS/Alma/Rocky](https://github.com/bayrepo/hestiacp-rpm)
+
+**Files That Require Manual Adjustment**:
+
+| File Type | Path | Reference Example |
+|:---:|:---:|:---:|
+| Template File | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| Domain Configuration Directory | `/etc/awstats/` | - |
+| Update Script (Debian/Ubuntu and derivatives) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
+| Update Script (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+
+> 📌 **Explanation**: The script code differs between Debian-based and RHEL-based systems. Please select the appropriate reference example based on your operating system.
+
+> 💡 **Tip**: After modifying the script, if you encounter a permission issue, run `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`
 
 #### Download and Install
 
@@ -348,7 +358,7 @@ Special thanks to all translators and testers who helped us correctly translate 
 
 ---
 
-## 👨‍💻 About the Author & Maintenance
+## 👨‍ About the Author & Maintenance
 
 **Original Author**: Laurent Destailleur (1997-2025)
 - Project founder, announced end of updates in November 2025

@@ -150,7 +150,7 @@ Section "$(SectionMain)" SEC_MAIN
   File "..\..\tools\logresolvemerge.pl"
   File "..\..\tools\maillogconvert.pl"
   File "..\..\tools\urlaliasbuilder.pl"
-  File "..\..\tools\update-geoip.sh"
+ ;File "..\..\tools\update-geoip.sh"
   File "..\..\tools\httpd_conf"
   
   ; nginx 配置

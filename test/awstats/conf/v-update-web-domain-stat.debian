@@ -263,13 +263,6 @@ EOF
         fi
     fi
     
-    # Docs directory check
-    if [ ! -e "$dir/docs" ]; then
-        ln -s /usr/share/doc/awstats/html/ "$dir/docs" 2>/dev/null
-        chown -h $user:$(groups "$user" | cut -f 3 -d ' ') "$dir/docs" 2>/dev/null
-        log_message "INFO" "Created docs symlink"
-    fi
-    
     # Icon directory check
     if [ ! -e "$dir/icon" ]; then
         ln -s "$wwwroot/icon" "$dir/icon" 2>/dev/null

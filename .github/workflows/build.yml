@@ -709,11 +709,23 @@ jobs:
           }
         shell: pwsh
 
+      - name: 生成 exe 校验和文件
+        run: |
+          cd make
+          $hash = (Get-FileHash "awstats-8.1.exe" -Algorithm SHA256).Hash.ToLower()
+          "$hash  awstats-8.1.exe" | Out-File -FilePath SHA256SUMS.txt -Encoding ascii
+          Write-Host "✅ 已生成 SHA256SUMS.txt"
+        shell: pwsh
+
       - name: 上传安装包
         uses: actions/upload-artifact@v7
         with:
-          name: awstats-windows-installer
-          path: make/awstats-8.1.exe
+          name: windows-packages
+          path: |
+            make/*.exe
+            make/SHA256SUMS.txt
+          if-no-files-found: warn
+          retention-days: 1
 
   release:
     name: 发布所有包
@@ -725,6 +737,34 @@ jobs:
       uses: actions/download-artifact@v8
       with:
         path: releases
+    - name: 合并校验和
+      run: |
+        echo "=== 合并校验和文件 ==="
+        # 复制 Linux 的校验和（4个包）
+        if [ -f "releases/unix-packages/SHA256SUMS.txt" ]; then
+          cp releases/unix-packages/SHA256SUMS.txt SHA256SUMS.txt
+          echo "✅ 已添加 Linux 包校验和"
+        else
+          echo "⚠️ Linux 校验和文件不存在"
+          > SHA256SUMS.txt
+        fi
+        
+        # 追加 Windows 的校验和（exe）
+        if [ -f "releases/windows-packages/SHA256SUMS.txt" ]; then
+          cat releases/windows-packages/SHA256SUMS.txt >> SHA256SUMS.txt
+          echo "✅ 已添加 Windows 包校验和"
+        else
+          echo "⚠️ Windows 校验和文件不存在"
+        fi
+        
+        # 排序去重
+        sort -u SHA256SUMS.txt -o SHA256SUMS.txt
+        
+        echo ""
+        echo "=== 最终校验和 ==="
+        cat SHA256SUMS.txt
+        echo ""
+        echo "✅ 校验和行数: $(wc -l < SHA256SUMS.txt)"
     
     - name: 检查下载的文件
       run: |
@@ -737,17 +777,33 @@ jobs:
     - name: 整理文件
       run: |
         mkdir -p final
+        
+        # 复制所有包文件
         find releases -type f -name "*.tar.gz" -exec cp -v {} final/ \;
         find releases -type f -name "*.zip" -exec cp -v {} final/ \;
         find releases -type f -name "*.rpm" -exec cp -v {} final/ \;
         find releases -type f -name "*.deb" -exec cp -v {} final/ \;
         find releases -type f -name "*.exe" -exec cp -v {} final/ \;
-        find releases -type f -name "*.txt" -exec cp -v {} final/ \;
+        
+        echo "=== 合并校验和文件 ==="
+        > final/SHA256SUMS.txt
+        if [ -f "releases/unix-packages/SHA256SUMS.txt" ]; then
+          cat releases/unix-packages/SHA256SUMS.txt >> final/SHA256SUMS.txt
+          echo "✅ 已添加 Linux 包校验和"
+        fi
+        if [ -f "releases/windows-packages/SHA256SUMS.txt" ]; then
+          cat releases/windows-packages/SHA256SUMS.txt >> final/SHA256SUMS.txt
+          echo "✅ 已添加 Windows 包校验和"
+        fi
+        # 排序去重
+        sort -u final/SHA256SUMS.txt -o final/SHA256SUMS.txt
         
         echo ""
         echo "✅ 最终文件列表："
         ls -la final/
         echo ""
+        echo "=== 最终校验和内容 ==="
+        cat final/SHA256SUMS.txt
     
     - name: 获取版本号
       id: version

@@ -8,6 +8,18 @@
 
 ### 8.1 - 2026-05-10
 
+### 🔧 Fixed original documentation to local static documentation
+
+The original static documentation required adding code implementation in the update script. The drawback of this approach was that the language was selected by the site deployer, resulting in users only seeing the Chinese and English static documentation that I initially added.
+
+**Background**: The original idea was to address the fact that the original author `Laurent Destailleur` left behind very comprehensive documentation, but it was entirely in English. Non-English speakers were completely lost, causing many classic examples to be buried in the history of the internet.
+
+**Problem**: During the modification process, I never achieved the desired effect because implementing multilingual support within a single HTML file required a large number of language keys. This approach was far from elegant and completely failed to utilize the translations in the po files.
+
+**Solution**: While refactoring `awstats.pl`, I integrated all the documentation directly into the main program. It now displays translations based on the browser's request headers. `CGI` dynamically reads based on the browser language, defaulting to English for any documentation without a complete translation.
+
+For details, see the [Complete Localization](#full-localizationinterface--documentation) documentation. If you need to add translations for your language's documentation localization, please refer to [Partial Localization (Interface Only)](#partial-localizationinterface-only) and submit your contributions!
+
 ### 🏷️ New Feature: Custom Branding Display
 
 > **🚀 vstats: Bringing Warmth to Statistics**

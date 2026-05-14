@@ -181,16 +181,26 @@ perl /usr/share/awstats/tools/awstats_convert-en.pl --help
 
 #### Utilisateurs de HestiaCP (recommandé)
 
-HestiaCP inclut déjà AWStats, il suffit de mettre à jour et d'installer le paquet deb.
+> **Remarque** : Ce script est uniquement adapté au panneau de contrôle HestiaCP. Si vous utilisez un autre panneau de contrôle ou aucun panneau, veuillez vous référer à la fonction `build_awstats()` dans le script et ajuster en fonction de votre environnement réel.
 
-Support des [Debian](https://github.com/hestiacp/hestiacp) officiels et [RHEL](https://github.com/bayrepo/hestiacp-rpm) pour les passionnés.
+HestiaCP intègre déjà AWStats, il suffit de mettre à jour et d'installer les paquets `deb` et `rpm` pré-compilés pour découvrir la nouvelle version communautaire.
 
-**Fichiers à ajuster** :
-- Fichier template : `/usr/local/hestia/data/templates/web/awstats/awstats.tpl`
-- Configuration domaine : répertoire `/etc/awstats/`
-- Script de mise à jour : `/usr/local/hestia/bin/v-update-web-domain-stat`
-- Template de script de référence : [v-update-web-domain-stat](/make/test/awstats/conf/v-update-web-domain-stat)
-- Template de configuration de référence : [awstats.tpl](/make/test/awstats/conf/awstats.tpl)
+**Distributions supportées** :
+- Support officiel : [Debian/Ubuntu](https://github.com/hestiacp/hestiacp)
+- Support communautaire : [RHEL/CentOS/Alma/Rocky](https://github.com/bayrepo/hestiacp-rpm)
+
+**Fichiers à ajuster manuellement** :
+
+| Type de fichier | Chemin | Exemple de référence |
+|:---:|:---:|:---:|
+| Fichier template | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| Répertoire de configuration des domaines | `/etc/awstats/` | - |
+| Script de mise à jour (Debian/Ubuntu et dérivés) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
+| Script de mise à jour (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+
+> 📌 **Explication** : Les codes des scripts pour Debian et RHEL sont différents, veuillez choisir l'exemple de référence correspondant à votre système d'exploitation.
+
+> 💡 **Astuce** : Après avoir modifié le script, si vous rencontrez un problème de permission, exécutez `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`
 
 #### Téléchargement et installation
 
