@@ -458,8 +458,8 @@ msgstr "Hýsill - Fjöldi síðna - Fjöldi beiðna - Bandbreidd - Dagsetning s�
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Upphafsdagsetning síðustu heimsóknar] og [Síðasta síða síðustu heimsóknar] eru aðeins vistuð ef líftími er ekki búinn"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Aðalsíðan sýnir aðeins fyrstu %s atriðin með flestar beiðnir. Sjáðu heildarlistann á smáatriðasíðunni."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Fyrstu %s atriðin eru raðað eftir fjölda högga í lækkandi röð; röð hinna atriðanna er ekki skilgreind."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Innskráður notandi - Fjöldi síðna - Fjöldi beiðna - Bandbreidd - Tími síðustu heimsóknar"
@@ -473,8 +473,8 @@ msgstr "Kenni orms - Fjöldi beiðna - Bandbreidd - Tími síðustu heimsóknar"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Tölvupóstur - Fjöldi beiðna - Bandbreidd - Tími síðustu heimsóknar"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Aðalsíðan sýnir aðeins fyrstu %s tölvupóstbeiðnir. Sjáðu heildarlistann á smáatriðasíðunni."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Fyrstu %s tölvupóstföngin eru raðað eftir fjölda högga í lækkandi röð; röð hinna tölvupóstfanganna er ekki skilgreind."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Fjöldi síðna - Bandbreidd - Inngangur - Útgangur"
@@ -683,6 +683,27 @@ msgstr "SiteDomain færibreytan er ekki skilgreind í config/domain skránni þi
 msgid "Please run as Administrator to set permissions"
 msgstr "Keyrið sem Stjórnandi til að stilla heimildir"
 
+msgid "This directory lacks read permission"
+msgstr "Þessu skráarsafni skortir lesréttindi"
+
+msgid "Please set read permission for directory"
+msgstr "Vinsamlegast stilltu lesréttindi fyrir skráarsafn"
+
+msgid "Missing required parameter in config file"
+msgstr "Vantar nauðsynlega breytu í stillingarskrá"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Vinsamlegast athugaðu að 'DirData' sé skilgreint."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Lénsnafn í vafra veffangi virðist vanta eða vera ófullnægjandi"
+
+msgid "Please check the URL parameter"
+msgstr "Vinsamlegast athugaðu vefslóðar breytuna"
+
+msgid "Format description"
+msgstr "Sniðlýsing"
+
 msgid "Please set execute permission"
 msgstr "Vinsamlegast stilltu keyrsluheimild"
 
@@ -808,376 +829,379 @@ msgstr "Sláttutól"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Textaskrá (ASCII staðlað 1963, formlausan hreinan texta. Grundvöllur alls frumkóða, stillinga, atvikaskráa. Unix notar LF, Windows notar CRLF fyrir línubil, enn algengasta gagnasniðið í tölvufræði)"
+msgstr "TXT hreinn textaskrá (1963 ASCII-staðlaður ósniðinn hreinn texti. Sem undirstaða alls kóða, stillingarskráa og kerfisskráa, er krosspallakerfislínustjórnun þess (CRLF í Windows, LF í Unix) enn algildasta gagnaskiptastaðallinn í tölvunarfræði)"
 
 msgid "mime_log"
-msgstr "Atvikaskrá (einföld textaskrá sem skráir upplýsingar um kerfis- og forritarekstur, oft notuð við bilanagreiningu, afkastagreiningu, öryggisúttektir. Stöðluð snið eins og Apache combined log, Nginx access log, syslog o.fl.)"
+msgstr "LOG kerfiskeyrsluskrá (skráir keyrsluástand stýrikerfis, kjarna og forrita sem hreinan texta. Nær yfir Nginx/Apache aðgangsskrár (Combined Log) og staðlaða syslog upplýsingatækni, er kjarnagjafagjafi fyrir bilanaleit, streymisárangursgreiningu og öryggisúttektir)"
 
 msgid "mime_page"
-msgstr "HTML vefsíða (Tim Berners-Lee fann upp World Wide Web árið 1989, skilgreindi þrjár tæknileiðir HTML/HTTP/URL árið 1990, bauð þær upp ókeypis án einkaleyfis. HTML5 varð opinber W3C staðall árið 2014, styður birtingu, margmiðlun og prentun. Vann Turing verðlaunin 2016)"
+msgstr "HTML vefsíða (búin til af Tim Berners-Lee árið 1989, hornsteinn World Wide Web. Sem ókeypis algilt hypertexta merkjamál varð HTML5 upplýsingatæknin opinber W3C staðall árið 2014, styður innfæddan uppbyggða margmiðlun, merkingarfræðileg samskipti og fljótandi síðuuppsetningu, hlaut Turing verðlaunin árið 2016)"
 
 msgid "mime_khtml"
-msgstr "KHTML vefvél (gefin út með KDE 2.0 árið 1998, vél fyrir birtingu Konqueror vafrans. Apple bjó til WebKit byggt á KHTML árið 2001, Google bjó til Blink úr WebKit árið 2008, sem varð kjarni vafra eins og Chrome, Edge, Safari. KHTML er dæmi um hvernig opna frumkóða samfélagið lagði grunninn að nútíma vafravélum, tæknileg arfleifð þess heldur áfram í gegnum WebKit/Blink)"
+msgstr "KHTML vefsniðmótsvél (1998 KDE 2.0 vafra útgáfuvéla upplýsingatækni. Sem opinn hugbúnaður sem lagði grunninn að nútíma vefútgáfu, innblásti tæknileg arfleifð hennar beint WebKit kjarna Apple og Blink kjarna Google, og heldur áfram í nútíma streymandi kraftmiklum vefbyggingum)"
 
 msgid "mime_script"
-msgstr "Dynamískt skrift (túlkað tungumál, krefst ekki þýðingar. Felur í sér ASP, JSP, CGI, ColdFusion, Tcl, VBScript o.fl., mikið notað í snemma vefþróun, kerfisstjórnun, verkefna sjálfvirkni. Nútíma skrift tungumál eins og Python, Ruby, JavaScript hafa þróast í aðaltungumál fyrir full-stack þróun)"
+msgstr "SCRIPT túlkað kraftmikið skrift (almennur flokkur fyrir strauma grunnkóða sem eru keyrðir línu fyrir línu af tilteknu keyrsluumhverfi eða túlki án fyrirframþýðingar. Nær yfir ASP, JSP, CGI og Tcl, mikið notað fyrir netþjónahlið almenna hliðstæð viðmót, sjálfvirkniferlisstýringu og kerfisverkefnalím)"
 
 msgid "mime_js"
-msgstr "JavaScript skrift (Brendan Eich bjó til á 10 dögum í Netscape árið 1995, upprunalegt forritunarmál vafrans. ECMAScript var staðlað árið 1997, fæðing Node.js árið 2009 gerði það að full-stack tungumáli, npm er stærsta pakkastjóri heims. Í mörg ár vinsælasta forritunarmálið á GitHub)"
+msgstr "JavaScript skrift (1995 Netscape vafra innfædda forritunarumhverfi. 1997 var ECMAScript iðnaðarstaðallinn settur, 2009 fæddist Node.js keyrsluumhverfið, sem braut vaframörk og bjó til ósamstillta, óblokkara fulla stafla byggingu, ásamt stærsta npm hugbúnaðarpakka vistkerfi heims)"
 
 msgid "mime_py"
-msgstr "Python skrift (Guido van Rossum bjó til árið 1991, þekkt fyrir skyldubundna inndrátt og einfalda setningafræði. Mikið notað í vefþróun, gagnavísindum, gervigreind, sjálfvirkni. Margfaldur sigurvegari TIOBE verðlauna fyrir forritunarmál ársins)"
+msgstr "Python skrift (1991 Guido van Rossum hár þróunarháttur túlkað skriftunarmál. Vegna tapslauss læsileika með skyldubundinni inndrátt og fjölbreyttu hönnunarfyrirkomulagi, hefur það verið staðfest sem iðnaðarstaðalsmál fyrir nútíma vefbyggingu, fullan stafla gagnavísindi, þjálfun gervigreindarlíkana (AI) og skýjafræðilega sjálfvirkni reksturs)"
 
 msgid "mime_sh"
-msgstr "Shell skrift (fæðing Unix árið 1971, skipanamál fyrir skrift. Notað við kerfisstjórnun, verkefna sjálfvirkni, ræsingu þjónustu, dreifingarskrift. Nauðsynleg færni fyrir Linux stjórnun)"
+msgstr "Shell skrift (1971 Unix tímans staðlað skipanatúlksskrift. Inniheldur kjarnastigs skipanir eins og Bash, Sh, Dash, venjulega keyrt með .sh viðskeyti, er algilt kjarnastigs lím fyrir lággráðu ferlistýringu, uppsetningarlausa umhverfisstillingu og sjálfvirka dreifingu í nútíma Unix-líkum stýrikerfum)"
 
 msgid "mime_rb"
-msgstr "Ruby skrift (Yukihiro Matsumoto bjó til árið 1995, einblínir á hamingju forritara. Ruby on Rails grindin kynnti hugmyndafræðina 'venja fremur en stilling', sem hefur áhrif á hönnun nútíma vefgrinda)"
+msgstr "Ruby skrift (1995 Yukihiro Matsumoto hlutbundin skriftunarmál. Með kjarnahönnunarheimspeki sinni sem einbeitir sér að mikilli virðingu fyrir þróunarupplifun, gjörbylti Ruby on Rails umgjörð nútíma hágæða vefbyggingum með því að koma á 'Venju fremur en stillingu' (CoC))"
 
 msgid "mime_pl"
-msgstr "Perl skrift (Larry Wall bjó til árið 1987, þekkt fyrir raunsæi, kölluð 'Svissneski vasahnífurinn'. CPAN var brautryðjandi nútíma pakkastjóra forritunarmála, hafði mikil áhrif á textavinnslu, kerfisstjórnun og CGI)"
+msgstr "Perl skrift (1987 Larry Wall hagnýt skriftunarmál. Sem brautryðjandi nútíma pakkastjóra (CPAN), þekkt sem 'Svissneski hernaðarhnífur' textavinnslu. Í nútíma CGI ham, með mjög litla eðlilega minniskostnað og skilvirka reglulega segðavinnslu, þjónar það sem mjög áreiðanleg burðarás fyrir skráagreiningu)"
 
 msgid "mime_php"
-msgstr "PHP dynamísk vefsíða (Rasmus Lerdorf bjó til árið 1995, hönnuð sérstaklega fyrir vefþróun. Yfir 70% vefsíða heims nota hana, knýr vettvanga eins og WordPress, Facebook, Wikipedia. PHP 8 kynnir JIT þýðingu, bætir afköst verulega)"
+msgstr "PHP kraftmikil vefsíða (1995 Rasmus Lerdorf, hannað sérstaklega fyrir vefþróun. Sem kjarnatækni sem knýr yfir 70% vefsvæða heims, styður það stórar framleiðsluforrit eins og WordPress og Wikipedia. Frá PHP 8, með kynningu á JIT (just-in-time) keyrslu vél, hefur það þróast í átt að háafla fullan stafla netþjónsbyggingu)"
 
 msgid "mime_image"
-msgstr "Myndskrá)"
+msgstr "IMAGE mynda eigna flokkun (nær yfir tapað/tapslaust þjappað bitakort, nútíma móttækilega vefmyndir og vigra. Lykilvísir til að meta sjónræna auðlindarálag vefsvæðis, viðskiptavinar skyndiminni högg hlutfall og fjölmiðla netbandbreiddar eyðslu)"
 
 msgid "mime_document"
-msgstr "Skjalsskrá)"
+msgstr "DOCUMENT uppbyggð skjalaflokkun (nær yfir hreinan texta, töflureikna, fasta skipulag opinber skjöl (PDF) og létt merkingarmál. Lykilvísir fyrir tölfræði um dreifingu kyrrstæðrar þekkingargrunns netþjóna, niðurhal fyrirtækjaeigna og textastraums afkastagetu)"
 
 msgid "mime_package"
-msgstr "Hugbúnaðarpakki)"
+msgstr "PACKAGE þýdd vara og hugbúnaðarpakka flokkun (nær yfir innfædd keyrsluhæf forrit stýrikerfisins, keyrslutíma tengibókasöfn (DLL/SO) og dreifingaruppsetningarpakka forrita. Oft notað sem vísir til að meta útleið umferð og niðurhalshadda á hugbúnaðardreifingarstöðum)"
 
 msgid "mime_archive"
-msgstr "Gzip þjöppuð skrá (GNU verkefni 1992, byggt á DEFLATE reikniriti. Á vefnum notað fyrir dynamíska þjöppun svarefnis, þjöppunarhlutfall er venjulega 60-90%. Eftir 2015 var Brotli komið í staðinn í sumum tilfellum, en er enn útbreiddasta þjöppunarsniðið á þjónshlið)"
+msgstr "ARCHIVE skjala- og þjappaðar skrár (almennur flokkur fyrir gagnapökkun byggða á kjarnaalgrímum eins og DEFLATE, LZMA. Á netlaginu, auk hefðbundinnar pakkadreifingar, nær það einnig yfir 1992 GNU verkefnisins Gzip kraftmikla svörunarstrauma. Þótt Brotli algrímið sé smám saman tekið upp í sumum nútíma atburðarásum, er þessi flokkun enn lykilvísir til að meta netþjóns bandbreiddarafköst og þjöppun skilvirkni flutningslags)"
 
 msgid "mime_audio"
-msgstr "Hljóðskrá)"
+msgstr "AUDIO stafræns hljóðstraums flokkun (nær yfir þjappað hljóð, hljóðbækur og straumhlaða hljóðílát. Byggt á tilteknum hljóðkóðunarstöðlum, notað til að fylgjast með hljóðgagnastraums afköstum á margmiðlunarsvæðum, samtíma streymis bandbreidd og langtenginga hegðun)"
 
 msgid "mime_video"
-msgstr "Myndbandsskrá)"
+msgstr "VIDEO stafræns myndbandsstraums flokkun (nær yfir hágæða myndbandsílát, nútíma vefteiknimyndir og straumhluta. Lykilvísir til að meta netþjóns bandbreiddar hámarksmörk og efni dreifingarnets (CDN) hröðunar skilvirkni undir miklu netálagi)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (þróað af Brendan Eich árið 1995)"
+msgstr "JScript skrift (1996 Microsoft öfugt hugbúnaðarverkfræði einkarekin framkvæmd fyrir Internet Explorer 3.0. Sem snemma hýsingarkeppinautur klassísks JavaScript, þjónaði það sem kjarnavél fyrir Windows Script Host (WSH) og snemma ASP bakenda)"
 
 msgid "mime_json"
-msgstr "JSON gögn (Douglas Crockford lagði til árið 2001, létt gagnaskiptasnið, staðreynd staðall fyrir vefforritunarskil)"
+msgstr "JSON uppbyggð gögn (2001 Douglas Crockford létt gagnaröðunarskiptastaðall. Byggt á texta byggðum lykla-gildi pörum og fylkisbyggingu, með mikla mannlega læsileika og tapi lausa straumgreiningareiginleika, er það raunverulegur staðall fyrir nútíma vef API, smáþjónustubyggingar og samskipti við stór tungumálalíkön)"
 
 msgid "mime_vbs"
-msgstr "VBScript (þróað af Microsoft árið 1996, Windows skriftamál, notað fyrir ASP vefsíður og Windows stjórnunarskrift. Með útbreiðslu PowerShell og JavaScript, er það smám saman að hverfa)"
+msgstr "VBScript skrift (1996 Microsoft skriftunarmálsafbrigði með IE 3.0. Þjónaði sem kjarnadrifkraftur fyrir snemma kraftmiklar ASP vefsíður og Windows kerfisstjórnun, en hefur nú verið formlega úrelt og fjarlægt úr nýjustu Windows 11 kjarnum, tilheyrir sögulegri arfleifðartækni)"
 
 msgid "mime_conf"
-msgstr "Stillingaskrá (geymir hugbúnaðarstillingar í textasniði, algeng snið: INI, JSON, YAML, TOML, XML. Linux kerfisstillingar eru að mestu í /etc skráasafninu)"
+msgstr "CONF kerfisstillingarskrá (almennur flokkur gagnaskráa sem geyma hugbúnaðar keyrsluumhverfisbreytur í hreinum texta. Nær yfir INI og nútíma YAML, TOML, JSON upplýsingar. Í Linux kerfum, aðallega í /etc skráarsafninu, eru þær kjarnafíkni fyrir stillingu kerfisstigs keyrsluástands)"
 
 msgid "mime_css"
-msgstr "CSS stílsíða (W3C gaf út fyrsta opinbera staðalinn CSS1 í desember 1996, CSS2 bætti við staðsetningu og miðlategundum árið 1998, frá 2011 kynnti CSS3 einingavæðingu ávalar horn, hreyfingar, sveigjanlega kassa, grindar skipulag og viðbragðshönnun. Ásamt HTML og JavaScript er það ein af þremur aðal tækni front-end, allir nútíma vafrar (Chrome, Firefox, Safari, Edge) styðja það náttúrulega, það er eina staðallinn fyrir að skilgreina útlit vefsíðna)"
+msgstr "CSS stílsíða í röð (1996 W3C staðall, ásamt HTML/JS myndar það þrjá kjarna framendaþróunar. Með þróun frá CSS2 staðsetningu til CSS3 einingavæðingar, styður það innfæddan Flexbox, Grid og miðlafyrirspurnir móttækilega hönnun, og er ríkjandi staðall til að aftengja vefsíðukynningu í nútíma vöfrum)"
 
 msgid "mime_xsl"
-msgstr "XSL stílsíða (W3C staðall frá 1999, tungumál til að umbreyta XML skjölum, getur breytt XML í HTML/PDF/texta. Notkun hefur minnkað eftir útbreiðslu JSON)"
+msgstr "XSL stílsíða (1999 W3C staðall, inniheldur XSLT umbreytingu og XPath vistfangsmál, til að birta uppbyggð XML gögn sem HTML, PDF eða hreinan texta. Í nútíma þróun hefur vistkerfi þess að mestu verið skipt út fyrir léttari sniðmótsvélar og JSON gagnasnið)"
 
 msgid "mime_runtime"
-msgstr "Keyrsluskrá (keyrslusnið stýrikerfis eins og EXE, ELF, Mach-O, inniheldur vélamálskóða og upplýsingar um hleðslu)"
+msgstr "keyrsluhæf skrá (EXE, ELF, Mach-O o.s.frv. innfædd keyrslusnið stýrikerfisins, innihalda þýddan lággráðu vélamálskóða, inngangspunkt og kerfisálagsupplýsingar)"
 
 msgid "mime_library"
-msgstr "Bókasafnsskrá (DLL, SO, dylib o.fl., dynamískt tengd bókasöfn, sameiginlegur kóði sem forritið hleður meðan á keyrslu stendur)"
+msgstr "bókasafnsskrá (DLL, SO, dylib o.s.frv., kraftmikil eða kyrrstæð tengibókasöfn, innihalda sameiginleg tákn og tilfærslukóða fyrir önnur forrit til að kalla á og hlaða við keyrslu)"
 
 msgid "mime_swf"
-msgstr "Flash hreyfimynd (Macromedia þróaði það árið 1996, seinna í eigu Adobe. Gagnvirkur staðall fyrir vefhreyfimyndir, eitt sinn ríkti yfir hreyfimyndum og leikjum á internetinu. Gallar: krefst viðbyggingar, ekki stutt á farsímum, mikil öryggisáhætta. Adobe tilkynnti um brotthvarf árið 2017, hætti stuðningi að fullu árið 2020, skipt út fyrir HTML5/CSS3/JS)"
+msgstr "Flash teiknimynd (1996 Macromedia, keypt af Adobe 2005. Gagnvirkur vefteiknimyndastaðall, réði áður ríkjum yfir teiknimyndum og leikjum á netinu. Gallar: viðbótarþráhyggja, skortur á farsímastuðningi, mikil öryggisáhætta. Adobe tilkynnti hættir árið 2017, stuðningi lauk alfarið 2020, skipt út fyrir HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD skilgreining skjalagerðar (XML forskrift, skilgreinir byggingu XML skjals, notuð til að staðfesta lögmæti XML)"
+msgstr "DTD skjalategundar skilgreining (gefið út með XML 1.0 árið 1998, notað til að skilgreina XML/HTML skjalabyggingu og staðfesta lögmæti. Í nútíma þróun hefur því að mestu verið skipt út fyrir sveigjanlegri lausnir eins og XML skema, RELAX NG o.s.frv.)"
 
 msgid "mime_csv"
-msgstr "CSV gagnasnið (gildi aðskilin með kommum, algengt töflugagnasnið, staðall fyrir innflutning/útflutning í Excel og gagnagrunna)"
+msgstr "CSV gagnasnið (gildi aðskilin með kommum, algilt hreint texta töflusnið frá stórtölvu tímum (IBM Fortran þýðanda) árið 1972. Formlegt af RFC 4180 árið 2005 sem taplaus, krossvettvangur, krosstungumál gagnaskiptastaðall. Mikið notað fyrir skilvirkan innflutning/útflutning með Excel, tengslagagnagrunna og gagnagreiningu (Pandas))"
+
+msgid "mime_cur"
+msgstr "músarbendilsskrá (.cur snið, notað til að sérsníða músarbendil stíl, eins og fingrabendill á vefsíðum eða sandúrs táknmynd biðar. Það er 'ættingi' hins almenna .ico táknmyndar, en hefur auka 'heitan reit' – raunverulegan smellistað. Saga: kynnt með Windows 3.1 (1992), lykilþáttur í umskiptum úr skipanalínu yfir í músarstýrða myndræna notendaviðmótið)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (ræsir Java forrita, dreifingartækni fyrir Java skrifborðsforrita frá 2000, nú úrelt)"
+msgstr "Java Web Start (2000 Java skjáborðsforritadreifingartækni, ræsir fjarlæg Java forrit í gegnum .jnlp skrár. Vegna öryggisvandamála og útbreiðslu nútíma dreifingaraðferða, er það nú að mestu úrelt)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader rafbók (Microsoft gaf út árið 2000, LIT snið, úrelt)"
+msgstr "Microsoft Reader rafbók (2000 Microsoft, LIT snið. Úrelt, hægt að breyta nú í EPUB eða PDF með verkfærum eins og Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vigurmynd (W3C staðall 1999, vegna þess að Microsoft ýtti lengi undir sitt eigið VML snið, studdi IE vafrinn það fyrst árið 2011, sem seinkaði almennri notkun. Eftir 2015, með brotthvarfi IE og útbreiðslu háskerpuskjáa, varð það valið snið fyrir tákn og lógó)"
+msgstr "SVG vigurmyndir (1999 W3C staðall, XML byggt 2D vigurmyndasnið. Býður upp á tapi laust stærðarbreytingu og textastreymi kosti. Allir nútíma vafrar styðja það innfæddan, mikið notað fyrir hágæða vef táknmyndir, lógó og vigurteiknimyndir, er kjarnastaðall nútíma vefmyndrænna)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vigurmynd (gefinn út 1987, iðnaðarstaðall vigurmyndasnið, valið fyrir prentun, lógó, tákn)"
+msgstr "AI vigurmyndir (1987 Adobe einka vigursnið. Sem iðnaðarstaðall fyrir útlit, prentun hönnun og vörumerkja auðkenni, styður það mörg lög og háþróuð útlit vigurgögn, og er ákjósanlegur miðill fyrir faglegt sjónlist)"
 
 msgid "mime_phshop"
-msgstr "Photoshop mynd (Adobe gaf út árið 1990, Photoshop upprunalega sniðið PSD, iðnaðarstaðall fyrir myndvinnslu)"
+msgstr "PSD lagskipt mynd (1990 Adobe einka bitakorts frumskrá gefin út með Photoshop. Styður mörg lög, rásir, grímur og taplaust breytingargögn, og hefur orðið alþjóðlegur iðnaðarstaðall fyrir myndvinnslu og stafræna málun)"
 
 msgid "mime_ttf"
-msgstr "TrueType letur (Apple og Microsoft þróuðu saman 1989, vigur letursnið, skjábirting og prentun er samkvæm, sjálfgefið letursnið nútíma stýrikerfa)"
+msgstr "TrueType leturgerð (1989 Apple og Microsoft sameiginlega þróað stafrænt útlínuletursnið. Byggt á ferningslaga Bézier ferlum, nær það algerri pixla samræmi milli skjásýningar og prentaðs úttaks, og er innfædd sjálfgefin leturgerð nútíma skjáborðs stýrikerfa)"
 
 msgid "mime_fon"
-msgstr "WOFF2 veffletur (W3C tilmæli 2014, notar Brotli þjöppunarreiknirit, samanborið við eldra WOFF er rúmmál um 30% minna, samanborið við TTF/OTF um 50% minna, stutt af öllum nútíma vöfrum, valið snið fyrir nútíma veffletur, stutt af yfir 98% vafra)"
+msgstr "FON bitakorts leturgerð (1980 Microsoft snemma kerfisstigs punktakerfis letursnið. Styður ekki tapslaust hlutfallslegt stærðarbreytingu, venjulega takmarkað við pixla byggða textaútgáfu í arfleifðarkerfum eða snemma innbyggðum tækjahlutum)"
 
 msgid "mime_pdf"
-msgstr "PDF skjal (Adobe þróaði það 1993, varð ISO staðall 2008. Vettvangsoháð skjalasnið, heldur samræmi í sniði, er alþjóðlegur staðall fyrir dreifingu rafrænna skjala)"
+msgstr "PDF rafrænt skjal (þróað af Adobe árið 1993 og varð alþjóðlegur ISO 32000 staðall árið 2008. Krossvettvangur fasta útlitsskjalsnið með algeru útlit og snið tryggð, það er alþjóðlegur staðall fyrir dreifingu rafrænna skjala og stafræna útgáfu)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dynamísk síða (Microsoft gaf út 2002, tækni fyrir dynamískar vefsíður á Windows vettvangi, hluti af .NET Framework)"
+msgstr "ASP.NET kraftmikil síða (2002 Microsoft netþjónshlið kraftmikil vefsíðutækni gefin út með .NET byggingunni. Hýst á IIS vél, notuð til að byggja fyrirtækisstigs Windows netþjónshlið kraftmikla vefforrit og dreifð kerfi)"
 
 msgid "mime_mdb"
-msgstr "Access gagnagrunnur (Microsoft Access gagnagrunnsskrá, gefin út 1992, Windows skrifborðs gagnagrunnslausn)"
+msgstr "MDB tengslagagnagrunnur (1992 Microsoft skjáborðsstigs tengslagagnagrunns geymslusnið gefið út með Access. Með innbyggðri Jet gagnagrunnsvél, þjónaði sem tengslagagnagrunna lausn fyrir snemma persónulegum tölvum og lítil og meðalstór fyrirtæki upplýsingastjórnun)"
 
 msgid "mime_md"
-msgstr "Markdown skjal (John Gruber bjó til 2004, hönnun setningafræði undir áhrifum frá reStructuredText og Setext. Helsta hönnunarheimspeki er 'læsileiki þýðir möguleika á birtingu', upprunaleg útfærsla Markdown.pl notar Perl reglulegar segðir. Afleiddar forskriftir innihalda GFM (2013), CommonMark (2017), Pandoc Markdown o.fl. Knýr vistkerfi eins og GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, og verður staðlað snið fyrir kyrrstæðar vefsíðugerðir og þróunarskjölun)"
+msgstr "Markdown skjal (2004 John Gruber létt merkingarmál. Kjarnahönnunarheimspeki þess 'læsilegt er birt' knýr nútíma afleiddar upplýsingar eins og GFM og CommonMark. Mikið notað sem skiptastaðall fyrir tæknilega skjölun, þekkingargrunna (Obsidian) og nútíma kyrrstæðar vefsíðugerðarvélar)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports skýrslusnið (SAP viðskiptagreind, staðlað snið fyrir fyrirtækjaskýrslur)"
+msgstr "Crystal Reports skýrsla (SAP Business Intelligence (BI) vettvangs faglega fyrirtækisstigs skýrsluskráarsnið. Býður upp á marga gagnaveitu tengingu og flókna kraftmikla töfluritunargetu, mikið notað fyrir faglega skýrslugerð í fjölþjóðlegra fyrirtækja fjármála- og gagnagreiningarkerfum)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice skjal (The Document Foundation þróaði 2010, grein OpenOffice, útfærsla ODF staðals, helsti opna skrifstofupakkinn)"
+msgstr "LibreOffice skjal (opinn hugbúnaður skrifstofupakka einka snið byggt á OpenOffice, stofnað af The Document Foundation árið 2010. Útfærir djúpt W3C ODF (Opna skjalasniðið) alþjóðlega staðla, er skrifstofuhornsteinn nútíma opins hugbúnaðar vistkerfis)"
 
 msgid "mime_encrypt"
-msgstr "Dulkóðuð skrá (þarf að afkóða til að sjá, algengar viðbætur: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT dulritað skrá (upprunaleg tvöföld eða textagögn unnin af tilteknum samhverfum eða ósamhverfum dulritunaralgrímum. Inniheldur kjarnaafleidd snið eins og .enc, .pgp, .gpg o.s.frv., notuð á netlaginu til að tryggja trúnað og heilleikasannprófun óopinberra gagna)"
 
 msgid "mime_gpx"
-msgstr "GPS slóð gögn (GPS skiptisnið, skráir landfræðilegar upplýsingar, algengt snið fyrir íþróttaúr og leiðsögutæki)"
+msgstr "GPX gervihnattarakningargögn (XML byggt alþjóðlegt staðsetningarkerfi skiptasnið. Sérhæfir sig í að lýsa landfræðilegum hnitum, leiðarpunktum, leiðarlínum og sögulegum slóðum, það er algengur opinn gagnastaðall fyrir nútíma farsíma íþróttatæki, bíla leiðsögn og landfræðilegar upplýsingakerfi (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Diskmynd (DMG, ISO, IMG o.fl. disk/CD-ROM myndaskrár, notaðar til dreifingar hugbúnaðar eða afritunar geymslumiðla)"
+msgstr "Disk Image diskmynd (ISO, DMG, IMG o.s.frv., líkamlegs disks eða sjóntækja miðils geira fyrir geira lággráðu myndskrá. Notuð fyrir lággráðu kerfisuppsetningu, örugga dreifingu á stórum hugbúnaði og fulla líkamlega stigs öryggisafritun geymslum iðla)"
 
 msgid "mime_vm"
-msgstr "Sýndarvélarmynd (VMDK, VDI, VHDX, OVA o.fl., sýndardiskaskrár, snið fyrir sýndarvæðingarvettvang eins og VMware, VirtualBox, Hyper-V)"
+msgstr "VM sýndarvélarmynd (VMDK, VDI, VHDX, OVA o.s.frv., sýndarvædd líkamleg diskmynd. Grunnur fyrir VMware, VirtualBox og Hyper-V vettvang, notuð fyrir lággráðu vélbúnaðar eftirhermu, eintök myndatökur og skýja innviða dreifingu)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent skrá (Bram Cohen fann upp 2001, vísitöluskrá fyrir P2P niðurhal, inniheldur lýsigögn skráar og Tracker upplýsingar)"
+msgstr "BitTorrent torrent skrá (2001 Bram Cohen hannaði P2P jafningi-til-jafningi dreifða niðurhalsvísitölu. Byggt á Bencode kóðun, geymir upprunalega skráar staðfestingar lýsigögn og Tracker netþjóns vistfang upplýsingar, er kjarnamiðill dreifðra netstraums dreifingar)"
 
 msgid "mime_gis"
-msgstr "GIS landfræðileg upplýsingakerfi (landrými gögn eins og Shapefile, GeoJSON, notuð fyrir kort og staðbundna greiningu)"
+msgstr "GIS landfræðileg rúmgögn (landfræðileg upplýsingakerfi gagnastaðall með Shapefile og GeoJSON í kjarna. Inniheldur fjölvíða rúmfræðileg hnit, lag skipulagsfræði og eiginleikagögn, mikið notað fyrir hágæða stafrænna kortagerð, gervihnattafjarkönnun og rúmfræðilega greiningu)"
 
 msgid "mime_ebook"
-msgstr "Rafbók (rafbókasnið eins og EPUB, MOBI, AZW. EPUB er alþjóðlegur staðall, MOBI/AZW eru snið fyrir Amazon Kindle)"
+msgstr "EBOOK rafbók (stafrænt útgáfuform með W3C alþjóðlega opna EPUB staðlinum og Amazon Kindle einka MOBI/AZW byggingunni í kjarna. Styður aðlögunarhæft streymandi útlit, lýsigagna innhyltingu og DRM stafræn réttindastjórnun, er algildur miðill fyrir farsíma stafræna lestur)"
 
 msgid "mime_avif"
-msgstr "AVIF mynd (Alliance for Open Media gaf út 2019, byggt á AV1 kóðun, þjöppunarhlutfall 50% betra en WebP, ný kynslóð vefmyndastaðals)"
+msgstr "AVIF mikil nýtni mynd (2019 Alliance for Open Media (AOMedia) næsta kynslóðar ofur-hágæða myndastaðall. Byggt á AV1 myndbandskóðunarlyklahrönnum tækni, með þjöppunarhlutfall 50% betra en WebP og innfæddur stuðningur fyrir Hár Dynamic Range (HDR), er það almennur staðall fyrir nútíma vefmyndaflutning)"
 
 msgid "mime_markdown"
-msgstr "Markdown skjal (John Gruber hannaði 2004, létt merkingarmál, algengt snið fyrir GitHub README, tæknilega skjölun, umræðuþræði)"
+msgstr "Markdown létt skjal (2004 John Gruber textaskjals merkingarmál. Notar hreinan texta yfirlýsingarhönnun, setningafræði þess var innblásin af reStructuredText, mikið notað fyrir GitHub verkefni, verkfræðistigs tæknilega skjölun og nútíma kyrrstæðu efnisstjórnun vistkerfi)"
 
 msgid "mime_yaml"
-msgstr "YAML stilling (Clark Evans hannaði 2001, mannlegra læsilegt gagnaröðunarsnið, staðall fyrir stillingaskrár fyrir Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML raðað stilling (2001 Clark Evans o.fl. mannlæsilegt gagnaröðunarsnið. Byggt á stigveldis inndraetti og lykla-gildi kortlagningu, hefur það verið staðfest sem skýjafræðileg innviða stillingastaðall fyrir Kubernetes, Ansible sjálfvirkni og Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML stilling (Tom Preston-Werner hannaði 2013, 'Tom's Obvious Minimal Language', stillingaskráarsnið fyrir nútíma verkfæri eins og Rust/Cargo, Python/pip, Go)"
+msgstr "TOML merkingarfræðileg stilling (2013 Tom Preston-Werner minimalískt mál. Með lággráðu hönnunarkostum eins og sterkri tegund, skýrri kortlagningu og skýrri merkingarfræði, er það nú mikið notað sem staðlað stillingarskrá fyrir nútíma Rust (Cargo), Python (pyproject.toml) og Go verkfæra keðjur)"
 
 msgid "mime_vue"
-msgstr "Vue íhlutaskrá (kynnt árið 2014 af Evan You, framsækið JavaScript grindurverk. Með einni skráaríhlutum (SFC) sameinar það HTML, CSS og JS fullkomlega, sem eykur verulega skilvirkni við þróun. Það er eitt vinsælasta frontend grindurverk í heimi. Einnig sem kjarni nútíma kyrrstæðra vefmynda eins og VitePress, er það víða notað til að keyra gagnvirka tæknilega skjölun og blogg.)"
+msgstr "Vue einfaldrar skráar hluti (2014 Evan You framsækin vef umgjörð einka SFC snið. Nær á einni skrá aðskilnaði áhyggna HTML/CSS/JS og viðbragðs ástandstengingu, knýr djúpt nútíma gagnvirkar framenda vefforrit og stórfelldar kyrrstæðar vefsíðuvélar)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly eining (W3C staðall 2017, háafkasta keyrslusnið í vafra, C/C++/Rust/R geta þýtt sem mark, afköst nálægt innfæddum)"
+msgstr "WebAssembly tvöfaldur eining (2017 W3C staðfestur hár árangur lággráðu bætkóða staðall fyrir vefinn. Leyfir sterklega tegund málum eins og C/C++/Rust að þýða í vafra sandkassa umhverfi, veitir nálægt innfæddum vélbúnaðar framkvæmdar skilvirkni, er hornsteinn nútíma vefja úttaks tölvunar)"
 
 msgid "mime_jsx"
-msgstr "React JSX íhlutur (Facebook gaf út JavaScript XML 2013, íhlutasnið React grinds, nýstárleg nálgun sem færir HTML inn í JavaScript)"
+msgstr "React JSX hluti (2013 Facebook JavaScript XML setningafræði viðbót gefin út með React umgjörð. Styður yfirlýsandi byggingu sýndar DOM bygginga innan JavaScript, gerir framenda 'Viðmót sem fall ástands' íhlutamiðaða þróunar fyrirmynd kleift)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX íhlutur (Microsoft þróaði 2012, TypeScript + JSX, staðlað skrifað mynstur fyrir týpuörugga React þróun)"
+msgstr "TypeScript TSX hluti (2012 Microsoft TypeScript sterk tegund setningafræði og JSX streymandi samsetning. Sprautar kyrrstæðri þýðingartíma tegundaskoðun og viðmóts takmörkunum inn í React hluta þróun, er kóðastaðall fyrir örugga þróun nútíma stórra framenda kerfa)"
 
 msgid "mime_heif"
-msgstr "HEIF mynd (MPEG staðall 2015, skilvirkt myndaskráarsnið, mikið notað í Apple vistkerfinu)"
+msgstr "HEIF mikil nýtni mynd (2015 MPEG stofnun staðfest mikil nýtni myndasnið. Byggt á HEVC (H.265) myndbandskóðun algrími, styður margar myndahrönnur, dýptarkort og lýsigögn í mjög litlu rúmmáli, er einka geymslustaðall fyrir nútíma farsíma stýrikerfi og snjöll endatæki)"
 
 msgid "mime_heic"
-msgstr "HEIC mynd (Apple útfærsla á HEIF, sjálfgefið mynda snið á iPhone, stutt innbyggt í iOS/macOS)"
+msgstr "HEIC mikil nýtni mynd (Apple einka bitakorts snið byggt á alþjóðlega HEIF staðlinum. Sem sjálfgefið ljósmynda geymsluform fyrir nútíma iPhone, hefur það vélbúnaðarstigs kóðun/afkóðun frá iOS/macOS og innfæddan stýrikerfis stuðning, minnkar gríðarlega undirliggjandi geymslupláss á meðan viðheldur háum myndgæðum)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D líkan (GL flutningssnið, 'JPEG 3D heimsins', Khronos Group gaf út 2015, staðlað snið fyrir Web 3D)"
+msgstr "glTF 3D eign líkan (2015 Khronos Group gefin út GL flutningssniðs staðall. Notar JSON byggingu til að lýsa þrívíðum senum, þekkt sem 'JPEG fyrir 3D', er léttur iðnaðarstaðall fyrir nútíma WebGL/WebGPU og sýndarveruleika útgáfu)"
 
 msgid "mime_glb"
-msgstr "GLB tvíundir 3D líkan (tvíundarútgáfa af GLTF, ein skrá inniheldur allar auðlindir, notuð til dreifingar 3D senna)"
+msgstr "GLB tvöfaldur 3D líkan (tapslaus tvöföld innhylting útgáfa af glTF eign líkani. Sameinar sena byggingu, undirliggjandi möskva hornpunkta gögn, efni og áferðir í eina skrá, sérstaklega hönnuð fyrir skilvirka sendingu og streymisdreifingu vefs 3D eigna yfir vettvanga)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY orðasafn (skrá með skilgreiningum hugtaka, fyrir hugtakastjórnun í skjölunarkerfum)"
+msgstr "GLOSSARY gagna orðasafn (hugtakaskilgreiningarskrá sérstaklega fyrir skjalastjórnunarkerfi og uppbyggð gagnasöfn. Inniheldur staðlaðar hugtakaskilgreiningar, fjöltyngd kortlagningu og lýsigagna kortlagningu, notuð til að viðhalda huglægu samræmi í sjálfvirkri textagreiningu og efnisútgáfukerfum)"
 
 msgid "mime_cbz"
-msgstr "CBZ myndasögubók (ZIP þjappaðar myndasögumyndir, algengt snið fyrir myndasögusöfn)"
+msgstr "CBZ myndasaga (ZIP þjöppun byggt einka myndasagnamynda skjalasafns snið. Inniheldur samfellt röð af kyrrstæðum bitakortamyndum, þjónar sem algilt létt ílát staðall fyrir stafræna myndasöguútgáfu og krossvettvang staðbundna söfnun)"
 
 msgid "mime_cbr"
-msgstr "CBR myndasögubók (RAR þjappaðar myndasögumyndir, algengt snið fyrir myndasögusöfn)"
+msgstr "CBR myndasaga (RAR þjöppun byggt einka myndasagnamynda skjalasafns snið. Notar RAR algrímið til að innhylta kyrrstæðar bitakortaraðir, með háa þjöppunarhlutfall og víðtækan samhæfnisstuðning á sviði stafrænnar myndasögudreifingar)"
 
 msgid "mime_fb2"
-msgstr "FB2 rafbók (FictionBook 2.0, rússneskt rafbókasnið, XML bygging, mikið stutt af opnum frumkóða lesum)"
+msgstr "FB2 rafbók (snemma 2000 FictionBook 2.0 rafbókastaðall. Notar hreina XML byggingu til að lýsa bókareiginleikum og textastigveldi, með víðtækan stuðning í opnum hugbúnaði rafbóka vistkerfi og arfleifð stafrænni útgáfu lesendum)"
 
 msgid "mime_kepub"
-msgstr "KEPUB rafbók (Kobo sérstakt EPUB snið, bestað snið fyrir Kobo rafbókalesara)"
+msgstr "KEPUB rafbók (Kobo einka bætt rafbókasnið byggt á EPUB staðlinum. Hagrætt á vélbúnaðarstigi fyrir Kobo rafbóka lesendur, býður upp á skilvirkara síðuútlit og lestrartölfræði samskipti)"
 
 msgid "mime_m4b"
-msgstr "M4B hljóðbók (MPEG-4 hljóðsnið fyrir bækur, styður bókamerki, iTunes hljóðbókasnið)"
+msgstr "M4B hljóðbók (MPEG-4 Part 14 (MP4) ílát bygging byggt hljóðbókasnið. Notar AAC kóðun, styður innfæddan lággráðu bókamerkjastaðsetningu, endurheimtun frá slökkt og kafla innfellingu, var einu sinni staðlað snið í Apple iTunes vistkerfi)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX snið (Amazon gaf út 2015, sérstakt rafbókasnið fyrir Kindle, styður háþróaða uppsetningu og fljótímanlega blaðsíðuskipti)"
+msgstr "Kindle KFX snið (2015 Amazon einka bætt stafrænt útgáfusnið gefið út með Kindle. Styður háþróaða leturgerð tengingu, háa kraftmikla leturgerð útgáfu og kjarnastigs streymandi síðuhleðslu (Page Flip), er kjarnastaðall nútíma Kindle vettvangs)"
 
 msgid "mime_chm"
-msgstr "CHM hjálparskrá (Microsoft gaf út 1997, þýtt HTML hjálparsnið, staðall fyrir hjálparskjöl fyrir Windows hugbúnað)"
+msgstr "CHM þýdd hjálparskrá (1997 Microsoft þýdd HTML hjálparupplýsingakerfi. Pakkar hypertexta gögnum og undirliggjandi vísitölum í eitt tvöfalt ílát, hefur lengi verið staðlað snið fyrir Windows hugbúnað staðbundna nettengda hjálparskjölun)"
 
 msgid "mime_mht"
-msgstr "MHT vefsafn (Microsoft gaf út 1999, eins skráar vefsíðusnið, IE vafrinn snið til að vista vefsíður)"
+msgstr "MHT vefsafn (1999 Microsoft MIME samansafn hypertexta snið. Byggt á RFC 2557 staðli, pakkar HTML frumkóða, CSS, JS og innfelldum myndum í eina textaskrá, notuð fyrir arfleifð vafra nettengda vefsíðuvistun)"
 
 msgid "mime_wml"
-msgstr "WML þráðlaust merkingarmál (WAP staðall 1999, notað fyrir vefsíður á fyrstu farsímum, úrelt)"
+msgstr "WML þráðlaus merkingarmál (1999 WAP (Þráðlaus forrits staðall) vettvangur staðfestur farsíma merkingarstaðall. Byggt á XML upplýsingatækni, sérstaklega hannað fyrir snemma mjóa band breiðslu þráðlausra farsímakerfa og lág-reikniafls eiginleika síma, tilheyrir starfslokum arfleifðartækni í nútíma vefs vistkerfi)"
 
 msgid "mime_xhtml"
-msgstr "XHTML vefsíða (W3C staðall 2000, XML útgáfa af HTML, strangari setningafræði. W3C hætti viðhaldi 2009, einbeitti sér að HTML5)"
+msgstr "XHTML hypertexta vefsíða (2000 W3C staðall, XML bygging byggð strangt hypertexta merkingarmál. Árið 2009, W3C stöðvaði tæknilega þróun þess og sneri sér alfarið að HTML5 upplýsingatækninni, nú aðallega notað fyrir merkingarfræðilega vefsíðuútgáfu í arfleifðarkerfum)"
 
 msgid "mime_xml"
-msgstr "XML skjal (W3C staðall 1998, útvíkjanlegt merkingarmál, grunnsnið fyrir vefþjónustur, stillingaskrár, gagnaskipti)"
+msgstr "XML uppbyggt skjal (1998 W3C staðall útvíkkanlegt merkingarmál. Með sjálfslýsandi merkja byggingu, er það grundvallarsnið fyrir net vefþjónustur (SOAP/REST), kerfisstigs stillingarskrár (XSD) og krossvettvang gagnaskipti)"
 
 msgid "mime_sgml"
-msgstr "SGML skjal (ISO staðall 1986, forveri HTML, staðlað almennt merkingarmál, bæði XML og HTML eru komin frá SGML)"
+msgstr "SGML staðlað almennt merkingarmál (1986 ISO 8879 alþjóðlegur staðall. Sem iðnaðar brautryðjandi í uppbyggðri lýsingu rafrænna skjala, eru bæði XML og snemma HTML upplýsingar afleiddar af þessu stöðluðu yfirmáli)"
 
 msgid "mime_apng"
-msgstr "APNG hreyfimynd (Mozilla þróaði 2004, hreyfimyndaútfærsla PNG, nútíma skipti fyrir GIF, styður alvöru liti og gagnsæi)"
+msgstr "APNG kraftmikil mynd (2004 Mozilla þróað PNG kraftmikil viðbót. Styður 24-bita sannan lit og 8-bita alfa rás hálfgagnsæi, þjónar sem hágæða valkostur við GIF snið fyrir nútíma vef atburðarásir)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmappa (Windows bitmappasnið, innfæddur stuðningur síðan Windows 1.0. Óþjappað, stór skráarstærð, en vegna einfaldrar uppbyggingar og skorts á þörf fyrir viðbótar kódekum, er það enn notað í klippingartæki Windows 11, Paint forritinu, táknauðlindum í EXE/MSI uppsetningarpökkum, bendilskrám og sumum eldri reklum. Við sömu myndgæði er skráarstærðin um 3-10 sinnum stærri en PNG. Í flestum tilfellum hefur því verið skipt út fyrir PNG/JPEG, en Windows vistkerfið viðheldur enn víðtæku samhæfni)"
+msgstr "BMP innfædd bitakort (Microsoft vettvangur tækisóháð bitakortasnið staðfest frá Windows 1.0 tímum. Notar tapslaust óþjappað geymslu, því rúmmál þess er venjulega 3-10 sinnum stærra en PNG, en þar sem það þarfnast ekki kóðunar/afkóðunar yfirkostnaðar, er það enn víða innfellt í Windows 11 kjarnaíhluti, EXE/MSI auðlindahluta og arfleifð reklstjóra grafískra vinnsluminnis)"
 
 msgid "mime_cdr"
-msgstr "CDR vigurmynd (CorelDRAW sérstakt snið, kanadískt fyrirtæki Corel, hugbúnaður fyrir hönnun vigurmynda)"
+msgstr "CDR vigurmyndir (Corel Corporation einka CorelDRAW fagmannlegt vigurhönnunar frumskrársnið. Styður lög byggða lita stjórnun, flókin stærðfræðileg ferilhnút og prentstigs útlit gögn, er sérhæft snið fyrir fagmannlega grafíska prentun og auglýsingahönnunarsvið)"
 
 msgid "mime_gif"
-msgstr "GIF mynd (CompuServe þróaði 1987, 256 lita hreyfimyndasnið. Gallar: fáir litir, gróf myndgæði, styður ekki gagnsæi, stór skrá, lágur rammatíðni. Skipt út fyrir nútíma hreyfimyndasnið eins og APNG, WebP)"
+msgstr "GIF flokkaður litamynd (1987 CompuServe 8-bita flokkað lit bitakortasnið. Byggt á LZW algrími, takmarkað við 256 lita stig og einkróma gagnsæi, með uppþustu rúmmáli á háum myndhraða, smám saman skipt út fyrir nútíma skilvirk teiknimyndastaðla eins og APNG, WebP o.s.frv.)"
 
 msgid "mime_ico"
-msgstr "ICO tákn (Windows táknasnið, styður margar upplausnir, staðlað snið fyrir favicon vefsíðna)"
+msgstr "ICO kerfistáknmynd (Windows innfædd táknmynd auðlindainnhyltingarsnið. Styður blöndun margra myndbreytinga með mismunandi pixla upplausn og litadýpt í einu íláti, er einnig algildur dreifingarstaðall fyrir nútíma vafra vefsvæðis auðkenni (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "JPEG mynd (ISO staðall 1992, gagnatapandi þjöppunarsnið fyrir ljósmyndir, staðreyndarstaðall fyrir ljósmyndir á internetinu)"
+msgstr "JPEG þjöppuð mynd (1992 ISO 10918 alþjóðlegur staðall tapandi þjöppunar snið. Byggt á stakri kósínus umbreytingu (DCT) algrími, nær háu þjöppunarhlutfalli en viðheldur framúrskarandi raunsærri myndgæðum, er algildur de facto staðall fyrir kyrrstæðar ljósmyndir á alþjóðlegu internetinu)"
 
 msgid "mime_jpg"
-msgstr "JPEG mynd (ISO staðall 1992, gagnatapandi þjöppunarsnið fyrir ljósmyndir, staðreyndarstaðall fyrir ljósmyndir á internetinu)"
+msgstr "JPEG þjöppuð mynd (1992 ISO 10918 alþjóðlegur staðall tapandi þjöppunar snið. Byggt á stakri kósínus umbreytingu (DCT) algrími, nær háu þjöppunarhlutfalli en viðheldur framúrskarandi raunsærri myndgæðum, er algildur de facto staðall fyrir kyrrstæðar ljósmyndir á alþjóðlegu internetinu)"
 
 msgid "mime_png"
-msgstr "PNG mynd (W3C tilmæli 1996, styður alvöru liti og gagnsæi, kyrrstæð skipti fyrir GIF, staðall fyrir gagnatapalausar myndir á internetinu)"
+msgstr "PNG taplaus mynd (1996 W3C-mælt með færanlegu netmyndastöðlum. Notar tapslaust þjöppunaralgrím, styður innfæddan 24-bita sannan lit og 8-bita alfa rás gagnsæi, sem hágæða valkostur við klassískt kyrrstæða GIF, er algildur de facto staðall fyrir tapslausa pixlamyndir á internetinu)"
 
 msgid "mime_ps"
-msgstr "PostScript síðulýsingarskrá (Adobe gaf út 1985, síðulýsingarmál, forveri PDF, notað fyrir prentun og útgáfu)"
+msgstr "PostScript síðulýsingarskrá (1985 Adobe stafla byggt síðulýsingarmál. Sem tæknilegur forveri PDF sniðsins, nær það á lággráðu vélbúnaðaróháðu textaútlagningu og mikilli nákvæmni vigurmyndagerð, og er grundvallarstaðall fyrir faglega prentun og leysiprentunarsvið)"
 
 msgid "mime_psb"
-msgstr "PSB stórt skjal (Adobe Photoshop snið fyrir afar stórar myndir, styður risastórar myndir yfir 2 GB eða 30000 pixla)"
+msgstr "PSB stórt lag skjal (Adobe Photoshop einka mjög stór frumskrá innhyltingarsnið. Brýtur staðlaða PSD sniðs 2GB líkamlegt rúmmál og 30.000 pixla innra vistfangstakmarkanir, sérstaklega hannað til að geyma mjög stór, djúpt lögð, risastór stafræn listauðlindir)"
 
 msgid "mime_psd"
-msgstr "PSD mynd (Adobe Photoshop upprunaleg skrá, styður lög, rásir, slóðir, iðnaðarstaðall fyrir myndvinnslu)"
+msgstr "PSD laghönnunar frumskrá (Adobe Photoshop einka lagað mynd verkfræði ílát. Sem iðnaðarstaðlað ílát á sviði grafískrar myndgreiningar, innhyltar það innfædda fulla lagagerðartréð, bitakort rásir, vigur klippingarleiðir og flóknar blöndunarstillingar, styður tapslaust fullt gagnabreytingar)"
 
 msgid "mime_webp"
-msgstr "WebP mynd (Google þróaði 2010, vefmyndasnið, styður gagnatapandi/gagnatapalausa þjöppun og hreyfimyndir, þjöppunarhlutfall 25-35% betra en PNG og 25% betra en JPEG)"
+msgstr "WebP mikil nýtni mynd (2010 Google algilt vefmyndkóðunarstaðall. Dregið af VP8 myndbandskylduhrönnum tækni, fullkomlega samhæft við tapandi, tapslaust, hálfgagnsætt og kraftmikið útgáfu, 25-35% minni en PNG við sömu gæði, er hornsteinn háafla hleðslu nútíma vefsíðna)"
 
 msgid "mime_woff"
-msgstr "WOFF veffletur (búið til 2009, W3C staðall 2018. Þjappað byggt á TrueType/OpenType, bestað fyrir hleðslu veffletra, staðlað snið fyrir táknsletur á nútíma vefsíðum)"
+msgstr "WOFF vef leturgerðarskrá (2009 búið til og 2012 W3C staðall vefs opin leturgerðarsnið. Kjarni þess er tapslaus straumþjöppun á stöðluðum TTF/OTF leturgerðarbyggingu, hagræðir verulega netbandbreiddarkostnaði, er algilt snið fyrir nútíma vefsvæða táknmyndir og ský leturgerðir)"
 
 msgid "mime_7z"
-msgstr "7z þjöppuð skrá (Igor Pavlov þróaði 1999, sérstakt snið 7-Zip forritsins. LZMA reiknirit, hátt þjöppunarhlutfall, opinn frumkóði og ókeypis. 7z sniðið er venjulega 30-50% minna en ZIP við sama þjöppunarhlutfall, algengt snið í opna frumkóða samfélaginu og fyrir dreifingu hugbúnaðar)"
+msgstr "7z þjappaður pakki (1999 Igor Pavlov 7-Zip einkasnið. Byggt á opnum hugbúnaði LZMA/LZMA2 algrímum, með mjög hátt þjöppunarhlutfall. Við sambærilegar aðstæður er það venjulega 30-50% minna en ZIP, og er algilt háþjöppunarhlutfallssnið í opnum hugbúnaðarsamfélaginu og hugbúnaðardreifingu)"
 
 msgid "mime_ace"
-msgstr "ACE þjöppuð skrá (þróuð á tíunda áratugnum, snið WinACE forritsins. Keppti eitt sinn við RAR, þjöppunarhlutfall var nokkuð hátt. Þróun hætt 2007, nú skipt út fyrir 7z/RAR, sjaldan notað)"
+msgstr "ACE þjappaður pakki (1990 WinACE einka þjöppunarsnið. Keppti einu sinni við RAR snið og bauð upp á hátt þjöppunarhlutfall. Tæknileg þróun hætti eftir 2007, nú skipt út fyrir 7z og RAR snið, tilheyrir arfleifðarkerfa skjalasafns sniðum)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 þjöppuð skrá (Julian Seward þróaði 1996, þjöppunarreiknirit með flokkun blokka. Þjöppunarhlutfall 15-20% hærra en GZIP en hægara. Algengt snið fyrir frumkóða Linux kjarna, opna frumkóða hugbúnaðarpakka, viðbót .bz2)"
+msgstr "BZIP2 þjappaður pakki (1996 Julian Seward blokka flokkunar þjöppunarsnið. Undirliggjandi algríms þjöppunarhlutfall er 15-20% hærra en GZIP en með hærri reiknikostnaði. Oft notað til dreifingar Linux kjarna frumkóða og opins hugbúnaðar pakka, staðlað skráarviðskeyti er .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB þjöppuð skrá (Microsoft þróaði 1995, Cabinet snið. Uppsetningarpakkasnið fyrir Windows, notað fyrir rekla, dreifingu kerfisskrár. Windows Installer (MSI) notar innra CAB til að geyma skrár)"
+msgstr "CAB þjappaður pakki (1995 Microsoft þróað skjalasafnssnið. Sem Windows kerfis innfæddur uppsetningarstaðall, notaður til dreifingar reklstjóra og kjarna skráa, einnig þjónar sem undirliggjandi geymsluílát fyrir Windows uppsetningarforrit (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG diskmynd (Apple kynnti á 9. áratugnum, Disk Image snið. Staðlað snið fyrir dreifingu macOS hugbúnaðar, tvísmelltu til að setja upp sem sýndardisk, dragðu og slepptu til að setja upp forritið. Styður þjöppun og dulkóðun, er aðalsniðið fyrir niðurhal Mac hugbúnaðar)"
+msgstr "DMG diskmynd (1980 Apple þróað diskmyndarsnið. Sem staðlað ílát fyrir macOS hugbúnaðardreifingu, styður tengingu sem sýndarskráarkerfi, lággráðu þjöppun og gagnadulritun, og er ríkjandi snið fyrir forritadreifingu í Mac vistkerfinu)"
 
 msgid "mime_emz"
-msgstr "EMZ þjöppuð mynd (Windows þjöppuð aukin lýsigögn, þjöppuð útgáfa af EMF. Snið til geymslu á vigurmyndum í Office skjölum, í raun er það GZIP þjöppuð EMF skrá)"
+msgstr "EMZ þjöppuð mynd (þjöppuð útgáfa af Windows aukinni myndasafnsskrá EMF. Aðallega tvöföld vigurmynd þjöppuð í gegnum GZIP algrím, mikið notuð til að geyma innfellda vigurmynd í Microsoft Office pakka skjölum)"
 
 msgid "mime_gz"
-msgstr "GZIP þjöppuð skrá (Jean-loup Gailly og Mark Adler þróuðu 1992, GNU verkefni. Staðlað þjöppunarverkfæri í Unix/Linux, algengt snið fyrir HTTP flutningsþjöppun. Viðbót .gz, oft notað ásamt TAR)"
+msgstr "GZIP þjappaður pakki (1992 GNU verkefni Jean-loup Gailly og Mark Adler staðlað straumþjöppunarsnið. Sem staðlað Unix/Linux þjöppunarverkfæri, einnig kjarnastaðall fyrir HTTP flutningslags þjöppun (Gzip), oft notað í samsettningu með TAR skjalasafni)"
 
 msgid "mime_jar"
-msgstr "JAR þjöppuð skrá (Sun Microsystems gaf út 1997, Java ARchive snið. Í raun er þetta ZIP skrá, notað til að pakka Java bókasöfnum og forritum. Grunnsnið fyrir Java vistkerfi eins og Maven, Gradle. Android notar einnig JAR)"
+msgstr "JAR þjappaður pakki (1997 Sun Microsystems Java ARchive skjalasafnssnið. Aðallega ZIP byggingu byggt pökkunarílát, notað til að innhylta Java klassa bókasöfn og lýsigögn, er kjarnasett vara fyrir Maven, Gradle og snemma Android vistkerfi)"
 
 msgid "mime_lzma"
-msgstr "LZMA þjöppuð skrá (Igor Pavlov þróaði 1998, Lempel-Ziv-Markov keðju reiknirit. Aðal þjöppunarreiknirit 7z sniðsins, hátt þjöppunarhlutfall, hratt afþjöppunarhraði. Notað fyrir dreifingu fastbúnaðar og hugbúnaðar fyrir innbyggð kerfi)"
+msgstr "LZMA þjappaður pakki (1998 Igor Pavlov Lempel-Ziv-Markov keðju þjöppunaralgrím. Sem kjarnavél 7z sniðsins, með mjög hátt þjöppunarhlutfall og hratt afþjöppun, mikið notað til dreifingar vélbúnaðar fastbúnaðar og innbyggðra kerfa)"
 
 msgid "mime_rar"
-msgstr "RAR þjöppuð skrá (Eugene Roshal þróaði 1993, Roshal ARchive snið. Hátt þjöppunarhlutfall, styður skiptingu í hluta og endurheimtuskrár. Snið WinRAR forritsins, þjöppunarhlutfall betra en ZIP en krefst greidds hugbúnaðar, opinn frumkóða verkfæri eins og unrar geta afþjappað)"
+msgstr "RAR þjappaður pakki (1993 Eugene Roshal WinRAR einka skjalasafnssnið. Styður bindiaskiptingu, líkamlega endurheimtarfærslur (ECC) og sterka dulritun. Þjöppunarhlutfall þess er betra en staðlaðs ZIP, með víðtækan samhæfnisstuðning á persónulegum og viðskiptasviðum)"
 
 msgid "mime_tar"
-msgstr "TAR safnskrá (Unix V7 kynnti 1979, Tape ARchive snið. Segulbandsafn, pakkar aðeins án þjöppunar, oft notað ásamt GZIP/BZIP2/XZ. Frumkóði Linux pakka, geymsla laga Docker mynda notar TAR snið)"
+msgstr "TAR skjalasafnspakki (1979 Unix V7 tímans segulbanda skjalasafnssnið. Framkvæmir aðeins skráarstraumspökkun án gagnaþjöppunar, oft sameinað með GZIP/BZIP2/XZ, er undirliggjandi staðall fyrir Linux frumkóða og Docker mynda lagskipta geymslu)"
 
 msgid "mime_tgz"
-msgstr "TGZ þjöppuð skrá (samið snið TAR + GZIP, viðbót .tgz eða .tar.gz. Algengasta sniðið fyrir dreifingu Unix/Linux hugbúnaðarpakka, frumkóðapakkar, tvíundarpakkar, mikið notað, táknar 'afþjappaðu og notaðu')"
+msgstr "TGZ þjappaður pakki (TAR skjalasafns og GZIP þjöppunar straumsamsett snið, skráarviðskeyti .tgz eða .tar.gz. Sem algengasta hugbúnaðarpakkadreifingarsniðið í Unix/Linux umhverfi, mikið notað fyrir frumkóðaþýðingaruppsetningu og uppsetningarlausa tvöfalda pakkadreifingu)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 þjöppuð skrá (samið snið TAR + BZIP2, viðbót .tbz2 eða .tar.bz2. Þjöppunarhlutfall 15-20% hærra en TGZ, hentar fyrir dreifingu stórra skráa, Linux kjarninn notaði þetta snið lengi)"
+msgstr "TBZ2 þjappaður pakki (TAR skjalasafns og BZIP2 þjöppunar straumsamsett snið, skráarviðskeyti .tbz2 eða .tar.bz2. Samanborið við TGZ, getur það bætt þjöppunarhlutfallið um viðbótar 15-20%, hentugt fyrir stórar skráaflutningar, var lengi notað fyrir dreifingu Linux kjarna frumkóða)"
 
 msgid "mime_xz"
-msgstr "XZ þjöppuð skrá (kynnt 2009, byggt á LZMA2 reikniriti. Mjög hátt þjöppunarhlutfall, 30-50% betra en GZIP, afþjöppunarhraði tiltölulega hratt. Linux kjarninn, pakkastjórar (eins og inni í .deb Debian) nota það mikið, mælt með sniði í núverandi Linux vistkerfi)"
+msgstr "XZ þjappaður pakki (2009 næsta kynslóðar háþjöppunarhlutfallssnið. Byggt á LZMA2 algrími, gagnaþjöppunarhlutfall 30-50% betra en GZIP en viðheldur hröðum afþjöppun. Hefur verið staðfest sem mælt með dreifingarstaðli af Linux kjarna og almennum pakkastjórum (eins og inni í Debian .deb))"
 
 msgid "mime_z"
-msgstr "Z þjöppuð skrá (snið Unix compress skipunarinnar frá 1985, LZW reiknirit. Snemma Unix þjöppunarsnið, skipt út fyrir GZIP. Viðbót .Z, nútíma kerfi nota það sjaldan)"
+msgstr "Z þjappaður pakki (1985 Unix compress skipunar LZW þjöppunarsnið. Sem staðlað þjöppunarsnið í snemma Unix kerfum, nú alfarið skipt út fyrir skilvirkara GZIP snið, er sjaldgæft sögulegt arfleifðarsnið í nútíma netumferð)"
 
 msgid "mime_zip"
-msgstr "ZIP þjöppuð skrá (Phil Katz þróaði 1989, PKZIP snið. Windows styður náttúrulega, algengasta þjöppunarsniðið á internetinu. Styður margar skrár, skráasafnsbyggingu, getur valið þjöppunarreiknirit. JAR frá Java, APK frá Android, DOCX/XLSX frá Office skjölum byggja á ZIP sniði)"
+msgstr "ZIP þjappaður pakki (1989 Phil Katz PKZIP algilt skjalasafnssnið. Innfæddur stuðningur frá öllum helstu stýrikerfum, það er mest notaða ílátastaðallinn á internetinu. Nútíma Java JAR, Android APK og Office skjöl (OOXML) eru öll byggð á ZIP byggingu)"
 
 msgid "mime_zst"
-msgstr "Zstandard þjöppuð skrá (Facebook þróaði 2015, hannað af Yann Collet. Háhraða þjöppunarreiknirit, þjöppunarhlutfall nálægt LZMA, hraði langt umfram GZIP. Linux kjarni 5.9+ styður, Arch Linux pacman, Debian APT taka það smám saman upp, ný kynslóð þjöppunarstaðals)"
+msgstr "Zstandard þjappaður pakki (2015 Facebook Yann Collet næsta kynslóðar straumþjöppunarstaðall. Nálgast LZMA þjöppunarhlutfall á meðan það hefur verulega meiri afköst en GZIP. Hefur verið djúpt tekið upp af Linux kjarna (5.9+) og Arch/Debian pakkastjórum)"
 
 msgid "mime_lz4"
-msgstr "LZ4 þjöppuð skrá (Yann Collet þróaði 2011, afar hratt þjöppunarreiknirit. Þjöppunarhraði meira en 10 sinnum hraðari en GZIP, hentar fyrir rauntíma þjöppun. Linux kjarninn, OpenZFS, Hadoop nota það mikið, fyrsta val þegar hraði er í forgangi)"
+msgstr "LZ4 þjappaður pakki (2011 Yann Collet ofurhratt straumþjöppunaralgrím. Afköst hraði þess er meira en 10 sinnum hraðari en GZIP, með mjög litlum CPU keyrslutíma yfirkostnaði. Mikið notað í Linux kjarna, OpenZFS skráarkerfi og Hadoop rauntíma gagnastraumsvinnslu)"
 
 msgid "mime_lzo"
-msgstr "LZO þjöppuð skrá (Markus Oberhumer þróaði 1996, Lempel-Ziv-Oberhumer reiknirit. Afþjöppunarhraði afar hratt, þjöppunarhlutfall meðal. Linux kjarninn Squashfs, OpenWrt fastbúnaður nota það, hentar fyrir innbyggð kerfi)"
+msgstr "LZO þjappaður pakki (1996 Markus Oberhumer Lempel-Ziv-Oberhumer algrím. Einbeitir sér að ofurhröðum afþjöppunarárangri. Mikið innfellt í Linux kjarna Squashfs myndir, OpenWrt fastbúnað og ýmis auðlindatakmörkuð innbyggð kerfi)"
 
 msgid "mime_msi"
-msgstr "MSI uppsetningarpakki (Microsoft gaf út 1999, Windows Installer pakkasnið. Staðlað uppsetningarsnið fyrir Windows forrit, styður viðsnúning færslna, stjórnun íhluta, hljóðláta uppsetningu. Fyrsta val fyrir dreifingu hugbúnaðar á fyrirtækjastigi, enn aðalsniðið fyrir uppsetningu Windows hugbúnaðar í dag)"
+msgstr "MSI kerfisuppsetningarpakki (1999 Microsoft Windows uppsetningarforrit gagnainnhyltingarsnið. Sem Windows forritastigs uppsetningarstaðall, styður innfæddan lággráðu viðskiptabakkfærslu, íhluta líftímastjórnun og lotulausa hljóðláta uppsetningu, er kjarnastaðall fyrir miðlæga dreifingu fyrirtækjahugbúnaðar og stefnubundna dreifingu)"
 
 msgid "mime_pkg"
-msgstr "PKG uppsetningarpakki (macOS uppsetningarpakkasnið fyrir forrit, byggt á Installer tækni Apple. Staðlað snið fyrir dreifingu macOS hugbúnaðar, styður val á íhlutum, uppsetningarskrift, fjarlægingaraðgerð. Tvísmelltu á .pkg skrána til að setja upp, algeng dreifingaraðferð fyrir hugbúnað fyrir utan Mac App Store)"
+msgstr "PKG krossvettvangur hugbúnaðaruppsetningarpakki. 1. FreeBSD hugbúnaðarpakki: pkgng staðall, skráarviðskeyti .pkg eða .txz, byggt á TAR+XZ/Zstd þjöppun, styður fíkniupplausn og undirskriftarsannprófun; 2. macOS uppsetningarpakki: byggt á Apple uppsetningarforritssniði, styður sérsniðna íhluti, uppsetningarskriftir og kerfisstigs afpökkun. Þeir eru aðal dreifingarmiðlar fyrir BSD netþjóna og Mac kerfið, í sömu röð."
 
 msgid "mime_apk"
-msgstr "APK Android forritapakki (kynntur af Google árið 2008, hefðbundið uppsetningarform fyrir Android forrit. APK er í raun ZIP pakki sem inniheldur kóða, auðlindir og stillingarskrá. Frá 2021 krefst Google Play þess að ný forrit noti AAB sniðið, en APK er enn notað við villuleit, þriðja aðila verslanir og hliðaruppsetningu)"
+msgstr "APK Android forritspakki (2008 Google með Android gefinn út hefðbundinn forritauppsetningarpakki. Undirliggjandi byggt á ZIP skjalasafnsbyggingu, pakkar þýddum Dalvik bætkóða (DEX), lýsigagna yfirlýsingu og alþjóðlegum auðlindum, nú mikið notað fyrir staðbundna þróunar kembiforrit, þriðja aðila dreifingu og hliðaruppsetningu á tækjum)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS forritapakki (iOS App Store Package, uppsetningarform fyrir iOS/iPadOS forrit. Kynntur árið 2008 með iPhone SDK. Verður að dreifa í gegnum App Store eða vera undirritaður með fyrirtækjavottorði. Inniheldur keyrsluskrá, auðlindir, Info.plist og undirritunarupplýsingar)"
+msgstr "IPA Apple forritspakki (2008 iPhone SDK gefinn út iOS/iPadOS einkarétt pökkunarílát. Aðallega FairPlay DRM eða fyrirtækjavottorð undirritað ZIP skjalasafn, inniheldur Mach-O tvöfalt keyrsluhæft, forritsaðlindatré og Info.plist lýsigagnastillingar)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS forritapakki (HarmonyOS Ability Package, grunneining HarmonyOS forrits. Kynntur árið 2020 með HarmonyOS 2.0. Styður tvær gerðir: entry og feature, dreifingarform fyrir Huawei síma, spjaldtölvur, snjallúr og önnur HarmonyOS tæki)"
+msgstr "HAP HarmonyOS forritspakki (2020 HarmonyOS 2.0 gefinn út HarmonyOS sveigjanleg dreifingareining. Samanstendur af Entry aðaleiningu eða Feature víkkaðri virknieiningu, er margenda (símar, spjaldtölvur, klæðanleg tæki) yfirtækja dreifingarsnið fyrir snjöll endatæki)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS kyrrstætt sameiginlegt bókasafn (HarmonyOS Archive, kyrrstætt sameiginlegt bókasafn HarmonyOS, geta deilt með mörgum HAP pökkum, notað fyrir íhlutamiðaða þróun og endurnotkun eininga)"
+msgstr "HAR HarmonyOS kyrrstæð sameiginleg pakki (HarmonyOS einka kyrrstætt sameiginlegt bókasafnsskjalasafn. Notað til að innhylta sameiginlega íhluti, undirliggjandi auðlindakóða og þýðingartíma fíkni, kyrrstætt tengt af mörgum HAP einingum fyrir miðlun, er grundvallargrunnur fyrir íhlutamiðaða þróun og fjöleininga endurnotkun í HarmonyOS kerfinu)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google gaf út 2018, frá 2021 krefst Google Play að ný forrit noti þetta snið. AAB er dreifingarsnið, Google Play býr til bestuð APK í samræmi við stillingar tækis (CPU arkitektúr, skjáþéttleiki, tungumál), stærð uppsetningarpakka minnkar að meðaltali um 35%. Forritarar hlaða upp AAB, notendur hlaða niður APK)"
+msgstr "AAB Android forritasafn (2018 Google hleypt af stokkunum og 2021 staðfest Google Play kraftmikil dreifingarsnið. Sem hreint dreifingaraðili, sker og þýðir skýið kraftmikið miðað við marktækis CPU byggingu, skjáþéttleika og tungumál til að búa til hagrædda APK að ósk, dregur úr flutningsbandbreiddarkostnaði að meðaltali um 35%)"
 
 msgid "mime_xapk"
-msgstr "XAPK forritspakki (þriðja aðila Android forritsvíðtökupakki, inniheldur APK + OBB gagnaskrár. Notað fyrir stóra leiki og flókin forrit, leysir 100 MB takmörkun fyrir eina APK skrá. Algengt í þriðja aðila forritaverslunum eins og APKPure, APKMirror, ekki opinbert Google snið)"
+msgstr "XAPK víkkaður forritspakki (þriðja aðila Android samfélags staðfestur óopinber forritavíkkunarstaðall. Sameinar staðlaða APK skrá með stórum OBB leikjagagna víkkunarpakka, brýtur líkamlega í gegnum Google Play 100MB einstaka skráarstærðarmörk, mikið séð á leikjadreifingarvettvangi)"
 
 msgid "mime_appx"
-msgstr "Windows forritspakki (Microsoft gaf út 2012, uppsetningarsnið fyrir Windows 8/10/11 forrit. Styður UWP forrit og umbreytingu skrifborðsforrita, dreift í gegnum Microsoft Store. Árið 2024 kynnti Microsoft MSIX sem erfingja, skiptir smám saman út APPX)"
+msgstr "APPX nútíma forritspakki (2012 Microsoft með Windows 8 gefinn út UWP forritadreifingarstaðall. Hefur sandkassa einangraða keyrslu og léttan afpökkunareiginleika, þjónaði sem snemma ríkjandi staðall fyrir Microsoft Store, en í nútíma Windows vistkerfi hefur það farið inn í síðasta líftímastig í þróun í átt að MSIX)"
 
 msgid "mime_msix"
-msgstr "MSIX forritspakki (Microsoft gaf út 2018, ný kynslóð umbúðasniðs fyrir Windows forrit. Sameinar kosti APPX og MSI, styður allar tegundir Windows forrita, hægt að dreifa í gegnum Microsoft Store eða hliðaruppsetningu, mælt með sniði fyrir Windows 11)"
+msgstr "MSIX næsta kynslóðar forritspakki (2018 Microsoft gefið út nýtt fullkomlega staðlað Windows pökkunarupplýsingatækni. Sameinar fullkomlega APPX forritsturvörn sandkassa eiginleika við MSIX fyrirtækjaeignastjórnunarkosti, fullkomlega samhæft við allar Win32 forritagerðir, og er mælt með dreifingarstaðli fyrir Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage forritspakki (kynntur 2004, Linux forritasnið án uppsetningar. 'Eitt forrit - ein skrá', keyrir beint án uppsetningar, styður flestar Linux dreifingar, algeng leið fyrir forritara til að dreifa Linux hugbúnaði)"
+msgstr "AppImage sjálfumlykjandi forritspakki (2004 hafin Linux ein keyrsluhæft skjalasafnsupplýsingatækni. Tekur upp 'eitt forrit er ein skrá' sjálfumlykjandi byggingu, sem tengist beint við keyrslu sem skrifvarið sýndarskráarkerfi í gegnum FUSE kerfi, nær engum fíkni kassa út keyrslu yfir Linux dreifingar)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak forritspakki (kynntur 2015, Linux forritasnið í sandkassa. Virkar yfir dreifingar, einangrað frá gestgjafakerfi, þróun stýrt af Fedora og Red Hat, sjálfgefið snið GNOME hugbúnaðarmiðstöðvar)"
+msgstr "Flatpak sandkassa forritspakki (2015 Red Hat og GNOME leidd Linux krossdreifing skjáborðsforritadreifingarstaðall. Stutt af Linux kjarna Nafnarými og Cgroups kerfum til að ná mjög ströngu forritastigs öryggis sandkassa einangrun, er grunnur nútíma opins hugbúnaðar stýrikerfa hugbúnaðarmiðstöðva)"
 
 msgid "mime_snap"
-msgstr "Snap forritspakki (Canonical gaf út 2014, móðurfyrirtæki Ubuntu þróaði, alhliða Linux forritasnið. Sjálfvirk uppfærsla, sandkassa einangrun, styður 40+ Linux dreifingar, sjálfgefið snið Ubuntu hugbúnaðarmiðstöðvar)"
+msgstr "Snap ílátsvæddur forritspakki (2014 Ubuntu móðurfyrirtæki Canonical Linux algildur dreifingarstaðall. Tekur upp forrit-sjálfumlykjandi SquashFS myndatengingarbyggingu, styður sjálfvirkar stigvaxandi uppfærslur og stranga AppArmor sandkassa einangrun, og er sjálfgefið kjarnasnið Ubuntu hugbúnaðarmiðstöðvar vistkerfisins)"
 
 msgid "mime_deb"
-msgstr "Debian hugbúnaðarpakki (Debian verkefnið gaf út 1993, staðlað uppsetningarsnið fyrir Debian/Ubuntu og afleiddar útgáfur. Stjórnað með dpkg, APT er pakkastjóri framenda hans, eitt af fullþroskuðustu pakkasniðum í Linux vistkerfinu, enn aðalsniðið í Debian fjölskyldunni í dag)"
+msgstr "DEB kerfishugbúnaðarpakki (1993 Debian verkefni staðfest tvöfalt og frumkóða pökkunarupplýsingatækni. Sem undirliggjandi uppsetningarstaðall fyrir Debian, Ubuntu og allar afleiður þeirra, treystir á dpkg fyrir útpökkun og viðhald, og notar APT sem skilvirkan pakkastjóra framenda, er fullþroskaðasta hugbúnaðardreifingar hornsteinninn í Linux vistkerfinu)"
 
 msgid "mime_rpm"
-msgstr "RPM hugbúnaðarpakki (Red Hat gaf út 1997, staðlað snið fyrir dreifingar eins og Red Hat/Fedora/CentOS/SUSE. RPM stendur fyrir 'Red Hat Package Manager', ásamt DEB eru tvö helstu pakkasnið Linux, enn aðalsniðið í RHEL fjölskyldunni í dag)"
+msgstr "RPM kerfishugbúnaðarpakki (1997 Red Hat gefinn út Red Hat pakkastjóra pökkunarupplýsingatækni. Saman með DEB, mynda þeir tvö helstu hefðbundnu Linux pakkastjórnunarbúðirnar, hafa innfædda viðskiptabyggða fíkniskoðun og lággráðu hugbúnaðar stafræna undirskriftarsannprófun, og er enn algjör ríkjandi dreifingarstaðall fyrir Red Hat vistkerfi dreifinga eins og RHEL, Fedora og CentOS)"
 
 msgid "mime_pacman"
-msgstr "Arch hugbúnaðarpakki (Arch Linux gaf út 2002, .pkg.tar.zst sniðið sem pacman pakkastjórinn notar. Kjarni Arch Linux rolling release dreifinganna, þekktur fyrir einfaldleika sinn og KISS meginregluna, AUR (Arch User Repository) er einkenni hans)"
+msgstr "Pacman skjalasafnshugbúnaðarpakki (2002 Arch Linux með pacman stjórnanda staðfest .pkg.tar.zst pökkunarsnið. Sem kjarni Arch veltingur uppfærslukerfis, byggt á Zstandard háhraða háþjöppunaralgrími, ásamt AUR (Arch notenda hugbúnaðar safn) vistkerfi, er nútíma pakkadreifingarstaðall sem fyrirmyndir einfaldleika og KISS meginregluna (Keep It Simple, Stupid))"
 
 msgid "mime_exe"
-msgstr "EXE keyrsluskrá (Windows keyrslu forritssnið, skammstöfun fyrir 'Executable'. Upprunalegt keyrslusnið Windows stýrikerfisins, inniheldur PE byggingu. Þróaðist frá MZ sniði frá MS-DOS tímabilinu, Windows NT kynnti PE (Portable Executable) sniðið árið 1993 og er enn notað í dag. Uppsetningarpakkar hugbúnaðar, forrit, kerfisverkfæri nota þetta snið. Notandinn tvísmellir til að keyra það, mest notaða keyrslusnið í heimi)"
+msgstr "EXE innfædd keyrsluhæf skrá (Windows vettvangs flytjanlegt keyrsluhæft (PE) tvöfalt forritarsnið. Tæknileg ættbók þess stafar af MS-DOS tímans MZ hausbyggingu, og frá 1993 Windows NT var það fullkomlega staðfest sem PE byggingarupplýsingatækni, er mest notaða keyrslustaðallinn í heiminum fyrir vélakóða skipanir, kyrrstæðar auðlindahluta og kerfiskjarna ræsingu)"
 
 msgid "mime_dll"
-msgstr "DLL dynamískt tengt bókasafn (Microsoft kynnti 1993, Dynamic Link Library. Sameiginlegt kóðabókasafn Windows, forritið hleðst inn dynamískt meðan á keyrslu stendur, sparir minni og diskpláss. Kerfisíhlutir, forritsviðbætur, reklar nota DLL snið. Helsta leiðin til að innleiða Windows API, 'DLL helvíti' vandamálið hefur minnkað á .NET tímabilinu)"
+msgstr "DLL kraftmikil tengibókasafn (Windows vettvangs kraftmikil tengibókasafn sameiginleg kóðabókasafns upplýsingatækni. Með kraftmikilli hleðslu og tákna tilfærslu við keyrslu, sparar verulega eðlilega minni og diskpláss, sem kjarna framkvæmdarform Windows API. Snemma 'DLL helvíti' sársaukapunktur var rótgróinn í nútíma með SxS samhliða einangrunarkerfi)"
 
 msgid "mime_com"
-msgstr "COM keyrsluskrá (keyrslusnið frá MS-DOS tímabilinu, skammstöfun fyrir 'Command'. Mjög einföld skráabygging, 64KB takmörkun, aðalsnið fyrir Windows 3.x, úrelt. Nútíma Windows nota EXE snið, COM viðbótin er enn notuð fyrir sumar íhlutaskrár)"
+msgstr "COM klassísk keyrsluhæf skrá (elsta minnismynd (Skipun) keyrslusnið frá MS-DOS tímum. Notar byggingarlausa hreinan kóðahlutahönnun, takmarkað við 64KB eðlilega minnis vistfangshluta mörk, nú starfslok sem sögulegt arfleifðarsnið, en í nútíma Windows byggingum heldur það takmörkuðu samhæfi sem sérstakur íhlutaviðmót)"
 
 msgid "mime_aac"
 msgstr "AAC hljóð (MPEG staðall 1997, Advanced Audio Coding. Eftirmaður MP3, hljóðgæði betri en MP3 við sama bitahraða, sjálfgefið hljóðsnið fyrir YouTube, iTunes, Nintendo Switch)"

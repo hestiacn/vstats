@@ -18,6 +18,7 @@ use vars qw/
 $gi
 /;
 use Encode qw(encode_utf8 decode_utf8);
+use open ':std', ':encoding(UTF-8)';
 sub _t {
     my $str = shift;
     return $str;
@@ -86,7 +87,6 @@ sub GetCountryCodeByAddr_geoipfree {
         $display_location =~ s/,\s*/, /g;
         $display_location =~ s/^\s*//;
         $display_location =~ s/\s*$//;
-        $display_location = decode_utf8($display_location);
 
         my $storage_location = $display_location;
         $storage_location =~ s/ /_/g;

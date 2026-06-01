@@ -455,8 +455,8 @@ msgstr "Host - Bilang ng pahina - Bilang ng hit - Bandwidth - Oras ng huling pag
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Oras ng pagsisimula ng huling pagbisita] at [Huling pahina ng huling pagbisita] ay sine-save lamang kung hindi pa tapos ang session"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Ang unang %s na item na may pinakamaraming hit lang ang ipinapakita sa homepage. Tingnan ang buong listahan sa pahina ng detalye."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Ang unang %s na mga item ay nakaayos ayon sa bilang ng mga hit sa pababang pagkakasunod-sunod; ang pagkakasunod-sunod ng natitirang mga item ay hindi natukoy."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Nag-log in na user - Bilang ng pahina - Bilang ng hit - Bandwidth - Oras ng huling pagbisita"
@@ -470,8 +470,8 @@ msgstr "ID ng worm - Bilang ng hit - Bandwidth - Oras ng huling pagbisita"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Email - Bilang ng hit - Bandwidth - Oras ng huling pagbisita"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Ang unang %s na email na may pinakamaraming hit lang ang ipinapakita sa homepage. Tingnan ang buong listahan sa pahina ng detalye."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Ang unang %s na mga email address ay nakaayos ayon sa bilang ng mga hit sa pababang pagkakasunod-sunod; ang pagkakasunod-sunod ng natitirang mga address ay hindi natukoy."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Bilang ng pahina - Bandwidth - Entry - Exit"
@@ -680,6 +680,27 @@ msgstr "Ang parameter na SiteDomain ay hindi tinukoy sa iyong config/domain file
 msgid "Please run as Administrator to set permissions"
 msgstr "Patakbuhin bilang Administrator upang itakda ang mga pahintulot"
 
+msgid "This directory lacks read permission"
+msgstr "Ang direktoryong ito ay walang pahintulot sa pagbasa"
+
+msgid "Please set read permission for directory"
+msgstr "Pakiusap itakda ang pahintulot sa pagbasa para sa direktoryo"
+
+msgid "Missing required parameter in config file"
+msgstr "Nawawala ang kinakailangang parameter sa configuration file"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Pakiusap suriin kung ang 'DirData' ay tinukoy."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Mukhang nawawala o hindi kumpleto ang pangalan ng domain sa address ng browser"
+
+msgid "Please check the URL parameter"
+msgstr "Pakiusap suriin ang parameter ng URL"
+
+msgid "Format description"
+msgstr "Paglalarawan ng format"
+
 msgid "Please set execute permission"
 msgstr "Pakii-set ang pahintulot sa pagpapatakbo (execute)"
 
@@ -805,376 +826,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Text file (1963 ASCII standardization, walang format na plain text. Batayan ng lahat ng source code, configuration, log. Unix gamit ang LF, Windows gamit ang CRLF line break, nananatiling pinaka-unibersal na format ng data sa mga computer)"
+msgstr "TXT plain text file (plain text na walang format na na-standardize ng ASCII encoding noong 1963. Bilang pangunahing pundasyon ng lahat ng source code, configuration file, at system log, ang mga cross-platform Windows (CRLF) at Unix (LF) line break control flow nito ay nananatiling pinaka-unibersal na pamantayan sa pagpapalitan ng data sa mundo ng kompyuter)"
 
 msgid "mime_log"
-msgstr "Log file (text file na nagtatala ng impormasyon ng pagpapatakbo ng system at application, karaniwang ginagamit para sa pag-troubleshoot, pagsusuri ng performance, at security audit. Kasama sa mga standard na format ang Apache combined log, Nginx access log, syslog, atbp.)"
+msgstr "LOG system operation log (plain text asset na nagtatala ng runtime state ng operating system, kernel, at aplikasyon sa antas ng aplikasyon. Sumasaklaw sa Nginx/Apache access logs (Combined Log) at karaniwang syslog specification, ito ang pangunahing source ng data para sa troubleshooting, stream performance analysis, at security audit)"
 
 msgid "mime_page"
-msgstr "HTML web page (Inimbento ni Tim Berners-Lee ang World Wide Web noong 1989, tinukoy ang tatlong pangunahing teknolohiyang HTML/HTTP/URL noong 1990, walang bayad na ibinigay nang hindi na-patent. Naging opisyal na W3C standard ang HTML5 noong 2014, sumusuporta sa display, multimedia, at pag-print. Nagwagi ng Turing Award 2016)"
+msgstr "HTML hypertext web page (pundasyong bato ng World Wide Web na nilikha ni Tim Berners-Lee noong 1989. Bilang isang libreng magagamit na unibersal na hypertext markup language, ang HTML5 specification nito ay naging opisyal na pamantayan ng W3C noong 2014, na may native na suporta para sa structured multimedia, semantic interaction, at stream page layout. Nanalo ng Turing Award noong 2016)"
 
 msgid "mime_khtml"
-msgstr "KHTML web engine (Inilabas ang KDE 2.0 noong 1998, rendering engine ng Konqueror browser. Gumawa ang Apple noong 2001 ng WebKit batay sa KHTML, at gumawa ang Google noong 2008 ng Blink mula sa WebKit, na naging core ng mga browser tulad ng Chrome, Edge, Safari. Ang KHTML ay isang halimbawa kung paano itinatag ng open source community ang pundasyon ng mga modernong browser engine, ang teknolohikal na pamana nito ay nagpapatuloy sa pamamagitan ng WebKit/Blink hanggang ngayon)"
+msgstr "KHTML web template engine (1998 KDE 2.0 browser rendering engine specification. Bilang isang open source community benchmark na naglatag ng pundasyon para sa modernong web rendering, ang teknolohikal na pamana nito ay direktang nagbigay inspirasyon at nag-evolve sa Apple WebKit at Google Blink kernels, na nagpapatuloy hanggang ngayon sa kanyang pinagbabatayan na landas sa pamamagitan ng modernong stream dynamic web architecture)"
 
 msgid "mime_script"
-msgstr "Dynamic na script language (interpreted language, hindi kailangan ang compilation. Kabilang ang ASP, JSP, CGI, ColdFusion, Tcl, VBScript, atbp., malawakang ginamit sa unang bahagi ng web development, system administration, automation ng gawain. Ang mga modernong script language tulad ng Python, Ruby, JavaScript ay umunlad sa pangunahing mga tool para sa full-stack development)"
+msgstr "SCRIPT interpreted dynamic script (pangkalahatang klasipikasyon ng source code streams na hindi kailangang i-pre-compile at binabasa at isinasagawa ng linya sa linya ng isang partikular na runtime o interpreter. Sumasaklaw sa ASP, JSP, CGI at Tcl, atbp., malawakang ginagamit para sa server-side common gateway interface, automated process control, at system-level task glue)"
 
 msgid "mime_js"
-msgstr "JavaScript script (Nilikha ito ni Brendan Eich sa loob ng 10 araw sa Netscape noong 1995, native programming language ng browser. Na-standardize ang ECMAScript noong 1997, ipinanganak ang Node.js noong 2009 na ginagawa itong cross-platform na wika, ang npm ay ang pinakamalaking package manager sa mundo. Nangungunang programming language sa GitHub sa loob ng maraming taon)"
+msgstr "JavaScript script (1995 Netscape browser's native programming environment. Itinatag ang ECMAScript industry standard noong 1997, ipinanganak ang Node.js runtime noong 2009 na sinira ang mga hangganan ng browser at lumikha ng full-stack asynchronous non-blocking architecture, na sinamahan ng pinakamalaking npm software package ecosystem sa mundo)"
 
 msgid "mime_py"
-msgstr "Python script (Nilikha ito ni Guido van Rossum noong 1991, kilala sa mandatoryong indentation at simpleng syntax. Malawakang ginagamit sa web development, data science, artificial intelligence, automation ng administrasyon. Maraming beses na nagwagi ng TIOBE Programming Language of the Year award)"
+msgstr "Python script (mataas na antas na interpreted scripting language na nilikha ni Guido van Rossum noong 1991. Dahil sa mandatoryong indentation para sa walang pagkawalang pagiging nababasa at multi-paradigm low-level na disenyo, ito ay ngayon ay naitatag bilang pamantayang pang-industriya na wika para sa modernong web architecture, full-stack data science, artificial intelligence (AI) model training, at cloud-native automated ops)"
 
 msgid "mime_sh"
-msgstr "Shell script (Ipinanganak ang Unix noong 1971, command line language. Ginagamit para sa system administration, automation ng gawain, pagpapatakbo ng serbisyo, deployment script. Kailangang kasanayan para sa Linux administration)"
+msgstr "Shell script (karaniwang command interpreter script mula sa Unix era noong 1971. Naglalaman ng kernel-level command specifications tulad ng Bash, Sh, Dash, karaniwang isinasagawa gamit ang .sh extension, ay isang unibersal na kernel-level glue para sa low-level process control, installation-free environment configuration, at automated deployment sa modernong Unix-like operating systems)"
 
 msgid "mime_rb"
-msgstr "Ruby script (Nilikha ito ni Yukihiro Matsumoto noong 1995, nakatuon sa kaligayahan ng developer. Ang Ruby on Rails framework ay nag-pioneer ng convention over configuration paradigm, na nakakaimpluwensya sa disenyo ng mga modernong web framework)"
+msgstr "Ruby script (object-oriented scripting language na nilikha ni Yukihiro Matsumoto noong 1995. Sa sobrang respeto sa karanasan ng developer bilang pangunahing disenyo ng pilosopiya, ang Ruby on Rails framework nito ay mapanghimagsik na nagtatag ng 'Convention over Configuration (CoC)' modernong mataas na antas na web architecture development paradigm)"
 
 msgid "mime_pl"
-msgstr "Perl script (Nilikha ito ni Larry Wall noong 1987, kilala sa pagiging pragmatic, madalas tawaging 'Swiss Army knife'. Ang CPAN ay ang nagpasimula ng modernong package manager ng mga programming language, may malalim na impluwensya sa larangan ng pagpoproseso ng teksto, system administration, at CGI)"
+msgstr "Perl script (pragmatic scripting language na nilikha ni Larry Wall noong 1987. Bilang ninuno ng modernong package managers (CPAN), ito ay tinaguriang 'Swiss Army knife' ng text processing. Sa modernong CGI mode, nagsisilbi pa rin itong mataas na maaasahang base sa larangan ng log parsing dahil sa napakababang pisikal na memory cost at mataas na kahusayan sa regular expression processing)"
 
 msgid "mime_php"
-msgstr "PHP dynamic web page (Nilikha ito ni Rasmus Lerdorf noong 1995, partikular na idinisenyo para sa web development. Mahigit 70% ng mga website sa mundo ang gumagamit nito, pinapatakbo ang mga platform tulad ng WordPress, Facebook, Wikipedia. Ang PHP 8 ay nagpapakilala ng JIT compilation, na makabuluhang nagpapabuti ng performance)"
+msgstr "PHP dynamic web page (nilikha ni Rasmus Lerdorf noong 1995, espesyal na idinisenyo para sa web development. Bilang pangunahing teknolohiya na nagpapatakbo ng higit sa 70% ng mga website sa mundo, malalim nitong sinusuportahan ang malalaking production-level application tulad ng WordPress at Wikipedia. Mula noong ipinakilala ang JIT (Just-In-Time) compilation runtime engine sa PHP 8, nakamit nito ang pangunahing ebolusyon ng paradigma patungo sa high-performance full-stack server side)"
 
 msgid "mime_image"
-msgstr "Image file"
+msgstr "IMAGE klasipikasyon ng image asset (sumasaklaw sa pangkalahatang klasipikasyon ng lossy/lossless compressed bitmap, modernong responsive web graphics, at vector graphics. Ito ay isang pangunahing tagapagpahiwatig para sa pagtatasa ng visual resource loading cost ng site, client-side cache hit rate, at pagkonsumo ng media network bandwidth)"
 
 msgid "mime_document"
-msgstr "Document file"
+msgstr "DOCUMENT klasipikasyon ng structured na dokumento (sumasaklaw sa pangkalahatang klasipikasyon ng plain text, spreadsheet, fixed-format na dokumento (PDF), at lightweight markup language. Ito ay isang pangunahing tagapagpahiwatig para sa mga istatistika ng server-side static knowledge base distribution, enterprise information asset download, at text stream throughput capacity)"
 
 msgid "mime_package"
-msgstr "Software package"
+msgstr "PACKAGE klasipikasyon ng compilation products at software package (sumasaklaw sa pangkalahatang klasipikasyon ng native executable program ng operating system, runtime link libraries (DLL/SO), at application distribution installation package. Kadalasang ginagamit bilang pangunahing tagapagpahiwatig para sa pagtatasa ng outbound traffic at download peak ng software distribution sites)"
 
 msgid "mime_archive"
-msgstr "Gzip compressed file (GNU project noong 1992, batay sa DEFLATE algorithm. Ginagamit sa Web para sa dynamic na compression ng tugon, ang compression rate ay karaniwang 60-90%. Pagkatapos ng 2015, pinalitan ito ng Brotli sa ilang mga sitwasyon, ngunit nananatiling pinakamalawak na suportadong compression format sa server side)"
+msgstr "ARCHIVE archive at compressed file (pangkalahatang klasipikasyon ng data compression package batay sa mga pangunahing algorithm tulad ng DEFLATE, LZMA. Sa network layer, bukod sa kumakatawan sa tradisyonal na package distribution, sumasaklaw din ito sa 1992 GNU project's Gzip dynamic response stream. Kahit na ang Brotli algorithm ay unti-unting ipinakikilala sa mga modernong senaryo, ang klasipikasyong ito ay nananatiling pangunahing tagapagpahiwatig para sa pagtatasa ng server bandwidth throughput rate at transport layer pressure reduction)"
 
 msgid "mime_audio"
-msgstr "Audio file"
+msgstr "AUDIO klasipikasyon ng digital audio stream (sumasaklaw sa pangkalahatang klasipikasyon ng compressed audio, audiobook, at streaming media audio container. Batay sa mga tiyak na audio codec standard, ginagamit para subaybayan ang throughput rate ng audio data stream ng multimedia site, kasabay na streaming bandwidth, at mahabang koneksyon na pagganap)"
 
 msgid "mime_video"
-msgstr "Video file"
+msgstr "VIDEO klasipikasyon ng digital video stream (sumasaklaw sa pangkalahatang klasipikasyon ng high-resolution na video container, modernong web animation, at streaming media segment. Ito ay isang pangunahing tagapagpahiwatig para sa pagtatasa ng server bandwidth peak limit at epekto ng Content Delivery Network (CDN) acceleration sa ilalim ng mataas na load network environment)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (binuo ni Brendan Eich noong 1995)"
+msgstr "JScript script (1996 Microsoft's reverse engineering proprietary implementation para sa Internet Explorer 3.0. Bilang isang maagang host competitor ng klasikong JavaScript, ito ay nagsilbing pangunahing engine ng Windows Script Host (WSH) at maagang ASP backend)"
 
 msgid "mime_json"
-msgstr "JSON data (iminungkahi ni Douglas Crockford noong 2001, magaan na format para sa pagpapalitan ng data, de facto standard para sa Web APIs)"
+msgstr "JSON structured data (lightweight data serialization exchange format na itinatag ni Douglas Crockford noong 2001. Batay sa text-based key-value pairs at array architecture, may napakataas na human-readability at walang pagkawalang stream parsing na katangian. Ito ang de facto na pamantayan para sa modernong web API, microservices architecture, at interaksyon sa malalaking modelo ng wika)"
 
 msgid "mime_vbs"
-msgstr "VBScript (binuo ng Microsoft noong 1996, Windows scripting language, ginamit para sa ASP web page at Windows administration script. Sa pagtaas ng katanyagan ng PowerShell at JavaScript, unti-unting inalis)"
+msgstr "VBScript script (variant ng scripting language na inilabas ng Microsoft kasama ang IE 3.0 noong 1996. Dati ay pangunahing driver ng maagang ASP dynamic website at Windows system management, ngayon ay opisyal na itong hindi na ginagamit at inalis mula sa pinakabagong kernel ng Windows 11 ng Microsoft. Ito ay kabilang sa makasaysayang legacy na teknolohiya)"
 
 msgid "mime_conf"
-msgstr "Configuration file (nag-iimbak ng configuration ng software sa text format, karaniwang format: INI, JSON, YAML, TOML, XML. Karamihan ng mga configuration ng Linux system ay nasa /etc directory)"
+msgstr "CONF system configuration file (pangkalahatang klasipikasyon ng data file na permanenteng nag-iimbak ng software runtime environment parameters sa anyo ng plain text. Sumasaklaw sa INI at modernong YAML, TOML, JSON specifications, sa ilalim ng Linux system karamihan ay nakatutok sa /etc directory. Ito ay pangunahing dependency para sa system-level runtime state optimization)"
 
 msgid "mime_css"
-msgstr "CSS style sheet (Unang opisyal na standard na CSS1 ng W3C ay inilabas noong Disyembre 1996, nagdagdag ng positioning at media types ang CSS2 noong 1998, mula 2011 ang CSS3 ay modular na ipinakilala na may rounded corners, animation, flexbox, grid layout, at responsive na disenyo. Kasama ng HTML at JavaScript, bumubuo sa tatlong pangunahing teknolohiya ng frontend, lahat ng modernong browser (Chrome, Firefox, Safari, Edge) ay native na sumusuporta dito, ito ang tanging pamantayan para sa pagtukoy ng web styles)"
+msgstr "CSS cascading style sheets (1996 W3C standard, kasama ang HTML/JS na tinatawag na tatlong pangunahing bahagi ng front-end. Dinaanan ang CSS2 positioning at CSS3 modular evolution, native na sumusuporta sa Flexbox, Grid, at media query responsive design. Ito ang ganap na nangingibabaw na pamantayan para sa pag-decouple ng presentasyon ng web page sa modernong browser)"
 
 msgid "mime_xsl"
-msgstr "XSL style sheet (W3C standard 1999, wika para sa pagbabago ng XML document, maaaring mag-convert ng XML sa HTML/PDF/text. Matapos ang pagpapasikat ng JSON, nabawasan ang paggamit)"
+msgstr "XSL style sheet (1999 W3C standard, naglalaman ng XSLT transformation at XPath addressing language, ginagamit upang i-render ang structured XML data bilang HTML, PDF, o plain text. Sa modernong pag-unlad, ang ecosystem nito ay higit na pinalitan ng mas magaan na template engine at JSON data format)"
 
 msgid "mime_runtime"
-msgstr "Executable file (executable format ng operating system tulad ng EXE, ELF, Mach-O, naglalaman ng machine code at impormasyon para sa pag-load)"
+msgstr "Executable file (native execution format ng operating system tulad ng EXE, ELF, Mach-O, naglalaman ng compiled low-level machine code, entry point, at system loading information)"
 
 msgid "mime_library"
-msgstr "Library file (DLL, SO, dylib, atbp. dynamic link libraries, shared code na ni-load sa pagpapatakbo ng programa)"
+msgstr "Library file (dynamic o static link libraries tulad ng DLL, SO, dylib, naglalaman ng shared symbols at relocation code para tawagin ng ibang programa at i-load sa runtime)"
 
 msgid "mime_swf"
-msgstr "Flash animation (binuo ng Macromedia noong 1996, kalaunan ay pagmamay-ari ng Adobe. Pamantayan para sa interactive na web animation, dating nangingibabaw sa internet animation at laro. Mga disadvantages: dependency sa plugin, hindi suportado sa mobile device, mataas na panganib sa seguridad. Inanunsyo ng Adobe ang pagtatapos noong 2017, ganap na winakasan ang suporta noong 2020, pinalitan ng HTML5/CSS3/JS)"
+msgstr "Flash animation (binuo ng Macromedia noong 1996, binili ng Adobe noong 2005. Interactive web animation standard, minsang naghari sa internet animation at laro. Mga kahinaan: nakadepende sa plugin, hindi sinusuportahan sa mobile, mataas na panganib sa seguridad. Inanunsyo ng Adobe ang pagtatapos noong 2017, ganap na itinigil ang suporta noong 2020, pinalitan ng HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD document type definition (XML specification, tumutukoy sa istruktura ng XML document, ginagamit upang i-verify ang validity ng XML)"
+msgstr "DTD document type definition (inilabas kasama ng XML 1.0 noong 1998, ginagamit upang tukuyin ang istraktura ng XML/HTML na dokumento at i-validate ang pagiging lehitimo. Sa modernong pag-unlad, ito ay unti-unting pinalitan ng mas nababaluktot na solusyon tulad ng XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "CSV data format (comma-separated values, unibersal na format para sa tabular data, pamantayan para sa pag-import/export sa Excel at database)"
+msgstr "CSV data format (comma-separated values, unibersal na plain text table format mula sa mainframe era noong 1972 (IBM Fortran compiler). Opisyal na na-standardize ng RFC 4180 noong 2005, bilang isang cross-platform, cross-language lossless data exchange standard. Malawakang ginagamit para sa mahusay na pag-import/export sa Excel, relational database, data analysis (Pandas).)"
+
+msgid "mime_cur"
+msgstr "Mouse pointer file (.cur format, ginagamit upang i-customize ang estilo ng mouse, tulad ng finger cursor sa mga web page, hourglass waiting icon sa system. Ito ay 'kamag-anak' ng karaniwang .ico icon, ngunit mayroon itong karagdagang 'hotspot' na lokasyon — ang lokasyon kung saan talagang nagki-click ang mouse. Kasaysayan: ipinakilala kasama ng Windows 3.1 (1992), ito ay isang pangunahing bahagi sa paglipat ng graphical interface mula sa command line patungo sa mouse operation era)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java application launcher, teknolohiya sa pamamahagi ng Java desktop application noong 2000s, inalis na)"
+msgstr "Java Web Start (2000s Java desktop application distribution technology, naglulunsad ng malalayong Java program sa pamamagitan ng .jnlp file. Dahil sa mga isyu sa seguridad at pagkalat ng modernong paraan ng pamamahagi, ito ay halos hindi na ginagamit)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-book (inilunsad ng Microsoft noong 2000, LIT format, inalis na)"
+msgstr "Microsoft Reader e-book (inilabas ng Microsoft noong 2000, LIT format. Hindi na ginagamit, maaari na ngayong i-convert sa EPUB o PDF gamit ang mga tool tulad ng Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vector graphics (W3C standard 1999, matagal na itinulak ng Microsoft ang sarili nitong VML format, sinuportahan lamang ng IE browser mula 2011, na nagdulot ng pagkaantala sa pagpapasikat. Pagkatapos ng 2015, sa pag-alis ng IE at pagpapasikat ng high-resolution na screen, naging unang pagpipilian para sa mga icon at logo)"
+msgstr "SVG vector graphics (1999 W3C standard, dalawang-dimensional na vector image format batay sa XML architecture. May bentahe ng arbitrary scaling nang walang pagkawala ng sharpness at text stream transmission. Lahat ng modernong browser ay native na sumusuporta dito. Malawakang ginagamit para sa high-resolution web icon, logo, at vector animation rendering. Ito ang pangunahing pamantayan para sa modernong web graphics)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vector graphics (inilunsad noong 1987, pamantayan sa industriya na vector graphics format, unang pagpipilian para sa print design, logo, icon)"
+msgstr "AI vector graphics (proprietary vector graphics format na independiyenteng binuo ng Adobe noong 1987. Bilang pangunahing pamantayan sa industriya para sa typography, print design, at brand identity design, sinusuportahan nito ang multi-layer at high-level layout vector data. Ito ang napiling carrier para sa propesyonal na visual art)"
 
 msgid "mime_phshop"
-msgstr "Photoshop image (inilunsad ng Adobe noong 1990, PSD format ng source file ng Photoshop, pamantayan sa industriya para sa pagpoproseso ng imahe)"
+msgstr "PSD layer image (proprietary raster image source file format na inilabas ng Adobe kasama ang Photoshop noong 1990. Sinusuportahan ang multi-layer layering, channel, mask, at lossless editing data. Ito ay naitatag bilang pandaigdigang pamantayan sa industriya para sa pagpoproseso ng imahe at digital painting)"
 
 msgid "mime_ttf"
-msgstr "TrueType font (pinagsamang pag-unlad ng Apple at Microsoft noong 1989, vector font format, pare-parehong pagpapakita sa screen at sa print, default na format ng font sa mga modernong operating system)"
+msgstr "TrueType font (digital contour font format na binuo nang magkasama ng Apple at Microsoft noong 1989. Batay sa quadratic Bézier curves, nakakamit nito ang ganap na pagkakapareho ng pixel sa pagitan ng display ng screen at print output. Ito ang native default font format ng modernong desktop operating system)"
 
 msgid "mime_fon"
-msgstr "WOFF2 web font (W3C rekomendasyon 2014, gumagamit ng Brotli compression algorithm, laki ay nabawasan ng humigit-kumulang 30% kumpara sa lumang WOFF, higit sa 50% kumpara sa TTF/OTF. Sinusuportahan na ito ng lahat ng modernong browser, ito ang pinakamahusay na pagpipilian para sa web font ngayon, sinusuportahan ng higit sa 98% ng mga browser)"
+msgstr "FON bitmap font (maagang system-level dot matrix font format ng Microsoft Windows mula noong 1980s. Hindi sinusuportahan ang arbitraryong proporsyonal na lossless scaling. Karaniwang ginagamit kasama ng legacy system o maagang embedded device component para sa limitadong pixelated text rendering)"
 
 msgid "mime_pdf"
-msgstr "PDF document (binuo ng Adobe noong 1993, naging ISO international standard noong 2008. Cross-platform document format, pinapanatili ang consistency ng format, pandaigdigang pamantayan para sa pamamahagi ng electronic document)"
+msgstr "PDF electronic document (cross-platform fixed-layout document format na binuo ng Adobe noong 1993 at naging ISO 32000 international standard noong 2008. May ganap na katapatan sa layout at format. Ito ang unibersal na pamantayan para sa pandaigdigang pamamahagi ng elektronikong opisyal na dokumento at digital publishing)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dynamic page (inilunsad ng Microsoft noong 2002, dynamic web page technology para sa Windows platform, bahagi ng .NET Framework)"
+msgstr "ASP.NET dynamic page (server-side dynamic web technology na inilabas ng Microsoft kasama ang .NET architecture noong 2002. Dinadala sa IIS rendering engine, ginagamit upang bumuo ng enterprise-level Windows server-side dynamic web application at distributed system)"
 
 msgid "mime_mdb"
-msgstr "Access database (Microsoft Access database file, inilunsad noong 1992, solusyon sa desktop database sa Windows)"
+msgstr "MDB relational database (desktop-level relational database storage format na inilabas ng Microsoft kasama ang Access noong 1992. May built-in na Jet database engine, ginamit bilang relational database solution sa maagang pamamahala ng impormasyon ng personal computer at maliliit at katamtamang laki ng negosyo)"
 
 msgid "mime_md"
-msgstr "Markdown document (Nilikha ni John Gruber noong 2004, ang disenyo ng syntax ay naiimpluwensyahan ng reStructuredText at Setext. Ang pangunahing pilosopiya ng disenyo ay 'readability equals rendering', ang orihinal na pagpapatupad ng Markdown.pl ay gumagamit ng Perl regex. Ang mga hinangong spec ay kinabibilangan ng GFM (2013), CommonMark (2017), Pandoc Markdown, atbp. Nagpapagana ng mga ecosystem tulad ng GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, naging de facto standard na format para sa mga static site generator at dokumentasyon ng developer)"
+msgstr "Markdown document (lightweight markup language na independiyenteng nilikha ni John Gruber noong 2004. Ang pangunahing disenyo ng pilosopiya ay 'nababasa ay nangangahulugang nare-render', na nagtutulak ng mga modernong derivative standard tulad ng GFM at CommonMark. Malawakang ginagamit bilang pangunahing pamantayan sa pagpapalitan para sa teknikal na dokumentasyon, knowledge base (Obsidian), at modernong static website generator)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports format ng ulat (SAP business intelligence reports, standard na format para sa mga ulat sa enterprise)"
+msgstr "Crystal Reports (propesyonal na enterprise-level report file format ng SAP Business Intelligence (BI) platform. May multi-data source low-level connection at kumplikadong dynamic chart rendering kakayahan, malawakang ginagamit para sa propesyonal na pagbuo ng ulat sa mga financial at data analysis system ng mga multinational na kumpanya)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice document (Binubuo ng The Document Foundation noong 2010, sangay ng OpenOffice, pagpapatupad ng ODF standard, pangunahing open source office suite)"
+msgstr "LibreOffice document (proprietary format ng open source office suite na binuo ng The Document Foundation noong 2010 batay sa OpenOffice fork. Malalim na ipinatutupad ang internasyonal na pamantayan ng ODF (Open Document Format) ng W3C. Ito ang office foundation ng modernong open source ecosystem)"
 
 msgid "mime_encrypt"
-msgstr "Naka-encrypt na file (kailangan ng decryption upang matingnan, karaniwang extension: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT encrypted file (raw binary o text data na naproseso sa pamamagitan ng tiyak na simetriko o asimetrikong encryption algorithm. Naglalaman ng pangunahing derivative format tulad ng .enc, .pgp, .gpg. Sa network layer, ginagamit upang matiyak ang pagiging kompidensiyal at pag-verify ng integridad ng hindi pampublikong data)"
 
 msgid "mime_gpx"
-msgstr "GPS track data (GPS Exchange Format, nagtatala ng impormasyon ng geograpikal na lokasyon, unibersal na format para sa mga sports watch at navigation device)"
+msgstr "GPX satellite track data (global positioning system exchange format batay sa XML architecture. Espesyal na ginagamit upang ilarawan ang mga heograpikal na coordinate, waypoint, ruta, at makasaysayang track. Ito ay isang karaniwang bukas na pamantayan ng data para sa modernong mobile sports device, car navigation, at Geographic Information System (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Disk image (DMG, ISO, IMG, atbp., mga file ng disk/CD image, ginagamit para sa pamamahagi ng software o backup ng storage media)"
+msgstr "Disk Image disk image (sumasaklaw sa byte-by-byte low-level sector image file ng pisikal na disk o optical media tulad ng ISO, DMG, IMG. Ginagamit para sa system low-level deployment, secure na pamamahagi ng software na may malaking kapasidad, at pisikal na antas ng kumpletong backup ng data ng storage media)"
 
 msgid "mime_vm"
-msgstr "Virtual machine image (VMDK, VDI, VHDX, OVA, atbp., virtual disk file, mga format para sa virtualization platform tulad ng VMware, VirtualBox, Hyper-V)"
+msgstr "VM virtual machine image (sumasaklaw sa virtualized physical disk image tulad ng VMDK, VDI, VHDX, OVA. Bilang batayan ng VMware, VirtualBox at Hyper-V platform, ginagamit para sa low-level system-level hardware emulation, instance snapshot, at cloud infrastructure distribution)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent file (inimbento ni Bram Cohen noong 2001, P2P index file para sa pag-download, naglalaman ng metadata ng file at impormasyon ng Tracker)"
+msgstr "BitTorrent torrent file (P2P peer-to-peer distributed download index na dinisenyo ni Bram Cohen noong 2001. Batay sa Bencode encoding, nag-iimbak ng low-level checksum metadata ng orihinal na file at impormasyon sa pagtugon ng Tracker server. Ito ang pangunahing carrier para sa desentralisadong network flow distribution)"
 
 msgid "mime_gis"
-msgstr "GIS geospatial data (geospatial data format tulad ng Shapefile, GeoJSON, ginagamit para sa mapa at spatial analysis)"
+msgstr "GIS geospatial data (geographic information system data standard na may Shapefile at GeoJSON bilang pangunahing bahagi. Naglalaman ng multi-dimensional geometric coordinate, layer topology, at attribute data. Malawakang ginagamit para sa high-precision digital map rendering, satellite remote sensing, at spatial geometry analysis)"
 
 msgid "mime_ebook"
-msgstr "E-book (format ng e-book tulad ng EPUB, MOBI, AZW. Ang EPUB ay internasyonal na pamantayan, ang MOBI/AZW ay format para sa Amazon Kindle)"
+msgstr "EBOOK e-book (digital publishing format na may W3C's EPUB open international standard at Amazon Kindle's proprietary MOBI/AZW architecture bilang pangunahing bahagi. Sinusuportahan ang adaptive stream layout, metadata encapsulation, at DRM digital rights protection. Ito ay isang unibersal na carrier para sa digital reading sa mobile device)"
 
 msgid "mime_avif"
-msgstr "AVIF image (inilunsad ng Alliance for Open Media noong 2019, batay sa AV1 codec, ang compression rate ay 50% na mas mataas kaysa sa WebP, bagong pamantayan ng web image)"
+msgstr "AVIF high-efficiency image (susunod na henerasyon na ultra-high resolution image standard na ipinakilala ng Open Media Alliance (AOMedia) noong 2019. Batay sa AV1 video encoding key frame technology, ang compression rate ay 50% mas mahusay kaysa sa WebP at native na sumusuporta sa High Dynamic Range (HDR). Ito ang mainstream na pamantayan para sa modernong web image transmission)"
 
 msgid "mime_markdown"
-msgstr "Markdown document (idinisenyo ni John Gruber noong 2004, magaan na markup language, unibersal na format para sa GitHub README, teknikal na dokumentasyon, mga forum)"
+msgstr "Markdown lightweight document (text document markup language na independiyenteng nilikha ni John Gruber noong 2004. Gumagamit ng plain text declarative design, ang disenyo ng syntax nito ay inspirasyon ng reStructuredText. Malawakang ginagamit para sa mga proyekto sa GitHub, engineering-level technical documentation, at modernong static content management ecosystem)"
 
 msgid "mime_yaml"
-msgstr "YAML configuration (idinisenyo ni Clark Evans noong 2001, format ng serialization ng data na nababasa ng tao, standard na format ng configuration file para sa Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML serialization configuration (human-readable data serialization format na dinisenyo ni Clark Evans at iba pa noong 2001. Batay sa hierarchical indentation at key-value mapping. Ito ngayon ay naitatag bilang cloud-native infrastructure configuration standard para sa Kubernetes container orchestration, Ansible automation, at Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML configuration (idinisenyo ni Tom Preston-Werner noong 2013, 'Tom's Obvious Minimal Language', format ng configuration file para sa mga modernong tool tulad ng Rust/Cargo, Python/pip, Go)"
+msgstr "TOML semantic configuration (minimalist na wika na dinisenyo ni Tom Preston-Werner noong 2013. May mga low-level design advantages tulad ng strong typing, explicit mapping, at semantic clarity. Malawakang ginagamit ngayon bilang standardized configuration file para sa modernong toolchain ng Rust (Cargo), Python (pyproject.toml), at Go)"
 
 msgid "mime_vue"
-msgstr "Vue component file (ipinakilala noong 2014 ni Evan You, isang progresibong JavaScript framework. Sa pamamagitan ng single-file components (SFC), perpektong pinagsasama nito ang HTML, CSS, at JS, na lubhang nagpapataas ng kahusayan sa pagbuo. Ito ay isa sa pinakasikat na frontend framework sa buong mundo. Bilang sentro rin ng mga modernong static site generator tulad ng VitePress, malawak itong ginagamit upang magmaneho ng interaktibong teknikal na dokumentasyon at mga blog.)"
+msgstr "Vue single-file component (proprietary SFC format ng progressive web framework na ipinakilala ni Evan You noong 2014. Sa isang file, ipinatutupad ang paghihiwalay ng mga alalahanin ng HTML/CSS/JS at reactive state binding, malalim na nagtutulak sa modernong web interactive front-end application at malakihang static site engine)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly module (W3C standard 2017, format para sa high-performance sa browser, C/C++/Rust/R ay maaaring i-compile dito, performance na malapit sa native code)"
+msgstr "WebAssembly binary module (high-performance low-level bytecode standard para sa web na itinatag ng W3C noong 2017. Pinapayagan ang mga malakas na uri ng wika tulad ng C/C++/Rust na mag-compile sa target ng browser sandbox, na nagbibigay ng kahusayan sa pagpapatupad na malapit sa native hardware. Ito ay isang pundasyong bato para sa modernong web edge computing)"
 
 msgid "mime_jsx"
-msgstr "React JSX component (inilunsad ng Facebook ang JavaScript XML noong 2013, syntax ng component ng React framework, makabagong paradigm ng pagsulat ng HTML sa loob ng JavaScript)"
+msgstr "React JSX component (JavaScript XML syntax extension na inilabas ng Facebook kasama ang React framework noong 2013. Sinusuportahan ang declarative na pagbuo ng DOM virtual structure sa JavaScript, na ipinatutupad ang front-end na 'UI ay function ng estado' na component-based development paradigm)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX component (binuo ng Microsoft noong 2012, TypeScript + JSX, standard na paraan para sa pagbuo ng React application na may type safety)"
+msgstr "TypeScript TSX component (kombinasyon ng stream ng TypeScript strong type syntax na binuo ng Microsoft noong 2012 at JSX. Nag-iinject ng static compile-time type checking at interface constraints sa pagbuo ng React component. Ito ay isang code standard para sa ligtas na pagbuo ng modernong malalaking front-end system)"
 
 msgid "mime_heif"
-msgstr "HEIF image (MPEG standard 2015, mahusay na format ng image file, malawakang ginagamit sa Apple ecosystem)"
+msgstr "HEIF high-efficiency image (high-efficiency image file format na itinatag ng MPEG organization noong 2015. Batay sa HEVC (H.265) video encoding algorithm, sinusuportahan ang paglalagay ng maraming frame na imahe, depth map, at metadata sa napakaliit na volume. Ito ay isang proprietary storage standard para sa modernong mobile operating system at smart terminal device)"
 
 msgid "mime_heic"
-msgstr "HEIC image (implementasyon ng Apple ng HEIF, default na format ng larawan sa iPhone, native na suportado sa iOS/macOS)"
+msgstr "HEIC high-efficiency image (proprietary bitmap format ng Apple na ipinatupad batay sa HEIF international standard. Bilang default na storage standard ng larawan para sa modernong iPhone, nakakakuha ito ng iOS/macOS hardware-level encoding/decoding at native operating system support. Habang tinitiyak ang mataas na kalidad ng imahe, lubos nitong binabawasan ang pinagbabatayan na espasyo sa imbakan)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D model (GL Transmission Format, 'JPEG ng 3D world', inilabas ng Khronos Group noong 2015, standard na format para sa web 3D)"
+msgstr "glTF 3D asset model (GL transfer format standard na inilabas ng Khronos Group noong 2015. Gumagamit ng JSON architecture upang ilarawan ang tatlong-dimensional na eksena, na kilala bilang 'JPEG ng 3D domain'. Ito ay isang magaan na pamantayang pang-industriya para sa modernong WebGL/WebGPU at virtual reality rendering)"
 
 msgid "mime_glb"
-msgstr "GLB binary 3D model (binary version ng GLTF, isang file na naglalaman ng lahat ng resources, ginagamit para sa pamamahagi ng 3D scene)"
+msgstr "GLB binary 3D model (buong binary, lossless encapsulation na bersyon ng glTF asset model. Pinagsasama ang istraktura ng eksena, low-level mesh vertex data, materyales, at texture map sa isang file. Espesyal na idinisenyo para sa mahusay na paghahatid at pamamahagi ng stream ng cross-platform web 3D asset)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY talahuluganan (file ng kahulugan ng termino, ginagamit para sa pamamahala ng termino sa documentation system)"
+msgstr "GLOSSARY data glossary (file ng kahulugan ng set ng terminolohiya na espesyal para sa mga sistema ng pamamahala ng dokumento at structured corpora. May built-in na standard na kahulugan ng termino, multi-language mapping, at metadata mapping. Ginagamit upang mapanatili ang konseptuwal na pagkakapare-pareho sa automated text analysis at mga sistema ng pag-publish ng nilalaman)"
 
 msgid "mime_cbz"
-msgstr "CBZ comic book (ZIP-compressed comic image, unibersal na format para sa mga kolektor ng komiks)"
+msgstr "CBZ comic book (proprietary comic image archiving format batay sa ZIP compression structure. Sa loob, nag-encapsulate ito ng tuluy-tuloy na pagkakasunod-sunod ng static bitmap image. Ito ay isang unibersal na lightweight container standard para sa digital comic publishing at cross-platform local collection)"
 
 msgid "mime_cbr"
-msgstr "CBR comic book (RAR-compressed comic image, unibersal na format para sa mga kolektor ng komiks)"
+msgstr "CBR comic book (proprietary comic image archiving format batay sa RAR compression structure. Gumagamit ng RAR algorithm upang i-encapsulate ang static bitmap sequence, may medyo mataas na compression rate, may malawak na suporta sa compatibility sa larangan ng digital comic distribution)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-book (FictionBook 2.0, Russian e-book format, XML structure, malawakang sinusuportahan ng open source reader)"
+msgstr "FB2 e-book (FictionBook 2.0 e-book standard mula sa unang bahagi ng 2000s. Gumagamit ng purong XML structure upang ilarawan ang mga katangian ng libro at hierarchy ng teksto. May malawak na suporta sa open source e-book ecosystem at legacy digital publishing reader)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-book (Kobo espesyal na EPUB format, na-optimize na format para sa Kobo e-book reader)"
+msgstr "KEPUB e-book (proprietary enhanced e-book format ng Kobo na nag-evolve mula sa EPUB standard. Nagsasagawa ng low-level rendering optimization para sa hardware-level e-book reader ng Kobo, na nagbibigay ng mas mahusay na layout ng pahina at interaksyon sa istatistika ng pagbabasa)"
 
 msgid "mime_m4b"
-msgstr "M4B audiobook (MPEG-4 audio book format, sumusuporta sa bookmark, format para sa iTunes audiobook)"
+msgstr "M4B audiobook (audiobook format batay sa MPEG-4 Part 14 (MP4) container architecture. Gumagamit ng AAC encoding, native na sumusuporta sa low-level bookmark location, resume playback mula sa breakpoint, at pag-embed ng kabanata. Dati ay standard format ng Apple iTunes ecosystem)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX format (inilunsad ng Amazon noong 2015, espesyal na format ng e-book para sa Kindle, sumusuporta sa pinahusay na typography at mabilis na page flip)"
+msgstr "Kindle KFX format (proprietary enhanced digital publishing format na inilabas ng Amazon kasama ang Kindle noong 2015. Sinusuportahan ang advanced ligature layout, high-dynamic font rendering, at kernel-level stream page loading (Page Flip). Ito ang pangunahing pamantayan ng modernong Kindle platform)"
 
 msgid "mime_chm"
-msgstr "CHM help file (inilunsad ng Microsoft noong 1997, compiled HTML help format, pamantayan para sa dokumentasyon ng tulong sa Windows software)"
+msgstr "CHM compiled help file (compiled HTML help information system na inilabas ng Microsoft noong 1997. Nagpapakete ng hypertext data at pinagbabatayan na index sa iisang binary container. Matagal na itong naging standard format para sa lokal na offline help documentation para sa Windows software)"
 
 msgid "mime_mht"
-msgstr "MHT web archive (inilunsad ng Microsoft noong 1999, single-file web page format, format ng pag-save ng web page sa IE browser)"
+msgstr "MHT web page archive (MIME aggregated hypertext format na inilabas ng Microsoft noong 1999. Batay sa RFC 2557 standard, nag-encapsulate ng HTML source, CSS, JS, at naka-embed na mga imahe sa iisang text file. Ginagamit para sa offline web page saving sa legacy browser)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, WAP standard 1999, ginamit para sa web page ng lumang feature phone, inalis na)"
+msgstr "WML wireless markup language (mobile markup standard na itinatag ng WAP (Wireless Application Protocol) forum noong 1999. Batay sa XML specification, espesyal na idinisenyo para sa mga unang narrow-band wireless cellular network at low-power feature phone. Sa modernong web ecosystem, ito ay kabilang sa retiradong legacy na teknolohiya)"
 
 msgid "mime_xhtml"
-msgstr "XHTML web page (W3C standard 2000, XML version ng HTML, mas mahigpit na syntax. Winakasan ng W3C ang pagpapanatili noong 2009, inilipat ang pokus sa HTML5)"
+msgstr "XHTML hypertext web page (2000 W3C standard, encapsulation ng mahigpit na hypertext markup language batay sa XML architecture. Noong 2009, itinigil ng W3C ang teknolohikal na ebolusyon nito at ganap na lumipat sa HTML5 specification. Ngayon ay pangunahing ginagamit para sa semantic web page rendering sa legacy system)"
 
 msgid "mime_xml"
-msgstr "XML document (W3C standard 1998, extensible markup language, pangunahing format para sa web services, configuration file, pagpapalitan ng data)"
+msgstr "XML structured document (extensible markup language mula sa W3C standard noong 1998. May self-describing tag architecture. Ito ay isang pundasyong format para sa network web services (SOAP/REST), system-level configuration files (XSD), at cross-platform data exchange)"
 
 msgid "mime_sgml"
-msgstr "SGML document (ISO standard 1986, hinalinhan ng HTML, Standard Generalized Markup Language, ang XML at HTML ay nagmula sa SGML)"
+msgstr "SGML generalized markup language (1986 ISO 8879 international standard para sa standard generalized markup language. Bilang pioneer ng industriya sa structured na paglalarawan ng mga elektronikong dokumento, parehong XML at maagang HTML specifications ay nagmula sa standard meta-language na ito)"
 
 msgid "mime_apng"
-msgstr "APNG animation (binuo ng Mozilla noong 2004, extension ng PNG para sa animation, modernong kapalit para sa GIF, sumusuporta sa totoong kulay at transparency)"
+msgstr "APNG dynamic graphics (dynamic extension ng Portable Network Graphics (PNG) na binuo ng Mozilla noong 2004. Sinusuportahan ang 24-bit true colors at 8-bit Alpha channel semi-transparency. Ito ay isang high-definition na alternatibo sa GIF format sa modernong web scenario)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmap (Windows bitmap format, native na suportado mula noong Windows 1.0. Hindi naka-compress, malalaking sukat ng file, ngunit dahil sa simpleng istraktura at walang pangangailangan para sa karagdagang codec, ang Windows 11 screenshot tool, paint program, icon resources sa EXE/MSI installation package, cursor file, at ilang lumang driver ay ginagamit pa rin ito. Para sa parehong kalidad ng imahe, ang file ay humigit-kumulang 3-10 beses na mas malaki kaysa sa PNG, sa karamihan ng mga sitwasyon ay pinalitan ng PNG/JPEG, ngunit ang Windows ecosystem ay nagpapanatili pa rin ng malawak na compatibility)"
+msgstr "BMP native bitmap (device-independent bitmap format ng Microsoft platform na itinatag mula noong Windows 1.0 era. Gumagamit ng lossless, uncompressed storage, kahit na ang laki nito ay karaniwang 3-10 beses na mas malaki kaysa sa PNG, dahil sa kawalan ng encoding/decoding overhead, ito ay malawak pa ring naka-embed sa mga pangunahing bahagi ng Windows 11, mga segment ng resource ng EXE/MSI, at mga graphics buffer ng legacy driver)"
 
 msgid "mime_cdr"
-msgstr "CDR vector graphics (espesyal na format para sa CorelDRAW, Corel Corporation mula sa Canada, software para sa vector graphic design)"
+msgstr "CDR vector graphics (proprietary CorelDRAW professional vector design source file format ng kumpanyang Corel ng Canada. Sinusuportahan ang multi-layer color management, kumplikadong mathematical contour node, at print-grade layout data. Ito ay isang espesyal na format para sa propesyonal na flat printing at advertising design)"
 
 msgid "mime_gif"
-msgstr "GIF image (binuo ng CompuServe noong 1987, 256-color animation format. Mga disadvantages: limitadong bilang ng kulay, magaspang na kalidad ng imahe, hindi sumusuporta sa transparency, malalaking file, mababang frame rate. Pinalitan ng mga modernong animation format tulad ng APNG, WebP)"
+msgstr "GIF indexed color image (8-bit indexed color bitmap format na binuo ng CompuServe noong 1987. Batay sa LZW algorithm, limitado sa 256 na antas ng kulay at solong-kulay na transparency, nagiging bulky sa mataas na frame rate. Ngayon ay unti-unting pinapalitan ng modernong high-efficiency dynamic image standards tulad ng APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "ICO icon (Windows format ng icon file, sumusuporta sa maraming resolution, standard na format para sa favicon ng web page)"
+msgstr "ICO system icon (Windows native icon resource encapsulation format. Sinusuportahan ang mixed embedding ng mga variant ng imahe na may maraming pixel resolution at color depth sa iisang container. Isa rin itong unibersal na pamantayan sa pamamahagi para sa pangunahing identifier ng site ng modernong web browser (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "JPEG image (ISO standard 1992, lossy compression format para sa larawan, de facto standard para sa mga litrato sa internet)"
+msgstr "JPEG compressed image (lossy compression image format ng ISO 10918 international standard noong 1992. Batay sa Discrete Cosine Transform (DCT) algorithm, nakakamit ang mataas na compression ratio habang pinapanatili ang mahusay na makatotohanang kalidad ng imahe. Ito ang ganap na de facto standard para sa static na photography sa pandaigdigang internet)"
 
 msgid "mime_jpg"
-msgstr "JPEG image (ISO standard 1992, lossy compression format para sa larawan, de facto standard para sa mga litrato sa internet)"
+msgstr "JPEG compressed image (lossy compression image format ng ISO 10918 international standard noong 1992. Batay sa Discrete Cosine Transform (DCT) algorithm, nakakamit ang mataas na compression ratio habang pinapanatili ang mahusay na makatotohanang kalidad ng imahe. Ito ang ganap na de facto standard para sa static na photography sa pandaigdigang internet)"
 
 msgid "mime_png"
-msgstr "PNG image (W3C rekomendasyon 1996, sumusuporta sa totoong kulay at transparency, static na kapalit para sa GIF, pamantayan para sa lossless na imahe sa internet)"
+msgstr "PNG lossless image (Portable Network Graphics standard na inirerekomenda ng W3C noong 1996. Gumagamit ng lossless compression algorithm, native na sumusuporta sa 24-bit true colors at 8-bit Alpha channel transparency. Bilang isang high-definition na alternatibo sa klasikong static GIF, ito ang ganap na de facto standard para sa lossless pixel image sa internet)"
 
 msgid "mime_ps"
-msgstr "PostScript page description file (inilunsad ng Adobe noong 1985, page description language, hinalinhan ng PDF, ginagamit para sa pag-print at pag-publish)"
+msgstr "PostScript page description file (stack-based page description language na ipinakilala ng Adobe noong 1985. Bilang teknolohikal na hinalinhan ng PDF format, ipinatutupad nito sa mababang antas ang hardware-independent typography at high-precision vector graphics rendering. Ito ay isang pundasyong pamantayan para sa propesyonal na pag-publish sa pag-imprenta at larangan ng laser printing)"
 
 msgid "mime_psb"
-msgstr "PSB large document (Adobe Photoshop format para sa napakalaking imahe, sumusuporta sa mga imaheng mas malaki sa 2GB o 30000 pixels)"
+msgstr "PSB large layer document (proprietary super-large source file encapsulation format ng Adobe Photoshop. Sinisira nito ang 2GB physical size at 30,000 pixel internal addressing limits ng standard PSD format. Espesyal na idinisenyo para sa pag-iimbak ng napakalaking, mataas na lalim ng layer na higanteng digital art asset)"
 
 msgid "mime_psd"
-msgstr "PSD image (Adobe Photoshop source file, sumusuporta sa mga layer, channel, path, pamantayan sa industriya para sa pagpoproseso ng imahe)"
+msgstr "PSD layer design source file (proprietary layered image engineering format ng Adobe Photoshop. Bilang isang pang-industriya na standard container sa larangan ng graphics at imahe, native nitong ni-encapsulate ang kumpletong layer rendering tree, bitmap channel, vector clipping path, at composite blending mode, na sumusuporta sa lossless na buong pag-edit ng data)"
 
 msgid "mime_webp"
-msgstr "WebP image (binuo ng Google noong 2010, format ng web image, sumusuporta sa lossy/lossless compression at animation, ang compression rate ay 25-35% na mas mataas kaysa sa PNG at 25% na mas mataas kaysa sa JPEG)"
+msgstr "WebP high-efficiency image (universal web graphics encoding standard na ipinakilala ng Google noong 2010. Nagmula sa VP8 video key frame technology, perpektong tugma sa lossy, lossless, semi-transparent, at dynamic rendering. Binabawasan ang laki ng 25-35% kumpara sa PNG na may parehong kalidad. Ito ay isang pundasyong bato para sa high-performance loading ng modernong web page)"
 
 msgid "mime_woff"
-msgstr "WOFF web font (nilikha noong 2009, W3C standard 2018. Batay sa TrueType/OpenType compression, optimization ng pag-load ng web font, standard na format para sa icon font sa mga modernong web page)"
+msgstr "WOFF web glyph file (open web font format na nilikha noong 2009 at naging W3C standard noong 2012. Sa esensya, ito ay isang stream lossless compression encapsulation ng standard TTF/OTF font structures, na lubhang nag-o-optimize sa gastos sa bandwidth ng network transmission. Ito ay isang unibersal na format para sa modernong website icon at cloud font)"
 
 msgid "mime_7z"
-msgstr "7z compressed package (binuo ni Igor Pavlov noong 1999, espesyal na format ng 7-Zip program. LZMA algorithm, mataas na compression rate, open source at libre. Ang 7z format ay karaniwang 30-50% na mas maliit kaysa sa ZIP sa parehong compression rate, karaniwang format sa open source community at para sa pamamahagi ng software)"
+msgstr "7z compressed archive (proprietary 7-Zip format na binuo ni Igor Pavlov noong 1999. Batay sa open source LZMA/LZMA2 algorithm, may napakataas na compression rate. Sa ilalim ng parehong mga kondisyon, ang laki nito ay karaniwang 30-50% na mas maliit kaysa sa ZIP. Ito ay isang unibersal na high-compression-ratio format para sa open source community at software distribution)"
 
 msgid "mime_ace"
-msgstr "ACE compressed package (binuo noong 1990s, format ng WinACE program. Dati ay nakipagkumpitensya sa RAR, medyo mataas ang compression rate. Winakasan ang pag-unlad noong 2007, ngayon ay pinalitan ng 7z/RAR, bihirang gamitin)"
+msgstr "ACE compressed archive (proprietary compression format ng WinACE mula noong 1990s. Minsang nakipagkumpitensya sa RAR format at may medyo mataas na compression rate. Pagkatapos ng 2007, tumigil ang teknolohikal na pag-ulit, ngayon ay pinalitan ng 7z at RAR format. Nabibilang sa legacy system archiving format)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 compressed package (binuo ni Julian Seward noong 1996, block-sorting compression algorithm. Ang compression rate ay 15-20% na mas mataas kaysa sa GZIP, ngunit mas mabagal ang bilis. Karaniwang format para sa source code ng Linux kernel, open source software package, extension .bz2)"
+msgstr "BZIP2 compressed archive (block-sorting compression format na binuo ni Julian Seward noong 1996. Ang compression rate ng pinagbabatayan nitong algorithm ay 15-20% na mas mataas kaysa sa GZIP ngunit mas mataas ang computational cost. Kadalasang ginagamit para sa pamamahagi ng Linux kernel source code at open source software package. Ang karaniwang extension ay .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB compressed package (binuo ng Microsoft noong 1995, Cabinet format. Format ng installation package para sa Windows, ginagamit para sa pamamahagi ng driver at system file. Ang Windows Installer (MSI) ay panloob na gumagamit ng CAB para sa pag-iimbak ng file)"
+msgstr "CAB compressed archive (Cabinet archiving format na independiyenteng binuo ng Microsoft noong 1995. Bilang native installation package standard ng Windows system, ginagamit para sa pamamahagi ng driver at kernel file. Ito rin ang pinagbabatayan na storage container para sa Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG disk image (inilunsad ng Apple noong 1980s, Disk Image format. Standard na format para sa pamamahagi ng software sa macOS, nagmo-mount bilang virtual disk sa double-click, i-drag upang i-install ang application. Sumusuporta sa compression at encryption, pangunahing format para sa pag-download ng Mac software)"
+msgstr "DMG disk image (Disk Image format na binuo ng Apple noong 1980s. Bilang standard container para sa pamamahagi ng macOS software, sinusuportahan ang physical mounting bilang virtual file system, low-level compression, at data encryption. Ito ang mainstream na format para sa pamamahagi ng aplikasyon sa Mac ecosystem)"
 
 msgid "mime_emz"
-msgstr "EMZ compressed image (Windows compressed Enhanced Metafile, compressed version ng EMF. Format para sa pag-iimbak ng vector graphics sa Office document, sa esensya ay GZIP compressed EMF file)"
+msgstr "EMZ compressed image (compressed na bersyon ng Windows Enhanced Metafile EMF. Sa esensya, ito ay binary vector graphics na na-compress sa pamamagitan ng GZIP algorithm. Malawakang ginagamit para sa pag-iimbak ng naka-embed na vector graphics sa mga dokumento ng Microsoft Office series)"
 
 msgid "mime_gz"
-msgstr "GZIP compressed package (binuo nina Jean-loup Gailly at Mark Adler noong 1992, GNU project. Standard na tool sa compression sa Unix/Linux system, karaniwang format para sa HTTP compression sa pagpapadala. Extension .gz, madalas na ginagamit kasama ng TAR)"
+msgstr "GZIP compressed archive (standard stream compression format na binuo nina Jean-loup Gailly at Mark Adler ng GNU project noong 1992. Bilang standard compression tool ng Unix/Linux, ito rin ang pangunahing pamantayan para sa HTTP transport layer compression (Gzip). Madalas gamitin kasama ng TAR archiving)"
 
 msgid "mime_jar"
-msgstr "JAR compressed package (inilunsad ng Sun Microsystems noong 1997, Java ARchive format. Sa esensya ay ZIP compressed package, ginagamit para sa pag-package ng Java classes at application. Pangunahing format sa Java ecosystem tulad ng Maven, Gradle, ginagamit din ng Android ang JAR)"
+msgstr "JAR compressed archive (Java ARchive archiving format na ipinakilala ng Sun Microsystems noong 1997. Sa esensya, ito ay isang packaging container batay sa ZIP structure, ginagamit upang i-encapsulate ang Java class libraries at metadata. Ito ay isang pangunahing produkto ng compilation para sa Maven, Gradle, at maagang Android ecosystem)"
 
 msgid "mime_lzma"
-msgstr "LZMA compressed package (binuo ni Igor Pavlov noong 1998, Lempel-Ziv-Markov chain algorithm. Pangunahing compression algorithm ng 7z format, mataas na compression rate, mabilis na decompression. Ginagamit para sa pamamahagi ng firmware at embedded system software)"
+msgstr "LZMA compressed archive (Lempel-Ziv-Markov chain compression algorithm na binuo ni Igor Pavlov noong 1998. Bilang pangunahing engine ng 7z format, may napakataas na compression rate at high-speed decompression na katangian. Malawakang ginagamit para sa pamamahagi ng hardware firmware at embedded system)"
 
 msgid "mime_rar"
-msgstr "RAR compressed package (binuo ni Eugene Roshal noong 1993, Roshal ARchive format. Mataas na compression rate, sumusuporta sa volume split at recovery record. Format ng WinRAR program, ang compression rate ay mas mahusay kaysa sa ZIP, ngunit nangangailangan ng bayad na software, ang mga open source tool tulad ng unrar ay maaaring mag-decompress)"
+msgstr "RAR compressed archive (proprietary WinRAR archiving format na binuo ni Eugene Roshal noong 1993. Sinusuportahan ang paghahati sa volume, physical recovery records (ECC), at high-strength encryption. Ang compression rate ay mas mahusay kaysa sa standard ZIP, at may malawak na suporta sa compatibility sa personal computer at komersyal na sektor)"
 
 msgid "mime_tar"
-msgstr "TAR archive package (ipinakilala sa Unix V7 noong 1979, Tape ARchive format. Tape archive format, packaging lamang walang compression, madalas na ginagamit kasama ng GZIP/BZIP2/XZ. Ang source code ng Linux software package, layered storage ng Docker image ay gumagamit ng TAR format)"
+msgstr "TAR archive package (Tape ARchive format mula sa Unix V7 era noong 1979. Isinasagawa lamang ang pag-package ng file stream nang walang data compression. Madalas na pinagsama sa GZIP/BZIP2/XZ, ito ay isang pinagbabatayan na pamantayan para sa mga pakete ng source code ng Linux at layered storage ng Docker image)"
 
 msgid "mime_tgz"
-msgstr "TGZ compressed package (kombinasyon ng TAR + GZIP format, extension .tgz o .tar.gz. Pinaka-unibersal na format ng pamamahagi para sa Unix/Linux software package, malawakang ginagamit para sa source code at binary package, kinatawan ng 'extract and use' na konsepto)"
+msgstr "TGZ compressed archive (stream combination format ng TAR archiving at GZIP compression, mga extension na .tgz o .tar.gz. Bilang pinaka-unibersal na format ng pamamahagi ng software package sa kapaligiran ng Unix/Linux, malawakang ginagamit para sa deployment ng source code compilation at pamamahagi ng binary package na walang instalasyon)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 compressed package (kombinasyon ng TAR + BZIP2 format, extension .tbz2 o .tar.bz2. Ang compression rate ay 15-20% na mas mataas kaysa sa TGZ, angkop para sa pamamahagi ng malalaking file, ang source code ng Linux kernel ay matagal nang gumamit ng format na ito)"
+msgstr "TBZ2 compressed archive (stream combination format ng TAR archiving at BZIP2 compression, mga extension na .tbz2 o .tar.bz2. Kung ikukumpara sa TGZ, maaari pang mapataas ang compression rate ng 15-20%, angkop para sa pagpapadala ng malalaking file, matagal na ginamit para sa pamamahagi ng source code ng Linux kernel)"
 
 msgid "mime_xz"
-msgstr "XZ compressed package (inilunsad noong 2009, batay sa LZMA2 algorithm. Napakataas na compression rate, 30-50% na mas mataas kaysa sa GZIP, medyo mabilis ang decompression. Malawakang ginagamit sa Linux kernel, mga package manager (tulad ng panloob na istraktura ng Debian .deb package), inirerekomendang format sa Linux ecosystem ngayon)"
+msgstr "XZ compressed archive (susunod na henerasyon na high-compression-ratio format na ipinakilala noong 2009. Batay sa LZMA2 algorithm, ang compression rate ng data ay 30-50% na mas mataas kaysa sa GZIP habang pinapanatili ang high-speed decompression. Ito ay itinatag bilang inirerekomendang pamantayan sa pamamahagi ng Linux kernel at pangunahing mga manager ng package (tulad ng nasa loob ng Debian .deb))"
 
 msgid "mime_z"
-msgstr "Z compressed package (Unix compress command format mula 1985, LZW algorithm. Maagang Unix compression format, pinalitan ng GZIP. Extension .Z, bihirang gamitin sa mga modernong system)"
+msgstr "Z compressed archive (LZW compression format ng Unix compress command noong 1985. Bilang isang maagang standard compression standard ng Unix system, ngayon ay ganap nang pinalitan ng mas mahusay na GZIP format. Sa modernong network traffic, ito ay isang bihirang makasaysayang legacy format)"
 
 msgid "mime_zip"
-msgstr "ZIP compressed package (binuo ni Phil Katz noong 1989, PKZIP format. Native na sinusuportahan ng Windows, pinaka-unibersal na compression format sa internet. Sumusuporta sa maraming file, directory structure, maaaring pumili ng compression algorithm. Ang JAR sa Java, APK sa Android, DOCX/XLSX para sa Office document ay batay sa ZIP format)"
+msgstr "ZIP compressed archive (unibersal na PKZIP archiving format na binuo ni Phil Katz noong 1989. Nakakakuha ng native support mula sa mga pangunahing operating system. Ito ang pinakamalawak na ginagamit na container standard sa internet. Ang modernong Java's JAR, Android's APK, at Office documents (OOXML) ay lahat batay sa ZIP structure)"
 
 msgid "mime_zst"
-msgstr "Zstandard compressed package (binuo ng Facebook noong 2015, dinisenyo ni Yann Collet. High-speed compression algorithm, compression rate malapit sa LZMA, bilis na mas mataas kaysa sa GZIP. Sinusuportahan ng Linux kernel 5.9+, unti-unting pinagtibay ng Arch Linux pacman, Debian APT, bagong standard ng compression ng susunod na henerasyon)"
+msgstr "Zstandard compressed archive (susunod na henerasyon na stream compression standard na dinisenyo ni Yann Collet ng Facebook noong 2015. Lumalapit sa compression rate ng LZMA habang may mas mataas na throughput kaysa sa GZIP. Malalim na pinagtibay ng Linux kernel (5.9+) at Arch/Debian package manager)"
 
 msgid "mime_lz4"
-msgstr "LZ4 compressed package (binuo ni Yann Collet noong 2011, napakabilis na compression algorithm. Ang bilis ng compression ay higit sa 10 beses na mas mataas kaysa sa GZIP, angkop para sa real-time na compression scenario. Malawakang ginagamit sa Linux kernel, OpenZFS, Hadoop, unang pagpipilian para sa mga sitwasyon kung saan prayoridad ang bilis)"
+msgstr "LZ4 compressed archive (napakabilis na stream compression algorithm na binuo ni Yann Collet noong 2011. Ang bilis ng throughput ay higit sa 10 beses na mas mabilis kaysa sa GZIP, na may napakababang CPU runtime cost. Malawakang ginagamit sa Linux kernel, OpenZFS file system, at Hadoop real-time data stream processing)"
 
 msgid "mime_lzo"
-msgstr "LZO compressed package (binuo ni Markus Oberhumer noong 1996, Lempel-Ziv-Oberhumer algorithm. Napakabilis na decompression, average na compression rate. Ginagamit ng Linux kernel Squashfs, OpenWrt firmware, angkop para sa embedded system)"
+msgstr "LZO compressed archive (Lempel-Ziv-Oberhumer algorithm na binuo ni Markus Oberhumer noong 1996. Nakatuon sa napakabilis na decompression performance. Malawak na naka-embed sa Linux kernel Squashfs image, OpenWrt firmware, at iba't ibang resource-limited embedded system)"
 
 msgid "mime_msi"
-msgstr "MSI installation package (inilunsad ng Microsoft noong 1999, Windows Installer package format. Standard na format ng pag-install para sa Windows application, sumusuporta sa transaction rollback, pamamahala ng component, silent installation. Unang pagpipilian para sa pamamahagi ng enterprise software, nananatiling pangunahing format para sa pag-install ng Windows software ngayon)"
+msgstr "MSI system installation package (Windows Installer data encapsulation format na ipinakilala ng Microsoft noong 1999. Bilang isang standard deployment specification ng Windows application-level, native na sumusuporta sa low-level transaction rollback, component lifecycle management, at silent installation na walang batch processing. Ito ang pangunahing pamantayan para sa sentralisadong pamamahagi ng software sa antas ng enterprise at pagpapatupad ng patakaran)"
 
 msgid "mime_pkg"
-msgstr "PKG installation package (macOS application installation format, batay sa teknolohiya ng Apple Installer. Standard na format para sa pamamahagi ng software sa macOS, sumusuporta sa pagpili ng component, installation script, pag-andar ng pag-uninstall. Ang .pkg file ay maaaring i-install sa double-click, karaniwang paraan ng pamamahagi ng software sa labas ng Mac App Store)"
+msgstr "PKG cross-platform software installation package. 1. FreeBSD software package: pkgng standard, extension .pkg o .txz, batay sa TAR+XZ/Zstd compression, sumusuporta sa dependency resolution at signature verification; 2. macOS installation package: batay sa Apple Installer format, sumusuporta sa custom components, installation script, at system-level uninstallation. Ang mga ito ay ang mga pangunahing carrier ng pamamahagi para sa BSD server at Mac system, ayon sa pagkakabanggit."
 
 msgid "mime_apk"
-msgstr "APK Android application package (inilunsad ng Google noong 2008, tradisyonal na format ng pag-install para sa Android system. Ang APK ay sa esensya ay ZIP compressed package, naglalaman ng code, resources, manifest file. Mula 2021, hinihiling ng Google Play na ang mga bagong application ay gumamit ng AAB format, ngunit ang APK ay ginagamit pa rin para sa pag-unlad, pag-debug, pamamahagi sa pamamagitan ng third-party na tindahan, at side-loading)"
+msgstr "APK Android application package (tradisyonal na application installation package na inilabas ng Google kasama ang Android noong 2008. Batay sa ZIP archive structure, nagpapakete ng compiled Dalvik bytecode (DEX), metadata manifest, at global resources. Ngayon ay malawakang ginagamit para sa lokal na pag-debug sa pag-unlad, pamamahagi ng third-party, at side-loading installation ng device)"
 
 msgid "mime_ipa"
-msgstr "IPA Apple application package (iOS App Store Package, format ng pag-install para sa iOS/iPadOS application. Inilunsad noong 2008 kasama ang iPhone SDK. Nangangailangan ng pamamahagi sa pamamagitan ng App Store o pag-sign ng enterprise certificate. Naglalaman ng executable file, resources, Info.plist signed information)"
+msgstr "IPA Apple application package (exclusive packaging container para sa iOS/iPadOS na inilabas kasama ng iPhone SDK noong 2008. Sa esensya, ito ay isang ZIP archive na protektado ng FairPlay DRM o enterprise-level code signature, na naglalaman ng Mach-O binary executable, application resource tree, at Info.plist metadata configuration)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS application package (HarmonyOS Ability Package, pangunahing yunit ng HarmonyOS application. Inilunsad kasama ang HarmonyOS 2.0 noong 2020. Sumusuporta sa entry at feature type, format ng pamamahagi para sa Huawei phone, tablet, smart watch, at iba pang HarmonyOS device)"
+msgstr "HAP HarmonyOS application package (basic unit ng elastic deployment ng HarmonyOS na inilabas kasama ng HarmonyOS 2.0 noong 2020. Binubuo ng Entry main module o Feature extension functional modules. Ito ang pangunahing multi-end deployment format para sa pamamahagi ng smart terminal sa cross-end lahat ng mga sitwasyon (telepono, tablet, wearable device))"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS static shared package (HarmonyOS Archive, static shared library para sa HarmonyOS, maaaring ibahagi sa maraming HAP, ginagamit para sa component development at module reuse)"
+msgstr "HAR HarmonyOS static shared package (proprietary static shared library archive file ng HarmonyOS. Ginagamit upang i-encapsulate ang mga karaniwang bahagi, low-level resource code, at compile-time dependencies, na static na naka-link at ibinahagi ng maraming HAP modules. Ito ang pangunahing pundasyon para sa component-based development at multi-module reuse ng HarmonyOS system)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (inilunsad ng Google noong 2018, mula 2021 hinihiling ng Google Play na ang mga bagong application ay gumamit ng format na ito. Ang AAB ay format para sa pamamahagi, dynamic na bumubuo ang Google Play ng mga na-optimize na APK batay sa configuration ng device (CPU architecture, screen density, wika), ang average na laki ng installation package ay nabawasan ng 35%. Nag-upload ang mga developer ng AAB, nagda-download ang mga user ng APK)"
+msgstr "AAB Android application bundle (dynamic distribution format ng Google Play na ipinakilala ng Google noong 2018 at itinatag noong 2021. Bilang isang purong distribution entity, ito ay dynamic na pinuputol at kino-compile ng cloud ayon sa CPU architecture, screen density, at wika ng target na device, at bumubuo ng na-optimize na APK kung kinakailangan. Sa karaniwan, binabawasan nito ang gastos sa bandwidth ng paghahatid ng 35%)"
 
 msgid "mime_xapk"
-msgstr "XAPK application package (pinalawak na Android application package ng third-party, naglalaman ng APK + OBB data file. Ginagamit para sa malalaking laro at kumplikadong application, nilulutas ang limitasyon sa 100MB ng solong APK file. Karaniwan sa third-party na app store tulad ng APKPure, APKMirror, hindi opisyal na format ng Google)"
+msgstr "XAPK extended application package (unofficial application extension standard na itinatag ng third-party Android community. Sa pamamagitan ng magkasanib na pag-encapsulate ng standard APK file at napakalaking OBB game data extension package, pisikal nitong nalalampasan ang 100MB na limitasyon sa laki ng independiyenteng file ng Google Play. Malawak na makikita sa mga platform ng pamamahagi ng laro)"
 
 msgid "mime_appx"
-msgstr "Windows application package (inilunsad ng Microsoft noong 2012, format ng pag-install ng application para sa Windows 8/10/11. Sumusuporta sa UWP at conversion ng desktop application, ipinamamahagi sa pamamagitan ng Microsoft Store. Inilunsad ng Microsoft ang MSIX noong 2024 bilang kapalit na format, unti-unting pinapalitan ang APPX)"
+msgstr "APPX modern application package (UWP application deployment specification na inilabas ng Microsoft kasama ang Windows 8 noong 2012. May sandbox isolation running at lightweight uninstallation feature. Bilang isang maagang nangingibabaw na pamantayan ng Microsoft Store, sa modernong Windows ecosystem ito ay pumasok sa huling yugto ng lifecycle na umuunlad patungo sa MSIX)"
 
 msgid "mime_msix"
-msgstr "MSIX application package (inilunsad ng Microsoft noong 2018, bagong format ng Windows para sa pag-package ng application. Pinagsasama ang mga bentahe ng APPX at MSI, sumusuporta sa lahat ng uri ng Windows application, maaaring ipamahagi sa pamamagitan ng Microsoft Store o side-load, inirerekomendang format para sa Windows 11)"
+msgstr "MSIX next-generation application package (bagong standardized packaging specification para sa Windows na inilabas ng Microsoft noong 2018. Perpektong pinagsasama ang application security sandbox feature ng APPX at enterprise-level asset management advantages ng MSI. Ganap na katugma sa lahat ng uri ng Win32 application. Ito ang inirerekomendang pamantayan sa pamamahagi para sa Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage application package (inilunsad noong 2004, Linux format ng application na walang pag-install. 'Isang application = isang file', direktang tumatakbo nang walang pag-install, sumusuporta sa karamihan ng Linux distribution, karaniwang paraan para sa mga developer upang ipamahagi ang Linux software)"
+msgstr "AppImage installation-free application package (Linux single executable archive specification na sinimulan noong 2004. Gumagamit ng self-contained architecture na 'isang application ay isang file'. Sa runtime, direktang ini-mount ito sa pamamagitan ng FUSE mechanism bilang read-only virtual file system upang isagawa, na nagbibigay-daan sa zero-dependency instant na paggamit sa lahat ng Linux distribution)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak application package (inilunsad noong 2015, Linux sandboxed application format. Tumatakbo sa cross-distribution, nakahiwalay sa system environment, binuo ng Fedora, Red Hat, default na format sa GNOME Software center)"
+msgstr "Flatpak sandbox application package (Linux cross-distribution desktop application distribution standard na pinamunuan ng Red Hat at GNOME noong 2015. Sa mababang antas, umaasa ito sa Namespace at Cgroups mechanism ng Linux kernel upang makamit ang napakahigpit na application-level security sandbox isolation. Ito ang pundasyon ng modernong open source OS software center)"
 
 msgid "mime_snap"
-msgstr "Snap application package (inilunsad ng Canonical noong 2014, binuo ng kumpanya ng magulang ng Ubuntu, Linux unibersal na format ng application. Awtomatikong pag-update, sandbox isolation, sumusuporta sa 40+ Linux distribution, default na format sa Ubuntu Software center)"
+msgstr "Snap containerized application package (Linux universal deployment standard na ipinakilala ng Canonical, ang parent company ng Ubuntu, noong 2014. Gumagamit ng self-contained SquashFS image mounting architecture, sumusuporta sa automated incremental updates at mahigpit na AppArmor sandbox isolation. Ito ang pangunahing default na format ng Ubuntu Software Center ecosystem)"
 
 msgid "mime_deb"
-msgstr "Debian software package (inilunsad ng Debian project noong 1993, standard na format ng pag-install para sa Debian/Ubuntu at mga derivative nito. Pinamamahalaan ng dpkg, ang APT ay ang frontend package manager nito, isa sa mga pinaka-mature na format ng package sa Linux ecosystem, nananatiling pangunahing para sa pamilya ng Debian)"
+msgstr "DEB system software package (binary at source code encapsulation specification na itinatag ng Debian project noong 1993. Bilang pinagbabatayan na installation standard para sa Debian, Ubuntu, at lahat ng kanilang derivative system, umaasa ito sa dpkg core para sa unpacking at maintenance, at ginagamit ang APT bilang mahusay na front-end ng package manager. Ito ang pinaka-mature na pundasyon ng pamamahagi ng software sa Linux ecosystem)"
 
 msgid "mime_rpm"
-msgstr "RPM software package (inilunsad ng Red Hat noong 1997, standard na format para sa Red Hat/Fedora/CentOS/SUSE at iba pang distribution. Ang RPM ay kumakatawan sa 'Red Hat Package Manager', kasama ng DEB, isa sa dalawang pangunahing format ng package sa Linux, nananatiling pangunahing para sa pamilya ng RHEL)"
+msgstr "RPM system software package (Red Hat package manager encapsulation specification na inilabas ng Red Hat noong 1997. Kasama ng DEB, ito ay itinuturing na isa sa dalawang pangunahing kampo ng tradisyonal na pamamahala ng package ng Linux. May native na built-in na transaction-level dependency checking at pinagbabatayan na software digital signature verification. Ito ay nananatiling ganap na mainstream distribution standard para sa Red Hat family ecosystem tulad ng RHEL, Fedora, at CentOS hanggang sa kasalukuyan)"
 
 msgid "mime_pacman"
-msgstr "Arch software package (inilunsad ng Arch Linux noong 2002, .pkg.tar.zst format na ginagamit ng pacman package manager. Core ng rolling release Arch Linux, kilala sa pagiging simple at KISS prinsipyo, ang AUR (Arch User Repository) ay ang espesyalidad nito)"
+msgstr "Pacman archived software package (.pkg.tar.zst encapsulation format na itinatag ng Arch Linux kasama ang pacman manager noong 2002. Bilang pangunahing bahagi ng rolling update mechanism ng Arch, batay sa Zstandard high-speed high-compression algorithm, kasama ang AUR (Arch User Software Repository) ecosystem. Ito ay isang modernong pamantayan sa pamamahagi ng package na nagpapakita ng minimalist at KISS principles)"
 
 msgid "mime_exe"
-msgstr "EXE executable file (Windows executable program format, maikli para sa 'Executable'. Native executable format ng Windows operating system, naglalaman ng PE structure. Nag-evolve mula sa MZ format mula sa MS-DOS, ang PE (Portable Executable) format ay ipinakilala sa Windows NT noong 1993 at ginagamit pa rin hanggang ngayon. Ang mga installation package ng software, application, system tool ay gumagamit ng format na ito. Dina-double click ng user upang tumakbo, ang pinakamalawak na ginagamit na executable format sa mundo)"
+msgstr "EXE native executable file (Portable Executable (PE) binary program format ng Windows platform. Teknolohikal na nagmula sa MZ header structure mula sa MS-DOS era, at mula noong 1993 Windows NT ay ganap na itinatag bilang PE structure specification. Ito ang pinakamalawak na ginagamit na pamantayan sa pagpapatupad sa mundo para sa mga tagubilin ng machine code, static resource segment, at system kernel bootstrapping)"
 
 msgid "mime_dll"
-msgstr "DLL dynamic link library (inilunsad ng Microsoft noong 1993, Dynamic Link Library. Windows shared code library, dynamic na ni-load sa pagpapatakbo ng programa, nakakatipid ng memory at disk space. Ang mga system component, application plugin, driver ay gumagamit ng DLL format. Pangunahing paraan ng pagpapatupad ng Windows API, ang 'DLL Hell' na problema ay napawi sa .NET era)"
+msgstr "DLL dynamic link library (Dynamic Link Library shared code library specification ng Windows platform. Sa pamamagitan ng dynamic na pag-load at pag-relocate ng simbolo sa runtime, malaki ang naipap tipid nito sa pisikal na memorya at espasyo sa disk. Bilang pangunahing anyo ng pagpapatupad ng Windows API, ang maagang DLL Hell na problema nito ay ganap na nalutas sa modernong panahon sa pamamagitan ng SxS parallel isolation mechanism)"
 
 msgid "mime_com"
-msgstr "COM executable file (executable format mula sa MS-DOS era, maikli para sa 'Command'. Simpleng istraktura ng file, limitasyon sa 64KB, ay ang pangunahing format bago ang Windows 3.x. Inalis na, ang modernong Windows ay gumagamit ng EXE format, ang COM extension ay ginagamit pa rin para sa ilang component file)"
+msgstr "COM classic executable file (pinakalumang memory image (Command) execution format mula sa MS-DOS era. Gumagamit ng unstructured pure code segment design, limitado sa itaas na hangganan ng 64KB physical memory addressing segment. Ngayon ay retirado na bilang isang makasaysayang legacy format, ngunit sa modernong Windows architecture ginagamit pa rin ito bilang isang partikular na interface ng bahagi para sa limitadong compatibility)"
 
 msgid "mime_aac"
 msgstr "AAC audio (MPEG standard 1997, Advanced Audio Coding. Kahalili ng MP3, kalidad ng tunog ay mas mahusay kaysa sa MP3 sa parehong bitrate, default na audio format para sa YouTube, iTunes, Nintendo Switch)"

@@ -451,52 +451,29 @@ sub build_tgz {
     my $output_file = "$DESTI/$filename.tar.gz";
     
     print "\nBuilding TGZ package: $filename\n";
-    print "Using source directory directly (no copy): $SOURCE\n";
     
-    # 跳过复制，直接使用源码目录
-    prepare_buildroot(1);
+    my $nested_dir = "$SOURCE/$filename";
+    if (-d $nested_dir) {
+        print "Removing nested directory: $nested_dir\n";
+        system("rm -rf '$nested_dir'");
+    }
     
-    # 删除旧的输出文件
-    unlink $output_file if -f $output_file;
-    
-    # 切换到源码目录
     chdir($SOURCE);
     
-    # 排除不需要的文件和目录
-    my @excludes = (
-        '.git', '.github', '.settings',
-        'make', 'test',
-        '.gitignore', '.gitattributes',
-        '.project', '.cvsignore',
-        'git2cvs.sh',
-        '*.bak', '*~', '*.old'
-    );
+    my $cmd = "tar --exclude='.git' --exclude='.github' --exclude='.settings' "
+            . "--exclude='make' --exclude='test' --exclude='*.bak' --exclude='*~' "
+            . "--exclude='*.old' --exclude='.gitignore' --exclude='.gitattributes' "
+            . "--exclude='.project' --exclude='.cvsignore' --exclude='git2cvs.sh' "
+            . "-czf '$output_file' --transform='s/^/$filename\\//' . 2>&1";
     
-    my $exclude_args = '';
-    foreach my $ex (@excludes) {
-        $exclude_args .= " --exclude='$ex'";
-    }
+    print "Running: $cmd\n";
+    system($cmd);
     
-    # 打包命令：将当前目录打包，并在 tar 内重命名为项目名
-    my $cmd = "tar $exclude_args -czvf '$output_file' --transform='s/^/$filename\\//' . 2>&1";
-    
-    print "Running: tar $exclude_args -czvf '$output_file' --transform='s/^/$filename\\//' .\n";
-    my $result = system($cmd);
-    
-    if ($result != 0) {
-        warn "TGZ build failed with code $result";
-        return undef;
-    }
-    
-    # 验证输出文件
-    if (-f $output_file) {
-        my $size = -s $output_file;
-        print "✅ TGZ package created: $output_file (" . int($size/1024) . " KB)\n";
+    if (-f $output_file && -s $output_file > 0) {
+        print "✅ TGZ package created\n";
         return $output_file;
-    } else {
-        print "❌ TGZ package not created\n";
-        return undef;
     }
+    return undef;
 }
 
 # 构建 ZIP 包
@@ -506,58 +483,37 @@ sub build_zip {
     my $output_file = "$DESTI/$filename.zip";
     
     print "\nBuilding ZIP package: $filename\n";
-    print "Using source directory directly (no copy): $SOURCE\n";
     
-    # 检查 7z 是否可用
     my $which_7z = `which 7z 2>&1`;
     if ($which_7z =~ /not found/i) {
         print "⚠️ 7z command not found, skipping ZIP build\n";
         return undef;
     }
     
-    # 跳过复制，直接使用源码目录
-    prepare_buildroot(1);
+    my $nested_dir = "$SOURCE/$filename";
+    if (-d $nested_dir) {
+        print "Removing nested directory: $nested_dir\n";
+        system("rm -rf '$nested_dir'");
+    }
     
-    # 删除旧的输出文件
-    unlink $output_file if -f $output_file;
-    
-    # 切换到源码目录
     chdir($SOURCE);
     
-    # 排除不需要的文件和目录
-    my @excludes = (
-        '.git', '.github', '.settings',
-        'make', 'test',
-        '.gitignore', '.gitattributes',
-        '.project', '.cvsignore',
-        'git2cvs.sh'
-    );
+    my $cmd = "7z a -r -tzip -mx9 '$output_file' "
+            . "-xr!.git -xr!.github -xr!.settings "
+            . "-xr!make -xr!test "
+            . "-xr!*.bak -xr!*~ -xr!*.old "
+            . "-xr!.gitignore -xr!.gitattributes "
+            . "-xr!.project -xr!.cvsignore -xr!git2cvs.sh "
+            . ". 2>&1";
     
-    my $exclude_args = '';
-    foreach my $ex (@excludes) {
-        $exclude_args .= " -xr!$ex";
-    }
-    
-    # 使用 7z 打包
-    my $cmd = "7z a -r -tzip -mx '$output_file' . $exclude_args 2>&1";
     print "Running: $cmd\n";
+    system($cmd);
     
-    my $result = system($cmd);
-    
-    if ($result != 0) {
-        warn "ZIP build failed with code $result";
-        return undef;
-    }
-    
-    # 验证输出文件
     if (-f $output_file) {
-        my $size = -s $output_file;
-        print "✅ ZIP package created: $output_file (" . int($size/1024) . " KB)\n";
+        print "✅ ZIP package created\n";
         return $output_file;
-    } else {
-        print "❌ ZIP package not created\n";
-        return undef;
     }
+    return undef;
 }
 
 sub build_rpm {

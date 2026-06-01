@@ -450,8 +450,8 @@ msgstr "Hóspede - Número de páxinas - Número de peticións - Ancho de banda 
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Hora de inicio da última visita] e [Última páxina da última visita] só se gardan se a sesión non rematou"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Só os primeiros %s elementos con máis peticións se mostran na páxina de inicio. Para ver a lista completa, consulta a páxina de detalles."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Os primeiros %s elementos están ordenados por número de visitas en orde descendente; a orde do resto dos elementos non está definida."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Usuario rexistrado - Número de páxinas - Número de peticións - Ancho de banda - Hora da última visita"
@@ -465,8 +465,8 @@ msgstr "ID do verme - Número de peticións - Ancho de banda - Hora da última v
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Correo electrónico - Número de peticións - Ancho de banda - Hora da última visita"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Só os primeiros %s correos electrónicos con máis peticións se mostran na páxina de inicio. Para ver a lista completa, consulta a páxina de detalles."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Os primeiros %s enderezos de correo electrónico están ordenados por número de visitas en orde descendente; a orde do resto dos enderezos non está definida."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Número de páxinas - Ancho de banda - Entrada - Saída"
@@ -675,6 +675,27 @@ msgstr "O parámetro SiteDomain non está definido no seu ficheiro config/domain
 msgid "Please run as Administrator to set permissions"
 msgstr "Execute como Administrador para establecer os permisos"
 
+msgid "This directory lacks read permission"
+msgstr "Esti direutoriu escarez de permisu de llectura"
+
+msgid "Please set read permission for directory"
+msgstr "Por favor, estableza'l permisu de llectura pal direutoriu"
+
+msgid "Missing required parameter in config file"
+msgstr "Falta un parámetru obligatoriu nel ficheru de configuración"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Por favor, verifique que 'DirData' tea definíu."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Paez que falta o ye incompletu'l nome de dominiu na direición del restallador"
+
+msgid "Please check the URL parameter"
+msgstr "Por favor, verifique'l parámetru de la URL"
+
+msgid "Format description"
+msgstr "Descripción del formatu"
+
 msgid "Please set execute permission"
 msgstr "Por favor, estableza o permiso de execución"
 
@@ -800,376 +821,379 @@ msgstr "Capturador"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Ficheiro de texto (estandarización ASCII de 1963, texto plano sen formato. Base de todo o código fonte, configuración, rexistros. Unix usa LF, Windows usa CRLF para o salto de liña, aínda o formato de datos máis universal nos ordenadores)"
+msgstr "TXT ficheru de testu planu (testu planu ensin formatu estandarizáu por ASCII en 1963. Como base de too códigu fonte, ficheros de configuración y rexistros del sistema, los sos saltos de llinia multiplataforma (CRLF en Windows, LF n'Unix) siguen siendo l'estándar d'intercambiu de datos más universal del mundu informáticu)"
 
 msgid "mime_log"
-msgstr "Ficheiro de rexistro (ficheiro de texto que rexistra información sobre o funcionamento do sistema e as aplicacións, úsase a miúdo para solucionar problemas, analizar o rendemento e auditar a seguridade. Os formatos estándar inclúen o rexistro combinado de Apache, o rexistro de acceso de Nginx, syslog, etc.)"
+msgstr "LOG rexistru d'execución del sistema (rexistra estaos d'execución del sistema operativu, nucleu y aplicaciones como bienes de testu planu. Cubre rexistros d'accesu de Nginx/Apache (Combined Log) y l'especificación syslog estándar, siendo la fonte de datos central pa resolución de problemes, analís de rendimientu en fluxu y auditoríes de seguridá)"
 
 msgid "mime_page"
-msgstr "Páxina web HTML (Tim Berners-Lee inventou a World Wide Web en 1989, definiu as tres tecnoloxías principais HTML/HTTP/URL en 1990, e cedeunas gratis sen patentar. HTML5 converteuse no estándar oficial W3C en 2014, admite visualización, multimedia e impresión. Gañador do Premio Turing 2016)"
+msgstr "HTML páxina web d'hipertestu (creada por Tim Berners-Lee en 1989, piedra angular de la World Wide Web. Como llinguaxe de marcáu d'hipertestu universal gratuitu, l'especificación HTML5 convirtióse n'estándar oficial W3C en 2014, sofita de forma nativa multimedia estructurada, interacción semántica y diseñu de páxina fluidu, recibió'l Premiu Turing en 2016)"
 
 msgid "mime_khtml"
-msgstr "Motor web KHTML (KDE 2.0 lanzado en 1998, motor de renderizado do navegador Konqueror. Apple creou WebKit en 2001 baseado en KHTML, e Google creou Blink a partir de WebKit en 2008, converténdose no núcleo dos navegadores como Chrome, Edge, Safari. KHTML é un exemplo de como a comunidade de código aberto estableceu as bases dos motores de navegadores modernos, cuxo legado tecnolóxico continúa a través de WebKit/Blink ata hoxe)"
+msgstr "KHTML motor de plantíes web (especificación del motor de renderizáu del restallador KDE 2.0 de 1998. Como referencia d'open source qu'afitó les bases del renderizáu web modernu, el so legáu téunicu inspiró direutamente los nucleos WebKit d'Apple y Blink de Google, y entá perdura al traviés de les arquitectures web dinámiques y fluyíes modernes)"
 
 msgid "mime_script"
-msgstr "Linguaxe de script dinámica (linguaxe interpretada, non precisa compilación. Inclúe ASP, JSP, CGI, ColdFusion, Tcl, VBScript, etc., usada amplamente no desenvolvemento web inicial, administración de sistemas, automatización de tarefas. As linguaxes de script modernas como Python, Ruby, JavaScript convertéronse nas principais ferramentas para o desenvolvemento full-stack)"
+msgstr "SCRIPT script dinámicu interpretáu (categoría xeneral de fluxos de códigu fonte executaos llinia a llinia por un entorno d'execución o intérprete específicu ensin compilación previa. Cubre ASP, JSP, CGI y Tcl, usáu ampliamente pa interfaces de puerta d'enllaz comunes del sirvidor, control de procesos d'automatización y xuncimientu de xeres a nivel de sistema)"
 
 msgid "mime_js"
-msgstr "Script JavaScript (Creado por Brendan Eich en 10 días en Netscape en 1995, linguaxe de programación nativa do navegador. ECMAScript foi estandarizado en 1997, Node.js naceu en 2009 converténdoo nunha linguaxe multiplataforma, npm é o xestor de paquetes máis grande do mundo. A linguaxe de programación máis popular en GitHub durante anos)"
+msgstr "JavaScript script (entornu de programación nativu del restallador Netscape de 1995. En 1997 establecióse l'estándar industrial ECMAScript, en 2009 nació l'entornu d'execución Node.js, rompiendo les barreres del restallador y creando una arquitectura asíncrona non bloqueante de pila completa, acompañáu del ecosistema de paquetes de software npm, el más grande del mundu)"
 
 msgid "mime_py"
-msgstr "Script Python (Creado por Guido van Rossum en 1991, coñecido pola súa sangría obrigatoria e sintaxe sinxela. Úsase amplamente no desenvolvemento web, ciencia de datos, intelixencia artificial, automatización da administración. Gañador múltiple do premio TIOBE á Linguaxe de Programación do Ano)"
+msgstr "Python script (llinguaxe de script interpretáu d'altu nivel creáu por Guido van Rossum en 1991. Gracies a la so lexibilidá ensin perdes pola sangría obligatoria y el so diseñu multiparadigma, afitóse como llinguaxe estándar pa l'arquitectura web moderna, la ciencia de datos de pila completa, l'entrenamientu de modelos d'intelixencia artificial (IA) y les operaciones d'automatización nativa de la nube)"
 
 msgid "mime_sh"
-msgstr "Script Shell (Unix naceu en 1971, linguaxe de liña de ordes. Úsase para a administración de sistemas, automatización de tarefas, inicio de servizos, scripts de despregamento. Habilidade necesaria para a administración de Linux)"
+msgstr "Shell script (script d'intérprete de comandos estándar de la era Unix de 1971. Contién comandos de nivel de nucleu como Bash, Sh, Dash, xeneralmente executáu cola estensión .sh, siendo'l pegamento universal a nivel de nucleu pal control de procesos de baxu nivel, la configuración d'entornos ensin instalación y el despliegue automatizáu en sistemes operativos modernos paecíos a Unix)"
 
 msgid "mime_rb"
-msgstr "Script Ruby (Creado por Yukihiro Matsumoto en 1995, centrado na felicidade do desenvolvedor. O framework Ruby on Rails foi o pioneiro do paradigma de convención sobre configuración, influíndo no deseño dos frameworks web modernos)"
+msgstr "Ruby script (llinguaxe de script orientáu a oxetos creáu por Yukihiro Matsumoto en 1995. Cola so filosofía de diseñu centrada nel respetu estremu pola esperiencia del desendolcador, el so framework Ruby on Rails revolucionó l'arquitectura web moderna d'altu nivel al establecer el paradigma 'Convención sobre Configuración' (CoC))"
 
 msgid "mime_pl"
-msgstr "Script Perl (Creado por Larry Wall en 1987, coñecido polo seu pragmatismo, a miúdo chamado 'navalla suíza'. CPAN é o precursor dos xestores de paquetes de linguaxes de programación modernas, con profunda influencia no procesamento de texto, administración de sistemas e CGI)"
+msgstr "Perl script (llinguaxe de script pragmáticu creáu por Larry Wall en 1987. Como pioneru del xestor de paquetes modernu (CPAN), ye conocíu como la 'navaya suiza' del procesamientu de testu. En mou CGI modernu, con un consumu de memoria física perbaxu y un tratamientu eficiente d'espresiones regulares, sirve como base d'alta fiabilidá pal analís de rexistros)"
 
 msgid "mime_php"
-msgstr "Páxina web dinámica PHP (Creada por Rasmus Lerdorf en 1995, deseñada especificamente para o desenvolvemento web. Máis do 70% dos sitios web do mundo úsano, impulsa plataformas como WordPress, Facebook, Wikipedia. PHP 8 introduce a compilación JIT, mellorando significativamente o rendemento)"
+msgstr "PHP páxina web dinámica (creada por Rasmus Lerdorf en 1995, diseñada específicamente pal desendolcu web. Como teunoloxía central qu'impulsa más del 70% de los sitios web globales, ye la base d'aplicaciones de producción masiva como WordPress y Wikipedia. Dende PHP 8, cola introducción del motor d'execución JIT (Just-In-Time), evolucionó escontra una arquitectura de sirvidor d'altu rendimientu de pila completa)"
 
 msgid "mime_image"
-msgstr "Ficheiro de imaxe"
+msgstr "IMAGE clasificación d'activos d'imaxe (cubre bitmaps comprimíos con/en sin perdes, gráficos web modernos responsivos y vectores. Indicador clave pa evaluar la carga de recursos visuales d'un sitiu, la tasa d'ésitos de caché del veceru y el consumu d'anchu de banda de redes multimedia)"
 
 msgid "mime_document"
-msgstr "Ficheiro de documento"
+msgstr "DOCUMENT clasificación de documentos estructurados (cubre testu planu, fueyes de cálculu, documentos oficiales (PDF) y llinguaxes de marcáu llixeru. Indicador clave pa la distribución de bases de conocencia estátiques del sirvidor, descargues d'activos empresariales y capacidá de rendimientu de fluxu de testu)"
 
 msgid "mime_package"
-msgstr "Paquete de software"
+msgstr "PACKAGE clasificación de productos compilados y paquetes de software (cubre executables nativos del sistema operativu, biblioteques d'enllaz en tiempu d'execución (DLL/SO) y paquetes d'instalación de distribución d'aplicaciones. Úsase de cutiu pa evaluar el tráficu saliente y los picos de descarga en sitios de distribución de software)"
 
 msgid "mime_archive"
-msgstr "Ficheiro comprimido Gzip (Proxecto GNU 1992, baseado no algoritmo DEFLATE. Úsase na Web para a compresión dinámica de respostas, a taxa de compresión é usualmente do 60-90%. Despois de 2015, Brotli substituíuno nalgúns escenarios, pero segue sendo o formato de compresión máis amplamente compatible no lado do servidor)"
+msgstr "ARCHIVE ficheros d'archivu y comprimíos (categoría xeneral de paquetes de datos comprimíos basaos en algoritmos nucleares como DEFLATE, LZMA. Na capa de rede, amás de la distribución tradicional de paquetes, tamién cubre los fluxos de respuesta dinámicos Gzip del proyeutu GNU de 1992. Anque l'algoritmu Brotli s'introduz gradualmente en dellos escenarios modernos, esta clasificación sigue siendo un indicador clave pa evaluar el rendimientu d'anchu de banda del sirvidor y la eficiencia de compresión de la capa de tresporte)"
 
 msgid "mime_audio"
-msgstr "Ficheiro de audio"
+msgstr "AUDIO clasificación de fluxu d'audiu dixital (cubre audiu comprimíu, audiu-llibros y contenedores de fluxu d'audiu. Basáu n'estándares de códec d'audiu específicos, úsase pa monitorizar la tasa de rendimientu del fluxu de datos d'audiu en sitios multimedia, l'anchu de banda de fluxu simultáneu y el comportamientu de conexones llargues)"
 
 msgid "mime_video"
-msgstr "Ficheiro de vídeo"
+msgstr "VIDEO clasificación de fluxu de videu dixital (cubre contenedores de videu d'alta definición, animaciones web modernes y fragmentos de fluxu. Indicador clave pa evaluar la llende máxima d'anchu de banda del sirvidor y la efectividá d'aceleración de les redes de distribución de conteníu (CDN) so alta carga de rede)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (desenvolvido por Brendan Eich en 1995)"
+msgstr "JScript script (implementación propietaria d'inxeniería inversa desendolcada por Microsoft en 1996 pa Internet Explorer 3.0. Como competidor anfitrión tempranu del JavaScript clásicu, foi'l motor central de Windows Script Host (WSH) y de los backends ASP tempranos)"
 
 msgid "mime_json"
-msgstr "Datos JSON (proposto por Douglas Crockford en 2001, formato lixeiro para o intercambio de datos, estándar de facto para as APIs web)"
+msgstr "JSON datos estructurados (formatu llixeru d'intercambiu de datos serializaos establecíu por Douglas Crockford en 2001. Basáu en pares clave-valor testuales y estructures d'array, con alta lexibilidá humana y propiedaes d'analís de fluxu ensin perdes, ye l'estándar de facto pa les API web modernes, arquitectures de microservicios y la interacción con grandes modelos de llinguaxe)"
 
 msgid "mime_vbs"
-msgstr "VBScript (desenvolvido por Microsoft en 1996, linguaxe de script para Windows, usado para páxinas web ASP e scripts de administración de Windows. Coa crecente popularidade de PowerShell e JavaScript, foi gradualmente eliminado)"
+msgstr "VBScript script (variante de llinguaxe de script llanzada por Microsoft con IE 3.0 en 1996. Foi'l controlador central pa los primeros sitios web dinámicos ASP y pa l'alministración de sistemes Windows, pero agora foi oficialmente retiráu y esaniciáu de los últimos nucleos de Windows 11, perteneciendo a la teunoloxía heredada histórica)"
 
 msgid "mime_conf"
-msgstr "Ficheiro de configuración (almacena a configuración do software en formato texto, formatos comúns: INI, JSON, YAML, TOML, XML. As configuracións do sistema Linux están principalmente no directorio /etc)"
+msgstr "CONF ficheru de configuración del sistema (categoría xeneral de ficheros de datos qu'almacenen parámetros d'entornu d'execución del software en testu planu. Cubre especificaciones INI y les modernes YAML, TOML, JSON. En sistemes Linux, tán mayoritariamente nel direutoriu /etc, siendo una dependencia central pa l'optimización del estáu d'execución a nivel de sistema)"
 
 msgid "mime_css"
-msgstr "Folla de estilo CSS (O primeiro estándar oficial CSS1 do W3C publicouse en decembro de 1996, CSS2 engadiu posicionamento e tipos de medios en 1998, desde 2011 CSS3 introduciuse modularmente con esquinas redondeadas, animacións, flexbox, deseño de cuadrícula e deseño responsivo. Xunto con HTML e JavaScript, forman as tres principais tecnoloxías do frontend, todos os navegadores modernos (Chrome, Firefox, Safari, Edge) o soportan nativamente, é o único estándar para definir estilos web)"
+msgstr "CSS fueya d'estilu en cascada (estándar W3C de 1996, xunto con HTML/JS forma los trés nucleos del desendolcu frontend. Evolucionando dende'l posicionamientu de CSS2 hasta la modularización de CSS3, sofita de forma nativa Flexbox, Grid y diseñu responsivu con consultes de medios, siendo l'estándar dominante pa desacoplar la presentación de páxines web en restalladores modernos)"
 
 msgid "mime_xsl"
-msgstr "Folla de estilo XSL (estándar W3C 1999, linguaxe de transformación de documentos XML, pode converter XML a HTML/PDF/texto. Despois da popularización de JSON, o seu uso diminuíu)"
+msgstr "XSL fueya d'estilu (estándar W3C de 1999, inclúi los llinguaxes de tresformamientu XSLT y de direicionamientu XPath, pa renderizar datos XML estructurados como HTML, PDF o testu planu. Nel desendolcu modernu, el so ecosistema foi en gran midida reemplazáu por motores de plantíes más llixeros y el formatu de datos JSON)"
 
 msgid "mime_runtime"
-msgstr "Ficheiro executable (formato executable do sistema operativo como EXE, ELF, Mach-O, contén código máquina e información de carga)"
+msgstr "ficheru executable (formatos executables nativos del sistema operativu como EXE, ELF, Mach-O, que contienen códigu máquina de baxu nivel compiláu, puntu d'entrada ya información de carga del sistema)"
 
 msgid "mime_library"
-msgstr "Ficheiro de biblioteca (DLL, SO, dylib, etc. bibliotecas de enlace dinámico, código compartido que se carga ao executar o programa)"
+msgstr "ficheru de biblioteca (DLL, SO, dylib, etc., biblioteques d'enllaz dinámicu o estáticu, que contienen símbolos compartíos y códigu de reubicación pa ser llamaos y cargaos por otros programes en tiempu d'execución)"
 
 msgid "mime_swf"
-msgstr "Animación Flash (desenvolvida por Macromedia en 1996, despois propiedade de Adobe. Estándar para animación web interactiva, que dominou as animacións e xogos de Internet. Desvantaxes: dependencia dun complemento, non compatible con dispositivos móbiles, alto risco de seguridade. Adobe anunciou a súa retirada en 2017, o soporte finalizou completamente en 2020, substituído por HTML5/CSS3/JS)"
+msgstr "Flash animación (1996 Macromedia, mercada por Adobe en 2005. Estándar d'animación web interactiva, dominó les animaciones y xuegos d'Internet. Inconvenientes: dependencia de complementos, falta de sofitu móvil, altu riesgu de seguridá. Adobe anunció la so retirada en 2017, el sofitu cesó por completu en 2020, siendo reemplazáu por HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "Definición de tipo de documento DTD (especificación XML, define a estrutura do documento XML, úsase para verificar a validez do XML)"
+msgstr "DTD definición de tipu de documentu (llanzáu con XML 1.0 en 1998, úsase pa definir la estructura del documentu XML/HTML y validar la so llegalidá. Nel desendolcu modernu, foi en gran midida reemplazáu por soluciones más flexibles como XML Schema, RELAX NG, etc.)"
 
 msgid "mime_csv"
-msgstr "Formato de datos CSV (valores separados por comas, formato universal para datos tabulares, estándar para importar/exportar a Excel e bases de datos)"
+msgstr "CSV formatu de datos (valores separaos por comes, un formatu de tabla de testu planu universal de la era de los mainframes (compilador IBM Fortran) de 1972. Formalizáu en 2005 por RFC 4180 como estándar d'intercambiu de datos ensin perdes multiplataforma y multillingüe. Úsase ampliamente pa importación/esportación eficiente con Excel, bases de datos relacionales y analís de datos (Pandas))"
+
+msgid "mime_cur"
+msgstr "ficheru de cursor del mur (formatu .cur, úsase pa personalizar l'estilu del punteru del mur, como'l cursor de deu en páxines web o la icona de reló d'arena d'espera. Ye 'pariente' de la icona común .ico, pero tien un 'puntu caliente' adicional que define la ubicación real del clic. Historia: introducíu con Windows 3.1 (1992), un componente clave na transición de la interfaz de llinia de comandos a la interfaz gráfica operada por mur)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (lanzador de aplicacións Java, tecnoloxía de distribución de aplicacións de escritorio Java nos anos 2000, agora retirada)"
+msgstr "Java Web Start (teunoloxía de distribución d'aplicaciones d'escritoriu Java de los años 2000, qu'executa programes Java remotos al traviés de ficheros .jnlp. Por problemes de seguridá y la popularización de los métodos de distribución modernos, güei ta práuticamente obsoleta)"
 
 msgid "mime_lit"
-msgstr "Libro electrónico Microsoft Reader (lanzado por Microsoft en 2000, formato LIT, retirado)"
+msgstr "Microsoft Reader llibru electrónicu (2000 Microsoft, formatu LIT. Obsoletu, güei pue convertise a EPUB o PDF con ferramientes como Calibre)"
 
 msgid "mime_svg"
-msgstr "Gráfico vectorial SVG (estándar W3C 1999, Microsoft promoveu durante moito tempo o seu propio formato VML, o navegador IE só o soportou desde 2011, o que atrasou a súa popularización. Despois de 2015, coa desaparición de IE e a popularización das pantallas de alta resolución, converteuse na primeira opción para iconas e logotipos)"
+msgstr "SVG gráficos vectoriales (estándar W3C de 1999, formatu d'imaxe vectorial 2D basáu en XML. Ufierta escaláu ensin perdes y ventayes de tresmisión testual. Tolos restalladores modernos lu sofiten de forma nativa, úsase ampliamente pa iconos web d'alta definición, logotipos y animaciones vectoriales, siendo l'estándar central de los gráficos web modernos)"
 
 msgid "mime_ai"
-msgstr "Gráfico vectorial Adobe Illustrator (lanzado en 1987, formato de gráfico vectorial estándar da industria, primeira opción para deseño de impresión, logotipos, iconas)"
+msgstr "AI gráficos vectoriales (formatu vectorial propietariu d'Adobe de 1987. Como estándar industrial pa maquetación, diseñu d'impresión ya identidá de marca, sofita múltiples capes y datos vectoriales de maquetación avanzaos, siendo'l soporte preferíu pal arte visual profesional)"
 
 msgid "mime_phshop"
-msgstr "Imaxe Photoshop (lanzado por Adobe en 1990, formato PSD do ficheiro fonte de Photoshop, estándar da industria para o procesamento de imaxes)"
+msgstr "PSD imaxe de capes (formatu de ficheru fonte de bitmap propietariu llanzáu por Adobe con Photoshop en 1990. Sofita múltiples capes, canales, mázcares y datos d'edición ensin perdes, y convirtióse nel estándar industrial mundial pal procesamientu d'imáxenes y la pintura dixital)"
 
 msgid "mime_ttf"
-msgstr "Fonte TrueType (desenvolvido conxuntamente por Apple e Microsoft en 1989, formato vectorial, visualización consistente na pantalla e na impresión, formato de fonte predeterminado nos sistemas operativos modernos)"
+msgstr "TrueType tipu de lletra (formatu de contorna dixital desendolcáu conxuntamente por Apple y Microsoft en 1989. Basáu en curves de Bézier cuadráticas, llogra una coherencia de píxeles absoluta ente la visualización en pantalla y la impresión, siendo'l formatu de tipu de lletra nativu por defeutu de los sistemes operativos d'escritoriu modernos)"
 
 msgid "mime_fon"
-msgstr "Fonte web WOFF2 (Recomendación W3C 2014, usa o algoritmo de compresión Brotli, o tamaño reduciuse aproximadamente un 30% en comparación co WOFF antigo, máis dun 50% en comparación con TTF/OTF. Actualmente é compatible con todos os navegadores modernos, é a mellor opción para as fontes web hoxe en día, compatible con máis do 98% dos navegadores)"
+msgstr "FON tipu de lletra de mapa de bits (formatu tempranu de matriz de puntos a nivel de sistema de Microsoft de los años 80. Nun sofita l'escaláu proporcional ensin perdes, xeneralmente llindáu a renderizáu de testu basáu en píxeles en sistemes heredaos o componentes de dispositivos empotraos tempranos)"
 
 msgid "mime_pdf"
-msgstr "Documento PDF (desenvolvido por Adobe en 1993, converteuse en estándar internacional ISO en 2008. Formato de documento multiplataforma, mantén a consistencia do formato, estándar mundial para a distribución de documentos electrónicos)"
+msgstr "PDF documentu electrónicu (desendolcáu por Adobe en 1993 y convertíu n'estándar internacional ISO 32000 en 2008. Formatu de documentu de diseñu fixu multiplataforma con fidelidá absoluta de diseñu y formatu, ye l'estándar global pa la distribución de documentos electrónicos y la publicación dixital)"
 
 msgid "mime_dotnet"
-msgstr "Páxina dinámica ASP.NET (lanzada por Microsoft en 2002, tecnoloxía de páxinas web dinámicas para a plataforma Windows, parte de .NET Framework)"
+msgstr "ASP.NET páxina dinámica (teunoloxía de páxina web dinámica del llau del sirvidor llanzada por Microsoft cola arquitectura .NET en 2002. Agospiada nel motor IIS, úsase pa construyir aplicaciones web dinámicas de nivel empresarial y sistemes distribuyíos nel llau del sirvidor de Windows)"
 
 msgid "mime_mdb"
-msgstr "Base de datos Access (ficheiro de base de datos Microsoft Access, lanzado en 1992, solución de base de datos de escritorio en Windows)"
+msgstr "MDB base de datos relacional (formatu d'almacenamientu de base de datos relacional de nivel d'escritoriu llanzáu por Microsoft con Access en 1992. Incorpora'l motor de base de datos Jet, siendo una solución de base de datos relacional pa la informatización temprana d'ordenadores personales y pequeñes y medianes empreses)"
 
 msgid "mime_md"
-msgstr "Documento Markdown (Creado por John Gruber en 2004, o deseño da sintaxe foi influenciado por reStructuredText e Setext. A filosofía principal do deseño é 'a lexibilidade é igual á renderización', a implementación orixinal Markdown.pl usa expresións regulares de Perl. As especificacións derivadas inclúen GFM (2013), CommonMark (2017), Pandoc Markdown, etc. Impulsa ecosistemas como GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, converténdose no formato estándar de facto para os xeradores de sitios estáticos e a documentación de desenvolvedores)"
+msgstr "Markdown documentu (llinguaxe de marcáu llixeru creáu por John Gruber en 2004. La so filosofía de diseñu central 'lexible ye renderizable' impulsa les especificaciones derivaes modernes como GFM y CommonMark. Usáu ampliamente como estándar d'intercambiu pa documentación téunica, bases de conocencia (Obsidian) y xeneradores de sitios web estáticos modernos)"
 
 msgid "mime_crystal"
-msgstr "Formato de informe Crystal Reports (informes de intelixencia empresarial de SAP, formato estándar para informes empresariais)"
+msgstr "Crystal Reports informe (formatu de ficheru d'informe profesional de nivel empresarial de la plataforma SAP Business Intelligence (BI). Ufierta conexón a múltiples fontes de datos y capacidaes complexes de renderizáu de gráficos dinámicos, usáu ampliamente pa la xeneración d'informes profesionales en sistemes financieros y d'analís de datos d'empreses multinacionales)"
 
 msgid "mime_libreoffice"
-msgstr "Documento LibreOffice (Desenvolvido por The Document Foundation en 2010, bifurcación de OpenOffice, implementación do estándar ODF, principal suite ofimática de código aberto)"
+msgstr "LibreOffice documentu (formatu propietariu de la suite ofimática d'open source basada n'OpenOffice, fundada por The Document Foundation en 2010. Implementa fondu l'estándar internacional ODF (OpenDocument Format) del W3C, siendo la piedra angular ofimática del ecosistema d'open source modernu)"
 
 msgid "mime_encrypt"
-msgstr "Ficheiro cifrado (cómpre descifralo para velo, extensións comúns: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT ficheru cifráu (datos binarios o testuales orixinales procesaos por algoritmos de cifráu simétricu o asimétricu específicos. Inclúi los formatos derivaos centrales como .enc, .pgp, .gpg, etc., y úsase na capa de rede pa garantizar la confidencialidá y la verificación d'integridá de datos non públicos)"
 
 msgid "mime_gpx"
-msgstr "Datos de ruta GPS (Formato de intercambio GPS, rexistra información de localización xeográfica, formato universal para reloxos deportivos e dispositivos de navegación)"
+msgstr "GPX datos de siguimientu per satélite (formatu d'intercambiu de sistema de posicionamientu global basáu en XML. Especializáu en describir coordenaes xeográfiques, puntos de ruta, rutes y trayectories históriques, ye un estándar de datos abiertu común pa dispositivos deportivos móviles modernos, navegación per automóvil y sistemes d'información xeográfica (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Imaxe de disco (DMG, ISO, IMG, etc., ficheiros de imaxe de disco/CD, úsanse para distribuír software ou facer copias de seguridade dos soportes de almacenamento)"
+msgstr "Disk Image imaxe de discu (ficheru d'imaxe de baxu nivel sector a sector d'un discu físicu o mediu ópticu, inclúi ISO, DMG, IMG. Úsase pa despliegue de sistema de baxu nivel, distribución segura de software de gran volume y copies de seguridá completes a nivel físicu de medios d'almacenamientu)"
 
 msgid "mime_vm"
-msgstr "Imaxe de máquina virtual (VMDK, VDI, VHDX, OVA, etc., ficheiros de disco virtual, formatos para plataformas de virtualización como VMware, VirtualBox, Hyper-V)"
+msgstr "VM imaxe de máquina virtual (imaxe de discu físicu virtualizáu qu'inclúi VMDK, VDI, VHDX, OVA. La base de les plataformes VMware, VirtualBox y Hyper-V, úsase pa emulación de hardware de baxu nivel, instantánees d'instancies y distribución d'infraestructura na nube)"
 
 msgid "mime_torrent"
-msgstr "Ficheiro torrent BitTorrent (inventado por Bram Cohen en 2001, ficheiro índice P2P para descargar, contén metadatos do ficheiro e información do Tracker)"
+msgstr "BitTorrent ficheru torrent (índiz de descarga distribuyida peer-to-peer (P2P) diseñáu por Bram Cohen en 2001. Basáu en codificación Bencode, almacenando metadatos de verificación del ficheru orixinal ya información d'empobinamientu del sirvidor Tracker, siendo'l soporte central de la distribución descentralizada de fluxos en rede)"
 
 msgid "mime_gis"
-msgstr "Datos xeográficos GIS (formatos de datos xeospaciais como Shapefile, GeoJSON, úsanse para mapas e análise espacial)"
+msgstr "GIS datos geoespaciales (estándar de datos de sistema d'información xeográfica con Shapefile y GeoJSON como nucleu. Contién coordenaes xeométriques multidimensionales, topoloxía de capes y datos d'atributos, usáu ampliamente pa renderizáu de mapes dixitales d'alta definición, teledetección per satélite y analís xeométricu espacial)"
 
 msgid "mime_ebook"
-msgstr "Libro electrónico (Formatos de libro electrónico como EPUB, MOBI, AZW. EPUB é o estándar internacional, MOBI/AZW son formatos para Amazon Kindle)"
+msgstr "EBOOK llibru electrónicu (formatu de publicación dixital que tien como nucleu l'estándar abiertu internacional EPUB del W3C y l'arquitectura propietaria MOBI/AZW d'Amazon Kindle. Sofita maquetación fluyida adaptable, encapsulación de metadatos y xestión de derechos dixitales DRM, siendo'l soporte universal pa la llectura dixital en dispositivos móviles)"
 
 msgid "mime_avif"
-msgstr "Imaxe AVIF (lanzada por Alliance for Open Media en 2019, baseada no códec AV1, a taxa de compresión é un 50% máis alta que WebP, novo estándar de imaxe web)"
+msgstr "AVIF imaxe d'alta eficiencia (estándar d'imaxe ultra alta definición de próxima xeneración de l'Alliance for Open Media (AOMedia) de 2019. Basáu na teunoloxía de fotogrames clave de codificación de videu AV1, con una tasa de compresión un 50% meyor que WebP y sofitu nativu pa Altu Rangu Dinámicu (HDR), ye l'estándar dominante pa la tresmisión d'imáxenes web modernes)"
 
 msgid "mime_markdown"
-msgstr "Documento Markdown (deseñado por John Gruber en 2004, linguaxe de marcado lixeiro, formato universal para GitHub README, documentación técnica, foros)"
+msgstr "Markdown documentu llixeru (llinguaxe de marcáu de documentos testuales creáu por John Gruber en 2004. Utiliza un diseñu declarativu de testu planu, la so sintaxis foi inspirada por reStructuredText, usáu ampliamente en proyeutos de GitHub, documentación téunica de nivel d'inxeniería y ecosistemes modernos de xestión de conteníu estáticu)"
 
 msgid "mime_yaml"
-msgstr "Configuración YAML (deseñado por Clark Evans en 2001, formato de serialización de datos lexible por humanos, formato estándar de ficheiro de configuración para Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML configuración serializada (formatu de serialización de datos llexible pol humanu diseñáu por Clark Evans y otros en 2001. Basáu nel sangráu xerárquicu y el mapeo clave-valor, afitóse como l'estándar de configuración d'infraestructura nativa de la nube pa Kubernetes, automatización Ansible y Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Configuración TOML (deseñado por Tom Preston-Werner en 2013, 'Tom's Obvious Minimal Language', formato de ficheiro de configuración para ferramentas modernas como Rust/Cargo, Python/pip, Go)"
+msgstr "TOML configuración semántica (llinguaxe minimalista diseñáu por Tom Preston-Werner en 2013. Con ventayes de diseñu de baxu nivel como tipáu fuerte, mapeo esplícitu y semántica clara, úsase agora ampliamente como ficheru de configuración estandarizáu pa les cadenes de ferramientes modernes de Rust (Cargo), Python (pyproject.toml) y Go)"
 
 msgid "mime_vue"
-msgstr "Ficheiro de compoñente Vue (presentado en 2014 por Evan You, framework progresivo de JavaScript. Mediante compoñentes de ficheiro único (SFC) combina perfectamente HTML, CSS e JS, aumentando enormemente a eficiencia do desenvolvemento. É un dos frameworks frontend máis populares do mundo. Tamén, como núcleo de xeradores de sitios estáticos modernos como VitePress, úsase amplamente para impulsar documentación técnica interactiva e blogs.)"
+msgstr "Vue componente d'únicu ficheru (formatu SFC propietariu del framework web progresivu llanzáu por Evan You en 2014. Llogra la separación d'esmoliciones d'HTML/CSS/JS y l'enllaz d'estáu reactivu nun solu ficheru, impulsando fondu les aplicaciones frontend web interactives modernes y los motores de sitios estáticos a gran escala)"
 
 msgid "mime_wasm"
-msgstr "Módulo WebAssembly (estándar W3C 2017, formato de alto rendemento no navegador, C/C++/Rust/R pódense compilar nel, rendemento próximo ao código nativo)"
+msgstr "WebAssembly módulu binariu (estándar de bytecode de baxu nivel d'altu rendimientu pa la web establecíu por W3C en 2017. Permite compilar llinguaxes de tipáu fuerte como C/C++/Rust escontra l'entornu de caxa de sable del restallador, ufiertando una eficiencia d'execución cercana al hardware nativu, siendo una piedra angular de la computación nel borde (edge computing) web moderna)"
 
 msgid "mime_jsx"
-msgstr "Compoñente React JSX (Facebook introduciu XML JavaScript en 2013, sintaxe de compoñente do framework React, paradigma innovador de escribir HTML dentro de JavaScript)"
+msgstr "React JSX componente (estensión de sintaxis JavaScript XML llanzada por Facebook col framework React en 2013. Sofita la construcción declarativa d'estructures DOM virtuales dientro de JavaScript, habilitando'l paradigma de desendolcu frontend basáu en componentes de 'UI como función del estáu')"
 
 msgid "mime_tsx"
-msgstr "Compoñente TypeScript TSX (desenvolvido por Microsoft en 2012, TypeScript + JSX, a forma estándar de desenvolver aplicacións React con seguridade de tipos)"
+msgstr "TypeScript TSX componente (combinación fluyida de la sintaxis de tipáu fuerte de TypeScript (desendolcáu por Microsoft en 2012) con JSX. Inyecta comprobación de tipu estática en tiempu de compilación y restricciones d'interfaz nel desendolcu de componentes React, siendo l'estándar de códigu pal desendolcu seguru de grandes sistemes frontend modernos)"
 
 msgid "mime_heif"
-msgstr "Imaxe HEIF (estándar MPEG 2015, formato de ficheiro de imaxe eficiente, moi usado no ecosistema Apple)"
+msgstr "HEIF imaxe d'alta eficiencia (formatu d'imaxe d'alta eficiencia establecíu pola organización MPEG en 2015. Basáu nel algoritmu de codificación de videu HEVC (H.265), sofita múltiples fotogrames d'imaxe, mapes de fondura y metadatos nun volume mui pequeñu, siendo un estándar d'almacenamientu propietariu pa sistemes operativos móviles modernos y dispositivos terminales intelixentes)"
 
 msgid "mime_heic"
-msgstr "Imaxe HEIC (implementación de Apple de HEIF, formato de imaxe predeterminado no iPhone, compatible nativamente en iOS/macOS)"
+msgstr "HEIC imaxe d'alta eficiencia (formatu de bitmap propietariu d'Apple basáu nel estándar internacional HEIF. Como formatu d'almacenamientu de semeyes por defeutu del iPhone modernu, cuenta con codificación/descodificación a nivel de hardware d'iOS/macOS y sofitu nativu del sistema operativu, amenorgando drásticamente l'espaciu d'almacenamientu subxacente manteniendo una alta calidá d'imaxe)"
 
 msgid "mime_gltf"
-msgstr "Modelo 3D GLTF (Formato de transmisión GL, 'JPEG do mundo 3D', lanzado por Khronos Group en 2015, formato estándar para web 3D)"
+msgstr "glTF modelu d'activu 3D (estándar de formatu de tresmisión GL publicáu por Khronos Group en 2015. Usa arquitectura JSON pa describir escenes tridimensionales, conocíu como'l 'JPEG del 3D', siendo l'estándar industrial llixeru pa renderizáu WebGL/WebGPU modernu y realidá virtual)"
 
 msgid "mime_glb"
-msgstr "Modelo 3D binario GLB (versión binaria de GLTF, un só ficheiro contén todos os recursos, úsase para distribuír escenas 3D)"
+msgstr "GLB modelu 3D binariu (versión d'encapsulación binaria ensin perdes del activu de modelu glTF. Fusiona la estructura de la escena, los datos de vértices de malla subxacentes, los materiales y les testures nun solu ficheru, diseñáu específicamente pa la tresmisión eficiente y la distribución en fluxu d'activos 3D web multiplataforma)"
 
 msgid "mime_gls"
-msgstr "Glosario GLOSSARY (ficheiro de definición de termos, úsase para xestionar termos en sistemas de documentación)"
+msgstr "GLOSSARY glosariu de datos (ficheru de definición de términos específicamente pa sistemes de xestión de documentos y corpus estructurados. Contién definiciones de términos estándar, mapeos multillingües y mapeos de metadatos, usáu pa caltener la coherencia conceptual nel analís de testu automatizáu y los sistemes de publicación de conteníu)"
 
 msgid "mime_cbz"
-msgstr "Libro de banda deseñada CBZ (imaxes de banda deseñada comprimidas en ZIP, formato universal para coleccionistas de banda deseñada)"
+msgstr "CBZ llibru de cómic (formatu d'archivu d'imaxes de cómic propietariu basáu na estructura de compresión ZIP. Contién una secuencia continua d'imáxenes de bitmap estátiques, siendo un estándar de contenedor llixeru universal pa la publicación de cómics dixitales y la coleición llocal multiplataforma)"
 
 msgid "mime_cbr"
-msgstr "Libro de banda deseñada CBR (imaxes de banda deseñada comprimidas en RAR, formato universal para coleccionistas de banda deseñada)"
+msgstr "CBR llibru de cómic (formatu d'archivu d'imaxes de cómic propietariu basáu na estructura de compresión RAR. Usa l'algoritmu RAR pa encapsular secuencies de bitmaps estáticos, ufiertando una alta tasa de compresión y un ampliu sofitu de compatibilidá nel campu de la distribución de cómics dixitales)"
 
 msgid "mime_fb2"
-msgstr "Libro electrónico FB2 (FictionBook 2.0, formato de libro electrónico ruso, estrutura XML, amplamente compatible con lectores de código aberto)"
+msgstr "FB2 llibru electrónicu (estándar de llibru electrónicu FictionBook 2.0 de principios de los 2000. Usa estructura XML pura pa describir propiedaes del llibru y xerarquía de testu, con ampliu sofitu nel ecosistema de llibros electrónicos d'open source y en llectores de publicaciones dixitales heredaos)"
 
 msgid "mime_kepub"
-msgstr "Libro electrónico KEPUB (formato especial de EPUB de Kobo, formato optimizado para lectores de libros electrónicos Kobo)"
+msgstr "KEPUB llibru electrónicu (formatu de llibru electrónicu meyoráu propietariu de Kobo basáu nel estándar EPUB. Optimizáu a nivel de hardware pa los llectores de llibros electrónicos Kobo, ufiertando un diseñu de páxina más eficiente ya interacción con estadístiques de llectura)"
 
 msgid "mime_m4b"
-msgstr "Audiolibro M4B (formato de libro de audio MPEG-4, admite marcadores, formato de audiolibro de iTunes)"
+msgstr "M4B audiu-llibru (formatu d'audiu-llibru basáu na arquitectura de contenedor MPEG-4 Part 14 (MP4). Usa codificación AAC, sofita de forma nativa marcadores de páxina de baxu nivel, reanudación de la reproducción ya incrustación de capítulos, foi un formatu estándar nel ecosistema d'Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Formato KFX de Kindle (lanzado por Amazon en 2015, formato especial de libro electrónico para Kindle, admite tipografía mellorada e cambio rápido de páxina)"
+msgstr "Kindle KFX formatu (formatu de publicación dixital meyoráu propietariu d'Amazon llanzáu col Kindle en 2015. Sofita tipografía avanzada con lligadures, renderizáu de tipos de lletra d'altu dinamismu y carga de páxines en fluxu a nivel de nucleu (Page Flip), siendo l'estándar central de la plataforma Kindle moderna)"
 
 msgid "mime_chm"
-msgstr "Ficheiro de axuda CHM (lanzado por Microsoft en 1997, formato de axuda HTML compilado, estándar para a documentación de axuda no software de Windows)"
+msgstr "CHM ficheru d'ayuda compiláu (sistema d'información d'ayuda HTML compiláu llanzáu por Microsoft en 1997. Empaqueta datos d'hipertestu y índices subxacentes nun únicu contenedor binariu, siendo mientres enforma tiempu'l formatu estándar pa la documentación d'ayuda local fora de llinia del software de Windows)"
 
 msgid "mime_mht"
-msgstr "Arquivo web MHT (lanzado por Microsoft en 1999, formato de páxina web dun só ficheiro, formato para gardar páxinas web no navegador IE)"
+msgstr "MHT archivu web (formatu d'hipertestu d'agregación MIME llanzáu por Microsoft en 1999. Basáu nel estándar RFC 2557, empaqueta códigu fonte HTML, CSS, JS ya imáxenes incrustaes nun únicu ficheru de testu, usáu pa guardar páxines web fora de llinia en restalladores heredaos)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, estándar WAP 1999, usado para páxinas web de teléfonos móbiles antigos, retirado)"
+msgstr "WML llinguaxe de marcáu inalámbricu (estándar de marcáu móvil establecíu pol foru WAP (Wireless Application Protocol) en 1999. Basáu na especificación XML, diseñáu especialmente pa redes celulares inalámbriques de banda estrecha tempranes y teléfonos básicos de baxa capacidá de cómputu, perteneciente a teunoloxía heredada yá retirada nel ecosistema web modernu)"
 
 msgid "mime_xhtml"
-msgstr "Páxina web XHTML (estándar W3C 2000, versión XML de HTML, sintaxe máis estrita. W3C deixou de mantelo en 2009, centrándose en HTML5)"
+msgstr "XHTML páxina web d'hipertestu (estándar W3C de 2000, llinguaxe de marcáu d'hipertestu estrictu basáu na arquitectura XML. En 2009, el W3C detuvo la so evolución téunica y xiró dafechu escontra la especificación HTML5, güei úsase principalmente pa renderizáu semánticu de páxines web en sistemes heredaos)"
 
 msgid "mime_xml"
-msgstr "Documento XML (estándar W3C 1998, linguaxe de marcado extensible, formato fundamental para servizos web, ficheiros de configuración, intercambio de datos)"
+msgstr "XML documentu estructuradu (llinguaxe de marcáu extensible estándar W3C de 1998. Con arquitectura d'etiquetes autodescriptives, ye un formatu fundamental pa servicios web en rede (SOAP/REST), ficheros de configuración a nivel de sistema (XSD) ya intercambiu de datos multiplataforma)"
 
 msgid "mime_sgml"
-msgstr "Documento SGML (estándar ISO 1986, precursor de HTML, Linguaxe de Marcado Xeral Estándar, XML e HTML derivan de SGML)"
+msgstr "SGML llinguaxe de marcáu xeneralizáu estándar (estándar internacional ISO 8879 de 1986. Como pioneru industrial na descripción estructurada de documentos electrónicos, tanto XML como les primeres especificaciones d'HTML deriven d'esti metallinguaxe estándar)"
 
 msgid "mime_apng"
-msgstr "Animación APNG (desenvolvida por Mozilla en 2004, extensión de PNG para animación, substituto moderno de GIF, admite cores reais e transparencia)"
+msgstr "APNG gráficu dinámicu (estensión dinámica de PNG desendolcada por Mozilla en 2004. Sofita color real de 24 bits y tresparencia semitresparente de canal alfa de 8 bits, siendo una alternativa d'alta definición al formatu GIF n'escenarios web modernos)"
 
 msgid "mime_bmp"
-msgstr "Imaxe BMP (formato de mapa de bits de Windows, compatible nativamente desde Windows 1.0. Non comprimido, ficheiros moi grandes, pero debido á súa estrutura sinxela e á falta de códecs adicionais, a ferramenta de captura de pantalla de Windows 11, o programa de debuxo, os recursos de iconas nos paquetes de instalación EXE/MSI, os ficheiros de cursor e algúns controladores antigos aínda o usan. Para a mesma calidade de imaxe, o ficheiro é aproximadamente de 3 a 10 veces maior que PNG, na maioría dos escenarios foi substituído por PNG/JPEG, pero o ecosistema Windows aínda mantén unha ampla compatibilidade)"
+msgstr "BMP bitmap nativu (formatu de bitmap independiente del dispositivu de la plataforma Microsoft establecíu dende la era de Windows 1.0. Usa almacenamientu ensin compresión ensin perdes, polo que'l so volume suel ser de 3 a 10 vegaes mayor que PNG, pero como nun necesita costu de codificación/descodificación, entá ta ampliamente incrustáu en componentes centrales de Windows 11, seiciones de recursos d'EXE/MSI y buffers gráficos de controladores heredaos)"
 
 msgid "mime_cdr"
-msgstr "Gráfico vectorial CDR (formato especial de CorelDRAW, Corel Corporation de Canadá, software de deseño de gráficos vectoriais)"
+msgstr "CDR gráficos vectoriales (formatu de ficheru fonte de diseñu vectorial profesional propietariu de CorelDRAW de la empresa canadiense Corel. Sofita xestión de color por capes, nodos de curva matemática complexos y datos de diseñu a nivel d'impresión, siendo un formatu especializáu pa los campos del diseñu gráficu profesional y la publicidá impresa)"
 
 msgid "mime_gif"
-msgstr "Imaxe GIF (desenvolvida por CompuServe en 1987, formato de animación de 256 cores. Desvantaxes: número limitado de cores, calidade de imaxe rugosa, non admite transparencia, ficheiros grandes, baixa frecuencia de fotogramas. Substituído por formatos de animación modernos como APNG, WebP)"
+msgstr "GIF imaxe de color indexáu (formatu de bitmap de color indexáu de 8 bits de CompuServe de 1987. Basáu nel algoritmu LZW, llindáu a 256 niveles de color y tresparencia monocromática, con volume enchíu a altes frecuencies de fotograma, ta siendo sustituyíu gradualmente por estándares d'animación modernos eficientes como APNG, WebP, etc.)"
 
 msgid "mime_ico"
-msgstr "Icona ICO (formato de ficheiro de iconas de Windows, admite varias resolucións, formato estándar para o favicon do sitio web)"
+msgstr "ICO iconu de sistema (formatu d'encapsulación de recursos d'iconos nativu de Windows. Sofita la inclusión de múltiples variantes d'imaxe con diferentes resoluciones de píxeles y fondures de color nun únicu contenedor, siendo tamién l'estándar de distribución universal pal identificador de sitiu (Favicon) de los restalladores web modernos)"
 
 msgid "mime_jpeg"
-msgstr "Imaxe JPEG (estándar ISO 1992, formato de compresión con perdas para fotos, estándar de facto para fotos en Internet)"
+msgstr "JPEG imaxe comprimida (estándar internacional ISO 10918 de 1992 pa compresión con perdes. Basáu nel algoritmu de Tresformada de Cosenu Discretu (DCT), llogra altes tases de compresión mientres caltién una excelente calidá d'imaxe realista, siendo l'estándar de facto absolutu pa les semeyes estátiques n'internet a nivel mundial)"
 
 msgid "mime_jpg"
-msgstr "Imaxe JPEG (estándar ISO 1992, formato de compresión con perdas para fotos, estándar de facto para fotos en Internet)"
+msgstr "JPEG imaxe comprimida (estándar internacional ISO 10918 de 1992 pa compresión con perdes. Basáu nel algoritmu de Tresformada de Cosenu Discretu (DCT), llogra altes tases de compresión mientres caltién una excelente calidá d'imaxe realista, siendo l'estándar de facto absolutu pa les semeyes estátiques n'internet a nivel mundial)"
 
 msgid "mime_png"
-msgstr "Imaxe PNG (Recomendación W3C 1996, admite cores reais e transparencia, substituto estático de GIF, estándar para imaxes sen perdas en Internet)"
+msgstr "PNG imaxe ensin perdes (estándar de Gráficos de Rede Portátiles recomendáu por W3C en 1996. Usa un algoritmu de compresión ensin perdes, sofita de forma nativa color real de 24 bits y tresparencia de canal alfa de 8 bits, como alternativa d'alta definición al GIF estáticu clásicu, ye l'estándar de facto absolutu pa les imáxenes de píxeles ensin perdes n'internet)"
 
 msgid "mime_ps"
-msgstr "Ficheiro de descrición de páxina PostScript (lanzado por Adobe en 1985, linguaxe de descrición de páxina, precursor de PDF, usado para imprimir e publicar)"
+msgstr "PostScript ficheru de descripción de páxina (llinguaxe de descripción de páxina basáu en pila llanzáu por Adobe en 1985. Como predecesor teunolóxicu del formatu PDF, llogra a baxu nivel una maquetación de testu independiente del hardware y un renderizáu de gráficos vectoriales d'alta precisión, siendo l'estándar fundamental pa los campos de la impresión profesional y la impresión láser)"
 
 msgid "mime_psb"
-msgstr "Documento grande PSB (formato de Adobe Photoshop para imaxes moi grandes, admite imaxes de máis de 2 GB ou 30000 píxeles)"
+msgstr "PSB documentu de capa grande (formatu d'encapsulación de ficheru fonte estra-grande propietariu d'Adobe Photoshop. Ruempe les llendes d'empobinamientu internu de volume físicu de 2 GB y 30.000 píxeles del formatu PSD estándar, diseñáu específicamente p'almacenar activos d'arte dixital masivos, con capes fondes y de gran escala)"
 
 msgid "mime_psd"
-msgstr "Imaxe PSD (ficheiro fonte de Adobe Photoshop, admite capas, canles, trazados, formato estándar da industria para o procesamento de imaxes)"
+msgstr "PSD ficheru fonte de diseñu de capes (contenedor d'inxeniería d'imaxe por capes propietariu d'Adobe Photoshop. Como contenedor estándar industrial nel campu de la imaxe gráfica, encapsula de forma nativa l'árbole de renderizáu completu de capes, canales de bitmap, rutes de retayu vectoriales y modos de fusión complexos, sofita la edición completa de datos ensin perdes)"
 
 msgid "mime_webp"
-msgstr "Imaxe WebP (desenvolvida por Google en 2010, formato de imaxe web, admite compresión con perdas/sen perdas e animación, a taxa de compresión é un 25-35% máis alta que PNG e un 25% máis alta que JPEG)"
+msgstr "WebP imaxe d'alta eficiencia (estándar de codificación de gráficos web universal llanzáu por Google en 2010. Deriváu de la teunoloxía de fotogrames clave de videu VP8, perfectamente compatible con renderizáu con/en sin perdes, semitresparente y dinámicu, 25-35% más pequeñu que PNG a la mesma calidá, siendo la piedra angular de la carga d'altu rendimientu de les páxines web modernes)"
 
 msgid "mime_woff"
-msgstr "Fonte web WOFF (creada en 2009, estándar W3C 2018. Baseada na compresión TrueType/OpenType, optimización da carga de fontes web, formato estándar para fontes de iconas en páxinas web modernas)"
+msgstr "WOFF ficheru de glifos web (formatu de tipu de lletra abiertu web creáu en 2009 y convertíu n'estándar W3C en 2012. La so esencia ye la compresión ensin perdes en fluxu de les estructures de tipu de lletra estándar TTF/OTF, optimizando drásticamente el costu d'anchu de banda de rede, siendo un formatu universal pa los iconos de sitios web modernos y los tipos de lletra na nube)"
 
 msgid "mime_7z"
-msgstr "Paquete comprimido 7z (desenvolvido por Igor Pavlov en 1999, formato especial do programa 7-Zip. Algoritmo LZMA, alta taxa de compresión, código aberto e gratuíto. O formato 7z é normalmente un 30-50% máis pequeno que ZIP coa mesma taxa de compresión, formato común na comunidade de código aberto e para a distribución de software)"
+msgstr "7z paquete comprimíu (formatu propietariu de 7-Zip desendolcáu por Igor Pavlov en 1999. Basáu nos algoritmos d'open source LZMA/LZMA2, ufiertando una tasa de compresión estremadamente alta. En condiciones equivalentes, el so volume suel ser un 30-50% más pequeñu que ZIP, siendo'l formatu d'alta rellación de compresión universal na comunidá d'open source y na distribución de software)"
 
 msgid "mime_ace"
-msgstr "Paquete comprimido ACE (desenvolvido na década de 1990, formato do programa WinACE. Competía con RAR, tiña unha taxa de compresión relativamente alta. O desenvolvemento rematou en 2007, hoxe substituído por 7z/RAR, úsase raramente)"
+msgstr "ACE paquete comprimíu (formatu de compresión propietariu de WinACE de los años 90. Compitió nel so momentu col formatu RAR y ufiertaba altes tases de compresión. El desendolcu téunicu cesó dempués de 2007, güei foi reemplazáu polos formatos 7z y RAR, perteneciendo a los formatos d'archivu de sistemes heredaos)"
 
 msgid "mime_bz2"
-msgstr "Paquete comprimido BZIP2 (desenvolvido por Julian Seward en 1996, algoritmo de compresión por bloque. A taxa de compresión é un 15-20% máis alta que GZIP, pero a velocidade é máis lenta. Formato común para o código fonte do kernel de Linux, paquetes de software de código aberto, extensión .bz2)"
+msgstr "BZIP2 paquete comprimíu (formatu de compresión por ordenamientu de bloques desendolcáu por Julian Seward en 1996. La tasa de compresión del so algoritmu subxacente ye un 15-20% más alta que la de GZIP pero con un mayor costu computacional. Úsase de cutiu pa distribuir el códigu fonte del nucleu Linux y paquetes de software d'open source, la so estensión de ficheru estándar ye .bz2)"
 
 msgid "mime_cab"
-msgstr "Paquete comprimido CAB (desenvolvido por Microsoft en 1995, formato Cabinet. Formato de paquete de instalación para Windows, usado para distribuír controladores e ficheiros do sistema. O instalador de Windows (MSI) usa CAB internamente para almacenar ficheiros)"
+msgstr "CAB paquete comprimíu (formatu d'archivu Cabinet desendolcáu por Microsoft en 1995. Como estándar d'instalación nativu del sistema Windows, úsase pa la distribución de controladores y ficheros del nucleu, siendo tamién el contenedor d'almacenamientu subxacente de Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "Imaxe de disco DMG (lanzado por Apple na década de 1980, formato de imaxe de disco. Formato estándar para distribuír software en macOS, móntase como un disco virtual ao facer dobre clic, arrastra para instalar a aplicación. Admite compresión e cifrado, o formato principal para descargar software de Mac)"
+msgstr "DMG imaxe de discu (formatu d'imaxe de discu evolucionáu por Apple dende los años 80. Como contenedor estándar pa la distribución de software en macOS, sofita montaxe como sistema de ficheros virtual, compresión de baxu nivel y cifráu de datos, siendo'l formatu dominante pa la distribución d'aplicaciones nel ecosistema Mac)"
 
 msgid "mime_emz"
-msgstr "Imaxe comprimida EMZ (Metarchivo mellorado comprimido de Windows, versión comprimida de EMF. Formato para almacenar gráficos vectoriales en documentos de Office, esencialmente é un ficheiro EMF comprimido con GZIP)"
+msgstr "EMZ imaxe comprimida (versión comprimida del metaficheru ameyoráu de Windows EMF. Esencialmente gráficos vectoriales binarios comprimíos al traviés del algoritmu GZIP, usáu ampliamente p'almacenar gráficos vectoriales incrustaos en documentos de la suite Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Paquete comprimido GZIP (desenvolvido por Jean-loup Gailly e Mark Adler en 1992, proxecto GNU. Ferramenta de compresión estándar en sistemas Unix/Linux, formato común para a compresión HTTP durante a transmisión. Extensión .gz, a miúdo úsase xunto con TAR)"
+msgstr "GZIP paquete comprimíu (formatu de compresión de fluxu estándar del proyeutu GNU desendolcáu por Jean-loup Gailly y Mark Adler en 1992. Como ferramienta de compresión estándar d'Unix/Linux, ye tamién l'estándar central pa la compresión de la capa de tresporte HTTP (Gzip), usáu de cutiu xunto con archivos TAR)"
 
 msgid "mime_jar"
-msgstr "Paquete comprimido JAR (lanzado por Sun Microsystems en 1997, formato Java ARchive. Esencialmente é un paquete comprimido ZIP, usado para empaquetar clases e aplicacións Java. Formato fundamental no ecosistema Java como Maven, Gradle, Android tamén usa JAR)"
+msgstr "JAR paquete comprimíu (formatu d'archivu Java ARchive llanzáu por Sun Microsystems en 1997. Esencialmente un contenedor d'empaquetáu basáu na estructura ZIP, usáu pa encapsular biblioteques de clases Java y metadatos, siendo un productu de compilación central pa Maven, Gradle y l'ecosistema tempranu d'Android)"
 
 msgid "mime_lzma"
-msgstr "Paquete comprimido LZMA (desenvolvido por Igor Pavlov en 1998, algoritmo de cadea Lempel-Ziv-Markov. Algoritmo de compresión principal do formato 7z, alta taxa de compresión, descompresión rápida. Úsase para distribuír firmware e software de sistemas empotrados)"
+msgstr "LZMA paquete comprimíu (algoritmu de compresión en cadena Lempel-Ziv-Markov desendolcáu por Igor Pavlov en 1998. Como motor central del formatu 7z, ufiertando una tasa de compresión estremadamente alta y descompresión rápida, usáu ampliamente pa la distribución de firmware de hardware y sistemes empotraos)"
 
 msgid "mime_rar"
-msgstr "Paquete comprimido RAR (desenvolvido por Eugene Roshal en 1993, formato Roshal ARchive. Alta taxa de compresión, admite división en volumes e rexistro de recuperación. Formato do programa WinRAR, a taxa de compresión é mellor que ZIP, pero require software de pago, ferramentas de código aberto como unrar poden descomprimilo)"
+msgstr "RAR paquete comprimíu (formatu d'archivu propietariu de WinRAR desendolcáu por Eugene Roshal en 1993. Sofita división en volúmenes, rexistros de recuperación física (ECC) y cifráu fuerte. La so tasa de compresión ye superior a la del ZIP estándar, disfrutando d'un ampliu sofitu de compatibilidá nos ámbitos personal y empresarial)"
 
 msgid "mime_tar"
-msgstr "Paquete de arquivo TAR (introducido en Unix V7 en 1979, formato de arquivo de cinta. Formato de arquivo de cinta, só empaquetado sen compresión, a miúdo úsase xunto con GZIP/BZIP2/XZ. O código fonte do paquete de software de Linux, o almacenamento por capas da imaxe de Docker usan o formato TAR)"
+msgstr "TAR paquete d'archivu (formatu d'archivu de cinta de la era Unix V7 de 1979. Solo realiza l'empaquetáu del fluxu de ficheros ensin comprimir los datos, de cutiu combínase con GZIP/BZIP2/XZ, siendo l'estándar subxacente pal códigu fonte de Linux y l'almacenamientu en capes de les imáxenes de Docker)"
 
 msgid "mime_tgz"
-msgstr "Paquete comprimido TGZ (combinación dos formatos TAR + GZIP, extensión .tgz ou .tar.gz. O formato de distribución máis universal para paquetes de software Unix/Linux, moi usado para código fonte e paquetes binarios, representante do concepto 'extrae e usa')"
+msgstr "TGZ paquete comprimíu (formatu combináu de fluxu d'archivu TAR y compresión GZIP, con estensión .tgz o .tar.gz. Como'l formatu de distribución de paquetes de software más universal n'entornos Unix/Linux, úsase ampliamente pa despliegue por compilación de códigu fonte y pa distribución de paquetes binarios ensin instalación)"
 
 msgid "mime_tbz2"
-msgstr "Paquete comprimido TBZ2 (combinación dos formatos TAR + BZIP2, extensión .tbz2 ou .tar.bz2. A taxa de compresión é un 15-20% máis alta que TGZ, axeitado para distribuír ficheiros grandes, o código fonte do kernel de Linux usou este formato durante moito tempo)"
+msgstr "TBZ2 paquete comprimíu (formatu combináu de fluxu d'archivu TAR y compresión BZIP2, con estensión .tbz2 o .tar.bz2. En comparanza con TGZ, pue ameyorar la tasa de compresión nun 15-20% adicional, afechu pa tresferencies de ficheros grandes, usóse mientres enforma tiempu pa la distribución del códigu fonte del nucleu Linux)"
 
 msgid "mime_xz"
-msgstr "Paquete comprimido XZ (introducido en 2009, baseado no algoritmo LZMA2. Taxa de compresión extremadamente alta, un 30-50% máis alta que GZIP, velocidade de descompresión relativamente rápida. Úsase amplamente no kernel de Linux, xestores de paquetes (como a estrutura interna do paquete .deb de Debian), o formato recomendado no ecosistema Linux actual)"
+msgstr "XZ paquete comprimíu (formatu d'alta rellación de compresión de próxima xeneración llanzáu en 2009. Basáu nel algoritmu LZMA2, la tasa de compresión de datos ye un 30-50% meyor que la de GZIP mientres caltién una descompresión rápida. Foi establecíu como estándar de distribución recomendáu pol nucleu Linux y los xestores de paquetes principales (como por casu dientro del .deb de Debian))"
 
 msgid "mime_z"
-msgstr "Paquete comprimido Z (formato do comando compress de Unix de 1985, algoritmo LZW. Formato de compresión inicial de Unix, substituído por GZIP. Extensión .Z, úsase raramente en sistemas modernos)"
+msgstr "Z paquete comprimíu (formatu de compresión LZW del comandu compress d'Unix de 1985. Foi l'estándar de compresión en sistemes Unix tempranos, pero güei foi dafechu reemplazáu pol formatu GZIP, muncho más eficiente, siendo un formatu históricu heredáu raru nel tráficu de rede modernu)"
 
 msgid "mime_zip"
-msgstr "Paquete comprimido ZIP (desenvolvido por Phil Katz en 1989, formato PKZIP. Windows é compatible nativamente, o formato de compresión máis universal en Internet. Admite múltiples ficheiros, estrutura de directorios, pode escoller o algoritmo de compresión. O JAR en Java, o APK en Android, o DOCX/XLSX para documentos de Office baséanse no formato ZIP)"
+msgstr "ZIP paquete comprimíu (formatu d'archivu universal PKZIP desendolcáu por Phil Katz en 1989. Ye sofitáu de forma nativa por tolos principales sistemes operativos, siendo l'estándar de contenedor más utilizáu n'Internet. Los JAR modernos de Java, los APK d'Android y los documentos d'Office (OOXML) tán basaos na estructura ZIP)"
 
 msgid "mime_zst"
-msgstr "Paquete comprimido Zstandard (desenvolvido por Facebook en 2015, deseñado por Yann Collet. Algoritmo de compresión de alta velocidade, taxa de compresión próxima a LZMA, velocidade moito maior que GZIP. O kernel de Linux 5.9+ é compatible, Arch Linux pacman, Debian APT están a adopta-lo gradualmente, novo estándar de compresión de nova xeración)"
+msgstr "Zstandard paquete comprimíu (estándar de compresión de fluxu de próxima xeneración diseñáu por Yann Collet de Facebook en 2015. Averar a les tases de compresión de LZMA mientres tien un rendimientu muncho más altu que GZIP. Foi fondu adoptáu pol nucleu Linux (5.9+) y los xestores de paquetes Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Paquete comprimido LZ4 (desenvolvido por Yann Collet en 2011, algoritmo de compresión extremadamente rápido. A velocidade de compresión é máis de 10 veces maior que GZIP, axeitado para escenarios de compresión en tempo real. Úsase amplamente no kernel de Linux, OpenZFS, Hadoop, a primeira opción para escenarios onde a velocidade é prioritaria)"
+msgstr "LZ4 paquete comprimíu (algoritmu de compresión de fluxu ultra-rápidu desendolcáu por Yann Collet en 2011. La so velocidá de rendimientu ye más de 10 vegaes más rápida que la de GZIP, con un costu de CPU en tiempu d'execución estremadamente baxu. Usáu ampliamente nel nucleu Linux, nel sistema de ficheros OpenZFS y nel procesamientu de fluxos de datos en tiempu real d'Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Paquete comprimido LZO (desenvolvido por Markus Oberhumer en 1996, algoritmo de Lempel-Ziv-Oberhumer. Descompresión extremadamente rápida, taxa de compresión media. O kernel de Linux Squashfs, o firmware de OpenWrt úsano, axeitado para sistemas empotrados)"
+msgstr "LZO paquete comprimíu (algoritmu Lempel-Ziv-Oberhumer desendolcáu por Markus Oberhumer en 1996. Concéntrase nel rendimientu de descompresión ultra-rápidu. Ta ampliamente incrustáu nes imáxenes Squashfs del nucleu Linux, nel firmware d'OpenWrt y en diversos sistemes empotraos con recursos llindaos)"
 
 msgid "mime_msi"
-msgstr "Paquete de instalación MSI (lanzado por Microsoft en 1999, formato de paquete do Instalador de Windows. Formato de instalación estándar para aplicacións de Windows, admite reversión de transaccións, xestión de compoñentes, instalación silenciosa. Primeira opción para a distribución de software empresarial, aínda o formato principal para instalar software de Windows hoxe en día)"
+msgstr "MSI paquete d'instalación del sistema (formatu d'encapsulación de datos de Windows Installer llanzáu por Microsoft en 1999. Como estándar de despliegue a nivel d'aplicación de Windows, sofita de forma nativa la reversión de transaiciones de baxu nivel, la xestión del ciclu de vida de los componentes y la instalación silenciosa ensin procesamientu por lotes, siendo l'estándar central pa la distribución centralizada de software empresarial y el despliegue basáu en polítiques)"
 
 msgid "mime_pkg"
-msgstr "Paquete de instalación PKG (formato de instalación de aplicacións de macOS, baseado na tecnoloxía Installer de Apple. Formato estándar para distribuír software en macOS, admite selección de compoñentes, scripts de instalación, función de desinstalación. O ficheiro .pkg pódese instalar facendo dobre clic, forma común de distribuír software fóra da App Store de Mac)"
+msgstr "PKG paquete d'instalación de software multiplataforma. 1. Paquete de software de FreeBSD: estándar pkgng, estensión .pkg o .txz, basáu en compresión TAR+XZ/Zstd, sofita resolución de dependencies y verificación de firmes; 2. Paquete d'instalación de macOS: basáu nel formatu Apple Installer, sofita componentes personalizaos, scripts d'instalación y desinstalación a nivel de sistema. Son los principales soportes de distribución pa servidores BSD y el sistema Mac, respectivamente."
 
 msgid "mime_apk"
-msgstr "Paquete de aplicación APK para Android (lanzado por Google en 2008, formato de instalación tradicional para sistemas Android. APK é esencialmente un paquete comprimido ZIP, contén código, recursos, ficheiro de manifesto. A partir de 2021, Google Play require que as novas aplicacións usen o formato AAB, pero APK aínda se usa para desenvolvemento, depuración, distribución a través de tendas de terceiros e instalación lateral)"
+msgstr "APK paquete d'aplicación Android (paquete d'instalación d'aplicaciones tradicional llanzáu por Google con Android en 2008. Subxacentemente basáu na estructura d'archivu ZIP, empaquetando bytecode Dalvik compiláu (DEX), manifiestu de metadatos y recursos globales, güei úsase ampliamente pa depuración de desendolcu llocal, distribución por terceros ya instalación llateral en dispositivos)"
 
 msgid "mime_ipa"
-msgstr "Paquete de aplicación IPA para Apple (iOS App Store Package, formato de instalación para aplicacións iOS/iPadOS. Lanzado en 2008 co SDK do iPhone. Require distribución a través da App Store ou sinatura cun certificado empresarial. Contén ficheiro executable, recursos, información asinada Info.plist)"
+msgstr "IPA paquete d'aplicación Apple (contenedor d'empaquetáu esclusivu pa iOS/iPadOS llanzáu col SDK del iPhone en 2008. Esencialmente un archivu ZIP protexíu por DRM FairPlay o robláu con certificáu d'empresa, que contién l'executable binariu Mach-O, l'árbole de recursos de l'aplicación y la configuración de metadatos Info.plist)"
 
 msgid "mime_hap"
-msgstr "Paquete de aplicación HAP para HarmonyOS (HarmonyOS Ability Package, unidade básica da aplicación HarmonyOS. Lanzado con HarmonyOS 2.0 en 2020. Admite os tipos entry e feature, formato de distribución para teléfonos Huawei, tabletas, reloxos intelixentes e outros dispositivos HarmonyOS)"
+msgstr "HAP paquete d'aplicación HarmonyOS (unidá básica de despliegue elásticu de HarmonyOS llanzada con HarmonyOS 2.0 en 2020. Compuesta pol módulu principal Entry o los módulos de función estendida Feature, ye'l formatu de distribución multi-estremu (teléfonos, tables, dispositivos portátiles) pa dispositivos terminales intelixentes)"
 
 msgid "mime_har"
-msgstr "Paquete compartido estático HAR para HarmonyOS (HarmonyOS Archive, biblioteca compartida estática para HarmonyOS, pódese compartir entre varios HAP, usado para desenvolvemento de compoñentes e reutilización de módulos)"
+msgstr "HAR paquete compartíu estáticu de HarmonyOS (ficheru d'archivu de biblioteca compartida estática propietaria de HarmonyOS. Úsase pa encapsular componentes comunes, códigu de recursos subxacente y dependencies de tiempu de compilación, siendo enllazáu estáticamente por múltiples módulos HAP pa compartir, ye la base pal desendolcu basáu en componentes y la reutilización de múltiples módulos nel sistema HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (lanzado por Google en 2018, a partir de 2021 Google Play require que as novas aplicacións usen este formato. AAB é un formato de distribución, Google Play xera dinamicamente APKs optimizados baseándose na configuración do dispositivo (arquitectura da CPU, densidade de píxeles da pantalla, idioma), o tamaño medio do paquete de instalación reduciuse un 35%. Os desenvolvedores cargan AAB, os usuarios descargan APK)"
+msgstr "AAB bundle d'aplicación Android (formatu de distribución dinámicu de Google Play llanzáu por Google en 2018 y establecíu en 2021. Como entidá de distribución pura, la nube retaya y compila dinámicamente según l'arquiteutura de CPU del dispositivu oxetivu, la densidá de pantalla y l'idioma pa xenerar APK optimizaos so demanda, amenorgando'l costu d'anchu de banda de tresmisión nun 35% de media)"
 
 msgid "mime_xapk"
-msgstr "Paquete de aplicación XAPK (paquete de aplicación Android estendido de terceiros, contén ficheiro de datos APK + OBB. Úsase para xogos grandes e aplicacións complexas, resolve o límite de 100 MB dun só ficheiro APK. Común nas tendas de aplicacións de terceiros como APKPure, APKMirror, non é un formato oficial de Google)"
+msgstr "XAPK paquete d'aplicación estendíu (estándar d'estensión d'aplicaciones non oficial establecíu pola comunidá de terceros d'Android. Combina'l ficheru APK estándar con un gran paquete d'estensión de datos de xuegu OBB, superando físicamente la llende de tamañu de ficheru individual de 100 MB de Google Play, viéndose ampliamente en plataformes de distribución de xuegos)"
 
 msgid "mime_appx"
-msgstr "Paquete de aplicación Windows APPX (lanzado por Microsoft en 2012, formato de instalación para aplicacións Windows 8/10/11. Admite UWP e conversión de aplicacións de escritorio, distribúese a través de Microsoft Store. Microsoft lanzou MSIX en 2024 como formato sucesor, substituíndo gradualmente APPX)"
+msgstr "APPX paquete d'aplicación modernu (estándar de despliegue d'aplicaciones UWP llanzáu por Microsoft con Windows 8 en 2012. Cuenta con execución aisllada en caxa de sable y carauterístiques de desinstalación llixera, foi l'estándar dominante tempranu de Microsoft Store, pero nel ecosistema Windows modernu entró nuna fase final del so ciclu de vida evolucionando escontra MSIX)"
 
 msgid "mime_msix"
-msgstr "Paquete de aplicación MSIX (lanzado por Microsoft en 2018, novo formato para empaquetar aplicacións en Windows. Combina as vantaxes de APPX e MSI, admite todos os tipos de aplicacións de Windows, pódese distribuír a través de Microsoft Store ou instalarse lateralmente, formato recomendado para Windows 11)"
+msgstr "MSIX paquete d'aplicación de nueva xeneración (nueva especificación d'empaquetáu de Windows dafechu estandarizada publicada por Microsoft en 2018. Fusiona perfectamente les carauterístiques de caxa de sable de seguridá d'aplicación d'APPX coles ventayes de xestión d'activos empresariales de MSI, ye dafechu compatible con tolos tipos d'aplicaciones Win32, y ye l'estándar de distribución recomendáu pa Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Paquete de aplicación AppImage (lanzado en 2004, formato de aplicación sen instalación para Linux. 'Unha aplicación = un ficheiro', execútase directamente sen instalación, admite a maioría das distribucións de Linux, forma común para que os desenvolvedores distribúan software de Linux)"
+msgstr "AppImage paquete d'aplicación autónomu (especificación d'archivu executable únicu de Linux iniciada en 2004. Adopta una arquitectura autocontenida de 'una aplicación ye un ficheru', que se monta direutamente como sistema de ficheros virtual de solo llectura al traviés del mecanismu FUSE en tiempu d'execución, llogrando una execución ensin dependencies al intre en múltiples distribuciones de Linux)"
 
 msgid "mime_flatpak"
-msgstr "Paquete de aplicación Flatpak (lanzado en 2015, formato de aplicación con caixa de area para Linux. Execútase a través das distribucións, illado do contorno do sistema, desenvolvido por Fedora, Red Hat, formato predeterminado no centro de software GNOME)"
+msgstr "Flatpak paquete d'aplicación en caxa de sable (estándar de distribución d'aplicaciones d'escritoriu Linux multiplataforma lideráu por Red Hat y GNOME en 2015. Sofitáu polos mecanismos de Namespace y Cgroups del nucleu Linux pa llograr un aislamientu de caxa de sable de seguridá a nivel d'aplicación estremadamente estrictu, siendo la base de los centros de software de los sistemes operativos d'open source modernos)"
 
 msgid "mime_snap"
-msgstr "Paquete de aplicación Snap (lanzado por Canonical en 2014, desenvolvido pola empresa matriz de Ubuntu, formato de aplicación universal para Linux. Actualización automática, illamento con caixa de area, admite 40+ distribucións de Linux, formato predeterminado no centro de software de Ubuntu)"
+msgstr "Snap paquete d'aplicación contenerizada (estándar de despliegue universal de Linux llanzáu por Canonical, empresa matriz d'Ubuntu, en 2014. Adopta una arquitectura de montaxe d'imaxe SquashFS autocontenida de l'aplicación, sofita actualizaciones incrementales automátiques y un estrictu aislamientu de caxa de sable con AppArmor, siendo'l formatu central por defeutu del ecosistema del centru de software d'Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Paquete de software Debian (lanzado polo proxecto Debian en 1993, formato de instalación estándar para Debian/Ubuntu e as súas derivadas. Xestionado por dpkg, APT é o seu xestor de paquetes frontal, un dos formatos de paquete máis maduros no ecosistema Linux, aínda o formato principal para a familia Debian)"
+msgstr "DEB paquete de software del sistema (especificación d'empaquetáu de binarios y códigu fonte establecida pol proyeutu Debian en 1993. Como estándar d'instalación subxacente pa Debian, Ubuntu y tolos sos derivaos, basa'l so caltenimientu en dpkg y usa APT como frontend de xestor de paquetes eficiente, siendo la piedra angular de distribución de software más madura del ecosistema Linux)"
 
 msgid "mime_rpm"
-msgstr "Paquete de software RPM (lanzado por Red Hat en 1997, formato estándar para Red Hat/Fedora/CentOS/SUSE e outras distribucións. RPM é o acrónimo de 'Red Hat Package Manager', xunto con DEB é un dos dous grandes formatos de paquete en Linux, aínda o formato principal para a familia RHEL)"
+msgstr "RPM paquete de software del sistema (especificación d'empaquetáu del xestor de paquetes de Red Hat llanzada por Red Hat en 1997. Xunto con DEB, formen los dos grandes bandos de la xestión tradicional de paquetes de Linux, incorporando de forma nativa comprobación de dependencies basada en transaiciones y verificación de firma dixital de software de baxu nivel, y sigue siendo l'estándar de distribución absolutamente dominante pa les distribuciones del ecosistema Red Hat como RHEL, Fedora y CentOS)"
 
 msgid "mime_pacman"
-msgstr "Paquete de software Arch (lanzado por Arch Linux en 2002, formato .pkg.tar.zst usado polo xestor de paquetes pacman. Núcleo da distribución continua de Arch Linux, coñecido pola súa sinxeleza e o principio KISS, AUR (Arch User Repository) é a súa especialidade)"
+msgstr "Pacman paquete de software d'archivu (formatu d'empaquetáu .pkg.tar.zst establecíu por Arch Linux col xestor pacman en 2002. Como nucleu del mecanismu d'actualización continua d'Arch, basáu nel algoritmu d'alta compresión Zstandard d'alta velocidá, xunto col ecosistema AUR (Arch User Software Repository), ye un estándar de distribución de paquetes modernu qu'encarna el minimalismu y el principiu KISS (Keep It Simple, Stupid))"
 
 msgid "mime_exe"
-msgstr "Ficheiro executable EXE (formato de programa executable de Windows, abreviatura de 'Executable'. Formato executable nativo do sistema operativo Windows, contén estrutura PE. Evolucionou a partir do formato MZ do MS-DOS, o formato PE (Portable Executable) introduciuse con Windows NT en 1993 e aínda se usa hoxe. Os paquetes de instalación de software, aplicacións, ferramentas do sistema usan este formato. O usuario fai dobre clic para executalo, o formato executable máis amplamente usado no mundo)"
+msgstr "EXE ficheru executable nativu (formatu de programa binariu Portable Executable (PE) de la plataforma Windows. El so llinaxe téunicu provién de la estructura de cabecera MZ de la era MS-DOS, y dende Windows NT de 1993 establecióse dafechu como especificación d'estructura PE, siendo l'estándar d'execución más utilizáu nel mundu pa instrucciones de códigu máquina, seiciones de recursos estáticos y arranque del nucleu del sistema)"
 
 msgid "mime_dll"
-msgstr "Biblioteca de enlace dinámico DLL (lanzado por Microsoft en 1993, Dynamic Link Library. Biblioteca de código compartido de Windows, cárgase dinamicamente cando se executa o programa, aforra memoria e espazo en disco. Os compoñentes do sistema, complementos de aplicacións, controladores usan o formato DLL. Principal forma de implementación da API de Windows, o problema 'DLL Hell' mitigouse na era .NET)"
+msgstr "DLL biblioteca d'enllaz dinámicu (especificación de biblioteca de códigu compartíu Dynamic Link Library de la plataforma Windows. Al traviés de la carga dinámica y la reubicación de símbolos en tiempu d'execución, aforra significativamente memoria física y espaciu en discu, como forma central d'implementación de les API de Windows. El tempranu problema del 'Infiernu de les DLL' foi solucionáu na era moderna al traviés del mecanismu d'aislamientu paralelu SxS)"
 
 msgid "mime_com"
-msgstr "Ficheiro executable COM (formato executable da era do MS-DOS, abreviatura de 'Command'. Estrutura de ficheiro simple, límite de 64 KB, foi o formato principal antes de Windows 3.x. Retirado, o Windows moderno usa o formato EXE, a extensión COM aínda se usa para algúns ficheiros de compoñentes)"
+msgstr "COM ficheru executable clásicu (el formatu d'execución d'imaxe de memoria más antiguu (Command) de la era MS-DOS. Usa un diseñu de segmentu de códigu puru ensin estructura, llindáu a una llende de segmentu d'empobinamientu de memoria física de 64 KB, güei retiráu como formatu históricu heredáu, pero nes arquiteutures modernes de Windows caltiénse una compatibilidá llindada como interfaz de componente específica)"
 
 msgid "mime_aac"
 msgstr "Audio AAC (estándar MPEG 1997, Advanced Audio Coding. Sucesor do MP3, a calidade do son é mellor que MP3 coa mesma taxa de bits, formato de audio predeterminado para YouTube, iTunes, Nintendo Switch)"

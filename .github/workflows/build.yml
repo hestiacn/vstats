@@ -244,16 +244,6 @@ jobs:
             TAR_VER=$(tar --version | head -1)
             echo "✅ tar 已安装: $TAR_VER"
           fi
-
-      - name: 手动准备构建目录（正确路径）
-        run: |
-          mkdir -p /tmp/awstats-buildroot/awstats-8.1
-          cd /home/runner/work/vstats/vstats
-          cp -r docs /tmp/awstats-buildroot/awstats-8.1/
-          cp -r tools /tmp/awstats-buildroot/awstats-8.1/
-          cp -r wwwroot /tmp/awstats-buildroot/awstats-8.1/
-          cp README*.md /tmp/awstats-buildroot/awstats-8.1/ 2>/dev/null || true
-          echo "✅ 手动创建 /tmp/awstats-buildroot/awstats-8.1"
     
       - name: 根据依赖选择打包目标
         id: targets

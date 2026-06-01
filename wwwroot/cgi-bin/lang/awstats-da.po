@@ -458,8 +458,8 @@ msgstr "Vært - Antal sider - Antal anmodninger - Båndbredde - Dato for sidste 
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Startdato for sidste besøg] og [Sidste side for sidste besøg] gemmes kun, hvis sessionen ikke er afsluttet"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Hovedsiden viser kun de første %s elementer med flest anmodninger. Se den fulde liste på detaljesiden."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "De første %s elementer er sorteret efter antal hits i faldende rækkefølge; rækkefølgen af de resterende elementer er ikke defineret."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Logget ind bruger - Antal sider - Antal anmodninger - Båndbredde - Tidspunkt for sidste besøg"
@@ -473,8 +473,8 @@ msgstr "Orme-ID - Antal anmodninger - Båndbredde - Tidspunkt for sidste besøg"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-mail - Antal anmodninger - Båndbredde - Tidspunkt for sidste besøg"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Hovedsiden viser kun de første %s e-mail-anmodninger. Se den fulde liste på detaljesiden."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "De første %s e-mailadresser er sorteret efter antal hits i faldende rækkefølge; rækkefølgen af de resterende adresser er ikke defineret."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Antal sider - Båndbredde - Indgang - Udgang"
@@ -683,6 +683,27 @@ msgstr "SiteDomain-parameteren er ikke defineret i din config/domain-fil, eller 
 msgid "Please run as Administrator to set permissions"
 msgstr "Kør som Administrator for at indstille tilladelser"
 
+msgid "This directory lacks read permission"
+msgstr "Denne mappe mangler læserettigheder"
+
+msgid "Please set read permission for directory"
+msgstr "Indstil venligst læserettigheder for mappen"
+
+msgid "Missing required parameter in config file"
+msgstr "Manglende påkrævet parameter i konfigurationsfilen"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Kontroller venligst at 'DirData' er defineret."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Domænenavnet i browserens adresselinje ser ud til at mangle eller være ufuldstændigt"
+
+msgid "Please check the URL parameter"
+msgstr "Kontroller venligst URL-parameteren"
+
+msgid "Format description"
+msgstr "Formatbeskrivelse"
+
 msgid "Please set execute permission"
 msgstr "Indstil venligst udførelsestilladelse"
 
@@ -808,376 +829,379 @@ msgstr "Hentningsværktøj"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Tekstfil (ASCII-standardisering 1963, uformateret almindelig tekst. Grundlaget for al kildekode, konfigurationer, logfiler. Unix bruger LF, Windows bruger CRLF til linjeskift, stadig det mest almindelige dataformat i computere)"
+msgstr "TXT Ren tekstfil (1976-standardiseret ren tekst uden formatering. Som grundlag for al kildekode, konfigurationsfiler og systemlogs er dens krydsplatforme linjeskift (CRLF på Windows, LF på Unix) stadig den mest universelle dataudvekslingsstandard i computerverdenen)"
 
 msgid "mime_log"
-msgstr "Logfil (almindelig tekstfil, der registrerer system- og applikationskørselsinformation, ofte brugt til fejlfinding, ydeevneanalyse, sikkerhedsrevision. Standardformater som Apache combined log, Nginx access log, syslog osv.)"
+msgstr "LOG Systemkørselslog (registrerer operativsystem, kerne- og applikationsruntime-tilstande som ren tekst. Dækker Nginx/Apache-adgangslogs (Combined Log) og syslog-standarden, er den centrale datakilde til fejlfinding, strømmende ydeevneanalyse og sikkerhedsrevision)"
 
 msgid "mime_page"
-msgstr "HTML-webside (Tim Berners-Lee opfandt World Wide Web i 1989, definerede de tre teknologier HTML/HTTP/URL i 1990, tilbød dem gratis uden patent. HTML5 blev den officielle W3C-standard i 2014, understøtter visning, multimedier og print. Vandt Turing-prisen i 2016)"
+msgstr "HTML Hypertekst webside (skabt af Tim Berners-Lee i 1989, hjørnesten i World Wide Web. Som et åbent, universelt hypertekst-mærkningssprog blev HTML5-standarden i 2014 en officiel W3C-standard, understøtter struktureret multimedie, semantisk interaktion og flydende sidelayout, modtog Turing-prisen i 2016)"
 
 msgid "mime_khtml"
-msgstr "KHTML webmotor (udgivet med KDE 2.0 i 1998, renderingsmotor til Konqueror-browseren. Apple skabte WebKit baseret på KHTML i 2001, Google skabte Blink fra WebKit i 2008, som blev kernen i browsere som Chrome, Edge, Safari. KHTML er et eksempel på, hvordan open source-fællesskabet lagde grundstenene til moderne browsermotorer, med sin teknologiske arv, der fortsætter gennem WebKit/Blink)"
+msgstr "KHTML Skabelon-motor til websider (1998 KDE 2.0 browserrenderingsspecifikation. Som open source-fundament for moderne webrendering, inspirerede dens teknologiske arv direkte Apples WebKit og Google Blink, og fortsætter stadig sin underliggende tråd gennem moderne strømmende dynamisk webarkitektur)"
 
 msgid "mime_script"
-msgstr "Dynamisk script (tolket sprog, kræver ikke kompilering. Omfatter ASP, JSP, CGI, ColdFusion, Tcl, VBScript osv., meget brugt i tidlig webudvikling, systemadministration, automatisering af opgaver. Moderne script-sprog som Python, Ruby, JavaScript har udviklet sig til de vigtigste sprog til full-stack udvikling)"
+msgstr "SCRIPT Fortolket dynamisk script (dækker al kildekode, der udføres linje for linje af en specifik runtime eller fortolker uden forudgående kompilering. Omfatter ASP, JSP, CGI og Tcl, bredt brugt til server-side CGI, automationsprocesstyring og systemopgavelimning)"
 
 msgid "mime_js"
-msgstr "JavaScript-script (Brendan Eich skabte det på 10 dage i Netscape i 1995, browsers oprindelige programmeringssprog. ECMAScript standardiseret i 1997, fødslen af Node.js i 2009 gjorde det til et full-stack sprog, npm er verdens største pakkeadministrator. I årevis det mest populære programmeringssprog på GitHub)"
+msgstr "JavaScript script (1995 Netscape browsers oprindelige programmeringsmiljø. 1997 etablerede ECMAScript-industristandarden, 2009 blev Node.js runtime skabt, brød browser-grænser og skabte fuld-stak asynkron ikke-blokerende arkitektur, ledsaget af verdens største npm-softwarepakkeøkosystem)"
 
 msgid "mime_py"
-msgstr "Python-script (skabt af Guido van Rossum i 1991, kendt for obligatorisk indrykning og enkel syntaks. Meget brugt i webudvikling, datavidenskab, kunstig intelligens, automatiseret drift. Flere gange vinder af TIOBE prisen for årets programmeringssprog)"
+msgstr "Python script (1991 Guido van Rossums højniveau fortolkede scriptsprog. Med tvungen indrykning for læsbarhed og multi-paradigme design er det nu industristandard for moderne webarkitektur, fuld-stak datavidenskab, kunstig intelligens (AI) modeltræning og cloud-native automationsdrift)"
 
 msgid "mime_sh"
-msgstr "Shell-script (Unix' fødsel i 1971, kommandoscriptsprog. Bruges til systemadministration, automatisering af opgaver, start af tjenester, implementeringsscripts. Nødvendig færdighed til Linux-administration)"
+msgstr "Shell script (1971 Unix-tidens standardkommandofortolker-script. Indeholder Bash, Sh, Dash etc. kerne-niveau kommandoer, typisk med .sh-endelse, er det universelle kerne-niveau klæbemiddel til proceskontrol, miljøkonfiguration uden installation og automatiseret implementering i moderne Unix-lignende systemer)"
 
 msgid "mime_rb"
-msgstr "Ruby-script (skabt af Yukihiro Matsumoto i 1995, fokuseret på udviklerens lykke. Ruby on Rails-rammeværket indførte paradigmet konvention over konfiguration, der påvirker designet af moderne webrammeværker)"
+msgstr "Ruby script (1995 Yukihiro Matsumotos objektorienterede scriptsprog. Med ekstrem respekt for udvikleroplevelse som kernefilosofi, revolutionerede dets Ruby on Rails-rammeværk moderne højniveau webarkitektur ved at etablere 'Konvention over konfiguration' (CoC))"
 
 msgid "mime_pl"
-msgstr "Perl-script (skabt af Larry Wall i 1987, kendt for sin pragmatisme, kaldet 'schweizerkniven'. CPAN var pioner inden for moderne sprogpakkeadministratorer, med dyb indflydelse på tekstbehandling, systemadministration og CGI)"
+msgstr "Perl script (1987 Larry Walls pragmatiske scriptsprog. Som opfinder af den moderne pakke manager (CPAN), kendt som tekstbehandlingens 'schweiziske armékniv'. I moderne CGI-tilstand fungerer det som en højpålidelig base til loganalyse med meget lav fysisk hukommelsesforbrug og effektiv regulært udtryksbehandling)"
 
 msgid "mime_php"
-msgstr "PHP dynamisk webside (skabt af Rasmus Lerdorf i 1995, designet specielt til webudvikling. Over 70% af verdens websteder bruger det, driver platforme som WordPress, Facebook, Wikipedia. PHP 8 introducerer JIT-kompilering, hvilket forbedrer ydeevnen markant)"
+msgstr "PHP Dynamisk webside (1995 Rasmus Lerdorf, specielt designet til webudvikling. Som kerne teknologi bag over 70% af verdens hjemmesider, bærer den store produktionsapplikationer som WordPress og Wikipedia. Fra PHP 8 med JIT (just-in-time) runtime motor, har den udviklet sig til en højtydende fuld-stak server arkitektur)"
 
 msgid "mime_image"
-msgstr "Billedfil"
+msgstr "IMAGE Billedaktiv-klassifikation (dækker tabende/tabsløs komprimerede bitmap, moderne responsiv webgrafik og vektorer. Nøgleindikator til vurdering af websteds visuelle ressourcebelastning, klient-side cache hit-rate og medie netværksbåndbreddeforbrug)"
 
 msgid "mime_document"
-msgstr "Dokumentfil"
+msgstr "DOCUMENT Struktureret dokument-klassifikation (dækker ren tekst, regneark, officielt PDF-format og lette mærkningssprog. Nøgleindikator til statistik over server-side statisk vidensbase distribution, virksomhedsaktiver downloads og tekststrøms gennemstrømningskapacitet)"
 
 msgid "mime_package"
-msgstr "Softwarepakke"
+msgstr "PACKAGE Kompileret produkt og softwarepakke-klassifikation (dækker operativsystem-native eksekverbare programmer, runtime-biblioteker (DLL/SO) og app distributionsinstallationspakker. Bruges ofte til at vurdere softwaredistributionssteders udgående trafik og download-toppe)"
 
 msgid "mime_archive"
-msgstr "Gzip-komprimeret fil (GNU-projekt fra 1992, baseret på DEFLATE-algoritmen. På nettet bruges det til dynamisk komprimering af svar, kompressionsgraden er normalt 60-90%. Efter 2015 blev det i nogle scenarier erstattet af Brotli, men er stadig det mest udbredte kompressionsformat på serversiden)"
+msgstr "ARCHIVE Arkiv- og komprimerede filer (dækker datakomprimeringspakker baseret på DEFLATE, LZMA etc. kerne-algoritmer. På netværkslaget repræsenterer det ud over traditionel pakkedistribution også GNU-projektets Gzip dynamiske responsstrømme fra 1992. Selvom Brotli-algoritmen gradvist introduceres i nogle moderne scenarier, er denne klassifikation stadig en nøgleindikator for vurdering af serverbåndbreddegennemstrømning og transportlags komprimeringseffektivitet)"
 
 msgid "mime_audio"
-msgstr "Lydfil"
+msgstr "AUDIO Digital lydstrømsklassifikation (dækker komprimeret lyd, lydbøger og streaminglydcontainere. Baseret på specifikke lydcodec-standarder, bruges til at overvåge lyddatastrøms gennemstrømning på multimediewebsteder, samtidig streaming båndbredde og lang forbindelsespræstation)"
 
 msgid "mime_video"
-msgstr "Videofil"
+msgstr "VIDEO Digital videostrømsklassifikation (dækker high-definition videocontainere, moderne webanimationer og streamingfragmenter. Nøgleindikator til vurdering af serverbåndbredde topgrænse og Content Delivery Network (CDN) accelerations effektivitet under høj belastning)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (udviklet af Brendan Eich i 1995)"
+msgstr "JScript script (1996 Microsofts reverse-engineerede proprietære implementering til Internet Explorer 3.0. Som tidlig værtskonkurrent til klassisk JavaScript, fungerede det som kerne-motor til Windows Script Host (WSH) og tidlig ASP-backend)"
 
 msgid "mime_json"
-msgstr "JSON-data (foreslået af Douglas Crockford i 2001, letvægts dataudvekslingsformat, de facto standard for web-API'er)"
+msgstr "JSON Struktureret data (2001 Douglas Crockfords lette data serialiseringsudvekslingsformat. Baseret på tekstbaserede nøgle-værdi-par og array-strukturer, med høj menneskelig læsbarhed og tabsfri strømme-parsing-egenskaber, er det de facto standard for moderne web-API'er, mikroservicearkitektur og interaktion med store sprogmodeller)"
 
 msgid "mime_vbs"
-msgstr "VBScript (udviklet af Microsoft i 1996, Windows-scriptsprog, brugt til ASP-websider og Windows-administrationsscripts. Med udbredelsen af PowerShell og JavaScript er det gradvist ved at forsvinde)"
+msgstr "VBScript script (1996 Microsofts script sprogvariant med IE 3.0. Fungerede som kerne-driver til tidlige ASP-dynamiske websteder og Windows systemadministration, men er nu officielt udfaset og fjernet fra de nyeste Windows 11-kerner, tilhører historisk forældet teknologi)"
 
 msgid "mime_conf"
-msgstr "Konfigurationsfil (gemmer softwarekonfiguration i tekstformat, almindelige formater: INI, JSON, YAML, TOML, XML. Linux-systemkonfiguration er for det meste i /etc-mappen)"
+msgstr "CONF Systemkonfigurationsfil (dækker datafiler, der gemmer software runtime miljøparametre i ren tekst. Omfatter INI og moderne YAML, TOML, JSON-standarder, i Linux-systemer hovedsageligt i /etc-mappen, er en kerne-afhængighed til systemniveau runtime tilstandsoptimering)"
 
 msgid "mime_css"
-msgstr "CSS-stilark (W3C udgav den første officielle standard CSS1 i december 1996, CSS2 tilføjede positionering og medietyper i 1998, fra 2011 introducerede CSS3-modularisering afrundede hjørner, animationer, fleksibel boks, gitterlayout og responsivt design. Sammen med HTML og JavaScript en af de tre primære front-end-teknologier, alle moderne browsere (Chrome, Firefox, Safari, Edge) understøtter det oprindeligt, er den eneste standard til at definere stil på websider)"
+msgstr "CSS Cascading Style Sheet (1996 W3C-standard, sammen med HTML/JS en af frontend-udviklingens tre kerne-teknologier. Gennem CSS2-positionering og CSS3-modulær udvikling, understøtter indbygget Flexbox, Grid og media queries responsivt design, er den dominerende standard for adskillelse af webpræsentation i moderne browsere)"
 
 msgid "mime_xsl"
-msgstr "XSL-stilark (W3C-standard fra 1999, XML-dokumenttransformationssprog, kan konvertere XML til HTML/PDF/tekst. Brugen er faldet efter udbredelsen af JSON)"
+msgstr "XSL Style Sheet (1999 W3C-standard, inkluderer XSLT-transformation og XPath-adresseringssprog, bruges til at gengive struktureret XML-data som HTML, PDF eller ren tekst. I moderne udvikling er dets økosystem i vid udstrækning erstattet af lettere skabelonmotorer og JSON-dataformatet)"
 
 msgid "mime_runtime"
-msgstr "Udførbar fil (eksekverbar format af operativsystem som EXE, ELF, Mach-O, indeholder maskinkode og indlæsningsoplysninger)"
+msgstr "eksekverbar fil (EXE, ELF, Mach-O etc. operativsystem-native eksekverbare formater, indeholder kompileret lav-niveau maskinkode, indgangspunkt og systemindlæsningsinformation)"
 
 msgid "mime_library"
-msgstr "Biblioteksfil (DLL, SO, dylib osv., dynamisk linkede biblioteker, delt kode, som programmet indlæser under udførelse)"
+msgstr "biblioteksfil (DLL, SO, dylib etc. dynamiske eller statiske linkbiblioteker, indeholder delte symboler og omplaceringskode, som andre programmer kan kalde og indlæse under kørsel)"
 
 msgid "mime_swf"
-msgstr "Flash-animation (Macromedia udviklede det i 1996, senere ejet af Adobe. Interaktiv standard for webanimation, dominerede engang internetanimationer og spil. Ulemper: kræver plugin, ikke understøttet på mobile enheder, høj sikkerhedsrisiko. Adobe annoncerede udfasning i 2017, stoppede fuldstændig support i 2020, erstattet af HTML5/CSS3/JS)"
+msgstr "Flash animation (1996 Macromedia, 2005 opkøbt af Adobe. Interaktiv webanimationstandard, dominerede internettets animationer og spil. Ulemper: afhængig af plugins, ingen mobil support, høj sikkerhedsrisiko. 2017 meddelte Adobe udfasning, 2020 fuldstændig supportstop, erstattet af HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD dokumenttype definition (XML-specifikation, definerer strukturen af et XML-dokument, bruges til at validere XML's gyldighed)"
+msgstr "DTD Document Type Definition (1998 udgivet med XML 1.0, bruges til at definere XML/HTML-dokumentstruktur og validere lovlighed. I moderne udvikling er den i vid udstrækning erstattet af mere fleksible løsninger som XML Schema, RELAX NG etc.)"
 
 msgid "mime_csv"
-msgstr "CSV-dataformat (kommaseparerede værdier, almindeligt tabeldataformat, standard for import/eksport af Excel og databaser)"
+msgstr "CSV Dataformat (kommaseparerede værdier, 1972 mainframe-æra (IBM Fortran compiler) universelt rent tabelformat. 2005 formaliseret af RFC 4180, som tabsfri dataudvekslingsstandard på tværs af platforme og sprog. Bredt brugt til effektiv import/eksport i Excel, relationelle databaser, dataanalyse (Pandas))"
+
+msgid "mime_cur"
+msgstr "musemarkørfil (.cur-format, bruges til at tilpasse musemarkørstil. F.eks. finger-markør på websider, timeglas-ikon ved ventetid. Beslægtet med almindelige .ico-ikoner, men har et ekstra 'hot spot' – det faktiske klikpunkt. Historie: Introduceret med Windows 3.1 (1992), nøglekomponent i overgangen fra kommandolinje til musestyret grafisk brugergrænseflade)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (starter til Java-applikationer, teknologi til distribution af Java-skrivebordsapplikationer fra 2000'erne, nu forældet)"
+msgstr "Java Web Start (2000-tallets Java desktop app distributionsteknologi, starter fjernbetjente Java-programmer via .jnlp-filer. På grund af sikkerhedsproblemer og moderne distributionsmetoder er den nu stort set forældet)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-bog (Microsoft udgav det i 2000, LIT-format, forældet)"
+msgstr "Microsoft Reader e-bog (2000 Microsoft, LIT-format. Forældet, kan nu konverteres til EPUB eller PDF med værktøjer som Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG-vektorgrafik (W3C-standard fra 1999, fordi Microsoft længe promoverede sit eget VML-format understøttede IE-browseren det først i 2011, hvilket forsinkede udbredelsen. Efter 2015, med IE's udfasning og populariseringen af højopløsningsskærme, er det blevet det foretrukne format til ikoner og logoer)"
+msgstr "SVG Vektorgrafik (1999 W3C-standard, XML-baseret 2D vektorbilledformat. Kan skaleres uden tab og understøtter tekststrømme. Understøttes indbygget af alle moderne browsere, bredt brugt til high-definition web-ikoner, logoer og vektoranimationer, er den moderne standard for webgrafik)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator-vektorgrafik (lanceret i 1987, industristandard vektorgrafikformat, foretrukket til trykdesign, logoer, ikoner)"
+msgstr "AI Vektorgrafik (1987 Adobes proprietære vektorformat. Som industristandard for layout, trykdesign og brandidentitet, understøtter flere lag og avancerede layout-vektor-data, er det foretrukne format for professionel visuel kunst)"
 
 msgid "mime_phshop"
-msgstr "Photoshop-billede (Adobe udgav det i 1990, Photoshop-kildeformat PSD, industristandard for billedbehandling)"
+msgstr "PSD Lagdelt billede (1990 Adobes proprietære bitmap-kildeformat med Photoshop. Understøtter flere lag, kanaler, masker og tabsfri redigeringsdata, er blevet global industristandard for billedbehandling og digital tegning)"
 
 msgid "mime_ttf"
-msgstr "TrueType-skrifttype (Apple og Microsoft udviklede sammen i 1989, vektor skriftformat, visning på skærm og udskrift er ens, standard skriftformat for moderne operativsystemer)"
+msgstr "TrueType Skrifttype (1989 Apple og Microsofts fælles digitale konturskrifttype. Baseret på kvadratiske Bézier-kurver, sikrer absolut pixel-konsistens mellem skærmvisning og tryk, er standard skrifttype for moderne desktop-operativsystemer)"
 
 msgid "mime_fon"
-msgstr "WOFF2 webskrifttype (W3C-anbefaling fra 2014, bruger Brotli-kompressionsalgoritmen, sammenlignet med ældre WOFF er volumen reduceret med ca. 30%, sammenlignet med TTF/OTF reduceret med over 50%, understøttes i øjeblikket af alle moderne browsere, er det foretrukne format til moderne webskrifttyper, understøttes af over 98% af browsere)"
+msgstr "FON Bitmap-skrifttype (1980'erne Microsofts tidlige systemniveau punktmatrix-skrifttype. Understøtter ikke proportional skalering uden tab, bruges typisk kun til pixel-baseret tekstgengivelse i ældre systemer eller tidlige indlejrede enhedskomponenter)"
 
 msgid "mime_pdf"
-msgstr "PDF-dokument (Adobe udviklede det i 1993, blev ISO-standard i 2008. Platformsuafhængigt dokumentformat, bevarer formatkonsistens, er den globale standard for distribution af elektroniske dokumenter)"
+msgstr "PDF Elektronisk dokument (1993 Adobe, blev ISO 32000 international standard i 2008. Krydsplatform fast layout dokumentformat med absolut layout og format nøjagtighed, er global standard for elektronisk dokumentdistribution og digital publicering)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dynamisk side (Microsoft udgav det i 2002, teknologi til dynamiske websider på Windows-platformen, en del af .NET Framework)"
+msgstr "ASP.NET Dynamisk side (2002 Microsofts server-side dynamiske webside teknologi med .NET-arkitektur. Kører på IIS-motoren til at bygge virksomhedsniveau Windows server-side dynamiske webapplikationer og distribuerede systemer)"
 
 msgid "mime_mdb"
-msgstr "Access-database (Microsoft Access databasefil, lanceret i 1992, Windows desktop-databaseløsning)"
+msgstr "MDB Relationsdatabase (1992 Microsofts desktop-niveau relationsdatabase lagringsformat med Access. Indeholder Jet-database motoren, var en relationsdatabase løsning til tidlig informationsstyring i personlige computere og små til mellemstore virksomheder)"
 
 msgid "mime_md"
-msgstr "Markdown-dokument (oprettet af John Gruber i 2004, syntaksdesign påvirket af reStructuredText og Setext. Grundlæggende designfilosofi er 'læsbarhed betyder renderbar', den oprindelige implementering Markdown.pl bruger Perls regulære udtryk. Afledte specifikationer inkluderer GFM (2013), CommonMark (2017), Pandoc Markdown osv. Driver økosystemer som GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, og bliver standardformatet for statiske webstedsgeneratorer og udviklerdokumentation)"
+msgstr "Markdown Dokument (2004 John Grubers lette mærkningssprog. Kernefilosofien er 'læsbarhed er rendering', driver moderne specifikationer som GFM og CommonMark. Bredt brugt som udvekslingsstandard for teknisk dokumentation, vidensbaser (Obsidian) og moderne statiske webstedsgeneratorer)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports-rapportformat (SAP business intelligence, standardformat for virksomhedsrapporter)"
+msgstr "Crystal Reports (SAP Business Intelligence (BI) platforms professionelle virksomhedsniveau rapportfilformat. Understøtter flerdatakilde forbindelse og kompleks dynamisk diagramgengivelse, bredt brugt til professionel rapportgenerering i multinationale virksomheders finans- og dataanalysesystemer)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice-dokument (The Document Foundation udviklede det i 2010, en gren af OpenOffice, implementering af ODF-standarden, den primære open source-kontorpakke)"
+msgstr "LibreOffice Dokument (2010 The Document Foundations open source kontorpakkeformat baseret på OpenOffice. Implementerer W3C's ODF (OpenDocument Format) internationale standard dybt, er hjørnestenen i moderne open source økosystem for kontorarbejde)"
 
 msgid "mime_encrypt"
-msgstr "Krypteret fil (skal dekrypteres for at vises, almindelige filendelser: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT Krypteret fil (original binær eller tekstdata behandlet med specifikke symmetriske eller asymmetriske krypteringsalgoritmer. Indeholder .enc, .pgp, .gpg etc. kerne-derivatformater, bruges på netværkslaget til at sikre fortrolighed og integritet af ikke-offentlige data)"
 
 msgid "mime_gpx"
-msgstr "GPS-spordata (GPS-udvekslingsformat, registrerer geografisk information, almindeligt format til sportsure og navigationsenheder)"
+msgstr "GPX Satellitspordata (XML-baseret global positionssystem udvekslingsformat. Specialiseret i at beskrive geografiske koordinater, waypoints, ruter og historiske spor, er det en åben data standard for moderne mobile sportsenheder, bilnavigation og geografiske informationssystemer (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Diskbillede (disk-/CD-ROM-billedfiler som DMG, ISO, IMG, bruges til at distribuere software eller sikkerhedskopiere lagringsmedier)"
+msgstr "Disk Image Diskbillede (ISO, DMG, IMG etc. fysisk disk eller optisk medies sektor-for-sektor lav-niveau billedfil. Bruges til systemniveau implementering, sikker distribution af stor software og fuldstændig fysisk-niveau backup af lagringsmedier)"
 
 msgid "mime_vm"
-msgstr "Virtuel maskine-billede (virtuelle diskfiler som VMDK, VDI, VHDX, OVA, formater til virtualiseringsplatforme som VMware, VirtualBox, Hyper-V)"
+msgstr "VM Virtual Machine billede (VMDK, VDI, VHDX, OVA etc. virtualiseret fysisk diskaftryk. Grundlag for VMware, VirtualBox og Hyper-V platforme, bruges til lav-niveau hardware emulering, instans snapshots og cloud infrastruktur distribution)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent-fil (Bram Cohen opfandt den i 2001, indeksfil til P2P-download, indeholder filmetadata og Tracker-information)"
+msgstr "BitTorrent Torrent-fil (2001 Bram Cohens P2P peer-to-peer distribuerede download indeks. Baseret på Bencode-kodning, lagrer original fils verificeringsmetadata og Tracker server adresseringsinformation, er den centrale bærer for decentraliseret netværksstrømsdistribution)"
 
 msgid "mime_gis"
-msgstr "GIS geografiske informationssystemdata (geospatiale data som Shapefile, GeoJSON, bruges til kort og rumlig analyse)"
+msgstr "GIS Geospatial data (Shapefile og GeoJSON-centreret geografisk informationssystem datastandard. Indeholder multi-dimensionelle geometriske koordinater, lag-topologi og attributdata, bredt brugt til high-definition digital kortgengivelse, satellit fjernmåling og rumlig geometrianalyse)"
 
 msgid "mime_ebook"
-msgstr "E-bog (e-bogsformater som EPUB, MOBI, AZW. EPUB er den internationale standard, MOBI/AZW er formater til Amazon Kindle)"
+msgstr "EBOOK E-bog (med W3C's EPUB internationale åbne standard, Amazon Kindles proprietære MOBI/AZW-arkitektur som kerne. Understøtter adaptivt flydende layout, metadata-indkapsling og DRM digital rettighedsstyring, er den universelle bærer til mobil digital læsning)"
 
 msgid "mime_avif"
-msgstr "AVIF-billede (lanceret af Alliance for Open Media i 2019, baseret på AV1-kodning, kompressionsrate 50% bedre end WebP, ny generations standard for web-billeder)"
+msgstr "AVIF Højeffektivt billede (2019 Alliance for Open Media (AOMedia) næste generations ultra-high definition billedstandard. Baseret på AV1 videokodnings keyframe-teknologi, 50% bedre kompressionsrate end WebP og indbygget understøttelse af High Dynamic Range (HDR), er den moderne mainstream standard til webbilledoverførsel)"
 
 msgid "mime_markdown"
-msgstr "Markdown-dokument (designet af John Gruber i 2004, letvægts markup-sprog, almindeligt format til GitHub README, teknisk dokumentation, forumindlæg)"
+msgstr "Markdown Letvægtsdokument (2004 John Grubers tekst-dokument mærkningssprog. Bruger rent tekst deklarativt design, syntaks inspireret af reStructuredText, bredt brugt til GitHub-projekter, ingeniør-niveau teknisk dokumentation og moderne statisk indholdsstyringsøkosystem)"
 
 msgid "mime_yaml"
-msgstr "YAML-konfiguration (designet af Clark Evans i 2001, menneskeligt læsbart data-serialiseringsformat, standard for konfigurationsfiler til Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML Serialiseret konfiguration (2001 Clark Evans etc. menneskelæsbart data serialiseringsformat. Baseret på hierarkisk indrykning og nøgle-værdi mapping, er nu etableret som cloud-native infrastrukturkonfigurationsstandard for Kubernetes, Ansible automatisering og Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML-konfiguration (designet af Tom Preston-Werner i 2013, 'Tom's Obvious Minimal Language', konfigurationsfilformat til moderne værktøjer som Rust/Cargo, Python/pip, Go)"
+msgstr "TOML Semantisk konfiguration (2013 Tom Preston-Werners minimalistiske sprog. Med stærk typning, eksplicit mapping og klar semantik som underliggende designfordele, bruges nu bredt som standardiseret konfigurationsfil for moderne værktøjskæder i Rust (Cargo), Python (pyproject.toml) og Go)"
 
 msgid "mime_vue"
-msgstr "Vue-komponentfil (introduceret i 2014 af Evan You, progressiv JavaScript-ramme. Gennem single-file components (SFC) kombinerer den HTML, CSS og JS perfekt, hvilket i høj grad øger udviklingseffektiviteten. Det er en af verdens mest populære frontend-rammer. Samtidig som kerne i moderne statiske site-generatorer som VitePress, bruges den bredt til at drive interaktiv teknisk dokumentation og blogs.)"
+msgstr "Vue Single-File Component (2014 Evan Yous progressive web-rammeværks proprietære SFC-format. Opnår separation af bekymringer (HTML/CSS/JS) og reaktiv tilstandsbinding i en enkelt fil, driver dybt moderne interaktive frontend webapplikationer og store statiske webstedsmotorer)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly-modul (W3C-standard fra 2017, højtydende udførelsesformat i browseren, C/C++/Rust/R kan kompileres til dette mål, ydeevne tæt på indbygget)"
+msgstr "WebAssembly Binær modul (2017 W3C etableret web højtydende lav-niveau bytecode standard. Tillader kompilering af stærkt typedee sprog som C/C++/Rust til browsers sandbox-miljø, giver nær-native hardwareudførelseseffektivitet, er hjørnestenen i moderne web edge computing)"
 
 msgid "mime_jsx"
-msgstr "React JSX-komponent (Facebook udgav JavaScript XML i 2013, komponentsyntaks til React-rammen, innovativt paradigme, der bringer HTML ind i JavaScript)"
+msgstr "React JSX Component (2013 Facebooks JavaScript XML syntaksudvidelse med React-rammeværket. Understøtter deklarativ opbygning af virtuelle DOM-strukturer i JavaScript, muliggør frontend 'UI som tilstandsfunktion' komponentbaseret udviklingsparadigme)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX-komponent (udviklet af Microsoft i 2012, TypeScript + JSX, standard måde at skrive typesikker React-udvikling på)"
+msgstr "TypeScript TSX Component (2012 Microsofts TypeScript stærke typesyntaks og JSX's strømmende kombination. Injicerer statisk kompilerings-tid typekontrol og interface-begrænsninger i React-komponentudvikling, er kodestandarden for sikker udvikling af moderne store frontend-systemer)"
 
 msgid "mime_heif"
-msgstr "HEIF-billede (MPEG-standard fra 2015, højeffektivt billedfilformat, meget brugt i Apple-økosystemet)"
+msgstr "HEIF Højeffektivt billede (2015 MPEG-organisationens højeffektive billedformat. Baseret på HEVC (H.265) video kodningsalgoritme, understøtter flere billedrammer, dybdekort og metadata i meget lille volumen, er den proprietære lagringsstandard for moderne mobile operativsystemer og smarte terminalenheder)"
 
 msgid "mime_heic"
-msgstr "HEIC-billede (Apples implementering af HEIF, standard fotograferingsformat på iPhone, oprindeligt understøttet på iOS/macOS)"
+msgstr "HEIC Højeffektivt billede (Apples proprietære bitmapformat baseret på HEIF internationale standard. Som standard foto-lagringsformat for moderne iPhone, understøttes af iOS/macOS hardware-niveau kodning/afkodning og indbygget operativsystem, reducerer dramatisk underliggende lagerplads samtidig med at høj billedkvalitet bevares)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D-model (GL-overførselsformat, 'JPEG til 3D-verdenen', Khronos Group udgav i 2015, standardformat til Web 3D)"
+msgstr "glTF 3D aktiv model (2015 Khronos Groups GL transmissionsformat standard. Bruger JSON-arkitektur til at beskrive 3D-scener, kaldet 'JPEG for 3D', er den lette industri-standard til moderne WebGL/WebGPU og virtual reality gengivelse)"
 
 msgid "mime_glb"
-msgstr "GLB binær 3D-model (binær version af GLTF, en enkelt fil indeholder alle ressourcer, bruges til distribution af 3D-scener)"
+msgstr "GLB Binær 3D model (tabsfri binær indkapslingsversion af glTF-aktiv model. Sammensmelter scenestruktur, underliggende mesh vertex-data, materialer og teksturering i en enkelt fil, specialdesignet til effektiv transmission og strømmende distribution af web 3D-aktiver på tværs af platforme)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY-ordliste (fil med termdefinitioner, til termstyring i dokumentsystemer)"
+msgstr "GLOSSARY Dataordliste (specialfil til termdefinitioner i dokumentstyringssystemer og strukturerede korporaer. Indeholder standard termdefinitioner, flersprogede oversættelser og metadata-mapping, bruges til at opretholde konceptuel konsistens i automatiseret tekstanalyse og indholdspubliceringssystemer)"
 
 msgid "mime_cbz"
-msgstr "CBZ-tegneserie (ZIP-komprimerede tegneseriebilleder, almindeligt format til tegneseriesamling)"
+msgstr "CBZ Tegneserie (ZIP-baseret proprietært tegneseriebilledearkivformat. Indeholder en kontinuerlig sekvens af statiske bitmapbilleder, er en universel letvægtscontainerstandard til digital tegneserieudgivelse og krydsplatform lokal samling)"
 
 msgid "mime_cbr"
-msgstr "CBR-tegneserie (RAR-komprimerede tegneseriebilleder, almindeligt format til tegneseriesamling)"
+msgstr "CBR Tegneserie (RAR-baseret proprietært tegneseriebilledearkivformat. Bruger RAR-algoritme til at indkapsle sekvenser af statiske bitmapbilleder, har høj kompressionsrate og bred kompatibilitetsunderstøttelse i digital tegneseriedistribution)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-bog (FictionBook 2.0, russisk e-bogsformat, XML-struktur, bredt understøttet af open source-læsere)"
+msgstr "FB2 E-bog (2000-tallets FictionBook 2.0 e-bogsstandard. Bruger ren XML-struktur til at beskrive bogegenskaber og teksthierarki, har bred understøttelse i open source e-bogsøkosystemet og ældre digitalpubliceringslæsere)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-bog (specielt EPUB-format til Kobo, optimeret format til Kobo e-bogslæser)"
+msgstr "KEPUB E-bog (Kobos proprietære forbedrede e-bogsformat baseret på EPUB-standarden. Optimeret på hardware-niveau til Kobo e-bogslæsere, giver mere effektivt sidelayout og interaktion med læsestatistikker)"
 
 msgid "mime_m4b"
-msgstr "M4B-lydbog (MPEG-4 lydformat til bøger, understøtter bogmærker, iTunes-lydbogsformat)"
+msgstr "M4B Lydbog (MPEG-4 Part 14 (MP4) containerarkitektur-baseret lydbogsformat. Bruger AAC-kodning, understøtter indbygget underliggende bogmærker, pause-genoptagelse og kapitelindlejring, var engang standardformat i Apple iTunes-økosystemet)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX-format (Amazon udgav i 2015, specielt e-bogsformat til Kindle, understøtter avanceret layout og hurtig sideblading)"
+msgstr "Kindle KFX Format (2015 Amazons proprietære forbedrede digitale publiceringsformat med Kindle. Understøtter avanceret typografisk sammenbinding, højdynamisk skriftgengivelse og kerne-niveau strømmende sideloading (Page Flip), er kernestandarden for moderne Kindle-platform)"
 
 msgid "mime_chm"
-msgstr "CHM-hjælpefil (Microsoft udgav i 1997, kompileret HTML-hjælpeformat, standard til Windows-software hjælpedokumentation)"
+msgstr "CHM Kompileret hjælpefil (1997 Microsofts kompilerede HTML-hjælpe informationssystem. Pakker hypertekstdata og underliggende indeks i en enkelt binær container, har længe været standardformat for offline hjælpedokumentation i Windows-software)"
 
 msgid "mime_mht"
-msgstr "MHT-webarkiv (Microsoft udgav i 1999, enkeltfils webformat, IE-browserens format til at gemme websider)"
+msgstr "MHT Webarkiv (1999 Microsofts MIME-aggregations hypertekstformat. Baseret på RFC 2557-standarden, pakker HTML-kildekode, CSS, JS og indlejrede billeder i en enkelt tekstfil, bruges til offline websidegemning i ældre browsere)"
 
 msgid "mime_wml"
-msgstr "WML trådløst markup-sprog (WAP-standard fra 1999, brugt til websider på tidlige funktionstelefoner, forældet)"
+msgstr "WML Trådløst mærkningssprog (1999 WAP-forumets mobil mærkningsstandard. Baseret på XML-specifikation, specialdesignet til tidlige smalbånds trådløse mobilnetværk og lav-kraft funktionstelefoner, er en udfaset ældre teknologi i moderne webøkosystem)"
 
 msgid "mime_xhtml"
-msgstr "XHTML-webside (W3C-standard fra 2000, XML-version af HTML, strengere syntaks. W3C stoppede vedligeholdelse i 2009, fokuserede på HTML5)"
+msgstr "XHTML Hypertekst webside (2000 W3C-standard, XML-baseret stringent hypertext-mærkningssprog. I 2009 stoppede W3C dets tekniske udvikling og vendte sig fuldstændigt mod HTML5-specifikationen, bruges nu primært til semantisk websidegengivelse i ældre systemer)"
 
 msgid "mime_xml"
-msgstr "XML-dokument (W3C-standard fra 1998, udvidelsesbart markup-sprog, grundlæggende format til webservices, konfigurationsfiler, dataudveksling)"
+msgstr "XML Struktureret dokument (1998 W3C-standard extensible markup language. Med selvbeskrivende tag-arkitektur, er det fundamentalt format til netværkswebtjenester (SOAP/REST), systemniveau konfigurationsfiler (XSD) og krydsplatform dataudveksling)"
 
 msgid "mime_sgml"
-msgstr "SGML-dokument (ISO-standard fra 1986, forgænger til HTML, standard generelt markup-sprog, både XML og HTML er afledt af SGML)"
+msgstr "SGML Generelt mærkningssprog (1986 ISO 8879 international standard standard generaliseret markup language. Som pioner inden for struktureret beskrivelse af elektroniske dokumenter, nedstammer XML og tidlige HTML-specifikationer fra dette standard metamsprog)"
 
 msgid "mime_apng"
-msgstr "APNG-animation (Mozilla udviklede i 2004, animationstilføjelse til PNG, moderne erstatning for GIF, understøtter ægte farver og gennemsigtighed)"
+msgstr "APNG Dynamisk grafik (2004 Mozillas PNG dynamiske udvidelse. Understøtter 24-bit true color og 8-bit Alpha channel semi-transparens, er et high-definition alternativ til GIF-formatet i moderne websammenhænge)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmap (Windows bitmapformat, indbygget understøttet siden Windows 1.0. Ukomprimeret, stor filstørrelse, men på grund af den enkle struktur og manglende behov for yderligere codecs, bruges det stadig i Windows 11s udklipningsværktøj, Paint-programmet, ikonressourcer i EXE/MSI-installationspakker, markørfiler og nogle ældre drivere. Ved samme billedkvalitet er filstørrelsen ca. 3-10 gange større end PNG. I de fleste tilfælde er det blevet erstattet af PNG/JPEG, men Windows-økosystemet opretholder stadig bred kompatibilitet)"
+msgstr "BMP Indbygget bitmap (Microsoft platform enhedsuafhængigt bitmapformat etableret siden Windows 1.0 æraen. Bruger tabsfri ukomprimeret lagring, så volumen er typisk 3-10 gange større end PNG, men da det ikke kræver kodnings/afkodnings overhead, er det stadig vidt indlejret i Windows 11 kernekomponenter, EXE/MSI ressource sektioner og ældre driver grafikbuffere)"
 
 msgid "mime_cdr"
-msgstr "CDR-vektorgrafik (CorelDRAW-specifikt format, canadisk virksomhed Corel, software til vektorgrafisk design)"
+msgstr "CDR Vektorgrafik (Canadas Corel Corporation's proprietære CorelDRAW professionelle vektordesign kildeformat. Understøtter lagbaseret farvestyring, komplekse matematiske kurvenoder og tryk-niveau layoutdata, er specialformat til professionel grafisk trykning og reklamedesign)"
 
 msgid "mime_gif"
-msgstr "GIF-billede (CompuServe udviklede i 1987, 256-farve animeret billedformat. Ulemper: få farver, grov billedkvalitet, understøtter ikke gennemsigtighed, stor fil, lav billedfrekvens. Erstattet af moderne animerede formater som APNG, WebP)"
+msgstr "GIF Indekseret farvebillede (1987 CompuServ 8-bit indekseret farvebitmapformat. Baseret på LZW-algoritme, begrænset til 256 farveniveauer og monokrom transparens, fylder meget ved høje billedhastigheder, erstattes gradvist af APNG, WebP etc. moderne effektive animationsstandarder)"
 
 msgid "mime_ico"
-msgstr "ICO-ikon (Windows-ikonformat, understøtter flere opløsninger, standardformat for favicon på websteder)"
+msgstr "ICO Systemikon (Windows indbygget ikon ressource indkapslingsformat. Understøtter blanding af flere pixelopløsninger og farvedybde varianter i en enkelt container, er også den universelle distributionsstandard for moderne browsers webstedsidentifikator (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "JPEG-billede (ISO-standard fra 1992, tabsgivende kompressionsformat til fotos, de facto standard for fotos på internettet)"
+msgstr "JPEG Komprimeret billede (1992 ISO 10918 international standard tabsgivende komprimeringsformat. Baseret på Discrete Cosine Transform (DCT)-algoritme, opnår høj kompressionsrate samtidig med at fremragende realistisk billedkvalitet bevares, er den absolutte de facto standard for statiske fotos på internettet globalt)"
 
 msgid "mime_jpg"
-msgstr "JPEG-billede (ISO-standard fra 1992, tabsgivende kompressionsformat til fotos, de facto standard for fotos på internettet)"
+msgstr "JPEG Komprimeret billede (1992 ISO 10918 international standard tabsgivende komprimeringsformat. Baseret på Discrete Cosine Transform (DCT)-algoritme, opnår høj kompressionsrate samtidig med at fremragende realistisk billedkvalitet bevares, er den absolutte de facto standard for statiske fotos på internettet globalt)"
 
 msgid "mime_png"
-msgstr "PNG-billede (W3C-anbefaling fra 1996, understøtter ægte farver og gennemsigtighed, statisk erstatning for GIF, standard for tabsfri billeder på internettet)"
+msgstr "PNG Tabsfrit billede (1996 W3C-anbefalet Portable Network Graphics standard. Bruger tabsfri kompressionsalgoritme, understøtter indbygget 24-bit true color og 8-bit Alpha channel transparens, som high-definition alternativ til klassisk statisk GIF, er den absolutte de facto standard for tabsfri pixelgrafik på internettet)"
 
 msgid "mime_ps"
-msgstr "PostScript-sidebeskrivelsesfil (Adobe udgav i 1985, sidebeskrivelsessprog, forgænger til PDF, bruges til trykning og udgivelse)"
+msgstr "PostScript Sidedeskriptionsfil (1985 Adobes stak-baserede sidedeskriptionssprog. Som teknologisk forløber til PDF-format, muliggør hardware-uafhængig tekstlayout og højpræcisions vektorgrafikgengivelse på lavt niveau, er den grundlæggende standard for professionel trykning og laserprint)"
 
 msgid "mime_psb"
-msgstr "PSB stort dokument (Adobe Photoshop-format til ekstremt store billeder, understøtter kæmpe billeder på over 2 GB eller 30000 pixels)"
+msgstr "PSB Stor lagdokument (Adobe Photoshop proprietært ultra-stort kildefilindkapslingsformat. Bryder standard PSD-formatets 2GB fysiske volumen og 30.000 pixels interne adresseringsbegrænsninger, specialdesignet til lagring af ultra-store, dybde-lagdelte massive digitale kunstaktiver)"
 
 msgid "mime_psd"
-msgstr "PSD-billede (Adobe Photoshop-kildekodefil, understøtter lag, kanaler, stier, industristandardformat for billedbehandling)"
+msgstr "PSD Lagdesignkildefil (Adobe Photoshop proprietært lagdelt billedteknisk containerformat. Som industri standard container inden for grafisk billedbehandling, indkapsler indbygget komplet gengivelsestræ af lag, bitmapkanaler, vektor beskæringsstier og komplekse blandingsmetoder, understøtter tabsfri fuld data redigering)"
 
 msgid "mime_webp"
-msgstr "WebP-billede (Google udviklede i 2010, web-billedformat, understøtter tabsgivende/tabsfri komprimering og animation, kompressionsrate 25-35% bedre end PNG og 25% bedre end JPEG)"
+msgstr "WebP Højeffektivt billede (2010 Googles universelle webgrafikkodningsstandard. Nedstammer fra VP8-video keyframe-teknologi, perfekt kompatibel med tabsgivende, tabsfri, semi-transparent og dynamisk gengivelse, 25-35% mindre end PNG ved samme kvalitet, er hjørnestenen til højtydende indlæsning af moderne websider)"
 
 msgid "mime_woff"
-msgstr "WOFF-webskrifttype (skabt i 2009, W3C-standard fra 2018. Komprimeret baseret på TrueType/OpenType, optimeret til indlæsning af webskrifttyper, standardformat for ikonskrifttyper på moderne websteder)"
+msgstr "WOFF Web glyph fil (2009 skabt, 2012 W3C-standard Web Open Font Format. Essensen er tabsfri komprimering af standard TTF/OTF fontstrukturer, optimerer dramatisk netværksbåndbreddeomkostninger, er universelt format til moderne webstedsikoner og cloud-baserede skrifttyper)"
 
 msgid "mime_7z"
-msgstr "7z-komprimeret arkiv (Igor Pavlov udviklede det i 1999, specifikt format for 7-Zip-programmet. LZMA-algoritme, høj kompressionsrate, open source og gratis. 7z-formatet er ved samme kompressionsrate normalt 30-50% mindre end ZIP, almindeligt format i open source-fællesskabet og til softwaredistribution)"
+msgstr "7z Komprimeret pakke (1999 Igor Pavlovs 7-Zip proprietære format. Baseret på open source LZMA/LZMA2-algoritmer, ekstrem høj kompressionsrate. Under samme forhold typisk 30-50% mindre end ZIP, er det universelle højkompressionsformat i open source-fællesskabet og softwaredistribution)"
 
 msgid "mime_ace"
-msgstr "ACE-komprimeret arkiv (udviklet i 1990'erne, format for WinACE-programmet. Konkurrerede engang med RAR, kompressionsraten var ret høj. Udvikling stoppet i 2007, nu erstattet af 7z/RAR, sjældent brugt)"
+msgstr "ACE Komprimeret pakke (1990'ernes WinACE proprietære komprimeringsformat. Konkurrerede med RAR-format og havde høj kompressionsrate. Teknisk udvikling stoppede efter 2007, nu erstattet af 7z og RAR-format, tilhører ældre systemarkiveringsformater)"
 
 msgid "mime_bz2"
-msgstr "BZIP2-komprimeret arkiv (Julian Seward udviklede det i 1996, bloksorteringskompressionsalgoritme. Kompressionsraten er 15-20% højere end GZIP, men langsommere. Almindeligt format til Linux-kernens kildekode, open source-softwarepakker, filendelse .bz2)"
+msgstr "BZIP2 Komprimeret pakke (1996 Julian Sewards bloksorteringskomprimeringsformat. Dets underliggende algoritme har 15-20% højere kompressionsrate end GZIP men højere beregningsomkostninger. Bruges ofte til Linux-kernens kildekode og open source-softwarepakker, standard filendelse er .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB-komprimeret arkiv (Microsoft udviklede det i 1995, Cabinet-format. Installationspakkeformat til Windows, bruges til drivere, distribution af systemfiler. Windows Installer (MSI) bruger internt CAB til at gemme filer)"
+msgstr "CAB Komprimeret pakke (1995 Microsofts Cabinet-arkivformat. Som Windows-systemets native installationsstandard, bruges til driver- og kernefildistribution, også underliggende lagringscontainer for Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG-diskbillede (Apple introducerede i 1980'erne, Disk Image-format. Standardformat til distribution af macOS-software, dobbeltklik for at montere som en virtuel disk, træk og slip for at installere applikationen. Understøtter komprimering og kryptering, er det primære format til download af Mac-software)"
+msgstr "DMG Diskbillede (1980'erne Apple videreudviklede Disk Image-format. Som standard container til macOS-softwaredistribution, understøtter montering som virtuelt filsystem, lav-niveau komprimering og datakryptering, er det dominerende format til Mac-økosystemets appdistribution)"
 
 msgid "mime_emz"
-msgstr "EMZ-komprimeret billede (Windows komprimeret forbedret metafil, komprimeret version af EMF. Format til lagring af vektorgrafik i Office-dokumenter, i bund og grund er det en GZIP-komprimeret EMF-fil)"
+msgstr "EMZ Komprimeret billede (komprimeret version af Windows Enhanced Metafile EMF. Essentielt binær vektorgrafik komprimeret via GZIP-algoritme, bredt brugt til lagring af indlejret vektorgrafik i Microsoft Office-serien dokumenter)"
 
 msgid "mime_gz"
-msgstr "GZIP-komprimeret arkiv (Jean-loup Gailly og Mark Adler udviklede i 1992, GNU-projekt. Standardværktøj til komprimering på Unix/Linux, almindeligt format til HTTP-overførselkomprimering. Filendelse .gz, bruges ofte sammen med TAR)"
+msgstr "GZIP Komprimeret pakke (1992 GNU-projektets Jean-loup Gailly og Mark Adler standard strømkomprimeringsformat. Som Unix/Linux standard komprimeringsværktøj, også kerne-standard for HTTP-transportlags komprimering (Gzip), ofte brugt sammen med TAR-arkiv)"
 
 msgid "mime_jar"
-msgstr "JAR-komprimeret arkiv (Sun Microsystems udgav i 1997, Java ARchive-format. I bund og grund er det en ZIP-fil, bruges til at pakke Java-biblioteker og applikationer. Grundlæggende format for Java-økosystemet som Maven, Gradle. Android bruger også JAR)"
+msgstr "JAR Komprimeret pakke (1997 Sun Microsystems Java ARchive-arkivformat. Essentielt ZIP-struktur-baseret pakkecontainer til indkapsling af Java-klassebiblioteker og metadata, er centralt kompileringsprodukt til Maven, Gradle og tidlig Android-økosystem)"
 
 msgid "mime_lzma"
-msgstr "LZMA-komprimeret arkiv (Igor Pavlov udviklede det i 1998, Lempel-Ziv-Markov chain-algoritme. Hovedkompressionsalgoritme til 7z-format, høj kompressionsrate, hurtig dekompressionshastighed. Bruges til distribution af firmware og software til indlejrede systemer)"
+msgstr "LZMA Komprimeret pakke (1998 Igor Pavlovs Lempel-Ziv-Markov chain kædekomprimeringsalgoritme. Som kerne-motor i 7z-format, ekstrem høj kompressionsrate og hurtig dekompression, bredt brugt til hardware-firmware og indlejrede systemdistributioner)"
 
 msgid "mime_rar"
-msgstr "RAR-komprimeret arkiv (Eugene Roshal udviklede det i 1993, Roshal ARchive-format. Høj kompressionsrate, understøtter opdeling i volumener og gendannelsesposter. Format for WinRAR-programmet, kompressionsraten er bedre end ZIP, men kræver betalt software, open source-værktøjer som unrar kan dekomprimere)"
+msgstr "RAR Komprimeret pakke (1993 Eugene Roshals WinRAR proprietære arkivformat. Understøtter opdeling i volumener, fysiske gendannelsesposter (ECC) og stærk kryptering. Kompressionsrate overlegen i forhold til standard ZIP, har bred kompatibilitetsunderstøttelse i personlige og kommercielle områder)"
 
 msgid "mime_tar"
-msgstr "TAR-arkiv (Unix V7 introducerede det i 1979, Tape ARchive-format. Båndarkiv, pakker kun uden komprimering, bruges ofte sammen med GZIP/BZIP2/XZ. Linux-pakkers kildekode, lagring af Docker-billedlag bruger TAR-format)"
+msgstr "TAR Arkivpakke (1979 Unix V7-tidens Tape ARchive båndarkivformat. Udfører kun filstrømspakning uden datakomprimering, ofte kombineret med GZIP/BZIP2/XZ, er Linux-kildekode og Docker-image lagdelingslagrings underliggende standard)"
 
 msgid "mime_tgz"
-msgstr "TGZ-komprimeret arkiv (kombineret format TAR + GZIP, filendelse .tgz eller .tar.gz. Det mest almindelige format til distribution af Unix/Linux-softwarepakker, kildekodepakker, binære pakker, meget brugt, repræsenterer 'udpak og brug')"
+msgstr "TGZ Komprimeret pakke (TAR-arkiv og GZIP-komprimering strømmende kombinationsformat, filendelse .tgz eller .tar.gz. Som det mest almindelige softwarepakkefordelingsformat i Unix/Linux-miljøer, bredt brugt til kompileringsbaseret kildekodeimplementering og binær distribution uden installation)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2-komprimeret arkiv (kombineret format TAR + BZIP2, filendelse .tbz2 eller .tar.bz2. Kompressionsrate 15-20% højere end TGZ, velegnet til distribution af store filer, Linux-kernen har længe brugt dette format)"
+msgstr "TBZ2 Komprimeret pakke (TAR-arkiv og BZIP2-komprimering strømmende kombinationsformat, filendelse .tbz2 eller .tar.bz2. Sammenlignet med TGZ kan det forbedre kompressionsraten med yderligere 15-20%, velegnet til store filoverførsler, blev længe brugt til distribution af Linux-kernens kildekode)"
 
 msgid "mime_xz"
-msgstr "XZ-komprimeret arkiv (introduceret i 2009, baseret på LZMA2-algoritmen. Ekstrem høj kompressionsrate, 30-50% bedre end GZIP, dekompressionshastighed relativt hurtig. Linux-kernen, pakkeadministratorer (som inde i Debian's .deb) bruger det i vid udstrækning, anbefalet format i det nuværende Linux-økosystem)"
+msgstr "XZ Komprimeret pakke (2009 næste generations højkompressionsformat. Baseret på LZMA2-algoritme, 30-50% bedre datakompressionsrate end GZIP samtidig med at hurtig dekompression bevares. Etableret som anbefalet distributionsstandard af Linux-kernen og mainstream pakkeadministratorer (f.eks. inde i Debian .deb))"
 
 msgid "mime_z"
-msgstr "Z-komprimeret arkiv (format for Unix compress-kommando fra 1985, LZW-algoritme. Tidligt Unix-kompressionsformat, erstattet af GZIP. Filendelse .Z, moderne systemer bruger det sjældent)"
+msgstr "Z Komprimeret pakke (1985 Unix kommandos LZW-komprimeringsformat. Som standard komprimeringsstandard i tidlige Unix-systemer, nu fuldstændig erstattet af det mere effektive GZIP-format, er et sjældent historisk ældre format i moderne netværkstrafik)"
 
 msgid "mime_zip"
-msgstr "ZIP-komprimeret arkiv (Phil Katz udviklede det i 1989, PKZIP-format. Windows understøtter oprindeligt, det mest almindelige kompressionsformat på internettet. Understøtter flere filer, mappestruktur, kan vælge kompressionsalgoritme. JAR fra Java, APK fra Android, DOCX/XLSX fra Office-dokumenter er baseret på ZIP-format)"
+msgstr "ZIP Komprimeret pakke (1989 Phil Katz PKZIP universelle arkivformat. Understøttes indbygget af alle større operativsystemer, er den mest udbredte containerstandard på internettet. Moderne JAR (Java), APK (Android) og Office-dokumenter (OOXML) er alle baseret på ZIP-struktur)"
 
 msgid "mime_zst"
-msgstr "Zstandard-komprimeret arkiv (Facebook udviklede i 2015, designet af Yann Collet. Kompressionsalgoritme med høj hastighed, kompressionsrate tæt på LZMA, hastighed langt overgår GZIP. Linux-kernen 5.9+ understøtter, Arch Linux pacman, Debian APT indfører gradvist, ny generation af kompressionsstandard)"
+msgstr "Zstandard Komprimeret pakke (2015 Facebook Yann Collets næste generations strømmende komprimeringsstandard. Nærmer sig LZMA-kompressionsraten samtidig med langt højere gennemstrømning end GZIP. Dybt implementeret i Linux-kernen (5.9+) og Arch/Debian pakkeadministratorer)"
 
 msgid "mime_lz4"
-msgstr "LZ4-komprimeret arkiv (Yann Collet udviklede i 2011, ekstremt hurtig kompressionsalgoritme. Kompressionshastighed mere end 10 gange hurtigere end GZIP, velegnet til realtidskompressionsscenarier. Linux-kernen, OpenZFS, Hadoop bruger det i vid udstrækning, første valg til scenarier, hvor hastighed er prioritet)"
+msgstr "LZ4 Komprimeret pakke (2011 Yann Collets ultra-hurtig strømmende komprimeringsalgoritme. Gennemstrømningshastighed over 10 gange hurtigere end GZIP, ekstremt lav CPU runtime-omkostning. Bredt brugt i Linux-kernen, OpenZFS-filsystemet og Hadoop realtids datastrømbehandling)"
 
 msgid "mime_lzo"
-msgstr "LZO-komprimeret arkiv (Markus Oberhumer udviklede i 1996, Lempel-Ziv-Oberhumer-algoritme. Dekompressionshastighed er ekstremt hurtig, kompressionsraten er gennemsnitlig. Linux-kernen Squashfs, OpenWrt-firmware bruger det, velegnet til indlejrede systemer)"
+msgstr "LZO Komprimeret pakke (1996 Markus Oberhumers Lempel-Ziv-Oberhumer-algoritme. Fokuserer på ultra-hurtig dekompressionsydelse. Bredt indlejret i Linux-kernens Squashfs-aftryk, OpenWrt-firmware og forskellige ressourcebegrænsede indlejrede systemer)"
 
 msgid "mime_msi"
-msgstr "MSI-installationspakke (Microsoft udgav i 1999, Windows Installer-pakkeformat. Standardinstallationsformat til Windows-applikationer, understøtter transaktionsrulning, komponentstyring, stille installation. Førstevalg til softwaredistribution på virksomhedsniveau, stadig det primære format til Windows-softwareinstallation i dag)"
+msgstr "MSI Systeminstallationspakke (1999 Microsofts Windows Installer dataindkapslingsformat. Som Windows-standard for applikationsniveau implementering, understøtter indbygget lav-niveau transaktions tilbagerulning, komponent livscyklusstyring og batch-fri stille installation, er kernestandard for centraliseret virksomhedssoftwaredistribution og politikbaseret implementering)"
 
 msgid "mime_pkg"
-msgstr "PKG-installationspakke (macOS-installationspakkeformat til applikationer, baseret på Apples Installer-teknologi. Standardformat til distribution af macOS-software, understøtter valg af komponenter, installationsscripts, afinstallationsfunktion. Dobbeltklik på .pkg-filen for at installere, almindelig distributionsmetode til software uden for Mac App Store)"
+msgstr "PKG Krydsplatform softwareinstallationspakke. 1. FreeBSD-softwarepakke: pkgng-standard, filendelse .pkg eller .txz, baseret på TAR+XZ/Zstd-komprimering, understøtter afhængighedsopløsning og signaturverifikation; 2. macOS-installationspakke: baseret på Apple Installer-format, understøtter brugerdefinerede komponenter, installationsscripts og systemniveau afinstallation. Er henholdsvis BSD-servere og Mac-systemers primære distributionsbærere."
 
 msgid "mime_apk"
-msgstr "APK Android-applikationspakke (lanceret af Google i 2008, traditionelt installationsformat til Android-applikationer. APK er i bund og grund en ZIP-pakke, der indeholder kode, ressourcer og manifestfil. Fra 2021 kræver Google Play, at nye applikationer bruger AAB-formatet, men APK bruges stadig til fejlfinding, tredjepartsbutikker og sideloadning)"
+msgstr "APK Android-applikationspakke (2008 Googles traditionelle appinstallationspakke med Android. Baseret på ZIP-arkivstruktur underliggende, pakker kompileret Dalvik bytecode (DEX), metadata-manifest og globale ressourcer, bruges nu bredt til lokal udviklingsfejlfinding, tredjepartsdistribution og sidelæns installation på enheder)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS-applikationspakke (iOS App Store Package, installationsformat til iOS/iPadOS-applikationer. Lanceret i 2008 med iPhone SDK. Skal distribueres via App Store eller underskrives med en virksomhedscertifikat. Indeholder en eksekverbar fil, ressourcer, Info.plist og signaturinformation)"
+msgstr "IPA Apple-applikationspakke (2008 med iPhone SDK udgivet iOS/iPadOS eksklusiv pakkecontainer. Essentielt FairPlay DRM eller virksomhedscertifikat signeret ZIP, indeholder Mach-O binær eksekverbar fil, app-ressourcetræ og Info.plist metadata konfiguration)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS-applikationspakke (HarmonyOS Ability Package, grundlæggende enhed i en HarmonyOS-applikation. Lanceret i 2020 med HarmonyOS 2.0. Understøtter to typer: entry og feature, distributionsformat til Huawei-telefoner, tablets, smartwatches og andre HarmonyOS-enheder)"
+msgstr "HAP HarmonyOS-applikationspakke (2020 med HarmonyOS 2.0 udgivet HarmonyOS elastisk implementerings grundenhed. Består af Entry hovedmodul eller Feature udvidede funktionsmoduler, er det multi-end (mobil, tablet, wearable) cross-device distributionsformat til smarte terminaler)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS statisk delt bibliotek (HarmonyOS Archive, statisk delt bibliotek til HarmonyOS, kan deles af flere HAP-pakker, bruges til komponentbaseret udvikling og genbrug af moduler)"
+msgstr "HAR HarmonyOS statisk delt pakke (HarmonyOS proprietært statisk delt biblioteksarkivfil. Bruges til indkapsling af fælles komponenter, underliggende ressourcekode og kompileringstidsafhængigheder, statisk linket af flere HAP-moduler til deling, er fundamentet for HarmonyOS-systemets komponentbaserede udvikling og multi-modul genbrug)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google udgav i 2018, fra 2021 kræver Google Play, at nye applikationer bruger dette format. AAB er et distributionsformat, Google Play genererer optimerede APK'er i henhold til enhedskonfiguration (CPU-arkitektur, skærmtæthed, sprog), installationspakkens størrelse reduceres i gennemsnit med 35%. Udviklere uploader AAB, brugere downloader APK)"
+msgstr "AAB Android App Bundle (2018 Google lanceret og 2021 etableret Google Play dynamisk distributionsformat. Som ren distributionsenhed, skræddersyr og kompilerer cloud-miljøet dynamisk i henhold til mål-enhedens CPU-arkitektur, skærmtæthed og sprog til at generere optimerede APK'er efter behov, hvilket i gennemsnit reducerer transmissionsbåndbreddeforbruget med 35%)"
 
 msgid "mime_xapk"
-msgstr "XAPK-applikationspakke (tredjeparts Android-applikationsudvidelsespakke, indeholder APK + OBB-datafiler. Bruges til store spil og komplekse applikationer, løser 100 MB-grænsen for en enkelt APK-fil. Almindelig i tredjeparts app-butikker som APKPure, APKMirror, ikke et officielt Google-format)"
+msgstr "XAPK Udvidet applikationspakke (etableret af tredjeparts Android-fællesskabet som uofficiel applikationsudvidelsesstandard. Sammenkæder standard APK-fil med store OBB-spildataudvidelsespakker, fysisk overskrider Google Plays 100MB grænse for individuel filstørrelse, bredt set på spildistributionsplatforme)"
 
 msgid "mime_appx"
-msgstr "Windows-applikationspakke (Microsoft udgav i 2012, installationsformat til Windows 8/10/11-applikationer. Understøtter UWP-applikationer og konvertering af desktopapplikationer, distribueres via Microsoft Store. I 2024 udgav Microsoft MSIX som efterfølgerformat, erstatter gradvist APPX)"
+msgstr "APPX Moderne applikationspakke (2012 Microsofts UWP-applikationsimplementeringsstandard med Windows 8. Har sandkasse-isoleret kørsel og letvægts afinstallations egenskaber, var dominerende tidlig standard i Microsoft Store, men i moderne Windows-økosystem er den gået ind i en livscyklusafslutningsfase med evolution mod MSIX)"
 
 msgid "mime_msix"
-msgstr "MSIX-applikationspakke (Microsoft udgav i 2018, ny generation af pakkeformat til Windows-applikationer. Kombinerer fordelene ved APPX og MSI, understøtter alle typer Windows-applikationer, kan distribueres via Microsoft Store eller sideloading, anbefalet format til Windows 11)"
+msgstr "MSIX Næste generations applikationspakke (2018 Microsofts nye, fuldt standardiserede indpakningsstandard for Windows. Smelter perfekt APPX's applikationssikkerheds sandkasseegenskaber sammen med MSI's virksomhedsniveau aktivstyringsfordele, fuldt kompatibel med alle Win32-applikationstyper, er den anbefalede distributionsstandard for Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage-applikationspakke (introduceret i 2004, Linux-applikationsformat uden installation. 'En applikation - én fil', kører direkte uden installation, understøtter de fleste Linux-distributioner, almindelig måde for udviklere at distribuere Linux-software på)"
+msgstr "AppImage Selvstændig applikationspakke (2004 opstartet Linux enkelt eksekverbar arkivspecifikation. Bruger 'én applikation er én fil' selv-inklusiv arkitektur, monteres under kørsel direkte som skrivebeskyttet virtuelt filsystem via FUSE-mekanisme, opnår nul-afhængigheds 'kør-og-spil' på tværs af Linux-distributioner)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak-applikationspakke (introduceret i 2015, Linux-applikationsformat i sandkasse. Fungerer på tværs af distributioner, isoleret fra værtsystemet, udvikling ledet af Fedora og Red Hat, standardformat for GNOME Software Center)"
+msgstr "Flatpak Sandkasse applikationspakke (2015 Red Hat og GNOME-ledet Linux cross-distribution desktop applikationsdistributionsstandard. Understøttet af Linux-kernens Namespace og Cgroups-mekanismer, opnår ekstremt streng applikationsniveau sikkerheds sandkasseisolering, er fundamentet for moderne open source OS softwarecentre)"
 
 msgid "mime_snap"
-msgstr "Snap-applikationspakke (Canonical udgav i 2014, moderselskabet for Ubuntu udviklede, universelt Linux-applikationsformat. Automatisk opdatering, sandkasseisolering, understøtter 40+ Linux-distributioner, standardformat for Ubuntu Software Center)"
+msgstr "Snap Containeriseret applikationspakke (2014 Ubuntu moderselskab Canonicals Linux universelle implementeringsstandard. Bruger applikations-selv-inklusiv SquashFS-aftryks monteringsarkitektur, understøtter automatiske inkrementelle opdateringer og streng AppArmor sandkasseisolering, er standardformat for Ubuntu softwarecentrets økosystem)"
 
 msgid "mime_deb"
-msgstr "Debian-softwarepakke (Debian-projektet udgav i 1993, standardinstallationsformat til Debian/Ubuntu og deres afledte. Administreres ved hjælp af dpkg, APT er dets pakkeadministratorfrontend, en af de mest modne pakkeformater i Linux-økosystemet, stadig det primære i Debian-familien i dag)"
+msgstr "DEB Systemsoftwarepakke (1993 Debian-projektets binær- og kildekodeindpakningsspecifikation. Som installationsstandard for Debian, Ubuntu og alle deres afledte systemer, vedligeholdes via dpkg til udpakning, og med APT som effektiv pakkeadministrator-frontend, er den mest modne softwaredistributionshjørnesten i Linux-økosystemet)"
 
 msgid "mime_rpm"
-msgstr "RPM-softwarepakke (Red Hat udgav i 1997, standardformat til distributioner som Red Hat/Fedora/CentOS/SUSE. RPM står for 'Red Hat Package Manager', sammen med DEB udgør de to primære pakkeformater i Linux, stadig det primære i RHEL-familien i dag)"
+msgstr "RPM Systemsoftwarepakke (1997 Red Hats Red Hat Package Manager indpakningsspecifikation. Sammen med DEB en af de to store traditionelle Linux-pakkeadministrationslejre, har indbygget transaktionsbaseret afhængighedskontrol og underliggende digital softwaresignaturverifikation, er stadig den absolutte mainstream distributionsstandard for Red Hat-økosystemer som RHEL, Fedora og CentOS)"
 
 msgid "mime_pacman"
-msgstr "Arch-softwarepakke (Arch Linux udgav i 2002, .pkg.tar.zst-format, som bruges af pacman-pakkeadministratoren. Kernen i Arch Linux rolling release-distributioner, kendt for sin enkelhed og KISS-princippet, AUR (Arch User Repository) er dets kendetegn)"
+msgstr "Pacman Arkivsoftwarepakke (2002 Arch Linux's pacman-manager etablerede .pkg.tar.zst indpakningsformat. Som kernen i Arch's rullende opdateringsmekanisme, baseret på Zstandard højhastigheds højkompressionsalgoritme, sammen med AUR (Arch User Software Repository) økosystem, er det en moderne pakkedistributionsstandard, der legemliggør minimalisme og KISS-princippet)"
 
 msgid "mime_exe"
-msgstr "EXE-eksekverbar fil (Windows-eksekverbart programformat, forkortelse for 'Executable'. Oprindeligt eksekverbart format for Windows-operativsystemet, indeholder PE-strukturen. Udviklet fra MZ-formatet fra MS-DOS-æraen, Windows NT introducerede PE (Portable Executable)-formatet i 1993, som bruges den dag i dag. Softwareinstallationspakker, applikationer, systemværktøjer bruger dette format. Brugeren dobbeltklikker for at køre det, det mest udbredte eksekverbare format i verden)"
+msgstr "EXE Indbygget eksekverbar fil (Windows-platformens Portable Executable (PE) binære programformat. Teknisk afstamning fra MS-DOS-æraens MZ-header-struktur, og fra 1993 Windows NT fuldt etableret som PE-struktur specifikation, er verdens mest udbredte eksekveringsstandard for maskinkodeinstruktioner, statiske ressource-sektioner og systemkerne-bootstrapping)"
 
 msgid "mime_dll"
-msgstr "DLL-dynamisk linket bibliotek (Microsoft introducerede i 1993, Dynamic Link Library. Windows' delte kodebibliotek, programmet indlæses dynamisk under udførelse, sparer hukommelse og diskplads. Systemkomponenter, applikationsplugins, drivere bruger DLL-format. Den primære måde at implementere Windows API på, 'DLL Helvede'-problemet blev afhjulpet i .NET-æraen)"
+msgstr "DLL Dynamic Link Library (Windows-platformens Dynamic Link Library delte kodebiblioteksspecifikation. Gennem dynamisk indlæsning og symbolomplacering under kørsel, sparer dramatisk fysisk hukommelse og diskplads, som kerneimplementeringsform for Windows API. Det tidlige 'DLL Hell'-problem blev moderne løst via SxS parallel isoleringsmekanisme)"
 
 msgid "mime_com"
-msgstr "COM-eksekverbar fil (eksekverbart format fra MS-DOS-æraen, forkortelse for 'Command'. Meget simpel filstruktur, 64KB-begrænsning, primært format før Windows 3.x, forældet. Moderne Windows bruger EXE-format, COM-udvidelsen bruges stadig til nogle komponentfiler)"
+msgstr "COM Klassisk eksekverbar fil (MS-DOS-æraens ældste hukommelsesbillede (Command) eksekveringsformat. Bruger strukturrent kodesegmentdesign, begrænset til 64KB fysisk hukommelsesadresseringssegment, er nu pensioneret som historisk ældre format, men i moderne Windows-arkitektur opretholdes begrænset kompatibilitet som specifik komponentgrænseflade)"
 
 msgid "mime_aac"
 msgstr "AAC-lyd (MPEG-standard fra 1997, Advanced Audio Coding. Efterfølger til MP3, lydkvalitet bedre end MP3 ved samme bitrate, standard lydformat til YouTube, iTunes, Nintendo Switch)"

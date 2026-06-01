@@ -458,8 +458,8 @@ msgstr "Serveris - Puslapių skaičius - Užklausų skaičius - Pralaidumas - Pa
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Paskutinio apsilankymo pradžios data] ir [Paskutinio apsilankymo paskutinis puslapis] išsaugomi tik tuo atveju, jei sesija nebaigta"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Pagrindiniame puslapyje rodomi tik pirmi %s elementai su daugiausiai užklausų. Išsamų sąrašą rasite išsamiame puslapyje."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Pirmieji %s elementai surūšiuoti pagal pataikymų skaičių mažėjančia tvarka; likusių elementų tvarka nėra apibrėžta."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Prisijungęs naudotojas - Puslapių skaičius - Užklausų skaičius - Pralaidumas - Paskutinio apsilankymo laikas"
@@ -473,8 +473,8 @@ msgstr "Kirmino ID - Užklausų skaičius - Pralaidumas - Paskutinio apsilankymo
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "El. paštas - Užklausų skaičius - Pralaidumas - Paskutinio apsilankymo laikas"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Pagrindiniame puslapyje rodomos tik pirmos %s el. pašto užklausos. Išsamų sąrašą rasite išsamiame puslapyje."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Pirmieji %s el. pašto adresai surūšiuoti pagal pataikymų skaičių mažėjančia tvarka; likusių adresų tvarka nėra apibrėžta."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Puslapių skaičius - Pralaidumas - Įėjimas - Išėjimas"
@@ -683,6 +683,27 @@ msgstr "SiteDomain parametras nėra apibrėžtas jūsų config/domain faile arba
 msgid "Please run as Administrator to set permissions"
 msgstr "Paleiskite kaip administratorius, norėdami nustatyti teises"
 
+msgid "This directory lacks read permission"
+msgstr "Šiam katalogui trūksta skaitymo teisių"
+
+msgid "Please set read permission for directory"
+msgstr "Nustatykite katalogo skaitymo teises"
+
+msgid "Missing required parameter in config file"
+msgstr "Konfigūracijos faile trūksta būtino parametro"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Patikrinkite, ar apibrėžtas 'DirData' parametras."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Atrodo, kad naršyklės adreso eilutėje trūksta domeno vardo arba jis yra neišsamus"
+
+msgid "Please check the URL parameter"
+msgstr "Patikrinkite URL parametrą"
+
+msgid "Format description"
+msgstr "Formato aprašymas"
+
 msgid "Please set execute permission"
 msgstr "Nustatykite vykdymo teisę"
 
@@ -808,376 +829,379 @@ msgstr "Surinkimo įrankis"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Tekstinis failas (1963 m. ASCII standartizacija, neformatuotas paprastas tekstas. Viso šaltinio kodo, konfigūracijų, žurnalų pagrindas. Unix naudoja LF, Windows naudoja CRLF eilutės lūžiui, vis dar dažniausias duomenų formatas kompiuterijoje)"
+msgstr "TXT grynojo teksto failas (nestilizuotas tekstas, standartizuotas pagal ASCII kodavimą 1963 m. Kaip pagrindinis visų šaltinio kodų, konfigūracijos failų ir sistemų žurnalų pamatas, jo kryžminės platformos Windows (CRLF) ir Unix (LF) eilučių pabaigos valdymo srautai iki šiol išlieka universaliausiu kompiuterių pasaulio duomenų mainų standartu)"
 
 msgid "mime_log"
-msgstr "Žurnalo failas (paprastas tekstinis failas, registruojantis sistemos ir programų vykdymo informaciją, dažnai naudojamas trikčių šalinimui, veikimo analizei, saugumo auditui. Standartiniai formatai, tokie kaip Apache combined log, Nginx access log, syslog ir kt.)"
+msgstr "LOG sistemos veikimo žurnalas (grynojo teksto turtas, fiksuojantis operacinės sistemos, branduolio ir taikomųjų programų veikimo būseną. Apima Nginx/Apache prieigos žurnalus (Combined Log) ir standartinę syslog specifikaciją, yra pagrindinis duomenų šaltinis trikčių šalinimui, srauto našumo analizei ir saugos auditui)"
 
 msgid "mime_page"
-msgstr "HTML tinklalapis (Tim Berners-Lee išrado pasaulinį tinklą 1989 m., 1990 m. apibrėžė tris technologijas HTML/HTTP/URL, nemokamai jas pasiūlė be patento. HTML5 tapo oficialiu W3C standartu 2014 m., palaiko rodymą, daugialypę terpę ir spausdinimą. Apdovanotas Tiuringo premija 2016 m.)"
+msgstr "HTML hiperteksto tinklalapis (1989 m. Tim Berners-Lee sukurtas pasaulinio tinklo pagrindas. Kaip nemokama, atvira universali hiperteksto žymėjimo kalba, jos HTML5 specifikacija 2014 m. tapo oficialiu W3C standartu, kuriame gimtai palaikomas struktūrinis multimedija, semantinis sąveikumas ir srauto puslapių išdėstymas. 2016 m. apdovanota Tiuringo premija)"
 
 msgid "mime_khtml"
-msgstr "KHTML žiniatinklio variklis (išleistas su KDE 2.0 1998 m., Konqueror naršyklės atvaizdavimo variklis. Apple sukūrė WebKit pagal KHTML 2001 m., Google sukūrė Blink iš WebKit 2008 m., kuris tapo tokių naršyklių kaip Chrome, Edge, Safari pagrindu. KHTML yra pavyzdys, kaip atvirojo kodo bendruomenė padėjo pamatus šiuolaikiniams naršyklių varikliams, o jos technologinis paveldas tęsiasi per WebKit/Blink)"
+msgstr "KHTML žiniatinklio šablonų variklis (1998 m. KDE 2.0 naršyklės atvaizdavimo variklio specifikacija. Kaip atvirojo kodo bendruomenės pamatas, nulėmęs šiuolaikinį žiniatinklio atvaizdavimą, jos techninis paveldas tiesiogiai įkvėpė ir išsivystė į Apple WebKit ir Google Blink branduolius. Dar ir šiandien tęsia savo pagrindinę giją per šiuolaikinę srauto dinaminę žiniatinklio architektūrą)"
 
 msgid "mime_script"
-msgstr "Dinaminis scenarijus (interpretuojama kalba, nereikalauja kompiliacijos. Apima ASP, JSP, CGI, ColdFusion, Tcl, VBScript ir kt., plačiai naudojamas ankstyvoje žiniatinklio kūrime, sistemos administravime, užduočių automatizavime. Šiuolaikinės scenarijų kalbos, tokios kaip Python, Ruby, JavaScript, tapo pagrindinėmis kalbomis full-stack kūrimui)"
+msgstr "SCRIPT interpretuojamas dinaminis skriptas (bendra šaltinio kodo srautų, kuriems nereikia išankstinio kompiliavimo ir kurie vykdomi eilutė po eilutės pagal konkrečią vykdymo aplinką ar interpretatorių, kategorija. Apima ASP, JSP, CGI, Tcl ir kt., plačiai naudojamas serverio pusės bendrosios sąsajos, automatizuotų procesų valdymo ir sisteminių užduočių integravimui)"
 
 msgid "mime_js"
-msgstr "JavaScript scenarijus (Brendan Eich sukūrė per 10 dienų „Netscape“ 1995 m., gimtoji naršyklės programavimo kalba. ECMAScript standartizuotas 1997 m., Node.js gimimas 2009 m. pavertė jį full-stack kalba, npm yra didžiausia pasaulyje paketų tvarkyklė. Daugelį metų populiariausia programavimo kalba „GitHub“)"
+msgstr "JavaScript scenarijus (1995 m. Netscape naršyklės gimtoji programavimo aplinka. 1997 m. nustatytas ECMAScript pramonės standartas, 2009 m. atsiradusi Node.js vykdymo aplinka panaikino naršyklės ribas ir sukūrė viso krūvo asinchroninę neblokuojančią architektūrą, lydimą didžiausios pasaulyje npm programinės įrangos paketų ekosistemos)"
 
 msgid "mime_py"
-msgstr "Python scenarijus (Guido van Rossum sukūrė 1991 m., žinomas dėl privalomo įtraukimo ir paprastos sintaksės. Plačiai naudojamas žiniatinklio kūrime, duomenų moksle, dirbtiniame intelekte, automatizuotose operacijose. Daugkartinis TIOBE metų programavimo kalbos apdovanojimo laimėtojas)"
+msgstr "Python scenarijus (1991 m. Guido van Rossum sukurta aukšto lygio interpretuojama scenarijų kalba. Dėl privalomo įtraukimo užtikrinamo neprarandamo skaitomumo ir kelių paradigmų pagrindinio dizaino, dabar yra nustatyta kaip pramonės standartinė kalba šiuolaikinei žiniatinklio architektūrai, viso krūvo duomenų mokslui, dirbtinio intelekto modelių mokymui ir debesijos natyviai automatizuotai operacijai)"
 
 msgid "mime_sh"
-msgstr "Shell scenarijus (Unix gimimas 1971 m., komandų scenarijų kalba. Naudojama sistemos administravimui, užduočių automatizavimui, paslaugų paleidimui, diegimo scenarijams. Būtinas įgūdis Linux administravimui)"
+msgstr "Shell scenarijus (1971 m. Unix eros standartinių komandų interpretatoriaus scenarijus. Apima tokias branduolio lygio komandų specifikacijas kaip Bash, Sh, Dash, paprastai vykdomas su .sh plėtiniu. Tai universalus branduolio lygio klijantas, skirtas žemo lygio procesų valdymui, diegimo nereikalaujančiai aplinkos konfigūracijai ir automatizuotam diegimui šiuolaikinėse Unix tipo operacinėse sistemose)"
 
 msgid "mime_rb"
-msgstr "Ruby scenarijus (Yukihiro Matsumoto sukūrė 1995 m., orientuotas į kūrėjų laimę. „Ruby on Rails“ sistema įvedė „konvencija prieš konfigūraciją“ paradigmą, turinčią įtakos šiuolaikinių žiniatinklio sistemų dizainui)"
+msgstr "Ruby scenarijus (1995 m. Yukihiro Matsumoto sukurta objektinė scenarijų kalba. Jos pagrindinė dizaino filosofija yra itin didelė pagarba kūrėjo patirčiai. Jos karkasas Ruby on Rails revoliucingai nustatė šiuolaikinės aukšto lygio žiniatinklio architektūros paradigmą „Konvencija prieš konfigūraciją“ (CoC))"
 
 msgid "mime_pl"
-msgstr "Perl scenarijus (Larry Wall sukūrė 1987 m., žinomas dėl savo pragmatiškumo, vadinamas „šveicarišku penkiasdešimt penkiu“. CPAN buvo šiuolaikinių kalbų paketų tvarkyklių pradininkas, turėjęs didelę įtaką tekstų apdorojimui, sistemos administravimui ir CGI)"
+msgstr "Perl scenarijus (1987 m. Larry Wall sukurta pragmatiška scenarijų kalba. Kaip šiuolaikinių paketų tvarkyklių pradininko (CPAN) kūrėjas, ji vadinama tekstų apdorojimo „šveicarišku peiliuku“. Šiuolaikiniu CGI režimu, vis dar tarnauja kaip patikimas pagrindas žurnalų analizės srityje dėl ypač mažų fizinės atminties sąnaudų ir efektyvaus reguliariųjų išraiškų apdorojimo)"
 
 msgid "mime_php"
-msgstr "PHP dinaminis tinklalapis (Rasmus Lerdorf sukūrė 1995 m., specialiai sukurtas žiniatinklio kūrimui. Daugiau nei 70% pasaulio svetainių jį naudoja, varo tokias platformas kaip „WordPress“, „Facebook“, „Wikipedia“. PHP 8 įdiegia JIT kompiliavimą, žymiai pagerinantį našumą)"
+msgstr "PHP dinaminis tinklalapis (1995 m. Rasmus Lerdorf sukurtas, specialiai žiniatinklio kūrimui. Kaip pagrindinė technologija, varanti daugiau nei 70% visų pasaulio svetainių, ji giliai palaiko tokias didelio masto gamybines programas kaip WordPress ir Wikipedia. Nuo PHP 8 įvedus JIT (tiesioginio kompiliavimo) vykdymo variklį, įvyko pagrindinė paradigmos raida link aukštos kokybės viso krūvo serverio pusės)"
 
 msgid "mime_image"
-msgstr "Vaizdo failas"
+msgstr "IMAGE vaizdo turto klasifikacija (apima bendrą vaizdų, gautų naudojant nuostolingą/nenuostolingą bitų žemėlapių glaudinimą, šiuolaikinę atsakingą žiniatinklio grafiką ir vektorinę grafiką, klasifikaciją. Tai pagrindinis rodiklis, skirtas įvertinti svetainės vaizdo išteklių įkėlimo sąnaudas, kliento pusės podėlio (Cache) pataikymo dažnį ir medijos tinklo pralaidumo suvartojimą)"
 
 msgid "mime_document"
-msgstr "Dokumento failas"
+msgstr "DOCUMENT struktūrizuotų dokumentų klasifikacija (apima bendrą grynojo teksto, skaičiuoklių, fiksuoto formato dokumentų (PDF) ir lengvosios žymėjimo kalbų klasifikaciją. Tai pagrindinis rodiklis, skirtas statistinei serverio pusės statinių žinių bazių platinimo, įmonės informatizavimo turto atsisiuntimo ir teksto srauto pralaidumo analizei)"
 
 msgid "mime_package"
-msgstr "Programinės įrangos paketas"
+msgstr "PACKAGE kompiliavimo produktų ir programinės įrangos paketų klasifikacija (apima bendrą operacinės sistemos gimtųjų vykdomųjų failų, vykdymo metu susiejamų bibliotekų (DLL/SO) ir taikomųjų programų platinimo diegimo paketų klasifikaciją. Dažnai naudojama kaip pagrindinis rodiklis, skirtas įvertinti programinės įrangos platinimo svetainių išeinantį srautą ir atsisiuntimo pikus)"
 
 msgid "mime_archive"
-msgstr "Gzip suspaustas failas (GNU projektas 1992 m., pagrįstas DEFLATE algoritmu. Žiniatinklyje naudojamas dinamiškam atsakymo turinio glaudinimui, glaudinimo santykis paprastai yra 60-90%. Po 2015 m. kai kuriais atvejais pakeistas Brotli, bet vis dar plačiausiai palaikomas glaudinimo formatas serverio pusėje)"
+msgstr "ARCHIVE archyvavimo ir glaudinimo failai (bendra duomenų glaudinimo paketų, pagrįstų pagrindiniais algoritmais, tokiais kaip DEFLATE, LZMA, klasifikacija. Tinklo sluoksnyje, be tradicinio paketų platinimo, taip pat apima 1992 m. GNU projekto Gzip dinaminio atsako srautą. Nors šiuolaikiniuose scenarijuose palaipsniui diegiamas Brotli algoritmas, ši klasifikacija vis dar yra pagrindinis rodiklis, skirtas įvertinti serverio pralaidumo dažnį ir perdavimo sluoksnio slėgio mažinimą)"
 
 msgid "mime_audio"
-msgstr "Garso failas"
+msgstr "AUDIO skaitmeninio garso srauto klasifikacija (apima bendrą glaudintų garsų, garsinių knygų ir srautinio garso konteinerių klasifikaciją. Remiantis konkrečiais garso kodavimo/dekodavimo standartais, naudojama stebėti daugialypės terpės svetainių garso duomenų srautų pralaidumą, lygiagrečių srautinio perdavimo pralaidumą ir ilgų jungčių veikimą)"
 
 msgid "mime_video"
-msgstr "Vaizdo failas"
+msgstr "VIDEO skaitmeninio vaizdo srauto klasifikacija (apima bendrą aukštos raiškos vaizdo konteinerių, šiuolaikinės žiniatinklio animacijos ir srautinio perdavimo segmentų klasifikaciją. Tai pagrindinis rodiklis, skirtas įvertinti serverio pralaidumo piką ir turinio paskirstymo tinklo (CDN) spartinimo efektyvumą esant didelei tinklo apkrovai)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (sukūrė Brendan Eich 1995 m.)"
+msgstr "JScript scenarijus (1996 m. Microsoft sukurtas atvirkštinės inžinerijos būdu gautas patentuotas įgyvendinimas, skirtas Internet Explorer 3.0. Kaip ankstyvos klasikinės JavaScript šeimininkės konkurentas, jis kadaise buvo pagrindinis Windows scenarijų šeimininko (WSH) ir ankstyvos ASP serverio pusės variklis)"
 
 msgid "mime_json"
-msgstr "JSON duomenys (Douglas Crockford pasiūlė 2001 m., lengvas duomenų mainų formatas, faktinis standartas žiniatinklio API)"
+msgstr "JSON struktūrizuoti duomenys (2001 m. Douglas Crockford nustatytas lengvas duomenų serializavimo mainų formatas. Pagrįstas tekstinėmis rakto-reikšmės poromis ir masyvų architektūra, pasižymi ypač dideliu žmonių skaitomumu ir nenuostolingu srauto analizės savybėmis. Tai faktinis standartas šiuolaikinėms žiniatinklio API, mikroservisų architektūrai ir sąveikai su dideliais kalbos modeliais)"
 
 msgid "mime_vbs"
-msgstr "VBScript (Microsoft sukūrė 1996 m., Windows scenarijų kalba, naudojama ASP tinklalapiams ir Windows administravimo scenarijams. Populiarėjant PowerShell ir JavaScript, palaipsniui nyksta)"
+msgstr "VBScript scenarijus (1996 m. Microsoft kartu su IE 3.0 išleista scenarijų kalbos variacija. Kadaise buvo pagrindinis ankstyvų ASP dinaminių svetainių ir Windows sistemų valdymo variklis. Dabar oficialiai atsisakyta ir pašalinta iš naujausio Windows 11 branduolio, todėl tai priklauso istoriniam palikimui)"
 
 msgid "mime_conf"
-msgstr "Konfigūracijos failas (saugo programinės įrangos konfigūraciją tekstiniu formatu, įprasti formatai: INI, JSON, YAML, TOML, XML. Linux sistemos konfigūracija dažniausiai yra /etc kataloge)"
+msgstr "CONF sistemos konfigūracijos failas (bendra duomenų failų, kurie nuolat saugo programinės įrangos vykdymo aplinkos parametrus grynojo teksto pavidalu, klasifikacija. Apima INI ir šiuolaikines YAML, TOML, JSON specifikacijas. Linux sistemoje dažniausiai sutelkiami /etc kataloge. Tai pagrindinė priklausomybė sisteminės būsenos veikimo optimizavimui)"
 
 msgid "mime_css"
-msgstr "CSS stiliaus lapas (W3C paskelbė pirmąjį oficialų standartą CSS1 1996 m. gruodžio mėn., CSS2 pridėjo pozicionavimą ir medijos tipus 1998 m., nuo 2011 m. CSS3 modulizacija įvedė užapvalintus kampus, animacijas, lanksčią dėžę, tinklelio išdėstymą ir atsakingą dizainą. Kartu su HTML ir JavaScript sudaro tris pagrindines front-end technologijas, visos šiuolaikinės naršyklės (Chrome, Firefox, Safari, Edge) jį palaiko iš pradžių, tai yra vienintelis standartas, skirtas apibrėžti tinklalapių stilių)"
+msgstr "CSS kaskadiniai stiliaus lapai (1996 m. W3C standartas, kartu su HTML/JS vadinamas trimis pagrindiniais frontendo komponentais. Perėjęs CSS2 pozicionavimo ir CSS3 modulinės raidos etapus, gimtai palaiko lanksčią dėžę (Flexbox), tinklelį (Grid) ir reaktyvųjį dizainą su medijos užklausomis. Tai absoliučiai dominuojantis standartas, leidžiantis atsieti tinklalapio išvaizdą šiuolaikinėse naršyklėse)"
 
 msgid "mime_xsl"
-msgstr "XSL stiliaus lapas (W3C standartas 1999 m., XML dokumentų transformavimo kalba, gali konvertuoti XML į HTML/PDF/tekstą. Naudojimas sumažėjo po JSON išpopuliarėjimo)"
+msgstr "XSL stiliaus lapas (1999 m. W3C standartas, apimantis XSLT transformaciją ir XPath adresavimo kalbą, skirtą struktūrizuotiems XML duomenims atvaizduoti į HTML, PDF arba grynąjį tekstą. Šiuolaikinėje kūryboje jo ekosistemą dažniausiai pakeičia lengvesni šablonų varikliai ir JSON duomenų formatas)"
 
 msgid "mime_runtime"
-msgstr "Vykdomasis failas (operacinės sistemos vykdomasis formatas, pvz., EXE, ELF, Mach-O, sudėtyje yra mašininio kodo ir įkėlimo informacijos)"
+msgstr "Vykdomasis failas (operacinės sistemos gimtieji vykdomieji formatai, tokie kaip EXE, ELF, Mach-O, kuriuose yra kompiliuotas žemo lygio mašininis kodas, įėjimo taškas ir sistemos įkėlimo informacija)"
 
 msgid "mime_library"
-msgstr "Bibliotekos failas (DLL, SO, dylib ir kt., dinamiškai susietos bibliotekos, bendras kodas, kurį programa įkelia vykdymo metu)"
+msgstr "Bibliotekos failas (dinaminės arba statinės susiejimo bibliotekos, tokios kaip DLL, SO, dylib, kuriose yra bendrai naudojamų simbolių ir perkėlimo kodo, skirto iškviesti kitų programų ir įkelti vykdymo metu)"
 
 msgid "mime_swf"
-msgstr "Flash animacija (Macromedia sukūrė 1996 m., vėliau atiteko Adobe. Interaktyvus žiniatinklio animacijos standartas, kadaise dominavęs interneto animacijose ir žaidimuose. Trūkumai: reikalauja papildinio, nepalaikoma mobiliuosiuose įrenginiuose, didelė saugumo rizika. Adobe paskelbė apie jo panaikinimą 2017 m., visiškai nutraukė palaikymą 2020 m., pakeistas HTML5/CSS3/JS)"
+msgstr "Flash animacija (1996 m. sukurta Macromedia, 2005 m. įsigyta Adobe. Interaktyvios žiniatinklio animacijos standartas, kadaise dominavęs interneto animacijoje ir žaidimuose. Trūkumai: priklausomybė nuo papildinių, nepalaikymas mobiliuosiuose įrenginiuose, didelė saugumo rizika. 2017 m. Adobe paskelbė apie atsisakymą, 2020 m. visiškai nutraukė palaikymą, pakeistas HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD dokumento tipo apibrėžimas (XML specifikacija, apibrėžianti XML dokumento struktūrą, naudojama XML teisėtumui patvirtinti)"
+msgstr "DTD dokumento tipo apibrėžimas (išleistas 1998 m. kartu su XML 1.0, skirtas apibrėžti XML/HTML dokumento struktūrą ir patvirtinti teisėtumą. Šiuolaikinėje kūryboje jį palaipsniui keičia lankstesni sprendimai, tokie kaip XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "CSV duomenų formatas (kableliais atskirtos reikšmės, įprastas lentelių duomenų formatas, standartas importui/eksportui į Excel ir duomenų bazes)"
+msgstr "CSV duomenų formatas (kableliais atskirtos reikšmės, 1972 m. didžiųjų kompiuterių eros (IBM Fortran kompiliatorius) universalus grynojo teksto lentelių formatas. 2005 m. oficialiai standartizuotas RFC 4180, kaip nuostolingas kryžminės platformos ir kryžminės kalbos duomenų mainų standartas. Plačiai naudojamas efektyviam importui ir eksportui į Excel, reliacines duomenų bazes, duomenų analizę (Pandas))"
+
+msgid "mime_cur"
+msgstr "Pelės žymeklio failas (.cur formatas, skirtas tinkinti pelės stilių, pvz., piršto žymeklis tinklalapiuose, smėlio laikrodžio piktograma laukimo metu sistemoje. Jis yra „giminaitis“ su įprasta .ico piktograma, tačiau turi papildomą „karštojo taško“ nustatymą – tai vieta, kurioje pelė faktiškai spusteli. Istorija: Pasirodė su Windows 3.1 (1992 m.), buvo pagrindinis grafinės sąsajos perėjimo nuo komandinės eilutės prie pelės valdymo eros komponentas)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java programų paleidimo įrenginys, Java darbalaukio programų platinimo technologija iš 2000-ųjų, dabar pasenusi)"
+msgstr "Java Web Start (2000-ųjų Java darbalaukio programų platinimo technologija, leidžianti paleisti nuotolines Java programas per .jnlp failą. Dabar beveik išnykusi dėl saugumo problemų ir šiuolaikinių platinimo būdų paplitimo)"
 
 msgid "mime_lit"
-msgstr "„Microsoft Reader“ elektroninė knyga („Microsoft“ išleido 2000 m., LIT formatas, pasenęs)"
+msgstr "Microsoft Reader elektroninė knyga (2000 m. Microsoft išleista, LIT formatas. Pasenęs, dabar galima konvertuoti į EPUB arba PDF naudojant įrankius, tokius kaip Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vektorinė grafika (W3C standartas 1999 m., kadangi „Microsoft“ ilgai reklamavo savo VML formatą, IE naršyklė jį palaikė tik 2011 m., o tai atitolino jo pritaikymą. Po 2015 m., kai IE išnyko ir išpopuliarėjo didelės raiškos ekranai, jis tapo pageidaujamu formatu piktogramoms ir logotipams)"
+msgstr "SVG vektorinė grafika (1999 m. W3C standartas, dvimatis vektorinio vaizdo formatas, pagrįstas XML architektūra. Pasižymi galimybe masteliuoti neprarandant kokybės ir teksto srauto perdavimo pranašumais. Visos šiuolaikinės naršyklės palaiko jį gimtai. Plačiai naudojamas aukštos raiškos žiniatinklio piktogramoms, logotipams ir vektorinei animacijai atvaizduoti. Tai pagrindinis šiuolaikinės žiniatinklio grafikos standartas)"
 
 msgid "mime_ai"
-msgstr "„Adobe Illustrator“ vektorinė grafika (išleista 1987 m., pramonės standartinis vektorinės grafikos formatas, pageidaujamas spausdinimo dizainui, logotipams, piktogramoms)"
+msgstr "AI vektorinė grafika (1987 m. Adobe sukurtas patentuotas vektorinės grafikos formatas. Kaip pagrindinis maketavimo, spaudos dizaino ir prekės ženklo identiteto kūrimo pramonės standartas, palaiko daugiasluoksnius ir aukšto lygio maketavimo vektorinius duomenis. Tai pageidaujamas profesionalaus vizualinio meno nešiklis)"
 
 msgid "mime_phshop"
-msgstr "„Photoshop“ vaizdas („Adobe“ išleido 1990 m., „Photoshop“ šaltinio failo formatas PSD, vaizdo apdorojimo pramonės standartas)"
+msgstr "PSD sluoksniuotas vaizdas (1990 m. Adobe kartu su Photoshop išleistas patentuotas rastrinio vaizdo šaltinio failo formatas. Palaiko daugiasluoksnį sluoksniavimą, kanalus, kaukes ir nenuostolingus redagavimo duomenis. Jis nustatytas kaip pasaulinis vaizdų apdorojimo ir skaitmeninės tapybos pramonės standartas)"
 
 msgid "mime_ttf"
-msgstr "„TrueType“ šriftas („Apple“ ir „Microsoft“ kartu sukūrė 1989 m., vektorinio šrifto formatas, ekrano rodymas ir spausdinimas atitinka, numatytasis šiuolaikinių operacinių sistemų šrifto formatas)"
+msgstr "TrueType šriftas (1989 m. Apple ir Microsoft kartu sukurtas skaitmeninio kontūro šrifto formatas. Pagrįstas kvadratinėmis Bézier kreivėmis, užtikrina absoliutų pikselių tikslumą tarp ekrano rodymo ir spausdinimo. Tai gimtasis numatytasis šrifto formatas šiuolaikinėse darbalaukio operacinėse sistemose)"
 
 msgid "mime_fon"
-msgstr "WOFF2 žiniatinklio šriftas (W3C rekomendacija 2014 m., naudoja Brotli glaudinimo algoritmą, palyginti su senesniu WOFF, tūris sumažėja apie 30%, palyginti su TTF/OTF, sumažėja daugiau nei 50%, šiuo metu jį palaiko visos šiuolaikinės naršyklės, todėl jis yra pageidaujamas šiuolaikinių žiniatinklio šriftų formatas, palaikomas daugiau nei 98% naršyklių)"
+msgstr "FON bitmap šriftas (1980-ųjų Microsoft Windows ankstyvojo sisteminio taškinio šrifto formatas. Nepalaiko nuostolingo mastelio keitimo pagal proporcijas. Paprastai naudojamas su palikimo sistemomis arba ankstyvuose įterptiniuose įrenginiuose ribotam pikselių teksto atvaizdavimui)"
 
 msgid "mime_pdf"
-msgstr "PDF dokumentas („Adobe“ sukūrė 1993 m., tapo ISO standartu 2008 m. Nuo platformos nepriklausomas dokumento formatas, išlaiko formavimo nuoseklumą, yra pasaulinis elektroninių dokumentų platinimo standartas)"
+msgstr "PDF elektroninis dokumentas (1993 m. Adobe sukurtas ir 2008 m. tapęs ISO 32000 tarptautiniu standartu, skirtas kryžminės platformos fiksuoto maketo dokumentams. Pasižymi absoliučiu maketo ir formato tikslumu. Tai universalus standartas, skirtas visuotiniam elektroninių oficialių dokumentų platinimui ir skaitmeninei leidybai)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dinaminis puslapis („Microsoft“ išleido 2002 m., dinaminių tinklalapių technologija, skirta „Windows“ platformai, „.NET Framework“ dalis)"
+msgstr "ASP.NET dinaminis puslapis (2002 m. Microsoft kartu su .NET architektūra išleista serverio pusės dinaminio žiniatinklio technologija. Veikia IIS atvaizdavimo variklyje, skirta kurti įmonių lygio Windows serverio pusės dinamines žiniatinklio programas ir paskirstytąsias sistemas)"
 
 msgid "mime_mdb"
-msgstr "Access duomenų bazė („Microsoft Access“ duomenų bazės failas, išleistas 1992 m., „Windows“ darbalaukio duomenų bazės sprendimas)"
+msgstr "MDB reliacinė duomenų bazė (1992 m. Microsoft kartu su Access išleistas darbalaukio lygio reliacinės duomenų bazės saugyklos formatas. Su įmontuotu Jet duomenų bazės varikliu, ankstyvoje asmeninių kompiuterių ir mažų bei vidutinių įmonių informatikos valdymo informacinėje sistemoje buvo naudojamas kaip reliacinės duomenų bazės sprendimas)"
 
 msgid "mime_md"
-msgstr "„Markdown“ dokumentas (John Gruber sukūrė 2004 m., sintaksės dizainą paveikė reStructuredText ir Setext. Pagrindinė dizaino filosofija yra „skaitomumas reiškia galimybę atvaizduoti“, originalus diegimas Markdown.pl naudoja Perl reguliariąsias išraiškas. Išvestinės specifikacijos apima GFM (2013), CommonMark (2017), Pandoc Markdown ir kt. Varo ekosistemas, tokias kaip GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, tapdamas faktišku standartiniu statinių svetainių generatorių ir kūrėjų dokumentacijos formatu)"
+msgstr "Markdown dokumentas (2004 m. John Gruber sukurtas lengvosios žymėjimo kalba. Pagrindinė dizaino filosofija – „skaitoma reiškia atvaizduojama“, davusi pradžią tokioms šiuolaikinėms išvestinėms specifikacijoms kaip GFM ir CommonMark. Plačiai naudojamas kaip pagrindinis mainų standartas techniniams dokumentams, žinių bazėms (Obsidian) ir šiuolaikiniams statinių svetainių generatoriams)"
 
 msgid "mime_crystal"
-msgstr "„Crystal Reports“ ataskaitos formatas (SAP verslo analizė, standartinis įmonių ataskaitų formatas)"
+msgstr "Crystal Reports (SAP verslo analitikos (BI) platformos profesionalus įmonių lygio ataskaitų failo formatas. Pasižymi daugelio duomenų šaltinių pagrindiniu ryšiu ir sudėtingomis dinaminio diagramų atvaizdavimo galimybėmis. Plačiai naudojamas profesionalioms ataskaitoms generuoti tarptautinių įmonių finansų ir duomenų analizės sistemose)"
 
 msgid "mime_libreoffice"
-msgstr "„LibreOffice“ dokumentas („The Document Foundation“ sukūrė 2010 m., šaka nuo „OpenOffice“, ODF standarto diegimas, pagrindinis atvirojo kodo biuro paketas)"
+msgstr "LibreOffice dokumentas (2010 m. The Document Foundation, remdamasi OpenOffice atšaka, sukurtas atvirojo kodo biuro programų rinkinio patentuotas formatas. Giliai įgyvendina W3C ODF (atviro dokumento formato) tarptautinį standartą. Tai šiuolaikinės atvirojo kodo ekosistemos biuro darbo pagrindas)"
 
 msgid "mime_encrypt"
-msgstr "Užšifruotas failas (norint peržiūrėti, reikia iššifruoti, įprasti plėtiniai: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT šifruotas failas (pirminiai dvejetainiai arba tekstiniai duomenys, apdoroti specifiniu simetriniu arba asimetriniu šifravimo algoritmu. Apima tokius pagrindinius išvestinius formatus kaip .enc, .pgp, .gpg. Tinklo sluoksnyje naudojamas neviešų duomenų konfidencialumui ir vientisumo patvirtinimui užtikrinti)"
 
 msgid "mime_gpx"
-msgstr "GPS maršruto duomenys (GPS mainų formatas, registruoja geografinę informaciją, įprastas sportinių laikrodžių ir navigacinių prietaisų formatas)"
+msgstr "GPX palydovinės trajektorijos duomenys (pasaulinės padėties nustatymo sistemos mainų formatas, pagrįstas XML architektūra. Specialiai skirtas apibūdinti geografines koordinates, maršruto taškus, trasas ir istorines trajektorijas. Tai atviras duomenų standartas, bendras šiuolaikiniams mobiliems sporto įrenginiams, automobilių navigacijai ir geografinėms informacinėms sistemoms (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Disko vaizdas (disko / CD-ROM vaizdo failai, pvz., DMG, ISO, IMG, naudojami programinei įrangai platinti arba laikmenų atsarginėms kopijoms kurti)"
+msgstr "Disk Image disko atvaizdis (apima fizinių diskų arba optinių laikmenų sektorių lygio atvaizdų failus, tokius kaip ISO, DMG, IMG. Naudojamas žemo lygio sistemos diegimui, didelės talpos programinės įrangos saugiam platinimui ir fizinio lygio pilnam laikmenų duomenų atsarginiam kopijavimui)"
 
 msgid "mime_vm"
-msgstr "Virtualiosios mašinos vaizdas (virtualaus disko failai, pvz., VMDK, VDI, VHDX, OVA, formatai, skirti virtualizavimo platformoms, tokioms kaip VMware, VirtualBox, Hyper-V)"
+msgstr "VM virtualios mašinos atvaizdis (apima virtualių fizinių diskų atvaizdus, tokius kaip VMDK, VDI, VHDX, OVA. Kaip VMware, VirtualBox ir Hyper-V platformų pagrindas, naudojamas žemo lygio sistemos lygio aparatinės įrangos emuliacijai, egzempliorių momentinėms kopijoms ir debesijos infrastruktūros platinimui)"
 
 msgid "mime_torrent"
-msgstr "„BitTorrent“ torrent failas (Bram Cohen išrado 2001 m., indekso failas, skirtas P2P atsisiuntimams, sudėtyje yra failo metaduomenų ir stebėjimo įrenginio informacijos)"
+msgstr "BitTorrent sėklos failas (2001 m. Bram Cohen sukurtas P2P taškas į tašką paskirstytojo atsisiuntimo indeksas. Pagrįstas Bencode kodavimu, saugo pirminio failo pagrindinius tikrinimo metaduomenis ir Tracker serverio adresavimo informaciją. Tai pagrindinis decentralizuoto tinklo srautų platinimo nešiklis)"
 
 msgid "mime_gis"
-msgstr "GIS geografinės informacinės sistemos duomenys (erdviniai duomenys, pvz., Shapefile, GeoJSON, naudojami žemėlapiams ir erdvinei analizei)"
+msgstr "GIS geografinės erdvės duomenys (geografinės informacijos sistemos duomenų standartas, kurio pagrindą sudaro Shapefile ir GeoJSON. Apima daugiamates geometrines koordinates, sluoksnių topologiją ir atributų duomenis. Plačiai naudojamas aukštos kokybės skaitmeninių žemėlapių atvaizdavimui, palydoviniams nuotoliniams tyrimams ir erdvinei geometrinei analizei)"
 
 msgid "mime_ebook"
-msgstr "Elektroninė knyga (elektroninių knygų formatai, pvz., EPUB, MOBI, AZW. EPUB yra tarptautinis standartas, MOBI / AZW yra „Amazon Kindle“ formatai)"
+msgstr "EBOOK elektroninė knyga (skaitmeninio leidybos formatas, kurio pagrindą sudaro atviras W3C EPUB tarptautinis standartas ir patentuota Amazon Kindle MOBI/AZW architektūra. Palaiko adaptyvų srauto maketą, metaduomenų įpakavimą ir DRM skaitmeninės teisių apsaugą. Tai universalus nešiklis, skirtas skaitmeniniam skaitymui mobiliuosiuose įrenginiuose)"
 
 msgid "mime_avif"
-msgstr "AVIF vaizdas („Alliance for Open Media“ išleido 2019 m., pagrįstas AV1 kodavimu, glaudinimo santykis 50% geresnis nei WebP, naujos kartos žiniatinklio vaizdo standartas)"
+msgstr "AVIF efektyvus vaizdas (2019 m. Atvirosios medijos aljanso (AOMedia) pristatytas kitos kartos itin aukštos raiškos vaizdo standartas. Pagrįstas AV1 vaizdo kodavimo raktinių kadrų technologija, jo glaudinimo efektyvumas yra 50% didesnis nei WebP, be to, jis gimtai palaiko didelį dinaminį diapazoną (HDR). Tai pagrindinis šiuolaikinio žiniatinklio vaizdų perdavimo standartas)"
 
 msgid "mime_markdown"
-msgstr "„Markdown“ dokumentas (John Gruber sukūrė 2004 m., lengva žymėjimo kalba, įprastas formatas, skirtas „GitHub“ README, techninei dokumentacijai, forumų pranešimams)"
+msgstr "Markdown lengvasis dokumentas (2004 m. John Gruber sukurtos tekstinio dokumento žymėjimo kalba. Naudoja grynojo teksto deklaratyvųjį dizainą, jos sintaksė įkvėpta reStructuredText. Plačiai naudojama GitHub projektuose, inžinerinėje techninėje dokumentacijoje ir šiuolaikinėje statinio turinio valdymo ekosistemoje)"
 
 msgid "mime_yaml"
-msgstr "YAML konfigūracija (Clark Evans sukūrė 2001 m., žmogaus skaitomas duomenų serializavimo formatas, standartas, skirtas „Kubernetes“, „Ansible“, „Docker Compose“ konfigūracijos failams)"
+msgstr "YAML serializavimo konfigūracija (2001 m. Clark Evans ir kt. sukurta žmogui skaitomo duomenų serializavimo formatas. Pagrįstas hierarchiniu įtraukimu ir rakto-reikšmės mapavimu. Dabar jis nustatytas kaip debesijos natyvios infrastruktūros konfigūracijos standartas, skirtas Kubernetes konteinerių orkestravimui, Ansible automatizavimui ir Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML konfigūracija (Tom Preston-Werner sukūrė 2013 m., „Tom's Obvious Minimal Language“, konfigūracijos failo formatas, skirtas šiuolaikiniams įrankiams, tokiems kaip „Rust“ / „Cargo“, „Python“ / „pip“, „Go“)"
+msgstr "TOML semantinė konfigūracija (2013 m. Tom Preston-Werner sukurta minimalistinė, kuo mažesnė kalba. Pasižymi pagrindinio dizaino pranašumais, tokiais kaip griežtas tipavimas, aiškus mapavimas ir semantinis aiškumas. Dabar plačiai naudojama kaip standartizuotas konfigūracijos failas šiuolaikiniams įrankių tinklams, tokiems kaip Rust (Cargo), Python (pyproject.toml) ir Go)"
 
 msgid "mime_vue"
-msgstr "Vue komponento failas (pradėtas naudoti 2014 m. Evan You, progresyvi JavaScript karkasas. Naudodamas vieno failo komponentus (SFC), jis puikiai sujungia HTML, CSS ir JS, žymiai padidindamas kūrimo efektyvumą. Tai viena populiariausių frontend karkasų pasaulyje. Taip pat kaip šiuolaikinių statinių svetainių generatorių, tokių kaip VitePress, šerdis, jis plačiai naudojamas interaktyviai techninei dokumentacijai ir tinklaraščiams valdyti.)"
+msgstr "Vue vieno failo komponentas (2014 m. Evan You pristatytas progresyvaus žiniatinklio karkaso patentuotas SFC formatas. Viename faile įgyvendina atsakomybių atskyrimą HTML/CSS/JS ir reaktyvų būsenos susiejimą. Giliai varo šiuolaikines interaktyvias priekinio galo programas ir didelio masto statinių svetainių variklius)"
 
 msgid "mime_wasm"
-msgstr "„WebAssembly“ modulis (W3C standartas nuo 2017 m., didelio našumo vykdymo formatas naršyklėje, C / C ++ / Rust / R gali būti kompiliuojami kaip tikslas, našumas artimas gimtajam)"
+msgstr "WebAssembly dvejetainis modulis (2017 m. W3C nustatytas aukštos kokybės žemo lygio baitų kodo standartas žiniatinkliui. Leidžia tokioms griežto tipo kalboms kaip C/C++/Rust būti kompiliuojamoms į naršyklės smėlio dėžės tikslą, užtikrinant beveik gimtojo aparatinės įrangos vykdymo efektyvumą. Tai pagrindinis šiuolaikinio žiniatinklio krašto skaičiavimo akmuo)"
 
 msgid "mime_jsx"
-msgstr "„React JSX“ komponentas („Facebook“ paskelbė „JavaScript XML“ 2013 m., „React“ sistemos komponento sintaksė, naujoviška paradigma, įvedanti HTML į JavaScript)"
+msgstr "React JSX komponentas (2013 m. Facebook kartu su React karkasu pristatytas JavaScript XML sintaksės plėtinys. Palaiko deklaratyvų DOM virtualiosios struktūros kūrimą JavaScript, įgyvendinant priekinio galo kūrimo paradigmą „UI kaip būsenos funkcija“, pagrįstą komponentais)"
 
 msgid "mime_tsx"
-msgstr "„TypeScript TSX“ komponentas („Microsoft“ sukūrė 2012 m., „TypeScript“ + JSX, standartinis rašymo būdas, skirtas tipo saugiam „React“ kūrimui)"
+msgstr "TypeScript TSX komponentas (2012 m. Microsoft sukurtos griežto tipo TypeScript kalbos sintaksės ir JSX srauto derinys. Įpurškia statinio kompiliavimo metu vykdomą tipų tikrinimą ir sąsajos apribojimus kuriant React komponentus. Tai kodo standartas, užtikrinantis saugų šiuolaikinių didelių priekinio galo sistemų kūrimą)"
 
 msgid "mime_heif"
-msgstr "HEIF vaizdas (MPEG standartas 2015 m., efektyvus vaizdo failo formatas, plačiai naudojamas „Apple“ ekosistemoje)"
+msgstr "HEIF efektyvus vaizdas (2015 m. MPEG organizacijos nustatytas efektyvaus vaizdo failo formatas. Pagrįstas HEVC (H.265) vaizdo kodavimo algoritmu, palaiko kelių kadrų vaizdus, gylio žemėlapius ir metaduomenis labai mažoje apimtyje. Tai patentuotas saugojimo standartas, skirtas šiuolaikinėms mobiliosioms operacinėms sistemoms ir išmaniesiems galiniams įrenginiams)"
 
 msgid "mime_heic"
-msgstr "HEIC vaizdas („Apple“ HEIF diegimas, numatytasis nuotraukų formatas „iPhone“, iš pradžių palaikomas iOS / macOS)"
+msgstr "HEIC efektyvus vaizdas (Apple patentuotas bitmap formatas, įgyvendintas pagal HEIF tarptautinį standartą. Kaip numatytasis šiuolaikinių iPhone nuotraukų saugojimo standartas, gauna iOS/macOS aparatinės įrangos lygio kodavimo/dekodavimo ir gimtosios operacinės sistemos palaikymą. Užtikrindamas aukštą vaizdo kokybę, žymiai sumažina pagrindinės saugyklos vietą)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D modelis (GL perdavimo formatas, „3D pasaulio JPEG“, „Khronos Group“ išleido 2015 m., standartinis „Web 3D“ formatas)"
+msgstr "glTF 3D turto modelis (2015 m. Khronos Group išleistas GL perdavimo formato standartas. Naudoja JSON architektūrą trimatei scenai aprašyti, vadinamas „3D srities JPEG“. Tai lengvas pramonės standartas, skirtas šiuolaikiniam WebGL/WebGPU ir virtualios realybės atvaizdavimui)"
 
 msgid "mime_glb"
-msgstr "GLB dvejetainis 3D modelis (GLTF dvejetainė versija, viename faile yra visi ištekliai, naudojamas 3D scenų platinimui)"
+msgstr "GLB dvejetainis 3D modelis (visiškai dvejetainis, nenuostolingas glTF turto modelio įpakavimo variantas. Sujungia scenos struktūrą, pagrindinius tinklelio viršūnių duomenis, medžiagas ir tekstūrų žemėlapius į vieną failą. Specialiai skirtas efektyviam perdavimui ir srautiniam platinimui kryžminės platformos žiniatinklio 3D turtui)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY terminų žodynėlis (terminų apibrėžčių failas, skirtas terminų valdymui dokumentavimo sistemose)"
+msgstr "GLOSSARY duomenų žodynėlis (specialiai dokumentų valdymo sistemoms ir struktūrizuotam tekstynui skirtas terminų rinkinio apibrėžimo failas. Su įmontuotais standartiniais terminų apibrėžimais, daugiakalbe atitiktimi ir metaduomenų mapavimu. Naudojamas automatizuotos teksto analizės ir turinio publikavimo sistemų konceptualiam nuoseklumui palaikyti)"
 
 msgid "mime_cbz"
-msgstr "CBZ komiksų knyga (ZIP suspausti komiksų vaizdai, įprastas komiksų kolekcionavimo formatas)"
+msgstr "CBZ komiksų knyga (patentuotas komiksų vaizdų archyvavimo formatas, pagrįstas ZIP glaudinimo struktūra. Vidinėje struktūroje įpakuoja ištisinę statinių bitmap vaizdų seką. Tai universalus lengvas konteinerio standartas, skirtas skaitmeninių komiksų leidybai ir kryžminės platformos vietiniam kolekcionavimui)"
 
 msgid "mime_cbr"
-msgstr "CBR komiksų knyga (RAR suspausti komiksų vaizdai, įprastas komiksų kolekcionavimo formatas)"
+msgstr "CBR komiksų knyga (patentuotas komiksų vaizdų archyvavimo formatas, pagrįstas RAR glaudinimo struktūra. Statinių bitmap vaizdų sekai įpakavimui naudoja RAR algoritmą, pasižymi gana dideliu glaudinimo laipsniu. Turi platų suderinamumo palaikymą skaitmeninių komiksų platinimo srityje)"
 
 msgid "mime_fb2"
-msgstr "FB2 elektroninė knyga („FictionBook 2.0“, rusiškas elektroninių knygų formatas, XML struktūra, plačiai palaikoma atvirojo kodo skaitytuvų)"
+msgstr "FB2 elektroninė knyga (2000-ųjų pradžios FictionBook 2.0 elektroninės knygos standartas. Naudoja gryną XML struktūrą knygos atributams ir teksto hierarchijai aprašyti. Turi platų palaikymą atvirojo kodo elektroninių knygų ekosistemoje ir palikimo skaitmeninės leidybos skaitytuvuose)"
 
 msgid "mime_kepub"
-msgstr "KEPUB elektroninė knyga (specialus EPUB formatas, skirtas „Kobo“, optimizuotas formatas, skirtas „Kobo“ elektroninių knygų skaitytuvui)"
+msgstr "KEPUB elektroninė knyga (Kobo patentuotas patobulintas elektroninės knygos formatas, sukurtas remiantis EPUB standartu. Atliktas pagrindinis atvaizdavimo optimizavimas, skirtas Kobo aparatinės įrangos lygio elektroninių knygų skaitytuvams, užtikrinantis efektyvesnį puslapių išdėstymą ir skaitymo statistikos sąveiką)"
 
 msgid "mime_m4b"
-msgstr "M4B garso knyga (MPEG-4 garso formatas, skirtas knygoms, palaiko žymes, „iTunes“ garso knygų formatas)"
+msgstr "M4B garsinė knyga (garsinės knygos formatas, pagrįstas MPEG-4 Part 14 (MP4) konteinerio architektūra. Naudoja AAC kodavimą, gimtai palaiko pagrindinį žymių nustatymą, sustojusios vietos tęsimą ir skyrių įterpimą. Kadaise buvo standartinis Apple iTunes ekosistemos formatas)"
 
 msgid "mime_kfx"
-msgstr "„Kindle KFX“ formatas („Amazon“ išleido 2015 m., specialus elektroninių knygų formatas, skirtas „Kindle“, palaiko išplėstinį maketą ir greitą puslapių vartymą)"
+msgstr "Kindle KFX formatas (2015 m. Amazon kartu su Kindle išleistas patentuotas patobulintas skaitmeninės leidybos formatas. Palaiko aukšto lygio šriftų jungimą, dinaminį aukštos kokybės šriftų atvaizdavimą ir branduolio lygio srauto puslapių įkėlimą (Page Flip). Tai pagrindinis šiuolaikinės Kindle platformos standartas)"
 
 msgid "mime_chm"
-msgstr "CHM pagalbos failas („Microsoft“ išleido 1997 m., kompiliuotas HTML pagalbos formatas, standartas, skirtas „Windows“ programinės įrangos pagalbos dokumentacijai)"
+msgstr "CHM kompiliuota pagalbos byla (1997 m. Microsoft išleista kompiliuota HTML pagalbos informacinė sistema. Sujungia hiperteksto duomenis ir pagrindinį indeksą į vieną dvejetainį konteinerį. Ilgą laiką buvo standartinis vietinės neprisijungusios pagalbos dokumentacijos formatas, skirtas Windows programinei įrangai)"
 
 msgid "mime_mht"
-msgstr "MHT žiniatinklio archyvas („Microsoft“ išleido 1999 m., vieno failo žiniatinklio formatas, IE naršyklės formatas, skirtas saugoti tinklalapius)"
+msgstr "MHT tinklalapio archyvas (1999 m. Microsoft išleistas MIME suvestinis hiperteksto formatas. Remiantis RFC 2557 standartu, HTML šaltinio kodą, CSS, JS ir įterptus vaizdus įpakuoja į vieną tekstinį failą. Naudojamas neprisijungusiam tinklalapių išsaugojimui senesnėse naršyklėse)"
 
 msgid "mime_wml"
-msgstr "WML belaidė žymėjimo kalba (WAP standartas 1999 m., naudojamas ankstyvųjų funkcinių telefonų tinklalapiams, pasenęs)"
+msgstr "WML belaidė žymėjimo kalba (1999 m. WAP forumo nustatytas mobiliesiems skirtas žymėjimo standartas. Pagrįstas XML specifikacija, specialiai skirtas ankstyviesiems siaurajuosčiams belaidžiams koriniams tinklams ir mažos galios funkciniams telefonams. Šiuolaikinėje žiniatinklio ekosistemoje priskiriamas prie pasenusių, nebenaudojamų technologijų)"
 
 msgid "mime_xhtml"
-msgstr "XHTML tinklalapis (W3C standartas 2000 m., XML HTML versija, griežtesnė sintaksė. W3C nustojo jį prižiūrėti 2009 m., sutelkdama dėmesį į HTML5)"
+msgstr "XHTML hiperteksto tinklalapis (2000 m. W3C standartas, griežtos hiperteksto žymėjimo kalbos, pagrįstos XML architektūra, įpakavimas. 2009 m. W3C nutraukė jo techninę raidą ir visiškai perėjo prie HTML5 specifikacijos. Dabar daugiausia naudojamas semantiniam tinklalapių atvaizdavimui palikimo sistemose)"
 
 msgid "mime_xml"
-msgstr "XML dokumentas (W3C standartas 1998 m., išplečiama žymėjimo kalba, pagrindinis formatas, skirtas žiniatinklio paslaugoms, konfigūracijos failams, duomenų mainams)"
+msgstr "XML struktūrizuotas dokumentas (1998 m. W3C standarto plečiama žymėjimo kalba. Pasižymi savaime aprašančia žymų architektūra. Tai pagrindinis formatas, skirtas žiniatinklio paslaugoms (SOAP/REST), sisteminio lygio konfigūracijos failams (XSD) ir kryžminės platformos duomenų mainams)"
 
 msgid "mime_sgml"
-msgstr "SGML dokumentas (ISO standartas 1986 m., HTML pirmtakas, standartinė bendroji žymėjimo kalba, tiek XML, tiek HTML yra kilę iš SGML)"
+msgstr "SGML universali žymėjimo kalba (1986 m. ISO 8879 tarptautinio standarto universali žymėjimo kalba. Kaip elektroninių dokumentų struktūrizuoto aprašymo pramonės pradininkė, XML ir ankstyvosios HTML specifikacijos yra kilusios iš šios standartinės metakalbos)"
 
 msgid "mime_apng"
-msgstr "APNG animacija („Mozilla“ sukūrė 2004 m., PNG animacijos plėtinys, modernus GIF pakaitalas, palaiko tikras spalvas ir skaidrumą)"
+msgstr "APNG dinaminė grafika (2004 m. Mozilla sukurtas Portable Network Graphics (PNG) dinaminis plėtinys. Palaiko 24 bitų tikras spalvas ir 8 bitų alfa kanalo skaidrumo savybes. Tai aukštos kokybės GIF formato alternatyva šiuolaikinio žiniatinklio scenarijuose)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmap (Windows bitmap formatas, vietinis nuo Windows 1.0. Nesuglaudintas, didelio dydžio failas, tačiau dėl paprastos struktūros ir papildomų kodekų nereikalingumo, jis vis dar naudojamas Windows 11 iškirpimo įrankyje, Piešimo programoje, EXE/MSI diegimo paketų piktogramų ištekliuose, žymeklių failuose ir kai kuriose senesnėse tvarkyklėse. Esant tokiai pačiai vaizdo kokybei, failo dydis yra apie 3-10 kartų didesnis nei PNG. Daugeliu atvejų jį pakeitė PNG/JPEG, tačiau Windows ekosistema vis dar išlaiko platų suderinamumą)"
+msgstr "BMP gimtoji bitmap (nuo Windows 1.0 eros nustatytas Microsoft platformos nuo įrenginio nepriklausantis bitmap formatas. Naudoja nenuostolingą, neglaudintą saugojimą. Nors jo dydis paprastai yra 3–10 kartų didesnis nei PNG, dėl to, kad nereikia kodavimo/dekodavimo išlaidų, jis vis dar plačiai įterptas į pagrindinius Windows 11 komponentus, EXE/MSI išteklių skyrius ir palikimo tvarkyklių grafinius buferius)"
 
 msgid "mime_cdr"
-msgstr "CDR vektorinė grafika (specialus „CorelDRAW“ formatas, Kanados įmonė „Corel“, vektorinės grafikos dizaino programinė įranga)"
+msgstr "CDR vektorinė grafika (Kanados įmonės Corel patentuotas profesionalaus vektorinio dizaino CorelDRAW šaltinio failo formatas. Palaiko daugiasluoksnį spalvų valdymą, sudėtingus matematinius kontūrų mazgus ir spaudos lygio maketavimo duomenis. Tai specializuotas formatas, skirtas profesinei plokščiosios spaudos ir reklamos dizaino sritims)"
 
 msgid "mime_gif"
-msgstr "GIF vaizdas („CompuServe“ sukūrė 1987 m., 256 spalvų animuotas vaizdo formatas. Trūkumai: mažai spalvų, grubi vaizdo kokybė, nepalaiko skaidrumo, didelis failas, mažas kadrų dažnis. Pakeistas šiuolaikiniais animuotais formatais, tokiais kaip APNG, WebP)"
+msgstr "GIF indeksuotų spalvų vaizdas (1987 m. CompuServe sukurtas 8 bitų indeksuotų spalvų bitmap formatas. Pagrįstas LZW algoritmu, ribojamas 256 spalvų lygių ir vienos spalvos skaidrumo. Esant dideliam kadrų dažniui, tampa dėl dydžio. Dabar palaipsniui keičiamas šiuolaikiniais efektyviais dinaminės grafikos standartais, tokiais kaip APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "ICO piktograma („Windows“ piktogramų formatas, palaiko kelias raiškas, standartinis svetainių „favicon“ formatas)"
+msgstr "ICO sisteminė piktograma (Windows gimtosios piktogramų išteklių įpakavimo formatas. Palaiko mišrų įvairių pikselių raiškų ir spalvų gylių vaizdo variantų įterpimą į vieną konteinerį. Taip pat yra universalus platinimo standartas, skirtas pagrindinei šiuolaikinių žiniatinklio naršyklių svetainių identifikacijai (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "JPEG vaizdas (ISO standartas 1992 m., nuostolingas glaudinimo formatas, skirtas nuotraukoms, faktinis interneto nuotraukų standartas)"
+msgstr "JPEG glaudintas vaizdas (1992 m. ISO 10918 tarptautinio standarto nuostolingas vaizdo formatas. Pagrįstas diskrečiuoju kosinuso transformacijos (DCT) algoritmu, pasiekdamas aukštą glaudinimo laipsnį, tuo pačiu išlaiko puikią tikrovišką vaizdo kokybę. Tai absoliutus faktinis pasaulinio interneto statinių nuotraukų standartas)"
 
 msgid "mime_jpg"
-msgstr "JPEG vaizdas (ISO standartas 1992 m., nuostolingas glaudinimo formatas, skirtas nuotraukoms, faktinis interneto nuotraukų standartas)"
+msgstr "JPEG glaudintas vaizdas (1992 m. ISO 10918 tarptautinio standarto nuostolingas vaizdo formatas. Pagrįstas diskrečiuoju kosinuso transformacijos (DCT) algoritmu, pasiekdamas aukštą glaudinimo laipsnį, tuo pačiu išlaiko puikią tikrovišką vaizdo kokybę. Tai absoliutus faktinis pasaulinio interneto statinių nuotraukų standartas)"
 
 msgid "mime_png"
-msgstr "PNG vaizdas (W3C rekomendacija 1996 m., palaiko tikras spalvas ir skaidrumą, statinis GIF pakaitalas, standartas, skirtas nuostolinghams vaizdams internete)"
+msgstr "PNG nenuostolingas vaizdas (1996 m. W3C rekomenduojamas nešiojamos tinklo grafikos standartas. Naudoja nenuostolingą glaudinimo algoritmą, gimtai palaiko 24 bitų tikras spalvas ir 8 bitų alfa kanalo skaidrumą. Kaip aukštos kokybės klasikinio statinio GIF alternatyva, tai absoliutus faktinis interneto nenuostolingų pikselių vaizdų standartas)"
 
 msgid "mime_ps"
-msgstr "„PostScript“ puslapio aprašymo failas („Adobe“ išleido 1985 m., puslapio aprašymo kalba, PDF pirmtakas, naudojamas spausdinimui ir leidybai)"
+msgstr "PostScript puslapio aprašymo failas (1985 m. Adobe pristatyta krūvinė puslapio aprašymo kalba. Kaip PDF formato technologinis pirmtakas, jis įgyvendina nuo aparatinės įrangos nepriklausomą teksto maketavimą ir aukštos kokybės vektorinės grafikos atvaizdavimą. Tai pamatinis profesionalios spaudos leidybos ir lazerinio spausdinimo sričių standartas)"
 
 msgid "mime_psb"
-msgstr "PSB didelis dokumentas („Adobe Photoshop“ formatas, skirtas labai dideliems vaizdams, palaiko milžiniškus vaizdus, didesnius nei 2 GB arba 30000 pikselių)"
+msgstr "PSB didelio dydžio sluoksniuotas dokumentas (Adobe Photoshop patentuotas ypač didelio šaltinio failo įpakavimo formatas. Jis pralaužia standartinio PSD formato 2 GB fizinio dydžio ir 30 000 pikselių vidinio adresavimo ribas. Specialiai skirtas saugoti didžiulį, aukšto sluoksnių gylio skaitmeninį meno turtą)"
 
 msgid "mime_psd"
-msgstr "PSD vaizdas („Adobe Photoshop“ šaltinio failas, palaiko sluoksnius, kanalus, kelius, pramonės standartinis vaizdo apdorojimo formatas)"
+msgstr "PSD sluoksniuoto dizaino šaltinio failas (Adobe Photoshop patentuotas sluoksniuoto vaizdo inžinerinis formatas. Kaip pramonės standartinis konteineris grafikos ir vaizdų srityje, jis gimtai įpakuoja pilną sluoksnių atvaizdavimo medį, bitmap kanalus, vektorinius kirpimo kelius ir sudėtinius maišymo režimus, palaikydamas nenuostolingą visų duomenų redagavimą)"
 
 msgid "mime_webp"
-msgstr "WebP vaizdas („Google“ sukūrė 2010 m., žiniatinklio vaizdo formatas, palaiko nuostolingą / nenuostolingą glaudinimą ir animaciją, glaudinimo santykis 25-35% geresnis nei PNG ir 25% geresnis nei JPEG)"
+msgstr "WebP efektyvus vaizdas (2010 m. Google pristatytas universalus žiniatinklio grafikos kodavimo standartas. Kilęs iš VP8 vaizdo raktinių kadrų technologijos, tobulai suderinamas su nuostolingu, nenuostolingu, skaidriu ir dinaminiu atvaizdavimu. Lyginant su tokios pačios kokybės PNG, sumažina dydį 25-35%. Tai pagrindinis aukštos kokybės šiuolaikinių tinklalapių įkėlimo akmuo)"
 
 msgid "mime_woff"
-msgstr "WOFF žiniatinklio šriftas (sukurtas 2009 m., W3C standartas 2018 m. Suspaustas remiantis „TrueType“ / „OpenType“, optimizuotas žiniatinklio šriftų įkėlimui, standartinis šiuolaikinių svetainių piktogramų šriftų formatas)"
+msgstr "WOFF žiniatinklio šriftų failas (2009 m. sukurtas ir 2012 m. tapęs W3C standartu, atviras žiniatinklio šriftų formatas. Iš esmės tai yra standartinės TTF/OTF šriftų struktūros srauto nenuostolingas glaudinimo įpakavimas, žymiai optimizuojantis tinklo perdavimo pralaidumo sąnaudas. Tai universalus šiuolaikinių svetainių piktogramų ir debesijos šriftų formatas)"
 
 msgid "mime_7z"
-msgstr "7z suspaustas archyvas (Igor Pavlov sukūrė 1999 m., specialus „7-Zip“ programos formatas. LZMA algoritmas, didelis glaudinimo santykis, atvirojo kodo ir nemokamas. 7z formatas, esant tokiam pačiam glaudinimo santykiui, paprastai yra 30–50% mažesnis nei ZIP, įprastas formatas atvirojo kodo bendruomenėje ir programinės įrangos platinimui)"
+msgstr "7z glaudintas archyvas (1999 m. Igor Pavlov sukurtas patentuotas 7-Zip formatas. Pagrįstas atvirojo kodo LZMA/LZMA2 algoritmais, pasižymi ypač dideliu glaudinimo laipsniu. Esant tokioms pačioms sąlygoms, jo dydis paprastai būna 30-50% mažesnis nei ZIP. Tai universalus aukšto glaudinimo laipsnio formatas, skirtas atvirojo kodo bendruomenei ir programinės įrangos platinimui)"
 
 msgid "mime_ace"
-msgstr "ACE suspaustas archyvas (sukurtas 1990-aisiais, „WinACE“ programos formatas. Kažkada konkuravo su RAR, glaudinimo santykis buvo gana didelis. Plėtra sustabdyta 2007 m., dabar pakeista 7z / RAR, retai naudojamas)"
+msgstr "ACE glaudintas archyvas (1990-ųjų patentuotas WinACE glaudinimo formatas. Kadaise konkuravo su RAR formatu ir pasižymėjo gana dideliu glaudinimo laipsniu. Po 2007 m. technologinė raida sustojo, dabar jį pakeitė 7z ir RAR formatai. Priskiriamas prie palikimo sistemų archyvavimo formatų)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 suspaustas archyvas (Julian Seward sukūrė 1996 m., blokų rūšiavimo glaudinimo algoritmas. Glaudinimo santykis yra 15–20% didesnis nei GZIP, bet lėtesnis. Įprastas „Linux“ branduolio šaltinio kodo, atvirojo kodo programinės įrangos paketų formatas, plėtinys .bz2)"
+msgstr "BZIP2 glaudintas archyvas (1996 m. Julian Seward sukurtas blokų rūšiavimo glaudinimo formatas. Jo pagrindinio algoritmo glaudinimo laipsnis yra 15-20% didesnis nei GZIP, tačiau skaičiavimo sąnaudos didesnės. Dažnai naudojamas Linux branduolio šaltinio kodams ir atvirojo kodo programinės įrangos paketams platinti. Standartinis plėtinys yra .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB suspaustas archyvas („Microsoft“ sukūrė 1995 m., „Cabinet“ formatas. „Windows“ diegimo paketo formatas, naudojamas tvarkyklėms, sistemos failams platinti. „Windows Installer“ (MSI) viduje naudoja CAB failams saugoti)"
+msgstr "CAB glaudintas archyvas (1995 m. Microsoft savarankiškai sukurtas Cabinet archyvavimo formatas. Kaip gimtasis Windows sistemos diegimo paketų standartas, naudojamas tvarkyklėms ir branduolio failams platinti. Taip pat yra pagrindinis saugojimo konteineris, skirtas Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG disko vaizdas („Apple“ pristatė aštuntajame dešimtmetyje, „Disk Image“ formatas. Standartinis „macOS“ programinės įrangos platinimo formatas, dukart spustelėkite, kad prijungtumėte kaip virtualų diską, nuvilkite ir paleiskite, kad įdiegtumėte programą. Palaiko glaudinimą ir šifravimą, yra pagrindinis „Mac“ programinės įrangos atsisiuntimo formatas)"
+msgstr "DMG disko atvaizdis (1980-aisiais Apple sukurta Disk Image formato evoliucija. Kaip standartinis macOS programinės įrangos platinimo konteineris, palaiko fizinį prijungimą kaip virtualią failų sistemą, pagrindinį glaudinimą ir duomenų šifravimą. Tai pagrindinis Mac ekosistemos programų platinimo formatas)"
 
 msgid "mime_emz"
-msgstr "EMZ suspaustas vaizdas („Windows“ suspaustas patobulintas metafailas, suspausta EMF versija. Vektorinės grafikos saugojimo formatas „Office“ dokumentuose, iš esmės tai yra GZIP suspaustas EMF failas)"
+msgstr "EMZ glaudintas vaizdas (suglaudinta Windows patobulinto metafailo EMF versija. Iš esmės tai dvejetainė vektorinė grafika, suglaudinta naudojant GZIP algoritmą. Plačiai naudojama vektoriniams paveikslėliams, įterptiems į Microsoft Office serijos dokumentus, saugoti)"
 
 msgid "mime_gz"
-msgstr "GZIP suspaustas archyvas (Jean-loup Gailly ir Mark Adler sukūrė 1992 m., GNU projektas. Standartinis glaudinimo įrankis, skirtas Unix / Linux, įprastas HTTP perdavimo glaudinimo formatas. Plėtinys .gz, dažnai naudojamas kartu su TAR)"
+msgstr "GZIP glaudintas archyvas (1992 m. GNU projekto Jean-loup Gailly ir Mark Adler sukurtas standartinis srauto glaudinimo formatas. Kaip Unix/Linux standartinis glaudinimo įrankis, taip pat yra pagrindinis HTTP perdavimo sluoksnio glaudinimo (Gzip) standartas. Dažnai naudojamas kartu su TAR archyvavimu)"
 
 msgid "mime_jar"
-msgstr "JAR suspaustas archyvas („Sun Microsystems“ išleido 1997 m., „Java ARchive“ formatas. Iš esmės tai ZIP failas, naudojamas Java bibliotekoms ir programoms pakuoti. Pagrindinis „Java“ ekosistemos formatas, pvz., „Maven“, „Gradle“. „Android“ taip pat naudoja JAR)"
+msgstr "JAR glaudintas archyvas (1997 m. Sun Microsystems pristatytas Java ARchive archyvavimo formatas. Iš esmės tai yra pakavimo konteineris, pagrįstas ZIP struktūra, skirtas Java klasių bibliotekoms ir metaduomenims įpakauti. Tai pagrindinis Maven, Gradle ir ankstyvosios Android ekosistemos kompiliavimo produktas)"
 
 msgid "mime_lzma"
-msgstr "LZMA suspaustas archyvas (Igor Pavlov sukūrė 1998 m., Lempel-Ziv-Markov grandinės algoritmas. Pagrindinis 7z formato glaudinimo algoritmas, didelis glaudinimo santykis, greitas išpakavimo greitis. Naudojamas programinei įrangai, skirtai įterptinėms sistemoms, platinti)"
+msgstr "LZMA glaudintas archyvas (1998 m. Igor Pavlov sukurtas Lempel-Ziv-Markov grandinės glaudinimo algoritmas. Kaip pagrindinis 7z formato variklis, pasižymi ypač dideliu glaudinimo laipsniu ir dideliu išpakavimo greičiu. Plačiai naudojamas aparatinės įrangos programinei įrangai ir įterptinėms sistemoms platinti)"
 
 msgid "mime_rar"
-msgstr "RAR suspaustas archyvas (Eugene Roshal sukūrė 1993 m., Roshal ARchive formatas. Didelis glaudinimo santykis, palaiko padalijimą į tomus ir atkūrimo įrašus. „WinRAR“ programos formatas, glaudinimo santykis geresnis nei ZIP, tačiau reikalauja mokamos programinės įrangos, atvirojo kodo įrankiai, tokie kaip „unrar“, gali išpakuoti)"
+msgstr "RAR glaudintas archyvas (1993 m. Eugene Roshal sukurtas patentuotas WinRAR archyvavimo formatas. Palaiko padalijimą į dalis, fizinius atkūrimo įrašus (ECC) ir aukšto stiprumo šifravimą. Jo glaudinimo laipsnis yra geresnis nei standartinio ZIP, jis turi platų suderinamumo palaikymą asmeninių kompiuterių ir komercinėje srityse)"
 
 msgid "mime_tar"
-msgstr "TAR archyvas („Unix V7“ pristatė 1979 m., „Tape ARchive“ formatas. Juostinis archyvas, tik pakuoja be glaudinimo, dažnai naudojamas kartu su GZIP / BZIP2 / XZ. „Linux“ paketų šaltinio kodas, „Docker“ vaizdų sluoksnių saugojimas naudoja TAR formatą)"
+msgstr "TAR archyvavimo paketas (1979 m. Unix V7 eros juostos archyvavimo formatas. Atlinka tik failų srauto pakavimą be duomenų glaudinimo. Dažnai derinamas su GZIP/BZIP2/XZ. Tai pagrindinis Linux šaltinio kodų paketų ir Docker atvaizdų sluoksniuotos saugyklos standartas)"
 
 msgid "mime_tgz"
-msgstr "TGZ suspaustas archyvas (TAR + GZIP kombinuotas formatas, plėtinys .tgz arba .tar.gz. Dažniausias Unix / Linux programinės įrangos paketų platinimo formatas, šaltinio kodų paketai, dvejetainiai paketai, plačiai naudojami, reiškia „išpakuok ir naudok“)"
+msgstr "TGZ glaudintas archyvas (TAR archyvavimo ir GZIP glaudinimo srauto derinys, plėtiniai .tgz arba .tar.gz. Tai universaliausias programinės įrangos paketų platinimo formatas Unix/Linux aplinkoje, plačiai naudojamas diegiant iš šaltinio kodų ir platinant diegimo nereikalaujančius dvejetainius paketus)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 suspaustas archyvas (TAR + BZIP2 kombinuotas formatas, plėtinys .tbz2 arba .tar.bz2. Glaudinimo santykis 15–20% didesnis nei TGZ, tinka didelių failų platinimui, „Linux“ branduolys ilgą laiką naudojo šį formatą)"
+msgstr "TBZ2 glaudintas archyvas (TAR archyvavimo ir BZIP2 glaudinimo srauto derinys, plėtiniai .tbz2 arba .tar.bz2. Palyginti su TGZ, gali padidinti glaudinimo laipsnį dar 15-20%, tinka dideliems failams perduoti. Ilgą laiką buvo naudojamas Linux branduolio šaltinio kodams platinti)"
 
 msgid "mime_xz"
-msgstr "XZ suspaustas archyvas (pristatytas 2009 m., pagrįstas LZMA2 algoritmu. Labai didelis glaudinimo santykis, 30–50% geresnis nei GZIP, išpakavimo greitis gana greitas. „Linux“ branduolys, paketų tvarkyklės (pvz., „Debian“ .deb viduje) plačiai naudojamos, rekomenduojamas formatas dabartinėje „Linux“ ekosistemoje)"
+msgstr "XZ glaudintas archyvas (2009 m. pristatytas kitos kartos aukšto glaudinimo laipsnio formatas. Pagrįstas LZMA2 algoritmu, duomenų glaudinimo laipsnis yra 30-50% didesnis nei GZIP, išlaikant didelį išpakavimo greitį. Jis nustatytas kaip rekomenduojamas platinimo standartas, naudojamas Linux branduolio ir pagrindinių paketų tvarkyklių (pvz., Debian .deb viduje))"
 
 msgid "mime_z"
-msgstr "Z suspaustas archyvas („Unix“ glaudinimo komandos formatas 1985 m., LZW algoritmas. Ankstyvas „Unix“ glaudinimo formatas, pakeistas GZIP. Plėtinys .Z, šiuolaikinės sistemos jį naudoja retai)"
+msgstr "Z glaudintas archyvas (1985 m. Unix komandos compress LZW glaudinimo formatas. Kaip standartinis glaudinimo standartas ankstyvojoje Unix sistemoje, dabar jį visiškai pakeitė efektyvesnis GZIP formatas. Šiuolaikiniame tinklo sraute tai retas istorinis formatas)"
 
 msgid "mime_zip"
-msgstr "ZIP suspaustas archyvas (Phil Katz sukūrė 1989 m., PKZIP formatas. „Windows“ palaiko iš pradžių, labiausiai paplitęs glaudinimo formatas internete. Palaiko kelis failus, katalogų struktūrą, gali pasirinkti glaudinimo algoritmą. „Java“ JAR, „Android“ APK, „Office“ dokumentų DOCX / XLSX yra pagrįsti ZIP formatu)"
+msgstr "ZIP glaudintas archyvas (1989 m. Phil Katz sukurtas PKZIP universalus archyvavimo formatas. Turi pagrindinių operacinių sistemų gimtąjį palaikymą. Tai plačiausiai naudojamas konteinerio standartas internete. Šiuolaikinis Java JAR, Android APK ir Office dokumentai (OOXML) yra pagrįsti ZIP struktūra)"
 
 msgid "mime_zst"
-msgstr "Zstandard suspaustas archyvas („Facebook“ sukūrė 2015 m., sukūrė Yann Collet. Didelės spartos glaudinimo algoritmas, glaudinimo santykis artimas LZMA, greitis daug didesnis nei GZIP. „Linux“ branduolys 5.9+ palaiko, „Arch Linux“ pacman, „Debian“ APT palaipsniui priima, naujos kartos glaudinimo standartas)"
+msgstr "Zstandard glaudintas archyvas (2015 m. Facebook darbuotojo Yann Collet sukurtas naujos kartos srauto glaudinimo standartas. Pasiekia beveik LZMA glaudinimo laipsnį ir tuo pačiu turi daug didesnį pralaidumą nei GZIP. Jį giliai įdiegė Linux branduolys (5.9+) ir Arch/Debian paketų tvarkyklės)"
 
 msgid "mime_lz4"
-msgstr "LZ4 suspaustas archyvas (Yann Collet sukūrė 2011 m., itin greitas glaudinimo algoritmas. Glaudinimo greitis yra daugiau nei 10 kartų greitesnis nei GZIP, tinka realaus laiko glaudinimo scenarijams. „Linux“ branduolys, OpenZFS, Hadoop plačiai naudoja, pirmasis pasirinkimas scenarijuose, kuriuose pirmenybė teikiama greičiui)"
+msgstr "LZ4 glaudintas archyvas (2011 m. Yann Collet sukurtas itin greitas srauto glaudinimo algoritmas. Jo pralaidumo greitis yra daugiau nei 10 kartų didesnis nei GZIP, jis turi labai mažas CPU vykdymo išlaidas. Plačiai naudojamas Linux branduolyje, OpenZFS failų sistemoje ir Hadoop realaus laiko duomenų srautų apdorojime)"
 
 msgid "mime_lzo"
-msgstr "LZO suspaustas archyvas (Markus Oberhumer sukūrė 1996 m., Lempel-Ziv-Oberhumer algoritmas. Išpakavimo greitis yra labai greitas, glaudinimo santykis yra vidutinis. „Linux“ branduolys „Squashfs“, „OpenWrt“ programinės įrangos paketas naudoja jį, tinka įterptinėms sistemoms)"
+msgstr "LZO glaudintas archyvas (1996 m. Markus Oberhumer sukurtas Lempel-Ziv-Oberhumer algoritmas. Suteikia pirmenybę itin greitam išpakavimo našumui. Plačiai įterptas į Linux branduolio Squashfs atvaizdus, OpenWrt programinę įrangą ir įvairias išteklių ribojamas įterptines sistemas)"
 
 msgid "mime_msi"
-msgstr "MSI diegimo paketas („Microsoft“ išleido 1999 m., „Windows Installer“ paketo formatas. Standartinis diegimo formatas, skirtas „Windows“ programoms, palaiko operacijų atšaukimą, komponentų valdymą, tylų diegimą. Pirmasis pasirinkimas programinės įrangos platinimui įmonės lygiu, iki šiol pagrindinis „Windows“ programinės įrangos diegimo formatas)"
+msgstr "MSI sistemos diegimo paketas (1999 m. Microsoft pristatytas Windows Installer duomenų įpakavimo formatas. Kaip standartinis Windows taikomųjų programų lygio diegimo standartas, gimtai palaiko pagrindinį operacijų atšaukimą, komponentų gyvavimo ciklo valdymą ir tylų diegimą be paketinio apdorojimo. Tai pagrindinis įmonių lygio centralizuoto programinės įrangos platinimo ir strategijų diegimo standartas)"
 
 msgid "mime_pkg"
-msgstr "PKG diegimo paketas („macOS“ programų diegimo paketo formatas, pagrįstas „Apple“ diegimo technologija. Standartinis „macOS“ programinės įrangos platinimo formatas, palaiko komponentų pasirinkimą, diegimo scenarijus, pašalinimo funkciją. Dukart spustelėkite .pkg failą norėdami įdiegti, įprastas platinimo būdas programinei įrangai, esančiai ne „Mac App Store“)"
+msgstr "PKG kryžminės platformos programinės įrangos diegimo paketas. 1. FreeBSD programinės įrangos paketas: pkgng standartas, plėtiniai .pkg arba .txz, pagrįstas TAR+XZ/Zstd glaudinimu, palaiko priklausomybių išaiškinimą ir parašų patikrinimą; 2. macOS diegimo paketas: pagrįstas Apple Installer formatu, palaiko tinkintus komponentus, diegimo scenarijus ir sisteminį pašalinimą. Tai atitinkamai pagrindiniai BSD serverių ir Mac sistemų platinimo nešikliai."
 
 msgid "mime_apk"
-msgstr "APK Android programų paketas (pradėtas naudoti Google 2008 m., tradicinis Android programų diegimo formatas. APK iš esmės yra ZIP paketas, kuriame yra kodas, ištekliai ir manifesto failas. Nuo 2021 m. „Google Play“ reikalauja, kad naujos programos naudotų AAB formatą, tačiau APK vis dar naudojamas derinimui, trečiųjų šalių parduotuvėms ir šalutiniam įkėlimui)"
+msgstr "APK Android programų paketas (2008 m. Google kartu su Android išleistas tradicinis programų diegimo paketas. Pagrįstas ZIP archyvavimo struktūra, įpakuoja kompiliuotą Dalvik baito kodą (DEX), metaduomenų manifestą ir globaliuosius išteklius. Dabar plačiai naudojamas vietiniam kūrimo derinimui, trečiųjų šalių platinimui ir diegimui iš šono)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS programų paketas („iOS App Store Package“, iOS/iPadOS programų diegimo formatas. Pristatytas 2008 m. su iPhone SDK. Turi būti platinamas per „App Store“ arba pasirašytas įmonės sertifikatu. Sudėtyje yra vykdomasis failas, ištekliai, Info.plist ir parašo informacija)"
+msgstr "IPA Apple programų paketas (2008 m. kartu su iPhone SDK išleistas iOS/iPadOS skirtas pakavimo konteineris. Iš esmės tai ZIP archyvas, apsaugotas FairPlay skaitmeninės teisių apsaugos arba įmonės lygio kodo parašu. Jame yra Mach-O dvejetainis vykdomasis failas, programos išteklių medis ir Info.plist metaduomenų konfigūracija)"
 
 msgid "mime_hap"
-msgstr "HAP „HarmonyOS“ programų paketas („HarmonyOS Ability Package“ – pagrindinis „HarmonyOS“ programos vienetas. Pristatytas 2020 m. su „HarmonyOS 2.0“. Palaiko du tipus: „entry“ ir „feature“, platinimo formatas, skirtas „Huawei“ telefonams, planšetiniams kompiuteriams, išmaniesiems laikrodžiams ir kitiems „HarmonyOS“ įrenginiams)"
+msgstr "HAP HarmonyOS programų paketas (2020 m. kartu su HarmonyOS 2.0 išleistas pagrindinis HarmonyOS lankstaus diegimo vienetas. Sudarytas iš pagrindinio Entry modulio arba Feature plėtinių funkcinių modulių. Tai pagrindinis kelių galinių įrenginių (telefonų, planšečių, nešiojamų įrenginių) išmaniesiems galiniams įrenginiams platinti skirtas formatas)"
 
 msgid "mime_har"
-msgstr "HAR statinė bendroji „HarmonyOS“ biblioteka („HarmonyOS Archive“, statinė bendroji „HarmonyOS“ biblioteka, gali būti bendrinama kelių HAP paketų, naudojama komponentais pagrįstam kūrimui ir modulių pakartotiniam naudojimui)"
+msgstr "HAR HarmonyOS statinis bendrinamas paketas (HarmonyOS patentuotas statinės bendrinamos bibliotekos archyvavimo failas. Naudojamas bendriems komponentams, pagrindiniams išteklių kodams ir kompiliavimo metu reikalingoms priklausomybėms įpakauti. Jį statiškai susieja ir dalijasi keli HAP moduliai. Tai pagrindinis HarmonyOS sistemos komponentinio kūrimo ir kelių modulių pakartotinio naudojimo pagrindas)"
 
 msgid "mime_aab"
-msgstr "„Android App Bundle“ („Google“ išleido 2018 m., nuo 2021 m. „Google Play“ reikalauja, kad naujos programos naudotų šį formatą. AAB yra platinimo formatas, „Google Play“ generuoja optimizuotus APK pagal įrenginio konfigūraciją (CPU architektūra, ekrano tankis, kalba), diegimo paketo dydis sumažėja vidutiniškai 35%. Kūrėjai įkelia AAB, vartotojai atsisiunčia APK)"
+msgstr "AAB Android programų rinkinys (2018 m. Google pristatytas ir 2021 m. nustatytas Google Play dinaminio platinimo formatas. Kaip grynas platinimo objektas, debesyje dinamiškai apkerpamas ir kompiliuojamas pagal tikslinio įrenginio CPU architektūrą, ekrano tankį ir kalbą, pagal poreikį generuojant optimizuotus APK failus. Tai vidutiniškai 35% sumažina perdavimo pralaidumo sąnaudas)"
 
 msgid "mime_xapk"
-msgstr "XAPK programos paketas (trečiosios šalies „Android“ programos plėtinio paketas, kuriame yra APK + OBB duomenų failai. Naudojamas dideliems žaidimams ir sudėtingoms programoms, išsprendžia 100 MB vieno APK failo apribojimą. Įprasta trečiųjų šalių programų parduotuvėse, tokiose kaip APKPure, APKMirror, nėra oficialus „Google“ formatas)"
+msgstr "XAPK išplėstinis programų paketas (trečiųjų šalių Android bendruomenės nustatytas neoficialus programų plėtinio standartas. Sujungdamas standartinį APK failą su dideliu OBB žaidimo duomenų plėtiniu, fiziškai pralaužia Google Play 100 MB vieno failo dydžio apribojimą. Dažnai randamas žaidimų platinimo platformose)"
 
 msgid "mime_appx"
-msgstr "„Windows“ programos paketas („Microsoft“ išleido 2012 m., diegimo formatas, skirtas „Windows 8/10/11“ programoms. Palaiko UWP programų ir darbalaukio programų konvertavimą, platinamas per „Microsoft Store“. 2024 m. „Microsoft“ pristatė MSIX kaip įpėdinį, palaipsniui pakeičiantį APPX)"
+msgstr "APPX šiuolaikinis programų paketas (2012 m. Microsoft kartu su Windows 8 išleista UWP programų diegimo specifikacija. Pasižymi smėlio dėžės izoliacijos vykdymu ir lengvu pašalinimu. Kaip ankstyvas pagrindinis Microsoft Store standartas, šiuolaikinėje Windows ekosistemoje jau yra įžengęs į gyvavimo ciklo pabaigos etapą, evoliucionuodamas į MSIX)"
 
 msgid "mime_msix"
-msgstr "MSIX programos paketas („Microsoft“ išleido 2018 m., naujos kartos pakavimo formatas, skirtas „Windows“ programoms. Sujungia APPX ir MSI privalumus, palaiko visų tipų „Windows“ programas, galima platinti per „Microsoft Store“ arba diegti iš šono, rekomenduojamas formatas, skirtas „Windows 11“)"
+msgstr "MSIX naujos kartos programų paketas (2018 m. Microsoft išleistas visiškai naujas Windows standartizavimo pakavimo standartas. Puikiai sujungia APPX programų saugos smėlio dėžės savybes su MSIX įmonių lygio turto valdymo pranašumais. Visiškai suderinamas su visų tipų Win32 programomis. Tai rekomenduojamas platinimo standartas, skirtas Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage programos paketas (pristatytas 2004 m., „Linux“ programos formatas be diegimo. „Viena programa - vienas failas“, veikia tiesiogiai be diegimo, palaiko daugumą „Linux“ platinimų, įprastas būdas kūrėjams platinti „Linux“ programinę įrangą)"
+msgstr "AppImage diegimo nereikalaujantis programų paketas (2004 m. pradėta Linux vieno vykdomojo archyvo specifikacija. Naudoja „viena programa – vienas failas“ savarankišką architektūrą. Vykdymo metu per FUSE mechanizmą tiesiogiai prijungiamas kaip tik skirta virtuali failų sistema vykdymui, įgyvendinant nulinės priklausomybės darbą iš karto visuose Linux platinimuose)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak programos paketas (pristatytas 2015 m., „Linux“ programos formatas smėlio dėžėje. Veikia per platinimus, izoliuotas nuo pagrindinės sistemos, plėtrą veda „Fedora“ ir „Red Hat“, numatytasis „GNOME“ programinės įrangos centro formatas)"
+msgstr "Flatpak smėlio dėžės programų paketas (2015 m. Red Hat ir GNOME sukurtas kryžminės Linux platinimų darbalaukio programų platinimo standartas. Pagrinde remiasi Linux branduolio Namespace ir Cgroups mechanizmais, kad įgyvendintų itin griežtą taikomųjų programų lygio saugos smėlio dėžės izoliaciją. Tai šiuolaikinių atvirojo kodo OS programinės įrangos centrų pagrindas)"
 
 msgid "mime_snap"
-msgstr "Snap programos paketas („Canonical“ išleido 2014 m., „Ubuntu“ patronuojanti įmonė sukūrė, universalus „Linux“ programos formatas. Automatinis atnaujinimas, smėlio dėžės izoliavimas, palaiko 40+ „Linux“ platinimų, numatytasis „Ubuntu“ programinės įrangos centro formatas)"
+msgstr "Snap konteinerizuotas programų paketas (2014 m. Ubuntu motininės įmonės Canonical pristatytas universalus Linux diegimo standartas. Naudoja savarankišką SquashFS atvaizdo prijungimo architektūrą, palaiko automatizuotus papildomus atnaujinimus ir griežtą AppArmor smėlio dėžės izoliaciją. Tai pagrindinis numatytasis Ubuntu programinės įrangos centro ekosistemos formatas)"
 
 msgid "mime_deb"
-msgstr "„Debian“ programinės įrangos paketas („Debian“ projektas išleido 1993 m., standartinis diegimo formatas, skirtas „Debian“ / „Ubuntu“ ir jų išvestinėms. Valdomas naudojant dpkg, APT yra jo paketų tvarkyklės priekinė dalis, vienas brandžiausių paketų formatų „Linux“ ekosistemoje, iki šiol pagrindinis „Debian“ šeimoje)"
+msgstr "DEB sistemos programinės įrangos paketas (1993 m. Debian projekto nustatyta dvejetainių ir šaltinio kodų pakavimo specifikacija. Kaip pagrindinis Debian, Ubuntu ir visų jų išvestinių sistemų diegimo standartas, remiasi dpkg branduoliu pakavimo išpakavimui ir priežiūrai, o APT naudoja kaip efektyvia paketų tvarkyklės priekine dalimi. Tai brandžiausias programinės įrangos platinimo pagrindas Linux ekosistemoje)"
 
 msgid "mime_rpm"
-msgstr "RPM programinės įrangos paketas („Red Hat“ išleido 1997 m., standartinis formatas, skirtas tokiems platinimams kaip „Red Hat“ / „Fedora“ / „CentOS“ / „SUSE“. RPM reiškia „Red Hat Package Manager“, kartu su DEB sudaro du pagrindinius „Linux“ paketų formatus, iki šiol pagrindinis RHEL šeimoje)"
+msgstr "RPM sistemos programinės įrangos paketas (1997 m. Red Hat pristatyta Red Hat paketų tvarkyklės pakavimo specifikacija. Kartu su DEB vadinama viena iš dviejų pagrindinių tradicinės Linux paketų valdymo krypčių. Gimtai turi operacijų lygio priklausomybių tikrinimą ir pagrindinį skaitmeninio parašo programinės įrangos patvirtinimą. Iki šiol yra absoliučiai pagrindinis platinimo standartas, skirtas RHEL, Fedora, CentOS ir kitoms Red Hat ekosistemoms)"
 
 msgid "mime_pacman"
-msgstr "„Arch“ programinės įrangos paketas („Arch Linux“ išleido 2002 m., .pkg.tar.zst formatas, kurį naudoja pacman paketų tvarkyklė. „Arch Linux“ nuolatinio atnaujinimo platinimų pagrindas, žinomas dėl savo paprastumo ir KISS principo, AUR („Arch User Repository“) yra jo ypatybė)"
+msgstr "Pacman archyvavimo programinės įrangos paketas (2002 m. Arch Linux kartu su pacman tvarkykle nustatytas .pkg.tar.zst pakavimo formatas. Kaip Arch valcavimo atnaujinimo mechanizmo pagrindas, pagrįstas Zstandard didelės spartos ir aukšto glaudinimo laipsnio algoritmu, kartu su AUR (Arch vartotojų programinės įrangos saugykla) ekosistema. Tai modernus paketų platinimo standartas, atspindintis minimalistinį ir KISS principą)"
 
 msgid "mime_exe"
-msgstr "EXE vykdomasis failas („Windows“ vykdomosios programos formatas, santrumpa „Executable“. Gimtoji „Windows“ operacinės sistemos vykdomoji forma, sudėtyje yra PE struktūra. Išsivystė iš MZ formato iš MS-DOS eros, „Windows NT“ pristatė PE („Portable Executable“) formatą 1993 m., kuris naudojamas iki šiol. Programinės įrangos diegimo paketai, programos, sistemos įrankiai naudoja šį formatą. Vartotojas dukart spusteli, kad jį paleistų, plačiausiai naudojamas vykdomasis formatas pasaulyje)"
+msgstr "EXE gimtasis vykdomasis failas (Windows platformos nešiojamo vykdomojo (PE) dvejetainės programos formatas. Technologiškai kildinamas iš MS-DOS eros MZ antraštės struktūros. Nuo 1993 m. Windows NT visiškai nustatytas kaip PE struktūros specifikacija. Tai plačiausiai pasaulyje naudojamas vykdymo standartas, skirtas mašininio kodo instrukcijoms, statinių išteklių skyriams ir sistemos branduolio paleidimui)"
 
 msgid "mime_dll"
-msgstr "DLL dinamiškai susieta biblioteka („Microsoft“ pristatė 1993 m., „Dynamic Link Library“. Bendras „Windows“ kodų bibliotekos failas, programa dinamiškai įkeliama vykdymo metu, taupo atmintį ir disko vietą. Sistemos komponentai, programų papildiniai, tvarkyklės naudoja DLL formatą. Pagrindinis „Windows“ API diegimo būdas, „DLL pragaro“ problema buvo sušvelninta .NET eroje)"
+msgstr "DLL dinaminė susiejimo biblioteka (Windows platformos Dynamic Link Library bendro kodo bibliotekos specifikacija. Dinamiškai įkeldama ir perkeldama simbolius vykdymo metu, žymiai taupo fizinę atmintį ir disko vietą. Kaip pagrindinė Windows API įgyvendinimo forma, jos ankstyvoji DLL Hell problema šiuolaikiniuose įrenginiuose išspręsta naudojant SxS lygiagrečios izoliacijos mechanizmą)"
 
 msgid "mime_com"
-msgstr "COM vykdomasis failas (vykdomasis formatas iš MS-DOS eros, santrumpa „Command“. Labai paprasta failo struktūra, 64 KB apribojimas, pagrindinis formatas prieš „Windows 3.x“, pasenęs. Šiuolaikiniai „Windows“ naudoja EXE formatą, COM plėtinys vis dar naudojamas kai kuriems komponentų failams)"
+msgstr "COM klasikinis vykdomasis failas (seniausias MS-DOS eros atminties atvaizdo (Command) vykdymo formatas. Naudoja nestruktūrizuotą gryno kodo skyriaus dizainą, ribojamas 64 KB fizinės atminties adresavimo segmento viršutinės ribos. Dabar jau pasenęs ir priskiriamas prie istorinio palikimo, tačiau šiuolaikinėje Windows architektūroje vis dar naudojamas kaip konkretus komponentų sąsajos, siekiant riboto suderinamumo)"
 
 msgid "mime_aac"
 msgstr "AAC garsas (MPEG standartas 1997 m., „Advanced Audio Coding“. MP3 įpėdinis, garso kokybė geresnė nei MP3 tuo pačiu bitų dažniu, numatytasis garso formatas, skirtas „YouTube“, „iTunes“, „Nintendo Switch“)"

@@ -472,8 +472,8 @@ msgstr "ホスト - ページ数 - ヒット数 - 帯域幅 - 最終アクセス
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[最終アクセスの開始日時] と [最終アクセスの最終ページ] は、セッションが終了していない場合のみ保存されます"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "メインページにはヒット数の上位 %s 件のみ表示されます。完全なリストは詳細ページをご覧ください。"
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "最初の %s 項目はヒット数順に降順でソートされています。残りの項目の順序は未定義です。"
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "ログインユーザー - ページ数 - ヒット数 - 帯域幅 - 最終アクセス日時"
@@ -487,8 +487,8 @@ msgstr "ワームID - ヒット数 - 帯域幅 - 最終アクセス日時"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "電子メール - ヒット数 - 帯域幅 - 最終アクセス日時"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "メインページにはヒット数の上位 %s 件の電子メールのみ表示されます。完全なリストは詳細ページをご覧ください。"
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "最初の %s 個のメールアドレスはヒット数順に降順でソートされています。残りのアドレスの順序は未定義です。"
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - ページ数 - 帯域幅 - 入口 - 出口"
@@ -697,6 +697,27 @@ msgstr "SiteDomainパラメータがconfig/domainファイルに定義されて�
 msgid "Please run as Administrator to set permissions"
 msgstr "権限を設定するには管理者として実行してください"
 
+msgid "This directory lacks read permission"
+msgstr "このディレクトリには読み取り権限がありません"
+
+msgid "Please set read permission for directory"
+msgstr "ディレクトリに読み取り権限を設定してください"
+
+msgid "Missing required parameter in config file"
+msgstr "設定ファイルに必要なパラメータがありません"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "'DirData' が定義されていることを確認してください。"
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "ブラウザアドレスのドメイン名が存在しないか、不完全です"
+
+msgid "Please check the URL parameter"
+msgstr "URLパラメータを確認してください"
+
+msgid "Format description"
+msgstr "フォーマット説明"
+
 msgid "Please set execute permission"
 msgstr "実行権限を設定してください"
 
@@ -822,376 +843,379 @@ msgstr "グラバー"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "テキストファイル（1963年 ASCII標準化、フォーマットなしのプレーンテキスト。すべてのソースコード、設定、ログの基礎。UnixはLF、WindowsはCRLF改行、今なおコンピュータで最も汎用的なデータ形式）"
+msgstr "TXT プレーンテキストファイル（1963年にASCIIで標準化された書式なしのプレーンテキスト。すべてのソースコード、設定ファイル、システムログの基層として、そのクロスプラットフォームな改行制御フロー（WindowsはCRLF、UnixはLF）は、今日でもコンピュータ世界で最も普遍的なデータ交換標準である）"
 
 msgid "mime_log"
-msgstr "ログファイル（システムやアプリケーションの動作情報を記録するプレーンテキストファイル。障害調査、パフォーマンス分析、セキュリティ監査に使用。Apache combined log、Nginx access log、syslogなどの標準形式）"
+msgstr "LOG システム実行ログ（オペレーティングシステム、カーネル、アプリケーションレベルの実行時状態をプレーンテキスト資産として記録。Nginx/Apacheのアクセスログ（Combined Log）と標準syslog仕様を包含し、トラブルシューティング、ストリーミングパフォーマンス分析、セキュリティ監査の核となるデータソースである）"
 
 msgid "mime_page"
-msgstr "HTMLウェブページ（1989年 Tim Berners-Leeがワールドワイドウェブを発明、1990年にHTML/HTTP/URLの3大技術を定義、無償で公開し特許を申請せず。2014年にHTML5がW3C正式標準に、表示・マルチメディア・印刷をサポート。2016年チューリング賞受賞）"
+msgstr "HTML ハイパーテキストウェブページ（1989年にTim Berners-Leeが創造したWorld Wide Webの基幹。無償公開のユニバーサルハイパーテキストマークアップ言語として、HTML5仕様は2014年にW3C公式標準となり、構造化マルチメディア、セマンティックインタラクション、流動的なページレイアウトをネイティブサポート、2016年にチューリング賞受賞）"
 
 msgid "mime_khtml"
-msgstr "KHTMLウェブエンジン（1998年 KDE 2.0リリース、Konquerorブラウザのレンダリングエンジン。2001年AppleがKHTMLをベースにWebKitを作成、2008年GoogleがWebKitからBlinkをフォークし、Chrome、Edge、Safariなどのブラウザの中核に。KHTMLはオープンソースコミュニティが現代のブラウザエンジンの基礎を築いた模範であり、その技術的遺産はWebKit/Blinkを通じて今日まで続く）"
+msgstr "KHTML Webテンプレートエンジン（1998年KDE 2.0ブラウザレンダリングエンジン仕様。モダンWebレンダリングの基盤を築いたオープンソースの基準として、その技術遺産はApple WebKitとGoogle Blinkコアに直接影響を与え、現代のストリーミング動的Webアーキテクチャを通じてその基層の流れを今なお続けている）"
 
 msgid "mime_script"
-msgstr "動的スクリプト（インタプリタ型言語、コンパイル不要。ASP、JSP、CGI、ColdFusion、Tcl、VBScriptなどを含み、初期のWeb開発、システム管理、自動化タスクに広く使用。現代のスクリプト言語であるPython、Ruby、JavaScriptはフルスタック開発の主力に発展）"
+msgstr "SCRIPT インタプリタ型動的スクリプト（事前コンパイルなしに特定の実行時環境またはインタプリタによって行単位で読み取り実行されるソースコードストリームの総称。ASP、JSP、CGI、Tclなどを涵盖し、サーバーサイドの共通ゲートウェイインターフェース、自動化プロセス制御、システムレベルタスクの結合に広く使用される）"
 
 msgid "mime_js"
-msgstr "JavaScriptスクリプト（1995年 Brendan EichがNetscapeで10日間で作成、ブラウザネイティブプログラミング言語。1997年 ECMAScript標準化、2009年 Node.js誕生によりフルスタック言語に、npmは世界最大のパッケージマネージャ。多年にわたりGitHubで最も人気のプログラミング言語）"
+msgstr "JavaScript スクリプト（1995年Netscapeブラウザのネイティブプログラミング環境。1997年にECMAScript業界標準を確立、2009年にNode.js実行時環境が誕生しブラウザの境界を打破、全スタック非同期ノンブロッキングアーキテクチャを創り出し、世界最大規模のnpmソフトウェアパッケージエコシステムを伴う）"
 
 msgid "mime_py"
-msgstr "Pythonスクリプト（1991年 Guido van Rossumが作成、強制インデントと簡潔な構文が特徴。Web開発、データサイエンス、人工知能、自動化運用に広く使用。TIOBE年間プログラミング言語を複数回受賞）"
+msgstr "Python スクリプト（1991年Guido van Rossumが創造した高水準インタプリタ型スクリプト言語。強制インデントによる可読性の高さとマルチパラダイム設計により、現代のWebアーキテクチャ、フルスタックデータサイエンス、人工知能（AI）モデルトレーニング、クラウドネイティブな自動化運用の業界標準言語として確立されている）"
 
 msgid "mime_sh"
-msgstr "Shellスクリプト（1971年 Unix誕生、コマンドスクリプト言語。システム管理、自動化タスク、サービス起動、デプロイスクリプトに使用。Linux運用に必須のスキル）"
+msgstr "Shell スクリプト（1971年Unix時代の標準コマンドインタプリタスクリプト。Bash、Sh、Dashなどのカーネルレベルコマンドを含み、通常.sh拡張子で実行され、現代のUnix系オペレーティングシステムにおける低レベルプロセス制御、インストール不要の環境設定、自動化デプロイのための汎用カーネルレベル接着剤である）"
 
 msgid "mime_rb"
-msgstr "Rubyスクリプト（1995年 Yukihiro Matsumotoが作成、開発者の幸福を重視。Ruby on Railsフレームワークは設定より規約という開発パラダイムを開拓し、現代のWebフレームワーク設計に影響）"
+msgstr "Ruby スクリプト（1995年まつもとゆきひろが創造したオブジェクト指向スクリプト言語。開発者体験への極度の尊重を核設計哲学とし、そのRuby on Railsフレームワークは『設定より規約（CoC）』という現代の高水準Webアーキテクチャのパラダイムを確立し、革命をもたらした）"
 
 msgid "mime_pl"
-msgstr "Perlスクリプト（1987年 Larry Wallが作成、実用主義で知られ、「スイスアーミーナイフ」と称される。CPANは現代の言語パッケージマネージャの先駆け、テキスト処理、システム管理、CGI分野で影響深远）"
+msgstr "Perl スクリプト（1987年Larry Wallが創造した実用的なスクリプト言語。現代のパッケージマネージャ（CPAN）の先駆けとして、テキスト処理の『スイスアーミーナイフ』と称される。現代のCGIモードでは、非常に低い物理メモリオーバーヘッドと高効率な正規表現処理により、ログ解析の高信頼基盤として機能する）"
 
 msgid "mime_php"
-msgstr "PHP動的ウェブページ（1995年 Rasmus Lerdorfが作成、Web開発専用に設計。全世界の70%以上のウェブサイトで使用され、WordPress、Facebook、Wikipediaなどのプラットフォームを駆動。PHP 8でJITコンパイルを導入、パフォーマンスが大幅に向上）"
+msgstr "PHP 動的ウェブページ（1995年Rasmus Lerdorfが創造、Web開発専用に設計。全世界の70%以上のウェブサイトを支える中核技術として、WordPress、Wikipediaなどの大規模実用アプリケーションを深く支える。PHP 8以降、JIT（Just-In-Time）実行時エンジンの導入により、高性能な全スタックサーバーサイドアーキテクチャへと進化した）"
 
 msgid "mime_image"
-msgstr "画像ファイル"
+msgstr "IMAGE 画像アセット分類（非可逆／可逆圧縮ビットマップ、現代のレスポンシブWebグラフィック、ベクターを涵盖。サイトの視覚リソース負荷、クライアント側キャッシュヒット率、メディアネットワーク帯域消費を評価する核心指標である）"
 
 msgid "mime_document"
-msgstr "ドキュメントファイル"
+msgstr "DOCUMENT 構造化ドキュメント分類（プレーンテキスト、スプレッドシート、固定レイアウト公文書（PDF）、軽量マークアップ言語を涵盖。サーバーサイドの静的知識ベース配信、企業資産ダウンロード、テキストストリームのスループット能力を統計する核心指標である）"
 
 msgid "mime_package"
-msgstr "ソフトウェアパッケージ"
+msgstr "PACKAGE コンパイル成果物とソフトウェアパッケージ分類（オペレーティングシステムのネイティブ実行可能プログラム、実行時リンクライブラリ（DLL/SO）、アプリケーション配布インストールパッケージを涵盖。ソフトウェア配布サイトの出方向トラフィックとダウンロードピーク値を評価する指標としてよく用いられる）"
 
 msgid "mime_archive"
-msgstr "Gzip圧縮ファイル（1992年 GNUプロジェクト、DEFLATEアルゴリズムベース。Webでは動的レスポンスコンテンツの圧縮に使用、圧縮率は通常60-90%。2015年以降一部のシナリオでBrotliに置き換えられたが、サーバー側で最も広くサポートされている圧縮形式）"
+msgstr "ARCHIVE アーカイブと圧縮ファイル（DEFLATE、LZMAなどの核アルゴリズムに基づくデータ圧縮パッケージの総称。ネットワーク層では伝統的なパッケージ配布の他、1992年のGNUプロジェクトによるGzip動的応答ストリームも涵盖する。現代の一部シナリオではBrotliアルゴリズムが徐々に導入されつつあるが、この分類はサーバー帯域スループットと伝送層の圧縮効果を評価する核心指標であり続ける）"
 
 msgid "mime_audio"
-msgstr "オーディオファイル"
+msgstr "AUDIO デジタルオーディオストリーム分類（圧縮オーディオ、オーディオブック、ストリーミングオーディオコンテナを涵盖。特定のオーディオコーデック標準に基づき、マルチメディアサイトのオーディオデータストリームスループット、同時ストリーミング帯域、長接続の性能監視に用いられる）"
 
 msgid "mime_video"
-msgstr "ビデオファイル"
+msgstr "VIDEO デジタルビデオストリーム分類（高解像度ビデオコンテナ、現代のWebアニメーション、ストリーミングフラグメントを涵盖。高負荷ネットワーク環境下でのサーバー帯域ピーク上限値、コンテンツデリバリネットワーク（CDN）の高速化効果を評価する核心指標である）"
 
 msgid "mime_jscript"
-msgstr "JavaScript（1995年 Brendan Eich開発）"
+msgstr "JScript スクリプト（1996年MicrosoftがInternet Explorer 3.0向けに開発したリバースエンジニアリングによる独自実装。古典的なJavaScriptの初期ホスト競合相手として、Windows Script Host（WSH）と初期ASPバックエンドの中核エンジンを担った）"
 
 msgid "mime_json"
-msgstr "JSONデータ（2001年 Douglas Crockfordが提唱、軽量データ交換形式、Web APIの事実上の標準）"
+msgstr "JSON 構造化データ（2001年Douglas Crockfordが確立した軽量データシリアライズ交換フォーマット。テキストベースのキーバリューペアと配列構造に基づき、高い人間可読性と可逆的なストリーム解析特性を持ち、現代のWeb API、マイクロサービスアーキテクチャ、大規模言語モデル対話の事実上の標準である）"
 
 msgid "mime_vbs"
-msgstr "VBScript（1996年 Microsoft開発、Windowsスクリプト言語、ASPウェブページやWindows管理スクリプトに使用。PowerShellやJavaScriptの普及に伴い、徐々に廃止）"
+msgstr "VBScript スクリプト（1996年MicrosoftがIE 3.0と共にリリースしたスクリプト言語変種。初期のASP動的ウェブサイトとWindowsシステム管理の中核ドライバとして機能したが、現在はWindows 11の最新カーネルで公式に非推奨とされ削除されており、歴史的なレガシー技術に属する）"
 
 msgid "mime_conf"
-msgstr "設定ファイル（テキスト形式でソフトウェア設定を保存、一般的な形式：INI、JSON、YAML、TOML、XML。Linuxシステム設定は主に/etcディレクトリ）"
+msgstr "CONF システム設定ファイル（ソフトウェアの実行時環境パラメータをプレーンテキスト形式で永続的に保存するデータファイルの総称。INI、現代のYAML、TOML、JSON仕様を涵盖。Linuxシステムでは/etcディレクトリに集中することが多く、システムレベルの実行状態チューニングの核となる依存関係である）"
 
 msgid "mime_css"
-msgstr "CSS (1996年12月: W3CがCSS1を最初の公式標準として公開。1998年: CSS2が位置指定とメディアタイプを追加。2011年以降: CSS3モジュールが角丸、アニメーション、Flexbox、グリッド、レスポンシブデザインを導入。HTML、JavaScriptと並ぶフロントエンド三本柱。全ての現代ブラウザ(Chrome、Firefox、Safari、Edge)がネイティブサポート、ウェブページスタイル定義の唯一の標準)"
+msgstr "CSS カスケーディングスタイルシート（1996年W3C標準、HTML/JSと並ぶフロントエンド三核心の一つ。CSS2の配置、CSS3のモジュール化を経て、Flexbox、Grid、メディアクエリによるレスポンシブデザインをネイティブサポート、現代ブラウザにおけるWebページ表現の分離を実現する絶対的な支配標準である）"
 
 msgid "mime_xsl"
-msgstr "XSLスタイルシート（1999年 W3C標準、XMLドキュメント変換言語、XMLをHTML/PDF/テキストに変換可能。JSON普及後は使用減少）"
+msgstr "XSL スタイルシート（1999年W3C標準、XSLT変換とXPathアドレス言語を含み、構造化XMLデータをHTML、PDF、またはプレーンテキストにレンダリングする。現代の開発ではそのエコシステムはより軽量なテンプレートエンジンとJSONデータフォーマットに取って代わられている）"
 
 msgid "mime_runtime"
-msgstr "実行可能ファイル（EXE、ELF、Mach-OなどのOS実行可能形式、機械語とロード情報を含む）"
+msgstr "実行可能ファイル（EXE、ELF、Mach-Oなど、コンパイル済みの低レベル機械コード、エントリポイント、システムロード情報を含むオペレーティングシステムネイティブな実行形式）"
 
 msgid "mime_library"
-msgstr "ライブラリファイル（DLL、SO、dylibなどの動的リンクライブラリ、プログラム実行時にロードされる共有コード）"
+msgstr "ライブラリファイル（DLL、SO、dylibなどの動的または静的リンクライブラリ。他のプログラムが実行時に呼び出し、ロードするための共有シンボルと再配置コードを含む）"
 
 msgid "mime_swf"
-msgstr "Flashアニメーション（1996年 Macromedia開発、後にAdobeに帰属。インタラクティブなウェブアニメーション標準、かつてインターネットアニメーションとゲームを支配。欠点：プラグイン依存、モバイル非対応、セキュリティリスク高い。2017年 Adobeが廃止を発表、2020年に全面サポート終了、HTML5/CSS3/JSに置き換え）"
+msgstr "Flash アニメーション（1996年Macromedia開発、2005年Adobeが買収。インタラクティブなWebアニメーション標準、かつてインターネットのアニメーションとゲームを席巻した。欠点：プラグイン依存、モバイル非対応、高いセキュリティリスク。2017年にAdobeが廃止を発表、2020年に完全サポート終了、HTML5/CSS3/JSに取って代わられた）"
 
 msgid "mime_dtd"
-msgstr "DTD文書型定義（XML仕様、XML文書構造を定義、XMLの妥当性検証に使用）"
+msgstr "DTD 文書型定義（1998年XML 1.0と共にリリースされ、XML/HTML文書の構造を定義し正当性を検証するために使用。現代の開発では、XML Schema、RELAX NGなどのより柔軟なソリューションに取って代わられている）"
 
 msgid "mime_csv"
-msgstr "CSVデータ形式（カンマ区切り値、表形式データの汎用形式、Excelやデータベースのインポート/エクスポート標準）"
+msgstr "CSV データフォーマット（カンマ区切り値、1972年のメインフレーム時代（IBM Fortranコンパイラ）からの汎用プレーンテキストテーブル形式。2005年にRFC 4180により、クロスプラットフォームかつクロスランゲージな可逆的データ交換標準として正式化された。Excel、リレーショナルデータベース、データ分析（Pandas）との効率的なインポート／エクスポートに広く用いられる）"
+
+msgid "mime_cur"
+msgstr "マウスカーソルファイル（.cur形式、マウスポインタスタイルのカスタマイズに使用。例えばWebページ上の指カーソルや待機中の砂時計アイコンなど。一般的な.icoアイコンの『親戚』だが、実際のクリック位置を示す『ホットスポット』が追加されている。歴史：1992年Windows 3.1で導入、コマンドラインからマウス操作のグラフィカルインターフェースへの移行期における重要コンポーネント）"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start（Javaアプリケーションランチャー、2000年代のJavaデスクトップアプリケーション配布技術、現在は廃止）"
+msgstr "Java Web Start（2000年代のJavaデスクトップアプリケーション配信技術、.jnlpファイルを通じてリモートのJavaプログラムを起動。セキュリティ問題と現代の配信方式の普及により、現在はほぼ時代遅れ）"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader電子書籍（2000年 Microsoftが発表、LIT形式、廃止）"
+msgstr "Microsoft Reader 電子書籍（2000年Microsoft、LIT形式。時代遅れ、現在はCalibreなどのツールでEPUBやPDFに変換可能）"
 
 msgid "mime_svg"
-msgstr "SVGベクターグラフィック（1999年 W3C標準、Microsoftが自社のVML形式を長年推したため、IEブラウザは2011年までサポートせず、普及が遅れる。2015年以降IEの廃止と高解像度ディスプレイの普及に伴い、アイコン、ロゴの好ましい形式に）"
+msgstr "SVG ベクターグラフィック（1999年W3C標準、XMLベースの2次元ベクター画像形式。任意拡大時の劣化なしとテキストストリーミング伝送の利点を持つ。現代のすべてのブラウザがネイティブサポートし、高解像度のWebアイコン、ロゴ、ベクターアニメーションに広く使用され、現代Webグラフィックの中核標準である）"
 
 msgid "mime_ai"
-msgstr "Adobe Illustratorベクターグラフィック（1987年発表、業界標準のベクターグラフィック形式、印刷デザイン、ロゴ、アイコンに最適）"
+msgstr "AI ベクターグラフィック（1987年Adobeが独自開発したベクター形式。レイアウト、印刷デザイン、ブランドアイデンティティの業界標準として、複数レイヤーと高度なレイアウトベクターデータをサポート、プロフェッショナルなビジュアルアートの首选媒体である）"
 
 msgid "mime_phshop"
-msgstr "Photoshop画像（1990年 Adobe発表、Photoshopソースファイル形式PSD、画像処理業界標準）"
+msgstr "PSD レイヤー画像（1990年AdobeがPhotoshopと共にリリースした独自のビットマップソース形式。複数レイヤー、チャンネル、マスク、可逆編集データをサポートし、画像処理とデジタルペインティングのグローバル業界標準として確立されている）"
 
 msgid "mime_ttf"
-msgstr "TrueTypeフォント（1989年 AppleとMicrosoftが共同開発、ベクターフォント形式、画面表示と印刷で一致、現代のOSデフォルトフォント形式）"
+msgstr "TrueType フォント（1989年AppleとMicrosoftが共同開発したデジタル輪郭フォント形式。二次ベジェ曲線に基づき、画面表示と印刷出力で絶対的なピクセル一致を実現し、現代のデスクトップオペレーティングシステムのネイティブデフォルトフォント形式である）"
 
 msgid "mime_fon"
-msgstr "WOFF2ウェブフォント（2014年 W3C推奨、Brotli圧縮アルゴリズム採用、旧WOFFと比較して約30%小容量、TTF/OTFと比較して50%以上削減、現在すべてのモダンブラウザがサポート、現代のウェブフォントの好ましい形式、ブラウザサポート率98%以上）"
+msgstr "FON ビットマップフォント（1980年代のMicrosoftによる初期のシステムレベルドットマトリックスフォント形式。可逆的な等倍拡大縮小をサポートせず、通常はレガシーシステムや初期の組み込みデバイスコンポーネントにおいてピクセルベースのテキストレンダリングに限定される）"
 
 msgid "mime_pdf"
-msgstr "PDFドキュメント（1993年 Adobe開発、2008年 ISO国際標準。クロスプラットフォームドキュメント形式、形式の一貫性を保持、電子ドキュメント配布のグローバル標準）"
+msgstr "PDF 電子ドキュメント（1993年Adobeが開発、2008年にISO 32000国際標準となった。絶対的なレイアウトとフォーマットの忠実性を持つクロスプラットフォームな固定レイアウト文書形式であり、電子文書配信とデジタル出版のグローバル標準である）"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET動的ページ（2002年 Microsoft発表、Windowsプラットフォームの動的ウェブページ技術、.NET Frameworkの一部）"
+msgstr "ASP.NET 動的ページ（2002年Microsoftが.NETアーキテクチャと共にリリースしたサーバーサイド動的Webページ技術。IISレンダリングエンジンにホストされ、エンタープライズレベルのWindowsサーバーサイド動的Webアプリケーションと分散システムの構築に使用される）"
 
 msgid "mime_mdb"
-msgstr "Accessデータベース（Microsoft Accessデータベースファイル、1992年発表、Windowsデスクトップデータベースソリューション）"
+msgstr "MDB リレーショナルデータベース（1992年MicrosoftがAccessと共にリリースしたデスクトップレベルのリレーショナルデータベース保存形式。Jetデータベースエンジンを内蔵し、パソコンと中小企業の初期情報管理においてリレーショナルデータベースソリューションとして機能した）"
 
 msgid "mime_md"
-msgstr "Markdownドキュメント（2004年 John Gruberが作成、構文設計はreStructuredTextとSetextの影響を受ける。核となる設計哲学は「可読性＝レンダリング」、オリジナル実装Markdown.plはPerl正規表現を使用。派生仕様にはGFM（2013）、CommonMark（2017）、Pandoc Markdownなど。GitHub、GitLab、Stack Overflow、Jupyter Notebook、Obsidian、Hugo、VitePressなどのエコシステムを駆動、静的サイトジェネレーターと開発者ドキュメントの事実上の標準形式に）"
+msgstr "Markdown ドキュメント（2004年John Gruberが創造した軽量マークアップ言語。『読めることがレンダリングである』という核心設計哲学は、GFMやCommonMarkなどの現代の派生仕様を駆動する。技術文書、知識ベース（Obsidian）、現代の静的サイトジェネレーターの交換標準として広く使用される）"
 
 msgid "mime_crystal"
-msgstr "Crystal Reportsレポート形式（SAPビジネスインテリジェンスレポート、企業レポート標準形式）"
+msgstr "Crystal Reports 水晶レポート（SAP Business Intelligence（BI）プラットフォームのプロフェッショナルエンタープライズレベルレポートファイル形式。複数データソース接続と複雑な動的チャートレンダリング能力を備え、多国籍企業の財務・データ分析システムにおける専門的なレポート生成に広く使用される）"
 
 msgid "mime_libreoffice"
-msgstr "LibreOfficeドキュメント（2010年 The Document Foundationが開発、OpenOfficeのブランチ、ODF標準の実装、主流のオープンソースオフィススイート）"
+msgstr "LibreOffice ドキュメント（2010年The Document FoundationがOpenOfficeをベースに立ち上げたオープンソースオフィススイートの独自形式。W3CのODF（OpenDocument Format）国際標準を深く実装し、現代のオープンソースエコシステムにおけるオフィスの基幹である）"
 
 msgid "mime_encrypt"
-msgstr "暗号化ファイル（復号が必要なファイル、一般的な拡張子：.enc、.crypt、.pgp、.gpg）"
+msgstr "ENCRYPT 暗号化ファイル（特定の対称または非対称暗号化アルゴリズムにより処理された元のバイナリまたはテキストデータ。.enc、.pgp、.gpgなどの核心派生形式を含み、ネットワーク層で非公開データの機密性と完全性検証を保証するために使用される）"
 
 msgid "mime_gpx"
-msgstr "GPSトラックデータ（GPS交換形式、位置情報を記録、スポーツウォッチ、ナビゲーションデバイスの汎用形式）"
+msgstr "GPX 衛星軌跡データ（XMLベースの全地球測位システム交換フォーマット。地理座標、ウェイポイント、ルートライン、履歴軌跡の記述に特化しており、現代のモバイルスポーツデバイス、カーナビゲーション、地理情報システム（GIS）で共通のオープンデータ標準である）"
 
 msgid "mime_diskimage"
-msgstr "ディスクイメージ（DMG、ISO、IMGなどの光ディスク/ディスクイメージファイル、ソフトウェア配布やストレージメディアのバックアップに使用）"
+msgstr "Disk Image ディスクイメージ（ISO、DMG、IMGなどを含む、物理ディスクまたは光学メディアのセクタ単位の低レベルイメージファイル。システム低レベルデプロイ、大容量ソフトウェアの安全な配信、ストレージメディアの物理レベル完全バックアップに使用される）"
 
 msgid "mime_vm"
-msgstr "仮想マシンイメージ（VMDK、VDI、VHDX、OVAなどの仮想マシンディスクファイル、VMware、VirtualBox、Hyper-Vなどの仮想化プラットフォーム形式）"
+msgstr "VM 仮想マシンイメージ（VMDK、VDI、VHDX、OVAなどを含む仮想化物理ディスクイメージ。VMware、VirtualBox、Hyper-Vプラットフォームの基盤であり、低レベルシステムハードウェアエミュレーション、インスタンススナップショット、クラウドインフラストラクチャ配信に使用される）"
 
 msgid "mime_torrent"
-msgstr "BitTorrentシードファイル（2001年 Bram Cohenが発明、P2Pダウンロードインデックスファイル、ファイルメタデータとトラッカー情報を含む）"
+msgstr "BitTorrent トレントファイル（2001年Bram Cohenが設計したP2Pピアツーピア分散ダウンロードインデックス。Bencodeエンコーディングに基づき、元ファイルの検証メタデータとトラッカーサーバーのアドレッシング情報を保存、非中央集権的なネットワークストリーム配信の核心的媒体である）"
 
 msgid "mime_gis"
-msgstr "GIS地理情報システムデータ（Shapefile、GeoJSONなどの地理空間データ形式、地図や空間分析に使用）"
+msgstr "GIS 地理空間データ（ShapefileとGeoJSONを核心とする地理情報システムデータ標準。多次元幾何座標、レイヤートポロジ、属性データを含み、高精細デジタルマップレンダリング、衛星リモートセンシング、空間幾何分析に広く使用される）"
 
 msgid "mime_ebook"
-msgstr "電子書籍（EPUB、MOBI、AZWなどの電子書籍形式。EPUBは国際標準、MOBI/AZWはAmazon Kindle形式）"
+msgstr "EBOOK 電子書籍（W3CのEPUB国際オープン標準、Amazon Kindleの独自MOBI/AZWアーキテクチャを核心とするデジタル出版フォーマット。適応型ストリーミングレイアウト、メタデータカプセル化、DRMデジタル著作権管理をサポートし、モバイルデジタルリーディングの汎用媒体である）"
 
 msgid "mime_avif"
-msgstr "AVIF画像（2019年開放メディアアライアンスが発表、AV1コーデックベース、WebPより50%高い圧縮率、次世代ウェブ画像標準）"
+msgstr "AVIF 高効率画像（2019年開放メディア連合（AOMedia）による次世代超高精細画像標準。AV1ビデオエンコーディングのキーフレーム技術に基づき、WebPより50%優れた圧縮率と高ダイナミックレンジ（HDR）のネイティブサポートを実現、現代のWeb画像伝送の主流標準である）"
 
 msgid "mime_markdown"
-msgstr "Markdownドキュメント（2004年 John Gruberが設計、軽量マークアップ言語、GitHub README、技術ドキュメント、フォーラム投稿の汎用形式）"
+msgstr "Markdown 軽量ドキュメント（2004年John Gruberが創造したテキスト文書マークアップ言語。プレーンテキスト宣言型デザインを用い、その構文はreStructuredTextに影響を受けており、GitHubプロジェクト、エンジニアリングレベルの技術ドキュメント、現代の静的コンテンツ管理エコシステムで広く使用される）"
 
 msgid "mime_yaml"
-msgstr "YAML設定（2001年 Clark Evansが設計、人間が読みやすいデータシリアライズ形式、Kubernetes、Ansible、Docker Composeの設定ファイル標準）"
+msgstr "YAML シリアライズ設定（2001年Clark Evansらが設計した人間可読なデータシリアライゼーションフォーマット。階層的インデントとキーバリューマッピングに基づき、現在はKubernetes、Ansible自動化、Docker Composeのクラウドネイティブインフラ設定標準として確立されている）"
 
 msgid "mime_toml"
-msgstr "TOML設定（2013年 Tom Preston-Wernerが設計、「Tom's Obvious Minimal Language」、Rust/Cargo、Python/pip、Goなどのモダンツールの設定ファイル形式）"
+msgstr "TOML セマンティック設定（2013年Tom Preston-Wernerが設計したミニマリスト言語。強い型付け、明示的マッピング、明確なセマンティクスなどの低レベル設計上の利点を持ち、現代のRust（Cargo）、Python（pyproject.toml）、Goのツールチェーンにおける標準的な設定ファイルとして広く使用される）"
 
 msgid "mime_vue"
-msgstr "Vueコンポーネントファイル（2014年にEvan Youが発表したプログレッシブなJavaScriptフレームワーク。単一ファイルコンポーネント（SFC）によりHTML、CSS、JSを完璧に組み合わせ、開発効率を大幅に向上させました。世界で最も人気のあるフロントエンドフレームワークの一つです。また、VitePressなどの最新の静的サイトジェネレーターの中核として、インタラクティブな技術文書やブログの駆動に広く使用されています。）"
+msgstr "Vue 単一ファイルコンポーネント（2014年Evan YouがリリースしたプログレッシブWebフレームワーク独自のSFC形式。単一ファイルでHTML/CSS/JSの関心分離とリアクティブな状態バインディングを実現し、現代のインタラクティブなフロントエンドWebアプリケーションと大規模静的サイトエンジンを深く駆動する）"
 
 msgid "mime_wasm"
-msgstr "WebAssemblyモジュール（2017年 W3C標準、ブラウザ高性能実行形式、C/C++/Rust/Rをターゲットにコンパイル可能、パフォーマンスはネイティブに近い）"
+msgstr "WebAssembly バイナリモジュール（2017年W3Cが確立したWeb向け高性能低レベルバイトコード標準。C/C++/Rustなどの強い型付け言語をブラウザのサンドボックス環境にコンパイルすることを可能にし、ネイティブハードウェアに近い実行効率を提供、現代のWebエッジコンピューティングの中核基盤である）"
 
 msgid "mime_jsx"
-msgstr "React JSXコンポーネント（2013年 Facebookが発表 JavaScript XML、Reactフレームワークのコンポーネント構文、HTMLをJavaScriptに記述する革新的なパラダイム）"
+msgstr "React JSX コンポーネント（2013年FacebookがReactフレームワークと共にリリースしたJavaScript XML構文拡張。JavaScript内で仮想DOM構造を宣言的に構築することをサポートし、『UIは状態の関数である』というフロントエンドのコンポーネント指向開発パラダイムを実現する）"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSXコンポーネント（2012年 Microsoftが開発、TypeScript + JSX、Reactの型安全開発の標準的な書き方）"
+msgstr "TypeScript TSX コンポーネント（2012年Microsoftが開発したTypeScriptの強い型構文とJSXの流れを組み合わせたもの。Reactコンポーネント開発に静的なコンパイル時型チェックとインターフェース制約を注入し、現代の大規模フロントエンドシステムの安全な開発のコード標準である）"
 
 msgid "mime_heif"
-msgstr "HEIF画像（2015年 MPEG標準、高効率画像ファイル形式、Appleエコシステムで広く使用）"
+msgstr "HEIF 高効率画像（2015年MPEG組織が確立した高効率画像ファイル形式。HEVC（H.265）ビデオエンコーディングアルゴリズムに基づき、非常に小さいボリュームで複数の画像フレーム、深度マップ、メタデータをサポートし、現代のモバイルオペレーティングシステムとスマート端末デバイスの独自保存標準である）"
 
 msgid "mime_heic"
-msgstr "HEIC画像（AppleのHEIF実装、iPhoneのデフォルト写真形式、iOS/macOSネイティブサポート）"
+msgstr "HEIC 高効率画像（AppleがHEIF国際標準に基づいて実装した独自ビットマップ形式。現代のiPhoneのデフォルト写真保存標準として、iOS/macOSのハードウェアレベルでのエンコード／デコードとオペレーティングシステムのネイティブサポートを獲得し、高画質を維持しつつ基層の保存容量を大幅に削減する）"
 
 msgid "mime_gltf"
-msgstr "GLTF 3Dモデル（GL伝送形式、「3DのJPEG」、2015年 Khronos Groupが発表、Web 3D標準形式）"
+msgstr "glTF 3Dアセットモデル（2015年Khronos GroupがリリースしたGL伝送フォーマット標準。JSONアーキテクチャを用いて3次元シーンを記述し、『3D分野のJPEG』と称され、現代のWebGL/WebGPUおよび仮想現実レンダリングの軽量工業標準である）"
 
 msgid "mime_glb"
-msgstr "GLBバイナリ3Dモデル（GLTFのバイナリバージョン、単一ファイルにすべてのリソースを含む、3Dシーン配布用）"
+msgstr "GLB バイナリ3Dモデル（glTFアセットモデルの可逆的なバイナリカプセル化バージョン。シーン構造、基層のメッシュ頂点データ、マテリアル、テクスチャを単一ファイルに統合し、クロスプラットフォームなWeb 3Dアセットの効率的な伝送とストリーミング配信に特化して設計されている）"
 
 msgid "mime_gls"
-msgstr "GLOSSARY用語集（用語定義ファイル、ドキュメントシステムの用語管理用）"
+msgstr "GLOSSARY データ用語集（ドキュメント管理システムと構造化コーパス専用の用語定義ファイル。標準用語定義、多言語対照、メタデータマッピングを内蔵し、自動化テキスト分析とコンテンツ公開システムにおける概念の一貫性維持に用いられる）"
 
 msgid "mime_cbz"
-msgstr "CBZコミックブック（ZIP圧縮のコミック画像、コミック収集の汎用形式）"
+msgstr "CBZ 漫画本（ZIP圧縮構造に基づく独自の漫画画像アーカイブ形式。連続した静的ビットマップ画像のシーケンスを内包し、デジタル漫画出版とクロスプラットフォームなローカルコレクションの汎用軽量コンテナ標準である）"
 
 msgid "mime_cbr"
-msgstr "CBRコミックブック（RAR圧縮のコミック画像、コミック収集の汎用形式）"
+msgstr "CBR 漫画本（RAR圧縮構造に基づく独自の漫画画像アーカイブ形式。RARアルゴリズムを用いて静的ビットマップシーケンスをカプセル化し、高い圧縮率を持ち、デジタル漫画配信分野で広範な互換性サポートを有する）"
 
 msgid "mime_fb2"
-msgstr "FB2電子書籍（FictionBook 2.0、ロシアの電子書籍形式、XML構造、オープンソースリーダーで広くサポート）"
+msgstr "FB2 電子書籍（2000年代初頭のFictionBook 2.0電子書籍標準。純粋なXML構造を用いて書籍の属性とテキスト階層を記述し、オープンソースの電子書籍エコシステムとレガシーなデジタル出版リーダーで広くサポートされている）"
 
 msgid "mime_kepub"
-msgstr "KEPUB電子書籍（Kobo専用EPUB形式、Kobo電子書籍リーダー最適化形式）"
+msgstr "KEPUB 電子書籍（KoboがEPUB標準をベースに進化させた独自の拡張電子書籍形式。Koboハードウェア電子書籍リーダー向けに低レベルレンダリング最適化が施され、より効率的なページレイアウトと読書統計インタラクションを提供する）"
 
 msgid "mime_m4b"
-msgstr "M4Bオーディオブック（MPEG-4オーディオブック形式、ブックマークサポート、iTunesオーディオブック形式）"
+msgstr "M4B オーディオブック（MPEG-4 Part 14（MP4）コンテナアーキテクチャに基づくオーディオブック形式。AACエンコーディングを使用し、低レベルのブックマーク位置指定、中断からの再生再開、チャプター埋め込みをネイティブサポート、かつてApple iTunesエコシステムの標準形式であった）"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX形式（2015年 Amazon発表、Kindle専用電子書籍形式、強化された組版と高速ページめくりをサポート）"
+msgstr "Kindle KFX 形式（2015年AmazonがKindleと共にリリースした独自の拡張デジタル出版形式。高度な合字タイポグラフィ、高ダイナミックフォントレンダリング、カーネルレベルのストリーミングページ読み込み（Page Flip）をサポートし、現代のKindleプラットフォームの中核標準である）"
 
 msgid "mime_chm"
-msgstr "CHMヘルプファイル（1997年 Microsoft発表、コンパイル済みHTMLヘルプ形式、Windowsソフトウェアヘルプドキュメント標準）"
+msgstr "CHM コンパイル済みヘルプファイル（1997年Microsoftがリリースしたコンパイル済みHTMLヘルプ情報システム。ハイパーテキストデータと低レベルインデックスを単一バイナリコンテナにまとめ、長年にわたりWindowsソフトウェアのローカルオフラインヘルプドキュメントの標準形式であった）"
 
 msgid "mime_mht"
-msgstr "MHTウェブアーカイブ（1999年 Microsoft発表、単一ファイルウェブ形式、IEブラウザの保存ウェブ形式）"
+msgstr "MHT Webアーカイブ（1999年MicrosoftがリリースしたMIMEアグリゲーションハイパーテキスト形式。RFC 2557標準に基づき、HTMLソース、CSS、JS、埋め込み画像を単一テキストファイルにまとめ、レガシーブラウザでのオフラインWebページ保存に使用される）"
 
 msgid "mime_wml"
-msgstr "WMLワイヤレスマークアップ言語（1999年 WAP標準、初期のフィーチャーフォンのウェブページファイル用、廃止）"
+msgstr "WML 無線マークアップ言語（1999年WAP（Wireless Application Protocol）フォーラムが確立したモバイル向けマークアップ標準。XML仕様に基づき、初期の狭帯域無線セルラーネットワークと低スペックなフィーチャーフォン向けに特別設計された、現代のWebエコシステムでは既に退役したレガシー技術である）"
 
 msgid "mime_xhtml"
-msgstr "XHTMLウェブページ（2000年 W3C標準、HTMLのXMLバージョン、より厳密な構文。2009年 W3Cがメンテナンス終了、重心はHTML5に移行）"
+msgstr "XHTML ハイパーテキストウェブページ（2000年W3C標準、XMLアーキテクチャに基づく厳格なハイパーテキストマークアップ言語。2009年にW3Cはその技術進化を停止し、全面的にHTML5仕様へ移行、現在は主にレガシーシステムにおけるセマンティックなウェブページレンダリングに使用される）"
 
 msgid "mime_xml"
-msgstr "XMLドキュメント（1998年 W3C標準、拡張可能マークアップ言語、Webサービス、設定ファイル、データ交換の基礎形式）"
+msgstr "XML 構造化ドキュメント（1998年W3C標準の拡張可能マークアップ言語。自己記述的なタグアーキテクチャを持ち、ネットワークWebサービス（SOAP/REST）、システムレベル設定ファイル（XSD）、クロスプラットフォームデータ交換の基層フォーマットである）"
 
 msgid "mime_sgml"
-msgstr "SGMLドキュメント（1986年 ISO標準、HTMLの前身、標準汎用マークアップ言語、XMLとHTMLはともにSGMLに由来）"
+msgstr "SGML 標準汎用マークアップ言語（1986年ISO 8879国際標準。電子ドキュメントの構造化記述の業界先駆けとして、XMLと初期のHTML仕様はこの標準メタ言語から派生している）"
 
 msgid "mime_apng"
-msgstr "APNGアニメーション（2004年 Mozillaが開発、PNGのアニメーション拡張、GIFの現代的代替、トゥルーカラーと半透明をサポート）"
+msgstr "APNG 動的グラフィック（2004年Mozillaが開発したPNG動的拡張。24ビットトゥルーカラーと8ビットアルファチャンネルの半透明をサポートし、現代のWebシナリオにおけるGIF形式の高解像度代替案である）"
 
 msgid "mime_bmp"
-msgstr "BMPビットマップ（Windowsビットマップ形式、Windows 1.0からネイティブサポート。非圧縮、ファイルサイズが大きいが、構造が単純で追加コーデックが不要なため、Windows 11のスニッピングツール、ペイントプログラム、EXE/MSIインストールパッケージのアイコンリソース、カーソルファイル、および一部の古いドライバーで今も使用されている。同じ画質の場合、ファイルサイズはPNGの約3〜10倍。ほとんどの場面でPNG/JPEGに置き換えられたが、Windowsエコシステムは依然として幅広い互換性を維持している）"
+msgstr "BMP ネイティブビットマップ（Windows 1.0時代から確立されたMicrosoftプラットフォームのデバイス非依存ビットマップ形式。可逆無圧縮保存のため、通常PNGより3〜10倍容量が大きいが、エンコード／デコードオーバーヘッドが不要なため、今日でもWindows 11の核心コンポーネント、EXE/MSIリソースセクション、レガシードライバのグラフィックバッファに広く組み込まれている）"
 
 msgid "mime_cdr"
-msgstr "CDRベクターグラフィック（CorelDRAW専用形式、カナダのCorel社、ベクターグラフィックデザインソフトウェア）"
+msgstr "CDR ベクターグラフィック（カナダCorel社独自のCorelDRAWプロフェッショナルベクターデザインソース形式。多層カラーマネジメント、複雑な数理曲線ノード、印刷レベルレイアウトデータをサポートし、プロフェッショナルなグラフィック印刷と広告デザイン分野の専用形式である）"
 
 msgid "mime_gif"
-msgstr "GIF画像（1987年 CompuServeが開発、256色動画形式。欠点：色数少ない、画質粗い、半透明非対応、ファイル大きい、フレームレート低い。APNG、WebPなどのモダンな動画形式に置き換え）"
+msgstr "GIF インデックスカラー画像（1987年CompuServeが開発した8ビットインデックスカラービットマップ形式。LZWアルゴリズムに基づき、256色階調と単色透明に制限され、高フレームレートでは容量が肥大化する。現在はAPNG、WebPなどの現代的な高効率アニメーション標準に徐々に置き換えられつつある）"
 
 msgid "mime_ico"
-msgstr "ICOアイコン（Windowsアイコンファイル形式、複数解像度をサポート、ウェブサイトfaviconの標準形式）"
+msgstr "ICO システムアイコン（Windowsネイティブなアイコンリソースカプセル化形式。単一コンテナ内で複数のピクセル解像度と色深度の画像バリアントを混合して埋め込むことをサポートし、現代のWebブラウザにおけるサイト識別子（Favicon）の汎用配布標準でもある）"
 
 msgid "mime_jpeg"
-msgstr "JPEG画像（1992年 ISO標準、非可逆圧縮写真形式、インターネット写真の事実上の標準）"
+msgstr "JPEG 圧縮画像（1992年ISO 10918国際標準の非可逆圧縮形式。離散コサイン変換（DCT）アルゴリズムに基づき、高い圧縮率を達成しながら優れた写実的画像品質を維持、全世界のインターネットにおける静的写真の絶対的な事実上の標準である）"
 
 msgid "mime_jpg"
-msgstr "JPEG画像（1992年 ISO標準、非可逆圧縮写真形式、インターネット写真の事実上の標準）"
+msgstr "JPEG 圧縮画像（1992年ISO 10918国際標準の非可逆圧縮形式。離散コサイン変換（DCT）アルゴリズムに基づき、高い圧縮率を達成しながら優れた写実的画像品質を維持、全世界のインターネットにおける静的写真の絶対的な事実上の標準である）"
 
 msgid "mime_png"
-msgstr "PNG画像（1996年 W3C推奨、トゥルーカラーと半透明をサポート、GIFの静的代替、インターネット非可逆画像標準）"
+msgstr "PNG 可逆画像（1996年W3C推奨のポータブルネットワークグラフィックス標準。可逆圧縮アルゴリズムを用い、24ビットトゥルーカラーと8ビットアルファチャンネル透明度をネイティブサポート、古典的な静的GIFの高解像度代替として、インターネット上の可逆ピクセル画像の絶対的な事実上の標準である）"
 
 msgid "mime_ps"
-msgstr "PostScriptページ記述ファイル（1985年 Adobe発表、ページ記述言語、PDFの前身、印刷と出版に使用）"
+msgstr "PostScript ページ記述ファイル（1985年Adobeがリリースしたスタックベースのページ記述言語。PDF形式の技術的前身として、ハードウェアに依存しないテキストレイアウトと高精細なベクターグラフィックレンダリングを低レベルで実現し、プロフェッショナル印刷とレーザー印刷分野の基盤標準である）"
 
 msgid "mime_psb"
-msgstr "PSB大容量ドキュメント（Adobe Photoshop超大画像形式、2GBまたは30000ピクセルを超える巨大画像をサポート）"
+msgstr "PSB 大規模レイヤードキュメント（Adobe Photoshop独自の超大規模ソースファイルカプセル化形式。標準PSD形式の2GB物理ボリュームと30,000ピクセルという内部アドレス制限を突破し、超大型で深い階層構造を持つ巨大なデジタルアート資産の保存に特化して設計されている）"
 
 msgid "mime_psd"
-msgstr "PSD画像（Adobe Photoshopソースファイル、レイヤー、チャンネル、パスをサポート、画像処理業界標準形式）"
+msgstr "PSD レイヤーデザインソースファイル（Adobe Photoshop独自のレイヤー画像エンジニアリングコンテナ。グラフィックイメージング分野の業界標準コンテナとして、完全なレイヤーレンダリングツリー、ビットマップチャンネル、ベクタークリッピングパス、複雑なブレンドモードをネイティブカプセル化し、可逆な全データ編集をサポートする）"
 
 msgid "mime_webp"
-msgstr "WebP画像（2010年 Googleが開発、ウェブ画像形式、非可逆/可逆圧縮とアニメーションをサポート、圧縮率はPNGより25-35%高く、JPEGより25%高い）"
+msgstr "WebP 高効率画像（2010年Googleがリリースした汎用Webグラフィックエンコーディング標準。VP8ビデオキーフレーム技術に由来し、非可逆、可逆、半透明、動的レンダリングと完全な互換性を持ち、同等品質のPNGより25〜35%小型であり、現代のWebページにおける高パフォーマンス読み込みの基幹である）"
 
 msgid "mime_woff"
-msgstr "WOFFウェブフォント（2009年作成、2018年 W3C標準。TrueType/OpenTypeベースの圧縮、Webフォント読み込み最適化、モダンウェブサイトのアイコンフォント標準形式）"
+msgstr "WOFF Webグリフファイル（2009年に作成され2012年にW3C標準となったWebオープンフォント形式。本質は標準的なTTF/OTFフォント構造をストリームに可逆圧縮するもので、ネットワーク帯域コストを劇的に最適化し、現代のWebサイトアイコンやクラウドフォントの汎用形式である）"
 
 msgid "mime_7z"
-msgstr "7z圧縮パッケージ（1999年 Igor Pavlovが開発、7-Zipプログラム専用形式。LZMAアルゴリズム、高圧縮率、オープンソース無料。7z形式は同じ圧縮率でZIPより通常30-50%小さい、オープンソースコミュニティとソフトウェア配布の一般的な形式）"
+msgstr "7z 圧縮パッケージ（1999年Igor Pavlovが開発した7-Zip独自形式。オープンソースのLZMA/LZMA2アルゴリズムに基づき、非常に高い圧縮率を持つ。同等条件で通常ZIPより30〜50%小型であり、オープンソースコミュニティとソフトウェア配布における汎用高圧縮率形式である）"
 
 msgid "mime_ace"
-msgstr "ACE圧縮パッケージ（1990年代開発、WinACEプログラム形式。かつてRARと競合、圧縮率が比較的高い。2007年開発終了、現在は7z/RARに置き換えられ、あまり使用されない）"
+msgstr "ACE 圧縮パッケージ（1990年代のWinACE独自圧縮形式。かつてRAR形式と競合し高い圧縮率を誇った。2007年以降技術開発が停止し、現在は7zやRAR形式に取って代わられ、レガシーシステムのアーカイブ形式に属する）"
 
 msgid "mime_bz2"
-msgstr "BZIP2圧縮パッケージ（1996年 Julian Sewardが開発、ブロックソート圧縮アルゴリズム。圧縮率はGZIPより15-20%高いが、速度は遅い。Linuxカーネルソース、オープンソースソフトウェアパッケージで一般的な形式、拡張子.bz2）"
+msgstr "BZIP2 圧縮パッケージ（1996年Julian Sewardが開発したブロックソート圧縮形式。その基層アルゴリズムの圧縮率はGZIPより15〜20%高いが、計算オーバーヘッドも大きい。Linuxカーネルソースコードやオープンソースソフトウェアパッケージの配布に多用され、標準拡張子は.bz2である）"
 
 msgid "mime_cab"
-msgstr "CAB圧縮パッケージ（1995年 Microsoftが開発、Cabinet形式。Windowsシステムインストールパッケージ形式、ドライバー、システムファイル配布用。Windows Installer（MSI）は内部でCABを使用してファイルを保存）"
+msgstr "CAB 圧縮パッケージ（1995年Microsoftが開発したキャビネットアーカイブ形式。Windowsシステムのネイティブインストール標準として、ドライバやカーネルファイルの配布に使用され、またWindowsインストーラ（MSI）の基層ストレージコンテナとしても機能する）"
 
 msgid "mime_dmg"
-msgstr "DMGディスクイメージ（1980年代 Apple発表、Disk Image形式。macOSソフトウェア配布の標準形式、ダブルクリックで仮想ディスクとしてマウント、ドラッグ＆ドロップでアプリケーションをインストール。圧縮と暗号化をサポート、Macソフトウェアダウンロードの主流形式）"
+msgstr "DMG ディスクイメージ（1980年代からAppleが進化させてきたディスクイメージ形式。macOSソフトウェア配布の標準コンテナとして、仮想ファイルシステムとしてのマウント、低レベル圧縮、データ暗号化をサポートし、Macエコシステムにおけるアプリ配布の主流形式である）"
 
 msgid "mime_emz"
-msgstr "EMZ圧縮画像（Windows圧縮拡張メタファイル、EMFの圧縮バージョン。Officeドキュメントのベクターグラフィック保存形式、本質はGZIP圧縮されたEMFファイル）"
+msgstr "EMZ 圧縮画像（Windows拡張メタファイルEMFの圧縮バージョン。本質はGZIPアルゴリズムで圧縮されたバイナリベクターグラフィックであり、Microsoft Officeスイートのドキュメントに埋め込まれたベクターグラフィックの保存に広く用いられる）"
 
 msgid "mime_gz"
-msgstr "GZIP圧縮パッケージ（1992年 Jean-loup GaillyとMark Adlerが開発、GNUプロジェクト。Unix/Linux標準圧縮ツール、HTTP伝送圧縮の一般的な形式。拡張子.gz、TARと組み合わせて使用されることが多い）"
+msgstr "GZIP 圧縮パッケージ（1992年GNUプロジェクトのJean-loup GaillyとMark Adlerが開発した標準ストリーム圧縮形式。Unix/Linux標準圧縮ツールとして、HTTPトランスポート層圧縮（Gzip）の中核標準でもあり、TARアーカイブと組み合わせて多用される）"
 
 msgid "mime_jar"
-msgstr "JAR圧縮パッケージ（1997年 Sun Microsystems発表、Java ARchive形式。本質はZIP圧縮パッケージ、Javaクラスライブラリとアプリケーションのパッケージ化に使用。Maven、GradleなどのJavaエコシステムの中核形式、AndroidもJARを使用）"
+msgstr "JAR 圧縮パッケージ（1997年Sun MicrosystemsがリリースしたJavaアーカイブ形式。本質はZIP構造に基づくパッケージコンテナであり、Javaクラスライブラリとメタデータのカプセル化に使用され、Maven、Gradle、初期のAndroidエコシステムの中核コンパイル成果物である）"
 
 msgid "mime_lzma"
-msgstr "LZMA圧縮パッケージ（1998年 Igor Pavlovが開発、Lempel-Ziv-Markov chainアルゴリズム。7z形式の中核圧縮アルゴリズム、高圧縮率、解凍速度が速い。ファームウェア、組み込みシステムソフトウェア配布に使用）"
+msgstr "LZMA 圧縮パッケージ（1998年Igor Pavlovが開発したLempel-Ziv-Markov連鎖圧縮アルゴリズム。7z形式の中核エンジンとして、非常に高い圧縮率と高速な解凍を特徴とし、ハードウェアファームウェアや組み込みシステムの配布に広く使用される）"
 
 msgid "mime_rar"
-msgstr "RAR圧縮パッケージ（1993年 Eugene Roshalが開発、Roshal ARchive形式。高圧縮率、ボリューム分割、リカバリレコードをサポート。WinRARプログラム形式、圧縮率はZIPより優れるが、有料ソフトウェアが必要、unrarなどのオープンソースツールで解凍可能）"
+msgstr "RAR 圧縮パッケージ（1993年Eugene Roshalが開発したWinRAR独自アーカイブ形式。ボリューム分割、物理リカバリレコード（ECC）、強力な暗号化をサポート。圧縮率は標準ZIPより優れ、個人・商用分野で広範な互換性サポートを有する）"
 
 msgid "mime_tar"
-msgstr "TARアーカイブパッケージ（1979年 Unix V7で導入、Tape ARchive形式。テープアーカイブ形式、圧縮せずパッケージ化のみ、GZIP/BZIP2/XZと組み合わせて使用。Linuxソフトウェアパッケージソース、Dockerイメージの階層ストレージにTAR形式を使用）"
+msgstr "TAR アーカイブパッケージ（1979年Unix V7時代のテープアーカイブ形式。データ圧縮を行わずファイルストリームのパッケージングのみを実行し、GZIP/BZIP2/XZと組み合わせて使用されることが多く、LinuxソースコードやDockerイメージの階層ストレージの基層標準である）"
 
 msgid "mime_tgz"
-msgstr "TGZ圧縮パッケージ（TAR + GZIP組み合わせ形式、拡張子.tgzまたは.tar.gz。Unix/Linuxソフトウェアパッケージで最も汎用的な配布形式、ソースパッケージ、バイナリパッケージで広く使用、「解凍してすぐ使用」の代表）"
+msgstr "TGZ 圧縮パッケージ（TARアーカイブとGZIP圧縮のストリーム組み合わせ形式、拡張子は.tgzまたは.tar.gz。Unix/Linux環境における最も汎用的なソフトウェアパッケージ配布形式として、ソースコードのコンパイルデプロイやインストール不要のバイナリパッケージ配布に広く使用される）"
 
 msgid "mime_tbz2"
-msgstr "TBZ2圧縮パッケージ（TAR + BZIP2組み合わせ形式、拡張子.tbz2または.tar.bz2。圧縮率はTGZより15-20%高く、大容量ファイル配布に適し、Linuxカーネルソースは長期間この形式を使用）"
+msgstr "TBZ2 圧縮パッケージ（TARアーカイブとBZIP2圧縮のストリーム組み合わせ形式、拡張子は.tbz2または.tar.bz2。TGZと比較して圧縮率をさらに15〜20%向上させることができ、大規模ファイル転送に適し、かつてLinuxカーネルソースコードの配布に長く使用された）"
 
 msgid "mime_xz"
-msgstr "XZ圧縮パッケージ（2009年発表、LZMA2アルゴリズムベース。圧縮率が非常に高く、GZIPより30-50%高く、解凍速度が比較的速い。Linuxカーネル、パッケージマネージャ（Debianの.deb内部など）で広く使用、現在のLinuxエコシステムで推奨される形式）"
+msgstr "XZ 圧縮パッケージ（2009年にリリースされた次世代高圧縮率形式。LZMA2アルゴリズムに基づき、高速な解凍を維持しながらGZIPより30〜50%優れたデータ圧縮率を持つ。Linuxカーネルや主要なパッケージマネージャ（Debianの.deb内部など）によって推奨配布標準として確立されている）"
 
 msgid "mime_z"
-msgstr "Z圧縮パッケージ（1985年 Unix compressコマンド形式、LZWアルゴリズム。初期のUnix圧縮形式、GZIPに置き換え。拡張子.Z、現代のシステムではほとんど使用されない）"
+msgstr "Z 圧縮パッケージ（1985年Unix compressコマンドのLZW圧縮形式。初期Unixシステムの標準圧縮形式であったが、現在はより効率的なGZIP形式に完全に取って代わられ、現代のネットワークトラフィックでは稀な歴史的レガシー形式である）"
 
 msgid "mime_zip"
-msgstr "ZIP圧縮パッケージ（1989年 Phil Katzが開発、PKZIP形式。Windowsネイティブサポート、インターネットで最も汎用的な圧縮形式。複数ファイル、ディレクトリ構造、圧縮アルゴリズムの選択をサポート。JavaのJAR、AndroidのAPK、OfficeドキュメントのDOCX/XLSXはすべてZIP形式に基づく）"
+msgstr "ZIP 圧縮パッケージ（1989年Phil Katzが開発したPKZIPユニバーサルアーカイブ形式。主要なオペレーティングシステム全てにネイティブサポートされ、インターネット上で最も広く使用されているコンテナ標準である。現代のJavaのJAR、AndroidのAPK、Office文書（OOXML）は全てZIP構造に基づいている）"
 
 msgid "mime_zst"
-msgstr "Zstandard圧縮パッケージ（2015年 Facebookが開発、Yann Collet設計。高速圧縮アルゴリズム、圧縮率はLZMAに近く、速度はGZIPをはるかに上回る。Linuxカーネル5.9+でサポート、Arch Linux pacman、Debian APTが徐々に採用、次世代圧縮標準）"
+msgstr "Zstandard 圧縮パッケージ（2015年FacebookのYann Colletが設計した次世代ストリーム圧縮標準。LZMAの圧縮率に近づきつつ、GZIPを大幅に上回るスループットを実現。Linuxカーネル（5.9+）やArch/Debianのパッケージマネージャに深く採用されている）"
 
 msgid "mime_lz4"
-msgstr "LZ4圧縮パッケージ（2011年 Yann Colletが開発、極速圧縮アルゴリズム。圧縮速度はGZIPより10倍以上速く、リアルタイム圧縮シナリオに適する。Linuxカーネル、OpenZFS、Hadoopで広く使用、速度優先シナリオの第一選択）"
+msgstr "LZ4 圧縮パッケージ（2011年Yann Colletが開発した超高速ストリーム圧縮アルゴリズム。スループット速度はGZIPの10倍以上であり、極めて低いCPU実行時オーバーヘッドを持つ。Linuxカーネル、OpenZFSファイルシステム、Hadoopリアルタイムデータストリーム処理で広く使用される）"
 
 msgid "mime_lzo"
-msgstr "LZO圧縮パッケージ（1996年 Markus Oberhumerが開発、Lempel-Ziv-Oberhumerアルゴリズム。解凍速度が非常に速く、圧縮率は普通。LinuxカーネルSquashfs、OpenWrtファームウェアで使用、組み込みシステムに適する）"
+msgstr "LZO 圧縮パッケージ（1996年Markus Oberhumerが開発したLempel-Ziv-Oberhumerアルゴリズム。超高速な解凍性能に焦点を当てる。LinuxカーネルのSquashfsイメージ、OpenWrtファームウェア、リソース制約のある様々な組み込みシステムに広く組み込まれている）"
 
 msgid "mime_msi"
-msgstr "MSIインストールパッケージ（1999年 Microsoft発表、Windows Installerパッケージ形式。Windowsアプリケーションの標準インストール形式、トランザクションロールバック、コンポーネント管理、サイレントインストールをサポート。エンタープライズレベルのソフトウェア配布の第一選択形式、今なおWindowsソフトウェアインストールの主流）"
+msgstr "MSI システムインストールパッケージ（1999年MicrosoftがリリースしたWindowsインストーラデータカプセル化形式。Windowsのアプリケーションレベルのデプロイ標準として、低レベルトランザクションのロールバック、コンポーネントライフサイクル管理、バッチ処理不要なサイレントインストールをネイティブサポートし、エンタープライズソフトウェアの集中配信とポリシーベースのデプロイの中核標準である）"
 
 msgid "mime_pkg"
-msgstr "PKGインストールパッケージ（macOSアプリケーションインストールパッケージ形式、AppleのInstaller技術に基づく。macOSソフトウェア配布の標準形式、コンポーネント選択、インストールスクリプト、アンインストール機能をサポート。.pkgファイルはダブルクリックでインストール、Mac App Store以外のソフトウェアで一般的な配布方法）"
+msgstr "PKG クロスプラットフォームソフトウェアインストールパッケージ。1. FreeBSDソフトウェアパッケージ：pkgng標準、拡張子.pkgまたは.txz、TAR+XZ/Zstd圧縮に基づき、依存関係解決と署名検証をサポート；2. macOSインストールパッケージ：Appleインストーラ形式に基づき、カスタムコンポーネント、インストールスクリプト、システムレベルアンインストールをサポート。それぞれBSDサーバーとMacシステムの主要な配布媒体である。"
 
 msgid "mime_apk"
-msgstr "APK Androidアプリケーションパッケージ（2008年にGoogleが導入、Androidシステムの従来のアプリケーションインストール形式。APKは本質的にZIPパッケージであり、コード、リソース、マニフェストファイルを含む。2021年以降、Google Playは新しいアプリケーションにAAB形式の使用を要求しているが、APKは依然としてデバッグ、サードパーティストア、サイドローディングに使用されている）"
+msgstr "APK Androidアプリケーションパッケージ（2008年GoogleがAndroidと共にリリースした伝統的なアプリケーションインストールパッケージ。基層はZIPアーカイブ構造に基づき、コンパイル済みDalvikバイトコード（DEX）、メタデータマニフェスト、グローバルリソースをパッケージ化し、現在はローカル開発デバッグ、サードパーティ配布、デバイスへのサイドロードインストールに広く使用される）"
 
 msgid "mime_ipa"
-msgstr "IPA iOSアプリケーションパッケージ（iOS App Store Package、iOS/iPadOSアプリケーションのインストール形式。2008年にiPhone SDKとともに導入。App Storeを通じて配布するか、エンタープライズ証明書で署名する必要がある。実行可能ファイル、リソース、Info.plist、署名情報を含む）"
+msgstr "IPA Appleアプリケーションパッケージ（2008年iPhone SDKと共にリリースされたiOS/iPadOS専用パッケージコンテナ。本質はFairPlay DRMまたはエンタープライズ証明書で署名されたZIPアーカイブであり、Mach-Oバイナリ実行可能ファイル、アプリケーションリソースツリー、Info.plistメタデータ設定を含む）"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOSアプリケーションパッケージ（HarmonyOS Ability Package、HarmonyOSアプリケーションの基本単位。2020年にHarmonyOS 2.0とともに導入。entryとfeatureの2つのタイプをサポート、Huawei電話、タブレット、スマートウォッチ、その他のHarmonyOSデバイス向けの配布形式）"
+msgstr "HAP HarmonyOSアプリケーションパッケージ（2020年HarmonyOS 2.0と共にリリースされたHarmonyOSの弾力的なデプロイ基本単位。EntryメインモジュールまたはFeature拡張機能モジュールから構成され、スマート端末向けのマルチエンド（スマートフォン、タブレット、ウェアラブル）クロスデバイス配信形式である）"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS静的共有ライブラリ（HarmonyOS Archive、HarmonyOSの静的共有ライブラリ、複数のHAPパッケージで共有可能、コンポーネントベースの開発とモジュールの再利用に使用される）"
+msgstr "HAR HarmonyOS静的共有パッケージ（HarmonyOS独自の静的共有ライブラリアーカイブファイル。共通コンポーネント、基層リソースコード、コンパイル時依存関係のカプセル化に使用され、複数のHAPモジュールによって静的にリンクされ共有される、HarmonyOSシステムのコンポーネントベース開発とマルチモジュール再利用の基盤である）"
 
 msgid "mime_aab"
-msgstr "Android App Bundle（2018年 Google発表、2021年以降Google Playは新アプリにこの形式を強制。AABは配布形式、Google Playがデバイス設定（CPUアーキテクチャ、画面密度、言語）に基づいて最適化されたAPKを動的に生成、インストールパッケージサイズは平均35%削減。開発者はAABをアップロード、ユーザーはAPKをダウンロード）"
+msgstr "AAB Androidアプリバンドル（2018年Googleが導入し2021年に確立したGoogle Play動的配信形式。純粋な配信エンティティとして、クラウドが対象デバイスのCPUアーキテクチャ、画面密度、言語に基づいて動的に調整・コンパイルし、必要に応じて最適化されたAPKを生成、伝送帯域オーバーヘッドを平均35%削減する）"
 
 msgid "mime_xapk"
-msgstr "XAPKアプリケーションパッケージ（サードパーティAndroidアプリケーション拡張パッケージ、APK + OBBデータファイルを含む。大規模ゲームや複雑なアプリケーションに使用、APK単一ファイル100MB制限の問題を解決。APKPure、APKMirrorなどのサードパーティアプリストアで一般的、Google公式形式ではない）"
+msgstr "XAPK 拡張アプリケーションパッケージ（サードパーティAndroidコミュニティが確立した非公式のアプリケーション拡張標準。標準APKファイルと大きなOBBゲームデータ拡張パッケージを結合し、Google Playの100MB個別ファイルサイズ制限を物理的に突破するもので、ゲーム配信プラットフォームで広く見られる）"
 
 msgid "mime_appx"
-msgstr "Windowsアプリケーションパッケージ（2012年 Microsoft発表、Windows 8/10/11アプリケーションインストール形式。UWPとデスクトップアプリケーション変換をサポート、Microsoft Storeを通じて配布。2024年Microsoftは後継形式としてMSIXを発表、徐々にAPPXを置き換え）"
+msgstr "APPX モダンアプリケーションパッケージ（2012年MicrosoftがWindows 8と共にリリースしたUWPアプリケーションデプロイ標準。サンドボックス分離実行と軽量アンインストール機能を備え、Microsoft Storeの初期支配的な標準であったが、現代のWindowsエコシステムではMSIXへと進化するライフサイクルの後期段階に入っている）"
 
 msgid "mime_msix"
-msgstr "MSIXアプリケーションパッケージ（2018年 Microsoft発表、Windows次世代アプリケーションパッケージ形式。APPXとMSIの利点を組み合わせ、すべてのWindowsアプリケーションタイプをサポート、Microsoft Storeまたはサイドロードインストール可能、Windows 11推奨形式）"
+msgstr "MSIX 次世代アプリケーションパッケージ（2018年Microsoftがリリースした新しい完全標準化されたWindowsパッケージ仕様。APPXのアプリケーションセキュリティサンドボックス機能とMSIのエンタープライズ資産管理の利点を完璧に融合させ、全てのWin32アプリケーションタイプと完全な互換性を持ち、Windows 11で推奨される配布標準である）"
 
 msgid "mime_appimage"
-msgstr "AppImageアプリケーションパッケージ（2004年発表、Linuxインストール不要のアプリケーション形式。「ワンアプリワンファイル」、インストール不要で直接実行、ほとんどのLinuxディストリビューションをサポート、開発者がLinuxソフトウェアを配布する一般的な方法）"
+msgstr "AppImage インストール不要アプリケーションパッケージ（2004年に開始されたLinux単一実行可能アーカイブ仕様。『1アプリケーション＝1ファイル』という自己完結型アーキテクチャを採用し、実行時にFUSEメカニズムを介して読み取り専用の仮想ファイルシステムとして直接マウントされ、Linuxディストリビューション間でのゼロ依存・即時実行を実現する）"
 
 msgid "mime_flatpak"
-msgstr "Flatpakアプリケーションパッケージ（2015年発表、Linuxサンドボックス化アプリケーション形式。クロスディストリビューションで実行、ホストシステムから隔離、Fedora、Red Hatが主導して開発、GNOMEソフトウェアセンターのデフォルト形式）"
+msgstr "Flatpak サンドボックスアプリケーションパッケージ（2015年にRed HatとGNOMEが主導するLinuxクロスディストリビューションデスクトップアプリ配布標準。LinuxカーネルのNamespaceおよびCgroupsメカニズムに基づき、非常に厳格なアプリケーションレベルのセキュリティサンドボックス分離を実現し、現代のオープンソースOSソフトウェアセンターの基盤である）"
 
 msgid "mime_snap"
-msgstr "Snapアプリケーションパッケージ（2014年 Canonical発表、Ubuntu親会社が開発、Linux汎用アプリケーション形式。自動更新、サンドボックス分離、40以上のLinuxディストリビューションをサポート、Ubuntuソフトウェアセンターのデフォルト形式）"
+msgstr "Snap コンテナ化アプリケーションパッケージ（2014年Ubuntu親会社CanonicalがリリースしたLinuxユニバーサルデプロイ標準。アプリケーション自己完結型のSquashFSイメージマウントアーキテクチャを採用し、自動インクリメンタルアップデートと厳格なAppArmorサンドボックス分離をサポートし、Ubuntuソフトウェアセンターエコシステムのデフォルト核心形式である）"
 
 msgid "mime_deb"
-msgstr "Debianソフトウェアパッケージ（1993年 Debianプロジェクト発表、Debian/Ubuntuおよびその派生版の標準インストール形式。dpkgで管理、APTはそのパッケージマネージャフロントエンド、Linuxエコシステムで最も成熟したパッケージ形式の一つ、今なおDebian系の主流）"
+msgstr "DEB システムソフトウェアパッケージ（1993年Debianプロジェクトが確立したバイナリとソースコードのカプセル化仕様。Debian、Ubuntu、および全ての派生ディストリビューションの基層インストール標準として、dpkgを核としてパッケージの展開・保守を行い、APTを高効率なパッケージマネージャフロントエンドとして利用する、Linuxエコシステムで最も成熟したソフトウェア配布の基盤である）"
 
 msgid "mime_rpm"
-msgstr "RPMソフトウェアパッケージ（1997年 Red Hat発表、Red Hat/Fedora/CentOS/SUSEなどのディストリビューションの標準形式。RPMは「Red Hat Package Manager」の略、DEBと並ぶLinux二大パッケージ形式、今なおRHEL系の主流）"
+msgstr "RPM システムソフトウェアパッケージ（1997年Red HatがリリースしたRed Hatパッケージマネージャカプセル化仕様。DEBと並ぶ伝統的なLinuxパッケージ管理の二大陣営の一つであり、トランザクションベースの依存関係チェックと低レベルのソフトウェアデジタル署名検証をネイティブ機能として備え、RHEL、Fedora、CentOSなどのRed Hat系エコシステムにおいて今日でも絶対的主流の配布標準である）"
 
 msgid "mime_pacman"
-msgstr "Archソフトウェアパッケージ（2002年 Arch Linux発表、pacmanパッケージマネージャが使用する.pkg.tar.zst形式。Arch Linuxローリングリリースディストリビューションの中核、シンプルさとKISS原則で知られ、AUR（Arch User Repository）がその特徴）"
+msgstr "Pacman アーカイブソフトウェアパッケージ（2002年Arch Linuxがpacmanマネージャと共に確立した.pkg.tar.zstカプセル化形式。Archのローリングアップデート機構の核心として、Zstandard高速高圧縮アルゴリズムに基づき、AUR（Archユーザソフトウェアリポジトリ）エコシステムと共に、ミニマリズムとKISS原則を体現する現代的なパッケージ配布標準である）"
 
 msgid "mime_exe"
-msgstr "EXE実行可能ファイル（Windows実行可能プログラム形式、「Executable」の略。Windows OSネイティブ実行形式、PE構造を含む。MS-DOSのMZ形式から発展、1993年Windows NTがPE（Portable Executable）形式を導入し現在まで使用。ソフトウェアインストールパッケージ、アプリケーション、システムツールがこの形式を使用。ユーザーがダブルクリックで実行可能、世界で最も広く使用されている実行可能形式）"
+msgstr "EXE ネイティブ実行可能ファイル（Windowsプラットフォームのポータブル実行可能（PE）バイナリプログラム形式。技術的な系譜はMS-DOS時代のMZヘッダ構造に遡り、1993年のWindows NT以降、PE構造仕様として完全に確立され、機械コード命令、静的リソースセクション、システムカーネルブートストラップの世界で最も広く使用されている実行標準である）"
 
 msgid "mime_dll"
-msgstr "DLL動的リンクライブラリ（1993年 Microsoft発表、Dynamic Link Library。Windows共有コードライブラリ、プログラム実行時に動的にロード、メモリとディスク容量を節約。システムコンポーネント、アプリケーションプラグイン、ドライバーがDLL形式を使用。Windows APIの中核実装方式、DLL Hell問題は.NET時代に緩和）"
+msgstr "DLL ダイナミックリンクライブラリ（Windowsプラットフォームのダイナミックリンクライブラリ共有コードライブラリ仕様。実行時の動的ロードとシンボル再配置により、物理メモリとディスク容量を大幅に節約し、Windows APIの中核実装形態として、初期の『DLL地獄』問題は現代ではSxS並列分離メカニズムにより根本的に解決されている）"
 
 msgid "mime_com"
-msgstr "COM実行可能ファイル（MS-DOS時代の実行可能形式、「Command」の略。ファイル構造が単純、64KB制限、Windows 3.x以前の主流形式。廃止、現代のWindowsはEXE形式を使用、COM拡張子は一部のコンポーネントファイルに引き続き使用される）"
+msgstr "COM クラシック実行可能ファイル（MS-DOS時代の最も古いメモリイメージ（Command）実行形式。無構造な純粋コードセグメント設計を用い、64KBの物理メモリアドレッシングセグメント上限に制限される。現在は歴史的レガシー形式として引退しているが、現代のWindowsアーキテクチャでは特定のコンポーネントインターフェースとして限定的な互換性が維持されている）"
 
 msgid "mime_aac"
 msgstr "AACオーディオ（1997年 MPEG標準、Advanced Audio Coding。MP3の後継、同じビットレートでMP3より音質が良い、YouTube、iTunes、Nintendo Switchのデフォルトオーディオ形式）"

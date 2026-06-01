@@ -458,8 +458,8 @@ msgstr "Host - Jumlah halaman - Jumlah akses - Bandwidth - Tanggal kunjungan ter
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Tanggal mulai kunjungan terakhir] dan [Halaman terakhir dari kunjungan terakhir] hanya disimpan jika sesi belum berakhir"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Halaman utama hanya menampilkan %s item pertama dengan akses terbanyak. Silakan lihat daftar lengkap di halaman detail."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "%s item pertama diurutkan berdasarkan jumlah hit secara menurun; urutan item lainnya tidak ditentukan."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Pengguna yang masuk - Jumlah halaman - Jumlah akses - Bandwidth - Waktu kunjungan terakhir"
@@ -473,8 +473,8 @@ msgstr "ID Cacing - Jumlah akses - Bandwidth - Waktu kunjungan terakhir"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Email - Jumlah akses - Bandwidth - Waktu kunjungan terakhir"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Halaman utama hanya menampilkan %s permintaan email pertama. Silakan lihat daftar lengkap di halaman detail."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "%s alamat email pertama diurutkan berdasarkan jumlah hit secara menurun; urutan alamat lainnya tidak ditentukan."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Jumlah halaman - Bandwidth - Masuk - Keluar"
@@ -683,6 +683,27 @@ msgstr "Parameter SiteDomain tidak ditentukan dalam file config/domain Anda, ata
 msgid "Please run as Administrator to set permissions"
 msgstr "Jalankan sebagai Administrator untuk mengatur izin"
 
+msgid "This directory lacks read permission"
+msgstr "Direktori ini tidak memiliki izin baca"
+
+msgid "Please set read permission for directory"
+msgstr "Harap atur izin baca untuk direktori"
+
+msgid "Missing required parameter in config file"
+msgstr "Parameter yang diperlukan tidak ada dalam berkas konfigurasi"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Harap periksa bahwa 'DirData' ditentukan."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Nama domain di alamat peramban tampaknya hilang atau tidak lengkap"
+
+msgid "Please check the URL parameter"
+msgstr "Harap periksa parameter URL"
+
+msgid "Format description"
+msgstr "Deskripsi format"
+
 msgid "Please set execute permission"
 msgstr "Harap atur izin eksekusi"
 
@@ -808,376 +829,379 @@ msgstr "Alat pengambil"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "File teks (standarisasi ASCII 1963, teks biasa tanpa format. Dasar dari semua kode sumber, konfigurasi, log. Unix menggunakan LF, Windows menggunakan CRLF untuk baris baru, masih format data paling umum dalam komputasi)"
+msgstr "TXT berkas teks biasa (teks biasa tanpa format yang distandarisasi oleh ASCII pada tahun 1963. Sebagai fondasi bagi semua kode sumber, berkas konfigurasi, dan log sistem, aliran kontrol baris baru lintas platformnya (CRLF di Windows, LF di Unix) tetap menjadi standar pertukaran data paling universal di dunia komputasi)"
 
 msgid "mime_log"
-msgstr "File log (file teks biasa yang merekam informasi sistem dan eksekusi aplikasi, sering digunakan untuk pemecahan masalah, analisis kinerja, audit keamanan. Format standar seperti Apache combined log, Nginx access log, syslog, dll.)"
+msgstr "LOG log waktu jalan sistem (merekam status waktu jalan sistem operasi, kernel, dan tingkat aplikasi sebagai aset teks biasa. Mencakup log akses Nginx/Apache (Combined Log) dan spesifikasi syslog standar, menjadi sumber data inti untuk pemecahan masalah, analisis kinerja aliran, dan audit keamanan)"
 
 msgid "mime_page"
-msgstr "Halaman web HTML (Tim Berners-Lee menemukan World Wide Web pada tahun 1989, mendefinisikan tiga teknologi HTML/HTTP/URL pada tahun 1990, menawarkannya secara gratis tanpa paten. HTML5 menjadi standar resmi W3C pada tahun 2014, mendukung tampilan, multimedia, dan pencetakan. Pemenang Hadiah Turing 2016)"
+msgstr "HTML halaman web hiperteks (dibuat oleh Tim Berners-Lee pada tahun 1989, landasan World Wide Web. Sebagai bahasa markah hiperteks universal gratis, spesifikasi HTML5 menjadi standar W3C resmi pada tahun 2014, mendukung secara native multimedia terstruktur, interaksi semantik, dan tata letak halaman yang mengalir, meraih Penghargaan Turing pada tahun 2016)"
 
 msgid "mime_khtml"
-msgstr "Mesin web KHTML (dirilis dengan KDE 2.0 pada tahun 1998, mesin render peramban Konqueror. Apple membuat WebKit berdasarkan KHTML pada tahun 2001, Google membuat Blink dari WebKit pada tahun 2008, yang menjadi inti peramban Chrome, Edge, Safari. KHTML adalah contoh bagaimana komunitas open source meletakkan dasar bagi mesin peramban modern, warisan teknologinya berlanjut melalui WebKit/Blink)"
+msgstr "KHTML mesin templat web (spesifikasi mesin perender peramban KDE 2.0 tahun 1998. Sebagai tolok ukur sumber terbuka yang meletakkan fondasi bagi perenderan web modern, warisan teknologinya secara langsung menginspirasi inti WebKit Apple dan Blink Google, dan masih berlanjut melalui arsitektur web dinamis modern yang mengalir)"
 
 msgid "mime_script"
-msgstr "Skrip dinamis (bahasa interpretasi, tidak memerlukan kompilasi. Termasuk ASP, JSP, CGI, ColdFusion, Tcl, VBScript, dll., banyak digunakan dalam pengembangan web awal, administrasi sistem, otomatisasi tugas. Bahasa skrip modern seperti Python, Ruby, JavaScript telah berkembang menjadi bahasa utama untuk pengembangan full-stack)"
+msgstr "SCRIPT skrip dinamis terinterpretasi (kategori umum aliran kode sumber yang dijalankan baris demi baris oleh lingkungan jalan waktu atau interpreter tertentu tanpa kompilasi sebelumnya. Mencakup ASP, JSP, CGI, dan Tcl, digunakan secara luas untuk antarmuka gerbang bersama sisi server, kontrol proses otomatisasi, dan perekat tugas tingkat sistem)"
 
 msgid "mime_js"
-msgstr "Skrip JavaScript (Brendan Eich membuatnya dalam 10 hari di Netscape pada tahun 1995, bahasa pemrograman asli peramban. ECMAScript distandarisasi pada tahun 1997, kelahiran Node.js pada tahun 2009 menjadikannya bahasa full-stack, npm adalah manajer paket terbesar di dunia. Bertahun-tahun menjadi bahasa pemrograman paling populer di GitHub)"
+msgstr "JavaScript skrip (lingkungan pemrograman native peramban Netscape tahun 1995. Tahun 1997 standar industri ECMAScript ditetapkan, tahun 2009 lahirlah lingkungan jalan waktu Node.js, yang mematahkan batasan peramban dan menciptakan arsitektur tanpa blokir asinkron tumpukan penuh, disertai dengan ekosistem paket perangkat lunak npm terbesar di dunia)"
 
 msgid "mime_py"
-msgstr "Skrip Python (dibuat oleh Guido van Rossum pada tahun 1991, dikenal dengan indentasi wajib dan sintaks sederhana. Banyak digunakan dalam pengembangan web, ilmu data, kecerdasan buatan, otomatisasi operasi. Beberapa kali pemenang penghargaan TIOBE untuk Bahasa Pemrograman Tahun Ini)"
+msgstr "Python skrip (bahasa skrip terinterpretasi tingkat tinggi yang dibuat oleh Guido van Rossum pada tahun 1991. Berkat keterbacaannya tanpa kehilangan karena indentasi wajib dan desain multi-paradigmanya, ia telah menjadi bahasa standar industri untuk arsitektur web modern, ilmu data tumpukan penuh, pelatihan model kecerdasan buatan (AI), dan operasi otomatisasi native cloud)"
 
 msgid "mime_sh"
-msgstr "Skrip Shell (kelahiran Unix pada tahun 1971, bahasa skrip perintah. Digunakan untuk administrasi sistem, otomatisasi tugas, memulai layanan, skrip deployment. Keterampilan penting untuk administrasi Linux)"
+msgstr "Shell skrip (skrip interpreter perintah standar era Unix tahun 1971. Berisi perintah tingkat kernel seperti Bash, Sh, Dash, biasanya dijalankan dengan ekstensi .sh, berfungsi sebagai lem perekat tingkat kernel universal untuk kontrol proses tingkat rendah, konfigurasi lingkungan tanpa instalasi, dan penerapan otomatis dalam sistem operasi modern mirip Unix)"
 
 msgid "mime_rb"
-msgstr "Skrip Ruby (dibuat oleh Yukihiro Matsumoto pada tahun 1995, berfokus pada kebahagiaan pengembang. Kerangka Ruby on Rails memperkenalkan paradigma konvensi daripada konfigurasi, mempengaruhi desain kerangka web modern)"
+msgstr "Ruby skrip (bahasa skrip berorientasi objek yang dibuat oleh Yukihiro Matsumoto pada tahun 1995. Dengan filosofi desain inti yang sangat menghormati pengalaman pengembang, kerangka kerja Ruby on Rails-nya merevolusi arsitektur web tingkat tinggi modern dengan menetapkan paradigma 'Konvensi di atas Konfigurasi' (CoC))"
 
 msgid "mime_pl"
-msgstr "Skrip Perl (dibuat oleh Larry Wall pada tahun 1987, dikenal karena pragmatismenya, dijuluki 'pisau Swiss army'. CPAN adalah pelopor manajer paket bahasa modern, memiliki pengaruh mendalam dalam pemrosesan teks, administrasi sistem, dan CGI)"
+msgstr "Perl skrip (bahasa skrip pragmatis yang dibuat oleh Larry Wall pada tahun 1987. Sebagai pelopor manajer paket modern (CPAN), ia dikenal sebagai 'pisau tentara Swiss' untuk pemrosesan teks. Dalam mode CGI modern, dengan overhead memori fisik yang sangat rendah dan penanganan ekspresi reguler yang efisien, ia berfungsi sebagai tulang punggung dengan keandalan tinggi untuk penguraian log)"
 
 msgid "mime_php"
-msgstr "Halaman web dinamis PHP (dibuat oleh Rasmus Lerdorf pada tahun 1995, dirancang khusus untuk pengembangan web. Lebih dari 70% situs web dunia menggunakannya, mendukung platform seperti WordPress, Facebook, Wikipedia. PHP 8 memperkenalkan kompilasi JIT, meningkatkan kinerja secara signifikan)"
+msgstr "PHP halaman web dinamis (dibuat oleh Rasmus Lerdorf pada tahun 1995, dirancang khusus untuk pengembangan web. Sebagai teknologi inti yang menggerakkan lebih dari 70% situs web global, ia menjadi fondasi aplikasi produksi skala besar seperti WordPress dan Wikipedia. Mulai PHP 8, dengan diperkenalkannya mesin jalan waktu JIT (tepat waktu), ia telah berevolusi menuju arsitektur server tumpukan penuh berkinerja tinggi)"
 
 msgid "mime_image"
-msgstr "File gambar"
+msgstr "IMAGE kategori aset gambar (mencakup peta bit terkompresi dengan/ tanpa kehilangan, grafik web responsif modern, dan vektor. Indikator utama untuk menilai beban sumber daya visual situs, rasio hit tembolok sisi klien, dan konsumsi lebar pita jaringan media)"
 
 msgid "mime_document"
-msgstr "File dokumen"
+msgstr "DOCUMENT kategori dokumen terstruktur (mencakup teks biasa, lembar kerja, dokumen resmi tata letak tetap (PDF), dan bahasa markah ringan. Indikator utama untuk statistik distribusi basis pengetahuan statis sisi server, unduhan aset perusahaan, dan kapasitas aliran teks)"
 
 msgid "mime_package"
-msgstr "Paket perangkat lunak"
+msgstr "PACKAGE kategori produk kompilasi dan paket perangkat lunak (mencakup program yang dapat dieksekusi native sistem operasi, pustaka taut waktu jalan (DLL/SO), dan paket instalasi distribusi aplikasi. Sering digunakan sebagai indikator untuk mengevaluasi lalu lintas keluar dan puncak unduhan di situs distribusi perangkat lunak)"
 
 msgid "mime_archive"
-msgstr "File terkompresi Gzip (proyek GNU 1992, berdasarkan algoritma DEFLATE. Di web digunakan untuk kompresi dinamis konten respons, rasio kompresi biasanya 60-90%. Setelah 2015 digantikan oleh Brotli dalam beberapa skenario, tetapi tetap menjadi format kompresi paling luas didukung di sisi server)"
+msgstr "ARCHIVE berkas arsip dan terkompresi (kategori umum paket kompresi data berdasarkan algoritma inti seperti DEFLATE, LZMA. Pada lapisan jaringan, selain distribusi paket tradisional, ini juga mencakup aliran respons dinamis Gzip dari Proyek GNU tahun 1992. Meskipun algoritma Brotli secara bertahap diperkenalkan di beberapa skenario modern, kategori ini tetap menjadi indikator utama untuk mengevaluasi kapasitas lebar pita server dan efisiensi kompresi lapisan transportasi)"
 
 msgid "mime_audio"
-msgstr "File audio"
+msgstr "AUDIO kategori aliran audio digital (mencakup audio terkompresi, buku audio, dan wadah aliran audio. Berdasarkan standar codec audio tertentu, digunakan untuk memantau kapasitas aliran data audio di situs multimedia, lebar pita aliran bersamaan, dan perilaku koneksi panjang)"
 
 msgid "mime_video"
-msgstr "File video"
+msgstr "VIDEO kategori aliran video digital (mencakup wadah video definisi tinggi, animasi web modern, dan fragmen aliran. Indikator utama untuk menilai batas puncak lebar pita server dan efektivitas akselerasi Jaringan Pengiriman Konten (CDN) di bawah beban jaringan tinggi)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (dikembangkan oleh Brendan Eich pada tahun 1995)"
+msgstr "JScript skrip (implementasi kepemilikan rekayasa balik yang dikembangkan oleh Microsoft pada tahun 1996 untuk Internet Explorer 3.0. Sebagai pesaing inang awal untuk JavaScript klasik, ia berfungsi sebagai mesin inti untuk Windows Script Host (WSH) dan backend ASP awal)"
 
 msgid "mime_json"
-msgstr "Data JSON (diusulkan oleh Douglas Crockford pada tahun 2001, format pertukaran data ringan, standar de facto untuk API web)"
+msgstr "JSON data terstruktur (format pertukaran serialisasi data ringan yang ditetapkan oleh Douglas Crockford pada tahun 2001. Berdasarkan pasangan kunci-nilai berbasis teks dan struktur larik, dengan keterbacaan manusia yang tinggi dan karakteristik penguraian aliran tanpa kehilangan, ia adalah standar de facto untuk API web modern, arsitektur mikroservis, dan interaksi model bahasa besar)"
 
 msgid "mime_vbs"
-msgstr "VBScript (dikembangkan oleh Microsoft pada tahun 1996, bahasa skrip Windows, digunakan untuk halaman web ASP dan skrip administrasi Windows. Dengan popularitas PowerShell dan JavaScript, perlahan-lahan ditinggalkan)"
+msgstr "VBScript skrip (varian bahasa skrip yang dirilis oleh Microsoft dengan IE 3.0 pada tahun 1996. Berfungsi sebagai penggerak inti untuk situs web dinamis ASP awal dan administrasi sistem Windows, tetapi sekarang secara resmi tidak digunakan lagi dan dihapus dari kernel Windows 11 terbaru, termasuk dalam teknologi peninggalan historis)"
 
 msgid "mime_conf"
-msgstr "File konfigurasi (menyimpan konfigurasi perangkat lunak dalam format teks, format umum: INI, JSON, YAML, TOML, XML. Konfigurasi sistem Linux sebagian besar berada di direktori /etc)"
+msgstr "CONF berkas konfigurasi sistem (kategori umum berkas data yang menyimpan parameter lingkungan waktu jalan perangkat lunak dalam bentuk teks biasa. Mencakup spesifikasi INI dan YAML, TOML, JSON modern. Dalam sistem Linux, sebagian besar terkonsentrasi di direktori /etc, menjadi ketergantungan inti untuk penyesuaian status waktu jalan tingkat sistem)"
 
 msgid "mime_css"
-msgstr "Lembar gaya CSS (W3C merilis standar resmi pertama CSS1 pada Desember 1996, CSS2 menambahkan posisi dan tipe media pada tahun 1998, mulai 2011 modularisasi CSS3 memperkenalkan sudut membulat, animasi, kotak fleksibel, tata letak grid, dan desain responsif. Bersama HTML dan JavaScript, merupakan tiga teknologi utama front-end, semua peramban modern (Chrome, Firefox, Safari, Edge) mendukungnya secara native, satu-satunya standar untuk mendefinisikan gaya halaman web)"
+msgstr "CSS lembar gaya bertingkat (standar W3C tahun 1996, bersama dengan HTML/JS membentuk tiga inti pengembangan antarmuka depan. Berkembang dari penentuan posisi CSS2 hingga modularisasi CSS3, ia mendukung secara native Flexbox, Grid, dan desain responsif dengan kueri media, menjadi standar dominan untuk memisahkan penyajian halaman web di peramban modern)"
 
 msgid "mime_xsl"
-msgstr "Lembar gaya XSL (standar W3C 1999, bahasa transformasi dokumen XML, dapat mengubah XML menjadi HTML/PDF/teks. Penggunaannya menurun setelah popularitas JSON)"
+msgstr "XSL lembar gaya (standar W3C tahun 1999, mencakup bahasa transformasi XSLT dan bahasa pengalamatan XPath, untuk merender data XML terstruktur menjadi HTML, PDF, atau teks biasa. Dalam pengembangan modern, ekosistemnya sebagian besar telah digantikan oleh mesin templat yang lebih ringan dan format data JSON)"
 
 msgid "mime_runtime"
-msgstr "File yang dapat dieksekusi (format eksekusi sistem operasi seperti EXE, ELF, Mach-O, berisi kode mesin dan informasi pemuatan)"
+msgstr "berkas yang dapat dieksekusi (format eksekusi native sistem operasi seperti EXE, ELF, Mach-O, berisi kode mesin tingkat rendah yang dikompilasi, titik entri, dan informasi pemuatan sistem)"
 
 msgid "mime_library"
-msgstr "File pustaka (DLL, SO, dylib, dll., pustaka yang ditautkan secara dinamis, kode bersama yang dimuat program selama eksekusi)"
+msgstr "berkas pustaka (DLL, SO, dylib, dll., pustaka taut dinamis atau statis, berisi simbol bersama dan kode pengubahan alamat untuk dipanggil dan dimuat oleh program lain saat waktu jalan)"
 
 msgid "mime_swf"
-msgstr "Animasi Flash (Macromedia mengembangkannya pada tahun 1996, kemudian menjadi milik Adobe. Standar animasi web interaktif, pernah mendominasi animasi dan game internet. Kekurangan: memerlukan plugin, tidak didukung di perangkat seluler, risiko keamanan tinggi. Adobe mengumumkan penghentian pada tahun 2017, menghentikan dukungan sepenuhnya pada tahun 2020, digantikan oleh HTML5/CSS3/JS)"
+msgstr "Flash animasi (Macromedia 1996, diakuisisi oleh Adobe pada tahun 2005. Standar animasi web interaktif, pernah mendominasi animasi dan game internet. Kekurangan: ketergantungan plugin, kurangnya dukungan seluler, risiko keamanan tinggi. Adobe mengumumkan penghentiannya pada tahun 2017, dukungan dihentikan sepenuhnya pada tahun 2020, digantikan oleh HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD definisi tipe dokumen (spesifikasi XML, mendefinisikan struktur dokumen XML, digunakan untuk memvalidasi legitimasi XML)"
+msgstr "DTD definisi jenis dokumen (dirilis dengan XML 1.0 pada tahun 1998, digunakan untuk mendefinisikan struktur dokumen XML/HTML dan memvalidasi legalitasnya. Dalam pengembangan modern, ia sebagian besar telah digantikan oleh solusi yang lebih fleksibel seperti Skema XML, RELAX NG, dll.)"
 
 msgid "mime_csv"
-msgstr "Format data CSV (nilai dipisah koma, format data tabular umum, standar untuk impor/ekspor Excel dan basis data)"
+msgstr "CSV format data (nilai dipisah koma, format tabel teks biasa universal dari era komputer besar (kompilator IBM Fortran) pada tahun 1972. Diformalisasi pada tahun 2005 oleh RFC 4180 sebagai standar pertukaran data tanpa kehilangan lintas platform dan lintas bahasa. Digunakan secara luas untuk impor/ekspor yang efisien dengan Excel, basis data relasional, dan analisis data (Pandas))"
+
+msgid "mime_cur"
+msgstr "berkas kursor tetikus (format .cur, digunakan untuk menyesuaikan gaya penunjuk tetikus, seperti kursor jari di halaman web atau ikon jam pasir saat menunggu. Ia 'bersaudara' dengan ikon .ico yang umum, tetapi memiliki 'titik panas' tambahan – lokasi klik yang sebenarnya. Sejarah: diperkenalkan dengan Windows 3.1 (1992), komponen kunci dalam transisi dari antarmuka baris perintah ke antarmuka pengguna grafis yang digerakkan oleh tetikus)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (peluncur aplikasi Java, teknologi distribusi aplikasi desktop Java tahun 2000-an, sekarang usang)"
+msgstr "Java Web Start (teknologi distribusi aplikasi desktop Java tahun 2000-an, meluncurkan program Java jarak jauh melalui berkas .jnlp. Karena masalah keamanan dan meluasnya metode distribusi modern, kini sebagian besar sudah usang)"
 
 msgid "mime_lit"
-msgstr "Buku elektronik Microsoft Reader (Microsoft merilisnya pada tahun 2000, format LIT, usang)"
+msgstr "Microsoft Reader buku elektronik (2000 Microsoft, format LIT. Usang, kini dapat dikonversi ke EPUB atau PDF menggunakan alat seperti Calibre)"
 
 msgid "mime_svg"
-msgstr "Grafik vektor SVG (standar W3C 1999, karena Microsoft lama mempromosikan format VML sendiri, peramban IE mendukungnya baru pada tahun 2011, yang menunda adopsi. Setelah 2015, dengan hilangnya IE dan popularisasi layar resolusi tinggi, menjadi format pilihan untuk ikon dan logo)"
+msgstr "SVG grafik vektor (standar W3C tahun 1999, format gambar vektor 2D berbasis XML. Menawarkan penskalaan tanpa kehilangan dan keunggulan aliran teks. Semua peramban modern mendukungnya secara native, digunakan secara luas untuk ikon web definisi tinggi, logo, dan animasi vektor, menjadi standar inti grafik web modern)"
 
 msgid "mime_ai"
-msgstr "Grafik vektor Adobe Illustrator (dirilis pada tahun 1987, format grafik vektor standar industri, pilihan untuk desain cetak, logo, ikon)"
+msgstr "AI grafik vektor (format vektor kepemilikan Adobe tahun 1987. Sebagai standar industri untuk tata letak, desain cetak, dan identitas merek, ia mendukung banyak lapisan dan data tata letak vektor tingkat lanjut, menjadi media pilihan untuk seni visual profesional)"
 
 msgid "mime_phshop"
-msgstr "Gambar Photoshop (Adobe merilisnya pada tahun 1990, format file sumber Photoshop PSD, standar industri untuk pemrosesan gambar)"
+msgstr "PSD gambar berlapis (format sumber peta bit kepemilikan yang dirilis oleh Adobe dengan Photoshop pada tahun 1990. Mendukung banyak lapisan, kanal, topeng, dan data pengeditan tanpa kehilangan, dan telah menjadi standar industri global untuk pemrosesan gambar dan lukisan digital)"
 
 msgid "mime_ttf"
-msgstr "Font TrueType (Apple dan Microsoft bersama-sama mengembangkan pada tahun 1989, format font vektor, tampilan layar dan cetak konsisten, format font default sistem operasi modern)"
+msgstr "TrueType huruf (format huruf garis besar digital yang dikembangkan bersama oleh Apple dan Microsoft pada tahun 1989. Berdasarkan kurva Bézier kuadrat, ia mencapai konsistensi piksel absolut antara tampilan layar dan keluaran cetak, menjadi format huruf default native sistem operasi desktop modern)"
 
 msgid "mime_fon"
-msgstr "Font web WOFF2 (rekomendasi W3C 2014, menggunakan algoritma kompresi Brotli, dibandingkan dengan WOFF lama volumenya berkurang sekitar 30%, dibandingkan dengan TTF/OTF berkurang lebih dari 50%, saat ini didukung oleh semua peramban modern, menjadikannya format pilihan untuk font web modern, didukung oleh lebih dari 98% peramban)"
+msgstr "FON huruf peta bit (format huruf matriks titik tingkat sistem awal Microsoft dari tahun 1980-an. Tidak mendukung penskalaan proporsional tanpa kehilangan, biasanya terbatas pada perenderan teks berbasis piksel dalam sistem peninggalan atau komponen perangkat tertanam awal)"
 
 msgid "mime_pdf"
-msgstr "Dokumen PDF (Adobe mengembangkannya pada tahun 1993, menjadi standar ISO pada tahun 2008. Format dokumen lintas platform, menjaga konsistensi format, merupakan standar global untuk distribusi dokumen elektronik)"
+msgstr "PDF dokumen elektronik (dikembangkan oleh Adobe pada tahun 1993 dan menjadi standar internasional ISO 32000 pada tahun 2008. Format dokumen tata letak tetap lintas platform dengan ketelitian tata letak dan format absolut, ia adalah standar global untuk distribusi dokumen elektronik dan penerbitan digital)"
 
 msgid "mime_dotnet"
-msgstr "Halaman dinamis ASP.NET (Microsoft merilisnya pada tahun 2002, teknologi halaman web dinamis pada platform Windows, bagian dari .NET Framework)"
+msgstr "ASP.NET halaman dinamis (teknologi halaman web dinamis sisi server yang dirilis oleh Microsoft dengan arsitektur .NET pada tahun 2002. Dihosting pada mesin IIS, digunakan untuk membangun aplikasi web dinamis sisi server Windows tingkat perusahaan dan sistem terdistribusi)"
 
 msgid "mime_mdb"
-msgstr "Basis data Access (file basis data Microsoft Access, dirilis pada tahun 1992, solusi basis data desktop Windows)"
+msgstr "MDB basis data relasional (format penyimpanan basis data relasional tingkat desktop yang dirilis oleh Microsoft dengan Access pada tahun 1992. Memiliki mesin basis data Jet bawaan, berfungsi sebagai solusi basis data relasional untuk manajemen informasi awal komputer pribadi dan usaha kecil dan menengah)"
 
 msgid "mime_md"
-msgstr "Dokumen Markdown (dibuat oleh John Gruber pada tahun 2004, desain sintaks dipengaruhi oleh reStructuredText dan Setext. Filosofi desain dasar adalah 'keterbacaan berarti dapat dirender', implementasi asli Markdown.pl menggunakan ekspresi reguler Perl. Spesifikasi turunan termasuk GFM (2013), CommonMark (2017), Pandoc Markdown, dll. Mendukung ekosistem seperti GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, menjadi format standar de facto untuk generator situs statis dan dokumentasi pengembang)"
+msgstr "Markdown dokumen (bahasa markah ringan yang dibuat oleh John Gruber pada tahun 2004. Filosofi desain intinya 'dapat dibaca adalah dapat dirender' mendorong spesifikasi turunan modern seperti GFM dan CommonMark. Digunakan secara luas sebagai standar pertukaran untuk dokumentasi teknis, basis pengetahuan (Obsidian), dan generator situs statis modern)"
 
 msgid "mime_crystal"
-msgstr "Format laporan Crystal Reports (intelijen bisnis SAP, format standar untuk laporan perusahaan)"
+msgstr "Crystal Reports laporan (format berkas laporan tingkat perusahaan profesional platform SAP Business Intelligence (BI). Memiliki konektivitas multi-sumber data dan kemampuan perenderan bagan dinamis yang kompleks, digunakan secara luas untuk pembuatan laporan profesional dalam sistem keuangan dan analisis data perusahaan multinasional)"
 
 msgid "mime_libreoffice"
-msgstr "Dokumen LibreOffice (The Document Foundation mengembangkannya pada tahun 2010, cabang OpenOffice, implementasi standar ODF, paket kantor open source utama)"
+msgstr "LibreOffice dokumen (format kepemilikan paket perkantoran sumber terbuka berdasarkan OpenOffice, didirikan oleh The Document Foundation pada tahun 2010. Mengimplementasikan secara mendalam standar internasional ODF (OpenDocument Format) W3C, menjadi landasan perkantoran ekosistem sumber terbuka modern)"
 
 msgid "mime_encrypt"
-msgstr "File terenkripsi (perlu didekripsi untuk dilihat, ekstensi umum: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT berkas terenkripsi (data biner atau teks asli yang diproses oleh algoritma enkripsi simetris atau asimetris tertentu. Mencakup format turunan inti seperti .enc, .pgp, .gpg, dll., dan digunakan pada lapisan jaringan untuk memastikan kerahasiaan dan verifikasi integritas data non-publik)"
 
 msgid "mime_gpx"
-msgstr "Data jalur GPS (format pertukaran GPS, merekam informasi geografis, format umum untuk jam olahraga dan perangkat navigasi)"
+msgstr "GPX data pelacakan satelit (format pertukaran sistem pemosisian global berbasis XML. Mengkhususkan diri dalam menggambarkan koordinat geografis, titik jalan, garis rute, dan jalur historis, ia adalah standar data terbuka umum untuk perangkat olahraga seluler modern, navigasi mobil, dan sistem informasi geografis (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Citra disk (file citra disk/CD-ROM seperti DMG, ISO, IMG, digunakan untuk distribusi perangkat lunak atau pencadangan media penyimpanan)"
+msgstr "Disk Image citra cakram (berkas citra tingkat rendah sektor per sektor dari cakram fisik atau media optik, mencakup ISO, DMG, IMG. Digunakan untuk penerapan sistem tingkat rendah, distribusi perangkat lunak bervolume besar yang aman, dan cadangan lengkap tingkat fisik media penyimpanan)"
 
 msgid "mime_vm"
-msgstr "Citra mesin virtual (file disk virtual seperti VMDK, VDI, VHDX, OVA, format untuk platform virtualisasi seperti VMware, VirtualBox, Hyper-V)"
+msgstr "VM citra mesin virtual (citra cakram fisik yang divirtualisasi mencakup VMDK, VDI, VHDX, OVA. Fondasi untuk platform VMware, VirtualBox, dan Hyper-V, digunakan untuk emulasi perangkat keras tingkat rendah, cuplikan instans, dan distribusi infrastruktur awan)"
 
 msgid "mime_torrent"
-msgstr "File torrent BitTorrent (Bram Cohen menemukannya pada tahun 2001, file indeks untuk unduhan P2P, berisi metadata file dan informasi Tracker)"
+msgstr "BitTorrent berkas torrent (indeks unduhan terdistribusi peer-to-peer (P2P) yang dirancang oleh Bram Cohen pada tahun 2001. Berdasarkan pengodean Bencode, menyimpan metadata verifikasi berkas asli dan informasi pengalamatan server Tracker, menjadi pembawa inti distribusi aliran jaringan terdesentralisasi)"
 
 msgid "mime_gis"
-msgstr "Data sistem informasi geografis GIS (data geospasial seperti Shapefile, GeoJSON, digunakan untuk peta dan analisis spasial)"
+msgstr "GIS data geospasial (standar data sistem informasi geografis dengan Shapefile dan GeoJSON sebagai inti. Berisi koordinat geometris multidimensi, topologi lapisan, dan data atribut, digunakan secara luas untuk perenderan peta digital definisi tinggi, penginderaan jauh satelit, dan analisis geometri spasial)"
 
 msgid "mime_ebook"
-msgstr "Buku elektronik (format buku elektronik seperti EPUB, MOBI, AZW. EPUB adalah standar internasional, MOBI/AZW adalah format untuk Amazon Kindle)"
+msgstr "EBOOK buku elektronik (format penerbitan digital dengan inti standar terbuka internasional EPUB W3C dan arsitektur kepemilikan MOBI/AZW Amazon Kindle. Mendukung tata letak aliran adaptif, enkapsulasi metadata, dan manajemen hak digital DRM, menjadi pembawa universal untuk pembacaan digital seluler)"
 
 msgid "mime_avif"
-msgstr "Gambar AVIF (diluncurkan oleh Alliance for Open Media pada tahun 2019, berdasarkan pengkodean AV1, rasio kompresi 50% lebih baik dari WebP, standar gambar web generasi baru)"
+msgstr "AVIF gambar efisiensi tinggi (standar gambar definisi ultra tinggi generasi berikutnya dari Alliance for Open Media (AOMedia) tahun 2019. Berdasarkan teknologi kunci bingkai pengodean video AV1, dengan rasio kompresi 50% lebih baik dari WebP dan dukungan native untuk Rentang Dinamis Tinggi (HDR), ia adalah standar utama untuk transmisi gambar web modern)"
 
 msgid "mime_markdown"
-msgstr "Dokumen Markdown (dirancang oleh John Gruber pada tahun 2004, bahasa markup ringan, format umum untuk README GitHub, dokumentasi teknis, posting forum)"
+msgstr "Markdown dokumen ringan (bahasa markah dokumen teks yang dibuat oleh John Gruber pada tahun 2004. Menggunakan desain deklaratif teks biasa, sintaksnya terinspirasi oleh reStructuredText, digunakan secara luas untuk proyek GitHub, dokumentasi teknis tingkat teknik, dan ekosistem manajemen konten statis modern)"
 
 msgid "mime_yaml"
-msgstr "Konfigurasi YAML (dirancang oleh Clark Evans pada tahun 2001, format serialisasi data yang dapat dibaca manusia, standar untuk file konfigurasi Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML konfigurasi terserialisasi (format serialisasi data yang dapat dibaca manusia yang dirancang oleh Clark Evans dkk. pada tahun 2001. Berdasarkan indentasi hierarkis dan pemetaan kunci-nilai, ia telah menjadi standar konfigurasi infrastruktur native cloud untuk Kubernetes, otomatisasi Ansible, dan Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Konfigurasi TOML (dirancang oleh Tom Preston-Werner pada tahun 2013, 'Tom's Obvious Minimal Language', format file konfigurasi untuk alat modern seperti Rust/Cargo, Python/pip, Go)"
+msgstr "TOML konfigurasi semantik (bahasa minimalis yang dirancang oleh Tom Preston-Werner pada tahun 2013. Dengan keunggulan desain tingkat rendah seperti pengetikan kuat, pemetaan eksplisit, dan semantik yang jelas, ia sekarang digunakan secara luas sebagai berkas konfigurasi standar untuk perangkat alat modern Rust (Cargo), Python (pyproject.toml), dan Go)"
 
 msgid "mime_vue"
-msgstr "File komponen Vue (diperkenalkan pada tahun 2014 oleh Evan You, kerangka kerja JavaScript progresif. Melalui komponen satu file (SFC), ia menggabungkan HTML, CSS, dan JS dengan sempurna, sangat meningkatkan efisiensi pengembangan. Ini adalah salah satu kerangka kerja frontend paling populer di dunia. Juga sebagai inti dari generator situs statis modern seperti VitePress, ini banyak digunakan untuk mendorong dokumentasi teknis interaktif dan blog.)"
+msgstr "Vue komponen berkas tunggal (format SFC kepemilikan kerangka kerja web progresif yang dirilis oleh Evan You pada tahun 2014. Mencapai pemisahan kepentingan HTML/CSS/JS dan pengikatan status reaktif dalam satu berkas, sangat mendorong aplikasi web antarmuka depan interaktif modern dan mesin situs statis skala besar)"
 
 msgid "mime_wasm"
-msgstr "Modul WebAssembly (standar W3C 2017, format eksekusi berkinerja tinggi di peramban, C/C++/Rust/R dapat dikompilasi sebagai target, kinerja mendekati native)"
+msgstr "WebAssembly modul biner (standar kode byte tingkat rendah berkinerja tinggi untuk web yang ditetapkan oleh W3C pada tahun 2017. Memungkinkan bahasa berpengetikan kuat seperti C/C++/Rust untuk dikompilasi ke lingkungan kotak pasir peramban, memberikan efisiensi eksekusi mendekati perangkat keras native, menjadi landasan komputasi tepi web modern)"
 
 msgid "mime_jsx"
-msgstr "Komponen React JSX (Facebook merilis JavaScript XML pada tahun 2013, sintaks komponen kerangka React, paradigma inovatif yang membawa HTML ke dalam JavaScript)"
+msgstr "React JSX komponen (ekstensi sintaks JavaScript XML yang dirilis oleh Facebook dengan kerangka kerja React pada tahun 2013. Mendukung pembangunan struktur DOM virtual secara deklaratif di dalam JavaScript, memungkinkan paradigma pengembangan berbasis komponen antarmuka depan 'UI sebagai fungsi dari status')"
 
 msgid "mime_tsx"
-msgstr "Komponen TypeScript TSX (dikembangkan oleh Microsoft pada tahun 2012, TypeScript + JSX, cara penulisan standar untuk pengembangan React dengan keamanan tipe)"
+msgstr "TypeScript TSX komponen (kombinasi aliran dari sintaks pengetikan kuat TypeScript (dikembangkan oleh Microsoft pada tahun 2012) dengan JSX. Menyuntikkan pemeriksaan tipe statis waktu kompilasi dan batasan antarmuka ke dalam pengembangan komponen React, menjadi standar kode untuk pengembangan aman sistem antarmuka depan besar modern)"
 
 msgid "mime_heif"
-msgstr "Gambar HEIF (standar MPEG 2015, format file gambar efisien, banyak digunakan di ekosistem Apple)"
+msgstr "HEIF gambar efisiensi tinggi (format berkas gambar efisiensi tinggi yang ditetapkan oleh organisasi MPEG pada tahun 2015. Berdasarkan algoritma pengodean video HEVC (H.265), ia mendukung beberapa bingkai gambar, peta kedalaman, dan metadata dalam volume yang sangat kecil, menjadi standar penyimpanan kepemilikan untuk sistem operasi seluler modern dan perangkat terminal pintar)"
 
 msgid "mime_heic"
-msgstr "Gambar HEIC (implementasi Apple dari HEIF, format foto default di iPhone, didukung secara native di iOS/macOS)"
+msgstr "HEIC gambar efisiensi tinggi (format peta bit kepemilikan Apple berdasarkan standar internasional HEIF. Sebagai format penyimpanan foto default untuk iPhone modern, ia memiliki pengodean/ decoding tingkat perangkat keras dari iOS/macOS dan dukungan sistem operasi native, secara dramatis mengurangi ruang penyimpanan yang mendasarinya sambil mempertahankan kualitas gambar yang tinggi)"
 
 msgid "mime_gltf"
-msgstr "Model 3D GLTF (format transfer GL, 'JPEG dari dunia 3D', Khronos Group merilis pada tahun 2015, format standar untuk Web 3D)"
+msgstr "glTF model aset 3D (standar format transmisi GL yang dirilis oleh Khronos Group pada tahun 2015. Menggunakan arsitektur JSON untuk menggambarkan pemandangan tiga dimensi, dikenal sebagai 'JPEG untuk 3D', menjadi standar industri ringan untuk perenderan WebGL/WebGPU modern dan realitas virtual)"
 
 msgid "mime_glb"
-msgstr "Model 3D biner GLB (versi biner dari GLTF, satu file berisi semua sumber daya, digunakan untuk distribusi adegan 3D)"
+msgstr "GLB model 3D biner (versi enkapsulasi biner tanpa kehilangan dari model aset glTF. Menggabungkan struktur pemandangan, data simpul jaring yang mendasari, material, dan tekstur menjadi satu berkas, dirancang khusus untuk transmisi efisien dan distribusi aliran aset 3D web lintas platform)"
 
 msgid "mime_gls"
-msgstr "GLOSARIUM (file definisi istilah, untuk manajemen istilah dalam sistem dokumentasi)"
+msgstr "GLOSSARY glosarium data (berkas definisi istilah khusus untuk sistem manajemen dokumen dan korpus terstruktur. Berisi definisi istilah standar, pemetaan multibahasa, dan pemetaan metadata, digunakan untuk menjaga konsistensi konseptual dalam analisis teks otomatis dan sistem penerbitan konten)"
 
 msgid "mime_cbz"
-msgstr "Buku komik CBZ (gambar komik dikompres dengan ZIP, format umum untuk koleksi komik)"
+msgstr "CBZ buku komik (format arsip gambar komik kepemilikan berdasarkan struktur kompresi ZIP. Berisi urutan berkelanjutan dari gambar peta bit statis, berfungsi sebagai standar wadah ringan universal untuk penerbitan komik digital dan koleksi lokal lintas platform)"
 
 msgid "mime_cbr"
-msgstr "Buku komik CBR (gambar komik dikompres dengan RAR, format umum untuk koleksi komik)"
+msgstr "CBR buku komik (format arsip gambar komik kepemilikan berdasarkan struktur kompresi RAR. Menggunakan algoritma RAR untuk mengenkapsulasi urutan peta bit statis, memiliki rasio kompresi tinggi dan dukungan kompatibilitas luas di bidang distribusi komik digital)"
 
 msgid "mime_fb2"
-msgstr "Buku elektronik FB2 (FictionBook 2.0, format buku elektronik Rusia, struktur XML, didukung secara luas oleh pembaca open source)"
+msgstr "FB2 buku elektronik (standar buku elektronik FictionBook 2.0 awal tahun 2000-an. Menggunakan struktur XML murni untuk menggambarkan properti buku dan hierarki teks, memiliki dukungan luas dalam ekosistem buku elektronik sumber terbuka dan pembaca penerbitan digital peninggalan)"
 
 msgid "mime_kepub"
-msgstr "Buku elektronik KEPUB (format EPUB khusus untuk Kobo, format dioptimalkan untuk pembaca buku elektronik Kobo)"
+msgstr "KEPUB buku elektronik (format buku elektronik kepemilikan yang ditingkatkan dari Kobo berdasarkan standar EPUB. Dioptimalkan pada tingkat perangkat keras untuk pembaca buku elektronik Kobo, menawarkan tata letak halaman yang lebih efisien dan interaksi statistik pembacaan)"
 
 msgid "mime_m4b"
-msgstr "Buku audio M4B (format audio MPEG-4 untuk buku, mendukung bookmark, format buku audio iTunes)"
+msgstr "M4B buku audio (format buku audio berdasarkan arsitektur wadah MPEG-4 Part 14 (MP4). Menggunakan pengodean AAC, mendukung secara native penempatan markah buku tingkat rendah, kelanjutan pemutaran dari titik berhenti, dan penyematan bab, pernah menjadi format standar dalam ekosistem Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Format Kindle KFX (Amazon merilis pada tahun 2015, format buku elektronik khusus untuk Kindle, mendukung tata letak canggih dan pembalikan halaman cepat)"
+msgstr "Kindle KFX format (format penerbitan digital kepemilikan yang ditingkatkan dari Amazon yang dirilis dengan Kindle pada tahun 2015. Mendukung tipografi ligatur tingkat lanjut, perenderan huruf dinamik tinggi, dan pemuatan halaman aliran tingkat kernel (Page Flip), menjadi standar inti platform Kindle modern)"
 
 msgid "mime_chm"
-msgstr "File bantuan CHM (Microsoft merilis pada tahun 1997, format bantuan HTML terkompilasi, standar untuk dokumentasi bantuan perangkat lunak Windows)"
+msgstr "CHM berkas bantuan terkompilasi (sistem informasi bantuan HTML terkompilasi yang dirilis oleh Microsoft pada tahun 1997. Mengemas data hiperteks dan indeks yang mendasari ke dalam satu wadah biner, telah lama menjadi format standar untuk dokumentasi bantuan lokal luring perangkat lunak Windows)"
 
 msgid "mime_mht"
-msgstr "Arsip web MHT (Microsoft merilis pada tahun 1999, format halaman web file tunggal, format penyimpanan halaman web peramban IE)"
+msgstr "MHT arsip web (format hiperteks agregasi MIME yang dirilis oleh Microsoft pada tahun 1999. Berdasarkan standar RFC 2557, ia mengemas kode sumber HTML, CSS, JS, dan gambar yang disematkan ke dalam satu berkas teks, digunakan untuk penyimpanan halaman web luring di peramban peninggalan)"
 
 msgid "mime_wml"
-msgstr "Bahasa markup nirkabel WML (standar WAP 1999, digunakan untuk halaman web di ponsel awal, usang)"
+msgstr "WML bahasa markah nirkabel (standar markah seluler yang ditetapkan oleh forum WAP (Protokol Aplikasi Nirkabel) pada tahun 1999. Berdasarkan spesifikasi XML, dirancang khusus untuk jaringan seluler nirkabel pita sempit awal dan telepon fitur bertenaga komputasi rendah, termasuk dalam teknologi peninggalan yang sudah pensiun di ekosistem web modern)"
 
 msgid "mime_xhtml"
-msgstr "Halaman web XHTML (standar W3C 2000, versi XML dari HTML, sintaks lebih ketat. W3C menghentikan pemeliharaan pada tahun 2009, fokus beralih ke HTML5)"
+msgstr "XHTML halaman web hiperteks (standar W3C tahun 2000, bahasa markah hiperteks ketat berdasarkan arsitektur XML. Pada tahun 2009, W3C menghentikan evolusi teknisnya dan sepenuhnya beralih ke spesifikasi HTML5, sekarang terutama digunakan untuk perenderan halaman web semantik dalam sistem peninggalan)"
 
 msgid "mime_xml"
-msgstr "Dokumen XML (standar W3C 1998, bahasa markup yang dapat diperluas, format dasar untuk layanan web, file konfigurasi, pertukaran data)"
+msgstr "XML dokumen terstruktur (bahasa markah yang dapat diperluas standar W3C tahun 1998. Dengan arsitektur tag yang dapat mendeskripsikan diri sendiri, ia adalah format dasar untuk layanan web jaringan (SOAP/REST), berkas konfigurasi tingkat sistem (XSD), dan pertukaran data lintas platform)"
 
 msgid "mime_sgml"
-msgstr "Dokumen SGML (standar ISO 1986, pendahulu HTML, bahasa markup umum standar, baik XML maupun HTML diturunkan dari SGML)"
+msgstr "SGML bahasa markah umum standar (standar internasional ISO 8879 tahun 1986. Sebagai pelopor industri dalam deskripsi dokumen elektronik terstruktur, baik XML maupun spesifikasi HTML awal berasal dari bahasa meta standar ini)"
 
 msgid "mime_apng"
-msgstr "Animasi APNG (Mozilla mengembangkannya pada tahun 2004, ekstensi animasi PNG, pengganti modern untuk GIF, mendukung warna asli dan transparansi)"
+msgstr "APNG grafik dinamis (ekstensi dinamis PNG yang dikembangkan oleh Mozilla pada tahun 2004. Mendukung warna asli 24-bit dan transparansi semi-transparan kanal alfa 8-bit, berfungsi sebagai alternatif definisi tinggi untuk format GIF dalam skenario web modern)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmap (Format bitmap Windows, didukung secara native sejak Windows 1.0. Tidak terkompresi, ukuran file besar, tetapi karena strukturnya yang sederhana dan tidak memerlukan codec tambahan, masih digunakan di alat Snipping Tool Windows 11, program Paint, sumber daya ikon dalam paket instalasi EXE/MSI, file kursor, dan beberapa driver lama. Pada kualitas gambar yang sama, ukuran file sekitar 3-10 kali lebih besar dari PNG. Di sebagian besar kasus telah digantikan oleh PNG/JPEG, tetapi ekosistem Windows masih mempertahankan kompatibilitas yang luas)"
+msgstr "BMP peta bit native (format peta bit independen perangkat platform Microsoft yang ditetapkan sejak era Windows 1.0. Menggunakan penyimpanan tidak terkompresi tanpa kehilangan, sehingga volumenya biasanya 3-10 kali lebih besar dari PNG, tetapi karena tidak memerlukan biaya pengodean/ decoding, ia masih banyak tertanam dalam komponen inti Windows 11, bagian sumber EXE/MSI, dan penyangga grafik penggerak peninggalan)"
 
 msgid "mime_cdr"
-msgstr "Grafik vektor CDR (format khusus CorelDRAW, perusahaan Kanada Corel, perangkat lunak desain grafis vektor)"
+msgstr "CDR grafik vektor (format sumber desain vektor profesional kepemilikan CorelDRAW dari perusahaan Kanada Corel. Mendukung manajemen warna berbasis lapisan, simpul kurva matematika kompleks, dan data tata letak tingkat cetak, menjadi format khusus untuk bidang desain grafis profesional dan periklanan cetak)"
 
 msgid "mime_gif"
-msgstr "Gambar GIF (CompuServe mengembangkannya pada tahun 1987, format gambar animasi 256 warna. Kekurangan: sedikit warna, kualitas gambar kasar, tidak mendukung transparansi, file besar, frekuensi bingkai rendah. Digantikan oleh format animasi modern seperti APNG, WebP)"
+msgstr "GIF gambar warna terindeks (format peta bit warna terindeks 8-bit dari CompuServe tahun 1987. Berdasarkan algoritma LZW, terbatas pada 256 tingkat warna dan transparansi monokrom, dengan volume menggelembung pada kecepatan bingkai tinggi, secara bertahap digantikan oleh standar animasi modern yang efisien seperti APNG, WebP, dll.)"
 
 msgid "mime_ico"
-msgstr "Ikon ICO (format ikon Windows, mendukung beberapa resolusi, format standar untuk favicon situs web)"
+msgstr "ICO ikon sistem (format enkapsulasi sumber daya ikon native Windows. Mendukung pencampuran beberapa varian gambar dengan resolusi piksel dan kedalaman warna yang berbeda dalam satu wadah, juga merupakan standar distribusi universal untuk pengidentifikasi situs (Favicon) peramban web modern)"
 
 msgid "mime_jpeg"
-msgstr "Gambar JPEG (standar ISO 1992, format kompresi lossy untuk foto, standar de facto untuk foto di internet)"
+msgstr "JPEG gambar terkompresi (standar internasional ISO 10918 tahun 1992 untuk format kompresi dengan kehilangan. Berdasarkan algoritma Transformasi Kosinus Diskrit (DCT), ia mencapai rasio kompresi tinggi sambil mempertahankan kualitas gambar realistis yang sangat baik, menjadi standar de facto mutlak untuk foto statis di internet global)"
 
 msgid "mime_jpg"
-msgstr "Gambar JPEG (standar ISO 1992, format kompresi lossy untuk foto, standar de facto untuk foto di internet)"
+msgstr "JPEG gambar terkompresi (standar internasional ISO 10918 tahun 1992 untuk format kompresi dengan kehilangan. Berdasarkan algoritma Transformasi Kosinus Diskrit (DCT), ia mencapai rasio kompresi tinggi sambil mempertahankan kualitas gambar realistis yang sangat baik, menjadi standar de facto mutlak untuk foto statis di internet global)"
 
 msgid "mime_png"
-msgstr "Gambar PNG (rekomendasi W3C 1996, mendukung warna asli dan transparansi, pengganti statis untuk GIF, standar untuk gambar lossless di internet)"
+msgstr "PNG gambar tanpa kehilangan (standar Grafis Jaringan Portabel yang direkomendasikan oleh W3C pada tahun 1996. Menggunakan algoritma kompresi tanpa kehilangan, mendukung secara native warna asli 24-bit dan transparansi kanal alfa 8-bit, sebagai alternatif definisi tinggi untuk GIF statis klasik, ia adalah standar de facto mutlak untuk pencitraan piksel tanpa kehilangan di internet)"
 
 msgid "mime_ps"
-msgstr "File deskripsi halaman PostScript (Adobe merilis pada tahun 1985, bahasa deskripsi halaman, pendahulu PDF, digunakan untuk pencetakan dan penerbitan)"
+msgstr "PostScript berkas deskripsi halaman (bahasa deskripsi halaman berbasis tumpukan yang dirilis oleh Adobe pada tahun 1985. Sebagai pendahulu teknologi format PDF, ia mencapai pada tingkat rendah tata letak teks independen perangkat keras dan perenderan grafik vektor presisi tinggi, menjadi standar fundamental untuk bidang pencetakan profesional dan pencetakan laser)"
 
 msgid "mime_psb"
-msgstr "Dokumen besar PSB (format Adobe Photoshop untuk gambar yang sangat besar, mendukung gambar raksasa lebih dari 2 GB atau 30000 piksel)"
+msgstr "PSB dokumen berlapis besar (format enkapsulasi berkas sumber ekstra besar kepemilikan Adobe Photoshop. Mematahkan batasan volume fisik 2GB dan batasan pengalamatan internal 30.000 piksel dari format PSD standar, dirancang khusus untuk menyimpan aset seni digital yang sangat besar, berlapis dalam, dan masif)"
 
 msgid "mime_psd"
-msgstr "Gambar PSD (file sumber Adobe Photoshop, mendukung lapisan, saluran, jalur, format standar industri untuk pemrosesan gambar)"
+msgstr "PSD berkas sumber desain berlapis (wadah rekayasa gambar berlapis kepemilikan Adobe Photoshop. Sebagai wadah standar industri dalam bidang pencitraan grafis, ia mengenkapsulasi secara native pohon perenderan lapisan lengkap, kanal peta bit, jalur kliping vektor, dan mode campuran kompleks, mendukung pengeditan data lengkap tanpa kehilangan)"
 
 msgid "mime_webp"
-msgstr "Gambar WebP (Google mengembangkannya pada tahun 2010, format gambar web, mendukung kompresi lossy/lossless dan animasi, rasio kompresi 25-35% lebih baik dari PNG dan 25% lebih baik dari JPEG)"
+msgstr "WebP gambar efisiensi tinggi (standar pengodean grafik web universal yang dirilis oleh Google pada tahun 2010. Berasal dari teknologi kunci bingkai video VP8, sangat kompatibel dengan perenderan dengan kehilangan, tanpa kehilangan, semi-transparan, dan dinamis, 25-35% lebih kecil dari PNG pada kualitas yang sama, menjadi landasan pemuatan kinerja tinggi halaman web modern)"
 
 msgid "mime_woff"
-msgstr "Font web WOFF (dibuat pada tahun 2009, standar W3C 2018. Dikompres berdasarkan TrueType/OpenType, dioptimalkan untuk pemuatan font web, format standar untuk font ikon situs web modern)"
+msgstr "WOFF berkas glyph web (format huruf terbuka web yang dibuat pada tahun 2009 dan menjadi standar W3C pada tahun 2012. Esensinya adalah kompresi tanpa kehilangan aliran dari struktur huruf standar TTF/OTF, secara dramatis mengoptimalkan biaya lebar pita jaringan, menjadi format umum untuk ikon situs web modern dan huruf awan)"
 
 msgid "mime_7z"
-msgstr "Arsip terkompresi 7z (Igor Pavlov mengembangkannya pada tahun 1999, format khusus program 7-Zip. Algoritma LZMA, rasio kompresi tinggi, open source dan gratis. Format 7z biasanya 30-50% lebih kecil dari ZIP pada rasio kompresi yang sama, format umum di komunitas open source dan untuk distribusi perangkat lunak)"
+msgstr "7z paket terkompresi (format kepemilikan 7-Zip yang dikembangkan oleh Igor Pavlov pada tahun 1999. Berdasarkan algoritma sumber terbuka LZMA/LZMA2, memiliki rasio kompresi yang sangat tinggi. Dalam kondisi yang setara, biasanya 30-50% lebih kecil dari ZIP, dan merupakan format rasio kompresi tinggi universal dalam komunitas sumber terbuka dan distribusi perangkat lunak)"
 
 msgid "mime_ace"
-msgstr "Arsip terkompresi ACE (dikembangkan pada tahun 1990-an, format program WinACE. Dulu bersaing dengan RAR, rasio kompresinya cukup tinggi. Pengembangan dihentikan pada tahun 2007, sekarang digantikan oleh 7z/RAR, jarang digunakan)"
+msgstr "ACE paket terkompresi (format kompresi kepemilikan WinACE dari tahun 1990-an. Pernah bersaing dengan format RAR dan menawarkan rasio kompresi tinggi. Pengembangan teknis berhenti setelah tahun 2007, kini telah digantikan oleh format 7z dan RAR, termasuk dalam format arsip sistem peninggalan)"
 
 msgid "mime_bz2"
-msgstr "Arsip terkompresi BZIP2 (Julian Seward mengembangkannya pada tahun 1996, algoritma kompresi pengurutan blok. Rasio kompresi 15-20% lebih tinggi dari GZIP tetapi lebih lambat. Format umum untuk kode sumber kernel Linux, paket perangkat lunak open source, ekstensi .bz2)"
+msgstr "BZIP2 paket terkompresi (format kompresi pengurutan blok yang dikembangkan oleh Julian Seward pada tahun 1996. Rasio kompresi algoritma yang mendasarinya 15-20% lebih tinggi dari GZIP tetapi dengan biaya komputasi yang lebih tinggi. Sering digunakan untuk distribusi kode sumber kernel Linux dan paket perangkat lunak sumber terbuka, ekstensi berkas standar adalah .bz2)"
 
 msgid "mime_cab"
-msgstr "Arsip terkompresi CAB (Microsoft mengembangkannya pada tahun 1995, format Cabinet. Format paket instalasi untuk Windows, digunakan untuk driver, distribusi file sistem. Windows Installer (MSI) secara internal menggunakan CAB untuk menyimpan file)"
+msgstr "CAB paket terkompresi (format arsip Kabinet yang dikembangkan oleh Microsoft pada tahun 1995. Sebagai standar instalasi native sistem Windows, digunakan untuk distribusi penggerak dan berkas kernel, juga berfungsi sebagai wadah penyimpanan yang mendasari untuk Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "Citra disk DMG (Apple memperkenalkannya pada tahun 1980-an, format Disk Image. Format standar untuk distribusi perangkat lunak macOS, klik dua kali untuk memasang sebagai disk virtual, seret dan lepas untuk menginstal aplikasi. Mendukung kompresi dan enkripsi, merupakan format utama untuk unduhan perangkat lunak Mac)"
+msgstr "DMG citra cakram (format citra cakram yang dikembangkan oleh Apple sejak tahun 1980-an. Sebagai wadah standar untuk distribusi perangkat lunak macOS, ia mendukung pemasangan sebagai sistem berkas virtual, kompresi tingkat rendah, dan enkripsi data, menjadi format utama untuk distribusi aplikasi dalam ekosistem Mac)"
 
 msgid "mime_emz"
-msgstr "Gambar terkompresi EMZ (metafile ditingkatkan terkompresi Windows, versi terkompresi dari EMF. Format penyimpanan grafik vektor di dokumen Office, pada dasarnya adalah file EMF yang dikompres dengan GZIP)"
+msgstr "EMZ gambar terkompresi (versi terkompresi dari Metaberkas Ditingkatkan Windows EMF. Pada dasarnya grafik vektor biner yang dikompresi melalui algoritma GZIP, digunakan secara luas untuk menyimpan grafik vektor yang disematkan dalam dokumen rangkaian Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Arsip terkompresi GZIP (Jean-loup Gailly dan Mark Adler mengembangkannya pada tahun 1992, proyek GNU. Alat kompresi standar di Unix/Linux, format umum untuk kompresi transmisi HTTP. Ekstensi .gz, sering digunakan bersama dengan TAR)"
+msgstr "GZIP paket terkompresi (format kompresi aliran standar proyek GNU yang dikembangkan oleh Jean-loup Gailly dan Mark Adler pada tahun 1992. Sebagai alat kompresi standar Unix/Linux, ia juga merupakan standar inti untuk kompresi lapisan transportasi HTTP (Gzip), sering digunakan dalam kombinasi dengan arsip TAR)"
 
 msgid "mime_jar"
-msgstr "Arsip terkompresi JAR (Sun Microsystems merilisnya pada tahun 1997, format Java ARchive. Pada dasarnya adalah file ZIP, digunakan untuk mengemas pustaka dan aplikasi Java. Format dasar ekosistem Java seperti Maven, Gradle. Android juga menggunakan JAR)"
+msgstr "JAR paket terkompresi (format arsip Java ARchive yang dirilis oleh Sun Microsystems pada tahun 1997. Pada dasarnya wadah pengemasan berbasis struktur ZIP, digunakan untuk mengenkapsulasi pustaka kelas Java dan metadata, menjadi produk kompilasi inti untuk Maven, Gradle, dan ekosistem Android awal)"
 
 msgid "mime_lzma"
-msgstr "Arsip terkompresi LZMA (Igor Pavlov mengembangkannya pada tahun 1998, algoritma Lempel-Ziv-Markov chain. Algoritma kompresi utama format 7z, rasio kompresi tinggi, kecepatan dekompresi cepat. Digunakan untuk distribusi firmware dan perangkat lunak untuk sistem tertanam)"
+msgstr "LZMA paket terkompresi (algoritma kompresi rantai Lempel-Ziv-Markov yang dikembangkan oleh Igor Pavlov pada tahun 1998. Sebagai mesin inti format 7z, memiliki rasio kompresi yang sangat tinggi dan dekompresi cepat, digunakan secara luas untuk distribusi perangkat tegar perangkat keras dan sistem tertanam)"
 
 msgid "mime_rar"
-msgstr "Arsip terkompresi RAR (Eugene Roshal mengembangkannya pada tahun 1993, format Roshal ARchive. Rasio kompresi tinggi, mendukung pemisahan volume dan catatan pemulihan. Format program WinRAR, rasio kompresi lebih baik dari ZIP tetapi memerlukan perangkat lunak berbayar, alat open source seperti unrar dapat mendekompres)"
+msgstr "RAR paket terkompresi (format arsip kepemilikan WinRAR yang dikembangkan oleh Eugene Roshal pada tahun 1993. Mendukung pemisahan volume, catatan pemulihan fisik (ECC), dan enkripsi kuat. Rasio kompresinya lebih unggul dari ZIP standar, menikmati dukungan kompatibilitas luas di bidang pribadi dan komersial)"
 
 msgid "mime_tar"
-msgstr "Arsip TAR (Unix V7 memperkenalkannya pada tahun 1979, format Tape ARchive. Arsip pita, hanya mengemas tanpa kompresi, sering digunakan bersama dengan GZIP/BZIP2/XZ. Kode sumber paket Linux, penyimpanan lapisan gambar Docker menggunakan format TAR)"
+msgstr "TAR paket arsip (format arsip pita dari era Unix V7 tahun 1979. Hanya melakukan pengemasan aliran berkas tanpa kompresi data, sering dikombinasikan dengan GZIP/BZIP2/XZ, menjadi standar yang mendasari untuk kode sumber Linux dan penyimpanan berlapis citra Docker)"
 
 msgid "mime_tgz"
-msgstr "Arsip terkompresi TGZ (format kombinasi TAR + GZIP, ekstensi .tgz atau .tar.gz. Format paling umum untuk distribusi paket perangkat lunak Unix/Linux, paket kode sumber, paket biner, banyak digunakan, mewakili 'ekstrak dan gunakan')"
+msgstr "TGZ paket terkompresi (format kombinasi aliran dari arsip TAR dan kompresi GZIP, ekstensi berkas .tgz atau .tar.gz. Sebagai format distribusi paket perangkat lunak paling universal di lingkungan Unix/Linux, digunakan secara luas untuk penerapan kompilasi kode sumber dan distribusi paket biner tanpa instalasi)"
 
 msgid "mime_tbz2"
-msgstr "Arsip terkompresi TBZ2 (format kombinasi TAR + BZIP2, ekstensi .tbz2 atau .tar.bz2. Rasio kompresi 15-20% lebih tinggi dari TGZ, cocok untuk distribusi file besar, kernel Linux telah lama menggunakan format ini)"
+msgstr "TBZ2 paket terkompresi (format kombinasi aliran dari arsip TAR dan kompresi BZIP2, ekstensi berkas .tbz2 atau .tar.bz2. Dibandingkan dengan TGZ, ia dapat meningkatkan rasio kompresi sebesar 15-20% tambahan, cocok untuk transfer berkas besar, telah lama digunakan untuk distribusi kode sumber kernel Linux)"
 
 msgid "mime_xz"
-msgstr "Arsip terkompresi XZ (diperkenalkan pada tahun 2009, berdasarkan algoritma LZMA2. Rasio kompresi sangat tinggi, 30-50% lebih baik dari GZIP, kecepatan dekompresi relatif cepat. Kernel Linux, manajer paket (seperti di dalam .deb Debian) banyak menggunakannya, format yang direkomendasikan di ekosistem Linux saat ini)"
+msgstr "XZ paket terkompresi (format rasio kompresi tinggi generasi berikutnya yang dirilis pada tahun 2009. Berdasarkan algoritma LZMA2, rasio kompresi data 30-50% lebih baik dari GZIP sambil mempertahankan dekompresi cepat. Telah ditetapkan sebagai standar distribusi yang direkomendasikan oleh kernel Linux dan manajer paket utama (seperti di dalam .deb Debian))"
 
 msgid "mime_z"
-msgstr "Arsip terkompresi Z (format perintah Unix compress dari tahun 1985, algoritma LZW. Format kompresi Unix awal, digantikan oleh GZIP. Ekstensi .Z, sistem modern jarang menggunakannya)"
+msgstr "Z paket terkompresi (format kompresi LZW dari perintah compress Unix tahun 1985. Sebagai standar kompresi di sistem Unix awal, kini telah sepenuhnya digantikan oleh format GZIP yang lebih efisien, menjadi format peninggalan historis yang langka dalam lalu lintas jaringan modern)"
 
 msgid "mime_zip"
-msgstr "Arsip terkompresi ZIP (Phil Katz mengembangkannya pada tahun 1989, format PKZIP. Windows mendukung secara native, format kompresi paling umum di internet. Mendukung beberapa file, struktur direktori, dapat memilih algoritma kompresi. JAR dari Java, APK dari Android, DOCX/XLSX dari dokumen Office didasarkan pada format ZIP)"
+msgstr "ZIP paket terkompresi (format arsip universal PKZIP yang dikembangkan oleh Phil Katz pada tahun 1989. Didukung secara native oleh semua sistem operasi utama, ia adalah standar wadah yang paling banyak digunakan di internet. JAR modern Java, APK Android, dan dokumen Office (OOXML) semuanya berdasarkan struktur ZIP)"
 
 msgid "mime_zst"
-msgstr "Arsip terkompresi Zstandard (Facebook mengembangkannya pada tahun 2015, dirancang oleh Yann Collet. Algoritma kompresi kecepatan tinggi, rasio kompresi mendekati LZMA, kecepatan jauh melampaui GZIP. Kernel Linux 5.9+ mendukung, Arch Linux pacman, Debian APT secara bertahap mengadopsi, standar kompresi generasi baru)"
+msgstr "Zstandard paket terkompresi (standar kompresi aliran generasi berikutnya yang dirancang oleh Yann Collet dari Facebook pada tahun 2015. Mendekati rasio kompresi LZMA sambil memiliki kapasitas yang jauh lebih tinggi daripada GZIP. Telah diadopsi secara mendalam oleh kernel Linux (5.9+) dan manajer paket Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Arsip terkompresi LZ4 (Yann Collet mengembangkannya pada tahun 2011, algoritma kompresi sangat cepat. Kecepatan kompresi lebih dari 10 kali lebih cepat dari GZIP, cocok untuk skenario kompresi real-time. Kernel Linux, OpenZFS, Hadoop banyak menggunakannya, pilihan pertama untuk skenario di mana kecepatan menjadi prioritas)"
+msgstr "LZ4 paket terkompresi (algoritma kompresi aliran ultra-cepat yang dikembangkan oleh Yann Collet pada tahun 2011. Kecepatan kapasitasnya lebih dari 10 kali lebih cepat dari GZIP, dengan overhead CPU waktu jalan yang sangat rendah. Digunakan secara luas dalam kernel Linux, sistem berkas OpenZFS, dan pemrosesan aliran data waktu nyata Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Arsip terkompresi LZO (Markus Oberhumer mengembangkannya pada tahun 1996, algoritma Lempel-Ziv-Oberhumer. Kecepatan dekompresi sangat cepat, rasio kompresi rata-rata. Kernel Linux Squashfs, firmware OpenWrt menggunakannya, cocok untuk sistem tertanam)"
+msgstr "LZO paket terkompresi (algoritma Lempel-Ziv-Oberhumer yang dikembangkan oleh Markus Oberhumer pada tahun 1996. Berfokus pada kinerja dekompresi ultra-cepat. Banyak tertanam dalam citra Squashfs kernel Linux, perangkat tegar OpenWrt, dan berbagai sistem tertanam dengan sumber daya terbatas)"
 
 msgid "mime_msi"
-msgstr "Paket instalasi MSI (Microsoft merilisnya pada tahun 1999, format paket Windows Installer. Format instalasi standar untuk aplikasi Windows, mendukung rollback transaksi, manajemen komponen, instalasi senyap. Pilihan pertama untuk distribusi perangkat lunak tingkat perusahaan, hingga kini masih menjadi format utama untuk instalasi perangkat lunak Windows)"
+msgstr "MSI paket instalasi sistem (format enkapsulasi data Windows Installer yang dirilis oleh Microsoft pada tahun 1999. Sebagai standar penerapan tingkat aplikasi Windows, ia mendukung secara native pembatalan transaksi tingkat rendah, manajemen siklus hidup komponen, dan instalasi senyap tanpa pengelompokan, menjadi standar inti untuk distribusi terpusat perangkat lunak perusahaan dan penerapan berbasis kebijakan)"
 
 msgid "mime_pkg"
-msgstr "Paket instalasi PKG (format paket instalasi aplikasi macOS, berdasarkan teknologi Installer Apple. Format standar untuk distribusi perangkat lunak macOS, mendukung pemilihan komponen, skrip instalasi, fungsi penghapusan. Klik dua kali file .pkg untuk menginstal, metode distribusi umum untuk perangkat lunak di luar Mac App Store)"
+msgstr "PKG paket instalasi perangkat lunak lintas platform. 1. Paket perangkat lunak FreeBSD: standar pkgng, ekstensi berkas .pkg atau .txz, berdasarkan kompresi TAR+XZ/Zstd, mendukung resolusi ketergantungan dan verifikasi tanda tangan; 2. Paket instalasi macOS: berdasarkan format Pemasang Apple, mendukung komponen kustom, skrip instalasi, dan pencopotan tingkat sistem. Mereka masing-masing adalah pembawa distribusi utama untuk server BSD dan sistem Mac."
 
 msgid "mime_apk"
-msgstr "Paket aplikasi Android APK (diperkenalkan oleh Google pada tahun 2008, format instalasi tradisional untuk aplikasi Android. APK pada dasarnya adalah paket ZIP yang berisi kode, sumber daya, dan file manifes. Mulai tahun 2021, Google Play mewajibkan aplikasi baru menggunakan format AAB, tetapi APK masih digunakan untuk debugging, toko pihak ketiga, dan pemasangan sisi)"
+msgstr "APK paket aplikasi Android (paket instalasi aplikasi tradisional yang dirilis oleh Google dengan Android pada tahun 2008. Berdasarkan struktur arsip ZIP yang mendasarinya, mengemas kode bit Dalvik yang dikompilasi (DEX), manifes metadata, dan sumber daya global, sekarang digunakan secara luas untuk pengawakutuan pengembangan lokal, distribusi pihak ketiga, dan pemasangan samping pada perangkat)"
 
 msgid "mime_ipa"
-msgstr "Paket aplikasi iOS IPA (iOS App Store Package, format instalasi untuk aplikasi iOS/iPadOS. Diperkenalkan pada tahun 2008 dengan iPhone SDK. Harus didistribusikan melalui App Store atau ditandatangani dengan sertifikat perusahaan. Berisi file yang dapat dieksekusi, sumber daya, Info.plist, dan informasi tanda tangan)"
+msgstr "IPA paket aplikasi Apple (wadah pengemasan eksklusif iOS/iPadOS yang dirilis dengan SDK iPhone pada tahun 2008. Pada dasarnya arsip ZIP yang dilindungi DRM FairPlay atau ditandatangani sertifikat perusahaan, berisi biner yang dapat dieksekusi Mach-O, pohon sumber daya aplikasi, dan konfigurasi metadata Info.plist)"
 
 msgid "mime_hap"
-msgstr "Paket aplikasi HarmonyOS HAP (HarmonyOS Ability Package, unit dasar aplikasi HarmonyOS. Diperkenalkan pada tahun 2020 dengan HarmonyOS 2.0. Mendukung dua tipe: entry dan feature, format distribusi untuk ponsel Huawei, tablet, jam pintar, dan perangkat HarmonyOS lainnya)"
+msgstr "HAP paket aplikasi HarmonyOS (unit dasar penerapan elastis HarmonyOS yang dirilis dengan HarmonyOS 2.0 pada tahun 2020. Terdiri dari modul utama Entry atau modul fungsi yang diperluas Feature, ia adalah format distribusi lintas perangkat multi-ujung (telepon, tablet, perangkat yang dapat dikenakan) untuk perangkat terminal pintar)"
 
 msgid "mime_har"
-msgstr "Pustaka bersama statis HarmonyOS HAR (HarmonyOS Archive, pustaka bersama statis HarmonyOS, dapat dibagikan oleh beberapa paket HAP, digunakan untuk pengembangan berbasis komponen dan penggunaan ulang modul)"
+msgstr "HAR paket bersama statis HarmonyOS (berkas arsip pustaka bersama statis kepemilikan HarmonyOS. Digunakan untuk mengenkapsulasi komponen umum, kode sumber daya yang mendasari, dan ketergantungan waktu kompilasi, ditautkan secara statis oleh beberapa modul HAP untuk dibagikan, menjadi basis fundamental untuk pengembangan berbasis komponen dan penggunaan ulang multi-modul dalam sistem HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google merilisnya pada tahun 2018, mulai 2021 Google Play mewajibkan aplikasi baru menggunakan format ini. AAB adalah format distribusi, Google Play menghasilkan APK yang dioptimalkan berdasarkan konfigurasi perangkat (arsitektur CPU, kepadatan layar, bahasa), ukuran paket instalasi rata-rata berkurang 35%. Pengembang mengunggah AAB, pengguna mengunduh APK)"
+msgstr "AAB bundel aplikasi Android (format distribusi dinamis Google Play yang diluncurkan oleh Google pada tahun 2018 dan ditetapkan pada tahun 2021. Sebagai entitas distribusi murni, awan secara dinamis menyesuaikan dan mengkompilasi berdasarkan arsitektur CPU perangkat target, kerapatan layar, dan bahasa untuk menghasilkan APK yang dioptimalkan sesuai permintaan, mengurangi biaya lebar pita transmisi rata-rata sebesar 35%)"
 
 msgid "mime_xapk"
-msgstr "Paket aplikasi XAPK (paket ekstensi aplikasi Android pihak ketiga, berisi APK + file data OBB. Digunakan untuk game besar dan aplikasi kompleks, mengatasi batasan 100 MB untuk satu file APK. Umum di toko aplikasi pihak ketiga seperti APKPure, APKMirror, bukan format resmi Google)"
+msgstr "XAPK paket aplikasi yang diperluas (standar ekstensi aplikasi tidak resmi yang ditetapkan oleh komunitas Android pihak ketiga. Menggabungkan berkas APK standar dengan paket ekstensi data game OBB yang besar, secara fisik mematahkan batas ukuran berkas individual Google Play sebesar 100MB, banyak terlihat di platform distribusi game)"
 
 msgid "mime_appx"
-msgstr "Paket aplikasi Windows (Microsoft merilisnya pada tahun 2012, format instalasi untuk aplikasi Windows 8/10/11. Mendukung aplikasi UWP dan konversi aplikasi desktop, didistribusikan melalui Microsoft Store. Pada tahun 2024, Microsoft merilis MSIX sebagai penerus, secara bertahap menggantikan APPX)"
+msgstr "APPX paket aplikasi modern (standar penerapan aplikasi UWP yang dirilis oleh Microsoft dengan Windows 8 pada tahun 2012. Memiliki fitur eksekusi terisolasi dalam kotak pasir dan pencopotan ringan, pernah menjadi standar dominan awal Microsoft Store, tetapi dalam ekosistem Windows modern ia telah memasuki fase akhir siklus hidupnya yang berevolusi menuju MSIX)"
 
 msgid "mime_msix"
-msgstr "Paket aplikasi MSIX (Microsoft merilisnya pada tahun 2018, generasi baru format pengemasan untuk aplikasi Windows. Menggabungkan keunggulan APPX dan MSI, mendukung semua jenis aplikasi Windows, dapat didistribusikan melalui Microsoft Store atau pemasangan sisi, format yang direkomendasikan untuk Windows 11)"
+msgstr "MSIX paket aplikasi generasi berikutnya (spesifikasi pengemasan Windows baru yang sepenuhnya distandarisasi yang diterbitkan oleh Microsoft pada tahun 2018. Memadukan secara sempurna fitur kotak pasir keamanan aplikasi APPX dengan keunggulan manajemen aset perusahaan MSI, sepenuhnya kompatibel dengan semua jenis aplikasi Win32, dan merupakan standar distribusi yang direkomendasikan untuk Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Paket aplikasi AppImage (diperkenalkan pada tahun 2004, format aplikasi Linux tanpa instalasi. 'Satu aplikasi - satu file', berjalan langsung tanpa instalasi, mendukung sebagian besar distribusi Linux, metode umum bagi pengembang untuk mendistribusikan perangkat lunak Linux)"
+msgstr "AppImage paket aplikasi mandiri (spesifikasi arsip yang dapat dieksekusi tunggal Linux yang dimulai pada tahun 2004. Mengadopsi arsitektur mandiri 'satu aplikasi adalah satu berkas', yang dipasang saat waktu jalan langsung sebagai sistem berkas virtual hanya-baca melalui mekanisme FUSE, mencapai eksekusi siap pakai tanpa ketergantungan di berbagai distribusi Linux)"
 
 msgid "mime_flatpak"
-msgstr "Paket aplikasi Flatpak (diperkenalkan pada tahun 2015, format aplikasi Linux dalam sandbox. Berjalan di berbagai distribusi, terisolasi dari sistem host, pengembangan dipimpin oleh Fedora dan Red Hat, format default Pusat Perangkat Lunak GNOME)"
+msgstr "Flatpak paket aplikasi berkotak pasir (standar distribusi aplikasi desktop lintas distribusi Linux yang dipimpin oleh Red Hat dan GNOME pada tahun 2015. Didukung oleh mekanisme Namespace dan Cgroups kernel Linux untuk mencapai isolasi kotak pasir keamanan tingkat aplikasi yang sangat ketat, menjadi fondasi pusat perangkat lunak sistem operasi sumber terbuka modern)"
 
 msgid "mime_snap"
-msgstr "Paket aplikasi Snap (Canonical merilisnya pada tahun 2014, perusahaan induk Ubuntu mengembangkannya, format aplikasi Linux universal. Pembaruan otomatis, isolasi sandbox, mendukung 40+ distribusi Linux, format default Pusat Perangkat Lunak Ubuntu)"
+msgstr "Snap paket aplikasi berwadah (standar penerapan universal Linux yang dirilis oleh Canonical, perusahaan induk Ubuntu, pada tahun 2014. Mengadopsi arsitektur pemasangan citra SquashFS mandiri aplikasi, mendukung pembaruan tambahan otomatis dan isolasi kotak pasir AppArmor yang ketat, dan merupakan format inti default dari ekosistem pusat perangkat lunak Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Paket perangkat lunak Debian (proyek Debian merilisnya pada tahun 1993, format instalasi standar untuk Debian/Ubuntu dan turunannya. Dikelola menggunakan dpkg, APT adalah manajer paket frontend-nya, salah satu format paket paling matang di ekosistem Linux, masih menjadi format utama di keluarga Debian hingga saat ini)"
+msgstr "DEB paket perangkat lunak sistem (spesifikasi pengemasan biner dan kode sumber yang ditetapkan oleh proyek Debian pada tahun 1993. Sebagai standar instalasi yang mendasari untuk Debian, Ubuntu, dan semua turunannya, ia mengandalkan dpkg untuk pembongkaran dan pemeliharaan paket, dan menggunakan APT sebagai antarmuka depan manajer paket yang efisien, menjadi landasan distribusi perangkat lunak paling matang dalam ekosistem Linux)"
 
 msgid "mime_rpm"
-msgstr "Paket perangkat lunak RPM (Red Hat merilisnya pada tahun 1997, format standar untuk distribusi seperti Red Hat/Fedora/CentOS/SUSE. RPM adalah singkatan dari 'Red Hat Package Manager', bersama DEB membentuk dua format paket utama Linux, masih menjadi format utama di keluarga RHEL hingga saat ini)"
+msgstr "RPM paket perangkat lunak sistem (spesifikasi pengemasan Manajer Paket Red Hat yang dirilis oleh Red Hat pada tahun 1997. Bersama dengan DEB, mereka membentuk dua kubu besar manajemen paket tradisional Linux, secara native memiliki pemeriksaan ketergantungan berbasis transaksi dan verifikasi tanda tangan digital perangkat lunak tingkat rendah, dan masih menjadi standar distribusi absolut yang dominan untuk distribusi ekosistem Red Hat seperti RHEL, Fedora, dan CentOS)"
 
 msgid "mime_pacman"
-msgstr "Paket perangkat lunak Arch (Arch Linux merilisnya pada tahun 2002, format .pkg.tar.zst yang digunakan oleh manajer paket pacman. Inti dari distribusi rolling release Arch Linux, dikenal karena kesederhanaannya dan prinsip KISS, AUR (Arch User Repository) adalah ciri khasnya)"
+msgstr "Pacman paket perangkat lunak arsip (format pengemasan .pkg.tar.zst yang ditetapkan oleh Arch Linux dengan manajer pacman pada tahun 2002. Sebagai inti dari mekanisme pembaruan bergulir Arch, berdasarkan algoritma kompresi tinggi berkecepatan tinggi Zstandard, bersama dengan ekosistem AUR (Repositori Perangkat Lunak Pengguna Arch), ia adalah standar distribusi paket modern yang mewujudkan minimalisme dan prinsip KISS (Keep It Simple, Stupid))"
 
 msgid "mime_exe"
-msgstr "File yang dapat dieksekusi EXE (format program eksekusi Windows, singkatan dari 'Executable'. Format eksekusi asli sistem operasi Windows, berisi struktur PE. Berevolusi dari format MZ dari era MS-DOS, Windows NT memperkenalkan format PE (Portable Executable) pada tahun 1993 yang digunakan hingga saat ini. Paket instalasi perangkat lunak, aplikasi, alat sistem menggunakan format ini. Pengguna klik dua kali untuk menjalankannya, format eksekusi paling luas digunakan di dunia)"
+msgstr "EXE berkas yang dapat dieksekusi native (format program biner Portable Executable (PE) platform Windows. Silsilah teknisnya berasal dari struktur kepala MZ era MS-DOS, dan sejak Windows NT tahun 1993, ia sepenuhnya ditetapkan sebagai spesifikasi struktur PE, menjadi standar eksekusi yang paling banyak digunakan di dunia untuk instruksi kode mesin, bagian sumber daya statis, dan bootstrap kernel sistem)"
 
 msgid "mime_dll"
-msgstr "Pustaka tertaut dinamis DLL (Microsoft memperkenalkannya pada tahun 1993, Dynamic Link Library. Pustaka kode bersama Windows, program dimuat secara dinamis selama eksekusi, menghemat memori dan ruang disk. Komponen sistem, plugin aplikasi, driver menggunakan format DLL. Cara utama implementasi API Windows, masalah 'DLL Hell' berkurang di era .NET)"
+msgstr "DLL pustaka taut dinamis (spesifikasi pustaka kode bersama Dynamic Link Library platform Windows. Melalui pemuatan dinamis dan pengubahan alamat simbol saat waktu jalan, ia secara signifikan menghemat memori fisik dan ruang cakram, sebagai bentuk implementasi inti dari API Windows. Masalah awal 'Neraka DLL' secara fundamental diatasi di zaman modern melalui mekanisme isolasi paralel SxS)"
 
 msgid "mime_com"
-msgstr "File yang dapat dieksekusi COM (format eksekusi dari era MS-DOS, singkatan dari 'Command'. Struktur file sangat sederhana, batasan 64KB, format utama sebelum Windows 3.x, usang. Windows modern menggunakan format EXE, ekstensi COM masih digunakan untuk beberapa file komponen)"
+msgstr "COM berkas yang dapat dieksekusi klasik (format eksekusi citra memori tertua (Command) dari era MS-DOS. Menggunakan desain segmen kode murni tanpa struktur, terbatas pada batas segmen pengalamatan memori fisik 64KB, kini telah dipensiunkan sebagai format peninggalan historis, tetapi dalam arsitektur Windows modern ia mempertahankan kompatibilitas terbatas sebagai antarmuka komponen tertentu)"
 
 msgid "mime_aac"
 msgstr "Audio AAC (standar MPEG 1997, Advanced Audio Coding. Penerus MP3, kualitas audio lebih baik dari MP3 pada bitrate yang sama, format audio default untuk YouTube, iTunes, Nintendo Switch)"

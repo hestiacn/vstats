@@ -451,8 +451,8 @@ msgstr "Host - Pagina's - Hits - Bandbreedte - Laatste bezoekdatum - [Startdatum
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Startdatum laatste bezoek] en [Laatste pagina van laatste bezoek] worden alleen opgeslagen als de sessie niet is beëindigd"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Op de hoofdpagina worden alleen de eerste %s items met de meeste hits getoond. Zie de detailpagina voor de volledige lijst."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "De eerste %s items zijn gesorteerd op aantal hits in aflopende volgorde; de volgorde van de overige items is niet gedefinieerd."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Ingelogde gebruiker - Pagina's - Hits - Bandbreedte - Laatste bezoek"
@@ -466,8 +466,8 @@ msgstr "Worm ID - Hits - Bandbreedte - Laatste bezoek"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-mail - Hits - Bandbreedte - Laatste bezoek"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Op de hoofdpagina worden alleen de eerste %s e-mails met de meeste hits getoond. Zie de detailpagina voor de volledige lijst."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "De eerste %s e-mailadressen zijn gesorteerd op aantal hits in aflopende volgorde; de volgorde van de overige adressen is niet gedefinieerd."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Pagina's - Bandbreedte - Toegang - Uitgang"
@@ -676,6 +676,27 @@ msgstr "De SiteDomain-parameter is niet gedefinieerd in uw config/domain-bestand
 msgid "Please run as Administrator to set permissions"
 msgstr "Voer uit als Administrator om machtigingen in te stellen"
 
+msgid "This directory lacks read permission"
+msgstr "Deze map heeft geen leesmachtiging"
+
+msgid "Please set read permission for directory"
+msgstr "Stel leesmachtiging in voor de map"
+
+msgid "Missing required parameter in config file"
+msgstr "Ontbrekende vereiste parameter in configuratiebestand"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Controleer of 'DirData' is gedefinieerd."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Domeinnaam in browseradres lijkt te ontbreken of is onvolledig"
+
+msgid "Please check the URL parameter"
+msgstr "Controleer de URL-parameter"
+
+msgid "Format description"
+msgstr "Formaatbeschrijving"
+
 msgid "Please set execute permission"
 msgstr "Stel de uitvoeringstoestemming in"
 
@@ -802,376 +823,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Tekstbestanden (1963 ASCII gestandaardiseerd, ongeformatteerde platte tekst. Basis van alle broncode, configuraties en logboeken. Unix gebruikt LF, Windows CRLF, nog steeds het meest universele gegevensformaat op computers)"
+msgstr "TXT plat tekstbestand (ongeforceerde platte tekst gestandaardiseerd door ASCII-codering in 1963. Als de fundamentele basis van alle broncode, configuratiebestanden en systeemlogboeken, zijn de platformonafhankelijke Windows (CRLF) en Unix (LF) regelterugloopcontrollestromen nog steeds de meest universele gegevensuitwisselingsstandaard in de computerwereld)"
 
 msgid "mime_log"
-msgstr "Logbestanden (tekstbestanden die informatie vastleggen over systeem- en applicatiebewerkingen. Gebruikt voor probleemoplossing, prestatie-analyse, beveiligingsaudits. Standaardformaten: Apache combined log, Nginx access log, syslog enz.)"
+msgstr "LOG systeemlogboek (platte tekstbron die de runtime-status van het besturingssysteem, de kernel en applicaties vastlegt. Omvat Nginx/Apache-toegangslogboeken (Combined Log) en de standaard syslog-specificatie. Het is een kerngegevensbron voor probleemoplossing, prestatieanalyse van stromen en beveiligingsaudits)"
 
 msgid "mime_page"
-msgstr "HTML-pagina's (1989, Tim Berners-Lee vond het World Wide Web uit, 1990 definieerde hij de drie technologieën HTML/HTTP/URL, stelde ze gratis ter beschikking. 2014, HTML5 werd de officiële W3C-standaard. Turing Award 2016)"
+msgstr "HTML hypertekst webpagina (hoeksteen van het wereldwijde web, gecreëerd door Tim Berners-Lee in 1989. Als een gratis beschikbare universele hypertext-opmaaktaal werd de HTML5-specificatie in 2014 een officiële W3C-standaard, met ingebouwde ondersteuning voor gestructureerde multimedia, semantische interactie en paginaindeling in stroom. Won de Turingprijs in 2016)"
 
 msgid "mime_khtml"
-msgstr "KHTML-renderingengine (1998, release van KDE 2.0, renderingengine van de Konqueror-browser. 2001, Apple creëerde WebKit gebaseerd op KHTML, 2008, Google creëerde Blink van WebKit. KHTML is een voorbeeld van hoe de open source-gemeenschap de basis legde voor moderne browserengines)"
+msgstr "KHTML webpaginasjabloonmotor (1998 KDE 2.0-browser weergavemotor specificatie. Als een open source community-benchmark die de basis legde voor moderne webweergave, heeft zijn technologische erfenis direct geïnspireerd en geëvolueerd naar Apple WebKit en Google Blink-kernels, en zet nog steeds zijn onderliggende lijn voort via moderne dynamische webarchitectuur met stromen)"
 
 msgid "mime_script"
-msgstr "Dynamische scripts (geïnterpreteerde talen, geen compilatie nodig. ASP, JSP, CGI, ColdFusion, Tcl, VBScript enz., veel gebruikt in vroege webontwikkeling, systeembeheer en automatisering. Moderne scripttalen zoals Python, Ruby, JavaScript zijn de steunpilaar geworden van full-stack ontwikkeling)"
+msgstr "SCRIPT geïnterpreteerd dynamisch script (algemene classificatie van broncodestromen die niet vooraf gecompileerd hoeven te worden en die regel voor regel worden gelezen en uitgevoerd door een specifieke runtime of interpreter. Omvat ASP, JSP, CGI en Tcl, enz., veel gebruikt voor server-side algemene gateway-interfaces, geautomatiseerde procesbesturing en systeemniveau-taakverbinding)"
 
 msgid "mime_js"
-msgstr "JavaScript-scripts (1995, Brendan Eich creëerde de taal in 10 dagen bij Netscape, native programmeertaal van de browser. 1997, ECMAScript-standaardisatie, 2009, geboorte van Node.js maakte het een full-stack taal. npm is 's werelds grootste pakketbeheerder)"
+msgstr "JavaScript-script (1995 Netscape-browser's eigen programmeeromgeving. Stelde in 1997 de ECMAScript-industriestandaard vast. Node.js-runtime werd geboren in 2009, doorbrak browsergrenzen en creëerde een full-stack asynchrone niet-blokkerende architectuur, vergezeld van 's werelds grootste npm-softwarepakketecosysteem)"
 
 msgid "mime_py"
-msgstr "Python-scripts (1991, Guido van Rossum creëerde de taal, bekend om gedwongen inspringing en beknopte syntaxis. Veel gebruikt in webontwikkeling, gegevenswetenschap, kunstmatige intelligentie, automatisering. Meerdere keren winnaar van TIOBE-taal van het jaar)"
+msgstr "Python-script (hoog-niveau geïnterpreteerde scripttaal gecreëerd door Guido van Rossum in 1991. Dankzij verplichte inspringing voor niet-verlies van leesbaarheid en multi-paradigma laag-niveau ontwerp, is het nu gevestigd als de industriestandaardtaal voor moderne webarchitectuur, full-stack data science, kunstmatige intelligentie (AI) modeltraining en cloud-native geautomatiseerde beheer)"
 
 msgid "mime_sh"
-msgstr "Shell-scripts (1971, geboorte van Unix, commando-scripttaal. Gebruikt voor systeembeheer, automatisering, service-startup, implementatiescripts. Essentiële vaardigheid voor Linux-beheer)"
+msgstr "Shell-script (standaard command interpreter-script uit het Unix-tijdperk van 1971. Bevat kernel-niveau commando-specificaties zoals Bash, Sh, Dash, wordt meestal uitgevoerd met de extensie .sh, is een universele kernel-niveau lijm voor laag-niveau procesbesturing, installatievrije omgevingsconfiguratie en geautomatiseerde implementatie in moderne Unix-achtige besturingssystemen)"
 
 msgid "mime_rb"
-msgstr "Ruby-scripts (1995, Yukihiro Matsumoto creëerde de taal, legt nadruk op ontwikkelaarsgeluk. Het Ruby on Rails-framework introduceerde het paradigma 'conventie boven configuratie')"
+msgstr "Ruby-script (objectgeoriënteerde scripttaal gecreëerd door Yukihiro Matsumoto in 1995. Met extreem respect voor de ontwikkelaarservaring als zijn kernontwerpfilosofie, vestigde het Ruby on Rails-framework op revolutionaire wijze het moderne hoog-niveau webarchitectuur ontwikkelingsparadigma 'Conventie boven Configuratie (CoC)')"
 
 msgid "mime_pl"
-msgstr "Perl-scripts (1987, Larry Wall creëerde de taal, bekend om zijn pragmatisme, bijgenaamd 'Zwitsers zakmes'. CPAN was de voorloper van moderne pakketbeheerders, diepe invloed op tekstverwerking, systeembeheer en CGI)"
+msgstr "Perl-script (pragmatische scripttaal gecreëerd door Larry Wall in 1987. Als de grondlegger van moderne pakketbeheerders (CPAN), wordt het de 'Zwitserse zakmes' van tekstverwerking genoemd. In moderne CGI-modus fungeert het nog steeds als een zeer betrouwbare basis op het gebied van logparsing dankzij extreem lage fysieke geheugenkosten en zeer efficiënte reguliere expressieverwerking)"
 
 msgid "mime_php"
-msgstr "PHP-dynamische pagina's (1995, Rasmus Lerdorf creëerde de taal, speciaal ontworpen voor webontwikkeling. Meer dan 70% van de websites wereldwijd gebruiken PHP, aandrijven WordPress, Facebook, Wikipedia. PHP 8 introduceerde JIT-compilatie, aanzienlijke prestatieverbetering)"
+msgstr "PHP dynamische webpagina (gecreëerd door Rasmus Lerdorf in 1995, speciaal ontworpen voor webontwikkeling. Als de kerntechnologie die meer dan 70% van 's werelds websites aandrijft, ondersteunt het diepgaande grote productietoepassingen zoals WordPress en Wikipedia. Sinds de introductie van de JIT (Just-In-Time) compilatie-runtime in PHP 8, heeft het een fundamentele paradigma-evolutie naar hoogwaardige full-stack server-side bereikt)"
 
 msgid "mime_image"
-msgstr "Afbeeldingsbestanden"
+msgstr "IMAGE afbeeldingsassetclassificatie (omvat algemene classificatie van lossy/lossless gecomprimeerde bitmap, moderne responsieve webafbeeldingen en vectorafbeeldingen. Het is een belangrijke indicator voor het beoordelen van de visuele bronbelasting van een site, de cache-hitrate aan clientzijde en het mediagebruik van de netwerkbandbreedte)"
 
 msgid "mime_document"
-msgstr "Documentbestanden"
+msgstr "DOCUMENT gestructureerde documentclassificatie (omvat algemene classificatie van platte tekst, spreadsheets, documenten met een vast formaat (PDF) en lichtgewicht opmaaktalen. Het is een belangrijke indicator voor de statistieken van server-side statische kennisbasisdistributie, bedrijfsinformatie-assetdownload en tekststroomdoorvoercapaciteit)"
 
 msgid "mime_package"
-msgstr "Softwarepakketten"
+msgstr "PACKAGE compilatieproduct en softwarepakketclassificatie (omvat algemene classificatie van de eigen uitvoerbare programma's van het besturingssysteem, runtime-linkbibliotheken (DLL/SO) en applicatiedistributie-installatiepakketten. Wordt vaak gebruikt als een belangrijke indicator voor het beoordelen van uitgaand verkeer en downloadpieken van softwaredistributiesites)"
 
 msgid "mime_archive"
-msgstr "Gzip-archieven (1992, GNU-project, gebaseerd op DEFLATE-algoritme. Gebruikt voor dynamische compressie van antwoorden op het web, compressieverhouding meestal 60-90%. Na 2015 gedeeltelijk vervangen door Brotli, maar blijft het meest ondersteunde compressieformaat op servers)"
+msgstr "ARCHIVE archief- en gecomprimeerde bestanden (algemene classificatie van datacompressiepakketten gebaseerd op kernalgoritmen zoals DEFLATE, LZMA. In de netwerklaar vertegenwoordigt het naast traditionele pakketdistributie ook de Gzip dynamische responsstroom van het GNU-project uit 1992. Hoewel het Brotli-algoritme geleidelijk wordt geïntroduceerd in moderne scenario's, blijft deze classificatie een belangrijke indicator voor het beoordelen van de serverbandbreedtedoorvoer en de drukvermindering op de transportlaag)"
 
 msgid "mime_audio"
-msgstr "Audiobestanden"
+msgstr "AUDIO digitale audiostroomclassificatie (omvat algemene classificatie van gecomprimeerde audio, audioboeken en streaming media-audiocontainers. Gebaseerd op specifieke audiocodec-standaarden, wordt het gebruikt om de doorvoersnelheid van audiogegevensstromen van multimediasites, gelijktijdige streamingbandbreedte en lange verbindingsprestaties te bewaken)"
 
 msgid "mime_video"
-msgstr "Videobestanden"
+msgstr "VIDEO digitale videostroomclassificatie (omvat algemene classificatie van hogedefinitie videocontainers, moderne webanimatie en streamingmediasegmenten. Het is een belangrijke indicator voor het beoordelen van de serverbandbreedtepiekgrens en het effect van een Content Delivery Network (CDN) in een omgeving met een hoge netwerkbelasting)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (ontwikkeld door Brendan Eich in 1995)"
+msgstr "JScript-script (1996, Microsoft's reverse-engineered propriëtaire implementatie voor Internet Explorer 3.0. Als een vroege gastheerconcurrent van klassiek JavaScript, fungeerde het als de kerngine van Windows Script Host (WSH) en vroege ASP-backend)"
 
 msgid "mime_json"
-msgstr "JSON-gegevens (2001, Douglas Crockford stelde een lichtgewicht gegevensuitwisselingsformaat voor, de facto standaard voor web-API's)"
+msgstr "JSON gestructureerde gegevens (lichtgewicht gegevensserialisatie-uitwisselingsformaat opgesteld door Douglas Crockford in 2001. Gebaseerd op tekstgebaseerde sleutel-waarde-paren en array-architectuur, heeft het een zeer hoge menselijke leesbaarheid en verliesvrije streaming-parseereigenschappen. Het is de de facto standaard voor moderne web-API's, microservices-architectuur en interactie met grote taalmodellen)"
 
 msgid "mime_vbs"
-msgstr "VBScript (1996, ontwikkeld door Microsoft, Windows-scripttaal, gebruikt voor ASP-pagina's en Windows-beheerscripts. Geleidelijk verouderd met de verspreiding van PowerShell en JavaScript)"
+msgstr "VBScript-script (scripttaalvariant uitgebracht door Microsoft samen met IE 3.0 in 1996. Was ooit de kerndriver voor vroege ASP-dynamische websites en Windows-systeembeheer, maar is nu officieel stopgezet en verwijderd uit de nieuwste kernel van Windows 11 door Microsoft. Het behoort tot historische erfenistechnologie)"
 
 msgid "mime_conf"
-msgstr "Configuratiebestanden (tekstformaat voor het opslaan van software-instellingen, veel voorkomende formaten: INI, JSON, YAML, TOML, XML. Linux-systeemconfiguraties bevinden zich in /etc)"
+msgstr "CONF systeemconfiguratiebestand (algemene classificatie van gegevensbestanden die software-runtimeomgevingsparameters permanent opslaan in de vorm van platte tekst. Omvat INI en moderne YAML, TOML, JSON-specificaties, in Linux-systemen zijn ze meestal geconcentreerd in de /etc-directory. Het is een kernafhankelijkheid voor optimalisatie van de systeem-runtimetoestand)"
 
 msgid "mime_css"
-msgstr "CSS (december 1996: W3C publiceert CSS1 als eerste officiële standaard. 1998: CSS2 voegt positionering en mediatechnologieën toe. Vanaf 2011: CSS3-modules introduceren afgeronde hoeken, animaties, Flexbox, Grid en responsive design. Samen met HTML en JavaScript vormt het de drie fundamentele frontend-technologieën. Alle moderne browsers (Chrome, Firefox, Safari, Edge) ondersteunen het native, het is de enige standaard voor het definiëren van webpagina-stijlen)"
+msgstr "CSS cascading style sheets (1996 W3C-standaard, samen met HTML/JS een van de drie kernelementen van front-end. Doorlopen CSS2-positionering en CSS3-modulaire evolutie, ondersteunt het native Flexbox, Grid en media query responsief ontwerp. Het is de absoluut dominante standaard voor het loskoppelen van webpaginaweergave in moderne browsers)"
 
 msgid "mime_xsl"
-msgstr "XSL-stylesheets (1999, W3C-standaard, taal voor het transformeren van XML-documenten, kan XML converteren naar HTML/PDF/tekst. Minder gebruikt na de popularisering van JSON)"
+msgstr "XSL-stijlblad (1999 W3C-standaard, bevat XSLT-transformatie en XPath-adresseringstaal, gebruikt om gestructureerde XML-gegevens te renderen als HTML, PDF of platte tekst. In moderne ontwikkeling is het ecosysteem ervan grotendeels vervangen door lichtere sjabloonmotoren en het JSON-gegevensformaat)"
 
 msgid "mime_runtime"
-msgstr "Uitvoerbare bestanden (EXE, ELF, Mach-O enz., uitvoerbare besturingssysteemformaten, bevatten machinecode en laadinformatie)"
+msgstr "Uitvoerbaar bestand (native uitvoeringsformaten van het besturingssysteem zoals EXE, ELF, Mach-O, bevat gecompileerde low-level machinecode, entrypoint en systeemlaadinformatie)"
 
 msgid "mime_library"
-msgstr "Bibliotheekbestanden (DLL, SO, dylib enz., dynamische koppelingsbibliotheken, gedeelde code die tijdens programma-uitvoering wordt geladen)"
+msgstr "Bibliotheekbestand (dynamische of statische linkbibliotheken zoals DLL, SO, dylib, bevat gedeelde symbolen en herlocatiecode voor aanroep door andere programma's en laden tijdens runtime)"
 
 msgid "mime_swf"
-msgstr "Flash-animaties (1996, ontwikkeld door Macromedia, later overgenomen door Adobe. Standaard voor interactieve webanimatie, ooit gedomineerd in internetanimaties en -spellen. Problemen: afhankelijkheid van plug-ins, geen mobiele ondersteuning, hoge beveiligingsrisico's. 2017, Adobe kondigde stopzetting aan, 2020, volledige ondersteuning beëindigd, vervangen door HTML5/CSS3/JS)"
+msgstr "Flash-animatie (ontwikkeld door Macromedia in 1996, overgenomen door Adobe in 2005. Interactieve webanimatiestandaard, ooit dominant op het gebied van internetanimatie en -games. Nadelen: afhankelijk van plug-ins, geen ondersteuning voor mobiel, hoog veiligheidsrisico. Adobe kondigde stopzetting aan in 2017, stopte volledige ondersteuning in 2020, vervangen door HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD (documenttypedefinitie, XML-specificatie, definieert de structuur van XML-documenten, voor het valideren van de legitimiteit van XML)"
+msgstr "DTD documenttypedefinitie (uitgebracht met XML 1.0 in 1998, gebruikt om de structuur van een XML/HTML-document te definiëren en de legitimiteit ervan te valideren. In moderne ontwikkeling is het geleidelijk vervangen door flexibelere oplossingen zoals XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "CSV-gegevensformaat (komma-gescheiden waarden, universeel formaat voor tabelgegevens, standaard voor import/export in Excel en databases)"
+msgstr "CSV-gegevensformaat (komma-gescheiden waarden, universeel platte tekst-tabelformaat uit het mainframe-tijdperk van 1972 (IBM Fortran-compiler). Officieel gestandaardiseerd door RFC 4180 in 2005, als een platformonafhankelijke, taal-onafhankelijke verliesvrije gegevensuitwisselingsstandaard. Veel gebruikt voor efficiënte import/export naar Excel, relationele databases, data-analyse (Pandas).)"
+
+msgid "mime_cur"
+msgstr "Muiswijzerbestand (.cur-formaat, gebruikt om de muisstijl aan te passen. Bijvoorbeeld vingercursor op webpagina's, zandloper-wachtpictogram in het systeem. Het is een 'familielid' van het gewone .ico-pictogram, maar het heeft een extra 'hotspot'-locatie - de locatie waar de muis daadwerkelijk klikt. Geschiedenis: geïntroduceerd met Windows 3.1 (1992), was een belangrijk onderdeel van de overgang van de grafische interface van de opdrachtregel naar het muisbedieningstijdperk)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (starter voor Java-applicaties, technologie voor het distribueren van Java-desktopapplicaties uit de jaren 2000, nu verouderd)"
+msgstr "Java Web Start (Java-desktopapplicatiedistributietechnologie uit de jaren 2000, start externe Java-programma's via .jnlp-bestand. Vanwege beveiligingsproblemen en de populariteit van moderne distributiemethoden, is het nu grotendeels uitgefaseerd)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-books (LIT-formaat, gelanceerd door Microsoft in 2000, verouderd)"
+msgstr "Microsoft Reader e-book (uitgebracht door Microsoft in 2000, LIT-formaat. Uitgefaseerd, kan nu worden geconverteerd naar EPUB of PDF met tools zoals Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG-vectorafbeeldingen (1999, W3C-standaard, omdat Microsoft lange tijd zijn eigen VML-formaat promootte, ondersteunde de IE-browser het pas in 2011, wat de verspreiding vertraagde. Na 2015, met het verdwijnen van IE en de verspreiding van schermen met hoge resolutie, werd het het voorkeursformaat voor pictogrammen en logo's)"
+msgstr "SVG vectorafbeeldingen (1999 W3C-standaard, tweedimensionaal vectorbeeldformaat gebaseerd op XML-architectuur. Het heeft het voordeel van willekeurig schalen zonder verlies van scherpte en tekststroomtransmissie. Alle moderne browsers ondersteunen het native. Veel gebruikt voor hogedefinitie webpictogrammen, logo's en vectoranimatierendering. Het is de kernstandaard voor moderne webafbeeldingen)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator-vectorafbeeldingen (gelanceerd in 1987, industriestandaard voor vectorgraphics, voorkeursformaat voor drukwerk, logo's, pictogrammen)"
+msgstr "AI vectorafbeeldingen (propriëtair vectorafbeeldingsformaat onafhankelijk ontwikkeld door Adobe in 1987. Als de industriestandaard voor typografie, drukwerkontwerp en merkidentiteitsontwerp, ondersteunt het meerlagige en hoog-niveau lay-outvectordata. Het is het geprefereerde medium voor professionele visuele kunst)"
 
 msgid "mime_phshop"
-msgstr "Photoshop-afbeeldingen (1990, Adobe lanceerde het PSD-formaat, industriestandaard voor beeldbewerking)"
+msgstr "PSD laagafbeelding (propriëtair rasterafbeeldingsbronbestandsformaat uitgebracht door Adobe samen met Photoshop in 1990. Ondersteunt meerlagige gelaagdheid, kanalen, maskers en verliesvrije bewerkingsgegevens. Het is gevestigd als de wereldwijde industriestandaard voor beeldverwerking en digitaal schilderen)"
 
 msgid "mime_ttf"
-msgstr "TrueType-lettertypen (1989, gezamenlijke ontwikkeling door Apple en Microsoft, vectorlettertypeformaat, weergave op scherm en afdrukken identiek, standaardlettertypeformaat van moderne besturingssystemen)"
+msgstr "TrueType-lettertype (digitaal contourlettertypeformaat gezamenlijk ontwikkeld door Apple en Microsoft in 1989. Gebaseerd op kwadratische Bézier-curven, bereikt het absolute pixelconsistentie tussen schermweergave en printoutput. Het is het native standaardlettertypeformaat voor moderne desktop-besturingssystemen)"
 
 msgid "mime_fon"
-msgstr "WOFF2-weblettertypen (2014, W3C-aanbeveling, gebruikt Brotli-compressiealgoritme, ongeveer 30% kleiner dan oudere WOFF, meer dan 50% kleiner dan TTF/OTF, momenteel het voorkeursformaat voor moderne weblettertypen)"
+msgstr "FON bitmaplettertype (vroeg systeem-niveau dot matrix-lettertypeformaat van Microsoft Windows uit de jaren 80. Ondersteunt geen willekeurige verliesvrije schaling. Wordt meestal gebruikt met erfenissystemen of vroege embedded apparaatcomponenten voor beperkte pixelachtige tekstweergave)"
 
 msgid "mime_pdf"
-msgstr "PDF-documenten (1993, ontwikkeld door Adobe, 2008, werd internationale ISO-standaard. Platformonafhankelijk documentformaat, behoudt lay-out, wereldwijde standaard voor de distributie van elektronische documenten)"
+msgstr "PDF elektronisch document (platformonafhankelijk documentformaat met vaste lay-out, ontwikkeld door Adobe in 1993 en werd in 2008 ISO 32000 internationale standaard. Het heeft absolute lay-out- en formaattrouw. Het is de universele standaard voor wereldwijde elektronische documentdistributie en digitale publicatie)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET-dynamische pagina's (2002, gelanceerd door Microsoft, dynamische webtechnologie voor Windows-platform, onderdeel van .NET Framework)"
+msgstr "ASP.NET dynamische pagina (server-side dynamische webtechnologie uitgebracht door Microsoft samen met de .NET-architectuur in 2002. Gedragen door de IIS-renderingengine, gebruikt om bedrijfsapplicaties van Windows server-side dynamische webapplicaties en gedistribueerde systemen te bouwen)"
 
 msgid "mime_mdb"
-msgstr "Access-database (Microsoft Access-databasebestand, gelanceerd in 1992, desktopdatabase-oplossing voor Windows)"
+msgstr "MDB relationele database (desktop-niveau relationele database-opslagformaat uitgebracht door Microsoft samen met Access in 1992. Heeft een ingebouwde Jet-databasemotor, werd gebruikt als relationele database-oplossing in de vroege informatiemanagement van personal computers en kleine en middelgrote ondernemingen)"
 
 msgid "mime_md"
-msgstr "Markdown-documenten (2004, gemaakt door John Gruber, lichte opmaaktaal. Universeel formaat voor GitHub README, technische documentatie, forumberichten)"
+msgstr "Markdown-document (lichtgewicht opmaaktaal onafhankelijk gecreëerd door John Gruber in 2004. De kernontwerpfilosofie is 'leesbaar is renderbaar', die moderne afgeleide standaarden zoals GFM en CommonMark aandrijft. Veel gebruikt als een kernuitwisselingsstandaard voor technische documentatie, kennisbanken (Obsidian) en moderne statische websitegeneratoren)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports-rapportformaat (SAP Business Intelligence-rapporten, standaardformaat voor bedrijfsrapporten)"
+msgstr "Crystal Reports (professioneel bedrijfsrapportbestandsformaat van het SAP Business Intelligence (BI)-platform. Het heeft low-level verbinding met meerdere gegevensbronnen en complexe dynamische grafiekrenderingmogelijkheden, veel gebruikt voor professionele rapportgeneratie in financiële en data-analysesystemen van multinationale ondernemingen)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice-documenten (2010, ontwikkeld door The Document Foundation, tak van OpenOffice, implementatie van de ODF-standaard, toonaangevende open source-kantoor suite)"
+msgstr "LibreOffice-document (propriëtair formaat van de open source-kantoorsuite, gebouwd door The Document Foundation in 2010 op basis van de OpenOffice-fork. Het implementeert diepgaand de W3C-ODF (Open Document Format) internationale standaard. Het is de kantoorbasis van het moderne open source-ecosysteem)"
 
 msgid "mime_encrypt"
-msgstr "Versleutelde bestanden (moeten worden ontsleuteld om te worden bekeken, veel voorkomende extensies: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT gecodeerd bestand (ruwe binaire of tekstgegevens verwerkt via een specifiek symmetrisch of asymmetrisch coderingsalgoritme. Bevat kernderivaten zoals .enc, .pgp, .gpg. In de netwerklaag wordt het gebruikt om de vertrouwelijkheid en integriteitsverificatie van niet-openbare gegevens te waarborgen)"
 
 msgid "mime_gpx"
-msgstr "GPS-trackgegevens (GPS-uitwisselingsformaat, registreert locatie-informatie, universeel formaat voor sporthorloges en navigatieapparaten)"
+msgstr "GPX satellietbaangegevens (op XML-architectuur gebaseerd uitwisselingsformaat voor het wereldwijde positioneringssysteem. Speciaal ontwikkeld voor het beschrijven van geografische coördinaten, waypoints, routes en historische trajecten. Het is een gemeenschappelijke open datastandaard voor moderne mobiele sportapparaten, autonavigatie en geografische informatiesystemen (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Schijfimages (DMG, ISO, IMG enz., schijfimage-bestanden, gebruikt voor softwaredistributie of back-ups)"
+msgstr "Disk Image schijfkopie (omvat byte-voor-byte low-level sectorafbeeldingsbestanden van fysieke schijven of optische media zoals ISO, DMG, IMG. Wordt gebruikt voor systeemimplementatie op laag niveau, veilige distributie van software met grote capaciteit en fysieke volledige gegevensback-up van opslagmedia)"
 
 msgid "mime_vm"
-msgstr "Virtuele machine-images (VMDK, VDI, VHDX, OVA enz., virtuele schijfbestanden voor virtualisatieplatforms zoals VMware, VirtualBox, Hyper-V)"
+msgstr "VM virtuele machinekopie (omvat gevirtualiseerde fysieke schijfkopieën zoals VMDK, VDI, VHDX, OVA. Als basis voor VMware, VirtualBox en Hyper-V-platforms, wordt het gebruikt voor laag-niveau systeem-niveau hardware-emulatie, instantie snapshots en distributie van cloudinfrastructuur)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent-torrentbestanden (2001, uitgevonden door Bram Cohen, P2P-downloadindexbestand, bevat bestandsmetadata en trackerinformatie)"
+msgstr "BitTorrent-torrentbestand (P2P peer-to-peer gedistribueerde downloadindex ontworpen door Bram Cohen in 2001. Gebaseerd op Bencode-codering, slaat het low-level controlesommetagegevens van het originele bestand en Tracker-serveradresseringsinformatie op. Het is een kerndrager voor gedecentraliseerde netwerkstroomdistributie)"
 
 msgid "mime_gis"
-msgstr "GIS-gegevens (Shapefile, GeoJSON enz., geo-ruimtelijke gegevensformaten voor kaarten en ruimtelijke analyse)"
+msgstr "GIS geo-ruimtelijke gegevens (geografisch informatiesysteem datastandaard met Shapefile en GeoJSON als kern. Bevat meerdimensionale geometrische coördinaten, laagtopologie en attributengegevens. Veel gebruikt voor nauwkeurige digitale kaartweergave, satellietremote sensing en ruimtelijke geometrieanalyse)"
 
 msgid "mime_ebook"
-msgstr "E-books (EPUB, MOBI, AZW enz., e-bookformaten. EPUB is de internationale standaard, MOBI/AZW zijn Amazon Kindle-formaten)"
+msgstr "EBOOK e-book (digitaal publicatieformaat met W3C's EPUB open internationale standaard en Amazon Kindles propriëtaire MOBI/AZW-architectuur als kern. Ondersteunt adaptieve stroomlay-out, metadata-inkapseling en DRM digitale rechtenbescherming. Het is een universele drager voor digitaal lezen op mobiele apparaten)"
 
 msgid "mime_avif"
-msgstr "AVIF-afbeeldingen (2019, aangekondigd door de Open Media Alliance, gebaseerd op de AV1-codec, compressieverhouding 50% hoger dan WebP, nieuwe generatie webafbeeldingsstandaard)"
+msgstr "AVIF efficiënte afbeelding (volgende generatie ultra-hoge resolutie afbeeldingsstandaard geïntroduceerd door de Open Media Alliance (AOMedia) in 2019. Gebaseerd op AV1-videocoderings sleutelframetechnologie, 50% betere compressieverhouding dan WebP en ondersteunt ingebouwde High Dynamic Range (HDR). Het is de mainstream standaard voor moderne webbeeldoverdracht)"
 
 msgid "mime_markdown"
-msgstr "Markdown-documenten (2004, ontworpen door John Gruber, lichte opmaaktaal, universeel formaat voor GitHub README, technische documentatie, forumberichten)"
+msgstr "Markdown lichtgewicht document (tekstdocument opmaaktaal onafhankelijk gecreëerd door John Gruber in 2004. Gebruikt declaratief ontwerp in platte tekst, de syntaxis is geïnspireerd op reStructuredText. Veel gebruikt voor GitHub-projecten, technische documentatie op ingenieursniveau en het moderne ecosysteem voor statisch inhoudsbeheer)"
 
 msgid "mime_yaml"
-msgstr "YAML-configuratie (2001, ontworpen door Clark Evans, menselijk leesbaar gegevensserialisatieformaat, standaard voor configuratiebestanden van Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML serialisatieconfiguratie (mensleesbaar gegevensserialisatieformaat ontworpen door Clark Evans en anderen in 2001. Gebaseerd op hiërarchische inspringing en sleutel-waarde-toewijzing. Het is nu gevestigd als de cloud-native infrastructuurconfiguratiestandaard voor Kubernetes-containerorkestratie, Ansible-automatisering en Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML-configuratie (2013, ontworpen door Tom Preston-Werner, configuratiebestandsformaat voor moderne tools zoals Rust/Cargo, Python/pip, Go)"
+msgstr "TOML semantische configuratie (minimalistische taal ontworpen door Tom Preston-Werner in 2013. Heeft low-level ontwerpvoordelen zoals sterke typering, expliciete toewijzing en semantische duidelijkheid. Het wordt nu veel gebruikt als een gestandaardiseerd configuratiebestand voor moderne toolchains van Rust (Cargo), Python (pyproject.toml) en Go)"
 
 msgid "mime_vue"
-msgstr "Vue-componentbestand (geïntroduceerd in 2014 door Evan You, progressief JavaScript-framework. Via éénbestandscomponenten (SFC) combineert het HTML, CSS en JS perfect, waardoor de ontwikkelings efficiëntie aanzienlijk wordt verhoogd. Het is een van de meest populaire frontend-frameworks ter wereld. Ook als kern van moderne statische sitegenerators zoals VitePress, wordt het veel gebruikt om interactieve technische documentatie en blogs aan te sturen.)"
+msgstr "Vue enkelvoudig bestandscomponent (propriëtair SFC-formaat van het progressieve webkader geïntroduceerd door Evan You in 2014. In één enkel bestand realiseert het de scheiding van zorgen van HTML/CSS/JS en responsieve toestandsbinding. Het drijft diepgaand moderne interactieve front-end applicaties en grootschalige statische websitemotoren)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly-modules (2017, W3C-standaard, hoogwaardig uitvoeringsformaat voor browsers, C/C++/Rust/R kunnen naar dit doel worden gecompileerd, prestaties bijna native)"
+msgstr "WebAssembly binair module (door W3C in 2017 vastgestelde hoogwaardige low-level bytecodestandaard voor het web. Staat sterke typetaal zoals C/C++/Rust toe om te compileren naar een browsersandbox-doel, en biedt uitvoeringsefficiëntie die dicht bij native hardware ligt. Het is een hoeksteen van moderne webrandcomputing)"
 
 msgid "mime_jsx"
-msgstr "React JSX-componenten (2013, Facebook kondigde JavaScript XML aan, componentsyntaxis van het React-framework, innovatief paradigma dat HTML in JavaScript schrijft)"
+msgstr "React JSX-component (JavaScript XML-syntaxisuitbreiding uitgebracht door Facebook samen met het React-framework in 2013. Ondersteunt declaratieve opbouw van DOM virtuele structuur in JavaScript, en implementeerde het front-end 'UI is een functie van de staat' componentgebaseerde ontwikkelingsparadigma)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX-componenten (2012, ontwikkeld door Microsoft, TypeScript + JSX, standaardnotatie voor type-veilige React-ontwikkeling)"
+msgstr "TypeScript TSX-component (combinatie van TypeScript's sterke typesyntaxis, ontwikkeld door Microsoft in 2012, en JSX-stroom. Injecteert statische compile-time typecontrole en interfacebeperkingen in React-componentontwikkeling. Het is een codestandaard voor veilige ontwikkeling van moderne grote front-end systemen)"
 
 msgid "mime_heif"
-msgstr "HEIF-afbeeldingen (2015, MPEG-standaard, zeer efficiënt afbeeldingsbestandsformaat, veel gebruikt in het Apple-ecosysteem)"
+msgstr "HEIF efficiënte afbeelding (efficiënt afbeeldingsbestandsformaat vastgesteld door de MPEG-organisatie in 2015. Gebaseerd op het HEVC (H.265) video-coderingsalgoritme, ondersteunt het het bevatten van meerdere frame-afbeeldingen, dieptekaarten en metadata in een zeer klein volume. Het is een propriëtaire opslagstandaard voor moderne mobiele besturingssystemen en slimme terminalapparaten)"
 
 msgid "mime_heic"
-msgstr "HEIC-afbeeldingen (Apple-implementatie van HEIF, standaard fotoformaat voor iPhones, native ondersteuning op iOS/macOS)"
+msgstr "HEIC efficiënte afbeelding (Apples propriëtaire bitmapformaat geïmplementeerd op basis van de HEIF internationale standaard. Als de standaard fotopslagindeling voor moderne iPhones, krijgt het hardware-niveau codering/decodering en native besturingssysteemondersteuning van iOS/macOS. Terwijl het een hoge beeldkwaliteit behoudt, vermindert het de onderliggende opslagruimte dramatisch)"
 
 msgid "mime_gltf"
-msgstr "GLTF-3D-modellen (GL-transmissieformaat, 'JPEG voor 3D', 2015, Khronos Group, standaardformaat voor web-3D)"
+msgstr "glTF 3D-activamodel (GL-verzendformaatstandaard uitgegeven door de Khronos Group in 2015. Gebruikt JSON-architectuur om driedimensionale scènes te beschrijven, bekend als de 'JPEG van het 3D-gebied'. Het is een lichtgewicht industriestandaard voor moderne WebGL/WebGPU en virtual reality-rendering)"
 
 msgid "mime_glb"
-msgstr "GLB-binaire 3D-modellen (binaire versie van GLTF, één bestand bevat alle bronnen, gebruikt voor de distributie van 3D-scènes)"
+msgstr "GLB binair 3D-model (volledig binaire, verliesvrije inkapselingsversie van het glTF-activamodel. Combineert scènestructuur, low-level mesh-hoekpuntgegevens, materialen en textuurkaarten in één enkel bestand. Speciaal ontworpen voor efficiënte overdracht en streamingdistributie van platformonafhankelijke web-3D-activa)"
 
 msgid "mime_gls"
-msgstr "Woordenlijst (bestand met termdefinities, gebruikt voor terminologiebeheer in documentsystemen)"
+msgstr "GLOSSARY gegevenswoordenlijst (terminologie-definitiebestand speciaal voor documentbeheersystemen en gestructureerde corpora. Bevat ingebouwde standaardtermdefinities, meertalige toewijzingen en metadatatoewijzingen. Wordt gebruikt om conceptuele consistentie te behouden in geautomatiseerde tekstanalyse en inhoudspublicatiesystemen)"
 
 msgid "mime_cbz"
-msgstr "CBZ-strips (in ZIP gecomprimeerde stripafbeeldingen, universeel formaat voor stripverzamelingen)"
+msgstr "CBZ stripboek (propriëtair stripbeeldarchiveringsformaat gebaseerd op ZIP-compressiestructuur. Inwendig inkapselt het een continue reeks statische bitmapbeelden. Het is een universele lichtgewicht containerstandaard voor digitale stripuitgave en platformonafhankelijke lokale verzameling)"
 
 msgid "mime_cbr"
-msgstr "CBR-strips (in RAR gecomprimeerde stripafbeeldingen, universeel formaat voor stripverzamelingen)"
+msgstr "CBR stripboek (propriëtair stripbeeldarchiveringsformaat gebaseerd op RAR-compressiestructuur. Gebruikt RAR-algoritme om statige bitmapreeksen in te kapselen, heeft een relatief hoge compressieverhouding, heeft brede compatibiliteitsondersteuning in de distributiesector voor digitale strips)"
 
 msgid "mime_fb2"
-msgstr "FB2-e-books (FictionBook 2.0, Russisch e-bookformaat, XML-structuur, breed ondersteund door open lezers)"
+msgstr "FB2 e-book (FictionBook 2.0 e-bookstandaard uit het begin van de jaren 2000. Gebruikt pure XML-structuur om boekkenmerken en teksthiërarchie te beschrijven. Heeft brede ondersteuning in het open source e-bookecosysteem en erfenis digitale publicatielezers)"
 
 msgid "mime_kepub"
-msgstr "KEPUB-e-books (Kobo-specifiek EPUB-formaat, geoptimaliseerd formaat voor Kobo-e-booklezers)"
+msgstr "KEPUB e-book (Kobo's propriëtaire verbeterde e-bookformaat, geëvolueerd op basis van de EPUB-standaard. Voert low-level weergave-optimalisatie uit voor Kobo's hardware-niveau e-booklezers, biedt efficiëntere pagina-indeling en leesstatistiekeninteractie)"
 
 msgid "mime_m4b"
-msgstr "M4B-audioboeken (MPEG-4-audioboekformaat, ondersteunt bladwijzers, iTunes-audioboekformaat)"
+msgstr "M4B luisterboek (luisterboekformaat gebaseerd op MPEG-4 Part 14 (MP4)-containerarchitectuur. Gebruikt AAC-codering, ondersteunt ingebouwde low-level bladwijzerlocatie, hervatten van afspelen vanaf onderbrekingspunt en hoofdstukembedding. Was ooit het standaardformaat van het Apple iTunes-ecosysteem)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX-formaat (2015, Amazon, Kindle-specifiek e-bookformaat, ondersteunt geavanceerde lay-out en snel bladeren)"
+msgstr "Kindle KFX-formaat (propriëtair verbeterd digitaal publicatieformaat uitgebracht door Amazon samen met Kindle in 2015. Ondersteunt geavanceerde ligatuurindeling, hogedynamische lettertypeweergave en kernel-niveau streaming paginaladen (Page Flip). Het is de kernstandaard van het moderne Kindle-platform)"
 
 msgid "mime_chm"
-msgstr "CHM-helpbestanden (1997, Microsoft, gecompileerd HTML-helpformaat, standaard voor helpdocumentatie van Windows-software)"
+msgstr "CHM gecompileerd hulpbestand (gecompileerd HTML-hulp-informatiesysteem uitgebracht door Microsoft in 1997. Verpakt hypertekstgegevens en onderliggende index in één enkele binaire container. Was lange tijd het standaardformaat voor lokale offline hulpdocumentatie voor Windows-software)"
 
 msgid "mime_mht"
-msgstr "MHT-webarchieven (1999, Microsoft, webpaginaformaat in één bestand, formaat voor het opslaan van pagina's in IE)"
+msgstr "MHT webpagina-archief (MIME geaggregeerd hypertekstformaat uitgebracht door Microsoft in 1999. Gebaseerd op de RFC 2557-standaard, inkapselt HTML-bron, CSS, JS en ingesloten afbeeldingen in één enkel tekstbestand. Wordt gebruikt voor offline webpagina-opslag in erfenisbrowsers)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, 1999, WAP-standaard, voor webpagina's op vroege telefoons, verouderd)"
+msgstr "WML draadloze opmaaktaal (mobiele opmaakstandaard opgesteld door het WAP-forum in 1999. Gebaseerd op XML-specificatie, speciaal ontworpen voor vroege smalbandige draadloze mobiele netwerken en laag-capaciteit functietelefoons. In het moderne web-ecosysteem behoort het tot uitgefaseerde erfenistechnologie)"
 
 msgid "mime_xhtml"
-msgstr "XHTML-pagina's (2000, W3C-standaard, XML-versie van HTML met strengere syntaxis. 2009, W3C stopte met onderhoud, richtte zich op HTML5)"
+msgstr "XHTML hypertekst webpagina (2000 W3C-standaard, inkapseling van een strikt hypertekst-opmaaktaal gebaseerd op XML-architectuur. In 2009 stopte W3C met zijn technische evolutie en ging volledig over op de HTML5-specificatie. Nu meestal gebruikt voor semantische webpaginarendering in erfenissystemen)"
 
 msgid "mime_xml"
-msgstr "XML-documenten (1998, W3C-standaard, uitbreidbare opmaaktaal, basis voor webservices, configuratiebestanden, gegevensuitwisseling)"
+msgstr "XML gestructureerd document (uitbreidbare opmaaktaal uit de W3C-standaard van 1998. Heeft een zelfbeschrijvende tagarchitectuur. Het is een fundamenteel basisformaat voor netwerkwebservices (SOAP/REST), systeem-niveau configuratiebestanden (XSD) en platformonafhankelijke gegevensuitwisseling)"
 
 msgid "mime_sgml"
-msgstr "SGML-documenten (1986, ISO-standaard, voorloper van HTML, Standard Generalized Markup Language, XML en HTML zijn afgeleid van SGML)"
+msgstr "SGML gegeneraliseerde opmaaktaal (1986 ISO 8879 internationale standaard voor gestandaardiseerde gegeneraliseerde opmaaktaal. Als een industriepionier voor gestructureerde beschrijving van elektronische documenten, zijn zowel XML als vroege HTML-specificaties afgeleid van deze standaard metataal)"
 
 msgid "mime_apng"
-msgstr "APNG-animaties (2004, ontwikkeld door Mozilla, animatie-uitbreiding van PNG, modern alternatief voor GIF, ondersteunt echte kleuren en transparantie)"
+msgstr "APNG dynamische afbeeldingen (dynamische uitbreiding van Portable Network Graphics (PNG) ontwikkeld door Mozilla in 2004. Ondersteunt 24-bits echte kleuren en 8-bits Alpha-kanaal semi-transparantie. Het is een hogedefinitie alternatief voor het GIF-formaat in moderne websituaties)"
 
 msgid "mime_bmp"
-msgstr "BMP-bitmap (Windows bitmapformaat, native ondersteund sinds Windows 1.0. Niet gecomprimeerd, groot bestandsformaat, maar vanwege de eenvoudige structuur en het ontbreken van extra codecs, wordt het nog steeds gebruikt in Windows 11's Knipprogramma, Paint-programma, pictogrambronnen in EXE/MSI-installatiepakketten, cursor-bestanden en sommige oudere stuurprogramma's. Bij dezelfde beeldkwaliteit is het bestandsformaat ongeveer 3-10 keer groter dan PNG. In de meeste gevallen is het vervangen door PNG/JPEG, maar het Windows-ecosysteem behoudt nog steeds brede compatibiliteit)"
+msgstr "BMP native bitmap (apparaatonafhankelijk bitmapformaat van het Microsoft-platform, vastgesteld sinds het Windows 1.0-tijdperk. Gebruikt verliesvrije, ongecomprimeerde opslag, hoewel de grootte meestal 3 tot 10 keer groter is dan PNG, wordt het vanwege het ontbreken van coderings-/decoderingskosten nog steeds veel gebruikt in de kerncomponenten van Windows 11, EXE/MSI-resourcesegmenten en grafische buffers van erfenisstuurprogramma's)"
 
 msgid "mime_cdr"
-msgstr "CDR-vectorafbeeldingen (eigen formaat van CorelDRAW, Canadees bedrijf Corel, software voor vectorafbeeldingsontwerp)"
+msgstr "CDR vectorafbeeldingen (propriëtair CorelDRAW professioneel vectorontwerp-bronbestandsformaat van het Canadese Corel-bedrijf. Ondersteunt meerlagig kleurenbeheer, complexe wiskundige contourenknooppunten en lay-outgegevens van drukkwaliteit. Het is een gespecialiseerd formaat voor professioneel vlakdruk- en reclameontwerp)"
 
 msgid "mime_gif"
-msgstr "GIF-afbeeldingen (1987, ontwikkeld door CompuServe, 256-kleuren animatieformaat. Problemen: beperkt kleurenpalet, grove kwaliteit, geen transparantie, grote bestanden, lage beeldsnelheid. Vervangen door moderne animatieformaten zoals APNG, WebP)"
+msgstr "GIF geïndexeerde kleurenafbeelding (8-bits geïndexeerd kleurenbitmapformaat ontwikkeld door CompuServe in 1987. Gebaseerd op het LZW-algoritme, beperkt tot 256 kleurniveaus en transparantie van één kleur. Bij hoge beeldsnelheden wordt het omvangrijk. Wordt nu geleidelijk vervangen door moderne efficiënte dynamische beeldstandaarden zoals APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "ICO-pictogrammen (Windows-pictogrambestandsformaat, ondersteunt meerdere resoluties, standaardformaat voor favicons van websites)"
+msgstr "ICO systeempictogram (Windows native pictogramresource-inkapselingsformaat. Ondersteunt gemengde inbedding van afbeeldingsvarianten met meerdere pixelresoluties en kleurdiepten in één enkele container. Het is ook een universele distributiestandaard voor de kernidentificatie van moderne webbrowsersites (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "JPEG-afbeeldingen (1992, ISO-standaard, verliesgevend fotoformaat, de facto standaard voor foto's op internet)"
+msgstr "JPEG gecomprimeerde afbeelding (verliesgevend compressiebeeldformaat volgens ISO 10918 internationale standaard uit 1992. Gebaseerd op het Discrete Cosine Transform (DCT)-algoritme, bereikt het een hoge compressieverhouding terwijl het een uitstekende realistische beeldkwaliteit behoudt. Het is de absolute de facto standaard voor stilstaande fotografie op het wereldwijde internet)"
 
 msgid "mime_jpg"
-msgstr "JPEG-afbeeldingen (1992, ISO-standaard, verliesgevend fotoformaat, de facto standaard voor foto's op internet)"
+msgstr "JPEG gecomprimeerde afbeelding (verliesgevend compressiebeeldformaat volgens ISO 10918 internationale standaard uit 1992. Gebaseerd op het Discrete Cosine Transform (DCT)-algoritme, bereikt het een hoge compressieverhouding terwijl het een uitstekende realistische beeldkwaliteit behoudt. Het is de absolute de facto standaard voor stilstaande fotografie op het wereldwijde internet)"
 
 msgid "mime_png"
-msgstr "PNG-afbeeldingen (1996, W3C-aanbeveling, ondersteunt echte kleuren en transparantie, statisch alternatief voor GIF, standaard voor verliesvrije afbeeldingen op internet)"
+msgstr "PNG verliesvrije afbeelding (draagbare netwerkafbeeldingsstandaard aanbevolen door W3C in 1996. Gebruikt een verliesvrij compressie-algoritme, ondersteunt ingebouwde 24-bits echte kleuren en 8-bits Alpha-kanaal transparantie. Als een hogedefinitie alternatief voor klassieke statische GIF, is het de absolute de facto standaard voor verliesvrije pixelafbeeldingen op het internet)"
 
 msgid "mime_ps"
-msgstr "PostScript-pagina beschrijvingsbestanden (1985, Adobe, paginabeschrijvingstaal, voorloper van PDF, gebruikt voor afdrukken en publiceren)"
+msgstr "PostScript-paginabeschrijvingsbestand (stackgebaseerde paginabeschrijvingstaal geïntroduceerd door Adobe in 1985. Als de technologische voorganger van het PDF-formaat, implementeert het op laag niveau hardware-onafhankelijke typografie en nauwkeurige vectorafbeeldingsweergave. Het is een fundamentele standaard voor professionele drukkerij- en laserprintgebieden)"
 
 msgid "mime_psb"
-msgstr "PSB-grote documenten (Adobe Photoshop ultra-groot afbeeldingsformaat, ondersteunt afbeeldingen van meer dan 2 GB of 30000 pixels)"
+msgstr "PSB grootlaagdokument (Adobe Photoshops propriëtair supergroot bronbestand-inkapselingsformaat. Het doorbreekt de 2 GB fysieke grootte en 30.000 pixels interne adresseringslimieten van het standaard PSD-formaat. Speciaal ontworpen voor het opslaan van extreem grote, hoog-laagdiepte gigantische digitale kunstmiddelen)"
 
 msgid "mime_psd"
-msgstr "PSD-afbeeldingen (Adobe Photoshop-bronbestand, ondersteunt lagen, kanalen, paden, industriestandaard voor beeldbewerking)"
+msgstr "PSD laagontwerp bronbestand (Adobe Photoshops propriëtair gelaagd beeldtechniekformaat. Als een industriestandaardcontainer op het gebied van afbeeldingen, inkapselt het native een volledige laagweergaveboom, bitmapkanalen, vector knippaden en samengestelde overvloeimodi, en ondersteunt verliesvrije volledige gegevensbewerking)"
 
 msgid "mime_webp"
-msgstr "WebP-afbeeldingen (2010, ontwikkeld door Google, webafbeeldingsformaat, ondersteunt verliesgevende/verliesvrije compressie en animatie, compressieverhouding 25-35% hoger dan PNG, 25% hoger dan JPEG)"
+msgstr "WebP efficiënte afbeelding (universele webafbeeldingscoderingsstandaard geïntroduceerd door Google in 2010. Afgeleid van VP8-video sleutelframetechnologie, perfect compatibel met verliesgevende, verliesvrije, semi-transparante en dynamische weergave. Vermindert de grootte met 25-35% in vergelijking met PNG van dezelfde kwaliteit. Het is een hoeksteen voor het hoogwaardig laden van moderne webpagina's)"
 
 msgid "mime_woff"
-msgstr "WOFF-weblettertypen (gemaakt in 2009, W3C-standaard in 2018. Gebaseerd op TrueType/OpenType-compressie, geoptimaliseerd voor het laden van weblettertypen, standaardformaat voor lettertypepictogrammen van moderne websites)"
+msgstr "WOFF webglyph-bestand (open weblettertypeformaat gecreëerd in 2009 en W3C-standaard geworden in 2012. In wezen is het een streaming verliesvrije compressie-inkapseling van standaard TTF/OTF-lettertypestructuren, die de netwerktransmissiebandbreedtekosten aanzienlijk optimaliseert. Het is een universeel formaat voor moderne website-iconen en cloudlettertypen)"
 
 msgid "mime_7z"
-msgstr "7z-archieven (1999, ontwikkeld door Igor Pavlov, eigen formaat van het 7-Zip-programma. LZMA-algoritme, hoge compressieverhouding, open source en gratis. 7z-formaat is meestal 30-50% kleiner dan ZIP bij dezelfde compressieverhouding)"
+msgstr "7z gecomprimeerd archief (propriëtair 7-Zip-formaat ontwikkeld door Igor Pavlov in 1999. Gebaseerd op open source LZMA/LZMA2-algoritmen, heeft het een extreem hoge compressieverhouding. Onder dezelfde omstandigheden is de grootte meestal 30-50% kleiner dan ZIP. Het is een universeel hoge-compressieverhoudingsformaat voor open source-gemeenschap en softwaredistributie)"
 
 msgid "mime_ace"
-msgstr "ACE-archieven (ontwikkeld in de jaren 1990, formaat van het WinACE-programma. Concurreerde ooit met RAR, hoge compressieverhouding. Ontwikkeling stopgezet in 2007, nu vervangen door 7z/RAR, zelden gebruikt)"
+msgstr "ACE gecomprimeerd archief (propriëtair compressieformaat van WinACE uit de jaren 90. Concurreerde ooit met het RAR-formaat en had een relatief hoge compressieverhouding. Na 2007 stopte de technologische ontwikkeling, nu vervangen door 7z- en RAR-formaten. Behoort tot erfenissysteemarchiveringsformaat)"
 
 msgid "mime_bz2"
-msgstr "BZIP2-archieven (1996, ontwikkeld door Julian Seward, blok-sorteercompressie-algoritme. Compressieverhouding 15-20% hoger dan GZIP, maar langzamer. Vaak gebruikt voor Linux-kernelbronnen, open source-pakketten)"
+msgstr "BZIP2 gecomprimeerd archief (blok-sorterend compressieformaat ontwikkeld door Julian Seward in 1996. De compressieverhouding van het onderliggende algoritme is 15-20% hoger dan GZIP, maar de rekenkosten zijn hoger. Vaak gebruikt voor de distributie van Linux-kernelbroncode en open source softwarepakketten. De standaardextensie is .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB-archieven (1995, ontwikkeld door Microsoft, Cabinet-formaat. Formaat voor Windows-systeeminstallatiepakketten, gebruikt voor de distributie van stuurprogramma's en systeembestanden)"
+msgstr "CAB gecomprimeerd archief (Cabinet-archiveringsformaat onafhankelijk ontwikkeld door Microsoft in 1995. Als de native installatiepakketstandaard van het Windows-systeem, wordt het gebruikt voor de distributie van stuurprogramma's en kernelbestanden. Het is ook de onderliggende opslagcontainer voor Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG-schijfimages (1980s, Apple, Disk Image-formaat. Standaardformaat voor softwaredistributie op macOS, dubbelklik om te koppelen als virtueel station)"
+msgstr "DMG schijfkopie (Disk Image-formaat geëvolueerd door Apple in de jaren 80. Als de standaardcontainer voor macOS-softwaredistributie, ondersteunt het fysieke koppeling als een virtueel bestandssysteem, low-level compressie en gegevenscodering. Het is het dominante formaat voor applicatiedistributie in het Mac-ecosysteem)"
 
 msgid "mime_emz"
-msgstr "EMZ-gecomprimeerde afbeeldingen (gecomprimeerd Windows uitgebreid metabestand, gecomprimeerde versie van EMF. Opslagformaat voor vectorgraphics in Office-documenten)"
+msgstr "EMZ gecomprimeerde afbeelding (gecomprimeerde versie van Windows Enhanced Metafile EMF. In wezen een binaire vectorafbeelding gecomprimeerd via het GZIP-algoritme. Veel gebruikt voor de opslag van ingebedde vectorafbeeldingen in Microsoft Office-serie documenten)"
 
 msgid "mime_gz"
-msgstr "GZIP-archieven (1992, ontwikkeld door Jean-loup Gailly en Mark Adler, GNU-project. Standaardcompressieprogramma voor Unix/Linux, vaak gebruikt voor HTTP-transmissiecompressie)"
+msgstr "GZIP gecomprimeerd archief (standaard stroomcompressieformaat ontwikkeld door Jean-loup Gailly en Mark Adler van het GNU-project in 1992. Als het standaardcompressieprogramma voor Unix/Linux, is het ook de kernstandaard voor HTTP-transportlaagcompressie (Gzip). Vaak gebruikt in combinatie met TAR-archivering)"
 
 msgid "mime_jar"
-msgstr "JAR-archieven (1997, Sun Microsystems, Java ARchive-formaat. In wezen een ZIP-compressiepakket, gebruikt voor het verpakken van Java-klassebibliotheken en -applicaties)"
+msgstr "JAR gecomprimeerd archief (Java ARchive-archiveringsformaat geïntroduceerd door Sun Microsystems in 1997. In wezen een op ZIP-structuur gebaseerde pakketcontainer, gebruikt voor het inkapselen van Java-klassebibliotheken en metadata. Het is een kerncompilatieproduct voor Maven, Gradle en het vroege Android-ecosysteem)"
 
 msgid "mime_lzma"
-msgstr "LZMA-archieven (1998, ontwikkeld door Igor Pavlov, Lempel-Ziv-Markov chain-algoritme. Basiscompressie-algoritme van het 7z-formaat, hoge compressieverhouding, snelle decompressiesnelheid)"
+msgstr "LZMA gecomprimeerd archief (Lempel-Ziv-Markov-ketencompressiealgoritme ontwikkeld door Igor Pavlov in 1998. Als de kerndrive van het 7z-formaat, heeft het een extreem hoge compressieverhouding en hogesnelheidsdecompressie. Veel gebruikt voor hardware-firmware en distributie van embedded systemen)"
 
 msgid "mime_rar"
-msgstr "RAR-archieven (1993, ontwikkeld door Eugene Roshal, Roshal ARchive-formaat. Hoge compressieverhouding, ondersteunt meerdelige archieven, herstelrecords. Formaat van het WinRAR-programma)"
+msgstr "RAR gecomprimeerd archief (propriëtair WinRAR-archiveringsformaat ontwikkeld door Eugene Roshal in 1993. Ondersteunt volume-opsplitsing, fysieke herstelrecords (ECC) en hoge-sterkte codering. De compressieverhouding is beter dan standaard ZIP, en heeft brede compatibiliteitsondersteuning in personal computers en commerciële sectoren)"
 
 msgid "mime_tar"
-msgstr "TAR-archieven (1979, geïntroduceerd in Unix V7, Tape ARchive-formaat. Tape-archiefformaat, comprimeert niet, alleen verpakking, vaak gebruikt met GZIP/BZIP2/XZ)"
+msgstr "TAR archiefpakket (tape-archiveringsformaat uit het Unix V7-tijdperk van 1979. Doet alleen bestandsstroomverpakking zonder datacompressie. Vaak gecombineerd met GZIP/BZIP2/XZ. Het is een onderliggende standaard voor Linux-broncodepakketten en Docker-afbeeldingslaagopslag)"
 
 msgid "mime_tgz"
-msgstr "TGZ-archieven (gecombineerd formaat TAR + GZIP, extensie .tgz of .tar.gz. Meest universele distributieformaat voor Unix/Linux-pakketten)"
+msgstr "TGZ gecomprimeerd archief (stroomcombinatieformaat van TAR-archivering en GZIP-compressie, extensies .tgz of .tar.gz. Als het meest universele softwarepakketdistributieformaat in Unix/Linux-omgevingen, veel gebruikt voor distributie van broncodecompilatie en installatievrije binaire pakketdistributie)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2-archieven (gecombineerd formaat TAR + BZIP2, extensie .tbz2 of .tar.bz2. Compressieverhouding 15-20% hoger dan TGZ)"
+msgstr "TBZ2 gecomprimeerd archief (stroomcombinatieformaat van TAR-archivering en BZIP2-compressie, extensies .tbz2 of .tar.bz2. Vergeleken met TGZ kan de compressieverhouding met 15-20% verder worden verhoogd, geschikt voor grote bestandsoverdracht. Werd lange tijd gebruikt voor de distributie van Linux-kernelbroncode)"
 
 msgid "mime_xz"
-msgstr "XZ-archieven (2009, gebaseerd op LZMA2-algoritme. Zeer hoge compressieverhouding, 30-50% hoger dan GZIP, snelle decompressiesnelheid)"
+msgstr "XZ gecomprimeerd archief (volgende generatie hoge-compressieverhoudingsformaat geïntroduceerd in 2009. Gebaseerd op LZMA2-algoritme, gegevenscompressieverhouding 30-50% hoger dan GZIP met behoud van hogesnelheidsdecompressie. Het is vastgesteld als aanbevolen distributiestandaard door de Linux-kernel en mainstream pakketbeheerders (zoals in Debian .deb))"
 
 msgid "mime_z"
-msgstr "Z-archieven (1985, Unix compress-opdrachtformaat, LZW-algoritme. Vroeg Unix-compressieformaat, vervangen door GZIP)"
+msgstr "Z gecomprimeerd archief (LZW-compressieformaat van het Unix compress-commando uit 1985. Als een vroege standaardcompressiestandaard voor Unix-systemen, is het nu volledig vervangen door het efficiëntere GZIP-formaat. In modern netwerkverkeer is het een zeldzaam historisch erfenisformaat)"
 
 msgid "mime_zip"
-msgstr "ZIP-archieven (1989, ontwikkeld door Phil Katz, PKZIP-formaat. Native Windows-ondersteuning, meest universele compressieformaat op internet)"
+msgstr "ZIP gecomprimeerd archief (universeel PKZIP-archiveringsformaat ontwikkeld door Phil Katz in 1989. Heeft native ondersteuning van gangbare besturingssystemen. Het is de meest gebruikte containerstandaard op internet. Moderne Java's JAR, Android's APK en Office-documenten (OOXML) zijn allemaal gebaseerd op de ZIP-structuur)"
 
 msgid "mime_zst"
-msgstr "Zstandard-archieven (2015, ontwikkeld door Facebook, ontworpen door Yann Collet. Hogesnelheidscompressie-algoritme, compressieverhouding dicht bij LZMA, snelheid veel hoger dan GZIP)"
+msgstr "Zstandard gecomprimeerd archief (volgende generatie stroomcompressiestandaard ontworpen door Yann Collet van Facebook in 2015. Benadert de LZMA-compressieverhouding terwijl het een veel hogere doorvoer heeft dan GZIP. Het is diepgaand geadopteerd door de Linux-kernel (5.9+) en Arch/Debian-pakketbeheerders)"
 
 msgid "mime_lz4"
-msgstr "LZ4-archieven (2011, ontwikkeld door Yann Collet, ultra-snel compressie-algoritme. Compressiesnelheid meer dan 10 keer sneller dan GZIP)"
+msgstr "LZ4 gecomprimeerd archief (extreem snelle stroomcompressie-algoritme ontwikkeld door Yann Collet in 2011. Doorvoersnelheid meer dan 10 keer sneller dan GZIP, met extreem lage CPU-runtimekosten. Veel gebruikt in de Linux-kernel, het OpenZFS-bestandssysteem en Hadoop real-time datastroomverwerking)"
 
 msgid "mime_lzo"
-msgstr "LZO-archieven (1996, ontwikkeld door Markus Oberhumer, Lempel-Ziv-Oberhumer-algoritme. Zeer snelle decompressiesnelheid, gemiddelde compressieverhouding)"
+msgstr "LZO gecomprimeerd archief (Lempel-Ziv-Oberhumer-algoritme ontwikkeld door Markus Oberhumer in 1996. Richt zich op extreem snelle decompressieprestaties. Veel ingebed in Linux-kernel Squashfs-afbeeldingen, OpenWrt-firmware en diverse bron-beperkte embedded systemen)"
 
 msgid "mime_msi"
-msgstr "MSI-installatiepakketten (1999, Microsoft, Windows Installer-pakketformaat. Standaardinstallatieformaat voor Windows-applicaties)"
+msgstr "MSI systeeminstallatiepakket (Windows Installer-gegevensinkapselingsformaat geïntroduceerd door Microsoft in 1999. Als een standaard implementatiespecificatie voor Windows-applicaties, ondersteunt het ingebouwde low-level transactie-rollback, componentlevenscyclusbeheer en stille installatie zonder batchverwerking. Het is een kernstandaard voor gecentraliseerde softwaredistributie en beleidsimplementatie op bedrijfsniveau)"
 
 msgid "mime_pkg"
-msgstr "PKG-installatiepakketten (formaat voor macOS-applicatie-installatiepakketten, gebaseerd op Apple's Installer-technologie)"
+msgstr "PKG platformonafhankelijk software-installatiepakket. 1. FreeBSD-softwarepakket: pkgng-standaard, extensies .pkg of .txz, gebaseerd op TAR+XZ/Zstd-compressie, ondersteunt afhankelijkheidsoplossing en handtekeningverificatie; 2. macOS-installatiepakket: gebaseerd op Apple Installer-formaat, ondersteunt aangepaste componenten, installatiescripts en systeemniveau verwijdering. Dit zijn respectievelijk de belangrijkste distributiedragers voor BSD-servers en Mac-systemen."
 
 msgid "mime_apk"
-msgstr "APK Android-applicatiepakket (geïntroduceerd door Google in 2008, traditioneel installatieformaat voor Android-applicaties. APK is in wezen een ZIP-pakket, bevat code, bronnen en manifestbestand. Vanaf 2021 vereist Google Play dat nieuwe applicaties het AAB-formaat gebruiken, maar APK wordt nog steeds gebruikt voor ontwikkeling en debugging, winkels van derden en side-loading)"
+msgstr "APK Android-applicatiepakket (traditioneel applicatie-installatiepakket uitgebracht door Google samen met Android in 2008. Gebaseerd op ZIP-archiefstructuur, verpakt gecompileerde Dalvik-bytecode (DEX), metadatamanifest en globale bronnen. Nu veel gebruikt voor lokale ontwikkelingsdebugging, distributie door derden en side-loading installatie op apparaten)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS-applicatiepakket (iOS App Store Package, installatieformaat voor iOS/iPadOS-applicaties. Geïntroduceerd in 2008 met de iPhone SDK. Moet worden gedistribueerd via de App Store of worden ondertekend met een bedrijfscertificaat. Bevat uitvoerbaar bestand, bronnen, Info.plist en handtekeninginformatie)"
+msgstr "IPA Apple-applicatiepakket (iOS/iPadOS-specifieke pakketcontainer uitgebracht samen met de iPhone SDK in 2008. In wezen een ZIP-archief beschermd door FairPlay DRM of bedrijfsniveau codehandtekening, bevat een Mach-O binaire uitvoerbaar bestand, applicatiebronnenboom en Info.plist-metadataconfiguratie)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS-applicatiepakket (HarmonyOS Ability Package, basiseenheid van HarmonyOS-applicatie. Geïntroduceerd in 2020 met HarmonyOS 2.0. Ondersteunt twee typen: entry en feature, distributieformaat voor Huawei-telefoons, tablets, smartwatches en andere HarmonyOS-apparaten)"
+msgstr "HAP HarmonyOS-applicatiepakket (elastische implementatie-basiseenheid van HarmonyOS uitgebracht samen met HarmonyOS 2.0 in 2020. Bestaat uit Entry-hoofdmodule of Feature-uitbreidingsfunctionele modules. Het is een kern multi-end implementatieformaat voor de distributie van slimme terminals in alle scenario's (telefoons, tablets, draagbare apparaten))"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS statische gedeelde bibliotheek (HarmonyOS Archive, statische gedeelde bibliotheek van HarmonyOS, kan door meerdere HAP-pakketten worden gedeeld, gebruikt voor componentgebaseerde ontwikkeling en hergebruik van modules)"
+msgstr "HAR HarmonyOS statisch gedeeld pakket (HarmonyOS' eigen statisch gedeeld bibliotheekarchiefbestand. Gebruikt voor het inkapselen van gemeenschappelijke componenten, low-level broncode en compile-time afhankelijkheden, die statisch worden gekoppeld en gedeeld door meerdere HAP-modules. Het is een kernbasis voor componentgebaseerde ontwikkeling en hergebruik van meerdere modules van het HarmonyOS-systeem)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (2018, Google, vanaf 2021 vereist Google Play dit formaat voor nieuwe applicaties. AAB is een distributieformaat)"
+msgstr "AAB Android-applicatiebundel (dynamisch distributieformaat voor Google Play, geïntroduceerd door Google in 2018 en vastgesteld in 2021. Als een pure distributie-entiteit, wordt het dynamisch bijgesneden en gecompileerd door de cloud op basis van de CPU-architectuur van het doelapparaat, schermdichtheid en taal, en genereert het op verzoek geoptimaliseerde APK's. Het vermindert de gemiddelde transmissiebandbreedtekosten met 35%)"
 
 msgid "mime_xapk"
-msgstr "XAPK-applicatiepakketten (uitgebreid Android-applicatiepakket van derden, bevat APK + OBB-gegevensbestanden)"
+msgstr "XAPK uitgebreid applicatiepakket (onofficiële applicatie-uitbreidingsstandaard vastgesteld door de third-party Android-gemeenschap. Door het standaard APK-bestand en het grote OBB-spelgegevensuitbreidingspakket gezamenlijk in te kapselen, doorbreekt het fysiek de limiet van Google Play van 100 MB voor afzonderlijke bestanden. Veel gezien op speldistributieplatforms)"
 
 msgid "mime_appx"
-msgstr "Windows-applicatiepakketten (2012, Microsoft, installatieformaat voor Windows 8/10/11-applicaties)"
+msgstr "APPX moderne applicatiepakket (UWP-applicatie-implementatiespecificatie uitgebracht door Microsoft samen met Windows 8 in 2012. Heeft sandbox-geïsoleerde uitvoering en lichtgewicht verwijderingsfuncties. Als een vroege dominante standaard van de Microsoft Store, is het in het moderne Windows-ecosysteem de laatste fase van zijn levenscyclus ingegaan, evoluerend naar MSIX)"
 
 msgid "mime_msix"
-msgstr "MSIX-applicatiepakketten (2018, Microsoft, Windows-applicatiepakketformaat van de volgende generatie)"
+msgstr "MSIX volgende generatie applicatiepakket (gloednieuwe gestandaardiseerde pakketspecificatie voor Windows uitgebracht door Microsoft in 2018. Het smelt perfect de beveiligingssandbox-functies van APPX samen met de voordelen van MSIX op het gebied van bedrijfsmiddelenbeheer. Volledig compatibel met alle Win32-applicatietypen. Het is de aanbevolen distributiestandaard voor Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage-applicatiepakketten (2004, formaat voor Linux-applicaties zonder installatie)"
+msgstr "AppImage installatievrij applicatiepakket (Linux-specificatie voor enkelvoudige uitvoerbare archieven, gestart in 2004. Gebruikt een zelfvoorzienende architectuur van 'één applicatie is één bestand'. Tijdens runtime wordt het direct via het FUSE-mechanisme als een alleen-lezen virtueel bestandssysteem gekoppeld om uit te voeren, waardoor onmiddellijk gebruik met nul afhankelijkheden mogelijk is op alle Linux-distributies)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak-applicatiepakketten (2015, formaat voor Linux-applicaties in een sandbox)"
+msgstr "Flatpak sandbox-applicatiepakket (Linux-distributieonafhankelijke desktopapplicatiedistributiestandaard, geleid door Red Hat en GNOME in 2015. Het vertrouwt onderliggend op de Namespace- en Cgroups-mechanismen van de Linux-kernel om extreem strikte beveiligingssandbox-isolatie op applicatieniveau te realiseren. Het is de basis van moderne open source OS-softwarecentra)"
 
 msgid "mime_snap"
-msgstr "Snap-applicatiepakketten (2014, Canonical, ontwikkeld door het moederbedrijf van Ubuntu, universeel Linux-applicatieformaat)"
+msgstr "Snap gecontaineriseerd applicatiepakket (universele Linux-implementatiestandaard geïntroduceerd door Canonical, het moederbedrijf van Ubuntu, in 2014. Gebruikt een zelfvoorzienende SquashFS-afbeeldingskoppelingsarchitectuur, ondersteunt geautomatiseerde incrementele updates en strikte AppArmor-sandbox-isolatie. Het is het kernstandaardformaat van het Ubuntu Software Center-ecosysteem)"
 
 msgid "mime_deb"
-msgstr "Debian-softwarepakketten (1993, Debian-project, standaardinstallatieformaat voor Debian/Ubuntu en derivaten)"
+msgstr "DEB systeemsoftwarepakket (binaire en broncode-inkapselingsspecificatie opgesteld door het Debian-project in 1993. Als een onderliggende installatiestandaard voor Debian, Ubuntu en al hun afgeleide systemen, vertrouwt het op de dpkg-kernel voor uitpakken en onderhoud, met APT als efficiënte pakketbeheerder-frontend. Het is de meest volwassen software-distributiebasis in het Linux-ecosysteem)"
 
 msgid "mime_rpm"
-msgstr "RPM-softwarepakketten (1997, Red Hat, standaardformaat voor distributies zoals Red Hat/Fedora/CentOS/SUSE, enz.)"
+msgstr "RPM systeemsoftwarepakket (Red Hat-pakketbeheerder-inkapselingsspecificatie geïntroduceerd door Red Hat in 1997. Samen met DEB wordt het beschouwd als een van de twee grote kampen van traditioneel Linux-pakketbeheer. Heeft ingebouwde transactieniveau-afhankelijkheidscontrole en onderliggende software digitale handtekeningverificatie. Het is nog steeds de absolute mainstream distributiestandaard voor Red Hat-familie-ecosystemen zoals RHEL, Fedora en CentOS)"
 
 msgid "mime_pacman"
-msgstr "Arch-softwarepakketten (2002, Arch Linux, .pkg.tar.zst-formaat gebruikt door de pacman-pakketbeheerder)"
+msgstr "Pacman gearchiveerd softwarepakket (.pkg.tar.zst-inkapselingsformaat opgesteld door Arch Linux samen met de pacman-beheerder in 2002. Als de kern van het rolling update-mechanisme van Arch, gebaseerd op het Zstandard hogesnelheids- hogecompressie-algoritme, in combinatie met het AUR (Arch User Software Repository)-ecosysteem. Het is een modern pakketdistributiestandaard die de minimalistische en KISS-principes belichaamt)"
 
 msgid "mime_exe"
-msgstr "EXE-uitvoerbare bestanden (uitvoerbaar programmaformaat voor Windows, afkorting van 'Executable'. Native uitvoeringsformaat van Windows-besturingssysteem)"
+msgstr "EXE native uitvoerbaar bestand (Portable Executable (PE) binair programmaformaat van het Windows-platform. Technologisch afstammend van de MZ-headerstructuur uit het MS-DOS-tijdperk, en sinds Windows NT in 1993 volledig vastgesteld als PE-structuurspecificatie. Het is 's werelds meest gebruikte uitvoeringsstandaard voor machinecode-instructies, statische bronsegmenten en systeemkernelopstart)"
 
 msgid "mime_dll"
-msgstr "DLL-dynamische koppelingsbibliotheken (1993, Microsoft, Dynamic Link Library. Gedeelde code voor Windows)"
+msgstr "DLL dynamische linkbibliotheek (Dynamic Link Library gedeelde codebibliotheekspecificatie van het Windows-platform. Door dynamisch laden en symboolherlocatie tijdens runtime te gebruiken, bespaart het aanzienlijk fysiek geheugen en schijfruimte. Als de kernimplementatievorm van de Windows API, werd het vroege DLL Hell-probleem in moderne tijden opgelost door het SxS-parallelle isolatiemechanisme)"
 
 msgid "mime_com"
-msgstr "COM-uitvoerbare bestanden (uitvoerbaar formaat uit het MS-DOS-tijdperk, afkorting van 'Command'. Eenvoudige bestandsstructuur, 64KB-limiet, verouderd)"
+msgstr "COM klassiek uitvoerbaar bestand (oudste geheugenafbeelding (Command) uitvoeringsformaat uit het MS-DOS-tijdperk. Gebruikt een ongestructureerd, puur codesegmentontwerp, beperkt tot de bovengrens van 64 KB fysiek geheugenadresseringssegment. Nu gepensioneerd als historisch erfenisformaat, maar wordt nog steeds gebruikt in moderne Windows-architectuur als een specifieke componentinterface voor beperkte compatibiliteit)"
 
 msgid "mime_aac"
 msgstr "AAC-audio (1997, MPEG-standaard, Advanced Audio Coding. Opvolger van MP3, betere kwaliteit dan MP3 bij dezelfde bitsnelheid)"

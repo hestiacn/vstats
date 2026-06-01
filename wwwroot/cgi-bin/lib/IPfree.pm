@@ -194,7 +194,7 @@ sub _cache_result {
 sub _query_mmdb {
     my ($this, $ip) = @_;
     
-    my ($country_code, $country_name, $state_name, $city_name) = ('--', '未知', '', '');
+    my ($country_code, $country_name, $state_name, $city_name) = ('--', 'Unknown', '', '');
     
     eval {
         if ($this->{db_type} eq 'dbip') {
@@ -205,7 +205,7 @@ sub _query_mmdb {
                 if ($data->{country}) {
                     $country_code = $data->{country}->{iso_code} // '--';
                     if ($data->{country}->{names}) {
-                        $country_name =$data->{country}->{names}->{'en'} // '未知';
+                        $country_name = $data->{country}->{names}->{'en'} // 'Unknown';
                     }
                 }
                 
@@ -219,14 +219,14 @@ sub _query_mmdb {
                 
                 # 城市信息
                 if ($data->{city} && $data->{city}->{names}) {
-                    $city_name =$data->{city}->{names}->{'en'} // '';
+                    $city_name = $data->{city}->{names}->{'en'} // '';
                 }
             }
         } elsif ($this->{db_type} eq 'geoip2') {
             my $city = $this->{mmdb_geoip}->city(ip => $ip);
             if ($city) {
                 $country_code = $city->country->iso_code // '--';
-                $country_name = $city->country->name // '未知';
+                $country_name = $city->country->name // 'Unknown';
                 
                 if ($city->most_specific_subdivision) {
                     $state_name = $city->most_specific_subdivision->name // '';

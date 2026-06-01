@@ -444,8 +444,8 @@ msgstr "Máy chủ - Số trang - Số yêu cầu - Băng thông - Thời gian t
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Thời gian bắt đầu truy cập cuối cùng] và [Trang cuối của lần truy cập cuối cùng] chỉ được lưu khi phiên chưa kết thúc"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Trang chính sẽ chỉ hiển thị %s mục yêu cầu cao nhất, vui lòng xem danh sách đầy đủ trong trang chi tiết"
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "%s mục đầu tiên được sắp xếp theo số lượt truy cập theo thứ tự giảm dần; thứ tự của các mục còn lại không được xác định."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Người dùng đã đăng nhập - Số trang - Số yêu cầu - Băng thông - Thời gian truy cập cuối cùng"
@@ -459,8 +459,8 @@ msgstr "ID sâu - Số yêu cầu - Băng thông - Thời gian truy cập cuối
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Email - Số yêu cầu - Băng thông - Thời gian truy cập cuối cùng"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Trang chính sẽ chỉ hiển thị %s email yêu cầu cao nhất, vui lòng xem danh sách đầy đủ trong trang chi tiết"
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "%s địa chỉ email đầu tiên được sắp xếp theo số lượt truy cập theo thứ tự giảm dần; thứ tự của các địa chỉ còn lại không được xác định."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Số trang - Băng thông - Vào - Ra"
@@ -669,6 +669,27 @@ msgstr "Tham số SiteDomain không được định nghĩa trong tệp config/d
 msgid "Please run as Administrator to set permissions"
 msgstr "Vui lòng chạy với tư cách Quản trị viên để thiết lập quyền"
 
+msgid "This directory lacks read permission"
+msgstr "Thư mục này thiếu quyền đọc"
+
+msgid "Please set read permission for directory"
+msgstr "Vui lòng đặt quyền đọc cho thư mục"
+
+msgid "Missing required parameter in config file"
+msgstr "Thiếu tham số bắt buộc trong tệp cấu hình"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Vui lòng kiểm tra xem 'DirData' đã được xác định."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Tên miền trong địa chỉ trình duyệt dường như bị thiếu hoặc không đầy đủ"
+
+msgid "Please check the URL parameter"
+msgstr "Vui lòng kiểm tra tham số URL"
+
+msgid "Format description"
+msgstr "Mô tả định dạng"
+
 msgid "Please set execute permission"
 msgstr "Vui lòng thiết lập quyền thực thi"
 
@@ -794,376 +815,379 @@ msgstr "Công cụ lấy dữ liệu"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Tệp văn bản (được chuẩn hóa ASCII năm 1963, văn bản thuần không định dạng. Nền tảng của mã nguồn, tệp cấu hình và nhật ký. Unix dùng LF, Windows dùng CRLF xuống dòng, vẫn là định dạng dữ liệu phổ biến nhất của máy tính)"
+msgstr "TXT tệp văn bản thuần túy (văn bản thuần túy không định dạng được chuẩn hóa bằng mã hóa ASCII năm 1963. Là nền tảng cơ bản của mọi mã nguồn, tệp cấu hình và nhật ký hệ thống, luồng điều khiển ngắt dòng đa nền tảng Windows (CRLF) và Unix (LF) của nó vẫn là tiêu chuẩn trao đổi dữ liệu phổ biến nhất trong thế giới máy tính)"
 
 msgid "mime_log"
-msgstr "Tệp nhật ký (tệp văn bản thuần ghi dữ liệu hệ thống, hoạt động ứng dụng, dùng để khắc phục sự cố, phân tích hiệu suất, kiểm tra bảo mật. Định dạng chuẩn như Apache combined log, Nginx access log, syslog v.v.)"
+msgstr "LOG nhật ký hoạt động hệ thống (tài sản văn bản thuần túy ghi lại trạng thái thời gian chạy của hệ điều hành, nhân và ứng dụng ở cấp độ ứng dụng. Bao gồm nhật ký truy cập Nginx/Apache (Nhật ký kết hợp) và đặc tả syslog tiêu chuẩn, là nguồn dữ liệu cốt lõi để khắc phục sự cố, phân tích hiệu suất luồng và kiểm toán bảo mật)"
 
 msgid "mime_page"
-msgstr "Trang web HTML (Tim Berners-Lee phát minh World Wide Web năm 1989, định nghĩa ba công nghệ HTML/HTTP/URL năm 1990, cung cấp miễn phí không xin bằng sáng chế. HTML5 trở thành tiêu chuẩn W3C năm 2014, hỗ trợ hiển thị, đa phương tiện và in ấn. Được giải Turing năm 2016)"
+msgstr "HTML trang web siêu văn bản (nền tảng của World Wide Web được tạo bởi Tim Berners-Lee năm 1989. Là một ngôn ngữ đánh dấu siêu văn bản phổ quát miễn phí, đặc tả HTML5 của nó đã trở thành tiêu chuẩn chính thức của W3C vào năm 2014, hỗ trợ nguyên bản cho đa phương tiện có cấu trúc, tương tác ngữ nghĩa và bố cục trang luồng. Đã giành giải Turing năm 2016)"
 
 msgid "mime_khtml"
-msgstr "Công cụ trang web KHTML (phát hành trong KDE 2.0 năm 1998, công cụ hiển thị trình duyệt Konqueror. Apple tạo WebKit dựa trên KHTML năm 2001. Google tạo Blink từ WebKit năm 2008, trở thành lõi chính của trình duyệt Chrome, Edge, Safari. KHTML là hình mẫu của cộng đồng nguồn mở đặt nền móng cho công cụ trình duyệt hiện đại, di sản công nghệ vẫn tiếp tục qua WebKit/Blink)"
+msgstr "KHTML công cụ mẫu trang web (đặc tả công cụ hiển thị trình duyệt KDE 2.0 năm 1998. Là chuẩn mực của cộng đồng mã nguồn mở đặt nền móng cho hiển thị web hiện đại, di sản công nghệ của nó đã truyền cảm hứng trực tiếp và phát triển thành nhân Apple WebKit và Google Blink, vẫn tiếp tục mạch ngầm cốt lõi của mình thông qua kiến trúc web động luồng hiện đại)"
 
 msgid "mime_script"
-msgstr "Kịch bản động (ngôn ngữ thông dịch, không cần biên dịch. Bao gồm ASP, JSP, CGI, ColdFusion, Tcl, VBScript v.v., được sử dụng rộng rãi trong phát triển web thời kỳ đầu, quản lý hệ thống, tác vụ tự động. Ngôn ngữ kịch bản hiện đại như Python, Ruby, JavaScript đã phát triển thành ngôn ngữ chính trong phát triển full-stack)"
+msgstr "SCRIPT kịch bản động được thông dịch (phân loại chung các luồng mã nguồn không cần biên dịch trước và được đọc và thực thi từng dòng bởi một thời gian chạy hoặc trình thông dịch cụ thể. Bao gồm ASP, JSP, CGI, Tcl, v.v., được sử dụng rộng rãi cho giao diện cổng chung phía máy chủ, điều khiển quy trình tự động và kết dính tác vụ cấp hệ thống)"
 
 msgid "mime_js"
-msgstr "Kịch bản JavaScript (Brendan Eich tạo trong 10 ngày tại Netscape năm 1995, ngôn ngữ lập trình gốc của trình duyệt. ECMAScript được chuẩn hóa năm 1997. Node.js ra đời năm 2009 biến nó thành ngôn ngữ full-stack. npm là trình quản lý gói lớn nhất thế giới. Nhiều năm liền là ngôn ngữ lập trình phổ biến nhất trên GitHub)"
+msgstr "Kịch bản JavaScript (môi trường lập trình gốc của trình duyệt Netscape năm 1995. Đã thiết lập tiêu chuẩn ngành ECMAScript vào năm 1997, thời gian chạy Node.js ra đời năm 2009, phá vỡ ranh giới trình duyệt và tạo ra kiến trúc bất đồng bộ không chặn toàn ngăn xếp, cùng với hệ sinh thái gói phần mềm npm lớn nhất thế giới)"
 
 msgid "mime_py"
-msgstr "Kịch bản Python (Guido van Rossum tạo năm 1991, nổi tiếng với thụt lề bắt buộc, cú pháp đơn giản. Được sử dụng rộng rãi trong phát triển web, khoa học dữ liệu, trí tuệ nhân tạo, vận hành tự động. Nhiều lần đoạt giải TIOBE Programming Language of the Year)"
+msgstr "Kịch bản Python (ngôn ngữ kịch bản thông dịch cấp cao được tạo bởi Guido van Rossum năm 1991. Nhờ thụt lề bắt buộc để có khả năng đọc không mất mát và thiết kế cấp thấp đa mô hình, nó hiện đã được thiết lập là ngôn ngữ tiêu chuẩn công nghiệp cho kiến trúc web hiện đại, khoa học dữ liệu toàn ngăn xếp, huấn luyện mô hình trí tuệ nhân tạo (AI) và vận hành tự động hóa bản địa đám mây)"
 
 msgid "mime_sh"
-msgstr "Kịch bản Shell (Unix ra đời năm 1971, ngôn ngữ kịch bản lệnh. Dùng cho quản lý hệ thống, tác vụ tự động, khởi động dịch vụ, kịch bản triển khai. Kỹ năng thiết yếu cho quản trị Linux)"
+msgstr "Kịch bản Shell (kịch bản thông dịch lệnh tiêu chuẩn từ thời Unix năm 1971. Bao gồm các đặc tả lệnh cấp nhân như Bash, Sh, Dash, thường được thực thi với phần mở rộng .sh, là chất kết dính cấp nhân phổ quát để điều khiển quy trình cấp thấp, cấu hình môi trường không cần cài đặt và triển khai tự động trong các hệ điều hành giống Unix hiện đại)"
 
 msgid "mime_rb"
-msgstr "Kịch bản Ruby (Yukihiro Matsumoto tạo năm 1995, chú trọng hạnh phúc của lập trình viên. Framework Ruby on Rails khởi xướng mô hình phát triển 'cấu hình hơn là quy định', ảnh hưởng đến thiết kế framework web hiện đại)"
+msgstr "Kịch bản Ruby (ngôn ngữ kịch bản hướng đối tượng được tạo bởi Yukihiro Matsumoto năm 1995. Với sự tôn trọng cực độ đối với trải nghiệm của nhà phát triển là triết lý thiết kế cốt lõi, khuôn khổ Ruby on Rails của nó đã thiết lập một cách mang tính cách mạng mô hình phát triển kiến trúc web cấp cao hiện đại 'Quy ước thay vì Cấu hình (CoC)')"
 
 msgid "mime_pl"
-msgstr "Kịch bản Perl (Larry Wall tạo năm 1987, nổi tiếng với chủ nghĩa thực dụng, được mệnh danh là 'dao quân đội Thụy Sĩ'. CPAN là tiên phong của trình quản lý gói ngôn ngữ hiện đại, có ảnh hưởng sâu sắc trong xử lý văn bản, quản lý hệ thống và CGI)"
+msgstr "Kịch bản Perl (ngôn ngữ kịch bản thực dụng được tạo bởi Larry Wall năm 1987. Là người sáng lập trình quản lý gói hiện đại (CPAN), nó được mệnh danh là 'con dao quân đội Thụy Sĩ' để xử lý văn bản. Ở chế độ CGI hiện đại, nó vẫn đóng vai trò là nền tảng có độ tin cậy cao trong lĩnh vực phân tích cú pháp nhật ký nhờ chi phí bộ nhớ vật lý cực thấp và xử lý biểu thức chính quy hiệu quả cao)"
 
 msgid "mime_php"
-msgstr "Trang web động PHP (Rasmus Lerdorf tạo năm 1995, được thiết kế đặc biệt cho phát triển web. Hơn 70% trang web trên toàn cầu sử dụng, điều khiển các nền tảng như WordPress, Facebook, Wikipedia. PHP 8 giới thiệu biên dịch JIT, cải thiện hiệu suất đáng kể)"
+msgstr "Trang web động PHP (được tạo bởi Rasmus Lerdorf năm 1995, được thiết kế đặc biệt cho phát triển web. Là công nghệ cốt lõi điều khiển hơn 70% các trang web trên thế giới, nó hỗ trợ sâu rộng các ứng dụng cấp sản xuất lớn như WordPress, Wikipedia. Kể từ khi giới thiệu công cụ thời gian chạy biên dịch JIT (Just-In-Time) trong PHP 8, nó đã đạt được sự phát triển mô hình cơ bản hướng tới máy chủ phía sau toàn ngăn xếp hiệu suất cao)"
 
 msgid "mime_image"
-msgstr "Tệp hình ảnh"
+msgstr "IMAGE phân loại tài sản hình ảnh (bao gồm phân loại chung của bitmap nén mất dữ liệu/không mất dữ liệu, đồ họa web đáp ứng hiện đại và đồ họa vector. Là chỉ số chính để đánh giá chi phí tải tài nguyên hình ảnh của trang, tỷ lệ trúng bộ nhớ đệm phía máy khách và mức tiêu thụ băng thông mạng phương tiện)"
 
 msgid "mime_document"
-msgstr "Tệp tài liệu"
+msgstr "DOCUMENT phân loại tài liệu có cấu trúc (bao gồm phân loại chung của văn bản thuần túy, bảng tính, tài liệu định dạng cố định (PDF) và ngôn ngữ đánh dấu nhẹ. Là chỉ số chính cho thống kê phân phối cơ sở tri thức tĩnh phía máy chủ, tải xuống tài sản thông tin doanh nghiệp và khả năng thông lượng luồng văn bản)"
 
 msgid "mime_package"
-msgstr "Gói phần mềm"
+msgstr "PACKAGE phân loại sản phẩm biên dịch và gói phần mềm (bao gồm phân loại chung của chương trình thực thi gốc của hệ điều hành, thư viện liên kết thời gian chạy (DLL/SO) và gói cài đặt phân phối ứng dụng. Thường được sử dụng làm chỉ số chính để đánh giá lưu lượng truy cập ra và đỉnh tải xuống của các trang phân phối phần mềm)"
 
 msgid "mime_archive"
-msgstr "Tệp nén Gzip (dự án GNU năm 1992, dựa trên thuật toán DEFLATE. Dùng trong web để nén nội dung phản hồi động, tỷ lệ nén thường 60-90%. Sau 2015 một số trường hợp được thay thế bằng Brotli, nhưng vẫn là định dạng nén được hỗ trợ rộng rãi nhất phía máy chủ)"
+msgstr "ARCHIVE tệp lưu trữ và nén (phân loại chung của gói nén dữ liệu dựa trên các thuật toán cốt lõi như DEFLATE, LZMA. Ở lớp mạng, ngoài việc đại diện cho phân phối gói truyền thống, nó còn bao gồm luồng phản hồi động Gzip của dự án GNU năm 1992. Mặc dù thuật toán Brotli đang dần được giới thiệu trong các kịch bản hiện đại, phân loại này vẫn là chỉ số chính để đánh giá tỷ lệ thông lượng băng thông máy chủ và giảm áp suất lớp vận chuyển)"
 
 msgid "mime_audio"
-msgstr "Tệp âm thanh"
+msgstr "AUDIO phân loại luồng âm thanh kỹ thuật số (bao gồm phân loại chung của âm thanh nén, sách nói và vùng chứa âm thanh truyền thông trực tuyến. Dựa trên các tiêu chuẩn codec âm thanh cụ thể, được sử dụng để giám sát tỷ lệ thông lượng luồng dữ liệu âm thanh của các trang đa phương tiện, băng thông truyền trực tuyến đồng thời và hiệu suất kết nối dài)"
 
 msgid "mime_video"
-msgstr "Tệp video"
+msgstr "VIDEO phân loại luồng video kỹ thuật số (bao gồm phân loại chung của vùng chứa video độ phân giải cao, hoạt ảnh web hiện đại và phân đoạn truyền thông trực tuyến. Là chỉ số chính để đánh giá giới hạn đỉnh băng thông máy chủ và hiệu quả tăng tốc của Mạng phân phối nội dung (CDN) trong môi trường mạng có tải cao)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (phát triển bởi Brendan Eich năm 1995)"
+msgstr "Kịch bản JScript (triển khai độc quyền kỹ thuật đảo ngược của Microsoft cho Internet Explorer 3.0 năm 1996. Là đối thủ cạnh tranh máy chủ của JavaScript cổ điển thời kỳ đầu, nó từng là công cụ cốt lõi của Windows Script Host (WSH) và phần phụ trợ ASP đầu tiên)"
 
 msgid "mime_json"
-msgstr "Dữ liệu JSON (Douglas Crockford đề xuất năm 2001, định dạng trao đổi dữ liệu nhẹ, tiêu chuẩn thực tế của Web API)"
+msgstr "JSON dữ liệu có cấu trúc (định dạng trao đổi tuần tự hóa dữ liệu nhẹ được thiết lập bởi Douglas Crockford năm 2001. Dựa trên kiến trúc cặp khóa-giá trị và mảng dựa trên văn bản, có khả năng đọc rất cao của con người và đặc tính phân tích cú pháp luồng không mất dữ liệu. Là tiêu chuẩn thực tế cho API web hiện đại, kiến trúc vi dịch vụ và tương tác với các mô hình ngôn ngữ lớn)"
 
 msgid "mime_vbs"
-msgstr "VBScript (Microsoft phát triển năm 1996, ngôn ngữ kịch bản Windows, dùng cho trang web ASP và kịch bản quản lý Windows. Hiện đã bị loại bỏ dần do PowerShell và JavaScript phổ biến)"
+msgstr "Kịch bản VBScript (biến thể ngôn ngữ kịch bản được Microsoft phát hành cùng với IE 3.0 năm 1996. Đã từng là trình điều khiển cốt lõi của các trang web động ASP thời kỳ đầu và quản lý hệ thống Windows, hiện đã bị Microsoft chính thức ngừng sử dụng và loại bỏ khỏi nhân mới nhất của Windows 11. Nó thuộc về công nghệ kế thừa lịch sử)"
 
 msgid "mime_conf"
-msgstr "Tệp cấu hình (lưu cấu hình phần mềm dạng văn bản, định dạng phổ biến: INI, JSON, YAML, TOML, XML. Cấu hình hệ thống Linux thường nằm trong thư mục /etc)"
+msgstr "CONF tệp cấu hình hệ thống (phân loại chung của các tệp dữ liệu lưu trữ vĩnh viễn các tham số môi trường thời gian chạy phần mềm dưới dạng văn bản thuần túy. Bao gồm các đặc tả INI và YAML, TOML, JSON hiện đại. Trong các hệ thống Linux, chúng thường tập trung trong thư mục /etc. Là sự phụ thuộc cốt lõi để tối ưu hóa trạng thái thời gian chạy cấp hệ thống)"
 
 msgid "mime_css"
-msgstr "Bảng định kiểu CSS (W3C phát hành CSS1 tiêu chuẩn đầu tiên vào tháng 12 năm 1996, CSS2 thêm định vị và loại phương tiện năm 1998, từ năm 2011 CSS3 theo mô-đun giới thiệu bo góc, hoạt ảnh, hộp co giãn, bố cục lưới và thiết kế đáp ứng. Cùng với HTML và JavaScript là ba công nghệ lõi của front-end, tất cả trình duyệt hiện đại (Chrome, Firefox, Safari, Edge) đều hỗ trợ nguyên bản, là tiêu chuẩn duy nhất để định nghĩa kiểu trang web)"
+msgstr "CSS bảng kiểu xếp tầng (tiêu chuẩn W3C năm 1996, cùng với HTML/JS được gọi là ba thành phần cốt lõi của giao diện người dùng. Đã trải qua quá trình định vị CSS2 và phát triển mô-đun CSS3, hỗ trợ nguyên bản cho Flexbox, Grid và thiết kế đáp ứng truy vấn phương tiện. Là tiêu chuẩn chi phối tuyệt đối để tách rời trình bày trang web trong các trình duyệt hiện đại)"
 
 msgid "mime_xsl"
-msgstr "Bảng định kiểu XSL (tiêu chuẩn W3C năm 1999, ngôn ngữ chuyển đổi tài liệu XML, có thể chuyển XML sang HTML/PDF/văn bản. Sử dụng giảm sau khi JSON phổ biến)"
+msgstr "XSL bảng kiểu (tiêu chuẩn W3C năm 1999, bao gồm ngôn ngữ chuyển đổi XSLT và ngôn ngữ định địa chỉ XPath, được sử dụng để hiển thị dữ liệu XML có cấu trúc thành HTML, PDF hoặc văn bản thuần túy. Trong phát triển hiện đại, hệ sinh thái của nó phần lớn đã bị thay thế bởi các công cụ tạo mẫu nhẹ hơn và định dạng dữ liệu JSON)"
 
 msgid "mime_runtime"
-msgstr "Tệp thực thi (định dạng thực thi của hệ điều hành như EXE, ELF, Mach-O, bao gồm mã máy và thông tin tải)"
+msgstr "Tệp thực thi (các định dạng thực thi gốc của hệ điều hành như EXE, ELF, Mach-O, chứa mã máy cấp thấp đã được biên dịch, điểm vào và thông tin tải hệ thống)"
 
 msgid "mime_library"
-msgstr "Tệp thư viện (DLL, SO, dylib v.v. thư viện liên kết động, mã chia sẻ được tải khi chương trình chạy)"
+msgstr "Tệp thư viện (các thư viện liên kết động hoặc tĩnh như DLL, SO, dylib, chứa các ký hiệu dùng chung và mã định vị lại để các chương trình khác gọi và tải trong thời gian chạy)"
 
 msgid "mime_swf"
-msgstr "Hoạt ảnh Flash (Macromedia phát triển năm 1996, sau thuộc về Adobe. Tiêu chuẩn hoạt ảnh web tương tác, từng thống trị game và hoạt ảnh trên internet. Điểm yếu: phụ thuộc plugin, không hỗ trợ di động, rủi ro bảo mật cao. Adobe tuyên bố loại bỏ năm 2017, ngừng hỗ trợ hoàn toàn năm 2020, bị thay thế bởi HTML5/CSS3/JS)"
+msgstr "Hoạt hình Flash (được phát triển bởi Macromedia năm 1996, được Adobe mua lại năm 2005. Tiêu chuẩn hoạt hình web tương tác, từng thống trị hoạt hình và trò chơi internet. Điểm yếu: phụ thuộc vào plugin, không hỗ trợ thiết bị di động, rủi ro bảo mật cao. Adobe tuyên bố loại bỏ vào năm 2017, ngừng hỗ trợ hoàn toàn vào năm 2020, được thay thế bằng HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD (Định nghĩa loại tài liệu) (đặc tả XML, định nghĩa cấu trúc tài liệu XML, dùng để xác thực tính hợp lệ của XML)"
+msgstr "DTD định nghĩa loại tài liệu (được phát hành cùng với XML 1.0 vào năm 1998, được sử dụng để xác định cấu trúc tài liệu XML/HTML và xác thực tính hợp lệ. Trong phát triển hiện đại, nó đã dần được thay thế bằng các giải pháp linh hoạt hơn như Lược đồ XML, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "Định dạng dữ liệu CSV (giá trị phân cách bằng dấu phẩy, định dạng dữ liệu bảng phổ biến, tiêu chuẩn xuất nhập Excel và cơ sở dữ liệu)"
+msgstr "Định dạng dữ liệu CSV (các giá trị được phân tách bằng dấu phẩy, định dạng bảng văn bản thuần túy phổ quát từ thời máy tính lớn năm 1972 (trình biên dịch IBM Fortran). Được chính thức chuẩn hóa bởi RFC 4180 vào năm 2005, như một tiêu chuẩn trao đổi dữ liệu không mất mát đa nền tảng, đa ngôn ngữ. Được sử dụng rộng rãi để nhập/xuất hiệu quả vào Excel, cơ sở dữ liệu quan hệ, phân tích dữ liệu (Pandas).)"
+
+msgid "mime_cur"
+msgstr "Tệp con trỏ chuột (định dạng .cur, được sử dụng để tùy chỉnh kiểu chuột, ví dụ: con trỏ ngón tay trên các trang web, biểu tượng đồng hồ cát chờ trong hệ thống. Nó là 'họ hàng' của biểu tượng .ico thông thường, nhưng nó có thêm một vị trí 'điểm nóng' — vị trí mà chuột thực sự nhấp. Lịch sử: được giới thiệu cùng với Windows 3.1 (1992), là một thành phần quan trọng trong quá trình chuyển đổi giao diện đồ họa từ dòng lệnh sang kỷ nguyên thao tác bằng chuột)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (trình khởi chạy ứng dụng Java, công nghệ phân phối ứng dụng Java trên desktop thập niên 2000, nay đã bị loại bỏ)"
+msgstr "Java Web Start (công nghệ phân phối ứng dụng máy tính để bàn Java những năm 2000, khởi động các chương trình Java từ xa thông qua tệp .jnlp. Do các vấn đề bảo mật và sự phổ biến của các phương pháp phân phối hiện đại, hiện nay về cơ bản đã bị loại bỏ)"
 
 msgid "mime_lit"
-msgstr "Sách điện tử Microsoft Reader (Microsoft ra mắt năm 2000, định dạng LIT, đã bị loại bỏ)"
+msgstr "Sách điện tử Microsoft Reader (được Microsoft phát hành năm 2000, định dạng LIT. Đã bị loại bỏ, hiện có thể chuyển đổi sang EPUB hoặc PDF bằng các công cụ như Calibre)"
 
 msgid "mime_svg"
-msgstr "Đồ họa vector SVG (tiêu chuẩn W3C năm 1999, do Microsoft đẩy mạnh định dạng VML riêng trong thời gian dài, trình duyệt IE chỉ hỗ trợ đến năm 2011, khiến việc phổ biến bị chậm trễ. Sau năm 2015 khi IE bị loại bỏ và màn hình độ phân giải cao phổ biến, nó trở thành định dạng ưu tiên cho biểu tượng, logo)"
+msgstr "SVG đồ họa vector (tiêu chuẩn W3C năm 1999, định dạng hình ảnh vector hai chiều dựa trên kiến trúc XML. Có ưu điểm là tỷ lệ tùy ý không bị mất nét và truyền luồng văn bản. Tất cả các trình duyệt hiện đại đều hỗ trợ nó một cách tự nhiên. Được sử dụng rộng rãi cho các biểu tượng web độ phân giải cao, logo và hiển thị hoạt ảnh vector. Nó là tiêu chuẩn cốt lõi cho đồ họa web hiện đại)"
 
 msgid "mime_ai"
-msgstr "Đồ họa vector Adobe Illustrator (ra mắt năm 1987, định dạng đồ họa vector tiêu chuẩn ngành, ưu tiên cho thiết kế in ấn, logo, biểu tượng)"
+msgstr "AI đồ họa vector (định dạng đồ họa vector độc quyền được Adobe phát triển độc lập vào năm 1987. Là tiêu chuẩn cốt lõi của ngành cho kiểu chữ, thiết kế in ấn và thiết kế nhận diện thương hiệu, nó hỗ trợ dữ liệu vector bố cục nhiều lớp và cấp cao. Nó là phương tiện được lựa chọn cho nghệ thuật thị giác chuyên nghiệp)"
 
 msgid "mime_phshop"
-msgstr "Hình ảnh Photoshop (Adobe ra mắt năm 1990, định dạng tệp gốc PSD của Photoshop, tiêu chuẩn ngành xử lý ảnh)"
+msgstr "PSD hình ảnh lớp (định dạng tệp nguồn hình ảnh raster độc quyền được Adobe phát hành cùng với Photoshop vào năm 1990. Hỗ trợ phân lớp nhiều lớp, kênh, mặt nạ và dữ liệu chỉnh sửa không mất dữ liệu. Nó đã được thiết lập như một tiêu chuẩn ngành toàn cầu cho xử lý hình ảnh và vẽ kỹ thuật số)"
 
 msgid "mime_ttf"
-msgstr "Phông chữ TrueType (Apple và Microsoft đồng phát triển năm 1989, định dạng phông chữ vector, hiển thị trên màn hình và in ấn nhất quán, định dạng phông chữ mặc định của hệ điều hành hiện đại)"
+msgstr "Phông chữ TrueType (định dạng phông chữ đường viền kỹ thuật số được phát triển chung bởi Apple và Microsoft vào năm 1989. Dựa trên đường cong Bézier bậc hai, nó đạt được sự nhất quán tuyệt đối về điểm ảnh giữa hiển thị màn hình và đầu ra in ấn. Nó là định dạng phông chữ mặc định gốc của các hệ điều hành máy tính để bàn hiện đại)"
 
 msgid "mime_fon"
-msgstr "Phông chữ web WOFF2 (W3C khuyến nghị năm 2014, sử dụng thuật toán nén Brotli, kích thước giảm khoảng 30% so với WOFF cũ, giảm hơn 50% so với TTF/OTF, hiện tất cả trình duyệt hiện đại đều hỗ trợ, là định dạng ưu tiên cho phông chữ web hiện đại, được hơn 98% trình duyệt hỗ trợ)"
+msgstr "FON phông chữ bitmap (định dạng phông chữ ma trận điểm cấp hệ thống đầu tiên của Microsoft Windows từ những năm 1980. Không hỗ trợ tỷ lệ không mất mát tùy ý. Thường được sử dụng với các hệ thống kế thừa hoặc các thành phần thiết bị nhúng đầu tiên để hiển thị văn bản pixel hóa hạn chế)"
 
 msgid "mime_pdf"
-msgstr "Tài liệu PDF (Adobe phát triển năm 1993, trở thành tiêu chuẩn ISO năm 2008. Định dạng tài liệu đa nền tảng, giữ nhất quán định dạng, là tiêu chuẩn toàn cầu cho phân phối tài liệu điện tử)"
+msgstr "PDF tài liệu điện tử (định dạng tài liệu bố cục cố định đa nền tảng được phát triển bởi Adobe vào năm 1993 và trở thành tiêu chuẩn quốc tế ISO 32000 vào năm 2008. Có độ trung thực bố cục và định dạng tuyệt đối. Nó là tiêu chuẩn phổ quát để phân phối tài liệu công vụ điện tử toàn cầu và xuất bản kỹ thuật số)"
 
 msgid "mime_dotnet"
-msgstr "Trang web động ASP.NET (Microsoft ra mắt năm 2002, công nghệ trang web động trên nền tảng Windows, một phần của .NET Framework)"
+msgstr "ASP.NET trang động (công nghệ web động phía máy chủ được Microsoft phát hành cùng với kiến trúc .NET vào năm 2002. Được lưu trữ trên công cụ hiển thị IIS, được sử dụng để xây dựng các ứng dụng web động phía máy chủ Windows cấp doanh nghiệp và hệ thống phân tán)"
 
 msgid "mime_mdb"
-msgstr "Cơ sở dữ liệu Access (tệp cơ sở dữ liệu Microsoft Access, ra mắt năm 1992, giải pháp cơ sở dữ liệu trên desktop Windows)"
+msgstr "MDB cơ sở dữ liệu quan hệ (định dạng lưu trữ cơ sở dữ liệu quan hệ cấp máy tính để bàn được Microsoft phát hành cùng với Access vào năm 1992. Có công cụ cơ sở dữ liệu Jet tích hợp, được sử dụng như một giải pháp cơ sở dữ liệu quan hệ trong quản lý tin học hóa đầu tiên của máy tính cá nhân và các doanh nghiệp vừa và nhỏ)"
 
 msgid "mime_md"
-msgstr "Tài liệu Markdown (John Gruber tạo năm 2004, thiết kế cú pháp chịu ảnh hưởng từ reStructuredText và Setext. Triết lý thiết kế chính là 'đọc được là hiển thị được'. Bản triển khai gốc Markdown.pl dùng biểu thức chính quy Perl. Các đặc tả phái sinh bao gồm GFM (2013), CommonMark (2017), Pandoc Markdown v.v. Điều khiển hệ sinh thái như GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, trở thành định dạng tiêu chuẩn thực tế cho trình tạo trang web tĩnh và tài liệu nhà phát triển)"
+msgstr "Tài liệu Markdown (ngôn ngữ đánh dấu nhẹ được tạo độc lập bởi John Gruber vào năm 2004. Triết lý thiết kế cốt lõi là 'có thể đọc được nghĩa là có thể hiển thị', điều này thúc đẩy các tiêu chuẩn phái sinh hiện đại như GFM và CommonMark. Được sử dụng rộng rãi như một tiêu chuẩn trao đổi cốt lõi cho tài liệu kỹ thuật, cơ sở tri thức (Obsidian) và các trình tạo trang web tĩnh hiện đại)"
 
 msgid "mime_crystal"
-msgstr "Định dạng báo cáo Crystal Reports (báo cáo thông minh kinh doanh của SAP, định dạng báo cáo doanh nghiệp tiêu chuẩn)"
+msgstr "Crystal Reports (định dạng tệp báo cáo cấp doanh nghiệp chuyên nghiệp của nền tảng SAP Business Intelligence (BI). Có kết nối cấp thấp với nhiều nguồn dữ liệu và khả năng hiển thị biểu đồ động phức tạp, được sử dụng rộng rãi để tạo báo cáo chuyên nghiệp trong các hệ thống tài chính và phân tích dữ liệu của các công ty đa quốc gia)"
 
 msgid "mime_libreoffice"
-msgstr "Tài liệu LibreOffice (The Document Foundation phát triển năm 2010, nhánh của OpenOffice, triển khai chuẩn ODF, bộ ứng dụng văn phòng nguồn mở chính thống)"
+msgstr "Tài liệu LibreOffice (định dạng độc quyền của bộ ứng dụng văn phòng mã nguồn mở được xây dựng bởi The Document Foundation vào năm 2010 dựa trên nhánh OpenOffice. Triển khai sâu sắc tiêu chuẩn quốc tế ODF (Định dạng Tài liệu Mở) của W3C. Nó là nền tảng văn phòng của hệ sinh thái mã nguồn mở hiện đại)"
 
 msgid "mime_encrypt"
-msgstr "Tệp mã hóa (cần giải mã mới xem được tệp, phần mở rộng phổ biến: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT tệp được mã hóa (dữ liệu nhị phân hoặc văn bản thô được xử lý thông qua một thuật toán mã hóa đối xứng hoặc bất đối xứng cụ thể. Bao gồm các định dạng phái sinh cốt lõi như .enc, .pgp, .gpg. Ở lớp mạng, được sử dụng để đảm bảo tính bảo mật và xác minh tính toàn vẹn của dữ liệu không công khai)"
 
 msgid "mime_gpx"
-msgstr "Dữ liệu lộ trình GPS (định dạng trao đổi GPS, ghi dữ liệu vị trí địa lý, định dạng phổ biến cho đồng hồ thể thao và thiết bị định vị)"
+msgstr "GPX dữ liệu quỹ đạo vệ tinh (định dạng trao đổi hệ thống định vị toàn cầu dựa trên kiến trúc XML. Được sử dụng đặc biệt để mô tả tọa độ địa lý, điểm đường, tuyến đường và quỹ đạo lịch sử. Nó là một tiêu chuẩn dữ liệu mở chung cho các thiết bị thể thao di động hiện đại, điều hướng xe hơi và Hệ thống Thông tin Địa lý (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Ảnh đĩa (tệp ảnh đĩa/CD-ROM như DMG, ISO, IMG, dùng để phân phối phần mềm hoặc sao lưu phương tiện lưu trữ)"
+msgstr "Disk Image ảnh đĩa (bao gồm các tệp ảnh khu vực cấp thấp từng byte một của đĩa vật lý hoặc phương tiện quang học như ISO, DMG, IMG. Được sử dụng để triển khai hệ thống cấp thấp, phân phối phần mềm dung lượng lớn an toàn và sao lưu dữ liệu hoàn chỉnh cấp vật lý của phương tiện lưu trữ)"
 
 msgid "mime_vm"
-msgstr "Ảnh máy ảo (tệp đĩa máy ảo như VMDK, VDI, VHDX, OVA, định dạng cho nền tảng ảo hóa như VMware, VirtualBox, Hyper-V)"
+msgstr "VM ảnh máy ảo (bao gồm các ảnh đĩa vật lý được ảo hóa như VMDK, VDI, VHDX, OVA. Là nền tảng của các nền tảng VMware, VirtualBox và Hyper-V, được sử dụng để mô phỏng phần cứng cấp thấp ở cấp hệ thống, ảnh chụp nhanh phiên bản và phân phối cơ sở hạ tầng đám mây)"
 
 msgid "mime_torrent"
-msgstr "Tệp BitTorrent (Bram Cohen phát minh năm 2001, tệp chỉ mục tải xuống P2P, bao gồm siêu dữ liệu tệp và thông tin Tracker)"
+msgstr "BitTorrent tệp torrent (chỉ mục tải xuống phân tán P2P ngang hàng được thiết kế bởi Bram Cohen vào năm 2001. Dựa trên mã hóa Bencode, lưu trữ siêu dữ liệu tổng kiểm tra cấp thấp của tệp gốc và thông tin định địa chỉ máy chủ Tracker. Nó là phương tiện cốt lõi để phân phối luồng mạng phi tập trung)"
 
 msgid "mime_gis"
-msgstr "Dữ liệu Hệ thống Thông tin Địa lý GIS (dữ liệu không gian địa lý như Shapefile, GeoJSON, dùng cho bản đồ và phân tích không gian)"
+msgstr "GIS dữ liệu không gian địa lý (tiêu chuẩn dữ liệu hệ thống thông tin địa lý với Shapefile và GeoJSON làm cốt lõi. Bao gồm tọa độ hình học đa chiều, cấu trúc liên kết lớp và dữ liệu thuộc tính. Được sử dụng rộng rãi để hiển thị bản đồ kỹ thuật số độ chính xác cao, viễn thám vệ tinh và phân tích hình học không gian)"
 
 msgid "mime_ebook"
-msgstr "Sách điện tử (định dạng sách điện tử như EPUB, MOBI, AZW. EPUB là tiêu chuẩn quốc tế, MOBI/AZW là định dạng cho Amazon Kindle)"
+msgstr "EBOOK sách điện tử (định dạng xuất bản kỹ thuật số với tiêu chuẩn quốc tế mở EPUB của W3C và kiến trúc độc quyền MOBI/AZW của Amazon Kindle làm cốt lõi. Hỗ trợ bố cục luồng thích ứng, đóng gói siêu dữ liệu và bảo vệ bản quyền kỹ thuật số DRM. Nó là phương tiện phổ quát để đọc kỹ thuật số trên các thiết bị di động)"
 
 msgid "mime_avif"
-msgstr "Hình ảnh AVIF (Alliance for Open Media ra mắt năm 2019, dựa trên mã hóa AV1, tỷ lệ nén cao hơn WebP 50%, tiêu chuẩn hình ảnh web thế hệ mới)"
+msgstr "AVIF hình ảnh hiệu quả cao (tiêu chuẩn hình ảnh siêu cao cấp thế hệ tiếp theo được giới thiệu bởi Liên minh Phương tiện Mở (AOMedia) vào năm 2019. Dựa trên công nghệ khung hình chính mã hóa video AV1, tỷ lệ nén tốt hơn WebP 50% và hỗ trợ nguyên bản Dải động cao (HDR). Nó là tiêu chuẩn chính thống để truyền hình ảnh web hiện đại)"
 
 msgid "mime_markdown"
-msgstr "Tài liệu Markdown (John Gruber thiết kế năm 2004, ngôn ngữ đánh dấu nhẹ, định dạng phổ biến cho README trên GitHub, tài liệu kỹ thuật, bài đăng trên diễn đàn)"
+msgstr "Markdown tài liệu nhẹ (ngôn ngữ đánh dấu tài liệu văn bản được tạo độc lập bởi John Gruber vào năm 2004. Sử dụng thiết kế khai báo văn bản thuần túy, thiết kế cú pháp của nó được lấy cảm hứng từ reStructuredText. Được sử dụng rộng rãi cho các dự án GitHub, tài liệu kỹ thuật cấp kỹ sư và hệ sinh thái quản lý nội dung tĩnh hiện đại)"
 
 msgid "mime_yaml"
-msgstr "Cấu hình YAML (Clark Evans thiết kế năm 2001, định dạng tuần tự hóa dữ liệu con người có thể đọc được, tiêu chuẩn tệp cấu hình cho Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML cấu hình tuần tự hóa (định dạng tuần tự hóa dữ liệu có thể đọc được bằng con người được thiết kế bởi Clark Evans và những người khác vào năm 2001. Dựa trên thụt lề phân cấp và ánh xạ khóa-giá trị. Hiện đã được thiết lập như một tiêu chuẩn cấu hình cơ sở hạ tầng gốc đám mây cho điều phối vùng chứa Kubernetes, tự động hóa Ansible và Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Cấu hình TOML (Tom Preston-Werner thiết kế năm 2013, 'Ngôn ngữ tối giản rõ ràng của Tom', định dạng tệp cấu hình cho các công cụ hiện đại như Rust/Cargo, Python/pip, Go)"
+msgstr "TOML cấu hình ngữ nghĩa (ngôn ngữ tối giản được thiết kế bởi Tom Preston-Werner vào năm 2013. Có các lợi thế thiết kế cấp thấp như kiểu mạnh, ánh xạ rõ ràng và rõ ràng về mặt ngữ nghĩa. Hiện được sử dụng rộng rãi như một tệp cấu hình chuẩn hóa cho các chuỗi công cụ hiện đại của Rust (Cargo), Python (pyproject.toml) và Go)"
 
 msgid "mime_vue"
-msgstr "Tệp thành phần Vue (được giới thiệu vào năm 2014 bởi Evan You, một framework JavaScript lũy tiến. Thông qua các thành phần một tệp (SFC), nó kết hợp hoàn hảo HTML, CSS và JS, giúp tăng đáng kể hiệu quả phát triển. Đây là một trong những framework frontend phổ biến nhất thế giới. Đồng thời, là cốt lõi của các trình tạo trang tĩnh hiện đại như VitePress, nó được sử dụng rộng rãi để điều khiển tài liệu kỹ thuật tương tác và blog.)"
+msgstr "Vue thành phần một tệp (định dạng SFC độc quyền của khuôn khổ web lũy tiến được giới thiệu bởi Evan You vào năm 2014. Trong một tệp duy nhất, nó thực hiện việc tách biệt các mối quan tâm của HTML/CSS/JS và ràng buộc trạng thái phản ứng, thúc đẩy sâu sắc các ứng dụng giao diện người dùng tương tác web hiện đại và các công cụ trang web tĩnh quy mô lớn)"
 
 msgid "mime_wasm"
-msgstr "Mô-đun WebAssembly (tiêu chuẩn W3C năm 2017, định dạng thực thi hiệu suất cao trong trình duyệt, C/C++/Rust/R có thể biên dịch thành mục tiêu, hiệu suất gần với bản địa)"
+msgstr "WebAssembly mô-đun nhị phân (tiêu chuẩn mã byte cấp thấp hiệu suất cao cho web được thiết lập bởi W3C vào năm 2017. Cho phép các ngôn ngữ kiểu mạnh như C/C++/Rust biên dịch đến mục tiêu hộp cát trình duyệt, cung cấp hiệu quả thực thi gần với phần cứng gốc. Nó là nền tảng của điện toán biên web hiện đại)"
 
 msgid "mime_jsx"
-msgstr "Thành phần React JSX (Facebook ra mắt JavaScript XML năm 2013, cú pháp thành phần của framework React, đổi mới đưa HTML vào JavaScript)"
+msgstr "React JSX thành phần (phần mở rộng cú pháp JavaScript XML được Facebook phát hành cùng với khuôn khổ React vào năm 2013. Hỗ trợ xây dựng cấu trúc ảo DOM một cách khai báo trong JavaScript, thực hiện mô hình phát triển giao diện người dùng dựa trên thành phần 'UI là một hàm của trạng thái')"
 
 msgid "mime_tsx"
-msgstr "Thành phần TypeScript TSX (Microsoft phát triển năm 2012, TypeScript + JSX, cách viết chuẩn cho phát triển React an toàn kiểu)"
+msgstr "TypeScript TSX thành phần (kết hợp luồng của cú pháp kiểu mạnh TypeScript được Microsoft phát triển vào năm 2012 và JSX. Tiêm kiểm tra kiểu thời gian biên dịch tĩnh và các ràng buộc giao diện vào phát triển thành phần React. Nó là một tiêu chuẩn mã để phát triển an toàn các hệ thống giao diện người dùng lớn hiện đại)"
 
 msgid "mime_heif"
-msgstr "Hình ảnh HEIF (tiêu chuẩn MPEG năm 2015, định dạng tệp hình ảnh hiệu quả cao, được sử dụng rộng rãi trong hệ sinh thái Apple)"
+msgstr "HEIF hình ảnh hiệu quả cao (định dạng tệp hình ảnh hiệu quả cao được thiết lập bởi tổ chức MPEG vào năm 2015. Dựa trên thuật toán mã hóa video HEVC (H.265), hỗ trợ chứa nhiều hình ảnh khung, bản đồ độ sâu và siêu dữ liệu trong một khối lượng rất nhỏ. Nó là một tiêu chuẩn lưu trữ độc quyền cho các hệ điều hành di động hiện đại và các thiết bị đầu cuối thông minh)"
 
 msgid "mime_heic"
-msgstr "Hình ảnh HEIC (triển khai HEIF của Apple, định dạng ảnh mặc định của iPhone, hỗ trợ nguyên bản trên iOS/macOS)"
+msgstr "HEIC hình ảnh hiệu quả cao (định dạng bitmap độc quyền của Apple được triển khai dựa trên tiêu chuẩn quốc tế HEIF. Là tiêu chuẩn lưu trữ ảnh mặc định của iPhone hiện đại, nó nhận được mã hóa/giải mã cấp phần cứng iOS/macOS và hỗ trợ hệ điều hành gốc. Trong khi đảm bảo chất lượng hình ảnh cao, nó giảm đáng kể không gian lưu trữ cơ bản)"
 
 msgid "mime_gltf"
-msgstr "Mô hình 3D GLTF (Định dạng truyền tải GL, 'JPEG của thế giới 3D', Khronos Group phát hành năm 2015, định dạng chuẩn Web 3D)"
+msgstr "glTF mô hình tài sản 3D (tiêu chuẩn định dạng truyền GL được phát hành bởi Khronos Group vào năm 2015. Sử dụng kiến trúc JSON để mô tả cảnh ba chiều, được mệnh danh là 'JPEG của lĩnh vực 3D'. Nó là một tiêu chuẩn công nghiệp nhẹ để hiển thị WebGL/WebGPU hiện đại và thực tế ảo)"
 
 msgid "mime_glb"
-msgstr "Mô hình 3D GLB nhị phân (phiên bản nhị phân của GLTF, một tệp chứa tất cả tài nguyên, dùng để phân phối cảnh 3D)"
+msgstr "GLB mô hình 3D nhị phân (phiên bản đóng gói nhị phân hoàn toàn, không mất dữ liệu của mô hình tài sản glTF. Kết hợp cấu trúc cảnh, dữ liệu đỉnh lưới cấp thấp, vật liệu và bản đồ kết cấu thành một tệp duy nhất. Được thiết kế đặc biệt để truyền tải hiệu quả và phân phối luồng các tài sản 3D web đa nền tảng)"
 
 msgid "mime_gls"
-msgstr "Bảng thuật ngữ GLOSSARY (tệp định nghĩa thuật ngữ, dùng để quản lý thuật ngữ trong hệ thống tài liệu)"
+msgstr "GLOSSARY bảng thuật ngữ dữ liệu (tệp định nghĩa tập hợp thuật ngữ dành riêng cho hệ thống quản lý tài liệu và ngữ liệu có cấu trúc. Chứa các định nghĩa thuật ngữ tiêu chuẩn tích hợp, ánh xạ đa ngôn ngữ và ánh xạ siêu dữ liệu. Được sử dụng để duy trì tính nhất quán về khái niệm trong phân tích văn bản tự động và hệ thống xuất bản nội dung)"
 
 msgid "mime_cbz"
-msgstr "Truyện tranh CBZ (hình ảnh truyện tranh được nén bằng ZIP, định dạng phổ biến để sưu tầm truyện tranh)"
+msgstr "CBZ sách truyện tranh (định dạng lưu trữ hình ảnh truyện tranh độc quyền dựa trên cấu trúc nén ZIP. Bên trong đóng gói một chuỗi bitmap tĩnh liên tục. Nó là một tiêu chuẩn vùng chứa nhẹ phổ quát để xuất bản truyện tranh kỹ thuật số và sưu tập cục bộ đa nền tảng)"
 
 msgid "mime_cbr"
-msgstr "Truyện tranh CBR (hình ảnh truyện tranh được nén bằng RAR, định dạng phổ biến để sưu tầm truyện tranh)"
+msgstr "CBR sách truyện tranh (định dạng lưu trữ hình ảnh truyện tranh độc quyền dựa trên cấu trúc nén RAR. Sử dụng thuật toán RAR để đóng gói chuỗi bitmap tĩnh, có tỷ lệ nén tương đối cao, có hỗ trợ khả năng tương thích rộng rãi trong lĩnh vực phân phối truyện tranh kỹ thuật số)"
 
 msgid "mime_fb2"
-msgstr "Sách điện tử FB2 (FictionBook 2.0, định dạng sách điện tử của Nga, cấu trúc XML, được hỗ trợ rộng rãi bởi trình đọc nguồn mở)"
+msgstr "FB2 sách điện tử (tiêu chuẩn sách điện tử FictionBook 2.0 đầu những năm 2000. Sử dụng cấu trúc XML thuần túy để mô tả các thuộc tính sách và phân cấp văn bản. Có hỗ trợ rộng rãi trong hệ sinh thái sách điện tử mã nguồn mở và các trình đọc xuất bản kỹ thuật số kế thừa)"
 
 msgid "mime_kepub"
-msgstr "Sách điện tử KEPUB (định dạng EPUB dành riêng cho Kobo, định dạng tối ưu cho máy đọc sách điện tử Kobo)"
+msgstr "KEPUB sách điện tử (định dạng sách điện tử nâng cao độc quyền của Kobo phát triển từ tiêu chuẩn EPUB. Thực hiện tối ưu hóa hiển thị cấp thấp cho trình đọc sách điện tử cấp phần cứng của Kobo, cung cấp bố cục trang hiệu quả hơn và tương tác thống kê đọc)"
 
 msgid "mime_m4b"
-msgstr "Sách nói M4B (định dạng sách âm thanh MPEG-4, hỗ trợ đánh dấu trang, định dạng sách nói của iTunes)"
+msgstr "M4B sách nói (định dạng sách nói dựa trên kiến trúc vùng chứa MPEG-4 Part 14 (MP4). Sử dụng mã hóa AAC, hỗ trợ nguyên bản định vị dấu trang cấp thấp, tiếp tục phát từ điểm dừng và nhúng chương. Đã từng là định dạng tiêu chuẩn của hệ sinh thái Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Định dạng Kindle KFX (Amazon ra mắt năm 2015, định dạng sách điện tử dành riêng cho Kindle, hỗ trợ bố cục nâng cao và lật trang nhanh)"
+msgstr "Kindle KFX định dạng (định dạng xuất bản kỹ thuật số nâng cao độc quyền được Amazon phát hành cùng với Kindle vào năm 2015. Hỗ trợ bố cục chữ ghép nâng cao, hiển thị phông chữ động cao và tải trang luồng cấp nhân (Page Flip). Nó là tiêu chuẩn cốt lõi của nền tảng Kindle hiện đại)"
 
 msgid "mime_chm"
-msgstr "Tệp trợ giúp CHM (Microsoft ra mắt năm 1997, định dạng Trợ giúp HTML đã biên dịch, tiêu chuẩn tài liệu trợ giúp phần mềm Windows)"
+msgstr "CHM tệp trợ giúp đã biên dịch (hệ thống thông tin trợ giúp HTML đã được biên dịch do Microsoft phát hành vào năm 1997. Đóng gói dữ liệu siêu văn bản và chỉ mục cơ bản vào một vùng chứa nhị phân duy nhất. Trong một thời gian dài, nó là định dạng tiêu chuẩn cho tài liệu trợ giúp ngoại tuyến cục bộ của phần mềm Windows)"
 
 msgid "mime_mht"
-msgstr "Lưu trữ trang web MHT (Microsoft ra mắt năm 1999, định dạng trang web một tệp, định dạng lưu trang web của trình duyệt IE)"
+msgstr "MHT kho lưu trữ trang web (định dạng siêu văn bản tổng hợp MIME được Microsoft phát hành vào năm 1999. Dựa trên tiêu chuẩn RFC 2557, nó đóng gói mã nguồn HTML, CSS, JS và hình ảnh nhúng vào một tệp văn bản duy nhất. Được sử dụng để lưu trang web ngoại tuyến trong các trình duyệt kế thừa)"
 
 msgid "mime_wml"
-msgstr "Ngôn ngữ đánh dấu không dây WML (tiêu chuẩn WAP năm 1999, dùng cho tệp trang web điện thoại chức năng đời đầu, đã bị loại bỏ)"
+msgstr "WML ngôn ngữ đánh dấu không dây (tiêu chuẩn đánh dấu thiết bị di động được thiết lập bởi diễn đàn WAP (Giao thức Ứng dụng Không dây) vào năm 1999. Dựa trên đặc tả XML, được thiết kế đặc biệt cho các mạng di động không dây băng thông hẹp thời kỳ đầu và điện thoại phổ thông có hiệu suất thấp. Trong hệ sinh thái web hiện đại, nó thuộc về công nghệ kế thừa đã nghỉ hưu)"
 
 msgid "mime_xhtml"
-msgstr "Trang web XHTML (tiêu chuẩn W3C năm 2000, phiên bản XML của HTML, cú pháp chặt chẽ hơn. W3C ngừng bảo trì năm 2009, chuyển trọng tâm sang HTML5)"
+msgstr "XHTML trang web siêu văn bản (tiêu chuẩn W3C năm 2000, đóng gói ngôn ngữ đánh dấu siêu văn bản nghiêm ngặt dựa trên kiến trúc XML. Năm 2009, W3C đã ngừng phát triển công nghệ của nó và chuyển hoàn toàn sang đặc tả HTML5. Hiện được sử dụng chủ yếu để hiển thị trang web ngữ nghĩa trong các hệ thống kế thừa)"
 
 msgid "mime_xml"
-msgstr "Tài liệu XML (tiêu chuẩn W3C năm 1998, ngôn ngữ đánh dấu mở rộng được, định dạng cơ bản cho dịch vụ web, tệp cấu hình, trao đổi dữ liệu)"
+msgstr "XML tài liệu có cấu trúc (ngôn ngữ đánh dấu có thể mở rộng từ tiêu chuẩn W3C năm 1998. Có kiến trúc thẻ tự mô tả. Nó là định dạng nền tảng cơ bản cho các dịch vụ web mạng (SOAP/REST), tệp cấu hình cấp hệ thống (XSD) và trao đổi dữ liệu đa nền tảng)"
 
 msgid "mime_sgml"
-msgstr "Tài liệu SGML (tiêu chuẩn ISO năm 1986, tiền thân của HTML, ngôn ngữ đánh dấu tổng quát chuẩn, XML và HTML đều bắt nguồn từ SGML)"
+msgstr "SGML ngôn ngữ đánh dấu tổng quát (tiêu chuẩn quốc tế ISO 8879 năm 1986 cho ngôn ngữ đánh dấu tổng quát tiêu chuẩn. Là người tiên phong trong ngành về mô tả có cấu trúc của tài liệu điện tử, cả XML và các đặc tả HTML ban đầu đều bắt nguồn từ ngôn ngữ siêu chuẩn này)"
 
 msgid "mime_apng"
-msgstr "Hoạt ảnh APNG (Mozilla phát triển năm 2004, phần mở rộng hoạt ảnh của PNG, thay thế hiện đại cho GIF, hỗ trợ màu thực và trong suốt)"
+msgstr "APNG đồ họa động (phần mở rộng động của Đồ họa Mạng Di động (PNG) được phát triển bởi Mozilla vào năm 2004. Hỗ trợ màu thực 24-bit và độ trong suốt bán phần của kênh Alpha 8-bit. Nó là một giải pháp thay thế độ phân giải cao cho định dạng GIF trong các kịch bản web hiện đại)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmap (Định dạng bitmap của Windows, được hỗ trợ nguyên bản từ Windows 1.0. Không nén, kích thước tệp lớn, nhưng do cấu trúc đơn giản và không cần codec bổ sung, nó vẫn được sử dụng trong Công cụ cắt của Windows 11, chương trình Paint, tài nguyên biểu tượng trong gói cài đặt EXE/MSI, tệp con trỏ và một số trình điều khiển cũ hơn. Với cùng chất lượng hình ảnh, kích thước tệp lớn hơn PNG khoảng 3-10 lần. Trong hầu hết các trường hợp, nó đã được thay thế bằng PNG/JPEG, nhưng hệ sinh thái Windows vẫn duy trì khả năng tương thích rộng rãi)"
+msgstr "BMP bitmap gốc (định dạng bitmap độc lập thiết bị của nền tảng Microsoft được thiết lập từ thời Windows 1.0. Sử dụng lưu trữ không mất dữ liệu, không nén, mặc dù kích thước của nó thường lớn hơn PNG từ 3-10 lần, nhưng do không có chi phí mã hóa/giải mã, nó vẫn được nhúng rộng rãi trong các thành phần cốt lõi của Windows 11, các phân đoạn tài nguyên EXE/MSI và bộ đệm đồ họa của trình điều khiển kế thừa)"
 
 msgid "mime_cdr"
-msgstr "Đồ họa vector CDR (định dạng độc quyền của CorelDRAW, công ty Corel của Canada, phần mềm thiết kế đồ họa vector)"
+msgstr "CDR đồ họa vector (định dạng tệp nguồn thiết kế vector chuyên nghiệp CorelDRAW độc quyền của công ty Corel Canada. Hỗ trợ quản lý màu nhiều lớp, các nút đường viền toán học phức tạp và dữ liệu bố cục cấp in ấn. Nó là một định dạng chuyên dụng cho lĩnh vực in ấn phẳng chuyên nghiệp và thiết kế quảng cáo)"
 
 msgid "mime_gif"
-msgstr "Hình ảnh GIF (CompuServe phát triển năm 1987, định dạng ảnh động 256 màu. Điểm yếu: màu ít, chất lượng ảnh thô, không hỗ trợ trong suốt, tệp lớn, tốc độ khung hình thấp. Bị thay thế bởi các định dạng ảnh động hiện đại như APNG, WebP)"
+msgstr "GIF hình ảnh màu được lập chỉ mục (định dạng bitmap màu được lập chỉ mục 8-bit được phát triển bởi CompuServe vào năm 1987. Dựa trên thuật toán LZW, bị giới hạn ở 256 cấp độ màu và độ trong suốt một màu, ở tốc độ khung hình cao, kích thước trở nên cồng kềnh. Hiện đang dần được thay thế bởi các tiêu chuẩn hình ảnh động hiệu quả cao hiện đại như APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "Biểu tượng ICO (định dạng tệp biểu tượng Windows, hỗ trợ nhiều độ phân giải, định dạng favicon tiêu chuẩn của trang web)"
+msgstr "ICO biểu tượng hệ thống (định dạng đóng gói tài nguyên biểu tượng gốc của Windows. Hỗ trợ nhúng hỗn hợp các biến thể hình ảnh với nhiều độ phân giải pixel và độ sâu màu trong một vùng chứa duy nhất. Nó cũng là một tiêu chuẩn phân phối phổ quát cho số nhận dạng chính của trang web trình duyệt hiện đại (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "Hình ảnh JPEG (tiêu chuẩn ISO năm 1992, định dạng nén mất dữ liệu cho ảnh chụp, tiêu chuẩn thực tế cho ảnh trên internet)"
+msgstr "JPEG hình ảnh nén (định dạng hình ảnh nén mất dữ liệu của tiêu chuẩn quốc tế ISO 10918 năm 1992. Dựa trên thuật toán Biến đổi Cosine rời rạc (DCT), đạt được tỷ lệ nén cao trong khi vẫn duy trì chất lượng hình ảnh hiện thực tuyệt vời. Nó là tiêu chuẩn thực tế tuyệt đối cho nhiếp ảnh tĩnh trên internet toàn cầu)"
 
 msgid "mime_jpg"
-msgstr "Hình ảnh JPEG (tiêu chuẩn ISO năm 1992, định dạng nén mất dữ liệu cho ảnh chụp, tiêu chuẩn thực tế cho ảnh trên internet)"
+msgstr "JPEG hình ảnh nén (định dạng hình ảnh nén mất dữ liệu của tiêu chuẩn quốc tế ISO 10918 năm 1992. Dựa trên thuật toán Biến đổi Cosine rời rạc (DCT), đạt được tỷ lệ nén cao trong khi vẫn duy trì chất lượng hình ảnh hiện thực tuyệt vời. Nó là tiêu chuẩn thực tế tuyệt đối cho nhiếp ảnh tĩnh trên internet toàn cầu)"
 
 msgid "mime_png"
-msgstr "Hình ảnh PNG (W3C khuyến nghị năm 1996, hỗ trợ màu thực và trong suốt, thay thế tĩnh cho GIF, tiêu chuẩn ảnh không mất dữ liệu trên internet)"
+msgstr "PNG hình ảnh không mất dữ liệu (tiêu chuẩn Đồ họa Mạng Di động được W3C khuyến nghị vào năm 1996. Sử dụng thuật toán nén không mất dữ liệu, hỗ trợ nguyên bản màu thực 24-bit và độ trong suốt kênh Alpha 8-bit. Là một giải pháp thay thế độ phân giải cao cho GIF tĩnh cổ điển, nó là tiêu chuẩn thực tế tuyệt đối cho hình ảnh pixel không mất dữ liệu trên internet)"
 
 msgid "mime_ps"
-msgstr "Tệp mô tả trang PostScript (Adobe ra mắt năm 1985, ngôn ngữ mô tả trang, tiền thân của PDF, dùng cho in ấn và xuất bản)"
+msgstr "PostScript tệp mô tả trang (ngôn ngữ mô tả trang dựa trên ngăn xếp được Adobe giới thiệu vào năm 1985. Là tiền thân công nghệ của định dạng PDF, nó thực hiện ở cấp thấp kiểu chữ độc lập phần cứng và hiển thị đồ họa vector độ chính xác cao. Nó là một tiêu chuẩn nền tảng cho lĩnh vực xuất bản in ấn chuyên nghiệp và in laser)"
 
 msgid "mime_psb"
-msgstr "Tài liệu lớn PSB (định dạng ảnh siêu lớn của Adobe Photoshop, hỗ trợ ảnh khổng lồ vượt quá 2GB hoặc 30000 pixel)"
+msgstr "PSB tài liệu lớp lớn (định dạng đóng gói tệp nguồn siêu lớn độc quyền của Adobe Photoshop. Nó phá vỡ kích thước vật lý 2GB và giới hạn định địa chỉ nội bộ 30.000 pixel của định dạng PSD tiêu chuẩn. Được thiết kế đặc biệt để lưu trữ các tài sản nghệ thuật kỹ thuật số khổng lồ, quy mô siêu lớn, có độ sâu lớp cao)"
 
 msgid "mime_psd"
-msgstr "Hình ảnh PSD (tệp gốc Adobe Photoshop, hỗ trợ lớp, kênh, đường dẫn, định dạng tiêu chuẩn ngành xử lý ảnh)"
+msgstr "PSD tệp nguồn thiết kế lớp (định dạng kỹ thuật hình ảnh phân lớp độc quyền của Adobe Photoshop. Là một vùng chứa tiêu chuẩn công nghiệp trong lĩnh vực đồ họa và hình ảnh, nó đóng gói một cách tự nhiên toàn bộ cây hiển thị lớp, kênh bitmap, đường cắt vector và các chế độ hòa trộn hỗn hợp, hỗ trợ chỉnh sửa toàn bộ dữ liệu không mất mát)"
 
 msgid "mime_webp"
-msgstr "Hình ảnh WebP (Google phát triển năm 2010, định dạng ảnh web, hỗ trợ nén mất dữ liệu/không mất dữ liệu và hoạt ảnh, tỷ lệ nén cao hơn PNG 25-35% và cao hơn JPEG 25%)"
+msgstr "WebP hình ảnh hiệu quả cao (tiêu chuẩn mã hóa đồ họa web phổ quát được Google giới thiệu vào năm 2010. Bắt nguồn từ công nghệ khung hình chính video VP8, tương thích hoàn hảo với hiển thị mất dữ liệu, không mất dữ liệu, bán trong suốt và động. Giảm kích thước 25-35% so với PNG cùng chất lượng. Nó là nền tảng để tải trang web hiện đại với hiệu suất cao)"
 
 msgid "mime_woff"
-msgstr "Phông chữ web WOFF (tạo năm 2009, tiêu chuẩn W3C năm 2018. Nén dựa trên TrueType/OpenType, tối ưu tải phông chữ web, định dạng chuẩn cho phông chữ biểu tượng trang web hiện đại)"
+msgstr "WOFF tệp glyph web (định dạng phông chữ web mở được tạo vào năm 2009 và trở thành tiêu chuẩn W3C vào năm 2012. Về bản chất, nó là một sự đóng gói nén không mất dữ liệu luồng của cấu trúc phông chữ TTF/OTF tiêu chuẩn, giúp tối ưu hóa đáng kể chi phí băng thông truyền mạng. Nó là một định dạng phổ quát cho các biểu tượng trang web hiện đại và phông chữ đám mây)"
 
 msgid "mime_7z"
-msgstr "Gói nén 7z (Igor Pavlov phát triển năm 1999, định dạng độc quyền của chương trình 7-Zip. Thuật toán LZMA, tỷ lệ nén cao, nguồn mở miễn phí. Định dạng 7z ở cùng tỷ lệ nén thường nhỏ hơn ZIP 30-50%, là định dạng phổ biến cho cộng đồng nguồn mở và phân phối phần mềm)"
+msgstr "7z kho lưu trữ nén (định dạng độc quyền của 7-Zip được phát triển bởi Igor Pavlov vào năm 1999. Dựa trên các thuật toán mã nguồn mở LZMA/LZMA2, có tỷ lệ nén cực cao. Trong cùng điều kiện, kích thước của nó thường nhỏ hơn ZIP 30-50%. Nó là một định dạng tỷ lệ nén cao phổ quát cho cộng đồng mã nguồn mở và phân phối phần mềm)"
 
 msgid "mime_ace"
-msgstr "Gói nén ACE (phát triển thập niên 1990, định dạng chương trình WinACE. Từng cạnh tranh với RAR, tỷ lệ nén khá cao. Ngừng phát triển năm 2007, nay bị thay thế bởi 7z/RAR, ít được sử dụng)"
+msgstr "ACE kho lưu trữ nén (định dạng nén độc quyền của WinACE từ những năm 1990. Đã từng cạnh tranh với định dạng RAR và có tỷ lệ nén tương đối cao. Sau năm 2007, quá trình phát triển công nghệ dừng lại, hiện đã được thay thế bằng các định dạng 7z và RAR. Thuộc về định dạng lưu trữ hệ thống kế thừa)"
 
 msgid "mime_bz2"
-msgstr "Gói nén BZIP2 (Julian Seward phát triển năm 1996, thuật toán nén khối. Tỷ lệ nén cao hơn GZIP 15-20% nhưng chậm hơn. Định dạng phổ biến cho mã nguồn nhân Linux, gói phần mềm nguồn mở, phần mở rộng .bz2)"
+msgstr "BZIP2 kho lưu trữ nén (định dạng nén sắp xếp khối được phát triển bởi Julian Seward vào năm 1996. Tỷ lệ nén của thuật toán cơ bản của nó cao hơn GZIP 15-20% nhưng chi phí tính toán cao hơn. Thường được sử dụng để phân phối mã nguồn nhân Linux và các gói phần mềm mã nguồn mở. Phần mở rộng tiêu chuẩn là .bz2)"
 
 msgid "mime_cab"
-msgstr "Gói nén CAB (Microsoft phát triển năm 1995, định dạng Cabinet. Định dạng gói cài đặt Windows, dùng cho trình điều khiển, phân phối tệp hệ thống. Windows Installer (MSI) sử dụng CAB nội bộ để lưu trữ tệp)"
+msgstr "CAB kho lưu trữ nén (định dạng lưu trữ Cabinet được Microsoft phát triển độc lập vào năm 1995. Là tiêu chuẩn gói cài đặt gốc của hệ thống Windows, được sử dụng để phân phối trình điều khiển và tệp nhân. Nó cũng là vùng chứa lưu trữ cơ bản cho Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "Ảnh đĩa DMG (Apple ra mắt thập niên 1980, định dạng Disk Image. Định dạng phân phối phần mềm macOS tiêu chuẩn, nhấp đúp để gắn kết thành đĩa ảo, kéo thả để cài đặt ứng dụng. Hỗ trợ nén và mã hóa, là định dạng chính để tải phần mềm Mac)"
+msgstr "DMG ảnh đĩa (định dạng Ảnh Đĩa được Apple phát triển vào những năm 1980. Là vùng chứa tiêu chuẩn để phân phối phần mềm macOS, nó hỗ trợ gắn kết vật lý như một hệ thống tệp ảo, nén cấp thấp và mã hóa dữ liệu. Nó là định dạng chính thống để phân phối ứng dụng trong hệ sinh thái Mac)"
 
 msgid "mime_emz"
-msgstr "Ảnh nén EMZ (Windows compressed Enhanced Metafile, phiên bản nén của EMF. Định dạng lưu trữ đồ họa vector trong tài liệu Office, bản chất là tệp EMF được nén bằng GZIP)"
+msgstr "EMZ hình ảnh nén (phiên bản nén của Siêu tệp Nâng cao Windows EMF. Về bản chất, nó là đồ họa vector nhị phân được nén thông qua thuật toán GZIP. Được sử dụng rộng rãi để lưu trữ đồ họa vector nhúng trong các tài liệu của bộ Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Gói nén GZIP (Jean-loup Gailly và Mark Adler phát triển năm 1992, dự án GNU. Công cụ nén tiêu chuẩn của Unix/Linux, định dạng phổ biến cho nén truyền tải HTTP. Phần mở rộng .gz, thường dùng kết hợp với TAR)"
+msgstr "GZIP kho lưu trữ nén (định dạng nén luồng tiêu chuẩn được phát triển bởi Jean-loup Gailly và Mark Adler của dự án GNU vào năm 1992. Là công cụ nén tiêu chuẩn của Unix/Linux, nó cũng là tiêu chuẩn cốt lõi để nén lớp vận chuyển HTTP (Gzip). Thường được sử dụng cùng với lưu trữ TAR)"
 
 msgid "mime_jar"
-msgstr "Gói nén JAR (Sun Microsystems ra mắt năm 1997, định dạng Java ARchive. Bản chất là tệp ZIP, dùng để đóng gói thư viện và ứng dụng Java. Định dạng cốt lõi của hệ sinh thái Java như Maven, Gradle. Android cũng sử dụng JAR)"
+msgstr "JAR kho lưu trữ nén (định dạng lưu trữ Java ARchive được Sun Microsystems giới thiệu vào năm 1997. Về bản chất, nó là một vùng chứa đóng gói dựa trên cấu trúc ZIP, được sử dụng để đóng gói các thư viện lớp Java và siêu dữ liệu. Nó là sản phẩm biên dịch cốt lõi cho Maven, Gradle và hệ sinh thái Android thời kỳ đầu)"
 
 msgid "mime_lzma"
-msgstr "Gói nén LZMA (Igor Pavlov phát triển năm 1998, thuật toán Lempel-Ziv-Markov chain. Thuật toán nén cốt lõi của định dạng 7z, tỷ lệ nén cao, tốc độ giải nén nhanh. Dùng cho phân phối phần mềm firmware và hệ thống nhúng)"
+msgstr "LZMA kho lưu trữ nén (thuật toán nén chuỗi Lempel-Ziv-Markov được phát triển bởi Igor Pavlov vào năm 1998. Là công cụ cốt lõi của định dạng 7z, nó có tỷ lệ nén cực cao và các tính năng giải nén tốc độ cao. Được sử dụng rộng rãi để phân phối phần sụn phần cứng và các hệ thống nhúng)"
 
 msgid "mime_rar"
-msgstr "Gói nén RAR (Eugene Roshal phát triển năm 1993, định dạng Roshal ARchive. Tỷ lệ nén cao, hỗ trợ chia tập tin, bản ghi phục hồi. Định dạng chương trình WinRAR, tỷ lệ nén tốt hơn ZIP nhưng cần phần mềm trả phí, công cụ nguồn mở như unrar có thể giải nén)"
+msgstr "RAR kho lưu trữ nén (định dạng lưu trữ độc quyền của WinRAR được phát triển bởi Eugene Roshal vào năm 1993. Hỗ trợ chia thành nhiều tập, bản ghi phục hồi vật lý (ECC) và mã hóa cường độ cao. Tỷ lệ nén tốt hơn so với ZIP tiêu chuẩn, có hỗ trợ khả năng tương thích rộng rãi trong máy tính cá nhân và lĩnh vực thương mại)"
 
 msgid "mime_tar"
-msgstr "Gói lưu trữ TAR (Unix V7 giới thiệu năm 1979, định dạng Tape ARchive. Định dạng lưu trữ băng, không nén chỉ đóng gói, thường dùng kết hợp với GZIP/BZIP2/XZ. Mã nguồn gói Linux, lưu trữ lớp ảnh Docker đều sử dụng định dạng TAR)"
+msgstr "TAR gói lưu trữ (định dạng lưu trữ băng từ thời Unix V7 năm 1979. Chỉ thực hiện đóng gói luồng tệp mà không nén dữ liệu. Thường được kết hợp với GZIP/BZIP2/XZ, nó là tiêu chuẩn cơ bản cho các gói mã nguồn Linux và lưu trữ lớp hình ảnh Docker)"
 
 msgid "mime_tgz"
-msgstr "Gói nén TGZ (định dạng kết hợp TAR + GZIP, phần mở rộng .tgz hoặc .tar.gz. Định dạng phân phối phổ biến nhất cho gói phần mềm Unix/Linux, gói mã nguồn, gói nhị phân, được sử dụng rộng rãi, đại diện cho 'giải nén là dùng được')"
+msgstr "TGZ kho lưu trữ nén (định dạng kết hợp luồng của lưu trữ TAR và nén GZIP, phần mở rộng .tgz hoặc .tar.gz. Là định dạng phân phối gói phần mềm phổ biến nhất trong môi trường Unix/Linux, được sử dụng rộng rãi để triển khai biên dịch mã nguồn và phân phối gói nhị phân không cần cài đặt)"
 
 msgid "mime_tbz2"
-msgstr "Gói nén TBZ2 (định dạng kết hợp TAR + BZIP2, phần mở rộng .tbz2 hoặc .tar.bz2. Tỷ lệ nén cao hơn TGZ 15-20%, phù hợp phân phối tệp lớn, nhân Linux sử dụng định dạng này trong thời gian dài)"
+msgstr "TBZ2 kho lưu trữ nén (định dạng kết hợp luồng của lưu trữ TAR và nén BZIP2, phần mở rộng .tbz2 hoặc .tar.bz2. So với TGZ, có thể tăng thêm tỷ lệ nén 15-20%, phù hợp để truyền tệp lớn, đã được sử dụng trong một thời gian dài để phân phối mã nguồn nhân Linux)"
 
 msgid "mime_xz"
-msgstr "Gói nén XZ (ra mắt năm 2009, dựa trên thuật toán LZMA2. Tỷ lệ nén cực cao, cao hơn GZIP 30-50%, tốc độ giải nén khá nhanh. Nhân Linux, trình quản lý gói (như bên trong .deb của Debian) sử dụng rộng rãi, là định dạng được khuyến nghị trong hệ sinh thái Linux hiện tại)"
+msgstr "XZ kho lưu trữ nén (định dạng tỷ lệ nén cao thế hệ tiếp theo được giới thiệu vào năm 2009. Dựa trên thuật toán LZMA2, tỷ lệ nén dữ liệu cao hơn GZIP 30-50% trong khi vẫn duy trì giải nén tốc độ cao. Nó đã được thiết lập như một tiêu chuẩn phân phối được khuyến nghị bởi nhân Linux và các trình quản lý gói chính thống (như bên trong Debian .deb))"
 
 msgid "mime_z"
-msgstr "Gói nén Z (định dạng lệnh Unix compress năm 1985, thuật toán LZW. Định dạng nén Unix thời kỳ đầu, đã bị GZIP thay thế. Phần mở rộng .Z, hệ thống hiện đại ít sử dụng)"
+msgstr "Z kho lưu trữ nén (định dạng nén LZW của lệnh Unix compress năm 1985. Là tiêu chuẩn nén tiêu chuẩn của các hệ thống Unix thời kỳ đầu, hiện đã được thay thế hoàn toàn bằng định dạng GZIP hiệu quả hơn. Trong lưu lượng truy cập mạng hiện đại, nó là một định dạng lịch sử kế thừa hiếm gặp)"
 
 msgid "mime_zip"
-msgstr "Gói nén ZIP (Phil Katz phát triển năm 1989, định dạng PKZIP. Hỗ trợ nguyên bản trong Windows, định dạng nén phổ biến nhất trên internet. Hỗ trợ nhiều tệp, cấu trúc thư mục, có thể chọn thuật toán nén. JAR của Java, APK của Android, DOCX/XLSX của tài liệu Office đều dựa trên định dạng ZIP)"
+msgstr "ZIP kho lưu trữ nén (định dạng lưu trữ phổ quát PKZIP được phát triển bởi Phil Katz vào năm 1989. Được hỗ trợ nguyên bản bởi các hệ điều hành chính thống. Nó là tiêu chuẩn vùng chứa được sử dụng rộng rãi nhất trên internet. JAR của Java hiện đại, APK của Android và các tài liệu Office (OOXML) đều dựa trên cấu trúc ZIP)"
 
 msgid "mime_zst"
-msgstr "Gói nén Zstandard (Facebook phát triển năm 2015, Yann Collet thiết kế. Thuật toán nén tốc độ cao, tỷ lệ nén gần với LZMA, tốc độ vượt xa GZIP. Nhân Linux 5.9+ hỗ trợ, Arch Linux pacman, Debian APT đang dần áp dụng, là tiêu chuẩn nén thế hệ mới)"
+msgstr "Zstandard kho lưu trữ nén (tiêu chuẩn nén luồng thế hệ tiếp theo được thiết kế bởi Yann Collet của Facebook vào năm 2015. Tiếp cận tỷ lệ nén LZMA trong khi có thông lượng vượt trội hơn nhiều so với GZIP. Nó đã được áp dụng sâu rộng bởi nhân Linux (5.9+) và các trình quản lý gói Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Gói nén LZ4 (Yann Collet phát triển năm 2011, thuật toán nén cực nhanh. Tốc độ nén nhanh hơn GZIP 10 lần trở lên, phù hợp cho nén thời gian thực. Nhân Linux, OpenZFS, Hadoop sử dụng rộng rãi, là lựa chọn hàng đầu cho các tình huống ưu tiên tốc độ)"
+msgstr "LZ4 kho lưu trữ nén (thuật toán nén luồng cực nhanh được phát triển bởi Yann Collet vào năm 2011. Tốc độ thông lượng nhanh hơn GZIP hơn 10 lần, có chi phí thời gian chạy CPU cực thấp. Được sử dụng rộng rãi trong nhân Linux, hệ thống tệp OpenZFS và xử lý luồng dữ liệu thời gian thực Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Gói nén LZO (Markus Oberhumer phát triển năm 1996, thuật toán Lempel-Ziv-Oberhumer. Tốc độ giải nén cực nhanh, tỷ lệ nén trung bình. Nhân Linux Squashfs, firmware OpenWrt sử dụng, phù hợp cho hệ thống nhúng)"
+msgstr "LZO kho lưu trữ nén (thuật toán Lempel-Ziv-Oberhumer được phát triển bởi Markus Oberhumer vào năm 1996. Tập trung vào hiệu suất giải nén cực nhanh. Được nhúng rộng rãi trong các hình ảnh Squashfs của nhân Linux, phần sụn OpenWrt và các hệ thống nhúng khác nhau bị giới hạn tài nguyên)"
 
 msgid "mime_msi"
-msgstr "Gói cài đặt MSI (Microsoft ra mắt năm 1999, định dạng gói Windows Installer. Định dạng cài đặt ứng dụng Windows tiêu chuẩn, hỗ trợ hoàn tác giao dịch, quản lý thành phần, cài đặt im lặng. Định dạng ưu tiên phân phối phần mềm doanh nghiệp, vẫn là chính thống cho cài đặt phần mềm Windows đến nay)"
+msgstr "MSI gói cài đặt hệ thống (định dạng đóng gói dữ liệu Windows Installer được Microsoft giới thiệu vào năm 1999. Là một đặc tả triển khai tiêu chuẩn cấp ứng dụng Windows, nó hỗ trợ nguyên bản hoàn tác giao dịch cấp thấp, quản lý vòng đời thành phần và cài đặt im lặng không cần xử lý hàng loạt. Nó là tiêu chuẩn cốt lõi để phân phối phần mềm tập trung cấp doanh nghiệp và triển khai chính sách)"
 
 msgid "mime_pkg"
-msgstr "Gói cài đặt PKG (định dạng gói cài đặt ứng dụng macOS, dựa trên công nghệ Installer của Apple. Định dạng phân phối phần mềm macOS tiêu chuẩn, hỗ trợ chọn thành phần, kịch bản cài đặt, chức năng gỡ cài đặt. Nhấp đúp vào tệp .pkg để cài đặt, cách phân phối phổ biến cho phần mềm bên ngoài Mac App Store)"
+msgstr "PKG gói cài đặt phần mềm đa nền tảng. 1. Gói phần mềm FreeBSD: tiêu chuẩn pkgng, phần mở rộng .pkg hoặc .txz, dựa trên nén TAR+XZ/Zstd, hỗ trợ phân giải phụ thuộc và xác minh chữ ký; 2. Gói cài đặt macOS: dựa trên định dạng Apple Installer, hỗ trợ các thành phần tùy chỉnh, tập lệnh cài đặt và gỡ cài đặt cấp hệ thống. Lần lượt là các phương tiện phân phối chính cho máy chủ BSD và hệ thống Mac."
 
 msgid "mime_apk"
-msgstr "Gói ứng dụng Android APK (được Google giới thiệu vào năm 2008, định dạng cài đặt ứng dụng Android truyền thống. APK về cơ bản là gói ZIP chứa mã, tài nguyên và tệp kê khai. Từ năm 2021, Google Play yêu cầu các ứng dụng mới sử dụng định dạng AAB, nhưng APK vẫn được sử dụng để gỡ lỗi, cửa hàng bên thứ ba và cài đặt tải bên)"
+msgstr "APK gói ứng dụng Android (gói cài đặt ứng dụng truyền thống được Google phát hành cùng với Android vào năm 2008. Dựa trên cấu trúc lưu trữ ZIP, đóng gói mã byte Dalvik đã biên dịch (DEX), tệp kê khai siêu dữ liệu và tài nguyên toàn cầu. Hiện được sử dụng rộng rãi để gỡ lỗi phát triển cục bộ, phân phối bên thứ ba và cài đặt tải bên thiết bị)"
 
 msgid "mime_ipa"
-msgstr "Gói ứng dụng iOS IPA (iOS App Store Package, định dạng cài đặt cho ứng dụng iOS/iPadOS. Được giới thiệu vào năm 2008 cùng với iPhone SDK. Phải được phân phối qua App Store hoặc ký bằng chứng chỉ doanh nghiệp. Chứa tệp thực thi, tài nguyên, Info.plist và thông tin chữ ký)"
+msgstr "IPA gói ứng dụng Apple (vùng chứa đóng gói dành riêng cho iOS/iPadOS được phát hành cùng với iPhone SDK vào năm 2008. Về bản chất, nó là một kho lưu trữ ZIP được bảo vệ bởi DRM FairPlay hoặc chữ ký mã cấp doanh nghiệp, chứa tệp thực thi nhị phân Mach-O, cây tài nguyên ứng dụng và cấu hình siêu dữ liệu Info.plist)"
 
 msgid "mime_hap"
-msgstr "Gói ứng dụng HarmonyOS HAP (HarmonyOS Ability Package, đơn vị cơ bản của ứng dụng HarmonyOS. Được giới thiệu vào năm 2020 cùng với HarmonyOS 2.0. Hỗ trợ hai loại: entry và feature, định dạng phân phối cho điện thoại Huawei, máy tính bảng, đồng hồ thông minh và các thiết bị HarmonyOS khác)"
+msgstr "HAP gói ứng dụng HarmonyOS (đơn vị cơ bản triển khai linh hoạt của HarmonyOS được phát hành cùng với HarmonyOS 2.0 vào năm 2020. Bao gồm mô-đun chính Entry hoặc các mô-đun chức năng mở rộng Feature. Nó là định dạng triển khai đa đầu cuối cốt lõi để phân phối thiết bị đầu cuối thông minh trong tất cả các tình huống đa đầu cuối (điện thoại, máy tính bảng, thiết bị đeo))"
 
 msgid "mime_har"
-msgstr "Thư viện dùng chung tĩnh HarmonyOS HAR (HarmonyOS Archive, thư viện dùng chung tĩnh của HarmonyOS, có thể được chia sẻ bởi nhiều gói HAP, được sử dụng cho phát triển dựa trên thành phần và tái sử dụng mô-đun)"
+msgstr "HAR gói chia sẻ tĩnh HarmonyOS (tệp lưu trữ thư viện chia sẻ tĩnh độc quyền của HarmonyOS. Được sử dụng để đóng gói các thành phần chung, mã tài nguyên cấp thấp và các phụ thuộc thời gian biên dịch, được liên kết tĩnh và chia sẻ bởi nhiều mô-đun HAP. Nó là nền tảng cốt lõi để phát triển dựa trên thành phần và tái sử dụng nhiều mô-đun của hệ thống HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google ra mắt năm 2018, từ 2021 Google Play bắt buộc ứng dụng mới sử dụng định dạng này. AAB là định dạng phân phối, Google Play tạo APK tối ưu theo cấu hình thiết bị (kiến trúc CPU, mật độ màn hình, ngôn ngữ), kích thước gói trung bình giảm 35%. Nhà phát triển tải lên AAB, người dùng tải xuống APK)"
+msgstr "AAB gói ứng dụng Android (định dạng phân phối động của Google Play được Google giới thiệu vào năm 2018 và được thiết lập vào năm 2021. Là một thực thể phân phối thuần túy, nó được cắt và biên dịch động bởi đám mây theo kiến trúc CPU, mật độ màn hình và ngôn ngữ của thiết bị đích, đồng thời tạo ra các APK được tối ưu hóa theo yêu cầu. Giảm chi phí băng thông truyền trung bình 35%)"
 
 msgid "mime_xapk"
-msgstr "Gói ứng dụng XAPK (gói mở rộng ứng dụng Android bên thứ ba, bao gồm APK + tệp dữ liệu OBB. Dùng cho game lớn và ứng dụng phức tạp, giải quyết giới hạn 100MB của tệp APK đơn. Phổ biến trên các cửa hàng ứng dụng bên thứ ba như APKPure, APKMirror, không phải định dạng chính thức của Google)"
+msgstr "XAPK gói ứng dụng mở rộng (tiêu chuẩn mở rộng ứng dụng không chính thức được thiết lập bởi cộng đồng Android bên thứ ba. Bằng cách đóng gói chung tệp APK tiêu chuẩn với gói mở rộng dữ liệu trò chơi OBB rất lớn, nó phá vỡ giới hạn kích thước tệp độc lập 100MB của Google Play về mặt vật lý. Được thấy rộng rãi trên các nền tảng phân phối trò chơi)"
 
 msgid "mime_appx"
-msgstr "Gói ứng dụng Windows (Microsoft ra mắt năm 2012, định dạng cài đặt ứng dụng Windows 8/10/11. Hỗ trợ ứng dụng UWP và chuyển đổi ứng dụng desktop, phân phối qua Microsoft Store. Năm 2024 Microsoft ra mắt MSIX làm định dạng kế nhiệm, thay thế dần APPX)"
+msgstr "APPX gói ứng dụng hiện đại (đặc tả triển khai ứng dụng UWP được Microsoft phát hành cùng với Windows 8 vào năm 2012. Có tính năng chạy cách ly hộp cát và gỡ cài đặt nhẹ. Là tiêu chuẩn thống trị ban đầu của Microsoft Store, trong hệ sinh thái Windows hiện đại, nó đã bước vào giai đoạn cuối của vòng đời phát triển theo hướng MSIX)"
 
 msgid "mime_msix"
-msgstr "Gói ứng dụng MSIX (Microsoft ra mắt năm 2018, định dạng đóng gói ứng dụng Windows thế hệ mới. Kết hợp ưu điểm của APPX và MSI, hỗ trợ mọi loại ứng dụng Windows, có thể phân phối qua Microsoft Store hoặc cài đặt side-load, định dạng được khuyến nghị cho Windows 11)"
+msgstr "MSIX gói ứng dụng thế hệ tiếp theo (đặc tả đóng gói tiêu chuẩn hóa hoàn toàn mới cho Windows được Microsoft phát hành vào năm 2018. Nó kết hợp hoàn hảo các tính năng hộp cát bảo mật ứng dụng của APPX với lợi thế quản lý tài sản cấp doanh nghiệp của MSI. Tương thích hoàn toàn với tất cả các loại ứng dụng Win32. Nó là tiêu chuẩn phân phối được khuyến nghị cho Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Gói ứng dụng AppImage (ra mắt năm 2004, định dạng ứng dụng Linux không cần cài đặt. 'Một ứng dụng một tệp', chạy ngay không cần cài đặt, hỗ trợ hầu hết các bản phân phối Linux, cách phổ biến để nhà phát triển phân phối phần mềm Linux)"
+msgstr "AppImage gói ứng dụng không cần cài đặt (đặc tả lưu trữ thực thi duy nhất của Linux được bắt đầu vào năm 2004. Sử dụng kiến trúc tự đủ 'một ứng dụng là một tệp'. Trong thời gian chạy, nó được gắn trực tiếp thông qua cơ chế FUSE như một hệ thống tệp ảo chỉ đọc để thực thi, đạt được khả năng sử dụng ngay lập tức với không phụ thuộc trên tất cả các bản phân phối Linux)"
 
 msgid "mime_flatpak"
-msgstr "Gói ứng dụng Flatpak (ra mắt năm 2015, định dạng ứng dụng Linux trong hộp cát. Chạy đa bản phân phối, cách ly với hệ thống máy chủ, do Fedora, Red Hat dẫn dắt phát triển, định dạng mặc định của Trung tâm phần mềm GNOME)"
+msgstr "Flatpak gói ứng dụng hộp cát (tiêu chuẩn phân phối ứng dụng máy tính để bàn đa bản phân phối Linux do Red Hat và GNOME dẫn dắt vào năm 2015. Ở cấp thấp, nó dựa vào các cơ chế Namespace và Cgroups của nhân Linux để đạt được sự cô lập hộp cát bảo mật cấp ứng dụng cực kỳ nghiêm ngặt. Nó là nền tảng của các trung tâm phần mềm hệ điều hành mã nguồn mở hiện đại)"
 
 msgid "mime_snap"
-msgstr "Gói ứng dụng Snap (Canonical ra mắt năm 2014, công ty mẹ của Ubuntu phát triển, định dạng ứng dụng Linux phổ thông. Cập nhật tự động, hộp cát cách ly, hỗ trợ 40+ bản phân phối Linux, định dạng mặc định của Ubuntu Software Center)"
+msgstr "Snap gói ứng dụng được container hóa (tiêu chuẩn triển khai Linux phổ quát được Canonical, công ty mẹ của Ubuntu, giới thiệu vào năm 2014. Sử dụng kiến trúc gắn kết hình ảnh SquashFS tự đủ, hỗ trợ cập nhật gia tăng tự động và cô lập hộp cát AppArmor nghiêm ngặt. Nó là định dạng mặc định cốt lõi của hệ sinh thái Trung tâm Phần mềm Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Gói phần mềm Debian (Debian Project ra mắt năm 1993, định dạng cài đặt tiêu chuẩn cho Debian/Ubuntu và các bản phái sinh. Quản lý bằng dpkg, APT là trình quản lý gói phía trước, một trong những định dạng gói trưởng thành nhất trong hệ sinh thái Linux, vẫn là chính thống trong hệ thống Debian đến nay)"
+msgstr "DEB gói phần mềm hệ thống (đặc tả đóng gói mã nhị phân và mã nguồn được thiết lập bởi dự án Debian vào năm 1993. Là tiêu chuẩn cài đặt cơ bản cho Debian, Ubuntu và tất cả các hệ thống phái sinh của chúng, nó dựa trên nhân dpkg để giải nén và bảo trì, sử dụng APT làm giao diện người dùng hiệu quả của trình quản lý gói. Nó là nền tảng phân phối phần mềm trưởng thành nhất trong hệ sinh thái Linux)"
 
 msgid "mime_rpm"
-msgstr "Gói phần mềm RPM (Red Hat ra mắt năm 1997, định dạng tiêu chuẩn cho các bản phân phối như Red Hat/Fedora/CentOS/SUSE. RPM viết tắt của 'Red Hat Package Manager', cùng với DEB là hai định dạng gói chính của Linux, vẫn là chính thống trong hệ thống RHEL đến nay)"
+msgstr "RPM gói phần mềm hệ thống (đặc tả đóng gói trình quản lý gói Red Hat được Red Hat giới thiệu vào năm 1997. Cùng với DEB, nó được coi là một trong hai phe chính của quản lý gói truyền thống Linux. Có sẵn kiểm tra phụ thuộc cấp giao dịch và xác minh chữ ký số phần mềm cơ bản. Nó vẫn là tiêu chuẩn phân phối chính thống tuyệt đối cho các hệ sinh thái họ Red Hat như RHEL, Fedora và CentOS cho đến ngày nay)"
 
 msgid "mime_pacman"
-msgstr "Gói phần mềm Arch (Arch Linux ra mắt năm 2002, định dạng .pkg.tar.zst được sử dụng bởi trình quản lý gói pacman. Cốt lõi của Arch Linux bản phát hành cuốn chiếu, nổi tiếng với sự đơn giản và nguyên tắc KISS, AUR (Kho lưu trữ người dùng Arch) là điểm đặc trưng)"
+msgstr "Pacman gói phần mềm lưu trữ (định dạng đóng gói .pkg.tar.zst được Arch Linux thiết lập cùng với trình quản lý pacman vào năm 2002. Là cốt lõi của cơ chế cập nhật liên tục của Arch, dựa trên thuật toán nén cao tốc độ cao Zstandard, cùng với hệ sinh thái AUR (Kho lưu trữ phần mềm người dùng Arch). Nó là một tiêu chuẩn phân phối gói hiện đại thể hiện các nguyên tắc tối giản và KISS)"
 
 msgid "mime_exe"
-msgstr "Tệp thực thi EXE (định dạng chương trình thực thi Windows, viết tắt của 'Executable'. Định dạng thực thi gốc của hệ điều hành Windows, chứa cấu trúc PE. Phát triển từ định dạng MZ của MS-DOS, Windows NT giới thiệu định dạng PE (Portable Executable) năm 1993 và sử dụng đến nay. Gói cài đặt phần mềm, ứng dụng, công cụ hệ thống đều sử dụng định dạng này. Người dùng nhấp đúp để chạy, là định dạng thực thi được sử dụng rộng rãi nhất trên thế giới)"
+msgstr "EXE tệp thực thi gốc (định dạng chương trình nhị phân Thực thi Di động (PE) của nền tảng Windows. Công nghệ bắt nguồn từ cấu trúc tiêu đề MZ từ thời MS-DOS và từ năm 1993, Windows NT đã được thiết lập hoàn toàn như một đặc tả cấu trúc PE. Nó là tiêu chuẩn thực thi được sử dụng rộng rãi nhất trên thế giới cho các lệnh mã máy, phân đoạn tài nguyên tĩnh và khởi động nhân hệ thống)"
 
 msgid "mime_dll"
-msgstr "Thư viện liên kết động DLL (Microsoft ra mắt năm 1993, Dynamic Link Library. Thư viện mã chia sẻ của Windows, tải động khi chương trình chạy, tiết kiệm bộ nhớ và không gian đĩa. Thành phần hệ thống, plugin ứng dụng, trình điều khiển đều sử dụng định dạng DLL. Cách triển khai cốt lõi của Windows API, vấn đề DLL Hell đã được giảm nhẹ trong thời đại .NET)"
+msgstr "DLL thư viện liên kết động (đặc tả thư viện mã chia sẻ Thư viện Liên kết Động của nền tảng Windows. Bằng cách tải động và định vị lại các ký hiệu trong thời gian chạy, nó tiết kiệm đáng kể bộ nhớ vật lý và không gian đĩa. Là hình thức triển khai cốt lõi của Windows API, vấn đề 'Địa ngục DLL' ban đầu của nó đã được giải quyết triệt để trong thời gian hiện đại bằng cơ chế cô lập song song SxS)"
 
 msgid "mime_com"
-msgstr "Tệp thực thi COM (định dạng thực thi thời MS-DOS, viết tắt của 'Command'. Cấu trúc tệp đơn giản, giới hạn 64KB, định dạng chính trước Windows 3.x, đã bị loại bỏ. Windows hiện đại sử dụng định dạng EXE, phần mở rộng COM vẫn được dùng cho một số tệp thành phần)"
+msgstr "COM tệp thực thi cổ điển (định dạng thực thi hình ảnh bộ nhớ (Lệnh) lâu đời nhất từ thời MS-DOS. Sử dụng thiết kế phân đoạn mã thuần túy không có cấu trúc, bị giới hạn ở giới hạn trên của phân đoạn định địa chỉ bộ nhớ vật lý 64KB. Hiện đã nghỉ hưu như một định dạng kế thừa lịch sử, nhưng trong kiến trúc Windows hiện đại, nó vẫn được sử dụng như một giao diện thành phần cụ thể để có khả năng tương thích hạn chế)"
 
 msgid "mime_aac"
 msgstr "Âm thanh AAC (tiêu chuẩn MPEG năm 1997, Advanced Audio Coding. Người kế nhiệm MP3, chất lượng âm thanh tốt hơn MP3 ở cùng tốc độ bit, định dạng âm thanh mặc định của YouTube, iTunes, Nintendo Switch)"

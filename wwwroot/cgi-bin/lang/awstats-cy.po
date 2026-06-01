@@ -450,8 +450,8 @@ msgstr "Gwesteiwr - Nifer tudalennau - Nifer ceisiadau - Lled band - Amser yr ym
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Amser cychwyn yr ymweliad olaf] a [Thudalen olaf yr ymweliad olaf] yn cael eu cadw dim ond os nad yw'r sesiwn wedi gorffen"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Dim ond y %s eitem cyntaf gyda'r mwyaf o geisiadau sy'n cael eu harddangos ar y dudalen gartref. Gweler y rhestr lawn ar y dudalen fanylion."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Mae'r eitemau %s cyntaf wedi'u didoli yn ôl nifer y trawiadau mewn trefn ddisgynnol; nid yw trefn yr eitemau sy'n weddill wedi'i diffinio."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Defnyddiwr wedi mewngofnodi - Nifer tudalennau - Nifer ceisiadau - Lled band - Amser yr ymweliad olaf"
@@ -465,8 +465,8 @@ msgstr "ID abwydyn - Nifer ceisiadau - Lled band - Amser yr ymweliad olaf"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-bost - Nifer ceisiadau - Lled band - Amser yr ymweliad olaf"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Dim ond y %s e-bost cyntaf gyda'r mwyaf o geisiadau sy'n cael eu harddangos ar y dudalen gartref. Gweler y rhestr lawn ar y dudalen fanylion."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Mae'r cyfeiriadau e-bost %s cyntaf wedi'u didoli yn ôl nifer y trawiadau mewn trefn ddisgynnol; nid yw trefn y cyfeiriadau sy'n weddill wedi'i diffinio."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Nifer tudalennau - Lled band - Mynedfa - Allanfa"
@@ -675,6 +675,27 @@ msgstr "Nid yw'r paramedr SiteDomain wedi'i ddiffinio yn eich ffeil config/domai
 msgid "Please run as Administrator to set permissions"
 msgstr "Rhedeg fel Gweinyddwr i osod caniatadau"
 
+msgid "This directory lacks read permission"
+msgstr "Nid oes gan y cyfeiriadur hwn ganiatâd darllen"
+
+msgid "Please set read permission for directory"
+msgstr "Gosodwch ganiatâd darllen ar gyfer y cyfeiriadur, os gwelwch yn dda"
+
+msgid "Missing required parameter in config file"
+msgstr "Mae paramedr gofynnol ar goll yn y ffeil ffurfweddu"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Gwiriwch fod 'DirData' wedi'i ddiffinio, os gwelwch yn dda."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Mae'n ymddangos bod enw parth yn y cyfeiriad porwr ar goll neu'n anghyflawn"
+
+msgid "Please check the URL parameter"
+msgstr "Gwiriwch baramedr yr URL, os gwelwch yn dda"
+
+msgid "Format description"
+msgstr "Disgrifiad o'r fformat"
+
 msgid "Please set execute permission"
 msgstr "Gosodwch ganiatâd gweithredu os gwelwch yn dda"
 
@@ -800,376 +821,379 @@ msgstr "Cipiwr"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Ffeil destun (safoni ASCII 1963, testun plaen heb fformat. Sail pob cod ffynhonnell, cyfluniad, log. Mae Unix yn defnyddio LF, mae Windows yn defnyddio CRLF ar gyfer toriad llinell, yn dal i fod y fformat data mwyaf cyffredinol ar gyfrifiaduron)"
+msgstr "TXT ffeil destun pla (testun pla heb fformat wedi'i safoni gan ASCII ym 1963. Yn sylfaen i god ffynhonnell, ffeiliau ffurfweddu a chofnodion system, mae'r rheolyddion llifo newid llinell (CRLF ar Windows, LF ar Unix) yn parhau i fod y safon cyfnewid data mwyaf cyffredin yn y byd cyfrifiadurol)"
 
 msgid "mime_log"
-msgstr "Ffeil log (ffeil destun sy'n cofnodi gwybodaeth am weithrediad y system a'r cymwysiadau, a ddefnyddir yn aml ar gyfer datrys problemau, dadansoddi perfformiad, ac archwilio diogelwch. Mae'r fformatau safonol yn cynnwys log cyfun Apache, log mynediad Nginx, syslog, ac ati)"
+msgstr "LOG cofnod rhedeg system (ased testun plaig sy'n cofnodi statws rhedeg y system weithredu, cnewyllyn a lefel yr apiau. Yn cynnwys cofnodion mynediad Nginx/Apache (Cofnod Cyfun) a'r fanyleb syslog safonol, yn ffynhonnell graidd ar gyfer datrys problemau, dadansoddi perfformiad llif ac archwilio diogelwch)"
 
 msgid "mime_page"
-msgstr "Tudalen we HTML (Dyfeisiodd Tim Berners-Lee y We Fyd-eang ym 1989, diffiniodd y tair prif dechnoleg HTML/HTTP/URL ym 1990, wedi'u rhoi am ddim heb batent. Daeth HTML5 yn safon swyddogol W3C yn 2014, yn cefnogi arddangos, amlgyfrwng, ac argraffu. Enillydd Gwobr Turing 2016)"
+msgstr "HTML tudalen we (a grëwyd ym 1989 gan Tim Berners-Lee, craidd sylfaenol y We Fyd-eang. Yn iaith farcïo hyperdestun cyffredinol agored, daeth fanyleb HTML5 yn safon W3C swyddogol yn 2014, yn cefnogi amlgyfryngau strwythuredig, rhyngweithiad semantig a chynllun llif tudalennau'n frodorol, enillodd Wobr Turing yn 2016)"
 
 msgid "mime_khtml"
-msgstr "Peiriant gwe KHTML (rhyddhawyd KDE 2.0 ym 1998, peiriant rendro porwr Konqueror. Crewyd WebKit gan Apple ym 2001 yn seiliedig ar KHTML, a chrewyd Blink gan Google o WebKit yn 2008, gan ddod yn graidd porwyr fel Chrome, Edge, Safari. Mae KHTML yn enghraifft o sut y gosododd y gymuned ffynhonnell agored sylfeini peiriannau porwr modern, ac mae ei etifeddiaeth dechnolegol yn parhau trwy WebKit/Blink hyd heddiw)"
+msgstr "KHTML peiriannydd templedi gwe (manyleb peiriannydd rendro porwr KDE 2.0 o 1998. Yn safon meddalwedd agored a osododd y sylfeini ar gyfer rendro gwe modern, ysbrydolodd ei etifeddiaeth dechnegol yn uniongyrchol greiddiau WebKit Apple a Blink Google, ac mae'n parhau i fod yn sail i bensaernïaeth gwe ddeinamig, lifogol modern)"
 
 msgid "mime_script"
-msgstr "Iaith sgript ddeinamig (iaith ddehongli, nid oes angen ei chrynhoi. Yn cynnwys ASP, JSP, CGI, ColdFusion, Tcl, VBScript, ac ati, a ddefnyddiwyd yn eang yn y datblygiad gwe cynnar, gweinyddu systemau, awtomeiddio tasgau. Mae ieithoedd sgript modern fel Python, Ruby, JavaScript wedi datblygu'n brif offer ar gyfer datblygu llawn-stac)"
+msgstr "SCRIPT sgript ddehongledig ddeinamig (yn cyfeirio at lif ffynhonnell sy'n cael ei weithredu fesul llinell gan ddehonglydd penodol heb ei grynhoi ymlaen llaw. Yn cynnwys ASP, JSP, CGI a Tcl, a ddefnyddir yn eang ar gyfer rhyngwynebau cydffordd cyhoeddus gweinyddion, rheoli prosesau awtomataidd a chlytio tasgau ar lefel system)"
 
 msgid "mime_js"
-msgstr "Sgript JavaScript (Crewyd gan Brendan Eich mewn 10 diwrnod yn Netscape ym 1995, iaith raglennu frodorol porwyr. Safonwyd ECMAScript ym 1997, ganwyd Node.js yn 2009 gan ei wneud yn iaith draws-lwyfan, npm yw'r rheolwr pecynnau mwyaf yn y byd. Yr iaith raglennu fwyaf poblogaidd ar GitHub ers blynyddoedd)"
+msgstr "JavaScript sgript (amgylchedd rhaglennu brodorol porwr Netscape o 1995. Sefydlwyd safon ECMAScript ym 1997, ac ym 2009 fe anwyd yr amgylchedd rhedeg Node.js a dorrodd ffiniau porwyr ac a greodd bensaernïaeth dialiadol, aflociaidd ar draws y pentwr cyfan, gyda'r ecosystem pecynnau meddalwedd fwyaf yn y byd, npm)"
 
 msgid "mime_py"
-msgstr "Sgript Python (Crewyd gan Guido van Rossum ym 1991, yn adnabyddus am ei fewnoliad gorfodol a'i chystrawen syml. Fe'i defnyddir yn eang mewn datblygiad gwe, gwyddoniaeth data, deallusrwydd artiffisial, awtomeiddio gweinyddu. Enillydd gwobr TIOBE Iaith Raglennu y Flwyddyn sawl gwaith)"
+msgstr "Python sgript (iaith sgriptio lefel uchel a ddehonglir a grëwyd gan Guido van Rossum ym 1991. Gyda'i ddarllenadwyedd di-golled trwy fynnu mewnoliad a'i ddyluniad aml-baradeim, bellach wedi'i sefydlu fel iaith safonol ar gyfer pensaernïaeth we fodern, gwyddoniaeth data pentwr cyfan, hyfforddi modelau Deallusrwydd Artiffisial (AI) a gweithredu awtomeiddio cwmwl-brodorol)"
 
 msgid "mime_sh"
-msgstr "Sgript Shell (Ganed Unix ym 1971, iaith llinell orchymyn. Fe'i defnyddir ar gyfer gweinyddu system, awtomeiddio tasgau, cychwyn gwasanaethau, sgriptiau defnyddio. Sgiliau angenrheidiol ar gyfer gweinyddu Linux)"
+msgstr "Shell sgript (sgript dehonglydd gorchmynion safonol o oes Unix (1971). Yn cynnwys gorchmynion lefel cnewyllyn fel Bash, Sh, Dash, fel arfer gyda'r estyniad .sh i'w gweithredu, yn glud cnewyllyn cyffredinol ar gyfer rheoli prosesau lefel isel, gosod amgylcheddau heb osod meddalwedd a datblygiad awtomataidd mewn systemau tebyg i Unix modern)"
 
 msgid "mime_rb"
-msgstr "Sgript Ruby (Crewyd gan Yukihiro Matsumoto ym 1995, wedi'i ganolbwyntio ar hapusrwydd datblygwyr. Fframwaith Ruby on Rails oedd arloeswr y batrwm confensiwn dros gyfluniad, gan ddylanwadu ar ddyluniad fframweithiau gwe modern)"
+msgstr "Ruby sgript (iaith sgriptio a grëwyd ym 1995 gan Yukihiro Matsumoto gyda phwyslais ar wrthrychau. Gyda'i hathroniaeth ddylunio sy'n parchu profiad y datblygwr yn fawr, chwyldroadodd ei fframwaith Ruby on Rails bensaernïaeth we ddatblygedig modern trwy sefydlu'r patrwm 'Confensiwn dros Gyfluniad' (CoC))"
 
 msgid "mime_pl"
-msgstr "Sgript Perl (Crewyd gan Larry Wall ym 1987, yn adnabyddus am fod yn ymarferol, yn aml yn cael ei alw'n 'cyllell y Swistir'. CPAM oedd rhagflaenydd rheolwyr pecynnau ieithoedd rhaglennu modern, gyda dylanwad dwfn ym maes prosesu testun, gweinyddu system, a CGI)"
+msgstr "Perl sgript (iaith sgriptio ymarferol a grëwyd ym 1987 gan Larry Wall. Yn arloeswr rheolwyr pecynnau modern (CPAN), fe'i elwir yn 'gyllell swistir' prosesu testun. Mewn modd CGI modern, mae'n gweithredu fel sylfaen ddibynadwy iawn mewn dadansoddi cofnodion diolch i'w gost cof ffisegol isel iawn a'i brosesu mynegiannau rheolaidd effeithlon)"
 
 msgid "mime_php"
-msgstr "Tudalen we ddeinamig PHP (Crewyd gan Rasmus Lerdorf ym 1995, wedi'i ddylunio'n benodol ar gyfer datblygiad gwe. Mae mwy na 70% o wefannau'r byd yn ei ddefnyddio, yn pweru llwyfannau fel WordPress, Facebook, Wikipedia. Mae PHP 8 yn cyflwyno crynhoad JIT, gan wella perfformiad yn sylweddol)"
+msgstr "PHP tudalen we ddeinamig (a grëwyd ym 1995 gan Rasmus Lerdorf, wedi'i chynllunio ar gyfer datblygu gwe. Yn dechnoleg graidd sy'n gyrru dros 70% o wefannau'r byd, yn sylfaen i gymwysiadau cynhyrchu mawr fel WordPress a Wikipedia. O PHP 8 ymlaen, gyda'r injan rhedeg JIT (Crynhoi Pryd Union), mae wedi esblygu tuag at bensaernïaeth weinydd pwrpas cyffredinol perfformiad uchel)"
 
 msgid "mime_image"
-msgstr "Ffeil ddelwedd"
+msgstr "IMAGE ased delwedd (yn cynnwys mapiau did gyda/ heb golledion, graffeg we ymatebol modern a fectorau. Yn fetrig allweddol ar gyfer asesu cost llwytho adnoddau gweledol safle, cyfradd taro storfa ochr y cleient a defnydd lled band cyfryngau)"
 
 msgid "mime_document"
-msgstr "Ffeil ddogfen"
+msgstr "DOCUMENT dogfen strwythuredig (yn cynnwys testun plaen, taenlenni, dogfennau ffurfiol (PDF) ac ieithoedd marciog ysgafn. Yn fetrig allweddol ar gyfer dosbarthu gwybodaeth statig ar y gweinydd, lawrlwytho asedau menter a gallu llif testun mewnbwn/allbwn)"
 
 msgid "mime_package"
-msgstr "Pecyn meddalwedd"
+msgstr "PACKAGE cynnyrch a luniwyd a phecyn meddalwedd (yn cynnwys rhaglenni gweithredadwy brodorol system weithredu, llyfrgelloedd cyswllt amser rhedeg (DLL/SO) a phecynnau gosod dosbarthu apiau. Yn fetrig allweddol ar gyfer asesu llif allan a brigau lawrlwytho safleoedd dosbarthu meddalwedd)"
 
 msgid "mime_archive"
-msgstr "Ffeil gywasgedig Gzip (Prosiect GNU 1992, yn seiliedig ar algorithm DEFLATE. Fe'i defnyddir yn y We ar gyfer cywasgu ymateb deinamig, mae'r gyfradd gywasgu fel arfer yn 60-90%. Ar ôl 2015, cafodd ei ddisodli gan Brotli mewn rhai senarios, ond mae'n dal i fod y fformat cywasgu mwyaf cynhwysfawr ar ochr y gweinydd)"
+msgstr "ARCHIVE ffeil archifo a chywasgu (yn cyfeirio at becynnau data cywasgedig wedi'u hamgáu â algorithmau fel DEFLATE, LZMA. Ar lefel rhwydwaith, yn cynnwys llifoedd ymateb deinamig Gzip Prosiect GNU o 1992. Er bod algorithm Brotli yn cael ei gyflwyno'n raddol mewn rhai senarios modern, mae'r dosbarthiad hwn yn dal yn fetrig allweddol ar gyfer asesu cyfradd trwybwn lled band y gweinydd a gostyngiad pwysau'r haen cludo)"
 
 msgid "mime_audio"
-msgstr "Ffeil sain"
+msgstr "AUDIO llif sain digidol (yn cynnwys sain gywasgedig, llyfrau sain a chynwysyddion llif sain. Yn seiliedig ar safonau codec sain penodol, fe'i defnyddir i fonitro cyfradd trwybwn llif data sain ar safleoedd amlgyfrwng, lled band llif cyfochrog ac ymddygiad cysylltiadau hir)"
 
 msgid "mime_video"
-msgstr "Ffeil fideo"
+msgstr "VIDEO llif fideo digidol (yn cynnwys cynwysyddion fideo diffiniad uchel, animeiddiadau gwe modern a thameidiau llif. Yn fetrig allweddol ar gyfer asesu terfyn brig lled band y gweinydd ac effaith cyflymu rhwydweithiau dosbarthu cynnwys (CDN) o dan lwyth rhwydwaith uchel)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (a ddatblygwyd gan Brendan Eich ym 1995)"
+msgstr "JScript sgript (gweithrediad perchnogol peirianneg wrthdro a ddatblygwyd gan Microsoft ar gyfer Internet Explorer 3.0 ym 1996. Yn gystadleuydd cynnar i JavaScript, bu'n beiriant craidd i Windows Script Host (WSH) a chefngeiriau ASP cynnar)"
 
 msgid "mime_json"
-msgstr "Data JSON (a gynigiwyd gan Douglas Crockford yn 2001, fformat ysgafn ar gyfer cyfnewid data, safon de facto ar gyfer APIau Gwe)"
+msgstr "JSON data strwythuredig (fformat cyfnewid dilyniad data ysgafn a sefydlwyd gan Douglas Crockford yn 2001. Yn seiliedig ar barau allwedd-gwerth a strwythurau rhesi ar ffurf testun, gyda darllenadwyedd uchel i fodau a nodweddion didoli llif di-golled, yw'r safon 'de facto' ar gyfer APIs gwe modern, pensaernïaeth ficro-wasanaeth a rhyngweithio â modelau iaith mawr)"
 
 msgid "mime_vbs"
-msgstr "VBScript (a ddatblygwyd gan Microsoft yn 1996, iaith sgriptio Windows, a ddefnyddiwyd ar gyfer tudalennau gwe ASP a sgriptiau gweinyddu Windows. Wrth i PowerShell a JavaScript ddod yn fwy poblogaidd, mae wedi'i ddileu'n raddol)"
+msgstr "VBScript sgript (amrywiad iaith sgriptio a lansiwyd gan Microsoft gydag IE 3.0 ym 1996. Bu'n injan graidd ar gyfer gwefannau deinamig ASP cynnar a rheoli systemau Windows, bellach wedi'i ddadgomisiynu a'i thynnu o greiddiau diweddaraf Windows 11, yn dechnoleg etifeddol hanesyddol)"
 
 msgid "mime_conf"
-msgstr "Ffeil gyfluniad (yn storio cyfluniad meddalwedd mewn fformat testun, fformatau cyffredin: INI, JSON, YAML, TOML, XML. Mae cyfluniadau system Linux yn bennaf yn y cyfeiriadur /etc)"
+msgstr "CONF ffeil ffurfweddu system (yn cyfeirio at ffeiliau data sy'n storio paramedrau amgylchedd meddalwedd ar ffurf testun plaen. Yn cynnwys manylebau INI a safonau modern fel YAML, TOML, JSON. Mewn systemau Linux, wedi'u canoli yn y cyfeiriadur /etc, yn ddibyniaeth graidd ar gyfer tiwnio statws rhedeg y system)"
 
 msgid "mime_css"
-msgstr "Taflen arddull CSS (Cyhoeddwyd safon swyddogol cyntaf CSS1 gan W3C ym mis Rhagfyr 1996, ychwanegodd CSS2 leoli a mathau cyfryngau ym 1998, o 2011 ymlaen cyflwynwyd CSS3 yn fodiwlaidd gyda chorneli crwn, animeiddiadau, blychau hyblyg, cynllun grid, a dyluniad ymatebol. Ynghyd â HTML a JavaScript, maent yn ffurfio tair prif dechnoleg craidd y pen blaen, mae pob porwr modern (Chrome, Firefox, Safari, Edge) yn eu cefnogi'n frodorol, dyma'r unig safon ar gyfer diffinio steiliau gwe)"
+msgstr "CSS dalen arddull rhaeadru (safon W3C o 1996, ynghyd ag HTML/JS yn dair craidd y blaen. Wedi esblygu o safle CSS2 a modiwleiddio CSS3, yn cefnogi Blwch Hyblyg (Flexbox), Grid a dylunio ymatebol â chwestiynau cyfryngau, yw'r safon bennaf ar gyfer datgysylltu cynrychiolaeth tudalennau gwe mewn porwyr modern)"
 
 msgid "mime_xsl"
-msgstr "Taflen arddull XSL (safon W3C 1999, iaith drawsnewid dogfennau XML, gall drawsnewid XML i HTML/PDF/testun. Ar ôl poblogeiddio JSON, mae'r defnydd wedi gostwng)"
+msgstr "XSL dalen arddull (safon W3C o 1999, yn cynnwys trawsnewid XSLT ac iaith gyfeirio XPath, ar gyfer rendro data XML strwythuredig fel HTML, PDF neu destun plaen. Mewn datblygiad modern, mae ei ecosystem wedi cael ei disodli i raddau helaeth gan beiriannau templedi ysgafnach a'r fformat data JSON)"
 
 msgid "mime_runtime"
-msgstr "Ffeil weithredadwy (fformat gweithredadwy'r system weithredu fel EXE, ELF, Mach-O, yn cynnwys cod peiriant a gwybodaeth ar gyfer llwytho)"
+msgstr "ffeil weithredadwy (fformat gweithredadwy brodorol system weithredu fel EXE, ELF, Mach-O, yn cynnwys cod peiriant lefel isel wedi'i grynhoi, y pwynt mynediad a gwybodaeth llwytho system)"
 
 msgid "mime_library"
-msgstr "Ffeil llyfrgell (DLL, SO, dylib, ac ati llyfrgelloedd cyswllt deinamig, cod a rennir sy'n cael ei lwytho pan fydd y rhaglen yn rhedeg)"
+msgstr "ffeil llyfrgell (DLL, SO, dylib, ac ati, llyfrgelloedd cyswllt deinamig neu statig sy'n cynnwys symbolau a rennir a chod ail-leoli i'w galw gan raglenni eraill)"
 
 msgid "mime_swf"
-msgstr "Animeiddiad Flash (a ddatblygwyd gan Macromedia ym 1996, yn ddiweddarach yn eiddo i Adobe. Safon ar gyfer animeiddiad gwe rhyngweithiol, a oedd yn arfer dominyddu animeiddiadau a gemau ar y rhyngrwyd. Anfanteision: dibyniaeth ar ategyn, heb ei gefnogi ar ddyfais symudol, risg diogelwch uchel. Cyhoeddodd Adobe ei fod yn dod i ben yn 2017, daeth cefnogaeth lawn i ben yn 2020, wedi'i ddisodli gan HTML5/CSS3/JS)"
+msgstr "Flash animeiddiad (a ddatblygwyd gan Macromedia ym 1996, ei brynu gan Adobe yn 2005. Y safon ar gyfer animeiddiadau a gemau rhyngweithiol ar y we. Gwendidau: dibyniaeth ar ategion, dim cefnogaeth symudol, risg diogelwch uchel. Cyhoeddodd Adobe ei bod yn darfod yn 2017, daeth cefnogaeth i ben yn llwyr yn 2020, wedi'i disodli gan HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "Diffiniad math dogfen DTD (manyleb XML, yn diffinio strwythur dogfen XML, a ddefnyddir i wirio dilysrwydd XML)"
+msgstr "DTD diffiniad math dogfen (a ryddhawyd gydag XML 1.0 ym 1998, i ddiffinio strwythur dogfennau XML/HTML a dilysu ei chywairdeb. Mewn datblygiad modern, mae wedi cael ei ddisodli gan atebion mwy hyblyg fel Cynllun XML, RELAX NG, ac ati)"
 
 msgid "mime_csv"
-msgstr "Fformat data CSV (gwerthoedd wedi'u gwahanu gan goma, fformat cyffredinol ar gyfer data tabl, safon ar gyfer mewnforio/allforio i Excel a chronfeydd data)"
+msgstr "CSV fformat data (gwerthoedd wedi'u gwahanu gan goma, fformat tabl testun plaen cyffredinol o oes y prifgyfrifiaduron (crynhowr IBM Fortran) ym 1972. Wedi'i normaleiddio gan RFC 4180 yn 2005, fel safon cyfnewid data di-golled croes-ffatffurf a chroes-iaith. Fe'i defnyddir yn eang ar gyfer mewnforio/allforio effeithlon i Excel, cronfeydd data perthynnol a dadansoddi data (Pandas))"
+
+msgid "mime_cur"
+msgstr "CUR cyrchwr (fformat .cur, ar gyfer addasu arddull llygoden. Er enghraifft, cyrchwr bys ar dudalennau gwe, eicon awr dywod yn aros. Yn 'gared' i'r eicon .ico cyffredin, ond gyda 'phwynt poeth' ychwanegol sy'n diffinio lle mae'r clic gwirioneddol yn digwydd. Hanes: cyflwynwyd gyda Windows 3.1 (1992), yn gydran allweddol yn y cyfnod pontio o ryngwyneb llinell orchymyn i ryngwyneb graffigol llygoden)"
 
 msgid "mime_jnlp"
-msgstr "Cychwyniad Gwe Java (cychwynydd cymhwysiad Java, technoleg dosbarthu cymhwysiad bwrdd gwaith Java yn y 2000au, wedi'i ddileu bellach)"
+msgstr "Java Web Start (technoleg dosbarthu apiau bwrdd gwaith Java yn y 2000au, yn cychwyn rhaglenni o bell gyda ffeiliau .jnlp. Wedi darfod oherwydd problemau diogelwch a ffyrdd modern o ddosbarthu)"
 
 msgid "mime_lit"
-msgstr "e-lyfr Microsoft Reader (lansiwyd gan Microsoft yn 2000, fformat LIT, wedi'i ddileu)"
+msgstr "Microsoft Reader llyfr electronig (llyfr electronig Microsoft, 2000, fformat LIT. Wedi darfod, gellir ei drosi i EPUB neu PDF gydag offer fel Calibre)"
 
 msgid "mime_svg"
-msgstr "Graffeg fector SVG (safon W3C 1999, roedd Microsoft yn hir yn hyrwyddo ei fformat VML ei hun, ni chefnogodd porwr IE ef tan 2011, a achosodd oedi wrth ei boblogeiddio. Ar ôl 2015, gyda diddymiad IE a phoblogeiddio sgriniau cydraniad uchel, daeth yn ddewis cyntaf ar gyfer eiconau a logos)"
+msgstr "SVG graffeg fectoraidd (safon W3C o 1999, fformat delwedd fectoraidd 2D yn seiliedig ar XML. Yn gallu graddio heb golli ansawdd a throsglwyddo testun llif. Yn cael ei gefnogi'n frodorol gan bob porwr modern, yn cael ei ddefnyddio'n eang ar gyfer eiconau, logos ac animeiddiadau fectoraidd cydraniad uchel, yw safon graidd graffeg we modern)"
 
 msgid "mime_ai"
-msgstr "Graffeg fector Adobe Illustrator (lansiwyd ym 1987, fformat graffeg fector safonol y diwydiant, dewis cyntaf ar gyfer dylunio argraffu, logos, eiconau)"
+msgstr "AI graffeg fectoraidd (fformat fector perchnogol a ddatblygwyd gan Adobe ym 1987. Y safon diwydiannol graidd ar gyfer trefnu tudalennau, dylunio argraffu a dylunio brand, yn cynnal haenau lluosog a data trefnu tudalennau fectoraidd uwch, y dewis cyntaf ar gyfer celf weledol proffesiynol)"
 
 msgid "mime_phshop"
-msgstr "Delwedd Photoshop (lansiwyd gan Adobe ym 1990, fformat PSD ffeil ffynhonnell Photoshop, safon y diwydiant ar gyfer prosesu delweddau)"
+msgstr "PSD delwedd haen (fformat ffeil ffynhonnell fap did perchnogol a lansiwyd gan Adobe gyda Photoshop ym 1990. Yn cynnal haenau lluosog, sianeli, masgiau a data golygu di-golled, wedi'i sefydlu fel safon ddiwydiannol byd-eang ar gyfer prosesu delweddau a phaentio digidol)"
 
 msgid "mime_ttf"
-msgstr "Ffont TrueType (datblygiad ar y cyd gan Apple a Microsoft ym 1989, fformat fector, arddangosiad cyson ar y sgrin ac wrth argraffu, fformat ffont diofyn mewn systemau gweithredu modern)"
+msgstr "TrueType ffont (fformat cyfuchlin ddigidol a ddatblygwyd ar y cyd gan Apple a Microsoft ym 1989. Yn seiliedig ar gromliniau Bézier cwadratig, yn sicrhau cysondeb llwyr rhwng arddangos ar sgrin ac allbwn argraffu, yw fformat ffont brodorol diofyn systemau gweithredu bwrdd gwaith modern)"
 
 msgid "mime_fon"
-msgstr "Ffont gwe WOFF2 (Argymhelliad W3C 2014, yn defnyddio algorithm cywasgu Brotli, mae'r maint wedi gostwng tua 30% o'i gymharu â WOFF hŷn, dros 50% o'i gymharu â TTF/OTF. Mae pob porwr modern bellach yn ei gefnogi, dyma'r dewis gorau ar gyfer ffontiau gwe heddiw, wedi'i gefnogi gan dros 98% o borwyr)"
+msgstr "FON ffont map did (fformat ffont lefel system pwynt cynnar Microsoft yn y 1980au. Nid yw'n cynnal graddio cyfrannol di-golled, fel arfer wedi'i gyfyngu i rendro testun picsel mewn systemau etifeddol neu gydrannau dyfeisiau gwreiddio cynnar)"
 
 msgid "mime_pdf"
-msgstr "Dogfen PDF (a ddatblygwyd gan Adobe ym 1993, daeth yn safon ryngwladol ISO yn 2008. Fformat dogfen traws-lwyfan, yn cynnal cysondeb fformat, safon byd-eang ar gyfer dosbarthu dogfennau electronig)"
+msgstr "PDF dogfen electronig (a ddatblygwyd gan Adobe ym 1993 ac a ddaeth yn safon ISO 32000 rhyngwladol yn 2008. Fformat dogfen tudalennau sefydlog croes-ffatffurf gyda ffyddlondeb llwyr i'r trefn tudalennau, yw'r safon cyffredinol ar gyfer dosbarthu dogfennau electronig a chyhoeddi digidol)"
 
 msgid "mime_dotnet"
-msgstr "Tudalen ddeinamig ASP.NET (lansiwyd gan Microsoft yn 2002, technoleg tudalen we ddeinamig ar gyfer llwyfan Windows, rhan o .NET Framework)"
+msgstr "ASP.NET tudalen we ddeinamig (technoleg tudalennau gwe deinamig ochr gweinydd a lansiwyd gan Microsoft gyda phensaernïaeth .NET yn 2002. Yn cael ei gweithredu ar injan IIS ar gyfer adeiladu cymwysiadau gwe deinamig menter a systemau dosbarthedig ochr gweinydd Windows)"
 
 msgid "mime_mdb"
-msgstr "Cronfa ddata Access (ffeil cronfa ddata Microsoft Access, lansiwyd ym 1992, datrysiad cronfa ddata bwrdd gwaith ar Windows)"
+msgstr "MDB cronfa ddata berthynnol (fformat storio cronfa ddata berthynnol lefel bwrdd gwaith a lansiwyd gan Microsoft gydag Access yn 1992. Yn cynnwys injan gronfa ddata Jet, yn ddatrysiad cronfa ddata berthynnol ar gyfer cyfrifiaduron personol a rheoli gwybodaeth cynnar mewn busnesau bach a chanolig)"
 
 msgid "mime_md"
-msgstr "Dogfen Markdown (Crewyd gan John Grunder yn 2004, dylanwadwyd ar ddyluniad y gystrawen gan reStructuredText a Setext. Y brif athroniaeth ddylunio yw 'darllenadwyedd yn cyfateb i rendro', mae'r gweithrediad gwreiddiol Markdown.pl yn defnyddio mynegiadau rheolaidd Perl. Mae manylebau deilliedig yn cynnwys GFM (2013), CommonMark (2017), Pandoc Markdown, ac ati. Yn gyrru ecosystemau fel GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, wedi dod yn fformat safonol de facto ar gyfer cynhyrchwyr safleoedd statig a dogfennau datblygwyr)"
+msgstr "Markdown dogfen (iaith farcïo ysgafn a grëwyd gan John Gruber yn 2004. Ei hathroniaeth ddylunio graidd yw 'darllenadwy yn rendradwy', gan yrru manylebau deilliedig modern fel GFM a CommonMark. Fe'i defnyddir yn eang fel safon cyfnewid ar gyfer dogfennaeth dechnegol, cronfeydd gwybodaeth (Obsidian) a generaduron gwefannau statig modern)"
 
 msgid "mime_crystal"
-msgstr "Fformat adroddiad Crystal Reports (adroddiadau deallusrwydd busnes SAP, fformat safonol ar gyfer adroddiadau mewn mentrau)"
+msgstr "Crystal Reports adroddiad (fformat ffeil adroddiad menter proffesiynol o blatfform SAP Business Intelligence (BI). Yn gallu cysylltu â ffynonellau data lluosog a rendro siartiau deinamig cymhleth, yn cael ei ddefnyddio'n eang ar gyfer cynhyrchu adroddiadau proffesiynol mewn systemau ariannol a dadansoddi data cwmnïau rhyngwladol)"
 
 msgid "mime_libreoffice"
-msgstr "Dogfen LibreOffice (a ddatblygwyd gan The Document Foundation yn 2010, cangen o OpenOffice, gweithrediad safon ODF, prif swît swyddfa ffynhonnell agored)"
+msgstr "LibreOffice dogfen (fformat perchnogol y swît swyddfa ffynhonnell agored a seiliwyd ar OpenOffice, a sefydlwyd gan The Document Foundation yn 2010. Yn gweithredu safon rhyngwladol ODF (Fformat Dogfen Agored) W3C yn fanwl, yw conglfaen swyddfa yn ecosystem ffynhonnell agored modern)"
 
 msgid "mime_encrypt"
-msgstr "Ffeil amgryptiedig (mae angen dadamgryptio i'w gweld, estyniadau cyffredin: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT ffeil amgryptiedig (data deuaidd neu destun gwreiddiol wedi'i brosesu gan algorithmau amgryptio penodol, cymesur neu anghymesur. Yn cynnwys y prif fformatau deilliedig .enc, .pgp, .gpg, ac ati, ar lefel rhwydwaith fe'i defnyddir i sicrhau cyfrinachedd a chywairdeb data nad yw'n gyhoeddus)"
 
 msgid "mime_gpx"
-msgstr "Data trac GPS (Fformat Cyfnewid GPS, yn cofnodi gwybodaeth am leoliad daearyddol, fformat cyffredinol ar gyfer oriorau chwaraeon a dyfeisiau llywio)"
+msgstr "GPX data olrhain lloeren (fformat cyfnewid system lleoli byd-eang yn seiliedig ar XML. Yn arbenigo mewn disgrifio cyfesurynnau daearyddol, mannau llwybr, llinellau llwybr ac olion hanesyddol, yw safon data agored cyffredin ar gyfer dyfeisiau chwaraeon symudol modern, llywio ceir a systemau gwybodaeth ddaearyddol (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Delwedd ddisg (DMG, ISO, IMG, ac ati, ffeiliau delwedd disg/CD, a ddefnyddir ar gyfer dosbarthu meddalwedd neu wrth gefn cyfryngau storio)"
+msgstr "Disk Image delwedd ddisg (ffeil delwedd sector lefel isel o ddisg ffisegol neu ddisg optegol, yn cynnwys ISO, DMG, IMG. Fe'i defnyddir ar gyfer datblygu system lefel isel, dosbarthu meddalwedd mawr yn ddiogel a chopïau wrth gefn cyflawn lefel ffisegol o gyfryngau storio)"
 
 msgid "mime_vm"
-msgstr "Delwedd peiriant rhithwir (VMDK, VDI, VHDX, OVA, ac ati, ffeiliau disg rhithwir, fformatau ar gyfer llwyfannau rhithwiroli fel VMware, VirtualBox, Hyper-V)"
+msgstr "VM delwedd peiriant rhithwir (delwedd disg ffisegol rhithwirol yn cynnwys VMDK, VDI, VHDX, OVA. Yn sylfaen i lwyfannau fel VMware, VirtualBox a Hyper-V, fe'i defnyddir ar gyfer efelychu caledwedd lefel isel, cymryd ciplun o achosion a dosbarthu seilwaith cwmwl)"
 
 msgid "mime_torrent"
-msgstr "Ffeil had BitTorrent (dyfeisiwyd gan Bram Cohen yn 2001, ffeil mynegai P2P ar gyfer lawrlwytho, yn cynnwys metadata ffeil a gwybodaeth Tracker)"
+msgstr "BitTorrent ffeil had (mynegai dosbarthu pwynt-i-bwynt (P2P) a gynlluniwyd gan Bram Cohen yn 2001. Wedi'i amgodio â Bencode, yn storio metadata gwirio'r ffeil wreiddiol a gwybodaeth cyfeirio gweinydd Tracker, yw craidd llif rhwydwaith datganoledig)"
 
 msgid "mime_gis"
-msgstr "Data daeofodol GIS (fformatau data daeofodol fel Shapefile, GeoJSON, a ddefnyddir ar gyfer mapiau a dadansoddi gofodol)"
+msgstr "GIS data gofod-ddaearyddol (safon data system gwybodaeth ddaearyddol gyda Shapefile a GeoJSON wrth ei graidd. Yn cynnwys cyfesurynnau geometrig aml-ddimensiwn, topoleg haenau a data priodoleddau, yn cael ei ddefnyddio'n eang ar gyfer rendro mapiau digidol cydraniad uchel, synhwyro o bell trwy loeren a dadansoddi geometreg ofodol)"
 
 msgid "mime_ebook"
-msgstr "e-lyfr (fformatau e-lyfr fel EPUB, MOBI, AZW. EPUB yw'r safon ryngwladol, mae MOBI/AZW yn fformatau ar gyfer Amazon Kindle)"
+msgstr "EBOOK llyfr electronig (fformat cyhoeddi digidol gyda safon agored ryngwladol EPUB W3C a phensaernïaeth perchnogol MOBI/AZW Amazon Kindle wrth ei graidd. Yn cynnal trefn tudalennau llif addasol, amgáu metadata a diogelwch hawlfraint digidol (DRM), yw cludwr cyffredinol ar gyfer darllen digidol ar ddyfeisiau symudol)"
 
 msgid "mime_avif"
-msgstr "Delwedd AVIF (lansiwyd gan Alliance for Open Media yn 2019, yn seiliedig ar god AV1, mae'r gyfradd gywasgu 50% yn uwch na WebP, safon delwedd gwe newydd)"
+msgstr "AVIF delwedd effeithlon iawn (safon delwedd uwch-ddiffiniad nesaf y Gynghrair Cyfryngau Agored (AOMedia) o 2019. Yn seiliedig ar dechnoleg fframiau allwedd codio fideo AV1, mae cyfradd cywasgu 50% yn well na WebP ac yn cynnal HDR (Ystod Deinamig Uchel) yn frodorol, yw safon arweiniol ar gyfer trosglwyddo delweddau gwe modern)"
 
 msgid "mime_markdown"
-msgstr "Dogfen Markdown (a ddyluniwyd gan John Gruber yn 2004, iaith farcio ysgafn, fformat cyffredinol ar gyfer GitHub README, dogfennau technegol, fforymau)"
+msgstr "Markdown dogfen ysgafn (iaith farcïo dogfennau testun plaen a grëwyd gan John Gruber yn 2004. Yn defnyddio dyluniad datganiadol testun plaen, ysbrydolwyd ei gystrawen gan reStructuredText, yn cael ei defnyddio'n eang ar gyfer prosiectau GitHub, dogfennaeth dechnegol lefel peirianneg ac ecosystemau rheoli cynnwys statig modern)"
 
 msgid "mime_yaml"
-msgstr "Cyfluniad YAML (a ddyluniwyd gan Clark Evans yn 2001, fformat dilyniant data darllenadwy i bobl, fformat safonol ffeil gyfluniad ar gyfer Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML cyfluniad cyfresol (fformat cyfresoli data darllenadwy i fodau a gynlluniwyd gan Clark Evans ac eraill yn 2001. Yn seiliedig ar fewnoliad hierarchaidd a mapio parau allwedd-gwerth, wedi'i sefydlu fel safon cyfluniad ar gyfer seilwaith cwmwl-brodorol fel Kubernetes, awtomeiddio Ansible a Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Cyfluniad TOML (a ddyluniwyd gan Tom Preston-Werner yn 2013, 'Tom's Obvious Minimal Language', fformat ffeil gyfluniad ar gyfer offer modern fel Rust/Cargo, Python/pip, Go)"
+msgstr "TOML cyfluniad semantig (iaith leiaf posibl a gynlluniwyd gan Tom Preston-Werner yn 2013. Yn cynnwys manteision dylunio lefel isel fel teipio cryf, mapiau eglur a semanteg glir, bellach yn cael ei ddefnyddio'n eang fel ffeil ffurfweddu safonol mewn offer modern Rust (Cargo), Python (pyproject.toml) a Go)"
 
 msgid "mime_vue"
-msgstr "Ffeil cydran Vue (cyflwynwyd yn 2014 gan Evan You, fframwaith JavaScript cynyddol. Trwy gydrannau un ffeil (SFC) mae'n cyfuno HTML, CSS, JS yn berffaith, gan gynyddu effeithlonrwydd datblygu yn aruthrol. Mae'n un o'r fframweithiau pen blaen mwyaf poblogaidd yn y byd. Hefyd fel craidd cynhyrchwyr safleoedd statig modern fel VitePress, fe'i defnyddir yn eang i yrru dogfennau technegol rhyngweithiol a blogiau.)"
+msgstr "Vue cydran un ffeil (fformat SFC perchnogol y fframwaith gwe cynyddol a lansiwyd gan Evan You yn 2014. Yn gwireddu gwahanu pryderon HTML/CSS/JS a chlymu cyflwr adweithiol mewn un ffeil, yn gyrru cymwysiadau blaen gwe rhyngweithiol modern ac injans safleoedd statig ar raddfa fawr i raddau helaeth)"
 
 msgid "mime_wasm"
-msgstr "Modiwl WebAssembly (safon W3C 2017, fformat ar gyfer perfformiad uchel mewn porwr, gellir crynhoi C/C++/Rust/R iddo, perfformiad bron cystal â chod brodorol)"
+msgstr "WebAssembly modiwl deuaidd (safon beitgod lefel isel perfformiad uchel ar gyfer y we a sefydlwyd gan W3C yn 2017. Yn caniatáu crynhoi ieithoedd teipio cryf fel C/C++/Rust tuag at flwch tywod y porwr, gan ddarparu effeithlonrwydd gweithredu sy'n agos at galedwedd brodorol, yw craidd craidd cyfrifiadura ymyl y we modern)"
 
 msgid "mime_jsx"
-msgstr "Cydran React JSX (lansiwyd Facebook XML JavaScript yn 2013, cystrawen cydran fframwaith React, patrwm arloesol o ysgrifennu HTML o fewn JavaScript)"
+msgstr "React JSX cydran (estyniad cystrawen JavaScript XML a lansiwyd gan Facebook gyda fframwaith React yn 2013. Yn cefnogi adeiladu strwythurau DOM rhithwir yn ddatganiadol o fewn JavaScript, gan wireddu'r patrwm datblygu cydrannau 'UI fel ffwythiant o'r cyflwr' ar y blaen)"
 
 msgid "mime_tsx"
-msgstr "Cydran TypeScript TSX (a ddatblygwyd gan Microsoft yn 2012, TypeScript + JSX, y ffordd safonol ar gyfer datblygu cymwysiadau React gyda diogelwch math)"
+msgstr "TypeScript TSX cydran (cyfuniad llifol o gystrawen gref TypeScript, a ddatblygwyd gan Microsoft yn 2012, â JSX. Yn chwistrellu gwirio math statig amser crynhoi a chyfyngiadau rhyngwyneb i mewn i ddatblygiad cydrannau React, yw safon cod ar gyfer datblygiad diogel systemau blaen mawr modern)"
 
 msgid "mime_heif"
-msgstr "Delwedd HEIF (safon MPEG 2015, fformat ffeil delwedd effeithlon, a ddefnyddir yn eang yn ecosystem Apple)"
+msgstr "HEIF delwedd effeithlon iawn (fformat delwedd effeithlon a sefydlwyd gan sefydliad MPEG yn 2015. Yn seiliedig ar algorithm codio fideo HEVC (H.265), yn cynnal lluosog o fframiau delwedd, mapiau dyfnder a metadata mewn cyfaint bach iawn, yw safon storio perchnogol ar gyfer systemau gweithredu symudol modern a dyfeisiau terfynell craff)"
 
 msgid "mime_heic"
-msgstr "Delwedd HEIC (gweithrediad Apple o HEIF, fformat delwedd diofyn ar iPhone, wedi'i gefnogi'n frodorol ar iOS/macOS)"
+msgstr "HEIC delwedd effeithlon iawn (fformat map did perchnogol a weithredwyd gan Apple yn seiliedig ar y safon ryngwladol HEIF. Yw fformat storio lluniau diofyn yr iPhone modern, yn cael cefnogaeth codio/datgodio lefel caledwedd gan iOS/macOS a chefnogaeth frodorol system weithredu, yn lleihau gofod storio lefel isel yn sylweddol wrth gynnal ansawdd delwedd uchel)"
 
 msgid "mime_gltf"
-msgstr "Model 3D GLTF (Fformat Trosglwyddo GL, 'JPEG byd 3D', a ryddhawyd gan Khronos Group yn 2015, fformat safonol ar gyfer gwe 3D)"
+msgstr "glTF model ased 3D (safon fformat trosglwyddo GL a gyhoeddwyd gan Grŵp Khronos yn 2015. Yn disgrifio golygfeydd tri dimensiwn gan ddefnyddio pensaernïaeth JSON, fe'i gelwir yn 'JPEG y byd 3D', yw'r safon ddiwydiannol ysgafn ar gyfer rendro WebGL/WebGPU a realiti rhithwir modern)"
 
 msgid "mime_glb"
-msgstr "Model 3D deuaidd GLB (fersiwn ddeuaidd o GLTF, un ffeil yn cynnwys yr holl adnoddau, a ddefnyddir ar gyfer dosbarthu golygfeydd 3D)"
+msgstr "GLB model 3D deuaidd (fersiwn amgáu deuaidd di-golled o ased model glTF. Yn cyfuno strwythur yr olygfa, data fertigau rhwyll (Mesh) lefel isel, deunyddiau a gweadau mewn un ffeil, wedi'i gynllunio'n benodol ar gyfer trosglwyddo effeithlon a dosbarthu llifol o asedau 3D ar draws y we aml-ffatffurf)"
 
 msgid "mime_gls"
-msgstr "Geirfa GLOSSARY (ffeil diffiniad term, a ddefnyddir ar gyfer rheoli termau mewn systemau dogfennu)"
+msgstr "GLOSSARY geirfa ddata (ffeil diffiniad termau yn arbennig ar gyfer systemau rheoli dogfennau a chorpws strwythuredig. Yn cynnwys diffiniadau termau safonol, cyfieithiadau amlieithog a mapiau metadata, a ddefnyddir i gynnal cysondeb cysyniadol mewn dadansoddi testun awtomataidd a systemau cyhoeddi cynnwys)"
 
 msgid "mime_cbz"
-msgstr "Llyfr comig CBZ (delweddau comig wedi'u cywasgu mewn ZIP, fformat cyffredinol ar gyfer casglwyr comig)"
+msgstr "CBZ llyfr comig (fformat archif delweddau comig perchnogol yn seiliedig ar strwythur cywasgu ZIP. Yn cynnwys dilyniant parhaus o ddelweddau map did statig, yw safon cynhwysydd ysgafn cyffredin ar gyfer cyhoeddi comig digidol a chasglu lleol ar draws llwyfannau)"
 
 msgid "mime_cbr"
-msgstr "Llyfr comig CBR (delweddau comig wedi'u cywasgu mewn RAR, fformat cyffredinol ar gyfer casglwyr comig)"
+msgstr "CBR llyfr comig (fformat archif delweddau comig perchnogol yn seiliedig ar strwythur cywasgu RAR. Yn defnyddio algorithm RAR i amgáu dilyniannau map did statig, gyda chyfradd gywasgu uchel, yn mwynhau cefnogaeth eang ar gyfer dosbarthu comig digidol)"
 
 msgid "mime_fb2"
-msgstr "e-lyfr FB2 (FictionBook 2.0, fformat e-lyfr Rwsiaidd, strwythur XML, wedi'i gefnogi'n eang gan ddarllenwyr ffynhonnell agored)"
+msgstr "FB2 llyfr electronig (safon llyfr electronig FictionBook 2.0 o ddechrau'r 2000au. Yn defnyddio XML pur i ddisgrifio priodoleddau llyfrau a hierarchaeth testun, yn cael cefnogaeth eang mewn ecosystem llyfrau electronig ffynhonnell agored a darllenwyr cyhoeddi digidol etifeddol)"
 
 msgid "mime_kepub"
-msgstr "e-lyfr KEPUB (fformat Kobo arbennig o EPUB, fformat wedi'i optimeiddio ar gyfer darllenwyr e-lyfrau Kobo)"
+msgstr "KEPUB llyfr electronig (fformat llyfr electronig perchnogol gwell Kobo yn seiliedig ar safon EPUB. Wedi'i optimeiddio ar lefel isel ar gyfer rendro ar ddarllenwyr llyfrau electronig caledwedd Kobo, yn cynnig trefn tudalennau mwy effeithlon a rhyngweithiad ystadegau darllen)"
 
 msgid "mime_m4b"
-msgstr "Llyfr sain M4B (fformat llyfr sain MPEG-4, yn cefnogi nodau tudalen, fformat ar gyfer llyfrau sain iTunes)"
+msgstr "M4B llyfr sain (fformat llyfr sain yn seiliedig ar bensaernïaeth cynhwysydd MPEG-4 Part 14 (MP4). Yn defnyddio amgodio AAC, yn cynnal marcwyr llyfr lefel isel, ailgychwyn lle'r oedd person wedi stopio a mewnosod penodau yn frodorol, bu'n fformat safonol yn ecosystem Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Fformat KFX Kindle (lansiwyd gan Amazon yn 2015, fformat e-lyfr arbennig ar gyfer Kindle, yn cefnogi teipograffeg well a throi tudalennau cyflym)"
+msgstr "Kindle KFX fformat (fformat cyhoeddi digidol perchnogol gwell a lansiwyd gan Amazon gyda Kindle yn 2015. Yn cynnal trefn tudalennau glyfar uwch, rendro ffont dynamig uchel a llwytho tudalennau llifol lefel cnewyllyn (Page Flip), yw safon graidd llwyfan Kindle modern)"
 
 msgid "mime_chm"
-msgstr "Ffeil gymorth CHM (lansiwyd gan Microsoft yn 1997, fformat HTML wedi'i grynhoad ar gyfer cymorth, safon ar gyfer dogfennau cymorth mewn meddalwedd Windows)"
+msgstr "CHM ffeil gymorth wedi'i chrynhoi (system wybodaeth gymorth HTML wedi'i chrynhoi a lansiwyd gan Microsoft ym 1997. Yn pecynnu data hyperdestun a mynegai lefel isel i un cynhwysydd deuaidd, bu'n fformat safonol ers tro ar gyfer dogfennaeth gymorth leol all-lein meddalwedd Windows)"
 
 msgid "mime_mht"
-msgstr "Archif we MHT (lansiwyd gan Microsoft yn 1999, fformat tudalen we un ffeil, fformat cadw tudalen we ym mhorwr IE)"
+msgstr "MHT archif gwe (fformat agregu hyperdestun MIME a lansiwyd gan Microsoft ym 1999. Yn seiliedig ar safon RFC 2557, yn pecynnu cod ffynhonnell HTML, CSS, JS a delweddau mewnosodedig i mewn i un ffeil destun, a ddefnyddir ar gyfer cadw tudalennau gwe all-lein mewn porwyr etifeddol)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, safon WAP 1999, a ddefnyddiwyd ar gyfer tudalennau gwe ffonau symudol hŷn, wedi'i ddileu)"
+msgstr "WML iaith farcïo diwifr (safon marciog symudol a sefydlwyd gan fforwm WAP (Protocol Cymhwysiad Diwifr) ym 1999. Yn seiliedig ar fanyleb XML, wedi'i chynllunio'n arbennig ar gyfer rhwydweithiau cellog cul-band cynnar a ffonau symudol pŵer cyfrifiannol isel, yn dechnoleg etifeddol sydd wedi ymddeol yn ecosystem y we fodern)"
 
 msgid "mime_xhtml"
-msgstr "Tudalen we XHTML (safon W3C 2000, fersiwn XML o HTML, cystrawen llymach. Rhoddodd W3C y gorau i'w gynnal yn 2009, gan ganolbwyntio ar HTML5)"
+msgstr "XHTML tudalen we (safon W3C o 2000, iaith farcïo hyperdestun lem yn seiliedig ar bensaernïaeth XML. Ym 2009, stopiodd W3C ei datblygiad technegol a throi'n llwyr at fanyleb HTML5, bellach fe'i defnyddir mewn systemau etifeddol ar gyfer rendro tudalennau gwe semantig)"
 
 msgid "mime_xml"
-msgstr "Dogfen XML (safon W3C 1998, iaith farcio estynadwy, fformat sylfaenol ar gyfer gwasanaethau gwe, ffeiliau cyfluniad, cyfnewid data)"
+msgstr "XML dogfen strwythuredig (iaith farciog estynadwy safon W3C o 1998. Yn cynnwys pensaernïaeth tagiau hunan-ddisgrifiol, yw fformat sylfaen craidd ar gyfer gwasanaethau gwe (SOAP/REST), ffeiliau ffurfweddu system (XSD) a chyfnewid data croes-ffatffurf)"
 
 msgid "mime_sgml"
-msgstr "Dogfen SGML (safon ISO 1986, rhagflaenydd HTML, Iaith Farcio Cyffredinol Safonol, mae XML ac HTML yn tarddu o SGML)"
+msgstr "SGML iaith farciog cyffredinol (safon rhyngwladol ISO 8879 o 1986. Yn arloeswr disgrifio strwythuredig dogfennau electronig, mae XML a manylebau HTML cynnar yn deillio o'r uwch-iaith safonol hon)"
 
 msgid "mime_apng"
-msgstr "Animeiddiad APNG (a ddatblygwyd gan Mozilla yn 2004, estyniad PNG ar gyfer animeiddiad, amnewidiad modern am GIF, yn cefnogi lliwiau gwir a thryloywder)"
+msgstr "APNG graffeg ddeinamig (estyniad deinamig PNG a ddatblygwyd gan Mozilla yn 2004. Yn cynnal lliw gwir 24-did a thryloywder sianel alffa 8-did, yn ddewis arall modern o ansawdd uchel yn lle fformat GIF ar gyfer senarios gwe modern)"
 
 msgid "mime_bmp"
-msgstr "Delwedd BMP (fformat didfap Windows, wedi'i gefnogi'n frodorol ers Windows 1.0. Heb ei gywasgu, ffeiliau mawr iawn, ond oherwydd ei strwythur syml a dim angen am godau ychwanegol, mae offeryn cipio sgrin Windows 11, rhaglen beintio, adnoddau eicon mewn pecynnau gosod EXE/MSI, ffeiliau cyrchwr, a rhai hen yrwyr yn dal i'w ddefnyddio. Ar gyfer yr un ansawdd delwedd, mae'r ffeil tua 3-10 gwaith yn fwy na PNG, mewn rhan fwyaf o senarios mae wedi'i ddisodli gan PNG/JPEG, ond mae ecosystem Windows yn dal i gynnal cydnawsedd eang)"
+msgstr "BMP map did brodorol (fformat map did annibynnol ar ddyfais llwyfan Microsoft a sefydlwyd ers oes Windows 1.0. Yn defnyddio cywasgu di-golled heb storio, felly mae ei gyfaint fel arfer 3-10 gwaith yn fwy na PNG, ond oherwydd nad oes angen cost codio/datgodio, mae'n dal i gael ei fewnosod yn eang yng nghydrannau craidd Windows 11, adrannau adnoddau EXE/MSI a byfferau graffeg gyrwyr etifeddol)"
 
 msgid "mime_cdr"
-msgstr "Graffeg fector CDR (fformat arbennig ar gyfer CorelDRAW, Corel Corporation o Ganada, meddalwedd ar gyfer dylunio graffeg fector)"
+msgstr "CDR graffeg fectoraidd (fformat ffeil ffynhonnell dylunio fectoraidd proffesiynol perchnogol CorelDRAW, Corel Canada. Yn cynnal rheoli lliw fesul haen, nodau cromlin fathemategol cymhleth a data trefn tudalennau lefel argraffu, yw fformat penodol ar gyfer y meysydd dylunio graffeg proffesiynol a hysbysebu)"
 
 msgid "mime_gif"
-msgstr "Delwedd GIF (a ddatblygwyd gan CompuServe yn 1987, fformat 256 lliw ar gyfer animeiddiad. Anfanteision: nifer cyfyngedig o liwiau, ansawdd delwedd garw, nid yw'n cefnogi tryloywder, ffeiliau mawr, cyfradd ffrâm isel. Wedi'i ddisodli gan fformatau animeiddio modern fel APNG, WebP)"
+msgstr "GIF delwedd lliw mynegai (fformat map did lliw mynegai 8-did a ddatblygwyd gan CompuServe ym 1987. Yn seiliedig ar algorithm LZW lefel isel, wedi'i gyfyngu i 256 lefel lliw a thryloywder unlliw, mae ei gyfaint yn ormodol ar gyfraddau ffrâm uchel, bellach yn cael ei ddisodli'n raddol gan safonau delwedd animeiddiedig modern effeithlon fel APNG, WebP, ac ati)"
 
 msgid "mime_ico"
-msgstr "Eicon ICO (fformat ffeil eicon Windows, yn cefnogi sawl datrysiad, fformat safonol ar gyfer ffefrynnau gwefan)"
+msgstr "ICO eicon system (fformat amgáu adnoddau eicon brodorol Windows. Yn cynnal mewnosod delweddau â chydraniad picsel a dyfnder lliw amrywiol o fewn un cynhwysydd, yw safon dosbarthu gyffredin ar gyfer adnabod safleoedd (Ffavicon) porwyr gwe modern hefyd)"
 
 msgid "mime_jpeg"
-msgstr "Delwedd JPEG (safon ISO 1992, fformat cywasgu gyda cholled ar gyfer ffotograffau, safon de facto ar gyfer ffotograffau ar y rhyngrwyd)"
+msgstr "JPEG delwedd gywasgedig (fformat delwedd â cholled, safon ryngwladol ISO 10918 o 1992. Yn seiliedig ar algorithm trawsnewid cosin cwbl arwahanol (DCT), yn cyflawni cyfradd gywasgu uchel tra'n cynnal ansawdd delwedd realaidd rhagorol, yw safon 'de facto' llwyr ar gyfer ffotograffau statig ar draws y byd)"
 
 msgid "mime_jpg"
-msgstr "Delwedd JPEG (safon ISO 1992, fformat cywasgu gyda cholled ar gyfer ffotograffau, safon de facto ar gyfer ffotograffau ar y rhyngrwyd)"
+msgstr "JPEG delwedd gywasgedig (fformat delwedd â cholled, safon ryngwladol ISO 10918 o 1992. Yn seiliedig ar algorithm trawsnewid cosin cwbl arwahanol (DCT), yn cyflawni cyfradd gywasgu uchel tra'n cynnal ansawdd delwedd realaidd rhagorol, yw safon 'de facto' llwyr ar gyfer ffotograffau statig ar draws y byd)"
 
 msgid "mime_png"
-msgstr "Delwedd PNG (Argymhelliad W3C 1996, yn cefnogi lliwiau gwir a thryloywder, amnewidiad statig am GIF, safon ar gyfer delweddau di-golled ar y rhyngrwyd)"
+msgstr "PNG delwedd ddi-golled (safon graffeg rhwydwaith gludadwy a argymhellwyd gan W3C ym 1996. Yn defnyddio algorithm cywasgu di-golled, yn cynnal lliw gwir 24-did a thryloywder sianel alffa 8-did yn frodorol, yn ddewis arall o ansawdd uchel yn lle GIF statig clasurol, yw safon 'de facto' llwyr ar gyfer delweddau picsel di-golled ar y rhyngrwyd)"
 
 msgid "mime_ps"
-msgstr "Ffeil disgrifio tudalen PostScript (lansiwyd gan Adobe yn 1985, iaith disgrifio tudalen, rhagflaenydd PDF, a ddefnyddir ar gyfer argraffu a chyhoeddi)"
+msgstr "PostScript ffeil disgrifio tudalen (iaith disgrifio tudalen pentwr a lansiwyd gan Adobe ym 1985. Yn rhagflaenydd technegol i fformat PDF, yn cyflawni ar lefel isel rendro testun a graffeg fectoraidd manwl gywir annibynnol ar galedwedd, yw safon sylfaenol ym meysydd argraffu proffesiynol ac argraffu laser)"
 
 msgid "mime_psb"
-msgstr "Dogfen fawr PSB (fformat Adobe Photoshop ar gyfer delweddau hynod fawr, yn cefnogi delweddau mwy na 2GB neu 30000 picsel)"
+msgstr "PSB dogfen haen fawr (fformat amgáu ffeil ffynhonnell maint ultra-fawr perchnogol Adobe Photoshop. Yn torri cyfyngiadau cyfeirio mewnol 2GB o gyfaint ffisegol a 30,000 picsel y fformat PSD safonol, wedi'i arbenigo ar gyfer storio asedau celf digidol ar raddfa fawr, ultra-fawr â haenau dwfn cymhleth)"
 
 msgid "mime_psd"
-msgstr "Delwedd PSD (ffeil ffynhonnell Adobe Photoshop, yn cefnogi haenau, sianeli, llwybrau, safon y diwydiant ar gyfer prosesu delweddau)"
+msgstr "PSD ffeil ffynhonnell dylunio haen (cynhwysydd peirianneg delwedd haen perchnogol Adobe Photoshop. Fel cynhwysydd safonol yn y diwydiant delweddu graffig, yn amgáu'r goeden rendro haen gyflawn, sianeli map did, masgiau torri fector a dulliau cyfuno cyfansawdd yn frodorol, yn cynnal golygu data llawn di-golled)"
 
 msgid "mime_webp"
-msgstr "Delwedd WebP (a ddatblygwyd gan Google yn 2010, fformat delwedd gwe, yn cefnogi cywasgu gyda cholled/di-golled ac animeiddiad, mae'r gyfradd gywasgu 25-35% yn uwch na PNG a 25% yn uwch na JPEG)"
+msgstr "WebP delwedd effeithlon iawn (safon amgodio graffeg we gyffredinol a lansiwyd gan Google yn 2010. Yn deillio o dechnoleg fframiau allwedd fideo VP8, yn gydnaws yn berffaith â rendro â cholled, di-golled, lled-dryloyw a deinamig, yn 25-35% llai na PNG am yr un ansawdd, yw conglfaen llwytho perfformiad uchel tudalennau gwe modern)"
 
 msgid "mime_woff"
-msgstr "Ffont gwe WOFF (a grëwyd yn 2009, safon W3C 2018. Yn seiliedig ar gywasgu TrueType/OpenType, optimeiddio llwytho ffontiau gwe, fformat safonol ar gyfer eiconau ffont ar dudalennau gwe modern)"
+msgstr "WOFF ffeil glyffau gwe (fformat ffont agored ar gyfer y we a grëwyd yn 2009 ac a ddaeth yn safon W3C yn 2012. Ei hanfod yw pecynnu strwythurau ffont TTF/OTF safonol trwy gywasgu di-golled mewn llif, yn gwneud y defnydd o led band trosglwyddo rhwydwaith yn llawer mwy effeithlon, yw fformat cyffredin ar gyfer eiconau a ffontiau cwmwl gwefannau modern)"
 
 msgid "mime_7z"
-msgstr "Pecyn cywasgedig 7z (a ddatblygwyd gan Igor Pavlov yn 1999, fformat arbennig rhaglen 7-Zip. Algorithm LZMA, cyfradd cywasgu uchel, ffynhonnell agored ac am ddim. Mae fformat 7z fel arfer 30-50% yn llai na ZIP ar yr un gyfradd gywasgu, yn fformat cyffredin yn y gymuned ffynhonnell agored ac ar gyfer dosbarthu meddalwedd)"
+msgstr "7Z pecyn cywasgedig (fformat perchnogol 7-Zip a ddatblygwyd gan Igor Pavlov yn 1999. Yn seiliedig ar algorithmau ffynhonnell agored LZMA/LZMA2, gyda chyfradd gywasgu uchel iawn. Mewn amodau cyfatebol, mae ei gyfaint fel arfer 30-50% yn llai na ZIP, yw fformat cywasgu cymhareb uchel cyffredin yn y gymuned ffynhonnell agored ac wrth ddosbarthu meddalwedd)"
 
 msgid "mime_ace"
-msgstr "Pecyn cywasgedig ACE (a ddatblygwyd yn y 1990au, fformat rhaglen WinACE. Arferai gystadlu â RAR, roedd ganddo gyfradd gywasgu gymharol uchel. Daeth datblygiad i ben yn 2007, bellach wedi'i ddisodli gan 7z/RAR, anaml y caiff ei ddefnyddio)"
+msgstr "ACE pecyn cywasgedig (fformat cywasgu perchnogol WinACE ym 1990au. Bu'n cystadlu â fformat RAR ac roedd ganddo gyfradd gywasgu uchel. Ar ôl 2007, daeth datblygiad technegol i ben, bellach wedi'i ddisodli gan fformatau 7z a RAR, yn perthyn i fformatau archif system etifeddol)"
 
 msgid "mime_bz2"
-msgstr "Pecyn cywasgedig BZIP2 (a ddatblygwyd gan Julian Seward yn 1996, algorithm cywasgu trwy ddidoli blociau. Mae'r gyfradd gywasgu 15-20% yn uwch na GZIP, ond mae'r cyflymder yn arafach. Fformat cyffredin ar gyfer cod ffynhonnell cnewyllyn Linux, pecynnau meddalwedd ffynhonnell agored, estyniad .bz2)"
+msgstr "BZIP2 pecyn cywasgedig (fformat cywasgu fesul bloc a ddatblygwyd gan Julian Seward yn 1996. Mae cyfradd gywasgu ei algorithm lefel isel 15-20% yn well na GZIP ond â chost gyfrifiannol uwch. Fe'i defnyddir yn aml ar gyfer dosbarthu cod ffynhonnell cnewyllyn Linux a phecynnau meddalwedd ffynhonnell agored, ei estyniad safonol yw .bz2)"
 
 msgid "mime_cab"
-msgstr "Pecyn cywasgedig CAB (a ddatblygwyd gan Microsoft yn 1995, fformat Cabinet. Fformat pecyn gosod ar gyfer Windows, a ddefnyddir ar gyfer dosbarthu gyrwyr a ffeiliau system. Mae Windows Installer (MSI) yn defnyddio CAB yn fewnol i storio ffeiliau)"
+msgstr "CAB pecyn cywasgedig (fformat archif Cabinet a ddatblygwyd gan Microsoft yn 1995. Yw safon becyn gosod brodorol system Windows, a ddefnyddir ar gyfer dosbarthu gyrwyr a chydrannau cnewyllyn, hefyd yn gynhwysydd storio lefel isel ar gyfer Gosodwr Windows (MSI))"
 
 msgid "mime_dmg"
-msgstr "Delwedd disg DMG (lansiwyd gan Apple yn yr 1980au, fformat Delwedd Disg. Fformat safonol ar gyfer dosbarthu meddalwedd ar macOS, yn gosod fel disg rhithwir wrth glicio ddwywaith, llusgo i osod y cymhwysiad. Yn cefnogi cywasgu ac amgryptio, prif fformat ar gyfer lawrlwytho meddalwedd Mac)"
+msgstr "DMG delwedd ddisg (fformat delwedd ddisg a ddatblygwyd gan Apple o'r 1980au. Yn gynhwysydd safonol ar gyfer dosbarthu meddalwedd macOS, yn cynnal mowntio fel system ffeiliau rhithwir, cywasgu lefel isel ac amgryptio data, yw prif fformat dosbarthu cymwysiadau yn ecosystem Mac)"
 
 msgid "mime_emz"
-msgstr "Delwedd gywasgedig EMZ (Metaffeil Uwch wedi'i gywasgu Windows, fersiwn gywasgedig o EMF. Fformat ar gyfer storio graffeg fector mewn dogfennau Office, yn ei hanfod mae'n ffeil EMF wedi'i chywasgu gan GZIP)"
+msgstr "EMZ delwedd gywasgedig (fersiwn gywasgedig o fetaffeil well Windows EMF. Yn hanfodol graffeg fectoraidd deuaidd wedi'i chywasgu gan algorithm GZIP, fe'i defnyddir yn eang ar gyfer storio graffeg fectoraidd fewnosodedig yng nghyfres Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Pecyn cywasgedig GZIP (datblygwyd gan Jean-loup Gailly a Mark Adler yn 1992, prosiect GNU. Offer cywasgu safonol ar systemau Unix/Linux, fformat cyffredin ar gyfer cywasgu HTTP wrth drosglwyddo. Estyniad .gz, yn aml yn cael ei ddefnyddio gyda TAR)"
+msgstr "GZIP pecyn cywasgedig (fformat cywasgu llif safonol Prosiect GNU a ddatblygwyd gan Jean-loup Gailly a Mark Adler yn 1992. Yw offeryn cywasgu safonol Unix/Linux, hefyd yn safon graidd ar gyfer cywasgu haen cludo HTTP (Gzip). Yn aml yn cael ei ddefnyddio gydag archif TAR)"
 
 msgid "mime_jar"
-msgstr "Pecyn cywasgedig JAR (lansiwyd gan Sun Microsystems yn 1997, fformat JAVA ARchive. Mewn gwirionedd mae'n becyn cywasgedig ZIP, a ddefnyddir ar gyfer pacio dosbarthiadau a chymwysiadau Java. Fformat sylfaenol yn ecosystem Java fel Maven, Gradle, mae Android hefyd yn defnyddio JAR)"
+msgstr "JAR pecyn cywasgedig (fformat archif Java ARchive a lansiwyd gan Sun Microsystems yn 1997. Yn hanfodol gynhwysydd pecynnu yn seiliedig ar strwythur ZIP, a ddefnyddir i amgáu llyfrgelloedd dosbarth Java a metadata, yw cynnyrch crynhoi craidd ar gyfer Maven, Gradle ac ecosystem gynnar Android)"
 
 msgid "mime_lzma"
-msgstr "Pecyn cywasgedig LZMA (datblygwyd gan Igor Pavlov yn 1998, algorithm Lempel-Ziv-Markov chain. Prif algorithm cywasgu fformat 7z, cyfradd cywasgu uchel, dadgywasgu cyflym. Fe'i defnyddir ar gyfer dosbarthu cadarnwedd a meddalwedd systemau wedi'u hymgorffori)"
+msgstr "LZMA pecyn cywasgedig (algorithm cywasgu cadwyn Lempel-Ziv-Markov a ddatblygwyd gan Igor Pavlov yn 1998. Yw peiriant canolog fformat 7z, gyda chyfradd gywasgu uchel iawn a dadgywasgu cyflym, fe'i defnyddir yn eang ar gyfer dosbarthu firmware caledwedd a systemau gwreiddio)"
 
 msgid "mime_rar"
-msgstr "Pecyn cywasgedig RAR (datblygwyd gan Eugene Roshal yn 1993, fformat Roshal ARchive. Cyfradd cywasgu uchel, yn cefnogi rhannu cyfrolau ac adfer record. Fformat rhaglen WinRAR, mae'r gyfradd cywasgu yn well na ZIP, ond mae angen meddalwedd taledig, gall offer ffynhonnell agored fel unrar ei ddadgywasgu)"
+msgstr "RAR pecyn cywasgedig (fformat archif perchnogol WinRAR a ddatblygwyd gan Eugene Roshal yn 1993. Yn cynnal isrannu cyfrolau, cofnodion adfer ffisegol (ECC) ac amgryptio cryf. Mae ei gyfradd gywasgu yn well na ZIP safonol, ac mae'n mwynhau cefnogaeth eang mewn meysydd personol a busnes)"
 
 msgid "mime_tar"
-msgstr "Pecyn archif TAR (a gyflwynwyd yn Unix V7 yn 1979, fformat Archif Tâp. Fformat archif tâp, pecynnu heb gywasgu, yn aml yn cael ei ddefnyddio gyda GZIP/BZIP2/XZ. Mae cod ffynhonnell pecyn meddalwedd Linux, storio haenog delwedd Docker yn defnyddio fformat TAR)"
+msgstr "TAR archif pecyn (fformat archif tâp o oes Unix V7 (1979). Dim ond yn pecynnu llif ffeiliau heb gywasgu data, yn aml yn cael ei gyfuno â GZIP/BZIP2/XZ, yw safon lefel isel ar gyfer cod ffynhonnell Linux a storio haenau delweddau Docker)"
 
 msgid "mime_tgz"
-msgstr "Pecyn cywasgedig TGZ (cyfuniad o fformat TAR + GZIP, estyniad .tgz neu .tar.gz. Y fformat dosbarthu mwyaf cyffredinol ar gyfer pecynnau meddalwedd Unix/Linux, yn cael ei ddefnyddio'n helaeth ar gyfer cod ffynhonnell a phecynnau deuaidd, yn cynrychioli'r cysyniad 'echdynnwch a defnyddiwch')"
+msgstr "TGZ pecyn cywasgedig (fformat cyfuniad llifol o archif TAR a chywasgiad GZIP, gydag estyniad .tgz neu .tar.gz. Yw fformat dosbarthu meddalwedd mwyaf cyffredin mewn amgylcheddau Unix/Linux, fe'i defnyddir yn eang ar gyfer datblygu trwy grynhoi cod ffynhonnell a dosbarthu pecynnau deuaidd heb osod)"
 
 msgid "mime_tbz2"
-msgstr "Pecyn cywasgedig TBZ2 (cyfuniad o fformat TAR + BZIP2, estyniad .tbz2 neu .tar.bz2. Mae'r gyfradd gywasgu 15-20% yn uwch na TGZ, yn addas ar gyfer dosbarthu ffeiliau mawr, mae cod ffynhonnell cnewyllyn Linux wedi defnyddio'r fformat hwn ers amser maith)"
+msgstr "TBZ2 pecyn cywasgedig (fformat cyfuniad llifol o archif TAR a chywasgiad BZIP2, gydag estyniad .tbz2 neu .tar.bz2. O'i gymharu â TGZ, gall wella'r gyfradd gywasgu 15-20% yn ychwanegol, yn addas ar gyfer trosglwyddo ffeiliau mawr, fe'i defnyddiwyd ers tro ar gyfer dosbarthu cod ffynhonnell cnewyllyn Linux)"
 
 msgid "mime_xz"
-msgstr "Pecyn cywasgedig XZ (a gyflwynwyd yn 2009, yn seiliedig ar algorithm LZMA2. Cyfradd gywasgu hynod o uchel, 30-50% yn uwch na GZIP, cyflymder dadgywasgu cymharol gyflym. Fe'i defnyddir yn eang yng nghnewyllyn Linux, rheolwyr pecynnau (fel strwythur mewnol pecyn Debian .deb), dyma'r fformat a argymhellir yn ecosystem Linux heddiw)"
+msgstr "XZ pecyn cywasgedig (fformat cymhareb gywasgu uchel cenhedlaeth nesaf a lansiwyd yn 2009. Yn seiliedig ar algorithm LZMA2, mae ei gyfradd gywasgu data 30-50% yn well na GZIP tra'n cynnal dadgywasgu cyflym. Wedi'i sefydlu fel safon ddosbarthu a argymhellir gan y cnewyllyn Linux a'r prif reolwyr pecynnau (fel tu mewn i .deb Debian))"
 
 msgid "mime_z"
-msgstr "Pecyn cywasgedig Z (fformat gorchymyn Unix compress o 1985, algorithm LZW. Fformat cywasgu cynnar Unix, wedi'i ddisodli gan GZIP. Estyniad .Z, anaml y caiff ei ddefnyddio ar systemau modern)"
+msgstr "Z pecyn cywasgedig (fformat cywasgu LZW gorchymyn compress Unix o 1985. Yn safon gywasgu safonol yn systemau Unix cynnar, bellach wedi'i ddisodli'n llwyr gan fformat GZIP llawer mwy effeithlon, yn fformat etifeddol hanesyddol prin mewn llif rhwydwaith modern)"
 
 msgid "mime_zip"
-msgstr "Pecyn cywasgedig ZIP (datblygwyd gan Phil Katz yn 1989, fformat PKZIP. Mae Windows yn ei gefnogi'n frodorol, y fformat cywasgu mwyaf cyffredinol ar y rhyngrwyd. Yn cefnogi lluosog ffeiliau, strwythur cyfeiriaduron, gall ddewis algorithm cywasgu. Mae JAR yn Java, APK ar Android, DOCX/XLSX ar gyfer dogfennau Office yn seiliedig ar fformat ZIP)"
+msgstr "ZIP pecyn cywasgedig (fformat archif cyffredinol PKZIP a ddatblygwyd gan Phil Katz yn 1989. Yn cael cefnogaeth frodorol gan brif systemau gweithredu, yw safon cynhwysydd mwyaf cyffredin ar y rhyngrwyd. Mae JAR Java modern, APK Android a dogfennau Office (OOXML) yn seiliedig ar strwythur ZIP)"
 
 msgid "mime_zst"
-msgstr "Pecyn cywasgedig Zstandard (datblygwyd gan Facebook yn 2015, a ddyluniwyd gan Yann Collet. Algorithm cywasgu cyflym iawn, cyfradd gywasgu yn agos at LZMA, cyflymder llawer uwch na GZIP. Mae cnewyllyn Linux 5.9+ yn ei gefnogi, mae Arch Linux pacman, Debian APT yn ei fabwysiadu'n raddol, safon cywasgu cenhedlaeth newydd)"
+msgstr "Zstandard pecyn cywasgedig (safon cywasgu llif cenhedlaeth nesaf a gynlluniwyd gan Yann Collet o Facebook yn 2015. Yn agosáu at gyfradd gywasgu LZMA tra'n llawer perfformiadol na GZIP. Wedi'i fabwysiadu'n ddwfn gan y cnewyllyn Linux (5.9+) a rheolwyr pecynnau Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Pecyn cywasgedig LZ4 (datblygwyd gan Yann Collet yn 2011, algorithm cywasgu hynod o gyflym. Mae cyflymder cywasgu dros 10 gwaith yn uwch na GZIP, yn addas ar gyfer senarios cywasgu amser real. Fe'i defnyddir yn eang yng nghnewyllyn Linux, OpenZFS, Hadoop, dyma'r dewis cyntaf ar gyfer senarios lle mae cyflymder yn flaenoriaeth)"
+msgstr "LZ4 pecyn cywasgedig (algorithm cywasgu llif ultra-gyflym a ddatblygwyd gan Yann Collet yn 2011. Mae ei gyflymder trwybwn dros 10 gwaith yn gyflymach na GZIP, gyda chost CPU amser rhedeg isel iawn. Fe'i defnyddir yn eang yn y cnewyllyn Linux, system ffeiliau OpenZFS a phrosesu llif data amser real Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Pecyn cywasgedig LZO (datblygwyd gan Markus Oberhumer yn 1996, algorithm Lempel-Ziv-Oberhumer. Cyflymder dadgywasgu hynod o gyflym, cyfradd gywasgu gyfartalog. Mae cnewyllyn Linux Squashfs, cadarnwedd OpenWrt yn ei ddefnyddio, yn addas ar gyfer systemau wedi'u hymgorffori)"
+msgstr "LZO pecyn cywasgedig (algorithm Lempel-Ziv-Oberhumer a ddatblygwyd gan Markus Oberhumer yn 1996. Yn canolbwyntio ar berfformiad dadgywasgu ultra-gyflym. Yn cael ei fewnosod yn eang mewn delweddau Squashfs cnewyllyn Linux, firmware OpenWrt ac amrywiol systemau gwreiddio gydag adnoddau cyfyngedig)"
 
 msgid "mime_msi"
-msgstr "Pecyn gosod MSI (lansiwyd gan Microsoft yn 1999, fformat pecyn Windows Installer. Fformat gosod safonol ar gyfer cymwysiadau Windows, yn cefnogi dirwyn trafodion i ben, rheoli cydrannau, gosod mud. Dewis cyntaf ar gyfer dosbarthu meddalwedd menter, yn dal i fod y prif fformat ar gyfer gosod meddalwedd Windows heddiw)"
+msgstr "MSI pecyn gosod system (fformat amgáu data Gosodwr Windows a lansiwyd gan Microsoft ym 1999. Fel safon datblygu lefel cymhwysiad Windows, yn cynnal dadwneud trafodion lefel isel, rheoli cylch bywyd cydrannau a gosod tawel heb swp yn frodorol, yw safon graidd ar gyfer dosbarthu meddalwedd menter a datblygu trwy bolisïau)"
 
 msgid "mime_pkg"
-msgstr "Pecyn gosod PKG (fformat gosod cymhwysiad macOS, yn seiliedig ar dechnoleg Installer Apple. Fformat safonol ar gyfer dosbarthu meddalwedd ar macOS, yn cefnogi dewis cydrannau, sgriptiau gosod, swyddogaeth dad-osod. Gellir gosod ffeil .pkg trwy glicio ddwywaith, dull cyffredin o ddosbarthu meddalwedd y tu allan i'r App Store Mac)"
+msgstr "PKG pecyn gosod meddalwedd croes-ffatffurf. 1. Pecyn meddalwedd FreeBSD: safon pkgng, estyniad .pkg neu .txz, yn seiliedig ar gywasgiad TAR+XZ/Zstd, yn cynnal datrys dibyniaethau a gwirio llofnodion; 2. Pecyn gosod macOS: yn seiliedig ar fformat Gosodwr Apple, yn cynnal cydrannau personadwy, sgriptiau gosod a dad-ddileu lefel system. Dyma'r prif fformatau dosbarthu ar weinyddion BSD a system Mac."
 
 msgid "mime_apk"
-msgstr "Pecyn cymhwysiad APK ar gyfer Android (lansiwyd gan Google yn 2008, fformat gosod traddodiadol ar gyfer system Android. Mewn gwirionedd mae APK yn becyn cywasgedig ZIP, yn cynnwys cod, adnoddau, ffeil manifest. O 2021 ymlaen, mae Google Play yn ei gwneud yn ofynnol i gymwysiadau newydd ddefnyddio fformat AAB, ond mae APK yn dal i gael ei ddefnyddio ar gyfer datblygu, dadfygio, dosbarthu trwy siopau trydydd parti, a gosod ochrol)"
+msgstr "APK pecyn cymhwysiad Android (pecyn gosod cymwysiadau traddodiadol a lansiwyd gan Google gydag Android yn 2008. Yn seiliedig ar strwythur archif ZIP lefel isel, yn pecynnu bytecode Dalvik (DEX) ar ôl ei grynhoi, manifest metadata ac adnoddau byd-eang, bellach fe'i defnyddir yn eang ar gyfer datblygu a dadfygio lleol, dosbarthu trydydd parti a gosod ochrol ar ddyfeisiau)"
 
 msgid "mime_ipa"
-msgstr "Pecyn cymhwysiad IPA ar gyfer Apple (iOS App Store Package, fformat gosod ar gyfer cymwysiadau iOS/iPadOS. Lansiwyd yn 2008 gyda'r iPhone SDK. Mae angen dosbarthu trwy'r App Store neu lofnodi gyda thystysgrif menter. Yn cynnwys ffeil weithredadwy, adnoddau, gwybodaeth llofnodedig Info.plist)"
+msgstr "IPA pecyn cymhwysiad Apple (cynhwysydd unigryw ar gyfer iOS/iPadOS a lansiwyd gyda'r iPhone SDK yn 2008. Yn hanfodol ZIP wedi'i warchod gan DRM FairPlay neu wedi'i lofnodi â thystysgrif lefel menter, yn cynnwys y gweithredadwy deuaidd Mach-O, goeden adnoddau'r cymhwysiad a ffurfweddiad metadata Info.plist)"
 
 msgid "mime_hap"
-msgstr "Pecyn cymhwysiad HAP ar gyfer HarmonyOS (HarmonyOS Ability Package, uned sylfaenol cymhwysiad HarmonyOS. Lansiwyd gyda HarmonyOS 2.0 yn 2020. Yn cefnogi dau fath entry a feature, fformat dosbarthu ar gyfer ffonau Huawei, llechi, oriorau craff a dyfeisiau HarmonyOS eraill)"
+msgstr "HAP pecyn cymhwysiad HarmonyOS (uned datblygu elastig sylfaenol HarmonyOS a lansiwyd gyda HarmonyOS 2.0 yn 2020. Yn cynnwys prif fodd mynediad neu fodiwlau ymarferoldeb estynedig, yw fformat datblygu aml-ben (ffonau, llechi, dyfeisiau gwisgadwy) ar gyfer dosbarthu i bob math o ddyfeisiau craff)"
 
 msgid "mime_har"
-msgstr "Pecyn a rennir statig HAR ar gyfer HarmonyOS (HarmonyOS Archive, llyfrgell a rennir statig ar gyfer HarmonyOS, gellir ei rannu rhwng sawl HAP, a ddefnyddir ar gyfer datblygu cydrannau ac ailddefnyddio modiwlau)"
+msgstr "HAR pecyn a rennir statig HarmonyOS (ffeil archif llyfrgell a rennir statig perchnogol HarmonyOS. Fe'i defnyddir i amgáu cydrannau cyffredin, cod adnoddau a dibyniaethau amser crynhoi, yn cael ei gysylltu'n statig gan luosog o fodiwlau HAP i'w rannu, yw sylfaen ar gyfer datblygu cydrannau ac ail-ddefnyddio modiwlau lluosog yn system HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Bwndel Cymhwysiad Android (lansiwyd gan Google yn 2018, o 2021 mae Google Play yn ei gwneud yn ofynnol i gymwysiadau newydd ddefnyddio'r fformat hwn. Mae AAB yn fformat dosbarthu, mae Google Play yn cynhyrchu APKs wedi'u hoptimeiddio'n ddeinamig yn seiliedig ar gyfluniad y ddyfais (pensaernïaeth CPU, dwysedd picsel sgrin, iaith), mae maint cyfartalog pecyn gosod wedi'i leihau 35%. Mae datblygwyr yn llwytho AAB i fyny, mae defnyddwyr yn lawrlwytho APK)"
+msgstr "AAB bwndel cymhwysiad Android (fformat dosbarthu deinamig Google Play a lansiwyd gan Google yn 2018 ac a sefydlwyd yn 2021. Fel endid dosbarthu pur, mae'r cwmwl yn tocio ac yn crynhoi yn ddeinamig yn ôl pensaernïaeth CPU y ddyfais darged, dwysedd sgrin ac iaith i gynhyrchu APK wedi'u optimeiddio yn ôl galw, gan leihau lled band trosglwyddo 35% ar gyfartaledd)"
 
 msgid "mime_xapk"
-msgstr "Pecyn cymhwysiad XAPK (pecyn cymhwysiad Android estynedig trydydd parti, yn cynnwys ffeil data APK + OBB. Fe'i defnyddir ar gyfer gemau mawr a chymwysiadau cymhleth, yn datrys y terfyn 100MB un ffeil APK. Mae'n gyffredin mewn siopau cymwysiadau trydydd parti fel APKPure, APKMirror, nid yw'n fformat swyddogol Google)"
+msgstr "XAPK pecyn cymhwysiad estynedig (safon cymhwysiad answyddogol a sefydlwyd gan gymuned trydydd parti Android. Yn pecynnu'r ffeil APK safonol gyda ffeil data gêm OBB fawr, yn torri'n ffisegol derfyn 100MB o faint ffeil annibynnol Google Play, i'w gweld yn eang ar lwyfannau dosbarthu gemau)"
 
 msgid "mime_appx"
-msgstr "Pecyn cymhwysiad Windows APPX (lansiwyd gan Microsoft yn 2012, fformat gosod cymhwysiad ar gyfer Windows 8/10/11. Yn cefnogi UWP a throsi cymhwysiad bwrdd gwaith, wedi'i ddosbarthu trwy Microsoft Store. Lansiodd Microsoft MSIX yn 2024 fel fformat olynol, gan ddisodli APPX yn raddol)"
+msgstr "APPX pecyn cymhwysiad modern (safon datblygu cymwysiadau UWP a lansiwyd gan Microsoft gyda Windows 8 yn 2012. Yn cynnwys nodweddion gweithredu mewn blwch tywod a dad-ddileu ysgafn, bu'n safon arweiniol cynnar Microsoft Store, ond yn ecosystem Windows modern mae wedi mynd i gyfnod terfynol ei gylch bywyd tuag at esblygiad MSIX)"
 
 msgid "mime_msix"
-msgstr "Pecyn cymhwysiad MSIX (lansiwyd gan Microsoft yn 2018, fformat pecynnu cymwysiadau newydd ar gyfer Windows. Yn cyfuno manteision APPX a MSI, yn cefnogi pob math o gymwysiadau Windows, gellir ei ddosbarthu trwy Microsoft Store neu ei osod ochrol, fformat a argymhellir ar gyfer Windows 11)"
+msgstr "MSIX pecyn cymhwysiad cenhedlaeth nesaf (safon pecynnu newydd, gwbl normaleiddiedig a gyhoeddwyd gan Microsoft yn 2018. Yn asio'n berffaith nodweddion blwch tywod diogelwch APPX â manteision rheoli asedau menter MSI, yn gydnaws yn llwyr â phob math o gymwysiadau Win32, yw safon ddosbarthu a argymhellir ar gyfer Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Pecyn cymhwysiad AppImage (lansiwyd yn 2004, fformat cymhwysiad heb osod ar gyfer Linux. 'Un cymhwysiad = un ffeil', yn rhedeg yn uniongyrchol heb ei osod, yn cefnogi'r rhan fwyaf o ddosbarthiadau Linux, dull cyffredin i ddatblygwyr ddosbarthu meddalwedd Linux)"
+msgstr "AppImage pecyn cymhwysiad hunangynhwysol (safon archif gweithredadwy unigol Linux a gychwynnwyd yn 2004. Yn mabwysiadu pensaernïaeth hunangynhwysol 'un cymhwysiad yn un ffeil', sy'n cael ei mowntio'n uniongyrchol fel system ffeiliau rhithwir darlleniad yn unig trwy fecanwaith FUSE yn ystod rhedeg, yn cyflawni gweithrediad ar unwaith heb ddibyniaethau ar draws lluosog o ddosbarthiadau Linux)"
 
 msgid "mime_flatpak"
-msgstr "Pecyn cymhwysiad Flatpak (lansiwyd yn 2015, fformat cymhwysiad blwch tywod ar gyfer Linux. Yn rhedeg ar draws dosbarthiadau, wedi'i ynysu oddi wrth amgylchedd y system, wedi'i ddatblygu gan Fedora, Red Hat, fformat diofyn yng nghanolfan feddalwedd GNOME)"
+msgstr "Flatpak pecyn cymhwysiad blwch tywod (safan dosbarthu cymwysiadau bwrdd gwaith croes-ffatffurf ar gyfer Linux a ddatblygwyd gan Red Hat a GNOME yn 2015. Ar lefel isel, yn seiliedig ar fecanweithiau Enwofod a Chgriwiau cnewyllyn Linux i gyflawni ynysu diogelwch blwch tywod hynod lem ar lefel cymhwysiad, yw sylfaen canolfannau meddalwedd systemau gweithredu ffynhonnell agored modern)"
 
 msgid "mime_snap"
-msgstr "Pecyn cymhwysiad Snap (lansiwyd gan Canonical yn 2014, wedi'i ddatblygu gan fam-gwmni Ubuntu, fformat cymhwysiad cyffredinol Linux. Diweddaru awtomatig, ynysu blwch tywod, yn cefnogi 40+ dosbarthiad Linux, fformat diofyn yng nghanolfan feddalwedd Ubuntu)"
+msgstr "Snap pecyn cymhwysiad cynhwysydd (safan datblygu cyffredinol Linux a lansiwyd gan Canonical, cwmni rhiant Ubuntu, yn 2014. Yn mabwysiadu pensaernïaeth mowntio delwedd SquashFS hunangynhwysol, yn cynnal diweddariadau cynyddrannol awtomataidd ac ynysu blwch tywod llym gydag AppArmor, yw fformat diofyn ecosystem canolfan feddalwedd Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Pecyn meddalwedd Debian (lansiwyd gan brosiect Debian yn 1993, fformat gosod safonol ar gyfer Debian/Ubuntu a'u deilliadau. Wedi'i reoli gan dpkg, APK yw ei reolwr pecynnau blaen, un o'r fformatau pecyn mwyaf aeddfed yn ecosystem Linux, yn dal i fod yn brif fformat i deulu Debian)"
+msgstr "DEB pecyn meddalwedd system (safon amgáu deuaidd a chod ffynhonnell a sefydlwyd gan brosiect Debian ym 1993. Yw safon gosod lefel isel ar gyfer Debian, Ubuntu a'u holl ddeilliadau, yn dibynnu ar dpkg ar gyfer dadosod a chynnal a chadw, ac yn defnyddio APT fel rheolwr pecynnau blaen perfformiad uchel. Yw conglfaen dosbarthu meddalwedd mwyaf aeddfed ecosystem Linux)"
 
 msgid "mime_rpm"
-msgstr "Pecyn meddalwedd RPM (lansiwyd gan Red Hat yn 1997, fformat safonol ar gyfer Red Hat/Fedora/CentOS/SUSE a dosbarthiadau eraill. RPM yw talfyriad 'Red Hat Package Manager', ynghyd â DEB mae'n un o ddau brif fformat pecyn yn Linux, yn dal i fod yn brif fformat i deulu RHEL)"
+msgstr "RPM pecyn meddalwedd system (safon amgáu rheolwr pecynnau Red Hat a lansiwyd gan Red Hat ym 1997. Ynghyd â DEB, yw dau brif linach rheolwyr pecynnau traddodiadol Linux. Yn cynnwys gwirio dibyniaethau trafodion a dilysu llofnodion digidol meddalwedd lefel isel yn frodorol, yn dal i fod y safon ddosbarthu gwbl amlycaf yn ecosystemau Red Hat fel RHEL, Fedora a CentOS)"
 
 msgid "mime_pacman"
-msgstr "Pecyn meddalwedd Arch (lansiwyd gan Arch Linux yn 2002, fformat .pkg.tar.zst a ddefnyddir gan reolwr pecynnau pacman. Craidd dosbarthiad rholio Arch Linux, yn adnabyddus am ei symlrwydd ac egwyddor CADW, AUR (Arch User Repository) yw ei arbenigrwydd)"
+msgstr "Pacman pecyn meddalwedd archif (fformat amgáu .pkg.tar.zst a sefydlwyd gan Arch Linux gyda rheolwr pacman yn 2002. Fel craidd mecanwaith rholio parhaus Arch, yn seiliedig ar algorithm cywasgu uchel cyflym Zstandard, ynghyd ag ecosystem AUR (Arch User Software Repository), yn safon dosbarthu pecynnau modern sy'n adlewyrchu egwyddorion symlrwydd a ChADW (Cadwch yn Syml, Twpsyn))"
 
 msgid "mime_exe"
-msgstr "Ffeil weithredadwy EXE (fformat rhaglen weithredadwy Windows, talfyriad 'Executable'. Fformat gweithredadwy brodorol system weithredu Windows, yn cynnwys strwythur PE. Esblygodd o fformat MZ o MS-DOS, cyflwynwyd fformat PE (Portable Executable) gyda Windows NT yn 1993 ac fe'i defnyddir hyd heddiw. Mae pecynnau gosod meddalwedd, cymwysiadau, offer system yn defnyddio'r fformat hwn. Mae'r defnyddiwr yn ei glicio ddwywaith i'w redeg, dyma'r fformat gweithredadwy mwyaf cyffredin yn y byd)"
+msgstr "EXE ffeil weithredadwy frodorol (fformat rhaglen deuaidd Cludadwy Gweithredadwy (PE) llwyfan Windows. Mae ei esblygiad technegol yn tarddu o strwythur pennawd MZ oes MS-DOS, ac fe'i cydgrynhowyd yn llwyr fel strwythur PE o Windows NT ym 1993 ymlaen. Yw safon weithredu fwyaf cyffredin yn y byd ar gyfer cyfarwyddiadau cod peiriant, adrannau adnoddau statig a chychwyn cnewyllyn system)"
 
 msgid "mime_dll"
-msgstr "Llyfrgell gyswllt ddeinamig DLL (lansiwyd gan Microsoft yn 1993, Dynamic Link Library. Llyfrgell cod a rennir Windows, yn cael ei llwytho'n ddeinamig pan fydd y rhaglen yn rhedeg, yn arbed cof a lle ar ddisg. Mae cydrannau system, ategion cymwysiadau, gyrwyr yn defnyddio fformat DLL. Prif weithrediad API Windows, mae'r broblem 'DLL Hell' wedi cael ei lliniaru yn oes .NET)"
+msgstr "DLL llyfrgell cyswllt deinamig (safon llyfrgell cod a rennir Cyswllt Deinamig llwyfan Windows. Trwy lwytho deinamig ac ail-leoli symbolau yn ystod rhedeg, yn arbed cof ffisegol a lle disg yn sylweddol. Fel prif ffurf weithredu API Windows, datryswyd cyn broblem Uffern DLL trwy fecanwaith ynysu cyfochrog SxS mewn cyfnod modern)"
 
 msgid "mime_com"
-msgstr "Ffeil weithredadwy COM (fformat gweithredadwy o oes MS-DOS, talfyriad 'Command'. Strwythur ffeil syml, terfyn 64KB, prif fformat cyn Windows 3.x. Wedi'i ddileu, mae Windows modern yn defnyddio fformat EXE, mae'r estyniad COM yn dal i gael ei ddefnyddio ar gyfer rhai ffeiliau cydrannau)"
+msgstr "COM ffeil weithredadwy glasurol (fformat gweithredu delwedd cof hynaf o oes MS-DOS. Yn defnyddio dyluniad segment cod pur heb strwythur, wedi'i gyfyngu i derfyn chwilio cof ffisegol 64KB. Bellach wedi ymddeol fel fformat etifeddol hanesyddol, ond ym mhensaernïaeth fodern Windows mae'n dal i gael cydnawsedd cyfyngedig fel rhyngwyneb cydrannau penodol)"
 
 msgid "mime_aac"
 msgstr "Sain AAC (safon MPEG 1997, Advanced Audio Coding. Olynydd MP3, mae ansawdd sain yn well na MP3 ar yr un gyfradd didau, fformat sain diofyn ar gyfer YouTube, iTunes, Nintendo Switch)"

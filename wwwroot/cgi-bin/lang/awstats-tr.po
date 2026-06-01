@@ -444,8 +444,8 @@ msgstr "Ana bilgisayar - Sayfalar - Hitler - Bant genişliği - Son ziyaret tari
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Son ziyaretin başlangıç tarihi] ve [Son ziyaretin son sayfası] yalnızca oturum bitmemişse kaydedilir"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Ana sayfa yalnızca hit sayısına göre ilk %s kaydı gösterir, tam liste detay sayfasındadır."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "İlk %s öğe, isabet sayısına göre azalan düzende sıralanmıştır; kalan öğelerin sırası tanımlanmamıştır."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Giriş - Sayfalar - Hitler - Bant genişliği - Son ziyaret"
@@ -459,8 +459,8 @@ msgstr "Solucan Kimliği - Hitler - Bant genişliği - Son ziyaret"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-posta - Hitler - Bant genişliği - Son ziyaret"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Ana sayfa yalnızca hit sayısına göre ilk %s e-postayı gösterir, tam liste detay sayfasındadır."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "İlk %s e-posta adresi, isabet sayısına göre azalan düzende sıralanmıştır; kalan adreslerin sırası tanımlanmamıştır."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Sayfalar - Bant genişliği - Giriş - Çıkış"
@@ -669,6 +669,27 @@ msgstr "SiteDomain parametresi config/domain dosyanızda tanımlanmamış veya d
 msgid "Please run as Administrator to set permissions"
 msgstr "İzinleri ayarlamak için lütfen Yönetici olarak çalıştırın"
 
+msgid "This directory lacks read permission"
+msgstr "Bu dizinde okuma izni yok"
+
+msgid "Please set read permission for directory"
+msgstr "Lütfen dizin için okuma izni ayarlayın"
+
+msgid "Missing required parameter in config file"
+msgstr "Yapılandırma dosyasında gerekli parametre eksik"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Lütfen 'DirData' tanımlı mı kontrol edin."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Tarayıcı adresindeki alan adı eksik veya tamamlanmamış görünüyor"
+
+msgid "Please check the URL parameter"
+msgstr "Lütfen URL parametresini kontrol edin"
+
+msgid "Format description"
+msgstr "Biçim açıklaması"
+
 msgid "Please set execute permission"
 msgstr "Lütfen çalıştırma iznini ayarlayın"
 
@@ -794,376 +815,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Metin dosyası (1963'te ASCII standardize edildi, biçimlendirilmemiş düz metin. Tüm kaynak kodunun, yapılandırmanın ve günlüklerin temeli. Unix LF kullanır, Windows yeni satır için CRLF kullanır, hala bilgisayarlardaki en evrensel veri formatı)"
+msgstr "TXT düz metin dosyası (1963'te ASCII kodlamasıyla standartlaştırılmış biçimlendirilmemiş düz metin. Tüm kaynak kodlarının, yapılandırma dosyalarının ve sistem günlüklerinin temel taşı olarak, platformlar arası Windows (CRLF) ve Unix (LF) satır sonu kontrol akışları, bugün hala bilgisayar dünyasının en evrensel veri değişim standardıdır)"
 
 msgid "mime_log"
-msgstr "Günlük dosyası (sistem ve uygulama çalışma bilgilerini kaydeden düz metin dosyası, genellikle sorun giderme, performans analizi, güvenlik denetimi için kullanılır. Apache combined log, Nginx access log, syslog gibi standart formatlar)"
+msgstr "LOG sistem işlem günlüğü (işletim sisteminin, çekirdeğin ve uygulama düzeyindeki çalışma zamanı durumlarını kaydeden düz metin varlığı. Nginx/Apache erişim günlüklerini (Birleşik Günlük) ve standart syslog belirtimini kapsar. Sorun giderme, akış performansı analizi ve güvenlik denetimi için temel veri kaynağıdır)"
 
 msgid "mime_page"
-msgstr "HTML web sayfası (Tim Berners-Lee 1989'da WWW'yi icat etti, 1990'da HTML/HTTP/URL üç teknolojisini tanımladı, patent istemeden ücretsiz olarak açtı. 2014'te HTML5 resmi W3C standardı oldu, görüntüleme, multimedya ve yazdırmayı destekler. 2016'da Turing Ödülü'nü kazandı)"
+msgstr "HTML hipermetin web sayfası (1989'da Tim Berners-Lee tarafından oluşturulan Dünya Çapında Ağ'ın temel taşı. Ücretsiz olarak sunulan evrensel bir hipermetin işaretleme dili olarak, HTML5 belirtimi 2014'te W3C resmi standardı haline geldi ve yapılandırılmış multimedya, anlamsal etkileşim ve akış sayfa düzeni için yerel destek sunar. 2016'da Turing Ödülü'nü kazanmıştır)"
 
 msgid "mime_khtml"
-msgstr "KHTML web sayfası motoru (1998'de KDE 2.0 yayınlandı, Konqueror tarayıcı işleme motoru. 2001'de Apple KHTML tabanlı WebKit'i oluşturdu, 2008'de Google WebKit'ten Blink'i oluşturdu, bu da Chrome, Edge, Safari ve diğer tarayıcıların çekirdeği haline geldi. KHTML, açık kaynak topluluğunun modern tarayıcı motorlarının temelini atmasının bir örneğidir, teknolojik mirası WebKit/Blink aracılığıyla devam etmektedir)"
+msgstr "KHTML web şablon motoru (1998 KDE 2.0 tarayıcı işleme motoru belirtimi. Modern web işlemenin temelini atan açık kaynak topluluk ölçütü olarak, teknik mirası doğrudan Apple WebKit ve Google Blink çekirdeklerine ilham vermiş ve evrilmiştir. Günümüzde hala modern akış dinamik web mimarisi aracılığıyla temel yolunu sürdürmektedir)"
 
 msgid "mime_script"
-msgstr "Dinamik betik (yorumlanan dil, derleme gerektirmez. ASP, JSP, CGI, ColdFusion, Tcl, VBScript vb. içerir, erken web geliştirme, sistem yönetimi, görev otomasyonunda yaygın olarak kullanılır. Python, Ruby, JavaScript gibi modern betik dilleri tam yığın geliştirmenin ana araçları haline gelmiştir)"
+msgstr "SCRIPT yorumlanan dinamik betik (önceden derlenmesi gerekmeyen ve belirli bir çalışma zamanı veya yorumlayıcı tarafından satır satır okunarak yürütülen kaynak kodu akışlarının genel sınıflandırması. ASP, JSP, CGI ve Tcl vb.'yi kapsar. Sunucu tarafı ortak ağ geçidi arayüzleri, otomatik süreç kontrolü ve sistem seviyesi görev yapıştırma için yaygın olarak kullanılır)"
 
 msgid "mime_js"
-msgstr "JavaScript betiği (Brendan Eich 1995'te Netscape'te 10 günde yarattı, tarayıcıların yerel programlama dili. 1997'de ECMAScript standardize edildi, 2009'da Node.js doğdu ve onu tam yığın bir dil haline getirdi, npm dünyanın en büyük paket yöneticisidir. Yıllardır GitHub'daki en popüler programlama dili)"
+msgstr "JavaScript betiği (1995 Netscape tarayıcısının yerel programlama ortamı. 1997'de ECMAScript endüstri standardını oluşturdu, 2009'da Node.js çalışma zamanı doğdu, tarayıcı sınırlarını kırdı ve tam yığın asenkron engellemeyen mimari yarattı. Dünyanın en büyük npm yazılım paketi ekosistemi eşlik etmektedir)"
 
 msgid "mime_py"
-msgstr "Python betiği (1991'de Guido van Rossum tarafından oluşturuldu, zorunlu girinti ve temiz sözdizimi ile bilinir. Web geliştirme, veri bilimi, yapay zeka, otomatikleştirilmiş operasyonlarda yaygın olarak kullanılır. TIOBE Yılın Programlama Dili ödülünü birden çok kez kazanmıştır)"
+msgstr "Python betiği (1991'de Guido van Rossum tarafından oluşturulan yüksek seviyeli yorumlanan betik dili. Zorunlu girinti sayesinde kayıpsız okunabilirlik ve çok paradigmalı düşük seviyeli tasarım sayesinde, artık modern web mimarisi, tam yığın veri bilimi, yapay zeka (AI) model eğitimi ve bulut yerel otomatik operasyonlar için endüstri standardı dil olarak kurulmuştur)"
 
 msgid "mime_sh"
-msgstr "Shell betiği (1971'de Unix doğdu, komut betik dili. Sistem yönetimi, görev otomasyonu, hizmet başlatma, dağıtım betikleri için kullanılır. Linux yöneticileri için temel beceri)"
+msgstr "Shell betiği (1971 Unix döneminin standart komut yorumlayıcı betiği. Bash, Sh, Dash gibi çekirdek seviyesi komut belirtimlerini içerir, genellikle .sh uzantısıyla yürütülür. Modern Unix benzeri işletim sistemlerinde düşük seviyeli süreç kontrolü, kurulum gerektirmeyen ortam yapılandırması ve otomatik dağıtım için evrensel bir çekirdek seviyesi yapıştırıcıdır)"
 
 msgid "mime_rb"
-msgstr "Ruby betiği (1995'te Yukihiro Matsumoto tarafından oluşturuldu, geliştirici mutluluğuna odaklanır. Ruby on Rails çerçevesi, yapılandırmadan çok sözleşme geliştirme paradigmasını açtı, modern web çerçevelerinin tasarımını etkiledi)"
+msgstr "Ruby betiği (1995'te Yukihiro Matsumoto tarafından oluşturulan nesne yönelimli betik dili. Geliştirici deneyimine aşırı saygı duymak temel tasarım felsefesidir. Ruby on Rails çerçevesi, 'Kural Yapılandırmadan Üstündür (CoC)' modern yüksek seviyeli web mimarisi geliştirme paradigmasını devrimci bir şekilde kurmuştur)"
 
 msgid "mime_pl"
-msgstr "Perl betiği (1987'de Larry Wall tarafından oluşturuldu, pragmatizmi ile bilinir, 'İsviçre çakısı' olarak adlandırılır. CPAN, modern dil paket yöneticilerinin öncüsüydü, metin işleme, sistem yönetimi ve CGI alanında derin etkiye sahiptir)"
+msgstr "Perl betiği (1987'de Larry Wall tarafından oluşturulan pragmatik betik dili. Modern paket yöneticilerinin (CPAN) öncüsü olarak, metin işlemenin 'İsviçre Çakısı' olarak bilinir. Modern CGI modunda, çok düşük fiziksel bellek maliyeti ve yüksek verimli düzenli ifade işleme sayesinde, günlük ayrıştırma alanında yüksek güvenilirlikli bir temel olarak hizmet vermektedir)"
 
 msgid "mime_php"
-msgstr "PHP dinamik sayfası (1995'te Rasmus Lerdorf tarafından oluşturuldu, özellikle web geliştirme için tasarlanmıştır. Dünyadaki web sitelerinin %70'inden fazlası bunu kullanır, WordPress, Facebook, Wikipedia gibi platformları çalıştırır. PHP 8, JIT derlemesini tanıttı, performansı önemli ölçüde artırdı)"
+msgstr "PHP dinamik web sayfası (1995'te Rasmus Lerdorf tarafından oluşturulmuş, özellikle web geliştirme için tasarlanmıştır. Dünyadaki web sitelerinin %70'inden fazlasını çalıştıran temel teknoloji olarak, WordPress, Wikipedia gibi büyük üretim seviyesi uygulamaları derinlemesine destekler. PHP 8'den itibaren JIT (Just-In-Time) derleme çalışma zamanı motorunun tanıtılmasıyla, yüksek performanslı tam yığın sunucu tarafına doğru temel paradigma evrimi gerçekleştirmiştir)"
 
 msgid "mime_image"
-msgstr "Resim dosyası"
+msgstr "IMAGE görüntü varlığı sınıflandırması (kayıplı/kayıpsız sıkıştırılmış bitmap, modern duyarlı web grafikleri ve vektör grafiklerinin genel sınıflandırmasını kapsar. Sitelerin görsel kaynak yükleme maliyetini, istemci tarafı önbellek isabet oranını ve medya ağ bant genişliği tüketimini değerlendirmek için temel bir göstergedir)"
 
 msgid "mime_document"
-msgstr "Belge dosyası"
+msgstr "DOCUMENT yapılandırılmış belge sınıflandırması (düz metin, elektronik tablolar, sabit biçimli belgeler (PDF) ve hafif işaretleme dillerinin genel sınıflandırmasını kapsar. Sunucu tarafı statik bilgi tabanı dağıtımı, kurumsal bilgi varlığı indirme ve metin akışı verim kapasitesinin istatistikleri için temel bir göstergedir)"
 
 msgid "mime_package"
-msgstr "Yazılım paketi"
+msgstr "PACKAGE derleme ürünleri ve yazılım paketi sınıflandırması (işletim sisteminin yerel çalıştırılabilir programlarını, çalışma zamanı bağlantı kitaplıklarını (DLL/SO) ve uygulama dağıtım kurulum paketlerinin genel sınıflandırmasını kapsar. Yazılım dağıtım sitelerinin giden trafiğini ve indirme zirvelerini değerlendirmek için temel bir gösterge olarak sıklıkla kullanılır)"
 
 msgid "mime_archive"
-msgstr "Gzip sıkıştırılmış dosya (1992 GNU projesi, DEFLATE algoritmasına dayalı. Web'de yanıt içeriğinin dinamik sıkıştırması için kullanılır, sıkıştırma oranı genellikle %60-90. 2015'ten sonra bazı senaryolarda Brotli ile değiştirildi, ancak sunucu tarafında hala en yaygın desteklenen sıkıştırma formatıdır)"
+msgstr "ARCHIVE arşiv ve sıkıştırılmış dosyalar (DEFLATE, LZMA gibi temel algoritmalara dayalı veri sıkıştırma paketlerinin genel sınıflandırması. Ağ katmanında, geleneksel paket dağıtımını temsil etmenin yanı sıra, 1992 GNU projesinin Gzip dinamik yanıt akışını da kapsar. Modern senaryolarda Brotli algoritması kademeli olarak tanıtılsa da, bu sınıflandırma sunucu bant genişliği aktarım hızını ve taşıma katmanı basınç azaltımını değerlendirmek için temel bir gösterge olarak kalmaktadır)"
 
 msgid "mime_audio"
-msgstr "Ses dosyası"
+msgstr "AUDIO dijital ses akışı sınıflandırması (sıkıştırılmış ses, sesli kitap ve akışlı medya ses kaplarının genel sınıflandırmasını kapsar. Belirli ses codec standartlarına dayanarak, multimedya sitelerinin ses veri akışlarının aktarım hızını, eşzamanlı akış bant genişliğini ve uzun bağlantı performansını izlemek için kullanılır)"
 
 msgid "mime_video"
-msgstr "Video dosyası"
+msgstr "VIDEO dijital video akışı sınıflandırması (yüksek çözünürlüklü video kaplarını, modern web animasyonunu ve akışlı medya segmentlerinin genel sınıflandırmasını kapsar. Yüksek yük ağ ortamında sunucu bant genişliği tepe sınırını ve İçerik Dağıtım Ağı (CDN) hızlandırma etkisini değerlendirmek için temel bir göstergedir)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (1995'te Brendan Eich tarafından geliştirildi)"
+msgstr "JScript betiği (1996'da Microsoft'un Internet Explorer 3.0 için geliştirdiği tersine mühendislik özel mülk uygulama. Klasik JavaScript'in erken dönem ana bilgisayar rakibi olarak, Windows Betik Ana Bilgisayarı'nın (WSH) ve erken ASP arka ucunun temel motoruydu)"
 
 msgid "mime_json"
-msgstr "JSON verileri (2001'de Douglas Crockford tarafından önerildi, hafif veri değişim formatı, Web API'leri için fiili standart)"
+msgstr "JSON yapılandırılmış veri (2001'de Douglas Crockford tarafından kurulan hafif veri serileştirme değişim formatı. Metin tabanlı anahtar-değer çiftleri ve dizi mimarisine dayanır, son derece yüksek insan okunabilirliğine ve kayıpsız akış ayrıştırma özelliğine sahiptir. Modern web API'leri, mikro hizmet mimarisi ve büyük dil modelleriyle etkileşim için fiili standarttır)"
 
 msgid "mime_vbs"
-msgstr "VBScript (1996'da Microsoft tarafından geliştirildi, Windows betik dili, ASP sayfaları ve Windows yönetim betikleri için kullanılır. PowerShell ve JavaScript'in yaygınlaşmasıyla birlikte kademeli olarak kullanımdan kaldırılmıştır)"
+msgstr "VBScript betiği (1996'da Microsoft tarafından IE 3.0 ile birlikte piyasaya sürülen betik dili varyantı. Bir zamanlar erken ASP dinamik web sitelerinin ve Windows sistem yönetiminin temel sürücüsüydü, şimdi Windows 11'in en yeni çekirdeğinden Microsoft tarafından resmen kullanımdan kaldırılmış ve kaldırılmıştır. Tarihsel miras teknolojisine aittir)"
 
 msgid "mime_conf"
-msgstr "Yapılandırma dosyası (yazılım yapılandırmasını depolamak için metin formatı, yaygın formatlar: INI, JSON, YAML, TOML, XML. Linux sistem yapılandırmaları çoğunlukla /etc dizinindedir)"
+msgstr "CONF sistem yapılandırma dosyası (yazılım çalışma zamanı ortamı parametrelerini düz metin biçiminde kalıcı olarak depolayan veri dosyalarının genel sınıflandırması. INI ve modern YAML, TOML, JSON belirtimlerini kapsar. Linux sistemlerinde çoğunlukla /etc dizininde yoğunlaşmıştır. Sistem seviyesi çalışma zamanı durumu optimizasyonunun temel bağımlılığıdır)"
 
 msgid "mime_css"
-msgstr "CSS stil sayfası (W3C, Aralık 1996'da CSS1'i ilk resmi standart olarak yayınladı, 1998'de CSS2 konumlandırma ve medya türlerini ekledi, 2011'den itibaren CSS3 modüler olarak yuvarlak köşeler, animasyonlar, esnek kutular, ızgara düzeni ve duyarlı tasarımı tanıttı. HTML ve JavaScript ile birlikte frontend'in üç temel teknolojisidir, tüm modern tarayıcılar (Chrome, Firefox, Safari, Edge) tarafından yerel olarak desteklenir, web stillerini tanımlamak için tek standarttır)"
+msgstr "CSS basamaklı stil sayfaları (1996 W3C standardı, HTML/JS ile birlikte ön ucun üç temel bileşeninden biridir. CSS2 konumlandırma ve CSS3 modüler evriminden geçmiştir. Flexbox, Grid ve medya sorgusu duyarlı tasarımı için yerel destek sunar. Modern tarayıcılarda web sayfası sunumunu ayırmak için kesinlikle baskın standarttır)"
 
 msgid "mime_xsl"
-msgstr "XSL stil sayfası (1999 W3C standardı, XML belge dönüştürme dili, XML'i HTML/PDF/metne dönüştürebilir. JSON'ın yaygınlaşmasından sonra kullanımı azalmıştır)"
+msgstr "XSL stil sayfası (1999 W3C standardı, XSLT dönüşümü ve XPath adresleme dilini içerir, yapılandırılmış XML verilerini HTML, PDF veya düz metin olarak işlemek için kullanılır. Modern geliştirmede, ekosistemi büyük ölçüde daha hafif şablon motorları ve JSON veri formatı ile değiştirilmiştir)"
 
 msgid "mime_runtime"
-msgstr "Çalıştırılabilir dosya (EXE, ELF, Mach-O ve işletim sisteminin diğer çalıştırılabilir formatları, makine kodu ve yükleme bilgilerini içerir)"
+msgstr "Çalıştırılabilir dosya (EXE, ELF, Mach-O gibi işletim sisteminin yerel yürütme biçimleri, derlenmiş düşük seviyeli makine kodu, giriş noktası ve sistem yükleme bilgilerini içerir)"
 
 msgid "mime_library"
-msgstr "Kütüphane dosyası (DLL, SO, dylib ve diğer dinamik olarak bağlanan kütüphaneler, program çalıştırma sırasında yüklenen paylaşılan kod)"
+msgstr "Kitaplık dosyası (DLL, SO, dylib gibi dinamik veya statik bağlantı kitaplıkları, diğer programlar tarafından çağrılmak ve çalışma zamanında yüklenmek için paylaşılan sembolleri ve yeniden konumlandırma kodunu içerir)"
 
 msgid "mime_swf"
-msgstr "Flash animasyonu (1996'da Macromedia tarafından geliştirildi, daha sonra Adobe'ye geçti. İnteraktif web animasyon standardı, bir zamanlar internet animasyonlarına ve oyunlarına egemen oldu. Sorunlar: eklenti bağımlılığı, mobil destek yok, yüksek güvenlik riski. 2017'de Adobe kullanımdan kaldırılacağını duyurdu, 2020'de destek tamamen durduruldu, HTML5/CSS3/JS ile değiştirildi)"
+msgstr "Flash animasyonu (1996'da Macromedia tarafından geliştirildi, 2005'te Adobe tarafından satın alındı. Etkileşimli web animasyon standardı, bir zamanlar internet animasyonlarına ve oyunlarına egemen oldu. Zayıf noktalar: eklentilere bağımlılık, mobil cihaz desteği yok, yüksek güvenlik riski. Adobe 2017'de kullanımdan kaldırma duyurusu yaptı, 2020'de desteği tamamen durdurdu, HTML5/CSS3/JS ile değiştirildi)"
 
 msgid "mime_dtd"
-msgstr "DTD belge türü tanımı (XML belirtimi, XML belgesinin yapısını tanımlar, XML geçerliliğini doğrulamak için kullanılır)"
+msgstr "DTD belge türü tanımı (1998'de XML 1.0 ile birlikte yayınlandı, XML/HTML belge yapısını tanımlamak ve geçerliliği doğrulamak için kullanılır. Modern geliştirmede, XML Schema, RELAX NG gibi daha esnek çözümlerle kademeli olarak değiştirilmiştir)"
 
 msgid "mime_csv"
-msgstr "CSV veri formatı (virgülle ayrılmış değerler, tablo verileri için evrensel format, Excel ve veritabanı içe/dışa aktarma standardı)"
+msgstr "CSV veri formatı (virgülle ayrılmış değerler, 1972 ana bilgisayar çağının (IBM Fortran derleyicisi) evrensel düz metin tablo formatı. 2005'te RFC 4180 tarafından resmen standartlaştırıldı. Platformlar arası, diller arası kayıpsız veri değişim standardı olarak. Excel, ilişkisel veritabanları, veri analizi (Pandas) için verimli içe/dışa aktarma için yaygın olarak kullanılır.)"
+
+msgid "mime_cur"
+msgstr "Fare işaretçisi dosyası (.cur formatı, fare stilini özelleştirmek için kullanılır. Örneğin web sayfalarındaki parmak imleci, sistemdeki kum saati bekleme simgesi. Yaygın .ico simgesinin 'akrabasıdır', ancak ek bir 'sıcak nokta' konumu vardır — farenin gerçekte tıkladığı konum. Tarih: Windows 3.1 ile (1992) tanıtıldı, grafik arayüzün komut satırından fare işlemi çağına geçişinde önemli bir bileşendi)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java uygulama başlatıcısı, 2000'lerin Java masaüstü uygulama dağıtım teknolojisi, artık kullanımdan kaldırıldı)"
+msgstr "Java Web Start (2000'lerin Java masaüstü uygulama dağıtım teknolojisi, .jnlp dosyası aracılığıyla uzak Java programlarını başlatır. Güvenlik sorunları ve modern dağıtım yöntemlerinin yaygınlaşması nedeniyle, artık büyük ölçüde kullanımdan kaldırılmıştır)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-kitap (2000'de Microsoft tarafından piyasaya sürüldü, LIT formatı, kullanımdan kaldırıldı)"
+msgstr "Microsoft Reader e-kitabı (2000'de Microsoft tarafından piyasaya sürüldü, LIT formatı. Kullanımdan kaldırıldı, artık Calibre gibi araçlarla EPUB veya PDF'ye dönüştürülebilir)"
 
 msgid "mime_svg"
-msgstr "SVG vektör grafiği (1999 W3C standardı, Microsoft uzun süre kendi VML formatını tanıttığı için, IE tarayıcısı 2011'e kadar desteklemedi, bu da yayılmasını geciktirdi. 2015'ten sonra, IE'nin kullanımdan kaldırılması ve HD ekranların yaygınlaşmasıyla birlikte, simgeler ve logolar için tercih edilen format haline geldi)"
+msgstr "SVG vektör grafiği (1999 W3C standardı, XML mimarisine dayalı iki boyutlu vektör görüntü formatı. Keyfi ölçeklemede netlik kaybı olmaması ve metin akışı iletimi avantajına sahiptir. Tüm modern tarayıcılar bunu yerel olarak destekler. Yüksek çözünürlüklü web simgeleri, logolar ve vektör animasyonu işleme için yaygın olarak kullanılır. Modern web grafiklerinin temel standardıdır)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektör grafiği (1987'de piyasaya sürüldü, endüstri standardı vektör grafik formatı, baskı tasarımı, logo ve simgeler için ilk tercih)"
+msgstr "AI vektör grafiği (1987'de Adobe tarafından bağımsız olarak geliştirilen özel mülk vektör grafik formatı. Tipografi, baskı tasarımı ve marka kimliği tasarımı için endüstri temel standardı olarak, çok katmanlı ve yüksek seviyeli düzen vektör verilerini destekler. Profesyonel görsel sanatlar için tercih edilen taşıyıcıdır)"
 
 msgid "mime_phshop"
-msgstr "Photoshop resmi (1990'da Adobe tarafından piyasaya sürüldü, Photoshop kaynak dosya formatı PSD, görüntü işleme endüstri standardı)"
+msgstr "PSD katmanlı görüntü (1990'da Adobe tarafından Photoshop ile birlikte piyasaya sürülen özel mülk raster görüntü kaynak dosyası formatı. Çok katmanlı katmanlamayı, kanalları, maskeleri ve kayıpsız düzenleme verilerini destekler. Küresel görüntü işleme ve dijital boyama için endüstri standardı olarak kurulmuştur)"
 
 msgid "mime_ttf"
-msgstr "TrueType yazı tipi (1989'da Apple ve Microsoft tarafından birlikte geliştirildi, vektör yazı tipi formatı, ekran görüntüsü ve baskıda tutarlı, modern işletim sistemlerinin varsayılan yazı tipi formatı)"
+msgstr "TrueType yazı tipi (1989'da Apple ve Microsoft tarafından ortaklaşa geliştirilen dijital kontur yazı tipi formatı. İkinci dereceden Bézier eğrilerine dayanır, ekran görüntüsü ile baskı çıktısı arasında mutlak piksel tutarlılığı sağlar. Modern masaüstü işletim sistemlerinin yerel varsayılan yazı tipi formatıdır)"
 
 msgid "mime_fon"
-msgstr "WOFF2 web yazı tipi (2014 W3C tavsiyesi, Brotli sıkıştırma algoritmasını kullanır, eski WOFF ile karşılaştırıldığında boyutu yaklaşık %30 azalır, TTF/OTF ile karşılaştırıldığında %50'den fazla azalır, şu anda tüm modern tarayıcılar tarafından desteklenir, modern web yazı tipleri için tercih edilen formattır, tarayıcıların %98'inden fazlası tarafından desteklenir)"
+msgstr "FON bitmap yazı tipi (1980'lerin Microsoft Windows'unun erken sistem seviyesi nokta matris yazı tipi formatı. Keyfi orantılı kayıpsız ölçeklemeyi desteklemez. Genellikle eski sistemler veya erken gömülü cihaz bileşenleri ile sınırlı pikselleştirilmiş metin işleme için kullanılır)"
 
 msgid "mime_pdf"
-msgstr "PDF belgesi (1993'te Adobe tarafından geliştirildi, 2008'de ISO uluslararası standardı haline geldi. Platformdan bağımsız belge formatı, format tutarlılığını korur, elektronik belge dağıtımı için küresel standarttır)"
+msgstr "PDF elektronik belge (1993'te Adobe tarafından geliştirilen ve 2008'de ISO 32000 uluslararası standardı haline gelen platformlar arası sabit düzenli belge formatı. Mutlak düzen ve format sadakatine sahiptir. Küresel elektronik resmi belge dağıtımı ve dijital yayıncılık için evrensel standarttır)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dinamik sayfası (2002'de Microsoft tarafından piyasaya sürüldü, Windows platformu için dinamik web teknolojisi, .NET Framework'ün bir parçasıdır)"
+msgstr "ASP.NET dinamik sayfa (2002'de Microsoft tarafından .NET mimarisi ile birlikte piyasaya sürülen sunucu tarafı dinamik web teknolojisi. IIS işleme motorunda taşınır. Kurumsal seviye Windows sunucu tarafı dinamik web uygulamaları ve dağıtık sistemler oluşturmak için kullanılır)"
 
 msgid "mime_mdb"
-msgstr "Access veritabanı (Microsoft Access veritabanı dosyası, 1992'de piyasaya sürüldü, Windows masaüstü veritabanı çözümü)"
+msgstr "MDB ilişkisel veritabanı (1992'de Microsoft tarafından Access ile birlikte piyasaya sürülen masaüstü seviyesi ilişkisel veritabanı depolama formatı. Yerleşik Jet veritabanı motoruna sahiptir, kişisel bilgisayarların ve küçük ve orta ölçekli işletmelerin erken bilgilendirme yönetiminde ilişkisel veritabanı çözümü olarak kullanılmıştır)"
 
 msgid "mime_md"
-msgstr "Markdown belgesi (2004'te John Gruber tarafından oluşturuldu, sözdizimi tasarımı reStructuredText ve Setext'ten etkilenmiştir. Temel tasarım felsefesi 'okunabilirlik oluşturmadır', orijinal uygulama Markdown.pl Perl ile yazılmıştır ve düzenli ifadelere dayalı metin dönüşümü gerçekleştirir. Türetilmiş özellikler GFM (2013), CommonMark (2017), Pandoc Markdown vb. içerir. GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress gibi ekosistemleri çalıştırır, statik web sitesi oluşturucuları ve geliştirici belgeleri için fiili standart format haline gelmiştir)"
+msgstr "Markdown belgesi (2004'te John Gruber tarafından bağımsız olarak oluşturulan hafif işaretleme dili. Temel tasarım felsefesi 'okunabilir olan işlenebilir' şeklindedir ve bu, GFM ve CommonMark gibi modern türev standartları yönlendirir. Teknik dokümantasyon, bilgi tabanları (Obsidian) ve modern statik web sitesi oluşturucuları için temel değişim standardı olarak yaygın şekilde kullanılır)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports rapor formatı (SAP iş zekası raporu, kurumsal rapor standardı formatı)"
+msgstr "Crystal Reports (SAP İş Zekası (BI) platformunun profesyonel kurumsal seviye rapor dosyası formatı. Çoklu veri kaynağı düşük seviyeli bağlantı ve karmaşık dinamik grafik işleme yeteneklerine sahiptir, çok uluslu şirketlerin finansal ve veri analiz sistemlerinde profesyonel rapor oluşturma için yaygın olarak kullanılır)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice belgesi (2010'da The Document Foundation tarafından geliştirildi, OpenOffice dalı, ODF standardı uygulaması, ana açık kaynak ofis paketi)"
+msgstr "LibreOffice belgesi (2010'da The Document Foundation tarafından OpenOffice çatalına dayalı olarak oluşturulan açık kaynak ofis paketinin özel mülk formatı. W3C'nin ODF (Açık Belge Formatı) uluslararası standardını derinlemesine uygular. Modern açık kaynak ekosisteminin ofis temelidir)"
 
 msgid "mime_encrypt"
-msgstr "Şifrelenmiş dosya (görüntülenmek için şifresinin çözülmesi gereken dosya, yaygın uzantılar: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT şifrelenmiş dosya (belirli bir simetrik veya asimetrik şifreleme algoritmasıyla işlenmiş ham ikili veya metin verileri. .enc, .pgp, .gpg gibi temel türev formatları içerir. Ağ katmanında, kamuya açık olmayan verilerin gizliliğini ve bütünlük doğrulamasını sağlamak için kullanılır)"
 
 msgid "mime_gpx"
-msgstr "GPS izleme verileri (GPS değişim formatı, coğrafi konum bilgilerini kaydeder, spor saatleri ve navigasyon cihazları için evrensel format)"
+msgstr "GPX uydu izleme verisi (XML mimarisine dayalı küresel konumlandırma sistemi değişim formatı. Coğrafi koordinatları, rota noktalarını, güzergahları ve tarihi izleri tanımlamak için özel olarak kullanılır. Modern mobil spor cihazları, araç navigasyonu ve Coğrafi Bilgi Sistemleri (GIS) için ortak açık veri standardıdır)"
 
 msgid "mime_diskimage"
-msgstr "Disk görüntüsü (DMG, ISO, IMG ve diğer optik disk/disk görüntü dosyaları, yazılım dağıtımı veya depolama ortamı yedeklemesi için kullanılır)"
+msgstr "Disk Image disk görüntüsü (ISO, DMG, IMG gibi fiziksel disklerin veya optik ortamların bayt bayt düşük seviyeli sektör görüntü dosyalarını içerir. Sistem düşük seviyeli dağıtımı, büyük kapasiteli yazılımın güvenli dağıtımı ve depolama ortamlarının fiziksel seviyeli tam veri yedeklemesi için kullanılır)"
 
 msgid "mime_vm"
-msgstr "Sanal makine görüntüsü (VMDK, VDI, VHDX, OVA ve diğer sanal disk dosyaları, VMware, VirtualBox, Hyper-V gibi sanallaştırma platformlarının formatları)"
+msgstr "VM sanal makine görüntüsü (VMDK, VDI, VHDX, OVA gibi sanallaştırılmış fiziksel disk görüntülerini içerir. VMware, VirtualBox ve Hyper-V platformlarının temeli olarak, düşük seviyeli sistem seviyesi donanım öykünmesi, örnek anlık görüntüleri ve bulut altyapı dağıtımı için kullanılır)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent tohum dosyası (2001'de Bram Cohen tarafından icat edildi, P2P indirme indeks dosyası, dosya meta verileri ve Tracker bilgilerini içerir)"
+msgstr "BitTorrent torrent dosyası (2001'de Bram Cohen tarafından tasarlanan P2P eşten eşe dağıtılmış indirme indeksi. Bencode kodlamasına dayanır, orijinal dosyanın düşük seviyeli sağlama toplamı meta verilerini ve Tracker sunucu adresleme bilgilerini depolar. Merkezi olmayan ağ akışı dağıtımının temel taşıyıcısıdır)"
 
 msgid "mime_gis"
-msgstr "GIS coğrafi bilgi sistemi verileri (Shapefile, GeoJSON ve diğer coğrafi uzamsal veri formatları, haritalar ve mekansal analiz için kullanılır)"
+msgstr "GIS coğrafi uzamsal veri (Shapefile ve GeoJSON'ı temel alan coğrafi bilgi sistemi veri standardı. Çok boyutlu geometrik koordinatlar, katman topolojisi ve öznitelik verilerini içerir. Yüksek hassasiyetli dijital harita işleme, uydu uzaktan algılama ve uzamsal geometri analizi için yaygın olarak kullanılır)"
 
 msgid "mime_ebook"
-msgstr "E-kitap (EPUB, MOBI, AZW ve diğer e-kitap formatları. EPUB uluslararası standarttır, MOBI/AZW Amazon Kindle formatıdır)"
+msgstr "EBOOK e-kitap (W3C'nin EPUB açık uluslararası standardı ve Amazon Kindle'ın özel mülk MOBI/AZW mimarisini temel alan dijital yayıncılık formatı. Uyarlanabilir akış düzeni, meta veri kapsülleme ve DRM dijital haklar korumasını destekler. Mobil cihazlarda dijital okuma için evrensel bir taşıyıcıdır)"
 
 msgid "mime_avif"
-msgstr "AVIF görüntüsü (2019'da Açık Medya İttifakı tarafından piyasaya sürüldü, AV1 kodlamasına dayanır, sıkıştırma oranı WebP'den %50 daha iyidir, yeni nesil web görüntü standardı)"
+msgstr "AVIF yüksek verimli görüntü (2019'da Açık Medya İttifakı (AOMedia) tarafından tanıtılan yeni nesil ultra yüksek çözünürlüklü görüntü standardı. AV1 video kodlama ana kare teknolojisine dayanır, sıkıştırma oranı WebP'den %50 daha iyidir ve Yüksek Dinamik Aralığı (HDR) yerel olarak destekler. Modern web görüntü iletiminin ana akım standardıdır)"
 
 msgid "mime_markdown"
-msgstr "Markdown belgesi (2004'te John Gruber tarafından tasarlandı, hafif işaretleme dili, GitHub README, teknik dokümantasyon, forum gönderileri için evrensel format)"
+msgstr "Markdown hafif belge (2004'te John Gruber tarafından bağımsız olarak oluşturulan metin belgesi işaretleme dili. Düz metin bildirimsel tasarım kullanır, sözdizimi tasarımı reStructuredText'ten ilham almıştır. GitHub projeleri, mühendislik seviyesi teknik dokümantasyon ve modern statik içerik yönetimi ekosistemi için yaygın olarak kullanılır)"
 
 msgid "mime_yaml"
-msgstr "YAML yapılandırması (2001'de Clark Evans tarafından tasarlandı, insan tarafından okunabilir veri serileştirme formatı, Kubernetes, Ansible, Docker Compose için yapılandırma dosyalarının standart formatı)"
+msgstr "YAML serileştirme yapılandırması (2001'de Clark Evans ve diğerleri tarafından tasarlanan insan tarafından okunabilir veri serileştirme formatı. Hiyerarşik girinti ve anahtar-değer eşlemesine dayanır. Artık Kubernetes konteyner orkestrasyonu, Ansible otomasyonu ve Docker Compose için bulut yerel altyapı yapılandırma standardı olarak kurulmuştur)"
 
 msgid "mime_toml"
-msgstr "TOML yapılandırması (2013'te Tom Preston-Werner tarafından tasarlandı, 'Tom's Obvious Minimal Language', Rust/Cargo, Python/pip, Go gibi modern araçların yapılandırma dosyası formatı)"
+msgstr "TOML anlamsal yapılandırma (2013'te Tom Preston-Werner tarafından tasarlanan minimalist dil. Güçlü tipleme, açık eşleme ve anlamsal netlik gibi düşük seviyeli tasarım avantajlarına sahiptir. Artık Rust (Cargo), Python (pyproject.toml) ve Go'nun modern araç zincirleri için standartlaştırılmış bir yapılandırma dosyası olarak yaygın şekilde kullanılmaktadır)"
 
 msgid "mime_vue"
-msgstr "Vue bileşen dosyası (2014 yılında Evan You tarafından tanıtıldı, ilerici bir JavaScript çerçevesi. Tek dosyalı bileşenler (SFC) aracılığıyla HTML, CSS ve JS'yi mükemmel bir şekilde birleştirerek geliştirme verimliliğini büyük ölçüde artırır. Dünyanın en popüler frontend çerçevelerinden biridir. Ayrıca VitePress gibi modern statik site oluşturucuların çekirdeği olarak etkileşimli teknik dokümantasyon ve blogları çalıştırmak için yaygın olarak kullanılır.)"
+msgstr "Vue tek dosyalı bileşen (2014'te Evan You tarafından tanıtılan ilerici web çerçevesinin özel mülk SFC formatı. Tek bir dosyada HTML/CSS/JS'nin endişelerinin ayrılmasını ve tepkisel durum bağlamasını gerçekleştirir. Modern web etkileşimli ön uç uygulamalarını ve büyük ölçekli statik site motorlarını derinlemesine yönlendirir)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly modülü (2017 W3C standardı, tarayıcıda yüksek performanslı yürütme formatı, C/C++/Rust/R hedefe derlenebilir, performans yerel olana yakındır)"
+msgstr "WebAssembly ikili modül (2017'de W3C tarafından kurulan web için yüksek performanslı düşük seviyeli bayt kodu standardı. C/C++/Rust gibi güçlü türdeki dillerin tarayıcı korumalı alan hedefine derlenmesine izin verir, yerel donanıma yakın yürütme verimliliği sağlar. Modern web uç bilişimin temel taşıdır)"
 
 msgid "mime_jsx"
-msgstr "React JSX bileşeni (2013'te Facebook JavaScript XML'i tanıttı, React çerçevesinin bileşen sözdizimi, HTML'yi JavaScript içinde yazmak için yenilikçi bir paradigmadır)"
+msgstr "React JSX bileşeni (2013'te Facebook tarafından React çerçevesiyle birlikte yayınlanan JavaScript XML sözdizimi uzantısı. JavaScript'te DOM sanal yapısının bildirimsel olarak oluşturulmasını destekler, ön uç geliştirmede 'UI durumun bir fonksiyonudur' bileşen tabanlı geliştirme paradigmasını uygulamıştır)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX bileşeni (2012'de Microsoft tarafından geliştirildi, TypeScript + JSX, React tip güvenli geliştirmenin standart yazım şeklidir)"
+msgstr "TypeScript TSX bileşeni (2012'de Microsoft tarafından geliştirilen TypeScript güçlü tür sözdizimi ve JSX'in akış kombinasyonu. React bileşeni geliştirmeye statik derleme zamanı tür denetimi ve arayüz kısıtlamaları enjekte eder. Modern büyük ön uç sistemlerinin güvenli geliştirilmesi için bir kod standardıdır)"
 
 msgid "mime_heif"
-msgstr "HEIF görüntüsü (2015 MPEG standardı, verimli görüntü dosyası formatı, Apple ekosisteminde yaygın olarak kullanılır)"
+msgstr "HEIF yüksek verimli görüntü (2015'te MPEG organizasyonu tarafından kurulan yüksek verimli görüntü dosyası formatı. HEVC (H.265) video kodlama algoritmasına dayanır, çok küçük hacimde çoklu kare görüntüleri, derinlik haritalarını ve meta verileri barındırmayı destekler. Modern mobil işletim sistemleri ve akıllı terminal cihazları için özel mülk bir depolama standardıdır)"
 
 msgid "mime_heic"
-msgstr "HEIC görüntüsü (Apple'ın HEIF uygulaması, iPhone'un varsayılan fotoğraf formatı, iOS/macOS tarafından yerel olarak desteklenir)"
+msgstr "HEIC yüksek verimli görüntü (HEIF uluslararası standardına dayalı olarak Apple tarafından uygulanan özel mülk bitmap formatı. Modern iPhone'un varsayılan fotoğraf depolama standardı olarak, iOS/macOS donanım seviyesi kodlama/kod çözme ve yerel işletim sistemi desteği alır. Yüksek görüntü kalitesini sağlarken, temel depolama alanını önemli ölçüde azaltır)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D modeli (GL aktarım formatı, '3D dünyasının JPEG'i', 2015'te Khronos Group tarafından yayınlandı, web 3D için standart format)"
+msgstr "glTF 3D varlık modeli (2015'te Khronos Group tarafından yayınlanan GL aktarım formatı standardı. Üç boyutlu sahneleri tanımlamak için JSON mimarisi kullanır, '3D alanının JPEG'i' olarak bilinir. Modern WebGL/WebGPU ve sanal gerçeklik işleme için hafif bir endüstri standardıdır)"
 
 msgid "mime_glb"
-msgstr "GLB ikili 3D modeli (GLTF'nin ikili versiyonu, tek bir dosya tüm kaynakları içerir, 3D sahnelerin dağıtımı için kullanılır)"
+msgstr "GLB ikili 3D model (glTF varlık modelinin tam ikili, kayıpsız kapsülleme sürümü. Sahne yapısını, düşük seviyeli ağ tepe noktası verilerini, malzemeleri ve doku haritalarını tek bir dosyada birleştirir. Platformlar arası web 3D varlıklarının verimli iletimi ve akış dağıtımı için özel olarak tasarlanmıştır)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY sözlüğü (terim tanım dosyası, dokümantasyon sistemlerinde terminoloji yönetimi için kullanılır)"
+msgstr "GLOSSARY veri sözlüğü (belge yönetim sistemleri ve yapılandırılmış derlemler için özel olarak hazırlanmış terminoloji seti tanım dosyası. Yerleşik standart terim tanımları, çok dilli eşlemeler ve meta veri eşlemeleri içerir. Otomatik metin analizi ve içerik yayınlama sistemlerinin kavramsal tutarlılığını korumak için kullanılır)"
 
 msgid "mime_cbz"
-msgstr "CBZ çizgi roman kitabı (ZIP sıkıştırılmış çizgi roman görüntüleri, çizgi roman koleksiyonu için evrensel format)"
+msgstr "CBZ çizgi roman kitabı (ZIP sıkıştırma yapısına dayalı özel mülk çizgi roman görüntüsü arşivleme formatı. İçte sürekli bir statik bitmap dizisini kapsüller. Dijital çizgi roman yayıncılığı ve platformlar arası yerel koleksiyon için evrensel bir hafif kap standardıdır)"
 
 msgid "mime_cbr"
-msgstr "CBR çizgi roman kitabı (RAR sıkıştırılmış çizgi roman görüntüleri, çizgi roman koleksiyonu için evrensel format)"
+msgstr "CBR çizgi roman kitabı (RAR sıkıştırma yapısına dayalı özel mülk çizgi roman görüntüsü arşivleme formatı. Statik bitmap dizilerini kapsüllemek için RAR algoritmasını kullanır, nispeten yüksek sıkıştırma oranına sahiptir, dijital çizgi roman dağıtım alanında geniş uyumluluk desteğine sahiptir)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-kitap (FictionBook 2.0, Rus e-kitap formatı, XML yapısı, açık kaynak okuyucular tarafından yaygın olarak desteklenir)"
+msgstr "FB2 e-kitap (2000'lerin başındaki FictionBook 2.0 e-kitap standardı. Kitap özelliklerini ve metin hiyerarşisini tanımlamak için saf XML yapısı kullanır. Açık kaynak e-kitap ekosisteminde ve eski dijital yayıncılık okuyucularında geniş destek bulur)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-kitap (Kobo'ya özgü EPUB formatı, Kobo e-kitap okuyucuları için optimize edilmiş format)"
+msgstr "KEPUB e-kitap (Kobo'nun EPUB standardından gelişen özel mülk gelişmiş e-kitap formatı. Kobo'nun donanım seviyesi e-kitap okuyucuları için düşük seviyeli işleme optimizasyonu gerçekleştirir, daha verimli sayfa düzeni ve okuma istatistikleri etkileşimi sağlar)"
 
 msgid "mime_m4b"
-msgstr "M4B sesli kitap (MPEG-4 sesli kitap formatı, yer imlerini destekler, iTunes sesli kitap formatı)"
+msgstr "M4B sesli kitap (MPEG-4 Part 14 (MP4) kap mimarisine dayalı sesli kitap formatı. AAC kodlaması kullanır, düşük seviyeli yer imi konumlandırmayı, kesme noktasından devam eden oynatmayı ve bölüm yerleştirmeyi yerel olarak destekler. Bir zamanlar Apple iTunes ekosisteminin standart formatıydı)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX formatı (2015'te Amazon tarafından piyasaya sürüldü, Kindle e-kitapları için özel format, gelişmiş tipografi ve hızlı sayfa çevirmeyi destekler)"
+msgstr "Kindle KFX formatı (2015'te Amazon tarafından Kindle ile birlikte yayınlanan özel mülk gelişmiş dijital yayıncılık formatı. Gelişmiş bitişik harf düzeni, yüksek dinamik yazı tipi işleme ve çekirdek seviyesi akış sayfa yüklemeyi (Sayfa Çevirme) destekler. Modern Kindle platformunun temel standardıdır)"
 
 msgid "mime_chm"
-msgstr "CHM yardım dosyası (1997'de Microsoft tarafından piyasaya sürüldü, derlenmiş HTML yardım formatı, Windows yazılım yardım dokümantasyonu standardı)"
+msgstr "CHM derlenmiş yardım dosyası (1997'de Microsoft tarafından yayınlanan derlenmiş HTML yardım bilgi sistemi. Hipermetin verilerini ve temel dizini tek bir ikili kapsayıcıya paketler. Uzun süre Windows yazılımı için yerel çevrimdışı yardım dokümantasyonunun standart formatıydı)"
 
 msgid "mime_mht"
-msgstr "MHT web arşivi (1999'da Microsoft tarafından piyasaya sürüldü, tek dosyalı web formatı, IE tarayıcısının web sayfası kaydetme formatı)"
+msgstr "MHT web sayfası arşivi (1999'da Microsoft tarafından yayınlanan MIME toplanmış hipermetin formatı. RFC 2557 standardına dayanır, HTML kaynağını, CSS, JS ve gömülü görüntüleri tek bir metin dosyasında kapsüller. Eski tarayıcılarda çevrimdışı web sayfası kaydetmek için kullanılır)"
 
 msgid "mime_wml"
-msgstr "WML kablosuz işaretleme dili (1999 WAP standardı, erken özellikli telefonların web sayfası dosyaları için kullanılır, kullanımdan kaldırıldı)"
+msgstr "WML kablosuz işaretleme dili (1999'da WAP (Kablosuz Uygulama Protokolü) forumu tarafından kurulan mobil işaretleme standardı. XML belirtimine dayanır, özellikle erken dar bantlı kablosuz hücresel ağlar ve düşük işlem gücüne sahip özellikli telefonlar için tasarlanmıştır. Modern web ekosisteminde emekliye ayrılmış bir miras teknolojisidir)"
 
 msgid "mime_xhtml"
-msgstr "XHTML web sayfası (2000 W3C standardı, HTML'nin XML versiyonu, daha katı sözdizimi. 2009'da W3C bakımını durdurdu, odak HTML5'e kaydı)"
+msgstr "XHTML hipermetin web sayfası (2000 W3C standardı, XML mimarisine dayalı katı hipermetin işaretleme dilinin kapsüllenmesi. 2009'da W3C teknik gelişimini durdurdu ve tamamen HTML5 belirtimine geçti. Şimdi çoğunlukla eski sistemlerde anlamsal web sayfası işleme için kullanılır)"
 
 msgid "mime_xml"
-msgstr "XML belgesi (1998 W3C standardı, genişletilebilir işaretleme dili, web hizmetleri, yapılandırma dosyaları, veri değişimi için temel format)"
+msgstr "XML yapılandırılmış belge (1998 W3C standardının genişletilebilir işaretleme dili. Kendini tanımlayan etiket mimarisine sahiptir. Ağ web hizmetleri (SOAP/REST), sistem seviyesi yapılandırma dosyaları (XSD) ve platformlar arası veri değişimi için temel bir format oluşturur)"
 
 msgid "mime_sgml"
-msgstr "SGML belgesi (1986 ISO standardı, HTML'nin öncülü, standart genel işaretleme dili, hem XML hem de HTML SGML'den türetilmiştir)"
+msgstr "SGML genelleştirilmiş işaretleme dili (1986 ISO 8879 uluslararası standardının standart genelleştirilmiş işaretleme dili. Elektronik belgelerin yapılandırılmış tanımının endüstri öncüsü olarak, hem XML hem de erken HTML belirtimleri bu standart meta dilden türemiştir)"
 
 msgid "mime_apng"
-msgstr "APNG animasyonu (2004'te Mozilla tarafından geliştirildi, PNG'nin animasyon uzantısı, GIF'in modern alternatifi, gerçek renkleri ve şeffaflığı destekler)"
+msgstr "APNG dinamik grafik (2004'te Mozilla tarafından geliştirilen Taşınabilir Ağ Grafikleri (PNG) dinamik uzantısı. 24-bit gerçek renkleri ve 8-bit Alfa kanalı yarı saydamlığını destekler. Modern web senaryolarında GIF formatına yüksek çözünürlüklü bir alternatiftir)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmap (Windows bitmap formatı, Windows 1.0'dan beri yerel olarak desteklenir. Sıkıştırılmamış, dosya boyutu büyüktür, ancak basit yapısı ve ek codec'lere ihtiyaç duymaması nedeniyle, Windows 11'in Ekran Alıntısı Aracı'nda, Paint programında, EXE/MSI kurulum paketlerindeki simge kaynaklarında, imleç dosyalarında ve bazı eski sürücülerde hala kullanılmaktadır. Aynı görüntü kalitesinde, dosya boyutu PNG'den yaklaşık 3-10 kat daha büyüktür. Çoğu durumda PNG/JPEG ile değiştirilmiştir, ancak Windows ekosistemi hala geniş uyumluluğu korumaktadır)"
+msgstr "BMP yerel bitmap (Windows 1.0 döneminden bu yana kurulan Microsoft platformunun cihazdan bağımsız bitmap formatı. Kayıpsız, sıkıştırılmamış depolama kullanır, boyutu genellikle PNG'den 3-10 kat daha büyük olmasına rağmen, kodlama/kod çözme maliyeti olmadığı için, bugün hala Windows 11'in temel bileşenlerinde, EXE/MSI kaynak segmentlerinde ve eski sürücülerin grafik arabelleklerinde yaygın olarak gömülüdür)"
 
 msgid "mime_cdr"
-msgstr "CDR vektör grafiği (CorelDRAW'a özel format, Kanadalı Corel şirketi, vektör grafik tasarım yazılımı)"
+msgstr "CDR vektör grafiği (Kanadalı Corel şirketinin özel mülk CorelDRAW profesyonel vektör tasarımı kaynak dosyası formatı. Çok katmanlı renk yönetimini, karmaşık matematiksel kontur düğümlerini ve baskı seviyesi düzen verilerini destekler. Profesyonel düz baskı ve reklam tasarımı alanı için özel bir formattır)"
 
 msgid "mime_gif"
-msgstr "GIF görüntüsü (1987'de CompuServe tarafından geliştirildi, 256 renkli animasyonlu görüntü formatı. Zayıflıklar: az renk, kaba görüntü kalitesi, şeffaflığı desteklemez, büyük dosya, düşük kare hızı. APNG, WebP gibi modern animasyonlu görüntü formatlarıyla değiştirilmiştir)"
+msgstr "GIF indekslenmiş renkli görüntü (1987'de CompuServe tarafından geliştirilen 8-bit indekslenmiş renkli bitmap formatı. LZW algoritmasına dayanır, 256 renk seviyesi ve tek renk şeffaflık ile sınırlıdır, yüksek kare hızında hacimli hale gelir. Şimdi APNG, WebP gibi modern yüksek verimli dinamik görüntü standartları tarafından kademeli olarak değiştirilmektedir)"
 
 msgid "mime_ico"
-msgstr "ICO simgesi (Windows simge dosyası formatı, birden çok çözünürlüğü destekler, web sitesi favicon'u için standart format)"
+msgstr "ICO sistem simgesi (Windows yerel simge kaynağı kapsülleme formatı. Tek bir kapsayıcıda birden çok piksel çözünürlüğü ve renk derinliğine sahip görüntü varyantlarının karışık gömülmesini destekler. Ayrıca modern web tarayıcı sitesinin temel tanımlayıcısı (Favicon) için evrensel bir dağıtım standardıdır)"
 
 msgid "mime_jpeg"
-msgstr "JPEG görüntüsü (1992 ISO standardı, kayıplı sıkıştırma fotoğraf formatı, internet fotoğrafları için fiili standart)"
+msgstr "JPEG sıkıştırılmış görüntü (1992 ISO 10918 uluslararası standardının kayıplı sıkıştırma görüntü formatı. Ayrık Kosinüs Dönüşümü (DCT) algoritmasına dayanır, yüksek sıkıştırma oranı elde ederken mükemmel gerçekçi görüntü kalitesini korur. Küresel internet statik fotoğrafçılığının mutlak fiili standardıdır)"
 
 msgid "mime_jpg"
-msgstr "JPEG görüntüsü (1992 ISO standardı, kayıplı sıkıştırma fotoğraf formatı, internet fotoğrafları için fiili standart)"
+msgstr "JPEG sıkıştırılmış görüntü (1992 ISO 10918 uluslararası standardının kayıplı sıkıştırma görüntü formatı. Ayrık Kosinüs Dönüşümü (DCT) algoritmasına dayanır, yüksek sıkıştırma oranı elde ederken mükemmel gerçekçi görüntü kalitesini korur. Küresel internet statik fotoğrafçılığının mutlak fiili standardıdır)"
 
 msgid "mime_png"
-msgstr "PNG görüntüsü (1996 W3C tavsiyesi, gerçek renkleri ve şeffaflığı destekler, GIF'in statik alternatifi, internet kayıpsız görüntü standardı)"
+msgstr "PNG kayıpsız görüntü (1996'da W3C tarafından önerilen Taşınabilir Ağ Grafikleri standardı. Kayıpsız sıkıştırma algoritması kullanır, 24-bit gerçek renkleri ve 8-bit Alfa kanalı şeffaflığını yerel olarak destekler. Klasik statik GIF'e yüksek çözünürlüklü bir alternatif olarak, internet üzerindeki kayıpsız piksel görüntülerinin mutlak fiili standardıdır)"
 
 msgid "mime_ps"
-msgstr "PostScript sayfa tanımlama dosyası (1985'te Adobe tarafından piyasaya sürüldü, sayfa tanımlama dili, PDF'nin öncülü, baskı ve yayıncılık için kullanılır)"
+msgstr "PostScript sayfa tanımlama dosyası (1985'te Adobe tarafından tanıtılan yığın tabanlı sayfa tanımlama dili. PDF formatının teknolojik öncüsü olarak, düşük seviyede donanımdan bağımsız tipografi ve yüksek hassasiyetli vektör grafik işlemeyi uygular. Profesyonel baskı yayıncılığı ve lazer baskı alanları için temel bir standarttır)"
 
 msgid "mime_psb"
-msgstr "PSB büyük belge (Adobe Photoshop çok büyük görüntü formatı, 2GB'ın üzerinde veya 30000 pikselden büyük dev görüntüleri destekler)"
+msgstr "PSB büyük katmanlı belge (Adobe Photoshop'un özel mülk süper büyük kaynak dosyası kapsülleme formatı. Standart PSD formatının 2 GB fiziksel boyut ve 30.000 piksel dahili adresleme sınırlarını aşar. Süper büyük ölçekli, yüksek katman derinliğine sahip dev dijital sanat varlıklarını depolamak için özel olarak tasarlanmıştır)"
 
 msgid "mime_psd"
-msgstr "PSD görüntüsü (Adobe Photoshop kaynak dosyası, katmanları, kanalları, yolları destekler, görüntü işleme endüstri standardı formatıdır)"
+msgstr "PSD katman tasarım kaynak dosyası (Adobe Photoshop'un özel mülk katmanlı görüntü mühendisliği formatı. Grafik ve görüntü alanında endüstri standardı bir kap olarak, tam katman işleme ağacını, bitmap kanallarını, vektör kırpma yollarını ve karma karıştırma modlarını yerel olarak kapsüller, kayıpsız tam veri düzenlemeyi destekler)"
 
 msgid "mime_webp"
-msgstr "WebP görüntüsü (2010'da Google tarafından geliştirildi, web görüntü formatı, kayıplı/kayıpsız sıkıştırma ve animasyonu destekler, sıkıştırma oranı PNG'den %25-35, JPEG'den %25 daha iyidir)"
+msgstr "WebP yüksek verimli görüntü (2010'da Google tarafından tanıtılan evrensel web grafikleri kodlama standardı. VP8 video ana kare teknolojisinden türemiştir, kayıplı, kayıpsız, yarı saydam ve dinamik işleme ile mükemmel uyumludur. Aynı kalitedeki PNG'ye kıyasla boyutu %25-35 oranında azaltır. Modern web sayfasının yüksek performanslı yüklenmesinin temel taşıdır)"
 
 msgid "mime_woff"
-msgstr "WOFF web yazı tipi (2009'da oluşturuldu, 2018 W3C standardı. TrueType/OpenType tabanlı sıkıştırma, web yazı tipi yükleme optimizasyonu, modern web sitesi simge yazı tiplerinin standart formatı)"
+msgstr "WOFF web glif dosyası (2009'da oluşturulan ve 2012'de W3C standardı haline gelen açık web yazı tipi formatı. Özünde, standart TTF/OTF yazı tipi yapılarının akış kayıpsız sıkıştırma kapsüllemesidir, bu da ağ iletim bant genişliği maliyetini önemli ölçüde optimize eder. Modern web sitesi simgeleri ve bulut yazı tipleri için evrensel bir formattır)"
 
 msgid "mime_7z"
-msgstr "7z sıkıştırılmış paketi (1999'da Igor Pavlov tarafından geliştirildi, 7-Zip programının özel formatı. LZMA algoritması, yüksek sıkıştırma, açık kaynak ve ücretsiz. 7z formatı aynı sıkıştırma oranında genellikle ZIP'ten %30-50 daha küçüktür, açık kaynak topluluğunda ve yazılım dağıtımında yaygın bir formattır)"
+msgstr "7z sıkıştırılmış arşiv (1999'da Igor Pavlov tarafından geliştirilen 7-Zip'in özel mülk formatı. Açık kaynak LZMA/LZMA2 algoritmalarına dayanır, son derece yüksek sıkıştırma oranına sahiptir. Aynı koşullar altında boyutu genellikle ZIP'ten %30-50 daha küçüktür. Açık kaynak topluluğu ve yazılım dağıtımı için evrensel bir yüksek sıkıştırma oranlı formattır)"
 
 msgid "mime_ace"
-msgstr "ACE sıkıştırılmış paketi (1990'larda geliştirildi, WinACE programının formatı. Bir zamanlar RAR ile rekabet etti, nispeten yüksek sıkıştırma oranı. 2007'de geliştirme durduruldu, şimdi 7z/RAR ile değiştirildi, nadiren kullanılır)"
+msgstr "ACE sıkıştırılmış arşiv (1990'ların WinACE özel mülk sıkıştırma formatı. Bir zamanlar RAR formatıyla rekabet etti ve nispeten yüksek sıkıştırma oranına sahipti. 2007'den sonra teknolojik yineleme durdu, şimdi 7z ve RAR formatlarıyla değiştirildi. Eski sistem arşivleme formatına aittir)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 sıkıştırılmış paketi (1996'da Julian Seward tarafından geliştirildi, blok sıralama sıkıştırma algoritması. Sıkıştırma oranı GZIP'ten %15-20 daha iyidir, ancak daha yavaştır. Linux çekirdek kaynak kodu, açık kaynak paketleri bu formatı yaygın olarak kullanır, uzantı .bz2)"
+msgstr "BZIP2 sıkıştırılmış arşiv (1996'da Julian Seward tarafından geliştirilen blok sıralama sıkıştırma formatı. Temel algoritmasının sıkıştırma oranı GZIP'ten %15-20 daha yüksektir ancak hesaplama maliyeti daha yüksektir. Linux çekirdek kaynak kodunun ve açık kaynak yazılım paketlerinin dağıtımı için sıklıkla kullanılır. Standart uzantı .bz2'dir)"
 
 msgid "mime_cab"
-msgstr "CAB sıkıştırılmış paketi (1995'te Microsoft tarafından geliştirildi, Kabine formatı. Windows sistem kurulum paketlerinin formatı, sürücüler, sistem dosyalarının dağıtımı için kullanılır. Windows Installer (MSI) dahili olarak dosya depolamak için CAB kullanır)"
+msgstr "CAB sıkıştırılmış arşiv (1995'te Microsoft tarafından bağımsız olarak geliştirilen Kabine arşivleme formatı. Windows sisteminin yerel kurulum paketi standardı olarak, sürücüler ve çekirdek dosyalarının dağıtımı için kullanılır. Ayrıca Windows Installer (MSI) için temel depolama kabıdır)"
 
 msgid "mime_dmg"
-msgstr "DMG disk görüntüsü (1980'lerde Apple tarafından piyasaya sürüldü, Disk Görüntüsü formatı. macOS yazılım dağıtımının standart formatı, çift tıklama sanal disk olarak bağlanır, sürükleyip bırakarak uygulama kurulur. Sıkıştırma ve şifrelemeyi destekler, Mac yazılım indirmelerinin ana formatıdır)"
+msgstr "DMG disk görüntüsü (1980'lerde Apple tarafından geliştirilen Disk Görüntüsü formatı. macOS yazılım dağıtımının standart kabı olarak, fiziksel bağlamayı sanal dosya sistemi olarak, düşük seviyeli sıkıştırmayı ve veri şifrelemeyi destekler. Mac ekosistemindeki uygulama dağıtımının ana akım formatıdır)"
 
 msgid "mime_emz"
-msgstr "EMZ sıkıştırılmış görüntü (Windows sıkıştırılmış geliştirilmiş meta dosyası, EMF'nin sıkıştırılmış versiyonu. Office belgelerinde vektör grafiklerini depolama formatı, özünde GZIP sıkıştırılmış bir EMF dosyasıdır)"
+msgstr "EMZ sıkıştırılmış görüntü (Windows Gelişmiş Meta Dosyası EMF'nin sıkıştırılmış sürümü. Özünde, GZIP algoritmasıyla sıkıştırılmış ikili vektör grafiklerdir. Microsoft Office serisi belgelerindeki gömülü vektör grafiklerinin depolanması için yaygın olarak kullanılır)"
 
 msgid "mime_gz"
-msgstr "GZIP sıkıştırılmış paketi (1992'de Jean-loup Gailly ve Mark Adler tarafından geliştirildi, GNU projesi. Unix/Linux standart sıkıştırma aracı, HTTP iletim sıkıştırması için yaygın format. Uzantı .gz, genellikle TAR ile birlikte kullanılır)"
+msgstr "GZIP sıkıştırılmış arşiv (1992'de GNU projesinin Jean-loup Gailly ve Mark Adler tarafından geliştirilen standart akış sıkıştırma formatı. Unix/Linux standart sıkıştırma aracı olarak, aynı zamanda HTTP taşıma katmanı sıkıştırmasının (Gzip) temel standardıdır. Genellikle TAR arşivleme ile birlikte kullanılır)"
 
 msgid "mime_jar"
-msgstr "JAR sıkıştırılmış paketi (1997'de Sun Microsystems tarafından piyasaya sürüldü, Java ARchive formatı. Özünde bir ZIP sıkıştırılmış paketidir, Java sınıf kütüphanelerini ve uygulamalarını paketlemek için kullanılır. Maven, Gradle gibi Java ekosisteminin temel formatı, Android de JAR kullanır)"
+msgstr "JAR sıkıştırılmış arşiv (1997'de Sun Microsystems tarafından tanıtılan Java ARşivi arşivleme formatı. Özünde, ZIP yapısına dayalı bir paketleme kabıdır, Java sınıf kitaplıklarını ve meta verileri kapsüllemek için kullanılır. Maven, Gradle ve erken Android ekosisteminin temel derleme ürünüdür)"
 
 msgid "mime_lzma"
-msgstr "LZMA sıkıştırılmış paketi (1998'de Igor Pavlov tarafından geliştirildi, Lempel-Ziv-Markov zinciri algoritması. 7z formatının temel sıkıştırma algoritması, yüksek sıkıştırma, hızlı açma. Bellenim, gömülü sistem yazılım dağıtımı için kullanılır)"
+msgstr "LZMA sıkıştırılmış arşiv (1998'de Igor Pavlov tarafından geliştirilen Lempel-Ziv-Markov zincir sıkıştırma algoritması. 7z formatının temel motoru olarak, son derece yüksek sıkıştırma oranına ve yüksek hızlı açma özelliklerine sahiptir. Donanım ürün yazılımı ve gömülü sistem dağıtımı için yaygın olarak kullanılır)"
 
 msgid "mime_rar"
-msgstr "RAR sıkıştırılmış paketi (1993'te Eugene Roshal tarafından geliştirildi, Roshal ARchive formatı. Yüksek sıkıştırma, birimlere bölmeyi, kurtarma kayıtlarını destekler. WinRAR programının formatı, sıkıştırma ZIP'ten üstündür, ancak ücretli yazılım gerektirir, unrar gibi açık kaynak araçlar açabilir)"
+msgstr "RAR sıkıştırılmış arşiv (1993'te Eugene Roshal tarafından geliştirilen WinRAR'ın özel mülk arşivleme formatı. Birimlere bölme, fiziksel kurtarma kayıtları (ECC) ve yüksek dayanıklı şifrelemeyi destekler. Sıkıştırma oranı standart ZIP'ten daha iyidir, kişisel bilgisayarlarda ve ticari sektörde geniş uyumluluk desteğine sahiptir)"
 
 msgid "mime_tar"
-msgstr "TAR arşivi (1979'da Unix V7'de tanıtıldı, Tape ARchive formatı. Bant arşiv formatı, sıkıştırmaz sadece paketler, genellikle GZIP/BZIP2/XZ ile birlikte kullanılır. Linux paketlerinin kaynak kodu, Docker görüntü katmanlarının depolanması TAR formatını kullanır)"
+msgstr "TAR arşiv paketi (1979 Unix V7 döneminin Bant ARşivi arşivleme formatı. Yalnızca dosya akışı paketlemesi yapar, veri sıkıştırması yapmaz. Genellikle GZIP/BZIP2/XZ ile birleştirilir, Linux kaynak paketleri ve Docker görüntü katmanlı depolama için temel bir standarttır)"
 
 msgid "mime_tgz"
-msgstr "TGZ sıkıştırılmış paketi (TAR + GZIP kombinasyon formatı, uzantı .tgz veya .tar.gz. Unix/Linux paketleri için en evrensel dağıtım formatı, kaynak kodu paketleri, ikili paketler için yaygın olarak kullanılır, 'aç ve kullan' temsilcisi)"
+msgstr "TGZ sıkıştırılmış arşiv (TAR arşivleme ve GZIP sıkıştırmasının akış kombinasyon formatı, uzantılar .tgz veya .tar.gz. Unix/Linux ortamındaki en evrensel yazılım paketi dağıtım formatı olarak, kaynak kodu derleme dağıtımı ve kurulum gerektirmeyen ikili paket dağıtımı için yaygın olarak kullanılır)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 sıkıştırılmış paketi (TAR + BZIP2 kombinasyon formatı, uzantı .tbz2 veya .tar.bz2. Sıkıştırma oranı TGZ'den %15-20 daha iyidir, büyük dosya dağıtımı için uygundur, Linux çekirdek kaynak kodu uzun süredir bu formatı kullanmaktadır)"
+msgstr "TBZ2 sıkıştırılmış arşiv (TAR arşivleme ve BZIP2 sıkıştırmasının akış kombinasyon formatı, uzantılar .tbz2 veya .tar.bz2. TGZ ile karşılaştırıldığında sıkıştırma oranını %15-20 daha artırabilir, büyük dosya iletimi için uygundur, uzun süre Linux çekirdek kaynak kodunun dağıtımı için kullanılmıştır)"
 
 msgid "mime_xz"
-msgstr "XZ sıkıştırılmış paketi (2009'da piyasaya sürüldü, LZMA2 algoritmasına dayalı. Son derece yüksek sıkıştırma, GZIP'ten %30-50 daha iyi, nispeten hızlı açma. Linux çekirdeğinde, paket yöneticilerinde (Debian'ın .deb içi gibi) yaygın olarak kullanılır, mevcut Linux ekosistemi için önerilen formattır)"
+msgstr "XZ sıkıştırılmış arşiv (2009'da tanıtılan yeni nesil yüksek sıkıştırma oranlı format. LZMA2 algoritmasına dayanır, veri sıkıştırma oranı GZIP'ten %30-50 daha yüksektir ve yüksek hızlı açmayı korur. Linux çekirdeği ve ana akım paket yöneticileri (Debian .deb içi gibi) tarafından önerilen dağıtım standardı olarak kurulmuştur)"
 
 msgid "mime_z"
-msgstr "Z sıkıştırılmış paketi (1985 Unix compress komutunun formatı, LZW algoritması. Erken Unix sıkıştırma formatı, GZIP ile değiştirildi. Uzantı .Z, modern sistemlerde nadiren kullanılır)"
+msgstr "Z sıkıştırılmış arşiv (1985 Unix compress komutunun LZW sıkıştırma formatı. Erken Unix sistemlerinin standart sıkıştırma standardı olarak, şimdi daha verimli GZIP formatı tarafından tamamen değiştirilmiştir. Modern ağ trafiğinde nadir görülen bir tarihsel miras formatıdır)"
 
 msgid "mime_zip"
-msgstr "ZIP sıkıştırılmış paketi (1989'da Phil Katz tarafından geliştirildi, PKZIP formatı. Windows tarafından yerel olarak desteklenir, internetin en evrensel sıkıştırma formatı. Birden çok dosyayı, dizin yapısını destekler, sıkıştırma algoritması seçilebilir. Java JAR, Android APK, Office belgeleri DOCX/XLSX ZIP formatına dayanır)"
+msgstr "ZIP sıkıştırılmış arşiv (1989'da Phil Katz tarafından geliştirilen PKZIP evrensel arşivleme formatı. Ana akım işletim sistemlerinin yerel desteğini alır. İnternette en yaygın kullanılan kap standardıdır. Modern Java'nın JAR'ı, Android'in APK'sı ve Office belgeleri (OOXML) ZIP yapısına dayanır)"
 
 msgid "mime_zst"
-msgstr "Zstandard sıkıştırılmış paketi (2015'te Facebook tarafından geliştirildi, Yann Collet tarafından tasarlandı. Yüksek hızlı sıkıştırma algoritması, sıkıştırma oranı LZMA'ya yakın, hız GZIP'ten çok daha yüksek. Linux çekirdeği 5.9+ destekler, Arch Linux pacman, Debian APT kademeli olarak benimsiyor, yeni nesil sıkıştırma standardı)"
+msgstr "Zstandard sıkıştırılmış arşiv (2015'te Facebook'tan Yann Collet tarafından tasarlanan yeni nesil akış sıkıştırma standardı. LZMA sıkıştırma oranına yaklaşırken GZIP'ten çok daha yüksek verime sahiptir. Linux çekirdeği (5.9+) ve Arch/Debian paket yöneticileri tarafından derinlemesine benimsenmiştir)"
 
 msgid "mime_lz4"
-msgstr "LZ4 sıkıştırılmış paketi (2011'de Yann Collet tarafından geliştirildi, son derece hızlı sıkıştırma algoritması. Sıkıştırma hızı GZIP'ten 10 kattan fazla daha hızlıdır, gerçek zamanlı sıkıştırma senaryoları için uygundur. Linux çekirdeği, OpenZFS, Hadoop tarafından yaygın olarak kullanılır, hız öncelikli senaryolar için ilk tercihtir)"
+msgstr "LZ4 sıkıştırılmış arşiv (2011'de Yann Collet tarafından geliştirilen son derece hızlı akış sıkıştırma algoritması. Verim hızı GZIP'ten 10 kattan daha hızlıdır, son derece düşük CPU çalışma zamanı maliyetine sahiptir. Linux çekirdeğinde, OpenZFS dosya sisteminde ve Hadoop gerçek zamanlı veri akışı işlemede yaygın olarak kullanılır)"
 
 msgid "mime_lzo"
-msgstr "LZO sıkıştırılmış paketi (1996'da Markus Oberhumer tarafından geliştirildi, Lempel-Ziv-Oberhumer algoritması. Açma hızı son derece hızlıdır, sıkıştırma oranı ortalamadır. Linux çekirdeği Squashfs, OpenWrt bellenimi tarafından kullanılır, gömülü sistemler için uygundur)"
+msgstr "LZO sıkıştırılmış arşiv (1996'da Markus Oberhumer tarafından geliştirilen Lempel-Ziv-Oberhumer algoritması. Son derece hızlı açma performansına odaklanır. Linux çekirdeği Squashfs görüntülerinde, OpenWrt ürün yazılımında ve çeşitli kaynak sınırlı gömülü sistemlerde yaygın olarak gömülüdür)"
 
 msgid "mime_msi"
-msgstr "MSI kurulum paketi (1999'da Microsoft tarafından piyasaya sürüldü, Windows Installer paket formatı. Windows uygulamaları için standart kurulum formatı, işlem geri almayı, bileşen yönetimini, sessiz kurulumu destekler. Kurumsal düzeyde yazılım dağıtımı için tercih edilen format, bugün hala Windows yazılım kurulumu için ana akımdır)"
+msgstr "MSI sistem kurulum paketi (1999'da Microsoft tarafından tanıtılan Windows Installer veri kapsülleme formatı. Bir Windows uygulama seviyesi standart dağıtım belirtimi olarak, düşük seviyeli işlem geri almayı, bileşen yaşam döngüsü yönetimini ve toplu işlem gerektirmeyen sessiz kurulumu yerel olarak destekler. Kurumsal seviye merkezi yazılım dağıtımı ve politika dağıtımı için temel standarttır)"
 
 msgid "mime_pkg"
-msgstr "PKG kurulum paketi (macOS uygulama kurulum paketi formatı, Apple'ın Installer teknolojisine dayalı. macOS yazılım dağıtımının standart formatı, bileşen seçimini, kurulum betiklerini, kaldırma işlevini destekler. .pkg dosyasına çift tıklayarak kurun, Mac App Store dışındaki yazılımlar için yaygın dağıtım yöntemi)"
+msgstr "PKG platformlar arası yazılım kurulum paketi. 1. FreeBSD yazılım paketi: pkgng standardı, uzantı .pkg veya .txz, TAR+XZ/Zstd sıkıştırmasına dayalı, bağımlılık çözümlemesini ve imza doğrulamasını destekler; 2. macOS kurulum paketi: Apple Installer formatına dayalı, özel bileşenleri, kurulum betiklerini ve sistem seviyesi kaldırmayı destekler. Bunlar sırasıyla BSD sunucuları ve Mac sistemlerinin ana dağıtım taşıyıcılarıdır."
 
 msgid "mime_apk"
-msgstr "APK Android uygulama paketi (2008'de Google tarafından piyasaya sürüldü, Android sisteminin geleneksel uygulama kurulum formatı. APK özünde bir ZIP paketidir, kod, kaynaklar, bildirim dosyası içerir. 2021'den itibaren Google Play, yeni uygulamaların AAB formatını kullanmasını şart koşuyor, ancak APK hala geliştirme ve hata ayıklama, üçüncü taraf mağazalar ve yandan yükleme için kullanılmaktadır)"
+msgstr "APK Android uygulama paketi (2008'de Google tarafından Android ile birlikte yayınlanan geleneksel uygulama kurulum paketi. ZIP arşiv yapısına dayanır, derlenmiş Dalvik bayt kodunu (DEX), meta veri manifestosunu ve küresel kaynakları paketler. Şimdi yerel geliştirme hata ayıklaması, üçüncü taraf dağıtımı ve cihaza yandan yükleme kurulumu için yaygın olarak kullanılır)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS uygulama paketi (iOS App Store Paketi, iOS/iPadOS uygulamaları için kurulum formatı. 2008'de iPhone SDK ile birlikte piyasaya sürüldü. App Store aracılığıyla dağıtılmalı veya kurumsal sertifika ile imzalanmalıdır. Çalıştırılabilir dosya, kaynaklar, Info.plist ve imza bilgileri içerir)"
+msgstr "IPA Apple uygulama paketi (2008'de iPhone SDK ile birlikte yayınlanan iOS/iPadOS'a özel paketleme kabı. Özünde, FairPlay DRM veya kurumsal seviye kod imzasıyla korunan bir ZIP arşividir, Mach-O ikili çalıştırılabilir dosya, uygulama kaynak ağacı ve Info.plist meta veri yapılandırmasını içerir)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS uygulama paketi (HarmonyOS Ability Package, HarmonyOS uygulamasının temel birimi. 2020'de HarmonyOS 2.0 ile birlikte piyasaya sürüldü. İki türü destekler: entry ve feature, Huawei telefonları, tabletler, akıllı saatler ve diğer HarmonyOS cihazları için dağıtım formatı)"
+msgstr "HAP HarmonyOS uygulama paketi (2020'de HarmonyOS 2.0 ile birlikte yayınlanan HarmonyOS'un esnek dağıtım temel birimi. Giriş ana modülü veya Özellik uzantı fonksiyonel modüllerinden oluşur. Çapraz uç tüm senaryolar (telefonlar, tabletler, giyilebilir cihazlar) için akıllı terminal dağıtımının temel çoklu uç formatıdır)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS statik paylaşımlı kütüphanesi (HarmonyOS Arşivi, HarmonyOS'un statik paylaşımlı kütüphanesi, birden çok HAP paketi tarafından paylaşılabilir, bileşen tabanlı geliştirme ve modüllerin yeniden kullanımı için kullanılır)"
+msgstr "HAR HarmonyOS statik paylaşımlı paket (HarmonyOS'un özel mülk statik paylaşımlı kitaplık arşiv dosyası. Ortak bileşenleri, düşük seviyeli kaynak kodunu ve derleme zamanı bağımlılıklarını kapsüllemek için kullanılır, bunlar birden çok HAP modülü tarafından statik olarak bağlanır ve paylaşılır. HarmonyOS sisteminin bileşen tabanlı geliştirme ve çok modüllü yeniden kullanımının temel temelidir)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (2018'de Google tarafından piyasaya sürüldü, 2021'den itibaren Google Play yeni uygulamaların bu formatı kullanmasını zorunlu kılıyor. AAB bir dağıtım formatıdır, Google Play cihaz yapılandırmasına (CPU mimarisi, ekran yoğunluğu, dil) göre optimize edilmiş APK'lar oluşturur, kurulum paketi boyutu ortalama %35 azalır. Geliştiriciler AAB yükler, kullanıcılar APK indirir)"
+msgstr "AAB Android uygulama paketi (2018'de Google tarafından tanıtılan ve 2021'de kurulan Google Play dinamik dağıtım formatı. Saf bir dağıtım varlığı olarak, hedef cihazın CPU mimarisine, ekran yoğunluğuna ve diline göre bulut tarafından dinamik olarak kırpılır ve derlenir ve ihtiyaç halinde optimize edilmiş APK'ler üretir. Ortalama %35 oranında iletim bant genişliği maliyetini azaltır)"
 
 msgid "mime_xapk"
-msgstr "XAPK uygulama paketi (üçüncü taraf Android uygulama uzantı paketi, APK + OBB veri dosyalarını içerir. Büyük oyunlar ve karmaşık uygulamalar için kullanılır, tek dosyalı APK'nın 100MB sınırını çözer. APKPure, APKMirror gibi üçüncü taraf uygulama mağazalarında yaygındır, Google'ın resmi formatı değildir)"
+msgstr "XAPK genişletilmiş uygulama paketi (üçüncü taraf Android topluluğu tarafından kurulan resmi olmayan uygulama uzantısı standardı. Standart APK dosyasını çok büyük OBB oyun verisi uzantı paketi ile birlikte kapsülleyerek, Google Play'in 100 MB bağımsız dosya boyutu sınırını fiziksel olarak aşar. Oyun dağıtım platformlarında yaygın olarak görülür)"
 
 msgid "mime_appx"
-msgstr "Windows uygulama paketi (2012'de Microsoft tarafından piyasaya sürüldü, Windows 8/10/11 uygulama kurulum formatı. UWP ve masaüstü uygulama dönüşümünü destekler, Microsoft Store aracılığıyla dağıtılır. 2024'te Microsoft MSIX'i halef format olarak tanıttı, kademeli olarak APPX'in yerini alıyor)"
+msgstr "APPX modern uygulama paketi (2012'de Microsoft tarafından Windows 8 ile birlikte yayınlanan UWP uygulama dağıtım belirtimi. Korumalı alan izolasyonlu çalıştırma ve hafif kaldırma özelliklerine sahiptir. Microsoft Store'un erken dönem baskın standardı olarak, modern Windows ekosisteminde MSIX'e doğru evrilen yaşam döngüsünün son aşamasına girmiştir)"
 
 msgid "mime_msix"
-msgstr "MSIX uygulama paketi (2018'de Microsoft tarafından piyasaya sürüldü, Windows için yeni nesil uygulama paketleme formatı. APPX ve MSI avantajlarını birleştirir, tüm Windows uygulama türlerini destekler, Microsoft Store aracılığıyla veya yandan yüklenebilir, Windows 11 için önerilen formattır)"
+msgstr "MSIX yeni nesil uygulama paketi (2018'de Microsoft tarafından yayınlanan Windows'un yepyeni standartlaştırılmış paketleme belirtimi. APPX'in uygulama güvenliği korumalı alan özelliklerini ve MSI'ın kurumsal seviye varlık yönetimi avantajlarını mükemmel bir şekilde harmanlar. Tüm Win32 uygulama türleriyle tamamen uyumludur. Windows 11 için önerilen dağıtım standardıdır)"
 
 msgid "mime_appimage"
-msgstr "AppImage uygulama paketi (2004'te piyasaya sürüldü, Linux kurulum gerektirmeyen uygulama formatı. 'Bir uygulama bir dosya', kurulum gerektirmez, doğrudan çalışır, çoğu Linux dağıtımını destekler, geliştiricilerin Linux yazılımını dağıtma yaygın yöntemi)"
+msgstr "AppImage kurulum gerektirmeyen uygulama paketi (2004'te başlatılan Linux tek çalıştırılabilir arşiv belirtimi. 'Bir uygulama bir dosyadır' kendine yeten mimarisini kullanır. Çalışma zamanında, doğrudan FUSE mekanizması aracılığıyla salt okunur sanal dosya sistemi olarak bağlanarak çalıştırılır, tüm Linux dağıtımlarında sıfır bağımlılıkla anında kullanım sağlar)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak uygulama paketi (2015'te piyasaya sürüldü, Linux kum havuzu uygulama formatı. Dağıtımlar arasında çalışır, ana sistemden izole edilir, Fedora, Red Hat tarafından yönetilir, GNOME Yazılım Merkezi'nin varsayılan formatı)"
+msgstr "Flatpak korumalı alan uygulama paketi (2015'te Red Hat ve GNOME tarafından yönetilen Linux çapraz dağıtım masaüstü uygulama dağıtım standardı. Düşük seviyede, Linux çekirdeğinin Ad Alanı ve Cgroups mekanizmalarına dayanarak son derece katı uygulama seviyesi güvenlik korumalı alan izolasyonu sağlar. Modern açık kaynak OS yazılım merkezlerinin temelidir)"
 
 msgid "mime_snap"
-msgstr "Snap uygulama paketi (2014'te Canonical tarafından piyasaya sürüldü, Ubuntu'nun ana şirketi, Linux evrensel uygulama formatı. Otomatik güncellemeler, kum havuzu izolasyonu, 40'tan fazla Linux dağıtımını destekler, Ubuntu Yazılım Merkezi'nin varsayılan formatı)"
+msgstr "Snap konteynerize uygulama paketi (2014'te Ubuntu'nun ana şirketi Canonical tarafından tanıtılan Linux evrensel dağıtım standardı. Kendine yeten SquashFS görüntüsü bağlama mimarisini kullanır, otomatik artımlı güncellemeleri ve katı AppArmor korumalı alan izolasyonunu destekler. Ubuntu Yazılım Merkezi ekosisteminin temel varsayılan formatıdır)"
 
 msgid "mime_deb"
-msgstr "Debian yazılım paketi (1993'te Debian projesi tarafından piyasaya sürüldü, Debian/Ubuntu ve türevleri için standart kurulum formatı. dpkg kullanılarak yönetilir, APT onun paket yöneticisi arayüzüdür, Linux ekosistemindeki en olgun paket formatlarından biridir, bugün hala Debian ailesinde ana akımdır)"
+msgstr "DEB sistem yazılım paketi (1993'te Debian projesi tarafından kurulan ikili ve kaynak kodu kapsülleme belirtimi. Debian, Ubuntu ve tüm türev sistemleri için temel kurulum standardı olarak, açma ve bakım için dpkg çekirdeğine dayanır ve APT'yi verimli paket yöneticisi ön ucu olarak kullanır. Linux ekosistemindeki en olgun yazılım dağıtım temelidir)"
 
 msgid "mime_rpm"
-msgstr "RPM yazılım paketi (1997'de Red Hat tarafından piyasaya sürüldü, Red Hat/Fedora/CentOS/SUSE ve diğer dağıtımlar için standart format. RPM, 'Red Hat Paket Yöneticisi'nin kısaltmasıdır, DEB ile birlikte Linux'un iki büyük paket formatından biridir, bugün hala RHEL ailesinde ana akımdır)"
+msgstr "RPM sistem yazılım paketi (1997'de Red Hat tarafından tanıtılan Red Hat paket yöneticisi kapsülleme belirtimi. DEB ile birlikte Linux geleneksel paket yönetiminin iki büyük kampından biri olarak kabul edilir. Yerel olarak işlem seviyesi bağımlılık denetimine ve temel yazılım dijital imza doğrulamasına sahiptir. RHEL, Fedora ve CentOS gibi Red Hat ailesi ekosistemleri için bugün hala mutlak ana akım dağıtım standardıdır)"
 
 msgid "mime_pacman"
-msgstr "Arch yazılım paketi (2002'de Arch Linux tarafından piyasaya sürüldü, pacman paket yöneticisi tarafından kullanılan .pkg.tar.zst formatı. Dönen yayınlı Arch Linux dağıtımının çekirdeği, basitlik ve KISS ilkesiyle bilinir, AUR (Arch Kullanıcı Deposu) onun ayırt edici özelliğidir)"
+msgstr "Pacman arşivlenmiş yazılım paketi (2002'de Arch Linux tarafından pacman yöneticisi ile birlikte kurulan .pkg.tar.zst kapsülleme formatı. Arch'ın yuvarlanan güncelleme mekanizmasının çekirdeği olarak, Zstandard yüksek hızlı yüksek sıkıştırma algoritmasına dayanır, AUR (Arch Kullanıcı Yazılım Deposu) ekosistemi ile birlikte. Minimalist ve KISS ilkelerini yansıtan modern bir paket dağıtım standardıdır)"
 
 msgid "mime_exe"
-msgstr "EXE çalıştırılabilir dosyası (Windows çalıştırılabilir program formatı, 'Executable'ın kısaltmasıdır. Windows işletim sisteminin yerel çalıştırılabilir formatı, PE yapısını içerir. MS-DOS'un MZ formatından evrilmiştir, 1993'te Windows NT, PE (Taşınabilir Çalıştırılabilir) formatını tanıttı ve bugün hala kullanılmaktadır. Yazılım kurulum paketleri, uygulamalar, sistem araçları bu formatı kullanır. Kullanıcı çift tıklayarak çalıştırabilir, dünyadaki en yaygın kullanılan çalıştırılabilir formattır)"
+msgstr "EXE yerel çalıştırılabilir dosya (Windows platformunun Taşınabilir Çalıştırılabilir (PE) ikili program formatı. Teknolojik olarak MS-DOS döneminin MZ başlık yapısından gelir ve 1993 Windows NT'den itibaren PE yapı belirtimi olarak tamamen kurulmuştur. Makine kodu talimatları, statik kaynak segmentleri ve sistem çekirdeği başlatma için dünyanın en yaygın kullanılan yürütme standardıdır)"
 
 msgid "mime_dll"
-msgstr "DLL dinamik bağlantı kütüphanesi (1993'te Microsoft tarafından piyasaya sürüldü, Dinamik Bağlantı Kütüphanesi. Windows paylaşımlı kod kütüphanesi, program yürütme sırasında dinamik olarak yüklenir, bellek ve disk alanından tasarruf sağlar. Sistem bileşenleri, uygulama eklentileri, sürücüler DLL formatını kullanır. Windows API'sini uygulamanın birincil yoludur, DLL Hell sorunu .NET döneminde hafifletilmiştir)"
+msgstr "DLL dinamik bağlantı kitaplığı (Windows platformunun Dinamik Bağlantı Kitaplığı paylaşılan kod kitaplığı belirtimi. Çalışma zamanında dinamik olarak yükleyerek ve sembolleri yeniden konumlandırarak, fiziksel belleği ve disk alanını önemli ölçüde tasarruf sağlar. Windows API'sinin temel uygulama biçimi olarak, erken dönem DLL Cehennemi sorunu modern zamanlarda SxS paralel izolasyon mekanizmasıyla kökten çözülmüştür)"
 
 msgid "mime_com"
-msgstr "COM çalıştırılabilir dosyası (MS-DOS döneminden kalma çalıştırılabilir format, 'Command'ın kısaltmasıdır. Basit dosya yapısı, 64KB sınırı, Windows 3.x öncesi ana formattı. Kullanımdan kaldırıldı, modern Windows EXE formatını kullanır, COM uzantısı hala bazı bileşen dosyaları için kullanılır)"
+msgstr "COM klasik çalıştırılabilir dosya (MS-DOS döneminin en eski bellek görüntüsü (Komut) yürütme formatı. Yapılandırılmamış saf kod segmenti tasarımı kullanır, 64KB fiziksel bellek adresleme segmenti üst sınırıyla sınırlıdır. Şimdi tarihsel bir miras formatı olarak emekliye ayrılmıştır, ancak modern Windows mimarisinde sınırlı uyumluluk için belirli bir bileşen arayüzü olarak hala kullanılmaktadır)"
 
 msgid "mime_aac"
 msgstr "AAC sesi (1997 MPEG standardı, Gelişmiş Ses Kodlaması. MP3'ün halefi, aynı bit hızında ses kalitesi MP3'ten üstündür, YouTube, iTunes, Nintendo Switch'in varsayılan ses formatı)"

@@ -458,8 +458,8 @@ msgstr "Serveris - Lapu skaits - Pieprasījumu skaits - Joslas platums - Pēdēj
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Pēdējā apmeklējuma sākuma datums] un [Pēdējā apmeklējuma pēdējā lapa] tiek saglabāti tikai tad, ja sesija nav beigusies"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Galvenajā lapā tiek parādīti tikai pirmie %s ieraksti ar visvairāk pieprasījumu. Pilnu sarakstu skatiet detalizētajā lapā."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Pirmie %s vienumi ir sakārtoti pēc trāpījumu skaita dilstošā secībā; pārējo vienumu secība nav noteikta."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Autorizēts lietotājs - Lapu skaits - Pieprasījumu skaits - Joslas platums - Pēdējā apmeklējuma laiks"
@@ -473,8 +473,8 @@ msgstr "Tārpa ID - Pieprasījumu skaits - Joslas platums - Pēdējā apmeklēju
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-pasts - Pieprasījumu skaits - Joslas platums - Pēdējā apmeklējuma laiks"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Galvenajā lapā tiek parādīti tikai pirmie %s e-pasta pieprasījumi. Pilnu sarakstu skatiet detalizētajā lapā."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Pirmās %s e-pasta adreses ir sakārtotas pēc trāpījumu skaita dilstošā secībā; pārējo adrešu secība nav noteikta."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Lapu skaits - Joslas platums - Ieiešana - Iziešana"
@@ -683,6 +683,27 @@ msgstr "SiteDomain parametrs nav definēts jūsu config/domain failā, vai arī 
 msgid "Please run as Administrator to set permissions"
 msgstr "Lai iestatītu atļaujas, palaidiet kā administrators"
 
+msgid "This directory lacks read permission"
+msgstr "Šim direktorijam trūkst lasīšanas tiesību"
+
+msgid "Please set read permission for directory"
+msgstr "Lūdzu, iestatiet direktorijas lasīšanas tiesības"
+
+msgid "Missing required parameter in config file"
+msgstr "Konfigurācijas failā trūkst obligātā parametra"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Lūdzu, pārbaudiet, vai ir definēts 'DirData' parametrs."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Šķiet, ka pārlūkprogrammas adreses joslā trūkst domēna nosaukuma vai tas ir nepilnīgs"
+
+msgid "Please check the URL parameter"
+msgstr "Lūdzu, pārbaudiet URL parametru"
+
+msgid "Format description"
+msgstr "Formāta apraksts"
+
 msgid "Please set execute permission"
 msgstr "Lūdzu, iestatiet izpildes atļauju"
 
@@ -808,376 +829,379 @@ msgstr "Ieguves rīks"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Teksta fails (1963. gada ASCII standartizācija, neformatēts vienkāršs teksts. Visa pirmkoda, konfigurāciju, žurnālu pamats. Unix izmanto LF, Windows izmanto CRLF rindu pārtraukšanai, joprojām visizplatītākais datu formāts datorzinātnēs)"
+msgstr "TXT vienkārša teksta fails (1963. gadā ar ASCII kodējumu standartizēts neformatēts vienkāršs teksts. Kā visu pirmkodu, konfigurācijas failu un sistēmas žurnālu pamats, tā starpplatformu Windows (CRLF) un Unix (LF) rindu pārtraukumu vadības plūsmas joprojām ir visizplatītākais datu apmaiņas standarts datoru pasaulē)"
 
 msgid "mime_log"
-msgstr "Žurnāla fails (vienkāršs teksta fails, kas reģistrē sistēmas un lietojumprogrammu izpildes informāciju, bieži izmanto problēmu novēršanai, veiktspējas analīzei, drošības auditu. Standarta formāti, piemēram, Apache combined log, Nginx access log, syslog utt.)"
+msgstr "LOG sistēmas darbības žurnāls (vienkārša teksta līdzeklis, kas reģistrē operētājsistēmas, kodola un lietojumprogrammu darbības stāvokli. Ietver Nginx/Apache piekļuves žurnālus (Combined Log) un standarta syslog specifikāciju, ir galvenais datu avots problēmu novēršanai, plūsmas veiktspējas analīzei un drošības auditam)"
 
 msgid "mime_page"
-msgstr "HTML tīmekļa lapa (Tim Berners-Lee izgudroja World Wide Web 1989. gadā, 1990. gadā definēja trīs tehnoloģijas HTML/HTTP/URL, piedāvājot tās bez maksas bez patenta. HTML5 kļuva par oficiālo W3C standartu 2014. gadā, atbalsta attēlošanu, multividi un drukāšanu. Turinga prēmijas laureāts 2016. gadā)"
+msgstr "HTML hiperteksta tīmekļa lapa (1989. gadā Tim Berners-Lee izveidotā Visuma tīmekļa pamatakmens. Kā bezmaksas atvērta universāla hiperteksta iezīmēšanas valoda, tās HTML5 specifikācija 2014. gadā kļuva par oficiālu W3C standartu, kas nodrošina strukturētu multividi, semantisku mijiedarbību un plūsmas lapas izkārtojumu. 2016. gadā saņēma Tjūringa balvu)"
 
 msgid "mime_khtml"
-msgstr "KHTML tīmekļa dzinējs (izlaists ar KDE 2.0 1998. gadā, Konqueror pārlūka renderēšanas dzinējs. Apple izveidoja WebKit, pamatojoties uz KHTML, 2001. gadā, Google izveidoja Blink no WebKit 2008. gadā, kas kļuva par tādu pārlūku kā Chrome, Edge, Safari kodolu. KHTML ir piemērs tam, kā atvērtā koda kopiena lika pamatus mūsdienu pārlūku dzinējiem, kuru tehnoloģiskais mantojums turpinās caur WebKit/Blink)"
+msgstr "KHTML tīmekļa veidņu dzinējs (1998. gada KDE 2.0 pārlūkprogrammas atveidošanas dzinēja specifikācija. Kā atvērtā koda kopienas stūrakmens, kas lika pamatus mūsdienu tīmekļa atveidošanai, tā tehniskais mantojums tieši iedvesmoja un attīstījās par Apple WebKit un Google Blink serdeņiem, un joprojām turpina savu pamatā esošo līniju, izmantojot mūsdienu plūsmas dinamisko tīmekļa arhitektūru)"
 
 msgid "mime_script"
-msgstr "Dinamisks skripts (interpretēta valoda, neprasa kompilēšanu. Ietver ASP, JSP, CGI, ColdFusion, Tcl, VBScript u.c., plaši izmantota agrīnā tīmekļa izstrādē, sistēmu administrēšanā, uzdevumu automatizācijā. Mūsdienu skriptu valodas, piemēram, Python, Ruby, JavaScript, ir kļuvušas par galvenajām valodām pilna cikla izstrādei)"
+msgstr "SCRIPT interpretējams dinamisks skripts (vispārīga pirmkoda plūsmu klasifikācija, kas nav iepriekš jākompilē un kuru pa rindiņām nolasa un izpilda konkrēts izpildlaiks vai interpretators. Ietver ASP, JSP, CGI, Tcl u.c., plaši izmanto servera puses vispārējām saskarnēm, automatizētai procesu vadībai un sistēmas līmeņa uzdevumu saistīšanai)"
 
 msgid "mime_js"
-msgstr "JavaScript skripts (Brendans Ēihs to izveidoja 10 dienās Netscape 1995. gadā, pārlūka dzimtā programmēšanas valoda. ECMAScript tika standartizēts 1997. gadā, Node.js dzimšana 2009. gadā padarīja to par pilna cikla valodu, npm ir lielākais pakotņu pārvaldnieks pasaulē. Gadiem ilgi populārākā programmēšanas valoda GitHub)"
+msgstr "JavaScript skripts (1995. gada Netscape pārlūkprogrammas sākotnējā programmēšanas vide. 1997. gadā izveidots ECMAScript nozares standarts, 2009. gadā dzimušais Node.js izpildlaiks pārkāpa pārlūkprogrammas robežas un radīja pilna krāvuma asinhrono nebloķējošo arhitektūru, kam pievienota visplašākā npm programmatūras pakotņu ekosistēma pasaulē)"
 
 msgid "mime_py"
-msgstr "Python skripts (Guido van Rossum to izveidoja 1991. gadā, pazīstams ar obligāto atkāpi un vienkāršo sintaksi. Plaši izmantots tīmekļa izstrādē, datu zinātnē, mākslīgajā intelektā, automatizētā darbībā. Vairākkārtējs TIOBE gada programmēšanas valodas balvas ieguvējs)"
+msgstr "Python skripts (1991. gadā Guido van Rossum izveidota augsta līmeņa interpretējama skriptu valoda. Pateicoties obligātajai atkāpei, kas nodrošina nesamazināmu lasāmību, un daudzparadigmu pamatā esošajam dizainam, tā tagad ir izveidota kā nozares standarta valoda mūsdienu tīmekļa arhitektūrai, pilna krāvuma datu zinātnei, mākslīgā intelekta (AI) modeļu apmācībai un mākoņdatošanas automatizētai darbībai)"
 
 msgid "mime_sh"
-msgstr "Shell skripts (Unix dzimšana 1971. gadā, komandu skriptu valoda. Izmanto sistēmu administrēšanai, uzdevumu automatizācijai, pakalpojumu palaišanai, izvietošanas skriptiem. Obligāta prasme Linux administrēšanā)"
+msgstr "Shell skripts (1971. gada Unix laikmeta standarta komandu interpretatora skripts. Ietver tādas kodola līmeņa komandu specifikācijas kā Bash, Sh, Dash, parasti izpilda ar paplašinājumu .sh, ir universāls kodola līmeņa saistviela mūsdienu Unix līdzīgu operētājsistēmu zemā līmeņa procesu vadībai, bezinstalācijas vides konfigurācijai un automatizētai izvietošanai)"
 
 msgid "mime_rb"
-msgstr "Ruby skripts (Jukihiro Macumoto to izveidoja 1995. gadā, koncentrējas uz izstrādātāju laimi. Ruby on Rails ietvars ieviesa \"konvencija pār konfigurāciju\" paradigmu, ietekmējot mūsdienu tīmekļa ietvaru dizainu)"
+msgstr "Ruby skripts (1995. gadā Yukihiro Matsumoto izveidota objektorientēta skriptu valoda. Tās pamatā esošā dizaina filozofija ir ārkārtīgi liela cieņa pret izstrādātāja pieredzi. Tās ietvars Ruby on Rails revolucionāri izveidoja mūsdienu augsta līmeņa tīmekļa arhitektūras paradigmu 'Konvencija pirms konfigurācijas' (CoC))"
 
 msgid "mime_pl"
-msgstr "Perl skripts (Lari Vols to izveidoja 1987. gadā, pazīstams ar savu pragmatismu, saukts par \"Šveices armijas nazi\". CPAN bija mūsdienu valodu pakotņu pārvaldnieku pionieris, ar dziļu ietekmi uz teksta apstrādi, sistēmu administrēšanu un CGI)"
+msgstr "Perl skripts (1987. gadā Larry Wall izveidota pragmatiska skriptu valoda. Kā mūsdienu pakotņu pārvaldnieku (CPAN) pamatlicējs, tā tiek dēvēta par teksta apstrādes 'Šveices armijas nazi'. Mūsdienu CGI režīmā tā joprojām kalpo kā augsti uzticama bāze žurnālu parsēšanas jomā, pateicoties ļoti zemajām fiziskās atmiņas izmaksām un augstas efektivitātes regulāro izteiksmju apstrādei)"
 
 msgid "mime_php"
-msgstr "PHP dinamiska tīmekļa lapa (Rasmuss Lerdorfs to izveidoja 1995. gadā, īpaši izstrādāts tīmekļa izstrādei. Vairāk nekā 70% pasaules tīmekļa vietņu to izmanto, darbina tādas platformas kā WordPress, Facebook, Wikipedia. PHP 8 ievieš JIT kompilāciju, ievērojami uzlabojot veiktspēju)"
+msgstr "PHP dinamiska tīmekļa lapa (1995. gadā Rasmus Lerdorf izveidota, īpaši izstrādāta tīmekļa izstrādei. Kā galvenā tehnoloģija, kas nodrošina vairāk nekā 70% visu pasaules tīmekļa vietņu darbību, tā dziļi atbalsta tādas liela mēroga ražošanas lietojumprogrammas kā WordPress un Wikipedia. Kopš PHP 8 ieviesa JIT (tiešlaikas kompilācijas) izpildlaika dzinēju, tā ir veikusi pamatā esošo paradigmas attīstību uz augstas veiktspējas pilna krāvuma servera pusi)"
 
 msgid "mime_image"
-msgstr "Attēla fails"
+msgstr "IMAGE attēlu līdzekļu klasifikācija (ietver kopējo klasifikāciju attēliem ar zudumiem/bez zudumiem kompresētiem bitkartes attēliem, mūsdienīgu atsaucīgu tīmekļa grafiku un vektorgrafiku. Tas ir galvenais rādītājs, lai novērtētu vietnes vizuālo resursu ielādes izmaksas, klienta puses kešatmiņas (Cache) trāpījumu biežumu un multivides tīkla joslas platuma patēriņu)"
 
 msgid "mime_document"
-msgstr "Dokumenta fails"
+msgstr "DOCUMENT strukturētu dokumentu klasifikācija (ietver kopējo klasifikāciju vienkāršam tekstam, izklājlapām, fiksēta formāta dokumentiem (PDF) un vieglajām iezīmēšanas valodām. Tas ir galvenais rādītājs, lai statistikas nolūkos analizētu servera puses statisko zināšanu bāzu izplatīšanu, uzņēmuma informācijas sistēmu līdzekļu lejupielādi un teksta plūsmas caurlaidspēju)"
 
 msgid "mime_package"
-msgstr "Programmatūras pakotne"
+msgstr "PACKAGE kompilācijas produktu un programmatūras pakotņu klasifikācija (ietver kopējo klasifikāciju operētājsistēmas sākotnēji izpildāmajiem failiem, izpildlaika saišu bibliotēkām (DLL/SO) un lietojumprogrammu izplatīšanas instalācijas pakotnēm. To bieži izmanto kā galveno rādītāju, lai novērtētu programmatūras izplatīšanas vietņu izejošo datplūsmu un lejupielādes maksimumus)"
 
 msgid "mime_archive"
-msgstr "Gzip saspiests fails (GNU projekts 1992. gadā, pamatots uz DEFLATE algoritmu. Tīmeklī izmanto atbilžu satura dinamiskai kompresijai, kompresijas pakāpe parasti ir 60-90%. Pēc 2015. gada dažos scenārijos to aizstāja ar Brotli, bet joprojām ir visplašāk atbalstītais kompresijas formāts servera pusē)"
+msgstr "ARCHIVE arhivēšanas un kompresijas faili (vispārīga datu kompresijas pakotņu klasifikācija, kas pamatota uz tādiem galvenajiem algoritmiem kā DEFLATE, LZMA. Tīkla slānī, papildus tradicionālajai pakotņu izplatīšanai, ietver arī 1992. gada GNU projekta Gzip dinamiskās atbildes plūsmas. Lai gan mūsdienu scenārijos pakāpeniski tiek ieviests Brotli algoritms, šī klasifikācija joprojām ir galvenais rādītājs, lai novērtētu servera joslas platuma caurlaidību un transporta slāņa spiediena samazināšanu)"
 
 msgid "mime_audio"
-msgstr "Audio fails"
+msgstr "AUDIO digitālās audio plūsmas klasifikācija (ietver kopējo klasifikāciju kompresētam audio, audiogrāmatām un straumēšanas audio konteineriem. Pamatojoties uz konkrētiem audio kodēšanas/dekodēšanas standartiem, to izmanto, lai uzraudzītu multivides vietņu audio datu plūsmu caurlaidspēju, vienlaicīgu straumēšanas joslas platumu un ilgo savienojumu veiktspēju)"
 
 msgid "mime_video"
-msgstr "Video fails"
+msgstr "VIDEO digitālās video plūsmas klasifikācija (ietver kopējo klasifikāciju augstas izšķirtspējas video konteineriem, mūsdienīgai tīmekļa animācijai un straumēšanas segmentiem. Tas ir galvenais rādītājs, lai novērtētu servera joslas platuma maksimumu un satura piegādes tīkla (CDN) paātrinājuma efektivitāti lielas slodzes tīkla vidē)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (izstrādāja Brendans Ēihs 1995. gadā)"
+msgstr "JScript skripts (1996. gadā Microsoft izstrādāts apgrieztās inženierijas patentēts ieviešanas variants pārlūkam Internet Explorer 3.0. Kā agras klasiskās JavaScript saimnieka konkurents, tas kādreiz bija galvenais Windows skriptu saimnieka (WSH) un agrīnās ASP servera puses dzinējs)"
 
 msgid "mime_json"
-msgstr "JSON dati (Daglass Krofords ierosināja 2001. gadā, viegls datu apmaiņas formāts, faktiskais standarts tīmekļa API)"
+msgstr "JSON strukturēti dati (2001. gadā Douglas Crockford izveidots viegls datu serializācijas apmaiņas formāts. Pamatojoties uz teksta atslēgu-vērtību pāriem un masīvu arhitektūru, tam piemīt ļoti augsta cilvēku lasāmība un bezzudumu plūsmas parsēšanas īpašības. Tas ir faktiskais standarts mūsdienu tīmekļa API, mikroservisu arhitektūrai un mijiedarbībai ar lieliem valodas modeļiem)"
 
 msgid "mime_vbs"
-msgstr "VBScript (izstrādāja Microsoft 1996. gadā, Windows skriptu valoda, izmanto ASP tīmekļa lapām un Windows administrēšanas skriptiem. Popularizējoties PowerShell un JavaScript, pakāpeniski izzūd)"
+msgstr "VBScript skripts (1996. gadā Microsoft kopā ar IE 3.0 izlaists skriptu valodas variants. Kādreiz bija galvenais agrīno ASP dinamisko vietņu un Windows sistēmu pārvaldības dzinējs, tagad tas ir oficiāli atteikts un izņemts no jaunākā Windows 11 kodola, tāpēc pieder pie vēsturiskā mantojuma tehnoloģijām)"
 
 msgid "mime_conf"
-msgstr "Konfigurācijas fails (glabā programmatūras konfigurāciju teksta formātā, izplatīti formāti: INI, JSON, YAML, TOML, XML. Linux sistēmas konfigurācija galvenokārt atrodas /etc direktorijā)"
+msgstr "CONF sistēmas konfigurācijas fails (vispārīga datu failu klasifikācija, kas pastāvīgi glabā programmatūras izpildlaika vides parametrus vienkārša teksta formā. Ietver INI un mūsdienu YAML, TOML, JSON specifikācijas, Linux sistēmā bieži atrodas /etc direktorijā. Tā ir galvenā atkarība sistēmas līmeņa darbības stāvokļa optimizācijai)"
 
 msgid "mime_css"
-msgstr "CSS stila lapa (W3C publicēja pirmo oficiālo standartu CSS1 1996. gada decembrī, CSS2 pievienoja pozicionēšanu un mediju tipus 1998. gadā, no 2011. gada CSS3 modularizācija ieviesa noapaļotus stūrus, animācijas, elastīgo kastīti, režģa izkārtojumu un responsīvo dizainu. Kopā ar HTML un JavaScript ir viena no trim galvenajām front-end tehnoloģijām, visas mūsdienu pārlūkprogrammas (Chrome, Firefox, Safari, Edge) to atbalsta natively, tas ir vienīgais standarts tīmekļa lapu stila noteikšanai)"
+msgstr "CSS kaskadējamie stila lapas (1996. gada W3C standarts, kopā ar HTML/JS veido trīs galvenos priekšgala komponentus. Izgājis CSS2 pozicionēšanas un CSS3 modulārās attīstības posmus, nodrošina elastīgo kārbu (Flexbox), režģi (Grid) un adaptīvu dizainu ar multivides vaicājumiem. Tas ir absolūti dominējošais standarts, lai atsaistītu tīmekļa lapas izskatu mūsdienu pārlūkprogrammās)"
 
 msgid "mime_xsl"
-msgstr "XSL stila lapa (W3C standarts 1999. gadā, XML dokumentu transformācijas valoda, var pārveidot XML par HTML/PDF/tekstu. Izmantošana ir samazinājusies pēc JSON izplatības)"
+msgstr "XSL stila lapa (1999. gada W3C standarts, ietver XSLT transformāciju un XPath adresācijas valodu, ko izmanto, lai strukturētus XML datus attēlotu kā HTML, PDF vai vienkāršu tekstu. Mūsdienu izstrādē tā ekosistēmu lielākoties ir aizstājuši vieglāki veidņu dzinēji un JSON datu formāts)"
 
 msgid "mime_runtime"
-msgstr "Izpildāms fails (operētājsistēmas izpildāmais formāts, piem., EXE, ELF, Mach-O, satur mašīnkodu un ielādes informāciju)"
+msgstr "Izpildāmais fails (operētājsistēmas sākotnējie izpildāmie formāti, piemēram, EXE, ELF, Mach-O, kas satur kompilētu zema līmeņa mašīnkodu, ievades punktu un sistēmas ielādes informāciju)"
 
 msgid "mime_library"
-msgstr "Bibliotēkas fails (DLL, SO, dylib utt., dinamiski saistītas bibliotēkas, koplietots kods, ko programma ielādē izpildes laikā)"
+msgstr "Bibliotēkas fails (dinamiski vai statiski saistītas bibliotēkas, piemēram, DLL, SO, dylib, kas satur koplietojamus simbolus un pārvietošanas kodu, ko var izsaukt citas programmas un ielādēt izpildlaikā)"
 
 msgid "mime_swf"
-msgstr "Flash animācija (Macromedia to izstrādāja 1996. gadā, vēlāk Adobe īpašumā. Interaktīvs tīmekļa animācijas standarts, savulaik dominēja interneta animācijās un spēlēs. Trūkumi: nepieciešams spraudnis, neatbalsta mobilās ierīces, augsts drošības risks. Adobe paziņoja par tā izņemšanu 2017. gadā, pilnībā pārtrauca atbalstu 2020. gadā, aizstāts ar HTML5/CSS3/JS)"
+msgstr "Flash animācija (1996. gadā Macromedia izstrādāta, 2005. gadā to iegādājās Adobe. Interaktīva tīmekļa animācijas standarts, kas kādreiz dominēja interneta animācijā un spēlēs. Trūkumi: atkarība no spraudņiem, neatbalsta mobilās ierīces, augsts drošības risks. 2017. gadā Adobe paziņoja par atteikšanos, 2020. gadā pilnībā pārtrauca atbalstu, to aizstāj ar HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD dokumenta tipa definīcija (XML specifikācija, definē XML dokumenta struktūru, izmanto XML pamatotības pārbaudei)"
+msgstr "DTD dokumenta tipa definīcija (izlaista 1998. gadā kopā ar XML 1.0, ko izmanto, lai definētu XML/HTML dokumenta struktūru un pārbaudītu tā derīgumu. Mūsdienu izstrādē to pakāpeniski aizstāj elastīgāki risinājumi, piemēram, XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "CSV datu formāts (ar komatiem atdalītās vērtības, izplatīts tabulas datu formāts, standarts importam/eksportam uz Excel un datu bāzēm)"
+msgstr "CSV datu formāts (komatu atdalītās vērtības, 1972. gada lieldatoru laikmeta (IBM Fortran kompilators) universāls vienkārša teksta tabulas formāts. 2005. gadā to oficiāli standartizēja RFC 4180 kā bezzudumu datu apmaiņas standaru starp platformām un valodām. To plaši izmanto efektīvai importēšanai un eksportēšanai uz Excel, relāciju datu bāzēm, datu analīzi (Pandas))"
+
+msgid "mime_cur"
+msgstr "Peles rādītāja fails (.cur formāts, ko izmanto, lai pielāgotu peles stilu, piemēram, pirksta rādītājs tīmekļa lapās, smilšu pulksteņa gaidīšanas ikona sistēmā. Tas ir 'radinieks' parastajai .ico ikonai, taču tam ir papildu 'karstā punkta' noteikšana — tā ir peles faktiskā klikšķa vieta. Vēsture: ieviesa Windows 3.1 (1992. gadā), bija galvenais komponents laikmetā, kad grafiskais interfeiss pārgāja no komandrindas uz peles vadību)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java lietojumprogrammu palaidējs, 2000. gadu Java darbvirsmas lietojumprogrammu izplatīšanas tehnoloģija, tagad novecojusi)"
+msgstr "Java Web Start (2000. gadu Java darbvirsmas lietojumprogrammu izplatīšanas tehnoloģija, kas palaiž attālinātas Java programmas, izmantojot .jnlp failu. Drošības problēmu un mūsdienu izplatīšanas veidu popularitātes dēļ tagad ir praktiski iznīkusi)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-grāmata (Microsoft to izlaida 2000. gadā, LIT formāts, novecojis)"
+msgstr "Microsoft Reader elektroniskā grāmata (2000. gadā Microsoft izlaista, LIT formāts. Novecojusi, tagad to var konvertēt uz EPUB vai PDF, izmantojot tādus rīkus kā Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vektorgrafika (W3C standarts 1999. gadā, tāpēc ka Microsoft ilgi reklamēja savu VML formātu, IE pārlūks to atbalstīja tikai 2011. gadā, kas aizkavēja tā ieviešanu. Pēc 2015. gada, IE izzūdot un popularizējoties augstas izšķirtspējas ekrāniem, tas kļuva par vēlamo formātu ikonām un logotipiem)"
+msgstr "SVG vektorgrafika (1999. gada W3C standarts, uz XML arhitektūras balstīts divdimensiju vektora attēla formāts. Tam piemīt iespēja patvaļīgi mērogot nezaudējot kvalitāti un teksta straumes pārraides priekšrocības. Visas mūsdienu pārlūkprogrammas to atbalsta sākotnēji. To plaši izmanto augstas izšķirtspējas tīmekļa ikonām, logotipiem un vektora animācijas atveidošanai. Tas ir mūsdienu tīmekļa grafikas pamatstandarts)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektorgrafika (izlaista 1987. gadā, nozares standarta vektorgrafikas formāts, vēlamais drukas dizainam, logotipiem, ikonām)"
+msgstr "AI vektorgrafika (1987. gadā Adobe neatkarīgi izstrādāts patentēts vektorgrafikas formāts. Kā galvenais maketēšanas, poligrāfijas dizaina un zīmola identitātes nozares standarts, tas atbalsta daudzslāņu un augsta līmeņa maketēšanas vektordatus. Tas ir profesionālas vizuālās mākslas izvēlētais nesējs)"
 
 msgid "mime_phshop"
-msgstr "Photoshop attēls (Adobe to izlaida 1990. gadā, Photoshop avota faila formāts PSD, attēlu apstrādes nozares standarts)"
+msgstr "PSD slāņu attēls (1990. gadā Adobe kopā ar Photoshop izlaists patentēts rastra attēla avota faila formāts. Atbalsta daudzslāņu slāņošanu, kanālus, maskas un bezzudumu rediģēšanas datus. Tas ir izveidots kā globāls attēlu apstrādes un digitālās gleznošanas nozares standarts)"
 
 msgid "mime_ttf"
-msgstr "TrueType fonts (Apple un Microsoft kopīgi izstrādāja 1989. gadā, vektora fonta formāts, ekrāna attēlojums un drukāšana ir konsekventa, mūsdienu operētājsistēmu noklusējuma fonta formāts)"
+msgstr "TrueType fonts (1989. gadā Apple un Microsoft kopīgi izstrādāts digitālā kontūra fonta formāts. Pamatojoties uz kvadrātiskajām Bēziera līknēm, tas nodrošina absolūtu pikseļu precizitāti starp ekrāna attēlošanu un druku. Tas ir mūsdienu darbvirsmas operētājsistēmu sākotnējais noklusējuma fonta formāts)"
 
 msgid "mime_fon"
-msgstr "WOFF2 tīmekļa fonts (W3C ieteikums 2014. gadā, izmanto Brotli kompresijas algoritmu, salīdzinot ar vecāku WOFF, apjoms ir par aptuveni 30% mazāks, salīdzinot ar TTF/OTF, par vairāk nekā 50% mazāks, pašlaik to atbalsta visas mūsdienu pārlūkprogrammas, padarot to par vēlamo formātu mūsdienu tīmekļa fontiem, ko atbalsta vairāk nekā 98% pārlūkprogrammu)"
+msgstr "FON bitu kartes fonts (1980. gadu Microsoft Windows agrīnais sistēmas līmeņa punktu fonta formāts. Neatbalsta bezzudumu proporcionālu mērogošanu. Parasti tiek izmantots kopā ar mantojuma sistēmām vai agrīniem iebūvētu ierīču komponentiem ierobežotai pikseļu teksta atveidošanai)"
 
 msgid "mime_pdf"
-msgstr "PDF dokuments (Adobe to izstrādāja 1993. gadā, kļuva par ISO standartu 2008. gadā. No platformas neatkarīgs dokumenta formāts, saglabā formatējuma konsekvenci, ir globālais standarts elektronisko dokumentu izplatīšanai)"
+msgstr "PDF elektronisks dokuments (1993. gadā Adobe izstrādāts un 2008. gadā kļuvis par ISO 32000 starptautisko standartu starpplatformu fiksēta izkārtojuma dokumentu formātam. Tam ir absolūta izkārtojuma un formāta uzticība. Tas ir universāls standarts globālai elektronisko oficiālo dokumentu izplatīšanai un digitālajai izdevējdarbībai)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dinamiska lapa (Microsoft to izlaida 2002. gadā, dinamisku tīmekļa lapu tehnoloģija Windows platformā, .NET Framework daļa)"
+msgstr "ASP.NET dinamiska lapa (2002. gadā Microsoft kopā ar .NET arhitektūru izlaista servera puses dinamiska tīmekļa tehnoloģija. Tā darbojas IIS atveidošanas dzinējā, un to izmanto, lai izveidotu uzņēmumu līmeņa Windows servera puses dinamiskas tīmekļa lietojumprogrammas un sadalītas sistēmas)"
 
 msgid "mime_mdb"
-msgstr "Access datu bāze (Microsoft Access datu bāzes fails, izlaists 1992. gadā, Windows darbvirsmas datu bāzes risinājums)"
+msgstr "MDB relāciju datu bāze (1992. gadā Microsoft kopā ar Access izlaists darbvirsmas līmeņa relāciju datu bāzes krātuves formāts. Ar iebūvētu Jet datu bāzes dzinēju, agrīnā personālo datoru un mazo un vidējo uzņēmumu informācijas sistēmu pārvaldībā tas kalpoja kā relāciju datu bāzes risinājums)"
 
 msgid "mime_md"
-msgstr "Markdown dokuments (John Gruber to izveidoja 2004. gadā, sintakses dizainu ietekmēja reStructuredText un Setext. Pamata dizaina filozofija ir 'lasāmība nozīmē renderējamību', sākotnējā implementācija Markdown.pl izmanto Perl regulārās izteiksmes. Atvasinātās specifikācijas ietver GFM (2013), CommonMark (2017), Pandoc Markdown utt. Darbina tādus ekosistēmas kā GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, kļūstot par faktisko standarta formātu statisko vietņu ģeneratoriem un izstrādātāju dokumentācijai)"
+msgstr "Markdown dokuments (2004. gadā John Gruber neatkarīgi izveidota viegla iezīmēšanas valoda. Tās pamatā esošā dizaina filozofija ir 'lasāms nozīmē attēlojams', kas ir pamatā tādiem mūsdienu atvasinātiem standartiem kā GFM un CommonMark. To plaši izmanto kā galveno apmaiņas standartu tehniskajai dokumentācijai, zināšanu bāzēm (Obsidian) un mūsdienu statisko tīmekļa vietņu ģeneratoriem)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports ziņojuma formāts (SAP biznesa analītika, standarta formāts uzņēmumu ziņojumiem)"
+msgstr "Crystal Reports (SAP biznesa izlūkošanas (BI) platformas profesionāls uzņēmumu līmeņa atskaišu faila formāts. Tam ir vairāku datu avotu pamatā esošs savienojums un sarežģītas dinamisko diagrammu atveidošanas iespējas. To plaši izmanto profesionālu atskaišu ģenerēšanai starptautisku uzņēmumu finanšu un datu analīzes sistēmās)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice dokuments (The Document Foundation to izstrādāja 2010. gadā, OpenOffice atzars, ODF standarta implementācija, galvenais atvērtā koda biroja komplekts)"
+msgstr "LibreOffice dokuments (2010. gadā The Document Foundation, pamatojoties uz OpenOffice atzarojumu, izveidots atvērtā koda biroja programmu komplekta patentēts formāts. Tas dziļi īsteno W3C ODF (atvērtā dokumenta formāta) starptautisko standartu. Tas ir mūsdienu atvērtā koda ekosistēmas biroja darba pamats)"
 
 msgid "mime_encrypt"
-msgstr "Šifrēts fails (nepieciešams atšifrēt, lai redzētu, izplatīti paplašinājumi: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT šifrēts fails (izejas binārie vai teksta dati, kas apstrādāti ar konkrētu simetrisku vai asimetrisku šifrēšanas algoritmu. Ietver tādus galvenos atvasinātos formātus kā .enc, .pgp, .gpg. Tīkla slānī to izmanto, lai nodrošinātu nepublicētu datu konfidencialitāti un integritātes pārbaudi)"
 
 msgid "mime_gpx"
-msgstr "GPS trajektorijas dati (GPS apmaiņas formāts, reģistrē ģeogrāfisko informāciju, izplatīts formāts sporta pulksteņiem un navigācijas ierīcēm)"
+msgstr "GPX satelīta trajektorijas dati (uz XML arhitektūras balstīts globālās pozicionēšanas sistēmas apmaiņas formāts. Īpaši izstrādāts, lai aprakstītu ģeogrāfiskās koordinātas, maršruta punktus, trases un vēsturiskās trajektorijas. Tas ir atvērts datu standarts, kas ir kopīgs mūsdienu mobilajām sporta ierīcēm, automašīnu navigācijai un ģeogrāfiskajām informācijas sistēmām (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Diska attēls (diska / CD-ROM attēla faili, piem., DMG, ISO, IMG, izmanto programmatūras izplatīšanai vai glabāšanas datu nesēju dublēšanai)"
+msgstr "Disk Image diska attēls (ietver fiziska diska vai optiskā diska nesēja sektoru līmeņa attēlu failus, piemēram, ISO, DMG, IMG. To izmanto zema līmeņa sistēmas izvietošanai, lielapjoma programmatūras drošai izplatīšanai un uzglabāšanas nesēju pilnīgai fiziskā līmeņa datu dublēšanai)"
 
 msgid "mime_vm"
-msgstr "Virtuālās mašīnas attēls (virtuālā diska faili, piem., VMDK, VDI, VHDX, OVA, formāti virtualizācijas platformām, piem., VMware, VirtualBox, Hyper-V)"
+msgstr "VM virtuālās mašīnas attēls (ietver virtualizētus fizisko disku attēlus, piemēram, VMDK, VDI, VHDX, OVA. Kā VMware, VirtualBox un Hyper-V platformu pamats, to izmanto zema līmeņa sistēmas līmeņa aparatūras emulācijai, instanču momentuzņēmumiem un mākoņa infrastruktūras izplatīšanai)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent fails (Brams Koens to izgudroja 2001. gadā, indeksa fails P2P lejupielādēm, satur faila metadatus un Trackera informāciju)"
+msgstr "BitTorrent sēklas fails (2001. gadā Bram Cohen izstrādāts P2P punkts-punktā sadalītas lejupielādes indekss. Pamatojoties uz Bencode kodējumu, tas glabā izejas faila pamatā esošos pārbaudes metadatus un Trackera servera adresācijas informāciju. Tas ir galvenais decentralizēta tīkla plūsmu izplatīšanas nesējs)"
 
 msgid "mime_gis"
-msgstr "GIS ģeogrāfiskās informācijas sistēmas dati (telpiskie dati, piem., Shapefile, GeoJSON, izmanto kartēm un telpiskajai analīzei)"
+msgstr "GIS ģeotelpiskie dati (ģeogrāfiskās informācijas sistēmas datu standarts, kura pamatā ir Shapefile un GeoJSON. Ietver daudzdimensiju ģeometriskas koordinātas, slāņu topoloģiju un atribūtu datus. To plaši izmanto augstas precizitātes digitālo karšu atveidošanai, satelītu attālinātai izpētei un telpiskai ģeometriskai analīzei)"
 
 msgid "mime_ebook"
-msgstr "E-grāmata (e-grāmatu formāti, piem., EPUB, MOBI, AZW. EPUB ir starptautiskais standarts, MOBI/AZW ir Amazon Kindle formāti)"
+msgstr "EBOOK elektroniskā grāmata (digitālas izdevniecības formāts, kura pamatā ir W3C atvērtais EPUB starptautiskais standarts un Amazon Kindle patentētā MOBI/AZW arhitektūra. Atbalsta adaptīvu plūsmas izkārtojumu, metadatu iesaiņošanu un DRM digitālo tiesību aizsardzību. Tas ir universāls nesējs digitālai lasīšanai mobilajās ierīcēs)"
 
 msgid "mime_avif"
-msgstr "AVIF attēls (Alliance for Open Media izlaida 2019. gadā, pamatojoties uz AV1 kodēšanu, kompresijas pakāpe ir par 50% labāka nekā WebP, jaunas paaudzes tīmekļa attēlu standarts)"
+msgstr "AVIF efektīvs attēls (2019. gadā Atvērtās mediju alianses (AOMedia) izstrādāts nākamās paaudzes ultra augstas izšķirtspējas attēla standarts. Pamatojoties uz AV1 video kodēšanas atslēgas kadru tehnoloģiju, tā kompresijas pakāpe ir par 50% augstāka nekā WebP, un tā sākotnēji atbalsta augstu dinamisko diapazonu (HDR). Tas ir mūsdienu tīmekļa attēlu pārsūtīšanas galvenais standarts)"
 
 msgid "mime_markdown"
-msgstr "Markdown dokuments (John Gruber izstrādāja 2004. gadā, viegla iezīmēšanas valoda, izplatīts formāts GitHub README, tehniskajai dokumentācijai, foruma ziņojumiem)"
+msgstr "Markdown viegls dokuments (2004. gadā John Gruber neatkarīgi izveidota teksta dokumenta iezīmēšanas valoda. Tā izmanto vienkārša teksta deklaratīvu dizainu, tās sintakse ir iedvesmota no reStructuredText. To plaši izmanto GitHub projektos, inženiertehniskajā tehniskajā dokumentācijā un mūsdienu statiskā satura pārvaldības ekosistēmā)"
 
 msgid "mime_yaml"
-msgstr "YAML konfigurācija (Clark Evans izstrādāja 2001. gadā, cilvēka lasāms datu serializācijas formāts, standarts konfigurācijas failiem Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML serializācijas konfigurācija (2001. gadā Clark Evans un citi izstrādāts cilvēkiem lasāms datu serializācijas formāts. Pamatojoties uz hierarhiskām atkāpēm un atslēgu-vērtību kartēšanu, tagad tas ir izveidots kā mākoņdatošanas pamatinfrastruktūras konfigurācijas standarts Kubernetes konteineru orķestrēšanai, Ansible automatizācijai un Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML konfigurācija (Toms Preston-Verners izstrādāja 2013. gadā, 'Tom's Obvious Minimal Language', konfigurācijas faila formāts mūsdienu rīkiem, piem., Rust/Cargo, Python/pip, Go)"
+msgstr "TOML semantiska konfigurācija (2013. gadā Tom Preston-Werner izstrādāta minimālisma valoda. Tai ir tādas pamatā esošas dizaina priekšrocības kā spēcīga tipizēšana, skaidra kartēšana un semantiska skaidrība. Tagad to plaši izmanto kā standartizētu konfigurācijas failu mūsdienu rīku ķēdēm, piemēram, Rust (Cargo), Python (pyproject.toml) un Go)"
 
 msgid "mime_vue"
-msgstr "Vue komponenta fails (2014. gadā to ieviesa Evans Jū, progresīvs JavaScript ietvars. Izmantojot viena faila komponentus (SFC), tas lieliski apvieno HTML, CSS un JS, ievērojami palielinot izstrādes efektivitāti. Tas ir viens no populārākajiem frontend ietvariem pasaulē. Tāpat kā mūsdienu statisko vietņu ģeneratoru, piemēram, VitePress, kodols, to plaši izmanto interaktīvas tehniskās dokumentācijas un emuāru darbināšanai.)"
+msgstr "Vue viena faila komponents (2014. gadā Evan You izstrādāts progresīva tīmekļa ietvara patentēts SFC formāts. Vienā failā tas realizē atbildību atdalīšanu HTML/CSS/JS un reakcijas stāvokļa saistīšanu. Tas dziļi vada mūsdienu interaktīvas priekšgala lietojumprogrammas un liela mēroga statisko vietņu dzinējus)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly modulis (W3C standarts no 2017. gada, augstas veiktspējas izpildes formāts pārlūkā, C/C++/Rust/R var kompilēt kā mērķi, veiktspēja tuvu dzimtajai)"
+msgstr "WebAssembly binārais modulis (2017. gadā W3C izveidots augstas veiktspējas zema līmeņa baitu koda standarts tīmeklim. Tas ļauj tādām spēcīgi tipizētām valodām kā C/C++/Rust tikt kompilētām līdz pārlūkprogrammas smilškastes mērķim, nodrošinot izpildes efektivitāti, kas ir tuvu sākotnējai aparatūrai. Tas ir mūsdienu tīmekļa perifērijas skaitļošanas pamatakmens)"
 
 msgid "mime_jsx"
-msgstr "React JSX komponents (Facebook izlaida JavaScript XML 2013. gadā, React ietvara komponenta sintakse, inovatīva paradigma, kas ievada HTML JavaScriptā)"
+msgstr "React JSX komponents (2013. gadā Facebook kopā ar React ietvaru izlaists JavaScript XML sintakses paplašinājums. Tas atbalsta deklaratīvu DOM virtuālās struktūras veidošanu JavaScript, realizējot priekšgala izstrādes paradigmu 'UI kā stāvokļa funkcija', kas balstīta uz komponentiem)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX komponents (Microsoft izstrādāja 2012. gadā, TypeScript + JSX, standarta rakstīšanas veids tipizētai React izstrādei)"
+msgstr "TypeScript TSX komponents (2012. gadā Microsoft izstrādātās TypeScript spēcīgas tipizācijas sintakses un JSX plūsmas apvienojums. Tas injicē statisku kompilācijas laika tipu pārbaudi un saskarņu ierobežojumus React komponentu izstrādē. Tas ir koda standarts drošai mūsdienu lielu priekšgala sistēmu izstrādei)"
 
 msgid "mime_heif"
-msgstr "HEIF attēls (MPEG standarts 2015. gadā, augstas efektivitātes attēla faila formāts, plaši izmantots Apple ekosistēmā)"
+msgstr "HEIF efektīvs attēls (2015. gadā MPEG organizācijas izveidots efektīva attēla faila formāts. Pamatojoties uz HEVC (H.265) video kodēšanas algoritmu, tas atbalsta vairāku kadru attēlus, dziļuma kartes un metadatus ļoti mazā apjomā. Tas ir patentēts krātuves standarts mūsdienu mobilajām operētājsistēmām un viedajām gala ierīcēm)"
 
 msgid "mime_heic"
-msgstr "HEIC attēls (Apple HEIF implementācija, noklusējuma fotoattēlu formāts iPhone, natively atbalstīts iOS/macOS)"
+msgstr "HEIC efektīvs attēls (Apple patentēts bitu kartes formāts, kas ieviests saskaņā ar HEIF starptautisko standartu. Kā mūsdienu iPhone noklusējuma fotoattēlu krātuves standarts, tas saņem iOS/macOS aparatūras līmeņa kodēšanas/dekodēšanas un sākotnējo operētājsistēmas atbalstu. Nodrošinot augstu attēla kvalitāti, tas ievērojami samazina pamatā esošo krātuves vietu)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D modelis (GL pārsūtīšanas formāts, '3D pasaules JPEG', Khronos Group to izlaida 2015. gadā, standarta formāts Web 3D)"
+msgstr "glTF 3D aktīvu modelis (2015. gadā Khronos Group izlaists GL pārsūtīšanas formāta standarts. Tā izmanto JSON arhitektūru, lai aprakstītu trīsdimensiju ainu, un to dēvē par '3D jomas JPEG'. Tas ir viegls rūpniecības standarts mūsdienu WebGL/WebGPU un virtuālās realitātes atveidošanai)"
 
 msgid "mime_glb"
-msgstr "GLB binārs 3D modelis (GLTF binārā versija, viens fails satur visus resursus, izmanto 3D ainu izplatīšanai)"
+msgstr "GLB binārais 3D modelis (glTF aktīvu modeļa pilnīgi binārs, bezzudumu iesaiņojuma variants. Tas apvieno ainas struktūru, pamatā esošos tīkla virsotņu datus, materiālus un tekstūras karšus vienā failā. Īpaši izstrādāts efektīvai pārsūtīšanai un straumēšanas izplatīšanai starpplatformu tīmekļa 3D aktīviem)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY terminu vārdnīca (terminu definīciju fails, terminu pārvaldībai dokumentācijas sistēmās)"
+msgstr "GLOSSARY datu glosārijs (īpaši dokumentu pārvaldības sistēmām un strukturētiem tekstu korpusiem paredzēts terminu kopas definīcijas fails. Tajā ir iebūvētas standarta terminu definīcijas, daudzvalodu atbilstības un metadatu kartējumi. To izmanto, lai uzturētu konceptuālo konsekvenci automatizētā teksta analīzē un satura publicēšanas sistēmās)"
 
 msgid "mime_cbz"
-msgstr "CBZ komiksu grāmata (ZIP saspiesti komiksu attēli, izplatīts formāts komiksu kolekcionēšanai)"
+msgstr "CBZ komiksu grāmata (patentēts komiksu attēlu arhivēšanas formāts, kas balstīts uz ZIP kompresijas struktūru. Tā iekšējā struktūrā tiek iesaiņota nepārtraukta statisku bitu karšu attēlu secība. Tas ir universāls viegls konteinera standarts digitālai komiksu izdevējdarbībai un starpplatformu vietējai kolekcionēšanai)"
 
 msgid "mime_cbr"
-msgstr "CBR komiksu grāmata (RAR saspiesti komiksu attēli, izplatīts formāts komiksu kolekcionēšanai)"
+msgstr "CBR komiksu grāmata (patentēts komiksu attēlu arhivēšanas formāts, kas balstīts uz RAR kompresijas struktūru. Statisku bitu karšu attēlu secības iesaiņošanai tiek izmantots RAR algoritms, kam piemīt salīdzinoši augsts kompresijas līmenis. Tam ir plašs saderības atbalsts digitālo komiksu izplatīšanas jomā)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-grāmata (FictionBook 2.0, krievu e-grāmatu formāts, XML struktūra, plaši atbalstīts atvērtā koda lasītājos)"
+msgstr "FB2 elektroniskā grāmata (2000. gadu sākuma FictionBook 2.0 elektroniskās grāmatas standarts. Tā izmanto tīru XML struktūru, lai aprakstītu grāmatas atribūtus un teksta hierarhiju. Tam ir plašs atbalsts atvērtā koda elektronisko grāmatu ekosistēmā un mantojuma digitālās izdevējdarbības lasītājos)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-grāmata (Kobo īpašais EPUB formāts, optimizēts formāts Kobo e-grāmatu lasītājam)"
+msgstr "KEPUB elektroniskā grāmata (Kobo patentēts uzlabots elektroniskās grāmatas formāts, kas izveidots, pamatojoties uz EPUB standartu. Tas ir veicis pamatā esošu atveidošanas optimizāciju Kobo aparatūras līmeņa elektronisko grāmatu lasītājiem, nodrošinot efektīvāku lapu izkārtojumu un lasīšanas statistikas mijiedarbību)"
 
 msgid "mime_m4b"
-msgstr "M4B audio grāmata (MPEG-4 audio formāts grāmatām, atbalsta grāmatzīmes, iTunes audio grāmatu formāts)"
+msgstr "M4B audiogrāmata (audiogrāmatas formāts, kas balstīts uz MPEG-4 Part 14 (MP4) konteinera arhitektūru. Tas izmanto AAC kodējumu, sākotnēji atbalsta pamatā esošu grāmatzīmju noteikšanu, pārtraukuma vietas turpināšanu un nodaļu iegulšanu. Kādreiz tas bija Apple iTunes ekosistēmas standarta formāts)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX formāts (Amazon to izlaida 2015. gadā, īpašs e-grāmatu formāts Kindle, atbalsta uzlabotu izkārtojumu un ātru lapu šķirstīšanu)"
+msgstr "Kindle KFX formāts (2015. gadā Amazon kopā ar Kindle izlaists patentēts uzlabots digitālās izdevējdarbības formāts. Tas atbalsta uzlabotu ligatūru izkārtojumu, augstas dinamikas fontu atveidošanu un kodola līmeņa plūsmas lapu ielādi (Page Flip). Tas ir mūsdienu Kindle platformas pamatstandarts)"
 
 msgid "mime_chm"
-msgstr "CHM palīdzības fails (Microsoft to izlaida 1997. gadā, kompilēts HTML palīdzības formāts, standarts Windows programmatūras palīdzības dokumentācijai)"
+msgstr "CHM kompilēta palīdzības fails (1997. gadā Microsoft izlaista kompilēta HTML palīdzības informācijas sistēma. Tā iesaiņo hiperteksta datus un pamatā esošo indeksu vienā binārā konteinerā. Ilgu laiku tas bija standarta lokālās bezsaistes palīdzības dokumentācijas formāts Windows programmatūrai)"
 
 msgid "mime_mht"
-msgstr "MHT tīmekļa arhīvs (Microsoft to izlaida 1999. gadā, viena faila tīmekļa formāts, IE pārlūka formāts tīmekļa lapu saglabāšanai)"
+msgstr "MHT tīmekļa lapas arhīvs (1999. gadā Microsoft izlaists MIME apkopots hiperteksta formāts. Pamatojoties uz RFC 2557 standartu, tas iesaiņo HTML pirmkodu, CSS, JS un iegultos attēlus vienā teksta failā. To izmanto bezsaistes tīmekļa lapu saglabāšanai mantojuma pārlūkprogrammās)"
 
 msgid "mime_wml"
-msgstr "WML bezvadu iezīmēšanas valoda (WAP standarts 1999. gadā, izmantoja tīmekļa lapām agrīnajiem mobilo tālruņiem, novecojis)"
+msgstr "WML bezvadu iezīmēšanas valoda (1999. gadā WAP foruma izveidots mobilais iezīmēšanas standarts. Pamatojoties uz XML specifikāciju, īpaši izstrādāts agrīnajiem šaurjoslas bezvadu šūnu tīkliem un zemas veiktspējas funkciju tālruņiem. Mūsdienu tīmekļa ekosistēmā tas pieder pie novecojušas, pamestas tehnoloģijas)"
 
 msgid "mime_xhtml"
-msgstr "XHTML tīmekļa lapa (W3C standarts 2000. gadā, XML versija HTML, stingrāka sintakse. W3C pārtrauca uzturēšanu 2009. gadā, koncentrējoties uz HTML5)"
+msgstr "XHTML hiperteksta tīmekļa lapa (2000. gada W3C standarts, stingra hiperteksta iezīmēšanas valoda, kas balstīta uz XML arhitektūru. 2009. gadā W3C pārtrauca tā tehnisko attīstību un pilnībā pārgāja uz HTML5 specifikāciju. Tagad to galvenokārt izmanto semantiskai tīmekļa lapu atveidošanai mantojuma sistēmās)"
 
 msgid "mime_xml"
-msgstr "XML dokuments (W3C standarts 1998. gadā, paplašināma iezīmēšanas valoda, pamata formāts tīmekļa pakalpojumiem, konfigurācijas failiem, datu apmaiņai)"
+msgstr "XML strukturēts dokuments (1998. gada W3C standarta paplašināma iezīmēšanas valoda. Tai ir pašaprakstoša tagu arhitektūra. Tas ir pamatā esošais formāts tīmekļa pakalpojumiem (SOAP/REST), sistēmas līmeņa konfigurācijas failiem (XSD) un starpplatformu datu apmaiņai)"
 
 msgid "mime_sgml"
-msgstr "SGML dokuments (ISO standarts 1986. gadā, HTML priekštecis, standarta vispārējā iezīmēšanas valoda, gan XML, gan HTML ir atvasināti no SGML)"
+msgstr "SGML universāla iezīmēšanas valoda (1986. gada ISO 8879 starptautiskā standarta universāla iezīmēšanas valoda. Kā elektronisko dokumentu strukturēta apraksta nozares pionieris, gan XML, gan agrīnās HTML specifikācijas ir cēlušās no šīs standarta metavalodas)"
 
 msgid "mime_apng"
-msgstr "APNG animācija (Mozilla to izstrādāja 2004. gadā, PNG animācijas paplašinājums, mūsdienīgs GIF aizstājējs, atbalsta īstas krāsas un caurspīdīgumu)"
+msgstr "APNG dinamiskā grafika (2004. gadā Mozilla izstrādāts Portable Network Graphics (PNG) dinamiskais paplašinājums. Tas atbalsta 24 bitu patiesās krāsas un 8 bitu alfa kanāla caurspīdīguma īpašības. Tas ir augstas izšķirtspējas GIF formāta alternatīva mūsdienu tīmekļa scenārijos)"
 
 msgid "mime_bmp"
-msgstr "BMP bitkarte (Windows bitkaršu formāts, vietēji atbalstīts kopš Windows 1.0. Nesaspiests, liels faila izmērs, taču vienkāršās struktūras un papildu kodeku nepieciešamības trūkuma dēļ to joprojām izmanto Windows 11 ekrānuzņēmumu rīkā, Paint programmā, EXE/MSI instalācijas pakotņu ikonu resursos, kursora failos un dažos vecākos draiveros. Ar tādu pašu attēla kvalitāti faila izmērs ir aptuveni 3-10 reizes lielāks nekā PNG. Vairumā gadījumu to ir aizstājis PNG/JPEG, bet Windows ekosistēma joprojām saglabā plašu saderību)"
+msgstr "BMP sākotnējais bitu kartes attēls (no Windows 1.0 laikmeta izveidots Microsoft platformas no ierīces neatkarīgs bitu kartes formāts. Tas izmanto bezzudumu, nesaspiestu glabāšanu. Lai gan tā izmērs parasti ir 3-10 reizes lielāks nekā PNG, tāpēc ka nav nepieciešamas kodēšanas/dekodēšanas izmaksas, to joprojām plaši izmanto Windows 11 pamatkomponentos, EXE/MSI resursu sadaļās un mantojuma draiveru grafikas buferos)"
 
 msgid "mime_cdr"
-msgstr "CDR vektorgrafika (CorelDRAW īpašais formāts, Kanādas uzņēmums Corel, vektorgrafikas dizaina programmatūra)"
+msgstr "CDR vektorgrafika (Kanādas uzņēmuma Corel patentēts profesionāla vektordizaina CorelDRAW avota faila formāts. Tas atbalsta daudzslāņu krāsu pārvaldību, sarežģītus matemātiskus kontūru mezglus un poligrāfijas līmeņa maketēšanas datus. Tas ir specializēts formāts profesionālai plakanās drukas un reklāmas dizaina jomai)"
 
 msgid "mime_gif"
-msgstr "GIF attēls (CompuServe to izstrādāja 1987. gadā, 256 krāsu animēts attēla formāts. Trūkumi: maz krāsu, raupja attēla kvalitāte, neatbalsta caurspīdīgumu, liels fails, zems kadru biežums. Aizstāts ar mūsdienīgiem animētiem formātiem, piem., APNG, WebP)"
+msgstr "GIF indeksētu krāsu attēls (1987. gadā CompuServe izstrādāts 8 bitu indeksētu krāsu bitu kartes formāts. Tā pamatā ir LZW algoritms, to ierobežo 256 krāsu toņi un vienas krāsas caurspīdīgums. Pie liela kadru ātruma tas kļūst apjomīgs. Tagad to pakāpeniski aizstāj mūsdienu efektīvi dinamiskās grafikas standarti, piemēram, APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "ICO ikona (Windows ikonu formāts, atbalsta vairākas izšķirtspējas, standarta formāts vietņu favicon)"
+msgstr "ICO sistēmas ikona (Windows sākotnējais ikonu resursu iesaiņošanas formāts. Tas atbalsta vairāku dažādu pikseļu izšķirtspēju un krāsu dziļumu attēlu variantu sajauktu iegulšanu vienā konteinerā. Tas ir arī universāls izplatīšanas standarts mūsdienu tīmekļa pārlūkprogrammu vietņu pamata identifikācijai (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "JPEG attēls (ISO standarts 1992. gadā, zudumaina kompresijas formāts fotogrāfijām, faktiskais standarts fotogrāfijām internetā)"
+msgstr "JPEG kompresēts attēls (1992. gada ISO 10918 starptautiskā standarta formāts ar zudumiem. Pamatojoties uz diskrētā kosinusa transformācijas (DCT) algoritmu, tas nodrošina augstu kompresijas pakāpi, vienlaikus saglabājot izcilu reālistisku attēla kvalitāti. Tas ir absolūts faktiskais globālā interneta statisko fotogrāfiju standarts)"
 
 msgid "mime_jpg"
-msgstr "JPEG attēls (ISO standarts 1992. gadā, zudumaina kompresijas formāts fotogrāfijām, faktiskais standarts fotogrāfijām internetā)"
+msgstr "JPEG kompresēts attēls (1992. gada ISO 10918 starptautiskā standarta formāts ar zudumiem. Pamatojoties uz diskrētā kosinusa transformācijas (DCT) algoritmu, tas nodrošina augstu kompresijas pakāpi, vienlaikus saglabājot izcilu reālistisku attēla kvalitāti. Tas ir absolūts faktiskais globālā interneta statisko fotogrāfiju standarts)"
 
 msgid "mime_png"
-msgstr "PNG attēls (W3C ieteikums 1996. gadā, atbalsta īstas krāsas un caurspīdīgumu, statisks GIF aizstājējs, standarts bezzudumu attēliem internetā)"
+msgstr "PNG bezzudumu attēls (1996. gada W3C ieteiktais pārnēsājamās tīkla grafikas standarts. Tas izmanto bezzudumu kompresijas algoritmu, sākotnēji atbalsta 24 bitu patiesās krāsas un 8 bitu alfa kanāla caurspīdīgumu. Kā augstas izšķirtspējas klasiskā statiskā GIF alternatīva, tas ir absolūts faktiskais interneta bezzudumu pikseļu attēlu standarts)"
 
 msgid "mime_ps"
-msgstr "PostScript lapas apraksta fails (Adobe to izlaida 1985. gadā, lapas apraksta valoda, PDF priekštecis, izmanto drukāšanai un izdevējdarbībai)"
+msgstr "PostScript lapas apraksta fails (1985. gadā Adobe izlaista kaudzē balstīta lapas apraksta valoda. Kā PDF formāta tehnoloģiskais priekštecis, tas pamatā esošā līmenī realizē no aparatūras neatkarīgu teksta izkārtojumu un augstas precizitātes vektorgrafikas atveidošanu. Tas ir pamats profesionālai poligrāfijas izdevējdarbībai un lāzerdrukas jomai)"
 
 msgid "mime_psb"
-msgstr "PSB liels dokuments (Adobe Photoshop formāts ļoti lieliem attēliem, atbalsta milzīgus attēlus, kas lielāki par 2 GB vai 30000 pikseļiem)"
+msgstr "PSB liela izmēra slāņu dokuments (Adobe Photoshop patentēts īpaši liela avota faila iesaiņošanas formāts. Tas pārkāpj standarta PSD formāta 2 GB fiziskā izmēra un 30 000 pikseļu iekšējās adresācijas robežas. Īpaši izstrādāts, lai glabātu īpaši lielu, augsta slāņu dziļuma milzīgu digitālo mākslas aktīvu)"
 
 msgid "mime_psd"
-msgstr "PSD attēls (Adobe Photoshop avota fails, atbalsta slāņus, kanālus, ceļus, attēlu apstrādes nozares standarta formāts)"
+msgstr "PSD slāņu dizaina avota fails (Adobe Photoshop patentēts slāņu attēla inženierijas formāts. Kā grafikas un attēlu jomas nozares standarta konteiners, tas sākotnēji iesaiņo pilnu slāņu atveidošanas koku, bitu karšu kanālus, vektoru apgriešanas ceļus un salikto sajaukšanas režīmus, atbalstot bezzudumu pilnu datu rediģēšanu)"
 
 msgid "mime_webp"
-msgstr "WebP attēls (Google to izstrādāja 2010. gadā, tīmekļa attēla formāts, atbalsta zudumainu/bezzudumu kompresiju un animāciju, kompresijas pakāpe ir 25-35% labāka nekā PNG un 25% labāka nekā JPEG)"
+msgstr "WebP efektīvs attēls (2010. gadā Google izlaists universāls tīmekļa grafikas kodēšanas standarts. Tas radies no VP8 video atslēgas kadru tehnoloģijas, lieliski saderīgs ar kompresiju ar zudumiem, bez zudumiem, caurspīdīgumu un dinamisku atveidošanu. Salīdzinot ar tādas pašas kvalitātes PNG, tas samazina apjomu par 25-35%. Tas ir mūsdienu tīmekļa lapu augstas veiktspējas ielādes pamatakmens)"
 
 msgid "mime_woff"
-msgstr "WOFF tīmekļa fonts (izveidots 2009. gadā, W3C standarts 2018. gadā. Saspiests, pamatojoties uz TrueType/OpenType, optimizēts tīmekļa fontu ielādei, standarta formāts ikonu fontiem mūsdienu tīmekļa vietnēs)"
+msgstr "WOFF tīmekļa burtu fails (2009. gadā izveidots un 2012. gadā kļuvis par W3C standartu, atvērts tīmekļa fontu formāts. Būtībā tas ir standarta TTF/OTF fontu struktūru plūsmas bezzudumu kompresijas iesaiņojums, kas ievērojami optimizē tīkla pārraides joslas platuma izmaksas. Tas ir universāls mūsdienu tīmekļa vietņu ikonu un mākoņa fontu formāts)"
 
 msgid "mime_7z"
-msgstr "7z saspiests arhīvs (Igors Pavlovs to izstrādāja 1999. gadā, 7-Zip programmas īpašais formāts. LZMA algoritms, augsta kompresijas pakāpe, atvērtā koda un bezmaksas. 7z formāts pie tādas pašas kompresijas pakāpes parasti ir par 30-50% mazāks nekā ZIP, izplatīts formāts atvērtā koda kopienā un programmatūras izplatīšanai)"
+msgstr "7z kompresēts arhīvs (1999. gadā Igor Pavlov izstrādāts patentēts 7-Zip formāts. Pamatojoties uz atvērtā koda LZMA/LZMA2 algoritmiem, tam piemīt ļoti augsts kompresijas līmenis. Līdzvērtīgos apstākļos tā apjoms parasti ir par 30-50% mazāks nekā ZIP. Tas ir universāls augstas kompresijas pakāpes formāts atvērtā koda kopienai un programmatūras izplatīšanai)"
 
 msgid "mime_ace"
-msgstr "ACE saspiests arhīvs (izstrādāts 1990. gados, WinACE programmas formāts. Savulaik konkurēja ar RAR, kompresijas pakāpe bija diezgan augsta. Izstrāde tika pārtraukta 2007. gadā, tagad aizstāts ar 7z/RAR, reti izmantots)"
+msgstr "ACE kompresēts arhīvs (1990. gadu patentēts WinACE kompresijas formāts. Kādreiz konkurēja ar RAR formātu un tam bija salīdzinoši augsts kompresijas līmenis. Pēc 2007. gada tehnoloģiskā attīstība apstājās, tagad to ir aizstājuši 7z un RAR formāti. Tas pieder pie mantojuma sistēmu arhivēšanas formātiem)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 saspiests arhīvs (Džuliāns Sjuards to izstrādāja 1996. gadā, bloku šķirošanas kompresijas algoritms. Kompresijas pakāpe ir par 15-20% augstāka nekā GZIP, bet lēnāka. Izplatīts formāts Linux kodola pirmkodam, atvērtā koda programmatūras pakotnēm, paplašinājums .bz2)"
+msgstr "BZIP2 kompresēts arhīvs (1996. gadā Julian Seward izstrādāts bloku šķirošanas kompresijas formāts. Tā pamatā esošā algoritma kompresijas pakāpe ir par 15-20% augstāka nekā GZIP, bet skaitļošanas izmaksas ir lielākas. To bieži izmanto Linux kodola pirmkodam un atvērtā koda programmatūras pakotņu izplatīšanai. Standarta paplašinājums ir .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB saspiests arhīvs (Microsoft to izstrādāja 1995. gadā, Cabinet formāts. Windows instalācijas pakotnes formāts, izmanto draiveriem, sistēmas failu izplatīšanai. Windows Installer (MSI) iekšēji izmanto CAB failu glabāšanai)"
+msgstr "CAB kompresēts arhīvs (1995. gadā Microsoft neatkarīgi izstrādāts Cabinet arhivēšanas formāts. Kā Windows sistēmas sākotnējais instalācijas pakotņu standarts, to izmanto draiveru un kodola failu izplatīšanai. Tas ir arī pamatā esošais krātuves konteiners Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG diska attēls (Apple to ieviesa 1980. gados, Disk Image formāts. Standarta formāts macOS programmatūras izplatīšanai, veiciet dubultklikšķi, lai pievienotu kā virtuālo disku, velciet un nometiet, lai instalētu lietojumprogrammu. Atbalsta kompresiju un šifrēšanu, ir galvenais formāts Mac programmatūras lejupielādei)"
+msgstr "DMG diska attēls (1980. gados Apple izstrādāts Disk Image formāts. Kā macOS programmatūras izplatīšanas standarta konteiners, atbalsta fizisku pievienošanu kā virtuālo failu sistēmu, pamata kompresiju un datu šifrēšanu. Tas ir Mac ekosistēmas lietojumprogrammu izplatīšanas galvenais formāts)"
 
 msgid "mime_emz"
-msgstr "EMZ saspiests attēls (Windows saspiests uzlabots metafails, EMF saspiestā versija. Vektorgrafikas glabāšanas formāts Office dokumentos, būtībā tas ir GZIP saspiests EMF fails)"
+msgstr "EMZ kompresēts attēls (Windows uzlabotā metafaila EMF kompresēta versija. Būtībā tā ir ar GZIP algoritmu kompresēta bināra vektorgrafika. To plaši izmanto Microsoft Office dokumentu sērijā iegultu vektora attēlu glabāšanai)"
 
 msgid "mime_gz"
-msgstr "GZIP saspiests arhīvs (Žans-Lū Gailī un Marks Adlers to izstrādāja 1992. gadā, GNU projekts. Standarta kompresijas rīks Unix/Linux, izplatīts formāts HTTP pārsūtīšanas kompresijai. Paplašinājums .gz, bieži izmanto kopā ar TAR)"
+msgstr "GZIP kompresēts arhīvs (1992. gada GNU projekta Jean-loup Gailly un Mark Adler izstrādāts standarta plūsmas kompresijas formāts. Kā Unix/Linux standarta kompresijas rīks, tas ir arī HTTP transporta slāņa kompresijas (Gzip) pamatstandarts. To bieži izmanto kopā ar TAR arhivēšanu)"
 
 msgid "mime_jar"
-msgstr "JAR saspiests arhīvs (Sun Microsystems to izlaida 1997. gadā, Java ARchive formāts. Būtībā tas ir ZIP fails, izmanto Java bibliotēku un lietojumprogrammu iepakošanai. Pamata formāts Java ekosistēmai, piemēram, Maven, Gradle. Android arī izmanto JAR)"
+msgstr "JAR kompresēts arhīvs (1997. gada Sun Microsystems izlaists Java ARchive arhivēšanas formāts. Būtībā tas ir uz ZIP struktūras balstīts iesaiņošanas konteiners, ko izmanto Java klašu bibliotēku un metadatu iesaiņošanai. Tas ir Maven, Gradle un agrīnās Android ekosistēmas galvenais kompilācijas produkts)"
 
 msgid "mime_lzma"
-msgstr "LZMA saspiests arhīvs (Igors Pavlovs to izstrādāja 1998. gadā, Lempel-Ziv-Markov ķēdes algoritms. 7z formāta galvenais kompresijas algoritms, augsta kompresijas pakāpe, ātrs atspiešanas ātrums. Izmanto programmaparatūras un programmatūras izplatīšanai iegultām sistēmām)"
+msgstr "LZMA kompresēts arhīvs (1998. gadā Igor Pavlov izstrādāts Lempel-Ziv-Markov ķēdes kompresijas algoritms. Kā 7z formāta galvenais dzinējs, tam piemīt ļoti augsts kompresijas līmenis un liels atspiešanas ātrums. To plaši izmanto aparatūras programmatūras un iebūvētu sistēmu izplatīšanai)"
 
 msgid "mime_rar"
-msgstr "RAR saspiests arhīvs (Jevgeņijs Rošals to izstrādāja 1993. gadā, Roshal ARchive formāts. Augsta kompresijas pakāpe, atbalsta sadalīšanu sējumos un atjaunošanas ierakstus. WinRAR programmas formāts, kompresijas pakāpe ir labāka nekā ZIP, bet nepieciešama maksas programmatūra, atvērtā koda rīki, piemēram, unrar, var atspiest)"
+msgstr "RAR kompresēts arhīvs (1993. gadā Eugene Roshal izstrādāts patentēts WinRAR arhivēšanas formāts. Atbalsta sadalīšanu sējumos, fiziskus atkopšanas ierakstus (ECC) un augstas stiprības šifrēšanu. Tā kompresijas pakāpe ir labāka nekā standarta ZIP, un tam ir plašs saderības atbalsts personālajos datoros un komerciālajā jomā)"
 
 msgid "mime_tar"
-msgstr "TAR arhīvs (Unix V7 to ieviesa 1979. gadā, Tape ARchive formāts. Lentes arhīvs, tikai iepako bez kompresijas, bieži izmanto kopā ar GZIP/BZIP2/XZ. Linux pakotņu pirmkods, Docker attēlu slāņu glabāšana izmanto TAR formātu)"
+msgstr "TAR arhivēšanas pakotne (1979. gada Unix V7 laikmeta lentes arhivēšanas formāts. Veic tikai failu plūsmas iesaiņošanu bez datu kompresijas. To bieži kombinē ar GZIP/BZIP2/XZ. Tas ir Linux pirmkodu pakotņu un Docker attēlu slāņu krātuves pamatstandarts)"
 
 msgid "mime_tgz"
-msgstr "TGZ saspiests arhīvs (TAR + GZIP kombinētais formāts, paplašinājums .tgz vai .tar.gz. Visizplatītākais formāts Unix/Linux programmatūras pakotņu izplatīšanai, pirmkoda pakotnes, binārās pakotnes, plaši izmantots, pārstāv \"izspiest un lietot\")"
+msgstr "TGZ kompresēts arhīvs (TAR arhivēšanas un GZIP kompresijas plūsmas kombinācija, paplašinājumi .tgz vai .tar.gz. Kā visizplatītākais programmatūras pakotņu izplatīšanas formāts Unix/Linux vidē, to plaši izmanto izvietošanai no pirmkoda un bezinstalācijas bināro pakotņu izplatīšanai)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 saspiests arhīvs (TAR + BZIP2 kombinētais formāts, paplašinājums .tbz2 vai .tar.bz2. Kompresijas pakāpe ir par 15-20% augstāka nekā TGZ, piemērots lielu failu izplatīšanai, Linux kodols ilgu laiku izmantoja šo formātu)"
+msgstr "TBZ2 kompresēts arhīvs (TAR arhivēšanas un BZIP2 kompresijas plūsmas kombinācija, paplašinājumi .tbz2 vai .tar.bz2. Salīdzinot ar TGZ, var palielināt kompresijas pakāpi vēl par 15-20%, piemērots lielu failu pārsūtīšanai. Ilgu laiku tika izmantots Linux kodola pirmkodu izplatīšanai)"
 
 msgid "mime_xz"
-msgstr "XZ saspiests arhīvs (ieviests 2009. gadā, pamatojoties uz LZMA2 algoritmu. Ļoti augsta kompresijas pakāpe, par 30-50% labāka nekā GZIP, atspiešanas ātrums ir salīdzinoši ātrs. Linux kodols, pakotņu pārvaldnieki (piemēram, Debian .deb iekšpusē) to plaši izmanto, ieteicamais formāts pašreizējā Linux ekosistēmā)"
+msgstr "XZ kompresēts arhīvs (2009. gadā izlaists nākamās paaudzes augstas kompresijas pakāpes formāts. Pamatojoties uz LZMA2 algoritmu, datu kompresijas pakāpe ir par 30-50% augstāka nekā GZIP, saglabājot lielu atspiešanas ātrumu. Tas ir noteikts kā ieteicamais izplatīšanas standarts, ko izmanto Linux kodols un galvenie pakotņu pārvaldnieki (piemēram, Debian .deb iekšpusē))"
 
 msgid "mime_z"
-msgstr "Z saspiests arhīvs (Unix komandas compress formāts 1985. gadā, LZW algoritms. Agrīns Unix kompresijas formāts, aizstāts ar GZIP. Paplašinājums .Z, mūsdienu sistēmas to izmanto reti)"
+msgstr "Z kompresēts arhīvs (1985. gada Unix komandas compress LZW kompresijas formāts. Kā agrīnās Unix sistēmas standarta kompresijas standarts, tagad to ir pilnībā aizstājis efektīvāks GZIP formāts. Mūsdienu tīkla datplūsmā tas ir rets vēsturisks formāts)"
 
 msgid "mime_zip"
-msgstr "ZIP saspiests arhīvs (Fils Katzs to izstrādāja 1989. gadā, PKZIP formāts. Windows atbalsta natively, visizplatītākais kompresijas formāts internetā. Atbalsta vairākus failus, direktoriju struktūru, var izvēlēties kompresijas algoritmu. Java JAR, Android APK, Office dokumentu DOCX/XLSX ir balstīti uz ZIP formātu)"
+msgstr "ZIP kompresēts arhīvs (1989. gadā Phil Katz izstrādāts PKZIP universāls arhivēšanas formāts. To sākotnēji atbalsta galvenās operētājsistēmas. Tas ir visplašāk izmantotais konteinera standarts internetā. Mūsdienu Java JAR, Android APK un Office dokumenti (OOXML) balstās uz ZIP struktūru)"
 
 msgid "mime_zst"
-msgstr "Zstandard saspiests arhīvs (Facebook to izstrādāja 2015. gadā, Yann Collet dizains. Liela ātruma kompresijas algoritms, kompresijas pakāpe tuva LZMA, ātrums daudz lielāks par GZIP. Linux kodols 5.9+ atbalsta, Arch Linux pacman, Debian APT pakāpeniski ievieš, jaunas paaudzes kompresijas standarts)"
+msgstr "Zstandard kompresēts arhīvs (2015. gadā Facebook darbinieka Yann Collet izstrādāts jaunas paaudzes plūsmas kompresijas standarts. Sasniedz gandrīz LZMA kompresijas pakāpi, vienlaikus nodrošinot daudz lielāku caurlaidspēju nekā GZIP. To dziļi ieviesuši Linux kodols (5.9+) un Arch/Debian pakotņu pārvaldnieki)"
 
 msgid "mime_lz4"
-msgstr "LZ4 saspiests arhīvs (Yann Collet to izstrādāja 2011. gadā, ārkārtīgi ātrs kompresijas algoritms. Kompresijas ātrums ir vairāk nekā 10 reizes ātrāks nekā GZIP, piemērots reāllaika kompresijas scenārijiem. Linux kodols, OpenZFS, Hadoop to plaši izmanto, pirmā izvēle scenārijos, kur prioritāte ir ātrums)"
+msgstr "LZ4 kompresēts arhīvs (2011. gadā Yann Collet izstrādāts ārkārtīgi ātrs plūsmas kompresijas algoritms. Tā caurlaidspējas ātrums ir vairāk nekā 10 reizes lielāks nekā GZIP, un tam ir ļoti zemas CPU izpildes izmaksas. To plaši izmanto Linux kodolā, OpenZFS failu sistēmā un Hadoop reāllaika datu plūsmu apstrādē)"
 
 msgid "mime_lzo"
-msgstr "LZO saspiests arhīvs (Markus Oberhumer to izstrādāja 1996. gadā, Lempel-Ziv-Oberhumer algoritms. Atspiešanas ātrums ir ārkārtīgi ātrs, kompresijas pakāpe ir vidēja. Linux kodols Squashfs, OpenWrt programmaparatūra to izmanto, piemērots iegultām sistēmām)"
+msgstr "LZO kompresēts arhīvs (1996. gadā Markus Oberhumer izstrādāts Lempel-Ziv-Oberhumer algoritms. Tā galvenā prioritāte ir ārkārtīgi ātra atspiešanas veiktspēja. To plaši iegulst Linux kodola Squashfs attēlos, OpenWrt programmatūrā un dažādās resursu ierobežotās iebūvētās sistēmās)"
 
 msgid "mime_msi"
-msgstr "MSI instalācijas pakotne (Microsoft to izlaida 1999. gadā, Windows Installer pakotnes formāts. Standarta instalācijas formāts Windows lietojumprogrammām, atbalsta darījumu atcelšanu, komponentu pārvaldību, klusu instalāciju. Pirmā izvēle programmatūras izplatīšanai uzņēmumu līmenī, joprojām galvenais formāts Windows programmatūras instalēšanai mūsdienās)"
+msgstr "MSI sistēmas instalācijas pakotne (1999. gadā Microsoft izlaists Windows Installer datu iesaiņošanas formāts. Kā Windows lietojumprogrammu līmeņa standarta izvietošanas specifikācija, sākotnēji atbalsta pamatā esošo darbību atsaukšanu, komponentu dzīves cikla pārvaldību un klusu instalēšanu bez pakešu apstrādes. Tas ir uzņēmumu līmeņa centralizētas programmatūras izplatīšanas un politiku ieviešanas pamatstandarts)"
 
 msgid "mime_pkg"
-msgstr "PKG instalācijas pakotne (macOS lietojumprogrammu instalācijas pakotnes formāts, pamatojoties uz Apple Installer tehnoloģiju. Standarta formāts macOS programmatūras izplatīšanai, atbalsta komponentu atlasi, instalācijas skriptus, atinstalēšanas funkciju. Veiciet dubultklikšķi uz .pkg faila, lai instalētu, izplatīta izplatīšanas metode programmatūrai ārpus Mac App Store)"
+msgstr "PKG starpplatformu programmatūras instalācijas pakotne. 1. FreeBSD programmatūras pakotne: pkgng standarts, paplašinājumi .pkg vai .txz, pamatojoties uz TAR+XZ/Zstd kompresiju, atbalsta atkarību atrisināšanu un parakstu pārbaudi; 2. macOS instalācijas pakotne: pamatojoties uz Apple Installer formātu, atbalsta pielāgotus komponentus, instalācijas skriptus un sistēmas līmeņa atinstalēšanu. Tie ir attiecīgi BSD serveru un Mac sistēmu galvenie izplatīšanas nesēji."
 
 msgid "mime_apk"
-msgstr "APK Android lietojumprogrammu pakotne (Google to ieviesa 2008. gadā, tradicionālais Android lietojumprogrammu instalēšanas formāts. APK būtībā ir ZIP pakotne, kas satur kodu, resursus un manifesta failu. Kopš 2021. gada Google Play pieprasa, lai jaunās lietojumprogrammas izmantotu AAB formātu, bet APK joprojām tiek izmantots atkļūdošanai, trešo pušu veikaliem un sānu ielādei)"
+msgstr "APK Android lietojumprogrammu pakotne (2008. gadā Google kopā ar Android izlaista tradicionāla lietojumprogrammu instalācijas pakotne. Pamatojoties uz ZIP arhivēšanas struktūru, iesaiņo kompilētu Dalvik baitu kodu (DEX), metadatu manifestu un globālos resursus. Tagad to plaši izmanto vietējai izstrādes atkļūdošanai, trešo pušu izplatīšanai un instalēšanai no sāniem)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS lietojumprogrammu pakotne (iOS App Store Package, iOS/iPadOS lietojumprogrammu instalēšanas formāts. Ieviests 2008. gadā kopā ar iPhone SDK. Jāizplata caur App Store vai jāparaksta ar uzņēmuma sertifikātu. Satur izpildāmo failu, resursus, Info.plist un paraksta informāciju)"
+msgstr "IPA Apple lietojumprogrammu pakotne (2008. gadā kopā ar iPhone SDK izlaists iOS/iPadOS specifisks iesaiņošanas konteiners. Būtībā tas ir ZIP arhīvs, kas aizsargāts ar FairPlay digitālo tiesību pārvaldību vai uzņēmuma līmeņa koda parakstu. Tas satur Mach-O bināru izpildāmu failu, lietojumprogrammas resursu koku un Info.plist metadatu konfigurāciju)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS lietojumprogrammu pakotne (HarmonyOS Ability Package, HarmonyOS lietojumprogrammas pamatvienība. Ieviests 2020. gadā ar HarmonyOS 2.0. Atbalsta divus veidus: entry un feature, izplatīšanas formāts Huawei tālruņiem, planšetdatoriem, viedpulksteņiem un citām HarmonyOS ierīcēm)"
+msgstr "HAP HarmonyOS lietojumprogrammu pakotne (2020. gadā kopā ar HarmonyOS 2.0 izlaista HarmonyOS elastīgas izvietošanas pamatvienība. To veido galvenais Entry modulis vai Feature paplašinājuma funkcionālie moduļi. Tas ir galvenais vairāku gala ierīču (telefonu, planšetdatoru, valkājamo ierīču) viedo gala ierīču izplatīšanas formāts)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS statiskā koplietojamā bibliotēka (HarmonyOS Archive, HarmonyOS statiskā koplietojamā bibliotēka, ko var koplietot vairākas HAP pakotnes, izmanto komponentu izstrādei un moduļu atkārtotai izmantošanai)"
+msgstr "HAR HarmonyOS statiskā koplietojamā pakotne (HarmonyOS patentēts statiskas koplietojamās bibliotēkas arhivēšanas fails. To izmanto kopīgu komponentu, pamata resursu kodu un kompilācijas laika atkarību iesaiņošanai. To statiski saista un koplieto vairāki HAP moduļi. Tas ir HarmonyOS sistēmas komponentu izstrādes un vairāku moduļu atkārtotas izmantošanas pamats)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google to izlaida 2018. gadā, kopš 2021. gada Google Play pieprasa, lai jaunas lietojumprogrammas izmantotu šo formātu. AAB ir izplatīšanas formāts, Google Play ģenerē optimizētus APK atbilstoši ierīces konfigurācijai (CPU arhitektūra, ekrāna blīvums, valoda), instalācijas pakotnes lielums samazinās vidēji par 35%. Izstrādātāji augšupielādē AAB, lietotāji lejupielādē APK)"
+msgstr "AAB Android lietojumprogrammu saišķis (2018. gadā Google izlaists un 2021. gadā izveidots Google Play dinamiskās izplatīšanas formāts. Kā tīrs izplatīšanas objekts, mākonī to dinamiski apgriež un kompilē atbilstoši mērķa ierīces CPU arhitektūrai, ekrāna blīvumam un valodai, pēc vajadzības ģenerējot optimizētus APK failus. Tas vidēji par 35% samazina pārraides joslas platuma izmaksas)"
 
 msgid "mime_xapk"
-msgstr "XAPK lietojumprogrammas pakotne (trešās puses Android lietojumprogrammas paplašinājuma pakotne, satur APK + OBB datu failus. Izmanto lielām spēlēm un sarežģītām lietojumprogrammām, atrisina 100 MB ierobežojumu vienam APK failam. Izplatīts trešo pušu lietojumprogrammu veikalos, piemēram, APKPure, APKMirror, nav oficiāls Google formāts)"
+msgstr "XAPK paplašināta lietojumprogrammu pakotne (trešo pušu Android kopienas izveidots neoficiāls lietojumprogrammu paplašinājuma standarts. Apvienojot standarta APK failu ar lielu OBB spēles datu paplašinājumu, fiziski pārkāpj Google Play 100 MB viena faila izmēra ierobežojumu. To bieži izmanto spēļu izplatīšanas platformās)"
 
 msgid "mime_appx"
-msgstr "Windows lietojumprogrammas pakotne (Microsoft to izlaida 2012. gadā, instalācijas formāts Windows 8/10/11 lietojumprogrammām. Atbalsta UWP lietojumprogrammas un darbvirsmas lietojumprogrammu konvertēšanu, izplata caur Microsoft Store. 2024. gadā Microsoft izlaida MSIX kā pēcteci, pakāpeniski aizstājot APPX)"
+msgstr "APPX mūsdienīga lietojumprogrammu pakotne (2012. gadā Microsoft kopā ar Windows 8 izlaista UWP lietojumprogrammu izvietošanas specifikācija. Tai piemīt smilškastes izolācijas izpilde un viegla atinstalēšana. Kā agrīns galvenais Microsoft Store standarts, mūsdienu Windows ekosistēmā tā jau ir ienākusi dzīves cikla beigu posmā, attīstoties uz MSIX)"
 
 msgid "mime_msix"
-msgstr "MSIX lietojumprogrammas pakotne (Microsoft to izlaida 2018. gadā, jaunas paaudzes iepakošanas formāts Windows lietojumprogrammām. Apvieno APPX un MSI priekšrocības, atbalsta visu veidu Windows lietojumprogrammas, var izplatīt caur Microsoft Store vai sānu ielādi, ieteicamais formāts Windows 11)"
+msgstr "MSIX jaunās paaudzes lietojumprogrammu pakotne (2018. gadā Microsoft izlaists pilnīgi jauns Windows standartizācijas iesaiņošanas standarts. Lieliski apvieno APPX lietojumprogrammu drošības smilškastes īpašības ar MSIX uzņēmumu līmeņa aktīvu pārvaldības priekšrocībām. Pilnībā saderīgs ar visu veidu Win32 lietojumprogrammām. Tas ir ieteicamais izplatīšanas standarts Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage lietojumprogrammas pakotne (ieviests 2004. gadā, Linux lietojumprogrammas formāts bez instalācijas. 'Viena lietojumprogramma - viens fails', darbojas tieši bez instalācijas, atbalsta lielāko daļu Linux distribuciju, izplatīts veids, kā izstrādātāji izplata Linux programmatūru)"
+msgstr "AppImage bezinstalācijas lietojumprogrammu pakotne (2004. gadā aizsākts Linux viena izpildāma arhīva standarts. Izmanto 'viena lietojumprogramma – viens fails' pašpietiekamu arhitektūru. Izpildlaikā to tieši pievieno kā tikai lasāmu virtuālo failu sistēmu, izmantojot FUSE mehānismu, lai izpildītu, nodrošinot nulles atkarības darbību uzreiz visos Linux izplatījumos)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak lietojumprogrammas pakotne (ieviests 2015. gadā, Linux lietojumprogrammas formāts smilškastē. Darbojas vairākās distribucijās, izolēts no resursistēmas, izstrādi vada Fedora un Red Hat, noklusējuma GNOME programmatūras centra formāts)"
+msgstr "Flatpak smilškastes lietojumprogrammu pakotne (2015. gadā Red Hat un GNOME izstrādāts starp Linux izplatījumiem darbvirsmas lietojumprogrammu izplatīšanas standarts. Tas pamatā balstās uz Linux kodola Namespace un Cgroups mehānismiem, lai īstenotu ārkārtīgi stingru lietojumprogrammu līmeņa drošības smilškastes izolāciju. Tas ir mūsdienu atvērtā koda OS programmatūras centru pamats)"
 
 msgid "mime_snap"
-msgstr "Snap lietojumprogrammas pakotne (Canonical to izlaida 2014. gadā, Ubuntu mātes uzņēmums izstrādāja, universāls Linux lietojumprogrammas formāts. Automātiska atjaunināšana, smilškastes izolācija, atbalsta 40+ Linux distribucijas, noklusējuma Ubuntu programmatūras centra formāts)"
+msgstr "Snap konteinerizēta lietojumprogrammu pakotne (2014. gadā Ubuntu mātes uzņēmuma Canonical izlaists universāls Linux izvietošanas standarts. Izmanto pašpietiekamu SquashFS attēla pievienošanas arhitektūru, atbalsta automatizētus papildu atjauninājumus un stingru AppArmor smilškastes izolāciju. Tas ir Ubuntu programmatūras centra ekosistēmas galvenais noklusējuma formāts)"
 
 msgid "mime_deb"
-msgstr "Debian programmatūras pakotne (Debian projekts to izlaida 1993. gadā, standarta instalācijas formāts Debian/Ubuntu un to atvasinājumiem. Pārvalda, izmantojot dpkg, APT ir tā pakotņu pārvaldnieka priekšgals, viens no visnobriedušākajiem pakotņu formātiem Linux ekosistēmā, joprojām galvenais Debian saimē mūsdienās)"
+msgstr "DEB sistēmas programmatūras pakotne (1993. gadā Debian projekta izveidota bināro un pirmkodu iesaiņošanas specifikācija. Kā Debian, Ubuntu un visu to atvasinājumu sistēmu pamatā esošais instalācijas standarts, tā paļaujas uz dpkg kodolu atpakošanai un uzturēšanai, kā priekšējo daļu izmantojot APT kā efektīvu pakotņu pārvaldnieku. Tas ir visnobriedušākais programmatūras izplatīšanas pamats Linux ekosistēmā)"
 
 msgid "mime_rpm"
-msgstr "RPM programmatūras pakotne (Red Hat to izlaida 1997. gadā, standarta formāts tādām distribucijām kā Red Hat/Fedora/CentOS/SUSE. RPM nozīmē 'Red Hat Package Manager', kopā ar DEB veido divus galvenos Linux pakotņu formātus, joprojām galvenais RHEL saimē mūsdienās)"
+msgstr "RPM sistēmas programmatūras pakotne (1997. gadā Red Hat izlaists Red Hat pakotņu pārvaldnieka iesaiņošanas standarts. Kopā ar DEB to dēvē par vienu no diviem galvenajiem tradicionālās Linux pakotņu pārvaldības virzieniem. Sākotnēji tam ir transakciju līmeņa atkarību pārbaude un pamatā esoša programmatūras digitālā paraksta pārbaude. Joprojām tas ir absolūti dominējošais izplatīšanas standarts tādām Red Hat ekosistēmām kā RHEL, Fedora un CentOS)"
 
 msgid "mime_pacman"
-msgstr "Arch programmatūras pakotne (Arch Linux to izlaida 2002. gadā, .pkg.tar.zst formāts, ko izmanto pacman pakotņu pārvaldnieks. Arch Linux rolling release distribuciju kodols, pazīstams ar savu vienkāršību un KISS principu, AUR (Arch User Repository) ir tā pazīme)"
+msgstr "Pacman arhivēta programmatūras pakotne (2002. gadā Arch Linux kopā ar pacman pārvaldnieku izveidots .pkg.tar.zst iesaiņošanas formāts. Kā Arch rites atjaunināšanas mehānisma pamats, tas balstās uz Zstandard ātrgaitas un augstas kompresijas pakāpes algoritmu, kopā ar AUR (Arch lietotāju programmatūras krātuvi) ekosistēmu. Tas ir mūsdienīgs pakotņu izplatīšanas standarts, kas atspoguļo minimālisma un KISS principu)"
 
 msgid "mime_exe"
-msgstr "EXE izpildāmais fails (Windows izpildāmās programmas formāts, saīsinājums no 'Executable'. Windows operētājsistēmas dzimtais izpildāmais formāts, satur PE struktūru. Attīstījies no MZ formāta no MS-DOS laikmeta, Windows NT ieviesa PE (Portable Executable) formātu 1993. gadā, kas tiek izmantots joprojām. Programmatūras instalācijas pakotnes, lietojumprogrammas, sistēmas rīki izmanto šo formātu. Lietotājs veic dubultklikšķi, lai to palaistu, visplašāk izmantotais izpildāmais formāts pasaulē)"
+msgstr "EXE sākotnējais izpildāmais fails (Windows platformas pārnēsājama izpildāmā (PE) binārās programmas formāts. Tehnoloģiski tas cēlies no MS-DOS laikmeta MZ galvenes struktūras. Kopš 1993. gada Windows NT tas ir pilnībā izveidots kā PE struktūras specifikācija. Tas ir visplašāk izmantotais izpildes standarts pasaulē mašīnkoda instrukcijām, statisko resursu sadaļām un sistēmas kodola ielādei)"
 
 msgid "mime_dll"
-msgstr "DLL dinamiski saistīta bibliotēka (Microsoft to ieviesa 1993. gadā, Dynamic Link Library. Windows koplietojamā koda bibliotēka, programma tiek dinamiski ielādēta izpildes laikā, ietaupa atmiņu un diska vietu. Sistēmas komponenti, lietojumprogrammu spraudņi, draiveri izmanto DLL formātu. Galvenais Windows API ieviešanas veids, 'DLL elles' problēma ir mazināta .NET laikmetā)"
+msgstr "DLL dinamiskās saistīšanas bibliotēka (Windows platformas Dynamic Link Library koplietojamā koda bibliotēkas specifikācija. Dinamiski ielādējot un pārvietojot simbolus izpildlaikā, tā ievērojami taupa fizisko atmiņu un diska vietu. Kā galvenais Windows API ieviešanas veids, tās agrīnā DLL Hell problēma mūsdienu sistēmās ir atrisināta, izmantojot SxS paralēlās izolācijas mehānismu)"
 
 msgid "mime_com"
-msgstr "COM izpildāmais fails (izpildāmais formāts no MS-DOS laikmeta, saīsinājums no 'Command'. Ļoti vienkārša faila struktūra, 64KB ierobežojums, galvenais formāts pirms Windows 3.x, novecojis. Mūsdienu Windows izmanto EXE formātu, COM paplašinājums joprojām tiek izmantots dažiem komponentu failiem)"
+msgstr "COM klasisks izpildāmais fails (MS-DOS laikmeta vecākais atmiņas attēla (Command) izpildes formāts. Izmanto nestrukturētu tīra koda sadaļas dizainu, ko ierobežo 64 KB fiziskās atmiņas adresācijas segmenta augšējā robeža. Tagad tas ir novecojis un pieder pie vēsturiskā mantojuma, taču mūsdienu Windows arhitektūrā to joprojām izmanto kā noteiktu komponentu saskarni, lai nodrošinātu ierobežotu saderību)"
 
 msgid "mime_aac"
 msgstr "AAC audio (MPEG standarts 1997. gadā, Advanced Audio Coding. MP3 pēctecis, audio kvalitāte labāka nekā MP3 pie tāda paša bitu pārraides ātruma, noklusējuma audio formāts YouTube, iTunes, Nintendo Switch)"

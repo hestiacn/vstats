@@ -450,8 +450,8 @@ msgstr "Óstach - Leathanaigh - Iontrálacha - Leithead banda - Dáta na cuairte
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "Sábháiltear [Dáta tosaigh na cuairte deireanaí] agus [Leathanach deireanach na cuairte deireanaí] ach amháin mura bhfuil an seisiún críochnaithe"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Caithfidh na chéad %s iontrálacha a bheith ar dtús (ní gá ord do na cinn eile)"
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Tá an chéad %s mír eagraithe de réir líon na n-amas in ord íslitheach; níl ord na míreanna eile sainithe."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Logáil Isteach - Leathanaigh - Iontrálacha - Leithead banda - Cuairt dheireanach"
@@ -465,8 +465,8 @@ msgstr "ID Péiste - Iontrálacha - Leithead banda - Cuairt dheireanach"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Ríomhphost - Iontrálacha - Leithead banda - Cuairt dheireanach"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Caithfidh na chéad %s iontrálacha a bheith ar dtús (ní gá ord do na cinn eile)"
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Tá an chéad %s seoladh ríomhphoist eagraithe de réir líon na n-amas in ord íslitheach; níl ord na seoltaí eile sainithe."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Leathanaigh - Leithead banda - Iontráil - Scoir"
@@ -675,6 +675,27 @@ msgstr "Níl an paraiméadar SiteDomain sainithe i do chomhad config/domain, nó
 msgid "Please run as Administrator to set permissions"
 msgstr "Rith mar Riarthóir le ceadanna a shocrú"
 
+msgid "This directory lacks read permission"
+msgstr "Níl cead léitheoireachta ag an eolaire seo"
+
+msgid "Please set read permission for directory"
+msgstr "Socraigh cead léitheoireachta don eolaire, le do thoil"
+
+msgid "Missing required parameter in config file"
+msgstr "Paraiméadar riachtanach ar iarraidh sa chomhad cumraíochta"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Seiceáil go bhfuil 'DirData' sainithe, le do thoil."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Is cosúil go bhfuil ainm fearainn ar iarraidh nó neamhchríochnaithe i seoladh an bhrabhsálaí"
+
+msgid "Please check the URL parameter"
+msgstr "Seiceáil paraiméadar an URL, le do thoil"
+
+msgid "Format description"
+msgstr "Cur síos ar an bhformáid"
+
 msgid "Please set execute permission"
 msgstr "Le do thoil, socraigh cead feidhmithe"
 
@@ -800,376 +821,379 @@ msgstr "Greamaire"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Comhad téacs (caighdeánaithe ASCII i 1963, téacs simplí gan formáid. Bunús do gach cód foinse, cumraíocht agus loga. Úsáideann Unix LF, úsáideann Windows CRLF le haghaidh brislíne, fós an fhormáid sonraí is uilíche san ríomhaireacht)"
+msgstr "TXT comhad gnáth-théacs (gnáth-théacs neamhfhormáidithe a chaighdeánaigh ASCII i 1963. Mar bhunús do gach cód foinse, comhad cumraíochta agus logaí córais, is é a shreafaí rialaithe athraithe líne tras-ardáin (CRLF ar Windows, LF ar Unix) an caighdeán malartaithe sonraí is uilíche fós i saol na ríomhaireachta)"
 
 msgid "mime_log"
-msgstr "Comhad loga (taifeadann sé faisnéis um fhorghníomhú córas agus feidhmchlár i dtéacs simplí, a úsáidtear le haghaidh dífhabhtaithe, anailíse feidhmíochta agus iniúchta slándála. Formáidí caighdeánacha mar Apache combined log, Nginx access log, syslog, srl.)"
+msgstr "LOG loga rith córais (taifeadann sé staid rith an chórais oibriúcháin, an eithne agus leibhéal na bhfeidhmchlár mar shócmhainní gnáth-théacs. Clúdaíonn sé logaí rochtana Nginx/Apache (Loga Comhcheangailte) agus sonraíocht caighdeánach syslog, arb é an phríomhfhoinse sonraí é le haghaidh fabhtcheartaithe, anailíse feidhmíochta sruthaithe agus iniúchta slándála)"
 
 msgid "mime_page"
-msgstr "Leathanach HTML (cheap Tim Berners-Lee an Gréasán Domhanda i 1989, shainigh sé na trí theicneolaíocht HTML/HTTP/URL i 1990 agus chuir sé ar fáil iad saor in aisce gan phaitinn. Rinneadh HTML5 mar chaighdeán oifigiúil W3C i 2014, ag tacú le taispeáint, ilmheáin agus cló. Buateoir Ghradam Turing 2016)"
+msgstr "HTML leathanach gréasáin hipeartéacs (a chruthaigh Tim Berners-Lee i 1989, bunchloch an Ghréasáin Dhomhanda. Mar theanga mharcála hipeartéacs uilíoch oscailte, rinneadh sonraíocht HTML5 ina caighdeán oifigiúil W3C i 2014, tacaíonn sé go dúchasach le ilmheán struchtúrtha, idirghníomhú séimeantach agus leagan amach leathanach sreabhach, bronnadh Duais Turing air i 2016)"
 
 msgid "mime_khtml"
-msgstr "Inneall leathanach gréasáin KHTML (seolta le KDE 2.0 i 1998, inneall rindreála an bhrabhsálaí Konqueror. I 2001, chruthaigh Apple WebKit bunaithe ar KHTML, agus i 2008 chruthaigh Google Blink ó WebKit, agus é mar chroílár na mbrabhsálaithe Chrome, Edge, Safari, srl. Is sampla é KHTML den phobal foinse oscailte a leag bunchlocha d'innill nua-aimseartha bhrabhsálaithe, agus leanann a oidhreacht theicniúil ar aghaidh trí WebKit/Blink)"
+msgstr "KHTML inneall teimpléid ghréasáin (sonraíocht inneall rindreála brabhsálaí KDE 2.0 ó 1998. Mar thagarmharc foinse oscailte a bhunaigh bunchlocha rindreála gréasáin nua-aimseartha, spreag a oidhreacht theicniúil go díreach croíleacáin WebKit Apple agus Blink Google, agus leanann sí ar aghaidh fós trí ailtireachtaí gréasáin dinimiciúla sreabhacha nua-aimseartha)"
 
 msgid "mime_script"
-msgstr "Script dinimiciúil (teanga ateangaireachta, gan gá le tiomsú. Áirítear ASP, JSP, CGI, ColdFusion, Tcl, VBScript, srl., a úsáidtear go forleathan i bhforbairt gréasáin luath, riarachán córas agus tascanna uathoibrithe. Tá teangacha scripte nua-aimseartha ar nós Python, Ruby agus JavaScript tagtha chun cinn mar phríomhuirlisí forbartha iomlán an chruach)"
+msgstr "SCRIPT script dinimiciúil léirithe (catagóir ghinearálta do shruthanna cóid fhoinse a fhorghníomhaítear líne ar líne ag timpeallacht rith áirithe nó ateangaire gan réamhthiomsú. Clúdaíonn sé ASP, JSP, CGI agus Tcl, a úsáidtear go forleathan le haghaidh comhéadain chomhchoiteanna geata taobh freastalaí, rialú próisis uathoibrithe agus greamú tascanna ar leibhéal an chórais)"
 
 msgid "mime_js"
-msgstr "Script JavaScript (chruthaigh Brendan Eich ag Netscape i 10 lá i 1995, teanga ríomhchlárúcháin dhúchasach an bhrabhsálaí. Caighdeánaithe mar ECMAScript i 1997, le breith Node.js i 2009 rinneadh teanga iomlán an chruach de, agus is é npm an bainisteoir pacáistí is mó ar domhan. Is í an teanga is mó a bhfuil tóir uirthi ar GitHub le roinnt blianta anuas)"
+msgstr "JavaScript script (timpeallacht ríomhchlárúcháin dhúchasach bhrabhsálaí Netscape i 1995. Bhunaigh sé caighdeán tionscail ECMAScript i 1997, rugadh timpeallacht rith Node.js i 2009, a bhris teorainneacha brabhsálaí agus a chruthaigh ailtireacht neamhbhloic iomlán-chruach, in éineacht le córas éiceachóras pacáiste bogearraí npm, an ceann is mó ar domhan)"
 
 msgid "mime_py"
-msgstr "Script Python (chruthaigh Guido van Rossum é i 1991, aitheanta as a eangú éigeantach agus a chomhréir bheacht. Úsáidtear go forleathan é i bhforbairt gréasáin, eolaíocht sonraí, intleacht shaorga agus uathoibriú oibríochtaí. Buaiteoir iolrach Theanga na Bliana TIOBE)"
+msgstr "Python script (teanga scriptithe léirithe ard-leibhéil a chruthaigh Guido van Rossum i 1991. Mar gheall ar a inléiteacht gan chailliúint de bharr eangú éigeantach agus a dhearadh il-pharaidím, tá sé bunaithe anois mar chaighdeán tionscail d'ailtireacht ghréasáin nua-aimseartha, eolaíocht sonraí iomlán-chruach, oiliúint mhúnlaí Intleachta Saorga (AI) agus oibríochtaí uathoibrithe dúchasach scamall)"
 
 msgid "mime_sh"
-msgstr "Script Shell (a rugadh le Unix i 1971, teanga scriptithe ordaithe. Úsáidtear é le haghaidh riarachán córas, tascanna uathoibrithe, tosú seirbhísí agus scripteanna imscaradh. Inniúlacht riachtanach d'oibríochtaí Linux)"
+msgstr "Shell script (script ateangaire ordaithe caighdeánaigh ó ré Unix i 1971. Cuimsíonn sé orduithe ar leibhéal eithne mar Bash, Sh, Dash, a fhorghníomhaítear de ghnáth le síneadh .sh, arb é an ghreamaitheach uilíoch ar leibhéal eithne é le haghaidh rialú próiseas íseal-leibhéil, cumraíocht timpeallachta gan suiteáil agus imscaradh uathoibrithe i gcórais oibriúcháin nua-aimseartha cosúil le Unix)"
 
 msgid "mime_rb"
-msgstr "Script Ruby (chruthaigh Yukihiro Matsumoto i 1995, díríonn sé ar shástacht an ríomhchláraitheora. Bhí creat Ruby on Rails ina cheannródaí ar pharadigm forbartha trí chomhaontú seachas cumraíocht, agus chuaigh sé i bhfeidhm go mór ar dhearadh chreatanna gréasáin nua-aimseartha)"
+msgstr "Ruby script (teanga scriptithe atá dírithe ar réada a chruthaigh Yukihiro Matsumoto i 1995. Leis an bhfealsúnacht a bhaineann le meas an-mhór a bheith agat ar thaithí an fhorbróra mar chroídhearadh, rinne a chreat Ruby on Rails réabhlóidiú ar ailtireacht gréasáin nua-aimseartha ardleibhéil tríd an bparaidím ‘Coinbhinsiún thar Chumraíocht’ (CoC) a bhunú)"
 
 msgid "mime_pl"
-msgstr "Script Perl (chruthaigh Larry Wall i 1987, aitheanta as a pragmatachas, ar a dtugtar 'Scian Arm na hEilvéise'. Bhí CPAN ina cheannródaí ar bhainisteoirí pacáistí teanga nua-aimseartha, le tionchar mór ar phróiseáil téacs, riarachán córas agus CGI)"
+msgstr "Perl script (teanga scriptithe phragmatach a chruthaigh Larry Wall i 1987. Mar cheannródaí ar bhainisteoirí pacáistí nua-aimseartha (CPAN), tugtar an ‘scian Arm na hEilvéise’ ar phróiseáil téacs. I mód CGI nua-aimseartha, feidhmíonn sé mar bhunús ard-iontaofachta d'anailís logaí lena dthomhaltas cuimhne fisiciúil an-íseal agus a phróiseáil éifeachtúil slonn rialta)"
 
 msgid "mime_php"
-msgstr "Leathanach gréasáin PHP (chruthaigh Rasmus Lerdorf é i 1995, deartha go sonrach d'fhorbairt gréasáin. Úsáideann níos mó ná 70% de na láithreáin ghréasáin ar domhan PHP, ag tiomáint ardáin mar WordPress, Facebook agus Wikipedia. Thug PHP 8 isteach tiomsú JIT, ag feabhsú feidhmíochta go suntasach)"
+msgstr "PHP leathanach gréasáin dinimiciúil (a chruthaigh Rasmus Lerdorf i 1995, deartha go sonrach d'fhorbairt gréasáin. Mar theicneolaíocht lárnach a thiomáineann os cionn 70% de na láithreáin ghréasáin ar fud an domhain, bunaíonn sí feidhmchláir olltáirgthe mar WordPress agus Wikipedia. Ó PHP 8, le tabhairt isteach inneall rith JIT (díreach-in-am), tá sé tagtha chun cinn i dtreo ailtireacht freastalaí iomlán-chruach ardfheidhmíochta)"
 
 msgid "mime_image"
-msgstr "Comhad íomhá"
+msgstr "IMAGE aicmiú sócmhainní íomhá (clúdaíonn sé giotmhapaí comhbhrúite caillteach/gan chailliúint, grafaicí gréasáin fhreagrúla nua-aimseartha agus veicteoirí. Tá sé ina phríomhtháscaire chun ualach acmhainní amhairc an tsuímh, ráta buailte taisce an chliaint agus tomhaltas bandaleithead líonra meán a mheasúnú)"
 
 msgid "mime_document"
-msgstr "Comhad doiciméid"
+msgstr "DOCUMENT aicmiú doiciméad struchtúrtha (clúdaíonn sé gnáth-théacs, scarbhileoga, doiciméid oifigiúla (PDF) agus teangacha marcála éadroma. Tá sé ina phríomhtháscaire chun dáileadh bonn eolais statach taobh freastalaí, íoslódálacha sócmhainní fiontair agus cumas tréchuir srutha téacs a staitistiú)"
 
 msgid "mime_package"
-msgstr "Pacáiste bogearraí"
+msgstr "PACKAGE aicmiú táirgí tiomsaithe agus pacáistí bogearraí (clúdaíonn sé cláir inrite dhúchasacha an chórais oibriúcháin, leabharlanna nascachta rith-ama (DLL/SO) agus pacáistí suiteála dáileacháin feidhmchlár. Is minic a úsáidtear é mar tháscaire chun trácht amach agus buaicphointí íoslódála ar shuíomhanna dáileacháin bogearraí a mheasúnú)"
 
 msgid "mime_archive"
-msgstr "Comhad comhbhrúite Gzip (tionscadal GNU 1992, bunaithe ar algartam DEFLATE. Úsáidtear ar an ngréasán le haghaidh comhbhrú freagraí dinimiciúil, ag comhbhrú 60-90% de ghnáth. Tar éis 2015, cuireadh Brotli ina ionad go páirteach i gcásanna áirithe, ach fós is é an fhormáid chomhbhrú is mó a dtacaítear léi ar thaobh an fhreastalaí)"
+msgstr "ARCHIVE comhaid chartlainne agus chomhbhrúite (catagóir ghinearálta do phacáistí comhbhrúite sonraí bunaithe ar phríomhalgartaim DEFLATE, LZMA srl. Ar an gciseal líonra, seachas dáileadh traidisiúnta pacáistí, clúdaíonn sé freisin sreafaí freagartha dinimiciúla Gzip ó thionscadal GNU ó 1992. Cé go bhfuil algartam Brotli á thabhairt isteach de réir a chéile i roinnt cásanna nua-aimseartha, tá an t-aicmiú seo fós ina phríomhtháscaire chun tréchur bandaleithead freastalaí agus éifeachtacht chomhbhrú an chiseal iompair a mheasúnú)"
 
 msgid "mime_audio"
-msgstr "Comhad fuaime"
+msgstr "AUDIO aicmiú srutha fuaime digití (clúdaíonn sé fuaim chomhbhrúite, leabhair fuaime agus coimeádáin srutha fuaime. Bunaithe ar chaighdeáin chódeic fuaime ar leith, úsáidtear é chun tréchur srutha sonraí fuaime ar shuíomhanna ilmheán, bandaleithead sruthú comhthráthach agus feidhmíocht naisc fhada a mhonatóiriú)"
 
 msgid "mime_video"
-msgstr "Comhad físe"
+msgstr "VIDEO aicmiú srutha físe digití (clúdaíonn sé coimeádáin físe ard-sainmhínithe, beochana gréasáin nua-aimseartha agus blúirí sruthaithe. Tá sé ina phríomhtháscaire chun buaicteorainn bandaleithead freastalaí agus éifeachtacht luathaithe Líonraí Seachadta Ábhar (CDN) a mheasúnú faoi ualach ard líonra)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (d'fhorbair Brendan Eich i 1995)"
+msgstr "JScript script (cur i bhfeidhm dílseánaigh innealtóireachta droim ar ais a d'fhorbair Microsoft i 1996 do Internet Explorer 3.0. Mar iomaitheoir óstach luath ar JavaScript clasaiceach, bhí sé ina phríomh-inneall do Windows Script Host (WSH) agus do chúlchláir ASP luatha)"
 
 msgid "mime_json"
-msgstr "Sonraí JSON (mhol Douglas Crockford i 2001, formáid idirmhalartaithe sonraí éadrom, caighdeán de facto le haghaidh APIanna gréasáin)"
+msgstr "JSON sonraí struchtúrtha (formáid éadrom malartaithe sraitheach sonraí a bhunaigh Douglas Crockford i 2001. Bunaithe ar phéirí eochair-luach bunaithe ar théacs agus ar struchtúir eagair, le hinléiteacht ard agus airíonna parsála srutha gan chailliúint, is é an caighdeán dé facto é do APIanna gréasáin nua-aimseartha, ailtireacht mhicrish sheirbhísí agus idirghníomhú le samhlacha teanga móra)"
 
 msgid "mime_vbs"
-msgstr "VBScript (d'fhorbair Microsoft i 1996, teanga scripte Windows, a úsáidtear i leathanaigh ghréasáin ASP agus scripteanna riaracháin Windows. Le tóiriú PowerShell agus JavaScript, tá sé ag dul i léig de réir a chéile)"
+msgstr "VBScript script (malairt teanga scriptithe a d'eisigh Microsoft le IE 3.0 i 1996. Bhí sé ina phríomh-thiománaí do shuíomhanna gréasáin dinimiciúla ASP luatha agus do bhainistiú córais Windows, ach tá sé díchaighdeánaithe go hoifigiúil anois agus bainte de na heithní is déanaí de Windows 11, agus baineann sé le teicneolaíocht stairiúil oidhreachta)"
 
 msgid "mime_conf"
-msgstr "Comhad cumraíochta (stórálann sé cumraíochtaí bogearraí i bhformáid téacs, formáidí coitianta: INI, JSON, YAML, TOML, XML. Bíonn cumraíochtaí córas Linux sa chomhadlann /etc de ghnáth)"
+msgstr "CONF comhad cumraíochta córais (catagóir ghinearálta do chomhaid sonraí a stórálann paraiméadair timpeallachta rith bogearraí i ngnáth-théacs. Clúdaíonn sé sonraíochtaí INI agus YAML, TOML, JSON nua-aimseartha. I gcórais Linux, tá siad comhchruinnithe den chuid is mó san eolaire /etc, agus is spleáchas lárnach iad le haghaidh fíneáil staid rith ar leibhéal an chórais)"
 
 msgid "mime_css"
-msgstr "Bileog stíle CSS (D'fhoilsigh W3C an chéad chaighdeán oifigiúil CSS1 i mí na Nollag 1996, chuir CSS2 suíomh agus cineálacha meán leis i 1998, agus ó 2011 i leith thug modúlú CSS3 isteach cúinní cruinne, beochtaí, flexbox, leagan amach greille agus dearadh freagrúil. Mar aon le HTML agus JavaScript, is iad na trí phríomhtheicneolaíocht tosaigh iad, tacaithe go dúchasach ag gach brabhsálaí nua-aimseartha (Chrome, Firefox, Safari, Edge), agus is é an t-aon chaighdeán amháin é le haghaidh sainmhíniú stíle leathanach gréasáin)"
+msgstr "CSS bileog stíle cascáideach (caighdeán W3C ó 1996, mar aon le HTML/JS, tá sé ar cheann de na trí phríomhchroí na forbartha tosaigh. Trí éabhlóid ó shuíomh CSS2 go modúlacht CSS3, tacaíonn sé go dúchasach le Flexbox, Grid agus dearadh freagrúil le ceisteanna meáin, agus is é an caighdeán ceannasach é chun cur i láthair leathanaigh ghréasáin a dhíchúpláil i mbrabhsálaithe nua-aimseartha)"
 
 msgid "mime_xsl"
-msgstr "Bileog stíle XSL (caighdeán W3C 1999, teanga chlaochlaithe doiciméad XML, is féidir XML a thiontú go HTML/PDF/téacs. Níos lú úsáide tar éis tóiriú JSON)"
+msgstr "XSL bileog stíle (caighdeán W3C ó 1999, lena n-áirítear teangacha claochlaithe XSLT agus teanga seolta XPath, chun sonraí XML struchtúrtha a rindreáil mar HTML, PDF nó gnáth-théacs. I bhforbairt nua-aimseartha, tá a éiceachóras curtha in ionad ina lán cásanna ag innill teimpléid níos éadroime agus an fhormáid sonraí JSON)"
 
 msgid "mime_runtime"
-msgstr "Comhad inrite (formáidí inrite an chórais oibriúcháin mar EXE, ELF, Mach-O, ina bhfuil cód meaisín agus faisnéis lódála)"
+msgstr "comhad inrite (formáidí inrite dúchasacha córas oibriúcháin mar EXE, ELF, Mach-O, ina bhfuil cód meaisín íseal-leibhéil tiomsaithe, pointe iontrála agus faisnéis lódála córais)"
 
 msgid "mime_library"
-msgstr "Comhad leabharlainne (leabharlanna nascáil dhinimiciúil mar DLL, SO, dylib, cód roinnte a lódáiltear le linn fhorghníomhú an chláir)"
+msgstr "comhad leabharlainne (DLL, SO, dylib srl., leabharlanna nascála dinimiciúla nó statacha, ina bhfuil siombailí roinnte agus cód athlonnaithe le glaoch agus lódáil ag cláir eile ag am rith)"
 
 msgid "mime_swf"
-msgstr "Beochan Flash (d'fhorbair Macromedia i 1996, a fuair Adobe níos déanaí. Caighdeán beochana gréasáin idirghníomhach, a bhí ceannasach ar an idirlíon i mbeochana agus i gcluichí. Fadhbanna: spleáchas ar bhreiseán, easpa tacaíochta ar ghléasanna soghluaiste, riosca ard slándála. D'fhógair Adobe deireadh tacaíochta i 2017, scor go hiomlán i 2020, agus cuireadh HTML5/CSS3/JS ina ionad)"
+msgstr "Flash beochan (Macromedia 1996, ceannaíodh é ag Adobe i 2005. Caighdeán beochana gréasáin idirghníomhaí, a bhí ceannasach ar bheochana agus chluichí an idirlín. Míbhuntáistí: spleáchas ar phlugaisí, easpa tacaíochta soghluaiste, riosca ard slándála. D'fhógair Adobe é a scor i 2017, tháinig deireadh le tacaíocht i 2020, cuireadh HTML5/CSS3/JS ina ionad)"
 
 msgid "mime_dtd"
-msgstr "DTD (Sainmhíniú Cineáil Doiciméid, sonraíocht XML a shainmhíníonn struchtúr doiciméad XML, a úsáidtear chun dlisteanacht XML a bhailíochtú)"
+msgstr "DTD sainmhíniú cineál doiciméid (a eisíodh le XML 1.0 i 1998, a úsáidtear chun struchtúr doiciméid XML/HTML a shainiú agus a dhlíthiúlacht a bhailíochtú. I bhforbairt nua-aimseartha, tá sé curtha in ionad ina lán cásanna ag réitigh níos solúbtha mar Scéim XML, RELAX NG srl.)"
 
 msgid "mime_csv"
-msgstr "Formáid sonraí CSV (luachanna scartha le camóga, formáid uilíoch sonraí táblacha, caighdeán le haghaidh allmhairiú/easpórtáil in Excel agus bunachair shonraí)"
+msgstr "CSV formáid sonraí (luachanna scartha le camóga, formáid tábla gnáth-théacs uilíoch ó ré na bpríomh-ríomhairí (tiomsaitheoir IBM Fortran) i 1972. Ríomhchaighdeánaigh RFC 4180 i 2005 é mar chaighdeán malartaithe sonraí gan chailliúint tras-ardáin agus tras-teanga. Úsáidtear go forleathan é le haghaidh allmhairiú/onnmhairiú éifeachtach le Excel, bunachair shonraí choibhneasta agus anailís sonraí (Pandas))"
+
+msgid "mime_cur"
+msgstr "comhad cúrsóra luiche (formáid .cur, a úsáidtear chun stíl chúrsóir na luiche a shaincheapadh, mar chúrsóir méire ar leathanaigh ghréasáin nó deilbhín cloig ghainimh ar feitheamh. Tá sé gaolmhar leis an deilbhín coitianta .ico, ach tá ‘spota te’ breise aige – fíorshuíomh an chliceáil. Stair: tugadh isteach é le Windows 3.1 (1992), comhpháirt lárnach in aistriú ó chomhéadan líne ordaithe go comhéadan grafach faoi thiomáint luiche)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (seoltóir feidhmchlár Java, teicneolaíocht dáileacháin feidhmchlár deisce Java sna 2000í, anois as feidhm)"
+msgstr "Java Web Start (teicneolaíocht dáileacháin feidhmchlár deisce Java ó na 2000idí, a sheolann cláir Java iargúlta trí chomhaid .jnlp. Mar gheall ar shaincheisteanna slándála agus ar leitheadúlacht na modhanna dáileacháin nua-aimseartha, tá sé imithe i léig den chuid is mó anois)"
 
 msgid "mime_lit"
-msgstr "Ríomhleabhar Microsoft Reader (formáid LIT a d'eisigh Microsoft i 2000, as feidhm)"
+msgstr "Microsoft Reader ríomhleabhar (2000 Microsoft, formáid LIT. I léig, is féidir é a thiontú go EPUB nó PDF anois le huirlisí cosúil le Calibre)"
 
 msgid "mime_svg"
-msgstr "Grafaic veicteora SVG (caighdeán W3C 1999, moillithe mar gheall ar chur chun cinn formáid VML ag Microsoft, níor tacaíodh leis in Internet Explorer go dtí 2011. Tar éis 2015, le scor IE agus tóiriú scáileáin ardtaifigh, tháinig sé chun bheith ina fhormáid roghnaithe le haghaidh deilbhíní agus lógónna)"
+msgstr "SVG grafaicí veicteora (caighdeán W3C ó 1999, formáid íomhá veicteora 2T bunaithe ar XML. Cuireann sé scálú gan chailliúint agus buntáistí sruthaithe téacs ar fáil. Tacaíonn gach brabhsálaí nua-aimseartha go dúchasach leis, úsáidtear go forleathan é le haghaidh deilbhíní gréasáin ard-sainmhínithe, lógónna agus beochana veicteora, agus is é an caighdeán lárnach é do ghrafaicí gréasáin nua-aimseartha)"
 
 msgid "mime_ai"
-msgstr "Grafaic veicteora Adobe Illustrator (seolta i 1987, formáid veicteora chaighdeánach an tionscail, is fearr le haghaidh dearadh cló, lógónna agus deilbhíní)"
+msgstr "AI grafaicí veicteora (formáid veicteora dhílseánaigh Adobe ó 1987. Mar chaighdeán tionscail do chlóscríbhneoireacht, dearadh priontála agus féiniúlacht branda, tacaíonn sé le sraitheanna iolracha agus le sonraí veicteora chun cinn leagan amach, agus is é an meán tosaíochta é don ealaín amhairc ghairmiúil)"
 
 msgid "mime_phshop"
-msgstr "Íomhá Photoshop (a d'eisigh Adobe i 1990, formáid PSD de chomhaid foinse Photoshop, caighdeán an tionscail um phróiseáil íomhánna)"
+msgstr "PSD íomhá shraitheanna (formáid foinse giotmhapa dhílseánaigh a d'eisigh Adobe le Photoshop i 1990. Tacaíonn sé le sraitheanna iolracha, cainéil, maisc agus sonraí eagarthóireachta gan chailliúint, agus tá sé bunaithe mar chaighdeán tionscail domhanda do phróiseáil íomhánna agus péintéireacht dhigiteach)"
 
 msgid "mime_ttf"
-msgstr "Cló TrueType (d'fhorbair Apple agus Microsoft le chéile i 1989, formáid chló veicteora, comhsheasmhach idir taispeáint ar scáileán agus cló, formáid chló réamhshocraithe i gcórais oibriúcháin nua-aimseartha)"
+msgstr "TrueType cló (formáid chló imlíne dhigitigh a d'fhorbair Apple agus Microsoft i gcomhpháirt i 1989. Bunaithe ar chuair Chearbach chearnacha, baineann sé comhsheasmhacht phiogánach amach idir taispeáint ar scáileán agus aschur clóite, agus is é an phríomhfhormáid chló dhúchasach réamhshocraithe do chórais oibriúcháin deisce nua-aimseartha)"
 
 msgid "mime_fon"
-msgstr "Cló gréasáin WOFF2 (molta ag W3C i 2014, úsáideann algartam comhbhrú Brotli, laghdú thart ar 30% i gcomparáid le WOFF sean agus níos mó ná 50% i gcomparáid le TTF/OTF, tacaithe ag gach brabhsálaí nua-aimseartha faoi láthair, is é an fhormáid roghnaithe le haghaidh clónna gréasáin nua-aimseartha é, tacaithe ag níos mó ná 98% de na brabhsálaithe)"
+msgstr "FON cló giotmhapa (formáid chló mhaitrís ponc luath ar leibhéal an chórais ó Microsoft sna 1980idí. Ní thacaíonn sé le scálú comhréireach gan chailliúint, de ghnáth teoranta do rindreáil téacs bunaithe ar phiogán i gcórais oidhreachta nó i gcomhpháirteanna gléasanna leabaithe luatha)"
 
 msgid "mime_pdf"
-msgstr "Doiciméad PDF (d'fhorbair Adobe i 1993, rinneadh caighdeán ISO de i 2008. Formáid doiciméid thar ardán a choinníonn comhsheasmhacht formáide, is é an caighdeán domhanda é do dháileadh doiciméad leictreonach)"
+msgstr "PDF doiciméad leictreonach (d'fhorbair Adobe i 1993 é agus rinneadh caighdeán idirnáisiúnta ISO 32000 de i 2008. Formáid doiciméid leagan amach seasta tras-ardáin le dílseacht iomlán leagan amach agus formáide, is é an caighdeán domhanda é do dháileadh doiciméad leictreonach agus d'fhoilsiú digiteach)"
 
 msgid "mime_dotnet"
-msgstr "Leathanach dinimiciúil ASP.NET (a d'eisigh Microsoft i 2002, teicneolaíocht leathanach gréasáin dinimiciúil d'ardán Windows, cuid de .NET Framework)"
+msgstr "ASP.NET leathanach dinimiciúil (teicneolaíocht leathanach gréasáin dinimiciúil taobh freastalaí a d'eisigh Microsoft le hailtireacht .NET i 2002. Arna hóstáil ar inneall IIS, úsáidtear é chun feidhmchláir ghréasáin dhinimiciúla ar leibhéal fiontair agus córais dháilte taobh freastalaí Windows a thógáil)"
 
 msgid "mime_mdb"
-msgstr "Bunachar sonraí Access (comhad bunachar sonraí Microsoft Access, a eisíodh i 1992, réiteach bunachar sonraí deisce Windows)"
+msgstr "MDB bunachar sonraí coibhneasta (formáid stórála bunachar sonraí coibhneasta ar leibhéal deisce a d'eisigh Microsoft le Access i 1992. Tá inneall bunachar sonraí Jet ionsuite aige, a bhí ina réiteach bunachar sonraí coibhneasta do chórais faisnéise luatha ríomhairí pearsanta agus fiontair bheaga agus mheánmhéide)"
 
 msgid "mime_md"
-msgstr "Doiciméad Markdown (ceaptha ag John Gruber i 2004, faoi thionchar reStructuredText agus Setext. Fealsúnacht deartha lárnach: 'is inléite é a rindreáil', cur i bhfeidhm bunaidh Markdown.pl i Perl regex. Áirítear le sonraíochtaí díorthaithe GFM (2013), CommonMark (2017), Pandoc Markdown, srl. Cumhachtaíonn sé éiceachórais mar GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, agus é an fhormáid chaighdeánach do ghineadóirí láithreán statacha agus doiciméadú ríomhchláraitheoirí)"
+msgstr "Markdown doiciméad (teanga mharcála éadrom a chruthaigh John Gruber i 2004. Is í a phríomhfhealsúnacht deartha ‘is ionann inléiteacht agus rindreáil’ a thiomáineann sonraíochtaí díorthacha nua-aimseartha mar GFM agus CommonMark. Úsáidtear go forleathan é mar chaighdeán malartaithe do dhoiciméadú teicniúil, do bhunachair eolais (Obsidian) agus do ghineadóirí láithreán gréasáin statacha nua-aimseartha)"
 
 msgid "mime_crystal"
-msgstr "Formáid tuarascála Crystal Reports (tuarascálacha faisnéise gnó SAP, formáid chaighdeánach tuarascála fiontair)"
+msgstr "Crystal Reports tuarascáil (formáid comhaid tuarascála ghairmiúla ar leibhéal fiontair d'ardán SAP Business Intelligence (BI). Tá nascacht ilfhoinse sonraí agus cumais rindreála chairt dhinimiciúil chasta aige, a úsáidtear go forleathan le haghaidh giniúna tuarascálacha gairmiúla i gcórais airgeadais agus anailíse sonraí fiontair ilnáisiúnta)"
 
 msgid "mime_libreoffice"
-msgstr "Doiciméad LibreOffice (d'fhorbair The Document Foundation i 2010, brainse de OpenOffice, cur i bhfeidhm chaighdeán ODF, príomhshraith oifige foinse oscailte)"
+msgstr "LibreOffice doiciméad (formáid dhílseánaigh do shraith oifige foinse oscailte bunaithe ar OpenOffice, a bhunaigh The Document Foundation i 2010. Cuireann sé caighdeán idirnáisiúnta ODF (OpenDocument Format) W3C i bhfeidhm go domhain, agus is é bunchloch oifige éiceachóras foinse oscailte nua-aimseartha é)"
 
 msgid "mime_encrypt"
-msgstr "Comhad criptithe (éilíonn díchriptiú le féachaint, síntí coitianta: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT comhad criptithe (sonraí dénártha nó téacs bhunaidh a próiseáladh le halgartaim chriptithe shiméadracha nó neamhshiméadracha ar leith. Áirítear leis na príomhfhormáidí díorthacha .enc, .pgp, .gpg srl., agus úsáidtear é ar an gciseal líonra chun rúndacht agus fíorú iomláine sonraí neamhphoiblí a chinntiú)"
 
 msgid "mime_gpx"
-msgstr "Sonraí traíochta GPS (formáid idirmhalartaithe GPS, taifeadann sé faisnéis shuíomh geografach, formáid uilíoch do uaireadóirí spóirt agus gléasanna nascleanúna)"
+msgstr "GPX sonraí rianaithe satailíte (formáid mhalartaithe córais suite domhanda bunaithe ar XML. Speisialtóireacht ar chomhordanáidí geografacha, pointí bealaigh, línte bealaigh agus rianta stairiúla a thuairisciú, is caighdeán sonraí oscailte coiteann é do ghléasanna spóirt soghluaiste nua-aimseartha, do loingseoireacht charranna agus do chórais faisnéise geografaí (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Íomhá diosca (comhaid íomhá diosca/mheán optúil mar DMG, ISO, IMG, a úsáidtear le haghaidh dáileadh bogearraí nó cúltaca meán stórála)"
+msgstr "Disk Image íomhá diosca (comhad íomhá íseal-leibhéil de dhiosea fisiciúil nó de mheán optúil de réir earnála, lena n-áirítear ISO, DMG, IMG. Úsáidtear é le haghaidh imscaradh córais íseal-leibhéil, dáileadh slán bogearraí mórthoirt agus cúltaca iomlán ar leibhéal fisiciúil de mheáin stórála)"
 
 msgid "mime_vm"
-msgstr "Íomhá meaisín fíorúil (comhaid diosca meaisín fíorúil mar VMDK, VDI, VHDX, OVA, formáidí d'ardáin fhíorúlaithe VMware, VirtualBox, Hyper-V)"
+msgstr "VM íomhá meaisín fhíorúil (íomhánna diosca fisiciúil fíorúlaithe lena n-áirítear VMDK, VDI, VHDX, OVA. Bunús d'ardáin VMware, VirtualBox agus Hyper-V, a úsáidtear le haghaidh eisiompar crua-earraí íseal-leibhéil, seatanna tostaireacha d'áscanna agus dáileadh bonneagair scamall)"
 
 msgid "mime_torrent"
-msgstr "Comhad torrent BitTorrent (cumtha ag Bram Cohen i 2001, comhad innéacs aistrithe P2P, ina bhfuil meiteashonraí comhaid agus faisnéis Tracker)"
+msgstr "BitTorrent comhad torrent (innéacs íoslódála dáilte piara-go-piara (P2P) a dhear Bram Cohen i 2001. Bunaithe ar chódú Bencode, a stórálann meiteashonraí fíoraithe comhaid bhunaidh agus faisnéis sheoladh freastalaí Tracker, agus is é an príomh-iompróir é do dháileadh sreafa líonra díláraithe)"
 
 msgid "mime_gis"
-msgstr "Sonraí córais faisnéise geografaí GIS (formáidí sonraí geo-spásúla mar Shapefile, GeoJSON, a úsáidtear le haghaidh léarscáileanna agus anailís spásúil)"
+msgstr "GIS sonraí geospásúla (caighdeán sonraí córais faisnéise geografaí le Shapefile agus GeoJSON mar chroílár. Tá comhordanáidí céimseata ilmhéadracha, topaicéireacht shraitheanna agus sonraí tréithe ann, a úsáidtear go forleathan le haghaidh rindreála léarscáileanna digiteacha ard-sainmhínithe, cianbhraiteachta satailíte agus anailís céimseata spásúil)"
 
 msgid "mime_ebook"
-msgstr "Ríomhleabhar (formáidí ríomhleabhar mar EPUB, MOBI, AZW. Is caighdeán idirnáisiúnta é EPUB, is formáidí Kindle Amazon iad MOBI/AZW)"
+msgstr "EBOOK ríomhleabhar (formáid foilsithe digiteach a bhfuil croílár caighdeán oscailte idirnáisiúnta EPUB W3C agus ailtireacht dhílseánaigh MOBI/AZW Amazon Kindle aici. Tacaíonn sé le leagan amach sreabhach oiriúnaitheach, le meiteashonraí a chapsúliú agus le bainistíocht ceart digiteach DRM, agus is é an t-iompróir uilíoch é don léitheoireacht dhigiteach ar ghléasanna soghluaiste)"
 
 msgid "mime_avif"
-msgstr "Íomhá AVIF (a d'eisigh Open Media Alliance i 2019, bunaithe ar chódú AV1, ráta comhbhrú 50% níos airde ná WebP, caighdeán nua d'íomhánna gréasáin den chéad ghlúin eile)"
+msgstr "AVIF íomhá ard-éifeachtúlachta (caighdeán íomhá ultra-ard-sainmhínithe chéad ghlúin eile de chuid Alliance for Open Media (AOMedia) ó 2019. Bunaithe ar theicneolaíocht phríomhfhráma códaithe físe AV1, tá ráta comhbhrú 50% níos fearr ná WebP aige agus tacaíonn sé go dúchasach le hArd-Raon Dinimiciúil (HDR), agus is é an caighdeán príomhshrutha é do tharchur íomhá gréasáin nua-aimseartha)"
 
 msgid "mime_markdown"
-msgstr "Doiciméad Markdown (ceaptha ag John Gruber i 2004, teanga mharcála éadrom, formáid uilíoch do README GitHub, doiciméadú teicniúil, postálacha fóraim)"
+msgstr "Markdown doiciméad éadrom (teanga mharcála doiciméid téacs a chruthaigh John Gruber i 2004. Úsáideann sé dearadh dearbhach gnáth-théacs, bhí tionchar ag reStructuredText ar a chomhréir, a úsáidtear go forleathan do thionscadail GitHub, do dhoiciméadú teicniúil ar leibhéal innealtóireachta agus d'éiceachórais nua-aimseartha bhainistíochta ábhair statigh)"
 
 msgid "mime_yaml"
-msgstr "Cumraíocht YAML (ceaptha ag Clark Evans i 2001, formáid shrathaithe sonraí inléite ag an duine, caighdeán comhad cumraíochta do Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML cumraíocht shraitheach (formáid sraitheach sonraí inléite ag an duine a dhear Clark Evans agus daoine eile i 2001. Bunaithe ar eangú ordlathach agus ar mhapáil eochair-luach, tá sé bunaithe anois mar chaighdeán cumraíochta bonneagair dhúchasach scamall do Kubernetes, uathoibriú Ansible agus Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Cumraíocht TOML (ceaptha ag Tom Preston-Werner i 2013, 'Tom's Obvious Minimal Language', formáid comhad cumraíochta d'uirlisí nua-aimseartha mar Rust/Cargo, Python/pip, Go)"
+msgstr "TOML cumraíocht shéimeantach (teanga íostach a dhear Tom Preston-Werner i 2013. Le buntáistí deartha íseal-leibhéil mar chlóscríobh láidir, mapáil fhollasach agus shéimeantaic shoiléir, úsáidtear go forleathan é anois mar chomhad cumraíochta caighdeánaithe do shlabhraí uirlisí nua-aimseartha Rust (Cargo), Python (pyproject.toml) agus Go)"
 
 msgid "mime_vue"
-msgstr "Comhad comhpháirte Vue (a tugadh isteach in 2014 ag Evan You, creat forásach JavaScript. Trí chomhpháirteanna aonchomhaid (SFC), comhcheanglaíonn sé HTML, CSS, agus JS go foirfe, ag cur feabhas mór ar éifeachtúlacht forbartha. Tá sé ar cheann de na creataí tosaigh is mó tóir ar domhan. Chomh maith leis sin, mar chroí-ghineadóirí suíomhanna statacha nua-aimseartha cosúil le VitePress, úsáidtear go forleathan é chun doiciméadú teicniúil idirghníomhach agus blaganna a thiomáint.)"
+msgstr "Vue comhpháirt aon-chomhaid (formáid SFC dhílseánaigh den chreat gréasáin forásach a d'eisigh Evan You i 2014. Sa chomhad amháin seo, baintear amach scaradh imní HTML/CSS/JS agus nascadh stáit imoibríoch, ag tiomáint go domhain d'fheidhmchláir tosaigh idirghníomhacha ghréasáin nua-aimseartha agus d'innill láithreán statacha ar mhórscála)"
 
 msgid "mime_wasm"
-msgstr "Modúl WebAssembly (caighdeán W3C 2017, formáid fhorghníomhaithe ardfheidhmíochta sa bhrabhsálaí, is féidir C/C++/Rust/R a thiomsú don sprioc seo, feidhmíocht gar don dúchas)"
+msgstr "WebAssembly modúl dénártha (caighdeán beartchóid íseal-leibhéil ardfheidhmíochta don ngréasán a bhunaigh W3C i 2017. Ceadaíonn sé do theangacha láidir-chlóscríofa mar C/C++/Rust tiomsú go dtí timpeallacht bhosca gainimh an bhrabhsálaí, ag soláthar éifeachtúlacht fhorghníomhaithe gar do chrua-earraí dúchasacha, agus is bunchloch é d'fhoghlaim ríomhaireachta imeall gréasáin nua-aimseartha)"
 
 msgid "mime_jsx"
-msgstr "Comhpháirt React JSX (a d'eisigh Facebook i 2013, JavaScript XML, comhréir chomhpháirt an chreata React, paradigma nuálach a chomhtháthaíonn HTML i JavaScript)"
+msgstr "React JSX comhpháirt (síneadh comhréire JavaScript XML a d'eisigh Facebook le creat React i 2013. Tacaíonn sé le struchtúir Dhomhfhíorúla a thógáil go dearbhach laistigh de JavaScript, rud a chuireann ar chumas an pharaidím forbartha tosaigh atá bunaithe ar chomhpháirteanna ‘Comhéadan Úsáideora mar fheidhm stáit’ a chur i bhfeidhm)"
 
 msgid "mime_tsx"
-msgstr "Comhpháirt TypeScript TSX (d'fhorbair Microsoft i 2012, TypeScript + JSX, scríbhneoireacht chaighdeánach d'fhorbairt React le sábháilteacht chineáil)"
+msgstr "TypeScript TSX comhpháirt (comhcheangal sreabhach comhréire láidir-chlóscríofa TypeScript (a d'fhorbair Microsoft i 2012) le JSX. Instealladh seiceáil chineál statach ag am tiomsaithe agus srianta comhéadain i bhforbairt chomhpháirteanna React, agus is é an caighdeán cóid é d'fhorbairt shlán chóras tosaigh mhór nua-aimseartha)"
 
 msgid "mime_heif"
-msgstr "Íomhá HEIF (caighdeán MPEG 2015, formáid chomhaid íomhá éifeachtach, a úsáidtear go forleathan in éiceachóras Apple)"
+msgstr "HEIF íomhá ard-éifeachtúlachta (formáid íomhá ard-éifeachtúlachta a bhunaigh eagraíocht MPEG i 2015. Bunaithe ar algartam códaithe físe HEVC (H.265), tacaíonn sé le frámaí íomhá iolracha, le léarscáileanna doimhneachta agus le meiteashonraí i méid an-bheag, agus is caighdeán stórála dílseánaigh é do chórais oibriúcháin soghluaiste nua-aimseartha agus do ghléasanna críochfort cliste)"
 
 msgid "mime_heic"
-msgstr "Íomhá HEIC (cur i bhfeidhm HEIF ag Apple, formáid ghrianghraf réamhshocraithe iPhone, tacaithe go dúchasach ag iOS/macOS)"
+msgstr "HEIC íomhá ard-éifeachtúlachta (formáid ghiotmhapa dhílseánaigh Apple bunaithe ar an gcaighdeán idirnáisiúnta HEIF. Mar phríomhfhormáid stórála grianghraf do iPhoneanna nua-aimseartha, tá códú/díchódú ar leibhéal crua-earraí aige ó iOS/macOS agus tacaíocht dhúchasach chórais oibriúcháin, ag laghdú go mór spás stórála bunúsach agus ard-chaighdeán íomhá á choinneáil aige)"
 
 msgid "mime_gltf"
-msgstr "Samhail 3D GLTF (formáid iompair GL, 'JPEG an domhain 3D', a d'eisigh an Grúpa Khronos i 2015, formáid chaighdeánach don ngréasán 3D)"
+msgstr "glTF samhail sócmhainne 3T (caighdeán formáide tarchurtha GL a d'fhoilsigh Grúpa Khronos i 2015. Úsáideann sé ailtireacht JSON chun radhairc tríthoiseacha a thuairisciú, ar a dtugtar ‘JPEG an 3T’, agus is é an caighdeán tionscail éadrom é do rindreáil WebGL/WebGPU nua-aimseartha agus do réaltacht fhíorúil)"
 
 msgid "mime_glb"
-msgstr "Samhail 3D dhénártha GLB (leagan dénártha de GLTF, comhad aonair ina bhfuil gach acmhainn, a úsáidtear le haghaidh dáileadh radharc 3D)"
+msgstr "GLB samhail 3T dénártha (leagan capsúilithe dénártha gan chailliúint de shócmhainn mhúnla glTF. Comhleáíonn sé struchtúr an radhairc, sonraí rinn mogaill bhunúsacha, ábhair agus uigeachtaí i gcomhad amháin, atá deartha go speisialta le haghaidh tarchur éifeachtach agus dáileadh sreabhach sócmhainní 3T gréasáin tras-ardáin)"
 
 msgid "mime_gls"
-msgstr "Gluaiseacht Téarmaí (comhad sainmhínithe téarmaí, a úsáidtear le haghaidh bainistíochta téarmaíochta i gcórais doiciméadaithe)"
+msgstr "GLOSSARY gluais sonraí (comhad sainmhínithe téarmaí go sonrach do chórais bhainistíochta doiciméad agus do chorpais struchtúrtha. Tá sainmhínithe téarmaí caighdeánacha, mapálacha ilteangacha agus mapálacha meiteashonraí ann, a úsáidtear chun comhsheasmhacht choincheapúil a choinneáil in anailís uathoibrithe téacs agus i gcórais foilsithe ábhair)"
 
 msgid "mime_cbz"
-msgstr "Coimic CBZ (íomhánna coimice comhbhrúite i ZIP, formáid uilíoch do bhailiúcháin coimicí)"
+msgstr "CBZ leabhar grinn (formáid chartlainne íomhá grinn dhílseánaigh bunaithe ar struchtúr comhbhrú ZIP. Tá seicheamh leanúnach de ghrianghraif ghiotmhapa statacha ann, agus is é caighdeán éadrom coimeádáin uilíoch é d'fhoilsiú grinn digiteach agus do bhailiúchán áitiúil tras-ardáin)"
 
 msgid "mime_cbr"
-msgstr "Coimic CBR (íomhánna coimice comhbhrúite i RAR, formáid uilíoch do bhailiúcháin coimicí)"
+msgstr "CBR leabhar grinn (formáid chartlainne íomhá grinn dhílseánaigh bunaithe ar struchtúr comhbhrú RAR. Úsáideann sé algartam RAR chun seichimh ghiotmhapa statacha a chapsúliú, agus tá ráta comhbhrú ard aige agus tacaíocht leathan comhoiriúnachta i réimse an dáileacháin ghrinn dhigitigh)"
 
 msgid "mime_fb2"
-msgstr "Ríomhleabhar FB2 (FictionBook 2.0, formáid ríomhleabhar Rúiseach, struchtúr XML, tacaithe go forleathan ag léitheoirí foinse oscailte)"
+msgstr "FB2 ríomhleabhar (caighdeán ríomhleabhair FictionBook 2.0 ó thús na 2000idí. Úsáideann sé struchtúr íon XML chun airíonna leabhar agus ordlathas téacs a thuairisciú, agus tá tacaíocht leathan aige in éiceachóras an ríomhleabhair foinse oscailte agus i léitheoirí foilsithe digiteacha oidhreachta)"
 
 msgid "mime_kepub"
-msgstr "Ríomhleabhar KEPUB (formáid Kobo eisiach do EPUB, formáid optamaithe do léitheoirí ríomhleabhar Kobo)"
+msgstr "KEPUB ríomhleabhar (formáid ríomhleabhair fheabhsaithe dhílseánaigh Kobo bunaithe ar an gcaighdeán EPUB. Optamaithe ar leibhéal crua-earraí do léitheoirí ríomhleabhar Kobo, ag soláthar leagan amach leathanaigh níos éifeachtaí agus idirghníomhú staitisticí léitheoireachta)"
 
 msgid "mime_m4b"
-msgstr "Closleabhar M4B (formáid fuaime MPEG-4 do leabhair, tacaíonn sé le leabharmharcanna, formáid chlosleabhar iTunes)"
+msgid "M4B leabhar fuaime (formáid leabhair fuaime bunaithe ar ailtireacht choimeádáin MPEG-4 Part 14 (MP4). Úsáideann sé códú AAC, tacaíonn sé go dúchasach le leabharmharcáil bhunúsach, atosú ag áit a bhfágadh agus leabú caibidlí, agus bhí sé ina fhormáid chaighdeánach in éiceachóras Apple iTunes uair amháin)"
 
 msgid "mime_kfx"
-msgstr "Formáid KFX Kindle (a d'eisigh Amazon i 2015, formáid ríomhleabhar eisiach Kindle, tacaíonn sé le formáidiú feabhsaithe agus le casadh tapa leathanach)"
+msgstr "Kindle KFX formáid (formáid fhoilsithe dhigitigh fheabhsaithe dhílseánaigh Amazon a eisíodh leis an Kindle i 2015. Tacaíonn sé le clóghrafaíocht chun cinn cheangailteach, le rindreáil cló ard-dinimiciúil agus le luchtú leathanaigh sreabhach ar leibhéal eithne (Page Flip), agus is é caighdeán lárnach ardán Kindle nua-aimseartha é)"
 
 msgid "mime_chm"
-msgstr "Comhad cabhrach CHM (a d'eisigh Microsoft i 1997, formáid chabhrach HTML tiomsaithe, caighdeán doiciméadaithe cabhrach do bhogearraí Windows)"
+msgstr "CHM comhad cabhrach tiomsaithe (córas faisnéise cabhrach HTML tiomsaithe a d'eisigh Microsoft i 1997. Pacáistíonn sé sonraí hipeartéacs agus innéacsanna bunúsacha in aon choimeádán dénártha amháin, agus is é an fhormáid chaighdeánach le fada an lá é do dhoiciméadú cabhrach áitiúil as líne i mbogearraí Windows)"
 
 msgid "mime_mht"
-msgstr "Cartlann ghréasáin MHT (formáid leathanach gréasáin comhaid aonair a d'eisigh Microsoft i 1999, formáid shábhála leathanaigh Internet Explorer)"
+msgstr "MHT cartlann ghréasáin (formáid hipeartéacs comhiomlánaithe MIME a d'eisigh Microsoft i 1999. Bunaithe ar chaighdeán RFC 2557, pacáistíonn sé cód foinse HTML, CSS, JS agus íomhánna leabaithe i gcomhad téacs amháin, a úsáidtear le haghaidh sábháil leathanach gréasáin as líne i mbrabhsálaithe oidhreachta)"
 
 msgid "mime_wml"
-msgstr "Teanga mharcála WML (caighdeán WAP 1999, a úsáidtear le haghaidh comhad gréasáin ar sheanfhóin phóca, as feidhm)"
+msgstr "WML teanga mharcála gan sreang (caighdeán marcála soghluaiste a bhunaigh fóram WAP (Wireless Application Protocol) i 1999. Bunaithe ar shonraíocht XML, atá deartha go speisialta do líonraí ceallacha gan sreang cúngbhanda luatha agus do ghutháin fheidhmeacha íseal-chumhachta ríomhaireachta, agus baineann sé le teicneolaíocht stairiúil oidhreachta atá ar scor in éiceachóras an ghréasáin nua-aimseartha)"
 
 msgid "mime_xhtml"
-msgstr "Leathanach gréasáin XHTML (caighdeán W3C 2000, leagan XML de HTML, comhréir níos déine. Chuir W3C stop le cothabháil i 2009, agus d'aistrigh an fócas go HTML5)"
+msgstr "XHTML leathanach gréasáin hipeartéacs (caighdeán W3C ó 2000, teanga mharcála hipeartéacs dhian bunaithe ar ailtireacht XML. I 2009, stop W3C a fhorbairt theicniúil agus d'iompaigh sé go hiomlán chuig sonraíocht HTML5, agus úsáidtear é anois go príomha le haghaidh rindreála leathanach gréasáin shéimeantaigh i gcórais oidhreachta)"
 
 msgid "mime_xml"
-msgstr "Doiciméad XML (caighdeán W3C 1998, teanga mharcála insínte, formáid bhunúsach do sheirbhísí gréasáin, comhaid chumraíochta agus idirmhalartú sonraí)"
+msgstr "XML doiciméad struchtúrtha (teanga mharcála in-sínte caighdeánach W3C ó 1998. Le hailtireacht chlib féin-thuairisciúil, is í an fhormáid bhunúsach í do sheirbhísí gréasáin líonra (SOAP/REST), do chomhaid chumraíochta ar leibhéal an chórais (XSD) agus do mhalartú sonraí tras-ardáin)"
 
 msgid "mime_sgml"
-msgstr "Doiciméad SGML (caighdeán ISO 1986, réamhtheachtaí HTML, teanga mharcála ghinearálta chaighdeánaithe, díorthaítear XML agus HTML ó SGML)"
+msgstr "SGML teanga mharcála ghinearálaithe chaighdeánach (caighdeán idirnáisiúnta ISO 8879 ó 1986. Mar cheannródaí tionscail i dtuairisciú struchtúrtha doiciméad leictreonach, díorthaítear XML agus sonraíochtaí HTML luatha ón bhfor-theanga chaighdeánach seo)"
 
 msgid "mime_apng"
-msgstr "Beochan APNG (d'fhorbair Mozilla i 2004, síneadh beochana ar PNG, rogha eile nua-aimseartha ar GIF, tacaíonn sé le fíordhathanna agus trédhearcacht)"
+msgstr "APNG grafaic dhinimiciúil (síneadh dinimiciúil PNG a d'fhorbair Mozilla i 2004. Tacaíonn sé le fíordhath 24-giotán agus le trédhearcacht leath-thrédhearcach chainéil alfa 8-giotán, agus is rogha eile ard-sainmhínithe é ar an bhformáid GIF do chásanna gréasáin nua-aimseartha)"
 
 msgid "mime_bmp"
-msgstr "Íomhá BMP (formáid ghiotánmhapála Windows, tacaithe go dúchasach ó Windows 1.0. Gan chomhbhrú, comhaid níos mó, ach mar gheall ar struchtúr simplí agus easpa gá le cóidigh bhreise, úsáidtear fós é in Uirlis Gabhála Windows 11, Paint, acmhainní deilbhín in suiteálaithe EXE/MSI, cúrsóirí agus roinnt tiománaithe sean. Is ionann caighdeán comhionann agus comhad thart ar 3-10 n-uaire níos mó ná PNG, ionad PNG/JPEG air i bhformhór na gcásanna, ach coinníonn éiceachóras Windows comhoiriúnacht leathan fós)"
+msgstr "BMP giotmhapa dúchasach (formáid ghiotmhapa neamhspleách ar ghléas ardán Microsoft a bhunaíodh ó ré Windows 1.0. Úsáideann sé stóráil neamh-chomhbhrúite gan chailliúint, mar sin tá a thoirt go hiondúil 3-10 n-uaire níos mó ná PNG, ach toisc nach dteastaíonn forchostas códaithe/díchódaithe uaidh, tá sé leabaithe go forleathan fós i gcroí-chomhpháirteanna Windows 11, i rannóga acmhainní EXE/MSI agus i maoláin ghrafaice tiománaithe oidhreachta)"
 
 msgid "mime_cdr"
-msgstr "Grafaic veicteora CDR (formáid eisiach CorelDRAW, cuideachta Corel Cheanada, bogearraí deartha grafaicí veicteora)"
+msgstr "CDR grafaicí veicteora (formáid foinse dearaidh veicteora ghairmiúil dhílseánaigh CorelDRAW ó chorparáid Cheanada Corel. Tacaíonn sé le bainistíocht datha sraithe, le nóid chuair mhatamaiticiúla chasta agus le sonraí leagan amach ar leibhéal clóite, agus is formáid speisialaithe í do réimsí dearadh grafach gairmiúil agus fógraíochta clóite)"
 
 msgid "mime_gif"
-msgstr "Íomhá GIF (d'fhorbair CompuServe i 1987, formáid bheochana le 256 dath. Fadhbanna: beagán dathanna, cáilíocht íomhá lag, gan tacaíocht do thrédhearcacht, comhaid mhóra, ráta frámaí íseal. Tá formáidí beochana nua-aimseartha ar nós APNG agus WebP curtha ina ionad)"
+msgstr "GIF íomhá datha innéacsaithe (formáid ghiotmhapa datha innéacsaithe 8-giotán ó CompuServe i 1987. Bunaithe ar algartam LZW, teoranta do 256 leibhéal datha agus trédhearcacht aon-datha, le toirt ata ar rátaí arda fráma, tá sé á chur in ionad de réir a chéile ag caighdeáin bheochana éifeachtúla nua-aimseartha cosúil le APNG, WebP srl.)"
 
 msgid "mime_ico"
-msgstr "Deilbhín ICO (formáid comhaid deilbhín Windows, tacaíonn sé le réitigh iolracha, formáid chaighdeánach le haghaidh favicon láithreán)"
+msgstr "ICO deilbhín córais (formáid chapsúilithe acmhainní deilbhín dhúchasach Windows. Tacaíonn sé le malairtí íomhá iolracha le taifeacha éagsúla picteilín agus doimhneacht datha a mheascadh in aon choimeádán amháin, agus is é an caighdeán dáileacháin uilíoch é freisin do shainaithint láithreáin (Favicon) bhrabhsálaithe gréasáin nua-aimseartha)"
 
 msgid "mime_jpeg"
-msgstr "Íomhá JPEG (caighdeán ISO 1992, formáid ghrianghraf le comhbhrú caillteanach, caighdeán de facto do ghrianghraif ar an idirlíon)"
+msgstr "JPEG íomhá chomhbhrúite (caighdeán idirnáisiúnta ISO 10918 ó 1992 d'fhormáid chomhbhrúite chaillteanaí. Bunaithe ar algartam an Chlaochlaithe Chomhshíneasaigh Scoite (DCT), baineann sé ráta ard comhbhrú amach agus ag an am céanna coinníonn sé cáilíocht íomhá réalaíoch den scoth, agus is é an caighdeán dé facto iomlán é do ghrianghraif statacha ar an idirlíon domhanda)"
 
 msgid "mime_jpg"
-msgstr "Íomhá JPEG (caighdeán ISO 1992, formáid ghrianghraf le comhbhrú caillteanach, caighdeán de facto do ghrianghraif ar an idirlíon)"
+msgstr "JPEG íomhá chomhbhrúite (caighdeán idirnáisiúnta ISO 10918 ó 1992 d'fhormáid chomhbhrúite chaillteanaí. Bunaithe ar algartam an Chlaochlaithe Chomhshíneasaigh Scoite (DCT), baineann sé ráta ard comhbhrú amach agus ag an am céanna coinníonn sé cáilíocht íomhá réalaíoch den scoth, agus is é an caighdeán dé facto iomlán é do ghrianghraif statacha ar an idirlíon domhanda)"
 
 msgid "mime_png"
-msgstr "Íomhá PNG (molta ag W3C i 1996, tacaíonn sé le fíordhathanna agus trédhearcacht, rogha eile statach ar GIF, caighdeán íomhánna gan chailliúint ar an idirlíon)"
+msgstr "PNG íomhá gan chailliúint (caighdeán Grafaic Líonra Inaistrithe a mhol W3C i 1996. Úsáideann sé algartam comhbhrú gan chailliúint, tacaíonn sé go dúchasach le fíordhath 24-giotán agus le trédhearcacht chainéil alfa 8-giotán, mar rogha eile ard-sainmhínithe ar GIF statach clasaiceach, agus is é an caighdeán dé facto iomlán é d'íomhánna picteilín gan chailliúint ar an idirlíon)"
 
 msgid "mime_ps"
-msgstr "Comhad tuairisceán leathanaigh PostScript (a d'eisigh Adobe i 1985, teanga tuairisceán leathanaigh, réamhtheachtaí PDF, a úsáidtear le haghaidh cló agus foilsitheoireachta)"
+msgstr "PostScript comhad tuairiscithe leathanaigh (teanga tuairiscithe leathanaigh bunaithe ar chruach a d'eisigh Adobe i 1985. Mar réamhtheachtaí teicneolaíochta ar an bhformáid PDF, baineann sé amach ag leibhéal íseal clóscríbhneoireacht téacs neamhspleách ar chrua-earraí agus rindreáil ghrafaic veicteora ard-chruinnis, agus is é an caighdeán bunúsach é do réimsí priontála gairmiúla agus priontála léasair)"
 
 msgid "mime_psb"
-msgstr "Doiciméad mór PSB (formáid íomhá de mhéid breise Adobe Photoshop, tacaíonn sé le híomhánna ollmhóra os cionn 2GB nó 30000 picteilín)"
+msgstr "PSB doiciméad mór-sraithe (formáid chapsúilithe comhaid foinse sár-mhóir dhílseánaigh Adobe Photoshop. Briseann sé teorainneacha imleabhair fhisiciúil 2GB agus teorainn inmheánach seolta 30,000 picteilín na formáide caighdeánaí PSD, atá deartha go speisialta le haghaidh stórála sócmhainní ealaíne digiteacha ollmhóra, domhain-shraitheacha, ar mhórscála)"
 
 msgid "mime_psd"
-msgstr "Íomhá PSD (comhad foinse Adobe Photoshop, tacaíonn sé le sraitheanna, cainéil agus cosáin, formáid chaighdeánach an tionscail um phróiseáil íomhánna)"
+msgstr "PSD comhad foinse dearaidh sraithe (coimeádán innealtóireachta íomhá sraithe dhílseánaigh Adobe Photoshop. Mar choimeádán caighdeánach tionscail i réimse na híomhána grafacha, capsúlaíonn sé go dúchasach crann rindreála iomlán na sraithe, cainéil ghiotmhapa, cosáin ghearrtha veicteora agus modhanna cumascacha casta, agus tacaíonn sé le heagarthóireacht iomlán sonraí gan chailliúint)"
 
 msgid "mime_webp"
-msgstr "Íomhá WebP (d'fhorbair Google i 2010, formáid íomhá gréasáin, tacaíonn sé le comhbhrú le/gan cailliúint agus beochan, ráta comhbhrú 25-35% níos airde ná PNG agus 25% níos airde ná JPEG)"
+msgstr "WebP íomhá ard-éifeachtúlachta (caighdeán códaithe grafaicí gréasáin uilíoch a d'eisigh Google i 2010. Díorthaithe ó theicneolaíocht phríomhfhráma físe VP8, agus é comhoiriúnach go foirfe le rindreáil chaillteanach, gan chailliúint, leath-thrédhearcach agus dhinimiciúil, 25-35% níos lú ná PNG ag an gcaighdeán céanna, agus is é bunchloch lódála ardfheidhmíochta do leathanaigh ghréasáin nua-aimseartha é)"
 
 msgid "mime_woff"
-msgstr "Cló gréasáin WOFF (cruthaíodh é i 2009, caighdeán W3C i 2018. Bunaithe ar chomhbhrú TrueType/OpenType, optamaithe le haghaidh lódáil clónna gréasáin, formáid chaighdeánach do chlónna deilbhín ar láithreáin nua-aimseartha)"
+msgstr "WOFF comhad ghliaf ghréasáin (formáid chló oscailte gréasáin a cruthaíodh i 2009 agus a rinneadh caighdeán W3C de i 2012. Is é a bhunbhrí ná struchtúir chló caighdeánacha TTF/OTF a chomhbhrú go sreabhach gan chailliúint, ag laghdú go mór costas bandaleithead líonra, agus is formáid uilíoch é do dheilbhíní láithreán gréasáin nua-aimseartha agus do chlónna scamall)"
 
 msgid "mime_7z"
-msgstr "Pacáiste comhbhrúite 7z (d'fhorbair Igor Pavlov i 1999, formáid eisiach an chláir 7-Zip. Algartam LZMA, ardchóimheas comhbhrú, foinse oscailte agus saor in aisce. De ghnáth bíonn formáid 7z 30-50% níos lú ná ZIP don chóimheas comhbhrú céanna, agus is formáid choitianta é do dháileadh bogearraí sa phobal foinse oscailte)"
+msgstr "7z pacáiste comhbhrúite (formáid dhílseánaigh 7-Zip a d'fhorbair Igor Pavlov i 1999. Bunaithe ar algartaim foinse oscailte LZMA/LZMA2, agus ráta comhbhrú thar a bheith ard aige. Faoi choinníollacha comhionanna, bíonn sé de ghnáth 30-50% níos lú ná ZIP, agus is é an fhormáid ard-chóimheasa comhbhrú uilíoch é i bpobal an fhoinse oscailte agus i ndáileadh bogearraí)"
 
 msgid "mime_ace"
-msgstr "Pacáiste comhbhrúite ACE (d'fhorbair sé sna 90idí, formáid an chláir WinACE. Bhí sé in iomaíocht le RAR, le cóimheas comhbhrú réasúnta ard. Cuireadh stop le forbairt i 2007, cuireadh 7z/RAR ina ionad anois, beagán úsáide)"
+msgstr "ACE pacáiste comhbhrúite (formáid chomhbhrúite dhílseánaigh WinACE ó na 1990idí. Bhí sé in iomaíocht le formáid RAR uair amháin agus bhí ráta ard comhbhrú aige. Tháinig stop le forbairt theicniúil tar éis 2007, agus tá formáidí 7z agus RAR curtha ina ionad anois, agus baineann sé le formáidí cartlainne córais oidhreachta)"
 
 msgid "mime_bz2"
-msgstr "Pacáiste comhbhrúite BZIP2 (d'fhorbair Julian Seward i 1996, algartam comhbhrú trí shórtáil bhloc. Cóimheas comhbhrú 15-20% níos airde ná GZIP, ach níos moille. Formáid choitianta do chód foinse chroí Linux, pacáistí bogearraí foinse oscailte, síneadh .bz2)"
+msgstr "BZIP2 pacáiste comhbhrúite (formáid chomhbhrúite shórtála bhloc a d'fhorbair Julian Seward i 1996. Tá ráta comhbhrú a bhunalgartaim 15-20% níos airde ná GZIP ach le costas ríomhaireachta níos airde. Úsáidtear go minic é le haghaidh dáileadh chód foinse eithne Linux agus pacáistí bogearraí foinse oscailte, agus is é .bz2 an síneadh comhaid chaighdeánach)"
 
 msgid "mime_cab"
-msgstr "Pacáiste comhbhrúite CAB (d'fhorbair Microsoft i 1995, formáid Cabinet. Formáid phacáiste suiteála Windows, a úsáidtear le haghaidh dáileadh tiománaithe agus comhad córais. Úsáideann Suiteálaí Windows (MSI) úsáid inmheánach as CAB chun comhaid a stóráil)"
+msgstr "CAB pacáiste comhbhrúite (formáid chartlainne Cabinet a d'fhorbair Microsoft i 1995. Mar chaighdeán suiteála dúchasach an chórais Windows, a úsáidtear le haghaidh dáileadh tiománaithe agus comhad eithne, agus feidhmíonn sé freisin mar choimeádán stórála bunúsach do Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "Íomhá diosca DMG (a d'eisigh Apple sna 80idí, formáid Disk Image. Formáid chaighdeánach do dháileadh bogearraí macOS, gléasann sé mar dhiosca fíorúil nuair a chliceáiltear faoi dhó, tarraing chun an feidhmchlár a shuiteáil. Tacaíonn sé le comhbhrú agus criptiú, is é an phríomhfhormáid é do íoslódálacha bogearraí Mac)"
+msgstr "DMG íomhá diosca (formáid íomhá diosca d'éabhlóidigh Apple ó na 1980idí. Mar choimeádán caighdeánach do dháileadh bogearraí macOS, tacaíonn sé le gléasadh mar chóras comhad fíorúil, le comhbhrú íseal-leibhéil agus le criptiú sonraí, agus is é an phríomhfhormáid é do dháileadh feidhmchlár in éiceachóras Mac)"
 
 msgid "mime_emz"
-msgstr "Íomhá chomhbhrúite EMZ (meitichomhad feabhsaithe comhbhrúite Windows, leagan comhbhrúite de EMF. Formáid stórála do ghrafaicí veicteora i ndoiciméid Office, go bunúsach comhad EMF comhbhrúite le GZIP)"
+msgstr "EMZ íomhá chomhbhrúite (leagan comhbhrúite de Mheitea-chomhad Feabhsaithe Windows EMF. Go bunúsach grafaicí veicteora dénártha atá comhbhrúite trí algartam GZIP, a úsáidtear go forleathan le haghaidh stórála grafaicí veicteora leabaithe i ndoiciméid shraith Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Pacáiste comhbhrúite GZIP (d'fhorbair Jean-loup Gailly agus Mark Adler i 1992, tionscadal GNU. Uirlis chomhbhrú chaighdeánach Unix/Linux, formáid choitianta do chomhbhrú aistrithe HTTP. Síneadh .gz, a úsáidtear go minic le TAR)"
+msgstr "GZIP pacáiste comhbhrúite (formáid chomhbhrúite srutha chaighdeánach de chuid tionscadal GNU a d'fhorbair Jean-loup Gailly agus Mark Adler i 1992. Mar uirlis chomhbhrúite chaighdeánach Unix/Linux, is é an caighdeán lárnach é freisin do chomhbhrú chiseal iompair HTTP (Gzip), agus úsáidtear go minic é i dteannta le cartlann TAR)"
 
 msgid "mime_jar"
-msgstr "Pacáiste comhbhrúite JAR (a d'eisigh Sun Microsystems i 1997, formáid Java ARchive. Go bunúsach pacáiste ZIP, a úsáidtear le haghaidh pacáistiú leabharlann agus feidhmchlár Java. Formáid lárnach d'éiceachóras Java mar Maven agus Gradle, a úsáideann Android freisin)"
+msgstr "JAR pacáiste comhbhrúite (formáid chartlainne Java ARchive a d'eisigh Sun Microsystems i 1997. Go bunúsach coimeádán pacáistithe bunaithe ar struchtúr ZIP, a úsáidtear chun leabharlanna ranga Java agus meiteashonraí a chapsúliú, agus is táirge lárnach tiomsaithe é do Maven, Gradle agus d'éiceachóras luath Android)"
 
 msgid "mime_lzma"
-msgstr "Pacáiste comhbhrúite LZMA (d'fhorbair Igor Pavlov i 1998, algartam Lempel-Ziv-Markov chain. Algartam comhbhrú lárnach formáid 7z, ardchóimheas comhbhrú, luas dí-chomhbhrú tapa. Úsáidtear é le haghaidh dáileadh bogearraí do fhirmware agus córais leabaithe)"
+msgstr "LZMA pacáiste comhbhrúite (algartam comhbhrúite slabhra Lempel-Ziv-Markov a d'fhorbair Igor Pavlov i 1998. Mar phríomhinneall na formáide 7z, a bhfuil ráta comhbhrú thar a bheith ard agus dí-chomhbhrú tapa aige, a úsáidtear go forleathan le haghaidh dáileadh firmware crua-earraí agus córas leabaithe)"
 
 msgid "mime_rar"
-msgstr "Pacáiste comhbhrúite RAR (d'fhorbair Eugene Roshal i 1993, formáid Roshal ARchive. Ardchóimheas comhbhrú, tacaíonn sé le himleabhair roinnte agus taifid aisghabhála. Formáid an chláir WinRAR, cóimheas comhbhrú níos airde ná ZIP, ach éilíonn sé bogearraí íoctha, is féidir le huirlisí foinse oscailte mar unrar dí-chomhbhrú)"
+msgstr "RAR pacáiste comhbhrúite (formáid chartlainne dhílseánaigh WinRAR a d'fhorbair Eugene Roshal i 1993. Tacaíonn sé le roinnt imleabhar, le taifid aisghabhála fisiciúla (ECC) agus le criptiú láidir. Tá a ráta comhbhrú níos fearr ná ZIP caighdeánach, agus baineann sé tacaíocht leathan comhoiriúnachta amach i réimsí pearsanta agus tráchtála)"
 
 msgid "mime_tar"
-msgstr "Cartlann TAR (a tugadh isteach in Unix V7 i 1979, formáid Tape ARchive. Formáid chartlainne téipe, ní dhéanann sé comhbhrú ach pacáistiú, a úsáidtear go minic le GZIP/BZIP2/XZ. Úsáideann cód foinse phacáistí bogearraí Linux agus stóráil sraitheanna íomhánna Docker formáid TAR)"
+msgstr "TAR pacáiste cartlainne (formáid chartlainne téipe ó ré Unix V7 i 1979. Ní dhéanann sé ach pacáistiú srutha comhad gan comhbhrú sonraí, agus is minic a chuirtear le GZIP/BZIP2/XZ é, agus is é an caighdeán bunúsach é do chód foinse Linux agus do stóráil shraitheach íomhánna Docker)"
 
 msgid "mime_tgz"
-msgstr "Pacáiste comhbhrúite TGZ (formáid chomhcheangailte TAR + GZIP, síneadh .tgz nó .tar.gz. An fhormáid dháileacháin is uilíche do phacáistí Unix/Linux, a úsáidtear go forleathan do chód foinse agus pacáistí dénártha, ionadaí ar 'dí-chomhbhrú agus úsáid')"
+msgstr "TGZ pacáiste comhbhrúite (formáid chomhcheangailte srutha de chartlann TAR agus comhbhrú GZIP, síneadh .tgz nó .tar.gz. Mar an fhormáid dáileacháin pacáiste bogearraí is uilíche i dtimpeallachtaí Unix/Linux, a úsáidtear go forleathan le haghaidh imscartha tiomsaithe cóid fhoinse agus dáileacháin pacáiste dénártha gan suiteáil)"
 
 msgid "mime_tbz2"
-msgstr "Pacáiste comhbhrúite TBZ2 (formáid chomhcheangailte TAR + BZIP2, síneadh .tbz2 nó .tar.bz2. Cóimheas comhbhrú 15-20% níos airde ná TGZ, oiriúnach do dháileadh comhad mór, d'úsáid cód foinse chroí Linux an fhormáid seo ar feadh i bhfad)"
+msgstr "TBZ2 pacáiste comhbhrúite (formáid chomhcheangailte srutha de chartlann TAR agus comhbhrú BZIP2, síneadh .tbz2 nó .tar.bz2. I gcomparáid le TGZ, is féidir leis an gcóimheas comhbhrú a fheabhsú 15-20% breise, oiriúnach d'aistrithe comhad móra, agus úsáideadh é le fada le haghaidh dáileadh chód foinse eithne Linux)"
 
 msgid "mime_xz"
-msgstr "Pacáiste comhbhrúite XZ (a eisíodh i 2009, bunaithe ar algartam LZMA2. Cóimheas comhbhrú thar a bheith ard, 30-50% níos airde ná GZIP, luas dí-chomhbhrú réasúnta tapa. Úsáidtear go forleathan é ag croí Linux agus bainisteoirí pacáistí (mar .deb Debian go hinmheánach), is é an fhormáid mholta faoi láthair in éiceachóras Linux)"
+msgstr "XZ pacáiste comhbhrúite (formáid ard-chóimheasa comhbhrú den chéad ghlúin eile a eisíodh i 2009. Bunaithe ar algartam LZMA2, tá ráta comhbhrú sonraí 30-50% níos fearr ná GZIP agus dí-chomhbhrú tapa á choinneáil aige. Tá sé bunaithe mar chaighdeán dáileacháin molta ag eithne Linux agus ag príomhbhainisteoirí pacáistí (m.sh. taobh istigh de .deb Debian))"
 
 msgid "mime_z"
-msgstr "Pacáiste comhbhrúite Z (formáid an ordaithe compress Unix ó 1985, algartam LZW. Formáid chomhbhrú Unix sean, cuireadh GZIP ina ionad. Síneadh .Z, níos lú úsáide i gcórais nua-aimseartha)"
+msgstr "Z pacáiste comhbhrúite (formáid chomhbhrúite LZW d'ordú compress Unix ó 1985. Mar chaighdeán comhbhrúite i gcórais luatha Unix, tá formáid níos éifeachtaí GZIP curtha ina ionad go hiomlán anois, agus is formáid stairiúil oidhreachta annamh é i dtrácht líonra nua-aimseartha)"
 
 msgid "mime_zip"
-msgstr "Pacáiste comhbhrúite ZIP (d'fhorbair Phil Katz i 1989, formáid PKZIP. Tacaithe go dúchasach ag Windows, an fhormáid chomhbhrú is uilíche ar an idirlíon. Tacaíonn sé le comhaid iolracha, struchtúr eolaire agus algartaim chomhbhrú roghnacha. Tá JAR Java, APK Android agus DOCX/XLSX doiciméad Office go léir bunaithe ar fhormáid ZIP)"
+msgstr "ZIP pacáiste comhbhrúite (formáid chartlainne uilíoch PKZIP a d'fhorbair Phil Katz i 1989. Tacaíonn gach príomhchóras oibriúcháin go dúchasach leis, agus is é an caighdeán coimeádáin is mó a úsáidtear ar an idirlíon é. Tá JAR nua-aimseartha Java, APK Android agus doiciméid Office (OOXML) bunaithe ar struchtúr ZIP uile)"
 
 msgid "mime_zst"
-msgstr "Pacáiste comhbhrúite Zstandard (d'fhorbair Facebook i 2015, le Yann Collet. Algartam comhbhrú ardluais, cóimheas comhbhrú gar do LZMA, luas i bhfad níos airde ná GZIP. Tacaithe ag croí Linux 5.9+, agus é á ghlacadh de réir a chéile ag Arch Linux pacman, Debian APT, is é an caighdeán nua comhbhrú don chéad ghlúin eile)"
+msgstr "Zstandard pacáiste comhbhrúite (caighdeán comhbhrúite srutha den chéad ghlúin eile a dhear Yann Collet ó Facebook i 2015. Téann sé i ngleic le ráta comhbhrú LZMA agus é ag an am céanna i bhfad níos airde tréchur ná GZIP. Tá glacadh domhain leis ag eithne Linux (5.9+) agus ag bainisteoirí pacáistí Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Pacáiste comhbhrúite LZ4 (d'fhorbair Yann Collet i 2011, algartam comhbhrú thar a bheith tapa. Luas comhbhrú níos mó ná 10 n-uaire níos airde ná GZIP, oiriúnach do chásanna comhbhrú fíor-ama. Úsáidtear go forleathan é i gcroí Linux, OpenZFS, Hadoop, is é an rogha is fearr do chásanna ina bhfuil tosaíocht ag luas)"
+msgstr "LZ4 pacáiste comhbhrúite (algartam comhbhrúite srutha thar-ghasta a d'fhorbair Yann Collet i 2011. Tá a luas tréchuir níos mó ná 10 n-uaire níos gasta ná GZIP, le forchostas LAP rith-ama an-íseal. Úsáidtear go forleathan é in eithne Linux, i gcóras comhad OpenZFS agus i bpróiseáil srutha sonraí fíor-ama Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Pacáiste comhbhrúite LZO (d'fhorbair Markus Oberhumer i 1996, algartam Lempel-Ziv-Oberhumer. Luas dí-chomhbhrú thar a bheith tapa, cóimheas comhbhrú meánach. Úsáideann Squashfs chroí Linux agus firmware OpenWrt LZO, oiriúnach do chórais leabaithe)"
+msgstr "LZO pacáiste comhbhrúite (algartam Lempel-Ziv-Oberhumer a d'fhorbair Markus Oberhumer i 1996. Díríonn sé ar fheidhmíocht thar-ghasta dí-chomhbhrúite. Tá sé leabaithe go forleathan in íomhánna Squashfs eithne Linux, i bhfirmware OpenWrt agus i gcórais leabaithe éagsúla a bhfuil acmhainní teoranta acu)"
 
 msgid "mime_msi"
-msgstr "Pacáiste suiteála MSI (a d'eisigh Microsoft i 1999, formáid Windows Installer. Formáid chaighdeánach suiteála d'fheidhmchláir Windows, tacaíonn sé le haisiompú idirbheart, bainistíocht comhpháirteanna agus suiteáil chiúin. Formáid is fearr do dháileadh bogearraí fiontair, is é an phríomhfhormáid é fós le haghaidh suiteáil bogearraí Windows)"
+msgstr "MSI pacáiste suiteála córais (formáid chapsúilithe sonraí Windows Installer a d'eisigh Microsoft i 1999. Mar chaighdeán imscartha ar leibhéal feidhmchláir Windows, tacaíonn sé go dúchasach le rolladh siar idirbheart íseal-leibhéil, le bainistíocht saolré comhpháirteanna agus le suiteáil chiúin gan bhaisc, agus is é an caighdeán lárnach é do dháileadh láraithe bogearraí fiontair agus d'imscaradh bunaithe ar bheartas)"
 
 msgid "mime_pkg"
-msgstr "Pacáiste suiteála PKG (formáid phacáiste suiteála feidhmchlár macOS, bunaithe ar theicneolaíocht Installer Apple. Formáid chaighdeánach do dháileadh bogearraí macOS, tacaíonn sé le roghnú comhpháirteanna, scripteanna suiteála agus feidhmiúlacht dhíshuiteála. Is féidir comhaid .pkg a shuiteáil le cliceáil faoi dhó, agus is foirm choitianta iad do dháileadh bogearraí lasmuigh den Mac App Store)"
+msgstr "PKG pacáiste suiteála bogearraí tras-ardáin. 1. Pacáiste bogearraí FreeBSD: caighdeán pkgng, síneadh .pkg nó .txz, bunaithe ar chomhbhrú TAR+XZ/Zstd, tacaíonn sé le réiteach spleáchais agus le fíorú sínithe; 2. Pacáiste suiteála macOS: bunaithe ar fhormáid Apple Installer, tacaíonn sé le comhpháirteanna saincheaptha, le scripteanna suiteála agus le díshuiteáil ar leibhéal an chórais. Is iad seo na príomh-iompróirí dáileacháin do fhreastalaithe BSD agus do chóras Mac, faoi seach."
 
 msgid "mime_apk"
-msgstr "Pacáiste feidhmchláir Android APK (a d'eisigh Google i 2008, formáid suiteála traidisiúnta d'fheidhmchláir Android. Is pacáiste ZIP go bunúsach é APK, ina bhfuil cód, acmhainní agus comhad an fhorais. Ó 2021 ar aghaidh, éilíonn Google Play go n-úsáidfeadh feidhmchláir nua formáid AAB, ach úsáidtear APK fós le haghaidh forbartha, dífhabhtaithe, siopaí tríú páirtí agus suiteáil thaobhach)"
+msgstr "APK pacáiste feidhmchláir Android (pacáiste suiteála feidhmchlár traidisiúnta a d'eisigh Google le Android i 2008. Bunaithe go bunúsach ar struchtúr cartlainne ZIP, a phacáistíonn beartchód Dalvik (DEX) tiomsaithe, an manifest meiteashonraí agus acmhainní domhanda, agus úsáidtear go forleathan anois é le haghaidh dífhabhtaithe forbartha áitiúla, dáileacháin tríú páirtí agus suiteála taobhach ar ghléasanna)"
 
 msgid "mime_ipa"
-msgstr "Pacáiste feidhmchláir Apple IPA (iOS App Store Package, formáid suiteála d'fheidhmchláir iOS/iPadOS. Eisithe le iOS SDK i 2008. Éilíonn dáileadh tríd an App Store nó síniú teastais fhiontair. Ina bhfuil inrite, acmhainní, Info.plist agus faisnéis shínithe)"
+msgstr "IPA pacáiste feidhmchláir Apple (coimeádán pacáistithe eisiach iOS/iPadOS a eisíodh le SDK an iPhone i 2008. Go bunúsach is cartlann ZIP é atá cosanta ag FairPlay DRM nó sínithe le deimhniú fiontair, ina bhfuil an inrite dénártha Mach-O, crann acmhainní an fheidhmchláir agus cumraíocht meiteashonraí Info.plist)"
 
 msgid "mime_hap"
-msgstr "Pacáiste feidhmchláir HarmonyOS HAP (HarmonyOS Ability Package, aonad bunúsach feidhmchláir HarmonyOS. Eisithe le HarmonyOS 2.0 i 2020. Tacaíonn sé le cineálacha entry agus feature, formáid dháileacháin do ghutháin Huawei, taibléid, uaireadóirí cliste agus gléasanna eile HarmonyOS)"
+msgstr "HAP pacáiste feidhmchláir HarmonyOS (bunaonad imscartha leaisteacha HarmonyOS a eisíodh le HarmonyOS 2.0 i 2020. Comhdhéanta de phríomh-mhodúl Entry nó modúil sínte Feidhme, is é an fhormáid dáileacháin tras-fheiste il-chríochfort (fóin, taibléid, gléasanna inchaite) é do ghléasanna críochfort cliste)"
 
 msgid "mime_har"
-msgstr "Pacáiste statach roinnte HarmonyOS HAR (HarmonyOS Archive, leabharlann statach roinnte HarmonyOS, is féidir é a roinnt le HAPanna iolracha, a úsáidtear le haghaidh forbairt bhunaithe ar chomhpháirteanna agus athúsáid modúl)"
+msgstr "HAR pacáiste roinnte statach HarmonyOS (comhad cartlainne leabharlainne roinnte statach dhílseánaigh HarmonyOS. Úsáidtear é chun comhpháirteanna coiteanna, bun-chód acmhainní agus spleáchais ama tiomsaithe a chapsúliú, á nascadh go statach ag modúil HAP iolracha lena roinnt, agus is é bunchloch na forbartha bunaithe ar chomhpháirteanna agus athúsáide il-mhodúil i gcóras HarmonyOS é)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (a d'eisigh Google i 2018, ó 2021 ar aghaidh éilíonn Google Play go n-úsáidfeadh feidhmchláir nua an fhormáid seo. Is formáid dháileacháin é AAB, gineann Google Play APKanna optamaithe go dinimiciúil bunaithe ar chumraíocht an ghléis (ailtireacht LAP, dlús scáileáin, teanga), ag laghdú méid an phacáiste suiteála 35% ar an meán. Seolann forbróirí AAB, íoslódálann úsáideoirí APK)"
+msgstr "AAB bundle feidhmchláir Android (formáid dáileacháin dhinimiciúil Google Play a sheol Google i 2018 agus a bhunaigh i 2021. Mar eintiteas dáileacháin amháin, gearrann agus tiomsaíonn an scamall go dinimiciúil de réir ailtireacht LAP an ghléis sprice, dlús scáileáin agus teanga chun APKanna optamaithe a ghiniúint de réir mar is gá, ag laghdú costas bandaleithead tarchuir 35% ar an meán)"
 
 msgid "mime_xapk"
-msgstr "Pacáiste feidhmchláir XAPK (pacáiste síneadh feidhmchláir Android tríú páirtí, ina bhfuil APK + comhaid sonraí OBB. Úsáidtear le haghaidh cluichí móra agus feidhmchláir chasta, réitíonn sé an teorainn 100MB APK. Coitianta i siopaí feidhmchlár tríú páirtí ar nós APKPure, APKMirror, ní formáid oifigiúil Google í)"
+msgstr "XAPK pacáiste feidhmchláir shínithe (caighdeán sínte feidhmchláir neamhoifigiúil a bhunaigh pobal tríú páirtí Android. Comhcheanglaíonn sé an comhad APK caighdeánach le pacáiste sínte sonraí cluiche OBB mór, ag sárú go fisiciúil teorainn mhéid comhaid aonair 100 MB Google Play, agus feictear go forleathan é ar ardáin dháileacháin cluichí)"
 
 msgid "mime_appx"
-msgstr "Pacáiste feidhmchláir Windows APPX (a d'eisigh Microsoft i 2012, formáid suiteála d'fheidhmchláir Windows 8/10/11. Tacaíonn sé le feidhmchláir UWP agus tiontú feidhmchlár deisce, dáilte tríd an Microsoft Store. I 2024, d'eisigh Microsoft MSIX mar fhormáid chomharbais, ag cur APPX in ionad de réir a chéile)"
+msgstr "APPX pacáiste feidhmchláir nua-aimseartha (caighdeán imscartha feidhmchláir UWP a d'eisigh Microsoft le Windows 8 i 2012. Tá feidhmíocht feidhmithe scoite i mbosca gainimh agus dínstállte éadrom aige, agus ba é an caighdeán ceannasach luath é do Microsoft Store, ach in éiceachóras Windows nua-aimseartha tá sé tar éis dul isteach i gcéim dheireanach a shaolré ag éabhlóidiú i dtreo MSIX)"
 
 msgid "mime_msix"
-msgstr "Pacáiste feidhmchláir MSIX (a d'eisigh Microsoft i 2018, formáid nua phacáistiú Windows. Comhcheanglaíonn sé buntáistí APPX agus MSI, tacaíonn sé le gach cineál feidhmchlár Windows, is féidir é a dháileadh tríd an Microsoft Store nó suiteáil thaobhach, formáid mholta do Windows 11)"
+msgstr "MSIX pacáiste feidhmchláir den chéad ghlúin eile (sonraíocht phacáistithe nua Windows atá caighdeánaithe go hiomlán a d'fhoilsigh Microsoft i 2018. Comhleáíonn sé go foirfe gnéithe bosca gainimh slándála feidhmchláir APPX le buntáistí bainistíochta sócmhainní fiontair MSI, agus tá sé comhoiriúnach go hiomlán le gach cineál feidhmchlár Win32, agus is é an caighdeán dáileacháin molta é do Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Pacáiste feidhmchláir AppImage (a eisíodh i 2004, formáid feidhmchláir Linux nach dteastaíonn suiteáil. 'Feidhmchlár amháin comhad amháin', ní gá é a shuiteáil, inrite go díreach, tacaíonn sé le formhór na ndáiltí Linux, foirm choitianta d'fhorbróirí chun bogearraí Linux a dháileadh)"
+msgstr "AppImage pacáiste feidhmchláir féin-choimeádta (sonraíocht chartlainne inrite aon-chomhaid Linux a cuireadh tús léi i 2004. Glacann sé le hailtireacht féin-choimeádta ‘feidhmchlár amháin comhad amháin’, a ghleastar go díreach mar chóras comhad fíorúil inléite amháin trí mheicníocht FUSE ag am rith, ag baint amach feidhmiú gan spleáchas ar aghaidh ar fud dháileacháin Linux)"
 
 msgid "mime_flatpak"
-msgstr "Pacáiste feidhmchláir Flatpak (a eisíodh i 2015, formáid feidhmchláir Linux i mbosca gainimh. Ritheann sé thar dháiltí éagsúla, iargúlta ó chóras an óstaigh, d'fhorbair Fedora agus Red Hat é, formáid réamhshocraithe ionad bogearraí GNOME)"
+msgstr "Flatpak pacáiste feidhmchláir bhosca gainimh (caighdeán dáileacháin feidhmchlár deisce Linux tras-dáileacháin faoi cheannas Red Hat agus GNOME i 2015. Tacaíonn sé le meicníochtaí Namespace agus Cgroups eithne Linux chun leithlisiú bosca gainimh slándála an-dian ar leibhéal feidhmchláir a bhaint amach, agus is é bunús ionaid bhogearraí chórais oibriúcháin foinse oscailte nua-aimseartha é)"
 
 msgid "mime_snap"
-msgstr "Pacáiste feidhmchláir Snap (a d'eisigh Canonical i 2014, máthairchuideachta Ubuntu, formáid feidhmchláir Linux uilíoch. Nuashonruithe uathoibríocha, iargúltacht i mbosca gainimh, tacaíonn sé le níos mó ná 40 dáileadh Linux, formáid réamhshocraithe ionad bogearraí Ubuntu)"
+msgstr "Snap pacáiste feidhmchláir coimeádaithe (caighdeán imscartha uilíoch Linux a d'eisigh Canonical, máthairchuideachta Ubuntu, i 2014. Glacann sé le hailtireacht gléasta íomhá SquashFS féin-choimeádta an fheidhmchláir, agus tacaíonn sé le nuashonruithe uathoibríocha incriminteacha agus le leithlisiú bosca gainimh AppArmor dian, agus is é an phríomhfhormáid réamhshocraithe d'éiceachóras ionad bogearraí Ubuntu é)"
 
 msgid "mime_deb"
-msgstr "Pacáiste bogearraí Debian (a d'eisigh tionscadal Debian i 1993, formáid suiteála chaighdeánach do Debian/Ubuntu agus díorthaigh. Bainistithe le dpkg, is é APT a chomhéadan tosaigh bainisteoir pacáistí, ceann de na formáidí pacáiste is aibí in éiceachóras Linux, is é an phríomhfhormáid fós do theaghlach Debian)"
+msgstr "DEB pacáiste bogearraí córais (sonraíocht phacáistithe dhénártha agus chóid fhoinse a bhunaigh tionscadal Debian i 1993. Mar chaighdeán suiteála bunúsach do Debian, Ubuntu agus dá dhíorthaigh uile, braitheann sé ar dpkg le haghaidh díphacáil agus cothabhála, agus úsáideann sé APT mar chomhéadan tosaigh bhainisteoir pacáistí éifeachtach, agus is é an bunchloch dáileacháin bogearraí is aibí in éiceachóras Linux é)"
 
 msgid "mime_rpm"
-msgstr "Pacáiste bogearraí RPM (a d'eisigh Red Hat i 1997, formáid chaighdeánach do dháiltí Red Hat/Fedora/CentOS/SUSE. Ciallaíonn RPM 'Red Hat Package Manager', le DEB foirmíonn siad an dá fhormáid mhóra pacáiste Linux, is é an phríomhfhormáid fós do theaghlach RHEL)"
+msgstr "RPM pacáiste bogearraí córais (sonraíocht phacáistithe Bhainisteoir Pacáistí Red Hat a d'eisigh Red Hat i 1997. Le DEB, is iad an dá champa mhóra bhainistíochta pacáistí traidisiúnta Linux iad, agus tá seiceáil spleáchais bunaithe ar idirbhearta agus fíorú sínithe digiteach bogearraí íseal-leibhéil acu go dúchasach, agus is é an caighdeán dáileacháin iomlán ceannasach fós é d'éiceachórais de chlann Red Hat mar RHEL, Fedora agus CentOS)"
 
 msgid "mime_pacman"
-msgstr "Pacáiste bogearraí Arch (a d'eisigh Arch Linux i 2002, formáid .pkg.tar.zst a úsáideann an bainisteoir pacáistí pacman. Croílár na dáilte scaoilte rollta Arch Linux, aitheanta as a shimplíocht agus prionsabal KISS, is é AUR a shaintréith idirdhealaitheach)"
+msgstr "Pacman pacáiste bogearraí cartlainne (formáid phacáistithe .pkg.tar.zst a bhunaigh Arch Linux le bainisteoir pacman i 2002. Mar chroílár mheicníocht nuashonraithe rollta Arch, bunaithe ar algartam ard-chomhbhrú Zstandard ardluais, in éineacht le éiceachóras AUR (Arch User Software Repository), is caighdeán dáileacháin pacáistí nua-aimseartha é a chorpaíonn an t-íosmhéideachas agus prionsabal KISS (Coinnigh Simplí, Leithleach))"
 
 msgid "mime_exe"
-msgstr "Comhad inrite EXE (formáid chláir inrite Windows, giorrúchán 'Executable'. Formáid fhorghníomhaithe dhúchasach chóras oibriúcháin Windows, ina bhfuil struchtúr PE. Tháinig sé chun cinn ó fhormáid MZ MS-DOS, agus thug Windows NT isteach formáid PE (Portable Executable) i 1993, fós in úsáid inniu. Úsáideann pacáistí suiteála bogearraí, feidhmchláir, uirlisí córais an fhormáid seo. Is féidir leis an úsáideoir rith le cliceáil faoi dhó, is í an fhormáid inrite is forleithne ar domhan í)"
+msgstr "EXE comhad inrite dúchasach (formáid chláir dhénártha Inrite Inaistrithe (PE) d'ardán Windows. Síolraíonn a shliocht teicniúil ó struchtúr chloiginn MZ ó ré MS-DOS, agus ó Windows NT 1993 ar aghaidh, bunaíodh go hiomlán é mar shonraíocht struchtúir PE, agus is é an caighdeán feidhmithe is mó a úsáidtear ar fud an domhain é do threoracha meaisínchóid, rannóga acmhainní statacha agus do thosaithe eithne an chórais)"
 
 msgid "mime_dll"
-msgstr "Leabharlann nascáil dhinimiciúil DLL (a d'eisigh Microsoft i 1993, Dynamic Link Library. Cód roinnte Windows, a lódáiltear go dinimiciúil le linn fhorghníomhú an chláir, sábhálann sé cuimhne agus spás diosca. Úsáideann comhpháirteanna an chórais, breiseáin feidhmchlár, tiománaithe formáid DLL. Foirm lárnach chur i bhfeidhm API Windows, maolaíodh an fhadhb 'DLL Hell' le ré .NET)"
+msgstr "DLL leabharlann nascáil dinimiciúil (sonraíocht leabharlainne cóid roinnte Dynamic Link Library d'ardán Windows. Trí lódáil dhinimiciúil agus athlonnú siombailí ag am rith, sábhálann sé go mór cuimhne fhisiciúil agus spás diosca, mar phríomhfhoirm chur i bhfeidhm API Windows. Réitíodh an phianphointe luath ‘Ifreann DLL’ trí mheicníocht leithlisithe comhthreomhar SxS aimsir nua-aimseartha)"
 
 msgid "mime_com"
-msgstr "Comhad inrite COM (formáid inrite ó ré MS-DOS, giorrúchán 'Command'. Struchtúr comhad simplí, teorainn 64KB, príomhfhormáid roimh Windows 3.x. As feidhm, úsáideann Windows nua-aimseartha formáid EXE, úsáidtear an síneadh COM fós le haghaidh comhaid chomhpháirteacha áirithe)"
+msgstr "COM comhad inrite clasaiceach (an fhormáid feidhmithe íomhá cuimhne is sine (Command) ó ré MS-DOS. Úsáideann sé dearadh neamhstruchtúrtha deighleog íon-chóid, teoranta d'earnáil seolta cuimhne fisiciúil 64KB, agus tá sé ar scor anois mar fhormáid stairiúil oidhreachta, ach in ailtireachtaí Windows nua-aimseartha, coinnítear comhoiriúnacht theoranta fós mar chomhéadan comhpháirte ar leith)"
 
 msgid "mime_aac"
 msgstr "Fuaim AAC (caighdeán MPEG 1997, Advanced Audio Coding. Comharba MP3, cáilíocht fuaime níos fearr ná MP3 leis an ráta giotán céanna, formáid fuaime réamhshocraithe do YouTube, iTunes, Nintendo Switch)"

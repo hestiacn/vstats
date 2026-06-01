@@ -455,8 +455,8 @@ msgstr "Host - Broj stranica - Broj zahtjeva - Protok - Vrijeme posljednje posje
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Vrijeme početka posljednje posjete] i [Posljednja stranica posljednje posjete] spremaju se samo ako sesija nije završena"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Na početnoj stranici se prikazuje samo prvih %s stavki s najvećim brojem zahtjeva. Potpunu listu potražite na stranici s detaljima."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Prvih %s stavki je sortirano prema broju hitova u opadajućem redoslijedu; redoslijed preostalih stavki nije definiran."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Prijavljeni korisnik - Broj stranica - Broj zahtjeva - Protok - Vrijeme posljednje posjete"
@@ -470,8 +470,8 @@ msgstr "ID crva - Broj zahtjeva - Protok - Vrijeme posljednje posjete"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-pošta - Broj zahtjeva - Protok - Vrijeme posljednje posjete"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Na početnoj stranici se prikazuje samo prvih %s e-pošta s najvećim brojem zahtjeva. Potpunu listu potražite na stranici s detaljima."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Prvih %s email adresa je sortirano prema broju hitova u opadajućem redoslijedu; redoslijed preostalih adresa nije definiran."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Broj stranica - Protok - Ulaz - Izlaz"
@@ -680,6 +680,27 @@ msgstr "Parametar SiteDomain nije definiran u vašoj config/domain datoteci, ili
 msgid "Please run as Administrator to set permissions"
 msgstr "Pokrenite kao Administrator kako biste postavili dozvole"
 
+msgid "This directory lacks read permission"
+msgstr "Ovom direktorijumu nedostaje dozvola za čitanje"
+
+msgid "Please set read permission for directory"
+msgstr "Postavite dozvolu za čitanje za direktorijum"
+
+msgid "Missing required parameter in config file"
+msgstr "Nedostaje obavezni parametar u konfiguracijskoj datoteci"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Provjerite je li definiran 'DirData' parametar."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Čini se da naziv domene u adresi pretraživača nedostaje ili je nepotpun"
+
+msgid "Please check the URL parameter"
+msgstr "Provjerite URL parametar"
+
+msgid "Format description"
+msgstr "Opis formata"
+
 msgid "Please set execute permission"
 msgstr "Molimo postavite dozvolu za izvršavanje"
 
@@ -805,376 +826,379 @@ msgstr "Alat za prikupljanje"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Tekstualna datoteka (ASCII standardizacija 1963. godine, neformatiran običan tekst. Osnova za sav izvorni kod, konfiguraciju, dnevnike. Unix koristi LF, Windows CRLF za prijelom redova, i dalje najuniverzalniji format podataka na računarima)"
+msgstr "TXT (Obična tekstualna datoteka. Obični tekst bez formatiranja standardiziran ASCII kodiranjem 1963. godine. Kao temelj svog izvornog koda, konfiguracijskih datoteka i sistemskih zapisa, njegova višeplatformska kontrola toka znakova za novi red (CRLF za Windows, LF za Unix) i danas je najuniverzalniji standard za razmjenu podataka u svijetu računarstva)"
 
 msgid "mime_log"
-msgstr "Dnevnička datoteka (tekstualna datoteka koja bilježi informacije o radu sistema i aplikacija, često se koristi za otklanjanje grešaka, analizu performansi i sigurnosne revizije. Standardni formati uključuju Apache combined log, Nginx access log, syslog, itd.)"
+msgstr "LOG (Sistemski zapis rada. Tekstualno sredstvo koje bilježi stanje izvršavanja operativnog sistema, kernela i aplikacija. Obuhvata Nginx/Apache zapise pristupa (Kombinovani zapis) i standardnu syslog specifikaciju. Osnovni je izvor podataka za rješavanje problema, analizu performansi toka i sigurnosnu reviziju)"
 
 msgid "mime_page"
-msgstr "HTML web stranica (Tim Berners-Lee je izumio World Wide Web 1989. godine, definirao tri glavne tehnologije HTML/HTTP/URL 1990. godine, besplatno ih ustupivši bez patentiranja. HTML5 je postao službeni W3C standard 2014. godine, podržava prikaz, multimediju i štampanje. Dobitnik Turingove nagrade 2016. godine)"
+msgstr "HTML (Hipertekstualna web stranica. Temelj World Wide Web-a koji je kreirao Tim Berners-Lee 1989. godine. Kao univerzalni jezik za označavanje hiperteksta besplatnog pristupa, njegova specifikacija HTML5 postala je službeni W3C standard 2014. godine, s izvornom podrškom za strukturirani multimedij, semantičku interakciju i tečni raspored stranice. Dobitnik Turingove nagrade 2016. godine)"
 
 msgid "mime_khtml"
-msgstr "KHTML web engine (KDE 2.0 objavljen 1998. godine, engine za prikaz u Konqueror pretraživaču. Apple je 2001. godine kreirao WebKit zasnovan na KHTML-u, a Google je 2008. godine od WebKita napravio Blink, koji postaje jezgro pretraživača poput Chrome, Edge, Safari. KHTML je primjer kako je open source zajednica postavila temelje modernim pretraživačkim engine-ima, a njegovo tehnološko naslijeđe se nastavlja kroz WebKit/Blink do danas)"
+msgstr "KHTML (Pogon predloška web stranice. Specifikacija pogona za prikazivanje pretraživača KDE 2.0 iz 1998. godine. Kao uzor zajednice otvorenog koda koja je postavila temelje modernog Web prikazivanja, njeno tehničko naslijeđe direktno je inspiriralo i razvilo se u Apple WebKit i Google Blink jezgre, koje i danas nastavljaju njenu osnovnu nit kroz moderne arhitekture tečnih dinamičkih web stranica)"
 
 msgid "mime_script"
-msgstr "Dinamički skriptni jezik (interpretirani jezik, nije potrebno kompajliranje. Uključuje ASP, JSP, CGI, ColdFusion, Tcl, VBScript, itd., široko korišten u ranom web razvoju, administraciji sistema, automatizaciji zadataka. Moderni skriptni jezici poput Python, Ruby, JavaScript razvili su se u glavne alate za cjelokupni razvoj)"
+msgstr "SCRIPT (Dinamička skripta koja se tumači. Opšta klasifikacija toka izvornog koda koji se izvršava red po red od strane specifičnog izvršnog okruženja ili tumača, bez potrebe za prethodnim kompajliranjem. Obuhvata ASP, JSP, CGI i Tcl, široko korišteno za serverska javna sučelja, automatizaciju procesa i povezivanje zadataka na nivou sistema)"
 
 msgid "mime_js"
-msgstr "JavaScript skripta (Brendan Eich ga je stvorio za 10 dana u Netscapeu 1995. godine, izvorni programski jezik pretraživača. ECMAScript je standardiziran 1997. godine, Node.js je rođen 2009. godine čineći ga višeplatformskim jezikom, npm je najveći menadžer paketa na svijetu. Već godinama najpopularniji programski jezik na GitHubu)"
+msgstr "JavaScript (Skripta. Izvorno programsko okruženje Netscape pretraživača iz 1995. godine. Godine 1997. uspostavlja industrijski standard ECMAScript, a 2009. godine rođenjem Node.js izvršnog okruženja razbijaju se granice pretraživača i stvara asinhrona arhitektura bez blokiranja za cijeli stek (full-stack), praćena najvećim svjetskim ekosistemom softverskih paketa npm)"
 
 msgid "mime_py"
-msgstr "Python skripta (Guido van Rossum ga je kreirao 1991. godine, poznat po obaveznom uvlačenju i jednostavnoj sintaksi. Široko se koristi u web razvoju, nauci o podacima, vještačkoj inteligenciji, automatizaciji administracije. Višestruki dobitnik TIOBE nagrade za programski jezik godine)"
+msgstr "Python (Skripta. Napredni interpretirani skriptni jezik koji je kreirao Guido van Rossum 1991. godine. Zahvaljujući obaveznoj indentaciji koja ne narušava čitljivost i višeparadigmatskom dizajnu, danas je uspostavljen kao industrijski standard za modernu Web arhitekturu, nauku o podacima punog steka (full-stack), treniranje modela vještačke inteligencije (AI) i automatiziranu administraciju sistema u oblaku (cloud-native))"
 
 msgid "mime_sh"
-msgstr "Shell skripta (Unix je rođen 1971. godine, jezik komandne linije. Koristi se za administraciju sistema, automatizaciju zadataka, pokretanje usluga, skripte za postavljanje. Neophodna vještina za Linux administraciju)"
+msgstr "Shell (Skripta. Standardni skript tumača naredbi iz Unix ere (1971). Obuhvata specifikacije naredbi na nivou kernela kao što su Bash, Sh, Dash, obično se izvršava sa nastavkom .sh. Univerzalni je ljepilo na nivou kernela za kontrolu procesa na niskom nivou, konfigurisanje okruženja bez instalacije i automatizirano postavljanje u modernim Unixolikim operativnim sistemima)"
 
 msgid "mime_rb"
-msgstr "Ruby skripta (Yukihiro Matsumoto ga je kreirao 1995. godine, fokusiran na zadovoljstvo developera. Ruby on Rails okvir je pionir paradigme konvencije nad konfiguracijom, utječući na dizajn modernih web okvira)"
+msgstr "Ruby (Skripta. Objektno orijentirani skriptni jezik koji je kreirao Yukihiro Matsumoto (Matz) 1995. godine. S krajnjim poštovanjem prema iskustvu programera kao glavnom dizajn filozofijom, njegov Ruby on Rails okvir je revolucionarno uspostavio modernu paradigmu razvoja naprednih Web arhitektura 'Konvencija umjesto konfiguracije (CoC)')"
 
 msgid "mime_pl"
-msgstr "Perl skripta (Larry Wall ga je kreirao 1987. godine, poznat po pragmatičnosti, često nazivan 'švicarski nož'. CPAN je preteča modernih menadžera paketa programskih jezika, sa dubokim utjecajem u oblasti obrade teksta, administracije sistema i CGI-ja)"
+msgstr "Perl (Skripta. Pragmatični skriptni jezik koji je kreirao Larry Wall 1987. godine. Kao pionir modernih menadžera paketa (CPAN), poznat je kao 'švicarski nož' za obradu teksta. U modernom CGI načinu rada, i dalje služi kao visoko pouzdana podloga u oblasti analize zapisa, zahvaljujući izuzetno niskoj potrošnji fizičke memorije i efikasnoj obradi regularnih izraza)"
 
 msgid "mime_php"
-msgstr "PHP dinamička web stranica (Rasmus Lerdorf ga je kreirao 1995. godine, posebno dizajniran za web razvoj. Više od 70% web stranica na svijetu ga koristi, pokreće platforme poput WordPress, Facebook, Wikipedia. PHP 8 uvodi JIT kompajliranje, značajno poboljšavajući performanse)"
+msgstr "PHP (Dinamička web stranica. Kreirao Rasmus Lerdorf 1995. godine, posebno dizajnirana za Web razvoj. Kao osnovna tehnologija koja pokreće više od 70% svih web stranica na svijetu, dubinsko nosi velike produkcijske aplikacije poput WordPress-a i Wikipedia-e. Od uvođenja JIT (Just-In-Time) izvršnog okruženja u PHP 8, ostvaren je evolucijski pomak ka visokoperformansnom full-stack serveru na nižem nivou)"
 
 msgid "mime_image"
-msgstr "Datoteka slike"
+msgstr "IMAGE (Klasifikacija slikovnih resursa. Opšta klasifikacija koja obuhvata bitmap sa/bez gubitaka, moderne responzivne grafike i vektorske grafike. Osnovni pokazatelj za procjenu opterećenja učitavanja vizuelnih resursa stranice, stope pogodaka keša klijenta i potrošnje mrežnog opsega medija)"
 
 msgid "mime_document"
-msgstr "Datoteka dokumenta"
+msgstr "DOCUMENT (Klasifikacija strukturiranih dokumenata. Opšta klasifikacija koja obuhvata obični tekst, proračunske tablice, dokumente fiksnog formata (PDF) i lake jezike za označavanje. Osnovni pokazatelj za statistiku distribucije statičkog znanja na serveru, preuzimanje resursa informatizacije preduzeća i sposobnost protoka tekstualnog toka)"
 
 msgid "mime_package"
-msgstr "Softverski paket"
+msgstr "PACKAGE (Klasifikacija kompajliranih proizvoda i softverskih paketa. Opšta klasifikacija koja obuhvata izvorno izvršne programe operativnog sistema, biblioteke koje se povezuju u izvršnom vremenu (DLL/SO) i pakete za instalaciju aplikacija. Često se koristi kao osnovni pokazatelj za procjenu odlaznog prometa i vršnih preuzimanja na lokacijama za distribuciju softvera)"
 
 msgid "mime_archive"
-msgstr "Gzip komprimirana datoteka (GNU projekat 1992. godine, zasnovan na DEFLATE algoritmu. Koristi se u Web-u za dinamičku kompresiju odgovora, stopa kompresije je obično 60-90%. Nakon 2015. godine, Brotli ga je zamijenio u nekim scenarijima, ali je i dalje najšire podržan format kompresije na serverskoj strani)"
+msgstr "ARCHIVE (Arhivirane i kompresovane datoteke. Opšta klasifikacija paketa kompresovanih podataka baziranih na osnovnim algoritmima poput DEFLATE, LZMA. Na mrežnom sloju, pored tradicionalne distribucije paketa, također obuhvata i dinamički Gzip tok GNU projekta iz 1992. Iako se u modernim scenarijima postepeno uvodi Brotli algoritam, ova klasifikacija je i dalje osnovni pokazatelj za procjenu propusnosti mrežnog opsega servera i smanjenja pritiska na transportnom sloju)"
 
 msgid "mime_audio"
-msgstr "Audio datoteka"
+msgstr "AUDIO (Klasifikacija digitalnog audio toka. Opšta klasifikacija koja obuhvata kompresovani audio, audio knjige i kontejnere za audio tokove. Na osnovu specifičnih standarda za kodiranje/dekodiranje zvuka, koristi se za praćenje propusnosti audio tokova na multimedijalnim lokacijama, opsega tokova u realnom vremenu i performansi dugotrajnih veza)"
 
 msgid "mime_video"
-msgstr "Video datoteka"
+msgstr "VIDEO (Klasifikacija digitalnog video toka. Opšta klasifikacija koja obuhvata visokodefinicijske video kontejnere, moderne web animacije i fragmente tokova. Kao osnovni pokazatelj u okruženjima s visokim mrežnim opterećenjem za procjenu gornje granice vršnog opsega servera i efikasnosti ubrzanja mreže za isporuku sadržaja (CDN))"
 
 msgid "mime_jscript"
-msgstr "JavaScript (razvio Brendan Eich 1995. godine)"
+msgstr "JScript (Skripta. Povratno inženjerska proprietarna implementacija koju je Microsoft razvio 1996. godine za Internet Explorer 3.0. Kao domaćin konkurent klasičnom JavaScript-u, bila je osnovni pogon za Windows Script Host (WSH) i rane ASP backendove)"
 
 msgid "mime_json"
-msgstr "JSON podaci (predložio Douglas Crockford 2001. godine, lagani format za razmjenu podataka, činjenični standard za Web API-je)"
+msgstr "JSON (Strukturirani podaci. Lagani format za serijalizaciju podataka za razmjenu koji je uspostavio Douglas Crockford 2001. godine. Baziran na tekstualnim parovima ključ-vrijednost i nizovskoj arhitekturi, s izuzetnom ljudskom čitljivošću i mogućnošću parsiranja toka bez gubitaka. Standard je (de facto) za moderne Web API-je, mikroservisne arhitekture i interakciju s velikim modelima)"
 
 msgid "mime_vbs"
-msgstr "VBScript (razvio Microsoft 1996. godine, skriptni jezik za Windows, korišten za ASP web stranice i Windows administratorske skripte. S porastom PowerShell i JavaScript popularnosti, postepeno se povlači)"
+msgstr "VBScript (Skripta. Varijanta skriptnog jezika koju je Microsoft lansirao s IE 3.0 1996. godine. Bila je osnovni pogon za rane ASP dinamičke web stranice i upravljanje Windows sistemom. Microsoft ga je službeno ukinuo i uklonio u najnovijem kernelu Windows 11, te spada u historijski naslijeđenu tehnologiju)"
 
 msgid "mime_conf"
-msgstr "Konfiguracijska datoteka (pohranjuje konfiguracije softvera u tekstualnom formatu, uobičajeni formati: INI, JSON, YAML, TOML, XML. Linux sistemske konfiguracije su uglavnom u /etc direktoriju)"
+msgstr "CONF (Sistemska konfiguracijska datoteka. Opšta klasifikacija podatkovnih datoteka koje trajno pohranjuju parametre okruženja softvera u izvršnom vremenu u obliku običnog teksta. Obuhvata INI i moderne YAML, TOML, JSON specifikacije. U Linux okruženju se uglavnom nalaze u /etc direktorijumu. Osnovna je zavisnost za optimizaciju stanja izvršavanja na nivou sistema)"
 
 msgid "mime_css"
-msgstr "CSS stilski list (Prvi službeni standard CSS1 od strane W3C-a objavljen je u decembru 1996. godine, CSS2 je dodao pozicioniranje i medijske tipove 1998. godine, od 2011. godine CSS3 je modularno uveden donoseći zaobljene uglove, animacije, fleksibilne kutije, mrežni raspored i responzivni dizajn. Zajedno s HTML-om i JavaScriptom čini tri glavne osnovne tehnologije frontenda, svi moderni pretraživači (Chrome, Firefox, Safari, Edge) ga izvorno podržavaju, jedini je standard za definiranje web stilova)"
+msgstr "CSS (Kaskadne stilski listovi. W3C standard iz 1996. godine, zajedno s HTML/JS čini tri osnove frontenda. Prošavši kroz CSS2 pozicioniranje i CSS3 modularnu evoluciju, izvorno podržava fleksibilne kutije (Flexbox), mreže (Grid) i responzivni dizajn putem upita medija. Apsolutni je dominantni standard za odvajanje prikaza web stranice u modernim pretraživačima)"
 
 msgid "mime_xsl"
-msgstr "XSL stilski list (W3C standard 1999. godine, jezik za transformaciju XML dokumenata, može pretvoriti XML u HTML/PDF/tekst. Nakon popularizacije JSON-a, upotreba je smanjena)"
+msgstr "XSL (Stilska lista. W3C standard iz 1999. godine, uključuje XSLT transformaciju i XPath jezik za adresiranje. Koristi se za prikazivanje strukturiranih XML podataka kao HTML, PDF ili obični tekst. U modernom razvoju, njegov ekosistem je uglavnom zamijenjen lakšim mehanizmima za predloške i JSON formatom podataka)"
 
 msgid "mime_runtime"
-msgstr "Izvršna datoteka (izvršni formati operativnog sistema poput EXE, ELF, Mach-O, sadrži mašinski kod i informacije za učitavanje)"
+msgstr "Izvršna datoteka (izvorni izvršni formati operativnog sistema poput EXE, ELF, Mach-O, koji sadrže kompajlirani mašinski kod niskog nivoa, ulaznu tačku i informacije o učitavanju sistema)"
 
 msgid "mime_library"
-msgstr "Bibliotečna datoteka (DLL, SO, dylib, itd. dinamički povezane biblioteke, dijeljeni kod koji se učitava prilikom pokretanja programa)"
+msgstr "Bibliotečka datoteka (DLL, SO, dylib itd., dinamičke ili statičke biblioteke koje se povezuju, sadrže dijeljene simbole i kod za ponovno lociranje koje drugi programi mogu pozvati i učitati u izvršnom vremenu)"
 
 msgid "mime_swf"
-msgstr "Flash animacija (razvio Macromedia 1996. godine, kasnije u vlasništvu Adobea. Standard za interaktivne web animacije, nekada dominirao internet animacijama i igrama. Nedostaci: ovisnost o dodatku, nepodržavanje na mobilnim uređajima, visok sigurnosni rizik. Adobe je 2017. godine najavio povlačenje, potpuna podrška je obustavljena 2020. godine, zamijenjen sa HTML5/CSS3/JS)"
+msgstr "Flash animacija (Razvio Macromedia 1996., kupio Adobe 2005. Standard za interaktivne web animacije, dominirao je internet animacijama i igrama. Problemi: ovisnost o dodatku, nepodržavanje na mobilnim uređajima, visok sigurnosni rizik. Adobe je 2017. najavio ukidanje, a 2020. potpuno obustavio podršku. Zamijenjen s HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD definicija tipa dokumenta (XML specifikacija, definira strukturu XML dokumenta, koristi se za provjeru ispravnosti XML-a)"
+msgstr "DTD (Definicija tipa dokumenta. Objavljen s XML 1.0 1998. godine, koristi se za definiranje strukture XML/HTML dokumenta i provjeru ispravnosti. U modernom razvoju, postepeno je zamijenjen fleksibilnijim rješenjima poput XML Schema-e, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "CSV podatkovni format (vrijednosti odvojene zarezom, univerzalni format za tabelarne podatke, standard za uvoz/izvoz u Excel i baze podataka)"
+msgstr "CSV (Format podataka. Vrijednosti odvojene zarezom, univerzalni format običnih tekstualnih tablica iz doba mainframe računara (IBM Fortran kompajler) 1972. godine. Službeno standardiziran od strane RFC 4180 2005. godine kao standard za razmjenu podataka bez gubitaka, višeplatformski i višejezički. Široko se koristi za efikasan uvoz i izvoz u Excel-u, relacionim bazama podataka i analizi podataka (Pandas))"
+
+msgid "mime_cur"
+msgstr "Datoteka pokazivača miša (.cur format, za prilagođavanje stila kursora. Npr. prst na web stranicama, pješčani sat za čekanje u sistemu. U srodstvu je s .ico ikonom, ali ima dodatnu 'vruću tačku' – stvarno mjesto klika mišem. Historija: uvedeno s Windows 3.1 (1992.), ključna komponenta u eri prelaska grafičkog sučelja s komandne linije na miš)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java aplikacijski pokretač, tehnologija distribucije Java desktop aplikacija 2000-ih, danas povučena)"
+msgstr "Java Web Start (Tehnologija distribucije Java desktop aplikacija iz 2000-ih, pokretala je udaljene Java programe putem .jnlp datoteke. Zbog sigurnosnih problema i širenja modernih načina distribucije, danas je uglavnom ukinuta)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-knjiga (Microsoft je predstavio 2000. godine, LIT format, povučen)"
+msgstr "Microsoft Reader e-knjiga (Microsoft je izbacio 2000. godine, LIT format. Ukinut. Danas se može konvertirati u EPUB ili PDF pomoću alata poput Calibre-a)"
 
 msgid "mime_svg"
-msgstr "SVG vektorska grafika (W3C standard 1999. godine, Microsoft je dugo promovirao vlastiti VML format, IE pretraživač ga je podržavao tek od 2011. godine, što je dovelo do kašnjenja u popularizaciji. Nakon 2015. godine, s povlačenjem IE-a i popularizacijom ekrana visoke rezolucije, postao je prvi izbor za ikone i logotipe)"
+msgstr "SVG (Vektorska grafika. W3C standard iz 1999. godine, format dvodimenzionalnih vektorskih slika baziran na XML arhitekturi. Ima prednost skaliranja bez gubitka kvaliteta i prijenosa tekstualnim tokom. Izvorno podržan od svih modernih pretraživača. Široko se koristi za ikone web stranica visoke definicije, logotipe i vektorske animacije. Osnovni je standard moderne Web grafike)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektorska grafika (predstavljen 1987. godine, industrijski standardni vektorski grafički format, prvi izbor za štampanje dizajna, logotipa, ikona)"
+msgstr "AI (Vektorska grafika. Proprietarni vektorski format koji je samostalno razvio Adobe 1987. godine. Kao industrijski standard za dizajn preloma, štampe i dizajn brend identiteta, podržava više slojeva i napredne vektorske podatke za prelom. Prvi je izbor za profesionalnu vizuelnu umjetnost)"
 
 msgid "mime_phshop"
-msgstr "Photoshop slika (Adobe je predstavio 1990. godine, PSD format izvorne Photoshop datoteke, industrijski standard za obradu slika)"
+msgstr "PSD (Slojevita slika. Proprietarni format izvorne bitmap datoteke koji je Adobe izbacio s Photoshop-om 1990. godine. Podržava višestruke slojeve, kanale, maske i uređivanje bez gubitaka. Uspostavljen je kao industrijski standard za globalnu obradu slika i digitalno slikarstvo)"
 
 msgid "mime_ttf"
-msgstr "TrueType font (zajednički razvoj Apple i Microsoft 1989. godine, vektorski format fonta, konzistentan prikaz na ekranu i u štampi, podrazumijevani format fonta u modernim operativnim sistemima)"
+msgstr "TrueType (Font. Format digitalnog konturnog fonta koji su zajednički razvili Apple i Microsoft 1989. godine. Baziran na kvadratnim Bézierovim krivuljama, postiže apsolutnu podudarnost piksela između prikaza na ekranu i ispisa. Izvorni je zadani format fonta modernih desktop operativnih sistema)"
 
 msgid "mime_fon"
-msgstr "WOFF2 web font (W3C preporuka 2014. godine, koristi Brotli kompresijski algoritam, veličina je smanjena za oko 30% u odnosu na stariji WOFF, a za više od 50% u odnosu na TTF/OTF. Trenutno ga podržavaju svi moderni pretraživači, najbolji je izbor za web fontove danas, podržava ga više od 98% pretraživača)"
+msgstr "FON (Bitmap font. Rani sistemski font tačkaste matrice iz 1980-ih za Microsoft Windows. Ne podržava proporcionalno skaliranje bez gubitaka. Obično se koristi za ograničeno renderiranje pikseliziranog teksta u naslijeđenim sistemima ili komponentama ranih ugrađenih uređaja)"
 
 msgid "mime_pdf"
-msgstr "PDF dokument (Adobe razvijen 1993. godine, postao ISO međunarodni standard 2008. godine. Unakrsno-platformski format dokumenta, zadržava konzistentnost formata, globalni je standard za distribuciju elektronskih dokumenata)"
+msgstr "PDF (Elektronski dokument. Višeplatformski format dokumenta fiksnog rasporeda koji je razvio Adobe 1993. godine i postao međunarodni standard ISO 32000 2008. godine. Ima apsolutnu vjernost rasporeda i formatiranja. Opći je standard za distribuciju globalnih elektroničkih dokumenata i digitalno izdavaštvo)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dinamička stranica (Microsoft predstavio 2002. godine, tehnologija dinamičkih web stranica za Windows platformu, dio .NET Framework-a)"
+msgstr "ASP.NET (Dinamička stranica. Serverska tehnologija za dinamičke web stranice koju je Microsoft izbacio s .NET arhitekturom 2002. godine. Nalazi se na IIS pogonu za prikazivanje. Koristi se za izgradnju dinamičkih web aplikacija na Windows serverima na nivou preduzeća i distribuiranih sistema)"
 
 msgid "mime_mdb"
-msgstr "Access baza podataka (Microsoft Access datoteka baze podataka, predstavljena 1992. godine, rješenje za desktop bazu podataka na Windows-u)"
+msgstr "MDB (Relaciona baza podataka. Format za pohranu desktop relacionih baza podataka koji je Microsoft objavio s Accessom 1992. godine. Ugrađen Jet mehanizam baze podataka. Korišten je kao rješenje za relacionu bazu podataka u ranom informatičkom upravljanju za osobna računala i mala i srednja preduzeća)"
 
 msgid "mime_md"
-msgstr "Markdown dokument (Kreirao John Gruber 2004. godine, na dizajn sintakse su utjecali reStructuredText i Setext. Osnovna dizajnerska filozofija je 'čitljivost jednaka prikazu', originalna implementacija Markdown.pl koristi Perl regularne izraze. Izvedene specifikacije uključuju GFM (2013), CommonMark (2017), Pandoc Markdown, itd. Pokreće ekosisteme GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, postao je činjenični standardni format za generatore statičkih web stranica i programersku dokumentaciju)"
+msgstr "Markdown (Dokument. Lagani jezik za označavanje koji je samostalno kreirao John Gruber 2004. godine. Centralna dizajn filozofija je 'čitljivo kako se prikazuje'. Pokreće moderne izvedene standarde poput GFM-a i CommonMark-a. Široko se koristi kao standardni mehanizam razmjene za tehničku dokumentaciju, baze znanja (Obsidian) i generatore modernih statičkih web stranica)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports format izvještaja (SAP poslovni izvještaji, standardni format za izvještaje u preduzećima)"
+msgstr "Crystal Reports (Profesionalni format izvještaja na nivou preduzeća na SAP poslovnoj inteligenciji (BI) platformi. Ima mogućnost povezivanja s više izvora podataka na nižem nivou i složeno prikazivanje dinamičkih grafikona. Široko se koristi za generiranje profesionalnih izvještaja u finansijskim sistemima i sistemima za analizu podataka multinacionalnih kompanija)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice dokument (Razvila The Document Foundation 2010. godine, ogranak OpenOffice-a, implementacija ODF standarda, glavni open source office paket)"
+msgstr "LibreOffice (Dokument. Proprietarni format otvorenog kancelarijskog paketa kojeg je The Document Foundation izgradila 2010. godine na osnovu OpenOffice grane. Dubinski implementira W3C-ov ODF (Open Document Format) međunarodni standard. Osnovni je kancelarijski kamen temeljac modernog otvorenog ekosistema)"
 
 msgid "mime_encrypt"
-msgstr "Šifrirana datoteka (potrebno je dešifriranje za pregled, uobičajene ekstenzije: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT (Šifrirana datoteka. Originalni binarni ili tekstualni podaci obrađeni specifičnim simetričnim ili asimetričnim algoritmima šifriranja. Uključuje osnovne izvedene formate kao što su .enc, .pgp, .gpg. Na mrežnom sloju koristi se za osiguranje povjerljivosti i verifikaciju integriteta nejavnih podataka)"
 
 msgid "mime_gpx"
-msgstr "GPS trag podaci (GPS Exchange Format, bilježi informacije o geografskoj lokaciji, univerzalni format za sportske satove i navigacijske uređaje)"
+msgstr "GPX (Satelitski podaci putanje. Format za razmjenu podataka globalnog pozicionog sistema baziran na XML arhitekturi. Posebno dizajniran za opisivanje geografskih koordinata, tačaka rute, linija i historijskih trajektorija. Opći je otvoreni standard za moderne mobilne uređaje za vježbanje, automobilsku navigaciju i geografske informacione sisteme (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Disk slike (DMG, ISO, IMG, itd., datoteke za čitanje diskova/CD-ova, koriste se za distribuciju softvera ili backup medija za pohranu)"
+msgstr "Disk Image (Slika diska. Uključuje ISO, DMG, IMG, datoteke slike fizičkog diska ili optičkog medija, sektor po bajt na nižem nivou. Koristi se za postavljanje sistema na niskom nivou, sigurnu distribuciju softvera velikog kapaciteta i potpunu fizičku sigurnosnu kopiju medija za pohranu)"
 
 msgid "mime_vm"
-msgstr "Virtualna mašina slike (VMDK, VDI, VHDX, OVA, itd., datoteke virtuelnog diska, formati za platforme virtuelizacije poput VMware, VirtualBox, Hyper-V)"
+msgstr "VM (Slika virtuelne mašine. Uključuje VMDK, VDI, VHDX, OVA, slike virtualiziranog fizičkog diska. Kao osnova za VMware, VirtualBox i Hyper-V platforme, koriste se za emulaciju hardvera na sistemskom nivou, snimke instanci i distribuciju cloud infrastrukture)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent .torrent datoteka (Bram Cohen je izumio 2001. godine, P2P indeksna datoteka za preuzimanje, sadrži metapodatke datoteke i informacije o Trackeru)"
+msgstr "BitTorrent (Torrent datoteka. P2P indeks za distribuirano preuzimanje koji je dizajnirao Bram Cohen 2001. godine. Baziran na Bencode kodiranju, pohranjuje metapodatke provjere originalne datoteke i informacije za adresiranje Tracker servera. Osnovni je nosilac distribucije toka u decentraliziranim mrežama)"
 
 msgid "mime_gis"
-msgstr "GIS geografski informacioni sistem podataka (formati geoprostornih podataka poput Shapefile, GeoJSON, koriste se za mape i prostornu analizu)"
+msgstr "GIS (Geoprostorni podaci. Standard podataka geografskog informacionog sistema temeljen na Shapefile i GeoJSON-u. Uključuje višedimenzionalne geometrijske koordinate, topologiju slojeva i podatke atributa. Široko se koristi za prikazivanje digitalnih karata visoke preciznosti, satelitsku detekciju i prostornu geometrijsku analizu)"
 
 msgid "mime_ebook"
-msgstr "E-knjiga (formati e-knjiga poput EPUB, MOBI, AZW. EPUB je međunarodni standard, MOBI/AZW su formati za Amazon Kindle)"
+msgstr "EBOOK (E-knjiga. Digitalni izdavački format zasnovan na W3C-ovom otvorenom međunarodnom standardu EPUB i proprietarnoj MOBI/AZW arhitekturi Amazon Kindlea. Podržava prilagodljivi tečni raspored, pakovanje metapodataka i DRM zaštitu digitalnih prava. Univerzalni je nosilac za digitalno čitanje na mobilnim uređajima)"
 
 msgid "mime_avif"
-msgstr "AVIF slika (Alliance for Open Media ga je predstavila 2019. godine, zasnovan na AV1 kodeku, stopa kompresije je 50% veća od WebP-a, novi standard web slika)"
+msgstr "AVIF (Efikasna slika. Sljedeća generacija ultra-visoke definicije standarda slike koju je lansirala Alijansa za otvorene medije (AOMedia) 2019. godine. Bazirana na tehnologiji ključnih kadrova AV1 video kodiranja, stopa kompresije je 50% veća od WebP-a uz izvornu podršku za visoki dinamički raspon (HDR). Glavni je standard za prijenos modernih web slika)"
 
 msgid "mime_markdown"
-msgstr "Markdown dokument (John Gruber ga je dizajnirao 2004. godine, lagani jezik za označavanje, univerzalni format za GitHub README, tehničku dokumentaciju, forume)"
+msgstr "Markdown (Lagani dokument. Tekstualni dokument za označavanje koji je samostalno kreirao John Gruber 2004. godine. Koristi deklarativni dizajn običnog teksta, sintaksa je inspirirana s reStructuredText. Široko se koristi na GitHub projektima, tehničkoj dokumentaciji na inženjerskom nivou i u modernom ekosistemu upravljanja statičkim sadržajem)"
 
 msgid "mime_yaml"
-msgstr "YAML konfiguracija (Clark Evans ga je dizajnirao 2001. godine, čovjeku čitljiv format za serijalizaciju podataka, standardni format konfiguracijske datoteke za Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML (Serijalizacijska konfiguracija. Ljudski čitljiv format serijalizacije podataka koji su dizajnirali Clark Evans i drugi 2001. godine. Baziran na hijerarhijskom uvlačenju i preslikavanju ključ-vrijednost. Danas je uspostavljen kao standard konfiguracije cloud-native infrastrukture za orkestraciju kontejnera Kubernetes, Ansible automatizaciju i Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML konfiguracija (Tom Preston-Werner ga je dizajnirao 2013. godine, 'Tom's Obvious Minimal Language', format konfiguracijske datoteke za moderne alate poput Rust/Cargo, Python/pip, Go)"
+msgstr "TOML (Semantička konfiguracija. Minimalistički jezik koji je dizajnirao Tom Preston-Werner 2013. godine. Ima prednosti dizajna na nižem nivou poput jake tipizacije, eksplicitnog preslikavanja i semantičke jasnoće. Danas se široko koristi kao standardizirana konfiguracijska datoteka za Rust (Cargo), Python (pyproject.toml) i Go moderne alate)"
 
 msgid "mime_vue"
-msgstr "Vue komponentna datoteka (Evan You, 2014. Progresivni JavaScript okvir. Putem jednodatotečnih komponenti (SFC) savršeno objedinjuje HTML, CSS i JS, značajno povećavajući efikasnost razvoja, jedan od najpopularnijih frontend okvira na svijetu. Također, kao jezgra modernih generatora statičkih stranica poput VitePress-a, široko se koristi za pokretanje interaktivne tehničke dokumentacije i blogova.)"
+msgstr "Vue (Jednokomponentna datoteka. Proprietarni SFC format progresivnog Web okvira koji je lansirao Evan You 2014. godine. U jednoj datoteci ostvaruje odvajanje brige za HTML/CSS/JS i reaktivno povezivanje stanja. Dubinski pokreće moderne interaktivne web aplikacije na frontendu i motore velikih statičkih lokacija)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly modul (W3C standard 2017. godine, format za visoke performanse u pretraživaču, C/C++/Rust/R se mogu kompajlirati u njega, performanse bliske izvornom kodu)"
+msgstr "WebAssembly (Binarni modul. Web standard bajtkoda visokih performansi i niskog nivoa koji je W3C uspostavio 2017. godine. Dozvoljava kompajliranje jezika s jakom tipizacijom poput C/C++/Rust u ciljni pješčanik pretraživača, pružajući efikasnost izvršavanja blisku izvornom hardveru. Osnovni je kamen temeljac modernog web rubnog računarstva)"
 
 msgid "mime_jsx"
-msgstr "React JSX komponenta (Facebook je predstavio JavaScript XML 2013. godine, sintaksa komponente React okvira, inovativna paradigma pisanja HTML-a unutar JavaScript-a)"
+msgstr "React JSX (Komponenta. Sintaksna ekstenzija JavaScript XML-a koju je Facebook izbacio s React okvirom 2013. godine. Podržava deklarativno građenje virtuelne DOM strukture u JavaScript-u, implementirajući paradigmu razvoja 'UI kao funkcija stanja' na frontendu)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX komponenta (Microsoft ga je razvio 2012. godine, TypeScript + JSX, standardni način za razvoj React aplikacija sa sigurnošću tipova)"
+msgstr "TypeScript TSX (Komponenta. Kombinacija u toku TypeScript-ove sintakse s jakom tipizacijom (Microsoft, 2012.) i JSX-a. Ubrizgava statičku provjeru tipova u vremenu kompajliranja i ograničenja sučelja u razvoj React komponenti. Standard je koda za siguran razvoj modernih velikih frontend sistema)"
 
 msgid "mime_heif"
-msgstr "HEIF slika (MPEG standard 2015. godine, efikasni format slikovne datoteke, široko se koristi u Apple ekosistemu)"
+msgstr "HEIF (Efikasna slika. Format efikasne slike koji je uspostavila MPEG organizacija 2015. godine. Baziran na HEVC (H.265) video algoritmu kodiranja, podržava smještanje više slika, mapi dubine i metapodataka u izuzetno malom volumenu. Proprietarni je standard pohrane za moderne mobilne operativne sisteme i pametne terminalne uređaje)"
 
 msgid "mime_heic"
-msgstr "HEIC slika (Apple-ova implementacija HEIF-a, podrazumijevani format fotografije na iPhone-u, izvorno podržan na iOS/macOS-u)"
+msgstr "HEIC (Efikasna slika. Proprietarni bitmap format koji je Apple implementirao na osnovu međunarodnog HEIF standarda. Zadani je standard za pohranu fotografija na modernim iPhone-ima, ima podršku za kodiranje/dekodiranje na nivou hardvera i izvornog operativnog sistema iOS/macOS. Uz očuvanje visokog kvaliteta slike, značajno smanjuje prostor za pohranu na nižem nivou)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D model (GL Transport Format, 'JPEG svijeta 3D-a', objavio Khronos Group 2015. godine, standardni format za web 3D)"
+msgstr "glTF (3D model resursa. Standard GL transportnog formata koji je objavio Khronos Group 2015. godine. Koristi JSON arhitekturu za opisivanje trodimenzionalnih scena. Poznat je kao 'JPEG za 3D'. Lagani je industrijski standard za moderno WebGL/WebGPU renderiranje i virtualnu stvarnost)"
 
 msgid "mime_glb"
-msgstr "GLB binarni 3D model (binarna verzija GLTF-a, pojedinačna datoteka sadrži sve resurse, koristi se za distribuciju 3D scena)"
+msgstr "GLB (Binarni 3D model. Potpuno binarna verzija glTF resursnog modela bez gubitaka. Spaja strukturu scene, podatke vrhova osnovne mreže (Mesh), materijale i teksture u jedinstvenu datoteku. Namijenjen je za efikasan prijenos i distribuciju u toku za višeplatformske web 3D resurse)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY pojmovnik (datoteka definicije termina, koristi se za upravljanje terminima u dokumentacionim sistemima)"
+msgstr "GLOSSARY (Podatkovni rječnik pojmova. Datoteka definicije skupa termina namijenjena sistemima za upravljanje dokumentima i strukturiranim korpusima. Ugrađuje standardne definicije termina, višejezičke parove i mapiranje metapodataka. Koristi se za održavanje konceptualne dosljednosti u automatiziranoj analizi teksta i sistemima za objavljivanje sadržaja)"
 
 msgid "mime_cbz"
-msgstr "CBZ strip knjiga (komprimirane strip slike u ZIP formatu, univerzalni format za kolekcionare stripova)"
+msgstr "CBZ (Strip knjiga. Proprietarni format arhiviranja slika stripa baziran na ZIP strukturi kompresije. Unutrašnje pakuje kontinuirani niz statičkih bit mapa. Opći je lagani standard kontejnera za digitalno izdavanje stripova i višeplatformsko lokalno prikupljanje)"
 
 msgid "mime_cbr"
-msgstr "CBR strip knjiga (komprimirane strip slike u RAR formatu, univerzalni format za kolekcionare stripova)"
+msgstr "CBR (Strip knjiga. Proprietarni format arhiviranja slika stripa baziran na RAR strukturi kompresije. Pakuje niz statičkih bit mapa koristeći RAR algoritam, s visokom stopom kompresije. Ima široku podršku za kompatibilnost u oblasti distribucije digitalnih stripova)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-knjiga (FictionBook 2.0, ruski format e-knjige, XML struktura, široko podržan od strane open source čitača)"
+msgstr "FB2 (E-knjiga. Standard e-knjige FictionBook 2.0 s početka 2000-ih. Opisuje atribute knjige i hijerarhiju teksta pomoću čiste XML strukture. Ima široku podršku u ekosistemu otvorenih e-knjiga i naslijeđenim čitačima digitalnih publikacija)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-knjiga (Kobo specijalni EPUB format, optimizirani format za Kobo čitače e-knjiga)"
+msgstr "KEPUB (E-knjiga. Proprietarni poboljšani format e-knjige kompanije Kobo baziran na EPUB standardu. Optimiziran na nižem nivou renderiranja za Kobo hardverske čitače e-knjiga, pružajući efikasniji raspored stranica i interakciju sa statistikom čitanja)"
 
 msgid "mime_m4b"
-msgstr "M4B audio knjiga (MPEG-4 audio format knjige, podržava oznake, format za iTunes audio knjige)"
+msgstr "M4B (Audio knjiga. Format audio knjiga baziran na MPEG-4 Part 14 (MP4) kontejnerskoj arhitekturi. Koristi AAC kodiranje, izvorno podržava označavanje stranica na nižem nivou, nastavak reprodukcije nakon prekida i umetanje po poglavljima. Nekada je bio standardni format u Apple iTunes ekosistemu)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX format (Amazon ga je predstavio 2015. godine, specijalni format e-knjige za Kindle, podržava poboljšani slog i brzo listanje stranica)"
+msgstr "Kindle KFX (Format. Proprietarni poboljšani format digitalnog izdavaštva koji je Amazon lansirao s Kindle-om 2015. godine. Podržava napredno slaganje ligatura, renderiranje fontova visoke dinamike i učitavanje stranica u toku na nivou kernela (Page Flip). Osnovni je standard moderne Kindle platforme)"
 
 msgid "mime_chm"
-msgstr "CHM datoteka pomoći (Microsoft ga je predstavio 1997. godine, kompilirani HTML format pomoći, standard za dokumentaciju pomoći u Windows softveru)"
+msgstr "CHM (Kompajlirana pomoćna datoteka. Kompajlirani HTML informacioni sistem pomoći koji je Microsoft izbacio 1997. godine. Pakuje hipertekstualne podatke i indeks na nižem nivou u jedan binarni kontejner. Dugo je bio standardni format za lokalnu offline pomoćnu dokumentaciju Windows softvera)"
 
 msgid "mime_mht"
-msgstr "MHT web arhiva (Microsoft ga je predstavio 1999. godine, format web stranice u jednoj datoteci, format za čuvanje web stranica u IE pretraživaču)"
+msgstr "MHT (Web arhiva. MIME agregirani hipertekstualni format koji je Microsoft izbacio 1999. godine. Baziran na RFC 2557 standardu, pakuje HTML izvorni kod, CSS, JS i ugrađene slike u jednu tekstualnu datoteku. Koristi se za offline čuvanje web stranica u naslijeđenim pretraživačima)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, WAP standard 1999. godine, korišten za web stranice na starim mobilnim telefonima, ukinut)"
+msgstr "WML (Bežični jezik za označavanje. Standard označavanja za mobilne uređaje koji je uspostavio WAP (Wireless Application Protocol) forum 1999. godine. Baziran na XML specifikaciji, namijenjen za rane uskopojasne bežične mobilne mreže i funkcionalne telefone niske računske snage. U modernom web ekosistemu spada u ukinutu naslijeđenu tehnologiju)"
 
 msgid "mime_xhtml"
-msgstr "XHTML web stranica (W3C standard 2000. godine, XML verzija HTML-a, strožija sintaksa. W3C je obustavio održavanje 2009. godine, fokus se preusmjerio na HTML5)"
+msgstr "XHTML (Hipertekstualna web stranica. W3C standard iz 2000. godine, strogi hipertekstualni jezik za označavanje baziran na XML arhitekturi. 2009. godine W3C je zaustavio njegovu tehničku evoluciju i potpuno se okrenuo HTML5 specifikaciji. Danas se uglavnom koristi za semantičko prikazivanje web stranica u naslijeđenim sistemima)"
 
 msgid "mime_xml"
-msgstr "XML dokument (W3C standard 1998. godine, proširivi jezik za označavanje, osnovni format za web servise, konfiguracijske datoteke, razmjenu podataka)"
+msgstr "XML (Strukturirani dokument. W3C standard proširivog jezika za označavanje iz 1998. godine. Ima arhitekturu samoopisnih oznaka. Osnovni je format na nižem nivou za web servise (SOAP/REST), sistemske konfiguracijske datoteke (XSD) i razmjenu podataka više platformi)"
 
 msgid "mime_sgml"
-msgstr "SGML dokument (ISO standard 1986. godine, prethodnik HTML-a, standardni generalizirani jezik za označavanje, XML i HTML potiču iz SGML-a)"
+msgstr "SGML (Opći jezik za označavanje. Standard ISO 8879 općeg jezika za označavanje iz 1986. godine. Kao industrijski pionir u strukturiranom opisivanju elektroničkih dokumenata, XML i rane HTML specifikacije potiču iz ovog standardnog metajezika)"
 
 msgid "mime_apng"
-msgstr "APNG animacija (Mozilla ga je razvila 2004. godine, proširenje PNG-a za animaciju, moderna zamjena za GIF, podržava prave boje i prozirnost)"
+msgstr "APNG (Dinamička grafika. Dinamička ekstenzija formata Portable Network Graphics (PNG) koju je razvio Mozilla 2004. godine. Podržava 24-bitnu pravu boju i 8-bitni alfa kanal poluprovidnosti. Služi kao visokodefinicijska alternativa GIF formatu u modernim web scenarijima)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmap (Windows bitmap format, izvorno podržan od Windows 1.0. Nekomprimiran, velike veličine fajlova, ali zbog jednostavne strukture i bez potrebe za dodatnim kodecima, Windows 11 alat za snimanje ekrana, program za crtanje, resursi ikona u EXE/MSI instalacijskim paketima, datoteke kursora i neki stari drajveri ga i dalje koriste. Za isti kvalitet slike, datoteka je otprilike 3-10 puta veća od PNG-a, u većini scenarija je zamijenjen PNG/JPEG-om, ali Windows ekosistem i dalje zadržava široku kompatibilnost)"
+msgstr "BMP (Izvorna bit mapa. Format bit mape nezavisan od uređaja na Microsoft platformi uspostavljen još u doba Windows 1.0. Koristi pohranu bez kompresije i bez gubitaka, iako je volumen obično 3-10 puta veći od PNG-a, zbog nepostojanja režijskih troškova kodiranja/dekodiranja, i danas je široko ugrađen u osnovne komponente Windows 11, sekcije resursa EXE/MSI, te grafičke međuspremnike naslijeđenih drajvera)"
 
 msgid "mime_cdr"
-msgstr "CDR vektorska grafika (specijalni format za CorelDRAW, Corel Corporation iz Kanade, softver za vektorsku grafičku dizajn)"
+msgstr "CDR (Vektorska grafika. Proprietarni format izvorne datoteke profesionalnog vektorskog dizajna CorelDRAW (Corel Corporation, Kanada). Podržava višeslojno upravljanje bojama, složene matematičke čvorove konture i podatke za prelom na štamparskom nivou. Namjenski je format za profesionalno grafičko oblikovanje i područje oglašavanja)"
 
 msgid "mime_gif"
-msgstr "GIF slika (CompuServe ga je razvio 1987. godine, 256-boja format za animaciju. Nedostaci: ograničen broj boja, grub kvalitet slike, ne podržava prozirnost, velike datoteke, niska brzina kadrova. Zamijenjen je modernim animacijskim formatima poput APNG, WebP)"
+msgstr "GIF (Indeksirana slika. 8-bitni indeksirani bitmap format koji je razvio CompuServe 1987. godine. Baziran na LZW algoritmu, ograničen na 256 nijansi boja i jednobojnu prozirnost. Pri visokim frekvencijama slika je glomazan, postepeno ga zamjenjuju moderni standardi efikasne animacije poput APNG, WebP-a)"
 
 msgid "mime_ico"
-msgstr "ICO ikona (Windows format ikonske datoteke, podržava više rezolucija, standardni format za favicon web stranice)"
+msgstr "ICO (Sistemska ikona. Izvorni format pakovanja resursa ikona u Windowsu. Podržava miješano ugrađivanje više varijanti slika različitih rezolucija piksela i dubina boja u jednom kontejneru. Također je opći standard za distribuciju osnovnog identifikatora web lokacije (Favicon) u modernim web pretraživačima)"
 
 msgid "mime_jpeg"
-msgstr "JPEG slika (ISO standard 1992. godine, format za fotografije s gubitkom kvaliteta, činjenični standard za fotografije na internetu)"
+msgstr "JPEG (Kompresovana slika. Format slike s gubicima, međunarodni standard ISO 10918 iz 1992. godine. Baziran na algoritmu diskretne kosinusne transformacije (DCT), postižući visoku stopu kompresije uz održavanje odličnog kvaliteta realistične slike. Apsolutni je de facto standard za statične fotografije na globalnom internetu)"
 
 msgid "mime_jpg"
-msgstr "JPEG slika (ISO standard 1992. godine, format za fotografije s gubitkom kvaliteta, činjenični standard za fotografije na internetu)"
+msgstr "JPEG (Kompresovana slika. Format slike s gubicima, međunarodni standard ISO 10918 iz 1992. godine. Baziran na algoritmu diskretne kosinusne transformacije (DCT), postižući visoku stopu kompresije uz održavanje odličnog kvaliteta realistične slike. Apsolutni je de facto standard za statične fotografije na globalnom internetu)"
 
 msgid "mime_png"
-msgstr "PNG slika (W3C preporuka 1996. godine, podržava prave boje i prozirnost, statička zamjena za GIF, standard za bezkompresijske slike na internetu)"
+msgstr "PNG (Slika bez gubitaka. Preporučeni standard Portable Network Graphics od strane W3C-a 1996. godine. Koristi algoritam kompresije bez gubitaka, izvorno podržava 24-bitnu pravu boju i 8-bitni alfa kanal prozirnosti. Kao visokodefinicijska alternativa klasičnom statičnom GIF-u, apsolutni je de facto standard za slike bez gubitaka na internetu)"
 
 msgid "mime_ps"
-msgstr "PostScript datoteka opisa stranice (Adobe ga je predstavio 1985. godine, jezik za opis stranice, prethodnik PDF-a, koristi se za štampanje i izdavaštvo)"
+msgstr "PostScript (Datoteka opisa stranice. Stack-bazirani jezik opisa stranice koji je Adobe izbacio 1985. godine. Kao tehnološki prethodnik PDF formata, na nižem nivou ostvaruje renderiranje teksta neovisno o hardveru i vektorsku grafiku visoke preciznosti. Osnivački je standard u oblasti profesionalnog izdavaštva i laserske štampe)"
 
 msgid "mime_psb"
-msgstr "PSB veliki dokument (Adobe Photoshop format za izuzetno velike slike, podržava slike veće od 2GB ili 30000 piksela)"
+msgstr "PSB (Dokument velikog formata sa slojevima. Proprietarni format pakovanja izuzetno velike izvorne datoteke u Adobe Photoshopu. Probija ograničenja standardnog PSD formata u fizičkom volumenu od 2GB i internom adresiranju od 30.000 piksela. Namjenski se koristi za pohranu divovskih digitalnih umjetničkih resursa izuzetno velikih razmjera i visoke dubine slojeva)"
 
 msgid "mime_psd"
-msgstr "PSD slika (Adobe Photoshop izvorna datoteka, podržava slojeve, kanale, putanje, industrijski standardni format za obradu slika)"
+msgstr "PSD (Izvorna datoteka dizajna sa slojevima. Proprietarni inženjerski format slojevitih slika u Adobe Photoshopu. Kao industrijski standard kontejner u oblasti grafičkih slika, izvorno pakuje kompletno stablo renderiranja slojeva, bitmap kanale, vektorske putanje izrezivanja i složene načine miješanja. Podržava potpuno uređivanje svih podataka bez gubitaka)"
 
 msgid "mime_webp"
-msgstr "WebP slika (Google ga je razvio 2010. godine, format web slike, podržava kompresiju s gubitkom/bez gubitka i animaciju, stopa kompresije 25-35% veća od PNG-a i 25% veća od JPEG-a)"
+msgstr "WebP (Efikasna slika. Opći Web standard za kodiranje grafike koji je uveo Google 2010. godine. Potiče od VP8 video tehnologije ključnih kadrova, savršeno kompatibilan s renderiranjem s gubicima, bez gubitaka, poluprozirno i dinamički. Volumen je 25-35% manji od PNG-a za isti kvalitet slike. Osnovni je kamen temeljac za visokoperformansno učitavanje modernih web stranica)"
 
 msgid "mime_woff"
-msgstr "WOFF web font (kreiran 2009. godine, W3C standard 2018. godine. Zasnovan na TrueType/OpenType kompresiji, optimizacija učitavanja web fontova, standardni format za ikone fontova na modernim web stranicama)"
+msgstr "WOFF (Web font datoteka. Web Open Font Format kreiran 2009. godine i postao W3C standard 2012. godine. Suštinski pakuje standardnu TTF/OTF strukturu fonta u tečnom toku bez gubitaka, značajno optimizirajući troškove mrežnog opsega prijenosa. Opći je format za moderne web ikone i fontove u oblaku)"
 
 msgid "mime_7z"
-msgstr "7z komprimirani paket (Igor Pavlov ga je razvio 1999. godine, specijalni format 7-Zip programa. LZMA algoritam, visoka stopa kompresije, open source i besplatan. 7z format je obično 30-50% manji od ZIP-a pri istoj stopi kompresije, uobičajen je format u open source zajednici i za distribuciju softvera)"
+msgstr "7z (Kompresovani paket. Proprietarni format 7-Zip-a koji je razvio Igor Pavlov 1999. godine. Baziran na otvorenim LZMA/LZMA2 algoritmima, ima izuzetno visoku stopu kompresije. Pod istim uvjetima volumen je obično 30-50% manji od ZIP-a. Opći je format visoke kompresije za distribuciju softvera u zajednici otvorenog koda)"
 
 msgid "mime_ace"
-msgstr "ACE komprimirani paket (razvijen 1990-ih, format WinACE programa. Nekada se takmičio s RAR-om, imao je relativno visoku stopu kompresije. Razvoj je obustavljen 2007. godine, danas ga je zamijenio 7z/RAR, rijetko se koristi)"
+msgstr "ACE (Kompresovani paket. Proprietarni format kompresije iz 1990-ih (WinACE). Nekada se takmičio s RAR formatom i imao visoku stopu kompresije. Nakon 2007. godine, tehnička iteracija je zaustavljena. Danas ga zamjenjuju 7z i RAR formati. Spada u naslijeđene sistemske formate arhiviranja)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 komprimirani paket (Julian Seward ga je razvio 1996. godine, algoritam kompresije sortiranjem blokova. Stopa kompresije je 15-20% veća od GZIP-a, ali je brzina manja. Uobičajen format za izvorni kod Linux kernela, open source softverske pakete, ekstenzija .bz2)"
+msgstr "BZIP2 (Kompresovani paket. Format blokovske sortirne kompresije koji je razvio Julian Seward 1996. godine. Njegov osnovni algoritam ima stopu kompresije 15-20% veću od GZIP-a, ali uz veći računski trošak. Često se koristi za distribuciju izvornog koda Linux kernela i softverskih paketa otvorenog koda. Standardna ekstenzija je .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB komprimirani paket (Microsoft ga je razvio 1995. godine, Cabinet format. Format instalacijskog paketa za Windows, koristi se za distribuciju drajvera i sistemskih datoteka. Windows Installer (MSI) interno koristi CAB za pohranu datoteka)"
+msgstr "CAB (Kompresovani paket. Cabinet arhivski format koji je Microsoft samostalno razvio 1995. godine. Kao izvorni standard instalacijskog paketa za Windows sisteme, koristi se za distribuciju drajvera i kernelskih datoteka. Također je kontejner za pohranu na nižem nivou Windows Installer-a (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG disk slika (Apple ga je predstavio 1980-ih, Disk Image format. Standardni format za distribuciju softvera na macOS-u, dvostrukim klikom se montira kao virtuelni disk, prevlačenjem se instalira aplikacija. Podržava kompresiju i enkripciju, glavni je format za preuzimanje Mac softvera)"
+msgstr "DMG (Slika diska. Format diskovne slike (Disk Image) koji je Apple razvijao od 1980-ih. Kao standardni kontejner za distribuciju macOS softvera, podržava fizičko montiranje kao virtuelni sistem datoteka, kompresiju na nižem nivou i enkripciju podataka. Glavni je format za distribuciju aplikacija u Mac ekosistemu)"
 
 msgid "mime_emz"
-msgstr "EMZ komprimirana slika (Windows komprimirana Enhanced Metafile, komprimirana verzija EMF-a. Format za pohranu vektorske grafike u Office dokumentima, u suštini GZIP komprimirana EMF datoteka)"
+msgstr "EMZ (Kompresovana slika. Kompresovana verzija Windows Enhanced Metafile (EMF) datoteke. Suštinski je binarna vektorska grafika kompresovana GZIP algoritmom. Široko se koristi za pohranu ugrađenih vektorskih grafika u dokumentima Microsoft Office paketa)"
 
 msgid "mime_gz"
-msgstr "GZIP komprimirani paket (Jean-loup Gailly i Mark Adler su ga razvili 1992. godine, GNU projekat. Standardni alat za kompresiju na Unix/Linux sistemima, uobičajeni format za HTTP kompresiju pri prijenosu. Ekstenzija .gz, često se koristi u kombinaciji s TAR-om)"
+msgstr "GZIP (Kompresovani paket. Standardni format kompresije toka koji su za GNU projekat razvili Jean-loup Gailly i Mark Adler 1992. godine. Kao standardni alat za kompresiju u Unix/Linux sistemima, također je osnovni standard za kompresiju na transportnom sloju HTTP-a (Gzip). Često se koristi u kombinaciji s TAR arhiviranjem)"
 
 msgid "mime_jar"
-msgstr "JAR komprimirani paket (Sun Microsystems ga je predstavio 1997. godine, Java ARchive format. U suštini ZIP komprimirani paket, koristi se za pakovanje Java klasa i aplikacija. Osnovni format u Java ekosistemu poput Maven, Gradle, Android također koristi JAR)"
+msgstr "JAR (Kompresovani paket. Java ARchive arhivski format koji je uvela Sun Microsystems 1997. godine. Suštinski je kontejner za pakovanje baziran na ZIP strukturi, koristi se za pakovanje Java klasnih biblioteka i metapodataka. Osnovni je kompajlirani proizvod za Maven, Gradle i rani Android ekosistem)"
 
 msgid "mime_lzma"
-msgstr "LZMA komprimirani paket (Igor Pavlov ga je razvio 1998. godine, Lempel-Ziv-Markov chain algoritam. Osnovni algoritam kompresije 7z formata, visoka stopa kompresije, brza dekompresija. Koristi se za distribuciju firmvera i softvera za ugrađene sisteme)"
+msgstr "LZMA (Kompresovani paket. Lempel-Ziv-Markov chain algoritam lančane kompresije koji je razvio Igor Pavlov 1998. godine. Kao osnovni pogon 7z formata, ima izuzetno visoku stopu kompresije i brzu dekompresiju. Široko se koristi za distribuciju hardverskog firmvera i ugrađenih sistema)"
 
 msgid "mime_rar"
-msgstr "RAR komprimirani paket (Eugene Roshal ga je razvio 1993. godine, Roshal ARchive format. Visoka stopa kompresije, podržava podjelu na sveske i oporavak zapisa. Format WinRAR programa, stopa kompresije je bolja od ZIP-a, ali je potreban plaćeni softver, open source alati poput unrar-a mogu dekompresovati)"
+msgstr "RAR (Kompresovani paket. Proprietarni WinRAR arhivski format koji je razvio Eugene Roshal 1993. godine. Podržava podijeljenu arhivu, fizičke zapise za oporavak (ECC) i jaku enkripciju. Stopa kompresije je bolja od standardnog ZIP-a. Ima široku podršku za kompatibilnost u oblasti ličnih računara i komercijalnoj sferi)"
 
 msgid "mime_tar"
-msgstr "TAR arhivski paket (Uveden u Unix V7 1979. godine, Tape ARchive format. Format trakaste arhive, samo pakovanje bez kompresije, često se koristi u kombinaciji sa GZIP/BZIP2/XZ. Izvorni kod softverskog paketa za Linux, slojevito skladištenje Docker slika koristi TAR format)"
+msgstr "TAR (Arhivski paket. Tape ARchive arhivski format iz doba Unix V7 (1979). Samo pakuje tok datoteka bez kompresije podataka. Često se kombinuje s GZIP/BZIP2/XZ. Osnovni je standard za Linux pakete izvornog koda i slojevitu pohranu Docker slika)"
 
 msgid "mime_tgz"
-msgstr "TGZ komprimirani paket (kombinacija TAR + GZIP formata, ekstenzija .tgz ili .tar.gz. Najuniverzalniji format distribucije za Unix/Linux softverske pakete, široko se koristi za izvorni kod i binarne pakete, predstavnik 'raspakiraj i koristi' koncepta)"
+msgstr "TGZ (Kompresovani paket. Kombinirani format u toku TAR arhive i GZIP kompresije, ekstenzije .tgz ili .tar.gz. Kao najuniverzalniji format distribucije softverskih paketa u Unix/Linux okruženju, široko se koristi za postavljanje iz kompajliranog izvornog koda i distribuciju binarnih paketa bez instalacije)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 komprimirani paket (kombinacija TAR + BZIP2 formata, ekstenzija .tbz2 ili .tar.bz2. Stopa kompresije je 15-20% veća od TGZ-a, pogodan za distribuciju velikih datoteka, izvorni kod Linux kernela dugo je koristio ovaj format)"
+msgstr "TBZ2 (Kompresovani paket. Kombinirani format u toku TAR arhive i BZIP2 kompresije, ekstenzije .tbz2 ili .tar.bz2. U poređenju s TGZ-om, može dodatno povećati stopu kompresije za 15-20%. Pogodan za prijenos velikih datoteka. Dugo se koristio za distribuciju izvornog koda Linux kernela)"
 
 msgid "mime_xz"
-msgstr "XZ komprimirani paket (predstavljen 2009. godine, zasnovan na LZMA2 algoritmu. Izuzetno visoka stopa kompresije, 30-50% veća od GZIP-a, brzina dekompresije je relativno velika. Široko se koristi u Linux kernelu, menadžerima paketa (poput interne strukture Debian .deb paketa), preporučeni je format u Linux ekosistemu danas)"
+msgstr "XZ (Kompresovani paket. Sljedeća generacija formata visoke kompresije uvedena 2009. godine. Baziran na LZMA2 algoritmu, stopa kompresije podataka je 30-50% veća od GZIP-a uz zadržavanje brze dekompresije. Uspostavljen je kao preporučeni standard za distribuciju od strane Linux kernela i glavnih menadžera paketa (poput unutrašnjosti Debian .deb paketa))"
 
 msgid "mime_z"
-msgstr "Z komprimirani paket (Unix compress komandni format iz 1985. godine, LZW algoritam. Rani Unix format kompresije, zamijenio ga je GZIP. Ekstenzija .Z, rijetko se koristi na modernim sistemima)"
+msgstr "Z (Kompresovani paket. LZW kompresijski format Unix compress naredbe iz 1985. godine. Kao standardni standard kompresije za rane Unix sisteme, danas ga je potpuno zamijenio efikasniji GZIP format. Spada u rijetke naslijeđene historijske formate u modernom mrežnom prometu)"
 
 msgid "mime_zip"
-msgstr "ZIP komprimirani paket (Phil Katz ga je razvio 1989. godine, PKZIP format. Windows izvorno podržava, najuniverzalniji format kompresije na internetu. Podržava više datoteka, strukturu direktorija, može birati algoritam kompresije. JAR u Javi, APK na Androidu, DOCX/XLSX za Office dokumente zasnovani su na ZIP formatu)"
+msgstr "ZIP (Kompresovani paket. Opći PKZIP arhivski format koji je razvio Phil Katz 1989. godine. Podržan je izvorno od strane glavnih operativnih sistema. Najšire je korišteni standard kontejnera na internetu. Moderni Java JAR, Android APK i Office dokumenti (OOXML) bazirani su na ZIP strukturi)"
 
 msgid "mime_zst"
-msgstr "Zstandard komprimirani paket (Facebook ga je razvio 2015. godine, dizajnirao Yann Collet. Algoritam kompresije velike brzine, stopa kompresije blizu LZMA, brzina znatno veća od GZIP-a. Linux kernel 5.9+ ga podržava, Arch Linux pacman, Debian APT ga postepeno usvajaju, novi je standard kompresije sljedeće generacije)"
+msgstr "Zstandard (Kompresovani paket. Nova generacija standarda za kompresiju toka koju je dizajnirao Yann Collet (Facebook) 2015. godine. Približava se stopi kompresije LZMA-e uz istovremeno ima propusnost daleko veću od GZIP-a. Dubinski je usvojen od strane Linux kernela (5.9+) i Arch/Debian menadžera paketa)"
 
 msgid "mime_lz4"
-msgstr "LZ4 komprimirani paket (Yann Collet ga je razvio 2011. godine, izuzetno brz algoritam kompresije. Brzina kompresije je više od 10 puta veća od GZIP-a, pogodan za scenarije kompresije u realnom vremenu. Široko se koristi u Linux kernelu, OpenZFS, Hadoop-u, prvi je izbor za scenarije gdje je brzina prioritet)"
+msgstr "LZ4 (Kompresovani paket. Izuzetno brzi algoritam za kompresiju toka koji je razvio Yann Collet 2011. godine. Brzina protoka je više od 10 puta veća od GZIP-a, s izuzetno niskim režijskim troškovima CPU-a u izvršnom vremenu. Široko se koristi u Linux kernelu, OpenZFS datotečnom sistemu i Hadoop obradi podataka u realnom vremenu)"
 
 msgid "mime_lzo"
-msgstr "LZO komprimirani paket (Markus Oberhumer ga je razvio 1996. godine, Lempel-Ziv-Oberhumer algoritam. Izuzetno brza dekompresija, prosječna stopa kompresije. Linux kernel Squashfs, OpenWrt firmver ga koriste, pogodan za ugrađene sisteme)"
+msgstr "LZO (Kompresovani paket. Lempel-Ziv-Oberhumer algoritam koji je razvio Markus Oberhumer 1996. godine. Fokusira se na izuzetno brze performanse dekompresije. Široko je ugrađen u Linux kernel Squashfs slike, OpenWrt firmver i razne sisteme ugrađene s ograničenim resursima)"
 
 msgid "mime_msi"
-msgstr "MSI instalacijski paket (Microsoft ga je predstavio 1999. godine, Windows Installer format paketa. Standardni format instalacije za Windows aplikacije, podržava povratak transakcija, upravljanje komponentama, tiho instaliranje. Prvi izbor za distribuciju softvera u preduzećima, i dalje je glavni format za instalaciju Windows softvera)"
+msgstr "MSI (Sistemski instalacijski paket. Format podataka Windows Installer-a koji je Microsoft izbacio 1999. godine. Kao standardna specifikacija za postavljanje na nivou Windows aplikacija, izvorno podržava povratak na nižem nivou transakcija, upravljanje životnim ciklusom komponenti i tiho instaliranje bez batch obrade. Osnovni je standard za centraliziranu distribuciju softvera na nivou preduzeća i postavljanje politika)"
 
 msgid "mime_pkg"
-msgstr "PKG instalacijski paket (macOS aplikacijski instalacijski format, zasnovan na Apple-ovoj Installer tehnologiji. Standardni format za distribuciju softvera na macOS-u, podržava odabir komponenti, instalacijske skripte, funkciju deinstalacije. Dvostrukim klikom na .pkg datoteku se pokreće instalacija, uobičajeni način distribucije softvera izvan Mac App Store-a)"
+msgstr "PKG (Višeplatformski instalacijski paket. 1. FreeBSD softverski paket: pkgng standard, ekstenzije .pkg ili .txz, baziran na TAR+XZ/Zstd kompresiji, podržava rješavanje ovisnosti i provjeru potpisa; 2. macOS instalacijski paket: baziran na Apple Installer formatu, podržava prilagođene komponente, skripte instalacije i deinstalaciju na nivou sistema. Glavni su nosioci distribucije za BSD servere i Mac sisteme)"
 
 msgid "mime_apk"
-msgstr "APK Android aplikacijski paket (Google ga je predstavio 2008. godine, tradicionalni format instalacije za Android sistem. APK je u suštini ZIP komprimirani paket, sadrži kod, resurse, manifestnu datoteku. Od 2021. Google Play zahtijeva da nove aplikacije koriste AAB format, ali se APK i dalje koristi za razvoj, otklanjanje grešaka, distribuciju putem trećih prodavnica i bočno instaliranje)"
+msgstr "APK (Android aplikacijski paket. Tradicionalni instalacijski paket aplikacija koji je Google izbacio s Androidom 2008. godine. Baziran na ZIP arhivskoj strukturi, pakuje kompajlirani Dalvik bajtkod (DEX), manifest s metapodacima i globalne resurse. Danas se široko koristi za lokalnu razvojnu debug, distribuciju od strane trećih strana i instalaciju sa strane na uređaje (sideload))"
 
 msgid "mime_ipa"
-msgstr "IPA Apple aplikacijski paket (iOS App Store Package, format instalacije za iOS/iPadOS aplikacije. Predstavljen 2008. godine s iPhone SDK-om. Zahtijeva distribuciju putem App Store-a ili potpisivanje korporativnim certifikatom. Sadrži izvršnu datoteku, resurse, Info.plist potpisane informacije)"
+msgstr "IPA (Apple aplikacijski paket. Ekskluzivni kontejner za pakovanje za iOS/iPadOS izbačen s iPhone SDK-om 2008. godine. Suštinski je ZIP arhiv zaštićen FairPlay DRM digitalnim pravima ili potpisom koda na nivou preduzeća. Sadrži Mach-O binarnu izvršnu datoteku, stablo resursa aplikacije i konfiguraciju metapodataka Info.plist)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS aplikacijski paket (HarmonyOS Ability Package, osnovna jedinica HarmonyOS aplikacije. Predstavljen s HarmonyOS 2.0 2020. godine. Podržava entry i feature tipove, format distribucije za Huawei telefone, tablete, pametne satove i druge HarmonyOS uređaje)"
+msgstr "HAP (HarmonyOS aplikacijski paket. Osnovna jedinica elastičnog postavljanja za HarmonyOS izbačena s HarmonyOS 2.0 2020. godine. Sastoji se od glavnog Entry modula ili Feature modula za proširenje funkcionalnosti. Osnovni je format za višekrajnju distribuciju (mobiteli, tableti, nosivi uređaji) za pametne terminale u svim scenarijima)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS statički dijeljeni paket (HarmonyOS Archive, statička dijeljena biblioteka za HarmonyOS, može se dijeliti između više HAP-ova, koristi se za komponentni razvoj i ponovnu upotrebu modula)"
+msgstr "HAR (HarmonyOS statički dijeljeni paket. Proprietarna datoteka arhive statičke dijeljene biblioteke za HarmonyOS. Koristi se za pakovanje zajedničkih komponenti, koda resursa na nižem nivou i ovisnosti u vremenu kompajliranja. Statički se povezuje i dijeli s više HAP modula. Osnovna je podloga za razvoj komponenti i višemodularno ponovno korištenje u HarmonyOS sistemu)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google ga je predstavio 2018. godine, od 2021. Google Play zahtijeva da nove aplikacije koriste ovaj format. AAB je format za distribuciju, Google Play dinamički generiše optimizirane APK na osnovu konfiguracije uređaja (arhitektura CPU-a, gustina piksela ekrana, jezik), prosječna veličina instalacijskog paketa je smanjena za 35%. Developeri postavljaju AAB, korisnici preuzimaju APK)"
+msgstr "AAB (Android aplikacijski svežanj. Dinamički format distribucije za Google Play koji je Google izbacio 2018. i uspostavio 2021. godine. Kao čisti distribucijski entitet, dinamički ga kompajlira cloud na osnovu arhitekture CPU-a, gustine ekrana i jezika ciljnog uređaja, generirajući optimizirani APK prema potrebi. Prosječno smanjuje troškove prijenosnog opsega za 35%)"
 
 msgid "mime_xapk"
-msgstr "XAPK aplikacijski paket (prošireni Android aplikacijski paket treće strane, sadrži APK + OBB podatkovne datoteke. Koristi se za velike igre i složene aplikacije, rješava ograničenje od 100 MB pojedinačne APK datoteke. Uobičajeno u prodavnicama aplikacija treće strane poput APKPure, APKMirror, nije službeni Google format)"
+msgstr "XAPK (Prošireni aplikacijski paket. Neslužbeni standard za proširenje aplikacija koji je uspostavila treća strana u Android zajednici. Spajanjem standardne APK datoteke s ogromnim OBB paketom proširenja podataka za igre, fizički probija ograničenje nezavisnog volumena datoteke od 100MB na Google Play-u. Široko se viđa na platformama za distribuciju igara)"
 
 msgid "mime_appx"
-msgstr "Windows aplikacijski paket (Microsoft ga je predstavio 2012. godine, format instalacije aplikacija za Windows 8/10/11. Podržava UWP i konverziju desktop aplikacija, distribuira se putem Microsoft Store-a. Microsoft je 2024. godine predstavio MSIX kao nasljedni format, postepeno zamjenjuje APPX)"
+msgstr "APPX (Moderni aplikacijski paket. Specifikacija za postavljanje UWP aplikacija koju je Microsoft izbacio s Windows 8 2012. godine. Ima karakteristike izvršavanja u pješčaniku i lagano deinstaliranje. Kao rani dominantni standard za Microsoft Store, danas je u modernom Windows ekosistemu u završnoj fazi životnog ciklusa evolucije prema MSIX-u)"
 
 msgid "mime_msix"
-msgstr "MSIX aplikacijski paket (Microsoft ga je predstavio 2018. godine, novi Windows format za pakovanje aplikacija. Kombinira prednosti APPX i MSI, podržava sve tipove Windows aplikacija, može se distribuirati putem Microsoft Store-a ili bočno instalirati, preporučeni format za Windows 11)"
+msgstr "MSIX (Nova generacija aplikacijskog paketa. Potpuno novi standardizirani Windows paket koji je Microsoft izbacio 2018. godine. Savršeno stapa karakteristike sigurnosnog pješčanika APPX aplikacija s prednostima upravljanja resursima na nivou preduzeća MSI-ja. Potpuno je kompatibilan sa svim tipovima Win32 aplikacija. Preporučeni je standard za distribuciju za Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage aplikacijski paket (predstavljen 2004. godine, Linux format aplikacije bez instalacije. 'Jedna aplikacija = jedna datoteka', pokreće se direktno bez instalacije, podržava većinu Linux distribucija, uobičajeni način za developere da distribuiraju Linux softver)"
+msgstr "AppImage (Aplikacijski paket bez instalacije. Specifikacija jedinstvenog izvršnog arhiviranja za Linux pokrenuta 2004. godine. Koristi samodovoljnu arhitekturu 'jedna aplikacija – jedna datoteka'. U izvršnom vremenu se direktno montira kao samo čitljiv virtuelni sistem datoteka putem FUSE mehanizma. Ostvaruje nultu ovisnost i pokretanje iz kutije na svim Linux distribucijama)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak aplikacijski paket (predstavljen 2015. godine, Linux format aplikacije u sandboxu. Pokreće se unakrsno distribucijama, izoliran od sistemskog okruženja, razvijaju ga Fedora, Red Hat, podrazumijevani format u GNOME Software centru)"
+msgstr "Flatpak (Aplikacijski paket u pješčaniku. Standard za distribuciju desktop aplikacija na više Linux distribucija koji su od 2015. godine vodili Red Hat i GNOME. Na nižem nivou oslanja se na Linux kernel Namespace i Cgroups mehanizme za implementaciju izuzetno stroge sigurnosne izolacije aplikacija u pješčaniku. Osnovica je softverskog centra modernog operativnog sistema otvorenog koda)"
 
 msgid "mime_snap"
-msgstr "Snap aplikacijski paket (Canonical ga je predstavio 2014. godine, razvija ga Ubuntu matična kompanija, Linux univerzalni format aplikacije. Automatsko ažuriranje, sandbox izolacija, podržava 40+ Linux distribucija, podrazumijevani format u Ubuntu Software centru)"
+msgstr "Snap (Aplikacijski paket u kontejneru. Univerzalni Linux standard za postavljanje koji je lansirala Canonical (matična kompanija Ubuntu-a) 2014. godine. Koristi SquashFS arhitekturu montiranja slike koja sadrži aplikaciju, podržava automatizirana inkrementalna ažuriranja i strogu AppArmor izolaciju u pješčaniku. Osnovni je zadani format ekosistema Ubuntu softverskog centra)"
 
 msgid "mime_deb"
-msgstr "Debian softverski paket (Debian projekat ga je predstavio 1993. godine, standardni instalacijski format za Debian/Ubuntu i njihove izvedenice. Njime upravlja dpkg, APT je njegov frontend menadžer paketa, jedan od najzrelijih formata paketa u Linux ekosistemu, i dalje je glavni za Debian porodicu)"
+msgstr "DEB (Sistemski softverski paket. Specifikacija pakovanja binarnog i izvornog koda koju je uspostavio Debian projekat 1993. godine. Kao osnovni instalacijski standard za Debian, Ubuntu i sve njihove izvedene sisteme, oslanja se na dpkg jezgro za raspakivanje i održavanje, a koristi APT kao efikasan front-end menadžera paketa. Najzreliji je temelj distribucije softvera u Linux ekosistemu)"
 
 msgid "mime_rpm"
-msgstr "RPM softverski paket (Red Hat ga je predstavio 1997. godine, standardni format za Red Hat/Fedora/CentOS/SUSE i druge distribucije. RPM je skraćenica za 'Red Hat Package Manager', uz DEB jedan od dva velika formata paketa u Linuxu, i dalje je glavni za RHEL porodicu)"
+msgstr "RPM (Sistemski softverski paket. Specifikacija pakovanja Red Hat paket menadžera koju je izbacio Red Hat 1997. godine. Zajedno s DEB-om čini dva velika tabora tradicionalnog Linux upravljanja paketima. Izvorno ugrađuje provjeru ovisnosti na nivou transakcija i osnovnu provjeru digitalnog potpisa softvera. I danas je apsolutni glavni standard distribucije za Red Hat ekosistem poput RHEL-a, Fedore i CentOS-a)"
 
 msgid "mime_pacman"
-msgstr "Arch softverski paket (Arch Linux ga je predstavio 2002. godine, .pkg.tar.zst format koji koristi pacman menadžer paketa. Jezgro Arch Linux distribucije koja se kotrlja, poznat po jednostavnosti i KISS principu, AUR (Arch User Repository) je njegova posebnost)"
+msgstr "Pacman (Arhivirani softverski paket. Format pakovanja .pkg.tar.zst koji je s pacman menadžerom uspostavio Arch Linux 2002. godine. Kao osnova Arch rolling release mehanizma, baziran je na Zstandard algoritmu velike brzine i visoke kompresije, zajedno s AUR (Arch User Software Repository) ekosistemom. Predstavlja moderni standard distribucije paketa koji odražava minimalizam i KISS principe)"
 
 msgid "mime_exe"
-msgstr "EXE izvršna datoteka (Windows izvršni programski format, skraćenica od 'Executable'. Izvorni izvršni format Windows operativnog sistema, sadrži PE strukturu. Evoluirao je iz MZ formata iz MS-DOS-a, PE (Portable Executable) format je uveden s Windows NT 1993. godine i koristi se i danas. Instalacijski paketi softvera, aplikacije, sistemski alati koriste ovaj format. Korisnik ih pokreće dvostrukim klikom, najšire korišteni izvršni format na svijetu)"
+msgstr "EXE (Izvorna izvršna datoteka. Binarni format prijenosnog izvršnog (PE) programa na Windows platformi. Tehnološki potiče od MZ zaglavlja iz doba MS-DOS-a, a od 1993. godine (Windows NT) potpuno je uspostavljen kao PE strukturna specifikacija. Kao najšire korišteni standard izvršavanja na svijetu za mašinske kodne instrukcije, statičke sekcije resursa i pokretanje sistemskog kernela)"
 
 msgid "mime_dll"
-msgstr "DLL dinamička biblioteka (Microsoft ju je predstavio 1993. godine, Dynamic Link Library. Windows dijeljena biblioteka koda, učitava se dinamički prilikom pokretanja programa, štedi memoriju i prostor na disku. Sistemske komponente, dodaci aplikacija, drajveri koriste DLL format. Osnovni način implementacije Windows API-ja, problem 'DLL Hell' je ublažen u .NET eri)"
+msgstr "DLL (Dinamička biblioteka koja se povezuje. Specifikacija biblioteke dijeljenog koda Dynamic Link Library na Windows platformi. Dinamičkim učitavanjem i ponovnim lociranjem simbola u izvršnom vremenu, značajno štedi fizičku memoriju i prostor na disku. Kao osnovni implementacijski oblik Windows API-ja, njegova rana bolna tačka 'DLL Hell' je u modernoj eri riješena mehanizmom paralelne izolacije (SxS))"
 
 msgid "mime_com"
-msgstr "COM izvršna datoteka (izvršni format iz MS-DOS ere, skraćenica od 'Command'. Jednostavna struktura datoteke, ograničenje od 64KB, bio je glavni format prije Windows 3.x. Povučen, moderni Windows koristi EXE format, ekstenzija COM se i dalje koristi za neke komponentne datoteke)"
+msgstr "COM (Klasična izvršna datoteka. Najstariji format izvršavanja memorijske slike (Command) iz doba MS-DOS-a. Koristi nestrukturirani dizajn čiste kodne sekcije, ograničen na gornju granicu adresiranja fizičke memorije od 64KB. Danas je penzionisan kao naslijeđeni historijski format, ali se u modernoj Windows arhitekturi još uvijek ograničeno koristi kao sučelje za specifične komponente)"
 
 msgid "mime_aac"
 msgstr "AAC audio (MPEG standard 1997. godine, Advanced Audio Coding. Nasljednik MP3-a, kvalitet zvuka je bolji od MP3 pri istoj brzini prijenosa, podrazumijevani audio format za YouTube, iTunes, Nintendo Switch)"

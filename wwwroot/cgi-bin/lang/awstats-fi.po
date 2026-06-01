@@ -458,8 +458,8 @@ msgstr "Isäntä - Sivumäärä - Pyyntöjen määrä - Kaistanleveys - Viimeise
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Viimeisen käynnin alkamispäivämäärä] ja [Viimeisen käynnin viimeinen sivu] tallennetaan vain, jos istuntoa ei ole päätetty"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Pääsivu näyttää vain ensimmäiset %s kohdetta, joilla on eniten pyyntöjä. Katso koko luettelo yksityiskohtaiselta sivulta."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Ensimmäiset %s kohdetta on lajiteltu osumamäärän mukaan laskevassa järjestyksessä; jäljellä olevien kohteiden järjestystä ei ole määritelty."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Kirjautunut käyttäjä - Sivumäärä - Pyyntöjen määrä - Kaistanleveys - Viimeisen käynnin aika"
@@ -473,8 +473,8 @@ msgstr "Madon tunnus - Pyyntöjen määrä - Kaistanleveys - Viimeisen käynnin 
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Sähköposti - Pyyntöjen määrä - Kaistanleveys - Viimeisen käynnin aika"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Pääsivu näyttää vain ensimmäiset %s sähköpostipyyntöä. Katso koko luettelo yksityiskohtaiselta sivulta."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Ensimmäiset %s sähköpostiosoitetta on lajiteltu osumamäärän mukaan laskevassa järjestyksessä; jäljellä olevien osoitteiden järjestystä ei ole määritelty."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Sivumäärä - Kaistanleveys - Sisäänkäynti - Poistuminen"
@@ -683,6 +683,27 @@ msgstr "SiteDomain-parametria ei ole määritetty config/domain-tiedostossasi, t
 msgid "Please run as Administrator to set permissions"
 msgstr "Suorita järjestelmänvalvojana asettaaksesi käyttöoikeudet"
 
+msgid "This directory lacks read permission"
+msgstr "Tällä hakemistolla ei ole lukuoi kutta"
+
+msgid "Please set read permission for directory"
+msgstr "Aseta hakemistolle lukuoi kus, kiitos"
+
+msgid "Missing required parameter in config file"
+msgstr "Pakollinen parametri puuttuu asetustiedostosta"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Tarkista, että 'DirData' on määritetty."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Selaimen osoitteessa oleva verkkotunnus näyttää puuttuvan tai olevan epätäydellinen"
+
+msgid "Please check the URL parameter"
+msgstr "Tarkista URL-parametri, kiitos"
+
+msgid "Format description"
+msgstr "Muodon kuvaus"
+
 msgid "Please set execute permission"
 msgstr "Aseta suoritusoikeus"
 
@@ -808,376 +829,379 @@ msgstr "Noutotyökalu"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Tekstitiedosto (ASCII-standardointi vuonna 1963, muotoilematon teksti. Kaiken lähdekoodin, konfiguraatioiden, lokitiedostojen perusta. Unix käyttää LF:ää, Windows CRLF:ää rivinvaihtoon, edelleen tietokoneiden yleisin tietomuoto)"
+msgstr "TXT pelkkä tekstitiedosto (vuonna 1963 ASCII-standardin mukainen muotoilematon pelkkä teksti. Kaiken lähdekoodin, asetustiedostojen ja järjestelmälokien perustana oleva, sen alustariippumaton rivinvaihto-ohjausvirta (CRLF Windowsissa, LF Unixissa) on edelleen tietotekniikan yleisin tiedonsiirtostandardi)"
 
 msgid "mime_log"
-msgstr "Lokitiedosto (tavallinen tekstitiedosto, joka tallentaa järjestelmän ja sovellusten suoritustietoja, käytetään usein vianetsintään, suorituskykyanalyysiin, turvallisuustarkastuksiin. Vakiomuotoja kuten Apache combined log, Nginx access log, syslog jne.)"
+msgstr "LOG järjestelmän lokitiedosto (tallentaa käyttöjärjestelmän, ytimen ja sovellustason ajonaikaiset tilat pelkkänä tekstinä. Sisältää Nginx/Apache-pääsy lokit (yhdistetty loki) ja vakio syslog-määrittelyn, on keskeinen tietolähde vianmäärityksessä, suoratoiston suorituskykyanalyysissä ja tietoturva-auditoinneissa)"
 
 msgid "mime_page"
-msgstr "HTML-verkkosivu (Tim Berners-Lee keksi World Wide Webin vuonna 1989, määritteli kolme tekniikkaa HTML/HTTP/URL vuonna 1990, tarjosi ne ilmaiseksi ilman patenttia. HTML5:stä tuli virallinen W3C-standardi vuonna 2014, tukee näyttöä, multimediaa ja tulostusta. Sai Turing-palkinnon vuonna 2016)"
+msgstr "HTML hypertekstinen verkkosivu (Tim Berners-Leen luoma vuonna 1989, World Wide Webin kulmakivi. Ilmaisena, avoimena yleisenä hypertekstin merkintäkielenä HTML5-määrittelystä tuli virallinen W3C-standardi vuonna 2014, se tukee natiivisti rakenteista multimediaa, semanttista vuorovaikutusta ja juoksevaa sivuasettelua, sai Turing-palkinnon vuonna 2016)"
 
 msgid "mime_khtml"
-msgstr "KHTML-verkkoselainmoottori (julkaistiin KDE 2.0:n kanssa vuonna 1998, Konqueror-selaimen renderöintimoottori. Apple loi WebKitin KHTML:n pohjalta vuonna 2001, Google loi Blinkin WebKitistä vuonna 2008, josta tuli Chrome-, Edge- ja Safari-selaimien ydin. KHTML on esimerkki siitä, miten avoimen lähdekoodin yhteisö loi perustan moderneille selainmoottoreille, ja sen teknologiaperintö jatkuu WebKit/Blinkin kautta)"
+msgstr "KHTML verkkopohjamoottori (vuoden 1998 KDE 2.0 -selaimen renderöintimoottorin määrittely. Avoimen lähdekoodin mittapuuna, joka loi perustan nykyaikaiselle verkkorenderöinnille, sen tekninen perintö inspiroi suoraan Applen WebKitiä ja Googlen Blink-ydintä, ja se elää edelleen modernien virtaavien dynaamisten verkkoarkkitehtuurien alla)"
 
 msgid "mime_script"
-msgstr "Dynaaminen skripti (tulkittava kieli, ei vaadi käännöstä. Sisältää ASP, JSP, CGI, ColdFusion, Tcl, VBScript jne., laajalti käytetty varhaisessa verkkokehityksessä, järjestelmähallinnossa, tehtävien automatisoinnissa. Nykyaikaiset skriptikielet kuten Python, Ruby, JavaScript ovat kehittyneet full-stack-kehityksen pääkieliksi)"
+msgstr "SCRIPT tulkattava dynaaminen skripti (yleinen luokka lähdekoodivirroille, joita tietty ajonaikainen ympäristö tai tulkki suorittaa rivi riviltä ilman ennakko kääntämistä. Kattaa ASP:n, JSP:n, CGI:n ja Tcl:n, laajalti käytetty palvelinpuolen yleisissä yhdyskäytävissä, automaatioprosessien ohjauksessa ja järjestelmätason tehtävien liimaamisessa)"
 
 msgid "mime_js"
-msgstr "JavaScript-skripti (Brendan Eich loi sen 10 päivässä Netscapessa vuonna 1995, selaimen alkuperäinen ohjelmointikieli. ECMAScript standardoitiin vuonna 1997, Node.js:n syntymä vuonna 2009 teki siitä full-stack-kielen, npm on maailman suurin pakettihallinta. Useita vuosia peräkkäin suosituin ohjelmointikieli GitHubissa)"
+msgstr "JavaScript skripti (vuoden 1995 Netscape-selaimen natiivi ohjelmointiympäristö. Vuonna 1997 perustettiin ECMAScript-teollisuusstandardi, vuonna 2009 syntyi Node.js ajonaikainen ympäristö, joka rikkoi selaimen rajat ja loi asynkronisen, ei-tukkeutuvan koko pinnon arkkitehtuurin, mukana maailman suurin npm-ohjelmistopakettien ekosysteemi)"
 
 msgid "mime_py"
-msgstr "Python-skripti (Guido van Rossum loi sen vuonna 1991, tunnettu pakollisesta sisentämisestä ja yksinkertaisesta syntaksista. Laajalti käytetty verkkokehityksessä, datatieteessä, tekoälyssä, automaatiossa. Moninkertainen TIOBE-palkinnon vuoden ohjelmointikieli)"
+msgstr "Python skripti (Guido van Rossumin vuonna 1991 luoma korkean tason tulkattava skriptikieli. Pakollisen sisennyslukutaitonsa ja moniparadigmamaisen suunnittelunsa ansiosta se on vakiinnuttanut asemansa teollisuusstandardikielenä modernissa verkkoarkkitehtuurissa, koko pinnon datatieteessä, tekoälymallien koulutuksessa ja pilvi natiivissa automaatiotoiminnassa)"
 
 msgid "mime_sh"
-msgstr "Shell-skripti (Unixin syntymä vuonna 1971, komentosarjakieli. Käytetään järjestelmähallintaan, tehtävien automatisointiin, palveluiden käynnistykseen, käyttöönottosarjoihin. Välttämätön taito Linux-hallinnassa)"
+msgstr "Shell skripti (vuoden 1971 Unix-ajan standardi komentotulkin skripti. Sisältää ydintason komentoja, kuten Bash, Sh, Dash, tyypillisesti suoritetaan .sh-päätteellä, on yleinen ydintason liima-aine prosessien ohjaukseen, asennusvapaaseen ympäristön määritykseen ja automaattiseen käyttöönottoon moderneissa Unixin kaltaisissa käyttöjärjestelmissä)"
 
 msgid "mime_rb"
-msgstr "Ruby-skripti (Yukihiro Matsumoto loi sen vuonna 1995, keskittyy kehittäjän onnellisuuteen. Ruby on Rails -kehys toi paradigmaksi 'sopimus konfiguroinnin sijaan', vaikuttaen nykyaikaisten verkkokehysten suunnitteluun)"
+msgstr "Ruby skripti (Yukihiro Matsumoton vuonna 1995 luoma olio-ohjelmointi skriptikieli. Sen keskeisenä suunnittelufilosofiana on äärimmäinen kunnioitus kehittäjäkokemusta kohtaan, ja sen Ruby on Rails -sovelluskehys mullisti modernin korkean tason verkkoarkkitehtuurin vahvistamalla 'Konventio ennen konfigurointia (CoC) -paradigman)"
 
 msgid "mime_pl"
-msgstr "Perl-skripti (Larry Wall loi sen vuonna 1987, tunnettu pragmaattisuudestaan, kutsuttu 'Sveitsin armeijan linkkuveitseksi'. CPAN oli edelläkävijä nykyaikaisille kielten pakettihallinnoille, jolla on syvä vaikutus tekstinkäsittelyyn, järjestelmähallintaan ja CGI:hin)"
+msgstr "Perl skripti (Larry Wallin vuonna 1987 luoma pragmaattinen skriptikieli. Nykyaikaisten pakettien hallinnan (CPAN) edelläkävijänä, sitä kutsutaan tekstinkäsittelyn 'Sveitsin armeijan veitseksi'. Nykyaikaisessa CGI-tilassa se toimii erittäin luotettavana pohjana lokien jäsentämiseen erittäin alhaisen fyysisen muistin kulutuksensa ja tehokkaan säännöllisten lausekkeiden käsittelynsä ansiosta)"
 
 msgid "mime_php"
-msgstr "PHP-dynaaminen verkkosivu (Rasmus Lerdorf loi sen vuonna 1995, suunniteltu erityisesti verkkokehitykseen. Yli 70% maailman verkkosivustoista käyttää sitä, se toimii alustoilla kuten WordPress, Facebook, Wikipedia. PHP 8 esittelee JIT-käännöksen, parantaen merkittävästi suorituskykyä)"
+msgstr "PHP dynaaminen verkkosivu (Rasmus Lerdorfin vuonna 1995 luoma, erityisesti verkkokehitykseen suunniteltu. Yli 70%:n maailman verkkosivustoista käyttävänä ydinteknologiana se on suurten tuotantosovellusten, kuten WordPressin ja Wikipedian, perusta. PHP 8:sta lähtien, JIT (Just-In-Time) -ajonaikaisen moottorin käyttöönoton myötä, se on kehittynyt kohti korkean suorituskyvyn koko pinon palvelinarkkitehtuuria)"
 
 msgid "mime_image"
-msgstr "Kuvatiedosto"
+msgstr "IMAGE kuvavaran luokittelu (kattaa häviöllisesti/häviöttömästi pakatut bittikartat, modernin responsiivisen verkkografiikan ja vektorit. Keskeinen indikaattori sivuston visuaalisen resurssikuormituksen, asiakaspuolen välimuistin osumatiheyden ja median verkkokaistan kulutuksen arvioinnissa)"
 
 msgid "mime_document"
-msgstr "Dokumenttitiedosto"
+msgstr "DOCUMENT rakenteellisen asiakirjan luokitus (kattaa pelkän tekstin, taulukkolaskennan, kiinteämuotoiset viralliset asiakirjat (PDF) ja kevyet merkintäkielet. Keskeinen indikaattori palvelinpuolen staattisen tietopohjan jaon, yritysresurssien latausten ja tekstivirran läpäisykyvyn tilastoinnissa)"
 
 msgid "mime_package"
-msgstr "Ohjelmistopaketti"
+msgstr "PACKAGE käännettyjen tuotteiden ja ohjelmistopakettien luokittelu (kattaa käyttöjärjestelmän natiivisti suoritettavat ohjelmat, ajonaikaiset linkityskirjastot (DLL/SO) ja sovellusten jakelun asennuspaketit. Toimii usein indikaattorina ohjelmistojenjakelusivustojen lähtevän liikenteen ja lataushuippujen arvioinnissa)"
 
 msgid "mime_archive"
-msgstr "Gzip-pakattu tiedosto (GNU-projekti vuodelta 1992, perustuu DEFLATE-algoritmiin. Verkossa käytetään dynaamiseen vastaussisällön pakkaamiseen, pakkaussuhde on yleensä 60-90%. Vuoden 2015 jälkeen joissakin skenaarioissa korvattu Brotlilla, mutta on edelleen laajimmin tuettu pakkausmuoto palvelinpuolella)"
+msgstr "ARCHIVE arkistoidut ja pakatut tiedostot (yleinen luokka DEFLATE-, LZMA- jne. ydinalgoritmeihin perustuville tiedonpakkauspaketeille. Verkkokerroksella se kattaa perinteisen pakettijaon lisäksi myös GNU-projektin vuoden 1992 Gzip-dynaamiset vastausvirrat. Vaikka Brotli-algoritmia otetaan asteittain käyttöön joissakin nykyaikaisissa skenaarioissa, tämä luokitus on edelleen keskeinen indikaattori palvelimen kaistanleveyden suorituskyvyn ja siirtokerroksen pakkaustehokkuuden arvioinnissa)"
 
 msgid "mime_audio"
-msgstr "Äänitiedosto"
+msgstr "AUDIO digitaalisen äänivirran luokitus (kattaa pakatun äänen, äänikirjat ja suoratoistoäänisäiliöt. Perustuen tiettyihin äänikoodekkistandardeihin, sitä käytetään äänidatavirran läpäisykyvyn, samanaikaisen suoratoistokaistan ja pitkien yhteyksien käyttäytymisen seurantaan multimedia-sivustoilla)"
 
 msgid "mime_video"
-msgstr "Videotiedosto"
+msgstr "VIDEO digitaalisen videovirran luokitus (kattaa teräväpiirtovideosäiliöt, modernin verkkoanimaation ja suoratoistofragmentit. Keskeinen indikaattori palvelimen kaistanleveyden huippurajan ja sisällönjakeluverkon (CDN) kiihdytyksen tehokkuuden arvioinnissa korkeassa verkkokuormituksessa)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (Brendan Eich kehitti vuonna 1995)"
+msgstr "JScript skripti (Microsoftin vuonna 1996 kehittämä käänteistekniikalla toteutettu omisteinen toteutus Internet Explorer 3.0:lle. Varhaisena isäntäkilpailijana klassiselle JavaScriptille se toimi Windows Script Hostin (WSH) ja varhaisen ASP-taustajärjestelmän keskeisenä moottorina)"
 
 msgid "mime_json"
-msgstr "JSON-data (Douglas Crockford ehdotti vuonna 2001, kevyt tiedonsiirtomuoto, Web API:n de facto -standardi)"
+msgstr "JSON rakenteellinen data (Douglas Crockfordin vuonna 2001 vahvistama kevyt tiedon sarjallistamisvaihtomuoto. Perustuu tekstipohjaisiin avain-arvo-pareihin ja taulukkorakenteisiin, sillä on korkea ihmisen luettavuus ja häviötön virran jäsennysominaisuudet, ja se on de facto -standardi moderneille web-APIlle, mikropalveluarkkitehtuureille ja suurten kielimallien vuorovaikutukselle)"
 
 msgid "mime_vbs"
-msgstr "VBScript (Microsoft kehitti vuonna 1996, Windows-skriptikieli, käytetään ASP-verkkosivuille ja Windows-hallintaskripteille. PowerShellin ja JavaScriptin yleistyessä asteittain poistumassa käytöstä)"
+msgstr "VBScript skripti (Microsoftin vuonna 1996 IE 3.0:n kanssa julkaisema skriptikielimuunnos. Se toimi keskeisenä ajurina varhaisille dynaamisille ASP-verkkosivustoille ja Windows-järjestelmän hallinnalle, mutta se on nyt virallisesti vanhentunut ja poistettu Windows 11:n uusimmista ytimistä, ja se kuuluu historialliseen perintötekniikkaan)"
 
 msgid "mime_conf"
-msgstr "Konfigurointitiedosto (tallentaa ohjelmiston konfiguroinnin tekstimuodossa, yleiset muodot: INI, JSON, YAML, TOML, XML. Linux-järjestelmän konfigurointi on enimmäkseen /etc-hakemistossa)"
+msgstr "CONF järjestelmän asetustiedosto (yleinen luokka datatiedostoille, jotka tallentavat ohjelmiston ajonaikaiset ympäristöparametrit pelkkänä tekstinä. Kattaa INI- ja modernit YAML-, TOML- ja JSON-määrittelyt. Linux-järjestelmissä ne ovat enimmäkseen /etc-hakemistossa, ja ne ovat keskeinen riippuvuus järjestelmätason ajonaikaisen tilan optimoinnissa)"
 
 msgid "mime_css"
-msgstr "CSS-tyylitiedosto (W3C julkaisi ensimmäisen virallisen standardin CSS1 joulukuussa 1996, CSS2 lisäsi sijoittelun ja mediatyypit vuonna 1998, vuodesta 2011 lähtien CSS3-modularisointi toi pyöristetyt kulmat, animaatiot, joustavan laatikon, ruudukkoasettelun ja responsiivisen suunnittelun. Yhdessä HTML:n ja JavaScriptin kanssa yksi kolmesta front-end-tekniikasta, kaikki nykyaikaiset selaimet (Chrome, Firefox, Safari, Edge) tukevat sitä natiivisti, on ainoa standardi verkkosivujen tyylin määrittelyyn)"
+msgstr "CSS porrastettu tyylisivu (vuoden 1996 W3C-standardi, yksi kolmesta frontendin ydinteknologiasta HTML/JS:n rinnalla. Kehittyen CSS2:n asettelusta CSS3:n modulaariseen kehitykseen, se tukee natiivisti Flexboxia, Gridiä ja responsiivista suunnittelua medialuokkien avulla, ja se on hallitseva standardi verkkosivujen esityksen irrottamiseksi moderneissa selaimissa)"
 
 msgid "mime_xsl"
-msgstr "XSL-tyylitiedosto (W3C-standardi vuodelta 1999, XML-dokumenttien muunnoskieli, voi muuntaa XML:ää HTML/PDF/tekstiksi. Käyttö on vähentynyt JSON:n yleistymisen jälkeen)"
+msgstr "XSL tyylisivu (vuoden 1999 W3C-standardi, sisältää XSLT-muunnoksen ja XPath-osoituskielet, joita käytetään jäsennellyn XML-datan renderöintiin HTML:ksi, PDF:ksi tai pelkäksi tekstiksi. Nykyaikaisessa kehityksessä sen ekosysteemi on suurelta osin korvattu kevyemmillä pohjamoottoreilla ja JSON-datamuodolla)"
 
 msgid "mime_runtime"
-msgstr "Suoritettava tiedosto (käyttöjärjestelmän suoritettava muoto kuten EXE, ELF, Mach-O, sisältää konepajan koodia ja lataustietoja)"
+msgstr "suoritettava tiedosto (EXE, ELF, Mach-O jne. käyttöjärjestelmän natiivit suoritettavat muodot, jotka sisältävät käännetyn matalan tason konekoodin, sisääntulopisteen ja järjestelmän lataustiedot)"
 
 msgid "mime_library"
-msgstr "Kirjastotiedosto (DLL, SO, dylib jne., dynaamisesti linkitetyt kirjastot, jaettua koodia, jonka ohjelma lataa suorituksen aikana)"
+msgstr "kirjastotiedosto (DLL, SO, dylib jne. dynaamiset tai staattiset linkityskirjastot, jotka sisältävät jaettuja symboleja ja sijainninmuutoskoodia muiden ohjelmien kutsuttavaksi ja ladattavaksi ajonaikaisesti)"
 
 msgid "mime_swf"
-msgstr "Flash-animaatio (Macromedia kehitti sen vuonna 1996, myöhemmin Adoben omistuksessa. Interaktiivinen verkkostandardi, hallitsi aikanaan internetin animaatioita ja pelejä. Haitat: vaatii lisäosan, ei tukea mobiililaitteille, korkea turvallisuusriski. Adobe ilmoitti sen poistamisesta vuonna 2017, lopetti tuen kokonaan vuonna 2020, korvattu HTML5/CSS3/JS:llä)"
+msgstr "Flash-animaatio (Macromedia 1996, Adoben ostama 2005. Interaktiivinen verkkostandardi, hallitsi aikoinaan internetin animaatioita ja pelejä. Haitat: riippuvuus lisäosista, ei tukea mobiilille, korkea tietoturvariski. Adobe ilmoitti sen käytöstäpoistosta 2017, tuki loppui kokonaan 2020, korvattu HTML5/CSS3/JS:llä)"
 
 msgid "mime_dtd"
-msgstr "DTD-dokumenttityypin määritelmä (XML-spesifikaatio, määrittelee XML-dokumentin rakenteen, käytetään XML:n oikeellisuuden varmistamiseen)"
+msgstr "DTD asiakirjatyypin määritelmä (julkaistu XML 1.0:n kanssa vuonna 1998, käytetään XML/HTML-asiakirjan rakenteen määrittelyyn ja laillisuuden varmistamiseen. Nykyaikaisessa kehityksessä se on suurelta osin korvattu joustavammilla ratkaisuilla, kuten XML Schema, RELAX NG jne.)"
 
 msgid "mime_csv"
-msgstr "CSV-tietomuoto (pilkuilla erotetut arvot, yleinen taulukkotietomuoto, standardi Excelin ja tietokantojen tuontiin/vientiin)"
+msgstr "CSV datamuoto (pilkulla erotetut arvot, yleinen pelkän tekstin taulukkomuoto suurtietokoneiden aikakaudelta (IBM Fortranin kääntäjä) vuodelta 1972. RFC 4180 -standardi määritteli sen vuonna 2005 häviöttömäksi, alustariippumattomaksi ja kieliriippumattomaksi tiedonsiirtostandardiksi. Laajalti käytetty tehokkaaseen tuontiin/vientiin Excelissä, relaatiotietokannoissa ja data-analyysissä (Pandas))"
+
+msgid "mime_cur"
+msgstr "hiiren osoitintiedosto (.cur-muoto, jota käytetään hiiren osoittimen tyylin mukauttamiseen, kuten sormiosoitin verkkosivuilla tai tiimalasi-odotuskuvake. Se on sukua yleiselle .ico-kuvakkeelle, mutta siinä on ylimääräinen 'kuuma piste' – todellinen napsautuskohta. Historia: esiteltiin Windows 3.1:n (1992) mukana, keskeinen osa siirtymässä komentoriviltä hiirellä toimivaan graafiseen käyttöliittymään)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java-sovellusten käynnistin, 2000-luvun Java-työpöytäsovellusten jakelutekniikka, nyt vanhentunut)"
+msgstr "Java Web Start (2000-luvun Java-työpöytäsovellusten jakelutekniikka, käynnistää etä-Java-ohjelmia .jnlp-tiedostojen avulla. Turvallisuusongelmien ja nykyaikaisten jakelutapojen yleistymisen vuoksi se on nyt suurelta osin vanhentunut)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader -e-kirja (Microsoft julkaisi sen vuonna 2000, LIT-muoto, vanhentunut)"
+msgstr "Microsoft Reader e-kirja (2000 Microsoft, LIT-muoto. Vanhentunut, voidaan nyt muuntaa EPUB- tai PDF-muotoon työkaluilla, kuten Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG-vektorikuva (W3C-standardi vuodelta 1999, koska Microsoft pitkään edisti omaa VML-muotoaan, IE-selain tuki sitä vasta vuonna 2011, mikä viivästytti sen leviämistä. Vuoden 2015 jälkeen IE:n poistumisen ja korkearesoluutioisten näyttöjen yleistymisen myötä siitä on tullut ensisijainen muoto kuvakkeille ja logoille)"
+msgstr "SVG vektorigrafiikka (vuoden 1999 W3C-standardi, XML-pohjainen 2D-vektorikuvamuoto. Tarjoaa häviöttömän skaalauksen ja tekstin suoratoistoedut. Kaikki nykyaikaiset selaimet tukevat sitä natiivisti, sitä käytetään laajalti teräväpiirtoisiin verkkokuvakkeisiin, logoihin ja vektorianimaatioihin, ja se on modernin verkkografiikan keskeinen standardi)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator -vektorikuva (julkaistu vuonna 1987, alan standardi vektorikuvamuoto, ensisijainen painosuunnittelussa, logoissa, kuvakkeissa)"
+msgstr "AI vektorigrafiikka (Adoben vuonna 1987 kehittämä omisteinen vektorimuoto. Teollisuusstandardina taitossa, painosuunnittelussa ja brändi-identiteetissä se tukee useita kerroksia ja kehittynyttä taittovektoridataa, ja se on ammattimaisen visuaalisen taiteen ensisijainen väline)"
 
 msgid "mime_phshop"
-msgstr "Photoshop-kuva (Adobe julkaisi sen vuonna 1990, Photoshopin lähdetiedostomuoto PSD, kuvankäsittelyn alan standardi)"
+msgstr "PSD kerroskuva (Adoben Photoshopin kanssa vuonna 1990 julkaisema omisteinen bittikarttalähdemuoto. Tukee useita kerroksia, kanavia, maskeja ja häviötöntä muokkausdataa, ja siitä on tullut maailmanlaajuinen teollisuusstandardi kuvankäsittelyssä ja digitaalisessa maalauksessa)"
 
 msgid "mime_ttf"
-msgstr "TrueType-fontti (Apple ja Microsoft kehittivät yhdessä vuonna 1989, vektorifonttimuoto, näyttö ja tulostus ovat yhdenmukaisia, nykyaikaisten käyttöjärjestelmien oletusfonttimuoto)"
+msgstr "TrueType fontti (Applen ja Microsoftin yhteisesti vuonna 1989 kehittämä digitaalinen ääriviivafonttimuoto. Perustuu neliöllisiin Bézier-käyriin, se saavuttaa absoluuttisen pikseliyhdenmukaisuuden näytöllä ja tulostettuna, ja se on modernien työpöytäkäyttöjärjestelmien natiivi oletusfonttimuoto)"
 
 msgid "mime_fon"
-msgstr "WOFF2-verkkofontti (W3C-suositus vuodelta 2014, käyttää Brotli-pakkausalgoritmia, verrattuna vanhempaan WOFF:ään tilavuus pienenee noin 30%, verrattuna TTF/OTF:ään pienenee yli 50%, kaikki nykyaikaiset selaimet tukevat sitä, on ensisijainen muoto nykyaikaisille verkkofonteille, tuettu yli 98%:ssa selaimista)"
+msgstr "FON bittikarttafontti (1980-luvun Microsoftin varhainen järjestelmätason pistematriisifonttimuoto. Ei tue häviötöntä suhteellista skaalausta, tyypillisesti rajoittuu pikselipohjaiseen tekstin renderöintiin perintöjärjestelmissä tai varhaisissa sulautetuissa laitekomponenteissa)"
 
 msgid "mime_pdf"
-msgstr "PDF-dokumentti (Adobe kehitti sen vuonna 1993, tuli ISO-standardiksi vuonna 2008. Alustariippumaton dokumenttimuoto, säilyttää muotoilun johdonmukaisuuden, on maailmanlaajuinen standardi sähköisten dokumenttien jakeluun)"
+msgstr "PDF sähköinen asiakirja (Adoben vuonna 1993 kehittämä, vuonna 2008 ISO 32000 -kansainväliseksi standardiksi tullut. Alustariippumaton kiinteäsivuinen asiakirjamuoto, jolla on absoluuttinen tarkkuus asettelussa ja muotoilussa, se on maailmanlaajuinen standardi sähköisten asiakirjojen jakeluun ja digitaaliseen julkaisuun)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET-dynaaminen sivu (Microsoft julkaisi sen vuonna 2002, dynaaminen verkkosivutekniikka Windows-alustalla, osa .NET Frameworkiä)"
+msgstr "ASP.NET dynaaminen sivu (Microsoftin vuonna 2002 .NET-arkkitehtuurin kanssa julkaisema palvelinpuolen dynaaminen verkkosivutekniikka. IIS-moottorilla isännöitynä sitä käytetään yritystason Windows-palvelinpuolen dynaamisten verkkosovellusten ja hajautettujen järjestelmien rakentamiseen)"
 
 msgid "mime_mdb"
-msgstr "Access-tietokanta (Microsoft Access -tietokantatiedosto, julkaistu vuonna 1992, Windows-työpöydän tietokantaratkaisu)"
+msgstr "MDB relaatiotietokanta (Microsoftin Accessin kanssa vuonna 1992 julkaisema työpöytätason relaatiotietokannan tallennusmuoto. Sisältää Jet-tietokantamoottorin, ja se oli varhaisen henkilökohtaisen tietokoneen ja pienten ja keskisuurten yritysten tietojenkäsittelyn relaatiotietokantaratinen ratkaisu)"
 
 msgid "mime_md"
-msgstr "Markdown-dokumentti (John Gruber loi sen vuonna 2004, syntaksisuunnitteluun vaikuttivat reStructuredText ja Setext. Perusfilosofia on 'luettavuus tarkoittaa renderöitävyyttä', alkuperäinen toteutus Markdown.pl käyttää Perlin säännöllisiä lausekkeita. Johdetut määritykset sisältävät GFM (2013), CommonMark (2017), Pandoc Markdown jne. Ohjaa ekosysteemejä kuten GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, ja siitä on tullut staattisten sivustogeneraattorien ja kehittäjädokumentaation de facto -standardimuoto)"
+msgstr "Markdown asiakirja (John Gruberin vuonna 2004 luoma kevyt merkintäkieli. Sen keskeinen suunnittelufilosofia 'luettava on renderöity' ohjaa moderneja johdannaisia kuten GFM ja CommonMark. Laajalti käytetty vaihtostandardina teknisessä dokumentaatiossa, tietokannoissa (Obsidian) ja moderneissa staattisten verkkosivustojen generaattoreissa)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports -raporttimuoto (SAP business intelligence, yritysraporttien standardimuoto)"
+msgstr "Crystal Reports raportti (SAP Business Intelligence (BI) -alustan ammattimainen yritystason raporttitiedostomuoto. Tukee useita tietolähteitä ja monimutkaista dynaamista kaavioiden renderöintiä, ja sitä käytetään laajalti ammattimaiseen raporttien luontiin monikansallisten yritysten talous- ja data-analyysijärjestelmissä)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice-dokumentti (The Document Foundation kehitti sen vuonna 2010, OpenOffice-haara, ODF-standardin toteutus, tärkein avoimen lähdekoodin toimistopaketti)"
+msgstr "LibreOffice asiakirja (OpenOfficeen perustuvan avoimen lähdekoodin toimisto-ohjelmiston omisteinen muoto, jonka perusti The Document Foundation vuonna 2010. Se toteuttaa syvällisesti W3C:n ODF (OpenDocument Format) -kansainvälisen standardin, ja se on modernin avoimen lähdekoodin ekosysteemin toimistotyön kulmakivi)"
 
 msgid "mime_encrypt"
-msgstr "Salattu tiedosto (täytyy purkaa salaus nähdäkseen, yleiset päätteet: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT salattu tiedosto (alkuperäinen binaari- tai tekstidata, jota on käsitelty tietyillä symmetrisillä tai epäsymmetrisillä salausalgoritmeilla. Sisältää keskeiset johdetut muodot, kuten .enc, .pgp, .gpg jne., ja sitä käytetään verkkokerroksessa ei-julkisen tiedon luottamuksellisuuden ja eheyden varmistamiseen)"
 
 msgid "mime_gpx"
-msgstr "GPS-reittidata (GPS-vaihtomuoto, tallentaa maantieteellistä tietoa, yleinen muoto urheilukelloille ja navigointilaitteille)"
+msgstr "GPX satelliittiseurantadata (XML-pohjainen maailmanlaajuisen paikannusjärjestelmän vaihtomuoto. Se on erikoistunut maantieteellisten koordinaattien, reittipisteiden, reittilinjojen ja historiallisten reittien kuvaamiseen, ja se on yleinen avoin datastandardi moderneille mobiiliurheilulaitteille, autonavigoinnille ja maantieteellisille tietojärjestelmille (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Levykuva (levy-/CD-ROM-kuvatiedostot kuten DMG, ISO, IMG, käytetään ohjelmistojen jakeluun tai tallennusmedien varmuuskopiointiin)"
+msgstr "Disk Image levykuva (ISO, DMG, IMG jne. fyysisen levyn tai optisen median sektori sektorilta matalan tason kuvatiedosto. Sitä käytetään matalan tason järjestelmän käyttöönottoon, suurten ohjelmistojen turvalliseen jakeluun ja tallennusvälineiden täydelliseen fyysisen tason varmuuskopiointiin)"
 
 msgid "mime_vm"
-msgstr "Virtuaalikonetiedosto (virtuaalilevytiedostot kuten VMDK, VDI, VHDX, OVA, muodot virtualisointialustoille kuten VMware, VirtualBox, Hyper-V)"
+msgstr "VM virtuaalikoneen kuva (VMDK, VDI, VHDX, OVA jne. virtualisoitu fyysinen levykuva. VMware-, VirtualBox- ja Hyper-V-alustojen perusta, jota käytetään matalan tason laitteistoemulointiin, instanssien tilannevedoksiin ja pilvi-infrastruktuurin jakeluun)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent-torrent-tiedosto (Bram Cohen keksi sen vuonna 2001, hakemistotiedosto P2P-latauksille, sisältää tiedostojen metatiedot ja Trackertiedon)"
+msgstr "BitTorrent torrent-tiedosto (Bram Cohenin vuonna 2001 suunnittelema P2P-vertaisverkko hajautettu latausindeksi. Perustuu Bencode-koodaukseen, se tallentaa alkuperäisen tiedoston varmennuksen metatiedot ja Tracker-palvelimen osoitetiedot, ja se on hajautetun verkkovirran jakelun keskeinen kantaja)"
 
 msgid "mime_gis"
-msgstr "GIS-maantieteellinen tietojärjestelmädata (geospatiaalinen data kuten Shapefile, GeoJSON, käytetään karttoihin ja paikkatietoanalyysiin)"
+msgstr "GIS paikkatieto (Shapefile- ja GeoJSON-keskeinen maantieteellisen tietojärjestelmän datastandardi. Sisältää moniulotteisia geometrisia koordinaatteja, kerrostopologiaa ja attribuuttidataa, ja sitä käytetään laajalti teräväpiirtoisten digitaalisten karttojen renderöintiin, satelliittien kaukokartoitukseen ja spatiaaliseen geometrian analyysiin)"
 
 msgid "mime_ebook"
-msgstr "E-kirja (e-kirjamuodot kuten EPUB, MOBI, AZW. EPUB on kansainvälinen standardi, MOBI/AZW ovat Amazon Kindlen muotoja)"
+msgstr "EBOOK e-kirja (digitaalinen julkaisumuoto, jonka ytimenä on W3C:n EPUB-kansainvälinen avoin standardi ja Amazon Kindlen omisteinen MOBI/AZW-arkkitehtuuri. Se tukee mukautuvaa virtaavaa asettelua, metatietojen kapselointia ja DRM-digitaalista oikeuksien hallintaa, ja se on mobiilin digitaalisen lukemisen universaali väline)"
 
 msgid "mime_avif"
-msgstr "AVIF-kuva (Alliance for Open Media julkaisi vuonna 2019, perustuu AV1-koodaukseen, pakkaussuhde 50% parempi kuin WebP, uuden sukupolven verkkokuvastandardi)"
+msgstr "AVIF tehokas kuva (Open Media Alliancen (AOMedia) vuonna 2019 julkaisema seuraavan sukupolven erittäin teräväpiirtoinen kuvastandardi. Perustuu AV1-videokoodauksen avainkuvatekniikkaan, sen pakkaussuhde on 50 % parempi kuin WebP:llä, ja se tukee natiivisti suurta dynaamista aluetta (HDR), ja se on nykyaikaisen verkkokuvasiirron valtavirran standardi)"
 
 msgid "mime_markdown"
-msgstr "Markdown-dokumentti (John Gruber suunnitteli vuonna 2004, kevyt merkintäkieli, yleinen muoto GitHub README:lle, tekniselle dokumentaatiolle, foorumiviestinnälle)"
+msgstr "Markdown kevyt asiakirja (John Gruberin vuonna 2004 luoma tekstiasiakirjan merkintäkieli. Käyttää deklaratiivista pelkkää tekstiä, sen syntaksi on saanut vaikutteita reStructuredTextistä, ja sitä käytetään laajalti GitHub-projekteissa, teknisessä dokumentaatiossa ja moderneissa staattisen sisällön hallinnan ekosysteemeissä)"
 
 msgid "mime_yaml"
-msgstr "YAML-konfigurointi (Clark Evans suunnitteli vuonna 2001, ihmisen luettava tietojen sarjoitusmuoto, standardi Kubernetes-, Ansible- ja Docker Compose -konfigurointitiedostoille)"
+msgstr "YAML sarjoitettu määritys (Clark Evansin ym. vuonna 2001 suunnittelema ihmisen luettava tiedon sarjallistamismuoto. Perustuu hierarkkiseen sisentämiseen ja avain-arvo-kartoitukseen, ja se on vakiinnuttanut asemansa pilvinatiivin infrastruktuurin määritysstandardina Kubernetesille, Ansible-automaatiolle ja Docker Composelle)"
 
 msgid "mime_toml"
-msgstr "TOML-konfigurointi (Tom Preston-Werner suunnitteli vuonna 2013, 'Tom's Obvious Minimal Language', konfigurointitiedostomuoto nykyaikaisille työkaluille kuten Rust/Cargo, Python/pip, Go)"
+msgstr "TOML semanttinen määritys (Tom Preston-Wernerin vuonna 2013 suunnittelema minimalistinen kieli. Sillä on matalan tason suunnitteluetuja, kuten vahva tyypitys, eksplisiittinen kartoitus ja selkeä semantiikka, ja sitä käytetään nyt laajalti standardoituna määritystiedostona nykyaikaisille Rust- (Cargo), Python- (pyproject.toml) ja Go-työkaluketjuille)"
 
 msgid "mime_vue"
-msgstr "Vue-komponenttitiedosto (Evan Yun esittelemä vuonna 2014, progressiivinen JavaScript-kehys. Yksitiedostokomponenttien (SFC) avulla se yhdistää täydellisesti HTML:n, CSS:n ja JS:n, mikä parantaa huomattavasti kehitystehokkuutta. Se on yksi maailman suosituimmista frontend-kehyksistä. Lisäksi se on nykyaikaisten staattisten sivustogeneraattorien, kuten VitePressin, ytimenä, ja sitä käytetään laajalti interaktiivisen teknisen dokumentaation ja blogien tuottamiseen.)"
+msgstr "Vue yhden tiedoston komponentti (Evan Yun vuonna 2014 julkaiseman progressiivisen verkkokehyksen omisteinen SFC-muoto. Se toteuttaa HTML/CSS/JS-huolen erottelun ja reaktiivisen tilan sidonnan yhdessä tiedostossa, ja se ohjaa syvästi moderneja interaktiivisia frontend-verkkosovelluksia ja laajamittaisia staattisten sivustojen moottoreita)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly-moduuli (W3C-standardi vuodelta 2017, korkean suorituskyvyn suoritusmuoto selaimessa, C/C++/Rust/R voidaan kääntää kohteeksi, suorituskyky lähellä natiivia)"
+msgstr "WebAssembly binaarimoduuli (W3C:n vuonna 2017 vahvistama korkean suorituskyvyn matalan tason tavukoodistandardi verkolle. Sallii vahvasti tyypitettyjen kielten, kuten C/C++/Rust, kääntämisen selaimen hiekkalaatikkoympäristöön, tarjoten lähes natiivin laitteiston suorituskyvyn, ja se on modernin verkon reunalaskennan kulmakivi)"
 
 msgid "mime_jsx"
-msgstr "React JSX -komponentti (Facebook julkaisi JavaScript XML:n vuonna 2013, React-kehyksen komponenttisyntaksi, innovatiivinen paradigma, joka tuo HTML:n JavaScriptiin)"
+msgstr "React JSX komponentti (Facebookin vuonna 2013 React-kehyksen kanssa julkaisema JavaScript XML -syntaksilaajennus. Se tukee deklaratiivista virtuaalisten DOM-rakenteiden rakentamista JavaScriptin sisällä, mahdollistaen frontendin 'Käyttöliittymä tilan funktiona' -komponenttipohjaisen kehitysparadigman)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX -komponentti (Microsoft kehitti vuonna 2012, TypeScript + JSX, vakiotapa kirjoittaa tyyppiturvallista React-kehitystä)"
+msgstr "TypeScript TSX komponentti (Microsoftin TypeScriptin vahvan tyyppisyntaksin (2012) ja JSX:n virtaava yhdistelmä. Se lisää staattista käännösaikaista tyyppitarkistusta ja rajapintarajoituksia React-komponenttien kehitykseen, ja se on koodistandardi nykyaikaisten suurten frontend-järjestelmien turvalliselle kehitykselle)"
 
 msgid "mime_heif"
-msgstr "HEIF-kuva (MPEG-standardi vuodelta 2015, tehokas kuvatiedostomuoto, laajalti käytetty Applen ekosysteemissä)"
+msgstr "HEIF tehokas kuva (MPEG-järjestön vuonna 2015 vahvistama tehokas kuvatiedostomuoto. Perustuu HEVC (H.265) -videokoodausalgoritmiin, se tukee useita kuvakehyksiä, syvyyskarttoja ja metatietoja erittäin pienessä tilavuudessa, ja se on omisteinen tallennusstandardi moderneille mobiilikäyttöjärjestelmille ja älylaitteille)"
 
 msgid "mime_heic"
-msgstr "HEIC-kuva (Applen toteutus HEIF:stä, oletuskuvamuoto iPhoneissa, iOS/macOS tukee natiivisti)"
+msgstr "HEIC tehokas kuva (Applen kansainväliseen HEIF-standardiin perustuva omisteinen bittikarttamuoto. Nykyaikaisten iPhone-puhelimien oletusvalokuvien tallennusmuotona se sisältää iOS-/macOS-laitteistotason koodauksen/purkamisen ja käyttöjärjestelmän natiivin tuen, mikä vähentää dramaattisesti taustalla olevaa tallennustilaa samalla kun ylläpidetään korkeaa kuvanlaatua)"
 
 msgid "mime_gltf"
-msgstr "GLTF-3D-malli (GL-siirtomuoto, '3D-maailman JPEG', Khronos Group julkaisi sen vuonna 2015, standardimuoto Web 3D:lle)"
+msgstr "glTF 3D-malli (Khronos Groupin vuonna 2015 julkaisema GL-siirtomuotostandardi. Se käyttää JSON-arkkitehtuuria kolmiulotteisten kohtausten kuvaamiseen, ja sitä kutsutaan '3D:n JPEG:ksi', ja se on kevyt teollisuusstandardi modernille WebGL/WebGPU- ja virtuaalitodellisuusrenderöinnille)"
 
 msgid "mime_glb"
-msgstr "GLB-binäärinen 3D-malli (GLTF:n binääriversio, yksi tiedosto sisältää kaikki resurssit, käytetään 3D-skenaarioiden jakeluun)"
+msgstr "GLB binaarinen 3D-malli (glTF-mallin häviötön binaarinen kapselointiversio. Se yhdistää kohtausrakenteen, alemman tason meshin kärkipistetiedot, materiaalit ja tekstuurit yhdeksi tiedostoksi, ja se on suunniteltu erityisesti web-3D-varojen tehokkaaseen siirtoon ja suoratoistojakeluun alustojen välillä)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY-sanasto (termimäärittelytiedosto, termien hallintaan dokumentointijärjestelmissä)"
+msgstr "GLOSSARY datasanasto (erityisesti asiakirjanhallintajärjestelmille ja rakenteellisille tekstikokoelmille tarkoitettu termien määrittelytiedosto. Sisältää vakiotermien määritelmät, monikieliset kartoitukset ja metatietokartoitukset, ja sitä käytetään käsitteellisen johdonmukaisuuden ylläpitämiseen automatisoidussa teksti analyysissä ja sisällönjulkaisujärjestelmissä)"
 
 msgid "mime_cbz"
-msgstr "CBZ-sarjakuva (ZIP-pakatut sarjakuvakuvat, yleinen muoto sarjakuvakokoelmille)"
+msgstr "CBZ sarjakuva (ZIP-pakkaamiseen perustuva omisteinen sarjakuvakuvien arkistointimuoto. Se sisältää jatkuvan sekvenssin staattisia bittikarttakuvia, ja se on yleinen kevyt säiliöstandardi digitaaliselle sarjakuvajulkaisulle ja alustojen väliselle paikalliselle kokoelmalle)"
 
 msgid "mime_cbr"
-msgstr "CBR-sarjakuva (RAR-pakatut sarjakuvakuvat, yleinen muoto sarjakuvakokoelmille)"
+msgstr "CBR sarjakuva (RAR-pakkaamiseen perustuva omisteinen sarjakuvakuvien arkistointimuoto. Se käyttää RAR-algoritmia staattisten bittikarttasekvenssien kapselointiin, ja sillä on korkea pakkaussuhde ja laaja yhteensopivuustuki digitaalisten sarjakuvien jakelussa)"
 
 msgid "mime_fb2"
-msgstr "FB2-e-kirja (FictionBook 2.0, venäläinen e-kirjamuoto, XML-rakenne, laajalti tuettu avoimen lähdekoodin lukijoissa)"
+msgstr "FB2 e-kirja (2000-luvun alun FictionBook 2.0 -e-kirjastandardi. Se käyttää puhdasta XML-rakennetta kirjan ominaisuuksien ja tekstihierarkian kuvaamiseen, ja sillä on laaja tuki avoimen lähdekoodin e-kirjaekosysteemissä ja perinteisissä digitaalisen julkaisun lukijoissa)"
 
 msgid "mime_kepub"
-msgstr "KEPUB-e-kirja (Kobon oma EPUB-muoto, optimoitu muoto Kobo-e-kirjojen lukulaitteelle)"
+msgstr "KEPUB e-kirja (Kobon omisteinen parannettu e-kirjamuoto, joka perustuu EPUB-standardiin. Laitteistotasolla optimoitu Kobon e-kirjalukijoille, se tarjoaa tehokkaamman sivuasettelun ja lukutilastojen vuorovaikutuksen)"
 
 msgid "mime_m4b"
-msgstr "M4B-äänikirja (MPEG-4-äänimuoto kirjoille, tukee kirjanmerkkejä, iTunes-äänikirjamuoto)"
+msgstr "M4B äänikirja (MPEG-4 Part 14 (MP4) -säiliöarkkitehtuuriin perustuva äänikirjamuoto. Se käyttää AAC-koodausta, tukee natiivisti matalan tason kirjanmerkkejä, toiston jatkamista keskeytyksestä ja lukujen upottamista, ja se oli aikoinaan Apple iTunes -ekosysteemin vakiotekijä)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX -muoto (Amazon julkaisi vuonna 2015, Kindlen oma e-kirjamuoto, tukee edistynyttä taittoa ja nopeaa sivujen selailua)"
+msgstr "Kindle KFX -muoto (Amazonin vuonna 2015 Kindlen kanssa julkaisema omisteinen parannettu digitaalinen julkaisumuoto. Se tukee kehittynyttä typografista ligatuuria, korkean dynamiikan fontin renderöintiä ja ydintason virtaavaa sivulatausta (Page Flip), ja se on modernin Kindle-alustan keskeinen standardi)"
 
 msgid "mime_chm"
-msgstr "CHM-ohjetiedosto (Microsoft julkaisi vuonna 1997, käännetty HTML-ohjemuoto, Windows-ohjelmistojen ohjedokumentaation standardi)"
+msgstr "CHM käännetty ohjetiedosto (Microsoftin vuonna 1997 julkaisema käännetty HTML-ohjetietojärjestelmä. Se pakkaa hypertekstitiedot ja alemman tason hakemistot yhdeksi binaariseksi säiliöksi, ja se on pitkään ollut Windows-ohjelmistojen paikallisen offline-ohjedokumentaation standardimuoto)"
 
 msgid "mime_mht"
-msgstr "MHT-verkkosivuarkisto (Microsoft julkaisi vuonna 1999, yhden tiedoston verkkosivumuoto, IE-selaimen tallennusmuoto)"
+msgstr "MHT verkkoarkisto (Microsoftin vuonna 1999 julkaisema MIME-yhdistelmän hypertekstimuoto. Se perustuu RFC 2557 -standardiin, ja se pakkaa HTML-lähdekoodin, CSS:n, JS:n ja upotetut kuvat yhdeksi tekstitiedostoksi, ja sitä käytetään vanhemmissa selaimissa offline-verkkosivujen tallentamiseen)"
 
 msgid "mime_wml"
-msgstr "WML langaton merkintäkieli (WAP-standardi vuodelta 1999, käytettiin varhaisten toimintopuhelimien verkkosivuille, vanhentunut)"
+msgstr "WML langaton merkintäkieli (WAP (Wireless Application Protocol) -foorumin vuonna 1999 vahvistama mobiili merkintästandardi. Se perustuu XML-määrittelyyn, ja se on suunniteltu erityisesti varhaisille kapeakaistaisille langattomille matkapuhelinverkoille ja vähätehoisille peruspuhelimille, ja se on eläkkeelle jäänyt perintöteknologia nykyaikaisessa verkkoympäristössä)"
 
 msgid "mime_xhtml"
-msgstr "XHTML-verkkosivu (W3C-standardi vuodelta 2000, XML-versio HTML:stä, tarkempi syntaksi. W3C lopetti ylläpidon vuonna 2009, keskittyi HTML5:een)"
+msgstr "XHTML hypertekstinen verkkosivu (vuoden 2000 W3C-standardi, XML-arkkitehtuuriin perustuva tiukka hypertekstin merkintäkieli. Vuonna 2009 W3C lopetti sen teknisen kehityksen ja siirtyi täysin HTML5-määrittelyyn, nykyään sitä käytetään lähinnä semanttiseen verkkosivujen renderöintiin perintöjärjestelmissä)"
 
 msgid "mime_xml"
-msgstr "XML-dokumentti (W3C-standardi vuodelta 1998, laajennettava merkintäkieli, perusmuoto verkkopalveluille, konfigurointitiedostoille, tiedonsiirrolle)"
+msgstr "XML rakenteellinen asiakirja (vuoden 1998 W3C-standardi laajennettava merkintäkieli. Sen itseään kuvaava tagiarkkitehtuuri tekee siitä perustan verkkopalveluille (SOAP/REST), järjestelmätason määritystiedostoille (XSD) ja alustojen väliselle tiedonsiirrolle)"
 
 msgid "mime_sgml"
-msgstr "SGML-dokumentti (ISO-standardi vuodelta 1986, HTML:n edeltäjä, standardoitu yleinen merkintäkieli, sekä XML että HTML johdetaan SGML:stä)"
+msgstr "SGML standardi yleistetty merkintäkieli (vuoden 1986 ISO 8879 -kansainvälinen standardi. Sähköisten asiakirjojen rakenteellisen kuvauksen edelläkävijänä, sekä XML että varhaiset HTML-määrittelyt ovat peräisin tästä standardista metakielestä)"
 
 msgid "mime_apng"
-msgstr "APNG-animaatio (Mozilla kehitti vuonna 2004, PNG-animaatiolaajennus, moderni korvaaja GIF:lle, tukee täysväriä ja läpinäkyvyyttä)"
+msgstr "APNG dynaaminen grafiikka (Mozillan vuonna 2004 kehittämä PNG-dynaaminen laajennus. Se tukee 24-bittistä täysväriä ja 8-bittistä alfakanavan läpinäkyvyyttä, ja se on moderni teräväpiirtoinen vaihtoehto GIF-muodolle verkkoskenaarioissa)"
 
 msgid "mime_bmp"
-msgstr "BMP-bittikartta (Windowsin bittikarttamuoto, natiivisti tuettu Windows 1.0:sta lähtien. Pakkaamaton, tiedostokoko on suuri, mutta yksinkertaisen rakenteensa ja lisäkoodekkien tarpeettomuuden vuoksi sitä käytetään edelleen Windows 11:n leikkaustyökalussa, Paint-ohjelmassa, EXE/MSI-asennuspakettien kuvakeresursseissa, kohdistintiedostoissa ja joissakin vanhemmissa ohjaimissa. Samalla kuvanlaadulla tiedostokoko on noin 3-10 kertaa suurempi kuin PNG. Useimmissa tapauksissa se on korvattu PNG/JPEG-muodoilla, mutta Windows-ekosysteemi säilyttää edelleen laajan yhteensopivuuden)"
+msgstr "BMP natiivi bittikartta (Microsoft-alustan laiteriippumaton bittikarttamuoto, joka on vahvistettu Windows 1.0 -aikakaudelta lähtien. Se käyttää häviötöntä pakkaamatonta tallennusta, joten sen tilavuus on tyypillisesti 3-10 kertaa PNG:tä suurempi, mutta koska se ei vaadi koodaus/purkukustannuksia, se on edelleen laajalti upotettuna Windows 11:n ydinkomponentteihin, EXE/MSI-resurssiosioihin ja vanhojen ajurien grafiikkapuskureihin)"
 
 msgid "mime_cdr"
-msgstr "CDR-vektorikuva (CorelDRAW:n oma muoto, kanadalainen yritys Corel, vektorigrafiikkasuunnitteluohjelmisto)"
+msgstr "CDR vektorigrafiikka (Corel Corporationin omisteinen CorelDRAW-ammattimainen vektorisuunnittelun lähdemuoto. Se tukee monitasoista värinhallintaa, monimutkaisia matemaattisia käyräsolmuja ja painotason asettelutietoja, ja se on erikoistunut ammattimaiseen graafiseen painatukseen ja mainossuunnitteluun)"
 
 msgid "mime_gif"
-msgstr "GIF-kuva (CompuServe kehitti vuonna 1987, 256-värinen animoitu kuvamuoto. Haitat: vähän värejä, karkea kuvanlaatu, ei tue läpinäkyvyyttä, suuri tiedosto, alhainen kuvanopeus. Korvattu moderneilla animoiduilla muodoilla kuten APNG, WebP)"
+msgstr "GIF indeksoitu värikuva (CompuServen vuonna 1987 kehittämä 8-bittinen indeksoitu väribittikarttamuoto. Se perustuu LZW-algoritmiin, ja se on rajattu 256 väritasoon ja yksiväriseen läpinäkyvyyteen. Suurella kuvataajuudella sen tilavuus kasvaa, ja se korvataan vähitellen moderneilla, tehokkailla animaatiostandardeilla, kuten APNG, WebP jne.)"
 
 msgid "mime_ico"
-msgstr "ICO-kuvake (Windows-kuvakemuoto, tukee useita resoluutioita, verkkosivujen suosikki-ikonin standardimuoto)"
+msgstr "ICO järjestelmäkuvake (Windows-alustan natiivi kuvakeresurssien kapselointimuoto. Se tukee useiden eri pikselitarkkuuksien ja värisyvyyksien kuvamuunnelmien sekoittamista yhdessä säiliössä, ja se on myös nykyaikaisten verkkoselainten sivustotunnisteen (Favicon) yleinen jakelustandardi)"
 
 msgid "mime_jpeg"
-msgstr "JPEG-kuva (ISO-standardi vuodelta 1992, häviöllinen pakkausmuoto valokuville, de facto -standardi Internetin valokuville)"
+msgstr "JPEG pakattu kuva (vuoden 1992 ISO 10918 -kansainvälinen standardi häviölliselle pakkaukselle. Se perustuu diskreettiin kosinimuunnokseen (DCT), ja se saavuttaa korkean pakkaussuhteen säilyttäen samalla erinomaisen realistisen kuvanlaadun. Se on absoluuttinen de facto -standardi staattisille valokuville maailmanlaajuisessa internetissä)"
 
 msgid "mime_jpg"
-msgstr "JPEG-kuva (ISO-standardi vuodelta 1992, häviöllinen pakkausmuoto valokuville, de facto -standardi Internetin valokuville)"
+msgstr "JPEG pakattu kuva (vuoden 1992 ISO 10918 -kansainvälinen standardi häviölliselle pakkaukselle. Se perustuu diskreettiin kosinimuunnokseen (DCT), ja se saavuttaa korkean pakkaussuhteen säilyttäen samalla erinomaisen realistisen kuvanlaadun. Se on absoluuttinen de facto -standardi staattisille valokuville maailmanlaajuisessa internetissä)"
 
 msgid "mime_png"
-msgstr "PNG-kuva (W3C-suositus vuodelta 1996, tukee täysväriä ja läpinäkyvyyttä, staattinen korvaaja GIF:lle, standardi häviöttömille kuville Internetissä)"
+msgstr "PNG häviötön kuva (W3C:n vuonna 1996 suosittelema kannettava verkkografiikan standardi. Se käyttää häviötöntä pakkausalgoritmia, ja se tukee natiivisti 24-bittistä täysväriä ja 8-bittistä alfakanavan läpinäkyvyyttä. Klassisen staattisen GIF-tiedoston teräväpiirtoisena vaihtoehtona se on häviöttömien pikselikuvien absoluuttinen de facto -standardi internetissä)"
 
 msgid "mime_ps"
-msgstr "PostScript-sivunkuvaus (Adobe julkaisi vuonna 1985, sivunkuvauskieli, PDF:n edeltäjä, käytetään tulostukseen ja julkaisuun)"
+msgstr "PostScript sivunkuvailutiedosto (Adoben vuonna 1985 julkaisema pino-pohjainen sivunkuvailukieli. PDF-muodon teknologisena edeltäjänä se mahdollistaa matalalla tasolla laitteistosta riippumattoman tekstin asettelun ja erittäin tarkan vektorigrafiikan renderöinnin, ja se on perustavanlaatuinen standardi ammattimaisessa painatuksessa ja lasertulostuksessa)"
 
 msgid "mime_psb"
-msgstr "PSB-suuri dokumentti (Adobe Photoshop -muoto erittäin suurille kuville, tukee jättimäisiä kuvia yli 2 Gt tai 30000 pikseliä)"
+msgstr "PSB suuri kerrosasiakirja (Adoben Photoshopin omisteinen erittäin suuren lähdetiedoston kapselointimuoto. Se rikkoo vakio-PSD-muodon 2 Gt:n fyysisen tilavuuden ja 30 000 pikselin sisäisen osoittamisen rajoitukset, ja se on suunniteltu erityisesti erittäin suurten, syvästi kerrostettujen massiivisten digitaalisten taidevarojen tallentamiseen)"
 
 msgid "mime_psd"
-msgstr "PSD-kuva (Adobe Photoshop lähdetiedosto, tukee kerroksia, kanavia, polkuja, kuvankäsittelyn teollisuusstandardimuoto)"
+msgstr "PSD kerrossuunnittelun lähdetiedosto (Adoben Photoshopin omisteinen kerrosrakenteisen kuvan suunnittelusäiliö. Graafisen kuvan alan teollisuusstandardisäiliönä se kapseloi natiivisti täyden kerroksen renderöintipuun, bittikarttakanavat, vektorileikkauspolut ja monimutkaiset sekoitustilat, ja se tukee häviötöntä täyden datan muokkausta)"
 
 msgid "mime_webp"
-msgstr "WebP-kuva (Google kehitti vuonna 2010, verkkokuvamuoto, tukee häviöllistä/häviötöntä pakkausta ja animaatiota, pakkaussuhde 25-35% parempi kuin PNG ja 25% parempi kuin JPEG)"
+msgstr "WebP tehokas kuva (Googlen vuonna 2010 julkaisema yleinen verkkografiikan koodausstandardi. Se on peräisin VP8-videon avainkuvatekniikasta, ja se on täysin yhteensopiva häviöllisen, häviöttömän, puoliksi läpinäkyvän ja dynaamisen renderöinnin kanssa. Samassa laadussa se on 25-35 % pienempi kuin PNG, ja se on modernien verkkosivujen korkean suorituskyvyn latauksen kulmakivi)"
 
 msgid "mime_woff"
-msgstr "WOFF-verkkofontti (luotu vuonna 2009, W3C-standardi vuodelta 2018. Pakattu TrueType/OpenType-pohjalta, optimoitu verkkofonttien lataukseen, standardimuoto nykyaikaisten verkkosivujen kuvakefonteille)"
+msgstr "WOFF web-glyfi-tiedosto (vuonna 2009 luotu ja vuonna 2012 W3C-standardiksi tullut Web Open Font -muoto. Sen olemus on vakio-TTF/OTF-fonttirakenteiden häviötön pakkaaminen virraksi, mikä optimoi dramaattisesti verkon kaistanleveyden kustannuksia, ja se on yleinen muoto nykyaikaisten verkkosivustojen kuvakkeille ja pilvifonteille)"
 
 msgid "mime_7z"
-msgstr "7z-pakattu arkisto (Igor Pavlov kehitti sen vuonna 1999, 7-Zip-ohjelman oma muoto. LZMA-algoritmi, korkea pakkaussuhde, avoin lähdekoodi ja ilmainen. 7z-muoto on samalla pakkaussuhteella yleensä 30-50% pienempi kuin ZIP, yleinen muoto avoimen lähdekoodin yhteisössä ja ohjelmistojen jakelussa)"
+msgstr "7z pakattu paketti (Igor Pavlovin vuonna 1999 kehittämä 7-Zip -omisteinen muoto. Se perustuu avoimen lähdekoodin LZMA/LZMA2-algoritmeihin, ja sen pakkaussuhde on erittäin korkea. Vastaavissa olosuhteissa se on tyypillisesti 30-50 % pienempi kuin ZIP, ja se on avoimen lähdekoodin yhteisön ja ohjelmistojen jakelun yleinen korkean pakkaussuhteen muoto)"
 
 msgid "mime_ace"
-msgstr "ACE-pakattu arkisto (kehitetty 1990-luvulla, WinACE-ohjelman muoto. Kilpaili aikoinaan RAR:n kanssa, pakkaussuhde oli melko korkea. Kehitys lopetettiin vuonna 2007, nyt korvattu 7z/RAR:lla, harvoin käytetty)"
+msgstr "ACE pakattu paketti (1990-luvun WinACE-omisteinen pakkausmuoto. Se kilpaili aikoinaan RAR-muodon kanssa ja saavutti korkean pakkaussuhteen. Tekninen kehitys pysähtyi vuoden 2007 jälkeen, ja nykyään se on korvattu 7z- ja RAR-muodoilla, ja se kuuluu perintöjärjestelmien arkistomuotoihin)"
 
 msgid "mime_bz2"
-msgstr "BZIP2-pakattu arkisto (Julian Seward kehitti sen vuonna 1996, lohkolajittelupakkausalgoritmi. Pakkaussuhde on 15-20% korkeampi kuin GZIP:n, mutta hitaampi. Yleinen muoto Linux-ytimen lähdekoodille, avoimen lähdekoodin ohjelmistopaketeille, päätteellä .bz2)"
+msgstr "BZIP2 pakattu paketti (Julian Sewardin vuonna 1996 kehittämä lohkolajittelupakkausmuoto. Sen alemman tason algoritmin pakkaussuhde on 15-20 % korkeampi kuin GZIPillä, mutta laskentakustannukset ovat suuremmat. Sitä käytetään usein Linux-ytimen lähdekoodin ja avoimen lähdekoodin ohjelmistopakettien jakeluun, ja sen vakiotiedostopääte on .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB-pakattu arkisto (Microsoft kehitti sen vuonna 1995, Cabinet-muoto. Windowsin asennuspakettiformaatti, käytetään ajureille, järjestelmätiedostojen jakeluun. Windows Installer (MSI) käyttää sisäisesti CAB-tiedostoja tiedostojen tallentamiseen)"
+msgstr "CAB pakattu paketti (Microsoftin vuonna 1995 kehittämä Cabinet-arkistomuoto. Windows-järjestelmän natiivina asennusstandardina sitä käytetään ohjainten ja ydintiedostojen jakeluun, ja se toimii myös Windows Installerin (MSI) alemman tason tallennussäiliönä)"
 
 msgid "mime_dmg"
-msgstr "DMG-levykuva (Apple esitteli sen 1980-luvulla, Disk Image -muoto. macOS-ohjelmistojen jakelun standardimuoto, kaksoisklikkauksella liitetään virtuaalilevyksi, vedä ja pudota asentaaksesi sovelluksen. Tukee pakkausta ja salausta, on ensisijainen muoto Mac-ohjelmistojen lataamiseen)"
+msgstr "DMG levykuva (Applen 1980-luvulta lähtien kehittämä levykuvamuoto. macOS-ohjelmistojen jakelun vakiosäiliönä se tukee asentamista virtuaalisena tiedostojärjestelmänä, matalan tason pakkausta ja tiedon salausta, ja se on Mac-ekosysteemin sovellusjakelun valtavirran muoto)"
 
 msgid "mime_emz"
-msgstr "EMZ-pakattu kuva (Windows-pakattu parannettu metatiedosto, EMF:n pakattu versio. Vektorigrafiikan tallennusmuoto Office-dokumenteissa, pohjimmiltaan GZIP-pakattu EMF-tiedosto)"
+msgstr "EMZ pakattu kuva (Windows Enhanced Metafile EMF:n pakattu versio. Se on olemukseltaan GZIP-algoritmilla pakattua binaarista vektorigrafiikkaa, ja sitä käytetään laajalti upotetun vektorigrafiikan tallentamiseen Microsoft Office -sarjan asiakirjoissa)"
 
 msgid "mime_gz"
-msgstr "GZIP-pakattu arkisto (Jean-loup Gailly ja Mark Adler kehittivät sen vuonna 1992, GNU-projekti. Unix/Linux-vakiotyökalu pakkaukseen, yleinen muoto HTTP-siirtopakkaukselle. Pääte .gz, käytetään usein yhdessä TAR:n kanssa)"
+msgstr "GZIP pakattu paketti (GNU-projektin Jean-loup Gaillyn ja Mark Adlerin vuonna 1992 kehittämä vakio virtapakkausmuoto. Unix/Linuxin vakiona pakkaustyökaluna se on myös HTTP-siirtokerroksen pakkauksen (Gzip) keskeinen standardi, ja sitä käytetään usein yhdessä TAR-arkistojen kanssa)"
 
 msgid "mime_jar"
-msgstr "JAR-pakattu arkisto (Sun Microsystems julkaisi sen vuonna 1997, Java ARchive -muoto. Pohjimmiltaan ZIP-tiedosto, käytetään Java-kirjastojen ja -sovellusten pakkaamiseen. Java-ekosysteemin perusmuoto kuten Maven, Gradle. Android käyttää myös JAR:ia)"
+msgstr "JAR pakattu paketti (Sun Microsystemsin vuonna 1997 julkaisema Java-arkistomuoto. Se on olemukseltaan ZIP-rakenteeseen perustuva pakkaussäiliö Java-luokkakirjastojen ja metatietojen kapselointiin, ja se on keskeinen käännetty tuote Mavenille, Gradlelle ja varhaiselle Android-ekosysteemille)"
 
 msgid "mime_lzma"
-msgstr "LZMA-pakattu arkisto (Igor Pavlov kehitti sen vuonna 1998, Lempel-Ziv-Markov chain -algoritmi. 7z-muodon pääpakkausalgoritmi, korkea pakkaussuhde, nopea purkunopeus. Käytetään laiteohjelmistojen ja sulautettujen järjestelmien ohjelmistojen jakeluun)"
+msgstr "LZMA pakattu paketti (Igor Pavlovin vuonna 1998 kehittämä Lempel-Ziv-Markov-ketjun pakkausalgoritmi. 7z-muodon keskeisenä moottorina sillä on erittäin korkea pakkaussuhde ja nopea purku, ja sitä käytetään laajalti laiteohjelmistojen ja sulautettujen järjestelmien jakeluun)"
 
 msgid "mime_rar"
-msgstr "RAR-pakattu arkisto (Eugene Roshal kehitti sen vuonna 1993, Roshal ARchive -muoto. Korkea pakkaussuhde, tukee osiin jakamista ja palautustietueita. WinRAR-ohjelman muoto, pakkaussuhde parempi kuin ZIP, mutta vaatii maksullista ohjelmistoa, avoimen lähdekoodin työkalut kuten unrar voivat purkaa)"
+msgstr "RAR pakattu paketti (Eugene Roshalin vuonna 1993 kehittämä WinRAR-omisteinen arkistomuoto. Se tukee osiin jakoa, fyysisiä palautustietueita (ECC) ja vahvaa salausta. Sen pakkaussuhde on parempi kuin vakio ZIPillä, ja sillä on laaja yhteensopivuustuki henkilökohtaisilla ja kaupallisilla aloilla)"
 
 msgid "mime_tar"
-msgstr "TAR-arkisto (Unix V7 esitteli sen vuonna 1979, Tape ARchive -muoto. Nauha-arkisto, vain pakkaa ilman pakkausta, käytetään usein yhdessä GZIP/BZIP2/XZ:n kanssa. Linux-pakettien lähdekoodi, Docker-kuvien kerrosten tallennus käyttää TAR-muotoa)"
+msgstr "TAR arkistopaketti (vuoden 1979 Unix V7 -ajan nauha-arkistomuoto. Se tekee vain tiedostovirran pakkaamisen ilman tiedon pakkausta, ja sitä yhdistetään usein GZIP/BZIP2/XZ-muotoihin. Se on Linuxin lähdekoodin ja Docker-kuvien kerrostetun tallennuksen alemman tason standardi)"
 
 msgid "mime_tgz"
-msgstr "TGZ-pakattu arkisto (kombinoitu muoto TAR + GZIP, pääte .tgz tai .tar.gz. Yleisin muoto Unix/Linux-ohjelmistopakettien jakeluun, lähdekoodipaketit, binääripaketit, laajalti käytetty, edustaa 'pura ja käytä' -periaatetta)"
+msgstr "TGZ pakattu paketti (TAR-arkiston ja GZIP-pakkauksen virtaava yhdistelmämuoto, tiedostopääte .tgz tai .tar.gz. Unix/Linux-ympäristöjen yleisimpänä ohjelmistopakettien jakelumuotona sitä käytetään laajalti lähdekoodin kääntämiseen perustuvaan käyttöönottoon ja asennusvapaiden binaaripakettien jakeluun)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2-pakattu arkisto (kombinoitu muoto TAR + BZIP2, pääte .tbz2 tai .tar.bz2. Pakkaussuhde 15-20% korkeampi kuin TGZ, sopii suurten tiedostojen jakeluun, Linux-ydin käytti tätä muotoa pitkään)"
+msgstr "TBZ2 pakattu paketti (TAR-arkiston ja BZIP2-pakkauksen virtaava yhdistelmämuoto, tiedostopääte .tbz2 tai .tar.bz2. Verrattuna TGZ-muotoon, se voi parantaa pakkaussuhdetta vielä 15-20 %, ja se sopii suurten tiedostojen siirtoon. Sitä käytettiin pitkään Linux-ytimen lähdekoodin jakeluun)"
 
 msgid "mime_xz"
-msgstr "XZ-pakattu arkisto (esitelty vuonna 2009, perustuu LZMA2-algoritmiin. Erittäin korkea pakkaussuhde, 30-50% parempi kuin GZIP, purkunopeus suhteellisen nopea. Linux-ydin, pakettihallinnat (kuten Debianin .deb-tiedostojen sisällä) käyttävät sitä laajalti, suositeltu muoto nykyisessä Linux-ekosysteemissä)"
+msgstr "XZ pakattu paketti (vuonna 2009 julkaistu seuraavan sukupolven korkean pakkaussuhteen muoto. Se perustuu LZMA2-algoritmiin, ja sen tiedon pakkaussuhde on 30-50 % parempi kuin GZIPillä samalla kun se säilyttää nopean purun. Linux-ydin ja valtavirran pakettihallinnat (kuten Debian .deb -paketin sisällä) ovat vahvistaneet sen suositeltavaksi jakelustandardiksi)"
 
 msgid "mime_z"
-msgstr "Z-pakattu arkisto (Unix-pakkauskomennon muoto vuodelta 1985, LZW-algoritmi. Varhainen Unix-pakkausmuoto, korvattu GZIP:lla. Pääte .Z, nykyaikaiset järjestelmät käyttävät sitä harvoin)"
+msgstr "Z pakattu paketti (vuoden 1985 Unixin compress-komennon LZW-pakkausmuoto. Se oli varhaisten Unix-järjestelmien vakio pakkausstandardi, mutta nykyään se on täysin korvattu tehokkaammalla GZIP-muodolla, ja se on harvinainen historiallinen perintömuoto nykyaikaisessa verkkoliikenteessä)"
 
 msgid "mime_zip"
-msgstr "ZIP-pakattu arkisto (Phil Katz kehitti sen vuonna 1989, PKZIP-muoto. Windows tukee natiivisti, Internetin yleisin pakkausmuoto. Tukee useita tiedostoja, hakemistorakennetta, voi valita pakkausalgoritmin. Javan JAR, Androidin APK, Office-dokumenttien DOCX/XLSX perustuvat ZIP-muotoon)"
+msgstr "ZIP pakattu paketti (Phil Katzin vuonna 1989 kehittämä PKZIP-yleisarkistomuoto. Sitä tukevat natiivisti kaikki tärkeimmät käyttöjärjestelmät, ja se on internetin laajimmin käytetty säiliöstandardi. Modernin Javan JAR, Androidin APK ja Office-asiakirjat (OOXML) perustuvat kaikki ZIP-rakenteeseen)"
 
 msgid "mime_zst"
-msgstr "Zstandard-pakattu arkisto (Facebook kehitti vuonna 2015, Yann Collet suunnitteli. Nopea pakkausalgoritmi, pakkaussuhde lähellä LZMA:ta, nopeus paljon suurempi kuin GZIP:lla. Linux-ydin 5.9+ tukee sitä, Arch Linuxin pacman, Debianin APT ottavat sitä asteittain käyttöön, uuden sukupolven pakkausstandardi)"
+msgstr "Zstandard pakattu paketti (Facebookin Yann Colletin vuonna 2015 suunnittelema seuraavan sukupolven virtaava pakkausstandardi. Se lähestyy LZMA:n pakkaussuhdetta ja sillä on samalla huomattavasti suurempi suorituskyky kuin GZIPillä. Linux-ydin (5.9+) ja Arch/Debian-pakettihallinnat ovat ottaneet sen syvällisesti käyttöön)"
 
 msgid "mime_lz4"
-msgstr "LZ4-pakattu arkisto (Yann Collet kehitti sen vuonna 2011, erittäin nopea pakkausalgoritmi. Pakkausnopeus yli 10 kertaa nopeampi kuin GZIP, sopii reaaliaikaisiin pakkaustilanteisiin. Linux-ydin, OpenZFS, Hadoop käyttävät sitä laajalti, ensimmäinen valinta kun nopeus on prioriteetti)"
+msgstr "LZ4 pakattu paketti (Yann Colletin vuonna 2011 kehittämä erittäin nopea virtaava pakkausalgoritmi. Sen läpäisynopeus on yli 10 kertaa nopeampi kuin GZIPillä, ja sen CPU:n aikakustannukset ovat erittäin alhaiset. Sitä käytetään laajalti Linux-ytimessä, OpenZFS-tiedostojärjestelmässä ja Hadoop-reaaliaikaisessa datavirran käsittelyssä)"
 
 msgid "mime_lzo"
-msgstr "LZO-pakattu arkisto (Markus Oberhumer kehitti sen vuonna 1996, Lempel-Ziv-Oberhumer-algoritmi. Pakkauksen purkunopeus on erittäin nopea, pakkaussuhde on keskimääräinen. Linux-ydin Squashfs, OpenWrt-laiteohjelmisto käyttävät sitä, sopii sulautetuille järjestelmille)"
+msgstr "LZO pakattu paketti (Markus Oberhumerin vuonna 1996 kehittämä Lempel-Ziv-Oberhumer-algoritmi. Se keskittyy erittäin nopeaan purkutulokseen. Sitä on upotettu laajalti Linux-ytimen Squashfs-kuviin, OpenWrt-laiteohjelmistoon ja erilaisiin resurssirajoitteisiin sulautettuihin järjestelmiin)"
 
 msgid "mime_msi"
-msgstr "MSI-asennuspaketti (Microsoft julkaisi sen vuonna 1999, Windows Installer -pakettimuoto. Windows-sovellusten vakioasennusmuoto, tukee transaktioperuutusta, komponenttien hallintaa, hiljaista asennusta. Ensimmäinen valinta yritystason ohjelmistojen jakeluun, edelleen pääasiallinen Windows-ohjelmistojen asennusmuoto tänä päivänä)"
+msgstr "MSI järjestelmän asennuspaketti (Microsoftin vuonna 1999 julkaisema Windows Installer -datan kapselointimuoto. Windows-sovellustason käyttöönottostandardina se tukee natiivisti alemman tason tapahtumien peruutusta, komponenttien elinkaaren hallintaa ja eräjousta hiljaista asennusta, ja se on keskeinen standardi yritysohjelmistojen keskitetylle jakelulle ja politiikkapohjaiselle käyttöönotolle)"
 
 msgid "mime_pkg"
-msgstr "PKG-asennuspaketti (macOS-sovellusten asennuspakettimuoto, perustuu Applen Installer-tekniikkaan. macOS-ohjelmistojen jakelun standardimuoto, tukee komponenttien valintaa, asennusskriptejä, poistotoimintoa. Kaksoisklikkaa .pkg-tiedostoa asentaaksesi, yleinen jakelutapa Mac App Storen ulkopuoliselle ohjelmistolle)"
+msgstr "PKG alustariippumaton ohjelmiston asennuspaketti. 1. FreeBSD-ohjelmistopaketti: pkgng-standardi, tiedostopääte .pkg tai .txz, perustuu TAR+XZ/Zstd-pakkaukseen, tukee riippuvuuksien ratkaisua ja allekirjoituksen varmennusta; 2. macOS-asennuspaketti: perustuu Apple Installer -muotoon, tukee mukautettuja komponentteja, asennusskriptejä ja järjestelmätason poistoa. Ne ovat ensisijaisia jakelualustoja BSD-palvelimille ja Mac-järjestelmälle."
 
 msgid "mime_apk"
-msgstr "APK Android-sovelluspaketti (Googlen käyttöön ottama vuonna 2008, Android-sovellusten perinteinen asennusmuoto. APK on pohjimmiltaan ZIP-paketti, joka sisältää koodia, resursseja ja manifestitiedoston. Vuodesta 2021 lähtien Google Play on vaatinut uusien sovellusten käyttämään AAB-muotoa, mutta APK:ta käytetään edelleen virheenkorjaukseen, kolmannen osapuolen kauppoihin ja sivulataukseen)"
+msgstr "APK Android-sovelluspaketti (Googlen Androidin kanssa vuonna 2008 julkaisema perinteinen sovellusten asennuspaketti. Se perustuu alemman tason ZIP-arkistorakenteeseen, ja se pakkaa käännetyn Dalvik-tavukoodin (DEX), metatietojen manifestin ja globaalit resurssit. Sitä käytetään nyt laajalti paikalliseen kehitysvirheenkorjaukseen, kolmannen osapuolen jakeluun ja laitteisiin sivuttaisasennukseen)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS-sovelluspaketti (iOS App Store Package, iOS/iPadOS-sovellusten asennusmuoto. Esitelty vuonna 2008 iPhone SDK:n mukana. On jaeltava App Storen kautta tai allekirjoitettava yrityssertifikaatilla. Sisältää suoritettavan tiedoston, resursseja, Info.plistin ja allekirjoitustiedot)"
+msgstr "IPA Apple-sovelluspaketti (vuonna 2008 iPhone SDK:n kanssa julkaistu iOS/iPadOS-yksinoikeussäiliö. Se on olemukseltaan FairPlay DRM:llä tai yrityssertifikaatilla allekirjoitettu ZIP-arkisto, joka sisältää Mach-O -binaarisen suoritettavan tiedoston, sovellusresurssipuun ja Info.plist-metatietojen määrityksen)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS-sovelluspaketti (HarmonyOS Ability Package, HarmonyOS-sovelluksen perusyksikkö. Esitelty vuonna 2020 HarmonyOS 2.0:n mukana. Tukee kahta tyyppiä: entry ja feature, jakelumuoto Huawei-puhelimille, tableteille, älykelloille ja muille HarmonyOS-laitteille)"
+msgstr "HAP HarmonyOS-sovelluspaketti (HarmonyOS 2.0:n kanssa vuonna 2020 julkaistu HarmonyOS-kehys, elastisen käyttöönoton perusyksikkö. Se koostuu Entry-päämoduulista tai Feature-laajennetuista toimintomoduuleista, ja se on usean päätelaitteen (puhelimet, tabletit, puettavat laitteet) välinen jakelumuoto älypäätelaitteiden jakeluun)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS-staattinen jaettu kirjasto (HarmonyOS Archive, HarmonyOS:n staattinen jaettu kirjasto, voidaan jakaa useiden HAP-pakettien kesken, käytetään komponenttipohjaiseen kehitykseen ja moduulien uudelleenkäyttöön)"
+msgstr "HAR HarmonyOS staattinen jaettu paketti (HarmonyOS-omisteinen staattisen jaetun kirjaston arkistotiedosto. Sitä käytetään yhteisten komponenttien, alemman tason resurssikoodin ja käännösaikaisten riippuvuuksien kapselointiin, ja useat HAP-moduulit linkittävät sen staattisesti jaetusti. Se on HarmonyOS-järjestelmän komponenttipohjaisen kehityksen ja monimoduulisen uudelleenkäytön perusta)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google julkaisi sen vuonna 2018, vuodesta 2021 alkaen Google Play edellyttää uusilta sovelluksilta tämän muodon käyttöä. AAB on jakelumuoto, Google Play luo optimoituja APK:ita laitekonfiguraation perusteella (CPU-arkkitehtuuri, näytön tiheys, kieli), asennuspaketin koko pienenee keskimäärin 35%. Kehittäjät lataavat AAB:n, käyttäjät lataavat APK:ita)"
+msgstr "AAB Android-sovellusniputus (Googlen vuonna 2018 lanseeraama ja vuonna 2021 vahvistama Google Play -dynaaminen jakelumuoto. Puhtaana jakeluyksikkönä pilvi räätälöi ja kääntää dynaamisesti kohdelaitteen CPU-arkkitehtuurin, näytön tiheyden ja kielen perusteella, ja tuottaa optimoituja APK-paketteja tarpeen mukaan, vähentäen siirtokaistanleveyden kustannuksia keskimäärin 35%)"
 
 msgid "mime_xapk"
-msgstr "XAPK-sovelluspaketti (kolmannen osapuolen Android-sovelluksen laajennuspaketti, sisältää APK + OBB-datatiedostot. Käytetään suurille peleille ja monimutkaisille sovelluksille, ratkaisee 100 Mb:n APK-kiintiörajoituksen. Yleinen kolmannen osapuolen sovelluskaupoissa kuten APKPure, APKMirror, ei Googlen virallinen muoto)"
+msgstr "XAPK laajennettu sovelluspaketti (kolmannen osapuolen Android-yhteisön vahvistama epävirallinen sovelluslaajennusstandardi. Se yhdistää vakio APK-tiedoston suuren OBB-pelin tiedonlaajennuspaketin kanssa, fyysisesti ylittäen Google Playn 100 Mt:n yksittäisen tiedostokokorajoituksen, ja sitä nähdään laajalti pelienjakelualustoilla)"
 
 msgid "mime_appx"
-msgstr "Windows-sovelluspaketti (Microsoft julkaisi sen vuonna 2012, Windows 8/10/11 -sovellusten asennusmuoto. Tukee UWP-sovelluksia ja työpöytäsovellusten muuntamista, jaetaan Microsoft Store -kaupan kautta. Vuonna 2024 Microsoft otti käyttöön MSIX-muodon seuraajaksi, korvaa asteittain APPX:ää)"
+msgstr "APPX moderni sovelluspaketti (Microsoftin Windows 8:n kanssa vuonna 2012 julkaisema UWP-sovellusten käyttöönottostandardi. Sillä on hiekkalaatikossa eristetty suoritus ja kevyt poistoominaisuus, ja se oli Microsoft Storen varhainen hallitseva standardi, mutta modernissa Windows-ekosysteemissä se on siirtynyt elinkaaren loppuvaiheeseen kehittyen kohti MSIX-muotoa)"
 
 msgid "mime_msix"
-msgstr "MSIX-sovelluspaketti (Microsoft julkaisi sen vuonna 2018, uuden sukupolven pakkausmuoto Windows-sovelluksille. Yhdistää APPX:n ja MSI:n edut, tukee kaikkia Windows-sovellustyyppejä, voidaan jakaa Microsoft Store -kaupan kautta tai sivulataamalla, suositeltu muoto Windows 11:lle)"
+msgstr "MSIX seuraavan sukupolven sovelluspaketti (Microsoftin vuonna 2018 julkaisema uusi täysin standardoitu Windowsin pakkausmäärittely. Se sulauttaa täydellisesti APPX:n sovellusturvallisuuden hiekkalaatikko-ominaisuudet ja MSI:n yritystason resurssienhallintaedut, se on täysin yhteensopiva kaikkien Win32-sovellustyyppien kanssa, ja se on Windows 11:n suositeltu jakelustandardi)"
 
 msgid "mime_appimage"
-msgstr "AppImage-sovelluspaketti (esitelty vuonna 2004, Linux-sovellusmuoto ilman asennusta. 'Yksi sovellus - yksi tiedosto', toimii suoraan ilman asennusta, tukee useimpia Linux-jakeluja, yleinen tapa kehittäjille jakaa Linux-ohjelmistoja)"
+msgstr "AppImage itsenäinen sovelluspaketti (vuonna 2004 aloitettu Linuxin yksittäinen suoritettava arkistomäärittely. Se käyttää 'yksi sovellus on yksi tiedosto' -itsensä sisältävää arkkitehtuuria, joka liitetään suorituksen aikana FUSE-mekanismin kautta suoraan kirjoitussuojatuksi virtuaaliseksi tiedostojärjestelmäksi, saavuttaen nollariippuvaisen, käyttövalmiin suorituksen useissa Linux-jakeluissa)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak-sovelluspaketti (esitelty vuonna 2015, Linux-sovellusmuoto hiekkalaatikossa. Toimii jakelujen yli, eristetty isäntäjärjestelmästä, kehitystä johtavat Fedora ja Red Hat, GNOME-ohjelmistokeskuksen oletusmuoto)"
+msgstr "Flatpak hiekkalaatikon sovelluspaketti (Red Hatin ja GNOMEn vuonna 2015 johtama Linux-jakelurajapintainen työpöytäsovellusten jakelustandardi. Se perustuu Linux-ytimen Namespace- ja Cgroups-mekanismeihin erittäin tiukan sovellustason tietoturvahiekkalaatikon eristyksen saavuttamiseksi, ja se on modernien avoimen lähdekoodin käyttöjärjestelmien ohjelmistokeskusten perusta)"
 
 msgid "mime_snap"
-msgstr "Snap-sovelluspaketti (Canonical julkaisi sen vuonna 2014, Ubuntun emoyhtiö kehitti, universaali Linux-sovellusmuoto. Automaattinen päivitys, hiekkalaatikkoturvaus, tukee yli 40 Linux-jakelua, Ubuntu-ohjelmistokeskuksen oletusmuoto)"
+msgstr "Snap kontitettu sovelluspaketti (Ubuntun emoyhtiö Canonicalin vuonna 2014 julkaisema Linuxin yleinen käyttöönottostandardi. Se käyttää sovelluksen itsensä sisältävän SquashFS-kuvan liittämisarkkitehtuuria, ja se tukee automaattisia inkrementaalisia päivityksiä ja tiukkaa AppArmor-hiekkalaatikon eristystä. Se on Ubuntu-ohjelmistokeskuksen ekosysteemin oletusmuoto)"
 
 msgid "mime_deb"
-msgstr "Debian-ohjelmistopaketti (Debian-projekti julkaisi sen vuonna 1993, Debian/Ubuntu ja niiden johdannaisten vakioasennusmuoto. Hallitaan dpkg:llä, APT on sen pakettihallinnan etupää, yksi Linux-ekosysteemin kypsimmistä pakettimuodoista, edelleen pääasiallinen Debian-perheessä tänä päivänä)"
+msgstr "DEB järjestelmäohjelmistopaketti (Debian-projektin vuonna 1993 vahvistama binaari- ja lähdekoodin pakkausmäärittely. Debianin, Ubuntun ja kaikkien niiden johdannaisten alemman tason asennusstandardina se perustuu dpkg:hen pakkausta ylläpidettäessä ja käyttää APT:tä tehokkaana pakettihallinnan etupäänä, ja se on Linux-ekosysteemin kypsin ohjelmistojakelun kulmakivi)"
 
 msgid "mime_rpm"
-msgstr "RPM-ohjelmistopaketti (Red Hat julkaisi sen vuonna 1997, vakioformaatti jakeluille kuten Red Hat/Fedora/CentOS/SUSE. RPM tarkoittaa 'Red Hat Package Manager', yhdessä DEB:n kanssa kaksi tärkeintä Linux-pakettimuotoa, edelleen pääasiallinen RHEL-perheessä tänä päivänä)"
+msgstr "RPM järjestelmäohjelmistopaketti (Red Hatin vuonna 1997 julkaisema Red Hat Package Manager -pakkausmäärittely. Yhdessä DEB-muodon kanssa ne muodostavat kaksi perinteisen Linux-pakettihallinnan pääsuuntausta. Ne sisältävät natiivisti transaktioihin perustuvan riippuvuustarkistuksen ja alemman tason ohjelmiston digitaalisen allekirjoituksen varmennuksen, ja ne ovat edelleen ehdoton valtavirran jakelustandardi Red Hatin ekosysteemin jakeluissa, kuten RHEL, Fedora ja CentOS)"
 
 msgid "mime_pacman"
-msgstr "Arch-ohjelmistopaketti (Arch Linux julkaisi sen vuonna 2002, .pkg.tar.zst-muoto, jota pacman-pakettihallinta käyttää. Arch Linuxin rolling release -jakelujen ydin, tunnettu yksinkertaisuudestaan ja KISS-periaatteestaan, AUR (Arch User Repository) on sen tunnusmerkki)"
+msgstr "Pacman arkisto-ohjelmistopaketti (Arch Linuxin pacman-hallinnan vuonna 2002 vahvistama .pkg.tar.zst-pakkausmuoto. Arch Linuxin rullaavan päivitysmekanismin ytimenä se perustuu nopeaan Zstandard-korkean pakkauksen algoritmiin, ja yhdessä AUR-ekosysteemin (Arch User Software Repository) kanssa se on moderni pakettijakelustandardi, joka ilmentää minimalismia ja KISS-periaatetta (Keep It Simple, Stupid))"
 
 msgid "mime_exe"
-msgstr "EXE-suoritettava tiedosto (Windows-suoritettava ohjelmamuoto, lyhenne sanoista 'Executable'. Windows-käyttöjärjestelmän natiivi suoritettava muoto, sisältää PE-rakenteen. Kehittyi MS-DOS-ajan MZ-muodosta, Windows NT esitteli PE-muodon (Portable Executable) vuonna 1993 ja sitä käytetään edelleen. Ohjelmiston asennuspaketit, sovellukset, järjestelmätyökalut käyttävät tätä muotoa. Kaksoisklikkaa suorittaaksesi, maailman laajimmin käytetty suoritettava muoto)"
+msgstr "EXE natiivi suoritettava tiedosto (Windows-alustan Portable Executable (PE) -binaariohjelmamuoto. Sen tekninen sukujuuret juontavat MS-DOS-ajan MZ-otsikkorakenteeseen, ja vuodesta 1993 Windows NT alkaen se vakiintui täysin PE-rakennemäärittelyksi. Se on maailman laajimmin käytetty suoritusstandardi konekoodiohjeille, staattisille resurssiosioille ja järjestelmän ytimen käynnistykselle)"
 
 msgid "mime_dll"
-msgstr "DLL-dynaamisesti linkitetty kirjasto (Microsoft esitteli sen vuonna 1993, Dynamic Link Library. Windowsin jaettu koodikirjasto, ohjelma lataa sen dynaamisesti suorituksen aikana, säästää muistia ja levytilaa. Järjestelmäkomponentit, sovelluslaajennukset, laiteajurit käyttävät DLL-muotoa. Windows API:n tärkein toteutustapa, 'DLL-helvetti'-ongelma lieventyi .NET-aikakaudella)"
+msgstr "DLL dynaaminen linkityskirjasto (Windows-alustan Dynamic Link Library -jaetun koodikirjaston määrittely. Dynaamisen latauksen ja symbolien uudelleensijoituksen kautta suorituksen aikana se säästää merkittävästi fyysistä muistia ja levytilaa. Windows-API:n keskeisenä toteutusmuotona varhainen 'DLL-helvetti' ongelma ratkaistiin nykyaikana SxS-rinnakkaiseristysmekanismilla)"
 
 msgid "mime_com"
-msgstr "COM-suoritettava tiedosto (suoritettava muoto MS-DOS-ajalta, lyhenne sanoista 'Command'. Erittäin yksinkertainen tiedostorakenne, 64KB-rajoitus, päämuoto ennen Windows 3.x:ää, vanhentunut. Nykyaikaiset Windowsit käyttävät EXE-muotoa, COM-päätettä käytetään edelleen joillekin komponenttitiedostoille)"
+msgstr "COM klassinen suoritettava tiedosto (MS-DOS-ajan vanhin muistikuva (Command) -suoritusmuoto. Se käyttää rakenteetonta puhdasta koodisegmenttisuunnittelua, ja se on rajoitettu 64 KB:n fyysisen muistin osoitussegmenttiin. Nykyään se on eläkkeellä historiallisena perintömuotona, mutta moderneissa Windows-arkkitehtuureissa se säilyttää rajoitetun yhteensopivuuden tiettynä komponenttirajapintana)"
 
 msgid "mime_aac"
 msgstr "AAC-ääni (MPEG-standardi vuodelta 1997, Advanced Audio Coding. MP3:n seuraaja, äänenlaatu parempi kuin MP3 samalla bittinopeudella, oletusäänimuoto YouTubelle, iTunesille, Nintendo Switchille)"

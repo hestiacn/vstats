@@ -450,8 +450,8 @@ msgstr "Host - Lehtede arv - Päringute arv - Lairiba - Viimase külastuse aeg -
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Viimase külastuse algusaeg] ja [Viimase külastuse viimane leht] salvestatakse ainult siis, kui seanss pole lõppenud"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Avalehel kuvatakse ainult esimest %s üksust, mida on kõige rohkem päritud. Täieliku nimekirja vaatamiseks vaadake üksikasjade lehte."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Esimesed %s üksust on sorteeritud tabamuste arvu järgi kahanevas järjekorras; ülejäänud üksuste järjekord on määratlemata."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Sisseloginud kasutaja - Lehtede arv - Päringute arv - Lairiba - Viimase külastuse aeg"
@@ -465,8 +465,8 @@ msgstr "Ussi ID - Päringute arv - Lairiba - Viimase külastuse aeg"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-post - Päringute arv - Lairiba - Viimase külastuse aeg"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Avalehel kuvatakse ainult esimest %s e-posti, mida on kõige rohkem päritud. Täieliku nimekirja vaatamiseks vaadake üksikasjade lehte."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Esimesed %s e-posti aadressid on sorteeritud tabamuste arvu järgi kahanevas järjekorras; ülejäänud aadresside järjekord on määratlemata."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Lehtede arv - Lairiba - Sisenemine - Väljumine"
@@ -675,6 +675,27 @@ msgstr "SiteDomaini parameeter pole teie config/domain failis määratletud või
 msgid "Please run as Administrator to set permissions"
 msgstr "Õiguste määramiseks käivitage administraatorina"
 
+msgid "This directory lacks read permission"
+msgstr "Sellel kataloogil puudub lugemisõigus"
+
+msgid "Please set read permission for directory"
+msgstr "Palun määrake kataloogile lugemisõigus"
+
+msgid "Missing required parameter in config file"
+msgstr "Konfiguratsioonifailist puudub nõutav parameeter"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Palun kontrollige, et 'DirData' on määratletud."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Brauseri aadressis olev domeeninimi näib puuduvat või mittetäielik"
+
+msgid "Please check the URL parameter"
+msgstr "Palun kontrollige URL-i parameetrit"
+
+msgid "Format description"
+msgstr "Vormingu kirjeldus"
+
 msgid "Please set execute permission"
 msgstr "Palun määrake täitmisõigus"
 
@@ -800,376 +821,379 @@ msgstr "Haaraja"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Tekstifail (1963. aasta ASCII standardimine, vormindamata tavatekst. Kogu lähtekoodi, konfiguratsiooni, logide alus. Unix kasutab LF-i, Windows CRLF-i reavahetuseks, endiselt kõige universaalsem andmevorming arvutites)"
+msgstr "TXT lihttekstifail (1963. aastal ASCII standarditud vormindamata lihttekst. Kogu lähtekoodi, konfiguratsioonifailide ja süsteemilogide aluskihina on selle platvormideülene reavahetuste juhtimisvoog (CRLF Windowsis, LF Unixis) tänaseni kõige universaalsem andmevahetusstandard arvutimaailmas)"
 
 msgid "mime_log"
-msgstr "Logifail (tekstifail, mis salvestab teavet süsteemi ja rakenduste töö kohta, mida kasutatakse sageli tõrkeotsinguks, jõudluse analüüsimiseks ja turbeauditiks. Standardsed vormingud hõlmavad Apache kombineeritud logi, Nginx juurdepääsulogi, syslog jne)"
+msgstr "LOG süsteemi töölogi (salvestab operatsioonisüsteemi, tuuma ja rakenduste taseme olekud lihttekstina. Hõlmab Nginx/Apache juurdepääsuloge (Combined Log) ja standardset syslogi spetsifikatsiooni, on peamiseks andmeallikaks veaotsingul, voogesituse jõudluse analüüsil ja turvaauditites)"
 
 msgid "mime_page"
-msgstr "HTML veebileht (Tim Berners-Lee leiutas World Wide Webi 1989. aastal, määratles kolm peamist tehnoloogiat HTML/HTTP/URL 1990. aastal, andis need tasuta ilma patenteerimata. HTML5-st sai ametlik W3C standard 2014. aastal, toetab kuvamist, multimeediat ja printimist. Turingi auhinna võitja 2016)"
+msgstr "HTML hüperteksti veebileht (loodud Tim Berners-Lee poolt 1989. aastal, veebi nurgakivi. Tasuta ligipääsetava universaalse hüperteksti märgistuskeelena sai HTML5 spetsifikatsioon 2014. aastal ametlikuks W3C standardiks, toetab natiivselt struktureeritud multimeediat, semantilist interaktsiooni ja dünaamilist lehekülje paigutust, pälvis Turingi auhinna 2016. aastal)"
 
 msgid "mime_khtml"
-msgstr "KHTML veebimootor (KDE 2.0 välja antud 1998. aastal, Konquerori brauseri renderdusmootor. Apple lõi 2001. aastal WebKiti, mis põhineb KHTML-il, ja Google lõi 2008. aastal WebKitist Blinki, millest sai Chrome'i, Edge'i, Safari jt brauserite südamik. KHTML on näide sellest, kuidas avatud lähtekoodiga kogukond pani aluse kaasaegsetele brauserimootoritele, mille tehnoloogiline pärand jätkub WebKiti/Blinki kaudu tänaseni)"
+msgstr "KHTML veebi mallimootor (1998. aasta KDE 2.0 brauseri renderdusmootori spetsifikatsioon. Avatud lähtekoodi alusena, mis pani aluse kaasaegsele veebirenderdusele, inspireeris selle tehniline pärand otseselt Apple WebKiti ja Google Blinki tuumasid ning jätkab tänaseni kaasaegsete dünaamiliste voogveebiarhitektuuride alusvooluna)"
 
 msgid "mime_script"
-msgstr "Dünaamiline skriptikeel (interpretaatorikeel, pole vaja kompileerida. Sisaldab ASP, JSP, CGI, ColdFusion, Tcl, VBScript jne, mida kasutati laialdaselt varases veebiarenduses, süsteemihalduses, ülesannete automatiseerimises. Kaasaegsed skriptikeeled nagu Python, Ruby, JavaScript on arenenud täisvirna arenduse põhitööriistadeks)"
+msgstr "SCRIPT interpreteeritav dünaamiline skript (üldine kategooria lähtekoodi voogudele, mida täidetakse rida-realt konkreetse käituskeskkonna või interpretaatori poolt ilma eelneva kompileerimiseta. Hõlmab ASP, JSP, CGI ja Tcl, mida kasutatakse laialdaselt serveripoolsetes üldliidestes, automatiseerimise protsessijuhtimises ja süsteemitasandi ülesannete sidumisel)"
 
 msgid "mime_js"
-msgstr "JavaScripti skript (Brendan Eich lõi selle 10 päevaga Netscapis 1995. aastal, brauseri algne programmeerimiskeel. ECMAScript standardiseeriti 1997. aastal, Node.js sündis 2009. aastal, muutes selle platvormideüleseks keeleks, npm on maailma suurim paketihaldur. GitHubi kõige populaarsem programmeerimiskeel aastaid)"
+msgstr "JavaScript skript (1995. aasta Netscape'i brauseri algne programmeerimiskeskkond. 1997. aastal kehtestati ECMAScripti tööstusstandard, 2009. aastal sündis Node.js käituskeskkond, mis murdis brauseri piirid ja lõi asünkroonse mitteblokeeriva täisvirna arhitektuuri, millega kaasneb maailma suurim npm tarkvarapakettide ökosüsteem)"
 
 msgid "mime_py"
-msgstr "Pythoni skript (Guido van Rossum lõi selle 1991. aastal, tuntud kohustusliku taandamise ja lihtsa süntaksi poolest. Seda kasutatakse laialdaselt veebiarenduses, andmeteaduses, tehisintellektis, halduse automatiseerimises. TIOBE aasta programmeerimiskeele auhinna mitmekordne võitja)"
+msgstr "Python skript (1991. aastal Guido van Rossumi loodud kõrgetasemeline interpreteeritav skriptikeel. Tänu kohustuslikule taandusele, mis tagab kadudeta loetavuse, ja mitme paradigmaga disainile on see kehtestatud tööstusstandardi keelena kaasaegse veebiarhitektuuri, täisvirna andmeteaduse, tehisintellekti (AI) mudelite treenimise ja pilvepõhise automatiseeritud toimimise jaoks)"
 
 msgid "mime_sh"
-msgstr "Shelli skript (Unix sündis 1971. aastal, käsurea keel. Kasutatakse süsteemihalduseks, ülesannete automatiseerimiseks, teenuste käivitamiseks, juurutamisskriptideks. Linuxi halduse jaoks vajalik oskus)"
+msgstr "Shell skript (1971. aasta Unixi ajastu standardne käskeinterpreteerija skript. Sisaldab tuumatasandi käske nagu Bash, Sh, Dash, mida täidetakse tavaliselt .sh laiendiga, on universaalne tuumatasandi sideaine protsesside juhtimiseks, installimisvaba keskkonna seadistamiseks ja automatiseeritud juurutamiseks kaasaegsetes Unixi-laadsetes operatsioonisüsteemides)"
 
 msgid "mime_rb"
-msgstr "Ruby skript (Yukihiro Matsumoto lõi selle 1995. aastal, keskendub arendaja õnnetundele. Ruby on Railsi raamistik oli konventsiooni eelistamise konfiguratsioonile paradigmade teerajaja, mõjutades kaasaegsete veebiraamistike kujundust)"
+msgstr "Ruby skript (1995. aastal Yukihiro Matsumoto loodud objektorienteeritud skriptikeel. Oma põhifilosoofiaga, mis keskendub äärmuslikule austusele arendaja kogemuse vastu, tegi selle Ruby on Railsi raamistik revolutsiooni kaasaegses kõrgetasemelises veebiarhitektuuris, kehtestades 'Konventsioon konfiguratsiooni ees (CoC)' paradigma)"
 
 msgid "mime_pl"
-msgstr "Perli skript (Larry Wall lõi selle 1987. aastal, tuntud oma pragmaatilisuse poolest, mida sageli nimetatakse 'Šveitsi armee noaks'. CPAN on kaasaegsete programmeerimiskeelte paketihaldurite eelkäija, millel on sügav mõju tekstitöötluse, süsteemihalduse ja CGI valdkonnas)"
+msgstr "Perl skript (1987. aastal Larry Walli loodud pragmaatiline skriptikeel. Kaasaegsete paketihaldurite (CPAN) pioneerina tuntud kui tekstitöötluse 'Šveitsi armee nuga'. Kaasaegses CGI-režiimis toimib see väga madala füüsilise mälukuluga ja tõhusa regulaaravaldiste töötlusega logide analüüsimisel ülitöökindla aluskihina)"
 
 msgid "mime_php"
-msgstr "PHP dünaamiline veebileht (Rasmus Lerdorf lõi selle 1995. aastal, mis on spetsiaalselt loodud veebiarenduseks. Üle 70% maailma veebisaitidest kasutab seda, see käitab platvorme nagu WordPress, Facebook, Wikipedia. PHP 8 tutvustab JIT-kompileerimist, mis parandab oluliselt jõudlust)"
+msgstr "PHP dünaamiline veebileht (loodud Rasmus Lerdorfi poolt 1995. aastal, loodud spetsiaalselt veebiarenduseks. Põhitehnoloogiana, mis käivitab üle 70% maailma veebisaitidest, on see aluseks suuremahulistele tootmisrakendustele nagu WordPress ja Wikipedia. Alates PHP 8-st, JIT (just-in-time) käitusmootori kasutuselevõtuga, on see arenenud kõrge jõudlusega täisvirna serveriarhitektuuriks)"
 
 msgid "mime_image"
-msgstr "Pildifail"
+msgstr "IMAGE pildivara klassifikatsioon (hõlmab kadudega/kadudeta pakitud bitmapte, kaasaegset responsiivset veebigraafikat ja vektorgraafikat. Oluline näitaja veebisaidi visuaalse ressursikoormuse, kliendipoolse puhvri tabamuse määra ja meedia võrgulindiriba tarbimise hindamisel)"
 
 msgid "mime_document"
-msgstr "Dokumendifail"
+msgstr "DOCUMENT struktureeritud dokumendi klassifikatsioon (hõlmab lihtteksti, arvutustabeleid, ametlikke PDF-dokumente ja kergeid märgistuskeeli. Oluline näitaja serveripoolse staatilise teadmusbaasi jaotuse, ettevõtte varade allalaadimise ja tekstivoo läbilaskevõime statistika jaoks)"
 
 msgid "mime_package"
-msgstr "Tarkvarapakett"
+msgstr "PACKAGE kompileeritud toodete ja tarkvarapakettide klassifikatsioon (hõlmab operatsioonisüsteemi jaoks loodud käivitatavaid programme, käitusaja teegifailid (DLL/SO) ja rakenduste levitamise installipakette. Kasutatakse sageli tarkvara levitamise saitide väljamineva liikluse ja allalaadimise tippude hindamiseks)"
 
 msgid "mime_archive"
-msgstr "Gzip tihendatud fail (GNU projekt 1992, põhineb DEFLATE algoritmil. Seda kasutatakse veebis vastuste dünaamiliseks tihendamiseks, tihendusaste on tavaliselt 60-90%. Pärast 2015. aastat asendati see mõnes stsenaariumis Brotliga, kuid see on endiselt kõige laialdasemalt toetatud tihendusvorming serveripoolses osas)"
+msgstr "ARCHIVE arhiveeritud ja pakitud failid (üldine kategooria DEFLATE, LZMA jms põhialgoritmidele tuginevatele andmepakkimispakettidele. Võrgukihil hõlmab see lisaks traditsioonilisele pakettide levitamisele ka GNU projekti 1992. aasta Gzip dünaamilisi vastusevooge. Kuigi Brotli algoritmi võetakse tänapäevastes stsenaariumides järk-järgult kasutusele, on see klassifikatsioon endiselt oluline näitaja serveri lindiriba läbilaskevõime ja transpordikihi pakkimise efektiivsuse hindamiseks)"
 
 msgid "mime_audio"
-msgstr "Helifail"
+msgstr "AUDIO digitaalse helivoo klassifikatsioon (hõlmab pakitud heli, heliraamatuid ja voogedastuse heli konteinereid. Põhineb konkreetsetel heli kodeki standarditel, kasutatakse heli andmevoo läbilaskevõime jälgimiseks multimeediasaitidel, samaaegse voogedastuse lindiriba ja pikkade ühenduste käitumise jälgimiseks)"
 
 msgid "mime_video"
-msgstr "Videofail"
+msgstr "VIDEO digitaalse videovoo klassifikatsioon (hõlmab kõrglahutusega videokonteinereid, kaasaegset veebianimatsiooni ja voogedastuse fragmente. Oluline näitaja serveri lindiriba tipplimiidi ja sisu kohaletoimetamise võrgu (CDN) kiirenduse efektiivsuse hindamiseks kõrge võrgukoormuse tingimustes)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (välja töötatud Brendan Eichi poolt 1995. aastal)"
+msgstr "JScript skript (1996. aastal Microsofti poolt Internet Explorer 3.0 jaoks loodud pöördtehnoloogial põhinev eravalduses teostus. Klassikalise JavaScripti varajase majandaja konkurendina oli see Windows Script Host (WSH) ja varajaste ASP-i taustaprogrammide põhimootoriks)"
 
 msgid "mime_json"
-msgstr "JSON-andmed (Douglas Crockfordi pakutud 2001. aastal, kerge andmevahetuse vorming, de facto standard veebi API-de jaoks)"
+msgstr "JSON struktureeritud andmed (2001. aastal Douglas Crockfordi loodud kergekaaluline andmete serialiseerimise vahetusvorming. Põhineb tekstipõhistel võtme-väärtuse paaridel ja massiivistruktuuridel, suure inimese loetavuse ja kadudeta voogparsimise omadustega, on de facto standard kaasaegsete veebi-API-de, mikroteenuste arhitektuuri ja suurte keelemudelitega suhtlemise jaoks)"
 
 msgid "mime_vbs"
-msgstr "VBScript (välja töötatud Microsofti poolt 1996. aastal, Windowsi skriptimise keel, mida kasutati ASP veebilehtede ja Windowsi haldusskriptide jaoks. PowerShell'i ja JavaScripti populaarsuse kasvuga on see järk-järgult kasutusest kõrvaldatud)"
+msgstr "VBScript skript (Microsofti poolt 1996. aastal IE 3.0-ga välja antud skriptikeele variant. Oli varajaste ASP-i dünaamiliste veebisaitide ja Windowsi süsteemihalduse põhiliikumapanevaks jõuks, kuid on nüüd ametlikult kasutusest kõrvaldatud ja eemaldatud uusimatest Windows 11 tuumadest, kuuludes ajaloolise pärandtehnoloogia hulka)"
 
 msgid "mime_conf"
-msgstr "Konfiguratsioonifail (salvestab tarkvara konfiguratsiooni tekstivormingus, tavalised vormingud: INI, JSON, YAML, TOML, XML. Linuxi süsteemi konfiguratsioonid on enamasti /etc kataloogis)"
+msgstr "CONF süsteemi konfiguratsioonifail (üldine kategooria andmefailidele, mis salvestavad tarkvara käitusaja keskkonna parameetreid lihtteksti kujul. Hõlmab INI ja kaasaegseid YAMLi, TOMLi ja JSONi spetsifikatsioone. Linuxi süsteemides asuvad enamasti /etc kataloogis, on süsteemitasandi käitusoleku häälestamise põhiline sõltuvus)"
 
 msgid "mime_css"
-msgstr "CSS-i stiilileht (W3C esimene ametlik standard CSS1 avaldati 1996. aasta detsembris, CSS2 lisas positsioneerimise ja meediatüübid 1998. aastal, alates 2011. aastast tutvustati CSS3 moodulipõhiselt ümarate nurkade, animatsioonide, flexboxi, ruudustiku paigutuse ja reageeriva disainiga. Koos HTML-i ja JavaScriptiga moodustavad need kolm peamist esiosa tehnoloogiat, kõik kaasaegsed brauserid (Chrome, Firefox, Safari, Edge) toetavad seda natiivselt, ainus standard veebistiilide määratlemiseks)"
+msgstr "CSS kaskaadlaadistik (1996. aasta W3C standard, koos HTML/JS-iga üks kolmest esiosa arenduse põhitehnoloogiast. Alates CSS2 positsioneerimisest kuni CSS3 modulaarse arenguni toetab see natiivselt paindlikke kaste (Flexbox), võrgustikku (Grid) ja meediapäringutega responsiivset disaini, olles kaasaegsetes brauserites veebilehtede esituse lahtisidumise domineeriv standard)"
 
 msgid "mime_xsl"
-msgstr "XSL-i stiilileht (W3C standard 1999, XML-dokumentide teisendamise keel, saab XML-i teisendada HTML/PDF/tekstiks. Pärast JSON-i populaarsust on kasutamine vähenenud)"
+msgstr "XSL laadistik (1999. aasta W3C standard, sisaldab XSLT teisendus- ja XPathi aadressikeelt, struktureeritud XML-andmete renderdamiseks HTML-i, PDF-i või lihttekstina. Kaasaegses arenduses on selle ökosüsteem suures osas asendatud kergemate mallimootorite ja JSON-andmevorminguga)"
 
 msgid "mime_runtime"
-msgstr "Käivitatav fail (operatsioonisüsteemi käivitatav vorming nagu EXE, ELF, Mach-O, sisaldab masinkoodi ja laadimise teavet)"
+msgstr "käivitatav fail (EXE, ELF, Mach-O jms operatsioonisüsteemi põhised käivitatavad vormingud, mis sisaldavad kompileeritud madala taseme masinkoodi, sisenemispunkti ja süsteemi laadimise teavet)"
 
 msgid "mime_library"
-msgstr "Teegi fail (DLL, SO, dylib jne dünaamilised lingiteegid, jagatud kood, mis laaditakse programmi käivitamisel)"
+msgstr "teegi fail (DLL, SO, dylib jms dünaamilised või staatilised lingiteegid, mis sisaldavad jagatud sümboleid ja ümberpaigutuskoodi, mida teised programmid saavad kutsuda ja käitusajal laadida)"
 
 msgid "mime_swf"
-msgstr "Flashi animatsioon (välja töötatud Macromedia poolt 1996. aastal, hiljem Adobe'i omandis. Standard interaktiivse veebianimatsiooni jaoks, mis domineeris kunagi Interneti-animatsioonide ja -mängude üle. Puudused: sõltuvus pistikprogrammist, puudub tugi mobiilseadmetes, kõrge turvarisk. Adobe teatas selle lõpetamisest 2017. aastal, tugi lõpetati täielikult 2020. aastal, asendati HTML5/CSS3/JS-ga)"
+msgstr "Flash animatsioon (1996 Macromedia, omandas Adobe 2005. Interaktiivne veebianimatsiooni standard, domineeris kunagi interneti animatsioonide ja mängude üle. Puudused: sõltuvus lisamoodulitest, mobiilse toe puudumine, kõrge turvarisk. Adobe teatas selle kasutamise lõpetamisest 2017, tugi lõpetati täielikult 2020, asendati HTML5/CSS3/JS-iga)"
 
 msgid "mime_dtd"
-msgstr "DTD dokumenditüübi määratlus (XML-i spetsifikatsioon, määratleb XML-dokumendi struktuuri, mida kasutatakse XML-i kehtivuse kontrollimiseks)"
+msgstr "DTD dokumendi tüübi määratlus (välja antud XML 1.0-ga 1998. aastal, kasutatakse XML/HTML dokumendi struktuuri määratlemiseks ja selle seaduslikkuse kontrollimiseks. Kaasaegses arenduses on see suures osas asendatud paindlikumate lahendustega nagu XML Schema, RELAX NG jne)"
 
 msgid "mime_csv"
-msgstr "CSV-andmevorming (komaga eraldatud väärtused, universaalne vorming tabelandmete jaoks, standard Exceli ja andmebaaside importimiseks/eksportimiseks)"
+msgstr "CSV andmevorming (komaga eraldatud väärtused, universaalne lihttekstiga tabelivorming peaarvesti ajastust (IBM Fortrani kompilaator) 1972. aastast. Vormistati 2005. aastal RFC 4180 poolt kui platvormide- ja keelteülene kadudeta andmevahetuse standard. Kasutatakse laialdaselt tõhusaks importimiseks/eksportimiseks Excelis, relatsioonilistes andmebaasides ja andmeanalüüsis (Pandas))"
+
+msgid "mime_cur"
+msgstr "hiirekursori fail (.cur vorming, kasutatakse hiirekursori stiili kohandamiseks, nt sõrme kursor veebilehtedel või liivakella ootamise ikoon. On seotud tavalise .ico ikooniga, kuid sellel on täiendav 'kuum punkt' – tegelik klõpsamise koht. Ajalugu: võeti kasutusele Windows 3.1-ga (1992), oluline komponent graafilise kasutajaliidese hiirega juhtimise ajastu üleminekul käsurealt)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java rakenduse käivitaja, Java töölauarakenduste jagamise tehnoloogia 2000ndatel, praegu kasutusest kõrvaldatud)"
+msgstr "Java Web Start (2000. aastate Java töölauarakenduste levitamise tehnoloogia, käivitab kaug-Java programme .jnlp failide kaudu. Turvaprobleemide ja tänapäevaste levitamismeetodite tõttu on see nüüd suures osas kasutusest kõrvaldatud)"
 
 msgid "mime_lit"
-msgstr "Microsoft Readeri e-raamat (Microsoft tutvustas 2000. aastal, LIT-vorming, kasutusest kõrvaldatud)"
+msgstr "Microsoft Reader e-raamat (2000 Microsoft, LIT vorming. Kasutusest kõrvaldatud, saab nüüd teisendada EPUB- või PDF-vormingusse tööriistadega nagu Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vektorgraafika (W3C standard 1999, Microsoft reklaamis pikka aega oma VML-vormingut, IE-brauser toetas seda alles alates 2011. aastast, mis põhjustas populariseerimise viivituse. Pärast 2015. aastat, IE-i kõrvaldamisega ja kõrge eraldusvõimega ekraanide populariseerimisega, sai sellest ikoonide ja logode esimene valik)"
+msgstr "SVG vektorgraafika (1999. aasta W3C standard, XML-il põhinev 2D vektorpildi vorming. Skaalub kadudeta ja toetab teksti voogedastuse eeliseid. Kõik kaasaegsed brauserid toetavad seda natiivselt, kasutatakse laialdaselt kõrglahutusega veebi-ikoonide, logode ja vektoranimatsioonide jaoks, on kaasaegse veebigraafika keskne standard)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustratori vektorgraafika (tutvustatud 1987. aastal, tööstusharu standardne vektorgraafika vorming, esimene valik trükidisaini, logode, ikoonide jaoks)"
+msgstr "AI vektorgraafika (1987. aasta Adobe eravalduses vektorvorming. Tööstuse standardina paigutuse, trükidisaini ja kaubamärgi identiteedi jaoks toetab see mitmeid kihte ja täiustatud paigutuse vektorandmeid, olles professionaalse visuaalkunsti eelistatud kandja)"
 
 msgid "mime_phshop"
-msgstr "Photoshopi pilt (Adobe tutvustas 1990. aastal, Photoshopi lähtefaili PSD-vorming, pilditöötluse tööstusharu standard)"
+msgstr "PSD kihiga pilt (1990. aasta Adobe Photoshopiga välja antud eravalduses bitmap lähtevorming. Toetab mitmeid kihte, kanaleid, maske ja kadudeta redigeerimise andmeid, on kehtestatud ülemaailmse tööstuse standardina pilditöötluses ja digitaalsel maalimisel)"
 
 msgid "mime_ttf"
-msgstr "TrueType font (Apple ja Microsoft ühisarendus 1989. aastal, vektorfondi vorming, ühtlane kuvamine ekraanil ja prindis, operatsioonisüsteemide vaikefondi vorming)"
+msgstr "TrueType font (1989. aastal Apple'i ja Microsofti poolt ühiselt välja töötatud digitaalne kontuurfondi vorming. Põhineb ruutkeskmistel Bézier' kõveratel, tagades absoluutse piksli vastavuse ekraanil kuvamise ja prindiväljundi vahel, on kaasaegsete töölaua operatsioonisüsteemide vaikimisi põhifondi vorming)"
 
 msgid "mime_fon"
-msgstr "WOFF2 veebifont (W3C soovitus 2014, kasutab Brotli tihendusalgoritmi, suurust on vähendatud umbes 30% võrreldes vanema WOFF-iga, üle 50% võrreldes TTF/OTF-iga. Seda toetavad praegu kõik kaasaegsed brauserid, see on parim valik veebifontide jaoks tänapäeval, mida toetab üle 98% brauseritest)"
+msgstr "FON bitmap font (1980. aastate Microsofti varajane süsteemitasandi täppmaatriksfondi vorming. Ei toeta kadudeta proportsionaalset skaleerimist, kasutatakse tavaliselt ainult pikslipõhiseks tekstirenderdamiseks pärandsüsteemides või varajastes manussüsteemide komponentides)"
 
 msgid "mime_pdf"
-msgstr "PDF-dokument (Adobe töötas välja 1993. aastal, sai ISO rahvusvaheliseks standardiks 2008. aastal. Platvormideülene dokumendivorming, säilitab vormingu ühtluse, elektrooniliste dokumentide levitamise ülemaailmne standard)"
+msgstr "PDF elektrooniline dokument (Adobe poolt 1993. aastal välja töötatud, sai 2008. aastal ISO 32000 rahvusvaheliseks standardiks. Platvormideülene fikseeritud paigutusega dokumendivorming absoluutse paigutuse ja vormingu täpsusega, on ülemaailmne standard elektrooniliste dokumentide levitamiseks ja digitaalseks kirjastamiseks)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dünaamiline leht (Microsoft tutvustas 2002. aastal, dünaamiline veebilehe tehnoloogia Windowsi platvormile, osa .NET Frameworkist)"
+msgstr "ASP.NET dünaamiline leht (2002. aastal Microsofti poolt .NET arhitektuuriga välja antud serveripoolne dünaamiliste veebilehtede tehnoloogia. Töötab IIS-i mootoris ettevõtte tasandi Windowsi serveripoolsete dünaamiliste veebirakenduste ja hajutatud süsteemide loomiseks)"
 
 msgid "mime_mdb"
-msgstr "Accessi andmebaas (Microsoft Accessi andmebaasifail, tutvustatud 1992. aastal, töölaua andmebaasi lahendus Windowsis)"
+msgstr "MDB relatsiooniline andmebaas (1992. aastal Microsofti poolt Accessiga välja antud töölaua tasandi relatsioonilise andmebaasi salvestusvorming. Sisaldab Jet-andmebaasimootorit, olles relatsioonilise andmebaasi lahenduseks varajases isikliku arvuti ja väikeste ja keskmiste ettevõtete infohalduses)"
 
 msgid "mime_md"
-msgstr "Markdowni dokument (John Gruber lõi 2004. aastal, süntaksi kujundust mõjutasid reStructuredText ja Setext. Peamine disainifilosoofia on 'loetavus võrdub renderdamisega', algne Markdown.pl teostus kasutab Perli regulaaravaldiseid. Tuletatud spetsifikatsioonide hulka kuuluvad GFM (2013), CommonMark (2017), Pandoc Markdown jne. Toetab ökosüsteeme nagu GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, on saanud staatiliste saitide generaatorite ja arendajate dokumentatsiooni de facto standardvorminguks)"
+msgstr "Markdown dokument (2004. aastal John Gruberi loodud kerge märgistuskeel. Selle põhidisaini filosoofia 'loehtav on renderdatav' käivitab kaasaegsed tuletatud spetsifikatsioonid nagu GFM ja CommonMark. Kasutatakse laialdaselt vahetusstandardina tehnilises dokumentatsioonis, teadmusbaasides (Obsidian) ja kaasaegsetes staatiliste veebisaitide generaatorites)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reportsi aruandevorming (SAP ärianalüütika aruanded, ettevõtte aruannete standardvorming)"
+msgstr "Crystal Reports aruanne (SAP Business Intelligence (BI) platvormi professionaalne ettevõtte tasandi aruandefaili vorming. Omab mitme andmeallika ühenduse võimalust ja keerukat dünaamiliste diagrammide renderdamise võimekust, kasutatakse laialdaselt professionaalseks aruannete genereerimiseks rahvusvaheliste ettevõtete finants- ja andmeanalüüsi süsteemides)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice dokument (The Document Foundation töötas välja 2010. aastal, OpenOffice'i haru, ODF-i standardi teostus, peamine avatud lähtekoodiga kontoritarkvarapakett)"
+msgstr "LibreOffice dokument (2010. aastal The Document Foundationi poolt OpenOffice'ile tuginev avatud lähtekoodiga kontoritarkvara eravalduses vorming. Rakendab sügavuti W3C ODF (OpenDocument Format) rahvusvahelist standardit, olles kaasaegse avatud lähtekoodiga ökosüsteemi kontoritarkvara nurgakivi)"
 
 msgid "mime_encrypt"
-msgstr "Krüpteeritud fail (vaatamiseks on vaja dekrüptida, levinud laiendid: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT krüptitud fail (algne binaar- või tekstandmed, mida on töödeldud konkreetsete sümmeetriliste või asümmeetriliste krüptimisalgoritmidega. Sisaldab põhilisi tuletatud vorminguid nagu .enc, .pgp, .gpg jne, mida kasutatakse võrgukihil mitteavalike andmete konfidentsiaalsuse ja tervikluse kontrolli tagamiseks)"
 
 msgid "mime_gpx"
-msgstr "GPS-i raja andmed (GPS-i vahetusvorming, salvestab geograafilise asukoha teavet, universaalne vorming spordikellade ja navigatsiooniseadmete jaoks)"
+msgstr "GPX satelliidi jälgimise andmed (XML-il põhinev ülemaailmse positsioneerimissüsteemi vahetusvorming. Spetsialiseerunud geograafiliste koordinaatide, teepunktide, marsruutide ja ajalooliste jälgede kirjeldamisele, on see avatud andmestandard kaasaegsetele mobiilsetele spordiseadmetele, autonavigatsioonile ja geograafilistele infosüsteemidele (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Ketta kujutis (DMG, ISO, IMG jne, ketta/CD-kujutise failid, mida kasutatakse tarkvara levitamiseks või salvestusmeediumi varundamiseks)"
+msgstr "Disk Image kettakujutis (ISO, DMG, IMG jms füüsilise ketta või optilise kandja sektorite kaupa madala taseme kujutise fail. Kasutatakse madala taseme süsteemi juurutamisel, suuremahulise tarkvara turvalisel levitamisel ja salvestuskandjate füüsilisel tasemel täielikuks varundamiseks)"
 
 msgid "mime_vm"
-msgstr "Virtuaalmasina kujutis (VMDK, VDI, VHDX, OVA jne, virtuaalketta failid, vormingud virtualiseerimisplatvormidele nagu VMware, VirtualBox, Hyper-V)"
+msgstr "VM virtuaalmasina kujutis (VMDK, VDI, VHDX, OVA jms virtualiseeritud füüsilise ketta kujutised. VMware'i, VirtualBoxi ja Hyper-V platvormide alus, kasutatakse madala taseme riistvara emuleerimiseks, instantsi hetketõmmiste tegemiseks ja pilveinfrastruktuuri levitamiseks)"
 
 msgid "mime_torrent"
-msgstr "BitTorrenti torrentifail (Bram Cohen leiutas 2001. aastal, P2P indeksifail allalaadimiseks, sisaldab faili metaandmeid ja Trackeri teavet)"
+msgstr "BitTorrent torrentifail (2001. aastal Bram Coheni loodud P2P hajutatud allalaadimise indeks. Põhineb Bencode kodeeringul, salvestab algse faili kontrollimise metaandmed ja Trackeri serveri adresseerimise teabe, on detsentraliseeritud võrguvoo levitamise keskne kandja)"
 
 msgid "mime_gis"
-msgstr "GIS-i georuumilised andmed (georuumilised andmevormingud nagu Shapefile, GeoJSON, mida kasutatakse kaartide ja ruumianalüüsi jaoks)"
+msgstr "GIS georuumilised andmed (Shapefile ja GeoJSON-i keskne geograafilise teabesüsteemi andmestandard. Sisaldab mitmemõõtmelisi geomeetrilisi koordinaate, kihi topoloogiat ja atribuutandmeid, kasutatakse laialdaselt kõrglahutusega digitaalse kaardi renderdamisel, satelliitide kaugseirel ja ruumilise geomeetria analüüsil)"
 
 msgid "mime_ebook"
-msgstr "E-raamat (e-raamatu vormingud nagu EPUB, MOBI, AZW. EPUB on rahvusvaheline standard, MOBI/AZW on Amazon Kindle'i vormingud)"
+msgstr "EBOOK e-raamat (digitaalse kirjastamise vorming, mille keskmes on W3C EPUB rahvusvaheline avatud standard ja Amazon Kindle'i eravalduses MOBI/AZW arhitektuur. Toetab kohanduvat voogesituse paigutust, metaandmete kapseldamist ja DRM digitaalse õiguste haldust, on üldine kandja mobiilseks digitaalseks lugemiseks)"
 
 msgid "mime_avif"
-msgstr "AVIF-pilt (Alliance for Open Media tutvustas 2019. aastal, põhineb AV1 koodekil, tihendusaste on 50% kõrgem kui WebP-l, uus veebipildi standard)"
+msgstr "AVIF tõhus pilt (2019. aasta Avatud Meedia Liidu (AOMedia) järgmise põlvkonna ülimalt kõrglahutusega pildistandard. Põhineb AV1 video kodeerimise võtmekaadrite tehnoloogial, kompressioonimäär on 50% parem kui WebP-l ja toetab natiivselt suurt dünaamilist ulatust (HDR), on kaasaegse veebipiltide edastamise peamine standard)"
 
 msgid "mime_markdown"
-msgstr "Markdowni dokument (John Gruber kujundas 2004. aastal, kerge märgistuskeel, universaalne vorming GitHub README, tehnilise dokumentatsiooni, foorumite jaoks)"
+msgstr "Markdown kerge dokument (2004. aastal John Gruberi loodud tekstdokumendi märgistuskeel. Kasutab deklaratiivset lihtteksti disaini, selle süntaksi inspireeris reStructuredText, kasutatakse laialdaselt GitHubi projektides, inseneritaseme tehnilises dokumentatsioonis ja kaasaegsetes staatilise sisuhalduse ökosüsteemides)"
 
 msgid "mime_yaml"
-msgstr "YAML-konfiguratsioon (Clark Evans kujundas 2001. aastal, inimese loetav andmete serialiseerimise vorming, standardne konfiguratsioonifaili vorming Kubernetes, Ansible, Docker Compose jaoks)"
+msgstr "YAML serialiseeritud konfiguratsioon (2001. aastal Clark Evansi jt loodud inimloetav andmete serialiseerimise vorming. Põhineb hierarhilisel taandusel ja võtme-väärtuse vastendusel, on nüüdseks kehtestatud kui pilvepõhise infrastruktuuri konfiguratsiooni standard Kubernetes, Ansible automatiseerimise ja Docker Compose jaoks)"
 
 msgid "mime_toml"
-msgstr "TOML-konfiguratsioon (Tom Preston-Werner kujundas 2013. aastal, 'Tom's Obvious Minimal Language', konfiguratsioonifaili vorming kaasaegsete tööriistade jaoks nagu Rust/Cargo, Python/pip, Go)"
+msgstr "TOML semantiline konfiguratsioon (2013. aastal Tom Preston-Werneri loodud minimalistlik keel. Omades madala taseme disaini eeliseid nagu tugev tüüpimine, selge vastendus ja selge semantika, kasutatakse seda nüüd laialdaselt standardiseeritud konfiguratsioonifailina kaasaegsete Rust (Cargo), Python (pyproject.toml) ja Go tööriistakettide jaoks)"
 
 msgid "mime_vue"
-msgstr "Vue komponendi fail (Evan You loodud 2014. aastal, progressiivne JavaScripti raamistik. Ühefaililiste komponentide (SFC) kaudu ühendab see suurepäraselt HTML-i, CSS-i ja JS-i, suurendades oluliselt arenduse tõhusust. See on üks maailma populaarsemaid frontendi raamistikke. Samuti kasutatakse seda laialdaselt kaasaegsete staatiliste saidigeneraatorite (nt VitePress) tuumana interaktiivse tehnilise dokumentatsiooni ja blogide loomiseks.)"
+msgstr "Vue ühefaililine komponent (2014. aastal Evan You välja antud progressiivse veebiraamistiku eravalduses SFC vorming. Saavutab ühes failis murede eraldamise (HTML/CSS/JS) ja reageeriva oleku sidumise, olles sügavalt kaasaegsete interaktiivsete eesotsa veebirakenduste ja suuremahuliste staatiliste saitide mootorite liikumapanevaks jõuks)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly moodul (W3C standard 2017, kõrge jõudlusega vorming brauseris, C/C++/Rust/R saab sellesse kompileerida, jõudlus lähedane algkoodile)"
+msgstr "WebAssembly binaarmoodul (2017. aastal W3C poolt kehtestatud veebi kõrge jõudlusega madala taseme baitkoodi standard. Lubab tugevalt tüüpitud keeltel nagu C/C++/Rust kompileerida brauseri liivakasti keskkonda, pakkudes peaaegu pärisma riistvara täitmise efektiivsust, olles kaasaegse veebi servaandmetöötluse (edge computing) nurgakivi)"
 
 msgid "mime_jsx"
-msgstr "React JSX komponent (Facebook tutvustas JavaScript XML-i 2013. aastal, Reacti raamistiku komponendi süntaks, uuenduslik paradigma HTML-i kirjutamiseks JavaScripti sees)"
+msgstr "React JSX komponent (2013. aastal Facebooki poolt React raamistikuga välja antud JavaScript XML süntaksi laiendus. Toetab deklaratiivselt virtuaalsete DOM-i struktuuride ehitamist JavaScripti sees, võimaldades eesotsas komponentide arendamise paradigmat 'UI oleku funktsioonina')"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX komponent (Microsoft töötas välja 2012. aastal, TypeScript + JSX, standardne viis Reacti rakenduste arendamiseks tüübiohutusega)"
+msgstr "TypeScript TSX komponent (2012. aastal Microsofti TypeScripti tugeva tüübisüntaksi ja JSX-i ühendamine. Süstib staatilise kompileerimisaja tüübikontrolli ja liidese piirangud Reacti komponentide arendusse, olles koodistandardiks kaasaegsete suurte eesotsa süsteemide turvaliseks arendamiseks)"
 
 msgid "mime_heif"
-msgstr "HEIF-pilt (MPEG standard 2015, tõhus pildifaili vorming, mida kasutatakse laialdaselt Apple'i ökosüsteemis)"
+msgstr "HEIF tõhus pilt (2015. aastal MPEG organisatsiooni poolt kehtestatud tõhus pildivorming. Põhineb HEVC (H.265) videokodeerimise algoritmil, toetab mitut pildikaadrit, sügavuskaarte ja metaandmeid väga väikeses mahus, olles eravalduses salvestusstandardiks kaasaegsetele mobiilsetele operatsioonisüsteemidele ja nutiseadmetele)"
 
 msgid "mime_heic"
-msgstr "HEIC-pilt (Apple'i HEIF-i teostus, iPhone'i vaikimisi pildivorming, natiivne tugi iOS/macOS-is)"
+msgstr "HEIC tõhus pilt (Apple'i eravalduses bitmap-vorming, mis põhineb rahvusvahelisel HEIF standardil. Kaasaegsete iPhone'ide vaikimisi fotode salvestusvorminguna omab see iOS/macOS riistvarataseme kodeerimist/dekodeerimist ja operatsioonisüsteemi natiivset tuge, vähendades oluliselt aluspoolset salvestusruumi, säilitades samas kõrge pildikvaliteedi)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D mudel (GL-i edastusvorming, '3D-maailma JPEG', avaldas Khronos Group 2015. aastal, veebi 3D standardvorming)"
+msgstr "glTF 3D varamudel (2015. aastal Khronose Grupi poolt välja antud GL edastusvormingu standard. Kasutab JSON arhitektuuri kolmemõõtmeliste stseenide kirjeldamiseks, tuntud kui 'JPEG 3D maailma jaoks', on kergekaaluline tööstusstandard kaasaegseks WebGL/WebGPU ja virtuaalreaalsuse renderdamiseks)"
 
 msgid "mime_glb"
-msgstr "GLB kahend 3D mudel (GLTF-i kahendversioon, üks fail sisaldab kõiki ressursse, mida kasutatakse 3D-stseeni levitamiseks)"
+msgstr "GLB binaarne 3D mudel (glTF varamudeli kadudeta binaarne kapseldusversioon. Ühendab stseeni struktuuri, aluspoolse võrgu tipuandmed, materjalid ja tekstuurid ühte faili, mis on spetsiaalselt loodud tõhusaks edastamiseks ja voogesituse levitamiseks veebi 3D varadele platvormideüleselt)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY sõnastik (termini määratluse fail, mida kasutatakse terminite haldamiseks dokumendisüsteemides)"
+msgstr "GLOSSARY andmeleksika (spetsiaalne terminite määratluste fail dokumendihaldussüsteemidele ja struktureeritud korpustele. Sisaldab standardseid terminite määratlusi, mitmekeelseid vastendusi ja metaandmete vastendusi, kasutatakse kontseptuaalse järjepidevuse säilitamiseks automatiseeritud teksti analüüsis ja sisu avaldamise süsteemides)"
 
 msgid "mime_cbz"
-msgstr "CBZ koomiksiraamat (ZIP-ga tihendatud koomiksipildid, universaalne vorming koomiksite kogujatele)"
+msgstr "CBZ koomiksiraamat (ZIP-pakkimisel põhinev eravalduses koomiksipiltide arhiveerimisvorming. Sisaldab pidevat jada staatilisi bitmapi pilte, olles universaalne kerge konteineri standard digitaalsete koomiksite väljaandmiseks ja platvormideüleseks kohalikuks kogumiseks)"
 
 msgid "mime_cbr"
-msgstr "CBR koomiksiraamat (RAR-ga tihendatud koomiksipildid, universaalne vorming koomiksite kogujatele)"
+msgstr "CBR koomiksiraamat (RAR-pakkimisel põhinev eravalduses koomiksipiltide arhiveerimisvorming. Kasutab RAR algoritmi staatiliste bitmapi jadade kapseldamiseks, omades kõrget pakkimismäära ja laia ühilduvuse tuge digitaalsete koomiksite levitamise valdkonnas)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-raamat (FictionBook 2.0, vene e-raamatu vorming, XML-struktuur, laialdaselt toetatud avatud lähtekoodiga lugejate poolt)"
+msgstr "FB2 e-raamat (2000. aastate alguse FictionBook 2.0 e-raamatu standard. Kasutab puhast XML struktuuri raamatu omaduste ja teksti hierarhia kirjeldamiseks, omades laia tuge avatud lähtekoodiga e-raamatu ökosüsteemis ja vanemates digitaalsete väljaannete lugejates)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-raamat (Kobo spetsiaalne EPUB-vorming, optimeeritud vorming Kobo e-raamatute lugejate jaoks)"
+msgstr "KEPUB e-raamat (Kobo eravalduses täiustatud e-raamatu vorming, mis põhineb EPUB standardil. Optimeeritud Kobo riistvaraliste e-raamatu lugejate jaoks madalal tasemel, pakkudes tõhusamat lehekülje paigutust ja lugemisstatistika interaktsiooni)"
 
 msgid "mime_m4b"
-msgstr "M4B audioraamat (MPEG-4 heliraamatu vorming, toetab järjehoidjaid, iTunesi audioraamatu vorming)"
+msgstr "M4B heliraamat (MPEG-4 Part 14 (MP4) konteineri arhitektuuril põhinev heliraamatu vorming. Kasutab AAC kodeeringut, toetab natiivselt aluspoolset järjehoidjate positsioneerimist, katkestuskohalt jätkamist ja peatükkide manustamist, oli kunagi Apple iTunes ökosüsteemi standardvorming)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX vorming (Amazon tutvustas 2015. aastal, Kindle'i spetsiaalne e-raamatuvorming, toetab täiustatud tüpograafiat ja kiiret lehekülgede pööramist)"
+msgstr "Kindle KFX vorming (2015. aastal Amazoni poolt Kindle'iga välja antud eravalduses täiustatud digitaalse kirjastamise vorming. Toetab täiustatud tüpograafilisi ligatuure, kõrge dünaamikaga fondi renderdamist ja tuumatasandil lehekülgede voogesituse laadimist (Page Flip), on kaasaegse Kindle platvormi keskne standard)"
 
 msgid "mime_chm"
-msgstr "CHM abifail (Microsoft tutvustas 1997. aastal, kompileeritud HTML-i abivorming, standard Windowsi tarkvara abidokumentatsiooni jaoks)"
+msgstr "CHM kompileeritud abifail (1997. aastal Microsofti poolt välja antud kompileeritud HTML-i abiteabe süsteem. Pakib hüperteksti andmed ja aluspoolse indeksi ühte binaarkonteinerisse, on pikaajaline standardvorming Windowsi tarkvara kohalikuks võrguväliseks abidokumentatsiooniks)"
 
 msgid "mime_mht"
-msgstr "MHT veebiarhiiv (Microsoft tutvustas 1999. aastal, ühefaili veebilehe vorming, veebilehe salvestamise vorming IE-brauseris)"
+msgstr "MHT veebiarhiiv (1999. aastal Microsofti poolt välja antud MIME agregatsiooni hüperteksti vorming. Põhineb RFC 2557 standardil, pakib HTML-i lähtekoodi, CSS-i, JS-i ja manustatud pildid ühte teksti faili, kasutatakse vanemates brauserites veebilehtede võrguväliseks salvestamiseks)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, WAP-i standard 1999, mida kasutati vanade funktsioonidega telefonide veebilehtede jaoks, kasutusest kõrvaldatud)"
+msgstr "WML juhtmevaba märgistuskeel (1999. aasta WAP (Wireless Application Protocol) foorumi poolt kehtestatud mobiilne märgistusstandard. Põhineb XML-i spetsifikatsioonil, mis on spetsiaalselt loodud varajaste kitsaribaliste juhtmevabade mobiilivõrkude ja madala arvutusvõimega funktsioonikõnede jaoks, kuulub kaasaegses veebiökosüsteemis pensionile läinud pärandtehnoloogia hulka)"
 
 msgid "mime_xhtml"
-msgstr "XHTML veebileht (W3C standard 2000, HTML-i XML-versioon, rangem süntaks. W3C lõpetas hoolduse 2009. aastal, keskendus HTML5-le)"
+msgstr "XHTML hüperteksti veebileht (2000. aasta W3C standard, XML-i arhitektuuril põhinev range hüperteksti märgistuskeel. 2009. aastal peatas W3C selle tehnilise arenduse ja pöördus täielikult HTML5 spetsifikatsiooni poole, nüüd kasutatakse seda peamiselt semantiliseks veebilehtede renderdamiseks pärandsüsteemides)"
 
 msgid "mime_xml"
-msgstr "XML-dokument (W3C standard 1998, laiendatav märgistuskeel, põhivorming veebiteenuste, konfiguratsioonifailide, andmevahetuse jaoks)"
+msgstr "XML struktureeritud dokument (1998. aasta W3C standard laiendatav märgistuskeel. Omades isekirjeldavat sildi arhitektuuri, on see alusvorming võrguveebiteenuste (SOAP/REST), süsteemitaseme konfiguratsioonifailide (XSD) ja platvormideüleseks andmevahetuseks)"
 
 msgid "mime_sgml"
-msgstr "SGML-dokument (ISO standard 1986, HTML-i eelkäija, Standardne üldine märgistuskeel, XML ja HTML pärinevad SGML-ist)"
+msgstr "SGGL-i üldine märgistuskeel (1986. aasta ISO 8879 rahvusvaheline standard. Elektrooniliste dokumentide struktureeritud kirjelduse tööstuse pioneerina tulenevad nii XML kui ka varajased HTML-i spetsifikatsioonid sellest standardse metakeele alusel)"
 
 msgid "mime_apng"
-msgstr "APNG animatsioon (Mozilla töötas välja 2004. aastal, PNG laiendus animatsiooni jaoks, kaasaegne asendus GIF-ile, toetab tõelisi värve ja läbipaistvust)"
+msgstr "APNG dünaamiline graafika (2004. aastal Mozilla poolt arendatud PNG dünaamiline laiendus. Toetab 24-bitist täisvärvi ja 8-bitist alfa kanali poolläbipaistvust, olles kaasaegsetes veebistsenaariumides GIF-vormingu kõrglahutusega alternatiiv)"
 
 msgid "mime_bmp"
-msgstr "BMP-bitmap (Windowsi bitmapi vorming, natiivne tugi alates Windows 1.0-st. Tihendamata, suured failimahud, kuid lihtsa struktuuri ja täiendavate koodekite puudumise tõttu kasutavad Windows 11 ekraanipildi tööriist, joonistusprogramm, ikoonide ressursid EXE/MSI installipakettides, kursori failid ja mõned vanad draiverid seda endiselt. Sama pildikvaliteedi korral on fail umbes 3-10 korda suurem kui PNG, enamikus stsenaariumides on selle asendanud PNG/JPEG, kuid Windowsi ökosüsteem säilitab endiselt laia ühilduvuse)"
+msgstr "BMP põhine bitmap (Microsofti platvormi seadmest sõltumatu bitmapi vorming, mis on kehtestatud alates Windows 1.0 ajastust. Kasutab kadudeta pakkimata salvestust, on tavaliselt 3-10 korda mahukam kui PNG, kuid kuna see ei vaja kodeerimise/dekodeerimise üldkulusid, on see endiselt laialdaselt manustatud Windows 11 põhikomponentidesse, EXE/MSI ressursilõikudesse ja päranddraiverite graafika puhvritesse)"
 
 msgid "mime_cdr"
-msgstr "CDR vektorgraafika (CorelDRAW-i spetsiaalne vorming, Corel Corporation Kanadast, vektorgraafika disaini tarkvara)"
+msgstr "CDR vektorgraafika (Corel Corporationi eravalduses CorelDRAW professionaalne vektordisaini lähtevorming. Toetab mitmekihilist värvijuhtimist, keerukaid matemaatilisi kõvera sõlmi ja trükitasandi paigutuse andmeid, on spetsialiseerunud vorming professionaalseks graafikatrükkimiseks ja reklaamide kujundamise valdkonnas)"
 
 msgid "mime_gif"
-msgstr "GIF-pilt (CompuServe töötas välja 1987. aastal, 256-värviga animatsioonivorming. Puudused: piiratud värvide arv, krobeline pildikvaliteet, ei toeta läbipaistvust, suured failid, madal kaadrisagedus. Asendatud kaasaegsete animatsioonivormingutega nagu APNG, WebP)"
+msgstr "GIF indekseeritud värvi pilt (1987. aasta CompuServe'i 8-bitine indekseeritud värvi bitmapi vorming. Põhineb LZW algoritmil, piiratud 256 värvi taseme ja ühevärvilise läbipaistvusega, on kõrge kaadrisageduse korral mahukas, asendatakse järk-järgult APNG, WebP jms kaasaegsete tõhusate animatsiooni standarditega)"
 
 msgid "mime_ico"
-msgstr "ICO-ikoon (Windowsi ikoonifaili vorming, toetab mitut eraldusvõimet, veebilehe faviconi standardvorming)"
+msgstr "ICO süsteemiikoon (Windowsi põhine ikooniressursi kapseldamise vorming. Toetab mitme piksli eraldusvõime ja värvisügavusega pildivariantide segamist ühes konteineris, on ühtlasi kaasaegsete veebibrauserite saidi identifikaatori (Favicon) üldine levitamise standard)"
 
 msgid "mime_jpeg"
-msgstr "JPEG-pilt (ISO standard 1992, kadudega tihendusvorming fotode jaoks, de facto standard fotode jaoks Internetis)"
+msgstr "JPEG pakitud pilt (1992. aasta ISO 10918 rahvusvaheline standard kadudega pakkimise vorming. Põhineb diskreetse koosinusteisenduse (DCT) algoritmil, saavutades kõrge pakkimissuhte, säilitades samas suurepärase realistliku pildikvaliteedi, on ülemaailmse interneti staatiliste fotode absoluutne de facto standard)"
 
 msgid "mime_jpg"
-msgstr "JPEG-pilt (ISO standard 1992, kadudega tihendusvorming fotode jaoks, de facto standard fotode jaoks Internetis)"
+msgstr "JPEG pakitud pilt (1992. aasta ISO 10918 rahvusvaheline standard kadudega pakkimise vorming. Põhineb diskreetse koosinusteisenduse (DCT) algoritmil, saavutades kõrge pakkimissuhte, säilitades samas suurepärase realistliku pildikvaliteedi, on ülemaailmse interneti staatiliste fotode absoluutne de facto standard)"
 
 msgid "mime_png"
-msgstr "PNG-pilt (W3C soovitus 1996, toetab tõelisi värve ja läbipaistvust, staatiline asendus GIF-ile, kadudeta pildi standard Internetis)"
+msgstr "PNG kadudeta pilt (1996. aastal W3C poolt soovitatud kaasaskantava võrgugraafika standard. Kasutab kadudeta pakkimise algoritmi, toetab natiivselt 24-bitist täisvärvi ja 8-bitist alfa kanali läbipaistvust, olles klassikalise staatilise GIF-i kõrglahutusega alternatiiv, on internetis kadudeta piksligraafika absoluutne de facto standard)"
 
 msgid "mime_ps"
-msgstr "PostScripti lehekirjelduse fail (Adobe tutvustas 1985. aastal, lehekirjelduse keel, PDF-i eelkäija, mida kasutatakse trükkimiseks ja kirjastamiseks)"
+msgstr "PostScript lehe kirjelduse fail (1985. aastal Adobe'i poolt välja antud virnapõhine lehe kirjelduse keel. PDF-vormingu tehnoloogilise eelkäijana saavutab see madalal tasemel riistvarast sõltumatu teksti paigutuse ja ülitäpse vektorgraafika renderdamise, olles alusstandardiks professionaalse trüki- ja laserprintimise valdkondades)"
 
 msgid "mime_psb"
-msgstr "PSB suur dokument (Adobe Photoshopi vorming ülisuurte piltide jaoks, toetab pilte, mis on suuremad kui 2 GB või 30000 pikslit)"
+msgstr "PSB suur kihiline dokument (Adobe Photoshopi eravalduses ülisuure lähtefaili kapseldamise vorming. Murrab standardse PSD-vormingu 2 GB füüsilise mahu ja 30 000 piksli sisemise adresseerimise piirangud, mis on loodud spetsiaalselt ülisuurte, sügavalt kihiliste massiivsete digitaalsete kunstivarade salvestamiseks)"
 
 msgid "mime_psd"
-msgstr "PSD-pilt (Adobe Photoshopi lähtefail, toetab kihte, kanaleid, teid, pilditöötluse tööstusharu standardvorming)"
+msgstr "PSD kihilise kujunduse lähtefail (Adobe Photoshopi eravalduses kihilise pildi inseneri konteiner. Graafiliste piltide valdkonna tööstusliku standardkonteinerina kapseldab see natiivselt täieliku kihi renderduspuu, bitmapi kanalid, vektori lõikamise teed ja keerukad segamisrežiimid, toetades kadudeta täielikku andmete redigeerimist)"
 
 msgid "mime_webp"
-msgstr "WebP-pilt (Google töötas välja 2010. aastal, veebipildi vorming, toetab kadudega/kadudeta tihendust ja animatsiooni, tihendusaste on 25-35% kõrgem kui PNG-l ja 25% kõrgem kui JPEG-il)"
+msgstr "WebP tõhus pilt (2010. aastal Google'i poolt välja antud universaalne veebigraafika kodeerimise standard. Tuleneb VP8 video võtmekaadrite tehnoloogiast, täiesti ühilduv kadudega, kadudeta, poolläbipaistva ja dünaamilise renderdamisega, 25-35% väiksem kui PNG sama kvaliteedi juures, on kaasaegsete veebilehtede suure jõudlusega laadimise nurgakivi)"
 
 msgid "mime_woff"
-msgstr "WOFF veebifont (loodud 2009. aastal, W3C standard 2018. Põhineb TrueType/OpenType tihendusel, veebifontide laadimise optimeerimine, standardvorming ikoonifontide jaoks kaasaegsetel veebilehtedel)"
+msgstr "WOFF veebiglüüfide fail (2009. aastal loodud ja 2012. aastal W3C standardiks saanud veebi avatud fondi vorming. Selle olemus on standardse TTF/OTF fondistruktuuride kadudeta pakkimine voogedastuseks, vähendades dramaatiliselt võrgu lindiriba kulu, on kaasaegsete veebisaitide ikoonide ja pilvefontide universaalne vorming)"
 
 msgid "mime_7z"
-msgstr "7z tihendatud pakett (Igor Pavlov töötas välja 1999. aastal, 7-Zipi programmi spetsiaalne vorming. LZMA algoritm, kõrge tihendusaste, avatud lähtekoodiga ja tasuta. 7z-vorming on sama tihendusastme korral tavaliselt 30-50% väiksem kui ZIP, tavaline vorming avatud lähtekoodiga kogukonnas ja tarkvara levitamisel)"
+msgstr "7z pakitud pakett (1999. aastal Igor Pavlovi 7-Zip eravalduses vorming. Põhineb avatud lähtekoodiga LZMA/LZMA2 algoritmidel, omades ülikõrget pakkimissuhet. Samaväärsetes tingimustes on see tavaliselt 30-50% väiksem kui ZIP, on avatud lähtekoodiga kogukonna ja tarkvara levitamise universaalne kõrge pakkimissuhtega vorming)"
 
 msgid "mime_ace"
-msgstr "ACE tihendatud pakett (välja töötatud 1990ndatel, WinACE programmi vorming. Konkureeris kunagi RAR-iga, suhteliselt kõrge tihendusaste. Arendus lõpetati 2007. aastal, praegu on selle asendanud 7z/RAR, harva kasutatav)"
+msgstr "ACE pakitud pakett (1990. aastate WinACE eravalduses pakkimisvorming. Konkureeris kunagi RAR-vorminguga ja omas kõrget pakkimissuhet. Pärast 2007. aastat tehniline areng peatus, nüüd on see asendatud 7z ja RAR vormingutega, kuuludes pärandsüsteemide arhiveerimisvormingute hulka)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 tihendatud pakett (Julian Seward töötas välja 1996. aastal, plokkide sorteerimise tihendusalgoritm. Tihendusaste on 15-20% kõrgem kui GZIP-il, kuid kiirus on aeglasem. Levinud vorming Linuxi kerneli lähtekoodi, avatud lähtekoodiga tarkvarapakettide jaoks, laiend .bz2)"
+msgstr "BZIP2 pakitud pakett (1996. aastal Julian Sewardi poolt välja töötatud plokkide sorteerimise pakkimisvorming. Selle aluspoolse algoritmi pakkimissuhe on 15-20% kõrgem kui GZIP-il, kuid suurema arvutusliku üldkuluga. Kasutatakse sageli Linuxi tuuma lähtekoodi ja avatud lähtekoodiga tarkvara pakettide levitamisel, standardne faililaiend on .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB tihendatud pakett (Microsoft töötas välja 1995. aastal, Cabineti vorming. Installipaketi vorming Windowsi jaoks, mida kasutatakse draiverite ja süsteemifailide levitamiseks. Windows Installer (MSI) kasutab CAB-i sisemiselt failide salvestamiseks)"
+msgstr "CAB pakitud pakett (1995. aastal Microsofti poolt välja töötatud Cabinet arhiveerimisvorming. Windowsi süsteemi põhise installistandardina, mida kasutatakse draiverite ja tuumafailide levitamiseks, on see ka Windows Installeri (MSI) aluspoolne salvestuskonteiner)"
 
 msgid "mime_dmg"
-msgstr "DMG ketta kujutis (Apple tutvustas 1980ndatel, Disk Image vorming. macOS-i tarkvara levitamise standardvorming, topeltklõpsuga ühendub virtuaalkettana, lohistades rakenduse installimiseks. Toetab tihendamist ja krüptimist, Maci tarkvara allalaadimise peamine vorming)"
+msgstr "DMG kettakujutis (1980. aastatel Apple'i poolt arendatud kettakujutise vorming. macOS-i tarkvara levitamise standardkonteinerina toetab see virtuaalse failisüsteemina ühendamist, madala taseme pakkimist ja andmete krüptimist, on Maci ökosüsteemis rakenduste levitamise peamine vorming)"
 
 msgid "mime_emz"
-msgstr "EMZ tihendatud pilt (Windowsi tihendatud Enhanced Metafile, EMF-i tihendatud versioon. Vektorgraafika salvestamise vorming Office'i dokumentides, sisuliselt on see GZIP-ga tihendatud EMF-fail)"
+msgstr "EMZ pakitud pilt (Windowsi Enhanced Metafile EMF-i pakitud versioon. Olemuselt GZIP algoritmi kaudu pakitud binaarne vektorgraafika, mida kasutatakse laialdaselt manustatud vektorgraafika salvestamiseks Microsoft Office'i dokumendikogumis)"
 
 msgid "mime_gz"
-msgstr "GZIP tihendatud pakett (Jean-loup Gailly ja Mark Adler töötasid välja 1992. aastal, GNU projekt. Standardne tihendustööriist Unix/Linuxi süsteemides, tavaline vorming HTTP tihendamiseks edastamisel. Laiend .gz, sageli kasutatakse koos TAR-iga)"
+msgstr "GZIP pakitud pakett (1992. aasta GNU projekti Jean-loup Gailly ja Mark Adleri standardne voo pakkimise vorming. Unixi/Linuxi standardse pakkimistööriistana on see ka HTTP transpordikihi pakkimise (Gzip) keskne standard, mida kasutatakse sageli koos TAR-arhiiviga)"
 
 msgid "mime_jar"
-msgstr "JAR tihendatud pakett (Sun Microsystems tutvustas 1997. aastal, Java ARchive vorming. Sisuliselt on see ZIP-tihendatud pakett, mida kasutatakse Java klasside ja rakenduste pakkimiseks. Põhivorming Java ökosüsteemis nagu Maven, Gradle, Android kasutab samuti JAR-i)"
+msgstr "JAR pakitud pakett (1997. aastal Sun Microsystemsi Java ARchive arhiivivorming. Olemuselt ZIP-struktuuril põhinev pakkimiskonteiner Java klassiteekide ja metaandmete kapseldamiseks, on Maveni, Gradle ja varase Androidi ökosüsteemi keskne kompileerimistoode)"
 
 msgid "mime_lzma"
-msgstr "LZMA tihendatud pakett (Igor Pavlov töötas välja 1998. aastal, Lempel-Ziv-Markov ahela algoritm. 7z-vormingu peamine tihendusalgoritm, kõrge tihendusaste, kiire dekompressioon. Kasutatakse püsivara ja sisseehitatud süsteemide tarkvara levitamiseks)"
+msgstr "LZMA pakitud pakett (1998. aastal Igor Pavlovi Lempel-Ziv-Markov ahela pakkimisalgoritm. 7z-vormingu keskse mootorina omab see ülikõrget pakkimissuhet ja kiiret lahtipakkimist, mida kasutatakse laialdaselt riistvara püsivara ja manussüsteemide levitamiseks)"
 
 msgid "mime_rar"
-msgstr "RAR tihendatud pakett (Eugene Roshal töötas välja 1993. aastal, Roshal ARchive vorming. Kõrge tihendusaste, toetab köidete jagamist ja taastekirjet. WinRAR programmi vorming, tihendusaste on parem kui ZIP-il, kuid vajab tasulist tarkvara, avatud lähtekoodiga tööriistad nagu unrar saavad dekompressioonida)"
+msgstr "RAR pakitud pakett (1993. aastal Eugene Roshali WinRAR eravalduses arhiivivorming. Toetab köidete jagamist, füüsilisi taastekirjeid (ECC) ja tugevat krüptimist. Selle pakkimissuhe on parem kui standardse ZIP-i omal, omades laia ühilduvuse tuge isiklikus ja ärivaldkonnas)"
 
 msgid "mime_tar"
-msgstr "TAR arhiivipakett (tutvustati Unix V7-s 1979. aastal, Lindi arhiivi vorming. Lindi arhiivi vorming, ainult pakkimine ilma tihenduseta, sageli kasutatakse koos GZIP/BZIP2/XZ-ga. Linuxi tarkvarapaketi lähtekood, Dockeri pildi kihiline ladustamine kasutab TAR-vormingut)"
+msgstr "TAR arhiivipakett (1979. aasta Unix V7 ajastu lindiarhiivi (Tape ARchive) vorming. Teostab ainult failivoo pakkimist ilma andmete pakkimiseta, sageli kombineeritakse GZIP/BZIP2/XZ-iga, on Linuxi lähtekoodi ja Dockeri pildi kihilise salvestamise aluspoolne standard)"
 
 msgid "mime_tgz"
-msgstr "TGZ tihendatud pakett (TAR + GZIP vormingu kombinatsioon, laiend .tgz või .tar.gz. Unix/Linuxi tarkvarapakettide kõige universaalsem levitamise vorming, mida kasutatakse laialdaselt lähtekoodi ja binaarpakettide jaoks, 'paki lahti ja kasuta' kontseptsiooni esindaja)"
+msgstr "TGZ pakitud pakett (TAR-arhiivi ja GZIP-pakkimise voo kombineeritud vorming, faililaiend .tgz või .tar.gz. Unixi/Linuxi keskkondades kõige universaalsema tarkvarapaketi levitamise vorminguna kasutatakse seda laialdaselt lähtekoodi kompileerimise juurutamisel ja installimisvabade binaarpakettide levitamisel)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 tihendatud pakett (TAR + BZIP2 vormingu kombinatsioon, laiend .tbz2 või .tar.bz2. Tihendusaste on 15-20% kõrgem kui TGZ-il, sobib suurte failide levitamiseks, Linuxi kerneli lähtekood on seda vormingut pikka aega kasutanud)"
+msgstr "TBZ2 pakitud pakett (TAR-arhiivi ja BZIP2-pakkimise voo kombineeritud vorming, faililaiend .tbz2 või .tar.bz2. Võrreldes TGZ-iga võib see parandada pakkimissuhet veel 15-20%, sobib suurte failide edastamiseks, kasutati pikka aega Linuxi tuuma lähtekoodi levitamiseks)"
 
 msgid "mime_xz"
-msgstr "XZ tihendatud pakett (tutvustati 2009. aastal, põhineb LZMA2 algoritmil. Äärmiselt kõrge tihendusaste, 30-50% kõrgem kui GZIP-il, dekompressiooni kiirus suhteliselt kiire. Seda kasutatakse laialdaselt Linuxi kerneli, paketihaldurite (nagu Debiani .deb paketi sisemine struktuur), soovitatav vorming tänapäeva Linuxi ökosüsteemis)"
+msgstr "XZ pakitud pakett (2009. aastal välja antud järgmise põlvkonna kõrge pakkimissuhtega vorming. Põhineb LZMA2 algoritmil, andmete pakkimissuhe on 30-50% parem kui GZIP-il, säilitades samas kiire lahtipakkimise. Linuxi tuuma ja peamiste paketihaldurite (nt Debian .deb sees) poolt on see kehtestatud soovitatud levitamise standardina)"
 
 msgid "mime_z"
-msgstr "Z tihendatud pakett (Unixi compress käsuvorming aastast 1985, LZW algoritm. Varajane Unixi tihendusvorming, mille on asendanud GZIP. Laiend .Z, kaasaegsetes süsteemides harva kasutatav)"
+msgstr "Z pakitud pakett (1985. aasta Unixi compress käsuraamatu LZW pakkimisvorming. Varajaste Unixi süsteemide standardse pakkimisstandardina on see nüüd täielikult asendatud tõhusama GZIP-vorminguga, olles kaasaegses võrguliikluses haruldane ajalooline pärandvorming)"
 
 msgid "mime_zip"
-msgstr "ZIP tihendatud pakett (Phil Katz töötas välja 1989. aastal, PKZIP vorming. Windows toetab seda natiivselt, kõige universaalsem tihendusvorming Internetis. Toetab mitut faili, kataloogistruktuuri, saab valida tihendusalgoritmi. Java JAR, Android APK, Office'i dokumentide DOCX/XLSX põhinevad ZIP-vormingul)"
+msgstr "ZIP pakitud pakett (1989. aastal Phil Katzi PKZIP universaalne arhiivivorming. Kõigi peamiste operatsioonisüsteemide poolt natiivselt toetatud, on see internetis kõige laialdasemalt kasutatav konteineri standard. Kaasaegne Java JAR, Androidi APK ja Office dokumendid (OOXML) põhinevad kõik ZIP-struktuuril)"
 
 msgid "mime_zst"
-msgstr "Zstandard tihendatud pakett (Facebook töötas välja 2015. aastal, kujundas Yann Collet. Suure kiirusega tihendusalgoritm, tihendusaste LZMA lähedal, kiirus palju suurem kui GZIP-il. Linuxi kernel 5.9+ toetab seda, Arch Linux pacman, Debian APT võtavad seda järk-järgult kasutusele, uue põlvkonna tihendusstandard)"
+msgstr "Zstandard pakitud pakett (2015. aastal Facebooki Yann Colleti loodud järgmise põlvkonna voo pakkimise standard. Läheneb LZMA pakkimissuhtele, omades samal ajal tunduvalt suuremat läbilaskevõimet kui GZIP. Seda on sügavalt kasutusele võtnud Linuxi kernel (5.9+) ja Archi/Debiani paketihaldurid)"
 
 msgid "mime_lz4"
-msgstr "LZ4 tihendatud pakett (Yann Collet töötas välja 2011. aastal, ülikiire tihendusalgoritm. Tihenduskiirus on üle 10 korra suurem kui GZIP-il, sobib reaalajas tihendamise stsenaariumideks. Seda kasutatakse laialdaselt Linuxi kerneli, OpenZFS, Hadoop, kiiruse prioriteediga stsenaariumide esimene valik)"
+msgstr "LZ4 pakitud pakett (2011. aastal Yann Colleti loodud ülikiire voo pakkimise algoritm. Läbilaskevõime kiirus on üle 10 korra kiirem kui GZIP-il, äärmiselt madala CPU käitusaja üldkuluga. Kasutatakse laialdaselt Linuxi tuumas, OpenZFS failisüsteemis ja Hadoopi reaalajas andmevoo töötlemisel)"
 
 msgid "mime_lzo"
-msgstr "LZO tihendatud pakett (Markus Oberhumer töötas välja 1996. aastal, Lempel-Ziv-Oberhumer algoritm. Ülikiire dekompressioon, keskmine tihendusaste. Linuxi kernel Squashfs, OpenWrt püsivara kasutavad seda, sobib sisseehitatud süsteemide jaoks)"
+msgstr "LZO pakitud pakett (1996. aastal Markus Oberhumeri Lempel-Ziv-Oberhumeri algoritm. Keskendub ülikiirele lahtipakkimise jõudlusele. Laiaslt manustatud Linuxi tuuma Squashfsi kujutistesse, OpenWrt püsivarasse ja mitmesugustesse ressursipiirangutega manussüsteemidesse)"
 
 msgid "mime_msi"
-msgstr "MSI installipakett (Microsoft tutvustas 1999. aastal, Windows Installeri paketivorming. Windowsi rakenduste standardne installivorming, toetab tehingu tagasipööramist, komponentide haldamist, vaikset installimist. Ettevõtte tarkvara levitamise esimene valik, endiselt Windowsi tarkvara installimise peamine vorming tänapäeval)"
+msgstr "MSI süsteemi installipakett (1999. aastal Microsofti Windows Installeri andmete kapseldamise vorming. Windowsi rakenduse tasandi juurutamise standardina toetab see natiivselt madala taseme tehingu tagasipööramist, komponentide elutsükli haldust ja partiivaba vaikset installimist, on ettevõtte tarkvara tsentraliseeritud levitamise ja poliitikapõhise juurutamise keskne standard)"
 
 msgid "mime_pkg"
-msgstr "PKG installipakett (macOS-i rakenduse installivorming, põhineb Apple'i Installeri tehnoloogial. macOS-i tarkvara levitamise standardvorming, toetab komponentide valikut, installiskripte, desinstallimise funktsiooni. .pkg-faili saab installida topeltklõpsuga, Maci tarkvara tavaline levitamise viis väljaspool Mac App Store'i)"
+msgstr "PKG platvormideülene tarkvara installipakett. 1. FreeBSD tarkvarapakett: pkgng standard, faililaiend .pkg või .txz, põhineb TAR+XZ/Zstd pakkimisel, toetab sõltuvuste lahendamist ja allkirjade kontrolli; 2. macOS-i installipakett: põhineb Apple Installeri vormingul, toetab kohandatud komponente, installiskripte ja süsteemitaseme eemaldamist. Need on vastavalt BSD-serverite ja Maci süsteemi peamised levitamise kandjad."
 
 msgid "mime_apk"
-msgstr "APK Androidi rakenduse pakett (Google tutvustas 2008. aastal, Androidi süsteemi traditsiooniline installivorming. APK on sisuliselt ZIP-tihendatud pakett, sisaldab koodi, ressursse, manifestifaili. Alates 2021. aastast nõuab Google Play, et uued rakendused kasutaksid AAB-vormingut, kuid APK-d kasutatakse endiselt arendamiseks, silumiseks, levitamiseks kolmandate osapoolte poodide kaudu ja külgpaigalduseks)"
+msgstr "APK Androidi rakenduse pakett (2008. aastal Google'i poolt Androidiga välja antud traditsiooniline rakenduste installipakett. Aluspoolselt põhineb ZIP-arhiivi struktuuril, pakib kompileeritud Dalviki baitkoodi (DEX), metaandmete manifesti ja globaalsed ressursid, mida kasutatakse nüüd laialdaselt kohalikuks arenduse silumiseks, kolmanda osapoole levitamiseks ja seadmetesse külgpaigaldamiseks)"
 
 msgid "mime_ipa"
-msgstr "IPA Apple'i rakenduse pakett (iOS App Store Package, installivorming iOS/iPadOS rakenduste jaoks. Tutvustati 2008. aastal koos iPhone SDK-ga. Nõuab levitamist App Store'i kaudu või ettevõtte sertifikaadiga allkirjastamist. Sisaldab käivitatavat faili, ressursse, allkirjastatud teavet Info.plist-is)"
+msgstr "IPA Apple'i rakenduse pakett (2008. aastal iPhone SDK-ga välja antud iOS/iPadOS eksklusiivne pakkimiskonteiner. Olemuselt FairPlay DRM-i või ettevõtte sertifikaadiga allkirjastatud ZIP-arhiiv, mis sisaldab Mach-O binaarset käivitatavat faili, rakenduse ressursipuud ja Info.plisti metaandmete konfiguratsiooni)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS rakenduse pakett (HarmonyOS Ability Package, HarmonyOS rakenduse põhiüksus. Tutvustati koos HarmonyOS 2.0-ga 2020. aastal. Toetab entry ja feature tüüpe, levitamise vorming Huawei telefonide, tahvelarvutite, nutikellade ja muude HarmonyOS-seadmete jaoks)"
+msgstr "HAP HarmonyOS rakenduse pakett (2020. aastal HarmonyOS 2.0-ga välja antud HarmonyOS-i elastse juurutamise põhiüksus. Koosneb Entry põhimoodulist või Feature laiendatud funktsioonimoodulitest, on see mitme otspunkti (telefonid, tahvelarvutid, kantavad seadmed) seadmeülene levitamise vorming nutiseadmete levitamiseks)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS staatiline jagatud pakett (HarmonyOS Archive, staatiline jagatud teek HarmonyOS-i jaoks, mida saab jagada mitme HAP-i vahel, mida kasutatakse komponentide arendamiseks ja moodulite taaskasutamiseks)"
+msgstr "HAR HarmonyOS staatiline jagatud pakett (HarmonyOS-i eravalduses staatilise jagatud teegi arhiivifail. Kasutatakse ühiste komponentide, aluspoolse lähtekoodi ja kompileerimisaja sõltuvuste kapseldamiseks, mida mitmed HAP-moodulid staatiliselt jagamiseks lingivad, on HarmonyOS-i komponendipõhise arenduse ja mitme mooduli taaskasutuse alusvundament)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google tutvustas 2018. aastal, alates 2021. aastast nõuab Google Play, et uued rakendused kasutaksid seda vormingut. AAB on levitamise vorming, Google Play genereerib dünaamiliselt optimeeritud APK-d seadme konfiguratsiooni (protsessori arhitektuur, ekraani tihedus, keel) alusel, installipaketi keskmine suurus on vähenenud 35%. Arendajad laadivad üles AAB-i, kasutajad laadivad alla APK-d)"
+msgstr "AAB Androidi rakenduste kogum (2018. aastal Google'i poolt turule toodud ja 2021. aastal kehtestatud Google Play dünaamiline levitamise vorming. Puhta levitamise üksusena kohandab pilv dünaamiliselt ja kompileerib vastavalt sihtseadme CPU arhitektuurile, ekraani tihedusele ja keelele, et luua vastavalt vajadusele optimeeritud APK-d, vähendades edastuse lindiriba kulu keskmiselt 35%)"
 
 msgid "mime_xapk"
-msgstr "XAPK rakenduse pakett (kolmanda osapoole laiendatud Androidi rakenduse pakett, sisaldab APK + OBB andmefaili. Kasutatakse suurte mängude ja keerukate rakenduste jaoks, lahendab ühe APK-faili 100 MB piirangu. Levinud kolmandate osapoolte rakenduste poodides nagu APKPure, APKMirror, ei ole Google'i ametlik vorming)"
+msgstr "XAPK laiendatud rakenduse pakett (kolmanda osapoole Androidi kogukonna poolt kehtestatud mitteametlik rakenduse laiendamise standard. Ühendab standardse APK-faili suure OBB mänguandmete laienduspaketiga, ületades füüsiliselt Google Play 100 MB individuaalse faili suuruse piirangu, mida on laialdaselt näha mängude levitamise platvormidel)"
 
 msgid "mime_appx"
-msgstr "Windowsi rakenduse pakett (Microsoft tutvustas 2012. aastal, installivorming Windows 8/10/11 rakenduste jaoks. Toetab UWP-d ja töölauarakenduste teisendamist, levitatakse Microsoft Store'i kaudu. Microsoft tutvustas 2024. aastal MSIX-i järglase vorminguna, asendab järk-järgult APPX-i)"
+msgstr "APPX kaasaegne rakenduse pakett (2012. aastal Microsofti poolt Windows 8-ga välja antud UWP rakenduste juurutamise standard. Omab liivakastis isoleeritud täitmise ja kergekaalulise eemaldamise omadusi, olles Microsoft Store'i varajane domineeriv standard, kuid kaasaegses Windowsi ökosüsteemis on see jõudnud MSIX-i poole areneva elutsükli lõppfaasi)"
 
 msgid "mime_msix"
-msgstr "MSIX rakenduse pakett (Microsoft tutvustas 2018. aastal, uus Windowsi rakenduste pakkimise vorming. Ühendab APPX-i ja MSI-i eelised, toetab kõiki Windowsi rakenduste tüüpe, saab levitada Microsoft Store'i kaudu või külgpaigaldada, soovitatav vorming Windows 11 jaoks)"
+msgstr "MSIX järgmise põlvkonna rakenduse pakett (2018. aastal Microsofti poolt välja antud uus täielikult standardiseeritud Windowsi pakkimise spetsifikatsioon. Sulandab suurepäraselt APPX-i rakenduse turvaliivakasti omadused MSI-i ettevõtte varade haldamise eelistega, on täielikult ühilduv kõigi Win32 rakenduse tüüpidega, ja on Windows 11 soovitatud levitamise standard)"
 
 msgid "mime_appimage"
-msgstr "AppImage rakenduse pakett (tutvustati 2004. aastal, Linuxi installivaba rakenduse vorming. 'Üks rakendus = üks fail', töötab otse ilma installimata, toetab enamikku Linuxi distributsioone, tavaline viis arendajatele Linuxi tarkvara levitamiseks)"
+msgstr "AppImage isesisaldav rakenduse pakett (2004. aastal algatatud Linuxi ühekordse käivitatava arhiivi spetsifikatsioon. Kasutab 'üks rakendus on üks fail' isesisaldavat arhitektuuri, mis ühendatakse käitusajal FUSe mehhanismi kaudu otse kirjutuskaitstud virtuaalse failisüsteemina, saavutades null-sõltuvusega käivitamise erinevates Linuxi distributsioonides)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak rakenduse pakett (tutvustati 2015. aastal, Linuxi liivakastiga rakenduse vorming. Töötab distributsioonide vahel, isoleeritud süsteemi keskkonnast, töötasid välja Fedora, Red Hat, vaikevorming GNOME Software keskuses)"
+msgstr "Flatpak liivakasti rakenduse pakett (2015. aastal Red Hati ja GNOME'i juhitud Linuxi erinevate distributsioonide töölauarakenduste levitamise standard. Toetudes Linuxi tuuma nimeruumi ja Cgroups mehhanismidele, saavutab see äärmiselt range rakenduse taseme turvaliivakasti isolatsiooni, olles kaasaegsete avatud lähtekoodiga OS-i tarkvarakeskuste alus)"
 
 msgid "mime_snap"
-msgstr "Snap rakenduse pakett (Canonical tutvustas 2014. aastal, töötas välja Ubuntu emaettevõte, Linuxi universaalne rakenduse vorming. Automaatne uuendamine, liivakasti isolatsioon, toetab 40+ Linuxi distributsiooni, vaikevorming Ubuntu Software keskuses)"
+msgstr "Snap konteineriseeritud rakenduse pakett (2014. aastal Ubuntu emaettevõtte Canonicali Linuxi universaalne juurutamise standard. Kasutab rakenduse isesisaldavat SquashFS-kujutise ühendamise arhitektuuri, toetades automaatseid juurdekasvulisi uuendusi ja ranget AppArmori liivakasti isolatsiooni, ning on Ubuntu tarkvarakeskuse ökosüsteemi vaikimisi põhivorming)"
 
 msgid "mime_deb"
-msgstr "Debiani tarkvarapakett (Debiani projekt tutvustas 1993. aastal, standardne installivorming Debian/Ubuntu ja nende tuletiste jaoks. Seda haldab dpkg, APT on selle eesotsas olev paketihaldur, üks küpsemaid paketivorminguid Linuxi ökosüsteemis, endiselt Debiani perekonna peamine vorming)"
+msgstr "DEB süsteemi tarkvarapakett (1993. aastal Debiani projekti poolt kehtestatud binaar- ja lähtekoodi pakkimise spetsifikatsioon. Debiani, Ubuntu ja kõigi nende tuletiste aluspaigalduse standardina tugineb see dpkg-le pakendi lahtipakkimiseks ja hoolduseks, kasutades APT-d tõhusa paketihalduri esiosa, on Linuxi ökosüsteemi kõige küpsem tarkvara levitamise nurgakivi)"
 
 msgid "mime_rpm"
-msgstr "RPM tarkvarapakett (Red Hat tutvustas 1997. aastal, standardvorming Red Hat/Fedora/CentOS/SUSE ja teiste distributsioonide jaoks. RPM tähistab 'Red Hat Package Manager', koos DEB-iga on see üks kahest suurest paketivormingust Linuxis, endiselt RHEL-i perekonna peamine vorming)"
+msgstr "RPM süsteemi tarkvarapakett (1997. aastal Red Hati poolt välja antud Red Hat Package Manageri pakkimise spetsifikatsioon. Koos DEB-ga moodustavad nad kaks peamist traditsioonilise Linuxi paketihalduse leeri, omavad natiivselt tehingupõhist sõltuvuste kontrolli ja madala taseme tarkvara digitaalse allkirja kontrolli, olles endiselt absoluutselt domineeriv levitamise standard Red Hati ökosüsteemi distributsioonides nagu RHEL, Fedora ja CentOS)"
 
 msgid "mime_pacman"
-msgstr "Archi tarkvarapakett (Arch Linux tutvustas 2002. aastal, pacman paketihalduri poolt kasutatav .pkg.tar.zst vorming. Veereva väljalaskega Arch Linuxi tuum, tuntud oma lihtsuse ja KISS-põhimõtte poolest, AUR (Arch User Repository) on selle eripära)"
+msgstr "Pacman arhiivi tarkvarapakett (2002. aastal Arch Linuxi pacman halduri poolt kehtestatud .pkg.tar.zst pakkimisvorming. Archi pideva uuendamise mehhanismi keskmena, põhineb kiirel Zstandard kõrge pakkimise algoritmil, koos AUR (Arch User Software Repository) ökosüsteemiga, on see kaasaegne pakkide levitamise standard, mis kehastab minimalismi ja KISS põhimõtet)"
 
 msgid "mime_exe"
-msgstr "EXE-käivitatav fail (Windowsi käivitatav programmivorming, lühend sõnast 'Executable'. Windowsi operatsioonisüsteemi algne käivitatav vorming, sisaldab PE-struktuuri. Arenes välja MS-DOS-i MZ-vormingust, PE (Portable Executable) vorming tutvustati Windows NT-ga 1993. aastal ja seda kasutatakse siiani. Tarkvara installipaketid, rakendused, süsteemi tööriistad kasutavad seda vormingut. Kasutaja topeltklõpsab selle käivitamiseks, kõige laialdasemalt kasutatav käivitatav vorming maailmas)"
+msgstr "EXE põhine käivitatav fail (Windowsi platvormi teisaldatava käivitatava (PE) binaarse programmi vorming. Selle tehniline põlvnemine tuleneb MS-DOS-i ajastu MZ päisestruktuurist ning alates 1993. aasta Windows NT-st kehtestati see täielikult PE struktuuri spetsifikatsioonina, olles kõige laialdasemalt kasutatav täitmise standard maailmas masinkoodi juhiste, staatiliste ressursilõikude ja süsteemi tuuma käivitamise jaoks)"
 
 msgid "mime_dll"
-msgstr "DLL dünaamiline lingiteek (Microsoft tutvustas 1993. aastal, Dynamic Link Library. Windowsi jagatud koodi teek, mis laaditakse dünaamiliselt programmi käivitamisel, säästab mälu ja kettaruumi. Süsteemi komponendid, rakenduste pistikprogrammid, draiverid kasutavad DLL-vormingut. Windowsi API peamine rakendusviis, 'DLL Hell' probleemi on .NET-i ajastul leevendatud)"
+msgstr "DLL dünaamiline lingiteek (Windowsi platvormi dünaamilise lingiteegi jagatud kooditeegi spetsifikatsioon. Läbi dünaamilise laadimise ja sümbolite ümberpaigutamise käitusajal, säästab see oluliselt füüsilist mälu ja kettaruumi, kui Windowsi API põhiline teostusvorm. Varajane 'DLL Hell' probleem sai kaasaegsel ajal lahendatud SxS paralleelse isolatsiooni mehhanismiga)"
 
 msgid "mime_com"
-msgstr "COM-käivitatav fail (käivitatav vorming MS-DOS-i ajastust, lühend sõnast 'Command'. Lihtne failistruktuur, 64 KB piirang, peamine vorming enne Windows 3.x-i. Kasutusest kõrvaldatud, kaasaegne Windows kasutab EXE-vormingut, COM-laiendit kasutatakse endiselt mõne komponendifaili jaoks)"
+msgstr "COM klassikaline käivitatav fail (MS-DOS-i ajastu vanim mälukujutise (Command) täitmise vorming. Kasutab struktuurita puhast koodisegmendi disaini, piiratud 64KB füüsilise mälu adresseerimise segmendi piiranguga, on nüüd pensionile viidud ajaloolise pärandvorminguna, kuid kaasaegsetes Windowsi arhitektuurides säilitatakse see siiski piiratud ühilduvusena konkreetse komponendi liidesena)"
 
 msgid "mime_aac"
 msgstr "AAC-heli (MPEG standard 1997, Advanced Audio Coding. MP3 järeltulija, helikvaliteet on parem kui MP3-l sama bitikiiruse juures, vaikimisi helivorming YouTube'i, iTunes'i, Nintendo Switchi jaoks)"

@@ -444,8 +444,8 @@ msgstr "Hostiteľ - Stránky - Zásahy - Šírka pásma - Dátum poslednej náv�
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Dátum začiatku poslednej návštevy] a [Posledná stránka poslednej návštevy] sa ukladajú iba vtedy, ak relácia nie je ukončená"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Hlavná stránka zobrazuje iba prvých %s položiek podľa počtu zásahov, úplný zoznam je na stránke podrobností."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Prvých %s položiek je zoradených podľa počtu zásahov zostupne; poradie zvyšných položiek nie je definované."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Prihlásenie - Stránky - Zásahy - Šírka pásma - Posledná návšteva"
@@ -459,8 +459,8 @@ msgstr "ID červa - Zásahy - Šírka pásma - Posledná návšteva"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-mail - Zásahy - Šírka pásma - Posledná návšteva"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Hlavná stránka zobrazuje iba prvých %s e-mailov podľa počtu zásahov, úplný zoznam je na stránke podrobností."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Prvých %s e-mailových adries je zoradených podľa počtu zásahov zostupne; poradie zvyšných adries nie je definované."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Stránky - Šírka pásma - Vstup - Výstup"
@@ -669,6 +669,27 @@ msgstr "Parameter SiteDomain nie je definovaný vo vašom konfiguračnom súbore
 msgid "Please run as Administrator to set permissions"
 msgstr "Spustite ako správca na nastavenie oprávnení"
 
+msgid "This directory lacks read permission"
+msgstr "Tento adresár nemá povolenie na čítanie"
+
+msgid "Please set read permission for directory"
+msgstr "Nastavte povolenie na čítanie pre adresár"
+
+msgid "Missing required parameter in config file"
+msgstr "Chýba požadovaný parameter v konfiguračnom súbore"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Skontrolujte, či je definovaný parameter 'DirData'."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Názov domény v adrese prehliadača chýba alebo je neúplný"
+
+msgid "Please check the URL parameter"
+msgstr "Skontrolujte parameter URL"
+
+msgid "Format description"
+msgstr "Popis formátu"
+
 msgid "Please set execute permission"
 msgstr "Nastavte prosím oprávnenie na spustenie"
 
@@ -794,376 +815,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Textový súbor (štandardizácia ASCII v roku 1963, neformátovaný čistý text. Základ všetkého zdrojového kódu, konfigurácií a denníkov. Unix používa LF, Windows používa CRLF pre nový riadok, stále najuniverzálnejší formát údajov v počítačoch)"
+msgstr "TXT obyčajný textový súbor (neformátovaný obyčajný text štandardizovaný kódovaním ASCII v roku 1963. Ako základný kameň všetkých zdrojových kódov, konfiguračných súborov a systémových protokolov, jeho medziplatformové riadenie toku znakov nového riadku Windows (CRLF) a Unix (LF) je dodnes najuniverzálnejším štandardom výmeny údajov v počítačovom svete)"
 
 msgid "mime_log"
-msgstr "Súbor denníka (čistý textový súbor, ktorý zaznamenáva informácie o činnosti systému a aplikácií, často používaný na riešenie problémov, analýzu výkonu, bezpečnostný audit. Štandardné formáty ako Apache combined log, Nginx access log, syslog atď.)"
+msgstr "LOG systémový prevádzkový protokol (textový majetok zaznamenávajúci stav operačného systému, jadra a aplikácií počas behu. Zahŕňa prístupové protokoly Nginx/Apache (kombinovaný protokol) a štandardnú špecifikáciu syslog, je hlavným zdrojom údajov na riešenie problémov, analýzu výkonu toku a bezpečnostný audit)"
 
 msgid "mime_page"
-msgstr "HTML webová stránka (Tim Berners-Lee vynašiel WWW v roku 1989, definoval tri technológie HTML/HTTP/URL v roku 1990, bezplatne ich sprístupnil bez patentu. V roku 2014 sa HTML5 stal oficiálnym štandardom W3C, podporuje zobrazenie, multimédiá a tlač. Získal Turingovu cenu v roku 2016)"
+msgstr "HTML hypertextová webová stránka (základný kameň World Wide Web vytvorený Timom Bernersom-Leem v roku 1989. Ako bezplatne dostupný univerzálny hypertextový značkovací jazyk sa jeho špecifikácia HTML5 v roku 2014 stala oficiálnym štandardom W3C s natívnou podporou štruktúrovaných multimédií, sémantickej interakcie a tokového usporiadania stránok. V roku 2016 získal Turingovu cenu)"
 
 msgid "mime_khtml"
-msgstr "Motor webových stránok KHTML (KDE 2.0 bolo vydané v roku 1998, vykresľovací motor prehliadača Konqueror. V roku 2001 Apple vytvoril WebKit založený na KHTML, v roku 2008 Google vytvoril Blink z WebKitu, ktorý sa stal jadrom prehliadačov Chrome, Edge, Safari a ďalších. KHTML je príkladom toho, ako komunita otvoreného zdrojového kódu položila základy moderných prehliadačových motorov, jeho technologické dedičstvo pokračuje cez WebKit/Blink)"
+msgstr "KHTML motor webových šablón (špecifikácia vykresľovacieho motora prehliadača KDE 2.0 z roku 1998. Ako referenčná hodnota komunity s otvoreným zdrojovým kódom, ktorá položila základy moderného vykresľovania webu, jej technologické dedičstvo priamo inšpirovalo a vyvinulo sa do jadier Apple WebKit a Google Blink, ktoré dodnes pokračujú vo svojej základnej línii prostredníctvom modernej dynamickej webovej architektúry založenej na tokoch)"
 
 msgid "mime_script"
-msgstr "Dynamický skript (interpretovaný jazyk, nevyžaduje kompiláciu. Zahŕňa ASP, JSP, CGI, ColdFusion, Tcl, VBScript atď., široko používaný v ranom webovom vývoji, správe systému, automatizácii úloh. Moderné skriptovacie jazyky ako Python, Ruby, JavaScript sa vyvinuli na hlavné nástroje na vývoj full-stack aplikácií)"
+msgstr "SCRIPT interpretovaný dynamický skript (všeobecná klasifikácia tokov zdrojového kódu, ktoré nevyžadujú predbežnú kompiláciu a sú čítané a vykonávané riadok po riadku špecifickým runtime alebo interpretom. Zahŕňa ASP, JSP, CGI a Tcl atď., široko používaný na serverové spoločné bránové rozhrania, automatizované riadenie procesov a systémové lepenie úloh)"
 
 msgid "mime_js"
-msgstr "Skript JavaScript (Brendan Eich ho vytvoril za 10 dní v Netscape v roku 1995, natívny programovací jazyk prehliadačov. V roku 1997 bol ECMAScript štandardizovaný, v roku 2009 sa zrodil Node.js, ktorý z neho urobil full-stack jazyk, npm je najväčší správca balíkov na svete. Už roky najpopulárnejší programovací jazyk na GitHub-e)"
+msgstr "Skript JavaScript (natívne programovacie prostredie prehliadača Netscape z roku 1995. V roku 1997 bol stanovený priemyselný štandard ECMAScript, v roku 2009 sa zrodil runtime Node.js, ktorý prelomil hranice prehliadača a vytvoril asynchrónnu neblokujúcu architektúru plného zásobníka, sprevádzanú najväčším ekosystémom softvérových balíkov npm na svete)"
 
 msgid "mime_py"
-msgstr "Skript Python (vytvorený Guido van Rossumom v roku 1991, známy povinným odsadzovaním a čistou syntaxou. Široko používaný vo webovom vývoji, dátovej vede, umelej inteligencii, automatizovanej prevádzke. Viacnásobný držiteľ ceny TIOBE za programovací jazyk roka)"
+msgstr "Skript Python (vysokoúrovňový interpretovaný skriptovací jazyk vytvorený Guido van Rossumom v roku 1991. Vďaka povinnému odsadzovaniu pre nezábudnú čitateľnosť a viacparadigmovému nízkodrovňovému dizajnu je teraz etablovaný ako priemyselný štandardný jazyk pre modernú webovú architektúru, vedu o údajoch plného zásobníka, trénovanie modelov umelej inteligencie (AI) a cloudovú natívnu automatizovanú prevádzku)"
 
 msgid "mime_sh"
-msgstr "Shell skript (Unix sa narodil v roku 1971, príkazový skriptovací jazyk. Používa sa na správu systému, automatizáciu úloh, spúšťanie služieb, skripty nasadenia. Základná zručnosť pre správcov Linuxu)"
+msgstr "Skript Shell (štandardný skript interpreta príkazov z éry Unixu v roku 1971. Obsahuje špecifikácie príkazov na úrovni jadra ako Bash, Sh, Dash, zvyčajne sa spúšťa s príponou .sh, je univerzálnym lepidlom na úrovni jadra pre nízkodrovňové riadenie procesov, konfiguráciu prostredia bez inštalácie a automatizované nasadzovanie v moderných operačných systémoch podobných Unixu)"
 
 msgid "mime_rb"
-msgstr "Skript Ruby (vytvorený Yukihiro Matsumotom v roku 1995, zameriava sa na šťastie vývojára. Rámec Ruby on Rails otvoril paradigmu vývoja „konvencia namiesto konfigurácie“, ovplyvnil dizajn moderných webových rámcov)"
+msgstr "Skript Ruby (objektovo orientovaný skriptovací jazyk vytvorený Yukihiro Matsumotom v roku 1995. S extrémnym rešpektom k skúsenostiam vývojára ako základnou filozofiou dizajnu, jeho framework Ruby on Rails revolučne stanovil moderný vývojový paradigma webovej architektúry vysokej úrovne „Konvencia nad konfiguráciou (CoC)')"
 
 msgid "mime_pl"
-msgstr "Skript Perl (vytvorený Larrym Wallom v roku 1987, známy svojou pragmatickosťou, nazývaný „švajčiarsky nôž“. CPAN bol priekopníkom moderných správcov balíkov jazykov, mal hlboký vplyv v oblasti spracovania textu, správy systému a CGI)"
+msgstr "Skript Perl (pragmatický skriptovací jazyk vytvorený Larrym Wallom v roku 1987. Ako zakladateľ moderných správcov balíkov (CPAN) je známy ako „švajčiarsky armádny nôž“ na spracovanie textu. V modernom režime CGI stále slúži ako vysoko spoľahlivá základňa v oblasti analýzy protokolov vďaka veľmi nízkym nákladom na fyzickú pamäť a vysoko efektívnemu spracovaniu regulárnych výrazov)"
 
 msgid "mime_php"
-msgstr "Dynamická stránka PHP (vytvorená Rasmusom Lerdorfom v roku 1995, navrhnutá špeciálne pre webový vývoj. Viac ako 70% webových stránok na svete ju používa, poháňa platformy ako WordPress, Facebook, Wikipedia. PHP 8 zaviedlo kompiláciu JIT, výrazne zvyšuje výkon)"
+msgstr "PHP dynamická webová stránka (vytvorená Rasmusom Lerdorfom v roku 1995, špeciálne navrhnutá pre vývoj webu. Ako kľúčová technológia poháňajúca viac ako 70% webových stránok sveta, hlboko podporuje veľké produkčné aplikácie ako WordPress a Wikipedia. Od zavedenia runtime enginu kompilácie JIT (Just-In-Time) v PHP 8 dosiahol základnú evolučnú zmenu paradigmy smerom k vysoko výkonnej serverovej strane plného zásobníka)"
 
 msgid "mime_image"
-msgstr "Obrázkový súbor"
+msgstr "IMAGE klasifikácia obrazových aktív (zahŕňa všeobecnú klasifikáciu stratových/bezstratových komprimovaných bitmap, modernej responzívnej webovej grafiky a vektorovej grafiky. Je kľúčovým ukazovateľom na posúdenie nákladov na načítanie vizuálnych zdrojov stránky, miery zásahu vyrovnávacej pamäte na strane klienta a spotreby šírky pásma mediálnej siete)"
 
 msgid "mime_document"
-msgstr "Dokumentový súbor"
+msgstr "DOCUMENT klasifikácia štruktúrovaných dokumentov (zahŕňa všeobecnú klasifikáciu obyčajného textu, tabuliek, dokumentov s pevným formátom (PDF) a ľahkých značkovacích jazykov. Je kľúčovým ukazovateľom pre štatistiky distribúcie statických znalostných báz na strane servera, sťahovanie podnikových informačných aktív a priepustnosť toku textu)"
 
 msgid "mime_package"
-msgstr "Softvérový balík"
+msgstr "PACKAGE klasifikácia produktov kompilácie a softvérových balíkov (zahŕňa všeobecnú klasifikáciu natívnych spustiteľných programov operačného systému, runtime knižníc (DLL/SO) a inštalačných balíkov distribúcie aplikácií. Často sa používa ako kľúčový ukazovateľ na posúdenie odchádzajúcej prevádzky a špičiek sťahovania stránok distribúcie softvéru)"
 
 msgid "mime_archive"
-msgstr "Skombinovaný súbor Gzip (projekt GNU z roku 1992, založený na algoritme DEFLATE. Na webe sa používa na dynamickú kompresiu obsahu odpovedí, miera kompresie zvyčajne 60-90%. Po roku 2015 bol v niektorých scenároch nahradený Brotli, ale stále je najrozšírenejšie podporovaným kompresným formátom na strane servera)"
+msgstr "ARCHIVE archivačné a komprimované súbory (všeobecná klasifikácia balíkov kompresie údajov založených na základných algoritmoch ako DEFLATE, LZMA. V sieťovej vrstve okrem reprezentácie tradičnej distribúcie balíkov zahŕňa aj dynamický reakčný prúd Gzip projektu GNU z roku 1992. Hoci sa v moderných scenároch postupne zavádza algoritmus Brotli, táto klasifikácia zostáva kľúčovým ukazovateľom na posúdenie priepustnosti šírky pásma servera a zníženia tlaku v transportnej vrstve)"
 
 msgid "mime_audio"
-msgstr "Zvukový súbor"
+msgstr "AUDIO klasifikácia digitálneho zvukového toku (zahŕňa všeobecnú klasifikáciu komprimovaného zvuku, audiokníh a kontajnerov streamovaného zvuku. Na základe špecifických štandardov zvukových kodekov sa používa na monitorovanie priepustnosti zvukových údajových tokov multimediálnych stránok, súčasnej šírky pásma streamovania a výkonu dlhých spojení)"
 
 msgid "mime_video"
-msgstr "Video súbor"
+msgstr "VIDEO klasifikácia digitálneho video toku (zahŕňa všeobecnú klasifikáciu kontajnerov videa s vysokým rozlíšením, modernej webovej animácie a segmentov streamovaných médií. Je kľúčovým ukazovateľom na posúdenie hornej hranice šírky pásma servera a účinku zrýchlenia sietí na doručovanie obsahu (CDN) v prostredí s vysokým sieťovým zaťažením)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (vyvinutý Brendanom Eichom v roku 1995)"
+msgstr "Skript JScript (proprietárna implementácia reverzného inžinierstva spoločnosti Microsoft pre Internet Explorer 3.0 z roku 1996. Ako skorý konkurent klasického JavaScriptu bol hlavným motorom Windows Script Host (WSH) a skorého backendu ASP)"
 
 msgid "mime_json"
-msgstr "JSON dáta (navrhnuté Douglasom Crockfordom v roku 2001, ľahký formát výmeny dát, de facto štandard pre webové API)"
+msgstr "JSON štruktúrované údaje (ľahký formát výmeny serializácie údajov stanovený Douglasom Crockfordom v roku 2001. Založený na textových pároch kľúč-hodnota a architektúre polí, má extrémne vysokú čitateľnosť pre človeka a vlastnosť bezstratovej analýzy toku. Je de facto štandardom pre moderné webové API, architektúru mikroslužieb a interakciu s veľkými jazykovými modelmi)"
 
 msgid "mime_vbs"
-msgstr "VBScript (vyvinutý spoločnosťou Microsoft v roku 1996, Windows skriptovací jazyk, používaný pre ASP stránky a skripty správy Windows. S rozšírením PowerShell a JavaScriptu sa postupne vyraďuje z prevádzky)"
+msgstr "Skript VBScript (varianta skriptovacieho jazyka vydaná spoločnosťou Microsoft spolu s prehliadačom IE 3.0 v roku 1996. Bol kedysi hlavným ovládačom skorých dynamických webových stránok ASP a správy systému Windows, teraz je oficiálne ukončený a odstránený z najnovšieho jadra Windows 11 spoločnosťou Microsoft. Patrí k historickej dedičnej technológii)"
 
 msgid "mime_conf"
-msgstr "Konfiguračný súbor (textový formát na ukladanie konfigurácie softvéru, bežné formáty: INI, JSON, YAML, TOML, XML. Konfigurácie systému Linux sú väčšinou v adresári /etc)"
+msgstr "CONF systémový konfiguračný súbor (všeobecná klasifikácia údajových súborov, ktoré trvale ukladajú parametre prostredia runtime softvéru vo forme obyčajného textu. Zahŕňa špecifikácie INI a moderné YAML, TOML, JSON. V systémoch Linux sú sústredené najmä v adresári /etc. Je kľúčovou závislosťou pre optimalizáciu stavu runtime na systémovej úrovni)"
 
 msgid "mime_css"
-msgstr "CSS šablóna štýlov (W3C vydalo CSS1 ako prvý oficiálny štandard v decembri 1996, CSS2 pridal umiestňovanie a typy médií v roku 1998, od roku 2011 CSS3 modulovo zaviedlo zaoblené rohy, animácie, flexibilné boxy, mriežkový layout a responzívny dizajn. Spolu s HTML a JavaScriptom sú tri základné technológie front-endu, všetky moderné prehliadače (Chrome, Firefox, Safari, Edge) ho natívne podporujú, je jediným štandardom pre definovanie webových štýlov)"
+msgstr "CSS kaskádové štýly (štandard W3C z roku 1996, spolu s HTML/JS tvoriaci tri hlavné časti front-endu. Prešiel umiestňovaním CSS2 a modulárnym vývojom CSS3, natívne podporuje Flexbox, Grid a responzívny dizajn s mediálnymi dopytmi. Je absolútne dominantným štandardom na oddelenie prezentácie webových stránok v moderných prehliadačoch)"
 
 msgid "mime_xsl"
-msgstr "XSL šablóna štýlov (štandard W3C z roku 1999, jazyk na transformáciu dokumentov XML, môže konvertovať XML na HTML/PDF/text. Po rozšírení JSON sa jeho používanie znížilo)"
+msgstr "XSL štýl (štandard W3C z roku 1999, obsahuje transformačný jazyk XSLT a adresovací jazyk XPath, používa sa na vykreslenie štruktúrovaných údajov XML do HTML, PDF alebo obyčajného textu. V modernom vývoji bol jeho ekosystém do značnej miery nahradený ľahšími šablónovacími motormi a formátom údajov JSON)"
 
 msgid "mime_runtime"
-msgstr "Spustiteľný súbor (spustiteľné formáty operačného systému ako EXE, ELF, Mach-O, obsahuje strojový kód a informácie o načítaní)"
+msgstr "Spustiteľný súbor (natívne formáty spúšťania operačného systému ako EXE, ELF, Mach-O, obsahujúce skompilovaný nízkodrovňový strojový kód, vstupný bod a informácie o načítaní systému)"
 
 msgid "mime_library"
-msgstr "Knižničný súbor (DLL, SO, dylib a iné dynamicky linkované knižnice, kód načítaný počas spúšťania programu)"
+msgstr "Knižničný súbor (dynamické alebo statické linkovacie knižnice ako DLL, SO, dylib, obsahujúce zdieľané symboly a presúvací kód na volanie inými programami a načítanie počas behu)"
 
 msgid "mime_swf"
-msgstr "Flash animácia (vyvinutá spoločnosťou Macromedia v roku 1996, neskôr prešla na Adobe. Štandard pre interaktívne webové animácie, kedysi dominoval internetovým animáciám a hrám. Problémy: závislosť na plugine, žiadna podpora na mobiloch, vysoké bezpečnostné riziko. V roku 2017 Adobe oznámilo vyradenie, podpora bola úplne ukončená v roku 2020, nahradený HTML5/CSS3/JS)"
+msgstr "Flash animácia (vyvinutá spoločnosťou Macromedia v roku 1996, kúpená spoločnosťou Adobe v roku 2005. Interaktívny štandard webovej animácie, kedysi dominoval internetovým animáciám a hrám. Slabé stránky: závislosť na zásuvných moduloch, nepodpora mobilných zariadení, vysoké bezpečnostné riziko. Spoločnosť Adobe v roku 2017 oznámila ukončenie, v roku 2020 úplne zastavila podporu, nahradené HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD definícia typu dokumentu (špecifikácia XML, definuje štruktúru dokumentu XML, používa sa na overenie platnosti XML)"
+msgstr "DTD definícia typu dokumentu (vydané spolu s XML 1.0 v roku 1998, používa sa na definovanie štruktúry dokumentu XML/HTML a overenie platnosti. V modernom vývoji bol postupne nahradený flexibilnejšími riešeniami ako XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "Formát dát CSV (hodnoty oddelené čiarkami, univerzálny formát pre tabuľkové údaje, štandard pre import/export v Exceli a databázach)"
+msgstr "CSV formát údajov (hodnoty oddelené čiarkami, univerzálny formát tabuľky obyčajného textu z éry mainframeov z roku 1972 (kompilátor IBM Fortran). Oficiálne štandardizovaný RFC 4180 v roku 2005 ako bezstratový štandard výmeny údajov medzi platformami a jazykmi. Široko používaný na efektívny import/export do Excelu, relačných databáz, analýzy údajov (Pandas).)"
+
+msgid "mime_cur"
+msgstr "Súbor kurzora myši (formát .cur, používa sa na prispôsobenie štýlu myši, napríklad kurzor prsta na webových stránkach, ikona presýpacích hodín čakania v systéme. Je to „príbuzný“ bežnej ikony .ico, ale má dodatočné umiestnenie „horúceho bodu“ – miesto, kam myš skutočne klikne. História: predstavený s Windows 3.1 (1992), bol kľúčovou súčasťou prechodu grafického rozhrania z príkazového riadka do éry ovládania myšou)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (spúšťač java aplikácií, technológia distribúcie java desktopových aplikácií z roku 2000, teraz vyradená)"
+msgstr "Java Web Start (technológia distribúcie desktopových aplikácií Java z 2000-tych rokov, ktorá spúšťa vzdialené programy Java prostredníctvom súborov .jnlp. Kvôli bezpečnostným problémom a rozšíreniu moderných spôsobov distribúcie je dnes prakticky zaniknutá)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-kniha (vydaný spoločnosťou Microsoft v roku 2000, formát LIT, vyradený)"
+msgstr "Microsoft Reader elektronická kniha (vydaná spoločnosťou Microsoft v roku 2000, formát LIT. Zaniknutá, teraz ju možno konvertovať do EPUB alebo PDF pomocou nástrojov ako Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vektorová grafika (štandard W3C z roku 1999, pretože Microsoft dlho presadzoval svoj vlastný formát VML, prehliadač IE podporoval až do roku 2011, čo oneskorilo jeho rozšírenie. Po roku 2015, s vyradením IE a rozšírením HD obrazoviek, sa stal preferovaným formátom pre ikony a logá)"
+msgstr "SVG vektorová grafika (štandard W3C z roku 1999, dvojrozmerný formát vektorových obrázkov založený na architektúre XML. Má výhodu ľubovoľného zväčšovania bez straty ostrosti a prenosu textového toku. Všetky moderné prehliadače ho natívne podporujú. Široko používaný pre webové ikony s vysokým rozlíšením, logá a vykresľovanie vektorových animácií. Je základným štandardom modernej webovej grafiky)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektorová grafika (vydaná v roku 1987, priemyselný štandard formátu vektorovej grafiky, prvá voľba pre tlačový dizajn, logá a ikony)"
+msgstr "AI vektorová grafika (proprietárny formát vektorovej grafiky nezávisle vyvinutý spoločnosťou Adobe v roku 1987. Ako kľúčový priemyselný štandard pre typografiu, dizajn tlače a dizajn identity značky podporuje viacvrstvové a vysokoúrovňové vektorové údaje rozloženia. Je preferovaným nosičom pre profesionálne vizuálne umenie)"
 
 msgid "mime_phshop"
-msgstr "Obrázok Photoshop (vydaný spoločnosťou Adobe v roku 1990, zdrojový formát Photoshopu PSD, priemyselný štandard spracovania obrazu)"
+msgstr "PSD vrstvený obrázok (proprietárny formát zdrojového súboru rastrovaného obrázka vydaný spoločnosťou Adobe spolu s Photoshopom v roku 1990. Podporuje viacvrstvové vrstvenie, kanály, masky a údaje na úpravu bez straty. Bol stanovený ako globálny priemyselný štandard pre spracovanie obrazu a digitálne maľovanie)"
 
 msgid "mime_ttf"
-msgstr "TrueType písmo (vyvinuté spoločne spoločnosťami Apple a Microsoft v roku 1989, vektorový formát písma, konzistentné zobrazenie na obrazovke a v tlači, predvolený formát písma moderných operačných systémov)"
+msgstr "Písmo TrueType (digitálny formát obrysových písem vyvinutý spoločne spoločnosťami Apple a Microsoft v roku 1989. Založený na kvadratických Bézierových krivkách, dosahuje absolútnu zhodu pixelov medzi zobrazením na obrazovke a výstupom tlače. Je natívnym predvoleným formátom písma moderných desktopových operačných systémov)"
 
 msgid "mime_fon"
-msgstr "Webové písmo WOFF2 (odporúčanie W3C z roku 2014, používa kompresný algoritmus Brotli, v porovnaní so starším WOFF je veľkosť znížená asi o 30%, v porovnaní s TTF/OTF znížená o viac ako 50%, všetky moderné prehliadače ho podporujú, je preferovaným formátom pre moderné webové písma, podporovaný viac ako 98% prehliadačov)"
+msgstr "FON bitmapové písmo (skorý systémový formát bodového maticového písma Microsoft Windows z 80. rokov. Nepodporuje ľubovoľné bezstratové škálovanie proporcií. Zvyčajne sa používa s dedičnými systémami alebo skorými komponentmi vstavaných zariadení na obmedzené vykreslenie textu v pixeloch)"
 
 msgid "mime_pdf"
-msgstr "PDF dokument (vyvinutý spoločnosťou Adobe v roku 1993, v roku 2008 sa stal medzinárodným štandardom ISO. Formát dokumentu nezávislý na platforme, zachováva konzistentnosť formátovania, globálny štandard pre distribúciu elektronických dokumentov)"
+msgstr "PDF elektronický dokument (medziplatformový formát dokumentov s pevným rozložením vyvinutý spoločnosťou Adobe v roku 1993, ktorý sa v roku 2008 stal medzinárodným štandardom ISO 32000. Má absolútnu vernosť rozloženia a formátu. Je univerzálnym štandardom pre globálnu distribúciu elektronických úradných dokumentov a digitálne vydavateľstvo)"
 
 msgid "mime_dotnet"
-msgstr "Dynamická stránka ASP.NET (vydané spoločnosťou Microsoft v roku 2002, dynamická webová technológia pre platformu Windows, súčasť .NET Frameworku)"
+msgstr "ASP.NET dynamická stránka (serverová dynamická webová technológia vydaná spoločnosťou Microsoft spolu s architektúrou .NET v roku 2002. Beží na vykresľovacom engine IIS, používa sa na vytváranie podnikových dynamických webových aplikácií na strane servera Windows a distribuovaných systémov)"
 
 msgid "mime_mdb"
-msgstr "Databáza Access (súbor databázy Microsoft Access, vydaný v roku 1992, desktopové databázové riešenie pre Windows)"
+msgstr "MDB relačná databáza (formát ukladania relačnej databázy na úrovni pracovnej plochy vydaný spoločnosťou Microsoft spolu s Accessom v roku 1992. S vstavaným databázovým enginom Jet sa používal ako relačné databázové riešenie v skorom informačnom manažmente osobných počítačov a malých a stredných podnikov)"
 
 msgid "mime_md"
-msgstr "Markdown dokument (vytvorený Johnom Gruberom v roku 2004, dizajn syntaxe bol ovplyvnený reStructuredText a Setext. Základná filozofia návrhu je „čitateľnosť je vykreslenie“, pôvodná implementácia Markdown.pl je napísaná v Perle a vykonáva transformáciu textu založenú na regulárnych výrazoch. Odvodené špecifikácie zahŕňajú GFM (2013), CommonMark (2017), Pandoc Markdown atď. Poháňa ekosystémy ako GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, stal sa de facto štandardným formátom pre statické generátory webových stránok a dokumentáciu vývojárov)"
+msgstr "Dokument Markdown (ľahký značkovací jazyk nezávisle vytvorený Johnom Gruberom v roku 2004. Základnou filozofiou dizajnu je „čitateľné znamená vykresliteľné“, ktorá poháňa moderné odvodené štandardy ako GFM a CommonMark. Široko používaný ako kľúčový výmenný štandard pre technickú dokumentáciu, znalostné bázy (Obsidian) a moderné generátory statických webových stránok)"
 
 msgid "mime_crystal"
-msgstr "Formát správ Crystal Reports (SAP business intelligence správy, štandardný formát podnikových správ)"
+msgstr "Crystal Reports (profesionálny formát súboru zostáv na úrovni podniku platformy SAP Business Intelligence (BI). Má nízkodrovňové pripojenie k viacerým zdrojom údajov a zložité možnosti dynamického vykresľovania grafov, široko používaný na profesionálne generovanie správ vo finančných systémoch a systémoch analýzy údajov nadnárodných spoločností)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice dokument (vyvinutý The Document Foundation v roku 2010, vetva OpenOffice, implementácia štandardu ODF, hlavný open source kancelársky balík)"
+msgstr "Dokument LibreOffice (proprietárny formát kancelárskeho balíka s otvoreným zdrojovým kódom vytvorený organizáciou The Document Foundation v roku 2010 na základe vetvy OpenOffice. Hlboko implementuje medzinárodný štandard ODF (Open Document Format) W3C. Je kancelárskym základom modernej ekosystému s otvoreným zdrojovým kódom)"
 
 msgid "mime_encrypt"
-msgstr "Šifrovaný súbor (súbor, ktorý je potrebné dešifrovať na zobrazenie, bežné prípony: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT šifrovaný súbor (surové binárne alebo textové údaje spracované prostredníctvom špecifického symetrického alebo asymetrického šifrovacieho algoritmu. Zahŕňa hlavné odvodené formáty ako .enc, .pgp, .gpg. V sieťovej vrstve sa používa na zabezpečenie dôvernosti a overenie integrity neverejných údajov)"
 
 msgid "mime_gpx"
-msgstr "Dáta GPS trasy (formát výmeny GPS, zaznamenáva informácie o geografickej polohe, univerzálny formát pre športové hodinky a navigačné zariadenia)"
+msgstr "GPX satelitné trajektórie (formát výmeny globálneho polohovacieho systému založený na architektúre XML. Špeciálne používaný na opis geografických súradníc, smerových bodov, trás a historických trajektórií. Je spoločným otvoreným štandardom údajov pre moderné mobilné športové zariadenia, automobilovú navigáciu a geografické informačné systémy (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Obraz disku (DMG, ISO, IMG a ďalšie obrazové súbory optických/pevných diskov, používa sa na distribúciu softvéru alebo zálohovanie pamäťových médií)"
+msgstr "Disk Image obraz disku (zahŕňa bajt po byte obrazy sektorov nízkej úrovne fyzických diskov alebo optických médií ako ISO, DMG, IMG. Používa sa na nízkodrovňové nasadenie systému, bezpečnú distribúciu softvéru s veľkou kapacitou a úplnú fyzickú zálohu údajov na úrovni pamäťových médií)"
 
 msgid "mime_vm"
-msgstr "Obraz virtuálneho počítača (VMDK, VDI, VHDX, OVA a ďalšie súbory virtuálnych diskov, formáty virtualizačných platforiem ako VMware, VirtualBox, Hyper-V)"
+msgstr "VM obraz virtuálneho počítača (zahŕňa virtualizované obrazy fyzických diskov ako VMDK, VDI, VHDX, OVA. Ako základ platforiem VMware, VirtualBox a Hyper-V sa používa na nízkodrovňovú emuláciu hardvéru na systémovej úrovni, snímky inštancií a distribúciu cloudovej infraštruktúry)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent súbor torrent (vynájdený Bramom Cohenom v roku 2001, P2P indexový súbor na sťahovanie, obsahuje metadáta súboru a informácie o Trackeri)"
+msgstr "BitTorrent torrentový súbor (distribuovaný index sťahovania P2P peer-to-peer navrhnutý Bramom Cohenom v roku 2001. Založený na kódovaní Bencode, ukladá nízkoúrovňové kontrolné metadáta pôvodného súboru a informácie o adresovaní servera Tracker. Je hlavným nosičom decentralizovaného toku sietí)"
 
 msgid "mime_gis"
-msgstr "Dáta GIS (Shapefile, GeoJSON a ďalšie geopriestorové formáty dát, používané na mapy a priestorovú analýzu)"
+msgstr "GIS geopriestorové údaje (štandard údajov geografického informačného systému so Shapefile a GeoJSON ako jadrom. Zahŕňa viacrozmerné geometrické súradnice, topológiu vrstiev a atribútové údaje. Široko používaný na vykresľovanie digitálnych máp s vysokou presnosťou, satelitné diaľkové snímanie a priestorovú geometrickú analýzu)"
 
 msgid "mime_ebook"
-msgstr "E-kniha (EPUB, MOBI, AZW a ďalšie formáty e-kníh. EPUB je medzinárodný štandard, MOBI/AZW je formát Amazon Kindle)"
+msgstr "EBOOK elektronická kniha (digitálny publikačný formát s otvoreným medzinárodným štandardom EPUB W3C a proprietárnou architektúrou MOBI/AZW Amazon Kindle ako jadrom. Podporuje adaptívne tokové rozloženie, zapuzdrenie metadát a ochranu digitálnych práv DRM. Je univerzálnym nosičom digitálneho čítania na mobilných zariadeniach)"
 
 msgid "mime_avif"
-msgstr "Obrázok AVIF (vydaný Alianciou pre otvorené médiá v roku 2019, založený na kódovaní AV1, miera kompresie je o 50% lepšia ako WebP, štandard webových obrázkov novej generácie)"
+msgstr "AVIF efektívny obraz (štandard obrazu ultra-vysokého rozlíšenia novej generácie predstavený organizáciou Open Media Alliance (AOMedia) v roku 2019. Založený na technológii kľúčových snímok kódovania videa AV1, miera kompresie je o 50% lepšia ako WebP a natívne podporuje vysoký dynamický rozsah (HDR). Je hlavným štandardom pre prenos moderných webových obrázkov)"
 
 msgid "mime_markdown"
-msgstr "Markdown dokument (navrhnutý Johnom Gruberom v roku 2004, ľahký značkovací jazyk, univerzálny formát pre GitHub README, technickú dokumentáciu, príspevky na fórach)"
+msgstr "Markdown ľahký dokument (jazyk na značkovanie textových dokumentov nezávisle vytvorený Johnom Gruberom v roku 2004. Používa deklaratívny dizajn obyčajného textu, jeho návrh syntaxe je inšpirovaný reStructuredText. Široko používaný pre projekty GitHub, technickú dokumentáciu na úrovni inžinierstva a moderný ekosystém správy statického obsahu)"
 
 msgid "mime_yaml"
-msgstr "YAML konfigurácia (navrhnutá Clarkom Evansom v roku 2001, human readable formát serializácie dát, štandardný formát konfiguračných súborov pre Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML konfigurácia serializácie (formát serializácie údajov čitateľný pre človeka navrhnutý Clarkom Evansom a ďalšími v roku 2001. Založený na hierarchickom odsadzovaní a mapovaní kľúč-hodnota. Teraz bol stanovený ako štandard konfigurácie cloudovej natívnej infraštruktúry pre orchestraciu kontajnerov Kubernetes, automatizáciu Ansible a Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML konfigurácia (navrhnutá Tomom Prestonom-Wernerom v roku 2013, „Tom's Obvious Minimal Language“, formát konfiguračných súborov pre moderné nástroje ako Rust/Cargo, Python/pip, Go)"
+msgstr "TOML sémantická konfigurácia (minimalistický jazyk navrhnutý Tomom Prestonom-Wernerom v roku 2013. Má výhody nízkoúrovňového dizajnu ako silné typovanie, explicitné mapovanie a sémantická jasnosť. Teraz je široko používaný ako štandardizovaný konfiguračný súbor pre moderné nástrojové reťazce Rust (Cargo), Python (pyproject.toml) a Go)"
 
 msgid "mime_vue"
-msgstr "Súbor komponentu Vue (predstavený v roku 2014 Evanom You, progresívny JavaScript framework. Prostredníctvom jednosúborových komponentov (SFC) dokonale spája HTML, CSS a JS, čím výrazne zvyšuje efektivitu vývoja. Je to jeden z najpopulárnejších frontend frameworkov na svete. Zároveň ako jadro moderných generátorov statických stránok, ako je VitePress, je široko používaný na pohon interaktívnej technickej dokumentácie a blogov.)"
+msgstr "Vue jednosúborový komponent (proprietárny formát SFC progresívneho webového rámca predstavený Evom You v roku 2014. V jednom súbore realizuje oddelenie záujmov HTML/CSS/JS a reaktívne viazanie stavu, čím hlboko poháňa moderné interaktívne front-endové aplikácie a motory statických stránok vo veľkom meradle)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly modul (štandard W3C z roku 2017, vysoko výkonný vykonávací formát v prehliadači, C/C++/Rust/R sa môžu kompilovať na cieľ, výkon blízky natívnemu)"
+msgstr "WebAssembly binárny modul (vysokovýkonný nízkodrovňový štandard bajtového kódu pre web stanovený W3C v roku 2017. Umožňuje kompiláciu silne typovaných jazykov ako C/C++/Rust do cieľa sandboxu prehliadača, čím poskytuje efektivitu vykonávania blízku natívnemu hardvéru. Je základným kameňom moderných okrajových výpočtov na webe)"
 
 msgid "mime_jsx"
-msgstr "React JSX komponent (Facebook predstavil JavaScript XML v roku 2013, syntax komponentov pre framework React, inovatívna paradigma pre písanie HTML v JavaScripte)"
+msgstr "React JSX komponent (rozšírenie syntaxe JavaScript XML vydané spoločnosťou Facebook spolu s rámcom React v roku 2013. Podporuje deklaratívne vytváranie virtuálnej štruktúry DOM v JavaScripte, čím implementuje front-endový vývojový paradigma založený na komponentoch „UI je funkcia stavu“)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX komponent (vyvinutý spoločnosťou Microsoft v roku 2012, TypeScript + JSX, štandardný spôsob vývoja Reactu s bezpečnosťou typov)"
+msgstr "TypeScript TSX komponent (kombinácia toku silnej typovej syntaxe TypeScript vyvinutého spoločnosťou Microsoft v roku 2012 a JSX. Vstrekuje statickú kontrolu typov v čase kompilácie a obmedzenia rozhraní do vývoja komponentov React. Je štandardom kódu pre bezpečný vývoj moderných veľkých front-endových systémov)"
 
 msgid "mime_heif"
-msgstr "Obrázok HEIF (štandard MPEG z roku 2015, efektívny formát obrazového súboru, široko používaný v ekosystéme Apple)"
+msgstr "HEIF efektívny obraz (formát súboru efektívneho obrazu stanovený organizáciou MPEG v roku 2015. Založený na algoritme kódovania videa HEVC (H.265), podporuje umiestnenie viacsnímkových obrázkov, hĺbkových máp a metadát vo veľmi malom objeme. Je proprietárnym štandardom ukladania pre moderné mobilné operačné systémy a inteligentné koncové zariadenia)"
 
 msgid "mime_heic"
-msgstr "Obrázok HEIC (implementácia HEIF od Apple, predvolený formát fotografií pre iPhone, natívne podporovaný na iOS/macOS)"
+msgstr "HEIC efektívny obraz (proprietárny bitmapový formát Apple implementovaný na základe medzinárodného štandardu HEIF. Ako predvolený štandard ukladania fotografií moderných iPhoneov získava hardvérové kódovanie/dekódovanie na úrovni iOS/macOS a natívnu podporu operačného systému. Pri zachovaní vysokej kvality obrazu dramaticky znižuje základné úložné miesto)"
 
 msgid "mime_gltf"
-msgstr "3D model GLTF (formát prenosu GL, „JPEG pre 3D svet“, vydaný skupinou Khronos Group v roku 2015, štandardný formát pre web 3D)"
+msgstr "glTF 3D model aktív (štandard formátu prenosu GL vydaný skupinou Khronos Group v roku 2015. Používa architektúru JSON na opis trojrozmerných scén, známy ako „JPEG pre oblasť 3D“. Je ľahkým priemyselným štandardom pre moderné vykresľovanie WebGL/WebGPU a virtuálnej reality)"
 
 msgid "mime_glb"
-msgstr "Binárny 3D model GLB (binárna verzia GLTF, jeden súbor obsahuje všetky zdroje, používa sa na distribúciu 3D scén)"
+msgstr "GLB binárny 3D model (úplne binárna, bezstratová zapuzdrená verzia modelu aktív glTF. Kombinuje štruktúru scény, nízkoúrovňové údaje vrcholov sietí, materiály a textúrové mapy do jedného súboru. Špeciálne navrhnutý na efektívny prenos a distribúciu toku medziplatformových webových 3D aktív)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY glosár (súbor definícií pojmov, používa sa na správu terminológie v systémoch dokumentácie)"
+msgstr "GLOSSARY dátový slovník (súbor definície súboru terminológie špeciálne pre systémy správy dokumentov a štruktúrované korpusy. Obsahuje vstavané štandardné definície pojmov, viacjazyčné mapovania a mapovania metadát. Používa sa na udržanie koncepčnej konzistentnosti v automatizovanej analýze textu a systémoch publikovania obsahu)"
 
 msgid "mime_cbz"
-msgstr "CBZ komiksová kniha (obrazy komiksov skomprimované ZIP, univerzálny formát pre zbieranie komiksov)"
+msgstr "CBZ komiksová kniha (proprietárny formát archivácie obrázkov komiksov založený na štruktúre kompresie ZIP. Vnútorne zapuzdruje nepretržitú sekvenciu statických bitmapových obrázkov. Je univerzálnym ľahkým štandardom kontajnera pre digitálne vydávanie komiksov a miestne zbieranie naprieč platformami)"
 
 msgid "mime_cbr"
-msgstr "CBR komiksová kniha (obrazy komiksov skomprimované RAR, univerzálny formát pre zbieranie komiksov)"
+msgstr "CBR komiksová kniha (proprietárny formát archivácie obrázkov komiksov založený na štruktúre kompresie RAR. Používa algoritmus RAR na zapuzdrenie sekvencií statických bitmap, má relatívne vysokú mieru kompresie, má širokú podporu kompatibility v oblasti distribúcie digitálnych komiksov)"
 
 msgid "mime_fb2"
-msgstr "E-kniha FB2 (FictionBook 2.0, ruský formát e-kníh, štruktúra XML, široko podporovaný čítačkami s otvoreným zdrojovým kódom)"
+msgstr "FB2 elektronická kniha (štandard elektronickej knihy FictionBook 2.0 z začiatku 21. storočia. Používa čistú štruktúru XML na opis atribútov knihy a textovej hierarchie. Má širokú podporu v ekosystéme elektronických kníh s otvoreným zdrojovým kódom a v dedičných čítačkách digitálnych publikácií)"
 
 msgid "mime_kepub"
-msgstr "E-kniha KEPUB (formát EPUB špecifický pre Kobo, optimalizovaný formát pre čítačky e-kníh Kobo)"
+msgstr "KEPUB elektronická kniha (proprietárny vylepšený formát elektronických kníh Kobo, ktorý sa vyvinul zo štandardu EPUB. Vykonáva nízkodrovňovú optimalizáciu vykresľovania pre hardvérové čítačky elektronických kníh Kobo, čím poskytuje efektívnejšie rozloženie stránok a interakciu so štatistikami čítania)"
 
 msgid "mime_m4b"
-msgstr "Audio kniha M4B (formát audio knihy MPEG-4, podporuje záložky, formát audio kníh iTunes)"
+msgstr "M4B audiokniha (formát audioknihy založený na architektúre kontajnera MPEG-4 Part 14 (MP4). Používa kódovanie AAC, natívne podporuje nízkoúrovňové umiestnenie záložiek, obnovenie prehrávania od bodu prerušenia a vkladanie kapitol. Kedysi bol štandardným formátom ekosystému Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Formát Kindle KFX (vydaný spoločnosťou Amazon v roku 2015, špeciálny formát pre e-knihy Kindle, podporuje vylepšenú typografiu a rýchle listovanie)"
+msgstr "Kindle KFX formát (proprietárny vylepšený formát digitálneho vydavateľstva vydaný spoločnosťou Amazon spolu s Kindle v roku 2015. Podporuje pokročilé ligatúrne rozloženie, vykresľovanie písem s vysokou dynamikou a načítanie stránok v toku na úrovni jadra (Page Flip). Je základným štandardom modernej platformy Kindle)"
 
 msgid "mime_chm"
-msgstr "Pomocný súbor CHM (vydaný spoločnosťou Microsoft v roku 1997, kompilovaný formát HTML pomocníka, štandard pre dokumentáciu pomocníka softvéru Windows)"
+msgstr "CHM skompilovaný súbor pomoci (skompilovaný informačný systém pomoci HTML vydaný spoločnosťou Microsoft v roku 1997. Balí hypertextové údaje a základný index do jedného binárneho kontajnera. Dlho bol štandardným formátom lokálnej offline pomocnej dokumentácie pre softvér Windows)"
 
 msgid "mime_mht"
-msgstr "Webový archív MHT (vydaný spoločnosťou Microsoft v roku 1999, jednosúborový webový formát, formát ukladania webových stránok prehliadačom IE)"
+msgstr "MHT webový archív (agregovaný hypertextový formát MIME vydaný spoločnosťou Microsoft v roku 1999. Na základe štandardu RFC 2557 zapuzdruje zdrojový kód HTML, CSS, JS a vložené obrázky do jedného textového súboru. Používa sa na offline ukladanie webových stránok v starších prehliadačoch)"
 
 msgid "mime_wml"
-msgstr "Bezdrôtový značkovací jazyk WML (štandard WAP z roku 1999, používaný pre súbory webových stránok starých funkčných telefónov, vyradený)"
+msgstr "WML bezdrôtový značkovací jazyk (mobilný štandard značkovania stanovený fórom WAP v roku 1999. Založený na špecifikácii XML, špeciálne navrhnutý pre skoré úzkopásmové bezdrôtové mobilné siete a nízko výkonné feature telefóny. V modernom webovom ekosystéme patrí k už zaniknutej dedičnej technológii)"
 
 msgid "mime_xhtml"
-msgstr "XHTML webová stránka (štandard W3C z roku 2000, XML verzia HTML, prísnejšia syntax. V roku 2009 W3C zastavil údržbu, pozornosť sa presunula na HTML5)"
+msgstr "XHTML hypertextová webová stránka (štandard W3C z roku 2000, zapuzdrenie prísneho hypertextového značkovacieho jazyka založeného na architektúre XML. V roku 2009 W3C zastavilo jeho technický vývoj a úplne prešlo na špecifikáciu HTML5. Teraz sa používa hlavne na sémantické vykresľovanie webových stránok v dedičných systémoch)"
 
 msgid "mime_xml"
-msgstr "XML dokument (štandard W3C z roku 1998, rozšíriteľný značkovací jazyk, základný formát pre webové služby, konfiguračné súbory, výmenu dát)"
+msgstr "XML štruktúrovaný dokument (rozšíriteľný značkovací jazyk zo štandardu W3C z roku 1998. Má samoopisnú architektúru značiek. Je základným formátom pre sieťové webové služby (SOAP/REST), systémové konfiguračné súbory (XSD) a medziplatformovú výmenu údajov)"
 
 msgid "mime_sgml"
-msgstr "SGML dokument (štandard ISO z roku 1986, predchodca HTML, štandardný všeobecný značkovací jazyk, XML aj HTML sú odvodené zo SGML)"
+msgstr "SGML zovšeobecnený značkovací jazyk (medzinárodný štandard ISO 8879 z roku 1986 pre štandardný zovšeobecnený značkovací jazyk. Ako priemyselný priekopník štruktúrovaného opisu elektronických dokumentov, XML aj skoré špecifikácie HTML pochádzajú z tohto štandardného metajazyka)"
 
 msgid "mime_apng"
-msgstr "APNG animácia (vyvinutá spoločnosťou Mozilla v roku 2004, animačné rozšírenie PNG, moderná náhrada za GIF, podporuje pravé farby a priehľadnosť)"
+msgstr "APNG dynamická grafika (dynamické rozšírenie prenosnej sieťovej grafiky (PNG) vyvinuté spoločnosťou Mozilla v roku 2004. Podporuje 24-bitové skutočné farby a 8-bitovú polopriehľadnosť alfa kanála. Je vysokorozlíškovou alternatívou k formátu GIF v moderných webových scenároch)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmapa (formát bitmapy Windows, natívne podporovaný od Windows 1.0. Nekomprimovaný, veľká veľkosť súboru, ale vďaka jednoduchej štruktúre a nepotrebe ďalších kodekov sa stále používa v Nástroji na vystrihovanie Windows 11, programe Paint, zdrojoch ikon v inštalačných balíkoch EXE/MSI, súboroch kurzora a niektorých starších ovládačoch. Pri rovnakej kvalite obrazu je veľkosť súboru asi 3-10 krát väčšia ako PNG. Vo väčšine prípadov bol nahradený formátmi PNG/JPEG, ale ekosystém Windows stále zachováva širokú kompatibilitu)"
+msgstr "BMP natívna bitmapa (na zariadení nezávislý formát bitmapy platformy Microsoft stanovený už od éry Windows 1.0. Používa bezstratové, nekomprimované ukladanie, hoci jeho veľkosť je zvyčajne 3-10 krát väčšia ako PNG, kvôli chýbajúcim nákladom na kódovanie/dekódovanie je dodnes široko vložený do základných komponentov Windows 11, segmentov zdrojov EXE/MSI a grafických vyrovnávacích pamätí starších ovládačov)"
 
 msgid "mime_cdr"
-msgstr "Vektorová grafika CDR (špecifický formát CorelDRAW, kanadská spoločnosť Corel, softvér na dizajn vektorovej grafiky)"
+msgstr "CDR vektorová grafika (proprietárny formát zdrojového súboru profesionálneho vektorového dizajnu CorelDRAW kanadskej spoločnosti Corel. Podporuje viacvrstvovú správu farieb, zložité matematické uzly obrysov a údaje rozloženia na úrovni tlače. Je špecializovaným formátom pre profesionálnu plochú tlač a reklamný dizajn)"
 
 msgid "mime_gif"
-msgstr "Obrázok GIF (vyvinutý spoločnosťou CompuServe v roku 1987, 256-farebný animovaný formát obrázka. Slabiny: málo farieb, hrubá kvalita obrazu, nepodporuje priehľadnosť, veľký súbor, nízka snímková frekvencia. Nahradený modernými animovanými formátmi obrázkov ako APNG, WebP)"
+msgstr "GIF indexovaný farebný obrázok (8-bitový formát bitmapy s indexovanými farbami vyvinutý spoločnosťou CompuServe v roku 1987. Založený na algoritme LZW, obmedzený na 256 úrovní farieb a jednofarebnú priehľadnosť, pri vysokej snímkovej frekvencii je objemný. Teraz je postupne nahradzovaný modernými vysoko efektívnymi štandardmi dynamických obrázkov ako APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "Ikona ICO (formát súboru ikon Windows, podporuje viacero rozlíšení, štandardný formát pre favicon webových stránok)"
+msgstr "ICO systémová ikona (natívny formát zapuzdrenia zdrojov ikon Windows. Podporuje zmiešané vkladanie variantov obrázkov s viacerými rozlíšeniami pixelov a farebnými hĺbkami do jedného kontajnera. Je tiež univerzálnym distribučným štandardom pre hlavný identifikátor stránok moderných webových prehliadačov (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "Obrázok JPEG (štandard ISO z roku 1992, stratový kompresný formát fotografií, de facto štandard pre fotografie na internete)"
+msgstr "JPEG komprimovaný obrázok (stratový kompresný formát obrázka podľa medzinárodného štandardu ISO 10918 z roku 1992. Založený na algoritme diskrétnej kosínusovej transformácie (DCT), dosahuje vysoký kompresný pomer pri zachovaní vynikajúcej realistickej kvality obrazu. Je absolútnym de facto štandardom pre statickú fotografiu na globálnom internete)"
 
 msgid "mime_jpg"
-msgstr "Obrázok JPEG (štandard ISO z roku 1992, stratový kompresný formát fotografií, de facto štandard pre fotografie na internete)"
+msgstr "JPEG komprimovaný obrázok (stratový kompresný formát obrázka podľa medzinárodného štandardu ISO 10918 z roku 1992. Založený na algoritme diskrétnej kosínusovej transformácie (DCT), dosahuje vysoký kompresný pomer pri zachovaní vynikajúcej realistickej kvality obrazu. Je absolútnym de facto štandardom pre statickú fotografiu na globálnom internete)"
 
 msgid "mime_png"
-msgstr "Obrázok PNG (odporúčanie W3C z roku 1996, podporuje pravé farby a priehľadnosť, statická náhrada za GIF, internetový štandard pre bezkompresné obrázky)"
+msgstr "PNG bezstratový obrázok (štandard prenosnej sieťovej grafiky odporúčaný W3C v roku 1996. Používa bezstratový kompresný algoritmus, natívne podporuje 24-bitové skutočné farby a 8-bitovú priehľadnosť alfa kanála. Ako vysokorozlíšková alternatíva klasického statického GIF je absolútnym de facto štandardom pre bezstratové pixelové obrázky na internete)"
 
 msgid "mime_ps"
-msgstr "PostScript súbor popisu stránky (vydaný spoločnosťou Adobe v roku 1985, jazyk popisu stránky, predchodca PDF, používaný na tlač a publikovanie)"
+msgstr "PostScript súbor opisu stránky (na zásobníku založený jazyk opisu stránky predstavený spoločnosťou Adobe v roku 1985. Ako technologický predchodca formátu PDF implementuje na nízkej úrovni na hardvéri nezávislú typografiu a vysoko presné vykresľovanie vektorovej grafiky. Je základným štandardom pre profesionálnu polygrafickú výrobu a laserovú tlač)"
 
 msgid "mime_psb"
-msgstr "Veľký dokument PSB (formát veľmi veľkého obrazu Adobe Photoshop, podporuje gigantické obrázky presahujúce 2 GB alebo 30 000 pixelov)"
+msgstr "PSB dokument s veľkými vrstvami (proprietárny formát zapuzdrenia veľmi veľkého zdrojového súboru Adobe Photoshop. Prelomuje fyzickú veľkosť 2 GB a interné obmedzenia adresovania 30 000 pixelov štandardného formátu PSD. Špeciálne navrhnutý na ukladanie gigantických digitálnych umeleckých aktív v mimoriadne veľkom rozsahu s vysokou hĺbkou vrstiev)"
 
 msgid "mime_psd"
-msgstr "Obrázok PSD (zdrojový súbor Adobe Photoshop, podporuje vrstvy, kanály, cesty, priemyselný štandard spracovania obrazu)"
+msgstr "PSD zdrojový súbor dizajnu vrstiev (proprietárny formát vrstveného obrazového inžinierstva Adobe Photoshop. Ako priemyselný štandardný kontajner v oblasti grafiky a obrazu natívne zapuzdruje úplný strom vykresľovania vrstiev, bitmapové kanály, vektorové cesty orezania a zložité režimy miešania, čím podporuje bezstratovú úpravu všetkých údajov)"
 
 msgid "mime_webp"
-msgstr "Obrázok WebP (vyvinutý spoločnosťou Google v roku 2010, formát webových obrázkov, podporuje stratovú/bezkompresnú kompresiu a animáciu, miera kompresie je o 25-35% lepšia ako PNG, o 25% lepšia ako JPEG)"
+msgstr "WebP efektívny obrázok (univerzálny štandard kódovania webovej grafiky predstavený spoločnosťou Google v roku 2010. Odvodený z technológie kľúčových snímok videa VP8, dokonale kompatibilný so stratovým, bezstratovým, polopriehľadným a dynamickým vykresľovaním. V porovnaní s PNG rovnakej kvality zmenšuje veľkosť o 25-35%. Je základným kameňom vysokovýkonného načítavania moderných webových stránok)"
 
 msgid "mime_woff"
-msgstr "Webové písmo WOFF (vytvorené v roku 2009, štandard W3C z roku 2018. Kompresia založená na TrueType/OpenType, optimalizácia načítavania webových písiem, štandardný formát písiem ikon moderných webových stránok)"
+msgstr "WOFF webový súbor glifov (otvorený formát webových písiem vytvorený v roku 2009, ktorý sa v roku 2012 stal štandardom W3C. V podstate ide o bezstratové kompresné zapuzdrenie toku štandardných štruktúr písiem TTF/OTF, ktoré výrazne optimalizuje náklady na šírku pásma sieťového prenosu. Je univerzálnym formátom pre moderné ikony webových stránok a cloudové písma)"
 
 msgid "mime_7z"
-msgstr "Skombinovaný balík 7z (vyvinutý Igorom Pavlovom v roku 1999, špecifický formát programu 7-Zip. Algoritmus LZMA, vysoká kompresia, otvorený zdrojový kód a zadarmo. Formát 7z je pri rovnakej miere kompresie zvyčajne o 30-50% menší ako ZIP, bežný formát v komunite otvoreného zdrojového kódu a pre distribúciu softvéru)"
+msgstr "7z komprimovaný archív (proprietárny formát 7-Zip vyvinutý Igorom Pavlovom v roku 1999. Založený na otvorených algoritmoch LZMA/LZMA2, má extrémne vysoký kompresný pomer. Za rovnakých podmienok je jeho veľkosť zvyčajne o 30-50% menšia ako ZIP. Je univerzálnym formátom s vysokým kompresným pomerom pre komunitu s otvoreným zdrojovým kódom a distribúciu softvéru)"
 
 msgid "mime_ace"
-msgstr "Skombinovaný balík ACE (vyvinutý v 90. rokoch, formát programu WinACE. Kedysi konkuroval RAR, relatívne vysoká miera kompresie. Vývoj bol zastavený v roku 2007, teraz bol nahradený 7z/RAR, zriedka používaný)"
+msgstr "ACE komprimovaný archív (proprietárny kompresný formát WinACE z 90. rokov. Kedysi konkuroval formátu RAR a mal relatívne vysoký kompresný pomer. Po roku 2007 sa technologický vývoj zastavil, teraz je nahradený formátmi 7z a RAR. Patrí do formátov archivácie dedičných systémov)"
 
 msgid "mime_bz2"
-msgstr "Skombinovaný balík BZIP2 (vyvinutý Julianom Sewardom v roku 1996, kompresný algoritmus triedenia blokov. Miera kompresie je o 15-20% lepšia ako GZIP, ale pomalší. Zdrojový kód jadra Linuxu, balíky s otvoreným zdrojovým kódom často používajú tento formát, prípona .bz2)"
+msgstr "BZIP2 komprimovaný archív (formát kompresie triedenia blokov vyvinutý Julianom Sewardom v roku 1996. Jeho základný algoritmus má kompresný pomer o 15-20% vyšší ako GZIP, ale vyššie výpočtové náklady. Často sa používa na distribúciu zdrojového kódu jadra Linux a balíkov s otvoreným zdrojovým kódom. Štandardná prípona je .bz2)"
 
 msgid "mime_cab"
-msgstr "Skombinovaný balík CAB (vyvinutý spoločnosťou Microsoft v roku 1995, formát Cabinet. Formát inštalačných balíkov systému Windows, používa sa pre ovládače, distribúciu systémových súborov. Windows Installer (MSI) interne používa CAB na ukladanie súborov)"
+msgstr "CAB komprimovaný archív (formát archivácie Cabinet nezávisle vyvinutý spoločnosťou Microsoft v roku 1995. Ako natívny štandard inštalačného balíka systému Windows sa používa na distribúciu ovládačov a súborov jadra. Je tiež základným úložným kontajnerom pre Inštalátor Windows (MSI))"
 
 msgid "mime_dmg"
-msgstr "Obraz disku DMG (vydaný spoločnosťou Apple v 80. rokoch, formát Disk Image. Štandardný formát distribúcie softvéru pre macOS, dvojitým kliknutím sa pripojí ako virtuálny disk, potiahnutím a pustení nainštalujete aplikáciu. Podporuje kompresiu a šifrovanie, hlavný formát na sťahovanie softvéru pre Mac)"
+msgstr "DMG obraz disku (formát obrazu disku vyvinutý spoločnosťou Apple v 80. rokoch. Ako štandardný kontajner distribúcie softvéru macOS podporuje fyzické pripojenie ako virtuálny súborový systém, nízkoúrovňovú kompresiu a šifrovanie údajov. Je hlavným formátom distribúcie aplikácií v ekosystéme Mac)"
 
 msgid "mime_emz"
-msgstr "Skombinovaný obrázok EMZ (komprimovaný vylepšený metazáznam Windows, komprimovaná verzia EMF. Formát ukladania vektorovej grafiky v dokumentoch Office, v podstate ide o súbor EMF skomprimovaný programom GZIP)"
+msgstr "EMZ komprimovaný obrázok (komprimovaná verzia rozšíreného metafilu Windows EMF. V podstate ide o binárnu vektorovú grafiku komprimovanú pomocou algoritmu GZIP. Široko používaná na ukladanie vloženej vektorovej grafiky v dokumentoch balíka Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Skombinovaný balík GZIP (vyvinutý Jean-loup Gaillym a Markom Adlerom v roku 1992, projekt GNU. Štandardný kompresný nástroj Unix/Linux, bežný formát pre kompresiu prenosu HTTP. Prípona .gz, často používaný spolu s TAR)"
+msgstr "GZIP komprimovaný archív (štandardný formát kompresie toku vyvinutý Jean-loup Gaillym a Markom Adlerom z projektu GNU v roku 1992. Ako štandardný kompresný nástroj Unix/Linux je tiež základným štandardom pre kompresiu transportnej vrstvy HTTP (Gzip). Často sa používa v kombinácii s archiváciou TAR)"
 
 msgid "mime_jar"
-msgstr "Skombinovaný balík JAR (vydaný spoločnosťou Sun Microsystems v roku 1997, formát Java ARchive. V podstate ide o skombinovaný balík ZIP, používa sa na balenie knižníc tried Java a aplikácií. Základný formát v ekosystéme Java ako Maven, Gradle, Android tiež používa JAR)"
+msgstr "JAR komprimovaný archív (formát archivácie Java ARchive predstavený spoločnosťou Sun Microsystems v roku 1997. V podstate ide o baliaci kontajner založený na štruktúre ZIP, používaný na zapuzdrenie knižníc tried Java a metadát. Je hlavným produktom kompilácie pre Maven, Gradle a raný ekosystém Android)"
 
 msgid "mime_lzma"
-msgstr "Skombinovaný balík LZMA (vyvinutý Igorom Pavlovom v roku 1998, algoritmus reťazca Lempel-Ziv-Markov. Základný kompresný algoritmus formátu 7z, vysoká kompresia, rýchla dekompresia. Používa sa na firmvér, distribúciu softvéru pre vstavané systémy)"
+msgstr "LZMA komprimovaný archív (algoritmus kompresie reťazca Lempel-Ziv-Markov vyvinutý Igorom Pavlovom v roku 1998. Ako hlavný motor formátu 7z má extrémne vysoký kompresný pomer a vysokorýchlostnú dekompresiu. Široko používaný na distribúciu firmvéru hardvéru a vstavaných systémov)"
 
 msgid "mime_rar"
-msgstr "Skombinovaný balík RAR (vyvinutý Eugenom Roshalom v roku 1993, formát Roshal ARchive. Vysoká kompresia, podporuje rozdelenie na zväzky, záznamy obnovy. Formát programu WinRAR, kompresia lepšia ako ZIP, ale vyžaduje platený softvér, nástroje s otvoreným zdrojovým kódom ako unrar môžu dekomprimovať)"
+msgstr "RAR komprimovaný archív (proprietárny archivačný formát WinRAR vyvinutý Eugenom Roshalom v roku 1993. Podporuje rozdelenie na zväzky, fyzické záznamy obnovy (ECC) a vysokopevnostné šifrovanie. Kompresný pomer je lepší ako štandardný ZIP, má širokú podporu kompatibility v osobných počítačoch a komerčnej oblasti)"
 
 msgid "mime_tar"
-msgstr "Archív TAR (predstavený v Unix V7 v roku 1979, formát Tape ARchive. Formát páskového archívu, nekomprimuje iba balí, často používaný spolu s GZIP/BZIP2/XZ. Zdrojový kód balíkov Linuxu, ukladanie vrstiev obrazov Docker používa formát TAR)"
+msgstr "TAR archivačný balík (formát pásovej archivácie z éry Unix V7 z roku 1979. Vykonáva iba balenie toku súborov bez kompresie údajov. Často sa kombinuje s GZIP/BZIP2/XZ, je základným štandardom pre balíky zdrojového kódu Linux a vrstvené ukladanie obrazov Docker)"
 
 msgid "mime_tgz"
-msgstr "Skombinovaný balík TGZ (kombinovaný formát TAR + GZIP, prípona .tgz alebo .tar.gz. Najuniverzálnejší formát distribúcie balíkov Unix/Linux, široko používaný pre zdrojové balíky, binárne balíky, predstaviteľ „rozbaliť a použiť“)"
+msgstr "TGZ komprimovaný archív (kombinovaný formát toku archivácie TAR a kompresie GZIP, prípony .tgz alebo .tar.gz. Ako najuniverzálnejší formát distribúcie softvérových balíkov v prostredí Unix/Linux sa široko používa na nasadzovanie z kompilácie zdrojového kódu a distribúciu binárnych balíkov bez inštalácie)"
 
 msgid "mime_tbz2"
-msgstr "Skombinovaný balík TBZ2 (kombinovaný formát TAR + BZIP2, prípona .tbz2 alebo .tar.bz2. Miera kompresie je o 15-20% lepšia ako TGZ, vhodný pre distribúciu veľkých súborov, zdrojový kód jadra Linuxu dlhodobo používa tento formát)"
+msgstr "TBZ2 komprimovaný archív (kombinovaný formát toku archivácie TAR a kompresie BZIP2, prípony .tbz2 alebo .tar.bz2. V porovnaní s TGZ môže ďalej zvýšiť kompresný pomer o 15-20%, vhodný na prenos veľkých súborov, dlho sa používal na distribúciu zdrojového kódu jadra Linux)"
 
 msgid "mime_xz"
-msgstr "Skombinovaný balík XZ (vydaný v roku 2009, založený na algoritme LZMA2. Extrémne vysoká kompresia, o 30-50% lepšia ako GZIP, relatívne rýchla dekompresia. Široko používaný v jadre Linuxu, správcoch balíkov (napríklad interne v .deb Debianu), odporúčaný formát pre súčasný ekosystém Linuxu)"
+msgstr "XZ komprimovaný archív (formát s vysokým kompresným pomerom novej generácie predstavený v roku 2009. Založený na algoritme LZMA2, kompresný pomer údajov je o 30-50% vyšší ako GZIP pri zachovaní vysokej rýchlosti dekompresie. Bol stanovený ako odporúčaný distribučný štandard jadrom Linux a hlavnými správcami balíkov (napr. vnútri Debian .deb))"
 
 msgid "mime_z"
-msgstr "Skombinovaný balík Z (formát príkazu compress Unix z roku 1985, algoritmus LZW. Raný kompresný formát Unixu, nahradený GZIP. Prípona .Z, na moderných systémoch sa používa zriedka)"
+msgstr "Z komprimovaný archív (LZW kompresný formát príkazu Unix compress z roku 1985. Ako skorý štandard kompresie systémov Unix bol teraz úplne nahradený efektívnejším formátom GZIP. V modernej sieťovej prevádzke je to zriedkavý historický dedičný formát)"
 
 msgid "mime_zip"
-msgstr "Skombinovaný balík ZIP (vyvinutý Philom Katzom v roku 1989, formát PKZIP. Natívne podporovaný systémom Windows, najuniverzálnejší kompresný formát na internete. Podporuje viacero súborov, štruktúru adresárov, možnosť výberu kompresného algoritmu. Java JAR, Android APK, dokumenty Office DOCX/XLSX sú založené na formáte ZIP)"
+msgstr "ZIP komprimovaný archív (univerzálny archivačný formát PKZIP vyvinutý Philom Katzom v roku 1989. Má natívnu podporu hlavných operačných systémov. Je najpoužívanejším štandardom kontajnerov na internete. Moderný JAR Javy, APK Androidu a dokumenty balíka Office (OOXML) sú založené na štruktúre ZIP)"
 
 msgid "mime_zst"
-msgstr "Skombinovaný balík Zstandard (vyvinutý spoločnosťou Facebook v roku 2015, navrhnutý Yannom Colletom. Vysokorýchlostný kompresný algoritmus, miera kompresie blízka LZMA, rýchlosť ďaleko prevyšuje GZIP. Jadro Linuxu 5.9+ podporuje, Arch Linux pacman, Debian APT ho postupne preberajú, kompresný štandard novej generácie)"
+msgstr "Zstandard komprimovaný archív (štandard kompresie toku novej generácie navrhnutý Yannom Colletom z Facebooku v roku 2015. Približuje sa kompresnému pomeru LZMA a zároveň má oveľa vyššiu priepustnosť ako GZIP. Bol hlboko prijatý jadrom Linux (5.9+) a správcami balíkov Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Skombinovaný balík LZ4 (vyvinutý Yannom Colletom v roku 2011, extrémne rýchly kompresný algoritmus. Rýchlosť kompresie je viac ako 10-krát rýchlejšia ako GZIP, vhodný pre scenáre kompresie v reálnom čase. Jadro Linuxu, OpenZFS, Hadoop ho široko používajú, prvá voľba pre scenáre, kde je rýchlosť prioritou)"
+msgstr "LZ4 komprimovaný archív (extrémne rýchly algoritmus kompresie toku vyvinutý Yannom Colletom v roku 2011. Rýchlosť priepustnosti je viac ako 10-krát rýchlejšia ako GZIP, s extrémne nízkymi nákladmi na CPU počas behu. Široko používaný v jadre Linux, súborovom systéme OpenZFS a spracovaní údajových tokov v reálnom čase Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Skombinovaný balík LZO (vyvinutý Markusom Oberhumerom v roku 1996, algoritmus Lempel-Ziv-Oberhumer. Rýchlosť dekompresie je extrémne rýchla, miera kompresie je priemerná. Jadro Linuxu Squashfs, firmvér OpenWrt ho používajú, vhodný pre vstavané systémy)"
+msgstr "LZO komprimovaný archív (algoritmus Lempel-Ziv-Oberhumer vyvinutý Markusom Oberhumerom v roku 1996. Zameriava sa na extrémne rýchly výkon dekompresie. Je široko vložený do obrazov Squashfs jadra Linux, firmvéru OpenWrt a rôznych vstavaných systémov s obmedzenými zdrojmi)"
 
 msgid "mime_msi"
-msgstr "Inštalačný balík MSI (vydaný spoločnosťou Microsoft v roku 1999, formát balíka Windows Installer. Štandardný inštalačný formát pre aplikácie Windows, podporuje vrátenie transakcií, správu komponentov, tichú inštaláciu. Preferovaný formát pre distribúciu softvéru na úrovni podnikov, dodnes hlavný prúd pre inštaláciu softvéru Windows)"
+msgstr "MSI systémový inštalačný balík (formát zapuzdrenia údajov Inštalátora Windows predstavený spoločnosťou Microsoft v roku 1999. Ako štandardná špecifikácia nasadzovania aplikácií Windows natívne podporuje nízkoúrovňové vrátenie transakcií, správu životného cyklu komponentov a tichú inštaláciu bez dávkového spracovania. Je základným štandardom pre centralizovanú distribúciu softvéru na podnikovej úrovni a implementáciu politík)"
 
 msgid "mime_pkg"
-msgstr "Inštalačný balík PKG (formát inštalačného balíka aplikácií macOS, založený na technológii Installer od Apple. Štandardný formát distribúcie softvéru macOS, podporuje výber komponentov, inštalačné skripty, funkciu odinštalovania. Dvojitým kliknutím na súbor .pkg nainštalujete, bežná metóda distribúcie pre softvér mimo Mac App Store)"
+msgstr "PKG medziplatformový inštalačný balík softvéru. 1. Softvérový balík FreeBSD: štandard pkgng, prípona .pkg alebo .txz, založený na kompresii TAR+XZ/Zstd, podporuje rozlíšenie závislostí a overenie podpisu; 2. Inštalačný balík macOS: založený na formáte Apple Installer, podporuje vlastné komponenty, inštalačné skripty a odinštalovanie na systémovej úrovni. Sú hlavnými distribučnými nosičmi pre servery BSD a systémy Mac."
 
 msgid "mime_apk"
-msgstr "Balík aplikácie Android APK (vydaný spoločnosťou Google v roku 2008, tradičný inštalačný formát pre aplikácie Android. APK je v podstate balík ZIP obsahujúci kód, zdroje, manifestový súbor. Od roku 2021 Google Play vyžaduje, aby nové aplikácie používali formát AAB, ale APK sa stále používa na vývoj a ladenie, obchody tretích strán a bočnú inštaláciu)"
+msgstr "APK balík aplikácií pre Android (tradičný inštalačný balík aplikácií vydaný spoločnosťou Google spolu s Androidom v roku 2008. Založený na štruktúre archívu ZIP, balí skompilovaný bajtový kód Dalvik (DEX), manifest metadát a globálne zdroje. Teraz je široko používaný na lokálne ladenie vývoja, distribúciu tretími stranami a bočnú inštaláciu na zariadeniach)"
 
 msgid "mime_ipa"
-msgstr "Balík aplikácie iOS IPA (balík iOS App Store, inštalačný formát pre aplikácie iOS/iPadOS. Predstavený v roku 2008 spolu s iPhone SDK. Musí byť distribuovaný cez App Store alebo podpísaný podnikovým certifikátom. Obsahuje spustiteľný súbor, zdroje, Info.plist a informácie o podpise)"
+msgstr "IPA balík aplikácií pre Apple (exkluzívny baliaci kontajner pre iOS/iPadOS vydaný spolu so SDK iPhone v roku 2008. V podstate ide o archív ZIP chránený DRM FairPlay alebo podpisom kódu na úrovni podniku, obsahujúci binárny spustiteľný súbor Mach-O, strom zdrojov aplikácie a konfiguráciu metadát Info.plist)"
 
 msgid "mime_hap"
-msgstr "Balík aplikácie HarmonyOS HAP (HarmonyOS Ability Package, základná jednotka aplikácie HarmonyOS. Predstavený v roku 2020 s HarmonyOS 2.0. Podporuje dva typy: entry a feature, distribučný formát pre telefóny Huawei, tablety, inteligentné hodinky a ďalšie zariadenia HarmonyOS)"
+msgstr "HAP balík aplikácií HarmonyOS (základná jednotka elastického nasadenia HarmonyOS vydaná spolu s HarmonyOS 2.0 v roku 2020. Pozostáva z hlavného modulu Entry alebo funkčných modulov rozšírenia Feature. Je hlavným viackoncovým formátom nasadenia pre distribúciu inteligentných terminálov vo viackoncových scenároch (telefóny, tablety, nositeľné zariadenia))"
 
 msgid "mime_har"
-msgstr "HarmonyOS statická zdieľaná knižnica HAR (HarmonyOS Archive, statická zdieľaná knižnica HarmonyOS, môže byť zdieľaná viacerými balíkmi HAP, používa sa na vývoj založený na komponentoch a opätovné použitie modulov)"
+msgstr "HAR statický zdieľaný balík HarmonyOS (proprietárny archívny súbor statickej zdieľanej knižnice HarmonyOS. Používa sa na zapuzdrenie spoločných komponentov, nízkodrovňového zdrojového kódu a závislostí v čase kompilácie, ktoré sú staticky prepojené a zdieľané viacerými modulmi HAP. Je základným základom pre vývoj založený na komponentoch a opätovné použitie viacerých modulov systému HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (vydaný spoločnosťou Google v roku 2018, od roku 2021 Google Play vyžaduje, aby nové aplikácie používali tento formát. AAB je distribučný formát, Google Play generuje optimalizované APK podľa konfigurácie zariadenia (architektúra CPU, hustota obrazovky, jazyk), veľkosť inštalačného balíka sa v priemere znižuje o 35%. Vývojári nahrávajú AAB, používatelia sťahujú APK)"
+msgstr "AAB balík aplikácií pre Android (dynamický distribučný formát Google Play predstavený spoločnosťou Google v roku 2018 a stanovený v roku 2021. Ako čistá distribučná entita je dynamicky orezávaná a kompilovaná v cloude podľa architektúry CPU, hustoty obrazovky a jazyka cieľového zariadenia a na požiadanie generuje optimalizované APK. Priemerné zníženie nákladov na prenosovú šírku pásma o 35%)"
 
 msgid "mime_xapk"
-msgstr "Balík aplikácie XAPK (rozširujúci balík aplikácií Android tretej strany, obsahuje APK + dátové súbory OBB. Používa sa pre veľké hry a zložité aplikácie, rieši limit 100 MB pre jeden súbor APK. Bežný v obchodoch s aplikáciami tretích strán ako APKPure, APKMirror, nie je oficiálny formát Google)"
+msgstr "XAPK rozšírený balík aplikácií (neoficiálny štandard rozšírenia aplikácií stanovený komunitou tretích strán Android. Spoločným zapuzdrením štandardného súboru APK a veľmi veľkého rozširujúceho balíka herných údajov OBB fyzicky prelamuje limit 100 MB veľkosti samostatného súboru Google Play. Široko sa vyskytuje na platformách distribúcie hier)"
 
 msgid "mime_appx"
-msgstr "Balík aplikácie Windows (vydaný spoločnosťou Microsoft v roku 2012, inštalačný formát pre aplikácie Windows 8/10/11. Podporuje konverziu aplikácií UWP a desktopových, distribuovaný cez Microsoft Store. V roku 2024 Microsoft predstavil MSIX ako nástupnícky formát, postupne nahrádza APPX)"
+msgstr "APPX moderný balík aplikácií (špecifikácia nasadenia aplikácií UWP vydaná spoločnosťou Microsoft spolu s Windows 8 v roku 2012. Má izolované spúšťanie v sandboxe a ľahké odinštalovanie. Ako skorý dominantný štandard Microsoft Store v modernom ekosystéme Windows vstúpil do záverečnej fázy životného cyklu vývoja smerom k MSIX)"
 
 msgid "mime_msix"
-msgstr "Balík aplikácie MSIX (vydaný spoločnosťou Microsoft v roku 2018, nový generický formát balenia aplikácií pre Windows. Kombinuje výhody APPX a MSI, podporuje všetky typy aplikácií Windows, môže byť distribuovaný cez Microsoft Store alebo bočne inštalovaný, odporúčaný formát pre Windows 11)"
+msgstr "MSIX balík aplikácií novej generácie (úplne nová štandardizovaná špecifikácia balenia pre Windows vydaná spoločnosťou Microsoft v roku 2018. Dokonale spája funkcie sandboxu zabezpečenia aplikácií APPX s výhodami správy podnikových aktív MSI. Plne kompatibilný so všetkými typmi aplikácií Win32. Je odporúčaným distribučným štandardom pre Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Balík aplikácie AppImage (predstavený v roku 2004, inštalačne nenáročný formát aplikácie Linux. „Jedna aplikácia, jeden súbor“, nevyžaduje inštaláciu, beží priamo, podporuje väčšinu distribúcií Linuxu, bežný spôsob distribúcie Linuxového softvéru pre vývojárov)"
+msgstr "AppImage balík aplikácií bez inštalácie (špecifikácia jedného spustiteľného archívu pre Linux iniciovaná v roku 2004. Používa samostatnú architektúru „jedna aplikácia je jeden súbor“. Počas behu sa priamo pripája cez mechanizmus FUSE ako virtuálny súborový systém iba na čítanie na spustenie, čím sa dosahuje okamžité použitie bez závislostí naprieč všetkými distribúciami Linuxu)"
 
 msgid "mime_flatpak"
-msgstr "Balík aplikácie Flatpak (predstavený v roku 2015, formát aplikácie Linux v karanténe. Beží na rôznych distribúciách, izolovaný od hostiteľského systému, vedený spoločnosťami Fedora, Red Hat, predvolený formát Centra softvéru GNOME)"
+msgstr "Flatpak balík aplikácií v sandboxe (štandard distribúcie desktopových aplikácií naprieč distribúciami Linuxu, ktorý viedli Red Hat a GNOME v roku 2015. Na nízkej úrovni sa spolieha na mechanizmy Namespace a Cgroups jadra Linux na dosiahnutie extrémne prísnej izolácie bezpečnostného sandboxu na úrovni aplikácií. Je základom moderných centier softvéru OS s otvoreným zdrojovým kódom)"
 
 msgid "mime_snap"
-msgstr "Balík aplikácie Snap (vydaný spoločnosťou Canonical v roku 2014, materská spoločnosť Ubuntu, univerzálny formát aplikácií Linux. Automatické aktualizácie, izolácia v karanténe, podporuje viac ako 40 distribúcií Linuxu, predvolený formát Centra softvéru Ubuntu)"
+msgstr "Snap kontajnerizovaný balík aplikácií (univerzálny štandard nasadenia pre Linux predstavený spoločnosťou Canonical, materskou spoločnosťou Ubuntu, v roku 2014. Používa samostatnú architektúru pripájania obrazu SquashFS, podporuje automatické inkrementálne aktualizácie a prísnu izoláciu sandboxu AppArmor. Je základným predvoleným formátom ekosystému Centra softvéru Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Softvérový balík Debian (vydaný projektom Debian v roku 1993, štandardný inštalačný formát pre Debian/Ubuntu a ich deriváty. Spravuje sa pomocou dpkg, APT je jeho predná časť správcu balíkov, jeden z najvyspelejších formátov balíkov v ekosystéme Linuxu, dodnes hlavný prúd v rodine Debian)"
+msgstr "DEB systémový softvérový balík (špecifikácia zapuzdrenia binárnych kódov a zdrojových kódov stanovená projektom Debian v roku 1993. Ako základný inštalačný štandard pre Debian, Ubuntu a všetky ich odvodené systémy sa spolieha na jadro dpkg na rozbaľovanie a údržbu, pričom ako efektívne frontové rozhranie správcu balíkov používa APT. Je najvyspelejším základom distribúcie softvéru v ekosystéme Linux)"
 
 msgid "mime_rpm"
-msgstr "Softvérový balík RPM (vydaný spoločnosťou Red Hat v roku 1997, štandardný formát pre distribúcie Red Hat/Fedora/CentOS/SUSE a ďalšie. RPM znamená „Red Hat Package Manager“, spolu s DEB sú dva veľké formáty balíkov v Linuxe, dodnes hlavný prúd v rodine RHEL)"
+msgstr "RPM systémový softvérový balík (špecifikácia zapuzdrenia správcu balíkov Red Hat vydaná spoločnosťou Red Hat v roku 1997. Spolu s DEB je považovaný za jeden z dvoch hlavných táborov tradičnej správy balíkov Linuxu. Natívne má vstavanú kontrolu závislostí na úrovni transakcií a základné overovanie digitálnych podpisov softvéru. Dodnes je absolútnym hlavným distribučným štandardom pre ekosystémy rodiny Red Hat ako RHEL, Fedora a CentOS)"
 
 msgid "mime_pacman"
-msgstr "Softvérový balík Arch (vydaný spoločnosťou Arch Linux v roku 2002, formát .pkg.tar.zst používaný správcom balíkov pacman. Jadro rolovacej distribúcie Arch Linux, známy pre svoju jednoduchosť a princíp KISS, AUR (Arch User Repository) je jeho charakteristickým znakom)"
+msgstr "Pacman archivovaný softvérový balík (formát zapuzdrenia .pkg.tar.zst stanovený spoločnosťou Arch Linux spolu so správcom pacman v roku 2002. Ako jadro mechanizmu priebežných aktualizácií Archu, založený na vysokorýchlostnom vysoko kompresnom algoritme Zstandard, spolu s ekosystémom AUR (Arch User Software Repository). Je moderným štandardom distribúcie balíkov, ktorý stelesňuje minimalistické a KISS princípy)"
 
 msgid "mime_exe"
-msgstr "Spustiteľný súbor EXE (spustiteľný formát programu Windows, skratka pre „Executable“. Natívny spustiteľný formát operačného systému Windows, obsahuje štruktúru PE. Vyvinul sa z formátu MZ z MS-DOS, v roku 1993 Windows NT zaviedol formát PE (Portable Executable) a používa sa dodnes. Inštalačné balíky softvéru, aplikácie, systémové nástroje používajú tento formát. Používateľom dvojitého kliknutia sa spustí, najrozšírenejší spustiteľný formát na svete)"
+msgstr "EXE natívny spustiteľný súbor (formát binárneho programu Portable Executable (PE) platformy Windows. Technologicky pochádza zo štruktúry hlavičky MZ z éry MS-DOS a od Windows NT v roku 1993 bol úplne stanovený ako špecifikácia štruktúry PE. Je najpoužívanejším štandardom vykonávania na svete pre inštrukcie strojového kódu, segmenty statických zdrojov a spúšťanie jadra systému)"
 
 msgid "mime_dll"
-msgstr "Dynamická knižnica DLL (vydaná spoločnosťou Microsoft v roku 1993, Dynamic Link Library. Zdieľaná knižnica kódu Windows, načítava sa dynamicky počas spúšťania programu, šetrí pamäť a miesto na disku. Systémové komponenty, zásuvné moduly aplikácií, ovládače používajú formát DLL. Hlavný spôsob implementácie rozhrania Windows API, problém DLL Hell bol v ére .NET zmiernený)"
+msgstr "DLL dynamická linkovacia knižnica (špecifikácia knižnice zdieľaného kódu Dynamic Link Library platformy Windows. Dynamickým načítaním a presunom symbolov počas behu výrazne šetrí fyzickú pamäť a miesto na disku. Ako základná implementačná forma Windows API bol jej skorý problém „DLL peklo“ v modernej dobe vykorenený mechanizmom paralelnej izolácie SxS)"
 
 msgid "mime_com"
-msgstr "Spustiteľný súbor COM (spustiteľný formát z éry MS-DOS, skratka pre „Command“. Jednoduchá štruktúra súboru, limit 64 KB, hlavný formát pred Windows 3.x. Vyradený, moderný Windows používa formát EXE, prípona COM sa stále používa pre niektoré súbory komponentov)"
+msgstr "COM klasický spustiteľný súbor (najstarší formát vykonávania obrazu pamäte (Command) z éry MS-DOS. Používa neštruktúrovaný dizajn čistého segmentu kódu, obmedzený na hornú hranicu segmentu adresovania fyzickej pamäte 64KB. Teraz je vyradený ako historický dedičný formát, ale v modernej architektúre Windows sa stále používa ako špecifické rozhranie komponentov na obmedzenú kompatibilitu)"
 
 msgid "mime_aac"
 msgstr "Zvuk AAC (štandard MPEG z roku 1997, Advanced Audio Coding. Nástupca MP3, kvalita zvuku lepšia ako MP3 pri rovnakej bitovej rýchlosti, predvolený formát zvuku pre YouTube, iTunes, Nintendo Switch)"

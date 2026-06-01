@@ -444,8 +444,8 @@ msgstr "Xost - Sahifalar - Hits - O'tkazish qobiliyati - Oxirgi tashrif sanasi -
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Oxirgi tashrifning boshlanish sanasi] va [Oxirgi tashrifning oxirgi sahifasi] faqat sessiya tugamagan bo'lsa saqlanadi"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Faqat eng yuqori hitlarga ega %s ta yozuv asosiy sahifada ko'rsatiladi, to'liq ro'yxat uchun tafsilot sahifasiga qarang."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Birinchi %s elementlar hitlar soniga ko‘ra kamayish tartibida saralangan; qolgan elementlarning tartibi aniqlanmagan."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Kirgan foydalanuvchi - Sahifalar - Hits - O'tkazish qobiliyati - Oxirgi tashrif vaqti"
@@ -459,8 +459,8 @@ msgstr "Qurt ID - Hits - O'tkazish qobiliyati - Oxirgi tashrif"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Elektron pochta - Hits - O'tkazish qobiliyati - Oxirgi tashrif"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Faqat eng yuqori hitlarga ega %s ta elektron pochta asosiy sahifada ko'rsatiladi, to'liq ro'yxat uchun tafsilot sahifasiga qarang."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Birinchi %s elektron pochta manzillari hitlar soniga ko‘ra kamayish tartibida saralangan; qolgan manzillarning tartibi aniqlanmagan."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Sahifalar - O'tkazish qobiliyati - Kirish - Chiqish"
@@ -669,6 +669,27 @@ msgstr "SiteDomain parametri sizning config/domain faylingizda aniqlanmagan yoki
 msgid "Please run as Administrator to set permissions"
 msgstr "Ruxsatlarni o'rnatish uchun Administrator sifatida ishga tushiring"
 
+msgid "This directory lacks read permission"
+msgstr "Ushbu katalogda o‘qish ruxsati yo‘q"
+
+msgid "Please set read permission for directory"
+msgstr "Iltimos, katalog uchun o‘qish ruxsatini o‘rnating"
+
+msgid "Missing required parameter in config file"
+msgstr "Konfiguratsiya faylida kerakli parametr yo‘q"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Iltimos, 'DirData' aniqlanganligini tekshiring."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Brauzer manzilidagi domen nomi yo‘q yoki to‘liq emasga o‘xshaydi"
+
+msgid "Please check the URL parameter"
+msgstr "Iltimos, URL parametrini tekshiring"
+
+msgid "Format description"
+msgstr "Format tavsifi"
+
 msgid "Please set execute permission"
 msgstr "Iltimos, bajarish ruxsatini o'rnating"
 
@@ -794,376 +815,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Matn fayli (1963 yilda ASCII standartlashtirilgan, formatlanmagan sof matn. Barcha manba kodlari, sozlamalar, jurnallarning asosi. Unix LF, Windows CRLF qator uzilishidan foydalanadi, hali ham kompyuterning eng keng tarqalgan ma'lumotlar formati)"
+msgstr "TXT oddiy matn fayli (1963 yilda ASCII kodlash orqali standartlashtirilgan formatlanmagan oddiy matn. Barcha manba kodlari, konfiguratsiya fayllari va tizim jurnallarining asosiy poydevori sifatida, uning o‘zaro platformali Windows (CRLF) va Unix (LF) qator uzilishlarini boshqarish oqimlari hali ham kompyuter olamining eng universal maʼlumot almashish standartidir)"
 
 msgid "mime_log"
-msgstr "Jurnal fayli (Tizim, dastur ishlash ma'lumotlarini yozuvchi sof matn fayli, nosozliklarni bartaraf etish, samaradorlik tahlili, xavfsizlik auditi uchun ishlatiladi. Standart formatlar: Apache combined log, Nginx access log, syslog)"
+msgstr "LOG tizim operatsiya jurnali (operatsion tizim, yadro va ilovalar darajasidagi ish vaqti holatlarini qayd qiluvchi oddiy matn aktivi. Nginx/Apache kirish jurnallarini (Kombinatsiyalangan jurnal) va standart syslog spetsifikatsiyasini qamrab oladi. Muammolarni bartaraf etish, oqim samaradorligini tahlil qilish va xavfsizlik auditi uchun asosiy maʼlumot manbaidir)"
 
 msgid "mime_page"
-msgstr "HTML veb-sahifasi (1989 yilda Tim Berners-Lee Butunjahon o'rgimchak to'rini ixtiro qildi, 1990 yilda HTML/HTTP/URL uchta texnologiyani aniqladi, bepul ochdi, patentlamadi. 2014 yilda HTML5 W3C rasmiy standartiga aylandi, displey, multimedia va chop etishni qo'llab-quvvatlaydi. 2016 yilda Tyuring mukofotiga sazovor bo'ldi)"
+msgstr "HTML gipermatn veb-sahifasi (1989 yilda Tim Berners-Lee tomonidan yaratilgan Butunjahon Internet tarmog‘ining asosiy toshi. Bepul mavjud bo‘lgan universal gipermatn belgilash tili sifatida, uning HTML5 spetsifikatsiyasi 2014 yilda W3C rasmiy standartiga aylandi. Strukturalashtirilgan multimedia, semantik interaktivlik va oqim sahifa tartibi uchun mahalliy qo‘llab-quvvatlashni taqdim etadi. 2016 yilda Tyuring mukofotiga sazovor bo‘lgan)"
 
 msgid "mime_khtml"
-msgstr "KHTML veb-sahifa dvigateli (1998 yilda KDE 2.0 chiqarildi, Konqueror brauzer renderlash dvigateli. 2001 yilda Apple KHTML asosida WebKit yaratdi, 2008 yilda Google WebKit-dan Blink-ni yaratdi, bu Chrome, Edge, Safari kabi brauzerlarning asosiga aylandi. KHTML ochiq kodli hamjamiyatning zamonaviy brauzer dvigateliga asos solgan namunasi bo'lib, uning texnik merosi WebKit/Blink orqali bugungi kungacha davom etmoqda)"
+msgstr "KHTML veb-andoza dvigateli (1998 KDE 2.0 brauzer renderlash dvigateli spetsifikatsiyasi. Zamonaviy veb-renderlashga asos solgan ochiq kodli hamjamiyat mezoni sifatida, uning texnologik merosi to‘g‘ridan-to‘g‘ri Apple WebKit va Google Blink yadrolariga ilhom berdi va rivojlandi. Hozirgi kunda ham zamonaviy oqim dinamik veb-arxitekturasi orqali o‘zining asosiy yo‘nalishini davom ettirmoqda)"
 
 msgid "mime_script"
-msgstr "Dinamik skript (Interpretatsiya qilinadigan til, kompilyatsiya qilish shart emas. ASP, JSP, CGI, ColdFusion, Tcl, VBScript kiradi, dastlabki veb-ishlab chiqish, tizim boshqaruvi, avtomatlashtirish vazifalarida keng qo'llanilgan. Zamonaviy skript tillari Python, Ruby, JavaScript to'liq stack ishlab chiqishning asosiy tillariga aylandi)"
+msgstr "SCRIPT izohlanadigan dinamik skript (oldindan kompilyatsiya qilishni talab qilmaydigan va maʼlum bir ish vaqti yoki izohlovchi tomonidan qatorma-qator o‘qib bajariladigan manba kod oqimlarining umumiy tasnifi. ASP, JSP, CGI va Tcl va boshqalarni qamrab oladi. Server tomoni umumiy shlyuz interfeyslari, avtomatlashtirilgan jarayon boshqaruvi va tizim darajasidagi vazifalarni biriktirish uchun keng qo‘llaniladi)"
 
 msgid "mime_js"
-msgstr "JavaScript skripti (1995 yilda Brendan Eich Netscape-da 10 kunda yaratdi, brauzerning mahalliy dasturlash tili. 1997 yilda ECMAScript standartlashtirildi, 2009 yilda Node.js tug'ilishi uni full-stack tilga aylantirdi, npm dunyodagi eng katta paket menejeridir. Ko'p yillar davomida GitHub-da eng mashhur dasturlash tili)"
+msgstr "JavaScript skripti (1995 Netscape brauzerining mahalliy dasturlash muhiti. 1997 yilda ECMAScript sanoat standartini o‘rnatdi, 2009 yilda Node.js ish vaqti tug‘ildi, brauzer chegaralarini buzdi va to‘liq to‘plamli asinxron bloklanmaydigan arxitekturani yaratdi. Dunyodagi eng katta npm dasturiy taʼminot paketi ekotizimi bilan birga)"
 
 msgid "mime_py"
-msgstr "Python skripti (1991 yilda Guido van Rossum yaratgan, majburiy chekinish, sodda sintaksis bilan mashhur. Veb-ishlab chiqish, ma'lumotlar fanlari, sun'iy intellekt, avtomatlashtirishda keng qo'llaniladi. TIOBE tomonidan bir necha marta yilning eng yaxshi dasturlash tili mukofoti sovrindori)"
+msgstr "Python skripti (1991 yilda Guido van Rossum tomonidan yaratilgan yuqori darajali izohlanadigan skript tili. Majburiy chekinish tufayli yo‘qotilmaydigan o‘qish imkoniyati va ko‘p paradigmali past darajali dizayni tufayli, u endi zamonaviy veb-arxitektura, to‘liq to‘plamli maʼlumotlar fanlari, sunʼiy intellekt (SI) modellarni o‘qitish va bulutli mahalliy avtomatlashtirilgan opslar uchun sanoat standart tili sifatida o‘rnatildi)"
 
 msgid "mime_sh"
-msgstr "Shell skripti (1971 yilda Unix tug'ilishi, buyruq skript tili. Tizim boshqaruvi, avtomatlashtirish vazifalari, xizmatlarni ishga tushirish, joylashtirish skriptlari uchun ishlatiladi. Linux texnik xizmati uchun zarur ko'nikma)"
+msgstr "Shell skripti (1971 Unix davrining standart buyruq izohlovchi skripti. Bash, Sh, Dash kabi yadro darajasidagi buyruq spetsifikatsiyalarini o‘z ichiga oladi, odatda .sh kengaytmasi bilan bajariladi. Zamonaviy Unix-ga o‘xshash operatsion tizimlarda past darajadagi jarayon boshqaruvi, o‘rnatishni talab qilmaydigan muhit konfiguratsiyasi va avtomatlashtirilgan joylashtirish uchun universal yadro darajasidagi yelimdir)"
 
 msgid "mime_rb"
-msgstr "Ruby skripti (1995 yilda Yukihiro Matsumoto yaratgan, dasturchilar baxtiga e'tibor qaratadi. Ruby on Rails ramkasi konventsiyadan oldin sozlash ishlab chiqish paradigmasi asosini yaratdi, zamonaviy veb-ramkalar dizayniga ta'sir ko'rsatdi)"
+msgstr "Ruby skripti (1995 yilda Yukihiro Matsumoto tomonidan yaratilgan obyektga yo‘naltirilgan skript tili. Dasturchi tajribasiga haddan tashqari hurmat qilish uning asosiy dizayn falsafasidir. Uning Ruby on Rails ramkasi 'Konventsiya Konfiguratsiyadan Ustun (CoC)' zamonaviy yuqori darajadagi veb-arxitektura rivojlanish paradigmasini inqilobiy tarzda o‘rnatdi)"
 
 msgid "mime_pl"
-msgstr "Perl skripti (1987 yilda Larry Wall yaratgan, pragmatizm bilan mashhur, 'Shveytsariya armiya pichog'i' deb nomlanadi. CPAN zamonaviy til paket menejerlarining kashshofidir, matnni qayta ishlash, tizim boshqaruvi, CGI sohasida chuqur ta'sir ko'rsatgan)"
+msgstr "Perl skripti (1987 yilda Larry Wall tomonidan yaratilgan pragmatik skript tili. Zamonaviy paket menejerlarining (CPAN) asoschisi sifatida, u matnni qayta ishlashning 'Shveytsariya armiyasi pichog‘i' deb nomlanadi. Zamonaviy CGI rejimida, juda past fizik xotira xarajati, yuqori samarali regulyar ifodalarni qayta ishlash tufayli, jurnalni tahlil qilish sohasida yuqori ishonchli baza sifatida xizmat qiladi)"
 
 msgid "mime_php"
-msgstr "PHP dinamik veb-sahifasi (1995 yilda Rasmus Lerdorf yaratgan, ayniqsa veb-ishlab chiqish uchun mo'ljallangan. Dunyoning 70% dan ortig veb-saytlari foydalanadi, WordPress, Facebook, Wikipedia kabi platformalarni boshqaradi. PHP 8 JIT kompilyatorini taqdim etdi, unumdorlik sezilarli darajada oshdi)"
+msgstr "PHP dinamik veb-sahifasi (1995 yilda Rasmus Lerdorf tomonidan yaratilgan, veb-ishlab chiqish uchun maxsus mo‘ljallangan. Dunyodagi veb-saytlarning 70% dan ortig‘ini boshqaradigan asosiy texnologiya sifatida, u WordPress, Wikipedia kabi yirik ishlab chiqarish darajasidagi ilovalarni chuqur qo‘llab-quvvatlaydi. PHP 8 dan boshlab JIT (Joyida) kompilyatsiya ish vaqti dvigatelining joriy etilishi bilan, u yuqori unumli to‘liq to‘plamli server tomoniga asosiy paradigma evolyutsiyasiga erishdi)"
 
 msgid "mime_image"
-msgstr "Rasm fayli"
+msgstr "IMAGE tasvir aktivi tasnifi (yo‘qotishli/yo‘qotishsiz siqilgan bitmap, zamonaviy javob beruvchi veb-grafika va vektor grafikasining umumiy tasnifini qamrab oladi. Saytning vizual resurslarini yuklash xarajatlari, mijoz tomoni kesh urish darajasi va media tarmoq bandligi isteʼmolini baholash uchun asosiy ko‘rsatkichdir)"
 
 msgid "mime_document"
-msgstr "Hujjat fayli"
+msgstr "DOCUMENT strukturalashtirilgan hujjat tasnifi (oddiy matn, elektron jadvallar, qattiq formatli hujjatlar (PDF) va yengil belgilash tillarining umumiy tasnifini qamrab oladi. Server tomoni statik bilim bazalarini tarqatish, korporativ axborot aktivlarini yuklab olish va matn oqimi o‘tkazish qobiliyatining statistikasi uchun asosiy ko‘rsatkichdir)"
 
 msgid "mime_package"
-msgstr "Dasturiy ta'minot paketi"
+msgstr "PACKAGE kompilyatsiya mahsulotlari va dasturiy taʼminot paketi tasnifi (operatsion tizimning mahalliy bajariladigan dasturlari, ish vaqti bog‘lovchi kutubxonalari (DLL/SO) va ilovalarni tarqatish o‘rnatish paketlarining umumiy tasnifini qamrab oladi. Dasturiy taʼminot tarqatish saytlarining chiquvchi trafigi va yuklab olish cho‘qqilarini baholash uchun asosiy ko‘rsatkich sifatida ishlatiladi)"
 
 msgid "mime_archive"
-msgstr "Gzip siqilgan fayl (1992 yilda GNU loyihasi, DEFLATE algoritmiga asoslangan. Vebda javob mazmunini dinamik siqish uchun ishlatiladi, siqish darajasi odatda 60-90% ni tashkil qiladi. 2015 yildan keyin ba'zi stsenariylarda Brotli uning o'rnini egalladi, lekin u hali ham server tomonida eng ko'p qo'llab-quvvatlanadigan siqish formatidir)"
+msgstr "ARCHIVE arxiv va siqilgan fayllar (DEFLATE, LZMA kabi asosiy algoritmlarga asoslangan maʼlumotlarni siqish paketlarining umumiy tasnifi. Tarmoq qatlamida, anʼanaviy paket tarqatishni ifodalashdan tashqari, 1992 GNU loyihasining Gzip dinamik javob oqimini ham qamrab oladi. Zamonaviy stsenariylarda Brotli algoritmi asta-sekin joriy etilayotgan bo‘lsa-da, bu tasnif server bandligi o‘tkazish tezligi va transport qatlami bosimini pasaytirishni baholash uchun asosiy ko‘rsatkich bo‘lib qolmoqda)"
 
 msgid "mime_audio"
-msgstr "Audio fayl"
+msgstr "AUDIO raqamli audio oqim tasnifi (siqilgan audio, audiokitoblar va striming media audio konteynerlarining umumiy tasnifini qamrab oladi. Muayyan audio kodek standartlariga asoslanib, multimedia saytlarining audio maʼlumotlar oqimining o‘tkazish tezligi, bir vaqtning o‘zida striming bandligi va uzoq ulanish samaradorligini kuzatish uchun ishlatiladi)"
 
 msgid "mime_video"
-msgstr "Video fayl"
+msgstr "VIDEO raqamli video oqim tasnifi (yuqori aniqlikdagi video konteynerlar, zamonaviy veb-animatsiya va striming media segmentlarining umumiy tasnifini qamrab oladi. Yuqori yukli tarmoq muhitida server bandligi cho‘qqi chegarasi va Kontent Yetkazib Berish Tarmog‘i (CDN) tezlashtirish samarasini baholash uchun asosiy ko‘rsatkichdir)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (1995 yilda Brendan Eich tomonidan ishlab chiqilgan)"
+msgstr "JScript skripti (1996 yilda Microsoft tomonidan Internet Explorer 3.0 uchun ishlab chiqilgan teskari muhandislik xususiy amalga oshirish. Klassik JavaScriptning dastlabki mezbon raqibi sifatida, u Windows Skript Xosti (WSH) va dastlabki ASP back-endining asosiy dvigateli edi)"
 
 msgid "mime_json"
-msgstr "JSON ma'lumotlari (2001 yilda Douglas Crockford tomonidan taklif qilingan, engil ma'lumotlar almashinuvi formati, Web API ning haqiqiy standarti)"
+msgstr "JSON strukturalashtirilgan maʼlumotlar (2001 yilda Douglas Crockford tomonidan o‘rnatilgan yengil maʼlumotlarni ketma-ketlashtirish almashish formati. Matnga asoslangan kalit-qiymat juftliklari va massiv arxitekturasiga asoslanib, juda yuqori insoniy o‘qish imkoniyati va yo‘qotilmaydigan oqim tahlil qilish xususiyatiga ega. Bu zamonaviy veb API, mikroservis arxitekturasi va yirik til modellari bilan oʻzaro taʼsir qilish uchun de-fakto standartdir)"
 
 msgid "mime_vbs"
-msgstr "VBScript (1996 yilda Microsoft tomonidan ishlab chiqilgan, Windows skript tili, ASP veb-sahifalari va Windows boshqaruv skriptlari uchun ishlatiladi. PowerShell va JavaScript kengayishi bilan asta-sekin yo'q bo'lib ketdi)"
+msgstr "VBScript skripti (1996 yilda Microsoft tomonidan IE 3.0 bilan birga chiqarilgan skript tili varianti. Bir vaqtlar dastlabki ASP dinamik veb-saytlari va Windows tizim boshqaruvining asosiy haydovchisi edi, endi Windows 11 ning eng so‘nggi yadrosidan Microsoft tomonidan rasman bekor qilindi va olib tashlandi. Bu tarixiy meros texnologiyasiga tegishli)"
 
 msgid "mime_conf"
-msgstr "Konfiguratsiya fayli (Matn formatida dasturiy ta'minot sozlamalarini saqlaydi, keng tarqalgan formatlar: INI, JSON, YAML, TOML, XML. Linux tizim sozlamalari asosan /etc katalogida joylashgan)"
+msgstr "CONF tizim konfiguratsiya fayli (dasturiy taʼminotning ish vaqti muhiti parametrlarini oddiy matn shaklida doimiy saqlaydigan maʼlumotlar fayllarining umumiy tasnifi. INI va zamonaviy YAML, TOML, JSON spetsifikatsiyalarini qamrab oladi. Linux tizimlarida ular asosan /etc katalogida to‘plangan. Tizim darajasidagi ish vaqti holatini optimallashtirishning asosiy bog‘liqligidir)"
 
 msgid "mime_css"
-msgstr "CSS uslublar jadvali (1996 yil dekabrda W3C CSS1 birinchi rasmiy standartini e'lon qildi, 1998 yilda CSS2 joylashishni aniqlash va media turlarini qo'shdi, 2011 yildan boshlab CSS3 modulli ravishda yumaloq burchaklar, animatsiya, moslashuvchan quti, grid maket va mas'uliyatli dizaynni taqdim etdi. HTML va JavaScript bilan birga front-end uchta asosiy texnologiyalaridan biri, barcha zamonaviy brauzerlar (Chrome, Firefox, Safari, Edge) uni mahalliy qo'llab-quvvatlaydi, veb-sahifalar uslubini aniqlashning yagona standarti)"
+msgstr "CSS kaskadli uslublar jadvallari (1996 W3C standarti, HTML/JS bilan birga front-endning uchta asosiy tarkibiy qismidan biri hisoblanadi. CSS2 joylashish va CSS3 modulli evolyutsiyasidan o‘tdi. Flexbox, Grid va media so‘rovli javob beruvchi dizayn uchun mahalliy qo‘llab-quvvatlashni taqdim etadi. Zamonaviy brauzerlarda veb-sahifa taqdimotini ajratish uchun mutlaqo dominant standartdir)"
 
 msgid "mime_xsl"
-msgstr "XSL uslublar jadvali (1999 yil W3C standarti, XML hujjat konvertatsiya qilish tili, XML ni HTML/PDF/Matnga o'zgartira oladi. JSON mashhur bo'lgandan keyin foydalanish kamaydi)"
+msgstr "XSL uslublar jadvali (1999 W3C standarti, XSLT transformatsiyasi va XPath manzillash tilini o‘z ichiga oladi, XML strukturalashtirilgan maʼlumotlarini HTML, PDF yoki oddiy matn sifatida ko‘rsatish uchun ishlatiladi. Zamonaviy rivojlanishda uning ekotizimi asosan engilroq shablon dvigatellari va JSON maʼlumotlar formati bilan almashtirildi)"
 
 msgid "mime_runtime"
-msgstr "Bajariladigan fayl (EXE, ELF, Mach-O kabi operatsion tizimning bajariladigan formati, mashina kodi va yuklash ma'lumotlarini o'z ichiga oladi)"
+msgstr "Bajariladigan fayl (EXE, ELF, Mach-O kabi operatsion tizimning mahalliy bajarish formatlari, kompilyatsiya qilingan past darajadagi mashina kodi, kirish nuqtasi va tizim yuklash maʼlumotlarini o‘z ichiga oladi)"
 
 msgid "mime_library"
-msgstr "Kutubxona fayli (DLL, SO, dylib kabi dinamik bog'langan kutubxonalar, dastur ishlayotganda yuklanadigan umumiy kod)"
+msgstr "Kutubxona fayli (DLL, SO, dylib kabi dinamik yoki statik bog‘lovchi kutubxonalar, boshqa dasturlar chaqirishi va ish vaqtida yuklanishi uchun umumiy belgilar va joylashtirish kodini o‘z ichiga oladi)"
 
 msgid "mime_swf"
-msgstr "Flash animatsiyasi (1996 yilda Macromedia tomonidan ishlab chiqilgan, keyinchalik Adobe ga o'tgan. Interaktiv veb-animatsiya standarti, bir vaqtlar Internet animatsiyasi va o'yinlarida hukmronlik qilgan. Muammolar: plaginga bog'liqlik, mobil qo'llab-quvvatlanmasligi, yuqori xavfsizlik xavflari. 2017 yilda Adobe uni tugatishni e'lon qildi, 2020 yilda qo'llab-quvvatlash butunlay to'xtatildi, o'rnini HTML5/CSS3/JS egalladi)"
+msgstr "Flash animatsiyasi (1996 yilda Macromedia tomonidan ishlab chiqilgan, 2005 yilda Adobe tomonidan sotib olingan. Interaktiv veb-animatsiya standarti, bir vaqtlar internet animatsiyasi va oʻyinlarida hukmronlik qilgan. Kamchiliklari: plaginlarga bog‘liq, mobil qurilmalarda qo‘llab-quvvatlanmaydi, yuqori xavfsizlik xavfi. 2017 yilda Adobe bekor qilishni eʼlon qildi, 2020 yilda to‘liq qo‘llab-quvvatlashni to‘xtatdi, HTML5/CSS3/JS bilan almashtirildi)"
 
 msgid "mime_dtd"
-msgstr "DTD hujjat turi ta'rifi (XML spetsifikatsiyasi, XML hujjat tuzilishini belgilaydi, XML qonuniyligini tekshirish uchun ishlatiladi)"
+msgstr "DTD hujjat turi taʼrifi (1998 yilda XML 1.0 bilan birga chiqarilgan, XML/HTML hujjat strukturasi va qonuniyligini aniqlash va tasdiqlash uchun ishlatiladi. Zamonaviy rivojlanishda, u XML Schema, RELAX NG kabi moslashuvchanroq echimlar bilan asta-sekin almashtirildi)"
 
 msgid "mime_csv"
-msgstr "CSV ma'lumotlar formati (Vergul bilan ajratilgan qiymatlar, jadval ma'lumotlarining umumiy formati, Excel va ma'lumotlar bazasi import/eksport standarti)"
+msgstr "CSV maʼlumotlar formati (vergul bilan ajratilgan qiymatlar, 1972 asosiy kompyuter davrining (IBM Fortran kompilyatori) universal oddiy matn jadval formati. 2005 yilda RFC 4180 tomonidan rasmiy standartlashtirilgan. O‘zaro platformali, o‘zaro tilli yo‘qotilmaydigan maʼlumot almashish standarti sifatida. Excel, relyatsion maʼlumotlar bazalari, maʼlumotlar tahlili (Pandas) ga samarali import/eksport qilish uchun keng qo‘llaniladi.)"
+
+msgid "mime_cur"
+msgstr "Sichqoncha ko‘rsatkichi fayli (.cur formati, sichqoncha uslubini moslashtirish uchun ishlatiladi. Masalan, veb-sahifalardagi barmoq kursori, tizimdagi qum soati kutish belgisi. Oddiy .ico belgisining 'qarindoshi' dir, lekin u qo‘shimcha 'issiq nuqta' joylashuviga ega — sichqoncha haqiqatda bosadigan joy. Tarix: Windows 3.1 (1992) bilan birga joriy etilgan, grafik interfeysning buyruq satridan sichqoncha operatsiyasi davriga o‘tishida asosiy tarkibiy qism edi)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java dasturini ishga tushiruvchi, 2000-yillarda Java ish stoli dasturlarini tarqatish texnologiyasi, hozir tugatilgan)"
+msgstr "Java Web Start (2000-yillardagi Java ish stoli ilovalarini tarqatish texnologiyasi, .jnlp fayli orqali uzoqdagi Java dasturlarini ishga tushiradi. Xavfsizlik muammolari va zamonaviy tarqatish usullarining keng tarqalishi tufayli, endi asosan bekor qilingan)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader elektron kitobi (2000 yilda Microsoft tomonidan taqdim etilgan, LIT formati, tugatilgan)"
+msgstr "Microsoft Reader elektron kitobi (2000 yilda Microsoft tomonidan chiqarilgan, LIT formati. Bekor qilingan, endi Calibre kabi vositalar yordamida EPUB yoki PDF ga aylantirish mumkin)"
 
 msgid "mime_svg"
-msgstr "SVG vektor grafika (1999 yil W3C standarti, Microsoft tomonidan uzoq vaqt davomida o'zining VML formatini surish sababli, IE brauzeri 2011 yilgacha uni qo'llab-quvvatlamadi, bu uning tarqalishini kechiktirdi. 2015 yildan keyin IE ning tugashi va yuqori aniqlikdagi ekranlarning ommalashishi bilan belgi, logotip uchun birinchi tanlovga aylandi)"
+msgstr "SVG vektor grafikasi (1999 W3C standarti, XML arxitekturasiga asoslangan ikki o‘lchamli vektor tasvir formati. Ixtiyoriy masshtablashda aniqlikni yo‘qotmaslik va matn oqimini uzatish afzalligiga ega. Barcha zamonaviy brauzerlar uni mahalliy qo‘llab-quvvatlaydi. Yuqori aniqlikdagi veb-belgilar, logotiplar va vektor animatsiyalarini ko‘rsatish uchun keng qo‘llaniladi. Bu zamonaviy veb-grafikaning asosiy standartidir)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektor grafik (1987 yilda taqdim etilgan, sanoat standarti vektor grafik formati, bosma dizayn, logotip, belgi uchun birinchi tanlov)"
+msgstr "AI vektor grafikasi (1987 yilda Adobe tomonidan mustaqil ishlab chiqilgan xususiy vektor grafik formati. Tipografiya, bosma dizayn va brend identifikatorini loyihalash uchun sanoat asosiy standarti sifatida, ko‘p qatlamli va yuqori darajadagi tartib vektor maʼlumotlarini qo‘llab-quvvatlaydi. Bu professional vizual sanʼat uchun tanlangan tashuvchidir)"
 
 msgid "mime_phshop"
-msgstr "Photoshop tasviri (1990 yilda Adobe tomonidan taqdim etilgan, Photoshop manba fayli PSD, tasvirni qayta ishlash sanoat standarti)"
+msgstr "PSD qatlamli tasvir (1990 yilda Adobe tomonidan Photoshop bilan birga chiqarilgan xususiy rastr tasvir manba fayl formati. Ko‘p qatlamli qatlamlash, kanallar, maskalar va yo‘qotilmaydigan tahrirlash maʼlumotlarini qo‘llab-quvvatlaydi. Bu global tasvirni qayta ishlash va raqamli rasm chizish uchun sanoat standarti sifatida o‘rnatilgan)"
 
 msgid "mime_ttf"
-msgstr "TrueType shrifti (1989 yilda Apple va Microsoft tomonidan birgalikda ishlab chiqilgan, vektor shrift formati, ekran displeyi va chop etish bir xil, zamonaviy operatsion tizimning standart shrift formati)"
+msgstr "TrueType shrifti (1989 yilda Apple va Microsoft tomonidan birgalikda ishlab chiqilgan raqamli kontur shrift formati. Kvadratik Bezier egri chiziqlariga asoslangan, ekran displeyi va bosma chiqish o‘rtasida mutlaq piksel mosligini taʼminlaydi. Bu zamonaviy ish stoli operatsion tizimlarining mahalliy standart shrift formatidir)"
 
 msgid "mime_fon"
-msgstr "WOFF2 veb-shrifti (2014 yil W3C tavsiyasi, Brotli siqish algoritmidan foydalanadi, eski WOFF bilan solishtirganda hajmi taxminan 30% kichikroq, TTF/OTF bilan solishtirganda 50% dan ko'proq kichikroq, hozir barcha zamonaviy brauzerlar uni qo'llab-quvvatlaydi, hozirgi zamonaviy veb-shriftlar uchun birinchi tanlovdir, brauzerlarning 98% dan ortig'i uni qo'llab-quvvatlaydi)"
+msgstr "FON bitmap shrifti (1980-yillardagi Microsoft Windows ning dastlabki tizim darajasidagi nuqtali matritsali shrift formati. Ixtiyoriy nisbatda yo‘qotilmaydigan masshtablashni qo‘llab-quvvatlamaydi. Odatda meros tizimlari yoki dastlabki oʻrnatilgan qurilma komponentlari bilan cheklangan piksellangan matnni ko‘rsatish uchun ishlatiladi)"
 
 msgid "mime_pdf"
-msgstr "PDF hujjat (1993 yilda Adobe tomonidan ishlab chiqilgan, 2008 yilda ISO xalqaro standartiga aylandi. O'zaro platforma hujjat formati, shaklning bir xilligini saqlaydi, elektron hujjatlarni tarqatishning global standartidir)"
+msgstr "PDF elektron hujjat (1993 yilda Adobe tomonidan ishlab chiqilgan va 2008 yilda ISO 32000 xalqaro standartiga aylangan o‘zaro platformali qattiq tartibli hujjat formati. Mutlaq tartib va format sodiqligiga ega. Bu global elektron rasmiy hujjatlarni tarqatish va raqamli nashriyotning universal standartidir)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dinamik sahifasi (2002 yilda Microsoft tomonidan taqdim etilgan, Windows platformasining dinamik veb-texnologiyasi, .NET ramkasining bir qismi)"
+msgstr "ASP.NET dinamik sahifasi (2002 yilda Microsoft tomonidan .NET arxitekturasi bilan birga chiqarilgan server tomoni dinamik veb-texnologiyasi. IIS ko‘rsatish dvigatelida ishlaydi, korxona darajasidagi Windows server tomoni dinamik veb-ilovalari va taqsimlangan tizimlarni yaratish uchun ishlatiladi)"
 
 msgid "mime_mdb"
-msgstr "Access ma'lumotlar bazasi (Microsoft Access ma'lumotlar bazasi fayli, 1992 yilda taqdim etilgan, Windows ish stoli ma'lumotlar bazasi yechimi)"
+msgstr "MDB relyatsion maʼlumotlar bazasi (1992 yilda Microsoft tomonidan Access bilan birga chiqarilgan ish stoli darajasidagi relyatsion maʼlumotlar bazasi saqlash formati. O‘rnatilgan Jet maʼlumotlar bazasi dvigateliga ega, shaxsiy kompyuterlar va kichik va oʻrta korxonalarning dastlabki axborotlashtirish boshqaruvida relyatsion maʼlumotlar bazasi yechimi sifatida ishlatilgan)"
 
 msgid "mime_md"
-msgstr "Markdown hujjat (2004 yilda John Gruber tomonidan yaratilgan, sintaksis dizayni reStructuredText va Setext dan ilhomlangan. Asosiy dizayn falsafasi 'o'qish mumkin bo'lgan narsa render qilinadi', asl tatbiq normativ hujjati Markdown.pl Perl muntazam ifodalaridan foydalangan. Derivativ spetsifikatsiyalar: GFM (2013), CommonMark (2017), Pandoc Markdown va boshqalar. GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress kabi ekotizimlarni boshqaradi, statik veb-sayt generatorlari va ishlab chiquvchi hujjatlari uchun haqiqiy standart formatga aylandi)"
+msgstr "Markdown hujjati (2004 yilda John Gruber tomonidan mustaqil yaratilgan yengil belgilash tili. Asosiy dizayn falsafasi 'o‘qish mumkin bo‘lgan narsa ko‘rsatish mumkin' dir, bu GFM va CommonMark kabi zamonaviy hosila standartlarini boshqaradi. Texnik hujjatlar, bilimlar bazalari (Obsidian) va zamonaviy statik veb-sayt generatorlari uchun asosiy almashinuv standarti sifatida keng qo‘llaniladi)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports hisobot formati (SAP biznes razvedkasi hisoboti, korporativ hisobotlarning standart formati)"
+msgstr "Crystal Reports (SAP Biznes Intellekti (BI) platformasining professional korxona darajasidagi hisobot fayl formati. Ko‘p maʼlumot manbali past darajadagi ulanish va murakkab dinamik diagramma ko‘rsatish qobiliyatlariga ega, transmilliy kompaniyalarning moliyaviy va maʼlumotlar tahlili tizimlarida professional hisobot yaratish uchun keng qo‘llaniladi)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice hujjati (2010 yilda The Document Foundation tomonidan ishlab chiqilgan, OpenOffice ning bir tarmog'i, ODF standartining tatbiq normativ hujjati, asosiy ochiq kodli ofis to'plami)"
+msgstr "LibreOffice hujjati (2010 yilda The Document Foundation tomonidan OpenOffice tarmog‘iga asoslangan ochiq kodli ofis to‘plamining xususiy formati. W3C ning ODF (Ochiq Hujjat Formati) xalqaro standartini chuqur amalga oshiradi. Bu zamonaviy ochiq kodli ekotizimning ofis poydevoridir)"
 
 msgid "mime_encrypt"
-msgstr "Shifrlangan fayl (ko'rish uchun shifrdan chiqarish kerak, keng tarqalgan kengaytmalar: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT shifrlangan fayl (maxsus simmetrik yoki assimetrik shifrlash algoritmi orqali qayta ishlangan xom binar yoki matn maʼlumotlari. .enc, .pgp, .gpg kabi asosiy hosila formatlarini o‘z ichiga oladi. Tarmoq qatlamida, ommaviy bo‘lmagan maʼlumotlarning maxfiyligi va butunligini tekshirishni taʼminlash uchun ishlatiladi)"
 
 msgid "mime_gpx"
-msgstr "GPS trek ma'lumotlari (GPS almashinuvi formati, geografik joylashuv ma'lumotlarini yozadi, sport soatlari, navigatsiya qurilmalarining keng tarqalgan formati)"
+msgstr "GPX sunʼiy yo‘ldosh iz maʼlumotlari (XML arxitekturasiga asoslangan global joylashish tizimi almashinuv formati. Geografik koordinatalar, yo‘l nuqtalari, marshrutlar va tarixiy izlarni tasvirlash uchun maxsus ishlatiladi. Bu zamonaviy mobil sport qurilmalari, avtomobil navigatsiyasi va Geografik Axborot Tizimlari (GIS) uchun umumiy ochiq maʼlumotlar standartidir)"
 
 msgid "mime_diskimage"
-msgstr "Disk tasviri (DMG, ISO, IMG kabi CD/disk tasvir fayllari, dasturiy ta'minotni tarqatish yoki zaxira saqlash vositalari uchun ishlatiladi)"
+msgstr "Disk Image disk tasviri (ISO, DMG, IMG kabi fizik disk yoki optik muhitning baytma-bayt past darajadagi sektor tasvir fayllarini o‘z ichiga oladi. Tizimni past darajadagi joylashtirish, katta hajmdagi dasturiy taʼminotni xavfsiz tarqatish va saqlash muhitining fizik darajadagi to‘liq maʼlumotlar zahirasi uchun ishlatiladi)"
 
 msgid "mime_vm"
-msgstr "Virtual mashina tasviri (VMDK, VDI, VHDX, OVA kabi virtual mashina disk fayllari, VMware, VirtualBox, Hyper-V kabi virtualizatsiya platformalari formatlari)"
+msgstr "VM virtual mashina tasviri (VMDK, VDI, VHDX, OVA kabi virtualizatsiya qilingan fizik disk tasvirlarini o‘z ichiga oladi. VMware, VirtualBox va Hyper-V platformalarining asosi sifatida, past darajadagi tizim darajasidagi apparat emulyatsiyasi, misol oniy suratlari va bulut infratuzilmasini tarqatish uchun ishlatiladi)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent fayli (2001 yilda Bram Cohen tomonidan ixtiro qilingan, P2P yuklab olish indeks fayli, fayl metama'lumotlari va Tracker ma'lumotlarini o'z ichiga oladi)"
+msgstr "BitTorrent torrent fayli (2001 yilda Bram Cohen tomonidan ishlab chiqilgan P2P tengdoshga-tengdosh taqsimlangan yuklab olish indeksi. Bencode kodlashiga asoslangan, asl faylning past darajadagi tekshiruv yig‘indisi metamaʼlumotlari va Tracker server manzillash maʼlumotlarini saqlaydi. Bu markazsizlashtirilgan tarmoq oqimini tarqatishning asosiy tashuvchisidir)"
 
 msgid "mime_gis"
-msgstr "GIS geografik axborot tizimi ma'lumotlari (Shapefile, GeoJSON kabi geografik fazoviy ma'lumotlar formatlari, xaritalar va fazoviy tahlil uchun ishlatiladi)"
+msgstr "GIS geofazoviy maʼlumotlar (Shapefile va GeoJSON ni asos qilgan geografik axborot tizimi maʼlumotlar standarti. Ko‘p o‘lchamli geometrik koordinatalar, qatlam topologiyasi va atribut maʼlumotlarini o‘z ichiga oladi. Yuqori aniqlikdagi raqamli xarita ko‘rsatish, sunʼiy yo‘ldosh masofaviy zondlash va fazoviy geometrik tahlil uchun keng qo‘llaniladi)"
 
 msgid "mime_ebook"
-msgstr "Elektron kitob (EPUB, MOBI, AZW kabi elektron kitob formatlari. EPUB xalqaro standart, MOBI/AZW Amazon Kindlening formatlari)"
+msgstr "EBOOK elektron kitob (W3C ning EPUB ochiq xalqaro standarti, Amazon Kindle ning xususiy MOBI/AZW arxitekturasini asos qilgan raqamli nashriyot formati. Moslashuvchan oqim tartibi, metamaʼlumotlarni kapsulalash va DRM raqamli huquqlarni himoya qilishni qo‘llab-quvvatlaydi. Bu mobil qurilmalarda raqamli o‘qish uchun universal tashuvchidir)"
 
 msgid "mime_avif"
-msgstr "AVIF tasviri (2019 yilda Open Media Alliance tomonidan taqdim etilgan, AV1 kodekiga asoslangan, WebP ga nisbatan 50% yuqori siqish darajasi, yangi avlod veb-tasvir standarti)"
+msgstr "AVIF yuqori samarali tasvir (2019 yilda Ochiq Media Alyansi (AOMedia) tomonidan taqdim etilgan keyingi avlod oʻta yuqori aniqlikdagi tasvir standarti. AV1 video kodlash kalit kadr texnologiyasiga asoslangan, siqish nisbati WebP dan 50% yaxshi va Yuqori Dinamik Diapozonga (HDR) mahalliy qo‘llab-quvvatlaydi. Bu zamonaviy veb-tasvir uzatishning asosiy oqim standartidir)"
 
 msgid "mime_markdown"
-msgstr "Markdown hujjat (2004 yilda John Gruber tomonidan ishlab chiqilgan, engil belgilash tili, GitHub README, texnik hujjatlar, forum postlarining umumiy formati)"
+msgstr "Markdown yengil hujjati (2004 yilda John Gruber tomonidan mustaqil yaratilgan matn hujjatini belgilash tili. Oddiy matn deklarativ dizaynidan foydalanadi, uning sintaksis dizayni reStructuredText dan ilhomlangan. GitHub loyihalari, muhandislik darajasidagi texnik hujjatlar va zamonaviy statik kontentni boshqarish ekotizimi uchun keng qo‘llaniladi)"
 
 msgid "mime_yaml"
-msgstr "YAML konfiguratsiyasi (2001 yilda Clark Evans tomonidan ishlab chiqilgan, inson o'qishi mumkin bo'lgan ma'lumotlar ketma-ketlik formati, Kubernetes, Ansible, Docker Compose konfiguratsiya fayllarining standarti)"
+msgstr "YAML ketma-ketlashtirish konfiguratsiyasi (2001 yilda Clark Evans va boshqalar tomonidan ishlab chiqilgan inson o‘qiy oladigan maʼlumotlarni ketma-ketlashtirish formati. Ierarxik chekinish va kalit-qiymat xaritalashga asoslangan. Endi u Kubernetes konteyner orkestratsiyasi, Ansible avtomatlashtirishi va Docker Compose uchun bulutli mahalliy infratuzilma konfiguratsiya standarti sifatida o‘rnatildi)"
 
 msgid "mime_toml"
-msgstr "TOML konfiguratsiyasi (2013 yilda Tom Preston-Werner tomonidan ishlab chiqilgan, 'Tom's Obvious Minimal Language', Rust/Cargo, Python/pip, Go kabi zamonaviy vositalarning konfiguratsiya fayl formati)"
+msgstr "TOML semantik konfiguratsiya (2013 yilda Tom Preston-Werner tomonidan ishlab chiqilgan minimalistik til. Kuchli tip yozish, aniq xaritalash va semantik ravshanlik kabi past darajadagi dizayn afzalliklariga ega. Endi u Rust (Cargo), Python (pyproject.toml) va Go ning zamonaviy asboblar zanjiri uchun standartlashtirilgan konfiguratsiya fayli sifatida keng qo‘llaniladi)"
 
 msgid "mime_vue"
-msgstr "Vue komponent fayli (2014-yilda Evan You tomonidan taqdim etilgan, progressiv JavaScript ramkasi. Bir faylli komponentlar (SFC) orqali u HTML, CSS va JS ni mukammal birlashtirib, ishlab chiqish samaradorligini sezilarli darajada oshiradi. Bu dunyodagi eng mashhur frontend ramkalaridan biridir. Shuningdek, VitePress kabi zamonaviy statik sayt generatorlarining yadrosi sifatida interaktiv texnik hujjatlar va bloglarni boshqarish uchun keng qo'llaniladi.)"
+msgstr "Vue bitta faylli komponenti (2014 yilda Evan You tomonidan taqdim etilgan progressiv veb-ramkaning xususiy SFC formati. Bitta faylda HTML/CSS/JS ning tashvishlarini ajratish va reaktiv holat bog‘lanishini amalga oshiradi, zamonaviy veb-interaktiv front-end ilovalar va keng ko‘lamli statik sayt dvigatellarini chuqur boshqaradi)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly moduli (2017 yil W3C standarti, brauzerda yuqori samaradorlikda bajarish formati, C/C++/Rust/R maqsad qilib olishi mumkin, samaradorlik mahalliyga yaqin)"
+msgstr "WebAssembly ikkilik moduli (2017 yilda W3C tomonidan o‘rnatilgan veb uchun yuqori samarali past darajadagi bayt kodi standarti. C/C++/Rust kabi kuchli tipdagi tillarni brauzer qum qutisi maqsadiga kompilyatsiya qilish imkonini beradi, mahalliy apparatga yaqin bajarilish samaradorligini taʼminlaydi. Bu zamonaviy veb chekka hisoblashning asosiy toshidir)"
 
 msgid "mime_jsx"
-msgstr "React JSX komponentlari (2013 yilda Facebook tomonidan JavaScript XML taqdim etilgan, React ramkasi komponentlari sintaksisi, HTML ni JavaScript da yozishning innovatsion paradigmasi)"
+msgstr "React JSX komponenti (2013 yilda Facebook tomonidan React ramkasi bilan birga chiqarilgan JavaScript XML sintaksis kengaytmasi. JavaScript da DOM virtual strukturasini deklarativ tarzda qurishni qo‘llab-quvvatlaydi, front-end rivojlanishida 'UI holatning funksiyasidir' komponentga asoslangan rivojlanish paradigmasini amalga oshirdi)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX komponentlari (2012 yilda Microsoft tomonidan ishlab chiqilgan, TypeScript + JSX, React da xavfsiz turdagi ishlab chiqishning standart usuli)"
+msgstr "TypeScript TSX komponenti (2012 yilda Microsoft tomonidan ishlab chiqilgan TypeScript kuchli tip sintaksisi va JSX oqimining kombinatsiyasi. React komponentini ishlab chiqishda statik kompilyatsiya vaqti tip tekshiruvi va interfeys cheklovlarini inʼektsiya qiladi. Bu zamonaviy yirik front-end tizimlarini xavfsiz ishlab chiqish uchun kod standartidir)"
 
 msgid "mime_heif"
-msgstr "HEIF tasviri (2015 yil MPEG standarti, samarali tasvir fayl formati, Apple ekotizimida keng qo'llaniladi)"
+msgstr "HEIF yuqori samarali tasvir (2015 yilda MPEG tashkiloti tomonidan o‘rnatilgan yuqori samarali tasvir fayl formati. HEVC (H.265) video kodlash algoritmiga asoslangan, juda kichik hajmda ko‘p kadrli tasvirlar, chuqurlik xaritalari va metamaʼlumotlarni joylashtirishni qo‘llab-quvvatlaydi. Bu zamonaviy mobil operatsion tizimlar va aqlli terminal qurilmalari uchun xususiy saqlash standartidir)"
 
 msgid "mime_heic"
-msgstr "HEIC tasviri (Apple ning HEIF tatbiq normativ hujjati, iPhone ning standart tasvir formati, iOS/macOS mahalliy qo'llab-quvvatlaydi)"
+msgstr "HEIC yuqori samarali tasvir (HEIF xalqaro standartiga asoslangan Apple tomonidan qo‘llanilgan xususiy bitmap formati. Zamonaviy iPhone ning standart fotosurat saqlash formati sifatida, u iOS/macOS apparat darajasidagi kodlash/dekodlash va mahalliy operatsion tizim qo‘llab-quvvatlashini oladi. Yuqori tasvir sifatini taʼminlagan holda, asosiy saqlash joyini keskin kamaytiradi)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D modeli (GL uzatish formati, '3D ning JPEG i', 2015 yilda Khronos Group tomonidan chiqarilgan, veb 3D ning standart formati)"
+msgstr "glTF 3D aktiv modeli (2015 yilda Khronos Group tomonidan chiqarilgan GL uzatish formati standarti. Uch oʻlchamli sahnalarni tasvirlash uchun JSON arxitekturasidan foydalanadi, '3D sohasining JPEG' i deb nomlanadi. Bu zamonaviy WebGL/WebGPU va virtual haqiqatni ko‘rsatish uchun engil sanoat standartidir)"
 
 msgid "mime_glb"
-msgstr "GLB ikkilik 3D modeli (GLTF ning ikkilik versiyasi, yagona faylda barcha resurslarni o'z ichiga oladi, 3D sahnalarni tarqatish uchun ishlatiladi)"
+msgstr "GLB ikkilik 3D modeli (glTF aktiv modelining to‘liq ikkilik, yo‘qotilmaydigan kapsulalash versiyasi. Sahna tuzilishini, past darajadagi toʻr uchi maʼlumotlarini, materiallar va tekstura xaritalarini bitta faylga birlashtiradi. O‘zaro platformali veb-3D aktivlarini samarali uzatish va oqimli tarqatish uchun maxsus mo‘ljallangan)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY lug'at (atamalarni belgilaydigan fayl, hujjat tizimlarida atamalarni boshqarish uchun)"
+msgstr "GLOSSARY maʼlumotlar lug‘ati (hujjat boshqaruvi tizimlari va tuzilgan korpuslar uchun maxsus terminologiya to‘plami taʼrif fayli. O‘rnatilgan standart atama taʼriflari, ko‘p tilli xaritalashlar va metamaʼlumotlarni xaritalashni o‘z ichiga oladi. Avtomatlashtirilgan matn tahlili va kontent nashr qilish tizimlarining kontseptual izchilligini saqlash uchun ishlatiladi)"
 
 msgid "mime_cbz"
-msgstr "CBZ komiks kitobi (ZIP siqilgan komiks tasvirlari, komiks to'plamining keng tarqalgan formati)"
+msgstr "CBZ komikslar kitobi (ZIP siqish strukturasiga asoslangan xususiy komiks tasvir arxivlash formati. Ichkarida uzluksiz statik bitmap ketma-ketligini kapsulalaydi. Bu raqamli komiks nashriyoti va oʻzaro platformali mahalliy kollektsiyalash uchun universal yengil konteyner standartidir)"
 
 msgid "mime_cbr"
-msgstr "CBR komiks kitobi (RAR siqilgan komiks tasvirlari, komiks to'plamining keng tarqalgan formati)"
+msgstr "CBR komikslar kitobi (RAR siqish strukturasiga asoslangan xususiy komiks tasvir arxivlash formati. Statik bitmap ketma-ketligini kapsulalash uchun RAR algoritmidan foydalanadi, nisbatan yuqori siqish darajasiga ega, raqamli komikslarni tarqatish sohasida keng muvofiqlik qo‘llab-quvvatlashiga ega)"
 
 msgid "mime_fb2"
-msgstr "FB2 elektron kitob (FictionBook 2.0, rus elektron kitob formati, XML tuzilishi, ochiq kodli o'quvchilar keng qo'llab-quvvatlaydi)"
+msgstr "FB2 elektron kitob (2000-yillar boshidagi FictionBook 2.0 elektron kitob standarti. Kitob atributlari va matn ierarxiyasini tasvirlash uchun toza XML strukturasidan foydalanadi. Ochiq kodli elektron kitob ekotizimida va meros raqamli nashriyot o‘quvchilarida keng qo‘llab-quvvatlanadi)"
 
 msgid "mime_kepub"
-msgstr "KEPUB elektron kitob (Kobo ning maxsus EPUB formati, Kobo elektron kitob o'quvchi uchun optimallashtirilgan format)"
+msgstr "KEPUB elektron kitob (Kobo ning EPUB standartidan rivojlangan xususiy takomillashtirilgan elektron kitob formati. Kobo ning apparat darajasidagi elektron kitob o‘quvchilari uchun past darajadagi ko‘rsatish optimizatsiyasini amalga oshiradi, yanada samarali sahifa tartibi va oʻqish statistikasi interaktivligini taʼminlaydi)"
 
 msgid "mime_m4b"
-msgstr "M4B audiokitob (MPEG-4 audio kitob formati, xatcho'pni qo'llab-quvvatlaydi, iTunes audiokitob formati)"
+msgstr "M4B audiokitob (MPEG-4 Part 14 (MP4) konteyner arxitekturasiga asoslangan audiokitob formati. AAC kodlashdan foydalanadi, past darajadagi xatcho‘p joylashuvi, to‘xtash nuqtasidan davom ettirib ijro etish va bo‘limlarni joylashtirishni mahalliy qo‘llab-quvvatlaydi. Bir vaqtlar Apple iTunes ekotizimining standart formati edi)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX formati (2015 yilda Amazon tomonidan taqdim etilgan, Kindle ning maxsus elektron kitob formati, yaxshilangan tipografiya va tez sahifa aylantirish funksiyasini qo'llab-quvvatlaydi)"
+msgstr "Kindle KFX formati (2015 yilda Amazon tomonidan Kindle bilan birga chiqarilgan xususiy takomillashtirilgan raqamli nashriyot formati. Ilgari ligatura tartibi, yuqori dinamik shrift ko‘rsatish va yadro darajasidagi oqim sahifa yuklash (Page Flip) ni qo‘llab-quvvatlaydi. Bu zamonaviy Kindle platformasining asosiy standartidir)"
 
 msgid "mime_chm"
-msgstr "CHM yordam fayli (1997 yilda Microsoft tomonidan taqdim etilgan, kompilyatsiya qilingan HTML yordam formati, Windows dasturiy ta'minoti yordam hujjatlari standarti)"
+msgstr "CHM kompilyatsiya qilingan yordam fayli (1997 yilda Microsoft tomonidan chiqarilgan kompilyatsiya qilingan HTML yordam axborot tizimi. Gipermatn maʼlumotlarini va asosiy indeksni bitta ikkilik konteynerga paketlaydi. Uzoq vaqt davomida Windows dasturiy taʼminoti uchun mahalliy oflayn yordam hujjatlarning standart formati bo‘lgan)"
 
 msgid "mime_mht"
-msgstr "MHT veb-arxivi (1999 yilda Microsoft tomonidan taqdim etilgan, yagona faylli veb format, IE brauzerida veb-sahifalarni saqlash formati)"
+msgstr "MHT veb-sahifa arxivi (1999 yilda Microsoft tomonidan chiqarilgan MIME jamlangan gipermatn formati. RFC 2557 standartiga asoslanib, HTML manba, CSS, JS va joylashtirilgan tasvirlarni bitta matn fayliga kapsulalaydi. Meros brauzerlarda oflayn veb-sahifani saqlash uchun ishlatiladi)"
 
 msgid "mime_wml"
-msgstr "WML simsiz belgilash tili (1999 yil WAP standarti, dastlabki xususiyatli telefon veb-sahifalari uchun ishlatilgan, endi tugatilgan)"
+msgstr "WML simsiz belgilash tili (1999 yilda WAP (Simsiz Ilova Protokoli) forumi tomonidan o‘rnatilgan mobil belgilash standarti. XML spetsifikatsiyasiga asoslangan, maxsus dastlabki tor tarmoqli simsiz uyali tarmoqlar va past quvvatli funksional telefonlar uchun mo‘ljallangan. Zamonaviy veb-ekotizimda bu nafaqaga chiqarilgan meros texnologiyasiga tegishli)"
 
 msgid "mime_xhtml"
-msgstr "XHTML veb-sahifasi (2000 yil W3C standarti, HTML ning XML versiyasi, qattiqroq sintaksis. 2009 yilda W3C uni qo'llab-quvvatlashni to'xtatdi, e'tibor HTML5 ga qaratildi)"
+msgstr "XHTML gipermatn veb-sahifasi (2000 W3C standarti, XML arxitekturasiga asoslangan qattiq turdagi gipermatn belgilash tilining kapsulalanishi. 2009 yilda W3C uning texnologik evolyutsiyasini to‘xtatdi va to‘liq HTML5 spetsifikatsiyasiga o‘tdi. Endi asosan meros tizimlarida semantik veb-sahifani ko‘rsatish uchun ishlatiladi)"
 
 msgid "mime_xml"
-msgstr "XML hujjat (1998 yil W3C standarti, kengaytiriladigan belgilash tili, veb-xizmatlar, konfiguratsiya fayllari, ma'lumotlar almashinuvining asosiy shakli)"
+msgstr "XML tuzilgan hujjat (1998 W3C standartining kengaytiriladigan belgilash tili. O‘zini tasvirlaydigan teg arxitekturasiga ega. Bu tarmoq veb-xizmatlari (SOAP/REST), tizim darajasidagi konfiguratsiya fayllari (XSD) va oʻzaro platformali maʼlumotlar almashinuvi uchun asosiy poydevor formatidir)"
 
 msgid "mime_sgml"
-msgstr "SGML hujjat (1986 yil ISO standarti, HTML ning kashshofi, standart umumiy belgilash tili, XML va HTML ikkalasi ham SGML dan olingan)"
+msgstr "SGML umumlashtirilgan belgilash tili (1986 ISO 8879 xalqaro standartining standart umumlashtirilgan belgilash tili. Elektron hujjatlarning tuzilgan tavsifining sanoat kashshofi sifatida, ham XML, ham dastlabki HTML spetsifikatsiyalari ushbu standart meta-tildan kelib chiqqan)"
 
 msgid "mime_apng"
-msgstr "APNG animatsiyasi (2004 yilda Mozilla tomonidan ishlab chiqilgan, PNG ning animatsion kengaytmasi, GIF ning zamonaviy o'rnini bosuvchi, haqiqiy rang va yarim shaffoflikni qo'llab-quvvatlaydi)"
+msgstr "APNG dinamik grafikasi (2004 yilda Mozilla tomonidan ishlab chiqilgan Portativ Tarmoq Grafikasi (PNG) dinamik kengaytmasi. 24-bitli haqiqiy ranglar va 8-bitli Alfa kanali yarim shaffofligini qo‘llab-quvvatlaydi. Bu zamonaviy veb stsenariylarida GIF formatiga yuqori aniqlikdagi alternativdir)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmapi (Windows bitmap formati, Windows 1.0 dan beri mahalliy qo'llab-quvvatlanadi. Siqilmagan, fayl katta, lekin tuzilishi sodda va qo'shimcha kodek kerak emasligi sababli, Windows 11 skrinshot vositasi, Paint dasturi, EXE/MSI o'rnatish paketi belgi resurslari, kursor fayllari va ba'zi eski drayverlar hali ham undan foydalanadi. Bir xil sifatda PNG dan taxminan 3-10 baravar katta, ko'p stsenariylarda PNG/JPEG o'rnini egallagan, ammo Windows ekotizimida hali ham keng muvofiqlik saqlanib qolgan)"
+msgstr "BMP mahalliy bitmap (Windows 1.0 davridan beri o‘rnatilgan Microsoft platformasining qurilmadan mustaqil bitmap formati. Yo‘qotilmaydigan, siqilmagan saqlashdan foydalanadi, uning hajmi odatda PNG dan 3-10 baravar katta bo‘lsa-da, kodlash/dekodlash qo‘shimcha xarajatlari yo‘qligi sababli, u hali ham Windows 11 ning asosiy tarkibiy qismlarida, EXE/MSI resurs segmentlarida va meros drayverlarning grafik buferlarida keng joylashtirilgan)"
 
 msgid "mime_cdr"
-msgstr "CDR vektor grafik (CorelDRAW ning maxsus formati, Kanada Corel kompaniyasi, vektor grafik dizayn dasturi)"
+msgstr "CDR vektor grafikasi (Kanadaning Corel kompaniyasining xususiy CorelDRAW professional vektor dizayn manba fayl formati. Ko‘p qatlamli ranglar boshqaruvi, murakkab matematik kontur tugunlari va bosma darajadagi tartib maʼlumotlarini qo‘llab-quvvatlaydi. Bu professional tekis bosma va reklama dizayni sohasi uchun maxsus formatdir)"
 
 msgid "mime_gif"
-msgstr "GIF tasviri (1987 yilda CompuServe tomonidan ishlab chiqilgan, 256 rangli animatsion format. Muammolar: kam ranglar, past sifat, yarim shaffoflikni qo'llab-quvvatlamaslik, katta fayl, past kadr tezligi. APNG, WebP kabi zamonaviy animatsion formatlar uning o'rnini egalladi)"
+msgstr "GIF indekslangan rangli tasvir (1987 yilda CompuServe tomonidan ishlab chiqilgan 8-bitli indekslangan rangli bitmap formati. LZW algoritmiga asoslangan, 256 rang darajasi va bir rangli shaffoflik bilan cheklangan, yuqori kadr tezligida hajmi katta bo‘lib qoladi. Hozir APNG, WebP kabi zamonaviy yuqori samarali dinamik tasvir standartlari bilan asta-sekin almashtirilmoqda)"
 
 msgid "mime_ico"
-msgstr "ICO belgisi (Windows belgi fayl formati, bir nechta rezolyutsiyalarni qo'llab-quvvatlaydi, veb-sayt favicon standart formati)"
+msgstr "ICO tizim belgisi (Windows mahalliy belgi resurslarini kapsulalash formati. Bitta konteyner ichida bir nechta piksel o‘lchamlari va rang chuqurliklaridagi tasvir variantlarini aralashtirib joylashtirishni qo‘llab-quvvatlaydi. Bu zamonaviy veb-brauzer saytining asosiy identifikatori (Favicon) uchun universal tarqatish standartidir)"
 
 msgid "mime_jpeg"
-msgstr "JPEG tasviri (1992 yil ISO standarti, yo'qotish bilan siqish tasvir formati, Internet tasvirlarining haqiqiy standarti)"
+msgstr "JPEG siqilgan tasvir (1992 ISO 10918 xalqaro standartining yo‘qotishli siqish tasvir formati. Diskret kosinus transformatsiyasi (DCT) algoritmiga asoslangan, yuqori siqish nisbatiga erishganda ham ajoyib realistik tasvir sifatini saqlaydi. Bu global internet statik fotografiyasining mutlaq de-fakto standartidir)"
 
 msgid "mime_jpg"
-msgstr "JPEG tasviri (1992 yil ISO standarti, yo'qotish bilan siqish tasvir formati, Internet tasvirlarining haqiqiy standarti)"
+msgstr "JPEG siqilgan tasvir (1992 ISO 10918 xalqaro standartining yo‘qotishli siqish tasvir formati. Diskret kosinus transformatsiyasi (DCT) algoritmiga asoslangan, yuqori siqish nisbatiga erishganda ham ajoyib realistik tasvir sifatini saqlaydi. Bu global internet statik fotografiyasining mutlaq de-fakto standartidir)"
 
 msgid "mime_png"
-msgstr "PNG tasviri (1996 yil W3C tavsiyasi, haqiqiy rang va yarim shaffoflikni qo'llab-quvvatlaydi, GIF ning statik o'rnini bosuvchi, Internetning yo'qotishsiz tasvir standarti)"
+msgstr "PNG yo‘qotilmaydigan tasvir (1996 yilda W3C tomonidan tavsiya etilgan Portativ Tarmoq Grafikasi standarti. Yo‘qotilmaydigan siqish algoritmidan foydalanadi, 24-bitli haqiqiy ranglar va 8-bitli Alfa kanali shaffofligini mahalliy qo‘llab-quvvatlaydi. Klassik statik GIF ga yuqori aniqlikdagi alternativ sifatida, bu internetdagi yo‘qotilmaydigan piksel tasvirlarining mutlaq de-fakto standartidir)"
 
 msgid "mime_ps"
-msgstr "PostScript sahifa tavsifi fayli (1985 yilda Adobe tomonidan taqdim etilgan, sahifa tavsifi tili, PDF ning kashshofi, bosib chiqarish va nashr qilish uchun ishlatiladi)"
+msgstr "PostScript sahifa tavsif fayli (1985 yilda Adobe tomonidan taqdim etilgan stekga asoslangan sahifa tavsif tili. PDF formatining texnologik salafi sifatida, past darajada apparatdan mustaqil tipografiya va yuqori aniqlikdagi vektor grafikani ko‘rsatishni amalga oshiradi. Bu professional bosma nashriyot va lazer bosib chiqarish sohalari uchun asosiy standartdir)"
 
 msgid "mime_psb"
-msgstr "PSB katta hajmdagi hujjat (Adobe Photoshop juda katta tasvir formati, 2GB yoki 30000 pikseldan katta tasvirlarni qo'llab-quvvatlaydi)"
+msgstr "PSB katta qatlamli hujjat (Adobe Photoshop-ning xususiy juda katta manba fayl kapsulalash formati. U standart PSD formatining 2GB fizik hajmi va 30,000 piksel ichki manzillash chegaralarini buzadi. Juda katta hajmli, yuqori qatlam chuqurligiga ega ulkan raqamli sanʼat aktivlarini saqlash uchun maxsus mo‘ljallangan)"
 
 msgid "mime_psd"
-msgstr "PSD tasviri (Adobe Photoshop manba fayli, qatlamlar, kanallar, yo'llarni qo'llab-quvvatlaydi, tasvirni qayta ishlash sanoat standart formati)"
+msgstr "PSD qatlamli dizayn manba fayli (Adobe Photoshop-ning xususiy qatlamli tasvir muhandislik formati. Grafik va tasvir sohasidagi sanoat standart konteyneri sifatida, u to‘liq qatlam ko‘rsatish daraxti, bitmap kanallari, vektor kesish yo‘llari va aralash aralashtirish rejimlarini mahalliy kapsulalaydi, yo‘qotilmaydigan to‘liq maʼlumotlarni tahrirlashni qo‘llab-quvvatlaydi)"
 
 msgid "mime_webp"
-msgstr "WebP tasviri (2010 yilda Google tomonidan ishlab chiqilgan, veb-tasvir formati, yo'qotishli/yo'qotishsiz siqish va animatsiyani qo'llab-quvvatlaydi, PNG ga nisbatan 25-35% yuqori siqish darajasi, JPEG ga nisbatan 25% yuqori)"
+msgstr "WebP yuqori samarali tasvir (2010 yilda Google tomonidan taqdim etilgan universal veb-grafika kodlash standarti. VP8 video kalit kadr texnologiyasidan kelib chiqqan, yo‘qotishli, yo‘qotilmaydigan, yarim shaffof va dinamik ko‘rsatish bilan mukammal mos keladi. Bir xil sifatdagi PNG bilan solishtirganda hajmini 25-35% ga kamaytiradi. Bu zamonaviy veb-sahifalarning yuqori samarali yuklanishining asosiy toshidir)"
 
 msgid "mime_woff"
-msgstr "WOFF veb-shrifti (2009 yilda yaratilgan, 2018 yil W3C standarti. TrueType/OpenType ga asoslangan siqish, veb-shrift yuklashni optimallashtiradi, zamonaviy veb-sayt belgi shriftlarining standart formati)"
+msgstr "WOFF veb-glif fayli (2009 yilda yaratilgan va 2012 yilda W3C standartiga aylangan ochiq veb-shrift formati. Aslini olganda, bu standart TTF/OTF shrift tuzilmalarining oqimli yo‘qotilmaydigan siqish kapsulalanishidir, bu tarmoq uzatish bandligi xarajatlarini sezilarli darajada optimallashtiradi. Bu zamonaviy veb-sayt belgilari va bulutli shriftlar uchun universal formatdir)"
 
 msgid "mime_7z"
-msgstr "7z siqilgan paket (1999 yilda Igor Pavlov tomonidan ishlab chiqilgan, 7-Zip dasturining maxsus formati. LZMA algoritmi, yuqori siqish darajasi, ochiq kodli va bepul. 7z formati bir xil siqish darajasida odatda ZIP dan 30-50% kichikroq, ochiq kodli hamjamiyat va dasturiy ta'minot tarqatishning keng tarqalgan formatidir)"
+msgstr "7z siqilgan arxiv (1999 yilda Igor Pavlov tomonidan ishlab chiqilgan 7-Zip ning xususiy formati. Ochiq kodli LZMA/LZMA2 algoritmlariga asoslangan, juda yuqori siqish darajasiga ega. Bir xil sharoitda uning hajmi odatda ZIP dan 30-50% kichikdir. Bu ochiq kodli hamjamiyat va dasturiy taʼminot tarqatish uchun universal yuqori siqish nisbatli formatdir)"
 
 msgid "mime_ace"
-msgstr "ACE siqilgan paket (1990-yillarda ishlab chiqilgan, WinACE dasturining formati. Bir vaqtlar RAR bilan raqobatlashgan, siqish darajasi yuqori bo'lgan. 2007 yilda rivojlanish to'xtatilgan, endi 7z/RAR o'rnini egallagan, kam qo'llaniladi)"
+msgstr "ACE siqilgan arxiv (1990-yillardagi WinACE ning xususiy siqish formati. Bir vaqtlar RAR formati bilan raqobatlashgan va nisbatan yuqori siqish darajasiga ega edi. 2007 yildan keyin texnologik takrorlanish to‘xtadi, endi 7z va RAR formatlari bilan almashtirildi. Bu meros tizim arxivlash formatiga tegishli)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 siqilgan paket (1996 yilda Julian Seward tomonidan ishlab chiqilgan, blokli saralash siqish algoritmi. GZIP ga nisbatan 15-20% yuqori siqish darajasi, lekin tezlik sekinroq. Linux yadro manba kodi, ochiq kodli dasturiy ta'minot paketlari uchun keng tarqalgan format, kengaytmasi .bz2)"
+msgstr "BZIP2 siqilgan arxiv (1996 yilda Julian Seward tomonidan ishlab chiqilgan blokli saralash siqish formati. Uning asosiy algoritmining siqish darajasi GZIP dan 15-20% yuqori, ammo hisoblash xarajati yuqori. Linux yadrosi manba kodi va ochiq kodli dasturiy taʼminot paketlarini tarqatish uchun tez-tez ishlatiladi. Standart kengaytmasi .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB siqilgan paket (1995 yilda Microsoft tomonidan taqdim etilgan, Cabinet formati. Windows tizim o'rnatish paketi formati, drayverlar, tizim fayllarini tarqatish uchun ishlatiladi. Windows Installer (MSI) ichki CAB dan foydalanadi)"
+msgstr "CAB siqilgan arxiv (1995 yilda Microsoft tomonidan mustaqil ishlab chiqilgan Cabinet arxivlash formati. Windows tizimining mahalliy oʻrnatish paketi standarti sifatida, drayverlar va yadro fayllarini tarqatish uchun ishlatiladi. Shuningdek, Windows Installer (MSI) uchun asosiy saqlash konteyneri hisoblanadi)"
 
 msgid "mime_dmg"
-msgstr "DMG disk tasviri (1980-yillarda Apple tomonidan taqdim etilgan, Disk Image formati. macOS dasturiy ta'minot tarqatishning standart formati, ikki marta bosish virtual disk sifatida o'rnatiladi, dasturni sudrab o'rnatish mumkin. Siqish va shifrlashni qo'llab-quvvatlaydi, Mac dasturiy ta'minot yuklab olishning asosiy formatidir)"
+msgstr "DMG disk tasviri (1980-yillarda Apple tomonidan ishlab chiqilgan Disk Image formati. macOS dasturiy taʼminotini tarqatishning standart konteyneri sifatida, virtual fayl tizimi sifatida jismoniy ulash, past darajadagi siqish va maʼlumotlarni shifrlashni qo‘llab-quvvatlaydi. Bu Mac ekotizimidagi ilovalarni tarqatishning asosiy oqim formatidir)"
 
 msgid "mime_emz"
-msgstr "EMZ siqilgan tasvir (Windows siqilgan yaxshilangan metafayl, EMF ning siqilgan versiyasi. Office hujjatlarida vektor grafiklarni saqlash formati, asosan GZIP siqilgan EMF faylidir)"
+msgstr "EMZ siqilgan tasvir (Windows Kengaytirilgan Metafayl EMF ning siqilgan versiyasi. Aslini olganda, bu GZIP algoritmi orqali siqilgan ikkilik vektor grafikadir. Microsoft Office seriyali hujjatlaridagi joylashtirilgan vektor grafikalarini saqlash uchun keng qo‘llaniladi)"
 
 msgid "mime_gz"
-msgstr "GZIP siqilgan paket (1992 yilda Jean-loup Gailly va Mark Adler tomonidan ishlab chiqilgan, GNU loyihasi. Unix/Linux ning standart siqish vositasi, HTTP uzatish siqish uchun keng tarqalgan format. Kengaytmasi .gz, ko'pincha TAR bilan birga ishlatiladi)"
+msgstr "GZIP siqilgan arxiv (1992 yilda GNU loyihasining Jean-loup Gailly va Mark Adler tomonidan ishlab chiqilgan standart oqim siqish formati. Unix/Linux standart siqish vositasi sifatida, u HTTP transport qatlami siqishining (Gzip) asosiy standartidir. Ko‘pincha TAR arxivlash bilan birgalikda ishlatiladi)"
 
 msgid "mime_jar"
-msgstr "JAR siqilgan paket (1997 yilda Sun Microsystems tomonidan taqdim etilgan, Java ARchive formati. Asosan ZIP siqilgan paket, Java sinf kutubxonalari va dasturlarini paketlash uchun ishlatiladi. Maven, Gradle kabi Java ekotizimining asosiy formati, Android ham JAR dan foydalanadi)"
+msgstr "JAR siqilgan arxiv (1997 yilda Sun Microsystems tomonidan taqdim etilgan Java ARchive arxivlash formati. Aslini olganda, bu ZIP strukturasiga asoslangan paketlash konteyneri bo‘lib, Java sinf kutubxonalari va metamaʼlumotlarni kapsulalash uchun ishlatiladi. Bu Maven, Gradle va dastlabki Android ekotizimining asosiy kompilyatsiya mahsulotidir)"
 
 msgid "mime_lzma"
-msgstr "LZMA siqilgan paket (1998 yilda Igor Pavlov tomonidan ishlab chiqilgan, Lempel-Ziv-Markov zanjiri algoritmi. 7z formatining asosiy siqish algoritmi, yuqori siqish darajasi, tez dekompressiya. Proshivka, ko'milgan tizim dasturiy ta'minotini tarqatish uchun ishlatiladi)"
+msgstr "LZMA siqilgan arxiv (1998 yilda Igor Pavlov tomonidan ishlab chiqilgan Lempel-Ziv-Markov zanjiri siqish algoritmi. 7z formatining asosiy dvigateli sifatida, juda yuqori siqish darajasi va tez ochish xususiyatlariga ega. Uskuna proshivkasi va oʻrnatilgan tizimlarni tarqatish uchun keng qo‘llaniladi)"
 
 msgid "mime_rar"
-msgstr "RAR siqilgan paket (1993 yilda Eugene Roshal tomonidan ishlab chiqilgan, Roshal ARchive formati. Yuqori siqish darajasi, jildlarga bo'lish, tiklash yozuvini qo'llab-quvvatlaydi. WinRAR dasturining formati, ZIP dan yaxshiroq siqish darajasi, lekin pullik dasturiy ta'minot kerak, ochiq kodli vositalar unrar kabi dekompressiya qila oladi)"
+msgstr "RAR siqilgan arxiv (1993 yilda Eugene Roshal tomonidan ishlab chiqilgan WinRAR ning xususiy arxivlash formati. Jildlarga bo‘lish, jismoniy tiklash yozuvlari (ECC) va yuqori kuchli shifrlashni qo‘llab-quvvatlaydi. Siqish darajasi standart ZIP dan yaxshi, shaxsiy kompyuterlar va tijorat sohasida keng muvofiqlik qo‘llab-quvvatlashiga ega)"
 
 msgid "mime_tar"
-msgstr "TAR arxiv paketi (1979 yilda Unix V7 da taqdim etilgan, Tape ARchive formati. Lenta arxiv formati, faqat paketlaydi siqmaydi, ko'pincha GZIP/BZIP2/XZ bilan birga ishlatiladi. Linux dasturiy ta'minot paketi manba kodi, Docker tasvir qatlamli saqlash TAR formatidan foydalanadi)"
+msgstr "TAR arxiv paketi (1979 Unix V7 davrining lenta arxivlash formati. Faqat fayl oqimini paketlaydi, maʼlumotlarni siqmaydi. Ko‘pincha GZIP/BZIP2/XZ bilan birlashtiriladi, bu Linux manba paketlari va Docker tasvir qatlamli saqlash uchun asosiy standartdir)"
 
 msgid "mime_tgz"
-msgstr "TGZ siqilgan paket (TAR + GZIP kombinatsiya formati, kengaytmasi .tgz yoki .tar.gz. Unix/Linux dasturiy ta'minot paketini tarqatishning eng keng tarqalgan formati, manba kod paketlari, ikkilik paketlar keng qo'llaydi, 'dekompressiya va foydalanish' ning vakili)"
+msgstr "TGZ siqilgan arxiv (TAR arxivlash va GZIP siqishning oqim kombinatsiya formati, kengaytmalari .tgz yoki .tar.gz. Unix/Linux muhitidagi eng universal dasturiy taʼminot paketini tarqatish formati sifatida, manba kodini kompilyatsiya qilish orqali joylashtirish va oʻrnatishni talab qilmaydigan ikkilik paketlarni tarqatish uchun keng qo‘llaniladi)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 siqilgan paket (TAR + BZIP2 kombinatsiya formati, kengaytmasi .tbz2 yoki .tar.bz2. Siqish darajasi TGZ ga nisbatan 15-20% yuqori, katta fayllarni tarqatish uchun mos, Linux yadro manba kodi uzoq vaqt davomida ushbu formatdan foydalangan)"
+msgstr "TBZ2 siqilgan arxiv (TAR arxivlash va BZIP2 siqishning oqim kombinatsiya formati, kengaytmalari .tbz2 yoki .tar.bz2. TGZ bilan solishtirganda siqish darajasini yana 15-20% ga oshirish mumkin, katta fayllarni uzatish uchun mos keladi, bir vaqtlar Linux yadrosi manba kodini tarqatish uchun uzoq vaqt ishlatilgan)"
 
 msgid "mime_xz"
-msgstr "XZ siqilgan paket (2009 yilda taqdim etilgan, LZMA2 algoritmiga asoslangan. Juda yuqori siqish darajasi, GZIP ga nisbatan 30-50% yuqori, dekompressiya tezligi nisbatan tez. Linux yadro, paket menejerlari (masalan, Debian ning .deb ichki) keng qo'llaydi, hozirgi Linux ekotizimining tavsiya etilgan formatidir)"
+msgstr "XZ siqilgan arxiv (2009 yilda taqdim etilgan keyingi avlod yuqori siqish nisbatli formati. LZMA2 algoritmiga asoslangan, maʼlumotlarni siqish darajasi GZIP dan 30-50% yuqori va tez ochishni saqlaydi. Linux yadrosi va asosiy oqim paket menejerlari (masalan, Debian .deb ichida) tomonidan tavsiya etilgan tarqatish standarti sifatida o‘rnatildi)"
 
 msgid "mime_z"
-msgstr "Z siqilgan paket (1985 yilda Unix compress buyrug'i formati, LZW algoritmi. Dastlabki Unix siqish formati, GZIP o'rnini egalladi. Kengaytmasi .Z, zamonaviy tizimlarda kam qo'llaniladi)"
+msgstr "Z siqilgan arxiv (1985 Unix compress buyrug‘ining LZW siqish formati. Dastlabki Unix tizimlarining standart siqish standarti sifatida, endi u samaraliroq GZIP formati bilan to‘liq almashtirildi. Zamonaviy tarmoq trafigida bu kamdan-kam uchraydigan tarixiy meros formatdir)"
 
 msgid "mime_zip"
-msgstr "ZIP siqilgan paket (1989 yilda Phil Katz tomonidan ishlab chiqilgan, PKZIP formati. Windows mahalliy qo'llab-quvvatlaydi, Internetning eng keng tarqalgan siqish formati. Bir nechta fayllar, katalog tuzilmalarini qo'llab-quvvatlaydi, siqish algoritmini tanlashi mumkin. Java ning JAR, Android ning APK, Office hujjatlarining DOCX/XLSX hammasi ZIP formatiga asoslangan)"
+msgstr "ZIP siqilgan arxiv (1989 yilda Phil Katz tomonidan ishlab chiqilgan PKZIP universal arxivlash formati. Asosiy operatsion tizimlarning mahalliy qo‘llab-quvvatlashiga ega. Bu internetda eng keng qo‘llaniladigan konteyner standartidir. Zamonaviy Java ning JAR, Android ning APK va Office hujjatlari (OOXML) ZIP strukturasiga asoslangan)"
 
 msgid "mime_zst"
-msgstr "Zstandard siqilgan paket (2015 yilda Facebook tomonidan ishlab chiqilgan, Yann Collet tomonidan ishlab chiqilgan. Yuqori tezlikdagi siqish algoritmi, siqish darajasi LZMA ga yaqin, tezligi GZIP dan ancha yuqori. Linux yadro 5.9+ qo'llab-quvvatlaydi, Arch Linux pacman, Debian APT asta-sekin qabul qilmoqda, yangi avlod siqish standartidir)"
+msgstr "Zstandard siqilgan arxiv (2015 yilda Facebook dan Yann Collet tomonidan ishlab chiqilgan yangi avlod oqim siqish standarti. LZMA siqish darajasiga yaqinlashadi va GZIP dan ancha yuqori o‘tkazuvchanlikka ega. Linux yadrosi (5.9+) va Arch/Debian paket menejerlari tomonidan chuqur qabul qilingan)"
 
 msgid "mime_lz4"
-msgstr "LZ4 siqilgan paket (2011 yilda Yann Collet tomonidan ishlab chiqilgan, juda tez siqish algoritmi. Siqish tezligi GZIP dan 10 baravar tezroq, real vaqtda siqish stsenariylari uchun mos. Linux yadro, OpenZFS, Hadoop keng qo'llaydi, tezlikni ustuvor qo'yadigan stsenariylar uchun birinchi tanlovdir)"
+msgstr "LZ4 siqilgan arxiv (2011 yilda Yann Collet tomonidan ishlab chiqilgan juda tez oqim siqish algoritmi. O‘tkazuvchanlik tezligi GZIP dan 10 barobar tezroq, juda past CPU ish vaqti xarajatiga ega. Linux yadrosida, OpenZFS fayl tizimida va Hadoop real vaqtda maʼlumotlar oqimini qayta ishlashda keng qo‘llaniladi)"
 
 msgid "mime_lzo"
-msgstr "LZO siqilgan paket (1996 yilda Markus Oberhumer tomonidan ishlab chiqilgan, Lempel-Ziv-Oberhumer algoritmi. Dekompressiya tezligi juda tez, siqish darajasi o'rtacha. Linux yadro Squashfs, OpenWrt proshivkasi foydalanadi, ko'milgan tizimlar uchun mos)"
+msgstr "LZO siqilgan arxiv (1996 yilda Markus Oberhumer tomonidan ishlab chiqilgan Lempel-Ziv-Oberhumer algoritmi. Juda tez ochish samaradorligiga eʼtibor qaratadi. Linux yadrosi Squashfs tasvirlari, OpenWrt proshivkasi va turli resurslari cheklangan oʻrnatilgan tizimlarda keng joylashtirilgan)"
 
 msgid "mime_msi"
-msgstr "MSI o'rnatish paketi (1999 yilda Microsoft tomonidan taqdim etilgan, Windows Installer paket formati. Windows dasturlarining standart o'rnatish formati, tranzaksiyani qaytarish, komponentlarni boshqarish, jim o'rnatishni qo'llab-quvvatlaydi. Korxona darajasidagi dasturiy ta'minot tarqatish uchun birinchi tanlov, bugungi kunda ham Windows dasturiy ta'minot o'rnatishning asosiy formatidir)"
+msgstr "MSI tizim oʻrnatish paketi (1999 yilda Microsoft tomonidan taqdim etilgan Windows Installer maʼlumotlarini kapsulalash formati. Windows ilovalar darajasidagi standart joylashtirish spetsifikatsiyasi sifatida, u past darajadagi tranzaksiyani qaytarish, komponentlar hayot aylanishini boshqarish va partiyaviy ishlovsiz jim o‘rnatishni mahalliy qo‘llab-quvvatlaydi. Bu korxona darajasidagi markazlashtirilgan dasturiy taʼminot tarqatish va siyosatni joylashtirishning asosiy standartidir)"
 
 msgid "mime_pkg"
-msgstr "PKG o'rnatish paketi (macOS dastur o'rnatish paketi formati, Apple ning Installer texnologiyasiga asoslangan. macOS dasturiy ta'minot tarqatishning standart formati, komponent tanlash, o'rnatish skriptlari, o'chirish funksiyasini qo'llab-quvvatlaydi. .pkg fayli ikki marta bosish bilan o'rnatiladi, Mac App Store dan tashqari dasturiy ta'minotni tarqatishning keng tarqalgan usuli)"
+msgstr "PKG oʻzaro platformali dasturiy taʼminot oʻrnatish paketi. 1. FreeBSD dasturiy taʼminot paketi: pkgng standarti, kengaytmasi .pkg yoki .txz, TAR+XZ/Zstd siqishga asoslangan, bogʻliqliklarni hal qilish va imzo tekshiruvini qoʻllab-quvvatlaydi; 2. macOS oʻrnatish paketi: Apple Installer formatiga asoslangan, moslashtirilgan komponentlar, oʻrnatish skriptlari va tizim darajasidagi oʻchirishni qoʻllab-quvvatlaydi. Ular mos ravishda BSD serverlari va Mac tizimlarining asosiy tarqatish tashuvchilaridir."
 
 msgid "mime_apk"
-msgstr "APK Android dastur paketi (2008 yilda Google tomonidan taqdim etilgan, Android tizimining an'anaviy dastur o'rnatish formati. APK asosan ZIP siqilgan paket bo'lib, kod, resurslar, manifest faylni o'z ichiga oladi. 2021 yildan boshlab Google Play yangi dasturlar uchun AAB formatidan foydalanishni talab qilmoqda, ammo APK hali ham ishlab chiqish, disk raskadrovka, uchinchi tomon do'konlari va yon tomonga o'rnatish uchun ishlatiladi)"
+msgstr "APK Android ilova paketi (2008 yilda Google tomonidan Android bilan birga chiqarilgan anʼanaviy ilova oʻrnatish paketi. ZIP arxiv strukturasiga asoslangan, kompilyatsiya qilingan Dalvik bayt kodini (DEX), metamaʼlumot manifesti va global resurslarni paketlaydi. Hozir mahalliy ishlab chiqish disk raskatrovkasi, uchinchi tomon tarqatish va qurilmaga yon tomondan yuklash oʻrnatish uchun keng qo‘llaniladi)"
 
 msgid "mime_ipa"
-msgstr "IPA Apple dastur paketi (iOS App Store Package, iOS/iPadOS dastur o'rnatish formati. 2008 yilda iPhone SDK bilan chiqarilgan. App Store orqali tarqatish yoki korxona sertifikati bilan imzolash kerak. Bajariladigan fayl, resurslar, Info.plist imzo ma'lumotlarini o'z ichiga oladi)"
+msgstr "IPA Apple ilova paketi (2008 yilda iPhone SDK bilan birga chiqarilgan iOS/iPadOS-ga xos paketlash konteyneri. Aslini olganda, bu FairPlay DRM raqamli mualliflik huquqi yoki korxona darajasidagi kod imzosi bilan himoyalangan ZIP arxividir, unda Mach-O ikkilik bajariladigan fayl, ilova resurslari daraxti va Info.plist metamaʼlumot konfiguratsiyasi mavjud)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS dastur paketi (HarmonyOS Ability Package, HarmonyOS dasturining asosiy birligi. 2020 yilda HarmonyOS 2.0 bilan chiqarilgan. Kirish va xususiyat ikki turini qo'llab-quvvatlaydi, Huawei telefonlari, planshetlari, smart soatlari kabi HarmonyOS qurilmalarining tarqatish formatidir)"
+msgstr "HAP HarmonyOS ilova paketi (2020 yilda HarmonyOS 2.0 bilan birga chiqarilgan HarmonyOS ning elastik joylashtirish asosiy birligi. Entry asosiy moduli yoki Feature kengaytma funksional modullaridan tashkil topgan. Bu oʻzaro oxirgi barcha stsenariylar (telefonlar, planshetlar, taqiladigan qurilmalar) uchun aqlli terminal tarqatishning asosiy ko‘p oxirgi formatidir)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS statik umumiy paket (HarmonyOS Archive, HarmonyOS statik umumiy kutubxonasi, bir nechta HAP lar tomonidan bo'lishilishi mumkin, komponentga asoslangan ishlab chiqish va modulni qayta ishlatish uchun ishlatiladi)"
+msgstr "HAR HarmonyOS statik umumiy paketi (HarmonyOS ning xususiy statik umumiy kutubxona arxiv fayli. Umumiy komponentlar, past darajadagi resurs kodi va kompilyatsiya vaqtidagi bogʻliqliklarni kapsulalash uchun ishlatiladi, ular bir nechta HAP modullari tomonidan statik bogʻlanadi va ulashiladi. Bu HarmonyOS tizimining komponentga asoslangan ishlab chiqishi va ko‘p modulli qayta foydalanishning asosiy poydevoridir)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (2018 yilda Google tomonidan taqdim etilgan, 2021 yildan boshlab Google Play yangi dasturlar uchun ushbu formatdan foydalanishni majburiy qilgan. AAB tarqatish formati bo'lib, Google Play qurilma konfiguratsiyasiga (CPU arxitekturasi, ekran zichligi, til) qarab dinamik ravishda optimallashtirilgan APK yaratadi, o'rnatish paketi hajmi o'rtacha 35% kichikroq. Ishlab chiquvchi AAB yuklaydi, foydalanuvchilar APK yuklab oladi)"
+msgstr "AAB Android ilova toʻplami (2018 yilda Google tomonidan taqdim etilgan va 2021 yilda oʻrnatilgan Google Play dinamik tarqatish formati. Sof tarqatish obʼekti sifatida, u maqsadli qurilmaning CPU arxitekturasi, ekran zichligi va tiliga qarab bulut tomonidan dinamik ravishda kesiladi va kompilyatsiya qilinadi va kerak bo‘yicha optimallashtirilgan APK larni yaratadi. Oʻrtacha 35% uzatish bandligi xarajatlarini kamaytiradi)"
 
 msgid "mime_xapk"
-msgstr "XAPK dastur paketi (uchinchi tomon Android dastur kengaytma paketi, APK + OBB ma'lumotlar faylini o'z ichiga oladi. Katta o'yinlar va murakkab dasturlar uchun ishlatiladi, APK ning yagona fayllar 100MB cheklovini hal qiladi. APKPure, APKMirror kabi uchinchi tomon dastur do'konlarida keng tarqalgan, Google ning rasmiy formati emas)"
+msgstr "XAPK kengaytirilgan ilova paketi (uchinchi tomon Android hamjamiyati tomonidan oʻrnatilgan norasmiy ilova kengaytma standarti. Standart APK faylini juda katta OBB oʻyin maʼlumotlari kengaytma paketi bilan birgalikda kapsulalash orqali, u Google Play ning 100MB mustaqil fayl hajmi cheklovini jismoniy buzadi. Oʻyin tarqatish platformalarida keng ko‘rinadi)"
 
 msgid "mime_appx"
-msgstr "Windows dastur paketi (2012 yilda Microsoft tomonidan taqdim etilgan, Windows 8/10/11 dastur o'rnatish formati. UWP va ish stoli dastur konvertatsiyasini qo'llab-quvvatlaydi, Microsoft Store orqali tarqatiladi. 2024 yilda Microsoft MSIX ni keyingi format sifatida taqdim etdi, asta-sekin APPX o'rnini egallamoqda)"
+msgstr "APPX zamonaviy ilova paketi (2012 yilda Microsoft tomonidan Windows 8 bilan birga chiqarilgan UWP ilova joylashtirish spetsifikatsiyasi. Qum qutisi izolyatsiyasi bilan ishlash va yengil oʻchirish xususiyatlariga ega. Microsoft Store ning dastlabki dominant standarti sifatida, zamonaviy Windows ekotizimida u MSIX ga qarab rivojlanayotgan hayot aylanishining yakuniy bosqichiga kirdi)"
 
 msgid "mime_msix"
-msgstr "MSIX dastur paketi (2018 yilda Microsoft tomonidan taqdim etilgan, Windows ning yangi avlod dastur paketlash formati. APPX va MSI ning afzalliklarini birlashtiradi, barcha Windows dastur turlarini qo'llab-quvvatlaydi, Microsoft Store yoki yon tomonga o'rnatish orqali o'rnatilishi mumkin, Windows 11 ning tavsiya etilgan formatidir)"
+msgstr "MSIX yangi avlod ilova paketi (2018 yilda Microsoft tomonidan chiqarilgan Windows ning mutlaqo yangi standartlashtirilgan paketlash spetsifikatsiyasi. U APPX ning ilova xavfsizlik qum qutisi xususiyatlarini va MSI ning korxona darajasidagi aktivlarni boshqarish afzalliklarini mukammal birlashtiradi. Barcha Win32 ilova turlari bilan to‘liq mos keladi. Bu Windows 11 uchun tavsiya etilgan tarqatish standartidir)"
 
 msgid "mime_appimage"
-msgstr "AppImage dastur paketi (2004 yilda taqdim etilgan, Linux o'rnatishsiz dastur formati. 'Bir dastur bir fayl', o'rnatishsiz to'g'ridan-to'g'ri ishlaydi, ko'pchilik Linux distributivlarini qo'llab-quvvatlaydi, ishlab chiquvchilar uchun Linux dasturiy ta'minotini tarqatishning keng tarqalgan usuli)"
+msgstr "AppImage oʻrnatishni talab qilmaydigan ilova paketi (2004 yilda boshlangan Linux yagona bajariladigan arxiv spetsifikatsiyasi. 'Bir ilova bir fayl' o‘zini-o‘zi yetarli arxitekturasini qo‘llaydi. Ish vaqtida, u FUSE mexanizmi orqali toʻgʻridan-toʻgʻri faqat oʻqish uchun virtual fayl tizimi sifatida oʻrnatiladi va bajariladi, bu barcha Linux distributivlarida nol bogʻliqlik bilan darhol foydalanish imkonini beradi)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak dastur paketi (2015 yilda taqdim etilgan, Linux qumloqli dastur formati. Cross-distributiv ishlaydi, asosiy tizimdan ajratilgan holda yashaydi, Fedora, Red Hat boshchiligida ishlab chiqilgan, GNOME dasturiy ta'minot markazining standart formati)"
+msgstr "Flatpak qum qutisi ilova paketi (2015 yilda Red Hat va GNOME tomonidan boshqarilgan Linux oʻzaro distributiv ish stoli ilova tarqatish standarti. Past darajada Linux yadrosining Namespace va Cgroups mexanizmlariga tayanib, juda qattiq ilova darajasidagi xavfsizlik qum qutisi izolyatsiyasiga erishadi. Bu zamonaviy ochiq kodli OS dasturiy taʼminot markazlarining asosidir)"
 
 msgid "mime_snap"
-msgstr "Snap dastur paketi (2014 yilda Canonical tomonidan taqdim etilgan, Ubuntu asosiy kompaniyasi tomonidan ishlab chiqilgan, Linux umumiy dastur formati. Avtomatik yangilanish, qumloq izolyatsiyasi, 40+ Linux distributivlarini qo'llab-quvvatlaydi, Ubuntu dasturiy ta'minot markazining standart formati)"
+msgstr "Snap konteynerlashtirilgan ilova paketi (2014 yilda Ubuntu ning bosh kompaniyasi Canonical tomonidan taqdim etilgan Linux universal joylashtirish standarti. O‘zini-o‘zi yetarli SquashFS tasvirini oʻrnatish arxitekturasini qo‘llaydi, avtomatlashtirilgan qo‘shimcha yangilanishlar va qattiq AppArmor qum qutisi izolyatsiyasini qo‘llab-quvvatlaydi. Bu Ubuntu Dasturiy Taʼminot Markazi ekotizimining asosiy standart formatidir)"
 
 msgid "mime_deb"
-msgstr "Debian dasturiy ta'minot paketi (1993 yilda Debian loyihasi tomonidan taqdim etilgan, Debian/Ubuntu va ularning hosilalarining standart o'rnatish formati. Dpkg tomonidan boshqariladi, APT uning paket menejeri front-endidir, Linux ekotizimining eng etuk paket formatlaridan biri, bugungi kunda ham Debian oilasining asosiy formatidir)"
+msgstr "DEB tizim dasturiy taʼminot paketi (1993 yilda Debian loyihasi tomonidan oʻrnatilgan ikkilik va manba kodini kapsulalash spetsifikatsiyasi. Debian, Ubuntu va ularning barcha hosilalari uchun asosiy oʻrnatish standarti sifatida, u ochish va parvarishlash uchun dpkg yadrosiga tayanadi va APT ni samarali paket menejeri old qismi sifatida ishlatadi. Bu Linux ekotizimidagi eng etuk dasturiy taʼminot tarqatish poydevoridir)"
 
 msgid "mime_rpm"
-msgstr "RPM dasturiy ta'minot paketi (1997 yilda Red Hat tomonidan taqdim etilgan, Red Hat/Fedora/CentOS/SUSE kabi distributivlarning standart formati. RPM 'Red Hat Package Manager' degan ma'noni anglatadi, DEB bilan birga Linux ning ikkita katta paket formatlaridan biri, bugungi kunda ham RHEL oilasining asosiy formatidir)"
+msgstr "RPM tizim dasturiy taʼminot paketi (1997 yilda Red Hat tomonidan taqdim etilgan Red Hat paket menejeri kapsulalash spetsifikatsiyasi. DEB bilan birga Linux anʼanaviy paket boshqaruvining ikkita asosiy lageridan biri hisoblanadi. U mahalliy tranzaksiya darajasidagi bogʻliqlik tekshiruvi va asosiy dasturiy taʼminot raqamli imzo tekshiruviga ega. Hali ham RHEL, Fedora va CentOS kabi Red Hat oilasi ekotizimlari uchun mutlaq asosiy oqim tarqatish standartidir)"
 
 msgid "mime_pacman"
-msgstr "Arch dasturiy ta'minot paketi (2002 yilda Arch Linux tomonidan taqdim etilgan, pacman paket menejerining .pkg.tar.zst formati. Arch Linux aylanuvchi reliz distributivining asosiy qismi, soddaligi va KISS printsipi bilan mashhur, AUR (Arch User Repository) uning o'ziga xos xususiyatidir)"
+msgstr "Pacman arxivlangan dasturiy taʼminot paketi (2002 yilda Arch Linux tomonidan pacman menejeri bilan birga oʻrnatilgan .pkg.tar.zst kapsulalash formati. Arch ning aylanma yangilash mexanizmining yadrosi sifatida, Zstandard yuqori tezlikdagi yuqori siqish algoritmiga asoslangan, AUR (Arch Foydalanuvchi Dasturiy Taʼminot Ombori) ekotizimi bilan birga. Bu minimalistik va KISS tamoyillarini aks ettiruvchi zamonaviy paket tarqatish standartidir)"
 
 msgid "mime_exe"
-msgstr "EXE bajariladigan fayl (Windows bajariladigan dastur formati, 'Bajariladigan' ning qisqartmasi. Windows operatsion tizimining mahalliy bajariladigan formati, PE tuzilmasini o'z ichiga oladi. MS-DOS ning MZ formatidan rivojlangan, 1993 yilda Windows NT PE (Portable Executable) formatini taqdim etdi va hozirgacha ishlatilmoqda. Dasturiy ta'minot o'rnatish paketlari, dasturlar, tizim vositalari ushbu formatdan foydalanadi. Foydalanuvchi ikki marta bosish orqali ishga tushirishi mumkin, bu dunyodagi eng keng tarqalgan bajariladigan formatdir)"
+msgstr "EXE mahalliy bajariladigan fayl (Windows platformasining Portativ Bajariladigan (PE) ikkilik dastur formati. Texnologiyasi MS-DOS davrining MZ sarlavha tuzilmasidan kelib chiqqan va 1993 Windows NT dan boshlab PE tuzilma spetsifikatsiyasi sifatida to‘liq o‘rnatilgan. Bu mashina kodi koʻrsatmalari, statik resurs segmentlari va tizim yadrosini yuklash uchun dunyodagi eng keng qo‘llaniladigan bajarish standartidir)"
 
 msgid "mime_dll"
-msgstr "DLL dinamik bog'langan kutubxona (1993 yilda Microsoft tomonidan taqdim etilgan, Dynamic Link Library. Windows umumiy kod kutubxonasi, dastur ishlayotganda dinamik ravishda yuklanadi, xotira va disk joyini tejaydi. Tizim komponentlari, dastur plaginlari, drayverlar DLL formatidan foydalanadi. Windows API ni tatbiq qilishning asosiy usuli, DLL Hell muammosi .NET davrida engillashtirilgan)"
+msgstr "DLL dinamik bog‘lovchi kutubxona (Windows platformasining Dinamik Bog‘lovchi Kutubxona umumiy kod kutubxonasi spetsifikatsiyasi. Ish vaqtida dinamik yuklash va belgilarni qayta joylashtirish orqali, u fizik xotira va disk maydonini sezilarli darajada tejaydi. Windows API ning asosiy amalga oshirish shakli sifatida, uning dastlabki DLL Jahannam muammosi zamonaviy davrda SxS parallel izolyatsiyasi mexanizmi bilan butunlay bartaraf qilindi)"
 
 msgid "mime_com"
-msgstr "COM bajariladigan fayl (MS-DOS davrining bajariladigan formati, 'Buyruq' ning qisqartmasi. Fayl tuzilishi sodda, 64KB chegara, Windows 3.x dan oldin asosiy format edi. Endi tugatilgan, zamonaviy Windows EXE formatidan foydalanadi, COM kengaytmasi hali ham ba'zi komponent fayllari uchun ishlatiladi)"
+msgstr "COM klassik bajariladigan fayl (MS-DOS davrining eng qadimgi xotira tasviri (Buyruq) bajarish formati. Tuzilmagan toza kod segmenti dizaynidan foydalanadi, 64KB fizik xotira manzillash segmentining yuqori chegarasi bilan cheklangan. Hozir tarixiy meros formati sifatida nafaqaga chiqarilgan, ammo zamonaviy Windows arxitekturasida cheklangan muvofiqlik uchun maʼlum bir komponent interfeysi sifatida hali ham qo‘llaniladi)"
 
 msgid "mime_aac"
 msgstr "AAC audio (1997 yil MPEG standarti, Advanced Audio Coding. MP3 ning vorisi, bir xil bitrate da MP3 dan yaxshiroq ovoz sifati, YouTube, iTunes, Nintendo Switch ning standart audio formati)"
@@ -1172,7 +1196,7 @@ msgid "mime_alac"
 msgstr "ALAC audio (2004 yilda Apple tomonidan ishlab chiqilgan, Apple Lossless Audio Codec. Apple ning yo'qotishsiz formati, 2011 yilda ochiq kodli qilingan, iTunes va Apple Music yo'qotishsiz audioning standart formati)"
 
 msgid "mime_flac"
-msgstr "FLAC audio (2001 yilda Xiph.Org jamg'armasi tomonidan ishlab chiqilgan, Free Lossless Audio Codec. Yo'qotishsiz siqish, ovoz sifati CD bilan bir xil, fayl hajmi asl WAV ning taxminan yarmiga teng. Ochiq kodli va patentsiz, audiodasturlar va raqamli musiqa kolleksiyalarida birinchi tanlovdir"
+msgstr "FLAC audio (2001 yilda Xiph.Org jamg'armasi tomonidan ishlab chiqilgan, Free Lossless Audio Codec. Yo'qotishsiz siqish, ovoz sifati CD bilan bir xil, fayl hajmi asl WAV ning taxminan yarmiga teng. Ochiq kodli va patentsiz, audiodasturlar va raqamli musiqa kolleksiyalarida birinchi tanlovdir)"
 
 msgid "mime_mp3"
 msgstr "MP3 audio (1993 yilda Fraunhofer instituti tomonidan ishlab chiqilgan, MPEG-1 Audio Layer 3. Yo'qotishli siqish formati, fayl hajmi kichik va ovoz sifati maqbul, 2000-yillarda raqamli musiqa inqilobining asosiy formati, iPod va Napster ning muvaffaqiyatining sababi. 2017 yilda patent muddati tugagan, jamoat mulkiga aylangan)"

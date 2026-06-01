@@ -450,8 +450,8 @@ msgstr "Ostiz - Niver a bajennoù - Niver a c'houlennoù - Ledred - Eur ar welad
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Eur deroù ar weladenn ziwezhañ] hag [Pajenn diwezhañ ar weladenn ziwezhañ] ne vezont enrollet nemet ma n'eo ket echu an dalc'h"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "War ar bajenn degemer ne vez diskwelet nemet an %s elfenn gentañ gant ar muiañ a c'houlennoù. Gwelet ar roll klok war ar bajenn munudoù."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "An %s kentañ a zo renket hervez an niver a skoioù en urzh diskennus; urzh an elfennoù all n'eo ket termenet."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Implijer kevreet - Niver a bajennoù - Niver a c'houlennoù - Ledred - Eur ar weladenn ziwezhañ"
@@ -465,8 +465,8 @@ msgstr "ID preñv - Niver a c'houlennoù - Ledred - Eur ar weladenn ziwezhañ"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Postel - Niver a c'houlennoù - Ledred - Eur ar weladenn ziwezhañ"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "War ar bajenn degemer ne vez diskwelet nemet ar %s postel gentañ gant ar muiañ a c'houlennoù. Gwelet ar roll klok war ar bajenn munudoù."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "An %s chomlec'h postel kentañ a zo renket hervez an niver a skoioù en urzh diskennus; urzh ar chomlec'hioù all n'eo ket termenet."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Niver a bajennoù - Ledred - Moned - Mont er-maez"
@@ -675,6 +675,27 @@ msgstr "N'ouzhver Parameter SiteDomain ebet hoc'hall bezañ termenet er restr co
 msgid "Please run as Administrator to set permissions"
 msgstr "Kit en-dro evel Merour evit aotreañ ar gwirioù"
 
+msgid "This directory lacks read permission"
+msgstr "An teuliad-mañ n'eus ket a aotre lenn"
+
+msgid "Please set read permission for directory"
+msgstr "Lakait un aotre lenn evit an teuliad"
+
+msgid "Missing required parameter in config file"
+msgstr "Diank eo un arventenn rekis er restr kefluniadur"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Gwiriit mar plij ez eus termenet 'DirData'."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Mankout pe diglok eo anv domani an ajañs merdeer"
+
+msgid "Please check the URL parameter"
+msgstr "Gwiriit arventenn URL mar plij"
+
+msgid "Format description"
+msgstr "Deskrivadur furmat"
+
 msgid "Please set execute permission"
 msgstr "Lakit aotre seveniñ mar plij"
 
@@ -800,376 +821,379 @@ msgstr "Skaraber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Restr testenn (standardadur ASCII e 1963, testenn blaen difurmad. Diazez an holl gouennoù tarzh, kefluniadur, kazetennoù. Unix a implij LF, Windows CRLF evit hasañ al linennoù, chomet ez eus c'hoazh ar furmat roadennoù standardañ war an urzhiataerioù)"
+msgstr "TXT (Restr testenn blaen. Testenn blaen hep furmadur ebet, standartezet gant kod ASCII e 1963. Diazez pep kod tarzh, restr kefluniadur ha log reizhiad. Gant e reolennoù dibenn linenn etre-platform (CRLF e Windows, LF e Unix), chom a ra ar standart eskemm roadennoù hollekusañ er bed urzhiataer)"
 
 msgid "mime_log"
-msgstr "Restr kazetenn (restroù testenn a enroll titouroù oberata ar sistem hag ar meziantoù, implijet alies evit dihegañ, displegañ ar c'hasoù ha gwiriañ ar surentez. Er furmadoù standard emañ Apache combined log, Nginx access log, syslog, h.a.)"
+msgstr "LOG (Log mont-en-dre ar reizhiad. Restr testenn blaen a enroll stad mont-en-dre ar reizhiad korvoiñ, ar c'hernel hag ar meziantoù. Ennañ logioù moned Nginx/Apache (Log Kenaozet) ha reolennadur syslog. Ar vammenn roadennoù greiz eo evit diskoulmañ kudennoù, dielfennañ berzhusted ha auditerezh surentez)"
 
 msgid "mime_page"
-msgstr "Pajenn web HTML (Ijinadenn Tim Berners-Lee eus World Wide Web e 1989, termenadur an teir c'heval HTML/HTTP/URL e 1990, gant frankiz hep patant. HTML5 zo deuet da vezañ ur standard ofisiel W3C e 2014, a skor diskwel, liesvedia ha moullañ. Priz Turing 2016)"
+msgstr "HTML (Pajenn web hipertestenn. Diazez hollek ar World Wide Web krouet gant Tim Berners-Lee e 1989. Ur yezh vermenadur hipertestenn hollek digoust. Standartezet eo bet ar spesad HTML5 gant ar W3C e 2014. A-enep nativel eo d'ar media strishadur, d'ar etreobererezh semantek ha d'ar c'hinadur pajennoù fluidek. Priz Turing e 2016)"
 
 msgid "mime_khtml"
-msgstr "KHTML web engine (KDE 2.0 e 1998, engine rentañ ar merdeer Konqueror. Krouiñ a reas Apple e 2001 WebKit diwar KHTML, ha krouiñ a reas Google e 2008 Blink diwar WebKit, da vezañ kalon ar merdeerien evel Chrome, Edge, Safari. Ur skouer eus diazezadur ar merdeerien a-vremañ gant ar gumuniezh open source, treuskellet eo e c'houred gant WebKit/Blink betek hiziv)"
+msgstr "KHTML (Mekanik patrom pajenn web. Spesad mekanik rentañ ar merdeer KDE 2.0 eus 1998. Ur skouer eo e kumuniezh an open source evit diazez ar rentañ web modern. E hêrezh teknikel a awenas ha a zegasas da naskoù WebKit an Apple ha Blink Google, hag a endalc'h hiziv c'hoazh he donezon dre arkitekturoù pajennoù web dinamik modern)"
 
 msgid "mime_script"
-msgstr "Yezh skript oberiant (yezh skridaozet, hep ezomm d'he c'hompilañ. Enni ASP, JSP, CGI, ColdFusion, Tcl, VBScript, h.a., implijet e-kerzh ar c'hentañ prantadoù diorren Web, melestradur sistemoù, emgefrekaat an trevelloù. Ar yezhoù skript a-vremañ evel Python, Ruby, JavaScript a zo deuet da vezañ benvegoù pennañ en diorren a-bep tu)"
+msgstr "SCRIPT (Skript dinamik ezharmenet. Rummad hollek ar gwazhioù tarzh a vez lennet ha sevenet linenn gant linenn gant un ezharner pe ur c'hoarier d'ar mare. Ennañ ASP, JSP, CGI ha Tcl, implijet kalz evit etrefasioù porched hollek d'ar servijer, evit kontrollañ prosessoù emgefre ha evit pegadur trevelloù live-reizhiad)"
 
 msgid "mime_js"
-msgstr "Skript JavaScript (Krouet gant Brendan Eich e 10 deiz e Netscape e 1995, yezh orin ur medalenn. Standardadur ECMAScript e 1997, deuet da vezañ yezh etre-plataformoù gant Node.js e 2009, npm eo ar gwellañ merour pakadoù er bed. Yezh ar muiañ implijet war GitHub abaoe pell)"
+msgstr "JavaScript (Skript. Endro programmiñ naturel ar merdeer Netscape e 1995. E 1997 e voe diazezet ar standart greantel ECMAScript. E 2009 e ganedigezh an ezharner Node.js a dorras harzhoù ar merdeer hag a zigoras an arkitekturañ asinkron ha nann-stankaus full-stack, asambles gant ekosistem pakadoù npm, an hirañ er bed)"
 
 msgid "mime_py"
-msgstr "Skript Python (Krouet gant Guido van Rossum e 1991, brudet evit he enklozadur ret hag he c'heflusker eeun. Implijet kalz e diorren web, skiant ar roadennoù, ijinadenn artefact, emgefrekaat melestradur. Priz TIOBE evit yezh ar bloaz meur a wech)"
+msgstr "Python (Skript. Ur yezh skriptañ ezharmenet a live uhel krouet gant Guido van Rossum e 1991. Gant he lennusted dre ret e-keñver al lec'hiañ hag he c'heal toud- liesstumm, ez eo deuet da vezañ ar standart greantel evit arkitekturañ web modern, skiant roadennoù full-stack, stumadur patromoù IAG (AI) ha trevadur emgefre ha trevadur nativel (cloud-native) e bed ar DevOps)"
 
 msgid "mime_sh"
-msgstr "Skript Shell (Ganet Unix e 1971, yezh an difuzenn. Implijet evit melestradur sistemoù, emgefrekaat an trevelloù, loc'hañ servijoù, skriptoù digejañ. Gouiziegezh ret evit melestradur Linux)"
+msgstr "Shell (Skript. Skript ezharner urzhioù standart eus mare Unix (1971). Ennañ reolennadurioù urzhioù live-kernel evel Bash, Sh, Dash, hag a vez sevenet gant al lostger .sh. Pegadur hollek live-kernel eo evit kontrollañ prosessoù izel, kefluniadur endro hep staliañ hag implijadur emgefre en holl reizhiadoù Unix modern)"
 
 msgid "mime_rb"
-msgstr "Skript Ruby (Krouet gant Yukihiro Matsumoto e 1995, poentet war laouender an diorroer. Framm Ruby on Rails zo bet ar gentañ diwar ar patrom konveañs a-raok kefluniadur, dougenet en deus levezon war frammoù ar web a-vremañ)"
+msgstr "Ruby (Skript. Yezh skriptañ kentelius-objed krouet gant Yukihiro Matsumoto (Matz) e 1995. Gant ar brederouriezh sevel diazezet war an anaoudegezh diorroer, he framm Ruby on Rails a zispakas ar patrom diorren 'Convention over Configuration (CoC)' evit arkitekturañ web modern a live uhel)"
 
 msgid "mime_pl"
-msgstr "Skript Perl (Krouet gant Larry Wall e 1987, brudet evit bezañ rakktuellel, lesanvet alies 'kontell Suis'. CPAN eo an araogenn eus ar merourien pakadoù a-vremañ, levezon pobel e tachennoù eilpenn testenn, melestradur sistem ha CGI)"
+msgstr "Perl (Skript. Yezh skriptañ feukadel krouet gant Larry Wall e 1987. Enklasker ar merour pakadoù modern (CPAN), lesanvet 'Goulliog Suis' ar pleustradur testenn. E mod CGI modern e talc'h da vezañ un diaz uhel-fiziañs e domani an dielfennañ logioù, gant ur spiradur izel-tre e-keñver ar c'hortoz fizikel hag ur pledadur efedus e-keñver an eztaoladennoù reoliek)"
 
 msgid "mime_php"
-msgstr "Pajenn web oberiant PHP (Krouet gant Rasmus Lerdorf e 1995, treset a-ratozh evit diorren web. Ouzhpenn 70% eus al lec'hiennoù web er bed a implij anezhañ, a bourchas platformoù evel WordPress, Facebook, Wikipedia. Digas a ra PHP 8 ar c'hampoelladur JIT, a wella kalz ar c'hasoù)"
+msgstr "PHP (Pajenn web dinamik. Krouet gant Rasmus Lerdorf e 1995, ha treset evit diorren ar web. Ar greizenn teknikel eo a gas war-raok ouzhpenn 70% eus al lec'hiennoù web er bed. E-leizh a zoug a ra ar meziantoù bras e-lec'h produiñ evel WordPress ha Wikipedia. Gant degasadenn e ezharner JIT (Just-In-Time) e PHP 8, ez eo emdroet war-du ur servijer full-stack berzhus uhel)"
 
 msgid "mime_image"
-msgstr "Restr skeudenn"
+msgstr "IMAGE (Rummad ar pezhioù skeudenn. Rummad hollek ennañ skeudennoù gweredoù gant/dreistkollet (lossy/lossless), skeudennoù respontus modern ha tresadennoù vektor. Un taolennvan greiz eo evit priziañ karg kargañ danvez-arseller ul lec'hienn, feur aketañ an e-tal (cache) war-du ar c'hliant hag oberadur gwazhband ar mediaoù)"
 
 msgid "mime_document"
-msgstr "Restr teul"
+msgstr "DOCUMENT (Rummad an teulioù frammet. Rummad hollek ennañ testenn blaen, follennoù jediñ, teulioù furmad fiks (PDF) ha yezhoù vermenadur skañv. Un taolennvan greiz eo evit ar stadegoù e-keñver dasparzh goulev diaz keleier stadel a-berzh ar servijer, pellgargañ danvezioù jediñ an embregerezhioù hag evit rikloz ar gwazhioù testenn)"
 
 msgid "mime_package"
-msgstr "Pakad meziant"
+msgstr "PACKAGE (Rummad ar meziantoù kenaozet. Rummad hollek ennañ programmoù ezharmadus naturel ar reizhiad korvoiñ, levraouegoù liamm e-pad al labour (DLL/SO) ha pakadoù staliañ ar meziantoù. Lakaet alies e-penn ar ventiñ evit priziañ mont en-dro ez-karg (bandwidth) lec'hiennoù dasparzh ar meziantoù)"
 
 msgid "mime_archive"
-msgstr "Restr dasket Gzip (Ragoll GPL 1992, diazezet war ar valizenn DEFLATE. Implijet er Web evit daskorenn red ar respontoù, an daskorenn a zo 60-90% alies. Goude 2015 eo bet erlec'hiet gant Brotli e maezienn a bep seurt, met chomet ez eo ar furmat daskor ar muiañ skoret e tu ar servijer)"
+msgstr "ARCHIVE (Restroù gwasket. Rummad hollek ar pakadoù roadennoù gwasket diazezet war algoritmoù evel DEFLATE, LZMA. Er gwiskad kenrouedad, estreget dasparzh hengounel ar pakadoù, ennañ ivez gwazhioù gant kenderc'hiñ Gzip (1992) ar raktres GNU. Daoust ma vez gwelet nebeut a-walc'h a implij eus algoritm Brotli er evit brasterezhioù modern, chom a ra ar rummad-mañ ul lavarenn greiz evit gargañ ez-karg ar servijerioù hag izelaat ar gwask er gwiskad treuzkas)"
 
 msgid "mime_audio"
-msgstr "Restr son"
+msgstr "AUDIO (Rummad ar gwazhioù niverel son. Rummad hollek ennañ son gwasket, levrioù-lavar hag endalc'herioù son kendiviz. Diazezet war ur c'hodadur reoliek son, implijet evit evezhiañ feur rikloz ar gwazhioù son war lec'hiennoù liesmedia, gwazhband ar c'hendiviz hag oberadenn al liammoù hir)"
 
 msgid "mime_video"
-msgstr "Restr video"
+msgstr "VIDEO (Rummad ar gwazhioù niverel video. Rummad hollek ennañ endalc'herioù video gant uhel-spisverzh, tresadennoù-bev modern ha tammoù kendiviz. Un taolennvan greiz eo e-pad ar c'harg rouedad uhel evit priziañ dreistpouezh gwazhband ar servijer ha berzhusted ar Rouedad Dasparzh Danvez (CDN))"
 
 msgid "mime_jscript"
-msgstr "JavaScript (diorroet gant Brendan Eich e 1995)"
+msgstr "JScript (Skript. Ur skript perc'henniezh ijin-warez bet diorroet gant Microsoft e 1996 evit Internet Explorer 3.0. Evel kevezer d'ar JavaScript klasel, e oa an nask greiz evit Windows Script Host (WSH) hag evit backendoù kozh ASP)"
 
 msgid "mime_json"
-msgstr "Roadennoù JSON (kinniget gant Douglas Crockford e 2001, furmat skañv evit an eskemm roadennoù, standardenn wirvoudel evit an APIoù Web)"
+msgstr "JSON (Roadennoù frammet. Furmad skañv heuliata roadennoù evit an eskemm savet gant Douglas Crockford e 2001. Ur sav-treust diazezet war goubladoù talvoudegezhioù-alc'hwez ha taolennadoù testenn, gant un lennusted uhel gant an dud ha perzhioù ezharmadur nann-stankaus. Ar standart 'facto' eo evit APIoù web modern, arkitekturañ mikro-servijoù hag etreoberiadur gant patromoù bras)"
 
 msgid "mime_vbs"
-msgstr "VBScript (diorroet gant Microsoft e 1996, yezh skript evit Windows, implijet evit ar pajennoù web ASP hag ar skriptoù melestradur Windows. Gant brud a-gresk PowerShell ha JavaScript, dilezet e vez tamm-ha-tamm)"
+msgstr "VBScript (Skript. Adstumm eus yezh ar skriptoù bet embannet gant Microsoft gant IE 3.0 e 1996. Bez e oa an nask evit al lec'hiennoù ASP kozh ha melestradur ar sistem Windows. Bremañ eo bet dilezet ha skarzhet gant Microsoft e kernelell nevesañ Windows 11. Un teknologiezh relek eo)"
 
 msgid "mime_conf"
-msgstr "Restr kefluniadur (enrolhañ kefluniadurioù ur meziant en testenn, furmadoù boutin: INI, JSON, YAML, TOML, XML. Kefluniadurioù sistem Linux zo e teuliad /ec'h)
+msgstr "CONF (Restr kefluniadur ar reizhiad. Rummad ar restroù a vaga a-hed pad an trevalloù roadennoù parametroù endro un meziant en un doare testenn blaen. Enno reolennadurioù INI ha reolennadurioù modern YAML, TOML, JSON. E sistem Linux emaint muioc'h e kavout er c'havlec'h /etc. Ur gourc'hemenn greiz eo evit ar mont-en-dre reizhiad)"
 
 msgid "mime_css"
-msgstr "Folenn stil CSS (Standardadur CSS1 kentañ an W3C e miz Kerzu 1996, CSS2 a ouzhpenne lec'hiañ ha seurtoù media e 1998, adalek 2011 eo bet degaset CSS3 ma ziz e stumm modul gant gornioù troet, bevaatennoù, flexbox, gridenn kinkl ha tres respontus. Gant HTML ha JavaScript e sav an teir c'heval pennañ evit ar frontend, holl verdeerien a-vremañ (Chrome, Firefox, Safari, Edge) o skor anezhañ, an hini nemeti eo evit termeniñ ar stiloù web)
+msgstr "CSS (Follenn a stumm. Standart W3C e 1996, unan eus an tri greiz evit an talbenn (front-end) gant HTML ha JS. Dre zirolladur modul CSS2 (lec'hiadur) ha CSS3, a-enep nativel eo d'ar voestoù laosk (Flexbox), d'ar grid ha d'ar c'heal 'response design' evit an endroioù lies. Ar reolenn domaniant meurbet eo evit distagañ ar pajennoù web hag o diskwel er merdeerioù modern)"
 
 msgid "mime_xsl"
-msgstr "Folenn stil XSL (Standard W3C 1999, yezh evit treuzfurmiñ teulioù XML, a c'hall treuzfurmiñ XML e HTML/PDF/testenn. Goude brudetadur JSON eo digresket an implij)
+msgstr "XSL (Follenn a stumm. Standart W3C e 1999, ennañ yezhoù treuzfurmadur XSLT ha yezh oberiadur XPath. Implijet evit diskwel roadennoù frammet XML e HTML, PDF pe testenn blaen. Hiziv-an-deiz, en diorren modern, eo bet erlerc'hiet e ekosistem kalz gant mekanegoù patromoù skañvoc'h ha gant ar furmad JSON)"
 
 msgid "mime_runtime"
-msgstr "Restr da seveniñ (furmad seveniñ ar sistem ergerzhet evel EXE, ELF, Mach-O, ennañ kod mindrailh ha titouroù evit kargañ)
+msgstr "Restr ezharmadus (furmmadoù ezharmadur naturel ar reizhiad korvoiñ evel EXE, ELF, Mach-O. Ennañ kod-melin kenaozet live izel, ar poent moned ha ditouroù kargañ ar reizhiad)"
 
 msgid "mime_library"
-msgstr "Restr levraoueg (DLL, SO, dylib, h.a. levraouegoù stag dinamik, kod rannet a vez karget pan loc'h ar programm)
+msgstr "Restr levraoueg (Levraouegoù liamm pe dinamik (DLL, SO, dylib). Enno arouezioù troerien ha kod adsavet evit bezañ galvet ha karget e-pad al labour gant programmoù all)"
 
 msgid "mime_swf"
-msgstr "Bevaadenn Flash (diorroet gant Macromedia e 1996, perc'hennet gant Adobe war lerc'h. Standard evit ar bevaatennoù web etrewi, a rene war ar c'hargoù a-bezh en internet. Gwalladoù : diwar-bouez ur c'houplad eo, n'eo ket skoret war ar pellgomzerioù hezoug, riskoù surentez uhel. Disklêriet eo bet un tennad gant Adobe e 2017, skor rik un tennad e 2020, erlec'hiet gant HTML5/CSS3/JS)
+msgstr "Flash (Animadur (Macromedia Flash). Standart evit an animadurioù web etreoberiat, diorroet gant Macromedia e 1996, prenet gant Adobe e 2005. Beleac'h ar web evit an animadurioù hag ar c'hoarioù. Poentoù kizidik : bez' ez eus ezhomm ur plugin, skor ebet war ar pellgomzerioù hezoug, riskl surentez uhel. E 2017 eo bet disklêriet e baouez gant Adobe, hag e 2020 eo bet paouezet klok. Erlec'hiet gant HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "Termenadur doare teul DTD (spisadur XML, termenadur framm an teul XML, implijet evit gwiriañ reizhded XML)
+msgstr "DTD (Termenadur doare an teul (Document Type Definition). Embannet gant XML 1.0 e 1998, evit termeniñ framm an teulioù XML/HTML ha gwiriañ o zerrienn. En diorren modern, eo bet erlerc'hiet tamm ha tamm gant digemmennoù plegusoc'h evel XML Schema pe RELAX NG)"
 
 msgid "mime_csv"
-msgstr "Furmat roadennoù CSV (talvoudoù dispartiet gant virgulenn, furmat hollek evit roadennoù taolenn, standard evit enporzhiañ/ezporzhiañ e Excel ha diazoù roadennoù)
+msgstr "CSV (Furmad roadennoù. Talvoudoù rannet gant skejoù. Ur furmad taolennoù testenn blaen hollek eus mare an datorioù bras (klenner IBM Fortran) e 1972. Kenaozet ent-ofisiel gant an RFC 4180 e 2005. Ur standart eskemm roadennoù nann-stankaus a-dreuz ar reizhiadoù hag ar yezhoù. Implijet kalz evit enporzhiañ hag ezporzhiañ en Excel, er bazioù roadennoù ereadurel hag en dielfennañ roadennoù (Pandas))"
+
+msgid "mime_cur"
+msgstr ".cur (Restr bizied logodenn (kurzor). Furmat .cur, evit personelaat stumm ar bizied logodenn (da sk. bizied biz-meud war ar pajennoù web, eoulier ar gortoz e sistemioù...). Kar eo d'ar furmad .ico, met ouzhpennet e vez dezhañ ur poent 'tomm' – lec'h wir ar klik eo. Istor : degaset gant Windows 3.1 (1992), un elfenn dibar e oa e-pad ar mare ma troe an etrefas grafik eus al linenn-urzh d'al logodenn)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (lañser meziant Java, teknologiezh evit dasparzhañ meziantoù burev Java er bloavezhioù 2000, dilezet bremañ)
+msgstr "Java Web Start (Un teknologiezh dasparzh meziantoù burev Java e 2000. A lañse ur meziant Java a-bell dre ur restr .jnlp. En deus paouezet abalamour d'ar c'hudennoù surentez ha d'an doareoù dasparzh modern)"
 
 msgid "mime_lit"
-msgstr "LIT levr elektronek Microsoft (kinniget gant Microsoft e 2000, furmat LIT, dilezet)
+msgstr "Microsoft Reader (Levr elektronek. Furmat LIT (2000) gant Microsoft. Peurechu. Hiziv e c'haller e dreiñ da EPUB pe PDF gant binvioù evel Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vektorek skeudenn (W3C standard 1999, Microsoft a broumove pell e furmad VML dezhañ, Internet Explorer ne skoazellas anezhañ nemet e 2011, setu perak e voe daleet e vediñ. Goude 2015, pa voe dilezet IE ha pa voe diorroet ar skrammoù gant dishualder uhel, dont a reas da vezañ ar c'hentañ dibab evit al lugelloù hag ar logotipoù)"
+msgstr "SVG (Skeudenn vektor. Standart W3C e 1999. Ur furmad skeudennoù vektor daou-zomaniezh diazezet war XML. Gant an avantaj na goll ket e barregezh er c'hreskadur hag an treuskasadur testenn er gwazh. Skoret ent-nativel gant an holl verdeerioù modern. Implijet evit tresadennoù rikl, logoioù ha tresadennoù-bev vektor. Ar reolenn greiz eo evit ar grafikennoù web modern)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektorek skeudenn (kinniget e 1987, furmad vektorek standart ar greanterezh, dibab kentañ evit ar moullañ tresoù, logotipoù, lugelloù)"
+msgstr "AI (Skeudenn vektor. Furmat vektor perc'henniezh diorroet gant Adobe e 1987. Ar reolenn greiz eo evit diorren an aozadurioù (layout) er brassañ, ar moullañ hag an tresadennoù bruderezh (branding). Skorañ a ra meur a liveadur hag roadennoù vektor aozadur a live uhel. Ar pezh a vez kavet gwelloc'h gant an arzourien vicher)"
 
 msgid "mime_phshop"
-msgstr "Photoshop skeudenn (Adobe a ginnigas anezhañ e 1990, furmad PSD eus restr orin Photoshop, standart ar greanterezh evit ar skeudennoù)"
+msgstr "PSD (Skeudenn liveadur (layers). Furmat mammenn bitmap perc'henniezh gant Adobe ha Photoshop e 1990. Skorañ a ra meur a liveadur, kanolioù, maskloù hag ur c'hempenn hep koll. Deuet eo da vezañ standart ar vicher evit an tresadennoù niverel hag an treserezh)"
 
 msgid "mime_ttf"
-msgstr "TrueType font (Apple ha Microsoft a gevredas e 1989, furmad font vektorek, diskouezidigezh ingal war skramm ha moullañ, furmad font dre ziouer er reizhiadoù korzenneg a-vremañ)"
+msgstr "TrueType (Nodrez. Furmat nodrez nivelel (outline font) diorroet gant Apple ha Microsoft e 1989. Diazezet war grommennoù Bezièr eeun (quadratic). Aotren a ra disoc'hoù parfet etre skramm ha moulladur e-keñver ar piksel. Ar furmat nodrez dre ziouer e pep reizhiad korvoiñ burev modern)"
 
 msgid "mime_fon"
-msgstr "WOFF2 font web (Aledad W3C 2014, implij a ra an algoritm BROTLI evit an daskor, ment ar restroù a zo bet bihanaet gant 30% e-keñver an doare WOFF kent, ha muioc'h evit 50% e-keñver TTF/OTF. Skoret eo hiziv gant an holl verdeerien a-vremañ, setu eo an dibab kentañ evit ar fontoù web hiziv, skoret gant 98% eus ar merdeerien)"
+msgstr "FON (Nodrez piksel. Furmat nodrez poentoù (dot matrix) e live sistem e deroù Microsoft Windows (bloavezhioù 1980). Ne skor ket ar c'hreskadurioù mentoù digemm. Lakaet alies e sistemioù relek pe e lodennoù trevnadoù enframmet evit tresañ testennoù gant sikour pikseloù bevennet)"
 
 msgid "mime_pdf"
-msgstr "Teul PDF (diorroet gant Adobe e 1993, er bloaz 2008 e teuas da vezañ un standard ISO etrebroadel. Ur furmad teul treuzplataforma a vir ingalded ar furmad, ur standard bedel evit dasparzhañ an teulioù elektronek)"
+msgstr "PDF (Teul elektronek. Furmat teul pajennoù fiks (cross-platform) diorroet gant Adobe e 1993, ha deuet da vezañ standart ISO 32000 e 2008. Gantañ ur fealded krenn e-keñver an aozadur hag ar c'hempenn. Ar reolenn hollek evit dasparzh an teulioù ofisiel elektronek hag an embannadur niverel)"
 
 msgid "mime_dotnet"
-msgstr "Pajenn ASP.NET dinamek (kinniget gant Microsoft e 2002, teknologiezh pajennoù web dinamek evit savenn Windows, ul lodenn eus .NET Framework)"
+msgstr "ASP.NET (Pajenn dinamik. Un teknologiezh pajennoù web dinamik a-berzh ar servijer, bet embannet gant Microsoft e 2002 gant an arc'hwelouri .NET. Karget e vez e mekanik IIS. Implijet evit sevel meziantoù web dinamik a live embregerezh evit servijerioù Windows ha reizhiadoù dasparzhet)"
 
 msgid "mime_mdb"
-msgstr "Roadennoù diaz Access (Restr roadennoù Microsoft Access, kinniget e 1992, diskoulm evit ar roadennoù burev war Windows)"
+msgstr "MDB (Bazenn roadennoù ereadurel. Furmat stokadenn bazenn roadennoù ereadurel a live burev, embannet gant Microsoft gant Access e 1992. Ennañ mekanik bazenn roadennoù Jet. Un diskoulm bazenn roadennoù er grennoù hag er reizhiadoù keleiererezh kentañ evit an embregerezhioù bihan ha krenn e oa)"
 
 msgid "mime_md"
-msgstr "Teul Markdown (Krouet gant John Gruber e 2004, bet levezonet e saviadur gant reStructuredText ha Setext. Ar brederouriezh 'lennusted par d'ar skrammadur' eo he c'halon, an doare orin Markdown.pl a ra gant jedadurioù reoliek Perl. An doareoù deveret a gaver GFM (2013), CommonMark (2017), Pandoc Markdown, hag all. O lakaat tro ekosistemoù evel GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, setu eo deuet da vezañ ar furmad standart wirvoudel evit ar ganerien lec'hiennoù stadel hag evit teuliadoù an diorroerien)"
+msgstr "Markdown (Teul. Ur yezh vermenadur skañv krouet gant John Gruber e 2004. A-hervez, 'lennus evel m'eo skrammet' eo e brederouriezh greiz. Hag eñ a gas war-raok an isreolennadurioù modern evel GFM ha CommonMark. Un eskemm kreiz eo e kalz teulioù teknikel, ar gouleier keleier (evel Obsidian) hag e ganerien lec'hiennoù web statel modern)"
 
 msgid "mime_crystal"
-msgstr "Furmad destivell Crystal Reports (destivelloù embregerel SAP, furmad standart evit an destivelloù er c'hevredadoù)"
+msgstr "Crystal Reports (Danevell. Furmat restroù danevelloù a live micherel evit ar savenn SAP Business Intelligence (BI). Gant un naeredigezh d'ar vammennoù roadennoù lies, un tresadur grafikoù dinamek kevret. E implij kalz dre ar bed en embregerezhioù etrevroadel evit an danevelloù micherel er sistemioù arc'hantus hag en dielfennañ roadennoù)"
 
 msgid "mime_libreoffice"
-msgstr "Teul LibreOffice (Diorroet gant The Document Foundation e 2010, adskourr OpenOffice, an doare neuziadur eus ar standard ODF, kinkladur pennañ an open source evit ar burev)"
+msgstr "LibreOffice (Teul. Furmat perc'henniezh eus ar pakad burev digor e 2010 gant The Document Foundation, savet war skourr OpenOffice. Roet eo e pleustr dre wellan d'ar reolenn etrebroadel ODF (OpenDocument Format) ar W3C. An diazez burev eo evit an ekosistem digor modern)"
 
 msgid "mime_encrypt"
-msgstr "Restr sifret (ret eo e zizifrañ evit e lenn, astennoù boutin : .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT (Restr sifret. Roadennoù diwar keveler pe testenn, bet treuzfurmet gant un algoritm sifret a-simmertr pe nann-a-simmertr. Ennañ furmmadoù deveret evel .enc, .pgp, .gpg. Er gwiskad rouedad, implijet evit gwareziñ kuzhder ha dibledusted ar roadennoù prevez)"
 
 msgid "mime_gpx"
-msgstr "Roadennoù hent GPS (Furmad eskemm evit an hentoù, a enrol titouroù diwar-benn al lec'hiadur, furmad hollek evit an eurier sport hag ar benvegoù merdeiñ)"
+msgstr "GPX (Roadennoù hentoù loarell. Furmat eskemm evit ar sistem lec'hiañ hollek (GPS) diazezet war XML. A-ziforc'h eo evit tremen ar c'hoordinaonoù douaroniel, ar poentoù, an hentoù hag an hentoù istorel. Ur standart digor hollek eo evit ardivinkoù fiñv a-vremañ, bageadur ar c'hirri ha sistemioù Titouroù Douaroniel (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Skeudenn pladenn (DMG, ISO, IMG, hag all, a zo restroù evit lenn ar pladennoù pe ar c'hodelloù, implijet evit dasparzhañ meziantoù pe evit sklaergadennoù media ar sanailh)"
+msgstr "Disk Image (Skeudenn gantenn. Restr skeudenn eus skiantadur ar gantenn (sector- dre-sector) evit ar gantennoù fizikel pe ar gantennoù optik (ISO, DMG, IMG...). Implijet evit trevadur reizhiadoù izel, dasparzh surañ meziantoù bras ha gwarediñ klok roadennoù ouzh live fizikel ar skor"
 
 msgid "mime_vm"
-msgstr "Skeudenn urzhiataer dre nij (VMDK, VDI, VHDX, OVA, hag all, restroù pladenn dre nij, furmadoù evit al lec'hioù nijadur evel VMware, VirtualBox, Hyper-V)"
+msgstr "VM (Skeudenn mentez-virtual. Ennañ VMDK, VDI, VHDX, OVA, skeudennoù gantennoù fizikel mentez. Diazez savennoù evel VMware, VirtualBox ha Hyper-V, implijet evit trevnadur efanerezh live reizhiad, kemerañ marilhoù prantad (snapshots) ha dasparzh ar c'heflusker (infrastructure) a-ziwar ar goabrenn)"
 
 msgid "mime_torrent"
-msgstr "Restr had BitTorrent (Bram Cohen a grouas anezhañ e 2001, restr menegaouiñ evit ar pellgargadurioù P2P, a zo ennañ metaroadennoù ar restr ha titouroù war ar Tracker)"
+msgstr "BitTorrent (Restr seed. Meneger pellgargañ dasparzhet a-zoare P2P (dafar-ouzh-dafar) gant Bram Cohen e 2001. Diazezet war enkodadur Bencode, a vaga roadennoù metadilenn gwiriañ ar restroù hag e lerennoù trec'h Tracker. Ar greizenn evit an dasparzh gwazhioù rouedad digreizennañ eo)"
 
 msgid "mime_gis"
-msgstr "Roadennoù GIS douaroniel (furmadoù roadennoù drevadennoù evel Shapefile, GeoJSON, implijet evit ar c'hartennoù hag evit an anadennoù ec'honder)"
+msgstr "GIS (Roadennoù egor douaroniel. Ur standart roadennoù e-keñver ar sistem keleier douaroniel (GIS) gant Shapefile ha GeoJSON. Ennañ kevelerioù mentoniezh liesment, topologiezh liveadur ha roadennoù perzh. Implijet kalz evit tresadur kartennoù niverel gant uhel-resisted, pell-klevout dre loarell hag e dielfennañ mentoniezh ar space)"
 
 msgid "mime_ebook"
-msgstr "Levr elektronek (furmadoù levr elektronek evel EPUB, MOBI, AZW. EPUB a zo ar standard etrebroadel, MOBI/AZW a zo furmadoù evit Amazon Kindle)"
+msgstr "EBOOK (Levr elektronek. Furmat embann niverel gant ar standart etrebroadel digor EPUB ar W3C hag an arc'hwelourien MOBI/AZW perc'henniezh gant Amazon Kindle. Skorañ a ra an aozadur er gwazh (flow layout), ar pakadur metaroadennoù hag ar Gwarez gwirioù niverel (DRM). Bez eo ar karbed hollek evit al lenn niverel war ardivinkoù hezoug)"
 
 msgid "mime_avif"
-msgstr "Skeudenn AVIF (kinniget gant Alliance for Open Media e 2019, diazezet war ar c'hod AV1, ar feur daskor a zo 50% uheloc'h eget WebP, ur standard nevez evit ar skeudennoù web)"
+msgstr "AVIF (Skeudenn berzhus-kenañ. Ur standart skeudennoù dreist-uhel-spisverzh (next-generation) bet embannet gant ar C'hevredad Media Digor (AOMedia) e 2019. Diazezet war teknologiezh ar c'hadroù-tremen evit ar video AV1, gant ur feur gwaskadur 50% uheloc'h evit WebP, ha skor nativel evit ar skeuliad dinamek (HDR). Ar standart redonek evit treuzkas skeudennoù war ar web modern)"
 
 msgid "mime_markdown"
-msgstr "Teul Markdown (treset gant John Gruber e 2004, ur yezh verkañ skañv, furmad hollek evit GitHub README, evit an teuliadurioù teknikel, evit ar foromoù)"
+msgstr "Markdown (Teul skañv. Un doare da verkout testennoù skañv krouet gant John Gruber e 2004. Tres testenn blaen disklêriat (declarative design). Gant un tresadur doare-skrivañ awenet gant reStructuredText. E implij kalz e raktresoù GitHub, e teulioù teknikel live-iengezh ha e ekosistem ar c'heleier statel modern)"
 
 msgid "mime_yaml"
-msgstr "Kefluniadur YAML (treset gant Clark Evans e 2001, ur furmad heñchadur roadennoù lennus d'an den, furmad standart restr kefluniadur evit Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML (Kefluniadur heuliata. Un furmad heuliata roadennoù lennus gant Mab-Den, treset gant Clark Evans ha kenseurted e 2001. Diazezet war al lec'hiañ liveour hag ar c'hevalennoù alc'hwez-talvoud. Savet eo evel standart kefluniadur evit ar c'heflusker nativel (cloud-native) evel arc'hweladur c'honterennoù Kubernetes, emgefre Ansible ha Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Kefluniadur TOML (treset gant Tom Preston-Werner e 2013, 'Tom's Obvious Minimal Language', furmad restr kefluniadur evit ar benvegoù a-vremañ evel Rust/Cargo, Python/pip, Go)"
+msgstr "TOML (Kefluniadur semantek. Un doare skañv-kenañ (minimalist) treset gant Tom Preston-Werner e 2013. Gant avantajoù e tresadur evel taolvadur kreñv (strong typing), kartañ splann ha sklêrijenn semantek. Hiriv e vez graet gant ar furmad kefluniadur standart evit Rust (Cargo), Python (pyproject.toml) hag evit Go, gant ostilhoù a-vremañ)"
 
 msgid "mime_vue"
-msgstr "Restr Vue (krouet e 2014 gant Evan You, framm JavaScript kreskus. Dre ar restr unparzh (SFC) e lugun HTML, CSS ha JS a-drugarez da VitePress evit sevel teulioù teknikel etrewezhus ha blogoù, unan eus ar frammoù rakvañ wellañ er bed)"
+msgstr "Vue (Stlenn un-restr (Single File Component). Stumm SFC perc'henniezh eus ar steuñvadur Web progressif (progressive framework) gant Evan You e 2014. Dont a ra a-benn da zispartiañ an traoù a sell ouzh HTML/CSS/JS en un hevelep restr, asambles gant ul liamm stad c'hober (reactive). Kaset e vez gantañ an arloadoù talbenn web etreoberiat modern ha mekanikoù lec'hiennoù bras-ha-bras)"
 
 msgid "mime_wasm"
-msgstr "Modul WebAssembly (Standard W3C 2017, ur furmad evit an disoc'hioù uhel er merdeer, C/C++/Rust/R a c'hall bezañ kampoellet ennañ, gant disoc'hioù tost d'ar c'hod orin)"
+msgstr "WebAssembly (Nod binarel. Un nod binarel live izel, gant perzhioù mat, e 2017, hervez ar W3C. Dont a ra a-benn da genaozañ yezhoù krefñ evel C/C++/Rust evit o lakaat da redek e voest-traezh ar merdeer (browser sandbox) gant ur barregezh prestik da hini an efanerezh kaledved. Bez eo diazez an drojedenniñ e bord ar web (edge computing))"
 
 msgid "mime_jsx"
-msgstr "Kompil React JSX (kinniget gant Facebook e 2013, ar JavaScript XML, kevreadur kompil evit framm React, ur patrom araogenniñ evit skrivañ HTML e JavaScript)"
+msgstr "React JSX (Stlenn (component). Un astenn eus an doare-skrivañ JavaScript XML bet embannet gant Facebook gant ar steuñvadur React e 2013. Skorañ a ra an diorren doare-skrivañ disklêriat evit framm DOM dre vir (virtual). Lakaet eo bet e pleustr ar patrom diorren 'UI evel ar gevred stad' evit an talbenn)"
 
 msgid "mime_tsx"
-msgstr "Kompil TypeScript TSX (diorroet gant Microsoft e 2012, TypeScript + JSX, doare standart evit an diorren aplikadennoù React gant surestegezh a seurt)"
+msgstr "TypeScript TSX (Stlenn. Kenaozet gant an doare-skrivañ kreñv eus TypeScript (diorroet gant Microsoft e 2012) gant JSX e gwazh. Enstaliañ a ra e diorren ar stlennoù React ur gwiriañ taolvadur statel e-pad an treiñ ha reolennoù etrefas. Ur reolenn kod eo evit an diorren surañ a gostez ar sistemioù talbenn bras modern)"
 
 msgid "mime_heif"
-msgstr "Skeudenn HEIF (Standard MPEG 2015, furmad restr skeudenn efedus, implijet kalz en ekosistem Apple)"
+msgstr "HEIF (Skeudenn berzhus. Furmat skeudenn efedus savet gant kevredad MPEG e 2015. Diazezet war an algoritm kodadur video HEVC (H.265). Aotren a ra mirout meur a skeudenn, kartennoù donder ha metaroadennoù en ur volumenn bihan-kenañ. Ar furmat stokadenn perc'henniezh eo evit ar reizhiadoù korvoiñ hezoug modern hag ar divinoù pennañ ijin)"
 
 msgid "mime_heic"
-msgstr "Skeudenn HEIC (doare Apple eus HEIF, furmad skeudenn dre ziouer war an iPhone, skoret a-orin war iOS ha macOS)"
+msgstr "HEIC (Skeudenn berzhus. Furmat bitmap perc'henniezh Apple diazezet war ar standart etrebroadel HEIF. Ar furmat dre ziouer eo evit luc'hskeudennoù an iPhone modern. Skor a live kaledved ha reizhiad korvoiñ (iOS/macOS) en deus. Digreskiñ a ra kalz ar blasenn stokadenn tra ma talc'h d'ur skeudenn eus ar c'hentañ troc'h)"
 
 msgid "mime_gltf"
-msgstr "Patrom 3D GLTF (Furmad treuzkas GL, 'JPEG bed ar 3D', embannet gant Khronos Group e 2015, furmad standart ar 3D war ar web)"
+msgstr "glTF (Patrom 3D. Standart furmat treuzkas GL, degaset gant Khronos Group e 2015. Deskrivañ a ra gweledennoù tri-ment (3D) gant an aozadur JSON. Lesanvet eo 'JPEG an tiriad 3D'. Ur standart greantel skañv eo evit an daskor (rendering) WebGL/WebGPU modern hag ar virtual reizh)"
 
 msgid "mime_glb"
-msgstr "Patrom 3D binarel GLB (stumm binarel GLTF, un ur restr hepken ganti holl ar vammennoù, implijet evit dasparzhañ leurenn 3D)"
+msgstr "GLB (Patrom 3D binarel. Stumm nann-stankaus enklozet e-pad eus patrom glTF. Kendeuziñ a ra framm al leurenn, roadennoù verkadur (mesh) e live izel, danvez ha gwiad skeudennoù en un hevelep restr. Arveret eo evit an treuskasadur efedus hag an dasparzh e gwazh evit an danvezioù web 3D a-dreuz savennoù)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY geriadur (restroù a dermen ar gerioù, implijet evit merañ termenoù er reizhiadoù teuliadur)"
+msgstr "GLOSSARY (Roll termenoù. Ur restr termenadur termoù evit ar sistemioù melestradur teulioù hag ar gwernioù frammet. Ennañ termenadurioù termoù standart, kevataladurioù liesyezhek ha kartañ metaroadennoù. Arveret evit mirout un unvaniez a-bellgofis e sistemoù dielfennañ testenn emgefre hag embann endalc'h)"
 
 msgid "mime_cbz"
-msgstr "Levr bannoù treset CBZ (skeudennoù bannoù treset dasket e ZIP, furmad hollek evit dastumerien ar bannoù treset)"
+msgstr "CBZ (Levr bannoù-treset. Furmat gwask arc'hivañ bannoù-treset perc'henniezh, diazezet war framm Ziwask (ZIP). Enklozañ a ra a-hed ur c'hevreadad skeudennoù poent statik. Ur standart endalc'her skañv eo evit an embann bannoù-treset niverel hag an dastum lec'hel a-dreuz savennoù)"
 
 msgid "mime_cbr"
-msgstr "Levr bannoù treset CBR (skeudennoù bannoù treset dasket e RAR, furmad hollek evit dastumerien ar bannoù treset)"
+msgstr "CBR (Levr bannoù-treset. Furmat gwask arc'hivañ bannoù-treset perc'henniezh, diazezet war framm gwask RAR. Enklozañ a ra ar c'hevreadad skeudennoù poent statik dre an algoritm RAR, gant ur feur waskadur uhel. Skoret eo kalz e bed an dasparzh bannoù-treset niverel)"
 
 msgid "mime_fb2"
-msgstr "Levr elektronek FB2 (FictionBook 2.0, furmad levr elektronek rusian, framm XML, skoret kalz gant al lennerien open source)"
+msgstr "FB2 (Levr elektronek. Ur standart levr elektronek FictionBook 2.0 e deroù ar bloavezhioù 2000. Deskrivañ a ra perzhioù al levr ha liveadur ar testennoù gant framm XML. Skoret kalz en ekosistem levrioù elektronek digor ha war al lennerien embann niverel relek)"
 
 msgid "mime_kepub"
-msgstr "Levr elektronek KEPUB (furmat Kobo eus an EPUB, furmad efedus evit lennerien levr elektronek Kobo)"
+msgstr "KEPUB (Levr elektronek. Furmat levr elektronek kresket (enhanced) perc'henniezh Kobo diazezet war ar standart EPUB. Skoret eo en live izel gant al lennerien levrioù elektronek Kobo (hardware) evit ur rentañ pajennoù efedusoc'h ha klokoc'h evit an holl stadegoù lenn)"
 
 msgid "mime_m4b"
-msgstr "Levr son M4B (furmat levr son MPEG-4, a skor sinedoù, furmat levr son iTunes)"
+msgstr "M4B (Levr-lavar. Furmat levr-lavar diazezet war arc'hwel endalc'her MPEG-4 Part 14 (MP4). Gant enkodadur AAC, skor nativel evit sinedoù pajennoù (bookmarks), kenderc'hel da lenn goude ur serr, ha framm dre bredeier. Bez e oa furmat standart an ekosistem Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Furmat KFX Kindle (kinniget gant Amazon e 2015, furmat levr elektronek evit Kindle, a skor an hegdraoù fleksibl hag ar furchal prim)"
+msgstr "Kindle KFX (Furmat. Furmat embann niverel kresket (enhanced) perc'henniezh Amazon gant ar Kindle e 2015. Skor a ra un aozadur nivedegezh araoket (advanced ligatures), rentañ nodrez herrek (high-dynamic) ha kargañ pajennoù en live kernel (Page Flip). Ar reolenn greiz eo evit ar savenn Kindle modern)"
 
 msgid "mime_chm"
-msgstr "Restr skoazell CHM (kinniget gant Microsoft e 1997, furmat HTML dastum evit skoazell, furmat standard evit teuliadurioù skoazell ar meziantoù Windows)"
+msgstr "CHM (Restr skoazell kenaozet. Reizhiad keleier HTML skoazell kenaozet (Compiled HTML Help) gant Microsoft e 1997. Pakañ a ra roadennoù hipertestenn hag ar meneger live izel en un endalc'her binadel unan. E-pad pell eo bet ar furmat standart evit an teulioù skoazell lec'hel er meziantoù Windows)"
 
 msgid "mime_mht"
-msgstr "Teuliadur web MHT (kinniget gant Microsoft e 1999, furmat pajenn web en un restr hepken, furmat evit enrollañ ar pajennoù web gant merdeer IE)"
+msgstr "MHT (Diell pajenn web. Furmat hipertestenn agreg MIME gant Microsoft e 1999. Diazezet war ar reolennad RFC 2557, a bak ar vammenn HTML, CSS, JS hag ar skeudennoù enframmet en un hevelep restr testenn. Arveret e oa evit enrolañ pajennoù web diwar-linenn gant merdeerioù kozh)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, Standard WAP 1999, implijet evit pajennoù web ar pellgomzerioù hezoug kozh, dilezet bremañ)"
+msgstr "WML (Yezh vermenadur digablez (Wireless Markup Language). Savet gant forom ar WAP (Wireless Application Protocol) e 1999 evit ar pellgomzerioù hezoug. Diazezet war spesad XML, arveret evit ar rouedoù pellgomzer gant ledrum stris eus ar penn-kentañ (early narrowband) ha pellgomzerioù fetis (feature phones). En ekosistem web modern, ez eo teknologiezh relek echu)"
 
 msgid "mime_xhtml"
-msgstr "Pajenn web XHTML (Standard W3C 2000, stumm XML eus HTML, gant kevreadur strikoc'h. Harzhet eo bet an diorren gant W3C e 2009, evit en em reiñ da HTML5)"
+msgstr "XHTML (Pajenn web hipertestenn. Standart W3C e 2000, yezh vermenadur hipertestenn strizh diazezet war arc'hwel XML. E 2009, e paouezas W3C gant e zirolladur teknikel hag e tistroas war-du ar spesad HTML5. Hiziv e vez kavet evit rentañ pajennoù web semantek er sistemioù relek)"
 
 msgid "mime_xml"
-msgstr "Teul XML (Standard W3C 1998, yezh verkañ a c'haller astenn, furmat diazez evit ar servijoù web, ar restroù kefluniadur, hag evit an eskemm roadennoù)"
+msgstr "XML (Teul frammet. Yezh vermenadur astennus (Extensible Markup Language) standart W3C e 1998. Gantañ ur sav-treust balizennoù em-zeskriv (self-descriptive). Ar furmat diazez eo evit ar servijoù web (SOAP/REST), ar restroù kefluniadur live reizhiad (XSD) hag evit an eskemmoù roadennoù etre savennoù)"
 
 msgid "mime_sgml"
-msgstr "Teul SGML (Standard ISO 1986, araogenn HTML, Dafarverkañ Hollek Standartet, XML ha HTML o deus da orin SGML)"
+msgstr "SGML (Yezh vermenadur hollek. Yezh vermenadur hollek standart ISO 8879 e 1986. Rakger greantel eo evit an deskrivadur frammet teulioù elektronek. XML hag an hengoun HTML kentañ a zeu diwar ar vezegezh vamm (meta language) standart-se)"
 
 msgid "mime_apng"
-msgstr "Bevaadenn APNG (diorroet gant Mozilla e 2004, astenn PNG evit ar bevaatennoù, erlec'hiad modern eus GIF, a skor livioù gwir hag hewelre)"
+msgstr "APNG (Skeudenn bev. Astenn evit ar PNG (Portable Network Graphics) bet diorroet gant Mozilla e 2004. Skor a ra 24-bit (gwirioù liv) ha 8-bit kanol Alpha (treuzwelus). Un diskoulm foran (alternative) splann eo er web modern e-lec'h ar furmad GIF)"
 
 msgid "mime_bmp"
-msgstr "Skeudenn BMP (furmat bitmaplenn Windows, skoret a-orin adalek Windows 1.0. Ne vez ket dasket, ar restroù a zo bras-meurbet. Met, dre ma'z eo eeun e framm ha ne ezhomm ket koder ebet, Windows 11 a ra gantañ c'hoazh, hag ivez ar programm tresañ, mammennoù al lugelloù en restroù EXE/MSI, restroù ar c'hersoner, hag un nebeud kokerien gozh. Evit ar memes kalite skeudenn, ar restr a zo 3 da 10 gwech brasoc'h eget PNG, hag e pep lec'h eo bet erlec'hiet gant PNG/JPEG nemet e koskor Windows ma chom kalz a genberzhusted)"
+msgstr "BMP (Skeudenn nativel poent (bitmap). Furmat skeudenn dizalc'h diouzh ar benveg (Device Independent Bitmap) gant Microsoft abaoe mare Windows 1.0. Ur skor nann-stankaus (lossless) ha diwask. Daoust ma'z eo ar ment war-dro 3 da 10 gwech brasoc'h evit PNG, abalamour m'eo dieub digant ar c'hodadur, e talc'her d'e enframmañ e lodennoù kreiz Windows 11, e rannoù danvez (ressources) EXE/MSI, ha e ardivinkoù grafik evit meziantoù relek)"
 
 msgid "mime_cdr"
-msgstr "Skeudenn vektorek CDR (furmat arbennik evit CorelDRAW, Corel Corporation eus Kanada, ur meziant evit an tresadennoù vektorek)"
+msgstr "CDR (Skeudenn vektor. Furmat mammenn tresadennoù vektor a-vicher ha perc'henniezh CorelDRAW (Corel Corporation, Kanada). Skor a ra meur a liveadur evit ar mererezh livioù, nodoù trogenn jedoniel, ha roadennoù aozadur a live moulladur. Emañ e domani treserezh moullerezh bruderezh hag an treserezh a-vicher)"
 
 msgid "mime_gif"
-msgstr "Skeudenn GIF (CompuServe a ziorroas anezhañ e 1987, ur furmat 256 liv evit ar bevaatennoù. Gwalladoù : niver livioù bevennet, kalite fall, ne skor ket an hewelre, restroù bras, feur skeudennoù izel. Erlec'hiet eo bet gant furmadoù bevaatennoù modern evel APNG, WebP)"
+msgstr "GIF (Skeudenn niveren livioù (indexed). Furmat skeudenn 8-bit livioù niverennet gant CompuServe e 1987. Diazezet war algoritmo LZW, bevennet d'ur skeuliad 256 liv ha d'un treuzwelusted unliv. Kalz a blasenn a ya gantañ evit frammoù uhel, hag erlec'hiet eo tamm-ha-tamm gant stummoù modern evel APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "Lugell ICO (furmat restr lugell Windows, a skor meur a zishualder, furmat standart evit ar favicon war ar pajennoù web)"
+msgstr "ICO (Arlun (icon) sistem. Furmat pakadur danvez arlun nativel gant Windows. Aotren a ra enframmañ meur a stumm skeudenn gant mentoù piksel ha donderioù livioù disheñvel en un endalc'her unan. Ar reolenn dasparzh hollek eo ivez evit ar merkerez (Favicon) al lec'hiennoù web er merdeerioù modern)"
 
 msgid "mime_jpeg"
-msgstr "Skeudenn JPEG (Standard ISO 1992, furmat daskor gant koll evit al luc'hskeudennoù, standart wirvoudel evit al luc'hskeudennoù war ar genrouedad)"
+msgstr "JPEG (Skeudenn gwasket. Furmat skeudenn gant ur goll (lossy) standart ISO 10918 e 1992. Diazezet war algorithm treuzfurmidur kosinenn diskred (DCT). Dont a ra a-benn da waskaat kalz tra ma talc'h ur skeudenn wirion eus ar c'hentañ troc'h. Ar reolenn 'facto' evit al luc'hskeudennoù statik war internet ar bed)"
 
 msgid "mime_jpg"
-msgstr "Skeudenn JPEG (Standard ISO 1992, furmat daskor gant koll evit al luc'hskeudennoù, standart wirvoudel evit al luc'hskeudennoù war ar genrouedad)"
+msgstr "JPEG (Skeudenn gwasket. Furmat skeudenn gant ur goll (lossy) standart ISO 10918 e 1992. Diazezet war algorithm treuzfurmidur kosinenn diskred (DCT). Dont a ra a-benn da waskaat kalz tra ma talc'h ur skeudenn wirion eus ar c'hentañ troc'h. Ar reolenn 'facto' evit al luc'hskeudennoù statik war internet ar bed)"
 
 msgid "mime_png"
-msgstr "Skeudenn PNG (Aledad W3C 1996, a skor al livioù gwir hag an hewelre, erlec'hiad statikel eus GIF, standart evit ar skeudennoù hep koll war ar genrouedad)"
+msgstr "PNG (Skeudenn nann-stankaus (lossless). Standart PNG (Portable Network Graphics) kinniget gant ar W3C e 1996. Dre un algorithm nann-stankaus, e skor nativel 24-bit (gwirioù liv) ha 8-bit kanol Alpha (treuzwelus). Evel un diskoulm splann (higher definition) d'ar GIF statik klasel, ez eo ar reolenn 'facto' evit ar skeudennoù piksel nann-stankaus war internet)"
 
 msgid "mime_ps"
-msgstr "Restr deskrivadur pajenn PostScript (kinniget gant Adobe e 1985, ur yezh deskrivadur pajenn, araogenn PDF, implijet evit ar moullañ hag an embann)
+msgstr "PostScript (Restr deskrivadur pajenn. Ur yezh deskrivadur pajennoù (Page Description Language) diazezet war ur bern (stack-based) gant Adobe e 1985. Rakger teknikel ar furmad PDF eo. Er live izel, ec'h aotren un tresadur aozadur testennoù dizalc'h diouzh an efanerezh, ha skeudennoù vektor gant un uhel-resisted. Ur reolenn diazez eo evit an embann a-vicher hag ar moulladur lazer)"
 
 msgid "mime_psb"
-msgstr "Teul bras PSB (furmat Adobe Photoshop evit ar skeudennoù dreist-veur, a skor skeudennoù brasoc'h eget 2GB pe 30000 piksel)
+msgstr "PSB (Teul bras gant liveadurioù. Furmat pakadur mammenn dreist-vras (extra large) gant Adobe Photoshop. Dont a ra a-benn da dreuziñ bevennoù ar furmat PSD reoliek (2GB e ment fizikel ha 30.000 piksel evit an tremen diabarzh). A-ziforc'h eo evit stokañ danvezioù niverel ramzel ha don gant meur a liveadur)"
 
 msgid "mime_psd"
-msgstr "Skeudenn PSD (restr orin Adobe Photoshop, a skor an isrennoù, ar c'hanolioù, an hentoù, standart greanterezh evit an treiñ skeudennoù)
+msgstr "PSD (Restr mammenn livadur liveadur. Furmat greantel evit ar skritell (layer) e-keñver Photoshop gant Adobe. Endalc'her standart e bed tresadennoù (graphics), a vak nativel gwezenn rentañ leun ar skeudennoù, kanolioù piksel, hentoù dispen (vectoriel) hag e kemmesk liveoù. Aotren a ra un aozadur nann-stankaus (lossless) eus an holl roadennoù)"
 
 msgid "mime_webp"
-msgstr "Skeudenn WebP (diorroet gant Google e 2010, furmat skeudenn web, a skor an daskor gant koll/hep koll hag ar bevaatennoù, ar feur daskor a zo 25-35% uheloc'h evit PNG ha 25% uheloc'h evit JPEG)
+msgstr "WebP (Skeudenn efedus. Ur standart enkodadur skeudennoù web hollek gant Google e 2010. Dont a ra eus teknologiezh ar c'hadroù-tremen video VP8. Kenglotaat a ra gant ar gwaskadur dre goll (lossy), ar gwaskadur nann-stankaus (lossless), an treuzwelusted hag an tresadennoù bev. 25-35% bihanoc'h evit PNG gant ar memes live skeudenn. Diazez kargañ lec'hiennoù web gant un dalc'h uhel (high performance) eo)"
 
 msgid "mime_woff"
-msgstr "Font web WOFF (krouet e 2009, Standard W3C 2018. Diazezet war an daskor TrueType/OpenType, evit gwellaat an enporzhiañ fontoù web, furmat standart evit lugelloù ar fontoù er pajennoù web modern)
+msgstr "WOFF (Restr stumm evit ar web. Furmat stumm web digor (Web Open Font Format) bet krouet e 2009 ha deuet da vezañ standart W3C e 2012. He c'halvezout a zo gwaskat framm ar stummoù TTF/OTF reoliek en un doare nann-stankaus er gwazh, evit gwellaat spiradur ar rouedad. Ar furmat hollek eo evit ar monogrammoù (icon fonts) hag ar stummoù er goabrenn war al lec'hiennoù modern)"
 
 msgid "mime_7z"
-msgstr "Pakad dasket 7z (Igor Pavlov a ziorroas anezhañ e 1999, furmat arbennik ar programm 7-Zip. Algoritm LZMA, feur daskor uhel, open source ha frank. Ar furmat 7z a zo 30-50% bihanoc'h eget ZIP evit ar memes feur daskor, boutin eo e-touez ar gumuniezh open source hag evit an dasparzh meziantoù)
+msgstr "7z (Pakad gwasket. Furmat perc'henniezh gant 7-Zip (Igor Pavlov) e 1999. Diazezet war an algoritmoù digor LZMA/LZMA2, gant ur feur waskadur uhel-kenañ. Dindan an hevelep donezonoù, eo ar ment etre 30 ha 50% bihanoc'h evit ZIP. Ar furmat gant ur feur waskadur uhel evit an dasparzh meziantoù er gumuniezh digor)"
 
 msgid "mime_ace"
-msgstr "Pakad dasket ACE (diorroet er bloavezhioù 1990, furmat ar programm WinACE. A-gevret e oa gant RAR, gant ur feur daskor uhel. E 2007 e voe paouezet an diorren, hag hiriv eo bet erlec'hiet gant 7z/RAR, ne vez ket implijet kalz)
+msgstr "ACE (Pakad gwasket. Furmat gwask perc'henniezh WinACE eus ar bloavezhioù 1990. Kenstrivañ a reas gant ar furmat RAR, gant ur feur waskadur uhel. Goude 2007, e paouezas an dirollañ teknikel. Hiziv, erlec'hiet gant ar furmadoù 7z ha RAR. Ur furmat relek eo (legate)"
 
 msgid "mime_bz2"
-msgstr "Pakad dasket BZIP2 (Julian Seward a ziorroas anezhañ e 1996, un algoritm daskor dre urzhiañ bloc'hoù. Ar feur daskor a zo 15-20% uheloc'h eget GZIP, met goustadikoc'h eo. Boutin eo evit kodoù orin kelc'hier Linux, pakadoù meziant open source, astenn .bz2)
+msgstr "BZIP2 (Pakad gwasket. Furmat gwask aozet dre renkadoù (block-sorting) gant Julian Seward e 1996. Gwelloc'h (15-20%) eo e feur waskadur evit GZIP, gant ur c'houst jediñ uheloc'h. Arveret alies evit dasparzh kodoù tarzh (source code) ar c'hernel Linux ha pakadoù digor. Astenn standard .bz2)"
 
 msgid "mime_cab"
-msgstr "Pakad dasket CAB (diorroet gant Microsoft e 1995, furmat Cabinet. Format pakad kefluniañ evit Windows, implijet evit dasparzhañ kokerien ha restroù ar sistem. Windows Installer (MSI) a ra diabarzh gant CAB evit mirout ar restroù)
+msgstr "CAB (Pakad gwasket. Furmat arc'hivañ Cabinet diorroet gant Microsoft e 1995. Ar reolenn staliañ nativel eo evit ar sistem Windows. Implijet evit dasparzh an dregantadoù hag ar restroù kernell (kernel files). Ul lec'hier stokadenn evit Windows Installer (MSI) eo ivez)"
 
 msgid "mime_dmg"
-msgstr "Skeudenn pladenn DMG (kinniget gant Apple er bloavezhioù 1980, furmat Skeudenn Pladenn. Format standart evit dasparzhañ meziantoù war macOS, p'ouzhont daouglikañ e vez ensoc'het evel ur bladenn dre nij, a c'haller stlepel dezhi an arload evit e staliañ. A skor an daskor hag ar sifradur, furmat pennañ evit pellgargañ zwischen Mac)
+msgstr "DMG (Skeudenn gantenn. Furmat Skeudenn Gantenn (Disk Image) diorroet gant Apple adalek ar bloavezhioù 1980. Ar c'hendalc'her standart eo evit dasparzh ar meziantoù macOS. Skor a ra ar pignadur fizikel evel ur restr reizhiad virtual, an digwaskadur live izel hag ar sifradur roadennoù. Ar furmat redonek evit dasparzh arloadoù e ekosistem Mac)"
 
 msgid "mime_emz"
-msgstr "Skeudenn dasket EMZ (Windows Enhanced Metafile dasket, stumm dasket eus EMF. Format evit mirout ar skeudennoù vektorek e teulioù Office, e gwirionez ez eo ur restr EMF dasket gant GZIP)
+msgstr "EMZ (Skeudenn gwasket. Stumm gwasket (gant algoritm GZIP) eus restr Enhanced Metafile (EMF) Windows. Ur skeudenn vektor binarel eo. Implijet kalz e teulioù Microsoft Office evit stokañ skeudennoù vektor enframmet)"
 
 msgid "mime_gz"
-msgstr "Pakad dasket GZIP (Jean-loup Gailly ha Mark Adler a ziorroas anezhañ e 1992, raktres GNU. Benveg daskor standart war ar reizhiadoù Unix/Linux, furmat boutin evit an daskor HTTP e-pad an treuzkas. Astenn .gz, alies e vez implijet gant TAR)
+msgstr "GZIP (Pakad gwasket. Furmat gwask stank (stream) standart gant raktres GNU (Jean-loup Gailly ha Mark Adler) e 1992. Amañ benveg gwask reoliek Unix/Linux, ha reolenn greiz evit ar waskadur er gwiskad treuzkas HTTP (Gzip). Alies e vez kavet liammet gant an arc'hivañ TAR)"
 
 msgid "mime_jar"
-msgstr "Pakad dasket JAR (kinniget gant Sun Microsystems e 1997, Java ARchive format. E gwirionez ez eo ur pakad dasket ZIP, implijet evit pakadoù Java klasoù hag arloadoù. Format pennañ en ekosistem Java evel Maven, Gradle, Android ivez a ra gant JAR)
+msgstr "JAR (Pakad gwasket. Furmat Java ARchive gant Sun Microsystems e 1997. Diazezet war framm gwask ZIP, evit pakañ levraouegoù Java klas (class libraries) ha metaroadennoù. Arveret eo evel kenderc'had kenaozañ (compilation artifact) gant Maven, Gradle, hag en ekosistem Android kentañ)"
 
 msgid "mime_lzma"
-msgstr "Pakad dasket LZMA (Igor Pavlov a ziorroas anezhañ e 1998, algoritm Lempel-Ziv-Markov chain. Algoritm daskor pennañ ar furmat 7z, feur daskor uhel, dizaskor prim. Implijet evit an dasparzh firmware ha meziantoù ar sistem endalc'het)
+msgstr "LZMA (Pakad gwasket. Algoritm gwaskadur Lempel-Ziv-Markov chain (Igor Pavlov) e 1998. Ar mekanik kreiz evit furmat 7z, gant ur feur waskadur uhel-kenañ ha perzhioù dibakadur herrek. Implijet kalz evit dasparzh kaledoù (firmware) ha sistemoù enframmet)"
 
 msgid "mime_rar"
-msgstr "Pakad dasket RAR (Eugene Roshal a ziorroas anezhañ e 1993, Roshal ARchive format. Feur daskor uhel, a skor an isrannadurezh hag an daskor merk. Format programm WinRAR, ar feur daskor a zo gwelloc'h eget ZIP, met ret eo paeañ ar meziant, benvegoù open source evel unrar a c'hall her dizaskor)
+msgstr "RAR (Pakad gwasket. Furmat arc'hivañ perc'henniezh WinRAR (Eugene Roshal) e 1993. Skor a ra rannañ an arc'hiv (volumes), rekordioù fiñv (recovery records), hag ur sifradur kreñv. Feur waskadur gwelloc'h evit ZIP. Kenglotaet eo kalz er bed bersonel ha kenwerzhel)"
 
 msgid "mime_tar"
-msgstr "Pakad teuliadur TAR (endalc'het e Unix V7 e 1979, Tape ARchive format. Format teuliadur evit ar c'hasetennoù, pakadur hep daskor hepken, alies e vez implijet gant GZIP/BZIP2/XZ. Kodoù orin ar pakadoù evit Linux, miridigezh dre isrennoù ar skeudennoù Docker a ra gant ar furmat TAR)
+msgstr "TAR (Pakad arc'hivañ. Furmat arc'hivañ TAR (Tape ARchive) eus mare Unix V7 (1979). Ne ra nemet pakañ gwazhad ar restroù hep gwaskadur. Alies e vez lakaet asambles gant GZIP/BZIP2/XZ. Ar reolenn izel evit pakadoù kodoù tarzh Linux ha stokadenn al liveoù (layered storage) evit skeudennoù Docker)"
 
 msgid "mime_tgz"
-msgstr "Pakad dasket TGZ (kombinadur TAR + GZIP, astenn .tgz pe .tar.gz. Ar furmat dasparzh hollekaf evit pakadoù Unix/Linux, implijet kalzh evit ar vegennoù kodoù orin ha pakadoù binarel. An ezkemenn eo 'digazet ha groget' dre vras.
+msgstr "TGZ (Pakad gwasket. Kenaozadur gwazh eus arc'hiv TAR ha gwaskadur GZIP (astennoù .tgz pe .tar.gz). Ar furmat dasparzh pakadoù meziantoù ar muiañ a vez implijet en endro Unix/Linux. Arveret e vez evit trevadur kodoù tarzh kenaozet (source code) ha dasparzh pakadoù binarel hep staliañ)"
 
 msgid "mime_tbz2"
-msgstr "Pakad dasket TBZ2 (kombinadur TAR + BZIP2, astenn .tbz2 pe .tar.bz2. Ar feur daskor a zo 15-20% uheloc'h eget TGZ, aotreet evit dasparzhañ restroù bras, kodoù orin kelc'hier Linux o deus dispignet ar furmad-mañ pell)
+msgstr "TBZ2 (Pakad gwasket. Kenaozadur gwazh eus arc'hiv TAR ha gwaskadur BZIP2 (astennoù .tbz2 pe .tar.bz2). E-keñver TGZ, e c'haller kreskiñ ar feur waskadur 15-20%. A-fet a dalvoudegezh evit restroù bras. E-pad pell eo bet implijet evit dasparzh kodoù tarzh ar c'hernel Linux)"
 
 msgid "mime_xz"
-msgstr "Pakad dasket XZ (kinniget e 2009, diazezet war an algoritm LZMA2. Un feur daskor dreist-uhel, 30-50% uheloc'h eget GZIP, tizh her an dizaskor. Implijet kalz e kelc'hier Linux, er merourien pakadoù (evel framm diabarzh ar pakadoù Debian .deb), ar furmad kinniget eo en ekosistem Linux hiziv)
+msgstr "XZ (Pakad gwasket. Furmat gwaskadur a rummad nevez (2009) gant ur feur waskadur uhel. Diazezet war an algoritm LZMA2, ar feur waskadur 30-50% gwelloc'h evit GZIP ha mirout un dibakadur herrek. Degemeret eo bet gant ar c'hernel Linux hag ar merourien pakadoù pennañ (evel e diabarzh deb Debian) evit ar standart dasparzh)"
 
 msgid "mime_z"
-msgstr "Pakad dasket Z (furmad ar c'hod `compress` eus Unix e 1985, algoritm LZW. Ur furmad daskor Unix kent, bet erlec'hiet gant GZIP. Astenn .Z, ne vez ket implijet kalz er reizhiadoù modern)
+msgstr "Z (Pakad gwasket. Furmat gwaskadur LZW gant urzh Unix 'compress' (1985). Ar reolenn waskadur reoliek evit an Unix kentañ e oa. Bremañ eo bet erlec'hiet penn-da-benn gant ar furmat GZIP, a zo efedusoc'h. War ar rouedoù, ez eo ral-tre e gavout ha debret e vez evel furmat relek)"
 
 msgid "mime_zip"
-msgstr "Pakad dasket ZIP (Phil Katz a ziorroas anezhañ e 1989, furmat PKZIP. Windows a ra gantañ a-orin, ar furmad daskor hollekaf war ar genrouedad. A skor meur a restr, framm teuliadoù, a c'hall dibab an algoritm daskor. JAR e Java, APK e Android, DOCX/XLSX evit teulioù Office a zo diazezet war ar furmat ZIP)
+msgstr "ZIP (Pakad gwasket. Furmat arc'hivañ hollek PKZIP (Phil Katz) e 1989. Skoret nativel gant an holl reizhiadoù korvoiñ pennañ. Ar reolenn endalc'her ar muiañ implijet war internet. Java JAR, Android APK ha teulioù Office (OOXML) a zo diazezet war framm ZIP)"
 
 msgid "mime_zst"
-msgstr "Pakad dasket Zstandard (Facebook a ziorroas anezhañ e 2015, Yann Collet e savas. Un algoritm daskor gant un tizh uhel, feur daskor tost da LZMA, tizh war-lerc'h GZIP. Kelc'hier Linux adalek 5.9 a skor anezhañ, Arch Linux pacman, Debian APT a zegemer anezhañ tamm-ha-tamm, ur furmat daskor a-rumm nevez eo)
+msgstr "Zstandard (Pakad gwasket. Ur reolenn waskadur stank (stream) a rummad nevez gant Yann Collet (Facebook) e 2015. Tostaat a ra a-us da feur waskadur LZMA, gant ul live rikloz (throughput) pell zo ouzhpenn GZIP. Degemeret mat gant ar c'hernel Linux (5.9+) ha merourien pakadoù Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Pakad dasket LZ4 (Yann Collet a ziorroas anezhañ e 2011, un algoritm daskor dreist-prim. An tizh daskor a zo 10 gwech uheloc'h eget GZIP, aotreet evit an daskor en amzer wir. Implijet kalz e kelc'hier Linux, OpenZFS, Hadoop, an dibab kentañ eo pa vez ar primder war ar raktank)
+msgstr "LZ4 (Pakad gwasket. Algoritm waskadur stank prim-tre gant Yann Collet e 2011. Live rikloz 10 gwech buanoc'h evit GZIP, gant ur c'houst CPU izel-kenañ e-pad al labour. Implijet gant ar c'hernel Linux, ar restr reizhiad OpenZFS, hag evit pledadur roadennoù e gwazh (real-time) gant Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Pakad dasket LZO (Markus Oberhumer a ziorroas anezhañ e 1996, algoritm Lempel-Ziv-Oberhumer. Un dizaskor dreist-prim, ur feur daskor keitat. Kelc'hier Linux Squashfs, firmware OpenWrt a ra gantañ, aotreet evit ar sistemoù endalc'het)
+msgstr "LZO (Pakad gwasket. Algoritm Lempel-Ziv-Oberhumer gant Markus Oberhumer e 1996. Kemeret eo bet e brant e-keñver ar zibakadur herrek. Douget eo en doueoù Squashfs evit ar c'hernel Linux, ar firmwaorioù OpenWrt, hag e sistemioù enframmet gant oberiantizoù bevennet)"
 
 msgid "mime_msi"
-msgstr "Pakad staliañ MSI (kinniget gant Microsoft e 1999, furmat Windows Installer. Format standart evit ar staliadurioù a-ratozh evit an arloadoù Windows, a skor an dizober treuzgizioù, ar mererezh a gennadennoù, ar staliañ sioul. Dibab kentañ evit an dasparzh meziantoù er c'hevredadoù, ha chomet eo ar format pennañ evit staliañ ar meziantoù Windows hiziv)
+msgstr "MSI (Pakad staliañ reizhiad. Furmat pakadur roadennoù Windows Installer gant Microsoft e 1999. Ur reolenn trevadur reoliek a live arload Windows eo. A-enep nativel eo d'ur gontrol e dregantadoù e live stadel (transactional), d'ur mererezh buhez ar stlennoù (components), ha da staliañ didrouz (silent) hep 'batch'. Ar reolenn greiz eo evit dasparzh kreizennet ar meziantoù a live embregerezh hag evit trevadur reoliek)"
 
 msgid "mime_pkg"
-msgstr "Pakad staliañ PKG (format staliañ arloadoù macOS, diazezet war teknologiezh Installer Apple. Format standart evit an dasparzh meziantoù war macOS, a skor an dibab a gennadennoù, skriptoù staliañ, an dizaliañ. Daouglikañ war ur restr .pkg hepken eo ret, doare boutin an dasparzh evit ar meziantoù er-maez eus Mac App Store)
+msgstr "PKG (Pakad staliañ etre-savennoù. 1. Pakad FreeBSD : reolenn pkgng, astennoù .pkg pe .txz, diazezet war waskadur TAR+XZ/Zstd. Skor a ra dielfennañ oberoù kevrenn (dependencies) ha gwiriañ sinadur (signature). 2. Pakad staliañ macOS : diazezet war furmat Apple Installer, a skor stlennoù personelaet, skriptoù staliañ ha dizstaliañ e live reizhiad. Ar pennañ karbedoù dasparzh evit ar servijer BSD hag ar reizhiadoù Mac)"
 
 msgid "mime_apk"
-msgstr "Pakad arload APK evit Android (kinniget gant Google e 2008, format staliadur hengounel evit reizhiadoù Android. En gwirionez ez eo ur pakad dasket ZIP, a zo ennañ kod, mammennoù, restr manifest. Adalek 2021, Google Play a c'houlenn e rae arloadoù nevez gant ar furmat AAB, met APK a vez implijet c'hoazh evit an diorren, an dizafinañ, an dasparzh a-dreuz marchadoù trede, hag evit ar staliañ a-gostez)
+msgstr "APK (Pakad arload Android. Pakad staliañ arload hengounel evit Android gant Google e 2008. Diazezet war framm ZIP. Pakañ a ra kod Dalvik kenaozet (DEX), manifest metaroadennoù ha danvez hollek. Hiziv ez eo implijet kalz evit an trevadur diorroiñ lec'hel, dasparzh dre droidi (third-party) ha staliañ direkt war ardivink (sideload))"
 
 msgid "mime_ipa"
-msgstr "Pakad arload IPA evit Apple (iOS App Store Package, format staliadur evit an arloadoù iOS/iPadOS. Kinniget e 2008 gant an iPhone SDK. Ret eo an dasparzh a-dreuz App Store pe ur sinadur gant un testeni embregerezh. Ennañ ez eus ur restr seveniñ, mammennoù, Info.plist gant titouroù ar sinadur)
+msgstr "IPA (Pakad arload Apple. Endalc'her pakañ iOS/iPadOS gant an SDK iPhone e 2008. Evit gwir, un arc'hiv ZIP gwarezet gant FairPlay DRM pe gant ur sinadur kod a live embregerezh eo. Ennañ restr ezharmadus Mach-O binarel, gwezenn danvez an arload, ha kefluniadur metaroadennoù Info.plist)"
 
 msgid "mime_hap"
-msgstr "Pakad arload HAP evit HarmonyOS (HarmonyOS Ability Package, unanenn diazez an arloadoù HarmonyOS. Kinniget gant HarmonyOS 2.0 e 2020. A skor an daou seurt entry ha feature, format dasparzh evit pellgomzerioù Huawei, tablezennoù, eurier skouer hag ardivinkoù HarmonyOS all)
+msgstr "HAP (Pakad arload HarmonyOS. Unvez trevadur elastrek HarmonyOS, bet embannet gant HarmonyOS 2.0 e 2020. Savet eo gant ar c'hevandad pennañ Entry pe gant kevandadoù oberiañ Feature. Stumm trevadur kreiz evit an arloadoù a-dreuz ardivinkoù (pellgomzer, tablez, ardivinkoù iskis) eo)"
 
 msgid "mime_har"
-msgstr "Pakad rannet statikel HAR evit HarmonyOS (HarmonyOS Archive, levraoueg rannet statikel evit HarmonyOS, a c'hall bezañ rannet e-touez meur a HAP, implijet evit an diorren a gennadennoù hag an adimplij a vodul)
+msgstr "HAR (Pakad ingal statik HarmonyOS. Restr arc'hiv levraoueg statik, ingal ha perc'henniezh HarmonyOS. Implijet evit pakañ danvezioù hollek (common components), kodoù danvez live izel hag oberoù kevrenn e-pad an treiñ (compile-time). Liammet e vez gant meur a vodul HAP. Diazez evit an diorren dre gevandadoù e reizhiad HarmonyOS hag evit adimplij ar meur a vodul)"
 
 msgid "mime_aab"
-msgstr "Pakad arload AAB evit Android (kinniget gant Google e 2018, adalek 2021 eo ret d'an arloadoù nevez e implijout evit bezañ war Google Play. AAB a zo ur format dasparzh, Google Play a gan dalc'hatmat APKoù kempoell hervez kefluniadur an ardivink (savadur an CPU, ziedenn ar skramm, yezh), ar vent hanter eus ar pakad staliañ a zo bet bihanaet gant 35%. An diorroerien a gas AAB, an implijerien a bellgarg APK)
+msgstr "AAB (Strollad arload Android. Furmat dasparzh dinamik Google Play gant Google e 2018, staliet e 2021. Evel un vanne (entity) dasparzh pur, eo kenaozet e koubl (cloud) diouzh tore'hou arc'hwel ar CPU, stankter ar skramm hag ar yezh. Alese e teu APKoù frammet diouzh an ezhommoù. Digreskiñ a ra al live rikloz gant 35% war ar gwazhband)"
 
 msgid "mime_xapk"
-msgstr "Pakad arload XAPK (hestenn d'ar pakadoù arload Android gant ur burev trede, ennañ APK ha restroù roadennoù OBB. Implijet evit ar c'hoariadegoù bras hag an arloadoù kemplezh, hag a ziskoulm bevenn 100 MB ar restr APK unan. Boutin e marchadoù trede evel APKPure, APKMirror, n'eo ket un format ofisiel Google)
+msgstr "XAPK (Pakad arload astennet. Ur reolenn astenn an arloadoù (nann-ofisiel) savet gant kumuniezh Android dre droidi. Peurliesañ e vez kavet war ar savennoù dasparzh c'hoarioù. Kendeuziñ a ra ar restr APK reoliek gant ar pakad roadennoù OBB (bras a-walc'h). Dont a ra a-benn da dremen ar vevenn 100 MB (Google Play) evit ar restroù dizalc'h)"
 
 msgid "mime_appx"
-msgstr "Pakad arload Windows APPX (kinniget gant Microsoft e 2012, arload evit staliañ war Windows 8/10/11. A skor UWP ha treuzfurmidigezh an arloadoù burev, dasparzhet a-dreuz Microsoft Store. E 2024 eo bet kinniget MSIX gant Microsoft, a zo o tont da gemer APPX tamm-ha-tamm)
+msgstr "APPX (Pakad arload modern. Spesad trevadur arload UWP gant Microsoft gant Windows 8 e 2012. Skor a ra un endro sandbox ha distaliañ skañv. Bez e oa ar reolenn greiz evit Microsoft Store. En ekosistem Windows modern, emañ e fin e vuhez (end of life) hag o treiñ war-du MSIX)"
 
 msgid "mime_msix"
-msgstr "Pakad arload MSIX (kinniget gant Microsoft e 2018, format nevez evit pakadur an arloadoù war Windows. A ya gant perzhioù gwellañ APPX ha MSI, a skor holl seurtoù arloadoù Windows, dasparzhet a-dreuz Microsoft Store pe gant ur staliañ a-gostez, format kinniget evit Windows 11)
+msgstr "MSIX (Pakad arload a rummad nevez. Ur spesad pakañ standart gant Microsoft e 2018. Kendeuziñ a ra perzhioù surentez APPX (sandbox) gant madoù MSIX e-keñver mererezh danvez a live embregerezh (enterprise asset management). Kenglotus gant an holl meziantoù Win32. Ar reolenn dasparzh kinniget evit Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Pakad arload AppImage (kinniget e 2004, format arload hep staliañ evit Linux. 'Un arload = ur restr', loc'hañ a ra war-eeun hep staliañ, a skor an darn vrasañ eus dasparzhoù Linux, doare boutin evit an diorroerien da zasparzhañ meziantoù Linux)
+msgstr "AppImage (Pakad arload hep staliañ. Spesad arc'hivañ un-rewissus (single executable) e Linux e 2004. Evit gwir, 'un arload = ur restr'. En e amzer, e vez pignet evel ur restr reizhiad virtual e lenn nemetken (FUSE). Evel-se e c'haller ober gant arload hep bezañ o staliañ, a-dreuz an holl stummadurioù Linux)"
 
 msgid "mime_flatpak"
-msgstr "Pakad arload Flatpak (kinniget e 2015, format arload sandailh evit Linux. O treuz-dasparzhan, izelañdiet diouzh ar sistem diazez, diorroet gant Fedora, Red Hat, format dre ziouer e kreizenn GNOME Software)
+msgstr "Flatpak (Pakad arload e sandbox. Standart dasparzh arloadoù burev (desktop) a-dreuz stummadurioù Linux, bet diorroet gant Red Hat ha GNOME e 2015. En e live izel, e ra gant mekanikoù Namespace ha Cgroups ar c'hernel Linux evit ur sandbox surentez strizh. Bez eo diazez stank ar meziantoù e kreizenn ar reizhiadoù digor modern)"
 
 msgid "mime_snap"
-msgstr "Pakad arload Snap (kinniget gant Canonical e 2014, diorroet gant penn-embregerezh Ubuntu, un format hollek evit Linux. Hizivadurioù otomatek, izelañdiet gant sandailh, a skor 40+ dasparzh Linux, format dre ziouer e kreizenn Ubuntu Software)
+msgstr "Snap (Pakad arload e sandbox. Standart trevadur hollek Linux gant Canonical (penn-embregerezh Ubuntu) e 2014. Evit gwir, ur skeudenn SquashFS gant an arload hag e holl oberoù kevrenn. Skor a ra ouzhajioù emgefre tamm-ha-tamm (incremental) ha sandbox AppArmor. Ar furmat dre ziouer eo evit kreizenn arload Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Pakad meziant Debian (rakres Debian a ginnigas anezhañ e 1993, format staliañ standart evit Debian/Ubuntu hag an dasparzhoù deveret. Meret gant dpkg, APT a zo an tu a-raok merour ar pakadoù, unan eus ar formadoù pakadoù gwellañ en ekosistem Linux, hag a zo chomet format pennañ e familh Debian)
+msgstr "DEB (Pakad meziant reizhiad. Spesad pakañ binarel ha kod-tarzh gant raktres Debian e 1993. Ar reolenn staliañ live izel evit Debian, Ubuntu hag an holl stummadurioù deveret. Gant dpkg e vez dibaket ha gant APT e vez meret. Diazez ar c'hevredad dasparzh meziantoù koshañ ha kletañ en ekosistem Linux)"
 
 msgid "mime_rpm"
-msgstr "Pakad meziant RPM (Red Hat a ginnigas anezhañ e 1997, format standart evit Red Hat/Fedora/CentOS/SUSE ha dasparzhoù all. RPM a zo berradur 'Red Hat Package Manager', en tu gant DEB ez eo unan eus an daou furmad pennañ e Linux, ha chomet eo format pennañ e familh RHEL)
+msgstr "RPM (Pakad meziant reizhiad. Spesad pakañ ar Merour Pakadoù (RPM) gant Red Hat e 1997. Asambles gant DEB, ez int daou du dasparzh hengounel Linux. Ennañ ur gontrol kevrennoù live tregantad (transactional) hag ur gwiriañ sinadur niverel (digital signature). Chom a ra ar reolenn dasparzh pennañ evit ekosistem Red Hat (RHEL, Fedora, CentOS))"
 
 msgid "mime_pacman"
-msgstr "Pakad meziant Arch (dasparzh Arch Linux a ginnigas anezhañ e 2002, furmat .pkg.tar.zst a ra gantañ pacman (merour ar pakadoù). Kalon dasparzh Arch Linux a bourchaseront ingal, brudet evit e eeunder hag ar brizip ARAS, AUR (Arch User Repository) eo e zibarderzh)
+msgstr "Pacman (Pakad arc'hiv. Furmat .pkg.tar.zst evit merour pakadoù Arch Linux (2002). Diazez ar c'heal 'rolling release' Arch. Diazezet war algoritm Zstandard (uhel-voued, uhel-spirad), asambles gant ekosistem AUR (Arch User Repository), ez eo ur reolenn dasparzh modern a zo keal ar verrdro (KISS) hag an nebeutañ traoù (minimalist))"
 
 msgid "mime_exe"
-msgstr "Restr seveniñ EXE (furmat programm seveniñ Windows, berradur 'Executable'. Format seveniñ orin reizhiad korzenneg Windows, ennañ framm PE. Diorroet diwar furmat MZ eus MS-DOS, ar furmat PE (Portable Executable) a voe kinniget e Windows NT e 1993 hag a vez implijet c'hoazh. Pakadoù staliañ, arloadoù, binviji ar sistem a ra gantañ. An implijer a grog gant an daouglik, setu ez eo ar furmat seveniñ ar muiañ implijet er bed)
+msgstr "EXE (Restr ezharmadus nativel. Furmat programm binarel Portable Executable (PE) e savenn Windows. Dont a ra war-lerc'h framm MZ eus mare MS-DOS, ha staliet eo bet a-benn e 1993 gant Windows NT (framm PE). Ar reolenn ezharmadur a reer ganti ar muiañ er bed evit an urzhioù kod-melin, ar rannvroioù danvez statik, hag an heñchañ (bootstrap) kernell ar reizhiad)"
 
 msgid "mime_dll"
-msgstr "Levraoueg liamek dinamek DLL (kinniget gant Microsoft e 1993, Dynamic Link Library. Levraoueg kod rannet evit Windows, karget dinamek pa loc'h an arload, a sav neuz hag egorel. Lodennoù ar sistem, plegoù an arloadoù, kokerien a ra gant ar furmat DLL. Neuziadur pennañ evit API Windows, kudenn 'DLL Hell' a zo bet disterait en amzer .NET)
+msgstr "DLL (Levraoueg liamm dinamek. Reolenn levraoueg kod rannet Dynamic Link Library e savenn Windows. Dre bezañ karget dinamek e-pad al labour gant adlec'hiadur arouezioù, e vez prenet plas er c'hortoz hag er bladenn kalz. Un doare da dreiñ APIoù Windows e gwirionez eo. Kudennoù ar 'DLL Hell' kozh a zo bet diskoulmet gant ar mekanik SxS (isolation side-by-side))"
 
 msgid "mime_com"
-msgstr "Restr seveniñ COM (furmat seveniñ eus amzer MS-DOS, berradur 'Command'. Framm restr eeun, bevenn 64KB, a oa furmat pennañ a-raok Windows 3.x. Lezet a-gostez eo, Windows modern a ra gant ar furmat EXE, an astenn COM a vez implijet c'hoazh evit un nebeud restroù gennadenn)
+msgstr "COM (Restr ezharmadus klasel. Furmat ezharmadur koshañ (Command) eus mare MS-DOS. Ur rann 'kod' hep framm, bevennet d'un tremen 64KB er c'hortoz. Hiziv eo relek, met en arkitekturañ Windows modern ez eo skoret c'hoazh gant etrefasoù trevnadoù 'zo (limited compatibility))"
 
 msgid "mime_aac"
 msgstr "Son AAC (Standard MPEG 1997, Advanced Audio Coding. Erlec'hier MP3, ouzhpennet kalite ar son e-keñver an hevelep feur kas, format son dre ziouer evit YouTube, iTunes, Nintendo Switch)

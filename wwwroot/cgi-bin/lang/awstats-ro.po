@@ -444,8 +444,8 @@ msgstr "Gazdă - Pagini - Accesări - Lățime de bandă - Data ultimei vizite -
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Data de început a ultimei vizite] și [Ultima pagină a ultimei vizite] sunt salvate numai dacă sesiunea nu s-a încheiat"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Pagina principală afișează doar primele %s intrări după numărul de accesări, lista completă se află pe pagina de detalii."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Primele %s elemente sunt sortate după numărul de accesări în ordine descrescătoare; ordinea elementelor rămase este nedefinită."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Autentificare - Pagini - Accesări - Lățime de bandă - Ultima vizită"
@@ -459,8 +459,8 @@ msgstr "ID vierme - Accesări - Lățime de bandă - Ultima vizită"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-mail - Accesări - Lățime de bandă - Ultima vizită"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Pagina principală afișează doar primele %s e-mailuri după numărul de accesări, lista completă se află pe pagina de detalii."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Primele %s adrese de e-mail sunt sortate după numărul de accesări în ordine descrescătoare; ordinea adreselor rămase este nedefinită."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Pagini - Lățime de bandă - Intrare - Ieșire"
@@ -669,6 +669,27 @@ msgstr "Parametrul SiteDomain nu este definit în fișierul dvs. config/domain s
 msgid "Please run as Administrator to set permissions"
 msgstr "Rulați ca Administrator pentru a seta permisiunile"
 
+msgid "This directory lacks read permission"
+msgstr "Acest director nu are permisiune de citire"
+
+msgid "Please set read permission for directory"
+msgstr "Vă rugăm să setați permisiunea de citire pentru director"
+
+msgid "Missing required parameter in config file"
+msgstr "Lipsește parametrul necesar în fișierul de configurare"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Vă rugăm să verificați dacă 'DirData' este definit."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Numele de domeniu din adresa browserului pare să lipsească sau este incomplet"
+
+msgid "Please check the URL parameter"
+msgstr "Vă rugăm să verificați parametrul URL"
+
+msgid "Format description"
+msgstr "Descriere format"
+
 msgid "Please set execute permission"
 msgstr "Vă rugăm să setați permisiunea de execuție"
 
@@ -794,376 +815,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Fișier text (standardizat ASCII în 1963, text simplu neformatat. Baza tuturor codurilor sursă, configurațiilor și jurnalelor. Unix folosește LF, Windows folosește CRLF pentru linie nouă, încă cel mai universal format de date în computere)"
+msgstr "TXT fișier text simplu (text simplu neformatat, standardizat de codificarea ASCII în 1963. Ca piatră de temelie a tuturor codurilor sursă, fișierelor de configurare și jurnalelor de sistem, fluxurile sale de control al întreruperii de linie multiplatformă Windows (CRLF) și Unix (LF) sunt încă cel mai universal standard de schimb de date din lumea calculatoarelor)"
 
 msgid "mime_log"
-msgstr "Fișier jurnal (fișier text simplu care înregistrează informații despre funcționarea sistemului și a aplicațiilor, folosit adesea pentru depanare, analiza performanței, audit de securitate. Formate standard precum Apache combined log, Nginx access log, syslog etc.)"
+msgstr "LOG jurnal de funcționare a sistemului (activ text simplu care înregistrează starea de execuție a sistemului de operare, a nucleului și a aplicațiilor la nivel de execuție. Acoperă jurnalele de acces Nginx/Apache (Jurnal combinat) și specificația standard syslog, fiind sursa principală de date pentru depanare, analiza performanței fluxului și auditul de securitate)"
 
 msgid "mime_page"
-msgstr "Pagină HTML (Tim Berners-Lee a inventat WWW în 1989, a definit cele trei tehnologii HTML/HTTP/URL în 1990, le-a oferit gratuit fără brevet. În 2014 HTML5 a devenit standardul oficial W3C, suportă afișare, multimedia și imprimare. A primit premiul Turing în 2016)"
+msgstr "HTML pagină web hipertext (piatra de temelie a World Wide Web creată de Tim Berners-Lee în 1989. Ca limbaj de marcare hipertext universal gratuit și deschis, specificația sa HTML5 a devenit standardul oficial W3C în 2014, oferind suport nativ pentru multimedia structurată, interacțiune semantică și aspect de pagină în flux. A primit Premiul Turing în 2016)"
 
 msgid "mime_khtml"
-msgstr "Motor pagini web KHTML (KDE 2.0 a fost lansat în 1998, motor de randare al browserului Konqueror. În 2001 Apple a creat WebKit bazat pe KHTML, în 2008 Google a creat Blink din WebKit, care a devenit nucleul browserelor Chrome, Edge, Safari și altele. KHTML este un exemplu al modului în care comunitatea open source a pus bazele motoarelor moderne de browser, moștenirea sa tehnologică continuă prin WebKit/Blink)"
+msgstr "KHTML motor de șabloane web (specificația motorului de randare a browserului KDE 2.0 din 1998. Ca reper al comunității open source care a pus bazele randării web moderne, moștenirea sa tehnologică a inspirat și a evoluat direct în nucleele Apple WebKit și Google Blink, continuând și astăzi firul său fundamental prin arhitectura web dinamică modernă bazată pe flux)"
 
 msgid "mime_script"
-msgstr "Script dinamic (limbaj interpretat, nu necesită compilare. Include ASP, JSP, CGI, ColdFusion, Tcl, VBScript etc., utilizat pe scară largă în dezvoltarea timpurie web, administrarea sistemelor, automatizarea sarcinilor. Limbajele de script moderne precum Python, Ruby, JavaScript au devenit instrumente principale pentru dezvoltarea full-stack)"
+msgstr "SCRIPT script dinamic interpretat (clasificare generală a fluxurilor de cod sursă care nu necesită compilare prealabilă și sunt citite și executate linie cu linie de un mediu de execuție sau interpretor specific. Acoperă ASP, JSP, CGI și Tcl, etc., utilizat pe scară largă pentru interfețe gateway comune pe partea de server, control automat al proceselor și lipirea sarcinilor la nivel de sistem)"
 
 msgid "mime_js"
-msgstr "Script JavaScript (Brendan Eich l-a creat în 10 zile la Netscape în 1995, limbaj de programare nativ al browserelor. În 1997 ECMAScript a fost standardizat, în 2009 s-a născut Node.js făcându-l un limbaj full-stack, npm este cel mai mare manager de pachete din lume. De ani de zile cel mai popular limbaj de programare pe GitHub)"
+msgstr "Script JavaScript (mediu de programare nativ al browserului Netscape din 1995. A stabilit standardul industrial ECMAScript în 1997, mediul de execuție Node.js s-a născut în 2009, spărgând granițele browserului și creând o arhitectură asincronă non-blocantă full-stack, însoțit de cel mai mare ecosistem de pachete software npm din lume)"
 
 msgid "mime_py"
-msgstr "Script Python (creat de Guido van Rossum în 1991, cunoscut pentru indentarea forțată și sintaxa curată. Utilizat pe scară largă în dezvoltarea web, știința datelor, inteligența artificială, operațiuni automatizate. Câștigător de mai multe ori al premiului TIOBE pentru Limbajul Programării Anului)"
+msgstr "Script Python (limbaj de script interpretat de nivel înalt creat de Guido van Rossum în 1991. Datorită indentării obligatorii pentru lizibilitate fără pierderi și designului de nivel scăzut multi-paradigmă, este acum stabilit ca limbaj standard industrial pentru arhitectura web modernă, știința datelor full-stack, antrenarea modelelor de inteligență artificială (AI) și operațiunile automatizate native pentru cloud)"
 
 msgid "mime_sh"
-msgstr "Script Shell (Unix s-a născut în 1971, limbaj de scriptare a comenzilor. Folosit pentru administrarea sistemelor, automatizarea sarcinilor, pornirea serviciilor, scripturi de implementare. Aptitudine esențială pentru administratorii Linux)"
+msgstr "Script Shell (script standard de interpretare a comenzilor din era Unix din 1971. Include specificații de comandă la nivel de nucleu precum Bash, Sh, Dash, executat de obicei cu extensia .sh, fiind un liant universal la nivel de nucleu pentru controlul proceselor de nivel scăzut, configurarea mediului fără instalare și implementarea automatizată în sistemele de operare moderne asemănătoare Unix)"
 
 msgid "mime_rb"
-msgstr "Script Ruby (creat de Yukihiro Matsumoto în 1995, se concentrează pe fericirea dezvoltatorului. Cadrul Ruby on Rails a deschis paradigma de dezvoltare „convenție în loc de configurare”, influențând designul cadrelor web moderne)"
+msgstr "Script Ruby (limbaj de script orientat pe obiecte creat de Yukihiro Matsumoto în 1995. Cu respectul extrem pentru experiența dezvoltatorului ca filosofie centrală de design, framework-ul său Ruby on Rails a stabilit revoluționar paradigma de dezvoltare a arhitecturii web moderne de nivel înalt 'Convenție mai presus de Configurare (CoC)')"
 
 msgid "mime_pl"
-msgstr "Script Perl (creat de Larry Wall în 1987, cunoscut pentru caracterul său pragmatic, numit „cuțitul elvețian”. CPAN a fost pionierul managerilor moderni de pachete pentru limbaje, având o influență profundă în procesarea textelor, administrarea sistemelor și domeniul CGI)"
+msgstr "Script Perl (limbaj de script pragmatic creat de Larry Wall în 1987. Ca fondator al managerilor de pachete moderne (CPAN), este numit 'cuțitul elvețian' al procesării textului. În modul CGI modern, funcționează în continuare ca o bază de înaltă fiabilitate în domeniul parsării jurnalelor datorită costului fizic extrem de scăzut al memoriei și procesării eficiente a expresiilor regulate)"
 
 msgid "mime_php"
-msgstr "Pagină dinamică PHP (creată de Rasmus Lerdorf în 1995, concepută special pentru dezvoltarea web. Peste 70% dintre site-urile web din lume o folosesc, alimentează platforme precum WordPress, Facebook, Wikipedia. PHP 8 a introdus compilarea JIT, îmbunătățind semnificativ performanța)"
+msgstr "Pagină web dinamică PHP (creată de Rasmus Lerdorf în 1995, proiectată special pentru dezvoltarea web. Ca tehnologie centrală care conduce peste 70% din site-urile web ale lumii, acceptă profund aplicații mari de producție precum WordPress și Wikipedia. De la introducerea motorului de execuție de compilare JIT (Just-In-Time) în PHP 8, a realizat o evoluție fundamentală de paradigmă către partea de server full-stack de înaltă performanță)"
 
 msgid "mime_image"
-msgstr "Fișier imagine"
+msgstr "IMAGE clasificarea activelor de imagine (acoperă clasificarea generală a bitmap-urilor comprimate cu pierdere/fără pierdere, graficii web responsive moderne și graficii vectoriale. Este un indicator cheie pentru evaluarea costului de încărcare a resurselor vizuale ale site-ului, a ratei de accesare a cache-ului pe partea de client și a consumului de lățime de bandă al rețelei media)"
 
 msgid "mime_document"
-msgstr "Fișier document"
+msgstr "DOCUMENT clasificarea documentelor structurate (acoperă clasificarea generală a textului simplu, foilor de calcul, documentelor cu format fix (PDF) și limbajelor de marcare ușoare. Este un indicator cheie pentru statisticile de distribuție a bazelor de cunoștințe statice pe partea de server, descărcarea activelor informatice ale întreprinderii și capacitatea de debit a fluxului de text)"
 
 msgid "mime_package"
-msgstr "Pachet software"
+msgstr "PACKAGE clasificarea produselor de compilare și a pachetelor software (acoperă clasificarea generală a programelor executabile native ale sistemului de operare, bibliotecilor de legătură în timp de execuție (DLL/SO) și pachetelor de instalare a distribuției aplicațiilor. Adesea utilizat ca indicator cheie pentru evaluarea traficului de ieșire și a vârfurilor de descărcare ale site-urilor de distribuție software)"
 
 msgid "mime_archive"
-msgstr "Fișier comprimat Gzip (proiect GNU din 1992, bazat pe algoritmul DEFLATE. Pe web folosit pentru compresia dinamică a conținutului răspunsului, rata de compresie de obicei 60-90%. După 2015 în unele scenarii a fost înlocuit cu Brotli, dar rămâne cel mai larg suportat format de compresie pe partea de server)"
+msgstr "ARCHIVE fișiere de arhivă și comprimate (clasificare generală a pachetelor de compresie a datelor bazate pe algoritmi de bază precum DEFLATE, LZMA. În stratul de rețea, pe lângă reprezentarea distribuției tradiționale de pachete, acoperă și fluxul de răspuns dinamic Gzip al proiectului GNU din 1992. Deși algoritmul Brotli este introdus treptat în scenarii moderne, această clasificare rămâne un indicator cheie pentru evaluarea ratei de debit a lățimii de bandă a serverului și a reducerii presiunii în stratul de transport)"
 
 msgid "mime_audio"
-msgstr "Fișier audio"
+msgstr "AUDIO clasificarea fluxului audio digital (acoperă clasificarea generală a audio-ului comprimat, a cărților audio și a containerelor audio media de streaming. Bazată pe standarde specifice de codec audio, utilizată pentru a monitoriza rata de debit a fluxurilor de date audio ale site-urilor multimedia, lățimea de bandă de streaming concurent și performanța conexiunilor lungi)"
 
 msgid "mime_video"
-msgstr "Fișier video"
+msgstr "VIDEO clasificarea fluxului video digital (acoperă clasificarea generală a containerelor video de înaltă definiție, animațiilor web moderne și segmentelor media de streaming. Este un indicator cheie pentru evaluarea limitei maxime a lățimii de bandă a serverului și a efectului de accelerare al Rețelei de Distribuție a Conținutului (CDN) în medii de rețea cu sarcină ridicată)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (dezvoltat de Brendan Eich în 1995)"
+msgstr "Script JScript (implementare proprietară de inginerie inversă dezvoltată de Microsoft pentru Internet Explorer 3.0 în 1996. Ca un concurent timpuriu al gazdei JavaScript clasice, a fost motorul central al gazdei de scripturi Windows (WSH) și al backend-ului timpuriu ASP)"
 
 msgid "mime_json"
-msgstr "Date JSON (propus de Douglas Crockford în 2001, format ușor de schimb de date, standard de facto pentru API-urile web)"
+msgstr "JSON date structurate (format ușor de schimb de serializare a datelor stabilit de Douglas Crockford în 2001. Bazat pe perechi cheie-valoare text și arhitectură de matrice, are o lizibilitate umană extrem de ridicată și o caracteristică de parsare a fluxului fără pierderi. Este standardul de facto pentru API-urile web moderne, arhitectura de microservicii și interacțiunea cu modelele lingvistice mari)"
 
 msgid "mime_vbs"
-msgstr "VBScript (dezvoltat de Microsoft în 1996, limbaj de scripting Windows, folosit pentru pagini ASP și scripturi de administrare Windows. Odată cu răspândirea PowerShell și JavaScript, a fost eliminat treptat)"
+msgstr "Script VBScript (variantă de limbaj de scripting lansată de Microsoft împreună cu IE 3.0 în 1996. A fost cândva motorul central pentru site-urile web dinamice ASP timpurii și gestionarea sistemului Windows, acum este oficial abandonat și eliminat din cel mai recent nucleu Windows 11 de către Microsoft, aparținând tehnologiei moștenite istorice)"
 
 msgid "mime_conf"
-msgstr "Fișier de configurare (format text pentru stocarea configurațiilor software, formate comune: INI, JSON, YAML, TOML, XML. Configurațiile sistemului Linux se află de obicei în directorul /etc)"
+msgstr "CONF fișier de configurare a sistemului (clasificare generală a fișierelor de date care stochează permanent parametrii mediului de execuție a software-ului sub formă de text simplu. Acoperă specificațiile INI și moderne YAML, TOML, JSON. În sistemele Linux, sunt concentrate în principal în directorul /etc. Este dependența centrală pentru optimizarea stării de execuție la nivel de sistem)"
 
 msgid "mime_css"
-msgstr "Foaie de stil CSS (W3C a lansat CSS1 ca prim standard oficial în decembrie 1996, CSS2 a adăugat poziționarea și tipurile de media în 1998, din 2011 CSS3 a introdus modular colțuri rotunjite, animații, casete flexibile, dispunere în grilă și design responsive. Împreună cu HTML și JavaScript sunt cele trei tehnologii de bază ale front-end-ului, toate browserele moderne (Chrome, Firefox, Safari, Edge) îl suportă nativ, este singurul standard pentru definirea stilurilor web)"
+msgstr "CSS foi de stil în cascadă (standard W3C din 1996, împreună cu HTML/JS fiind unul dintre cele trei nuclee front-end. A trecut prin poziționarea CSS2 și evoluția modulară CSS3, suportând nativ Flexbox, Grid și design responsive cu interogări media. Este standardul absolut dominant pentru decuplarea prezentării paginilor web în browserele moderne)"
 
 msgid "mime_xsl"
-msgstr "Foaie de stil XSL (standard W3C din 1999, limbaj de transformare a documentelor XML, poate converti XML în HTML/PDF/text. După răspândirea JSON, utilizarea sa a scăzut)"
+msgstr "XSL foaie de stil (standard W3C din 1999, conține limbajul de transformare XSLT și limbajul de adresare XPath, utilizat pentru a reda date XML structurate ca HTML, PDF sau text simplu. În dezvoltarea modernă, ecosistemul său a fost înlocuit în mare parte de motoare de șabloane mai ușoare și formatul de date JSON)"
 
 msgid "mime_runtime"
-msgstr "Fișier executabil (formate executabile ale sistemului de operare precum EXE, ELF, Mach-O, conține cod mașină și informații de încărcare)"
+msgstr "Fișier executabil (formate de execuție native ale sistemului de operare precum EXE, ELF, Mach-O, care conțin cod mașină de nivel scăzut compilat, punct de intrare și informații de încărcare a sistemului)"
 
 msgid "mime_library"
-msgstr "Fișier bibliotecă (DLL, SO, dylib și alte biblioteci legate dinamic, cod încărcat în timpul execuției programului)"
+msgstr "Fișier de bibliotecă (biblioteci de legătură dinamice sau statice precum DLL, SO, dylib, care conțin simboluri partajate și cod de relocare pentru a fi apelate de alte programe și încărcate în timpul execuției)"
 
 msgid "mime_swf"
-msgstr "Animație Flash (dezvoltată de Macromedia în 1996, ulterior preluată de Adobe. Standard pentru animații web interactive, a dominat animațiile și jocurile pe internet. Puncte slabe: dependent de plugin, fără suport pe mobil, risc ridicat de securitate. În 2017 Adobe a anunțat eliminarea, suportul a fost oprit complet în 2020, înlocuit de HTML5/CSS3/JS)"
+msgstr "Animație Flash (dezvoltată de Macromedia în 1996, achiziționată de Adobe în 2005. Standard de animație web interactivă, a dominat cândva animația și jocurile pe internet. Puncte slabe: dependentă de plugin-uri, nesuportată pe mobil, risc ridicat de securitate. Adobe a anunțat retragerea în 2017, a oprit complet suportul în 2020, fiind înlocuită de HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "Definiție tip document DTD (specificație XML, definește structura unui document XML, utilizată pentru validarea conformității XML)"
+msgstr "DTD definiția tipului de document (lansată împreună cu XML 1.0 în 1998, utilizată pentru a defini structura documentului XML/HTML și a valida legalitatea. În dezvoltarea modernă, a fost înlocuită treptat de soluții mai flexibile precum XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "Format date CSV (valori separate prin virgulă, format universal pentru date tabelare, standard pentru import/export în Excel și baze de date)"
+msgstr "CSV format de date (valori separate prin virgulă, format universal de tabel text simplu din era mainframe-urilor din 1972 (compilator IBM Fortran). Standardizat oficial de RFC 4180 în 2005, ca standard de schimb de date fără pierderi multiplatformă și multi-limbă. Utilizat pe scară largă pentru import/export eficient în Excel, baze de date relaționale, analiza datelor (Pandas).)"
+
+msgid "mime_cur"
+msgstr "Fișier indicator al mouse-ului (format .cur, utilizat pentru personalizarea stilului mouse-ului, de exemplu cursorul deget pe paginile web, pictograma clepsidră de așteptare în sistem. Este o rudă a pictogramei comune .ico, dar are o localizare suplimentară a 'punctului fierbinte' - locația în care mouse-ul face clic de fapt. Istorie: introdus odată cu Windows 3.1 (1992), a fost o componentă cheie în tranziția interfeței grafice de la linia de comandă la era operațiunilor cu mouse-ul)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (lansator de aplicații Java, tehnologie de distribuire a aplicațiilor desktop Java din anii 2000, acum eliminată)"
+msgstr "Java Web Start (tehnologie de distribuție a aplicațiilor desktop Java din anii 2000, care pornește programe Java la distanță prin fișiere .jnlp. Din cauza problemelor de securitate și a popularizării metodelor moderne de distribuție, este acum practic eliminată)"
 
 msgid "mime_lit"
-msgstr "Carte electronică Microsoft Reader (lansată de Microsoft în 2000, format LIT, eliminată)"
+msgstr "Carte electronică Microsoft Reader (lansată de Microsoft în 2000, format LIT. Eliminată, poate fi convertită acum în EPUB sau PDF folosind instrumente precum Calibre)"
 
 msgid "mime_svg"
-msgstr "Grafică vectorială SVG (standard W3C din 1999, deoarece Microsoft a promovat mult timp propriul format VML, browserul IE a acceptat abia în 2011, ceea ce a întârziat răspândirea. După 2015, odată cu eliminarea IE și răspândirea ecranelor HD, a devenit formatul preferat pentru pictograme și logo-uri)"
+msgstr "SVG grafică vectorială (standard W3C din 1999, format de imagine vectorială bidimensional bazat pe arhitectura XML. Are avantajul scalării arbitrare fără pierderea clarității și al transmiterii fluxului de text. Toate browserele moderne îl acceptă nativ. Utilizat pe scară largă pentru pictograme web de înaltă rezoluție, logo-uri și randarea animațiilor vectoriale. Este standardul central pentru grafica web modernă)"
 
 msgid "mime_ai"
-msgstr "Grafică vectorială Adobe Illustrator (lansată în 1987, format standard industrial pentru grafică vectorială, prima alegere pentru design tipografic, logo-uri și pictograme)"
+msgstr "AI grafică vectorială (format de grafică vectorială proprietar dezvoltat independent de Adobe în 1987. Ca standard central al industriei pentru tipografie, design de imprimare și design de identitate a mărcii, acceptă date vectoriale de aspect multi-strat și de nivel înalt. Este vehiculul preferat pentru artele vizuale profesionale)"
 
 msgid "mime_phshop"
-msgstr "Imagine Photoshop (lansată de Adobe în 1990, format sursă PSD al Photoshop, standard industrial pentru prelucrarea imaginilor)"
+msgstr "PSD imagine în straturi (format de fișier sursă de imagine raster proprietar lansat de Adobe împreună cu Photoshop în 1990. Acceptă stratificare multi-strat, canale, măști și date de editare fără pierderi. A fost stabilit ca standard industrial global pentru procesarea imaginilor și pictura digitală)"
 
 msgid "mime_ttf"
-msgstr "Font TrueType (dezvoltat în comun de Apple și Microsoft în 1989, format vectorial de fonturi, afișare consecventă pe ecran și la imprimare, format implicit de font pe sistemele de operare moderne)"
+msgstr "Font TrueType (format de font de contur digital dezvoltat în comun de Apple și Microsoft în 1989. Bazat pe curbele Bézier pătratice, realizează o consistență absolută a pixelilor între afișarea pe ecran și ieșirea tipărită. Este formatul de font implicit nativ al sistemelor de operare desktop moderne)"
 
 msgid "mime_fon"
-msgstr "Font web WOFF2 (Recomandare W3C din 2014, utilizează algoritmul de compresie Brotli, comparativ cu WOFF vechi dimensiunea este redusă cu aproximativ 30%, comparativ cu TTF/OTF redusă cu peste 50%, în prezent toate browserele moderne îl acceptă, este formatul preferat pentru fonturile web moderne, acceptat de peste 98% dintre browsere)"
+msgstr "FON font bitmap (format de font matrice de puncte la nivel de sistem timpuriu al Microsoft Windows din anii 1980. Nu acceptă scalarea fără pierderi în proporție arbitrară. Utilizat de obicei cu sisteme moștenite sau componente de dispozitive încorporate timpurii pentru randarea textului pixelat limitat)"
 
 msgid "mime_pdf"
-msgstr "Document PDF (dezvoltat de Adobe în 1993, a devenit standard internațional ISO în 2008. Format de document independent de platformă, menține consecvența formatării, standard global pentru distribuirea documentelor electronice)"
+msgstr "PDF document electronic (format de document cu aspect fix multiplatformă dezvoltat de Adobe în 1993 și devenit standardul internațional ISO 32000 în 2008. Are o fidelitate absolută a aspectului și formatului. Este standardul universal pentru distribuția globală a documentelor oficiale electronice și publicarea digitală)"
 
 msgid "mime_dotnet"
-msgstr "Pagină dinamică ASP.NET (lansată de Microsoft în 2002, tehnologie web dinamică pentru platforma Windows, parte a .NET Framework)"
+msgstr "ASP.NET pagină dinamică (tehnologie web dinamică pe partea de server lansată de Microsoft împreună cu arhitectura .NET în 2002. Rulează pe motorul de randare IIS, utilizată pentru a construi aplicații web dinamice pe partea de server Windows la nivel de întreprindere și sisteme distribuite)"
 
 msgid "mime_mdb"
-msgstr "Bază de date Access (fișier de bază de date Microsoft Access, lansat în 1992, soluție de bază de date desktop pentru Windows)"
+msgstr "MDB bază de date relațională (format de stocare a bazei de date relaționale la nivel de desktop lansat de Microsoft împreună cu Access în 1992. Are motorul de bază de date Jet încorporat, a fost utilizat ca soluție de bază de date relațională în gestionarea timpurie a informațiilor a computerelor personale și a întreprinderilor mici și mijlocii)"
 
 msgid "mime_md"
-msgstr "Document Markdown (creat de John Gruber în 2004, designul sintaxei a fost influențat de reStructuredText și Setext. Filosofia centrală de design este „citiabil este randabil”, implementarea originală Markdown.pl este scrisă în Perl și realizează transformarea textului pe baza expresiilor regulate. Specificațiile derivate includ GFM (2013), CommonMark (2017), Pandoc Markdown etc. Alimentează ecosisteme precum GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, devenind formatul standard de facto pentru generatoarele de site-uri statice și documentația dezvoltatorilor)"
+msgstr "Document Markdown (limbaj de marcare ușor creat independent de John Gruber în 2004. Filosofia centrală de design este 'lizibil înseamnă randabil', care conduce standarde derivate moderne precum GFM și CommonMark. Utilizat pe scară largă ca standard central de schimb pentru documentația tehnică, bazele de cunoștințe (Obsidian) și generatoarele moderne de site-uri statice)"
 
 msgid "mime_crystal"
-msgstr "Format raport Crystal Reports (raport de business intelligence SAP, format standard pentru rapoarte corporative)"
+msgstr "Crystal Reports (format de fișier de raport profesional la nivel de întreprindere al platformei SAP Business Intelligence (BI). Are conexiune de nivel scăzut la surse multiple de date și capacități complexe de randare dinamică a diagramelor, utilizat pe scară largă pentru generarea profesională de rapoarte în sistemele financiare și de analiză a datelor ale companiilor multinaționale)"
 
 msgid "mime_libreoffice"
-msgstr "Document LibreOffice (dezvoltat de The Document Foundation în 2010, ramură a OpenOffice, implementare a standardului ODF, pachet office open source principal)"
+msgstr "Document LibreOffice (format proprietar al suita de birou open source construită de The Document Foundation în 2010 pe baza ramurii OpenOffice. Implementează profund standardul internațional ODF (Format de Document Deschis) al W3C. Este fundamentul biroului al ecosistemului modern open source)"
 
 msgid "mime_encrypt"
-msgstr "Fișier criptat (fișier care trebuie decriptat pentru a fi vizualizat, extensii comune: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT fișier criptat (date binare sau text brute procesate printr-un algoritm specific de criptare simetric sau asimetric. Include formate derivate de bază precum .enc, .pgp, .gpg. În stratul de rețea, este utilizat pentru a asigura confidențialitatea și verificarea integrității datelor nepublice)"
 
 msgid "mime_gpx"
-msgstr "Date de traseu GPS (format de schimb GPS, înregistrează informații de localizare geografică, format universal pentru ceasuri sportive și dispozitive de navigație)"
+msgstr "GPX date de traiectorie prin satelit (format de schimb al sistemului de poziționare global bazat pe arhitectura XML. Special utilizat pentru a descrie coordonate geografice, puncte de cale, rute și trasee istorice. Este un standard de date deschis comun pentru dispozitivele sportive mobile moderne, navigația auto și Sistemele de Informații Geografice (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Imagine de disc (DMG, ISO, IMG și alte fișiere imagine de disc optic/disk, utilizate pentru distribuirea de software sau backup-ul suporturilor de stocare)"
+msgstr "Disk Image imagine de disc (include fișiere imagine de sector de nivel scăzut byte cu byte ale discurilor fizice sau suporturilor optice, cum ar fi ISO, DMG, IMG. Utilizat pentru implementarea de sistem de nivel scăzut, distribuirea securizată a software-ului de mare capacitate și backup-ul complet al datelor la nivel fizic al suporturilor de stocare)"
 
 msgid "mime_vm"
-msgstr "Imagine mașină virtuală (VMDK, VDI, VHDX, OVA și alte fișiere de disc virtual, formate ale platformelor de virtualizare precum VMware, VirtualBox, Hyper-V)"
+msgstr "VM imagine de mașină virtuală (include imagini de disc fizic virtualizate precum VMDK, VDI, VHDX, OVA. Ca bază a platformelor VMware, VirtualBox și Hyper-V, utilizat pentru emularea hardware la nivel de sistem de nivel scăzut, instantanee de instanță și distribuirea infrastructurii cloud)"
 
 msgid "mime_torrent"
-msgstr "Fișier torrent BitTorrent (inventat de Bram Cohen în 2001, fișier index de descărcare P2P, conține metadatele fișierului și informații despre Tracker)"
+msgstr "BitTorrent fișier torrent (indice de descărcare distribuită P2P peer-to-peer proiectat de Bram Cohen în 2001. Bazat pe codificarea Bencode, stochează metadatele sumei de control de nivel scăzut ale fișierului original și informațiile de adresare a serverului Tracker. Este vehiculul central pentru distribuția fluxului în rețelele descentralizate)"
 
 msgid "mime_gis"
-msgstr "Date SIG (Shapefile, GeoJSON și alte formate de date geospațiale, utilizate pentru hărți și analiză spațială)"
+msgstr "GIS date geospațiale (standard de date al sistemului de informații geografice cu Shapefile și GeoJSON ca nucleu. Include coordonate geometrice multidimensionale, topologia stratului și date de atribut. Utilizat pe scară largă pentru randarea hărților digitale de înaltă precizie, teledetecția prin satelit și analiza geometriei spațiale)"
 
 msgid "mime_ebook"
-msgstr "Carte electronică (EPUB, MOBI, AZW și alte formate de cărți electronice. EPUB este standard internațional, MOBI/AZW sunt formatele Amazon Kindle)"
+msgstr "EBOOK carte electronică (format de publicare digitală cu standardul internațional deschis EPUB al W3C și arhitectura proprietară MOBI/AZW a Amazon Kindle ca nucleu. Suportă aspect adaptiv în flux, încapsularea metadatelor și protecția drepturilor digitale DRM. Este un vehicul universal pentru lectura digitală pe dispozitive mobile)"
 
 msgid "mime_avif"
-msgstr "Imagine AVIF (lansată de Alianța pentru Media Deschisă în 2019, bazată pe codarea AV1, rata de compresie cu 50% mai bună decât WebP, standard de imagine web de nouă generație)"
+msgstr "AVIF imagine eficientă (standard de imagine ultra-înaltă rezoluție de generație următoare introdus de Open Media Alliance (AOMedia) în 2019. Bazat pe tehnologia cadrelor cheie de codare video AV1, rata de compresie cu 50% mai bună decât WebP și suportă nativ High Dynamic Range (HDR). Este standardul principal pentru transmiterea imaginilor web moderne)"
 
 msgid "mime_markdown"
-msgstr "Document Markdown (proiectat de John Gruber în 2004, limbaj de marcare ușor, format universal pentru GitHub README, documentație tehnică, postări pe forum)"
+msgstr "Markdown document ușor (limbaj de marcare a documentelor text creat independent de John Gruber în 2004. Utilizează design declarativ cu text simplu, designul său de sintaxă este inspirat de reStructuredText. Utilizat pe scară largă pentru proiecte GitHub, documentație tehnică la nivel de inginerie și ecosistemul modern de gestionare a conținutului static)"
 
 msgid "mime_yaml"
-msgstr "Configurare YAML (proiectată de Clark Evans în 2001, format de serializare a datelor ușor de citit de oameni, format standard pentru fișierele de configurare Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML configurare de serializare (format de serializare a datelor lizibil de om proiectat de Clark Evans și alții în 2001. Bazat pe indentare ierarhică și mapare cheie-valoare. Acum a fost stabilit ca standard de configurare a infrastructurii native pentru cloud pentru orchestrarea containerelor Kubernetes, automatizarea Ansible și Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Configurare TOML (proiectată de Tom Preston-Werner în 2013, „Tom's Obvious Minimal Language”, format de fișier de configurare pentru instrumente moderne precum Rust/Cargo, Python/pip, Go)"
+msgstr "TOML configurare semantică (limbaj minimalist proiectat de Tom Preston-Werner în 2013. Are avantaje de design de nivel scăzut precum tipizare puternică, mapare explicită și claritate semantică. Acum utilizat pe scară largă ca fișier de configurare standardizat pentru lanțurile de instrumente moderne Rust (Cargo), Python (pyproject.toml) și Go)"
 
 msgid "mime_vue"
-msgstr "Fișier componentă Vue (introdus în 2014 de Evan You, un cadru JavaScript progresiv. Prin intermediul componentelor cu un singur fișier (SFC), combină perfect HTML, CSS și JS, crescând considerabil eficiența dezvoltării. Este unul dintre cele mai populare cadre frontend din lume. De asemenea, ca nucleu al generatoarelor de site-uri statice moderne precum VitePress, este utilizat pe scară largă pentru a alimenta documentația tehnică interactivă și blogurile.)"
+msgstr "Vue componentă cu un singur fișier (format SFC proprietar al framework-ului web progresiv introdus de Evan You în 2014. Într-un singur fișier, realizează separarea preocupărilor HTML/CSS/JS și legarea stării reactive, conducând profund aplicațiile front-end interactive web moderne și motoarele de site-uri statice la scară largă)"
 
 msgid "mime_wasm"
-msgstr "Modul WebAssembly (standard W3C din 2017, format de execuție de înaltă performanță în browser, C/C++/Rust/R pot compila la țintă, performanță apropiată de cea nativă)"
+msgstr "WebAssembly modul binar (standard de cod de octeți de nivel scăzut de înaltă performanță pentru web stabilit de W3C în 2017. Permite limbajelor puternic tipate precum C/C++/Rust să fie compilate la ținta sandbox-ului browserului, oferind eficiență de execuție apropiată de hardware-ul nativ. Este piatra de temelie a calculului la marginea rețelei web moderne)"
 
 msgid "mime_jsx"
-msgstr "Componentă React JSX (Facebook a introdus JavaScript XML în 2013, sintaxă a componentelor cadrului React, o paradigmă inovatoare de a scrie HTML în JavaScript)"
+msgstr "React component JSX (extensie de sintaxă JavaScript XML lansată de Facebook împreună cu framework-ul React în 2013. Suportă construirea declarativă a structurii virtuale DOM în JavaScript, implementând paradigma de dezvoltare front-end bazată pe componente 'UI este o funcție a stării')"
 
 msgid "mime_tsx"
-msgstr "Componentă TypeScript TSX (dezvoltată de Microsoft în 2012, TypeScript + JSX, modul standard de dezvoltare React cu siguranță a tipurilor)"
+msgstr "TypeScript component TSX (combinația fluxului dintre sintaxa puternic tipată TypeScript dezvoltată de Microsoft în 2012 și JSX. Injectează verificarea tipului static în timpul compilării și constrângerile de interfață în dezvoltarea componentelor React. Este un standard de cod pentru dezvoltarea securizată a sistemelor front-end mari moderne)"
 
 msgid "mime_heif"
-msgstr "Imagine HEIF (standard MPEG din 2015, format eficient de fișier imagine, utilizat pe scară largă în ecosistemul Apple)"
+msgstr "HEIF imagine eficientă (format de fișier de imagine eficient stabilit de organizația MPEG în 2015. Bazat pe algoritmul de codare video HEVC (H.265), suportă acomodarea mai multor imagini de cadre, hărți de adâncime și metadate într-un volum foarte mic. Este un standard de stocare proprietar pentru sistemele de operare mobile moderne și dispozitivele terminale inteligente)"
 
 msgid "mime_heic"
-msgstr "Imagine HEIC (implementarea HEIF de către Apple, format implicit pentru fotografiile iPhone, suportat nativ pe iOS/macOS)"
+msgstr "HEIC imagine eficientă (format bitmap proprietar Apple implementat pe baza standardului internațional HEIF. Ca standard implicit de stocare a fotografiilor pentru iPhone-ul modern, primește suport de codare/decodare la nivel hardware iOS/macOS și suport nativ al sistemului de operare. Asigurând o calitate ridicată a imaginii, reduce dramatic spațiul de stocare subiacent)"
 
 msgid "mime_gltf"
-msgstr "Model 3D GLTF (format de transfer GL, „JPEG pentru lumea 3D”, lansat de Khronos Group în 2015, format standard pentru web 3D)"
+msgstr "glTF model de activ 3D (standard de format de transfer GL lansat de Khronos Group în 2015. Utilizează arhitectura JSON pentru a descrie scene tridimensionale, fiind numit 'JPEG-ul domeniului 3D'. Este un standard industrial ușor pentru randarea WebGL/WebGPU modernă și realitatea virtuală)"
 
 msgid "mime_glb"
-msgstr "Model 3D binar GLB (versiunea binară a GLTF, un singur fișier conține toate resursele, utilizat pentru distribuirea scenelor 3D)"
+msgstr "GLB model 3D binar (versiune de încapsulare binară completă, fără pierderi a modelului de activ glTF. Combină structura scenei, datele vertexurilor plasă de nivel scăzut, materialele și hărțile de textură într-un singur fișier. Special conceput pentru transmiterea eficientă și distribuirea în flux a activelor 3D web multiplatformă)"
 
 msgid "mime_gls"
-msgstr "Glosar GLOSSARY (fișier de definiții de termeni, utilizat pentru gestionarea terminologiei în sistemele de documentație)"
+msgstr "GLOSSARY glosar de date (fișier de definiție a setului de terminologie special pentru sistemele de gestionare a documentelor și corpusurile structurate. Are definiții standard de termeni încorporate, mapări multilingve și mapări de metadate. Utilizat pentru menținerea coerenței conceptuale în analiza automată a textului și sistemele de publicare a conținutului)"
 
 msgid "mime_cbz"
-msgstr "Carte de benzi desenate CBZ (imagini de benzi desenate comprimate ZIP, format universal pentru colecționarea benzilor desenate)"
+msgstr "CBZ carte de benzi desenate (format de arhivare a imaginilor de benzi desenate proprietar bazat pe structura de compresie ZIP. Încapsulează intern o secvență continuă de imagini bitmap statice. Este un standard de container ușor universal pentru publicarea benzilor desenate digitale și colecționarea locală multiplatformă)"
 
 msgid "mime_cbr"
-msgstr "Carte de benzi desenate CBR (imagini de benzi desenate comprimate RAR, format universal pentru colecționarea benzilor desenate)"
+msgstr "CBR carte de benzi desenate (format de arhivare a imaginilor de benzi desenate proprietar bazat pe structura de compresie RAR. Utilizează algoritmul RAR pentru a încapsula secvențe de bitmap statice, având o rată de compresie relativ ridicată, cu un suport larg de compatibilitate în domeniul distribuției benzilor desenate digitale)"
 
 msgid "mime_fb2"
-msgstr "Carte electronică FB2 (FictionBook 2.0, format rusesc de carte electronică, structură XML, acceptat pe scară largă de cititoarele open source)"
+msgstr "FB2 carte electronică (standard de carte electronică FictionBook 2.0 de la începutul anilor 2000. Utilizează structură XML pură pentru a descrie atributele cărții și ierarhia textului. Are un suport larg în ecosistemul cărților electronice open source și în cititoarele de publicare digitală moștenite)"
 
 msgid "mime_kepub"
-msgstr "Carte electronică KEPUB (format EPUB specific Kobo, format optimizat pentru cititoarele de cărți electronice Kobo)"
+msgstr "KEPUB carte electronică (format de carte electronică îmbunătățit proprietar Kobo care a evoluat din standardul EPUB. Efectuează optimizarea randării de nivel scăzut pentru cititoarele de cărți electronice la nivel hardware ale Kobo, oferind un aspect al paginii mai eficient și interacțiune cu statisticile de lectură)"
 
 msgid "mime_m4b"
-msgstr "Carte audio M4B (format de carte audio MPEG-4, acceptă semne de carte, formatul iTunes pentru cărți audio)"
+msgstr "M4B carte audio (format de carte audio bazat pe arhitectura containerului MPEG-4 Part 14 (MP4). Utilizează codificarea AAC, suportă nativ localizarea marcajului de nivel scăzut, reluarea redării de la punctul de întrerupere și încorporarea capitolelor. A fost cândva formatul standard al ecosistemului Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Format Kindle KFX (lansat de Amazon în 2015, format special pentru cărțile electronice Kindle, acceptă tipografie avansată și întoarcerea rapidă a paginilor)"
+msgstr "Kindle KFX format (format de publicare digitală îmbunătățit proprietar lansat de Amazon împreună cu Kindle în 2015. Suportă aspect avansat al ligaturilor, redarea fonturilor cu dinamică ridicată și încărcarea paginii în flux la nivel de nucleu (Page Flip). Este standardul central al platformei Kindle moderne)"
 
 msgid "mime_chm"
-msgstr "Fișier de ajutor CHM (lansat de Microsoft în 1997, format de ajutor HTML compilat, standard pentru documentația de ajutor a software-ului Windows)"
+msgstr "CHM fișier de ajutor compilat (sistem de informații de ajutor HTML compilat lansat de Microsoft în 1997. Împachetează datele hipertext și indexul subiacent într-un singur container binar. Multă vreme a fost formatul standard pentru documentația de ajutor offline locală pentru software-ul Windows)"
 
 msgid "mime_mht"
-msgstr "Arhivă web MHT (lansată de Microsoft în 1999, format web cu un singur fișier, format de salvare a paginilor web în browserul IE)"
+msgstr "MHT arhivă pagină web (format hipertext agregat MIME lansat de Microsoft în 1999. Bazat pe standardul RFC 2557, încapsulează codul sursă HTML, CSS, JS și imaginile încorporate într-un singur fișier text. Utilizat pentru salvarea paginilor web offline în browserele moștenite)"
 
 msgid "mime_wml"
-msgstr "Limbaj de marcare fără fir WML (standard WAP din 1999, utilizat pentru fișierele de pagini web ale telefoanelor funcționale timpurii, eliminat)"
+msgstr "WML limbaj de marcare fără fir (standard de marcare mobil stabilit de forumul WAP (Protocol de Aplicație Fără Fir) în 1999. Bazat pe specificația XML, special conceput pentru rețelele celulare fără fir de bandă îngustă timpurii și telefoanele cu funcții de capacitate redusă. În ecosistemul web modern, aparține tehnologiei moștenite retrase)"
 
 msgid "mime_xhtml"
-msgstr "Pagină web XHTML (standard W3C din 2000, versiunea XML a HTML, sintaxă mai strictă. În 2009 W3C a întrerupt întreținerea, concentrându-se pe HTML5)"
+msgstr "XHTML pagină web hipertext (standard W3C din 2000, încapsularea unui limbaj de marcare hipertext strict bazat pe arhitectura XML. În 2009, W3C a oprit evoluția sa tehnologică și a trecut complet la specificația HTML5. Acum utilizat în principal pentru randarea paginilor web semantice în sistemele moștenite)"
 
 msgid "mime_xml"
-msgstr "Document XML (standard W3C din 1998, limbaj de marcare extensibil, format de bază pentru servicii web, fișiere de configurare, schimb de date)"
+msgstr "XML document structurat (limbaj de marcare extensibil din standardul W3C din 1998. Are o arhitectură de etichete auto-descrise. Este un format fundamental de bază pentru serviciile web în rețea (SOAP/REST), fișierele de configurare la nivel de sistem (XSD) și schimbul de date multiplatformă)"
 
 msgid "mime_sgml"
-msgstr "Document SGML (standard ISO din 1986, predecesorul HTML, limbaj de marcare general standard, atât XML cât și HTML derivă din SGML)"
+msgstr "SGML limbaj de marcare generalizat (standard internațional ISO 8879 din 1986 pentru limbajul de marcare generalizat standard. Ca pionier al industriei în descrierea structurată a documentelor electronice, atât XML, cât și specificațiile HTML timpurii derivă din acest meta-limbaj standard)"
 
 msgid "mime_apng"
-msgstr "Animație APNG (dezvoltată de Mozilla în 2004, extensie de animație PNG, înlocuitor modern pentru GIF, acceptă culori reale și transparență)"
+msgstr "APNG grafică dinamică (extensie dinamică a Graficii de Rețea Portabile (PNG) dezvoltată de Mozilla în 2004. Suportă culori reale pe 24 de biți și semitransparență a canalului Alfa pe 8 biți. Este o alternativă de înaltă definiție la formatul GIF în scenariile web moderne)"
 
 msgid "mime_bmp"
-msgstr "Imagine bitmap BMP (format bitmap Windows, suportat nativ din Windows 1.0. Necomprimat, dimensiune mare a fișierului, dar datorită structurii sale simple și lipsei necesității de codecuri suplimentare, este încă folosit în Instrumentul de decupare din Windows 11, programul Paint, resursele de pictograme în pachetele de instalare EXE/MSI, fișierele cursor și unele drivere mai vechi. La aceeași calitate a imaginii, dimensiunea fișierului este de aproximativ 3-10 ori mai mare decât PNG. În majoritatea cazurilor a fost înlocuit de PNG/JPEG, dar ecosistemul Windows menține în continuare o compatibilitate largă)"
+msgstr "BMP bitmap nativ (format bitmap independent de dispozitiv al platformei Microsoft stabilit încă din era Windows 1.0. Utilizează stocare fără pierderi, necomprimată, deși dimensiunea sa este de obicei de 3-10 ori mai mare decât PNG, datorită lipsei costurilor de codare/decodare, este încă pe scară largă încorporat în componentele de bază ale Windows 11, segmentele de resurse EXE/MSI și bufferele grafice ale driverelor moștenite)"
 
 msgid "mime_cdr"
-msgstr "Grafică vectorială CDR (format specific CorelDRAW, compania Corel din Canada, software de proiectare grafică vectorială)"
+msgstr "CDR grafică vectorială (format de fișier sursă de design vectorial profesional CorelDRAW proprietar al companiei canadiene Corel. Suportă gestionarea culorilor pe mai multe straturi, noduri de contur matematice complexe și date de aspect la nivel de imprimare. Este un format specializat pentru domeniul designului de imprimare plană profesională și publicitate)"
 
 msgid "mime_gif"
-msgstr "Imagine GIF (dezvoltată de CompuServe în 1987, format de imagine animată pe 256 de culori. Puncte slabe: puține culori, calitate grosolană a imaginii, nu acceptă transparență, fișier mare, rată de cadre scăzută. Înlocuit de formate moderne de imagine animată precum APNG, WebP)"
+msgstr "GIF imagine cu culoare indexată (format bitmap cu culoare indexată pe 8 biți dezvoltat de CompuServe în 1987. Bazat pe algoritmul LZW, limitat la 256 de niveluri de culoare și transparență de culoare unică, la o rată mare de cadre devine voluminos. Acum este înlocuit treptat de standardele moderne de imagine dinamică eficiente precum APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "Pictogramă ICO (format fișier pictogramă Windows, acceptă mai multe rezoluții, format standard pentru favicon-ul site-urilor web)"
+msgstr "ICO pictogramă de sistem (format de încapsulare a resurselor de pictograme native Windows. Suportă încorporarea mixtă a variantelor de imagine cu mai multe rezoluții de pixeli și adâncimi de culoare într-un singur container. De asemenea, este un standard de distribuție universal pentru identificatorul central al site-ului browserelor web moderne (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "Imagine JPEG (standard ISO din 1992, format de compresie cu pierdere pentru fotografii, standard de facto pentru fotografiile de pe internet)"
+msgstr "JPEG imagine comprimată (format de imagine cu compresie cu pierderi al standardului internațional ISO 10918 din 1992. Bazat pe algoritmul de transformare cosinus discretă (DCT), atinge un raport ridicat de compresie menținând în același timp o calitate excelentă a imaginii realiste. Este standardul de facto absolut pentru fotografia statică pe internetul global)"
 
 msgid "mime_jpg"
-msgstr "Imagine JPEG (standard ISO din 1992, format de compresie cu pierdere pentru fotografii, standard de facto pentru fotografiile de pe internet)"
+msgstr "JPEG imagine comprimată (format de imagine cu compresie cu pierderi al standardului internațional ISO 10918 din 1992. Bazat pe algoritmul de transformare cosinus discretă (DCT), atinge un raport ridicat de compresie menținând în același timp o calitate excelentă a imaginii realiste. Este standardul de facto absolut pentru fotografia statică pe internetul global)"
 
 msgid "mime_png"
-msgstr "Imagine PNG (recomandare W3C din 1996, acceptă culori reale și transparență, înlocuitor static pentru GIF, standard pentru imagini fără pierderi pe internet)"
+msgstr "PNG imagine fără pierderi (standard de grafică de rețea portabilă recomandat de W3C în 1996. Utilizează un algoritm de compresie fără pierderi, suportă nativ culori reale pe 24 de biți și transparență pe canalul Alfa pe 8 biți. Ca alternativă de înaltă definiție la GIF-ul static clasic, este standardul de facto absolut pentru imaginile de pixeli fără pierderi pe internet)"
 
 msgid "mime_ps"
-msgstr "Fișier de descriere a paginii PostScript (lansat de Adobe în 1985, limbaj de descriere a paginii, predecesorul PDF, utilizat pentru tipărire și publicare)"
+msgstr "PostScript fișier de descriere a paginii (limbaj de descriere a paginii bazat pe stivă introdus de Adobe în 1985. Ca predecesor tehnologic al formatului PDF, implementează la nivel scăzut tipografie independentă de hardware și randare de înaltă precizie a graficii vectoriale. Este un standard fundamental pentru domeniile de publicare tipografică profesională și imprimare laser)"
 
 msgid "mime_psb"
-msgstr "Document mare PSB (format de imagine foarte mare Adobe Photoshop, acceptă imagini gigantice de peste 2GB sau 30000 de pixeli)"
+msgstr "PSB document cu strat mare (format de încapsulare a fișierelor sursă super-mari proprietar al Adobe Photoshop. Acesta sparge limitele de dimensiune fizică de 2 GB și de adresare internă de 30.000 de pixeli ale formatului PSD standard. Special conceput pentru a stoca active de artă digitală gigantice de scară super-mare, cu adâncime mare a stratului)"
 
 msgid "mime_psd"
-msgstr "Imagine PSD (fișier sursă Adobe Photoshop, acceptă straturi, canale, căi, format standard industrial pentru prelucrarea imaginilor)"
+msgstr "PSD fișier sursă de design pe straturi (format de inginerie a imaginii stratificate proprietar al Adobe Photoshop. Ca container standard industrial în domeniul graficii și imaginii, încapsulează nativ arborele complet de randare a stratului, canalele bitmap, căile de decupare vectoriale și modurile de amestecare compuse, suportând editarea completă a datelor fără pierderi)"
 
 msgid "mime_webp"
-msgstr "Imagine WebP (dezvoltată de Google în 2010, format de imagine web, acceptă compresie cu pierdere/fără pierdere și animație, rata de compresie este cu 25-35% mai bună decât PNG, cu 25% mai bună decât JPEG)"
+msgstr "WebP imagine eficientă (standard universal de codare a graficii web introdus de Google în 2010. Derivat din tehnologia cadrelor cheie video VP8, perfect compatibil cu randarea cu pierderi, fără pierderi, semi-transparentă și dinamică. Reduce dimensiunea cu 25-35% față de PNG de aceeași calitate. Este piatra de temelie pentru încărcarea de înaltă performanță a paginilor web moderne)"
 
 msgid "mime_woff"
-msgstr "Font web WOFF (creat în 2009, standard W3C din 2018. Compresie bazată pe TrueType/OpenType, optimizarea încărcării fonturilor web, format standard pentru fonturile de pictograme ale site-urilor web moderne)"
+msgstr "WOFF fișier de glifă web (format de font web deschis creat în 2009 și devenit standard W3C în 2012. În esență, este o încapsulare a compresiei fără pierderi în flux a structurilor standard de font TTF/OTF, care optimizează dramatic costul lățimii de bandă de transmisie a rețelei. Este un format universal pentru pictogramele site-urilor web moderne și fonturile cloud)"
 
 msgid "mime_7z"
-msgstr "Pachet comprimat 7z (dezvoltat de Igor Pavlov în 1999, format specific programului 7-Zip. Algoritm LZMA, compresie ridicată, open source și gratuit. Formatul 7z la aceeași rată de compresie este de obicei cu 30-50% mai mic decât ZIP, format comun în comunitatea open source și pentru distribuirea de software)"
+msgstr "7z arhivă comprimată (format proprietar 7-Zip dezvoltat de Igor Pavlov în 1999. Bazat pe algoritmii open source LZMA/LZMA2, are o rată de compresie extrem de ridicată. În condiții similare, dimensiunea sa este de obicei cu 30-50% mai mică decât ZIP. Este un format universal de raport de compresie ridicat pentru comunitatea open source și distribuția de software)"
 
 msgid "mime_ace"
-msgstr "Pachet comprimat ACE (dezvoltat în anii 1990, format al programului WinACE. A concurat cândva cu RAR, rată de compresie relativ ridicată. Dezvoltarea a fost oprită în 2007, înlocuit acum de 7z/RAR, rar utilizat)"
+msgstr "ACE arhivă comprimată (format de compresie proprietar WinACE din anii 1990. A concurat cândva cu formatul RAR și avea o rată de compresie relativ ridicată. După 2007, iterația tehnologică s-a oprit, fiind acum înlocuit de formatele 7z și RAR. Aparține formatelor de arhivare a sistemelor moștenite)"
 
 msgid "mime_bz2"
-msgstr "Pachet comprimat BZIP2 (dezvoltat de Julian Seward în 1996, algoritm de compresie prin sortare pe blocuri. Rata de compresie este cu 15-20% mai bună decât GZIP, dar mai lent. Codul sursă al nucleului Linux, pachetele open source folosesc frecvent acest format, extensia .bz2)"
+msgstr "BZIP2 arhivă comprimată (format de compresie cu sortare în blocuri dezvoltat de Julian Seward în 1996. Rata sa de compresie a algoritmului subiacent este cu 15-20% mai mare decât GZIP, dar costul de calcul este mai mare. Folosit adesea pentru distribuirea codului sursă al nucleului Linux și a pachetelor software open source. Extensia standard este .bz2)"
 
 msgid "mime_cab"
-msgstr "Pachet comprimat CAB (dezvoltat de Microsoft în 1995, format Cabinet. Format pentru pachetele de instalare ale sistemului Windows, utilizat pentru drivere, distribuirea fișierelor de sistem. Windows Installer (MSI) utilizează intern CAB pentru stocarea fișierelor)"
+msgstr "CAB arhivă comprimată (format de arhivare Cabinet dezvoltat independent de Microsoft în 1995. Ca standard de pachet de instalare nativ al sistemului Windows, utilizat pentru distribuirea driverelor și fișierelor nucleului. De asemenea, servește ca container de stocare subiacent pentru Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "Imagine disc DMG (lansată de Apple în anii 1980, format Disk Image. Format standard pentru distribuirea software-ului pe macOS, dublu clic se montează ca disc virtual, trageți și plasați pentru a instala aplicația. Acceptă compresie și criptare, formatul principal pentru descărcarea software-ului Mac)"
+msgstr "DMG imagine de disc (format de imagine de disc evoluat de Apple în anii 1980. Ca container standard pentru distribuirea software-ului macOS, suportă montarea fizică ca sistem de fișiere virtual, compresie de nivel scăzut și criptarea datelor. Este formatul principal pentru distribuirea aplicațiilor în ecosistemul Mac)"
 
 msgid "mime_emz"
-msgstr "Imagine comprimată EMZ (metafișier îmbunătățit comprimat Windows, versiune comprimată a EMF. Format de stocare a graficii vectoriale în documentele Office, în esență este un fișier EMF comprimat cu GZIP)"
+msgstr "EMZ imagine comprimată (versiune comprimată a Metafișierului Îmbunătățit Windows EMF. În esență, este o grafică vectorială binară comprimată prin algoritmul GZIP. Folosită pe scară largă pentru stocarea graficii vectoriale încorporate în documentele din seria Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Pachet comprimat GZIP (dezvoltat de Jean-loup Gailly și Mark Adler în 1992, proiect GNU. Instrument standard de compresie pe Unix/Linux, format comun pentru compresia transmisiei HTTP. Extensia .gz, adesea folosit împreună cu TAR)"
+msgstr "GZIP arhivă comprimată (format de compresie în flux standard dezvoltat de Jean-loup Gailly și Mark Adler din proiectul GNU în 1992. Ca unealtă standard de compresie Unix/Linux, este, de asemenea, standardul central pentru compresia stratului de transport HTTP (Gzip). Adesea utilizat împreună cu arhivarea TAR)"
 
 msgid "mime_jar"
-msgstr "Pachet comprimat JAR (lansat de Sun Microsystems în 1997, format Java ARchive. În esență este un pachet comprimat ZIP, utilizat pentru ambalarea bibliotecilor de clase Java și a aplicațiilor. Format de bază în ecosistemul Java precum Maven, Gradle, Android folosește de asemenea JAR)"
+msgstr "JAR arhivă comprimată (format de arhivare Java ARchive introdus de Sun Microsystems în 1997. În esență, este un container de împachetare bazat pe structura ZIP, utilizat pentru a încapsula bibliotecile de clase Java și metadatele. Este un produs de compilare central pentru Maven, Gradle și ecosistemul Android timpuriu)"
 
 msgid "mime_lzma"
-msgstr "Pachet comprimat LZMA (dezvoltat de Igor Pavlov în 1998, algoritmul lanțului Lempel-Ziv-Markov. Algoritmul de compresie de bază al formatului 7z, compresie ridicată, decompresie rapidă. Folosit pentru firmware, distribuirea software-ului pentru sisteme încorporate)"
+msgstr "LZMA arhivă comprimată (algoritm de compresie în lanț Lempel-Ziv-Markov dezvoltat de Igor Pavlov în 1998. Ca motor central al formatului 7z, are o rată de compresie extrem de ridicată și caracteristici de decomprimare rapidă. Folosit pe scară largă pentru distribuirea firmware-ului hardware și a sistemelor încorporate)"
 
 msgid "mime_rar"
-msgstr "Pachet comprimat RAR (dezvoltat de Eugene Roshal în 1993, format Roshal ARchive. Compresie ridicată, acceptă divizarea în volume, înregistrări de recuperare. Format al programului WinRAR, compresia superioară ZIP, dar necesită software plătit, unelte open source precum unrar pot face decompresia)"
+msgstr "RAR arhivă comprimată (format de arhivare proprietar WinRAR dezvoltat de Eugene Roshal în 1993. Suportă împărțirea pe volume, înregistrări fizice de recuperare (ECC) și criptare de înaltă rezistență. Rata de compresie este superioară ZIP-ului standard, având un suport larg de compatibilitate în computerele personale și în domeniul comercial)"
 
 msgid "mime_tar"
-msgstr "Arhivă TAR (introdusă în Unix V7 în 1979, format Tape ARchive. Format de arhivă pe bandă, nu comprimă doar împachetează, adesea folosit împreună cu GZIP/BZIP2/XZ. Codul sursă al pachetelor Linux, stocarea straturilor imaginilor Docker utilizează formatul TAR)"
+msgstr "TAR pachet de arhivare (format de arhivare pe bandă din era Unix V7 din 1979. Efectuează doar împachetarea fluxului de fișiere fără compresie a datelor. Adesea combinat cu GZIP/BZIP2/XZ, este un standard subiacent pentru pachetele de cod sursă Linux și stocarea stratificată a imaginilor Docker)"
 
 msgid "mime_tgz"
-msgstr "Pachet comprimat TGZ (format combinat TAR + GZIP, extensia .tgz sau .tar.gz. Cel mai universal format de distribuire a pachetelor Unix/Linux, utilizat pe scară largă pentru pachete sursă, pachete binare, reprezentant al „dezarhivează și folosește”)"
+msgstr "TGZ arhivă comprimată (format de combinație în flux a arhivării TAR și compresiei GZIP, extensii .tgz sau .tar.gz. Ca cel mai universal format de distribuire a pachetelor software în mediul Unix/Linux, utilizat pe scară largă pentru implementarea compilării codului sursă și distribuirea pachetelor binare fără instalare)"
 
 msgid "mime_tbz2"
-msgstr "Pachet comprimat TBZ2 (format combinat TAR + BZIP2, extensia .tbz2 sau .tar.bz2. Rata de compresie cu 15-20% mai bună decât TGZ, potrivit pentru distribuirea fișierelor mari, codul sursă al nucleului Linux a folosit mult timp acest format)"
+msgstr "TBZ2 arhivă comprimată (format de combinație în flux a arhivării TAR și compresiei BZIP2, extensii .tbz2 sau .tar.bz2. Comparativ cu TGZ, poate crește rata de compresie cu încă 15-20%, potrivit pentru transmiterea fișierelor mari, a fost folosit mult timp pentru distribuirea codului sursă al nucleului Linux)"
 
 msgid "mime_xz"
-msgstr "Pachet comprimat XZ (lansat în 2009, bazat pe algoritmul LZMA2. Compresie extrem de ridicată, cu 30-50% mai bună decât GZIP, decompresie relativ rapidă. Utilizat pe scară largă în nucleul Linux, managerii de pachete (precum intern în .deb-ul Debian), format recomandat pentru ecosistemul Linux actual)"
+msgstr "XZ arhivă comprimată (format de raport de compresie ridicat de generație următoare introdus în 2009. Bazat pe algoritmul LZMA2, rata de compresie a datelor este cu 30-50% mai mare decât GZIP, menținând în același timp decomprimarea rapidă. A fost stabilit ca standard de distribuire recomandat de nucleul Linux și de managerii de pachete principali (cum ar fi în interiorul Debian .deb))"
 
 msgid "mime_z"
-msgstr "Pachet comprimat Z (formatul comenzii compress Unix din 1985, algoritm LZW. Format timpuriu de compresie Unix, înlocuit de GZIP. Extensia .Z, rar utilizat pe sistemele moderne)"
+msgstr "Z arhivă comprimată (format de compresie LZW al comenzii Unix compress din 1985. Ca standard de compresie timpuriu al sistemelor Unix, a fost acum complet înlocuit de formatul GZIP mai eficient. În traficul de rețea modern, este un format istoric moștenit rar)"
 
 msgid "mime_zip"
-msgstr "Pachet comprimat ZIP (dezvoltat de Phil Katz în 1989, format PKZIP. Suportat nativ de Windows, cel mai universal format de compresie de pe internet. Acceptă mai multe fișiere, structură de directoare, poate alege algoritmul de compresie. JAR-ul Java, APK-ul Android, documentele Office DOCX/XLSX se bazează pe formatul ZIP)"
+msgstr "ZIP arhivă comprimată (format de arhivare universal PKZIP dezvoltat de Phil Katz în 1989. Are suport nativ din partea sistemelor de operare principale. Este cel mai utilizat standard de container pe internet. JAR-ul modern al Java, APK-ul Android și documentele Office (OOXML) sunt toate bazate pe structura ZIP)"
 
 msgid "mime_zst"
-msgstr "Pachet comprimat Zstandard (dezvoltat de Facebook în 2015, proiectat de Yann Collet. Algoritm de compresie de mare viteză, rata de compresie apropiată de LZMA, viteza depășește cu mult GZIP. Acceptat de nucleul Linux 5.9+, Arch Linux pacman, Debian APT îl adoptă treptat, standard de compresie de nouă generație)"
+msgstr "Zstandard arhivă comprimată (standard de compresie în flux de nouă generație proiectat de Yann Collet de la Facebook în 2015. Se apropie de rata de compresie LZMA având în același timp un debit mult mai mare decât GZIP. A fost adoptat profund de nucleul Linux (5.9+) și de managerii de pachete Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Pachet comprimat LZ4 (dezvoltat de Yann Collet în 2011, algoritm de compresie extrem de rapid. Viteza de compresie este de peste 10 ori mai rapidă decât GZIP, potrivit pentru scenarii de compresie în timp real. Nucleul Linux, OpenZFS, Hadoop îl folosesc pe scară largă, prima alegere pentru scenariile în care viteza este prioritară)"
+msgstr "LZ4 arhivă comprimată (algoritm de compresie în flux extrem de rapid dezvoltat de Yann Collet în 2011. Viteza de debit este de peste 10 ori mai rapidă decât GZIP, având un cost de execuție a CPU-ului extrem de scăzut. Folosit pe scară largă în nucleul Linux, sistemul de fișiere OpenZFS și procesarea fluxului de date în timp real Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Pachet comprimat LZO (dezvoltat de Markus Oberhumer în 1996, algoritmul Lempel-Ziv-Oberhumer. Viteza de decompresie este extrem de rapidă, rata de compresie este medie. Nucleul Linux Squashfs, firmware-ul OpenWrt îl folosesc, potrivit pentru sisteme încorporate)"
+msgstr "LZO arhivă comprimată (algoritm Lempel-Ziv-Oberhumer dezvoltat de Markus Oberhumer în 1996. Se concentrează pe performanța extrem de rapidă de decomprimare. Încorporat pe scară largă în imaginile Squashfs ale nucleului Linux, firmware-ul OpenWrt și diverse sisteme încorporate cu resurse limitate)"
 
 msgid "mime_msi"
-msgstr "Pachet de instalare MSI (lansat de Microsoft în 1999, format pachet Windows Installer. Format standard de instalare pentru aplicațiile Windows, acceptă revenirea tranzacțiilor, gestionarea componentelor, instalarea silențioasă. Format preferat pentru distribuirea software-ului la nivel de întreprindere, încă principala modalitate de instalare a software-ului Windows și astăzi)"
+msgstr "MSI pachet de instalare a sistemului (format de încapsulare a datelor Windows Installer introdus de Microsoft în 1999. Ca specificație standard de implementare la nivel de aplicație Windows, suportă nativ revenirea tranzacțiilor de nivel scăzut, gestionarea ciclului de viață al componentelor și instalarea silențioasă fără procesare în lot. Este standardul central pentru distribuirea centralizată a software-ului la nivel de întreprindere și implementarea politicilor)"
 
 msgid "mime_pkg"
-msgstr "Pachet de instalare PKG (format pentru pachetele de instalare ale aplicațiilor macOS, bazat pe tehnologia Installer de la Apple. Format standard pentru distribuirea software-ului macOS, acceptă selectarea componentelor, scripturi de instalare, funcție de dezinstalare. Faceți dublu clic pe fișierul .pkg pentru a instala, metodă comună de distribuire pentru software-ul din afara Mac App Store)"
+msgstr "PKG pachet de instalare software multiplatformă. 1. Pachet software FreeBSD: standard pkgng, extensie .pkg sau .txz, bazat pe compresie TAR+XZ/Zstd, suportă rezolvarea dependențelor și verificarea semnăturii; 2. Pachet de instalare macOS: bazat pe formatul Apple Installer, suportă componente personalizate, scripturi de instalare și dezinstalare la nivel de sistem. Sunt, respectiv, principalele vehicule de distribuire pentru serverele BSD și sistemele Mac."
 
 msgid "mime_apk"
-msgstr "Pachet aplicație Android APK (lansat de Google în 2008, format tradițional de instalare pentru aplicațiile Android. APK este în esență un pachet ZIP care conține cod, resurse, fișier manifest. Din 2021 Google Play impune aplicațiilor noi să utilizeze formatul AAB, dar APK este încă folosit pentru dezvoltare și depanare, magazine terțe și instalare laterală)"
+msgstr "APK pachet de aplicații Android (pachet de instalare a aplicațiilor tradițional lansat de Google împreună cu Android în 2008. Bazat pe structura de arhivare ZIP, împachetează codul byte Dalvik compilat (DEX), manifestul de metadate și resursele globale. Acum utilizat pe scară largă pentru depanarea dezvoltării locale, distribuirea de către terți și instalarea laterală pe dispozitive)"
 
 msgid "mime_ipa"
-msgstr "Pachet aplicație iOS IPA (Pachet App Store iOS, format de instalare pentru aplicațiile iOS/iPadOS. Lansat în 2008 împreună cu iPhone SDK. Trebuie distribuit prin App Store sau semnat cu un certificat de întreprindere. Conține fișier executabil, resurse, Info.plist și informații de semnare)"
+msgstr "IPA pachet de aplicații Apple (container de împachetare exclusiv pentru iOS/iPadOS lansat împreună cu iPhone SDK în 2008. În esență, o arhivă ZIP protejată de DRM FairPlay sau semnătură de cod la nivel de întreprindere, care conține un fișier executabil binar Mach-O, arborele de resurse al aplicației și configurația de metadate Info.plist)"
 
 msgid "mime_hap"
-msgstr "Pachet aplicație HarmonyOS HAP (Pachet de Abilitate HarmonyOS, unitatea de bază a unei aplicații HarmonyOS. Lansat în 2020 cu HarmonyOS 2.0. Acceptă două tipuri: entry și feature, format de distribuire pentru telefoane Huawei, tablete, ceasuri inteligente și alte dispozitive HarmonyOS)"
+msgstr "HAP pachet de aplicații HarmonyOS (unitate de bază de implementare elastică HarmonyOS lansată împreună cu HarmonyOS 2.0 în 2020. Este compus din modulul principal Entry sau modulele funcționale de extensie Feature. Este formatul central de implementare multi-dispozitiv pentru distribuirea terminalelor inteligente în toate scenariile cross-end (telefoane, tablete, dispozitive purtabile))"
 
 msgid "mime_har"
-msgstr "Bibliotecă partajată statică HarmonyOS HAR (Arhivă HarmonyOS, bibliotecă partajată statică HarmonyOS, poate fi partajată de mai multe pachete HAP, utilizată pentru dezvoltarea bazată pe componente și reutilizarea modulelor)"
+msgstr "HAR pachet partajat static HarmonyOS (fișier de arhivă a bibliotecii partajate statice proprietar HarmonyOS. Folosit pentru a încapsula componente comune, cod de resurse de nivel scăzut și dependențe de timp de compilare, care sunt legate static și partajate de mai multe module HAP. Este baza centrală pentru dezvoltarea bazată pe componente și reutilizarea multi-modul a sistemului HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (lansat de Google în 2018, din 2021 Google Play impune aplicațiilor noi să utilizeze acest format. AAB este un format de distribuire, Google Play generează APK-uri optimizate în funcție de configurația dispozitivului (arhitectură CPU, densitate ecran, limbă), dimensiunea pachetului de instalare se reduce în medie cu 35%. Dezvoltatorii încarcă AAB, utilizatorii descarcă APK-uri)"
+msgstr "AAB pachet de aplicații Android (format de distribuire dinamică Google Play introdus de Google în 2018 și stabilit în 2021. Ca entitate de distribuire pură, este decupat și compilat dinamic de nor în funcție de arhitectura CPU, densitatea ecranului și limba dispozitivului țintă, generând APK-uri optimizate la cerere. Reduce costul lățimii de bandă de transmisie cu o medie de 35%)"
 
 msgid "mime_xapk"
-msgstr "Pachet aplicație XAPK (pachet de extensie pentru aplicații Android terțe, conține APK + fișiere de date OBB. Folosit pentru jocuri mari și aplicații complexe, rezolvă limita de 100MB pentru un singur fișier APK. Comun în magazinele de aplicații terțe precum APKPure, APKMirror, nu este un format oficial Google)"
+msgstr "XAPK pachet de aplicații extins (standard neoficial de extensie a aplicațiilor stabilit de comunitatea Android terță parte. Prin încapsularea comună a fișierului APK standard cu pachetul de extensie a datelor de joc OBB foarte mare, sparge fizic limita de dimensiune a fișierului independent de 100 MB al Google Play. Este larg răspândit pe platformele de distribuire a jocurilor)"
 
 msgid "mime_appx"
-msgstr "Pachet aplicație Windows (lansat de Microsoft în 2012, format de instalare pentru aplicațiile Windows 8/10/11. Acceptă conversia aplicațiilor UWP și desktop, distribuit prin Microsoft Store. În 2024 Microsoft a lansat MSIX ca format succesor, înlocuind treptat APPX)"
+msgstr "APPX pachet de aplicații modern (specificație de implementare a aplicațiilor UWP lansată de Microsoft împreună cu Windows 8 în 2012. Are izolare în sandbox și caracteristici de dezinstalare ușoară. Ca standard dominant timpuriu al Microsoft Store, în ecosistemul Windows modern a intrat în faza finală a ciclului de viață care evoluează către MSIX)"
 
 msgid "mime_msix"
-msgstr "Pachet aplicație MSIX (lansat de Microsoft în 2018, format de ambalare a aplicațiilor de nouă generație pentru Windows. Combină avantajele APPX și MSI, acceptă toate tipurile de aplicații Windows, poate fi distribuit prin Microsoft Store sau instalat lateral, format recomandat pentru Windows 11)"
+msgstr "MSIX pachet de aplicații de nouă generație (specificație de împachetare standardizată complet nouă pentru Windows lansată de Microsoft în 2018. Contopește perfect caracteristicile sandbox-ului de securitate al aplicațiilor APPX cu avantajele gestionării activelor la nivel de întreprindere ale MSI. Pe deplin compatibil cu toate tipurile de aplicații Win32. Este standardul de distribuire recomandat pentru Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Pachet aplicație AppImage (lansat în 2004, format de aplicație Linux fără instalare. „O aplicație, un fișier”, nu necesită instalare, rulează direct, acceptă majoritatea distribuțiilor Linux, modalitate comună pentru dezvoltatori de a distribui software Linux)"
+msgstr "AppImage pachet de aplicații fără instalare (specificație de arhivă unică executabilă Linux inițiată în 2004. Adoptă arhitectura auto-conținută 'o aplicație este un fișier'. În timpul execuției, este montat direct prin mecanismul FUSE ca sistem de fișiere virtual doar pentru citire pentru a fi executat, realizând utilizarea imediată fără dependențe pe toate distribuțiile Linux)"
 
 msgid "mime_flatpak"
-msgstr "Pachet aplicație Flatpak (lansat în 2015, format de aplicație Linux în sandbox. Rulează pe mai multe distribuții, izolat de sistemul gazdă, condus de Fedora, Red Hat, format implicit în Centrul de Software GNOME)"
+msgstr "Flatpak pachet de aplicații în sandbox (standard de distribuire a aplicațiilor desktop între distribuțiile Linux, condus de Red Hat și GNOME în 2015. Se bazează pe mecanismele Namespace și Cgroups ale nucleului Linux pentru a realiza o izolare extrem de strictă a sandbox-ului de securitate la nivel de aplicație. Este baza centrelor de software ale sistemelor de operare open source moderne)"
 
 msgid "mime_snap"
-msgstr "Pachet aplicație Snap (lansat de Canonical în 2014, compania-mamă Ubuntu, format universal de aplicație Linux. Actualizări automate, izolare în sandbox, acceptă peste 40 de distribuții Linux, format implicit în Centrul de Software Ubuntu)"
+msgstr "Snap pachet de aplicații containerizat (standard de implementare universală Linux introdus de Canonical, compania-mamă a Ubuntu, în 2014. Adoptă arhitectura de montare a imaginii SquashFS auto-conținută, suportă actualizări incrementale automatizate și izolare strictă a sandbox-ului AppArmor. Este formatul implicit central al ecosistemului Centrului de Software Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Pachet software Debian (lansat de proiectul Debian în 1993, format standard de instalare pentru Debian/Ubuntu și derivatele lor. Gestionat cu dpkg, APT este interfața managerului său de pachete, unul dintre cele mai mature formate de pachete din ecosistemul Linux, încă principal în familia Debian)"
+msgstr "DEB pachet software de sistem (specificație de încapsulare binară și a codului sursă stabilită de proiectul Debian în 1993. Ca standard de instalare subiacent pentru Debian, Ubuntu și toate sistemele lor derivate, se bazează pe nucleul dpkg pentru despachetare și întreținere, folosind APT ca front-end eficient al managerului de pachete. Este cea mai matură bază de distribuire a software-ului din ecosistemul Linux)"
 
 msgid "mime_rpm"
-msgstr "Pachet software RPM (lansat de Red Hat în 1997, format standard pentru distribuțiile Red Hat/Fedora/CentOS/SUSE și altele. RPM înseamnă „Red Hat Package Manager”, împreună cu DEB sunt cele două formate mari de pachete în Linux, încă principal în familia RHEL)"
+msgstr "RPM pachet software de sistem (specificație de încapsulare a managerului de pachete Red Hat lansată de Red Hat în 1997. Împreună cu DEB, este considerat unul dintre cele două mari tabere ale gestionării tradiționale a pachetelor Linux. Are nativ verificarea dependențelor la nivel de tranzacție și verificarea semnăturii digitale a software-ului subiacent. Rămâne standardul absolut de distribuire mainstream pentru ecosistemele din familia Red Hat, cum ar fi RHEL, Fedora și CentOS)"
 
 msgid "mime_pacman"
-msgstr "Pachet software Arch (lansat de Arch Linux în 2002, formatul .pkg.tar.zst folosit de managerul de pachete pacman. Nucleul distribuției cu lansare continuă Arch Linux, cunoscut pentru simplitate și principiul KISS, AUR (Arhiva Utilizatorilor Arch) este caracteristica sa distinctivă)"
+msgstr "Pacman pachet software de arhivare (format de încapsulare .pkg.tar.zst stabilit de Arch Linux împreună cu managerul pacman în 2002. Este nucleul mecanismului de actualizare continuă (rolling release) al Arch. Bazat pe algoritmul de compresie rapidă și de înaltă compresie Zstandard, împreună cu ecosistemul AUR (Arhiva de Software a Utilizatorilor Arch). Este un standard modern de distribuire a pachetelor care reflectă principiile minimalismului și KISS)"
 
 msgid "mime_exe"
-msgstr "Fișier executabil EXE (format de program executabil Windows, prescurtare pentru „Executable”. Format executabil nativ al sistemului de operare Windows, conține structură PE. A evoluat din formatul MZ de la MS-DOS, în 1993 Windows NT a introdus formatul PE (Portable Executable) și este folosit și astăzi. Pachetele de instalare software, aplicațiile, instrumentele de sistem folosesc acest format. Utilizatorul dă dublu clic pentru a rula, cel mai utilizat format executabil din lume)"
+msgstr "EXE fișier executabil nativ (format de program binar Portabil Executabil (PE) al platformei Windows. Evoluția tehnologică provine din structura antet MZ din era MS-DOS, și din 1993 Windows NT a fost pe deplin stabilit ca specificație a structurii PE. Este cel mai utilizat standard de execuție la nivel global pentru instrucțiunile de cod mașină, segmentele de resurse statice și pornirea nucleului sistemului)"
 
 msgid "mime_dll"
-msgstr "Bibliotecă dinamică DLL (lansată de Microsoft în 1993, Dynamic Link Library. Bibliotecă de cod partajat Windows, se încarcă dinamic în timpul execuției programului, economisește memorie și spațiu pe disc. Componentele sistemului, plugin-urile aplicațiilor, driverele folosesc formatul DLL. Modul principal de implementare a API-ului Windows, problema DLL Hell a fost atenuată în era .NET)"
+msgstr "DLL bibliotecă de legătură dinamică (specificație a bibliotecii de cod partajat Dynamic Link Library a platformei Windows. Prin încărcarea dinamică și repoziționarea simbolurilor în timpul execuției, economisește semnificativ memorie fizică și spațiu pe disc. Ca formă centrală de implementare a API-ului Windows, problema sa timpurie 'Iadul DLL' a fost rezolvată în epoca modernă prin mecanismul de izolare paralelă SxS)"
 
 msgid "mime_com"
-msgstr "Fișier executabil COM (format executabil din era MS-DOS, prescurtare pentru „Command”. Structură simplă de fișier, limită de 64KB, format principal înainte de Windows 3.x. Eliminat, Windows modern folosește formatul EXE, extensia COM încă utilizată pentru unele fișiere componente)"
+msgstr "COM fișier executabil clasic (cel mai vechi format de execuție a imaginii de memorie (Command) din era MS-DOS. Adoptă un design de segment de cod pur nestructurat, limitat la limita superioară a segmentului de adresare a memoriei fizice de 64KB. Acum este retras ca format istoric moștenit, dar în arhitectura modernă Windows este încă utilizat ca o interfață de componentă specifică pentru compatibilitate limitată)"
 
 msgid "mime_aac"
 msgstr "Audio AAC (standard MPEG din 1997, Advanced Audio Coding. Succesorul MP3, calitatea audio superioară MP3 la aceeași rată de biți, format audio implicit pentru YouTube, iTunes, Nintendo Switch)"

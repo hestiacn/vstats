@@ -444,8 +444,8 @@ msgstr "Pritësi - Faqet - Goditjet - Gjerësia e brezit - Data e vizitës së f
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Data e fillimit të vizitës së fundit] dhe [Faqja e fundit e vizitës së fundit] ruhen vetëm nëse seanca nuk ka përfunduar"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Faqja kryesore shfaq vetëm %s hyrjet e para sipas numrit të goditjeve, lista e plotë gjendet në faqen e detajeve."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "%s artikujt e parë janë renditur sipas numrit të goditjeve në rend zbritës; renditja e artikujve të mbetur nuk është e përcaktuar."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Hyrja - Faqet - Goditjet - Gjerësia e brezit - Vizita e fundit"
@@ -459,8 +459,8 @@ msgstr "ID-ja e krimbit - Goditjet - Gjerësia e brezit - Vizita e fundit"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Posta elektronike - Goditjet - Gjerësia e brezit - Vizita e fundit"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Faqja kryesore shfaq vetëm %s postat e para elektronike sipas numrit të goditjeve, lista e plotë gjendet në faqen e detajeve."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "%s adresat e para të emailit janë renditur sipas numrit të goditjeve në rend zbritës; renditja e adresave të mbetura nuk është e përcaktuar."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Faqet - Gjerësia e brezit - Hyrja - Dalja"
@@ -669,6 +669,27 @@ msgstr "Parametri SiteDomain nuk është i përcaktuar në skedën tuaj config/d
 msgid "Please run as Administrator to set permissions"
 msgstr "Ekzekutoni si Administrator për të vendosur lejet"
 
+msgid "This directory lacks read permission"
+msgstr "Kjo direktori nuk ka leje leximi"
+
+msgid "Please set read permission for directory"
+msgstr "Ju lutemi vendosni lejen e leximit për direktorinë"
+
+msgid "Missing required parameter in config file"
+msgstr "Mungon parametri i kërkuar në skedarin e konfigurimit"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Ju lutemi kontrolloni nëse 'DirData' është përcaktuar."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Emri i domainit në adresën e shfletuesit duket se mungon ose është i paplotë"
+
+msgid "Please check the URL parameter"
+msgstr "Ju lutemi kontrolloni parametrin URL"
+
+msgid "Format description"
+msgstr "Përshkrimi i formatit"
+
 msgid "Please set execute permission"
 msgstr "Ju lutemi vendosni lejen e ekzekutimit"
 
@@ -794,376 +815,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Skedar teksti (standardizuar ASCII në 1963, tekst i thjeshtë i paformatizuar. Baza e të gjithë kodit burimor, konfigurimeve dhe regjistrave. Unix përdor LF, Windows përdor CRLF për rresht të ri, ende formati më universal i të dhënave në kompjuterë)"
+msgstr "TXT skedar i tekstit të thjeshtë (tekst i thjeshtë pa format të standardizuar nga kodimi ASCII në vitin 1963. Si gur themeli i gjithë kodit burimor, skedarëve të konfigurimit dhe regjistrave të sistemit, rrjedhat e tij të kontrollit të ndarjes së rreshtave Windows (CRLF) dhe Unix (LF) ndër-platformë janë ende standardi më universal i shkëmbimit të të dhënave në botën kompjuterike)"
 
 msgid "mime_log"
-msgstr "Skedar regjistri (skedar i thjeshtë teksti që regjistron informacione rreth funksionimit të sistemit dhe aplikacioneve, përdoret shpesh për zgjidhjen e problemeve, analizën e performancës, auditimin e sigurisë. Formate standarde si Apache combined log, Nginx access log, syslog etj.)"
+msgstr "LOG regjistër i funksionimit të sistemit (pasuri e tekstit të thjeshtë që regjistron gjendjen e ekzekutimit të sistemit operativ, bërthamës dhe aplikacioneve në nivel aplikacioni. Mbulon regjistrat e hyrjes Nginx/Apache (Regjistri i Kombinuar) dhe specifikimin standard syslog, është burimi kryesor i të dhënave për zgjidhjen e problemeve, analizën e performancës së rrjedhës dhe auditimin e sigurisë)"
 
 msgid "mime_page"
-msgstr "Faqe HTML (Tim Berners-Lee shpiku WWW në 1989, përcaktoi tre teknologjitë HTML/HTTP/URL në 1990, i hapi ato falas pa patentë. Në 2014 HTML5 u bë standardi zyrtar i W3C, mbështet shfaqjen, multimedian dhe printimin. Fitoi çmimin Turing në 2016)"
+msgstr "HTML faqe interneti me hipertekst (gur themeli i World Wide Web krijuar nga Tim Berners-Lee në vitin 1989. Si një gjuhë shënimi hipertekst universal falas dhe e hapur, specifikimi i tij HTML5 u bë standardi zyrtar i W3C në vitin 2014, me mbështetje vendase për multimedia të strukturuar, ndërveprim semantik dhe paraqitje të faqeve në rrjedhë. Fitoi çmimin Turing në vitin 2016)"
 
 msgid "mime_khtml"
-msgstr "Motor faqesh web KHTML (KDE 2.0 u publikua në 1998, motor renderimi i shfletuesit Konqueror. Në 2001 Apple krijoi WebKit bazuar në KHTML, në 2008 Google krijoi Blink nga WebKit, i cili u bë thelbi i shfletuesve Chrome, Edge, Safari dhe të tjerë. KHTML është një shembull se si komuniteti me burim të hapur hodhi themelet për motorët modernë të shfletuesve, trashëgimia e tij teknologjike vazhdon përmes WebKit/Blink)"
+msgstr "KHTML motor shabllonesh në internet (specifikim i motorit të interpretimit të shfletuesit KDE 2.0 i vitit 1998. Si një pikë referimi e komunitetit me burim të hapur që hodhi themelet për interpretimin modern të uebit, trashëgimia e tij teknologjike frymëzoi dhe u zhvillua drejtpërdrejt në bërthamat Apple WebKit dhe Google Blink, të cilat edhe sot e kësaj dite vazhdojnë rrugën e tyre themelore përmes arkitekturës moderne dinamike të uebit në rrjedhë)"
 
 msgid "mime_script"
-msgstr "Skript dinamik (gjuhë e interpretuar, nuk kërkon përpilim. Përfshin ASP, JSP, CGI, ColdFusion, Tcl, VBScript etj., përdoret gjerësisht në zhvillimin e hershëm të web-it, administrimin e sistemit, automatizimin e detyrave. Gjuhët moderne të skriptit si Python, Ruby, JavaScript janë zhvilluar në mjete kryesore për zhvillimin full-stack)"
+msgstr "SCRIPT skript dinamik i interpretuar (klasifikim i përgjithshëm i rrjedhave të kodit burimor që nuk kanë nevojë të përpilohen paraprakisht dhe lexohen dhe ekzekutohen rresht pas rreshti nga një kohë e caktuar ekzekutimi ose interpretues. Mbulon ASP, JSP, CGI dhe Tcl, etj., përdoret gjerësisht për ndërfaqet e zakonshme të portës në anën e serverit, kontrollin e automatizuar të procesit dhe ngjitjen e detyrave në nivel sistemi)"
 
 msgid "mime_js"
-msgstr "Skript JavaScript (Brendan Eich e krijoi atë në 10 ditë në Netscape në 1995, gjuhë programimi vendase e shfletuesve. Në 1997 ECMAScript u standardizua, në 2009 lindi Node.js duke e bërë atë një gjuhë full-stack, npm është menaxheri më i madh i paketave në botë. Për vite me radhë gjuha programuese më e popullarizuar në GitHub)"
+msgstr "Skript JavaScript (mjedis programimi vendas i shfletuesit Netscape i vitit 1995. Vendi standardin industrial ECMAScript në vitin 1997, koha e ekzekutimit Node.js lindi në vitin 2009, duke thyer kufijtë e shfletuesit dhe duke krijuar një arkitekturë asinkrone jo-bllokuese me pirg të plotë, e shoqëruar me ekosistemin më të madh të paketave softuerike npm në botë)"
 
 msgid "mime_py"
-msgstr "Skript Python (krijuar nga Guido van Rossum në 1991, i njohur për dhëmbëzimin e detyruar dhe sintaksën e pastër. Përdoret gjerësisht në zhvillimin e web-it, shkencën e të dhënave, inteligjencën artificiale, operacionet e automatizuara. Fitues i shumëfishtë i çmimit Gjuha Programuese e Vitit nga TIOBE)"
+msgstr "Skript Python (gjuhë skriptimi e interpretuar e nivelit të lartë e krijuar nga Guido van Rossum në vitin 1991. Falë dhëmbëzimit të detyrueshëm për lexueshmëri pa humbje dhe dizajnit të nivelit të ulët me shumë paradigmë, tani është vendosur si gjuhë standarde industriale për arkitekturën moderne të uebit, shkencën e të dhënave me pirg të plotë, trajnimin e modeleve të inteligjencës artificiale (AI) dhe operacionet e automatizuara vendase në re)"
 
 msgid "mime_sh"
-msgstr "Skript Shell (Unix lindi në 1971, gjuhë skriptimi komanduese. Përdoret për administrimin e sistemit, automatizimin e detyrave, nisjen e shërbimeve, skriptet e vendosjes. Aftësi themelore për administratorët e Linux-it)"
+msgstr "Skript Shell (skript standard i interpretuesit të komandave nga epoka Unix e vitit 1971. Përfshin specifikime komandash në nivel bërthame si Bash, Sh, Dash, zakonisht ekzekutohet me prapashtesën .sh, është një ngjitës universal në nivel bërthame për kontrollin e proceseve të nivelit të ulët, konfigurimin e mjedisit pa instalim dhe vendosjen e automatizuar në sistemet operative moderne të ngjashme me Unix)"
 
 msgid "mime_rb"
-msgstr "Skript Ruby (krijuar nga Yukihiro Matsumoto në 1995, fokusohet në lumturinë e zhvilluesit. Korniza Ruby on Rails hapi paradigmin e zhvillimit \"konventë në vend të konfigurimit\", duke ndikuar në dizajnin e kornizave moderne të web-it)"
+msgstr "Skript Ruby (gjuhë skriptimi e orientuar nga objekti e krijuar nga Yukihiro Matsumoto në vitin 1995. Me respekt ekstrem për përvojën e zhvilluesit si filozofi kryesore e dizajnit, korniza e tij Ruby on Rails vendosi në mënyrë revolucionare paradigmën moderne të zhvillimit të arkitekturës së uebit të nivelit të lartë 'Konventa mbi Konfigurimin (CoC)')"
 
 msgid "mime_pl"
-msgstr "Skript Perl (krijuar nga Larry Wall në 1987, i njohur për pragmatizmin e tij, i quajtur \"thika zvicerane\". CPAN ishte pionier i menaxherëve modernë të paketave të gjuhëve, pati ndikim të thellë në përpunimin e tekstit, administrimin e sistemit dhe fushën CGI)"
+msgstr "Skript Perl (gjuhë skriptimi pragmatike e krijuar nga Larry Wall në vitin 1987. Si themeluesi i menaxherëve modernë të paketave (CPAN), njihet si 'thika zvicerane e ushtrisë' për përpunimin e tekstit. Në modalitetin modern CGI, ai ende shërben si një bazë me besueshmëri të lartë në fushën e analizimit të regjistrave falë kostove jashtëzakonisht të ulëta të memories fizike dhe përpunimit shumë efikas të shprehjeve të rregullta)"
 
 msgid "mime_php"
-msgstr "Faqe dinamike PHP (krijuar nga Rasmus Lerdorf në 1995, projektuar posaçërisht për zhvillimin e web-it. Mbi 70% e faqeve të internetit në botë e përdorin atë, fuqizon platforma si WordPress, Facebook, Wikipedia. PHP 8 prezantoi përpilimin JIT, duke përmirësuar ndjeshëm performancën)"
+msgstr "Faqe interneti dinamike PHP (krijuar nga Rasmus Lerdorf në vitin 1995, projektuar posaçërisht për zhvillimin e uebit. Si teknologji kryesore që fuqizon më shumë se 70% të faqeve të internetit në botë, mbështet thellësisht aplikacione të mëdha prodhimi si WordPress dhe Wikipedia. Që nga prezantimi i motorit të ekzekutimit të përpilimit JIT (Just-In-Time) në PHP 8, ai ka arritur një evolucion themelor të paradigmës drejt anës së serverit me pirg të plotë me performancë të lartë)"
 
 msgid "mime_image"
-msgstr "Skedar imazhi"
+msgstr "IMAGE klasifikim i aseteve të imazhit (përfshin klasifikimin e përgjithshëm të bitmap-eve të ngjeshura me humbje/pa humbje, grafikës moderne të përgjegjshme të uebit dhe grafikës vektoriale. Është një tregues kyç për vlerësimin e kostos së ngarkimit të burimeve vizuale të faqes, shkallës së goditjeve të cache-it në anën e klientit dhe konsumit të gjerësisë së brezit të rrjetit mediatik)"
 
 msgid "mime_document"
-msgstr "Skedar dokumenti"
+msgstr "DOCUMENT klasifikim i dokumenteve të strukturuara (përfshin klasifikimin e përgjithshëm të tekstit të thjeshtë, fletëllogaritëseve, dokumenteve me format fiks (PDF) dhe gjuhëve të lehta të shënimit. Është një tregues kyç për statistikat e shpërndarjes së bazave të njohurive statike në anën e serverit, shkarkimit të aseteve të informacionit të ndërmarrjes dhe kapacitetit të përpunimit të rrjedhës së tekstit)"
 
 msgid "mime_package"
-msgstr "Paketë softuerike"
+msgstr "PACKAGE klasifikim i produkteve të përpilimit dhe paketave softuerike (përfshin klasifikimin e përgjithshëm të programeve vendase të ekzekutueshme të sistemit operativ, bibliotekave të lidhjes në kohë ekzekutimi (DLL/SO) dhe paketave të instalimit të shpërndarjes së aplikacioneve. Shpesh përdoret si tregues kyç për vlerësimin e trafikut në dalje dhe majave të shkarkimit të faqeve të shpërndarjes së softuerit)"
 
 msgid "mime_archive"
-msgstr "Skedar i ngjeshur Gzip (projekt GNU nga 1992, bazuar në algoritmin DEFLATE. Në web përdoret për ngjeshjen dinamike të përmbajtjes së përgjigjes, shkalla e ngjeshjes zakonisht 60-90%. Pas 2015 në disa skenarë u zëvendësua nga Brotli, por mbetet formati më i mbështetur i ngjeshjes në anën e serverit)"
+msgstr "ARCHIVE skedarë arkivimi dhe të ngjeshur (klasifikim i përgjithshëm i paketave të ngjeshjes së të dhënave bazuar në algoritme kryesore si DEFLATE, LZMA. Në shtresën e rrjetit, përveç përfaqësimit të shpërndarjes tradicionale të paketave, mbulon gjithashtu rrjedhën dinamike të përgjigjes Gzip të projektit GNU të vitit 1992. Megjithëse algoritmi Brotli po futet gradualisht në skenarët modernë, ky klasifikim mbetet një tregues kyç për vlerësimin e shkallës së xhiros së gjerësisë së brezit të serverit dhe uljes së presionit në shtresën e transportit)"
 
 msgid "mime_audio"
-msgstr "Skedar audio"
+msgstr "AUDIO klasifikim i rrjedhës audio dixhitale (përfshin klasifikimin e përgjithshëm të audios së ngjeshur, librave audio dhe kontejnerëve audio të mediave të transmetimit. Bazuar në standarde specifike të kodekëve audio, përdoret për të monitoruar shkallën e xhiros së rrjedhave të të dhënave audio të faqeve multimediale, gjerësinë e brezit të transmetimit të njëkohshëm dhe performancën e lidhjeve të gjata)"
 
 msgid "mime_video"
-msgstr "Skedar video"
+msgstr "VIDEO klasifikim i rrjedhës video dixhitale (përfshin klasifikimin e përgjithshëm të kontejnerëve të videos me rezolucion të lartë, animacioneve moderne të uebit dhe segmenteve të mediave të transmetimit. Është një tregues kyç për vlerësimin e kufirit maksimal të gjerësisë së brezit të serverit dhe efektit të përshpejtimit të Rrjetit të Shpërndarjes së Përmbajtjes (CDN) në mjedise rrjeti me ngarkesë të lartë)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (zhvilluar nga Brendan Eich në 1995)"
+msgstr "Skript JScript (implementim pronësor i inxhinierisë së kundërt i zhvilluar nga Microsoft për Internet Explorer 3.0 në vitin 1996. Si një konkurrent i hershëm i JavaScript klasik, ai ishte motori kryesor i Windows Script Host (WSH) dhe pjesës së pasme të hershme ASP)"
 
 msgid "mime_json"
-msgstr "Të dhëna JSON (propozuar nga Douglas Crockford në 2001, format i lehtë i shkëmbimit të të dhënave, standard de facto për API-të e web-it)"
+msgstr "JSON të dhëna të strukturuara (format i lehtë i shkëmbimit të serializimit të të dhënave i vendosur nga Douglas Crockford në vitin 2001. Bazuar në çifte tekstuale kyç-vlerë dhe arkitekturë vargjesh, ka lexueshmëri jashtëzakonisht të lartë për njerëzit dhe veti të analizimit të rrjedhës pa humbje. Është standardi de facto për API-të moderne të uebit, arkitekturën e mikroshërbimeve dhe ndërveprimin me modelet e mëdha gjuhësore)"
 
 msgid "mime_vbs"
-msgstr "VBScript (zhvilluar nga Microsoft në 1996, gjuhë skriptimi për Windows, përdoret për faqet ASP dhe skriptet e administrimit të Windows. Me përhapjen e PowerShell dhe JavaScript, po hiqet gradualisht)"
+msgstr "Skript VBScript (variant i gjuhës së skriptimit i lëshuar nga Microsoft së bashku me IE 3.0 në vitin 1996. Ishte dikur motori kryesor i faqeve të hershme dinamike ASP dhe menaxhimit të sistemit Windows, tani është zyrtarisht i ndërprerë dhe i hequr nga bërthama më e re e Windows 11 nga Microsoft. I përket teknologjisë së trashëguar historike)"
 
 msgid "mime_conf"
-msgstr "Skedar konfigurimi (format teksti për ruajtjen e konfigurimit të softuerit, formate të zakonshme: INI, JSON, YAML, TOML, XML. Konfigurimet e sistemit Linux janë kryesisht në direktorinë /etc)"
+msgstr "CONF skedar konfigurimi i sistemit (klasifikim i përgjithshëm i skedarëve të të dhënave që ruajnë përgjithmonë parametrat e mjedisit të ekzekutimit të softuerit në formën e tekstit të thjeshtë. Mbulon specifikimet INI dhe moderne YAML, TOML, JSON. Në sistemet Linux ato janë të përqendruara kryesisht në direktorinë /etc. Është varësia kryesore për optimizimin e gjendjes së ekzekutimit në nivel sistemi)"
 
 msgid "mime_css"
-msgstr "Fletë stili CSS (W3C publikoi CSS1 si standardin e parë zyrtar në dhjetor 1996, CSS2 shtoi pozicionimin dhe llojet e medias në 1998, nga 2011 CSS3 modulare prezantoi qoshet e rrumbullakosura, animacionet, kutitë fleksibël, paraqitjen në rrjetë dhe dizajnin e përgjegjshëm. Së bashku me HTML dhe JavaScript janë tre teknologjitë bazë të front-end-it, të gjithë shfletuesit modernë (Chrome, Firefox, Safari, Edge) e mbështesin atë në mënyrë vendase, është standardi i vetëm për përcaktimin e stileve të web-it)"
+msgstr "CSS fletë stilesh në kaskadë (standard W3C i vitit 1996, së bashku me HTML/JS quhet një nga tre komponentët kryesorë të pjesës së përparme. Kaloi nëpër pozicionimin CSS2 dhe evolucionin modular CSS3, duke mbështetur vendas Flexbox, Grid dhe dizajnin e përgjegjshëm me pyetje mediash. Është standardi absolutisht dominues për shkëputjen e paraqitjes së faqeve të internetit në shfletuesit modernë)"
 
 msgid "mime_xsl"
-msgstr "Fletë stili XSL (standard W3C nga 1999, gjuhë transformimi i dokumenteve XML, mund të konvertojë XML në HTML/PDF/tekst. Pas përhapjes së JSON, përdorimi i tij u zvogëlua)"
+msgstr "XSL fletë stili (standard W3C i vitit 1999, përmban gjuhën e transformimit XSLT dhe gjuhën e adresimit XPath, përdoret për të interpretuar të dhënat e strukturuara XML në HTML, PDF ose tekst të thjeshtë. Në zhvillimin modern, ekosistemi i tij është zëvendësuar kryesisht nga motorë më të lehtë shabllonesh dhe formati i të dhënave JSON)"
 
 msgid "mime_runtime"
-msgstr "Skedar i ekzekutueshëm (formate të ekzekutueshme të sistemit operativ si EXE, ELF, Mach-O, përmban kodin e makinës dhe informacionin e ngarkimit)"
+msgstr "Skedar i ekzekutueshëm (formate vendase të ekzekutimit të sistemit operativ si EXE, ELF, Mach-O, që përmbajnë kod makine të nivelit të ulët të përpiluar, pikën e hyrjes dhe informacionin e ngarkimit të sistemit)"
 
 msgid "mime_library"
-msgstr "Skedar bibliotekë (DLL, SO, dylib dhe biblioteka të tjera të lidhura në mënyrë dinamike, kod i ngarkuar gjatë ekzekutimit të programit)"
+msgstr "Skedar bibliotekë (biblioteka lidhëse dinamike ose statike si DLL, SO, dylib, që përmbajnë simbole të përbashkëta dhe kod ripozicionimi për t'u thirrur nga programe të tjera dhe për t'u ngarkuar gjatë ekzekutimit)"
 
 msgid "mime_swf"
-msgstr "Animacion Flash (zhvilluar nga Macromedia në 1996, më pas kaloi te Adobe. Standard për animacionet interaktive të web-it, dikur dominoi animacionet dhe lojërat në internet. Dobësitë: varet nga shtojca, pa mbështetje në celular, rrezik i lartë sigurie. Në 2017 Adobe njoftoi eliminimin, mbështetja u ndërpre plotësisht në 2020, u zëvendësua nga HTML5/CSS3/JS)"
+msgstr "Animacion Flash (zhvilluar nga Macromedia në vitin 1996, blerë nga Adobe në vitin 2005. Standard interaktiv i animacionit në internet, dikur dominoi animacionin dhe lojërat në internet. Dobësitë: varësi nga shtojcat, mungesë mbështetjeje për celular, rrezik i lartë sigurie. Adobe shpalli ndërprerjen në vitin 2017, ndaloi plotësisht mbështetjen në vitin 2020, u zëvendësua nga HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "Përkufizim i tipit të dokumentit DTD (specifikim XML, përcakton strukturën e një dokumenti XML, përdoret për të vërtetuar vlefshmërinë e XML)"
+msgstr "DTD përkufizim i tipit të dokumentit (lëshuar së bashku me XML 1.0 në vitin 1998, përdoret për të përcaktuar strukturën e dokumentit XML/HTML dhe për të verifikuar ligjshmërinë. Në zhvillimin modern, është zëvendësuar gradualisht nga zgjidhje më fleksibël si XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "Format të dhënash CSV (vlera të ndara me presje, format universal për të dhënat tabelare, standard për import/eksport në Excel dhe baza të dhënash)"
+msgstr "CSV format i të dhënave (vlera të ndara me presje, format universal i tabelës me tekst të thjeshtë nga epoka e mainframe-ve në vitin 1972 (përpiluesi IBM Fortran). I standardizuar zyrtarisht nga RFC 4180 në vitin 2005, si një standard i shkëmbimit të të dhënave pa humbje ndër-platformë dhe ndër-gjuhë. Përdoret gjerësisht për import/eksport efikas në Excel, baza të dhënash relacionale, analizë të dhënash (Pandas).)"
+
+msgid "mime_cur"
+msgstr "Skedar treguesi i miut (format .cur, përdoret për të personalizuar stilin e miut, për shembull kursorin e gishtit në faqet e internetit, ikonën e pritjes së orës së rërës në sistem. Është 'i afërm' i ikonës së zakonshme .ico, por ka një vendndodhje shtesë 'pika e nxehtë' - vendi ku miu klikon në të vërtetë. Historia: u prezantua me Windows 3.1 (1992), ishte një komponent kyç në kalimin e ndërfaqes grafike nga linja e komandës në epokën e operimit me miun)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (nisës i aplikacioneve Java, teknologji e shpërndarjes së aplikacioneve Java për desktop nga vitet 2000, tani e hequr)"
+msgstr "Java Web Start (teknologji e shpërndarjes së aplikacioneve desktop Java të viteve 2000, e cila nis programet Java në distancë përmes skedarëve .jnlp. Për shkak të problemeve të sigurisë dhe përhapjes së metodave moderne të shpërndarjes, tani është praktikisht e zhdukur)"
 
 msgid "mime_lit"
-msgstr "Libër elektronik Microsoft Reader (lëshuar nga Microsoft në 2000, format LIT, i hequr)"
+msgstr "Libër elektronik Microsoft Reader (lëshuar nga Microsoft në vitin 2000, format LIT. I zhdukur, tani mund të konvertohet në EPUB ose PDF duke përdorur mjete si Calibre)"
 
 msgid "mime_svg"
-msgstr "Grafikë vektoriale SVG (standard W3C nga 1999, sepse Microsoft promovoi prej kohësh formatin e vet VML, shfletuesi IE e mbështeti vetëm në 2011, gjë që vonoi përhapjen. Pas 2015, me heqjen e IE dhe përhapjen e ekraneve HD, u bë formati i preferuar për ikona dhe logo)"
+msgstr "SVG grafikë vektoriale (standard W3C i vitit 1999, format dydimensional i imazhit vektorial i bazuar në arkitekturën XML. Ka avantazhin e shkallëzimit arbitrar pa humbur mprehtësinë dhe transmetimin e rrjedhës së tekstit. Të gjithë shfletuesit modernë e mbështesin atë në mënyrë vendase. Përdoret gjerësisht për ikona ueb me rezolucion të lartë, logo dhe interpretim të animacioneve vektoriale. Është standardi kryesor për grafikën moderne të uebit)"
 
 msgid "mime_ai"
-msgstr "Grafikë vektoriale Adobe Illustrator (lëshuar në 1987, format standard industrial për grafikë vektoriale, zgjedhja e parë për dizajnin e shtypjes, logo dhe ikona)"
+msgstr "AI grafikë vektoriale (format pronësor i grafikës vektoriale i zhvilluar në mënyrë të pavarur nga Adobe në vitin 1987. Si standardi kryesor i industrisë për tipografinë, dizajnin e shtypit dhe dizajnin e identitetit të markës, mbështet të dhëna vektoriale të paraqitjes me shumë shtresa dhe të nivelit të lartë. Është bartësi i preferuar për artin profesional vizual)"
 
 msgid "mime_phshop"
-msgstr "Imazh Photoshop (lëshuar nga Adobe në 1990, format burimor i Photoshop-it PSD, standard industrial për përpunimin e imazheve)"
+msgstr "PSD imazh me shtresa (format pronësor i skedarit burimor të imazhit raster i lëshuar nga Adobe së bashku me Photoshop në vitin 1990. Mbështet shtresimin me shumë shtresa, kanale, maska dhe të dhëna redaktimi pa humbje. Është vendosur si standardi global i industrisë për përpunimin e imazheve dhe pikturën dixhitale)"
 
 msgid "mime_ttf"
-msgstr "Font TrueType (zhvilluar bashkërisht nga Apple dhe Microsoft në 1989, format fonti vektorial, shfaqje konsistente në ekran dhe printim, format i paracaktuar i fontit në sistemet moderne operative)"
+msgstr "Font TrueType (format dixhital i fontit me kontur i zhvilluar bashkërisht nga Apple dhe Microsoft në vitin 1989. Bazuar në kthesat kuadratike të Bézier, arrin konsistencë absolute të pikselit midis shfaqjes në ekran dhe daljes së printimit. Është formati vendas i paracaktuar i fontit të sistemeve moderne operative desktop)"
 
 msgid "mime_fon"
-msgstr "Font web WOFF2 (Rekomandim i W3C nga 2014, përdor algoritmin e ngjeshjes Brotli, krahasuar me WOFF-in e vjetër vëllimi zvogëlohet rreth 30%, krahasuar me TTF/OTF zvogëlohet mbi 50%, të gjithë shfletuesit modernë e mbështesin atë, formati i preferuar për fontet moderne të web-it, i mbështetur nga mbi 98% e shfletuesve)"
+msgstr "FON font bitmap (format i hershëm i fontit me matricë pikash në nivel sistemi i Microsoft Windows nga vitet 1980. Nuk mbështet shkallëzim pa humbje të proporcionit arbitrar. Zakonisht përdoret me sisteme të trashëguara ose komponentë të hershëm të pajisjeve të ngulitura për interpretim të kufizuar të tekstit të pikselizuar)"
 
 msgid "mime_pdf"
-msgstr "Dokument PDF (zhvilluar nga Adobe në 1993, u bë standard ndërkombëtar ISO në 2008. Format dokumenti i pavarur nga platforma, ruan konsistencën e formatimit, standard global për shpërndarjen e dokumenteve elektronike)"
+msgstr "PDF dokument elektronik (format dokumenti me paraqitje fikse ndër-platformë i zhvilluar nga Adobe në vitin 1993 dhe u bë standardi ndërkombëtar ISO 32000 në vitin 2008. Ka besnikëri absolute të paraqitjes dhe formatit. Është standardi universal për shpërndarjen globale të dokumenteve zyrtare elektronike dhe botimin dixhital)"
 
 msgid "mime_dotnet"
-msgstr "Faqe dinamike ASP.NET (lëshuar nga Microsoft në 2002, teknologji dinamike web për platformën Windows, pjesë e .NET Framework)"
+msgstr "ASP.NET faqe dinamike (teknologji dinamike e uebit në anën e serverit e lëshuar nga Microsoft së bashku me arkitekturën .NET në vitin 2002. Bartet nga motori i interpretimit IIS, përdoret për të ndërtuar aplikacione dinamike të uebit në anën e serverit Windows në nivel ndërmarrje dhe sisteme të shpërndara)"
 
 msgid "mime_mdb"
-msgstr "Bazë të dhënash Access (skedar baze të dhënash Microsoft Access, lëshuar në 1992, zgjidhje baze të dhënash desktop për Windows)"
+msgstr "MDB bazë të dhënash relacionale (format i ruajtjes së bazës së të dhënave relacionale në nivel desktop i lëshuar nga Microsoft së bashku me Access në vitin 1992. Me motorin e integruar të bazës së të dhënave Jet, u përdor si zgjidhje e bazës së të dhënave relacionale në menaxhimin e hershëm të informatizimit të kompjuterëve personalë dhe ndërmarrjeve të vogla dhe të mesme)"
 
 msgid "mime_md"
-msgstr "Dokument Markdown (krijuar nga John Gruber në 2004, dizajni i sintaksës u ndikua nga reStructuredText dhe Setext. Filozofia kryesore e dizajnit është 'lexueshmëria është paraqitje', implementimi origjinal Markdown.pl është shkruar në Perl dhe kryen transformimin e tekstit bazuar në shprehje të rregullta. Specifikimet e derivuara përfshijnë GFM (2013), CommonMark (2017), Pandoc Markdown etj. Fuqizon ekosisteme si GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, duke u bërë formati standard de facto për gjeneratorët e faqeve statike dhe dokumentacionin e zhvilluesve)"
+msgstr "Dokument Markdown (gjuhë e lehtë shënimi e krijuar në mënyrë të pavarur nga John Gruber në vitin 2004. Filozofia kryesore e dizajnit është 'e lexueshme do të thotë e interpretueshme', e cila nxit standardet moderne derivative si GFM dhe CommonMark. Përdoret gjerësisht si një standard kryesor i shkëmbimit për dokumentacionin teknik, bazat e njohurive (Obsidian) dhe gjeneruesit modernë të faqeve të internetit statike)"
 
 msgid "mime_crystal"
-msgstr "Format raporti Crystal Reports (raport i inteligjencës së biznesit SAP, format standard për raportet e korporatave)"
+msgstr "Crystal Reports (format profesional i skedarit të raporteve në nivel ndërmarrje të platformës SAP Business Intelligence (BI). Ka lidhje të nivelit të ulët me burime të shumta të dhënash dhe aftësi komplekse të interpretimit dinamik të grafikëve, përdoret gjerësisht për gjenerimin profesional të raporteve në sistemet financiare dhe të analizës së të dhënave të kompanive shumëkombëshe)"
 
 msgid "mime_libreoffice"
-msgstr "Dokument LibreOffice (zhvilluar nga The Document Foundation në 2010, degë e OpenOffice, implementim i standardit ODF, paketa kryesore zyre me burim të hapur)"
+msgstr "Dokument LibreOffice (format pronësor i paketës së zyrës me burim të hapur të ndërtuar nga The Document Foundation në vitin 2010 bazuar në degëzimin e OpenOffice. Zbaton thellësisht standardin ndërkombëtar ODF (Open Document Format) të W3C. Është themeli i zyrës së ekosistemit modern me burim të hapur)"
 
 msgid "mime_encrypt"
-msgstr "Skedar i enkriptuar (skedar që duhet të dekriptohet për t'u parë, zgjerime të zakonshme: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT skedar i koduar (të dhëna të papërpunuara binare ose tekstuale të përpunuara përmes një algoritmi specifik të kodimit simetrik ose asimetrik. Përfshin formatet kryesore derivative si .enc, .pgp, .gpg. Në shtresën e rrjetit, përdoret për të siguruar konfidencialitetin dhe verifikimin e integritetit të të dhënave jo-publike)"
 
 msgid "mime_gpx"
-msgstr "Të dhëna të gjurmës GPS (format shkëmbimi GPS, regjistron informacione të vendndodhjes gjeografike, format universal për orët sportive dhe pajisjet e navigimit)"
+msgstr "GPX të dhëna të trajektores satelitore (format i shkëmbimit të sistemit global të pozicionimit i bazuar në arkitekturën XML. Përdoret posaçërisht për të përshkruar koordinatat gjeografike, pikat e rrugës, rrugët dhe trajektoret historike. Është një standard i hapur i të dhënave i përbashkët për pajisjet moderne sportive mobile, navigimin në automjete dhe Sistemet e Informacionit Gjeografik (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Imazh disku (DMG, ISO, IMG dhe skedarë të tjerë imazhi të diskut optik/disk, përdoren për shpërndarjen e softuerit ose rezervimin e mediave të ruajtjes)"
+msgstr "Disk Image imazh disku (përfshin skedarët e imazhit të sektorit të nivelit të ulët bajt-për-bajt të disqeve fizike ose mediave optike si ISO, DMG, IMG. Përdoret për vendosje të sistemit në nivel të ulët, shpërndarje të sigurt të softuerit me kapacitet të madh dhe rezervë të plotë të të dhënave në nivel fizik të mediave të ruajtjes)"
 
 msgid "mime_vm"
-msgstr "Imazh i makinerisë virtuale (VMDK, VDI, VHDX, OVA dhe skedarë të tjerë të diskut virtual, formate të platformave të virtualizimit si VMware, VirtualBox, Hyper-V)"
+msgstr "VM imazh i makinerisë virtuale (përfshin imazhe të disqeve fizike të virtualizuara si VMDK, VDI, VHDX, OVA. Si bazë e platformave VMware, VirtualBox dhe Hyper-V, përdoret për emulimin e harduerit në nivel sistemi të nivelit të ulët, fotografi të shpejta të instancave dhe shpërndarje të infrastrukturës së resë kompjuterike)"
 
 msgid "mime_torrent"
-msgstr "Skedar torrent BitTorrent (shpikur nga Bram Cohen në 2001, skedar indeksi i shkarkimit P2P, përmban metadata të skedarit dhe informacion të Tracker-it)"
+msgstr "BitTorrent skedar torrent (indeks i shkarkimit të shpërndarë P2P peer-to-peer i projektuar nga Bram Cohen në vitin 2001. Bazuar në kodimin Bencode, ruan metatë dhënat e kontrollit të nivelit të ulët të skedarit origjinal dhe informacionin e adresimit të serverit Tracker. Është bartësi kryesor për shpërndarjen e rrjedhës në rrjetet e decentralizuara)"
 
 msgid "mime_gis"
-msgstr "Të dhëna SIG (Shapefile, GeoJSON dhe formate të tjera të dhënash gjeohapësinore, përdoren për harta dhe analizë hapësinore)"
+msgstr "GIS të dhëna gjeohapësinore (standard i të dhënave të sistemit të informacionit gjeografik me Shapefile dhe GeoJSON si bërthamë. Përfshin koordinata gjeometrike shumëdimensionale, topologjinë e shtresave dhe të dhëna atributesh. Përdoret gjerësisht për interpretimin e hartave dixhitale me saktësi të lartë, ndjeshmërinë në distancë satelitore dhe analizën gjeometrike hapësinore)"
 
 msgid "mime_ebook"
-msgstr "Libër elektronik (EPUB, MOBI, AZW dhe formate të tjera librash elektronikë. EPUB është standard ndërkombëtar, MOBI/AZW janë formati i Amazon Kindle)"
+msgstr "EBOOK libër elektronik (format botimi dixhital me standardin ndërkombëtar të hapur EPUB të W3C dhe arkitekturën pronësore MOBI/AZW të Amazon Kindle si bërthamë. Mbështet paraqitje adaptive të rrjedhës, kapsulim të metatë dhënave dhe mbrojtje të të drejtave dixhitale DRM. Është bartësi universal për leximin dixhital në pajisjet celulare)"
 
 msgid "mime_avif"
-msgstr "Imazh AVIF (lëshuar nga Aleanca për Media të Hapur në 2019, bazuar në kodimin AV1, shkalla e ngjeshjes është 50% më e mirë se WebP, standard i imazhit të web-it të gjeneratës së re)"
+msgstr "AVIF imazh efikas (standard i imazhit me ultra-rezolucion të lartë i gjeneratës së ardhshme i prezantuar nga Open Media Alliance (AOMedia) në vitin 2019. Bazuar në teknologjinë e kornizave kyçe të kodimit të videos AV1, shkalla e ngjeshjes është 50% më e mirë se WebP dhe mbështet vendas Diapazonin e Lartë Dinamik (HDR). Është standardi kryesor për transmetimin e imazheve moderne të uebit)"
 
 msgid "mime_markdown"
-msgstr "Dokument Markdown (projektuar nga John Gruber në 2004, gjuhë e lehtë markup, format universal për GitHub README, dokumentacion teknik, postime në forum)"
+msgstr "Markdown dokument i lehtë (gjuhë shënimi e dokumentit të tekstit e krijuar në mënyrë të pavarur nga John Gruber në vitin 2004. Përdor dizajn deklarativ të tekstit të thjeshtë, dizajni i sintaksës së tij është i frymëzuar nga reStructuredText. Përdoret gjerësisht për projektet GitHub, dokumentacionin teknik në nivel inxhinierik dhe ekosistemin modern të menaxhimit të përmbajtjes statike)"
 
 msgid "mime_yaml"
-msgstr "Konfigurim YAML (projektuar nga Clark Evans në 2001, format i lexueshëm nga njeriu për serializimin e të dhënave, format standard i skedarëve të konfigurimit për Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML konfigurim serializimi (format i serializimit të të dhënave i lexueshëm nga njeriu i projektuar nga Clark Evans dhe të tjerë në vitin 2001. Bazuar në dhëmbëzim hierarkik dhe hartëzim çifti kyç-vlerë. Tani është vendosur si standardi i konfigurimit të infrastrukturës vendase në re për orkestrimin e kontejnerëve Kubernetes, automatizimin Ansible dhe Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Konfigurim TOML (projektuar nga Tom Preston-Werner në 2013, \"Tom's Obvious Minimal Language\", format i skedarit të konfigurimit për mjete moderne si Rust/Cargo, Python/pip, Go)"
+msgstr "TOML konfigurim semantik (gjuhë minimaliste e projektuar nga Tom Preston-Werner në vitin 2013. Ka avantazhe të dizajnit të nivelit të ulët si tipizimi i fortë, hartëzimi eksplicit dhe qartësia semantike. Tani përdoret gjerësisht si një skedar konfigurimi i standardizuar për zinxhirët modernë të mjeteve të Rust (Cargo), Python (pyproject.toml) dhe Go)"
 
 msgid "mime_vue"
-msgstr "Skedë e komponentit Vue (prezantuar në 2014 nga Evan You, një kornizë progresive JavaScript. Nëpërmjet komponentëve me skedë të vetme (SFC), ajo kombinon në mënyrë të përkryer HTML, CSS dhe JS, duke rritur shumë efikasitetin e zhvillimit. Është një nga kornizat më të njohura frontend në botë. Gjithashtu, si bërthamë e gjeneruesve modernë të faqeve statike si VitePress, përdoret gjerësisht për të drejtuar dokumentacionin teknik interaktiv dhe blogjet.)"
+msgstr "Vue komponent me një skedar (format pronësor SFC i kornizës progresive të uebit të prezantuar nga Evan You në vitin 2014. Në një skedar të vetëm realizon ndarjen e shqetësimeve të HTML/CSS/JS dhe lidhjen e gjendjes reaktive, duke drejtuar thellësisht aplikacionet moderne interaktive të pjesës së përparme dhe motorët e faqeve statike në shkallë të gjerë)"
 
 msgid "mime_wasm"
-msgstr "Modul WebAssembly (standard W3C nga 2017, format ekzekutimi me performancë të lartë në shfletues, C/C++/Rust/R mund të përpilohen në objektiv, performanca afër asaj vendase)"
+msgstr "WebAssembly modul binar (standard i kodit bajt të nivelit të ulët me performancë të lartë për ueb i vendosur nga W3C në vitin 2017. Lejon gjuhët e tipizuara fort si C/C++/Rust të përpilohen në objektivin e sandbox-it të shfletuesit, duke siguruar efikasitet ekzekutimi afër harduerit vendas. Është gur themeli i informatikës moderne buzë uebit)"
 
 msgid "mime_jsx"
-msgstr "Komponent React JSX (Facebook prezantoi JavaScript XML në 2013, sintaksë e komponentëve të kornizës React, një paradigmë inovative për të shkruar HTML në JavaScript)"
+msgstr "React JSX komponent (zgjerim i sintaksës JavaScript XML i lëshuar nga Facebook së bashku me kornizën React në vitin 2013. Mbështet ndërtimin deklarativ të strukturës virtuale DOM në JavaScript, duke realizuar paradigmën e zhvillimit të pjesës së përparme 'UI është funksion i gjendjes' të bazuar në komponentë)"
 
 msgid "mime_tsx"
-msgstr "Komponent TypeScript TSX (zhvilluar nga Microsoft në 2012, TypeScript + JSX, mënyra standarde e zhvillimit të React me siguri të llojit)"
+msgstr "TypeScript TSX komponent (kombinimi i rrjedhës së sintaksës së tipizuar fort të TypeScript të zhvilluar nga Microsoft në vitin 2012 dhe JSX. Injekton kontrollin statik të tipit në kohën e përpilimit dhe kufizimet e ndërfaqes në zhvillimin e komponentëve React. Është një standard kodi për zhvillimin e sigurt të sistemeve moderne të mëdha të pjesës së përparme)"
 
 msgid "mime_heif"
-msgstr "Imazh HEIF (standard MPEG nga 2015, format efikas i skedarit të imazhit, përdoret gjerësisht në ekosistemin e Apple)"
+msgstr "HEIF imazh efikas (format i skedarit të imazhit efikas i vendosur nga organizata MPEG në vitin 2015. Bazuar në algoritmin e kodimit të videos HEVC (H.265), mbështet vendosjen e imazheve me shumë korniza, hartave të thellësisë dhe metatë dhënave në një vëllim shumë të vogël. Është një standard ruajtjeje pronësor për sistemet operative moderne celulare dhe pajisjet inteligjente terminale)"
 
 msgid "mime_heic"
-msgstr "Imazh HEIC (implementimi i HEIF nga Apple, format i paracaktuar i fotove për iPhone, i mbështetur në mënyrë vendase në iOS/macOS)"
+msgstr "HEIC imazh efikas (format pronësor i bitmap-it i Apple i implementuar bazuar në standardin ndërkombëtar HEIF. Si standardi i paracaktuar i ruajtjes së fotove për iPhone-in modern, merr kodim/dekodim në nivel hardueri iOS/macOS dhe mbështetje vendase të sistemit operativ. Duke siguruar cilësi të lartë të imazhit, zvogëlon në mënyrë dramatike hapësirën themelore të ruajtjes)"
 
 msgid "mime_gltf"
-msgstr "Model 3D GLTF (format transferimi GL, \"JPEG për botën 3D\", lëshuar nga Khronos Group në 2015, format standard për web 3D)"
+msgstr "glTF model aseti 3D (standard i formatit të transferimit GL i lëshuar nga Khronos Group në vitin 2015. Përdor arkitekturën JSON për të përshkruar skenat tredimensionale, i njohur si 'JPEG i fushës 3D'. Është një standard i lehtë industrial për interpretimin modern të WebGL/WebGPU dhe realitetit virtual)"
 
 msgid "mime_glb"
-msgstr "Model 3D binar GLB (versioni binar i GLTF, një skedar përmban të gjitha burimet, përdoret për shpërndarjen e skenave 3D)"
+msgstr "GLB model 3D binar (version i plotë binar, pa humbje i kapsulimit të modelit të asetit glTF. Kombinon strukturën e skenës, të dhënat e kulmeve të rrjetës së nivelit të ulët, materialet dhe hartat e teksturës në një skedar të vetëm. Projektuar posaçërisht për transmetim efikas dhe shpërndarje rrjedhëse të aseteve 3D të uebit ndër-platformë)"
 
 msgid "mime_gls"
-msgstr "Glosar GLOSSARY (skedar përkufizimesh termash, përdoret për menaxhimin e terminologjisë në sistemet e dokumentacionit)"
+msgstr "GLOSSARY fjalor i të dhënave (skedar përcaktimi i grupit të terminologjisë posaçërisht për sistemet e menaxhimit të dokumenteve dhe korpuset e strukturuara. Përmban përkufizime standarde të termave të integruara, hartëzime shumëgjuhëshe dhe hartëzime metatë dhënash. Përdoret për të ruajtur qëndrueshmërinë konceptuale në analizën e automatizuar të tekstit dhe sistemet e publikimit të përmbajtjes)"
 
 msgid "mime_cbz"
-msgstr "Libër stripash CBZ (imazhe stripash të ngjeshura me ZIP, format universal për mbledhjen e stripit)"
+msgstr "CBZ libër stripash (format pronësor i arkivimit të imazheve të stripit i bazuar në strukturën e ngjeshjes ZIP. Brenda kapsulon një sekuencë të vazhdueshme të imazheve statike bitmap. Është një standard universal i kontejnerit të lehtë për botimin e stripit dixhital dhe koleksionimin lokal ndër-platformë)"
 
 msgid "mime_cbr"
-msgstr "Libër stripash CBR (imazhe stripash të ngjeshura me RAR, format universal për mbledhjen e stripit)"
+msgstr "CBR libër stripash (format pronësor i arkivimit të imazheve të stripit i bazuar në strukturën e ngjeshjes RAR. Përdor algoritmin RAR për të kapsuluar sekuencat statike të bitmap-it, ka një shkallë relativisht të lartë ngjeshjeje, ka mbështetje të gjerë të përputhshmërisë në fushën e shpërndarjes së stripave dixhitale)"
 
 msgid "mime_fb2"
-msgstr "Libër elektronik FB2 (FictionBook 2.0, format rus i librit elektronik, strukturë XML, i mbështetur gjerësisht nga lexuesit me burim të hapur)"
+msgstr "FB2 libër elektronik (standard i librit elektronik FictionBook 2.0 nga fillimi i viteve 2000. Përdor strukturë të pastër XML për të përshkruar atributet e librit dhe hierarkinë e tekstit. Ka mbështetje të gjerë në ekosistemin e librave elektronikë me burim të hapur dhe në lexuesit e trashëguar të botimeve dixhitale)"
 
 msgid "mime_kepub"
-msgstr "Libër elektronik KEPUB (format EPUB specifik për Kobo, format i optimizuar për lexuesit e librave elektronikë Kobo)"
+msgstr "KEPUB libër elektronik (format pronësor i përmirësuar i librit elektronik i Kobo që evoluoi nga standardi EPUB. Kryen optimizim të interpretimit të nivelit të ulët për lexuesit e librave elektronikë të nivelit harduerik të Kobo, duke ofruar paraqitje më efikase të faqeve dhe ndërveprim të statistikave të leximit)"
 
 msgid "mime_m4b"
-msgstr "Libër audio M4B (format i librit audio MPEG-4, mbështet faqerojtësit, format i librave audio të iTunes)"
+msgstr "M4B libër audio (format i librit audio i bazuar në arkitekturën e kontejnerit MPEG-4 Part 14 (MP4). Përdor kodimin AAC, mbështet vendas vendosjen e faqeshënuesve të nivelit të ulët, vazhdimin e riprodhimit nga pika e ndërprerjes dhe ngulitjen e kapitujve. Dikur ishte formati standard i ekosistemit Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Format Kindle KFX (lëshuar nga Amazon në 2015, format i veçantë për librat elektronikë Kindle, mbështet tipografi të përmirësuar dhe rrotullim të shpejtë të faqeve)"
+msgstr "Kindle KFX format (format pronësor i përmirësuar i botimit dixhital i lëshuar nga Amazon së bashku me Kindle në vitin 2015. Mbështet paraqitje të avancuar të lidhurave, interpretim të fontit me dinamikë të lartë dhe ngarkim të faqeve në rrjedhë në nivel bërthame (Page Flip). Është standardi kryesor i platformës moderne Kindle)"
 
 msgid "mime_chm"
-msgstr "Skedar ndihme CHM (lëshuar nga Microsoft në 1997, format i ndihmës HTML të përpiluar, standard për dokumentacionin e ndihmës së softuerit Windows)"
+msgstr "CHM skedar i përpiluar i ndihmës (sistem informacioni i ndihmës HTML i përpiluar i lëshuar nga Microsoft në vitin 1997. Paketoni të dhënat hipertekstuale dhe indeksin themelor në një kontejner të vetëm binar. Për një kohë të gjatë ishte formati standard për dokumentacionin lokal të ndihmës pa lidhje për softuerin Windows)"
 
 msgid "mime_mht"
-msgstr "Arkiv web MHT (lëshuar nga Microsoft në 1999, format web me një skedar, format i ruajtjes së faqeve të internetit nga shfletuesi IE)"
+msgstr "MHT arkiv i faqes së internetit (format i hipertekstit të grumbulluar MIME i lëshuar nga Microsoft në vitin 1999. Bazuar në standardin RFC 2557, kapsulon kodin burimor HTML, CSS, JS dhe imazhet e ngulitura në një skedar të vetëm teksti. Përdoret për ruajtjen e faqeve të internetit pa lidhje në shfletuesit e trashëguar)"
 
 msgid "mime_wml"
-msgstr "Gjuhë markup pa tela WML (standard WAP nga 1999, përdoret për skedarët e faqeve të internetit të telefonave të hershëm funksional, i hequr)"
+msgstr "WML gjuhë shënimi pa tel (standard shënimi celular i vendosur nga forumi WAP (Wireless Application Protocol) në vitin 1999. Bazuar në specifikimin XML, projektuar posaçërisht për rrjetet e hershme celulare pa tel me brez të ngushtë dhe telefonat me funksione me fuqi të ulët. Në ekosistemin modern të uebit, i përket teknologjisë së trashëguar të pensionuar)"
 
 msgid "mime_xhtml"
-msgstr "Faqe web XHTML (standard W3C nga 2000, versioni XML i HTML, sintaksë më e rreptë. Në 2009 W3C ndërroi mirëmbajtjen, duke e përqendruar vëmendjen në HTML5)"
+msgstr "XHTML faqe interneti me hipertekst (standard W3C i vitit 2000, kapsulim i gjuhës strikte të shënimit hipertekstual të bazuar në arkitekturën XML. Në vitin 2009, W3C ndaloi evolucionin e tij teknologjik dhe kaloi plotësisht në specifikimin HTML5. Tani përdoret kryesisht për interpretimin semantik të faqeve të internetit në sistemet e trashëguara)"
 
 msgid "mime_xml"
-msgstr "Dokument XML (standard W3C nga 1998, gjuhë markup e zgjerueshme, format bazë për shërbimet e web-it, skedarët e konfigurimit, shkëmbimin e të dhënave)"
+msgstr "XML dokument i strukturuar (gjuhë shënimi e zgjerueshme nga standardi W3C i vitit 1998. Ka një arkitekturë etiketash të vetë-përshkrueshme. Është një format themelor për shërbimet e uebit në rrjet (SOAP/REST), skedarët e konfigurimit në nivel sistemi (XSD) dhe shkëmbimin e të dhënave ndër-platformë)"
 
 msgid "mime_sgml"
-msgstr "Dokument SGML (standard ISO nga 1986, paraardhësi i HTML, gjuhë markup e përgjithshme standarde, si XML ashtu edhe HTML rrjedhin nga SGML)"
+msgstr "SGML gjuhë e përgjithësuar shënimi (standard ndërkombëtar ISO 8879 i vitit 1986 për gjuhën standarde të përgjithësuar të shënimit. Si pionier i industrisë në përshkrimin e strukturuar të dokumenteve elektronike, si XML ashtu edhe specifikimet e hershme HTML rrjedhin nga kjo metagjuhë standarde)"
 
 msgid "mime_apng"
-msgstr "Animacion APNG (zhvilluar nga Mozilla në 2004, zgjerim animacioni i PNG, zëvendësues modern për GIF, mbështet ngjyrat reale dhe transparencën)"
+msgstr "APNG grafikë dinamike (zgjerim dinamik i Grafikës së Rrjetit Portativ (PNG) i zhvilluar nga Mozilla në vitin 2004. Mbështet ngjyra reale 24-bit dhe gjysmë-transparencë të kanalit Alfa 8-bit. Është një alternativë me rezolucion të lartë të formatit GIF në skenarët modernë të uebit)"
 
 msgid "mime_bmp"
-msgstr "Bitmap BMP (format bitmap i Windows, i mbështetur në mënyrë vendase që nga Windows 1.0. I pangjeshur, madhësi e madhe e skedarit, por për shkak të strukturës së tij të thjeshtë dhe mungesës së nevojës për kodekë shtesë, përdoret ende në Mjetin e Prerjes së Windows 11, programin Paint, burimet e ikonave në paketat e instalimit EXE/MSI, skedarët e kursorit dhe disa drejtues të vjetër. Me të njëjtën cilësi imazhi, madhësia e skedarit është rreth 3-10 herë më e madhe se PNG. Në shumicën e rasteve është zëvendësuar nga PNG/JPEG, por ekosistemi i Windows ruan ende përputhshmëri të gjerë)"
+msgstr "BMP bitmap vendas (format bitmap i pavarur nga pajisja e platformës Microsoft i vendosur që nga epoka e Windows 1.0. Përdor ruajtje pa humbje, të pangjeshur, megjithëse vëllimi i tij është zakonisht 3-10 herë më i madh se PNG, për shkak të mungesës së kostove të kodimit/dekodimit, ai është ende i ngulitur gjerësisht në komponentët kryesorë të Windows 11, segmentet e burimeve EXE/MSI dhe tamponët grafikë të drejtuesve të trashëguar)"
 
 msgid "mime_cdr"
-msgstr "Grafikë vektoriale CDR (format specifik i CorelDRAW, kompania Corel nga Kanadaja, softuer për dizajnimin e grafikës vektoriale)"
+msgstr "CDR grafikë vektoriale (format pronësor i skedarit burimor të dizajnit vektorial profesional CorelDRAW i kompanisë kanadeze Corel. Mbështet menaxhimin e ngjyrave me shumë shtresa, nyje komplekse matematikore të konturit dhe të dhëna të paraqitjes në nivel shtypi. Është një format i specializuar për shtypjen e sheshtë profesionale dhe dizajnin e reklamave)"
 
 msgid "mime_gif"
-msgstr "Imazh GIF (zhvilluar nga CompuServe në 1987, format imazhi i animuar me 256 ngjyra. Dobësitë: pak ngjyra, cilësi e trashë e imazhit, nuk mbështet transparencën, skedar i madh, shkallë e ulët e kornizave. Zëvendësuar nga formatet moderne të imazhit të animuar si APNG, WebP)"
+msgstr "GIF imazh me ngjyra të indeksuara (format bitmap me ngjyra të indeksuara 8-bit i zhvilluar nga CompuServe në vitin 1987. Bazuar në algoritmin LZW, i kufizuar në 256 nivele ngjyrash dhe transparencë me një ngjyrë, në shpejtësi të lartë të kornizave bëhet i madh. Tani po zëvendësohet gradualisht nga standardet moderne të imazhit dinamik efikas si APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "Ikonë ICO (format i skedarit të ikonave të Windows, mbështet shumë rezolucione, format standard për favicon-in e faqeve të internetit)"
+msgstr "ICO ikonë sistemi (format vendas i kapsulimit të burimeve të ikonave të Windows. Mbështet ngulitjen e përzier të varianteve të imazhit me shumë rezolucione pikselësh dhe thellësi ngjyrash në një kontejner të vetëm. Është gjithashtu një standard universal i shpërndarjes për identifikuesin kryesor të faqeve të shfletuesve modernë të uebit (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "Imazh JPEG (standard ISO nga 1992, format i ngjeshjes me humbje për fotografi, standard de facto për fotot në internet)"
+msgstr "JPEG imazh i ngjeshur (format imazhi me ngjeshje me humbje i standardit ndërkombëtar ISO 10918 i vitit 1992. Bazuar në algoritmin e Transformimit të Diskret të Kosinusit (DCT), arrin një raport të lartë ngjeshjeje duke ruajtur cilësinë e shkëlqyer realiste të imazhit. Është standardi absolut de facto për fotografinë statike në internetin global)"
 
 msgid "mime_jpg"
-msgstr "Imazh JPEG (standard ISO nga 1992, format i ngjeshjes me humbje për fotografi, standard de facto për fotot në internet)"
+msgstr "JPEG imazh i ngjeshur (format imazhi me ngjeshje me humbje i standardit ndërkombëtar ISO 10918 i vitit 1992. Bazuar në algoritmin e Transformimit të Diskret të Kosinusit (DCT), arrin një raport të lartë ngjeshjeje duke ruajtur cilësinë e shkëlqyer realiste të imazhit. Është standardi absolut de facto për fotografinë statike në internetin global)"
 
 msgid "mime_png"
-msgstr "Imazh PNG (rekomandim i W3C nga 1996, mbështet ngjyrat reale dhe transparencën, zëvendësues statik për GIF, standard i imazhit pa humbje në internet)"
+msgstr "PNG imazh pa humbje (standard i Grafikës së Rrjetit Portativ i rekomanduar nga W3C në vitin 1996. Përdor një algoritëm ngjeshjeje pa humbje, mbështet vendas ngjyra reale 24-bit dhe transparencë të kanalit Alfa 8-bit. Si një alternativë me rezolucion të lartë të GIF statik klasik, është standardi absolut de facto për imazhet e pikselëve pa humbje në internet)"
 
 msgid "mime_ps"
-msgstr "Skedar përshkrimi i faqes PostScript (lëshuar nga Adobe në 1985, gjuhë përshkrimi i faqes, paraardhësi i PDF, përdoret për printim dhe botim)"
+msgstr "PostScript skedar përshkrimi i faqes (gjuhë përshkrimi i faqes e bazuar në pirg e prezantuar nga Adobe në vitin 1985. Si paraardhësi teknologjik i formatit PDF, në nivel të ulët realizon tipografi të pavarur nga hardueri dhe interpretim të grafikës vektoriale me saktësi të lartë. Është një standard themelor për botimin profesional të shtypit dhe fushën e printimit me lazer)"
 
 msgid "mime_psb"
-msgstr "Dokument i madh PSB (format i imazhit shumë të madh të Adobe Photoshop, mbështet imazhe gjigante mbi 2 GB ose 30000 piksel)"
+msgstr "PSB dokument me shtresa të mëdha (format pronësor i kapsulimit të skedarit burimor shumë të madh i Adobe Photoshop. Ai thyen madhësinë fizike prej 2 GB dhe kufijtë e brendshëm të adresimit prej 30.000 pikselësh të formatit standard PSD. Projektuar posaçërisht për të ruajtur asete gjigante të artit dixhital në shkallë shumë të madhe me thellësi të lartë shtresash)"
 
 msgid "mime_psd"
-msgstr "Imazh PSD (skedar burimor i Adobe Photoshop, mbështet shtresat, kanalet, shtigjet, format standard industrial për përpunimin e imazheve)"
+msgstr "PSD skedar burimor i dizajnit të shtresave (format pronësor i inxhinierisë së imazhit me shtresa i Adobe Photoshop. Si një kontejner standard industrial në fushën e grafikës dhe imazhit, ai kapsulon në mënyrë vendase pemën e plotë të interpretimit të shtresave, kanalet e bitmap-it, shtigjet vektoriale të prerjes dhe mënyrat e përbëra të përzierjes, duke mbështetur redaktimin e plotë të të dhënave pa humbje)"
 
 msgid "mime_webp"
-msgstr "Imazh WebP (zhvilluar nga Google në 2010, format i imazhit të web-it, mbështet ngjeshje me humbje/pa humbje dhe animacion, shkalla e ngjeshjes është 25-35% më e mirë se PNG, 25% më e mirë se JPEG)"
+msgstr "WebP imazh efikas (standard universal i kodimit të grafikës së uebit i prezantuar nga Google në vitin 2010. Rrjedh nga teknologjia e kornizave kyçe të videos VP8, i përputhshëm në mënyrë të përkryer me interpretimin me humbje, pa humbje, gjysmë transparente dhe dinamike. Zvogëlon madhësinë me 25-35% në krahasim me PNG të së njëjtës cilësi. Është gur themeli i ngarkimit të performancës së lartë të faqeve moderne të internetit)"
 
 msgid "mime_woff"
-msgstr "Font web WOFF (krijuar në 2009, standard W3C nga 2018. Ngjeshje e bazuar në TrueType/OpenType, optimizim i ngarkimit të fonteve të web-it, format standard për fontet e ikonave të faqeve moderne të web-it)"
+msgstr "WOFF skedar glifi i uebit (format i hapur i fontit të uebit i krijuar në vitin 2009 dhe u bë standard W3C në vitin 2012. Në thelb, është një kapsulim i ngjeshjes pa humbje në rrjedhë të strukturave standarde të fontit TTF/OTF, i cili optimizon ndjeshëm koston e gjerësisë së brezit të transmetimit në rrjet. Është një format universal për ikonat e faqeve moderne të internetit dhe fontet në re)"
 
 msgid "mime_7z"
-msgstr "Paketë e ngjeshur 7z (zhvilluar nga Igor Pavlov në 1999, format specifik i programit 7-Zip. Algoritmi LZMA, ngjeshje e lartë, burim i hapur dhe falas. Formati 7z me të njëjtën shkallë ngjeshjeje është zakonisht 30-50% më i vogël se ZIP, format i zakonshëm në komunitetin me burim të hapur dhe për shpërndarjen e softuerit)"
+msgstr "7z arkiv i ngjeshur (format pronësor i 7-Zip i zhvilluar nga Igor Pavlov në vitin 1999. Bazuar në algoritmet me burim të hapur LZMA/LZMA2, ka një shkallë jashtëzakonisht të lartë ngjeshjeje. Në kushte të barabarta, madhësia e tij është zakonisht 30-50% më e vogël se ZIP. Është një format universal me raport të lartë ngjeshjeje për komunitetin me burim të hapur dhe shpërndarjen e softuerit)"
 
 msgid "mime_ace"
-msgstr "Paketë e ngjeshur ACE (zhvilluar në vitet 1990, format i programit WinACE. Dikur konkurronte me RAR, shkallë ngjeshjeje relativisht e lartë. Zhvillimi u ndërpre në 2007, tani është zëvendësuar nga 7z/RAR, përdoret rrallë)"
+msgstr "ACE arkiv i ngjeshur (format pronësor i ngjeshjes WinACE nga vitet 1990. Dikur konkurronte me formatin RAR dhe kishte një shkallë relativisht të lartë ngjeshjeje. Pas vitit 2007, përsëritja teknologjike u ndal, tani është zëvendësuar nga formatet 7z dhe RAR. I përket formateve të arkivimit të sistemeve të trashëguara)"
 
 msgid "mime_bz2"
-msgstr "Paketë e ngjeshur BZIP2 (zhvilluar nga Julian Seward në 1996, algoritëm ngjeshjeje me renditje blloku. Shkalla e ngjeshjes është 15-20% më e mirë se GZIP, por më e ngadaltë. Kodi burimor i bërthamës së Linux-it, paketat me burim të hapur përdorin shpesh këtë format, zgjerimi .bz2)"
+msgstr "BZIP2 arkiv i ngjeshur (format ngjeshjeje me renditje blloqesh i zhvilluar nga Julian Seward në vitin 1996. Shkalla e ngjeshjes së algoritmit të tij themelor është 15-20% më e lartë se GZIP, por kostoja e llogaritjes është më e madhe. Përdoret shpesh për shpërndarjen e kodit burimor të bërthamës Linux dhe paketave të softuerit me burim të hapur. Zgjerimi standard është .bz2)"
 
 msgid "mime_cab"
-msgstr "Paketë e ngjeshur CAB (zhvilluar nga Microsoft në 1995, format Kabineti. Format i paketave të instalimit të sistemit Windows, përdoret për drejtuesit, shpërndarjen e skedarëve të sistemit. Windows Installer (MSI) brendazi përdor CAB për ruajtjen e skedarëve)"
+msgstr "CAB arkiv i ngjeshur (format arkivimi Cabinet i zhvilluar në mënyrë të pavarur nga Microsoft në vitin 1995. Si standardi vendas i paketës së instalimit të sistemit Windows, përdoret për shpërndarjen e drejtuesve dhe skedarëve të bërthamës. Është gjithashtu kontejneri themelor i ruajtjes për Instaluesin e Windows (MSI))"
 
 msgid "mime_dmg"
-msgstr "Imazh disku DMG (lëshuar nga Apple në vitet 1980, format Disk Image. Format standard për shpërndarjen e softuerit në macOS, klikimi i dyfishtë montohet si disk virtual, tërhiq dhe lësho për të instaluar aplikacionin. Mbështet ngjeshjen dhe enkriptimin, format kryesor për shkarkimin e softuerit Mac)"
+msgstr "DMG imazh disku (format i Imazhit të Diskut i evoluar nga Apple në vitet 1980. Si kontejneri standard për shpërndarjen e softuerit macOS, mbështet montimin fizik si një sistem skedarësh virtual, ngjeshje të nivelit të ulët dhe kodim të të dhënave. Është formati kryesor për shpërndarjen e aplikacioneve në ekosistemin Mac)"
 
 msgid "mime_emz"
-msgstr "Imazh i ngjeshur EMZ (metafajll i përmirësuar i ngjeshur i Windows, version i ngjeshur i EMF. Format i ruajtjes së grafikës vektoriale në dokumentet e Office, në thelb është një skedar EMF i ngjeshur me GZIP)"
+msgstr "EMZ imazh i ngjeshur (version i ngjeshur i Metaskedarit të Përmirësuar të Windows EMF. Në thelb, është grafikë vektoriale binare e ngjeshur përmes algoritmit GZIP. Përdoret gjerësisht për ruajtjen e grafikës vektoriale të ngulitur në dokumentet e serisë Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Paketë e ngjeshur GZIP (zhvilluar nga Jean-loup Gailly dhe Mark Adler në 1992, projekt GNU. Mjet standard i ngjeshjes në Unix/Linux, format i zakonshëm për ngjeshjen e transmetimit HTTP. Zgjerimi .gz, shpesh i përdorur së bashku me TAR)"
+msgstr "GZIP arkiv i ngjeshur (format standard i ngjeshjes së rrjedhës i zhvilluar nga Jean-loup Gailly dhe Mark Adler të projektit GNU në vitin 1992. Si mjet standard i ngjeshjes Unix/Linux, është gjithashtu standardi kryesor për ngjeshjen e shtresës së transportit HTTP (Gzip). Shpesh përdoret së bashku me arkivimin TAR)"
 
 msgid "mime_jar"
-msgstr "Paketë e ngjeshur JAR (lëshuar nga Sun Microsystems në 1997, format Java ARchive. Në thelb është një paketë e ngjeshur ZIP, përdoret për paketimin e bibliotekave të klasave Java dhe aplikacioneve. Format bazë në ekosistemin Java si Maven, Gradle, Android gjithashtu përdor JAR)"
+msgstr "JAR arkiv i ngjeshur (format arkivimi Java ARchive i prezantuar nga Sun Microsystems në vitin 1997. Në thelb, është një kontejner paketimi i bazuar në strukturën ZIP, i përdorur për të kapsuluar bibliotekat e klasave Java dhe metatë dhënat. Është një produkt kryesor i përpilimit për Maven, Gradle dhe ekosistemin e hershëm Android)"
 
 msgid "mime_lzma"
-msgstr "Paketë e ngjeshur LZMA (zhvilluar nga Igor Pavlov në 1998, algoritmi i zinxhirit Lempel-Ziv-Markov. Algoritmi kryesor i ngjeshjes së formatit 7z, ngjeshje e lartë, çngjeshje e shpejtë. Përdoret për firmuer, shpërndarjen e softuerit për sisteme të ngulitura)"
+msgstr "LZMA arkiv i ngjeshur (algoritmi i ngjeshjes së zinxhirit Lempel-Ziv-Markov i zhvilluar nga Igor Pavlov në vitin 1998. Si motori kryesor i formatit 7z, ka një shkallë jashtëzakonisht të lartë ngjeshjeje dhe veçori të shpejta të çngjeshjes. Përdoret gjerësisht për shpërndarjen e firmuerit të harduerit dhe sistemeve të ngulitura)"
 
 msgid "mime_rar"
-msgstr "Paketë e ngjeshur RAR (zhvilluar nga Eugene Roshal në 1993, format Roshal ARchive. Ngjeshje e lartë, mbështet ndarjen në vëllime, regjistrime rikuperimi. Format i programit WinRAR, ngjeshja superiore ndaj ZIP, por kërkon softuer të paguar, mjetet me burim të hapur si unrar mund të çngjeshin)"
+msgstr "RAR arkiv i ngjeshur (format pronësor i arkivimit WinRAR i zhvilluar nga Eugene Roshal në vitin 1993. Mbështet ndarjen në vëllime, regjistrime fizike të rikuperimit (ECC) dhe kodim të forcës së lartë. Shkalla e ngjeshjes është më e mirë se ZIP standard, dhe ka mbështetje të gjerë të përputhshmërisë në kompjuterët personalë dhe sektorin komercial)"
 
 msgid "mime_tar"
-msgstr "Arkiv TAR (prezantuar në Unix V7 në 1979, format Tape ARchive. Format arkivi i shiritit, nuk ngjesh vetëm paketon, shpesh përdoret së bashku me GZIP/BZIP2/XZ. Kodi burimor i paketave të Linux-it, ruajtja e shtresave të imazheve të Docker përdor formatin TAR)"
+msgstr "TAR paketë arkivimi (format arkivimi në kasetë nga epoka Unix V7 e vitit 1979. Kryen vetëm paketimin e rrjedhës së skedarëve pa ngjeshje të të dhënave. Shpesh kombinohet me GZIP/BZIP2/XZ, është standardi themelor për paketat e kodit burimor Linux dhe ruajtjen e shtresuar të imazheve Docker)"
 
 msgid "mime_tgz"
-msgstr "Paketë e ngjeshur TGZ (format i kombinuar TAR + GZIP, zgjerimi .tgz ose .tar.gz. Formati më universal i shpërndarjes së paketave Unix/Linux, përdoret gjerësisht për paketat burimore, paketat binare, përfaqësues i \"shpaketoni dhe përdorni\")"
+msgstr "TGZ arkiv i ngjeshur (format i kombinuar i rrjedhës së arkivimit TAR dhe ngjeshjes GZIP, zgjerimet .tgz ose .tar.gz. Si formati më universal i shpërndarjes së paketave të softuerit në mjedisin Unix/Linux, përdoret gjerësisht për vendosjen e përpilimit të kodit burimor dhe shpërndarjen e paketave binare pa instalim)"
 
 msgid "mime_tbz2"
-msgstr "Paketë e ngjeshur TBZ2 (format i kombinuar TAR + BZIP2, zgjerimi .tbz2 ose .tar.bz2. Shkalla e ngjeshjes është 15-20% më e mirë se TGZ, e përshtatshme për shpërndarjen e skedarëve të mëdhenj, kodi burimor i bërthamës së Linux-it ka përdorur prej kohësh këtë format)"
+msgstr "TBZ2 arkiv i ngjeshur (format i kombinuar i rrjedhës së arkivimit TAR dhe ngjeshjes BZIP2, zgjerimet .tbz2 ose .tar.bz2. Krahasuar me TGZ, mund të rrisë më tej shkallën e ngjeshjes me 15-20%, i përshtatshëm për transmetimin e skedarëve të mëdhenj, u përdor për një kohë të gjatë për shpërndarjen e kodit burimor të bërthamës Linux)"
 
 msgid "mime_xz"
-msgstr "Paketë e ngjeshur XZ (lëshuar në 2009, bazuar në algoritmin LZMA2. Ngjeshje jashtëzakonisht e lartë, 30-50% më e mirë se GZIP, çngjeshje relativisht e shpejtë. Përdoret gjerësisht në bërthamën e Linux-it, menaxherët e paketave (si brenda .deb të Debian), format i rekomanduar për ekosistemin aktual të Linux-it)"
+msgstr "XZ arkiv i ngjeshur (format me raport të lartë ngjeshjeje i gjeneratës së ardhshme i prezantuar në vitin 2009. Bazuar në algoritmin LZMA2, shkalla e ngjeshjes së të dhënave është 30-50% më e lartë se GZIP duke ruajtur çngjeshje të shpejtë. Është vendosur si standard i rekomanduar i shpërndarjes nga bërthama Linux dhe menaxherët kryesorë të paketave (si brenda Debian .deb))"
 
 msgid "mime_z"
-msgstr "Paketë e ngjeshur Z (formati i komandës compress të Unix nga 1985, algoritmi LZW. Format i hershëm i ngjeshjes së Unix-it, u zëvendësua nga GZIP. Zgjerimi .Z, përdoret rrallë në sistemet moderne)"
+msgstr "Z arkiv i ngjeshur (format i ngjeshjes LZW i komandës Unix compress i vitit 1985. Si një standard i hershëm i ngjeshjes së sistemeve Unix, tani është zëvendësuar plotësisht nga formati më efikas GZIP. Në trafikun modern të rrjetit, është një format i rrallë historik i trashëguar)"
 
 msgid "mime_zip"
-msgstr "Paketë e ngjeshur ZIP (zhvilluar nga Phil Katz në 1989, format PKZIP. I mbështetur në mënyrë vendase nga Windows, formati më universal i ngjeshjes në internet. Mbështet shumë skedarë, strukturë direktorish, mund të zgjedhë algoritmin e ngjeshjes. JAR-i i Java, APK i Android, dokumentet Office DOCX/XLSX bazohen në formatin ZIP)"
+msgstr "ZIP arkiv i ngjeshur (format universal i arkivimit PKZIP i zhvilluar nga Phil Katz në vitin 1989. Ka mbështetje vendase nga sistemet operative kryesore. Është standardi më i përdorur i kontejnerëve në internet. JAR modern i Java, APK i Android dhe dokumentet e Office (OOXML) bazohen në strukturën ZIP)"
 
 msgid "mime_zst"
-msgstr "Paketë e ngjeshur Zstandard (zhvilluar nga Facebook në 2015, projektuar nga Yann Collet. Algoritëm i shpejtë i ngjeshjes, shkalla e ngjeshjes afër LZMA-s, shpejtësia tejkalon shumë GZIP. Bërthama e Linux-it 5.9+ e mbështet, Arch Linux pacman, Debian APT po e miratojnë gradualisht, standard i ngjeshjes i gjeneratës së re)"
+msgstr "Zstandard arkiv i ngjeshur (standard i ngjeshjes së rrjedhës së gjeneratës së re i projektuar nga Yann Collet i Facebook në vitin 2015. I afrohet shkallës së ngjeshjes LZMA duke pasur një xhiro shumë më të lartë se GZIP. Është adoptuar thellësisht nga bërthama Linux (5.9+) dhe menaxherët e paketave Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Paketë e ngjeshur LZ4 (zhvilluar nga Yann Collet në 2011, algoritëm jashtëzakonisht i shpejtë i ngjeshjes. Shpejtësia e ngjeshjes është mbi 10 herë më e shpejtë se GZIP, e përshtatshme për skenarë të ngjeshjes në kohë reale. Bërthama e Linux-it, OpenZFS, Hadoop e përdorin gjerësisht, zgjedhja e parë për skenarët ku shpejtësia është prioritet)"
+msgstr "LZ4 arkiv i ngjeshur (algoritëm i jashtëzakonshëm i shpejtë i ngjeshjes së rrjedhës i zhvilluar nga Yann Collet në vitin 2011. Shpejtësia e xhiros është më shumë se 10 herë më e shpejtë se GZIP, me kosto jashtëzakonisht të ulëta të CPU-së gjatë ekzekutimit. Përdoret gjerësisht në bërthamën Linux, sistemin e skedarëve OpenZFS dhe përpunimin e rrjedhës së të dhënave në kohë reale të Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Paketë e ngjeshur LZO (zhvilluar nga Markus Oberhumer në 1996, algoritmi Lempel-Ziv-Oberhumer. Shpejtësia e çngjeshjes është jashtëzakonisht e shpejtë, shkalla e ngjeshjes është mesatare. Bërthama e Linux-it Squashfs, firmueri i OpenWrt e përdorin atë, i përshtatshëm për sisteme të ngulitura)"
+msgstr "LZO arkiv i ngjeshur (algoritmi Lempel-Ziv-Oberhumer i zhvilluar nga Markus Oberhumer në vitin 1996. Fokusohet në performancën jashtëzakonisht të shpejtë të çngjeshjes. Është ngulitur gjerësisht në imazhet Squashfs të bërthamës Linux, firmuerin OpenWrt dhe sisteme të ndryshme të ngulitura me burime të kufizuara)"
 
 msgid "mime_msi"
-msgstr "Paketë instalimi MSI (lëshuar nga Microsoft në 1999, format i paketës së Windows Installer. Format standard i instalimit për aplikacionet Windows, mbështet kthimin e transaksioneve, menaxhimin e komponentëve, instalimin e heshtur. Format i preferuar për shpërndarjen e softuerit në nivel ndërmarrje, ende kryesor për instalimin e softuerit Windows edhe sot)"
+msgstr "MSI paketë instalimi i sistemit (format i kapsulimit të të dhënave të Instaluesit të Windows i prezantuar nga Microsoft në vitin 1999. Si një specifikim standard i vendosjes së aplikacioneve në Windows, mbështet vendas kthimin e transaksioneve të nivelit të ulët, menaxhimin e ciklit jetësor të komponentëve dhe instalimin e heshtur pa përpunim grupi. Është standardi kryesor për shpërndarjen e centralizuar të softuerit në nivel ndërmarrje dhe vendosjen e politikave)"
 
 msgid "mime_pkg"
-msgstr "Paketë instalimi PKG (format i paketës së instalimit të aplikacioneve macOS, bazuar në teknologjinë Installer të Apple. Format standard i shpërndarjes së softuerit macOS, mbështet zgjedhjen e komponentëve, skriptet e instalimit, funksionin e çinstalimit. Klikimi i dyfishtë në skedarin .pkg për të instaluar, metodë e zakonshme shpërndarjeje për softuerin jashtë Mac App Store)"
+msgstr "PKG paketë instalimi softueri ndër-platformë. 1. Paketa softuerike FreeBSD: standardi pkgng, zgjerimi .pkg ose .txz, bazuar në ngjeshjen TAR+XZ/Zstd, mbështet zgjidhjen e varësive dhe verifikimin e nënshkrimit; 2. Paketa e instalimit macOS: bazuar në formatin e Instaluesit Apple, mbështet komponentë të personalizuar, skripta instalimi dhe çinstalim në nivel sistemi. Janë përkatësisht bartësit kryesorë të shpërndarjes për serverët BSD dhe sistemet Mac."
 
 msgid "mime_apk"
-msgstr "Paketë aplikacioni Android APK (lëshuar nga Google në 2008, format tradicional i instalimit për aplikacionet Android. APK është në thelb një paketë ZIP që përmban kod, burime, skedar manifesti. Nga viti 2021 Google Play kërkon që aplikacionet e reja të përdorin formatin AAB, por APK përdoret ende për zhvillim dhe korrigjim, dyqane të palëve të treta dhe instalim anësor)"
+msgstr "APK paketë aplikacioni Android (paketë tradicionale e instalimit të aplikacioneve e lëshuar nga Google së bashku me Android në vitin 2008. Bazuar në strukturën e arkivit ZIP, paketon kodin e përpiluar të bajtit Dalvik (DEX), manifestin e metatë dhënave dhe burimet globale. Tani përdoret gjerësisht për korrigjimin e zhvillimit lokal, shpërndarjen nga palët e treta dhe instalimin anësor në pajisje)"
 
 msgid "mime_ipa"
-msgstr "Paketë aplikacioni iOS IPA (Paketa e Dyqanit të Aplikacioneve iOS, format instalimi për aplikacionet iOS/iPadOS. Lëshuar në 2008 së bashku me iPhone SDK. Duhet të shpërndahet përmes App Store ose të nënshkruhet me një certifikatë ndërmarrjeje. Përmban skedar të ekzekutueshëm, burime, Info.plist dhe informacion nënshkrimi)"
+msgstr "IPA paketë aplikacioni Apple (kontejner i posaçëm paketimi për iOS/iPadOS i lëshuar së bashku me SDK-në e iPhone në vitin 2008. Në thelb, është një arkiv ZIP i mbrojtur nga DRM FairPlay ose nënshkrimi i kodit në nivel ndërmarrje, që përmban një skedar binar të ekzekutueshëm Mach-O, pemën e burimeve të aplikacionit dhe konfigurimin e metatë dhënave Info.plist)"
 
 msgid "mime_hap"
-msgstr "Paketë aplikacioni HarmonyOS HAP (Paketa e Aftësisë së HarmonyOS, njësia bazë e një aplikacioni HarmonyOS. Lëshuar në 2020 me HarmonyOS 2.0. Mbështet dy lloje: entry dhe feature, format shpërndarjeje për telefonat Huawei, tabletët, orët inteligjente dhe pajisje të tjera HarmonyOS)"
+msgstr "HAP paketë aplikacioni HarmonyOS (njësi themelore e vendosjes elastike të HarmonyOS e lëshuar së bashku me HarmonyOS 2.0 në vitin 2020. E përbërë nga moduli kryesor Entry ose modulet funksionale të zgjerimit Feature. Është formati kryesor i vendosjes me shumë skaje për shpërndarjen e terminaleve inteligjente në të gjitha skenarët ndër-skaje (telefonë, tableta, pajisje të veshshme))"
 
 msgid "mime_har"
-msgstr "Bibliotekë e përbashkët statike HarmonyOS HAR (Arkivi HarmonyOS, bibliotekë e përbashkët statike e HarmonyOS, mund të ndahet nga shumë paketa HAP, përdoret për zhvillim të bazuar në komponentë dhe ripërdorim të moduleve)"
+msgstr "HAR paketë e përbashkët statike HarmonyOS (skedar arkivi i bibliotekës së përbashkët statike pronësore e HarmonyOS. Përdoret për të kapsuluar komponentët e përbashkët, kodin e burimeve të nivelit të ulët dhe varësitë në kohën e përpilimit, të cilat lidhen statikisht dhe ndahen nga shumë module HAP. Është baza kryesore për zhvillimin e bazuar në komponentë dhe ripërdorimin e shumë moduleve të sistemit HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (lëshuar nga Google në 2018, nga viti 2021 Google Play kërkon që aplikacionet e reja të përdorin këtë format. AAB është një format shpërndarjeje, Google Play gjeneron APK të optimizuara sipas konfigurimit të pajisjes (arkitektura CPU, dendësia e ekranit, gjuha), madhësia e paketës së instalimit zvogëlohet mesatarisht 35%. Zhvilluesit ngarkojnë AAB, përdoruesit shkarkojnë APK)"
+msgstr "AAB paketë aplikacioni Android (format dinamik i shpërndarjes së Google Play i prezantuar nga Google në vitin 2018 dhe i vendosur në vitin 2021. Si një entitet i pastër shpërndarjeje, ai shkurtohet dhe përpilohet në mënyrë dinamike nga reja sipas arkitekturës së CPU-së, densitetit të ekranit dhe gjuhës së pajisjes synuese, duke gjeneruar APK të optimizuara sipas kërkesës. Ul koston e gjerësisë së brezit të transmetimit mesatarisht me 35%)"
 
 msgid "mime_xapk"
-msgstr "Paketë aplikacioni XAPK (paketë zgjerimi i aplikacioneve Android të palëve të treta, përmban APK + skedarë të dhënash OBB. Përdoret për lojëra të mëdha dhe aplikacione komplekse, zgjidh kufirin 100 MB për një skedar të vetëm APK. E zakonshme në dyqanet e aplikacioneve të palëve të treta si APKPure, APKMirror, nuk është format zyrtar i Google)"
+msgstr "XAPK paketë aplikacioni e zgjeruar (standard jozyrtar i zgjerimit të aplikacioneve i vendosur nga komuniteti Android i palëve të treta. Duke kapsuluar bashkërisht skedarin standard APK me paketën e zgjerimit të të dhënave të lojërave OBB shumë të madhe, ai thyen fizikisht kufirin e madhësisë së skedarit të pavarur prej 100 MB të Google Play. Shihet gjerësisht në platformat e shpërndarjes së lojërave)"
 
 msgid "mime_appx"
-msgstr "Paketë aplikacioni Windows (lëshuar nga Microsoft në 2012, format instalimi për aplikacionet Windows 8/10/11. Mbështet konvertimin e aplikacioneve UWP dhe desktop, shpërndahet përmes Microsoft Store. Në 2024 Microsoft prezantoi MSIX si format pasardhës, duke zëvendësuar gradualisht APPX)"
+msgstr "APPX paketë aplikacioni moderne (specifikim i vendosjes së aplikacioneve UWP i lëshuar nga Microsoft së bashku me Windows 8 në vitin 2012. Ka izolim në sandbox dhe veçori të lehta çinstalimi. Si një standard i hershëm dominues i Microsoft Store, në ekosistemin modern Windows ka hyrë në fazën përfundimtare të ciklit jetësor duke evoluar drejt MSIX)"
 
 msgid "mime_msix"
-msgstr "Paketë aplikacioni MSIX (lëshuar nga Microsoft në 2018, format i ri i paketimit të aplikacioneve për Windows. Kërkon avantazhet e APPX dhe MSI, mbështet të gjitha llojet e aplikacioneve Windows, mund të shpërndahet përmes Microsoft Store ose të instalohet anësisht, format i rekomanduar për Windows 11)"
+msgstr "MSIX paketë aplikacioni e gjeneratës së re (specifikim krejtësisht i ri i standardizuar i paketimit për Windows i lëshuar nga Microsoft në vitin 2018. Bashkon në mënyrë të përkryer veçoritë e sandbox-it të sigurisë së aplikacioneve të APPX me avantazhet e menaxhimit të aseteve në nivel ndërmarrje të MSI. Plotësisht i përputhshëm me të gjitha llojet e aplikacioneve Win32. Është standardi i rekomanduar i shpërndarjes për Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Paketë aplikacioni AppImage (lëshuar në 2004, format aplikacioni Linux pa instalim. \"Një aplikacion, një skedar\", nuk kërkon instalim, funksionon drejtpërdrejt, mbështet shumicën e shpërndarjeve të Linux-it, mënyrë e zakonshme që zhvilluesit të shpërndajnë softuer Linux)"
+msgstr "AppImage paketë aplikacioni pa instalim (specifikim i arkivit të vetëm të ekzekutueshëm për Linux i nisur në vitin 2004. Përdor një arkitekturë të vetë-mjaftueshme 'një aplikacion është një skedar'. Gjatë ekzekutimit, ai montohet direkt përmes mekanizmit FUSE si një sistem skedarësh virtual vetëm për lexim për t'u ekzekutuar, duke arritur përdorim të menjëhershëm pa varësi në të gjitha shpërndarjet Linux)"
 
 msgid "mime_flatpak"
-msgstr "Paketë aplikacioni Flatpak (lëshuar në 2015, format aplikacioni Linux i sandbox-uar. Funksionon nëpër shpërndarje, i izoluar nga sistemi pritës, i udhëhequr nga Fedora, Red Hat, format i paracaktuar i Qendrës së Softuerit GNOME)"
+msgstr "Flatpak paketë aplikacioni në sandbox (standard i shpërndarjes së aplikacioneve desktop ndër-shpërndarje Linux i udhëhequr nga Red Hat dhe GNOME në vitin 2015. Në nivel të ulët mbështetet në mekanizmat Namespace dhe Cgroups të bërthamës Linux për të arritur izolim jashtëzakonisht të rreptë të sandbox-it të sigurisë në nivel aplikacioni. Është baza e qendrave moderne të softuerit OS me burim të hapur)"
 
 msgid "mime_snap"
-msgstr "Paketë aplikacioni Snap (lëshuar nga Canonical në 2014, kompania mëmë e Ubuntu, format universal i aplikacioneve Linux. Përditësime automatike, izolim në sandbox, mbështet mbi 40 shpërndarje Linux, format i paracaktuar i Qendrës së Softuerit Ubuntu)"
+msgstr "Snap paketë aplikacioni e kontejnerizuar (standard universal i vendosjes për Linux i prezantuar nga Canonical, kompania mëmë e Ubuntu, në vitin 2014. Përdor një arkitekturë të vetë-mjaftueshme të montimit të imazhit SquashFS, mbështet përditësime automatike incrementale dhe izolim të rreptë të sandbox-it AppArmor. Është formati kryesor i paracaktuar i ekosistemit të Qendrës Softuerike të Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Paketë softuerike Debian (lëshuar nga projekti Debian në 1993, format standard i instalimit për Debian/Ubuntu dhe derivatet e tyre. Menaxhohet duke përdorur dpkg, APT është ndërfaqja e menaxherit të paketave, një nga formatet më të pjekura të paketave në ekosistemin Linux, ende kryesor në familjen Debian)"
+msgstr "DEB paketë softuerike sistemi (specifikim i kapsulimit të kodit binar dhe burimor i vendosur nga projekti Debian në vitin 1993. Si standardi themelor i instalimit për Debian, Ubuntu dhe të gjitha sistemet e tyre derivative, mbështetet në bërthamën dpkg për shpaketim dhe mirëmbajtje, duke përdorur APT si ndërfaqen e përparme efikase të menaxherit të paketave. Është baza më e pjekur e shpërndarjes së softuerit në ekosistemin Linux)"
 
 msgid "mime_rpm"
-msgstr "Paketë softuerike RPM (lëshuar nga Red Hat në 1997, format standard për shpërndarjet Red Hat/Fedora/CentOS/SUSE dhe të tjera. RPM qëndron për \"Red Hat Package Manager\", së bashku me DEB janë dy formatet e mëdha të paketave në Linux, ende kryesor në familjen RHEL)"
+msgstr "RPM paketë softuerike sistemi (specifikim i kapsulimit të menaxherit të paketave Red Hat i lëshuar nga Red Hat në vitin 1997. Së bashku me DEB, konsiderohet si një nga dy kampe të mëdha të menaxhimit tradicional të paketave Linux. Ka të integruar në mënyrë vendase kontrollin e varësive në nivel transaksioni dhe verifikimin themelor të nënshkrimit dixhital të softuerit. Ende është standardi absolut kryesor i shpërndarjes për ekosistemet e familjes Red Hat si RHEL, Fedora dhe CentOS)"
 
 msgid "mime_pacman"
-msgstr "Paketë softuerike Arch (lëshuar nga Arch Linux në 2002, format .pkg.tar.zst i përdorur nga menaxheri i paketave pacman. Bërthama e shpërndarjes rrotulluese Arch Linux, i njohur për thjeshtësinë dhe parimin KISS, AUR (Arch User Repository) është karakteristika e tij dalluese)"
+msgstr "Pacman paketë softuerike e arkivuar (format kapsulimi .pkg.tar.zst i vendosur nga Arch Linux së bashku me menaxherin pacman në vitin 2002. Si bërthama e mekanizmit të përditësimit rrotullues të Arch, bazuar në algoritmin e ngjeshjes së lartë me shpejtësi të lartë Zstandard, së bashku me ekosistemin AUR (Depoja e Softuerit të Përdoruesit Arch). Është një standard modern i shpërndarjes së paketave që mishëron parimet minimaliste dhe KISS)"
 
 msgid "mime_exe"
-msgstr "Skedar i ekzekutueshëm EXE (format i programit të ekzekutueshëm të Windows, shkurtim për \"Executable\". Format vendas i ekzekutueshëm i sistemit operativ Windows, përmban strukturën PE. Evoluar nga formati MZ i MS-DOS, në 1993 Windows NT prezantoi formatin PE (Portable Executable) dhe përdoret edhe sot. Paketat e instalimit të softuerit, aplikacionet, mjetet e sistemit përdorin këtë format. Përdoruesi klikon dy herë për ta ekzekutuar, formati më i përdorur i ekzekutueshëm në botë)"
+msgstr "EXE skedar i ekzekutueshëm vendas (format i programit binar Portativ i Ekzekutueshëm (PE) i platformës Windows. Teknologjikisht rrjedh nga struktura e kokës MZ nga epoka e MS-DOS, dhe që nga Windows NT i vitit 1993 u vendos plotësisht si specifikim i strukturës PE. Është standardi më i përdorur i ekzekutimit në botë për udhëzimet e kodit të makinës, segmentet e burimeve statike dhe nisjen e bërthamës së sistemit)"
 
 msgid "mime_dll"
-msgstr "Bibliotekë dinamike DLL (lëshuar nga Microsoft në 1993, Dynamic Link Library. Bibliotekë e përbashkët e kodit të Windows, ngarkohet në mënyrë dinamike gjatë ekzekutimit të programit, kursen memorie dhe hapësirë në disk. Komponentët e sistemit, shtojcat e aplikacioneve, drejtuesit përdorin formatin DLL. Mënyra kryesore e implementimit të API të Windows, problemi DLL Hell u zbut në epokën .NET)"
+msgstr "DLL bibliotekë dinamike lidhëse (specifikim i bibliotekës së kodit të përbashkët Dynamic Link Library i platformës Windows. Duke u ngarkuar në mënyrë dinamike dhe duke ripozicionuar simbolet gjatë ekzekutimit, kursen ndjeshëm memorien fizike dhe hapësirën në disk. Si forma kryesore e implementimit të API-së së Windows, problemi i saj i hershëm 'DLL Hell' u zhduk në kohët moderne përmes mekanizmit të izolimit paralel SxS)"
 
 msgid "mime_com"
-msgstr "Skedar i ekzekutueshëm COM (format i ekzekutueshëm nga epoka e MS-DOS, shkurtim për \"Command\". Strukturë e thjeshtë skedari, kufi 64 KB, format kryesor përpara Windows 3.x. I hequr, Windows modern përdor formatin EXE, zgjerimi COM përdoret ende për disa skedarë komponentësh)"
+msgstr "COM skedar klasik i ekzekutueshëm (formati më i vjetër i ekzekutimit të imazhit të memories (Command) nga epoka e MS-DOS. Përdor një dizajn të pastër të segmentit të kodit të pastrukturuar, i kufizuar në kufirin e sipërm të segmentit të adresimit të memories fizike prej 64 KB. Tani është pensionuar si një format historik i trashëguar, por në arkitekturën moderne të Windows përdoret ende si një ndërfaqe specifike komponentësh për përputhshmëri të kufizuar)"
 
 msgid "mime_aac"
 msgstr "Audio AAC (standard MPEG nga 1997, Advanced Audio Coding. Pasardhësi i MP3, cilësia e zërit superiore ndaj MP3 me të njëjtin bitrate, format i paracaktuar i audios për YouTube, iTunes, Nintendo Switch)"

@@ -458,8 +458,8 @@ msgstr "Hostitel - Počet stránek - Počet požadavků - Přenosová rychlost -
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Datum začátku poslední návštěvy] a [Poslední stránka poslední návštěvy] se ukládají pouze v případě, že relace neskončila"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Hlavní stránka zobrazuje pouze prvních %s položek s nejvyšším počtem požadavků. Úplný seznam naleznete na stránce s podrobnostmi."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Prvních %s položek je seřazeno podle počtu zásahů sestupně; pořadí zbývajících položek není definováno."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Přihlášený uživatel - Počet stránek - Počet požadavků - Přenosová rychlost - Čas poslední návštěvy"
@@ -473,8 +473,8 @@ msgstr "ID červa - Počet požadavků - Přenosová rychlost - Čas poslední n
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-mail - Počet požadavků - Přenosová rychlost - Čas poslední návštěvy"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Hlavní stránka zobrazuje pouze prvních %s e-mailových požadavků. Úplný seznam naleznete na stránce s podrobnostmi."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Prvních %s e-mailových adres je seřazeno podle počtu zásahů sestupně; pořadí zbývajících adres není definováno."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Počet stránek - Přenosová rychlost - Vstup - Výstup"
@@ -683,6 +683,27 @@ msgstr "Parametr SiteDomain není definován ve vašem konfiguračním souboru c
 msgid "Please run as Administrator to set permissions"
 msgstr "Spusťte jako správce pro nastavení oprávnění"
 
+msgid "This directory lacks read permission"
+msgstr "Aquest directori no té permís de lectura"
+
+msgid "Please set read permission for directory"
+msgstr "Si us plau, configureu el permís de lectura per al directori"
+
+msgid "Missing required parameter in config file"
+msgstr "Falta un paràmetre obligatori al fitxer de configuració"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Si us plau, comproveu que 'DirData' està definit."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Sembla que falta o és incomplet el nom de domini a l'adreça del navegador"
+
+msgid "Please check the URL parameter"
+msgstr "Si us plau, comproveu el paràmetre de l'URL"
+
+msgid "Format description"
+msgstr "Descripció del format"
+
 msgid "Please set execute permission"
 msgstr "Nastavte prosím oprávnění ke spuštění"
 
@@ -808,376 +829,379 @@ msgstr "Nástroj pro extrakci dat"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Textový soubor (standardizace ASCII v roce 1963, neformátovaný prostý text. Základ veškerého zdrojového kódu, konfigurací, logů. Unix používá LF, Windows CRLF pro nový řádek, dodnes nejběžnější formát dat v počítačích)"
+msgstr "TXT fitxer de text pla (text sense format estandarditzat per ASCII el 1963. Com a base del codi font, els fitxers de configuració i els registres del sistema, els salts de línia multiplataforma (CRLF a Windows, LF a Unix) continuen sent l'estàndard d'intercanvi de dades més universal del món informàtic)"
 
 msgid "mime_log"
-msgstr "Log soubor (prostý textový soubor zaznamenávající informace o provozu systému a aplikací, často používaný pro řešení problémů, analýzu výkonu, bezpečnostní audit. Standardní formáty jako Apache combined log, Nginx access log, syslog atd.)"
+msgstr "LOG registre del sistema (fitxer de text pla que registra l'estat d'execució del sistema operatiu, el nucli i les aplicacions. Inclou registres d'accés de Nginx/Apache (format Combined Log) i l'especificació syslog, és la font de dades clau per a la depuració, l'anàlisi de rendiment en flux i l'auditoria de seguretat)"
 
 msgid "mime_page"
-msgstr "HTML webová stránka (Tim Berners-Lee vynalezl World Wide Web v roce 1989, definoval tři hlavní technologie HTML/HTTP/URL v roce 1990, nabídl je zdarma bez patentu. HTML5 se stal oficiálním standardem W3C v roce 2014, podporuje zobrazení, multimédia a tisk. Oceněn Turingovou cenou v roce 2016)"
+msgstr "HTML pàgina web (creada el 1989 per Tim Berners-Lee, és el nucli fundacional de la web. Com a llenguatge de marcatge hipertext universal i gratuït, l'especificació HTML5 es va convertir en estàndard W3C el 2014, suporta multimèdia estructurat, interacció semàntica i maquetació en flux de manera nativa, va rebre el Premi Turing el 2016)"
 
 msgid "mime_khtml"
-msgstr "KHTML webový engine (vydán s KDE 2.0 v roce 1998, engine pro vykreslování prohlížeče Konqueror. Apple vytvořil WebKit založený na KHTML v roce 2001, Google vytvořil Blink z WebKitu v roce 2008, stal se jádrem prohlížečů Chrome, Edge, Safari. KHTML je příkladem toho, jak komunita s otevřeným zdrojovým kódem položila základy moderních prohlížečových engineů, jeho technologické dědictví pokračuje přes WebKit/Blink)"
+msgstr "KHTML motor de plantilles web (especificació del motor de renderització del navegador KDE 2.0 de 1998. Com a referència del programari lliure que va fonamentar el renderitzat web modern, el seu llegat tècnic va inspirar directament els nuclis WebKit d'Apple i Blink de Google, i encara perdura en l'arquitectura web dinàmica i fluidament actual)"
 
 msgid "mime_script"
-msgstr "Dynamický skript (interpretovaný jazyk, nevyžaduje kompilaci. Zahrnuje ASP, JSP, CGI, ColdFusion, Tcl, VBScript atd., široce používaný v raném vývoji webu, správě systému, automatizaci úloh. Moderní skriptovací jazyky jako Python, Ruby, JavaScript se vyvinuly v hlavní jazyky pro full-stack vývoj)"
+msgstr "SCRIPT script interpretat dinàmicament (fa referència al flux total de codi font que s'executa línia a línia per un intèrpret o entorn d'execució específic, sense necessitat de compilació prèvia. Inclou ASP, JSP, CGI i Tcl, s'utilitza àmpliament en interfícies comunes de passarel·la de servidor, control de processos d'automatització i integració de tasques a nivell de sistema)"
 
 msgid "mime_js"
-msgstr "JavaScript skript (Brendan Eich jej vytvořil za 10 dní v Netscape v roce 1995, nativní programovací jazyk prohlížeče. ECMAScript standardizován v roce 1997, zrod Node.js v roce 2009 z něj udělal full-stack jazyk, npm je největší správce balíčků na světě. Po léta nejpopulárnější programovací jazyk na GitHubu)"
+msgstr "JavaScript script (entorn de programació nadiu del navegador Netscape de 1995. El 1997 es va establir l'estàndard ECMAScript i el 2009 va nàixer l'entorn d'execució Node.js, que va trencar les fronteres del navegador i va crear l'arquitectura asíncrona no bloquejant de pila completa, acompanyat de l'ecosistema de programari npm, el més gran del món)"
 
 msgid "mime_py"
-msgstr "Python skript (vytvořen Guidem van Rossumem v roce 1991, známý povinným odsazením a jednoduchou syntaxí. Široce používán ve webovém vývoji, datové vědě, umělé inteligenci, automatizaci provozu. Vícenásobný držitel ceny TIOBE za programovací jazyk roku)"
+msgstr "Python script (llenguatge de script interpretat d'alt nivell creat per Guido van Rossum el 1991. Gràcies a la seua llegibilitat sense pèrdua gràcies al sagnat obligatori i al seu disseny de múltiples paradigmes, s'ha consolidat com el llenguatge estàndard per a l'arquitectura web moderna, la ciència de dades de pila completa, l'entrenament de models d'intel·ligència artificial (IA) i l'operació de sistemes cloud-native i automatització)"
 
 msgid "mime_sh"
-msgstr "Shell skript (zrod Unixu v roce 1971, skriptovací jazyk pro příkazy. Používá se pro správu systému, automatizaci úloh, spouštění služeb, nasazovací skripty. Nezbytná dovednost pro správu Linuxu)"
+msgstr "Shell script (script d'intèrpret d'ordres estàndard de l'era Unix de 1971. Inclou normes d'ordres a nivell de nucli com Bash, Sh, Dash, normalment amb el sufix .sh per a executar-se, és l'adhesiu de nucli universal per al control de processos en sistemes operatius Unix moderns, la configuració d'entorns sense instal·lació i el desplegament automatitzat)"
 
 msgid "mime_rb"
-msgstr "Ruby skript (vytvořen Yukihirem Matsumotem v roce 1995, zaměřený na štěstí vývojáře. Ruby on Rails rámec zavedl paradigma konvence místo konfigurace, ovlivňující design moderních webových rámců)"
+msgstr "Ruby script (llenguatge de script orientat a objectes creat per Yukihiro Matsumoto (Matz) el 1995. Amb una filosofia de disseny centrada en una experiència de desenvolupament excepcionalment respectuosa, el seu framework Ruby on Rails va revolucionar l'arquitectura web moderna d'alt nivell en establir el paradigma 'Convenció sobre configuració' (CoC))"
 
 msgid "mime_pl"
-msgstr "Perl skript (vytvořen Larry Wallem v roce 1987, známý pragmatismem, nazývaný 'švýcarský nůž'. CPAN byl průkopníkem moderních správců balíčků programovacích jazyků, s hlubokým vlivem na zpracování textu, správu systému a CGI)"
+msgstr "Perl script (llenguatge de script pragmàtic creat per Larry Wall el 1987. Pioner del gestor de paquets modern (CPAN), és conegut com la 'navalla suïssa' del processament de text. En el mode CGI modern, amb una despesa de memòria física extremadament baixa i un tractament eficient d'expressions regulars, actua com una base d'alta fiabilitat en l'anàlisi de registres)"
 
 msgid "mime_php"
-msgstr "PHP dynamická webová stránka (vytvořena Rasmusem Lerdorfem v roce 1995, navržena speciálně pro webový vývoj. Používá ji více než 70 % webových stránek na světě, pohání platformy jako WordPress, Facebook, Wikipedie. PHP 8 zavádí JIT kompilaci, výrazně zlepšuje výkon)"
+msgstr "PHP pàgina web dinàmica (creada per Rasmus Lerdorf el 1995 i dissenyada específicament per al desenvolupament web. Com a tecnologia central que impulsa més del 70% dels llocs web globals, és la base d'aplicacions de gran producció com WordPress i Wikipedia. A partir de PHP 8, amb la incorporació del motor d'execució just-in-time (JIT), ha evolucionat cap a un paradigma de servidor d'alt rendiment de pila completa)"
 
 msgid "mime_image"
-msgstr "Obrázkový soubor"
+msgstr "IMAGE actiu d'imatge (cobreix tot tipus d'imatge, com ara mapes de bits amb/sense pèrdua, gràfics web responsius moderns i vectors. És un indicador clau per avaluar la despesa de càrrega de recursos visuals d'un lloc, la taxa d'encerts de la memòria cau del client i el consum d'ample de banda multimèdia)"
 
 msgid "mime_document"
-msgstr "Dokumentový soubor"
+msgstr "DOCUMENT document estructurat (cobreix classificacions de text pla, fulls de càlcul, documents oficials (PDF) i llenguatges de marcatge lleuger. És un indicador clau per a l'estadística de distribució de bases de coneixement estàtiques del servidor, la descàrrega d'actius corporatius i la capacitat de flux de text d'entrada/eixida)"
 
 msgid "mime_package"
-msgstr "Softwarový balíček"
+msgstr "PACKAGE producte compilat i paquet de programari (cobreix els programes executables natius del sistema operatiu, les biblioteques d'enllaç en temps d'execució (DLL/SO) i els paquets d'instal·lació de distribució d'aplicacions. És un indicador clau per avaluar el trànsit de dades de sortida i els pics de descàrrega en llocs de distribució de programari)"
 
 msgid "mime_archive"
-msgstr "Gzip komprimovaný soubor (projekt GNU z roku 1992, založený na algoritmu DEFLATE. Na webu se používá pro dynamickou kompresi odpovědí, míra komprese je obvykle 60-90 %. Po roce 2015 byl v některých scénářích nahrazen Brotli, ale stále je nejrozšířenějším formátem komprese na straně serveru)"
+msgstr "ARCHIVE fitxer d'arxiu i compressió (fa referència genèrica als paquets de dades comprimits empaquetats mitjançant algorismes com DEFLATE o LZMA. A la capa de xarxa, a més de representar la distribució tradicional de paquets, també inclou els fluxos de resposta dinàmica Gzip del projecte GNU de 1992. Tot i que alguns entorns moderns incorporen gradualment l'algorisme Brotli, aquesta classificació continua sent un indicador clau per avaluar la taxa de rendiment de l'ample de banda del servidor i la reducció de pressió en la capa de transport)"
 
 msgid "mime_audio"
-msgstr "Zvukový soubor"
+msgstr "AUDIO flux d'àudio digital (classificació que engloba àudio comprimit, audiollibres i contenidors de flux d'àudio. Basat en estàndards específics de codificació d'àudio, s'utilitza per monitorar la taxa de rendiment del flux de dades d'àudio en llocs multimèdia, l'ample de banda concurrent de fluxos i el comportament de les connexions llargues)"
 
 msgid "mime_video"
-msgstr "Video soubor"
+msgstr "VIDEO flux de vídeo digital (classificació que engloba contenidors de vídeo d'alta definició, animacions web modernes i fragments de flux. És un indicador clau per avaluar el límit superior de l'ample de banda del servidor i l'efecte d'acceleració de les xarxes de distribució de continguts (CDN) en entorns de xarxa d'alta càrrega)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (vyvinul Brendan Eich v roce 1995)"
+msgstr "JScript script (implementació propietària d'enginyeria inversa desenvolupada per Microsoft el 1996 per a Internet Explorer 3.0. Com a competidor de l'JavaScript clàssic en l'amfitrió, va ser el motor central de l'Windows Script Host (WSH) i del backend d'ASP en els seus inicis)"
 
 msgid "mime_json"
-msgstr "JSON data (navrhl Douglas Crockford v roce 2001, lehký formát pro výměnu dat, faktický standard pro webová API)"
+msgstr "JSON dades estructurades (format d'intercanvi de dades serialitzat lleuger establert per Douglas Crockford el 2001. Basat en text amb parells clau-valor i estructures d'array, té una alta llegibilitat humana i propietats d'anàlisi en flux sense pèrdua, i és l'estàndard de facto per a les API web modernes, les arquitectures de microserveis i la interacció amb models grans de llenguatge)"
 
 msgid "mime_vbs"
-msgstr "VBScript (vyvinul Microsoft v roce 1996, Windows skriptovací jazyk, používaný pro ASP webové stránky a Windows administrační skripty. S popularizací PowerShellu a JavaScriptu se postupně vytrácí)"
+msgstr "VBScript script (variant de llenguatge de script llançada per Microsoft amb l'IE 3.0 el 1996. Va ser un motor clau per als llocs web dinàmics amb ASP primerenc i per a l'administració de sistemes Windows, però ha estat oficialment abandonat i eliminat en els nuclis més recents de Windows 11, per la qual cosa és una tecnologia històrica heretada)"
 
 msgid "mime_conf"
-msgstr "Konfigurační soubor (ukládá konfiguraci softwaru v textovém formátu, běžné formáty: INI, JSON, YAML, TOML, XML. Konfigurace Linux systému je většinou v adresáři /etc)"
+msgstr "CONF fitxer de configuració del sistema (classe de fitxer de dades que emmagatzema paràmetres d'entorn del programari en temps d'execució en format de text pla. Inclou especificacions INI, així com les modernes YAML, TOML i JSON. En els sistemes Linux, es concentren a la carpeta /etc i són una dependència clau per a l'optimització de l'estat d'execució del sistema)"
 
 msgid "mime_css"
-msgstr "CSS styl (W3C vydala první oficiální standard CSS1 v prosinci 1996, CSS2 přidal pozicování a typy médií v roce 1998, od roku 2011 modularizace CSS3 zavedla zaoblené rohy, animace, flexibilní box, mřížkový layout a responzivní design. Spolu s HTML a JavaScriptem tvoří tři hlavní front-end technologie, všechny moderní prohlížeče (Chrome, Firefox, Safari, Edge) jej nativně podporují, jediný standard pro definování stylu webových stránek)"
+msgstr "CSS full d'estil en cascada (estàndard W3C de 1996 que, juntament amb HTML i JS, forma els tres nuclis fonamentals del desenvolupament frontend. Ha evolucionat des del posicionament de CSS2 fins a la modularització de CSS3, i suporta de manera nativa el disseny responsiu amb Flexbox, Grid i consultes de mitjans, sent l'estàndard dominant per desacoblar la presentació de les pàgines web en els navegadors moderns)"
 
 msgid "mime_xsl"
-msgstr "XSL styl (standard W3C z roku 1999, jazyk pro transformaci XML dokumentů, může převést XML na HTML/PDF/text. Po popularizaci JSONu se jeho používání snížilo)"
+msgstr "XSL full d'estil (estàndard W3C de 1999 que inclou els llenguatges de transformació XSLT i de cerca XPath, per a representar dades XML estructurades com a HTML, PDF o text pla. En el desenvolupament modern, el seu ecosistema ha estat substituït en gran part per motors de plantilles més lleugers i el format de dades JSON)"
 
 msgid "mime_runtime"
-msgstr "Spustitelný soubor (spustitelný formát operačního systému jako EXE, ELF, Mach-O, obsahuje strojový kód a informace o načítání)"
+msgstr "fitxer executable (format executable natiu del sistema operatiu com EXE, ELF, Mach-O, que conté codi màquina compilat de baix nivell, el punt d'entrada i informació de càrrega del sistema)"
 
 msgid "mime_library"
-msgstr "Soubor knihovny (DLL, SO, dylib atd., dynamicky propojené knihovny, sdílený kód, který program načítá během provádění)"
+msgstr "fitxer de biblioteca (DLL, SO, dylib, etc., biblioteques dinàmiques o estàtiques que contenen símbols compartits i codi reubicable per a ser cridats per altres programes i carregats en temps d'execució)"
 
 msgid "mime_swf"
-msgstr "Flash animace (Macromedia ji vyvinula v roce 1996, později vlastnictví Adobe. Interaktivní standard webové animace, kdysi dominoval internetovým animacím a hrám. Nevýhody: vyžaduje plugin, nepodporováno na mobilních zařízeních, vysoké bezpečnostní riziko. Adobe oznámilo ukončení v roce 2017, zcela zastavilo podporu v roce 2020, nahrazeno HTML5/CSS3/JS)"
+msgstr "Flash animació (desenvolupada per Macromedia el 1996 i adquirida per Adobe el 2005. Va ser l'estàndard per a animacions i jocs interactius a la web. Inconvenients: dependència de connectors, manca de suport en mòbils i alt risc de seguretat. Adobe va anunciar la seua fi el 2017, va deixar de donar-li suport totalment el 2020 i ha estat substituïda per HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD definice typu dokumentu (specifikace XML, definuje strukturu XML dokumentu, používá se k ověření platnosti XML)"
+msgstr "DTD definició de tipus de document (publicada amb XML 1.0 el 1998, serveix per a definir l'estructura d'un document XML/HTML i validar-ne la legalitat. En el desenvolupament modern, ha estat substituït per alternatives més flexibles com XML Schema i RELAX NG)"
 
 msgid "mime_csv"
-msgstr "CSV formát dat (hodnoty oddělené čárkami, běžný tabulkový formát dat, standard pro import/export do Excelu a databází)"
+msgstr "CSV format de dades (valors separats per comes, un format de taula de text pla universal de l'era dels mainframes (compilador IBM Fortran de 1972). Va ser normalitzat oficialment pel RFC 4180 el 2005, com a estàndard d'intercanvi de dades sense pèrdua multiplataforma i multillenguatge. S'utilitza àmpliament per a l'importació i exportació eficients amb Excel, bases de dades relacionals i anàlisi de dades (Pandas))"
+
+msgid "mime_cur"
+msgstr "CURSOR fitxer de cursor (.cur, per a personalitzar l'estil del ratolí. Com ara el cursor de la mà en les pàgines web o la icona de rellotge de sorra d'espera del sistema. És 'parent' de la icona .ico comuna, però amb un 'punt calent' addicional que defineix la ubicació real on es fa clic. Història: introduït amb Windows 3.1 el 1992, va ser un component clau en l'era de la transició de la interfície de línia d'ordres a la interfície gràfica amb ratolí)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (spouštěč Java aplikací, technologie distribuce Java desktopových aplikací z 2000. let, nyní zastaralá)"
+msgstr "Java Web Start (tecnologia de distribució d'aplicacions d'escriptori Java dels anys 2000, que iniciaba programes remots amb fitxers .jnlp. A causa de problemes de seguretat i la popularització de formes de distribució modernes, està pràcticament obsoleta)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-kniha (Microsoft ji uvedl v roce 2000, LIT formát, zastaralý)"
+msgstr "Microsoft Reader llibre electrònic (llançat per Microsoft l'any 2000, format LIT. Obsolet, actualment es pot convertir a EPUB o PDF amb eines com Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vektorová grafika (standard W3C z roku 1999, kvůli dlouhodobému prosazování vlastního formátu VML Microsoftem, IE prohlížeč jej podporoval až do roku 2011, což zpozdilo jeho přijetí. Po roce 2015, s koncem IE a popularizací obrazovek s vysokým rozlišením, se stal preferovaným formátem pro ikony a loga)"
+msgstr "SVG gràfic vectorial (estàndard W3C de 1999, format d'imatge vectorial 2D basat en XML. Té avantatges com ara l'escala sense pèrdua i la transmissió de text en flux. Tots els navegadors moderns el suporten de manera nativa, i s'utilitza àmpliament per a icones, logotips i animacions vectorials d'alta definició en pàgines web, sent l'estàndard central dels gràfics web moderns)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektorová grafika (uvedena v roce 1987, průmyslový standardní vektorový grafický formát, preferovaný pro tiskový design, loga, ikony)"
+msgstr "AI gràfic vectorial (format de vector propietari desenvolupat per Adobe el 1987. És l'estàndard industrial clau per a la maquetació, el disseny d'impressió i el disseny d'identitat de marca, suporta múltiples capes i dades vectorials de maquetació avançada, i és el suport preferit per a l'art visual professional)"
 
 msgid "mime_phshop"
-msgstr "Photoshop obrázek (Adobe jej uvedla v roce 1990, zdrojový formát Photoshopu PSD, průmyslový standard pro zpracování obrazu)"
+msgstr "PSD imatge de capes (format de fitxer font de mapa de bits propietari llançat per Adobe amb Photoshop el 1990. Suporta múltiples capes, canals, màscares i dades d'edició sense pèrdua, i s'ha consolidat com l'estàndard industrial global per a l'edició d'imatges i la pintura digital)"
 
 msgid "mime_ttf"
-msgstr "TrueType písmo (Apple a Microsoft společně vyvinuli v roce 1989, formát vektorového písma, zobrazení na obrazovce a tisk konzistentní, výchozí formát písma moderních operačních systémů)"
+msgstr "TrueType font (format de contorn digital desenvolupat conjuntament per Apple i Microsoft el 1989. Basat en corbes de Bézier quadràtiques, aconsegueix una consistència absoluta de píxels entre la visualització en pantalla i la impressió, i és el format de font nadiu per defecte dels sistemes operatius d'escriptori moderns)"
 
 msgid "mime_fon"
-msgstr "WOFF2 webové písmo (doporučení W3C z roku 2014, používá kompresní algoritmus Brotli, ve srovnání se starším WOFF je objem menší asi o 30 %, ve srovnání s TTF/OTF menší o více než 50 %, v současnosti podporováno všemi moderními prohlížeči, preferovaný formát pro moderní webová písma, podporován více než 98 % prohlížečů)"
+msgstr "FON font de mapa de bits (format de punts a nivell de sistema dels inicis de Microsoft Windows a la dècada de 1980. No suporta l'escalat proporcional sense pèrdua, i normalment es limita a renderitzar text pixelat en sistemes heredats o components de dispositius encastats antics)"
 
 msgid "mime_pdf"
-msgstr "PDF dokument (Adobe jej vyvinula v roce 1993, stal se ISO standardem v roce 2008. Multiplatformní formát dokumentu, zachovává konzistenci formátování, globální standard pro distribuci elektronických dokumentů)"
+msgstr "PDF document electrònic (desenvolupat per Adobe el 1993 i convertit en estàndard internacional ISO 32000 el 2008. És un format de document de pàgina fixa multiplataforma amb una fidelitat absoluta de maquetació, i és l'estàndard universal per a la distribució de documents electrònics i la publicació digital)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dynamická stránka (Microsoft ji uvedl v roce 2002, technologie dynamických webových stránek na platformě Windows, součást .NET Frameworku)"
+msgstr "ASP.NET pàgina dinàmica (tecnologia de pàgines web dinàmiques del costat del servidor llançada per Microsoft amb l'arquitectura .NET el 2002. S'executa en el motor IIS per a construir aplicacions web dinàmiques i sistemes distribuïts empresarials al costat del servidor de Windows)"
 
 msgid "mime_mdb"
-msgstr "Access databáze (soubor databáze Microsoft Access, uveden v roce 1992, řešení desktopové databáze pro Windows)"
+msgstr "MDB base de dades relacional (format d'emmagatzematge de base de dades relacional de nivell d'escriptori llançat per Microsoft amb Access el 1992. Incorpora el motor de base de dades Jet, i va ser una solució de base de dades relacional en la informatització primerenca d'empreses petites i mitjanes i en ordinadors personals)"
 
 msgid "mime_md"
-msgstr "Markdown dokument (vytvořil John Gruber v roce 2004, design syntaxe ovlivněn reStructuredText a Setext. Základní designová filozofie je 'čitelnost znamená možnost vykreslení', původní implementace Markdown.pl používá Perlové regulární výrazy. Odvozené specifikace zahrnují GFM (2013), CommonMark (2017), Pandoc Markdown atd. Pohání ekosystémy jako GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, stává se standardním formátem pro generátory statických webů a dokumentaci vývojářů)"
+msgstr "Markdown document (llenguatge de marcatge lleuger creat per John Gruber el 2004. La seua filosofia de disseny principal és 'llegible és renderitzable', impulsant especificacions modernes com GFM i CommonMark. S'utilitza àmpliament com a estàndard d'intercanvi en documentació tècnica, bases de coneixement (Obsidian) i generadors de llocs web estàtics moderns)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports formát zprávy (SAP obchodní inteligence, standardní formát pro podnikové zprávy)"
+msgstr "Crystal Reports informe (format de fitxer d'informe professional a nivell empresarial de la plataforma SAP Business Intelligence (BI). Té capacitats de connexió a múltiples fonts de dades i de renderització de gràfics dinàmics complexos, i s'utilitza àmpliament per a la generació d'informes professionals en sistemes financers i d'anàlisi de dades d'empreses multinacionals)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice dokument (The Document Foundation vyvinula v roce 2010, větev OpenOffice, implementace standardu ODF, hlavní open source kancelářský balík)"
+msgstr "LibreOffice document (format propietari de la suite ofimàtica de codi obert basada en OpenOffice, fundada per The Document Foundation el 2010. Implementa en profunditat l'estàndard internacional ODF (OpenDocument Format) del W3C, i és el pilar ofimàtic de l'ecosistema de codi obert modern)"
 
 msgid "mime_encrypt"
-msgstr "Šifrovaný soubor (pro zobrazení je třeba dešifrovat, běžné přípony: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT fitxer xifrat (dades binàries o text originals processades mitjançant algorismes de xifratge específics, simètrics o asimètrics. Inclou els formats principals derivats .enc, .pgp, .gpg, etc., i s'utilitza a la capa de xarxa per a garantir la confidencialitat i la integritat de les dades no públiques)"
 
 msgid "mime_gpx"
-msgstr "GPS data trasy (formát pro výměnu GPS, zaznamenává geografické informace, běžný formát pro sportovní hodinky a navigační zařízení)"
+msgstr "GPX dades de traçat per satèl·lit (format d'intercanvi del sistema de posicionament global basat en XML. Està especialitzat en la descripció de coordenades geogràfiques, punts de ruta, línies de ruta i trajectes històrics, i és un estàndard de dades obert comú en dispositius esportius mòbils moderns, navegadors d'automòbil i sistemes d'informació geogràfica (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Diskový obraz (soubory obrazu disku/CD-ROM jako DMG, ISO, IMG, používají se k distribuci softwaru nebo zálohování paměťových médií)"
+msgstr "Disk Image imatge de disc (fitxer d'imatge de sectors de baix nivell d'un disc físic o òptic, que inclou ISO, DMG, IMG. S'utilitza per al desplegament de sistemes de baix nivell, la distribució segura de programari de gran volum i les còpies de seguretat completes a nivell físic dels mitjans d'emmagatzematge)"
 
 msgid "mime_vm"
-msgstr "Obraz virtuálního počítače (soubory virtuálního disku jako VMDK, VDI, VHDX, OVA, formáty pro virtualizační platformy jako VMware, VirtualBox, Hyper-V)"
+msgstr "VM imatge de màquina virtual (imatge de disc físic virtualitzat que inclou VMDK, VDI, VHDX, OVA. És la base de plataformes com VMware, VirtualBox i Hyper-V, i s'utilitza per a l'emulació de maquinari de baix nivell, instantànies d'instàncies i la distribució d'infraestructura al núvol)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent soubor (Bram Cohen jej vynalezl v roce 2001, indexový soubor pro P2P stahování, obsahuje metadata souboru a informace o Trackeru)"
+msgstr "BitTorrent fitxer torrent (índex de baixada distribuït peer-to-peer (P2P) dissenyat per Bram Cohen el 2001. Codificat amb Bencode, emmagatzema les metadades de verificació del fitxer original i la informació d'adreçament del servidor Tracker, i és el nucli de la distribució descentralitzada de fluxos en xarxa)"
 
 msgid "mime_gis"
-msgstr "GIS geografická data (geoprostorová data jako Shapefile, GeoJSON, používají se pro mapy a prostorovou analýzu)"
+msgstr "GIS dades geoespacials (estàndard de dades de sistemes d'informació geogràfica que té com a nuclis Shapefile i GeoJSON. Conté coordenades geomètriques multidimensionals, topologia de capes i dades d'atributs, i s'utilitza àmpliament per al renderitzat de mapes digitals d'alta precisió, la teledetecció per satèl·lit i l'anàlisi geomètrica espacial)"
 
 msgid "mime_ebook"
-msgstr "E-kniha (formáty e-knih jako EPUB, MOBI, AZW. EPUB je mezinárodní standard, MOBI/AZW jsou formáty pro Amazon Kindle)"
+msgstr "EBOOK llibre electrònic (format de publicació digital que té com a nuclis l'estàndard internacional obert EPUB del W3C i l'arquitectura propietària MOBI/AZW d'Amazon Kindle. Suporta maquetació en flux adaptable, encapsulació de metadades i protecció de drets d'autor digitals (DRM), i és el suport universal per a la lectura digital en dispositius mòbils)"
 
 msgid "mime_avif"
-msgstr "AVIF obrázek (uveden Alliance for Open Media v roce 2019, založen na kódování AV1, míra komprese o 50 % lepší než WebP, nový standard webových obrázků)"
+msgstr "AVIF imatge d'alta eficiència (estàndard d'imatge ultra alta definició de nova generació de l'Alliance for Open Media (AOMedia) de 2019. Basat en la tecnologia de fotogrames clau del codi de vídeo AV1, té una taxa de compressió un 50% millor que WebP i suport natiu per a alt rang dinàmic (HDR), i és l'estàndard principal per a la transmissió d'imatges web modernes)"
 
 msgid "mime_markdown"
-msgstr "Markdown dokument (navrhl John Gruber v roce 2004, odlehčený značkovací jazyk, běžný formát pro README na GitHubu, technickou dokumentaci, příspěvky na fórech)"
+msgstr "Markdown document lleuger (llenguatge de marcatge de documents de text pla creat per John Gruber el 2004. Utilitza un disseny declaratiu de text pla, la seua sintaxi va ser inspirada per reStructuredText, i s'utilitza àmpliament en projectes de GitHub, documentació tècnica a nivell d'enginyeria i en l'ecosistema modern de gestió de continguts estàtics)"
 
 msgid "mime_yaml"
-msgstr "YAML konfigurace (navrhl Clark Evans v roce 2001, člověkem čitelný formát pro serializaci dat, standard pro konfigurační soubory pro Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML configuració serialitzada (format de serialització de dades llegible per humans dissenyat per Clark Evans i altres l'any 2001. Basat en el sagnat jeràrquic i en el mapatge clau-valor, s'ha consolidat com l'estàndard de configuració per a infraestructures cloud-native com Kubernetes, automatització Ansible i Docker Compose)"
 
 msgid "mime_toml"
-msgstr "TOML konfigurace (navrhl Tom Preston-Werner v roce 2013, 'Tom's Obvious Minimal Language', formát konfiguračního souboru pro moderní nástroje jako Rust/Cargo, Python/pip, Go)"
+msgstr "TOML configuració semàntica (llenguatge minimalista dissenyat per Tom Preston-Werner el 2013. Té avantatges de disseny de baix nivell com ara tipatge fort, mapes explícits i semàntica clara, i ara s'utilitza àmpliament com a fitxer de configuració estandarditzat en les eines modernes de Rust (Cargo), Python (pyproject.toml) i Go)"
 
 msgid "mime_vue"
-msgstr "Soubor komponenty Vue (představeno Evanem You v roce 2014, progresivní JavaScript framework. Prostřednictvím jedno-souborových komponent (SFC) dokonale spojuje HTML, CSS a JS, čímž výrazně zvyšuje efektivitu vývoje. Je jedním z nejpopulárnějších frontend frameworků na světě. Zároveň jako jádro moderních generátorů statických stránek, jako je VitePress, je široce používán pro pohon interaktivní technické dokumentace a blogů.)"
+msgstr "Vue component de fitxer únic (format SFC propietari del framework web progressiu llançat per Evan You el 2014. Aconsegueix la separació de preocupacions d'HTML/CSS/JS i l'enllaç d'estats reactiu en un sol fitxer, impulsant en profunditat les aplicacions frontend web interactives modernes i els motors de llocs estàtics a gran escala)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly modul (standard W3C z roku 2017, vysoce výkonný formát pro spouštění v prohlížeči, C/C++/Rust/R lze kompilovat jako cíl, výkon blízký nativnímu)"
+msgstr "WebAssembly mòdul binari (estàndard de bytecode d'alt rendiment de baix nivell per a web establert pel W3C el 2017. Permet compilar llenguatges de tipatge fort com C/C++/Rust cap a l'entorn de sandbox del navegador, proporcionant una eficiència d'execució propera al maquinari nadiu, i és un nucli fonamental de l'edge computing web modern)"
 
 msgid "mime_jsx"
-msgstr "React JSX komponenta (Facebook uvedl JavaScript XML v roce 2013, syntaxe komponenty React frameworku, inovativní paradigma vnášející HTML do JavaScriptu)"
+msgstr "React JSX component (extensió de sintaxi de JavaScript XML llançada per Facebook amb el framework React el 2013. Suporta la construcció declarativa d'estructures DOM virtuals dins de JavaScript, aconseguint el paradigma de desenvolupament basat en components de 'Interfície d'Usuari com a funció de l'estat' al frontend)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX komponenta (vyvinul Microsoft v roce 2012, TypeScript + JSX, standardní způsob psaní pro typově bezpečný vývoj Reactu)"
+msgstr "TypeScript TSX component (combinació fluida del llenguatge TypeScript de tipatge fort, desenvolupat per Microsoft el 2012, amb JSX. Injecta comprovació de tipus estàtica en temps de compilació i restriccions d'interfície en el desenvolupament de components React, i és l'estàndard de codi per al desenvolupament segur de sistemes frontend a gran escala moderns)"
 
 msgid "mime_heif"
-msgstr "HEIF obrázek (standard MPEG z roku 2015, vysoce účinný formát obrazového souboru, široce používaný v ekosystému Apple)"
+msgstr "HEIF imatge d'alta eficiència (format d'imatge eficient establert per l'organització MPEG el 2015. Basat en l'algorisme de codificació de vídeo HEVC (H.265), suporta múltiples fotogrames d'imatge, mapes de profunditat i metadades en un volum molt reduït, i és l'estàndard d'emmagatzematge propietari dels sistemes operatius mòbils moderns i dels dispositius intel·ligents terminals)"
 
 msgid "mime_heic"
-msgstr "HEIC obrázek (Apple implementace HEIF, výchozí formát fotografií na iPhonu, nativně podporován na iOS/macOS)"
+msgstr "HEIC imatge d'alta eficiència (format de mapa de bits propietari implementat per Apple basat en l'estàndard internacional HEIF. És el format d'emmagatzematge de fotos per defecte de l'iPhone modern, compta amb suport de codificació/descodificació a nivell de maquinari en iOS/macOS i suport nadiu del sistema operatiu, i redueix dràsticament l'espai d'emmagatzematge de baix nivell mentre manté una alta qualitat d'imatge)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D model (GL přenosový formát, 'JPEG 3D světa', Khronos Group vydala v roce 2015, standardní formát pro Web 3D)"
+msgstr "glTF model d'actiu 3D (estàndard de format de transferència GL publicat per Khronos Group el 2015. Descriu escenes tridimensionals mitjançant una arquitectura JSON, és considerat el 'JPEG del món 3D', i és l'estàndard industrial lleuger per al renderitzat WebGL/WebGPU i la realitat virtual moderna)"
 
 msgid "mime_glb"
-msgstr "GLB binární 3D model (binární verze GLTF, jeden soubor obsahuje všechny prostředky, používá se pro distribuci 3D scén)"
+msgstr "GLB model 3D binari (versió d'encapsulació binària sense pèrdua de l'actiu de model glTF. Combina l'estructura de l'escena, les dades de vèrtex de la malla de baix nivell, els materials i les textures en un sol fitxer, dissenyat específicament per a la transmissió eficient i la distribució en flux d'actius 3D a la web multiplataforma)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY slovníček (soubor definic termínů, pro správu termínů v systémech dokumentace)"
+msgstr "GLOSSARY vocabulari de dades (fitxer de definició de termes especialment per a sistemes de gestió de documents i corpus estructurats. Inclou definicions de termes estàndard, correspondències multilingües i mapes de metadades, utilitzat per mantenir la consistència conceptual en l'anàlisi de text automatitzada i els sistemes de publicació de continguts)"
 
 msgid "mime_cbz"
-msgstr "CBZ komiks (komprimované obrázky komiksu pomocí ZIP, běžný formát pro sběratelství komiksů)"
+msgstr "CBZ còmic (format d'arxiu de còmic propietari basat en l'estructura de compressió ZIP. Conté una seqüència contínua d'imatges de mapa de bits estàtiques, i és un estàndard de contenidor lleuger comú per a la publicació de còmics digitals i la col·lecció local multiplataforma)"
 
 msgid "mime_cbr"
-msgstr "CBR komiks (komprimované obrázky komiksu pomocí RAR, běžný formát pro sběratelství komiksů)"
+msgstr "CBR còmic (format d'arxiu de còmic propietari basat en l'estructura de compressió RAR. Empra l'algorisme RAR per encapsular seqüències d'imatges de mapa de bits estàtiques, té una alta taxa de compressió i gaudeix d'un ampli suport de compatibilitat en l'àmbit de la distribució de còmics digitals)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-kniha (FictionBook 2.0, ruský formát e-knih, XML struktura, široce podporován čtečkami s otevřeným zdrojovým kódem)"
+msgstr "FB2 llibre electrònic (estàndard de llibre electrònic FictionBook 2.0 de principis dels anys 2000. Utilitza XML pur per a descriure les propietats del llibre i la jerarquia del text, i té un ampli suport en l'ecosistema de llibres electrònics de codi obert i en lectors de publicació digital heredats)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-kniha (speciální EPUB formát pro Kobo, optimalizovaný formát pro čtečku e-knih Kobo)"
+msgstr "KEPUB llibre electrònic (format de llibre electrònic propietari millorat de Kobo basat en l'estàndard EPUB. Optimitzat a nivell de baix nivell per al renderitzat en lectors de llibres electrònics amb maquinari Kobo, ofereix una maquetació de pàgina més eficient i interacció amb estadístiques de lectura)"
 
 msgid "mime_m4b"
-msgstr "M4B audiokniha (MPEG-4 audio formát pro knihy, podporuje záložky, formát audioknih iTunes)"
+msgstr "M4B audiollibre (format d'audiollibre basat en l'arquitectura de contenidor MPEG-4 Part 14 (MP4). Utilitza codificació AAC i suporta de manera nativa la inclusió de marcadors de posició de baix nivell, la reproducció contínua on es va deixar i la inserció de capítols, va ser el format estàndard de l'ecosistema Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX formát (Amazon uvedl v roce 2015, speciální formát e-knih pro Kindle, podporuje pokročilé rozvržení a rychlé listování stránek)"
+msgstr "Kindle KFX format (format de publicació digital propietari millorat llançat per Amazon amb el Kindle l'any 2015. Suporta maquetació avançada amb lligadures, renderització de fonts d'alt dinamisme i càrrega de pàgines en flux a nivell de nucli (Page Flip), i és l'estàndard central de la plataforma Kindle moderna)"
 
 msgid "mime_chm"
-msgstr "CHM soubor nápovědy (Microsoft uvedl v roce 1997, kompilovaný HTML formát nápovědy, standard pro dokumentaci nápovědy softwaru na Windows)"
+msgstr "CHM fitxer d'ajuda compilat (sistema d'ajuda d'informació HTML compilat llançat per Microsoft el 1997. Empaqueta les dades hipertext i els índexs de baix nivell en un únic contenidor binari, i ha estat l'estàndard per a la documentació d'ajuda local fora de línia del programari de Windows durant molt de temps)"
 
 msgid "mime_mht"
-msgstr "MHT webový archiv (Microsoft uvedl v roce 1999, formát webové stránky v jednom souboru, formát pro ukládání webových stránek prohlížeče IE)"
+msgstr "MHT arxiu web (format d'agregació hipertext MIME llançat per Microsoft el 1999. Basat en l'estàndard RFC 2557, empaqueta el codi font HTML, CSS, JS i les imatges incrustades en un sol fitxer de text, utilitzat per a guardar pàgines web fora de línia en navegadors heredats)"
 
 msgid "mime_wml"
-msgstr "WML bezdrátový značkovací jazyk (standard WAP z roku 1999, používaný pro webové stránky na starých mobilních telefonech, zastaralý)"
+msgstr "WML llenguatge de marcatge sense fil (estàndard de marcatge per a mòbils establert pel fòrum WAP (Wireless Application Protocol) l'any 1999. Basat en l'especificació XML, dissenyat especialment per a xarxes cel·lulars de banda estreta de primera generació i telèfons bàsics de baixa potència de càlcul, és una tecnologia heretada ja retirada en l'ecosistema web modern)"
 
 msgid "mime_xhtml"
-msgstr "XHTML webová stránka (standard W3C z roku 2000, XML verze HTML, přísnější syntaxe. W3C přestala udržovat v roce 2009, zaměřila se na HTML5)"
+msgstr "XHTML pàgina web (estàndard W3C de l'any 2000, és un llenguatge de marcatge hipertext estricte basat en l'arquitectura XML. El 2009, el W3C va aturar la seua evolució tècnica i va girar completament cap a l'especificació HTML5, i ara s'utilitza principalment per al renderitzat semàntic de pàgines web en sistemes heredats)"
 
 msgid "mime_xml"
-msgstr "XML dokument (standard W3C z roku 1998, rozšiřitelný značkovací jazyk, základní formát pro webové služby, konfigurační soubory, výměnu dat)"
+msgstr "XML document estructurat (llenguatge de marcatge extensible estàndard W3C de 1998. Té una arquitectura d'etiquetes autodescriptives, i és un format base fonamental per als serveis web (SOAP/REST), els fitxers de configuració del sistema (XSD) i l'intercanvi de dades multiplataforma)"
 
 msgid "mime_sgml"
-msgstr "SGML dokument (standard ISO z roku 1986, předchůdce HTML, standardní obecný značkovací jazyk, XML i HTML jsou odvozeny ze SGML)"
+msgstr "SGML llenguatge de marcatge general (estàndard internacional ISO 8879 de 1986. Va ser pioner en la descripció estructurada de documents electrònics, i tant XML com les primeres especificacions d'HTML deriven d'aquest metallenguatge estàndard)"
 
 msgid "mime_apng"
-msgstr "APNG animace (Mozilla vyvinula v roce 2004, animační rozšíření PNG, moderní náhrada za GIF, podporuje pravé barvy a průhlednost)"
+msgstr "APNG gràfic dinàmic (extensió dinàmica de PNG desenvolupada per Mozilla el 2004. Suporta color real de 24 bits i transparència de canal alfa de 8 bits, i és una alternativa d'alta qualitat al format GIF en escenaris web moderns)"
 
 msgid "mime_bmp"
-msgstr "BMP rastrový obrázek (Windows rastrový formát, nativně podporovaný od Windows 1.0. Ne komprimovaný, velká velikost souboru, ale kvůli jednoduché struktuře a nepotřebě dalších kodeků se stále používá ve Windows 11 nástroji pro vystřihování, v programu Malování, v ikonových zdrojích instalačních balíčků EXE/MSI, v souborech kurzorů a některých starších ovladačích. Při stejné kvalitě obrazu je velikost souboru asi 3-10krát větší než PNG. Ve většině případů byl nahrazen formáty PNG/JPEG, ale ekosystém Windows stále zachovává širokou kompatibilitu)"
+msgstr "BMP mapa de bits nadiu (format de mapa de bits independent del dispositiu de la plataforma Microsoft establert des de l'era de Windows 1.0. Utilitza compressió sense pèrdua i sense emmagatzematge, per la qual cosa el seu volum sol ser de 3 a 10 vegades més gran que PNG, però com que no necessita despesa de codificació/descodificació, encara s'incrusta àmpliament en els components centrals de Windows 11, les seccions de recursos d'EXE/MSI i els buffers gràfics de controladors heredats)"
 
 msgid "mime_cdr"
-msgstr "CDR vektorová grafika (specifický formát CorelDRAW, kanadská společnost Corel, software pro vektorový grafický design)"
+msgstr "CDR gràfic vectorial (format de fitxer font de disseny vectorial professional propietari de Corel Corporation, de CorelDRAW. Suporta gestió de color per capes, nodes de corba matemàtica complexos i dades tipogràfiques de nivell d'impressió, i és un format específic per als àmbits de disseny gràfic professional i publicitari)"
 
 msgid "mime_gif"
-msgstr "GIF obrázek (CompuServe vyvinul v roce 1987, 256barevný animovaný formát obrázku. Nevýhody: málo barev, hrubá kvalita obrazu, nepodporuje průhlednost, velký soubor, nízká snímková frekvence. Nahrazen moderními animovanými formáty jako APNG, WebP)"
+msgstr "GIF imatge de color indexat (format de mapa de bits de color indexat de 8 bits desenvolupat per CompuServe el 1987. Basat en l'algorisme LZW de baix nivell, està limitat a 256 nivells de color i transparència monocroma, i el seu volum és excessiu a altes freqüències de fotograma. Actualment està sent substituït gradualment per estàndards d'imatge animada moderns i eficients com APNG i WebP)"
 
 msgid "mime_ico"
-msgstr "ICO ikona (Windows formát ikon, podporuje více rozlišení, standardní formát pro favicon webových stránek)"
+msgstr "ICO icona de sistema (format d'encapsulació de recursos d'icona nadiu de Windows. Suporta la incrustació de múltiples variants d'imatge amb diferents resolucions de píxels i profunditats de color dins d'un sol contenidor, i és també l'estàndard de distribució comú per a l'identificador del lloc (Favicon) dels navegadors web moderns)"
 
 msgid "mime_jpeg"
-msgstr "JPEG obrázek (standard ISO z roku 1992, formát komprese se ztrátou pro fotografie, faktický standard pro fotografie na internetu)"
+msgstr "JPEG imatge comprimida (format d'imatge amb pèrdua, estàndard internacional ISO 10918 de 1992. Basat en l'algorisme de transformada de cosinus discreta (DCT), aconsegueix una alta ràtio de compressió mentre manté una qualitat excel·lent en imatges realistes, i és l'estàndard de fet absolut per a les fotografies estàtiques a Internet mundial)"
 
 msgid "mime_jpg"
-msgstr "JPEG obrázek (standard ISO z roku 1992, formát komprese se ztrátou pro fotografie, faktický standard pro fotografie na internetu)"
+msgstr "JPEG imatge comprimida (format d'imatge amb pèrdua, estàndard internacional ISO 10918 de 1992. Basat en l'algorisme de transformada de cosinus discreta (DCT), aconsegueix una alta ràtio de compressió mentre manté una qualitat excel·lent en imatges realistes, i és l'estàndard de fet absolut per a les fotografies estàtiques a Internet mundial)"
 
 msgid "mime_png"
-msgstr "PNG obrázek (doporučení W3C z roku 1996, podporuje pravé barvy a průhlednost, statická náhrada za GIF, standard pro bezeztrátové obrázky na internetu)"
+msgstr "PNG imatge sense pèrdua (estàndard de gràfics de xarxa portàtils recomanat pel W3C el 1996. Utilitza un algorisme de compressió sense pèrdua, suporta de manera nativa color real de 24 bits i transparència de canal alfa de 8 bits, i és una alternativa d'alta qualitat al GIF estàtic clàssic, sent l'estàndard de fet absolut per a les imatges de píxels sense pèrdua a Internet)"
 
 msgid "mime_ps"
-msgstr "PostScript soubor popisu stránky (Adobe jej uvedl v roce 1985, jazyk pro popis stránky, předchůdce PDF, používá se pro tisk a publikování)"
+msgstr "PostScript fitxer de descripció de pàgina (llenguatge de descripció de pàgina basat en pila llançat per Adobe l'any 1985. Com a predecessor tecnològic del format PDF, aconsegueix a baix nivell una representació de text i gràfics vectorials d'alta precisió independent del maquinari, i és l'estàndard fundacional en els àmbits de la impressió professional i la impressió làser)"
 
 msgid "mime_psb"
-msgstr "PSB velký dokument (Adobe Photoshop formát pro velmi velké obrázky, podporuje obří obrázky větší než 2 GB nebo 30000 pixelů)"
+msgstr "PSB document de capa gran (format d'encapsulació de fitxers font de mida ultra gran propietari d'Adobe Photoshop. Supera les limitacions d'adreçament intern de 2 GB de volum físic i 30.000 píxels del format PSD estàndard, i està especialitzat per a emmagatzemar actius d'art digital massius i de gran escala amb capes profundes i complexes)"
 
 msgid "mime_psd"
-msgstr "PSD obrázek (zdrojový soubor Adobe Photoshop, podporuje vrstvy, kanály, cesty, průmyslový standardní formát pro zpracování obrazu)"
+msgstr "PSD fitxer font de disseny de capes (format de contenidor d'enginyeria d'imatges per capes propietari d'Adobe Photoshop. Com a contenidor estàndard en la indústria del camp de les imatges gràfiques, encapsula de manera nativa l'arbre de representació de capes complet, canals de mapa de bits, màscares de retall vectorials i modes de mescla compostos, i suporta l'edició de dades completes sense pèrdua)"
 
 msgid "mime_webp"
-msgstr "WebP obrázek (Google vyvinul v roce 2010, webový formát obrázku, podporuje kompresi se ztrátou/bezeztrátovou a animaci, míra komprese je o 25-35 % lepší než PNG a o 25 % lepší než JPEG)"
+msgstr "WebP imatge d'alta eficiència (estàndard de codificació d'imatges web general llançat per Google el 2010. Derivat de la tecnologia de fotogrames clau de vídeo VP8, és perfectament compatible amb la renderització amb pèrdua, sense pèrdua, semitransparent i dinàmica, i redueix el volum en un 25-35% en comparació amb PNG a igual qualitat, sent el pilar fonamental per a la càrrega d'alt rendiment de les pàgines web modernes)"
 
 msgid "mime_woff"
-msgstr "WOFF webové písmo (vytvořeno v roce 2009, standard W3C z roku 2018. Komprimováno na základě TrueType/OpenType, optimalizováno pro načítání webových písem, standardní formát pro ikonová písma moderních webových stránek)"
+msgstr "WOFF fitxer de glifs web (format de font obert per a web creat l'any 2009 i convertit en estàndard W3C el 2012. La seua essència és empaquetar estructures de font estàndard TTF/OTF mitjançant una compressió sense pèrdua en flux, optimitzant dràsticament la despesa d'ample de banda de transmissió de la xarxa, i és el format comú per a les icones i fonts en núvol dels llocs web moderns)"
 
 msgid "mime_7z"
-msgstr "7z komprimovaný archiv (Igor Pavlov jej vyvinul v roce 1999, specifický formát programu 7-Zip. Algoritmus LZMA, vysoká míra komprese, open source a zdarma. Při stejné míře komprese je formát 7z obvykle o 30-50 % menší než ZIP, běžný formát v komunitě open source a pro distribuci softwaru)"
+msgstr "7z paquet comprimit (format propietari de 7-Zip desenvolupat per Igor Pavlov el 1999. Basat en els algorismes de codi obert LZMA/LZMA2, té una taxa de compressió molt alta. En condicions equivalents, el seu volum sol ser un 30-50% més reduït que el ZIP, i és el format d'alta relació de compressió comú en la comunitat de codi obert i en la distribució de programari)"
 
 msgid "mime_ace"
-msgstr "ACE komprimovaný archiv (vyvinut v 90. letech, formát programu WinACE. Kdysi konkuroval RAR, míra komprese byla poměrně vysoká. Vývoj zastaven v roce 2007, nyní nahrazen 7z/RAR, zřídka používaný)"
+msgstr "ACE paquet comprimit (format de compressió propietari de WinACE a la dècada de 1990. Va competir amb el format RAR i va tindre una alta taxa de compressió. Després de 2007, va deixar d'actualitzar-se tecnològicament i ara ha estat substituït pels formats 7z i RAR, pertanyent als formats d'arxiu de sistemes heredats)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 komprimovaný archiv (Julian Seward jej vyvinul v roce 1996, algoritmus komprese tříděním bloků. Míra komprese je o 15-20 % vyšší než GZIP, ale pomalejší. Běžný formát pro zdrojový kód Linux kernelu, balíčky open source softwaru, přípona .bz2)"
+msgstr "BZIP2 paquet comprimit (format de compressió per blocs desenvolupat per Julian Seward el 1996. La taxa de compressió del seu algorisme de baix nivell és un 15-20% superior a la de GZIP, però amb una despesa computacional més gran. S'utilitza sovint per a la distribució del codi font del nucli Linux i de paquets de programari de codi obert, i la seua extensió estàndard és .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB komprimovaný archiv (Microsoft jej vyvinul v roce 1995, formát Cabinet. Formát instalačního balíčku pro Windows, používá se pro ovladače, distribuci systémových souborů. Windows Installer (MSI) interně používá CAB pro ukládání souborů)"
+msgstr "CAB paquet comprimit (format d'arxiu Cabinet desenvolupat per Microsoft el 1995. És l'estàndard nadiu de paquets d'instal·lació del sistema Windows, utilitzat per a la distribució de controladors i components del nucli, i també és el contenidor d'emmagatzematge de baix nivell de Windows Installer (MSI))"
 
 msgid "mime_dmg"
-msgstr "DMG disk image (Apple jej uvedl v 80. letech, formát Disk Image. Standardní formát pro distribuci softwaru pro macOS, dvojitým kliknutím se připojí jako virtuální disk, přetažením se nainstaluje aplikace. Podporuje kompresi a šifrování, hlavní formát pro stahování softwaru pro Mac)"
+msgstr "DMG imatge de disc (format d'imatge de disc evolucionat per Apple a partir de la dècada de 1980. És un contenidor estàndard per a la distribució de programari a macOS, suporta el muntatge com a sistema de fitxers virtual, la compressió de baix nivell i el xifrat de dades, i és el format principal per a la distribució d'aplicacions a l'ecosistema Mac)"
 
 msgid "mime_emz"
-msgstr "EMZ komprimovaný obrázek (Windows komprimovaný rozšířený metafile, komprimovaná verze EMF. Formát ukládání vektorové grafiky v dokumentech Office, v podstatě je to EMF soubor komprimovaný GZIP)"
+msgstr "EMZ imatge comprimida (versió comprimida del metafitxer millorat de Windows EMF. És essencialment un gràfic vectorial binari comprimit mitjançant l'algorisme GZIP, i s'utilitza àmpliament per a l'emmagatzematge de gràfics vectorials incrustats a la suite Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "GZIP komprimovaný archiv (Jean-loup Gailly a Mark Adler vyvinuli v roce 1992, projekt GNU. Standardní nástroj pro kompresi na Unix/Linux, běžný formát pro kompresi HTTP přenosů. Přípona .gz, často se používá spolu s TAR)"
+msgstr "GZIP paquet comprimit (format de compressió de flux estàndard del projecte GNU desenvolupat per Jean-loup Gailly i Mark Adler el 1992. És l'eina de compressió estàndard a Unix/Linux, i també és l'estàndard central per a la compressió de la capa de transport HTTP (Gzip). Sovint s'utilitza juntament amb l'arxiu TAR)"
 
 msgid "mime_jar"
-msgstr "JAR komprimovaný archiv (Sun Microsystems jej uvedl v roce 1997, formát Java ARchive. V podstatě je to ZIP soubor, používá se k balení Java knihoven a aplikací. Hlavní formát ekosystému Java jako Maven, Gradle. Android také používá JAR)"
+msgstr "JAR paquet comprimit (format d'arxiu Java ARchive llançat per Sun Microsystems el 1997. És essencialment un contenidor d'empaquetat basat en l'estructura ZIP, utilitzat per a encapsular biblioteques de classes Java i metadades, i és el producte de compilació central per a Maven, Gradle i l'ecosistema primerenc d'Android)"
 
 msgid "mime_lzma"
-msgstr "LZMA komprimovaný archiv (Igor Pavlov jej vyvinul v roce 1998, algoritmus Lempel-Ziv-Markov chain. Hlavní kompresní algoritmus formátu 7z, vysoká míra komprese, rychlost dekomprese rychlá. Používá se pro distribuci firmwaru a softwaru pro vestavěné systémy)"
+msgstr "LZMA paquet comprimit (algorisme de compressió en cadena de Markov Lempel-Ziv-Markov desenvolupat per Igor Pavlov el 1998. És el motor central del format 7z, té una taxa de compressió extremadament alta i propietats de descompressió ràpida, i s'utilitza àmpliament per a la distribució de maquinari de firmware i sistemes encastats)"
 
 msgid "mime_rar"
-msgstr "RAR komprimovaný archiv (Eugene Roshal jej vyvinul v roce 1993, formát Roshal ARchive. Vysoká míra komprese, podporuje rozdělený archiv a záznamy pro obnovu. Formát programu WinRAR, míra komprese je lepší než ZIP, ale vyžaduje placený software, open source nástroje jako unrar mohou dekomprimovat)"
+msgstr "RAR paquet comprimit (format d'arxiu propietari de WinRAR desenvolupat per Eugene Roshal el 1993. Suporta volums dividits, registres de recuperació física (ECC) i xifratge d'alta intensitat. La seua taxa de compressió és superior a la del ZIP estàndard, i gaudeix d'un ampli suport de compatibilitat en els àmbits personal i empresarial)"
 
 msgid "mime_tar"
-msgstr "TAR archiv (Unix V7 jej zavedl v roce 1979, formát Tape ARchive. Páskový archiv, pouze balí bez komprese, často se používá společně s GZIP/BZIP2/XZ. Zdrojový kód balíčků Linuxu, ukládání vrstev Docker obrazů používá formát TAR)"
+msgstr "TAR arxiu empaquetat (format d'arxiu de cinta de l'era Unix V7 (1979). Només realitza l'empaquetat del flux de fitxers sense compressió de dades, sovint es combina amb GZIP/BZIP2/XZ, i és l'estàndard de baix nivell per al codi font de Linux i l'emmagatzematge per capes de les imatges de Docker)"
 
 msgid "mime_tgz"
-msgstr "TGZ komprimovaný archiv (kombinovaný formát TAR + GZIP, přípona .tgz nebo .tar.gz. Nejběžnější formát pro distribuci balíčků Unix/Linux, balíčky zdrojového kódu, binární balíčky, široce používaný, představitel 'rozbal a používej')"
+msgstr "TGZ paquet comprimit (format combinat en flux d'arxiu TAR i compressió GZIP, amb extensió .tgz o .tar.gz. És el format de distribució de programari més comú en entorns Unix/Linux, i s'utilitza àmpliament en el desplegament mitjançant compilació del codi font i en la distribució de paquets binaris sense necessitat d'instal·lació)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 komprimovaný archiv (kombinovaný formát TAR + BZIP2, přípona .tbz2 nebo .tar.bz2. Míra komprese o 15-20 % vyšší než TGZ, vhodný pro distribuci velkých souborů, Linux kernel dlouhodobě používal tento formát)"
+msgstr "TBZ2 paquet comprimit (format combinat en flux d'arxiu TAR i compressió BZIP2, amb extensió .tbz2 o .tar.bz2. En comparació amb TGZ, pot millorar la taxa de compressió en un 15-20% addicional, és adequat per a la transmissió de fitxers grans i va ser utilitzat durant molt de temps per a la distribució del codi font del nucli Linux)"
 
 msgid "mime_xz"
-msgstr "XZ komprimovaný archiv (představen v roce 2009, založen na algoritmu LZMA2. Extrémně vysoká míra komprese, o 30-50 % lepší než GZIP, rychlost dekomprese relativně rychlá. Linux kernel, správci balíčků (jako uvnitř .deb Debianu) jej široce používají, doporučený formát v současném Linux ekosystému)"
+msgstr "XZ paquet comprimit (format d'alta relació de compressió de nova generació llançat l'any 2009. Basat en l'algorisme LZMA2, la seua taxa de compressió de dades és un 30-50% superior a la de GZIP, mantenint una descompressió ràpida. Ha estat establert com a estàndard de distribució recomanat pel nucli Linux i els gestors de paquets principals (com ara l'interior de .deb de Debian))"
 
 msgid "mime_z"
-msgstr "Z komprimovaný archiv (formát příkazu Unix compress z roku 1985, algoritmus LZW. Starý Unixový formát komprese, nahrazený GZIP. Přípona .Z, moderní systémy jej používají zřídka)"
+msgstr "Z paquet comprimit (format de compressió LZW de la comanda compress de Unix l'any 1985. Va ser l'estàndard de compressió estàndard en els primers sistemes Unix, però ara ha estat completament substituït pel format GZIP, molt més eficient, i és un format històric heretat rar en el trànsit de xarxa modern)"
 
 msgid "mime_zip"
-msgstr "ZIP komprimovaný archiv (Phil Katz jej vyvinul v roce 1989, formát PKZIP. Windows nativně podporuje, nejběžnější formát komprese na internetu. Podporuje více souborů, strukturu adresářů, lze vybrat kompresní algoritmus. JAR od Javy, APK od Androidu, DOCX/XLSX od Office dokumentů jsou založeny na formátu ZIP)"
+msgstr "ZIP paquet comprimit (format d'arxiu universal PKZIP desenvolupat per Phil Katz el 1989. Té suport nadiu dels principals sistemes operatius, i és l'estàndard de contenidor més àmpliament utilitzat a Internet. El JAR de Java modern, l'APK d'Android i els documents d'Office (OOXML) es basen en l'estructura ZIP)"
 
 msgid "mime_zst"
-msgstr "Zstandard komprimovaný archiv (Facebook jej vyvinul v roce 2015, navrhl Yann Collet. Algoritmus komprese s vysokou rychlostí, míra komprese blízká LZMA, rychlost daleko převyšuje GZIP. Linux kernel 5.9+ podporuje, Arch Linux pacman, Debian APT postupně zavádějí, nová generace standardu komprese)"
+msgstr "Zstandard paquet comprimit (estàndard de compressió en flux de nova generació dissenyat per Yann Collet de Facebook l'any 2015. S'acosta a la taxa de compressió de LZMA mentre té un rendiment molt superior al de GZIP. Ha estat profundament adoptat pel nucli Linux (5.9+) i pels gestors de paquets d'Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "LZ4 komprimovaný archiv (Yann Collet jej vyvinul v roce 2011, extrémně rychlý kompresní algoritmus. Rychlost komprese je více než 10krát rychlejší než GZIP, vhodný pro scénáře komprese v reálném čase. Linux kernel, OpenZFS, Hadoop jej široce používají, první volba pro scénáře, kde je rychlost prioritou)"
+msgstr "LZ4 paquet comprimit (algorisme de compressió en flux ultra ràpid desenvolupat per Yann Collet l'any 2011. La seua velocitat de rendiment és més de 10 vegades superior a la de GZIP, amb una despesa de CPU extremadament baixa en temps d'execució. S'utilitza àmpliament en el nucli Linux, el sistema de fitxers OpenZFS i el processament de fluxos de dades en temps real d'Hadoop)"
 
 msgid "mime_lzo"
-msgstr "LZO komprimovaný archiv (Markus Oberhumer jej vyvinul v roce 1996, algoritmus Lempel-Ziv-Oberhumer. Rychlost dekomprese je extrémně rychlá, míra komprese je průměrná. Linux kernel Squashfs, firmware OpenWrt jej používají, vhodný pro vestavěné systémy)"
+msgstr "LZO paquet comprimit (algorisme Lempel-Ziv-Oberhumer desenvolupat per Markus Oberhumer l'any 1996. Es centra en un rendiment de descompressió ultra ràpida. S'incrusta àmpliament en les imatges Squashfs del nucli Linux, el firmware d'OpenWrt i en diversos sistemes encastats amb recursos limitats)"
 
 msgid "mime_msi"
-msgstr "MSI instalační balíček (Microsoft jej uvedl v roce 1999, Windows Installer formát balíčku. Standardní formát instalace aplikací pro Windows, podporuje vrácení transakcí, správu komponent, tichou instalaci. První volba pro distribuci softwaru na podnikové úrovni, dodnes hlavní formát pro instalaci softwaru na Windows)"
+msgstr "MSI paquet d'instal·lació de sistema (format d'encapsulació de dades de Windows Installer llançat per Microsoft el 1999. Com a estàndard de desplegament a nivell d'aplicació de Windows, suporta de manera nativa la reversió de transaccions de baix nivell, la gestió del cicle de vida dels components i la instal·lació silenciosa sense lots, i és l'estàndard central per a la distribució centralitzada de programari empresarial i el desplegament basat en polítiques)"
 
 msgid "mime_pkg"
-msgstr "PKG instalační balíček (macOS formát instalačního balíčku aplikací, založený na technologii Installer od Apple. Standardní formát pro distribuci softwaru pro macOS, podporuje výběr komponent, instalační skripty, funkci odinstalace. Dvojitým kliknutím na soubor .pkg se nainstaluje, běžný způsob distribuce softwaru mimo Mac App Store)"
+msgstr "PKG paquet d'instal·lació de programari multiplataforma. 1. Paquet de programari de FreeBSD: estàndard pkgng, amb extensió .pkg o .txz, basat en compressió TAR+XZ/Zstd, suporta resolució de dependències i verificació de signatures; 2. Paquet d'instal·lació de macOS: basat en el format Apple Installer, suporta components personalitzables, scripts d'instal·lació i desinstal·lació a nivell de sistema. Són els principals formats de distribució en servidors BSD i en el sistema Mac."
 
 msgid "mime_apk"
-msgstr "APK balíček aplikací pro Android (představený Googlem v roce 2008, tradiční formát instalace aplikací pro Android. APK je v podstatě ZIP balíček obsahující kód, zdroje a manifestový soubor. Od roku 2021 vyžaduje Google Play, aby nové aplikace používaly formát AAB, ale APK se stále používá pro ladění, obchody třetích stran a boční instalaci)"
+msgstr "APK paquet d'aplicació Android (paquet d'instal·lació d'aplicacions tradicional llançat per Google amb Android l'any 2008. Està basat en l'estructura d'arxiu ZIP de baix nivell, empaqueta el bytecode Dalvik (DEX) després de la compilació, el manifest de metadades i els recursos globals, i ara s'utilitza àmpliament per a la depuració i el desenvolupament local, la distribució per tercers i la instal·lació lateral en dispositius)"
 
 msgid "mime_ipa"
-msgstr "IPA balíček aplikací pro iOS (iOS App Store Package, formát instalace aplikací pro iOS/iPadOS. Představený v roce 2008 spolu se sadou iPhone SDK. Musí být distribuován prostřednictvím App Store nebo podepsán podnikovým certifikátem. Obsahuje spustitelný soubor, zdroje, Info.plist a informace o podpisu)"
+msgstr "IPA paquet d'aplicació Apple (contenidor exclusiu per a iOS/iPadOS llançat amb l'iPhone SDK l'any 2008. Essencialment és un ZIP protegit per DRM FairPlay o signat amb certificat de nivell empresarial, que conté l'executable binari Mach-O, l'arbre de recursos de l'aplicació i la configuració de metadades Info.plist)"
 
 msgid "mime_hap"
-msgstr "HAP balíček aplikací pro HarmonyOS (HarmonyOS Ability Package, základní jednotka aplikace HarmonyOS. Představený v roce 2020 s HarmonyOS 2.0. Podporuje dva typy: entry a feature, distribuční formát pro telefony Huawei, tablety, chytré hodinky a další zařízení HarmonyOS)"
+msgstr "HAP paquet d'aplicació HarmonyOS (unitat bàsica de desplegament elàstic de HarmonyOS llançada amb HarmonyOS 2.0 l'any 2020. Està format per un mòdul principal d'entrada o mòduls de funcionalitat ampliada, i és el format de desplegament multiplataforma multifinal (telèfons, tauletes, dispositius portàtils) per a la distribució en escenaris de tot el dispositiu)"
 
 msgid "mime_har"
-msgstr "HAR statická sdílená knihovna HarmonyOS (HarmonyOS Archive, statická sdílená knihovna HarmonyOS, může být sdílena více balíčky HAP, používá se pro vývoj založený na komponentách a opakované použití modulů)"
+msgstr "HAR paquet compartit estàtic de HarmonyOS (fitxer d'arxiu de biblioteca compartida estàtica propietària de HarmonyOS. S'utilitza per a encapsular components comuns, codi font de recursos i dependències en temps de compilació, és enllaçat estàticament per múltiples mòduls HAP per a ser compartit, i és la base per al desenvolupament basat en components i la reutilització de mòduls múltiples al sistema HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google jej uvedl v roce 2018, od roku 2021 Google Play nařizuje nové aplikace používat tento formát. AAB je formát pro distribuci, Google Play generuje optimalizované APK podle konfigurace zařízení (architektura CPU, hustota obrazovky, jazyk), velikost instalačního balíčku se v průměru snižuje o 35 %. Vývojáři nahrávají AAB, uživatelé stahují APK)"
+msgstr "AAB paquet d'aplicació Android (format de distribució dinàmica de Google Play llançat per Google l'any 2018 i establert l'any 2021. Com a entitat de distribució pura, el núvol retalla i compila dinàmicament segons l'arquitectura de la CPU del dispositiu objectiu, la densitat de pantalla i l'idioma per a generar APK optimitzats sota demanda, reduint de mitjana un 35% la despesa d'ample de banda de transmissió)"
 
 msgid "mime_xapk"
-msgstr "XAPK aplikační balíček (rozšiřující balíček aplikací pro Android třetích stran, obsahuje APK + OBB datové soubory. Používá se pro velké hry a složité aplikace, řeší limit 100 MB pro jeden APK soubor. Běžný v obchodech s aplikacemi třetích stran jako APKPure, APKMirror, není oficiální formát Google)"
+msgstr "XAPK paquet d'aplicació estès (estàndard d'aplicació no oficial establert per la comunitat de tercers d'Android. Empaqueta conjuntament el fitxer APK estàndard amb el fitxer de dades del joc OBB de gran grandària, superant físicament el límit de 100 MB de volum de fitxer independent de Google Play, i es veu àmpliament en plataformes de distribució de jocs)"
 
 msgid "mime_appx"
-msgstr "Windows aplikační balíček (Microsoft jej uvedl v roce 2012, formát instalace aplikací pro Windows 8/10/11. Podporuje UWP aplikace a konverzi desktopových aplikací, distribuuje se přes Microsoft Store. V roce 2024 Microsoft uvedl MSIX jako nástupce, postupně nahrazuje APPX)"
+msgstr "APPX paquet d'aplicació modern (estàndard de desplegament d'aplicacions UWP llançat per Microsoft amb Windows 8 l'any 2012. Té característiques d'execució en entorn de sandbox i desinstal·lació lleugera, i va ser l'estàndard dominant en els inicis de Microsoft Store, però en l'ecosistema Windows modern ha entrat en una fase final del seu cicle de vida cap a l'evolució MSIX)"
 
 msgid "mime_msix"
-msgstr "MSIX aplikační balíček (Microsoft jej uvedl v roce 2018, nová generace formátu pro balení Windows aplikací. Kombinuje výhody APPX a MSI, podporuje všechny typy Windows aplikací, lze distribuovat přes Microsoft Store nebo boční instalací, doporučený formát pro Windows 11)"
+msgstr "MSIX paquet d'aplicació de nova generació (estàndard d'empaquetat nou i completament normalitzat publicat per Microsoft l'any 2018. Fusiona perfectament les característiques de sandbox de seguretat d'APPX amb els avantatges de gestió d'actius empresarials de MSI, és completament compatible amb tots els tipus d'aplicacions Win32, i és l'estàndard de distribució recomanat per a Windows 11)"
 
 msgid "mime_appimage"
-msgstr "AppImage aplikační balíček (představen v roce 2004, Linuxový formát aplikace bez instalace. 'Jedna aplikace - jeden soubor', běží přímo bez instalace, podporuje většinu Linuxových distribucí, běžný způsob, jak vývojáři distribuují Linux software)"
+msgstr "AppImage paquet d'aplicació autònom (estàndard d'arxiu executable únic de Linux iniciat l'any 2004. Adopta una arquitectura autònoma d''una aplicació és un fitxer', que en temps d'execució es munta directament com a sistema de fitxers virtual de només lectura mitjançant el mecanisme FUSE, aconseguint una execució immediata zero dependències en múltiples distribucions de Linux)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak aplikační balíček (představen v roce 2015, Linuxový formát aplikace v sandboxu. Funguje napříč distribucemi, izolován od hostitelského systému, vývoj vedený Fedorou a Red Hat, výchozí formát centra softwaru GNOME)"
+msgstr "Flatpak paquet d'aplicació en sandbox (estàndard de distribució d'aplicacions d'escriptori multiplataforma per a Linux desenvolupat per Red Hat i GNOME l'any 2015. A baix nivell, es basa en els mecanismes Namespace i Cgroups del nucli Linux per a aconseguir un aïllament de seguretat en sandbox extremadament estricte a nivell d'aplicació, i és la base dels centres de programari de sistemes operatius de codi obert moderns)"
 
 msgid "mime_snap"
-msgstr "Snap aplikační balíček (Canonical jej uvedl v roce 2014, mateřská společnost Ubuntu vyvinula, univerzální Linuxový formát aplikace. Automatická aktualizace, izolace v sandboxu, podporuje 40+ Linuxových distribucí, výchozí formát centra softwaru Ubuntu)"
+msgstr "Snap paquet d'aplicació en contenidor (estàndard de desplegament universal de Linux llançat per Canonical, empresa matriu d'Ubuntu, l'any 2014. Adopta una arquitectura de muntatge d'imatge SquashFS autònoma, suporta actualitzacions incrementals automatitzades i un aïllament estricte en sandbox mitjançant AppArmor, i és el format predeterminat de l'ecosistema del centre de programari d'Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Debian softwarový balíček (projekt Debian jej uvedl v roce 1993, standardní instalační formát pro Debian/Ubuntu a jejich odvozeniny. Spravuje se pomocí dpkg, APT je jeho front-end správce balíčků, jeden z nejzralejších formátů balíčků v Linux ekosystému, dodnes hlavní v rodině Debian)"
+msgstr "DEB paquet de programari de sistema (estàndard d'empaquetat binari i de codi font establert pel projecte Debian l'any 1993. És l'estàndard d'instal·lació de baix nivell per a Debian, Ubuntu i tots els seus derivats, es basa en dpkg per al desempacat i manteniment, i utilitza APT com a gestor de paquets d'alt rendiment. És el pilar de distribució de programari més madur de l'ecosistema Linux)"
 
 msgid "mime_rpm"
-msgstr "RPM softwarový balíček (Red Hat jej uvedl v roce 1997, standardní formát pro distribuce jako Red Hat/Fedora/CentOS/SUSE. RPM je zkratka pro 'Red Hat Package Manager', spolu s DEB tvoří dva hlavní formáty balíčků Linuxu, dodnes hlavní v rodině RHEL)"
+msgstr "RPM paquet de programari de sistema (estàndard d'empaquetat del gestor de paquets de Red Hat llançat per Red Hat l'any 1997. Juntament amb DEB, són els dos grans llinatges de gestors de paquets tradicionals de Linux. Incorpora de manera nativa la comprovació de dependències basada en transaccions i la verificació de signatures digitals de programari de baix nivell, i encara és l'estàndard de distribució absolutament predominant en els ecosistemes de Red Hat, com ara RHEL, Fedora i CentOS)"
 
 msgid "mime_pacman"
-msgstr "Arch softwarový balíček (Arch Linux jej uvedl v roce 2002, formát .pkg.tar.zst, který používá správce balíčků pacman. Jádro Arch Linux rolling release distribucí, známý svou jednoduchostí a principem KISS, AUR (Arch User Repository) je jeho charakteristickým rysem)"
+msgstr "Pacman paquet de programari d'arxiu (format d'empaquetat .pkg.tar.zst establert per Arch Linux amb el gestor pacman l'any 2002. Com a nucli del mecanisme de rodament continu d'Arch, es basa en l'algorisme d'alta compressió i alta velocitat Zstandard, juntament amb l'ecosistema AUR (Repositori d'Usuaris d'Arch), és un estàndard de distribució de paquets modern que reflecteix els principis de simplicitat i KISS)"
 
 msgid "mime_exe"
-msgstr "EXE spustitelný soubor (Windows spustitelný formát programu, zkratka 'Executable'. Nativní spustitelný formát operačního systému Windows, obsahuje PE strukturu. Vyvinul se z MZ formátu z MS-DOS éry, Windows NT zavedl formát PE (Přenosný spustitelný) v roce 1993 a používá se dodnes. Instalační balíčky softwaru, aplikace, systémové nástroje používají tento formát. Uživatel dvakrát klikne a spustí jej, nejrozšířenější spustitelný formát na světě)"
+msgstr "EXE fitxer executable natiu (format de programa binari Portable Executable (PE) de la plataforma Windows. La seua evolució tècnica prové de l'estructura capçalera MZ de l'era MS-DOS, i es va consolidar completament com a estructura PE a partir de Windows NT el 1993. És l'estàndard d'execució més àmpliament utilitzat al món per a instruccions de codi màquina, seccions de recursos estàtics i arrencada del nucli del sistema)"
 
 msgid "mime_dll"
-msgstr "DLL dynamicky propojená knihovna (Microsoft ji zavedl v roce 1993, Dynamic Link Library. Sdílená knihovna kódu Windows, program se dynamicky načítá během provádění, šetří paměť a místo na disku. Systémové komponenty, zásuvné moduly aplikací, ovladače používají formát DLL. Hlavní způsob implementace Windows API, problém 'DLL peklo' byl zmírněn v .NET éře)"
+msgstr "DLL biblioteca d'enllaç dinàmic (estàndard de biblioteca de codi compartit Dynamic Link Library de la plataforma Windows. Mitjançant la càrrega dinàmica i la reubicació de símbols en temps d'execució, estalvia moltíssima memòria física i espai de disc. Com a forma d'implementació principal de les API de Windows, el primerenc problema de l'Infern de DLL es va solucionar modernament amb el mecanisme d'aïllament paral·lel SxS)"
 
 msgid "mime_com"
-msgstr "COM spustitelný soubor (spustitelný formát z éry MS-DOS, zkratka 'Command'. Velmi jednoduchá struktura souboru, omezení 64KB, hlavní formát před Windows 3.x, zastaralý. Moderní Windows používají formát EXE, přípona COM se stále používá pro některé soubory komponent)"
+msgstr "COM executable clàssic (format d'execució d'imatge de memòria més antic de l'era MS-DOS. Utilitza un disseny de segment de codi pur sense estructura, limitat al límit de cerca de memòria física de 64KB. Ara està retirat com a format històric heretat, però en l'arquitectura moderna de Windows encara es manté una compatibilitat limitada com a interfície de components específics)"
 
 msgid "mime_aac"
 msgstr "AAC zvuk (standard MPEG z roku 1997, Advanced Audio Coding. Nástupce MP3, kvalita zvuku lepší než MP3 při stejné bitové rychlosti, výchozí zvukový formát YouTube, iTunes, Nintendo Switch)"

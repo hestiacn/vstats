@@ -450,8 +450,8 @@ msgstr "Ostalaria - Orrialde kopurua - Eskaera kopurua - Bandzabalera - Azken bi
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Azken bisitaren hasiera ordua] eta [Azken bisitaren azken orrialdea] saioa amaitu ez bada soilik gordetzen dira"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Hasiera-orrian eskaera gehien dituzten lehen %s elementuak soilik erakusten dira. Zerrenda osoa ikusteko, ikus xehetasun orria."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Lehen %s elementuak bisita kopuruaren arabera ordenatzen dira beheranzko ordenan; gainerako elementuen ordena ez dago definituta."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Saioa hasitako erabiltzailea - Orrialde kopurua - Eskaera kopurua - Bandzabalera - Azken bisitaren ordua"
@@ -465,8 +465,8 @@ msgstr "Harraren ID - Eskaera kopurua - Bandzabalera - Azken bisitaren ordua"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "Posta elektronikoa - Eskaera kopurua - Bandzabalera - Azken bisitaren ordua"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Hasiera-orrian eskaera gehien dituzten lehen %s posta elektronikoak soilik erakusten dira. Zerrenda osoa ikusteko, ikus xehetasun orria."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Lehen %s helbide elektronikoak bisita kopuruaren arabera ordenatzen dira beheranzko ordenan; gainerako helbideen ordena ez dago definituta."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Orrialde kopurua - Bandzabalera - Sarrera - Irteera"
@@ -675,6 +675,27 @@ msgstr "SiteDomain parametroa ez dago zure config/domain fitxategian definituta,
 msgid "Please run as Administrator to set permissions"
 msgstr "Exekutatu Administratzaile gisa baimenak ezartzeko"
 
+msgid "This directory lacks read permission"
+msgstr "Direktorio honek irakurtzeko baimena falta du"
+
+msgid "Please set read permission for directory"
+msgstr "Mesedez, ezarri irakurtzeko baimena direktorioarentzat"
+
+msgid "Missing required parameter in config file"
+msgstr "Beharrezko parametroa falta da konfigurazio-fitxategian"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Mesedez, egiaztatu 'DirData' definituta dagoela."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Nabigatzailearen helbidean domeinu-izena falta dela edo osatugabea dela dirudi"
+
+msgid "Please check the URL parameter"
+msgstr "Mesedez, egiaztatu URLa parametroa"
+
+msgid "Format description"
+msgstr "Formatuaren deskribapena"
+
 msgid "Please set execute permission"
 msgstr "Ezarri exekuzio-baimena, mesedez"
 
@@ -800,376 +821,379 @@ msgstr "Biltzailea"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Testu fitxategia (1963ko ASCII estandarizazioa, formatu gabeko testu arrunta. Kode iturri, konfigurazio, log guztien oinarria. Unix-ek LF erabiltzen du, Windows-ek CRLF lerro hausturarako, oraindik ordenagailuetako datu formatu unibertsalena)"
+msgstr "TXT testu lauko fitxategia (1963an ASCIIk estandarizatutako formatu gabeko testu laua. Iturburu-kode, konfigurazio-fitxategi eta sistema-erregistro guztien azpiko oinarri gisa, bere plataforma anitzeko lerro-jauzien kontrol-fluxuak (CRLF Windows-en, LF Unix-en) ordenagailu-munduko datu-trukaketa estandar unibertsalena izaten jarraitzen du)"
 
 msgid "mime_log"
-msgstr "Log fitxategia (sistemaren eta aplikazioen funtzionamenduari buruzko informazioa biltzen duen testu fitxategia, arazoak konpontzeko, errendimenduaren analisirako eta segurtasun auditoretzarako erabiltzen da. Formatu estandarrak Apache kombinatu log, Nginx sarbide log, syslog, etab.)"
+msgstr "LOG sistema-exekuzioaren erregistroa (sistema eragilearen, nukleoaren eta aplikazioen mailako uneko egoerak testu lau gisa erregistratzen ditu. Nginx/Apache sarbide-erregistroak (Combined Log) eta syslog estandarra hartzen ditu barne, arazoak konpontzeko, errendimenduaren analisia egiteko eta segurtasun-auditetarako datu-iturri nagusia da)"
 
 msgid "mime_page"
-msgstr "HTML web orria (Tim Berners-Leek World Wide Web asmatu zuen 1989an, HTML/HTTP/URL hiru teknologia nagusiak definitu zituen 1990ean, dohainik eman zituen patentatu gabe. HTML5 W3C estandar ofizial bihurtu zen 2014an, bistaratzeko, multimedia eta inprimatzeko gaitasuna du. 2016ko Turing Saria)"
+msgstr "HTML hiper testuko web orria (Tim Berners-Leek 1989an sortua, World Wide Web-eko oinarria. Doako sarbidea duen hiper testuko markatze-lengoaia unibertsal gisa, HTML5 zehaztapena 2014an W3Cren estandar ofizial bihurtu zen, multimedia egituratua, elkarrekintza semantikoa eta orriaren diseinu malekorra modu naturalean onartzen ditu, 2016an Turing Saria jaso zuen)"
 
 msgid "mime_khtml"
-msgstr "KHTML web motorra (KDE 2.0 1998an kaleratua, Konqueror nabigatzailearen errendatze motorra. Applek 2001ean WebKit sortu zuen KHTML-en oinarrituta, eta Googlek 2008an Blink sortu zuen WebKit-tik, Chrome, Edge, Safari nabigatzaileen bihotz bihurtuz. KHTML adibide bat da open source komunitateak nola jarri zituen aro modernoko nabigatzaileen motorren oinarriak, eta bere ondare teknologikoa WebKit/Blink bidez jarraitzen du gaur arte)"
+msgstr "KHTML web txantiloi-motorra (1998ko KDE 2.0 nabigatzailearen errendatze-motorraren zehaztapena. Web errendatze modernoaren oinarriak jarri zituen kode irekiko erreferentzia gisa, bere ondare teknologikoak zuzenean inspiratu zituen Apple-ren WebKit eta Google-ren Blink nukleoak, eta gaur egungo web arkitektura dinamiko eta malekorretan bere azpiko hariak jarraitzen du)"
 
 msgid "mime_script"
-msgstr "Script hizkuntza dinamikoa (interpretatutako hizkuntza, ez da konpilatu behar. ASP, JSP, CGI, ColdFusion, Tcl, VBScript, etab. barne hartzen ditu, web garapen goiztiarrean, sistema administrazioan, zereginen automatizazioan erabili zen. Gaur egungo script hizkuntzak, Python, Ruby, JavaScript adibidez, full-stack garapenaren tresna nagusi bihurtu dira)"
+msgstr "SCRIPT interpretatutako gidoi dinamikoa (aurretiko konpilaziorik gabe exekuzio-ingurune edo interprete espezifiko batek lerroz lerro exekutatzen duen iturburu-kodearen fluxuen kategoria orokorra. ASP, JSP, CGI eta Tcl hartzen ditu barne, erabilia zerbitzari aldeko interfazeetan, automatizazio prozesuen kontrolean eta sistema mailako zereginen loturan)"
 
 msgid "mime_js"
-msgstr "JavaScript scripta (Brendan Eich-ek sortu zuen 10 egunetan Netscape-n 1995ean, nabigatzailearen jatorrizko programazio hizkuntza. ECMAScript estandarizatu zen 1997an, Node.js jaio zen 2009an plataforma-anitzeko hizkuntza bihurtuz, npm munduko pakete kudeatzailerik handiena da. GitHub-eko programazio hizkuntza ezagunena urteetan)"
+msgstr "JavaScript gidoia (1995eko Netscape nabigatzailearen programazio-ingurune natiboa. 1997an ECMAScript industria-estandarra ezarri zen, 2009an Node.js exekuzio-ingurunea jaio zen, nabigatzailearen mugak hautsi eta pila osoko arkitektura asinkrono ez-blokeatzailea sortuz, munduko npm software-paketeen ekosistemarik handiena lagun)"
 
 msgid "mime_py"
-msgstr "Python scripta (Guido van Rossum-ek sortu zuen 1991n, koskaren derrigortasunagatik eta sintaxi sinpleagatik ezaguna. Web garapenean, zientzia datuetan, adimen artifizialean, administrazio automatizazioan erabiltzen da. TIOBE Urteko Programazio Hizkuntza Sariaren hainbat aldiz irabazlea)"
+msgstr "Python gidoia (1991n Guido van Rossumek sortutako goi-mailako interpretatutako gidoi-lengoaia. Koskaren derrigortasunak ematen duen irakurgarritasun galerarik gabeari eta diseinu paradigma anitzari esker, web arkitektura modernorako, pila osoko datu-zientziarako, adimen artifizialeko (AI) modeloak entrenatzeko eta hodei-nativeko automatizazio operazioetarako hizkuntza estandar bihurtu da)"
 
 msgid "mime_sh"
-msgstr "Shell scripta (Unix 1971n jaio zen, komando lerroko hizkuntza. Sistema administraziorako, zereginen automatizaziorako, zerbitzuak abiarazteko, hedapen scriptetarako erabiltzen da. Linux administraziorako beharrezko trebetasuna)"
+msgstr "Shell gidoia (1971ko Unix aroko komando-interprete estandarraren gidoia. Bash, Sh, Dash bezalako nukleo mailako komandoak ditu, normalean .sh luzapenarekin exekutatzen da, Unix antzeko sistema eragile modernoetan prozesu-kontrolerako, instalaziorik gabeko ingurune-konfiguraziorako eta hedapen automatizaturako nukleo mailako itsasgarri unibertsala da)"
 
 msgid "mime_rb"
-msgstr "Ruby scripta (Yukihiro Matsumoto-k sortu zuen 1995ean, garatzaileen zoriontasunean zentratua. Ruby on Rails framework-ak konbentzioa konfigurazioaren aurretik eredua sortu zuen, web framework modernoen diseinuan eragina izan duena)"
+msgstr "Ruby gidoia (1995ean Yukihiro Matsumotok sortutako objektuetara bideratutako gidoi-lengoaia. Garatzailearen esperientziarekiko errespetu muturrekoa duen diseinu-filosofiarekin, Ruby on Rails-ek web arkitektura modernoa irauli zuen 'Konbentzioa Konfigurazioaren gainetik (CoC)' paradigma ezarriz)"
 
 msgid "mime_pl"
-msgstr "Perl scripta (Larry Wall-ek sortu zuen 1987an, praktikotasunagatik ezaguna, 'Suitzako ganibeta' deitua. CPAN programazio hizkuntzen pakete kudeatzaile modernoen aitzindaria da, testu tratamenduan, sistema administrazioan eta CGI-n eragin handia izan duena)"
+msgstr "Perl gidoia (1987an Larry Wall-ek sortutako gidoi-lengoaia pragmatikoa. Pakete-kudeatzaile modernoaren (CPAN) aitzindari gisa, testu-prozesamenduaren 'Suitzako labana' gisa ezagutzen da. CGI modu modernoan, memoria fisikoaren kontsumo oso baxuarekin eta adierazpen erregularren tratamendu eraginkorrarekin, erregistroen analisirako oinarri fidagarri gisa aritzen da)"
 
 msgid "mime_php"
-msgstr "PHP web orri dinamikoa (Rasmus Lerdorf-ek sortu zuen 1995ean, web garapenerako bereziki diseinatua. Munduko web orrialdeen %70ak erabiltzen du, WordPress, Facebook, Wikipedia bezalako plataformak bultzatzen ditu. PHP 8-k JIT konpilazioa sartzen du, errendimendua nabarmen hobetuz)"
+msgstr "PHP web orri dinamikoa (Rasmus Lerdorfek 1995ean sortua, web garapenerako bereziki diseinatua. Munduko webguneen %70a baino gehiago bultzatzen duen teknologia nagusia gisa, WordPress eta Wikipedia bezalako ekoizpen-aplikazio handien oinarria da. PHP 8-tik aurrera, JIT (just-in-time) exekuzio-motorraren sarrerarekin, errendimendu handiko pila osoko zerbitzari arkitektura batera eboluzionatu du)"
 
 msgid "mime_image"
-msgstr "Irudi fitxategia"
+msgstr "IMAGE irudi aktiboen sailkapena (galerarekin/galerarik gabeko bitmap konprimituak, web grafiko erantzunkor modernoak eta bektore-grafikoak hartzen ditu barne. Gune baten baliabide bisualen karga, bezeroaren aldetiko cachearen eraso-tasa eta multimedia sareko banda-zabaleraren kontsumoa ebaluatzeko funtsezko adierazlea)"
 
 msgid "mime_document"
-msgstr "Dokumentu fitxategia"
+msgstr "DOCUMENT dokumentu egituratuen sailkapena (testu laua, kalkulu-orriak, PDF formatuko dokumentu ofizialak eta markatze-lengoaia arinak hartzen ditu barne. Zerbitzari aldeko ezagutza-base estatikoen banaketa, enpresa-aktiboen deskarga eta testu-fluxuaren iragazteko ahalmena estatistikatzeko funtsezko adierazlea)"
 
 msgid "mime_package"
-msgstr "Software paketea"
+msgstr "PACKAGE produktu konpilatuen eta software-paketeen sailkapena (sistema eragilearen jatorrizko programa exekutagarriak, exekuzio-denborako lotura-liburutegiak (DLL/SO) eta aplikazioen banaketarako instalazio-paketeak hartzen ditu barne. Softwarea banatzeko guneetan irteerako trafikoa eta deskarga-pikoak ebaluatzeko erabiltzen da sarri)"
 
 msgid "mime_archive"
-msgstr "Gzip konprimitutako fitxategia (GNU proiektua 1992, DEFLATE algoritmoan oinarritua. Web-en erantzunen konpresio dinamikorako erabiltzen da, konpresio tasa %60-90 izaten da. 2015 ondoren, Brotli-k ordezkatu zuen zenbait agertokitan, baina zerbitzari aldean formatuik zabalduena izaten jarraitzen du)"
+msgstr "ARCHIVE artxibatutako eta konprimitutako fitxategiak (DEFLATE, LZMA bezalako oinarrizko algoritmoetan oinarritutako datu-konpresio paketeen kategoria orokorra. Sare mailan, paketeen banaketa tradizionalaz gain, GNU proiektuak 1992ko Gzip erantzun-fluxu dinamikoak ere hartzen ditu barne. Brotli algoritmoa pixkanaka sartzen ari bada ere agertoki moderno batzuetan, sailkapen honek zerbitzariaren banda-zabaleraren iragazkortasuna eta garraio geruzako konpresioaren eraginkortasuna ebaluatzeko funtsezko adierazle izaten jarraitzen du)"
 
 msgid "mime_audio"
-msgstr "Audio fitxategia"
+msgstr "AUDIO audio-fluxu digitalaren sailkapena (audio konprimitua, audio-liburuak eta audio edukiontziak hartzen ditu barne. Audio-codec estandar zehatzetan oinarrituta, multimedia guneetan audio-datu-fluxuaren iragazkortasuna, aldi bereko banda-zabalera eta konexio luzeen portaera kontrolatzeko erabiltzen da)"
 
 msgid "mime_video"
-msgstr "Bideo fitxategia"
+msgstr "VIDEO bideo-fluxu digitalaren sailkapena (definizio handiko bideo-edukiontziak, web animazio modernoak eta zatiak hartzen ditu barne. Sare-karga handiko baldintzetan zerbitzariaren banda-zabaleraren muga eta CDNren azelerazioaren eraginkortasuna ebaluatzeko funtsezko adierazlea)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (Brendan Eich-ek garatua 1995ean)"
+msgstr "JScript gidoia (1996an Microsoft-ek Internet Explorer 3.0rako garatutako alderantzizko ingeniaritzako jabetzako inplementazioa. JavaScript klasikoaren lehiakide goiztiar gisa, Windows Script Host (WSH) eta ASP atzeko aldeetako motor nagusia izan zen)"
 
 msgid "mime_json"
-msgstr "JSON datuak (Douglas Crockford-ek proposatua 2001ean, datu trukerako formatu arina, Web API-etako de facto estandarra)"
+msgstr "JSON datu egituratuak (2001ean Douglas Crockfordek ezarritako datu-serializazio trukaketa formatu arina. Testuan oinarritutako gako-balio pareetan eta egitura matrizeetan oinarrituta, giza irakurgarritasun handia eta galerarik gabeko fluxuaren analisiaren ezaugarriak ditu, web API moderno, mikrozerbitzu arkitektura eta hizkuntza-eredu handiekin elkarreraginerako de facto estandarra da)"
 
 msgid "mime_vbs"
-msgstr "VBScript (Microsoft-ek garatua 1996an, Windows script hizkuntza, ASP web orri eta Windows administrazio scriptetarako erabilia. PowerShell eta JavaScript ezagunagoak bihurtzearekin batera, pixkanaka baztertua izan da)"
+msgstr "VBScript gidoia (Microsoft-ek IE 3.0-rekin 1996an kaleratutako gidoi-lengoaia aldaera. ASP webgune dinamiko goiztiarretan eta Windows sistemaren kudeaketan funtsezko gidaria izan zen, baina orain ofizialki baztertuta eta Windows 11-ko azken nukleoetatik kenduta dago, teknologia historiko ondareari dagokio)"
 
 msgid "mime_conf"
-msgstr "Konfigurazio fitxategia (softwarearen konfigurazioa testu forman gordetzen du, formatu arruntak: INI, JSON, YAML, TOML, XML. Linux sistemako konfigurazioak /etc direktorioan daude)"
+msgstr "CONF sistema-konfigurazio fitxategia (softwarearen exekuzio-ingurunearen parametroak testu lau gisa gordetzen dituzten datu-fitxategien kategoria orokorra. INI eta YAML, TOML, JSON estandar modernoak hartzen ditu barne. Linux sisteman, normalean /etc direktorioan daude, sistema mailako uneko egoeraren doikuntzarako mendekotasun nagusia)"
 
 msgid "mime_css"
-msgstr "CSS estilo orria (W3C-ren lehen estandar ofiziala CSS1 1996ko abenduan argitaratu zen, CSS2-k kokapena eta media motak gehitu zituen 1998an, 2011tik aurrera CSS3 modularki sartu zen ertz biribilduak, animazioak, flexbox, sareko diseinua eta diseinu moldakorrarekin. HTML eta JavaScript-ekin batera, frontend-aren hiru teknologia nagusiak osatzen dituzte, nabigatzaile moderno guztiek (Chrome, Firefox, Safari, Edge) jatorriz onartzen dute, web estiloak definitzeko estandar bakarra da)"
+msgstr "CSS kaskadako estilo-orria (1996ko W3C estandarra, HTML/JS-ekin batera frontend garapenaren hiru nukleoak osatzen ditu. CSS2-ren kokapenetik CSS3-ren modularizaziora eboluzionatuz, Flexbox, Grid eta media queries-ekin diseinu erantzunkorra modu naturalean onartzen ditu, nabigatzaile modernoetan web orrien aurkezpena deskonbinatzeko estandar nagusia da)"
 
 msgid "mime_xsl"
-msgstr "XSL estilo orria (W3C estandarra 1999, XML dokumentuak eraldatzeko hizkuntza, XML-a HTML/PDF/testu bihur dezake. JSON ezagunagoa egin ondoren, erabilera murriztu da)"
+msgstr "XSL estilo-orria (1999ko W3C estandarra, XSLT eraldaketa eta XPath helbideratze-lengoaiak ditu, XML datu egituratuak HTML, PDF edo testu lau gisa errendatzeko. Garapen modernoan, bere ekosistema neurri handi batean ordezkatu da txantiloi-motor arinagoengatik eta JSON datu-formatuagatik)"
 
 msgid "mime_runtime"
-msgstr "Exekutagarria den fitxategia (sistema eragilearen formatu exekutagarria, EXE, ELF, Mach-O adibidez, makinaren kodea eta kargatzeko informazioa ditu)"
+msgstr "exekutagarria den fitxategia (EXE, ELF, Mach-O, etab., sistema eragilearen jatorrizko formatu exekutagarriak, konpilatutako maila baxuko makina-kodea, sarrera-puntua eta sistemaren karga-informazioa dituzte)"
 
 msgid "mime_library"
-msgstr "Liburutegi fitxategia (DLL, SO, dylib, etab. esteka dinamikoko liburutegiak, programa abiarazten denean kargatzen den partekatutako kodea)"
+msgstr "liburutegi-fitxategia (DLL, SO, dylib, etab., lotura dinamikoko edo estatikoetako liburutegiak, beste programek deitzeko eta exekuzio-denboran kargatzeko sinbolo partekatuak eta birkokatzeko kodea dituzte)"
 
 msgid "mime_swf"
-msgstr "Flash animazioa (Macromedia-k garatua 1996an, gero Adobe-ren jabetzakoa. Web animazio interaktiborako estandarra, Interneteko animazio eta jokoen gainean nagusi izan zena. Desabantailak: pluginaren menpekotasuna, ez da mugikorreko gailuetan onartzen, segurtasun arrisku handia. Adobe-k 2017an bertan behera uztea iragarri zuen, laguntza erabat amaitu zen 2020an, HTML5/CSS3/JS-ek ordezkatua)"
+msgstr "Flash animazioa (Macromedia 1996, Adobe-k 2005ean erosi zuen. Web animazio interaktibo estandarra, interneteko animazio eta jokoen menderatzailea izan zen. Desabantailak: plugin menpekotasuna, mugikorretan euskarririk eza, arrisku handiko segurtasuna. Adobe-k 2017an bertan behera uztea iragarri zuen, euskarría 2020an amaitu zen, HTML5/CSS3/JS-ek ordezkatua)"
 
 msgid "mime_dtd"
-msgstr "DTD dokumentu mota definizioa (XML zehaztapena, XML dokumentuaren egitura definitzen du, XML-aren baliozkotasuna egiaztatzeko erabiltzen da)"
+msgstr "DTD dokumentu motaren definizioa (XML 1.0-rekin 1998an kaleratua, XML/HTML dokumentuen egitura definitzeko eta legezkotasuna egiaztatzeko erabiltzen da. Garapen modernoan, neurri handi batean ordezkatu da irtenbide malguagoengatik, hala nola XML Schema, RELAX NG, etab.)"
 
 msgid "mime_csv"
-msgstr "CSV datu formatua (komekin bereizitako balioak, datu tabularretarako formatu unibertsala, Excel eta datu-baseetara inportatu/esportatzeko estandarra)"
+msgstr "CSV datu formatua (komekin bereizitako balioak, 1972ko mainframe aroko (IBM Fortran konpilatzailea) taula formatu unibertsala. 2005ean RFC 4180-k formalizatu zuen, plataforma eta hizkuntza anitzeko galerarik gabeko datu-trukaketa estandar gisa. Excel, datu-base erlazionalak eta datu-analisia (Pandas) bezalakoetan inportazio/esportazio eraginkorrerako erabiltzen da)"
+
+msgid "mime_cur"
+msgstr "sagu-kurtsor fitxategia (.cur formatua, saguaren kurtsorearen estiloa pertsonalizatzeko erabiltzen da, adibidez hatz kurtsorea web orrietan edo itxaron-ikonoa. .iko ikono arruntaren 'senidea' da, baina 'puntu bero' gehigarri bat du: klikaren benetako kokapena. Historia: Windows 3.1-ekin (1992) sartu zen, komando-lerrotik saguak gidatutako interfaze grafikorako trantsizioaren osagai nagusia)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java aplikazio abiarazlea, 2000ko hamarkadako Java mahaigaineko aplikazioak banatzeko teknologia, gaur egun baztertua)"
+msgstr "Java Web Start (2000ko hamarkadako Java mahaigaineko aplikazioen banaketa teknologia, .jnlp fitxategien bidez urrutiko Java programak abiarazten ditu. Segurtasun arazoengatik eta banaketa metodo modernoengatik, gaur egun neurri handi batean zaharkituta dago)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-liburua (Microsoft-ek 2000n kaleratua, LIT formatua, baztertua)"
+msgstr "Microsoft Reader liburu elektronikoa (2000 Microsoft, LIT formatua. Zaharkituta, gaur egun EPUB edo PDF bihur daiteke Calibre bezalako tresnekin)"
 
 msgid "mime_svg"
-msgstr "SVG bektore grafika (W3C estandarra 1999, Microsoft-ek bere VML formatua sustatu zuen denbora luzez, IE nabigatzaileak 2011ra arte ez zuen onartu, horrek bere hedapena atzeratu zuen. 2015 ondoren, IEren desagerpenarekin eta bereizmen handiko pantailen hedapenarekin, ikono eta logoetarako lehen aukera bilakatu da)"
+msgstr "SVG bektore-grafikoak (1999ko W3C estandarra, XML-an oinarritutako 2D bektore-irudi formatua. Eskalagarritasun galerarik gabe eta testu-fluxuaren abantailak ditu. Nabigatzaile moderno guztiek modu naturalean onartzen dute, definizio handiko web ikono, logotipo eta bektore-animazioetarako erabiltzen da, web grafiko modernoen estandar nagusia da)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator bektore grafika (1987an kaleratua, industriako bektore grafiko formatu estandarra, inprimaketa diseinurako, logoetarako, ikonoetarako lehen aukera)"
+msgstr "AI bektore-grafikoak (1987ko Adobe-ren jabetzako bektore formatua. Maketazio, inprimatze-diseinu eta marka-identitaterako industria estandar gisa, geruza anitz eta maketazio bektore-datu aurreratuak onartzen ditu, arte bisual profesionalerako lehentasunezko euskarria da)"
 
 msgid "mime_phshop"
-msgstr "Photoshop irudia (Adobe-k 1990ean kaleratua, Photoshop-en jatorrizko fitxategiaren PSD formatua, irudi prozesaketako industriako estandarra)"
+msgstr "PSD geruzadun irudia (1990ean Adobe-k Photoshop-ekin kaleratutako jabetzako bitmap iturburu formatua. Geruza anitz, kanal, maskara eta galerarik gabeko edizio-datuak onartzen ditu, irudi-prozesamendurako eta pintura digitalerako mundu mailako industria estandar bihurtu da)"
 
 msgid "mime_ttf"
-msgstr "TrueType letra tipoa (Apple eta Microsoft-ek elkarrekin garatua 1989an, bektore letra-tipo formatua, emanaldi bera pantailan eta inprimaketan, sistema eragile modernoen letra-tipo lehenetsia)"
+msgstr "TrueType letra-tipoa (1989an Apple-k eta Microsoft-ek batera garatutako ingerada digitalaren letra-tipo formatua. Bézier kurbetan oinarrituta, pantaialko erakustaldian eta inprimatutako irteeran pikselen arteko erabateko koherentzia lortzen du, mahaigaineko sistema eragile modernoen letra-tipo formatu natibo lehenetsia da)"
 
 msgid "mime_fon"
-msgstr "WOFF2 web letra tipoa (W3C gomendioa 2014, Brotli konpresio algoritmoa erabiltzen du, tamaina %30 inguru murriztu da WOFF zaharrarekiko, %50 baino gehiago TTF/OTF-ekiko. Nabigatzaile moderno guztiek onartzen dute gaur egun, web letra-tipoen aukerarik onena da, nabigatzaileen %98k baino gehiagok onartzen dute)"
+msgstr "FON bitmap letra-tipoa (1980ko hamarkadako Microsoft-en hasierako sistema mailako puntu matrizezko letra-tipo formatua. Ez du galerarik gabeko eskala proportzionalik onartzen, normalean testu errendatzean oinarritutako testua erabiltzen da ondare sistemetan edo hasierako gailu txertatuen osagaietan)"
 
 msgid "mime_pdf"
-msgstr "PDF dokumentua (Adobe-k garatua 1993an, ISO nazioarteko estandar bihurtu zen 2008an. Plataforma-anitzeko dokumentu formatua, formatuaren koherentzia mantentzen du, dokumentu elektronikoak banatzeko mundu mailako estandarra)"
+msgstr "PDF dokumentu elektronikoa (1993an Adobe-k garatua eta 2008an ISO 32000 nazioarteko estandar bihurtu zen. Plataforma anitzeko orri finkoko dokumentu formatua, diseinuaren eta formatuaren leialtasun osoa duena, dokumentu elektronikoen banaketarako eta argitalpen digitalerako mundu mailako estandarra da)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET orri dinamikoa (Microsoft-ek 2002an kaleratua, Windows plataformarako web orri dinamikoen teknologia, .NET Framework-en zati bat)"
+msgstr "ASP.NET orri dinamikoa (2002an Microsoft-ek .NET arkitekturarekin kaleratutako zerbitzari aldeko web orri dinamikoen teknologia. IIS motorrean ostatua, Windows zerbitzari aldeko web aplikazio dinamiko eta sistema banatuetarako erabiltzen da)"
 
 msgid "mime_mdb"
-msgstr "Access datu-basea (Microsoft Access datu-base fitxategia, 1992an kaleratua, Windows-en mahaigaineko datu-base soluzioa)"
+msgstr "MDB datu-base erlazionala (1992an Microsoft-ek Access-ekin kaleratutako mahaigaineko mailako datu-base erlazionalaren biltegiratze formatua. Jet datu-base motordun, datu-base erlazionalen irtenbidea izan zen hasierako informatika kudeaketan ordenagailu pertsonaletan eta enpresa txiki eta ertainetan)"
 
 msgid "mime_md"
-msgstr "Markdown dokumentua (John Gruber-ek sortu zuen 2004an, sintaxiaren diseinuan reStructuredText eta Setext-ek eragina izan zuten. Diseinu filosofia nagusia 'irakurgarritasuna errendatzearen berdina' da, jatorrizko Markdown.pl inplementazioak Perl adierazpen erregularrak erabiltzen ditu. Ondorengo zehaztapenak GFM (2013), CommonMark (2017), Pandoc Markdown, etab. dira. GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress bezalako ekosistemak bultzatzen ditu, webgune estatikoen sorgailu eta garatzaileen dokumentaziorako de facto estandar formatu bilakatu da)"
+msgstr "Markdown dokumentua (2004an John Gruberrek sortutako markatze-lengoaia arina. Bere diseinu-filosofia nagusia 'irakurgarria errendagarria da' da, CommonMark eta GFM bezalako zehaztapen modernoak bultzatzen ditu. Dokumentazio teknikoan, ezagutza-baseetan (Obsidian) eta webgune estatikoen sorgailu modernoetan erabiltzen da truke estandar gisa)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports txosten formatua (SAP negozio adimen txostenak, enpresa txostenetarako formatu estandarra)"
+msgstr "Crystal Reports txostena (SAP Business Intelligence (BI) plataformako txosten profesionalen fitxategi formatua. Datu-iturri anitzeko konexioa eta diagrama dinamikoen errendatze konplexua onartzen ditu, enpresa anitzeko finantza eta datu-analisi sistemetan txosten profesionalak sortzeko erabiltzen da)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice dokumentua (The Document Foundation-ek garatua 2010ean, OpenOffice-ren adarra, ODF estandarraren inplementazioa, open source bulego suite nagusia)"
+msgstr "LibreOffice dokumentua (The Document Foundation-ek 2010ean OpenOffice-n oinarritutako kode irekiko bulegotika-suitaren jabetzako formatua. W3Cren ODF (OpenDocument Format) nazioarteko estandarra sakonki ezartzen du, kode irekiko ekosistema modernoaren bulegotikako oinarria da)"
 
 msgid "mime_encrypt"
-msgstr "Zifratutako fitxategia (deszifratu behar da ikusteko, luzapen arruntak: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT enkriptatutako fitxategia (enkriptazio-algoritmo simetriko edo asimetriko zehatzekin prozesatutako jatorrizko datu bitarrak edo testu-datuak. .enc, .pgp, .gpg, etab. eratorritako formatu nagusiak barne hartzen ditu, sare mailan datu ez-publikoen isilpekotasuna eta osotasuna bermatzeko erabiltzen da)"
 
 msgid "mime_gpx"
-msgstr "GPS bide datuak (GPS Truke Formatua, kokapen geografikoaren informazioa grabatzeko, kirol erloju eta nabigazio gailuetarako formatu unibertsala)"
+msgstr "GPX satelite bidezko jarraipen datuak (XML oinarritutako kokapen-sistema globalaren truke formatua. Koordenatu geografikoak, bide-puntuak, ibilbideak eta ibilbide historikoak deskribatzeko espezializatua, kirol-gailu mugikor modernoetarako, auto-nabigaziorako eta informazio-sistema geografikoetarako (GIS) datu estandar irekia da)"
 
 msgid "mime_diskimage"
-msgstr "Disko irudia (DMG, ISO, IMG, etab., disko/CD irudi-fitxategiak, softwarea banatzeko edo komunikabideen babeskopiak egiteko erabiltzen dira)"
+msgstr "Disk Image disko-irudia (ISO, DMG, IMG, etab., disko fisiko edo euskarri optikoaren sektorez sektoreko maila baxuko irudi-fitxategia. Sistema mailako hedapenerako, software handiaren banaketa segururako eta biltegiratze-euskarrien maila fisikoko kopia osoa egiteko erabiltzen da)"
 
 msgid "mime_vm"
-msgstr "Makina birtualaren irudia (VMDK, VDI, VHDX, OVA, etab., disko birtualeko fitxategiak, VMware, VirtualBox, Hyper-V bezalako birtualizazio plataformetarako formatuak)"
+msgstr "VM makina birtualaren irudia (VMDK, VDI, VHDX, OVA, etab., birtualizatutako disko fisikoaren irudiak. VMware, VirtualBox eta Hyper-V plataformen oinarria, maila baxuko hardware emulaziorako, instantzia-argazki azkarretarako eta hodeiko azpiegitura banaketarako erabiltzen da)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent fitxategia (Bram Cohen-ek asmatu zuen 2001ean, deskargatzeko P2P aurkibide fitxategia, fitxategiaren metadatuak eta Tracker-aren informazioa ditu)"
+msgstr "BitTorrent torrent fitxategia (2001ean Bram Cohenek diseinatutako P2P deskarga banatuen indizea. Bencode kodifikazioan oinarritua, jatorrizko fitxategiaren egiaztapeneko metadatuak eta Tracker zerbitzariaren helbideratze informazioa gordetzen ditu, sareko fluxu banatuen eramaile nagusia da)"
 
 msgid "mime_gis"
-msgstr "GIS datu geografikoak (Shapefile, GeoJSON bezalako datu geoespazial formatuak, mapetarako eta espazio analisirako erabiltzen dira)"
+msgstr "GIS datu geoespazialak (Shapefile eta GeoJSON erdigune dituen informazio-sistema geografikoaren datu estandarra. Koordenatu geometriko dimentsio anitzak, geruzen topologia eta atributu-datuak ditu, definizio handiko mapa digitalen errendaziorako, satelite bidezko urrutiko detekziorako eta espazio-analisi geometrikorako erabiltzen da)"
 
 msgid "mime_ebook"
-msgstr "E-liburua (e-liburu formatuak, EPUB, MOBI, AZW adibidez. EPUB nazioarteko estandarra da, MOBI/AZW Amazon Kindle-ren formatuak dira)"
+msgstr "EBOOK liburu elektronikoa (argitalpen digitalaren formatua, W3Cren nazioarteko EPUB estandar irekia eta Amazon Kindle-ren jabetzako MOBI/AZW arkitektura erdigune dituena. Egokitzapeneko fluxu-maketazioa, metadatuen kapsulazioa eta DRM eskubide digitalen kudeaketa onartzen ditu, irakurketa digitalerako euskarri unibertsala da)"
 
 msgid "mime_avif"
-msgstr "AVIF irudia (Alliance for Open Media-k 2019an kaleratua, AV1 kodekan oinarritua, konpresio tasa WebP baino %50 altuagoa da, web irudien estandar berria)"
+msgstr "AVIF eraginkortasun handiko irudia (2019ko Alliance for Open Media (AOMedia)-ren hurrengo belaunaldiko definizio ultra handiko irudi estandarra. AV1 bideo-kodeketaren fotograma teknologian oinarritua, WebP baino %50 konpresio tasa hobea du eta HDR euskarrí naturala, web irudien transmisiorako estandar nagusia da)"
 
 msgid "mime_markdown"
-msgstr "Markdown dokumentua (John Gruber-ek 2004an diseinatua, markaketa hizkuntza arina, formatu unibertsala GitHub README, dokumentazio tekniko, foroetarako)"
+msgstr "Markdown dokumentu arina (2004an John Gruberrek sortutako testu-dokumentuen markatze-lengoaia. Deklarazio testu lauaren diseinua erabiltzen du, bere sintaxia reStructuredText-ek inspiratu zuen, GitHub proiektuak, ingeniaritza mailako dokumentazio teknikoa eta edukien kudeaketa estatikoaren ekosistema modernoetan erabiltzen da)"
 
 msgid "mime_yaml"
-msgstr "YAML konfigurazioa (Clark Evans-ek 2001ean diseinatua, gizakiak irakur dezakeen datu serializazio formatua, Kubernetes, Ansible, Docker Compose-ren konfigurazio fitxategi formatu estandarra)"
+msgstr "YAML serializatutako konfigurazioa (2001ean Clark Evans eta beste batzuek diseinatutako gizakiak irakurtzeko moduko datu-serializazio formatua. Koska hierarkikoan eta gako-balioen mapetan oinarritua, hodei-nativeko azpiegituraren konfigurazio estandar gisa ezarri da Kubernetes, Ansible automatizazio eta Docker Compose-entzat)"
 
 msgid "mime_toml"
-msgstr "TOML konfigurazioa (Tom Preston-Werner-ek 2013an diseinatua, 'Tom's Obvious Minimal Language', Rust/Cargo, Python/pip, Go bezalako tresna modernoen konfigurazio fitxategi formatua)"
+msgstr "TOML konfigurazio semantikoa (2013an Tom Preston-Werner-ek diseinatutako lengoaia minimalistikoa. Idazketa sendo, mapaketa esplizitu eta semantika argia bezalako maila baxuko diseinu abantailekin, gaur egun Rust (Cargo), Python (pyproject.toml) eta Go-ren tresna-kate modernoentzako konfigurazio-fitxategi estandar gisa erabiltzen da)"
 
 msgid "mime_vue"
-msgstr "Vue osagaiaren fitxategia (Evan You-k 2014an aurkeztua, JavaScript-en framework progressiboa. Fitxategi bakarreko osagaien (SFC) bidez, HTML, CSS eta JS ezin hobeto konbinatzen ditu, garapenaren eraginkortasuna izugarri handituz. Munduko frontend framework ezagunenetako bat da. Era berean, VitePress bezalako gune estatikoen sorgailu modernoen nukleo gisa, dokumentazio tekniko interaktiboa eta blogak bultzatzeko erabiltzen da.)"
+msgstr "Vue fitxategi bakarreko osagaia (2014an Evan You-k kaleratutako web progresiboko framework-aren jabetzako SFC formatua. Fitxategi bakarrean HTML/CSS/JS-en kezken bereizketa eta egoera erreaktiboaren lotura lortzen ditu, web aurreko aplikazio interaktibo modernoak eta eskala handiko webgune estatikoen motorrak sakon bultzatzen ditu)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly modulua (W3C estandarra 2017, errendimendu handiko formatua nabigatzailean, C/C++/Rust/R bertan konpilatu daiteke, jatorrizko kodearen errendimendu hurbila)"
+msgstr "WebAssembly modulu bitarra (2017an W3C-k webrako ezarritako errendimendu handiko maila baxuko bytecode estandarra. C/C++/Rust bezalako idazketa sendoko hizkuntzak nabigatzailearen sandbox-era konpilatzeko aukera ematen du, hardware natiboko exekuzio-eraginkortasun hurbila emanez, web ertzeko konputazio modernoaren oinarria da)"
 
 msgid "mime_jsx"
-msgstr "React JSX osagaia (Facebook-ek 2013an JavaScript XML kaleratu zuen, React framework-aren osagai sintaxia, HTML JavaScript barruan idazteko paradigma berritzailea)"
+msgstr "React JSX osagaia (2013an Facebook-ek React framework-arekin kaleratutako JavaScript XML sintaxi-luzapena. JavaScript-en barruan egitura birtualen eraikuntza deklaratiboa onartzen du, 'Aurrealdea egoeraren funtzio gisa' osagaietan oinarritutako garapen-paradigma ahalbidetuz)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX osagaia (Microsoft-ek garatua 2012an, TypeScript + JSX, React aplikazioak mota segurtasunarekin garatzeko modu estandarra)"
+msgstr "TypeScript TSX osagaia (2012an Microsoft-ek TypeScript-en idazketa sendoaren sintaxia eta JSX-ren konbinazioa. Konpilazio-denbora estatikoan mota-kontrola eta interfaze-murrizketak injektatzen ditu React osagaien garapenean, aurreko sistema handi modernoen garapen segururako kode estandarra da)"
 
 msgid "mime_heif"
-msgstr "HEIF irudia (MPEG estandarra 2015, irudi fitxategi formatu eraginkorra, Apple ekosisteman asko erabilia)"
+msgstr "HEIF eraginkortasun handiko irudia (2015ean MPEG erakundeak ezarritako eraginkortasun handiko irudi formatua. HEVC (H.265) bideo-kodeketa algoritmoan oinarritua, hainbat irudi-fotograma, sakonera-mapak eta metadatuak onartzen ditu oso bolumen txikian, sistema eragile mugikor modernoentzako eta gailu terminal adimentsuentzako biltegiratze estandarra da)"
 
 msgid "mime_heic"
-msgstr "HEIC irudia (Apple-ren HEIF inplementazioa, iPhone-ko irudi formatu lehenetsia, jatorriz onartua iOS/macOS-en)"
+msgstr "HEIC eraginkortasun handiko irudia (Apple-ren jabetzako bitmap formatua, nazioarteko HEIF estandarrean oinarritua. iPhone modernoaren argazkiak gordetzeko formatu lehenetsia gisa, iOS/macOS-ek maila fisikoan kodetzea/deskodetzea eta sistema eragilearen euskarrí naturala ditu, azpiko biltegiratze-espazioa nabarmen murrizten du, irudiaren kalitate handia mantenduz)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D modeloa (GL Garraio Formatua, '3D munduaren JPEG', Khronos Group-ek 2015ean argitaratua, web 3D-ko formatu estandarra)"
+msgstr "glTF 3D aktibo modeloa (2015ean Khronos Group-ek kaleratutako GL transmisio formatu estandarra. JSON arkitektura erabiltzen du hiru dimentsioko eszenak deskribatzeko, '3D-ren JPEG' gisa ezagutzen da, WebGL/WebGPU eta errealitate birtualerako arina den industria estandarra da)"
 
 msgid "mime_glb"
-msgstr "GLB bitar 3D modeloa (GLTF-ren bertsio bitarra, fitxategi bakarrak baliabide guztiak ditu, 3D eszenak banatzeko erabiltzen da)"
+msgstr "GLB 3D modelo bitarra (glTF aktibo modeloaren galerarik gabeko binarioaren kapsulazio bertsioa. Eszenaren egitura, azpiko sareko erpin-datuak, materialak eta ehundurak fitxategi bakarrean uztartzen ditu, web 3D aktiboen transmisio eraginkorrerako eta plataforma anitzeko banaketarako diseinatua)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY glosarioa (termino definizio fitxategia, dokumentazio sistemetan terminoak kudeatzeko erabiltzen da)"
+msgstr "GLOSSARY datu-glosarioa (terminoen definizioen fitxategia, dokumentuen kudeaketa sistemetarako eta corpus egituratuetarako bereziki. Terminoen definizio estandarrak, mapatze eleanitzak eta metadatuen mapaketak ditu, testuen analisi automatizatuan eta edukien argitalpen sistemetan koherentzia kontzeptuala mantentzeko erabiltzen da)"
 
 msgid "mime_cbz"
-msgstr "CBZ komiki liburua (ZIP-ez konprimitutako komiki irudiak, komiki biltzaileentzako formatu unibertsala)"
+msgstr "CBZ komiki-liburua (ZIP konpresioan oinarritutako jabetzako komiki-irudien artxibo formatua. Bitmap irudi estatikoen sekuentzia jarraitua du, komiki digitalen argitalpenerako eta tokiko bilduma gurutzaturako edukiontzi arinen estandar unibertsala da)"
 
 msgid "mime_cbr"
-msgstr "CBR komiki liburua (RAR-ez konprimitutako komiki irudiak, komiki biltzaileentzako formatu unibertsala)"
+msgstr "CBR komiki-liburua (RAR konpresioan oinarritutako jabetzako komiki-irudien artxibo formatua. RAR algoritmoa erabiltzen du bitmap sekuentziak kapsulatzeko, konpresio tasa handia du eta bateragarritasun euskarrí zabala du komiki digitalen banaketaren arloan)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-liburua (FictionBook 2.0, errusiar e-liburu formatua, XML egitura, open source irakurleek asko onartzen dute)"
+msgstr "FB2 liburu elektronikoa (2000ko hamarkadaren hasierako FictionBook 2.0 liburu elektroniko estandarra. Egitura XML hutsa erabiltzen du liburuaren propietateak eta testu-hierarkia deskribatzeko, euskarrí zabala du kode irekiko liburu elektronikoen ekosisteman eta argitalpen digitaleko irakurgailu zaharretan)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-liburua (Kobo-ren EPUB formatu berezia, Kobo e-liburu irakurleentzako formatu optimizatua)"
+msgstr "KEPUB liburu elektronikoa (Kobo-ren jabetzako liburu elektronikoaren formatu hobetua, EPUB estandarrean oinarritua. Kobo-ren euskarri fisikoetarako irakurgailuetan errendatzea optimizatua, orrien diseinu eraginkorragoa eta irakurketa-estatistiken elkarreragina eskaintzen du)"
 
 msgid "mime_m4b"
-msgstr "M4B audio liburua (MPEG-4 audio liburu formatua, laster-markak onartzen ditu, iTunes audio liburu formatua)"
+msgstr "M4B audio-liburua (MPEG-4 Part 14 (MP4) edukiontzi arkitekturan oinarritutako audio-liburu formatua. AAC kodetzea erabiltzen du, maila baxuko laster-marken kokapena, etenduratik jarraitzea eta kapituluen txertaketa natural onartzen ditu, Apple iTunes ekosistemaren estandar formatua izan zen garai batean)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX formatua (Amazon-ek 2015ean kaleratua, Kindle-ren e-liburu formatu berezia, tipografia hobetua eta orri azkar iraulketa onartzen ditu)"
+msgstr "Kindle KFX formatua (2015ean Amazon-ek Kindle-ekin kaleratutako jabetzako argitalpen digitalaren formatu hobetua. Lotura tipografiko aurreratuak, dinamika handiko letra-tipoen errendatzea eta nukleo mailako orrien karga malekorra onartzen ditu (Page Flip), Kindle plataforma modernoaren estandar nagusia da)"
 
 msgid "mime_chm"
-msgstr "CHM laguntza fitxategia (Microsoft-ek 1997an kaleratua, HTML bilduma laguntza formatua, Windows software-ko laguntza dokumentaziorako estandarra)"
+msgstr "CHM konpilatutako laguntza-fitxategia (1997an Microsoft-ek konpilatutako HTML laguntza informazio sistema. Datu hipertextualak eta azpiko indizeak edukiontzi bitar bakarrean biltzen ditu, aspalditik Windows softwarearen tokiko lineaz kanpoko laguntza dokumentaziorako formatu estandarra da)"
 
 msgid "mime_mht"
-msgstr "MHT web artxiboa (Microsoft-ek 1999an kaleratua, fitxategi bakarreko web orri formatua, IE nabigatzailean web orriak gordetzeko formatua)"
+msgstr "MHT web artxiboa (1999an Microsoft-ek kaleratutako MIME agregazioko hiper testu formatua. RFC 2557 estandarrean oinarritua, HTML iturburu-kodea, CSS, JS eta txertatutako irudiak testu-fitxategi bakarrean biltzen ditu, nabigatzaile zaharretan web orriak lineaz kanpo gordetzeko erabiltzen da)"
 
 msgid "mime_wml"
-msgstr "WML (Wireless Markup Language, WAP estandarra 1999, telefono mugikor zaharren web orrietarako erabilia, baztertua)"
+msgstr "WML haririk gabeko markatze-lengoaia (1999an WAP Foroak ezarritako markatze-estandar mugikorra. XML zehaztapenean oinarritua, hasierako banda estuko haririk gabeko sare zelularretarako eta konputazio ahalmen baxuko telefono mugikorretarako bereziki diseinatua, web ekosistema modernoan erretiratutako teknologia ondare da)"
 
 msgid "mime_xhtml"
-msgstr "XHTML web orria (W3C estandarra 2000, HTML-ren XML bertsioa, sintaxi zorrotzagoa. W3C-k mantentzea utzi zuen 2009an, HTML5-era bideratu zen)"
+msgstr "XHTML hiper testuko web orria (2000ko W3C estandarra, XML arkitekturan oinarritutako hiper testuaren markatze-lengoaia zorrotza. 2009an, W3C-k bere bilakaera teknikoa gelditu eta HTML5 zehaztapenera bideratu zen, gaur egun web orrien errendatze semantikorako erabiltzen da batez ere sistema zaharretan)"
 
 msgid "mime_xml"
-msgstr "XML dokumentua (W3C estandarra 1998, etiketatze hizkuntza hedagarria, web zerbitzuetarako, konfigurazio fitxategietarako, datu trukerako oinarrizko formatua)"
+msgstr "XML dokumentu egituratua (1998ko W3C estandarra. Bere burua deskribatzeko etiketa arkitektura du, web zerbitzuetarako (SOAP/REST), sistema mailako konfigurazio-fitxategietarako (XSD) eta plataforma anitzeko datu-trukerako oinarrizko formatua da)"
 
 msgid "mime_sgml"
-msgstr "SGML dokumentua (ISO estandarra 1986, HTML-ren aitzindaria, Markaketa Hizkuntza Orokortu Estandarra, XML eta HTML SGML-tik datoz)"
+msgstr "SGML markatze-lengoaia orokor estandarra (1986ko ISO 8879 nazioarteko estandarra. Dokumentu elektronikoen deskribapen egituratuaren industria aitzindari gisa, XML eta HTML espezifikazio goiztiarrak metaltze-lengoaia estandar honetatik eratorriak dira)"
 
 msgid "mime_apng"
-msgstr "APNG animazioa (Mozilla-k garatua 2004an, PNG-ren luzapena animaziorako, GIF-en ordezko modernoa, kolore errealak eta gardentasuna onartzen ditu)"
+msgstr "APNG grafiko dinamikoa (2004an Mozilla-k garatutako PNG luzapen dinamikoa. 24 biteko kolore erreal eta 8 biteko alfa kanalaren gardentasun partziala onartzen ditu, GIF formatuaren alternatiba gisa definizio handikoa web agertoki modernoetan)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmapa (Windows bitmap formatua, Windows 1.0-tik aurrera jatorriz onartua. Ez da konprimitzen, fitxategi tamainak oso handiak dira, baina bere egitura sinpleagatik eta aparteko kodekarik behar ez duelako, Windows 11-ren pantaila argazki tresnak, marrazketa programak, EXE/MSI instalazio paketeetako ikono baliabideak, kurtsore fitxategiak eta kontrolatzaile zahar batzuek erabiltzen dute oraindik. Kalitate bereko irudirako, fitxategia PNG baino 3-10 aldiz handiagoa da, kasu gehienetan PNG/JPEG-ek ordezkatu du, baina Windows ekosistemak bateragarritasun zabala mantentzen du oraindik)"
+msgstr "BMP bitmap natiboa (Microsoft plataformaren gailutik independentea den bitmap formatua, Windows 1.0 arotik ezarria. Galerarik gabeko biltegiratzea erabiltzen du, normalean PNG baino 3-10 aldiz bolumen handiagoa du, baina kodetze/deskodetzeko kosturik ez duenez, oraindik Windows 11-ren osagai nagusietan, EXE/MSI baliabide ataletan eta gidari zaharren buffer grafikoetan txertatuta dago)"
 
 msgid "mime_cdr"
-msgstr "CDR bektore grafika (CorelDRAW-ren formatu berezia, Corel Corporation Kanadatik, bektore grafiko diseinurako softwarea)"
+msgstr "CDR bektore-grafikoak (Corel Corporation-en jabetzako CorelDRAW bektore-diseinu profesionalaren iturburu formatua. Geruzako kolore-kudeaketa, kurba matematiko konplexuen nodoak eta inprimaketa mailako maketazio-datuak onartzen ditu, inprimaketa grafiko profesionalean eta publizitate diseinuan espezializatutako formatua da)"
 
 msgid "mime_gif"
-msgstr "GIF irudia (CompuServe-k garatua 1987an, 256 kolore animazio formatua. Desabantailak: kolore kopuru mugatua, irudi kalitate zakarra, ez du gardentasunik onartzen, fitxategi handiak, fotograma tasa baxua. APNG, WebP bezalako animazio formatu modernoek ordezkatu dute)"
+msgstr "GIF kolore indexatuko irudia (1987ko CompuServe-ren 8 biteko kolore indexatuko bitmap formatua. LZW algoritmoan oinarritua, 256 kolore maila eta gardentasun akromatikora mugatua, fotograma maiztasun altuetan bolumen handia du, APNG, WebP, etab. bezalako animazio estandar eraginkorrekin ordezkatzen ari da)"
 
 msgid "mime_ico"
-msgstr "ICO ikonoa (Windows ikono fitxategi formatua, bereizmen anitz onartzen ditu, web orrialdeko favicon-en formatu estandarra)"
+msgstr "ICO sistema-ikonoa (Windows-en jatorrizko ikono-baliabideen kapsulazio formatua. Pixelen bereizmen eta kolore sakonera desberdinetako irudi-aldaera anitz nahastea onartzen du edukiontzi bakarrean, nabigatzaile modernoen webgune identifikatzailearen (Favicon) banaketa estandar unibertsala ere bada)"
 
 msgid "mime_jpeg"
-msgstr "JPEG irudia (ISO estandarra 1992, galerako konpresio formatua argazkientzako, de facto estandarra Interneteko argazkientzako)"
+msgstr "JPEG irudi konprimitua (1992ko ISO 10918 nazioarteko estandarra. DCT algoritmoan oinarritua, konpresio tasa altuak lortzen ditu, errealista den irudi-kalitate bikaina mantenduz, internet estatikoaren argazkientzako de facto estandar absolutoa da)"
 
 msgid "mime_jpg"
-msgstr "JPEG irudia (ISO estandarra 1992, galerako konpresio formatua argazkientzako, de facto estandarra Interneteko argazkientzako)"
+msgstr "JPEG irudi konprimitua (1992ko ISO 10918 nazioarteko estandarra. DCT algoritmoan oinarritua, konpresio tasa altuak lortzen ditu, errealista den irudi-kalitate bikaina mantenduz, internet estatikoaren argazkientzako de facto estandar absolutoa da)"
 
 msgid "mime_png"
-msgstr "PNG irudia (W3C gomendioa 1996, kolore errealak eta gardentasuna onartzen ditu, GIF-en ordezko estatiko, Interneteko galerarik gabeko irudien estandarra)"
+msgstr "PNG galerarik gabeko irudia (1996an W3C-k gomendatutako sareko grafiko eramangarrien estandarra. Konpresio galerarik gabeko algoritmoa erabiltzen du, 24 biteko kolore erreal eta 8 biteko alfa kanalaren gardentasuna onartzen ditu, GIF estatiko klasikoaren definizio handiko alternatiba gisa, interneten pixel-grafiko galerarik gabekoen de facto estandar absolutua da)"
 
 msgid "mime_ps"
-msgstr "PostScript orri deskribapen fitxategia (Adobe-k 1985ean kaleratua, orri deskribapen hizkuntza, PDF-ren aitzindaria, inprimaketarako eta argitalpenerako erabiltzen da)"
+msgstr "PostScript orriaren deskribapen fitxategia (1985ean Adobe-k kaleratutako pila oinarriko orrien deskribapen lengoaia. PDF formatuaren aitzindari teknologiko gisa, hardwarearekiko independentea den testu-maketazioa eta doitasun handiko bektore-grafikoen errendatzea lortzen du maila baxuan, inprimaketa profesionalaren eta laser inprimaketaren oinarrizko estandarra da)"
 
 msgid "mime_psb"
-msgstr "PSB dokumentu handia (Adobe Photoshop formatua oso irudi handientzako, 2GB baino handiagoak edo 30000 pixel baino gehiagoko irudiak onartzen ditu)"
+msgstr "PSB geruza handiko dokumentua (Adobe Photoshop-en jabetzako iturburu-fitxategi handien kapsulazio formatua. PSD formatu estandarraren 2 GB bolumen fisikoaren eta 30.000 pixelen barne helbideratze mugak hausten ditu, arte digital masibo, sakonki geruzatu eta oso handiak gordetzeko diseinatua)"
 
 msgid "mime_psd"
-msgstr "PSD irudia (Adobe Photoshop jatorrizko fitxategia, geruzak, kanalak, bideak onartzen ditu, irudi prozesaketako industriako estandar formatua)"
+msgstr "PSD geruzadun diseinuaren iturburu-fitxategia (Adobe Photoshop-en jabetzako irudi-ingeniaritzako edukiontzia. Irudi grafikoen arloko industria estandar edukiontzi gisa, errendatze-geruza osoa, bitmap kanalak, bektore mozketaren bideak eta nahaste modu konplexuak kapsulatzen ditu, datuen edizio osoa galerarik gabe onartzen du)"
 
 msgid "mime_webp"
-msgstr "WebP irudia (Google-k garatua 2010ean, web irudi formatua, galerako/galerarik gabeko konpresioa eta animazioa onartzen ditu, konpresio tasa PNG baino %25-35 altuagoa eta JPEG baino %25 altuagoa da)"
+msgstr "WebP eraginkortasun handiko irudia (2010ean Google-ek kaleratutako web grafikoen kodetze estandar unibertsala. VP8 bideo fotograma teknologiatik eratorria, galerarekin, galerarik gabe, gardentasun partziala eta errendatze dinamikoarekin bateragarritasun perfektua du, kalitate bereko PNG baino %25-35 txikiagoa da, web orri modernoen karga errendimendu handiaren oinarria da)"
 
 msgid "mime_woff"
-msgstr "WOFF web letra tipoa (2009an sortua, W3C estandarra 2018. TrueType/OpenType konpresioan oinarritua, web letra-tipoen karga optimizatzeko, web orrialde modernoetako ikono letra-tipoentzako formatu estandarra)"
+msgstr "WOFF web glifo fitxategia (2009an sortua eta 2012an W3C estandar bihurtua, web letra-tipo irekiaren formatua. Bere funtsa TTF/OTF letra-tipo egituren galerarik gabeko konpresioa da, sareko banda-zabaleraren kostua nabarmen optimizatzen du, webgune modernoen ikono eta hodeiko letra-tipoetarako formatu unibertsala da)"
 
 msgid "mime_7z"
-msgstr "7z konprimitutako paketea (Igor Pavlov-ek garatua 1999an, 7-Zip programaren formatu berezia. LZMA algoritmoa, konpresio tasa altua, open source eta doakoa. 7z formatua ZIP baino %30-50 txikiagoa izaten da konpresio tasa berean, open source komunitatean eta software banaketan ohiko formatua)"
+msgstr "7z pakete konprimitúa (1999an Igor Pavlov-ek garatutako 7-Zip jabetzako formatua. LZMA/LZMA2 algoritmoetan oinarritua, konpresio tasa altua du. Baldintza berdinetan ZIP baino %30-50 txikiagoa izaten da, kode irekiko komunitatean eta software banaketan konpresio tasa handiko formatu unibertsala da)"
 
 msgid "mime_ace"
-msgstr "ACE konprimitutako paketea (1990eko hamarkadan garatua, WinACE programaren formatua. RAR-ekin lehiatzen zen, konpresio tasa nahiko altua. Garapena 2007an amaitu zen, gaur egun 7z/RAR-ek ordezkatu du, gutxi erabiltzen da)"
+msgstr "ACE pakete konprimitúa (1990eko hamarkadako WinACE jabetzako konpresio formatua. Garai batean RAR formatuarekin lehiatu zen, konpresio tasa altua zuena. 2007 ondoren garapen teknikoa gelditu zen, gaur egun 7z eta RAR formatuek ordezkatua, ondare sistemetako artxibo formatuena da)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 konprimitutako paketea (Julian Seward-ek garatua 1996an, blokeak sailkatuz konprimitzeko algoritmoa. Konpresio tasa GZIP baino %15-20 altuagoa da, baina abiadura motelagoa da. Linux kernel kode iturrirako, open source software paketeetarako formatu arrunta, .bz2 luzapena)"
+msgstr "BZIP2 pakete konprimitúa (1996an Julian Seward-ek garatutako blokeen sailkapeneko konpresio formatua. Bere azpiko algoritmoak GZIP-ek baino %15-20 konpresio tasa altuagoa du, baina konputazio kostu handiagoarekin. Linux nukleoaren iturburu-kodea eta kode irekiko software paketeen banaketarako erabiltzen da sarri, fitxategi-luzapen estandarra .bz2 da)"
 
 msgid "mime_cab"
-msgstr "CAB konprimitutako paketea (Microsoft-ek garatua 1995ean, Cabinet formatua. Windows-erako instalazio pakete formatua, kontrolatzaileak eta sistema fitxategiak banatzeko erabiltzen da. Windows Installer (MSI)-k CAB erabiltzen du barnean fitxategiak gordetzeko)"
+msgstr "CAB pakete konprimitúa (1995ean Microsoft-ek garatutako Cabinet artxibo formatua. Windows sistemaren instalazio estandar natibo gisa, kontrolatzaileak eta nukleo-fitxategiak banatzeko erabiltzen da, baita Windows Installer-en (MSI) biltegiratze-edukiontzi gisa ere)"
 
 msgid "mime_dmg"
-msgstr "DMG disko irudia (Apple-k 1980ko hamarkadan kaleratua, Disk Image formatua. macOS-en softwarea banatzeko formatu estandarra, klik bikoitzean disko birtual gisa muntatzen da, arrastatu aplikazioa instalatzeko. Konpresioa eta zifratzea onartzen ditu, Mac software deskargetarako formatu nagusia)"
+msgstr "DMG disko-irudia (1980ko hamarkadan Apple-k eboluzionatutako disko-irudi formatua. macOS software banaketaren edukiontzi estandar gisa, fitxategi-sistema birtual gisa muntatzea, maila baxuko konpresioa eta datuen enkriptatzea onartzen ditu, Mac ekosisteman aplikazioen banaketarako formatu nagusia da)"
 
 msgid "mime_emz"
-msgstr "EMZ irudi konprimitua (Windows Enhanced Metafile konprimitua, EMF-ren bertsio konprimitua. Office dokumentuetan bektore grafikoak gordetzeko formatua, funtsean GZIP-ez konprimitutako EMF fitxategia da)"
+msgstr "EMZ irudi konprimitúa (Windows Enhanced Metafile EMF-ren bertsio konprimitúa. Funtsak GZIP algoritmo bidez konprimitutako bektore-grafiko bitarrak dira, Microsoft Office suiteko dokumentuetan txertatutako bektore-grafikoak gordetzeko erabiltzen da)"
 
 msgid "mime_gz"
-msgstr "GZIP konprimitutako paketea (Jean-loup Gailly eta Mark Adler-ek garatua 1992an, GNU proiektua. Unix/Linux sistemetako konpresio tresna estandarra, HTTP konpresiorako formatu arrunta transmisioan. .gz luzapena, askotan TAR-ekin batera erabiltzen da)"
+msgstr "GZIP pakete konprimitúa (1992ko GNU proiektuaren Jean-loup Gailly eta Mark Adler-en fluxu konpresio formatu estandarra. Unix/Linux-eko konpresio tresna estandarra gisa, HTTP garraio geruzaren konpresioaren (Gzip) erdiguneko estandarra da, TAR artxiboekin batera erabiltzen da sarri)"
 
 msgid "mime_jar"
-msgstr "JAR konprimitutako paketea (Sun Microsystems-ek 1997an kaleratua, Java ARchive formatua. Funtsean ZIP konprimitutako paketea da, Java klaseak eta aplikazioak paketatzeko erabiltzen da. Java ekosistemako formatu nagusia Maven, Gradle bezalakoetan, Android-ek ere JAR erabiltzen du)"
+msgstr "JAR pakete konprimitúa (1997an Sun Microsystems-ek kaleratutako Java ARchive artxibo formatua. Funtsa ZIP egituran oinarritutako paketatze edukiontzia da, Java klase-liburutegiak eta metadatuak kapsulatzeko erabiltzen da, Maven, Gradle eta Android ekosistema goiztiarraren erdialdeko konpilazio produktua da)"
 
 msgid "mime_lzma"
-msgstr "LZMA konprimitutako paketea (Igor Pavlov-ek garatua 1998an, Lempel-Ziv-Markov kate algoritmoa. 7z formatuaren konpresio algoritmo nagusia, konpresio tasa altua, deskonpresio azkarra. Firmware eta sistema txertatuen softwarea banatzeko erabiltzen da)"
+msgstr "LZMA pakete konprimitúa (1998an Igor Pavlov-ek garatutako Lempel-Ziv-Markov katearen konpresio algoritmua. 7z formatuaren erdiguneko motorra da, konpresio tasa oso altua eta deskonpresio azkarra ditu, hardware firmware eta sistema txertatuen banaketarako erabiltzen da)"
 
 msgid "mime_rar"
-msgstr "RAR konprimitutako paketea (Eugene Roshal-ek garatua 1993an, Roshal ARchive formatua. Konpresio tasa altua, bolumen zatitzea eta berreskurapen erregistroa onartzen ditu. WinRAR programaren formatua, konpresio tasa ZIP baino hobea da, baina software ordaindua behar da, unrar bezalako open source tresnek deskonprimitu dezakete)"
+msgstr "RAR pakete konprimitúa (1993an Eugene Roshal-ek WinRAR jabetzako artxibo formatua. Bolumenen zatiketa, berreskuratze erregistro fisikoak (ECC) eta enkriptatze sendoa onartzen ditu. Bere konpresio tasa ZIP estandarra baino hobea da, eremu pertsonal eta komertzialetan bateragarritasun laguntza zabala du)"
 
 msgid "mime_tar"
-msgstr "TAR artxibo paketea (Unix V7-n sartua 1979an, Zinta Artxibo formatua. Zinta artxibo formatua, konpresiorik gabeko paketatzea soilik, askotan GZIP/BZIP2/XZ-ekin batera erabiltzen da. Linux software paketearen iturburu kodea, Docker irudien geruzatutako biltegiratzeak TAR formatua erabiltzen dute)"
+msgstr "TAR artxibo-paketea (1979ko Unix V7 aroko Tape ARchive artxibo formatua. Fitxategi-fluxuaren paketatzea bakarrik egiten du, daturik konprimitu gabe, GZIP/BZIP2/XZ-ekin konbinatzen da sarri, Linux iturburu-koderako eta Docker irudien geruzako biltegiratzeko azpiko estandarra da)"
 
 msgid "mime_tgz"
-msgstr "TGZ konprimitutako paketea (TAR + GZIP formatuaren konbinazioa, .tgz edo .tar.gz luzapena. Unix/Linux software paketeetarako banaketa formatu unibertsala, iturburu kodea eta pakete bitarretarako asko erabiltzen da, 'atera eta erabili' kontzeptuaren ordezkaria)"
+msgstr "TGZ pakete konprimitúa (TAR artxibo eta GZIP konpresioaren fluxu konbinazio formatua, .tgz edo .tar.gz luzapenarekin. Unix/Linux inguruneetan software-paketeen banaketa formaturik unibertsalena gisa, iturburu-kodearen konpilazio hedapenerako eta instalaziorik gabeko pakete bitarren banaketarako erabiltzen da)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 konprimitutako paketea (TAR + BZIP2 formatuaren konbinazioa, .tbz2 edo .tar.bz2 luzapena. Konpresio tasa TGZ baino %15-20 altuagoa da, fitxategi handiak banatzeko egokia, Linux kernel-aren iturburu kodea formatu hau erabili du denbora luzez)"
+msgstr "TBZ2 pakete konprimitúa (TAR artxibo eta BZIP2 konpresioaren fluxu konbinazio formatua, .tbz2 edo .tar.bz2 luzapenarekin. TGZ-rekin alderatuta, konpresio tasa %15-20 gehiago hobetu dezake, fitxategi handien transferentziarako egokia da, Linux nukleoaren iturburu-kodea banatzeko denbora luzez erabili zen)"
 
 msgid "mime_xz"
-msgstr "XZ konprimitutako paketea (2009an kaleratua, LZMA2 algoritmoan oinarritua. Oso konpresio tasa altua, GZIP baino %30-50 altuagoa, deskonpresio abiadura nahiko azkarra. Linux kernel-ean, pakete kudeatzaileetan (Debian .deb paketearen barne egitura adibidez) asko erabiltzen da, gaur egungo Linux ekosisteman gomendatutako formatua)"
+msgstr "XZ pakete konprimitúa (2009an kaleratutako hurrengo belaunaldiko konpresio tasa handiko formatua. LZMA2 algoritmoan oinarritua, datuen konpresio tasa GZIP baino %30-50 hobea da, deskonpresio azkarra mantenduz. Linux nukleoak eta pakete-kudeatzaile nagusiek (adibidez, Debian .deb barruan) gomendatutako banaketa estandar gisa ezarri dute)"
 
 msgid "mime_z"
-msgstr "Z konprimitutako paketea (1985eko Unix compress komandoaren formatua, LZW algoritmoa. Unix-en konpresio formatu goiztiarra, GZIP-ek ordezkatu du. .Z luzapena, sistema modernoetan gutxi erabiltzen da)"
+msgstr "Z pakete konprimitúa (1985eko Unix compress komandoaren LZW konpresio formatua. Unix sistema goiztiarretan konpresio estandarra izan zen, gaur egun GZIP formatu eraginkorragoak guztiz ordezkatua, sareko trafiko modernoan arraroa den formatu historiko ondare da)"
 
 msgid "mime_zip"
-msgstr "ZIP konprimitutako paketea (Phil Katz-ek garatua 1989an, PKZIP formatua. Windows-ek jatorriz onartzen du, Interneteko konpresio formatu unibertsala. Fitxategi anitz, direktorio egitura onartzen ditu, konpresio algoritmoa aukeratu dezake. Java-ko JAR, Android-eko APK, Office dokumentuetako DOCX/XLSX ZIP formatuan oinarritzen dira)"
+msgstr "ZIP pakete konprimitúa (1989an Phil Katz-ek PKZIP artxibo formatu unibertsala. Sistema eragile nagusi guztiek modu naturalean onartzen dute, interneteko edukiontzi estandar erabiliena da. Java-ren JAR modernoak, Android-en APK-k eta Office dokumentuek (OOXML) ZIP egituran dute oinarria)"
 
 msgid "mime_zst"
-msgstr "Zstandard konprimitutako paketea (Facebook-ek garatua 2015ean, Yann Collet-ek diseinatua. Abiadura handiko konpresio algoritmoa, konpresio tasa LZMA-ren hurbil, abiadura GZIP baino askoz handiagoa. Linux kernel 5.9+ onartzen du, Arch Linux pacman, Debian APT pixkanaka hartzen ari dira, konpresio estandar berria)"
+msgstr "Zstandard pakete konprimitúa (2015ean Facebook-eko Yann Collet-ek diseinatutako fluxu konpresio estandarra. LZMA-ren konpresio hurbilketara iristen da, GZIP-ek baino errendimendu handiagoa duen bitartean. Linux nukleoak (5.9+) eta Arch/Debian pakete-kudeatzaileek sakon hartu dute)"
 
 msgid "mime_lz4"
-msgstr "LZ4 konprimitutako paketea (Yann Collet-ek garatua 2011ean, oso konpresio algoritmo azkarra. Konpresio abiadura GZIP baino 10 aldiz handiagoa da, denbora errealeko konpresio agertokietarako egokia. Linux kernel-ean, OpenZFS, Hadoop-en asko erabiltzen da, abiadura lehentasuna duten agertokietarako lehen aukera)"
+msgstr "LZ4 pakete konprimitúa (2011n Yann Collet-ek garatutako konpresio algoritmo ultra-azkarra. GZIP baino 10 aldiz azkarragoa da, CPU kostu oso baxuarekin. Linux nukleoan, OpenZFS fitxategi-sisteman eta Hadoop denbora errealeko datu-fluxuen prozesamenduan erabiltzen da)"
 
 msgid "mime_lzo"
-msgstr "LZO konprimitutako paketea (Markus Oberhumer-ek garatua 1996an, Lempel-Ziv-Oberhumer algoritmoa. Oso deskonpresio azkarra, konpresio tasa ertaina. Linux kernel Squashfs, OpenWrt firmware-k erabiltzen dute, sistema txertatuetarako egokia)"
+msgstr "LZO pakete konprimitúa (1996an Markus Oberhumer-ek garatutako Lempel-Ziv-Oberhumer algoritmua. Deskonpresio errendimendu ultra-azkarrean zentratzen da. Linux nukleoaren Squashfs irudietan, OpenWrt firmwarean eta baliabide mugatuko hainbat sistema txertatuetan erabiltzen da)"
 
 msgid "mime_msi"
-msgstr "MSI instalazio paketea (Microsoft-ek 1999an kaleratua, Windows Installer pakete formatua. Windows aplikazioetarako instalazio formatu estandarra, transakzio itzulketa, osagaien kudeaketa, isilpeko instalazioa onartzen ditu. Enpresa software banaketarako lehen aukera, gaur egun oraindik Windows software instalaziorako formatu nagusia)"
+msgstr "MSI sistemaren instalazio-paketea (1999an Microsoft-ek Windows Installer datuen kapsulazio formatua. Windows aplikazio mailako hedapen estandar gisa, maila baxuko transakzioen desegitea, osagaien bizi-zikloen kudeaketa eta sortarik gabeko isilpeko instalazioa onartzen ditu, enpresa-softwarearen banaketa zentralizaturako eta politikan oinarritutako hedapenerako erdiguneko estandarra da)"
 
 msgid "mime_pkg"
-msgstr "PKG instalazio paketea (macOS aplikazio instalazio formatua, Apple-ren Installer teknologian oinarritua. macOS-en softwarea banatzeko formatu estandarra, osagai hautaketa, instalazio scriptak, desinstalazio funtzioa onartzen ditu. .pkg fitxategia klik bikoitzean instala daiteke, Mac App Store-tik kanpoko softwarea banatzeko modu arrunta)"
+msgstr "PKG plataforma anitzeko softwarearen instalazio-paketea. 1. FreeBSD software-paketea: pkgng estandarra, .pkg edo .txz luzapena, TAR+XZ/Zstd konpresioan oinarritua, mendekotasun konponketa eta sinaduraren egiaztapena onartzen ditu; 2. macOS instalazio-paketea: Apple Installer formatuan oinarritua, osagai pertsonalizatuak, instalazio-gidoiak eta sistema mailako desinstalazioa onartzen ditu. BSD zerbitzarientzako eta Mac sistemarako banaketa eramaile nagusiak dira, hurrenez hurren."
 
 msgid "mime_apk"
-msgstr "APK Android aplikazio paketea (Google-k 2008an kaleratua, Android sistemaren instalazio formatu tradizionala. APK funtsean ZIP konprimitutako paketea da, kodea, baliabideak, manifest fitxategia ditu. 2021etik aurrera, Google Play-k aplikazio berriek AAB formatua erabiltzea eskatzen du, baina APK garapenerako, arazketarako, hirugarrenen dendetatik banatzeko eta albo instalaziorako erabiltzen da oraindik)"
+msgstr "APK Android aplikazio-paketea (2008an Google-k Android-ekin kaleratutako tradizionala den aplikazioen instalazio-paketea. Azpian ZIP egituran oinarritua, konpilatutako Dalvik bytecode (DEX) datuak, metadatuen manifestua eta baliabide globalak paketatzen ditu, gaur egun tokiko garapen arazketa, hirugarrenen banaketa eta gailuetan alboko instalaziorako erabiltzen da)"
 
 msgid "mime_ipa"
-msgstr "IPA Apple aplikazio paketea (iOS App Store Package, iOS/iPadOS aplikazioentzako instalazio formatua. 2008an kaleratu zen iPhone SDK-rekin. App Store bidez banatzea edo enpresa ziurtagiriarekin sinatzea eskatzen du. Fitxategi exekutagarria, baliabideak, Info.plist sinatutako informazioa ditu)"
+msgstr "IPA Apple aplikazio-paketea (2008an iPhone SDK-arekin kaleratutako iOS/iPadOS-ko paketatze edukiontzi esklusiboa. Funtsa FairPlay DRM edo enpresa-ziurtagiriarekin sinatutako ZIP artxiboa da, Mach-O exekutagarri bitarra, aplikazioaren baliabide-zuhaitza eta Info.plist metadatuen konfigurazioa dituena)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS aplikazio paketea (HarmonyOS Ability Package, HarmonyOS aplikazioaren oinarrizko unitatea. HarmonyOS 2.0-rekin kaleratu zen 2020an. entry eta feature motak onartzen ditu, Huawei telefono, tablet, erloju adimentsu eta beste HarmonyOS gailuetarako banaketa formatua)"
+msgstr "HAP HarmonyOS aplikazio-paketea (2020an HarmonyOS 2.0-rekin kaleratutako HarmonyOS-en hedapen elastikoko oinarrizko unitatea. Entry modulu nagusiaz edo Feature funtzio hedatuko moduluez osatua, gailu adimentsuen (telefonoak, tabletak, eramangarriak) arteko banaketa formatua da)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS estatiko partekatutako paketea (HarmonyOS Archive, HarmonyOS-erako estatiko partekatutako liburutegia, HAP anitzen artean parteka daiteke, osagai garapenerako eta modulu berrerabilpenerako erabiltzen da)"
+msgstr "HAR HarmonyOS partekatutako pakete estatiko (HarmonyOS-en jabetzako liburutegi partekatu estatikoaren artxibo-fitxategia. Osagai komunak, azpiko baliabide-kodea eta konpilazio-denbora mendekotasunak kapsulatzeko erabiltzen da, HAP modulu anitzek estatistikoki partekatzen dute, HarmonyOS sistemaren osagaietan oinarritutako garapenerako eta modulu anitzeko berrerabilerarako oinarria da)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (Google-k 2018an kaleratua, 2021etik aurrera Google Play-k aplikazio berriek formatu hau erabiltzea eskatzen du. AAB banaketa formatua da, Google Play-k gailuaren konfigurazioaren arabera (PU arkitektura, pantailaren dentsitatea, hizkuntza) APK optimizatuak sortzen ditu dinamikoki, instalazio paketearen batez besteko tamaina %35 murriztu da. Garatzaileek AAB kargatzen dute, erabiltzaileek APK deskargatzen dute)"
+msgstr "AAB Android aplikazio-sorta (2018an Google-k abian jarria eta 2021ean ezarritako Google Play banaketa dinamikoaren formatua. Banaketa entitate huts gisa, hodeiak xede-gailuaren PUZ arkitektura, pantaila-dentsitatea eta hizkuntzaren arabera moztu eta konpilatzen du eskaeraren arabera APK optimizatuak sortzeko, batez beste %35eko transmisioko banda-zabaleraren kostua murriztuz)"
 
 msgid "mime_xapk"
-msgstr "XAPK aplikazio paketea (hirugarrenen Android aplikazio pakete hedatu, APK + OBB datu fitxategia ditu. Joko handietarako eta aplikazio konplexuetarako erabiltzen da, APK fitxategi bakarraren 100 MB muga konpontzen du. APKPure, APKMirror bezalako hirugarrenen aplikazio dendetan ohikoa da, ez da Google-ren formatu ofiziala)"
+msgstr "XAPK aplikazio-pakete hedatua (hirugarrenen Android komunitateak ezarritako aplikazio hedatze estandar ez ofiziala. APK fitxategi estandarra OBB joko-datuen pakete handiarekin bateratzen du, fisikoki Google Play-ren 100 MB fitxategi independentearen muga hautsiz, joko-banaketa plataformetan ikusten da)"
 
 msgid "mime_appx"
-msgstr "Windows aplikazio paketea (Microsoft-ek 2012an kaleratua, Windows 8/10/11 aplikazioentzako instalazio formatua. UWP eta mahaigaineko aplikazioen bihurketak onartzen ditu, Microsoft Store bidez banatzen da. Microsoft-ek 2024an MSIX kaleratu zuen ondorengo formatu gisa, APPX pixkanaka ordezkatuz)"
+msgstr "APPX aplikazio-pakete modernoa (2012an Microsoft-ek Windows 8-rekin kaleratutako UWP aplikazioen hedapen estandarra. Hareazko kutxan isolatutako exekuzioa eta desinstalazio arinaren ezaugarriak ditu, Microsoft Store-ren hasierako estandar nagusia izan zen, baina Windows ekosistema modernoan MSIX alderako eboluzioan bizi-zikloaren amaierako fasean sartu da)"
 
 msgid "mime_msix"
-msgstr "MSIX aplikazio paketea (Microsoft-ek 2018an kaleratua, Windows-en aplikazioak paketatzeko formatu berria. APPX eta MSI-ren abantailak konbinatzen ditu, Windows aplikazio mota guztiak onartzen ditu, Microsoft Store bidez edo albo instalazioz bana daiteke, Windows 11rako gomendatutako formatua)"
+msgstr "MSIX hurrengo belaunaldiko aplikazio-paketea (2018an Microsoft-ek argitaratutako Windows-aren paketatze estandar berria. APPX-en aplikazioaren segurtasun-hareazko kutxaren ezaugarriak MSI-ren enpresa aktiboen kudeaketaren abantailekin perfektuki uztartzen ditu, Win32 aplikazio mota guztiekin guztiz bateragarria da, eta Windows 11rako gomendatutako banaketa estandarra da)"
 
 msgid "mime_appimage"
-msgstr "AppImage aplikazio paketea (2004an kaleratua, Linux-en instalaziorik gabeko aplikazio formatua. 'Aplikazio bat = fitxategi bat', zuzenean exekutatzen da instalatu gabe, Linux banaketa gehienak onartzen ditu, garatzaileek Linux softwarea banatzeko modu arrunta)"
+msgstr "AppImage bere burua duen aplikazio-paketea (2004an abian jarritako Linux-en artxibo exekutagarri bakarraren zehaztapena. 'Aplikazio bat fitxategi bat da' arkitektura autokontenitua hartzen du, FUSE mekanismoaren bidez exekuzio-denboran zuzenean irakurtzeko soilik fitxategi-sistema birtual gisa muntatzen dena, Linux banaketa ezberdinetan menpekotasunik gabeko exekuzioa lortuz)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak aplikazio paketea (2015ean kaleratua, Linux-en hondar kutxadun aplikazio formatua. Banaketetan zehar exekutatzen da, sistema ingurunetik isolatuta, Fedora, Red Hat-ek garatua, GNOME Software zentroko formatu lehenetsia)"
+msgstr "Flatpak hareazko kutxako aplikazio-paketea (2015ean Red Hat eta GNOME-k zuzendutako Linux banaketa anitzeko mahaigaineko aplikazioen banaketa estandarra. Linux nukleoaren Namespace eta Cgroups mekanismoetan oinarritua, aplikazio mailako segurtasun-hareazko kutxaren isolamendu estremoa lortzen du, kode irekiko sistema eragile modernoen software-zentroen oinarria da)"
 
 msgid "mime_snap"
-msgstr "Snap aplikazio paketea (Canonical-ek 2014an kaleratua, Ubuntu-en enpresa nagusiak garatua, Linux-en aplikazio formatu unibertsala. Automatikoki eguneratzen da, hondar kutxako isolamendua, 40+ Linux banaketa onartzen ditu, Ubuntu Software zentroko formatu lehenetsia)"
+msgstr "Snap edukiontzidun aplikazio-paketea (2014an Ubuntu-ren enpresa ama Canonical-ek Linux-eko hedapen estandarra. Aplikazioak bere kabuz daukan SquashFS irudiaren muntatze arkitektura hartzen du, eguneraketa automatikoak eta AppArmor hareazko kutxaren isolamendu zorrotza onartzen ditu, Ubuntu software-zentroaren ekosistemaren lehenetsitako formatu nagusia da)"
 
 msgid "mime_deb"
-msgstr "Debian software paketea (Debian proiektuak 1993an kaleratua, Debian/Ubuntu eta haien eratorrientzako instalazio formatu estandarra. dpkg-k kudeatzen du, APT da bere aurreko pakete kudeatzailea, Linux ekosistemako pakete formatu helduenetako bat, Debian familiarentzako formatu nagusia izaten jarraitzen du)"
+msgstr "DEB sistemaren software-paketea (1993an Debian proiektuak ezarritako binarioaren eta iturburu-kodearen kapsulazio zehaztapena. Debian, Ubuntu eta horien eratorri guztien azpiko instalazio estandar gisa, dpkg-n oinarritzen da paketea mantentzeko, eta APT erabiltzen du pakete-kudeatzaile aurreko eraginkor gisa, Linux ekosistemako software banaketaren oinarri helduena da)"
 
 msgid "mime_rpm"
-msgstr "RPM software paketea (Red Hat-ek 1997an kaleratua, Red Hat/Fedora/CentOS/SUSE eta beste banaketa batzuentzako formatu estandarra. RPM 'Red Hat Package Manager'ren laburdura da, DEB-ekin batera Linux-eko bi pakete formatu handietako bat da, RHEL familiarentzako formatu nagusia izaten jarraitzen du)"
+msgstr "RPM sistemaren software-paketea (1997an Red Hat-ek kaleratutako Red Hat Package Manager-en kapsulazio zehaztapena. DEB-ekin batera, Linux-eko pakete-kudeaketa tradizionaleko bi kanpamentu handiak osatzen dituzte, transakzioetan oinarritutako mendekotasun egiaztapena eta maila baxuko softwarearen sinadura digitala egiaztapena dituzte, eta RHEL, Fedora eta CentOS bezalako Red Hat familiaren banaketetan erabat nagusi den banaketa estandarra da)"
 
 msgid "mime_pacman"
-msgstr "Arch software paketea (Arch Linux-ek 2002an kaleratua, pacman pakete kudeatzaileak erabiltzen duen .pkg.tar.zst formatua. Arch Linux jaulkipen jarraituaren muina, bere sinpletasunagatik eta KISS printzipioagatik ezaguna, AUR (Arch User Repository) da bere berezitasuna)"
+msgstr "Pacman artxibo software-paketea (2002an Arch Linux-ek pacman kudeatzailearekin ezarritako .pkg.tar.zst kapsulazio formatua. Arch-ren eguneratze jarraituaren mekanismoaren erdigunea, Zstandard konpresio altuko algoritmo azkarrean oinarritua, AUR-ekin batera, minimalismoa eta KISS printzipioa biltzen dituen pakete banaketa estandar modernoa da)"
 
 msgid "mime_exe"
-msgstr "EXE fitxategi exekutagarria (Windows-en programa exekutagarri formatua, 'Executable' hitzaren laburdura. Windows sistema eragilearen jatorrizko formatu exekutagarria, PE egitura du. MS-DOS-en MZ formatutik eboluzionatu zuen, PE (Portable Executable) formatua Windows NT-rekin sartu zen 1993an eta gaur egun arte erabiltzen da. Software instalazio paketeak, aplikazioak, sistema tresnak formatu hau erabiltzen dute. Erabiltzaileak klik bikoitza egiten du exekutatzeko, munduko formatu exekutagarri hedatuena)"
+msgstr "EXE jatorrizko exekutagarria (Windows plataformako Portable Executable (PE) programa bitarraren formatua. Bere jatorri teknikoa MS-DOS aroko MZ goiburuaren egituratik dator, eta 1993ko Windows NT-tik aurrera PE egitura gisa guztiz ezarri zen, munduan gehien erabiltzen den makina-kode instrukzioetarako, baliabide estatikoen ataletarako eta sistema nukleoaren abiarazteko estandarra da)"
 
 msgid "mime_dll"
-msgstr "DLL lotura dinamikoko liburutegia (Microsoft-ek 1993an kaleratua, Dynamic Link Library. Windows-en partekatutako kode liburutegia, programa exekutatzen denean dinamikoki kargatzen da, memoria eta disko espazioa aurrezten du. Sistemaren osagaiak, aplikazioen pluginak, kontrolatzaileek DLL formatua erabiltzen dute. Windows API-ren inplementazio modu nagusia, 'DLL Hell' arazoa arindu da .NET garaian)"
+msgstr "DLL lotura dinamikoko liburutegia (Windows plataformako Dynamic Link Library kodea partekatzeko liburutegiaren zehaztapena. Exekuzio-denboran karga dinamikoaren eta sinboloen birkokatzearen bidez, memoria fisikoa eta disko-espazioa nabarmen aurrezten ditu, Windows API-ren erdiguneko inplementazio forma gisa. Hasierako 'DLL Hell' arazoa SxS isolamendu paraleloaren mekanismoaren bidez konpondu zen aro modernoan)"
 
 msgid "mime_com"
-msgstr "COM fitxategi exekutagarria (MS-DOS garaitikako formatu exekutagarria, 'Command' hitzaren laburdura. Fitxategi egitura sinplea, 64 KB muga, Windows 3.x baino lehenagoko formatu nagusia. Baztertua, Windows modernoak EXE formatua erabiltzen du, COM luzapena oraindik osagai fitxategi batzuetarako erabiltzen da)"
+msgstr "COM exekutagarri klasikoa (MS-DOS aroko memoria irudiko exekuzio formaturik zaharrena (Command). Egitura gabeko kode-segmentuaren diseinua erabiltzen du, 64 KB-ko memoria fisikoaren helbideratze mugaraino mugatua, gaur egun formatu historiko ondare gisa erretiratua, baina Windows arkitektura modernoetan osagai interfaze zehatz gisa bateragarritasun mugatua mantentzen da)"
 
 msgid "mime_aac"
 msgstr "AAC audioa (MPEG estandarra 1997, Advanced Audio Coding. MP3-ren ondorengoa, soinu kalitatea MP3 baino hobea da bite-tasa berean, YouTube, iTunes, Nintendo Switch-en audio formatu lehenetsia)"

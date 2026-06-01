@@ -458,8 +458,8 @@ msgstr "Hoszt - Oldalak száma - Találatok száma - Sávszélesség - Utolsó l
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Az utolsó látogatás kezdő dátuma] és [Az utolsó látogatás utolsó oldala] csak akkor kerül mentésre, ha a munkamenet nem fejeződött be"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "A főoldal csak az első %s elemet mutatja a legtöbb találattal. A teljes listát a részletes oldalon találja."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Az első %s elem a találatok száma szerint csökkenő sorrendbe van rendezve; a fennmaradó elemek sorrendje nincs meghatározva."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Bejelentkezett felhasználó - Oldalak száma - Találatok száma - Sávszélesség - Utolsó látogatás ideje"
@@ -473,8 +473,8 @@ msgstr "Féreg azonosító - Találatok száma - Sávszélesség - Utolsó láto
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-mail - Találatok száma - Sávszélesség - Utolsó látogatás ideje"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "A főoldal csak az első %s e-mail kérést mutatja. A teljes listát a részletes oldalon találja."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Az első %s e-mail cím a találatok száma szerint csökkenő sorrendbe van rendezve; a fennmaradó címek sorrendje nincs meghatározva."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Oldalak száma - Sávszélesség - Belépés - Kilépés"
@@ -683,6 +683,27 @@ msgstr "A SiteDomain paraméter nincs megadva a config/domain fájlban, vagy el�
 msgid "Please run as Administrator to set permissions"
 msgstr "Futtassa rendszergazdaként a jogosultságok beállításához"
 
+msgid "This directory lacks read permission"
+msgstr "Ehhez a könyvtárhoz hiányzik az olvasási jogosultság"
+
+msgid "Please set read permission for directory"
+msgstr "Kérjük, állítsa be a könyvtár olvasási jogosultságát"
+
+msgid "Missing required parameter in config file"
+msgstr "Hiányzó szükséges paraméter a konfigurációs fájlban"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Kérjük, ellenőrizze, hogy a 'DirData' definiálva van-e."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Úgy tűnik, hogy a böngésző címében lévő tartománynév hiányzik vagy nem teljes"
+
+msgid "Please check the URL parameter"
+msgstr "Kérjük, ellenőrizze az URL paraméterét"
+
+msgid "Format description"
+msgstr "Formátum leírása"
+
 msgid "Please set execute permission"
 msgstr "Kérjük, állítsa be a végrehajtási jogosultságot"
 
@@ -808,376 +829,379 @@ msgstr "Adatgyűjtő eszköz"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Szövegfájl (ASCII szabványosítás 1963-ban, formázatlan egyszerű szöveg. Minden forráskód, konfiguráció, napló alapja. Unix LF-et, Windows CRLF-et használ sortöréshez, továbbra is a legelterjedtebb adatformátum a számítástechnikában)"
+msgstr "TXT egyszerű szövegfájl (1963-ban ASCII szabványosította a formázatlan egyszerű szöveget. Minden forráskód, konfigurációs fájl és rendszernapló alapköveként, platformfüggetlen újsor vezérlési folyamata (CRLF Windows-on, LF Unixon) továbbra is a leguniverzálisabb adatcsere-szabvány a számítástechnika világában)"
 
 msgid "mime_log"
-msgstr "Naplófájl (egyszerű szövegfájl, amely rendszer- és alkalmazásfuttatási információkat rögzít, gyakran használják hibaelhárításra, teljesítményelemzésre, biztonsági ellenőrzésre. Szabványos formátumok, mint Apache combined log, Nginx access log, syslog stb.)"
+msgstr "LOG rendszer futási napló (rögzíti az operációs rendszer, a kernel és az alkalmazások szintű futási állapotait egyszerű szöveges eszközként. Lefedi az Nginx/Apache hozzáférési naplókat (Combined Log) és a szabványos syslog specifikációt, elsődleges adatforrásként szolgál hibaelhárításhoz, streaming teljesítményelemzéshez és biztonsági auditáláshoz)"
 
 msgid "mime_page"
-msgstr "HTML weblap (Tim Berners-Lee találta fel a World Wide Webet 1989-ben, 1990-ben meghatározta a három technológiát HTML/HTTP/URL, ingyenesen kínálta őket szabadalom nélkül. A HTML5 2014-ben vált a W3C hivatalos szabványává, támogatja a megjelenítést, multimédiát és nyomtatást. Turing-díjas 2016-ban)"
+msgstr "HTML hipertext weboldal (Tim Berners-Lee alkotása 1989-ből, a World Wide Web sarokköve. Ingyenes, univerzális hipertext jelölőnyelvként a HTML5 specifikáció 2014-ben hivatalos W3C szabvánnyá vált, natívan támogatja a strukturált multimédiát, a szemantikus interakciót és a folyékony oldalelrendezést, 2016-ban elnyerte a Turing-díjat)"
 
 msgid "mime_khtml"
-msgstr "KHTML webmotor (megjelent a KDE 2.0-val 1998-ban, a Konqueror böngésző renderelő motorja. Az Apple létrehozta a WebKit-et a KHTML alapján 2001-ben, a Google létrehozta a Blink-et a WebKit-ből 2008-ban, amely a Chrome, Edge, Safari és más böngészők magjává vált. A KHTML példa arra, hogy a nyílt forráskódú közösség hogyan alapozta meg a modern böngészőmotorokat, amelynek technológiai öröksége a WebKit/Blinken keresztül folytatódik)"
+msgstr "KHTML web-sablon motor (1998-as KDE 2.0 böngésző renderelő motor specifikációja. A modern webrenderelés alapjait lefektető nyílt forráskódú mérceként technológiai öröksége közvetlenül inspirálta az Apple WebKit és a Google Blink magjait, és a mai modern streaming dinamikus webarchitektúrákban is tovább él)"
 
 msgid "mime_script"
-msgstr "Dinamikus szkript (értelmezett nyelv, nem igényel fordítást. Tartalmazza az ASP, JSP, CGI, ColdFusion, Tcl, VBScript stb., széles körben használták a korai webfejlesztésben, rendszergazdában, feladatok automatizálásában. Modern szkriptnyelvek, mint a Python, Ruby, JavaScript a full-stack fejlesztés fő nyelveivé fejlődtek)"
+msgstr "SCRIPT értelmezett dinamikus szkript (forráskód-folyamok általános kategóriája, amelyeket előzetes fordítás nélkül, soronként hajt végre egy adott futási környezet vagy interpreter. Lefedi az ASP, JSP, CGI és Tcl nyelveket, széles körben használják szerveroldali közös átjárófelületekhez, automatizálási folyamatvezérléshez és rendszerszintű feladat-összefűzéshez)"
 
 msgid "mime_js"
-msgstr "JavaScript szkript (Brendan Eich 10 nap alatt készítette a Netscape-ben 1995-ben, a böngésző natív programozási nyelve. Az ECMAScript szabványosítása 1997-ben történt, a Node.js születése 2009-ben full-stack nyelvvé tette, az npm a világ legnagyobb csomagkezelője. Évek óta a legnépszerűbb programozási nyelv a GitHub-on)"
+msgstr "JavaScript szkript (1995-ös Netscape böngésző natív programozási környezete. 1997-ben létrejött az ECMAScript ipari szabvány, 2009-ben megszületett a Node.js futási környezet, amely áttörte a böngésző korlátait és létrehozta az aszinkron, nem blokkoló teljes verem architektúrát, a világ legnagyobb npm szoftvercsomag ökoszisztémájával kísérve)"
 
 msgid "mime_py"
-msgstr "Python szkript (Guido van Rossum készítette 1991-ben, ismert a kötelező behúzásról és egyszerű szintaxisról. Széles körben használják webfejlesztésben, adattudományban, mesterséges intelligenciában, automatizált üzemeltetésben. Többszörös TIOBE az év programozási nyelve díj nyertese)"
+msgstr "Python szkript (1991-ben Guido van Rossum által létrehozott magas szintű értelmezett szkriptnyelv. A kötelező behúzás által biztosított veszteségmentes olvashatóságának és több paradigmájú kialakításának köszönhetően mára ipari szabvánnyá vált a modern webarchitektúra, a teljes veremű adattudomány, a mesterséges intelligencia (AI) modellek betanítása és a felhő natív automatizálási műveletek területén)"
 
 msgid "mime_sh"
-msgstr "Shell szkript (Unix születése 1971-ben, parancssori szkriptnyelv. Használják rendszergazdára, feladatok automatizálására, szolgáltatások indítására, telepítő szkriptekre. Alapvető készség Linux rendszergazdához)"
+msgstr "Shell szkript (1971-es Unix korszak szabványos parancsértelmező szkriptje. Tartalmazza a Bash, Sh, Dash stb. kernelszintű parancsokat, jellemzően .sh kiterjesztéssel fut, univerzális kernelszintű ragasztóanyagként szolgál az alacsony szintű folyamatvezérléshez, telepítésmentes környezetkonfigurációhoz és automatizált telepítéshez modern Unix-szerű operációs rendszerekben)"
 
 msgid "mime_rb"
-msgstr "Ruby szkript (Yukihiro Matsumoto készítette 1995-ben, a fejlesztői boldogságra összpontosít. A Ruby on Rails keret bevezette a konvenció a konfiguráció helyett paradigmát, befolyásolva a modern webkeretek tervezését)"
+msgstr "Ruby szkript (1995-ben Yukihiro Matsumoto által létrehozott objektumorientált szkriptnyelv. A fejlesztői élmény iránti rendkívüli tiszteletet középpontba állító tervezési filozófiájával a Ruby on Rails keretrendszere forradalmasította a modern magas szintű webarchitektúrát a 'Konvenció a konfiguráció felett (CoC)' paradigma létrehozásával)"
 
 msgid "mime_pl"
-msgstr "Perl szkript (Larry Wall készítette 1987-ben, ismert pragmatizmusáról, 'svájci bicskának' nevezik. A CPAN úttörője volt a modern nyelvi csomagkezelőknek, mély hatással volt a szövegfeldolgozásra, rendszergazdára és CGI-re)"
+msgstr "Perl szkript (1987-ben Larry Wall által létrehozott pragmatikus szkriptnyelv. A modern csomagkezelők (CPAN) úttörőjeként a szövegfeldolgozás 'svájci bicskájaként' ismert. Modern CGI módban, rendkívül alacsony fizikai memóriaigényével és hatékony reguláris kifejezés kezelésével nagy megbízhatóságú alapként szolgál a naplóelemzéshez)"
 
 msgid "mime_php"
-msgstr "PHP dinamikus weblap (Rasmus Lerdorf készítette 1995-ben, kifejezetten webfejlesztésre tervezték. A világ weboldalainak több mint 70%-a használja, hajtja a WordPress, Facebook, Wikipedia platformokat. A PHP 8 bevezeti a JIT fordítást, jelentősen javítva a teljesítményt)"
+msgstr "PHP dinamikus weboldal (Rasmus Lerdorf alkotása 1995-ből, kifejezetten webfejlesztésre tervezve. A globális weboldalak több mint 70%-át működtető központi technológiaként olyan nagy termelési alkalmazások alapja, mint a WordPress és a Wikipedia. A PHP 8-tól kezdve, a JIT (just-in-time) futási motor bevezetésével nagy teljesítményű teljes veremű szerverarchitektúrává fejlődött)"
 
 msgid "mime_image"
-msgstr "Képfájl"
+msgstr "IMAGE kép eszköz osztályozás (lefedi a veszteséges/veszteségmentesen tömörített bittérképeket, modern reszponzív webgrafikát és vektorokat. Kulcsfontosságú mutató egy webhely vizuális erőforrás-terhelésének, az ügyféloldali gyorsítótár találati arányának és a média hálózati sávszélesség-fogyasztásának értékeléséhez)"
 
 msgid "mime_document"
-msgstr "Dokumentumfájl"
+msgstr "DOCUMENT strukturált dokumentum osztályozás (lefedi az egyszerű szöveget, táblázatkezelőket, fix elrendezésű hivatalos dokumentumokat (PDF) és könnyű jelölőnyelveket. Kulcsfontosságú mutató a szerveroldali statikus tudásbázis-elosztás, a vállalati eszközök letöltése és a szöveges folyam átviteli kapacitásának statisztikájához)"
 
 msgid "mime_package"
-msgstr "Szoftvercsomag"
+msgstr "PACKAGE lefordított termék és szoftvercsomag osztályozás (lefedi az operációs rendszer natív végrehajtható programjait, futásidejű kapcsolati könyvtárakat (DLL/SO) és alkalmazáselosztási telepítőcsomagokat. Gyakran használják a szoftverelosztó oldalak kimenő forgalmának és letöltési csúcsainak értékelésére)"
 
 msgid "mime_archive"
-msgstr "Gzip tömörített fájl (GNU projekt 1992-ből, a DEFLATE algoritmuson alapul. A weben dinamikus választartalom tömörítésére használják, a tömörítési arány általában 60-90%. 2015 után bizonyos esetekben a Brotli váltotta fel, de továbbra is a legszélesebb körben támogatott tömörítési formátum a szerveroldalon)"
+msgstr "ARCHIVE archivált és tömörített fájlok (általános kategória a DEFLATE, LZMA stb. magalgoritmusokon alapuló adattömörítési csomagokhoz. Hálózati rétegben a hagyományos csomagelosztás mellett kiterjed a GNU-projekt 1992-es Gzip dinamikus válaszfolyamaira is. Bár a Brotli algoritmust fokozatosan bevezetik néhány modern forgatókönyvben, ez az osztályozás továbbra is kulcsfontosságú mutató a szerver sávszélesség-átviteli sebességének és a szállítási réteg tömörítési hatékonyságának értékeléséhez)"
 
 msgid "mime_audio"
-msgstr "Hangfájl"
+msgstr "AUDIO digitális audiofolyam osztályozás (lefedi a tömörített hangot, hangoskönyveket és streaming audio tárolókat. Specifikus audiokodek szabványokon alapul, használják a multimédiás oldalak hangadatfolyam-átviteli sebességének, az egyidejű streaming sávszélességnek és a hosszú kapcsolatok viselkedésének figyelésére)"
 
 msgid "mime_video"
-msgstr "Videofájl"
+msgstr "VIDEO digitális videofolyam osztályozás (lefedi a nagy felbontású videotárolókat, modern webes animációkat és streaming töredékeket. Kulcsfontosságú mutató a szerver sávszélesség-csúcshatárának és a tartalomszolgáltató hálózatok (CDN) gyorsítási hatékonyságának értékeléséhez nagy hálózati terhelés mellett)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (Brendan Eich fejlesztette 1995-ben)"
+msgstr "JScript szkript (a Microsoft által 1996-ban kifejlesztett, reverse engineeringgel létrehozott saját implementáció az Internet Explorer 3.0-hoz. A klasszikus JavaScript korai hosztversenytársaként szolgált a Windows Script Host (WSH) és a korai ASP backendek fő motorjaként)"
 
 msgid "mime_json"
-msgstr "JSON adat (Douglas Crockford javasolta 2001-ben, könnyű adatcsere-formátum, de facto szabvány webes API-khoz)"
+msgstr "JSON strukturált adat (2001-ben Douglas Crockford által létrehozott könnyű adatszerializációs csereformátum. Szöveges kulcs-érték párokon és tömbstruktúrákon alapul, magas emberi olvashatósággal és veszteségmentes stream elemzési tulajdonságokkal rendelkezik, de facto szabvány a modern webes API-khoz, mikroservices architektúrákhoz és nagy nyelvi modellekkel való interakcióhoz)"
 
 msgid "mime_vbs"
-msgstr "VBScript (Microsoft fejlesztette 1996-ban, Windows szkriptnyelv, ASP weblapokhoz és Windows adminisztrációs szkriptekhez használták. A PowerShell és JavaScript terjedésével fokozatosan eltűnik)"
+msgstr "VBScript szkript (a Microsoft által 1996-ban az IE 3.0-val kiadott szkriptnyelv-változat. A korai dinamikus ASP weboldalak és a Windows rendszeradminisztráció kulcsfontosságú meghajtója volt, de mára hivatalosan elavulttá vált és eltávolították a legújabb Windows 11 magokból, történelmi örökölt technológiához tartozik)"
 
 msgid "mime_conf"
-msgstr "Konfigurációs fájl (szoftverkonfiguráció tárolása szöveges formátumban, gyakori formátumok: INI, JSON, YAML, TOML, XML. A Linux rendszerkonfiguráció többnyire az /etc könyvtárban található)"
+msgstr "CONF rendszerkonfigurációs fájl (adatfájlok általános kategóriája, amelyek a szoftver futásidejű környezetének paramétereit egyszerű szövegként tárolják. Lefedi az INI és a modern YAML, TOML, JSON specifikációkat. Linux rendszerekben többnyire az /etc könyvtárban összpontosulnak, központi függőséget képeznek a rendszerszintű futási állapot finomhangolásához)"
 
 msgid "mime_css"
-msgstr "CSS stíluslap (a W3C 1996 decemberében adta ki az első hivatalos CSS1 szabványt, a CSS2 pozícionálást és médiatípusokat adott hozzá 1998-ban, 2011-től a CSS3 modularizáció lekerekített sarkokat, animációkat, rugalmas dobozt, rácsos elrendezést és reszponzív tervezést vezetett be. A HTML és JavaScript mellett a frontend három fő technológiájának egyike, minden modern böngésző (Chrome, Firefox, Safari, Edge) natív módon támogatja, ez az egyetlen szabvány a weboldalak stílusának meghatározásához)"
+msgstr "CSS cascading style sheet (1996-os W3C szabvány, a HTML/JS mellett a frontend fejlesztés három magjának egyike. A CSS2 pozicionálástól a CSS3 moduláris fejlődéséig fejlődve natívan támogatja a Flexbox-ot, a Gridet és a médialekérdezéses reszponzív tervezést, a domináns szabvány a weboldalak megjelenítésének szétválasztásához modern böngészőkben)"
 
 msgid "mime_xsl"
-msgstr "XSL stíluslap (W3C szabvány 1999-ből, XML dokumentumátalakító nyelv, képes XML-t HTML/PDF/szöveggé alakítani. Használata csökkent a JSON elterjedése után)"
+msgstr "XSL stíluslap (1999-es W3C szabvány, tartalmazza az XSLT transzformációs és az XPath címzési nyelveket, strukturált XML-adatok HTML, PDF vagy egyszerű szöveg formájában történő megjelenítéséhez. A modern fejlesztésben ökoszisztémáját nagyrészt könnyebb sablonmotorok és a JSON adatformátum váltotta fel)"
 
 msgid "mime_runtime"
-msgstr "Futtatható fájl (operációs rendszer futtatható formátuma, mint EXE, ELF, Mach-O, gépi kódot és betöltési információkat tartalmaz)"
+msgstr "végrehajtható fájl (EXE, ELF, Mach-O stb. operációs rendszer natív végrehajtható formátumok, amelyek lefordított alacsony szintű gépi kódot, belépési pontot és rendszerbetöltési információkat tartalmaznak)"
 
 msgid "mime_library"
-msgstr "Könyvtárfájl (DLL, SO, dylib stb., dinamikusan kapcsolt könyvtárak, megosztott kód, amelyet a program a futás során tölt be)"
+msgstr "könyvtárfájl (DLL, SO, dylib stb., dinamikus vagy statikus kapcsolati könyvtárak, amelyek megosztott szimbólumokat és áthelyezési kódot tartalmaznak más programok számára hívásra és futásidőben történő betöltésre)"
 
 msgid "mime_swf"
-msgstr "Flash animáció (a Macromedia fejlesztette 1996-ban, később az Adobe tulajdona. Interaktív webes animációs szabvány, egykor uralta az internetes animációkat és játékokat. Hátrányok: bővítményt igényel, nem támogatott mobil eszközökön, magas biztonsági kockázat. Az Adobe 2017-ben bejelentette a kivezetését, 2020-ban teljesen megszüntette a támogatását, felváltotta a HTML5/CSS3/JS)"
+msgstr "Flash animáció (1996 Macromedia, 2005-ben felvásárolta az Adobe. Interaktív webes animációs szabvány, egykor uralta az internetes animációkat és játékokat. Hátrányai: bővítményfüggőség, mobil támogatás hiánya, magas biztonsági kockázat. Az Adobe 2017-ben bejelentette a kivezetését, 2020-ban a támogatás teljesen megszűnt, felváltotta a HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "DTD dokumentumtípus-definíció (XML specifikáció, meghatározza egy XML dokumentum szerkezetét, az XML érvényességének ellenőrzésére szolgál)"
+msgstr "DTD dokumentumtípus-definíció (1998-ban jelent meg az XML 1.0-val, az XML/HTML dokumentum szerkezetének meghatározására és érvényességének ellenőrzésére használják. A modern fejlesztésben nagyrészt felváltották rugalmasabb megoldások, mint az XML Schema, RELAX NG stb.)"
 
 msgid "mime_csv"
-msgstr "CSV adatformátum (vesszővel elválasztott értékek, gyakori táblázatos adatformátum, szabvány az Excel és adatbázisok importálásához/exportálásához)"
+msgstr "CSV adatformátum (vesszővel elválasztott értékek, univerzális egyszerű szöveges táblaformátum a mainframe korszakból (IBM Fortran fordító) 1972-ből. 2005-ben az RFC 4180 formalizálta, mint platform- és nyelvfüggetlen, veszteségmentes adatcsere-szabványt. Széles körben használják hatékony importáláshoz/exportáláshoz Excelben, relációs adatbázisokban és adatelemzésben (Pandas))"
+
+msgid "mime_cur"
+msgstr "egérmutató fájl (.cur formátum, az egérmutató stílusának testreszabásához használják, például ujj mutató weboldalakon vagy homokóra ikon várakozáskor. Rokona a gyakori .ico ikonnak, de van egy további 'forró pontja' – a tényleges kattintás helye. Történelem: a Windows 3.1-gyel (1992) vezették be, kulcsfontosságú alkotóeleme a parancssorból az egérrel vezérelt grafikus felhasználói felületre való átmenetnek)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java alkalmazásindító, 2000-es évekbeli Java asztali alkalmazásterjesztési technológia, mára elavult)"
+msgstr "Java Web Start (2000-es évekbeli Java asztali alkalmazás-elosztási technológia, .jnlp fájlokon keresztül indít távoli Java programokat. Biztonsági problémák és a modern elosztási módszerek elterjedése miatt mára nagyrészt elavult)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader e-könyv (a Microsoft 2000-ben dobta piacra, LIT formátum, elavult)"
+msgstr "Microsoft Reader e-könyv (2000 Microsoft, LIT formátum. Elavult, mára olyan eszközökkel konvertálható EPUB vagy PDF formátumba, mint a Calibre)"
 
 msgid "mime_svg"
-msgstr "SVG vektorgrafika (W3C szabvány 1999-ből, mivel a Microsoft hosszú ideig saját VML formátumát erőltette, az IE böngésző csak 2011-ben támogatta, ami késleltette az elterjedését. 2015 után, az IE kivezetésével és a nagy felbontású képernyők elterjedésével a ikonok és logók kedvelt formátumává vált)"
+msgstr "SVG vektorgrafika (1999-es W3C szabvány, XML-alapú 2D vektorképformátum. Veszteégmentes skálázhatóságot és szöveges streaming előnyöket kínál. Minden modern böngésző natívan támogatja, széles körben használják nagy felbontású webikonokhoz, logókhoz és vektoranimációkhoz, a modern webgrafika központi szabványa)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator vektorgrafika (1987-ben jelent meg, iparági szabvány vektorgrafikus formátum, kedvelt nyomdai tervezéshez, logókhoz, ikonokhoz)"
+msgstr "AI vektorgrafika (1987-es Adobe saját vektorformátum. Az ipari szabvány tördeléshez, nyomtatástervezéshez és márkaidentitáshoz, támogatja a több réteget és a fejlett tördelési vektoradatokat, a professzionális vizuális művészet elsődleges hordozója)"
 
 msgid "mime_phshop"
-msgstr "Photoshop kép (az Adobe 1990-ben dobta piacra, Photoshop forrásfájl formátum PSD, képfeldolgozás iparági szabványa)"
+msgstr "PSD réteges kép (az Adobe által 1990-ben a Photoshop-pal kiadott saját bittérkép-forrásformátum. Támogatja a több réteget, csatornát, maszkot és a veszteségmentes szerkesztési adatokat, és a globális ipari szabvánnyá vált képfeldolgozásban és digitális festészetben)"
 
 msgid "mime_ttf"
-msgstr "TrueType betűtípus (Apple és Microsoft közösen fejlesztette 1989-ben, vektoros betűformátum, a képernyős megjelenítés és a nyomtatás konzisztens, modern operációs rendszerek alapértelmezett betűformátuma)"
+msgstr "TrueType betűtípus (1989-ben az Apple és a Microsoft által közösen kifejlesztett digitális körvonalas betűtípus-formátum. Kvadratikus Bézier-görbéken alapul, abszolút pixeles konzisztenciát biztosít a képernyős megjelenítés és a nyomtatott kimenet között, a modern asztali operációs rendszerek natív alapértelmezett betűtípus-formátuma)"
 
 msgid "mime_fon"
-msgstr "WOFF2 webbetűtípus (W3C ajánlás 2014-ből, Brotli tömörítési algoritmust használ, a régebbi WOFF-hoz képest a térfogata kb. 30%-kal kisebb, a TTF/OTF-hez képest több mint 50%-kal kisebb, jelenleg minden modern böngésző támogatja, a modern webbetűtípusok kedvelt formátuma, a böngészők több mint 98%-a támogatja)"
+msgstr "FON bittérképes betűtípus (1980-as évekbeli Microsoft korai rendszerszintű pontmátrix betűtípus-formátum. Nem támogatja a veszteségmentes arányos skálázást, jellemzően pixel alapú szövegmegjelenítésre korlátozódik örökölt rendszerekben vagy korai beágyazott eszközkomponensekben)"
 
 msgid "mime_pdf"
-msgstr "PDF dokumentum (Adobe fejlesztette 1993-ban, 2008-ban ISO szabvánnyá vált. Platformfüggetlen dokumentumformátum, megőrzi a formázás konzisztenciáját, globális szabvány az elektronikus dokumentumok terjesztéséhez)"
+msgstr "PDF elektronikus dokumentum (az Adobe által 1993-ban kifejlesztett, 2008-ban ISO 32000 nemzetközi szabvánnyá vált. Platformfüggetlen, fix elrendezésű dokumentumformátum abszolút elrendezési és formai hűséggel, a globális szabvány az elektronikus dokumentumok terjesztéséhez és a digitális kiadáshoz)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET dinamikus oldal (a Microsoft 2002-ben dobta piacra, dinamikus weblap technológia Windows platformon, a .NET Framework része)"
+msgstr "ASP.NET dinamikus oldal (a Microsoft által 2002-ben a .NET architektúrával kiadott szerveroldali dinamikus weblap-technológia. Az IIS motoron fut, vállalati szintű Windows szerveroldali dinamikus webalkalmazások és elosztott rendszerek építésére használják)"
 
 msgid "mime_mdb"
-msgstr "Access adatbázis (Microsoft Access adatbázisfájl, 1992-ben jelent meg, Windows asztali adatbázis megoldás)"
+msgstr "MDB relációs adatbázis (a Microsoft által 1992-ben az Access-szel kiadott asztali szintű relációs adatbázis-tároló formátum. Beépített Jet adatbázismotorral rendelkezik, relációs adatbázis-megoldásként szolgált a korai személyi számítógépes és kis- és középvállalati információmenedzsmentben)"
 
 msgid "mime_md"
-msgstr "Markdown dokumentum (John Gruber készítette 2004-ben, szintaxisát a reStructuredText és a Setext befolyásolta. Az alapvető tervezési filozófia az 'olvashatóság = renderelhetőség', az eredeti implementáció Markdown.pl Perl reguláris kifejezéseket használ. Származtatott specifikációk közé tartozik a GFM (2013), CommonMark (2017), Pandoc Markdown stb. Olyan ökoszisztémákat hajt, mint a GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, és a statikus webhelygenerátorok és fejlesztői dokumentáció de facto szabványformátumává vált)"
+msgstr "Markdown dokumentum (2004-ben John Gruber által létrehozott könnyű jelölőnyelv. Központi tervezési filozófiája, hogy 'az olvasható az, ami renderelődik', ami olyan modern származtatott specifikációkat hajt, mint a GFM és a CommonMark. Széles körben használják csere szabványként műszaki dokumentációhoz, tudásbázisokhoz (Obsidian) és modern statikus weboldal generátorokhoz)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports jelentésformátum (SAP üzleti intelligencia, vállalati jelentések szabványos formátuma)"
+msgstr "Crystal Reports jelentés (az SAP Business Intelligence (BI) platform professzionális vállalati szintű jelentésfájl-formátuma. Több adatforrású csatlakozást és összetett dinamikus diagrammegjelenítési képességeket kínál, széles körben használják professzionális jelentések készítésére multinacionális vállalatok pénzügyi és adatelemzési rendszereiben)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice dokumentum (a The Document Foundation fejlesztette 2010-ben, az OpenOffice egyik ága, az ODF szabvány implementációja, a fő nyílt forráskódú irodai csomag)"
+msgstr "LibreOffice dokumentum (az OpenOffice-on alapuló nyílt forráskódú irodai csomag saját formátuma, amelyet a The Document Foundation alapított 2010-ben. Mélyen implementálja a W3C ODF (OpenDocument Format) nemzetközi szabványát, a modern nyílt forráskódú ökoszisztéma irodai sarokköve)"
 
 msgid "mime_encrypt"
-msgstr "Titkosított fájl (megtekintéshez vissza kell fejteni, gyakori kiterjesztések: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT titkosított fájl (eredeti bináris vagy szöveges adatok, amelyeket specifikus szimmetrikus vagy aszimmetrikus titkosítási algoritmusokkal dolgoztak fel. Tartalmazza a .enc, .pgp, .gpg stb. alapvető származtatott formátumokat, hálózati rétegben a nem nyilvános adatok bizalmas kezelésének és integritásellenőrzésének biztosítására használják)"
 
 msgid "mime_gpx"
-msgstr "GPS útvonal adatok (GPS csereformátum, földrajzi információkat rögzít, gyakori formátum sportórákhoz és navigációs eszközökhöz)"
+msgstr "GPX műholdkövetési adatok (XML-alapú globális helymeghatározó rendszer csereformátum. Földrajzi koordináták, útpontok, útvonalak és történelmi nyomvonalak leírására specializálódott, gyakori nyílt adatszabvány modern mobil sporteszközökhöz, autós navigációhoz és földrajzi információs rendszerekhez (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Lemezkép (DMG, ISO, IMG stb. lemez/CD-ROM képfájlok, szoftverterjesztésre vagy tárolóeszközök biztonsági mentésére használják)"
+msgstr "Disk Image lemezkép (ISO, DMG, IMG stb., fizikai lemez vagy optikai adathordozó szektorról szektorra készített alacsony szintű képfájl. Alacsony szintű rendszertelepítésre, nagy méretű szoftver biztonságos terjesztésére és adathordozók teljes fizikai szintű biztonsági mentésére használják)"
 
 msgid "mime_vm"
-msgstr "Virtuális gép kép (virtuális lemezfájlok, mint VMDK, VDI, VHDX, OVA, formátumok virtualizációs platformokhoz, mint a VMware, VirtualBox, Hyper-V)"
+msgstr "VM virtuális gép kép (VMDK, VDI, VHDX, OVA stb., virtualizált fizikai lemezképek. A VMware, VirtualBox és Hyper-V platformok alapja, alacsony szintű hardveremulációhoz, példány-állapotmentésekhez és felhő infrastruktúra terjesztéshez használják)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent torrent fájl (Bram Cohen találta fel 2001-ben, P2P letöltési indexfájl, fájl metaadatokat és Tracker információkat tartalmaz)"
+msgstr "BitTorrent torrent fájl (2001-ben Bram Cohen által tervezett P2P peer-to-peer elosztott letöltési index. Bencode kódoláson alapul, tárolja az eredeti fájl ellenőrzési metaadatait és a Tracker szerver címzési információit, a decentralizált hálózati folyamatos terjesztés központi hordozója)"
 
 msgid "mime_gis"
-msgstr "GIS földrajzi információs rendszer adatok (geotérbeli adatok, mint Shapefile, GeoJSON, térképekhez és térbeli elemzéshez használják)"
+msgstr "GIS geotérbeli adatok (földrajzi információs rendszer adatszabvány, középpontjában a Shapefile és GeoJSON áll. Többdimenziós geometriai koordinátákat, réteg-topológiát és attribútumadatokat tartalmaz, széles körben használják nagy felbontású digitális térképek rendereléséhez, műholdas távérzékeléshez és térbeli geometriai elemzéshez)"
 
 msgid "mime_ebook"
-msgstr "E-könyv (e-könyv formátumok, mint EPUB, MOBI, AZW. Az EPUB nemzetközi szabvány, a MOBI/AZW az Amazon Kindle formátumai)"
+msgstr "EBOOK e-könyv (digitális kiadói formátum, amelynek középpontjában a W3C nemzetközi nyílt EPUB szabványa és az Amazon Kindle saját MOBI/AZW architektúrája áll. Támogatja az adaptív streaming elrendezést, a metaadat-inkapszulálást és a DRM digitális jogkezelést, univerzális hordozó a mobil digitális olvasáshoz)"
 
 msgid "mime_avif"
-msgstr "AVIF kép (Alliance for Open Media 2019-ben jelent meg, AV1 kódoláson alapul, tömörítési aránya 50%-kal jobb a WebP-nél, új generációs webkép szabvány)"
+msgstr "AVIF nagy hatékonyságú kép (2019-es Alliance for Open Media (AOMedia) következő generációs ultra-nagy felbontású kép szabvány. Az AV1 videokódolás kulcskeret technológiáján alapul, 50%-kal jobb tömörítési aránnyal, mint a WebP, és natív támogatással rendelkezik a nagy dinamikus tartományhoz (HDR), a modern webes képtovábbítás mainstream szabványa)"
 
 msgid "mime_markdown"
-msgstr "Markdown dokumentum (John Gruber tervezte 2004-ben, könnyű jelölőnyelv, gyakori formátum a GitHub README-hez, műszaki dokumentációhoz, fórumbejegyzésekhez)"
+msgstr "Markdown könnyű dokumentum (2004-ben John Gruber által létrehozott szöveges dokumentum jelölőnyelv. Egyszerű szöveges deklaratív tervezést használ, szintaxisát a reStructuredText ihlette, széles körben használják GitHub projektekben, mérnöki szintű műszaki dokumentációban és modern statikus tartalomkezelési ökoszisztémákban)"
 
 msgid "mime_yaml"
-msgstr "YAML konfiguráció (Clark Evans tervezte 2001-ben, ember által olvasható adatszerializációs formátum, szabvány a Kubernetes, Ansible, Docker Compose konfigurációs fájlokhoz)"
+msgstr "YAML szerializált konfiguráció (2001-ben Clark Evans és mások által tervezett ember által olvasható adatszerializációs formátum. Hierarchikus behúzáson és kulcs-érték leképezésen alapul, mára a felhő natív infrastruktúra konfigurációs szabványává vált a Kubernetes, az Ansible automatizálás és a Docker Compose számára)"
 
 msgid "mime_toml"
-msgstr "TOML konfiguráció (Tom Preston-Werner tervezte 2013-ban, 'Tom's Obvious Minimal Language', konfigurációs fájl formátum modern eszközökhöz, mint a Rust/Cargo, Python/pip, Go)"
+msgstr "TOML szemantikus konfiguráció (2013-ban Tom Preston-Werner által tervezett minimalista nyelv. Erős típusossággal, explicit leképezéssel és tiszta szemantikával rendelkezik, mint alacsony szintű tervezési előnyök, mára széles körben használják szabványos konfigurációs fájlként a modern Rust (Cargo), Python (pyproject.toml) és Go eszközláncokhoz)"
 
 msgid "mime_vue"
-msgstr "Vue komponens fájl (2014-ben mutatta be Evan You, progresszív JavaScript keretrendszer. Az egyfájlos komponensek (SFC) segítségével tökéletesen egyesíti a HTML-t, CSS-t és JS-t, jelentősen növelve a fejlesztés hatékonyságát. Ez a világ egyik legnépszerűbb frontend keretrendszere. Emellett a modern statikus oldalgenerátorok, mint a VitePress magjaként széles körben használják interaktív műszaki dokumentációk és blogok működtetésére.)"
+msgstr "Vue egyfájlos komponens (2014-ben Evan You által kiadott progresszív webes keretrendszer saját SFC formátuma. Egyetlen fájlban valósítja meg a HTML/CSS/JS szempontok szétválasztását és a reaktív állapotkötést, mélyen hajtva a modern interaktív frontend webalkalmazásokat és a nagyméretű statikus weboldal motorokat)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly modul (W3C szabvány 2017-ből, nagy teljesítményű végrehajtási formátum a böngészőben, a C/C++/Rust/R erre a célra fordítható, teljesítmény közel a natívhoz)"
+msgstr "WebAssembly bináris modul (2017-ben a W3C által létrehozott nagy teljesítményű, alacsony szintű bájtkód szabvány a web számára. Lehetővé teszi az erősen típusos nyelvek (mint C/C++/Rust) böngésző homokozó környezetbe történő fordítását, közel natív hardveres végrehajtási hatékonyságot biztosítva, a modern webes peremhálózati (edge computing) számítás sarokköve)"
 
 msgid "mime_jsx"
-msgstr "React JSX komponens (a Facebook 2013-ban adta ki a JavaScript XML-et, a React keret komponens szintaxisa, innovatív paradigma, amely HTML-t visz a JavaScript-be)"
+msgstr "React JSX komponens (2013-ban a Facebook által a React keretrendszerrel kiadott JavaScript XML szintaxis kiterjesztés. Támogatja a virtuális DOM struktúrák deklaratív felépítését JavaScripten belül, lehetővé téve a frontend 'UI mint állapot függvénye' komponensalapú fejlesztési paradigmáját)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX komponens (a Microsoft fejlesztette 2012-ben, TypeScript + JSX, a típusbiztos React fejlesztés szabványos írásmódja)"
+msgstr "TypeScript TSX komponens (a Microsoft által 2012-ben kifejlesztett TypeScript erős típusú szintaxisának és a JSX-nek a kombinációja. Statikus fordítási idő típusellenőrzést és interfész-megkötéseket injektál a React komponensfejlesztésbe, kód szabvány a modern nagy frontend rendszerek biztonságos fejlesztéséhez)"
 
 msgid "mime_heif"
-msgstr "HEIF kép (MPEG szabvány 2015-ből, nagy hatékonyságú képfájl formátum, széles körben használják az Apple ökoszisztémában)"
+msgstr "HEIF nagy hatékonyságú kép (2015-ben az MPEG szervezet által létrehozott nagy hatékonyságú képfájl-formátum. A HEVC (H.265) videokódolási algoritmuson alapul, támogatja a több képkockát, mélységi térképeket és metaadatokat nagyon kis térfogatban, saját tárolási szabvány a modern mobil operációs rendszerek és intelligens terminál eszközök számára)"
 
 msgid "mime_heic"
-msgstr "HEIC kép (az Apple HEIF implementációja, alapértelmezett fotóformátum iPhone-on, natív támogatással iOS/macOS alatt)"
+msgstr "HEIC nagy hatékonyságú kép (Apple saját bittérkép formátuma a nemzetközi HEIF szabvány alapján. A modern iPhone-ok alapértelmezett fényképtárolási formátumaként hardverszintű kódolással/dekódolással rendelkezik iOS/macOS rendszeren és natív operációs rendszer támogatással, drámaian csökkenti az alacsony szintű tárhelyigényt, miközben magas képminőséget tart fenn)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D modell (GL átviteli formátum, '3D világ JPEG-je', a Khronos Group adta ki 2015-ben, szabványos formátum a Web 3D-hez)"
+msgstr "glTF 3D eszközmodell (2015-ben a Khronos Group által kiadott GL átviteli formátum szabvány. JSON architektúrát használ háromdimenziós jelenetek leírására, a '3D JPEG-jeként' ismert, a könnyű ipari szabvány a modern WebGL/WebGPU és virtuális valóság rendereléshez)"
 
 msgid "mime_glb"
-msgstr "GLB bináris 3D modell (a GLTF bináris változata, egyetlen fájl tartalmazza az összes erőforrást, 3D jelenetek terjesztésére használják)"
+msgstr "GLB bináris 3D modell (a glTF eszközmodell veszteségmentes bináris kapszulázási változata. Egyetlen fájlba egyesíti a jelenet struktúráját, az alacsony szintű háló csúcspont adatait, az anyagokat és a textúrákat, kifejezetten a webes 3D eszközök hatékony továbbítására és streaming terjesztésére tervezve platformok között)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY szójegyzék (kifejezésdefiníciós fájl, terminológiai kezeléshez dokumentációs rendszerekben)"
+msgstr "GLOSSARY adat szójegyzék (kifejezésdefiníciós fájl kifejezetten dokumentumkezelő rendszerekhez és strukturált korpuszokhoz. Tartalmazza a szabványos kifejezésdefiníciókat, többnyelvű leképezéseket és metaadat-leképezéseket, fogalmi konzisztencia fenntartásához használják automatizált szövegelemzésben és tartalomkiadó rendszerekben)"
 
 msgid "mime_cbz"
-msgstr "CBZ képregény (ZIP tömörített képregényképek, gyakori formátum képregénygyűjteményekhez)"
+msgstr "CBZ képregény (ZIP tömörítés-alapú saját képregénykép-archiválási formátum. Statikus bittérképes képek folyamatos sorozatát tartalmazza, univerzális könnyű tároló szabványként szolgál digitális képregény kiadáshoz és platformfüggetlen helyi gyűjteményekhez)"
 
 msgid "mime_cbr"
-msgstr "CBR képregény (RAR tömörített képregényképek, gyakori formátum képregénygyűjteményekhez)"
+msgstr "CBR képregény (RAR tömörítés-alapú saját képregénykép-archiválási formátum. A RAR algoritmust használja statikus bittérkép-sorozatok kapszulázására, magas tömörítési aránnyal és széles kompatibilitási támogatással rendelkezik a digitális képregény terjesztés területén)"
 
 msgid "mime_fb2"
-msgstr "FB2 e-könyv (FictionBook 2.0, orosz e-könyv formátum, XML szerkezet, széles körben támogatott nyílt forráskódú olvasók által)"
+msgstr "FB2 e-könyv (2000-es évek eleji FictionBook 2.0 e-könyv szabvány. Tiszta XML struktúrát használ a könyvtulajdonságok és szöveghierarchia leírására, széles körben támogatott a nyílt forráskódú e-könyv ökoszisztémában és az örökölt digitális kiadói olvasókban)"
 
 msgid "mime_kepub"
-msgstr "KEPUB e-könyv (Kobo speciális EPUB formátuma, optimalizált formátum a Kobo e-könyv olvasóhoz)"
+msgstr "KEPUB e-könyv (a Kobo saját, az EPUB szabványon alapuló továbbfejlesztett e-könyv formátuma. Hardverszinten optimalizált Kobo e-könyv olvasókhoz, hatékonyabb oldalelrendezést és olvasási statisztikai interakciót kínál)"
 
 msgid "mime_m4b"
-msgstr "M4B hangoskönyv (MPEG-4 hangformátum könyvekhez, támogatja a könyvjelzőket, iTunes hangoskönyv formátum)"
+msgstr "M4B hangoskönyv (MPEG-4 Part 14 (MP4) tároló architektúrán alapuló hangoskönyv formátum. AAC kódolást használ, natívan támogatja az alacsony szintű könyvjelzők elhelyezését, a megszakítási ponttól történő lejátszás folytatását és a fejezetek beágyazását, egykor szabványos formátum volt az Apple iTunes ökoszisztémában)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX formátum (az Amazon 2015-ben dobta piacra, a Kindle speciális e-könyv formátuma, támogatja a fejlett tördelést és a gyors lapozást)"
+msgstr "Kindle KFX formátum (2015-ben az Amazon által a Kindle-lel kiadott saját továbbfejlesztett digitális kiadói formátum. Támogatja a fejlett tipográfiai ligatúrákat, a nagy dinamikájú betűtípus renderelést és a kernelszintű streaming oldalbetöltést (Page Flip), a modern Kindle platform központi szabványa)"
 
 msgid "mime_chm"
-msgstr "CHM súgófájl (a Microsoft 1997-ben dobta piacra, fordított HTML súgó formátum, szabvány a Windows szoftverek súgódokumentációjához)"
+msgstr "CHM lefordított súgófájl (a Microsoft által 1997-ben kiadott fordított HTML súgó információs rendszer. Hipertext adatokat és alacsony szintű indexeket egyetlen bináris tárolóba csomagol, hosszú ideje a Windows-szoftverek helyi offline súgódokumentációjának szabványos formátuma)"
 
 msgid "mime_mht"
-msgstr "MHT webarchívum (a Microsoft 1999-ben dobta piacra, egyfájlos webformátum, az IE böngésző weboldalmentési formátuma)"
+msgstr "MHT webarchívum (a Microsoft által 1999-ben kiadott MIME aggregációs hipertext formátum. Az RFC 2557 szabványon alapul, HTML forrást, CSS-t, JS-t és beágyazott képeket egyetlen szövegfájlba csomagol, örökölt böngészőkben offline weboldal mentésére használják)"
 
 msgid "mime_wml"
-msgstr "WML vezeték nélküli jelölőnyelv (WAP szabvány 1999-ből, korai mobiltelefonok weblapjaihoz használták, elavult)"
+msgstr "WML vezeték nélküli jelölőnyelv (a WAP fórum által 1999-ben létrehozott mobil jelölési szabvány. Az XML specifikáción alapul, kifejezetten a korai keskeny sávú vezeték nélküli mobilhálózatokhoz és alacsony számítási teljesítményű alapfunkciós telefonokhoz tervezték, a modern webes ökoszisztémában nyugdíjazott örökölt technológia)"
 
 msgid "mime_xhtml"
-msgstr "XHTML weblap (W3C szabvány 2000-ből, a HTML XML változata, szigorúbb szintaxis. A W3C 2009-ben beszüntette a karbantartását, a fókusz a HTML5-re helyeződött)"
+msgstr "XHTML hipertext weboldal (2000-es W3C szabvány, XML architektúrán alapuló szigorú hipertext jelölőnyelv. 2009-ben a W3C leállította a technikai fejlesztését, és teljesen a HTML5 specifikáció felé fordult, ma már főleg örökölt rendszerekben használják szemantikus weboldal rendereléshez)"
 
 msgid "mime_xml"
-msgstr "XML dokumentum (W3C szabvány 1998-ból, kiterjeszthető jelölőnyelv, alapvető formátum webszolgáltatásokhoz, konfigurációs fájlokhoz, adatcseréhez)"
+msgstr "XML strukturált dokumentum (1998-as W3C szabvány kiterjeszthető jelölőnyelv. Önleíró címke architektúrájával alapvető formátum a hálózati webszolgáltatásokhoz (SOAP/REST), rendszerszintű konfigurációs fájlokhoz (XSD) és platformfüggetlen adatcseréhez)"
 
 msgid "mime_sgml"
-msgstr "SGML dokumentum (ISO szabvány 1986-ból, a HTML elődje, szabványos általános jelölőnyelv, az XML és a HTML is az SGML-ből származik)"
+msgstr "SGML szabványos általános jelölőnyelv (1986-os ISO 8879 nemzetközi szabvány. Az elektronikus dokumentumok strukturált leírásának ipari úttörőjeként mind az XML, mind a korai HTML specifikációk ebből a szabványos metanyelvből származnak)"
 
 msgid "mime_apng"
-msgstr "APNG animáció (a Mozilla fejlesztette 2004-ben, a PNG animációs kiterjesztése, modern GIF helyettesítő, támogatja az igazi színeket és az átlátszóságot)"
+msgstr "APNG dinamikus grafika (2004-ben a Mozilla által kifejlesztett PNG dinamikus kiterjesztés. Támogatja a 24 bites valódi színt és a 8 bites alfa csatorna félig áttetszőségét, nagy felbontású alternatívája a GIF formátumnak modern webes forgatókönyvekben)"
 
 msgid "mime_bmp"
-msgstr "BMP bitmapa (Windows bitmap formátum, natív módon támogatott Windows 1.0 óta. Tömörítetlen, nagy fájlméret, de egyszerű szerkezete és a további kodekek hiánya miatt továbbra is használják a Windows 11 képernyőrögzítő eszközében, a Paint programban, az EXE/MSI telepítőcsomagok ikonerőforrásaiban, kurzorfájlokban és néhány régebbi illesztőprogramban. Azonos képminőség mellett a fájlméret körülbelül 3-10-szer nagyobb, mint a PNG. A legtöbb esetben felváltotta a PNG/JPEG, de a Windows ökoszisztéma továbbra is széles körű kompatibilitást tart fenn)"
+msgstr "BMP natív bittérkép (a Microsoft platform eszközfüggetlen bittérkép formátuma, amely a Windows 1.0 korszaka óta létezik. Veszteségmentes, tömörítetlen tárolást használ, így térfogata jellemzően 3-10-szer nagyobb, mint a PNG-é, de mivel nincs szüksége kódolási/dekódolási többletköltségre, még mindig széles körben be van ágyazva a Windows 11 alapvető összetevőibe, EXE/MSI erőforrás-szekciókba és örökölt illesztőprogram-grafikus pufferekbe)"
 
 msgid "mime_cdr"
-msgstr "CDR vektorgrafika (CorelDRAW saját formátuma, kanadai Corel cég, vektorgrafikus tervező szoftver)"
+msgstr "CDR vektorgrafika (a Corel Corporation saját CorelDRAW professzionális vektortervező forrásformátuma. Támogatja a rétegenkénti színkezelést, összetett matematikai görbe csomópontokat és nyomtatási szintű elrendezési adatokat, speciális formátum a professzionális grafikai nyomtatás és a reklámtervezés területén)"
 
 msgid "mime_gif"
-msgstr "GIF kép (a CompuServe fejlesztette 1987-ben, 256 színű animált képformátum. Hátrányok: kevés szín, durva képminőség, nem támogatja az átlátszóságot, nagy fájl, alacsony képkockasebesség. Felváltották a modern animált formátumok, mint az APNG, WebP)"
+msgstr "GIF indexelt színű kép (a CompuServe 1987-es 8 bites indexelt színű bittérkép formátuma. Az LZW algoritmuson alapul, 256 színszintre és egyszínű áttetszőségre korlátozódik, nagy képkockasebességnél terjedelmes, fokozatosan felváltják a modern, hatékony animációs szabványok, mint az APNG, WebP stb.)"
 
 msgid "mime_ico"
-msgstr "ICO ikon (Windows ikonformátum, támogatja a több felbontást, szabványos formátum a weboldalak faviconjához)"
+msgstr "ICO rendszerikon (a Windows natív ikonerőforrás-kapszulázási formátuma. Támogatja több, különböző felbontású és színmélységű képváltozat keverését egyetlen tárolóban, egyben a modern webböngészők webhely-azonosítójának (Favicon) univerzális terjesztési szabványa is)"
 
 msgid "mime_jpeg"
-msgstr "JPEG kép (ISO szabvány 1992-ből, veszteséges tömörítési formátum fényképekhez, de facto szabvány az internetes fényképekhez)"
+msgstr "JPEG tömörített kép (1992-es ISO 10918 nemzetközi szabvány veszteséges tömörítési formátum. A diszkrét koszinusz transzformáción (DCT) alapul, magas tömörítési arányt ér el, miközben kiváló, valósághű képminőséget tart fenn, abszolút de facto szabvány a statikus fényképekhez a globális interneten)"
 
 msgid "mime_jpg"
-msgstr "JPEG kép (ISO szabvány 1992-ből, veszteséges tömörítési formátum fényképekhez, de facto szabvány az internetes fényképekhez)"
+msgstr "JPEG tömörített kép (1992-es ISO 10918 nemzetközi szabvány veszteséges tömörítési formátum. A diszkrét koszinusz transzformáción (DCT) alapul, magas tömörítési arányt ér el, miközben kiváló, valósághű képminőséget tart fenn, abszolút de facto szabvány a statikus fényképekhez a globális interneten)"
 
 msgid "mime_png"
-msgstr "PNG kép (W3C ajánlás 1996-ból, támogatja az igazi színeket és az átlátszóságot, statikus GIF helyettesítő, szabvány a veszteségmentes képekhez az interneten)"
+msgstr "PNG veszteségmentes kép (1996-ban a W3C által ajánlott hordozható hálózati grafika szabvány. Veszteségmentes tömörítési algoritmust használ, natívan támogatja a 24 bites valódi színt és a 8 bites alfa csatorna áttetszőségét, a klasszikus statikus GIF nagy felbontású alternatívájaként az internetes veszteségmentes pixelgrafikák abszolút de facto szabványa)"
 
 msgid "mime_ps"
-msgstr "PostScript oldalleíró fájl (az Adobe 1985-ben dobta piacra, oldalleíró nyelv, a PDF elődje, nyomtatáshoz és kiadványszerkesztéshez használják)"
+msgstr "PostScript oldalleíró fájl (az Adobe által 1985-ben kiadott veremalapú oldalleíró nyelv. A PDF formátum technológiai előfutáraként alacsony szinten biztosít hardverfüggetlen szövegtördelést és nagy pontosságú vektorgrafikus renderelést, alapvető szabvány a professzionális nyomtatás és lézernyomtatás területén)"
 
 msgid "mime_psb"
-msgstr "PSB nagy dokumentum (Adobe Photoshop formátum nagyon nagy képekhez, támogatja a 2 GB-nál vagy 30000 pixelnél nagyobb óriásképeket)"
+msgstr "PSB nagy rétegdokumentum (az Adobe Photoshop saját, extra nagy forrásfájl-kapszulázási formátuma. Szakít a szabványos PSD formátum 2 GB fizikai térfogatának és 30 000 pixel belső címzési korlátainak, kifejezetten rendkívül nagy, mélyen rétegzett, hatalmas digitális művészeti eszközök tárolására tervezték)"
 
 msgid "mime_psd"
-msgstr "PSD kép (Adobe Photoshop forrásfájl, támogatja a rétegeket, csatornákat, útvonalakat, a képfeldolgozás iparági szabvány formátuma)"
+msgstr "PSD réteges terv forrásfájl (az Adobe Photoshop saját réteges képtervezési tárolója. A grafikai képalkotás területén ipari szabvány tárolóként natívan kapszulázza a teljes réteg renderelési fát, bittérkép csatornákat, vektoros vágási útvonalakat és összetett keverési módokat, támogatja a veszteségmentes teljes adatszerkesztést)"
 
 msgid "mime_webp"
-msgstr "WebP kép (a Google fejlesztette 2010-ben, webkép formátum, támogatja a veszteséges/veszteségmentes tömörítést és animációt, a tömörítési arány 25-35%-kal jobb a PNG-nél és 25%-kal jobb a JPEG-nél)"
+msgstr "WebP nagy hatékonyságú kép (2010-ben a Google által kiadott univerzális webgrafika-kódolási szabvány. A VP8 videó kulcskocka technológiájából származik, tökéletesen kompatibilis a veszteséges, veszteségmentes, félig áttetsző és dinamikus rendereléssel, 25-35%-kal kisebb, mint a PNG azonos minőség mellett, a modern weboldalak nagy teljesítményű betöltésének sarokköve)"
 
 msgid "mime_woff"
-msgstr "WOFF webbetűtípus (2009-ben készült, W3C szabvány 2018-ból. TrueType/OpenType alapú tömörítéssel, optimalizálva a webbetűtípusok betöltésére, szabványos formátum a modern weboldalak ikonbetűtípusaihoz)"
+msgstr "WOFF webes glifafájl (2009-ben létrehozott, 2012-ben W3C szabvánnyá vált nyílt webes betűtípus-formátum. Lényege a szabványos TTF/OTF betűtípus-struktúrák veszteségmentes, folyamatos tömörítése, drámaian optimalizálja a hálózati sávszélesség-költséget, univerzális formátum modern weboldal-ikonokhoz és felhőbeli betűtípusokhoz)"
 
 msgid "mime_7z"
-msgstr "7z tömörített archívum (Igor Pavlov fejlesztette 1999-ben, a 7-Zip program saját formátuma. LZMA algoritmus, magas tömörítési arány, nyílt forráskódú és ingyenes. A 7z formátum azonos tömörítési arány mellett általában 30-50%-kal kisebb a ZIP-nél, gyakori formátum a nyílt forráskódú közösségben és a szoftverterjesztésben)"
+msgstr "7z tömörített csomag (1999-ben Igor Pavlov által kifejlesztett 7-Zip saját formátum. Nyílt forráskódú LZMA/LZMA2 algoritmusokon alapul, rendkívül magas tömörítési aránnyal rendelkezik. Azonos körülmények között jellemzően 30-50%-kal kisebb, mint a ZIP, univerzális magas tömörítési arányú formátum a nyílt forráskódú közösségben és a szoftverterjesztésben)"
 
 msgid "mime_ace"
-msgstr "ACE tömörített archívum (az 1990-es években fejlesztették ki, a WinACE program formátuma. Egykor versengett a RAR-ral, tömörítési aránya meglehetősen magas volt. A fejlesztés 2007-ben leállt, mára 7z/RAR váltotta fel, ritkán használják)"
+msgstr "ACE tömörített csomag (1990-es évekbeli WinACE saját tömörítési formátum. Egykor versengett a RAR formátummal, és magas tömörítési arányt kínált. A technikai fejlesztés 2007 után leállt, mára felváltotta a 7z és RAR formátum, örökölt rendszerarchívum-formátumokhoz tartozik)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 tömörített archívum (Julian Seward fejlesztette 1996-ban, blokkrendező tömörítési algoritmus. A tömörítési arány 15-20%-kal magasabb a GZIP-nél, de lassabb. Gyakori formátum a Linux kernel forráskódjához, nyílt forráskódú szoftvercsomagokhoz, .bz2 kiterjesztéssel)"
+msgstr "BZIP2 tömörített csomag (1996-ban Julian Seward által kifejlesztett blokkrendező tömörítési formátum. Alacsony szintű algoritmusának tömörítési aránya 15-20%-kal magasabb, mint a GZIP-é, de nagyobb számítási többletköltséggel. Gyakran használják Linux kernel forráskód és nyílt forráskódú szoftvercsomagok terjesztésére, szabványos fájlkiterjesztése .bz2)"
 
 msgid "mime_cab"
-msgstr "CAB tömörített archívum (a Microsoft fejlesztette 1995-ben, Cabinet formátum. Telepítőcsomag formátum Windows-hoz, illesztőprogramokhoz, rendszerfájlok terjesztéséhez használják. A Windows Installer (MSI) belsőleg CAB-ot használ a fájlok tárolására)"
+msgstr "CAB tömörített csomag (a Microsoft által 1995-ben kifejlesztett Cabinet archívumformátum. A Windows rendszer natív telepítési szabványaként illesztőprogramok és kernelfájlok terjesztésére használják, egyben a Windows Installer (MSI) mögöttes tárolótárolójaként is szolgál)"
 
 msgid "mime_dmg"
-msgstr "DMG lemezkép (az Apple az 1980-as években vezette be, Disk Image formátum. Szabványos formátum macOS szoftverek terjesztéséhez, dupla kattintással virtuális lemezként csatlakoztatható, húzással telepíthető az alkalmazás. Támogatja a tömörítést és a titkosítást, a Mac szoftverletöltések fő formátuma)"
+msgstr "DMG lemezkép (az Apple által az 1980-as évektől fejlesztett lemezkép-formátum. A macOS szoftverterjesztés szabványos tárolójaként támogatja a virtuális fájlrendszerként való csatolást, az alacsony szintű tömörítést és az adattitkosítást, a Mac ökoszisztéma alkalmazáselosztásának domináns formátuma)"
 
 msgid "mime_emz"
-msgstr "EMZ tömörített kép (Windows tömörített továbbfejlesztett metafájl, az EMF tömörített változata. Vektorgrafika tárolási formátuma Office dokumentumokban, lényegében egy GZIP-tömörített EMF fájl)"
+msgstr "EMZ tömörített kép (a Windows Enhanced Metafile EMF tömörített változata. Lényegében bináris vektorgrafika, GZIP algoritmussal tömörítve, széles körben használják beágyazott vektorgrafika tárolására a Microsoft Office csomag dokumentumaiban)"
 
 msgid "mime_gz"
-msgstr "GZIP tömörített archívum (Jean-loup Gailly és Mark Adler fejlesztette 1992-ben, GNU projekt. Szabványos tömörítőeszköz Unix/Linux alatt, gyakori formátum HTTP átviteli tömörítéshez. Kiterjesztése .gz, gyakran használják TAR-ral együtt)"
+msgstr "GZIP tömörített csomag (a GNU projekt szabványos folyamatos tömörítési formátuma, amelyet Jean-loup Gailly és Mark Adler fejlesztett ki 1992-ben. Unix/Linux szabványos tömörítőeszközeként egyben a HTTP szállítási réteg tömörítésének (Gzip) központi szabványa is, gyakran használják TAR archívummal kombinálva)"
 
 msgid "mime_jar"
-msgstr "JAR tömörített archívum (a Sun Microsystems 1997-ben dobta piacra, Java ARchive formátum. Lényegében egy ZIP fájl, Java könyvtárak és alkalmazások csomagolására használják. Alapvető formátum a Java ökoszisztémában, mint a Maven, Gradle. Az Android is használ JAR-t)"
+msgstr "JAR tömörített csomag (a Sun Microsystems által 1997-ben kiadott Java ARchive archívumformátum. Lényegében ZIP-struktúrán alapuló csomagolótároló Java osztálykönyvtárak és metaadatok kapszulázására, központi fordított termék a Maven, Gradle és a korai Android ökoszisztéma számára)"
 
 msgid "mime_lzma"
-msgstr "LZMA tömörített archívum (Igor Pavlov fejlesztette 1998-ban, Lempel-Ziv-Markov chain algoritmus. A 7z formátum fő tömörítési algoritmusa, magas tömörítési arány, gyors kitömörítési sebesség. Firmware-hez és beágyazott rendszerek szoftvereinek terjesztéséhez használják)"
+msgstr "LZMA tömörített csomag (Igor Pavlov által 1998-ban kifejlesztett Lempel-Ziv-Markov lánc tömörítési algoritmus. A 7z formátum központi motorjaként rendkívül magas tömörítési aránnyal és gyors kicsomagolással rendelkezik, széles körben használják hardver firmware-ek és beágyazott rendszerek terjesztésére)"
 
 msgid "mime_rar"
-msgstr "RAR tömörített archívum (Eugene Roshal fejlesztette 1993-ban, Roshal ARchive formátum. Magas tömörítési arány, támogatja a kötetekre osztást és a helyreállítási rekordokat. A WinRAR program formátuma, tömörítési aránya jobb a ZIP-nél, de fizetős szoftvert igényel, nyílt forráskódú eszközök, mint az unrar képesek kitömöríteni)"
+msgstr "RAR tömörített csomag (Eugene Roshal által 1993-ban kifejlesztett WinRAR saját archívumformátum. Támogatja a kötetekre osztást, fizikai helyreállítási rekordokat (ECC) és erős titkosítást. Tömörítési aránya jobb, mint a szabványos ZIP-é, széles kompatibilitási támogatással rendelkezik személyes és kereskedelmi területeken)"
 
 msgid "mime_tar"
-msgstr "TAR archívum (Unix V7 vezette be 1979-ben, Tape ARchive formátum. Szalagos archívum, csak csomagol tömörítés nélkül, gyakran használják GZIP/BZIP2/XZ-zel együtt. Linux csomagok forráskódja, Docker képek rétegeinek tárolása használja a TAR formátumot)"
+msgstr "TAR archív csomag (1979-es Unix V7 korszakbeli szalagos archívum formátum. Csak fájlfolyamok csomagolását végzi adattömörítés nélkül, gyakran kombinálják GZIP/BZIP2/XZ-vel, a Linux forráskód és a Docker képek réteges tárolásának mögöttes szabványa)"
 
 msgid "mime_tgz"
-msgstr "TGZ tömörített archívum (TAR + GZIP kombinált formátum, kiterjesztése .tgz vagy .tar.gz. A Unix/Linux szoftvercsomagok terjesztésének legelterjedtebb formátuma, forráskód csomagok, bináris csomagok, széles körben használt, a 'csomagolás és használat' képviselője)"
+msgstr "TGZ tömörített csomag (a TAR archívum és a GZIP tömörítés kombinált folyamatformátuma, .tgz vagy .tar.gz kiterjesztéssel. Mint a leguniverzálisabb szoftvercsomag-terjesztési formátum Unix/Linux környezetekben, széles körben használják forráskód-fordításon alapuló telepítéshez és telepítésmentes bináris csomagok terjesztéséhez)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 tömörített archívum (TAR + BZIP2 kombinált formátum, kiterjesztése .tbz2 vagy .tar.bz2. A tömörítési arány 15-20%-kal magasabb a TGZ-nél, alkalmas nagy fájlok terjesztésére, a Linux kernel hosszú ideig használta ezt a formátumot)"
+msgstr "TBZ2 tömörített csomag (a TAR archívum és a BZIP2 tömörítés kombinált folyamatformátuma, .tbz2 vagy .tar.bz2 kiterjesztéssel. A TGZ-hez képest további 15-20%-kal javíthatja a tömörítési arányt, nagy fájlok átvitelére alkalmas, hosszú ideig használták a Linux kernel forráskód terjesztésére)"
 
 msgid "mime_xz"
-msgstr "XZ tömörített archívum (2009-ben vezették be, LZMA2 algoritmuson alapul. Rendkívül magas tömörítési arány, 30-50%-kal jobb a GZIP-nél, kitömörítési sebesség viszonylag gyors. A Linux kernel, csomagkezelők (mint a Debian .deb fájljaiban) széles körben használják, ajánlott formátum a jelenlegi Linux ökoszisztémában)"
+msgstr "XZ tömörített csomag (2009-ben kiadott következő generációs magas tömörítési arányú formátum. Az LZMA2 algoritmuson alapul, adattömörítési aránya 30-50%-kal jobb, mint a GZIP-é, miközben megtartja a gyors kicsomagolást. A Linux kernel és a mainstream csomagkezelők (például Debian .deb belsejében) ajánlott terjesztési szabványként állapították meg)"
 
 msgid "mime_z"
-msgstr "Z tömörített archívum (Unix compress parancs formátuma 1985-ből, LZW algoritmus. Korai Unix tömörítési formátum, felváltotta a GZIP. Kiterjesztése .Z, modern rendszerek ritkán használják)"
+msgstr "Z tömörített csomag (1985-ös Unix compress parancs LZW tömörítési formátuma. A korai Unix rendszerek szabványos tömörítési formátuma volt, mára teljesen felváltotta a hatékonyabb GZIP formátum, ritka történelmi örökölt formátum a modern hálózati forgalomban)"
 
 msgid "mime_zip"
-msgstr "ZIP tömörített archívum (Phil Katz fejlesztette 1989-ben, PKZIP formátum. A Windows natív módon támogatja, a legelterjedtebb tömörítési formátum az interneten. Több fájlt és könyvtárszerkezetet támogat, választható tömörítési algoritmus. A Java JAR-ja, az Android APK-ja, az Office dokumentumok DOCX/XLSX-e a ZIP formátumon alapul)"
+msgstr "ZIP tömörített csomag (Phil Katz által 1989-ben kifejlesztett PKZIP univerzális archívumformátum. Minden mainstream operációs rendszer natívan támogatja, a leggyakrabban használt tárolószabvány az interneten. A modern Java JAR, Android APK és Office dokumentumok (OOXML) is a ZIP struktúrán alapulnak)"
 
 msgid "mime_zst"
-msgstr "Zstandard tömörített archívum (Facebook fejlesztette 2015-ben, Yann Collet tervezte. Nagy sebességű tömörítési algoritmus, tömörítési aránya közelít a LZMA-hoz, sebessége messze meghaladja a GZIP-et. A Linux kernel 5.9+ támogatja, az Arch Linux pacman, Debian APT fokozatosan átveszi, új generációs tömörítési szabvány)"
+msgstr "Zstandard tömörített csomag (a Facebook-tól Yann Collet által 2015-ben tervezett következő generációs folyamatos tömörítési szabvány. Közelíti a LZMA tömörítési arányát, miközben lényegesen nagyobb átviteli sebességgel rendelkezik, mint a GZIP. A Linux kernel (5.9+) és az Arch/Debian csomagkezelők mélyen átvették)"
 
 msgid "mime_lz4"
-msgstr "LZ4 tömörített archívum (Yann Collet fejlesztette 2011-ben, rendkívül gyors tömörítési algoritmus. A tömörítési sebesség több mint 10-szer gyorsabb a GZIP-nél, alkalmas valós idejű tömörítési forgatókönyvekhez. A Linux kernel, OpenZFS, Hadoop széles körben használják, első választás a sebességet előtérbe helyező esetekben)"
+msgstr "LZ4 tömörített csomag (Yann Collet által 2011-ben kifejlesztett ultra-gyors folyamatos tömörítési algoritmus. Átviteli sebessége több mint 10-szer gyorsabb, mint a GZIP-é, rendkívül alacsony CPU futásidejű többletköltséggel. Széles körben használják a Linux kernelben, az OpenZFS fájlrendszerben és a Hadoop valós idejű adatfolyam-feldolgozásában)"
 
 msgid "mime_lzo"
-msgstr "LZO tömörített archívum (Markus Oberhumer fejlesztette 1996-ban, Lempel-Ziv-Oberhumer algoritmus. A kitömörítési sebesség rendkívül gyors, a tömörítési arány átlagos. A Linux kernel Squashfs, OpenWrt firmware használja, alkalmas beágyazott rendszerekhez)"
+msgstr "LZO tömörített csomag (Markus Oberhumer által 1996-ban kifejlesztett Lempel-Ziv-Oberhumer algoritmus. Az ultra-gyors kicsomagolási teljesítményre összpontosít. Széles körben beágyazott a Linux kernel Squashfs képeibe, OpenWrt firmware-ekbe és különféle erőforrás-korlátozott beágyazott rendszerekbe)"
 
 msgid "mime_msi"
-msgstr "MSI telepítőcsomag (a Microsoft 1999-ben dobta piacra, Windows Installer csomagformátum. Szabványos telepítési formátum Windows alkalmazásokhoz, támogatja a tranzakció-visszaállítást, komponenskezelést, csendes telepítést. Első választás vállalati szintű szoftverterjesztéshez, máig a Windows szoftvertelepítés fő formátuma)"
+msgstr "MSI rendszertelepítő csomag (a Microsoft által 1999-ben kiadott Windows Installer adatkapszulázási formátum. A Windows alkalmazás szintű telepítési szabványaként natívan támogatja az alacsony szintű tranzakció-visszaállítást, komponens-életciklus-kezelést és kötegelt nélküli csendes telepítést, központi szabvány a vállalati szoftverek központosított terjesztéséhez és szabályzatalapú telepítéséhez)"
 
 msgid "mime_pkg"
-msgstr "PKG telepítőcsomag (macOS alkalmazás telepítőcsomag formátum, az Apple Installer technológiáján alapul. Szabványos formátum macOS szoftverek terjesztéséhez, támogatja a komponensek kiválasztását, telepítő szkripteket, eltávolítási funkciót. Dupla kattintás a .pkg fájlra a telepítéshez, gyakori terjesztési mód a Mac App Store-on kívüli szoftverekhez)"
+msgstr "PKG platformfüggetlen szoftvertelepítő csomag. 1. FreeBSD szoftvercsomag: pkgng szabvány, .pkg vagy .txz kiterjesztés, TAR+XZ/Zstd tömörítésen alapul, támogatja a függőségek feloldását és az aláírás-ellenőrzést; 2. macOS telepítőcsomag: az Apple Installer formátumon alapul, támogatja az egyéni összetevőket, telepítő szkripteket és rendszerszintű eltávolítást. Ezek a BSD szerverek, illetve a Mac rendszer elsődleges terjesztési hordozói."
 
 msgid "mime_apk"
-msgstr "APK Android alkalmazáscsomag (a Google 2008-ban vezette be, az Android alkalmazások hagyományos telepítési formátuma. Az APK lényegében egy ZIP csomag, amely kódot, erőforrásokat és jegyzékfájlt tartalmaz. 2021-től a Google Play megköveteli az új alkalmazásoktól az AAB formátum használatát, de az APK-t továbbra is használják hibakeresésre, harmadik féltől származó áruházakban és oldalról történő telepítésre)"
+msgstr "APK Android alkalmazáscsomag (a Google által 2008-ban az Androiddal kiadott hagyományos alkalmazástelepítő csomag. Mögöttesen ZIP archívum struktúrán alapul, csomagolja a lefordított Dalvik bájtkódot (DEX), a metaadat-manifestet és a globális erőforrásokat, mára széles körben használják helyi fejlesztési hibakereséshez, harmadik féltől származó terjesztéshez és oldalról történő telepítéshez eszközökre)"
 
 msgid "mime_ipa"
-msgstr "IPA iOS alkalmazáscsomag (iOS App Store Package, iOS/iPadOS alkalmazások telepítési formátuma. 2008-ban mutatták be az iPhone SDK-val. Az App Store-on keresztül kell terjeszteni, vagy vállalati tanúsítvánnyal alá kell írni. Végrehajtható fájlt, erőforrásokat, Info.plist-et és aláírási információkat tartalmaz)"
+msgstr "IPA Apple alkalmazáscsomag (az iPhone SDK-val 2008-ban kiadott iOS/iPadOS exkluzív csomagolótároló. Lényegében egy FairPlay DRM-mel vagy vállalati tanúsítvánnyal aláírt ZIP archívum, amely Mach-O bináris végrehajtható fájlt, alkalmazás-erőforrás fát és Info.plist metaadat konfigurációt tartalmaz)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS alkalmazáscsomag (HarmonyOS Ability Package, a HarmonyOS alkalmazás alapegysége. 2020-ban mutatták be a HarmonyOS 2.0-val. Két típust támogat: entry és feature, terjesztési formátum Huawei telefonokhoz, táblagépekhez, okosórákhoz és más HarmonyOS eszközökhöz)"
+msgstr "HAP HarmonyOS alkalmazáscsomag (a HarmonyOS 2.0-val 2020-ban kiadott HarmonyOS rugalmas telepítési alapegység. Entry főmodulból vagy Feature kiterjesztett funkciós modulokból áll, a többvégpontos (telefonok, táblagépek, viselhető eszközök) eszközök közötti terjesztési formátum intelligens terminálok terjesztéséhez)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS statikus megosztott könyvtár (HarmonyOS Archive, a HarmonyOS statikus megosztott könyvtára, több HAP csomag által megosztható, komponens-alapú fejlesztéshez és modulok újrafelhasználásához használják)"
+msgstr "HAR HarmonyOS statikus megosztott csomag (HarmonyOS saját statikus megosztott könyvtár archív fájl. Közös komponensek, mögöttes erőforráskód és fordítási időbeli függőségek kapszulázására használják, több HAP modul által statikusan linkelve megosztásra, a HarmonyOS rendszer komponens-alapú fejlesztésének és többszörös modul újrafelhasználásának alapvető bázisa)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (a Google 2018-ban dobta piacra, 2021-től a Google Play előírja az új alkalmazások számára ezen formátum használatát. Az AAB egy terjesztési formátum, a Google Play az eszközkonfiguráció (CPU-architektúra, képernyősűrűség, nyelv) alapján optimalizált APK-kat generál, a telepítőcsomag mérete átlagosan 35%-kal csökken. A fejlesztők feltöltik az AAB-t, a felhasználók letöltik az APK-t)"
+msgstr "AAB Android alkalmazáscsomag (a Google által 2018-ban bevezetett és 2021-ben létrehozott Google Play dinamikus terjesztési formátum. Tiszta terjesztési entitásként a felhő dinamikusan szabja és fordítja a cél eszköz CPU architektúrája, képernyősűrűsége és nyelve alapján, hogy optimalizált APK-kat generáljon igény szerint, átlagosan 35%-kal csökkentve az átviteli sávszélesség költségét)"
 
 msgid "mime_xapk"
-msgstr "XAPK alkalmazáscsomag (harmadik féltől származó Android alkalmazásbővítő csomag, APK + OBB adatfájlokat tartalmaz. Nagy játékokhoz és összetett alkalmazásokhoz használják, megoldja az egyetlen APK fájl 100 MB-os korlátját. Gyakori harmadik féltől származó alkalmazásboltban, mint az APKPure, APKMirror, nem hivatalos Google formátum)"
+msgstr "XAPK kiterjesztett alkalmazáscsomag (a harmadik féltől származó Android közösség által létrehozott nem hivatalos alkalmazáskiterjesztési szabvány. Egyesíti a szabványos APK fájlt egy nagy OBB játékadat-kiterjesztő csomaggal, fizikailag áttörve a Google Play 100 MB-os egyedi fájlméret-korlátját, széles körben látható játékterjesztő platformokon)"
 
 msgid "mime_appx"
-msgstr "Windows APPX csomag (a Microsoft 2012-ben dobta piacra, Windows 8/10/11 alkalmazások telepítési formátuma. Támogatja az UWP alkalmazásokat és asztali alkalmazások konvertálását, a Microsoft Store-on keresztül terjesztik. 2024-ben a Microsoft bevezette az MSIX-et utódként, fokozatosan felváltja az APPX-et)"
+msgstr "APPX modern alkalmazáscsomag (a Microsoft által 2012-ben a Windows 8-cal kiadott UWP alkalmazástelepítési szabvány. Homokozóban izolált végrehajtással és könnyű eltávolítási jellemzőkkel rendelkezik, a Microsoft Store korai domináns szabványa volt, de a modern Windows ökoszisztémában belépett a MSIX felé fejlődő életciklusának végső szakaszába)"
 
 msgid "mime_msix"
-msgstr "MSIX csomag (a Microsoft 2018-ban dobta piacra, a Windows alkalmazások csomagolásának új generációs formátuma. Egyesíti az APPX és MSI előnyeit, támogatja a Windows alkalmazások minden típusát, terjeszthető a Microsoft Store-on keresztül vagy oldalról telepítve, ajánlott formátum Windows 11-hez)"
+msgstr "MSIX következő generációs alkalmazáscsomag (a Microsoft által 2018-ban kiadott új, teljesen szabványosított Windows csomagolási specifikáció. Tökéletesen ötvözi az APPX alkalmazásbiztonsági homokozó jellemzőit az MSI vállalati eszközkezelési előnyeivel, teljesen kompatibilis minden Win32 alkalmazástípussal, és a Windows 11 ajánlott terjesztési szabványa)"
 
 msgid "mime_appimage"
-msgstr "AppImage alkalmazáscsomag (2004-ben vezették be, Linux alkalmazásformátum telepítés nélkül. 'Egy alkalmazás - egy fájl', telepítés nélkül közvetlenül fut, támogatja a legtöbb Linux disztribúciót, gyakori módja a fejlesztőknek a Linux szoftverek terjesztésére)"
+msgstr "AppImage önálló alkalmazáscsomag (2004-ben indított Linux egyetlen végrehajtható archívum specifikáció. Az 'egy alkalmazás egy fájl' önálló architektúrát alkalmazza, amely futásidőben a FUSE mechanizmuson keresztül közvetlenül írásvédett virtuális fájlrendszerként csatolódik, nulla függőségű, dobozból kivehető végrehajtást érve el Linux disztribúciók között)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak alkalmazáscsomag (2015-ben vezették be, Linux alkalmazásformátum homokozóban. Disztribúciókon át működik, elszigetelve a hoszt rendszertől, a Fedora és Red Hat vezeti a fejlesztését, alapértelmezett formátum a GNOME Szoftverközpontban)"
+msgstr "Flatpak homokozós alkalmazáscsomag (2015-ben a Red Hat és a GNOME által vezetett Linux-disztribúciók közötti asztali alkalmazásterjesztési szabvány. A Linux kernel névtér- és Cgroups mechanizmusaira támaszkodva rendkívül szigorú alkalmazásszintű biztonsági homokozó elkülönítést ér el, a modern nyílt forráskódú operációs rendszerek szoftverközpontjainak alapja)"
 
 msgid "mime_snap"
-msgstr "Snap alkalmazáscsomag (a Canonical 2014-ben dobta piacra, az Ubuntu anyavállalata fejlesztette, univerzális Linux alkalmazásformátum. Automatikus frissítés, homokozó elszigetelés, támogatja a 40+ Linux disztribúciót, alapértelmezett formátum az Ubuntu Szoftverközpontban)"
+msgstr "Snap konténeres alkalmazáscsomag (2014-ben az Ubuntu anyavállalata, a Canonical által kiadott Linux univerzális telepítési szabvány. Az alkalmazás-önálló SquashFS kép csatolási architektúrát alkalmazza, támogatja az automatikus növekményes frissítéseket és a szigorú AppArmor homokozó elkülönítést, és az Ubuntu szoftverközpont ökoszisztéma alapértelmezett központi formátuma)"
 
 msgid "mime_deb"
-msgstr "Debian DEB csomag (a Debian projekt 1993-ban dobta piacra, alapértelmezett telepítési formátum Debian/Ubuntu és származékaik számára. A dpkg segítségével kezelhető, az APT a csomagkezelő frontendje, a Linux ökoszisztéma egyik legérettebb csomagformátuma, máig a Debian család fő formátuma)"
+msgstr "DEB rendszerszoftver-csomag (a Debian projekt által 1993-ban létrehozott bináris és forráskód csomagolási specifikáció. A Debian, Ubuntu és összes származékuk mögöttes telepítési szabványaként a dpkg-re támaszkodik a csomag kibontásához és karbantartásához, és az APT-t használja hatékony csomagkezelő felületként, a Linux ökoszisztéma legérettebb szoftverterjesztési sarokköve)"
 
 msgid "mime_rpm"
-msgstr "RPM csomag (a Red Hat 1997-ben dobta piacra, alapértelmezett formátum a Red Hat/Fedora/CentOS/SUSE disztribúciók számára. Az RPM jelentése 'Red Hat Package Manager', a DEB mellett a Linux két fő csomagformátumának egyike, máig a RHEL család fő formátuma)"
+msgstr "RPM rendszerszoftver-csomag (a Red Hat által 1997-ben kiadott Red Hat Package Manager csomagolási specifikáció. A DEB-bel együtt a Linux hagyományos csomagkezelésének két nagy táborát alkotják, natívan rendelkeznek tranzakció-alapú függőség-ellenőrzéssel és alacsony szintű szoftver digitális aláírás-ellenőrzéssel, és továbbra is az abszolút mainstream terjesztési szabvány a Red Hat ökoszisztéma disztribúcióihoz, mint a RHEL, Fedora és CentOS"
 
 msgid "mime_pacman"
-msgstr "Arch Linux csomag (az Arch Linux 2002-ben vezette be, a .pkg.tar.zst formátumot a pacman csomagkezelő használja. Az Arch Linux rolling release disztribúciók magja, ismert egyszerűségéről és a KISS-elvről, az AUR (Arch User Repository) a jellemzője)"
+msgstr "Pacman archív szoftvercsomag (az Arch Linux által 2002-ben a pacman kezelővel létrehozott .pkg.tar.zst csomagolási formátum. Az Arch gördülő frissítési mechanizmusának magjaként a nagy sebességű Zstandard magas tömörítési algoritmuson alapul, az AUR (Arch User Software Repository) ökoszisztémával együtt, egy modern csomagterjesztési szabvány, amely megtestesíti a minimalizmust és a KISS (Keep It Simple, Stupid) elvet)"
 
 msgid "mime_exe"
-msgstr "EXE futtatható fájl (Windows futtatható programformátum, az 'Executable' rövidítése. A Windows operációs rendszer natív futtatható formátuma, tartalmazza a PE struktúrát. Az MS-DOS korszak MZ formátumából fejlődött ki, a Windows NT 1993-ban vezette be a PE (Portable Executable) formátumot, amelyet ma is használunk. Szoftvertelepítő csomagok, alkalmazások, rendszereszközök használják ezt a formátumot. A felhasználó dupla kattintással indítja, a világ legszélesebb körben használt futtatható formátuma)"
+msgstr "EXE natív végrehajtható fájl (a Windows platform Portable Executable (PE) bináris programformátuma. Technikai származása az MS-DOS korszakbeli MZ fejlécstruktúrából ered, és az 1993-as Windows NT-től kezdve teljesen PE struktúra specifikációvá vált, a világ legszélesebb körben használt végrehajtási szabványa a gépi kód utasításokhoz, statikus erőforrás-szekciókhoz és rendszermag-indításhoz)"
 
 msgid "mime_dll"
-msgstr "DLL dinamikusan kapcsolt könyvtár (a Microsoft 1993-ban vezette be, Dynamic Link Library. A Windows megosztott kódkönyvtára, a program futás közben dinamikusan tölti be, memóriát és lemezterületet takarít meg. Rendszerösszetevők, alkalmazásbővítmények, illesztőprogramok használják a DLL formátumot. A Windows API fő megvalósítási módja, a 'DLL pokol' probléma a .NET korszakban enyhült)"
+msgstr "DLL dinamikus kapcsolati könyvtár (a Windows platform Dynamic Link Library megosztott kódkönyvtár specifikációja. A futásidőben történő dinamikus betöltés és szimbólum-áthelyezés révén jelentősen megtakarítja a fizikai memóriát és a lemezterületet, a Windows API központi megvalósítási formájaként. A korai 'DLL pokol' problémáját a modern korban az SxS párhuzamos elkülönítési mechanizmus gyökerezett meg)"
 
 msgid "mime_com"
-msgstr "COM futtatható fájl (az MS-DOS korszak futtatható formátuma, a 'Command' rövidítése. Nagyon egyszerű fájlszerkezet, 64KB-os korlát, a Windows 3.x előtti fő formátum, elavult. A modern Windows az EXE formátumot használja, a COM kiterjesztést továbbra is használják néhány komponens fájlhoz)"
+msgstr "COM klasszikus végrehajtható fájl (az MS-DOS korszak legrégebbi memóriakép (Command) végrehajtási formátuma. Strukturálatlan tiszta kódszegmens kialakítást használ, a 64 KB fizikai memória címzési szegmenshatárára korlátozódik, mára történelmi örökölt formátumként nyugdíjazták, de a modern Windows architektúrákban korlátozott kompatibilitást tart fenn specifikus komponens interfészként)"
 
 msgid "mime_aac"
 msgstr "AAC hang (MPEG szabvány 1997-ből, Advanced Audio Coding. Az MP3 utódja, hangminősége jobb az MP3-nál azonos bitrátánál, alapértelmezett hangformátum a YouTube, iTunes, Nintendo Switch számára)"

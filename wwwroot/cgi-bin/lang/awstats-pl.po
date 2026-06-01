@@ -444,8 +444,8 @@ msgstr "Host - Strony - Trafienia - Przepustowość - Data ostatniej wizyty - [D
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[Data rozpoczęcia ostatniej wizyty] i [Ostatnia strona ostatniej wizyty] są zapisywane tylko wtedy, gdy sesja nie została zakończona"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "Strona główna wyświetla tylko pierwsze %s pozycji według liczby trafień, pełna lista znajduje się na stronie szczegółów."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "Pierwsze %s elementów jest posortowanych według liczby trafień w kolejności malejącej; kolejność pozostałych elementów jest nieokreślona."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "Login - Strony - Trafienia - Przepustowość - Ostatnia wizyta"
@@ -459,8 +459,8 @@ msgstr "ID robaka - Trafienia - Przepustowość - Ostatnia wizyta"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "E-mail - Trafienia - Przepustowość - Ostatnia wizyta"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "Strona główna wyświetla tylko pierwsze %s wiadomości e-mail według liczby trafień, pełna lista znajduje się na stronie szczegółów."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "Pierwszych %s adresów e-mail jest posortowanych według liczby trafień w kolejności malejącej; kolejność pozostałych adresów jest nieokreślona."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - Strony - Przepustowość - Wejście - Wyjście"
@@ -669,6 +669,27 @@ msgstr "Parametr SiteDomain nie jest zdefiniowany w pliku config/domain lub moż
 msgid "Please run as Administrator to set permissions"
 msgstr "Uruchom jako Administrator, aby ustawić uprawnienia"
 
+msgid "This directory lacks read permission"
+msgstr "Ten katalog nie ma uprawnień do odczytu"
+
+msgid "Please set read permission for directory"
+msgstr "Proszę ustawić uprawnienia do odczytu dla katalogu"
+
+msgid "Missing required parameter in config file"
+msgstr "Brak wymaganego parametru w pliku konfiguracyjnym"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "Proszę sprawdzić, czy zdefiniowano 'DirData'."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "Nazwa domeny w adresie przeglądarki wydaje się brakować lub jest niekompletna"
+
+msgid "Please check the URL parameter"
+msgstr "Proszę sprawdzić parametr URL"
+
+msgid "Format description"
+msgstr "Opis formatu"
+
 msgid "Please set execute permission"
 msgstr "Ustaw uprawnienie do wykonywania"
 
@@ -794,376 +815,379 @@ msgstr "Grabber"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "Plik tekstowy (standardyzacja ASCII w 1963 r., nieformatowany czysty tekst. Podstawa całego kodu źródłowego, konfiguracji i dzienników. Unix używa LF, Windows CRLF do znaku nowej linii, nadal najbardziej uniwersalny format danych w komputerach)"
+msgstr "TXT zwykły plik tekstowy (niesformatowany zwykły tekst standardyzowany przez kodowanie ASCII w 1963 roku. Jako podstawowy fundament całego kodu źródłowego, plików konfiguracyjnych i logów systemowych, jego międzyplatformowe sterowanie znakami nowej linii Windows (CRLF) i Unix (LF) jest nadal najbardziej uniwersalnym standardem wymiany danych w świecie komputerów)"
 
 msgid "mime_log"
-msgstr "Plik dziennika (czysty plik tekstowy rejestrujący informacje o działaniu systemu i aplikacji, często używany do rozwiązywania problemów, analizy wydajności i audytu bezpieczeństwa. Standardowe formaty to Apache combined log, Nginx access log, syslog itp.)"
+msgstr "LOG log operacji systemowych (zasób zwykłego tekstu rejestrujący stan działania systemu operacyjnego, jądra i aplikacji na poziomie wykonawczym. Obejmuje logi dostępu Nginx/Apache (log łączony) i standardową specyfikację syslog, jest podstawowym źródłem danych do rozwiązywania problemów, analizy wydajności strumieniowej i audytu bezpieczeństwa)"
 
 msgid "mime_page"
-msgstr "Strona HTML (Tim Berners-Lee wynalazł WWW w 1989 r., zdefiniował trzy technologie HTML/HTTP/URL w 1990 r., udostępnił je bezpłatnie bez patentu. W 2014 r. HTML5 stał się oficjalnym standardem W3C, obsługuje wyświetlanie, multimedia i drukowanie. Otrzymał nagrodę Turinga w 2016 r.)"
+msgstr "HTML hipertekstowa strona internetowa (kamień węgielny World Wide Web stworzony przez Tima Bernersa-Lee w 1989 roku. Jako bezpłatny, otwarty, uniwersalny język znaczników hipertekstowych, jego specyfikacja HTML5 stała się oficjalnym standardem W3C w 2014 roku, z natywną obsługą ustrukturyzowanych multimediów, interakcji semantycznych i układu stron strumieniowych. Otrzymał nagrodę Turinga w 2016 roku)"
 
 msgid "mime_khtml"
-msgstr "Silnik stron KHTML (KDE 2.0 zostało wydane w 1998 r., silnik renderujący przeglądarki Konqueror. W 2001 r. Apple stworzyło WebKit w oparciu o KHTML, w 2008 r. Google utworzył Blink z WebKita, który stał się rdzeniem przeglądarek Chrome, Edge, Safari i innych. KHTML jest przykładem tego, jak społeczność open source położyła podwaliny pod nowoczesne silniki przeglądarek, a jego dziedzictwo technologiczne trwa poprzez WebKit/Blink)"
+msgstr "KHTML silnik szablonów stron internetowych (specyfikacja silnika renderującego przeglądarki KDE 2.0 z 1998 roku. Jako punkt odniesienia społeczności open source, który położył podwaliny pod nowoczesne renderowanie sieci Web, jego dziedzictwo technologiczne bezpośrednio zainspirowało i przekształciło się w jądra Apple WebKit i Google Blink, które do dziś kontynuują swój podstawowy nurt poprzez nowoczesną strumieniową dynamiczną architekturę sieciową)"
 
 msgid "mime_script"
-msgstr "Skrypt dynamiczny (język interpretowany, nie wymaga kompilacji. Obejmuje ASP, JSP, CGI, ColdFusion, Tcl, VBScript itp., szeroko stosowany we wczesnym tworzeniu stron WWW, administracji systemem, automatyzacji zadań. Nowoczesne języki skryptowe, takie jak Python, Ruby, JavaScript, rozwinęły się w główne narzędzia do tworzenia pełnego stosu)"
+msgstr "SCRIPT interpretowany skrypt dynamiczny (ogólna klasyfikacja strumieni kodu źródłowego, które nie wymagają wcześniejszej kompilacji i są odczytywane oraz wykonywane linia po linii przez określone środowisko wykonawcze lub interpreter. Obejmuje ASP, JSP, CGI i Tcl itp., szeroko stosowane do interfejsów bram wspólnych po stronie serwera, zautomatyzowanej kontroli procesów i klejenia zadań na poziomie systemu)"
 
 msgid "mime_js"
-msgstr "Skrypt JavaScript (Brendan Eich stworzył go w 1995 r. w Netscape w 10 dni, natywny język programowania przeglądarek. W 1997 r. ECMAScript został znormalizowany, w 2009 r. narodził się Node.js, czyniąc go językiem pełnego stosu, npm jest największym menedżerem pakietów na świecie. Od lat najpopularniejszy język programowania na GitHubie)"
+msgstr "Skrypt JavaScript (1995, natywne środowisko programistyczne przeglądarki Netscape. Ustanowił standard branżowy ECMAScript w 1997 roku, środowisko wykonawcze Node.js narodziło się w 2009 roku, przełamując granice przeglądarki i tworząc architekturę pełnego stosu asynchroniczną nieblokującą, wraz z największym na świecie ekosystemem pakietów oprogramowania npm)"
 
 msgid "mime_py"
-msgstr "Skrypt Python (stworzony przez Guido van Rossuma w 1991 r., znany z wymuszonego wcięcia i czystej składni. Szeroko stosowany w tworzeniu stron WWW, nauce o danych, sztucznej inteligencji, automatyzacji operacyjnej. Wielokrotny zdobywca tytułu Języka Programowania Roku TIOBE)"
+msgstr "Skrypt Python (język skryptowy wysokiego poziomu interpretowany, stworzony przez Guido van Rossuma w 1991 roku. Dzięki obowiązkowemu wcięciu zapewniającemu nieutratną czytelność i wieloparadygmatowemu projektowi niskiego poziomu, został obecnie uznany za branżowy język standardowy dla nowoczesnej architektury sieciowej, nauki o danych pełnego stosu, trenowania modeli sztucznej inteligencji (AI) i natywnej dla chmury zautomatyzowanej operacji)"
 
 msgid "mime_sh"
-msgstr "Skrypt powłoki (Unix narodził się w 1971 r., język skryptów poleceń. Używany do administracji systemem, automatyzacji zadań, uruchamiania usług, skryptów wdrażania. Podstawowa umiejętność administratorów Linuksa)"
+msgstr "Skrypt Shell (standardowy skrypt interpretera poleceń z ery Uniksa z 1971 roku. Zawiera specyfikacje poleceń na poziomie jądra, takie jak Bash, Sh, Dash, zwykle wykonywany z rozszerzeniem .sh, jest uniwersalnym klejem na poziomie jądra do niskopoziomowej kontroli procesów, konfiguracji środowiska bez instalacji i automatycznego wdrażania w nowoczesnych systemach operacyjnych podobnych do Uniksa)"
 
 msgid "mime_rb"
-msgstr "Skrypt Ruby (stworzony przez Yukihiro Matsumoto w 1995 r., skupia się na szczęściu programisty. Framework Ruby on Rails wprowadził paradygmat konwencji zamiast konfiguracji, wpływając na projektowanie nowoczesnych frameworków WWW)"
+msgstr "Skrypt Ruby (obiektowy język skryptowy stworzony przez Yukihiro Matsumoto w 1995 roku. Z ekstremalnym szacunkiem dla doświadczenia programisty jako podstawową filozofią projektową, jego framework Ruby on Rails w rewolucyjny sposób ustanowił nowoczesny paradygmat rozwoju architektury sieciowej wysokiego poziomu 'Konwencja ponad konfiguracją (CoC)')"
 
 msgid "mime_pl"
-msgstr "Skrypt Perl (stworzony przez Larry'ego Walla w 1987 r., znany z pragmatycznego podejścia, nazywany \"szwajcarskim scyzorykiem\". CPAN był pionierem nowoczesnych menedżerów pakietów, miał ogromny wpływ na przetwarzanie tekstu, administrację systemem i obszar CGI)"
+msgstr "Skrypt Perl (pragmatyczny język skryptowy stworzony przez Larry'ego Walla w 1987 roku. Jako twórca nowoczesnych menedżerów pakietów (CPAN), jest nazywany 'szwajcarskim nożem armii' do przetwarzania tekstu. W nowoczesnym trybie CGI nadal służy jako wysoce niezawodna podstawa w dziedzinie parsowania logów dzięki bardzo niskim kosztom pamięci fizycznej i wysoce wydajnej obsłudze wyrażeń regularnych)"
 
 msgid "mime_php"
-msgstr "Dynamiczna strona PHP (stworzona przez Rasmusa Lerdorfa w 1995 r., zaprojektowana specjalnie do tworzenia stron WWW. Ponad 70% stron internetowych na świecie używa go, napędza platformy takie jak WordPress, Facebook, Wikipedia. PHP 8 wprowadził kompilację JIT, znacznie poprawiając wydajność)"
+msgstr "Dynamiczna strona internetowa PHP (stworzona przez Rasmusa Lerdorfa w 1995 roku, zaprojektowana specjalnie do tworzenia stron internetowych. Jako kluczowa technologia napędzająca ponad 70% stron internetowych na świecie, głęboko obsługuje duże aplikacje produkcyjne, takie jak WordPress i Wikipedia. Od wprowadzenia w PHP 8 środowiska wykonawczego kompilacji JIT (Just-In-Time) osiągnął fundamentalną ewolucję paradygmatu w kierunku wydajnej strony serwerowej pełnego stosu)"
 
 msgid "mime_image"
-msgstr "Plik obrazu"
+msgstr "IMAGE klasyfikacja zasobów obrazu (obejmuje ogólną klasyfikację stratnej/bezstratnej skompresowanej mapy bitowej, nowoczesnej responsywnej grafiki internetowej i grafiki wektorowej. Jest kluczowym wskaźnikiem do oceny kosztów ładowania zasobów wizualnych witryny, współczynnika trafień pamięci podręcznej po stronie klienta i zużycia przepustowości sieci multimediów)"
 
 msgid "mime_document"
-msgstr "Plik dokumentu"
+msgstr "DOCUMENT klasyfikacja ustrukturyzowanych dokumentów (obejmuje ogólną klasyfikację zwykłego tekstu, arkuszy kalkulacyjnych, dokumentów o stałym formacie (PDF) i lekkich języków znaczników. Jest kluczowym wskaźnikiem do statystyk dystrybucji statycznych baz wiedzy po stronie serwera, pobierania zasobów informatycznych przedsiębiorstwa i przepustowości strumienia tekstu)"
 
 msgid "mime_package"
-msgstr "Pakiet oprogramowania"
+msgstr "PACKAGE klasyfikacja produktów kompilacji i pakietów oprogramowania (obejmuje ogólną klasyfikację natywnych programów wykonywalnych systemu operacyjnego, bibliotek dołączanych w czasie wykonywania (DLL/SO) i pakietów instalacyjnych dystrybucji aplikacji. Często używany jako kluczowy wskaźnik do oceny ruchu wychodzącego i szczytów pobierania witryn dystrybucji oprogramowania)"
 
 msgid "mime_archive"
-msgstr "Skompresowany plik Gzip (projekt GNU z 1992 r., oparty na algorytmie DEFLATE. W sieci używany do dynamicznej kompresji odpowiedzi, stopień kompresji zwykle 60-90%. Po 2015 r. w niektórych przypadkach zastąpiony przez Brotli, ale nadal najbardziej rozpowszechniony format kompresji po stronie serwera)"
+msgstr "ARCHIVE pliki archiwów i skompresowane (ogólna klasyfikacja pakietów kompresji danych opartych na podstawowych algorytmach, takich jak DEFLATE, LZMA. W warstwie sieciowej, oprócz reprezentowania tradycyjnej dystrybucji pakietów, obejmuje również dynamiczny strumień odpowiedzi Gzip projektu GNU z 1992 roku. Chociaż w nowoczesnych scenariuszach stopniowo wprowadza się algorytm Brotli, ta klasyfikacja pozostaje kluczowym wskaźnikiem do oceny szybkości przepustowości serwera i redukcji ciśnienia w warstwie transportowej)"
 
 msgid "mime_audio"
-msgstr "Plik audio"
+msgstr "AUDIO klasyfikacja strumienia audio cyfrowego (obejmuje ogólną klasyfikację skompresowanego dźwięku, audiobooków i kontenerów dźwiękowych mediów strumieniowych. W oparciu o określone standardy kodeków audio, służy do monitorowania szybkości przepustowości strumieni danych audio witryn multimedialnych, jednoczesnej przepustowości przesyłania strumieniowego i wydajności długich połączeń)"
 
 msgid "mime_video"
-msgstr "Plik wideo"
+msgstr "VIDEO klasyfikacja strumienia wideo cyfrowego (obejmuje ogólną klasyfikację kontenerów wideo wysokiej rozdzielczości, nowoczesnych animacji internetowych i segmentów mediów strumieniowych. Jest kluczowym wskaźnikiem do oceny górnej granicy przepustowości serwera i efektu przyspieszenia sieci dostarczania treści (CDN) w środowisku sieciowym o dużym obciążeniu)"
 
 msgid "mime_jscript"
-msgstr "JavaScript (opracowany przez Brendana Eicha w 1995 r.)"
+msgstr "Skrypt JScript (1996, zastrzeżona implementacja inżynierii wstecznej Microsoftu dla Internet Explorera 3.0. Jako wczesny konkurent klasycznego JavaScript, działał jako podstawowy silnik Windows Script Host (WSH) i wczesnego zaplecza ASP)"
 
 msgid "mime_json"
-msgstr "Dane JSON (zaproponowane przez Douglasa Crockforda w 2001 r., lekki format wymiany danych, standard de facto dla interfejsów API sieci Web)"
+msgstr "JSON ustrukturyzowane dane (lekki format wymiany serializacji danych ustanowiony przez Douglasa Crockforda w 2001 roku. Oparty na tekstowej architekturze par klucz-wartość i tablic, ma bardzo wysoką czytelność dla ludzi i bezstratne właściwości analizy strumieniowej. Jest de facto standardem dla nowoczesnych interfejsów API sieci Web, architektury mikrousług i interakcji z dużymi modelami językowymi)"
 
 msgid "mime_vbs"
-msgstr "VBScript (opracowany przez Microsoft w 1996 r., język skryptowy Windows, używany do stron ASP i skryptów administracyjnych Windows. Wraz z upowszechnieniem się PowerShell i JavaScript, stopniowo wycofywany)"
+msgstr "Skrypt VBScript (wariant języka skryptowego wydany przez Microsoft wraz z IE 3.0 w 1996 roku. Był kiedyś podstawowym sterownikiem wczesnych dynamicznych witryn ASP i zarządzania systemem Windows, ale obecnie został oficjalnie wycofany i usunięty z najnowszego jądra Windows 11 przez Microsoft. Należy do historycznej technologii dziedziczonej)"
 
 msgid "mime_conf"
-msgstr "Plik konfiguracyjny (format tekstowy do przechowywania konfiguracji oprogramowania, popularne formaty: INI, JSON, YAML, TOML, XML. Konfiguracje systemu Linux znajdują się głównie w katalogu /etc)"
+msgstr "CONF systemowy plik konfiguracyjny (ogólna klasyfikacja plików danych, które trwale przechowują parametry środowiska wykonawczego oprogramowania w postaci zwykłego tekstu. Obejmuje specyfikacje INI oraz nowoczesne YAML, TOML, JSON. W systemie Linux są one przeważnie skoncentrowane w katalogu /etc. Jest podstawową zależnością do optymalizacji stanu wykonawczego na poziomie systemu)"
 
 msgid "mime_css"
-msgstr "Arkusz stylów CSS (W3C opublikowało CSS1 jako pierwszy oficjalny standard w grudniu 1996 r., CSS2 dodał pozycjonowanie i typy mediów w 1998 r., od 2011 r. CSS3 modułowo wprowadził zaokrąglone rogi, animacje, elastyczne pudełka, układ siatki i responsywny projekt. Wraz z HTML i JavaScript są trzema głównymi technologiami frontendu, wszystkie nowoczesne przeglądarki (Chrome, Firefox, Safari, Edge) obsługują go natywnie, jest jedynym standardem definiowania stylów stron internetowych)"
+msgstr "CSS kaskadowe arkusze stylów (standard W3C z 1996 roku, wraz z HTML/JS nazywany jednym z trzech podstawowych elementów front-endu. Przeszedł przez pozycjonowanie CSS2 i modułową ewolucję CSS3, natywnie obsługuje Flexbox, Grid i responsywny projekt z zapytaniami o media. Jest absolutnie dominującym standardem do odsprzęgania prezentacji stron internetowych w nowoczesnych przeglądarkach)"
 
 msgid "mime_xsl"
-msgstr "Arkusz stylów XSL (standard W3C z 1999 r., język przekształcania dokumentów XML, może konwertować XML na HTML/PDF/tekst. Po rozpowszechnieniu JSON, użycie spadło)"
+msgstr "XSL arkusz stylów (standard W3C z 1999 roku, zawiera język transformacji XSLT i język adresowania XPath, używany do renderowania ustrukturyzowanych danych XML do HTML, PDF lub zwykłego tekstu. W nowoczesnym rozwoju jego ekosystem został w dużej mierze zastąpiony przez lżejsze silniki szablonów i format danych JSON)"
 
 msgid "mime_runtime"
-msgstr "Plik wykonywalny (formaty wykonywalne systemów operacyjnych, takie jak EXE, ELF, Mach-O, zawierają kod maszynowy i informacje o ładowaniu)"
+msgstr "Plik wykonywalny (natywne formaty wykonywania systemu operacyjnego, takie jak EXE, ELF, Mach-O, zawierające skompilowany kod maszynowy niskiego poziomu, punkt wejścia i informacje o ładowaniu systemu)"
 
 msgid "mime_library"
-msgstr "Plik biblioteki (DLL, SO, dylib i inne dynamicznie dołączane biblioteki, kod ładowany podczas wykonywania programu)"
+msgstr "Plik biblioteki (dynamiczne lub statyczne biblioteki dołączane, takie jak DLL, SO, dylib, zawierające współdzielone symbole i kod relokacji do wywoływania przez inne programy i ładowania w czasie wykonywania)"
 
 msgid "mime_swf"
-msgstr "Animacja Flash (opracowana przez Macromedia w 1996 r., później przejęta przez Adobe. Standard interaktywnych animacji internetowych, dominował w animacjach i grach internetowych. Wady: zależność od wtyczki, brak wsparcia na urządzeniach mobilnych, wysokie ryzyko bezpieczeństwa. W 2017 r. Adobe ogłosiło wycofanie, w 2020 r. całkowicie zakończono wsparcie, zastąpiony przez HTML5/CSS3/JS)"
+msgstr "Animacja Flash (opracowana przez Macromedia w 1996 roku, przejęta przez Adobe w 2005 roku. Interaktywny standard animacji internetowych, niegdyś dominujący w animacjach i grach internetowych. Wady: zależność od wtyczek, brak wsparcia dla urządzeń mobilnych, wysokie ryzyko bezpieczeństwa. Adobe ogłosiło wycofanie w 2017 roku, całkowicie zakończyło wsparcie w 2020 roku, zastąpione przez HTML5/CSS3/JS)"
 
 msgid "mime_dtd"
-msgstr "Definicja typu dokumentu DTD (specyfikacja XML, definiuje strukturę dokumentu XML, używana do walidacji poprawności XML)"
+msgstr "DTD definicja typu dokumentu (wydana wraz z XML 1.0 w 1998 roku, używana do definiowania struktury dokumentu XML/HTML i weryfikacji poprawności. W nowoczesnym rozwoju została stopniowo zastąpiona przez bardziej elastyczne rozwiązania, takie jak XML Schema, RELAX NG)"
 
 msgid "mime_csv"
-msgstr "Format danych CSV (wartości oddzielone przecinkami, uniwersalny format dla danych tabelarycznych, standard importu/eksportu w Excelu i bazach danych)"
+msgstr "Format danych CSV (wartości oddzielone przecinkami, uniwersalny format tabeli zwykłego tekstu z ery mainframe (kompilator IBM Fortran) z 1972 roku. Oficjalnie ustandaryzowany przez RFC 4180 w 2005 roku jako bezstratny standard wymiany danych międzyplatformowy i międzyjęzykowy. Szeroko stosowany do wydajnego importu/eksportu do Excela, relacyjnych baz danych, analizy danych (Pandas).)"
+
+msgid "mime_cur"
+msgstr "Plik wskaźnika myszy (format .cur, używany do dostosowywania stylu myszy, np. kursor palca na stronach internetowych, ikona klepsydry oczekiwania w systemie. Jest 'krewnym' zwykłej ikony .ico, ale ma dodatkową lokalizację 'gorącego punktu' - miejsca, w którym mysz faktycznie klika. Historia: wprowadzony wraz z Windows 3.1 (1992), był kluczowym komponentem przejścia interfejsu graficznego z linii poleceń do ery operacji myszą)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (uruchamiacz aplikacji Java, technologia dystrybucji aplikacji Java na komputery stacjonarne z lat 2000., obecnie wycofana)"
+msgstr "Java Web Start (technologia dystrybucji aplikacji pulpitu Java z lat 2000, uruchamiająca zdalne programy Java za pomocą pliku .jnlp. Z powodu problemów bezpieczeństwa i rozpowszechnienia nowoczesnych metod dystrybucji, jest obecnie w zasadzie wycofana)"
 
 msgid "mime_lit"
-msgstr "E-book Microsoft Reader (wprowadzony przez Microsoft w 2000 r., format LIT, wycofany)"
+msgstr "Microsoft Reader e-book (wydany przez Microsoft w 2000 roku, format LIT. Wycofany, można teraz konwertować do EPUB lub PDF za pomocą narzędzi takich jak Calibre)"
 
 msgid "mime_svg"
-msgstr "Grafika wektorowa SVG (standard W3C z 1999 r., ponieważ Microsoft długo promował swój własny format VML, przeglądarka IE obsługiwała go dopiero w 2011 r., co opóźniło jego rozpowszechnienie. Po 2015 r., wraz z wycofaniem IE i upowszechnieniem się ekranów HD, stał się preferowanym formatem dla ikon i logo)"
+msgstr "SVG grafika wektorowa (standard W3C z 1999 roku, dwuwymiarowy format obrazu wektorowego oparty na architekturze XML. Ma zaletę skalowania bez utraty ostrości i transmisji strumienia tekstu. Wszystkie nowoczesne przeglądarki obsługują go natywnie. Szeroko stosowany do ikon stron internetowych o wysokiej rozdzielczości, logo i renderowania animacji wektorowych. Jest podstawowym standardem nowoczesnej grafiki internetowej)"
 
 msgid "mime_ai"
-msgstr "Grafika wektorowa Adobe Illustrator (wprowadzona w 1987 r., branżowy standard formatu grafiki wektorowej, pierwszy wybór dla projektowania druku, logo i ikon)"
+msgstr "AI grafika wektorowa (zastrzeżony format grafiki wektorowej niezależnie opracowany przez Adobe w 1987 roku. Jako kluczowy standard branżowy dla typografii, projektowania druku i projektowania tożsamości marki, obsługuje wielowarstwowe i wysokopoziomowe dane wektorowe układu. Jest preferowanym nośnikiem dla profesjonalnej sztuki wizualnej)"
 
 msgid "mime_phshop"
-msgstr "Obraz Photoshop (wprowadzony przez Adobe w 1990 r., źródłowy format Photoshopa PSD, branżowy standard obróbki obrazu)"
+msgstr "PSD obraz warstwowy (zastrzeżony format pliku źródłowego obrazu rastrowego wydany przez Adobe wraz z Photoshopem w 1990 roku. Obsługuje wielowarstwowe nakładanie warstw, kanały, maski i bezstratne dane edycyjne. Został ustanowiony jako światowy standard branżowy do przetwarzania obrazów i malowania cyfrowego)"
 
 msgid "mime_ttf"
-msgstr "Czcionka TrueType (opracowana wspólnie przez Apple i Microsoft w 1989 r., wektorowy format czcionek, spójny wyświetlacz na ekranie i w druku, domyślny format czcionek w nowoczesnych systemach operacyjnych)"
+msgstr "Czcionka TrueType (cyfrowy format czcionki konturowej opracowany wspólnie przez Apple i Microsoft w 1989 roku. Oparty na kwadratowych krzywych Béziera, osiąga absolutną zgodność pikseli między wyświetlaniem na ekranie a wydrukiem. Jest natywnym domyślnym formatem czcionek nowoczesnych systemów operacyjnych komputerów stacjonarnych)"
 
 msgid "mime_fon"
-msgstr "Czcionka internetowa WOFF2 (zalecenie W3C z 2014 r., wykorzystuje algorytm kompresji Brotli, w porównaniu ze starszym WOFF objętość zmniejszona o około 30%, w porównaniu z TTF/OTF zmniejszona o ponad 50%, wszystkie nowoczesne przeglądarki go obsługują, preferowany format dla nowoczesnych czcionek internetowych, obsługiwany przez ponad 98% przeglądarek)"
+msgstr "FON czcionka bitmapowa (wczesny systemowy format czcionki macierzowej punktowej Microsoft Windows z lat 80. XX wieku. Nie obsługuje dowolnego bezstratnego skalowania proporcjonalnego. Zwykle używany z systemami dziedziczonymi lub wczesnymi komponentami urządzeń wbudowanych do ograniczonego renderowania tekstu pikselowanego)"
 
 msgid "mime_pdf"
-msgstr "Dokument PDF (opracowany przez Adobe w 1993 r., stał się międzynarodowym standardem ISO w 2008 r. Niezależny od platformy format dokumentów, zachowuje spójność formatowania, globalny standard dystrybucji dokumentów elektronicznych)"
+msgstr "PDF dokument elektroniczny (platformowy format dokumentu o stałym układzie opracowany przez Adobe w 1993 roku i stający się międzynarodowym standardem ISO 32000 w 2008 roku. Ma absolutną wierność układu i formatu. Jest uniwersalnym standardem dla globalnej dystrybucji elektronicznych dokumentów urzędowych i publikacji cyfrowych)"
 
 msgid "mime_dotnet"
-msgstr "Dynamiczna strona ASP.NET (wprowadzona przez Microsoft w 2002 r., technologia dynamicznych stron dla platformy Windows, część .NET Framework)"
+msgstr "ASP.NET dynamiczna strona (technologia dynamicznej strony internetowej po stronie serwera wydana przez Microsoft wraz z architekturą .NET w 2002 roku. Działająca na silniku renderującym IIS, używana do budowania korporacyjnych, dynamicznych aplikacji internetowych po stronie serwera Windows i systemów rozproszonych)"
 
 msgid "mime_mdb"
-msgstr "Baza danych Access (plik bazy danych Microsoft Access, wprowadzony w 1992 r., rozwiązanie bazy danych dla komputerów stacjonarnych Windows)"
+msgstr "MDB relacyjna baza danych (format przechowywania relacyjnej bazy danych na poziomie pulpitu wydany przez Microsoft wraz z Access w 1992 roku. Z wbudowanym silnikiem bazy danych Jet, był używany jako rozwiązanie relacyjnej bazy danych we wczesnym zarządzaniu informatyką komputerów osobistych i małych oraz średnich przedsiębiorstw)"
 
 msgid "mime_md"
-msgstr "Dokument Markdown (utworzony przez Johna Grubera w 2004 r., projekt składni był pod wpływem reStructuredText i Setext. Główna filozofia projektowa to 'czytelność to renderowanie', oryginalna implementacja Markdown.pl jest napisana w Perlu i wykonuje transformację tekstu w oparciu o wyrażenia regularne. Specyfikacje pochodne obejmują GFM (2013), CommonMark (2017), Pandoc Markdown itp. Napędza ekosystemy takie jak GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress, stając się standardem de facto dla statycznych generatorów witryn i dokumentacji deweloperskiej)"
+msgstr "Dokument Markdown (lekki język znaczników niezależnie stworzony przez Johna Grubera w 2004 roku. Podstawową filozofią projektu jest 'czytelny znaczy renderowany', która napędza nowoczesne pochodne standardy, takie jak GFM i CommonMark. Szeroko stosowany jako podstawowy standard wymiany dla dokumentacji technicznej, baz wiedzy (Obsidian) i nowoczesnych generatorów statycznych stron internetowych)"
 
 msgid "mime_crystal"
-msgstr "Format raportów Crystal Reports (raporty SAP business intelligence, standardowy format raportów korporacyjnych)"
+msgstr "Crystal Reports (profesjonalny format pliku raportu na poziomie przedsiębiorstwa platformy SAP Business Intelligence (BI). Ma niskopoziomowe połączenia z wieloma źródłami danych i złożone możliwości dynamicznego renderowania wykresów, szeroko stosowany do profesjonalnego generowania raportów w systemach finansowych i analizy danych międzynarodowych korporacji)"
 
 msgid "mime_libreoffice"
-msgstr "Dokument LibreOffice (opracowany przez The Document Foundation w 2010 r., gałąź OpenOffice, implementacja standardu ODF, główny pakiet biurowy typu open source)"
+msgstr "Dokument LibreOffice (zastrzeżony format pakietu biurowego open source zbudowanego przez The Document Foundation w 2010 roku na bazie rozwidlenia OpenOffice. Głęboko implementuje międzynarodowy standard ODF (Open Document Format) W3C. Jest biurową podstawą nowoczesnego ekosystemu open source)"
 
 msgid "mime_encrypt"
-msgstr "Zaszyfrowany plik (plik, który należy odszyfrować, aby wyświetlić, typowe rozszerzenia: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT zaszyfrowany plik (surowe dane binarne lub tekstowe przetworzone za pomocą określonego symetrycznego lub asymetrycznego algorytmu szyfrowania. Zawiera podstawowe formaty pochodne, takie jak .enc, .pgp, .gpg. W warstwie sieciowej służy do zapewnienia poufności i weryfikacji integralności danych niepublicznych)"
 
 msgid "mime_gpx"
-msgstr "Dane śledzenia GPS (format wymiany GPS, rejestruje informacje o lokalizacji geograficznej, uniwersalny format dla zegarków sportowych i urządzeń nawigacyjnych)"
+msgstr "GPX dane trajektorii satelitarnej (format wymiany globalnego systemu pozycjonowania oparty na architekturze XML. Specjalnie używany do opisywania współrzędnych geograficznych, punktów nawigacyjnych, tras i historycznych trajektorii. Jest wspólnym otwartym standardem danych dla nowoczesnych urządzeń sportowych przenośnych, nawigacji samochodowej i systemów informacji geograficznej (GIS))"
 
 msgid "mime_diskimage"
-msgstr "Obraz dysku (DMG, ISO, IMG i inne pliki obrazów dysków optycznych/dysków, używane do dystrybucji oprogramowania lub tworzenia kopii zapasowych nośników)"
+msgstr "Disk Image obraz dysku (zawiera obrazy sektorów niskiego poziomu bajt po bajcie fizycznego dysku lub nośnika optycznego, takie jak ISO, DMG, IMG. Używany do niskopoziomowego wdrażania systemu, bezpiecznej dystrybucji oprogramowania o dużej pojemności i fizyczno-poziomowej pełnej kopii zapasowej danych nośnika pamięci)"
 
 msgid "mime_vm"
-msgstr "Obraz maszyny wirtualnej (VMDK, VDI, VHDX, OVA i inne pliki wirtualnych dysków, formaty platform wirtualizacyjnych, takich jak VMware, VirtualBox, Hyper-V)"
+msgstr "VM obraz maszyny wirtualnej (zawiera wirtualne obrazy dysków fizycznych, takie jak VMDK, VDI, VHDX, OVA. Jako podstawa platform VMware, VirtualBox i Hyper-V, używany do niskopoziomowej emulacji sprzętu na poziomie systemu, migawek instancji i dystrybucji infrastruktury chmurowej)"
 
 msgid "mime_torrent"
-msgstr "Plik torrent BitTorrent (wynaleziony przez Brama Cohena w 2001 r., plik indeksu pobierania P2P, zawiera metadane pliku i informacje o trackerze)"
+msgstr "Plik torrent BitTorrent (rozproszony indeks pobierania P2P peer-to-peer zaprojektowany przez Brama Cohena w 2001 roku. Oparty na kodowaniu Bencode, przechowuje niskopoziomowe dane metadanych sumy kontrolnej oryginalnego pliku i informacje adresowania serwera Tracker. Jest podstawowym nośnikiem dystrybucji strumieni w sieciach zdecentralizowanych)"
 
 msgid "mime_gis"
-msgstr "Dane systemu informacji geograficznej GIS (Shapefile, GeoJSON i inne geoprzestrzenne formaty danych, używane do map i analiz przestrzennych)"
+msgstr "GIS dane geoprzestrzenne (standard danych systemu informacji geograficznej z Shapefile i GeoJSON jako podstawą. Zawiera wielowymiarowe współrzędne geometryczne, topologię warstw i dane atrybutów. Szeroko stosowany do renderowania map cyfrowych o wysokiej precyzji, teledetekcji satelitarnej i analizy geometrii przestrzennej)"
 
 msgid "mime_ebook"
-msgstr "E-book (EPUB, MOBI, AZW i inne formaty e-booków. EPUB jest standardem międzynarodowym, MOBI/AZW to formaty Amazon Kindle)"
+msgstr "EBOOK e-book (cyfrowy format publikacji z otwartym międzynarodowym standardem EPUB W3C i zastrzeżoną architekturą MOBI/AZW Amazon Kindle jako podstawą. Obsługuje adaptacyjny układ strumieniowy, enkapsulację metadanych i ochronę praw cyfrowych DRM. Jest uniwersalnym nośnikiem do czytania cyfrowego na urządzeniach mobilnych)"
 
 msgid "mime_avif"
-msgstr "Obraz AVIF (wprowadzony przez Alliance for Open Media w 2019 r., oparty na kodowaniu AV1, stopień kompresji o 50% lepszy niż WebP, nowa generacja standardu obrazów internetowych)"
+msgstr "AVIF wydajny obraz (standard obrazu ultra-wysokiej rozdzielczości następnej generacji wprowadzony przez Open Media Alliance (AOMedia) w 2019 roku. Oparty na technologii klatek kluczowych kodowania wideo AV1, współczynnik kompresji o 50% lepszy niż WebP i natywnie obsługuje wysoki zakres dynamiczny (HDR). Jest głównym standardem przesyłania obrazów w nowoczesnej sieci Web)"
 
 msgid "mime_markdown"
-msgstr "Dokument Markdown (zaprojektowany przez Johna Grubera w 2004 r., lekki język znaczników, uniwersalny format dla README na GitHubie, dokumentacji technicznej, postów na forach)"
+msgstr "Markdown lekki dokument (język znaczników dokumentów tekstowych niezależnie stworzony przez Johna Grubera w 2004 roku. Używa deklaratywnego projektu zwykłego tekstu, jego składnia jest inspirowana przez reStructuredText. Szeroko stosowany w projektach GitHub, dokumentacji technicznej na poziomie inżynierskim i nowoczesnym ekosystemie zarządzania statycznymi treściami)"
 
 msgid "mime_yaml"
-msgstr "Konfiguracja YAML (zaprojektowana przez Clarka Evansa w 2001 r., czytelny dla człowieka format serializacji danych, standardowy format plików konfiguracyjnych dla Kubernetes, Ansible, Docker Compose)"
+msgstr "YAML konfiguracja serializacji (czytelny dla człowieka format serializacji danych zaprojektowany przez Clarka Evansa i innych w 2001 roku. Oparty na hierarchicznym wcięciu i mapowaniu klucz-wartość. Został ustanowiony jako standard konfiguracji natywnej infrastruktury chmurowej dla orkiestracji kontenerów Kubernetes, automatyzacji Ansible i Docker Compose)"
 
 msgid "mime_toml"
-msgstr "Konfiguracja TOML (zaprojektowana przez Toma Prestona-Wernera w 2013 r., \"Tom's Obvious Minimal Language\", format plików konfiguracyjnych dla nowoczesnych narzędzi, takich jak Rust/Cargo, Python/pip, Go)"
+msgstr "TOML konfiguracja semantyczna (język minimalistyczny zaprojektowany przez Toma Prestona-Wernera w 2013 roku. Ma zalety projektu niskiego poziomu, takie jak silne typowanie, jawne mapowanie i semantyczna jasność. Obecnie szeroko stosowany jako ustandaryzowany plik konfiguracyjny dla nowoczesnych narzędzi programistycznych Rusta (Cargo), Pythona (pyproject.toml) i Go)"
 
 msgid "mime_vue"
-msgstr "Plik komponentu Vue (wprowadzony w 2014 roku przez Evana You, progresywny framework JavaScript. Dzięki komponentom pojedynczego pliku (SFC) doskonale łączy HTML, CSS i JS, znacznie zwiększając wydajność programowania. Jest to jeden z najpopularniejszych frameworków frontendowych na świecie. Również jako rdzeń nowoczesnych generatorów statycznych stron, takich jak VitePress, jest szeroko używany do tworzenia interaktywnej dokumentacji technicznej i blogów.)"
+msgstr "Vue komponent jednoplikowy (zastrzeżony format SFC progresywnej platformy internetowej wprowadzonej przez Evana You w 2014 roku. W jednym pliku realizuje separację zagadnień HTML/CSS/JS i wiązanie stanu reaktywnego, głęboko napędzając nowoczesne interaktywne aplikacje front-endowe i silniki statycznych stron internetowych na dużą skalę)"
 
 msgid "mime_wasm"
-msgstr "Moduł WebAssembly (standard W3C z 2017 r., format wykonywalny o wysokiej wydajności w przeglądarce, C/C++/Rust/R mogą kompilować do celu, wydajność bliska natywnej)"
+msgstr "WebAssembly moduł binarny (ustanowiony przez W3C w 2017 roku standard kodu bajtowego niskiego poziomu o wysokiej wydajności dla sieci Web. Pozwala na kompilację języków silnie typowanych, takich jak C/C++/Rust, do celu piaskownicy przeglądarki, zapewniając wydajność wykonawczą zbliżoną do natywnego sprzętu. Jest kamieniem węgielnym nowoczesnego przetwarzania brzegowego w sieci Web)"
 
 msgid "mime_jsx"
-msgstr "Komponent React JSX (Facebook wprowadził JavaScript XML w 2013 r., składnia komponentów frameworka React, innowacyjny paradygmat pisania HTML w JavaScript)"
+msgstr "React komponent JSX (rozszerzenie składni JavaScript XML wydane przez Facebook wraz z platformą React w 2013 roku. Obsługuje deklaratywne budowanie wirtualnej struktury DOM w JavaScript, implementując paradygmat programowania front-endowego 'UI jest funkcją stanu' oparty na komponentach)"
 
 msgid "mime_tsx"
-msgstr "Komponent TypeScript TSX (opracowany przez Microsoft w 2012 r., TypeScript + JSX, standardowy sposób tworzenia React z bezpieczeństwem typów)"
+msgstr "TypeScript komponent TSX (połączenie silnie typowanej składni TypeScript opracowanej przez Microsoft w 2012 roku ze strumieniem JSX. Wstrzykuje statyczne sprawdzanie typów w czasie kompilacji i ograniczenia interfejsów w tworzeniu komponentów React. Jest standardem kodowania dla bezpiecznego tworzenia nowoczesnych, dużych systemów front-endowych)"
 
 msgid "mime_heif"
-msgstr "Obraz HEIF (standard MPEG z 2015 r., wydajny format plików obrazów, szeroko stosowany w ekosystemie Apple)"
+msgstr "HEIF wydajny obraz (format pliku wydajnego obrazu ustanowiony przez organizację MPEG w 2015 roku. Oparty na algorytmie kodowania wideo HEVC (H.265), obsługuje zawieranie wieloklatkowych obrazów, map głębokości i metadanych w bardzo małej objętości. Jest zastrzeżonym standardem przechowywania dla nowoczesnych mobilnych systemów operacyjnych i inteligentnych urządzeń końcowych)"
 
 msgid "mime_heic"
-msgstr "Obraz HEIC (implementacja HEIF firmy Apple, domyślny format zdjęć iPhone'a, natywnie obsługiwany na iOS/macOS)"
+msgstr "HEIC wydajny obraz (zastrzeżony format bitmapy Apple zaimplementowany w oparciu o międzynarodowy standard HEIF. Jako domyślny standard przechowywania zdjęć dla nowoczesnych iPhone'ów, otrzymuje sprzętowe kodowanie/dekodowanie na poziomie iOS/macOS i natywne wsparcie systemu operacyjnego. Zapewniając wysoką jakość obrazu, znacznie zmniejsza podstawową przestrzeń dyskową)"
 
 msgid "mime_gltf"
-msgstr "Model 3D GLTF (format transmisji GL, 'JPEG dla świata 3D', wydany przez Khronos Group w 2015 r., standardowy format dla sieci 3D)"
+msgstr "glTF model zasobu 3D (standard formatu przesyłania GL wydany przez Khronos Group w 2015 roku. Używa architektury JSON do opisywania trójwymiarowych scen, znany jako 'JPEG dla obszaru 3D'. Jest lekkim standardem przemysłowym do renderowania WebGL/WebGPU i rzeczywistości wirtualnej)"
 
 msgid "mime_glb"
-msgstr "Binarny model 3D GLB (binarna wersja GLTF, jeden plik zawiera wszystkie zasoby, używany do dystrybucji scen 3D)"
+msgstr "GLB binarny model 3D (całkowicie binarna, bezstratna wersja enkapsulacji modelu zasobu glTF. Łączy strukturę sceny, niskopoziomowe dane wierzchołków siatki, materiały i mapy tekstur w jeden plik. Specjalnie zaprojektowany do wydajnego przesyłania i strumieniowej dystrybucji międzyplatformowych zasobów 3D w sieci Web)"
 
 msgid "mime_gls"
-msgstr "Słownik GLOSSARY (plik definicji terminów, używany do zarządzania terminologią w systemach dokumentacji)"
+msgstr "GLOSSARY glosariusz danych (plik definicji zestawu terminów specjalnie dla systemów zarządzania dokumentami i ustrukturyzowanych korpusów. Zawiera wbudowane standardowe definicje terminów, mapowania wielojęzyczne i mapowania metadanych. Używany do utrzymania spójności koncepcyjnej w zautomatyzowanej analizie tekstu i systemach publikowania treści)"
 
 msgid "mime_cbz"
-msgstr "Komiks CBZ (obrazy komiksów skompresowane ZIP, uniwersalny format do kolekcjonowania komiksów)"
+msgstr "CBZ komiks (zastrzeżony format archiwizacji obrazów komiksowych oparty na strukturze kompresji ZIP. Wewnętrznie enkapsuluje ciągłą sekwencję statycznych obrazów bitmapowych. Jest uniwersalnym lekkim standardem kontenerowym do cyfrowego wydawania komiksów i międzyplatformowego lokalnego kolekcjonowania)"
 
 msgid "mime_cbr"
-msgstr "Komiks CBR (obrazy komiksów skompresowane RAR, uniwersalny format do kolekcjonowania komiksów)"
+msgstr "CBR komiks (zastrzeżony format archiwizacji obrazów komiksowych oparty na strukturze kompresji RAR. Używa algorytmu RAR do enkapsulacji sekwencji statycznych bitmap, ma stosunkowo wysoki współczynnik kompresji, ma szerokie wsparcie kompatybilności w dziedzinie dystrybucji komiksów cyfrowych)"
 
 msgid "mime_fb2"
-msgstr "E-book FB2 (FictionBook 2.0, rosyjski format e-booków, struktura XML, szeroko obsługiwany przez czytniki open source)"
+msgstr "FB2 e-book (standard e-booka FictionBook 2.0 z początku XXI wieku. Używa czystej struktury XML do opisywania atrybutów książki i hierarchii tekstu. Ma szerokie wsparcie w ekosystemie e-booków open source i dziedziczonych czytnikach publikacji cyfrowych)"
 
 msgid "mime_kepub"
-msgstr "E-book KEPUB (specjalny format EPUB dla Kobo, zoptymalizowany format dla czytników e-booków Kobo)"
+msgstr "KEPUB e-book (zastrzeżony, ulepszony format e-booka Kobo, który ewoluował w oparciu o standard EPUB. Wykonuje niskopoziomową optymalizację renderowania dla czytników e-booków Kobo na poziomie sprzętu, zapewniając bardziej wydajny układ strony i interakcję statystyk czytania)"
 
 msgid "mime_m4b"
-msgstr "Książka audio M4B (format książek audio MPEG-4, obsługuje zakładki, format książek audio iTunes)"
+msgstr "M4B audiobook (format audiobooka oparty na architekturze kontenera MPEG-4 Part 14 (MP4). Używa kodowania AAC, natywnie obsługuje niskopoziomową lokalizację zakładek, wznawianie odtwarzania od punktu przerwania i osadzanie rozdziałów. Był kiedyś standardowym formatem ekosystemu Apple iTunes)"
 
 msgid "mime_kfx"
-msgstr "Format Kindle KFX (wprowadzony przez Amazon w 2015 r., specjalny format dla e-booków Kindle, obsługuje ulepszony skład i szybkie przewijanie)"
+msgstr "Kindle KFX format (zastrzeżony, ulepszony format publikacji cyfrowej wydany przez Amazon wraz z Kindle w 2015 roku. Obsługuje zaawansowany układ ligatur, renderowanie czcionek o wysokiej dynamice i ładowanie stron strumieniowych na poziomie jądra (Page Flip). Jest podstawowym standardem nowoczesnej platformy Kindle)"
 
 msgid "mime_chm"
-msgstr "Plik pomocy CHM (wprowadzony przez Microsoft w 1997 r., skompilowany format pomocy HTML, standard dokumentacji pomocy dla oprogramowania Windows)"
+msgstr "CHM skompilowany plik pomocy (skompilowany system informacji pomocy HTML wydany przez Microsoft w 1997 roku. Pakuje dane hipertekstowe i indeks podstawowy do jednego kontenera binarnego. Przez długi czas był standardowym formatem lokalnej, offline'owej dokumentacji pomocy dla oprogramowania Windows)"
 
 msgid "mime_mht"
-msgstr "Archiwum strony internetowej MHT (wprowadzone przez Microsoft w 1999 r., format pojedynczego pliku strony internetowej, format zapisywania stron w przeglądarce IE)"
+msgstr "MHT archiwum strony internetowej (format hipertekstu agregowanego MIME wydany przez Microsoft w 1999 roku. Oparty na standardzie RFC 2557, enkapsuluje kod źródłowy HTML, CSS, JS i osadzone obrazy w jeden plik tekstowy. Używany do offline'owego zapisywania stron internetowych w dziedziczonych przeglądarkach)"
 
 msgid "mime_wml"
-msgstr "Język znaczników bezprzewodowych WML (standard WAP z 1999 r., używany do plików stron internetowych na wczesnych telefonach komórkowych, wycofany)"
+msgstr "WML bezprzewodowy język znaczników (mobilny standard znaczników ustanowiony przez forum WAP w 1999 roku. Oparty na specyfikacji XML, specjalnie zaprojektowany dla wczesnych wąskopasmowych bezprzewodowych sieci komórkowych i telefonów o niskiej wydajności. W nowoczesnym ekosystemie sieci Web należy do wycofanej, dziedziczonej technologii)"
 
 msgid "mime_xhtml"
-msgstr "Strona XHTML (standard W3C z 2000 r., wersja XML HTML, ściślejsza składnia. W 2009 r. W3C zaprzestał utrzymywania, skupiając się na HTML5)"
+msgstr "XHTML hipertekstowa strona internetowa (standard W3C z 2000 roku, enkapsulacja ścisłego języka znaczników hipertekstowych opartego na architekturze XML. W 2009 roku W3C zatrzymało jego ewolucję techniczną i całkowicie przeszło na specyfikację HTML5. Obecnie używany głównie do semantycznego renderowania stron internetowych w dziedziczonych systemach)"
 
 msgid "mime_xml"
-msgstr "Dokument XML (standard W3C z 1998 r., rozszerzalny język znaczników, podstawowy format dla usług sieciowych, plików konfiguracyjnych, wymiany danych)"
+msgstr "XML ustrukturyzowany dokument (rozszerzalny język znaczników ze standardu W3C z 1998 roku. Ma samoopisującą się architekturę tagów. Jest podstawowym formatem dla sieciowych usług internetowych (SOAP/REST), plików konfiguracyjnych na poziomie systemu (XSD) i międzyplatformowej wymiany danych)"
 
 msgid "mime_sgml"
-msgstr "Dokument SGML (standard ISO z 1986 r., poprzednik HTML, standardowy uniwersalny język znaczników, zarówno XML, jak i HTML wywodzą się z SGML)"
+msgstr "SGML uogólniony język znaczników (międzynarodowy standard ISO 8879 z 1986 roku dla standardowego uogólnionego języka znaczników. Jako pionier branży w strukturalnym opisie dokumentów elektronicznych, zarówno XML, jak i wczesne specyfikacje HTML wywodzą się z tego standardowego metajęzyka)"
 
 msgid "mime_apng"
-msgstr "Animacja APNG (opracowana przez Mozilla w 2004 r., rozszerzenie animacji PNG, nowoczesna alternatywa dla GIF, obsługuje prawdziwe kolory i przezroczystość)"
+msgstr "APNG dynamiczna grafika (dynamiczne rozszerzenie Portable Network Graphics (PNG) opracowane przez Mozilla w 2004 roku. Obsługuje 24-bitowe prawdziwe kolory i 8-bitową półprzezroczystość kanału alfa. Jest wysokiej rozdzielczości alternatywą dla formatu GIF w nowoczesnych scenariuszach internetowych)"
 
 msgid "mime_bmp"
-msgstr "Bitmapa BMP (format bitmapy systemu Windows, natywnie obsługiwany od Windows 1.0. Nieskompresowany, duży rozmiar pliku, ale ze względu na prostą strukturę i brak potrzeby stosowania dodatkowych kodeków, jest nadal używany w narzędziu Wycinanie systemu Windows 11, programie Paint, zasobach ikon w pakietach instalacyjnych EXE/MSI, plikach kursora i niektórych starszych sterownikach. Przy tej samej jakości obrazu rozmiar pliku jest około 3-10 razy większy niż PNG. W większości przypadków został zastąpiony przez PNG/JPEG, ale ekosystem Windows nadal zachowuje szeroką kompatybilność)"
+msgstr "BMP natywna bitmapa (niezależny od urządzenia format bitmapy platformy Microsoft ustanowiony od ery Windows 1.0. Używa bezstratnego, nieskompresowanego przechowywania, chociaż jego rozmiar jest zwykle 3-10 razy większy niż PNG, ponieważ nie wymaga kosztów kodowania/dekodowania, nadal jest szeroko osadzony w podstawowych komponentach Windows 11, segmentach zasobów EXE/MSI i buforach graficznych dziedziczonych sterowników)"
 
 msgid "mime_cdr"
-msgstr "Grafika wektorowa CDR (specjalny format CorelDRAW, kanadyjska firma Corel, oprogramowanie do projektowania grafiki wektorowej)"
+msgstr "CDR grafika wektorowa (zastrzeżony format pliku źródłowego profesjonalnego projektu wektorowego CorelDRAW kanadyjskiej firmy Corel. Obsługuje wielowarstwowe zarządzanie kolorami, złożone węzły konturów matematycznych i dane układu na poziomie druku. Jest specjalistycznym formatem dla profesjonalnego druku płaskiego i projektowania reklamowego)"
 
 msgid "mime_gif"
-msgstr "Obraz GIF (opracowany przez CompuServe w 1987 r., 256-kolorowy animowany format obrazu. Wady: mało kolorów, niska jakość obrazu, brak obsługi przezroczystości, duży plik, niska liczba klatek na sekundę. Zastąpiony przez nowoczesne animowane formaty obrazu, takie jak APNG, WebP)"
+msgstr "GIF obraz z indeksowanymi kolorami (8-bitowy format bitmapy z indeksowanymi kolorami opracowany przez CompuServe w 1987 roku. Oparty na algorytmie LZW, ograniczony do 256 poziomów kolorów i przezroczystości jednego koloru. Przy wysokiej liczbie klatek na sekundę staje się obszerny. Obecnie stopniowo zastępowany przez nowoczesne, wydajne standardy obrazów dynamicznych, takie jak APNG, WebP)"
 
 msgid "mime_ico"
-msgstr "Ikona ICO (format pliku ikony systemu Windows, obsługuje wiele rozdzielczości, standardowy format favicon witryny internetowej)"
+msgstr "ICO ikona systemowa (natywny format enkapsulacji zasobów ikon Windows. Obsługuje mieszane osadzanie wariantów obrazów o wielu rozdzielczościach pikseli i głębiach kolorów w jednym kontenerze. Jest również uniwersalnym standardem dystrybucji dla podstawowego identyfikatora witryny nowoczesnych przeglądarek internetowych (Favicon))"
 
 msgid "mime_jpeg"
-msgstr "Obraz JPEG (standard ISO z 1992 r., stratny format kompresji zdjęć, standard de facto dla zdjęć w Internecie)"
+msgstr "JPEG skompresowany obraz (stratny format obrazu kompresji według międzynarodowego standardu ISO 10918 z 1992 roku. Oparty na algorytmie dyskretnej transformacji cosinusowej (DCT), osiąga wysoki współczynnik kompresji, jednocześnie utrzymując doskonałą, realistyczną jakość obrazu. Jest absolutnym de facto standardem dla statycznej fotografii w globalnym Internecie)"
 
 msgid "mime_jpg"
-msgstr "Obraz JPEG (standard ISO z 1992 r., stratny format kompresji zdjęć, standard de facto dla zdjęć w Internecie)"
+msgstr "JPEG skompresowany obraz (stratny format obrazu kompresji według międzynarodowego standardu ISO 10918 z 1992 roku. Oparty na algorytmie dyskretnej transformacji cosinusowej (DCT), osiąga wysoki współczynnik kompresji, jednocześnie utrzymując doskonałą, realistyczną jakość obrazu. Jest absolutnym de facto standardem dla statycznej fotografii w globalnym Internecie)"
 
 msgid "mime_png"
-msgstr "Obraz PNG (zalecenie W3C z 1996 r., obsługuje prawdziwe kolory i przezroczystość, statyczny zamiennik GIF, internetowy standard obrazów bezstratnych)"
+msgstr "PNG obraz bezstratny (standard przenośnej grafiki sieciowej zalecany przez W3C w 1996 roku. Używa bezstratnego algorytmu kompresji, natywnie obsługuje 24-bitowe prawdziwe kolory i 8-bitową przezroczystość kanału alfa. Jako alternatywa wysokiej rozdzielczości dla klasycznego statycznego GIF, jest absolutnym de facto standardem dla bezstratnych obrazów pikselowych w Internecie)"
 
 msgid "mime_ps"
-msgstr "Plik opisu strony PostScript (wprowadzony przez Adobe w 1985 r., język opisu strony, poprzednik PDF, używany do drukowania i publikowania)"
+msgstr "PostScript plik opisu strony (język opisu strony oparty na stosie wprowadzony przez Adobe w 1985 roku. Jako technologiczny poprzednik formatu PDF, implementuje na niskim poziomie niezależną od sprzętu typografię i renderowanie grafiki wektorowej o wysokiej precyzji. Jest podstawowym standardem dla profesjonalnego wydawnictwa poligraficznego i druku laserowego)"
 
 msgid "mime_psb"
-msgstr "Duży dokument PSB (format Adobe Photoshop dla bardzo dużych obrazów, obsługuje obrazy o rozmiarze przekraczającym 2 GB lub 30000 pikseli)"
+msgstr "PSB dokument dużej warstwy (zastrzeżony format enkapsulacji bardzo dużego pliku źródłowego Adobe Photoshop. Przekracza fizyczny rozmiar 2 GB i wewnętrzne ograniczenia adresowania 30 000 pikseli standardowego formatu PSD. Specjalnie zaprojektowany do przechowywania bardzo dużych, o wysokiej głębokości warstw, gigantycznych cyfrowych zasobów artystycznych)"
 
 msgid "mime_psd"
-msgstr "Obraz PSD (źródłowy plik Adobe Photoshop, obsługuje warstwy, kanały, ścieżki, branżowy standard obróbki obrazu)"
+msgstr "PSD plik źródłowy projektu warstw (zastrzeżony format inżynierii obrazu warstwowego Adobe Photoshop. Jako standardowy kontener branżowy w dziedzinie grafiki i obrazu, natywnie enkapsuluje pełne drzewo renderowania warstw, kanały bitmapowe, wektorowe ścieżki przycinania i złożone tryby mieszania, obsługując bezstratną edycję wszystkich danych)"
 
 msgid "mime_webp"
-msgstr "Obraz WebP (opracowany przez Google w 2010 r., internetowy format obrazów, obsługuje kompresję stratną/bezstratną i animację, stopień kompresji jest o 25-35% lepszy niż PNG, o 25% lepszy niż JPEG)"
+msgstr "WebP wydajny obraz (uniwersalny standard kodowania grafiki internetowej wprowadzony przez Google w 2010 roku. Wywodzi się z technologii klatek kluczowych wideo VP8, doskonale kompatybilny z renderowaniem stratnym, bezstratnym, półprzezroczystym i dynamicznym. Zmniejsza rozmiar o 25-35% w porównaniu z PNG o tej samej jakości. Jest kamieniem węgielnym wysokowydajnego ładowania nowoczesnych stron internetowych)"
 
 msgid "mime_woff"
-msgstr "Czcionka internetowa WOFF (utworzona w 2009 r., standard W3C z 2018 r. Kompresja oparta na TrueType/OpenType, optymalizacja ładowania czcionek internetowych, standardowy format ikon dla nowoczesnych stron internetowych)"
+msgstr "WOFF plik glifów internetowych (otwarty format czcionek internetowych stworzony w 2009 roku i stający się standardem W3C w 2012 roku. W istocie jest to bezstratna enkapsulacja kompresji strumieniowej standardowych struktur czcionek TTF/OTF, która znacznie optymalizuje koszty przepustowości transmisji sieciowej. Jest uniwersalnym formatem dla nowoczesnych ikon witryn internetowych i czcionek w chmurze)"
 
 msgid "mime_7z"
-msgstr "Pakiet skompresowany 7z (opracowany przez Igora Pavlova w 1999 r., specjalny format programu 7-Zip. Algorytm LZMA, wysoki stopień kompresji, open source i bezpłatny. Format 7z przy tym samym stopniu kompresji jest zwykle o 30-50% mniejszy niż ZIP, popularny format w społeczności open source i do dystrybucji oprogramowania)"
+msgstr "7z skompresowane archiwum (zastrzeżony format 7-Zip opracowany przez Igora Pavlova w 1999 roku. Oparty na otwartych algorytmach LZMA/LZMA2, ma niezwykle wysoki współczynnik kompresji. W porównywalnych warunkach jego rozmiar jest zwykle o 30-50% mniejszy niż ZIP. Jest uniwersalnym formatem o wysokim współczynniku kompresji dla społeczności open source i dystrybucji oprogramowania)"
 
 msgid "mime_ace"
-msgstr "Pakiet skompresowany ACE (opracowany w latach 90., format programu WinACE. Konkurował z RAR, stosunkowo wysoki stopień kompresji. Rozwój zatrzymany w 2007 r., obecnie zastąpiony przez 7z/RAR, rzadko używany)"
+msgstr "ACE skompresowane archiwum (zastrzeżony format kompresji WinACE z lat 90. XX wieku. Konkurował niegdyś z formatem RAR i miał stosunkowo wysoki współczynnik kompresji. Po 2007 roku zaprzestano iteracji technologicznych, obecnie zastąpiony przez formaty 7z i RAR. Należy do formatów archiwizacji systemów dziedziczonych)"
 
 msgid "mime_bz2"
-msgstr "Pakiet skompresowany BZIP2 (opracowany przez Juliana Sewarda w 1996 r., algorytm sortowania bloków. Stopień kompresji jest o 15-20% lepszy niż GZIP, ale wolniejszy. Kod źródłowy jądra Linuksa, pakiety open source używają tego formatu, rozszerzenie .bz2)"
+msgstr "BZIP2 skompresowane archiwum (format kompresji sortowania bloków opracowany przez Juliana Sewarda w 1996 roku. Współczynnik kompresji jego podstawowego algorytmu jest o 15-20% wyższy niż GZIP, ale koszt obliczeniowy jest większy. Często używany do dystrybucji kodu źródłowego jądra Linux i pakietów oprogramowania open source. Standardowe rozszerzenie to .bz2)"
 
 msgid "mime_cab"
-msgstr "Pakiet skompresowany CAB (opracowany przez Microsoft w 1995 r., format Cabinet. Format pakietów instalacyjnych systemu Windows, używany do sterowników, dystrybucji plików systemowych. Windows Installer (MSI) wewnętrznie używa CAB do przechowywania plików)"
+msgstr "CAB skompresowane archiwum (format archiwizacji Cabinet niezależnie opracowany przez Microsoft w 1995 roku. Jako natywny standard pakietu instalacyjnego systemu Windows, używany do dystrybucji sterowników i plików jądra. Jest również podstawowym kontenerem pamięci dla Instalatora Windows (MSI))"
 
 msgid "mime_dmg"
-msgstr "Obraz dysku DMG (wprowadzony przez Apple w latach 80., format Disk Image. Standardowy format dystrybucji oprogramowania dla macOS, po dwukrotnym kliknięciu montowany jako wirtualny dysk, przeciągnij i upuść, aby zainstalować. Obsługuje kompresję i szyfrowanie, główny format pobierania oprogramowania Mac)"
+msgstr "DMG obraz dysku (format obrazu dysku opracowany przez Apple w latach 80. XX wieku. Jako standardowy kontener dystrybucji oprogramowania macOS, obsługuje fizyczne montowanie jako wirtualny system plików, niskopoziomową kompresję i szyfrowanie danych. Jest głównym formatem dystrybucji aplikacji w ekosystemie Mac)"
 
 msgid "mime_emz"
-msgstr "Skompresowany obraz EMZ (Windows skompresowany ulepszony metaplik, skompresowana wersja EMF. Format przechowywania grafiki wektorowej w dokumentach Office, w istocie jest to skompresowany GZIP plik EMF)"
+msgstr "EMZ skompresowany obraz (skompresowana wersja ulepszonego metapliku Windows EMF. W istocie jest to binarna grafika wektorowa skompresowana za pomocą algorytmu GZIP. Szeroko stosowana do przechowywania osadzonej grafiki wektorowej w dokumentach pakietu Microsoft Office)"
 
 msgid "mime_gz"
-msgstr "Pakiet skompresowany GZIP (opracowany przez Jean-loupa Gailly'ego i Marka Adlera w 1992 r., projekt GNU. Standardowe narzędzie kompresji na Unix/Linuks, popularny format kompresji transmisji HTTP. Rozszerzenie .gz, często używany razem z TAR)"
+msgstr "GZIP skompresowane archiwum (standardowy format kompresji strumieniowej opracowany przez Jean-loupa Gailly'ego i Marka Adlera z projektu GNU w 1992 roku. Jako standardowe narzędzie kompresji Unix/Linux, jest również podstawowym standardem kompresji warstwy transportowej HTTP (Gzip). Często używany razem z archiwizacją TAR)"
 
 msgid "mime_jar"
-msgstr "Pakiet skompresowany JAR (wprowadzony przez Sun Microsystems w 1997 r., format Java ARchive. W istocie jest to skompresowany pakiet ZIP, używany do pakowania bibliotek klas Java i aplikacji. Podstawowy format w ekosystemie Java, takim jak Maven, Gradle, Android również używa JAR)"
+msgstr "JAR skompresowane archiwum (format archiwizacji Java ARchive wprowadzony przez Sun Microsystems w 1997 roku. W istocie jest to kontener pakujący oparty na strukturze ZIP, używany do enkapsulacji bibliotek klas Javy i metadanych. Jest podstawowym produktem kompilacji dla Maven, Gradle i wczesnego ekosystemu Androida)"
 
 msgid "mime_lzma"
-msgstr "Pakiet skompresowany LZMA (opracowany przez Igora Pavlova w 1998 r., algorytm Lempel-Ziv-Markov chain. Podstawowy algorytm kompresji formatu 7z, wysoki stopień kompresji, szybka dekompresja. Używany do oprogramowania sprzętowego, dystrybucji oprogramowania dla systemów wbudowanych)"
+msgstr "LZMA skompresowane archiwum (algorytm kompresji łańcuchowej Lempel-Ziv-Markov opracowany przez Igora Pavlova w 1998 roku. Jako podstawowy silnik formatu 7z, ma niezwykle wysoki współczynnik kompresji i szybką dekompresję. Szeroko stosowany do dystrybucji oprogramowania sprzętowego i systemów wbudowanych)"
 
 msgid "mime_rar"
-msgstr "Pakiet skompresowany RAR (opracowany przez Eugene'a Roshala w 1993 r., format Roshal ARchive. Wysoki stopień kompresji, obsługuje dzielenie na woluminy, rekordy odzyskiwania. Format programu WinRAR, kompresja lepsza niż ZIP, ale wymaga płatnego oprogramowania, narzędzia open source, takie jak unrar, mogą dekompresować)"
+msgstr "RAR skompresowane archiwum (zastrzeżony format archiwizacji WinRAR opracowany przez Eugene'a Roshala w 1993 roku. Obsługuje podział na woluminy, fizyczne rekordy odzyskiwania (ECC) i szyfrowanie o wysokiej wytrzymałości. Współczynnik kompresji jest lepszy niż standardowego ZIP, ma szerokie wsparcie kompatybilności w komputerach osobistych i sektorze komercyjnym)"
 
 msgid "mime_tar"
-msgstr "Archiwum TAR (wprowadzone w Unix V7 w 1979 r., format Tape ARchive. Format archiwum taśmowego, nie kompresuje, tylko pakuje, często używany razem z GZIP/BZIP2/XZ. Kod źródłowy pakietów Linuksa, przechowywanie warstw obrazów Docker używają formatu TAR)"
+msgstr "TAR pakiet archiwum (format archiwizacji taśmowej z ery Unix V7 z 1979 roku. Wykonuje tylko pakowanie strumienia plików bez kompresji danych. Często łączony z GZIP/BZIP2/XZ. Jest podstawowym standardem dla pakietów źródłowych Linuksa i przechowywania warstw obrazów Dockera)"
 
 msgid "mime_tgz"
-msgstr "Pakiet skompresowany TGZ (połączenie formatów TAR + GZIP, rozszerzenie .tgz lub .tar.gz. Najbardziej uniwersalny format dystrybucji pakietów Unix/Linux, szeroko stosowany dla pakietów źródłowych, pakietów binarnych, reprezentant 'rozpakuj i używaj')"
+msgstr "TGZ skompresowane archiwum (format kombinacji strumieniowej archiwizacji TAR i kompresji GZIP, rozszerzenia .tgz lub .tar.gz. Jako najbardziej uniwersalny format dystrybucji pakietów oprogramowania w środowisku Unix/Linux, szeroko stosowany do wdrażania z kompilacji źródłowej i dystrybucji pakietów binarnych bez instalacji)"
 
 msgid "mime_tbz2"
-msgstr "Pakiet skompresowany TBZ2 (połączenie formatów TAR + BZIP2, rozszerzenie .tbz2 lub .tar.bz2. Stopień kompresji jest o 15-20% lepszy niż TGZ, odpowiedni do dystrybucji dużych plików, kod źródłowy jądra Linuksa od dawna używa tego formatu)"
+msgstr "TBZ2 skompresowane archiwum (format kombinacji strumieniowej archiwizacji TAR i kompresji BZIP2, rozszerzenia .tbz2 lub .tar.bz2. W porównaniu z TGZ może dodatkowo zwiększyć współczynnik kompresji o 15-20%, odpowiedni do przesyłania dużych plików, był używany przez długi czas do dystrybucji kodu źródłowego jądra Linux)"
 
 msgid "mime_xz"
-msgstr "Pakiet skompresowany XZ (wprowadzony w 2009 r., oparty na algorytmie LZMA2. Ekstremalnie wysoki stopień kompresji, o 30-50% lepszy niż GZIP, stosunkowo szybka dekompresja. Szeroko stosowany w jądrze Linuksa, menedżerach pakietów (np. wewnątrz .deb Debiana), zalecany format dla obecnego ekosystemu Linuksa)"
+msgstr "XZ skompresowane archiwum (format o wysokim współczynniku kompresji następnej generacji wprowadzony w 2009 roku. Oparty na algorytmie LZMA2, współczynnik kompresji danych jest o 30-50% wyższy niż GZIP, przy jednoczesnym utrzymaniu szybkiej dekompresji. Został ustanowiony jako zalecany standard dystrybucji przez jądro Linux i główne menedżery pakietów (takie jak wewnątrz Debiana .deb))"
 
 msgid "mime_z"
-msgstr "Pakiet skompresowany Z (format polecenia compress Uniksa z 1985 r., algorytm LZW. Wczesny format kompresji Uniksa, zastąpiony przez GZIP. Rozszerzenie .Z, rzadko używany w nowoczesnych systemach)"
+msgstr "Z skompresowane archiwum (format kompresji LZW polecenia Unix compress z 1985 roku. Jako wczesny standard kompresji systemów Unix, został obecnie całkowicie zastąpiony przez bardziej wydajny format GZIP. We współczesnym ruchu sieciowym jest rzadkim, dziedziczonym formatem historycznym)"
 
 msgid "mime_zip"
-msgstr "Pakiet skompresowany ZIP (opracowany przez Phila Katza w 1989 r., format PKZIP. Natywnie obsługiwany przez Windows, najbardziej uniwersalny format kompresji w Internecie. Obsługuje wiele plików, strukturę katalogów, można wybrać algorytm kompresji. JAR Javy, APK Androida, dokumenty Office DOCX/XLSX są oparte na formacie ZIP)"
+msgstr "ZIP skompresowane archiwum (uniwersalny format archiwizacji PKZIP opracowany przez Phila Katza w 1989 roku. Ma natywne wsparcie głównych systemów operacyjnych. Jest najczęściej używanym standardem kontenerowym w Internecie. Nowoczesne JAR Javy, APK Androida i dokumenty pakietu Office (OOXML) są oparte na strukturze ZIP)"
 
 msgid "mime_zst"
-msgstr "Pakiet skompresowany Zstandard (opracowany przez Facebook w 2015 r., zaprojektowany przez Yanna Colleta. Szybki algorytm kompresji, stopień kompresji bliski LZMA, prędkość znacznie przewyższająca GZIP. Jądro Linuksa 5.9+ obsługuje, Arch Linux pacman, Debian APT stopniowo wdrażają, nowa generacja standardu kompresji)"
+msgstr "Zstandard skompresowane archiwum (standard kompresji strumieniowej nowej generacji zaprojektowany przez Yanna Colleta z Facebooka w 2015 roku. Zbliża się do współczynnika kompresji LZMA, jednocześnie mając znacznie wyższą przepustowość niż GZIP. Został głęboko zaadoptowany przez jądro Linux (5.9+) i menedżery pakietów Arch/Debian)"
 
 msgid "mime_lz4"
-msgstr "Pakiet skompresowany LZ4 (opracowany przez Yanna Colleta w 2011 r., niezwykle szybki algorytm kompresji. Szybkość kompresji jest ponad 10 razy szybsza niż GZIP, odpowiedni do scenariuszy kompresji w czasie rzeczywistym. Szeroko stosowany w jądrze Linuksa, OpenZFS, Hadoop, pierwszy wybór w scenariuszach, w których priorytetem jest szybkość)"
+msgstr "LZ4 skompresowane archiwum (bardzo szybki algorytm kompresji strumieniowej opracowany przez Yanna Colleta w 2011 roku. Szybkość przepustowości jest ponad 10 razy szybsza niż GZIP, przy bardzo niskich kosztach wykonawczych CPU. Szeroko stosowany w jądrze Linux, systemie plików OpenZFS i przetwarzaniu strumieni danych w czasie rzeczywistym Hadoop)"
 
 msgid "mime_lzo"
-msgstr "Pakiet skompresowany LZO (opracowany przez Markusa Oberhumera w 1996 r., algorytm Lempel-Ziv-Oberhumer. Szybkość dekompresji jest niezwykle szybka, stopień kompresji jest przeciętny. Jądro Linuksa Squashfs, oprogramowanie sprzętowe OpenWrt używają go, odpowiedni dla systemów wbudowanych)"
+msgstr "LZO skompresowane archiwum (algorytm Lempel-Ziv-Oberhumer opracowany przez Markusa Oberhumera w 1996 roku. Skupia się na bardzo szybkiej wydajności dekompresji. Szeroko osadzony w obrazach Squashfs jądra Linux, oprogramowaniu sprzętowym OpenWrt i różnych systemach wbudowanych o ograniczonych zasobach)"
 
 msgid "mime_msi"
-msgstr "Pakiet instalacyjny MSI (wprowadzony przez Microsoft w 1999 r., format pakietu Windows Installer. Standardowy format instalacji aplikacji Windows, obsługuje wycofywanie transakcji, zarządzanie komponentami, cichą instalację. Preferowany format dystrybucji oprogramowania dla przedsiębiorstw, do dziś główny format instalacji oprogramowania Windows)"
+msgstr "MSI pakiet instalacyjny systemu (format enkapsulacji danych Instalatora Windows wprowadzony przez Microsoft w 1999 roku. Jako standardowa specyfikacja wdrażania aplikacji Windows, natywnie obsługuje wycofywanie transakcji niskiego poziomu, zarządzanie cyklem życia komponentów i cichą instalację bez przetwarzania wsadowego. Jest podstawowym standardem dla scentralizowanej dystrybucji oprogramowania na poziomie przedsiębiorstwa i wdrażania zasad)"
 
 msgid "mime_pkg"
-msgstr "Pakiet instalacyjny PKG (format pakietu instalacyjnego aplikacji macOS, oparty na technologii Installer Apple. Standardowy format dystrybucji oprogramowania macOS, obsługuje wybór komponentów, skrypty instalacyjne, funkcję dezinstalacji. Dwukrotne kliknięcie pliku .pkg powoduje instalację, popularna metoda dystrybucji oprogramowania poza Mac App Store)"
+msgstr "PKG międzyplatformowy pakiet instalacyjny oprogramowania. 1. Pakiet oprogramowania FreeBSD: standard pkgng, rozszerzenia .pkg lub .txz, oparty na kompresji TAR+XZ/Zstd, obsługuje rozwiązywanie zależności i weryfikację podpisu; 2. Pakiet instalacyjny macOS: oparty na formacie Instalatora Apple, obsługuje niestandardowe komponenty, skrypty instalacyjne i odinstalowywanie na poziomie systemu. Są to odpowiednio główne nośniki dystrybucji dla serwerów BSD i systemów Mac."
 
 msgid "mime_apk"
-msgstr "Pakiet aplikacji Android APK (wprowadzony przez Google w 2008 r., tradycyjny format instalacji aplikacji Android. APK jest zasadniczo pakietem ZIP zawierającym kod, zasoby i plik manifestu. Od 2021 r. Google Play wymaga, aby nowe aplikacje używały formatu AAB, ale APK jest nadal używany do debugowania, sklepów innych firm i instalacji bocznej)"
+msgstr "APK pakiet aplikacji Androida (tradycyjny pakiet instalacyjny aplikacji wydany przez Google wraz z Androidem w 2008 roku. Oparty na strukturze archiwum ZIP, pakuje skompilowany kod bajtowy Dalvik (DEX), manifest metadanych i globalne zasoby. Obecnie szeroko stosowany do lokalnego debugowania programistycznego, dystrybucji przez strony trzecie i instalacji bocznej na urządzeniach)"
 
 msgid "mime_ipa"
-msgstr "Pakiet aplikacji iOS IPA (iOS App Store Package, format instalacji aplikacji iOS/iPadOS. Wprowadzony w 2008 r. wraz z iPhone SDK. Musi być dystrybuowany przez App Store lub podpisany certyfikatem przedsiębiorstwa. Zawiera plik wykonywalny, zasoby, Info.plist i informacje o podpisie)"
+msgstr "IPA pakiet aplikacji Apple (kontener pakujący specyficzny dla iOS/iPadOS wydany wraz z SDK iPhone'a w 2008 roku. W istocie jest to archiwum ZIP chronione przez DRM FairPlay lub podpis kodu na poziomie przedsiębiorstwa, zawierające binarny plik wykonywalny Mach-O, drzewo zasobów aplikacji i konfigurację metadanych Info.plist)"
 
 msgid "mime_hap"
-msgstr "Pakiet aplikacji HarmonyOS HAP (HarmonyOS Ability Package, podstawowa jednostka aplikacji HarmonyOS. Wprowadzony w 2020 r. wraz z HarmonyOS 2.0. Obsługuje dwa typy: entry i feature, format dystrybucji dla telefonów Huawei, tabletów, smartwatchy i innych urządzeń HarmonyOS)"
+msgstr "HAP pakiet aplikacji HarmonyOS (podstawowa jednostka elastycznego wdrażania HarmonyOS wydana wraz z HarmonyOS 2.0 w 2020 roku. Składa się z głównego modułu Entry lub funkcjonalnych modułów rozszerzeń Feature. Jest podstawowym formatem wdrażania wielokońcowego dla inteligentnych terminali w scenariuszach międzykońcowych (telefony, tablety, urządzenia noszone))"
 
 msgid "mime_har"
-msgstr "Statyczna biblioteka współdzielona HarmonyOS HAR (HarmonyOS Archive, statyczna biblioteka współdzielona HarmonyOS, może być współdzielona przez wiele pakietów HAP, używana do tworzenia opartego na komponentach i ponownego wykorzystania modułów)"
+msgstr "HAR pakiet statyczny współdzielony HarmonyOS (zastrzeżony plik archiwum statycznej biblioteki współdzielonej HarmonyOS. Używany do enkapsulacji wspólnych komponentów, niskopoziomowego kodu zasobów i zależności czasu kompilacji, które są statycznie linkowane i współdzielone przez wiele modułów HAP. Jest podstawową podstawą rozwoju opartego na komponentach i ponownego wykorzystania wielu modułów systemu HarmonyOS)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (wprowadzony przez Google w 2018 r., od 2021 r. Google Play wymaga, aby nowe aplikacje korzystały z tego formatu. AAB to format dystrybucji, Google Play generuje zoptymalizowane pliki APK w zależności od konfiguracji urządzenia (architektura CPU, gęstość ekranu, język), rozmiar pakietu instalacyjnego zmniejsza się średnio o 35%. Programiści przesyłają AAB, użytkownicy pobierają APK)"
+msgstr "AAB pakiet aplikacji Androida (dynamiczny format dystrybucji Google Play wprowadzony przez Google w 2018 roku i ustanowiony w 2021 roku. Jako czysta jednostka dystrybucji, jest dynamicznie przycinany i kompilowany w chmurze zgodnie z architekturą CPU, gęstością ekranu i językiem docelowego urządzenia, generując zoptymalizowane pliki APK na żądanie. Średnio zmniejsza koszt przepustowości transmisji o 35%)"
 
 msgid "mime_xapk"
-msgstr "Pakiet aplikacji XAPK (pakiet rozszerzający aplikacje Android innych firm, zawiera APK + pliki danych OBB. Używany do dużych gier i złożonych aplikacji, rozwiązuje limit 100 MB dla pojedynczego pliku APK. Często spotykany w sklepach z aplikacjami innych firm, takich jak APKPure, APKMirror, nie jest oficjalnym formatem Google)"
+msgstr "XAPK rozszerzony pakiet aplikacji (nieoficjalny standard rozszerzeń aplikacji ustanowiony przez społeczność Androida stron trzecich. Poprzez wspólną enkapsulację standardowego pliku APK i bardzo dużego pakietu rozszerzeń danych gry OBB, fizycznie przekracza limit 100 MB rozmiaru pojedynczego pliku Google Play. Szeroko spotykany na platformach dystrybucji gier)"
 
 msgid "mime_appx"
-msgstr "Pakiet aplikacji Windows (wprowadzony przez Microsoft w 2012 r., format instalacji aplikacji Windows 8/10/11. Obsługuje UWP i konwersję aplikacji komputerowych, dystrybuowany przez Microsoft Store. W 2024 r. Microsoft wprowadził MSIX jako format następcy, stopniowo zastępując APPX)"
+msgstr "APPX nowoczesny pakiet aplikacji (specyfikacja wdrażania aplikacji UWP wydana przez Microsoft wraz z Windows 8 w 2012 roku. Ma izolowane wykonanie w piaskownicy i lekkie odinstalowywanie. Jako wczesny dominujący standard Sklepu Microsoft, w nowoczesnym ekosystemie Windows wszedł w końcową fazę cyklu życia ewolucji w kierunku MSIX)"
 
 msgid "mime_msix"
-msgstr "Pakiet aplikacji MSIX (wprowadzony przez Microsoft w 2018 r., nowa generacja formatu pakowania aplikacji dla Windows. Łączy zalety APPX i MSI, obsługuje wszystkie typy aplikacji Windows, może być dystrybuowany przez Microsoft Store lub instalowany bocznie, zalecany format dla Windows 11)"
+msgstr "MSIX pakiet aplikacji nowej generacji (zupełnie nowa, ustandaryzowana specyfikacja pakowania Windows wydana przez Microsoft w 2018 roku. Doskonale łączy funkcje piaskownicy bezpieczeństwa aplikacji APPX z zaletami zarządzania zasobami na poziomie przedsiębiorstwa MSI. W pełni kompatybilny ze wszystkimi typami aplikacji Win32. Jest zalecanym standardem dystrybucji dla Windows 11)"
 
 msgid "mime_appimage"
-msgstr "Pakiet aplikacji AppImage (wprowadzony w 2004 r., format aplikacji Linux bez instalacji. \"Jedna aplikacja, jeden plik\", nie wymaga instalacji, działa bezpośrednio, obsługuje większość dystrybucji Linuksa, popularny sposób dystrybucji oprogramowania Linux dla programistów)"
+msgstr "AppImage pakiet aplikacji bez instalacji (specyfikacja pojedynczego archiwum wykonywalnego Linuksa zapoczątkowana w 2004 roku. Używa samowystarczalnej architektury 'jedna aplikacja to jeden plik'. Podczas wykonawczego, jest bezpośrednio montowany przez mechanizm FUSE jako tylko do odczytu wirtualny system plików do wykonania, zapewniając natychmiastową użyteczność bez zależności we wszystkich dystrybucjach Linuksa)"
 
 msgid "mime_flatpak"
-msgstr "Pakiet aplikacji Flatpak (wprowadzony w 2015 r., format aplikacji Linux w środowisku piaskownicy. Działa na różnych dystrybucjach, odizolowany od systemu głównego, prowadzony przez Fedora, Red Hat, domyślny format Centrum Oprogramowania GNOME)"
+msgstr "Flatpak pakiet aplikacji w piaskownicy (standard dystrybucji aplikacji komputerowych między dystrybucjami Linuksa, prowadzony przez Red Hat i GNOME w 2015 roku. Opiera się na mechanizmach Namespace i Cgroups jądra Linux, aby osiągnąć ekstremalnie ścisłą izolację bezpieczeństwa w piaskownicy na poziomie aplikacji. Jest podstawą nowoczesnych centrów oprogramowania open source)"
 
 msgid "mime_snap"
-msgstr "Pakiet aplikacji Snap (wprowadzony przez Canonical w 2014 r., firmę macierzystą Ubuntu, uniwersalny format aplikacji Linux. Automatyczne aktualizacje, izolacja w piaskownicy, obsługuje 40+ dystrybucji Linuksa, domyślny format Centrum Oprogramowania Ubuntu)"
+msgstr "Snap konteneryzowany pakiet aplikacji (uniwersalny standard wdrażania Linuksa wprowadzony przez Canonical, spółkę macierzystą Ubuntu, w 2014 roku. Używa samowystarczalnej architektury montowania obrazu SquashFS, obsługuje automatyczne aktualizacje przyrostowe i ścisłą izolację piaskownicy AppArmor. Jest podstawowym domyślnym formatem ekosystemu Centrum Oprogramowania Ubuntu)"
 
 msgid "mime_deb"
-msgstr "Pakiet oprogramowania Debiana (wprowadzony przez projekt Debian w 1993 r., standardowy format instalacji dla Debiana/Ubuntu i ich pochodnych. Zarządzany za pomocą dpkg, APT jest interfejsem menedżera pakietów, jeden z najbardziej dojrzałych formatów pakietów w ekosystemie Linux, do dziś dominujący w rodzinie Debian)"
+msgstr "DEB pakiet oprogramowania systemowego (specyfikacja enkapsulacji binarnej i kodów źródłowych ustanowiona przez projekt Debian w 1993 roku. Jako podstawowy standard instalacyjny dla Debiana, Ubuntu i wszystkich ich pochodnych, opiera się na jądrze dpkg do rozpakowywania i konserwacji, z APT jako wydajnym interfejsem menedżera pakietów. Jest najbardziej dojrzałą podstawą dystrybucji oprogramowania w ekosystemie Linuksa)"
 
 msgid "mime_rpm"
-msgstr "Pakiet oprogramowania RPM (wprowadzony przez Red Hat w 1997 r., standardowy format dla dystrybucji Red Hat/Fedora/CentOS/SUSE i innych. RPM oznacza \"Red Hat Package Manager\", wraz z DEB jeden z dwóch głównych formatów pakietów w systemie Linux, do dziś dominujący w rodzinie RHEL)"
+msgstr "RPM pakiet oprogramowania systemowego (specyfikacja enkapsulacji menedżera pakietów Red Hat wprowadzona przez Red Hat w 1997 roku. Razem z DEB uważany za jeden z dwóch głównych obozów tradycyjnego zarządzania pakietami Linuksa. Ma natywnie wbudowane sprawdzanie zależności na poziomie transakcji i podstawową weryfikację podpisu cyfrowego oprogramowania. Nadal jest absolutnym głównym standardem dystrybucji dla ekosystemów rodziny Red Hat, takich jak RHEL, Fedora i CentOS)"
 
 msgid "mime_pacman"
-msgstr "Pakiet oprogramowania Arch (wprowadzony przez Arch Linux w 2002 r., format .pkg.tar.zst używany przez menedżera pakietów pacman. Rdzeń Arch Linux z wydaniami kroczącymi, znany z prostoty i zasady KISS, AUR (Arch User Repository) jest jego cechą charakterystyczną)"
+msgstr "Pacman archiwizowany pakiet oprogramowania (format enkapsulacji .pkg.tar.zst ustanowiony przez Arch Linux wraz z menedżerem pacman w 2002 roku. Jako podstawowy mechanizm aktualizacji kroczących Arch, oparty na szybkim algorytmie wysokiej kompresji Zstandard, wraz z ekosystemem AUR (Arch User Software Repository). Jest nowoczesnym standardem dystrybucji pakietów, który ucieleśnia minimalistyczne i KISS zasady)"
 
 msgid "mime_exe"
-msgstr "Plik wykonywalny EXE (format wykonywalnego programu Windows, skrót od \"Executable\". Natywny format wykonywalny systemu operacyjnego Windows, zawiera strukturę PE. Ewoluował z formatu MZ z MS-DOS, w 1993 r. Windows NT wprowadził format PE (Portable Executable) i jest używany do dziś. Pakiety instalacyjne oprogramowania, aplikacje, narzędzia systemowe używają tego formatu. Użytkownik dwukrotnie klika, aby uruchomić, najszerzej używany format wykonywalny na świecie)"
+msgstr "EXE natywny plik wykonywalny (format programu binarnego Portable Executable (PE) platformy Windows. Technologicznie wywodzi się ze struktury nagłówka MZ z ery MS-DOS, a od czasu Windows NT w 1993 roku został w pełni ustanowiony jako specyfikacja struktury PE. Jest najczęściej używanym standardem wykonawczym na świecie do instrukcji kodu maszynowego, segmentów zasobów statycznych i ładowania jądra systemu)"
 
 msgid "mime_dll"
-msgstr "Dynamiczna biblioteka DLL (wprowadzona przez Microsoft w 1993 r., Dynamic Link Library. Współdzielona biblioteka kodu Windows, ładowana dynamicznie podczas wykonywania programu, oszczędza pamięć i miejsce na dysku. Komponenty systemowe, wtyczki aplikacji, sterowniki używają formatu DLL. Podstawowy sposób implementacji API Windows, problem DLL Hell został złagodzony w erze .NET)"
+msgstr "DLL dynamiczna biblioteka dołączana (specyfikacja współdzielonej biblioteki kodu Dynamic Link Library platformy Windows. Poprzez dynamiczne ładowanie i relokację symboli w czasie wykonawczym, znacznie oszczędza fizyczną pamięć i miejsce na dysku. Jako podstawowa forma implementacji interfejsu API systemu Windows, jej wczesny problem 'Piekła DLL' został we współczesnych czasach rozwiązany przez mechanizm równoległej izolacji SxS)"
 
 msgid "mime_com"
-msgstr "Plik wykonywalny COM (format wykonywalny z ery MS-DOS, skrót od \"Command\". Prosta struktura pliku, limit 64KB, główny format przed Windows 3.x. Wycofany, nowoczesny Windows używa formatu EXE, rozszerzenie COM jest nadal używane dla niektórych plików komponentów)"
+msgstr "COM klasyczny plik wykonywalny (najstarszy format wykonawczy obrazu pamięci (Command) z ery MS-DOS. Używa nieustrukturyzowanego projektu czystego segmentu kodu, ograniczonego do górnej granicy segmentu adresowania pamięci fizycznej wynoszącej 64KB. Obecnie wycofany jako historyczny format dziedziczony, ale w nowoczesnej architekturze Windows nadal używany jako określony interfejs komponentu dla ograniczonej kompatybilności)"
 
 msgid "mime_aac"
 msgstr "Audio AAC (standard MPEG z 1997 r., Advanced Audio Coding. Następca MP3, jakość dźwięku lepsza niż MP3 przy tej samej przepływności, domyślny format audio dla YouTube, iTunes, Nintendo Switch)"

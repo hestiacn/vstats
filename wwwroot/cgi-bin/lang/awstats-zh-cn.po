@@ -455,8 +455,8 @@ msgstr "主机 - 页面数 - 点击数 - 带宽 - 最后访问时间 - [最后�
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[最后访问开始时间] 和 [最后访问页面] 仅在会话未结束时保存"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "主页仅显示点击数最高的前 %s 个条目，完整列表请查看详情页面。"
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "前 %s 项已按点击数从高到低排序，其余各项顺序未定义"
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "登录用户 - 页面数 - 点击数 - 带宽 - 最后访问时间"
@@ -470,8 +470,8 @@ msgstr "蠕虫 ID - 点击数 - 带宽 - 最后访问时间"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "电子邮件 - 点击数 - 带宽 - 最后访问时间"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "主页仅显示点击数最高的前 %s 个电子邮件，完整列表请查看详情页面。"
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "前 %s 个电子邮件地址已按点击数从高到低排序,其余地址顺序未定义."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - 页面数 - 带宽 - 入口 - 出口"
@@ -680,6 +680,27 @@ msgstr "SiteDomain 参数未在您的配置/域文件中定义，或者您可能
 msgid "Please run as Administrator to set permissions"
 msgstr "请以管理员身份运行以设置权限"
 
+msgid "This directory lacks read permission"
+msgstr "该目录缺少读取权限"
+
+msgid "Please set read permission for directory"
+msgstr "请设置目录读取权限"
+
+msgid "Missing required parameter in config file"
+msgstr "配置文件中缺少必需参数"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "请检查是否定义了 'DirData' 参数。"
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "浏览器地址中的域名信息缺失或不完整"
+
+msgid "Please check the URL parameter"
+msgstr "请检查 URL 参数"
+
+msgid "Format description"
+msgstr "格式说明"
+
 msgid "Please set execute permission"
 msgstr "请设置执行权限"
 
@@ -805,376 +826,379 @@ msgstr "抓取工具"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "文本文件 (1963年 ASCII 标准化，无格式纯文本。所有源代码、配置、日志的基础。Unix 用 LF，Windows 用 CRLF 换行，至今仍是计算机最通用的数据格式)"
+msgstr "TXT 纯文本文件（1963 年 ASCII 编码标准化的无格式纯文本。作为所有源代码、配置文件与系统日志的底层基石，其跨平台的 Windows (CRLF) 与 Unix (LF) 换行符控制流，至今仍是计算机世界最通用的数据交换标准）"
 
 msgid "mime_log"
-msgstr "日志文件 (记录系统、应用程序运行信息的纯文本文件，常用于故障排查、性能分析、安全审计。标准格式如 Apache combined log、Nginx access log、syslog 等)"
+msgstr "LOG 系统运行日志（记录操作系统、内核及应用级运行时状态的纯文本资产。涵盖 Nginx/Apache 访问日志（Combined Log）与标准 syslog 规范，是故障排查、流式性能分析与安全审计的核心数据源）"
 
 msgid "mime_page"
-msgstr "HTML 网页 (1989年 Tim Berners-Lee 发明万维网，1990年定义 HTML/HTTP/URL 三大技术，无偿开放未申请专利。2014年 HTML5 成为 W3C 正式标准，支持显示、多媒体与打印。获2016年图灵奖)"
+msgstr "HTML 超文本网页（1989 年 Tim Berners-Lee 创建的万维网核心基石。作为无偿开放的通用超文本标记语言，其 HTML5 规范于 2014 年成为 W3C 正式标准，原生支持结构化多媒体、语义化交互与流式页面布局，2016年获图灵奖）"
 
 msgid "mime_khtml"
-msgstr "KHTML 网页引擎 (1998年 KDE 2.0 发布，Konqueror 浏览器渲染引擎。2001年苹果基于 KHTML 创建 WebKit，2008年谷歌从 WebKit 分支创建 Blink，成为 Chrome、Edge、Safari 等浏览器的核心。KHTML 是开源社区奠基现代浏览器引擎的典范，其技术遗产通过 WebKit/Blink 延续至今)"
+msgstr "KHTML 网页模版引擎（1998 年 KDE 2.0 浏览器渲染引擎规范。作为开源社区奠基现代 Web 渲染的标杆，其技术遗产直接启发并演进为苹果 WebKit 与谷歌 Blink 核心，至今仍通过现代流式动态网页架构延续其底层脉络）"
 
 msgid "mime_script"
-msgstr "动态脚本 (解释型语言，无需编译。包括 ASP、JSP、CGI、ColdFusion、Tcl、VBScript 等，广泛用于早期 Web 开发、系统管理、自动化任务。现代脚本语言如 Python、Ruby、JavaScript 已发展为全栈开发主力)"
+msgstr "SCRIPT 解释型动态脚本（泛指无需提前编译、由特定运行时或解释器按行读取并执行的源码流总分类。涵盖 ASP、JSP、CGI 及 Tcl 等，广泛用于服务器端公共网关接口、自动化进程控制与系统级任务黏合）"
 
 msgid "mime_js"
-msgstr "JavaScript 脚本 (1995年 Brendan Eich 在 Netscape 用10天创造，浏览器原生编程语言。1997年 ECMAScript 标准化，2009年 Node.js 诞生使其成为全栈语言，npm 是全球最大包管理器。连续多年 GitHub 最流行编程语言)"
+msgstr "JavaScript 脚本（1995 年 Netscape 浏览器原生编程环境。1997 年确立 ECMAScript 行业标准，2009 年 Node.js 运行时诞生打破浏览器边界并开创全栈异步非阻塞架构，伴随全球规模最大的 npm 软件包生态系统）"
 
 msgid "mime_py"
-msgstr "Python 脚本 (1991年 Guido van Rossum 创建，以强制缩进、简洁语法著称。广泛用于 Web 开发、数据科学、人工智能、自动化运维。TIOBE 年度编程语言多次获得者)"
+msgstr "Python 脚本（1991 年 Guido van Rossum 创建的高级解释型脚本语言。凭借强制缩进的无损可读性与多范式底层设计，现已确立为现代 Web 架构、全栈数据科学、人工智能（AI）模型训练及云原生自动化运维的行业标准语言）"
 
 msgid "mime_sh"
-msgstr "Shell 脚本 (1971年 Unix 诞生，命令脚本语言。用于系统管理、自动化任务、服务启动、部署脚本。Linux 运维必备技能)"
+msgstr "Shell 脚本（1971 年 Unix 时代的标准命令解释器脚本。包含 Bash、Sh、Dash 等内核级命令规范，通常以 .sh 为后缀执行，是现代类 Unix 操作系统底层进程控制、免安装环境配置与自动化部署的通用内核级黏合剂）"
 
 msgid "mime_rb"
-msgstr "Ruby 脚本 (1995年 Yukihiro Matsumoto 创建，注重开发者幸福感。Ruby on Rails 框架开创了约定优于配置的开发范式，影响现代 Web 框架设计)"
+msgstr "Ruby 脚本（1995 年松本行弘（Yukihiro Matsumoto）创建的面向对象脚本语言。以极度尊重的开发者体验为核心设计哲学，其 Ruby on Rails 框架颠覆性地确立了‘约定优于配置（CoC）’的现代高级 Web 架构开发范式）"
 
 msgid "mime_pl"
-msgstr "Perl 脚本 (1987年 Larry Wall 创建，以实用主义著称，被誉为『瑞士军刀』。CPAN 是现代语言包管理器的先驱，在文本处理、系统管理、CGI 领域影响深远)"
+msgstr "Perl 脚本（1987 年 Larry Wall 创建的实用主义脚本语言。作为现代包管理器鼻祖（CPAN）的开创者，被誉为文本处理的‘瑞士军刀’。在现代 CGI 模式下仍凭借极低的物理内存开销、高效率正则表达式处理，在日志解析领域担任高可靠底座）"
 
 msgid "mime_php"
-msgstr "PHP 动态网页 (1995年 Rasmus Lerdorf 创建，专为 Web 开发设计。全球超过 70% 网站使用，驱动 WordPress、Facebook、Wikipedia 等平台。PHP 8 引入 JIT 编译，性能大幅提升)"
+msgstr "PHP 动态网页（1995 年 Rasmus Lerdorf 创建，专为 Web 开发设计。作为驱动全球超过 70% 网站的核心技术，深度承载了 WordPress、Wikipedia 等大型生产级应用。自 PHP 8 引入 JIT 即时编译运行时引擎，实现了向高性能全栈服务端的底层范式演进）"
 
 msgid "mime_image"
-msgstr "图片文件"
+msgstr "IMAGE 图像资产分类（涵盖有损/无损压缩位图、现代 Web 响应式图形及矢量图的总分类。作为评估站点视觉资源加载开销、客户端缓存命中率（Cache）及媒体网络带宽消耗的核心指标）"
 
 msgid "mime_document"
-msgstr "文档文件"
+msgstr "DOCUMENT 结构化文档分类（涵盖纯文本、电子表格、版式公文（PDF）及轻量级标记语言的总分类。作为统计服务器端静态知识库分发、企业信息化资产下载及文本流吐吞能力的核心指标）"
 
 msgid "mime_package"
-msgstr "软件包"
+msgstr "PACKAGE 编译产物与软件包分类（涵盖操作系统原生可执行程序、运行时链接库（DLL/SO）及应用分发安装包的总分类。常作为评估软件分发站点出站流量与下载峰值的核心指标）"
 
 msgid "mime_archive"
-msgstr "Gzip 压缩文件 (1992年 GNU 项目，基于 DEFLATE 算法。Web 中用于动态压缩响应内容，压缩率通常 60-90%。2015 年后部分场景被 Brotli 替代，但仍是服务器端最广泛支持的压缩格式)"
+msgstr "ARCHIVE 归档与压缩文件（泛指基于 DEFLATE、LZMA 等核心算法封装的数据压缩包总分类。在网络层除代表传统包分发外，亦涵盖1992 年 GNU 项目的 Gzip 动态响应流。虽现代部分场景逐步引入 Brotli 算法，但该分类仍是评估服务器带宽吞吐率与传输层压降的核心指标）"
 
 msgid "mime_audio"
-msgstr "音频文件"
+msgstr "AUDIO 数字音频流分类（涵盖压缩音频、有声书及流媒体音频容器的总分类。基于特定音频编解码标准，用于监控多媒体站点音频数据流的吞吐率、并发流媒体带宽与长连接表现）"
 
 msgid "mime_video"
-msgstr "视频文件"
+msgstr "VIDEO 数字视频流分类（涵盖高清晰度视频容器、现代网页动画及流媒体片段的总分类。作为高负载网络环境下评估服务器带宽峰值上限、内容分发网络（CDN）加速效果的核心指标）"
 
 msgid "mime_jscript"
-msgstr "JavaScript (1995年 Brendan Eich 开发)"
+msgstr "JScript 脚本（1996 年微软针对 Internet Explorer 3.0 开发的逆向工程专有实现。作为早期经典 JavaScript 的宿主竞争方，曾作为 Windows 脚本宿主（WSH）与早期 ASP 后端的核心引擎）"
 
 msgid "mime_json"
-msgstr "JSON 数据 (2001年 Douglas Crockford 提出，轻量级数据交换格式，Web API 事实标准)"
+msgstr "JSON 结构化数据（2001 年 Douglas Crockford 确立的轻量级数据序列化交换格式。基于文本的键值对与数组架构，具备极高的人类可读性与无损流式解析特性，是现代 Web API、微服务架构与大模型交互的事实标准）"
 
 msgid "mime_vbs"
-msgstr "VBScript (1996年 Microsoft 开发，Windows 脚本语言，用于 ASP 网页和 Windows 管理脚本。随着 PowerShell 和 JavaScript 普及，已逐渐淘汰)"
+msgstr "VBScript 脚本（1996 年 Microsoft 随 IE 3.0 推出的脚本语言变体。曾作为早期 ASP 动态网站与 Windows 系统管理的核心驱动，现已被微软在 Windows 11 最新内核中正式弃用并移除，属于历史遗留技术）"
 
 msgid "mime_conf"
-msgstr "配置文件 (文本格式存储软件配置，常见格式：INI、JSON、YAML、TOML、XML。Linux 系统配置多在 /etc 目录)"
+msgstr "CONF 系统配置文件（泛指以纯文本形式持久化存储软件运行时环境参数的数据文件分类。涵盖 INI 及现代 YAML、TOML、JSON 规范，在 Linux 体系下多集中于 /etc 目录，是系统级运行状态调优的核心依赖）"
 
 msgid "mime_css"
-msgstr "CSS 样式表 (1996年12月 W3C 发布 CSS1 首个正式标准，1998年 CSS2 增加定位和媒体类型，2011年起 CSS3 模块化引入圆角、动画、弹性盒、网格布局和响应式设计。与 HTML、JavaScript 并称前端三大核心技术，所有现代浏览器（Chrome、Firefox、Safari、Edge）均原生支持，是网页样式定义的唯一标准)"
+msgstr "CSS 层叠样式表（1996 年 W3C 标准，与 HTML/JS 并称前端三大核心。历经 CSS2 定位及 CSS3 模块化演进，原生支持弹性盒（Flexbox）、网格（Grid）与媒体查询响应式设计，是现代浏览器解耦网页表现的绝对主导标准）"
 
 msgid "mime_xsl"
-msgstr "XSL 样式表 (1999年 W3C 标准，XML 文档转换语言，可将 XML 转为 HTML/PDF/文本。在 JSON 普及后使用减少)"
+msgstr "XSL 样式表（1999年 W3C 标准，包含 XSLT 转换与 XPath 寻址语言，用于将 XML 结构化数据渲染为 HTML、PDF 或纯文本。现代开发中其生态多被更轻量的模板引擎与 JSON 数据格式取代）"
 
 msgid "mime_runtime"
-msgstr "可执行文件 (EXE、ELF、Mach-O 等操作系统可执行格式，包含机器码和加载信息)"
+msgstr "可执行文件（EXE、ELF、Mach-O 等操作系统原生执行格式，包含编译后的底层机器码、入口点及系统加载信息）"
 
 msgid "mime_library"
-msgstr "库文件 (DLL、SO、dylib 等动态链接库，程序运行时加载的共享代码)"
+msgstr "库文件（DLL、SO、dylib 等动态或静态链接库，包含供其他程序调用、运行时装载的共享符号与重定位代码）"
 
 msgid "mime_swf"
-msgstr "Flash 动画 (1996年 Macromedia 开发，后归 Adobe。交互式网页动画标准，曾统治互联网动画和游戏。痛点：依赖插件、移动端不支持、安全风险高。2017年 Adobe 宣布淘汰，2020年全面停止支持，被 HTML5/CSS3/JS 取代)"
+msgstr "Flash 动画 (1996年 Macromedia 开发，2005年被Adobe收购。交互式网页动画标准，曾统治互联网动画和游戏。痛点：依赖插件、移动端不支持、安全风险高。2017年 Adobe 宣布淘汰，2020年全面停止支持，被 HTML5/CSS3/JS 取代)"
 
 msgid "mime_dtd"
-msgstr "DTD 文档类型定义 (XML 规范，定义 XML 文档结构，用于验证 XML 合法性)"
+msgstr "DTD 文档类型定义（1998 年随 XML 1.0 发布，用于定义 XML / HTML 文档结构并验证合法性。在现代开发中，已被 XML Schema、RELAX NG 等更灵活的方案逐渐取代）"
 
 msgid "mime_csv"
-msgstr "CSV 数据格式 (逗号分隔值，表格数据通用格式，Excel 和数据库导入导出标准)"
+msgstr "CSV 数据格式（逗号分隔值，1972 年大型机时代（IBM Fortran 编译器）的通用纯文本表格格式。2005 年由 RFC 4180 正式规范化，作为跨平台、跨语言的无损数据交换标准。广泛用于 Excel、关系型数据库、数据分析（Pandas）的高效导入导出。）"
+
+msgid "mime_cur"
+msgstr "鼠标指针文件（.cur 格式，用于自定义鼠标样式。比如网页上的手指光标、系统里的沙漏等待图标等。和常见的 .ico 图标是"亲戚"，但它多了一个"热点"定位——就是鼠标实际点击的位置。历史：随 Windows 3.1（1992年）引入，是图形界面从命令行转向鼠标操作时代的关键组件）"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start (Java 应用程序启动器，2000年代 Java 桌面应用分发技术，现已淘汰)"
+msgstr "Java Web Start（2000年代 Java 桌面应用分发技术，通过 .jnlp 文件启动远程 Java 程序。因安全问题和现代分发方式的普及，现已基本淘汰）"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader 电子书 (2000年微软推出，LIT 格式，已淘汰)"
+msgstr "Microsoft Reader 电子书（2000年微软推出，LIT 格式。已淘汰，现可用 Calibre 等工具转换为 EPUB 或 PDF）"
 
 msgid "mime_svg"
-msgstr "SVG 矢量图 (1999年 W3C 标准，因微软长期推自家 VML 格式，IE 浏览器直至 2011 年才支持，导致普及延迟。2015 年后随着 IE 淘汰和高清屏普及，成为图标、Logo 首选格式)"
+msgstr "SVG 矢量图形（1999 年 W3C 标准，基于 XML 架构的二维矢量图像格式。具备任意缩放不失真与流式文本传输优势。所有现代浏览器原生支持，广泛用于高清晰度网页图标、Logo 及矢量动画渲染，是现代 Web 图形的核心标准）"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator 矢量图 (1987年推出，行业标准矢量图形格式，印刷设计、Logo、图标首选)"
+msgstr "AI 矢量图形（1987 年 Adobe 独立开发的专有矢量图格式。作为排版、印刷设计与品牌标识设计的行业核心标准，支持多图层与高级排版矢量数据，是专业视觉艺术的首选载体）"
 
 msgid "mime_phshop"
-msgstr "Photoshop 图片 (1990年 Adobe 推出，Photoshop 源文件格式 PSD，图像处理行业标准)"
+msgstr "PSD 图层图像（1990 年 Adobe 随 Photoshop 推出的专有位图源文件格式。支持多图层分层、通道、蒙版与无损编辑数据，已被确立为全球图像处理与数字绘画的行业标准）"
 
 msgid "mime_ttf"
-msgstr "TrueType 字体 (1989年 Apple 和 Microsoft 联合开发，矢量字体格式，屏幕显示与打印一致，现代操作系统默认字体格式)"
+msgstr "TrueType 字体（1989 年 Apple 与 Microsoft 联合开发的数字轮廓字体格式。基于二次贝塞尔曲线，实现屏幕显示与印刷输出的绝对像素一致，是现代桌面操作系统的原生默认字体格式）"
 
 msgid "mime_fon"
-msgstr "WOFF2 网页字体 (2014年 W3C 推荐，采用 Brotli 压缩算法，相比旧版 WOFF 体积减小约 30%，相比 TTF/OTF 减小超 50%，目前所有现代浏览器均已支持，是当前现代网页字体的首选格式，被 98% 以上浏览器支持)"
+msgstr "FON 位图字体（1980 年代 Microsoft Windows 的早期系统级点阵字体格式。不支持任意等比例无损缩放，通常随遗留系统或早期内嵌式设备组件进行有限的像素化文本渲染）"
 
 msgid "mime_pdf"
-msgstr "PDF 文档 (1993年 Adobe 开发，2008年成为 ISO 国际标准。跨平台文档格式，保持格式一致性，是电子文档分发的全球标准)"
+msgstr "PDF 电子文档（1993 年 Adobe 开发并于 2008 年成为 ISO 32000 国际标准的跨平台版式文档格式。具备绝对的排版与格式保真度，是全球电子公文分发与数字出版的通用标准）"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET 动态页面 (2002年 Microsoft 推出，Windows 平台动态网页技术，.NET Framework 的一部分)"
+msgstr "ASP.NET 动态页面（2002 年 Microsoft 随 .NET 架构推出的服务器端动态网页技术。承载于 IIS 渲染引擎，用于构建企业级 Windows 服务端动态 Web 应用程序与分布式系统）"
 
 msgid "mime_mdb"
-msgstr "Access 数据库 (Microsoft Access 数据库文件，1992年推出，Windows 桌面数据库解决方案)"
+msgstr "MDB 关系数据库（1992 年 Microsoft 随 Access 发布的桌面级关系型数据库存储格式。内置 Jet 数据库引擎，在个人电脑与中小型企业早期信息化管理中作为关系型数据库解决方案）"
 
 msgid "mime_md"
-msgstr "Markdown 文档 (2004年由 John Gruber 创建，语法设计受 reStructuredText 和 Setext 影响。核心设计哲学为‘可读即渲染’，原始实现 Markdown.pl 采用 Perl 正则表达式。衍生规范包括 GFM (2013)、CommonMark (2017)、Pandoc Markdown 等。驱动 GitHub、GitLab、Stack Overflow、Jupyter Notebook、Obsidian、Hugo、VitePress 等生态，成为静态网站生成器和开发者文档的事实标准格式)"
+msgstr "Markdown 文档（2004 年 John Gruber 独立创建的轻量级标记语言。核心设计哲学为‘可读即渲染’，驱动 GFM 及 CommonMark 等现代衍生规范。广泛作为技术文档、知识库（Obsidian）及现代静态网站生成器的核心交换标准）"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports 报表格式 (SAP 商业智能报表，企业报表标准格式)"
+msgstr "Crystal Reports 水晶报表（SAP 商业智能（BI）平台的专业企业级报表文件格式。具备多数据源底层连接与复杂的动态图表渲染能力，广泛用于跨国企业财务与数据分析系统的专业报表生成）"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice 文档 (2010年 The Document Foundation 开发，OpenOffice 分支，ODF 标准实现，主流开源办公套件)"
+msgstr "LibreOffice 文档（2010 年 The Document Foundation 基于 OpenOffice 分支构建的开源办公套件专有格式。深度实现 W3C 的 ODF（开放文档格式）国际标准，是现代开源生态的办公基石）"
 
 msgid "mime_encrypt"
-msgstr "加密文件 (需解密才能查看的文件，常见扩展名：.enc、.crypt、.pgp、.gpg)"
+msgstr "ENCRYPT 加密文件（经由特定对称或非对称加密算法处理的原始二进制或文本数据。包含 .enc、.pgp、.gpg 等核心衍生格式，在网络层用于保障非公开数据的机密性与完整性验证）"
 
 msgid "mime_gpx"
-msgstr "GPS 轨迹数据 (GPS 交换格式，记录地理位置信息，运动手表、导航设备通用格式)"
+msgstr "GPX 卫星轨迹数据（基于 XML 架构的全球定位系统交换格式。专门用于描述地理坐标、航点、航线与历史轨迹，是现代移动运动设备、车载导航及地理信息系统（GIS）通用的开放数据标准）"
 
 msgid "mime_diskimage"
-msgstr "磁盘镜像 (DMG、ISO、IMG 等光盘/磁盘映像文件，用于分发软件或备份存储介质)"
+msgstr "Disk Image 磁盘镜像（包含 ISO、DMG、IMG 在内的物理磁盘或光盘介质的逐字节底层扇区映像文件。用于系统底层部署、大容量软件安全分发以及存储介质的物理级完整数据备份）"
 
 msgid "mime_vm"
-msgstr "虚拟机镜像 (VMDK、VDI、VHDX、OVA 等虚拟机磁盘文件，VMware、VirtualBox、Hyper-V 等虚拟化平台格式)"
+msgstr "VM 虚拟机镜像（包含 VMDK、VDI、VHDX、OVA 在内的虚拟化物理磁盘映像。作为 VMware、VirtualBox 与 Hyper-V 平台的基础，用于底层系统级硬件仿真、实例快照与云基础设施分发）"
 
 msgid "mime_torrent"
-msgstr "BitTorrent 种子文件 (2001年 Bram Cohen 发明，P2P 下载索引文件，包含文件元数据和 Tracker 信息)"
+msgstr "BitTorrent 种子文件（2001 年 Bram Cohen 设计的 P2P 点对点分布式下载索引。基于 Bencode 编码，存储原始文件底层校验元数据与 Tracker 服务器寻址信息，是去中心化网络流分发的核心载体）"
 
 msgid "mime_gis"
-msgstr "GIS 地理信息系统数据 (Shapefile、GeoJSON 等地理空间数据格式，用于地图和空间分析)"
+msgstr "GIS 地理空间数据（以 Shapefile 和 GeoJSON 为核心的地理信息系统数据标准。包含多维几何坐标、图层拓扑及属性数据，广泛用于高精度数字地图渲染、卫星遥感与空间几何分析）"
 
 msgid "mime_ebook"
-msgstr "电子书 (EPUB、MOBI、AZW 等电子书格式。EPUB 为国际标准，MOBI/AZW 为 Amazon Kindle 格式)"
+msgstr "EBOOK 电子书（以 W3C 的 EPUB 国际开放标准、Amazon Kindle 专有 MOBI/AZW 架构为核心的数字出版格式。支持自适应流式排版、元数据封装与 DRM 数字版权保护，是移动端数字阅读的通用载体）"
 
 msgid "mime_avif"
-msgstr "AVIF 图像 (2019年开放媒体联盟推出，基于 AV1 编码，压缩率比 WebP 高 50%，新一代网页图像标准)"
+msgstr "AVIF 高效图像（2019 年开放媒体联盟（AOMedia）推出的下一代超高清图像标准。基于 AV1 视频编码关键帧技术，高压缩率比 WebP 提升 50% 且原生支持高动态范围（HDR），为现代 Web 图片传输的主流标准）"
 
 msgid "mime_markdown"
-msgstr "Markdown 文档 (2004年 John Gruber 设计，轻量级标记语言，GitHub README、技术文档、论坛帖子的通用格式)"
+msgstr "Markdown 轻量文档（2004 年 John Gruber 独立创建的文本文档标记语言。采用纯文本声明式设计，语法设计受 reStructuredText 启发，广泛用于 GitHub 项目、工程级技术文档及现代静态内容管理生态）"
 
 msgid "mime_yaml"
-msgstr "YAML 配置 (2001年 Clark Evans 设计，人类可读的数据序列化格式，Kubernetes、Ansible、Docker Compose 配置文件标准)"
+msgstr "YAML 序列化配置（2001 年 Clark Evans 等人设计的人类可读型数据序列化格式。基于层级缩进与键值映射，现已确立为 Kubernetes 容器编排、Ansible 自动化及 Docker Compose 的云原生基础设施配置标准）"
 
 msgid "mime_toml"
-msgstr "TOML 配置 (2013年 Tom Preston-Werner 设计，『Tom's Obvious Minimal Language』，Rust/Cargo、Python/pip、Go 等现代工具的配置文件格式)"
+msgstr "TOML 语义化配置（2013 年 Tom Preston-Werner 设计的极简最小化语言。具备强类型、显式映射与语义清晰等底层设计优势，现广泛作为 Rust (Cargo)、Python (pyproject.toml) 及 Go 现代工具链的标准化配置文件）"
 
 msgid "mime_vue"
-msgstr "Vue 组件文件 (2014年尤雨溪推出，渐进式 JavaScript 框架。通过单文件组件 (SFC) 将 HTML、CSS、JS 完美结合，极大提升了开发效率，是全球最流行的前端框架之一。同时作为 VitePress 等现代静态站点生成器的核心，广泛用于驱动交互式技术文档与博客)"
+msgstr "Vue 单文件组件（2014 年尤雨溪推出的渐进式 Web 框架专有 SFC 格式。在单一文件中实现 HTML/CSS/JS 的关注点分离与响应式状态绑定，深度驱动现代 Web 交互式前端应用与大规模静态站点引擎）"
 
 msgid "mime_wasm"
-msgstr "WebAssembly 模块 (2017年 W3C 标准，浏览器高性能执行格式，C/C++/Rust/R 可编译为目标，性能接近原生)"
+msgstr "WebAssembly 二进制模块（2017 年 W3C 确立的 Web 高性能低级字节码标准。允许 C/C++/Rust 等强类型语言编译为浏览器沙箱目标，提供接近原生硬件的执行效率，是现代 Web 边缘计算的核心基石）"
 
 msgid "mime_jsx"
-msgstr "React JSX 组件 (2013年 Facebook 推出 JavaScript XML，React 框架组件语法，将 HTML 写入 JavaScript 的创新范式)"
+msgstr "React JSX 组件（2013 年 Facebook 随 React 框架推出的 JavaScript XML 语法扩展。支持在 JavaScript 中声明式构建 DOM 虚拟结构，实现了前端‘UI 即状态函数’的组件化开发范式）"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX 组件 (2012年 Microsoft 开发，TypeScript + JSX，React 类型安全开发的标准写法)"
+msgstr "TypeScript TSX 组件（2012 年 Microsoft 开发的 TypeScript 强类型语法与 JSX 的流式结合。在 React 组件开发中注入静态编译期类型检查与接口约束，是现代大型前端系统安全开发的代码标准）"
 
 msgid "mime_heif"
-msgstr "HEIF 图像 (2015年 MPEG 标准，高效图像文件格式，苹果生态广泛使用)"
+msgstr "HEIF 高效图像（2015 年 MPEG 组织确立的高效图像文件格式。基于 HEVC (H.265) 视频编码算法，支持在极小体积下容纳多帧图像、深度图与元数据，是现代移动操作系统与智能终端设备的专有存储标准）"
 
 msgid "mime_heic"
-msgstr "HEIC 图像 (苹果 HEIF 实现，iPhone 默认照片格式，iOS/macOS 原生支持)"
+msgstr "HEIC 高效图像（Apple 基于 HEIF 国际标准实现的专有位图格式。作为现代 iPhone 的默认照片存储标准，获 iOS/macOS 硬件级级编解码与原生操作系统支持，在保障高画质的同时大幅缩减底层存储空间）"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D 模型 (GL传输格式，『3D 界的 JPEG』，2015年 Khronos Group 发布，Web 3D 标准格式)"
+msgstr "glTF 3D 资产模型（2015 年 Khronos Group 发布的 GL 传输格式标准。采用 JSON 架构描述三维场景，被誉为‘3D 领域的 JPEG’，是现代 WebGL/WebGPU 及虚拟现实渲染的轻量级工业标准）"
 
 msgid "mime_glb"
-msgstr "GLB 二进制 3D 模型 (GLTF 的二进制版本，单文件包含所有资源，用于 3D 场景分发)"
+msgstr "GLB 二进制 3D 模型（glTF 资产模型的全二进制无损封装版本。将场景结构、底层网格（Mesh）顶点数据、材质与贴图纹理合流为单一文件，专用于跨平台 Web 3D 资产的高效传输与流式分发）"
 
 msgid "mime_gls"
-msgstr "GLOSSARY 词汇表 (术语定义文件，用于文档系统的术语管理)"
+msgstr "GLOSSARY 数据词汇表（专门用于文档管理系统与结构化语料库的术语集定义文件。内置标准术语定义、多语言对照及元数据映射，用于维持自动化文本分析与内容发布系统的概念一致性）"
 
 msgid "mime_cbz"
-msgstr "CBZ 漫画书 (ZIP 压缩的漫画图像，漫画收藏通用格式)"
+msgstr "CBZ 漫画书（基于 ZIP 压缩结构的专有漫画图像归档格式。内部封装连续的静态位图序列，作为数字漫画出版与跨平台本地收藏的通用轻量容器标准）"
 
 msgid "mime_cbr"
-msgstr "CBR 漫画书 (RAR 压缩的漫画图像，漫画收藏通用格式)"
+msgstr "CBR 漫画书（基于 RAR 压缩结构的专有漫画图像归档格式。采用 RAR 算法对静态位图序列进行封装，具备较高的压缩率，在数字漫画分发领域拥有广泛的兼容性支持）"
 
 msgid "mime_fb2"
-msgstr "FB2 电子书 (FictionBook 2.0，俄罗斯电子书格式，XML 结构，开源阅读器广泛支持)"
+msgstr "FB2 电子书（2000 年代初的 FictionBook 2.0 电子书标准。采用纯 XML 结构描述书籍属性与文本层级，在开源电子书生态与遗留数字出版阅读器中获广泛支持）"
 
 msgid "mime_kepub"
-msgstr "KEPUB 电子书 (Kobo 专用 EPUB 格式，Kobo 电子书阅读器优化格式)"
+msgstr "KEPUB 电子书（Kobo 基于 EPUB 标准演进的专有增强型电子书格式。针对 Kobo 硬件级电子书阅读器进行底层渲染优化，提供更高效的页面布局与阅读统计交互）"
 
 msgid "mime_m4b"
-msgstr "M4B 有声书 (MPEG-4 音频书籍格式，支持书签，iTunes 有声书格式)"
+msgstr "M4B 有声书（基于 MPEG-4 Part 14 (MP4) 容器架构的有声书籍格式。采用 AAC 编码，原生支持底层书签定位、断点续播与分章节嵌入，曾作为 Apple iTunes 生态的标准格式）"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX 格式 (2015年 Amazon 推出，Kindle 专用电子书格式，支持增强排版和快速翻页)"
+msgstr "Kindle KFX 格式（2015 年 Amazon 随 Kindle 发布的专有增强型数字出版格式。支持高级连字排版、高动态字体渲染与内核级流式页面加载（Page Flip），是现代 Kindle 平台的核心标准）"
 
 msgid "mime_chm"
-msgstr "CHM 帮助文件 (1997年 Microsoft 推出，编译的 HTML 帮助格式，Windows 软件帮助文档标准)"
+msgstr "CHM 编译帮助文件（1997 年 Microsoft 推出的已编译 HTML 帮助信息系统。将超文本数据与底层索引打包为单一二进制容器，长期作为 Windows 软件本地离线帮助文档的标准格式）"
 
 msgid "mime_mht"
-msgstr "MHT 网页存档 (1999年 Microsoft 推出，单一文件网页格式，IE 浏览器保存网页格式)"
+msgstr "MHT 网页存档（1999 年 Microsoft 推出的 MIME 聚合超文本格式。基于 RFC 2557 标准，将 HTML 源码、CSS、JS 及内嵌图片封装进单一文本文件，用于 legacy 浏览器离线网页保存）"
 
 msgid "mime_wml"
-msgstr "WML 无线标记语言 (1999年 WAP 标准，用于早期功能手机网页文件，已淘汰)"
+msgstr "WML 无线标记语言（1999 年 WAP（无线应用协议）论坛确立的移动端标记标准。基于 XML 规范，专门用于早期窄带无线蜂窝网络与低算力功能手机，在现代 Web 生态中属于已退役的遗留技术）"
 
 msgid "mime_xhtml"
-msgstr "XHTML 网页 (2000年 W3C 标准，HTML 的 XML 版本，语法更严格。2009年 W3C 停止维护，重心转向 HTML5)"
+msgstr "XHTML 超文本网页（2000 年 W3C 标准，基于 XML 架构封装的严格型超文本标记语言。2009 年 W3C 停止其技术演进并全面转向 HTML5 规范，现多用于遗留系统的语义化网页渲染）"
 
 msgid "mime_xml"
-msgstr "XML 文档 (1998年 W3C 标准，可扩展标记语言，Web 服务、配置文件、数据交换的基础格式)"
+msgstr "XML 结构化文档（1998 年 W3C 标准的可扩展标记语言。具备自描述性标签架构，作为网络 Web 服务（SOAP/REST）、系统级配置文件（XSD）及跨平台数据交换的底层基石格式）"
 
 msgid "mime_sgml"
-msgstr "SGML 文档 (1986年 ISO 标准，HTML 的前身，标准通用标记语言，XML 和 HTML 均派生自 SGML)"
+msgstr "SGML 通用标记语言（1986 年 ISO 8879 国际标准的标准通用标记语言。作为电子文档结构化描述的行业先驱，XML 与早期 HTML 规范均衍生自该标准元语言）"
 
 msgid "mime_apng"
-msgstr "APNG 动画 (2004年 Mozilla 开发，PNG 的动画扩展，GIF 的现代替代，支持真彩色和半透明)"
+msgstr "APNG 动态图形（2004 年 Mozilla 开发的便携式网络图形（PNG）动态扩展格式。支持 24 位真彩色与 8 位 Alpha 通道半透明特性，是作为现代 Web 场景下 GIF 格式的高清替代方案）"
 
 msgid "mime_bmp"
-msgstr "BMP 位图 (Windows 位图格式，自 Windows 1.0 起原生支持。无压缩，文件较大，但因结构简单、无需额外编解码器，Windows 11 截图工具、画图程序、EXE/MSI 安装包图标资源、光标文件及部分旧驱动程序仍在使用。同等画质下文件比 PNG 大约 3-10 倍，多数场景已被 PNG/JPEG 取代，但 Windows 生态仍保留广泛兼容性)"
+msgstr "BMP 原生位图（自 Windows 1.0 时代确立的微软平台设备无关位图格式。采用无损无压缩存储，虽体积通常比 PNG 膨胀 3-10 倍，但因无需编解码开销，至今仍广泛内嵌于 Windows 11 核心组件、EXE/MSI 资源区段及遗留驱动的图形缓冲区）"
 
 msgid "mime_cdr"
-msgstr "CDR 矢量图 (CorelDRAW 专用格式，加拿大 Corel 公司，矢量图形设计软件)"
+msgstr "CDR 矢量图形（加拿大 Corel 公司专有的 CorelDRAW 专业矢量设计源文件格式。支持多图层色彩管理、复杂的数学轮廓节点与印刷级排版数据，是专业平面印刷与广告设计领域的专用格式）"
 
 msgid "mime_gif"
-msgstr "GIF 图像 (1987年 CompuServe 开发，256色动图格式。痛点：色彩少、画质粗糙、不支持半透明、文件大、帧率低。被 APNG、WebP 等现代动图格式取代)"
+msgstr "GIF 索引色图像（1987 年 CompuServe 开发的 8 位索引色位图格式。底层基于 LZW 算法，受限于 256 色阶与单色透明限制，高帧率下体积臃肿，现逐步被 APNG、WebP 等现代高效动图标准取代）"
 
 msgid "mime_ico"
-msgstr "ICO 图标 (Windows 图标文件格式，支持多分辨率，网站 favicon 标准格式)"
+msgstr "ICO 系统图标（Windows 原生图标资源封装格式。支持在单一容器内混合嵌入多种像素分辨率与色彩深度的图像变体，亦是现代 Web 浏览器站点核心标识（Favicon）的通用分发标准）"
 
 msgid "mime_jpeg"
-msgstr "JPEG 图像 (1992年 ISO 标准，有损压缩照片格式，互联网照片事实标准)"
+msgstr "JPEG 压缩图像（1992 年 ISO 10918 国际标准的有损压缩图像格式。基于离散余弦变换（DCT）算法，在实现高压缩比的同时维持优异的写实图像质量，是全球互联网静态照片的绝对事实标准）"
 
 msgid "mime_jpg"
-msgstr "JPEG 图像 (1992年 ISO 标准，有损压缩照片格式，互联网照片事实标准)"
+msgstr "JPEG 压缩图像（1992 年 ISO 10918 国际标准的有损压缩图像格式。基于离散余弦变换（DCT）算法，在实现高压缩比的同时维持优异的写实图像质量，是全球互联网静态照片的绝对事实标准）"
 
 msgid "mime_png"
-msgstr "PNG 图像 (1996年 W3C 推荐，支持真彩色和半透明，GIF 的静态替代，互联网无损图像标准)"
+msgstr "PNG 无损图像（1996 年 W3C 推荐的便携式网络图形标准。采用无损压缩算法，原生支持 24 位真彩色与 8 位 Alpha 通道透明度，作为经典静态 GIF 的高清替代方案，是互联网无损像素图像的绝对事实标准）"
 
 msgid "mime_ps"
-msgstr "PostScript 页面描述文件 (1985年 Adobe 推出，页面描述语言，PDF 的前身，用于打印和出版)"
+msgstr "PostScript 页面描述文件（1985 年 Adobe 推出的堆栈式页面描述语言。作为 PDF 格式的技术前身，在底层实现硬件无关的文字排版与高精度矢量图形渲染，是专业印刷出版与激光打印领域的奠基性标准）"
 
 msgid "mime_psb"
-msgstr "PSB 大型文档 (Adobe Photoshop 超大图像格式，支持超过 2GB 或 30000 像素的巨型图像)"
+msgstr "PSB 大型图层文档（Adobe Photoshop 专有的超大源文件封装格式。突破了标准 PSD 格式 2GB 物理体积及 30,000 像素的内部寻址限制，专门用于存储超大规模、高分层深度的巨型数字艺术资产）"
 
 msgid "mime_psd"
-msgstr "PSD 图像 (Adobe Photoshop 源文件，支持图层、通道、路径，图像处理行业标准格式)"
+msgstr "PSD 图层设计源文件（Adobe Photoshop 专有的分层图像工程格式。作为图形图像领域的行业标准容器，原生封装完整的图层渲染树、位图通道、矢量剪裁路径与复合混合模式，支持无损全数据编辑）"
 
 msgid "mime_webp"
-msgstr "WebP 图像 (2010年 Google 开发，网页图像格式，支持有损/无损压缩和动画，压缩率比 PNG 高 25-35%，比 JPEG 高 25%)"
+msgstr "WebP 高效图像（2010 年 Google 推出的通用 Web 图形编码标准。衍生自 VP8 视频关键帧技术，完美兼容有损、无损、半透明及动态渲染，比同画质 PNG 缩减 25-35% 体积，是现代网页高性能加载的核心基石）"
 
 msgid "mime_woff"
-msgstr "WOFF 网页字体 (2009年创建，2018年 W3C 标准。基于 TrueType/OpenType 压缩，Web 字体加载优化，现代网站图标字体标准格式)"
+msgstr "WOFF 网页字形文件（2009 年创建并于 2012 年成为 W3C 标准的 Web 开放字体格式。本质是将标准 TTF/OTF 字体结构进行流式无损压缩封装，大幅优化网络传输带宽开销，是现代网站图标与云端字体的通用格式）"
 
 msgid "mime_7z"
-msgstr "7z 压缩包 (1999年 Igor Pavlov 开发，7-Zip 程序专有格式。LZMA 算法，高压缩率，开源免费。7z 格式在相同压缩率下通常比 ZIP 小 30-50%，是开源社区和软件分发的常用格式)"
+msgstr "7z 压缩包（1999 年 Igor Pavlov 开发的 7-Zip 专有格式。基于开源 LZMA/LZMA2 算法，具备极高压缩率。在同等条件下体积通常比 ZIP 缩减 30-50%，是开源社区与软件分发的通用高压缩比格式）"
 
 msgid "mime_ace"
-msgstr "ACE 压缩包 (1990年代开发，WinACE 程序格式。曾与 RAR 竞争，压缩率较高。2007年停止开发，现已被 7z/RAR 取代，较少使用)"
+msgstr "ACE 压缩包（1990 年代 WinACE 专有压缩格式。曾与 RAR 格式竞争并具备较高压缩率。2007 年后停止技术迭代，现已被 7z 和 RAR 格式取代，属于遗留系统归档格式）"
 
 msgid "mime_bz2"
-msgstr "BZIP2 压缩包 (1996年 Julian Seward 开发，块排序压缩算法。压缩率比 GZIP 高 15-20%，但速度较慢。Linux 内核源码、开源软件包常用格式，扩展名 .bz2)"
+msgstr "BZIP2 压缩包（1996 年 Julian Seward 开发的块排序压缩格式。其底层算法压缩率比 GZIP 高 15-20% 但计算开销较大。常用于 Linux 内核源码及开源软件包的分发，标准扩展名为 .bz2）"
 
 msgid "mime_cab"
-msgstr "CAB 压缩包 (1995年 Microsoft 开发，Cabinet 格式。Windows 系统安装包格式，用于驱动程序、系统文件分发。Windows Installer (MSI) 内部使用 CAB 存储文件)"
+msgstr "CAB 压缩包（1995 年 Microsoft 独立开发的 Cabinet 归档格式。作为 Windows 系统的原生安装包标准，用于驱动程序与内核文件分发，亦作为 Windows Installer (MSI) 的底层存储容器）"
 
 msgid "mime_dmg"
-msgstr "DMG 磁盘镜像 (1980年代 Apple 推出，Disk Image 格式。macOS 软件分发标准格式，双击挂载为虚拟磁盘，拖拽即可安装应用。支持压缩和加密，是 Mac 软件下载的主流格式)"
+msgstr "DMG 磁盘镜像（1980 年代 Apple 演进的 Disk Image 格式。作为 macOS 软件分发的标准标准容器，支持物理挂载为虚拟文件系统、底层压缩与数据加密，是 Mac 生态应用分发的主流格式）"
 
 msgid "mime_emz"
-msgstr "EMZ 压缩图片 (Windows 压缩增强图元文件，EMF 的压缩版本。Office 文档中矢量图形存储格式，本质是 GZIP 压缩的 EMF 文件)"
+msgstr "EMZ 压缩图片（Windows 增强型图元文件 EMF 的压缩版本。本质是经由 GZIP 算法压缩的二进制矢量图形，广泛用于 Microsoft Office 系列文档中的内置矢量图存储）"
 
 msgid "mime_gz"
-msgstr "GZIP 压缩包 (1992年 Jean-loup Gailly 和 Mark Adler 开发，GNU 项目。Unix/Linux 标准压缩工具，HTTP 传输压缩常用格式。扩展名 .gz，常与 TAR 配合使用)"
+msgstr "GZIP 压缩包（1992 年 GNU 项目 Jean-loup Gailly 与 Mark Adler 开发的标准流压缩格式。作为 Unix/Linux 标准压缩工具，亦是 HTTP 传输层压缩（Gzip）的核心标准，常与 TAR 归档配合使用）"
 
 msgid "mime_jar"
-msgstr "JAR 压缩包 (1997年 Sun Microsystems 推出，Java ARchive 格式。本质是 ZIP 压缩包，用于打包 Java 类库和应用。Maven、Gradle 等 Java 生态的核心格式，Android 也使用 JAR)"
+msgstr "JAR 压缩包（1997 年 Sun Microsystems 推出的 Java ARchive 归档格式。本质是基于 ZIP 结构的打包容器，用于封装 Java 类库与元数据，是 Maven、Gradle 及 Android 早期生态的核心编译产物）"
 
 msgid "mime_lzma"
-msgstr "LZMA 压缩包 (1998年 Igor Pavlov 开发，Lempel-Ziv-Markov chain 算法。7z 格式的核心压缩算法，高压缩率，解压速度快。用于固件、嵌入式系统软件分发)"
+msgstr "LZMA 压缩包（1998 年 Igor Pavlov 开发的 Lempel-Ziv-Markov chain 链式压缩算法。作为 7z 格式的核心引擎，具备极高压缩率与高速解压特性，广泛用于硬件固件与嵌入式系统分发）"
 
 msgid "mime_rar"
-msgstr "RAR 压缩包 (1993年 Eugene Roshal 开发，Roshal ARchive 格式。高压缩率，支持分卷压缩、恢复记录。WinRAR 程序格式，压缩率优于 ZIP，但需付费软件支持，开源工具如 unrar 可解压)"
+msgstr "RAR 压缩包（1993 年 Eugene Roshal 开发的 WinRAR 专有归档格式。支持分卷压缩、物理恢复记录（ECC）与高强度加密。压缩率优于标准 ZIP，在个人电脑与商业领域拥有广泛的兼容性支持）"
 
 msgid "mime_tar"
-msgstr "TAR 归档包 (1979年 Unix V7 引入，Tape ARchive 格式。磁带归档格式，不压缩仅打包，常与 GZIP/BZIP2/XZ 配合使用。Linux 软件包源码、Docker 镜像分层存储均使用 TAR 格式)"
+msgstr "TAR 归档包（1979 年 Unix V7 时代的 Tape ARchive 磁带归档格式。仅执行文件流打包而不进行数据压缩，常与 GZIP/BZIP2/XZ 组合，是 Linux 源码包与 Docker 镜像分层存储的底层标准）"
 
 msgid "mime_tgz"
-msgstr "TGZ 压缩包 (TAR + GZIP 组合格式，扩展名 .tgz 或 .tar.gz。Unix/Linux 软件包最通用分发格式，源码包、二进制包广泛使用，『解压即用』的代表)"
+msgstr "TGZ 压缩包（TAR 归档与 GZIP 压缩的流式组合格式，扩展名为 .tgz 或 .tar.gz。作为 Unix/Linux 环境下最通用的软件包分发格式，广泛应用于源码编译部署与免安装二进制包分发）"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 压缩包 (TAR + BZIP2 组合格式，扩展名 .tbz2 或 .tar.bz2。压缩率比 TGZ 高 15-20%，适合大文件分发，Linux 内核源码长期使用此格式)"
+msgstr "TBZ2 压缩包（TAR 归档与 BZIP2 压缩的流式组合格式，扩展名为 .tbz2 或 .tar.bz2。相比 TGZ 可进一步提升 15-20% 的压缩率，适合大文件传输，曾长期用于 Linux 内核源码的分发）"
 
 msgid "mime_xz"
-msgstr "XZ 压缩包 (2009年推出，基于 LZMA2 算法。压缩率极高，比 GZIP 高 30-50%，解压速度较快。Linux 内核、包管理器（如 Debian 的 .deb 内部）广泛使用，是当前 Linux 生态推荐格式)"
+msgstr "XZ 压缩包（2009 年推出的下一代高压缩比格式。基于 LZMA2 算法，数据压缩率比 GZIP 提升 30-50% 且保持高速解压。已被 Linux 内核及主流包管理器（如 Debian .deb 内部）确立为推荐分发标准）"
 
 msgid "mime_z"
-msgstr "Z 压缩包 (1985年 Unix compress 命令格式，LZW 算法。早期 Unix 压缩格式，已被 GZIP 取代。扩展名 .Z，现代系统较少使用)"
+msgstr "Z 压缩包（1985 年 Unix compress 命令的 LZW 压缩格式。作为早期 Unix 系统的标准压缩标准，现已被更高效的 GZIP 格式完全取代，在现代网络流量中属于罕见的遗留历史格式）"
 
 msgid "mime_zip"
-msgstr "ZIP 压缩包 (1989年 Phil Katz 开发，PKZIP 格式。Windows 原生支持，互联网最通用压缩格式。支持多文件、目录结构，可选择压缩算法。Java 的 JAR、Android 的 APK、Office 文档的 DOCX/XLSX 均基于 ZIP 格式)"
+msgstr "ZIP 压缩包（1989 年 Phil Katz 开发的 PKZIP 通用归档格式。获主流操作系统原生支持，是互联网应用最广的容器标准。现代 Java 的 JAR、Android 的 APK 及 Office 文档（OOXML）均基于 ZIP 结构）"
 
 msgid "mime_zst"
-msgstr "Zstandard 压缩包 (2015年 Facebook 开发，Yann Collet 设计。高速压缩算法，压缩率接近 LZMA，速度远超 GZIP。Linux 内核 5.9+ 支持，Arch Linux pacman、Debian APT 逐步采用，是新一代压缩标准)"
+msgstr "Zstandard 压缩包（2015 年 Facebook Yann Collet 设计的新一代流式压缩标准。在逼近 LZMA 压缩率的同时具备远超 GZIP 的吞吐量。已获 Linux 内核（5.9+）及 Arch/Debian 包管理器深度采用）"
 
 msgid "mime_lz4"
-msgstr "LZ4 压缩包 (2011年 Yann Collet 开发，极速压缩算法。压缩速度比 GZIP 快 10 倍以上，适合实时压缩场景。Linux 内核、OpenZFS、Hadoop 广泛使用，是速度优先场景的首选)"
+msgstr "LZ4 压缩包（2011 年 Yann Collet 开发的极速流式压缩算法。吞吐速度比 GZIP 快 10 倍以上，具备极低的 CPU 运行时开销。广泛用于 Linux 内核、OpenZFS 文件系统及 Hadoop 实时数据流处理）"
 
 msgid "mime_lzo"
-msgstr "LZO 压缩包 (1996年 Markus Oberhumer 开发，Lempel-Ziv-Oberhumer 算法。解压速度极快，压缩率一般。Linux 内核 Squashfs、OpenWrt 固件使用，适合嵌入式系统)"
+msgstr "LZO 压缩包（1996 年 Markus Oberhumer 开发的 Lempel-Ziv-Oberhumer 算法。侧重于极速解压性能。广泛嵌入于 Linux 内核 Squashfs 镜像、OpenWrt 固件及各类资源受限的嵌入式系统）"
 
 msgid "mime_msi"
-msgstr "MSI 安装包 (1999年 Microsoft 推出，Windows Installer 包格式。Windows 应用程序标准安装格式，支持事务回滚、组件管理、静默安装。企业级软件分发首选格式，至今仍是 Windows 软件安装主流)"
+msgstr "MSI 系统安装包（1999 年 Microsoft 推出的 Windows Installer 数据封装格式。作为 Windows 应用级标准部署规范，原生支持底层事务回滚、组件生命周期管理与无批处理静默安装，是企业级软件集中分发与策略部署的核心标准）"
 
 msgid "mime_pkg"
-msgstr "PKG 安装包 (macOS 应用安装包格式，基于 Apple 的 Installer 技术。macOS 软件分发标准格式，支持组件选择、安装脚本、卸载功能。.pkg 文件双击即可安装，Mac App Store 之外软件常用分发方式)"
+msgstr "PKG 跨平台软件安装包。1. FreeBSD 软件包：pkgng 标准，扩展名为 .pkg 或 .txz，基于 TAR+XZ/Zstd 压缩，支持依赖解析与签名校验；2. macOS 安装包：基于 Apple Installer 格式，支持自定义组件、安装脚本与系统级卸载。分别是 BSD 服务器与 Mac 系统的主要分发载体。"
 
 msgid "mime_apk"
-msgstr "APK 安卓应用包 (2008年 Google 推出，Android 系统传统应用安装格式。APK 本质是 ZIP 压缩包，包含代码、资源、清单文件。2021年起 Google Play 要求新应用改用 AAB 格式，但 APK 仍用于开发调试、第三方商店和侧载安装)"
+msgstr "APK 安卓应用包（2008 年 Google 随 Android 发布的传统应用安装包。底层基于 ZIP 归档结构，打包编译后的 Dalvik 字节码（DEX）、元数据清单及全局资源，现广泛用于本地开发调试、第三方分发与设备侧载安装）"
 
 msgid "mime_ipa"
-msgstr "IPA 苹果应用包 (iOS App Store Package，iOS/iPadOS 应用安装格式。2008年随 iPhone SDK 发布。需通过 App Store 分发或企业证书签名。包含可执行文件、资源、Info.plist 签名信息)"
+msgstr "IPA 苹果应用包（2008 年随 iPhone SDK 发布的 iOS/iPadOS 专属打包容器。本质为经过 FairPlay DRM 数字版权或企业级代码签名保护的 ZIP 归档，内含 Mach-O 二进制可执行文件、应用资源树与 Info.plist 元数据配置）"
 
 msgid "mime_hap"
-msgstr "HAP 鸿蒙应用包 (HarmonyOS Ability Package，鸿蒙应用基本单元。2020年随 HarmonyOS 2.0 发布。支持 entry 和 feature 两种类型，华为手机、平板、智能手表等鸿蒙设备分发格式)"
+msgstr "HAP 鸿蒙应用包（2020 年随 HarmonyOS 2.0 发布的鸿蒙弹性部署基本单元。由 Entry 主模块或 Feature 扩展功能模块构成，是面向跨端全场景（手机、平板、穿戴设备）智能终端分发的核心多端部署格式）"
 
 msgid "mime_har"
-msgstr "HAR 鸿蒙静态共享包 (HarmonyOS Archive，鸿蒙静态共享库，可被多个 HAP 共享，用于组件化开发和模块复用)"
+msgstr "HAR 鸿蒙静态共享包（HarmonyOS 的专有静态共享库归档文件。用于封装公共组件、底层资源代码与编译期依赖，被多个 HAP 模块静态链接共享，是鸿蒙系统组件化开发与多模块复用的核心底座）"
 
 msgid "mime_aab"
-msgstr "Android App Bundle (2018年 Google 推出，2021年起 Google Play 强制新应用使用此格式。AAB 是分发格式，Google Play 根据设备配置（CPU架构、屏幕密度、语言）动态生成优化 APK，安装包体积平均减小 35%。开发者上传 AAB，用户下载 APK)"
+msgstr "AAB 安卓应用束（2018 年 Google 推出并于 2021 年确立的 Google Play 动态分发格式。作为纯分发实体，由云端根据目标设备 CPU 架构、屏幕密度及语言动态裁剪编译并按需按需生成优化 APK，平均减小 35% 传输带宽开销）"
 
 msgid "mime_xapk"
-msgstr "XAPK 应用包 (第三方 Android 应用扩展包，包含 APK + OBB 数据文件。用于大型游戏和复杂应用，解决 APK 单文件 100MB 限制。常见于 APKPure、APKMirror 等第三方应用商店，非 Google 官方格式)"
+msgstr "XAPK 扩展应用包（由第三方 Android 社区确立的非官方应用扩展标准。通过将标准 APK 文件与超大 OBB 游戏数据扩展包联合封装，物理突破了 Google Play 100MB 独立文件体积限制，广泛见于游戏分发平台）"
 
 msgid "mime_appx"
-msgstr "Windows 应用包 (2012年 Microsoft 推出，Windows 8/10/11 应用安装格式。支持 UWP 和桌面应用转换，通过 Microsoft Store 分发。2024年 Microsoft 推出 MSIX 作为后继格式，逐步替代 APPX)"
+msgstr "APPX 现代应用包（2012 年 Microsoft 随 Windows 8 推出的 UWP 应用部署规范。具备沙盒隔离运行与轻量化卸载特性，其作为 Microsoft Store 早期主导标准，在现代 Windows 生态中已进入向 MSIX 演进的生命周期尾期）"
 
 msgid "mime_msix"
-msgstr "MSIX 应用包 (2018年 Microsoft 推出，Windows 新一代应用打包格式。结合 APPX 和 MSI 优点，支持所有 Windows 应用类型，可通过 Microsoft Store 或侧载安装，Windows 11 推荐格式)"
+msgstr "MSIX 新一代应用包（2018 年 Microsoft 发布的 Windows 全新标准化打包规范。完美熔炼了 APPX 的应用安全沙盒特性与 MSI 的企业级资产管理优势，全面兼容所有 Win32 应用程序类型，是 Windows 11 推荐的分发标准）"
 
 msgid "mime_appimage"
-msgstr "AppImage 应用包 (2004年推出，Linux 免安装应用格式。『一个应用一个文件』，无需安装直接运行，支持大多数 Linux 发行版，开发者分发 Linux 软件的常用方式)"
+msgstr "AppImage 免安应用包（2004 年发起的 Linux 单一可执行归档规范。采用‘一个应用即一个文件’的自包含架构，运行时通过 FUSE 机制直接挂载为只读虚拟文件系统执行，实现跨 Linux 发行版的零依赖即开即用）"
 
 msgid "mime_flatpak"
-msgstr "Flatpak 应用包 (2015年推出，Linux 沙盒化应用格式。跨发行版运行，与主机系统隔离，Fedora、Red Hat 主导开发，GNOME 软件中心默认格式)"
+msgstr "Flatpak 沙盒应用包（2015 年由红帽与 GNOME 主导开发的 Linux 跨发行版桌面应用分发标准。底层依托 Linux 内核 Namespace 及 Cgroups 机制实现极严格的应用层安全沙盒隔离，是现代开源 OS 软件中心的基础）"
 
 msgid "mime_snap"
-msgstr "Snap 应用包 (2014年 Canonical 推出，Ubuntu 母公司开发，Linux 通用应用格式。自动更新、沙盒隔离，支持 40+ Linux 发行版，Ubuntu 软件中心默认格式)"
+msgstr "Snap 容器化应用包（2014 年 Ubuntu 母公司 Canonical 推出的 Linux 通用部署标准。采用应用自包含的 SquashFS 映像挂载架构，支持自动化增量更新与严格的 AppArmor 沙盒隔离，是 Ubuntu 软件中心生态的核心默认格式）"
 
 msgid "mime_deb"
-msgstr "Debian 软件包 (1993年 Debian 项目推出，Debian/Ubuntu 及其衍生版标准安装格式。使用 dpkg 管理，APT 是其包管理器前端，Linux 生态最成熟的包格式之一，至今仍是 Debian 系主流)"
+msgstr "DEB 系统软件包（1993 年 Debian 项目确立的二进制与源码封装规范。作为 Debian、Ubuntu 及其所有衍生体系的底层安装标准，依托 dpkg 核心进行解包维护，并以 APT 为高效包管理器前端，是 Linux 生态最成熟的软件分发基石）"
 
 msgid "mime_rpm"
-msgstr "RPM 软件包 (1997年 Red Hat 推出，Red Hat/Fedora/CentOS/SUSE 等发行版标准格式。RPM 全称『Red Hat Package Manager』，与 DEB 并称 Linux 两大包格式，至今仍是 RHEL 系主流)"
+msgstr "RPM 系统软件包（1997 年 Red Hat 推出的红帽包管理器封装规范。与 DEB 并称 Linux 传统包管理两大阵营，原生内置事务级依赖检查与底层的软件数字签名校验，至今仍是 RHEL、Fedora 及 CentOS 等红帽系生态的绝对主流分发标准）"
 
 msgid "mime_pacman"
-msgstr "Arch 软件包 (2002年 Arch Linux 推出，pacman 包管理器使用的 .pkg.tar.zst 格式。Arch Linux 滚动发行版的核心，以简洁和 KISS 原则著称，AUR（Arch User Repository）是其特色)"
+msgstr "Pacman 归档软件包（2002 年 Arch Linux 随 pacman 管理器确立的 .pkg.tar.zst 封装格式。作为 Arch 滚动更新机制的核心，基于 Zstandard 高速高压缩算法，配合 AUR（Arch用户软件仓库）生态，是体现极简与 KISS 原则的现代化包分发标准）"
 
 msgid "mime_exe"
-msgstr "EXE 可执行文件 (Windows 可执行程序格式，『Executable』的缩写。Windows 操作系统原生执行格式，包含 PE 结构。从 MS-DOS 的 MZ 格式演变而来，1993年 Windows NT 引入 PE（Portable Executable）格式并沿用至今。软件安装包、应用程序、系统工具均使用此格式。用户双击即可运行，是全球最广泛使用的可执行格式)"
+msgstr "EXE 原生可执行文件（Windows 平台的可移植可执行（PE）二进制程序格式。技术沿革自 MS-DOS 时代的 MZ 头部结构，并自 1993 年 Windows NT 起全面确立为 PE 结构规范，作为机器码指令、静态资源区段与系统内核引导的全球最广泛使用执行标准）"
 
 msgid "mime_dll"
-msgstr "DLL 动态链接库 (1993年 Microsoft 推出，Dynamic Link Library。Windows 共享代码库，程序运行时动态加载，节省内存和磁盘空间。系统组件、应用程序插件、驱动程序均使用 DLL 格式。Windows API 的核心实现方式，DLL Hell 问题在 .NET 时代得到缓解)"
+msgstr "DLL 动态链接库（Windows 平台的 Dynamic Link Library 共享代码库规范。通过在运行时动态加载与符号重定位，大幅节约物理内存与磁盘空间，作为 Windows API 的核心实现形态，其早期 DLL Hell 痛点在现代通过 SxS 并行隔离机制得到根治）"
 
 msgid "mime_com"
-msgstr "COM 可执行文件 (MS-DOS 时代可执行格式，『Command』的缩写。文件结构简单，64KB 限制，Windows 3.x 前主流格式。已淘汰，现代 Windows 使用 EXE 格式，COM 扩展名仍用于某些组件文件)"
+msgstr "COM 经典可执行文件（MS-DOS 时代最古老的内存镜像（Command）执行格式。采用无结构纯代码段设计，受限于 64KB 的物理内存寻址段上限，现已退役为遗留历史格式，但在现代 Windows 架构中仍作为特定组件接口进行有限兼容）"
 
 msgid "mime_aac"
 msgstr "AAC 音频 (1997年 MPEG 标准，Advanced Audio Coding。MP3 的后继者，同码率下音质优于 MP3，YouTube、iTunes、Nintendo Switch 默认音频格式)"

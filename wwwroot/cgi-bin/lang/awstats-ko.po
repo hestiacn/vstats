@@ -444,8 +444,8 @@ msgstr "호스트 - 페이지 수 - 히트 수 - 대역폭 - 마지막 방문 �
 msgid "[Start date of last visit] and [Last page of last visit] are saved only if session is not finished"
 msgstr "[마지막 방문 시작 시간] 및 [마지막 방문 페이지]는 세션이 종료되지 않은 경우에만 저장됩니다"
 
-msgid "The %s first Hits must be first (order not required for others)"
-msgstr "메인 페이지에는 히트 수가 가장 높은 상위 %s개 항목이 표시되며, 전체 목록은 세부 페이지를 참조하세요."
+msgid "The first %s items are sorted by hits in descending order; order of the remaining items is undefined."
+msgstr "처음 %s개 항목은 히트 수에 따라 내림차순으로 정렬됩니다. 나머지 항목의 순서는 정의되지 않습니다."
 
 msgid "Login - Pages - Hits - Bandwidth - Last visit"
 msgstr "로그인 사용자 - 페이지 수 - 히트 수 - 대역폭 - 마지막 방문 시간"
@@ -459,8 +459,8 @@ msgstr "웜 ID - 히트 수 - 대역폭 - 마지막 방문"
 msgid "EMail - Hits - Bandwidth - Last visit"
 msgstr "이메일 - 히트 수 - 대역폭 - 마지막 방문"
 
-msgid "The %s first hits must be first (order not required for others)"
-msgstr "메인 페이지에는 히트 수가 가장 높은 상위 %s개 이메일이 표시되며, 전체 목록은 세부 페이지를 참조하세요."
+msgid "The first %s email addresses are sorted by hits in descending order; order of the remaining addresses is undefined."
+msgstr "처음 %s개 이메일 주소는 히트 수에 따라 내림차순으로 정렬됩니다. 나머지 주소의 순서는 정의되지 않습니다."
 
 msgid "URL - Pages - Bandwidth - Entry - Exit"
 msgstr "URL - 페이지 수 - 대역폭 - 진입 - 이탈"
@@ -669,6 +669,27 @@ msgstr "SiteDomain 매개변수가 config/domain 파일에 정의되어 있지 �
 msgid "Please run as Administrator to set permissions"
 msgstr "권한을 설정하려면 관리자로 실행하세요"
 
+msgid "This directory lacks read permission"
+msgstr "이 디렉터리에는 읽기 권한이 없습니다"
+
+msgid "Please set read permission for directory"
+msgstr "디렉터리에 읽기 권한을 설정하세요"
+
+msgid "Missing required parameter in config file"
+msgstr "구성 파일에 필요한 매개변수가 없습니다"
+
+msgid "Please check that 'DirData' is defined."
+msgstr "'DirData' 매개변수가 정의되었는지 확인하십시오."
+
+msgid "Domain name in browser address appears to be missing or incomplete"
+msgstr "브라우저 주소의 도메인 이름 정보가 누락되었거나 불완전합니다"
+
+msgid "Please check the URL parameter"
+msgstr "URL 매개변수를 확인하십시오"
+
+msgid "Format description"
+msgstr "형식 설명"
+
 msgid "Please set execute permission"
 msgstr "실행 권한을 설정하세요"
 
@@ -794,376 +815,379 @@ msgstr "그래버"
 #------------------------------------------------------------------------------
 
 msgid "mime_text"
-msgstr "텍스트 파일(1963년 ASCII 표준화, 형식 없는 순수 텍스트. 모든 소스 코드, 구성, 로그의 기반. Unix는 LF, Windows는 CRLF 줄 바꿈 사용, 현재까지 컴퓨터에서 가장 보편적인 데이터 형식)"
+msgstr "TXT 일반 텍스트 파일 (1963년 ASCII 인코딩으로 표준화된 형식 없는 일반 텍스트. 모든 소스 코드, 구성 파일 및 시스템 로그의 기반으로서, 크로스 플랫폼인 Windows(CRLF)와 Unix(LF) 개행 문자 제어 흐름은 오늘날까지 컴퓨터 세계에서 가장 보편적인 데이터 교환 표준입니다)"
 
 msgid "mime_log"
-msgstr "로그 파일(시스템, 애플리케이션 실행 정보를 기록하는 순수 텍스트 파일, 일반적으로 문제 해결, 성능 분석, 보안 감사에 사용됨. Apache combined log, Nginx access log, syslog 등의 표준 형식)"
+msgstr "LOG 시스템 실행 로그 (운영 체제, 커널 및 애플리케이션 수준의 런타임 상태를 일반 텍스트 자산으로 기록. Nginx/Apache 접근 로그(Combined Log)와 표준 syslog 규격을 포함하며, 문제 해결, 스트리밍 성능 분석 및 보안 감사의 핵심 데이터 소스입니다)"
 
 msgid "mime_page"
-msgstr "HTML 웹 페이지(1989년 Tim Berners-Lee가 월드 와이드 웹 발명, 1990년 HTML/HTTP/URL 세 가지 기술 정의, 무료로 개방하여 특허 출원하지 않음. 2014년 HTML5가 W3C 공식 표준이 되어 디스플레이, 멀티미디어, 인쇄 지원. 2016년 튜링상 수상)"
+msgstr "HTML 하이퍼텍스트 웹페이지 (1989년 Tim Berners-Lee가 창시한 월드 와이드 웹의 핵심 초석. 무료 개방형 범용 하이퍼텍스트 마크업 언어로서, HTML5 규격은 2014년 W3C 공식 표준이 되었으며, 구조화된 멀티미디어, 의미론적 상호 작용 및 유동적 페이지 레이아웃을 기본 지원, 2016년 튜링상 수상)"
 
 msgid "mime_khtml"
-msgstr "KHTML 웹 페이지 엔진(1998년 KDE 2.0 릴리스, Konqueror 브라우저 렌더링 엔진. 2001년 Apple이 KHTML 기반으로 WebKit 생성, 2008년 Google이 WebKit에서 분기하여 Blink 생성, Chrome, Edge, Safari 등 브라우저의 핵심이 됨. KHTML은 오픈 소스 커뮤니티가 현대 브라우저 엔진의 기초를 닦은 모범이며, 그 기술 유산은 WebKit/Blink를 통해 오늘날까지 이어짐)"
+msgstr "KHTML 웹 템플릿 엔진 (1998년 KDE 2.0 브라우저 렌더링 엔진 규격. 오픈 소스 커뮤니티가 현대 웹 렌더링의 초석을 다진 기준으로서, 그 기술적 유산은 Apple WebKit과 Google Blink 코어에 직접적인 영감을 주었으며, 현대의 스트리밍 동적 웹 아키텍처를 통해 그 기반 흐름을 오늘날까지 이어가고 있습니다)"
 
 msgid "mime_script"
-msgstr "동적 스크립트(인터프리터 언어, 컴파일 불필요. ASP, JSP, CGI, ColdFusion, Tcl, VBScript 등 포함, 초기 웹 개발, 시스템 관리, 자동화 작업에 널리 사용됨. Python, Ruby, JavaScript와 같은 현대 스크립트 언어는 풀스택 개발의 주력으로 발전함)"
+msgstr "SCRIPT 인터프리터 방식 동적 스크립트 (사전 컴파일 없이 특정 런타임 또는 인터프리터가 한 줄씩 읽고 실행하는 소스 코드 흐름의 총칭. ASP, JSP, CGI 및 Tcl 등을 포함하며, 서버 측 공용 게이트웨이 인터페이스, 자동화 프로세스 제어 및 시스템 수준 작업 연결에 널리 사용됩니다)"
 
 msgid "mime_js"
-msgstr "JavaScript 스크립트(1995년 Brendan Eich가 Netscape에서 10일 만에 창조, 브라우저 기본 프로그래밍 언어. 1997년 ECMAScript 표준화, 2009년 Node.js 탄생으로 풀스택 언어가 되었으며, npm은 세계 최대 패키지 관리자. 수년 연속 GitHub에서 가장 인기 있는 프로그래밍 언어)"
+msgstr "JavaScript 스크립트 (1995년 Netscape 브라우저의 기본 프로그래밍 환경. 1997년 ECMAScript 산업 표준 확립, 2009년 Node.js 런타임 탄생으로 브라우저 경계를 허물고 전 스택 비동기 논블로킹 아키텍처 개척, 세계 최대 규모의 npm 소프트웨어 패키지 생태계 동반)"
 
 msgid "mime_py"
-msgstr "Python 스크립트(1991년 Guido van Rossum이 창조, 강제 들여쓰기, 간결한 문법으로 유명. 웹 개발, 데이터 과학, 인공지능, 자동화 운영에 널리 사용됨. TIOBE 올해의 프로그래밍 언어를 여러 차례 수상)"
+msgstr "Python 스크립트 (1991년 Guido van Rossum이 만든 고급 인터프리터 방식 스크립트 언어. 강제 들여쓰기를 통한 무손실 가독성과 다중 패러다임 기반 설계로, 현대 웹 아키텍처, 전 스택 데이터 과학, 인공지능(AI) 모델 훈련 및 클라우드 네이티브 자동화 운영의 산업 표준 언어로 자리 잡았습니다)"
 
 msgid "mime_sh"
-msgstr "Shell 스크립트(1971년 Unix 탄생, 명령 스크립트 언어. 시스템 관리, 자동화 작업, 서비스 시작, 배포 스크립트에 사용됨. Linux 운영에 필수적인 기술)"
+msgstr "Shell 스크립트 (1971년 Unix 시대의 표준 명령어 해석기 스크립트. Bash, Sh, Dash 등 커널 수준 명령 규격을 포함하며, 일반적으로 .sh 접미사로 실행되며, 현대 유닉스 계열 운영 체제의 저수준 프로세스 제어, 무설치 환경 구성 및 자동화 배포를 위한 범용 커널 수준 접착제입니다)"
 
 msgid "mime_rb"
-msgstr "Ruby 스크립트(1995년 Yukihiro Matsumoto가 창조, 개발자 행복감에 중점. Ruby on Rails 프레임워크는 구성보다 관례의 개발 패러다임을 개척하여 현대 웹 프레임워크 설계에 영향)"
+msgstr "Ruby 스크립트 (1995년 Yukihiro Matsumoto가 만든 객체 지향 스크립트 언어. 개발자 경험에 대한 극도의 존중을 핵심 설계 철학으로 삼아, 그 Ruby on Rails 프레임워크는 '관례가 구성보다 낫다(CoC)'는 현대 고급 웹 아키텍처 개발 패러다임을 혁신적으로 확립했습니다)"
 
 msgid "mime_pl"
-msgstr "Perl 스크립트(1987년 Larry Wall이 창조, 실용주의로 유명하며 '스위스 아미 나이프'로 불림. CPAN은 현대 언어 패키지 관리자의 선구자이며, 텍스트 처리, 시스템 관리, CGI 분야에 깊은 영향을 미침)"
+msgstr "Perl 스크립트 (1987년 Larry Wall이 만든 실용주의 스크립트 언어. 현대 패키지 관리자(CPAN)의 시조로서, 텍스트 처리의 '스위스 군용 칼'로 일컬어집니다. 현대 CGI 모드에서도 매우 낮은 물리적 메모리 사용량, 고효율 정규 표현식 처리로 로그 분석 분야에서 고신뢰성 기반을 담당합니다)"
 
 msgid "mime_php"
-msgstr "PHP 동적 웹 페이지(1995년 Rasmus Lerdorf가 창조, 웹 개발을 위해 특별히 설계됨. 전 세계 70% 이상의 웹사이트가 사용하며, WordPress, Facebook, Wikipedia 등의 플랫폼을 구동. PHP 8은 JIT 컴파일 도입으로 성능이 크게 향상됨)"
+msgstr "PHP 동적 웹페이지 (1995년 Rasmus Lerdorf가 만들었으며, 웹 개발 전용으로 설계. 전 세계 70% 이상의 웹사이트를 구동하는 핵심 기술로서, WordPress, Wikipedia 등 대규모 프로덕션급 애플리케이션을 깊이 있게 지원합니다. PHP 8부터 JIT(Just-In-Time) 컴파일 런타임 엔진 도입으로 고성능 전 스택 서버로의 기반 패러다임 진화를 실현했습니다)"
 
 msgid "mime_image"
-msgstr "이미지 파일"
+msgstr "IMAGE 이미지 자산 분류 (손실/무손실 압축 비트맵, 현대 웹 반응형 그래픽 및 벡터 그림의 총분류. 사이트의 시각적 자원 로드 비용, 클라이언트 측 캐시 적중률(Cache) 및 미디어 네트워크 대역폭 소비를 평가하는 핵심 지표입니다)"
 
 msgid "mime_document"
-msgstr "문서 파일"
+msgstr "DOCUMENT 구조화 문서 분류 (일반 텍스트, 스프레드시트, 정형 문서(PDF) 및 경량 마크업 언어의 총분류. 서버 측 정적 지식 베이스 배포, 기업 정보화 자산 다운로드 및 텍스트 스트림 처리 능력 통계의 핵심 지표입니다)"
 
 msgid "mime_package"
-msgstr "소프트웨어 패키지"
+msgstr "PACKAGE 컴파일 결과물 및 소프트웨어 패키지 분류 (운영 체제 기본 실행 프로그램, 런타임 링크 라이브러리(DLL/SO) 및 애플리케이션 배포 설치 패키지의 총분류. 소프트웨어 배포 사이트의 아웃바운드 트래픽과 다운로드 피크를 평가하는 핵심 지표로 자주 사용됩니다)"
 
 msgid "mime_archive"
-msgstr "Gzip 압축 파일(1992년 GNU 프로젝트, DEFLATE 알고리즘 기반. 웹에서 응답 콘텐츠를 동적으로 압축하는 데 사용되며, 압축률은 일반적으로 60-90%. 2015년 이후 일부 시나리오에서는 Brotli로 대체되었지만, 여전히 서버 측에서 가장 널리 지원되는 압축 형식)"
+msgstr "ARCHIVE 아카이브 및 압축 파일 (DEFLATE, LZMA 등 핵심 알고리즘을 기반으로 캡슐화된 데이터 압축 패키지의 총칭. 네트워크 계층에서 기존 패키지 배포를 나타낼 뿐만 아니라 1992년 GNU 프로젝트의 Gzip 동적 응답 스트림도 포함합니다. 현대 일부 시나리오에서는 Brotli 알고리즘이 점차 도입되고 있지만, 이 분류는 여전히 서버 대역폭 처리량과 전송 계층 압축 효율을 평가하는 핵심 지표입니다)"
 
 msgid "mime_audio"
-msgstr "오디오 파일"
+msgstr "AUDIO 디지털 오디오 스트림 분류 (압축 오디오, 오디오북 및 스트리밍 미디어 오디오 컨테이너의 총분류. 특정 오디오 코덱 표준에 기반하여, 멀티미디어 사이트의 오디오 데이터 스트림 처리량, 동시 스트리밍 미디어 대역폭 및 장기 연결 성능을 모니터링하는 데 사용됩니다)"
 
 msgid "mime_video"
-msgstr "비디오 파일"
+msgstr "VIDEO 디지털 비디오 스트림 분류 (고화질 비디오 컨테이너, 현대 웹 애니메이션 및 스트리밍 미디어 조각의 총분류. 고부하 네트워크 환경에서 서버 대역폭 피크 상한선, 콘텐츠 전송 네트워크(CDN) 가속 효과를 평가하는 핵심 지표입니다)"
 
 msgid "mime_jscript"
-msgstr "JavaScript(1995년 Brendan Eich 개발)"
+msgstr "JScript 스크립트 (1996년 Microsoft가 Internet Explorer 3.0을 위해 개발한 리버스 엔지니어링 독점 구현체. 초기 고전 JavaScript의 호스트 경쟁자로서, Windows Script Host(WSH)와 초기 ASP 백엔드의 핵심 엔진 역할을 했습니다)"
 
 msgid "mime_json"
-msgstr "JSON 데이터(2001년 Douglas Crockford 제안, 경량 데이터 교환 형식, Web API 사실상의 표준)"
+msgstr "JSON 구조화 데이터 (2001년 Douglas Crockford가 확립한 경량 데이터 직렬화 교환 형식. 텍스트 기반의 키-값 쌍과 배열 구조를 기반으로, 매우 높은 인간 가독성과 무손실 스트림 해석 특성을 가지며, 현대 Web API, 마이크로서비스 아키텍처 및 대형 모델 상호 작용의 사실상 표준입니다)"
 
 msgid "mime_vbs"
-msgstr "VBScript(1996년 Microsoft 개발, Windows 스크립트 언어, ASP 웹 페이지 및 Windows 관리 스크립트에 사용됨. PowerShell과 JavaScript의 보급으로 점차 쇠퇴함)"
+msgstr "VBScript 스크립트 (1996년 Microsoft가 IE 3.0과 함께 출시한 스크립트 언어 변종. 초기 ASP 동적 웹사이트와 Windows 시스템 관리의 핵심 드라이버 역할을 했으나, 현재는 Microsoft에 의해 Windows 11 최신 커널에서 공식적으로 더 이상 사용되지 않으며 제거되었고, 역사적 유산 기술에 속합니다)"
 
 msgid "mime_conf"
-msgstr "구성 파일(텍스트 형식으로 소프트웨어 구성 저장, 일반적인 형식: INI, JSON, YAML, TOML, XML. Linux 시스템 구성은 대부분 /etc 디렉토리에 있음)"
+msgstr "CONF 시스템 구성 파일 (소프트웨어 런타임 환경 매개변수를 일반 텍스트 형태로 영구 저장하는 데이터 파일의 총칭. INI 및 현대 YAML, TOML, JSON 규격을 포함하며, Linux 체계에서는 주로 /etc 디렉터리에 집중되어 있으며, 시스템 수준 런타임 상태 조정의 핵심 의존성입니다)"
 
 msgid "mime_css"
-msgstr "CSS 스타일시트(1996년 12월 W3C가 CSS1 최초 공식 표준 발표, 1998년 CSS2가 위치 지정 및 미디어 유형 추가, 2011년부터 CSS3 모듈화로 둥근 모서리, 애니메이션, 플렉스 박스, 그리드 레이아웃 및 반응형 디자인 도입. HTML, JavaScript와 함께 프런트엔드 3대 핵심 기술로 불리며, 모든 현대 브라우저(Chrome, Firefox, Safari, Edge)가 기본 지원하며, 웹 페이지 스타일 정의의 유일한 표준)"
+msgstr "CSS 종속형 스타일 시트 (1996년 W3C 표준으로, HTML/JS와 함께 프론트엔드 3대 핵심으로 불립니다. CSS2 위치 지정 및 CSS3 모듈식 진화를 거쳐, 플렉스박스(Flexbox), 그리드(Grid) 및 미디어 쿼리 반응형 디자인을 기본 지원하며, 현대 브라우저에서 웹 페이지 표현을 분리하는 절대적 주도적인 표준입니다)"
 
 msgid "mime_xsl"
-msgstr "XSL 스타일시트(1999년 W3C 표준, XML 문서 변환 언어, XML을 HTML/PDF/텍스트로 변환 가능. JSON 보급 후 사용 감소)"
+msgstr "XSL 스타일 시트 (1999년 W3C 표준, XSLT 변환 및 XPath 주소 지정 언어를 포함하며, XML 구조화 데이터를 HTML, PDF 또는 일반 텍스트로 렌더링하는 데 사용됩니다. 현대 개발에서 그 생태계는 더 가벼운 템플릿 엔진과 JSON 데이터 형식으로 대체되는 추세입니다)"
 
 msgid "mime_runtime"
-msgstr "실행 파일(EXE, ELF, Mach-O 등 운영 체제 실행 형식, 머신 코드 및 로드 정보 포함)"
+msgstr "실행 파일 (EXE, ELF, Mach-O 등 운영 체제 기본 실행 형식으로, 컴파일된 저수준 기계어 코드, 진입점 및 시스템 로딩 정보를 포함합니다)"
 
 msgid "mime_library"
-msgstr "라이브러리 파일(DLL, SO, dylib 등 동적 링크 라이브러리, 프로그램 실행 시 로드되는 공유 코드)"
+msgstr "라이브러리 파일 (DLL, SO, dylib 등 동적 또는 정적 링크 라이브러리로, 다른 프로그램이 호출하고 런타임에 로드할 수 있는 공유 심볼과 재배치 코드를 포함합니다)"
 
 msgid "mime_swf"
-msgstr "Flash 애니메이션(1996년 Macromedia 개발, 이후 Adobe로 이전. 인터랙티브 웹 애니메이션 표준, 한때 인터넷 애니메이션과 게임을 지배함. 단점: 플러그인 의존, 모바일 지원 불가, 높은 보안 위험. 2017년 Adobe가 폐기 선언, 2020년 완전 지원 중단, HTML5/CSS3/JS로 대체됨)"
+msgstr "Flash 애니메이션 (1996년 Macromedia 개발, 2005년 Adobe 인수. 대화형 웹 애니메이션 표준으로, 한때 인터넷 애니메이션과 게임을 지배했습니다. 문제점: 플러그인 의존성, 모바일 미지원, 높은 보안 위험. 2017년 Adobe가 폐기 선언, 2020년 모든 지원 중단, HTML5/CSS3/JS로 대체됨)"
 
 msgid "mime_dtd"
-msgstr "DTD 문서 유형 정의(XML 사양, XML 문서 구조 정의, XML 적법성 확인에 사용)"
+msgstr "DTD 문서 유형 정의 (1998년 XML 1.0과 함께 발표되었으며, XML/HTML 문서 구조를 정의하고 유효성을 검증하는 데 사용됩니다. 현대 개발에서는 XML Schema, RELAX NG 등 더 유연한 방안으로 점차 대체되었습니다)"
 
 msgid "mime_csv"
-msgstr "CSV 데이터 형식(쉼표로 구분된 값, 테이블 데이터의 일반적인 형식, Excel 및 데이터베이스 가져오기/내보내기 표준)"
+msgstr "CSV 데이터 형식 (쉼표로 구분된 값, 1972년 메인프레임 시대(IBM Fortran 컴파일러)의 범용 일반 텍스트 테이블 형식. 2005년 RFC 4180에 의해 공식적으로 표준화되어, 크로스 플랫폼, 크로스 랭귀지 무손실 데이터 교환 표준이 되었습니다. Excel, 관계형 데이터베이스, 데이터 분석(Pandas)의 효율적인 가져오기/내보내기에 널리 사용됩니다.)"
+
+msgid "mime_cur"
+msgstr "마우스 커서 파일 (.cur 형식, 마우스 스타일을 사용자 정의하는 데 사용됩니다. 예를 들어 웹페이지의 손가락 커서, 시스템의 모래시계 대기 아이콘 등이 있습니다. 흔한 .ico 아이콘과 '친척' 관계이지만, '핫스팟' 위치 지정이 하나 더 있습니다 — 바로 마우스가 실제로 클릭한 위치입니다. 역사: Windows 3.1(1992년)과 함께 도입되었으며, 그래픽 인터페이스가 명령줄에서 마우스 작동 시대로 전환되는 데 중요한 구성 요소입니다)"
 
 msgid "mime_jnlp"
-msgstr "Java Web Start(Java 애플리케이션 실행기, 2000년대 Java 데스크톱 애플리케이션 배포 기술, 현재는 쇠퇴함)"
+msgstr "Java Web Start (2000년대 Java 데스크톱 애플리케이션 배포 기술로, .jnlp 파일을 통해 원격 Java 프로그램을 실행합니다. 보안 문제와 현대 배포 방식의 보급으로 현재는 기본적으로 사라졌습니다)"
 
 msgid "mime_lit"
-msgstr "Microsoft Reader 전자책(2000년 Microsoft 출시, LIT 형식, 쇠퇴함)"
+msgstr "Microsoft Reader 전자책 (2000년 Microsoft 출시, LIT 형식. 사라짐, 현재 Calibre 등의 도구를 사용하여 EPUB 또는 PDF로 변환 가능)"
 
 msgid "mime_svg"
-msgstr "SVG 벡터 그래픽(1999년 W3C 표준, Microsoft가 자사 VML 형식을 오랫동안 밀어붙여 IE 브라우저가 2011년까지 지원하지 않아 보급 지연됨. 2015년 이후 IE의 쇠퇴와 고화질 화면의 보급으로 아이콘, 로고의 선호 형식이 됨)"
+msgstr "SVG 벡터 그래픽 (1999년 W3C 표준, XML 기반의 2차원 벡터 이미지 형식. 임의 축소/확대 시 왜곡 없음과 스트림 텍스트 전송의 장점을 가집니다. 모든 현대 브라우저가 기본 지원하며, 고화질 웹 아이콘, 로고 및 벡터 애니메이션 렌더링에 널리 사용되며, 현대 웹 그래픽의 핵심 표준입니다)"
 
 msgid "mime_ai"
-msgstr "Adobe Illustrator 벡터 그래픽(1987년 출시, 업계 표준 벡터 그래픽 형식, 인쇄 디자인, 로고, 아이콘에 선호됨)"
+msgstr "AI 벡터 그래픽 (1987년 Adobe가 독자 개발한 독점 벡터 그래픽 형식. 레이아웃, 인쇄 디자인 및 브랜드 아이덴티티 디자인의 업계 핵심 표준으로, 다중 레이어와 고급 레이아웃 벡터 데이터를 지원하며, 전문 시각 예술의 선호되는 전달체입니다)"
 
 msgid "mime_phshop"
-msgstr "Photoshop 이미지(1990년 Adobe 출시, Photoshop 소스 파일 형식 PSD, 이미지 처리 업계 표준)"
+msgstr "PSD 레이어 이미지 (1990년 Adobe가 Photoshop과 함께 출시한 독점 비트맵 원본 파일 형식. 다중 레이어 분할, 채널, 마스크 및 무손실 편집 데이터를 지원하며, 세계 이미지 처리 및 디지털 페인팅의 업계 표준으로 확립되었습니다)"
 
 msgid "mime_ttf"
-msgstr "TrueType 글꼴(1989년 Apple과 Microsoft가 공동 개발, 벡터 글꼴 형식, 화면 표시와 인쇄가 일치하며, 현대 운영 체제의 기본 글꼴 형식)"
+msgstr "TrueType 글꼴 (1989년 Apple과 Microsoft가 공동 개발한 디지털 윤곽선 글꼴 형식. 2차 베지에 곡선을 기반으로 하여, 화면 표시와 인쇄 출력의 절대적 픽셀 일치를 실현하며, 현대 데스크톱 운영 체제의 기본 기본 글꼴 형식입니다)"
 
 msgid "mime_fon"
-msgstr "WOFF2 웹 글꼴(2014년 W3C 권장, Brotli 압축 알고리즘 사용, 구형 WOFF에 비해 파일 크기 약 30% 감소, TTF/OTF에 비해 50% 이상 감소, 현재 모든 현대 브라우저가 지원하며, 현대 웹 글꼴의 선호 형식이며 98% 이상의 브라우저에서 지원됨)"
+msgstr "FON 비트맵 글꼴 (1980년대 Microsoft Windows의 초기 시스템 수준 점자 글꼴 형식. 임의 비율의 무손실 확대/축소를 지원하지 않으며, 일반적으로 유산 시스템이나 초기 내장형 장치 구성 요소에서 제한적인 픽셀화된 텍스트 렌더링에 사용됩니다)"
 
 msgid "mime_pdf"
-msgstr "PDF 문서(1993년 Adobe 개발, 2008년 ISO 국제 표준이 됨. 크로스 플랫폼 문서 형식, 형식 일관성 유지, 전자 문서 배포의 글로벌 표준)"
+msgstr "PDF 전자 문서 (1993년 Adobe가 개발하여 2008년 ISO 32000 국제 표준이 된 크로스 플랫폼 정형 문서 형식. 절대적인 조판 및 형식 충실도를 갖추어, 세계 전자 문서 배포 및 디지털 출판의 범용 표준입니다)"
 
 msgid "mime_dotnet"
-msgstr "ASP.NET 동적 페이지(2002년 Microsoft 출시, Windows 플랫폼의 동적 웹 기술, .NET Framework의 일부)"
+msgstr "ASP.NET 동적 페이지 (2002년 Microsoft가 .NET 아키텍처와 함께 출시한 서버 측 동적 웹 페이지 기술. IIS 렌더링 엔진에 탑재되어, 엔터프라이즈급 Windows 서버 측 동적 Web 애플리케이션과 분산 시스템을 구축하는 데 사용됩니다)"
 
 msgid "mime_mdb"
-msgstr "Access 데이터베이스(Microsoft Access 데이터베이스 파일, 1992년 출시, Windows 데스크톱 데이터베이스 솔루션)"
+msgstr "MDB 관계형 데이터베이스 (1992년 Microsoft가 Access와 함께 출시한 데스크톱급 관계형 데이터베이스 저장 형식. 내장형 Jet 데이터베이스 엔진을 탑재하여, 개인용 컴퓨터와 중소기업의 초기 정보화 관리에서 관계형 데이터베이스 솔루션 역할을 했습니다)"
 
 msgid "mime_md"
-msgstr "Markdown 문서(2004년 John Gruber가 창조, 문법 디자인은 reStructuredText와 Setext의 영향을 받음. 핵심 디자인 철학은 '읽을 수 있는 것만 렌더링', 원본 구현 Markdown.pl은 Perl 정규식 사용. 파생 사양에는 GFM(2013), CommonMark(2017), Pandoc Markdown 등이 포함됨. GitHub, GitLab, Stack Overflow, Jupyter Notebook, Obsidian, Hugo, VitePress 등의 생태계를 구동하며, 정적 웹사이트 생성기 및 개발자 문서의 사실상 표준 형식이 됨)"
+msgstr "Markdown 문서 (2004년 John Gruber가 독자적으로 만든 경량 마크업 언어. 핵심 디자인 철학은 '읽을 수 있는 것이 곧 렌더링됨'으로, GFM 및 CommonMark 등 현대 파생 규격을 주도합니다. 기술 문서, 지식 베이스(Obsidian) 및 현대 정적 웹사이트 생성기의 핵심 교환 표준으로 널리 사용됩니다)"
 
 msgid "mime_crystal"
-msgstr "Crystal Reports 보고서 형식(SAP 비즈니스 인텔리전스 보고서, 기업 보고서 표준 형식)"
+msgstr "Crystal Reports 크리스탈 리포트 (SAP 비즈니스 인텔리전스(BI) 플랫폼의 전문 엔터프라이즈급 보고서 파일 형식. 다중 데이터 소스 기반 연결과 복잡한 동적 차트 렌더링 기능을 갖추어, 다국적 기업의 재무 및 데이터 분석 시스템의 전문 보고서 생성에 널리 사용됩니다)"
 
 msgid "mime_libreoffice"
-msgstr "LibreOffice 문서(2010년 The Document Foundation 개발, OpenOffice 분기, ODF 표준 구현, 주류 오픈 소스 오피스 제품군)"
+msgstr "LibreOffice 문서 (2010년 The Document Foundation이 OpenOffice 분기를 기반으로 구축한 오픈 소스 오피스 제품군의 독점 형식. W3C의 ODF(개방 문서 형식) 국제 표준을 깊이 있게 구현하여, 현대 오픈 소스 생태계의 사무 기반입니다)"
 
 msgid "mime_encrypt"
-msgstr "암호화된 파일(보려면 해독해야 하는 파일, 일반적인 확장자: .enc, .crypt, .pgp, .gpg)"
+msgstr "ENCRYPT 암호화 파일 (특정 대칭 또는 비대칭 암호화 알고리즘을 거친 원본 바이너리 또는 텍스트 데이터. .enc, .pgp, .gpg 등 핵심 파생 형식을 포함하며, 네트워크 계층에서 비공개 데이터의 기밀성과 무결성 검증을 보장하는 데 사용됩니다)"
 
 msgid "mime_gpx"
-msgstr "GPS 트랙 데이터(GPS 교환 형식, 지리적 위치 정보 기록, 스포츠 시계, 내비게이션 장치의 일반적인 형식)"
+msgstr "GPX 위성 궤적 데이터 (XML 기반의 세계 측위 시스템 교환 형식. 지리적 좌표, 항법점, 항로 및 역사적 궤적을 설명하는 데 전문화되어 있으며, 현대 모바일 운동 기기, 차량 내비게이션 및 지리 정보 시스템(GIS)에 공통적으로 사용되는 개방형 데이터 표준입니다)"
 
 msgid "mime_diskimage"
-msgstr "디스크 이미지(DMG, ISO, IMG 등의 CD/디스크 이미지 파일, 소프트웨어 배포 또는 백업 저장 매체에 사용)"
+msgstr "Disk Image 디스크 이미지 (ISO, DMG, IMG를 포함한 물리적 디스크 또는 광 디스크 미디어의 바이트 단위 기반 섹터 이미지 파일. 시스템 기반 배포, 대용량 소프트웨어 보안 배포 및 저장 매체의 물리적 수준 완전 데이터 백업에 사용됩니다)"
 
 msgid "mime_vm"
-msgstr "가상 머신 이미지(VMDK, VDI, VHDX, OVA 등의 가상 머신 디스크 파일, VMware, VirtualBox, Hyper-V 등의 가상화 플랫폼 형식)"
+msgstr "VM 가상 머신 이미지 (VMDK, VDI, VHDX, OVA를 포함한 가상화된 물리적 디스크 이미지. VMware, VirtualBox 및 Hyper-V 플랫폼의 기반으로, 기반 시스템 수준 하드웨어 에뮬레이션, 인스턴스 스냅샷 및 클라우드 인프라 배포에 사용됩니다)"
 
 msgid "mime_torrent"
-msgstr "BitTorrent 토렌트 파일(2001년 Bram Cohen 발명, P2P 다운로드 인덱스 파일, 파일 메타데이터 및 Tracker 정보 포함)"
+msgstr "BitTorrent 토렌트 파일 (2001년 Bram Cohen이 설계한 P2P 피어 투 피어 분산 다운로드 인덱스. Bencode 인코딩을 기반으로, 원본 파일 기반 검증 메타데이터와 Tracker 서버 주소 지정 정보를 저장하며, 탈중앙화 네트워크 흐름 분배의 핵심 전달체입니다)"
 
 msgid "mime_gis"
-msgstr "GIS 지리 정보 시스템 데이터(Shapefile, GeoJSON 등의 지리 공간 데이터 형식, 지도 및 공간 분석에 사용)"
+msgstr "GIS 지리 공간 데이터 (Shapefile과 GeoJSON을 핵심으로 하는 지리 정보 시스템 데이터 표준. 다차원 기하 좌표, 레이어 토폴로지 및 속성 데이터를 포함하며, 고정밀 디지털 지도 렌더링, 위성 원격 감지 및 공간 기하 분석에 널리 사용됩니다)"
 
 msgid "mime_ebook"
-msgstr "전자책(EPUB, MOBI, AZW 등의 전자책 형식. EPUB은 국제 표준, MOBI/AZW는 Amazon Kindle 형식)"
+msgstr "EBOOK 전자책 (W3C의 EPUB 국제 개방 표준, Amazon Kindle 독점 MOBI/AZW 아키텍처를 핵심으로 하는 디지털 출판 형식. 적응형 스트림식 조판, 메타데이터 캡슐화 및 DRM 디지털 권리 보호를 지원하며, 모바일 단말의 디지털 독서를 위한 범용 전달체입니다)"
 
 msgid "mime_avif"
-msgstr "AVIF 이미지(2019년 Open Media Alliance 출시, AV1 코덱 기반, WebP보다 압축률 50% 향상, 차세대 웹 이미지 표준)"
+msgstr "AVIF 고효율 이미지 (2019년 개방 미디어 연합(AOMedia)이 발표한 차세대 초고화질 이미지 표준. AV1 비디오 인코딩 키프레임 기술을 기반으로, 압축률이 WebP보다 50% 향상되고 고동적 범위(HDR)을 기본 지원하며, 현대 웹 이미지 전송의 주류 표준입니다)"
 
 msgid "mime_markdown"
-msgstr "Markdown 문서(2004년 John Gruber 설계, 경량 마크업 언어, GitHub README, 기술 문서, 포럼 게시물의 일반적인 형식)"
+msgstr "Markdown 경량 문서 (2004년 John Gruber가 독자적으로 만든 텍스트 문서 마크업 언어. 일반 텍스트 선언형 디자인을 채택했으며, 문법 디자인은 reStructuredText의 영향을 받았고, GitHub 프로젝트, 엔지니어링 수준 기술 문서 및 현대 정적 콘텐츠 관리 생태계에 널리 사용됩니다)"
 
 msgid "mime_yaml"
-msgstr "YAML 구성(2001년 Clark Evans 설계, 사람이 읽을 수 있는 데이터 직렬화 형식, Kubernetes, Ansible, Docker Compose 구성 파일의 표준)"
+msgstr "YAML 직렬화 구성 (2001년 Clark Evans 등이 설계한 인간 가독형 데이터 직렬화 형식. 계층적 들여쓰기와 키-값 매핑을 기반으로, 현재 Kubernetes 컨테이너 오케스트레이션, Ansible 자동화 및 Docker Compose의 클라우드 네이티브 인프라 구성 표준으로 확립되었습니다)"
 
 msgid "mime_toml"
-msgstr "TOML 구성(2013년 Tom Preston-Werner 설계, 'Tom's Obvious Minimal Language', Rust/Cargo, Python/pip, Go 등의 현대 도구 구성 파일 형식)"
+msgstr "TOML 의미론적 구성 (2013년 Tom Preston-Werner가 설계한 극도로 간결한 언어. 강타입, 명시적 매핑 및 의미 명확성 등 기반 설계 이점을 갖추고 있으며, 현재 Rust(Cargo), Python(pyproject.toml) 및 Go 현대 도구 체인의 표준화된 구성 파일로 널리 사용됩니다)"
 
 msgid "mime_vue"
-msgstr "Vue 컴포넌트 파일 (2014년 Evan You가 도입한 프로그레시브 JavaScript 프레임워크. 단일 파일 컴포넌트(SFC)를 통해 HTML, CSS, JS를 완벽하게 결합하여 개발 효율성을 크게 향상시켰습니다. 전 세계에서 가장 인기 있는 프론트엔드 프레임워크 중 하나입니다. 또한 VitePress와 같은 최신 정적 사이트 생성기의 핵심으로서 대화형 기술 문서 및 블로그를 구동하는 데 널리 사용됩니다.)"
+msgstr "Vue 단일 파일 컴포넌트 (2014년 Evan You가 출시한 프로그레시브 웹 프레임워크 전용 SFC 형식. 단일 파일에서 HTML/CSS/JS의 관심사 분리와 반응형 상태 바인딩을 실현하여, 현대 웹 대화형 프론트엔드 애플리케이션과 대규모 정적 사이트 엔진을 깊이 있게 구동합니다)"
 
 msgid "mime_wasm"
-msgstr "WebAssembly 모듈(2017년 W3C 표준, 브라우저에서 고성능 실행 형식, C/C++/Rust/R을 목표로 컴파일 가능, 성능이 네이티브에 근접)"
+msgstr "WebAssembly 바이너리 모듈 (2017년 W3C가 확립한 웹 고성능 저수준 바이트코드 표준. C/C++/Rust 등 강타입 언어를 브라우저 샌드박스 대상으로 컴파일할 수 있게 하여, 네이티브 하드웨어에 가까운 실행 효율성을 제공하며, 현대 웹 엣지 컴퓨팅의 핵심 기반입니다)"
 
 msgid "mime_jsx"
-msgstr "React JSX 컴포넌트(2013년 Facebook이 JavaScript XML 도입, React 프레임워크 컴포넌트 문법, HTML을 JavaScript로 작성하는 혁신적인 패러다임)"
+msgstr "React JSX 컴포넌트 (2013년 Facebook이 React 프레임워크와 함께 출시한 JavaScript XML 문법 확장. JavaScript에서 선언적으로 DOM 가상 구조를 구축하는 것을 지원하여, 프론트엔드 'UI는 상태 함수'의 컴포넌트 기반 개발 패러다임을 실현했습니다)"
 
 msgid "mime_tsx"
-msgstr "TypeScript TSX 컴포넌트(2012년 Microsoft 개발, TypeScript + JSX, React type-safe 개발의 표준 방식)"
+msgstr "TypeScript TSX 컴포넌트 (2012년 Microsoft가 개발한 TypeScript 강타입 문법과 JSX의 흐름적 결합. React 컴포넌트 개발에 정적 컴파일 시점 타입 검사와 인터페이스 제약을 주입하여, 현대 대규모 프론트엔드 시스템의 안전한 개발을 위한 코드 표준입니다)"
 
 msgid "mime_heif"
-msgstr "HEIF 이미지(2015년 MPEG 표준, 효율적인 이미지 파일 형식, Apple 생태계에서 널리 사용됨)"
+msgstr "HEIF 고효율 이미지 (2015년 MPEG 조직이 확립한 고효율 이미지 파일 형식. HEVC(H.265) 비디오 인코딩 알고리즘을 기반으로, 매우 작은 용량에 다중 프레임 이미지, 심도 맵 및 메타데이터를 수용할 수 있어, 현대 모바일 운영 체제와 스마트 단말 장치의 독점 저장 표준입니다)"
 
 msgid "mime_heic"
-msgstr "HEIC 이미지(Apple의 HEIF 구현, iPhone 기본 사진 형식, iOS/macOS 기본 지원)"
+msgstr "HEIC 고효율 이미지 (Apple이 HEIF 국제 표준을 기반으로 구현한 독점 비트맵 형식. 현대 iPhone의 기본 사진 저장 표준으로, iOS/macOS 하드웨어 수준의 코덱과 기본 운영 체제 지원을 받아, 높은 화질을 보장하면서 기반 저장 공간을 대폭 줄입니다)"
 
 msgid "mime_gltf"
-msgstr "GLTF 3D 모델(GL 전송 형식, '3D의 JPEG', 2015년 Khronos Group 발표, Web 3D 표준 형식)"
+msgstr "glTF 3D 자산 모델 (2015년 Khronos Group이 발표한 GL 전송 형식 표준. JSON 아키텍처를 사용하여 3차원 장면을 설명하며, '3D 분야의 JPEG'로 일컬어지고, 현대 WebGL/WebGPU 및 가상 현실 렌더링의 경량 산업 표준입니다)"
 
 msgid "mime_glb"
-msgstr "GLB 바이너리 3D 모델(GLTF의 바이너리 버전, 단일 파일에 모든 리소스 포함, 3D 장면 배포에 사용)"
+msgstr "GLB 바이너리 3D 모델 (glTF 자산 모델의 완전 바이너리 무손실 캡슐화 버전. 장면 구조, 기반 메쉬(Mesh) 정점 데이터, 재질과 텍스처를 단일 파일로 합쳐, 크로스 플랫폼 웹 3D 자산의 효율적인 전송과 스트림식 배포에 전용됩니다)"
 
 msgid "mime_gls"
-msgstr "GLOSSARY 용어집(용어 정의 파일, 문서 시스템의 용어 관리에 사용)"
+msgstr "GLOSSARY 데이터 용어집 (문서 관리 시스템과 구조화된 코퍼스를 위해 특별히 사용되는 용어집 정의 파일. 내장형 표준 용어 정의, 다국어 대조 및 메타데이터 매핑을 갖추어, 자동화된 텍스트 분석과 콘텐츠 발행 시스템의 개념 일관성을 유지하는 데 사용됩니다)"
 
 msgid "mime_cbz"
-msgstr "CBZ 만화책(ZIP 압축 만화 이미지, 만화 컬렉션 일반 형식)"
+msgstr "CBZ 만화책 (ZIP 압축 구조를 기반으로 한 독점 만화 이미지 아카이브 형식. 내부에 연속적인 정적 비트맵 시퀀스를 캡슐화하여, 디지털 만화 출판과 크로스 플랫폼 로컬 수집의 범용 경량 컨테이너 표준입니다)"
 
 msgid "mime_cbr"
-msgstr "CBR 만화책(RAR 압축 만화 이미지, 만화 컬렉션 일반 형식)"
+msgstr "CBR 만화책 (RAR 압축 구조를 기반으로 한 독점 만화 이미지 아카이브 형식. RAR 알고리즘을 사용하여 정적 비트맵 시퀀스를 캡슐화하며, 높은 압축률을 갖추고, 디지털 만화 배포 분야에서 널리 호환성을 지원받습니다)"
 
 msgid "mime_fb2"
-msgstr "FB2 전자책(FictionBook 2.0, 러시아 전자책 형식, XML 구조, 오픈 소스 리더에서 널리 지원)"
+msgstr "FB2 전자책 (2000년대 초의 FictionBook 2.0 전자책 표준. 순수 XML 구조를 사용하여 책 속성과 텍스트 계층을 설명하며, 오픈 소스 전자책 생태계와 유산 디지털 출판 리더에서 널리 지원받습니다)"
 
 msgid "mime_kepub"
-msgstr "KEPUB 전자책(Kobo 전용 EPUB 형식, Kobo 전자책 리더 최적화 형식)"
+msgstr "KEPUB 전자책 (Kobo가 EPUB 표준을 기반으로 진화시킨 독점 강화형 전자책 형식. Kobo 하드웨어 수준 전자책 리더를 대상으로 기반 렌더링 최적화를 수행하여, 더 효율적인 페이지 레이아웃과 읽기 통계 상호 작용을 제공합니다)"
 
 msgid "mime_m4b"
-msgstr "M4B 오디오북(MPEG-4 오디오북 형식, 책갈피 지원, iTunes 오디오북 형식)"
+msgstr "M4B 오디오북 (MPEG-4 Part 14 (MP4) 컨테이너 아키텍처 기반의 오디오북 형식. AAC 인코딩을 사용하며, 기반 책갈피 위치 지정, 중단점 이어보기 및 챕터별 삽입을 기본 지원하여, 한때 Apple iTunes 생태계의 표준 형식이었습니다)"
 
 msgid "mime_kfx"
-msgstr "Kindle KFX 형식(2015년 Amazon 출시, Kindle 전용 전자책 형식, 향상된 타이포그래피 및 빠른 페이지 넘김 지원)"
+msgstr "Kindle KFX 형식 (2015년 Amazon이 Kindle과 함께 발표한 독점 강화형 디지털 출판 형식. 고급 합자 조판, 고동적 폰트 렌더링 및 커널 수준 스트림식 페이지 로딩(Page Flip)을 지원하며, 현대 Kindle 플랫폼의 핵심 표준입니다)"
 
 msgid "mime_chm"
-msgstr "CHM 도움말 파일(1997년 Microsoft 출시, 컴파일된 HTML 도움말 형식, Windows 소프트웨어 도움말 문서 표준)"
+msgstr "CHM 컴파일된 도움말 파일 (1997년 Microsoft가 출시한 컴파일된 HTML 도움말 정보 시스템. 하이퍼텍스트 데이터와 기반 인덱스를 단일 바이너리 컨테이너로 패키징하여, 오랫동안 Windows 소프트웨어의 로컬 오프라인 도움말 문서의 표준 형식이었습니다)"
 
 msgid "mime_mht"
-msgstr "MHT 웹 아카이브(1999년 Microsoft 출시, 단일 파일 웹 형식, IE 브라우저에서 웹 페이지 저장 형식)"
+msgstr "MHT 웹페이지 아카이브 (1999년 Microsoft가 출시한 MIME 집계 하이퍼텍스트 형식. RFC 2557 표준을 기반으로, HTML 소스 코드, CSS, JS 및 내장 이미지를 단일 텍스트 파일로 캡슐화하여, 레거시 브라우저의 오프라인 웹페이지 저장에 사용됩니다)"
 
 msgid "mime_wml"
-msgstr "WML 무선 마크업 언어(1999년 WAP 표준, 초기 피처폰 웹 페이지 파일용, 현재는 쇠퇴함)"
+msgstr "WML 무선 마크업 언어 (1999년 WAP(무선 응용 프로토콜) 포럼에서 확립된 모바일 단말 마크업 표준. XML 규격을 기반으로, 초기 협대역 무선 셀룰러 네트워크와 저성능 피처폰에 전용으로 사용되었으며, 현대 웹 생태계에서는 이미 퇴역한 유산 기술에 속합니다)"
 
 msgid "mime_xhtml"
-msgstr "XHTML 웹 페이지(2000년 W3C 표준, HTML의 XML 버전, 더 엄격한 문법. 2009년 W3C 유지 관리 중단, 중심을 HTML5로 전환)"
+msgstr "XHTML 하이퍼텍스트 웹페이지 (2000년 W3C 표준, XML 아키텍처 기반의 엄격형 하이퍼텍스트 마크업 언어. 2009년 W3C가 기술 발전을 중단하고 HTML5 규격으로 완전히 전환하였으며, 현재는 주로 유산 시스템의 의미론적 웹페이지 렌더링에 사용됩니다)"
 
 msgid "mime_xml"
-msgstr "XML 문서(1998년 W3C 표준, 확장 가능한 마크업 언어, 웹 서비스, 구성 파일, 데이터 교환의 기본 형식)"
+msgstr "XML 구조화 문서 (1998년 W3C 표준의 확장 가능한 마크업 언어. 자체 기술적 태그 아키텍처를 갖추어, 네트워크 웹 서비스(SOAP/REST), 시스템 수준 구성 파일(XSD) 및 크로스 플랫폼 데이터 교환의 기반 형식입니다)"
 
 msgid "mime_sgml"
-msgstr "SGML 문서(1986년 ISO 표준, HTML의 전신, 표준 일반 마크업 언어, XML과 HTML 모두 SGML에서 파생됨)"
+msgstr "SGML 범용 마크업 언어 (1986년 ISO 8879 국제 표준의 표준 범용 마크업 언어. 전자 문서 구조화 기술의 산업 선구자로서, XML과 초기 HTML 규격 모두 이 표준 메타 언어에서 파생되었습니다)"
 
 msgid "mime_apng"
-msgstr "APNG 애니메이션(2004년 Mozilla 개발, PNG의 애니메이션 확장, GIF의 현대적 대체, 트루 컬러 및 반투명 지원)"
+msgstr "APNG 동적 그래픽 (2004년 Mozilla가 개발한 휴대용 네트워크 그래픽(PNG) 동적 확장 형식. 24비트 트루 컬러와 8비트 알파 채널 반투명 특성을 지원하며, 현대 웹 시나리오에서 GIF 형식의 고화질 대안입니다)"
 
 msgid "mime_bmp"
-msgstr "BMP 비트맵(Windows 비트맵 형식, Windows 1.0부터 기본 지원. 압축되지 않아 파일이 크지만, 구조가 간단하고 추가 코덱이 필요하지 않아 Windows 11 스크린샷 도구, 그림판 프로그램, EXE/MSI 설치 패키지 아이콘 리소스, 커서 파일 및 일부 구형 드라이버에서 여전히 사용됨. 동일한 품질에서 PNG보다 약 3-10배 크며, 대부분의 시나리오에서 PNG/JPEG로 대체되었지만 Windows 생태계에서는 여전히 광범위한 호환성을 유지함)"
+msgstr "BMP 기본 비트맵 (Windows 1.0 시대부터 확립된 Microsoft 플랫폼의 장치 독립 비트맵 형식. 무손실 무압축 저장을 채택하여, 크기는 보통 PNG보다 3-10배 팽창하지만, 인코딩/디코딩 비용이 없기 때문에 오늘날까지 Windows 11 핵심 구성 요소, EXE/MSI 리소스 섹션 및 유산 드라이버의 그래픽 버퍼에 널리 내장되어 있습니다)"
 
 msgid "mime_cdr"
-msgstr "CDR 벡터 그래픽(CorelDRAW 전용 형식, 캐나다 Corel 회사, 벡터 그래픽 디자인 소프트웨어)"
+msgstr "CDR 벡터 그래픽 (캐나다 Corel 회사 전용의 CorelDRAW 전문 벡터 디자인 원본 파일 형식. 다중 레이어 색상 관리, 복잡한 수학적 윤곽 노드 및 인쇄급 조판 데이터를 지원하며, 전문 평면 인쇄 및 광고 디자인 분야의 전용 형식입니다)"
 
 msgid "mime_gif"
-msgstr "GIF 이미지(1987년 CompuServe 개발, 256색 애니메이션 형식. 단점: 적은 색상, 저하된 화질, 반투명 미지원, 큰 파일, 낮은 프레임 속도. APNG, WebP 등 현대 애니메이션 형식으로 대체됨)"
+msgstr "GIF 인덱스 색상 이미지 (1987년 CompuServe가 개발한 8비트 인덱스 색상 비트맵 형식. 기반 LZW 알고리즘을 기반으로 하며, 256색 계조와 단색 투명 제한을 받고, 높은 프레임률에서 크기가 비대해지며, 현재 APNG, WebP 등 현대 고효율 동영상 표준으로 점차 대체되고 있습니다)"
 
 msgid "mime_ico"
-msgstr "ICO 아이콘(Windows 아이콘 파일 형식, 여러 해상도 지원, 웹사이트 파비콘 표준 형식)"
+msgstr "ICO 시스템 아이콘 (Windows 기본 아이콘 리소스 캡슐화 형식. 단일 컨테이너 내에 여러 픽셀 해상도와 색상 깊이의 이미지 변형을 혼합하여 포함하는 것을 지원하며, 현대 웹 브라우저의 사이트 핵심 식별자(Favicon)의 범용 배포 표준이기도 합니다)"
 
 msgid "mime_jpeg"
-msgstr "JPEG 이미지(1992년 ISO 표준, 손실 압축 사진 형식, 인터넷 사진 사실상의 표준)"
+msgstr "JPEG 압축 이미지 (1992년 ISO 10918 국제 표준의 손실 압축 이미지 형식. 이산 코사인 변환(DCT) 알고리즘을 기반으로, 높은 압축률을 실현하는 동시에 우수한 실사 이미지 품질을 유지하며, 전 세계 인터넷 정적 사진의 절대적 사실상 표준입니다)"
 
 msgid "mime_jpg"
-msgstr "JPEG 이미지(1992년 ISO 표준, 손실 압축 사진 형식, 인터넷 사진 사실상의 표준)"
+msgstr "JPEG 압축 이미지 (1992년 ISO 10918 국제 표준의 손실 압축 이미지 형식. 이산 코사인 변환(DCT) 알고리즘을 기반으로, 높은 압축률을 실현하는 동시에 우수한 실사 이미지 품질을 유지하며, 전 세계 인터넷 정적 사진의 절대적 사실상 표준입니다)"
 
 msgid "mime_png"
-msgstr "PNG 이미지(1996년 W3C 권장, 트루 컬러 및 반투명 지원, GIF의 정적 대체, 인터넷 무손실 이미지 표준)"
+msgstr "PNG 무손실 이미지 (1996년 W3C 권장 휴대용 네트워크 그래픽 표준. 무손실 압축 알고리즘을 사용하며, 24비트 트루 컬러와 8비트 알파 채널 투명도를 기본 지원하며, 고전 정적 GIF의 고화질 대안으로서, 인터넷 무손실 픽셀 이미지의 절대적 사실상 표준입니다)"
 
 msgid "mime_ps"
-msgstr "PostScript 페이지 설명 파일(1985년 Adobe 출시, 페이지 설명 언어, PDF의 전신, 인쇄 및 출판에 사용)"
+msgstr "PostScript 페이지 설명 파일 (1985년 Adobe가 출시한 스택 방식 페이지 설명 언어. PDF 형식의 기술적 전신으로, 기반에서 하드웨어 독립적인 문자 조판과 고정밀 벡터 그래픽 렌더링을 실현하며, 전문 인쇄 출판 및 레이저 인쇄 분야의 초석을 놓는 표준입니다)"
 
 msgid "mime_psb"
-msgstr "PSB 대형 문서(Adobe Photoshop 초대형 이미지 형식, 2GB 또는 30000픽셀 이상의 대형 이미지 지원)"
+msgstr "PSB 대형 레이어 문서 (Adobe Photoshop 전용의 초대형 원본 파일 캡슐화 형식. 표준 PSD 형식의 2GB 물리적 크기 및 30,000 픽셀의 내부 주소 지정 제한을 돌파하였으며, 초대규모, 고층 깊이의 거대 디지털 아트 자산 저장에 전용됩니다)"
 
 msgid "mime_psd"
-msgstr "PSD 이미지(Adobe Photoshop 소스 파일, 레이어, 채널, 경로 지원, 이미지 처리 업계 표준 형식)"
+msgstr "PSD 레이어 디자인 원본 파일 (Adobe Photoshop 전용의 계층형 이미지 엔지니어링 형식. 그래픽 이미지 분야의 업계 표준 컨테이너로서, 완전한 레이어 렌더링 트리, 비트맵 채널, 벡터 클리핑 경로 및 복합 혼합 모드를 기본 캡슐화하며, 무손실 완전 데이터 편집을 지원합니다)"
 
 msgid "mime_webp"
-msgstr "WebP 이미지(2010년 Google 개발, 웹 이미지 형식, 손실/무손실 압축 및 애니메이션 지원, PNG보다 25-35% 높은 압축률, JPEG보다 25% 높은 압축률)"
+msgstr "WebP 고효율 이미지 (2010년 Google이 발표한 범용 Web 그래픽 인코딩 표준. VP8 비디오 키프레임 기술에서 파생되었으며, 손실, 무손실, 반투명 및 동적 렌더링과 완벽하게 호환되며, 동일 화질의 PNG보다 크기가 25-35% 줄어들어, 현대 웹페이지 고성능 로딩의 핵심 기반입니다)"
 
 msgid "mime_woff"
-msgstr "WOFF 웹 글꼴(2009년 생성, 2018년 W3C 표준. TrueType/OpenType 기반 압축, 웹 글꼴 로딩 최적화, 현대 웹사이트 아이콘 글꼴 표준 형식)"
+msgstr "WOFF 웹 글리프 파일 (2009년 생성되어 2012년 W3C 표준이 된 Web 개방 글꼴 형식. 본질은 표준 TTF/OTF 글꼴 구조를 스트림 방식으로 무손실 압축 캡슐화하는 것으로, 네트워크 전송 대역폭 비용을 대폭 최적화하며, 현대 웹사이트 아이콘과 클라우드 글꼴의 범용 형식입니다)"
 
 msgid "mime_7z"
-msgstr "7z 압축 파일(1999년 Igor Pavlov 개발, 7-Zip 프로그램 전용 형식. LZMA 알고리즘, 높은 압축률, 오픈 소스 및 무료. 7z 형식은 동일한 압축률에서 일반적으로 ZIP보다 30-50% 작으며, 오픈 소스 커뮤니티 및 소프트웨어 배포에 일반적으로 사용되는 형식)"
+msgstr "7z 압축 패키지 (1999년 Igor Pavlov가 개발한 7-Zip 전용 형식. 오픈 소스 LZMA/LZMA2 알고리즘을 기반으로 하며, 매우 높은 압축률을 갖습니다. 동일 조건에서 크기가 일반적으로 ZIP보다 30-50% 줄어들며, 오픈 소스 커뮤니티와 소프트웨어 배포의 범용 고압축률 형식입니다)"
 
 msgid "mime_ace"
-msgstr "ACE 압축 파일(1990년대 개발, WinACE 프로그램 형식. 한때 RAR과 경쟁했으며, 압축률이 높았음. 2007년 개발 중단, 현재는 7z/RAR로 대체되어 덜 사용됨)"
+msgstr "ACE 압축 패키지 (1990년대 WinACE 전용 압축 형식. 한때 RAR 형식과 경쟁하며 높은 압축률을 갖추었습니다. 2007년 이후 기술 반복을 중단했으며, 현재는 7z 및 RAR 형식으로 대체되어, 유산 시스템 아카이브 형식에 속합니다)"
 
 msgid "mime_bz2"
-msgstr "BZIP2 압축 파일(1996년 Julian Seward 개발, 블록 정렬 압축 알고리즘. GZIP보다 압축률 15-20% 높지만 속도가 느림. Linux 커널 소스 코드, 오픈 소스 소프트웨어 패키지에 일반적으로 사용되는 형식, 확장자 .bz2)"
+msgstr "BZIP2 압축 패키지 (1996년 Julian Seward가 개발한 블록 정렬 압축 형식. 그 기반 알고리즘의 압축률은 GZIP보다 15-20% 높지만 계산 비용이 더 큽니다. Linux 커널 소스 코드 및 오픈 소스 소프트웨어 패키지 배포에 자주 사용되며, 표준 확장자는 .bz2입니다)"
 
 msgid "mime_cab"
-msgstr "CAB 압축 파일(1995년 Microsoft 개발, Cabinet 형식. Windows 시스템 설치 패키지 형식, 드라이버, 시스템 파일 배포용. Windows Installer(MSI)는 내부적으로 CAB를 사용하여 파일 저장)"
+msgstr "CAB 압축 패키지 (1995년 Microsoft가 독자 개발한 Cabinet 아카이브 형식. Windows 시스템의 기본 설치 패키지 표준으로, 드라이버와 커널 파일 배포에 사용되며, Windows Installer(MSI)의 기반 저장 컨테이너 역할도 합니다)"
 
 msgid "mime_dmg"
-msgstr "DMG 디스크 이미지(1980년대 Apple 출시, Disk Image 형식. macOS 소프트웨어 배포 표준 형식, 두 번 클릭하면 가상 디스크로 마운트되어 드래그 앤 드롭으로 애플리케이션 설치 가능. 압축 및 암호화 지원, Mac 소프트웨어 다운로드의 주류 형식)"
+msgstr "DMG 디스크 이미지 (1980년대 Apple이 진화시킨 Disk Image 형식. macOS 소프트웨어 배포의 표준 컨테이너로서, 물리적 마운트를 가상 파일 시스템으로 지원하고, 기반 압축 및 데이터 암호화를 지원하며, Mac 생태계 애플리케이션 배포의 주류 형식입니다)"
 
 msgid "mime_emz"
-msgstr "EMZ 압축 이미지(Windows 압축 향상된 메타파일, EMF의 압축 버전. Office 문서에서 벡터 그래픽 저장 형식, 본질적으로 GZIP 압축된 EMF 파일)"
+msgstr "EMZ 압축 이미지 (Windows Enhanced Metafile EMF의 압축 버전. 본질은 GZIP 알고리즘을 통해 압축된 바이너리 벡터 그래픽으로, Microsoft Office 시리즈 문서의 내장 벡터 그래픽 저장에 널리 사용됩니다)"
 
 msgid "mime_gz"
-msgstr "GZIP 압축 파일(1992년 Jean-loup Gailly와 Mark Adler 개발, GNU 프로젝트. Unix/Linux 표준 압축 도구, HTTP 전송 압축에 일반적으로 사용되는 형식. 확장자 .gz, 종종 TAR과 함께 사용됨)"
+msgstr "GZIP 압축 패키지 (1992년 GNU 프로젝트의 Jean-loup Gailly와 Mark Adler가 개발한 표준 스트림 압축 형식. Unix/Linux 표준 압축 도구로서, 또한 HTTP 전송 계층 압축(Gzip)의 핵심 표준이기도 하며, 자주 TAR 아카이브와 함께 사용됩니다)"
 
 msgid "mime_jar"
-msgstr "JAR 압축 파일(1997년 Sun Microsystems 출시, Java ARchive 형식. 본질적으로 ZIP 압축 파일로, Java 클래스 라이브러리 및 애플리케이션을 패키징하는 데 사용됨. Maven, Gradle 등 Java 생태계의 핵심 형식, Android도 JAR 사용)"
+msgstr "JAR 압축 패키지 (1997년 Sun Microsystems가 출시한 Java ARchive 아카이브 형식. 본질은 ZIP 구조 기반의 패키징 컨테이너로, Java 클래스 라이브러리와 메타데이터를 캡슐화하는 데 사용되며, Maven, Gradle 및 Android 초기 생태계의 핵심 컴파일 결과물입니다)"
 
 msgid "mime_lzma"
-msgstr "LZMA 압축 파일(1998년 Igor Pavlov 개발, Lempel-Ziv-Markov chain 알고리즘. 7z 형식의 핵심 압축 알고리즘, 높은 압축률, 빠른 압축 해제 속도. 펌웨어, 임베디드 시스템 소프트웨어 배포에 사용됨)"
+msgstr "LZMA 압축 패키지 (1998년 Igor Pavlov가 개발한 Lempel-Ziv-Markov chain 체인 압축 알고리즘. 7z 형식의 핵심 엔진으로서, 매우 높은 압축률과 고속 압축 해제 특성을 갖추어, 하드웨어 펌웨어 및 임베디드 시스템 배포에 널리 사용됩니다)"
 
 msgid "mime_rar"
-msgstr "RAR 압축 파일(1993년 Eugene Roshal 개발, Roshal ARchive 형식. 높은 압축률, 분할 압축, 복구 레코드 지원. WinRAR 프로그램 형식, ZIP보다 우수한 압축률을 제공하지만 유료 소프트웨어 지원 필요, unrar와 같은 오픈 소스 도구로 압축 해제 가능)"
+msgstr "RAR 압축 패키지 (1993년 Eugene Roshal이 개발한 WinRAR 전용 아카이브 형식. 분할 압축, 물리적 복구 기록(ECC) 및 고강도 암호화를 지원합니다. 압축률은 표준 ZIP보다 우수하며, 개인용 컴퓨터 및 상업 분야에서 널리 호환성을 지원받습니다)"
 
 msgid "mime_tar"
-msgstr "TAR 아카이브 파일(1979년 Unix V7 도입, Tape ARchive 형식. 테이프 아카이브 형식, 압축 없이 패키징만 하며, 종종 GZIP/BZIP2/XZ와 함께 사용됨. Linux 소프트웨어 패키지 소스 코드, Docker 이미지 계층 저장에 TAR 형식 사용)"
+msgstr "TAR 아카이브 패키지 (1979년 Unix V7 시대의 Tape ARchive 테이프 아카이브 형식. 파일 스트림 패키징만 수행하고 데이터 압축은 수행하지 않으며, 자주 GZIP/BZIP2/XZ와 조합되어, Linux 소스 패키지와 Docker 이미지 계층 저장의 기반 표준입니다)"
 
 msgid "mime_tgz"
-msgstr "TGZ 압축 파일(TAR + GZIP 조합 형식, 확장자 .tgz 또는 .tar.gz. Unix/Linux 소프트웨어 패키지의 가장 일반적인 배포 형식, 소스 코드 패키지, 바이너리 패키지에 널리 사용되며, '압축 풀고 사용'의 대표적 형식)"
+msgstr "TGZ 압축 패키지 (TAR 아카이브와 GZIP 압축의 스트림식 조합 형식, 확장자는 .tgz 또는 .tar.gz. Unix/Linux 환경에서 가장 보편적인 소프트웨어 패키지 배포 형식으로, 소스 코드 컴파일 배포 및 무설치 바이너리 패키지 배포에 널리 사용됩니다)"
 
 msgid "mime_tbz2"
-msgstr "TBZ2 압축 파일(TAR + BZIP2 조합 형식, 확장자 .tbz2 또는 .tar.bz2. TGZ보다 압축률 15-20% 높아 대용량 파일 배포에 적합하며, Linux 커널 소스 코드가 오랫동안 이 형식을 사용함)"
+msgstr "TBZ2 압축 패키지 (TAR 아카이브와 BZIP2 압축의 스트림식 조합 형식, 확장자는 .tbz2 또는 .tar.bz2. TGZ에 비해 압축률을 15-20% 더 향상시킬 수 있으며, 대용량 파일 전송에 적합하고, 한때 Linux 커널 소스 코드 배포에 장기간 사용되었습니다)"
 
 msgid "mime_xz"
-msgstr "XZ 압축 파일(2009년 출시, LZMA2 알고리즘 기반. 매우 높은 압축률, GZIP보다 30-50% 높으며, 압축 해제 속도가 비교적 빠름. Linux 커널, 패키지 관리자(예: Debian의 .deb 내부)에서 널리 사용되며, 현재 Linux 생태계에서 권장되는 형식)"
+msgstr "XZ 압축 패키지 (2009년 출시된 차세대 고압축률 형식. LZMA2 알고리즘을 기반으로, 데이터 압축률이 GZIP보다 30-50% 향상되면서 고속 압축 해제를 유지합니다. Linux 커널 및 주류 패키지 관리자(예: Debian .deb 내부)에 의해 권장 배포 표준으로 확립되었습니다)"
 
 msgid "mime_z"
-msgstr "Z 압축 파일(1985년 Unix compress 명령 형식, LZW 알고리즘. 초기 Unix 압축 형식, GZIP으로 대체됨. 확장자 .Z, 현대 시스템에서는 덜 사용됨)"
+msgstr "Z 압축 패키지 (1985년 Unix compress 명령의 LZW 압축 형식. 초기 Unix 시스템의 표준 압축 표준이었으나, 현재는 더 효율적인 GZIP 형식으로 완전히 대체되었으며, 현대 네트워크 트래픽에서는 드문 유산 역사 형식에 속합니다)"
 
 msgid "mime_zip"
-msgstr "ZIP 압축 파일(1989년 Phil Katz 개발, PKZIP 형식. Windows 기본 지원, 인터넷에서 가장 일반적인 압축 형식. 여러 파일, 디렉토리 구조 지원, 압축 알고리즘 선택 가능. Java의 JAR, Android의 APK, Office 문서의 DOCX/XLSX는 모두 ZIP 형식을 기반으로 함)"
+msgstr "ZIP 압축 패키지 (1989년 Phil Katz이 개발한 PKZIP 범용 아카이브 형식. 주류 운영 체제의 기본 지원을 받으며, 인터넷에서 가장 널리 사용되는 컨테이너 표준입니다. 현대 Java의 JAR, Android의 APK 및 Office 문서(OOXML)는 모두 ZIP 구조를 기반으로 합니다)"
 
 msgid "mime_zst"
-msgstr "Zstandard 압축 파일(2015년 Facebook 개발, Yann Collet 설계. 고속 압축 알고리즘, 압축률은 LZMA에 가깝고 속도는 GZIP을 훨씬 능가함. Linux 커널 5.9+에서 지원되며, Arch Linux pacman, Debian APT에서 점차 도입 중, 차세대 압축 표준)"
+msgstr "Zstandard 압축 패키지 (2015년 Facebook Yann Collet이 설계한 차세대 스트림 압축 표준. LZMA 압축률에 근접하면서도 GZIP을 훨씬 능가하는 처리량을 갖습니다. Linux 커널(5.9+) 및 Arch/Debian 패키지 관리자에 의해 깊이 채택되었습니다)"
 
 msgid "mime_lz4"
-msgstr "LZ4 압축 파일(2011년 Yann Collet 개발, 초고속 압축 알고리즘. 압축 속도가 GZIP보다 10배 이상 빨라 실시간 압축 시나리오에 적합함. Linux 커널, OpenZFS, Hadoop에서 널리 사용되며, 속도 우선 시나리오에서 선호되는 형식)"
+msgstr "LZ4 압축 패키지 (2011년 Yann Collet이 개발한 초고속 스트림 압축 알고리즘. 처리 속도는 GZIP보다 10배 이상 빠르며, 매우 낮은 CPU 런타임 오버헤드를 갖습니다. Linux 커널, OpenZFS 파일 시스템 및 Hadoop 실시간 데이터 스트림 처리에 널리 사용됩니다)"
 
 msgid "mime_lzo"
-msgstr "LZO 압축 파일(1996년 Markus Oberhumer 개발, Lempel-Ziv-Oberhumer 알고리즘. 압축 해제 속도가 매우 빠르며, 압축률은 보통임. Linux 커널 Squashfs, OpenWrt 펌웨어에서 사용되며, 임베디드 시스템에 적합함)"
+msgstr "LZO 압축 패키지 (1996년 Markus Oberhumer가 개발한 Lempel-Ziv-Oberhumer 알고리즘. 초고속 압축 해제 성능에 중점을 둡니다. Linux 커널 Squashfs 이미지, OpenWrt 펌웨어 및 다양한 리소스 제약 임베디드 시스템에 널리 내장되어 있습니다)"
 
 msgid "mime_msi"
-msgstr "MSI 설치 패키지(1999년 Microsoft 출시, Windows Installer 패키지 형식. Windows 애플리케이션 표준 설치 형식, 트랜잭션 롤백, 구성 요소 관리, 무인 설치 지원. 엔터프라이즈급 소프트웨어 배포 선호 형식, 현재까지도 Windows 소프트웨어 설치의 주류임)"
+msgstr "MSI 시스템 설치 패키지 (1999년 Microsoft가 출시한 Windows Installer 데이터 캡슐화 형식. Windows 애플리케이션 수준의 표준 배포 규범으로, 기반 트랜잭션 롤백, 구성 요소 생명 주기 관리 및 배치 처리 없는 자동 설치를 기본 지원하며, 엔터프라이즈급 소프트웨어 집중 배포와 정책 배포의 핵심 표준입니다)"
 
 msgid "mime_pkg"
-msgstr "PKG 설치 패키지(macOS 애플리케이션 설치 패키지 형식, Apple의 Installer 기술 기반. macOS 소프트웨어 배포 표준 형식, 구성 요소 선택, 설치 스크립트, 제거 기능 지원. .pkg 파일은 두 번 클릭하면 설치되며, Mac App Store 외부 소프트웨어 배포에 일반적으로 사용됨)"
+msgstr "PKG 크로스 플랫폼 소프트웨어 설치 패키지. 1. FreeBSD 소프트웨어 패키지: pkgng 표준, 확장자 .pkg 또는 .txz, TAR+XZ/Zstd 압축 기반, 의존성 해석 및 서명 검증 지원; 2. macOS 설치 패키지: Apple Installer 형식 기반, 사용자 정의 구성 요소, 설치 스크립트 및 시스템 수준 제거 지원. 각각 BSD 서버와 Mac 시스템의 주요 배포 전달체입니다."
 
 msgid "mime_apk"
-msgstr "APK Android 앱 패키지(2008년 Google 출시, Android 시스템의 기존 애플리케이션 설치 형식. APK는 본질적으로 ZIP 압축 파일로, 코드, 리소스, 매니페스트 파일을 포함함. 2021년부터 Google Play에서 새 앱은 AAB 형식을 사용하도록 요구하지만, APK는 여전히 개발 디버깅, 타사 스토어 및 사이드로드 설치에 사용됨)"
+msgstr "APK 안드로이드 앱 패키지 (2008년 Google이 Android와 함께 출시한 전통적인 애플리케이션 설치 패키지. 기반은 ZIP 아카이브 구조로, 컴파일된 Dalvik 바이트코드(DEX), 메타데이터 매니페스트 및 전역 리소스를 패키징하며, 현재 로컬 개발 디버깅, 제3자 배포 및 장치 측면 로드 설치에 널리 사용됩니다)"
 
 msgid "mime_ipa"
-msgstr "IPA Apple 앱 패키지(iOS App Store Package, iOS/iPadOS 애플리케이션 설치 형식. 2008년 iPhone SDK와 함께 출시됨. App Store를 통해 배포하거나 엔터프라이즈 인증서로 서명해야 함. 실행 파일, 리소스, Info.plist 서명 정보를 포함함)"
+msgstr "IPA 애플 앱 패키지 (2008년 iPhone SDK와 함께 출시된 iOS/iPadOS 전용 패키징 컨테이너. 본질은 FairPlay DRM 디지털 저작권 또는 엔터프라이즈급 코드 서명으로 보호된 ZIP 아카이브로, Mach-O 바이너리 실행 파일, 애플리케이션 리소스 트리 및 Info.plist 메타데이터 구성을 포함합니다)"
 
 msgid "mime_hap"
-msgstr "HAP HarmonyOS 앱 패키지(HarmonyOS Ability Package, HarmonyOS 애플리케이션 기본 단위. 2020년 HarmonyOS 2.0과 함께 출시됨. entry 및 feature 두 가지 유형을 지원하며, Huawei 전화, 태블릿, 스마트워치 등 HarmonyOS 기기 배포 형식)"
+msgstr "HAP 하모니 앱 패키지 (2020년 HarmonyOS 2.0과 함께 출시된 하모니 탄력적 배포 기본 단위. Entry 주 모듈 또는 Feature 확장 기능 모듈로 구성되며, 크로스 엔드 전 시나리오(휴대폰, 태블릿, 웨어러블 기기) 스마트 단말 배포를 위한 핵심 다중 단말 배포 형식입니다)"
 
 msgid "mime_har"
-msgstr "HAR HarmonyOS 정적 공유 패키지(HarmonyOS Archive, HarmonyOS 정적 공유 라이브러리, 여러 HAP 간에 공유 가능, 구성 요소 기반 개발 및 모듈 재사용에 사용됨)"
+msgstr "HAR 하모니 정적 공유 패키지 (HarmonyOS의 전용 정적 공유 라이브러리 아카이브 파일. 공용 구성 요소, 기반 리소스 코드 및 컴파일 시점 의존성을 캡슐화하는 데 사용되며, 여러 HAP 모듈에 의해 정적으로 링크되어 공유되며, 하모니 시스템의 컴포넌트 기반 개발과 다중 모듈 재사용의 핵심 기반입니다)"
 
 msgid "mime_aab"
-msgstr "Android App Bundle(2018년 Google 출시, 2021년부터 Google Play에서 새 앱이 이 형식을 사용하도록 강제함. AAB는 배포 형식으로, Google Play는 기기 구성(CPU 아키텍처, 화면 밀도, 언어)에 따라 최적화된 APK를 동적으로 생성하여 설치 패키지 크기를 평균 35% 줄임. 개발자는 AAB를 업로드하고 사용자는 APK를 다운로드함)"
+msgstr "AAB 안드로이드 앱 번들 (2018년 Google이 출시하여 2021년에 확립된 Google Play 동적 배포 형식. 순수 배포 실체로서, 클라우드가 대상 장치의 CPU 아키텍처, 화면 밀도 및 언어에 따라 동적으로 재단하여 컴파일하고 필요에 따라 최적화된 APK를 생성하며, 평균 35%의 전송 대역폭 비용을 절감합니다)"
 
 msgid "mime_xapk"
-msgstr "XAPK 앱 패키지(타사 Android 애플리케이션 확장 패키지, APK + OBB 데이터 파일 포함. 대형 게임 및 복잡한 애플리케이션에 사용되며, APK 단일 파일 100MB 제한을 해결함. APKPure, APKMirror 등의 타사 앱 스토어에서 일반적이며, Google 공식 형식이 아님)"
+msgstr "XAPK 확장 앱 패키지 (제3자 Android 커뮤니티가 확립한 비공식 앱 확장 표준. 표준 APK 파일과 초대형 OBB 게임 데이터 확장 패키지를 결합하여 패키징함으로써, Google Play의 100MB 개별 파일 크기 제한을 물리적으로 돌파하며, 게임 배포 플랫폼에서 널리 볼 수 있습니다)"
 
 msgid "mime_appx"
-msgstr "Windows 앱 패키지(2012년 Microsoft 출시, Windows 8/10/11 애플리케이션 설치 형식. UWP 및 데스크톱 애플리케이션 변환 지원, Microsoft Store를 통해 배포됨. 2024년 Microsoft는 MSIX를 후속 형식으로 출시하여 점차 APPX를 대체하고 있음)"
+msgstr "APPX 모던 앱 패키지 (2012년 Microsoft가 Windows 8과 함께 출시한 UWP 앱 배포 규범. 샌드박스 격리 실행 및 경량화된 제거 특성을 갖추며, Microsoft Store 초기 주도적 표준으로서, 현대 Windows 생태계에서 MSIX로 진화하는 수명 주기 말기에 접어들었습니다)"
 
 msgid "mime_msix"
-msgstr "MSIX 앱 패키지(2018년 Microsoft 출시, Windows 차세대 애플리케이션 패키징 형식. APPX와 MSI의 장점을 결합하여 모든 Windows 애플리케이션 유형을 지원하며, Microsoft Store 또는 사이드로드를 통해 설치 가능, Windows 11 권장 형식)"
+msgstr "MSIX 차세대 앱 패키지 (2018년 Microsoft가 발표한 Windows의 새로운 표준화 패키징 규범. APPX의 애플리케이션 보안 샌드박스 특성과 MSI의 엔터프라이즈급 자산 관리 이점을 완벽하게 융합하였으며, 모든 Win32 애플리케이션 유형과 완벽하게 호환되며, Windows 11 권장 배포 표준입니다)"
 
 msgid "mime_appimage"
-msgstr "AppImage 앱 패키지(2004년 출시, Linux 무설치 애플리케이션 형식. '하나의 애플리케이션 하나의 파일', 설치 없이 직접 실행되며, 대부분의 Linux 배포판을 지원하고 개발자가 Linux 소프트웨어를 배포하는 일반적인 방식)"
+msgstr "AppImage 무설치 앱 패키지 (2004년 시작된 Linux 단일 실행 가능 아카이브 규범. '하나의 애플리케이션은 하나의 파일'이라는 자체 포함 아키텍처를 채택하며, 런타임에 FUSE 메커니즘을 통해 직접 읽기 전용 가상 파일 시스템으로 마운트되어 실행되며, 크로스 Linux 배포판의 제로 의존성 즉시 사용 가능을 실현합니다)"
 
 msgid "mime_flatpak"
-msgstr "Flatpak 앱 패키지(2015년 출시, Linux 샌드박스형 애플리케이션 형식. 크로스 배포판 실행, 호스트 시스템과 격리, Fedora, Red Hat 주도 개발, GNOME 소프트웨어 센터 기본 형식)"
+msgstr "Flatpak 샌드박스 앱 패키지 (2015년 Red Hat과 GNOME이 주도 개발한 Linux 크로스 배포판 데스크톱 애플리케이션 배포 표준. 기반 Linux 커널의 Namespace 및 Cgroups 메커니즘에 의존하여 매우 엄격한 애플리케이션 계층 보안 샌드박스 격리를 실현하며, 현대 오픈 소스 OS 소프트웨어 센터의 기반입니다)"
 
 msgid "mime_snap"
-msgstr "Snap 앱 패키지(2014년 Canonical 출시, Ubuntu 모회사 개발, Linux 범용 애플리케이션 형식. 자동 업데이트, 샌드박스 격리, 40개 이상의 Linux 배포판 지원, Ubuntu 소프트웨어 센터 기본 형식)"
+msgstr "Snap 컨테이너화 앱 패키지 (2014년 Ubuntu 모회사 Canonical이 출시한 Linux 범용 배포 표준. 애플리케이션 자체 포함 SquashFS 이미지 마운트 아키텍처를 채택하며, 자동 증분 업데이트와 엄격한 AppArmor 샌드박스 격리를 지원하며, Ubuntu 소프트웨어 센터 생태계의 핵심 기본 형식입니다)"
 
 msgid "mime_deb"
-msgstr "Debian 소프트웨어 패키지(1993년 Debian 프로젝트 출시, Debian/Ubuntu 및 파생판의 표준 설치 형식. dpkg로 관리되며 APT는 패키지 관리자 프런트엔드임, Linux 생태계에서 가장 성숙한 패키지 형식 중 하나로, 현재까지 Debian 계열의 주류임)"
+msgstr "DEB 시스템 소프트웨어 패키지 (1993년 Debian 프로젝트가 확립한 바이너리 및 소스 코드 캡슐화 규범. Debian, Ubuntu 및 모든 파생 체계의 기반 설치 표준으로, dpkg 코어에 의존하여 패키지 풀기 및 유지 관리를 수행하며, APT를 고효율 패키지 관리자 프론트엔드로 사용하며, Linux 생태계에서 가장 성숙한 소프트웨어 배포 기반입니다)"
 
 msgid "mime_rpm"
-msgstr "RPM 소프트웨어 패키지(1997년 Red Hat 출시, Red Hat/Fedora/CentOS/SUSE 등의 배포판 표준 형식. RPM은 'Red Hat Package Manager'의 약자로, DEB와 함께 Linux의 두 가지 주요 패키지 형식이며, 현재까지 RHEL 계열의 주류임)"
+msgstr "RPM 시스템 소프트웨어 패키지 (1997년 Red Hat이 출시한 Red Hat 패키지 관리자 캡슐화 규범. DEB와 함께 Linux 전통 패키지 관리의 양대 진영으로 불리며, 기본 내장형 트랜잭션 수준 의존성 검사와 기반의 소프트웨어 디지털 서명 검증을 갖추었으며, 오늘날까지 RHEL, Fedora 및 CentOS 등 Red Hat 계열 생태계의 절대적 주류 배포 표준입니다)"
 
 msgid "mime_pacman"
-msgstr "Arch 소프트웨어 패키지(2002년 Arch Linux 출시, pacman 패키지 관리자가 사용하는 .pkg.tar.zst 형식. Arch Linux 롤링 릴리스 배포판의 핵심으로, 간결함과 KISS 원칙으로 유명하며 AUR(Arch User Repository)이 특징임)"
+msgstr "Pacman 아카이브 소프트웨어 패키지 (2002년 Arch Linux가 pacman 관리자와 함께 확립한 .pkg.tar.zst 캡슐화 형식. Arch 롤링 업데이트 메커니즘의 핵심으로, Zstandard 고속 고압축 알고리즘을 기반으로 하며, AUR(Arch 사용자 소프트웨어 저장소) 생태계와 함께, 극단적 간결성과 KISS 원칙을 반영하는 현대적 패키지 배포 표준입니다)"
 
 msgid "mime_exe"
-msgstr "EXE 실행 파일(Windows 실행 가능 프로그램 형식, 'Executable'의 약자. Windows 운영 체제 기본 실행 형식, PE 구조 포함. MS-DOS의 MZ 형식에서 발전하여 1993년 Windows NT에서 PE(Portable Executable) 형식을 도입하여 현재까지 사용됨. 소프트웨어 설치 패키지, 애플리케이션, 시스템 도구가 이 형식을 사용함. 사용자가 두 번 클릭하여 실행할 수 있으며, 세계에서 가장 널리 사용되는 실행 형식임)"
+msgstr "EXE 기본 실행 파일 (Windows 플랫폼의 휴대용 실행(PE) 바이너리 프로그램 형식. 기술적 연혁은 MS-DOS 시대의 MZ 헤더 구조에서 비롯되었으며, 1993년 Windows NT부터 PE 구조 규범으로 완전히 확립되었으며, 기계어 명령어, 정적 리소스 섹션 및 시스템 커널 부트스트래핑을 위한 세계에서 가장 널리 사용되는 실행 표준입니다)"
 
 msgid "mime_dll"
-msgstr "DLL 동적 링크 라이브러리(1993년 Microsoft 출시, Dynamic Link Library. Windows 공유 코드 라이브러리, 프로그램 실행 시 동적으로 로드되어 메모리와 디스크 공간을 절약함. 시스템 구성 요소, 애플리케이션 플러그인, 드라이버가 DLL 형식을 사용함. Windows API의 핵심 구현 방식이며, DLL Hell 문제는 .NET 시대에 완화됨)"
+msgstr "DLL 동적 링크 라이브러리 (Windows 플랫폼의 Dynamic Link Library 공유 코드 라이브러리 규범. 런타임에 동적 로딩과 심볼 재배치를 통해 물리적 메모리와 디스크 공간을 대폭 절약하며, Windows API의 핵심 구현 형태로서, 초기 DLL Hell 문제점은 현대에 SxS 병렬 격리 메커니즘을 통해 근본적으로 해결되었습니다)"
 
 msgid "mime_com"
-msgstr "COM 실행 파일(MS-DOS 시대의 실행 가능 형식, 'Command'의 약자. 파일 구조가 간단하고 64KB 제한이 있으며, Windows 3.x 이전의 주류 형식이었음. 현재는 쇠퇴했으며, 현대 Windows는 EXE 형식을 사용하고 COM 확장자는 일부 구성 요소 파일에 여전히 사용됨)"
+msgstr "COM 클래식 실행 파일 (MS-DOS 시대의 가장 오래된 메모리 이미지(Command) 실행 형식. 무구조 순수 코드 섹션 설계를 채택하며, 64KB의 물리적 메모리 주소 지정 섹션 상한으로 제한되며, 현재는 유산 역사 형식으로 퇴역하였지만, 현대 Windows 아키텍처에서 여전히 특정 컴포넌트 인터페이스로 제한된 호환성을 유지하고 있습니다)"
 
 msgid "mime_aac"
 msgstr "AAC 오디오(1997년 MPEG 표준, Advanced Audio Coding. MP3의 후계자로, 동일한 비트레이트에서 MP3보다 우수한 음질을 제공하며 YouTube, iTunes, Nintendo Switch의 기본 오디오 형식)"
