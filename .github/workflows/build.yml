@@ -275,7 +275,7 @@ jobs:
           echo "最终打包目标: $TARGETS"
         shell: bash
 
-      - name: 修复 RPM 构 建 路 径
+      - name: 修复 RPM 构建路径
         run: |
           cd make
           
@@ -531,6 +531,142 @@ jobs:
           if-no-files-found: warn
           retention-days: 1
 
+  build-freebsd:
+      name: 构建 FreeBSD 包
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v6
+          with:
+            fetch-depth: 0
+        
+        - name: 设置版本号
+          id: version
+          run: |
+            VERSION="${GITHUB_REF#refs/tags/}"
+            VERSION="${VERSION#v}"
+            echo "version=$VERSION" >> $GITHUB_OUTPUT
+        
+        - name: 在 FreeBSD 中构建 PKG
+          uses: vmactions/freebsd-vm@v1
+          with:
+            usesh: true
+            sync: rsync
+            mem: 4096
+            prepare: |
+              pkg install -y perl5 p5-JSON-XS p5-Try-Tiny p5-MaxMind-DB-Reader wget
+            run: |
+              cd /home/runner/work/vstats/vstats/make
+              
+              echo "=== 运行打包脚本 ==="
+              perl makepack-awstats.pl --target=PKG
+              
+              # --- 核心对齐：+PLIST 已转移至更安全的独立的元数据目录 meta-stage ---
+              echo "=== 查看 +PLIST 内容 ==="
+              head -20 /tmp/awstats-buildroot/meta-stage/+PLIST
+              echo ""
+              
+              echo "=== 查看文件数量 ==="
+              wc -l /tmp/awstats-buildroot/meta-stage/+PLIST
+              echo ""
+              
+              echo "=== 检查文件路径格式 ==="
+              grep -E "^(bin|etc|share|www)" /tmp/awstats-buildroot/meta-stage/+PLIST | head -10
+              echo ""
+              
+              echo "=== 验证 +POST_INSTALL 是否在包中 ==="
+              PKG_FILE="/home/runner/work/vstats/vstats/make/awstats-8.1-1.pkg"
+
+              tar -xzf "$PKG_FILE" -O +MANIFEST 2>/dev/null | grep -q "dbip-city-lite"
+              if [ $? -eq 0 ]; then
+                  echo "✅ +POST_INSTALL 脚本已完美合规融合到 +MANIFEST 的元数据中！"
+                  echo "=== 验证元数据中的脚本片段 ==="
+                  tar -xzf "$PKG_FILE" -O +MANIFEST 2>/dev/null | grep -A 5 -B 2 "dbip-city" | head -10
+              else
+                  echo "❌ 脚本未成功融入包元数据中"
+              fi
+              echo ""
+              
+              echo "=== 备份并整理 pkg 文件 ==="
+              cd /home/runner/work/vstats/vstats/make
+              if [ -f "awstats-8.1-1.pkg" ]; then
+                  rm -f awstats-*_1.pkg 2>/dev/null || true
+                  sha256sum awstats-8.1-1.pkg > SHA256SUMS.txt
+                  echo "✅ 已生成校验和"
+              fi
+              ls -la *.pkg
+
+        - name: 上传 FreeBSD 包
+          uses: actions/upload-artifact@v7
+          with:
+            name: freebsd-packages
+            path: |
+              /home/runner/work/vstats/vstats/make/*.pkg
+              /home/runner/work/vstats/vstats/make/SHA256SUMS.txt
+            if-no-files-found: warn
+            retention-days: 1
+  webmin-modules:
+    name: 测试 Webmin 模块打包
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 检出 GitHub 仓库源码
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      # 2. 补齐打包测试所需的系统工具环境
+      - name: 安装基本打包工具依赖
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tar zip perl
+
+      # 3. 运行精简优化后的 Perl 打包脚本 (同时打出三种格式)
+      - name: 编译构建 Webmin 模块
+        run: |
+          cd make
+          echo "=== 开始构建 Webmin 专用模块 ==="
+          perl makepack-awstats_webmin.pl --target=WBM,TGZ,ZIP
+          
+          echo "=== 核心安全对齐：为 Webmin 插件独立刷出 SHA256 校验和 ==="
+          # 核心修复：精准锁定新命名的 -webmin- 文件，确保算出来的哈希文本清单 100% 正确
+          sha256sum *webmin* > SHA256SUMS-webmin.txt 2>/dev/null || true
+          
+          echo "=== 校验和清单内容预览 ==="
+          cat SHA256SUMS-webmin.txt
+          echo ""
+
+      # 4. 自动化回归测试：严密验证压缩包内部 FHS 结构是否合规
+      - name: 自动化自检验证包体结构
+        run: |
+          cd make
+          WBM_FILE=$(ls *webmin*.wbm | head -n 1)
+          if [ -f "$WBM_FILE" ]; then
+              echo "✅ 成功找到 WBM 核心包: $WBM_FILE"
+              echo "=== 检查包内根目录是否符合 Webmin 规范 (必须直接暴露项目名) ==="
+              tar -tf "$WBM_FILE" | head -n 5
+              
+              if tar -tf "$WBM_FILE" | grep -q "^awstats/module.info"; then
+                  echo "✅ 结构校验成功：Webmin 元数据控制信息已正确定位！"
+              else
+                  echo "❌ 结构校验失败：包内根目录未包含标准 awstats/ 隔离层"
+                  exit 1
+              fi
+          else
+              echo "❌ 致命错误：WBM 包未成功生成"
+              exit 1
+          fi
+
+      # 5. 将构建成功的 Webmin 独立插件包上传为 Artifacts 存档
+      - name: 上传 Webmin 插件工件
+        uses: actions/upload-artifact@v7
+        with:
+          name: webmin-modules
+          path: |
+            make/awstats-webmin-2.000.*
+            make/SHA256SUMS-webmin.txt
+          if-no-files-found: error
+          retention-days: 1
+
   build-windows:
     name: 构建 Windows 包
     runs-on: windows-latest
@@ -665,15 +801,21 @@ jobs:
           Write-Host "----------------------------------------"
         shell: pwsh
 
+      - name: 设置版本号
+        id: version
+        run: |
+          $VERSION = $env:GITHUB_REF -replace 'refs/tags/v', ''
+          echo "version=$VERSION" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          echo "构建版本: $VERSION"
+        shell: pwsh
+
       - name: 直接编译 NSIS 安装包
         id: build_package
-        env:
-          RELEASE_VERSION: ${{ steps.version.outputs.version }}
         run: |
           cd make/exe
           
           # 直接使用 makensis 编译
-          & "C:\Program Files (x86)\NSIS\Bin\makensis.exe" /DMUI_VERSION_DOT=8.1 "awstats.nsi"
+          & "C:\Program Files (x86)\NSIS\Bin\makensis.exe" "/DMUI_VERSION_DOT=$env:version" "awstats.nsi"
           
           # 使用通配符查找生成的 exe 文件
           $exeFiles = Get-ChildItem -Path ".." -Filter "awstats-*.exe"
@@ -683,12 +825,11 @@ jobs:
             Write-Host "找到 EXE 文件: $exeFile"
             
             # 重命名为标准名称
-            Move-Item $exeFile "awstats-8.1.exe" -Force
-            echo "EXE_FILE=awstats-8.1.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-            Write-Host "✅ EXE 生成成功: awstats-8.1.exe"
+            Move-Item $exeFile "awstats-$env:version.exe" -Force
+            Write-Host "✅ EXE 生成成功: awstats-$env:version.exe"
             
             # 移动到 make 目录供上传
-            Move-Item "awstats-8.1.exe" "..\awstats-8.1.exe" -Force
+            Move-Item "awstats-$env:version.exe" "..\awstats-$env:version.exe" -Force
           } else {
             Write-Host "❌ 没有找到 EXE 文件"
             Write-Host "当前目录文件："
@@ -702,12 +843,12 @@ jobs:
       - name: 生成 exe 校验和文件
         run: |
           cd make
-          $hash = (Get-FileHash "awstats-8.1.exe" -Algorithm SHA256).Hash.ToLower()
-          "$hash  awstats-8.1.exe" | Out-File -FilePath SHA256SUMS.txt -Encoding ascii
+          $hash = (Get-FileHash "awstats-$env:version.exe" -Algorithm SHA256).Hash.ToLower()
+          "$hash  awstats-$env:version.exe" | Out-File -FilePath SHA256SUMS.txt -Encoding ascii
           Write-Host "✅ 已生成 SHA256SUMS.txt"
         shell: pwsh
 
-      - name: 上传安装包
+      - name: 上传 Windows 包
         uses: actions/upload-artifact@v7
         with:
           name: windows-packages
@@ -719,83 +860,77 @@ jobs:
 
   release:
     name: 发布所有包
-    needs: [build-unix, build-windows]
+    needs: [build-unix, build-freebsd, build-windows, webmin-modules]
     runs-on: ubuntu-latest
-    if: always()
     steps:
-    - name: 下载所有产物
-      uses: actions/download-artifact@v8
+    - name: 下载所有构建产物
+      uses: actions/download-artifact@v4
       with:
         path: releases
-    - name: 合并校验和
+
+    - name: 检查提取的临时工件
       run: |
-        echo "=== 合并校验和文件 ==="
-        # 复制 Linux 的校验和（4个包）
-        if [ -f "releases/unix-packages/SHA256SUMS.txt" ]; then
-          cp releases/unix-packages/SHA256SUMS.txt SHA256SUMS.txt
-          echo "✅ 已添加 Linux 包校验和"
-        else
-          echo "⚠️ Linux 校验和文件不存在"
-          > SHA256SUMS.txt
-        fi
-        
-        # 追加 Windows 的校验和（exe）
-        if [ -f "releases/windows-packages/SHA256SUMS.txt" ]; then
-          cat releases/windows-packages/SHA256SUMS.txt >> SHA256SUMS.txt
-          echo "✅ 已添加 Windows 包校验和"
-        else
-          echo "⚠️ Windows 校验和文件不存在"
-        fi
-        
-        # 排序去重
-        sort -u SHA256SUMS.txt -o SHA256SUMS.txt
-        
-        echo ""
-        echo "=== 最终校验和 ==="
-        cat SHA256SUMS.txt
-        echo ""
-        echo "✅ 校验和行数: $(wc -l < SHA256SUMS.txt)"
-    
-    - name: 检查下载的文件
-      run: |
-        echo "📥 下载的文件："
+        echo "📥 提取到的所有临时构建工件："
         find releases -type f | sort
         echo ""
-        echo "📊 各 job 产物统计："
+        echo "📊 各编译 Job 产物容器统计："
         find releases -type d | sort
     
-    - name: 整理文件
+    - name: 整理最终发布文件并合并校验和
       run: |
         mkdir -p final
         
-        # 复制所有包文件
+        # 1. 精准提取系统级核心二进制安装包 (彻底排除 Webmin 的全部干扰，主线极度纯净)
         find releases -type f -name "*.tar.gz" -exec cp -v {} final/ \;
-        find releases -type f -name "*.zip" -exec cp -v {} final/ \;
+        find releases -type f -name "*.pkg" -exec cp -v {} final/ \;
         find releases -type f -name "*.rpm" -exec cp -v {} final/ \;
         find releases -type f -name "*.deb" -exec cp -v {} final/ \;
         find releases -type f -name "*.exe" -exec cp -v {} final/ \;
+        find releases -type f -name "*.zip" ! -path "*webmin-modules*" -exec cp -v {} final/ \;
         
-        echo "=== 合并校验和文件 ==="
+        # 2. 合并全平台主线系统包校验和
+        echo "=== 正在合并全平台主线二进制包校验和 ==="
         > final/SHA256SUMS.txt
+        
         if [ -f "releases/unix-packages/SHA256SUMS.txt" ]; then
           cat releases/unix-packages/SHA256SUMS.txt >> final/SHA256SUMS.txt
-          echo "✅ 已添加 Linux 包校验和"
+          echo "✅ 已合并 Linux 包校验和"
+        fi
+        if [ -f "releases/freebsd-packages/SHA256SUMS.txt" ]; then
+          cat releases/freebsd-packages/SHA256SUMS.txt >> final/SHA256SUMS.txt
+          echo "✅ 已合并 FreeBSD 包校验和"
         fi
         if [ -f "releases/windows-packages/SHA256SUMS.txt" ]; then
           cat releases/windows-packages/SHA256SUMS.txt >> final/SHA256SUMS.txt
-          echo "✅ 已添加 Windows 包校验和"
+          echo "✅ 已合并 Windows 包校验和"
         fi
+        
         # 排序去重
         sort -u final/SHA256SUMS.txt -o final/SHA256SUMS.txt
         
+        # 3. Webmin 插件校验和
+        if [ -f "releases/webmin-modules/SHA256SUMS-webmin.txt" ]; then
+          echo "=== 正在收网 Webmin 专属插件包与独立校验和 ==="
+          cp -v releases/webmin-modules/awstats-webmin-2.000.* final/ 2>/dev/null || true
+          cp -v releases/webmin-modules/SHA256SUMS-webmin.txt final/ 2>/dev/null || true
+          echo "✅ 已同步 Webmin 插件专属校验和清单"
+        fi
+        
         echo ""
-        echo "✅ 最终文件列表："
+        echo "=================================================="
+        echo " 📦 最终交付给 GitHub Release 页面的资产包列表："
+        echo "=================================================="
         ls -la final/
         echo ""
-        echo "=== 最终校验和内容 ==="
+        echo "=== 最终系统包主线校验和内容 (SHA256SUMS.txt) ==="
         cat final/SHA256SUMS.txt
+        echo ""
+        if [ -f "final/SHA256SUMS-webmin.txt" ]; then
+          echo "=== 最终Webmin插件校验和内容 (SHA256SUMS-webmin.txt) ==="
+          cat final/SHA256SUMS-webmin.txt
+        fi
     
-    - name: 获取版本号
+    - name: 获取标签版本号
       id: version
       run: |
         VERSION="${GITHUB_REF#refs/tags/}"
@@ -1176,6 +1311,7 @@ jobs:
           final/*.zip
           final/*.rpm
           final/*.deb
+          final/*.pkg
           final/*.exe
           final/*.txt
         draft: false

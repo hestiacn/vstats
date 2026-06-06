@@ -127,8 +127,8 @@ override_dh_auto_install:
 	mkdir -p debian/awstats/etc/logrotate.d/httpd-prerotate
 	mkdir -p debian/awstats/var/lib/awstats
 	mkdir -p debian/awstats/var/log/awstats
-	mkdir -p debian/awstats/usr/share/doc/awstats/html
-	mkdir -p debian/awstats/usr/share/doc/awstats/html/images
+	mkdir -p debian/awstats/usr/share/doc/awstats
+	mkdir -p debian/awstats/usr/share/doc/awstats/images
 	mkdir -p debian/awstats/usr/share/man/man1
 	mkdir -p debian/awstats/usr/share/perl5/Geo
 
@@ -205,7 +205,7 @@ override_dh_auto_install:
 	touch debian/awstats/etc/awstats/awstats.conf.local
 
 	# 复制文档
-	cp -pr docs/* debian/awstats/usr/share/doc/awstats/html/ 2>/dev/null || true
+	cp -pr docs/* debian/awstats/usr/share/doc/awstats/ 2>/dev/null || true
 
 override_dh_installchangelog:
 	dh_installchangelog docs/CHANGELOG.md
@@ -398,7 +398,7 @@ INNEREOF
         echo " CGI scripts: /usr/lib/cgi-bin/"
         echo " Data directory: /var/lib/awstats"
         echo " Log directory: /var/log/awstats"
-        echo " Documentation: /usr/share/doc/awstats/html/"
+        echo " Documentation: /usr/share/doc/awstats"
         echo ""
         echo " Configuration tool: /usr/share/awstats/tools/awstats_configure.pl"
         echo " Web access: http://your-domain/vstats/"

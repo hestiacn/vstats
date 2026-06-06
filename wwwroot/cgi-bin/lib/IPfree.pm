@@ -1,5 +1,5 @@
 package Geo::IPfree;
-use 5.020;
+use 5.20;
 use strict;
 use warnings;
 use utf8;
@@ -23,10 +23,7 @@ my $cache_expire = 5000;
 # 初始化国家代码映射
 my %countrys = ();
 
-# 从 DATA 段读取国家映射
 {
-    # 由于这个包可能被其他程序调用，DATA 句柄可能未打开
-    # 使用 __DATA__ 段的数据，如果存在的话
     my $data_content = '';
     if (defined *DATA && defined fileno(DATA)) {
         local $/;
@@ -46,7 +43,6 @@ my %countrys = ();
         }
     }
     
-    # 如果没有 DATA 数据，使用内置的基础映射
     if (!%countrys) {
         %countrys = (
             '--' => 'N/A',
@@ -137,7 +133,6 @@ sub _find_mmdb_file {
         map { $_, "$_/Geo" } @INC
     );
     
-    # 找到模块加载的目录
     if (exists $INC{'Geo/IPfree.pm'} && defined $INC{'Geo/IPfree.pm'}) {
         my ($lib) = ($INC{'Geo/IPfree.pm'} =~ /^(.*?)[\\\/]+[^\\\/]+$/gs);
         push @locations, $lib if $lib;
@@ -156,7 +151,6 @@ sub _find_mmdb_file {
         }
     }
     
-    # 如果没找到，尝试递归搜索
     foreach my $dir (@locations) {
         next unless -d $dir;
         opendir(my $dh, $dir) || next;

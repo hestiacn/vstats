@@ -43,7 +43,7 @@ AWStats 不再只是一个冷冰冰的数据页面。现在，您可以轻松将
 
 在 AWStats 配置文件（如 `/etc/awstats/awstats.yourdomain.conf`）中添加以下参数：
 
-**💡 快速参考**：您可以直接查看经过优化的 [awstats.tpl 标准配置模板](/make/test/awstats/conf/awstats.tpl)，它包含了推荐的品牌化设置与性能优化参数。
+**💡 快速参考**：您可以直接查看经过优化的 [awstats.tpl 标准配置模板](/make/make/test/awstats/conf/awstats.tpl)，它包含了推荐的品牌化设置与性能优化参数。
 
 ```perl
 # --- 品牌自定义设置 ---

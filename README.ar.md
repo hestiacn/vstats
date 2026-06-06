@@ -91,7 +91,7 @@ StatsUrl="/vstats"                   # دليل نشر AWStats
 | **RHEL/CentOS/Fedora** | [![تحميل .rpm](https://img.shields.io/badge/تحميل-.rpm_حزمة-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
 | **الكود المصدري (tar.gz)** | [![تحميل .tar.gz](https://img.shields.io/badge/تحميل-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
 | **الكود المصدري (zip)** | [![تحميل .zip](https://img.shields.io/badge/تحميل-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![تحميل Windows](https://img.shields.io/badge/تحميل-نسخة_Windows-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.exe) |
+| **Windows** | [![تحميل Windows](https://img.shields.io/badge/تحميل-نسخة_Windows-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
 
 > **ملاحظة حول بيئة Windows**: تحتوي نسخة Windows فقط على مثبت EXE، ولم يتم اختبار بنية الدليل والمسارات. إذا واجهت مشاكل أثناء الاستخدام، يرجى تقديم Issue أو Pull Request للمساعدة في الإصلاح.
 
@@ -193,33 +193,45 @@ HestiaCP يأتي مدمجًا مع AWStats، ما عليك سوى تحديث و
 
 | نوع الملف | المسار | مثال مرجعي |
 |:---:|:---:|:---:|
-| ملف القالب | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| ملف القالب | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/make/test/awstats/conf/awstats.tpl) |
 | دليل إعدادات النطاق | `/etc/awstats/` | - |
-| سكربت التحديث (Debian/Ubuntu ومشتقاتهما) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
-| سكربت التحديث (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+| سكربت التحديث (Debian/Ubuntu ومشتقاتهما) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/make/test/awstats/conf/v-update-web-domain-stat) |
+| سكربت التحديث (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/make/test/awstats/conf/v-update-web-domain-stat) |
 
 > 📌 **توضيح**: أكواد سكربتات Debian و RHEL مختلفة، يرجى اختيار المثال المرجعي المناسب وفقًا لنظام التشغيل الخاص بك.
 
 > 💡 **تلميح**: بعد تعديل السكربت، إذا واجهت مشكلة في الصلاحيات، قم بتنفيذ الأمر `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`
 
-#### التحميل والتثبيت
+## التحميل والتثبيت
 
-```bash
-# عند التثبيت مع HestiaCP، عندما يُطلب منك تحديث ملفات التكوين، اختر N (الاحتفاظ بالتكوين الحالي)
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
-```
+### HestiaCP التكامل مع
 
-### Debian/Ubuntu
+> ⚠️ **تنبيه مهم**: عند التثبيت في بيئة HestiaCP، إذا طلب النظام تحديث ملف التكوين، يرجى اختيار **`N`** (الاحتفاظ بالتكوين الأصلي)، وإلا سيتم استبدال تكوين المسار الخاص بلوحة HestiaCP.
 
 ```bash
 wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
 ```
 
-### RHEL/CentOS/Fedora
+### Debian / Ubuntu التثبيت المباشر
 
 ```bash
-wget https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm
-dnf localinstall -y awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+```
+
+### RHEL / CentOS / Rocky Linux / Fedora
+
+```bash
+# استخدام أمر DNF القياسي للتثبيت، متوافق تماماً مع نظام Red Hat البيئي
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+```
+
+### FreeBSD
+
+```bash
+# قفل الحماية بحقنة واحدة بعد التثبيت، القضاء تماماً على التقارير الخاطئة لإصدارات لوحات الإدارة القديمة (مثل Webmin)
+fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
+pkg install -y /tmp/awstats-8.1-1.pkg && \
+pkg lock -y awstats
 ```
 
 ### التكوين الأساسي

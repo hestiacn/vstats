@@ -93,7 +93,6 @@ et de nombreuses fonctionnalités.
 #---- prep
 %prep
 %setup -q -n %{name}-%{version}
-cp -pr $RPM_BUILD_DIR/%{name}-%{version}/docs/images/* $RPM_BUILD_DIR/%{name}-%{version}/ 2>/dev/null || true
 
 #---- build
 %build
@@ -124,13 +123,13 @@ mkdir -p $RPM_BUILD_ROOT/usr/share/doc/awstats
 # 创建 Apache 配置文件
 mkdir -p $RPM_BUILD_ROOT/etc/httpd/conf.d
 cat > $RPM_BUILD_ROOT/etc/httpd/conf.d/awstats.conf << 'EOF'
-Alias /awstatsclasses "/usr/share/awstats/wwwroot/classes/"
-Alias /awstatscss "/usr/share/awstats/wwwroot/css/"
-Alias /awstatsicons "/usr/share/awstats/wwwroot/icon/"
+Alias /awstatsclasses "/usr/share/awstats/classes/"
+Alias /awstatscss "/usr/share/awstats/css/"
+Alias /awstatsicons "/usr/share/awstats/icon/"
 Alias /awstatsdocs "/usr/share/doc/awstats/"
-ScriptAlias /awstats/ "/usr/share/awstats/wwwroot/cgi-bin/"
+ScriptAlias /awstats/ "/usr/lib/cgi-bin/"
 
-<Directory "/usr/share/awstats/wwwroot">
+<Directory "/usr/share/awstats">
     Options None
     AllowOverride None
     Require all granted
@@ -163,27 +162,27 @@ else
     exit 1
 fi
 
-# 批量复制所有文件 - 使用绝对路径
+# 批量复制所有文件
 cp -pr $RPM_BUILD_DIR/%{name}-%{version}/docs/* $RPM_BUILD_ROOT/usr/share/doc/awstats/ 2>/dev/null || true
-cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/* $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true
+
+# 移动 CGI 脚本到 /usr/lib/cgi-bin
+mv $RPM_BUILD_ROOT/usr/share/awstats/cgi-bin/* $RPM_BUILD_ROOT/usr/lib/cgi-bin/ 2>/dev/null || true
+rm -rf $RPM_BUILD_ROOT/usr/share/awstats/cgi-bin 2>/dev/null || true
+
 cp -pr $RPM_BUILD_DIR/%{name}-%{version}/tools $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true
 cp -pr $RPM_BUILD_DIR/%{name}-%{version}/README.md $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true
 
 # 移动 lang/lib/plugins 到正确位置
-if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lang" ]; then
-    mv $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lang $RPM_BUILD_ROOT/usr/share/awstats/lang
+if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/lang" ]; then
+    mv $RPM_BUILD_ROOT/usr/share/awstats/lang $RPM_BUILD_ROOT/usr/share/awstats/lang
 fi
-if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lib" ]; then
-    mv $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lib $RPM_BUILD_ROOT/usr/share/awstats/lib
+if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/lib" ]; then
+    mv $RPM_BUILD_ROOT/usr/share/awstats/lib $RPM_BUILD_ROOT/usr/share/awstats/lib
 fi
-if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/plugins" ]; then
-    mv $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/plugins $RPM_BUILD_ROOT/usr/share/awstats/plugins
+if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/plugins" ]; then
+    mv $RPM_BUILD_ROOT/usr/share/awstats/plugins $RPM_BUILD_ROOT/usr/share/awstats/plugins
 fi
-
-# 删除空目录
-rm -rf $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lang 2>/dev/null || true
-rm -rf $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/lib 2>/dev/null || true
-rm -rf $RPM_BUILD_ROOT/usr/share/awstats/wwwroot/cgi-bin/plugins 2>/dev/null || true
 
 # 复制配置文件
 cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/awstats.conf $RPM_BUILD_ROOT/etc/awstats/awstats.conf
@@ -192,28 +191,28 @@ cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/awstats.model.conf $RPM
 # 创建空配置文件
 touch $RPM_BUILD_ROOT/etc/awstats/awstats.local.conf
 
-# 创建符号链接
-ln -sf /usr/share/awstats/wwwroot/cgi-bin/awstats.pl $RPM_BUILD_ROOT/usr/lib/cgi-bin/awstats.pl
-ln -sf /usr/share/awstats/wwwroot/cgi-bin/awredir.pl $RPM_BUILD_ROOT/usr/lib/cgi-bin/awredir.pl
-ln -sf /usr/share/awstats/wwwroot/cgi-bin/awstats-update $RPM_BUILD_ROOT/usr/lib/cgi-bin/awstats-update
+# 复制 MaxMind 模块
+MAXMIND_SRC="$RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/MaxMind"
+if [ -d "$MAXMIND_SRC" ]; then
+    mkdir -p $RPM_BUILD_ROOT/usr/share/perl5/vendor_perl
+    cp -pr "$MAXMIND_SRC" $RPM_BUILD_ROOT/usr/share/perl5/vendor_perl/
+fi
 
-# 复制 IPfree 模块 - 使用绝对路径
+# 复制 IPfree 模块
 if [ -f $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pm ]; then
     cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pm $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pm
     chmod 644 $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pm
-    echo "✓ Installed Geo::IPfree module"
 fi
 
 if [ -f $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pod ]; then
     cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pod $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pod
     chmod 644 $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pod
-    echo "✓ Installed Geo::IPfree documentation"
 fi
 
 # 创建 CLI 包装脚本
 cat > $RPM_BUILD_ROOT/usr/local/bin/awstats << 'EOF'
 #!/bin/bash
-perl /usr/share/awstats/wwwroot/cgi-bin/awstats.pl "$@"
+perl /usr/lib/cgi-bin/awstats.pl "$@"
 EOF
 chmod 755 $RPM_BUILD_ROOT/usr/local/bin/awstats
 

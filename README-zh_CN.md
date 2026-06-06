@@ -91,7 +91,7 @@ StatsUrl="/vstats"                   # AWStats 部署目录
 | **RHEL/CentOS/Fedora** | [![下载 .rpm 包](https://img.shields.io/badge/下载-.rpm_包-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
 | **源码包 (tar.gz)** | [![下载源码 .tar.gz](https://img.shields.io/badge/下载-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
 | **源码包 (zip)** | [![下载源码 .zip](https://img.shields.io/badge/下载-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![下载 Windows版](https://img.shields.io/badge/下载-Windows版-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.exe) |
+| **Windows** | [![下载 Windows版](https://img.shields.io/badge/下载-Windows版-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
 
 > **Windows 环境说明**：Windows 版本仅打包了 EXE 安装包，目录结构和路径均未经过实际测试。如在使用中遇到问题，欢迎提交 Issue 或 Pull Request 协助修复！
 
@@ -192,33 +192,45 @@ HestiaCP 已自带 AWStats，更新安装打包好的 `deb` 和 `rpm` 程序即�
 
 | 文件类型 | 路径 | 参考示例 |
 |:---:|:---:|:---:|
-| 模板文件 | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| 模板文件 | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/make/test/awstats/conf/awstats.tpl) |
 | 域名配置目录 | `/etc/awstats/` | - |
-| 更新脚本 (Debian/Ubuntu 及其衍生版) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
-| 更新脚本 (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+| 更新脚本 (Debian/Ubuntu 及其衍生版) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/make/test/awstats/conf/v-update-web-domain-stat) |
+| 更新脚本 (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/make/test/awstats/conf/v-update-web-domain-stat) |
 
 > 📌 **说明**：Debian 和 RHEL 系列的脚本相关程序代码不同，请根据您的操作系统选择对应的参考示例进行修改。
 
 > 💡 **提示**：修改脚本后，如遇到权限问题，请执行 `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`
 
-#### 下载并安装
+## 下载并安装
 
-```bash
-# 使用 HestiaCP 安装时提示配置文件是否更新，请选择 N（保留原配置）
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
-```
+### HestiaCP 集成部署
 
-### Debian/Ubuntu
+> ⚠️ **重要提示**：使用 HestiaCP 环境安装时，若系统提示配置文件是否更新，请务必选择 **`N`**（保留原配置），否则会覆盖 HestiaCP 面板的特有路由配置。
 
 ```bash
 wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
 ```
 
-### RHEL/CentOS/Fedora
+### Debian / Ubuntu 原生直装
 
 ```bash
-wget https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm
-dnf localinstall -y awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+```
+
+### RHEL / CentOS / Rocky Linux / Fedora
+
+```bash
+# 采用现代 DNF 标准 install 指令，完美对齐全系列红帽生态
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+```
+
+### FreeBSD
+
+```bash
+# 安装后一键注入锁定防御，彻底消灭第三方管理面板（如 Webmin）的旧版本降级误报
+fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
+pkg install -y /tmp/awstats-8.1-1.pkg && \
+pkg lock -y awstats
 ```
 
 ### 基本配置

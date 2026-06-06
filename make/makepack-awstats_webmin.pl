@@ -1,9 +1,7 @@
 #!/usr/bin/perl
 #----------------------------------------------------------------------------
 # \file         make/makepack-awstats_webmin.pl
-# \brief        Package builder (tgz, zip, rpm, deb, exe) for Webmin module
-# \version      $Revision$
-# \author       (c)2004-2026 Laurent Destailleur  <eldy@users.sourceforge.net>
+# \brief        Dedicated package builder for Webmin module (.wbm, .tgz, .zip)
 #----------------------------------------------------------------------------
 
 use strict;
@@ -14,25 +12,21 @@ use File::Temp;
 use File::Path qw(remove_tree make_path);
 use File::Copy;
 use File::Basename;
+use File::Find;
 use Getopt::Long;
-use POSIX qw/strftime/;
 
 # 初始化配置
 my $PROJECT = "awstats";
 my ($MAJOR, $MINOR) = ("2", "0");
-my $BUILD_ROOT;
 my $SOURCE_DIR;
 my $DEST_DIR;
 my @TARGETS = ();
 
-# 支持的包格式
+# Webmin 模块和标准归档所必须的系统工具依赖
 my %REQUIREMENTS = (
     "WBM" => "tar",
     "TGZ" => "tar",
-    "ZIP" => "zip",
-    "RPM" => "rpmbuild",
-    "DEB" => "dpkg-deb",
-    "EXE" => "makensis"
+    "ZIP" => "zip"
 );
 
 # 获取版本信息
@@ -44,20 +38,13 @@ sub get_version {
         while (<$fh>) {
             if (/version=(.+)/) {
                 close $fh;
-                return split(/\./, $1, 2);
+                my $v = $1; $v =~ s/\s+//g;
+                return split(/\./, $v, 2);
             }
         }
         close $fh;
     }
     return ("2", "0");
-}
-
-# 检测操作系统
-sub detect_os {
-    if ($^O =~ /linux/i) { return 'linux'; }
-    elsif ($^O =~ /darwin/i) { return 'macosx'; }
-    elsif ($^O =~ /cygwin|msys|win32/i) { return 'windows'; }
-    else { die "Unsupported OS: $^O"; }
 }
 
 # 检查依赖工具
@@ -67,26 +54,14 @@ sub check_requirements {
     
     print "Checking requirement for $target: $req... ";
     
-    if (detect_os() eq 'windows') {
-        $req .= ".exe" if $req !~ /\.exe$/;
-    }
-    
-    my $ret = system("$req --version > /dev/null 2>&1");
-    if ($ret == 0) {
-        print "OK\n";
-        return 1;
+    my $check_cmd = ($^O =~ /win32|cygwin|msys/i) 
+        ? "where $req.exe >nul 2>&1" 
+        : "command -v $req > /dev/null 2>&1";
+        
+    if (system($check_cmd) == 0) {
+        print "OK\n"; return 1;
     } else {
-        print "FAILED\n";
-        return 0;
-    }
-}
-
-# 清理构建目录
-sub clean_buildroot {
-    my ($dir) = @_;
-    if (-d $dir) {
-        print "Cleaning $dir...\n";
-        remove_tree($dir);
+        print "FAILED (Tool missing)\n"; return 0;
     }
 }
 
@@ -98,104 +73,73 @@ sub prepare_buildroot {
     make_path($build);
     
     print "Copying source from $source to $build/$PROJECT\n";
-    system("cp -r '$source/$PROJECT' '$build/'") == 0 
-        or die "Failed to copy source";
+    system("cp -R '$source/$PROJECT' '$build/'") == 0 or die "Failed to copy source modules";
     
-    print "Cleaning temporary files...\n";
-    my @patterns = (
-        'Thumbs.db', '*.wbm', '*.tar',
-        'CVS', '.svn', '.git', '.hg',
-        '*.bak', '*.old', '*~'
-    );
-    
-    foreach my $pattern (@patterns) {
-        find_and_delete($build, $pattern);
-    }
-}
-
-# 递归查找并删除文件
-sub find_and_delete {
-    my ($dir, $pattern) = @_;
-    return unless -d $dir;
-    
-    opendir my $dh, $dir or return;
-    while (my $item = readdir $dh) {
-        next if $item eq '.' or $item eq '..';
-        
-        my $path = "$dir/$item";
-        if (-d $path) {
-            find_and_delete($path, $pattern);
-        } else {
-            unlink $path if fnmatch($item, $pattern);
+    print "Cleaning temporary files and metadata via File::Find...\n";
+    find(sub {
+        my $name = $_;
+        if (-d $File::Find::name && ($name eq 'CVS' || $name eq '.svn' || $name eq '.git' || $name eq '.hg')) {
+            remove_tree($File::Find::name);
+            $File::Find::prune = 1; 
         }
-    }
-    closedir $dh;
-}
-
-# 简单的通配符匹配
-sub fnmatch {
-    my ($name, $pattern) = @_;
-    $pattern =~ s/\*/.*/g;
-    $pattern =~ s/\?/./g;
-    return $name =~ /^$pattern$/;
+        elsif (-f $File::Find::name) {
+            if ($name eq 'Thumbs.db' || $name =~ /\.(wbm|tar|bak|old)$/ || $name =~ /~$/) {
+                unlink($File::Find::name);
+            }
+        }
+    }, $build);
 }
 
 # 构建 WBM 包
 sub build_wbm {
     my ($build_dir, $version, $dest) = @_;
-    
-    my $pkg_name = "$PROJECT-$version.wbm";
+    my $pkg_name = "$PROJECT-webmin-$version.wbm";
     my $pkg_path = "$dest/$pkg_name";
     
     print "\nBuilding WBM package: $pkg_name\n";
-    
-    my $tar_cmd = "tar -C '$build_dir' -cf '$pkg_path' $PROJECT";
-    system($tar_cmd) == 0 or die "Failed to create WBM package";
-    
-    print "WBM package created: $pkg_path\n";
-    return 1;
+    system("tar -C '$build_dir' -cf '$pkg_path' $PROJECT") == 0 or die "Failed to create WBM package";
+    print "WBM package successfully created: $pkg_path\n";
 }
 
 # 主构建函数
 sub build_packages {
     my ($source, $dest, @targets) = @_;
     
-    my $build_root = File::Temp->newdir(
-        "awstats-build-XXXXXX",
-        TMPDIR => 1,
-        CLEANUP => 1
-    ) or die "Failed to create temp directory";
+    my $build_root = File::Temp->newdir("awstats-webmin-XXXXXX", TMPDIR => 1, CLEANUP => 1) 
+        or die "Failed to create temp block: $!";
+    my $staging_path = $build_root->dirname;
     
-    prepare_buildroot($source, $build_root);
+    prepare_buildroot($source, $staging_path);
     
     foreach my $target (@targets) {
         $target = uc($target);
         next unless check_requirements($target);
         
         if ($target eq 'WBM') {
-            build_wbm($build_root, "$MAJOR.$MINOR", $dest);
+            build_wbm($staging_path, "$MAJOR.$MINOR", $dest);
         }
         elsif ($target eq 'TGZ') {
-            print "TGZ building not implemented yet\n";
+            my $pkg_path = "$dest/$PROJECT-webmin-" . "$MAJOR.$MINOR.wbm.gz";
+            print "\nBuilding compressed WBM.GZ package...\n";
+            system("tar -C '$staging_path' -czf '$pkg_path' $PROJECT") == 0 or die "Failed to create TGZ module";
+            print "Compressed package successfully created: $pkg_path\n";
         }
         elsif ($target eq 'ZIP') {
-            print "ZIP building not implemented yet\n";
-        }
-        else {
-            print "Target $target not implemented\n";
+            my $pkg_path = "$dest/$PROJECT-webmin-" . "$MAJOR.$MINOR.zip";
+            print "\nBuilding ZIP module package...\n";
+            use Cwd qw(getcwd);
+            my $orig_cwd = getcwd();
+            chdir($staging_path);
+            system("zip -r '$pkg_path' $PROJECT > /dev/null") == 0 or die "Failed to create ZIP module";
+            chdir($orig_cwd);
+            print "ZIP package successfully created: $pkg_path\n";
         }
     }
-    
     print "\nBuild completed successfully!\n";
 }
 
-# 主程序
 sub main {
-    my $help = 0;
-    my $targets = '';
-    my $source = '';
-    my $dest = '';
-    
+    my ($help, $targets, $source, $dest) = (0, '', '', '');
     GetOptions(
         'help|?'     => \$help,
         'target=s'   => \$targets,
@@ -204,34 +148,26 @@ sub main {
     ) or die "Invalid options";
     
     if ($help) {
-        print <<"USAGE";
-Usage: $0 [options]
-Options:
-  --target=LIST   Comma-separated list of targets (WBM,TGZ,ZIP,RPM,DEB,EXE)
-  --source=DIR    Source directory (default: auto-detect)
-  --dest=DIR      Destination directory (default: ../make)
-  --help          Show this help
-USAGE
+        print "Usage: $0 [--target=WBM,TGZ,ZIP] [--source=DIR] [--dest=DIR]\n";
         exit 0;
     }
     
     my $script_dir = dirname(abs_path($0));
     $SOURCE_DIR = $source || "$script_dir/../../awstats/tools/webmin";
-    $DEST_DIR = $dest || "$SOURCE_DIR/../../make";
+    $DEST_DIR   = $dest   || "$script_dir";
+    
+    # 自动多级探测相对路径
+    $SOURCE_DIR = "$script_dir/../tools/webmin" unless -d $SOURCE_DIR;
+    $SOURCE_DIR = "$script_dir/tools/webmin" unless -d $SOURCE_DIR;
     
     unless (-d "$SOURCE_DIR/$PROJECT") {
-        die "Source directory not found: $SOURCE_DIR/$PROJECT";
+        die "Fatal: Webmin module source folder not found at: $SOURCE_DIR/$PROJECT";
     }
     
     ($MAJOR, $MINOR) = get_version($SOURCE_DIR);
-    print "Building $PROJECT version $MAJOR.$MINOR\n";
+    print "Initializing Dedicated Webmin Packager (Version: $MAJOR.$MINOR)\n";
     
-    if ($targets) {
-        @TARGETS = split(/[,\s]+/, uc($targets));
-    } else {
-        @TARGETS = ('WBM');
-    }
-    
+    @TARGETS = $targets ? split(/[,\s]+/, uc($targets)) : ('WBM');
     make_path($DEST_DIR) unless -d $DEST_DIR;
     build_packages($SOURCE_DIR, $DEST_DIR, @TARGETS);
 }

@@ -91,7 +91,7 @@ Download de nieuwste versie via onderstaande links:
 | **RHEL/CentOS/Fedora** | [![Download .rpm](https://img.shields.io/badge/Download-.rpm_pakket-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
 | **Broncode (tar.gz)** | [![Download .tar.gz](https://img.shields.io/badge/Download-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
 | **Broncode (zip)** | [![Download .zip](https://img.shields.io/badge/Download-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![Download Windows](https://img.shields.io/badge/Download-Windows_versie-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.exe) |
+| **Windows** | [![Download Windows](https://img.shields.io/badge/Download-Windows_versie-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
 
 > **Opmerking voor Windows**: De Windows-versie bevat alleen de EXE-installer. De mapstructuur en paden zijn niet getest. Als u problemen ondervindt tijdens het gebruik, dien dan een Issue of Pull Request in.
 
@@ -193,33 +193,45 @@ HestiaCP wordt al geleverd met AWStats. Update en installeer eenvoudig de vooraf
 
 | Bestandstype | Pad | Referentievoorbeeld |
 |:---:|:---:|:---:|
-| Templatebestand | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| Templatebestand | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/make/test/awstats/conf/awstats.tpl) |
 | Domeinconfiguratiemap | `/etc/awstats/` | - |
-| Updatescript (Debian/Ubuntu en afgeleiden) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
-| Updatescript (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+| Updatescript (Debian/Ubuntu en afgeleiden) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/make/test/awstats/conf/v-update-web-domain-stat) |
+| Updatescript (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/make/test/awstats/conf/v-update-web-domain-stat) |
 
 > 📌 **Uitleg**: De scriptcode verschilt tussen Debian-gebaseerde en RHEL-gebaseerde systemen. Kies het juiste referentievoorbeeld op basis van jouw besturingssysteem.
 
 > 💡 **Tip**: Als je na het wijzigen van het script een machtigingsprobleem ondervindt, voer dan `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat` uit.
 
-#### Downloaden en installeren
+## Downloaden en installeren
 
-```bash
-# Kies N (bestaande configuratie behouden) wanneer u wordt gevraagd configuratiebestanden bij te werken tijdens HestiaCP-installatie
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
-```
+### HestiaCP Integratie Implementatie
 
-### Debian/Ubuntu
+> ⚠️ **Belangrijke opmerking**: Wanneer u installeert in een HestiaCP-omgeving en het systeem u vraagt om het configuratiebestand bij te werken, selecteer dan **`N`** (originele configuratie behouden), anders wordt de specifieke routeringsconfiguratie van het HestiaCP-paneel overschreven.
 
 ```bash
 wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
 ```
 
-### RHEL/CentOS/Fedora
+### Debian / Ubuntu Native Installatie
 
 ```bash
-wget https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm
-dnf localinstall -y awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+```
+
+### RHEL / CentOS / Rocky Linux / Fedora
+
+```bash
+# Gebruik van moderne DNF standaard installatie-instructie, perfect compatibel met de volledige Red Hat-ecosysteem
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+```
+
+### FreeBSD
+
+```bash
+# One-click lock injectie na installatie, elimineert volledig valse downgrade-rapporten van third-party beheerpanelen (zoals Webmin)
+fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
+pkg install -y /tmp/awstats-8.1-1.pkg && \
+pkg lock -y awstats
 ```
 
 ### Basisconfiguratie

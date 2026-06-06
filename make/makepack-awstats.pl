@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #----------------------------------------------------------------------------
 # \file         make/makepack-awstats.pl
-# \brief        Package builder (tgz, zip, rpm, deb, exe) with Git automation
+# \brief        Package builder (tgz, zip, pkg, rpm, deb, exe) with Git automation
 # \author       (c)2004-2026 Laurent Destailleur  <eldy@users.sourceforge.net>
 #----------------------------------------------------------------------------
 
@@ -19,6 +19,7 @@ use POSIX qw(strftime);
 use Digest::SHA qw(sha256_hex);
 use Cwd qw(abs_path);
 use File::Spec;
+use File::Find;
 
 # 检测运行环境
 my $IS_GITHUB_ACTIONS = $ENV{GITHUB_ACTIONS} ? 1 : 0;
@@ -30,14 +31,16 @@ print "操作系统: " . ($IS_WINDOWS ? "Windows" : "Unix-like") . "\n";
 # 项目配置
 my $PROJECT = "awstats";
 my $RPMSUBVERSION = "1";
+my $PKGSUBVERSION = "1";
 my $WBMVERSION = "2.0";
-my @TARGETS = ("TGZ", "ZIP", "RPM", "DEB");
+my @TARGETS = ("TGZ", "ZIP", "PKG", "RPM", "DEB");
 my $GITHUB_REPO = "hestiacn/vstats";
 
 # 工具依赖
 my %REQUIREMENTS = (
     "TGZ" => "tar",
     "ZIP" => "7z",
+    "PKG" => "pkg",
     "RPM" => "rpmbuild",
     "DEB" => "dpkg-buildpackage",
     "EXE" => "makensis"
@@ -54,7 +57,8 @@ my $PROGPATH = '';
 
 # 检测操作系统
 sub detect_os {
-    if ($^O =~ /linux/i || (-d "/etc" && -d "/var" && $^O !~ /cygwin/i)) { 
+    if ($^O eq "freebsd") { return 'freebsd'; }
+    elsif ($^O =~ /linux/i || (-d "/etc" && -d "/var" && $^O !~ /cygwin/i)) { 
         return 'linux'; 
     }
     elsif (-d "/etc" && -d "/Users") { 
@@ -107,7 +111,8 @@ $log
 - [Source Code (tar.gz)](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR.tar.gz)
 - [Source Code (zip)](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR.zip)
 - [RPM Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR-$RPMSUBVERSION.noarch.rpm)
-- [DEB Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/${PROJECT}_$MAJOR.$MINOR\_all.deb)
+- [DEB Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/${PROJECT}_$MAJOR.$MINOR-${RPMSUBVERSION}_all.deb)
+- [FreeBSD Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR-$PKGSUBVERSION.pkg)
 
 ### Installation
 See [INSTALL.md](https://github.com/$GITHUB_REPO/blob/main/docs/INSTALL.md) for details.
@@ -258,7 +263,7 @@ sub init {
         unless ($ENV{HOME}) {
             $ENV{HOME} = $ENV{USERPROFILE} || 'C:\Users\runneradmin';
         }
-    } elsif ($OS eq 'linux' || $OS eq 'macosx') {
+    } elsif ($OS eq 'linux' || $OS eq 'macosx' || $OS eq 'freebsd') {
         $TEMP = $ENV{TEMP} || $ENV{TMP} || '/tmp';
     }
     
@@ -313,7 +318,7 @@ sub prepare_buildroot {
         return;
     }
     
-    print "Preparing build directory for RPM/DEB/EXE...\n";
+    print "Preparing build directory for PKG/RPM/DEB/EXE...\n";
     
     remove_tree($BUILDROOT) if -d $BUILDROOT;
     make_path($BUILDROOT);
@@ -516,6 +521,7 @@ sub build_zip {
     return undef;
 }
 
+# 构建 RPM 包
 sub build_rpm {
     my $version = "$MAJOR.$MINOR";
     my $filename = "$PROJECT-$version";
@@ -636,11 +642,11 @@ sub build_rpm {
     }
 }
 
-# 构建 DEB 包（带详细检测）
+# 构建 DEB 包
 sub build_deb {
     my $version = "$MAJOR.$MINOR";
     my $filename = "$PROJECT-$version";
-    my $output = "$DESTI/${PROJECT}_$version-${RPMSUBVERSION}_all.deb";  # 注意：DEB 格式用 - 不是 _
+    my $output = "$DESTI/${PROJECT}_$version-${RPMSUBVERSION}_all.deb";
     
     print "\n🔨 Building DEB package: $filename\n";
     print "=" x 60, "\n";
@@ -691,7 +697,7 @@ sub build_deb {
     
     # 步骤4: 解析模板生成 debian 目录
     print "\n📋 Step 4: Generating debian packaging files from template...\n";
-    my $spec_template = "$SOURCE/make/deb/awstats.spec";  # 使用绝对路径
+    my $spec_template = "$SOURCE/make/deb/awstats.spec";
     if (! -f $spec_template) {
         print "  ❌ DEB spec template not found: $spec_template\n";
         print "  Looking in: " . Cwd::getcwd() . "/make/deb/awstats.spec\n";
@@ -844,7 +850,422 @@ sub parse_deb_template {
     return $file_count > 0;
 }
 
-# 构建 EXE 包（带调试）
+# 构建 FreeBSD PKG 包
+sub build_pkg {
+    my $version = "$MAJOR.$MINOR";
+    my $filename = "$PROJECT-$version";
+    my $output = "$DESTI/$PROJECT-$version-$PKGSUBVERSION.pkg";
+    
+    print "\n🔨 Building FreeBSD package: $filename\n";
+    print "=" x 60, "\n";
+    
+    # ==========================================================================
+    # 步骤1: 检查是否在 FreeBSD 系统
+    # ==========================================================================
+    if ($OS ne 'freebsd') {
+        print "  ⚠️ Not running on FreeBSD, skipping pkg build\n";
+        print "  💡 FreeBSD packages must be built on FreeBSD system\n";
+        return undef;
+    }
+    print "  ✅ Running on FreeBSD\n";
+    
+    # ==========================================================================
+    # 步骤2: 创建 staging 目录
+    # ==========================================================================
+    print "\n📋 Step 2: Creating staging directory...\n";
+    my $pkg_root = "$BUILDROOT/pkg-stage";
+    remove_tree($pkg_root) if -d $pkg_root;
+    make_path($pkg_root);
+    
+    my $src_dir = "$BUILDROOT/$filename";
+    if (!-d $src_dir) {
+        print "  ❌ Source directory not found: $src_dir\n";
+        return undef;
+    }
+    
+    # ==========================================================================
+    # 步骤3: 安装文件到 staging 目录 (Step 3: Installing files to staging directory)
+    # ==========================================================================
+    print "\n📋 Step 3: Installing files to staging directory...\n";
+
+    # 创建干净的 FreeBSD FHS 标准物理目录树
+    make_path("$pkg_root/usr/local/www/awstats");
+    make_path("$pkg_root/usr/local/www/awstats/cgi-bin");
+    make_path("$pkg_root/usr/local/www/awstats/classes");
+    make_path("$pkg_root/usr/local/www/awstats/css");
+    make_path("$pkg_root/usr/local/www/awstats/icon");
+    make_path("$pkg_root/usr/local/www/awstats/js");
+    make_path("$pkg_root/usr/local/www/awstats/tools");
+    make_path("$pkg_root/usr/local/share/doc/awstats");
+    make_path("$pkg_root/usr/local/etc/awstats");
+    make_path("$pkg_root/usr/local/bin");
+    make_path("$pkg_root/usr/local/etc/periodic/daily");
+    make_path("$pkg_root/usr/local/etc/periodic/monthly");
+
+    # 复制文件（严格捕获返回值，防止打包空目录）
+    print "  Copying wwwroot...\n";
+    system("cp -pr $src_dir/wwwroot/. $pkg_root/usr/local/www/awstats/");
+    die "Failed to copy wwwroot" if $? != 0;
+
+    print "  Copying tools...\n";
+    system("cp -pr $src_dir/tools/. $pkg_root/usr/local/www/awstats/");
+    die "Failed to copy tools" if $? != 0;
+
+    print "  Copying docs...\n";
+    system("cp -pr $src_dir/docs/. $pkg_root/usr/local/share/doc/awstats/");
+    die "Failed to copy docs" if $? != 0;
+
+    # 复制说明文档
+    foreach my $readme (qw(README.md README-*.md)) {
+        if (-f "$src_dir/$readme") {
+            copy("$src_dir/$readme", "$pkg_root/usr/local/share/doc/awstats/");
+        }
+    }
+
+    # 初始默认配置文件对齐
+    copy("$src_dir/wwwroot/cgi-bin/awstats.model.conf", "$pkg_root/usr/local/etc/awstats/awstats.model.conf");
+    copy("$src_dir/wwwroot/cgi-bin/awstats.conf", "$pkg_root/usr/local/etc/awstats/awstats.conf");
+    
+    open my $fh, '>', "$pkg_root/usr/local/etc/awstats/awstats.local.conf";
+    print $fh "# Local AWStats configuration\n";
+    close $fh;
+
+    # CLI 命令层面的可执行包装脚本
+    open my $wf, '>', "$pkg_root/usr/local/bin/awstats";
+    print $wf "#!/bin/sh\n";
+    print $wf "exec /usr/local/bin/perl /usr/local/www/awstats/cgi-bin/awstats.pl \"\$@\"\n";
+    close $wf;
+    chmod 0755, "$pkg_root/usr/local/bin/awstats";
+
+    # periodic 每日自动定时执行计划
+    open my $pf, '>', "$pkg_root/usr/local/etc/periodic/daily/awstats";
+    print $pf "#!/bin/sh\n";
+    print $pf "# AWStats daily update\n";
+    print $pf "/usr/local/bin/perl /usr/local/www/awstats/cgi-bin/awstats-update 2>/dev/null\n";
+    close $pf;
+    chmod 0755, "$pkg_root/usr/local/etc/periodic/daily/awstats";
+
+    print "  ✅ Files installed\n";
+
+    # --------------------------------------------------------------------------
+    # 创建每月自动执行的 DB-IP 城市级地理数据库更新脚本
+    # --------------------------------------------------------------------------
+    print "\n📋 Creating DB-IP update script...\n";
+    open my $dbip_fh, '>', "$pkg_root/usr/local/etc/periodic/monthly/awstats-dbip-update";
+    print $dbip_fh <<'EOF';
+#!/bin/sh
+# ------------------------------------------------------------------------------
+# Generated by AWStats, do not edit manually
+# 由 AWStats 自动生成，请勿手动编辑
+# To disable automatic updates, please delete this file
+# 若需禁用自动更新，请删除此文件
+# ------------------------------------------------------------------------------
+YEAR_MONTH=$(date +%Y-%m)
+DBIP_DIR="/usr/local/lib/perl5/Geo"
+DBIP_DEST="$DBIP_DIR/dbip-city.mmdb"
+DBIP_TEMP="$DBIP_DIR/dbip-city.mmdb.tmp"
+LOG_FILE="/var/log/dbip-update.log"
+
+if [ -f "$LOG_FILE" ] && [ $(cat "$LOG_FILE" | wc -l) -gt 30 ]; then
+    tail -n 30 "$LOG_FILE" > "$LOG_FILE.tmp"
+    mv "$LOG_FILE.tmp" "$LOG_FILE"
+fi
+
+mkdir -p "$DBIP_DIR"
+cd "$DBIP_DIR"
+
+if ! command -v fetch > /dev/null 2>&1; then
+    echo "$(date): fetch not installed, skipping update" >> "$LOG_FILE"
+    exit 1
+fi
+
+fetch -o "$DBIP_TEMP.gz" "https://download.db-ip.com/free/dbip-city-lite-${YEAR_MONTH}.mmdb.gz" 2>/dev/null
+if [ -s "$DBIP_TEMP.gz" ]; then
+    gunzip -f "$DBIP_TEMP.gz"
+fi
+
+if [ -s "$DBIP_TEMP" ]; then
+    mv "$DBIP_TEMP" "$DBIP_DEST"
+    chmod 644 "$DBIP_DEST"
+    echo "$(date): Updated to ${YEAR_MONTH}" >> "$LOG_FILE"
+else
+    rm -f "$DBIP_TEMP" "$DBIP_TEMP.gz"
+    echo "$(date): Update failed for ${YEAR_MONTH}" >> "$LOG_FILE"
+fi
+EOF
+    close $dbip_fh;
+    chmod 0755, "$pkg_root/usr/local/etc/periodic/monthly/awstats-dbip-update";
+    print "  ✅ Created monthly DB-IP update script\n";
+
+    # 严密验证：只统计纯净业务文件数量，彻底屏蔽元数据的文件计数污染
+    print "  Verifying files...\n";
+    my $file_count = 0;
+    use File::Find;
+    find(sub { 
+        return if $_ eq '.' || $_ eq '..';
+        $file_count++ if -f $File::Find::name && $File::Find::name !~ /\/\+/;
+    }, $pkg_root);
+    print "  Total files in staging (excluding metadata): $file_count\n";
+    
+    # ==========================================================================
+    # 步骤4: 初始化并生成核心清单 +MANIFEST (物理隔离写入专属元数据目录)
+    # ==========================================================================
+    print "\n📋 Step 4: Generating package manifest...\n";
+    
+    my $meta_stage = "/tmp/awstats-buildroot/meta-stage";
+    system("rm -rf '$meta_stage' && mkdir -p '$meta_stage'") == 0 or die "Cannot initialize meta-stage dir: $!";
+    
+    my $manifest_file = "$meta_stage/+MANIFEST";
+    open my $mf, '>', $manifest_file or die "Cannot create $manifest_file: $!";
+
+    use POSIX qw(strftime);
+    my $build_timestamp = strftime("%Y-%m-%dT%H:%M:%SZ", gmtime);
+    my $build_date      = strftime("%Y-%m-%d %H:%M:%S", localtime);
+
+    my $pkg_version = $version;
+    if ($PKGSUBVERSION && $PKGSUBVERSION > 0) {
+        $pkg_version .= "_$PKGSUBVERSION";
+    }
+
+    my $arch = `uname -m`; chomp $arch;
+    my $os_version = `freebsd-version | cut -d. -f1`; chomp $os_version;
+    my $freebsd_version = "$os_version:$arch";
+
+    print $mf "name: $PROJECT\n";
+    print $mf "version: $pkg_version\n";
+    print $mf "origin: www/$PROJECT\n";
+    print $mf "comment: Advanced Web Statistics Community Edition\n";
+    print $mf "maintainer: hestiacn\@tuta.io\n";
+    print $mf "www: https://awstats.org\n";
+    print $mf "prefix: /usr/local\n";
+    print $mf "licenses: [GPLv3]\n";
+    print $mf "categories: [www]\n";
+    print $mf "arch: $freebsd_version\n" if $freebsd_version;
+    
+    print $mf "options: {\n";
+    print $mf "    JSON: on,\n";
+    print $mf "    GEOIPFREE: on,\n";
+    print $mf "    IPV6: on,\n";
+    print $mf "    UTF8: on\n";
+    print $mf "}\n";
+    
+    print $mf "annotations: {\n";
+    print $mf "    build_timestamp: \"$build_timestamp\",\n";
+    print $mf "    build_date: \"$build_date\",\n";
+    print $mf "    built_by: \"hestia-automation-builder-v1\",\n";
+    print $mf "    cpe: \"cpe:2.3:a:hestiacn:awstats:$pkg_version:::::freebsd15:x64:1\"\n";
+    print $mf "}\n";
+    
+    print $mf "deps: {\n";
+    print $mf "    perl5: { origin: \"lang/perl5\" },\n";
+    print $mf "    p5-JSON-XS: { origin: \"converters/p5-JSON-XS\" },\n";
+    print $mf "    p5-Try-Tiny: { origin: \"lang/p5-Try-Tiny\" },\n";
+    print $mf "    p5-MaxMind-DB-Reader: { origin: \"net/p5-MaxMind-DB-Reader\" },\n";
+    print $mf "    wget: { origin: \"ftp/wget\" }\n";
+    print $mf "}\n";
+    print $mf "\n";
+    print $mf "desc: <<EOD\n";
+    print $mf "AWStats is short for Advanced Web Statistics. It's a free tool that
+    generates advanced web (but also ftp or mail) server statistics,
+    graphically.\n";
+    print $mf "\n";
+    print $mf "This log analyzer works as a CGI or from command line and shows you
+    all possible information that your logs contain, in a few graphical
+    web pages. It uses a partial information file to be able to process
+    large log files, often and quickly.\n";
+    print $mf "\n";
+    print $mf "It can analyze log files from IIS (W3C log format), Apache log files
+    (NCSA combined/XLF/ELF log format or common/CLF log format), WebStar
+    and most of all web, proxy, WAP, and streaming servers (and FTP
+    servers or mail logs).\n";
+    print $mf "EOD\n";
+    close $mf;
+
+    print "  Manifest version: $pkg_version\n";
+    print "  Architecture: $freebsd_version\n" if $freebsd_version;
+    print "  ✅ Created +MANIFEST inside metadata directory\n";
+
+    # ==========================================================================
+    # 步骤5: 生成安装包依赖文件列表清单 +PLIST
+    # ==========================================================================
+    print "\n📋 Step 5: Generating PLIST...\n";
+    my $plist_file = "$meta_stage/+PLIST";
+    open my $pfh, '>', $plist_file or die "Cannot create $plist_file: $!";
+
+    my @files = ();
+    find(sub {
+        return if $_ eq '.' || $_ eq '..';
+        my $fullpath = $File::Find::name;
+        my $relpath = $fullpath;
+        $relpath =~ s/^\Q$pkg_root\E//;
+        $relpath =~ s|^/||;
+        $relpath =~ s|^usr/local/||;
+        
+        if (-f $fullpath && $fullpath !~ /\/\+/ && $fullpath !~ /\.meta/) {
+            push @files, $relpath;
+        }
+    }, $pkg_root);
+
+    foreach my $file (sort @files) {
+        print $pfh "$file\n";
+    }
+    close $pfh;
+    print "  ✅ Created +PLIST (" . scalar(@files) . " files)\n";
+    
+    # --------------------------------------------------------------------------
+    # 创建符合 FreeBSD 包管理器标准的安装后脚本 +POST_INSTALL (写入专用元数据文件夹)
+    # --------------------------------------------------------------------------
+    print "\n📋 Creating POST_INSTALL script...\n";
+    my $postinstall_file = "$meta_stage/+POST_INSTALL";
+    open my $pi, '>', $postinstall_file or die "Cannot create $postinstall_file: $!";
+    print $pi <<'EOF';
+#!/bin/sh
+
+# 检查并下载 GeoIP 数据库
+mkdir -p /usr/local/lib/perl5/Geo
+
+DBIP_DIR="/usr/local/lib/perl5/Geo"
+DBIP_DEST="$DBIP_DIR/dbip-city.mmdb"
+
+if [ ! -f "$DBIP_DEST" ]; then
+    echo "Downloading GeoIP database..."
+    YEAR=$(date +%Y)
+    MONTH=$(date +%m)
+    DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${YEAR}-${MONTH}.mmdb.gz"
+    DBIP_TEMP_GZ="$DBIP_DIR/dbip-city-temp.mmdb.gz"
+    DBIP_TEMP="$DBIP_DIR/dbip-city-temp.mmdb"
+    
+    if command -v fetch > /dev/null 2>&1; then
+        fetch -o "$DBIP_TEMP_GZ" "$DBIP_URL" && \
+            gunzip -f "$DBIP_TEMP_GZ" && \
+            mv "$DBIP_TEMP" "$DBIP_DEST" && \
+            chmod 644 "$DBIP_DEST" && \
+            echo "✓ GeoIP database downloaded successfully"
+    else
+        echo "⚠️ fetch not installed, skipping GeoIP database download"
+    fi
+fi
+
+# 生成 awredir.pl 的随机密钥
+if [ -f /usr/local/www/awstats/cgi-bin/awredir.pl ]; then
+    echo "Generating random key for awredir.pl..."
+    if command -v openssl > /dev/null 2>&1; then
+        KEY=$(openssl rand -hex 16 2>/dev/null)
+    else
+        KEY=$(perl -e 'print int(rand(2**32))' 2>/dev/null)
+    fi
+    
+    if [ -n "$KEY" ]; then
+        sed -i '' "s/YOURKEYFORMD5/$KEY/" /usr/local/www/awstats/cgi-bin/awredir.pl
+        echo "✓ Random key generated for awredir.pl"
+    fi
+fi
+
+echo ""
+echo "=========================================="
+echo " AWStats 8.1-1 UTF-8 installation complete"
+echo "=========================================="
+echo " Main directory:     /usr/local/www/awstats"
+echo " CGI scripts:        /usr/local/www/awstats/cgi-bin/"
+echo " Configuration:      /usr/local/etc/awstats/"
+echo " Tools:              /usr/local/www/awstats/tools/"
+echo " Documentation:      /usr/local/share/doc/awstats/"
+echo "=========================================="
+echo " Configuration steps:"
+echo " 1. cp /usr/local/etc/awstats/awstats.model.conf \\"
+echo "    /usr/local/etc/awstats/awstats.yourdomain.conf"
+echo " 2. Edit the configuration file, set LogFile, SiteDomain, etc."
+echo " 3. Update statistics: /usr/local/bin/awstats -config=yourdomain -update"
+echo " 4. Access: http://yourdomain/awstats/awstats.pl?config=yourdomain"
+echo "=========================================="
+echo " Scheduled tasks:"
+echo "   Daily update:   /usr/local/etc/periodic/daily/awstats"
+echo "   Monthly DB update: /usr/local/etc/periodic/monthly/awstats-dbip-update"
+echo "=========================================="
+EOF
+    close $pi;
+    chmod 0755, $postinstall_file;
+    print "  ✅ Created +POST_INSTALL inside metadata directory\n";
+
+    # ==========================================================================
+    # 步骤6: 调用 FreeBSD 包编译器创建成品安装包
+    # ==========================================================================
+    print "\n📋 Step 6: Creating package...\n";
+    chdir($BUILDROOT);
+    
+    my $cmd = "pkg create -m '$meta_stage' -r '$pkg_root' -p '$meta_stage/+PLIST' -o '$DESTI' 2>&1";
+    print "  Running: $cmd\n";
+    my $result = system($cmd);
+
+    if ($result != 0) {
+        print "  ❌ Package creation failed\n";
+        return undef;
+    }
+
+    my $dh;
+    my @pkgs;
+
+    opendir($dh, $DESTI);
+    @pkgs = grep { /\.pkg$/ && -f "$DESTI/$_" } readdir($dh);
+    closedir($dh);
+
+    my @sorted = sort { -s "$DESTI/$b" <=> -s "$DESTI/$a" } @pkgs;
+    my $found = $sorted[0];
+
+    use File::Basename qw(basename);
+    use File::Copy qw(move);
+
+    if ($found) {
+        my $pkg_file = "$DESTI/$found";
+        print "  Found package: $found (" . (-s $pkg_file) . " bytes)\n";
+        
+        my $target_base = basename($output);
+        if ($found ne $target_base) {
+            unlink($output) if -f $output;
+            move($pkg_file, $output);
+            print "  ✅ Renamed to: $target_base\n";
+        }
+    }
+
+    # ==========================================================================
+    # 步骤7: 查找并严密验证最终生成的二进制包 (确保通过 GitHub Actions 流程断检)
+    # ==========================================================================
+    print "\n📋 Step 7: Locating and verifying generated package...\n";
+    print "  DESTI = $DESTI\n";
+    print "  Checking directory contents:\n";
+    system("ls -la $DESTI");
+    print "\n";
+
+    opendir($dh, $DESTI);
+    @pkgs = grep { /\.pkg$/ && -f "$DESTI/$_" } readdir($dh);
+    closedir($dh);
+
+    print "  Found packages: " . join(", ", @pkgs) . "\n";
+
+    if (@pkgs) {
+        my $final_pkg = $pkgs[0];
+        my $size = -s "$DESTI/$final_pkg";
+        print "  ✅ Package created: $final_pkg (" . int($size/1024) . " KB)\n";
+        
+        my $target_base = basename($output);
+        if ($final_pkg ne $target_base) {
+            move("$DESTI/$final_pkg", $output);
+            print "  ✅ Renamed to: $target_base\n";
+        }
+        
+        # 终极物理落盘安全阻断检查
+        if (-f $output) {
+            print "  ✅ Verified: $output successfully generated and verified!\n";
+            return $output;
+        } else {
+            print "  ❌ Warning: $output does not exist after final move\n";
+        }
+    }
+    
+    return undef;
+}
+
+# 构建 EXE 包
 sub build_exe {
     my $version = "$MAJOR.$MINOR";
     my $filename = "$PROJECT-$version";
@@ -887,15 +1308,13 @@ sub build_exe {
     }
     print "  ✅ Windows environment OK\n";
     
-    # 步骤2：检查 NSI 文件（不再重复检查 NSIS）
+    # 步骤2：检查 NSI 文件
     print "\n📋 Step 2: Checking NSI file...\n";
     my $nsi_file = File::Spec->catfile($SOURCE, 'make', 'exe', "$PROJECT.nsi");
     print "  Looking for: $nsi_file\n";
     
     unless (-f $nsi_file) {
         print "  ❌ NSI file not found\n";
-        # 列出可能的位置
-        print "  Files in make/exe:\n";
         my $exe_dir = File::Spec->catfile($SOURCE, 'make', 'exe');
         if (-d $exe_dir) {
             if (opendir(my $dh, $exe_dir)) {
@@ -903,8 +1322,6 @@ sub build_exe {
                     print "    - $f\n" if $f !~ /^\./;
                 }
                 closedir $dh;
-            } else {
-                print "    ⚠️ Cannot open directory: $!\n";
             }
         }
         return undef;
@@ -978,9 +1395,14 @@ sub main {
         print <<"USAGE";
 Usage: $0 [options]
 Options:
-  --target=LIST   Comma-separated list of targets (@TARGETS)
+  --target=LIST   Comma-separated list of targets (TGZ,ZIP,RPM,DEB,PKG,EXE)
   --publish       Publish to GitHub releases
   --help          Show this help
+
+Examples:
+  $0 --target=TGZ,ZIP
+  $0 --target=RPM,DEB,PKG
+  $0 --target=all --publish
 USAGE
         exit 0;
     }
@@ -996,7 +1418,11 @@ USAGE
     
     my @build_targets;
     if ($targets) {
-        @build_targets = split(/[,\s]+/, uc($targets));
+        if (lc($targets) eq 'all') {
+            @build_targets = @TARGETS;
+        } else {
+            @build_targets = split(/[,\s]+/, uc($targets));
+        }
     } else {
         @build_targets = @TARGETS;
     }
@@ -1017,6 +1443,9 @@ USAGE
         }
         elsif ($target eq 'DEB') {
             $file = build_deb();
+        }
+        elsif ($target eq 'PKG') {
+            $file = build_pkg();
         }
         elsif ($target eq 'EXE') {
             $file = build_exe();

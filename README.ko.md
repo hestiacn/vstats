@@ -91,7 +91,7 @@ StatsUrl="/vstats"                   # AWStats 배포 디렉토리
 | **RHEL/CentOS/Fedora** | [![Download .rpm](https://img.shields.io/badge/Download-.rpm_패키지-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
 | **소스 코드 (tar.gz)** | [![Download .tar.gz](https://img.shields.io/badge/Download-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
 | **소스 코드 (zip)** | [![Download .zip](https://img.shields.io/badge/Download-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![Download Windows](https://img.shields.io/badge/Download-Windows_버전-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.exe) |
+| **Windows** | [![Download Windows](https://img.shields.io/badge/Download-Windows_버전-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
 
 > **Windows 환경 참고**: Windows 버전은 EXE 설치 프로그램만 패키징되어 있으며, 디렉토리 구조와 경로는 실제로 테스트되지 않았습니다. 사용 중 문제가 발생하면 Issue 또는 Pull Request를 제출해 주세요.
 
@@ -193,33 +193,45 @@ HestiaCP에는 AWStats가 이미 포함되어 있습니다. 빌드된 `deb` 및 
 
 | 파일 유형 | 경로 | 참고 예제 |
 |:---:|:---:|:---:|
-| 템플릿 파일 | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/test/awstats/conf/awstats.tpl) |
+| 템플릿 파일 | `/usr/local/hestia/data/templates/web/awstats/awstats.tpl` | [awstats.tpl](/make/test/awstats/conf/awstats.tpl) |
 | 도메인 설정 디렉토리 | `/etc/awstats/` | - |
-| 업데이트 스크립트 (Debian/Ubuntu 및 파생판) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/test/awstats/conf/v-update-web-domain-stat.debian) |
-| 업데이트 스크립트 (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/test/awstats/conf/v-update-web-domain-stat.rhel) |
+| 업데이트 스크립트 (Debian/Ubuntu 및 파생판) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.debian](/make/test/awstats/conf/v-update-web-domain-stat) |
+| 업데이트 스크립트 (RHEL/CentOS/Rocky/Alma/Fedora) | `/usr/local/hestia/bin/v-update-web-domain-stat` | [v-update-web-domain-stat.rhel](/make/test/awstats/conf/v-update-web-domain-stat) |
 
 > 📌 **설명**: Debian 계열과 RHEL 계열의 스크립트 코드가 다릅니다. 사용 중인 운영체제에 따라 적절한 참고 예제를 선택하세요.
 
 > 💡 **힌트**: 스크립트 수정 후 권한 문제가 발생하면 `chmod +x /usr/local/hestia/bin/v-update-web-domain-stat`을 실행하세요.
 
-#### 다운로드 및 설치
+## 다운로드 및 설치
 
-```bash
-# HestiaCP 설치 시 설정 파일 업데이트 여부를 묻는 경우 N(기존 설정 유지)을 선택하세요
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
-```
+### HestiaCP 통합 배포
 
-### Debian/Ubuntu
+> ⚠️ **중요 알림**: HestiaCP 환경에서 설치할 때 시스템에서 구성 파일 업데이트를 요청하면 반드시 **`N`**(원본 구성 유지)을 선택하세요. 그렇지 않으면 HestiaCP 패널의 고유 라우팅 구성이 덮어쓰기됩니다.
 
 ```bash
 wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
 ```
 
-### RHEL/CentOS/Fedora
+### Debian / Ubuntu 기본 설치
 
 ```bash
-wget https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm
-dnf localinstall -y awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+```
+
+### RHEL / CentOS / Rocky Linux / Fedora
+
+```bash
+# 최신 DNF 표준 install 명령어 사용, Red Hat 생태계 전체에 완벽 호환
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+```
+
+### FreeBSD
+
+```bash
+# 설치 후 원클릭 잠금 방어 주입, 타사 관리 패널(예: Webmin)의 이전 버전 다운그레이드 오보를 완전히 제거
+fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
+pkg install -y /tmp/awstats-8.1-1.pkg && \
+pkg lock -y awstats
 ```
 
 ### 기본 설정

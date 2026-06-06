@@ -43,7 +43,7 @@ AWStats is no longer just a cold data page. Now you can easily embed your brand 
 
 Add the following to your AWStats configuration file(e.g., `/etc/awstats/awstats.yourdomain.conf`):
 
-**💡 Quick Reference:** You can directly review the optimized [awstats.tpl standard configuration template](/make/test/awstats/conf/awstats.tpl), which includes recommended branding settings and performance optimization parameters.
+**💡 Quick Reference:** You can directly review the optimized [awstats.tpl standard configuration template](/make/make/test/awstats/conf/awstats.tpl), which includes recommended branding settings and performance optimization parameters.
 
 ```perl
 # --- Brand Customization Settings ---

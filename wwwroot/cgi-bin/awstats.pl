@@ -25,13 +25,17 @@ use warnings;
 use utf8;
 use feature qw(say state);
 
-# Core Module
-use Time::Local;
-use Socket;
-# use Encode;
+# Standard Core
 use File::Spec;
+use POSIX qw(strftime);
+use Socket;
+use Time::Local;
+
+# Third-Party Modules
 use JSON::XS;
 use Try::Tiny;
+
+# use Encode;
 
 # Set UTF-8
 binmode STDOUT, ':utf8';
@@ -1574,144 +1578,145 @@ sub country_code_to_emoji {
 # Return:       None
 #------------------------------------------------------------------------------
 sub html_head {
-		return if $NOHTML;
-		return unless ( scalar keys %HTMLOutput || $PluginMode );
-		my $dir = $PageDir ? 'rtl' : 'ltr';
-		my $periodtitle = " ($YearRequired";
-		$periodtitle .= ( $MonthRequired ne 'all' ? "-$MonthRequired" : "" );
-		$periodtitle .= ( $DayRequired   ne ''    ? "-$DayRequired"   : "" );
-		$periodtitle .= ( $HourRequired  ne ''    ? "-$HourRequired"  : "" );
-		$periodtitle .= ")";
+    return if $NOHTML;
+    return unless ( scalar keys %HTMLOutput || $PluginMode );
 
-		# HTML5 文档类型
-		print "<!DOCTYPE html>\n";
-		print "<html lang=\"" . _t($Lang) . "\" dir=\"$dir\">\n";
-		print "<head>\n";
-		
-		# 元数据 - 现代标准
-		print "<meta charset=\"utf-8\">\n";
-		print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-		
-		# 生成器标签
-		print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
-		print "<link rel=\"icon\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"16x16\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
+    my $dir = $PageDir ? 'rtl' : 'ltr';
 
-		# 机器人控制
-		if ($MetaRobot) {
-			my $index = ($FrameName eq 'mainleft') ? 'noindex' : 'index';
-			my $follow = ($FrameName eq 'mainleft' || $FrameName eq 'index') ? 'follow' : 'nofollow';
-			print "<meta name=\"robots\" content=\"$index, $follow\">\n";
-		} else {
-			print "<meta name=\"robots\" content=\"noindex, nofollow\">\n";
+    # --- 1. Optimize Period Title Construction ---
+    my $periodtitle = " ($YearRequired";
+    $periodtitle .= "-$MonthRequired" if $MonthRequired ne 'all';
+    $periodtitle .= "-$DayRequired"   if $DayRequired   ne '';
+    $periodtitle .= "-$HourRequired"  if $HourRequired  ne '';
+    $periodtitle .= ")";
+
+    # --- 2. HTML5 Standard Headers (Modern DocType & Meta) ---
+    print "<!DOCTYPE html>\n";
+    print "<html lang=\"$Lang\" dir=\"$dir\">\n";
+    print "<head>\n";
+    print "<meta charset=\"utf-8\">\n";
+    print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
+
+    # --- 3. Clean SVG Favicon Injection via Here-Doc ---
+    print <<"EOF_FAVICON";
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
+<link rel="icon" type="image/svg+xml" sizes="16x16" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
+<link rel="icon" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
+<link rel="icon" sizes="512x512" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
+<link rel="manifest" href="$DirIcons/os/site.webmanifest">
+EOF_FAVICON
+
+    # --- 4. Robots Rule Controller ---
+    if ($MetaRobot) {
+        my $index  = ($FrameName eq 'mainleft') ? 'noindex' : 'index';
+        my $follow = ($FrameName eq 'mainleft' || $FrameName eq 'index') ? 'follow' : 'nofollow';
+        print "<meta name=\"robots\" content=\"$index, $follow\">\n";
+    } else {
+        print "<meta name=\"robots\" content=\"noindex, nofollow\">\n";
+    }
+
+    # --- 5. RFC 1123 HTTP-Compliant Expires Meta ---
+    if ($Expires) {
+        my $expires_gmt = strftime("%a, %d %b %Y %H:%M:%S GMT", gmtime($starttime + $Expires));
+        print "<meta http-equiv=\"expires\" content=\"$expires_gmt\">\n";
+    }
+
+    # --- 6. Page SEO Metadata & Title Generation ---
+    my @k = keys %HTMLOutput;
+    my $description = sprintf("%s - %s %s%s%s", 
+        ucfirst($PROG),
+        _t("Advanced Web Statistics for"),
+        $SiteDomain,
+        $periodtitle,
+        ($k[0] ? " - " . _t($k[0]) : "")
+    );
+    print "<meta name=\"description\" content=\"$description\">\n";
+
+    if ( $MetaRobot && $FrameName ne 'mainleft' ) {
+        print "<meta name=\"keywords\" content=\"$SiteDomain, web statistics, log analyzer, traffic analysis\">\n";
+    }
+
+    my $title = sprintf("%s %s%s", 
+        _t("Statistics for"),
+        $SiteDomain,
+        ($k[0] ? " - " . _t($k[0]) : "")
+    );
+    print "<title>$title</title>\n";
+
+    # --- 7. Stylesheets Injection ---
+    if ( $FrameName ne 'index' ) {
+        if ($StyleSheet) {
+            print "<link rel=\"stylesheet\" href=\"$StyleSheet\">\n";
+        } else {
+            # Modern CSS injection interface
+            print get_modern_css($dir);
+        }
+        
+        # UI Pre-translations
+        my $light_mode_text = _t("Switch to light mode");
+        my $dark_mode_text  = _t("Switch to dark mode");
+    }
+
+    # --- 8. Extensible Plugins Hook ---
+    foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLHeader'} } ) {
+        my $function = "AddHTMLHeader_$pluginname";
+        no strict 'refs';
+        &$function();
+    }
+
+    print "</head>\n";
+	
+	if ( $FrameName ne 'index' ) {
+		my $body_class = ($FrameName eq 'mainleft') ? 'class="aws-sidebar"' : 'class="aws-main"';
+		print "<body $body_class>";
+		print "<div class=\"aws-container\">";
+
+		# UI Language Text Translations
+		my $light_mode_text           = _t("Switch to light mode");
+		my $dark_mode_text            = _t("Switch to dark mode");
+		my $title                     = _t("AWStats Log Viewer");
+		my $back_to_top_text          = _t("Back to top");
+		
+		# Navigation Categories
+		my $nav_category_basic        = _t("nav_category_basic");
+		my $nav_category_guide        = _t("nav_category_guide");
+		my $nav_category_reference    = _t("nav_category_reference");
+		my $nav_category_integration  = _t("nav_category_integration");
+		my $nav_category_dev          = _t("nav_category_dev");
+		
+		# Document Links Localization
+		my $nav_changelog   = _t("nav_changelog");
+		my $nav_what        = _t("nav_what");
+		my $nav_license     = _t("nav_license");
+		my $nav_glossary    = _t("nav_glossary");
+		my $nav_setup       = _t("nav_setup");
+		my $nav_upgrade     = _t("nav_upgrade");
+		my $nav_config      = _t("nav_config");
+		my $nav_extra       = _t("nav_extra");
+		my $nav_tools       = _t("nav_tools");
+		my $nav_faq         = _t("nav_faq");
+		my $nav_security    = _t("nav_security");
+		my $nav_compare     = _t("nav_compare");
+		my $nav_benchmark   = _t("nav_benchmark");
+		my $nav_webmin      = _t("nav_webmin");
+		my $nav_dolibarr    = _t("nav_dolibarr");
+		my $nav_contrib     = _t("nav_contrib");
+		my $nav_plugins     = _t("nav_plugins");
+		my $nav_hooks       = _t("nav_hooks");
+		my $nav_graphs      = _t("nav_graphs");
+
+		# --- Optimized Time & Configuration Handling ---
+		my ($year, $month) = split('-', strftime("%Y-%m", localtime));
+
+		if (!$SiteConfig) {
+			$SiteConfig = $ENV{'HTTP_HOST'} || $ENV{'SERVER_NAME'} || 'default';
+			$SiteConfig =~ s/:\d+$//;
 		}
+		Read_Config();
 		
-		# 过期时间
-		if ($Expires) {
-			print "<meta http-equiv=\"expires\" content=\"" . gmtime( $starttime + $Expires ) . "\">\n";
-		}
-		
-		# 页面描述
-		my @k = keys %HTMLOutput;
-		my $description = sprintf("%s - %s %s%s%s", 
-			ucfirst($PROG),
-			_t("Advanced Web Statistics for"),
-			$SiteDomain,
-			$periodtitle,
-			($k[0] ? " - " . _t($k[0]) : "")
-		);
-		print "<meta name=\"description\" content=\"" . $description . "\">\n";
-		
-		# 关键词（可选）
-		if ( $MetaRobot && $FrameName ne 'mainleft' ) {
-			print "<meta name=\"keywords\" content=\"$SiteDomain, web statistics, log analyzer, traffic analysis\">\n";
-		}
-		
-		# 页面标题
-		my $title = sprintf("%s %s%s", 
-			_t("Statistics for"),
-			$SiteDomain,
-			($k[0] ? " - " . _t($k[0]) : "")
-		);
-		print "<title>$title</title>\n";
-		
-		# 样式表
-		if ( $FrameName ne 'index' ) {
-			if ($StyleSheet) {
-				print "<link rel=\"stylesheet\" href=\"$StyleSheet\">\n";
-			} else {
-				# 内置现代 CSS
-				print get_modern_css($dir);
-			}
-			
-			# 获取翻译文本
-			my $light_mode_text = _t("Switch to light mode");
-			my $dark_mode_text = _t("Switch to dark mode");
-		}
-		
-		# 插件钩子
-		foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLHeader'} } ) {
-			my $function = "AddHTMLHeader_$pluginname";
-			&$function();
-		}
-		
-		print "</head>\n";
-		
-		if ( $FrameName ne 'index' ) {
-			my $body_class = ($FrameName eq 'mainleft') ? 'class="aws-sidebar"' : 'class="aws-main"';
-			print "<body $body_class>";
-			print "<div class=\"aws-container\">";
-			my $light_mode_text = _t("Switch to light mode");
-			my $dark_mode_text = _t("Switch to dark mode");
-			my $title = _t("AWStats Log Viewer");
-			
-			my $nav_category_basic = _t("nav_category_basic");
-			my $nav_category_guide = _t("nav_category_guide");
-			my $nav_category_reference = _t("nav_category_reference");
-			my $nav_category_integration = _t("nav_category_integration");
-			my $nav_category_dev = _t("nav_category_dev");
-			
-			# 基础文档
-			my $nav_changelog = _t("nav_changelog");
-			my $nav_what = _t("nav_what");
-			my $nav_license = _t("nav_license");
-			my $nav_glossary = _t("nav_glossary");
-			
-			# 使用指南
-			my $nav_setup = _t("nav_setup");
-			my $nav_upgrade = _t("nav_upgrade");
-			my $nav_config = _t("nav_config");
-			my $nav_extra = _t("nav_extra");
-			my $nav_tools = _t("nav_tools");
-			
-			# 参考资源
-			my $nav_faq = _t("nav_faq");
-			my $nav_security = _t("nav_security");
-			my $nav_compare = _t("nav_compare");
-			my $nav_benchmark = _t("nav_benchmark");
-			
-			# 集成与扩展
-			my $nav_webmin = _t("nav_webmin");
-			my $nav_dolibarr = _t("nav_dolibarr");
-			my $nav_contrib = _t("nav_contrib");
-			
-			# 开发者文档
-			my $nav_plugins = _t("nav_plugins");
-			my $nav_hooks = _t("nav_hooks");
-			my $nav_graphs = _t("nav_graphs");
-			my $back_to_top_text = _t("Back to top");
-			my ($sec, $min, $hour, $mday, $mon, $year_num, $wday, $yday, $isdst) = localtime(time);
-			my $year = $year_num + 1900;
-			my $month = sprintf("%02d", $mon + 1);
-			if (!$SiteConfig) {
-				$SiteConfig = $ENV{'HTTP_HOST'} || $ENV{'SERVER_NAME'} || 'default';
-				$SiteConfig =~ s/:\d+$//;
-			}
-			Read_Config();
-			my $target = "/cgi-bin/awstats.pl?config=$SiteConfig&framename=mainright&year=$year&month=$month";
+		my $target = "/cgi-bin/awstats.pl?config=$SiteConfig&framename=mainright&year=$year&month=$month";
 
 print <<"END_BUTTON";
 <div class="header-right">
@@ -2686,61 +2691,78 @@ sub html_end {
 	
 	return unless scalar keys %HTMLOutput;
 		
-	# 插件钩子
+	# --- 1. Extensible Body Footer Plugins Hook ---
 	foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLBodyFooter'} } ) {
 		my $function = "AddHTMLBodyFooter_$pluginname";
+		no strict 'refs';
 		&$function();
 	}
 
-	return unless ( $FrameName ne 'index' && $FrameName ne 'mainleft' );
-	
-	print "</div> <!-- .aws-container -->\n";
-	print "<footer class=\"aws-footer\">\n";
+	# --- 2. Render HTML Footer Block (Content Pages Only) ---
+	if ( $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
+		print "</div> <!-- .aws-container -->\n";
+		print "<footer class=\"aws-footer\">\n";
+		print "<p class=\"footer-line\">\n";
 		
-	print "<p class=\"footer-line\">\n";
-	
-	printf("<b>%s <a href=\"https://github.com/hestiacn/vstats/releases/latest\" target=\"_blank\" rel=\"noopener noreferrer\">%s</a></b>\n", 
-		_t("Advanced Web Statistics"), 
-		$VERSION
-	);
-	
-	printf("<br> %s &copy; <span id=\"copyright-year\">1997</span> %s\n", 
-		_t("Copyright"), 
-		_t("AWStats Team")
-	);
-	
-	printf(" | %s <a href=\"https://www.awstats.org\" target=\"_blank\" rel=\"noopener\">%s</a>", 
-		sprintf(_t("Created by"), "<a href=\"https://github.com/eldy/AWStats\" target=\"_blank\" rel=\"noopener\"><img src=\"$DirIcons/os/github.svg\" alt=\"GitHub\" style=\"width:16px; height:16px; vertical-align:middle;\"></a>"),
-		$PROG
-	);
-	
-	if ($listplugins) {
-		my @plugins = keys %{ $PluginsLoaded{'init'} };
-		#if (@plugins) {
-		#    printf(" (%s: %s)", 
-		#        _t("plugins"), 
-		#        join(', ', @plugins)
-		#    );
-		#}
-		if (@plugins) {
-			my @display_plugins = @plugins;
-			for (my $i = 0; $i < @display_plugins; $i++) {
-				if ($display_plugins[$i] eq 'geoipfree') {
-					$display_plugins[$i] = 'geoipfree - ' . _t("dbip by") . ' <a href="https://db-ip.com" target="_blank" rel="noopener" title="' . _t("IPDB by") . '">dbip</a>';
+		my $brand_text = _t("Advanced Web Statistics");
+		print "<b>$brand_text <a href=\"https://github.com\" target=\"_blank\" rel=\"noopener noreferrer\">$VERSION</a></b>\n<br>\n";
+		
+		my $copyright_text = _t("Copyright");
+		my $team_text      = _t("AWStats Team");
+		print "$copyright_text &copy; <span id=\"copyright-year\">1997</span> $team_text\n";
+		
+		my $github_icon = "<a href=\"https://github.com\" target=\"_blank\" rel=\"noopener\"><img src=\"$DirIcons/os/github.svg\" alt=\"GitHub\" style=\"width:16px; height:16px; vertical-align:middle;\"></a>";
+		my $created_by_text = sprintf(_t("Created by"), $github_icon);
+		print " | $created_by_text <a href=\"https://awstats.org\" target=\"_blank\" rel=\"noopener\">$PROG</a>";
+		
+		if ($listplugins) {
+			my @plugins = keys %{ $PluginsLoaded{'init'} };
+            #if (@plugins) {
+            #    printf(" (%s: %s)", 
+            #        _t("plugins"), 
+            #        join(', ', @plugins)
+            #    );
+            #}
+			if (@plugins) {
+				my @display_plugins = @plugins;
+				for (my $i = 0; $i < @display_plugins; $i++) {
+					if ($display_plugins[$i] eq 'geoipfree') {
+						my $dbip_by = _t("dbip by");
+						my $ipdb_by = _t("IPDB by");
+						$display_plugins[$i] = "geoipfree - $dbip_by <a href=\"https://db-ip.com\" target=\"_blank\" rel=\"noopener\" title=\"$ipdb_by\">dbip</a>";
+					}
 				}
+				my $plugins_label = _t("plugins");
+				my $plugins_joined = join(', ', @display_plugins);
+				print " ($plugins_label: $plugins_joined)";
 			}
-			printf(" (%s: %s)", 
-				_t("plugins"), 
-				join(', ', @display_plugins)
-			);
 		}
+		
+		print "</p>\n";
+		print "<p class=\"footer-note-line\">" . _t($HTMLEndSection) . "</p>\n" if $HTMLEndSection;
+		print "</footer>\n";
 	}
-	
-	print "</p>\n";
-	print "<p class=\"footer-note-line\">" . _t($HTMLEndSection) . "</p>\n" if $HTMLEndSection;
-	print "</footer>\n";
 	print <<'END_SCRIPT';
 <script>
+(function() {
+	const savedTheme = localStorage.getItem('awstats-theme');
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+		document.documentElement.setAttribute('data-theme', 'dark');
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', () => updateThemeIcon('dark'));
+		} else {
+			updateThemeIcon('dark');
+		}
+	} else {
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', () => updateThemeIcon('light'));
+		} else {
+			updateThemeIcon('light');
+		}
+	}
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
 	const customSelect = document.querySelector('.custom-select');
 	if (customSelect) {
@@ -2810,6 +2832,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			dropdownItems.forEach(item => item.classList.remove('active'));
 		}
 	});
+
 	dropdownItems.forEach(item => {
 		const title = item.querySelector('.dropdown-title');
 		title.addEventListener('click', function(e) {
@@ -2824,6 +2847,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			content.addEventListener('click', e => e.stopPropagation());
 		}
 	});
+
 	document.addEventListener('keydown', function(e) {
 		if (e.key === 'Escape') {
 			dropdownItems.forEach(item => item.classList.remove('active'));
@@ -2847,17 +2871,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 });
-
-(function() {
-	const savedTheme = localStorage.getItem('awstats-theme');
-	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-		document.documentElement.setAttribute('data-theme', 'dark');
-		updateThemeIcon('dark');
-	} else {
-		updateThemeIcon('light');
-	}
-})();
 
 function toggleTheme() {
 	const html = document.documentElement;
@@ -2897,6 +2910,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 		} catch(e) {}
 	}
 });
+
 (function() {
 	const backToTopBtn = document.getElementById('back-to-top');
 	if (!backToTopBtn) return;
@@ -2931,6 +2945,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 		});
 	}
 })();
+
 (function() {
 	const yearSpan = document.getElementById('copyright-year');
 	if (yearSpan) {
@@ -2940,9 +2955,9 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =
 })();
 </script>
 END_SCRIPT
-		
-		print "</body>\n";
-		print "</html>";
+
+	print "</body>\n";
+	print "</html>\n";
 }
 #------------------------------------------------------------------------------
 # Function:		Print on stdout tab header of a chart
@@ -3043,11 +3058,12 @@ sub error {
 		print "<meta charset=\"utf-8\">\n";
 		print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
 		print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
-		print "<link rel=\"icon\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"16x16\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\"80\" font-size=\"80\">📊</text></svg>'>\n";
+		print "<link rel=\"icon\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"16x16\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"180\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+        print "<link rel=\"manifest\" href=\"$DirIcons/os/site.webmanifest\">\n";
 		print get_modern_css($dir ? 'rtl' : 'ltr');
 		print "</head><body><div class=\"aws-container\">\n";
 		$HeaderHTMLSent = 1;
@@ -4719,37 +4735,42 @@ sub Read_Language_Data {
 # Note:         Assumes UTF-8 input; falls back to English silently on error
 #------------------------------------------------------------------------------
 sub parse_po_file {
-	my $pofile = shift;
-	
-	if ( !open(PO, "<:encoding(UTF-8)", $pofile) ) {
+	my ($pofile) = @_;
+	my $fh;
+	if ( !open($fh, "<:encoding(UTF-8)", $pofile) ) {
 		warning("Warning: Cannot open .po file: $pofile");
 		return;
 	}
 	
-	my $msgid = '';
-	my $msgstr = '';
-	my $in_msgid = 0;
+	my $msgid    = undef;
+	my $msgstr   = undef;
+	my $in_msgid  = 0;
 	my $in_msgstr = 0;
 	
-	while (<PO>) {
+	while (<$fh>) {
 		chomp;
-		
-		# 跳过注释
-		next if /^#/;
+		next if /^\s*#/;
+		next if /^\s*$/;
 		
 		if (/^msgid\s+"(.*)"/) {
-			# 保存之前的翻译
-			if ($msgid && $msgstr) {
+			# 提交上一条记录：原位执行 unescape 逻辑
+			if (defined $msgid && defined $msgstr && $msgid ne '') {
+				$msgid  =~ s/\\n/\n/g;
+				$msgid  =~ s/\\\"/\"/g;
+				$msgid  =~ s/\\\\/\\/g;
+				$msgstr =~ s/\\n/\n/g;
+				$msgstr =~ s/\\\"/\"/g;
+				$msgstr =~ s/\\\\/\\/g;
 				store_translation($msgid, $msgstr);
 			}
-			$msgid = $1;
-			$msgstr = '';
-			$in_msgid = 1;
+			$msgid     = $1;
+			$msgstr    = undef;
+			$in_msgid  = 1;
 			$in_msgstr = 0;
 		}
 		elsif (/^msgstr\s+"(.*)"/) {
-			$msgstr = $1;
-			$in_msgid = 0;
+			$msgstr    = $1;
+			$in_msgid  = 0;
 			$in_msgstr = 1;
 		}
 		elsif (/^"(.*)"/) {
@@ -4762,12 +4783,18 @@ sub parse_po_file {
 		}
 	}
 	
-	# 保存最后一条翻译
-	if ($msgid && $msgstr) {
+	# 保存最后一条滑动的历史翻译记录
+	if (defined $msgid && defined $msgstr && $msgid ne '') {
+		$msgid  =~ s/\\n/\n/g;
+		$msgid  =~ s/\\\"/\"/g;
+		$msgid  =~ s/\\\\/\\/g;
+		$msgstr =~ s/\\n/\n/g;
+		$msgstr =~ s/\\\"/\"/g;
+		$msgstr =~ s/\\\\/\\/g;
 		store_translation($msgid, $msgstr);
 	}
 	
-	close(PO);
+	close($fh);
 }
 
 #------------------------------------------------------------------------------
@@ -4779,10 +4806,8 @@ sub parse_po_file {
 sub store_translation {
 	my ($msgid, $msgstr) = @_;
 	
-	# 存入哈希表
 	$translate_map{$msgid} = $msgstr;
 	
-	# 特殊处理 PageCode 和 PageDir
 	if ( $msgid eq 'PageCode' ) {
 		$PageCode = $msgstr;
 	}
@@ -11094,30 +11119,40 @@ sub DefinePerlParsingFormat {
 	@fieldlib          = ();
 	$PerlParsingFormat = '';
 #------------------------------------------------------------------------------
-# Log records examples:
-# Apache combined:             62.161.78.73 user - [dd/mmm/yyyy:hh:mm:ss +0000] "GET / HTTP/1.1" 200 1234 "http://www.from.com/from.htm" "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)"
-# Apache combined (408 error): my.domain.com - user [09/Jan/2001:11:38:51 -0600] "OPTIONS /mime-tmp/xxx file.doc HTTP/1.1" 408 - "-" "-"
-# Apache combined (408 error): 62.161.78.73 user - [dd/mmm/yyyy:hh:mm:ss +0000] "-" 408 - "-" "-"
-# Apache combined (400 error): 80.8.55.11 - - [28/Apr/2007:03:20:02 +0200] "GET /" 400 584 "-" "-"
-# IIS:                         2000-07-19 14:14:14 62.161.78.73 - GET / 200 1234 HTTP/1.1 Mozilla/4.0+(compatible;+MSIE+5.01;+Windows+NT+5.0) http://www.from.com/from.htm
-# WebStar:                     05/21/00	00:17:31	OK  	200	212.242.30.6	Mozilla/4.0 (compatible; MSIE 5.0; Windows 98; DigExt)	http://www.cover.dk/	"www.cover.dk"	:Documentation:graphics:starninelogo.white.gif	1133
-# Squid extended:              12.229.91.170 - - [27/Jun/2002:03:30:50 -0700] "GET http://www.callistocms.com/images/printable.gif HTTP/1.1" 304 354 "-" "Mozilla/5.0 Galeon/1.0.3 (X11; Linux i686; U;) Gecko/0" TCP_REFRESH_HIT:DIRECT
-# Log formats:
+# Log record examples (supports various web server formats):
+#
+# Apache combined (modern):    192.168.1.100 - - [03/Jun/2026:10:30:00 +0800] "GET /api/users HTTP/2.0" 200 2048 "https://example.com/referrer" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0"
+#
+# Apache combined (legacy):    62.161.78.73 user - [dd/mmm/yyyy:hh:mm:ss +0000] "GET / HTTP/1.1" 200 1234 "https://example.com/page.html" "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)"
+#
+# Apache error (408 timeout):  my.domain.com - user [09/Jan/2001:11:38:51 -0600] "OPTIONS /mime-tmp/xxx%20file.doc HTTP/1.1" 408 - "-" "-"
+#
+# Apache error (400 bad req):  80.8.55.11 - - [28/Apr/2007:03:20:02 +0200] "GET /" 400 584 "-" "-"
+#
+# IIS (Windows):               2026-06-03 10:30:00 192.168.1.100 - GET /api/users 200 2048 HTTP/2.0 Mozilla/5.0+(compatible;+Modern+Browser) https://example.com/referrer
+#
+# Nginx JSON:                  {"remote_addr":"192.168.1.100","time_local":"03/Jun/2026:10:30:00 +0800","request":"GET /api/users HTTP/2.0","status":200,"body_bytes_sent":2048,"http_referer":"https://example.com/referrer","http_user_agent":"Mozilla/5.0 ..."}
+#
+# Caddy (CLF):                 192.168.1.100 - - [03/Jun/2026:10:30:00 +0000] "GET /api/users HTTP/2.0" 200 2048
+#
+# Supported log format directives:
 # Apache common_with_mod_gzip_info1: %h %l %u %t \"%r\" %>s %b mod_gzip: %{mod_gzip_compression_ratio}npct.
 # Apache common_with_mod_gzip_info2: %h %l %u %t \"%r\" %>s %b mod_gzip: %{mod_gzip_result}n In:%{mod_gzip_input_size}n Out:%{mod_gzip_output_size}n:%{mod_gzip_compression_ratio}npct.
-# Apache deflate: %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" (%{ratio}n)
+# Apache deflate:                  %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" (%{ratio}n)
+#
+# Legacy formats (still supported):
+# WebStar:                     05/21/00	00:17:31	OK  	200	212.242.30.6	Mozilla/4.0 (compatible; MSIE 5.0; Windows 98; DigExt)	https://example.com	"example.com"	:Documentation:graphics:logo.gif	1133
+# Squid proxy:                 12.229.91.170 - - [27/Jun/2002:03:30:50 -0700] "GET https://example.com/page.gif HTTP/1.1" 304 354 "-" "Mozilla/5.0 Galeon/1.0.3" TCP_REFRESH_HIT:DIRECT
 #------------------------------------------------------------------------------
 	if ($Debug) {
-		debug(
-"Call To DefinePerlParsingFormat (LogType='$LogType', LogFormat='$LogFormat')"
-		);
+		debug("Call To DefinePerlParsingFormat (LogType='$LogType', LogFormat='$LogFormat')");
 	}
+    # Same than "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"".
+    # %u (user) is "([^\\/\\[]+)" instead of "[^ ]+" because can contain space (Lotus Notes). referer and ua might be "".
+    # $PerlParsingFormat="([^ ]+) [^ ]+ ([^\\/\\[]+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) (.+) [^\\\"]+\\\" ([\\d|-]+) ([\\d|-]+) \\\"(.*?)\\\" \\\"([^\\\"]*)\\\"";
 	if ( $LogFormat =~ /^[1-6]$/ ) {    # Pre-defined log format
 		if ( $LogFormat eq '1' || $LogFormat eq '6' )
-		{ 
-		  # Same than "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"".
-		  # %u (user) is "([^\\/\\[]+)" instead of "[^ ]+" because can contain space (Lotus Notes). referer and ua might be "".
-		  # $PerlParsingFormat="([^ ]+) [^ ]+ ([^\\/\\[]+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) (.+) [^\\\"]+\\\" ([\\d|-]+) ([\\d|-]+) \\\"(.*?)\\\" \\\"([^\\\"]*)\\\"";
+		{
 			$PerlParsingFormat = "([^ ]+) [^ ]+ ([^\\/\\[]+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) ([^ ]+)(?: [^\\\"]+|)\\\" ([\\d|-]+) ([\\d|-]+) \\\"(.*?)\\\" \\\"([^\\\"]*)\\\"";
 			$pos_host    = 0;
 			$pos_logname = 1;
@@ -11128,13 +11163,11 @@ sub DefinePerlParsingFormat {
 			$pos_size    = 6;
 			$pos_referer = 7;
 			$pos_agent   = 8;
-			@fieldlib    = (
-				'host', 'logname', 'date', 'method', 'url', 'code',
-				'size', 'referer', 'ua'
-			);
+			@fieldlib = ( 'host', 'logname', 'date', 'method', 'url', 'code', 'size', 'referer', 'ua' );
 		}
+        # Same than "date time c-ip cs-username cs-method cs-uri-stem sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)"
 		elsif ( $LogFormat eq '2' )
-		{ # Same than "date time c-ip cs-username cs-method cs-uri-stem sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)"
+		{
 			$PerlParsingFormat = "(\\S+ \\S+) (\\S+) (\\S+) (\\S+) (\\S+) ([\\d|-]+) ([\\d|-]+) \\S+ (\\S+) (\\S+)";
 			$pos_date    = 0;
 			$pos_host    = 1;
@@ -11145,10 +11178,7 @@ sub DefinePerlParsingFormat {
 			$pos_size    = 6;
 			$pos_agent   = 7;
 			$pos_referer = 8;
-			@fieldlib    = (
-				'date', 'host', 'logname', 'method', 'url', 'code',
-				'size', 'ua',   'referer'
-			);
+			@fieldlib = ( 'date', 'host', 'logname', 'method', 'url', 'code', 'size', 'ua', 'referer' );
 		}
 		elsif ( $LogFormat eq '3' ) {
 			$PerlParsingFormat = "([^\\t]*\\t[^\\t]*)\\t([^\\t]*)\\t([\\d|-]*)\\t([^\\t]*)\\t([^\\t]*)\\t([^\\t]*)\\t[^\\t]*\\t([^\\t]*)\\t([\\d]*)";
@@ -11160,15 +11190,13 @@ sub DefinePerlParsingFormat {
 			$pos_referer = 5;
 			$pos_url     = 6;
 			$pos_size    = 7;
-			@fieldlib    = (
-				'date', 'method',  'code', 'host',
-				'ua',   'referer', 'url',  'size'
-			);
+			@fieldlib = ( 'date', 'method', 'code', 'host', 'ua', 'referer', 'url', 'size' );
 		}
-		elsif ( $LogFormat eq '4' ) {    # Same than "%h %l %u %t \"%r\" %>s %b"
-			# %u (user) is "(.+)" instead of "[^ ]+" because can contain space (Lotus Notes).
-			# Sample: 10.100.10.45 - BMAA\will.smith [01/Jul/2013:07:17:28 +0200] "GET /Download/__Omnia__Aus- und Weiterbildung__Konsular- und Verwaltungskonferenz, Programm.doc HTTP/1.1" 200 9076810
-			# $PerlParsingFormat =  "([^ ]+) [^ ]+ (.+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) ([^ ]+)(?: [^\\\"]+|)\\\" ([\\d|-]+) ([\\d|-]+)";
+        # Same than "%h %l %u %t \"%r\" %>s %b"
+        # %u (user) is "(.+)" instead of "[^ ]+" because can contain space (Lotus Notes).
+        # Sample: 10.100.10.45 - BMAA\will.smith [01/Jul/2013:07:17:28 +0200] "GET /Download/__Omnia__Aus- und Weiterbildung__Konsular- und Verwaltungskonferenz, Programm.doc HTTP/1.1" 200 9076810
+        # $PerlParsingFormat =  "([^ ]+) [^ ]+ (.+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) ([^ ]+)(?: [^\\\"]+|)\\\" ([\\d|-]+) ([\\d|-]+)";
+		elsif ( $LogFormat eq '4' ) {
 			$PerlParsingFormat =  "([^ ]+) [^ ]+ (.+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) (.+) [^\\\"]+\\\" ([\\d|-]+) ([\\d|-]+)";
 			$pos_host    = 0;
 			$pos_logname = 1;
@@ -11177,8 +11205,7 @@ sub DefinePerlParsingFormat {
 			$pos_url     = 4;
 			$pos_code    = 5;
 			$pos_size    = 6;
-			@fieldlib    =
-			  ( 'host', 'logname', 'date', 'method', 'url', 'code', 'size' );
+			@fieldlib    = ( 'host', 'logname', 'date', 'method', 'url', 'code', 'size' );
 		}
 	}
 	elsif ( $LogFormat eq 'json' ) {
@@ -11199,13 +11226,12 @@ sub DefinePerlParsingFormat {
 			eval "\$$k = \$i;";
 		}
 	}
-	else {    # Personalized log format
+    # Personalized log format
+    # Replacement for Notes format string that are not Apache
+    # Replacement for Apache format string
+	else {
 		my $LogFormatString = $LogFormat;
-
-		# Replacement for Notes format string that are not Apache
 		$LogFormatString =~ s/%vh/%virtualname/g;
-
-		# Replacement for Apache format string
 		$LogFormatString =~ s/%v(\s)/%virtualname$1/g;
 		$LogFormatString =~ s/%v$/%virtualname/g;
 		$LogFormatString =~ s/%h(\s)/%host$1/g;
@@ -11227,18 +11253,16 @@ sub DefinePerlParsingFormat {
 		$LogFormatString =~ s/%\{mod_gzip_output_size}n/%gzipout/g;
 		$LogFormatString =~ s/%\{mod_gzip_compression_ratio}n/%gzipratio/g;
 		$LogFormatString =~ s/\(%\{ratio}n\)/%deflateratio/g;
-
-		# Replacement for a IIS and ISA format string
-		$LogFormatString =~ s/cs-uri-query/%query/g;    # Must be before cs-uri
+		$LogFormatString =~ s/cs-uri-query/%query/g;
 		$LogFormatString =~ s/date\stime/%time2/g;
 		$LogFormatString =~ s/c-ip/%host/g;
 		$LogFormatString =~ s/cs-username/%logname/g;
-		$LogFormatString =~ s/cs-method/%method/g;  # GET, POST, SMTP, RETR STOR
+		$LogFormatString =~ s/cs-method/%method/g;
 		$LogFormatString =~ s/cs-uri-stem/%url/g;
 		$LogFormatString =~ s/cs-uri/%url/g;
 		$LogFormatString =~ s/sc-status/%code/g;
 		$LogFormatString =~ s/sc-bytes/%bytesd/g;
-		$LogFormatString =~ s/cs-version/%other/g;  # Protocol
+		$LogFormatString =~ s/cs-version/%other/g;
 		$LogFormatString =~ s/cs\(User-Agent\)/%ua/g;
 		$LogFormatString =~ s/c-agent/%ua/g;
 		$LogFormatString =~ s/cs\(Referer\)/%referer/g;
@@ -11254,7 +11278,7 @@ sub DefinePerlParsingFormat {
 		$LogFormatString =~ s/cs-bytes/%other/g;
 		$LogFormatString =~ s/cs-protocol/%other/g;
 		$LogFormatString =~ s/cs-transport/%other/g;
-		$LogFormatString =~ s/s-operation/%method/g;    # GET, POST, SMTP, RETR STOR
+		$LogFormatString =~ s/s-operation/%method/g;
 		$LogFormatString =~ s/cs-mime-type/%other/g;
 		$LogFormatString =~ s/s-object-source/%other/g;
 		$LogFormatString =~ s/s-cache-info/%other/g;
@@ -11265,50 +11289,33 @@ sub DefinePerlParsingFormat {
 		$LogFormatString =~ s/cs\(Cookie\)/%other/g;
 		$LogFormatString =~ s/sc-substatus/%other/g;
 		$LogFormatString =~ s/sc-win32-status/%other/g;
-
-
-		# Added for MMS
-		$LogFormatString =~
-		  s/protocol/%protocolmms/g;    # cs-method might not be available
-		$LogFormatString =~
-		  s/c-status/%codemms/g;    # c-status used when sc-status not available
+		$LogFormatString =~ s/protocol/%protocolmms/g;
+		$LogFormatString =~ s/c-status/%codemms/g;
 		if ($Debug) { debug(" LogFormatString=$LogFormatString"); }
-
 		# $LogFormatString has an AWStats format, so we can generate PerlParsingFormat variable
 		my $i                       = 0;
 		my $LogSeparatorWithoutStar = $LogSeparator;
 		$LogSeparatorWithoutStar =~ s/[\*\+]//g;
 		foreach my $f ( split( /\s+/, $LogFormatString ) ) {
-
-			# Add separator for next field
-			if ($PerlParsingFormat) { $PerlParsingFormat .= "$LogSeparator"; }
-
-			# If field is prefixed with custom string, just push it to regex literally
-			if ( $f =~ /^([^%]+)%/ ) {
-				$PerlParsingFormat .= "$1"
-						}
-
-			# Special for logname
-			if ( $f =~ /%lognamequot$/ ) {
-				$pos_logname = $i;
-				$i++;
-				push @fieldlib, 'logname';
-				$PerlParsingFormat .=
-				  "\\\"?([^\\\"]*)\\\"?"
-				  ; # logname can be "value", "" and - in same log (Lotus notes)
-			}
+            if ($PerlParsingFormat) { $PerlParsingFormat .= "$LogSeparator"; }
+            # If field is prefixed with custom string, just push it to regex literally
+            if ( $f =~ /^([^%]+)%/ ) { $PerlParsingFormat .= "$1"; }
+            # logname can be "value", "" and - in same log (Lotus notes)
+            elsif ( $f =~ /%lognamequot$/ ) {
+                $pos_logname = $i;
+                $i++;
+                push @fieldlib, 'logname';
+                $PerlParsingFormat .= "\\\"?([^\\\"]*)\\\"?";
+            }
+            # %u (user) is "([^\\/\\[]+)" instead of "[^$LogSeparatorWithoutStar]+" because can contain space (Lotus Notes).
 			elsif ( $f =~ /%logname$/ ) {
 				$pos_logname = $i;
 				$i++;
 				push @fieldlib, 'logname';
-
-			# %u (user) is "([^\\/\\[]+)" instead of "[^$LogSeparatorWithoutStar]+" because can contain space (Lotus Notes).
 				$PerlParsingFormat .= "([^\\/\\[]+)";
 			}
-
-			# Date format
-			elsif ( $f =~ /%time1$/ || $f =~ /%time1b$/ )
-			{ # [dd/mmm/yyyy:hh:mm:ss +0000] or [dd/mmm/yyyy:hh:mm:ss],  time1b kept for backward compatibility
+            # [dd/mmm/yyyy:hh:mm:ss +0000] or [dd/mmm/yyyy:hh:mm:ss],  time1b kept for backward compatibility
+			elsif ( $f =~ /%time1$/ || $f =~ /%time1b$/ ) {
 				$pos_date = $i;
 				$i++;
 				push @fieldlib, 'date';
@@ -11317,32 +11324,34 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'tz';
 				$PerlParsingFormat .= "\\[([^$LogSeparatorWithoutStar]+)( [^$LogSeparatorWithoutStar]+)?\\]";
 			}
-			elsif ( $f =~ /%time2$/ ) {    # yyyy-mm-dd hh:mm:ss
+            # yyyy-mm-dd hh:mm:ss
+            # Need \s for Exchange log files
+			elsif ( $f =~ /%time2$/ ) {
 				$pos_date = $i;
 				$i++;
 				push @fieldlib, 'date';
-				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+\\s[^$LogSeparatorWithoutStar]+)";                        # Need \s for Exchange log files
+				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+\\s[^$LogSeparatorWithoutStar]+)";
 			}
-			elsif ( $f =~ /%time3$/ )
-			{ # mon d hh:mm:ss  or  mon  d hh:mm:ss  or  mon dd hh:mm:ss yyyy  or  day mon dd hh:mm:ss  or  day mon dd hh:mm:ss yyyy
+            # mon d hh:mm:ss  or  mon  d hh:mm:ss  or  mon dd hh:mm:ss yyyy  or  day mon dd hh:mm:ss  or  day mon dd hh:mm:ss yyyy
+			elsif ( $f =~ /%time3$/ ) {
 				$pos_date = $i;
 				$i++;
 				push @fieldlib, 'date';
 				$PerlParsingFormat .= "(?:\\w\\w\\w )?(\\w\\w\\w \\s?\\d+ \\d\\d:\\d\\d:\\d\\d(?: \\d\\d\\d\\d)?)";
 			}
-			elsif ( $f =~ /%time4$/ ) {    # ddddddddddddd
+			elsif ( $f =~ /%time4$/ ) {
 				$pos_date = $i;
 				$i++;
 				push @fieldlib, 'date';
 				$PerlParsingFormat .= "(\\d+)";
 			}
+            # Supports the following formats:
+            # - yyyy-mm-ddThh:mm:ss           (Incomplete ISO 8601)
+            # - yyyy-mm-ddThh:mm:ssZ          (ISO 8601, zero meridian)
+            # - yyyy-mm-ddThh:mm:ss+00:00     (ISO 8601)
+            # - yyyy-mm-ddThh:mm:ss+0000      (Apache's best approximation to ISO 8601 using "%{%Y-%m-%dT%H:%M:%S%z}t" in LogFormat)
+            # - yyyy-mm-ddThh:mm:ss.000000Z   (Amazon AWS log files)
 			elsif ( $f =~ /%time5$/ ) {
-				# Supports the following formats:
-				# - yyyy-mm-ddThh:mm:ss           (Incomplete ISO 8601)
-				# - yyyy-mm-ddThh:mm:ssZ          (ISO 8601, zero meridian)
-				# - yyyy-mm-ddThh:mm:ss+00:00     (ISO 8601)
-				# - yyyy-mm-ddThh:mm:ss+0000      (Apache's best approximation to ISO 8601 using "%{%Y-%m-%dT%H:%M:%S%z}t" in LogFormat)
-				# - yyyy-mm-ddThh:mm:ss.000000Z   (Amazon AWS log files)
 				$pos_date = $i;
 				$i++;
 				push @fieldlib, 'date';
@@ -11351,14 +11360,15 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'tz';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+T[^$LogSeparatorWithoutStar]+)(Z|[-+\.]\\d\\d[:\\.\\dZ]*)?";
 			}
-			elsif ( $f =~ /%time6$/ ) {	# dd/mm/yyyy, hh:mm:ss - added additional type to format for IIS date -DWG 12/8/2008
+            # dd/mm/yyyy, hh:mm:ss - added additional type to format for IIS date -DWG 12/8/2008
+			elsif ( $f =~ /%time6$/ ) {
 				$pos_date = $i;	
 				$i++; 
 				push @fieldlib, 'date';
 				$PerlParsingFormat .= "([^,]+,[^,]+)";
 			}
-
-			# Special for methodurl, methodurlprot and methodurlnoprot
+            # Special for methodurl, methodurlprot and methodurlnoprot
+            #"\\\"([^$LogSeparatorWithoutStar]+) ([^$LogSeparatorWithoutStar]+) [^\\\"]+\\\"";
 			elsif ( $f =~ /%methodurl$/ ) {
 				$pos_method = $i;
 				$i++;
@@ -11366,7 +11376,6 @@ sub DefinePerlParsingFormat {
 				$pos_url = $i;
 				$i++;
 				push @fieldlib, 'url';
-									#"\\\"([^$LogSeparatorWithoutStar]+) ([^$LogSeparatorWithoutStar]+) [^\\\"]+\\\"";
 				$PerlParsingFormat .= "\\\"([^$LogSeparatorWithoutStar]+) ([^$LogSeparatorWithoutStar]+)(?: [^\\\"]+|)\\\"";
 			}
 			elsif ( $f =~ /%methodurlprot$/ ) {
@@ -11388,7 +11397,6 @@ sub DefinePerlParsingFormat {
 				$PerlParsingFormat .= "\\\"([^$LogSeparatorWithoutStar]+) ([^$LogSeparatorWithoutStar]+)\\\"";
 			}
 
-			# Common command tags
 			elsif ( $f =~ /%virtualnamequot$/ ) {
 				$pos_vh = $i;
 				$i++;
@@ -11413,8 +11421,7 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'host';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-			elsif ( $f =~ /%host_proxy$/ )
-			{    # if host_proxy tag used, host tag must not be used
+			elsif ( $f =~ /%host_proxy$/ ) {
 				$pos_host = $i;
 				$i++;
 				push @fieldlib, 'host';
@@ -11451,16 +11458,16 @@ sub DefinePerlParsingFormat {
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
 			elsif ( $f =~ /%rqtime$/ ) {
-					$pos_time = $i;
-					$i++;
-					push @fieldlib, 'requesttime';
-					$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
+				$pos_time = $i;
+				$i++;
+				push @fieldlib, 'requesttime';
+				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
 			elsif ( $f =~ /%refererquot$/ ) {
 				$pos_referer = $i;
 				$i++;
 				push @fieldlib, 'referer';
-				$PerlParsingFormat .= "\\\"([^\\\"]*)\\\"";    # referer might be ""
+				$PerlParsingFormat .= "\\\"([^\\\"]*)\\\"";
 			}
 			elsif ( $f =~ /%referer$/ ) {
 				$pos_referer = $i;
@@ -11472,13 +11479,13 @@ sub DefinePerlParsingFormat {
 				$pos_agent = $i;
 				$i++;
 				push @fieldlib, 'ua';
-				$PerlParsingFormat .= "\\\"([^\\\"]*)\\\"";    # ua might be ""
+				$PerlParsingFormat .= "\\\"([^\\\"]*)\\\"";
 			}
 			elsif ( $f =~ /%uabracket$/ ) {
 				$pos_agent = $i;
 				$i++;
 				push @fieldlib, 'ua';
-				$PerlParsingFormat .= "\\\[([^\\\]]*)\\\]";    # ua might be []
+				$PerlParsingFormat .= "\\\[([^\\\]]*)\\\]";
 			}
 			elsif ( $f =~ /%ua$/ ) {
 				$pos_agent = $i;
@@ -11498,22 +11505,22 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'gzipin';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-			elsif ( $f =~ /%gzipout/ )
-			{ # Compare $f to /%gzipout/ and not to /%gzipout$/ like other fields
+            # Compare $f to /%gzipout/ and not to /%gzipout$/ like other fields
+			elsif ( $f =~ /%gzipout/ ) {
 				$pos_gzipout = $i;
 				$i++;
 				push @fieldlib, 'gzipout';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-			elsif ( $f =~ /%gzipratio/ )
-			{ # Compare $f to /%gzipratio/ and not to /%gzipratio$/ like other fields
+            # Compare $f to /%gzipratio/ and not to /%gzipratio$/ like other fields
+			elsif ( $f =~ /%gzipratio/ ) {
 				$pos_compratio = $i;
 				$i++;
 				push @fieldlib, 'gzipratio';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-			elsif ( $f =~ /%deflateratio/ )
-			{ # Compare $f to /%deflateratio/ and not to /%deflateratio$/ like other fields
+            # Compare $f to /%deflateratio/ and not to /%deflateratio$/ like other fields
+			elsif ( $f =~ /%deflateratio/ ) {
 				$pos_compratio = $i;
 				$i++;
 				push @fieldlib, 'deflateratio';
@@ -11543,8 +11550,7 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'timetaken';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-
-			# Special for protocolmms, used for method if method not already found (for MMS)
+            # Special for protocolmms, used for method if method not already found (for MMS)
 			elsif ( $f =~ /%protocolmms$/ ) {
 				if ( $pos_method < 0 ) {
 					$pos_method = $i;
@@ -11553,8 +11559,7 @@ sub DefinePerlParsingFormat {
 					$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 				}
 			}
-
-   			# Special for codemms, used for code only if code not already found (for MMS)
+            # Special for codemms, used for code only if code not already found (for MMS)
 			elsif ( $f =~ /%codemms$/ ) {
 				if ( $pos_code < 0 ) {
 					$pos_code = $i;
@@ -11563,24 +11568,22 @@ sub DefinePerlParsingFormat {
 					$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 				}
 			}
-
-			# Extra tag
+			
 			elsif ( $f =~ /%extra(\d+)$/ ) {
 				$pos_extra[$1] = $i;
 				$i++;
 				push @fieldlib, "extra$1";
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-
-			# Other tag
+			
 			elsif ( $f =~ /%other$/ ) {
 				$PerlParsingFormat .= "[^$LogSeparatorWithoutStar]+";
 			}
+
 			elsif ( $f =~ /%otherquot$/ ) {
 				$PerlParsingFormat .= "\\\"[^\\\"]*\\\"";
 			}
-
-			# Unknown tag (no parenthesis)
+			
 			else {
 				$PerlParsingFormat .= "[^$LogSeparatorWithoutStar]+";
 			}
@@ -11604,11 +11607,6 @@ sub DefinePerlParsingFormat {
 	if ( $pos_code < 0 ) {
 		error( "Your personalized LogFormat does not include all fields required by AWStats (Add \%code in your LogFormat string)." );
 	}
-#	if ( $pos_size < 0 ) {
-#		error(
-#"Your personalized LogFormat does not include all fields required by AWStats (Add \%bytesd in your LogFormat string)."
-#		);
-#	}
 	$PerlParsingFormat = qr/^$PerlParsingFormat/;
 	if ($Debug) { debug(" PerlParsingFormat is $PerlParsingFormat"); }
 }
@@ -11996,27 +11994,41 @@ sub get_theme_script {
 <script>
 (function() {
 	const savedTheme = localStorage.getItem('awstats-theme');
-	if (savedTheme === 'dark') {
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const activeTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+	
+	if (activeTheme === 'dark') {
 		document.documentElement.setAttribute('data-theme', 'dark');
+	} else {
+		document.documentElement.removeAttribute('data-theme');
 	}
 	
+	function broadcastTheme(theme) {
+		const targetFrames = ['nav', 'stats', 'mainleft', 'mainright'];
+		targetFrames.forEach(frameName => {
+			try {
+				const frame = document.getElementsByName(frameName)[0] || document.getElementById(frameName);
+				if (frame && frame.contentWindow) {
+					frame.contentWindow.postMessage({ theme: theme }, '*');
+				}
+			} catch (err) {
+			}
+		});
+	}
+
 	window.addEventListener('storage', function(e) {
-		if (e.key === 'awstats-theme') {
+		if (e.key === 'awstats-theme' && e.newValue) {
 			document.documentElement.setAttribute('data-theme', e.newValue);
-			const navFrame = document.getElementsByName('nav')[0];
-			const statsFrame = document.getElementsByName('stats')[0];
-			if (navFrame && navFrame.contentWindow) {
-				navFrame.contentWindow.postMessage({ theme: e.newValue }, '*');
-			}
-			if (statsFrame && statsFrame.contentWindow) {
-				statsFrame.contentWindow.postMessage({ theme: e.newValue }, '*');
-			}
+			broadcastTheme(e.newValue);
 		}
 	});
 	
 	window.addEventListener('message', function(e) {
 		if (e.data && e.data.theme) {
 			document.documentElement.setAttribute('data-theme', e.data.theme);
+			if (window.top === window.self) {
+				broadcastTheme(e.data.theme);
+			}
 		}
 	});
 })();
@@ -12033,7 +12045,7 @@ sub generate_what_doc {
 	my ($dir) = @_;
 	
 	my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $theme_script = get_theme_script();
 	my $full_title = _t("docs.what.subtitle") . " - " . "$page_title";
 	my $doc_title = _t("docs.what.subtitle");
@@ -12045,25 +12057,16 @@ sub generate_what_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--section-location:#3b82f6;--section-hooks:#10b981;--section-variables:#f59e0b;--section-accessible:#8b5cf6;--section-functions:#ec4899}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--section-location:#60a5fa;--section-hooks:#34d399;--section-variables:#fbbf24;--section-accessible:#a78bfa;--section-functions:#f472b6}.what-content{max-width:1200px;margin:0 auto;padding:20px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:var(--text-color);background-color:var(--bg-color)}body{margin:0;padding:0;background-color:var(--bg-color);color:var(--text-color);transition:background-color 0.3s,color 0.3s}.page-header{text-align:center;margin-bottom:40px;padding-bottom:20px;border-bottom:2px solid var(--border-color)}.page-header h1{font-size:2.5rem;color:var(--text-color);margin-bottom:10px}.page-header .subtitle{font-size:1.2rem;color:var(--text-color);opacity:0.7}h2{font-size:1.8rem;color:var(--text-color);margin:40px 0 20px;padding-bottom:10px;border-bottom:2px solid var(--section-location);display:inline-block}.intro-section{margin-bottom:40px}.intro-box{background:var(--card-bg);padding:30px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.05);border-left:5px solid var(--section-location);font-size:1.1rem;border:1px solid var(--border-color)}.intro-box p{margin:15px 0;color:var(--text-color)}.intro-box u{text-decoration:none;font-weight:600;color:var(--section-location)}.intro-box b{color:var(--text-color)}.history-section{margin-bottom:40px}.history-box{background:var(--card-bg);padding:25px;border-radius:12px;box-shadow:0 4px 6px rgba(0,0,0,0.05);border:1px solid var(--border-color)}.history-box a{color:var(--link-color);text-decoration:none;font-weight:500}.history-box a:hover{text-decoration:underline}.features-section{margin-bottom:40px}.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:25px;margin-top:30px}.feature-item{background:var(--card-bg);border-radius:12px;padding:25px 20px;box-shadow:0 4px 6px rgba(0,0,0,0.05);border:1px solid var(--border-color);transition:transform 0.2s,box-shadow 0.2s}.feature-item:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,0.1);border-color:var(--section-location)}.feature-icon{font-size:2.5rem;margin-bottom:15px;text-align:center}.feature-item h4{font-size:1.3rem;color:var(--text-color);margin:0 0 15px;text-align:center;border-bottom:2px solid var(--border-color);padding-bottom:10px}.feature-item ul{list-style:none;padding:0;margin:0}.feature-item li{padding:8px 0;border-bottom:1px dashed var(--border-color);color:var(--text-color);opacity:0.9}.feature-item li:last-child{border-bottom:none}.feature-item u{text-decoration:none;font-weight:600;color:var(--section-location);background:var(--code-bg);padding:2px 6px;border-radius:4px;font-size:0.9rem}.requirements-section{margin-bottom:40px}.requirements-box{background:var(--card-bg);padding:30px;border-radius:12px;border:1px solid var(--border-color)}.requirements-box h4{font-size:1.3rem;color:var(--text-color);margin:25px 0 15px}.requirements-box h4:first-of-type{margin-top:0}.requirements-box ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}.requirements-box li{padding:8px 15px;background:var(--code-bg);border-radius:30px;border:1px solid var(--border-color);font-size:0.95rem;color:var(--text-color)}.requirements-box .note{margin-top:25px;padding:15px 20px;background:var(--code-bg);border-left:5px solid var(--section-variables);border-radius:8px;color:var(--text-color)}.compare-section{margin-bottom:40px;overflow-x:auto}.compare-table{width:100%;border-collapse:collapse;background:var(--card-bg);border-radius:12px;overflow:hidden;box-shadow:0 4px 6px rgba(0,0,0,0.05);margin:20px 0}.compare-table th{background:var(--header-bg);color:var(--text-color);padding:15px;text-align:left;font-weight:600;border-bottom:2px solid var(--section-location)}.compare-table td{padding:12px 15px;border-bottom:1px solid var(--border-color);color:var(--text-color)}.compare-table tr:last-child td{border-bottom:none}.compare-table tr:nth-child(even){background:var(--code-bg)}.compare-table td:first-child{font-weight:600;color:var(--text-color);background:var(--header-bg)}.compare-table .table-note{margin-top:15px;padding:10px 15px;background:var(--code-bg);border-radius:8px;color:var(--text-color);font-style:italic;border-left:3px solid var(--section-hooks)}.scenarios-section{margin-bottom:40px}.scenarios-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:25px;margin-top:30px}.scenario-card{background:var(--card-bg);border-radius:12px;padding:25px;box-shadow:0 4px 6px rgba(0,0,0,0.05);border:1px solid var(--border-color);transition:all 0.3s}.scenario-card:hover{border-color:var(--section-location);box-shadow:0 10px 20px rgba(59,130,246,0.1)}.scenario-icon{font-size:2.5rem;margin-bottom:15px}.scenario-card h3{font-size:1.3rem;color:var(--text-color);margin:0 0 15px;padding-bottom:10px;border-bottom:2px solid var(--border-color)}.scenario-card p{color:var(--text-color);opacity:0.9;margin:0;line-height:1.6}.more-section{margin:50px 0 30px}.more-links{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:25px}.more-link{display:inline-flex;align-items:center;padding:12px 25px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:40px;color:var(--text-color);text-decoration:none;transition:all 0.2s;font-weight:500}.more-link:hover{background:var(--section-location);border-color:var(--section-location);color:#ffffff;transform:translateY(-2px);box-shadow:0 5px 15px rgba(59,130,246,0.3)}.more-icon{font-size:1.2rem;margin-right:8px}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}\@media (max-width:768px){.page-header h1{font-size:2rem}.page-header .subtitle{font-size:1rem}h2{font-size:1.5rem}.features-grid{grid-template-columns:1fr}.requirements-box ul{grid-template-columns:1fr}.scenarios-grid{grid-template-columns:1fr}.more-links{flex-direction:column;align-items:stretch}.more-link{justify-content:center}.compare-table{font-size:0.9rem}.compare-table th,.compare-table td{padding:10px 8px}}\@media (max-width:480px){.what-content{padding:15px}.intro-box,.history-box,.requirements-box,.scenario-card{padding:20px}.feature-item{padding:20px 15px}.more-link{padding:10px 20px}}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 		$content
 	<div id="sponsor" class="section">
 	$SPONSOR_SECTION
 	</div>
 	$theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -12081,7 +12084,7 @@ sub generate_changelog_doc {
 	my $doc_title = _t("docs.changelog.title");
 	my $subtitle = _t("docs.changelog.subtitle");
 	my $warning = _t("docs.changelog.warning");
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $changelog_8_1_date = _t("changelog.8.1.date");
 	my $changelog_8_1_version = _t("changelog.8.1.version");
 	my $Community = _t("Community Edition");
@@ -12277,17 +12280,10 @@ sub generate_changelog_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--surface-secondary:#f9fafb;--timeline-color:#3b82f6;--warning-bg:#fff3cd;--warning-border:#ffeeba;--warning-color:#856404;--series-8:#8b5cf6;--series-7:#10b981;--series-6:#f59e0b;--series-5:#ef4444;--series-4:#6366f1;--series-3:#ec4899;--series-2:#14b8a6;--series-1:#f97316;--series-early:#6b7280}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--surface-secondary:#1f2937;--timeline-color:#60a5fa;--warning-bg:#332e1c;--warning-border:#665c2c;--warning-color:#ffd966;--series-8:#a78bfa;--series-7:#34d399;--series-6:#fbbf24;--series-5:#f87171;--series-4:#818cf8;--series-3:#f472b6;--series-2:#2dd4bf;--series-1:#fb923c;--series-early:#9ca3af}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}h1{color:var(--text-color);border-bottom:2px solid var(--timeline-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:20px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px}.doc-nav a:hover{background-color:var(--border-color)}.warning{background-color:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-color);padding:15px;border-radius:8px;margin:20px 0;font-weight:500;font-size:1.1em}.timeline{position:relative;padding:20px 0}.timeline::before{content:'';position:absolute;left:180px;top:0;bottom:0;width:2px;background:var(--timeline-color);opacity:0.3}.series-header{margin:40px 0 20px 180px;font-size:1.5em;font-weight:700;padding-bottom:8px;border-bottom:2px solid}.series-8{border-color:var(--series-8);color:var(--series-8)}.series-7{border-color:var(--series-7);color:var(--series-7)}.series-6{border-color:var(--series-6);color:var(--series-6)}.series-5{border-color:var(--series-5);color:var(--series-5)}.series-4{border-color:var(--series-4);color:var(--series-4)}.series-3{border-color:var(--series-3);color:var(--series-3)}.series-2{border-color:var(--series-2);color:var(--series-2)}.series-1{border-color:var(--series-1);color:var(--series-1)}.series-early{border-color:var(--series-early);color:var(--series-early)}.version-item{position:relative;margin-bottom:30px;padding-left:200px}.version-date{position:absolute;left:0;width:160px;font-weight:600;color:var(--timeline-color);text-align:right;font-size:1.1em;padding-right:20px}.version-marker{position:absolute;left:174px;width:12px;height:12px;border-radius:50%;background:var(--timeline-color);border:2px solid var(--bg-color);box-shadow:0 0 0 2px var(--timeline-color);z-index:2}.version-content{background:var(--header-bg);border:1px solid var(--border-color);border-radius:12px;padding:20px;transition:transform 0.2s,box-shadow 0.2s}.version-content:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.version-header{display:flex;align-items:center;gap:12px;margin-bottom:15px;flex-wrap:wrap}.version-tag{font-size:1.3em;font-weight:700;color:var(--timeline-color)}.version-badge{background:var(--timeline-color);color:white;padding:4px 12px;border-radius:20px;font-size:0.85em;font-weight:500}.version-items{list-style:none;margin:0;padding:0}.version-items li{margin:8px 0;padding:10px 15px 10px 40px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;position:relative;transition:all 0.2s ease}.version-items li:hover{transform:translateX(5px);background-color:var(--border-color);box-shadow:0 4px 8px rgba(0,0,0,0.1)}.version-items li::before{content:"•";position:absolute;left:15px;color:var(--timeline-color);font-weight:bold;font-size:1.2rem}.version-items li em{color:var(--timeline-color);font-style:italic}.series-8 .version-items li{border-left:4px solid var(--series-8)}.series-7 .version-items li{border-left:4px solid var(--series-7)}.series-6 .version-items li{border-left:4px solid var(--series-6)}.series-5 .version-items li{border-left:4px solid var(--series-5)}.series-4 .version-items li{border-left:4px solid var(--series-4)}.series-3 .version-items li{border-left:4px solid var(--series-3)}.series-2 .version-items li{border-left:4px solid var(--series-2)}.series-1 .version-items li{border-left:4px solid var(--series-1)}.series-early .version-items li{border-left:4px solid var(--series-early)}.early-stage{margin:40px 0 20px 180px;padding:20px;background:var(--header-bg);border:1px solid var(--border-color);border-radius:12px;border-left:4px solid var(--series-early)}.early-stage h3{margin-top:0;color:var(--series-early)}.early-stage ul{margin:10px 0 0;padding-left:20px}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}.footer-note{margin-top:40px;padding:20px;background:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);text-align:center;font-size:0.95em;opacity:0.8}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	<div class="warning">$warning</div>
@@ -12880,8 +12876,6 @@ sub generate_changelog_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -12901,7 +12895,7 @@ sub generate_benchmark_doc {
 	my $doc_title = _t("docs.benchmark.title");
 	my $subtitle = _t("docs.benchmark.subtitle");
 	my $intro = _t("docs.benchmark.intro");
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $full_title = "$doc_title - $page_title";
 	my $content = _t("docs.benchmark.content");
 	$content =~ s/\\n/\n/g;
@@ -12910,19 +12904,10 @@ sub generate_benchmark_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, benchmark, speed, dns, performance">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--table-header-bg:#1e40af;--table-header-text:#ffffff;--table-border:#d1d5db;--table-stripe:#f3f4f6;--table-hover:#e2e8f0;--warning-bg:#fff3cd;--warning-border:#ffeeba;--warning-color:#856404;--star-color:#fbbf24;--accent:#2563eb;--card-bg:#ffffff;--important-bg:#fee2e2;--important-border:#ef4444}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--table-header-bg:#1e3a8a;--table-header-text:#ffffff;--table-border:#4b5563;--table-stripe:#2d3748;--table-hover:#374151;--warning-bg:#332e1c;--warning-border:#665c2c;--warning-color:#ffd966;--star-color:#fbbf24;--accent:#60a5fa;--card-bg:#1f2937;--important-bg:#451a1a;--important-border:#ef4444}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:2px solid var(--border-color);padding-bottom:10px}h1{font-size:2em}h2{font-size:1.5em;margin-top:30px}h3{font-size:1.3em}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{padding:5px 10px;border-radius:4px}.doc-nav a:hover{background-color:var(--border-color);text-decoration:none}.warning-box{background-color:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-color);padding:15px;border-radius:8px;margin:20px 0;font-weight:500}.benchmark-table{width:100%;border-collapse:collapse;margin:25px 0;font-size:0.95em;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);border-radius:12px;overflow:hidden}.benchmark-table th{background-color:var(--table-header-bg);color:var(--table-header-text);border:1px solid var(--table-border);padding:14px 8px;text-align:center;font-weight:600;font-size:0.95em;white-space:nowrap}.benchmark-table td{border:1px solid var(--table-border);padding:12px 8px;vertical-align:top;background-color:var(--bg-color)}.benchmark-table tr:nth-child(even) td{background-color:var(--table-stripe)}.benchmark-table tr:hover td{background-color:var(--table-hover);transition:background-color 0.15s ease}.benchmark-table tr td:nth-child(3):contains("1"){font-weight:600;color:#dc2626}.benchmark-table tr:last-child td{background-color:var(--important-bg);font-weight:500;text-align:center;font-style:italic}.benchmark-table td br + span{font-size:0.9em;opacity:0.8}.table-notes{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border-left:4px solid var(--link-color)}.table-notes p{margin:8px 0;font-size:0.9em}.table-notes p.warning{color:#dc2626;font-weight:600;background-color:var(--warning-bg);padding:8px 12px;border-radius:6px;border-left:4px solid #dc2626}.benchmark-details{background-color:var(--header-bg);padding:20px;border-radius:12px;margin:20px 0;border:1px solid var(--border-color);display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}.benchmark-details p{margin:0;padding:8px;background-color:var(--bg-color);border-radius:6px}.benchmark-details p strong{color:var(--link-color);margin-right:8px}.important-list{list-style:none;padding:0}.important-list li{margin:12px 0;padding:12px 15px;background-color:var(--header-bg);border-radius:8px;border-left:4px solid var(--link-color)}.important-list li.warning{border-left-color:#dc2626;background-color:var(--warning-bg)}.important-list li b{color:var(--link-color)}.dns-content{background-color:var(--warning-bg);padding:20px;border-radius:12px;margin:20px 0;border:1px solid var(--warning-border)}.dns-content p{margin:0;font-size:1.05em}.dns-content b{color:#dc2626;font-size:1.2em}.advices-list{list-style:none;padding:0}.advices-list li{margin:15px 0;padding:15px 20px;background-color:var(--header-bg);border-radius:10px;border:1px solid var(--border-color);transition:transform 0.2s,box-shadow 0.2s}.advices-list li:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.advices-list li b{color:var(--link-color)}.star{color:var(--star-color);font-size:1.2em;letter-spacing:2px;margin-right:10px}.note{font-size:0.9em;color:var(--text-color);opacity:0.8;margin-top:10px;font-style:italic}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em;border:1px solid var(--border-color)}\@media (max-width:768px){.benchmark-table{display:block;overflow-x:auto;white-space:nowrap}.benchmark-details{grid-template-columns:1fr}.advices-list li{padding:12px}}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="note">$subtitle</div>
 	<div class="section">
@@ -12932,8 +12917,6 @@ sub generate_benchmark_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -12952,7 +12935,7 @@ sub generate_compare_doc {
 	my $doc_title = _t("docs.compare.title");
 	my $subtitle = _t("docs.compare.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $compare_table = _t("compare.table.full");
 	my $note_browsers = _t("compare.note.browsers");
 	my $note_robots = _t("compare.note.robots");
@@ -12973,19 +12956,10 @@ sub generate_compare_doc {
 	my $lang = $Lang || 'en';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, compare, analog, webalizer, sawmill, log analyzer">
 	<title>$full_title</title>
 	<style>
 	.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95em;border:1px solid var(--border-color);border-radius:12px;overflow:hidden}.compare-table th{background-color:var(--table-header-bg);color:var(--text-color);padding:12px 8px;text-align:center;font-weight:600;border:1px solid var(--border-color)}.compare-table td{border:1px solid var(--border-color);padding:10px 8px;vertical-align:top}.compare-table tr:nth-child(even){background-color:var(--header-bg)}.compare-table tr:hover{background-color:var(--border-color)}.feature-left{font-weight:600;text-align:left;background-color:var(--header-bg);white-space:nowrap}.feature-yes{color:#059669;font-weight:600}.feature-no{color:#dc2626;font-weight:600}.note-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:12px}.note-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:12px}.note-section ul{margin:0;padding:0;list-style:none}.note-section li{margin:15px 0;padding:12px 20px 12px 40px;line-height:1.6;font-size:0.95em;position:relative;border-radius:8px;transition:transform 0.2s}.note-section li:hover{transform:translateX(5px)}.note-browsers{background-color:rgba(59,130,246,0.1);border-left:4px solid #3b82f6}.note-browsers::before{content:"*";color:#3b82f6;font-weight:bold;font-size:1.5em;position:absolute;left:15px;top:10px}.note-robots{background-color:rgba(16,185,129,0.1);border-left:4px solid #10b981}.note-robots::before{content:"**";color:#10b981;font-weight:bold;font-size:1.2em;position:absolute;left:12px;top:12px}.note-searchengines{background-color:rgba(245,158,11,0.1);border-left:4px solid #f59e0b}.note-searchengines::before{content:"***";color:#f59e0b;font-weight:bold;font-size:1.2em;position:absolute;left:12px;top:12px}.note-benchmark{background-color:rgba(239,68,68,0.1);border-left:4px solid #ef4444}.note-benchmark::before{content:"****";color:#ef4444;font-weight:bold;font-size:1.1em;position:absolute;left:10px;top:12px}.note-visitors{background-color:rgba(139,92,246,0.1);border-left:4px solid #8b5cf6}.note-visitors::before{content:"*****";color:#8b5cf6;font-weight:bold;font-size:1.1em;position:absolute;left:8px;top:12px}.note-data{background-color:rgba(236,72,153,0.1);border-left:4px solid #ec4899}.note-data::before{content:"(a)";color:#ec4899;font-weight:bold;font-size:1.1em;position:absolute;left:12px;top:12px}.note-logformat{background-color:rgba(168,85,247,0.1);border-left:4px solid #a855f7}.note-logformat::before{content:"(b)";color:#a855f7;font-weight:bold;font-size:1.1em;position:absolute;left:12px;top:12px}[data-theme="dark"] .note-browsers{background-color:rgba(59,130,246,0.2)}[data-theme="dark"] .note-robots{background-color:rgba(16,185,129,0.2)}[data-theme="dark"] .note-searchengines{background-color:rgba(245,158,11,0.2)}[data-theme="dark"] .note-benchmark{background-color:rgba(239,68,68,0.2)}[data-theme="dark"] .note-visitors{background-color:rgba(139,92,246,0.2)}[data-theme="dark"] .note-data{background-color:rgba(236,72,153,0.2)}[data-theme="dark"] .note-logformat{background-color:rgba(168,85,247,0.2)}:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--table-header-bg:#e5e7eb;--table-border:#d1d5db;--warning-bg:#fff3cd;--warning-border:#ffeeba;--warning-color:#856404;--star-color:#fbbf24}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--table-header-bg:#2d3748;--table-border:#4b5563;--warning-bg:#332e1c;--warning-border:#665c2c;--warning-color:#ffd966;--star-color:#fbbf24}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}h1{font-size:2em}h2{font-size:1.5em;margin-top:30px}h3{font-size:1.3em}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}li pre{background-color:var(--code-bg);padding:16px;border-radius:8px;border:1px solid var(--border-color);margin:15px 0;transition:all 0.3s ease;width:calc(100% - 32px);margin-left:0;margin-right:0;white-space:pre;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}li pre:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1);border-color:var(--accent)}li pre code{white-space:pre;display:inline-block;min-width:100%;font-family:'Courier New',monospace;font-size:0.9em;line-height:1.5}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{padding:5px 10px;border-radius:4px}.doc-nav a:hover{background-color:var(--border-color)}.warning-box{background-color:var(--warning-bg);border:1px solid var(--warning-border);color:var(--warning-color);padding:15px;border-radius:8px;margin:20px 0}.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.95em}.compare-table th{background-color:var(--table-header-bg);border:1px solid var(--table-border);padding:12px 8px;text-align:center;font-weight:600}.compare-table td{border:1px solid var(--table-border);padding:10px 8px;vertical-align:top}.compare-table tr:nth-child(even){background-color:var(--header-bg)}.compare-table tr:hover{background-color:var(--border-color)}.note{font-size:0.9em;color:var(--text-color);opacity:0.8;margin-top:10px}.advice-item{margin:15px 0;padding:10px;background-color:var(--header-bg);border-radius:8px;border-left:4px solid var(--link-color)}.star{color:var(--star-color);font-size:1.2em}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<p class="note">$subtitle</p>
 	
@@ -13008,8 +12982,6 @@ sub generate_compare_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13029,7 +13001,7 @@ sub generate_config_doc {
 	my $subtitle = _t("docs.config.subtitle");
 	my $note = _t("docs.config.note");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $config_full = _t("config.full");
 	$config_full =~ s/\\n/\n/g;
 	# 获取语言和方向
@@ -13037,19 +13009,10 @@ sub generate_config_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, config, configuration, directives, parameters">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--timeline-color:#3b82f6;--section-core:#8b5cf6;--section-optional:#10b981;--section-accuracy:#f59e0b;--code-bg:#f1f5f9;--version-badge:#6b7280;--card-bg:#ffffff;--accent:#2563eb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--timeline-color:#60a5fa;--section-core:#a78bfa;--section-optional:#34d399;--section-accuracy:#fbbf24;--code-bg:#2d3748;--version-badge:#9ca3af;--card-bg:#1f2937;--accent:#60a5fa}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1400px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--timeline-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:20px;font-size:1.1em}.note{background-color:var(--header-bg);border-left:4px solid var(--timeline-color);padding:15px;border-radius:8px;margin:20px 0}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.timeline{position:relative;padding:20px 0}.timeline::before{content:'';position:absolute;left:200px;top:0;bottom:0;width:2px;background:var(--timeline-color);opacity:0.3}.section-core,.section-optional,.section-accuracy{margin:40px 0 20px 220px;font-size:1.5em;font-weight:700;padding-bottom:8px;border-bottom:2px solid}.section-core{border-color:var(--section-core);color:var(--section-core)}.section-optional{border-color:var(--section-optional);color:var(--section-optional)}.section-accuracy{border-color:var(--section-accuracy);color:var(--section-accuracy)}.config-item{position:relative;margin-bottom:30px;padding-left:220px;min-height:80px}.config-version{position:absolute;left:10px;width:170px;text-align:right;font-weight:600;color:var(--timeline-color);font-size:0.9em;top:20px;padding-right:10px;white-space:normal;word-wrap:break-word;line-height:1.4;background:transparent}.config-marker{position:absolute;left:197px;width:12px;height:12px;border-radius:50%;background:var(--timeline-color);border:2px solid var(--bg-color);box-shadow:0 0 0 2px var(--timeline-color);z-index:2;top:20px}.config-content{background:var(--header-bg);border:1px solid var(--border-color);border-radius:12px;padding:20px;transition:transform 0.2s,box-shadow 0.2s;margin-left:0}.config-content:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.config-name{font-size:1.3em;font-weight:700;color:var(--timeline-color);margin-bottom:10px}.config-desc{margin:10px 0}.config-desc ul{margin:5px 0 10px 0;padding-left:20px}.config-desc li{margin:3px 0}.config-example{background:var(--code-bg);padding:8px 12px;border-radius:6px;font-family:'Monaco','Menlo',monospace;font-size:0.9em;margin:8px 0;border:1px solid var(--border-color)}.config-default{background:var(--code-bg);padding:6px 10px;border-radius:6px;font-size:0.9em;margin:5px 0;border:1px solid var(--border-color);display:inline-block}.section{margin:40px 0;padding:25px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--bg-color);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.donate-button{display:inline-flex;align-items:center;gap:8px;background:var(--link-color);color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:1em;transition:opacity 0.2s}.donate-button:hover{opacity:0.9}\@media (max-width:768px){.timeline::before{left:120px}.config-item{padding-left:140px}.config-version{left:5px;width:100px;font-size:0.8em}.config-marker{left:117px}.section-core,.section-optional,.section-accuracy{margin-left:140px}}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	<div class="note">$note</div>
@@ -13060,8 +13023,6 @@ sub generate_config_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13081,26 +13042,17 @@ sub generate_contrib_doc {
 	my $subtitle = _t("docs.contrib.subtitle");
 	my $content = _t("docs.contrib.content");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	
 	# 获取语言和方向
 	my $lang = $Lang || 'en';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, plugins, contrib, resources, geoip, maxmind">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--plugin-standard:#3b82f6;--plugin-geoip:#10b981;--contrib-bg:#fef3c7;--related-bg:#dbeafe;--doc-bg:#e0f2fe;--sponsor-bg:#fae8ff}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--plugin-standard:#60a5fa;--plugin-geoip:#34d399;--contrib-bg:#5f4c1e;--related-bg:#1e3a5f;--doc-bg:#0b5e6b;--sponsor-bg:#4a1e4a}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px;font-size:1.5em}.section h3{margin:20px 0 10px;color:var(--link-color);font-size:1.2em}.plugin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:20px;margin:20px 0}.plugin-card{background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;padding:15px;transition:transform 0.2s,box-shadow 0.2s}.plugin-card:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}.plugin-card ul{margin:0;padding:0;list-style:none}.plugin-card li{margin:8px 0;padding-left:20px;position:relative}.plugin-card li::before{content:"•";color:var(--link-color);font-weight:bold;position:absolute;left:4px}.plugin-card li:first-child{margin-top:0}.plugin-card li strong{color:var(--link-color)}.plugin-card.code-block{background-color:var(--code-bg);font-family:monospace;padding:10px;border-radius:4px;margin:10px 0}.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:0.8em;font-weight:600;margin-right:5px}.badge.standard{background-color:var(--plugin-standard);color:white}.badge.geoip{background-color:var(--plugin-geoip);color:white}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:15px;border-radius:4px;margin:15px 0}.info-box ul,.info-box ol{margin:5px 0;padding-left:20px}.info-box li{margin:5px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}\@media (max-width:768px){.plugin-grid{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	
@@ -13110,8 +13062,6 @@ sub generate_contrib_doc {
 		$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13130,7 +13080,7 @@ sub generate_devgraphs_doc {
 	my $doc_title = _t("docs.devgraphs.title");
 	my $subtitle = _t("docs.devgraphs.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $intro = _t("devgraphs.intro");
 	my $variables_title = _t("devgraphs.variables.title");
 	my $variables_desc = _t("devgraphs.variables.desc");
@@ -13142,20 +13092,12 @@ sub generate_devgraphs_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, plugins, development, graphs, charts, maps">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--section-title:#3b82f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--section-title:#60a5fa}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;color:var(--section-title);border-bottom:1px solid var(--border-color);padding-bottom:10px;font-size:1.5em}.section h3{margin:20px 0 10px;color:var(--link-color);font-size:1.2em}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:15px;border-radius:4px;margin:15px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}.variable-list{list-style:none;padding:0;margin:0}.variable-list li{margin:20px 0;padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.variable-list li:hover{transform:translateX(5px);box-shadow:0 2px 8px rgba(0,0,0,0.1)}.variable-list li strong{color:var(--link-color);font-size:1.1em}.type-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px}.type-list li{padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.type-list li:hover{transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,0.1)}.type-list li strong{color:var(--link-color);font-size:1.1em}.type-list ul{margin:10px 0 0;padding-left:20px}.type-list ul li{padding:3px 0;background:none;border:none}.type-list ul li:hover{transform:none;box-shadow:none}pre{background-color:var(--code-bg);padding:10px;border-radius:4px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:'Monaco','Menlo',monospace}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.type-list{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
 	<link href="scripts/prettify.css" type="text/css" rel="stylesheet">
-</head>
-<body onload="prettyPrint()">
+	<body onload="prettyPrint()">
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	
@@ -13185,7 +13127,6 @@ sub generate_devgraphs_doc {
 	<script src="scripts/prettify.js"></script>
 $theme_script
 </body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13204,26 +13145,17 @@ sub generate_devhooks_doc {
 	my $doc_title = _t("docs.devhooks.title");
 	my $subtitle = _t("docs.devhooks.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $devhooks_full = _t("devhooks.full");
 	$devhooks_full =~ s/\\n/\n/g;
 	my $lang = $Lang || 'en';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, plugins, development, hooks, api">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--section-required:#3b82f6;--section-common:#10b981;--section-processing:#f59e0b;--section-output:#8b5cf6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--section-required:#60a5fa;--section-common:#34d399;--section-processing:#fbbf24;--section-output:#a78bfa}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;padding-bottom:10px;border-bottom:2px solid;font-size:1.5em}.section-required h2{border-color:var(--section-required);color:var(--section-required)}.section-common h2{border-color:var(--section-common);color:var(--section-common)}.section-processing h2{border-color:var(--section-processing);color:var(--section-processing)}.section-output h2{border-color:var(--section-output);color:var(--section-output)}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px;margin:20px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}.hook-list{list-style:none;padding:0;margin:0}.hook-list > li{margin:20px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s,box-shadow 0.2s}.hook-list > li:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.hook-list > li > strong{color:var(--link-color);font-size:1.2em;display:block;margin-bottom:10px}.hook-list ul{margin:10px 0 0;padding-left:20px;list-style:disc}.hook-list ul li{margin:5px 0;padding:0;background:none;border:none}.hook-list ul li:hover{transform:none;box-shadow:none}pre{background-color:var(--code-bg);padding:12px;border-radius:6px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9em;margin:10px 0}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:'Monaco','Menlo',monospace}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.doc-nav{flex-direction:column;gap:5px}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	
@@ -13236,8 +13168,6 @@ sub generate_devhooks_doc {
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13256,7 +13186,7 @@ sub generate_devplugins_doc {
 	my $doc_title = _t("docs.devplugins.title");
 	my $subtitle = _t("docs.devplugins.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $intro = _t("devplugins.intro");
 	my $nav_location = _t("devplugins.nav.location");
 	my $nav_hooks = _t("devplugins.nav.hooks");
@@ -13280,19 +13210,10 @@ sub generate_devplugins_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, plugins, development, api, hooks">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--section-location:#3b82f6;--section-hooks:#10b981;--section-variables:#f59e0b;--section-accessible:#8b5cf6;--section-functions:#ec4899}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--section-location:#60a5fa;--section-hooks:#34d399;--section-variables:#fbbf24;--section-accessible:#a78bfa;--section-functions:#f472b6}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--link-color);padding-bottom:10px;font-size:2em}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.section h2{margin-top:0;padding-bottom:10px;border-bottom:2px solid;font-size:1.5em}.section-location h2{border-color:var(--section-location);color:var(--section-location)}.section-hooks h2{border-color:var(--section-hooks);color:var(--section-hooks)}.section-variables h2{border-color:var(--section-variables);color:var(--section-variables)}.section-accessible-vars h2{border-color:var(--section-accessible);color:var(--section-accessible)}.section-accessible-funcs h2{border-color:var(--section-functions);color:var(--section-functions)}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px;margin:20px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}pre{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9em;margin:15px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace}.variable-list{list-style:none;padding:0;margin:15px 0}.variable-list li{margin:15px 0;padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.variable-list li:hover{transform:translateX(5px);box-shadow:0 2px 8px rgba(0,0,0,0.1)}.variable-list li strong{color:var(--link-color);font-size:1.1em}.variable-list ul{margin:10px 0 0;padding-left:20px}.variable-list ul li{margin:5px 0;padding:0;background:none;border:none}.function-list{list-style:none;padding:0;margin:15px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:15px}.function-list li{padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s}.function-list li:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.function-list li strong{color:var(--link-color);font-size:1.1em;display:block;margin-bottom:8px}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.function-list{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	
@@ -13342,8 +13263,6 @@ sub generate_devplugins_doc {
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13359,25 +13278,16 @@ sub generate_dolibarr_doc {
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.dolibarr.title");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
-	my $dolibarr_full = _t("dolibarr.full");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
+	my $dolibarr_full = sprintf( _t("dolibarr.full"), $StatsUrl );
 	my $lang = $Lang || 'en';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats Dolibarr 模块文档">
-	<meta name="keywords" content="awstats, dolibarr, erp, crm, module, plugin">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--text-secondary:#6b7280;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--surface:#ffffff;--surface-secondary:#f9fafb;--step-bg:#f3f4f6;--step-number:#3b82f6;--badge-bg:#e5e7eb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--text-secondary:#9ca3af;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--surface:#2d3748;--surface-secondary:#1f2937;--step-bg:#374151;--step-number:#60a5fa;--badge-bg:#374151}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}.container{width:100%}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:30px}h2{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:8px;font-size:1.5em;margin:30px 0 20px}h3{color:var(--text-color);font-size:1.3em;margin:25px 0 15px}.doc-card{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.module-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:20px}.module-description{font-size:1.1rem;margin-bottom:20px}.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.badge{background-color:var(--badge-bg);border:1px solid var(--border-color);border-radius:20px;padding:5px 12px;font-size:0.9rem;font-weight:500}.feature-card{background-color:var(--surface);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin:20px 0}.feature-icon{font-size:2em;margin-bottom:10px}.links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:20px 0}.link-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px;transition:transform 0.2s}.link-card:hover{transform:translateY(-2px)}.link-icon{font-size:1.8em;margin-bottom:10px}.link-title{font-weight:600;font-size:1.1rem;margin-bottom:8px}.link-url{margin:8px 0;word-break:break-all}.link-url a{font-size:0.9rem}.steps-container{display:flex;flex-direction:column;gap:15px;margin:20px 0}.step-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px;position:relative}.step-number{position:absolute;top:-10px;left:20px;background-color:var(--step-number);color:white;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}.step-title{font-weight:600;font-size:1.1rem;margin-top:5px;margin-bottom:10px;padding-left:30px}.params-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin:20px 0}.param-card{background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;padding:20px}.param-name{font-weight:600;color:var(--accent);margin-bottom:10px;font-size:1rem}.param-desc{font-size:0.95rem;color:var(--text-secondary)}.note-box{background-color:var(--surface-secondary);border-left:4px solid var(--accent);padding:15px;border-radius:4px;margin:20px 0}.code-inline{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.links-grid{grid-template-columns:1fr}.params-grid{grid-template-columns:1fr}}.screenshot-container{margin:20px 0;text-align:center;border:1px solid var(--border-color);border-radius:12px;padding:15px;background-color:var(--surface-secondary)}.screenshot{max-width:100%;height:auto;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}.screenshot-caption{margin-top:10px;color:var(--text-secondary);font-size:0.9em;font-style:italic}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<div class="container">
 		<div class="doc-card">
 			<h1>$doc_title</h1>
@@ -13393,8 +13303,6 @@ sub generate_dolibarr_doc {
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13413,7 +13321,7 @@ sub generate_extra_doc {
 	my $doc_title = _t("docs.extra.title");
 	my $subtitle = _t("docs.extra.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $intro = _t("extra.intro");
 	my $config_explanation = _t("extra.config.explanation");
 	my $examples_title = _t("extra.examples.title");
@@ -13449,32 +13357,17 @@ sub generate_extra_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, extra, sections, reports, customization">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--surface:#ffffff;--surface-secondary:#f9fafb;--example-bg:#f3f4f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--surface:#2d3748;--surface-secondary:#1f2937;--example-bg:#374151}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}h2{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:8px;font-size:1.5em;margin:30px 0 20px}h3{color:var(--text-color);font-size:1.2em;margin:25px 0 15px;color:var(--accent)}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.info-box{background-color:var(--surface-secondary);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}.info-box p{margin:10px 0}.info-box p:first-child{margin-top:0}.info-box p:last-child{margin-bottom:0}.example-box{background-color:var(--example-bg);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin:20px 0}.example-title{font-size:1.2em;font-weight:600;color:var(--accent);margin-bottom:15px}pre{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9rem;margin:15px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.example-list{list-style:none;padding:0;margin:20px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px}.example-list li{margin:0}.example-list a{display:block;padding:10px 15px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:6px;transition:transform 0.2s}.example-list a:hover{transform:translateX(5px);background-color:var(--border-color);text-decoration:none}.param-table{width:100%;border-collapse:collapse;margin:20px 0}.param-table th{background-color:var(--header-bg);padding:10px;text-align:left;border:1px solid var(--border-color)}.param-table td{padding:10px;border:1px solid var(--border-color)}.param-table tr:hover{background-color:var(--surface-secondary)}.warning-note{background-color:#fff3cd;border:1px solid #ffeeba;color:#856404;padding:15px;border-radius:8px;margin:20px 0}[data-theme="dark"] .warning-note{background-color:#332e1c;border-color:#665c2c;color:#ffd966}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}\@media (max-width:768px){.example-list{grid-template-columns:1fr}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
-	
-	<!-- === 介绍 === -->
 	<div class="info-box">
 		$intro
 	</div>
-	
-	<!-- === 配置说明 === -->
 	<div class="info-box">
 		$config_explanation
 	</div>
-	
-	<!-- === 示例导航 === -->
 	<h2 id="examples">📋 $examples_title</h2>
 	<ul class="example-list">
 		<li><a href="#productorders">$example_productorders</a></li>
@@ -13484,44 +13377,30 @@ sub generate_extra_doc {
 		<li><a href="#domainaliases">$example_domainaliases</a></li>
 		<li><a href="#level2dir">$example_level2dir</a></li>
 	</ul>
-	
-	<!-- === 示例 1 === -->
 	<h3 id="productorders">📌 $example1_title</h3>
 	<div class="example-box">
 		$example1_desc
 	</div>
-	
-	<!-- === 示例 2 === -->
 	<h3 id="bugzilla">📌 $example2_title</h3>
 	<div class="example-box">
 		$example2_desc
 	</div>
-	
-	<!-- === 示例 3 === -->
 	<h3 id="awredir">📌 $example3_title</h3>
 	<div class="example-box">
 		$example3_desc
 	</div>
-	
-	<!-- === 示例 4 === -->
 	<h3 id="aborted">📌 $example4_title</h3>
 	<div class="example-box">
 		$example4_desc
 	</div>
-	
-	<!-- === 示例 5 === -->
 	<h3 id="domainaliases">📌 $example5_title</h3>
 	<div class="example-box">
 		$example5_desc
 	</div>
-	
-	<!-- === 示例 6 === -->
 	<h3 id="level2dir">📌 $example6_title</h3>
 	<div class="example-box">
 		$example6_desc
 	</div>
-	
-	<!-- === 配置参数说明 === -->
 	<h2 id="extraconfig">⚙️ $config_params_title</h2>
 	<div class="info-box">
 		$config_params_desc
@@ -13538,8 +13417,6 @@ sub generate_extra_doc {
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13558,26 +13435,17 @@ sub generate_faq_doc {
 	my $doc_title = _t("docs.faq.title");
 	my $subtitle = _t("docs.faq.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $faq_content = _t("faq.complete");
 	   $faq_content =~ s/\\n/\n/g;
 	my $lang = $Lang || 'en';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, faq, troubleshooting, help, support">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-primary:#ffffff;--bg-secondary:#f8f9fa;--bg-code:#f2f4f6;--text-primary:#212529;--text-secondary:#495057;--text-muted:#6c757d;--link-color:#0d6efd;--link-hover:#0a58ca;--border-color:#dee2e6;--heading-color:#1a2b3c;--accent-light:#e7f1ff;--accent-border:#9ec5fe;--code-color:#d63384;--shadow-sm:0 1px 2px rgba(0,0,0,0.05);--shadow-md:0 4px 6px rgba(0,0,0,0.1);--card-bg:#ffffff;--header-bg:#f8f9fa;--accent:#0a58ca}[data-theme="dark"]{--bg-primary:#1e1e2f;--bg-secondary:#2d2d3f;--bg-code:#2a2a3c;--text-primary:#e4e6eb;--text-secondary:#b0b3b8;--text-muted:#8c8f94;--link-color:#8cb4ff;--link-hover:#a6c8ff;--border-color:#3e3e5e;--heading-color:#cfd9e6;--accent-light:#2c3a5e;--accent-border:#4f6b9c;--code-color:#f08d8d;--shadow-sm:0 1px 2px rgba(0,0,0,0.3);--shadow-md:0 4px 8px rgba(0,0,0,0.5);--card-bg:#2d2d3f;--header-bg:#2a2a3c;--accent:#a6c8ff}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:var(--text-primary);background-color:var(--bg-primary);margin:0;padding:20px;transition:background-color 0.3s ease,color 0.2s ease;scroll-behavior:smooth;max-width:1200px;margin:0 auto}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}h1{font-size:2.4rem;font-weight:600;color:var(--heading-color);border-bottom:3px solid var(--link-color);padding-bottom:12px;margin:1.5rem 0 0.5rem;letter-spacing:-0.02em}h1:first-of-type{margin-top:0.5rem}.subtitle{font-size:1.2rem;color:var(--text-secondary);margin:-5px 0 25px 0;font-style:italic}h2{font-size:2rem;font-weight:500;color:var(--heading-color);border-left:6px solid var(--link-color);padding-left:16px;margin:2.2rem 0 1.2rem 0;background:linear-gradient(to right,var(--bg-secondary),transparent);padding:12px 0 12px 16px;border-radius:0 8px 8px 0}h3{font-size:1.5rem;font-weight:500;color:var(--heading-color);margin:1.8rem 0 1rem 0;padding-bottom:5px;border-bottom:2px dashed var(--border-color)}h3[id]{scroll-margin-top:20px}h3[id]::before{content:"🔗 ";color:var(--link-color);font-size:1.3rem;opacity:0.7;margin-right:4px}ul,ol{padding-left:1.8rem}li{margin:8px 0;color:var(--text-secondary)}h2 + ul,h2 + ul ul{background:var(--bg-secondary);padding:18px 18px 18px 38px;border-radius:12px;box-shadow:var(--shadow-sm);border:1px solid var(--border-color);list-style-type:none}h2 + ul li{margin:8px 0;position:relative}h2 + ul li::before{content:"▹";color:var(--link-color);font-weight:bold;position:absolute;left:-22px;font-size:1.2rem}p{color:var(--text-primary);margin:1rem 0;line-height:1.7}strong{color:var(--heading-color);font-weight:600}p strong:first-child{color:var(--link-color);font-size:1.05em}code,pre{font-family:"SF Mono",Menlo,Monaco,Consolas,"Courier New",monospace;font-size:0.9em;background-color:var(--bg-code);border:1px solid var(--border-color);border-radius:6px}code{color:var(--code-color);padding:0.2em 0.4em;white-space:nowrap}pre{display:block;padding:16px;margin:16px 0;line-height:1.45;overflow-x:auto;border-radius:8px;white-space:pre;word-wrap:normal;box-shadow:inset 0 0 0 1px var(--border-color);background-color:var(--bg-secondary)}pre code{background:none;border:none;color:var(--text-primary);padding:0;white-space:pre;font-size:0.9rem}blockquote,.note{background:var(--accent-light);border-left:5px solid var(--accent-border);padding:1rem 1.5rem;margin:1.5rem 0;border-radius:0 12px 12px 0;color:var(--text-secondary);font-style:normal;box-shadow:var(--shadow-sm)}blockquote p:last-child,.note p:last-child{margin-bottom:0}hr{border:none;border-top:2px solid var(--border-color);margin:2.5rem 0;opacity:0.5}table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;overflow:hidden}th{background-color:var(--heading-color);color:var(--bg-primary);font-weight:600;padding:12px;text-align:left}td{padding:10px 12px;border-top:1px solid var(--border-color);color:var(--text-primary)}tr:nth-child(even){background-color:var(--bg-code)}html{scroll-padding-top:20px;scroll-behavior:smooth}h2 + ul a{transition:transform 0.2s,color 0.2s;display:inline-block}h2 + ul a:hover{transform:translateX(6px)}[dir="rtl"]{text-align:right}[dir="rtl"] h2{border-left:none;border-right:6px solid var(--link-color);padding-left:0;padding-right:16px;background:linear-gradient(to left,var(--bg-secondary),transparent)}[dir="rtl"] h2 + ul{padding-left:18px;padding-right:38px}[dir="rtl"] h2 + ul li::before{left:auto;right:-22px}[dir="rtl"] blockquote{border-left:none;border-right:5px solid var(--accent-border);border-radius:12px 0 0 12px}\@media (max-width:768px){body{padding:15px}h1{font-size:2rem}h2{font-size:1.6rem}h3{font-size:1.3rem}ul,ol{padding-left:1.2rem}h2 + ul{padding:15px 15px 15px 30px}}\@media (max-width:480px){body{padding:10px}h1{font-size:1.7rem}h2{font-size:1.4rem;padding:8px 0 8px 12px}pre{padding:10px;font-size:0.85rem}code{white-space:normal;word-break:break-word}}\@media print{body{background:white;color:black;padding:0.5in}a{color:black;text-decoration:underline;border:none}pre,code{background:#f5f5f5;border:1px solid #ccc;color:black}h2,h3{page-break-after:avoid}h2 + ul{background:none;border:1px solid #aaa;box-shadow:none}}a[href^="#"]::before{content:"⚓ ";font-size:0.9em;opacity:0.6}h2 + ul a[href^="#"]::before{content:none}[id]{scroll-margin-top:30px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	$faq_content
@@ -13586,8 +13454,6 @@ sub generate_faq_doc {
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13606,7 +13472,7 @@ sub generate_glossary_doc {
 	my $doc_title = _t("docs.glossary.title");
 	my $subtitle = _t("docs.glossary.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $glossary_unique_visitor = _t("glossary.unique_visitor");
 	my $glossary_visits = _t("glossary.visits");
 	my $glossary_pages = _t("glossary.pages");
@@ -13637,23 +13503,12 @@ sub generate_glossary_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, glossary, terms, definitions, http, smtp">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--surface:#ffffff;--surface-secondary:#f9fafb;--glossary-term:#3b82f6;--glossary-http:#10b981;--glossary-smtp:#8b5cf6;--table-header:#e5e7eb;--table-row-even:#f9fafb}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--surface:#2d3748;--surface-secondary:#1f2937;--glossary-term:#60a5fa;--glossary-http:#34d399;--glossary-smtp:#a78bfa;--table-header:#374151;--table-row-even:#1f2937}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}.subtitle{color:var(--text-color);opacity:0.8;font-style:italic;margin-bottom:30px;font-size:1.1em}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.glossary-section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 2px 4px rgba(0,0,0,0.05)}.glossary-section h2{margin-top:0;padding-bottom:10px;border-bottom:2px solid;font-size:1.5em}.glossary-basic h2{border-color:var(--glossary-term);color:var(--glossary-term)}.glossary-http h2{border-color:var(--glossary-http);color:var(--glossary-http)}.glossary-smtp h2{border-color:var(--glossary-smtp);color:var(--glossary-smtp)}.term-card{margin:25px 0;padding:20px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px;transition:transform 0.2s,box-shadow 0.2s;scroll-margin-top:80px}.term-card:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(0,0,0,0.1)}.term-card h3{margin-top:0;color:var(--link-color);font-size:1.3em;border-bottom:1px solid var(--border-color);padding-bottom:8px}.term-card h4{color:var(--text-color);font-size:1.1em;margin:15px 0 10px}.term-card p{margin:10px 0}.term-card ul,.term-card ol{margin:10px 0;padding-left:25px}.term-card li{margin:3px 0}.term-card pre{background-color:var(--code-bg);padding:12px;border-radius:6px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.term-card code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.code-table{width:100%;border-collapse:collapse;margin:15px 0;border:1px solid var(--border-color);border-radius:8px;overflow:hidden}.code-table th{background-color:var(--table-header);padding:10px;text-align:left;font-weight:600}.code-table td{padding:8px 10px;border-top:1px solid var(--border-color)}.code-table tr:nth-child(even){background-color:var(--table-row-even)}.code-table tr:hover{background-color:var(--border-color)}.code-table td:first-child{font-family:'Monaco','Menlo',monospace;font-weight:600;width:80px}.glossary-note{background-color:var(--header-bg);border-left:4px solid var(--accent);padding:15px;border-radius:4px;margin:15px 0}.glossary-note p{margin:5px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}\@media (max-width:768px){.term-card:hover{transform:none}.code-table{font-size:0.9rem}.code-table td:first-child{width:60px}}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
-	
-	<!-- === 基础术语 === -->
 	<div id="basic" class="glossary-section glossary-basic">
 		<div id="UniqueVisitor" class="term-card">$glossary_unique_visitor</div>
 		<div id="Visits" class="term-card">$glossary_visits</div>
@@ -13667,8 +13522,6 @@ sub generate_glossary_doc {
 		<div id="Direct" class="term-card">$glossary_direct_access</div>
 		<div id="AddToFavourites" class="term-card">$glossary_add_to_favourites</div>
 	</div>
-	
-	<!-- === HTTP 状态码 === -->
 	<div id="http" class="glossary-section glossary-http">
 		<h2>$glossary_http_title</h2>
 		
@@ -13683,8 +13536,6 @@ sub generate_glossary_doc {
 		<div id="4xx" class="term-card">$glossary_http_4xx</div>
 		<div id="5xx" class="term-card">$glossary_http_5xx</div>
 	</div>
-	
-	<!-- === SMTP 状态码 === -->
 	<div id="smtp" class="glossary-section glossary-smtp">
 		<h2>$glossary_smtp_title</h2>
 		
@@ -13704,8 +13555,6 @@ sub generate_glossary_doc {
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13723,7 +13572,7 @@ sub generate_license_doc {
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.license.title");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $license_desc = _t("license.intro.desc");
 	my $license_follow = _t("license.intro.follow");
 	my $chart_title = _t("license.chart.title");
@@ -13772,19 +13621,10 @@ sub generate_license_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, license, gpl, copyright, opensource">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--accent-soft:#dbeafe;--surface:#ffffff;--surface-secondary:#f9fafb;--table-header:#e5e7eb;--table-row-even:#f9fafb;--permission-yes:#059669;--permission-no:#dc2626;--permission-maybe:#d97706;--permission-special:#7c3aed;--badge-bg:#e5e7eb;--category-bg:#f3f4f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--accent-soft:#1e3a5f;--surface:#2d3748;--surface-secondary:#1f2937;--table-header:#374151;--table-row-even:#1f2937;--permission-yes:#34d399;--permission-no:#f87171;--permission-maybe:#fbbf24;--permission-special:#c084fc;--badge-bg:#374151;--category-bg:#2d3748}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1400px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.doc-card{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.license-intro{background-color:var(--accent-soft);padding:24px;border-radius:30px;margin-bottom:30px}.license-intro p{font-size:1.1rem;margin:0}.license-intro p:first-child{margin-bottom:10px}.license-chart-container{overflow-x:auto;margin:20px 0;border-radius:12px;border:1px solid var(--border-color)}.license-table{width:100%;border-collapse:collapse;min-width:1000px}.license-table th{background-color:var(--table-header);color:var(--text-color);padding:12px 8px;text-align:center;font-weight:600;border:1px solid var(--border-color)}.license-table td{padding:10px 8px;border:1px solid var(--border-color);vertical-align:middle}.license-table tr:nth-child(even){background-color:var(--table-row-even)}.license-table tr:hover{background-color:var(--border-color)}.category-row td{background-color:var(--category-bg);font-weight:600;text-align:left;padding:12px 15px}.license-badge{display:inline-block;padding:4px 8px;background-color:var(--badge-bg);border-radius:12px;font-size:0.9rem;font-family:'Monaco','Menlo',monospace}.permission-yes{color:var(--permission-yes);font-weight:600}.permission-no{color:var(--permission-no);font-weight:600}.permission-maybe{color:var(--permission-maybe);font-weight:600}.permission-special{color:var(--permission-special);font-weight:600}.license-notes{margin:30px 0;padding:20px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:12px}.license-notes p{margin:8px 0;line-height:1.5}.note-number{display:inline-block;width:24px;height:24px;background-color:var(--accent);color:white;border-radius:50%;text-align:center;line-height:24px;font-size:0.9rem;margin-right:8px}.license-date{margin-top:20px;padding:15px;background-color:var(--surface-secondary);border-radius:8px;font-style:italic;color:var(--text-color);opacity:0.8;text-align:center}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}sup{font-size:0.7rem;vertical-align:super}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<div class="doc-card">
 		<h1>$doc_title</h1>
 		
@@ -13851,16 +13691,12 @@ sub generate_license_doc {
 			$license_date
 		</div>
 	</div>
-	
 	<hr>
-	
 	<div id="sponsor" class="section">
 	$SPONSOR_SECTION
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -13879,7 +13715,7 @@ sub generate_loganalysispaper_doc {
 	my $doc_title = _t("docs.loganalysispaper.title");
 	my $subtitle = _t("docs.loganalysispaper.subtitle");
 	my $full_title = "$doc_title - $page_title";
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $intro = _t("paper.intro");
 	my $methods_title = _t("paper.methods.title");
 	my $htmltag_title = _t("paper.method.htmltag.title");
@@ -13901,7 +13737,7 @@ sub generate_loganalysispaper_doc {
 	my $loganalysis_what_you_dont_know_title = _t("paper.loganalysis.what_you_dont_know.title");
 	my $loganalysis_what_you_dont_know_desc = _t("paper.loganalysis.what_you_dont_know.desc");
 	my $loganalysis_real_data_title = _t("paper.loganalysis.real_data.title");
-	my $loganalysis_real_data_desc = _t("paper.loganalysis.real_data.desc");
+	my $loganalysis_real_data_desc = sprintf( _t("paper.loganalysis.real_data.desc"), $StatsUrl );
 	my $loganalysis_conclusion_title = _t("paper.loganalysis.conclusion.title");
 	my $loganalysis_conclusion_desc = _t("paper.loganalysis.conclusion.desc");
 	my $loganalysis_acknowledgements_title = _t("paper.loganalysis.acknowledgements.title");
@@ -13926,32 +13762,20 @@ sub generate_loganalysispaper_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, log analysis, web statistics, tracking">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--accent-soft:#dbeafe;--surface:#ffffff;--surface-secondary:#f9fafb;--pros-bg:#e6f7e6;--pros-color:#059669;--cons-bg:#fee9e9;--cons-color:#dc2626;--summary-bg:#e6f3ff}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--accent-soft:#1e3a5f;--surface:#2d3748;--surface-secondary:#1f2937;--pros-bg:#064e3b;--pros-color:#34d399;--cons-bg:#7f1d1d;--cons-color:#f87171;--summary-bg:#1e3a5f}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}h2{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:8px;font-size:1.5em;margin:30px 0 20px}h3{color:var(--text-color);font-size:1.2em;margin:20px 0 10px}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.paper-section{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.intro-box{background-color:var(--accent-soft);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}.pros-box{background-color:var(--pros-bg);border-left:4px solid var(--pros-color);padding:15px;border-radius:8px;margin:15px 0}.pros-box h3{color:var(--pros-color);margin-top:0}.cons-box{background-color:var(--cons-bg);border-left:4px solid var(--cons-color);padding:15px;border-radius:8px;margin:15px 0}.cons-box h3{color:var(--cons-color);margin-top:0}.summary-box{background-color:var(--summary-bg);border-left:4px solid var(--accent);padding:15px;border-radius:8px;margin:15px 0}.summary-box h3{color:var(--accent);margin-top:0}.conclusion-box{background-color:var(--header-bg);border:1px solid var(--border-color);padding:20px;border-radius:8px;margin:20px 0;font-style:italic}ul{margin:10px 0;padding-left:25px}li{margin:5px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}.footer-note a{color:var(--link-color);text-decoration:none}.footer-note a:hover{text-decoration:underline}.work-in-progress{color:var(--text-color);opacity:0.6;font-style:italic;text-align:center;padding:10px}.loganalysis-subsection{margin:30px 0;padding:20px;background-color:var(--surface-secondary);border:1px solid var(--border-color);border-radius:8px}.loganalysis-subsection h3{color:var(--accent);margin-top:0;margin-bottom:15px;font-size:1.2em;border-bottom:1px solid var(--border-color);padding-bottom:8px}.loganalysis-subsection ol,.loganalysis-subsection ul{margin:10px 0;padding-left:25px}.loganalysis-subsection li{margin:5px 0}.loganalysis-subsection p{margin:10px 0}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<div class="paper-section">
 		<h1>$doc_title</h1>
 		
 		<div class="intro-box">
 			$intro
 		</div>
-		
 		$methods_title
-		
 		<div id="htmltag">
 			$htmltag_title
 			$htmltag_desc
-			
 			<div class="pros-box">
 				$htmltag_pros_title
 				$htmltag_pros_list
@@ -13961,7 +13785,7 @@ sub generate_loganalysispaper_doc {
 				$htmltag_cons_title
 				$htmltag_cons_list
 			</div>
-			
+
 			<div class="summary-box">
 				$htmltag_summary_title
 				$htmltag_summary
@@ -14072,8 +13896,6 @@ sub generate_loganalysispaper_doc {
 	</div>
 	
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -14088,7 +13910,7 @@ sub generate_security_doc {
 	
 	# 获取页面标题
 	my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.security.title");
 	my $subtitle = _t("docs.security.subtitle");
@@ -14122,21 +13944,11 @@ sub generate_security_doc {
 	my $lang = $Lang || 'en';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, security, authentication, permissions">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--card-bg:#ffffff;--code-bg:#f1f5f9;--accent:#3b82f6;--accent-soft:#dbeafe;--surface:#ffffff;--surface-secondary:#f9fafb;--policy-high:#8b5cf6;--policy-medium:#f59e0b;--policy-none:#6b7280;--policy-high-soft:#ede9fe;--policy-medium-soft:#fef3c7;--policy-none-soft:#f3f4f6}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--card-bg:#2d3748;--code-bg:#2d3748;--accent:#60a5fa;--accent-soft:#1e3a5f;--surface:#2d3748;--surface-secondary:#1f2937;--policy-high:#a78bfa;--policy-medium:#fbbf24;--policy-none:#9ca3af;--policy-high-soft:#2d2b4d;--policy-medium-soft:#4d3d1f;--policy-none-soft:#2d3748}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1{color:var(--text-color);border-bottom:2px solid var(--accent);padding-bottom:10px;font-size:2em;margin-bottom:20px}.doc-nav{margin:20px 0;padding:15px;background-color:var(--header-bg);border-radius:8px;border:1px solid var(--border-color);display:flex;gap:15px;flex-wrap:wrap;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}.doc-nav a{color:var(--link-color);text-decoration:none;padding:5px 10px;border-radius:4px;transition:background-color 0.2s}.doc-nav a:hover{background-color:var(--border-color)}.security-section{background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px;padding:25px;margin-bottom:30px}.intro-box{background-color:var(--accent-soft);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}.policy-card{margin:30px 0;padding:25px;border-radius:12px;border-left:6px solid;scroll-margin-top:80px}.policy-card h2{margin-top:0;font-size:1.5em;border-bottom:1px solid var(--border-color);padding-bottom:10px}.policy-high{background-color:var(--policy-high-soft);border-left-color:var(--policy-high)}.policy-medium{background-color:var(--policy-medium-soft);border-left-color:var(--policy-medium)}.policy-none{background-color:var(--policy-none-soft);border-left-color:var(--policy-none)}.policy-high h2{color:var(--policy-high)}.policy-medium h2{color:var(--policy-medium)}.policy-none h2{color:var(--policy-none)}.policy-label{display:inline-block;font-weight:600;margin-top:15px;color:var(--accent)}pre{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:'Monaco','Menlo',monospace;font-size:0.9rem;margin:15px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:'Monaco','Menlo',monospace;font-size:0.9rem}.tip-box{background-color:var(--header-bg);border-left:4px solid var(--accent);padding:20px;border-radius:8px;margin:20px 0}hr{border:none;border-top:1px solid var(--border-color);margin:30px 0}.footer-note{margin-top:40px;padding:20px;background-color:var(--header-bg);border-radius:8px;text-align:center;font-size:0.9em}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.section{margin:40px 0;padding:25px;background-color:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.info-box{background-color:var(--header-bg);border-left:4px solid var(--link-color);padding:20px;border-radius:8px}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
-	
 	<div class="security-section">
 		<!-- === 引言 === -->
 		<div class="intro-box">
@@ -14208,8 +14020,6 @@ sub generate_security_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -14222,7 +14032,7 @@ sub generate_setup_doc {
 	my ($dir) = @_;
 	
 	my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.setup.title");
 	my $subtitle = _t("docs.setup.subtitle");
@@ -14234,19 +14044,10 @@ sub generate_setup_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, setup, install, configure">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3,h4{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a,a:link,a:visited{text-decoration:none;color:var(--link-color);transition:color 0.2s ease}a:hover{color:var(--accent)}.code-block{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:monospace;white-space:pre-wrap;margin:15px 0}.step{margin:25px 0;padding:15px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.step-detail{margin:20px 0;padding:15px;background-color:var(--bg-color);border-radius:6px}.note{font-style:italic;opacity:0.8}.conclusion{font-weight:bold;color:var(--link-color)}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:5px 0}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	<div class="section">
@@ -14256,8 +14057,6 @@ sub generate_setup_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -14270,7 +14069,7 @@ sub generate_tools_doc {
 	my ($dir) = @_;
 	
 	my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.tools.title");
 	my $subtitle = _t("docs.tools.subtitle");
@@ -14282,19 +14081,10 @@ sub generate_tools_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, tools, utilities, awstats_updateall, awstats_buildstaticpages, logresolvemerge, maillogconvert, urlaliasbuilder">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--warning-color:#b91c1c}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--warning-color:#f87171}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1200px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3,h4{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.code-block{background-color:var(--code-bg);padding:15px;border-radius:8px;overflow-x:auto;border:1px solid var(--border-color);font-family:monospace;white-space:pre-wrap;margin:15px 0}.tool-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.usage{margin:20px 0;padding:15px;background-color:var(--bg-color);border-radius:6px}.example{margin:20px 0;padding:15px;background-color:var(--bg-color);border-left:4px solid var(--link-color);border-radius:4px}.note{font-style:italic;opacity:0.8;color:var(--link-color)}.warning{color:var(--warning-color);font-weight:bold}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:5px 0}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:monospace}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	<div class="section">
@@ -14304,8 +14094,6 @@ sub generate_tools_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -14318,7 +14106,7 @@ sub generate_upgrade_doc {
 	my ($dir) = @_;
 	
 	my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.upgrade.title");
 	my $subtitle = _t("docs.upgrade.subtitle");
@@ -14330,19 +14118,10 @@ sub generate_upgrade_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, upgrade, update, migration">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--warning-color:#b91c1c;--note-bg:#fef3c7;--note-border:#f59e0b}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--warning-color:#f87171;--note-bg:#4b3d1a;--note-border:#fbbf24}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.step{margin:25px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.step h3{margin-top:0;color:var(--link-color)}.migration-notes{margin:30px 0;padding:20px;background-color:var(--note-bg);border:1px solid var(--note-border);border-radius:8px}.migration-notes h2{color:var(--note-border);border-bottom-color:var(--note-border)}.note-item{margin:15px 0;padding:15px;background-color:var(--bg-color);border:1px solid var(--border-color);border-radius:6px}.note-item u{color:var(--note-border);font-weight:bold}.note{font-style:italic;color:var(--link-color);padding:10px;background-color:var(--header-bg);border-left:4px solid var(--link-color);border-radius:4px}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:5px 0}code{background-color:var(--code-bg);padding:2px 4px;border-radius:4px;font-family:monospace}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	<div class="section">
@@ -14352,8 +14131,6 @@ sub generate_upgrade_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -14366,7 +14143,7 @@ sub generate_webmin_doc {
 	my ($dir) = @_;
 	
 	my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.webmin.title");
 	my $subtitle = _t("docs.webmin.subtitle");
@@ -14378,19 +14155,10 @@ sub generate_webmin_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, webmin, module, administration">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--section-border:#9999cc;--result-bg:#e6f3ff;--config-bg:#fef3c7}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--section-border:#6677aa;--result-bg:#1e3a5f;--config-bg:#4b3d1a}body{font-family:system-ui,-apple-system,sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:20px;background-color:var(--bg-color);color:var(--text-color)}h1,h2,h3{color:var(--text-color);border-bottom:1px solid var(--border-color);padding-bottom:10px}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.webmin-section{margin:30px 0;padding:20px;background-color:var(--header-bg);border:1px solid var(--border-color);border-radius:8px}.webmin-section h2{margin-top:0;color:var(--section-border);border-bottom-color:var(--section-border)}.config-details{margin:20px 0;padding:15px;background-color:var(--config-bg);border:1px solid var(--border-color);border-radius:6px}.config-details h4{margin:15px 0 5px;color:var(--link-color)}.config-details h4:first-child{margin-top:0}.result{margin:15px 0;padding:10px;background-color:var(--result-bg);border-left:4px solid var(--link-color);border-radius:4px;font-style:italic}.section-nav{background-color:var(--header-bg);padding:15px;border-radius:8px;border:1px solid var(--border-color);margin:20px 0}.section-nav li{margin:8px 0}.footer{margin-top:40px;padding:20px;text-align:center;border-top:1px solid var(--border-color)}ul,ol{padding-left:20px}li{margin:8px 0}code{background-color:var(--code-bg);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:0.95em}
 	</style>
-</head>
-<body>
 	<h1>$doc_title</h1>
 	<div class="subtitle">$subtitle</div>
 	<div class="section">
@@ -14400,8 +14168,6 @@ sub generate_webmin_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -14414,7 +14180,7 @@ sub generate_home_doc {
 	my ($dir) = @_;
 	
 	my $page_title = sprintf(_t("Advanced Web Statistics %s"), $SiteDomain);
-	my $SPONSOR_SECTION = _t("sponsor.section");
+	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $theme_script = get_theme_script();
 	my $doc_title = _t("docs.home.title");
 	my $subtitle = _t("docs.home.subtitle");
@@ -14426,19 +14192,10 @@ sub generate_home_doc {
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
-<!DOCTYPE html>
-<html lang="$lang" dir="$dir_attr">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="AWStats $doc_title">
-	<meta name="keywords" content="awstats, log analyzer, web statistics">
 	<title>$full_title</title>
 	<style>
 	:root{--bg-color:#ffffff;--text-color:#1f2937;--link-color:#2563eb;--border-color:#e5e7eb;--header-bg:#f9fafb;--code-bg:#f1f5f9;--primary-color:#3b82f6;--primary-hover:#2563eb;--secondary-color:#8b5cf6;--accent-color:#10b981;--card-bg:#ffffff;--hero-bg:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--hero-text:#ffffff;--new-badge:#ef4444;--improved-badge:#f59e0b}[data-theme="dark"]{--bg-color:#1f2937;--text-color:#f3f4f6;--link-color:#60a5fa;--border-color:#374151;--header-bg:#111827;--code-bg:#2d3748;--primary-color:#3b82f6;--primary-hover:#60a5fa;--secondary-color:#a78bfa;--accent-color:#34d399;--card-bg:#2d3748;--hero-bg:linear-gradient(135deg,#434190 0%,#553c9a 100%);--hero-text:#f3f4f6;--new-badge:#f87171;--improved-badge:#fbbf24}body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.6;margin:0;padding:0;background-color:var(--bg-color);color:var(--text-color)}.home-content{max-width:1200px;margin:0 auto;padding:0 20px}h1,h2,h3{color:var(--text-color)}a{color:var(--link-color);text-decoration:none}a:hover{text-decoration:underline}.hero-section{background:var(--hero-bg);color:var(--hero-text);border-radius:24px;padding:60px 40px;margin:40px 0;display:flex;align-items:center;gap:40px}.hero-content{flex:1}.hero-title{font-size:3em;margin:0 0 20px;color:white}.hero-description{font-size:1.2em;margin-bottom:30px;opacity:0.95}.hero-stats{font-size:1.1em;margin-bottom:30px;opacity:0.9}.stat-number{font-weight:bold;font-size:1.3em}.hero-buttons{display:flex;gap:15px}.button{display:inline-block;padding:12px 30px;border-radius:30px;font-weight:600;transition:all 0.3s ease}.button-primary{background:white;color:#4c51bf}.button-primary:hover{background:#f0f0f0;transform:translateY(-2px);text-decoration:none}.button-secondary{background:transparent;color:white;border:2px solid white}.button-secondary:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px);text-decoration:none}.button-large{padding:15px 40px;font-size:1.1em}.button-text{padding:0;color:var(--link-color);background:none}.hero-image{flex:1;text-align:center}.dashboard-preview{max-width:100%;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.2)}.section-title{font-size:2.5em;text-align:center;margin:60px 0 20px}.section-subtitle{text-align:center;font-size:1.2em;color:var(--text-color);opacity:0.8;margin-bottom:40px}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin:40px 0}.feature-card{background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px;padding:30px;transition:all 0.3s ease}.feature-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,0.1)}.feature-icon{font-size:3em;margin-bottom:20px}.feature-card h3{margin:0 0 15px;font-size:1.3em}.feature-card p{margin:0;color:var(--text-color);opacity:0.9}.whatsnew-section{background:var(--header-bg);border:1px solid var(--border-color);border-radius:24px;padding:40px;margin:60px 0;position:relative}.whatsnew-badge{position:absolute;top:-15px;left:40px;background:var(--new-badge);color:white;padding:5px 20px;border-radius:30px;font-weight:bold;font-size:1em}.version-date{text-align:center;color:var(--text-color);opacity:0.7;margin-top:-10px}.whatsnew-desc{font-size:1.2em;text-align:center;margin:20px 0 30px}.whatsnew-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:15px}.whatsnew-list li{padding:15px;background:var(--bg-color);border:1px solid var(--border-color);border-radius:12px;line-height:1.5}.new-badge{background:var(--new-badge);color:white;padding:2px 8px;border-radius:12px;font-size:0.8em;font-weight:bold;margin-right:8px;display:inline-block}.improved-badge{background:var(--improved-badge);color:white;padding:2px 8px;border-radius:12px;font-size:0.8em;font-weight:bold;margin-right:8px;display:inline-block}.whatsnew-footer{text-align:center;margin-top:30px}.technical-section{margin:60px 0}.technical-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:20px;margin:40px 0}.technical-item{display:flex;align-items:flex-start;gap:15px;padding:20px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:12px}.technical-check{font-size:1.5em}.technical-text{flex:1}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin:40px 0}.stat-card{text-align:center;padding:30px;background:var(--card-bg);border:1px solid var(--border-color);border-radius:16px}.stat-icon{font-size:3em;margin-bottom:20px}.stat-card h3{margin:0 0 15px}.cta-section{background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);color:white;border-radius:24px;padding:60px;text-align:center;margin:60px 0}.cta-title{font-size:2.5em;margin:0 0 20px;color:white}.cta-desc{font-size:1.2em;margin-bottom:30px;opacity:0.95}.cta-buttons{display:flex;gap:20px;justify-content:center}.home-footer{text-align:center;padding:40px 0;border-top:1px solid var(--border-color);margin-top:40px}.footer-links{margin-top:10px}.footer-links a{color:var(--text-color);opacity:0.8}.footer-links a:hover{opacity:1}\@media (max-width:768px){.hero-section{flex-direction:column;padding:40px 20px}.hero-title{font-size:2em}.whatsnew-list{grid-template-columns:1fr}.cta-section{padding:40px 20px}.cta-buttons{flex-direction:column}}
 	</style>
-</head>
-<body>
 	<div class="home-content">
 		$content
 	</div>
@@ -14446,8 +14203,6 @@ sub generate_home_doc {
 	$SPONSOR_SECTION
 	</div>
 $theme_script
-</body>
-</html>
 END_HTML
 	print $html;
 }
@@ -14462,7 +14217,7 @@ END_HTML
 sub HTMLTopBanner{
 	my $WIDTHMENU1 = shift;
 	my $frame = ( $FrameName eq 'mainleft' );
-	my $title = _t("AWStats Log Viewer");
+	my $title =  "👁️ " . _t("AWStats Log Viewer");
 	
 	if ($Debug) { debug( "ShowTopBan", 2 ); }
 	print "$Center<a name=\"menu\">&nbsp;</a>";
@@ -14487,7 +14242,7 @@ sub HTMLTopBanner{
 	my $show_branding = (-f $logo_path && -r $logo_path);
 
 	# 显示时使用 StatsUrl（Web路径）
-	my $logo_web_path = "$StatsUrl/logo.svg";
+	my $logo_web = "$StatsUrl/logo.svg";
 	if ( $QueryString !~ /buildpdf/i ) {
 		print "<table class=\"aws_border\" border=\"0\" cellpadding=\"2\" cellspacing=\"0\" width=\"100%\">\n";
 
@@ -14503,7 +14258,7 @@ sub HTMLTopBanner{
 			print "<td colspan=\"2\" style=\"padding: 8px 15px; background-color: var(--header-bg, #f1f5f9); border-bottom: 1px solid var(--border-color, #e5e7eb);\">\n";
 			print "<div style=\"display: flex; align-items: center; gap: 15px; flex-wrap: wrap;\">\n";
 			print "<a href=\"$BrandLink\" target=\"_blank\" style=\"text-decoration: none; flex-shrink: 0;\">\n";
-			print "<img src=\"$logo_web_path\" alt=\"Logo\" style=\"height: 40px; width: auto;\" onerror=\"this.style.display='none'\">\n";
+			print "<img src=\"$logo_web\" alt=\"Logo\" style=\"height: 40px; width: auto;\" onerror=\"this.style.display='none'\">\n";
 			print "</a>";
 			print "<div style=\"display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; row-gap: 5px;\">\n";
 			print "<span style=\"font-size: 18px; font-weight: bold; white-space: nowrap;\">$brand_title</span>\n";
@@ -14514,8 +14269,8 @@ sub HTMLTopBanner{
 			print "</tr>\n";
 		}
 
-		print "<tr><td class=\"aws_title\" width=\"70%\">$title</td>\n";
-		print "<td class=\"aws_blank\">&nbsp;</td>\n";
+		print "<tr><td class=\"aws-title\" width=\"78%\">$title</td>\n";
+		print "<td class=\"aws-whitespace\">&nbsp;</td>\n";
 		print "</tr>\n";
 		print "<tr><td colspan=\"2\">\n";
 		print "<table class=\"aws_data\" border=\"1\" cellpadding=\"2\" cellspacing=\"0\" width=\"100%\">\n";
@@ -14581,14 +14336,14 @@ sub HTMLTopBanner{
 			if ( $LogoLink =~ "https://www.awstats.org" ) {
 				print "<td align=\"right\" rowspan=\"2\"><a href=\""
 				. XMLEncode($LogoLink)
-				. "\" target=\"awstatshome\"><img src=\"$DirIcons/os/$Logo\" border=\"0\""
+				. "\" target=\"awstatshome\"><img src=\"$DirIcons/os/$Logo\" border=\"0\" width=\"260\" height=\"90\""
 				. AltTitle( ucfirst($PROG) . " " . _t("Web Site") )
 				. " onerror=\"this.style.display='none'\" /></a>";
 			}
 			else {
 				print "<td align=\"right\" rowspan=\"2\"><a href=\""
 				. XMLEncode($LogoLink)
-				. "\" target=\"awstatshome\"><img src=\"$DirIcons/os/$Logo\" border=\"0\" onerror=\"this.style.display='none'\" /></a>";
+				. "\" target=\"awstatshome\"><img src=\"$DirIcons/os/$Logo\" border=\"0\" width=\"260\" height=\"90\" onerror=\"this.style.display='none'\" /></a>";
 			}
 			if ( !$StaticLinks ) { print "<br>"; Show_Flag_Links($Lang); }
 			print "</td>\n";
@@ -14626,7 +14381,7 @@ sub HTMLTopBanner{
 					print "<option value=\"$month_key\" $selected>$display</option>\n";
 				}
 				
-				# 处理第13个月（埃塞俄比亚历或希伯来历闰年）
+				# 处理第13个月（埃塞俄比亚历和希伯来历闰年）
 				if ($max_month == 13) {
 					my $calendar_type = get_calendar_type($Lang);
 					my $month_13_name = "";
@@ -15252,7 +15007,7 @@ sub HTMLMenu{
 sub HTMLMainFileType{
 	my $NewLinkParams = shift;
 	my $NewLinkTarget = shift;
-	if (!$LevelForFileTypesDetection > 0){return;}
+	if (!($LevelForFileTypesDetection > 0)){return;}
 	if ($Debug) { debug( "ShowFileTypesStatsCompressionStats", 2 ); }
 	print "$Center<a name=\"filetypes\">&nbsp;</a>";
 	my $Totalh = 0;
@@ -19088,7 +18843,7 @@ sub HTMLMainDownloads{
 	my $NewLinkParams = shift;
 	my $NewLinkTarget = shift;
 	
-	if (!$LevelForFileTypesDetection > 0){return;}
+	if (!($LevelForFileTypesDetection > 0)){return;}
 	if ($Debug) { debug( "ShowDownloadStats", 2 ); }
 	
 	my $regext = qr/\.(\w{1,6})$/;
@@ -23084,7 +22839,7 @@ else {
 		elsif ($doc eq 'dev_graphs') {
 			&generate_devgraphs_doc();
 		}
-		
+
 		print "</div>\n";
 		html_end();
 		exit 0;
