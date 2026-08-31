@@ -19,7 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #------------------------------------------------------------------------------
-use v5.20;
+use v5.020;
 use strict;
 use warnings;
 use utf8;
@@ -698,30 +698,63 @@ $DatabaseBreak = 'month';
 	'da'        => 'da',
 	'dk'        => 'da',
 	'danish'    => 'da',
-	
-	# English
-	'en'        => 'en',
-	'english'   => 'en',
-	'en-us'     => 'en',
-	'en_us'     => 'en',
-	'en-US'     => 'en',
-	'en_US'     => 'en',
-	'en-gb'     => 'en',
-	'en_gb'     => 'en',
-	'en-GB'     => 'en',
-	'en_GB'     => 'en',
-	'en-au'     => 'en',
-	'en_au'     => 'en',
-	'en-AU'     => 'en',
-	'en_AU'     => 'en',
-	'en-ca'     => 'en',
-	'en_ca'     => 'en',
-	'en-CA'     => 'en',
-	'en_CA'     => 'en',
-	'en-nz'     => 'en',
-	'en_nz'     => 'en',
-	'en-NZ'     => 'en',
-	'en_NZ'     => 'en',
+	# en-us
+	'en-us'     => 'en-us',
+	'en_us'     => 'en-us',
+	'en-US'     => 'en-us',
+	'en_US'     => 'en-us',
+	'english'   => 'en-us',
+	'en-usa'    => 'en-us',
+	'en-001'    => 'en-us',
+	'en'        => 'en-us',
+	'en-ph'     => 'en-us',
+	'en_ph'     => 'en-us',
+	'en-PH'     => 'en-us',
+	'en_PH'     => 'en-us',
+	'en-hk'     => 'en-us',
+	'en_hk'     => 'en-us',
+	'en-HK'     => 'en-us',
+	'en_HK'     => 'en-us',
+	# en-gb
+	'en-gb'     => 'en-gb',
+	'en_gb'     => 'en-gb',
+	'en-GB'     => 'en-gb',
+	'en_GB'     => 'en-gb',
+	'en-uk'     => 'en-gb',
+	'en-eng'    => 'en-gb',
+	'en-au'     => 'en-gb',
+	'en_au'     => 'en-gb',
+	'en-AU'     => 'en-gb',
+	'en_AU'     => 'en-gb',
+	'en-nz'     => 'en-gb',
+	'en_nz'     => 'en-gb',
+	'en-NZ'     => 'en-gb',
+	'en_NZ'     => 'en-gb',
+	'en-ie'     => 'en-gb',
+	'en_ie'     => 'en-gb',
+	'en-IE'     => 'en-gb',
+	'en_IE'     => 'en-gb',
+	'en-za'     => 'en-gb',
+	'en_za'     => 'en-gb',
+	'en-ZA'     => 'en-gb',
+	'en_ZA'     => 'en-gb',
+	'en-in'     => 'en-gb',
+	'en_in'     => 'en-gb',
+	'en-IN'     => 'en-gb',
+	'en_IN'     => 'en-gb',
+	'en-sg'     => 'en-gb',
+	'en_sg'     => 'en-gb',
+	'en-SG'     => 'en-gb',
+	'en_SG'     => 'en-gb',
+	'en-my'     => 'en-gb',
+	'en_my'     => 'en-gb',
+	'en-MY'     => 'en-gb',
+	'en_MY'     => 'en-gb',
+	# en-ca
+	'en-ca'     => 'en-ca',
+	'en_ca'     => 'en-ca',
+	'en-CA'     => 'en-ca',
+	'en_CA'     => 'en-ca',
 	
 	# Español
 	'es'        => 'es',
@@ -1168,7 +1201,7 @@ $regdate   = qr/(\d\d\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/;
 # Parameters:   None
 # Input:        Environment variables: LANG, LANGUAGE, LC_ALL, LC_MESSAGES
 # Output:       None
-# Return:       Language code (e.g., 'zh-cn', 'en', 'fr') or undef if not detected
+# Return:       Language code (e.g., 'zh-cn', 'en-us', 'fr') or undef if not detected
 # Note:         Supported languages are defined in @supported array
 #               Handles both full codes (e.g., 'zh_CN.UTF-8' -> 'zh-cn') and primary codes
 #------------------------------------------------------------------------------
@@ -1179,12 +1212,12 @@ sub detect_terminal_language {
 	$lang =~ s/_/-/g;
 	$lang = lc($lang);
 	my @supported = qw(
-			am ar az be bg bn br bs ca cs cy da de el en
+			am ar az be bg bn br bs ca cs cy da de el
 			es et eu fa fi fr ga gl gu he hi hr hu hy id
 			is it ja ka kk km kn ko lo lt lv mk ml mn mr
 			ms my nb ne nl nn or pa pl ps pt ro ru si sk
 			sl sq sr sv sw ta te th tl tr ug uk ur uz vi
-			pt-br sr-latn zh-cn zh-tw
+			pt-br sr-latn zh-cn zh-tw en-us en-gb en-ca 
 	);
 	foreach (@supported) {
 		if ($_ eq $lang) {
@@ -1216,7 +1249,7 @@ sub detect_terminal_language {
 #------------------------------------------------------------------------------
 sub print_help {
 	my $term_lang = detect_terminal_language();
-	$Lang = $term_lang || 'en';
+	$Lang = $term_lang || 'en-us';
 	binmode(STDOUT, ':utf8');
 	Read_Language_Data($Lang);
 	Read_Ref_Data('domains', 'robots', 'worms', 'operating_systems', 'browsers', 'search_engines');
@@ -1578,28 +1611,28 @@ sub country_code_to_emoji {
 # Return:       None
 #------------------------------------------------------------------------------
 sub html_head {
-    return if $NOHTML;
-    return unless ( scalar keys %HTMLOutput || $PluginMode );
+	return if $NOHTML;
+	return unless ( scalar keys %HTMLOutput || $PluginMode );
 
-    my $dir = $PageDir ? 'rtl' : 'ltr';
+	my $dir = $PageDir ? 'rtl' : 'ltr';
 
-    # --- 1. Optimize Period Title Construction ---
-    my $periodtitle = " ($YearRequired";
-    $periodtitle .= "-$MonthRequired" if $MonthRequired ne 'all';
-    $periodtitle .= "-$DayRequired"   if $DayRequired   ne '';
-    $periodtitle .= "-$HourRequired"  if $HourRequired  ne '';
-    $periodtitle .= ")";
+	# --- 1. Optimize Period Title Construction ---
+	my $periodtitle = " ($YearRequired";
+	$periodtitle .= "-$MonthRequired" if $MonthRequired ne 'all';
+	$periodtitle .= "-$DayRequired"   if $DayRequired   ne '';
+	$periodtitle .= "-$HourRequired"  if $HourRequired  ne '';
+	$periodtitle .= ")";
 
-    # --- 2. HTML5 Standard Headers (Modern DocType & Meta) ---
-    print "<!DOCTYPE html>\n";
-    print "<html lang=\"$Lang\" dir=\"$dir\">\n";
-    print "<head>\n";
-    print "<meta charset=\"utf-8\">\n";
-    print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-    print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
+	# --- 2. HTML5 Standard Headers (Modern DocType & Meta) ---
+	print "<!DOCTYPE html>\n";
+	print "<html lang=\"$Lang\" dir=\"$dir\">\n";
+	print "<head>\n";
+	print "<meta charset=\"utf-8\">\n";
+	print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+	print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
 
-    # --- 3. Clean SVG Favicon Injection via Here-Doc ---
-    print <<"EOF_FAVICON";
+	# --- 3. Clean SVG Favicon Injection via Here-Doc ---
+	print <<"EOF_FAVICON";
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
 <link rel="icon" type="image/svg+xml" sizes="16x16" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 100 100'><text x='50' y='55' font-size='50' text-anchor='middle'>📊</text></svg>">
@@ -1608,65 +1641,65 @@ sub html_head {
 <link rel="manifest" href="$DirIcons/os/site.webmanifest">
 EOF_FAVICON
 
-    # --- 4. Robots Rule Controller ---
-    if ($MetaRobot) {
-        my $index  = ($FrameName eq 'mainleft') ? 'noindex' : 'index';
-        my $follow = ($FrameName eq 'mainleft' || $FrameName eq 'index') ? 'follow' : 'nofollow';
-        print "<meta name=\"robots\" content=\"$index, $follow\">\n";
-    } else {
-        print "<meta name=\"robots\" content=\"noindex, nofollow\">\n";
-    }
+	# --- 4. Robots Rule Controller ---
+	if ($MetaRobot) {
+		my $index  = ($FrameName eq 'mainleft') ? 'noindex' : 'index';
+		my $follow = ($FrameName eq 'mainleft' || $FrameName eq 'index') ? 'follow' : 'nofollow';
+		print "<meta name=\"robots\" content=\"$index, $follow\">\n";
+	} else {
+		print "<meta name=\"robots\" content=\"noindex, nofollow\">\n";
+	}
 
-    # --- 5. RFC 1123 HTTP-Compliant Expires Meta ---
-    if ($Expires) {
-        my $expires_gmt = strftime("%a, %d %b %Y %H:%M:%S GMT", gmtime($starttime + $Expires));
-        print "<meta http-equiv=\"expires\" content=\"$expires_gmt\">\n";
-    }
+	# --- 5. RFC 1123 HTTP-Compliant Expires Meta ---
+	if ($Expires) {
+		my $expires_gmt = strftime("%a, %d %b %Y %H:%M:%S GMT", gmtime($starttime + $Expires));
+		print "<meta http-equiv=\"expires\" content=\"$expires_gmt\">\n";
+	}
 
-    # --- 6. Page SEO Metadata & Title Generation ---
-    my @k = keys %HTMLOutput;
-    my $description = sprintf("%s - %s %s%s%s", 
-        ucfirst($PROG),
-        _t("Advanced Web Statistics for"),
-        $SiteDomain,
-        $periodtitle,
-        ($k[0] ? " - " . _t($k[0]) : "")
-    );
-    print "<meta name=\"description\" content=\"$description\">\n";
+	# --- 6. Page SEO Metadata & Title Generation ---
+	my @k = keys %HTMLOutput;
+	my $description = sprintf("%s - %s %s%s%s", 
+		ucfirst($PROG),
+		_t("Advanced Web Statistics for"),
+		$SiteDomain,
+		$periodtitle,
+		($k[0] ? " - " . _t($k[0]) : "")
+	);
+	print "<meta name=\"description\" content=\"$description\">\n";
 
-    if ( $MetaRobot && $FrameName ne 'mainleft' ) {
-        print "<meta name=\"keywords\" content=\"$SiteDomain, web statistics, log analyzer, traffic analysis\">\n";
-    }
+	if ( $MetaRobot && $FrameName ne 'mainleft' ) {
+		print "<meta name=\"keywords\" content=\"$SiteDomain, web statistics, log analyzer, traffic analysis\">\n";
+	}
 
-    my $title = sprintf("%s %s%s", 
-        _t("Statistics for"),
-        $SiteDomain,
-        ($k[0] ? " - " . _t($k[0]) : "")
-    );
-    print "<title>$title</title>\n";
+	my $title = sprintf("%s %s%s", 
+		_t("Statistics for"),
+		$SiteDomain,
+		($k[0] ? " - " . _t($k[0]) : "")
+	);
+	print "<title>$title</title>\n";
 
-    # --- 7. Stylesheets Injection ---
-    if ( $FrameName ne 'index' ) {
-        if ($StyleSheet) {
-            print "<link rel=\"stylesheet\" href=\"$StyleSheet\">\n";
-        } else {
-            # Modern CSS injection interface
-            print get_modern_css($dir);
-        }
-        
-        # UI Pre-translations
-        my $light_mode_text = _t("Switch to light mode");
-        my $dark_mode_text  = _t("Switch to dark mode");
-    }
+	# --- 7. Stylesheets Injection ---
+	if ( $FrameName ne 'index' ) {
+		if ($StyleSheet) {
+			print "<link rel=\"stylesheet\" href=\"$StyleSheet\">\n";
+		} else {
+			# Modern CSS injection interface
+			print get_modern_css($dir);
+		}
+		
+		# UI Pre-translations
+		my $light_mode_text = _t("Switch to light mode");
+		my $dark_mode_text  = _t("Switch to dark mode");
+	}
 
-    # --- 8. Extensible Plugins Hook ---
-    foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLHeader'} } ) {
-        my $function = "AddHTMLHeader_$pluginname";
-        no strict 'refs';
-        &$function();
-    }
+	# --- 8. Extensible Plugins Hook ---
+	foreach my $pluginname ( keys %{ $PluginsLoaded{'AddHTMLHeader'} } ) {
+		my $function = "AddHTMLHeader_$pluginname";
+		no strict 'refs';
+		&$function();
+	}
 
-    print "</head>\n";
+	print "</head>\n";
 	
 	if ( $FrameName ne 'index' ) {
 		my $body_class = ($FrameName eq 'mainleft') ? 'class="aws-sidebar"' : 'class="aws-main"';
@@ -2717,12 +2750,12 @@ sub html_end {
 		
 		if ($listplugins) {
 			my @plugins = keys %{ $PluginsLoaded{'init'} };
-            #if (@plugins) {
-            #    printf(" (%s: %s)", 
-            #        _t("plugins"), 
-            #        join(', ', @plugins)
-            #    );
-            #}
+			#if (@plugins) {
+			#    printf(" (%s: %s)", 
+			#        _t("plugins"), 
+			#        join(', ', @plugins)
+			#    );
+			#}
 			if (@plugins) {
 				my @display_plugins = @plugins;
 				for (my $i = 0; $i < @display_plugins; $i++) {
@@ -3063,7 +3096,7 @@ sub error {
 		print "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"180\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
 		print "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
 		print "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-        print "<link rel=\"manifest\" href=\"$DirIcons/os/site.webmanifest\">\n";
+		print "<link rel=\"manifest\" href=\"$DirIcons/os/site.webmanifest\">\n";
 		print get_modern_css($dir ? 'rtl' : 'ltr');
 		print "</head><body><div class=\"aws-container\">\n";
 		$HeaderHTMLSent = 1;
@@ -4598,13 +4631,13 @@ sub Read_Ref_Data {
 #               - Sets $PageCode = 'utf-8' (always UTF-8)
 #               - Sets $PageDir = 1 for RTL languages (ar, he, fa, ur, ug), 0 for LTR
 #               - For mail logs (LogType='M'), adds special mappings: First, Last, Mails, Size
-# Parameters:   $lang - Language code (e.g., 'en', 'zh-cn', or 'auto')
+# Parameters:   $lang - Language code (e.g., 'en-us', 'zh-cn', or 'auto')
 # Input:        $DirLang, $DIR, %LangBrowserToLangAwstats, $LogType
 # Output:       %translate_map, $Message[], $PageCode, $PageDir
 # Return:       None
 #------------------------------------------------------------------------------
 sub Read_Language_Data {
-	my $lang = shift || 'en';
+	my $lang = shift || 'en-us';
 	my $or_lang = $lang;
 
 	if ( $lang eq 'auto' && $ENV{'HTTP_ACCEPT_LANGUAGE'} ) {
@@ -4641,7 +4674,6 @@ sub Read_Language_Data {
 	}
 
 	my @PossibleLangDir = ( "$DirLang", "$DIR/lang", "/usr/share/awstats/lang" );
-
 	my $FileLang = '';
 	
 	foreach my $dir (@PossibleLangDir) {
@@ -4680,7 +4712,7 @@ sub Read_Language_Data {
 				$searchdir .= "/";
 			}
 			
-			my $pofile = "${searchdir}awstats-en.po";
+			my $pofile = "${searchdir}awstats-en-us.po";
 			if ( -f $pofile ) {
 				$FileLang = $pofile;
 				last;
@@ -4703,8 +4735,8 @@ sub Read_Language_Data {
 	}
 
 	$PageCode = 'utf-8';
-	if ( $or_lang eq 'ar' || $or_lang eq 'he' || 
-		 $or_lang eq 'fa' || $or_lang eq 'ur' || $or_lang eq 'ug' ) {
+	my @rtl_langs = qw(ar he fa ur ug);
+	if ( grep { $_ eq $lang } @rtl_langs ) {
 		$PageDir = 1;
 	} else {
 		$PageDir = 0;
@@ -10364,7 +10396,7 @@ sub CleanNewLinkParamsFrom {
 # Function:     Show language flag links for switching interface language
 # Description:  Displays emoji flags for each language in ShowFlagLinks config,
 #               allowing users to switch the AWStats interface language.
-# Parameters:   $CurrentLang - Current language code (e.g., 'en', 'zh-cn')
+# Parameters:   $CurrentLang - Current language code (e.g., 'en-us', 'zh-cn')
 # Input:        $QueryString, $AWScript, $SiteConfig, $YearRequired, $MonthRequired,
 #               $ShowFlagLinks, $LangBrowserToLangAwstats, $FrameName, $StaticLinks
 # Output:       HTML anchor tags with flag emojis
@@ -11147,9 +11179,9 @@ sub DefinePerlParsingFormat {
 	if ($Debug) {
 		debug("Call To DefinePerlParsingFormat (LogType='$LogType', LogFormat='$LogFormat')");
 	}
-    # Same than "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"".
-    # %u (user) is "([^\\/\\[]+)" instead of "[^ ]+" because can contain space (Lotus Notes). referer and ua might be "".
-    # $PerlParsingFormat="([^ ]+) [^ ]+ ([^\\/\\[]+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) (.+) [^\\\"]+\\\" ([\\d|-]+) ([\\d|-]+) \\\"(.*?)\\\" \\\"([^\\\"]*)\\\"";
+	# Same than "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"".
+	# %u (user) is "([^\\/\\[]+)" instead of "[^ ]+" because can contain space (Lotus Notes). referer and ua might be "".
+	# $PerlParsingFormat="([^ ]+) [^ ]+ ([^\\/\\[]+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) (.+) [^\\\"]+\\\" ([\\d|-]+) ([\\d|-]+) \\\"(.*?)\\\" \\\"([^\\\"]*)\\\"";
 	if ( $LogFormat =~ /^[1-6]$/ ) {    # Pre-defined log format
 		if ( $LogFormat eq '1' || $LogFormat eq '6' )
 		{
@@ -11165,7 +11197,7 @@ sub DefinePerlParsingFormat {
 			$pos_agent   = 8;
 			@fieldlib = ( 'host', 'logname', 'date', 'method', 'url', 'code', 'size', 'referer', 'ua' );
 		}
-        # Same than "date time c-ip cs-username cs-method cs-uri-stem sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)"
+		# Same than "date time c-ip cs-username cs-method cs-uri-stem sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)"
 		elsif ( $LogFormat eq '2' )
 		{
 			$PerlParsingFormat = "(\\S+ \\S+) (\\S+) (\\S+) (\\S+) (\\S+) ([\\d|-]+) ([\\d|-]+) \\S+ (\\S+) (\\S+)";
@@ -11192,10 +11224,10 @@ sub DefinePerlParsingFormat {
 			$pos_size    = 7;
 			@fieldlib = ( 'date', 'method', 'code', 'host', 'ua', 'referer', 'url', 'size' );
 		}
-        # Same than "%h %l %u %t \"%r\" %>s %b"
-        # %u (user) is "(.+)" instead of "[^ ]+" because can contain space (Lotus Notes).
-        # Sample: 10.100.10.45 - BMAA\will.smith [01/Jul/2013:07:17:28 +0200] "GET /Download/__Omnia__Aus- und Weiterbildung__Konsular- und Verwaltungskonferenz, Programm.doc HTTP/1.1" 200 9076810
-        # $PerlParsingFormat =  "([^ ]+) [^ ]+ (.+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) ([^ ]+)(?: [^\\\"]+|)\\\" ([\\d|-]+) ([\\d|-]+)";
+		# Same than "%h %l %u %t \"%r\" %>s %b"
+		# %u (user) is "(.+)" instead of "[^ ]+" because can contain space (Lotus Notes).
+		# Sample: 10.100.10.45 - BMAA\will.smith [01/Jul/2013:07:17:28 +0200] "GET /Download/__Omnia__Aus- und Weiterbildung__Konsular- und Verwaltungskonferenz, Programm.doc HTTP/1.1" 200 9076810
+		# $PerlParsingFormat =  "([^ ]+) [^ ]+ (.+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) ([^ ]+)(?: [^\\\"]+|)\\\" ([\\d|-]+) ([\\d|-]+)";
 		elsif ( $LogFormat eq '4' ) {
 			$PerlParsingFormat =  "([^ ]+) [^ ]+ (.+) \\[([^ ]+) [^ ]+\\] \\\"([^ ]+) (.+) [^\\\"]+\\\" ([\\d|-]+) ([\\d|-]+)";
 			$pos_host    = 0;
@@ -11226,9 +11258,9 @@ sub DefinePerlParsingFormat {
 			eval "\$$k = \$i;";
 		}
 	}
-    # Personalized log format
-    # Replacement for Notes format string that are not Apache
-    # Replacement for Apache format string
+	# Personalized log format
+	# Replacement for Notes format string that are not Apache
+	# Replacement for Apache format string
 	else {
 		my $LogFormatString = $LogFormat;
 		$LogFormatString =~ s/%vh/%virtualname/g;
@@ -11297,24 +11329,24 @@ sub DefinePerlParsingFormat {
 		my $LogSeparatorWithoutStar = $LogSeparator;
 		$LogSeparatorWithoutStar =~ s/[\*\+]//g;
 		foreach my $f ( split( /\s+/, $LogFormatString ) ) {
-            if ($PerlParsingFormat) { $PerlParsingFormat .= "$LogSeparator"; }
-            # If field is prefixed with custom string, just push it to regex literally
-            if ( $f =~ /^([^%]+)%/ ) { $PerlParsingFormat .= "$1"; }
-            # logname can be "value", "" and - in same log (Lotus notes)
-            elsif ( $f =~ /%lognamequot$/ ) {
-                $pos_logname = $i;
-                $i++;
-                push @fieldlib, 'logname';
-                $PerlParsingFormat .= "\\\"?([^\\\"]*)\\\"?";
-            }
-            # %u (user) is "([^\\/\\[]+)" instead of "[^$LogSeparatorWithoutStar]+" because can contain space (Lotus Notes).
+			if ($PerlParsingFormat) { $PerlParsingFormat .= "$LogSeparator"; }
+			# If field is prefixed with custom string, just push it to regex literally
+			if ( $f =~ /^([^%]+)%/ ) { $PerlParsingFormat .= "$1"; }
+			# logname can be "value", "" and - in same log (Lotus notes)
+			elsif ( $f =~ /%lognamequot$/ ) {
+				$pos_logname = $i;
+				$i++;
+				push @fieldlib, 'logname';
+				$PerlParsingFormat .= "\\\"?([^\\\"]*)\\\"?";
+			}
+			# %u (user) is "([^\\/\\[]+)" instead of "[^$LogSeparatorWithoutStar]+" because can contain space (Lotus Notes).
 			elsif ( $f =~ /%logname$/ ) {
 				$pos_logname = $i;
 				$i++;
 				push @fieldlib, 'logname';
 				$PerlParsingFormat .= "([^\\/\\[]+)";
 			}
-            # [dd/mmm/yyyy:hh:mm:ss +0000] or [dd/mmm/yyyy:hh:mm:ss],  time1b kept for backward compatibility
+			# [dd/mmm/yyyy:hh:mm:ss +0000] or [dd/mmm/yyyy:hh:mm:ss],  time1b kept for backward compatibility
 			elsif ( $f =~ /%time1$/ || $f =~ /%time1b$/ ) {
 				$pos_date = $i;
 				$i++;
@@ -11324,15 +11356,15 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'tz';
 				$PerlParsingFormat .= "\\[([^$LogSeparatorWithoutStar]+)( [^$LogSeparatorWithoutStar]+)?\\]";
 			}
-            # yyyy-mm-dd hh:mm:ss
-            # Need \s for Exchange log files
+			# yyyy-mm-dd hh:mm:ss
+			# Need \s for Exchange log files
 			elsif ( $f =~ /%time2$/ ) {
 				$pos_date = $i;
 				$i++;
 				push @fieldlib, 'date';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+\\s[^$LogSeparatorWithoutStar]+)";
 			}
-            # mon d hh:mm:ss  or  mon  d hh:mm:ss  or  mon dd hh:mm:ss yyyy  or  day mon dd hh:mm:ss  or  day mon dd hh:mm:ss yyyy
+			# mon d hh:mm:ss  or  mon  d hh:mm:ss  or  mon dd hh:mm:ss yyyy  or  day mon dd hh:mm:ss  or  day mon dd hh:mm:ss yyyy
 			elsif ( $f =~ /%time3$/ ) {
 				$pos_date = $i;
 				$i++;
@@ -11345,12 +11377,12 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'date';
 				$PerlParsingFormat .= "(\\d+)";
 			}
-            # Supports the following formats:
-            # - yyyy-mm-ddThh:mm:ss           (Incomplete ISO 8601)
-            # - yyyy-mm-ddThh:mm:ssZ          (ISO 8601, zero meridian)
-            # - yyyy-mm-ddThh:mm:ss+00:00     (ISO 8601)
-            # - yyyy-mm-ddThh:mm:ss+0000      (Apache's best approximation to ISO 8601 using "%{%Y-%m-%dT%H:%M:%S%z}t" in LogFormat)
-            # - yyyy-mm-ddThh:mm:ss.000000Z   (Amazon AWS log files)
+			# Supports the following formats:
+			# - yyyy-mm-ddThh:mm:ss           (Incomplete ISO 8601)
+			# - yyyy-mm-ddThh:mm:ssZ          (ISO 8601, zero meridian)
+			# - yyyy-mm-ddThh:mm:ss+00:00     (ISO 8601)
+			# - yyyy-mm-ddThh:mm:ss+0000      (Apache's best approximation to ISO 8601 using "%{%Y-%m-%dT%H:%M:%S%z}t" in LogFormat)
+			# - yyyy-mm-ddThh:mm:ss.000000Z   (Amazon AWS log files)
 			elsif ( $f =~ /%time5$/ ) {
 				$pos_date = $i;
 				$i++;
@@ -11360,15 +11392,15 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'tz';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+T[^$LogSeparatorWithoutStar]+)(Z|[-+\.]\\d\\d[:\\.\\dZ]*)?";
 			}
-            # dd/mm/yyyy, hh:mm:ss - added additional type to format for IIS date -DWG 12/8/2008
+			# dd/mm/yyyy, hh:mm:ss - added additional type to format for IIS date -DWG 12/8/2008
 			elsif ( $f =~ /%time6$/ ) {
 				$pos_date = $i;	
 				$i++; 
 				push @fieldlib, 'date';
 				$PerlParsingFormat .= "([^,]+,[^,]+)";
 			}
-            # Special for methodurl, methodurlprot and methodurlnoprot
-            #"\\\"([^$LogSeparatorWithoutStar]+) ([^$LogSeparatorWithoutStar]+) [^\\\"]+\\\"";
+			# Special for methodurl, methodurlprot and methodurlnoprot
+			#"\\\"([^$LogSeparatorWithoutStar]+) ([^$LogSeparatorWithoutStar]+) [^\\\"]+\\\"";
 			elsif ( $f =~ /%methodurl$/ ) {
 				$pos_method = $i;
 				$i++;
@@ -11505,21 +11537,21 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'gzipin';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-            # Compare $f to /%gzipout/ and not to /%gzipout$/ like other fields
+			# Compare $f to /%gzipout/ and not to /%gzipout$/ like other fields
 			elsif ( $f =~ /%gzipout/ ) {
 				$pos_gzipout = $i;
 				$i++;
 				push @fieldlib, 'gzipout';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-            # Compare $f to /%gzipratio/ and not to /%gzipratio$/ like other fields
+			# Compare $f to /%gzipratio/ and not to /%gzipratio$/ like other fields
 			elsif ( $f =~ /%gzipratio/ ) {
 				$pos_compratio = $i;
 				$i++;
 				push @fieldlib, 'gzipratio';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-            # Compare $f to /%deflateratio/ and not to /%deflateratio$/ like other fields
+			# Compare $f to /%deflateratio/ and not to /%deflateratio$/ like other fields
 			elsif ( $f =~ /%deflateratio/ ) {
 				$pos_compratio = $i;
 				$i++;
@@ -11550,7 +11582,7 @@ sub DefinePerlParsingFormat {
 				push @fieldlib, 'timetaken';
 				$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 			}
-            # Special for protocolmms, used for method if method not already found (for MMS)
+			# Special for protocolmms, used for method if method not already found (for MMS)
 			elsif ( $f =~ /%protocolmms$/ ) {
 				if ( $pos_method < 0 ) {
 					$pos_method = $i;
@@ -11559,7 +11591,7 @@ sub DefinePerlParsingFormat {
 					$PerlParsingFormat .= "([^$LogSeparatorWithoutStar]+)";
 				}
 			}
-            # Special for codemms, used for code only if code not already found (for MMS)
+			# Special for codemms, used for code only if code not already found (for MMS)
 			elsif ( $f =~ /%codemms$/ ) {
 				if ( $pos_code < 0 ) {
 					$pos_code = $i;
@@ -12053,7 +12085,7 @@ sub generate_what_doc {
 	   $content =~ s/\\n/\n/g;
 	my $compare_link = _t("docs.what.compare.link");
 	my $doc_dir = "$dir/docs"; 
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -12276,7 +12308,7 @@ sub generate_changelog_doc {
 	my $series_early_title = _t("series.early.title");
 	my $footer_note = _t("footer.note");
 	# 获取语言和方向
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -12900,7 +12932,7 @@ sub generate_benchmark_doc {
 	my $content = _t("docs.benchmark.content");
 	$content =~ s/\\n/\n/g;
 	# 获取语言和方向
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -12953,7 +12985,7 @@ sub generate_compare_doc {
 	my $scheduler_common = _t("compare.value.scheduler.common");
 	my $benchmark_dns = _t("compare.value.benchmark.dns");
 	my $visits_basis = _t("compare.value.visits.basis");
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	my $html = <<"END_HTML";
 	<title>$full_title</title>
@@ -13005,7 +13037,7 @@ sub generate_config_doc {
 	my $config_full = _t("config.full");
 	$config_full =~ s/\\n/\n/g;
 	# 获取语言和方向
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13045,7 +13077,7 @@ sub generate_contrib_doc {
 	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	
 	# 获取语言和方向
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13088,7 +13120,7 @@ sub generate_devgraphs_doc {
 	my $devgraphs_types = _t("devgraphs.types.list");
 	
 	# 获取语言和方向
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13148,7 +13180,7 @@ sub generate_devhooks_doc {
 	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $devhooks_full = _t("devhooks.full");
 	$devhooks_full =~ s/\\n/\n/g;
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13206,7 +13238,7 @@ sub generate_devplugins_doc {
 	 $accessible_vars_content =~ s/\\n/\n/g;
 	my $accessible_funcs_title = _t("devplugins.accessible_funcs.title");
 	my $devplugins_functions = _t("devplugins.functions.full");
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13280,7 +13312,7 @@ sub generate_dolibarr_doc {
 	my $full_title = "$doc_title - $page_title";
 	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $dolibarr_full = sprintf( _t("dolibarr.full"), $StatsUrl );
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13353,7 +13385,7 @@ sub generate_extra_doc {
 	my $config_params_desc = _t("extra.config.params.desc");
 	my $config_warning = _t("extra.config.warning");
 	   $config_params_desc =~ s/\\n/\n/g;
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13438,7 +13470,7 @@ sub generate_faq_doc {
 	my $SPONSOR_SECTION = sprintf( _t("sponsor.section"), $StatsUrl );
 	my $faq_content = _t("faq.complete");
 	   $faq_content =~ s/\\n/\n/g;
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13499,7 +13531,7 @@ sub generate_glossary_doc {
 	my $glossary_smtp_5xx = _t("glossary.smtp.5xx");
 	my $footer_author = _t("glossary.footer.author");
 	my $footer_twitter = _t("glossary.footer.twitter");
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13617,7 +13649,7 @@ sub generate_license_doc {
 	my $license_date = _t("license.date");
 	my $footer_author = _t("license.footer.author");
 	my $footer_twitter = _t("license.footer.twitter");
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13758,7 +13790,7 @@ sub generate_loganalysispaper_doc {
 	my $otherarticles_list = _t("paper.otherarticles.list");
 	my $footer_author = _t("paper.footer.author");
 	my $footer_googleplus = _t("paper.footer.googleplus");
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -13941,7 +13973,7 @@ sub generate_security_doc {
 	my $conclusion = _t("security.conclusion");
 	my $footer_author = _t("security.footer.author");
 	my $footer_twitter = _t("security.footer.twitter");
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	my $html = <<"END_HTML";
 	<title>$full_title</title>
@@ -14040,7 +14072,7 @@ sub generate_setup_doc {
 	   $content =~ s/\\n/\n/g;
 	my $full_title = "$doc_title - $page_title";
 	
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -14077,7 +14109,7 @@ sub generate_tools_doc {
 	   $content =~ s/\\n/\n/g;
 	my $full_title = "$doc_title - $page_title";
 	
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -14114,7 +14146,7 @@ sub generate_upgrade_doc {
 	$content =~ s/\\n/\n/g;
 	my $full_title = "$doc_title - $page_title";
 	
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -14151,7 +14183,7 @@ sub generate_webmin_doc {
 	$content =~ s/\\n/\n/g;
 	my $full_title = "$doc_title - $page_title";
 	
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -14188,7 +14220,7 @@ sub generate_home_doc {
 	$content =~ s/\\n/\n/g;
 	my $full_title = "$doc_title - $page_title";
 	
-	my $lang = $Lang || 'en';
+	my $lang = $Lang || 'en-us';
 	my $dir_attr = $PageDir ? 'rtl' : 'ltr';
 	
 	my $html = <<"END_HTML";
@@ -22876,7 +22908,7 @@ else {
 		if ($Debug) {
 			debug( " No language defined or available. Will use Lang=en", 1 );
 		}
-		$Lang = 'en';
+		$Lang = 'en-us';
 	}
 
 	# Check and correct bad parameters

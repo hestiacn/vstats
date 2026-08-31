@@ -148,6 +148,46 @@ StatsUrl="/vstats"                   # AWStats 部署目录
 
 ---
 
+## **AWStats Geo/IPfree.pm 版本兼容性修复**
+
+如果在运行 AWStats 更新时遇到类似以下错误：
+```bash
+Error: Perl v5.200.0 required (did you mean v5.20.0?)--this is only v5.36.0
+```
+
+这是因为 `Geo/IPfree.pm` 文件中的版本检查与当前系统的 Perl 版本不兼容。
+
+### **自动修复命令**
+```bash
+find /usr -name "IPfree.pm" 2>/dev/null | while read -r file; do
+    sed -i.bak 's/^use 5\.20;/#use 5.20;/' "$file"
+done
+```
+
+### **手动修复步骤**
+如果自动命令无效，请按以下步骤操作：
+
+1. **查找文件位置**
+   ```bash
+   find /usr -name "IPfree.pm" 2>/dev/null
+   ```
+
+2. **编辑文件，注释掉版本检查行**
+   ```bash
+   sed -i 's/^use 5\.20;/#use 5.20;/' /path/to/IPfree.pm
+   ```
+
+### **补充文件（如需要）**
+由于平台的多样性和复杂性，不同系统可能使用不同版本。如果您系统中没有对应的文件，请手动替换以下文件：
+
+| 文件 | 位置 |
+|------|------|
+| `/usr/share/perl5/Geo/IPfree.pm` | [IPfree.pm](/wwwroot/cgi-bin/lib/IPfree.pm) |
+| `/usr/share/perl5/Geo/IPfree.pod` | [IPfree.pod](/wwwroot/cgi-bin/lib/IPfree.pod) |
+| `/usr/share/perl5/Geo/dbip-city.mmdb` | [update-dbip](/make/test/awstats/conf/update-dbip) |
+
+---
+
 ## 🔄 升级前转换（仅限从旧版升级）
 
 若涉及站点升级，请先执行 `/usr/share/awstats/tools/awstats_convert-zh.pl` 对历史数据文件（*.txt）进行格式转换（7.0-7.9 → 8.1）。程序将自动检测 `/home/*/web/*/stats/` 目录下的所有 `AWStats` 数据文件（*.txt）并进行批量转换。请放心执行，它将在转换前自动备份原文件。若您的站点不在 `home` 目录下，请参考这个路径结构 `/home/站点运行用户名/web/您的域名/stats/` 微调。转换完成后，再执行数据更新操作，否则将因格式不兼容导致更新失败。

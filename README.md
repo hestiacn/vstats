@@ -157,6 +157,46 @@ Get the latest version from the links below:
 
 ---
 
+## **AWStats Geo/IPfree.pm Version Compatibility Fix**
+
+If you encounter the following error when running AWStats update:
+```
+Error: Perl v5.200.0 required (did you mean v5.20.0?)--this is only v5.36.0
+```
+
+This is because the version check in the `Geo/IPfree.pm` file is incompatible with the current system's Perl version.
+
+### **Automatic Fix Command**
+```bash
+find /usr -name "IPfree.pm" 2>/dev/null | while read -r file; do
+    sed -i.bak 's/^use 5\.20;/#use 5.20;/' "$file"
+done
+```
+
+### **Manual Fix Steps**
+If the automatic command doesn't work, please follow these steps:
+
+1. **Locate the file**
+   ```bash
+   find /usr -name "IPfree.pm" 2>/dev/null
+   ```
+
+2. **Edit the file and comment out the version check line**
+   ```bash
+   sed -i 's/^use 5\.20;/#use 5.20;/' /path/to/IPfree.pm
+   ```
+
+### **Additional Files (if needed)**
+Due to the diversity and complexity of platforms, different systems may use different versions. If the corresponding files are not present on your system, please manually replace them with the following files:
+
+| File | Location |
+|------|----------|
+| `/usr/share/perl5/Geo/IPfree.pm` | [IPfree.pm](/wwwroot/cgi-bin/lib/IPfree.pm) |
+| `/usr/share/perl5/Geo/IPfree.pod` | [IPfree.pod](/wwwroot/cgi-bin/lib/IPfree.pod) |
+| `/usr/share/perl5/Geo/dbip-city.mmdb` | [update-dbip](/make/test/awstats/conf/update-dbip) |
+
+---
+
 ## 🔄 Upgrade Conversion (For upgrading from old versions only)
 
 If upgrading from an old version (7.0-7.9), first run `/usr/share/awstats/tools/awstats_convert-en.pl` to convert historical data files (*.txt) from (7.0-7.9 → 8.1). The program will automatically detect all AWStats data files (*.txt) in `/home/*/web/*/stats/` directories and perform batch conversion. It will automatically backup original files before conversion. If your sites are not in the `home` directory, adjust the path structure `/home/username/web/yourdomain/stats/` accordingly. After conversion, proceed with data update operations, otherwise updates will fail due to format incompatibility.

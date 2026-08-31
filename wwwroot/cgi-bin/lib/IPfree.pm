@@ -1,5 +1,5 @@
 package Geo::IPfree;
-use 5.20;
+# use 5.020;
 use strict;
 use warnings;
 use utf8;

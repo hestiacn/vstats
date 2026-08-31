@@ -148,6 +148,46 @@ Téléchargez la dernière version depuis les liens ci-dessous :
 
 ---
 
+## **Correction de compatibilité AWStats Geo/IPfree.pm**
+
+Si vous rencontrez l'erreur suivante lors de la mise à jour d'AWStats :
+```
+Error: Perl v5.200.0 required (did you mean v5.20.0?)--this is only v5.36.0
+```
+
+C'est parce que la vérification de version dans le fichier `Geo/IPfree.pm` n'est pas compatible avec la version Perl actuelle du système.
+
+### **Commande de correction automatique**
+```bash
+find /usr -name "IPfree.pm" 2>/dev/null | while read -r file; do
+    sed -i.bak 's/^use 5\.20;/#use 5.20;/' "$file"
+done
+```
+
+### **Étapes de correction manuelle**
+Si la commande automatique ne fonctionne pas, veuillez suivre les étapes suivantes :
+
+1. **Rechercher l'emplacement du fichier**
+   ```bash
+   find /usr -name "IPfree.pm" 2>/dev/null
+   ```
+
+2. **Modifier le fichier et commenter la ligne de vérification de version**
+   ```bash
+   sed -i 's/^use 5\.20;/#use 5.20;/' /path/to/IPfree.pm
+   ```
+
+### **Fichiers supplémentaires (si nécessaire)**
+En raison de la diversité et de la complexité des plateformes, différents systèmes peuvent utiliser différentes versions. Si les fichiers correspondants ne sont pas présents sur votre système, veuillez les remplacer manuellement par les fichiers suivants :
+
+| Fichier | Emplacement |
+|------|------|
+| `/usr/share/perl5/Geo/IPfree.pm` | [IPfree.pm](/wwwroot/cgi-bin/lib/IPfree.pm) |
+| `/usr/share/perl5/Geo/IPfree.pod` | [IPfree.pod](/wwwroot/cgi-bin/lib/IPfree.pod) |
+| `/usr/share/perl5/Geo/dbip-city.mmdb` | [update-dbip](/make/test/awstats/conf/update-dbip) |
+
+---
+
 ## 🔄 Conversion avant mise à niveau (uniquement pour les mises à niveau depuis une version plus ancienne)
 
 Lors d'une mise à niveau de site, exécutez d'abord `/usr/share/awstats/tools/awstats_convert-en.pl` pour convertir le format des fichiers de données historiques (*.txt) (7.0-7.9 → 8.1). Le programme détectera et convertira automatiquement tous les fichiers de données `AWStats` (*.txt) dans `/home/*/web/*/stats/`. Il sauvegardera automatiquement les fichiers originaux avant la conversion. Si votre site n'est pas dans le répertoire `home`, adaptez-vous à cette structure de chemin : `/home/nom_d'utilisateur_du_site/web/votre_domaine/stats/`. Après la conversion, exécutez la mise à jour des données, sinon la mise à jour échouera en raison d'incompatibilité de format.
