@@ -889,26 +889,67 @@ sub build_pkg {
     print "\n📋 Step 3: Installing files to staging directory...\n";
 
     # 创建干净的 FreeBSD FHS 标准物理目录树
-    make_path("$pkg_root/usr/local/www/awstats");
-    make_path("$pkg_root/usr/local/www/awstats/cgi-bin");
-    make_path("$pkg_root/usr/local/www/awstats/classes");
-    make_path("$pkg_root/usr/local/www/awstats/css");
-    make_path("$pkg_root/usr/local/www/awstats/icon");
-    make_path("$pkg_root/usr/local/www/awstats/js");
-    make_path("$pkg_root/usr/local/www/awstats/tools");
+    make_path("$pkg_root/usr/local/www/cgi-bin");
+    make_path("$pkg_root/usr/local/share/awstats/classes");
+    make_path("$pkg_root/usr/local/share/awstats/css");
+    make_path("$pkg_root/usr/local/share/awstats/icon");
+    make_path("$pkg_root/usr/local/share/awstats/js");
+    make_path("$pkg_root/usr/local/share/awstats/lang");
+    make_path("$pkg_root/usr/local/share/awstats/lib");
+    make_path("$pkg_root/usr/local/share/awstats/plugins");
+    make_path("$pkg_root/usr/local/share/awstats/tools");
     make_path("$pkg_root/usr/local/share/doc/awstats");
     make_path("$pkg_root/usr/local/etc/awstats");
     make_path("$pkg_root/usr/local/bin");
     make_path("$pkg_root/usr/local/etc/periodic/daily");
-    make_path("$pkg_root/usr/local/etc/periodic/monthly");
+    make_path("$pkg_root/usr/local/etc/cron.d");
+    make_path("$pkg_root/usr/local/lib/perl5/site_perl/Geo");
 
-    # 复制文件（严格捕获返回值，防止打包空目录）
-    print "  Copying wwwroot...\n";
-    system("cp -pr $src_dir/wwwroot/. $pkg_root/usr/local/www/awstats/");
-    die "Failed to copy wwwroot" if $? != 0;
+    # 复制 CGI 脚本到 www/cgi-bin（只复制 .pl 和可执行文件）
+    print "  Copying CGI scripts...\n";
+    system("cp -pr $src_dir/wwwroot/cgi-bin/awstats.pl $pkg_root/usr/local/www/cgi-bin/");
+    system("cp -pr $src_dir/wwwroot/cgi-bin/awredir.pl $pkg_root/usr/local/www/cgi-bin/");
+    system("cp -pr $src_dir/wwwroot/cgi-bin/awdownloadcsv.pl $pkg_root/usr/local/www/cgi-bin/");
+    system("cp -pr $src_dir/wwwroot/cgi-bin/awstats-update $pkg_root/usr/local/www/cgi-bin/");
+    die "Failed to copy CGI scripts" if $? != 0;
 
+    # 复制静态资源到 share/awstats
+    print "  Copying classes...\n";
+    system("cp -pr $src_dir/wwwroot/classes/. $pkg_root/usr/local/share/awstats/classes/");
+    die "Failed to copy classes" if $? != 0;
+
+    print "  Copying css...\n";
+    system("cp -pr $src_dir/wwwroot/css/. $pkg_root/usr/local/share/awstats/css/");
+    die "Failed to copy css" if $? != 0;
+
+    print "  Copying icon...\n";
+    system("cp -pr $src_dir/wwwroot/icon/. $pkg_root/usr/local/share/awstats/icon/");
+    die "Failed to copy icon" if $? != 0;
+
+    print "  Copying js...\n";
+    system("cp -pr $src_dir/wwwroot/js/. $pkg_root/usr/local/share/awstats/js/");
+    die "Failed to copy js" if $? != 0;
+
+    # 复制库文件到 share/awstats
+    print "  Copying lang...\n";
+    system("cp -pr $src_dir/wwwroot/cgi-bin/lang/. $pkg_root/usr/local/share/awstats/lang/");
+    die "Failed to copy lang" if $? != 0;
+
+    print "  Copying lib...\n";
+    system("cp -pr $src_dir/wwwroot/cgi-bin/lib/. $pkg_root/usr/local/share/awstats/lib/");
+    die "Failed to copy lib" if $? != 0;
+
+    system("cp -pr $src_dir/wwwroot/cgi-bin/lib/IPfree.pm $pkg_root/usr/local/lib/perl5/site_perl/Geo/");
+    system("cp -pr $src_dir/wwwroot/cgi-bin/lib/IPfree.pod $pkg_root/usr/local/lib/perl5/site_perl/Geo/");
+    print "  Copying IPfree to Geo directory...\n";
+
+    print "  Copying plugins...\n";
+    system("cp -pr $src_dir/wwwroot/cgi-bin/plugins/. $pkg_root/usr/local/share/awstats/plugins/");
+    die "Failed to copy plugins" if $? != 0;
+
+    # 复制工具脚本
     print "  Copying tools...\n";
-    system("cp -pr $src_dir/tools/. $pkg_root/usr/local/www/awstats/");
+    system("cp -pr $src_dir/tools/. $pkg_root/usr/local/share/awstats/tools/");
     die "Failed to copy tools" if $? != 0;
 
     print "  Copying docs...\n";
@@ -933,7 +974,7 @@ sub build_pkg {
     # CLI 命令层面的可执行包装脚本
     open my $wf, '>', "$pkg_root/usr/local/bin/awstats";
     print $wf "#!/bin/sh\n";
-    print $wf "exec /usr/local/bin/perl /usr/local/www/awstats/cgi-bin/awstats.pl \"\$@\"\n";
+    print $wf "exec /usr/local/bin/perl /usr/local/www/cgi-bin/awstats.pl \"\$@\"\n";
     close $wf;
     chmod 0755, "$pkg_root/usr/local/bin/awstats";
 
@@ -941,7 +982,7 @@ sub build_pkg {
     open my $pf, '>', "$pkg_root/usr/local/etc/periodic/daily/awstats";
     print $pf "#!/bin/sh\n";
     print $pf "# AWStats daily update\n";
-    print $pf "/usr/local/bin/perl /usr/local/www/awstats/cgi-bin/awstats-update 2>/dev/null\n";
+    print $pf "/usr/local/bin/perl /usr/local/share/awstats/tools/awstats_updateall.pl now 2>/dev/null\n";
     close $pf;
     chmod 0755, "$pkg_root/usr/local/etc/periodic/daily/awstats";
 
@@ -951,7 +992,7 @@ sub build_pkg {
     # 创建每月自动执行的 DB-IP 城市级地理数据库更新脚本
     # --------------------------------------------------------------------------
     print "\n📋 Creating DB-IP update script...\n";
-    open my $dbip_fh, '>', "$pkg_root/usr/local/etc/periodic/monthly/awstats-dbip-update";
+    open my $dbip_fh, '>', "$pkg_root/usr/local/etc/cron.d/awstats-dbip-update";
     print $dbip_fh <<'EOF';
 #!/bin/sh
 # ------------------------------------------------------------------------------
@@ -961,7 +1002,7 @@ sub build_pkg {
 # 若需禁用自动更新，请将此文件重命名！以便后续启用此功能！
 # ------------------------------------------------------------------------------
 YEAR_MONTH=$(date +%Y-%m)
-DBIP_DIR="/usr/local/lib/perl5/Geo"
+DBIP_DIR="/usr/local/lib/perl5/site_perl/Geo"
 DBIP_DEST="$DBIP_DIR/dbip-city.mmdb"
 DBIP_TEMP="$DBIP_DIR/dbip-city.mmdb.tmp"
 LOG_FILE="/var/log/dbip-update.log"
@@ -980,6 +1021,16 @@ if ! command -v fetch > /dev/null 2>&1; then
 fi
 
 fetch -o "$DBIP_TEMP.gz" "https://download.db-ip.com/free/dbip-city-lite-${YEAR_MONTH}.mmdb.gz" 2>/dev/null
+if [ ! -s "$DBIP_TEMP.gz" ]; then
+    LAST_MONTH=$(date -v-1m +%Y-%m 2>/dev/null || date -d "1 month ago" +%Y-%m 2>/dev/null)
+    if [ -n "$LAST_MONTH" ]; then
+        echo "$(date): Current month ${YEAR_MONTH} not available, trying ${LAST_MONTH}" >> "$LOG_FILE"
+        fetch -o "$DBIP_TEMP.gz" "https://download.db-ip.com/free/dbip-city-lite-${LAST_MONTH}.mmdb.gz" 2>/dev/null
+        if [ -s "$DBIP_TEMP.gz" ]; then
+            echo "$(date): Downloaded ${LAST_MONTH} instead" >> "$LOG_FILE"
+        fi
+    fi
+fi
 if [ -s "$DBIP_TEMP.gz" ]; then
     gunzip -f "$DBIP_TEMP.gz"
 fi
@@ -994,10 +1045,8 @@ else
 fi
 EOF
     close $dbip_fh;
-    chmod 0755, "$pkg_root/usr/local/etc/periodic/monthly/awstats-dbip-update";
-    print "  ✅ Created monthly DB-IP update script\n";
-
-    # 严密验证：只统计纯净业务文件数量，彻底屏蔽元数据的文件计数污染
+    chmod 0755, "$pkg_root/usr/local/etc/cron.d/awstats-dbip-update";
+    print "  ✅ Created DB-IP update script at /usr/local/etc/cron.d/awstats-dbip-update\n";
     print "  Verifying files...\n";
     my $file_count = 0;
     use File::Find;
@@ -1006,7 +1055,7 @@ EOF
         $file_count++ if -f $File::Find::name && $File::Find::name !~ /\/\+/;
     }, $pkg_root);
     print "  Total files in staging (excluding metadata): $file_count\n";
-    
+        
     # ==========================================================================
     # 步骤4: 初始化并生成核心清单 +MANIFEST (物理隔离写入专属元数据目录)
     # ==========================================================================
@@ -1060,7 +1109,9 @@ EOF
     print $mf "    perl5: { origin: \"lang/perl5\" },\n";
     print $mf "    p5-JSON-XS: { origin: \"converters/p5-JSON-XS\" },\n";
     print $mf "    p5-Try-Tiny: { origin: \"lang/p5-Try-Tiny\" },\n";
+    print $mf "    p5-MaxMind-DB-Common: { origin: \"net/p5-MaxMind-DB-Common\" },\n";
     print $mf "    p5-MaxMind-DB-Reader: { origin: \"net/p5-MaxMind-DB-Reader\" },\n";
+    print $mf "    p5-MaxMind-DB-Reader-XS: { origin: \"net/p5-MaxMind-DB-Reader-XS\" },\n";
     print $mf "    wget: { origin: \"ftp/wget\" }\n";
     print $mf "}\n";
     print $mf "\n";
@@ -1113,7 +1164,7 @@ EOF
     print "  ✅ Created +PLIST (" . scalar(@files) . " files)\n";
     
     # --------------------------------------------------------------------------
-    # 创建符合 FreeBSD 包管理器标准的安装后脚本 +POST_INSTALL (写入专用元数据文件夹)
+    # 创建符合 FreeBSD 包管理器标准的安装后脚本 +POST_INSTALL
     # --------------------------------------------------------------------------
     print "\n📋 Creating POST_INSTALL script...\n";
     my $postinstall_file = "$meta_stage/+POST_INSTALL";
@@ -1122,13 +1173,14 @@ EOF
 #!/bin/sh
 
 # 检查并下载 GeoIP 数据库
-mkdir -p /usr/local/lib/perl5/Geo
+mkdir -p /usr/local/lib/perl5/site_perl/Geo
 
-DBIP_DIR="/usr/local/lib/perl5/Geo"
+DBIP_DIR="/usr/local/lib/perl5/site_perl/Geo"
 DBIP_DEST="$DBIP_DIR/dbip-city.mmdb"
 
 if [ ! -f "$DBIP_DEST" ]; then
     echo "Downloading GeoIP database..."
+    
     YEAR=$(date +%Y)
     MONTH=$(date +%m)
     DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${YEAR}-${MONTH}.mmdb.gz"
@@ -1136,18 +1188,31 @@ if [ ! -f "$DBIP_DEST" ]; then
     DBIP_TEMP="$DBIP_DIR/dbip-city-temp.mmdb"
     
     if command -v fetch > /dev/null 2>&1; then
-        fetch -o "$DBIP_TEMP_GZ" "$DBIP_URL" && \
+        fetch -o "$DBIP_TEMP_GZ" "$DBIP_URL" 2>/dev/null
+        if [ ! -s "$DBIP_TEMP_GZ" ]; then
+            LAST_YEAR=$(date -v-1m +%Y 2>/dev/null || date -d "1 month ago" +%Y 2>/dev/null)
+            LAST_MONTH=$(date -v-1m +%m 2>/dev/null || date -d "1 month ago" +%m 2>/dev/null)
+            DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${LAST_YEAR}-${LAST_MONTH}.mmdb.gz"
+            echo "Current month not available, trying ${LAST_YEAR}-${LAST_MONTH}..."
+            fetch -o "$DBIP_TEMP_GZ" "$DBIP_URL" 2>/dev/null
+        fi
+        
+        if [ -s "$DBIP_TEMP_GZ" ]; then
             gunzip -f "$DBIP_TEMP_GZ" && \
             mv "$DBIP_TEMP" "$DBIP_DEST" && \
             chmod 644 "$DBIP_DEST" && \
             echo "✓ GeoIP database downloaded successfully"
+        else
+            rm -f "$DBIP_TEMP_GZ"
+            echo "⚠️ Failed to download GeoIP database"
+        fi
     else
         echo "⚠️ fetch not installed, skipping GeoIP database download"
     fi
 fi
 
 # 生成 awredir.pl 的随机密钥
-if [ -f /usr/local/www/awstats/cgi-bin/awredir.pl ]; then
+if [ -f /usr/local/www/cgi-bin/awredir.pl ]; then
     echo "Generating random key for awredir.pl..."
     if command -v openssl > /dev/null 2>&1; then
         KEY=$(openssl rand -hex 16 2>/dev/null)
@@ -1156,19 +1221,23 @@ if [ -f /usr/local/www/awstats/cgi-bin/awredir.pl ]; then
     fi
     
     if [ -n "$KEY" ]; then
-        sed -i '' "s/YOURKEYFORMD5/$KEY/" /usr/local/www/awstats/cgi-bin/awredir.pl
+        sed -i '' "s/YOURKEYFORMD5/$KEY/" /usr/local/www/cgi-bin/awredir.pl
         echo "✓ Random key generated for awredir.pl"
     fi
 fi
+
+# 添加 DB-IP 月度更新定时任务
+(echo "# AWStats DB-IP monthly update on 3rd at 5:00 AM"; echo "0 5 3 * * /usr/local/etc/cron.d/awstats-dbip-update") | crontab -
+echo "✓ DB-IP monthly update added to crontab (3rd at 5:00 AM)"
 
 echo ""
 echo "=========================================="
 echo " AWStats 8.1-1 UTF-8 installation complete"
 echo "=========================================="
-echo " Main directory:     /usr/local/www/awstats"
-echo " CGI scripts:        /usr/local/www/awstats/cgi-bin/"
+echo " Main directory:     /usr/local/share/awstats"
+echo " CGI scripts:        /usr/local/www/cgi-bin/"
 echo " Configuration:      /usr/local/etc/awstats/"
-echo " Tools:              /usr/local/www/awstats/tools/"
+echo " Tools:              /usr/local/share/awstats/tools/"
 echo " Documentation:      /usr/local/share/doc/awstats/"
 echo "=========================================="
 echo " Configuration steps:"
@@ -1176,11 +1245,12 @@ echo " 1. cp /usr/local/etc/awstats/awstats.model.conf \\"
 echo "    /usr/local/etc/awstats/awstats.yourdomain.conf"
 echo " 2. Edit the configuration file, set LogFile, SiteDomain, etc."
 echo " 3. Update statistics: /usr/local/bin/awstats -config=yourdomain -update"
-echo " 4. Access: http://yourdomain/awstats/awstats.pl?config=yourdomain"
+echo " 4. Access: http://yourdomain/cgi-bin/awstats.pl?config=yourdomain"
 echo "=========================================="
 echo " Scheduled tasks:"
 echo "   Daily update:   /usr/local/etc/periodic/daily/awstats"
-echo "   Monthly DB update: /usr/local/etc/periodic/monthly/awstats-dbip-update"
+echo "   Monthly DB update: /usr/local/etc/cron.d/awstats-dbip-update"
+echo "   (Added to /var/cron/tabs/: 0 5 3 * * root ...)"
 echo "=========================================="
 EOF
     close $pi;

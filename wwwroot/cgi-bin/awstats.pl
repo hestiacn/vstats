@@ -4494,7 +4494,7 @@ sub Read_Ref_Data {
 	# Check lib files in common possible directories :
 	# Windows and standard package:        		"$DIR/lib" (lib in same dir than awstats.pl)
 	# Debian package:                    		"/usr/share/awstats/lib"
-	my @PossibleLibDir = ( "$DIR/lib", "/usr/share/awstats/lib" );
+	my @PossibleLibDir = ( "$DIR/lib", "/usr/share/awstats/lib", "/usr/local/share/awstats/lib" );
 	my %FilePath       = ();
 	my %DirAddedInINC  = ();
 	my @FileListToLoad = ();
@@ -4673,7 +4673,7 @@ sub Read_Language_Data {
 		}
 	}
 
-	my @PossibleLangDir = ( "$DirLang", "$DIR/lang", "/usr/share/awstats/lang" );
+	my @PossibleLangDir = ( "$DirLang", "$DIR/lang", "/usr/share/awstats/lang", "/usr/local/share/awstats/lang" );
 	my $FileLang = '';
 	
 	foreach my $dir (@PossibleLangDir) {
@@ -22586,10 +22586,10 @@ if ( $ENV{'GATEWAY_INTERFACE'} ) {
 	# SiteConfig is used to find config file
 	$SiteConfig =~ s/\.\.//g; 		
 	# Avoid directory transversal
-}
-# Run from command line
-else {
-	$DebugMessages = 1;
+	}
+	# Run from command line
+	else {
+		$DebugMessages = 1;
 
 	# Prepare QueryString
 	for ( 0 .. @ARGV - 1 ) {

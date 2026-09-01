@@ -241,7 +241,7 @@ cat > $RPM_BUILD_ROOT/etc/logrotate.d/awstats << 'EOF'
 EOF
 
 # 创建 DB-IP 数据库更新脚本
-cat > $RPM_BUILD_ROOT/etc/cron.monthly/update-dbip << 'EOF'
+cat > $RPM_BUILD_ROOT/etc/cron.d/awstats-dbip-update << 'EOF'
 #!/bin/bash
 # ------------------------------------------------------------------------------
 # Monthly DB-IP database update script
@@ -274,7 +274,16 @@ fi
 
 echo "$(date): Downloading DB-IP database for ${YEAR_MONTH}..." >> "$LOG_FILE"
 wget -q -O "$DBIP_TEMP_GZ" "https://download.db-ip.com/free/dbip-city-lite-${YEAR_MONTH}.mmdb.gz" 2>/dev/null
-
+if [ ! -s "$DBIP_TEMP_GZ" ]; then
+    LAST_MONTH=$(date -d "1 month ago" +%Y-%m 2>/dev/null)
+    if [ -n "$LAST_MONTH" ]; then
+        echo "$(date): Current month ${YEAR_MONTH} not available, trying ${LAST_MONTH}" >> "$LOG_FILE"
+        wget -q -O "$DBIP_TEMP_GZ" "https://download.db-ip.com/free/dbip-city-lite-${LAST_MONTH}.mmdb.gz" 2>/dev/null
+        if [ -s "$DBIP_TEMP_GZ" ]; then
+            echo "$(date): Downloaded ${LAST_MONTH} instead" >> "$LOG_FILE"
+        fi
+    fi
+fi
 if [ -s "$DBIP_TEMP_GZ" ]; then
     gunzip -f "$DBIP_TEMP_GZ"
     if [ -f "$DBIP_TEMP" ]; then
@@ -283,7 +292,7 @@ if [ -s "$DBIP_TEMP_GZ" ]; then
         echo "$(date): Successfully updated to ${YEAR_MONTH}" >> "$LOG_FILE"
         echo "✓ DB-IP database updated to ${YEAR_MONTH}"
     else
-        echo "$(date): Gunzip failed for ${YEAR_MONTH}" >> "$LOG_FILE"
+        echo "$(date): Gunzip failed" >> "$LOG_FILE"
         echo "⚠ DB-IP database decompression failed"
     fi
 else
@@ -292,7 +301,7 @@ else
     echo "⚠ DB-IP database update failed"
 fi
 EOF
-chmod 755 $RPM_BUILD_ROOT/etc/cron.monthly/update-dbip
+chmod 755 $RPM_BUILD_ROOT/etc/cron.d/awstats-dbip-update
 
 #---- clean
 %clean
@@ -308,7 +317,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) /etc/httpd/conf.d/awstats.conf
 %config(noreplace) /etc/cron.d/awstats
 %config(noreplace) /etc/logrotate.d/awstats
-%config(noreplace) /etc/cron.monthly/update-dbip
+%config(noreplace) /etc/cron.d/awstats-dbip-update
 /usr/share/doc/awstats/
 /usr/share/awstats/
 /usr/lib/cgi-bin/
@@ -350,13 +359,29 @@ case "$1" in
         DBIP_DEST="/usr/share/perl5/Geo/dbip-city.mmdb"
         if [ ! -f "$DBIP_DEST" ]; then
             echo "Downloading DB-IP City Lite database..."
-            YEAR=$(date +%Y)
-            MONTH=$(date +%m)
-            DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${YEAR}-${MONTH}.mmdb.gz"
-            DBIP_TEMP_GZ="/usr/share/perl5/Geo/dbip-city-temp.mmdb.gz"
             
             if command -v wget > /dev/null 2>&1; then
+                YEAR=$(date +%Y)
+                MONTH=$(date +%m)
+                DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${YEAR}-${MONTH}.mmdb.gz"
+                DBIP_TEMP_GZ="/usr/share/perl5/Geo/dbip-city-temp.mmdb.gz"
+                
+                echo "Trying ${YEAR}-${MONTH}..."
                 if wget -q --show-progress -O "$DBIP_TEMP_GZ" "$DBIP_URL" 2>/dev/null; then
+                    DOWNLOAD_SUCCESS=1
+                else
+                    LAST_YEAR=$(date -d "1 month ago" +%Y 2>/dev/null)
+                    LAST_MONTH=$(date -d "1 month ago" +%m 2>/dev/null)
+                    if [ -n "$LAST_YEAR" ] && [ -n "$LAST_MONTH" ]; then
+                        DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${LAST_YEAR}-${LAST_MONTH}.mmdb.gz"
+                        echo "Current month not available, trying ${LAST_YEAR}-${LAST_MONTH}..."
+                        if wget -q --show-progress -O "$DBIP_TEMP_GZ" "$DBIP_URL" 2>/dev/null; then
+                            DOWNLOAD_SUCCESS=1
+                        fi
+                    fi
+                fi
+                
+                if [ "$DOWNLOAD_SUCCESS" = "1" ] && [ -s "$DBIP_TEMP_GZ" ]; then
                     if gunzip -f "$DBIP_TEMP_GZ"; then
                         mv /usr/share/perl5/Geo/dbip-city-temp.mmdb "$DBIP_DEST"
                         chmod 644 "$DBIP_DEST"
@@ -364,19 +389,20 @@ case "$1" in
                     else
                         echo "⚠️ Failed to decompress database"
                     fi
+                    rm -f "$DBIP_TEMP_GZ"
                 else
                     echo "⚠️ GeoIP database download failed"
-                    echo "  URL: $DBIP_URL"
                     echo "  Please check internet connection"
                 fi
             else
                 echo "⚠️ wget not installed, skipping GeoIP database download"
+                echo "  Install wget: yum install wget"
             fi
         fi
         
         # 设置每月自动更新脚本
-        if [ -f /etc/cron.monthly/update-dbip ]; then
-            chmod +x /etc/cron.monthly/update-dbip
+        if [ -f /etc/cron.d/awstats-dbip-update ]; then
+            chmod +x /etc/cron.d/awstats-dbip-update
             echo "✓ Monthly GeoIP update script installed"
         fi
 
@@ -395,6 +421,7 @@ case "$1" in
                 systemctl try-reload-or-restart httpd >/dev/null 2>&1 || true
             fi
         fi
+        (crontab -l 2>/dev/null; echo "0 5 3 * * /etc/cron.d/awstats-dbip-update") | crontab -
         ;;
 esac
 
@@ -414,7 +441,7 @@ echo " DB-IP database: /usr/share/perl5/Geo/dbip-city.mmdb"
 echo " Data directory: /var/lib/awstats"
 echo " Log directory: /var/log/awstats"
 echo ""
-echo " Monthly DB-IP update: /etc/cron.monthly/update-dbip"
+echo " Monthly DB-IP update: /etc/cron.d/awstats-dbip-update"
 echo ""
 echo " No control panel? Try HestiaCP - https://hestiadocs.brepo.ru"
 echo " HestiaCP is designed for Red Hat series (RHEL/RockyLinux/AlmaLinux/CentOS)"
