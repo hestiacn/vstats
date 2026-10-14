@@ -104,7 +104,7 @@ Download de nieuwste versie via onderstaande links:
 | Codering | GBK / gedeeltelijke codering | **Volledige UTF-8 ondersteuning** |
 | Vertaalmethode | Numerieke index `$Message[169]` | **Semantische sleutels `_t('key')`** |
 | Interface stijl | Vaste stijl | **Lichte/Donkere thema's + Responsief** |
-| Vlaggen | PNG afbeeldingen | **Emoji's** |
+| Vlaggen | PNG afbeeldingen | **Emoji's** — In de `Edge`-browser installeert u de extensie `Twemoji for Edge` om de pictogrammen correct weer te geven |
 | Grafieken | PNG afbeeldingen | **Pure CSS grafieken** |
 | Kalenderondersteuning | Gregoriaans | **13 kalenders** |
 | Onderhoudsstatus | Gearchiveerd | **Actief onderhouden** |

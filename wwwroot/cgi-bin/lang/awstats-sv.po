@@ -675,11 +675,26 @@ msgstr "Den här katalogen saknar läsbehörighet"
 msgid "Please set read permission for directory"
 msgstr "Ange läsbehörighet för katalogen"
 
-msgid "Missing required parameter in config file"
-msgstr "Saknad obligatorisk parameter i konfigurationsfilen"
+msgid "No AWStats config file for any site found in %s"
+msgstr "Ingen AWStats-konfigurationsfil hittades för någon webbplats i %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Kontrollera att 'DirData' är definierad."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Katalogen '%s' innehåller inte någon konfigurationsfil för domänen '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Obligatorisk parameter saknas i konfigurationsfilen \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Kontrollera att sökvägen 'DirData' är definierad och existerar."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Parametern LogFile är inte definierad i konfigurations-/domänfilen"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Parametern LogFormat är inte definierad i konfigurations-/domänfilen"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Parametern LogFormat är felaktig i konfigurations-/domänfilen. Värdet är '%s' (bör vara 1, 2, 3, 4, 5 eller en 'personlig AWStats-loggformatsträng')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Domännamnet i webbläsaradressen verkar saknas eller är ofullständigt"
@@ -1420,8 +1435,8 @@ msgstr "kolumn för att hämta filplatser"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Tips: Om du behöver generera relaterade ikoner kan du använda %s för att ladda upp en loggbild, så genererar den automatiskt alla ovanstående relaterade ikonfiler"
 
-msgid "200: success, 404: failure"
-msgstr "200 är antalet framgångar, 404 är antalet misslyckanden"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: lyckades, 404: saknas, CDN: icke-lokal favicon (webbplatsikon)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1752,8 +1767,8 @@ msgstr "Sammanfattning av okända IP-adresser med låg trafik"
 msgid "Failed to obtain IP data"
 msgstr "Sammanfattning av andra kända IP-adresser"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Misslyckades med att hämta relevanta data"
+msgid "Monthly Traffic Statistics"
+msgstr "Månatlig trafikstatistik"
 
 msgid "Limited list of countries and regions"
 msgstr "Endast 10 rader data visas för närvarande, fullständig lista för fler länder och regioner finns på detaljsidan"
@@ -3063,9 +3078,230 @@ msgstr "Data som inte kan kategoriseras i befintliga intervall, vanligtvis på g
 msgid "tooltip_21"
 msgstr "Register över upptäckta maskattack. Mask är ett självreplikerande skadligt program som vanligtvis sprids via nätverkssårbarheter."
 
-#------------------------------------------------------------------------------
-# Visning av hjälpinformation - Community Edition
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Uppdaterar angiven webbplats: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Uppdaterar webbplatsen %s. Uppdateringskommando: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Bearbetar poster och genererar datafil från konfigurationsfilen \"%s\", AWStats version %s"
+
+msgid "Updating data, please wait"
+msgstr "Uppdaterar data, vänligen vänta"
+
+msgid "done (%s seconds)"
+msgstr "klart (%s sekunder)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "OMSLAGSCOMMANDO (Valfritt)"
+
+msgid "To run %s without specifying the full path."
+msgstr "För att köra %s utan att ange hela sökvägen."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Skapa ett omslagsskript i %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Kopiera och kör följande omslagscommando i din terminal:"
+
+msgid "Wrapper for %s"
+msgstr "Omslag för %s"
+
+msgid "Then make it executable:"
+msgstr "Gör det sedan körbart:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Du kan nu köra uppdateringen med följande kommando:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Loggfilens data kommer från katalogen \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Läser senaste dataposition och verifierar data"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Senaste datapositionen lästes framgångsrikt (efter rad %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Bearbetar nya poster (uppdaterar historikfilen var %s loggpost)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Direktåtkomst till den senast ihågkomna posten landade på en annan post."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Därför söks nya poster från början av loggfilen"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Direktåtkomst till den senast ihågkomna posten är utanför filen."
+
+msgid "So searching it from beginning of log file"
+msgstr "Därför söks det från början av loggfilen"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Söker nya poster från början av loggfilen"
+
+msgid "Saving the log to the data file"
+msgstr "Sparar loggen till datafilen"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Antalet besökta källor har nått spargränsen på %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Antalet URL:er har nått spargränsen på %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Hoppade över rader i filen: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Hittade %s redan parsade poster"
+
+msgid "Parsed lines in file: %s"
+msgstr "Parsade rader i filen: %s"
+
+msgid "Found %s dropped records"
+msgstr "Hittade %s borttagna poster"
+
+msgid "Found %s comments"
+msgstr "Hittade %s kommentarer"
+
+msgid "Found %s blank records"
+msgstr "Hittade %s tomma poster"
+
+msgid "Found %s corrupted records"
+msgstr "Hittade %s skadade poster"
+
+msgid "Found %s old records"
+msgstr "Hittade %s gamla poster"
+
+msgid "Found %s new data records"
+msgstr "Hittade %s nya dataposter"
+
+msgid "All updates completed!"
+msgstr "Alla uppdateringar slutförda!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Obs: Parametern HostAliases är inte konfigurerad (används för att definiera ytterligare domänalias för webbplatsen, standard är tom)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Systemet har automatiskt lagt till standardvärden: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "För att lägga till andra domänalias, ange HostAliases i konfigurationsfilen och se till att webbplatskonfigurationen för webbservern (t.ex. Apache, Nginx) uppdateras i enlighet med detta."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Om webbplatsen till exempel använder både example.com och www.example.com kan du ange HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats batchuppdaterare %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Upphovsrätt (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Licensierad under GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "BESKRIVNING"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall uppdaterar automatiskt alla hittade AWStats-konfigurationsfiler"
+
+msgid "in a specified directory (default: %s)."
+msgstr "i en angiven katalog (standard: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Detta är användbart för att ställa in schemalagda cron-jobb."
+
+msgid "USAGE"
+msgstr "ANVÄNDNING"
+
+msgid "OPTIONS"
+msgstr "ALTERNATIV"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Sökväg till awstats.pl (identifieras automatiskt om den utelämnas)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Uppdatera endast den angivna domänen"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Katalog som innehåller konfigurationsfiler (standard: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Uteslut konfigurationer efter namn (kommaseparerade)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Språk för utdata (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr etc.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Aktivera felsökningsutdata (högre N = mer utförlig)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Ange LastLine-värde för alla uppdateringar"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Visa detta hjälpmeddelande"
+
+msgid "EXAMPLES"
+msgstr "EXEMPEL"
+
+msgid "Update all sites"
+msgstr "Uppdatera alla webbplatser"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Generera kommentarer i datafilen på ditt föredragna språk"
+
+msgid "Example:"
+msgstr "Exempel:"
+
+msgid "Update only one specific site"
+msgstr "Uppdatera endast en specifik webbplats"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Uppdatera alla webbplatser med en anpassad AWStats-sökväg (t.ex. när du använder virtuella värdar eller en anpassad awstats.pl-plats)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Uppdatera alla webbplatser utom awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Använd anpassad konfigurationskatalog"
+
+msgid "QUICK START"
+msgstr "SNABBSTART"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Omslaget 'awstats-update' är redan installerat."
+
+msgid "Simply run:"
+msgstr "Kör bara:"
+
+msgid "Update single site"
+msgstr "Uppdatera en enskild webbplats"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Skriv ut terminalvisningstext och loggposter på ditt angivna språk"
+
+msgid "Log file: %s"
+msgstr "Loggfil: %s"
+
+msgid "Show help"
+msgstr "Visa hjälp"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Du behöver inte skriva hela sökvägen till awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "PERIODISK UPPGIFT"
+
+msgid "Daily update script:"
+msgstr "Dagligt uppdateringsskript:"
+
+msgid "Cron job:"
+msgstr "Cron-jobb:"
+
+msgid "Content:"
+msgstr "Innehåll:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Avancerad webbstatistik"

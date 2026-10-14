@@ -178,12 +178,12 @@ Section "$(SectionMain)" SEC_MAIN
   
   FileOpen $0 "$INSTDIR\bin\awstats.bat" w
   FileWrite $0 '@echo off$\r$\n'
-  FileWrite $0 'perl "%ProgramFiles%\AWStats\cgi-bin\awstats.pl" %*$\r$\n'
+  FileWrite $0 'perl "%~dp0..\cgi-bin\awstats.pl" %*$\r$\n'
   FileClose $0
   
   FileOpen $0 "$INSTDIR\bin\awstats-update.bat" w
   FileWrite $0 '@echo off$\r$\n'
-  FileWrite $0 'perl "%ProgramFiles%\AWStats\cgi-bin\awstats.pl" -config=%1 -update$\r$\n'
+  FileWrite $0 'perl "%~dp0..\cgi-bin\awstats.pl" -config=%1 -update$\r$\n'
   FileClose $0
   
   ; --- Windows 脚本 ---
@@ -247,20 +247,29 @@ Section "$(SectionMain)" SEC_MAIN
   
   ; --- 注册卸载程序 ---
   WriteUninstaller "$INSTDIR\Uninstall.exe"
-  
+
   WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME}"
   WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "UninstallString" '"$INSTDIR\Uninstall.exe"'
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "QuietUninstallString" '"$INSTDIR\Uninstall.exe" /S'
   WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\share\doc\images\favicon.pub\favicon.ico"
   WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${VERSION}"
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "Version" "${VERSION}"
   WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
   WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "URLUpdateInfo" "${PRODUCT_WEB_SITE}"
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "HelpLink" "${PRODUCT_WEB_SITE}/docs/"
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "Comments" "AWStats log analyzer for web, ftp and mail servers"
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "InstallLocation" "$INSTDIR"
   WriteRegDWORD HKLM "${PRODUCT_UNINST_KEY}" "NoModify" 1
   WriteRegDWORD HKLM "${PRODUCT_UNINST_KEY}" "NoRepair" 1
-  
+
+  ${GetTime} "" "L" $0 $1 $2 $3 $4 $5 $6
+  WriteRegStr HKLM "${PRODUCT_UNINST_KEY}" "InstallDate" "$0$1$2"
+
   ${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2
   IntFmt $0 "0x%08X" $0
   WriteRegDWORD HKLM "${PRODUCT_UNINST_KEY}" "EstimatedSize" "$0"
-  
+
 SectionEnd
 
 ; GeoIP 支持

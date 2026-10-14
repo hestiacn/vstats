@@ -682,11 +682,26 @@ msgstr "該目錄缺少讀取權限"
 msgid "Please set read permission for directory"
 msgstr "請設定目錄讀取權限"
 
-msgid "Missing required parameter in config file"
-msgstr "設定檔中缺少必需參數"
+msgid "No AWStats config file for any site found in %s"
+msgstr "在 %s 中找不到任何網站的 AWStats 設定檔"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "請檢查是否定義了 'DirData' 參數。"
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "目錄 '%s' 中沒有網域 '%s' 的設定檔"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "設定檔 \"%s\" 中缺少必要參數"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "請檢查 'DirData' 路徑是否已定義且存在。"
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "LogFile 參數未在設定/網域檔案中定義"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "LogFormat 參數未在設定/網域檔案中定義"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "設定/網域檔案中的 LogFormat 參數有誤。值為 '%s'（應為 1、2、3、4、5 或「自訂 AWStats 記錄格式字串」）"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "瀏覽器位址中的網域名稱資訊缺失或不完整"
@@ -1426,8 +1441,8 @@ msgstr "欄位取得檔案位置"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "提示：如果您需要產生相關圖示，可使用 %s 上傳一張標誌圖片，它會自動產生上述所有相關圖示檔案"
 
-msgid "200: success, 404: failure"
-msgstr "200為成功次數 404為失敗次數"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: 成功，404: 缺少，CDN: 非本地 favicon（網站圖示）"
 
 # 期望路徑
 msgid "_PATH_FAVICON"
@@ -1764,8 +1779,8 @@ msgstr "低訪問未知 IP 彙總"
 msgid "Failed to obtain IP data"
 msgstr "其他已知 IP 彙總"
 
-msgid "Failed to obtain the relevant data"
-msgstr "未成功獲取到相關資料"
+msgid "Monthly Traffic Statistics"
+msgstr "月流量統計"
 
 msgid "Limited list of countries and regions"
 msgstr "當前僅展示10行數據，更多國家地區請查看完整列表"
@@ -3079,9 +3094,231 @@ msgstr "無法歸類到已有範圍的資料，通常是由於資料格式異常
 msgid "tooltip_21"
 msgstr "檢測到的蠕蟲病毒攻擊記錄。蠕蟲是一種自我傳播的惡意程式，通常透過網路漏洞進行傳播。"
 
-#------------------------------------------------------------------------------
-# 顯示說明資訊 - 社区版
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "正在更新指定網站：%s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "正在更新網站 %s。更新指令：'%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "正在根據設定檔 \"%s\" 讀取記錄並產生資料檔，AWStats 版本 %s"
+
+msgid "Updating data, please wait"
+msgstr "正在更新資料，請稍候"
+
+msgid "done (%s seconds)"
+msgstr "完成（耗時 %s 秒）"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "包裝命令（選用）"
+
+msgid "To run %s without specifying the full path."
+msgstr "無需指定完整路徑即可執行 %s。"
+
+msgid "Create a wrapper script in %s:"
+msgstr "在 %s 中建立包裝指令碼："
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "請複製以下包裝命令並在終端機中執行："
+
+msgid "Wrapper for %s"
+msgstr "%s 的包裝"
+
+msgid "Then make it executable:"
+msgstr "然後賦予執行權限："
+
+msgid "You can now run the update using the following command:"
+msgstr "現在您可以使用以下命令執行更新："
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "日誌檔案資料來自目錄 \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "正在讀取最後資料位置並驗證資料"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "已成功讀取最後資料位置（在第 %s 行之後）"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "正在處理新記錄（每 %s 筆日誌項目更新一次歷史檔案）"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "直接存取上次記住的記錄時，實際定位到了另一筆記錄。"
+
+msgid "So searching new records from beginning of log file"
+msgstr "因此將從日誌檔案開頭搜尋新記錄"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "直接存取上次記住的記錄時，已超出檔案範圍。"
+
+msgid "So searching it from beginning of log file"
+msgstr "因此將從日誌檔案開頭搜尋該記錄"
+
+msgid "Searching new records from beginning of log file"
+msgstr "正在從日誌檔案開頭搜尋新記錄"
+
+msgid "Saving the log to the data file"
+msgstr "正在將日誌儲存到資料檔案"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (已造訪的來源數量已達到 %s 的儲存上限)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (URL 數量已達到 %s 的儲存上限)"
+
+msgid "Jumped lines in file: %s"
+msgstr "檔案中略過的行數：%s"
+
+msgid "Found %s already parsed records"
+msgstr "找到 %s 筆已解析的記錄"
+
+msgid "Parsed lines in file: %s"
+msgstr "檔案中已解析的行數：%s"
+
+msgid "Found %s dropped records"
+msgstr "找到 %s 筆捨棄的記錄"
+
+msgid "Found %s comments"
+msgstr "找到 %s 筆註解"
+
+msgid "Found %s blank records"
+msgstr "找到 %s 筆空白記錄"
+
+msgid "Found %s corrupted records"
+msgstr "找到 %s 筆損毀記錄"
+
+msgid "Found %s old records"
+msgstr "找到 %s 筆舊記錄"
+
+msgid "Found %s new data records"
+msgstr "找到 %s 筆新資料記錄"
+
+msgid "All updates completed!"
+msgstr "所有更新完成！"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "注意：未設定 HostAliases 參數（用於定義網站的網域別名，預設為空）。"
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "系統已自動新增預設值：localhost、127.0.0.1、::1。"
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "如需新增其他網域別名，請在設定檔中設定 HostAliases，並確保 Web 伺服器（例如 Apache、Nginx）的網站設定與之同步更新。"
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "例如，若網站同時使用 example.com 和 www.example.com，可設定為 HostAliases=\"www\"。"
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats 批次更新工具 %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "版權所有 (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "依 GNU General Public License 授權"
+
+msgid "DESCRIPTION"
+msgstr "說明"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall 會自動更新找到的所有 AWStats 設定檔"
+
+msgid "in a specified directory (default: %s)."
+msgstr "位於指定目錄中（預設：%s）。"
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "這對於設定排程 cron 工作很有用。"
+
+msgid "USAGE"
+msgstr "用法"
+
+msgid "OPTIONS"
+msgstr "選項"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    awstats.pl 的路徑（省略時自動偵測）"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       僅更新指定網域"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       存放設定檔的目錄（預設：/etc/awstats）"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    依名稱排除設定（以逗號分隔）"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             輸出語言（en-ca、en-gb、en-us、zh-cn、zh-tw、de、fr 等）"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             啟用除錯輸出（N 越大越詳細）"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  為所有更新設定 LastLine 值"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            顯示此說明訊息"
+
+msgid "EXAMPLES"
+msgstr "範例"
+
+msgid "Update all sites"
+msgstr "更新所有網站"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "以你偏好的語言產生資料檔註解"
+
+msgid "Example:"
+msgstr "範例："
+
+msgid "Update only one specific site"
+msgstr "僅更新一個指定網站"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "使用自訂 AWStats 路徑更新所有網站（例如使用虛擬主機或自訂 awstats.pl 位置時）"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "更新除 awstats.example.com.conf 之外的所有網站"
+
+msgid "Use custom config directory"
+msgstr "使用自訂設定目錄"
+
+msgid "QUICK START"
+msgstr "快速開始"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update' 包裝指令已安裝。"
+
+msgid "Simply run:"
+msgstr "只需執行："
+
+msgid "Update single site"
+msgstr "更新單一網站"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "以你指定的語言輸出終端顯示文字與日誌記錄"
+
+msgid "Log file: %s"
+msgstr "日誌檔案：%s"
+
+msgid "Show help"
+msgstr "顯示說明"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "無需輸入 awstats_updateall.pl 的完整路徑。"
+
+msgid "PERIODIC TASK"
+msgstr "定期工作"
+
+msgid "Daily update script:"
+msgstr "每日更新指令碼："
+
+msgid "Cron job:"
+msgstr "Cron 工作："
+
+msgid "Content:"
+msgstr "內容："
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - 進階Web統計"
 

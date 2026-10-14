@@ -272,7 +272,16 @@ sub LookUp {
     
     my ($code, $country, $state, $city) = $this->_query_mmdb($ip);
     
-    # 构建位置字符串
+    if (defined $country && $country ne '') {
+        utf8::decode($country) unless utf8::is_utf8($country);
+    }
+    if (defined $state && $state ne '') {
+        utf8::decode($state) unless utf8::is_utf8($state);
+    }
+    if (defined $city && $city ne '') {
+        utf8::decode($city) unless utf8::is_utf8($city);
+    }
+    
     my $location = $country;
     $location .= ", $state" if $state && $state ne '';
     $location .= ", $city" if $city && $city ne '';

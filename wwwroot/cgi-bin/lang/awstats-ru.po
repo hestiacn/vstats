@@ -676,11 +676,26 @@ msgstr "Этот каталог не имеет прав на чтение"
 msgid "Please set read permission for directory"
 msgstr "Пожалуйста, установите права на чтение для каталога"
 
-msgid "Missing required parameter in config file"
-msgstr "Отсутствует обязательный параметр в конфигурационном файле"
+msgid "No AWStats config file for any site found in %s"
+msgstr "В %s не найден файл конфигурации AWStats ни для одного сайта"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Пожалуйста, проверьте, определен ли параметр 'DirData'."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Каталог '%s' не содержит файл конфигурации для домена '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "В файле конфигурации \"%s\" отсутствует обязательный параметр"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Пожалуйста, проверьте, что путь 'DirData' определён и существует."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Параметр LogFile не определён в файле конфигурации/домена"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Параметр LogFormat не определён в файле конфигурации/домена"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Параметр LogFormat неверен в файле конфигурации/домена. Значение: '%s' (должно быть 1, 2, 3, 4, 5 или 'персонализированная строка формата журнала AWStats')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Имя домена в адресе браузера, по-видимому, отсутствует или неполно"
@@ -1423,8 +1438,8 @@ msgstr "столбец с расположением файлов"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Совет: Если вам нужно создать связанные иконки, вы можете использовать %s для загрузки изображения логотипа, и он автоматически создаст все вышеуказанные файлы иконок"
 
-msgid "200: success, 404: failure"
-msgstr "200: успешно, 404: ошибка"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: успех, 404: не найдено, CDN: нелокальный favicon (значок сайта)"
 
 # 期望路径
 msgid "_PATH_FAVICON"
@@ -1758,8 +1773,8 @@ msgstr "Сводка неизвестных IP с низким трафиком"
 msgid "Failed to obtain IP data"
 msgstr "Сводка остальных известных IP"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Не удалось получить соответствующие данные"
+msgid "Monthly Traffic Statistics"
+msgstr "Месячная статистика трафика"
 
 msgid "Limited list of countries and regions"
 msgstr "Ограниченный список стран и регионов"
@@ -3073,9 +3088,231 @@ msgstr "Данные, которые не вписываются ни в одн�
 msgid "tooltip_21"
 msgstr "Записи о червях-атаках. Черви — это самораспространяющиеся вредоносные программы, использующие уязвимости сети. Держите программное обеспечение в актуальном состоянии!"
 
-#------------------------------------------------------------------------------
-# Отображение справки - Community Edition
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Обновление указанного сайта: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Обновление сайта %s. Команда обновления: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Обработка записей и создание файла данных из файла конфигурации \"%s\", AWStats версии %s"
+
+msgid "Updating data, please wait"
+msgstr "Обновление данных, пожалуйста, подождите"
+
+msgid "done (%s seconds)"
+msgstr "готово (%s секунд)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "КОМАНДА-ОБЁРТКА (Необязательно)"
+
+msgid "To run %s without specifying the full path."
+msgstr "Чтобы запустить %s без указания полного пути."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Создайте скрипт-обёртку в %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Скопируйте и выполните следующую команду-обёртку в вашем терминале:"
+
+msgid "Wrapper for %s"
+msgstr "Обёртка для %s"
+
+msgid "Then make it executable:"
+msgstr "Затем сделайте его исполняемым:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Теперь вы можете запустить обновление с помощью следующей команды:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Данные файла журнала поступают из каталога \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Чтение последней позиции данных и проверка данных"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Последняя позиция данных успешно прочитана (после строки %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Обработка новых записей (обновление файла истории каждые %s записей журнала)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Прямой доступ к последней запомненной записи попал на другую запись."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Поэтому новые записи ищутся с начала файла журнала"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Прямой доступ к последней запомненной записи находится за пределами файла."
+
+msgid "So searching it from beginning of log file"
+msgstr "Поэтому поиск ведётся с начала файла журнала"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Поиск новых записей с начала файла журнала"
+
+msgid "Saving the log to the data file"
+msgstr "Сохранение журнала в файл данных"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Количество посещённых источников достигло предела сохранения %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Количество URL достигло предела сохранения %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Пропущенные строки в файле: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Найдено %s уже проанализированных записей"
+
+msgid "Parsed lines in file: %s"
+msgstr "Проанализированные строки в файле: %s"
+
+msgid "Found %s dropped records"
+msgstr "Найдено %s отброшенных записей"
+
+msgid "Found %s comments"
+msgstr "Найдено %s комментариев"
+
+msgid "Found %s blank records"
+msgstr "Найдено %s пустых записей"
+
+msgid "Found %s corrupted records"
+msgstr "Найдено %s повреждённых записей"
+
+msgid "Found %s old records"
+msgstr "Найдено %s старых записей"
+
+msgid "Found %s new data records"
+msgstr "Найдено %s новых записей данных"
+
+msgid "All updates completed!"
+msgstr "Все обновления завершены!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Примечание: Параметр HostAliases не настроен (используется для определения дополнительных псевдонимов домена для сайта, по умолчанию пуст)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Система автоматически добавила значения по умолчанию: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Чтобы добавить другие псевдонимы домена, установите HostAliases в файле конфигурации и убедитесь, что конфигурация сайта веб-сервера (например, Apache, Nginx) обновлена соответствующим образом."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Например, если сайт использует как example.com, так и www.example.com, можно установить HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "Пакетный обновлятор AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Авторские права (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Лицензировано под GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "ОПИСАНИЕ"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall автоматически обновляет все найденные конфигурационные файлы AWStats"
+
+msgid "in a specified directory (default: %s)."
+msgstr "в указанном каталоге (по умолчанию: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Это полезно для настройки запланированных заданий cron."
+
+msgid "USAGE"
+msgstr "ИСПОЛЬЗОВАНИЕ"
+
+msgid "OPTIONS"
+msgstr "ПАРАМЕТРЫ"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Путь к awstats.pl (автоматически определяется, если опущен)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Обновить только указанный домен"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Каталог, содержащий конфигурационные файлы (по умолчанию: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Исключить конфигурации по имени (через запятую)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Язык вывода (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr и т. д.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Включить вывод отладки (больше N = подробнее)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Установить значение LastLine для всех обновлений"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Показать это справочное сообщение"
+
+msgid "EXAMPLES"
+msgstr "ПРИМЕРЫ"
+
+msgid "Update all sites"
+msgstr "Обновить все сайты"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Создавать комментарии в файле данных на предпочитаемом языке"
+
+msgid "Example:"
+msgstr "Пример:"
+
+msgid "Update only one specific site"
+msgstr "Обновить только один конкретный сайт"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Обновить все сайты с пользовательским путём AWStats (например, при использовании виртуальных хостов или пользовательского расположения awstats.pl)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Обновить все сайты, кроме awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Использовать пользовательский каталог конфигурации"
+
+msgid "QUICK START"
+msgstr "БЫСТРЫЙ СТАРТ"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Обёртка 'awstats-update' уже установлена."
+
+msgid "Simply run:"
+msgstr "Просто запустите:"
+
+msgid "Update single site"
+msgstr "Обновить один сайт"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Выводить текст отображения терминала и записи журнала на указанном языке"
+
+msgid "Log file: %s"
+msgstr "Файл журнала: %s"
+
+msgid "Show help"
+msgstr "Показать справку"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Не нужно вводить полный путь к awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "ПЕРИОДИЧЕСКАЯ ЗАДАЧА"
+
+msgid "Daily update script:"
+msgstr "Скрипт ежедневного обновления:"
+
+msgid "Cron job:"
+msgstr "Задание cron:"
+
+msgid "Content:"
+msgstr "Содержимое:"
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s — Расширенная веб-статистика"
 

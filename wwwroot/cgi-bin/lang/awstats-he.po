@@ -690,11 +690,26 @@ msgstr "לספרייה זו אין הרשאת קריאה"
 msgid "Please set read permission for directory"
 msgstr "אנא הגדר הרשאת קריאה עבור הספרייה"
 
-msgid "Missing required parameter in config file"
-msgstr "חסר פרמטר נדרש בקובץ התצורה"
+msgid "No AWStats config file for any site found in %s"
+msgstr "לא נמצא קובץ תצורה של AWStats עבור אף אתר ב-%s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "אנא בדוק ש-'DirData' מוגדר."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "התיקייה '%s' אינה מכילה קובץ תצורה עבור התחום '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "פרמטר נדרש חסר בקובץ התצורה \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "אנא בדוק שהנתיב 'DirData' מוגדר וקיים."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "הפרמטר LogFile אינו מוגדר בקובץ התצורה/תחום"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "הפרמטר LogFormat אינו מוגדר בקובץ התצורה/תחום"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "הפרמטר LogFormat שגוי בקובץ התצורה/תחום. הערך הוא '%s' (צריך להיות 1, 2, 3, 4, 5 או 'מחרוזת תבנית יומן AWStats מותאמת אישית')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "נראה כי שם התחום בכתובת הדפדפן חסר או לא שלם"
@@ -1437,8 +1452,8 @@ msgstr "עמודה לקבלת מיקומי קבצים"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "טיפ: אם אתה צריך ליצור סמלים קשורים, אתה יכול להשתמש ב-%s כדי להעלות תמונת לוגו, והוא ייצר אוטומטית את כל קבצי הסמלים הקשורים לעיל"
 
-msgid "200: success, 404: failure"
-msgstr "200 הוא מספר ההצלחות, 404 הוא מספר הכישלונות"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: הצלחה, 404: חסר, CDN: favicon לא מקומי (סמל האתר)"
 
 # נתיבים צפויים
 msgid "_PATH_FAVICON"
@@ -1769,8 +1784,8 @@ msgstr "סיכום IP לא ידועים עם תעבורה נמוכה"
 msgid "Failed to obtain IP data"
 msgstr "סיכום IP ידועים אחרים"
 
-msgid "Failed to obtain the relevant data"
-msgstr "נכשל בקבלת הנתונים הרלוונטיים"
+msgid "Monthly Traffic Statistics"
+msgstr "סטטיסטיקות תעבורה חודשיות"
 
 msgid "Limited list of countries and regions"
 msgstr "מוצגות כרגע רק 10 שורות, עיין ברשימה המלאה למדינות/אזורים נוספים"
@@ -3080,9 +3095,231 @@ msgstr "נתונים שלא ניתן לסווג לקטגוריות קיימות,
 msgid "tooltip_21"
 msgstr "רישומים של התקפות תולעים שזוהו. תולעים הן תוכנות זדוניות המשתכפלות בעצמן ומתפשטות בדרך כלל דרך פרצות אבטחה ברשת."
 
-#------------------------------------------------------------------------------
-# הצגת מידע עזרה - מהדורת קהילה
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "מעדכן את האתר שצוין: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "מעדכן את האתר %s. פקודת עדכון: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "מעבד רשומות ויוצר קובץ נתונים מקובץ התצורה \"%s\", AWStats גרסה %s"
+
+msgid "Updating data, please wait"
+msgstr "מעדכן נתונים, אנא המתן"
+
+msgid "done (%s seconds)"
+msgstr "הושלם (%s שניות)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "פקודת עטיפה (אופציונלי)"
+
+msgid "To run %s without specifying the full path."
+msgstr "כדי להפעיל את %s מבלי לציין את הנתיב המלא."
+
+msgid "Create a wrapper script in %s:"
+msgstr "צור סקריפט עטיפה ב-%s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "העתק והפעל את פקודת העטיפה הבאה במסוף שלך:"
+
+msgid "Wrapper for %s"
+msgstr "עטיפה עבור %s"
+
+msgid "Then make it executable:"
+msgstr "לאחר מכן הפוך אותו להרצה:"
+
+msgid "You can now run the update using the following command:"
+msgstr "כעת תוכל להפעיל את העדכון באמצעות הפקודה הבאה:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "נתוני קובץ היומן מגיעים מהספרייה \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "קורא את מיקום הנתונים האחרון ומאמת נתונים"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "מיקום הנתונים האחרון נקרא בהצלחה (אחרי שורה %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "מעבד רשומות חדשות (מעדכן את קובץ ההיסטוריה כל %s ערכי יומן)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "גישה ישירה לרשומה האחרונה שנזכרה נחתה על רשומה אחרת."
+
+msgid "So searching new records from beginning of log file"
+msgstr "לכן מחפש רשומות חדשות מתחילת קובץ היומן"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "גישה ישירה לרשומה האחרונה שנזכרה היא מחוץ לקובץ."
+
+msgid "So searching it from beginning of log file"
+msgstr "לכן מחפש אותו מתחילת קובץ היומן"
+
+msgid "Searching new records from beginning of log file"
+msgstr "מחפש רשומות חדשות מתחילת קובץ היומן"
+
+msgid "Saving the log to the data file"
+msgstr "שומר את היומן לקובץ הנתונים"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (מספר המקורות שבוקרו הגיע למגבלת השמירה של %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (מספר כתובות ה-URL הגיע למגבלת השמירה של %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "שורות שדולגו בקובץ: %s"
+
+msgid "Found %s already parsed records"
+msgstr "נמצאו %s רשומות שכבר נותחו"
+
+msgid "Parsed lines in file: %s"
+msgstr "שורות שנותחו בקובץ: %s"
+
+msgid "Found %s dropped records"
+msgstr "נמצאו %s רשומות שנזרקו"
+
+msgid "Found %s comments"
+msgstr "נמצאו %s הערות"
+
+msgid "Found %s blank records"
+msgstr "נמצאו %s רשומות ריקות"
+
+msgid "Found %s corrupted records"
+msgstr "נמצאו %s רשומות פגומות"
+
+msgid "Found %s old records"
+msgstr "נמצאו %s רשומות ישנות"
+
+msgid "Found %s new data records"
+msgstr "נמצאו %s רשומות נתונים חדשות"
+
+msgid "All updates completed!"
+msgstr "כל העדכונים הושלמו!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "שים לב: הפרמטר HostAliases אינו מוגדר (משמש להגדרת כינויי דומיין נוספים עבור האתר, ברירת המחדל ריקה)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "המערכת הוסיפה אוטומטית ערכי ברירת מחדל: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "כדי להוסיף כינויי דומיין אחרים, הגדר את HostAliases בקובץ התצורה, וודא שתצורת האתר של שרת האינטרנט (למשל, Apache, Nginx) מתעדכנת בהתאם."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "לדוגמה, אם האתר משתמש גם ב-example.com וגם ב-www.example.com, ניתן להגדיר HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "מעדכן אצווה AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "זכויות יוצרים (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "ברישיון GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "תיאור"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall מעדכן אוטומטית את כל קובצי התצורה של AWStats שנמצאו"
+
+msgid "in a specified directory (default: %s)."
+msgstr "בספרייה שצוינה (ברירת מחדל: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "זה שימושי להגדרת משימות cron מתוזמנות."
+
+msgid "USAGE"
+msgstr "שימוש"
+
+msgid "OPTIONS"
+msgstr "אפשרויות"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    נתיב אל awstats.pl (מזוהה אוטומטית אם הושמט)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       עדכן רק את הדומיין שצוין"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       ספרייה המכילה קובצי תצורה (ברירת מחדל: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    החרג תצורות לפי שם (מופרדות בפסיקים)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             שפה לפלט (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr וכו')"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             הפעל פלט ניפוי באגים (N גבוה יותר = מפורט יותר)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  הגדר ערך LastLine עבור כל העדכונים"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            הצג הודעת עזרה זו"
+
+msgid "EXAMPLES"
+msgstr "דוגמאות"
+
+msgid "Update all sites"
+msgstr "עדכן את כל האתרים"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "צור הערות בקובץ הנתונים בשפה המועדפת עליך"
+
+msgid "Example:"
+msgstr "דוגמה:"
+
+msgid "Update only one specific site"
+msgstr "עדכן אתר ספציפי אחד בלבד"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "עדכן את כל האתרים עם נתיב AWStats מותאם אישית (למשל, בעת שימוש במארחים וירטואליים או במיקום awstats.pl מותאם אישית)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "עדכן את כל האתרים למעט awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "השתמש בספריית תצורה מותאמת אישית"
+
+msgid "QUICK START"
+msgstr "התחלה מהירה"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "העטיפה 'awstats-update' כבר מותקנת."
+
+msgid "Simply run:"
+msgstr "פשוט הרץ:"
+
+msgid "Update single site"
+msgstr "עדכן אתר בודד"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "פלט טקסט תצוגת מסוף ורשומות יומן בשפה שצוינה"
+
+msgid "Log file: %s"
+msgstr "קובץ יומן: %s"
+
+msgid "Show help"
+msgstr "הצג עזרה"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "אין צורך להקליד את הנתיב המלא אל awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "משימה תקופתית"
+
+msgid "Daily update script:"
+msgstr "סקריפט עדכון יומי:"
+
+msgid "Cron job:"
+msgstr "משימת cron:"
+
+msgid "Content:"
+msgstr "תוכן:"
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - סטטיסטיקות רשת מתקדמות"
 

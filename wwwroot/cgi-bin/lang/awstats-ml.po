@@ -675,11 +675,26 @@ msgstr "ഈ ഡയറക്ടറിക്ക് വായനാ അനുമത
 msgid "Please set read permission for directory"
 msgstr "ദയവായി ഡയറക്ടറിക്ക് വായനാ അനുമതി സജ്ജമാക്കുക"
 
-msgid "Missing required parameter in config file"
-msgstr "കോൺഫിഗറേഷൻ ഫയലിൽ ആവശ്യമായ പാരാമീറ്റർ ഇല്ല"
+msgid "No AWStats config file for any site found in %s"
+msgstr "%s-ൽ ഏതെങ്കിലും സൈറ്റിനായി AWStats കോൺഫിഗറേഷൻ ഫയൽ കണ്ടെത്തിയില്ല"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "'DirData' നിർവചിക്കപ്പെട്ടിട്ടുണ്ടോയെന്ന് ദയവായി പരിശോധിക്കുക."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "'%s' ഡയറക്ടറിയിൽ '%s' ഡൊമെയ്നിനായി കോൺഫിഗറേഷൻ ഫയൽ ഇല്ല"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "\"%s\" കോൺഫിഗറേഷൻ ഫയലിൽ ആവശ്യമായ പാരാമീറ്റർ കാണുന്നില്ല"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "'DirData' പാത നിർവചിക്കപ്പെട്ടിട്ടുണ്ടെന്നും നിലവിലുണ്ടെന്നും പരിശോധിക്കുക."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "LogFile പാരാമീറ്റർ കോൺഫിഗറേഷൻ/ഡൊമെയ്ൻ ഫയലിൽ നിർവചിച്ചിട്ടില്ല"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "LogFormat പാരാമീറ്റർ കോൺഫിഗറേഷൻ/ഡൊമെയ്ൻ ഫയലിൽ നിർവചിച്ചിട്ടില്ല"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "LogFormat പാരാമീറ്റർ കോൺഫിഗറേഷൻ/ഡൊമെയ്ൻ ഫയലിൽ തെറ്റാണ്. മൂല്യം '%s' ആണ് (1, 2, 3, 4, 5 അല്ലെങ്കിൽ 'വ്യക്തിഗത AWStats ലോഗ് ഫോർമാറ്റ് സ്ട്രിംഗ്' ആയിരിക്കണം)"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "ബ്രൗസർ വിലാസത്തിലെ ഡൊമെയ്ൻ നാമം നഷ്ടമായിരിക്കുന്നു അല്ലെങ്കിൽ അപൂർണ്ണമാണ്"
@@ -1419,8 +1434,8 @@ msgstr "ഫയൽ സ്ഥാനങ്ങൾ ലഭിക്കുന്നത�
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "നുറുങ്ങ്: നിങ്ങൾക്ക് ബന്ധപ്പെട്ട ഐക്കണുകൾ സൃഷ്ടിക്കണമെങ്കിൽ, നിങ്ങൾക്ക് %s ഉപയോഗിച്ച് ഒരു ലോഗോ ചിത്രം അപ്ലോഡ് ചെയ്യാം, അത് സ്വയമേവ മുകളിലുള്ള എല്ലാ ബന്ധപ്പെട്ട ഐക്കൺ ഫയലുകളും സൃഷ്ടിക്കും"
 
-msgid "200: success, 404: failure"
-msgstr "200: വിജയകരമായ എണ്ണം, 404: പരാജയപ്പെട്ട എണ്ണം"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: വിജയം, 404: കണ്ടെത്തിയില്ല, CDN: പ്രാദേശികമല്ലാത്ത favicon (സൈറ്റ് ഐക്കൺ)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1750,8 +1765,8 @@ msgstr "കുറഞ്ഞ ട്രാഫിക് അജ്ഞാത IP-കള
 msgid "Failed to obtain IP data"
 msgstr "IP ഡാറ്റ ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-msgid "Failed to obtain the relevant data"
-msgstr "ഉചിതമായ ഡാറ്റ ലഭിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+msgid "Monthly Traffic Statistics"
+msgstr "മാസിക ട്രാഫിക് സ്ഥിതിവിവരക്കണക്കുകൾ"
 
 msgid "Limited list of countries and regions"
 msgstr "നിലവിൽ 10 വരികളുടെ ഡാറ്റ മാത്രമേ കാണിക്കുന്നുള്ളൂ, കൂടുതൽ രാജ്യങ്ങൾ/പ്രദേശങ്ങൾക്കായി പൂർണ്ണ പട്ടിക കാണുക"
@@ -3054,9 +3069,230 @@ msgstr "നിലവിലുള്ള വിഭാഗങ്ങളിൽ പെ�
 msgid "tooltip_21"
 msgstr "കണ്ടെത്തിയ വേം വൈറസ് ആക്രമണങ്ങളുടെ രേഖകൾ. വേം എന്നത് സ്വയം പ്രസരിക്കുന്ന മാൽവെയറാണ്, സാധാരണയായി നെറ്റ്വർക്ക് കേടുപാടുകളിലൂടെ പടരുന്നു"
 
-#------------------------------------------------------------------------------
-# സഹായ വിവരങ്ങൾ - കമ്മ്യൂണിറ്റി പതിപ്പ്
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "നിർദ്ദിഷ്ട സൈറ്റ് അപ്ഡേറ്റ് ചെയ്യുന്നു: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "%s സൈറ്റ് അപ്ഡേറ്റ് ചെയ്യുന്നു. അപ്ഡേറ്റ് കമാൻഡ്: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "കോൺഫിഗറേഷൻ ഫയൽ \"%s\"-ൽ നിന്ന് റെക്കോർഡുകൾ പ്രോസസ്സ് ചെയ്യുകയും ഡാറ്റ ഫയൽ സൃഷ്ടിക്കുകയും ചെയ്യുന്നു, AWStats പതിപ്പ് %s"
+
+msgid "Updating data, please wait"
+msgstr "ഡാറ്റ അപ്ഡേറ്റ് ചെയ്യുന്നു, കാത്തിരിക്കുക"
+
+msgid "done (%s seconds)"
+msgstr "പൂർത്തിയായി (%s സെക്കൻഡ്)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "റാപ്പർ കമാൻഡ് (ഓപ്ഷണൽ)"
+
+msgid "To run %s without specifying the full path."
+msgstr "പൂർണ്ണ പാത വ്യക്തമാക്കാതെ %s പ്രവർത്തിപ്പിക്കാൻ."
+
+msgid "Create a wrapper script in %s:"
+msgstr "%s-ൽ ഒരു റാപ്പർ സ്ക്രിപ്റ്റ് സൃഷ്ടിക്കുക:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "ഇനിപ്പറയുന്ന റാപ്പർ കമാൻഡ് നിങ്ങളുടെ ടെർമിനലിൽ പകർത്തി പ്രവർത്തിപ്പിക്കുക:"
+
+msgid "Wrapper for %s"
+msgstr "%s-നുള്ള റാപ്പർ"
+
+msgid "Then make it executable:"
+msgstr "തുടർന്ന് അത് പ്രവർത്തനക്ഷമമാക്കുക:"
+
+msgid "You can now run the update using the following command:"
+msgstr "ഇപ്പോൾ നിങ്ങൾക്ക് ഇനിപ്പറയുന്ന കമാൻഡ് ഉപയോഗിച്ച് അപ്ഡേറ്റ് പ്രവർത്തിപ്പിക്കാം:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "ലോഗ് ഫയൽ ഡാറ്റ \"%s\" ഡയറക്ടറിയിൽ നിന്ന് വരുന്നു"
+
+msgid "Reading last data position and verifying data"
+msgstr "അവസാന ഡാറ്റ സ്ഥാനം വായിക്കുകയും ഡാറ്റ പരിശോധിക്കുകയും ചെയ്യുന്നു"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "അവസാന ഡാറ്റ സ്ഥാനം വിജയകരമായി വായിച്ചു (%s വരിക്ക് ശേഷം)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "പുതിയ റെക്കോർഡുകൾ പ്രോസസ്സ് ചെയ്യുന്നു (ഓരോ %s ലോഗ് എൻട്രികൾക്കും ശേഷം ചരിത്ര ഫയൽ അപ്ഡേറ്റ് ചെയ്യുന്നു)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "അവസാനം ഓർമ്മയിൽ സൂക്ഷിച്ച റെക്കോർഡിലേക്കുള്ള നേരിട്ടുള്ള ആക്സസ് മറ്റൊരു റെക്കോർഡിൽ എത്തി."
+
+msgid "So searching new records from beginning of log file"
+msgstr "അതിനാൽ ലോഗ് ഫയലിന്റെ തുടക്കം മുതൽ പുതിയ റെക്കോർഡുകൾ തിരയുന്നു"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "അവസാനം ഓർമ്മയിൽ സൂക്ഷിച്ച റെക്കോർഡിലേക്കുള്ള നേരിട്ടുള്ള ആക്സസ് ഫയലിന് പുറത്താണ്."
+
+msgid "So searching it from beginning of log file"
+msgstr "അതിനാൽ ലോഗ് ഫയലിന്റെ തുടക്കം മുതൽ തിരയുന്നു"
+
+msgid "Searching new records from beginning of log file"
+msgstr "ലോഗ് ഫയലിന്റെ തുടക്കം മുതൽ പുതിയ റെക്കോർഡുകൾ തിരയുന്നു"
+
+msgid "Saving the log to the data file"
+msgstr "ലോഗ് ഡാറ്റ ഫയലിൽ സംരക്ഷിക്കുന്നു"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (സന്ദർശിച്ച ഉറവിടങ്ങളുടെ എണ്ണം %s സംരക്ഷണ പരിധിയിൽ എത്തി)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (URL-കളുടെ എണ്ണം %s സംരക്ഷണ പരിധിയിൽ എത്തി)"
+
+msgid "Jumped lines in file: %s"
+msgstr "ഫയലിൽ ഒഴിവാക്കിയ വരികൾ: %s"
+
+msgid "Found %s already parsed records"
+msgstr "%s ഇതിനകം പാഴ്സ് ചെയ്ത റെക്കോർഡുകൾ കണ്ടെത്തി"
+
+msgid "Parsed lines in file: %s"
+msgstr "ഫയലിൽ പാഴ്സ് ചെയ്ത വരികൾ: %s"
+
+msgid "Found %s dropped records"
+msgstr "%s ഉപേക്ഷിച്ച റെക്കോർഡുകൾ കണ്ടെത്തി"
+
+msgid "Found %s comments"
+msgstr "%s അഭിപ്രായങ്ങൾ കണ്ടെത്തി"
+
+msgid "Found %s blank records"
+msgstr "%s ശൂന്യമായ റെക്കോർഡുകൾ കണ്ടെത്തി"
+
+msgid "Found %s corrupted records"
+msgstr "%s കേടായ റെക്കോർഡുകൾ കണ്ടെത്തി"
+
+msgid "Found %s old records"
+msgstr "%s പഴയ റെക്കോർഡുകൾ കണ്ടെത്തി"
+
+msgid "Found %s new data records"
+msgstr "%s പുതിയ ഡാറ്റ റെക്കോർഡുകൾ കണ്ടെത്തി"
+
+msgid "All updates completed!"
+msgstr "എല്ലാ അപ്ഡേറ്റുകളും പൂർത്തിയായി!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "ശ്രദ്ധിക്കുക: HostAliases പാരാമീറ്റർ കോൺഫിഗർ ചെയ്തിട്ടില്ല (സൈറ്റിനായി അധിക ഡൊമെയ്ൻ അലിയാസുകൾ നിർവചിക്കാൻ ഉപയോഗിക്കുന്നു, സ്ഥിരസ്ഥിതി ശൂന്യമാണ്)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "സിസ്റ്റം സ്വയമേവ സ്ഥിരസ്ഥിതി മൂല്യങ്ങൾ ചേർത്തു: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "മറ്റ് ഡൊമെയ്ൻ അലിയാസുകൾ ചേർക്കാൻ, കോൺഫിഗറേഷൻ ഫയലിൽ HostAliases സജ്ജമാക്കുക, കൂടാതെ വെബ് സെർവറിന്റെ (ഉദാ., Apache, Nginx) സൈറ്റ് കോൺഫിഗറേഷൻ അതിനനുസരിച്ച് അപ്ഡേറ്റ് ചെയ്യുന്നുവെന്ന് ഉറപ്പാക്കുക."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "ഉദാഹരണത്തിന്, സൈറ്റ് example.com ഉം www.example.com ഉം ഉപയോഗിക്കുന്നുണ്ടെങ്കിൽ, നിങ്ങൾക്ക് HostAliases=\"www\" സജ്ജമാക്കാം."
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats ബാച്ച് അപ്ഡേറ്റർ %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "പകർപ്പവകാശം (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "GNU General Public License പ്രകാരം ലൈസൻസുള്ളത്"
+
+msgid "DESCRIPTION"
+msgstr "വിവരണം"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall കണ്ടെത്തിയ എല്ലാ AWStats കോൺഫിഗ് ഫയലുകളും സ്വയമേവ അപ്ഡേറ്റ് ചെയ്യുന്നു"
+
+msgid "in a specified directory (default: %s)."
+msgstr "നിർദ്ദിഷ്ട ഡയറക്ടറിയിൽ (സ്ഥിരസ്ഥിതി: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "ഷെഡ്യൂൾ ചെയ്ത cron ജോലികൾ സജ്ജീകരിക്കാൻ ഇത് ഉപയോഗപ്രദമാണ്."
+
+msgid "USAGE"
+msgstr "ഉപയോഗം"
+
+msgid "OPTIONS"
+msgstr "ഓപ്ഷനുകൾ"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    awstats.pl-ലേക്കുള്ള പാത (ഒഴിവാക്കിയാൽ സ്വയമേവ കണ്ടെത്തുന്നു)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       നിർദ്ദിഷ്ട ഡൊമെയ്ൻ മാത്രം അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       കോൺഫിഗ് ഫയലുകൾ അടങ്ങിയ ഡയറക്ടറി (സ്ഥിരസ്ഥിതി: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    പേര് അനുസരിച്ച് കോൺഫിഗുകൾ ഒഴിവാക്കുക (കോമയാൽ വേർതിരിച്ചത്)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             ഔട്ട്പുട്ടിനുള്ള ഭാഷ (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, മുതലായവ)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             ഡീബഗ് ഔട്ട്പുട്ട് പ്രവർത്തനക്ഷമമാക്കുക (ഉയർന്ന N = കൂടുതൽ വിശദമായത്)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  എല്ലാ അപ്ഡേറ്റുകൾക്കും LastLine മൂല്യം സജ്ജമാക്കുക"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            ഈ സഹായ സന്ദേശം കാണിക്കുക"
+
+msgid "EXAMPLES"
+msgstr "ഉദാഹരണങ്ങൾ"
+
+msgid "Update all sites"
+msgstr "എല്ലാ സൈറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "നിങ്ങൾ ഇഷ്ടപ്പെടുന്ന ഭാഷയിൽ ഡാറ്റ ഫയൽ അഭിപ്രായങ്ങൾ സൃഷ്ടിക്കുക"
+
+msgid "Example:"
+msgstr "ഉദാഹരണം:"
+
+msgid "Update only one specific site"
+msgstr "ഒരു നിർദ്ദിഷ്ട സൈറ്റ് മാത്രം അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "ഇഷ്ടാനുസൃത AWStats പാതയോടെ എല്ലാ സൈറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക (ഉദാ., വെർച്വൽ ഹോസ്റ്റുകൾ അല്ലെങ്കിൽ ഇഷ്ടാനുസൃത awstats.pl സ്ഥാനം ഉപയോഗിക്കുമ്പോൾ)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "awstats.example.com.conf ഒഴികെ എല്ലാ സൈറ്റുകളും അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "Use custom config directory"
+msgstr "ഇഷ്ടാനുസൃത കോൺഫിഗ് ഡയറക്ടറി ഉപയോഗിക്കുക"
+
+msgid "QUICK START"
+msgstr "ദ്രുത തുടക്കം"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update' റാപ്പർ ഇതിനകം ഇൻസ്റ്റാൾ ചെയ്തിട്ടുണ്ട്."
+
+msgid "Simply run:"
+msgstr "ലളിതമായി പ്രവർത്തിപ്പിക്കുക:"
+
+msgid "Update single site"
+msgstr "ഒരു സൈറ്റ് അപ്ഡേറ്റ് ചെയ്യുക"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "നിങ്ങൾ നിർദ്ദിഷ്ട ഭാഷയിൽ ടെർമിനൽ ഡിസ്പ്ലേ ടെക്സ്റ്റും ലോഗ് റെക്കോർഡുകളും ഔട്ട്പുട്ട് ചെയ്യുക"
+
+msgid "Log file: %s"
+msgstr "ലോഗ് ഫയൽ: %s"
+
+msgid "Show help"
+msgstr "സഹായം കാണിക്കുക"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "awstats_updateall.pl-ലേക്കുള്ള പൂർണ്ണ പാത ടൈപ്പ് ചെയ്യേണ്ടതില്ല."
+
+msgid "PERIODIC TASK"
+msgstr "ആനുകാലിക ടാസ്ക്"
+
+msgid "Daily update script:"
+msgstr "ദൈനംദിന അപ്ഡേറ്റ് സ്ക്രിപ്റ്റ്:"
+
+msgid "Cron job:"
+msgstr "Cron ജോലി:"
+
+msgid "Content:"
+msgstr "ഉള്ളടക്കം:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - നൂതന വെബ് സ്ഥിതിവിവരക്കണക്കുകൾ"

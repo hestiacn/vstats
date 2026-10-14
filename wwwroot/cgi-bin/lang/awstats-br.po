@@ -681,11 +681,26 @@ msgstr "An teuliad-mañ n'eus ket a aotre lenn"
 msgid "Please set read permission for directory"
 msgstr "Lakait un aotre lenn evit an teuliad"
 
-msgid "Missing required parameter in config file"
-msgstr "Diank eo un arventenn rekis er restr kefluniadur"
+msgid "No AWStats config file for any site found in %s"
+msgstr "N'eus bet kavet restroù kefluniañ AWStats ebet evit lec'hienn ebet e %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Gwiriit mar plij ez eus termenet 'DirData'."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "N'eus ket a restroù kefluniañ er c'havlec'h '%s' evit an domani '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Arventenn rekis a vank er restr kefluniañ \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Gwiriekait mar plij ez eo termenet ha presant an treug 'DirData'."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "N'eo ket termenet an arventenn LogFile er restr kefluniañ/domani"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "N'eo ket termenet an arventenn LogFormat er restr kefluniañ/domani"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Fall eo an arventenn LogFormat er restr kefluniañ/domani. Ar werzh zo '%s' (1, 2, 3, 4, 5 pe ur 'hedad furmad urzhiañ AWStats personelaet' a rankfe bezañ)"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Mankout pe diglok eo anv domani an ajañs merdeer"
@@ -1424,8 +1439,8 @@ msgstr "Hent Spi"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Titour : Ma rankit genel lugelloù liammet, gallout a rit implijout %s evit kargañ ur skeudenn logo, hag ec'h angenero otomatekment holl restroù al lugelloù liammet a-us"
 
-msgid "200: success, 404: failure"
-msgstr "200 a zo niver a berzh, 404 a zo niver a c'hwitadenn"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: berzh, 404: diank, CDN: favicon nann-lec'hel (arouez al lec'hienn)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1739,8 +1754,8 @@ msgstr "Diverradur IP trafik izel dianav"
 msgid "Failed to obtain IP data"
 msgstr "Diverradur IP anavezet all"
 
-msgid "Failed to obtain the relevant data"
-msgstr "N'eo ket bet tapet ar roadennoù liammet"
+msgid "Monthly Traffic Statistics"
+msgstr "Stadegoù trafik miziek"
 
 msgid "Limited list of countries and regions"
 msgstr "Roll bevennet ar broioù hag ar rannvroioù, gwelet ar roll klok evit muioc'h"
@@ -3034,6 +3049,231 @@ msgstr "Roadennoù n'haller ket renkañ er c'horzennoù a zo, peurvuiañ abalamo
 
 msgid "tooltip_21"
 msgstr "Argadennoù preñved enrollet. Preñved a zo malware en-emreplica a led dre zegouezhioù rouedad peurvuiañ."
+
+msgid "Updating specified site: %s"
+msgstr "Oc'h hizivaat al lec'hien spisaet: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Oc'h hizivaat al lec'hien %s. Urzh hizivaat: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "O prientiñ ar c'hlaskoù ha sevel ar restr roadennoù diwar ar restr kefluniañ \"%s\", AWStats stumm %s"
+
+msgid "Updating data, please wait"
+msgstr "O hizivaat ar roadennoù, gortozit mar plij"
+
+msgid "done (%s seconds)"
+msgstr "echuet (%s eilenn)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "URZHIOÙ GWISKER (Diret)"
+
+msgid "To run %s without specifying the full path."
+msgstr "Evit lañsañ %s hep merkañ an treug klok."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Krouit ur skript gwisker e %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Eilit hag lañsit an urzh gwisker da-heul en ho termenell:"
+
+msgid "Wrapper for %s"
+msgstr "Gwisker evit %s"
+
+msgid "Then make it executable:"
+msgstr "Neuze lakaat anezhañ da vezañ erounezet:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Gallout a rit bremañ lañsañ an hizivadenn gant an urzh da-heul:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Roadennoù ar restr renabl a zeu eus ar c'havlec'h \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Lenn ar savlec'h roadennoù diwezhañ ha gwiriañ ar roadennoù"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Savlec'h roadennoù diwezhañ lennet gant berzh (goude ar linenn %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Oc'h ober war-dro ar c'hennadoù nevez (hizivaat ar restr istor bep %s enmont renabl)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "An haeziñ eeun d'ar c'hennad diwezhañ eñvoret a zo kouezhet war ur c'hennad all."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Setu e klasker kennadoù nevez adalek deroù ar restr renabl"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "An haeziñ eeun d'ar c'hennad diwezhañ eñvoret a zo er-maez eus ar restr."
+
+msgid "So searching it from beginning of log file"
+msgstr "Setu e klasker anezhañ adalek deroù ar restr renabl"
+
+msgid "Searching new records from beginning of log file"
+msgstr "O klask kennadoù nevez adalek deroù ar restr renabl"
+
+msgid "Saving the log to the data file"
+msgstr "Oc'h enrollañ ar renabl er restr roadennoù"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (An niver a vammennoù gweladennet en deus tizhet bevenn enrollañ %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (An niver a URLoù en deus tizhet bevenn enrollañ %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Linennoù lammet er restr: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Kavet %s kennad dija dielfennet"
+
+msgid "Parsed lines in file: %s"
+msgstr "Linennoù dielfennet er restr: %s"
+
+msgid "Found %s dropped records"
+msgstr "Kavet %s kennad dilezet"
+
+msgid "Found %s comments"
+msgstr "Kavet %s evezhiadenn"
+
+msgid "Found %s blank records"
+msgstr "Kavet %s kennad goullo"
+
+msgid "Found %s corrupted records"
+msgstr "Kavet %s kennad breinet"
+
+msgid "Found %s old records"
+msgstr "Kavet %s kennad kozh"
+
+msgid "Found %s new data records"
+msgstr "Kavet %s kennad roadennoù nevez"
+
+msgid "All updates completed!"
+msgstr "An holl hizivadurioù echuet!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Notenn: Arventenn HostAliases n'eo ket kefluniet (implijet evit termeniñ anvioù domani ouzhpenn evit al lec'hien, goullo dre ziouer)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Ar reizhiad en deus ouzhpennet talvoudoù dre ziouer ent-emgefreek: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Evit ouzhpennañ anvioù domani all, mar plij lakaat HostAliases er restr kefluniadur, ha gwiriañ eo hizivaet kefluniadur al lec'hien eus ar servijer Web (da skouer Apache, Nginx) hervez-se."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Da skouer, ma vez implijet gant al lec'hien example.com ha www.example.com war un dro, gallout a rit lakaat HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "Hizivaer Strollad AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Gwirioù kopi (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Aotreet dindan Aotreom Publik Hollek GNU"
+
+msgid "DESCRIPTION"
+msgstr "DESKRIVADUR"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall a hiziva ent-emgefreek an holl restroù kefluniadur AWStats kavet"
+
+msgid "in a specified directory (default: %s)."
+msgstr "en ur c'havlec'h spisaet (dre ziouer: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Talvoudus eo evit sevel labourioù cron raktreset."
+
+msgid "USAGE"
+msgstr "IMPLIJ"
+
+msgid "OPTIONS"
+msgstr "DIBARZHENNOÙ"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Hent da awstats.pl (dinoet ent-emgefreek ma vez lezet e goullo)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Hizivaat hepken an domani spisaet"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Kavlec'h ennañ ar restroù kefluniadur (dre ziouer: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Lemel ar c'hefluniadurioù dre anv (dispartiet gant skejoù)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Yezh evit an ezvonez (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, h.a.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Gweredekaat an ezvonez diveugiñ (N uheloc'h = muioc'h a vunudoù)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Lakaat talvoud LastLine evit an holl hizivadurioù"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Diskouez ar gemennadenn skoazell-mañ"
+
+msgid "EXAMPLES"
+msgstr "SKOUERIOÙ"
+
+msgid "Update all sites"
+msgstr "Hizivaat an holl lec'hiennoù"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Genel evezhiadennoù ar restr roadennoù en ho yezh muiañ-karet"
+
+msgid "Example:"
+msgstr "Skouer:"
+
+msgid "Update only one specific site"
+msgstr "Hizivaat ul lec'hien spisaet hepken"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Hizivaat an holl lec'hiennoù gant un hent AWStats personelaet (da skouer, pa vez implijet herberc'hier galloudel pe ul lec'hiadur awstats.pl personelaet)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Hizivaat an holl lec'hiennoù nemet awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Implijout ur c'havlec'h kefluniadur personelaet"
+
+msgid "QUICK START"
+msgstr "DEROÙ BUAN"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Ar goloenn 'awstats-update' a zo dija staliet."
+
+msgid "Simply run:"
+msgstr "Lakait da redek hepken:"
+
+msgid "Update single site"
+msgstr "Hizivaat ul lec'hien nemeti"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Ezvezañ testenn diskwel an termenell hag enrolladennoù ar renabl en ho yezh spisaet"
+
+msgid "Log file: %s"
+msgstr "Restr renabl: %s"
+
+msgid "Show help"
+msgstr "Diskouez ar skoazell"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "N'eo ket ret skrivañ an hent klok da awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "TROAD LABOUR PERIOADEK"
+
+msgid "Daily update script:"
+msgstr "Skript hizivaat pemdeziek:"
+
+msgid "Cron job:"
+msgstr "Labour cron:"
+
+msgid "Content:"
+msgstr "Endalc'had:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Stadegoù Web Araokaet"

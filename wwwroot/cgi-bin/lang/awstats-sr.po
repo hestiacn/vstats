@@ -686,11 +686,26 @@ msgstr "Овом директоријуму недостаје дозвола з
 msgid "Please set read permission for directory"
 msgstr "Поставите дозволу за читање за директоријум"
 
-msgid "Missing required parameter in config file"
-msgstr "Недостаје обавезни параметар у конфигурационој датотеци"
+msgid "No AWStats config file for any site found in %s"
+msgstr "У %s није пронађена ниједна AWStats конфигурациона датотека ни за један сајт"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Проверите да ли је 'DirData' дефинисан."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Директоријум '%s' не садржи конфигурациону датотеку за домен '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Недостаје обавезни параметар у конфигурационој датотеци \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Проверите да ли је путања 'DirData' дефинисана и да ли постоји."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Параметар LogFile није дефинисан у конфигурационој/датотеци домена"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Параметар LogFormat није дефинисан у конфигурационој/датотеци домена"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Параметар LogFormat је погрешан у конфигурационој/датотеци домена. Вредност је '%s' (требало би да буде 1, 2, 3, 4, 5 или 'персонализовани низ формата AWStats дневника')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Чини се да име домена у адреси прегледача недостаје или је непотпуно"
@@ -1433,8 +1448,8 @@ msgstr "колона за локације фајлова"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Савет: Ако треба да генеришете повезане иконе, можете да користите %s да отпремите слику логотипа, и он ће аутоматски генерисати све горе наведене датотеке са иконама"
 
-msgid "200: success, 404: failure"
-msgstr "200 представља број успешних покушаја, 404 представља број неуспешних покушаја"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: успех, 404: није пронађено, CDN: нелокални favicon (икона сајта)"
 
 # Очекиване путање
 msgid "_PATH_FAVICON"
@@ -1768,8 +1783,8 @@ msgstr "Резиме непознатих ИП адреса са ниским с
 msgid "Failed to obtain IP data"
 msgstr "Друге познате ИП адресе"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Није успешно преузет релевантан податак"
+msgid "Monthly Traffic Statistics"
+msgstr "Месечна статистика саобраћаја"
 
 msgid "Limited list of countries and regions"
 msgstr "Тренутно се приказује само 10 редова података, више држава/региона погледајте на потпуној листи"
@@ -3078,9 +3093,230 @@ msgstr "Подаци који се не могу категоризовати, �
 msgid "tooltip_21"
 msgstr "Забележени напади црва. Црви су самокопирајући злонамерни програми који се шире кроз мрежне рањивости."
 
-#------------------------------------------------------------------------------
-# help
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Ажурирање наведеног сајта: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Ажурирање сајта %s. Команда за ажурирање: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Обрада записа и генерисање датотеке података из конфигурационе датотеке \"%s\", AWStats верзија %s"
+
+msgid "Updating data, please wait"
+msgstr "Ажурирање података, молимо сачекајте"
+
+msgid "done (%s seconds)"
+msgstr "завршено (%s секунди)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "ОМОТНА КОМАНДА (Опционо)"
+
+msgid "To run %s without specifying the full path."
+msgstr "За покретање %s без навођења пуне путање."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Направите омотну скрипту у %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Копирајте и покрените следећу омотну команду у свом терминалу:"
+
+msgid "Wrapper for %s"
+msgstr "Омот за %s"
+
+msgid "Then make it executable:"
+msgstr "Затим га учините извршним:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Сада можете покренути ажурирање помоћу следеће команде:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Подаци из датотеке евиденције долазе из директоријума \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Читање последње позиције података и провера података"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Последња позиција података је успешно прочитана (после реда %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Обрада нових записа (ажурирање датотеке историје сваких %s уноса евиденције)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Директан приступ последњем запамћеном запису слетео је на други запис."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Зато се нови записи траже од почетка датотеке евиденције"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Директан приступ последњем запамћеном запису је изван датотеке."
+
+msgid "So searching it from beginning of log file"
+msgstr "Зато се тражи од почетка датотеке евиденције"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Тражење нових записа од почетка датотеке евиденције"
+
+msgid "Saving the log to the data file"
+msgstr "Чување евиденције у датотеку података"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Број посећених извора је достигао ограничење чувања од %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Број URL-ова је достигао ограничење чувања од %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Прескочени редови у датотеци: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Нађено %s већ парсираних записа"
+
+msgid "Parsed lines in file: %s"
+msgstr "Парсирани редови у датотеци: %s"
+
+msgid "Found %s dropped records"
+msgstr "Нађено %s одбачених записа"
+
+msgid "Found %s comments"
+msgstr "Нађено %s коментара"
+
+msgid "Found %s blank records"
+msgstr "Нађено %s празних записа"
+
+msgid "Found %s corrupted records"
+msgstr "Нађено %s оштећених записа"
+
+msgid "Found %s old records"
+msgstr "Нађено %s старих записа"
+
+msgid "Found %s new data records"
+msgstr "Нађено %s нових записа података"
+
+msgid "All updates completed!"
+msgstr "Сва ажурирања су завршена!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Напомена: Параметар HostAliases није конфигурисан (користи се за дефинисање додатних алијаса домена за сајт, подразумевано је празно)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Систем је аутоматски додао подразумеване вредности: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Да бисте додали друге алијасе домена, подесите HostAliases у датотеци конфигурације и уверите се да је конфигурација сајта веб сервера (нпр. Apache, Nginx) ажурирана у складу са тим."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "На пример, ако сајт користи и example.com и www.example.com, можете подесити HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats групни ажуратор %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Ауторска права (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Лиценцирано под GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "ОПИС"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall аутоматски ажурира све пронађене AWStats конфигурационе датотеке"
+
+msgid "in a specified directory (default: %s)."
+msgstr "у наведеном директоријуму (подразумевано: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Ово је корисно за подешавање заказаних cron послова."
+
+msgid "USAGE"
+msgstr "УПОТРЕБА"
+
+msgid "OPTIONS"
+msgstr "ОПЦИЈЕ"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Путања до awstats.pl (аутоматски се открива ако се изостави)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Ажурирај само наведени домен"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Директоријум који садржи конфигурационе датотеке (подразумевано: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Искључи конфигурације по имену (одвојено зарезима)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Језик за излаз (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr итд.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Омогући излаз за отклањање грешака (већи N = детаљније)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Постави вредност LastLine за сва ажурирања"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Прикажи ову поруку помоћи"
+
+msgid "EXAMPLES"
+msgstr "ПРИМЕРИ"
+
+msgid "Update all sites"
+msgstr "Ажурирај све сајтове"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Генериши коментаре датотеке података на жељеном језику"
+
+msgid "Example:"
+msgstr "Пример:"
+
+msgid "Update only one specific site"
+msgstr "Ажурирај само један одређени сајт"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Ажурирај све сајтове са прилагођеном AWStats путањом (нпр. када користите виртуелне хостове или прилагођену локацију awstats.pl)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Ажурирај све сајтове осим awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Користи прилагођени конфигурациони директоријум"
+
+msgid "QUICK START"
+msgstr "БРЗИ ПОЧЕТАК"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update' омотач је већ инсталиран."
+
+msgid "Simply run:"
+msgstr "Једноставно покрените:"
+
+msgid "Update single site"
+msgstr "Ажурирај један сајт"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Испиши текст приказа терминала и записе евиденције на наведеном језику"
+
+msgid "Log file: %s"
+msgstr "Датотека евиденције: %s"
+
+msgid "Show help"
+msgstr "Прикажи помоћ"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Није потребно уносити пуну путању до awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "ПЕРИОДИЧНИ ЗАДАТАК"
+
+msgid "Daily update script:"
+msgstr "Скрипта за дневно ажурирање:"
+
+msgid "Cron job:"
+msgstr "Cron посао:"
+
+msgid "Content:"
+msgstr "Садржај:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Напредна веб статистика"

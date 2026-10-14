@@ -678,11 +678,26 @@ msgstr "ይህ ማውጫ የማንበብ ፈቃድ የለውም"
 msgid "Please set read permission for directory"
 msgstr "እባክዎ ለማውጫው የማንበብ ፈቃድ ያዘጋጁ"
 
-msgid "Missing required parameter in config file"
-msgstr "በውቅር ፋይል ውስጥ አስፈላጊ መለኪያ ጠፍቷል"
+msgid "No AWStats config file for any site found in %s"
+msgstr "በ %s ውስጥ ለማንኛውም ጣቢያ የ AWStats ማዋቀሪያ ፋይል አልተገኘም"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "እባክዎ 'DirData' መገለጹን ያረጋግጡ።"
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "ማውጫው '%s' ለጎራው '%s' የማዋቀሪያ ፋይል አልያዘም"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "በማዋቀሪያ ፋይል \"%s\" ውስጥ የጎደለ አስፈላጊ ግቤት"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "እባክዎ 'DirData' የፍርግርግ መንገድ መገለጹን እና መኖሩን ያረጋግጡ።"
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "የ LogFile ግቤት በማዋቀሪያ/ጎራ ፋይል ውስጥ አልተገለጸም"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "የ LogFormat ግቤት በማዋቀሪያ/ጎራ ፋይል ውስጥ አልተገለጸም"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "በማዋቀሪያ/ጎራ ፋይል ውስጥ የ LogFormat ግቤት ትክክል አይደለም። እሴቱ '%s' ነው (1፣ 2፣ 3፣ 4፣ 5 ወይም 'የግል AWStats ሎግ ቅርጸት ሕብረቁምፊ' መሆን አለበት)"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "በአሳሽ አድራሻ ውስጥ ያለው የጎራ ስም ጠፍቷል ወይም ያልተሟላ ይመስላል"
@@ -1424,8 +1439,8 @@ msgstr "የፋይል ቦታዎችን ለማግኘት አምድ"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "ጠቃሚ ምክር: ተዛማጅ አዶዎች ማመንጨት ከፈለጉ፣ የሎጎ ምስል ለመስቀል %s ን መጠቀም ይችላሉ፣ እና ከላይ ያሉትን ሁሉንም ተዛማጅ አዶ ፋይሎች በራስ-ሰር ያመነጫል"
 
-msgid "200: success, 404: failure"
-msgstr "200 የስኬት ብዛት ነው 404 የውድቀት ብዛት ነው"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: ስኬት፣ 404: የጠፋ፣ CDN: ከውጭ የሚጫን favicon (የጣቢያ አዶ)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1755,8 +1770,8 @@ msgstr "ዝቅተኛ ትራፊክ ያልታወቀ አይፒ ማጠቃለያ"
 msgid "Failed to obtain IP data"
 msgstr "ሌሎች የታወቁ አይፒ ማጠቃለያ"
 
-msgid "Failed to obtain the relevant data"
-msgstr "ተዛማጅ ውሂቡን ማግኘት አልተቻለም"
+msgid "Monthly Traffic Statistics"
+msgstr "ወርሃዊ የትራፊክ ስታቲስቲክስ"
 
 msgid "Limited list of countries and regions"
 msgstr "በአሁኑ ጊዜ 10 መስመሮች ብቻ ይታያሉ፣ እባክዎ ለተጨማሪ ሀገሮች እና ክልሎች ሙሉ ዝርዝሩን ይመልከቱ"
@@ -3064,9 +3079,231 @@ msgstr "አሁን ባለው ክልል ውስጥ መመደብ የማይችሉ ው
 msgid "tooltip_21"
 msgstr "የተገኙ ትል ጥቃቶች መዝገቦች። ትል ራሱን የሚያሰራጭ ጎጂ ፕሮግራም ነው፣ በአብዛኛው በአውታረ መረብ ጉድለቶች በኩል ይሰራጫል"
 
-#------------------------------------------------------------------------------
-# የእርዳታ መልዕክት አሳይ - ማህበረሰብ እትም
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "የተጠቀሰውን ጣቢያ በማዘመን ላይ፡ %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "ጣቢያውን %s በማዘመን ላይ። የማዘመኛ ትዕዛዝ፡ '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "መዝገቦችን በማካሄድ ከማዋቀሪያ ፋይል \"%s\" የውሂብ ፋይል በመፍጠር ላይ፣ AWStats ቅጂ %s"
+
+msgid "Updating data, please wait"
+msgstr "ውሂብ በመዘመን ላይ ነው፣ እባክዎ ይጠብቁ"
+
+msgid "done (%s seconds)"
+msgstr "ተጠናቅቋል (%s ሰከንዶች)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "የመጠቅለያ ትዕዛዝ (አማራጭ)"
+
+msgid "To run %s without specifying the full path."
+msgstr "ሙሉውን መንገድ ሳይገልጹ %s ለማሄድ።"
+
+msgid "Create a wrapper script in %s:"
+msgstr "በ %s ውስጥ የመጠቅለያ ስክሪፕት ይፍጠሩ፦"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "የሚከተለውን የመጠቅለያ ትዕዛዝ በተርሚናልዎ ውስጥ ይቅዱ እና ያሂዱ፦"
+
+msgid "Wrapper for %s"
+msgstr "የ %s መጠቅለያ"
+
+msgid "Then make it executable:"
+msgstr "ከዚያም ሊሠራ የሚችል ያድርጉት፦"
+
+msgid "You can now run the update using the following command:"
+msgstr "አሁን የሚከተለውን ትዕዛዝ በመጠቀም ዝመናውን ማሄድ ይችላሉ፦"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "የመዝገብ ፋይል ውሂብ ከ \"%s\" ማውጫ ይመጣል"
+
+msgid "Reading last data position and verifying data"
+msgstr "የመጨረሻውን የውሂብ ቦታ በማንበብ እና ውሂቡን በማረጋገጥ ላይ"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "የመጨረሻው የውሂብ ቦታ በተሳካ ሁኔታ ተነቧል (ከመስመር %s በኋላ)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "አዲስ መዝገቦችን በማካሄድ ላይ (የታሪክ ፋይልን በየ %s የመዝገብ ግቤቶች በማዘመን)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "በመጨረሻ የተታወሰው መዝገብ ቀጥታ መዳረሻ በሌላ መዝገብ ላይ ወደቀ።"
+
+msgid "So searching new records from beginning of log file"
+msgstr "ስለዚህ አዲስ መዝገቦችን ከመዝገብ ፋይሉ መጀመሪያ ጀምሮ በመፈለግ ላይ"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "በመጨረሻ የተታወሰው መዝገብ ቀጥታ መዳረሻ ከፋይሉ ውጭ ነው።"
+
+msgid "So searching it from beginning of log file"
+msgstr "ስለዚህ ከመዝገብ ፋይሉ መጀመሪያ ጀምሮ በመፈለግ ላይ"
+
+msgid "Searching new records from beginning of log file"
+msgstr "አዲስ መዝገቦችን ከመዝገብ ፋይሉ መጀመሪያ ጀምሮ በመፈለግ ላይ"
+
+msgid "Saving the log to the data file"
+msgstr "መዝገቡን ወደ ውሂብ ፋይል በማስቀመጥ ላይ"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (የተጎበኙ ምንጮች ብዛት የ %s ማስቀመጫ ገደብ ላይ ደርሷል)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (የURLዎች ብዛት የ %s ማስቀመጫ ገደብ ላይ ደርሷል)"
+
+msgid "Jumped lines in file: %s"
+msgstr "በፋይሉ ውስጥ የተዘለሉ መስመሮች፡ %s"
+
+msgid "Found %s already parsed records"
+msgstr "%s አስቀድመው የተተነተኑ መዝገቦች ተገኝተዋል"
+
+msgid "Parsed lines in file: %s"
+msgstr "በፋይሉ ውስጥ የተተነተኑ መስመሮች፡ %s"
+
+msgid "Found %s dropped records"
+msgstr "%s የተጣሉ መዝገቦች ተገኝተዋል"
+
+msgid "Found %s comments"
+msgstr "%s አስተያየቶች ተገኝተዋል"
+
+msgid "Found %s blank records"
+msgstr "%s ባዶ መዝገቦች ተገኝተዋል"
+
+msgid "Found %s corrupted records"
+msgstr "%s የተበላሹ መዝገቦች ተገኝተዋል"
+
+msgid "Found %s old records"
+msgstr "%s አሮጌ መዝገቦች ተገኝተዋል"
+
+msgid "Found %s new data records"
+msgstr "%s አዲስ የውሂብ መዝገቦች ተገኝተዋል"
+
+msgid "All updates completed!"
+msgstr "ሁሉም ማዘመኛዎች ተጠናቅቀዋል!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "ማስታወሻ፡ የHostAliases ግቤት አልተዋቀረም (ለጣቢያው ተጨማሪ የጎራ አሊያሶችን ለመወሰን ይጠቅማል፣ ነባሪው ባዶ ነው)።"
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "ስርዓቱ በራስ-ሰር ነባሪ እሴቶችን አክሏል፡ localhost፣ 127.0.0.1፣ ::1።"
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "ሌሎች የጎራ አሊያሶችን ለመጨመር፣ እባክዎ በማዋቀሪያ ፋይሉ ውስጥ HostAliases ያዘጋጁ፣ እና የዌብ አገልጋዩ (ለምሳሌ Apache፣ Nginx) የጣቢያ ማዋቀሪያ በዚሁ መሰረት መዘመኑን ያረጋግጡ።"
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "ለምሳሌ፣ ጣቢያው example.com እና www.example.com ሁለቱንም የሚጠቀም ከሆነ፣ HostAliases=\"www\" ብለው ማዋቀር ይችላሉ።"
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats የቡድን ማዘመኛ %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "የቅጂ መብት (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "በ GNU አጠቃላይ የህዝብ ፈቃድ ስር ፈቅዷል"
+
+msgid "DESCRIPTION"
+msgstr "መግለጫ"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall የተገኙትን ሁሉንም የ AWStats ማዋቀሪያ ፋይሎች በራስ-ሰር ያዘምናል"
+
+msgid "in a specified directory (default: %s)."
+msgstr "በተጠቀሰው ማውጫ ውስጥ (ነባሪ፡ %s)።"
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "ይህ የጊዜ ሰሌዳ የ cron ስራዎችን ለማዘጋጀት ጠቃሚ ነው።"
+
+msgid "USAGE"
+msgstr "አጠቃቀም"
+
+msgid "OPTIONS"
+msgstr "አማራጮች"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    የawstats.pl መንገድ (ከተተወ በራስ-ሰር ይመረመራል)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       የተጠቀሰውን ጎራ ብቻ ያዘምኑ"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       የማዋቀሪያ ፋይሎችን የያዘ ማውጫ (ነባሪ፡ /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    ማዋቀሪያዎችን በስም አስወግድ (በኮማ የተለያዩ)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             የውጤት ቋንቋ (en-ca፣ en-gb፣ en-us፣ zh-cn፣ zh-tw፣ de፣ fr ወዘተ)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             የማረሚያ ውጤትን አንቃ (N ሲጨምር የበለጠ ዝርዝር ይሆናል)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  ለሁሉም ማዘመኛዎች የ LastLine እሴት ያዘጋጁ"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            ይህን የእርዳታ መልዕክት አሳይ"
+
+msgid "EXAMPLES"
+msgstr "ምሳሌዎች"
+
+msgid "Update all sites"
+msgstr "ሁሉንም ጣቢያዎች ያዘምኑ"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "በሚፈልጉት ቋንቋ የመረጃ ፋይል አስተያየቶችን ያመንጩ"
+
+msgid "Example:"
+msgstr "ምሳሌ፡"
+
+msgid "Update only one specific site"
+msgstr "አንድ የተወሰነ ጣቢያ ብቻ ያዘምኑ"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "ሁሉንም ጣቢያዎች በብጁ የ AWStats መንገድ ያዘምኑ (ለምሳሌ ምናባዊ አስተናጋጆችን ወይም ብጁ የ awstats.pl ቦታን ሲጠቀሙ)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "ከ awstats.example.com.conf በስተቀር ሁሉንም ጣቢያዎች ያዘምኑ"
+
+msgid "Use custom config directory"
+msgstr "ብጁ የማዋቀሪያ ማውጫ ይጠቀሙ"
+
+msgid "QUICK START"
+msgstr "ፈጣን ጅምር"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update' መጠቅለያ አስቀድሞ ተጭኗል።"
+
+msgid "Simply run:"
+msgstr "በቀላሉ ያሂዱ፡"
+
+msgid "Update single site"
+msgstr "አንድ ጣቢያ ያዘምኑ"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "የተርሚናል ማሳያ ጽሑፍን እና የመዝገብ መዝገቦችን በሚፈልጉት ቋንቋ ያውጡ"
+
+msgid "Log file: %s"
+msgstr "የመዝገብ ፋይል፡ %s"
+
+msgid "Show help"
+msgstr "እርዳታ አሳይ"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "የ awstats_updateall.pl ን ሙሉ መንገድ መተየብ አያስፈልግም።"
+
+msgid "PERIODIC TASK"
+msgstr "ወቅታዊ ተግባር"
+
+msgid "Daily update script:"
+msgstr "የዕለት ተዕለት ማዘመኛ ስክሪፕት፡"
+
+msgid "Cron job:"
+msgstr "የ cron ስራ፡"
+
+msgid "Content:"
+msgstr "ይዘት፡"
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - የላቀ የድር ስታቲስቲክስ"
 

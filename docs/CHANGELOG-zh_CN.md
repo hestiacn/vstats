@@ -5,6 +5,23 @@
 ⚠️ **AWStats 8.0 将是原作者(Laurent Destailleur)维护的最后一个版本，后续版本由社区维护。**
 
 ## 🚀 8.x 系列(2026-latest)
+### 8.1.1 - 2026-10-13
+
+- 新增：历史 `txt` 数据文件自动压缩为 `gz`，减少磁盘占用 (#2)
+- 更新：`tools/awstats_updateall.pl` 新增 `-lang=` 参数，可指定本地化语言（见[语言支持](#语言支持)）和 `-h`（打印帮助）选项 (#4)
+
+用法：
+```bash
+awstats-update now -lang=LL -config=mydomain
+```
+或者
+```bash
+/usr/share/awstats/tools/awstats_updateall.pl now -lang=LL -config=mydomain
+```
+
+- 英语按地区拆分：`en` 作为 `en-us` 别名，新增 `en-gb`、`en-ca` (#3)
+- 新增语言文件 `awstats-en-gb.po`、`awstats-en-ca.po`
+- 修复文件权限，使用 Web 服务的实际用户和用户组，需要在配置文件将`SaveDatabaseFilesWithPermissionsForEveryone=0`改为`1`
 
 ### 8.1 - 2026-05-10
 
@@ -127,81 +144,83 @@ StatsUrl="/vstats"                     # AWStats 部署的 Web 路径 用于导�
 
 - 超过300 KB 的语言文件包含完整的本地化语言文档。
 
-| 语言 | 国家/地区 | 旧版格式(Legacy)| 新版格式(Modern)| 更新类型 | 文件大小 | 语言标签(BCP 47)|
+| 语言 | 国家/地区 | 旧版格式(Legacy) | 新版格式(Modern) | 更新类型 | 文件大小 | 语言标签(BCP 47) |
 |:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-| 阿尔巴尼亚语 | 阿尔巴尼亚(Shqipëria)| - | `awstats-sq.po` | ✨ 新增 | 129 KB | BCP 47: `sq` |
-| 阿姆哈拉语 | 埃塞俄比亚(ኢትዮጵያ)| - | `awstats-am.po` | ✨ 新增 | 164 KB | BCP 47: `am` |
-| 阿塞拜疆语 | 阿塞拜疆(Azərbaycan)| - | `awstats-az.po` | ✨ 新增 | 132 KB | BCP 47: `az` |
-| 阿拉伯语 | 阿拉伯国家联盟(الجامعة العربية)| `awstats-ar.txt` | `awstats-ar.po` | 🔄 格式升级 | 678 KB | BCP 47: `ar` |
-| 爱尔兰语 | 爱尔兰(Éire)| - | `awstats-ga.po` | ✨ 新增 | 128 KB | BCP 47: `ga` |
-| 爱沙尼亚语 | 爱沙尼亚(Eesti)| `awstats-et.txt` | `awstats-et.po` | 🔄 格式升级 | 123 KB | BCP 47: `et` |
-| 巴斯克语 | 西班牙/法国(Euskal Herria)| `awstats-eu.txt` | `awstats-eu.po` | 🔄 格式升级 | 126 KB | BCP 47: `eu` |
-| 巴西葡萄牙语 | 巴西(Brasil)| - | `awstats-pt-br.po` | ✨ 新增 | 125 KB | BCP 47: `pt-br` |
-| 保加利亚语 | 保加利亚(България)| `awstats-bg.txt` | `awstats-bg.po` | 🔄 格式升级 | 175 KB | BCP 47: `bg` |
-| 冰岛语 | 冰岛(Ísland)| - | `awstats-is.po` | ✨ 新增 | 121 KB | BCP 47: `is` |
-| 波兰语 | 波兰(Polska)| `awstats-pl.txt` | `awstats-pl.po` | 🔄 格式升级 | 124 KB | BCP 47: `pl` |
-| 波斯尼亚语 | 波黑(Bosna i Hercegovina)| `awstats-ba.txt` | `awstats-bs.po` | 🔄 重新添加 | 125 KB | BCP 47: `bs`(原代码 `ba` 为国家代码,→ 修正为语言代码 `bs`)|
-| 波斯语 | 伊朗(ایران)| - | `awstats-fa.po` | ✨ 新增 | 157 KB | BCP 47: `fa` |
-| 布列塔尼语 | 法国布列塔尼(Breizh)| `awstats-br.txt` | `awstats-br.po` | 🔄 格式升级 | 124 KB | BCP 47: `br` |
-| 丹麦语 | 丹麦(Danmark)| `awstats-dk.txt` | `awstats-da.po` | 🔄 格式升级+重命名 | 120 KB | BCP 47: `da`(原代码 `dk` 为国家代码,→ 修正为语言代码 `da`)|
-| 德语 | 德国(Deutschland)| `awstats-de.txt` | `awstats-de.po` | 🔄 格式升级 | 127 KB | BCP 47: `de` |
-| 俄语 | 俄罗斯(Россия)| `awstats-ru.txt` | `awstats-ru.po` | 🔄 格式升级 | 764 KB | BCP 47: `ru` |
-| 法语 | 法国(France)| `awstats-fr.txt` | `awstats-fr.po` | 🔄 格式升级 | 591 KB | BCP 47: `fr` |
-| 芬兰语 | 芬兰(Suomi)| `awstats-fi.txt` | `awstats-fi.po` | 🔄 格式升级 | 124 KB | BCP 47: `fi` |
-| 高棉语 | 柬埔寨(កម្ពុជា)| - | `awstats-km.po` | ✨ 新增 | 219 KB | BCP 47: `km` |
-| 荷兰语 | 荷兰(Nederland)| `awstats-nl.txt` | `awstats-nl.po` | 🔄 格式升级 | 573 KB | BCP 47: `nl` |
-| 加利西亚语 | 西班牙加利西亚(Galicia)| `awstats-gl.txt` | `awstats-gl.po` | 🔄 格式升级 | 129 KB | BCP 47: `gl` |
-| 加泰罗尼亚语 | 西班牙/法国(Catalunya)| `awstats-ca.txt` | `awstats-ca.po` | 🔄 格式升级 | 130 KB | BCP 47: `ca` |
-| 捷克语 | 捷克(Česko)| `awstats-cz.txt` | `awstats-cs.po` | 🔄 格式升级+重命名 | 127 KB | BCP 47: `cs`(原代码 `cz` 为国家代码,→ 修正为语言代码 `cs`)|
-| 格鲁吉亚语 | 格鲁吉亚(საქართველო)| - | `awstats-ka.po` | ✨ 新增 | 226 KB | BCP 47: `ka` |
-| 韩语 | 韩国(한국)| `awstats-ko.txt` | `awstats-ko.po` | 🔄 格式升级 | 568 KB | BCP 47: `ko` |
-| 卡纳达语 | 印度卡纳塔克邦(ಕನ್ನಡ)| - | `awstats-kn.po` | ✨ 新增 | 222 KB | BCP 47: `kn` |
-| 哈萨克语 | 哈萨克斯坦(Қазақстан)| - | `awstats-kk.po` | ✨ 新增 | 169 KB | BCP 47: `kk` |
-| 克罗地亚语 | 克罗地亚(Hrvatska)| `awstats-hr.txt` | `awstats-hr.po` | 🔄 格式升级 | 123 KB | BCP 47: `hr` |
-| 拉脱维亚语 | 拉脱维亚(Latvija)| `awstats-lv.txt` | `awstats-lv.po` | 🔄 格式升级 | 127 KB | BCP 47: `lv` |
-| 老挝语 | 老挝(ປະເທດລາວ)| - | `awstats-lo.po` | ✨ 新增 | 202 KB | BCP 47: `lo` |
-| 立陶宛语 | 立陶宛(Lietuva)| `awstats-lt.txt` | `awstats-lt.po` | 🔄 格式升级 | 129 KB | BCP 47: `lt` |
-| 罗马尼亚语 | 罗马尼亚(România)| `awstats-ro.txt` | `awstats-ro.po` | 🔄 格式升级 | 126 KB | BCP 47: `ro` |
-| 马拉地语 | 印度马哈拉施特拉邦(मराठी)| - | `awstats-mr.po` | ✨ 新增 | 205 KB | BCP 47: `mr` |
-| 马拉雅拉姆语 | 印度喀拉拉邦(മലയാളം)| - | `awstats-ml.po` | ✨ 新增 | 237 KB | BCP 47: `ml` |
-| 马来语 | 马来西亚/印尼(Malaysia/Indonesia)| - | `awstats-ms.po` | ✨ 新增 | 119 KB | BCP 47: `ms` |
-| 马其顿语 | 北马其顿(Северна Македонија)| - | `awstats-mk.po` | ✨ 新增 | 162 KB | BCP 47: `mk` |
-| 孟加拉语 | 孟加拉国(বাংলাদেশ)| - | `awstats-bn.po` | ✨ 新增 | 214 KB | BCP 47: `bn` |
-| 蒙古语 | 蒙古(Монгол улс)| - | `awstats-mn.po` | ✨ 新增 | 169 KB | BCP 47: `mn` |
-| 缅甸语 | 缅甸(မြန်မာ)| - | `awstats-my.po` | ✨ 新增 | 250 KB | BCP 47: `my` |
-| 尼泊尔语 | 尼泊尔(नेपाल)| - | `awstats-ne.po` | ✨ 新增 | 210 KB | BCP 47: `ne` |
-| 挪威语(书面)| 挪威(Norge)| `awstats-no.txt` | `awstats-nb.po` | 🔄 格式升级+重命名 | 115 KB | BCP 47: `nb`(原宏语言代码 `no` 细化为书面变体 `nb`,→ 博克马尔)|
-| 挪威语(新)| 挪威(Noreg)| - | `awstats-nn.po` | ✨ 新增 | 115 KB | BCP 47: `nn`(尼诺斯克,→ 新挪威语变体)|
-| 旁遮普语 | 印度/巴基斯坦(ਪੰਜਾਬ)| - | `awstats-pa.po` | ✨ 新增 | 198 KB | BCP 47: `pa` |
-| 葡萄牙语 | 葡萄牙(Portugal)| `awstats-pt.txt` | `awstats-pt.po` | 🔄 格式升级 | 125 KB | BCP 47: `pt`(欧洲葡萄牙语)|
-| 日语 | 日本(日本)| `awstats-jp.txt` | `awstats-ja.po` | 🔄 格式升级+重命名 | 635 KB | BCP 47: `ja`(原代码 `jp` 为国家代码,→ 修正为语言代码 `ja`)|
-| 瑞典语 | 瑞典(Sverige)| `awstats-sv.txt` | `awstats-sv.po` | 🔄 格式升级 | 119 KB | BCP 47: `sv` |
-| 塞尔维亚语 | 塞尔维亚(Србија)| `awstats-sr.txt` | `awstats-sr.po` | 🔄 格式升级 | 166 KB | BCP 47: `sr`(西里尔文)|
-| 塞尔维亚语(拉丁)| 塞尔维亚(Srbija)| - | `awstats-sr-latn.po` | ✨ 新增 | 122 KB | BCP 47: `sr-latn`(西里尔文的拉丁转写变体)|
-| 僧伽罗语 | 斯里兰卡(ශ්‍රී ලංකාව)| - | `awstats-si.po` | ✨ 新增 | 212 KB | BCP 47: `si` |
-| 斯洛伐克语 | 斯洛伐克(Slovensko)| `awstats-sk.txt` | `awstats-sk.po` | 🔄 格式升级 | 126 KB | BCP 47: `sk` |
-| 斯洛文尼亚语 | 斯洛文尼亚(Slovenija)| `awstats-si.txt` | `awstats-sl.po` | 🔄 格式升级+重命名 | 124 KB | BCP 47: `sl`(原错误代码 `si` 为国家代码斯洛文尼亚,→ 修正为语言代码 `sl`)|
-| 泰米尔语 | 印度/斯里兰卡(தமிழ்)| - | `awstats-ta.po` | ✨ 新增 | 236 KB | BCP 47: `ta` |
-| 泰卢固语 | 印度特伦甘纳邦(తెలుగు)| - | `awstats-te.po` | ✨ 新增 | 222 KB | BCP 47: `te` |
-| 泰语 | 泰国(ประเทศไทย)| `awstats-th.txt` | `awstats-th.po` | 🔄 格式升级 | 202 KB | BCP 47: `th` |
-| 他加禄语 | 菲律宾(Pilipinas)| `awstats-tg.txt` | `awstats-tl.po` | 🔄 格式升级+重命名 | 130 KB | BCP 47: `tl`(原错误代码 `tg` 为塔吉克语,→ 修正为 `tl`)|
-| 土耳其语 | 土耳其(Türkiye)| `awstats-tr.txt` | `awstats-tr.po` | 🔄 格式升级 | 127 KB | BCP 47: `tr` |
-| 威尔士语 | 英国威尔士(Cymru)| `awstats-cy.txt` | `awstats-cy.po` | 🔄 格式升级 | 124 KB | BCP 47: `cy` |
-| 乌克兰语 | 乌克兰(Україна)| - | `awstats-uk.po` | ✨ 新增 | 172 KB | BCP 47: `uk` |
-| 维吾尔语 | 中国新疆(شىنجاڭ)| - | `awstats-ug.po` | ✨ 新增 | 176 KB | BCP 47: `ug` |
-| 乌尔都语 | 巴基斯坦(پاکستان)| - | `awstats-ur.po` | ✨ 新增 | 158 KB | BCP 47: `ur` |
-| 乌兹别克语 | 乌兹别克斯坦(Oʻzbekiston)| - | `awstats-uz.po` | ✨ 新增 | 128 KB | BCP 47: `uz` |
-| 西班牙语 | 西班牙(España)| `awstats-es.txt` | `awstats-es.po` | 🔄 格式升级 | 130 KB | BCP 47: `es` |
-| 希伯来语 | 以色列(ישראל)| - | `awstats-he.po` | ✨ 新增 | 140 KB | BCP 47: `he` |
-| 希腊语 | 希腊(Ελλάδα)| `awstats-gr.txt` | `awstats-el.po` | 🔄 格式升级+重命名 | 184 KB | BCP 47: `el`(原代码 `gr` 为国家代码,→ 修正为语言代码 `el`)|
-| 匈牙利语 | 匈牙利(Magyarország)| `awstats-hu.txt` | `awstats-hu.po` | 🔄 格式升级 | 130 KB | BCP 47: `hu` |
-| 印地语 | 印度(भारत)| - | `awstats-hi.po` | ✨ 新增 | 204 KB | BCP 47: `hi` |
-| 印尼语 | 印度尼西亚(Indonesia)| `awstats-id.txt` | `awstats-id.po` | 🔄 格式升级 | 122 KB | BCP 47: `id` |
-| 英语 | 英美等(UK/USA)| `awstats-en.txt` | `awstats-en.po` | 🔄 格式升级 | 527 KB | BCP 47: `en` |
-| 意大利语 | 意大利(Italia)| `awstats-it.txt` | `awstats-it.po` | 🔄 格式升级 | 128 KB | BCP 47: `it` |
-| 越南语 | 越南(Việt Nam)| `awstats-vi.txt` | `awstats-vi.po` | 🔄 格式升级 | 136 KB | BCP 47: `vi` |
-| 简体中文 | 中国(中国)新加坡、马来西亚<br>(含国际组织与全球华人社区)| `awstats-cn.txt` | `awstats-zh-cn.po` | 🔄 格式升级+重命名 | 519 KB | BCP 47: `zh-CN`(原代码 `cn` 为国家代码,→ 修正为 `zh-cn`)|
-| 繁体中文 | 台湾(臺灣)香港、澳门<br>及海外华人传统社区 | `awstats-tw.txt` | `awstats-zh-tw.po` | 🔄 格式升级+重命名 | 523 KB | BCP 47: `zh-TW`(原代码 `tw` 为国家代码,→ 修正为 `zh-tw`)|
+| 阿尔巴尼亚语 | 阿尔巴尼亚(Shqipëria) | - | `awstats-sq.po` | ✨ 新增 | 157 KB | BCP 47: `sq` |
+| 阿姆哈拉语 | 埃塞俄比亚(ኢትዮጵያ) | - | `awstats-am.po` | ✨ 新增 | 198 KB | BCP 47: `am` |
+| 阿塞拜疆语 | 阿塞拜疆(Azərbaycan) | - | `awstats-az.po` | ✨ 新增 | 156 KB | BCP 47: `az` |
+| 阿拉伯语 | 阿拉伯国家联盟(الجامعة العربية) | `awstats-ar.txt` | `awstats-ar.po` | 🔄 格式升级 | 694 KB | BCP 47: `ar` |
+| 爱尔兰语 | 爱尔兰(Éire) | - | `awstats-ga.po` | ✨ 新增 | 153 KB | BCP 47: `ga` |
+| 爱沙尼亚语 | 爱沙尼亚(Eesti) | `awstats-et.txt` | `awstats-et.po` | 🔄 格式升级 | 144 KB | BCP 47: `et` |
+| 巴斯克语 | 西班牙/法国(Euskal Herria) | `awstats-eu.txt` | `awstats-eu.po` | 🔄 格式升级 | 147 KB | BCP 47: `eu` |
+| 巴西葡萄牙语 | 巴西(Brasil) | - | `awstats-pt-br.po` | ✨ 新增 | 151 KB | BCP 47: `pt-br` |
+| 保加利亚语 | 保加利亚(България) | `awstats-bg.txt` | `awstats-bg.po` | 🔄 格式升级 | 215 KB | BCP 47: `bg` |
+| 冰岛语 | 冰岛(Ísland) | - | `awstats-is.po` | ✨ 新增 | 141 KB | BCP 47: `is` |
+| 波兰语 | 波兰(Polska) | `awstats-pl.txt` | `awstats-pl.po` | 🔄 格式升级 | 149 KB | BCP 47: `pl` |
+| 波斯尼亚语 | 波黑(Bosna i Hercegovina) | `awstats-ba.txt` | `awstats-bs.po` | 🔄 重新添加 | 147 KB | BCP 47: `bs`(原代码 `ba` 为国家代码,→ 修正为语言代码 `bs`) |
+| 波斯语 | 伊朗(ایران) | - | `awstats-fa.po` | ✨ 新增 | 188 KB | BCP 47: `fa` |
+| 布列塔尼语 | 法国布列塔尼(Breizh) | `awstats-br.txt` | `awstats-br.po` | 🔄 格式升级 | 146 KB | BCP 47: `br` |
+| 丹麦语 | 丹麦(Danmark) | `awstats-dk.txt` | `awstats-da.po` | 🔄 格式升级+重命名 | 138 KB | BCP 47: `da`(原代码 `dk` 为国家代码,→ 修正为语言代码 `da`) |
+| 德语 | 德国(Deutschland) | `awstats-de.txt` | `awstats-de.po` | 🔄 格式升级 | 148 KB | BCP 47: `de` |
+| 俄语 | 俄罗斯(Россия) | `awstats-ru.txt` | `awstats-ru.po` | 🔄 格式升级 | 805 KB | BCP 47: `ru` |
+| 法语 | 法国(France) | `awstats-fr.txt` | `awstats-fr.po` | 🔄 格式升级 | 612 KB | BCP 47: `fr` |
+| 芬兰语 | 芬兰(Suomi) | `awstats-fi.txt` | `awstats-fi.po` | 🔄 格式升级 | 148 KB | BCP 47: `fi` |
+| 高棉语 | 柬埔寨(កម្ពុជា) | - | `awstats-km.po` | ✨ 新增 | 281 KB | BCP 47: `km` |
+| 荷兰语 | 荷兰(Nederland) | `awstats-nl.txt` | `awstats-nl.po` | 🔄 格式升级 | 585 KB | BCP 47: `nl` |
+| 加利西亚语 | 西班牙加利西亚(Galicia) | `awstats-gl.txt` | `awstats-gl.po` | 🔄 格式升级 | 152 KB | BCP 47: `gl` |
+| 加泰罗尼亚语 | 西班牙/法国(Catalunya) | `awstats-ca.txt` | `awstats-ca.po` | 🔄 格式升级 | 141 KB | BCP 47: `ca` |
+| 捷克语 | 捷克(Česko) | `awstats-cz.txt` | `awstats-cs.po` | 🔄 格式升级+重命名 | 152 KB | BCP 47: `cs`(原代码 `cz` 为国家代码,→ 修正为语言代码 `cs`) |
+| 格鲁吉亚语 | 格鲁吉亚(საქართველო) | - | `awstats-ka.po` | ✨ 新增 | 286 KB | BCP 47: `ka` |
+| 韩语 | 韩国(한국) | `awstats-ko.txt` | `awstats-ko.po` | 🔄 格式升级 | 583 KB | BCP 47: `ko` |
+| 卡纳达语 | 印度卡纳塔克邦(ಕನ್ನಡ) | - | `awstats-kn.po` | ✨ 新增 | 275 KB | BCP 47: `kn` |
+| 哈萨克语 | 哈萨克斯坦(Қазақстан) | - | `awstats-kk.po` | ✨ 新增 | 207 KB | BCP 47: `kk` |
+| 克罗地亚语 | 克罗地亚(Hrvatska) | `awstats-hr.txt` | `awstats-hr.po` | 🔄 格式升级 | 145 KB | BCP 47: `hr` |
+| 拉脱维亚语 | 拉脱维亚(Latvija) | `awstats-lv.txt` | `awstats-lv.po` | 🔄 格式升级 | 152 KB | BCP 47: `lv` |
+| 老挝语 | 老挝(ປະເທດລາວ) | - | `awstats-lo.po` | ✨ 新增 | 255 KB | BCP 47: `lo` |
+| 立陶宛语 | 立陶宛(Lietuva) | `awstats-lt.txt` | `awstats-lt.po` | 🔄 格式升级 | 151 KB | BCP 47: `lt` |
+| 罗马尼亚语 | 罗马尼亚(România) | `awstats-ro.txt` | `awstats-ro.po` | 🔄 格式升级 | 151 KB | BCP 47: `ro` |
+| 马拉地语 | 印度马哈拉施特拉邦(मराठी) | - | `awstats-mr.po` | ✨ 新增 | 259 KB | BCP 47: `mr` |
+| 马拉雅拉姆语 | 印度喀拉拉邦(മലയാളം) | - | `awstats-ml.po` | ✨ 新增 | 299 KB | BCP 47: `ml` |
+| 马来语 | 马来西亚/印尼(Malaysia/Indonesia) | - | `awstats-ms.po` | ✨ 新增 | 143 KB | BCP 47: `ms` |
+| 马其顿语 | 北马其顿(Северна Македонија) | - | `awstats-mk.po` | ✨ 新增 | 205 KB | BCP 47: `mk` |
+| 孟加拉语 | 孟加拉国(বাংলাদেশ) | - | `awstats-bn.po` | ✨ 新增 | 269 KB | BCP 47: `bn` |
+| 蒙古语 | 蒙古(Монгол улс) | - | `awstats-mn.po` | ✨ 新增 | 205 KB | BCP 47: `mn` |
+| 缅甸语 | 缅甸(မြန်မာ) | - | `awstats-my.po` | ✨ 新增 | 277 KB | BCP 47: `my` |
+| 尼泊尔语 | 尼泊尔(नेपाल) | - | `awstats-ne.po` | ✨ 新增 | 255 KB | BCP 47: `ne` |
+| 挪威语(书面) | 挪威(Norge) | `awstats-no.txt` | `awstats-nb.po` | 🔄 格式升级+重命名 | 137 KB | BCP 47: `nb`(原宏语言代码 `no` 细化为书面变体 `nb`,→ 博克马尔) |
+| 挪威语(新) | 挪威(Noreg) | - | `awstats-nn.po` | ✨ 新增 | 139 KB | BCP 47: `nn`(尼诺斯克,→ 新挪威语变体) |
+| 旁遮普语 | 印度/巴基斯坦(ਪੰਜਾਬ) | - | `awstats-pa.po` | ✨ 新增 | 247 KB | BCP 47: `pa` |
+| 葡萄牙语 | 葡萄牙(Portugal) | `awstats-pt.txt` | `awstats-pt.po` | 🔄 格式升级 | 151 KB | BCP 47: `pt`(欧洲葡萄牙语) |
+| 日语 | 日本(日本) | `awstats-jp.txt` | `awstats-ja.po` | 🔄 格式升级+重命名 | 651 KB | BCP 47: `ja`(原代码 `jp` 为国家代码,→ 修正为语言代码 `ja`) |
+| 瑞典语 | 瑞典(Sverige) | `awstats-sv.txt` | `awstats-sv.po` | 🔄 格式升级 | 142 KB | BCP 47: `sv` |
+| 塞尔维亚语 | 塞尔维亚(Србија) | `awstats-sr.txt` | `awstats-sr.po` | 🔄 格式升级 | 208 KB | BCP 47: `sr`(西里尔文) |
+| 塞尔维亚语(拉丁) | 塞尔维亚(Srbija) | - | `awstats-sr-latn.po` | ✨ 新增 | 146 KB | BCP 47: `sr-latn`(西里尔文的拉丁转写变体) |
+| 僧伽罗语 | 斯里兰卡(ශ්‍රී ලංකාව) | - | `awstats-si.po` | ✨ 新增 | 260 KB | BCP 47: `si` |
+| 斯洛伐克语 | 斯洛伐克(Slovensko) | `awstats-sk.txt` | `awstats-sk.po` | 🔄 格式升级 | 151 KB | BCP 47: `sk` |
+| 斯洛文尼亚语 | 斯洛文尼亚(Slovenija) | `awstats-si.txt` | `awstats-sl.po` | 🔄 格式升级+重命名 | 147 KB | BCP 47: `sl`(原错误代码 `si` 为国家代码斯洛文尼亚,→ 修正为语言代码 `sl`) |
+| 泰米尔语 | 印度/斯里兰卡(தமிழ்) | - | `awstats-ta.po` | ✨ 新增 | 295 KB | BCP 47: `ta` |
+| 泰卢固语 | 印度特伦甘纳邦(తెలుగు) | - | `awstats-te.po` | ✨ 新增 | 281 KB | BCP 47: `te` |
+| 泰语 | 泰国(ประเทศไทย) | `awstats-th.txt` | `awstats-th.po` | 🔄 格式升级 | 258 KB | BCP 47: `th` |
+| 他加禄语 | 菲律宾(Pilipinas) | `awstats-tg.txt` | `awstats-tl.po` | 🔄 格式升级+重命名 | 153 KB | BCP 47: `tl`(原错误代码 `tg` 为塔吉克语,→ 修正为 `tl`) |
+| 土耳其语 | 土耳其(Türkiye) | `awstats-tr.txt` | `awstats-tr.po` | 🔄 格式升级 | 150 KB | BCP 47: `tr` |
+| 威尔士语 | 英国威尔士(Cymru) | `awstats-cy.txt` | `awstats-cy.po` | 🔄 格式升级 | 143 KB | BCP 47: `cy` |
+| 乌克兰语 | 乌克兰(Україна) | - | `awstats-uk.po` | ✨ 新增 | 210 KB | BCP 47: `uk` |
+| 维吾尔语 | 中国新疆(شىنجاڭ) | - | `awstats-ug.po` | ✨ 新增 | 215 KB | BCP 47: `ug` |
+| 乌尔都语 | 巴基斯坦(پاکستان) | - | `awstats-ur.po` | ✨ 新增 | 193 KB | BCP 47: `ur` |
+| 乌兹别克语 | 乌兹别克斯坦(Oʻzbekiston) | - | `awstats-uz.po` | ✨ 新增 | 153 KB | BCP 47: `uz` |
+| 西班牙语 | 西班牙(España) | `awstats-es.txt` | `awstats-es.po` | 🔄 格式升级 | 155 KB | BCP 47: `es` |
+| 希伯来语 | 以色列(ישראל) | - | `awstats-he.po` | ✨ 新增 | 169 KB | BCP 47: `he` |
+| 希腊语 | 希腊(Ελλάδα) | `awstats-gr.txt` | `awstats-el.po` | 🔄 格式升级+重命名 | 223 KB | BCP 47: `el`(原代码 `gr` 为国家代码,→ 修正为语言代码 `el`) |
+| 匈牙利语 | 匈牙利(Magyarország) | `awstats-hu.txt` | `awstats-hu.po` | 🔄 格式升级 | 153 KB | BCP 47: `hu` |
+| 印地语 | 印度(भारत) | - | `awstats-hi.po` | ✨ 新增 | 251 KB | BCP 47: `hi` |
+| 印尼语 | 印度尼西亚(Indonesia) | `awstats-id.txt` | `awstats-id.po` | 🔄 格式升级 | 144 KB | BCP 47: `id` |
+| 英语（美国） | 美国(USA) | `awstats-en.txt` | `awstats-en-us.po` | 🔄 格式升级 | 538 KB | BCP 47: `en-us` |
+| 英语（加拿大） | 加拿大(Canada) | - | `awstats-en-ca.po` | ✨ 新增 | 135 KB | BCP 47: `en-ca` |
+| 英语（英国） | 英国(UK) | - | `awstats-en-gb.po` | ✨ 新增 | 135 KB | BCP 47: `en-gb` |
+| 意大利语 | 意大利(Italia) | `awstats-it.txt` | `awstats-it.po` | 🔄 格式升级 | 152 KB | BCP 47: `it` |
+| 越南语 | 越南(Việt Nam) | `awstats-vi.txt` | `awstats-vi.po` | 🔄 格式升级 | 167 KB | BCP 47: `vi` |
+| 简体中文 | 中国(中国)新加坡、马来西亚<br>(含国际组织与全球华人社区) | `awstats-cn.txt` | `awstats-zh-cn.po` | 🔄 格式升级+重命名 | 527 KB | BCP 47: `zh-CN`(原代码 `cn` 为国家代码,→ 修正为 `zh-cn`) |
+| 繁体中文 | 台湾(臺灣)香港、澳门<br>及海外华人传统社区 | `awstats-tw.txt` | `awstats-zh-tw.po` | 🔄 格式升级+重命名 | 532 KB | BCP 47: `zh-TW`(原代码 `tw` 为国家代码,→ 修正为 `zh-tw`) |
 
 #### 完整本地化(界面 + 文档)
 
@@ -209,7 +228,9 @@ StatsUrl="/vstats"                     # AWStats 部署的 Web 路径 用于导�
 
 | 语言 | 代码 | 界面 | 文档 |
 |:----:|:----:|:----:|:----:|
-| 英文 | en | ✅ | ✅ |
+| 英文 | en-ca | ✅ | ❌ |
+| 英文 | en-gb | ✅ | ❌ |
+| 英文 | en-us | ✅ | ✅ |
 | 简体中文 | zh-cn | ✅ | ✅ |
 | 繁体中文 | zh-tw | ✅ | ✅ |
 | 俄语 | ru | ✅ | ✅ |
@@ -241,7 +262,7 @@ StatsUrl="/vstats"                     # AWStats 部署的 Web 路径 用于导�
 
 这种习惯养成以后，您会发现很多小感冒甚至不需要去医院，仅靠多喝热水、多休息就能实现自我修复。这不仅能改善您的身体状态，更能让您在处理本地化工作时，感受到文字背后更深层的联系。
 
-| 基础习惯 | 短期体感(Latency)| 长期生命周期(Lifecycle)|
+| 基础习惯 | 短期体感(Latency) | 长期生命周期(Lifecycle) |
 |:---:|:---:|:---:|
 | 冰水 | 解渴快、口感爽 | 胃痛胃胀、消化不良、容易拉肚子、身体乏力 |
 | 热水 | 慢饮温润、入口柔和 | 消化好、代谢稳、手脚不凉、精力足 |
@@ -281,9 +302,9 @@ StatsUrl="/vstats"                     # AWStats 部署的 Web 路径 用于导�
 
 #### 🗺️ 地理位置
 - 🌍 **DB-IP 城市级定位支持**：集成 DB-IP 免费数据库([https://db-ip.com](https://db-ip.com))，提供国家、地区、城市级别的精准访客分布统计,打印的相关数据为英文。
-  - **格式升级**：从旧版 `.dat`(GeoIP Legacy 文本格式)升级为 `.mmdb`(MaxMind DB 二进制格式)
-  - **旧版痛点**：`.dat` 格式查询速度慢(平均 50-100 微秒)，数据不够完整(约 1MB)，数据多年未更新
-  - **新版优势**：`.mmdb` 格式查询速度快 10 倍以上(平均 3-5 微秒)，文件稍大(约 120MB)，每月更新，支持城市级别定位
+	- **格式升级**：从旧版 `.dat`(GeoIP Legacy 文本格式)升级为 `.mmdb`(MaxMind DB 二进制格式)
+	- **旧版痛点**：`.dat` 格式查询速度慢(平均 50-100 微秒)，数据不够完整(约 1MB)，数据多年未更新
+	- **新版优势**：`.mmdb` 格式查询速度快 10 倍以上(平均 3-5 微秒)，文件稍大(约 120MB)，每月更新，支持城市级别定位
 
 - 📊 **增强的地理位置显示**：支持显示国家/地区、区域/州、城市三级位置信息，智能处理未知地点(回退到国家代码或 'ip')
 - 🚀 **智能缓存机制**：使用 `%TmpDomainLookup` 缓存已查询 IP，避免重复查询；使用 `%TmpDomainFullLocation` 存储完整位置信息(国家、区域、城市)

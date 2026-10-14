@@ -675,11 +675,26 @@ msgstr "ໄດເລກະທໍລີນີ້ຂາດສິດອ່ານ"
 msgid "Please set read permission for directory"
 msgstr "ກະລຸນາຕັ້ງສິດອ່ານໃຫ້ໄດເລກະທໍລີ"
 
-msgid "Missing required parameter in config file"
-msgstr "ຂາດພາຣາມິເຕີທີ່ຈຳເປັນໃນໄຟລ໌ຄອນຟິກ"
+msgid "No AWStats config file for any site found in %s"
+msgstr "ບໍ່ພົບໄຟລ໌ການຕັ້ງຄ່າ AWStats ສຳລັບເວັບໃດໆໃນ %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "ກະລຸນາກວດສອບວ່າໄດ້ກຳນົດ 'DirData' ຫຼື ບໍ່."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "ໂຟນເດີ '%s' ບໍ່ມີໄຟລ໌ການຕັ້ງຄ່າສຳລັບໂດເມນ '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "ພາລາມິເຕີທີ່ຈຳເປັນຂາດໃນໄຟລ໌ການຕັ້ງຄ່າ \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "ກະລຸນາກວດສອບວ່າເສັ້ນທາງ 'DirData' ຖືກກຳນົດ ແລະ ມີຢູ່."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "ພາລາມິເຕີ LogFile ບໍ່ໄດ້ຖືກກຳນົດໃນໄຟລ໌ການຕັ້ງຄ່າ/ໂດເມນ"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "ພາລາມິເຕີ LogFormat ບໍ່ໄດ້ຖືກກຳນົດໃນໄຟລ໌ການຕັ້ງຄ່າ/ໂດເມນ"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "ພາລາມິເຕີ LogFormat ຜິດໃນໄຟລ໌ການຕັ້ງຄ່າ/ໂດເມນ. ຄ່າແມ່ນ '%s' (ຄວນເປັນ 1, 2, 3, 4, 5 ຫຼື 'ສະຕຣິງຮູບແບບບັນທຶກ AWStats ສ່ວນຕົວ')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "ຊື່ໂດເມນໃນທີ່ຢູ່ບຣາວເຊີປະກົດວ່າຂາດຫາຍໄປ ຫຼື ບໍ່ສົມບູນ"
@@ -1419,8 +1434,8 @@ msgstr "ຖັນເພື່ອຮັບຕຳແໜ່ງໄຟລ໌"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "ຄຳແນະນຳ: ຖ້າທ່ານຕ້ອງການສ້າງໄອຄອນທີ່ກ່ຽວຂ້ອງ ທ່ານສາມາດໃຊ້ %s ເພື່ອອັບໂຫຼດຮູບພາບໂລໂກ້ ແລະມັນຈະສ້າງໄຟລ໌ໄອຄອນທີ່ກ່ຽວຂ້ອງທັງໝົດຂ້າງເທິງໂດຍອັດຕະໂນມັດ"
 
-msgid "200: success, 404: failure"
-msgstr "200 ແມ່ນຈຳນວນຄວາມສຳເລັດ 404 ແມ່ນຈຳນວນຄວາມລົ້ມເຫຼວ"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: ສຳເລັດ, 404: ບໍ່ພົບ, CDN: favicon ທີ່ບໍ່ແມ່ນທ້ອງຖິ່ນ (ໄອຄອນເວັບໄຊ)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1750,8 +1765,8 @@ msgstr "ສະຫຼຸບ IP ທີ່ບໍ່ຮູ້ຈັກທີ່ເ�
 msgid "Failed to obtain IP data"
 msgstr "ສະຫຼຸບ IP ທີ່ຮູ້ຈັກອື່ນໆ"
 
-msgid "Failed to obtain the relevant data"
-msgstr "ບໍ່ໄດ້ຮັບຂໍ້ມູນທີ່ກ່ຽວຂ້ອງ"
+msgid "Monthly Traffic Statistics"
+msgstr "ສະຖິຕິປະລິມານການໃຊ້ງານປະຈຳເດືອນ"
 
 msgid "Limited list of countries and regions"
 msgstr "ປັດຈຸບັນສະແດງພຽງ 10 ແຖວ ກະລຸນາເບິ່ງລາຍຊື່ທັງໝົດສຳລັບປະເທດ ແລະພາກພື້ນເພີ່ມເຕີມ"
@@ -3059,9 +3074,231 @@ msgstr "ຂໍ້ມູນທີ່ບໍ່ສາມາດຈັດໝວດໝ
 msgid "tooltip_21"
 msgstr "ບັນທຶກການໂຈມຕີຂອງແມ່ທ້ອງທີ່ກວດພົບ ແມ່ທ້ອງແມ່ນໂປຣແກຣມທີ່ສ້າງອັນຕະລາຍທີ່ແຜ່ລາມດ້ວຍຕົນເອງ ມັກແຜ່ລາມຜ່ານຊ່ອງໂຕ້ໂຕງຂອງເຄືອຂ່າຍ"
 
-#------------------------------------------------------------------------------
-# ສະແດງຂໍ້ຄວາມຊ່ວຍເຫຼືອ - Community Edition
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "ກຳລັງອັບເດດເວັບໄຊທີ່ກຳນົດ: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "ກຳລັງອັບເດດເວັບໄຊ %s. ຄຳສັ່ງອັບເດດ: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "ກຳລັງປະມວນຜົນບັນທຶກ ແລະ ສ້າງໄຟລ໌ຂໍ້ມູນຈາກໄຟລ໌ການຕັ້ງຄ່າ \"%s\", AWStats ເວີຊັນ %s"
+
+msgid "Updating data, please wait"
+msgstr "ກຳລັງອັບເດດຂໍ້ມູນ, ກະລຸນາລໍຖ້າ"
+
+msgid "done (%s seconds)"
+msgstr "ສຳເລັດ (%s ວິນາທີ)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "ຄຳສັ່ງຫຸ້ມ (ທາງເລືອກ)"
+
+msgid "To run %s without specifying the full path."
+msgstr "ເພື່ອຮັນ %s ໂດຍບໍ່ຕ້ອງລະບຸເສັ້ນທາງເຕັມ."
+
+msgid "Create a wrapper script in %s:"
+msgstr "ສ້າງສະຄຣິບຫຸ້ມໃນ %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "ຄັດລອກ ແລະ ຮັນຄຳສັ່ງຫຸ້ມຕໍ່ໄປນີ້ໃນເທີມິນອນຂອງທ່ານ:"
+
+msgid "Wrapper for %s"
+msgstr "ຫຸ້ມສຳລັບ %s"
+
+msgid "Then make it executable:"
+msgstr "ຈາກນັ້ນເຮັດໃຫ້ມັນສາມາດຮັນໄດ້:"
+
+msgid "You can now run the update using the following command:"
+msgstr "ຕອນນີ້ທ່ານສາມາດຮັນການອັບເດດໂດຍໃຊ້ຄຳສັ່ງຕໍ່ໄປນີ້:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "ຂໍ້ມູນໄຟລ໌ບັນທຶກມາຈາກໄດເລກະຕອຣີ \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "ກຳລັງອ່ານຕຳແໜ່ງຂໍ້ມູນສຸດທ້າຍ ແລະ ກວດສອບຂໍ້ມູນ"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "ອ່ານຕຳແໜ່ງຂໍ້ມູນສຸດທ້າຍສຳເລັດແລ້ວ (ຫຼັງຈາກແຖວທີ %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "ກຳລັງປະມວນຜົນບັນທຶກໃໝ່ (ອັບເດດໄຟລ໌ປະຫວັດທຸກໆ %s ລາຍການບັນທຶກ)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "ການເຂົ້າເຖິງໂດຍກົງໄປຫາບັນທຶກສຸດທ້າຍທີ່ຈື່ຈຳໄດ້ຕົກລົງໃສ່ບັນທຶກອື່ນ."
+
+msgid "So searching new records from beginning of log file"
+msgstr "ດັ່ງນັ້ນ ກຳລັງຄົ້ນຫາບັນທຶກໃໝ່ຈາກເລີ່ມຕົ້ນຂອງໄຟລ໌ບັນທຶກ"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "ການເຂົ້າເຖິງໂດຍກົງໄປຫາບັນທຶກສຸດທ້າຍທີ່ຈື່ຈຳໄດ້ແມ່ນຢູ່ນອກໄຟລ໌."
+
+msgid "So searching it from beginning of log file"
+msgstr "ດັ່ງນັ້ນ ກຳລັງຄົ້ນຫາຈາກເລີ່ມຕົ້ນຂອງໄຟລ໌ບັນທຶກ"
+
+msgid "Searching new records from beginning of log file"
+msgstr "ກຳລັງຄົ້ນຫາບັນທຶກໃໝ່ຈາກເລີ່ມຕົ້ນຂອງໄຟລ໌ບັນທຶກ"
+
+msgid "Saving the log to the data file"
+msgstr "ກຳລັງບັນທຶກບັນທຶກລົງໃນໄຟລ໌ຂໍ້ມູນ"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (ຈຳນວນແຫຼ່ງທີ່ເຂົ້າຊົມໄດ້ຮອດຂີດຈຳກັດການບັນທຶກ %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (ຈຳນວນ URL ໄດ້ຮອດຂີດຈຳກັດການບັນທຶກ %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "ແຖວທີ່ຂ້າມໃນໄຟລ໌: %s"
+
+msgid "Found %s already parsed records"
+msgstr "ພົບ %s ບັນທຶກທີ່ໄດ້ວິເຄາະແລ້ວ"
+
+msgid "Parsed lines in file: %s"
+msgstr "ແຖວທີ່ວິເຄາະໃນໄຟລ໌: %s"
+
+msgid "Found %s dropped records"
+msgstr "ພົບ %s ບັນທຶກທີ່ຖືກຖິ້ມ"
+
+msgid "Found %s comments"
+msgstr "ພົບ %s ຄຳເຫັນ"
+
+msgid "Found %s blank records"
+msgstr "ພົບ %s ບັນທຶກຫວ່າງເປົ່າ"
+
+msgid "Found %s corrupted records"
+msgstr "ພົບ %s ບັນທຶກເສຍຫາຍ"
+
+msgid "Found %s old records"
+msgstr "ພົບ %s ບັນທຶກເກົ່າ"
+
+msgid "Found %s new data records"
+msgstr "ພົບ %s ບັນທຶກຂໍ້ມູນໃໝ່"
+
+msgid "All updates completed!"
+msgstr "ການອັບເດດທັງໝົດສຳເລັດແລ້ວ!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "ໝາຍເຫດ: ພາລາມິເຕີ HostAliases ຍັງບໍ່ໄດ້ຕັ້ງຄ່າ (ໃຊ້ເພື່ອກຳນົດຊື່ໂດເມນເພີ່ມເຕີມສຳລັບເວັບໄຊ, ຄ່າເລີ່ມຕົ້ນແມ່ນຫວ່າງເປົ່າ)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "ລະບົບໄດ້ເພີ່ມຄ່າເລີ່ມຕົ້ນໂດຍອັດຕະໂນມັດ: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "ເພື່ອເພີ່ມຊື່ໂດເມນອື່ນໆ, ກະລຸນາຕັ້ງ HostAliases ໃນໄຟລ໌ການຕັ້ງຄ່າ, ແລະ ໃຫ້ແນ່ໃຈວ່າການຕັ້ງຄ່າເວັບໄຊຂອງເຊີບເວີເວັບ (ເຊັ່ນ: Apache, Nginx) ໄດ້ຖືກອັບເດດຕາມນັ້ນ."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "ຕົວຢ່າງ: ຖ້າເວັບໄຊໃຊ້ທັງ example.com ແລະ www.example.com, ທ່ານສາມາດຕັ້ງ HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "ຕົວອັບເດດແບບກຸ່ມ AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "ລິຂະສິດ (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "ໃບອະນຸຍາດພາຍໃຕ້ GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "ຄຳອະທິບາຍ"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall ອັບເດດໄຟລ໌ການຕັ້ງຄ່າ AWStats ທັງໝົດທີ່ພົບໂດຍອັດຕະໂນມັດ"
+
+msgid "in a specified directory (default: %s)."
+msgstr "ໃນໄດເລກະຕອຣີທີ່ກຳນົດ (ຄ່າເລີ່ມຕົ້ນ: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "ນີ້ເປັນປະໂຫຍດສຳລັບການຕັ້ງວຽກ cron ຕາມກຳນົດເວລາ."
+
+msgid "USAGE"
+msgstr "ການໃຊ້ງານ"
+
+msgid "OPTIONS"
+msgstr "ຕົວເລືອກ"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    ເສັ້ນທາງໄປຫາ awstats.pl (ກວດພົບອັດຕະໂນມັດຖ້າລະໄວ້)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       ອັບເດດສະເພາະໂດເມນທີ່ກຳນົດ"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       ໄດເລກະຕອຣີທີ່ມີໄຟລ໌ການຕັ້ງຄ່າ (ຄ່າເລີ່ມຕົ້ນ: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    ຍົກເວັ້ນການຕັ້ງຄ່າຕາມຊື່ (ແຍກດ້ວຍຈຸດຈ້ຳ)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             ພາສາສຳລັບຜົນລັບ (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, ແລະ ອື່ນໆ)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             ເປີດການສະແດງຜົນ debug (N ສູງກວ່າ = ລາຍລະອຽດຫຼາຍກວ່າ)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  ຕັ້ງຄ່າ LastLine ສຳລັບການອັບເດດທັງໝົດ"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            ສະແດງຂໍ້ຄວາມຊ່ວຍເຫຼືອນີ້"
+
+msgid "EXAMPLES"
+msgstr "ຕົວຢ່າງ"
+
+msgid "Update all sites"
+msgstr "ອັບເດດທຸກໆເວັບໄຊ"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "ສ້າງຄຳເຫັນໄຟລ໌ຂໍ້ມູນໃນພາສາທີ່ທ່ານຕ້ອງການ"
+
+msgid "Example:"
+msgstr "ຕົວຢ່າງ:"
+
+msgid "Update only one specific site"
+msgstr "ອັບເດດພຽງແຕ່ເວັບໄຊດຽວທີ່ກຳນົດ"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "ອັບເດດທຸກໆເວັບໄຊດ້ວຍເສັ້ນທາງ AWStats ທີ່ກຳນົດເອງ (ເຊັ່ນ: ເມື່ອໃຊ້ virtual host ຫຼື ຕຳແໜ່ງ awstats.pl ທີ່ກຳນົດເອງ)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "ອັບເດດທຸກໆເວັບໄຊ ຍົກເວັ້ນ awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "ໃຊ້ໄດເລກະຕອຣີການຕັ້ງຄ່າທີ່ກຳນົດເອງ"
+
+msgid "QUICK START"
+msgstr "ເລີ່ມຕົ້ນຢ່າງໄວວາ"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "ຕົວຫຸ້ມ 'awstats-update' ໄດ້ຖືກຕິດຕັ້ງແລ້ວ."
+
+msgid "Simply run:"
+msgstr "ພຽງແຕ່ປະຕິບັດ:"
+
+msgid "Update single site"
+msgstr "ອັບເດດເວັບໄຊດຽວ"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "ສະແດງຂໍ້ຄວາມຈໍສະແດງຜົນ terminal ແລະ ບັນທຶກບັນທຶກໃນພາສາທີ່ທ່ານກຳນົດ"
+
+msgid "Log file: %s"
+msgstr "ໄຟລ໌ບັນທຶກ: %s"
+
+msgid "Show help"
+msgstr "ສະແດງການຊ່ວຍເຫຼືອ"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "ບໍ່ຈຳເປັນຕ້ອງພິມເສັ້ນທາງເຕັມໄປຫາ awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "ວຽກງານເປັນໄລຍະ"
+
+msgid "Daily update script:"
+msgstr "ສະຄຣິບອັບເດດປະຈຳວັນ:"
+
+msgid "Cron job:"
+msgstr "ວຽກ cron:"
+
+msgid "Content:"
+msgstr "ເນື້ອໃນ:"
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - ສະຖິຕິເວັບໄຊທ໌ຂັ້ນສູງ"
 

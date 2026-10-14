@@ -362,7 +362,7 @@ sub prepare_buildroot {
     
     # 清理不需要的文件
     cleanup_buildroot($BUILDROOT, "$MAJOR.$MINOR");
-    
+
     print "Build directory ready: $target_dir\n\n";
 }
 
@@ -526,108 +526,477 @@ sub build_rpm {
     my $version = "$MAJOR.$MINOR";
     my $filename = "$PROJECT-$version";
     my $output = "$DESTI/$PROJECT-$version-$RPMSUBVERSION.noarch.rpm";
-    
+
     print "\nBuilding RPM package: $filename\n";
-    
-    # 调试信息
     print "  Current directory: " . Cwd::getcwd() . "\n";
     print "  BUILDROOT: $BUILDROOT\n";
     print "  RPMDIR: $RPMDIR\n";
-    
-    # 确保 SOURCES 目录存在
+
     make_path("$RPMDIR/SOURCES");
     
-    # 创建源码包（直接到 SOURCES 目录）
+    # 创建源码包
     my $tgz_file = "$RPMDIR/SOURCES/$PROJECT-$version.tgz";
     unlink $tgz_file;
-    
+
     my $exclude_file = "$SOURCE/make/tgz/tar.exclude";
     my $exclude_opt = -f $exclude_file ? "--exclude-from='$exclude_file'" : "";
     my $cmd = "tar $exclude_opt --directory='$BUILDROOT' -czvf '$tgz_file' $filename";
-    
+
     print "  Creating source tarball: $cmd\n";
     system($cmd) == 0 or die "Failed to create source tarball";
-    
-    # 检查源码包
+
     if (-f $tgz_file) {
         my $size = -s $tgz_file;
         print "  ✅ Source tarball created: $tgz_file (" . int($size/1024) . " KB)\n";
     } else {
         die "❌ Source tarball not created";
     }
-    
-    # 查找 spec 文件
-    my $spec_template = "rpm/$PROJECT.spec";
-    print "  Looking for spec file at: $spec_template\n";
-    
-    if (-f $spec_template) {
-        print "  ✅ Found spec file\n";
 
-        # 读取并修改 spec 文件
-        open my $spec_in, '<', $spec_template or die "Cannot open spec template: $spec_template";
-        open my $spec_out, '>', "$TEMP/$PROJECT.spec" or die "Cannot create spec file";
+    my $changelog_date = `date "+%a %b %d %Y"`;
+    chomp $changelog_date;
+    print "  Changelog date: $changelog_date\n";
 
-        my $source_added = 0;
-        while (<$spec_in>) {
-            s/__VERSION__/$MAJOR.$MINOR/g;
-            s/__RELEASE__/$RPMSUBVERSION/g;
-            
-            # 在 Name 后面添加 Source0，但只加一次
-            if (/^Name:/ && !$source_added) {
-                print $spec_out $_;
-                print $spec_out "Source0: %{name}-%{version}.tgz\n";
-                $source_added = 1;
-                next;
-            }
-            
-            # 跳过原有的 Source0 行（如果有）
-            if (/^Source0:/) {
-                # 如果已经添加过了，就跳过
-                if ($source_added) {
-                    next;
-                } else {
-                    # 否则保留原来的
-                    print $spec_out $_;
-                    $source_added = 1;
-                }
-                next;
-            }
-            
-            # 确保 %prep 部分有正确的 %setup
-            if (/^%prep/) {
-                print $spec_out $_;
-                print $spec_out "%setup -q -n %{name}-%{version}\n";
-                # 跳过原有的 %setup 行
-                while (<$spec_in>) {
-                    last if !/^%setup/;
-                }
-                next;
-            }
-            print $spec_out $_;
-        }
-        close $spec_in;
-        close $spec_out;
-        
-        # 显示生成的 spec 文件内容
-        print "  Generated spec file preview:\n";
-        system("head -20 '$TEMP/$PROJECT.spec'");
-        
-        # 运行 rpmbuild
-        $cmd = "rpmbuild --clean -ba '$TEMP/$PROJECT.spec' 2>&1";
-        print "  Running: $cmd\n";
-        my $result = system($cmd);
-        
-        if ($result != 0) {
-            warn "RPM build failed with code $result";
-            print "  RPM build output:\n";
-            system("tail -50 /tmp/rpmbuild.log 2>/dev/null || true");
-            return undef;
-        }
-    } else {
-        die "❌ RPM spec file not found at: $spec_template";
+    # ===== 写 conf 文件到临时目录 =====
+    my $conf_dir = "$TEMP/rpm-conf";
+    make_path($conf_dir);
+
+    # httpd conf
+    open my $fh_httpd, '>', "$conf_dir/awstats.httpd.conf" or die "Cannot write httpd conf: $!";
+    print $fh_httpd 'Alias /awstatsclasses "/usr/share/awstats/classes/"', "\n";
+    print $fh_httpd 'Alias /awstatscss "/usr/share/awstats/css/"', "\n";
+    print $fh_httpd 'Alias /awstatsicons "/usr/share/awstats/icon/"', "\n";
+    print $fh_httpd 'Alias /awstatsdocs "/usr/share/doc/awstats/"', "\n";
+    print $fh_httpd 'ScriptAlias /awstats/ "/usr/lib/cgi-bin/"', "\n";
+    print $fh_httpd '', "\n";
+    print $fh_httpd '<Directory "/usr/share/awstats">', "\n";
+    print $fh_httpd '    Options None', "\n";
+    print $fh_httpd '    AllowOverride None', "\n";
+    print $fh_httpd '    Require all granted', "\n";
+    print $fh_httpd '</Directory>', "\n";
+    print $fh_httpd '', "\n";
+    print $fh_httpd '<IfModule mod_env.c>', "\n";
+    print $fh_httpd '    SetEnv PERL5LIB /usr/share/awstats/lib:/usr/share/awstats/plugins', "\n";
+    print $fh_httpd '</IfModule>', "\n";
+    close $fh_httpd;
+
+    # logrotate conf
+    open my $fh_logrotate, '>', "$conf_dir/awstats.logrotate" or die "Cannot write logrotate conf: $!";
+    print $fh_logrotate '/var/log/awstats/*.log {', "\n";
+    print $fh_logrotate '    weekly', "\n";
+    print $fh_logrotate '    missingok', "\n";
+    print $fh_logrotate '    rotate 52', "\n";
+    print $fh_logrotate '    compress', "\n";
+    print $fh_logrotate '    delaycompress', "\n";
+    print $fh_logrotate '    notifempty', "\n";
+    print $fh_logrotate '    create 644 root root', "\n";
+    print $fh_logrotate '    sharedscripts', "\n";
+    print $fh_logrotate '    postrotate', "\n";
+    print $fh_logrotate '        /usr/share/awstats/tools/awstats_updateall.pl now > /dev/null 2>&1 || true', "\n";
+    print $fh_logrotate '    endscript', "\n";
+    print $fh_logrotate '}', "\n";
+    close $fh_logrotate;
+
+    # cron conf
+    open my $fh_cron, '>', "$conf_dir/awstats.cron" or die "Cannot write cron conf: $!";
+    print $fh_cron '# AWStats cron job', "\n";
+    print $fh_cron '# Run AWStats update daily at 1:00 AM', "\n";
+    print $fh_cron '0 1 * * * root [ -x /usr/share/awstats/tools/awstats_updateall.pl ] && /usr/share/awstats/tools/awstats_updateall.pl now > /dev/null 2>&1', "\n";
+    close $fh_cron;
+
+    # awstats wrapper
+    open my $fh_wrapper, '>', "$conf_dir/awstats.wrapper" or die "Cannot write awstats wrapper: $!";
+    print $fh_wrapper '#!/bin/bash', "\n";
+    print $fh_wrapper 'perl /usr/lib/cgi-bin/awstats.pl "$@"', "\n";
+    close $fh_wrapper;
+
+    # awstats-update wrapper
+    open my $fh_upd_wrapper, '>', "$conf_dir/awstats-update.wrapper" or die "Cannot write awstats-update wrapper: $!";
+    print $fh_upd_wrapper '#!/bin/bash', "\n";
+    print $fh_upd_wrapper 'perl /usr/share/awstats/tools/awstats_updateall.pl "$@"', "\n";
+    close $fh_upd_wrapper;
+
+    # dbip-update script
+    open my $fh_dbip, '>', "$conf_dir/awstats-dbip-update" or die "Cannot write dbip script: $!";
+    print $fh_dbip '#!/bin/bash', "\n";
+    print $fh_dbip '# ------------------------------------------------------------------------------', "\n";
+    print $fh_dbip '# Generated by AWStats, do not edit manually', "\n";
+    print $fh_dbip '# 由 AWStats 自动生成，请勿手动编辑', "\n";
+    print $fh_dbip '# To disable automatic updates, rename this file so you can re-enable it later if needed.', "\n";
+    print $fh_dbip '# 若需禁用自动更新，请将此文件重命名！以便后续启用此功能！', "\n";
+    print $fh_dbip '# ------------------------------------------------------------------------------', "\n";
+    print $fh_dbip 'YEAR_MONTH=$(date +%Y-%m)', "\n";
+    print $fh_dbip 'DBIP_DIR="/usr/share/perl5/Geo"', "\n";
+    print $fh_dbip 'DBIP_DEST="$DBIP_DIR/dbip-city.mmdb"', "\n";
+    print $fh_dbip 'DBIP_TEMP_GZ="$DBIP_DIR/dbip-city.mmdb.tmp.gz"', "\n";
+    print $fh_dbip 'DBIP_TEMP="$DBIP_DIR/dbip-city.mmdb.tmp"', "\n";
+    print $fh_dbip 'LOG_FILE="/var/log/dbip-update.log"', "\n";
+    print $fh_dbip '', "\n";
+    print $fh_dbip 'if [ -f "$LOG_FILE" ] && [ $(wc -l < "$LOG_FILE") -gt 30 ]; then', "\n";
+    print $fh_dbip '    tail -n 30 "$LOG_FILE" > "$LOG_FILE.tmp"', "\n";
+    print $fh_dbip '    mv "$LOG_FILE.tmp" "$LOG_FILE"', "\n";
+    print $fh_dbip 'fi', "\n";
+    print $fh_dbip '', "\n";
+    print $fh_dbip 'mkdir -p "$DBIP_DIR"', "\n";
+    print $fh_dbip 'cd "$DBIP_DIR"', "\n";
+    print $fh_dbip '', "\n";
+    print $fh_dbip 'if ! command -v wget > /dev/null 2>&1; then', "\n";
+    print $fh_dbip '    echo "$(date): wget not installed, skipping update" >> "$LOG_FILE"', "\n";
+    print $fh_dbip '    exit 1', "\n";
+    print $fh_dbip 'fi', "\n";
+    print $fh_dbip '', "\n";
+    print $fh_dbip 'echo "$(date): Downloading DB-IP database for ${YEAR_MONTH}..." >> "$LOG_FILE"', "\n";
+    print $fh_dbip 'wget -q -O "$DBIP_TEMP_GZ" "https://download.db-ip.com/free/dbip-city-lite-${YEAR_MONTH}.mmdb.gz" 2>/dev/null', "\n";
+    print $fh_dbip 'if [ ! -s "$DBIP_TEMP_GZ" ]; then', "\n";
+    print $fh_dbip '    LAST_MONTH=$(date -d "1 month ago" +%Y-%m 2>/dev/null)', "\n";
+    print $fh_dbip '    if [ -n "$LAST_MONTH" ]; then', "\n";
+    print $fh_dbip '        echo "$(date): Current month ${YEAR_MONTH} not available, trying ${LAST_MONTH}" >> "$LOG_FILE"', "\n";
+    print $fh_dbip '        wget -q -O "$DBIP_TEMP_GZ" "https://download.db-ip.com/free/dbip-city-lite-${LAST_MONTH}.mmdb.gz" 2>/dev/null', "\n";
+    print $fh_dbip '        if [ -s "$DBIP_TEMP_GZ" ]; then', "\n";
+    print $fh_dbip '            echo "$(date): Downloaded ${LAST_MONTH} instead" >> "$LOG_FILE"', "\n";
+    print $fh_dbip '        fi', "\n";
+    print $fh_dbip '    fi', "\n";
+    print $fh_dbip 'fi', "\n";
+    print $fh_dbip 'if [ -s "$DBIP_TEMP_GZ" ]; then', "\n";
+    print $fh_dbip '    gunzip -f "$DBIP_TEMP_GZ"', "\n";
+    print $fh_dbip '    if [ -f "$DBIP_TEMP" ]; then', "\n";
+    print $fh_dbip '        mv "$DBIP_TEMP" "$DBIP_DEST"', "\n";
+    print $fh_dbip '        chmod 644 "$DBIP_DEST"', "\n";
+    print $fh_dbip '        echo "$(date): Successfully updated to ${YEAR_MONTH}" >> "$LOG_FILE"', "\n";
+    print $fh_dbip '        echo "✓ DB-IP database updated to ${YEAR_MONTH}"', "\n";
+    print $fh_dbip '    else', "\n";
+    print $fh_dbip '        echo "$(date): Gunzip failed" >> "$LOG_FILE"', "\n";
+    print $fh_dbip '        echo "⚠ DB-IP database decompression failed"', "\n";
+    print $fh_dbip '    fi', "\n";
+    print $fh_dbip 'else', "\n";
+    print $fh_dbip '    rm -f "$DBIP_TEMP_GZ"', "\n";
+    print $fh_dbip '    echo "$(date): Download failed for ${YEAR_MONTH}" >> "$LOG_FILE"', "\n";
+    print $fh_dbip '    echo "⚠ DB-IP database update failed"', "\n";
+    print $fh_dbip 'fi', "\n";
+    close $fh_dbip;
+
+    open my $fh_dbip_cron, '>', "$conf_dir/awstats-dbip-update.cron" or die "Cannot write dbip cron: $!";
+    print $fh_dbip_cron '# Update DB-IP database monthly on the 3rd at 3:00 AM', "\n";
+    print $fh_dbip_cron '0 3 3 * * root /usr/local/bin/awstats-dbip-update > /dev/null 2>&1', "\n";
+    close $fh_dbip_cron;
+
+    # post script
+    open my $fh_post, '>', "$conf_dir/awstats.post" or die "Cannot write post script: $!";
+    print $fh_post '#!/bin/sh', "\n";
+    print $fh_post 'set -e', "\n";
+    print $fh_post 'case "$1" in', "\n";
+    print $fh_post '    1|2)', "\n";
+    print $fh_post '        echo " AWStats %{version} - DB-IP Database Setup"', "\n";
+    print $fh_post '        mkdir -p /usr/share/perl5/Geo', "\n";
+    print $fh_post '        mkdir -p /var/lib/awstats', "\n";
+    print $fh_post '        mkdir -p /var/log/awstats', "\n";
+    print $fh_post '        chmod 755 /var/lib/awstats', "\n";
+    print $fh_post '        chmod 755 /var/log/awstats', "\n";
+    print $fh_post '        if [ -f /usr/lib/cgi-bin/awstats.pl ]; then chmod 755 /usr/lib/cgi-bin/awstats.pl; fi', "\n";
+    print $fh_post '        if [ -f /usr/lib/cgi-bin/awredir.pl ]; then chmod 755 /usr/lib/cgi-bin/awredir.pl; fi', "\n";
+    print $fh_post '        DBIP_DEST="/usr/share/perl5/Geo/dbip-city.mmdb"', "\n";
+    print $fh_post '        if [ ! -f "$DBIP_DEST" ]; then', "\n";
+    print $fh_post '            if command -v wget > /dev/null 2>&1; then', "\n";
+    print $fh_post '                YEAR=$(date +%Y); MONTH=$(date +%m)', "\n";
+    print $fh_post '                DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${YEAR}-${MONTH}.mmdb.gz"', "\n";
+    print $fh_post '                DBIP_TEMP_GZ="/usr/share/perl5/Geo/dbip-city-temp.mmdb.gz"', "\n";
+    print $fh_post '                if wget -q -O "$DBIP_TEMP_GZ" "$DBIP_URL" 2>/dev/null; then', "\n";
+    print $fh_post '                    DOWNLOAD_SUCCESS=1', "\n";
+    print $fh_post '                else', "\n";
+    print $fh_post '                    LAST_YEAR=$(date -d "1 month ago" +%Y 2>/dev/null)', "\n";
+    print $fh_post '                    LAST_MONTH=$(date -d "1 month ago" +%m 2>/dev/null)', "\n";
+    print $fh_post '                    if [ -n "$LAST_YEAR" ] && [ -n "$LAST_MONTH" ]; then', "\n";
+    print $fh_post '                        DBIP_URL="https://download.db-ip.com/free/dbip-city-lite-${LAST_YEAR}-${LAST_MONTH}.mmdb.gz"', "\n";
+    print $fh_post '                        if wget -q -O "$DBIP_TEMP_GZ" "$DBIP_URL" 2>/dev/null; then', "\n";
+    print $fh_post '                            DOWNLOAD_SUCCESS=1', "\n";
+    print $fh_post '                        fi', "\n";
+    print $fh_post '                    fi', "\n";
+    print $fh_post '                fi', "\n";
+    print $fh_post '                if [ "$DOWNLOAD_SUCCESS" = "1" ] && [ -s "$DBIP_TEMP_GZ" ]; then', "\n";
+    print $fh_post '                    if gunzip -f "$DBIP_TEMP_GZ"; then', "\n";
+    print $fh_post '                        mv /usr/share/perl5/Geo/dbip-city-temp.mmdb "$DBIP_DEST"', "\n";
+    print $fh_post '                        chmod 644 "$DBIP_DEST"', "\n";
+    print $fh_post '                    fi', "\n";
+    print $fh_post '                    rm -f "$DBIP_TEMP_GZ"', "\n";
+    print $fh_post '                fi', "\n";
+    print $fh_post '            fi', "\n";
+    print $fh_post '        fi', "\n";
+    print $fh_post '        if [ -f /etc/cron.d/awstats-dbip-update ]; then chmod 644 /etc/cron.d/awstats-dbip-update; fi', "\n";
+    print $fh_post '        if [ -f /usr/local/bin/awstats-dbip-update ]; then chmod 755 /usr/local/bin/awstats-dbip-update; fi', "\n";
+    print $fh_post '        if [ -f /usr/lib/cgi-bin/awredir.pl ]; then', "\n";
+    print $fh_post '            if command -v openssl >/dev/null 2>&1; then', "\n";
+    print $fh_post '                KEY=$(openssl rand -hex 16 2>/dev/null)', "\n";
+    print $fh_post '                sed -i "s/YOURKEYFORMD5/$KEY/" /usr/lib/cgi-bin/awredir.pl', "\n";
+    print $fh_post '            fi', "\n";
+    print $fh_post '        fi', "\n";
+    print $fh_post '        if [ -x /usr/sbin/a2enmod ]; then', "\n";
+    print $fh_post '            a2enmod cgi > /dev/null 2>&1 || true', "\n";
+    print $fh_post '            if command -v systemctl >/dev/null 2>&1; then systemctl try-reload-or-restart httpd >/dev/null 2>&1 || true; fi', "\n";
+    print $fh_post '        fi', "\n";
+    print $fh_post '        ;;', "\n";
+    print $fh_post 'esac', "\n";
+    print $fh_post 'echo ""', "\n";
+    print $fh_post 'echo " AWStats %{version} installation complete"', "\n";
+    print $fh_post 'echo " Main directory: /usr/share/awstats"', "\n";
+    print $fh_post 'echo " Configuration: /etc/awstats"', "\n";
+    print $fh_post 'echo " CGI scripts: /usr/lib/cgi-bin"', "\n";
+    print $fh_post 'echo " CLI wrapper: /usr/local/bin/awstats"', "\n";
+    print $fh_post 'echo " DB-IP database: /usr/share/perl5/Geo/dbip-city.mmdb"', "\n";
+    print $fh_post 'echo " Data directory: /var/lib/awstats"', "\n";
+    print $fh_post 'echo " Log directory: /var/log/awstats"', "\n";
+    print $fh_post 'echo " No control panel? Try HestiaCP - https://hestiadocs.brepo.ru"', "\n";
+    print $fh_post 'echo ""', "\n";
+    close $fh_post;
+
+    # postun script
+    open my $fh_postun, '>', "$conf_dir/awstats.postun" or die "Cannot write postun script: $!";
+    print $fh_postun '#!/bin/sh', "\n";
+    print $fh_postun 'if [ "$1" = "0" ]; then', "\n";
+    print $fh_postun '    rm -f /usr/share/perl5/Geo/dbip-city.mmdb 2>/dev/null || true', "\n";
+    print $fh_postun '    rm -f /usr/share/perl5/Geo/dbip-city.mmdb.bak 2>/dev/null || true', "\n";
+    print $fh_postun 'fi', "\n";
+    close $fh_postun;
+
+    my $post_content   = do { local $/; open my $f, '<', "$conf_dir/awstats.post"   or die "Cannot read awstats.post: $!";   <$f> };
+    my $postun_content = do { local $/; open my $f, '<', "$conf_dir/awstats.postun" or die "Cannot read awstats.postun: $!"; <$f> };
+    print "  ✅ Conf files written to: $conf_dir\n";
+
+    my $spec_file = "$TEMP/$PROJECT.spec";
+    open my $spec_out, '>', $spec_file or die "Cannot create spec: $!";
+
+    my $ver = "$MAJOR.$MINOR";
+    my $rel = $RPMSUBVERSION;
+
+    # spec 头部
+    print $spec_out '%define name ', $PROJECT, "\n";
+    print $spec_out '%define version ', $ver, "\n";
+    print $spec_out '%define release ', $rel, "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'Name: %{name}', "\n";
+    print $spec_out 'Version: %{version}', "\n";
+    print $spec_out 'Release: %{release}', "\n";
+    print $spec_out 'Source0: %{name}-%{version}.tgz', "\n";
+    print $spec_out 'Summary: AWStats Community Edition - powerful and featureful web server logfile analyzer', "\n";
+    print $spec_out 'URL: https://github.com/hestiacn/vstats', "\n";
+    print $spec_out 'License: GPL', "\n";
+    print $spec_out 'Packager: hestiacn <hestiacn@users.noreply.github.com>', "\n";
+    print $spec_out 'Vendor: hestiacn', "\n";
+    print $spec_out 'BuildArchitectures: noarch', "\n";
+    print $spec_out 'Group: Applications/Internet', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'Requires: perl >= 1:5.020', "\n";
+    print $spec_out 'Requires: perl(JSON::XS)', "\n";
+    print $spec_out 'Requires: perl(Try::Tiny)', "\n";
+    print $spec_out 'Requires: wget', "\n";
+    print $spec_out 'Recommends: cron, httpd, ca-certificates', "\n";
+    print $spec_out 'AutoReqProv: yes', "\n";
+    print $spec_out '', "\n";
+
+    # %description
+    print $spec_out '%description', "\n";
+    print $spec_out 'AWStats Community Edition (Advanced Web Statistics) is a free powerful and featureful', "\n";
+    print $spec_out 'tool that generates advanced web (but also ftp or mail) server', "\n";
+    print $spec_out 'statistics, graphically.', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'This log analyzer works as a CGI or from command line and shows you', "\n";
+    print $spec_out 'all possible information your log contains, in few graphical web', "\n";
+    print $spec_out 'pages like visits, unique visitors, authenticated users, pages,', "\n";
+    print $spec_out 'domains/countries, OS busiest times, robot visits, type of files,', "\n";
+    print $spec_out 'search engines,keywords and keyphrases used, visits duration,', "\n";
+    print $spec_out 'cluster balancing, HTTP errors and also screen size, web browser', "\n";
+    print $spec_out 'java,flash,etc support and more...', "\n";
+    print $spec_out 'Statistics can be updated from a browser or your scheduler.', "\n";
+    print $spec_out 'AWStats uses a partial information file to be able to process large', "\n";
+    print $spec_out 'log files, often and quickly.', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'It can analyze log files from IIS (W3C log format), Apache log files', "\n";
+    print $spec_out '(NCSA combined/XLF/ELF log format or common/CLF log format), WebStar', "\n";
+    print $spec_out 'and most of all web, proxy, wap, streaming servers (and ftp servers', "\n";
+    print $spec_out 'or mail logs).', "\n";
+    print $spec_out 'The program also supports virtual servers, plugins and a lot of', "\n";
+    print $spec_out 'features.', "\n";
+    print $spec_out '', "\n";
+
+    # %description -l pl
+    print $spec_out '%description -l pl', "\n";
+    print $spec_out 'AWStats Community Edition (Advanced Web Statistics - zaawansowane statystyki WWW) to', "\n";
+    print $spec_out 'potężne i bogate w możliwości narzędzie generujące zaawansowane', "\n";
+    print $spec_out 'graficzne statystyki serwera WWW. Ten analizator logów serwera', "\n";
+    print $spec_out 'działa z linii poleceń lub jako CGI i pokazuje wszystkie informacje', "\n";
+    print $spec_out 'zawarte w logu w postaci graficznych stron WWW. Może analizować logi', "\n";
+    print $spec_out 'wielu serwerów WWW/WAP/proxy, takich jak Apache, IIS, Weblogic,', "\n";
+    print $spec_out 'Webstar, Squid... ale także serwerów pocztowych lub ftp.', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'Ten program może mierzyć odwiedziny, odwiedzających, uwierzytelnionych', "\n";
+    print $spec_out 'użytkowników, strony, domeny/kraje, najbardziej zajęte godziny,', "\n";
+    print $spec_out 'odwiedziny robotów, rodzaje plików, używane wyszukiwarki i słowa', "\n";
+    print $spec_out 'kluczowe, czasy trwania odwiedzin, błędy HTTP... a nawet więcej.', "\n";
+    print $spec_out 'Statystyki mogą być uaktualniane z przeglądarki lub schedulera.', "\n";
+    print $spec_out 'Program obsługuje także serwery wirtualne, wtyczki i wiele innych', "\n";
+    print $spec_out 'rzeczy.', "\n";
+    print $spec_out '', "\n";
+
+    # %description -l fr
+    print $spec_out '%description -l fr', "\n";
+    print $spec_out 'AWStats Community Edition (Advanced Web Statistics) est un outil pour générer des ', "\n";
+    print $spec_out 'statistiques avancées d\'un serveur web (mais aussi ftp ou mail)', "\n";
+    print $spec_out 'de manière graphique.', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'Cet analyseur de log fonctionne en CGI ou en ligne de commande', "\n";
+    print $spec_out 'et synthétise toutes les informations que vos logs contiennent en', "\n";
+    print $spec_out 'quelques pages comme les visites, visiteurs uniques, logins,', "\n";
+    print $spec_out 'pages vues, domaines/pays, heures de pointes, visites des robots, ', "\n";
+    print $spec_out 'type de fichiers, moteurs de recherche, mots et phrases clés,', "\n";
+    print $spec_out 'durée des visites, répartition clusters, erreurs HTTP mais aussi', "\n";
+    print $spec_out 'support java,flash,etc des navigateurs, résolution d\'écran,', "\n";
+    print $spec_out 'estimation des ajouts aux favoris, etc...', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'Les statistiques peuvent etre mise à jour par un navigateur ou un', "\n";
+    print $spec_out 'séquenceur.', "\n";
+    print $spec_out 'AWStats génère un fichier d\'informations consolidés pour pouvoir', "\n";
+    print $spec_out 'traiter de large sites souvent et rapidement.', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'Il peut analyser des logs IIS (W3C log format), fichier log Apache', "\n";
+    print $spec_out '(format NCSA combined/XLF/ELF ou format common/CLF), WebStar et la', "\n";
+    print $spec_out 'plupart des logs de serveur web, proxy, wap, streaming serveurs', "\n";
+    print $spec_out '(et aussi serveurs ftp et de mails).', "\n";
+    print $spec_out 'Ce programme supporte de plus les serveurs virtuels, des plugins', "\n";
+    print $spec_out 'et de nombreuses fonctionnalités.', "\n";
+    print $spec_out '', "\n";
+
+    # %prep
+    print $spec_out '%prep', "\n";
+    print $spec_out '%setup -q -n %{name}-%{version}', "\n";
+    print $spec_out '', "\n";
+
+    # %build
+    print $spec_out '%build', "\n";
+    print $spec_out '# Nothing to build', "\n";
+    print $spec_out '', "\n";
+
+    # %install
+    print $spec_out '%install', "\n";
+    print $spec_out 'rm -rf $RPM_BUILD_ROOT', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'install -D -m 644 %{_confdir}/awstats.httpd.conf       $RPM_BUILD_ROOT/etc/httpd/conf.d/awstats.conf', "\n";
+    print $spec_out 'install -D -m 644 %{_confdir}/awstats.logrotate        $RPM_BUILD_ROOT/etc/logrotate.d/awstats', "\n";
+    print $spec_out 'install -D -m 644 %{_confdir}/awstats.cron             $RPM_BUILD_ROOT/etc/cron.d/awstats-update', "\n";
+    print $spec_out 'install -D -m 755 %{_confdir}/awstats-dbip-update       $RPM_BUILD_ROOT/usr/local/bin/awstats-dbip-update', "\n";
+    print $spec_out 'install -D -m 644 %{_confdir}/awstats-dbip-update.cron  $RPM_BUILD_ROOT/etc/cron.d/awstats-dbip-update', "\n";
+    print $spec_out 'install -D -m 755 %{_confdir}/awstats.wrapper          $RPM_BUILD_ROOT/usr/local/bin/awstats', "\n";
+    print $spec_out 'install -D -m 755 %{_confdir}/awstats-update.wrapper   $RPM_BUILD_ROOT/usr/local/bin/awstats-update', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/icon', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/css', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/js', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/classes', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/tools', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/lib/cgi-bin', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/etc/awstats', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/var/lib/awstats', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/var/log/awstats', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/share/perl5/Geo', "\n";
+    print $spec_out 'mkdir -p $RPM_BUILD_ROOT/usr/share/doc/awstats', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'if [ -d "%{_builddir}/%{name}-%{version}/tools/webmin/awstats" ]; then', "\n";
+    print $spec_out '    mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/tools/webmin', "\n";
+    print $spec_out '    cd %{_builddir}/%{name}-%{version}/tools/webmin', "\n";
+    print $spec_out '    tar -czf awstats-2.0.wbm awstats/', "\n";
+    print $spec_out '    cp awstats-2.0.wbm $RPM_BUILD_ROOT/usr/share/awstats/tools/webmin/', "\n";
+    print $spec_out '    cd %{_builddir}/%{name}-%{version}', "\n";
+    print $spec_out 'fi', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'MAXMIND_SRC="%{_builddir}/%{name}-%{version}/wwwroot/cgi-bin/lib/MaxMind"', "\n";
+    print $spec_out 'if [ -d "$MAXMIND_SRC" ]; then', "\n";
+    print $spec_out '    mkdir -p $RPM_BUILD_ROOT/usr/share/perl5/vendor_perl', "\n";
+    print $spec_out '    cp -pr "$MAXMIND_SRC" $RPM_BUILD_ROOT/usr/share/perl5/vendor_perl/', "\n";
+    print $spec_out 'else', "\n";
+    print $spec_out '    echo "ERROR: MaxMind not found at $MAXMIND_SRC"', "\n";
+    print $spec_out '    exit 1', "\n";
+    print $spec_out 'fi', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'cp -pr %{_builddir}/%{name}-%{version}/docs/* $RPM_BUILD_ROOT/usr/share/doc/awstats/ 2>/dev/null || true', "\n";
+    print $spec_out 'cp -pr %{_builddir}/%{name}-%{version}/wwwroot/* $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true', "\n";
+    print $spec_out 'mv $RPM_BUILD_ROOT/usr/share/awstats/cgi-bin/*.pl     $RPM_BUILD_ROOT/usr/lib/cgi-bin/ 2>/dev/null || true', "\n";
+    print $spec_out 'mv $RPM_BUILD_ROOT/usr/share/awstats/cgi-bin/lang     $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true', "\n";
+    print $spec_out 'mv $RPM_BUILD_ROOT/usr/share/awstats/cgi-bin/lib      $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true', "\n";
+    print $spec_out 'mv $RPM_BUILD_ROOT/usr/share/awstats/cgi-bin/plugins  $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true', "\n";
+    print $spec_out 'rm -rf $RPM_BUILD_ROOT/usr/share/awstats/cgi-bin 2>/dev/null || true', "\n";
+    print $spec_out 'cp -pr %{_builddir}/%{name}-%{version}/tools $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true', "\n";
+    print $spec_out 'cp -pr %{_builddir}/%{name}-%{version}/README.md $RPM_BUILD_ROOT/usr/share/awstats/ 2>/dev/null || true', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'cp -pr %{_builddir}/%{name}-%{version}/wwwroot/cgi-bin/awstats.conf $RPM_BUILD_ROOT/etc/awstats/awstats.conf.local', "\n";
+    print $spec_out 'cp -pr %{_builddir}/%{name}-%{version}/wwwroot/cgi-bin/awstats.model.conf $RPM_BUILD_ROOT/etc/awstats/awstats.model.conf', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'if [ -f %{_builddir}/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pm ]; then', "\n";
+    print $spec_out '    cp -pr %{_builddir}/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pm $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pm', "\n";
+    print $spec_out '    chmod 644 $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pm', "\n";
+    print $spec_out 'fi', "\n";
+    print $spec_out 'if [ -f %{_builddir}/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pod ]; then', "\n";
+    print $spec_out '    cp -pr %{_builddir}/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pod $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pod', "\n";
+    print $spec_out '    chmod 644 $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pod', "\n";
+    print $spec_out 'fi', "\n";
+    print $spec_out '', "\n";
+    print $spec_out 'chmod 644 $RPM_BUILD_ROOT/etc/cron.d/awstats-dbip-update', "\n";
+    print $spec_out '', "\n";
+
+    # %clean
+    print $spec_out '%clean', "\n";
+    print $spec_out 'rm -rf $RPM_BUILD_ROOT', "\n";
+    print $spec_out '', "\n";
+
+    # %files
+    print $spec_out '%files', "\n";
+    print $spec_out '%defattr(-,root,root)', "\n";
+    print $spec_out '%config(noreplace) /etc/awstats/awstats.model.conf', "\n";
+    print $spec_out '%config(noreplace) /etc/awstats/awstats.conf.local', "\n";
+    print $spec_out '%config(noreplace) /etc/httpd/conf.d/awstats.conf', "\n";
+    print $spec_out '%config(noreplace) /etc/cron.d/awstats-update', "\n";
+    print $spec_out '%config(noreplace) /etc/logrotate.d/awstats', "\n";
+    print $spec_out '%config(noreplace) /etc/cron.d/awstats-dbip-update', "\n";
+    print $spec_out '/usr/share/doc/awstats/', "\n";
+    print $spec_out '/usr/share/awstats/', "\n";
+    print $spec_out '/usr/lib/cgi-bin/', "\n";
+    print $spec_out '/usr/local/bin/awstats', "\n";
+    print $spec_out '/usr/local/bin/awstats-update', "\n";
+    print $spec_out '/usr/local/bin/awstats-dbip-update', "\n";
+    print $spec_out '/var/lib/awstats', "\n";
+    print $spec_out '/var/log/awstats', "\n";
+    print $spec_out '/usr/share/perl5/Geo/', "\n";
+    print $spec_out '/usr/share/perl5/vendor_perl/MaxMind/', "\n";
+    print $spec_out '', "\n";
+
+    # %post / %postun
+    print $spec_out '%post -p /bin/sh', "\n";
+    print $spec_out $post_content, "\n";
+    print $spec_out '', "\n";
+    print $spec_out '%postun -p /bin/sh', "\n";
+    print $spec_out $postun_content, "\n";
+    print $spec_out '', "\n";
+
+    # %changelog
+    print $spec_out '%changelog', "\n";
+    print $spec_out '* ', $changelog_date, ' Laurent Destailleur <eldy@users.sourceforge.net> %{version}-%{release}', "\n";
+    print $spec_out '- Add DB-IP database support with monthly updates', "\n";
+    print $spec_out '- Add city-level geolocation support', "\n";
+    print $spec_out '- Add mobile device detection', "\n";
+    print $spec_out '- Add download statistics with resume support', "\n";
+
+    close $spec_out;
+    print "  ✅ Spec generated: $spec_file\n";
+
+    $cmd = "rpmbuild --define '_confdir $conf_dir' --clean -ba '$spec_file' 2>&1 | tee /tmp/rpmbuild.log";
+    print "  Running: $cmd\n";
+    my $result = system($cmd);
+
+    if ($result != 0) {
+        my $exit_code = $result >> 8;
+        warn "RPM build failed with code $exit_code";
+        print "  RPM build output:\n";
+        system("tail -100 /tmp/rpmbuild.log");
+        return undef;
     }
-    
-    # 查找生成的 RPM 文件
+
+    # 查找生成的 RPM
     my $rpm_file = "$RPMDIR/RPMS/noarch/$PROJECT-$version-$RPMSUBVERSION.noarch.rpm";
     if (-f $rpm_file) {
         my $size = -s $rpm_file;
@@ -636,7 +1005,6 @@ sub build_rpm {
         return $output;
     } else {
         print "  ❌ RPM package not found at: $rpm_file\n";
-        print "  Contents of $RPMDIR/RPMS/noarch/:\n";
         system("ls -la $RPMDIR/RPMS/noarch/ 2>/dev/null || echo 'directory not found'");
         return undef;
     }
@@ -807,7 +1175,8 @@ sub parse_deb_template {
     open my $fh, '<', $template_file or die "Cannot open template: $template_file";
     my $content = do { local $/; <$fh> };
     close $fh;
-    
+    $content =~ s/\r\n/\n/g;
+    $content =~ s/\r/\n/g;
     # 替换变量
     my $maintainer = "Laurent Destailleur <eldy\@users.sourceforge.net>";
     my $date = strftime("%a, %d %b %Y %H:%M:%S %z", localtime);
@@ -859,9 +1228,9 @@ sub build_pkg {
     print "\n🔨 Building FreeBSD package: $filename\n";
     print "=" x 60, "\n";
     
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     # 步骤1: 检查是否在 FreeBSD 系统
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     if ($OS ne 'freebsd') {
         print "  ⚠️ Not running on FreeBSD, skipping pkg build\n";
         print "  💡 FreeBSD packages must be built on FreeBSD system\n";
@@ -869,9 +1238,9 @@ sub build_pkg {
     }
     print "  ✅ Running on FreeBSD\n";
     
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     # 步骤2: 创建 staging 目录
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     print "\n📋 Step 2: Creating staging directory...\n";
     my $pkg_root = "$BUILDROOT/pkg-stage";
     remove_tree($pkg_root) if -d $pkg_root;
@@ -883,9 +1252,9 @@ sub build_pkg {
         return undef;
     }
     
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     # 步骤3: 安装文件到 staging 目录 (Step 3: Installing files to staging directory)
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     print "\n📋 Step 3: Installing files to staging directory...\n";
 
     # 创建干净的 FreeBSD FHS 标准物理目录树
@@ -965,11 +1334,7 @@ sub build_pkg {
 
     # 初始默认配置文件对齐
     copy("$src_dir/wwwroot/cgi-bin/awstats.model.conf", "$pkg_root/usr/local/etc/awstats/awstats.model.conf");
-    copy("$src_dir/wwwroot/cgi-bin/awstats.conf", "$pkg_root/usr/local/etc/awstats/awstats.conf");
-    
-    open my $fh, '>', "$pkg_root/usr/local/etc/awstats/awstats.local.conf";
-    print $fh "# Local AWStats configuration\n";
-    close $fh;
+    copy("$src_dir/wwwroot/cgi-bin/awstats.conf", "$pkg_root/usr/local/etc/awstats/awstats.conf.local");
 
     # CLI 命令层面的可执行包装脚本
     open my $wf, '>', "$pkg_root/usr/local/bin/awstats";
@@ -978,21 +1343,29 @@ sub build_pkg {
     close $wf;
     chmod 0755, "$pkg_root/usr/local/bin/awstats";
 
+    # awstats-update 包装脚本
+    open my $uf, '>', "$pkg_root/usr/local/bin/awstats-update";
+    print $uf "#!/bin/sh\n";
+    print $uf "# /usr/local/bin/awstats-update - Wrapper for awstats_updateall.pl\n";
+    print $uf "exec /usr/local/share/awstats/tools/awstats_updateall.pl \"\$@\"\n";
+    close $uf;
+    chmod 0755, "$pkg_root/usr/local/bin/awstats-update";
+
     # periodic 每日自动定时执行计划
-    open my $pf, '>', "$pkg_root/usr/local/etc/periodic/daily/awstats";
+    open my $pf, '>', "$pkg_root/usr/local/etc/periodic/daily/awstats-update";
     print $pf "#!/bin/sh\n";
     print $pf "# AWStats daily update\n";
     print $pf "/usr/local/bin/perl /usr/local/share/awstats/tools/awstats_updateall.pl now 2>/dev/null\n";
     close $pf;
-    chmod 0755, "$pkg_root/usr/local/etc/periodic/daily/awstats";
-
-    print "  ✅ Files installed\n";
+    chmod 0755, "$pkg_root/usr/local/etc/periodic/daily/awstats-update";
+    print "Files installed\n";
+    system("ln -sf /usr/local/bin/perl /usr/bin/perl");
 
     # --------------------------------------------------------------------------
     # 创建每月自动执行的 DB-IP 城市级地理数据库更新脚本
     # --------------------------------------------------------------------------
-    print "\n📋 Creating DB-IP update script...\n";
-    open my $dbip_fh, '>', "$pkg_root/usr/local/etc/cron.d/awstats-dbip-update";
+    print "\nCreating DB-IP update script...\n";
+    open my $dbip_fh, '>', "$pkg_root/usr/local/bin/awstats-dbip-update";
     print $dbip_fh <<'EOF';
 #!/bin/sh
 # ------------------------------------------------------------------------------
@@ -1045,8 +1418,17 @@ else
 fi
 EOF
     close $dbip_fh;
-    chmod 0755, "$pkg_root/usr/local/etc/cron.d/awstats-dbip-update";
-    print "  ✅ Created DB-IP update script at /usr/local/etc/cron.d/awstats-dbip-update\n";
+    chmod 0755, "$pkg_root/usr/local/bin/awstats-dbip-update";
+
+    open my $dbip_cron_fh, '>', "$pkg_root/etc/cron.d/awstats-dbip-update";
+    print $dbip_cron_fh <<'EOF';
+# Update DB-IP database monthly on the 3rd at 3:00 AM
+0 3 3 * * root /usr/local/bin/awstats-dbip-update > /dev/null 2>&1
+EOF
+    close $dbip_cron_fh;
+    chmod 0644, "$pkg_root/etc/cron.d/awstats-dbip-update";
+
+    print "  Created cron entry at /etc/cron.d/awstats-dbip-update\n";
     print "  Verifying files...\n";
     my $file_count = 0;
     use File::Find;
@@ -1056,9 +1438,9 @@ EOF
     }, $pkg_root);
     print "  Total files in staging (excluding metadata): $file_count\n";
         
-    # ==========================================================================
-    # 步骤4: 初始化并生成核心清单 +MANIFEST (物理隔离写入专属元数据目录)
-    # ==========================================================================
+    # --------------------------------------------------------------------------
+    # 步骤4: 初始化并生成核心清单 +MANIFEST
+    # --------------------------------------------------------------------------
     print "\n📋 Step 4: Generating package manifest...\n";
     
     my $meta_stage = "/tmp/awstats-buildroot/meta-stage";
@@ -1136,9 +1518,9 @@ EOF
     print "  Architecture: $freebsd_version\n" if $freebsd_version;
     print "  ✅ Created +MANIFEST inside metadata directory\n";
 
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     # 步骤5: 生成安装包依赖文件列表清单 +PLIST
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     print "\n📋 Step 5: Generating PLIST...\n";
     my $plist_file = "$meta_stage/+PLIST";
     open my $pfh, '>', $plist_file or die "Cannot create $plist_file: $!";
@@ -1171,8 +1553,6 @@ EOF
     open my $pi, '>', $postinstall_file or die "Cannot create $postinstall_file: $!";
     print $pi <<'EOF';
 #!/bin/sh
-
-# 检查并下载 GeoIP 数据库
 mkdir -p /usr/local/lib/perl5/site_perl/Geo
 
 DBIP_DIR="/usr/local/lib/perl5/site_perl/Geo"
@@ -1226,10 +1606,6 @@ if [ -f /usr/local/www/cgi-bin/awredir.pl ]; then
     fi
 fi
 
-# 添加 DB-IP 月度更新定时任务
-(echo "# AWStats DB-IP monthly update on 3rd at 5:00 AM"; echo "0 5 3 * * /usr/local/etc/cron.d/awstats-dbip-update") | crontab -
-echo "✓ DB-IP monthly update added to crontab (3rd at 5:00 AM)"
-
 echo ""
 echo "=========================================="
 echo " AWStats 8.1-1 UTF-8 installation complete"
@@ -1257,9 +1633,9 @@ EOF
     chmod 0755, $postinstall_file;
     print "  ✅ Created +POST_INSTALL inside metadata directory\n";
 
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     # 步骤6: 调用 FreeBSD 包编译器创建成品安装包
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     print "\n📋 Step 6: Creating package...\n";
     chdir($BUILDROOT);
     
@@ -1297,9 +1673,9 @@ EOF
         }
     }
 
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     # 步骤7: 查找并严密验证最终生成的二进制包 (确保通过 GitHub Actions 流程断检)
-    # ==========================================================================
+    # --------------------------------------------------------------------------
     print "\n📋 Step 7: Locating and verifying generated package...\n";
     print "  DESTI = $DESTI\n";
     print "  Checking directory contents:\n";

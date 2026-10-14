@@ -689,11 +689,26 @@ msgstr "Tällä hakemistolla ei ole lukuoi kutta"
 msgid "Please set read permission for directory"
 msgstr "Aseta hakemistolle lukuoi kus, kiitos"
 
-msgid "Missing required parameter in config file"
-msgstr "Pakollinen parametri puuttuu asetustiedostosta"
+msgid "No AWStats config file for any site found in %s"
+msgstr "Kansiosta %s ei löytynyt AWStats-määritystiedostoa yhdellekään sivustolle"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Tarkista, että 'DirData' on määritetty."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Hakemisto '%s' ei sisällä määritystiedostoa verkkotunnukselle '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Pakollinen parametri puuttuu määritystiedostosta \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Tarkista, että 'DirData'-polku on määritetty ja se on olemassa."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "LogFile-parametria ei ole määritetty määritys-/verkkotunnustiedostossa"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "LogFormat-parametria ei ole määritetty määritys-/verkkotunnustiedostossa"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "LogFormat-parametri on virheellinen määritys-/verkkotunnustiedostossa. Arvo on '%s' (pitäisi olla 1, 2, 3, 4, 5 tai 'mukautettu AWStats-lokin muotomerkkijono')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Selaimen osoitteessa oleva verkkotunnus näyttää puuttuvan tai olevan epätäydellinen"
@@ -1436,8 +1451,8 @@ msgstr "sarake tiedostosijaintien saamiseksi"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Vinkki: Jos sinun täytyy luoda aiheeseen liittyviä kuvakkeita, voit käyttää %s:aa ladataksesi logokuvan, ja se luo automaattisesti kaikki yllä olevat kuvakkeisiin liittyvät tiedostot"
 
-msgid "200: success, 404: failure"
-msgstr "200 on onnistumisten määrä, 404 on epäonnistumisten määrä"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: onnistui, 404: puuttuu, CDN: ei-paikallinen favicon (sivuston kuvake)"
 
 # Odotetut polut
 msgid "_PATH_FAVICON"
@@ -1768,8 +1783,8 @@ msgstr "Yhteenveto tuntemattomista IP-osoitteista, joissa on vähän liikennett�
 msgid "Failed to obtain IP data"
 msgstr "Yhteenveto muista tunnetuista IP-osoitteista"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Asiaankuuluvien tietojen hankinta epäonnistui"
+msgid "Monthly Traffic Statistics"
+msgstr "Kuukausittaiset liikennetilastot"
 
 msgid "Limited list of countries and regions"
 msgstr "Tällä hetkellä näytetään vain 10 riviä, katso koko luettelo lisää maista/alueista"
@@ -3079,9 +3094,231 @@ msgstr "Tietoja, joita ei voida luokitella olemassa oleviin luokkiin, yleensä e
 msgid "tooltip_21"
 msgstr "Havaittuja matohyökkäyksiä. Madot ovat itsestään monistuvia haittaohjelmia, jotka yleensä leviävät verkon haavoittuvuuksien kautta."
 
-#------------------------------------------------------------------------------
-# Ohjetietojen näyttäminen - Community Edition
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Päivitetään määritettyä sivustoa: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Päivitetään sivustoa %s. Päivityskomento: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Käsitellään tietueita ja luodaan datatiedostoa asetustiedostosta \"%s\", AWStats versio %s"
+
+msgid "Updating data, please wait"
+msgstr "Päivitetään tietoja, odota hetki"
+
+msgid "done (%s seconds)"
+msgstr "valmis (%s sekuntia)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "KÄÄREKOMENTO (Valinnainen)"
+
+msgid "To run %s without specifying the full path."
+msgstr "%s:n suorittamiseksi ilman koko polun määrittämistä."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Luo kääreskripti hakemistoon %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Kopioi ja suorita seuraava käärekomento päätteessäsi:"
+
+msgid "Wrapper for %s"
+msgstr "%s:n kääre"
+
+msgid "Then make it executable:"
+msgstr "Tee siitä sitten suoritettava:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Voit nyt suorittaa päivityksen seuraavalla komennolla:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Lokitiedoston tiedot tulevat hakemistosta \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Luetaan viimeistä tietosijaintia ja vahvistetaan tiedot"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Viimeinen tietosijainti luettu onnistuneesti (rivin %s jälkeen)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Käsitellään uusia tietueita (päivitetään historia-tiedostoa joka %s lokimerkinnän jälkeen)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Suora pääsy viimeksi muistettuun tietueeseen laskeutui toiseen tietueeseen."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Siksi uusia tietueita etsitään lokitiedoston alusta"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Suora pääsy viimeksi muistettuun tietueeseen on tiedoston ulkopuolella."
+
+msgid "So searching it from beginning of log file"
+msgstr "Siksi sitä etsitään lokitiedoston alusta"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Etsitään uusia tietueita lokitiedoston alusta"
+
+msgid "Saving the log to the data file"
+msgstr "Tallennetaan loki tietotiedostoon"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Vierailtujen lähteiden määrä on saavuttanut tallennusrajan %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (URL-osoitteiden määrä on saavuttanut tallennusrajan %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Ohitetut rivit tiedostossa: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Löydettiin %s jo jäsennettyä tietuetta"
+
+msgid "Parsed lines in file: %s"
+msgstr "Jäsennellyt rivit tiedostossa: %s"
+
+msgid "Found %s dropped records"
+msgstr "Löydettiin %s hylättyä tietuetta"
+
+msgid "Found %s comments"
+msgstr "Löydettiin %s kommenttia"
+
+msgid "Found %s blank records"
+msgstr "Löydettiin %s tyhjää tietuetta"
+
+msgid "Found %s corrupted records"
+msgstr "Löydettiin %s vioittunutta tietuetta"
+
+msgid "Found %s old records"
+msgstr "Löydettiin %s vanhaa tietuetta"
+
+msgid "Found %s new data records"
+msgstr "Löydettiin %s uutta tietotietuetta"
+
+msgid "All updates completed!"
+msgstr "Kaikki päivitykset suoritettu!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Huomautus: HostAliases-parametria ei ole määritetty (käytetään sivuston lisäverkkotunnusten aliasten määrittämiseen, oletusarvo on tyhjä)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Järjestelmä on automaattisesti lisännyt oletusarvot: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Jos haluat lisätä muita verkkotunnusten aliaksia, aseta HostAliases määritystiedostoon ja varmista, että verkkopalvelimen (esim. Apache, Nginx) sivuston määritys päivitetään vastaavasti."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Esimerkiksi jos sivusto käyttää sekä example.com- että www.example.com-osoitetta, voit asettaa HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats-eräpäivittäjä %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Tekijänoikeus (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Lisensoitu GNU General Public License -lisenssillä"
+
+msgid "DESCRIPTION"
+msgstr "KUVAUS"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall päivittää automaattisesti kaikki löydetyt AWStats-määritystiedostot"
+
+msgid "in a specified directory (default: %s)."
+msgstr "määritetyssä hakemistossa (oletus: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Tämä on hyödyllinen ajoitettujen cron-tehtävien määrittämiseen."
+
+msgid "USAGE"
+msgstr "KÄYTTÖ"
+
+msgid "OPTIONS"
+msgstr "VALINNAT"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Polku awstats.pl-tiedostoon (tunnistetaan automaattisesti, jos se jätetään pois)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Päivitä vain määritetty verkkotunnus"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Hakemisto, joka sisältää määritystiedostot (oletus: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Jätä määritykset pois nimen perusteella (pilkulla erotettu)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Tulosteen kieli (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr jne.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Ota virheenkorjaustuloste käyttöön (suurempi N = yksityiskohtaisempi)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Aseta LastLine-arvo kaikille päivityksille"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Näytä tämä ohjeviesti"
+
+msgid "EXAMPLES"
+msgstr "ESIMERKIT"
+
+msgid "Update all sites"
+msgstr "Päivitä kaikki sivustot"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Luo tietotiedoston kommentit haluamallasi kielellä"
+
+msgid "Example:"
+msgstr "Esimerkki:"
+
+msgid "Update only one specific site"
+msgstr "Päivitä vain yksi tietty sivusto"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Päivitä kaikki sivustot mukautetulla AWStats-polulla (esim. käytettäessä virtuaali-isäntiä tai mukautettua awstats.pl-sijaintia)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Päivitä kaikki sivustot paitsi awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Käytä mukautettua määrityshakemistoa"
+
+msgid "QUICK START"
+msgstr "PIKA-ALOITUS"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update'-kääre on jo asennettu."
+
+msgid "Simply run:"
+msgstr "Suorita yksinkertaisesti:"
+
+msgid "Update single site"
+msgstr "Päivitä yksi sivusto"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Tulosta päätteen näyttöteksti ja lokitietueet määritetyllä kielellä"
+
+msgid "Log file: %s"
+msgstr "Lokitiedosto: %s"
+
+msgid "Show help"
+msgstr "Näytä ohje"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Koko polkua awstats_updateall.pl-tiedostoon ei tarvitse kirjoittaa."
+
+msgid "PERIODIC TASK"
+msgstr "JAKSOTTAINEN TEHTÄVÄ"
+
+msgid "Daily update script:"
+msgstr "Päivittäinen päivitysskripti:"
+
+msgid "Cron job:"
+msgstr "Cron-tehtävä:"
+
+msgid "Content:"
+msgstr "Sisältö:"
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Kehittyneet verkkotilastot"
 

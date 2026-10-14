@@ -104,7 +104,7 @@ Téléchargez la dernière version depuis les liens ci-dessous :
 | Encodage | GBK / encodage partiel | **Support UTF-8 complet** |
 | Système de traduction | Index numérique `$Message[169]` | **Clés sémantiques `_t('key')`** |
 | Interface | Style fixe | **Thèmes clair/sombre + responsive** |
-| Drapeaux | Images PNG | **Émojis** |
+| Drapeaux | Images PNG | **Émojis** — Sur le navigateur `Edge`, installez l'extension `Twemoji for Edge` pour afficher correctement les icônes |
 | Graphiques | Images PNG | **Graphiques CSS pur** |
 | Support calendrier | Grégorien | **13 calendriers** |
 | État de maintenance | Archivé | **Maintenance continue** |

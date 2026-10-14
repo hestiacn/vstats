@@ -675,11 +675,26 @@ msgstr "Denne mappen mangler lesetillatelse"
 msgid "Please set read permission for directory"
 msgstr "Vennligst sett lesetillatelse for mappen"
 
-msgid "Missing required parameter in config file"
-msgstr "Mangler nødvendig parameter i konfigurasjonsfilen"
+msgid "No AWStats config file for any site found in %s"
+msgstr "Ingen AWStats-konfigurasjonsfil funnet for noe nettsted i %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Vennligst sjekk at 'DirData' er definert."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Katalogen '%s' inneholder ikke en konfigurasjonsfil for domenet '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Påkrevd parameter mangler i konfigurasjonsfilen \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Kontroller at banen 'DirData' er definert og eksisterer."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Parameteren LogFile er ikke definert i konfigurasjons-/domenefilen"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Parameteren LogFormat er ikke definert i konfigurasjons-/domenefilen"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Parameteren LogFormat er feil i konfigurasjons-/domenefilen. Verdien er '%s' (skal være 1, 2, 3, 4, 5 eller en 'personlig AWStats loggformatstreng')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Domenenavnet i nettleseradressen ser ut til å mangle eller være ufullstendig"
@@ -1419,8 +1434,8 @@ msgstr "kolonne for filplasseringer"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Tips: Hvis du trenger å generere relaterte ikoner, kan du bruke %s til å laste opp et logobilde, og det vil automatisk generere alle de ovennevnte relaterte ikonfilene"
 
-msgid "200: success, 404: failure"
-msgstr "200 er antall vellykkede, 404 er antall mislykkede"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: suksess, 404: mangler, CDN: ikke-lokal favicon (nettstedsikon)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1750,8 +1765,8 @@ msgstr "Oppsummering av IP-adresser med lav trafikk"
 msgid "Failed to obtain IP data"
 msgstr "Annen kjent IP-oppsummering"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Kunne ikke hente relevante data"
+msgid "Monthly Traffic Statistics"
+msgstr "Månedlig trafikkstatistikk"
 
 msgid "Limited list of countries and regions"
 msgstr "Bare de første 10 dataene vises. Se fullstendig liste for flere land og regioner"
@@ -3045,6 +3060,231 @@ msgstr "Data som ikke kan kategoriseres i eksisterende områder, vanligvis på g
 
 msgid "tooltip_21"
 msgstr "Registrering av ormangrep. Orm er et selv-replikerende ondsinnet program."
+
+msgid "Updating specified site: %s"
+msgstr "Oppdaterer angitt nettsted: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Oppdaterer nettstedet %s. Oppdateringskommando: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Behandler poster og genererer datafil fra konfigurasjonsfilen \"%s\", AWStats versjon %s"
+
+msgid "Updating data, please wait"
+msgstr "Oppdaterer data, vennligst vent"
+
+msgid "done (%s seconds)"
+msgstr "ferdig (%s sekunder)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "INNPAKNINGSKOMMANDO (Valgfritt)"
+
+msgid "To run %s without specifying the full path."
+msgstr "For å kjøre %s uten å angi full banen."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Opprett et innpakningsskript i %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Kopier og kjør følgende innpakningskommando i terminalen din:"
+
+msgid "Wrapper for %s"
+msgstr "Innpakning for %s"
+
+msgid "Then make it executable:"
+msgstr "Gjør det deretter kjørbart:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Du kan nå kjøre oppdateringen med følgende kommando:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Loggfilens data kommer fra katalogen \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Leser siste dataposisjon og verifiserer data"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Siste dataposisjon ble lest (etter linje %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Behandler nye poster (oppdaterer historikkfilen for hver %s loggoppføring)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Direkte tilgang til den sist huskede posten landet på en annen post."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Derfor søkes det etter nye poster fra begynnelsen av loggfilen"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Direkte tilgang til den sist huskede posten er utenfor filen."
+
+msgid "So searching it from beginning of log file"
+msgstr "Derfor søkes det fra begynnelsen av loggfilen"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Søker etter nye poster fra begynnelsen av loggfilen"
+
+msgid "Saving the log to the data file"
+msgstr "Lagrer loggen til datafilen"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Antallet besøkte kilder har nådd lagringsgrensen på %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Antallet URL-er har nådd lagringsgrensen på %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Hoppet over linjer i filen: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Fant %s allerede parsede poster"
+
+msgid "Parsed lines in file: %s"
+msgstr "Parsede linjer i filen: %s"
+
+msgid "Found %s dropped records"
+msgstr "Fant %s forkastede poster"
+
+msgid "Found %s comments"
+msgstr "Fant %s kommentarer"
+
+msgid "Found %s blank records"
+msgstr "Fant %s tomme poster"
+
+msgid "Found %s corrupted records"
+msgstr "Fant %s skadede poster"
+
+msgid "Found %s old records"
+msgstr "Fant %s gamle poster"
+
+msgid "Found %s new data records"
+msgstr "Fant %s nye dataposter"
+
+msgid "All updates completed!"
+msgstr "Alle oppdateringer fullført!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Merknad: HostAliases-parameteren er ikke konfigurert (brukes til å definere ekstra domenenavn for nettstedet, standard er tom)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Systemet har automatisk lagt til standardverdier: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "For å legge til andre domenenavn, vennligst sett HostAliases i konfigurasjonsfilen, og sørg for at nettstedkonfigurasjonen til webserveren (f.eks. Apache, Nginx) oppdateres tilsvarende."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "For eksempel, hvis nettstedet bruker både example.com og www.example.com, kan du sette HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats batch-oppdatering %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Opphavsrett (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Lisensiert under GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "BESKRIVELSE"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall oppdaterer automatisk alle AWStats-konfigurasjonsfiler som finnes"
+
+msgid "in a specified directory (default: %s)."
+msgstr "i en angitt katalog (standard: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Dette er nyttig for å sette opp planlagte cron-jobber."
+
+msgid "USAGE"
+msgstr "BRUK"
+
+msgid "OPTIONS"
+msgstr "ALTERNATIVER"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Sti til awstats.pl (oppdages automatisk hvis den utelates)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Oppdater bare det angitte domenet"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Katalog som inneholder konfigurasjonsfiler (standard: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Ekskluder konfigurasjoner etter navn (kommaseparert)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Språk for utdata (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Aktiver feilsøkingsutdata (høyere N = mer detaljert)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Angi LastLine-verdi for alle oppdateringer"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Vis denne hjelpemeldingen"
+
+msgid "EXAMPLES"
+msgstr "EKSEMPLER"
+
+msgid "Update all sites"
+msgstr "Oppdater alle nettsteder"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Generer kommentarer i datafilen på ditt foretrukne språk"
+
+msgid "Example:"
+msgstr "Eksempel:"
+
+msgid "Update only one specific site"
+msgstr "Oppdater bare ett bestemt nettsted"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Oppdater alle nettsteder med en egendefinert AWStats-sti (f.eks. når du bruker virtuelle verter eller en egendefinert awstats.pl-plassering)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Oppdater alle nettsteder unntatt awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Bruk egendefinert konfigurasjonskatalog"
+
+msgid "QUICK START"
+msgstr "HURTIGSTART"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update'-innpakningen er allerede installert."
+
+msgid "Simply run:"
+msgstr "Bare kjør:"
+
+msgid "Update single site"
+msgstr "Oppdater ett nettsted"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Skriv ut terminalvisningstekst og loggoppføringer på ditt angitte språk"
+
+msgid "Log file: %s"
+msgstr "Loggfil: %s"
+
+msgid "Show help"
+msgstr "Vis hjelp"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Du trenger ikke å skrive inn hele banen til awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "PERIODISK OPPGAVE"
+
+msgid "Daily update script:"
+msgstr "Daglig oppdateringsskript:"
+
+msgid "Cron job:"
+msgstr "Cron-jobb:"
+
+msgid "Content:"
+msgstr "Innhold:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Avansert webstatistikk"

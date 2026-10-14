@@ -93,16 +93,12 @@ et de nombreuses fonctionnalités.
 #---- prep
 %prep
 %setup -q -n %{name}-%{version}
-
 #---- build
 %build
 # Nothing to build
-
 #---- install
 %install
 rm -rf $RPM_BUILD_ROOT
-
-# 创建目录
 mkdir -p $RPM_BUILD_ROOT/usr/share/awstats
 mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/icon
 mkdir -p $RPM_BUILD_ROOT/usr/share/awstats/css
@@ -119,8 +115,6 @@ mkdir -p $RPM_BUILD_ROOT/var/lib/awstats
 mkdir -p $RPM_BUILD_ROOT/var/log/awstats
 mkdir -p $RPM_BUILD_ROOT/usr/share/perl5/Geo
 mkdir -p $RPM_BUILD_ROOT/usr/share/doc/awstats
-
-# 创建 Apache 配置文件
 mkdir -p $RPM_BUILD_ROOT/etc/httpd/conf.d
 cat > $RPM_BUILD_ROOT/etc/httpd/conf.d/awstats.conf << 'EOF'
 Alias /awstatsclasses "/usr/share/awstats/classes/"
@@ -185,11 +179,8 @@ if [ -d "$RPM_BUILD_ROOT/usr/share/awstats/plugins" ]; then
 fi
 
 # 复制配置文件
-cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/awstats.conf $RPM_BUILD_ROOT/etc/awstats/awstats.conf
+cp -pr $RPM_BUILD_DIR/%{name}-%{version}/make/test/awstats/conf/awstats.conf.rhel $RPM_BUILD_ROOT/etc/awstats/awstats.conf.local
 cp -pr $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/awstats.model.conf $RPM_BUILD_ROOT/etc/awstats/awstats.model.conf
-
-# 创建空配置文件
-touch $RPM_BUILD_ROOT/etc/awstats/awstats.local.conf
 
 # 复制 MaxMind 模块
 MAXMIND_SRC="$RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/MaxMind"
@@ -209,15 +200,22 @@ if [ -f $RPM_BUILD_DIR/%{name}-%{version}/wwwroot/cgi-bin/lib/IPfree.pod ]; then
     chmod 644 $RPM_BUILD_ROOT/usr/share/perl5/Geo/IPfree.pod
 fi
 
-# 创建 CLI 包装脚本
+# 创建 CLI 包装脚本 (awstats)
 cat > $RPM_BUILD_ROOT/usr/local/bin/awstats << 'EOF'
 #!/bin/bash
 perl /usr/lib/cgi-bin/awstats.pl "$@"
 EOF
 chmod 755 $RPM_BUILD_ROOT/usr/local/bin/awstats
 
+# 创建 CLI 包装脚本 (awstats-update)
+cat > $RPM_BUILD_ROOT/usr/local/bin/awstats-update << 'EOF'
+#!/bin/bash
+perl /usr/share/awstats/tools/awstats_updateall.pl "$@"
+EOF
+chmod 755 $RPM_BUILD_ROOT/usr/local/bin/awstats-update
+
 # 创建 cron 任务
-cat > $RPM_BUILD_ROOT/etc/cron.d/awstats << 'EOF'
+cat > $RPM_BUILD_ROOT/etc/cron.d/awstats-update << 'EOF'
 # AWStats cron job
 # Run AWStats update daily at 1:00 AM
 0 1 * * * root [ -x /usr/share/awstats/tools/awstats_updateall.pl ] && /usr/share/awstats/tools/awstats_updateall.pl now > /dev/null 2>&1
@@ -311,9 +309,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc README.md
-%config(noreplace) /etc/awstats/awstats.conf
 %config(noreplace) /etc/awstats/awstats.model.conf
-%config(noreplace) /etc/awstats/awstats.local.conf
+%config(noreplace) /etc/awstats/awstats.conf.local
 %config(noreplace) /etc/httpd/conf.d/awstats.conf
 %config(noreplace) /etc/cron.d/awstats
 %config(noreplace) /etc/logrotate.d/awstats

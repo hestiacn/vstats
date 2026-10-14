@@ -675,11 +675,26 @@ msgstr "Ushbu katalogda o‘qish ruxsati yo‘q"
 msgid "Please set read permission for directory"
 msgstr "Iltimos, katalog uchun o‘qish ruxsatini o‘rnating"
 
-msgid "Missing required parameter in config file"
-msgstr "Konfiguratsiya faylida kerakli parametr yo‘q"
+msgid "No AWStats config file for any site found in %s"
+msgstr "%s ichida hech qanday sayt uchun AWStats konfiguratsiya fayli topilmadi"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Iltimos, 'DirData' aniqlanganligini tekshiring."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "'%s' katalogida '%s' domeni uchun konfiguratsiya fayli yo'q"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "\"%s\" konfiguratsiya faylida majburiy parametr yo'q"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Iltimos, 'DirData' yo'li aniqlangan va mavjudligini tekshiring."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "LogFile parametri konfiguratsiya/domen faylida aniqlanmagan"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "LogFormat parametri konfiguratsiya/domen faylida aniqlanmagan"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "LogFormat parametri konfiguratsiya/domen faylida noto'g'ri. Qiymat '%s' (1, 2, 3, 4, 5 yoki 'shaxsiylashtirilgan AWStats jurnal formati satri' bo'lishi kerak)"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Brauzer manzilidagi domen nomi yo‘q yoki to‘liq emasga o‘xshaydi"
@@ -1419,8 +1434,8 @@ msgstr "Fayl joylashuvlarini olish uchun ustun"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Maslahat: Agar siz tegishli belgilarni yaratishingiz kerak bo'lsa, %s yordamida logotip tasvirini yuklashingiz mumkin va u avtomatik ravishda yuqoridagi barcha tegishli belgi fayllarini yaratadi"
 
-msgid "200: success, 404: failure"
-msgstr "200 muvaffaqiyatlar soni 404 muvaffaqiyatsizliklar soni"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: muvaffaqiyat, 404: topilmadi, CDN: mahalliy bo'lmagan favicon (sayt belgisi)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1750,8 +1765,8 @@ msgstr "Kam trafikli noma'lum IP xulosasi"
 msgid "Failed to obtain IP data"
 msgstr "Boshqa ma'lum IP xulosasi"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Tegishli ma'lumotlarni olish muvaffaqiyatsiz tugadi"
+msgid "Monthly Traffic Statistics"
+msgstr "Oylik trafik statistikasi"
 
 msgid "Limited list of countries and regions"
 msgstr "Hozirda faqat 10 qator ko'rsatilmoqda, ko'proq mamlakatlar va mintaqalar uchun to'liq ro'yxatga qarang"
@@ -3054,9 +3069,230 @@ msgstr "Mavjud toifalarga kiritib bo'lmaydigan ma'lumotlar, odatda ma'lumotlar s
 msgid "tooltip_21"
 msgstr "Aniqlangan virus qurti hujumlari yozuvlari. Qurt o'z-o'zidan tarqaladigan zararli dastur bo'lib, odatda tarmoq zaifliklari orqali tarqaladi"
 
-#------------------------------------------------------------------------------
-# Yordam ma'lumotlarini ko'rsatish - Hamjamiyat nashri
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Belgilangan sayt yangilanmoqda: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "%s sayti yangilanmoqda. Yangilash buyrug'i: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Konfiguratsiya fayli \"%s\" dan yozuvlar qayta ishlanmoqda va ma'lumotlar fayli yaratilmoqda, AWStats versiyasi %s"
+
+msgid "Updating data, please wait"
+msgstr "Ma'lumotlar yangilanmoqda, iltimos kuting"
+
+msgid "done (%s seconds)"
+msgstr "bajarildi (%s soniya)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "O'RASH BUYRUG'I (Ixtiyoriy)"
+
+msgid "To run %s without specifying the full path."
+msgstr "To'liq yo'lni ko'rsatmasdan %s ni ishga tushirish uchun."
+
+msgid "Create a wrapper script in %s:"
+msgstr "%s da o'rash skriptini yarating:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Quyidagi o'rash buyrug'ini terminalingizga nusxalab ishga tushiring:"
+
+msgid "Wrapper for %s"
+msgstr "%s uchun o'rash"
+
+msgid "Then make it executable:"
+msgstr "Keyin uni bajariladigan qilib qo'ying:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Endi yangilanishni quyidagi buyruq yordamida ishga tushirishingiz mumkin:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Jurnal fayli ma'lumotlari \"%s\" katalogidan keladi"
+
+msgid "Reading last data position and verifying data"
+msgstr "Oxirgi ma'lumot pozitsiyasi o'qilmoqda va ma'lumotlar tekshirilmoqda"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Oxirgi ma'lumot pozitsiyasi muvaffaqiyatli o'qildi (%s qatoridan keyin)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Yangi yozuvlar qayta ishlanmoqda (har %s jurnal yozuvida tarix fayli yangilanadi)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Oxirgi eslab qolingan yozuvga to'g'ridan-to'g'ri kirish boshqa yozuvga tushdi."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Shuning uchun jurnal faylining boshidan yangi yozuvlar qidirilmoqda"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Oxirgi eslab qolingan yozuvga to'g'ridan-to'g'ri kirish fayldan tashqarida."
+
+msgid "So searching it from beginning of log file"
+msgstr "Shuning uchun jurnal faylining boshidan qidirilmoqda"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Jurnal faylining boshidan yangi yozuvlar qidirilmoqda"
+
+msgid "Saving the log to the data file"
+msgstr "Jurnal ma'lumotlar fayliga saqlanmoqda"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Tashrif buyurilgan manbalar soni %s saqlash chegarasiga yetdi)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (URL manzillar soni %s saqlash chegarasiga yetdi)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Faylda o'tkazib yuborilgan qatorlar: %s"
+
+msgid "Found %s already parsed records"
+msgstr "%s allaqachon tahlil qilingan yozuvlar topildi"
+
+msgid "Parsed lines in file: %s"
+msgstr "Faylda tahlil qilingan qatorlar: %s"
+
+msgid "Found %s dropped records"
+msgstr "%s tashlab yuborilgan yozuvlar topildi"
+
+msgid "Found %s comments"
+msgstr "%s izohlar topildi"
+
+msgid "Found %s blank records"
+msgstr "%s bo'sh yozuvlar topildi"
+
+msgid "Found %s corrupted records"
+msgstr "%s buzilgan yozuvlar topildi"
+
+msgid "Found %s old records"
+msgstr "%s eski yozuvlar topildi"
+
+msgid "Found %s new data records"
+msgstr "%s yangi ma'lumot yozuvlari topildi"
+
+msgid "All updates completed!"
+msgstr "Barcha yangilanishlar yakunlandi!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Eslatma: HostAliases parametri sozlanmagan (sayt uchun qo'shimcha domen taxalluslarini aniqlash uchun ishlatiladi, standart bo'sh)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Tizim standart qiymatlarni avtomatik qo'shdi: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Boshqa domen taxalluslarini qo'shish uchun konfiguratsiya faylida HostAliases ni o'rnating va veb-serverning (masalan, Apache, Nginx) sayt konfiguratsiyasi shunga mos ravishda yangilanganligiga ishonch hosil qiling."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Misol uchun, agar sayt example.com va www.example.com ikkalasidan ham foydalansa, HostAliases=\"www\" ni o'rnatishingiz mumkin."
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats paketli yangilovchi %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Mualliflik huquqi (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "GNU General Public License ostida litsenziyalangan"
+
+msgid "DESCRIPTION"
+msgstr "TAVSIF"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall topilgan barcha AWStats konfiguratsiya fayllarini avtomatik yangilaydi"
+
+msgid "in a specified directory (default: %s)."
+msgstr "belgilangan katalogda (standart: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Bu rejalashtirilgan cron vazifalarini sozlash uchun foydalidir."
+
+msgid "USAGE"
+msgstr "FOYDALANISH"
+
+msgid "OPTIONS"
+msgstr "PARAMETRLAR"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    awstats.pl ga yo'l (o'tkazib yuborilsa avtomatik aniqlanadi)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Faqat belgilangan domenni yangilash"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Konfiguratsiya fayllarini o'z ichiga olgan katalog (standart: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Konfiguratsiyalarni nomi bo'yicha chiqarib tashlash (vergul bilan ajratilgan)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Chiqish uchun til (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr va boshqalar)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Nosozliklarni tuzatish chiqishini yoqish (yuqori N = batafsilroq)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Barcha yangilanishlar uchun LastLine qiymatini o'rnatish"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Ushbu yordam xabarini ko'rsatish"
+
+msgid "EXAMPLES"
+msgstr "MISOLLAR"
+
+msgid "Update all sites"
+msgstr "Barcha saytlarni yangilash"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "O'zingiz yoqtirgan tilda ma'lumotlar fayli izohlarini yaratish"
+
+msgid "Example:"
+msgstr "Misol:"
+
+msgid "Update only one specific site"
+msgstr "Faqat bitta aniq saytni yangilash"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Barcha saytlarni maxsus AWStats yo'li bilan yangilash (masalan, virtual xostlar yoki maxsus awstats.pl joylashuvidan foydalanganda)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "awstats.example.com.conf dan tashqari barcha saytlarni yangilash"
+
+msgid "Use custom config directory"
+msgstr "Maxsus konfiguratsiya katalogidan foydalanish"
+
+msgid "QUICK START"
+msgstr "TEZKOR BOSHLASH"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update' o'ramasi allaqachon o'rnatilgan."
+
+msgid "Simply run:"
+msgstr "Shunchaki ishga tushiring:"
+
+msgid "Update single site"
+msgstr "Bitta saytni yangilash"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Terminal displey matni va jurnal yozuvlarini belgilangan tilda chiqarish"
+
+msgid "Log file: %s"
+msgstr "Jurnal fayli: %s"
+
+msgid "Show help"
+msgstr "Yordamni ko'rsatish"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "awstats_updateall.pl ga to'liq yo'lni kiritish shart emas."
+
+msgid "PERIODIC TASK"
+msgstr "DAVRIY VAZIFA"
+
+msgid "Daily update script:"
+msgstr "Kundalik yangilash skripti:"
+
+msgid "Cron job:"
+msgstr "Cron vazifasi:"
+
+msgid "Content:"
+msgstr "Tarkib:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - ilg'or veb statistikasi"

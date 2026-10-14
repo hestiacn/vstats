@@ -113,7 +113,7 @@ Get the latest version from the links below:
 | Encoding | GBK / Local encoding | **Full UTF-8 Support** |
 | Translation | Numeric indices `$Message[169]` | **Semantic keys `_t('key')`** |
 | Interface | Fixed style | **Dark/Light theme + Responsive** |
-| Country Flags | PNG images | **Emoji** |
+| Country Flags | PNG images | **Emoji** — For `EDGE` browser, install the `Twemoji for Edge` extension to display icons properly |
 | Charts | PNG images | **Pure CSS Charts** |
 | Calendar Support | Gregorian only | **13 Calendar Systems** |
 | Maintenance Status | Archived | **Actively Maintained** |

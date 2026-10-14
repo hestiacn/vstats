@@ -675,11 +675,26 @@ msgstr "اس ڈائرکٹری میں پڑھنے کی اجازت نہیں ہے"
 msgid "Please set read permission for directory"
 msgstr "براہ کرم ڈائرکٹری کے لیے پڑھنے کی اجازت مقرر کریں"
 
-msgid "Missing required parameter in config file"
-msgstr "کنفیگریشن فائل میں مطلوبہ پیرامیٹر موجود نہیں"
+msgid "No AWStats config file for any site found in %s"
+msgstr "%s میں کسی بھی سائٹ کے لیے AWStats کنفیگریشن فائل نہیں ملی"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "براہ کرم چیک کریں کہ 'DirData' کی تعریف ہوئی ہے۔"
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "ڈائریکٹری '%s' میں ڈومین '%s' کے لیے کنفیگریشن فائل نہیں ہے"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "کنفیگریشن فائل \"%s\" میں مطلوبہ پیرامیٹر غائب ہے"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "براہ کرم چیک کریں کہ 'DirData' پاتھ متعین ہے اور موجود ہے۔"
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "LogFile پیرامیٹر کنفیگریشن/ڈومین فائل میں متعین نہیں ہے"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "LogFormat پیرامیٹر کنفیگریشن/ڈومین فائل میں متعین نہیں ہے"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "کنفیگریشن/ڈومین فائل میں LogFormat پیرامیٹر غلط ہے۔ قیمت '%s' ہے (1، 2، 3، 4، 5 یا 'ذاتی نوعیت کی AWStats لاگ فارمیٹ سٹرنگ' ہونی چاہیے)"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "براؤزر ایڈریس میں ڈومین نام موجود نہیں ہے یا نامکمل لگتا ہے"
@@ -1419,8 +1434,8 @@ msgstr "فائل کی جگہیں حاصل کرنے کے لیے کالم"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "ٹپ: اگر آپ کو متعلقہ آئیکنز تیار کرنے کی ضرورت ہے، تو آپ %s کا استعمال کرتے ہوئے لوگو امیج اپ لوڈ کر سکتے ہیں، اور یہ خود بخود اوپر دی گئی تمام متعلقہ آئیکن فائلیں تیار کر دے گا"
 
-msgid "200: success, 404: failure"
-msgstr "200 کامیابیوں کی تعداد ہے 404 ناکامیوں کی تعداد"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: کامیاب، 404: نہیں ملا، CDN: غیر مقامی favicon (سائٹ آئیکن)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1750,8 +1765,8 @@ msgstr "کم رسائی والے نامعلوم IP کا خلاصہ"
 msgid "Failed to obtain IP data"
 msgstr "دیگر معلوم IP کا خلاصہ"
 
-msgid "Failed to obtain the relevant data"
-msgstr "متعلقہ ڈیٹا حاصل کرنے میں ناکام"
+msgid "Monthly Traffic Statistics"
+msgstr "ماہانہ ٹریفک کے اعداد و شمار"
 
 msgid "Limited list of countries and regions"
 msgstr "موجودہ طور پر صرف 10 لائنیں دکھائی جا رہی ہیں، مزید ممالک اور خطوں کے لیے مکمل فہرست دیکھیں"
@@ -3054,9 +3069,230 @@ msgstr "وہ ڈیٹا جسے موجودہ زمروں میں شامل نہیں ک
 msgid "tooltip_21"
 msgstr "تشخیص شدہ وائرس وارم کے حملوں کے ریکارڈ۔ وارم ایک خود پھیلنے والا بدنیتی پر مبنی پروگرام ہے، جو عام طور پر نیٹ ورک کے خطرات کے ذریعے پھیلتا ہے"
 
-#------------------------------------------------------------------------------
-# مدد کی معلومات دکھائیں - کمیونٹی ایڈیشن
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "مخصوص سائٹ کو اپ ڈیٹ کیا جا رہا ہے: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "سائٹ %s کو اپ ڈیٹ کیا جا رہا ہے۔ اپ ڈیٹ کمانڈ: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "کنفیگریشن فائل \"%s\" سے ریکارڈز پر کارروائی اور ڈیٹا فائل تیار کی جا رہی ہے، AWStats ورژن %s"
+
+msgid "Updating data, please wait"
+msgstr "ڈیٹا اپ ڈیٹ ہو رہا ہے، براہ کرم انتظار کریں"
+
+msgid "done (%s seconds)"
+msgstr "مکمل (%s سیکنڈ)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "ریپر کمانڈ (اختیاری)"
+
+msgid "To run %s without specifying the full path."
+msgstr "مکمل پاتھ متعین کیے بغیر %s چلانے کے لیے۔"
+
+msgid "Create a wrapper script in %s:"
+msgstr "%s میں ریپر اسکرپٹ بنائیں:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "درج ذیل ریپر کمانڈ کو اپنے ٹرمینل میں کاپی کریں اور چلائیں:"
+
+msgid "Wrapper for %s"
+msgstr "%s کے لیے ریپر"
+
+msgid "Then make it executable:"
+msgstr "پھر اسے قابل عمل بنائیں:"
+
+msgid "You can now run the update using the following command:"
+msgstr "اب آپ درج ذیل کمانڈ استعمال کر کے اپ ڈیٹ چلا سکتے ہیں:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "لاگ فائل کا ڈیٹا \"%s\" ڈائریکٹری سے آتا ہے"
+
+msgid "Reading last data position and verifying data"
+msgstr "آخری ڈیٹا پوزیشن پڑھی جا رہی ہے اور ڈیٹا کی تصدیق کی جا رہی ہے"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "آخری ڈیٹا پوزیشن کامیابی سے پڑھی گئی (لائن %s کے بعد)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "نئے ریکارڈز پر کارروائی کی جا رہی ہے (ہر %s لاگ انٹریوں پر تاریخ کی فائل اپ ڈیٹ کی جا رہی ہے)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "آخری یاد رکھے گئے ریکارڈ تک براہ راست رسائی دوسرے ریکارڈ پر پہنچ گئی۔"
+
+msgid "So searching new records from beginning of log file"
+msgstr "لہٰذا لاگ فائل کے آغاز سے نئے ریکارڈز تلاش کیے جا رہے ہیں"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "آخری یاد رکھے گئے ریکارڈ تک براہ راست رسائی فائل سے باہر ہے۔"
+
+msgid "So searching it from beginning of log file"
+msgstr "لہٰذا لاگ فائل کے آغاز سے تلاش کیا جا رہا ہے"
+
+msgid "Searching new records from beginning of log file"
+msgstr "لاگ فائل کے آغاز سے نئے ریکارڈز تلاش کیے جا رہے ہیں"
+
+msgid "Saving the log to the data file"
+msgstr "لاگ کو ڈیٹا فائل میں محفوظ کیا جا رہا ہے"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (ملاحظہ کیے گئے ذرائع کی تعداد %s محفوظ کرنے کی حد تک پہنچ گئی ہے)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (URLs کی تعداد %s محفوظ کرنے کی حد تک پہنچ گئی ہے)"
+
+msgid "Jumped lines in file: %s"
+msgstr "فائل میں چھوڑی گئی لائنیں: %s"
+
+msgid "Found %s already parsed records"
+msgstr "%s پہلے سے تجزیہ شدہ ریکارڈز ملے"
+
+msgid "Parsed lines in file: %s"
+msgstr "فائل میں تجزیہ شدہ لائنیں: %s"
+
+msgid "Found %s dropped records"
+msgstr "%s خارج کردہ ریکارڈز ملے"
+
+msgid "Found %s comments"
+msgstr "%s تبصرے ملے"
+
+msgid "Found %s blank records"
+msgstr "%s خالی ریکارڈز ملے"
+
+msgid "Found %s corrupted records"
+msgstr "%s خراب ریکارڈز ملے"
+
+msgid "Found %s old records"
+msgstr "%s پرانے ریکارڈز ملے"
+
+msgid "Found %s new data records"
+msgstr "%s نئے ڈیٹا ریکارڈز ملے"
+
+msgid "All updates completed!"
+msgstr "تمام اپ ڈیٹس مکمل ہو گئیں!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "نوٹس: HostAliases پیرامیٹر کنفیگر نہیں کیا گیا (سائٹ کے لیے اضافی ڈومین عرفیات کی وضاحت کے لیے استعمال ہوتا ہے، ڈیفالٹ خالی ہے)۔"
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "سسٹم نے خودکار طور پر ڈیفالٹ اقدار شامل کیں: localhost، 127.0.0.1، ::1۔"
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "دیگر ڈومین عرفیات شامل کرنے کے لیے، براہ کرم کنفیگریشن فائل میں HostAliases سیٹ کریں، اور یقینی بنائیں کہ ویب سرور (مثلاً، Apache، Nginx) کی سائٹ کنفیگریشن اسی کے مطابق اپ ڈیٹ ہو گئی ہے۔"
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "مثال کے طور پر، اگر سائٹ example.com اور www.example.com دونوں استعمال کرتی ہے، تو آپ HostAliases=\"www\" سیٹ کر سکتے ہیں۔"
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats بیچ اپ ڈیٹر %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "کاپی رائٹ (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "GNU General Public License کے تحت لائسنس یافتہ"
+
+msgid "DESCRIPTION"
+msgstr "تفصیل"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall ملنے والی تمام AWStats کنفیگ فائلوں کو خودکار طور پر اپ ڈیٹ کرتا ہے"
+
+msgid "in a specified directory (default: %s)."
+msgstr "مخصوص ڈائریکٹری میں (ڈیفالٹ: %s)۔"
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "یہ شیڈول شدہ cron کاموں کو ترتیب دینے کے لیے مفید ہے۔"
+
+msgid "USAGE"
+msgstr "استعمال"
+
+msgid "OPTIONS"
+msgstr "اختیارات"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    awstats.pl کا راستہ (چھوڑ دیے جانے پر خودکار طور پر پتہ لگایا جاتا ہے)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       صرف مخصوص ڈومین کو اپ ڈیٹ کریں"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       کنفیگ فائلوں پر مشتمل ڈائریکٹری (ڈیفالٹ: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    نام کے لحاظ سے کنفیگز خارج کریں (کوما سے الگ)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             آؤٹ پٹ کے لیے زبان (en-ca، en-gb، en-us، zh-cn، zh-tw، de، fr وغیرہ)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             ڈیبگ آؤٹ پٹ فعال کریں (زیادہ N = زیادہ تفصیلی)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  تمام اپ ڈیٹس کے لیے LastLine قدر سیٹ کریں"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            یہ مدد کا پیغام دکھائیں"
+
+msgid "EXAMPLES"
+msgstr "مثالیں"
+
+msgid "Update all sites"
+msgstr "تمام سائٹس کو اپ ڈیٹ کریں"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "اپنی پسندیدہ زبان میں ڈیٹا فائل تبصرے بنائیں"
+
+msgid "Example:"
+msgstr "مثال:"
+
+msgid "Update only one specific site"
+msgstr "صرف ایک مخصوص سائٹ کو اپ ڈیٹ کریں"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "تمام سائٹس کو اپنی مرضی کے AWStats راستے کے ساتھ اپ ڈیٹ کریں (مثلاً، ورچوئل ہوسٹس یا اپنی مرضی کے awstats.pl مقام کا استعمال کرتے وقت)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "awstats.example.com.conf کے علاوہ تمام سائٹس کو اپ ڈیٹ کریں"
+
+msgid "Use custom config directory"
+msgstr "اپنی مرضی کی کنفیگ ڈائریکٹری استعمال کریں"
+
+msgid "QUICK START"
+msgstr "فوری آغاز"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update' ریپر پہلے سے نصب ہے۔"
+
+msgid "Simply run:"
+msgstr "صرف چلائیں:"
+
+msgid "Update single site"
+msgstr "واحد سائٹ کو اپ ڈیٹ کریں"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "اپنی مخصوص زبان میں ٹرمینل ڈسپلے متن اور لاگ ریکارڈز آؤٹ پٹ کریں"
+
+msgid "Log file: %s"
+msgstr "لاگ فائل: %s"
+
+msgid "Show help"
+msgstr "مدد دکھائیں"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "awstats_updateall.pl کا مکمل راستہ ٹائپ کرنے کی ضرورت نہیں۔"
+
+msgid "PERIODIC TASK"
+msgstr "وقتاً فوقتاً کام"
+
+msgid "Daily update script:"
+msgstr "روزانہ اپ ڈیٹ اسکرپٹ:"
+
+msgid "Cron job:"
+msgstr "Cron کام:"
+
+msgid "Content:"
+msgstr "مواد:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - اعلیٰ درجے کی ویب شماریات"

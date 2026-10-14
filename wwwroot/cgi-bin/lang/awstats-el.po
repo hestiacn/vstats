@@ -689,11 +689,26 @@ msgstr "Αυτός ο κατάλογος δεν έχει δικαίωμα ανά
 msgid "Please set read permission for directory"
 msgstr "Παρακαλώ ορίστε δικαίωμα ανάγνωσης για τον κατάλογο"
 
-msgid "Missing required parameter in config file"
-msgstr "Λείπει απαιτούμενη παράμετρος στο αρχείο ρυθμίσεων"
+msgid "No AWStats config file for any site found in %s"
+msgstr "Δεν βρέθηκε αρχείο ρυθμίσεων AWStats για κανέναν ιστότοπο στο %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Παρακαλώ ελέγξτε ότι το 'DirData' έχει οριστεί."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Ο κατάλογος '%s' δεν περιέχει αρχείο ρυθμίσεων για τον τομέα '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Λείπει απαιτούμενη παράμετρος στο αρχείο ρυθμίσεων \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Ελέγξτε ότι η διαδρομή 'DirData' έχει οριστεί και υπάρχει."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Η παράμετρος LogFile δεν έχει οριστεί στο αρχείο ρυθμίσεων/τομέα"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Η παράμετρος LogFormat δεν έχει οριστεί στο αρχείο ρυθμίσεων/τομέα"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Η παράμετρος LogFormat είναι λανθασμένη στο αρχείο ρυθμίσεων/τομέα. Η τιμή είναι '%s' (θα πρέπει να είναι 1, 2, 3, 4, 5 ή ένα 'εξατομικευμένο αλφαριθμητικό μορφής αρχείου καταγραφής AWStats')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Το όνομα τομέα στη διεύθυνση του περιηγητή φαίνεται να λείπει ή να είναι ελλιπές"
@@ -1436,8 +1451,8 @@ msgstr "στήλη για λήψη θέσεων αρχείων"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Συμβουλή: Εάν χρειάζεται να δημιουργήσετε σχετικά εικονίδια, μπορείτε να χρησιμοποιήσετε το %s για να ανεβάσετε μια εικόνα λογότυπου και θα δημιουργήσει αυτόματα όλα τα παραπάνω σχετικά αρχεία εικονιδίων"
 
-msgid "200: success, 404: failure"
-msgstr "200 είναι ο αριθμός επιτυχιών, 404 είναι ο αριθμός αποτυχιών"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: επιτυχία, 404: λείπει, CDN: μη τοπικό favicon (εικονίδιο ιστότοπου)"
 
 # Αναμενόμενες διαδρομές
 msgid "_PATH_FAVICON"
@@ -1768,8 +1783,8 @@ msgstr "Σύνοψη άγνωστων IP με χαμηλή κίνηση"
 msgid "Failed to obtain IP data"
 msgstr "Σύνοψη άλλων γνωστών IP"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Αδυναμία λήψης σχετικών δεδομένων"
+msgid "Monthly Traffic Statistics"
+msgstr "Monthly Traffic Statistics"
 
 msgid "Limited list of countries and regions"
 msgstr "Επί του παρόντος εμφανίζονται μόνο 10 γραμμές, δείτε την πλήρη λίστα για περισσότερες χώρες/περιοχές"
@@ -3079,9 +3094,231 @@ msgstr "Δεδομένα που δεν μπορούν να κατηγοριοπ�
 msgid "tooltip_21"
 msgstr "Καταγεγραμμένες επιθέσεις σκουληκιών. Τα σκουλήκια είναι αυτοαντιγραφόμενα κακόβουλα προγράμματα που συνήθως εξαπλώνονται μέσω τρωτοτήτων δικτύου."
 
-#------------------------------------------------------------------------------
-# Εμφάνιση πληροφοριών βοήθειας - Community Edition
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Ενημέρωση καθορισμένου ιστότοπου: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Ενημέρωση του ιστότοπου %s. Εντολή ενημέρωσης: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Επεξεργασία εγγραφών και δημιουργία αρχείου δεδομένων από το αρχείο ρυθμίσεων \"%s\", AWStats έκδοση %s"
+
+msgid "Updating data, please wait"
+msgstr "Ενημέρωση δεδομένων, παρακαλώ περιμένετε"
+
+msgid "done (%s seconds)"
+msgstr "ολοκληρώθηκε (%s δευτερόλεπτα)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "ΕΝΤΟΛΗ ΠΕΡΙΒΛΗΜΑΤΟΣ (Προαιρετικό)"
+
+msgid "To run %s without specifying the full path."
+msgstr "Για να εκτελέσετε το %s χωρίς να καθορίσετε την πλήρη διαδρομή."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Δημιουργήστε ένα σενάριο περιβλήματος στο %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Αντιγράψτε και εκτελέστε την ακόλουθη εντολή περιβλήματος στο τερματικό σας:"
+
+msgid "Wrapper for %s"
+msgstr "Περίβλημα για %s"
+
+msgid "Then make it executable:"
+msgstr "Στη συνέχεια, κάντε το εκτελέσιμο:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Μπορείτε τώρα να εκτελέσετε την ενημέρωση χρησιμοποιώντας την ακόλουθη εντολή:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Τα δεδομένα του αρχείου καταγραφής προέρχονται από τον κατάλογο \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Ανάγνωση τελευταίας θέσης δεδομένων και επαλήθευση δεδομένων"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Επιτυχής ανάγνωση τελευταίας θέσης δεδομένων (μετά τη γραμμή %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Επεξεργασία νέων εγγραφών (ενημέρωση αρχείου ιστορικού κάθε %s καταχωρίσεις καταγραφής)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Η άμεση πρόσβαση στην τελευταία απομνημονευμένη εγγραφή προσγειώθηκε σε άλλη εγγραφή."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Επομένως, γίνεται αναζήτηση νέων εγγραφών από την αρχή του αρχείου καταγραφής"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Η άμεση πρόσβαση στην τελευταία απομνημονευμένη εγγραφή είναι εκτός αρχείου."
+
+msgid "So searching it from beginning of log file"
+msgstr "Επομένως, γίνεται αναζήτηση από την αρχή του αρχείου καταγραφής"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Αναζήτηση νέων εγγραφών από την αρχή του αρχείου καταγραφής"
+
+msgid "Saving the log to the data file"
+msgstr "Αποθήκευση του αρχείου καταγραφής στο αρχείο δεδομένων"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Ο αριθμός των πηγών που επισκέφθηκαν έχει φτάσει το όριο αποθήκευσης των %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Ο αριθμός των URL έχει φτάσει το όριο αποθήκευσης των %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Γραμμές που παραλείφθηκαν στο αρχείο: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Βρέθηκαν %s ήδη αναλυμένες εγγραφές"
+
+msgid "Parsed lines in file: %s"
+msgstr "Αναλυμένες γραμμές στο αρχείο: %s"
+
+msgid "Found %s dropped records"
+msgstr "Βρέθηκαν %s απορριφθείσες εγγραφές"
+
+msgid "Found %s comments"
+msgstr "Βρέθηκαν %s σχόλια"
+
+msgid "Found %s blank records"
+msgstr "Βρέθηκαν %s κενές εγγραφές"
+
+msgid "Found %s corrupted records"
+msgstr "Βρέθηκαν %s κατεστραμμένες εγγραφές"
+
+msgid "Found %s old records"
+msgstr "Βρέθηκαν %s παλιές εγγραφές"
+
+msgid "Found %s new data records"
+msgstr "Βρέθηκαν %s νέες εγγραφές δεδομένων"
+
+msgid "All updates completed!"
+msgstr "Όλες οι ενημερώσεις ολοκληρώθηκαν!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Σημείωση: Η παράμετρος HostAliases δεν έχει διαμορφωθεί (χρησιμοποιείται για τον ορισμό πρόσθετων ψευδωνύμων τομέα για τον ιστότοπο, η προεπιλογή είναι κενή)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Το σύστημα πρόσθεσε αυτόματα προεπιλεγμένες τιμές: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Για να προσθέσετε άλλα ψευδώνυμα τομέα, ορίστε το HostAliases στο αρχείο διαμόρφωσης και βεβαιωθείτε ότι η διαμόρφωση του ιστότοπου του διακομιστή web (π.χ. Apache, Nginx) ενημερώνεται ανάλογα."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Για παράδειγμα, εάν ο ιστότοπος χρησιμοποιεί τόσο το example.com όσο και το www.example.com, μπορείτε να ορίσετε HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "Εργαλείο μαζικής ενημέρωσης AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Πνευματικά δικαιώματα (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Με άδεια χρήσης GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "ΠΕΡΙΓΡΑΦΗ"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "Το awstats_updateall ενημερώνει αυτόματα όλα τα αρχεία διαμόρφωσης AWStats που βρέθηκαν"
+
+msgid "in a specified directory (default: %s)."
+msgstr "σε έναν καθορισμένο κατάλογο (προεπιλογή: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Αυτό είναι χρήσιμο για τη ρύθμιση προγραμματισμένων εργασιών cron."
+
+msgid "USAGE"
+msgstr "ΧΡΗΣΗ"
+
+msgid "OPTIONS"
+msgstr "ΕΠΙΛΟΓΕΣ"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Διαδρομή προς το awstats.pl (εντοπίζεται αυτόματα εάν παραλειφθεί)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Ενημέρωση μόνο του καθορισμένου τομέα"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Κατάλογος που περιέχει αρχεία διαμόρφωσης (προεπιλογή: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Εξαίρεση διαμορφώσεων με βάση το όνομα (χωρισμένες με κόμμα)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Γλώσσα εξόδου (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, κ.λπ.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Ενεργοποίηση εξόδου εντοπισμού σφαλμάτων (υψηλότερο N = πιο λεπτομερές)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Ορισμός τιμής LastLine για όλες τις ενημερώσεις"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Εμφάνιση αυτού του μηνύματος βοήθειας"
+
+msgid "EXAMPLES"
+msgstr "ΠΑΡΑΔΕΙΓΜΑΤΑ"
+
+msgid "Update all sites"
+msgstr "Ενημέρωση όλων των ιστότοπων"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Δημιουργία σχολίων αρχείου δεδομένων στη γλώσσα που προτιμάτε"
+
+msgid "Example:"
+msgstr "Παράδειγμα:"
+
+msgid "Update only one specific site"
+msgstr "Ενημέρωση μόνο ενός συγκεκριμένου ιστότοπου"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Ενημέρωση όλων των ιστότοπων με προσαρμοσμένη διαδρομή AWStats (π.χ. όταν χρησιμοποιείτε εικονικούς κεντρικούς υπολογιστές ή προσαρμοσμένη θέση awstats.pl)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Ενημέρωση όλων των ιστότοπων εκτός από το awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Χρήση προσαρμοσμένου καταλόγου διαμόρφωσης"
+
+msgid "QUICK START"
+msgstr "ΓΡΗΓΟΡΗ ΕΚΚΙΝΗΣΗ"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Το περιτύλιγμα 'awstats-update' είναι ήδη εγκατεστημένο."
+
+msgid "Simply run:"
+msgstr "Απλώς εκτελέστε:"
+
+msgid "Update single site"
+msgstr "Ενημέρωση ενός ιστότοπου"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Έξοδος κειμένου οθόνης τερματικού και εγγραφών καταγραφής στην καθορισμένη γλώσσα σας"
+
+msgid "Log file: %s"
+msgstr "Αρχείο καταγραφής: %s"
+
+msgid "Show help"
+msgstr "Εμφάνιση βοήθειας"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Δεν χρειάζεται να πληκτρολογήσετε την πλήρη διαδρομή προς το awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "ΠΕΡΙΟΔΙΚΗ ΕΡΓΑΣΙΑ"
+
+msgid "Daily update script:"
+msgstr "Σενάριο καθημερινής ενημέρωσης:"
+
+msgid "Cron job:"
+msgstr "Εργασία cron:"
+
+msgid "Content:"
+msgstr "Περιεχόμενο:"
+
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Προηγμένες Στατιστικές Ιστού"
 

@@ -675,11 +675,26 @@ msgstr "이 디렉터리에는 읽기 권한이 없습니다"
 msgid "Please set read permission for directory"
 msgstr "디렉터리에 읽기 권한을 설정하세요"
 
-msgid "Missing required parameter in config file"
-msgstr "구성 파일에 필요한 매개변수가 없습니다"
+msgid "No AWStats config file for any site found in %s"
+msgstr "%s에서 어떤 사이트의 AWStats 설정 파일도 찾을 수 없습니다"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "'DirData' 매개변수가 정의되었는지 확인하십시오."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "디렉터리 '%s'에 도메인 '%s'의 설정 파일이 없습니다"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "설정 파일 \"%s\"에 필수 매개변수가 없습니다"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "'DirData' 경로가 정의되어 있고 존재하는지 확인하십시오."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "LogFile 매개변수가 설정/도메인 파일에 정의되어 있지 않습니다"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "LogFormat 매개변수가 설정/도메인 파일에 정의되어 있지 않습니다"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "설정/도메인 파일의 LogFormat 매개변수가 잘못되었습니다. 값은 '%s'입니다 (1, 2, 3, 4, 5 또는 '사용자 지정 AWStats 로그 형식 문자열'이어야 합니다)"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "브라우저 주소의 도메인 이름 정보가 누락되었거나 불완전합니다"
@@ -1419,8 +1434,8 @@ msgstr "파일 위치를 얻는 열"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "팁: 관련 아이콘을 생성해야 하는 경우 %s를 사용하여 로고 이미지를 업로드하면 위의 모든 관련 아이콘 파일이 자동으로 생성됩니다"
 
-msgid "200: success, 404: failure"
-msgstr "200은 성공 횟수, 404는 실패 횟수"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: 성공, 404: 누락됨, CDN: 비로컬 favicon (사이트 아이콘)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1750,8 +1765,8 @@ msgstr "저트래픽 알 수 없는 IP 요약"
 msgid "Failed to obtain IP data"
 msgstr "기타 알려진 IP 요약"
 
-msgid "Failed to obtain the relevant data"
-msgstr "관련 데이터를 성공적으로 가져오지 못했습니다"
+msgid "Monthly Traffic Statistics"
+msgstr "월간 트래픽 통계"
 
 msgid "Limited list of countries and regions"
 msgstr "현재 10개 데이터만 표시됩니다. 더 많은 국가/지역을 보려면 전체 목록을 확인하세요"
@@ -3054,9 +3069,230 @@ msgstr "기존 범위에 분류할 수 없는 데이터. 일반적으로 데이�
 msgid "tooltip_21"
 msgstr "감지된 웜 바이러스 공격 기록. 웜은 자가 전파되는 악성 프로그램으로, 일반적으로 네트워크 취약점을 통해 전파됩니다"
 
-#------------------------------------------------------------------------------
-# 도움말 정보 표시 - 커뮤니티 에디션
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "지정된 사이트를 업데이트하는 중: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "%s 사이트를 업데이트하는 중. 업데이트 명령: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "구성 파일 \"%s\"에서 레코드를 처리하고 데이터 파일을 생성하는 중입니다, AWStats 버전 %s"
+
+msgid "Updating data, please wait"
+msgstr "데이터를 업데이트하는 중입니다. 잠시 기다려 주십시오"
+
+msgid "done (%s seconds)"
+msgstr "완료 (%s초)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "래퍼 명령 (선택 사항)"
+
+msgid "To run %s without specifying the full path."
+msgstr "전체 경로를 지정하지 않고 %s을(를) 실행하려면."
+
+msgid "Create a wrapper script in %s:"
+msgstr "%s에 래퍼 스크립트를 만드십시오:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "다음 래퍼 명령을 복사하여 터미널에서 실행하십시오:"
+
+msgid "Wrapper for %s"
+msgstr "%s용 래퍼"
+
+msgid "Then make it executable:"
+msgstr "그런 다음 실행 가능하게 만드십시오:"
+
+msgid "You can now run the update using the following command:"
+msgstr "이제 다음 명령을 사용하여 업데이트를 실행할 수 있습니다:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "로그 파일 데이터는 \"%s\" 디렉터리에서 가져옵니다"
+
+msgid "Reading last data position and verifying data"
+msgstr "마지막 데이터 위치를 읽고 데이터를 확인하는 중"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "마지막 데이터 위치를 성공적으로 읽었습니다 (%s행 이후)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "새 레코드를 처리하는 중 (%s개 로그 항목마다 기록 파일 업데이트)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "마지막으로 기억된 레코드에 대한 직접 액세스가 다른 레코드에 도달했습니다."
+
+msgid "So searching new records from beginning of log file"
+msgstr "따라서 로그 파일의 처음부터 새 레코드를 검색합니다"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "마지막으로 기억된 레코드에 대한 직접 액세스가 파일 범위를 벗어났습니다."
+
+msgid "So searching it from beginning of log file"
+msgstr "따라서 로그 파일의 처음부터 검색합니다"
+
+msgid "Searching new records from beginning of log file"
+msgstr "로그 파일의 처음부터 새 레코드를 검색하는 중"
+
+msgid "Saving the log to the data file"
+msgstr "로그를 데이터 파일에 저장하는 중"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (방문한 소스 수가 %s 저장 한도에 도달했습니다)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (URL 수가 %s 저장 한도에 도달했습니다)"
+
+msgid "Jumped lines in file: %s"
+msgstr "파일에서 건너뛴 줄: %s"
+
+msgid "Found %s already parsed records"
+msgstr "이미 파싱된 레코드 %s개를 찾았습니다"
+
+msgid "Parsed lines in file: %s"
+msgstr "파일에서 파싱된 줄: %s"
+
+msgid "Found %s dropped records"
+msgstr "삭제된 레코드 %s개를 찾았습니다"
+
+msgid "Found %s comments"
+msgstr "댓글 %s개를 찾았습니다"
+
+msgid "Found %s blank records"
+msgstr "빈 레코드 %s개를 찾았습니다"
+
+msgid "Found %s corrupted records"
+msgstr "손상된 레코드 %s개를 찾았습니다"
+
+msgid "Found %s old records"
+msgstr "오래된 레코드 %s개를 찾았습니다"
+
+msgid "Found %s new data records"
+msgstr "새 데이터 레코드 %s개를 찾았습니다"
+
+msgid "All updates completed!"
+msgstr "모든 업데이트가 완료되었습니다!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "알림: HostAliases 매개변수가 구성되지 않았습니다 (사이트의 추가 도메인 별칭을 정의하는 데 사용되며 기본값은 비어 있음)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "시스템이 자동으로 기본값을 추가했습니다: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "다른 도메인 별칭을 추가하려면 구성 파일에서 HostAliases를 설정하고 웹 서버(예: Apache, Nginx) 사이트 구성이 그에 맞게 업데이트되었는지 확인하십시오."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "예를 들어 사이트가 example.com과 www.example.com을 모두 사용하는 경우 HostAliases=\"www\"로 설정할 수 있습니다."
+
+msgid "AWStats Batch Updater %s"
+msgstr "AWStats 일괄 업데이터 %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "저작권 (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "GNU General Public License에 따라 라이선스됨"
+
+msgid "DESCRIPTION"
+msgstr "설명"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall은 발견된 모든 AWStats 구성 파일을 자동으로 업데이트합니다"
+
+msgid "in a specified directory (default: %s)."
+msgstr "지정된 디렉터리에서 (기본값: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "이것은 예약된 cron 작업을 설정하는 데 유용합니다."
+
+msgid "USAGE"
+msgstr "사용법"
+
+msgid "OPTIONS"
+msgstr "옵션"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    awstats.pl 경로 (생략하면 자동 감지됨)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       지정된 도메인만 업데이트"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       구성 파일이 포함된 디렉터리 (기본값: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    이름으로 구성을 제외 (쉼표로 구분)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             출력 언어 (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr 등)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             디버그 출력 활성화 (N이 높을수록 더 자세히)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  모든 업데이트에 LastLine 값 설정"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            이 도움말 메시지 표시"
+
+msgid "EXAMPLES"
+msgstr "예제"
+
+msgid "Update all sites"
+msgstr "모든 사이트 업데이트"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "선호하는 언어로 데이터 파일 주석 생성"
+
+msgid "Example:"
+msgstr "예:"
+
+msgid "Update only one specific site"
+msgstr "특정 사이트 하나만 업데이트"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "사용자 지정 AWStats 경로로 모든 사이트 업데이트 (예: 가상 호스트 또는 사용자 지정 awstats.pl 위치를 사용하는 경우)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "awstats.example.com.conf를 제외한 모든 사이트 업데이트"
+
+msgid "Use custom config directory"
+msgstr "사용자 지정 구성 디렉터리 사용"
+
+msgid "QUICK START"
+msgstr "빠른 시작"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "'awstats-update' 래퍼가 이미 설치되어 있습니다."
+
+msgid "Simply run:"
+msgstr "간단히 실행하십시오:"
+
+msgid "Update single site"
+msgstr "단일 사이트 업데이트"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "터미널 표시 텍스트와 로그 레코드를 지정한 언어로 출력"
+
+msgid "Log file: %s"
+msgstr "로그 파일: %s"
+
+msgid "Show help"
+msgstr "도움말 표시"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "awstats_updateall.pl의 전체 경로를 입력할 필요가 없습니다."
+
+msgid "PERIODIC TASK"
+msgstr "주기적 작업"
+
+msgid "Daily update script:"
+msgstr "일일 업데이트 스크립트:"
+
+msgid "Cron job:"
+msgstr "cron 작업:"
+
+msgid "Content:"
+msgstr "내용:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - 고급 웹 통계"

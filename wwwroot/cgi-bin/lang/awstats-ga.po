@@ -681,11 +681,26 @@ msgstr "Níl cead léitheoireachta ag an eolaire seo"
 msgid "Please set read permission for directory"
 msgstr "Socraigh cead léitheoireachta don eolaire, le do thoil"
 
-msgid "Missing required parameter in config file"
-msgstr "Paraiméadar riachtanach ar iarraidh sa chomhad cumraíochta"
+msgid "No AWStats config file for any site found in %s"
+msgstr "Níor aimsíodh aon chomhad cumraíochta AWStats d'aon suíomh in %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Seiceáil go bhfuil 'DirData' sainithe, le do thoil."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Níl comhad cumraíochta sa chomhadlann '%s' don fhearann '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Paraiméadar riachtanach ar iarraidh sa chomhad cumraíochta \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Seiceáil le do thoil go bhfuil an cosán 'DirData' sainithe agus ann."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Níl an paraiméadar LogFile sainithe sa chomhad cumraíochta/fearainn"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Níl an paraiméadar LogFormat sainithe sa chomhad cumraíochta/fearainn"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Tá an paraiméadar LogFormat mícheart sa chomhad cumraíochta/fearainn. Is é '%s' an luach (ba cheart go mbeadh sé 1, 2, 3, 4, 5 nó 'teaghrán formáide loga AWStats pearsantaithe')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Is cosúil go bhfuil ainm fearainn ar iarraidh nó neamhchríochnaithe i seoladh an bhrabhsálaí"
@@ -1426,8 +1441,8 @@ msgstr "colún le haghaidh suíomhanna comhad"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Leid: Más gá duit deilbhíní gaolmhara a ghiniúint, is féidir leat %s a úsáid chun íomhá lógó a uaslódáil, agus ginfidh sé go huathoibríoch na comhaid deilbhín ghaolmhara thuas go léir"
 
-msgid "200: success, 404: failure"
-msgstr "200 ionadaíonn comhaireamh ratha, 404 ionadaíonn comhaireamh teipe"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: rath, 404: ar iarraidh, CDN: favicon neamh-áitiúil (deilbhín an tsuímh)"
 
 # Cosáin ionchais
 msgid "_PATH_FAVICON"
@@ -1761,8 +1776,8 @@ msgstr "Achoimre IPanna Tráchta Íseal"
 msgid "Failed to obtain IP data"
 msgstr "Theip ar shonraí IP a fháil"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Theip ar na sonraí ábhartha a fháil"
+msgid "Monthly Traffic Statistics"
+msgstr "Staitisticí Tráchta Míosúla"
 
 msgid "Limited list of countries and regions"
 msgstr "Liosta teoranta tíortha agus réigiún"
@@ -3057,6 +3072,231 @@ msgstr "Sonraí nach féidir a rangú i gcatagóirí atá ann cheana, de ghnáth
 
 msgid "tooltip_21"
 msgstr "Taifid ar ionsaithe péisteanna braite. Is cláir mhailíseacha iad péisteanna a scaipeann go huathoibríoch, de ghnáth trí leochaileachtaí líonra."
+
+msgid "Updating specified site: %s"
+msgstr "Ag nuashonrú an tsuímh shonraithe: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Ag nuashonrú an tsuímh %s. Ordú nuashonraithe: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Ag próiseáil taifead agus ag giniúint comhad sonraí ón gcomhad cumraíochta \"%s\", AWStats leagan %s"
+
+msgid "Updating data, please wait"
+msgstr "Sonraí á nuashonrú, fan le do thoil"
+
+msgid "done (%s seconds)"
+msgstr "déanta (%s soicind)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "ORDÚ FILLTEÁIN (Roghnach)"
+
+msgid "To run %s without specifying the full path."
+msgstr "Chun %s a rith gan an cosán iomlán a shonrú."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Cruthaigh script fillteáin in %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Cóipeáil agus rith an t-ordú fillteáin seo a leanas i do theirminal:"
+
+msgid "Wrapper for %s"
+msgstr "Fillteán do %s"
+
+msgid "Then make it executable:"
+msgstr "Ansin déan inrite é:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Is féidir leat an nuashonrú a rith anois leis an ordú seo a leanas:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Tagann sonraí an chomhaid loga ón eolaire \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Ag léamh an tsuímh sonraí dheireanaigh agus ag fíorú sonraí"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Suíomh sonraí deireanach léite go rathúil (tar éis líne %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Ag próiseáil taifead nua (ag nuashonrú comhad na staire gach %s iontráil loga)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Tháinig rochtain dhíreach ar an taifead deireanach a cuimhníodh air i dtír ar thaifead eile."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Mar sin, déantar taifead nua a chuardach ó thús an chomhaid loga"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Tá rochtain dhíreach ar an taifead deireanach a cuimhníodh air lasmuigh den chomhad."
+
+msgid "So searching it from beginning of log file"
+msgstr "Mar sin, déantar é a chuardach ó thús an chomhaid loga"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Ag cuardach taifead nua ó thús an chomhaid loga"
+
+msgid "Saving the log to the data file"
+msgstr "Ag sábháil an loga sa chomhad sonraí"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Tá líon na bhfoinsí a thugtar cuairt orthu sroichte ag teorainn sábhála %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Tá líon na URLanna sroichte ag teorainn sábhála %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Línte a léimtear sa chomhad: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Fuarthas %s taifead atá parsáilte cheana féin"
+
+msgid "Parsed lines in file: %s"
+msgstr "Línte parsáilte sa chomhad: %s"
+
+msgid "Found %s dropped records"
+msgstr "Fuarthas %s taifead a caitheadh i leataobh"
+
+msgid "Found %s comments"
+msgstr "Fuarthas %s trácht"
+
+msgid "Found %s blank records"
+msgstr "Fuarthas %s taifead bán"
+
+msgid "Found %s corrupted records"
+msgstr "Fuarthas %s taifead truaillithe"
+
+msgid "Found %s old records"
+msgstr "Fuarthas %s sean-taifead"
+
+msgid "Found %s new data records"
+msgstr "Fuarthas %s taifead sonraí nua"
+
+msgid "All updates completed!"
+msgstr "Gach nuashonrú críochnaithe!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Fógra: Níl an paraiméadar HostAliases cumraithe (úsáidtear é chun ailiasanna fearainn breise a shainiú don suíomh, tá an réamhshocrú folamh)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Chuir an córas luachanna réamhshocraithe leis go huathoibríoch: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Chun ailiasanna fearainn eile a chur leis, socraigh HostAliases sa chomhad cumraíochta, agus déan cinnte go ndéantar cumraíocht an tsuímh don fhreastalaí Gréasáin (m.sh., Apache, Nginx) a nuashonrú dá réir."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Mar shampla, má úsáideann an suíomh example.com agus www.example.com araon, is féidir leat HostAliases=\"www\" a shocrú."
+
+msgid "AWStats Batch Updater %s"
+msgstr "Nuashonraitheoir Baisc AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Cóipcheart (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Ceadúnaithe faoi GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "CUR SÍOS"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "Nuashonraíonn awstats_updateall go huathoibríoch gach comhad cumraíochta AWStats a fhaightear"
+
+msgid "in a specified directory (default: %s)."
+msgstr "in eolaire sonraithe (réamhshocrú: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Tá sé seo úsáideach chun poist cron sceidealta a shocrú."
+
+msgid "USAGE"
+msgstr "ÚSÁID"
+
+msgid "OPTIONS"
+msgstr "ROGHANNA"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Conair chuig awstats.pl (braitear go huathoibríoch má fhágtar ar lár é)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Ná nuashonraigh ach an fearann sonraithe"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Eolaire ina bhfuil comhaid cumraíochta (réamhshocrú: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Eisiata cumraíochtaí de réir ainm (scartha le camóga)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Teanga don aschur (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Cumasaigh aschur dífhabhtaithe (N níos airde = níos mine)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Socraigh luach LastLine do gach nuashonrú"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Taispeáin an teachtaireacht cabhrach seo"
+
+msgid "EXAMPLES"
+msgstr "SAMPLAÍ"
+
+msgid "Update all sites"
+msgstr "Nuashonraigh gach suíomh"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Gin tráchtanna comhaid sonraí i do theanga is fearr leat"
+
+msgid "Example:"
+msgstr "Sampla:"
+
+msgid "Update only one specific site"
+msgstr "Nuashonraigh suíomh amháin ar leith"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Nuashonraigh gach suíomh le conair AWStats saincheaptha (m.sh., agus óstaigh fhíorúla nó suíomh awstats.pl saincheaptha á n-úsáid)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Nuashonraigh gach suíomh seachas awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Úsáid eolaire cumraíochta saincheaptha"
+
+msgid "QUICK START"
+msgstr "TÚS TAPA"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Tá an fillteán 'awstats-update' suiteáilte cheana féin."
+
+msgid "Simply run:"
+msgstr "Rith go simplí:"
+
+msgid "Update single site"
+msgstr "Nuashonraigh suíomh amháin"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Aschur téacs taispeána teirminéil agus taifid loga i do theanga shonraithe"
+
+msgid "Log file: %s"
+msgstr "Comhad loga: %s"
+
+msgid "Show help"
+msgstr "Taispeáin cabhair"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Ní gá an conair iomlán chuig awstats_updateall.pl a chlóscríobh."
+
+msgid "PERIODIC TASK"
+msgstr "TASC TRÉIMHSIÚIL"
+
+msgid "Daily update script:"
+msgstr "Script nuashonraithe laethúil:"
+
+msgid "Cron job:"
+msgstr "Post cron:"
+
+msgid "Content:"
+msgstr "Ábhar:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Staitisticí Casta Gréasáin"

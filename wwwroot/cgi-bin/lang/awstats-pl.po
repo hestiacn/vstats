@@ -675,11 +675,26 @@ msgstr "Ten katalog nie ma uprawnień do odczytu"
 msgid "Please set read permission for directory"
 msgstr "Proszę ustawić uprawnienia do odczytu dla katalogu"
 
-msgid "Missing required parameter in config file"
-msgstr "Brak wymaganego parametru w pliku konfiguracyjnym"
+msgid "No AWStats config file for any site found in %s"
+msgstr "Nie znaleziono pliku konfiguracyjnego AWStats dla żadnej witryny w %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Proszę sprawdzić, czy zdefiniowano 'DirData'."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Katalog '%s' nie zawiera pliku konfiguracyjnego dla domeny '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Brak wymaganego parametru w pliku konfiguracyjnym \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Sprawdź, czy ścieżka 'DirData' jest zdefiniowana i istnieje."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Parametr LogFile nie jest zdefiniowany w pliku konfiguracyjnym/domeny"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Parametr LogFormat nie jest zdefiniowany w pliku konfiguracyjnym/domeny"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Parametr LogFormat jest nieprawidłowy w pliku konfiguracyjnym/domeny. Wartość to '%s' (powinna być 1, 2, 3, 4, 5 lub 'spersonalizowany ciąg formatu dziennika AWStats')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Nazwa domeny w adresie przeglądarki wydaje się brakować lub jest niekompletna"
@@ -1419,8 +1434,8 @@ msgstr "kolumna do uzyskania lokalizacji plików"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Wskazówka: Jeśli potrzebujesz wygenerować powiązane ikony, możesz użyć %s do przesłania obrazu logo, a on automatycznie wygeneruje wszystkie powyższe powiązane pliki ikon"
 
-msgid "200: success, 404: failure"
-msgstr "200 to liczba sukcesów, 404 to liczba niepowodzeń"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: sukces, 404: brak, CDN: nie-lokalny favicon (ikona witryny)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1750,8 +1765,8 @@ msgstr "Podsumowanie adresów IP o niskim ruchu"
 msgid "Failed to obtain IP data"
 msgstr "Inne znane zestawienie IP"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Nie udało się uzyskać odpowiednich danych"
+msgid "Monthly Traffic Statistics"
+msgstr "Miesięczne statystyki ruchu"
 
 msgid "Limited list of countries and regions"
 msgstr "Wyświetlanych jest tylko pierwszych 10 danych. Pełna lista krajów i regionów znajduje się na stronie szczegółów"
@@ -3045,6 +3060,231 @@ msgstr "Dane, których nie można sklasyfikować w istniejących zakresach, zwyk
 
 msgid "tooltip_21"
 msgstr "Zapis ataków robaków. Robak to samoreplikujący się złośliwy program."
+
+msgid "Updating specified site: %s"
+msgstr "Aktualizowanie określonej witryny: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Aktualizowanie witryny %s. Polecenie aktualizacji: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Przetwarzanie rekordów i generowanie pliku danych z pliku konfiguracyjnego \"%s\", AWStats wersja %s"
+
+msgid "Updating data, please wait"
+msgstr "Aktualizowanie danych, proszę czekać"
+
+msgid "done (%s seconds)"
+msgstr "gotowe (%s sekund)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "POLECENIE OTOCZKI (Opcjonalne)"
+
+msgid "To run %s without specifying the full path."
+msgstr "Aby uruchomić %s bez podawania pełnej ścieżki."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Utwórz skrypt otoczki w %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Skopiuj i uruchom następujące polecenie otoczki w swoim terminalu:"
+
+msgid "Wrapper for %s"
+msgstr "Otoczka dla %s"
+
+msgid "Then make it executable:"
+msgstr "Następnie nadaj mu uprawnienia do wykonywania:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Możesz teraz uruchomić aktualizację za pomocą następującego polecenia:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Dane pliku dziennika pochodzą z katalogu \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Odczytywanie ostatniej pozycji danych i weryfikacja danych"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Pomyślnie odczytano ostatnią pozycję danych (po wierszu %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Przetwarzanie nowych rekordów (aktualizacja pliku historii co %s wpisów dziennika)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Bezpośredni dostęp do ostatniego zapamiętanego rekordu trafił na inny rekord."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Dlatego wyszukiwane są nowe rekordy od początku pliku dziennika"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Bezpośredni dostęp do ostatniego zapamiętanego rekordu znajduje się poza plikiem."
+
+msgid "So searching it from beginning of log file"
+msgstr "Dlatego wyszukiwane jest od początku pliku dziennika"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Wyszukiwanie nowych rekordów od początku pliku dziennika"
+
+msgid "Saving the log to the data file"
+msgstr "Zapisywanie dziennika w pliku danych"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Liczba odwiedzonych źródeł osiągnęła limit zapisu %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Liczba adresów URL osiągnęła limit zapisu %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Pominięte wiersze w pliku: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Znaleziono %s już przetworzonych rekordów"
+
+msgid "Parsed lines in file: %s"
+msgstr "Przetworzone wiersze w pliku: %s"
+
+msgid "Found %s dropped records"
+msgstr "Znaleziono %s odrzuconych rekordów"
+
+msgid "Found %s comments"
+msgstr "Znaleziono %s komentarzy"
+
+msgid "Found %s blank records"
+msgstr "Znaleziono %s pustych rekordów"
+
+msgid "Found %s corrupted records"
+msgstr "Znaleziono %s uszkodzonych rekordów"
+
+msgid "Found %s old records"
+msgstr "Znaleziono %s starych rekordów"
+
+msgid "Found %s new data records"
+msgstr "Znaleziono %s nowych rekordów danych"
+
+msgid "All updates completed!"
+msgstr "Wszystkie aktualizacje zakończone!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Uwaga: Parametr HostAliases nie jest skonfigurowany (używany do definiowania dodatkowych aliasów domen dla witryny, domyślnie jest pusty)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "System automatycznie dodał wartości domyślne: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Aby dodać inne aliasy domen, ustaw HostAliases w pliku konfiguracyjnym i upewnij się, że konfiguracja witryny serwera WWW (np. Apache, Nginx) jest odpowiednio zaktualizowana."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Na przykład, jeśli witryna używa zarówno example.com, jak i www.example.com, możesz ustawić HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "Aktualizator wsadowy AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Prawa autorskie (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Licencjonowane na podstawie GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "OPIS"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall automatycznie aktualizuje wszystkie znalezione pliki konfiguracyjne AWStats"
+
+msgid "in a specified directory (default: %s)."
+msgstr "w określonym katalogu (domyślnie: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Jest to przydatne do konfigurowania zaplanowanych zadań cron."
+
+msgid "USAGE"
+msgstr "UŻYCIE"
+
+msgid "OPTIONS"
+msgstr "OPCJE"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Ścieżka do awstats.pl (wykrywana automatycznie, jeśli pominięta)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Aktualizuj tylko określoną domenę"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Katalog zawierający pliki konfiguracyjne (domyślnie: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Wyklucz konfiguracje według nazwy (oddzielone przecinkami)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Język danych wyjściowych (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr itd.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Włącz dane wyjściowe debugowania (wyższe N = więcej szczegółów)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Ustaw wartość LastLine dla wszystkich aktualizacji"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Pokaż ten komunikat pomocy"
+
+msgid "EXAMPLES"
+msgstr "PRZYKŁADY"
+
+msgid "Update all sites"
+msgstr "Aktualizuj wszystkie witryny"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Generuj komentarze w pliku danych w preferowanym języku"
+
+msgid "Example:"
+msgstr "Przykład:"
+
+msgid "Update only one specific site"
+msgstr "Aktualizuj tylko jedną określoną witrynę"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Aktualizuj wszystkie witryny z niestandardową ścieżką AWStats (np. w przypadku korzystania z hostów wirtualnych lub niestandardowej lokalizacji awstats.pl)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Aktualizuj wszystkie witryny oprócz awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Użyj niestandardowego katalogu konfiguracji"
+
+msgid "QUICK START"
+msgstr "SZYBKI START"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Otoczka 'awstats-update' jest już zainstalowana."
+
+msgid "Simply run:"
+msgstr "Po prostu uruchom:"
+
+msgid "Update single site"
+msgstr "Aktualizuj pojedynczą witrynę"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Wyprowadź tekst wyświetlany w terminalu i rekordy dziennika w określonym języku"
+
+msgid "Log file: %s"
+msgstr "Plik dziennika: %s"
+
+msgid "Show help"
+msgstr "Pokaż pomoc"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Nie trzeba wpisywać pełnej ścieżki do awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "ZADANIE OKRESOWE"
+
+msgid "Daily update script:"
+msgstr "Skrypt codziennej aktualizacji:"
+
+msgid "Cron job:"
+msgstr "Zadanie cron:"
+
+msgid "Content:"
+msgstr "Zawartość:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Zaawansowane statystyki WWW"

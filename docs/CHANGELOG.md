@@ -6,6 +6,24 @@
 
 ## 🚀 8.x Series(2026-latest)
 
+### 8.1.1 - 2026-10-13
+
+- Added: historical `txt` data files are automatically compressed to `gz` to reduce disk usage (#2)
+- Updated: `tools/awstats_updateall.pl` now supports `-lang=` (see [Language Support](#language-support)) and `-h` (print help) options (#4)
+
+Usage:
+```bash
+awstats-update now -lang=LL -config=mydomain
+```
+or
+```bash
+/usr/share/awstats/tools/awstats_updateall.pl now -lang=LL -config=mydomain
+```
+
+- English split by region: `en` is now an alias for `en-us`; added `en-gb` and `en-ca` (#3)
+- Added language files `awstats-en-gb.po` and `awstats-en-ca.po`
+- Fixed file permissions to use the actual user and group of the web service; set `SaveDatabaseFilesWithPermissionsForEveryone` to `1` in the config file (default: `0`)
+
 ### 8.1 - 2026-05-10
 
 ### 🔧 Fixed original documentation to local static documentation
@@ -126,87 +144,92 @@ If you find any issues, please report them on [issues](https://github.com/hestia
 
 - Language files over 300 KB contain complete localized language documentation.
 
-| Language | Country/Region | Legacy Format | Modern Format | Update Type | File Size | Language Tag(BCP 47)|
+| Language | Country/Region | Legacy Format | Modern Format | Update Type | File Size | Language Tag(BCP 47) |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Albanian | Albania(Shqipëria)| - | `awstats-sq.po` | ✨ New | 129 KB | BCP 47: `sq` |
-| Amharic | Ethiopia(ኢትዮጵያ)| - | `awstats-am.po` | ✨ New | 164 KB | BCP 47: `am` |
-| Azerbaijani | Azerbaijan(Azərbaycan)| - | `awstats-az.po` | ✨ New | 132 KB | BCP 47: `az` |
-| Arabic | Arab League(الجامعة العربية)| `awstats-ar.txt` | `awstats-ar.po` | 🔄 Format Upgrade | 678 KB | BCP 47: `ar` |
-| Irish | Ireland(Éire)| - | `awstats-ga.po` | ✨ New | 128 KB | BCP 47: `ga` |
-| Estonian | Estonia(Eesti)| `awstats-et.txt` | `awstats-et.po` | 🔄 Format Upgrade | 123 KB | BCP 47: `et` |
-| Basque | Spain/France(Euskal Herria)| `awstats-eu.txt` | `awstats-eu.po` | 🔄 Format Upgrade | 126 KB | BCP 47: `eu` |
-| Brazilian Portuguese | Brazil(Brasil)| - | `awstats-pt-br.po` | ✨ New | 125 KB | BCP 47: `pt-br` |
-| Bulgarian | Bulgaria(България)| `awstats-bg.txt` | `awstats-bg.po` | 🔄 Format Upgrade | 175 KB | BCP 47: `bg` |
-| Icelandic | Iceland(Ísland)| - | `awstats-is.po` | ✨ New | 121 KB | BCP 47: `is` |
-| Polish | Poland(Polska)| `awstats-pl.txt` | `awstats-pl.po` | 🔄 Format Upgrade | 124 KB | BCP 47: `pl` |
-| Bosnian | Bosnia and Herzegovina(Bosna i Hercegovina)| `awstats-ba.txt` | `awstats-bs.po` | 🔄 Re-added | 125 KB | BCP 47: `bs`(original code `ba` was country code → corrected to language code `bs`)|
-| Persian | Iran(ایران)| - | `awstats-fa.po` | ✨ New | 157 KB | BCP 47: `fa` |
-| Breton | Brittany, France(Breizh)| `awstats-br.txt` | `awstats-br.po` | 🔄 Format Upgrade | 124 KB | BCP 47: `br` |
-| Danish | Denmark(Danmark)| `awstats-dk.txt` | `awstats-da.po` | 🔄 Format Upgrade + Renamed | 120 KB | BCP 47: `da`(original code `dk` was country code → corrected to language code `da`)|
-| German | Germany(Deutschland)| `awstats-de.txt` | `awstats-de.po` | 🔄 Format Upgrade | 127 KB | BCP 47: `de` |
-| Russian | Russia(Россия)| `awstats-ru.txt` | `awstats-ru.po` | 🔄 Format Upgrade | 764 KB | BCP 47: `ru` |
-| French | France(France)| `awstats-fr.txt` | `awstats-fr.po` | 🔄 Format Upgrade | 591 KB | BCP 47: `fr` |
-| Finnish | Finland(Suomi)| `awstats-fi.txt` | `awstats-fi.po` | 🔄 Format Upgrade | 124 KB | BCP 47: `fi` |
-| Khmer | Cambodia(កម្ពុជា)| - | `awstats-km.po` | ✨ New | 219 KB | BCP 47: `km` |
-| Dutch | Netherlands(Nederland)| `awstats-nl.txt` | `awstats-nl.po` | 🔄 Format Upgrade | 573 KB | BCP 47: `nl` |
-| Galician | Galicia, Spain(Galicia)| `awstats-gl.txt` | `awstats-gl.po` | 🔄 Format Upgrade | 129 KB | BCP 47: `gl` |
-| Catalan | Spain/France(Catalunya)| `awstats-ca.txt` | `awstats-ca.po` | 🔄 Format Upgrade | 130 KB | BCP 47: `ca` |
-| Czech | Czechia(Česko)| `awstats-cz.txt` | `awstats-cs.po` | 🔄 Format Upgrade + Renamed | 127 KB | BCP 47: `cs`(original code `cz` was country code → corrected to language code `cs`)|
-| Georgian | Georgia(საქართველო)| - | `awstats-ka.po` | ✨ New | 226 KB | BCP 47: `ka` |
-| Korean | South Korea(한국)| `awstats-ko.txt` | `awstats-ko.po` | 🔄 Format Upgrade | 568 KB | BCP 47: `ko` |
-| Kannada | Karnataka, India(ಕನ್ನಡ)| - | `awstats-kn.po` | ✨ New | 222 KB | BCP 47: `kn` |
-| Kazakh | Kazakhstan(Қазақстан)| - | `awstats-kk.po` | ✨ New | 169 KB | BCP 47: `kk` |
-| Croatian | Croatia(Hrvatska)| `awstats-hr.txt` | `awstats-hr.po` | 🔄 Format Upgrade | 123 KB | BCP 47: `hr` |
-| Latvian | Latvia(Latvija)| `awstats-lv.txt` | `awstats-lv.po` | 🔄 Format Upgrade | 127 KB | BCP 47: `lv` |
-| Lao | Laos(ປະເທດລາວ)| - | `awstats-lo.po` | ✨ New | 202 KB | BCP 47: `lo` |
-| Lithuanian | Lithuania(Lietuva)| `awstats-lt.txt` | `awstats-lt.po` | 🔄 Format Upgrade | 129 KB | BCP 47: `lt` |
-| Romanian | Romania(România)| `awstats-ro.txt` | `awstats-ro.po` | 🔄 Format Upgrade | 126 KB | BCP 47: `ro` |
-| Marathi | Maharashtra, India(मराठी)| - | `awstats-mr.po` | ✨ New | 205 KB | BCP 47: `mr` |
-| Malayalam | Kerala, India(മലയാളം)| - | `awstats-ml.po` | ✨ New | 237 KB | BCP 47: `ml` |
-| Malay | Malaysia/Indonesia(Malaysia/Indonesia)| - | `awstats-ms.po` | ✨ New | 119 KB | BCP 47: `ms` |
-| Macedonian | North Macedonia(Северна Македонија)| - | `awstats-mk.po` | ✨ New | 162 KB | BCP 47: `mk` |
-| Bengali | Bangladesh(বাংলাদেশ)| - | `awstats-bn.po` | ✨ New | 214 KB | BCP 47: `bn` |
-| Mongolian | Mongolia(Монгол улс)| - | `awstats-mn.po` | ✨ New | 169 KB | BCP 47: `mn` |
-| Burmese | Myanmar(မြန်မာ)| - | `awstats-my.po` | ✨ New | 250 KB | BCP 47: `my` |
-| Nepali | Nepal(नेपाल)| - | `awstats-ne.po` | ✨ New | 210 KB | BCP 47: `ne` |
-| Norwegian(Bokmål)| Norway(Norge)| `awstats-no.txt` | `awstats-nb.po` | 🔄 Format Upgrade + Renamed | 115 KB | BCP 47: `nb`(original macrolanguage code `no` refined to written variant `nb` → Bokmål)|
-| Norwegian(Nynorsk)| Norway(Noreg)| - | `awstats-nn.po` | ✨ New | 115 KB | BCP 47: `nn`(Nynorsk → New Norwegian variant)|
-| Punjabi | India/Pakistan(ਪੰਜਾਬ)| - | `awstats-pa.po` | ✨ New | 198 KB | BCP 47: `pa` |
-| Portuguese | Portugal(Portugal)| `awstats-pt.txt` | `awstats-pt.po` | 🔄 Format Upgrade | 125 KB | BCP 47: `pt`(European Portuguese)|
-| Japanese | Japan(日本)| `awstats-jp.txt` | `awstats-ja.po` | 🔄 Format Upgrade + Renamed | 635 KB | BCP 47: `ja`(original code `jp` was country code → corrected to language code `ja`)|
-| Swedish | Sweden(Sverige)| `awstats-sv.txt` | `awstats-sv.po` | 🔄 Format Upgrade | 119 KB | BCP 47: `sv` |
-| Serbian | Serbia(Србија)| `awstats-sr.txt` | `awstats-sr.po` | 🔄 Format Upgrade | 166 KB | BCP 47: `sr`(Cyrillic script)|
-| Serbian(Latin)| Serbia(Srbija)| - | `awstats-sr-latn.po` | ✨ New | 122 KB | BCP 47: `sr-latn`(Latin transliteration variant of Cyrillic)|
-| Sinhala | Sri Lanka(ශ්‍රී ලංකාව)| - | `awstats-si.po` | ✨ New | 212 KB | BCP 47: `si` |
-| Slovak | Slovakia(Slovensko)| `awstats-sk.txt` | `awstats-sk.po` | 🔄 Format Upgrade | 126 KB | BCP 47: `sk` |
-| Slovenian | Slovenia(Slovenija)| `awstats-si.txt` | `awstats-sl.po` | 🔄 Format Upgrade + Renamed | 124 KB | BCP 47: `sl`(original incorrect code `si` was country code for Slovenia → corrected to language code `sl`)|
-| Tamil | India/Sri Lanka(தமிழ்)| - | `awstats-ta.po` | ✨ New | 236 KB | BCP 47: `ta` |
-| Telugu | Telangana, India(తెలుగు)| - | `awstats-te.po` | ✨ New | 222 KB | BCP 47: `te` |
-| Thai | Thailand(ประเทศไทย)| `awstats-th.txt` | `awstats-th.po` | 🔄 Format Upgrade | 202 KB | BCP 47: `th` |
-| Tagalog | Philippines(Pilipinas)| `awstats-tg.txt` | `awstats-tl.po` | 🔄 Format Upgrade + Renamed | 130 KB | BCP 47: `tl`(original incorrect code `tg` was Tajik → corrected to `tl`)|
-| Turkish | Turkey(Türkiye)| `awstats-tr.txt` | `awstats-tr.po` | 🔄 Format Upgrade | 127 KB | BCP 47: `tr` |
-| Welsh | Wales, UK(Cymru)| `awstats-cy.txt` | `awstats-cy.po` | 🔄 Format Upgrade | 124 KB | BCP 47: `cy` |
-| Ukrainian | Ukraine(Україна)| - | `awstats-uk.po` | ✨ New | 172 KB | BCP 47: `uk` |
-| Uyghur | Xinjiang, China(شىنجاڭ)| - | `awstats-ug.po` | ✨ New | 176 KB | BCP 47: `ug` |
-| Urdu | Pakistan(پاکستان)| - | `awstats-ur.po` | ✨ New | 158 KB | BCP 47: `ur` |
-| Uzbek | Uzbekistan(Oʻzbekiston)| - | `awstats-uz.po` | ✨ New | 128 KB | BCP 47: `uz` |
-| Spanish | Spain(España)| `awstats-es.txt` | `awstats-es.po` | 🔄 Format Upgrade | 130 KB | BCP 47: `es` |
-| Hebrew | Israel(ישראל)| - | `awstats-he.po` | ✨ New | 140 KB | BCP 47: `he` |
-| Greek | Greece(Ελλάδα)| `awstats-gr.txt` | `awstats-el.po` | 🔄 Format Upgrade + Renamed | 184 KB | BCP 47: `el`(original code `gr` was country code → corrected to language code `el`)|
-| Hungarian | Hungary(Magyarország)| `awstats-hu.txt` | `awstats-hu.po` | 🔄 Format Upgrade | 130 KB | BCP 47: `hu` |
-| Hindi | India(भारत)| - | `awstats-hi.po` | ✨ New | 204 KB | BCP 47: `hi` |
-| Indonesian | Indonesia(Indonesia)| `awstats-id.txt` | `awstats-id.po` | 🔄 Format Upgrade | 122 KB | BCP 47: `id` |
-| English | UK/USA(UK/USA)| `awstats-en.txt` | `awstats-en.po` | 🔄 Format Upgrade | 527 KB | BCP 47: `en` |
-| Italian | Italy(Italia)| `awstats-it.txt` | `awstats-it.po` | 🔄 Format Upgrade | 128 KB | BCP 47: `it` |
-| Vietnamese | Vietnam(Việt Nam)| `awstats-vi.txt` | `awstats-vi.po` | 🔄 Format Upgrade | 136 KB | BCP 47: `vi` |
-| Simplified Chinese | China, Singapore, Malaysia(中国)<br>(including international organizations and global Chinese communities)| `awstats-cn.txt` | `awstats-zh-cn.po` | 🔄 Format Upgrade + Renamed | 519 KB | BCP 47: `zh-CN`(original code `cn` was country code → corrected to `zh-cn`)|
-| Traditional Chinese | Taiwan, Hong Kong, Macau(臺灣)<br>and overseas traditional Chinese communities | `awstats-tw.txt` | `awstats-zh-tw.po` | 🔄 Format Upgrade + Renamed | 523 KB | BCP 47: `zh-TW`(original code `tw` was country code → corrected to `zh-tw`)|
+| Albanian | Albania(Shqipëria) | - | `awstats-sq.po` | ✨ New | 157 KB | BCP 47: `sq` |
+| Amharic | Ethiopia(ኢትዮጵያ) | - | `awstats-am.po` | ✨ New | 198 KB | BCP 47: `am` |
+| Arabic | Arab League(الجامعة العربية) | `awstats-ar.txt` | `awstats-ar.po` | 🔄 Format Upgrade | 694 KB | BCP 47: `ar` |
+| Azerbaijani | Azerbaijan(Azərbaycan) | - | `awstats-az.po` | ✨ New | 156 KB | BCP 47: `az` |
+| Basque | Spain/France(Euskal Herria) | `awstats-eu.txt` | `awstats-eu.po` | 🔄 Format Upgrade | 147 KB | BCP 47: `eu` |
+| Bengali | Bangladesh(বাংলাদেশ) | - | `awstats-bn.po` | ✨ New | 269 KB | BCP 47: `bn` |
+| Bosnian | Bosnia and Herzegovina(Bosna i Hercegovina) | `awstats-ba.txt` | `awstats-bs.po` | 🔄 Format Upgrade + Renamed | 147 KB | BCP 47: `bs`(original code `ba` was country code → corrected to language code `bs`) |
+| Brazilian Portuguese | Brazil(Brasil) | - | `awstats-pt-br.po` | ✨ New | 151 KB | BCP 47: `pt-br` |
+| Breton | Brittany, France(Breizh) | `awstats-br.txt` | `awstats-br.po` | 🔄 Format Upgrade | 146 KB | BCP 47: `br` |
+| Bulgarian | Bulgaria(България) | `awstats-bg.txt` | `awstats-bg.po` | 🔄 Format Upgrade | 215 KB | BCP 47: `bg` |
+| Burmese | Myanmar(မြန်မာ) | - | `awstats-my.po` | ✨ New | 277 KB | BCP 47: `my` |
+| Catalan | Spain/France(Catalunya) | `awstats-ca.txt` | `awstats-ca.po` | 🔄 Format Upgrade | 141 KB | BCP 47: `ca` |
+| Croatian | Croatia(Hrvatska) | `awstats-hr.txt` | `awstats-hr.po` | 🔄 Format Upgrade | 145 KB | BCP 47: `hr` |
+| Czech | Czechia(Česko) | `awstats-cz.txt` | `awstats-cs.po` | 🔄 Format Upgrade + Renamed | 152 KB | BCP 47: `cs`(original code `cz` was country code → corrected to language code `cs`) |
+| Danish | Denmark(Danmark) | `awstats-dk.txt` | `awstats-da.po` | 🔄 Format Upgrade + Renamed | 138 KB | BCP 47: `da`(original code `dk` was country code → corrected to language code `da`) |
+| Dutch | Netherlands(Nederland) | `awstats-nl.txt` | `awstats-nl.po` | 🔄 Format Upgrade | 585 KB | BCP 47: `nl` |
+| English | Canada | - | `awstats-en-ca.po` | ✨ New | 135 KB | BCP 47: `en-ca` |
+| English | United Kingdom(UK) | - | `awstats-en-gb.po` | ✨ New | 135 KB | BCP 47: `en-gb` |
+| English | United States(USA) | `awstats-en.txt` | `awstats-en-us.po` | 🔄 Format Upgrade | 538 KB | BCP 47: `en-us` |
+| Estonian | Estonia(Eesti) | `awstats-et.txt` | `awstats-et.po` | 🔄 Format Upgrade | 144 KB | BCP 47: `et` |
+| Finnish | Finland(Suomi) | `awstats-fi.txt` | `awstats-fi.po` | 🔄 Format Upgrade | 148 KB | BCP 47: `fi` |
+| French | France | `awstats-fr.txt` | `awstats-fr.po` | 🔄 Format Upgrade | 612 KB | BCP 47: `fr` |
+| Galician | Galicia, Spain(Galicia) | `awstats-gl.txt` | `awstats-gl.po` | 🔄 Format Upgrade | 152 KB | BCP 47: `gl` |
+| Georgian | Georgia(საქართველო) | - | `awstats-ka.po` | ✨ New | 286 KB | BCP 47: `ka` |
+| German | Germany(Deutschland) | `awstats-de.txt` | `awstats-de.po` | 🔄 Format Upgrade | 148 KB | BCP 47: `de` |
+| Greek | Greece(Ελλάδα) | `awstats-gr.txt` | `awstats-el.po` | 🔄 Format Upgrade + Renamed | 223 KB | BCP 47: `el`(original code `gr` was country code → corrected to language code `el`) |
+| Hebrew | Israel(ישראל) | - | `awstats-he.po` | ✨ New | 169 KB | BCP 47: `he` |
+| Hindi | India(भारत) | - | `awstats-hi.po` | ✨ New | 251 KB | BCP 47: `hi` |
+| Hungarian | Hungary(Magyarország) | `awstats-hu.txt` | `awstats-hu.po` | 🔄 Format Upgrade | 153 KB | BCP 47: `hu` |
+| Icelandic | Iceland(Ísland) | - | `awstats-is.po` | ✨ New | 141 KB | BCP 47: `is` |
+| Indonesian | Indonesia(Indonesia) | `awstats-id.txt` | `awstats-id.po` | 🔄 Format Upgrade | 144 KB | BCP 47: `id` |
+| Irish | Ireland(Éire) | - | `awstats-ga.po` | ✨ New | 153 KB | BCP 47: `ga` |
+| Italian | Italy(Italia) | `awstats-it.txt` | `awstats-it.po` | 🔄 Format Upgrade | 152 KB | BCP 47: `it` |
+| Japanese | Japan(日本) | `awstats-jp.txt` | `awstats-ja.po` | 🔄 Format Upgrade + Renamed | 651 KB | BCP 47: `ja`(original code `jp` was country code → corrected to language code `ja`) |
+| Kannada | Karnataka, India(ಕನ್ನಡ) | - | `awstats-kn.po` | ✨ New | 275 KB | BCP 47: `kn` |
+| Kazakh | Kazakhstan(Қазақстан) | - | `awstats-kk.po` | ✨ New | 207 KB | BCP 47: `kk` |
+| Khmer | Cambodia(កម្ពុជា) | - | `awstats-km.po` | ✨ New | 281 KB | BCP 47: `km` |
+| Korean | South Korea(한국) | `awstats-ko.txt` | `awstats-ko.po` | 🔄 Format Upgrade | 583 KB | BCP 47: `ko` |
+| Lao | Laos(ປະເທດລາວ) | - | `awstats-lo.po` | ✨ New | 255 KB | BCP 47: `lo` |
+| Latvian | Latvia(Latvija) | `awstats-lv.txt` | `awstats-lv.po` | 🔄 Format Upgrade | 152 KB | BCP 47: `lv` |
+| Lithuanian | Lithuania(Lietuva) | `awstats-lt.txt` | `awstats-lt.po` | 🔄 Format Upgrade | 151 KB | BCP 47: `lt` |
+| Macedonian | North Macedonia(Северна Македонија) | - | `awstats-mk.po` | ✨ New | 205 KB | BCP 47: `mk` |
+| Malay | Malaysia, Indonesia | - | `awstats-ms.po` | ✨ New | 143 KB | BCP 47: `ms` |
+| Malayalam | Kerala, India(മലയാളം) | - | `awstats-ml.po` | ✨ New | 299 KB | BCP 47: `ml` |
+| Marathi | Maharashtra, India(मराठी) | - | `awstats-mr.po` | ✨ New | 259 KB | BCP 47: `mr` |
+| Mongolian | Mongolia(Монгол улс) | - | `awstats-mn.po` | ✨ New | 205 KB | BCP 47: `mn` |
+| Nepali | Nepal(नेपाल) | - | `awstats-ne.po` | ✨ New | 255 KB | BCP 47: `ne` |
+| Norwegian(Bokmål) | Norway(Norge) | `awstats-no.txt` | `awstats-nb.po` | 🔄 Format Upgrade + Renamed | 137 KB | BCP 47: `nb`(original macrolanguage code `no` refined to written variant `nb` → Bokmål) |
+| Norwegian(Nynorsk) | Norway(Noreg) | - | `awstats-nn.po` | ✨ New | 139 KB | BCP 47: `nn`(Nynorsk → New Norwegian variant) |
+| Persian | Iran(ایران) | - | `awstats-fa.po` | ✨ New | 188 KB | BCP 47: `fa` |
+| Polish | Poland(Polska) | `awstats-pl.txt` | `awstats-pl.po` | 🔄 Format Upgrade | 149 KB | BCP 47: `pl` |
+| Portuguese | Portugal | `awstats-pt.txt` | `awstats-pt.po` | 🔄 Format Upgrade | 151 KB | BCP 47: `pt`(European Portuguese) |
+| Punjabi | India/Pakistan(ਪੰਜਾਬ) | - | `awstats-pa.po` | ✨ New | 247 KB | BCP 47: `pa` |
+| Romanian | Romania(România) | `awstats-ro.txt` | `awstats-ro.po` | 🔄 Format Upgrade | 151 KB | BCP 47: `ro` |
+| Russian | Russia(Россия) | `awstats-ru.txt` | `awstats-ru.po` | 🔄 Format Upgrade | 805 KB | BCP 47: `ru` |
+| Serbian | Serbia(Србија) | `awstats-sr.txt` | `awstats-sr.po` | 🔄 Format Upgrade | 208 KB | BCP 47: `sr`(Cyrillic script) |
+| Serbian(Latin) | Serbia(Srbija) | - | `awstats-sr-latn.po` | ✨ New | 146 KB | BCP 47: `sr-latn`(Latin transliteration variant of Cyrillic) |
+| Simplified Chinese | China, Singapore, Malaysia<br>(including international organizations and global Chinese communities) | `awstats-cn.txt` | `awstats-zh-cn.po` | 🔄 Format Upgrade + Renamed | 527 KB | BCP 47: `zh-CN`(original code `cn` was country code → corrected to `zh-cn`) |
+| Sinhala | Sri Lanka(ශ්‍රී ලංකාව) | - | `awstats-si.po` | ✨ New | 260 KB | BCP 47: `si` |
+| Slovak | Slovakia(Slovensko) | `awstats-sk.txt` | `awstats-sk.po` | 🔄 Format Upgrade | 151 KB | BCP 47: `sk` |
+| Slovenian | Slovenia(Slovenija) | `awstats-si.txt` | `awstats-sl.po` | 🔄 Format Upgrade + Renamed | 147 KB | BCP 47: `sl`(original code `si` was country code for Slovenia, not the language code → corrected to language code `sl`) |
+| Spanish | Spain(España) | `awstats-es.txt` | `awstats-es.po` | 🔄 Format Upgrade | 155 KB | BCP 47: `es` |
+| Swedish | Sweden(Sverige) | `awstats-sv.txt` | `awstats-sv.po` | 🔄 Format Upgrade | 142 KB | BCP 47: `sv` |
+| Tagalog | Philippines(Pilipinas) | `awstats-tg.txt` | `awstats-tl.po` | 🔄 Format Upgrade + Renamed | 153 KB | BCP 47: `tl`(original incorrect code `tg` was Tajik → corrected to `tl`) |
+| Tamil | India/Sri Lanka(தமிழ்) | - | `awstats-ta.po` | ✨ New | 295 KB | BCP 47: `ta` |
+| Telugu | Telangana, India(తెలుగు) | - | `awstats-te.po` | ✨ New | 281 KB | BCP 47: `te` |
+| Thai | Thailand(ประเทศไทย) | `awstats-th.txt` | `awstats-th.po` | 🔄 Format Upgrade | 258 KB | BCP 47: `th` |
+| Traditional Chinese | Taiwan, Hong Kong, Macau<br>and overseas traditional Chinese communities | `awstats-tw.txt` | `awstats-zh-tw.po` | 🔄 Format Upgrade + Renamed | 532 KB | BCP 47: `zh-TW`(original code `tw` was country code → corrected to `zh-tw`) |
+| Turkish | Turkey(Türkiye) | `awstats-tr.txt` | `awstats-tr.po` | 🔄 Format Upgrade | 150 KB | BCP 47: `tr` |
+| Ukrainian | Ukraine(Україна) | - | `awstats-uk.po` | ✨ New | 210 KB | BCP 47: `uk` |
+| Urdu | Pakistan(پاکستان) | - | `awstats-ur.po` | ✨ New | 193 KB | BCP 47: `ur` |
+| Uyghur | Xinjiang, China(شىنجاڭ) | - | `awstats-ug.po` | ✨ New | 215 KB | BCP 47: `ug` |
+| Uzbek | Uzbekistan(Oʻzbekiston) | - | `awstats-uz.po` | ✨ New | 153 KB | BCP 47: `uz` |
+| Vietnamese | Vietnam(Việt Nam) | `awstats-vi.txt` | `awstats-vi.po` | 🔄 Format Upgrade | 167 KB | BCP 47: `vi` |
+| Welsh | Wales, UK(Cymru) | `awstats-cy.txt` | `awstats-cy.po` | 🔄 Format Upgrade | 143 KB | BCP 47: `cy` |
 
 - ♻️ **Developer Documentation Refactoring**: The original documentation was hardcoded in English HTML and has now been refactored into localized language documentation. The author, Laurent Destailleur, left behind a wealth of insightful documentation examples and feature descriptions, recording AWStats' development journey from 1997 to the present. Although some content may no longer be fully relevant to today's internet environment(such as outdated social plugins like Google+), it remains valuable reference material for development and an important part of AWStats' history. Due to the enormous workload, only the following languages have been fully translated for the documentation:
 
 #### Full Localization(Interface + Documentation)
 | Language | Code | Interface | Documentation |
 |:---:|:---:|:---:|:---:|
+| English | en-ca | ✅ | ❌ |
+| English | en-gb | ✅ | ❌ |
+| English | en-us | ✅ | ✅ |
 | Simplified Chinese | zh-cn | ✅ | ✅ |
 | Traditional Chinese | zh-tw | ✅ | ✅ |
 | Russian | ru | ✅ | ✅ |
@@ -239,7 +262,7 @@ The Chinese version not only preserves the original documentation but also adds 
 
 Once you develop this habit, you will find that many minor colds may not even require a visit to the hospital, and can be self-repaired simply by drinking more warm water and getting enough rest. This not only improves your physical condition but also allows you to feel a deeper logical connection behind the words when handling localization work. 
 
-| Basic Habits | Short-term Sensation(Latency)| Long-term Lifecycle(Lifecycle)|
+| Basic Habits | Short-term Sensation(Latency) | Long-term Lifecycle(Lifecycle) |
 |:---:|:---:|:---:|
 | Cold/Iced Water | Fast thirst relief, refreshing taste | Stomach pain, bloating, indigestion, easy to get diarrhea, fatigue |
 | Warm Water | Gentle sip, smooth and soft | Good digestion, stable metabolism, warm hands and feet, high energy |
@@ -250,20 +273,20 @@ Chinese is a language with strict logic and clear word formation. The relationsh
 
 | Root | Derivatives | Logical Connection |
 |:---:|:---:|:---:|
-| 牛(cow/ox)| 牛肉(beef), 牛奶(milk), 牛皮(leather)| Animal → Meat/Dairy/Byproduct |
-| 羊(sheep/goat)| 羊肉(mutton), 羊毛(wool), 羊皮(sheepskin)| Animal → Meat/Wool/Leather |
-| 猪(pig)| 猪肉(pork), 猪油(lard), 猪皮(pigskin)| Animal → Meat/Fat/Byproduct |
-| 鸡(chicken)| 鸡肉(chicken meat), 鸡蛋(egg), 鸡毛(feather)| Animal → Meat/Egg/Byproduct |
-| 鱼(fish)| 鱼肉(fish meat), 鱼汤(fish soup), 鱼鳞(scale)| Animal → Meat/Soup/Byproduct |
-| 葡萄(grape)| 葡萄酒(wine), 葡萄干(raisin), 葡萄园(vineyard)| Fruit → Beverage/Dried fruit/Place |
-| 牛奶(milk)| 奶酪(cheese), 酸奶(yogurt), 黄油(butter)| Ingredient → Fermented/Processed |
-| 火车(train)| 火车站(station), 火车票(ticket), 火车道(track)| Core word → Place/Certificate/Facility |
-| 电(electricity)| 电脑(computer), 电视(TV), 电话(phone), 电梯(elevator)| Energy → Devices/Facilities |
-| 水(water)| 水库(reservoir), 水杯(cup), 水龙头(faucet), 水坝(dam)| Substance → Container/Facility/Building |
-| 书(book)| 书店(bookstore), 书架(bookshelf), 书签(bookmark), 书皮(cover)| Core word → Place/Item/Accessory |
-| 学(study)| 学校(school), 学生(student), 学习(learning), 学费(tuition)| Action/Concept → Place/Person/Behavior/Cost |
-| 您(formal "you")| 您的(your)| Honorific(elders/superiors)→ Possessive |
-| 你(informal "you")| 你的(your)| Familiar(peers/juniors)→ Possessive |
+| 牛(cow/ox) | 牛肉(beef), 牛奶(milk), 牛皮(leather) | Animal → Meat/Dairy/Byproduct |
+| 羊(sheep/goat) | 羊肉(mutton), 羊毛(wool), 羊皮(sheepskin) | Animal → Meat/Wool/Leather |
+| 猪(pig) | 猪肉(pork), 猪油(lard), 猪皮(pigskin) | Animal → Meat/Fat/Byproduct |
+| 鸡(chicken) | 鸡肉(chicken meat), 鸡蛋(egg), 鸡毛(feather) | Animal → Meat/Egg/Byproduct |
+| 鱼(fish) | 鱼肉(fish meat), 鱼汤(fish soup), 鱼鳞(scale) | Animal → Meat/Soup/Byproduct |
+| 葡萄(grape) | 葡萄酒(wine), 葡萄干(raisin), 葡萄园(vineyard) | Fruit → Beverage/Dried fruit/Place |
+| 牛奶(milk) | 奶酪(cheese), 酸奶(yogurt), 黄油(butter) | Ingredient → Fermented/Processed |
+| 火车(train) | 火车站(station), 火车票(ticket), 火车道(track) | Core word → Place/Certificate/Facility |
+| 电(electricity) | 电脑(computer), 电视(TV), 电话(phone), 电梯(elevator) | Energy → Devices/Facilities |
+| 水(water) | 水库(reservoir), 水杯(cup), 水龙头(faucet), 水坝(dam) | Substance → Container/Facility/Building |
+| 书(book) | 书店(bookstore), 书架(bookshelf), 书签(bookmark), 书皮(cover) | Core word → Place/Item/Accessory |
+| 学(study) | 学校(school), 学生(student), 学习(learning), 学费(tuition) | Action/Concept → Place/Person/Behavior/Cost |
+| 您(formal "you") | 您的(your) | Honorific(elders/superiors)→ Possessive |
+| 你(informal "you") | 你的(your) | Familiar(peers/juniors)→ Possessive |
 
 ---
 
@@ -273,11 +296,11 @@ To help illustrate the contrast with English, here are more examples:
 
 | Chinese Base | Chinese Derived | Logic | English Problem |
 |:---:|:---:|:---:|:---:|
-| 农(farming)| 农民(farmer), 农业(agriculture), 农田(farmland)| Core → Person/Industry/Place | farm → farmer(adds -er), agriculture(different root)|
-| 工(work)| 工人(worker), 工厂(factory), 工具(tool)| Core → Person/Place/Tool | work → worker(adds -er), factory(different root)|
-| 车(vehicle)| 汽车(car), 火车(train), 自行车(bicycle)| Core → Types of vehicles | car/train/bicycle(completely different words)|
-| 食(food)| 食物(food), 食堂(canteen), 食谱(recipe)| Core → Item/Place/Guide | food/canteen/recipe(different roots)|
-| 酒(alcohol)| 啤酒(beer), 葡萄酒(wine), 白酒(liquor)| Core → Types of drinks | beer/wine/liquor(completely different words)|
+| 农(farming) | 农民(farmer), 农业(agriculture), 农田(farmland) | Core → Person/Industry/Place | farm → farmer(adds -er), agriculture(different root) |
+| 工(work) | 工人(worker), 工厂(factory), 工具(tool) | Core → Person/Place/Tool | work → worker(adds -er), factory(different root) |
+| 车(vehicle) | 汽车(car), 火车(train), 自行车(bicycle) | Core → Types of vehicles | car/train/bicycle(completely different words) |
+| 食(food) | 食物(food), 食堂(canteen), 食谱(recipe) | Core → Item/Place/Guide | food/canteen/recipe(different roots) |
+| 酒(alcohol) | 啤酒(beer), 葡萄酒(wine), 白酒(liquor) | Core → Types of drinks | beer/wine/liquor(completely different words) |
 
 ---
 

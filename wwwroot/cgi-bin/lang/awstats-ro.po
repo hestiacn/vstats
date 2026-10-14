@@ -675,11 +675,26 @@ msgstr "Acest director nu are permisiune de citire"
 msgid "Please set read permission for directory"
 msgstr "Vă rugăm să setați permisiunea de citire pentru director"
 
-msgid "Missing required parameter in config file"
-msgstr "Lipsește parametrul necesar în fișierul de configurare"
+msgid "No AWStats config file for any site found in %s"
+msgstr "Nu s-a găsit niciun fișier de configurare AWStats pentru niciun site în %s"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Vă rugăm să verificați dacă 'DirData' este definit."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Directorul '%s' nu conține un fișier de configurare pentru domeniul '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "Parametru obligatoriu lipsă în fișierul de configurare \"%s\""
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Vă rugăm să verificați că calea 'DirData' este definită și există."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Parametrul LogFile nu este definit în fișierul de configurare/domeniu"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Parametrul LogFormat nu este definit în fișierul de configurare/domeniu"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Parametrul LogFormat este greșit în fișierul de configurare/domeniu. Valoarea este '%s' (ar trebui să fie 1, 2, 3, 4, 5 sau un 'șir de format de jurnal AWStats personalizat')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Numele de domeniu din adresa browserului pare să lipsească sau este incomplet"
@@ -1420,8 +1435,8 @@ msgstr "coloană pentru a obține locațiile fișierelor"
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Sfat: Dacă trebuie să generați pictograme conexe, puteți utiliza %s pentru a încărca o imagine de logo, iar aceasta va genera automat toate fișierele de pictograme conexe de mai sus"
 
-msgid "200: success, 404: failure"
-msgstr "200 este numărul de succese, 404 este numărul de eșecuri"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: succes, 404: lipsă, CDN: favicon non-local (pictogramă site)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1752,8 +1767,8 @@ msgstr "Rezumat IP necunoscut cu trafic redus"
 msgid "Failed to obtain IP data"
 msgstr "Rezumat alt IP cunoscut"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Nu s-au putut obține datele relevante"
+msgid "Monthly Traffic Statistics"
+msgstr "Statistici lunare de trafic"
 
 msgid "Limited list of countries and regions"
 msgstr "Doar primele 10 linii de date sunt afișate în prezent, lista completă pentru mai multe țări și regiuni se află pe pagina de detalii"
@@ -3063,9 +3078,230 @@ msgstr "Date care nu pot fi clasificate în intervalele existente, de obicei din
 msgid "tooltip_21"
 msgstr "Înregistrări ale atacurilor cu viermi detectate. Viermele este un program malițios care se auto-replică, de obicei răspândindu-se prin vulnerabilități de rețea."
 
-#------------------------------------------------------------------------------
-# Afișare informații de ajutor - Ediția Comunității
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Se actualizează site-ul specificat: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Se actualizează site-ul %s. Comandă de actualizare: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Se procesează înregistrările și se generează fișierul de date din fișierul de configurare \"%s\", AWStats versiunea %s"
+
+msgid "Updating data, please wait"
+msgstr "Se actualizează datele, vă rugăm așteptați"
+
+msgid "done (%s seconds)"
+msgstr "finalizat (%s secunde)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "COMANDĂ WRAPPER (Opțional)"
+
+msgid "To run %s without specifying the full path."
+msgstr "Pentru a rula %s fără a specifica calea completă."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Creați un script wrapper în %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Copiați și rulați următoarea comandă wrapper în terminalul dvs.:"
+
+msgid "Wrapper for %s"
+msgstr "Wrapper pentru %s"
+
+msgid "Then make it executable:"
+msgstr "Apoi faceți-l executabil:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Acum puteți rula actualizarea folosind următoarea comandă:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Datele fișierului jurnal provin din directorul \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Se citește ultima poziție a datelor și se verifică datele"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Ultima poziție a datelor a fost citită cu succes (după linia %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Se procesează înregistrări noi (se actualizează fișierul istoric la fiecare %s intrări de jurnal)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Accesul direct la ultima înregistrare memorată a aterizat pe o altă înregistrare."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Prin urmare, se caută înregistrări noi de la începutul fișierului jurnal"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Accesul direct la ultima înregistrare memorată este în afara fișierului."
+
+msgid "So searching it from beginning of log file"
+msgstr "Prin urmare, se caută de la începutul fișierului jurnal"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Se caută înregistrări noi de la începutul fișierului jurnal"
+
+msgid "Saving the log to the data file"
+msgstr "Se salvează jurnalul în fișierul de date"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Numărul de surse vizitate a atins limita de salvare de %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Numărul de URL-uri a atins limita de salvare de %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Linii sărite în fișier: %s"
+
+msgid "Found %s already parsed records"
+msgstr "S-au găsit %s înregistrări deja analizate"
+
+msgid "Parsed lines in file: %s"
+msgstr "Linii analizate în fișier: %s"
+
+msgid "Found %s dropped records"
+msgstr "S-au găsit %s înregistrări eliminate"
+
+msgid "Found %s comments"
+msgstr "S-au găsit %s comentarii"
+
+msgid "Found %s blank records"
+msgstr "S-au găsit %s înregistrări goale"
+
+msgid "Found %s corrupted records"
+msgstr "S-au găsit %s înregistrări corupte"
+
+msgid "Found %s old records"
+msgstr "S-au găsit %s înregistrări vechi"
+
+msgid "Found %s new data records"
+msgstr "S-au găsit %s înregistrări de date noi"
+
+msgid "All updates completed!"
+msgstr "Toate actualizările au fost finalizate!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Notă: Parametrul HostAliases nu este configurat (folosit pentru a defini aliasuri de domeniu suplimentare pentru site, implicit este gol)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Sistemul a adăugat automat valorile implicite: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Pentru a adăuga alte aliasuri de domeniu, vă rugăm să setați HostAliases în fișierul de configurare și să vă asigurați că configurația site-ului serverului web (de exemplu, Apache, Nginx) este actualizată în consecință."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "De exemplu, dacă site-ul folosește atât example.com, cât și www.example.com, puteți seta HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "Actualizator în lot AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Drepturi de autor (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Licențiat sub GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "DESCRIERE"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall actualizează automat toate fișierele de configurare AWStats găsite"
+
+msgid "in a specified directory (default: %s)."
+msgstr "într-un director specificat (implicit: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Acest lucru este util pentru configurarea sarcinilor cron programate."
+
+msgid "USAGE"
+msgstr "UTILIZARE"
+
+msgid "OPTIONS"
+msgstr "OPȚIUNI"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Calea către awstats.pl (detectată automat dacă este omisă)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Actualizează doar domeniul specificat"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Directorul care conține fișiere de configurare (implicit: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Exclude configurațiile după nume (separate prin virgulă)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Limba pentru ieșire (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr etc.)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Activează ieșirea de depanare (N mai mare = mai detaliat)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Setează valoarea LastLine pentru toate actualizările"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Afișează acest mesaj de ajutor"
+
+msgid "EXAMPLES"
+msgstr "EXEMPLE"
+
+msgid "Update all sites"
+msgstr "Actualizează toate site-urile"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Generează comentarii în fișierul de date în limba preferată"
+
+msgid "Example:"
+msgstr "Exemplu:"
+
+msgid "Update only one specific site"
+msgstr "Actualizează doar un site specific"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Actualizează toate site-urile cu o cale AWStats personalizată (de exemplu, când se utilizează gazde virtuale sau o locație awstats.pl personalizată)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Actualizează toate site-urile, cu excepția awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Folosește directorul de configurare personalizat"
+
+msgid "QUICK START"
+msgstr "START RAPID"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Wrapper-ul 'awstats-update' este deja instalat."
+
+msgid "Simply run:"
+msgstr "Pur și simplu rulați:"
+
+msgid "Update single site"
+msgstr "Actualizează un singur site"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Afișează textul de afișare al terminalului și înregistrările jurnalului în limba specificată"
+
+msgid "Log file: %s"
+msgstr "Fișier jurnal: %s"
+
+msgid "Show help"
+msgstr "Afișează ajutor"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Nu este nevoie să introduceți calea completă către awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "SARCINĂ PERIODICĂ"
+
+msgid "Daily update script:"
+msgstr "Script de actualizare zilnică:"
+
+msgid "Cron job:"
+msgstr "Sarcină cron:"
+
+msgid "Content:"
+msgstr "Conținut:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Statistici Web Avansate"

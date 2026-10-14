@@ -675,11 +675,26 @@ msgstr "Цей каталог не має прав на читання"
 msgid "Please set read permission for directory"
 msgstr "Будь ласка, встановіть права на читання для каталогу"
 
-msgid "Missing required parameter in config file"
-msgstr "Відсутній обов'язковий параметр у файлі конфігурації"
+msgid "No AWStats config file for any site found in %s"
+msgstr "У %s не знайдено жодного файлу конфігурації AWStats для жодного сайту"
 
-msgid "Please check that 'DirData' is defined."
-msgstr "Будь ласка, перевірте, чи визначено 'DirData'."
+msgid "Directory '%s' does not contain a config file for domain '%s'"
+msgstr "Каталог '%s' не містить файлу конфігурації для домену '%s'"
+
+msgid "Missing required parameter in config file \"%s\""
+msgstr "У файлі конфігурації \"%s\" відсутній обов'язковий параметр"
+
+msgid "Please check that 'DirData' path is defined and exists."
+msgstr "Будь ласка, перевірте, що шлях 'DirData' визначено та існує."
+
+msgid "LogFile parameter is not defined in config/domain file"
+msgstr "Параметр LogFile не визначено у файлі конфігурації/домену"
+
+msgid "LogFormat parameter is not defined in config/domain file"
+msgstr "Параметр LogFormat не визначено у файлі конфігурації/домену"
+
+msgid "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')"
+msgstr "Параметр LogFormat неправильний у файлі конфігурації/домену. Значення: '%s' (має бути 1, 2, 3, 4, 5 або 'персоналізований рядок формату журналу AWStats')"
 
 msgid "Domain name in browser address appears to be missing or incomplete"
 msgstr "Схоже, що доменне ім'я в адресі браузера відсутнє або неповне"
@@ -1420,8 +1435,8 @@ msgstr "стовпець для отримання розташувань фай
 msgid "Tip: If you need to generate related icons, you can use %s to upload a logo image, and it will automatically generate all the above related icon files"
 msgstr "Порада: Якщо вам потрібно згенерувати пов'язані іконки, ви можете використати %s для завантаження зображення логотипу, і він автоматично згенерує всі вищезазначені пов'язані файли іконок"
 
-msgid "200: success, 404: failure"
-msgstr "200 - кількість успіхів, 404 - кількість невдач"
+msgid "200: success, 404: missing, CDN: non-local favicon (site icon)"
+msgstr "200: успіх, 404: не знайдено, CDN: нелокальний favicon (значок сайту)"
 
 msgid "_PATH_FAVICON"
 msgstr "/favicon.ico"
@@ -1752,8 +1767,8 @@ msgstr "Підсумок невідомих IP з низьким трафіко�
 msgid "Failed to obtain IP data"
 msgstr "Підсумок інших відомих IP"
 
-msgid "Failed to obtain the relevant data"
-msgstr "Не вдалося отримати відповідні дані"
+msgid "Monthly Traffic Statistics"
+msgstr "Місячна статистика трафіку"
 
 msgid "Limited list of countries and regions"
 msgstr "Наразі відображається лише 10 рядків даних, повний список країн та регіонів див. на сторінці деталей"
@@ -3063,9 +3078,230 @@ msgstr "Дані, які неможливо класифікувати в існ
 msgid "tooltip_21"
 msgstr "Записи про виявлені атаки черв'яків. Черв'як - це програма, що самовідтворюється, яка зазвичай поширюється через мережеві вразливості."
 
-#------------------------------------------------------------------------------
-# Відображення довідкової інформації - видання спільноти
-#------------------------------------------------------------------------------
+msgid "Updating specified site: %s"
+msgstr "Оновлення вказаного сайту: %s"
+
+msgid "Updating the site %s. Update command: '%s'"
+msgstr "Оновлення сайту %s. Команда оновлення: '%s'"
+
+msgid "Processing records and generating data file from config file \"%s\", AWStats version %s"
+msgstr "Обробка записів і створення файлу даних із файлу конфігурації \"%s\", AWStats версії %s"
+
+msgid "Updating data, please wait"
+msgstr "Оновлення даних, будь ласка, зачекайте"
+
+msgid "done (%s seconds)"
+msgstr "готово (%s секунд)"
+
+msgid "WRAPPER COMMAND (Optional)"
+msgstr "КОМАНДА-ОБГОРТКА (Необов'язково)"
+
+msgid "To run %s without specifying the full path."
+msgstr "Щоб запустити %s без зазначення повного шляху."
+
+msgid "Create a wrapper script in %s:"
+msgstr "Створіть скрипт-обгортку в %s:"
+
+msgid "Copy and run the following wrapper command in your terminal:"
+msgstr "Скопіюйте та виконайте наступну команду-обгортку у своєму терміналі:"
+
+msgid "Wrapper for %s"
+msgstr "Обгортка для %s"
+
+msgid "Then make it executable:"
+msgstr "Потім зробіть його виконуваним:"
+
+msgid "You can now run the update using the following command:"
+msgstr "Тепер ви можете запустити оновлення за допомогою наступної команди:"
+
+msgid "Log file data comes from the \"%s\" directory"
+msgstr "Дані файлу журналу надходять із каталогу \"%s\""
+
+msgid "Reading last data position and verifying data"
+msgstr "Читання останньої позиції даних і перевірка даних"
+
+msgid "Successfully read last data position (after line %s)"
+msgstr "Останню позицію даних успішно прочитано (після рядка %s)"
+
+msgid "Processing new records (updating history file every %s log entries)"
+msgstr "Обробка нових записів (оновлення файлу історії кожні %s записів журналу)"
+
+msgid "Direct access to the last remembered record landed on another record."
+msgstr "Прямий доступ до останнього запам'ятованого запису потрапив на інший запис."
+
+msgid "So searching new records from beginning of log file"
+msgstr "Тому нові записи шукаються з початку файлу журналу"
+
+msgid "Direct access to last remembered record is out of file."
+msgstr "Прямий доступ до останнього запам'ятованого запису знаходиться за межами файлу."
+
+msgid "So searching it from beginning of log file"
+msgstr "Тому пошук ведеться з початку файлу журналу"
+
+msgid "Searching new records from beginning of log file"
+msgstr "Пошук нових записів з початку файлу журналу"
+
+msgid "Saving the log to the data file"
+msgstr "Збереження журналу у файл даних"
+
+msgid " (The number of sources visited has reached the save limit of %s)"
+msgstr " (Кількість відвіданих джерел досягла межі збереження %s)"
+
+msgid " (The number of URLs has reached the save limit of %s)"
+msgstr " (Кількість URL досягла межі збереження %s)"
+
+msgid "Jumped lines in file: %s"
+msgstr "Пропущені рядки у файлі: %s"
+
+msgid "Found %s already parsed records"
+msgstr "Знайдено %s уже проаналізованих записів"
+
+msgid "Parsed lines in file: %s"
+msgstr "Проаналізовані рядки у файлі: %s"
+
+msgid "Found %s dropped records"
+msgstr "Знайдено %s відкинутих записів"
+
+msgid "Found %s comments"
+msgstr "Знайдено %s коментарів"
+
+msgid "Found %s blank records"
+msgstr "Знайдено %s порожніх записів"
+
+msgid "Found %s corrupted records"
+msgstr "Знайдено %s пошкоджених записів"
+
+msgid "Found %s old records"
+msgstr "Знайдено %s старих записів"
+
+msgid "Found %s new data records"
+msgstr "Знайдено %s нових записів даних"
+
+msgid "All updates completed!"
+msgstr "Усі оновлення завершено!"
+
+msgid "Notice: HostAliases parameter is not configured (used to define additional domain aliases for the site, default is empty)."
+msgstr "Примітка: Параметр HostAliases не налаштовано (використовується для визначення додаткових псевдонімів домену для сайту, за замовчуванням порожній)."
+
+msgid "The system has automatically added default values: localhost, 127.0.0.1, ::1."
+msgstr "Система автоматично додала значення за замовчуванням: localhost, 127.0.0.1, ::1."
+
+msgid "To add other domain aliases, please set HostAliases in the configuration file, and make sure the Web server (e.g., Apache, Nginx) site configuration is updated accordingly."
+msgstr "Щоб додати інші псевдоніми домену, встановіть HostAliases у файлі конфігурації та переконайтеся, що конфігурацію сайту веб-сервера (наприклад, Apache, Nginx) оновлено відповідним чином."
+
+msgid "For example, if the site uses both example.com and www.example.com, you can set HostAliases=\"www\"."
+msgstr "Наприклад, якщо сайт використовує як example.com, так і www.example.com, можна встановити HostAliases=\"www\"."
+
+msgid "AWStats Batch Updater %s"
+msgstr "Пакетний оновлювач AWStats %s"
+
+msgid "Copyright (c) Laurent Destailleur"
+msgstr "Авторське право (c) Laurent Destailleur"
+
+msgid "Licensed under GNU General Public License"
+msgstr "Ліцензовано за GNU General Public License"
+
+msgid "DESCRIPTION"
+msgstr "ОПИС"
+
+msgid "awstats_updateall automatically updates all AWStats config files found"
+msgstr "awstats_updateall автоматично оновлює всі знайдені конфігураційні файли AWStats"
+
+msgid "in a specified directory (default: %s)."
+msgstr "у вказаному каталозі (за замовчуванням: %s)."
+
+msgid "This is useful for setting up scheduled cron jobs."
+msgstr "Це корисно для налаштування запланованих завдань cron."
+
+msgid "USAGE"
+msgstr "ВИКОРИСТАННЯ"
+
+msgid "OPTIONS"
+msgstr "ПАРАМЕТРИ"
+
+msgid "-awstatsprog=PATH    Path to awstats.pl (auto-detected if omitted)"
+msgstr "-awstatsprog=PATH    Шлях до awstats.pl (визначається автоматично, якщо пропущено)"
+
+msgid "-config=DOMAIN       Update only the specified domain"
+msgstr "-config=DOMAIN       Оновити лише вказаний домен"
+
+msgid "-configdir=DIR       Directory containing config files (default: /etc/awstats)"
+msgstr "-configdir=DIR       Каталог, що містить конфігураційні файли (за замовчуванням: /etc/awstats)"
+
+msgid "-excludeconf=CONF    Exclude configs by name (comma-separated)"
+msgstr "-excludeconf=CONF    Виключити конфігурації за назвою (через кому)"
+
+msgid "-lang=LL             Language for output (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr, etc.)"
+msgstr "-lang=LL             Мова виводу (en-ca, en-gb, en-us, zh-cn, zh-tw, de, fr тощо)"
+
+msgid "-debug=N             Enable debug output (higher N = more verbose)"
+msgstr "-debug=N             Увімкнути вивід налагодження (більше N = детальніше)"
+
+msgid "-lastline=TIMESTAMP  Set LastLine value for all updates"
+msgstr "-lastline=TIMESTAMP  Встановити значення LastLine для всіх оновлень"
+
+msgid "-h, -help            Show this help message"
+msgstr "-h, -help            Показати це довідкове повідомлення"
+
+msgid "EXAMPLES"
+msgstr "ПРИКЛАДИ"
+
+msgid "Update all sites"
+msgstr "Оновити всі сайти"
+
+msgid "Generate data file comments in your preferred language"
+msgstr "Генерувати коментарі у файлі даних бажаною мовою"
+
+msgid "Example:"
+msgstr "Приклад:"
+
+msgid "Update only one specific site"
+msgstr "Оновити лише один конкретний сайт"
+
+msgid "Update all sites with a custom AWStats path (e.g., when using virtual hosts or a custom awstats.pl location)"
+msgstr "Оновити всі сайти з користувацьким шляхом AWStats (наприклад, під час використання віртуальних хостів або користувацького розташування awstats.pl)"
+
+msgid "Update all sites except awstats.example.com.conf"
+msgstr "Оновити всі сайти, крім awstats.example.com.conf"
+
+msgid "Use custom config directory"
+msgstr "Використовувати користувацький каталог конфігурації"
+
+msgid "QUICK START"
+msgstr "ШВИДКИЙ СТАРТ"
+
+msgid "The 'awstats-update' wrapper is already installed."
+msgstr "Обгортку 'awstats-update' уже встановлено."
+
+msgid "Simply run:"
+msgstr "Просто запустіть:"
+
+msgid "Update single site"
+msgstr "Оновити один сайт"
+
+msgid "Output terminal display text and log records in your specified language"
+msgstr "Виводити текст відображення терміналу та записи журналу вказаною мовою"
+
+msgid "Log file: %s"
+msgstr "Файл журналу: %s"
+
+msgid "Show help"
+msgstr "Показати довідку"
+
+msgid "No need to type the full path to awstats_updateall.pl."
+msgstr "Не потрібно вводити повний шлях до awstats_updateall.pl."
+
+msgid "PERIODIC TASK"
+msgstr "ПЕРІОДИЧНЕ ЗАВДАННЯ"
+
+msgid "Daily update script:"
+msgstr "Скрипт щоденного оновлення:"
+
+msgid "Cron job:"
+msgstr "Завдання cron:"
+
+msgid "Content:"
+msgstr "Вміст:"
 
 msgid "AWStats %s - Advanced Web Statistics"
 msgstr "AWStats %s - Розширена веб-статистика"
