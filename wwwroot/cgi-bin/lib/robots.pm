@@ -61,7 +61,7 @@
 'cohere-ai/',
 'AI2Bot',
 'Diffbot/',
-'Bytespider',
+'Bytespider/',
 'PetalBot',
 # AI/ML Crawlers - Additional
 'Claude-Web/',
@@ -637,6 +637,13 @@
 'Edg/[0-9]{1,2}\.',
 'Chrome/[0-9]{4,}\.',
 'Android [0-9]{1,2}\.[0-9]{1,2}.*Mobile.*Safari',
+'windows[_+\x20]nt[_+\x20]6\.1.*edg/1[1-9][0-9]\.',
+'windows[_+\x20]nt[_+\x20]6\.1.*edg/[2-9][0-9][0-9]\.',
+'windows[_+\x20]nt[_+\x20]6\.1.*chrome/1[1-9][0-9]\.',
+'windows[_+\x20]nt[_+\x20]6\.1.*chrome/[2-9][0-9][0-9]\.',
+'Gecko/[2-9][0-9]{3}-',
+'^Mozilla/[45]\.\d{6,}',
+'^User-Agent:',
 
 # these could be removed to speed up processing as they are rarely seen
 'a6\-indexer',
@@ -1447,7 +1454,9 @@
 'ExaSearchBot/','<a href="https://exa.ai" title="Exa AI Search" target="_blank" rel="noopener noreferrer">ExaSearchBot (Exa AI)</a>',
 'newsai/','<a href="#" title="NewsAI" target="_blank" rel="noopener noreferrer">NewsAI (AI news crawler)</a>',
 'TTWebView/','<a href="https://www.toutiao.com" title="Toutiao WebView" target="_blank" rel="noopener noreferrer">TTWebView (Toutiao)</a>',
-
+'python-requests' => '<a href="https://requests.readthedocs.io/" title="Python requests library" target="_blank" rel="noopener noreferrer">Python-requests (Python HTTP library)</a>',
+'crawler' => 'Generic crawler (unknown)',
+'(firefox/)([0-9][0-9]\.|[0-9]\.)' => 'Old Firefox (obsolete - likely bot)',
 # 包管理工具
 'Composer/','<a href="https://getcomposer.org" title="Composer" target="_blank" rel="noopener noreferrer">Composer (PHP dependency manager)</a>',
 'npm/','<a href="https://www.npmjs.com" title="npm" target="_blank" rel="noopener noreferrer">npm (Node.js package manager)</a>',
@@ -2077,7 +2086,6 @@
 'windows[_+\x20]nt[_+\x20]6\.1.*chrome/[2-9][0-9][0-9]\.','Win7 + Chrome >= 200 (suspicious)',
 'windows[_+\x20]nt[_+\x20]6\.1.*edg/1[1-9][0-9]\.','Win7 + Edge >= 110 (suspicious)',
 'windows[_+\x20]nt[_+\x20]6\.1.*edg/[2-9][0-9][0-9]\.','Win7 + Edge >= 200 (suspicious)',
-'Android [1-9]\.[0-9].*Mobile.*Safari','Android WebView (old version - likely bot)',
 
 # Rare robots (list2 entries)
 'a6\-indexer','a6-indexer',
