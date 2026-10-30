@@ -10,6 +10,13 @@
 #
 # See perldoc.perl.org/perlreref.html for regex syntax.
 #-------------------------------------------------------
+# Explicit marker used before the mobile/tablet exemption in awstats.pl.
+# Keep the legacy list entry and history ID unchanged for customized databases.
+my $bytespider_marker = qr/(?:^|[^A-Za-z0-9])Bytespider(?=[\x09-\x0D\x20\/;)]|\z)/iaa;
+sub BytespiderRobotID {
+    return defined($_[0]) && $_[0] =~ $bytespider_marker ? 'Bytespider/' : '';
+}
+
 @RobotsSearchIDOrder_list1 = (
 'meta-externalagent/',
 'facebookexternalhit',
