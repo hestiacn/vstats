@@ -260,7 +260,7 @@ is(run($caps,$exact."\r\n")->{counts}{parsed},1,'CRLF cap boundary');
 my $overboundary=run($caps,$exact." \n".$J->encode(event())."\n");
 is($overboundary->{counts}{oversized},1,'cap+1 oversized');
 my $same_config=cfg();my $before=$J->encode($same_config);run($same_config,[event()]);is($J->encode($same_config),$before,'config immutable');
-my $r_before=VStats::TrafficClassifier::canonical_json($private);VStats::TrafficClassifier::html_report($private);is(VStats::TrafficClassifier::canonical_json($private),$r_before,'report immutable');
+VStats::TrafficClassifier::html_report($summary);is(VStats::TrafficClassifier::canonical_json($summary),$json,'report immutable');
 my $provider_xss=snap('1970-01-01T00:01:40Z',undef,'<svg onload="x">');
 unlike(VStats::TrafficClassifier::html_report(run(cfg(),[$google],[$provider_xss])),qr/<svg/,'metadata escaped');
 is(VStats::TrafficClassifier::normalize_target('/a%20b'),'/a b','encoded SP allowed');

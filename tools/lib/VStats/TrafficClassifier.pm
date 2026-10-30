@@ -426,6 +426,7 @@ sub _html_escape { my ($s)=@_; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&g
 sub html_report {
     my ($report)=@_;
     my $text=decode('UTF-8',canonical_json($report),FB_CROAK);
+    $report=$JSON->decode($text);
     my $html='<!doctype html><html lang="en"><meta charset="utf-8"><title>Traffic classification</title><body><h1>Traffic classification</h1><p>Observed requests; unknown does not mean human. Scanner flags are behavior evidence, separate from actor identity.</p><table><caption>Requests in this input</caption>';
     for my $actor (qw(verified_crawler declared_crawler_or_tool unknown)) { $html.='<tr><th>'._html_escape($actor).'</th><td>'.$report->{actors}{$actor}.'</td></tr>'; }
     $html.='</table><p>Scanner-flagged requests: '.$report->{scanner_flagged_requests}.'. Merged qualifying sequences: '.$report->{merged_scanner_sequences}.'.</p>';
