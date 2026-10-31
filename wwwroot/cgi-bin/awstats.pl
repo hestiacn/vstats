@@ -24509,10 +24509,13 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 				if ($LevelForRobotsDetection) {
 
 					if ($UserAgent) {
+						# Older or locally customized robots.pm may lack the helper.
+						my $explicit_robot = defined(&BytespiderRobotID)
+							? BytespiderRobotID($UserAgent) : '';
 						my $is_mobile_device = 0;
 						if (defined &get_device_type) {
 							my $device_type = get_device_type($UserAgent);
-							if ($device_type eq 'mobile' || $device_type eq 'tablet') {
+							if (!$explicit_robot && ($device_type eq 'mobile' || $device_type eq 'tablet')) {
 								$is_mobile_device = 1;
 								if ($Debug) {
 									debug("  Mobile device detected ($device_type), skipping robot classification", 2);
@@ -24521,7 +24524,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						}
 						# 如果不是移动设备，进行机器人检测
 						if (!$is_mobile_device) {
-							my $uarobot = $TmpRobot{$UserAgent};
+							my $uarobot = $explicit_robot || $TmpRobot{$UserAgent};
 							#study $UserAgent;		Does not increase speed
 							if ( !$uarobot ) {
 								if ($Debug) {
