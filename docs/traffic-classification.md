@@ -1,5 +1,66 @@
 # Optional traffic classification
 
+## Additional verified-crawler filtering in AWStats
+
+`VerifiedCrawlerEvidenceFile="/private/path/evidence.json"` enables an additional
+native check for HTTP NCSA combined (`LogFormat=1`) or common (`LogFormat=4`)
+input. The default empty setting retains existing behavior. Common logs have no
+user-agent marker and therefore cannot gain a verified crawler identity.
+
+The additional layer uses the same `verified_crawler` identity rules as this
+report. A supported crawler marker and covering provider evidence are both
+required. A declaration, scanner flag, unknown label, missing evidence or failed
+verification never creates an additional exclusion. Existing user-agent, worm,
+error and other native classification rules continue to apply independently.
+The current registry supports Google's common crawlers with the `Googlebot`
+marker; other providers have not been added by this option.
+
+Confirmed eligible requests enter native robot/non-viewed accounting before
+download tracking, including valid 200/206 downloads and zero-byte 304 responses.
+The parser performs no network or DNS lookup. Malformed or unreadable evidence
+stops an update before history changes; unsupported individual records cannot
+become verified exclusions.
+
+The evidence file is a schema-1 bundle, capped at 64 MiB:
+
+```json
+{"schema_version":1,"snapshots":[{"raw_json":"UNMODIFIED_PROVIDER_JSON","attestation_json":"RETRIEVAL_ATTESTATION_JSON"}]}
+```
+
+Each string contains the corresponding UTF-8 JSON document defined below. The
+existing per-document, snapshot-count, aggregate-prefix and time-gap limits
+still apply. This bundle cap is an operational resource bound, not an accuracy
+measurement. Retain evidence as a private operator-controlled file.
+
+On POSIX hosts, the optional Python 3.6+ collector fetches only the registered
+public HTTPS source, validates its format, records the actual retrieval time,
+archives unmodified content by digest and atomically replaces the runtime bundle:
+
+```sh
+python3 tools/crawler-evidence.py --directory /private/path
+```
+
+It reads no visitor logs and sends no visitor addresses to the provider. Raw
+content is deduplicated, retrieval attestations remain archived, and the runtime
+bundle uses the latest evidence within the reviewed snapshot/prefix caps. HTTPS
+verification is enabled; redirects away from the registered URL are refused.
+Collection failures preserve the prior bundle. No schedule is installed by the
+tool. Record collection after freezing the input snapshot so that its newest
+request can be bracketed by an actual subsequent retrieval.
+
+Retrieval times are never inferred from provider `creationTime`. The first
+collection cannot verify older requests; current DNS or current IP ownership is
+not retrospective evidence. A caller may continue with the prior valid bundle
+after a collection failure, leaving uncovered requests under existing rules.
+
+This native option affects newly processed records. It does not recalculate
+existing history or prove that the remaining traffic is human. A report toggle
+requires independent history directories for the original rules and the
+additional layer, maintained against the same input and rendered separately.
+Seed a new forward-looking layer from existing history before processing new
+records, or replay a complete, nonoverlapping source corpus into a fresh history.
+Do not subtract request labels from stored unique-visitor or visit counts.
+
 The native fix recognizes a bounded `Bytespider` marker before the mobile/tablet
 robot exemption, preserving the `Bytespider/` history ID and display entry.
 It also precedes other robots.pm rules (e.g. generic `spider`), so matching desktop/TV/wearable requests move to `Bytespider/`; other device detection, rules and accounting stay unchanged.

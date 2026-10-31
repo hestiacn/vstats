@@ -47,6 +47,8 @@ our $SiteConfig;
 our ($REVISION, $VERSION);
 our $UseDefaultNotPageList = 0;
 our $EnableLocaldatePlugin = 1;
+our $VerifiedCrawlerEvidenceFile = '';
+our $VerifiedCrawlerEvidence;
 our %DOWNLOAD_EXTS = ();
 our %_favicon_html_cache;
 our $LARAGON_ROOT_LOOKED_UP = 0;
@@ -3922,6 +3924,8 @@ sub SortBrowsers {
 # Return:       None (exits on error)
 #------------------------------------------------------------------------------
 sub Read_Config {
+    $VerifiedCrawlerEvidenceFile = '';
+    $VerifiedCrawlerEvidence = undef;
 	# Check config file in common possible directories :
 	# Windows :                   				"$DIR" (same dir than awstats.pl)
 	# Standard, Mandrake and Debian package :	"/etc/awstats"
@@ -4221,6 +4225,10 @@ sub Parse_Config {
 		}
 
 		# Initialize parameter for (param,value)
+		if ( $param eq 'VerifiedCrawlerEvidenceFile' ) {
+			$VerifiedCrawlerEvidenceFile = $value;
+			next;
+		}
 		if ( $param =~ /^LogFile/ ) {
 			if ( $QueryString !~ /logfile=([^\s&]+)/i ) { $LogFile = $value; }
 			next;
@@ -5065,6 +5073,32 @@ sub Substitute_Tags {
 #               Errors out on incompatible configurations
 #------------------------------------------------------------------------------
 sub Check_Config {
+	if ($UpdateStats && length($VerifiedCrawlerEvidenceFile)) {
+		if ($LogType ne 'W' || ($LogFormat ne '1' && $LogFormat ne '4')) {
+			error('Verified crawler evidence requires HTTP combined or common logs.');
+		}
+		my $ok = eval {
+			local @INC = (File::Spec->catdir($DIR || '.', '..', '..', 'tools', 'lib'), @INC);
+			require VStats::TrafficClassifier;
+			my $cap = VStats::TrafficClassifier->fixed_limits->{evidence_bundle_bytes};
+			die 'Evidence must be a regular file' if -l $VerifiedCrawlerEvidenceFile || !-f $VerifiedCrawlerEvidenceFile;
+			open my $evidence, '<:raw', $VerifiedCrawlerEvidenceFile or die 'Evidence open failed';
+			die 'Evidence must be a regular file' if !-f $evidence;
+			my $raw = '';
+			while (1) {
+				my $n = read($evidence, my $chunk, 65536);
+				die 'Evidence read failed' if !defined($n);
+				last if !$n;
+				die 'Evidence bundle too large' if length($raw) + $n > $cap;
+				$raw .= $chunk;
+			}
+			close($evidence) or die 'Evidence close failed';
+			$VerifiedCrawlerEvidence = VStats::TrafficClassifier->evidence_verifier(
+				$raw, format => $LogFormat eq '1' ? 'combined' : 'common');
+			1;
+		};
+		error('Invalid or unreadable verified crawler evidence; statistics were not updated.') if !$ok;
+	}
 	if ($Debug) { debug("Call to Check_Config"); }
 
 	# Show initial values of main parameters before check
@@ -24111,6 +24145,27 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						last;
 					}
 				}
+			}
+		}
+
+		# Additional evidence never replaces the existing robot/worm/error rules.
+		# Run before download tracking so confirmed downloads are not counted as
+		# ordinary traffic and download events before being classified as robots.
+		if (!$countedtraffic && $VerifiedCrawlerEvidence && $LogType eq 'W'
+			&& $ValidHTTPCodes{$field[$pos_code]}) {
+			my $labels = $VerifiedCrawlerEvidence->classify_line($line);
+			if ($labels->{actor} eq 'verified_crawler') {
+				# google_common is the sole reviewed provider in this registry.
+				my $robot = 'Googlebot/';
+				$field[$pos_size] = 0 if $pos_size > 0 && int($field[$pos_code]) == 304;
+				$_robot_h{$robot}++;
+				$_robot_k{$robot} += int($field[$pos_size]) if $pos_size > 0 && $field[$pos_size] ne '-';
+				$_robot_l{$robot} = $timerecord;
+				$_robot_r{$robot}++ if $urlwithnoquery =~ /$regrobot/o;
+				$countedtraffic = 4;
+				$_time_nv_p[$hourrecord]++ if $PageBool;
+				$_time_nv_h[$hourrecord]++;
+				$_time_nv_k[$hourrecord] += int($field[$pos_size]) if $pos_size > 0 && $field[$pos_size] ne '-';
 			}
 		}
 

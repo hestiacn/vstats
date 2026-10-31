@@ -15,7 +15,7 @@ my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
     source_urls=>['https://developers.google.com/static/crawling/ipranges/common-crawlers.json'],parser_id=>'google_prefixes_v1'};
-my $FIXED = {config_bytes=>1048576,snapshot_bytes=>2097152,attestation_bytes=>16384,
+my $FIXED = {config_bytes=>1048576,snapshot_bytes=>2097152,attestation_bytes=>16384,evidence_bundle_bytes=>67108864,
     tokens=>128,token_bytes=>64,families=>64,paths=>2048,references=>2048,
     snapshots=>32,prefixes=>32768,json_depth=>32,max_window=>3600,max_gap=>604800,family_id_bytes=>32};
 my $JSON = JSON::PP->new->canonical->allow_nonref;
@@ -242,6 +242,47 @@ sub _verification {
     return cidr_contains($a->{index},$r->{client}) && cidr_contains($b->{index},$r->{client}) ? 'verified':'failed';
 }
 
+# Streaming consumers use the same identity rules without accumulating a log or
+# applying scanner/exclusion heuristics. Evidence remains operator-attested.
+sub evidence_verifier {
+    my ($class,$raw,%args)=@_;
+    _bad('Evidence bundle byte limit exceeded') if length($raw)>$FIXED->{evidence_bundle_bytes};
+    my $bundle=strict_json($raw); _keys($bundle,qw(schema_version snapshots));
+    _uint($bundle->{schema_version},1,1); _array($bundle->{snapshots},$FIXED->{snapshots});
+    my @snapshots;
+    for my $entry (@{$bundle->{snapshots}}) {
+        _keys($entry,qw(raw_json attestation_json));
+        _str($entry->{raw_json}); _str($entry->{attestation_json});
+        push @snapshots,$class->snapshot(encode('UTF-8',$entry->{raw_json}),encode('UTF-8',$entry->{attestation_json}));
+    }
+    return $class->new(config=>$class->config('{"schema_version":1}'),
+        format=>$args{format}//'combined',snapshots=>\@snapshots);
+}
+
+sub _actor_labels {
+    my ($self,$r)=@_;
+    my $claimed=grep {marker_matches($r->{user_agent},$_)} @{$PROVIDER->{ua_tokens}};
+    my $outcome=$claimed ? $self->_verification($r):'not_applicable';
+    my $declared=$claimed;
+    for my $token (@{$self->{config}{crawler_tokens}}) {
+        $declared=1 if marker_matches($r->{user_agent},$token);
+    }
+    return {actor=>$outcome eq 'verified' ? 'verified_crawler':$declared ? 'declared_crawler_or_tool':'unknown',
+        verification_outcome=>$outcome};
+}
+
+sub classify_line {
+    my ($self,$raw)=@_;
+    return {actor=>'unknown',verification_outcome=>'unavailable'} if !defined($raw) || ref($raw);
+    $raw =~ s/\n\z//; $raw =~ s/\r\z//;
+    my $r=eval {
+        _bad('OVERSIZED_FIELD') if length($raw)>$self->{config}{limits}{line_bytes};
+        $self->_parse_line($raw);
+    };
+    return {actor=>'unknown',verification_outcome=>'unavailable'} if !$r;
+    return $self->_actor_labels($r);
+}
+
 # Decode Apache's ap_escape_logitem octets once, then validate UTF-8 again.
 sub _apache_string {
     my ($s)=@_;
@@ -377,13 +418,10 @@ sub finish {
     my %verification=map {$_=>0} qw(verified failed unavailable not_applicable);
     my (%groups,$insufficient,$unsupported); $insufficient=$unsupported=0;
     for my $r (@{$self->{records}}) {
-        my $claimed=grep {marker_matches($r->{user_agent},$_)} @{$PROVIDER->{ua_tokens}};
-        my $outcome=$claimed ? $self->_verification($r):'not_applicable';
-        my $declared=$claimed;
-        for my $token (@{$cfg->{crawler_tokens}}) { $declared=1 if marker_matches($r->{user_agent},$token); }
-        $r->{actor}=$outcome eq 'verified' ? 'verified_crawler':$declared ? 'declared_crawler_or_tool':'unknown';
-        $r->{verification_outcome}=$outcome; $r->{scanner_flagged}=0;
-        $actors{$r->{actor}}++; $verification{$outcome}++;
+        my $labels=$self->_actor_labels($r);
+        $r->{actor}=$labels->{actor};
+        $r->{verification_outcome}=$labels->{verification_outcome}; $r->{scanner_flagged}=0;
+        $actors{$r->{actor}}++; $verification{$r->{verification_outcome}}++;
         my $normal=normalize_target($r->{target}); $unsupported++ if !defined $normal;
         if (!defined($r->{user_agent}) || !literal_ip($r->{client})) { $insufficient++; next; }
         if (defined($normal) && exists($paths{$normal})) {
