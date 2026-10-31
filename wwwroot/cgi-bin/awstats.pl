@@ -6080,14 +6080,14 @@ sub Read_History_With_TmpUpdate {
 				if ( !$FirstTime{$date}
 					|| $FirstTime{$date} > int( $field[1] ) )
 				{
-					$FirstTime{$date} = int( $field[1] );
+					$FirstTime{$date} = int( $field[1] // 0 );
 				}
 				next;
 			}
 			if ( $field[0] eq 'LastTime' || $field[0] eq "${xmlrb}LastTime" ) {
 				if ( !$LastTime{$date} || $LastTime{$date} < int( $field[1] ) )
 				{
-					$LastTime{$date} = int( $field[1] );
+					$LastTime{$date} = int( $field[1] // 0 );
 				}
 				next;
 			}
@@ -7189,7 +7189,11 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					# Robot signatures may contain spaces; counters are the numeric
+					# fields at the end of the record, not words within the signature.
+					my $robotrow = $readxml ? XMLDecodeFromHisto($_) : $_;
+					@field = $robotrow =~ /^(.*?)\s+(\d+)\s+(\d+)\s+(\d+)(?:\s+(\d+))?\s*$/
+						? ($1, $2, $3, $4, $5 // 0) : split(/\s+/, $robotrow);
 					$countlines++;
 				} until ($field[0] eq 'END_ROBOT' || $field[0] eq "${xmleb}END_ROBOT" || !$_);
 				if ($field[0] ne 'END_ROBOT' && $field[0] ne "${xmleb}END_ROBOT") {
@@ -8405,10 +8409,10 @@ sub Save_History {
 		  . ( $LastLine > 0 ? $LastLine : $LastTime{$breakdate} )
 		  . " $lastlinenb $lastlineoffset $lastlinechecksum${xmlre}\n";
 		print HISTORYTMP "${xmlrb}FirstTime${xmlrs}"
-		. (defined $FirstTime{$breakdate} ? $FirstTime{$breakdate} : '')
+		. (defined $FirstTime{$breakdate} ? $FirstTime{$breakdate} : 0)
 		. "${xmlre}\n";
 		print HISTORYTMP "${xmlrb}LastTime${xmlrs}"
-		. (defined $LastTime{$breakdate} ? $LastTime{$breakdate} : '')
+		. (defined $LastTime{$breakdate} ? $LastTime{$breakdate} : 0)
 		. "${xmlre}\n";
 		print HISTORYTMP "${xmlrb}LastUpdate${xmlrs}$LastUpdate $NbOfLinesParsed $NbOfOldLines $NbOfNewLines $NbOfLinesCorrupted $NbOfLinesDropped${xmlre}\n";
 		print HISTORYTMP "${xmlrb}TotalVisits${xmlrs}";
@@ -10007,7 +10011,7 @@ sub Sanitize {
 # Return:       cleanedstring (safe for HTML output)
 #------------------------------------------------------------------------------
 sub CleanXSS {
-	my $stringtoclean = shift;
+	my $stringtoclean = shift // '';
 	$stringtoclean =~ s/javascript\s*://gi;
 	$stringtoclean =~ s/\s+on\w+\s*=\s*["'][^"']*["']//gi;
 	$stringtoclean =~ s/\s+on\w+\s*=\s*[^\s>]+//gi;
@@ -14710,7 +14714,7 @@ sub HTMLMainFileType{
 			$p_h = "$p_h %";
 		}
 		if ($Totalk) {
-			$p_k = int( $_filetypes_k{$key} / $Totalk * 1000 ) / 10;
+			$p_k = int( ( $_filetypes_k{$key} || 0 ) / $Totalk * 1000 ) / 10;
 			$p_k = "$p_k %";
 		}
 		if ( $key eq 'Unknown' ) {
@@ -15003,11 +15007,11 @@ sub HTMLShowBrowserDetail{
 		my $p_h = '&nbsp;';
 		my $p_p = '&nbsp;';
 		if ($total_h) {
-			$p_h = int( $totalfamily_h{$family} / $total_h * 1000 ) / 10;
+			$p_h = int( ($totalfamily_h{$family} || 0) / $total_h * 1000 ) / 10;
 			$p_h = "$p_h %";
 		}
 		if ($total_p) {
-			$p_p = int( $totalfamily_p{$family} / $total_p * 1000 ) / 10;
+			$p_p = int( ($totalfamily_p{$family} || 0) / $total_p * 1000 ) / 10;
 			$p_p = "$p_p %";
 		}
 		my $familyheadershown = 0;
@@ -15295,11 +15299,11 @@ sub HTMLShowOSDetail{
 		my $p_h = '&nbsp;';
 		my $p_p = '&nbsp;';
 		if ($total_h) {
-			$p_h = int( $totalfamily_h{$family} / $total_h * 1000 ) / 10;
+			$p_h = int( ($totalfamily_h{$family} || 0) / $total_h * 1000 ) / 10;
 			$p_h = "$p_h %";
 		}
 		if ($total_p) {
-			$p_p = int( $totalfamily_p{$family} / $total_p * 1000 ) / 10;
+			$p_p = int( ($totalfamily_p{$family} || 0) / $total_p * 1000 ) / 10;
 			$p_p = "$p_p %";
 		}
 		my $familyheadershown = 0;
@@ -16141,7 +16145,7 @@ sub HTMLShowRobots{
 		  . "</td>\n";
 		if ( $ShowRobotsStats =~ /H/i ) {
 			print "<td>"
-			  . Format_Number(( $_robot_h{$key} - $_robot_r{$key} ))
+			  . Format_Number(( $_robot_h{$key} - ($_robot_r{$key} || 0) ))
 			  . ( $_robot_r{$key} ? "+$_robot_r{$key}" : "" ) . "</td>\n";
 		}
 		if ( $ShowRobotsStats =~ /B/i ) {
@@ -16294,8 +16298,8 @@ sub HTMLShowURLDetail{
 	my $max_k = 1;
 	foreach my $key (@keylist) {
 		if ( $_url_p{$key} > $max_p ) { $max_p = $_url_p{$key}; }
-		if ( $_url_k{$key} / ( $_url_p{$key} || 1 ) > $max_k ) {
-			$max_k = $_url_k{$key} / ( $_url_p{$key} || 1 );
+		if ( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) > $max_k ) {
+			$max_k = ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 );
 		}
 	}
 	foreach my $key (@keylist) {
@@ -16330,7 +16334,7 @@ sub HTMLShowURLDetail{
 			  . (
 				$_url_k{$key}
 				? Format_Bytes(
-					$_url_k{$key} / ( $_url_p{$key} || 1 )
+					( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 )
 				  )
 				: "&nbsp;"
 			  )
@@ -16371,10 +16375,10 @@ sub HTMLShowURLDetail{
 			print "<div style=\"background-color: #$color_x; width: ${bredde_x}px; height: 4px; border-radius: 2px;\"></div>";
 		}
 		print "</td>\n</tr>\n";
-		$total_p += $_url_p{$key};
-		$total_e += $_url_e{$key};
-		$total_x += $_url_x{$key};
-		$total_k += $_url_k{$key};
+		$total_p += $_url_p{$key} || 0;
+		$total_e += $_url_e{$key} || 0;
+		$total_x += $_url_x{$key} || 0;
+		$total_k += $_url_k{$key} || 0;
 		$count++;
 	}
 	if ($Debug) {
@@ -16588,7 +16592,7 @@ sub HTMLShowHostsUnknown{
 			  . "</td>\n";
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -16752,7 +16756,7 @@ sub HTMLShowHosts{
 			  . "</td>\n";
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -16838,7 +16842,7 @@ sub HTMLShowDomains{
 		my $bredde_p = 0;
 		my $bredde_h = 0;
 		my $bredde_k = 0;
-		if ( $max_h > 0 ) { $bredde_p = int( $BarWidth * $_domener_p{$key} / $max_h ) + 1; }
+		if ( $max_h > 0 ) { $bredde_p = int( $BarWidth * ($_domener_p{$key} || 0) / $max_h ) + 1; }
 		if ( $_domener_p{$key} && $bredde_p == 1 ) { $bredde_p = 2; }
 		if ( $max_h > 0 ) {
 			$bredde_h = int( $BarWidth * $_domener_h{$key} / $max_h ) + 1;
@@ -16918,7 +16922,7 @@ sub HTMLShowDomains{
 		}
 		print "<td class=\"aws\">";
 		if ( $ShowDomainsStats =~ /P/i ) {
-			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} ) . "\"></div><br>";
+			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} || 0 ) . "\"></div><br>";
 		}
 		if ( $ShowDomainsStats =~ /H/i ) {
 			print "<div style=\"background-color: #$color_h; width: ${bredde_h}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Hits") . ": " . int( $_domener_h{$key} ) . "\"></div><br>";
@@ -16928,9 +16932,9 @@ sub HTMLShowDomains{
 		}
 		print "</td>\n";
 		print "</tr>\n";
-		$total_u += $_domener_u;
-		$total_v += $_domener_v;
-		$total_p += $_domener_p{$key};
+		$total_u += $_domener_u || 0;
+		$total_v += $_domener_v || 0;
+		$total_p += $_domener_p{$key} || 0;
 		$total_h += $_domener_h{$key};
 		$total_k += $_domener_k{$key} || 0;
 		$count++;
@@ -18987,7 +18991,7 @@ sub HTMLMainCountries{
 		my $bredde_u = 0;
 		my $bredde_v = 0;
 		if ( $max_h > 0 ) {
-			$bredde_p = int( $BarWidth * $_domener_p{$key} / $max_h ) + 1;
+			$bredde_p = int( $BarWidth * ($_domener_p{$key} || 0) / $max_h ) + 1;
 		}
 		if ( $_domener_p{$key} && $bredde_p == 1 ) { $bredde_p = 2; }
 		if ( $max_h > 0 ) {
@@ -19074,7 +19078,7 @@ sub HTMLMainCountries{
 		}
 		print "<td class=\"aws\">";
 		if ( $ShowDomainsStats =~ /P/i ) {
-			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} ) . "\"></div>";
+			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} || 0 ) . "\"></div>";
 		}
 		if ( $ShowDomainsStats =~ /H/i ) {
 			print "<div style=\"background-color: #$color_h; width: ${bredde_h}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Hits") . ": " . int( $_domener_h{$key} ) . "\"></div>";
@@ -19085,9 +19089,9 @@ sub HTMLMainCountries{
 		print "</td>\n";
 		print "</tr>\n";
 
-		$total_u += $_domener_u;
-		$total_v += $_domener_v;
-		$total_p += $_domener_p{$key};
+		$total_u += $_domener_u || 0;
+		$total_v += $_domener_v || 0;
+		$total_p += $_domener_p{$key} || 0;
 		$total_h += $_domener_h{$key};
 		$total_k += $_domener_k{$key} || 0;
 		$count++;
@@ -19397,7 +19401,7 @@ sub HTMLMainHosts{
 			  . '</td>';
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -19989,8 +19993,8 @@ sub HTMLMainPages{
 	&BuildKeyList( $MaxNbOf{'PageShown'}, $MinHit{'File'}, \%_url_p, \%_url_p );
 	foreach my $key (@keylist) {
 		if ( $_url_p{$key} > $max_p ) { $max_p = $_url_p{$key}; }
-		if ( $_url_k{$key} / ( $_url_p{$key} || 1 ) > $max_k ) {
-			$max_k = $_url_k{$key} / ( $_url_p{$key} || 1 );
+		if ( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) > $max_k ) {
+			$max_k = ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 );
 		}
 	}
 	foreach my $key (@keylist) {
@@ -20016,7 +20020,7 @@ sub HTMLMainPages{
 			  . (
 				$_url_k{$key}
 				? Format_Bytes(
-					$_url_k{$key} / ( $_url_p{$key} || 1 )
+					( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 )
 				  )
 				: "&nbsp;"
 			  )
@@ -20048,7 +20052,7 @@ sub HTMLMainPages{
 			print "<div style=\"background-color: #$color_h; width: ${bredde_p}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Hits") . ": " . Format_Number($_url_p{$key}) . "\"></div>";
 		}
 		if ( $ShowPagesStats =~ /B/i ) {
-			print "<div style=\"background-color: #$color_k; width: ${bredde_k}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Average") . ": " . Format_Bytes( $_url_k{$key} / ( $_url_p{$key} || 1 ) ) . "\"></div>";
+			print "<div style=\"background-color: #$color_k; width: ${bredde_k}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Average") . ": " . Format_Bytes( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) ) . "\"></div>";
 		}
 		if ( $ShowPagesStats =~ /E/i ) {
 			print "<div style=\"background-color: #$color_e; width: ${bredde_e}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Entry") . ": " . Format_Number($_url_e{$key}) . "\"></div>";
@@ -22230,7 +22234,7 @@ if ( $ENV{'GATEWAY_INTERFACE'} ) {
 			$outputlist =~ s/^=//;
 			foreach my $outputparam ( split( /,/, $outputlist ) ) {
 				$outputparam =~ s/:(.*)$//;
-				if ($outputparam) { $HTMLOutput{ lc($outputparam) } = "$1" || 1; }
+				if ($outputparam) { $HTMLOutput{ lc($outputparam) } = $1 || 1; }
 			}
 		}
 
@@ -24244,12 +24248,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 									if ($Debug) { debug( " Orphan 206 chunk: '$file_url'", 2 ); }
 								}
 								
-								# 206 分块请求也需要计入带宽统计
-								if ($pos_size > 0) {
-									$DayBytes{$yearmonthdayrecord} += $file_size;
-									$_time_k[$hourrecord] += $file_size;
-								}
-								$countedtraffic = 6;  # 标记为已统计
+								# Count partial-response traffic once in the shared block.
+								$countedtraffic = 6;
 							}
 							
 						} elsif ($Debug) {
@@ -24257,57 +24257,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						}
 					}
 					
-					if ( !$countedtraffic ) {
-						my $size = 0;
-						# 检查是否为页面（非静态资源）
-						my $is_page = 1;
-						if ( $extension && $NotPageList{$extension} ) {
-							$is_page = 0;
-							$PageBool = 0;
-						}
-						
-						# 页面统计
-						if ($is_page) {
-							$_url_p{$urlwithnoquery}++;
-							$_url_e{$urlwithnoquery}++ if ( !defined $FirstTimeforThisHost || $FirstTimeforThisHost eq "" );
-							$_url_k{$urlwithnoquery} += $size;
-						}
-						
-						# 时间统计
-						if ($is_page) {
-							$_time_p[$hourrecord]++;
-						}
-						$_time_h[$hourrecord]++;
-						
-						# 带宽统计
-						if ($pos_size > 0) {
-							$size = int($field[$pos_size]) || 0;
-							$DayBytes{$yearmonthdayrecord} += $size;
-							$_time_k[$hourrecord] += $size;
-							if ($is_page) {
-								$_url_k{$urlwithnoquery} += $size;
-							}
-						}
-						
-						# 主机统计
-						my $host_key = (defined $Host && $Host ne '') ? $Host : 'unknown_ip';
-						$_host_h{$host_key}++;
-						$_host_p{$host_key}++ if ($is_page);
-						$_host_k{$host_key} += $size;
-						$_host_l{$host_key} = $timerecord;
-						
-						# 如果是新会话，记录开始时间
-						if ( !defined $FirstTimeforThisHost || $FirstTimeforThisHost eq "" ) {
-							$_host_s{$host_key} = $timerecord;
-							$FirstTimeforThisHost = $timerecord;
-						}
-						$_host_u{$host_key} = $urlwithnoquery;
-						$DayVisits{$yearmonthdayrecord}++ if ( $FirstTimeforThisHost eq $timerecord );
-						
-						if ($Debug) {
-							debug( " Normal page view: '$urlwithnoquery' (status: $status_code)", 2 );
-						}
-					}
+					# Normal request, host, visit and bandwidth accounting is performed
+					# once in the shared processing blocks below this status section.
 				} else {
 					# 确保状态码是有效的三位数
 					if ( $field[$pos_code] !~ /^\d\d\d$/ ) {
@@ -24698,7 +24649,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 		if ( !$countedtraffic || $countedtraffic == 6) {
 			if ($LevelForFileTypesDetection) {
 				if (!$PageBool) {
-				if ($countedtraffic != 6){$_filetypes_h{$extension}++;}
+				$_filetypes_h{$extension}++;
 				if ( $field[$pos_size] ne '-' && $pos_size>0) {
 					$_filetypes_k{$extension} += int( $field[$pos_size] );
 				}
@@ -24745,8 +24696,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 				# TODO Use an id for hash key of url
 				# $_url_t{$_url_id}
 			}
-			if ($countedtraffic != 6){$_time_h[$hourrecord]++;}
- 			if ($countedtraffic != 6){$DayHits{$yearmonthdayrecord}++;}
+			$_time_h[$hourrecord]++;
+			$DayHits{$yearmonthdayrecord}++;
   			if ( $field[$pos_size] ne '-' && $pos_size>0) {
   				$_time_k[$hourrecord]          += int( $field[$pos_size] );
  				$DayBytes{$yearmonthdayrecord} += int( $field[$pos_size] );
@@ -24761,7 +24712,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 
 				# We found an authenticated user
 				if ($PageBool) { $_login_p{ $field[$pos_logname] }++; }
-				if ($countedtraffic != 6){$_login_h{$field[$pos_logname]}++;}
+				$_login_h{$field[$pos_logname]}++;
 				if ($pos_size>0){$_login_k{ $field[$pos_logname] } += int( $field[$pos_size] );}
 				$_login_l{ $field[$pos_logname] } = $timerecord;
 			}
@@ -25033,7 +24984,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 
 			# Store country
 			if ($PageBool) { $_domener_p{$Domain}++; }
-			if ($countedtraffic != 6){$_domener_h{$Domain}++;}
+			$_domener_h{$Domain}++;
 			if ( $field[$pos_size] ne '-' && $pos_size>0) {
 				$_domener_k{$Domain} += int( $field[$pos_size] );
 			}
@@ -26347,7 +26298,7 @@ END_ERROR_TEXT
 	# If lastprocesseddate > 0 means there is at least one approved new record in log or at least one existing history file
 	if ( $lastprocesseddate > 0 ) {
 		seek( LOG, $lastlineoffset, 0 );
-		my $line = <LOG>;
+		my $line = <LOG> // '';
 		chomp $line;
 		$line =~ s/\r$//;
 		if ( !$NbOfLinesParsed ) 
@@ -26601,7 +26552,7 @@ if ( scalar keys %HTMLOutput ) {
 	my $TotalBytesErrors = 0;
 	foreach ( keys %_errors_h ) {
 		$TotalHitsErrors  += $_errors_h{$_};
-		$TotalBytesErrors += $_errors_k{$_};
+		$TotalBytesErrors += $_errors_k{$_} // 0;
 	}
 	if ( !$TotalEntries ) {
 		foreach ( keys %_url_e ) { $TotalEntries += $_url_e{$_}; }
