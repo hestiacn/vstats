@@ -9,8 +9,8 @@ use Time::Local qw(timegm);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later, like the parent project. No file or network I/O here.
-our $VERSION = '1.0';
-my $ALGORITHM = 'vstats-traffic-v1';
+our $VERSION = '1.1';
+my $ALGORITHM = 'vstats-traffic-v2';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -24,6 +24,9 @@ my $DEFAULT = {
     crawler_tokens => [qw(Googlebot Bytespider bingbot AhrefsBot ClaudeBot GPTBot curl Wget python-requests)],
     probe_families => [], site_references => [], exclude => [],
     scanner => {distinct_paths => 3, distinct_families => 2, window_seconds => 60},
+    behavior => {enabled => 0, window_seconds => 60, min_requests => 60,
+                distinct_user_agents => 4, distinct_platforms => 2,
+                distinct_paths => 10, not_found_requests => 10},
     verification => {max_gap_seconds => 86400},
     limits => {input_bytes => 67108864, line_bytes => 16384, records => 100000,
                groups => 100000, ua_bytes => 4096, target_bytes => 8192},
@@ -139,7 +142,7 @@ sub config {
     my $d=defaults();
     for my $key (keys %$d) {
         if (!exists $c->{$key}) { $c->{$key}=$d->{$key}; next; }
-        if ($key eq 'scanner' || $key eq 'verification' || $key eq 'limits') {
+        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'verification' || $key eq 'limits') {
             _keys($c->{$key},keys %{$d->{$key}});
             for my $k (keys %{$d->{$key}}) { $c->{$key}{$k}=$d->{$key}{$k} if !exists $c->{$key}{$k}; }
         }
@@ -154,6 +157,13 @@ sub config {
         _bad('Duplicate or generic browser token') if $tokens{lc($token)}++ || $refused{lc($token)};
     }
     my $s=$c->{scanner}; _uint($s->{distinct_paths},$FIXED->{paths},1); _uint($s->{distinct_families},$s->{distinct_paths},1); _uint($s->{window_seconds},$FIXED->{max_window},1);
+    my $b=$c->{behavior}; _uint($b->{enabled},1); _uint($b->{window_seconds},$FIXED->{max_window},1);
+    _uint($b->{min_requests},$d->{limits}{records},2);
+    _uint($b->{distinct_user_agents},$b->{min_requests},2);
+    _uint($b->{distinct_platforms},5,2);
+    _bad('Behavior platforms exceed user agents') if $b->{distinct_platforms}>$b->{distinct_user_agents};
+    _uint($b->{distinct_paths},$FIXED->{paths},2); _uint($b->{not_found_requests},$b->{min_requests},2);
+    _bad('Behavior paths exceed requests') if $b->{distinct_paths}>$b->{min_requests};
     _uint($c->{verification}{max_gap_seconds},$FIXED->{max_gap});
     for my $k (keys %{$d->{limits}}) { _uint($c->{limits}{$k},$d->{limits}{$k},1); }
     _bad('Field cap exceeds line cap') if $c->{limits}{ua_bytes}>$c->{limits}{line_bytes} || $c->{limits}{target_bytes}>$c->{limits}{line_bytes};
@@ -294,17 +304,18 @@ sub _apache_string {
 sub _parse_line {
     my ($self,$raw)=@_; my $text=decode('UTF-8',$raw,FB_CROAK|LEAVE_SRC); my $r;
     if ($self->{format} eq 'jsonl') {
-        $r=strict_json($raw); _keys($r,qw(timestamp client target user_agent host));
+        $r=strict_json($raw); _keys($r,qw(timestamp client target user_agent host status));
         _uint($r->{timestamp},$MAX_EPOCH); _str($r->{client}); _str($r->{target});
         _bad('Empty client') if !length($r->{client});
         _str($r->{user_agent}) if defined $r->{user_agent};
         $r->{user_agent}=undef if defined($r->{user_agent}) && $r->{user_agent} eq '';
         $r->{host}=_host($r->{host}) if defined $r->{host};
+        _uint($r->{status},599,100) if exists $r->{status};
     } else {
         my $q=qr/(?:[^"\\]|\\(?:x[0-9A-Fa-f]{2}|["\\bnrtv]))*/;
         my $tail=$self->{format} eq 'combined' ? qr/[ \t]+"($q)"[ \t]+"($q)"/ : qr//;
-        _bad('Unsupported Apache line') if $raw !~ /\A($word)[ \t]+$word[ \t]+$word[ \t]+\[([^\]]+)\][ \t]+"($q)"[ \t]+[1-5][0-9]{2}[ \t]+(?:-|[0-9]+)$tail\z/;
-        my ($client,$date,$request,$referer,$ua)=($1,$2,$3,$4,$5);
+        _bad('Unsupported Apache line') if $raw !~ /\A($word)[ \t]+$word[ \t]+$word[ \t]+\[([^\]]+)\][ \t]+"($q)"[ \t]+([1-5][0-9]{2})[ \t]+(?:-|[0-9]+)$tail\z/;
+        my ($client,$date,$request,$status,$referer,$ua)=($1,$2,$3,$4,$5,$6);
         $client=decode('UTF-8',$client,FB_CROAK|LEAVE_SRC); $request=_apache_string($request);
         _bad('Unsupported HTTP request') if $request !~ /\A[A-Za-z]+[ \t]+($word)[ \t]+HTTP\/[0-9]+\.[0-9]+\z/;
         my $target=$1;
@@ -317,7 +328,7 @@ sub _parse_line {
         _apache_string($referer) if defined $referer;
         $ua=_apache_string($ua) if defined $ua;
         $ua=undef if defined($ua) && ($ua eq '' || $ua eq '-');
-        $r={timestamp=>$t,client=>$client,target=>$target,user_agent=>$ua,host=>undef};
+        $r={timestamp=>$t,client=>$client,target=>$target,user_agent=>$ua,host=>undef,status=>0+$status};
     }
     _bad('OVERSIZED_FIELD') if _bytes($r->{target})>$self->{config}{limits}{target_bytes}
         || (defined($r->{user_agent}) && _bytes($r->{user_agent})>$self->{config}{limits}{ua_bytes});
@@ -402,6 +413,69 @@ sub _scan {
     }
     return $sequences;
 }
+
+# Browser claims are heuristic features, never proof of device, person or bot
+# identity. In particular, a shared proxy may legitimately carry diverse UAs.
+sub _browser_platform {
+    my ($ua)=@_; return if !defined($ua) || $ua !~ /(?:^|[^A-Za-z0-9])(?:Chrome|CriOS|Firefox|FxiOS|Safari|Edg|OPR|Opera)\//iaa;
+    return 'ios' if $ua =~ /(?:^|[^A-Za-z0-9])(?:iPhone|iPad|iPod)(?=[^A-Za-z0-9]|\z)/iaa;
+    return 'android' if $ua =~ /(?:^|[^A-Za-z0-9])Android(?=[^A-Za-z0-9]|\z)/iaa;
+    return 'windows' if $ua =~ /(?:^|[^A-Za-z0-9])Windows(?=[^A-Za-z0-9]|\z)/iaa;
+    return 'mac' if $ua =~ /(?:^|[^A-Za-z0-9])Macintosh(?=[^A-Za-z0-9]|\z)/iaa;
+    return 'linux' if $ua =~ /(?:^|[^A-Za-z0-9])Linux(?=[^A-Za-z0-9]|\z)/iaa;
+    return;
+}
+sub _behavior {
+    my ($self)=@_; my $cfg=$self->{config}{behavior};
+    my $result={enabled=>$cfg->{enabled}?JSON::PP::true:JSON::PP::false,
+        rule_id=>'burst_browser_rotation_path_probing_v1',flagged_requests=>0,
+        eligible_requests=>0,insufficient_fields=>0,merged_sequences=>0,flagged_source_groups=>0,
+        actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
+    $_->{suspected_automation}=0 for @{$self->{records}};
+    return $result if !$cfg->{enabled};
+    my %groups;
+    for my $r (@{$self->{records}}) {
+        my $platform=_browser_platform($r->{user_agent});
+        my ($af,$packed)=literal_ip($r->{client});
+        if (!defined($af) || !defined($r->{normal}) || !defined($r->{status}) || !defined($platform)) {
+            $result->{insufficient_fields}++; next;
+        }
+        $r->{behavior_platform}=$platform; $result->{eligible_requests}++;
+        # UA is deliberately absent from the key: variation is tested within a
+        # source/host, never pooled across hosts or attributed to every source hit.
+        push @{$groups{$af.':'.unpack('H*',$packed)."\0".($r->{host}//'')}},$r;
+        _bad('Behavior group count limit exceeded') if keys(%groups)>$self->{config}{limits}{groups};
+    }
+    for my $key (sort keys %groups) {
+        my @p=sort {$a->{timestamp}<=>$b->{timestamp} || $a->{line_index}<=>$b->{line_index}} @{$groups{$key}};
+        my (%paths,%uas,%platforms,@diff); my ($left,$not_found,$last_end)=(0,0,undef);
+        for my $right (0..$#p) {
+            my $r=$p[$right]; $paths{$r->{normal}}++; $uas{$r->{user_agent}}++; $platforms{$r->{behavior_platform}}++;
+            $not_found++ if $r->{status}==404;
+            while ($r->{timestamp}-$p[$left]{timestamp}>$cfg->{window_seconds}) {
+                my $old=$p[$left++];
+                delete $paths{$old->{normal}} if --$paths{$old->{normal}}==0;
+                delete $uas{$old->{user_agent}} if --$uas{$old->{user_agent}}==0;
+                delete $platforms{$old->{behavior_platform}} if --$platforms{$old->{behavior_platform}}==0;
+                $not_found-- if $old->{status}==404;
+            }
+            if ($right-$left+1>=$cfg->{min_requests} && keys(%uas)>=$cfg->{distinct_user_agents}
+                    && keys(%platforms)>=$cfg->{distinct_platforms} && keys(%paths)>=$cfg->{distinct_paths}
+                    && $not_found>=$cfg->{not_found_requests}) {
+                $diff[$left]++; $diff[$right+1]--;
+                $result->{merged_sequences}++ if !defined($last_end) || $p[$left]{timestamp}>$last_end;
+                $last_end=$r->{timestamp};
+            }
+        }
+        my ($coverage,$flagged)=(0,0);
+        for my $i (0..$#p) {
+            $coverage+=$diff[$i]//0; next if $coverage<=0;
+            $p[$i]{suspected_automation}=1; $result->{flagged_requests}++; $result->{actors}{$p[$i]{actor}}++; $flagged=1;
+        }
+        $result->{flagged_source_groups}++ if $flagged;
+    }
+    return $result;
+}
 sub finish {
     my ($self)=@_; _bad('Already finished') if $self->{finished};
     $self->_line(0) if $self->{line_present}; $self->{finished}=1;
@@ -423,13 +497,15 @@ sub finish {
         $r->{verification_outcome}=$labels->{verification_outcome}; $r->{scanner_flagged}=0;
         $actors{$r->{actor}}++; $verification{$r->{verification_outcome}}++;
         my $normal=normalize_target($r->{target}); $unsupported++ if !defined $normal;
+        $r->{normal}=$normal if defined $normal;
         if (!defined($r->{user_agent}) || !literal_ip($r->{client})) { $insufficient++; next; }
         if (defined($normal) && exists($paths{$normal})) {
             $r->{normal}=$normal; $r->{family}=$paths{$normal};
             push @{$groups{$r->{client}."\0".$r->{user_agent}}},$r;
         }
     }
-    my $sequences=$self->_scan(\%groups); my ($flagged,$excluded)=(0,0); my %exclude=map {$_=>1} @{$cfg->{exclude}};
+    my $sequences=$self->_scan(\%groups); my $behavior=$self->_behavior;
+    my ($flagged,$excluded)=(0,0); my %exclude=map {$_=>1} @{$cfg->{exclude}};
     for my $r (@{$self->{records}}) {
         $flagged++ if $r->{scanner_flagged};
         $excluded++ if $exclude{$r->{actor}} || ($exclude{scanner_flagged} && $r->{scanner_flagged});
@@ -439,10 +515,10 @@ sub finish {
         config_sha256=>Digest::SHA::sha256_hex($ALGORITHM."\n".JSON::PP->new->utf8->canonical->encode($cfg)),
         input_sha256=>$self->{digest}->hexdigest,input=>{format=>$self->{format},bytes=>$self->{input_bytes},period=>{from=>$self->{min},until=>$self->{max}},
             host_policy=>@{$cfg->{hosts}}?'configured hosts enforced; missing host excluded':'all parsed hosts; aliases inseparable for hostless records',hosts=>$cfg->{hosts}},
-        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,verification=>$cfg->{verification},limits=>$cfg->{limits},
+        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},verification=>$cfg->{verification},limits=>$cfg->{limits},
             status=>'Thresholds, continuity gaps and resource caps are heuristic assumptions; detection accuracy is unmeasured',crawler_tokens=>$cfg->{crawler_tokens}},
         counts=>{%{$self->{counts}}},actors=>\%actors,verification_outcomes=>\%verification,scanner_flagged_requests=>$flagged,merged_scanner_sequences=>$sequences,
-        scanner_insufficient_fields=>$insufficient,unsupported_targets=>$unsupported,
+        scanner_insufficient_fields=>$insufficient,unsupported_targets=>$unsupported,behavior=>$behavior,
         probes=>{active_families=>\@active,inactive_families=>\@inactive,exempt_paths=>[sort keys %exempt]},
         provider_snapshots=>[map {$_->{provenance}} @{$self->{snapshots}}],
         limitations=>[
@@ -450,13 +526,14 @@ sub finish {
             'Verified means verified against operator-attested published-range snapshots, not cryptographic source authentication. Bracketing assumes range continuity and does not prove uninterrupted ownership.',
             'Historical requests without covering archived evidence remain unavailable. IPv4-mapped IPv6 is not converted to IPv4; literal-IP acceptance follows platform inet_pton.',
             'Scanner flags describe qualifying probe requests, not intent or people. Shared IPs/UA and duplicate or overlapping input can affect results. Supply one nonoverlapping stable site snapshot.',
+            'Suspected automation is a separate optional behavioral flag, not verified crawler identity or an exclusion selector. Burst, browser-claim diversity, path diversity and repeated 404s must coincide in a qualifying source/host window. Shared proxies, authorized tests and partition boundaries can affect results; accuracy is unmeasured.',
             'Local tokens, component absence and site-reference periods are operator attestations; no status-code or weak browser signal supplies identity or absence.',
             'No live DNS, network queries, incremental history or blocking. Exclusions affect only the configured comparison. Caller controls retention and any manual publication.',
         ]};
     if (%exclude) { $report->{adjusted_requests}={label=>'requests in this input excluding '.join(', ',sort keys %exclude),original=>$self->{counts}{analyzed},excluded=>$excluded,remaining=>$self->{counts}{analyzed}-$excluded}; }
     if ($self->{details}) {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
-        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome)),scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
+        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status)),scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
     }
     return $report;
 }
@@ -468,6 +545,12 @@ sub html_report {
     my $html='<!doctype html><html lang="en"><meta charset="utf-8"><title>Traffic classification</title><body><h1>Traffic classification</h1><p>Observed requests; unknown does not mean human. Scanner flags are behavior evidence, separate from actor identity.</p><table><caption>Requests in this input</caption>';
     for my $actor (qw(verified_crawler declared_crawler_or_tool unknown)) { $html.='<tr><th>'._html_escape($actor).'</th><td>'.$report->{actors}{$actor}.'</td></tr>'; }
     $html.='</table><p>Scanner-flagged requests: '.$report->{scanner_flagged_requests}.'. Merged qualifying sequences: '.$report->{merged_scanner_sequences}.'.</p>';
+    if (my $b=$report->{behavior}) {
+        $html.='<h2>Suspected automation</h2>';
+        if ($b->{enabled}) {
+            $html.='<p>Requests flagged by combined burst, browser-identity variation and URL-probing evidence: '.$b->{flagged_requests}.'. Merged qualifying sequences: '.$b->{merged_sequences}.'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not change AWStats totals or prove crawler identity.</p>';
+        } else { $html.='<p>Behavioral detection is disabled for this report.</p>'; }
+    }
     if ($report->{adjusted_requests}) { my $a=$report->{adjusted_requests}; $html.='<p>'._html_escape($a->{label}).': '.$a->{remaining}.' (original '.$a->{original}.', excluded '.$a->{excluded}.').</p>'; }
     $html.='<p>Heuristic thresholds; precision and recall are unknown. This tool changes no AWStats history or access rules.</p><details><summary>Evidence, effective rules and report data</summary><pre>'._html_escape($text).'</pre></details></body></html>';
     return encode('UTF-8',$html);

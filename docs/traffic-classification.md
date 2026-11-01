@@ -1,5 +1,64 @@
 # Optional traffic classification
 
+## Suspected automation from request behavior
+
+The optional `behavior` configuration adds an independent `suspected_automation`
+flag. It uses no geography, country, ASN, provider ownership or current DNS.
+Actor identity and existing scanner flags are preserved, and counts overlap.
+It is disabled by default; enable it explicitly for a report:
+
+```json
+{"schema_version":1,"behavior":{"enabled":1}}
+```
+
+Starter defaults are `enabled: 0`, `window_seconds: 60`, `min_requests: 60`,
+`distinct_user_agents: 4`, `distinct_platforms: 2`, `distinct_paths: 10`,
+`not_found_requests: 10`. These are exploratory heuristic assumptions, not
+calibrated cutoffs or measured accuracy. A partial object fills defaults.
+All enabled runs report the effective settings, eligible/insufficient request
+counts, qualifying request union, merged sequences and overlapping actor counts.
+
+All criteria must hold together in the same inclusive rolling window, grouped
+by literal client IP and normalized host, deliberately across user agents.
+Equivalent textual IPv6 addresses share a behavior group; IPv4-mapped IPv6
+remains separate from IPv4, matching the existing verification policy.
+Requests are time-sorted before evaluation. Only eligible requests inside a
+qualifying window are flagged; the rest of an IP's traffic is not relabelled.
+Hostless logs retain their inseparable-alias limitation. Identical input records
+count separately; operators must avoid overlapping or duplicated source files.
+
+Eligible records need a literal client IP, supported normalized target, HTTP
+status and a recognized browser/platform claim. Browser markers are bounded
+`Chrome/`, `CriOS/`, `Firefox/`, `FxiOS/`, `Safari/`, `Edg/`, `OPR/`, `Opera/`;
+platform categories are iOS, Android, Windows, Mac and Linux, in that priority.
+They describe user-agent claims, not authenticated hardware or identities.
+Apache combined input supplies the status; common input lacks a user agent and
+cannot qualify. JSONL accepts an optional integer `status` from 100 through 599.
+Omitting it retains actor classification but cannot support this behavior flag.
+404 counts are evidence of the configured pattern, never proof that a site
+component is absent. Missing referrers or asset requests are not triggers.
+
+`enabled` must be integer 0 or 1. The window is 1–3600 seconds; minimum requests
+is 2–100000, user-agent diversity is 2 through that minimum, platform diversity
+is 2–5 and cannot exceed user-agent diversity. Path diversity is 2–2048 and
+cannot exceed minimum requests; the required 404 count is 2 through minimum
+requests. Existing record/group/byte/field caps remain, including a group cap
+for behavior's IP/host keys. Window maintenance is linear after time sorting;
+it does not enumerate all intervals or evaluate operator regexes.
+
+Shared proxies can mix real users, authorized tests can be automated and browser
+claims can be forged. Precision/recall are unmeasured. Input partition boundaries
+can miss a window that crosses them; daily reports must disclose that limitation.
+Evaluate against known ordinary site traffic before adopting exclusion policies.
+This flag is not a verified crawler identity, an `exclude` selector, a native
+AWStats exclusion or a request-blocking rule. The native additional layer still
+requires supported crawler identity and request-period provider evidence.
+
+Reports retain schema 1 with additive behavior fields; algorithm identity is
+`vstats-traffic-v2`. Optional private details include status and the per-request
+behavior flag. Aggregate JSON/HTML contains no source IP, target or user-agent
+records. HTML shows behavioral counts separately from actor identity.
+
 ## Additional verified-crawler filtering in AWStats
 
 `VerifiedCrawlerEvidenceFile="/private/path/evidence.json"` enables an additional
