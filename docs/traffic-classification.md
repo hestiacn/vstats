@@ -57,7 +57,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v4`. Optional private details include status, the per-request
+`vstats-traffic-v5`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
@@ -164,6 +164,37 @@ bundles within existing evidence caps for historical native replay.
 
 ### Optional daily export and review builder
 
+The native-report export excludes automated IPs **by default**. If either
+behavior rule flags a request, its canonical literal source IP is excluded
+throughout the same UTC report month in the provided site corpus, including
+earlier days. There is no carry-over to another month without new evidence.
+This policy spans the accepted hosts/aliases in that site input; supply separate
+site inputs when that is not the intended scope. It does not relabel every
+request from that IP as independently detected automation or assert a verified
+crawler identity. Classifier flags and actor identities remain unchanged.
+
+AWStats must replay the selected requests into independent histories, so unique
+visitors, visits, pages, hits and bandwidth stay internally consistent. Never
+subtract source counts from native visitor totals. After replay, verify that
+excluded source/months are absent from native visitor records unless an explicit
+inclusion exception restored them. Shared proxies, dynamic addresses and
+authorized automation can cause false positives.
+
+Disable only IP expansion with `--include-automated-ips`, or call
+`build(..., exclude_automated_ips=False)`. The request-level behavior filters
+remain active. The standalone classifier/`--filtered-log` still classifies and
+filters individual requests; it has no native visitor counter to change. The
+corpus builder joins the daily evidence before applying its visitor policy.
+Private details provide canonical `source_key`, `source_month` and
+`source_month_key`; IPv4-mapped IPv6 remains distinct from IPv4.
+
+Request-ID inclusion exceptions also apply to additional IP-policy exclusions.
+They can intentionally restore that IP to visitor counts, retain the real
+trigger evidence and do not clear its automation flag. A copied ID alone does
+not change server settings. Unparsed, out-of-scope and unattributable records
+are preserved; callers must audit native output rather than claim that malformed
+input has been attributed safely.
+
 With Python 3.6+ and a suitable Perl interpreter, the generic builder processes
 an existing stable directory of `YYYY-MM-DD.log` combined-log partitions:
 
@@ -174,15 +205,19 @@ python3 tools/traffic-filter-report.py --config site.json \
 ```
 
 It requires exactly `exclude: ["suspected_automation"]`, refuses an existing
-output directory and writes private `filtered/`, `reports/`, `classification/`,
+output directory and writes private `filtered/`, `request-filtered/`, `reports/`, `classification/`,
 `review/` directories and `summary.json`. Input partitions must match their UTC
 dates. Detailed JSON stays private; curated HTML shows request IDs, query-free
 paths, source IPs, HTTP status, restricted browser/platform claims and numeric
 witnesses. Full raw user-agent strings are omitted. Only publish the HTML behind
 the site's intended statistics access controls. Page size defaults to 200, with
 range 1–1000; these are UI/resource heuristics, not sampling. Every flagged
-record appears, including retained inclusion overrides. View links assume
-canonical behavior-on, `confirmed/` behavior-off and `original/` original rules;
+record selected by a detector or the IP policy appears, including retained inclusion overrides.
+IP-policy reasons name the report month and a real triggering request; the
+trigger's window is not misrepresented as covering an unrelated request.
+Bounded page navigation keeps every row reachable without quadratic link lists.
+View links assume canonical default IP policy, `requests/` request-only filtering,
+`confirmed/` behavior-off and `original/` original rules;
 the operator must generate those independent native views.
 
 The builder performs no network lookup, history modification or deployment.
@@ -192,6 +227,18 @@ flagged requests that native rules may already treat as non-viewed. Compare
 independently replayed native histories to measure changes to viewed totals.
 Repeated report generation allows new inclusion overrides and changed windows
 to affect past statistics; input retention and scheduling remain operator policy.
+
+`request-filtered/` and each classifier JSON's `filtered_log` retain the
+request-only selection. `filtered/` is the default visitor-policy input.
+The private builder summary contains both stream manifests and body-byte ledgers:
+`excluded_by_month` for the default input and `request_excluded_by_month` for the
+request-only input. Each daily summary's `filtered_log` describes the default
+stream and `request_filtered_log` its request-only comparison. All input hashes
+are rechecked between passes. Per-month `ip_policy_sha256` binds the full set of
+provided daily input identities, configuration, chosen policy and triggers.
+The private `ip_exclusion` summary stores the trigger map, restored source/month
+keys and separate counts; it must not be published as an aggregate report.
+Curated review HTML remains subject to statistics access restrictions.
 
 ## Additional verified-crawler filtering in AWStats
 

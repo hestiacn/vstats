@@ -9,8 +9,8 @@ use Time::Local qw(timegm);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later, like the parent project. No file or network I/O here.
-our $VERSION = '1.3';
-my $ALGORITHM = 'vstats-traffic-v4';
+our $VERSION = '1.4';
+my $ALGORITHM = 'vstats-traffic-v5';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -587,6 +587,13 @@ sub finish {
         $actors{$r->{actor}}++; $verification{$r->{verification_outcome}}++;
         my $normal=normalize_target($r->{target}); $unsupported++ if !defined $normal;
         $r->{normal}=$normal if defined $normal;
+        my @utc=gmtime($r->{timestamp});
+        $r->{source_month}=sprintf('%04d-%02d',$utc[5]+1900,$utc[4]+1);
+        my ($source_af,$source_packed)=literal_ip($r->{client});
+        if (defined $source_af) {
+            $r->{source_key}=(length($source_packed)==4?'4:':'6:').unpack('H*',$source_packed);
+            $r->{source_month_key}=$r->{source_month}.'|'.$r->{source_key};
+        }
         if (!defined($r->{user_agent}) || !literal_ip($r->{client})) { $insufficient++; next; }
         if (defined($normal) && exists($paths{$normal})) {
             $r->{normal}=$normal; $r->{family}=$paths{$normal};
@@ -648,7 +655,7 @@ sub finish {
     if (%exclude) { $report->{adjusted_requests}={label=>'requests in this input excluding '.join(', ',sort keys %exclude),original=>$self->{counts}{analyzed},excluded=>$excluded,remaining=>$self->{counts}{analyzed}-$excluded}; }
     if ($self->{details}) {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
-        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id behavior_evidence probing_evidence behavior_platform)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
+        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id behavior_evidence probing_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
     }
     return $report;
 }

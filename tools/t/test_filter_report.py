@@ -97,6 +97,7 @@ class BatchIntegration(unittest.TestCase):
         self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
 
     def run_build(self, **kwargs):
+        kwargs.setdefault('exclude_automated_ips', False)
         return builder.build(self.config, self.inputs, self.root / 'output', perl=self.perl,
                              prefix='/vstats/example.test/', **kwargs)
 
@@ -199,6 +200,94 @@ class BatchIntegration(unittest.TestCase):
         wrong.symlink_to(source)
         with self.assertRaises(ValueError):
             self.run_build()
+
+
+class VisitorIpPolicy(unittest.TestCase):
+    # Reuse fixture construction, not inherited request-only test methods.
+    setUpClass = classmethod(BatchIntegration.setUpClass.__func__)
+    setUp = BatchIntegration.setUp
+    def line(self, day, ip='192.0.2.1', path='/ordinary', second=0):
+        import datetime
+        stamp = datetime.datetime.strptime(day, '%Y-%m-%d').strftime('%d/%b/%Y')
+        return ('{} - - [{}:10:00:{:02d} +0000] "GET {} HTTP/1.1" 200 99 "-" '
+                '"Mozilla/5.0 (Windows) Chrome/126"\n'.format(ip, stamp, second, path)).encode('ascii')
+
+    def policy_build(self, **kwargs):
+        return builder.build(self.config, self.inputs, self.root / 'output', perl=self.perl,
+                             prefix='/vstats/example.test/', **kwargs)
+
+    def test_default_excludes_source_across_days_but_not_months(self):
+        before = self.line('2026-10-01', path='/before?token=SECRET_SENTINEL')
+        after = self.line('2026-10-03', path='/after')
+        other = self.line('2026-10-03', ip='198.51.100.1')
+        november = self.line('2026-11-01')
+        asset = self.line('2026-10-02', path='/style.css', second=30)
+        (self.inputs / '2026-10-01.log').write_bytes(before)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(self.lines) + asset + self.ordinary)
+        (self.inputs / '2026-10-03.log').write_bytes(after + other)
+        (self.inputs / '2026-11-01.log').write_bytes(november)
+        result = self.policy_build(page_size=2)
+        self.assertTrue(result['ip_exclusion']['enabled'])
+        self.assertEqual(result['behavior']['flagged_requests'], 6)
+        self.assertEqual(result['ip_exclusion']['additional_excluded_requests'], 3)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 9)
+        self.assertEqual(result['request_excluded_by_month']['2026-10']['records'], 6)
+        self.assertEqual((self.root / 'output/filtered/2026-10-01.log').read_bytes(), b'')
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), self.ordinary)
+        self.assertEqual((self.root / 'output/filtered/2026-10-03.log').read_bytes(), other)
+        self.assertEqual((self.root / 'output/filtered/2026-11-01.log').read_bytes(), november)
+        self.assertEqual((self.root / 'output/request-filtered/2026-10-01.log').read_bytes(), before)
+        self.assertEqual((self.root / 'output/request-filtered/2026-10-02.log').read_bytes(), asset + self.ordinary)
+        text = ''.join(p.read_text(encoding='utf-8') for p in (self.root / 'output/review').glob('2026-10-*.html'))
+        self.assertEqual(text.count('<button data-request-id='), 9)
+        self.assertIn('Automated IP for 2026-10', text)
+        self.assertIn('Trigger evidence, Broad path probing:', text)
+        self.assertNotIn('SECRET_SENTINEL', text)
+        self.assertNotIn('Mozilla/5.0', text)
+        self.assertIn('requests/', text)
+
+    def test_disable_preserves_unflagged_source_traffic(self):
+        ordinary = self.line('2026-10-02', second=30)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(self.lines) + ordinary)
+        result = self.policy_build(exclude_automated_ips=False)
+        self.assertFalse(result['ip_exclusion']['enabled'])
+        self.assertEqual(result['ip_exclusion']['additional_excluded_requests'], 0)
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), ordinary)
+        self.assertEqual((self.root / 'output/request-filtered/2026-10-02.log').read_bytes(), ordinary)
+
+    def test_explicit_inclusion_can_restore_an_ip(self):
+        before = self.line('2026-10-01')
+        (self.inputs / '2026-10-01.log').write_bytes(before)
+        self.cfg['behavior_include'] = [hashlib.sha256(before.rstrip(b'\n')).hexdigest()]
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.policy_build()
+        self.assertEqual((self.root / 'output/filtered/2026-10-01.log').read_bytes(), before)
+        self.assertEqual(result['ip_exclusion']['inclusion_overrides'], 1)
+        self.assertEqual(len(result['ip_exclusion']['restored_source_months']), 1)
+        text = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertIn('Included by request ID override', text)
+        self.assertIn('Automated IP for 2026-10', text)
+
+    def test_canonical_ipv6_and_distinct_ipv4_scope(self):
+        self.lines = [line.replace(b'192.0.2.1', b'2001:db8::1') for line in self.lines]
+        alias = self.line('2026-10-01', ip='2001:0DB8:0:0:0:0:0:1')
+        separate = self.line('2026-10-01', ip='192.0.2.1')
+        (self.inputs / '2026-10-01.log').write_bytes(alias + separate)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(self.lines))
+        self.policy_build()
+        self.assertEqual((self.root / 'output/filtered/2026-10-01.log').read_bytes(), separate)
+
+    def test_policy_requires_boolean(self):
+        for value in ('false', 0, None):
+            with self.assertRaises(ValueError):
+                self.policy_build(exclude_automated_ips=value)
+
+    def test_filter_bytes_preserves_unattributed_and_line_endings(self):
+        raw = b'first\r\n\nmalformed\nlast\r'
+        kept, manifest = builder.filtered_bytes(raw, {1, 4}, hashlib.sha256(raw).hexdigest())
+        self.assertEqual(kept, b'\nmalformed\n')
+        self.assertEqual(manifest['excluded_records'], 2)
+        self.assertEqual(manifest['input_records'], 4)
 
 
 if __name__ == '__main__':
