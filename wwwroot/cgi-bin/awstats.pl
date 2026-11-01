@@ -6998,15 +6998,16 @@ sub Read_History_With_TmpUpdate {
 			# BEGIN_UNKNOWNREFERER
 			if ($field[0] eq 'BEGIN_UNKNOWNREFERER') {
 				if ($Debug) { debug(" Begin of UNKNOWNREFERER section"); }
-				$field[0] = '';
+				@field = ();
 				my $count       = 0;
 				my $countloaded = 0;
 				do {
-					if ($field[0]) {
+					if (@field >= 2) {
 						$count++;
 						if ( $SectionsToLoad{'unknownreferer'}) {
 							$countloaded++;
-							if ( !$_unknownreferer_l{ $field[0] } ) {
+							if ( !exists $_unknownreferer_l{ $field[0] }
+								|| int($field[1]) > $_unknownreferer_l{ $field[0] } ) {
 								$_unknownreferer_l{ $field[0] } =
 								  int($field[1]);
 							}
@@ -7015,9 +7016,9 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					@field = ParseUnknownAgentHistoryRow($_, $readxml);
 					$countlines++;
-				} until ($field[0] eq 'END_UNKNOWNREFERER' || $field[0] eq "${xmleb}END_UNKNOWNREFERER" || !$_);
+				} until ((@field == 1 && ($field[0] eq 'END_UNKNOWNREFERER' || $field[0] eq "${xmleb}END_UNKNOWNREFERER")) || !$_);
 				if ($field[0] ne 'END_UNKNOWNREFERER' && $field[0] ne "${xmleb}END_UNKNOWNREFERER") {
 					error("History file \"$filetoread\" is corrupted (End of section UNKNOWNREFERER not found).\nRestore a recent backup of this file (data for this month will be restored to backup date), remove it (data for month will be lost), or remove the corrupted section in file (data for at least this section will be lost).",
 						"", "", 1);
@@ -7043,15 +7044,16 @@ sub Read_History_With_TmpUpdate {
 				if ($Debug) {
 					debug(" Begin of UNKNOWNREFERERBROWSER section");
 				}
-				$field[0] = '';
+				@field = ();
 				my $count       = 0;
 				my $countloaded = 0;
 				do {
-					if ($field[0] ) {
+					if (@field >= 2) {
 						$count++;
 						if ($SectionsToLoad{'unknownrefererbrowser'}) {
 							$countloaded++;
-							if ( !$_unknownrefererbrowser_l{ $field[0] } ) {
+							if ( !exists $_unknownrefererbrowser_l{ $field[0] }
+								|| int($field[1]) > $_unknownrefererbrowser_l{ $field[0] } ) {
 								$_unknownrefererbrowser_l{ $field[0] } = int($field[1]);
 							}
 						}
@@ -7059,9 +7061,9 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					@field = ParseUnknownAgentHistoryRow($_, $readxml);
 					$countlines++;
-				} until ($field[0] eq 'END_UNKNOWNREFERERBROWSER' || $field[0] eq "${xmleb}END_UNKNOWNREFERERBROWSER" || !$_);
+				} until ((@field == 1 && ($field[0] eq 'END_UNKNOWNREFERERBROWSER' || $field[0] eq "${xmleb}END_UNKNOWNREFERERBROWSER")) || !$_);
 				if ($field[0] ne 'END_UNKNOWNREFERERBROWSER' && $field[0] ne "${xmleb}END_UNKNOWNREFERERBROWSER") {
 					error("History file \"$filetoread\" is corrupted (End of section UNKNOWNREFERERBROWSER not found).\nRestore a recent backup of this file (data for this month will be restored to backup date), remove it (data for month will be lost), or remove the corrupted section in file (data for at least this section will be lost).",
 						"", "", 1);
@@ -9875,6 +9877,27 @@ sub XMLEncode {
 # Parameters:	stringtoencode
 # Return:		encodedstring
 #------------------------------------------------------------------------------
+# Use the history representation for both loaded and newly observed agents.
+# Otherwise a raw agent containing spaces and its stored %20 form become two
+# hash keys that serialize to the same row key on the next update.
+sub UnknownAgentHistoryKey {
+	my $agent = shift;
+	$agent = '' if !defined $agent;
+	$agent =~ s/\s/%20/g;
+	return $agent;
+}
+
+sub ParseUnknownAgentHistoryRow {
+	my ($row, $xml) = @_;
+	$row = XMLDecodeFromHisto($row) if $xml;
+	# Read the timestamp from the right: XML decoding restores agent spaces.
+	$row =~ s/[ \t]+\z//;
+	if ($row =~ /\A(.*)[ \t]+([0-9]+)\z/s) {
+		return (UnknownAgentHistoryKey($1), $2);
+	}
+	return split(/\s+/, $row);
+}
+
 sub XMLEncodeForHisto {
 	my $string = shift;
 	$string =~ s/\s/%20/g;
@@ -25418,14 +25441,14 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 							$_browser_h{'Unknown'}++;
 							if ($PageBool) { $_browser_p{'Unknown'}++; }
 							$TmpBrowser{$UserAgent} = 'Unknown';
-							$_unknownrefererbrowser_l{$UserAgent} = $timerecord;
+							$_unknownrefererbrowser_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 						}
 					}
 					else {
 						$_browser_h{$uabrowser}++;
 						if ($PageBool) { $_browser_p{$uabrowser}++; }
 						if ( $uabrowser eq 'Unknown' ) {
-							$_unknownrefererbrowser_l{$UserAgent} = $timerecord;
+							$_unknownrefererbrowser_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 						}
 					}
 				}
@@ -25501,7 +25524,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 								}
 							}
 							if ( $countedtraffic != 4 ) {
-								$_unknownreferer_l{$UserAgent} = $timerecord;
+								$_unknownreferer_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 							}
 						}
 					}
@@ -25520,7 +25543,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						}
 						if ( $uaos eq 'Unknown' ) {
 							if ( $countedtraffic != 4 ) {
-								$_unknownreferer_l{$UserAgent} = $timerecord;
+								$_unknownreferer_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 							}
 						}
 					}
