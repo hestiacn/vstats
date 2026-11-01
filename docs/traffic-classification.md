@@ -57,10 +57,68 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v3`. Optional private details include status, the per-request
+`vstats-traffic-v4`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
+
+### Configured endpoint probing
+
+The separate optional `probing` rule detects concentrated requests to
+operator-configured endpoints together with rotating browser and platform
+claims. It is generic: configure the endpoints relevant to your application,
+including authentication, administrative, API or diagnostic routes. These are
+positive points of interest, not absence attestations. Existing endpoints and
+HTTP 200 responses can participate; status does not establish authentication
+success, failed login attempts or malicious intent.
+
+```json
+{
+  "schema_version": 1,
+  "probing": {
+    "enabled": 1,
+    "paths": ["/account/sign-in", "/api/users"]
+  },
+  "exclude": ["suspected_automation"]
+}
+```
+
+Defaults are `enabled: 0`, `window_seconds: 60`, `min_requests: 30`,
+`distinct_user_agents: 4`, `distinct_platforms: 2`, `paths: []`. These are
+exploratory heuristic starter settings, not calibrated accuracy thresholds.
+Enabling this rule requires a nonempty list of unique normalized exact paths.
+Query strings are stripped from observed targets; configuration paths cannot
+contain queries, fragments, unsupported normalization or duplicates. There are
+at most 2048 paths, each within the configured target-field byte cap. Volume,
+window and browser/platform bounds match the corresponding `behavior` fields.
+
+All criteria must coincide in an inclusive window for a canonical literal IP
+and normalized host. Only eligible requests to the configured exact paths
+contribute to the window or receive its flag. Other requests from that same
+source, including ordinary pages and assets between probes, remain outside
+this rule. No path-diversity or 404 minimum is required. A stable browser,
+multiple unrelated sources, a single platform, an isolated endpoint request
+or missing browser/status fields cannot independently satisfy it. It does
+not identify every kind of probing; fixed-agent probes need other evidence.
+
+`suspected_automation` is the union of enabled broad path probing and configured
+endpoint probing. Actor identities and the absence-attested `scanner_flagged`
+layer remain independent. An overlapping request counts once and retains both
+covering witnesses in private details and curated review. Aggregate `behavior`
+contains `broad_rule`, `probing_rule`, `broad_flagged_requests`,
+`probing_flagged_requests` and `overlap_requests`; its main request and actor
+counts are the union. Eligible and insufficient-field counts deduplicate records
+across enabled rules. Merged sequence counts sum the rules' sequences, which may
+overlap and are not visits. Effective configuration includes the operator's
+endpoint list; aggregate output contains no observed request records.
+
+Private details add `broad_probing_flagged`, `probing_flagged` and
+`probing_evidence`, retaining the existing broad `behavior_evidence`. Review
+labels each applicable rule and its numeric covering window. The same explicit
+exclusion selector and `behavior_include` request IDs apply to either rule;
+inclusion retains both witnesses and cannot override independent actor/scanner
+exclusions. Both rules are opt-in and may be enabled separately. Shared proxies
+and authorized automation can qualify; review results before relying on them.
 
 ### Explicit filtering and inclusion overrides
 

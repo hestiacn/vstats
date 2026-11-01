@@ -50,16 +50,39 @@ def controls(prefix):
             "<a href='" + prefix + "behavior-exclusions/'>Review exclusions</a></nav>")
 
 
+def rule_evidence(record):
+    """Keep independent covering witnesses when a request matches both rules."""
+    result = []
+    broad = record.get('broad_probing_flagged', bool(record.get('behavior_evidence')))
+    for matched, label, key in [(broad, 'Broad path probing', 'behavior_evidence'),
+                                (record.get('probing_flagged'), 'Endpoint probing', 'probing_evidence')]:
+        if not matched:
+            continue
+        proof = record.get(key)
+        if not proof or not proof['from'] <= record['timestamp'] <= proof['until']:
+            raise RuntimeError('Review lacks a covering rule witness')
+        result.append((label, proof))
+    if not result:
+        raise RuntimeError('Review lacks a covering rule witness')
+    return result
+
+
 def render_review_row(record):
-    proof = record['behavior_evidence']
     stamp = datetime.datetime.utcfromtimestamp(record['timestamp']).isoformat() + 'Z'
     match = CLAIM.search(record.get('user_agent') or '')
     claim = match.group(1) if match else 'browser marker'
     platform = record.get('behavior_platform') or 'unknown'
     state = 'Included by request ID override' if record['behavior_included'] else 'Excluded by behavior filter'
-    reason = ('{requests} requests; {distinct_user_agents} user agents; {distinct_platforms} platforms; '
-              '{distinct_paths} paths; {not_found_requests} HTTP 404s').format(**proof)
-    reason += ' in {} seconds'.format(proof['until'] - proof['from'])
+    reasons = []
+    for label, proof in rule_evidence(record):
+        reason = label + ': ' + ('{requests} requests; {distinct_user_agents} user agents; '
+                                '{distinct_platforms} platforms; {distinct_paths} paths; '
+                                '{not_found_requests} HTTP 404s').format(**proof)
+        reason += ' in {} seconds'.format(proof['until'] - proof['from'])
+        if label == 'Endpoint probing':
+            reason += ' (configured endpoints; no 404 requirement)'
+        reasons.append(reason)
+    reason = ' | '.join(reasons)
     request_id = record['request_id']
     if not re.fullmatch(r'[0-9a-f]{64}', request_id):
         raise ValueError('Invalid request ID')
@@ -152,9 +175,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
                 raise RuntimeError('Review request ID mismatch')
             record['method'] = match[1].split(b' ', 1)[0].decode('ascii')
             record['response_body_bytes'] = 0 if record['status'] == 304 or match[3] == b'-' else int(match[3])
-            proof = record['behavior_evidence']
-            if not proof or not proof['from'] <= record['timestamp'] <= proof['until']:
-                raise RuntimeError('Review lacks a covering witness')
+            rule_evidence(record)
             review_rows[month].append(record)
             if record['excluded']:
                 ledger['records'] += 1
@@ -162,8 +183,9 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
         flagged_by_month[month] += len(flagged)
         totals.update(report['counts'])
         actors.update(report['actors'])
-        for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups', 'inclusion_overrides']:
-            behavior[key] += report['behavior'][key]
+        for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups', 'inclusion_overrides',
+                    'broad_flagged_requests', 'probing_flagged_requests', 'overlap_requests']:
+            behavior[key] += report['behavior'].get(key, 0)
         period = report['input']['period']
         start = datetime.datetime.strptime(day, '%Y-%m-%d').replace(tzinfo=datetime.timezone.utc).timestamp()
         if not start <= period['from'] <= period['until'] < start + datetime.timedelta(days=1).total_seconds():
@@ -209,7 +231,11 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
     review_body = (controls(prefix) + '<h1>Review behavioral exclusions</h1>' + scope +
                    '<!-- NATIVE_EFFECT -->' + disclaimer + '<p>Total flagged: <strong>' + format(behavior['flagged_requests'], ',') +
                    '</strong>. Actually removed from the filtered input: <strong>' + format(sum(x['records'] for x in excluded_by_month.values()), ',') +
-                   '</strong>. Full raw user-agent strings and query strings are omitted from these pages.</p><ul>' + ''.join(review_links) + '</ul>')
+                   '</strong>. Broad path probing: ' + format(behavior['broad_flagged_requests'], ',') +
+                   '; endpoint probing: ' + format(behavior['probing_flagged_requests'], ',') +
+                   '; overlap: ' + format(behavior['overlap_requests'], ',') +
+                   '. Each overlapping request appears once, with both witnesses. '
+                   'Full raw user-agent strings and query strings are omitted from these pages.</p><ul>' + ''.join(review_links) + '</ul>')
     private_write(output / 'review/index.html', page('Review behavioral exclusions', review_body))
     class_rows = ''.join("<tr><td><a href='" + r['day'] + ".html'>" + r['day'] + '</a></td><td>' +
                          format(r['counts']['analyzed'], ',') + '</td><td>' + format(r['behavior']['flagged_requests'], ',') +
@@ -219,6 +245,10 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
                   format(sum(x['records'] for x in excluded_by_month.values()), ',') + ' explicitly excluded from filtered input. '
                   'Behavioral flags overlap actor identities; unknown is neither verified human nor bot. '
                   'Native statistics are replayed independently for the selected view.</p>' +
+                  '<p>Broad path probing: ' + format(behavior['broad_flagged_requests'], ',') +
+                  '; configured endpoint probing: ' + format(behavior['probing_flagged_requests'], ',') +
+                  '; overlap: ' + format(behavior['overlap_requests'], ',') +
+                  '. Counts overlap; the suspected-automation total counts each request once.</p>' +
                   '<p>Analyzed requests: ' + format(totals['analyzed'], ',') + '; unparsed: ' + format(totals['unparsed'], ',') +
                   '. Provider snapshots are not supplied to this companion analysis; the native confirmed-crawler layer '
                   'uses its own request-period evidence.</p><table><tr><th>UTC day</th><th>Analyzed</th><th>Flagged</th><th>Excluded</th></tr>' + class_rows + '</table>')

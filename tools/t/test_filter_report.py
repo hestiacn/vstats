@@ -39,6 +39,33 @@ class ReviewRendering(unittest.TestCase):
         with self.assertRaises(ValueError):
             builder.render_review_row(record)
 
+    def test_probing_witnesses_and_missing_evidence(self):
+        proof = {'from': 90, 'until': 100, 'requests': 30, 'distinct_user_agents': 4,
+                 'distinct_platforms': 2, 'distinct_paths': 1, 'not_found_requests': 0}
+        record = {'timestamp': 100, 'client': '192.0.2.1', 'method': 'POST',
+                  'normalized_target': '/account/sign-in', 'status': 200,
+                  'request_id': 'a' * 64, 'behavior_included': True,
+                  'broad_probing_flagged': False, 'probing_flagged': True,
+                  'behavior_evidence': None, 'probing_evidence': proof}
+        row = builder.render_review_row(record)
+        self.assertIn('Endpoint probing:', row)
+        self.assertIn('0 HTTP 404s', row)
+        self.assertIn('no 404 requirement', row)
+        self.assertNotIn('Broad path probing:', row)
+        self.assertIn('Included by request ID override', row)
+        record['broad_probing_flagged'] = True
+        record['behavior_evidence'] = dict(proof, distinct_paths=10, not_found_requests=10)
+        row = builder.render_review_row(record)
+        self.assertIn('Broad path probing:', row)
+        self.assertIn('Endpoint probing:', row)
+        self.assertEqual(row.count('<button data-request-id='), 1)
+        record['probing_evidence'] = None
+        with self.assertRaises(RuntimeError):
+            builder.render_review_row(record)
+        record['probing_evidence'] = dict(proof, until=99)
+        with self.assertRaises(RuntimeError):
+            builder.render_review_row(record)
+
 
 class BatchIntegration(unittest.TestCase):
     @classmethod
@@ -105,6 +132,49 @@ class BatchIntegration(unittest.TestCase):
         self.assertEqual(result['excluded_by_month']['2026-10']['records'], 5)
         self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), self.lines[0] + self.ordinary)
         self.assertIn('Included by request ID override', (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8'))
+
+    def test_probing_only_with_inclusion_and_ordinary_same_source_request(self):
+        self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
+                    'probing': {'enabled': 1, 'window_seconds': 10, 'min_requests': 6,
+                                'distinct_user_agents': 3, 'distinct_platforms': 2,
+                                'paths': ['/account/sign-in']}}
+        self.lines = [line.replace(b'GET /p' + str(i % 3).encode('ascii'), b'POST /account/sign-in').replace(
+                      b' 404 100 ', b' 200 100 ') for i, line in enumerate(self.lines)]
+        asset = self.ordinary.replace(b'198.51.100.1', b'192.0.2.1').replace(
+            b'11:00:00', b'10:00:03').replace(b'GET / HTTP', b'GET /style.css HTTP')
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(self.lines) + asset)
+        self.cfg['behavior_include'] = [hashlib.sha256(self.lines[0].rstrip(b'\n')).hexdigest()]
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.run_build(page_size=2)
+        self.assertEqual(result['behavior']['flagged_requests'], 6)
+        self.assertEqual(result['behavior']['probing_flagged_requests'], 6)
+        self.assertEqual(result['behavior']['broad_flagged_requests'], 0)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 5)
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), self.lines[0] + asset)
+        pages = sorted((self.root / 'output/review').glob('2026-10-*.html'))
+        text = ''.join(p.read_text(encoding='utf-8') for p in pages)
+        self.assertEqual(text.count('<button data-request-id='), 6)
+        self.assertIn('Endpoint probing:', text)
+        self.assertIn('no 404 requirement', text)
+        self.assertNotIn('Broad path probing:', text)
+        self.assertNotIn('SECRET_SENTINEL', text)
+        self.assertIn('POST', text)
+
+    def test_overlapping_rules_have_one_review_row_and_two_witnesses(self):
+        self.cfg['probing'] = {'enabled': 1, 'window_seconds': 10, 'min_requests': 6,
+                               'distinct_user_agents': 3, 'distinct_platforms': 2,
+                               'paths': ['/p0', '/p1', '/p2']}
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.run_build()
+        self.assertEqual(result['behavior']['flagged_requests'], 6)
+        self.assertEqual(result['behavior']['broad_flagged_requests'], 6)
+        self.assertEqual(result['behavior']['probing_flagged_requests'], 6)
+        self.assertEqual(result['behavior']['overlap_requests'], 6)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 6)
+        text = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertEqual(text.count('<button data-request-id='), 6)
+        self.assertIn('Broad path probing:', text)
+        self.assertIn('Endpoint probing:', text)
 
     def test_refuses_existing_output_and_invalid_policy(self):
         self.cfg['exclude'] = []

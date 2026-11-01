@@ -18,6 +18,11 @@ for my $key (sort keys %{$default->{scanner}}) {
 for my $key (sort keys %{$default->{behavior}}) {
     like($guide,qr/`\Q$key\E: \Q$default->{behavior}{$key}\E`/,'guide behavior default agrees with module');
 }
+for my $key (sort keys %{$default->{probing}}) {
+    next if ref $default->{probing}{$key};
+    like($guide,qr/`\Q$key\E: \Q$default->{probing}{$key}\E`/,'guide probing default agrees with module');
+}
+like($guide,qr/`paths: \[\]`/,'guide probing endpoint default agrees with module');
 like($guide,qr/`max_gap_seconds: \Q$default->{verification}{max_gap_seconds}\E`/,'guide evidence gap default agrees');
 for my $token (@{$default->{crawler_tokens}}) {like($guide,qr/`\Q$token\E`/,'guide default token present');}
 my $registry=$C->provider_registry;
