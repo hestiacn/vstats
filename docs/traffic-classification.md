@@ -50,14 +50,90 @@ Shared proxies can mix real users, authorized tests can be automated and browser
 claims can be forged. Precision/recall are unmeasured. Input partition boundaries
 can miss a window that crosses them; daily reports must disclose that limitation.
 Evaluate against known ordinary site traffic before adopting exclusion policies.
-This flag is not a verified crawler identity, an `exclude` selector, a native
-AWStats exclusion or a request-blocking rule. The native additional layer still
-requires supported crawler identity and request-period provider evidence.
+This flag is not a verified crawler identity or a request-blocking rule. It
+changes no history by itself. An explicit `suspected_automation` exclusion can
+now export filtered input for a separately maintained native AWStats view.
+The native verified-crawler option still requires supported identity and dated
+provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v2`. Optional private details include status and the per-request
-behavior flag. Aggregate JSON/HTML contains no source IP, target or user-agent
+`vstats-traffic-v3`. Optional private details include status, the per-request
+behavior flag, request ID, normalized query-free path, inclusion/exclusion state
+and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
+
+### Explicit filtering and inclusion overrides
+
+```json
+{
+  "schema_version": 1,
+  "behavior": {"enabled": 1},
+  "exclude": ["suspected_automation"],
+  "behavior_include": []
+}
+```
+
+```sh
+perl tools/traffic-classify.pl --config site.json --input access.log \
+  --input-format combined --output report.json --filtered-log filtered.log
+```
+
+The optional `--filtered-log` requires a nonempty explicit exclusion selection.
+It removes only selected physical records and preserves all other input bytes,
+including blank/unparsed/out-of-scope records and line endings. The second
+bounded pass must match the classified input hash; otherwise export fails.
+Input/output aliases, hardlinks between outputs and output symlinks are refused.
+Both outputs are mode 0600. The report records original/filtered SHA-256 and log
+byte/record accounting. These byte counts describe **log files**, not HTTP
+bandwidth. Caller must check successful exit and the report's filtered digest
+before use: two atomic renames are not a multi-file transaction.
+
+`behavior_include` defaults to `[]`: up to 2048 unique lowercase 64-hex request
+IDs. A request ID is SHA-256 of the raw logical log record, excluding LF and one
+CR immediately before LF. Byte-identical duplicate records share an ID; an
+override retains all such records. It suppresses only behavioral exclusion,
+not independently selected actor/scanner exclusions, and retains the suspicion
+flag/evidence for review. Lists are operator-controlled; copying an ID is not
+itself a server-side change. Private details expose IDs and witnessing windows.
+
+Use complete, nonoverlapping input to replay original rules, confirmed-only
+rules and behavior-filtered rules into independent histories. Recompute native
+visits and unique visitors; never subtract request counts from those metrics.
+Explain which flagged records were already non-viewed under native rules.
+Retain an unfiltered comparison and an explicit user choice of report view.
+Provider snapshots must still cover request dates; use archived day-sized
+bundles within existing evidence caps for historical native replay.
+
+### Optional daily export and review builder
+
+With Python 3.6+ and a suitable Perl interpreter, the generic builder processes
+an existing stable directory of `YYYY-MM-DD.log` combined-log partitions:
+
+```sh
+python3 tools/traffic-filter-report.py --config site.json \
+  --input-directory /private/corpus --output-directory /private/new-result \
+  --perl /path/to/perl --site-url-prefix /vstats/example.test/
+```
+
+It requires exactly `exclude: ["suspected_automation"]`, refuses an existing
+output directory and writes private `filtered/`, `reports/`, `classification/`,
+`review/` directories and `summary.json`. Input partitions must match their UTC
+dates. Detailed JSON stays private; curated HTML shows request IDs, query-free
+paths, source IPs, HTTP status, restricted browser/platform claims and numeric
+witnesses. Full raw user-agent strings are omitted. Only publish the HTML behind
+the site's intended statistics access controls. Page size defaults to 200, with
+range 1–1000; these are UI/resource heuristics, not sampling. Every flagged
+record appears, including retained inclusion overrides. View links assume
+canonical behavior-on, `confirmed/` behavior-off and `original/` original rules;
+the operator must generate those independent native views.
+
+The builder performs no network lookup, history modification or deployment.
+`excluded_by_month.response_body_bytes` is a separate HTTP response-body ledger
+(304 contributes zero), unlike the CLI's log-file byte counts. It includes
+flagged requests that native rules may already treat as non-viewed. Compare
+independently replayed native histories to measure changes to viewed totals.
+Repeated report generation allows new inclusion overrides and changed windows
+to affect past statistics; input retention and scheduling remain operator policy.
 
 ## Additional verified-crawler filtering in AWStats
 
@@ -199,7 +275,8 @@ numbers, negatives and inconsistencies **before opening the log**. JSON nesting
 | `site_references` | Default `[]`; legitimate-path exemptions below. |
 | `scanner` | Defaults: `distinct_paths: 3`, `distinct_families: 2`, `window_seconds: 60`. Partial objects fill defaults. Positive integer families ≤ paths ≤ 2048; window ≤ 3600. |
 | `verification` | Default `max_gap_seconds: 86400`, range 0–604800; single-snapshot time tolerance is zero. |
-| `exclude` | Default `[]`; separate comparison only, below. |
+| `exclude` | Default `[]`; explicit comparison and optional filtered-log export, below. |
+| `behavior_include` | Default `[]`; operator request-ID overrides for behavioral exclusions only. |
 | `limits` | Partial object may lower these hard maxima. UA/target caps cannot exceed line cap. |
 
 | Limit | Default and hard maximum |
@@ -350,10 +427,10 @@ equal analyzed requests. Unsupported targets, insufficient fields, scanner
 requests and merged sequences are separate.
 
 `exclude` accepts only `declared_crawler_or_tool`, `verified_crawler`,
-`scanner_flagged`. A separate **requests in this input excluding <categories>**
+`scanner_flagged`, `suspected_automation`. A separate **requests in this input excluding <categories>**
 comparison shows original/excluded/remaining counts and config hash. Subtract
 the per-request union once. `unknown` cannot be selected as actor, but its requests
-can independently be scanner-flagged. Remaining counts never claim humans or
+can independently carry scanner or behavioral flags. Remaining counts never claim humans or
 AWStats visitors.
 
 Before exclusions, set a false-positive/evaluation criterion and check known

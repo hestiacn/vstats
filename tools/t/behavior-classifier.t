@@ -87,7 +87,8 @@ for my $bad (
     {distinct_platforms=>1},{distinct_platforms=>6},{distinct_paths=>1},{distinct_paths=>7},
     {not_found_requests=>1},{not_found_requests=>7},{enabled=>undef},{geography=>'AD'}
 ) {reject('invalid behavioral config refused',sub {config(%$bad)});}
-reject('behavior flag is not an exclusion selector',sub {$C->config('{"schema_version":1,"exclude":["suspected_automation"]}')});
+my $selected=config();$selected->{exclude}=['suspected_automation'];
+is(run(rows(),$selected)->{adjusted_requests}{excluded},6,'behavior exclusion requires explicit selector');
 reject('null behavior object refused',sub {$C->config('{"schema_version":1,"behavior":null}')});
 my $group_cap=$C->config($J->encode({schema_version=>1,behavior=>\%rule,limits=>{groups=>1}}));
 my $groups=rows();$_->{user_agent}=$ua[0] for @$groups;$groups->[$_]{host}=$_<3?'a.test':'b.test' for 0..5;
@@ -130,7 +131,7 @@ for my $trial (1..60) {
 ok($positive_oracles>0 && $negative_oracles>0,'oracle corpus exercises positive and negative cases');
 my $json=VStats::TrafficClassifier::canonical_json($positive);my $html=VStats::TrafficClassifier::html_report($positive);
 like($html,qr/Suspected automation/,'HTML exposes new label');
-like($html,qr/do not change AWStats totals/,'HTML states independent non-filtering semantics');
+like($html,qr/Exclusions require an explicit selection/,'HTML states explicit selection semantics');
 is(VStats::TrafficClassifier::canonical_json($positive),$json,'rendering keeps report immutable');
 delete $positive->{details};delete $positive->{details_warning};$json=VStats::TrafficClassifier::canonical_json($positive);
 unlike($json,qr/192\.0\.2\.1|Windows NT|\/p0/,'aggregate output contains no source/UA/target records');

@@ -9,8 +9,8 @@ use Time::Local qw(timegm);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later, like the parent project. No file or network I/O here.
-our $VERSION = '1.1';
-my $ALGORITHM = 'vstats-traffic-v2';
+our $VERSION = '1.2';
+my $ALGORITHM = 'vstats-traffic-v3';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -22,7 +22,7 @@ my $JSON = JSON::PP->new->canonical->allow_nonref;
 my $DEFAULT = {
     schema_version => 1, hosts => [],
     crawler_tokens => [qw(Googlebot Bytespider bingbot AhrefsBot ClaudeBot GPTBot curl Wget python-requests)],
-    probe_families => [], site_references => [], exclude => [],
+    probe_families => [], site_references => [], exclude => [], behavior_include => [],
     scanner => {distinct_paths => 3, distinct_families => 2, window_seconds => 60},
     behavior => {enabled => 0, window_seconds => 60, min_requests => 60,
                 distinct_user_agents => 4, distinct_platforms => 2,
@@ -167,8 +167,10 @@ sub config {
     _uint($c->{verification}{max_gap_seconds},$FIXED->{max_gap});
     for my $k (keys %{$d->{limits}}) { _uint($c->{limits}{$k},$d->{limits}{$k},1); }
     _bad('Field cap exceeds line cap') if $c->{limits}{ua_bytes}>$c->{limits}{line_bytes} || $c->{limits}{target_bytes}>$c->{limits}{line_bytes};
-    _array($c->{exclude},3); my %exclude;
-    for (@{$c->{exclude}}) { _str($_); _bad('Invalid exclusion selector') if !/\A(?:declared_crawler_or_tool|verified_crawler|scanner_flagged)\z/ || $exclude{$_}++; }
+    _array($c->{exclude},4); my %exclude;
+    for (@{$c->{exclude}}) { _str($_); _bad('Invalid exclusion selector') if !/\A(?:declared_crawler_or_tool|verified_crawler|scanner_flagged|suspected_automation)\z/ || $exclude{$_}++; }
+    _array($c->{behavior_include},$FIXED->{references}); my %include;
+    for (@{$c->{behavior_include}}) { _str($_); _bad('Invalid or duplicate behavior inclusion ID') if !/\A[0-9a-f]{64}\z/ || $include{$_}++; }
     _array($c->{probe_families},$FIXED->{families}); my (%ids,%paths); my $n=0;
     for my $f (@{$c->{probe_families}}) {
         _keys($f,qw(id paths absent_from absent_until)); _str($f->{id});
@@ -378,7 +380,7 @@ sub _line {
     if ($oversized) { $c->{unparsed}++; $c->{oversized}++; return; }
     my $r=eval {$self->_parse_line($raw)}; my $err=$@;
     if (!$r) { $c->{unparsed}++; $c->{oversized}++ if $err eq "OVERSIZED_FIELD\n"; return; }
-    $r->{line_index}=$c->{lines_total}; $c->{parsed}++;
+    $r->{line_index}=$c->{lines_total}; $r->{request_id}=Digest::SHA::sha256_hex($raw); $c->{parsed}++;
     $self->{min}=$r->{timestamp} if !defined($self->{min}) || $r->{timestamp}<$self->{min};
     $self->{max}=$r->{timestamp} if !defined($self->{max}) || $r->{timestamp}>$self->{max};
     if (defined($r->{user_agent}) && literal_ip($r->{client})) {
@@ -448,7 +450,7 @@ sub _behavior {
     }
     for my $key (sort keys %groups) {
         my @p=sort {$a->{timestamp}<=>$b->{timestamp} || $a->{line_index}<=>$b->{line_index}} @{$groups{$key}};
-        my (%paths,%uas,%platforms,@diff); my ($left,$not_found,$last_end)=(0,0,undef);
+        my (%paths,%uas,%platforms,@diff); my ($left,$not_found,$last_end,$assigned_end)=(0,0,undef,-1);
         for my $right (0..$#p) {
             my $r=$p[$right]; $paths{$r->{normal}}++; $uas{$r->{user_agent}}++; $platforms{$r->{behavior_platform}}++;
             $not_found++ if $r->{status}==404;
@@ -463,6 +465,14 @@ sub _behavior {
                     && keys(%platforms)>=$cfg->{distinct_platforms} && keys(%paths)>=$cfg->{distinct_paths}
                     && $not_found>=$cfg->{not_found_requests}) {
                 $diff[$left]++; $diff[$right+1]--;
+                my $proof={from=>$p[$left]{timestamp},until=>$r->{timestamp},requests=>$right-$left+1,
+                    distinct_user_agents=>scalar(keys %uas),distinct_platforms=>scalar(keys %platforms),
+                    distinct_paths=>scalar(keys %paths),not_found_requests=>$not_found};
+                # Left/right endpoints only advance. Assign the first witnessing
+                # interval once per request, retaining linear total work.
+                my $start=$left>$assigned_end+1?$left:$assigned_end+1;
+                $p[$_]{behavior_evidence}=$proof for $start..$right;
+                $assigned_end=$right;
                 $result->{merged_sequences}++ if !defined($last_end) || $p[$left]{timestamp}>$last_end;
                 $last_end=$r->{timestamp};
             }
@@ -505,17 +515,23 @@ sub finish {
         }
     }
     my $sequences=$self->_scan(\%groups); my $behavior=$self->_behavior;
-    my ($flagged,$excluded)=(0,0); my %exclude=map {$_=>1} @{$cfg->{exclude}};
+    my ($flagged,$excluded,$included)=(0,0,0); my %exclude=map {$_=>1} @{$cfg->{exclude}};
+    my %include=map {$_=>1} @{$cfg->{behavior_include}};
     for my $r (@{$self->{records}}) {
         $flagged++ if $r->{scanner_flagged};
-        $excluded++ if $exclude{$r->{actor}} || ($exclude{scanner_flagged} && $r->{scanner_flagged});
+        $r->{behavior_included}=$r->{suspected_automation} && $include{$r->{request_id}} ? 1:0;
+        $included++ if $r->{behavior_included};
+        $r->{excluded}=($exclude{$r->{actor}} || ($exclude{scanner_flagged} && $r->{scanner_flagged})
+            || ($exclude{suspected_automation} && $r->{suspected_automation} && !$r->{behavior_included}))?1:0;
+        $excluded++ if $r->{excluded};
     }
+    $behavior->{inclusion_overrides}=$included;
     my $nondefault=grep {$cfg->{scanner}{$_}!=$DEFAULT->{scanner}{$_}} keys %{$cfg->{scanner}};
     my $report={schema_version=>1,algorithm_id=>$ALGORITHM,
         config_sha256=>Digest::SHA::sha256_hex($ALGORITHM."\n".JSON::PP->new->utf8->canonical->encode($cfg)),
         input_sha256=>$self->{digest}->hexdigest,input=>{format=>$self->{format},bytes=>$self->{input_bytes},period=>{from=>$self->{min},until=>$self->{max}},
             host_policy=>@{$cfg->{hosts}}?'configured hosts enforced; missing host excluded':'all parsed hosts; aliases inseparable for hostless records',hosts=>$cfg->{hosts}},
-        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},verification=>$cfg->{verification},limits=>$cfg->{limits},
+        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},behavior_include=>$cfg->{behavior_include},verification=>$cfg->{verification},limits=>$cfg->{limits},
             status=>'Thresholds, continuity gaps and resource caps are heuristic assumptions; detection accuracy is unmeasured',crawler_tokens=>$cfg->{crawler_tokens}},
         counts=>{%{$self->{counts}}},actors=>\%actors,verification_outcomes=>\%verification,scanner_flagged_requests=>$flagged,merged_scanner_sequences=>$sequences,
         scanner_insufficient_fields=>$insufficient,unsupported_targets=>$unsupported,behavior=>$behavior,
@@ -526,16 +542,20 @@ sub finish {
             'Verified means verified against operator-attested published-range snapshots, not cryptographic source authentication. Bracketing assumes range continuity and does not prove uninterrupted ownership.',
             'Historical requests without covering archived evidence remain unavailable. IPv4-mapped IPv6 is not converted to IPv4; literal-IP acceptance follows platform inet_pton.',
             'Scanner flags describe qualifying probe requests, not intent or people. Shared IPs/UA and duplicate or overlapping input can affect results. Supply one nonoverlapping stable site snapshot.',
-            'Suspected automation is a separate optional behavioral flag, not verified crawler identity or an exclusion selector. Burst, browser-claim diversity, path diversity and repeated 404s must coincide in a qualifying source/host window. Shared proxies, authorized tests and partition boundaries can affect results; accuracy is unmeasured.',
+            'Suspected automation is a separate optional behavioral flag, not verified crawler identity. Exclusion requires an explicit selector; request-ID inclusions override only behavioral exclusion. Burst, browser-claim diversity, path diversity and repeated 404s must coincide in a qualifying source/host window. Shared proxies, authorized tests and partition boundaries can affect results; accuracy is unmeasured.',
             'Local tokens, component absence and site-reference periods are operator attestations; no status-code or weak browser signal supplies identity or absence.',
-            'No live DNS, network queries, incremental history or blocking. Exclusions affect only the configured comparison. Caller controls retention and any manual publication.',
+            'No live DNS, network queries, incremental history or blocking. The report exposes the configured comparison; the CLI can explicitly export matching filtered input for a separate native replay. Caller controls retention and publication.',
         ]};
     if (%exclude) { $report->{adjusted_requests}={label=>'requests in this input excluding '.join(', ',sort keys %exclude),original=>$self->{counts}{analyzed},excluded=>$excluded,remaining=>$self->{counts}{analyzed}-$excluded}; }
     if ($self->{details}) {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
-        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status)),scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
+        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id behavior_evidence behavior_platform)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
     }
     return $report;
+}
+sub excluded_line_indices {
+    my ($self)=@_; _bad('Classification must finish first') if !$self->{finished};
+    return [map {$_->{line_index}} grep {$_->{excluded}} @{$self->{records}}];
 }
 sub _html_escape { my ($s)=@_; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&gt;/g; $s =~ s/"/&quot;/g; $s =~ s/'/&#39;/g; return $s; }
 sub html_report {
@@ -548,7 +568,7 @@ sub html_report {
     if (my $b=$report->{behavior}) {
         $html.='<h2>Suspected automation</h2>';
         if ($b->{enabled}) {
-            $html.='<p>Requests flagged by combined burst, browser-identity variation and URL-probing evidence: '.$b->{flagged_requests}.'. Merged qualifying sequences: '.$b->{merged_sequences}.'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not change AWStats totals or prove crawler identity.</p>';
+            $html.='<p>Requests flagged by combined burst, browser-identity variation and URL-probing evidence: '.$b->{flagged_requests}.'. Merged qualifying sequences: '.$b->{merged_sequences}.'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
         } else { $html.='<p>Behavioral detection is disabled for this report.</p>'; }
     }
     if ($report->{adjusted_requests}) { my $a=$report->{adjusted_requests}; $html.='<p>'._html_escape($a->{label}).': '.$a->{remaining}.' (original '.$a->{original}.', excluded '.$a->{excluded}.').</p>'; }
