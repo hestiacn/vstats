@@ -177,6 +177,45 @@ class BatchIntegration(unittest.TestCase):
         self.assertIn('Broad path probing:', text)
         self.assertIn('Endpoint probing:', text)
 
+    def test_rapid_scan_witness_and_ip_policy_propagation(self):
+        self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
+                    'rapid_scan': {'enabled': 1, 'window_seconds': 10, 'min_requests': 6,
+                                   'distinct_paths': 3, 'not_found_requests': 3}}
+        self.lines = [('192.0.2.1 - - [02/Oct/2026:10:00:{:02d} +0000] '
+                       '"GET /probe{}?token=SECRET_SENTINEL HTTP/1.1" {} 100 "-" "single-agent/1"\n'.format(
+                           i, i % 3, 404 if i < 3 else 200)).encode('ascii') for i in range(6)]
+        asset = b'192.0.2.1 - - [02/Oct/2026:10:00:03 +0000] "GET /style.css HTTP/1.1" 404 99 "-" "single-agent/1"\n'
+        earlier = b'192.0.2.1 - - [01/Oct/2026:10:00:00 +0000] "GET /earlier HTTP/1.1" 200 99 "-" "single-agent/1"\n'
+        (self.inputs / '2026-10-01.log').write_bytes(earlier)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(self.lines) + asset)
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(result['behavior']['rapid_scan_flagged_requests'], 6)
+        self.assertEqual(result['behavior']['broad_flagged_requests'], 0)
+        self.assertEqual(result['behavior']['probing_flagged_requests'], 0)
+        self.assertEqual(result['request_excluded_by_month']['2026-10']['records'], 6)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 8)
+        self.assertEqual(result['ip_exclusion']['additional_excluded_requests'], 2)
+        self.assertEqual((self.root / 'output/filtered/2026-10-01.log').read_bytes(), b'')
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), b'')
+        self.assertEqual((self.root / 'output/request-filtered/2026-10-02.log').read_bytes(), asset)
+        text = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertEqual(text.count('<button data-request-id='), 8)
+        self.assertIn('Rapid content-path probing:', text)
+        self.assertIn('no browser rotation requirement', text)
+        self.assertIn('Trigger evidence, Rapid content-path probing:', text)
+        self.assertIn('1 user agents; 0 platforms', text)
+        self.assertNotIn('SECRET_SENTINEL', text)
+        self.assertNotIn('single-agent/1', text)
+        self.assertIn('no recognized browser claim', text)
+        shutil.rmtree(str(self.root / 'output'))
+        self.cfg['behavior_include'] = [hashlib.sha256(self.lines[0].rstrip(b'\n')).hexdigest()]
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        included = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(included['behavior']['inclusion_overrides'], 1)
+        self.assertEqual(included['excluded_by_month']['2026-10']['records'], 7)
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), self.lines[0])
+
     def test_refuses_existing_output_and_invalid_policy(self):
         self.cfg['exclude'] = []
         self.config.write_text(json.dumps(self.cfg), encoding='utf-8')

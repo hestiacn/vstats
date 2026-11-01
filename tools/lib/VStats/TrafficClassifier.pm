@@ -9,8 +9,8 @@ use Time::Local qw(timegm);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later, like the parent project. No file or network I/O here.
-our $VERSION = '1.4';
-my $ALGORITHM = 'vstats-traffic-v5';
+our $VERSION = '1.5';
+my $ALGORITHM = 'vstats-traffic-v6';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -29,6 +29,8 @@ my $DEFAULT = {
                 distinct_paths => 10, not_found_requests => 10},
     probing => {enabled => 0, window_seconds => 60, min_requests => 30,
                 distinct_user_agents => 4, distinct_platforms => 2, paths => []},
+    rapid_scan => {enabled => 0, window_seconds => 60, min_requests => 30,
+                   distinct_paths => 20, not_found_requests => 10},
     verification => {max_gap_seconds => 86400},
     limits => {input_bytes => 67108864, line_bytes => 16384, records => 100000,
                groups => 100000, ua_bytes => 4096, target_bytes => 8192},
@@ -144,7 +146,7 @@ sub config {
     my $d=defaults();
     for my $key (keys %$d) {
         if (!exists $c->{$key}) { $c->{$key}=$d->{$key}; next; }
-        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'verification' || $key eq 'limits') {
+        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'verification' || $key eq 'limits') {
             _keys($c->{$key},keys %{$d->{$key}});
             for my $k (keys %{$d->{$key}}) { $c->{$key}{$k}=$d->{$key}{$k} if !exists $c->{$key}{$k}; }
         }
@@ -177,6 +179,11 @@ sub config {
         _bad('Invalid or duplicate probing path') if !defined($normal) || $normal ne $path || $probe_paths{$path}++;
     }
     _bad('Enabled probing requires configured paths') if $p->{enabled} && !@{$p->{paths}};
+    my $rapid=$c->{rapid_scan}; _uint($rapid->{enabled},1); _uint($rapid->{window_seconds},$FIXED->{max_window},1);
+    _uint($rapid->{min_requests},$d->{limits}{records},2);
+    _uint($rapid->{distinct_paths},$FIXED->{paths},2);
+    _uint($rapid->{not_found_requests},$rapid->{min_requests},2);
+    _bad('Rapid scan paths exceed requests') if $rapid->{distinct_paths}>$rapid->{min_requests};
     _uint($c->{verification}{max_gap_seconds},$FIXED->{max_gap});
     for my $k (keys %{$d->{limits}}) { _uint($c->{limits}{$k},$d->{limits}{$k},1); }
     _bad('Field cap exceeds line cap') if $c->{limits}{ua_bytes}>$c->{limits}{line_bytes} || $c->{limits}{target_bytes}>$c->{limits}{line_bytes};
@@ -565,6 +572,72 @@ sub _probing {
     }
     return $result;
 }
+# Content-path bursts are independent of browser identity. Static asset suffixes
+# neither contribute to a witness nor receive this request-level flag. A later
+# caller may separately apply the explicit whole-IP policy.
+sub _rapid_scan {
+    my ($self)=@_; my $cfg=$self->{config}{rapid_scan};
+    my $result={enabled=>$cfg->{enabled}?JSON::PP::true:JSON::PP::false,
+        rule_id=>'rapid_content_path_probing_v1',flagged_requests=>0,
+        eligible_requests=>0,insufficient_fields=>0,asset_requests=>0,
+        merged_sequences=>0,flagged_source_groups=>0,
+        actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
+    $_->{rapid_scan_flagged}=0 for @{$self->{records}};
+    return $result if !$cfg->{enabled};
+    my %groups;
+    for my $r (@{$self->{records}}) {
+        my ($af,$packed)=literal_ip($r->{client});
+        if (!defined($af) || !defined($r->{normal}) || !defined($r->{status})) {
+            $r->{_rapid_insufficient}=1; $result->{insufficient_fields}++; next;
+        }
+        if ($r->{normal} =~ /\.(?:css|js|mjs|cjs|map|png|jpe?g|gif|webp|avif|svg|ico|bmp|tiff?|woff2?|ttf|otf|eot|mp3|mp4|webm|ogg|wav|pdf|zip|gz|br|rar|7z|tar)\z/iaa) {
+            $result->{asset_requests}++; next;
+        }
+        $r->{_rapid_eligible}=1; $result->{eligible_requests}++;
+        my $platform=_browser_platform($r->{user_agent});
+        $r->{behavior_platform}=$platform if defined $platform;
+        push @{$groups{$af.':'.unpack('H*',$packed)."\0".($r->{host}//'')}},$r;
+        _bad('Rapid scan group count limit exceeded') if keys(%groups)>$self->{config}{limits}{groups};
+    }
+    for my $key (sort keys %groups) {
+        my @p=sort {$a->{timestamp}<=>$b->{timestamp} || $a->{line_index}<=>$b->{line_index}} @{$groups{$key}};
+        my (%paths,%uas,%platforms,@diff); my ($left,$not_found,$last_end,$assigned_end)=(0,0,undef,-1);
+        for my $right (0..$#p) {
+            my $r=$p[$right]; $paths{$r->{normal}}++;
+            $uas{$r->{user_agent}}++ if defined $r->{user_agent};
+            $platforms{$r->{behavior_platform}}++ if defined $r->{behavior_platform};
+            $not_found++ if $r->{status}==404;
+            while ($r->{timestamp}-$p[$left]{timestamp}>$cfg->{window_seconds}) {
+                my $old=$p[$left++];
+                delete $paths{$old->{normal}} if --$paths{$old->{normal}}==0;
+                delete $uas{$old->{user_agent}} if defined($old->{user_agent}) && --$uas{$old->{user_agent}}==0;
+                delete $platforms{$old->{behavior_platform}} if defined($old->{behavior_platform}) && --$platforms{$old->{behavior_platform}}==0;
+                $not_found-- if $old->{status}==404;
+            }
+            if ($right-$left+1>=$cfg->{min_requests} && keys(%paths)>=$cfg->{distinct_paths}
+                    && $not_found>=$cfg->{not_found_requests}) {
+                $diff[$left]++; $diff[$right+1]--;
+                my $proof={from=>$p[$left]{timestamp},until=>$r->{timestamp},requests=>$right-$left+1,
+                    distinct_user_agents=>scalar(keys %uas),distinct_platforms=>scalar(keys %platforms),
+                    distinct_paths=>scalar(keys %paths),not_found_requests=>$not_found};
+                my $start=$left>$assigned_end+1?$left:$assigned_end+1;
+                $p[$_]{rapid_scan_evidence}=$proof for $start..$right;
+                $assigned_end=$right;
+                $result->{merged_sequences}++ if !defined($last_end) || $p[$left]{timestamp}>$last_end;
+                $last_end=$r->{timestamp};
+            }
+        }
+        my ($coverage,$flagged)=(0,0);
+        for my $i (0..$#p) {
+            $coverage+=$diff[$i]//0; next if $coverage<=0;
+            $p[$i]{rapid_scan_flagged}=1; $result->{flagged_requests}++;
+            $result->{actors}{$p[$i]{actor}}++; $flagged=1;
+        }
+        $result->{flagged_source_groups}++ if $flagged;
+    }
+    return $result;
+}
+
 sub finish {
     my ($self)=@_; _bad('Already finished') if $self->{finished};
     $self->_line(0) if $self->{line_present}; $self->{finished}=1;
@@ -601,20 +674,21 @@ sub finish {
         }
     }
     my $sequences=$self->_scan(\%groups);
-    my $broad=$self->_behavior; my $probing=$self->_probing;
-    my $behavior={enabled=>($broad->{enabled} || $probing->{enabled})?JSON::PP::true:JSON::PP::false,
-        rule_id=>'behavior_union_v1',broad_rule=>$broad,probing_rule=>$probing,
+    my $broad=$self->_behavior; my $probing=$self->_probing; my $rapid=$self->_rapid_scan;
+    my $behavior={enabled=>($broad->{enabled} || $probing->{enabled} || $rapid->{enabled})?JSON::PP::true:JSON::PP::false,
+        rule_id=>'behavior_union_v2',broad_rule=>$broad,probing_rule=>$probing,rapid_scan_rule=>$rapid,
         broad_flagged_requests=>$broad->{flagged_requests},probing_flagged_requests=>$probing->{flagged_requests},
+        rapid_scan_flagged_requests=>$rapid->{flagged_requests},
         overlap_requests=>0,flagged_requests=>0,eligible_requests=>0,insufficient_fields=>0,
-        merged_sequences=>$broad->{merged_sequences}+$probing->{merged_sequences},flagged_source_groups=>0,
+        merged_sequences=>$broad->{merged_sequences}+$probing->{merged_sequences}+$rapid->{merged_sequences},flagged_source_groups=>0,
         actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
     my %behavior_groups;
     for my $r (@{$self->{records}}) {
         $r->{broad_probing_flagged}=$r->{suspected_automation};
-        $behavior->{overlap_requests}++ if $r->{broad_probing_flagged} && $r->{probing_flagged};
-        $r->{suspected_automation}=1 if $r->{probing_flagged};
-        $behavior->{eligible_requests}++ if $r->{_broad_eligible} || $r->{_probing_eligible};
-        $behavior->{insufficient_fields}++ if $r->{_broad_insufficient} || $r->{_probing_insufficient};
+        $behavior->{overlap_requests}++ if $r->{broad_probing_flagged}+$r->{probing_flagged}+$r->{rapid_scan_flagged}>=2;
+        $r->{suspected_automation}=1 if $r->{probing_flagged} || $r->{rapid_scan_flagged};
+        $behavior->{eligible_requests}++ if $r->{_broad_eligible} || $r->{_probing_eligible} || $r->{_rapid_eligible};
+        $behavior->{insufficient_fields}++ if $r->{_broad_insufficient} || $r->{_probing_insufficient} || $r->{_rapid_insufficient};
         next if !$r->{suspected_automation};
         $behavior->{flagged_requests}++; $behavior->{actors}{$r->{actor}}++;
         my ($af,$packed)=literal_ip($r->{client});
@@ -637,7 +711,7 @@ sub finish {
         config_sha256=>Digest::SHA::sha256_hex($ALGORITHM."\n".JSON::PP->new->utf8->canonical->encode($cfg)),
         input_sha256=>$self->{digest}->hexdigest,input=>{format=>$self->{format},bytes=>$self->{input_bytes},period=>{from=>$self->{min},until=>$self->{max}},
             host_policy=>@{$cfg->{hosts}}?'configured hosts enforced; missing host excluded':'all parsed hosts; aliases inseparable for hostless records',hosts=>$cfg->{hosts}},
-        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},probing=>$cfg->{probing},behavior_include=>$cfg->{behavior_include},verification=>$cfg->{verification},limits=>$cfg->{limits},
+        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},probing=>$cfg->{probing},rapid_scan=>$cfg->{rapid_scan},behavior_include=>$cfg->{behavior_include},verification=>$cfg->{verification},limits=>$cfg->{limits},
             status=>'Thresholds, continuity gaps and resource caps are heuristic assumptions; detection accuracy is unmeasured',crawler_tokens=>$cfg->{crawler_tokens}},
         counts=>{%{$self->{counts}}},actors=>\%actors,verification_outcomes=>\%verification,scanner_flagged_requests=>$flagged,merged_scanner_sequences=>$sequences,
         scanner_insufficient_fields=>$insufficient,unsupported_targets=>$unsupported,behavior=>$behavior,
@@ -648,14 +722,14 @@ sub finish {
             'Verified means verified against operator-attested published-range snapshots, not cryptographic source authentication. Bracketing assumes range continuity and does not prove uninterrupted ownership.',
             'Historical requests without covering archived evidence remain unavailable. IPv4-mapped IPv6 is not converted to IPv4; literal-IP acceptance follows platform inet_pton.',
             'Scanner flags describe qualifying probe requests, not intent or people. Shared IPs/UA and duplicate or overlapping input can affect results. Supply one nonoverlapping stable site snapshot.',
-            'Suspected automation is the union of optional broad path/404 probing and configured endpoint probing, not verified crawler identity. Each requires its own coincident volume and browser/platform diversity conditions in a source/host window. Endpoint probing applies only to configured paths and requires neither absence nor failed responses. Overlaps count once; per-rule merged sequences can overlap. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and partition boundaries can affect results; accuracy is unmeasured.',
+            'Suspected automation is the union of optional broad path/404 probing, configured endpoint probing and rapid content-path/404 probing, not verified crawler identity. Broad and endpoint rules require browser/platform diversity; rapid scanning requires neither browser identity nor rotation and excludes static asset suffixes. Each requires its own coincident conditions in a source/host window. Endpoint probing uses configured paths without an absence or failed-response requirement. Overlaps count once; sequence counts sum across rules. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and partition boundaries can affect results; accuracy is unmeasured.',
             'Local tokens, component absence and site-reference periods are operator attestations; no status-code or weak browser signal supplies identity or absence.',
             'No live DNS, network queries, incremental history or blocking. The report exposes the configured comparison; the CLI can explicitly export matching filtered input for a separate native replay. Caller controls retention and publication.',
         ]};
     if (%exclude) { $report->{adjusted_requests}={label=>'requests in this input excluding '.join(', ',sort keys %exclude),original=>$self->{counts}{analyzed},excluded=>$excluded,remaining=>$self->{counts}{analyzed}-$excluded}; }
     if ($self->{details}) {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
-        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id behavior_evidence probing_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
+        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id behavior_evidence probing_evidence rapid_scan_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
     }
     return $report;
 }
@@ -674,7 +748,7 @@ sub html_report {
     if (my $b=$report->{behavior}) {
         $html.='<h2>Suspected automation</h2>';
         if ($b->{enabled}) {
-            $html.='<p>Requests flagged by combined volume, browser/platform variation and rule-specific probing evidence: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; overlap: '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
+            $html.='<p>Requests flagged by any enabled behavioral rule: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; rapid content-path probing: '.($b->{rapid_scan_flagged_requests}//0).'; overlap (two or more rules): '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
         } else { $html.='<p>Behavioral detection is disabled for this report.</p>'; }
     }
     if ($report->{adjusted_requests}) { my $a=$report->{adjusted_requests}; $html.='<p>'._html_escape($a->{label}).': '.$a->{remaining}.' (original '.$a->{original}.', excluded '.$a->{excluded}.').</p>'; }

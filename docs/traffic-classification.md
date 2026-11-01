@@ -57,7 +57,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v5`. Optional private details include status, the per-request
+`vstats-traffic-v6`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
@@ -101,23 +101,78 @@ multiple unrelated sources, a single platform, an isolated endpoint request
 or missing browser/status fields cannot independently satisfy it. It does
 not identify every kind of probing; fixed-agent probes need other evidence.
 
-`suspected_automation` is the union of enabled broad path probing and configured
-endpoint probing. Actor identities and the absence-attested `scanner_flagged`
-layer remain independent. An overlapping request counts once and retains both
-covering witnesses in private details and curated review. Aggregate `behavior`
-contains `broad_rule`, `probing_rule`, `broad_flagged_requests`,
-`probing_flagged_requests` and `overlap_requests`; its main request and actor
+### Sustained endpoint probing
+
+The existing endpoint rule can also detect slower repeated activity by setting
+its independent `window_seconds`, for example `900`, while retaining the
+configured paths, volume and browser/platform diversity tests. The short
+60-second default remains available. A longer window is an exploratory
+operator choice: it increases sensitivity and can pool more legitimate users
+behind a shared IP. It does not establish failed logins, credentials, intent or
+authentication outcomes; all conditions must still coincide in a real window.
+
+### Rapid content-path probing without browser rotation
+
+The independent optional `rapid_scan` rule detects rapid sweeps through many
+content paths with repeated HTTP 404 responses. It requires neither a browser
+claim nor variation across user agents/platforms. A stable agent or a common
+log without user agents can therefore provide sufficient path/status evidence.
+
+```json
+{
+  "schema_version": 1,
+  "rapid_scan": {"enabled": 1},
+  "exclude": ["suspected_automation"]
+}
+```
+
+Defaults are `enabled: 0`, `window_seconds: 60`, `min_requests: 30`,
+`distinct_paths: 20`, `not_found_requests: 10`. These are exploratory heuristic
+starter settings, not calibrated precision/recall or a proof of maliciousness.
+Volume, path diversity and actual 404 counts must hold together in the same
+inclusive rolling window for one canonical literal IP and normalized host.
+Only eligible requests in a qualifying window receive this request-level flag.
+Out-of-window traffic and ordinary assets remain unflagged by this rule; the
+separate IP/month policy can explicitly exclude their source traffic later.
+
+A literal client IP, supported normalized target and HTTP status are required.
+The rule ignores these conventional static asset suffixes (case-insensitive):
+`css`, `js`, `mjs`, `cjs`, `map`, `png`, `jpg`, `jpeg`, `gif`, `webp`, `avif`,
+`svg`, `ico`, `bmp`, `tif`, `tiff`, `woff`, `woff2`, `ttf`, `otf`, `eot`, `mp3`,
+`mp4`, `webm`, `ogg`, `wav`, `pdf`, `zip`, `gz`, `br`, `rar`, `7z`, `tar`.
+They contribute neither volume, path diversity nor errors, even during a scan.
+This deliberately leaves scans limited to these assets undetected. No path is
+claimed absent from the site; 404 is observed response evidence only. Failed
+page prefetches, broken applications, shared proxies or authorized scans can
+qualify. Inspect the numeric witness and use inclusion overrides when needed.
+
+`enabled` is integer 0 or 1; the window is 1–3600 seconds; minimum requests is
+2–100000; distinct paths is 2–2048 and cannot exceed minimum requests; the 404
+minimum is 2 through minimum requests. Partial objects fill defaults. The
+existing byte, record, field and canonical IP/host group caps still apply.
+Window maintenance is linear after sorting; no operator regex/code is executed.
+All three behavioral rules remain optional and independently configurable.
+
+`suspected_automation` is the union of enabled broad path probing, configured
+endpoint probing and rapid content-path probing. Actor identities and the absence-attested `scanner_flagged`
+layer remain independent. An overlapping request counts once and retains every
+applicable covering witness in private details and curated review. Aggregate
+`behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`,
+`broad_flagged_requests`, `probing_flagged_requests`,
+`rapid_scan_flagged_requests` and `overlap_requests` (requests matching at least
+two rules); its main request and actor
 counts are the union. Eligible and insufficient-field counts deduplicate records
 across enabled rules. Merged sequence counts sum the rules' sequences, which may
 overlap and are not visits. Effective configuration includes the operator's
 endpoint list; aggregate output contains no observed request records.
 
-Private details add `broad_probing_flagged`, `probing_flagged` and
-`probing_evidence`, retaining the existing broad `behavior_evidence`. Review
+Private details include `broad_probing_flagged`, `probing_flagged`,
+`rapid_scan_flagged`, `probing_evidence` and `rapid_scan_evidence`, retaining the
+existing broad `behavior_evidence`. Review
 labels each applicable rule and its numeric covering window. The same explicit
-exclusion selector and `behavior_include` request IDs apply to either rule;
-inclusion retains both witnesses and cannot override independent actor/scanner
-exclusions. Both rules are opt-in and may be enabled separately. Shared proxies
+exclusion selector and `behavior_include` request IDs apply to every rule;
+inclusion retains all witnesses and cannot override independent actor/scanner
+exclusions. All three rules are opt-in and may be enabled separately. Shared proxies
 and authorized automation can qualify; review results before relying on them.
 
 ### Explicit filtering and inclusion overrides
@@ -379,6 +434,9 @@ numbers, negatives and inconsistencies **before opening the log**. JSON nesting
 | `probe_families` | Default `[]`; dated absence attestations below. |
 | `site_references` | Default `[]`; legitimate-path exemptions below. |
 | `scanner` | Defaults: `distinct_paths: 3`, `distinct_families: 2`, `window_seconds: 60`. Partial objects fill defaults. Positive integer families ≤ paths ≤ 2048; window ≤ 3600. |
+| `behavior` | Optional browser-rotation/path/404 rule; defaults and bounds above. |
+| `probing` | Optional configured-endpoint/browser-rotation rule; independent window can cover sustained probing. |
+| `rapid_scan` | Optional content-path/404 burst rule without browser requirements; defaults and asset exclusions above. |
 | `verification` | Default `max_gap_seconds: 86400`, range 0–604800; single-snapshot time tolerance is zero. |
 | `exclude` | Default `[]`; explicit comparison and optional filtered-log export, below. |
 | `behavior_include` | Default `[]`; operator request-ID overrides for behavioral exclusions only. |

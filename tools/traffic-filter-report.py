@@ -54,11 +54,12 @@ def controls(prefix, exclude_automated_ips=True):
 
 
 def rule_evidence(record):
-    """Keep independent covering witnesses when a request matches both rules."""
+    """Keep independent covering witnesses for every matching behavioral rule."""
     result = []
     broad = record.get('broad_probing_flagged', bool(record.get('behavior_evidence')))
     for matched, label, key in [(broad, 'Broad path probing', 'behavior_evidence'),
-                                (record.get('probing_flagged'), 'Endpoint probing', 'probing_evidence')]:
+                                (record.get('probing_flagged'), 'Endpoint probing', 'probing_evidence'),
+                                (record.get('rapid_scan_flagged'), 'Rapid content-path probing', 'rapid_scan_evidence')]:
         if not matched:
             continue
         proof = record.get(key)
@@ -76,7 +77,7 @@ def rule_evidence(record):
                 raise RuntimeError('IP trigger crosses the report month')
         for item in evidence['rules']:
             proof = item['proof']
-            if item['rule'] not in ('Broad path probing', 'Endpoint probing') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
+            if item['rule'] not in ('Broad path probing', 'Endpoint probing', 'Rapid content-path probing') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
                 raise RuntimeError('IP trigger lacks a covering rule witness')
     if not result and not record.get('ip_excluded'):
         raise RuntimeError('Review lacks a covering rule witness')
@@ -86,7 +87,7 @@ def rule_evidence(record):
 def render_review_row(record):
     stamp = datetime.datetime.utcfromtimestamp(record['timestamp']).isoformat() + 'Z'
     match = CLAIM.search(record.get('user_agent') or '')
-    claim = match.group(1) if match else 'browser marker'
+    claim = match.group(1) if match else 'no recognized browser claim'
     platform = record.get('behavior_platform') or 'unknown'
     state = ('Included by request ID override' if record['behavior_included'] else
              'Excluded by automated-IP policy' if record.get('ip_excluded') and not record['suspected_automation'] else
@@ -99,6 +100,8 @@ def render_review_row(record):
         reason += ' in {} seconds'.format(proof['until'] - proof['from'])
         if label == 'Endpoint probing':
             reason += ' (configured endpoints; no 404 requirement)'
+        if label == 'Rapid content-path probing':
+            reason += ' (content paths; no browser rotation requirement)'
         reasons.append(reason)
     if record.get('ip_excluded'):
         evidence = record['ip_automation_evidence']
@@ -238,7 +241,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
         totals.update(report['counts'])
         actors.update(report['actors'])
         for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups',
-                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'overlap_requests']:
+                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'overlap_requests']:
             behavior[key] += report['behavior'].get(key, 0)
         flagged_by_month[day[:7]] += report['behavior']['flagged_requests']
         first = period['from'] if first is None else min(first, period['from'])
@@ -349,7 +352,8 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
                    '; flagged IP/months: ' + format(len(triggers), ',') +
                    '. Broad path probing: ' + format(behavior['broad_flagged_requests'], ',') +
                    '; endpoint probing: ' + format(behavior['probing_flagged_requests'], ',') +
-                   '; overlap: ' + format(behavior['overlap_requests'], ',') +
+                   '; rapid content-path probing: ' + format(behavior['rapid_scan_flagged_requests'], ',') +
+                   '; overlap (two or more rules): ' + format(behavior['overlap_requests'], ',') +
                    '. Full raw user-agent strings and query strings are omitted from review.</p>')
     private_write(output / 'review/index.html', page('Review exclusions', nav + '<h1>Review exclusions</h1>' + scope +
                   '<!-- NATIVE_EFFECT -->' + disclaimer + description + '<ul>' + ''.join(review_links) + '</ul>'))
