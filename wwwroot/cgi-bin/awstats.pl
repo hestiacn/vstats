@@ -23943,6 +23943,9 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 		# Analyze: successful favicon (=> countedtraffic=1 if favicon)
 		#--------------------------------------------------
 		if ( $urlwithnoquery =~ /$regicons/o ) {
+			# Apache %b uses a dash for zero response-body bytes. Normalize it
+			# before shared accounting, including 404 icon/manifest responses.
+			$field[$pos_size] = 0 if $pos_size > 0 && $field[$pos_size] eq '-';
 			# 提取图标类型
 			my $icon_type = 'other';
 			
@@ -24107,13 +24110,13 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 			if ( $urlwithnoquery =~ /$regfavico/o ) {
 				$countedtraffic = 1;
 				$_time_nv_h[$hourrecord]++;
-				if ( $field[$pos_code] != 404 && $pos_size > 0 ) {
+				if ( $pos_size > 0 ) {
 					$_time_nv_k[$hourrecord] += int( $field[$pos_size] );
 				}
 			}
 			else {
 				$countedtraffic = 7;
-				if ( $field[$pos_code] != 404 && $pos_size > 0 ) {
+				if ( $pos_size > 0 ) {
 					$_time_nv_k[$hourrecord] += int( $field[$pos_size] );
 				}
 				$_time_nv_h[$hourrecord]++;
