@@ -24571,9 +24571,13 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						if (defined &get_device_type) {
 							my $device_type = get_device_type($UserAgent);
 							if (!$explicit_robot && ($device_type eq 'mobile' || $device_type eq 'tablet')) {
-								$is_mobile_device = 1;
-								if ($Debug) {
-									debug("  Mobile device detected ($device_type), skipping robot classification", 2);
+								$explicit_robot = RegisteredCrawlerRobotID($UserAgent, $LevelForRobotsDetection)
+									if defined(&RegisteredCrawlerRobotID);
+								if (!$explicit_robot) {
+									$is_mobile_device = 1;
+									if ($Debug) {
+										debug("  Mobile device detected ($device_type), skipping robot classification", 2);
+									}
 								}
 							}
 						}

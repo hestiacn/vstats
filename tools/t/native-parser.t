@@ -29,6 +29,7 @@ for my $kind (qw(candidate legacy)) {
 }
 my $old=slurp("$dir/legacy/lib/robots.pm");
 $old =~ s/^sub BytespiderRobotID \{.*?^\}\n//ms or die 'helper removal fixture failed';
+$old =~ s/^sub RegisteredCrawlerRobotID \{.*?^\}\n//ms or die 'registered helper removal fixture failed';
 write_file("$dir/legacy/lib/robots.pm",$old);
 my $model=slurp("$root/wwwroot/cgi-bin/awstats.model.conf");
 my $serial=0;
@@ -73,6 +74,6 @@ for my $ua ($android,$android =~ s/Android 5\.0/Android 12/r,'Mozilla/5.0 (compa
     is_deeply($after,$before,'ordinary/browser/crawler/collision control unchanged');
     is($after->[1],0,'ordinary mobile retains robot exemption') if $ua !~ /Googlebot/;
 }
-my $fallback=parse('legacy',$android.' Bytespider/1.0');is($fallback->[1],0,'custom database without helper retains legacy mobile outcome');
+my $fallback=parse('legacy',$android.' Bytespider/1.0');is($fallback->[1],0,'custom database without helpers retains legacy mobile outcome');
 my $disabled=parse('candidate',$android.' Bytespider/1.0',0);is($disabled->[1],0,'robots-disabled configuration retains exemption');
 done_testing;

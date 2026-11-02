@@ -615,3 +615,18 @@ is unchanged.
 
 The source packager recursively copies `tools/`/`docs/`. Release workflows are
 unchanged; generated RPM/DEB/other packages were not validated. Test the checkout.
+
+### Explicit named crawlers and mobile/tablet claims
+
+Native AWStats retains its existing Bytespider identity precedence. Before
+applying the mobile/tablet exemption it also checks explicit, boundary-matched
+literal identities from the enabled robot registry levels: named bot/spider/
+crawler/scraper/robot tokens and the explicit `facebookexternalhit` and
+`meta-externalagent` identities. Generic browser words, webview/client IDs and
+nonliteral registry patterns do not receive this override. A mobile agent
+that explicitly declares a registered crawler such as PetalBot therefore keeps
+its existing robot history ID and non-viewed classification. Ordinary mobile
+agents, disabled robot detection and older custom databases without the helper
+retain their prior behavior. Desktop/device metadata and the order of ordinary
+nonmobile registry matching are unchanged. This is unverified user-agent evidence;
+it does not authenticate a crawler operator or expand the verified-IP registry.
