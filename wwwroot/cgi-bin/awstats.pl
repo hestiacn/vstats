@@ -22889,8 +22889,8 @@ if(! $retval) {
 	error("$error_msg\n\n$perm_cmd");
 }
 my $regfilesuffix = quotemeta($FileSuffix);
-foreach ( grep /^$PROG$datemask$regfilesuffix\.txt(|\.gz)$/i, file_filt(sort readdir DIR) )
-{ /^$PROG$datemask$regfilesuffix\.txt(|\.gz)$/i;
+foreach ( grep /^$PROG$datemask$regfilesuffix\.txt(?:\.gz)?$/i, file_filt(sort readdir DIR) )
+{ /^$PROG$datemask$regfilesuffix\.txt(?:\.gz)?$/i;
 	if ( !$ListOfYears{"$2"} || "$1" gt $ListOfYears{"$2"} ) { $ListOfYears{"$2"} = "$1"; }
 	my $rangestring = ( $2 || "" ) . ( $1 || "" ) . ( $3 || "" ) . ( $4 || "" );
 	if ( $rangestring gt $lastdatebeforeupdate ) {
