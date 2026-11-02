@@ -10,6 +10,44 @@
 #
 # See perldoc.perl.org/perlreref.html for regex syntax.
 #-------------------------------------------------------
+# Explicit marker used before the mobile/tablet exemption in awstats.pl.
+# Keep the legacy list entry and history ID unchanged for customized databases.
+my $bytespider_marker = qr/(?:^|[^A-Za-z0-9])Bytespider(?=[\x09-\x0D\x20\/;)]|\z)/iaa;
+sub BytespiderRobotID {
+    return defined($_[0]) && $_[0] =~ $bytespider_marker ? 'Bytespider/' : '';
+}
+
+
+# Only explicit literal identities from the enabled registry levels may override
+# a device exemption. Generic patterns/browser words keep their legacy handling.
+# This is user-agent evidence, not authenticated operator identity.
+my %registered_mobile_crawlers;
+sub RegisteredCrawlerRobotID {
+    my ($ua,$level)=@_;
+    return '' if !defined($ua) || ref($ua) || !defined($level) || $level !~ /\A[1-9][0-9]*\z/;
+    my $key=$level>=2?2:1;
+    if (!exists $registered_mobile_crawlers{$key}) {
+        our (@RobotsSearchIDOrder_list1,@RobotsSearchIDOrder_list2,@RobotsSearchIDOrder_listgen);
+        my @rules=(@RobotsSearchIDOrder_list1,($key==2?@RobotsSearchIDOrder_list2:()),@RobotsSearchIDOrder_listgen);
+        my %generic=map {lc($_)=>1} qw(bot robot spider crawler probe scan scanner search fetch browser mozilla chrome safari firefox edge edg opera opr android iphone ipad ipod linux windows macintosh mobile tablet compatible http https unknown other);
+        my (%seen,@markers);
+        for my $id (@rules) {
+            next if $id !~ /\A([A-Za-z0-9][A-Za-z0-9._-]*)(?:\/)?\z/;
+            my $token=$1;
+            # Literal webview/client/browser IDs are not crawler identities.
+            next if $token !~ /bot|robot|spider|crawler|scraper/i
+                && $token !~ /\A(?:facebookexternalhit|meta-externalagent)\z/i;
+            next if $generic{lc($token)} || $seen{lc($token)}++;
+            push @markers,[$id,qr/(?:^|[^A-Za-z0-9])\Q$token\E(?=[\x09-\x0D\x20\/;)]|\z)/iaa];
+        }
+        $registered_mobile_crawlers{$key}=\@markers;
+    }
+    for my $entry (@{$registered_mobile_crawlers{$key}}) {
+        return $entry->[0] if $ua =~ $entry->[1];
+    }
+    return '';
+}
+
 @RobotsSearchIDOrder_list1 = (
 'meta-externalagent/',
 'facebookexternalhit',
