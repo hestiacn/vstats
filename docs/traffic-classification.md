@@ -630,3 +630,56 @@ agents, disabled robot detection and older custom databases without the helper
 retain their prior behavior. Desktop/device metadata and the order of ordinary
 nonmobile registry matching are unchanged. This is unverified user-agent evidence;
 it does not authenticate a crawler operator or expand the verified-IP registry.
+
+
+## Distributed login probing (optional)
+
+`distributed_login` is disabled by default. Enable it only after configuring exact
+`login_paths` and `admin_paths` for the site. They must be disjoint normalized paths;
+queries are discarded before matching. It uses HTTP methods from Apache logs or the
+optional JSONL `method` string (1–32 ASCII letters, normalized uppercase). A missing
+method is accepted but cannot support this rule. No request bodies, credentials,
+cookies or authentication results are collected.
+
+Defaults are heuristic assumptions, not calibrated detection accuracy:
+`enabled: 0`, `window_seconds: 1800`, `min_requests: 30`, `min_sources: 3`,
+`min_post_requests: 10`, `distinct_user_agents: 8`, `distinct_platforms: 2`,
+`min_source_posts: 2`, `distinct_source_user_agents: 2`,
+`distinct_source_platforms: 2`, `shared_user_agents: 1`,
+`login_paths: []`, `admin_paths: []`.
+
+A candidate campaign must meet all pooled thresholds inside one window, using only
+participating literal-IP sources on the same host. Each source independently needs
+repeated login POSTs, diversity in POST user-agent and platform claims, and an ordered
+login POST followed by a GET to a configured login/admin path. It must share the
+configured number of exact POST user agents with other surviving participants.
+Iterative peer removal prevents rejected sources supplying shared-UA evidence.
+Isolated logins, nearby visitors, unrelated paths and asset requests do not receive
+the request-level flag. IPv6 spelling variants share a source; mapped IPv6 remains
+separate from IPv4. There are no geography, ASN or IP-prefix rules.
+
+A same-full-UA login POST followed by a login/admin GET within `window_seconds`
+anywhere in the input makes this rule abstain for that source/host throughout the
+input. This safeguard covers ordinary admin sessions and coherent sessions behind
+shared office addresses; it does not prove humanity, and bots can imitate it. Other
+behavior rules remain independent. Successful or failed login responses are not
+inferred from HTTP status.
+
+Windows use two UTC fixed grids of the configured width, offset by zero and half the
+width rounded down. Their right edges are exclusive; a request belongs to at most
+two windows. Sorting and at most two memberships per row bound processing; source
+and window group counts are each capped by `limits.groups`. Fixed grids and daily
+input partitions can miss otherwise similar sliding sequences, particularly across
+midnight. Requests are flagged once even when windows overlap; merged sequence
+counts unite overlapping qualifying intervals per host. `qualified_windows` remains
+separate from that merged count.
+
+Private details retain `distributed_login_flagged`, `distributed_login_evidence`,
+source contributions and opaque POST/follow-up witness IDs. Campaign POST diversity
+counts are separate from this source's contribution in review HTML and copied
+whole-IP triggers. Full user agents and queries remain private. The aggregate
+`distributed_login_flagged_requests` overlaps other rules and the union counts each
+request once. Existing request-ID inclusions, request-only comparison and optional
+whole-IP/month expansion apply unchanged. Shared proxies, browser popularity,
+authorized tests, sparse sources and bots imitating stable flows limit inference;
+unknown traffic must not be described as verified human.

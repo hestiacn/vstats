@@ -6,11 +6,12 @@ use JSON::PP ();
 use Digest::SHA ();
 use Socket qw(AF_INET AF_INET6 inet_pton);
 use Time::Local qw(timegm);
+use POSIX qw(floor);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later, like the parent project. No file or network I/O here.
-our $VERSION = '1.5';
-my $ALGORITHM = 'vstats-traffic-v6';
+our $VERSION = '1.6';
+my $ALGORITHM = 'vstats-traffic-v7';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -31,6 +32,10 @@ my $DEFAULT = {
                 distinct_user_agents => 4, distinct_platforms => 2, paths => []},
     rapid_scan => {enabled => 0, window_seconds => 60, min_requests => 30,
                    distinct_paths => 20, not_found_requests => 10},
+    distributed_login => {enabled => 0, window_seconds => 1800, min_requests => 30,
+        min_sources => 3, min_post_requests => 10, distinct_user_agents => 8, distinct_platforms => 2,
+        min_source_posts => 2, distinct_source_user_agents => 2, distinct_source_platforms => 2,
+        shared_user_agents => 1, login_paths => [], admin_paths => []},
     verification => {max_gap_seconds => 86400},
     limits => {input_bytes => 67108864, line_bytes => 16384, records => 100000,
                groups => 100000, ua_bytes => 4096, target_bytes => 8192},
@@ -146,7 +151,7 @@ sub config {
     my $d=defaults();
     for my $key (keys %$d) {
         if (!exists $c->{$key}) { $c->{$key}=$d->{$key}; next; }
-        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'verification' || $key eq 'limits') {
+        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'distributed_login' || $key eq 'verification' || $key eq 'limits') {
             _keys($c->{$key},keys %{$d->{$key}});
             for my $k (keys %{$d->{$key}}) { $c->{$key}{$k}=$d->{$key}{$k} if !exists $c->{$key}{$k}; }
         }
@@ -184,11 +189,38 @@ sub config {
     _uint($rapid->{distinct_paths},$FIXED->{paths},2);
     _uint($rapid->{not_found_requests},$rapid->{min_requests},2);
     _bad('Rapid scan paths exceed requests') if $rapid->{distinct_paths}>$rapid->{min_requests};
+    my $dl=$c->{distributed_login}; _uint($dl->{enabled},1); _uint($dl->{window_seconds},$FIXED->{max_window},1);
+    for my $key (qw(min_requests min_post_requests distinct_user_agents min_source_posts distinct_source_user_agents)) {
+        _uint($dl->{$key},$d->{limits}{records},2);
+    }
+    _uint($dl->{min_sources},$d->{limits}{groups},2);
+    _uint($dl->{distinct_platforms},5,2); _uint($dl->{distinct_source_platforms},5,2);
+    _uint($dl->{shared_user_agents},$dl->{distinct_source_user_agents},1);
+    _bad('Inconsistent distributed-login thresholds') if
+        $dl->{min_post_requests}<$dl->{min_sources}*$dl->{min_source_posts} ||
+        $dl->{min_requests}<$dl->{min_post_requests}+$dl->{min_sources} ||
+        $dl->{distinct_user_agents}>$dl->{min_post_requests} ||
+        $dl->{distinct_platforms}>$dl->{distinct_user_agents} ||
+        $dl->{distinct_source_user_agents}>$dl->{min_source_posts} ||
+        $dl->{distinct_source_platforms}>$dl->{distinct_source_user_agents};
+    my %login_paths;
+    for my $key (qw(login_paths admin_paths)) {
+        _array($dl->{$key},$FIXED->{paths});
+        for my $path (@{$dl->{$key}}) {
+            _str($path);my $normal=normalize_target($path);
+            _bad('Invalid, duplicate or overlapping distributed-login path') if
+                !defined($normal) || $normal ne $path || $login_paths{$path}++;
+        }
+        _bad('Enabled distributed-login detection requires login and admin paths') if $dl->{enabled} && !@{$dl->{$key}};
+    }
     _uint($c->{verification}{max_gap_seconds},$FIXED->{max_gap});
     for my $k (keys %{$d->{limits}}) { _uint($c->{limits}{$k},$d->{limits}{$k},1); }
     _bad('Field cap exceeds line cap') if $c->{limits}{ua_bytes}>$c->{limits}{line_bytes} || $c->{limits}{target_bytes}>$c->{limits}{line_bytes};
     for my $path (@{$p->{paths}}) {
         _bad('Probing path exceeds target field cap') if _bytes($path)>$c->{limits}{target_bytes};
+    }
+    for my $path (@{$dl->{login_paths}},@{$dl->{admin_paths}}) {
+        _bad('Distributed-login path exceeds target field cap') if _bytes($path)>$c->{limits}{target_bytes};
     }
     _array($c->{exclude},4); my %exclude;
     for (@{$c->{exclude}}) { _str($_); _bad('Invalid exclusion selector') if !/\A(?:declared_crawler_or_tool|verified_crawler|scanner_flagged|suspected_automation)\z/ || $exclude{$_}++; }
@@ -329,7 +361,7 @@ sub _apache_string {
 sub _parse_line {
     my ($self,$raw)=@_; my $text=decode('UTF-8',$raw,FB_CROAK|LEAVE_SRC); my $r;
     if ($self->{format} eq 'jsonl') {
-        $r=strict_json($raw); _keys($r,qw(timestamp client target user_agent host status));
+        $r=strict_json($raw); _keys($r,qw(timestamp client target user_agent host status method));
         _uint($r->{timestamp},$MAX_EPOCH); _str($r->{client}); _str($r->{target});
         _bad('Empty client') if !length($r->{client});
         _str($r->{user_agent}) if defined $r->{user_agent};
@@ -342,8 +374,8 @@ sub _parse_line {
         _bad('Unsupported Apache line') if $raw !~ /\A($word)[ \t]+$word[ \t]+$word[ \t]+\[([^\]]+)\][ \t]+"($q)"[ \t]+([1-5][0-9]{2})[ \t]+(?:-|[0-9]+)$tail\z/;
         my ($client,$date,$request,$status,$referer,$ua)=($1,$2,$3,$4,$5,$6);
         $client=decode('UTF-8',$client,FB_CROAK|LEAVE_SRC); $request=_apache_string($request);
-        _bad('Unsupported HTTP request') if $request !~ /\A[A-Za-z]+[ \t]+($word)[ \t]+HTTP\/[0-9]+\.[0-9]+\z/;
-        my $target=$1;
+        _bad('Unsupported HTTP request') if $request !~ /\A([A-Za-z]+)[ \t]+($word)[ \t]+HTTP\/[0-9]+\.[0-9]+\z/;
+        my ($method,$target)=(uc($1),$2);
         _bad('Unsupported Apache timestamp') if $date !~ /\A([0-9]{2})\/([A-Z][a-z]{2})\/([0-9]{4}):([0-9]{2}):([0-9]{2}):([0-9]{2}) ([+-])([0-9]{2})([0-9]{2})\z/;
         my ($day,$month,$year,$hour,$min,$sec,$sign,$oh,$om)=($1,$2,$3,$4,$5,$6,$7,$8,$9);
         my %month; @month{qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)}=(1..12);
@@ -353,7 +385,11 @@ sub _parse_line {
         _apache_string($referer) if defined $referer;
         $ua=_apache_string($ua) if defined $ua;
         $ua=undef if defined($ua) && ($ua eq '' || $ua eq '-');
-        $r={timestamp=>$t,client=>$client,target=>$target,user_agent=>$ua,host=>undef,status=>0+$status};
+        $r={timestamp=>$t,client=>$client,target=>$target,user_agent=>$ua,host=>undef,status=>0+$status,method=>$method};
+    }
+    if (exists $r->{method}) {
+        _str($r->{method}); _bad('Invalid HTTP method') if $r->{method} !~ /\A[A-Za-z]{1,32}\z/;
+        $r->{method}=uc($r->{method});
     }
     _bad('OVERSIZED_FIELD') if _bytes($r->{target})>$self->{config}{limits}{target_bytes}
         || (defined($r->{user_agent}) && _bytes($r->{user_agent})>$self->{config}{limits}{ua_bytes});
@@ -638,6 +674,126 @@ sub _rapid_scan {
     return $result;
 }
 
+# Two UTC fixed grids bound each eligible row to at most two windows. A
+# coherent exact-UA POST/follow-up anywhere in the input vetoes this rule for
+# that source/host. It is an abstention safeguard, not evidence of humanity.
+sub _distributed_login {
+    my ($self)=@_;my $cfg=$self->{config}{distributed_login};
+    my $out={enabled=>$cfg->{enabled}?JSON::PP::true:JSON::PP::false,
+        rule_id=>'distributed_login_rotation_v1',flagged_requests=>0,eligible_requests=>0,
+        insufficient_fields=>0,other_route_requests=>0,stable_flow_source_groups=>0,
+        qualified_windows=>0,merged_sequences=>0,flagged_source_groups=>0,
+        actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
+    $_->{distributed_login_flagged}=0 for @{$self->{records}};
+    return $out if !$cfg->{enabled};
+    my %login=map {$_=>1} @{$cfg->{login_paths}};my %admin=map {$_=>1} @{$cfg->{admin_paths}};
+    my (%sources,%buckets,%veto,%flagged,%intervals);my $width=$cfg->{window_seconds};
+    for my $r (@{$self->{records}}) {
+        my $platform=_browser_platform($r->{user_agent});
+        if (!defined($r->{source_key}) || !defined($r->{normal}) || !defined($r->{status}) ||
+                !defined($r->{method}) || !defined($platform)) {
+            $r->{_distributed_insufficient}=1;$out->{insufficient_fields}++;next;
+        }
+        my $is_post=$login{$r->{normal}} && $r->{method} eq 'POST';
+        my $is_get=($login{$r->{normal}} || $admin{$r->{normal}}) && $r->{method} eq 'GET';
+        if (!$is_post && !$is_get) {$out->{other_route_requests}++;next;}
+        $r->{_distributed_eligible}=1;$r->{_login_post}=$is_post?1:0;
+        $r->{behavior_platform}=$platform;$out->{eligible_requests}++;
+        my $source=$r->{source_key}."\0".($r->{host}//'');
+        push @{$sources{$source}},$r;
+        _bad('Distributed-login source group cap exceeded') if keys(%sources)>$self->{config}{limits}{groups};
+    }
+    for my $source (sort keys %sources) {
+        my @rows=sort {$a->{timestamp}<=>$b->{timestamp} || $a->{line_index}<=>$b->{line_index}} @{$sources{$source}};
+        my %last_post;
+        for my $r (@rows) {
+            if ($r->{_login_post}) {$last_post{$r->{user_agent}}=$r->{timestamp};next;}
+            if (exists($last_post{$r->{user_agent}}) && $r->{timestamp}-$last_post{$r->{user_agent}}<=$width) {
+                $veto{$source}=1;last;
+            }
+        }
+        if ($veto{$source}) {$out->{stable_flow_source_groups}++;next;}
+        for my $r (@rows) {
+            my %seen;
+            for my $offset (0,int($width/2)) {
+                my $start=floor(($r->{timestamp}-$offset)/$width)*$width+$offset;
+                next if $seen{$start}++;
+                my $key=($r->{host}//'')."\0".$start;
+                push @{$buckets{$key}{$source}},$r;
+                _bad('Distributed-login window group cap exceeded') if keys(%buckets)>$self->{config}{limits}{groups};
+            }
+        }
+    }
+    for my $key (sort keys %buckets) {
+        my (%active,%post_uas,%source_proof,%owners,%degree,%shared);
+        for my $source (sort keys %{$buckets{$key}}) {
+            my @rows=@{$buckets{$key}{$source}};my (@posts,%uas,%platforms,$first_post,$follow);
+            for my $r (@rows) {
+                if ($r->{_login_post}) {
+                    push @posts,$r;$uas{$r->{user_agent}}=1;$platforms{$r->{behavior_platform}}=1;
+                    $first_post//=$r;
+                } elsif ($first_post && !$follow) {$follow=$r;}
+            }
+            next if @posts<$cfg->{min_source_posts} || keys(%uas)<$cfg->{distinct_source_user_agents} ||
+                keys(%platforms)<$cfg->{distinct_source_platforms} || !$follow;
+            $active{$source}=1;$post_uas{$source}=\%uas;
+            $source_proof{$source}={source_requests=>scalar(@rows),source_post_requests=>scalar(@posts),
+                source_distinct_user_agents=>scalar(keys %uas),source_distinct_platforms=>scalar(keys %platforms),
+                sequence_post_request_id=>$first_post->{request_id},sequence_post_timestamp=>$first_post->{timestamp},
+                sequence_follow_request_id=>$follow->{request_id},sequence_follow_timestamp=>$follow->{timestamp}};
+            for my $ua (keys %uas) {push @{$owners{$ua}},$source;$degree{$ua}++;}
+        }
+        # Peeling is linear in IP-UA edges. A singleton cannot use a removed
+        # participant to supply its required peer-shared POST-UA evidence.
+        my @queue;
+        for my $source (sort keys %active) {
+            $shared{$source}=grep {$degree{$_}>=2} keys %{$post_uas{$source}};
+            push @queue,$source if $shared{$source}<$cfg->{shared_user_agents};
+        }
+        for (my $i=0;$i<@queue;$i++) {
+            my $source=$queue[$i];next if !delete $active{$source};
+            for my $ua (keys %{$post_uas{$source}}) {
+                next if --$degree{$ua}!=1;
+                my ($peer)=grep {$active{$_}} @{$owners{$ua}};
+                if (defined($peer) && --$shared{$peer}<$cfg->{shared_user_agents}) {push @queue,$peer;}
+            }
+        }
+        next if keys(%active)<$cfg->{min_sources};
+        my (@pool,%uas,%platforms,%paths);my ($posts,$errors)=(0,0);
+        for my $source (sort keys %active) {
+            for my $r (@{$buckets{$key}{$source}}) {
+                push @pool,$r;$paths{$r->{normal}}=1;$errors++ if $r->{status}==404;
+                if ($r->{_login_post}) {$posts++;$uas{$r->{user_agent}}=1;$platforms{$r->{behavior_platform}}=1;}
+            }
+        }
+        next if @pool<$cfg->{min_requests} || $posts<$cfg->{min_post_requests} ||
+            keys(%uas)<$cfg->{distinct_user_agents} || keys(%platforms)<$cfg->{distinct_platforms};
+        @pool=sort {$a->{timestamp}<=>$b->{timestamp} || $a->{line_index}<=>$b->{line_index}} @pool;
+        my $proof={from=>$pool[0]{timestamp},until=>$pool[-1]{timestamp},requests=>scalar(@pool),
+            post_requests=>$posts,distinct_sources=>scalar(keys %active),distinct_user_agents=>scalar(keys %uas),
+            distinct_platforms=>scalar(keys %platforms),distinct_paths=>scalar(keys %paths),not_found_requests=>$errors,
+            campaign_id=>Digest::SHA::sha256_hex(join("\n",'distributed_login_rotation_v1',$key,map {$_->{request_id}} @pool))};
+        $out->{qualified_windows}++;
+        push @{$intervals{$pool[0]{host}//''}},[$proof->{from},$proof->{until}];
+        for my $source (sort keys %active) {
+            my $witness={%$proof,%{$source_proof{$source}},source_shared_user_agents=>$shared{$source}};
+            for my $r (@{$buckets{$key}{$source}}) {
+                next if $r->{distributed_login_flagged};
+                $r->{distributed_login_flagged}=1;$r->{distributed_login_evidence}=$witness;
+                $out->{flagged_requests}++;$out->{actors}{$r->{actor}}++;$flagged{$source}=1;
+            }
+        }
+    }
+    for my $host (keys %intervals) {
+        my $end;
+        for my $interval (sort {$a->[0]<=>$b->[0] || $a->[1]<=>$b->[1]} @{$intervals{$host}}) {
+            $out->{merged_sequences}++ if !defined($end) || $interval->[0]>$end;
+            $end=$interval->[1] if !defined($end) || $interval->[1]>$end;
+        }
+    }
+    $out->{flagged_source_groups}=scalar(keys %flagged);return $out;
+}
+
 sub finish {
     my ($self)=@_; _bad('Already finished') if $self->{finished};
     $self->_line(0) if $self->{line_present}; $self->{finished}=1;
@@ -674,21 +830,21 @@ sub finish {
         }
     }
     my $sequences=$self->_scan(\%groups);
-    my $broad=$self->_behavior; my $probing=$self->_probing; my $rapid=$self->_rapid_scan;
-    my $behavior={enabled=>($broad->{enabled} || $probing->{enabled} || $rapid->{enabled})?JSON::PP::true:JSON::PP::false,
-        rule_id=>'behavior_union_v2',broad_rule=>$broad,probing_rule=>$probing,rapid_scan_rule=>$rapid,
+    my $broad=$self->_behavior; my $probing=$self->_probing; my $rapid=$self->_rapid_scan; my $distributed=$self->_distributed_login;
+    my $behavior={enabled=>($broad->{enabled} || $probing->{enabled} || $rapid->{enabled} || $distributed->{enabled})?JSON::PP::true:JSON::PP::false,
+        rule_id=>'behavior_union_v3',broad_rule=>$broad,probing_rule=>$probing,rapid_scan_rule=>$rapid,distributed_login_rule=>$distributed,
         broad_flagged_requests=>$broad->{flagged_requests},probing_flagged_requests=>$probing->{flagged_requests},
-        rapid_scan_flagged_requests=>$rapid->{flagged_requests},
+        rapid_scan_flagged_requests=>$rapid->{flagged_requests},distributed_login_flagged_requests=>$distributed->{flagged_requests},
         overlap_requests=>0,flagged_requests=>0,eligible_requests=>0,insufficient_fields=>0,
-        merged_sequences=>$broad->{merged_sequences}+$probing->{merged_sequences}+$rapid->{merged_sequences},flagged_source_groups=>0,
+        merged_sequences=>$broad->{merged_sequences}+$probing->{merged_sequences}+$rapid->{merged_sequences}+$distributed->{merged_sequences},flagged_source_groups=>0,
         actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
     my %behavior_groups;
     for my $r (@{$self->{records}}) {
         $r->{broad_probing_flagged}=$r->{suspected_automation};
-        $behavior->{overlap_requests}++ if $r->{broad_probing_flagged}+$r->{probing_flagged}+$r->{rapid_scan_flagged}>=2;
-        $r->{suspected_automation}=1 if $r->{probing_flagged} || $r->{rapid_scan_flagged};
-        $behavior->{eligible_requests}++ if $r->{_broad_eligible} || $r->{_probing_eligible} || $r->{_rapid_eligible};
-        $behavior->{insufficient_fields}++ if $r->{_broad_insufficient} || $r->{_probing_insufficient} || $r->{_rapid_insufficient};
+        $behavior->{overlap_requests}++ if $r->{broad_probing_flagged}+$r->{probing_flagged}+$r->{rapid_scan_flagged}+$r->{distributed_login_flagged}>=2;
+        $r->{suspected_automation}=1 if $r->{probing_flagged} || $r->{rapid_scan_flagged} || $r->{distributed_login_flagged};
+        $behavior->{eligible_requests}++ if $r->{_broad_eligible} || $r->{_probing_eligible} || $r->{_rapid_eligible} || $r->{_distributed_eligible};
+        $behavior->{insufficient_fields}++ if $r->{_broad_insufficient} || $r->{_probing_insufficient} || $r->{_rapid_insufficient} || $r->{_distributed_insufficient};
         next if !$r->{suspected_automation};
         $behavior->{flagged_requests}++; $behavior->{actors}{$r->{actor}}++;
         my ($af,$packed)=literal_ip($r->{client});
@@ -711,7 +867,7 @@ sub finish {
         config_sha256=>Digest::SHA::sha256_hex($ALGORITHM."\n".JSON::PP->new->utf8->canonical->encode($cfg)),
         input_sha256=>$self->{digest}->hexdigest,input=>{format=>$self->{format},bytes=>$self->{input_bytes},period=>{from=>$self->{min},until=>$self->{max}},
             host_policy=>@{$cfg->{hosts}}?'configured hosts enforced; missing host excluded':'all parsed hosts; aliases inseparable for hostless records',hosts=>$cfg->{hosts}},
-        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},probing=>$cfg->{probing},rapid_scan=>$cfg->{rapid_scan},behavior_include=>$cfg->{behavior_include},verification=>$cfg->{verification},limits=>$cfg->{limits},
+        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},probing=>$cfg->{probing},rapid_scan=>$cfg->{rapid_scan},distributed_login=>$cfg->{distributed_login},behavior_include=>$cfg->{behavior_include},verification=>$cfg->{verification},limits=>$cfg->{limits},
             status=>'Thresholds, continuity gaps and resource caps are heuristic assumptions; detection accuracy is unmeasured',crawler_tokens=>$cfg->{crawler_tokens}},
         counts=>{%{$self->{counts}}},actors=>\%actors,verification_outcomes=>\%verification,scanner_flagged_requests=>$flagged,merged_scanner_sequences=>$sequences,
         scanner_insufficient_fields=>$insufficient,unsupported_targets=>$unsupported,behavior=>$behavior,
@@ -722,14 +878,15 @@ sub finish {
             'Verified means verified against operator-attested published-range snapshots, not cryptographic source authentication. Bracketing assumes range continuity and does not prove uninterrupted ownership.',
             'Historical requests without covering archived evidence remain unavailable. IPv4-mapped IPv6 is not converted to IPv4; literal-IP acceptance follows platform inet_pton.',
             'Scanner flags describe qualifying probe requests, not intent or people. Shared IPs/UA and duplicate or overlapping input can affect results. Supply one nonoverlapping stable site snapshot.',
-            'Suspected automation is the union of optional broad path/404 probing, configured endpoint probing and rapid content-path/404 probing, not verified crawler identity. Broad and endpoint rules require browser/platform diversity; rapid scanning requires neither browser identity nor rotation and excludes static asset suffixes. Each requires its own coincident conditions in a source/host window. Endpoint probing uses configured paths without an absence or failed-response requirement. Overlaps count once; sequence counts sum across rules. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and partition boundaries can affect results; accuracy is unmeasured.',
+            'Suspected automation is the union of optional broad path/404 probing, configured endpoint probing, rapid content-path/404 probing and distributed login probing, not verified crawler identity. Broad and endpoint rules require browser/platform diversity; rapid scanning requires neither browser identity nor rotation and excludes static asset suffixes. Each requires its own coincident conditions in a source/host window. Endpoint probing uses configured paths without an absence or failed-response requirement. Overlaps count once; sequence counts sum across rules. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and partition boundaries can affect results; accuracy is unmeasured.',
+            'Distributed login probing pools only repeatedly participating sources within configured login/admin paths and two fixed UTC grids. Each source needs POST-UA/platform rotation, POST-follow-up order and peer-shared exact POST UAs; coherent same-UA POST/follow-up in this input vetoes this rule for that source/host. Pool counts are separate from source contributions. This is heuristic campaign evidence, not authentication, login success, intent or ownership; shared offices can cause false positives and stable-emulating bots, sparse sources and partition/grid boundaries can evade detection.',
             'Local tokens, component absence and site-reference periods are operator attestations; no status-code or weak browser signal supplies identity or absence.',
             'No live DNS, network queries, incremental history or blocking. The report exposes the configured comparison; the CLI can explicitly export matching filtered input for a separate native replay. Caller controls retention and publication.',
         ]};
     if (%exclude) { $report->{adjusted_requests}={label=>'requests in this input excluding '.join(', ',sort keys %exclude),original=>$self->{counts}{analyzed},excluded=>$excluded,remaining=>$self->{counts}{analyzed}-$excluded}; }
     if ($self->{details}) {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
-        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id behavior_evidence probing_evidence rapid_scan_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
+        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id method behavior_evidence probing_evidence rapid_scan_evidence distributed_login_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,distributed_login_flagged=>$r->{distributed_login_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
     }
     return $report;
 }
@@ -748,7 +905,7 @@ sub html_report {
     if (my $b=$report->{behavior}) {
         $html.='<h2>Suspected automation</h2>';
         if ($b->{enabled}) {
-            $html.='<p>Requests flagged by any enabled behavioral rule: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; rapid content-path probing: '.($b->{rapid_scan_flagged_requests}//0).'; overlap (two or more rules): '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
+            $html.='<p>Requests flagged by any enabled behavioral rule: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; rapid content-path probing: '.($b->{rapid_scan_flagged_requests}//0).'; distributed login probing: '.($b->{distributed_login_flagged_requests}//0).'; overlap (two or more rules): '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
         } else { $html.='<p>Behavioral detection is disabled for this report.</p>'; }
     }
     if ($report->{adjusted_requests}) { my $a=$report->{adjusted_requests}; $html.='<p>'._html_escape($a->{label}).': '.$a->{remaining}.' (original '.$a->{original}.', excluded '.$a->{excluded}.').</p>'; }

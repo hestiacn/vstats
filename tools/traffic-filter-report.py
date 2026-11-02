@@ -53,18 +53,63 @@ def controls(prefix, exclude_automated_ips=True):
             "<a href='" + prefix + "behavior-exclusions/'>Review exclusions</a></nav>")
 
 
+def validate_distributed_witness(proof):
+    counts = ['requests', 'post_requests', 'distinct_sources', 'distinct_user_agents', 'distinct_platforms',
+              'source_requests', 'source_post_requests', 'source_distinct_user_agents',
+              'source_distinct_platforms', 'source_shared_user_agents']
+    if any(type(proof.get(key)) is not int or proof[key] < 1 for key in counts):
+        raise RuntimeError('Invalid distributed-login witness counts')
+    if (not 2 <= proof['distinct_sources'] or
+            not 2 <= proof['source_distinct_platforms'] <= proof['source_distinct_user_agents'] <= proof['source_post_requests'] < proof['source_requests'] <= proof['requests'] or
+            not proof['source_post_requests'] <= proof['post_requests'] < proof['requests'] or
+            not proof['source_distinct_user_agents'] <= proof['distinct_user_agents'] <= proof['post_requests'] or
+            not proof['source_distinct_platforms'] <= proof['distinct_platforms'] <= proof['distinct_user_agents'] or
+            proof['source_shared_user_agents'] > proof['source_distinct_user_agents']):
+        raise RuntimeError('Inconsistent distributed-login source/pool evidence')
+    for key in ['campaign_id', 'sequence_post_request_id', 'sequence_follow_request_id']:
+        if not re.fullmatch(r'[0-9a-f]{64}', proof.get(key, '')):
+            raise RuntimeError('Invalid distributed-login witness identity')
+    if (not proof['from'] <= proof['sequence_post_timestamp'] <= proof['sequence_follow_timestamp'] <= proof['until'] or
+            proof['sequence_post_request_id'] == proof['sequence_follow_request_id']):
+        raise RuntimeError('Invalid distributed-login follow-up evidence')
+
+
+def witness_text(label, proof):
+    if label == 'Distributed login probing':
+        validate_distributed_witness(proof)
+        return (('Campaign: {requests} requests from {distinct_sources} sources; {post_requests} login POSTs; '
+                 '{distinct_user_agents} POST user agents; {distinct_platforms} POST platforms. '
+                 'This source: {source_requests} requests; {source_post_requests} login POSTs; '
+                 '{source_distinct_user_agents} POST user agents; {source_distinct_platforms} POST platforms; '
+                 '{source_shared_user_agents} POST user agents shared with qualifying peers. '
+                 'POST/follow-up witnesses: {sequence_post_request_id}, {sequence_follow_request_id}.').format(**proof) +
+                ' Campaign window: {} seconds; campaign {}. Coherent same-UA login flow veto applied; heuristic evidence, not login success or actor identity.'.format(
+                    proof['until'] - proof['from'], proof['campaign_id']))
+    reason = ('{requests} requests; {distinct_user_agents} user agents; {distinct_platforms} platforms; '
+              '{distinct_paths} paths; {not_found_requests} HTTP 404s').format(**proof)
+    reason += ' in {} seconds'.format(proof['until'] - proof['from'])
+    if label == 'Endpoint probing':
+        reason += ' (configured endpoints; no 404 requirement)'
+    if label == 'Rapid content-path probing':
+        reason += ' (content paths; no browser rotation requirement)'
+    return reason
+
+
 def rule_evidence(record):
     """Keep independent covering witnesses for every matching behavioral rule."""
     result = []
     broad = record.get('broad_probing_flagged', bool(record.get('behavior_evidence')))
     for matched, label, key in [(broad, 'Broad path probing', 'behavior_evidence'),
                                 (record.get('probing_flagged'), 'Endpoint probing', 'probing_evidence'),
-                                (record.get('rapid_scan_flagged'), 'Rapid content-path probing', 'rapid_scan_evidence')]:
+                                (record.get('rapid_scan_flagged'), 'Rapid content-path probing', 'rapid_scan_evidence'),
+                                (record.get('distributed_login_flagged'), 'Distributed login probing', 'distributed_login_evidence')]:
         if not matched:
             continue
         proof = record.get(key)
         if not proof or not proof['from'] <= record['timestamp'] <= proof['until']:
             raise RuntimeError('Review lacks a covering rule witness')
+        if label == 'Distributed login probing':
+            validate_distributed_witness(proof)
         result.append((label, proof))
     if record.get('ip_excluded'):
         evidence = record.get('ip_automation_evidence')
@@ -77,8 +122,10 @@ def rule_evidence(record):
                 raise RuntimeError('IP trigger crosses the report month')
         for item in evidence['rules']:
             proof = item['proof']
-            if item['rule'] not in ('Broad path probing', 'Endpoint probing', 'Rapid content-path probing') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
+            if item['rule'] not in ('Broad path probing', 'Endpoint probing', 'Rapid content-path probing', 'Distributed login probing') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
                 raise RuntimeError('IP trigger lacks a covering rule witness')
+            if item['rule'] == 'Distributed login probing':
+                validate_distributed_witness(proof)
     if not result and not record.get('ip_excluded'):
         raise RuntimeError('Review lacks a covering rule witness')
     return result
@@ -94,15 +141,7 @@ def render_review_row(record):
              'Excluded by behavior and automated-IP policy' if record.get('ip_excluded') else 'Excluded by behavior filter')
     reasons = []
     for label, proof in rule_evidence(record):
-        reason = label + ': ' + ('{requests} requests; {distinct_user_agents} user agents; '
-                                '{distinct_platforms} platforms; {distinct_paths} paths; '
-                                '{not_found_requests} HTTP 404s').format(**proof)
-        reason += ' in {} seconds'.format(proof['until'] - proof['from'])
-        if label == 'Endpoint probing':
-            reason += ' (configured endpoints; no 404 requirement)'
-        if label == 'Rapid content-path probing':
-            reason += ' (content paths; no browser rotation requirement)'
-        reasons.append(reason)
+        reasons.append(label + ': ' + witness_text(label, proof))
     if record.get('ip_excluded'):
         evidence = record['ip_automation_evidence']
         trigger_time = datetime.datetime.utcfromtimestamp(evidence['trigger_timestamp']).isoformat() + 'Z'
@@ -111,10 +150,7 @@ def render_review_row(record):
                        '. Applies to this whole site month, not just the trigger window.')
         for item in evidence['rules']:
             proof = item['proof']
-            reasons.append('Trigger evidence, ' + item['rule'] + ': ' +
-                           ('{requests} requests; {distinct_user_agents} user agents; {distinct_platforms} platforms; '
-                            '{distinct_paths} paths; {not_found_requests} HTTP 404s').format(**proof) +
-                           ' in {} seconds'.format(proof['until'] - proof['from']))
+            reasons.append('Trigger evidence, ' + item['rule'] + ': ' + witness_text(item['rule'], proof))
     reason = ' | '.join(reasons)
     request_id = record['request_id']
     if not re.fullmatch(r'[0-9a-f]{64}', request_id):
@@ -241,7 +277,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
         totals.update(report['counts'])
         actors.update(report['actors'])
         for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups',
-                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'overlap_requests']:
+                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'overlap_requests']:
             behavior[key] += report['behavior'].get(key, 0)
         flagged_by_month[day[:7]] += report['behavior']['flagged_requests']
         first = period['from'] if first is None else min(first, period['from'])
@@ -353,6 +389,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
                    '. Broad path probing: ' + format(behavior['broad_flagged_requests'], ',') +
                    '; endpoint probing: ' + format(behavior['probing_flagged_requests'], ',') +
                    '; rapid content-path probing: ' + format(behavior['rapid_scan_flagged_requests'], ',') +
+                   '; distributed login probing: ' + format(behavior['distributed_login_flagged_requests'], ',') +
                    '; overlap (two or more rules): ' + format(behavior['overlap_requests'], ',') +
                    '. Full raw user-agent strings and query strings are omitted from review.</p>')
     private_write(output / 'review/index.html', page('Review exclusions', nav + '<h1>Review exclusions</h1>' + scope +

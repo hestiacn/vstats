@@ -177,6 +177,58 @@ class BatchIntegration(unittest.TestCase):
         self.assertIn('Broad path probing:', text)
         self.assertIn('Endpoint probing:', text)
 
+    def test_distributed_login_pool_source_proofs_overrides_and_ip_expansion(self):
+        self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
+                    'distributed_login': {'enabled': 1, 'window_seconds': 60,
+                                          'login_paths': ['/account/login'], 'admin_paths': ['/admin']}}
+        campaign = []
+        for ip in range(1, 4):
+            uas = ['Mozilla/5.0 (Windows) Chrome/126', 'Mozilla/5.0 (Linux) Firefox/128',
+                   'Mozilla/5.0 (Macintosh) Safari/60{}'.format(ip),
+                   'Mozilla/5.0 (Windows) Chrome/13{}'.format(ip)]
+            for i in range(10):
+                campaign.append(('192.0.2.{} - - [02/Oct/2026:10:00:{:02d} +0000] "{} {}?token=SECRET_SENTINEL HTTP/1.1" 200 100 "-" "{}"\n'.format(
+                    ip, i, 'POST' if i < 4 else 'GET', '/account/login' if i < 4 else '/admin',
+                    uas[i] if i < 4 else 'Mozilla/5.0 (Macintosh) Safari/999')).encode('ascii'))
+        # A coherent rotating office/admin source would otherwise participate.
+        stable = []
+        for i, (method, target, ua) in enumerate([
+                ('POST', '/account/login', 'Mozilla/5.0 (Windows) Chrome/126'),
+                ('POST', '/account/login', 'Mozilla/5.0 (Linux) Firefox/128'),
+                ('GET', '/admin', 'Mozilla/5.0 (Windows) Chrome/126')]):
+            stable.append(('198.51.100.200 - - [02/Oct/2026:10:00:{:02d} +0000] "{} {} HTTP/1.1" 200 100 "-" "{}"\n'.format(
+                i, method, target, ua)).encode('ascii'))
+        asset = self.ordinary.replace(b'198.51.100.1', b'192.0.2.1').replace(b'GET / HTTP', b'GET /style.css HTTP')
+        earlier = asset.replace(b'02/Oct', b'01/Oct').replace(b'/style.css', b'/earlier')
+        (self.inputs / '2026-10-01.log').write_bytes(earlier)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(campaign) + asset + b''.join(stable))
+        self.cfg['behavior_include'] = [hashlib.sha256(campaign[0].rstrip(b'\n')).hexdigest()]
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(result['counts']['analyzed'], 35)
+        self.assertEqual(result['behavior']['distributed_login_flagged_requests'], 30)
+        self.assertEqual(result['behavior']['flagged_requests'], 30)
+        self.assertEqual(result['request_excluded_by_month']['2026-10']['records'], 29)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 31)
+        self.assertEqual(result['ip_exclusion']['additional_excluded_requests'], 2)
+        self.assertEqual((self.root / 'output/filtered/2026-10-01.log').read_bytes(), b'')
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), campaign[0] + b''.join(stable))
+        self.assertEqual((self.root / 'output/request-filtered/2026-10-02.log').read_bytes(), campaign[0] + asset + b''.join(stable))
+        text = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertEqual(text.count('<button data-request-id='), 32)
+        self.assertIn('Campaign: 30 requests from 3 sources; 12 login POSTs', text)
+        self.assertIn('This source: 10 requests; 4 login POSTs', text)
+        self.assertIn('Trigger evidence, Distributed login probing:', text)
+        self.assertIn('Included by request ID override', text)
+        self.assertNotIn('198.51.100.200', text)
+        self.assertNotIn('SECRET_SENTINEL', text)
+        self.assertNotIn('Mozilla/5.0', text)
+        details = json.loads((self.root / 'output/reports/2026-10-02.json').read_text(encoding='utf-8'))['details']
+        matched = next(r for r in details if r.get('distributed_login_flagged'))
+        matched['distributed_login_evidence']['source_requests'] = 10000
+        with self.assertRaises(RuntimeError):
+            builder.render_review_row(matched)
+
     def test_rapid_scan_witness_and_ip_policy_propagation(self):
         self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
                     'rapid_scan': {'enabled': 1, 'window_seconds': 10, 'min_requests': 6,
