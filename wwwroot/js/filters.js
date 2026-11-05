@@ -24,6 +24,7 @@
     }return{month,filename};
   }
   async function api(path, body) {
+    if(location.protocol !== 'https:') throw new Error('Open Filters over HTTPS before signing in or making changes.');
     const headers = {'Authorization':auth};
     if(body !== undefined) { headers['Content-Type']='application/json'; headers['X-VStats-CSRF']=csrf; }
     const response = await fetch(path, {method:body===undefined?'GET':'POST', headers, body:body===undefined?undefined:JSON.stringify(body),cache:'no-store',credentials:'omit'});

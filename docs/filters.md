@@ -75,6 +75,7 @@ separate native-accounting PR.
    the private service directly. The API independently checks Basic credentials;
    it does not trust a forwarded username or an IP allow rule. HTTPS, exact
    Origin and a per-session CSRF token are required for changes.
+   The browser refuses control requests on HTTP before sending credentials.
 6. Run `filters-worker.py --settings FILE` as a separate root worker. It reads
    only structured, schema-validated spool actions, checks site authorization
    again, and invokes a fixed publisher command. The publisher demotes every
