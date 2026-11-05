@@ -257,7 +257,7 @@ def adapt_static_report(path, site, layer_info=None, original=False, confirmed=F
         return match.group('q') + '/vstats/docs/' + DOCS[key] + match.group('q')
     text = DOC_LINK.sub(document, text)
     text = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + basic_navigation(site), text, count=1, flags=re.I)
-    text = add_filters_menu(text, site, '/vstats/' + site + '/' + os.path.basename(os.path.dirname(path)) + '/' + os.path.basename(path))
+    # The transaction wrapper adds controls after binding the complete profile.
     with open(path, 'w', encoding='utf-8') as handle:
         handle.write(text)
 
@@ -514,7 +514,6 @@ def render_site_view(account, site, site_web, totals_by_period, apache_gid, extr
     write_text(os.path.join(site_web, 'index.html'), page(site,
                "<p><a href='/vstats/'>All sites</a></p><h1>" + html.escape(site) +
                '</h1><p>Report times: UTC.</p>' + controls +
-               "<p><a href='/vstats/" + html.escape(site, quote=True) + "/filters/'>" + 'Filters</a></p>' +
                '<table><tr><th>Month</th><th>Requests analyzed</th></tr>' + ''.join(periods) + '</table>'), apache_gid)
 
 

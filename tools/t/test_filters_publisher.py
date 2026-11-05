@@ -111,6 +111,19 @@ class Publisher(unittest.TestCase):
         self.assertEqual(decorated.count('vstats-filters-menu'), 1)
         self.assertIn('return=%2Fvstats%2Fexample.test%2F2026-10%2Freport.html%23TOP', decorated)
 
+    def test_native_kernel_validates_before_control_pages_are_bound(self):
+        root = self.root / 'kernel'; root.mkdir()
+        (root / 'index.html').write_text('<html><body>Sites</body></html>', encoding='utf-8')
+        native = b'<html><body><table><tr><td>1</td></tr></table></body></html>'
+        def render(account, site, options, label, output=None, config_dir=None):
+            output.write(native)
+        with mock.patch.object(publisher, 'TOPICS', ['main']), mock.patch.object(publisher, 'invoke', side_effect=render):
+            publisher.render_site_view(None, 'example.test', str(root / 'example.test'),
+                {'2026-10': {'hits': 1, 'nonviewed_hits': 0}}, os.getgid(), [])
+        for path in root.glob('**/*.html'):
+            self.assertNotIn('/filters/', path.read_text(encoding='utf-8'))
+        self.assertGreater(publisher.validate_report_links(str(root)), 0)
+
     def test_control_requests_do_not_create_visits_in_the_website_report(self):
         from normalize_logs import normalize
         for path in ['/vstats/', '/vstats-control/session', '/vstats-control/sites/example.test/state?view=one']:
