@@ -1,0 +1,12 @@
+# Optional static publisher API. Keep your existing /vstats/ viewer restrictions
+# on this route as well. This sample allows localhost only; do not remove access
+# restrictions to make administrator sign-in work.
+ProxyRequests Off
+ProxyPass /vstats-control/ unix:/run/httpd/vstats-filters.sock|http://localhost/ connectiontimeout=3 timeout=30
+ProxyPassReverse /vstats-control/ http://localhost/
+<Location /vstats-control/>
+    Require local
+    RequestHeader set X-Forwarded-Proto "expr=%{REQUEST_SCHEME}"
+    Header always set Cache-Control "private, no-store"
+    Header always set X-Content-Type-Options "nosniff"
+</Location>

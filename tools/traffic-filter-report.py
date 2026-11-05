@@ -5,6 +5,7 @@ Optional Python 3.6+ orchestration. The Perl classifier remains the sole detecto
 No network access, native-history edits, deployment or web backend is provided.
 """
 import argparse
+import shutil
 import collections
 import datetime
 import hashlib
@@ -404,8 +405,9 @@ def boundary_context(source, start, end, cap):
     return b''.join(pieces)
 
 
-def build(config, input_directory, output_directory, perl='perl', prefix='/vstats/example.test/', page_size=200,
-          exclude_automated_ips=True):
+def _build(config, input_directory, output_directory, perl='perl', prefix='/vstats/example.test/', page_size=200,
+          exclude_automated_ips=True, unavailable_months=None):
+    unavailable_months = unavailable_months or {}
     config, inputs, output = Path(config), Path(input_directory), Path(output_directory)
     if type(exclude_automated_ips) is not bool:
         raise ValueError('IP exclusion must be a boolean')
@@ -447,13 +449,40 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
         request_filtered = output / 'request-filtered' / (day + '.log')
         command = [perl, str(ROOT / 'traffic-classify.pl'), '--config', str(config), '--input', str(source),
                    '--input-format', 'combined', '--output', str(report_path), '--details', '--filtered-log', str(request_filtered)]
+        if day[:7] in unavailable_months or source.stat().st_size == 0:
+            h, size, rows, last_byte = hashlib.sha256(), 0, 0, b''
+            with source.open('rb') as raw_stream:
+                for chunk in iter(lambda: raw_stream.read(1024 * 1024), b''):
+                    h.update(chunk); size += len(chunk); rows += chunk.count(b'\n'); last_byte = chunk[-1:]
+            rows += int(bool(size and last_byte != b'\n'))
+            shutil.copyfile(str(source), str(request_filtered))
+            shutil.copyfile(str(source), str(output / 'filtered' / (day + '.log')))
+            os.chmod(str(request_filtered), 0o600)
+            os.chmod(str(output / 'filtered' / (day + '.log')), 0o600)
+            manifest = {'input_sha256': h.hexdigest(), 'sha256': h.hexdigest(), 'input_log_bytes': size,
+                        'kept_log_bytes': size, 'removed_log_bytes': 0, 'input_records': rows,
+                        'excluded_records': 0, 'kept_records': rows}
+            missing = day[:7] in unavailable_months
+            totals['lines_total'] += rows
+            if missing:
+                totals['unclassified_due_to_limits'] += rows
+            daily.append({'day': day, 'input_sha256': h.hexdigest(), 'request_filtered_log': manifest,
+                          'filtered_log': manifest, 'analysis_context_sha256': digest(canonical_binding(unavailable_months.get(day[:7], {'empty': True}))),
+                          'counts': {'lines_total': rows, 'analyzed': 0}, 'behavior': {},
+                          'classification_unavailable': missing, 'empty_partition': not size, 'additional_ip_exclusions': 0})
+            continue
         start_day = datetime.datetime.strptime(day, '%Y-%m-%d').replace(tzinfo=datetime.timezone.utc)
         start_epoch = int(start_day.timestamp())
         before_day = (start_day - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
         after_day = (start_day + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
-        halo = {
-            'before': boundary_context(day_paths.get(before_day), start_epoch - window, start_epoch, cfg['limits']['input_bytes']),
-            'after': boundary_context(day_paths.get(after_day), start_epoch + 86400, start_epoch + 86400 + window, cfg['limits']['input_bytes'])}
+        try:
+            halo = {
+                'before': boundary_context(day_paths.get(before_day), start_epoch - window, start_epoch, cfg['limits']['input_bytes']),
+                'after': boundary_context(day_paths.get(after_day), start_epoch + 86400, start_epoch + 86400 + window, cfg['limits']['input_bytes'])}
+        except ValueError:
+            if cfg['limits']['input_bytes'] == 67108864 and any(p and p.stat().st_size > 67108864 for p in [day_paths.get(before_day), day_paths.get(after_day)]):
+                raise CapacityLimit(day, 'input_bytes', 67108864)
+            raise
         for side, raw_halo in halo.items():
             if raw_halo:
                 context_path = output / 'context' / (day + '-' + side + '.log')
@@ -461,6 +490,17 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
                 command += ['--context-' + side, str(context_path)]
         child = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=300)
         if child.returncode or child.stderr or child.stdout:
+            reason = child.stderr.decode('ascii', 'replace').strip()
+            maxima = {'input_bytes': 67108864, 'records': 100000, 'groups': 100000}
+            messages = {'input_bytes': ['Input byte limit exceeded', 'Combined input byte limit exceeded'],
+                        'records': ['Record count limit exceeded', 'Combined record count limit exceeded'],
+                        'groups': ['Group count limit exceeded', 'Combined group count limit exceeded',
+                                   'Behavior group count limit exceeded', 'Probing group count limit exceeded',
+                                   'Rapid scan group count limit exceeded', 'Distributed-login source group cap exceeded',
+                                   'Distributed-login source-window cap exceeded', 'Distributed-login window group cap exceeded']}
+            for kind, maximum in maxima.items():
+                if cfg['limits'][kind] == maximum and any(reason == 'traffic-classify: input: ' + m for m in messages[kind]):
+                    raise CapacityLimit(day, kind, maximum)
             raise RuntimeError('Daily classification failed')
         report = json.loads(report_path.read_bytes().decode('utf-8'))
         manifest = report['filtered_log']
@@ -525,8 +565,14 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
     render = ("use strict;use warnings;use JSON::PP;use VStats::TrafficClassifier;"
               "binmode STDIN,':raw';binmode STDOUT,':raw';my $b=do{local $/;<STDIN>};"
               "print VStats::TrafficClassifier::html_report(JSON::PP->new->utf8->decode($b));")
-    for entry, source in zip(daily, days):
+    for entry in daily:
+        source = day_paths[entry['day']]
         day, month = entry['day'], entry['day'][:7]
+        if entry.get('classification_unavailable') or entry.get('empty_partition'):
+            entry['ip_policy_sha256'] = context[month]
+            title = 'Input over limits' if entry.get('classification_unavailable') else 'No requests in this input partition'
+            private_write(output / 'classification' / (day + '.html'), page(title, '<h1>' + day + ': ' + title + '</h1><p>Native reporting retains this input. No classifier evidence or bot counts are inferred.</p>'))
+            continue
         report = json.loads((output / 'reports' / (day + '.json')).read_bytes().decode('utf-8'))
         details = report.pop('details')
         report.pop('details_warning', None)
@@ -596,6 +642,8 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
                   'Use the request-only view to disable IP expansion. Individual <code>behavior_include</code> request IDs '
                   'are explicit exceptions and may restore the IP to visitor counts. Copying an ID does not save server settings. '
                   'Byte-identical records share an ID. Detection flags remain separate from IP-policy exclusions.</p>')
+    if unavailable_months:
+        scope += '<p><strong>Classifier results below cover available periods only.</strong> Native-only fallback months: ' + html.escape(', '.join(sorted(unavailable_months))) + '. Missing classifier results are unavailable, never zero.</p>'
     review_links = []
     nav = controls(prefix, exclude_automated_ips)
     for month, rows in sorted(review_rows.items(), reverse=True):
@@ -632,7 +680,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
     source_review_summary['unattributed_analyzed_requests'] = dict(unattributed_sources)
     private_write(output / 'review/index.html', page('Review exclusions', nav + '<h1>Review exclusions</h1>' + scope +
                   '<!-- NATIVE_EFFECT -->' + disclaimer + description + '<ul>' + ''.join(review_links) + '</ul>' + source_review_html))
-    class_rows = ''.join("<tr><td><a href='" + r['day'] + ".html'>" + r['day'] + '</a></td><td>' +
+    class_rows = ''.join(("<tr><td><a href='" + r['day'] + ".html'>" + r['day'] + '</a></td><td colspan="5">' + ('Input over limits; classification unavailable' if r.get('classification_unavailable') else 'Empty input') + '</td></tr>') if r.get('classification_unavailable') or r.get('empty_partition') else "<tr><td><a href='" + r['day'] + ".html'>" + r['day'] + '</a></td><td>' +
                          format(r['counts']['analyzed'], ',') + '</td><td>' + format(r['behavior']['flagged_requests'], ',') +
                          '</td><td>' + format(r['request_filtered_log']['excluded_records'], ',') + '</td><td>' +
                          format(r['additional_ip_exclusions'], ',') + '</td><td>' + format(r['filtered_log']['excluded_records'], ',') + '</td></tr>' for r in daily)
@@ -647,7 +695,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
               'context_binding_version': 2, 'private_source_months': triggers, 'restored_source_months': sorted(restored), 'context_sha256_by_month': context}
     summary = {'schema_version': 1, 'generated_utc': generated, 'counts': dict(totals), 'actors': dict(actors), 'behavior': dict(behavior),
                'excluded_by_month': excluded_by_month, 'request_excluded_by_month': request_excluded_by_month,
-               'flagged_by_month': dict(flagged_by_month), 'ip_exclusion': policy, 'daily_reports': daily,
+               'capacity_fallback': unavailable_months, 'flagged_by_month': dict(flagged_by_month), 'ip_exclusion': policy, 'daily_reports': daily,
                'period': {'from': first, 'until': last}, 'config_raw_sha256': digest(raw_config), 'source_review': source_review_summary,
                'limitations': ['Missing neighboring input limits boundary evidence; fixed grids can still miss some sliding sequences.', 'Heuristics; not calibrated identity or intent.',
                                'Whole-IP policy can remove legitimate traffic behind shared/dynamic addresses.',
@@ -658,6 +706,36 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
     return summary
 
 
+class CapacityLimit(RuntimeError):
+    def __init__(self, day, kind, maximum):
+        self.day, self.kind, self.maximum = day, kind, maximum
+        super().__init__('Documented classifier hard maximum exceeded')
+
+
+def canonical_binding(value):
+    return json.dumps(value, sort_keys=True).encode('utf-8')
+
+
+def build(config, input_directory, output_directory, perl='perl', prefix='/vstats/example.test/', page_size=200,
+          exclude_automated_ips=True, capacity_fallback=False):
+    unavailable = {}
+    while True:
+        try:
+            return _build(config, input_directory, output_directory, perl, prefix, page_size,
+                          exclude_automated_ips=exclude_automated_ips, unavailable_months=unavailable)
+        except CapacityLimit as e:
+            if not capacity_fallback:
+                raise
+            month = e.day[:7]
+            if month in unavailable:
+                raise
+            unavailable[month] = {'reason': 'Input over limits', 'limit': e.kind, 'hard_maximum': e.maximum,
+                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'exclude_automated_ips']}
+            # Only our failed, newly created derived-output directory is removed.
+            # Original daily input and any previously published output are untouched.
+            shutil.rmtree(str(output_directory))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', required=True)
@@ -666,11 +744,12 @@ def main():
     parser.add_argument('--perl', default='perl')
     parser.add_argument('--site-url-prefix', default='/vstats/example.test/')
     parser.add_argument('--page-size', type=int, default=200)
+    parser.add_argument('--capacity-fallback', action='store_true', help='Keep native input for whole affected UTC months at documented hard maxima only')
     parser.add_argument('--include-automated-ips', action='store_true',
                         help='Disable default whole-IP/month exclusion; retain request-only filtering')
     args = parser.parse_args()
     build(args.config, args.input_directory, args.output_directory, args.perl, args.site_url_prefix, args.page_size,
-          exclude_automated_ips=not args.include_automated_ips)
+          exclude_automated_ips=not args.include_automated_ips, capacity_fallback=args.capacity_fallback)
 
 
 if __name__ == '__main__':

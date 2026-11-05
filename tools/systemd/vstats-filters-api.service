@@ -1,0 +1,17 @@
+[Unit]
+Description=Authenticated vstats Filters API
+Requires=vstats-filters-api.socket
+After=vstats-filters-api.socket
+
+[Service]
+User=vstats-control
+Group=vstats-control
+ExecStart=/usr/bin/python3 -I /opt/vstats/current/tools/filters-server.py --settings /etc/vstats/filters.json --socket-activation
+Restart=on-failure
+UMask=0027
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ProtectSystem=full
+ReadWriteDirectories=/var/lib/vstats/filters/requests /var/lib/vstats/filters/drafts
