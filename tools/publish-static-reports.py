@@ -1428,6 +1428,8 @@ def main():
         else:
             if not options.bootstrap_ui:
                 raise RuntimeError('Initialize the current UI generation before enabling the control worker')
+            if old_status.get('generation') != previous:
+                raise RuntimeError('Current report generation has no verified profile manifest; restore its matching state before bootstrapping')
             profiles = imported_profiles(sites, real_base, real_config, settings['legacy_app'], old_status)
             private_base = real_base
         token = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8]

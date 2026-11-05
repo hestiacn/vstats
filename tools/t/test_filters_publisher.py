@@ -187,6 +187,15 @@ class Publication(unittest.TestCase):
         self.assertTrue(all(manifest['profiles']['example.test']['default_profile']['filters'].values()))
         self.assertEqual((self.generation/'example.test/2026-10/awstats.example.test.html').read_text(),self.report)
 
+    def test_bootstrap_cannot_relabel_a_generation_missing_its_matching_state(self):
+        status = json.loads((self.base / 'status.json').read_text(encoding='utf-8'))
+        status['generation'] = '20261105T090000Z-12345678'
+        (self.base / 'status.json').write_text(json.dumps(status), encoding='utf-8')
+        with self.assertRaisesRegex(RuntimeError, 'no verified profile manifest'):
+            self.run_publisher()
+        self.assertEqual((self.web / 'current').resolve(), self.generation)
+        self.assertEqual((self.generation / 'example.test/2026-10/awstats.example.test.html').read_text(), self.report)
+
     def test_render_failure_cannot_publish_settings_or_modify_old_report(self):
         with mock.patch.object(publisher,'decorate_generation',side_effect=RuntimeError('synthetic precommit failure')):
             with self.assertRaises(RuntimeError):self.run_publisher()
