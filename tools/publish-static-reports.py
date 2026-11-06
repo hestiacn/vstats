@@ -1235,8 +1235,13 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
             cfg_file = Path(config) / 'traffic-classification' / ('awstats.' + site + '.json')
             classifier = read_json(cfg_file)
             text = (Path(config) / ('awstats.' + site + '.conf')).read_text(encoding='utf-8')
-            level = re.search(r'^LevelForRobotsDetection\s*=\s*([0-3])\b', text, re.M)
-            level = int(level.group(1)) if level else 3
+            # Replay appends this level as the final native assignment. Import it
+            # only from one unambiguous top-level line; otherwise fail closed.
+            assigned = re.findall(r'^[ \t]*LevelForRobotsDetection[ \t]*=', text, re.M)
+            level = re.findall(r'^LevelForRobotsDetection[ \t]*=[ \t]*([0-3])\b', text, re.M)
+            if len(assigned) > 1 or len(level) != len(assigned) or re.search(r'^(?:Include|#include) "', text, re.M):
+                raise RuntimeError('Cannot verify the existing managed profile: ' + site)
+            level = int(level[0]) if level else 3
             profile = {'schema_version': 1,
                        'filters': dict(native_crawlers=bool(level), verified_crawlers=site_settings.get('verified_crawler_filter', False),
                                        **{key: bool(classifier.get(key, {}).get('enabled', 0)) for key in ['behavior', 'probing', 'rapid_scan', 'distributed_login']}),
