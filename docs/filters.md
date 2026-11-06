@@ -134,6 +134,14 @@ or profile changes.
 
 ## Capacity and evidence
 
+Raw exclusion counts describe omitted log records, which may already be
+non-viewed or ignored by AWStats. Publication audits replay both omitted-record
+complements with the same native settings and show their viewed/non-viewed/ignored
+breakdown in Impact. Older generations show this breakdown as unavailable;
+reprocessing creates it. The extra logs and audit histories stay private, and
+visitor/visit totals still come from the selected native history.
+
+
 A behavior-enabled publisher run, including Preview, collects the registered
 Google public crawler IP-range feed over verified HTTPS as root, at most once
 per publisher process. No visitor data is sent. Retrieved raw snapshots and

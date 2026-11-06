@@ -101,6 +101,38 @@ class BatchIntegration(unittest.TestCase):
         return builder.build(self.config, self.inputs, self.root / 'output', perl=self.perl,
                              prefix='/vstats/example.test/', **kwargs)
 
+    def test_private_complements_partition_primary_records(self):
+        source = self.inputs / '2026-10-02.log'
+        unparsed = b'\nnot an apache request\n'
+        raw = b''.join(self.lines) + self.ordinary + unparsed
+        source.write_bytes(raw)
+        result = self.run_build()
+        day = result['daily_reports'][0]
+        for selected, omitted, field in [('filtered', 'excluded', 'excluded_log'),
+                                         ('request-filtered', 'request-excluded', 'request_excluded_log')]:
+            self.assertEqual((self.root / 'output' / selected / source.name).read_bytes(), self.ordinary + unparsed)
+            complement = (self.root / 'output' / omitted / source.name).read_bytes()
+            self.assertEqual(complement, b''.join(self.lines))
+            self.assertEqual(day[field]['sha256'], hashlib.sha256(complement).hexdigest())
+            self.assertEqual(day[field]['input_sha256'], hashlib.sha256(raw).hexdigest())
+            self.assertEqual(day[field]['kept_records'], 6)
+            self.assertEqual(day[field]['input_records'], 9)
+        self.assertEqual(source.read_bytes(), raw)
+
+    def test_empty_or_explicitly_inactive_partition_has_empty_complements(self):
+        source = self.inputs / '2026-10-02.log'
+        for raw, unavailable in [(b'', {}), (b''.join(self.lines) + self.ordinary,
+                                             {'2026-10': {'reason': 'declared inactive month'}})]:
+            source.write_bytes(raw)
+            builder._build(self.config, self.inputs, self.root / 'output', perl=self.perl,
+                           unavailable_months=unavailable)
+            for name in ['filtered', 'request-filtered']:
+                self.assertEqual((self.root / 'output' / name / source.name).read_bytes(), raw)
+            for name in ['excluded', 'request-excluded']:
+                self.assertEqual((self.root / 'output' / name / source.name).read_bytes(), b'')
+            self.assertEqual(source.read_bytes(), raw)
+            shutil.rmtree(str(self.root / 'output'))
+
     def test_complete_filter_and_review(self):
         before = (self.inputs / '2026-10-02.log').read_bytes()
         result = self.run_build(page_size=2)

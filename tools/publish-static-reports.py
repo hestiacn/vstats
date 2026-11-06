@@ -765,6 +765,37 @@ def verify_ip_visitor_policy(summary, data_root, site, account):
             'blocked_ip_rows_remaining': 0}
 
 
+def write_replay_config(directory, site, template, logfile, data, evidence, account):
+    path = os.path.join(directory, 'awstats.' + site + '.conf')
+    with open(path, 'w', encoding='utf-8') as handle:
+        handle.write(behavior_config(template, logfile, data, evidence))
+    os.chown(path, 0, account.pw_gid)
+    os.chmod(path, 0o640)
+
+
+def native_complement_totals(account, site, work, result_dir, template, days, evidence, mode, verify_repeat):
+    # Scratch histories never become another public view or persistent cache.
+    data = os.path.join(work, 'audit-data-' + mode)
+    config = os.path.join(work, 'audit-config-' + mode)
+    private_directory(data, account.pw_gid)
+    private_directory(os.path.join(data, site), account.pw_gid, owner=account.pw_uid, mode=0o700)
+    private_directory(config, account.pw_gid)
+    folder = 'request-excluded' if mode == 'requests' else 'excluded'
+    for day in days:
+        logfile = os.path.join(result_dir, folder, day + '.log')
+        write_replay_config(config, site, template, logfile, os.path.join(data, site), evidence[day]['path'], account)
+        invoke(account, site, ['-update'], site + '-' + mode + '-omitted-replay.log', config_dir=config)
+    totals = cache_totals(site, account, data)
+    if verify_repeat:
+        before = cache_fingerprints(site, account, data)
+        invoke(account, site, ['-update'], site + '-' + mode + '-omitted-repeat.log', config_dir=config)
+        if cache_totals(site, account, data) != totals or cache_fingerprints(site, account, data) != before:
+            raise RuntimeError('Omitted native history changed on identical repeat: ' + mode)
+    for month in {day[:7] for day in days}:
+        totals.setdefault(month, empty_totals())
+    return totals
+
+
 def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, verify_repeat):
     # Load from the selected application release so the tested helper and its
     # cache identity move together; this also supports isolated replay trials.
@@ -865,11 +896,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
                 for mode in history_roots:
                     logfile = os.path.join(result_dir, 'filtered' if mode == 'behavior' else 'request-filtered', day + '.log') if mode in ('behavior', 'requests') else os.path.join(corpus, day + '.log')
                     proof = '' if mode == 'original' else evidence[day]['path']
-                    cfg = behavior_config(template, logfile, os.path.join(data_roots[mode], site), proof)
-                    path = os.path.join(configs[mode], 'awstats.' + site + '.conf')
-                    with open(path, 'w', encoding='utf-8') as handle:
-                        handle.write(cfg)
-                    os.chown(path, 0, account.pw_gid); os.chmod(path, 0o640)
+                    write_replay_config(configs[mode], site, template, logfile,
+                                        os.path.join(data_roots[mode], site), proof, account)
                     invoke(account, site, ['-update'], site + '-' + mode + '-replay.log', config_dir=configs[mode])
         native_months[month] = {'signature': signature, 'reused': reuse, 'history_sha256': {}}
         for mode in history_roots:
@@ -882,10 +910,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
     totals = {}
     for mode in history_roots:
         logfile = os.path.join(result_dir, 'filtered' if mode == 'behavior' else 'request-filtered', last_day + '.log') if mode in ('behavior', 'requests') else os.path.join(corpus, last_day + '.log')
-        path = os.path.join(configs[mode], 'awstats.' + site + '.conf')
-        with open(path, 'w', encoding='utf-8') as handle:
-            handle.write(behavior_config(template, logfile, os.path.join(data_roots[mode], site), '' if mode == 'original' else evidence[last_day]['path']))
-        os.chown(path, 0, account.pw_gid); os.chmod(path, 0o640)
+        write_replay_config(configs[mode], site, template, logfile, os.path.join(data_roots[mode], site),
+                            '' if mode == 'original' else evidence[last_day]['path'], account)
         totals[mode] = cache_totals(site, account, data_roots[mode])
         if verify_repeat:
             fingerprints = cache_fingerprints(site, account, data_roots[mode])
@@ -895,6 +921,9 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
         for month in months:
             totals[mode].setdefault(month, empty_totals())
     check_layer_conservation(totals['original'], totals['confirmed'])
+    complements = {mode: native_complement_totals(account, site, work, result_dir, template, days,
+                                                 evidence, mode, verify_repeat)
+                   for mode in ['requests', 'behavior']}
     for month in months:
         full = totals['confirmed'][month]
         for mode, ledger_name in [('requests', 'request_excluded_by_month'), ('behavior', 'excluded_by_month')]:
@@ -902,10 +931,20 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
             ledger = summary[ledger_name].get(month, {'records': 0, 'response_body_bytes': 0})
             if filtered['hits'] > full['hits'] or filtered['pages'] > full['pages']:
                 raise RuntimeError('Filtering unexpectedly increased viewed requests: ' + mode)
-            if full['hits'] + full['nonviewed_hits'] != filtered['hits'] + filtered['nonviewed_hits'] + ledger['records']:
-                raise RuntimeError('Excluded request ledger does not conserve native accounting: ' + mode)
-            if full['bytes'] + full['nonviewed_bytes'] != filtered['bytes'] + filtered['nonviewed_bytes'] + ledger['response_body_bytes']:
-                raise RuntimeError('Excluded response-body ledger does not conserve native accounting: ' + mode)
+            omitted = complements[mode][month]
+            counted = omitted['hits'] + omitted['nonviewed_hits']
+            body = omitted['bytes'] + omitted['nonviewed_bytes']
+            if counted > ledger['records'] or body > ledger['response_body_bytes']:
+                raise RuntimeError('Native omitted totals exceed the raw exclusion ledger: ' + mode)
+            if full['hits'] + full['nonviewed_hits'] != filtered['hits'] + filtered['nonviewed_hits'] + counted:
+                raise RuntimeError('Native omitted requests do not conserve accounting: ' + mode)
+            if full['bytes'] + full['nonviewed_bytes'] != filtered['bytes'] + filtered['nonviewed_bytes'] + body:
+                raise RuntimeError('Native omitted response bodies do not conserve accounting: ' + mode)
+            ledger.update(native_counted_records=counted, native_viewed_records=omitted['hits'],
+                          native_nonviewed_records=omitted['nonviewed_hits'],
+                          native_dropped_records=ledger['records'] - counted,
+                          native_response_body_bytes=body,
+                          native_dropped_response_body_bytes=ledger['response_body_bytes'] - body)
         if totals['behavior'][month]['unique'] > totals['requests'][month]['unique']:
             raise RuntimeError('Whole-IP filtering increased unique visitors')
     ip_audit = verify_ip_visitor_policy(summary, data_roots['behavior'], site, account)
@@ -917,6 +956,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
             snapshot = history_cache.read_history(path, account.pw_uid)
             native_months[month]['history_sha256'][mode] = snapshot['sha256'] if snapshot else None
             native_months[month].setdefault('history_suffix', {})[mode] = snapshot['suffix'] if snapshot else None
+    # The same summary is reread when building the public Filters payload.
+    atomic_private_json(os.path.join(result_dir, 'summary.json'), summary, account.pw_gid)
     layer_info.update({'behavior_filter': True, 'view_totals': totals, 'excluded_by_month': summary['excluded_by_month'],
                        'flagged_requests': summary['behavior'].get('flagged_requests', 0), 'inclusion_overrides': summary['behavior'].get('inclusion_overrides', 0),
                        'request_excluded_by_month': summary['request_excluded_by_month'],

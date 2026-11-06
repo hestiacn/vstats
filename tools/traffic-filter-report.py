@@ -435,7 +435,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
     cfg, window = validated['config'], validated['window_seconds']
     day_paths = {path.stem: path for path in days}
     output.mkdir(mode=0o700)
-    for name in ['filtered', 'request-filtered', 'reports', 'classification', 'review', 'context']:
+    for name in ['filtered', 'request-filtered', 'excluded', 'request-excluded', 'reports', 'classification', 'review', 'context']:
         (output / name).mkdir(mode=0o700)
     totals, actors, behavior = collections.Counter(), collections.Counter(), collections.Counter()
     excluded_by_month, request_excluded_by_month, flagged_by_month = {}, {}, collections.Counter()
@@ -459,6 +459,9 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             shutil.copyfile(str(source), str(output / 'filtered' / (day + '.log')))
             os.chmod(str(request_filtered), 0o600)
             os.chmod(str(output / 'filtered' / (day + '.log')), 0o600)
+            # Inactive/empty partitions retain every input record.
+            for name in ['excluded', 'request-excluded']:
+                private_write(output / name / (day + '.log'), b'')
             manifest = {'input_sha256': h.hexdigest(), 'sha256': h.hexdigest(), 'input_log_bytes': size,
                         'kept_log_bytes': size, 'removed_log_bytes': 0, 'input_records': rows,
                         'excluded_records': 0, 'kept_records': rows}
@@ -580,12 +583,14 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         if digest(raw) != entry['input_sha256']:
             raise RuntimeError('Input changed between classification and IP policy')
         records = {index: (logical, piece) for index, logical, piece in physical_records(raw)}
-        default_omitted = set()
+        default_omitted, direct_omitted = set(), set()
         ledger = excluded_by_month.setdefault(month, {'records': 0, 'response_body_bytes': 0})
         request_ledger = request_excluded_by_month.setdefault(month, {'records': 0, 'response_body_bytes': 0})
         day_additional = 0
         for record in details:
             direct = bool(record['excluded'])
+            if direct:
+                direct_omitted.add(record['line_index'])
             trigger = triggers.get(record.get('source_month_key'))
             ip_selected = bool(exclude_automated_ips and trigger)
             included = bool(record['behavior_included'] or (ip_selected and record['request_id'] in include_ids))
@@ -621,6 +626,13 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                 restored.add(record['source_month_key'])
         kept, manifest = filtered_bytes(raw, default_omitted, entry['input_sha256'])
         private_write(output / 'filtered' / (day + '.log'), kept)
+        # These private complements use exactly the same primary byte kernel.
+        # Native AWStats, rather than a second method/Skip parser, counts them.
+        for name, omitted, field in [('request-excluded', direct_omitted, 'request_excluded_log'),
+                                     ('excluded', default_omitted, 'excluded_log')]:
+            excluded_raw, excluded_manifest = filtered_bytes(raw, set(records) - omitted, entry['input_sha256'])
+            private_write(output / name / (day + '.log'), excluded_raw)
+            entry[field] = excluded_manifest
         entry.update(filtered_log=manifest, ip_policy_sha256=context[month], additional_ip_exclusions=day_additional)
         child = subprocess.run([perl, '-I' + str(ROOT / 'lib'), '-e', render],
                                input=json.dumps(report, sort_keys=True).encode('utf-8'), stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=90)
@@ -636,7 +648,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
     scope = ('<p>Updated ' + generated + '. Complete configured site corpus; daily exports use overlapping boundary evidence without counting context requests twice. '
              'A detected source can exclude its other requests throughout the same UTC month, including earlier days. '
              'No exclusion carries into another month without new evidence. Counts are requests, not verified people. '
-             'Some removals were already non-viewed under native rules. No geography is used.</p>')
+             'Native rules may classify omitted records as non-viewed or ignore them altogether; omitted log records are not the change in native totals. No geography is used.</p>')
     disclaimer = ('<p>IP exclusion is ' + ('enabled by default' if exclude_automated_ips else 'disabled') +
                   '. Shared proxies, dynamic addresses and authorized automation can qualify. '
                   'Use the request-only view to disable IP expansion. Individual <code>behavior_include</code> request IDs '

@@ -279,8 +279,13 @@ the operator must generate those independent native views.
 The builder performs no network lookup, history modification or deployment.
 `excluded_by_month.response_body_bytes` is a separate HTTP response-body ledger
 (304 contributes zero), unlike the CLI's log-file byte counts. It includes
-flagged requests that native rules may already treat as non-viewed. Compare
-independently replayed native histories to measure changes to viewed totals.
+flagged requests that native rules may already treat as non-viewed or drop
+altogether (for example, unsupported methods or configured Skip/Only rules).
+The publisher replays each omitted-record complement through the same native
+configuration/evidence into private scratch histories. It checks full native
+hits/body bytes = selected native hits/body bytes + omitted native hits/body
+bytes, rather than treating every omitted log record as a native hit. Visitors
+and visits remain independent native recomputations.
 Repeated report generation allows new inclusion overrides and changed windows
 to affect past statistics; input retention and scheduling remain operator policy.
 
@@ -289,7 +294,18 @@ request-only selection. `filtered/` is the default visitor-policy input.
 The private builder summary contains both stream manifests and body-byte ledgers:
 `excluded_by_month` for the default input and `request_excluded_by_month` for the
 request-only input. Each daily summary's `filtered_log` describes the default
-stream and `request_filtered_log` its request-only comparison. All input hashes
+stream and `request_filtered_log` its request-only comparison. Private `excluded/` and
+`request-excluded/` hold their exact omitted-record complements; daily
+`excluded_log`/`request_excluded_log` manifests identify classified selections.
+Empty and capacity-inactive partitions have empty complements because their
+input is retained unchanged. Native publication extends the two ledgers with
+`native_counted_records`, `native_viewed_records`, `native_nonviewed_records`,
+`native_dropped_records`, `native_response_body_bytes` and
+`native_dropped_response_body_bytes`. These describe the omitted-stream native
+replay; standalone builder results cannot infer them. Complement logs and scratch
+histories stay private and are not public reports or additional persistent
+views. Native processing adds two audit replays, including repeat checks when
+requested; input retention/storage still needs operator policy. All input hashes
 are rechecked between passes. Per-month `ip_policy_sha256` binds the full set of
 provided daily input identities, configuration, chosen policy and triggers.
 The private `ip_exclusion` summary stores the trigger map, restored source/month
@@ -313,7 +329,7 @@ marker; other providers have not been added by this option.
 
 Confirmed eligible requests enter native robot/non-viewed accounting before
 download tracking, including valid 200/206 downloads and zero-byte 304 responses.
-The parser performs no network or DNS lookup. Malformed or unreadable evidence
+The evidence check performs no network or DNS lookup. Malformed or unreadable evidence
 stops an update before history changes; unsupported individual records cannot
 become verified exclusions.
 

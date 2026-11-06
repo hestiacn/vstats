@@ -108,11 +108,17 @@
     const area=$('match-counts');area.replaceChildren(node('h3','Matches and actual exclusions for this generation'));
     const counts=state.matched_requests||{},table=node('table'),header=node('tr');header.append(node('th','Detector / measure'),node('th','Requests'));table.append(header);
     for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
-    const requested=state.request_excluded_by_month||{},views=state.view_totals||{};
-    for(const month of Object.keys(requested).sort().reverse()){
-      if(!views.confirmed||!views.requests||!views.confirmed[month]||!views.requests[month])continue;
-      const removed=requested[month].records,viewed=views.confirmed[month].hits-views.requests[month].hits;
-      area.append(node('p',month+': '+Number(removed).toLocaleString()+' deduplicated matched-request exclusions; '+Number(removed-viewed).toLocaleString()+' of those requests were already non-viewed by the chosen native/verified rules.'));
+    const views=state.view_totals||{};
+    for(const [mode,title,ledger] of [['requests','Matched-request filtering',state.request_excluded_by_month||{}],['behavior','Configured visitor policy',state.excluded_by_month||{}]]){
+      for(const month of Object.keys(ledger).sort().reverse()){
+        if(!views.confirmed||!views[mode]||!views.confirmed[month]||!views[mode][month])continue;
+        const native=ledger[month],removed=native.records,viewed=views.confirmed[month].hits-views[mode][month].hits;
+        let detail='Native breakdown unavailable on this generation.';
+        if(native.native_nonviewed_records!==undefined&&native.native_dropped_records!==undefined){
+          detail='Native replay of the omitted records: '+Number(native.native_viewed_records).toLocaleString()+' viewed; '+Number(native.native_nonviewed_records).toLocaleString()+' non-viewed; '+Number(native.native_dropped_records).toLocaleString()+' ignored by AWStats.';
+        }
+        area.append(node('p',month+' — '+title+': '+Number(removed).toLocaleString()+' omitted log records; '+Number(viewed).toLocaleString()+' fewer viewed hits. '+detail));
+      }
     }
     area.append(node('p','Per-filter match counts overlap. They cover successfully classified input only. Missing classification results are unavailable. Native user-agent and verified-crawler attribution is reported by native AWStats; no per-rule count is inferred here.','filters-muted'));
   }
