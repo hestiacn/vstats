@@ -77,7 +77,7 @@ def main():
     args = parser.parse_args()
     if os.geteuid() != 0:
         raise RuntimeError('Run the queue worker as root; parsing is demoted by the publisher')
-    settings = read_json(args.settings)
+    settings = read_json(args.settings, root_owned=True)
     settings['settings_path'] = args.settings
     control = Control(settings)
     with open(str(control.state / 'worker.lock'), 'a') as lock:

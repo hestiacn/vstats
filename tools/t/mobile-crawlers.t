@@ -18,7 +18,7 @@ sub parse {
     my ($ua,$level)=@_;$level//=2;my $case="$dir/case-".++$serial;make_path("$case/config","$case/data");
     write_file("$case/access.log",'192.0.2.1 - - [02/Oct/2026:10:00:00 +0000] "GET / HTTP/1.1" 200 100 "-" "'.$ua.'"'."\n");
     my $cfg=$model;$cfg=~s/^\s*LoadPlugin\s*=.*$/# No plugins in synthetic fixture/mg;
-    my %settings=(LogFile=>"$case/access.log",LogFormat=>1,SiteDomain=>'example.test',HostAliases=>'example.test',DirData=>"$case/data",DirCgi=>'/stats',DirLang=>"$root/wwwroot/cgi-bin/lang",DNSLookup=>0,Lang=>'en',EnableLocaldatePlugin=>0,AllowToUpdateStatsFromBrowser=>0,PurgeLogFile=>0,ArchiveLogRecords=>0,LevelForRobotsDetection=>$level,KeepBackupOfHistoricFiles=>0);
+    my %settings=(LogFile=>"$case/access.log",LogFormat=>1,SiteDomain=>'example.test',HostAliases=>'example.test',DirData=>"$case/data",DirCgi=>'/stats',DirLang=>"$root/wwwroot/cgi-bin/lang",DNSLookup=>0,DecodeUA=>0,Lang=>'en',EnableLocaldatePlugin=>0,AllowToUpdateStatsFromBrowser=>0,PurgeLogFile=>0,ArchiveLogRecords=>0,LevelForRobotsDetection=>$level,KeepBackupOfHistoricFiles=>0);
     for my $k(sort keys %settings){my $line="$k=\"$settings{$k}\"";$cfg.="\n$line\n" if $cfg!~s/^\Q$k\E\s*=.*$/$line/m;}
     write_file("$case/config/awstats.fixture.conf",$cfg);
     my $pid=fork();die if !defined $pid;
@@ -40,4 +40,24 @@ for my $ua ($android,'Mozilla/5.0 (iPad) Mobile Safari/604.1',$android.' XPetalB
 }
 my($disabled)=parse($android.' PetalBot/1',0);is_deeply($disabled,[1,100,0,0],'robots-disabled configuration remains unchanged');
 my($desktop,$desktop_robots)=parse('Mozilla/5.0 PetalBot/1');is_deeply($desktop,[0,0,1,100],'desktop registry matching remains unchanged');like($desktop_robots,qr/^PetalBot /m,'desktop history ID unchanged');
+
+my $cubot='Mozilla/5.0 (Linux; Android 10; CUBOT X30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36';
+for my $level (1,3) {
+    my($counts,$robots)=parse($cubot,$level);
+    is_deeply($counts,[1,100,0,0],"handset-name collision remains viewed at level $level");
+    is($robots,'','handset name does not create a robot history ID');
+}
+for my $ua (
+    'Mozilla/5.0 (Linux; Android 10; K; robot) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+    'Mozilla/5.0 (iPad; CPU OS 17_0 like Mac OS X; spider) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+    'Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012; Storebot-Google/1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+    $android.' (compatible; PetalBot,)') {
+    my($counts,$robots)=parse($ua,1);is_deeply($counts,[1,100,0,0],'generic, escaped-entry or invalid-boundary marker keeps device exemption');is($robots,'','no robot ID for ineligible mobile marker');
+}
+my($bounded,$bounded_robot)=parse($android.' (compatible; PetalBot)',1);
+is_deeply($bounded,[0,0,1,100],'parenthesis boundary names one non-viewed crawler request');
+like($bounded_robot,qr/^PetalBot /m,'bounded literal keeps registry ID');
+my($ordered,$ordered_robot)=parse($android.' PetalBot/1 ClaudeBot/1',1);
+is_deeply($ordered,[0,0,1,100],'multiple eligible markers count once');
+like($ordered_robot,qr/^ClaudeBot\/ /m,'enabled registry order decides the robot ID');
 done_testing;

@@ -29,7 +29,10 @@ sub RegisteredCrawlerRobotID {
     if (!exists $registered_mobile_crawlers{$key}) {
         our (@RobotsSearchIDOrder_list1,@RobotsSearchIDOrder_list2,@RobotsSearchIDOrder_listgen);
         my @rules=(@RobotsSearchIDOrder_list1,($key==2?@RobotsSearchIDOrder_list2:()),@RobotsSearchIDOrder_listgen);
-        my %generic=map {lc($_)=>1} qw(bot robot spider crawler probe scan scanner search fetch browser mozilla chrome safari firefox edge edg opera opr android iphone ipad ipod linux windows macintosh mobile tablet compatible http https unknown other);
+        my %generic=map {lc($_)=>1} qw(bot robot spider crawler scraper probe scan scanner search fetch browser mozilla chrome safari firefox edge edg opera opr android iphone ipad ipod linux windows macintosh mobile tablet compatible http https unknown other);
+        # CUBOT is also a handset manufacturer/model, not crawler evidence.
+        # Keep client-name collisions separate from the generic-word guard.
+        my %client_names=map {lc($_)=>1} qw(CUBOT);
         my (%seen,@markers);
         for my $id (@rules) {
             next if $id !~ /\A([A-Za-z0-9][A-Za-z0-9._-]*)(?:\/)?\z/;
@@ -37,7 +40,7 @@ sub RegisteredCrawlerRobotID {
             # Literal webview/client/browser IDs are not crawler identities.
             next if $token !~ /bot|robot|spider|crawler|scraper/i
                 && $token !~ /\A(?:facebookexternalhit|meta-externalagent)\z/i;
-            next if $generic{lc($token)} || $seen{lc($token)}++;
+            next if $generic{lc($token)} || $client_names{lc($token)} || $seen{lc($token)}++;
             push @markers,[$id,qr/(?:^|[^A-Za-z0-9])\Q$token\E(?=[\x09-\x0D\x20\/;)]|\z)/iaa];
         }
         $registered_mobile_crawlers{$key}=\@markers;

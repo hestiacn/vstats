@@ -57,7 +57,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v6`. Optional private details include status, the per-request
+`vstats-traffic-v8`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
@@ -151,15 +151,15 @@ qualify. Inspect the numeric witness and use inclusion overrides when needed.
 minimum is 2 through minimum requests. Partial objects fill defaults. The
 existing byte, record, field and canonical IP/host group caps still apply.
 Window maintenance is linear after sorting; no operator regex/code is executed.
-All three behavioral rules remain optional and independently configurable.
+All four behavioral rules remain optional and independently configurable.
 
 `suspected_automation` is the union of enabled broad path probing, configured
-endpoint probing and rapid content-path probing. Actor identities and the absence-attested `scanner_flagged`
+endpoint probing, rapid content-path probing and distributed login probing. Actor identities and the absence-attested `scanner_flagged`
 layer remain independent. An overlapping request counts once and retains every
 applicable covering witness in private details and curated review. Aggregate
-`behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`,
+`behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`, `distributed_login_rule`,
 `broad_flagged_requests`, `probing_flagged_requests`,
-`rapid_scan_flagged_requests` and `overlap_requests` (requests matching at least
+`rapid_scan_flagged_requests`, `distributed_login_flagged_requests` and `overlap_requests` (requests matching at least
 two rules); its main request and actor
 counts are the union. Eligible and insufficient-field counts deduplicate records
 across enabled rules. Merged sequence counts sum the rules' sequences, which may
@@ -167,12 +167,13 @@ overlap and are not visits. Effective configuration includes the operator's
 endpoint list; aggregate output contains no observed request records.
 
 Private details include `broad_probing_flagged`, `probing_flagged`,
-`rapid_scan_flagged`, `probing_evidence` and `rapid_scan_evidence`, retaining the
+`rapid_scan_flagged`, `distributed_login_flagged`, `probing_evidence`,
+`rapid_scan_evidence` and `distributed_login_evidence`, retaining the
 existing broad `behavior_evidence`. Review
 labels each applicable rule and its numeric covering window. The same explicit
 exclusion selector and `behavior_include` request IDs apply to every rule;
 inclusion retains all witnesses and cannot override independent actor/scanner
-exclusions. All three rules are opt-in and may be enabled separately. Shared proxies
+exclusions. All four rules are opt-in and may be enabled separately. Shared proxies
 and authorized automation can qualify; review results before relying on them.
 
 ### Explicit filtering and inclusion overrides
@@ -219,7 +220,7 @@ bundles within existing evidence caps for historical native replay.
 
 ### Optional daily export and review builder
 
-The native-report export excludes automated IPs **by default**. If either
+The native-report export excludes automated IPs **by default**. If any enabled
 behavior rule flags a request, its canonical literal source IP is excluded
 throughout the same UTC report month in the provided site corpus, including
 earlier days. There is no carry-over to another month without new evidence.
@@ -359,9 +360,10 @@ Do not subtract request labels from stored unique-visitor or visit counts.
 The native fix recognizes a bounded `Bytespider` marker before the mobile/tablet
 robot exemption, preserving the `Bytespider/` history ID and display entry.
 It also precedes other robots.pm rules (e.g. generic `spider`), so matching desktop/TV/wearable requests move to `Bytespider/`; other device detection, rules and accounting stay unchanged.
-Other robots.pm markers inside mobile or tablet user agents remain subject to the existing exemption; this fix does not change them.
-Owners of customized `robots.pm` files must merge its new `BytespiderRobotID`
-helper too; without it the parser retains its previous behavior.
+See the named-crawler section below for other enabled literal crawler identities.
+Owners of customized `robots.pm` files must merge the `BytespiderRobotID` and
+`RegisteredCrawlerRobotID` helpers too; without a helper its corresponding
+recognition keeps the previous behavior.
 
 `tools/traffic-classify.pl` is an optional **offline request report** (Perl 5.20+,
 core modules). No AWStats configuration/history reads, network/DNS, automatic
@@ -623,7 +625,12 @@ applying the mobile/tablet exemption it also checks explicit, boundary-matched
 literal identities from the enabled robot registry levels: named bot/spider/
 crawler/scraper/robot tokens and the explicit `facebookexternalhit` and
 `meta-externalagent` identities. Generic browser words, webview/client IDs and
-nonliteral registry patterns do not receive this override. A mobile agent
+nonliteral registry patterns do not receive this override. Literal entries contain
+only ASCII letters/digits, dots, underscores or hyphens, with an optional final
+slash; escaped registry patterns such as `Storebot\-Google/` are not eligible.
+Bare generic bot/robot/spider/crawler/scraper tokens and the helper's enumerated
+client-name collisions (including handset manufacturer CUBOT) do not override
+the exemption. A mobile agent
 that explicitly declares a registered crawler such as PetalBot therefore keeps
 its existing robot history ID and non-viewed classification. Ordinary mobile
 agents, disabled robot detection and older custom databases without the helper

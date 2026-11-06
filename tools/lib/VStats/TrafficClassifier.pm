@@ -9,7 +9,7 @@ use Time::Local qw(timegm);
 use POSIX qw(floor);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
-# GPL version 2 or later, like the parent project. No file or network I/O here.
+# GPL version 2 or later. No file or network I/O here.
 our $VERSION = '1.7';
 my $ALGORITHM = 'vstats-traffic-v8';
 my $word=qr/[^ \t]+/;

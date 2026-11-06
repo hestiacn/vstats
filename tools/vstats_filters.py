@@ -59,11 +59,14 @@ def decode(raw):
                       parse_constant=lambda x: (_ for _ in ()).throw(ValueError('Non-finite JSON')))
 
 
-def read_json(path):
+def read_json(path, root_owned=False):
     fd = os.open(str(path), os.O_RDONLY | os.O_NOFOLLOW)
     with os.fdopen(fd, 'rb') as f:
-        if not stat.S_ISREG(os.fstat(f.fileno()).st_mode):
+        st = os.fstat(f.fileno())
+        if not stat.S_ISREG(st.st_mode):
             raise ValueError('Expected a regular state file')
+        if root_owned and (st.st_uid != 0 or st.st_mode & 0o022):
+            raise ValueError('Operator settings must be root-owned and not writable by group or others')
         raw = f.read(16 * 1024 * 1024 + 1)
     if len(raw) > 16 * 1024 * 1024:
         raise ValueError('State file is too large')

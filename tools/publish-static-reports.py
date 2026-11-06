@@ -39,6 +39,7 @@ LAUNCHER = '/opt/vstats/bin/vstats'
 LOG = '/var/log/vstats'
 SOURCE_LOG = '/var/log/httpd'
 PERL = '/opt/vstats/runtime/perl-5.44.0/bin/perl'
+PERL_LIBRARIES = ['/opt/vstats/runtime/perl-5.44.0/modules/lib/perl5', '/opt/vstats/lib']
 PROFILE_MAP = {}
 PREVIEW_BASELINE = {}
 TOPICS = ['main', 'alldomains', 'allhosts', 'allrobots', 'browserdetail', 'downloads',
@@ -772,7 +773,7 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
     if not layer_info.get('exclude_automated_ips', True):
         command.append('--include-automated-ips')
     environment = {'PATH': '/usr/bin:/bin', 'LC_ALL': 'C', 'LANG': 'C', 'TZ': 'UTC', 'PYTHONDONTWRITEBYTECODE': '1',
-                   'PERL5LIB': '/opt/vstats/runtime/perl-5.44.0/modules/lib/perl5:/opt/vstats/lib'}
+                   'PERL5LIB': os.pathsep.join(PERL_LIBRARIES)}
     proc = subprocess.Popen(command, cwd=BASE, env=environment, preexec_fn=as_statistics_user(account), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
         stdout, stderr = proc.communicate(timeout=600)
@@ -905,7 +906,7 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
             'configs': configs, 'totals': totals, 'result_dir': result_dir, 'summary': summary, 'layer_info': layer_info}
 
 
-def copy_behavior_html(result, site, site_web, apache_gid):
+def copy_behavior_html(result, site, site_web, apache_gid, account):
     effects = '<h2>Effect on native statistics</h2><table><tr><th>Month</th><th>View</th><th>Unique visitors</th><th>Visits</th><th>Pages</th><th>Hits</th></tr>'
     for month in sorted(result['totals']['confirmed'], reverse=True):
         for mode, title in [('confirmed', 'Confirmed only'), ('requests', 'Request-only behavior filtering'), ('behavior', 'Default visitor policy')]:
@@ -922,7 +923,7 @@ def copy_behavior_html(result, site, site_web, apache_gid):
             descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
             with os.fdopen(descriptor, 'rb') as handle:
                 st = os.fstat(handle.fileno())
-                if not stat.S_ISREG(st.st_mode) or st.st_uid != pwd.getpwnam('vstats').pw_uid:
+                if not stat.S_ISREG(st.st_mode) or st.st_uid != account.pw_uid:
                     raise RuntimeError('Unexpected generated report ownership/type')
                 raw = handle.read()
             if hashlib.sha256(raw).hexdigest() != sha:
@@ -951,15 +952,13 @@ def persist_behavior_views(result, site, account, token):
                 shutil.rmtree(path)
 
 
-def legacy_main():
+def legacy_main(account, apache_gid):
     parser = argparse.ArgumentParser()
     parser.add_argument('--verify-repeat', action='store_true')
     options = parser.parse_args()
     if os.geteuid() != 0:
         raise RuntimeError('Run the log-reader/publisher as root; the parser is demoted internally')
     os.umask(0o027)
-    account = pwd.getpwnam('vstats')
-    apache_gid = grp.getgrnam('apache').gr_gid
     with open(os.path.join(CONFIG, 'sites.json'), encoding='utf-8') as handle:
         sites = json.load(handle)
     with open(os.path.join(BASE, 'update.lock'), 'w') as lock:
@@ -1039,7 +1038,7 @@ def legacy_main():
                     private_directory(site_web, apache_gid)
                     extra_links = copy_supplemental_reports(site, site_web, apache_gid, skip=('traffic-classification',))
                     extra_links += " &middot; <a href='/vstats/" + html.escape(site, quote=True) + "/behavior-exclusions/'>Review excluded requests</a>"
-                    copy_behavior_html(result, site, site_web, apache_gid)
+                    copy_behavior_html(result, site, site_web, apache_gid, account)
                     render_site_view(account, site, site_web, after, apache_gid, extra_links,
                                      config_dir=result['configs']['behavior'], layer_info=info)
                     render_site_view(account, site, os.path.join(site_web, 'requests'), result['totals']['requests'], apache_gid, extra_links,
@@ -1226,7 +1225,7 @@ def native_evidence_dates(base, max_gap):
     return dates
 
 
-def imported_profiles(sites, real_base, config, legacy_app, old_state):
+def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
     profiles = {}
     for site, site_settings in sites.items():
         managed = site_settings.get('behavior_filter', False)
@@ -1266,7 +1265,7 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state):
                 context = {side: {'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw)} for side,raw in sorted(halo.items())}
                 contexts[day] = hashlib.sha256(json.dumps({'window_seconds': window, 'context': context}, sort_keys=True).encode()).hexdigest()
             cutoff = datetime.datetime.strptime(old_state['completed_utc'].split('.')[0].rstrip('Z'), '%Y-%m-%dT%H:%M:%S')
-            proofs = archived_evidence_for_days(sorted(paths), None, pwd.getpwnam('vstats'), until=cutoff)
+            proofs = archived_evidence_for_days(sorted(paths), None, account, until=cutoff)
             cache_file = Path(legacy_app) / 'tools/native_history_cache.py'
             src = importlib.util.spec_from_file_location('bootstrap_history', str(cache_file))
             cache = importlib.util.module_from_spec(src); src.loader.exec_module(cache)
@@ -1276,7 +1275,6 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state):
             native = hashlib.sha256(b''.join((Path(legacy_app) / p).read_bytes() for p in sources) +
                                    json.dumps({'ip_month_policy': profile['exclude_automated_ips'], 'views': 4}, sort_keys=True).encode()).hexdigest()
             prefix = hashlib.sha256(cfg_file.read_bytes() + text.encode('utf-8') + native.encode('ascii')).hexdigest()
-            account = pwd.getpwnam('vstats')
             roots = {'original': 'data', 'confirmed': 'data-verified', 'requests': 'data-requests', 'behavior': 'data-behavior'}
             for month in sorted(receipt['native_months']):
                 values = []
@@ -1387,7 +1385,7 @@ def decorate_generation(generation, manifest, apache_gid):
 
 
 def main():
-    global BASE, WEB, CONFIG, APP, LOG, LAUNCHER, PERL, SOURCE_LOG, PROFILE_MAP, PREVIEW_BASELINE, build_snapshot
+    global BASE, WEB, CONFIG, APP, LOG, LAUNCHER, PERL, PERL_LIBRARIES, SOURCE_LOG, PROFILE_MAP, PREVIEW_BASELINE, build_snapshot
     parser = argparse.ArgumentParser(description='Transactional static report publisher and Filters rebuild worker')
     parser.add_argument('--verify-repeat', action='store_true')
     parser.add_argument('--control-settings', default='/etc/vstats/filters.json')
@@ -1398,11 +1396,12 @@ def main():
     options = parser.parse_args()
     if os.geteuid() != 0:
         parser.error('The publisher requires root; log parsing runs as the statistics user')
-    settings = read_json(options.control_settings)
+    settings = read_json(options.control_settings, root_owned=True)
     real_base, real_web, real_config = settings['base'], settings['web'], settings['config']
     state_root = Path(settings['state'])
     APP, PERL, LOG, SOURCE_LOG = settings['app'], settings['perl'], settings['log'], settings['source_log']
-    LAUNCHER = [PERL] + ['-I' + p for p in settings['perl_libraries']] + [str(Path(APP) / 'wwwroot/cgi-bin/awstats.pl')]
+    PERL_LIBRARIES = settings['perl_libraries']
+    LAUNCHER = [PERL] + ['-I' + p for p in PERL_LIBRARIES] + [str(Path(APP) / 'wwwroot/cgi-bin/awstats.pl')]
     account = pwd.getpwnam(settings.get('statistics_user', 'vstats'))
     apache_gid = grp.getgrnam(settings.get('web_group', 'apache')).gr_gid
     control_gid = pwd.getpwnam(settings.get('api_user', 'vstats-control')).pw_gid
@@ -1432,7 +1431,7 @@ def main():
                 raise RuntimeError('Initialize the current UI generation before enabling the control worker')
             if old_status.get('generation') != previous:
                 raise RuntimeError('Current report generation has no verified profile manifest; restore its matching state before bootstrapping')
-            profiles = imported_profiles(sites, real_base, real_config, settings['legacy_app'], old_status)
+            profiles = imported_profiles(sites, real_base, real_config, settings['legacy_app'], old_status, account)
             private_base = real_base
         token = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8]
         run = state_root / 'runs' / token
@@ -1543,7 +1542,7 @@ def main():
             saved_argv = sys.argv
             sys.argv = [saved_argv[0]] + (['--verify-repeat'] if options.verify_repeat else [])
             try:
-                legacy_main()
+                legacy_main(account, apache_gid)
             finally:
                 sys.argv = saved_argv
             generated = Path(WEB) / 'current'

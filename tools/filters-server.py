@@ -113,7 +113,7 @@ def main():
     parser.add_argument('--socket-activation', action='store_true')
     parser.add_argument('--socket')
     args = parser.parse_args()
-    settings = read_json(args.settings)
+    settings = read_json(args.settings, root_owned=True)
     if args.socket_activation:
         if os.environ.get('LISTEN_PID') != str(os.getpid()) or os.environ.get('LISTEN_FDS') != '1':
             raise RuntimeError('One systemd listening socket is required')

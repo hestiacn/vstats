@@ -48,6 +48,22 @@ class Controls(unittest.TestCase):
         self.user = {'name': 'browser-access', 'role': 'operator', 'sites': ['example.test'], 'authenticated': False}
         self.body = {'generation': GEN, 'profile': self.profile, 'action_id': 'a' * 32}
 
+    def test_operator_settings_owner_mode_and_symlink_boundary(self):
+        path = self.root / 'operator-settings.json'
+        path.write_text('{"settings": true}', encoding='utf-8')
+        path.chmod(0o600)
+        if os.geteuid() == 0:
+            self.assertEqual(read_json(path, root_owned=True), {'settings': True})
+            path.chmod(0o620)
+            with self.assertRaises(ValueError): read_json(path, root_owned=True)
+            path.chmod(0o600)
+            os.chown(str(path), 65534, -1)
+        with self.assertRaises(ValueError): read_json(path, root_owned=True)
+        self.assertEqual(read_json(path), {'settings': True})
+        link = self.root / 'operator-link.json'
+        link.symlink_to(path)
+        with self.assertRaises(OSError): read_json(link, root_owned=True)
+
     def test_all_default_choices_on_missing_prerequisites_inactive(self):
         self.assertTrue(all(self.profile['filters'].values()))
         self.assertTrue(self.profile['exclude_automated_ips'])

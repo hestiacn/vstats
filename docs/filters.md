@@ -56,7 +56,8 @@ separate native-accounting PR.
 1. Install the application tree read-only, create dedicated statistics and
    control-service accounts, and provision the protected runtime directories.
    The HTTP account gets no publisher, raw-log or mutable-history permissions.
-2. Configure the publisher's root-owned JSON settings: `base`, `web`, `config`,
+2. Configure the publisher's root-owned JSON settings, without group/other
+   write permission: `base`, `web`, `config`,
    `state`, `app`, `legacy_app`, `perl`, `perl_libraries`, `log`, `source_log`,
    `statistics_user`, `api_user`, `web_group`, and exact HTTPS
    `origins`. Site/log mappings remain in private `sites.json` and AWStats
@@ -120,6 +121,13 @@ link; mutable native histories are copied. Source retention still needs an
 operator storage policy; this feature does not promise unlimited storage.
 
 ## Capacity and evidence
+
+A behavior-enabled publisher run, including Preview, collects the registered
+Google public crawler IP-range feed over verified HTTPS as root, at most once
+per publisher process. No visitor data is sent. Retrieved raw snapshots and
+retrieval attestations are archived; the staged evidence is frozen for both
+applied and proposed Preview profiles. Collection failure leaves the previous
+valid bundle available without extending its historical coverage.
 
 The exporter defaults to strict failure. The publisher explicitly selects
 `--capacity-fallback`: an unambiguous documented byte/record/group hard-max

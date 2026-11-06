@@ -167,7 +167,7 @@ class Publication(unittest.TestCase):
                        'source_log':str(self.root/'source'),'statistics_user':'root','web_group':'root','api_user':'root',
                        'perl_libraries':[]}
         self.settings_file=self.root/'settings.json';self.settings_file.write_text(json.dumps(self.settings),encoding='utf-8')
-        values={k:getattr(publisher,k) for k in ['BASE','WEB','CONFIG','APP','LOG','LAUNCHER','PERL','SOURCE_LOG','PROFILE_MAP','PREVIEW_BASELINE','build_snapshot']}
+        values={k:getattr(publisher,k) for k in ['BASE','WEB','CONFIG','APP','LOG','LAUNCHER','PERL','PERL_LIBRARIES','SOURCE_LOG','PROFILE_MAP','PREVIEW_BASELINE','build_snapshot']}
         self.addCleanup(lambda:[setattr(publisher,k,v) for k,v in values.items()])
 
     def run_publisher(self):

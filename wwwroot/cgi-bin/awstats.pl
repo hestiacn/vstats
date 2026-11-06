@@ -5073,32 +5073,6 @@ sub Substitute_Tags {
 #               Errors out on incompatible configurations
 #------------------------------------------------------------------------------
 sub Check_Config {
-	if ($UpdateStats && length($VerifiedCrawlerEvidenceFile)) {
-		if ($LogType ne 'W' || ($LogFormat ne '1' && $LogFormat ne '4')) {
-			error('Verified crawler evidence requires HTTP combined or common logs.');
-		}
-		my $ok = eval {
-			local @INC = (File::Spec->catdir($DIR || '.', '..', '..', 'tools', 'lib'), @INC);
-			require VStats::TrafficClassifier;
-			my $cap = VStats::TrafficClassifier->fixed_limits->{evidence_bundle_bytes};
-			die 'Evidence must be a regular file' if -l $VerifiedCrawlerEvidenceFile || !-f $VerifiedCrawlerEvidenceFile;
-			open my $evidence, '<:raw', $VerifiedCrawlerEvidenceFile or die 'Evidence open failed';
-			die 'Evidence must be a regular file' if !-f $evidence;
-			my $raw = '';
-			while (1) {
-				my $n = read($evidence, my $chunk, 65536);
-				die 'Evidence read failed' if !defined($n);
-				last if !$n;
-				die 'Evidence bundle too large' if length($raw) + $n > $cap;
-				$raw .= $chunk;
-			}
-			close($evidence) or die 'Evidence close failed';
-			$VerifiedCrawlerEvidence = VStats::TrafficClassifier->evidence_verifier(
-				$raw, format => $LogFormat eq '1' ? 'combined' : 'common');
-			1;
-		};
-		error('Invalid or unreadable verified crawler evidence; statistics were not updated.') if !$ok;
-	}
 	if ($Debug) { debug("Call to Check_Config"); }
 
 	# Show initial values of main parameters before check
@@ -5129,13 +5103,40 @@ sub Check_Config {
 	if ( !$LogFile ) {
 		error("LogFile parameter is not defined in config/domain file");
 	}
-	if ( $LogType !~ /[WSMF]/i ) { $LogType = 'W'; }
+	if ( !defined($LogType) || $LogType !~ /[WSMF]/i ) { $LogType = 'W'; }
 	$LogFormat =~ s/\\//g;
 	if ( !$LogFormat ) {
 		error("LogFormat parameter is not defined in config/domain file");
 	}
 	if ( $LogFormat =~ /^\d$/ && $LogFormat !~ /[1-6]/ ) {
 		error( sprintf( "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')", $LogFormat ) );
+	}
+	# Validate optional evidence only after native defaults and log normalization.
+	if ($UpdateStats && length($VerifiedCrawlerEvidenceFile)) {
+		if ($LogType ne 'W' || ($LogFormat ne '1' && $LogFormat ne '4')) {
+			error('Verified crawler evidence requires HTTP combined or common logs.');
+		}
+		my $ok = eval {
+			local @INC = (File::Spec->catdir($DIR || '.', '..', '..', 'tools', 'lib'), @INC);
+			require VStats::TrafficClassifier;
+			my $cap = VStats::TrafficClassifier->fixed_limits->{evidence_bundle_bytes};
+			die 'Evidence must be a regular file' if -l $VerifiedCrawlerEvidenceFile || !-f $VerifiedCrawlerEvidenceFile;
+			open my $evidence, '<:raw', $VerifiedCrawlerEvidenceFile or die 'Evidence open failed';
+			die 'Evidence must be a regular file' if !-f $evidence;
+			my $raw = '';
+			while (1) {
+				my $n = read($evidence, my $chunk, 65536);
+				die 'Evidence read failed' if !defined($n);
+				last if !$n;
+				die 'Evidence bundle too large' if length($raw) + $n > $cap;
+				$raw .= $chunk;
+			}
+			close($evidence) or die 'Evidence close failed';
+			$VerifiedCrawlerEvidence = VStats::TrafficClassifier->evidence_verifier(
+				$raw, format => $LogFormat eq '1' ? 'combined' : 'common');
+			1;
+		};
+		error('Invalid or unreadable verified crawler evidence; statistics were not updated.') if !$ok;
 	}
 	$LogSeparator ||= "\\s";
 	$DirData      ||= '.';
