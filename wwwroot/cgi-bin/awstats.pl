@@ -6012,6 +6012,9 @@ sub Read_History_With_TmpUpdate {
 		if ($filetoread =~ /\.gz$/) {
 			open( HISTORY, "-|", "gzip", "-dc", $filetoread ) || error( "Couldn't open file \"$filetoread\" for read: $!",
 					"", "", $MigrateStats );
+			# Compression is storage only; decode exactly like plaintext history.
+			binmode( HISTORY, ':encoding(UTF-8)' ) || error( "Couldn't set UTF-8 decoding for \"$filetoread\": $!",
+					"", "", $MigrateStats );
 		} else {
 			open( HISTORY, "<:encoding(UTF-8)", $filetoread ) || error( "Couldn't open file \"$filetoread\" for read: $!",
 				"", "", $MigrateStats );
