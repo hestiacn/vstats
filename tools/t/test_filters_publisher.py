@@ -202,6 +202,19 @@ class Publication(unittest.TestCase):
         self.assertEqual((self.web/'current').resolve(),self.generation)
         self.assertEqual((self.generation/'example.test/2026-10/awstats.example.test.html').read_text(),self.report)
 
+    def test_browser_request_disabled_in_native_config_stops_before_log_snapshot(self):
+        (self.config / 'awstats.example.test.conf').write_text('AllowToUpdateStatsFromBrowser=0\n', encoding='utf-8')
+        self.run_publisher()
+        current = (self.web / 'current').resolve()
+        request = self.root / 'request.json'
+        request.write_text(json.dumps({'site': 'example.test', 'actor': 'browser-access',
+            'authentication': 'access-rule', 'action': 'apply', 'id': 'a' * 32,
+            'base_generation': current.name, 'profile': {}}), encoding='utf-8')
+        with mock.patch.object(sys, 'argv', ['publisher', '--control-settings', str(self.settings_file), '--filter-job', str(request)]), mock.patch.object(publisher, 'build_snapshot') as snapshot:
+            with self.assertRaises(PermissionError): publisher.main()
+            snapshot.assert_not_called()
+        self.assertEqual((self.web / 'current').resolve(), current)
+
     def test_interrupted_commit_leaves_complete_previous_generation_selected(self):
         original_replace=os.replace
         def interrupted(source,destination):

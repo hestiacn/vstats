@@ -1,10 +1,9 @@
-"""Profiles and the authenticated, structured control plane for static vstats.
+"""Profiles and the structured browser control plane for static vstats.
 
 The HTTP process cannot run the publisher. It writes bounded requests which a
 separate privileged worker validates again. Published settings are read through
 the same current-generation pointer as the reports, never from pending edits.
 """
-import base64
 import copy
 import datetime
 import hashlib
@@ -181,16 +180,86 @@ def filter_status(profile, evidence=False, over_limits=False):
     return statuses
 
 
-def password_hash(password, salt=None):
-    salt = salt or secrets.token_hex(16)
-    return {'salt': salt, 'iterations': 600000,
-            'hash': hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), bytes.fromhex(salt), 600000).hex()}
+def browser_policy(config, site):
+    """Read only AWStats browser-access directives; never execute configuration.
+
+    Includes use the top-level configuration directory, as AWStats does. Missing,
+    malformed or unsupported values fail closed. The native ten-level include
+    limit is retained; one MiB per file is a defensive policy-reader bound.
+    """
+    values = {'AllowToUpdateStatsFromBrowser': '0',
+              'AllowAccessFromWebToAuthenticatedUsersOnly': '0',
+              'AllowAccessFromWebToFollowingAuthenticatedUsers': ''}
+    root = Path(config)
+    sources = []
+    def parse(path, depth=0):
+        if depth > 10:
+            raise ValueError('Configuration include depth exceeded')
+        with open(str(path), 'rb') as f:
+            raw = f.read(1048577)
+            st = os.fstat(f.fileno())
+        sources.append({'path': str(path), 'device': st.st_dev, 'inode': st.st_ino,
+                        'mtime_ns': st.st_mtime_ns, 'size': st.st_size})
+        if len(raw) > 1048576:
+            raise ValueError('Configuration exceeds policy-reader bound')
+        for line in raw.decode('utf-8').splitlines():
+            include = re.match(r'^(?:Include|#include) "([^"]+)"', line)
+            if include:
+                name = re.sub(r'__([^\s]+?)__', lambda m: os.environ.get(m.group(1), ''), include.group(1))
+                target = Path(name)
+                parse(target if target.is_absolute() else root / target, depth + 1)
+                continue
+            if line.lstrip().startswith('#'):
+                continue
+            line = re.sub(r'\s#.*$', '', line)
+            if '=' not in line:
+                continue
+            key, value = [v.strip() for v in line.split('=', 1)]
+            if key not in values:
+                continue
+            if value.startswith('"') and value.endswith('"'):
+                value = value[1:-1]
+            values[key] = value
+    try:
+        if not SITE.fullmatch(site):
+            raise ValueError('Invalid site')
+        parse(root / ('awstats.' + site + '.conf'))
+        for key in ['AllowToUpdateStatsFromBrowser', 'AllowAccessFromWebToAuthenticatedUsersOnly']:
+            if values[key] not in ['0', '1']:
+                raise ValueError('Browser-access flags require 0 or 1')
+        return {'allow_updates': values['AllowToUpdateStatsFromBrowser'] == '1',
+                'require_auth': values['AllowAccessFromWebToAuthenticatedUsersOnly'] == '1',
+                'users': values['AllowAccessFromWebToFollowingAuthenticatedUsers'].split(),
+                'sources': sources, 'valid': True}
+    except (OSError, UnicodeError, ValueError):
+        return {'allow_updates': False, 'require_auth': True, 'users': [], 'valid': False}
 
 
-def verify_password(password, record):
-    actual = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), bytes.fromhex(record['salt']),
-                                 record['iterations']).hex()
-    return hmac.compare_digest(actual, record['hash'])
+def public_browser_policy(policy):
+    return {k: policy[k] for k in ['allow_updates', 'require_auth', 'valid']}
+
+
+def publish_browser_policy(settings, gid=None):
+    """Root publishes sanitized access policy without exposing native configs."""
+    sites = read_json(Path(settings['config']) / 'sites.json')
+    value = {'schema_version': 1, 'sites': {s: browser_policy(settings['config'], s) for s in sites}}
+    path = Path(settings['state']) / 'browser-policy.json'
+    try:
+        if read_json(path) == value:
+            return
+    except (OSError, ValueError):
+        pass
+    atomic_json(path, value, gid=gid)
+
+
+def queued_user(request):
+    mode, actor = request.get('authentication'), request.get('actor')
+    if mode not in ['web-server', 'access-rule'] or not isinstance(actor, str) or not actor or len(actor) > 255:
+        raise ValueError('Invalid browser authorization provenance')
+    if mode == 'access-rule' and actor != 'browser-access':
+        raise ValueError('Anonymous access must not claim an authenticated identity')
+    return {'name': actor, 'role': 'operator', 'sites': [request['site']],
+            'authenticated': mode == 'web-server'}
 
 
 class Control:
@@ -215,33 +284,57 @@ class Control:
             raise ValueError('Profile and report generation identities do not match')
         return value
 
-    def user(self, header):
-        if not isinstance(header, str) or not header.startswith('Basic '):
-            return None
+    def web_user(self, remote_user=None):
+        name = (remote_user or '').strip()
+        if len(name) > 255 or any(ord(c) < 32 for c in name):
+            raise PermissionError('Invalid web-server identity')
+        return {'name': name or 'browser-access', 'authenticated': bool(name),
+                'role': 'operator', 'sites': list(self.current()['profiles'])}
+
+    def policy(self, site, fresh=False):
+        if fresh:
+            return browser_policy(self.settings['config'], site)
         try:
-            raw = base64.b64decode(header[6:], validate=True).decode('utf-8')
-            name, password = raw.split(':', 1)
-            users = read_json(self.settings['credentials'])['users']
-            record = users.get(name)
-            if record and verify_password(password, record['password']):
-                return dict(record, name=name)
-        except (ValueError, UnicodeError, KeyError):
+            value = read_json(self.state / 'browser-policy.json')['sites'][site]
+            if (type(value['allow_updates']) is bool and type(value['require_auth']) is bool
+                    and type(value['valid']) is bool and isinstance(value['users'], list)):
+                # Metadata requires traversal, never config read permission. A
+                # changed source invalidates stale permission even mid-rebuild.
+                for source in value.get('sources', []):
+                    st = os.stat(source['path'])
+                    if any(source[k] != v for k, v in [('device', st.st_dev), ('inode', st.st_ino),
+                            ('mtime_ns', st.st_mtime_ns), ('size', st.st_size)]):
+                        raise ValueError('Browser-access policy changed')
+                return value
+        except (OSError, KeyError, ValueError, TypeError):
             pass
-        return None
+        return {'allow_updates': False, 'require_auth': True, 'users': [], 'valid': False}
 
     def csrf(self, user):
         return hmac.new(self.key, user['name'].encode('utf-8'), hashlib.sha256).hexdigest()
 
-    def authorize(self, user, site):
+    def authorize(self, user, site, write=True, fresh=False):
         if not SITE.fullmatch(site) or site not in self.current()['profiles']:
             raise ValueError('Unknown website')
-        if user['role'] != 'administrator' or site not in user['sites']:
-            raise PermissionError('Website administrator access required')
+        if user['role'] != 'operator' or site not in user['sites']:
+            raise PermissionError('Website access required')
+        policy = self.policy(site, fresh=fresh)
+        if not policy['valid']:
+            raise PermissionError('Browser-access configuration unavailable')
+        if policy['require_auth']:
+            name = re.sub(r'\s', '%20', user['name']).casefold()
+            if (not user.get('authenticated') or
+                    (policy['users'] and '__REMOTE_USER__' not in policy['users']
+                     and name not in [v.casefold() for v in policy['users']])):
+                raise PermissionError('Web-server authentication for this website is required')
+        if write and not policy['allow_updates']:
+            raise PermissionError('Browser updates are disabled by AllowToUpdateStatsFromBrowser')
 
     def state_for(self, site):
         manifest = self.current()
         data = copy.deepcopy(manifest['profiles'][site])
         data.update(generation=manifest['generation'], generated_utc=manifest['generated_utc'], site=site)
+        data['browser_access'] = public_browser_policy(self.policy(site))
         draft = self.state / 'drafts' / (site + '.json')
         data['pending'] = read_json(draft) if draft.exists() else None
         data['jobs'] = self.jobs(site)
@@ -330,7 +423,8 @@ class Control:
         # A retry with the same ID returns the original job, including terminal state.
         request = {'schema_version': 1, 'id': action_id, 'site': site, 'action': action,
                    'profile': profile, 'base_generation': body['generation'],
-                   'actor': user['name'], 'coverage_ack': body.get('coverage_ack')}
+                   'actor': user['name'], 'coverage_ack': body.get('coverage_ack'),
+                   'authentication': 'web-server' if user.get('authenticated') else 'access-rule'}
         path = self.state / 'requests' / (action_id + '.json')
         if path.exists():
             old = read_json(path)

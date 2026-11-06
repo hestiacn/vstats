@@ -4,7 +4,7 @@
   const $ = id => document.getElementById(id);
   let state = JSON.parse($('filters-state').textContent);
   let profile = structuredCopy(state.applied || state.default_profile);
-  let auth = null, csrf = null, busy = false, poll = null, coverage = state.coverage;
+  let csrf = null, editable = false, busy = false, poll = null, coverage = state.coverage;
   const site = state.site, base = '/vstats-control/sites/' + encodeURIComponent(site) + '/';
   const historical = $('filters-main').dataset.historical === 'true';
   const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login'];
@@ -24,18 +24,20 @@
     }return{month,filename};
   }
   async function api(path, body) {
-    if(location.protocol !== 'https:') throw new Error('Open Filters over HTTPS before signing in or making changes.');
-    const headers = {'Authorization':auth};
+    if(location.protocol !== 'https:') throw new Error('Open Filters over HTTPS to change settings or reprocess logs.');
+    const headers = {};
     if(body !== undefined) { headers['Content-Type']='application/json'; headers['X-VStats-CSRF']=csrf; }
-    const response = await fetch(path, {method:body===undefined?'GET':'POST', headers, body:body===undefined?undefined:JSON.stringify(body),cache:'no-store',credentials:'omit'});
+    const response = await fetch(path, {method:body===undefined?'GET':'POST', headers, body:body===undefined?undefined:JSON.stringify(body),cache:'no-store',credentials:'same-origin'});
     const result = await response.json(); if(!response.ok) throw new Error(result.error || 'Request failed'); return result;
   }
   function authorization() {
-    const enabled = Boolean(auth && csrf && !busy);
+    const enabled = Boolean(editable && csrf && !busy && !historical);
     $('profile-fields').disabled = !enabled; $('exception-fields').disabled = !enabled;
-    for(const id of ['save-settings','discard-settings','reset-settings','preview','apply']) $(id).disabled = !enabled;
-    $('readonly-note').hidden = Boolean(auth);
-    if(coverage && coverage.needs_acknowledgement && !$('acknowledge-coverage').checked) $('apply').disabled = true;
+    for(const id of ['save-settings','discard-settings','reset-settings','preview','apply','apply-settings']) $(id).disabled = !enabled;
+    $('readonly-note').hidden = editable;
+    $('settings-actions').hidden = !editable || historical; $('reprocessing-actions').hidden = !editable || historical;
+    $('exception-fields').hidden = !editable || historical;
+    if(coverage && coverage.needs_acknowledgement && !$('acknowledge-coverage').checked) { $('apply').disabled = true; $('apply-settings').disabled = true; }
   }
   function drawCoverage(value) {
     coverage = value; const area = $('coverage-description'); area.replaceChildren();
@@ -79,7 +81,7 @@
     return result;
   }
   async function refresh() {
-    state=await api(base+'state');profile=structuredCopy(state.pending?state.pending.profile:(state.applied||state.default_profile));drawForm();await history();
+    state=await api(base+'state');editable=Boolean((state.browser_access||{}).allow_updates);profile=structuredCopy(state.pending?state.pending.profile:(state.applied||state.default_profile));drawForm();await history();
   }
   function drawExceptions() {
     const area=$('exceptions-list');area.replaceChildren();
@@ -118,7 +120,7 @@
     $('job-status').replaceChildren(node('p',job.status+' — '+(job.phase||'')));
     if(job.error) $('job-status').append(node('p',job.error));
     if(job.result) {impact(job.result);if(job.result.coverage_required) drawCoverage(job.result.coverage_required);}
-    if(['Completed','Failed'].includes(job.status)) {
+    if(editable && ['Completed','Failed'].includes(job.status)) {
       const button=node('button',job.status==='Failed'?'Retry as a new action':'Reprocess as a new action');button.onclick=()=>submitJob(job.action);$('job-status').append(button);
     }
   }
@@ -139,7 +141,7 @@
     }; await step();
   }
   async function submitJob(action) {
-    if(historical) return;
+    if(historical || !editable) return;
     if(busy) return;
     if(action==='apply'&&!confirm('Reprocess all retained logs and publish the selected settings? Existing reports stay available until the validated rebuild completes.')) return;
     const id=Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -148,7 +150,7 @@
     try {const job=await api(base+action,body);message(action==='preview'?'Preview queued. It will not change published reports.':'Rebuild queued. Reports remain available.');await watch(job.id);} catch(e) {busy=false;authorization();message(e.message);}
   }
   async function settingAction(action,extra={}) {
-    if(historical) return;
+    if(historical || !editable) return;
     try {const body=Object.assign({generation:state.generation,profile:collect()},extra);await api(base+action,body);await refresh();message(action==='discard'?'Pending edits discarded.':'Changes are pending; published reports have not changed.');}catch(e){message(e.message);}
   }
   function drawLinks() {
@@ -164,19 +166,18 @@
     }
   }
   async function history() {
-    if(!auth) {$('history-list').textContent='Sign in to inspect processing history or restore previous settings.';return;}
+    if(!csrf) {$('history-list').textContent='Processing history is available through the browser controls service.';return;}
     try {const entries=await api(base+'history');const area=$('history-list');area.replaceChildren();
       entries.forEach(item=>{const row=node('p',item.time+' · '+item.actor+' · '+(item.profile_id?item.profile_id.slice(0,12):'Unverified profile')+' ');
         if(item.report_url){const link=node('a','Inspect retained reports');link.href=item.report_url;row.append(link,document.createTextNode(' '));}
-        if(item.verified_profile&&!item.current){const button=node('button','Restore settings as pending');button.onclick=()=>settingAction('restore',{restore_generation:item.generation});row.append(button);}area.append(row);});
+        if(editable&&item.verified_profile&&!item.current){const button=node('button','Restore settings as pending');button.onclick=()=>settingAction('restore',{restore_generation:item.generation});row.append(button);}area.append(row);});
     }catch(e){message(e.message);}
   }
-  $('login-form').onsubmit=async e=>{e.preventDefault();if(historical)return;auth='Basic '+btoa(unescape(encodeURIComponent($('login-user').value+':'+$('login-password').value)));$('login-password').value='';try{const session=await api('/vstats-control/session');csrf=session.csrf;await refresh();$('admin-login').open=false;message('Signed in as '+session.actor+'. Changes stay pending until Apply & reprocess.');}catch(error){auth=null;csrf=null;authorization();message(error.message);}};
-  $('save-settings').onclick=()=>settingAction('save');$('discard-settings').onclick=()=>settingAction('discard');$('reset-settings').onclick=()=>settingAction('reset');$('preview').onclick=()=>submitJob('preview');$('apply').onclick=()=>submitJob('apply');
+  $('save-settings').onclick=()=>settingAction('save');$('discard-settings').onclick=()=>settingAction('discard');$('reset-settings').onclick=()=>settingAction('reset');$('preview').onclick=()=>submitJob('preview');$('apply').onclick=()=>submitJob('apply');$('apply-settings').onclick=()=>submitJob('apply');
   $('acknowledge-coverage').onchange=authorization;$('ip-policy').onchange=edited;$('native-level').onchange=edited;
   $('add-exception').onclick=()=>{const id=$('exception-id').value.trim(),reason=$('exception-reason').value.trim();if(!/^[a-f0-9]{64}$/.test(id)||!reason){message('Enter a complete request ID and a reason.');return;}profile=collect();if(profile.exceptions.some(x=>x.request_id===id)){message('This request ID already has an inclusion.');return;}profile.exceptions.push({request_id:id,reason});$('exception-id').value='';$('exception-reason').value='';drawExceptions();edited();message('Inclusion added to unsaved settings. Save or preview it, then Apply & reprocess to change reports.');};
   const returning=new URLSearchParams(location.search).get('return');
   if(returning&&returning.startsWith('/vstats/'+site+'/')&&!returning.startsWith('//')&&!returning.includes('\\'))$('return-report').href=returning;
   function tab(){const value=location.hash||'#settings';document.querySelectorAll('.filters-tabs a').forEach(a=>a.setAttribute('aria-current',String(a.hash===value)));}window.addEventListener('hashchange',tab);
-  drawForm();tab();if(historical){$('admin-login').hidden=true;$('readonly-note').textContent='Historical snapshot — read-only. Open the current Filters page to change settings.';}
+  drawForm();tab();if(historical){$('readonly-note').textContent='Historical snapshot — read-only. Open the current Filters page to change settings.';}else{(async()=>{try{const session=await api('/vstats-control/session');csrf=session.csrf;await refresh();if(!editable)$('readonly-note').textContent='Browser changes and reprocessing are disabled: AllowToUpdateStatsFromBrowser=0.';}catch(error){editable=false;authorization();message(error.message);}})();}
 })();

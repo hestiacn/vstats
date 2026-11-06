@@ -13,7 +13,7 @@ import time
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from vstats_filters import (Control, IDENTIFIER, atomic_json, identity, read_json,
-                           utcnow, validate_profile)
+                           utcnow, validate_profile, publish_browser_policy, queued_user)
 
 
 def process(control, request_path):
@@ -30,9 +30,7 @@ def process(control, request_path):
     try:
         if request['id'] != action_id or job['id'] != action_id:
             raise ValueError('Action identity mismatch')
-        users = read_json(control.settings['credentials'])['users']
-        user = dict(users[request['actor']], name=request['actor'])
-        control.authorize(user, request['site'])
+        control.authorize(queued_user(request), request['site'], fresh=True)
         if request['action'] not in ['preview', 'apply']:
             raise ValueError('Unsupported queued action')
         profile = validate_profile(request['profile'], control.app, control.perl)
@@ -98,6 +96,7 @@ def main():
                            completed_utc=utcnow())
                 atomic_json(path, job, gid=gid)
         while True:
+            publish_browser_policy(settings, gid=gid)
             for path in sorted((control.state / 'requests').glob('*.json')):
                 try:
                     process(control, path)

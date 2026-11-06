@@ -28,7 +28,8 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from normalize_logs import build_snapshot
 from vstats_filters import (add_filters_menu, native_shell, canonical, identity, read_json,
-                            atomic_json, validate_profile, defaults, filter_status, FILTERS, GENERATION)
+                            atomic_json, validate_profile, defaults, filter_status, FILTERS, GENERATION,
+                            Control, browser_policy, public_browser_policy, publish_browser_policy, queued_user)
 
 BASE = '/var/lib/vstats'
 WEB = '/var/www/vstats'
@@ -1421,6 +1422,7 @@ def main():
         previous_manifest_path = state_root / 'runs' / previous / 'manifest.json'
         old_status = read_json(Path(real_base) / 'status.json')
         sites = read_json(Path(real_config) / 'sites.json')
+        publish_browser_policy(settings, gid=control_gid)
         if previous_manifest_path.exists():
             previous_manifest = read_json(previous_manifest_path)
             profiles = json.loads(json.dumps(previous_manifest['profiles']))
@@ -1438,6 +1440,7 @@ def main():
         # parent; raw data below remains readable only by the statistics group.
         private_directory(str(run), control_gid, mode=0o751)
         if request:
+            Control(settings).authorize(queued_user(request), request['site'], fresh=True)
             if request['base_generation'] != previous or request['site'] not in sites:
                 raise RuntimeError('Queued generation is stale or website is unknown')
             site = request['site']
@@ -1573,6 +1576,7 @@ def main():
         native_gap = defaults(APP, PERL)['classifier']['verification']['max_gap_seconds']
         evidence_dates = native_evidence_dates(private_base if options.bootstrap_ui else str(stage_base), native_gap)
         for site, info in profiles.items():
+            info['browser_access'] = public_browser_policy(browser_policy(real_config, site))
             if info['applied']:
                 info['effective_by_month'] = {m: filter_status(info['applied'], evidence=any(d.startswith(m + '-') for d in evidence_dates),
                     over_limits=m in info.get('capacity_fallback', {})) for m in info.get('totals', {})}
@@ -1616,6 +1620,9 @@ def main():
             print(json.dumps({'status': 'TRIAL PASS', 'generation': token, 'published': False}), flush=True)
             return
         destination = Path(real_web) / 'generations' / token
+        if request:
+            # A policy change while a long rebuild runs must prevent publication.
+            Control(settings).authorize(queued_user(request), request['site'], fresh=True)
         os.rename(str(generated), str(destination))
         subprocess.check_call(['/sbin/restorecon', '-R', str(destination)])
         # The profile/history manifest already exists. This is the sole public

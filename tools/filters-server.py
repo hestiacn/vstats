@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Private Unix-socket API. Authentication does not rely on an IP allow rule."""
+"""Private API behind the web server's existing access/authentication rules."""
 import argparse
 import hmac
 from http.server import BaseHTTPRequestHandler
@@ -22,28 +22,24 @@ class Handler(BaseHTTPRequestHandler):
         # URLs and credentials do not belong in the service journal.
         pass
 
-    def respond(self, code, value, authenticate=False):
+    def respond(self, code, value):
         raw = canonical(value)
         self.send_response(code)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(raw)))
         self.send_header('Cache-Control', 'private, no-store')
         self.send_header('X-Content-Type-Options', 'nosniff')
-        if authenticate:
-            self.send_header('WWW-Authenticate', 'Basic realm="vstats Filters", charset="UTF-8"')
         self.end_headers()
         self.wfile.write(raw)
 
     def dispatch(self, mutation=False):
         control = self.server.control
         if self.headers.get('X-Forwarded-Proto') != 'https':
-            self.respond(403, {'error': 'Open Filters over HTTPS before signing in.'})
-            return
-        user = control.user(self.headers.get('Authorization'))
-        if user is None:
-            self.respond(401, {'error': 'Statistics administrator sign-in required.'}, authenticate=True)
+            self.respond(403, {'error': 'Open Filters over HTTPS to use browser controls.'})
             return
         try:
+            # The proxy MUST overwrite this header from its real REMOTE_USER.
+            user = control.web_user(self.headers.get('X-VStats-Remote-User'))
             route = urlsplit(self.path)
             if route.query or route.fragment or '%' in route.path:
                 raise ValueError('Unsupported API route')
@@ -65,12 +61,20 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError('Unsupported API route')
                 result = control.change(parts[1], parts[2], body, user)
             elif parts == ['session']:
-                result = {'actor': user['name'], 'sites': user['sites'], 'csrf': control.csrf(user)}
+                sites = []
+                for site in user['sites']:
+                    try:
+                        control.authorize(user, site, write=False)
+                        sites.append(site)
+                    except PermissionError:
+                        pass
+                result = {'actor': user['name'], 'sites': sites, 'csrf': control.csrf(user),
+                          'authenticated': user['authenticated']}
             elif len(parts) == 3 and parts[0] == 'sites' and parts[2] == 'state':
-                control.authorize(user, parts[1])
+                control.authorize(user, parts[1], write=False)
                 result = control.state_for(parts[1])
             elif len(parts) == 3 and parts[0] == 'sites' and parts[2] == 'history':
-                control.authorize(user, parts[1])
+                control.authorize(user, parts[1], write=False)
                 result = control.history_for(parts[1])
             elif len(parts) == 2 and parts[0] == 'jobs' and IDENTIFIER.fullmatch(parts[1]):
                 path = control.state / 'jobs' / (parts[1] + '.json')
@@ -78,12 +82,12 @@ class Handler(BaseHTTPRequestHandler):
                     result = read_json(path)
                 else:
                     result = read_json(control.state / 'requests' / (parts[1] + '.json'))['queued']
-                control.authorize(user, result['site'])
+                control.authorize(user, result['site'], write=False)
             else:
                 raise ValueError('Unsupported API route')
             self.respond(200, result)
-        except PermissionError:
-            self.respond(403, {'error': 'Administrator access to this website is required.'})
+        except PermissionError as e:
+            self.respond(403, {'error': str(e)})
         except (ValueError, TypeError, KeyError, FileNotFoundError, UnicodeError) as e:
             # Validation errors contain fixed diagnostics, never log contents.
             message = str(e) if isinstance(e, ValueError) else 'Invalid request or unavailable state'

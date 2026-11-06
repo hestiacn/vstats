@@ -7,6 +7,8 @@ ProxyPassReverse /vstats-control/ http://localhost/
 <Location /vstats-control/>
     Require local
     RequestHeader set X-Forwarded-Proto "expr=%{REQUEST_SCHEME}"
+    # Overwrite caller-supplied identity, including when REMOTE_USER is empty.
+    RequestHeader set X-VStats-Remote-User "expr=%{REMOTE_USER}"
     Header always set Cache-Control "private, no-store"
     Header always set X-Content-Type-Options "nosniff"
 </Location>

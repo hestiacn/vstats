@@ -1,20 +1,21 @@
-import base64
 import copy
 import importlib.util
 import json
 import os
+import pwd
 from pathlib import Path
 import socket
 import sys
 import tempfile
 import threading
 import unittest
+from unittest import mock
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
 from vstats_filters import (Control, atomic_json, canonical, identity, defaults, validate_profile,
-                           filter_status, password_hash, add_filters_menu, read_json)
+                           filter_status, add_filters_menu, read_json, browser_policy, publish_browser_policy, queued_user)
 
 PERL = os.environ.get('VSTATS_TEST_PERL', '/opt/vstats/runtime/perl-5.44.0/bin/perl')
 GEN = '20261105T120000Z-12345678'
@@ -35,13 +36,16 @@ class Controls(unittest.TestCase):
                          'profiles': {s: {'applied': self.profile, 'managed': True, 'profile_id': identity(self.profile)}
                                       for s in ['example.test', 'other.test']}}
         atomic_json(self.state / 'runs' / GEN / 'manifest.json', self.manifest)
-        self.credentials = self.root / 'credentials.json'
-        atomic_json(self.credentials, {'users': {'admin': {'password': password_hash('synthetic-test-password'),
-                   'role': 'administrator', 'sites': ['example.test']}}})
+        self.config = self.root / 'config'; self.config.mkdir()
+        atomic_json(self.config / 'sites.json', {'example.test': {}, 'other.test': {}})
+        for site, enabled in [('example.test', 1), ('other.test', 0)]:
+            (self.config / ('awstats.' + site + '.conf')).write_text(
+                'AllowToUpdateStatsFromBrowser=' + str(enabled) + '\n', encoding='utf-8')
         self.settings = {'state': str(self.state), 'web': str(self.web), 'app': str(ROOT), 'perl': PERL,
-                         'credentials': str(self.credentials), 'origins': ['https://example.test']}
+                         'config': str(self.config), 'origins': ['https://example.test']}
+        publish_browser_policy(self.settings)
         self.control = Control(self.settings)
-        self.user = {'name': 'admin', 'role': 'administrator', 'sites': ['example.test']}
+        self.user = {'name': 'browser-access', 'role': 'operator', 'sites': ['example.test'], 'authenticated': False}
         self.body = {'generation': GEN, 'profile': self.profile, 'action_id': 'a' * 32}
 
     def test_all_default_choices_on_missing_prerequisites_inactive(self):
@@ -142,14 +146,81 @@ class Controls(unittest.TestCase):
             self.control.change('example.test', 'restore', dict(self.body, restore_generation=token), self.user)
         self.assertFalse((self.state / 'drafts/example.test.json').exists())
 
-    def test_authentication_and_csrf_are_not_ip_based(self):
-        header = 'Basic ' + base64.b64encode(b'admin:synthetic-test-password').decode('ascii')
-        self.assertIsNotNone(self.control.user(header))
-        self.assertIsNone(self.control.user('Basic ' + base64.b64encode(b'admin:wrong').decode('ascii')))
-        self.assertIsNone(self.control.user(None))
-        self.assertNotEqual(self.control.csrf(self.user), self.control.csrf(dict(self.user, name='other')))
+    def test_browser_flag_is_enforced_for_every_action_and_stale_cache(self):
+        config = self.config / 'awstats.example.test.conf'
+        config.write_text('AllowToUpdateStatsFromBrowser=0\n', encoding='utf-8')
+        for action in ['save', 'discard', 'reset', 'preview', 'apply', 'restore']:
+            with self.assertRaises(PermissionError):
+                self.control.change('example.test', action, self.body, self.user)
+        publish_browser_policy(self.settings)
+        self.control.authorize(self.user, 'example.test', write=False)
+        for action in ['save', 'discard', 'reset', 'preview', 'apply', 'restore']:
+            with self.assertRaises(PermissionError):
+                self.control.change('example.test', action, self.body, self.user)
+        self.assertEqual(list((self.state / 'requests').glob('*.json')), [])
 
-    def test_http_requires_https_authentication_origin_and_csrf(self):
+    def test_native_includes_overrides_missing_and_invalid_flags(self):
+        config = self.config / 'awstats.example.test.conf'
+        (self.config / 'shared.conf').write_text('AllowToUpdateStatsFromBrowser=1\n', encoding='utf-8')
+        config.write_text('Include "shared.conf"\nAllowToUpdateStatsFromBrowser="0" # override\n', encoding='utf-8')
+        self.assertFalse(browser_policy(self.config, 'example.test')['allow_updates'])
+        config.write_text('#include "shared.conf"\n', encoding='utf-8')
+        self.assertTrue(browser_policy(self.config, 'example.test')['allow_updates'])
+        (self.config / 'shared.conf').write_text('AllowToUpdateStatsFromBrowser=unexpected\n', encoding='utf-8')
+        self.assertFalse(browser_policy(self.config, 'example.test')['valid'])
+        config.unlink()
+        self.assertFalse(browser_policy(self.config, 'example.test')['allow_updates'])
+
+    def test_native_optional_web_authentication_and_named_user_list(self):
+        config = self.config / 'awstats.example.test.conf'
+        config.write_text('AllowToUpdateStatsFromBrowser=1\nAllowAccessFromWebToAuthenticatedUsersOnly=1\nAllowAccessFromWebToFollowingAuthenticatedUsers="Alice"\n', encoding='utf-8')
+        publish_browser_policy(self.settings)
+        with self.assertRaises(PermissionError): self.control.authorize(self.user, 'example.test')
+        self.control.authorize(self.control.web_user('alice'), 'example.test')
+        with self.assertRaises(PermissionError): self.control.authorize(self.control.web_user('bob'), 'example.test')
+        config.write_text('AllowToUpdateStatsFromBrowser=1\nAllowAccessFromWebToAuthenticatedUsersOnly=1\nAllowAccessFromWebToFollowingAuthenticatedUsers="__REMOTE_USER__"\n', encoding='utf-8')
+        publish_browser_policy(self.settings)
+        self.control.authorize(self.control.web_user('other authenticated user'), 'example.test')
+        self.assertNotEqual(self.control.csrf(self.user), self.control.csrf(self.control.web_user('alice')))
+
+    def test_worker_authorization_rereads_native_config_after_queueing(self):
+        self.control.change('example.test', 'preview', self.body, self.user)
+        request = read_json(self.state / 'requests' / ('a' * 32 + '.json'))['request']
+        self.assertEqual(request['authentication'], 'access-rule')
+        user = queued_user(request)
+        self.control.authorize(user, request['site'], fresh=True)
+        (self.config / 'awstats.example.test.conf').write_text('AllowToUpdateStatsFromBrowser=0\n', encoding='utf-8')
+        with self.assertRaises(PermissionError): self.control.authorize(user, request['site'], fresh=True)
+        with self.assertRaises(ValueError): queued_user(dict(request, actor='forged-name'))
+
+    def test_disabled_queued_job_cannot_launch_the_publisher(self):
+        self.settings['api_user'] = pwd.getpwuid(os.getuid()).pw_name
+        self.control.change('example.test', 'preview', self.body, self.user)
+        path = self.state / 'requests' / ('a' * 32 + '.json')
+        (self.config / 'awstats.example.test.conf').write_text('AllowToUpdateStatsFromBrowser=0\n', encoding='utf-8')
+        spec = importlib.util.spec_from_file_location('filters_worker_test', str(ROOT / 'tools/filters-worker.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        with mock.patch.object(module.subprocess, 'run') as launch:
+            module.process(self.control, path)
+            launch.assert_not_called()
+        self.assertEqual(read_json(self.state / 'jobs' / ('a' * 32 + '.json'))['status'], 'Failed')
+
+    def test_enabled_job_uses_fixed_worker_without_any_account_file(self):
+        self.settings['api_user'] = pwd.getpwuid(os.getuid()).pw_name
+        self.settings['settings_path'] = str(self.root / 'settings.json')
+        self.control.change('example.test', 'preview', self.body, self.user)
+        spec = importlib.util.spec_from_file_location('filters_worker_enabled_test', str(ROOT / 'tools/filters-worker.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        def rebuilt(command, **kwargs):
+            self.assertIn('--filter-job', command)
+            self.assertEqual(command[2], str(ROOT / 'tools/publish-static-reports.py'))
+            atomic_json(self.state / 'jobs' / ('a' * 32 + '-result.json'), {'before': {}, 'after': {}})
+            return type('Result', (), {'returncode': 0})()
+        with mock.patch.object(module.subprocess, 'run', side_effect=rebuilt):
+            module.process(self.control, self.state / 'requests' / ('a' * 32 + '.json'))
+        self.assertEqual(read_json(self.state / 'jobs' / ('a' * 32 + '.json'))['status'], 'Completed')
+
+    def test_http_requires_https_origin_csrf_and_native_permission_without_login(self):
         spec = importlib.util.spec_from_file_location('filters_server_test', str(ROOT / 'tools/filters-server.py'))
         module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
         path = str(self.root / 'api.sock')
@@ -165,10 +236,10 @@ class Controls(unittest.TestCase):
             return code, json.loads(data.decode())
         self.assertEqual(request('GET', '/session', {})[0], 403)
         headers = {'X-Forwarded-Proto': 'https'}
-        self.assertEqual(request('GET', '/session', headers)[0], 401)
-        headers['Authorization'] = 'Basic ' + base64.b64encode(b'admin:synthetic-test-password').decode('ascii')
         code, session = request('GET', '/session', headers)
         self.assertEqual(code, 200)
+        self.assertFalse(session['authenticated'])
+        self.assertEqual(session['actor'], 'browser-access')
         headers['Content-Type'] = 'application/json'; headers['Origin'] = 'https://hostile.example'
         self.assertEqual(request('POST', '/sites/example.test/save', headers, canonical(self.body))[0], 403)
         headers['Origin'] = 'https://example.test'; headers['X-VStats-CSRF'] = 'wrong'
