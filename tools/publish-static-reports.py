@@ -797,7 +797,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
     selected = PROFILE_MAP.get(site)
     if selected:
         level = selected['native_level'] if selected['filters']['native_crawlers'] else 0
-        template = re.sub(r'^LevelForRobotsDetection\s*=.*$', 'LevelForRobotsDetection=' + str(level), template, flags=re.M)
+        # Explicit profile choice follows optional defaults and included settings.
+        template += '\nLevelForRobotsDetection="' + str(level) + '"\n'
         if not selected['filters']['verified_crawlers']:
             evidence = {day: dict(item, path='', sha256=hashlib.sha256(b'').hexdigest()) for day, item in evidence.items()}
     native_hash = hashlib.sha256(Path(os.path.join(APP, 'wwwroot/cgi-bin/awstats.pl')).read_bytes() +
