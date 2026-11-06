@@ -111,6 +111,15 @@ checks native totals and history sections on repeated identical input.
 `--lock-fd` is reserved for a root deployment wrapper holding that exact lock.
 
 The publisher stages mutable histories, profiles and all four report views.
+Publisher-owned `LogFile`, `DirData`, `PurgeLogFile=0` and `ArchiveLogRecords=0`
+assignments follow native Includes, so included settings cannot redirect processing
+or purge retained input. Filtered and verified views select their staged `VerifiedCrawlerEvidenceFile` after Includes, and a Filters-managed original view selects none; the original view of a site not managed by Filters retains its configured evidence choice.
+Managed sites with native Includes replay every retained month on every run.
+The processing cost grows with retained input; no capacity guarantee is made.
+The publisher preserves the original main or verified configuration directory
+as the base for relative Includes, including nested and parent-directory targets.
+The statistics account reads these targets in place, so they need the same read
+permission as for native command-line processing. No extra copy is made.
 A manifest is complete before the single public report-generation symlink
 changes. Readers, the API and subsequent updates resolve the profile through
 that same pointer. Failed work cannot select a new profile with old reports.
@@ -119,6 +128,9 @@ and work products can be removed after commit, while source corpus links and
 profile metadata remain. Retained source files are immutable and shared by hard
 link; mutable native histories are copied. Source retention still needs an
 operator storage policy; this feature does not promise unlimited storage.
+Existing incorrectly encoded history in sites not managed by Filters is not
+migrated; managed views regenerate from retained input when their native code
+or profile changes.
 
 ## Capacity and evidence
 

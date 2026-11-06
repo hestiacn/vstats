@@ -11,7 +11,7 @@ use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later. No file or network I/O here.
 our $VERSION = '1.7';
-my $ALGORITHM = 'vstats-traffic-v8';
+my $ALGORITHM = 'vstats-traffic-v9';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -42,11 +42,16 @@ my $DEFAULT = {
 };
 
 sub defaults { return $JSON->decode($JSON->encode($DEFAULT)); }
+# Context radius: a distributed window also depends on coherent POST->GET
+# spans (<= w) intersecting it, requiring up to 2w of neighboring evidence.
+# The configured detector/grid width stays unchanged.
 sub analysis_window {
     my ($class,$config)=@_;my $window=$config->{scanner}{window_seconds};
-    for my $rule (qw(behavior probing rapid_scan distributed_login)) {
+    for my $rule (qw(behavior probing rapid_scan)) {
         $window=$config->{$rule}{window_seconds} if $config->{$rule}{enabled} && $config->{$rule}{window_seconds}>$window;
     }
+    my $dl=$config->{distributed_login};
+    $window=2*$dl->{window_seconds} if $dl->{enabled} && 2*$dl->{window_seconds}>$window;
     return $window;
 }
 sub fixed_limits { return $JSON->decode($JSON->encode($FIXED)); }

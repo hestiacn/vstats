@@ -57,7 +57,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v8`. Optional private details include status, the per-request
+`vstats-traffic-v9`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
@@ -705,13 +705,18 @@ longer distributed window to capture slower repeated campaigns; all source,
 sequence, peer-sharing and pooled requirements still apply. A longer window can
 also enlarge coherent-flow protection and can both add and remove flags.
 
-The library method `analysis_window($config)` returns the largest enabled rule
-window, including scanner context. `add_context('before', $raw)` and
+The library method `analysis_window($config)` returns the required evidence radius:
+the largest scanner or enabled sliding-rule window, or twice the enabled
+distributed-login window. A candidate grid window also needs coherent-flow spans
+that begin before or end after it; its detector width remains unchanged.
+`add_context('before', $raw)` and
 `add_context('after', $raw)` accept at most one side each, using the primary input
 format and the same parser. Context must be disjoint from the primary parsed
 period. Bytes, nonblank records and source/UA groups count against the combined
-configured caps. Context farther than the maximum rule window from the actual
+configured caps. Context farther than the required evidence radius from the actual
 primary period is unused; `used_analyzed_records` makes this explicit.
+A longer distributed-login window can consume up to twice its width on each side
+against the same combined caps; no record, byte, group or detector-window cap is raised.
 
 The CLI exposes `--context-before FILE` and `--context-after FILE`. Context paths
 participate in output/input alias checks. Primary physical line indices, input
@@ -730,9 +735,11 @@ keeps halo logs private. Missing neighbors supply no evidence. Unparseable halo
 lines remain unavailable evidence; they do not become timestamped requests.
 
 Each `daily_reports` entry exposes `analysis_context_sha256`, hashing the selected
-before/after bytes and maximum window. A cached monthly replay must bind these
+before/after bytes and required evidence radius. A cached monthly replay must bind these
 values in addition to primary daily input, evidence, source and configuration
-hashes. The following month's first-day halo can change the previous month's
+hashes. Native configurations containing `Include "..."` or `#include "..."`
+are never reused, because the signature does not bind included contents; all
+retained months are replayed on each run. The following month's first-day halo can change the previous month's
 classification; invalidate that earlier month too. Appending records outside the
 halo does not alter the prior day's boundary dependency. The IP-policy context
 binding also includes halo identities (`context_binding_version: 2`); IP/month

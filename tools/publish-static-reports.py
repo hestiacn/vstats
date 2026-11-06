@@ -35,6 +35,7 @@ BASE = '/var/lib/vstats'
 WEB = '/var/www/vstats'
 APP = '/opt/vstats/current'
 CONFIG = '/etc/vstats'
+NATIVE_INCLUDE_BASE = None
 LAUNCHER = '/opt/vstats/bin/vstats'
 LOG = '/var/log/vstats'
 SOURCE_LOG = '/var/log/httpd'
@@ -84,7 +85,15 @@ def as_statistics_user(account):
 
 def invoke(account, site, arguments, log_label, output=None, config_dir=None):
     environment = {'PATH': '/usr/bin:/bin', 'LANG': 'C', 'LC_ALL': 'C', 'TZ': 'UTC'}
-    command = ([LAUNCHER] if isinstance(LAUNCHER, str) else LAUNCHER) + [ '-config=' + site, '-configdir=' + (config_dir or CONFIG)] + arguments
+    effective_config = config_dir or CONFIG
+    if NATIVE_INCLUDE_BASE is not None:
+        if os.path.commonpath([os.path.abspath(effective_config), os.path.abspath(CONFIG)]) == os.path.abspath(CONFIG):
+            include_base = os.path.join(NATIVE_INCLUDE_BASE, os.path.relpath(effective_config, CONFIG))
+        else:
+            # Replay/baseline configs originate from the main site config.
+            include_base = NATIVE_INCLUDE_BASE
+        environment['VSTATS_NATIVE_INCLUDE_ROOT'] = os.path.join(os.getcwd(), include_base)
+    command = ([LAUNCHER] if isinstance(LAUNCHER, str) else LAUNCHER) + [ '-config=' + site, '-configdir=' + effective_config] + arguments
     proc = subprocess.Popen(command, cwd=BASE, env=environment,
                             preexec_fn=as_statistics_user(account),
                             stdout=output if output is not None else subprocess.PIPE,
@@ -696,16 +705,22 @@ def behavior_layer_controls(site, period, filename, info, original=False, confir
     return body + '<p>Behavioral suspicion is heuristic. The default IP policy applies throughout this site UTC month, including earlier requests; it does not carry to another month without new evidence. Shared or dynamic IPs can include real users. Explicit request-ID inclusions may restore an IP to visitor counts. These views affect statistics only; remaining visitors are not verified people.</p></section>'
 
 
-def behavior_config(text, logfile, data, evidence):
-    values = {'LogFile': logfile, 'DirData': data, 'VerifiedCrawlerEvidenceFile': evidence}
+NATIVE_FINAL = '# vstats: publisher-owned settings; must follow every Include'
+
+
+def final_native_settings(text, values):
+    lines = []
     for name, value in values.items():
-        assignment = name + '="' + value + '"'
-        text, count = re.subn(r'^' + re.escape(name) + r'\s*=.*$', lambda match: assignment, text, flags=re.M)
-        if not count:
-            text += '\n' + assignment + '\n'
-        elif count != 1:
-            raise RuntimeError('Duplicate native setting in profile template')
-    return text
+        value = str(value)
+        if not re.fullmatch(r'[A-Za-z]+', name) or re.search(r'["#\r\n]|__', value):
+            raise RuntimeError('Unsafe publisher-owned native setting')
+        lines.append(name + '="' + value + '"')
+    return text.rstrip('\n') + '\n' + NATIVE_FINAL + '\n' + '\n'.join(lines) + '\n'
+
+
+def behavior_config(text, logfile, data, evidence):
+    return final_native_settings(text, {'LogFile': logfile, 'DirData': data,
+        'VerifiedCrawlerEvidenceFile': evidence, 'PurgeLogFile': 0, 'ArchiveLogRecords': 0})
 
 
 def empty_totals():
@@ -821,6 +836,9 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
         raise RuntimeError('Missing daily boundary cache identities')
     months = sorted({day[:7] for day in days})
     native_months = {}
+    # Included native configuration is read at replay time, outside this
+    # top-level signature. Rebuild every retained month rather than reuse it.
+    cache_reusable = not re.search(r'^(?:Include|#include) "', template, re.M)
     stable_template = re.sub(r'^(LogFile|DirData)\s*=.*$', lambda m: m.group(1) + '="<generation-private>"', template, flags=re.M)
     prefix_signature = hashlib.sha256(config_raw + stable_template.encode('utf-8') + native_hash.encode('ascii')).hexdigest()
     for month in months:
@@ -829,7 +847,7 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
         prefix_signature = signature
         filename = 'awstats' + month[5:] + month[:4] + '.' + site + '.txt'
         old = receipt.get('native_months', {}).get(month, {})
-        reuse = old.get('signature') == signature
+        reuse = cache_reusable and old.get('signature') == signature
         contents = {}
         if reuse:
             for mode, root in history_roots.items():
@@ -1391,7 +1409,7 @@ def decorate_generation(generation, manifest, apache_gid):
 
 
 def main():
-    global BASE, WEB, CONFIG, APP, LOG, LAUNCHER, PERL, PERL_LIBRARIES, SOURCE_LOG, PROFILE_MAP, PREVIEW_BASELINE, build_snapshot
+    global BASE, WEB, CONFIG, NATIVE_INCLUDE_BASE, APP, LOG, LAUNCHER, PERL, PERL_LIBRARIES, SOURCE_LOG, PROFILE_MAP, PREVIEW_BASELINE, build_snapshot
     parser = argparse.ArgumentParser(description='Transactional static report publisher and Filters rebuild worker')
     parser.add_argument('--verify-repeat', action='store_true')
     parser.add_argument('--control-settings', default='/etc/vstats/filters.json')
@@ -1404,6 +1422,7 @@ def main():
         parser.error('The publisher requires root; log parsing runs as the statistics user')
     settings = read_json(options.control_settings, root_owned=True)
     real_base, real_web, real_config = settings['base'], settings['web'], settings['config']
+    NATIVE_INCLUDE_BASE = real_config
     state_root = Path(settings['state'])
     APP, PERL, LOG, SOURCE_LOG = settings['app'], settings['perl'], settings['log'], settings['source_log']
     PERL_LIBRARIES = settings['perl_libraries']
@@ -1514,6 +1533,15 @@ def main():
                     if name.endswith('.conf'):
                         cfg = Path(directory) / name
                         cfg.write_text(cfg.read_text(encoding='utf-8').replace(real_base + '/', str(stage_base) + '/'), encoding='utf-8')
+            for site in selected_sites:
+                for sub, data in [('', 'data'), ('verified', 'data-verified')]:
+                    path = Path(CONFIG) / sub / ('awstats.' + site + '.conf')
+                    if path.is_file():
+                        values = {'LogFile': str(stage_base / 'input' / site / 'access.log'),
+                                  'DirData': str(stage_base / data / site), 'PurgeLogFile': 0, 'ArchiveLogRecords': 0}
+                        if sub:
+                            values['VerifiedCrawlerEvidenceFile'] = str(stage_base / 'crawler-evidence' / 'evidence.json')
+                        path.write_text(final_native_settings(path.read_text(encoding='utf-8'), values), encoding='utf-8')
             for site, info in profiles.items():
                 if site not in selected_sites or not info['managed']:
                     continue

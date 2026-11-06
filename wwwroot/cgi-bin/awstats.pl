@@ -4169,7 +4169,12 @@ sub Parse_Config {
 			if ($Debug) { debug( "Found an include : $includeFile", 2 ); }
 			if ( $includeFile !~ /^([a-zA-Z]:)?[\\\/]/ ) {
 				# Correct relative include files
-				if ( $FileConfig =~ /^(.*[\\\/])[^\\\/]*$/ ) {
+				if ( !$ENV{'GATEWAY_INTERFACE'}
+					&& defined($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'})
+					&& length($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'}) ) {
+					$includeFile = File::Spec->catfile($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'}, $includeFile);
+				}
+				elsif ( $FileConfig =~ /^(.*[\\\/])[^\\\/]*$/ ) {
 					$includeFile = "$1$includeFile";
 				}
 			}
