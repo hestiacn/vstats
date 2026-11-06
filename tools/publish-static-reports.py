@@ -1520,14 +1520,15 @@ def main():
                 selected_sites[site] = dict(selected_sites[site], behavior_filter=True, verified_crawler_filter=True,
                                             exclude_automated_ips=info['applied']['exclude_automated_ips'])
                 classifier_path = Path(CONFIG) / 'traffic-classification' / ('awstats.' + site + '.json')
-                classifier_path.parent.mkdir(exist_ok=True)
+                private_directory(str(classifier_path.parent), account.pw_gid)
                 atomic_json(classifier_path, info['applied']['classifier'], gid=account.pw_gid)
                 parent = stage_base / 'corpus' / site
                 if not (parent / 'current').is_symlink() or request:
                     # Explicit rebuilds use all actually retained input, without
                     # pretending that missing old input is present.
                     actual = retained_input(private_base, site)
-                    parent.mkdir(parents=True, exist_ok=True)
+                    private_directory(str(parent.parent), account.pw_gid)
+                    private_directory(str(parent), account.pw_gid)
                     seed = parent / ('seed-' + token)
                     private_directory(str(seed), account.pw_gid)
                     for day in actual:
