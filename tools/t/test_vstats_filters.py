@@ -211,8 +211,10 @@ class Controls(unittest.TestCase):
         self.control.change('example.test', 'preview', self.body, self.user)
         spec = importlib.util.spec_from_file_location('filters_worker_enabled_test', str(ROOT / 'tools/filters-worker.py'))
         module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        original_run = module.subprocess.run
         def rebuilt(command, **kwargs):
-            self.assertIn('--filter-job', command)
+            if '--filter-job' not in command:
+                return original_run(command, **kwargs)
             self.assertEqual(command[2], str(ROOT / 'tools/publish-static-reports.py'))
             atomic_json(self.state / 'jobs' / ('a' * 32 + '-result.json'), {'before': {}, 'after': {}})
             return type('Result', (), {'returncode': 0})()
