@@ -1337,6 +1337,10 @@ def stage_native_site(real_base, stage_base, site, settings, account):
     for name in roots:
         source = Path(real_base) / name / site
         target = Path(stage_base) / name / site
+        if os.path.lexists(str(target)):
+            # Earlier private bases may carry an unmanaged clone of this site;
+            # stage only the guarded copy of the original history.
+            shutil.rmtree(str(target))
         if name == 'data-verified' and not os.path.lexists(str(source)):
             # Preserve the existing independent verified-history setup refusal.
             continue
