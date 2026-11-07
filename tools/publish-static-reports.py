@@ -281,9 +281,6 @@ def copy_public_assets(generation, apache_gid):
         source = os.path.join(APP, 'wwwroot', name)
         if os.path.isdir(source):
             shutil.copytree(source, os.path.join(assets, name), symlinks=True)
-    tiff = os.path.join(assets, 'icon', 'mime', 'tiff.svg')
-    if not os.path.isfile(tiff):
-        shutil.copyfile(os.path.join(assets, 'icon', 'mime', 'image.svg'), tiff)
     docs = os.path.join(generation, 'docs')
     private_directory(docs, apache_gid)
     source_docs = os.path.join(APP, 'docs')
@@ -324,6 +321,63 @@ class LinkCollector(HTMLParser):
                 self.links.append(data[key])
 
 
+def add_native_icon_fallback(generation, target):
+    # Native mime/ and os/ icon stems come from registries, history keys and the
+    # notavailable default with no glyph check. Only <generation>[/history/<id>]
+    # /assets/icon/{mime,os}/<stem>.svg is repairable: an exclusive, no-follow,
+    # byte-exact copy of that directory's unknown.svg with its owner and mode.
+    # Returns None once created, {} outside that class, else {'reason': ...}.
+    import re
+    name = os.path.basename(target)
+    parts = Path(target).relative_to(Path(generation)).parts
+    if len(parts) == 6 and parts[0] == 'history' and GENERATION.fullmatch(parts[1]):
+        parts = parts[2:]
+    if (len(parts) != 4 or parts[:2] != ('assets', 'icon') or parts[2] not in ('mime', 'os')
+            or name == 'unknown.svg' or not re.fullmatch('[A-Za-z0-9_][A-Za-z0-9_.-]*[.]svg', name)):
+        return {}
+    directory = os.path.dirname(target)
+    current = generation
+    for component in Path(directory).relative_to(Path(generation)).parts:
+        current = os.path.join(current, component)
+        try:
+            info = os.lstat(current)
+        except OSError:
+            return {'reason': 'native icon directory unavailable'}
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid != os.geteuid() or info.st_mode & 0o022:
+            return {'reason': 'native icon directory is not a private real directory'}
+    try:
+        directory_fd = os.open(directory, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+    except OSError:
+        return {'reason': 'native icon directory unavailable'}
+    try:
+        try:
+            source_fd = os.open('unknown.svg', os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK,
+                                dir_fd=directory_fd)
+        except OSError:
+            return {'reason': 'native icon fallback unknown.svg unavailable'}
+        with os.fdopen(source_fd, 'rb') as handle:
+            source = os.fstat(handle.fileno())
+            if not stat.S_ISREG(source.st_mode):
+                return {'reason': 'native icon fallback unknown.svg is not a regular file'}
+            data = handle.read()
+        try:
+            target_fd = os.open(name, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW,
+                                0o600, dir_fd=directory_fd)
+        except OSError:
+            return {'reason': 'native icon target name is occupied or not creatable'}
+        try:
+            with os.fdopen(target_fd, 'wb') as handle:
+                handle.write(data)
+                os.fchown(handle.fileno(), source.st_uid, source.st_gid)
+                os.fchmod(handle.fileno(), stat.S_IMODE(source.st_mode))
+        except OSError:
+            os.unlink(name, dir_fd=directory_fd)
+            return {'reason': 'native icon fallback copy failed'}
+        return None
+    finally:
+        os.close(directory_fd)
+
+
 def validate_report_links(generation):
     from urllib.parse import unquote, urlsplit
     checked, missing = 0, []
@@ -358,7 +412,9 @@ def validate_report_links(generation):
                     target = os.path.join(target, 'index.html')
                 checked += 1
                 if not os.path.isfile(target):
-                    missing.append({'file': path, 'target': value})
+                    refusal = add_native_icon_fallback(generation, target)
+                    if refusal is not None:
+                        missing.append(dict({'file': path, 'target': value}, **refusal))
     if missing:
         raise RuntimeError('Generated navigation contains missing targets: ' + json.dumps(missing[:8]))
     return checked
