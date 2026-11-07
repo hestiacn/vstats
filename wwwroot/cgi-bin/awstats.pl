@@ -359,7 +359,7 @@ $DatabaseBreak = 'month';
 	$DecodePunycode
 ) = (
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 );
 
 (
@@ -398,7 +398,7 @@ $DatabaseBreak = 'month';
 	$AddDataArrayShowHoursStats
 ) = (
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 );
 
 (
@@ -5269,7 +5269,7 @@ sub Check_Config {
 		'EMailsShown',		'DownloadsShown'
 	);
 	my @maxnboflistdefaultval =
-	  ( 10, 10, 10, 10, 5, 10, 10, 10, 5, 10, 10, 10, 20 );
+	  ( 10, 10, 10, 10, 5, 10, 10, 10, 5, 10, 10, 10, 20, 10 );
 	foreach my $i ( 0 .. ( @maxnboflist - 1 ) ) {
 		if ( !$MaxNbOf{ $maxnboflist[$i] }
 			|| $MaxNbOf{ $maxnboflist[$i] } !~ /^\d+$/

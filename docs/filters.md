@@ -61,7 +61,11 @@ separate native-accounting PR.
    `state`, `app`, `legacy_app`, `perl`, `perl_libraries`, `log`, `source_log`,
    `statistics_user`, `api_user`, `web_group`, and exact HTTPS
    `origins`. Site/log mappings remain in private `sites.json` and AWStats
-   configuration. Do not put machine configuration or credentials in Git.
+   configuration. Each site's AWStats `DirIcons` must resolve to
+   `/vstats/assets/icon`, where the publisher copies the release icons. Native
+   AWStats runs must finish without warnings: any stderr output fails the
+   publisher run and keeps the previously committed report/profile pair. Do not
+   put machine configuration or credentials in Git.
 3. Browser controls follow each site's native `AllowToUpdateStatsFromBrowser`:
    `1` displays editing, Preview and Apply & reprocess; `0` hides those actions
    and the API, worker and publisher reject browser mutations. Scheduled updates
