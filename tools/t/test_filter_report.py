@@ -39,6 +39,24 @@ class ReviewRendering(unittest.TestCase):
         with self.assertRaises(ValueError):
             builder.render_review_row(record)
 
+    def test_login_rotation_requires_a_consistent_covering_witness(self):
+        proof = {'from': 90, 'until': 100, 'requests': 6, 'pairs': 3,
+                 'platform_switches': 2, 'distinct_user_agents': 3,
+                 'distinct_platforms': 2, 'pair_seconds': 30}
+        record = {'timestamp': 100, 'client': '192.0.2.1', 'method': 'POST',
+                  'normalized_target': '/account/sign-in', 'status': 200,
+                  'request_id': 'a' * 64, 'behavior_included': False, 'login_rotation_flagged': True,
+                  'login_rotation_evidence': proof}
+        self.assertIn('2 within-pair platform changes', builder.render_review_row(record))
+        for key, value in [('requests', 8), ('platform_switches', 4), ('pair_seconds', True),
+                           ('until', 99), ('distinct_platforms', 4)]:
+            record['login_rotation_evidence'] = dict(proof, **{key: value})
+            with self.assertRaises(RuntimeError):
+                builder.render_review_row(record)
+        record['login_rotation_evidence'] = None
+        with self.assertRaises(RuntimeError):
+            builder.render_review_row(record)
+
     def test_probing_witnesses_and_missing_evidence(self):
         proof = {'from': 90, 'until': 100, 'requests': 30, 'distinct_user_agents': 4,
                  'distinct_platforms': 2, 'distinct_paths': 1, 'not_found_requests': 0}
@@ -310,6 +328,37 @@ class BatchIntegration(unittest.TestCase):
         matched['distributed_login_evidence']['source_requests'] = 10000
         with self.assertRaises(RuntimeError):
             builder.render_review_row(matched)
+
+    def test_login_rotation_review_and_ip_policy_propagation(self):
+        self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
+                    'login_rotation': {'enabled': 1, 'login_paths': ['/account/sign-in']}}
+        agents = ['Mozilla/5.0 (Windows) Chrome/131.0',
+                  'Mozilla/5.0 (X11; Linux) Firefox/133.0',
+                  'Mozilla/5.0 (Macintosh) Safari/605.1']
+        self.lines = []
+        for i in range(3):
+            for j, method in enumerate(['GET', 'POST']):
+                self.lines.append(('192.0.2.1 - - [02/Oct/2026:{:02d}:00:0{} +0000] '
+                                   '"{} /account/sign-in?token=SECRET_SENTINEL HTTP/1.1" '
+                                   '200 100 "-" "{}"\n'.format(10 + i, j, method, agents[(i+j) % 3])).encode('ascii'))
+        earlier = b'192.0.2.1 - - [01/Oct/2026:10:00:00 +0000] "GET /ordinary HTTP/1.1" 200 99 "-" "ordinary/1"\n'
+        (self.inputs / '2026-10-01.log').write_bytes(earlier)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(self.lines))
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(result['behavior']['login_rotation_flagged_requests'], 6)
+        self.assertEqual(result['request_excluded_by_month']['2026-10']['records'], 6)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 7)
+        text = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertIn('Login browser rotation:', text)
+        self.assertIn('3 adjacent login GET/POST pairs', text)
+        self.assertIn('Trigger evidence, Login browser rotation:', text)
+        self.assertNotIn('SECRET_SENTINEL', text)
+        shutil.rmtree(str(self.root / 'output'))
+        self.cfg['behavior_include'] = [hashlib.sha256(self.lines[0].rstrip(b'\n')).hexdigest()]
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 6)
 
     def test_rapid_scan_witness_and_ip_policy_propagation(self):
         self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],

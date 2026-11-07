@@ -57,7 +57,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v9`. Optional private details include status, the per-request
+`vstats-traffic-v10`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
@@ -151,15 +151,16 @@ qualify. Inspect the numeric witness and use inclusion overrides when needed.
 minimum is 2 through minimum requests. Partial objects fill defaults. The
 existing byte, record, field and canonical IP/host group caps still apply.
 Window maintenance is linear after sorting; no operator regex/code is executed.
-All four behavioral rules remain optional and independently configurable.
+All five behavioral rules remain optional and independently configurable.
 
 `suspected_automation` is the union of enabled broad path probing, configured
-endpoint probing, rapid content-path probing and distributed login probing. Actor identities and the absence-attested `scanner_flagged`
+endpoint probing, rapid content-path probing, distributed login probing and login browser rotation. Actor identities and the absence-attested `scanner_flagged`
 layer remain independent. An overlapping request counts once and retains every
 applicable covering witness in private details and curated review. Aggregate
-`behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`, `distributed_login_rule`,
+`behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`, `distributed_login_rule`, `login_rotation_rule`,
 `broad_flagged_requests`, `probing_flagged_requests`,
-`rapid_scan_flagged_requests`, `distributed_login_flagged_requests` and `overlap_requests` (requests matching at least
+`rapid_scan_flagged_requests`, `distributed_login_flagged_requests`,
+`login_rotation_flagged_requests` and `overlap_requests` (requests matching at least
 two rules); its main request and actor
 counts are the union. Eligible and insufficient-field counts deduplicate records
 across enabled rules. Merged sequence counts sum the rules' sequences, which may
@@ -168,13 +169,85 @@ endpoint list; aggregate output contains no observed request records.
 
 Private details include `broad_probing_flagged`, `probing_flagged`,
 `rapid_scan_flagged`, `distributed_login_flagged`, `probing_evidence`,
-`rapid_scan_evidence` and `distributed_login_evidence`, retaining the
+`rapid_scan_evidence`, `distributed_login_evidence`, `login_rotation_flagged`
+and `login_rotation_evidence`, retaining the
 existing broad `behavior_evidence`. Review
 labels each applicable rule and its numeric covering window. The same explicit
 exclusion selector and `behavior_include` request IDs apply to every rule;
 inclusion retains all witnesses and cannot override independent actor/scanner
-exclusions. All four rules are opt-in and may be enabled separately. Shared proxies
+exclusions. All five rules are opt-in and may be enabled separately. Shared proxies
 and authorized automation can qualify; review results before relying on them.
+
+### Login browser rotation
+
+The independent `login_rotation` rule detects repeated login sequences that
+switch claimed platforms between an adjacent GET and POST. This covers slower
+patterns that never reach a burst rule's request threshold. It uses configured
+exact login paths, not IP lists, countries, response sizes or missing assets.
+
+```json
+{
+  "schema_version": 1,
+  "login_rotation": {
+    "enabled": 1,
+    "login_paths": ["/account/sign-in"]
+  },
+  "exclude": ["suspected_automation"]
+}
+```
+
+Defaults are `enabled: 0`, `window_seconds: 86400`, `pair_seconds: 30`,
+`min_pairs: 3`, `min_platform_switches: 2`, `distinct_user_agents: 3`,
+`distinct_platforms: 2`, and `login_paths: []`. These are exploratory heuristic
+starter settings, chosen after examining a reported slow login pattern. They
+are not calibrated cutoffs or measured precision/recall.
+
+Records are sorted by timestamp, retaining input order for ties, for each
+canonical literal IP and normalized host. A pair must be adjacent in that
+source/host's parsed records, GET then POST to the same configured path within
+`pair_seconds` inclusive. An intervening request, even an ordinary asset or
+one lacking browser evidence, breaks adjacency. Both records need a supported
+target, HTTP status and recognized browser/platform claim. Supported target
+normalization strips queries before exact matching. Methods follow the existing
+ASCII uppercase normalization. Hostless logs cannot separate hostname aliases.
+
+All qualifying conditions must coincide in one inclusive rolling window, from
+the first GET through the last POST: enough pairs, enough within-pair platform
+changes, and enough distinct POST user agents/platforms. Platform categories
+and browser recognition are the same as the broad rule above. Ordinary stable
+GET/POST sessions from different browsers behind one shared IP do not supply
+within-pair changes. A single mismatched pair or a GET-only login-page visit
+cannot qualify. HTTP 200 is allowed and supplies no login-outcome evidence.
+
+Only the paired records inside qualifying windows receive
+`login_rotation_flagged` and a numeric `login_rotation_evidence` witness.
+Unpaired pages/assets remain outside this request-level rule. The existing
+explicit IP/month policy can separately exclude more traffic from that source;
+request-ID inclusions still apply. Aggregate output adds `login_rotation_rule`
+and `login_rotation_flagged_requests` to the behavioral union. Review shows the
+pair count, within-pair platform changes, POST claim diversity and time span.
+Counts and actor identities retain their independent meanings; overlaps count
+once in the union.
+
+`enabled` is integer 0 or 1; the window is 1–86400 seconds. Pair timeout is
+1–300 seconds and cannot exceed the window. Pair minimum is 2–50000; platform
+switch minimum and POST-UA diversity are 2 through pair minimum. POST-platform
+diversity is 2–5 and cannot exceed POST-UA diversity. At most 2048 unique exact
+normalized login paths are allowed; enabled detection requires a nonempty list.
+Existing record, byte, field and group caps apply. Pair construction and sliding
+window maintenance are linear after sorting; there is no all-interval search.
+Daily analysis requests before/after context up to the configured window. A
+caller without that context may miss qualifying sequences. The publisher keeps
+its existing hard limits and reports capacity fallback rather than truncating
+the requested window or claiming zero matches.
+
+This flag means suspected automation, not verified crawler identity, failed
+passwords, a successful login or malicious intent. Interleaved users behind a
+gateway, authorized tests and software changing browser claims can qualify.
+Stable browser emulation, isolated requests and missing evidence can evade it.
+Review ordinary site traffic and preview changes before adopting exclusion.
+Raw private request data and source addresses must remain out of public patches
+and regression fixtures; the supplied tests use synthetic records.
 
 ### Explicit filtering and inclusion overrides
 
@@ -455,6 +528,7 @@ numbers, negatives and inconsistencies **before opening the log**. JSON nesting
 | `behavior` | Optional browser-rotation/path/404 rule; defaults and bounds above. |
 | `probing` | Optional configured-endpoint/browser-rotation rule; independent window can cover sustained probing. |
 | `rapid_scan` | Optional content-path/404 burst rule without browser requirements; defaults and asset exclusions above. |
+| `login_rotation` | Optional repeated login-pair platform changes; exact login paths required. |
 | `verification` | Default `max_gap_seconds: 86400`, range 0–604800; single-snapshot time tolerance is zero. |
 | `exclude` | Default `[]`; explicit comparison and optional filtered-log export, below. |
 | `behavior_include` | Default `[]`; operator request-ID overrides for behavioral exclusions only. |
@@ -722,7 +796,7 @@ sequence, peer-sharing and pooled requirements still apply. A longer window can
 also enlarge coherent-flow protection and can both add and remove flags.
 
 The library method `analysis_window($config)` returns the required evidence radius:
-the largest scanner or enabled sliding-rule window, or twice the enabled
+the largest scanner or enabled sliding-rule window (including login rotation), or twice the enabled
 distributed-login window. A candidate grid window also needs coherent-flow spans
 that begin before or end after it; its detector width remains unchanged.
 `add_context('before', $raw)` and

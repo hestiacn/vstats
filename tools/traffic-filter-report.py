@@ -75,6 +75,21 @@ def validate_distributed_witness(proof):
         raise RuntimeError('Invalid distributed-login follow-up evidence')
 
 
+def validate_rotation_witness(proof):
+    keys = ('from', 'until', 'requests', 'pairs', 'platform_switches',
+            'distinct_user_agents', 'distinct_platforms', 'pair_seconds')
+    if any(type(proof.get(key)) is not int for key in keys):
+        raise RuntimeError('Invalid login-rotation witness fields')
+    if (not 0 <= proof['from'] <= proof['until'] <= 4102444800 or
+            proof['until'] - proof['from'] > 86400 or
+            proof['requests'] != 2 * proof['pairs'] or
+            not 2 <= proof['platform_switches'] <= proof['pairs'] or
+            not 2 <= proof['distinct_platforms'] <= 5 or
+            not proof['distinct_platforms'] <= proof['distinct_user_agents'] <= proof['pairs'] or
+            not 1 <= proof['pair_seconds'] <= 300):
+        raise RuntimeError('Inconsistent login-rotation witness counts')
+
+
 def witness_text(label, proof):
     if label == 'Distributed login probing':
         validate_distributed_witness(proof)
@@ -86,6 +101,11 @@ def witness_text(label, proof):
                  'POST/follow-up witnesses: {sequence_post_request_id}, {sequence_follow_request_id}.').format(**proof) +
                 ' Campaign window: {} seconds; campaign {}. Coherent same-UA flow protection applied to intersecting windows; heuristic evidence, not login success or actor identity.'.format(
                     proof['until'] - proof['from'], proof['campaign_id']))
+    if label == 'Login browser rotation':
+        validate_rotation_witness(proof)
+        return ('{pairs} adjacent login GET/POST pairs; {platform_switches} within-pair platform changes; '
+                '{distinct_user_agents} POST user agents; {distinct_platforms} POST platforms in ').format(**proof) + \
+               str(proof['until'] - proof['from']) + ' seconds (heuristic evidence; no login outcome inferred)'
     reason = ('{requests} requests; {distinct_user_agents} user agents; {distinct_platforms} platforms; '
               '{distinct_paths} paths; {not_found_requests} HTTP 404s').format(**proof)
     reason += ' in {} seconds'.format(proof['until'] - proof['from'])
@@ -103,7 +123,8 @@ def rule_evidence(record):
     for matched, label, key in [(broad, 'Broad path probing', 'behavior_evidence'),
                                 (record.get('probing_flagged'), 'Endpoint probing', 'probing_evidence'),
                                 (record.get('rapid_scan_flagged'), 'Rapid content-path probing', 'rapid_scan_evidence'),
-                                (record.get('distributed_login_flagged'), 'Distributed login probing', 'distributed_login_evidence')]:
+                                (record.get('distributed_login_flagged'), 'Distributed login probing', 'distributed_login_evidence'),
+                                (record.get('login_rotation_flagged'), 'Login browser rotation', 'login_rotation_evidence')]:
         if not matched:
             continue
         proof = record.get(key)
@@ -111,6 +132,8 @@ def rule_evidence(record):
             raise RuntimeError('Review lacks a covering rule witness')
         if label == 'Distributed login probing':
             validate_distributed_witness(proof)
+        if label == 'Login browser rotation':
+            validate_rotation_witness(proof)
         result.append((label, proof))
     if record.get('ip_excluded'):
         evidence = record.get('ip_automation_evidence')
@@ -123,10 +146,12 @@ def rule_evidence(record):
                 raise RuntimeError('IP trigger crosses the report month')
         for item in evidence['rules']:
             proof = item['proof']
-            if item['rule'] not in ('Broad path probing', 'Endpoint probing', 'Rapid content-path probing', 'Distributed login probing') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
+            if item['rule'] not in ('Broad path probing', 'Endpoint probing', 'Rapid content-path probing', 'Distributed login probing', 'Login browser rotation') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
                 raise RuntimeError('IP trigger lacks a covering rule witness')
             if item['rule'] == 'Distributed login probing':
                 validate_distributed_witness(proof)
+            if item['rule'] == 'Login browser rotation':
+                validate_rotation_witness(proof)
     if not result and not record.get('ip_excluded'):
         raise RuntimeError('Review lacks a covering rule witness')
     return result
@@ -545,7 +570,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         totals.update(report['counts'])
         actors.update(report['actors'])
         for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups',
-                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'overlap_requests']:
+                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'overlap_requests']:
             behavior[key] += report['behavior'].get(key, 0)
         flagged_by_month[day[:7]] += report['behavior']['flagged_requests']
         first = period['from'] if first is None else min(first, period['from'])
@@ -682,6 +707,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                    '; endpoint probing: ' + format(behavior['probing_flagged_requests'], ',') +
                    '; rapid content-path probing: ' + format(behavior['rapid_scan_flagged_requests'], ',') +
                    '; distributed login probing: ' + format(behavior['distributed_login_flagged_requests'], ',') +
+                   '; login browser rotation: ' + format(behavior['login_rotation_flagged_requests'], ',') +
                    '; overlap (two or more rules): ' + format(behavior['overlap_requests'], ',') +
                    '. Full raw user-agent strings and query strings are omitted from review.</p>')
     if sum(r['requests'] for r in sources.values()) + sum(unattributed_sources.values()) != totals['analyzed']:
@@ -742,7 +768,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
             if month in unavailable:
                 raise
             unavailable[month] = {'reason': 'Input over limits', 'limit': e.kind, 'hard_maximum': e.maximum,
-                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'exclude_automated_ips']}
+                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'exclude_automated_ips']}
             # Only our failed, newly created derived-output directory is removed.
             # Original daily input and any previously published output are untouched.
             shutil.rmtree(str(output_directory))

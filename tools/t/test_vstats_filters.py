@@ -70,9 +70,31 @@ class Controls(unittest.TestCase):
         states = filter_status(self.profile)
         self.assertEqual(states['probing'], 'Needs configuration')
         self.assertEqual(states['distributed_login'], 'Needs configuration')
+        self.assertEqual(states['login_rotation'], 'Needs configuration')
         self.assertEqual(states['verified_crawlers'], 'Evidence unavailable')
         self.assertEqual(filter_status(self.profile, evidence=True, over_limits=True)['behavior'], 'Input over limits')
         self.assertEqual(filter_status(self.profile, evidence=True, over_limits=True)['verified_crawlers'], 'Active')
+
+    def test_login_rotation_configuration_and_old_profiles(self):
+        old = copy.deepcopy(self.profile)
+        del old['filters']['login_rotation']
+        del old['classifier']['login_rotation']
+        restored = validate_profile(old, str(ROOT), PERL)
+        self.assertFalse(restored['filters']['login_rotation'])
+        self.assertEqual(restored['classifier']['login_rotation']['enabled'], 0)
+        self.assertEqual(filter_status(old)['login_rotation'], 'Disabled')
+        reset = defaults(str(ROOT), PERL, old)
+        self.assertTrue(reset['filters']['login_rotation'])
+        self.assertEqual(reset['classifier']['login_rotation']['login_paths'], [])
+        p = copy.deepcopy(self.profile)
+        p['classifier']['login_rotation']['login_paths'] = ['/account/sign-in']
+        p = validate_profile(p, str(ROOT), PERL)
+        self.assertEqual(p['classifier']['login_rotation']['enabled'], 1)
+        self.assertEqual(filter_status(p)['login_rotation'], 'Active')
+        self.assertEqual(defaults(str(ROOT), PERL, p)['classifier']['login_rotation']['login_paths'],
+                         ['/account/sign-in'])
+        p['filters']['login_rotation'] = False
+        self.assertEqual(validate_profile(p, str(ROOT), PERL)['classifier']['login_rotation']['enabled'], 0)
 
     def test_classifier_coupled_bounds_and_schema_are_authoritative(self):
         for change in [('window_seconds', 3601), ('distinct_platforms', 1), ('min_requests', 1)]:

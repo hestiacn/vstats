@@ -1,3 +1,13 @@
 {
-  "schema_version": 1
+  "schema_version": 1,
+  "login_rotation": {
+    "enabled": 0,
+    "window_seconds": 86400,
+    "pair_seconds": 30,
+    "min_pairs": 3,
+    "min_platform_switches": 2,
+    "distinct_user_agents": 3,
+    "distinct_platforms": 2,
+    "login_paths": []
+  }
 }

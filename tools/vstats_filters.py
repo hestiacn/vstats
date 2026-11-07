@@ -24,8 +24,9 @@ FILTERS = [('native_crawlers', 'Native crawler signatures', 'Existing AWStats us
            ('behavior', 'Broad probing', 'Repeated diverse requests and missing paths in a bounded window.'),
            ('probing', 'Endpoint probing', 'Repeated requests to explicitly configured paths.'),
            ('rapid_scan', 'Rapid content-path scanning', 'Rapid diverse paths with repeated missing resources.'),
-           ('distributed_login', 'Distributed login probing', 'Coordinated sources targeting configured login paths.')]
-RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login']
+           ('distributed_login', 'Distributed login probing', 'Coordinated sources targeting configured login paths.'),
+           ('login_rotation', 'Login browser rotation', 'Repeated login GET/POST pairs that switch claimed platforms.')]
+RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation']
 SITE = re.compile(r'^[a-z0-9][a-z0-9._-]{0,252}$')
 IDENTIFIER = re.compile(r'^[a-f0-9]{32}$')
 GENERATION = re.compile(r'^\d{8}T\d{6}Z-[a-f0-9]{8}$')
@@ -123,9 +124,9 @@ def defaults(app, perl, current=None):
     classifier = classifier_config({'schema_version': 1, 'exclude': ['suspected_automation']}, app, perl)
     if current:
         # Keep explicitly configured endpoint lists when resetting other options.
-        for rule, keys in [('probing', ['paths']), ('distributed_login', ['login_paths', 'admin_paths'])]:
+        for rule, keys in [('probing', ['paths']), ('distributed_login', ['login_paths', 'admin_paths']), ('login_rotation', ['login_paths'])]:
             for key in keys:
-                classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])
+                classifier[rule][key] = copy.deepcopy(current['classifier'].get(rule, {}).get(key, []))
     return {'schema_version': 1, 'filters': {f[0]: True for f in FILTERS},
             'exclude_automated_ips': True, 'native_level': 3,
             'classifier': classifier, 'exceptions': []}
@@ -138,7 +139,12 @@ def validate_profile(value, app, perl):
     p = copy.deepcopy(value)
     if type(p['schema_version']) is not int or p['schema_version'] != 1:
         raise ValueError('Unsupported profile version')
-    if not isinstance(p['filters'], dict) or set(p['filters']) != {f[0] for f in FILTERS}:
+    if not isinstance(p['filters'], dict):
+        raise ValueError('Invalid filter list')
+    # Existing applied profiles keep their policy until explicitly changed.
+    if set(p['filters']) == {f[0] for f in FILTERS} - {'login_rotation'}:
+        p['filters']['login_rotation'] = False
+    if set(p['filters']) != {f[0] for f in FILTERS}:
         raise ValueError('Invalid filter list')
     if any(type(v) is not bool for v in p['filters'].values()) or type(p['exclude_automated_ips']) is not bool:
         raise ValueError('Filter choices must be booleans')
@@ -168,6 +174,8 @@ def validate_profile(value, app, perl):
             raise ValueError('Invalid rule configuration')
         cfg.setdefault(rule, {})['enabled'] = int(p['filters'][rule])
     # Intended enablement remains saved even where required paths are unavailable.
+    if not cfg['login_rotation'].get('login_paths'):
+        cfg['login_rotation']['enabled'] = 0
     if not cfg['probing'].get('paths'):
         cfg['probing']['enabled'] = 0
     if not (cfg['distributed_login'].get('login_paths') and cfg['distributed_login'].get('admin_paths')):
@@ -180,13 +188,15 @@ def validate_profile(value, app, perl):
 def filter_status(profile, evidence=False, over_limits=False):
     statuses = {}
     for key, _, _ in FILTERS:
-        if not profile['filters'][key]:
+        if not profile['filters'].get(key, False):
             statuses[key] = 'Disabled'
         elif key == 'verified_crawlers' and not evidence:
             statuses[key] = 'Evidence unavailable'
         elif key == 'probing' and not profile['classifier'][key]['paths']:
             statuses[key] = 'Needs configuration'
         elif key == 'distributed_login' and not (profile['classifier'][key]['login_paths'] and profile['classifier'][key]['admin_paths']):
+            statuses[key] = 'Needs configuration'
+        elif key == 'login_rotation' and not profile['classifier'][key]['login_paths']:
             statuses[key] = 'Needs configuration'
         elif key in RULES and over_limits:
             statuses[key] = 'Input over limits'

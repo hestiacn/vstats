@@ -3,13 +3,19 @@
   'use strict';
   const $ = id => document.getElementById(id);
   let state = JSON.parse($('filters-state').textContent);
-  let profile = structuredCopy(state.applied || state.default_profile);
+  let profile = profileCopy(state.applied || state.default_profile);
   let csrf = null, editable = false, busy = false, poll = null, coverage = state.coverage;
   const site = state.site, base = '/vstats-control/sites/' + encodeURIComponent(site) + '/';
   const historical = $('filters-main').dataset.historical === 'true';
-  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login'];
-  const names = {native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.']};
+  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation'];
+  const names = {native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.'],login_rotation:['Login browser rotation','Repeated adjacent login GET/POST pairs that switch claimed platforms; requires configured login paths.']};
   function structuredCopy(v) { return JSON.parse(JSON.stringify(v)); }
+  function profileCopy(value) {
+    const p = structuredCopy(value);
+    if(!Object.prototype.hasOwnProperty.call(p.filters,'login_rotation')) p.filters.login_rotation=false;
+    if(!p.classifier.login_rotation) p.classifier.login_rotation=structuredCopy(state.default_profile.classifier.login_rotation);
+    return p;
+  }
   function node(tag, text, cls) { const n = document.createElement(tag); if(text !== undefined) n.textContent = text; if(cls) n.className = cls; return n; }
   function message(text) { $('filter-message').className = text ? 'filters-alert' : ''; $('filter-message').textContent = text; }
   function edited() { $('profile-status').textContent = 'Unsaved changes'; }
@@ -70,7 +76,7 @@
         input.addEventListener('input',edited);label.append(input);grid.append(label);
       } box.append(grid);advanced.append(box);
     }
-    const periods=$('period-status');periods.replaceChildren();const table=node('table'),heading=node('tr');heading.append(node('th','UTC month'));Object.values(names).forEach(n=>heading.append(node('th',n[0])));table.append(heading);for(const month of Object.keys(state.effective_by_month||{}).sort().reverse()){const row=node('tr');row.append(node('td',month));Object.keys(names).forEach(key=>row.append(node('td',state.effective_by_month[month][key])));table.append(row);}periods.append(table);
+    const periods=$('period-status');periods.replaceChildren();const table=node('table'),heading=node('tr');heading.append(node('th','UTC month'));Object.values(names).forEach(n=>heading.append(node('th',n[0])));table.append(heading);for(const month of Object.keys(state.effective_by_month||{}).sort().reverse()){const row=node('tr');row.append(node('td',month));Object.keys(names).forEach(key=>row.append(node('td',state.effective_by_month[month][key] || 'Not recorded')));table.append(row);}periods.append(table);
     drawExceptions();drawCoverage(state.coverage);authorization();drawLinks();drawJobs(state.jobs||[]);drawCurrentImpact();
   }
   function collect() {
@@ -81,7 +87,7 @@
     return result;
   }
   async function refresh() {
-    state=await api(base+'state');editable=Boolean((state.browser_access||{}).allow_updates);profile=structuredCopy(state.pending?state.pending.profile:(state.applied||state.default_profile));drawForm();await history();
+    state=await api(base+'state');editable=Boolean((state.browser_access||{}).allow_updates);profile=profileCopy(state.pending?state.pending.profile:(state.applied||state.default_profile));drawForm();await history();
   }
   function drawExceptions() {
     const area=$('exceptions-list');area.replaceChildren();
@@ -107,7 +113,7 @@
     impact({before:(state.view_totals||{}).original,after:state.totals,before_label:'Additional filters off',after_label:'Current applied profile',capacity_fallback:state.capacity_fallback});
     const area=$('match-counts');area.replaceChildren(node('h3','Matches and actual exclusions for this generation'));
     const counts=state.matched_requests||{},table=node('table'),header=node('tr');header.append(node('th','Detector / measure'),node('th','Requests'));table.append(header);
-    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
+    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['login_rotation_flagged_requests','Login browser rotation'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
     const views=state.view_totals||{};
     for(const [mode,title,ledger] of [['requests','Matched-request filtering',state.request_excluded_by_month||{}],['behavior','Configured visitor policy',state.excluded_by_month||{}]]){
       for(const month of Object.keys(ledger).sort().reverse()){

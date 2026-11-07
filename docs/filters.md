@@ -9,7 +9,7 @@ Filters. Settings affect statistics, not access to the website.
 
 * **Settings:** native crawler signatures, verified crawler evidence, broad
   probing, configured endpoint probing, rapid content-path scanning, and
-  distributed login probing. New intended settings are checked by default.
+  distributed login probing and login browser rotation. New intended settings are checked by default.
   Existing managed settings are imported only after their replay identities are
   verified. Checked settings can be inactive: paths may need configuration,
   evidence may not cover the request period, or classifier input may be over a
@@ -31,6 +31,13 @@ Filters. Settings affect statistics, not access to the website.
 * **History:** report/profile generation identities, processing actor and time,
   recent job outcomes, retained reports, and restoring known previous settings
   as pending edits. Restore requires a new rebuild against retained input.
+
+The login browser rotation filter requires explicit exact login paths. It detects
+repeated adjacent GET/POST pairs whose claimed platforms change within the pair,
+including activity spread across a day. See [rule settings and limitations](traffic-classification.md#login-browser-rotation).
+Existing saved profiles acquire this new checkbox disabled; selecting it is an
+explicit policy change. Reset uses the new checked defaults and retains any
+configured login paths. Preview the impact, then Apply & reprocess to publish.
 
 Anonymous history actors mean permitted browser access, not an authenticated identity.
 Edits, reset and inclusion changes stay pending until Apply succeeds. Repeated
