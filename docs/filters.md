@@ -138,6 +138,9 @@ their corpus pointers/receipts, and the configured original `base` do not refer
 to it. Never delete original logs or a referenced corpus to free this space.
 Sites added to `sites.json` after setup join as native-only and are not enrolled
 in Filters until a profile is explicitly applied.
+Their existing history is copied only if each history directory is a real
+directory containing only regular statistics-account files of at most 64 MiB;
+otherwise scheduled publication fails closed until the operator resolves it.
 Existing incorrectly encoded history in sites not managed by Filters is not
 migrated; managed views regenerate from retained input when their native code
 or profile changes.

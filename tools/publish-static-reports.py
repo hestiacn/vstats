@@ -1562,7 +1562,6 @@ def main():
         for site in new_sites:
             if not SITE_NAME.fullmatch(site):
                 raise RuntimeError('Unsafe configured site identifier')
-            profiles[site] = profile_state(False, None, {}, {})
         token = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8]
         run = state_root / 'runs' / token
         # Both the control service and the separate parser must traverse this
@@ -1579,7 +1578,8 @@ def main():
             observed = retained_input(private_base, site)
             preflight = run / 'preflight'
             private_directory(str(preflight), account.pw_gid)
-            frozen_snapshot, frozen_input = build_snapshot(SOURCE_LOG, sites[site]['base_names'], str(preflight))
+            frozen_bases = tuple(sites[site]['base_names'])
+            frozen_snapshot, frozen_input = build_snapshot(SOURCE_LOG, frozen_bases, str(preflight))
             if frozen_input['rejected']:
                 raise RuntimeError('Input normalization failed; current reports remain applied')
             source_days = set(observed)
@@ -1592,7 +1592,7 @@ def main():
             scope['acknowledgement'] = identity({k:v for k,v in scope.items() if k != 'needs_acknowledgement'})
             normal_snapshot = build_snapshot
             def frozen_builder(log_root, bases, work):
-                if bases == sites[site]['base_names']:
+                if tuple(bases) == frozen_bases:
                     return frozen_snapshot, frozen_input
                 return normal_snapshot(log_root, bases, work)
             build_snapshot = frozen_builder
@@ -1629,6 +1629,7 @@ def main():
             for site in new_sites:
                 if site in selected_sites:
                     stage_native_site(real_base, stage_base, site, sites[site], account)
+                    profiles[site] = profile_state(False, None, {}, {})
             for name in ['input', 'work']:
                 private_directory(str(stage_base / name), account.pw_gid)
             shutil.copytree(real_config, str(stage_config / 'source'), symlinks=False, ignore=shutil.ignore_patterns('filters-admin.json', 'filters.json'))
