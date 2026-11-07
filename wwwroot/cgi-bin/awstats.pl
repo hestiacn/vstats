@@ -8973,7 +8973,7 @@ sub Save_History {
 		print HISTORYTMP "${xmlbb}BEGIN_DOWNLOADS${xmlbs}"
 		  . ( scalar keys %_downloads )
 		  . "${xmlbe}\n";
-		for my $u (sort {$_downloads{$b}->{'AWSTATS_HITS'} <=> $_downloads{$a}->{'AWSTATS_HITS'}}(keys %_downloads) ){
+		for my $u (sort {($_downloads{$b}->{'AWSTATS_HITS'} || 0) <=> ($_downloads{$a}->{'AWSTATS_HITS'} || 0)}(keys %_downloads) ){
 			print HISTORYTMP "${xmlrb}"
 			  . XMLEncodeForHisto($u)
 			  . "${xmlrs}"
@@ -24302,8 +24302,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 							}
 							# 206 状态码：分块下载
 							elsif ( $status_code == 206 ) {
-								if ( $_downloads{$file_url}->{'AWSTATS_HITS'} > 0 || 
-									$_downloads{$file_url}->{'AWSTATS_NEW'} > 0 ) {
+								if ( ($_downloads{$file_url}->{'AWSTATS_HITS'} || 0) > 0 ||
+									($_downloads{$file_url}->{'AWSTATS_NEW'} || 0) > 0 ) {
 									$_downloads{$file_url}->{'AWSTATS_206'}++;
 									$_downloads{$file_url}->{'AWSTATS_SIZE'} += $file_size;
 									$_downloads{$file_url}->{'AWSTATS_LAST_TIME'} = $timerecord;
