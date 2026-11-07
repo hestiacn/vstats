@@ -170,7 +170,7 @@ def validate_profile(value, app, perl):
     # Intended enablement remains saved even where required paths are unavailable.
     if not cfg['probing'].get('paths'):
         cfg['probing']['enabled'] = 0
-    if not cfg['distributed_login'].get('login_paths'):
+    if not (cfg['distributed_login'].get('login_paths') and cfg['distributed_login'].get('admin_paths')):
         cfg['distributed_login']['enabled'] = 0
     p['classifier'] = classifier_config(cfg, app, perl)
     p['exceptions'].sort(key=lambda e: e['request_id'])
@@ -186,7 +186,7 @@ def filter_status(profile, evidence=False, over_limits=False):
             statuses[key] = 'Evidence unavailable'
         elif key == 'probing' and not profile['classifier'][key]['paths']:
             statuses[key] = 'Needs configuration'
-        elif key == 'distributed_login' and not profile['classifier'][key]['login_paths']:
+        elif key == 'distributed_login' and not (profile['classifier'][key]['login_paths'] and profile['classifier'][key]['admin_paths']):
             statuses[key] = 'Needs configuration'
         elif key in RULES and over_limits:
             statuses[key] = 'Input over limits'
