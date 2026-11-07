@@ -6125,7 +6125,7 @@ sub Read_History_With_TmpUpdate {
 				next;
 			}
 			if ( $field[0] eq 'LastTime' || $field[0] eq "${xmlrb}LastTime" ) {
-				if ( !$LastTime{$date} || $LastTime{$date} < int( $field[1] ) )
+				if ( !$LastTime{$date} || $LastTime{$date} < int( $field[1] // 0 ) )
 				{
 					$LastTime{$date} = int( $field[1] );
 				}
