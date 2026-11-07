@@ -138,7 +138,8 @@ profile metadata remain. Unchanged source days are shared by hard link, but each
 Preview and Apply first makes a full byte copy of that site's retained corpus
 in `state/runs/<generation>/base/corpus/<site>/seed-*`. Preview baseline replays
 and changed days can also create independent versions; superseded corpus trees
-persist in older run bases. Corpus copies are not reclaimed automatically.
+persist in older run bases. Each committed Apply's `seed-*` copy is also hard-linked into every later run base,
+so removing unreferenced older corpus trees does not free it. Corpus copies are not reclaimed automatically.
 Mutable native histories are copied. Size storage for these copies and set an
 operator retention policy; this feature does not promise unlimited storage.
 Before removing any unreferenced `state/runs/<generation>/base/corpus` tree,
