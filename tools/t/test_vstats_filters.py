@@ -267,5 +267,204 @@ class Controls(unittest.TestCase):
         self.assertEqual(request('POST', '/sites/other.test/save', headers, canonical(self.body))[0], 403)
 
 
+    def test_nonfinite_json_refused_without_lowering_state_cap(self):
+        from vstats_filters import decode, MAX_REQUEST_BYTES
+        path = self.root / 'strict-state.json'
+        for token in ['NaN', 'Infinity', '-Infinity', '1e999', '-1e999']:
+            for raw in [token.encode(), ('{"nested":[' + token + ']}').encode()]:
+                with self.subTest(raw=raw):
+                    with self.assertRaises(ValueError):
+                        decode(raw)
+                    path.write_bytes(raw)
+                    with self.assertRaises(ValueError):
+                        read_json(path)
+        for value in [float('nan'), float('inf'), -float('inf')]:
+            with self.assertRaises(ValueError):
+                canonical({'nested': [value]})
+        with self.assertRaises(ValueError):
+            decode(b'{"same":1,"same":2}')
+        self.assertEqual(decode(b'{"n":1.25,"small":1e-99,"flag":true,"missing":null}'),
+                         {'n': 1.25, 'small': 1e-99, 'flag': True, 'missing': None})
+        raw = json.dumps({'text': 'a' * MAX_REQUEST_BYTES}).encode()
+        path.write_bytes(raw)
+        self.assertEqual(len(read_json(path)['text']), MAX_REQUEST_BYTES)
+        with self.assertRaises(ValueError):
+            decode(raw)
+        path.write_bytes(b' ' * (16 * 1024 * 1024 + 1))
+        with self.assertRaises(ValueError):
+            read_json(path)
+
+    def test_http_rejects_untyped_coverage_before_creating_queue_entries(self):
+        spec = importlib.util.spec_from_file_location('filters_server_coverage_test', str(ROOT / 'tools/filters-server.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        socket_path = str(self.root / 'coverage.sock')
+        server = module.Server(socket_path, module.Handler); server.control = self.control
+        thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+        self.addCleanup(server.server_close); self.addCleanup(server.shutdown)
+        from http.client import HTTPConnection
+        def send(method, route, headers, body=None):
+            connection = HTTPConnection('localhost')
+            connection.sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            connection.sock.connect(socket_path)
+            connection.request(method, route, body=body, headers=headers)
+            response = connection.getresponse(); data = response.read()
+            code = response.status; connection.close()
+            return code, json.loads(data.decode())
+        code, session = send('GET', '/session', {'X-Forwarded-Proto': 'https'})
+        self.assertEqual(code, 200)
+        headers = {'X-Forwarded-Proto': 'https', 'Content-Type': 'application/json',
+                   'Origin': 'https://example.test', 'X-VStats-CSRF': session['csrf']}
+        tokens = ['1e999', '-1e999', 'NaN', 'Infinity', '-Infinity', '{}', '[]', 'false',
+                  '1', '""', '"x"', '"' + 'F' * 64 + '"', '"' + 'f' * 63 + '"', '"' + 'f' * 65 + '"']
+        for index, token in enumerate(tokens, 1):
+            action_id = format(index, '032x')
+            body = dict(self.body, action_id=action_id, coverage_ack='__RAW_ACK__')
+            raw = json.dumps(body).replace('"__RAW_ACK__"', token).encode()
+            with self.subTest(token=token):
+                self.assertEqual(send('POST', '/sites/example.test/apply', headers, raw)[0], 400)
+                self.assertFalse((self.state / 'requests' / (action_id + '.json')).exists())
+        for index, (action, ack) in enumerate([(a, k) for a in ['preview', 'apply'] for k in [None, 'f' * 64]], 100):
+            action_id = format(index, '032x')
+            body = dict(self.body, action_id=action_id, coverage_ack=ack)
+            first = send('POST', '/sites/example.test/' + action, headers, canonical(body))
+            self.assertEqual(first[0], 200)
+            self.assertEqual(send('POST', '/sites/example.test/' + action, headers, canonical(body)), first)
+            queued = read_json(self.state / 'requests' / (action_id + '.json'))
+            self.assertEqual(queued['request']['coverage_ack'], ack)
+        for field in ['generation', 'classifier']:
+            body = copy.deepcopy(self.body); body['action_id'] = ('c' if field == 'generation' else 'd') * 32
+            if field == 'generation':
+                body['generation'] = '__RAW_NUMBER__'
+            else:
+                body['profile']['classifier']['behavior']['window_seconds'] = '__RAW_NUMBER__'
+            raw = json.dumps(body).replace('"__RAW_NUMBER__"', '1e999').encode()
+            self.assertEqual(send('POST', '/sites/example.test/apply', headers, raw)[0], 400)
+            self.assertFalse((self.state / 'requests' / (body['action_id'] + '.json')).exists())
+        self.assertEqual(list((self.state / 'requests').glob('.request-*')), [])
+
+    def test_worker_restart_recovers_current_and_ancestor_apply_generations(self):
+        spec = importlib.util.spec_from_file_location('filters_worker_restart_test', str(ROOT / 'tools/filters-worker.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        a, b, later = '20261105T130000Z-aaaaaaaa', '20261105T140000Z-bbbbbbbb', '20261105T150000Z-cccccccc'
+        action_id = 'a' * 32
+        for scenario in ['current', 'ancestor', 'two_later', 'uncommitted', 'preview', 'missing', 'cycle', 'invalid']:
+            with self.subTest(scenario=scenario):
+                root = self.root / scenario
+                state, web = root / 'state', root / 'web'
+                for name in ['jobs', 'requests', 'runs/' + GEN, 'runs/' + a, 'runs/' + b, 'runs/' + later]:
+                    (state / name).mkdir(parents=True, exist_ok=True)
+                for token in [GEN, a, b, later]:
+                    (web / 'generations' / token).mkdir(parents=True, exist_ok=True)
+                atomic_json(state / 'runs' / GEN / 'manifest.json', self.manifest)
+                if scenario != 'missing':
+                    atomic_json(state / 'runs' / a / 'manifest.json',
+                                dict(self.manifest, generation=a, previous_generation=GEN, action_id=action_id))
+                parent = b if scenario == 'cycle' else 'invalid' if scenario == 'invalid' else GEN if scenario in ['uncommitted', 'preview'] else a
+                atomic_json(state / 'runs' / b / 'manifest.json',
+                            dict(self.manifest, generation=b, previous_generation=parent, action_id=None))
+                atomic_json(state / 'runs' / later / 'manifest.json',
+                            dict(self.manifest, generation=later, previous_generation=b, action_id=None))
+                selected = a if scenario == 'current' else later if scenario == 'two_later' else b
+                (web / 'current').symlink_to('generations/' + selected)
+                settings = dict(self.settings, state=str(state), web=str(web),
+                                api_user=pwd.getpwuid(os.getuid()).pw_name)
+                settings_path = root / 'settings.json'; atomic_json(settings_path, settings, mode=0o600)
+                control = Control(settings)
+                job_path = state / 'jobs' / (action_id + '.json')
+                atomic_json(job_path, {'id': action_id, 'site': 'example.test',
+                                      'action': 'preview' if scenario == 'preview' else 'apply',
+                                      'status': 'Running', 'created_utc': '2026-11-05T12:00:00Z'})
+                with mock.patch.object(module, 'Control', return_value=control), \
+                        mock.patch.object(module, 'publish_browser_policy'), \
+                        mock.patch.object(module.subprocess, 'run') as launch, \
+                        mock.patch.object(sys, 'argv', ['filters-worker.py', '--settings', str(settings_path), '--once']):
+                    before_job = job_path.read_bytes()
+                    if scenario in ['cycle', 'invalid']:
+                        with self.assertRaises(ValueError):
+                            module.main()
+                        self.assertEqual(job_path.read_bytes(), before_job)
+                    else:
+                        module.main()
+                    launch.assert_not_called()
+                job = read_json(job_path)
+                expected = 'Running' if scenario in ['cycle', 'invalid'] else 'Completed' if scenario in ['current', 'ancestor', 'two_later'] else 'Failed'
+                self.assertEqual(job['status'], expected)
+                if expected == 'Completed':
+                    self.assertEqual(job['generation'], a)
+                    self.assertEqual(job['phase'], 'Committed generation recovered')
+                self.assertEqual(control.current()['generation'], selected)
+
+    def test_worker_error_recovers_ancestor_commit_without_replaying_action(self):
+        spec = importlib.util.spec_from_file_location('filters_worker_commit_error_test', str(ROOT / 'tools/filters-worker.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        original_run = module.subprocess.run
+        a, b, later = '20261105T130000Z-aaaaaaaa', '20261105T140000Z-bbbbbbbb', '20261105T150000Z-cccccccc'
+        for scenario in ['current', 'ancestor', 'two_later', 'uncommitted', 'cycle', 'invalid']:
+            with self.subTest(scenario=scenario):
+                root = self.root / ('process-' + scenario)
+                state, web = root / 'state', root / 'web'
+                for name in ['jobs', 'requests', 'drafts', 'runs/' + GEN]:
+                    (state / name).mkdir(parents=True)
+                (web / 'generations' / GEN).mkdir(parents=True)
+                (web / 'current').symlink_to('generations/' + GEN)
+                atomic_json(state / 'runs' / GEN / 'manifest.json', self.manifest)
+                settings = dict(self.settings, state=str(state), web=str(web),
+                                api_user=pwd.getpwuid(os.getuid()).pw_name, settings_path=str(root / 'settings.json'))
+                publish_browser_policy(settings)
+                control = Control(settings)
+                control.change('example.test', 'apply', self.body, self.user)
+                launches = []
+                def failed_after_commit(command, **kwargs):
+                    if '--filter-job' not in command:
+                        return original_run(command, **kwargs)
+                    launches.append(command)
+                    if scenario == 'uncommitted':
+                        return type('Result', (), {'returncode': 1})()
+                    generations = [(a, GEN, 'a' * 32)]
+                    if scenario != 'current':
+                        parent = b if scenario == 'cycle' else 'invalid' if scenario == 'invalid' else a
+                        generations.append((b, parent, None))
+                    if scenario == 'two_later':
+                        generations.append((later, b, None))
+                    for token, parent, action_id in generations:
+                        (state / 'runs' / token).mkdir(); (web / 'generations' / token).mkdir()
+                        atomic_json(state / 'runs' / token / 'manifest.json',
+                                    dict(self.manifest, generation=token, previous_generation=parent, action_id=action_id))
+                    selected = generations[-1][0]
+                    (web / 'current').unlink(); (web / 'current').symlink_to('generations/' + selected)
+                    return type('Result', (), {'returncode': 1})()
+                request_path = state / 'requests' / ('a' * 32 + '.json')
+                with mock.patch.object(module.subprocess, 'run', side_effect=failed_after_commit):
+                    if scenario in ['cycle', 'invalid']:
+                        with self.assertRaises(ValueError):
+                            module.process(control, request_path)
+                    else:
+                        module.process(control, request_path)
+                    module.process(control, request_path)
+                self.assertEqual(len(launches), 1)
+                job = read_json(state / 'jobs' / ('a' * 32 + '.json'))
+                expected = 'Running' if scenario in ['cycle', 'invalid'] else 'Failed' if scenario == 'uncommitted' else 'Completed'
+                self.assertEqual(job['status'], expected)
+                if expected == 'Completed':
+                    self.assertEqual(job['generation'], a)
+                selected = GEN if scenario == 'uncommitted' else a if scenario == 'current' else later if scenario == 'two_later' else b
+                self.assertEqual(control.current()['generation'], selected)
+
+    def test_worker_refuses_nonfinite_spool_without_job_or_launch(self):
+        spec = importlib.util.spec_from_file_location('filters_worker_nonfinite_test', str(ROOT / 'tools/filters-worker.py'))
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        self.control.change('example.test', 'preview', self.body, self.user)
+        path = self.state / 'requests' / ('a' * 32 + '.json')
+        raw = path.read_bytes()
+        self.assertEqual(raw.count(b'"coverage_ack":null'), 1)
+        path.write_bytes(raw.replace(b'"coverage_ack":null', b'"coverage_ack":1e999'))
+        with mock.patch.object(module.subprocess, 'run') as launch:
+            with self.assertRaises(ValueError):
+                module.process(self.control, path)
+            launch.assert_not_called()
+        self.assertFalse((self.state / 'jobs' / ('a' * 32 + '.json')).exists())
+        self.assertFalse((self.state / 'jobs' / ('a' * 32 + '-request.json')).exists())
+
+
 if __name__ == '__main__':
     unittest.main()

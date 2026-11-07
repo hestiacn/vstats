@@ -16,6 +16,12 @@ from vstats_filters import (Control, IDENTIFIER, atomic_json, identity, read_jso
                            utcnow, validate_profile, publish_browser_policy, queued_user)
 
 
+def committed_generation(control, action_id):
+    """Find this action in committed ancestry. Invalid ancestry raises: no status is written."""
+    return next((m for m in control.committed_manifests()
+                 if m.get('action_id') == action_id), None)
+
+
 def process(control, request_path):
     action_id = request_path.stem
     if not IDENTIFIER.fullmatch(action_id):
@@ -58,9 +64,10 @@ def process(control, request_path):
                    result=result, completed_utc=utcnow())
     except Exception as e:
         # A process may exit after the atomic report pointer moved. Reconcile it.
-        current = control.current()
-        if request.get('action') == 'apply' and current.get('action_id') == action_id:
-            job.update(status='Completed', phase='Committed generation recovered', generation=current['generation'])
+        committed = committed_generation(control, action_id) if request.get('action') == 'apply' else None
+        if committed is not None:
+            job.update(status='Completed', phase='Committed generation recovered',
+                       generation=committed['generation'], completed_utc=utcnow())
         else:
             error = str(e) if isinstance(e, (ValueError, RuntimeError)) else 'Worker failed; consult private diagnostics'
             job.update(status='Failed', phase='No new report/profile pair published', error=error, completed_utc=utcnow())
@@ -89,11 +96,12 @@ def main():
                 continue
             job = read_json(path)
             if job['status'] == 'Running':
-                current = control.current()
-                committed = current.get('action_id') == job['id']
-                job.update(status='Completed' if committed else 'Failed',
-                           phase='Committed generation recovered' if committed else 'Worker restarted before publication',
+                committed = committed_generation(control, job['id']) if job.get('action') == 'apply' else None
+                job.update(status='Completed' if committed is not None else 'Failed',
+                           phase='Committed generation recovered' if committed is not None else 'Worker restarted before publication',
                            completed_utc=utcnow())
+                if committed is not None:
+                    job['generation'] = committed['generation']
                 atomic_json(path, job, gid=gid)
         while True:
             publish_browser_policy(settings, gid=gid)

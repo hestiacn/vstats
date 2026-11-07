@@ -151,8 +151,10 @@ Their existing history is copied only if each history directory is a real
 directory containing only regular statistics-account files of at most 64 MiB;
 otherwise scheduled publication fails closed until the operator resolves it.
 Existing incorrectly encoded history in sites not managed by Filters is not
-migrated; managed views regenerate from retained input when their native code
-or profile changes.
+migrated; managed views regenerate from retained input when their profile or a
+native input bound by the replay cache changes. That cache does not bind native
+`cgi-bin/lib/` modules other than `robots.pm`, or plugins; after changing only
+those, run an explicit retained-input rebuild (Apply & reprocess).
 
 ## Capacity and evidence
 
@@ -169,11 +171,13 @@ Google public crawler IP-range feed over verified HTTPS as root, at most once
 per publisher process. After 30 archived retrievals in a UTC day (the 32-snapshot
 day cap minus two bracketing snapshots), later runs retain the prior bundle. An already
 overfull archived day still fails closed and needs an explicit operator decision
-before reprocessing can resume; archives are never silently thinned or deleted.
-No visitor data is sent. Retrieved raw snapshots and
-retrieval attestations are archived; the staged evidence is frozen for both
-applied and proposed Preview profiles. Collection failure leaves the previous
-valid bundle available without extending its historical coverage.
+before reprocessing can resume; committed archives are never silently thinned or deleted.
+No visitor data is sent. Only committed publications archive retrieved raw
+snapshots and retrieval attestations; Preview and failed-run retrievals are
+pruned with other work products after a later successful commit. The staged
+evidence is frozen for both applied and proposed Preview profiles. Collection
+failure leaves the previous valid bundle available without extending its
+historical coverage.
 
 The exporter defaults to strict failure. The publisher explicitly selects
 `--capacity-fallback`: an unambiguous documented byte/record/group hard-max

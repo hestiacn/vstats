@@ -10,6 +10,7 @@ import hashlib
 import hmac
 import html
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -36,7 +37,7 @@ def utcnow():
 
 
 def canonical(value):
-    return (json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(',', ':')) + '\n').encode('utf-8')
+    return (json.dumps(value, sort_keys=True, ensure_ascii=False, allow_nan=False, separators=(',', ':')) + '\n').encode('utf-8')
 
 
 def identity(value):
@@ -52,11 +53,22 @@ def strict_object(pairs):
     return result
 
 
+def finite_json_number(value):
+    number = float(value)
+    if not math.isfinite(number):
+        raise ValueError('Non-finite JSON')
+    return number
+
+
+def strict_json(raw):
+    return json.loads(raw.decode('utf-8'), object_pairs_hook=strict_object,
+                      parse_float=finite_json_number, parse_constant=finite_json_number)
+
+
 def decode(raw):
     if len(raw) > MAX_REQUEST_BYTES:
         raise ValueError('Request is too large')
-    return json.loads(raw.decode('utf-8'), object_pairs_hook=strict_object,
-                      parse_constant=lambda x: (_ for _ in ()).throw(ValueError('Non-finite JSON')))
+    return strict_json(raw)
 
 
 def read_json(path, root_owned=False):
@@ -70,7 +82,7 @@ def read_json(path, root_owned=False):
         raw = f.read(16 * 1024 * 1024 + 1)
     if len(raw) > 16 * 1024 * 1024:
         raise ValueError('State file is too large')
-    return json.loads(raw.decode('utf-8'), object_pairs_hook=strict_object)
+    return strict_json(raw)
 
 
 def atomic_json(path, value, mode=0o640, gid=None):
@@ -104,7 +116,7 @@ def classifier_config(raw, app, perl):
                        env={'PATH': '/usr/bin:/bin', 'LC_ALL': 'C', 'LANG': 'C'}, timeout=10)
     if p.returncode or p.stderr:
         raise ValueError('Unsupported classifier settings or coupled threshold bounds')
-    return json.loads(p.stdout.decode('utf-8'))
+    return strict_json(p.stdout)
 
 
 def defaults(app, perl, current=None):
@@ -420,13 +432,17 @@ class Control:
                       'based_on_generation': current['generation']}
             atomic_json(draft_path, result, mode=0o640)
             return {'status': 'Pending', 'pending': result}
+        coverage_ack = body.get('coverage_ack')
+        if coverage_ack is not None and (not isinstance(coverage_ack, str) or
+                                         not re.fullmatch(r'[a-f0-9]{64}', coverage_ack)):
+            raise ValueError('Coverage acknowledgement must be a lowercase SHA-256 or null')
         action_id = body.get('action_id', '')
         if not isinstance(action_id, str) or not IDENTIFIER.fullmatch(action_id):
             raise ValueError('An explicit action ID is required')
         # A retry with the same ID returns the original job, including terminal state.
         request = {'schema_version': 1, 'id': action_id, 'site': site, 'action': action,
                    'profile': profile, 'base_generation': body['generation'],
-                   'actor': user['name'], 'coverage_ack': body.get('coverage_ack'),
+                   'actor': user['name'], 'coverage_ack': coverage_ack,
                    'authentication': 'web-server' if user.get('authenticated') else 'access-rule'}
         path = self.state / 'requests' / (action_id + '.json')
         if path.exists():
