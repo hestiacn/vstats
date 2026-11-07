@@ -65,7 +65,12 @@ separate native-accounting PR.
    `/vstats/assets/icon`, where the publisher copies the release icons. Native
    AWStats runs must finish without warnings: any stderr output fails the
    publisher run and keeps the previously committed report/profile pair. Do not
-   put machine configuration or credentials in Git.
+   put machine configuration or credentials in Git. Keep `state` on the same
+   filesystem as `web` and provide `/sbin/restorecon` (policycoreutils): each
+   publication runs `restorecon -R` on its generation and renames it from
+   `state` into `web/generations` before `current` changes. A missing or
+   failing command, or a cross-filesystem layout, fails the run and keeps the
+   prior report/profile pair.
 3. Browser controls follow each site's native `AllowToUpdateStatsFromBrowser`:
    `1` displays editing, Preview and Apply & reprocess; `0` hides those actions
    and the API, worker and publisher reject browser mutations. Scheduled updates

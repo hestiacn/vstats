@@ -6118,7 +6118,7 @@ sub Read_History_With_TmpUpdate {
 			if ( $field[0] eq 'FirstTime' || $field[0] eq "${xmlrb}FirstTime" )
 			{
 				if ( !$FirstTime{$date}
-					|| $FirstTime{$date} > int( $field[1] ) )
+					|| ( int( $field[1] // 0 ) && $FirstTime{$date} > int( $field[1] ) ) )
 				{
 					$FirstTime{$date} = int( $field[1] );
 				}
