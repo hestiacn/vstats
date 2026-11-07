@@ -123,11 +123,21 @@ permission as for native command-line processing. No extra copy is made.
 A manifest is complete before the single public report-generation symlink
 changes. Readers, the API and subsequent updates resolve the profile through
 that same pointer. Failed work cannot select a new profile with old reports.
-Previous and current report generations are retained; older native histories
-and work products can be removed after commit, while source corpus links and
-profile metadata remain. Retained source files are immutable and shared by hard
-link; mutable native histories are copied. Source retention still needs an
-operator storage policy; this feature does not promise unlimited storage.
+Previous and current report generations are retained; older derived histories
+and work products are pruned after a later successful commit. Corpus trees and
+profile metadata remain. Unchanged source days are shared by hard link, but each
+Preview and Apply first makes a full byte copy of that site's retained corpus
+in `state/runs/<generation>/base/corpus/<site>/seed-*`. Preview baseline replays
+and changed days can also create independent versions; superseded corpus trees
+persist in older run bases. Corpus copies are not reclaimed automatically.
+Mutable native histories are copied. Size storage for these copies and set an
+operator retention policy; this feature does not promise unlimited storage.
+Before removing any unreferenced `state/runs/<generation>/base/corpus` tree,
+verify that the current and previous committed manifests' `private_base` values,
+their corpus pointers/receipts, and the configured original `base` do not refer
+to it. Never delete original logs or a referenced corpus to free this space.
+Sites added to `sites.json` after setup join as native-only and are not enrolled
+in Filters until a profile is explicitly applied.
 Existing incorrectly encoded history in sites not managed by Filters is not
 migrated; managed views regenerate from retained input when their native code
 or profile changes.
@@ -144,7 +154,11 @@ visitor/visit totals still come from the selected native history.
 
 A behavior-enabled publisher run, including Preview, collects the registered
 Google public crawler IP-range feed over verified HTTPS as root, at most once
-per publisher process. No visitor data is sent. Retrieved raw snapshots and
+per publisher process. After 30 archived retrievals in a UTC day (the 32-snapshot
+day cap minus two bracketing snapshots), later runs retain the prior bundle. An already
+overfull archived day still fails closed and needs an explicit operator decision
+before reprocessing can resume; archives are never silently thinned or deleted.
+No visitor data is sent. Retrieved raw snapshots and
 retrieval attestations are archived; the staged evidence is frozen for both
 applied and proposed Preview profiles. Collection failure leaves the previous
 valid bundle available without extending its historical coverage.

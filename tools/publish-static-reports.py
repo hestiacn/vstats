@@ -27,6 +27,7 @@ import uuid
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from normalize_logs import build_snapshot
+from native_history_cache import read_history, restore_history
 from vstats_filters import (add_filters_menu, native_shell, canonical, identity, read_json,
                             atomic_json, validate_profile, defaults, filter_status, FILTERS, GENERATION,
                             Control, browser_policy, public_browser_policy, publish_browser_policy, queued_user)
@@ -373,6 +374,36 @@ def page(title, body):
             body + '</body></html>')
 
 
+def render_root_index(generation, profiles, sites, generated_utc, apache_gid):
+    rows = []
+    for site, profile in sorted(profiles.items()):
+        if not SITE_NAME.fullmatch(site):
+            raise RuntimeError('Unsafe configured site identifier')
+        if not (Path(generation) / site).is_dir():
+            continue
+        totals = profile.get('totals', {})
+        known = totals and all(isinstance(v, dict) and all(
+            type(v.get(k)) is int and v[k] >= 0 for k in ['hits', 'nonviewed_hits'])
+            for v in totals.values())
+        count = format(sum(v['hits'] + v['nonviewed_hits'] for v in totals.values()), ',') if known else 'unavailable'
+        label = html.escape(sites.get(site, {}).get('label', site))
+        updated = html.escape(profile.get('updated_utc') or 'unavailable')
+        rows.append("<tr><td style='overflow-wrap:anywhere'><a href='" + html.escape(site, quote=True) +
+                    "/'>" + label + '</a><br><small>Reports as of ' + updated +
+                    '</small></td><td>' + count + '</td></tr>')
+    target = Path(generation) / 'index.html'
+    if os.path.lexists(str(target)):
+        info = os.lstat(str(target))
+        if not stat.S_ISREG(info.st_mode) or info.st_uid != 0:
+            raise RuntimeError('Unexpected generated index ownership/type')
+        target.unlink()
+    write_text(str(target), page('Website statistics',
+               '<h1>Website statistics</h1><p>Choose a site and month to view its vstats report.</p>'
+               '<table><tr><th>Website</th><th>Requests analyzed</th></tr>' + ''.join(rows) +
+               '</table><p><small>Updated ' + html.escape(generated_utc) +
+               '. Reports update hourly. Times are shown in UTC.</small></p>'), apache_gid)
+
+
 def remove_owned_directory(parent, name):
     if not re.fullmatch(r'\d{8}T\d{6}Z-[0-9a-f]{8}', name):
         raise RuntimeError('Unexpected generated directory name')
@@ -437,9 +468,17 @@ def _refresh_verified_evidence(account):
     spec.loader.exec_module(collector)
     result = {'enabled': True, 'refresh_status': 'unavailable', 'provider_id': collector.PROVIDER}
     try:
-        receipt = collector.collect(directory)
-        result.update({'refresh_status': 'success', 'retrieved_at': receipt['retrieved_at'],
-                       'raw_sha256': receipt['raw_sha256']})
+        today = datetime.datetime.utcnow().strftime('%Y%m%d')
+        retrievals = os.path.join(directory, 'retrievals')
+        daily_count = sum(bool(re.fullmatch(today + r'T\d{6}Z\.json', name))
+                          for name in os.listdir(retrievals)) if os.path.isdir(retrievals) else 0
+        # Reserve the nearest earlier/later retrievals in each strict day bundle.
+        if daily_count >= collector.MAX_SNAPSHOTS - 2:
+            result['refresh_status'] = 'skipped_daily_snapshot_bound'
+        else:
+            receipt = collector.collect(directory)
+            result.update({'refresh_status': 'success', 'retrieved_at': receipt['retrieved_at'],
+                           'raw_sha256': receipt['raw_sha256']})
     except Exception as error:
         # Preserve the prior bundle. Its request-period rules cannot verify later
         # requests without covering evidence; declarations are never a fallback.
@@ -1036,7 +1075,6 @@ def legacy_main(account, apache_gid):
                  'timezone': 'UTC', 'sites': {}, 'scope': 'Derived statistics; Apache input logs are read only'}
         try:
             copy_public_assets(generation, apache_gid)
-            rows = []
             pending_behavior = []
             for site, settings in sorted(sites.items()):
                 if not SITE_NAME.fullmatch(site):
@@ -1108,8 +1146,6 @@ def legacy_main(account, apache_gid):
                     render_site_view(account, site, os.path.join(site_web, 'original'), result['totals']['original'], apache_gid, extra_links,
                                      config_dir=result['configs']['original'], layer_info=info, original=True)
                     request_count = sum(v['hits'] + v['nonviewed_hits'] for v in after.values())
-                    rows.append("<tr><td><a href='" + html.escape(site, quote=True) + "/'>" + html.escape(settings.get('label', site)) +
-                                '</a></td><td>' + format(request_count, ',') + '</td></tr>')
                     pending_behavior.append((site, result))
                     print(json.dumps({'site': site, 'requests_analyzed': request_count, 'behavior_flagged': info['flagged_requests'],
                                       'behavior_excluded': sum(x['records'] for x in info['excluded_by_month'].values()),
@@ -1170,19 +1206,14 @@ def legacy_main(account, apache_gid):
                                      apache_gid, extra_links, config_dir=CONFIG,
                                      layer_info=layer_info, original=True)
                 request_count = sum(value['hits'] + value['nonviewed_hits'] for value in after.values())
-                rows.append("<tr><td><a href='" + html.escape(site, quote=True) + "/'>" +
-                            html.escape(settings.get('label', site)) + '</a>' +
-                            '</td><td>' +
-                            format(request_count, ',') + '</td></tr>')
                 print(json.dumps({'site': site, 'retained_records': evidence['accepted'],
                                   'months': sorted(after), 'requests_analyzed': request_count,
                                   'repeat_checked': options.verify_repeat}), flush=True)
             state['completed_utc'] = datetime.datetime.utcnow().isoformat() + 'Z'
-            write_text(os.path.join(generation, 'index.html'), page('Website statistics',
-                       '<h1>Website statistics</h1><p>Choose a site and month to view its vstats report.</p>'
-                       '<table><tr><th>Website</th><th>Requests analyzed</th></tr>' + ''.join(rows) +
-                       '</table><p><small>Updated ' + html.escape(state['completed_utc']) +
-                       '. Reports update hourly. Times are shown in UTC.</small></p>'), apache_gid)
+            render_root_index(generation,
+                              {site: dict(values, updated_utc=state['completed_utc'])
+                               for site, values in state['sites'].items()},
+                              sites, state['completed_utc'], apache_gid)
             state['validated_local_links'] = validate_report_links(generation)
             subprocess.check_call(['/sbin/restorecon', '-R', generation])
             for site, result in pending_behavior:
@@ -1285,6 +1316,46 @@ def native_evidence_dates(base, max_gap):
     return dates
 
 
+def profile_state(managed, profile, retained, values):
+    return {'managed': managed, 'applied': profile,
+            'profile_id': identity(profile) if profile else None,
+            'input_days': retained if managed else None,
+            'totals': values.get('totals', {}),
+            'view_totals': {'original': values.get('original_totals', {}), 'confirmed': values.get('confirmed_totals', {}),
+                           'requests': values.get('request_totals', {}), 'behavior': values.get('totals', {})},
+            'excluded_by_month': values.get('behavior_layer', {}).get('excluded_by_month', {}),
+            'request_excluded_by_month': values.get('behavior_layer', {}).get('request_excluded_by_month', {}),
+            'matched_requests': {'flagged_requests': values['behavior_layer']['flagged_requests']} if 'behavior_layer' in values else {},
+            'coverage': coverage({'applied': profile, 'input_days': retained if managed else None}, retained),
+            'effective': {}, 'default_profile': defaults(APP, PERL, profile),
+            'note': 'Imported and identity-verified existing profile' if managed else
+                    'Native reports remain on their existing updater until Filters is explicitly applied. Historical filter profile unverified.'}
+
+
+def stage_native_site(real_base, stage_base, site, settings, account):
+    roots = ['data'] + (['data-verified'] if settings.get('verified_crawler_filter') else [])
+    for name in roots:
+        source = Path(real_base) / name / site
+        target = Path(stage_base) / name / site
+        if name == 'data-verified' and not os.path.lexists(str(source)):
+            # Preserve the existing independent verified-history setup refusal.
+            continue
+        private_directory(str(target), account.pw_gid)
+        if os.path.lexists(str(source)):
+            descriptor = os.open(str(source), os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+            try:
+                for filename in sorted(os.listdir(descriptor)):
+                    # The shared history kernel validates regular type, owner,
+                    # no-follow and byte cap; restore creates an independent file.
+                    snapshot = read_history('/proc/self/fd/' + str(descriptor) + '/' + filename, account.pw_uid)
+                    if snapshot is None:
+                        raise RuntimeError('New-site native history changed while staging')
+                    restore_history(snapshot, str(target / filename), account.pw_uid, account.pw_gid)
+            finally:
+                os.close(descriptor)
+        private_directory(str(target), account.pw_gid, owner=account.pw_uid, mode=0o700)
+
+
 def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
     profiles = {}
     for site, site_settings in sites.items():
@@ -1355,19 +1426,7 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
                         raise RuntimeError('Managed native history identity changed: ' + site)
         retained = retained_input(real_base, site)
         values = old_state.get('sites', {}).get(site, {})
-        profiles[site] = {'managed': managed, 'applied': profile,
-                          'profile_id': identity(profile) if profile else None,
-                          'input_days': retained if managed else None,
-                          'totals': values.get('totals', {}),
-                          'view_totals': {'original': values.get('original_totals', {}), 'confirmed': values.get('confirmed_totals', {}),
-                                          'requests': values.get('request_totals', {}), 'behavior': values.get('totals', {})},
-                          'excluded_by_month': values.get('behavior_layer', {}).get('excluded_by_month', {}),
-                          'request_excluded_by_month': values.get('behavior_layer', {}).get('request_excluded_by_month', {}),
-                          'matched_requests': {'flagged_requests': values['behavior_layer']['flagged_requests']} if 'behavior_layer' in values else {},
-                          'coverage': coverage({'applied': profile, 'input_days': retained if managed else None}, retained),
-                          'effective': {}, 'default_profile': defaults(APP, PERL, profile),
-                          'note': 'Imported and identity-verified existing profile' if managed else
-                                  'Native reports remain on their existing updater until Filters is explicitly applied. Historical filter profile unverified.'}
+        profiles[site] = profile_state(managed, profile, retained, values)
     return profiles
 
 
@@ -1499,6 +1558,11 @@ def main():
                 raise RuntimeError('Current report generation has no verified profile manifest; restore its matching state before bootstrapping')
             profiles = imported_profiles(sites, real_base, real_config, settings['legacy_app'], old_status, account)
             private_base = real_base
+        new_sites = sorted(set(sites) - set(profiles))
+        for site in new_sites:
+            if not SITE_NAME.fullmatch(site):
+                raise RuntimeError('Unsafe configured site identifier')
+            profiles[site] = profile_state(False, None, {}, {})
         token = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8]
         run = state_root / 'runs' / token
         # Both the control service and the separate parser must traverse this
@@ -1562,6 +1626,9 @@ def main():
         else:
             for name in ['data', 'data-verified', 'data-requests', 'data-behavior', 'corpus', 'crawler-evidence', 'supplements']:
                 clone_private(os.path.join(private_base, name), str(stage_base / name), immutable=(name == 'corpus'))
+            for site in new_sites:
+                if site in selected_sites:
+                    stage_native_site(real_base, stage_base, site, sites[site], account)
             for name in ['input', 'work']:
                 private_directory(str(stage_base / name), account.pw_gid)
             shutil.copytree(real_config, str(stage_config / 'source'), symlinks=False, ignore=shutil.ignore_patterns('filters-admin.json', 'filters.json'))
@@ -1584,7 +1651,10 @@ def main():
                             values['VerifiedCrawlerEvidenceFile'] = str(stage_base / 'crawler-evidence' / 'evidence.json')
                         path.write_text(final_native_settings(path.read_text(encoding='utf-8'), values), encoding='utf-8')
             for site, info in profiles.items():
-                if site not in selected_sites or not info['managed']:
+                if site not in selected_sites:
+                    continue
+                if not info['managed']:
+                    selected_sites[site] = dict(selected_sites[site], behavior_filter=False)
                     continue
                 if info['applied'] is None:
                     # Managed unknown history is deliberately frozen; native-only
@@ -1647,7 +1717,7 @@ def main():
             for site in profiles:
                 if not (generated / site).exists() and (current / site).is_dir():
                     shutil.copytree(str(current / site), str(generated / site))
-            shutil.copyfile(str(current / 'index.html'), str(generated / 'index.html'))
+            render_root_index(generated, profiles, sites, manifest['generated_utc'], apache_gid)
         native_gap = defaults(APP, PERL)['classifier']['verification']['max_gap_seconds']
         evidence_dates = native_evidence_dates(private_base if options.bootstrap_ui else str(stage_base), native_gap)
         for site, info in profiles.items():
