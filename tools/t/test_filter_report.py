@@ -119,6 +119,48 @@ class BatchIntegration(unittest.TestCase):
         return builder.build(self.config, self.inputs, self.root / 'output', perl=self.perl,
                              prefix='/vstats/example.test/', **kwargs)
 
+    def test_service_family_review_and_request_only_source_policy(self):
+        rows = [('192.0.2.1 - - [02/Oct/2026:10:00:{:02d} +0000] "GET {} HTTP/1.1" {} 12 "-" "SyntheticClient/1"\n'.format(i, path, status)).encode()
+                for i, (path, status) in enumerate([('/', 200), ('/openapi.json', 404), ('/.well-known/mcp.json', 410), ('/llms.txt', 404), ('/contact', 200)])]
+        raw = b''.join(rows)
+        (self.inputs / '2026-10-02.log').write_bytes(raw)
+        metadata = {hashlib.sha256(row.rstrip(b'\n')).hexdigest(): {'format': 'combined', 'vhost': 'example.test',
+                    'scheme': 'https', 'client_source': 'socket_peer', 'user_agent': 'value', 'referrer': 'absent'} for row in rows}
+        (self.inputs / '2026-10-02.observability.json').write_text(json.dumps({'schema_version': 1, 'records': metadata}), encoding='utf-8')
+        self.config.write_text(json.dumps({'schema_version': 1, 'exclude': ['suspected_automation'], 'service_discovery': {'enabled': 1}}), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(result['behavior']['service_discovery_flagged_requests'], 3)
+        self.assertEqual(result['ip_exclusion']['flagged_source_months'], 0)
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), rows[0] + rows[-1])
+        impact = result['evidence_classes']['service_discovery']['by_month']['2026-10']
+        self.assertEqual(impact['exclusive_requests'], 3)
+        self.assertEqual(impact['overlapping_requests'], 0)
+        review = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertIn('Service-manifest discovery', review)
+        self.assertIn('matching probes only', review)
+
+    def test_retrospective_overlay_keeps_default_bytes_unchanged(self):
+        rows = [self.lines[-1], self.ordinary]
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(rows))
+        metadata = {hashlib.sha256(row.rstrip(b'\n')).hexdigest(): {'format': 'combined', 'vhost': 'example.test',
+                    'scheme': 'https', 'client_source': 'socket_peer', 'user_agent': 'value', 'referrer': 'absent'} for row in rows}
+        (self.inputs / '2026-10-02.observability.json').write_text(json.dumps({'schema_version': 1, 'records': metadata}), encoding='utf-8')
+        reverse = '1.2.0.192.in-addr.arpa'; host = 'unit.internet-census.org'
+        bundle = {'schema_version': 1, 'provider_id': 'internet_census', 'source_url': 'https://www.internet-census.org/home.html',
+                  'source_document_fetched_at': 1700000000, 'resolver': {'address': '192.0.2.53', 'nonrewriting': 1},
+                  'selection': 'Synthetic fixture', 'observations': [{'client': '192.0.2.1', 'completed_at': 2000000000, 'queries': [
+                      {'qname': reverse, 'qtype': 'PTR', 'status': 'NOERROR', 'truncated': 0, 'answers': [{'owner': reverse, 'type': 'PTR', 'data': host, 'ttl': 20}]},
+                      {'qname': host, 'qtype': 'A', 'status': 'NOERROR', 'truncated': 0, 'answers': [{'owner': host, 'type': 'A', 'data': '192.0.2.1', 'ttl': 20}]}]}]}
+        evidence = self.root / 'operators.json'; evidence.write_text(json.dumps(bundle), encoding='utf-8')
+        self.config.write_text(json.dumps({'schema_version': 1, 'exclude': ['suspected_automation'],
+            'operator_association': {'enabled': 1, 'retrospective_enabled': 1, 'retrospective_months': ['2026-10']}}), encoding='utf-8')
+        result = self.run_build(operator_evidence=evidence, exclude_automated_ips=True)
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), b''.join(rows))
+        self.assertEqual((self.root / 'output/request-filtered/2026-10-02.log').read_bytes(), b''.join(rows))
+        self.assertEqual((self.root / 'output/retrospective-filtered/2026-10-02.log').read_bytes(), self.ordinary)
+        self.assertEqual(result['ip_exclusion']['flagged_source_months'], 0)
+        self.assertIn('excluded only from inferred overlay', (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8'))
+
     def test_private_complements_partition_primary_records(self):
         source = self.inputs / '2026-10-02.log'
         unparsed = b'\nnot an apache request\n'

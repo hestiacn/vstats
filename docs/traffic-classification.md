@@ -1038,3 +1038,73 @@ counts, distinct probe paths, missing responses, POSTs, endpoint roles and tool
 claims. They contain no observed query values, endpoint strings or raw agent
 claims. Aggregate output supplies a rule object and flagged-request count for
 each rule. Rule windows are bounded at the existing 3600-second hard maximum.
+
+## Operator association, service manifests and log observability
+
+`service_discovery` is a request-only heuristic, disabled in the standalone
+classifier unless selected. Its starter settings are three distinct service
+families within sixty seconds; these are exploratory values, not measured
+precision. Registry `service-manifests-v1` groups OpenAPI/Swagger aliases
+(including API/version prefixes), MCP endpoints/manifests, AI plugin manifests
+and AI/LLM description files. Each witness needs a GET/HEAD with observed
+404/410, a canonical source address, a known vhost and the exact observed UA.
+Different agents behind one address cannot pool witnesses. Ordinary metadata,
+redirects and successful catch-all responses cannot supply families. Only the
+qualifying probes are flagged: entry pages, in-window ordinary pages, other
+visits and the source month never inherit the flag. No UA, geography, hosting
+network, missing assets or robots-file read supplies additional evidence.
+
+The independent `operator_association` section controls dated DNS association
+and an optional retrospective report. Evidence is collected separately using
+`python3 tools/operator-evidence.py --candidates PRIVATE_JSON --output PRIVATE_JSON`.
+The collector never opens access logs. Its explicit authorized list is bounded
+to 256 addresses and uses one documented nonrewriting resolver. Candidate
+selection is not evidence. Reverse lookups disclose candidate addresses to DNS
+operators: authorize that scope before collection. There is no automatic
+lookup, new-source discovery or scheduled network job. Archive prior evidence;
+the collector refuses archive overflow rather than deleting old observations.
+
+The registered provider is Internet Census Group, using its first-party
+[reverse/forward verification procedure](https://www.internet-census.org/home.html).
+Forward confirmation, strict domain-label boundaries and a complete, bounded,
+loop-free answer chain are required. Off-chain records, generic hosting PTRs,
+legacy or scoped literals, rewritten answers and failed lookups abstain.
+IPv4-mapped IPv6 is normalized for these new rules only. A trusted socket-peer
+or proxy-chain provenance must accompany the logged client address.
+
+`--operator-evidence FILE` passes recorded DNS observations to the pure offline
+classifier. Dated association covers only requests strictly after lookup
+completion and strictly before the smallest chain TTL expires. TTL caps reuse;
+it does not establish exclusive IP use. Tied timestamps and earlier requests
+are historical candidates, never default exclusions. A later lookup cannot
+backdate identity. DNS association is separate from the existing Google
+provider verification, declared client claims, behavior, authentication and
+malicious intent. The existing native signature layer remains independent.
+
+`retrospective_enabled` defaults to zero and `retrospective_months` to an empty
+list. Selecting explicit YYYY-MM months creates a separately labelled inferred
+report. It never changes the default/request-only figures and never extends to
+a CIDR or other address. Each published generation retains its previous
+revision and binds input, rule, metadata and evidence identities.
+
+Canonical Apache bytes and request IDs remain stable. Normalization writes
+`access.observability.json`; daily corpora retain corresponding sidecars and
+hashes. `--metadata FILE` accepts primary and neighboring-day sidecars. A
+source's configured format is a file/stream property, not an identity guessed
+from individual lines. Mixed or unconfigured formats abstain for new rules.
+Fields distinguish an observed value, observed empty/dash, and unobserved.
+Common logs cannot provide an agent/referrer; a common-to-combined transition
+cannot prove an agent change. Conflicting copies of one request conservatively
+lose conflicting provenance. Log-source settings describe format, vhost, scheme
+and trusted client source; unknown provenance never qualifies for DNS action.
+Prospective logging must omit referrer queries/fragments and must not add
+cookies, authorization headers or request bodies.
+
+The Filters UI shows matches, exclusive/overlapping removals, and native replay
+of each new evidence class. Native class counts overlap and cannot be summed.
+Exclusive page/hit/body contributions use byte-selected request complements;
+visitor/session deltas are not attributed per rule. Native non-viewed errors
+are distinguished from additional viewed traffic removed. Every rule/registry
+change requires replay and browser/mixed-source controls before enablement.
+Structural non-browser/malformed-agent and catch-all-response ideas remain
+research candidates; no production exclusion implements them.

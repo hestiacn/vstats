@@ -7,15 +7,17 @@
   let csrf = null, editable = false, busy = false, poll = null, coverage = state.coverage;
   const site = state.site, base = '/vstats-control/sites/' + encodeURIComponent(site) + '/';
   const historical = $('filters-main').dataset.historical === 'true';
-  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe'];
-  const names = {native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.'],login_rotation:['Login browser rotation','Adjacent login GET/POST pairs with browser changes or repeated platform switches; requires configured login paths. Alternative witnesses affect matching requests only.'],head_scan:['HEAD path sweeps','Repeated HEAD requests across content paths with missing resources.'],sensitive_scan:['Sensitive-file probing','Concentrated reads of configured sensitive-file paths; no absence assumption.'],wp_enumeration:['WordPress enumeration','Author-ID and user-API enumeration with rotating browser claims.'],wp_query_probe:['WordPress query probing','Internal query keys combined with plugin-file probing; matching requests only.'],backdoor_probe:['Backdoor path probing','Missing configured backdoor paths with POST activity; short burst and nearby entry requests only.'],protocol_probe:['Protocol endpoint discovery','Missing POST/GET endpoints with a declared tool; short burst and nearby entry requests only.']};
+  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery'];
+  const names = {operator_associated:['Operator-associated scanners','Forward-confirmed provider DNS within its dated validity interval; no historical backdating.'],historical_operator:['Retrospective operator inference','Optional separate report, off by default. Select UTC months in Advanced and reprocess. Default totals stay unchanged; historical identity is unverified.'],service_discovery:['Service-manifest discovery','Missing OpenAPI/MCP/AI manifests across independent families; matching probes only.'],native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.'],login_rotation:['Login browser rotation','Adjacent login GET/POST pairs with browser changes or repeated platform switches; requires configured login paths. Alternative witnesses affect matching requests only.'],head_scan:['HEAD path sweeps','Repeated HEAD requests across content paths with missing resources.'],sensitive_scan:['Sensitive-file probing','Concentrated reads of configured sensitive-file paths; no absence assumption.'],wp_enumeration:['WordPress enumeration','Author-ID and user-API enumeration with rotating browser claims.'],wp_query_probe:['WordPress query probing','Internal query keys combined with plugin-file probing; matching requests only.'],backdoor_probe:['Backdoor path probing','Missing configured backdoor paths with POST activity; short burst and nearby entry requests only.'],protocol_probe:['Protocol endpoint discovery','Missing POST/GET endpoints with a declared tool; short burst and nearby entry requests only.']};
   function structuredCopy(v) { return JSON.parse(JSON.stringify(v)); }
   function profileCopy(value) {
     const p = structuredCopy(value);
-    for(const key of ['login_rotation','head_scan','sensitive_scan','wp_enumeration','wp_query_probe', 'backdoor_probe', 'protocol_probe']) {
+    for(const key of ['login_rotation','head_scan','sensitive_scan','wp_enumeration','wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery']) {
       if(!Object.prototype.hasOwnProperty.call(p.filters,key)) p.filters[key]=false;
       if(!p.classifier[key]) p.classifier[key]=structuredCopy(state.default_profile.classifier[key]);
     }
+    for(const key of ['operator_associated','historical_operator']) if(!Object.prototype.hasOwnProperty.call(p.filters,key)) p.filters[key]=false;
+    if(!p.classifier.operator_association) p.classifier.operator_association=structuredCopy(state.default_profile.classifier.operator_association);
     return p;
   }
   function node(tag, text, cls) { const n = document.createElement(tag); if(text !== undefined) n.textContent = text; if(cls) n.className = cls; return n; }
@@ -69,11 +71,11 @@
     }
     $('ip-policy').checked=profile.exclude_automated_ips; $('native-level').value=profile.native_level;
     const advanced=$('advanced-fields');advanced.replaceChildren();
-    for(const rule of rules) {
-      const box=node('section');box.append(node('h3',names[rule][0]));const grid=node('div',undefined,'filters-advanced-grid');
+    for(const rule of [...rules,'operator_association']) {
+      const box=node('section');box.append(node('h3',rule==='operator_association'?'Retrospective operator options':names[rule][0]));const grid=node('div',undefined,'filters-advanced-grid');
       for(const [key,value] of Object.entries(profile.classifier[rule])) {
-        if(key==='enabled') continue;
-        const label=node('label',key.replace(/_/g,' '));const input=node(Array.isArray(value)?'textarea':'input');input.dataset.rule=rule;input.dataset.key=key;
+        if(key==='enabled'||key==='retrospective_enabled') continue;
+        const label=node('label',key==='retrospective_months'?'UTC months (YYYY-MM, one per line)':key.replace(/_/g,' '));const input=node(Array.isArray(value)?'textarea':'input');input.dataset.rule=rule;input.dataset.key=key;
         if(Array.isArray(value)) {input.value=value.join('\n');input.dataset.array='true';} else {input.type='number';input.step='1';input.min='0';input.value=value;}
         input.addEventListener('input',edited);label.append(input);grid.append(label);
       } box.append(grid);advanced.append(box);
@@ -115,7 +117,7 @@
     impact({before:(state.view_totals||{}).original,after:state.totals,before_label:'Additional filters off',after_label:'Current applied profile',capacity_fallback:state.capacity_fallback});
     const area=$('match-counts');area.replaceChildren(node('h3','Matches and actual exclusions for this generation'));
     const counts=state.matched_requests||{},table=node('table'),header=node('tr');header.append(node('th','Detector / measure'),node('th','Requests'));table.append(header);
-    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['login_rotation_flagged_requests','Login browser rotation'],['head_scan_flagged_requests','HEAD path sweeps'],['sensitive_scan_flagged_requests','Sensitive-file probing'],['wp_enumeration_flagged_requests','WordPress enumeration'],['wp_query_probe_flagged_requests','WordPress query probing'],['backdoor_probe_flagged_requests','Backdoor path probing'],['protocol_probe_flagged_requests','Protocol endpoint discovery'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
+    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['login_rotation_flagged_requests','Login browser rotation'],['head_scan_flagged_requests','HEAD path sweeps'],['sensitive_scan_flagged_requests','Sensitive-file probing'],['wp_enumeration_flagged_requests','WordPress enumeration'],['wp_query_probe_flagged_requests','WordPress query probing'],['backdoor_probe_flagged_requests','Backdoor path probing'],['protocol_probe_flagged_requests','Protocol endpoint discovery'],['service_discovery_flagged_requests','Service-manifest discovery'],['operator_associated_requests','Dated operator associations'],['historical_operator_requests','Retrospective candidates (not excluded by default)'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
     const views=state.view_totals||{};
     for(const [mode,title,ledger] of [['requests','Matched-request filtering',state.request_excluded_by_month||{}],['behavior','Configured visitor policy',state.excluded_by_month||{}]]){
       for(const month of Object.keys(ledger).sort().reverse()){
@@ -126,6 +128,12 @@
           detail='Native replay of the omitted records: '+Number(native.native_viewed_records).toLocaleString()+' viewed; '+Number(native.native_nonviewed_records).toLocaleString()+' non-viewed; '+Number(native.native_dropped_records).toLocaleString()+' ignored by AWStats.';
         }
         area.append(node('p',month+' — '+title+': '+Number(removed).toLocaleString()+' omitted log records; '+Number(viewed).toLocaleString()+' fewer viewed hits. '+detail));
+      }
+    }
+    for(const [key,impact] of Object.entries(state.evidence_classes||{})) {
+      for(const [month,value] of Object.entries(impact.by_month||{})) {
+        const native=value.native_class||{},exclusive=value.native_exclusive||{};
+        area.append(node('p',month+' / '+(names[key]||[key])[0]+': '+value.matched_requests+' matched; '+value.exclusive_requests+' exclusive; '+value.overlapping_requests+' overlapping removals. Native matching requests: '+(native.hits||0)+' viewed hits, '+(native.nonviewed_hits||0)+' non-viewed. Exclusive contribution: '+(exclusive.pages||0)+' pages, '+(exclusive.hits||0)+' viewed hits.'+(key==='historical_operator'?' Applies only to the optional inferred report.':'')));
       }
     }
     area.append(node('p','Per-filter match counts overlap. They cover successfully classified input only. Missing classification results are unavailable. Native user-agent and verified-crawler attribution is reported by native AWStats; no per-rule count is inferred here.','filters-muted'));
@@ -175,7 +183,9 @@
     const comparisons=$('comparison-links');comparisons.replaceChildren();
     const months=Object.keys(state.totals||{}).sort();if(!months.length||!state.managed)return;
     const selected=context(),month=selected.month;
-    for(const [folder,title] of [['requests','IP expansion off'],['confirmed','Behavioral and IP exclusions off'],['original','All additional filters off']]) {
+    const comparisonViews=[['requests','IP expansion off'],['confirmed','Behavioral and IP exclusions off'],['original','All additional filters off']];
+    if((state.view_totals||{}).retrospective) comparisonViews.push(['retrospective','Retrospective inference (unverified history)']);
+    for(const [folder,title] of comparisonViews) {
       const button=node('button',title);button.onclick=()=>{$('comparison-frame').src='../'+folder+'/'+month+'/'+selected.filename;$('comparison-frame').hidden=false;};comparisons.append(button);
     }
   }

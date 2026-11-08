@@ -31,8 +31,11 @@ FILTERS = [('native_crawlers', 'Native crawler signatures', 'Existing AWStats us
            ('wp_enumeration', 'WordPress enumeration', 'Rotating browser claims while querying author IDs and user APIs.'),
            ('wp_query_probe', 'WordPress query probing', 'Internal query keys with plugin-file probing; matching requests only.'),
            ('backdoor_probe', 'Backdoor path probing', 'Missing configured backdoor paths with POST activity; short burst only.'),
-           ('protocol_probe', 'Protocol endpoint discovery', 'Missing POST/GET endpoints with a declared tool; short burst only.')]
-RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe']
+           ('protocol_probe', 'Protocol endpoint discovery', 'Missing POST/GET endpoints with a declared tool; short burst only.'),
+           ('service_discovery', 'Service-manifest discovery', 'Failed probes across independent service families; matching requests only.'),
+           ('operator_associated', 'Operator-associated scanners', 'Forward-confirmed provider DNS within its dated validity interval.'),
+           ('historical_operator', 'Retrospective operator inference', 'Optional inference for selected UTC months; not verified historical identity.')]
+RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery']
 SITE = re.compile(r'^[a-z0-9][a-z0-9._-]{0,252}$')
 IDENTIFIER = re.compile(r'^[a-f0-9]{32}$')
 GENERATION = re.compile(r'^\d{8}T\d{6}Z-[a-f0-9]{8}$')
@@ -138,7 +141,7 @@ def defaults(app, perl, current=None):
             for key in keys:
                 if key in current['classifier'].get(rule, {}):
                     classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])
-    return {'schema_version': 1, 'filters': {f[0]: True for f in FILTERS},
+    return {'schema_version': 1, 'filters': {f[0]: f[0] != 'historical_operator' for f in FILTERS},
             'exclude_automated_ips': True, 'native_level': 3,
             'classifier': classifier, 'exceptions': []}
 
@@ -154,12 +157,12 @@ def validate_profile(value, app, perl):
         raise ValueError('Invalid filter list')
     # Existing applied profiles keep their policy until explicitly changed.
     expected = {f[0] for f in FILTERS}
-    newest = {'backdoor_probe', 'protocol_probe'}
-    added = {'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe'}
-    if set(p['filters']) in (expected - newest, expected - newest - {'wp_query_probe'},
-                            expected - newest - added, expected - newest - added - {'login_rotation'}):
-        for key in newest | added | {'login_rotation'}:
-            p['filters'].setdefault(key, False)
+    baseline = {'native_crawlers', 'verified_crawlers', 'behavior', 'probing', 'rapid_scan', 'distributed_login'}
+    if baseline <= set(p['filters']) <= expected:
+        if any(key in RULES and key in p.get('classifier', {}) for key in expected - set(p['filters'])):
+            raise ValueError('Incomplete filter choice for an existing rule')
+        for key in expected - set(p['filters']):
+            p['filters'][key] = False
     if set(p['filters']) != {f[0] for f in FILTERS}:
         raise ValueError('Invalid filter list')
     if any(type(v) is not bool for v in p['filters'].values()) or type(p['exclude_automated_ips']) is not bool:
@@ -196,6 +199,10 @@ def validate_profile(value, app, perl):
                 if isinstance(default_value, list) and key not in cfg[rule]:
                     cfg[rule][key] = copy.deepcopy(default_value)
         cfg[rule]['enabled'] = int(p['filters'][rule])
+    if 'operator_association' not in cfg:
+        cfg['operator_association'] = copy.deepcopy(rule_defaults['operator_association'])
+    cfg['operator_association']['enabled'] = int(p['filters']['operator_associated'])
+    cfg['operator_association']['retrospective_enabled'] = int(p['filters']['historical_operator'])
     # Intended enablement remains saved even where required paths are unavailable.
     if not cfg['sensitive_scan'].get('paths'):
         cfg['sensitive_scan']['enabled'] = 0
@@ -219,13 +226,17 @@ def validate_profile(value, app, perl):
     return p
 
 
-def filter_status(profile, evidence=False, over_limits=False):
+def filter_status(profile, evidence=False, over_limits=False, operator_evidence=False):
     statuses = {}
     for key, _, _ in FILTERS:
         if not profile['filters'].get(key, False):
             statuses[key] = 'Disabled'
         elif key == 'verified_crawlers' and not evidence:
             statuses[key] = 'Evidence unavailable'
+        elif key in ('operator_associated', 'historical_operator') and not operator_evidence:
+            statuses[key] = 'Evidence unavailable'
+        elif key == 'historical_operator' and not profile['classifier']['operator_association']['retrospective_months']:
+            statuses[key] = 'Select UTC months in Advanced'
         elif key == 'probing' and not profile['classifier'][key]['paths']:
             statuses[key] = 'Needs configuration'
         elif key == 'distributed_login' and not (profile['classifier'][key]['login_paths'] and profile['classifier'][key]['admin_paths']):
@@ -243,7 +254,7 @@ def filter_status(profile, evidence=False, over_limits=False):
             statuses[key] = 'Needs configuration'
         elif key == 'protocol_probe' and not all(profile['classifier'][key].get(k) for k in ('post_paths', 'get_paths', 'tool_tokens')):
             statuses[key] = 'Needs configuration'
-        elif key in RULES and over_limits:
+        elif (key in RULES or key in ('operator_associated', 'historical_operator')) and over_limits:
             statuses[key] = 'Input over limits'
         else:
             statuses[key] = 'Active'

@@ -184,7 +184,8 @@ class Publication(unittest.TestCase):
         self.assertIn('vstats-filters-menu',report)
         self.assertIsNone(manifest['profiles']['example.test']['applied'])
         self.assertFalse(manifest['profiles']['example.test']['managed'])
-        self.assertTrue(all(manifest['profiles']['example.test']['default_profile']['filters'].values()))
+        self.assertTrue(all(value for key, value in manifest['profiles']['example.test']['default_profile']['filters'].items() if key != 'historical_operator'))
+        self.assertFalse(manifest['profiles']['example.test']['default_profile']['filters']['historical_operator'])
         self.assertEqual((self.generation/'example.test/2026-10/awstats.example.test.html').read_text(),self.report)
 
     def test_bootstrap_cannot_relabel_a_generation_missing_its_matching_state(self):

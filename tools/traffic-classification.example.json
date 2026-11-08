@@ -125,5 +125,15 @@
       "/index.php",
       "/favicon.ico"
     ]
+  },
+  "service_discovery": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "distinct_families": 3
+  },
+  "operator_association": {
+    "enabled": 0,
+    "retrospective_enabled": 0,
+    "retrospective_months": []
   }
 }

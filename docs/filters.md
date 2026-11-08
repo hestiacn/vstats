@@ -238,3 +238,28 @@ Successful protocol clients, ordinary page walks, robots-file requests and
 shared browser signatures alone do not qualify. All thresholds are unvalidated
 heuristics. Existing profiles preserve their policy until the new choices are
 selected; Reset checks them and keeps configured lists.
+
+## Scanner association and service discovery
+
+Three additional choices are available: **Service-manifest discovery**,
+**Operator-associated scanners**, and **Retrospective operator inference**.
+The first two are selected for new profiles; saved profiles gain them disabled
+until explicitly enabled. Retrospective inference is always off on Reset/new
+profiles. It needs selected UTC months in Advanced plus reprocessing. Its
+comparison button opens a separate inferred report, clearly labelled as
+unverified historical identity. Default reports stay unchanged.
+
+Operator association requires offline, dated evidence for the exact address
+and trustworthy client-address provenance. A current PTR/forward match does
+not verify earlier requests. Without suitable evidence the filter abstains.
+Service discovery flags only missing probes across independent manifest
+families sharing source, vhost and observed agent in a short window. Neither
+rule expands into whole-IP/month exclusion. Browser visits, robots.txt reads,
+ordinary metadata and shared browser signatures alone stay counted.
+
+**Current impact** and **Review** separate dated association, retrospective
+candidates and service-manifest behavior. Native replays disclose how many
+matched requests were already non-viewed. Per-class overlaps and exclusive
+contributions are separate; visitor/session deltas are not apportioned among
+rules. Use Preview, examine controls and native effects, then Apply/Reprocess.
+Prior report generations remain available for undo.

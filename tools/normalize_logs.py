@@ -19,7 +19,7 @@ LINE = re.compile(
     rb'(?P<request>"(?:[^"\\]|\\.)*") (?P<status>\d{3}) '
     rb'(?P<size>\d+|-)(?P<tail>.*)$'
 )
-COMBINED = re.compile(rb'^ "(?:[^"\\]|\\.)*" "(?:[^"\\]|\\.)*"\s*$')
+COMBINED = re.compile(rb'^ ("(?:[^"\\]|\\.)*") ("(?:[^"\\]|\\.)*")\s*$')
 ROTATION = re.compile(r'-\d{8}(?:\.gz)?$')
 BASE_NAME = re.compile(r'^[A-Za-z0-9_.-]+$')
 
@@ -87,7 +87,18 @@ def input_files(log_root, bases):
     return result
 
 
-def build_snapshot(log_root, bases, work):
+def merge_observability(left, right):
+    if left is None:
+        return dict(right)
+    result = dict(left)
+    for key, unknown in [('format', 'ambiguous'), ('vhost', None), ('scheme', 'unknown'),
+                         ('client_source', 'unknown'), ('user_agent', 'unobserved'), ('referrer', 'unobserved')]:
+        if left.get(key) != right.get(key):
+            result[key] = unknown
+    return result
+
+
+def build_snapshot(log_root, bases, work, source_metadata=None):
     os.makedirs(work, mode=0o700, exist_ok=True)
     unsorted_path = os.path.join(work, 'unsorted.tsv')
     sorted_path = os.path.join(work, 'sorted.tsv')
@@ -96,9 +107,17 @@ def build_snapshot(log_root, bases, work):
                 'statistics_requests': 0, 'rejected': 0, 'partial_lines': 0,
                 'rejections': [], 'files': [], 'months': [], 'timezone': 'UTC'}
     months = set()
+    observability = {}
+    source_metadata = source_metadata or {}
     low, high = None, None
     with open(unsorted_path, 'wb') as output:
         for path, before in input_files(log_root, bases):
+            basename = next(base for base in bases if path.startswith(os.path.join(log_root, base)) and
+                            (path == os.path.join(log_root, base) or ROTATION.fullmatch(path[len(os.path.join(log_root, base)):])))
+            declared = source_metadata.get(basename, {})
+            if set(declared) - {'format', 'vhost', 'scheme', 'client_source', 'referrer_observed'}:
+                raise ValueError('unsupported log-source provenance')
+            formats, source_rows = set(), []
             descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
             with os.fdopen(descriptor, 'rb') as raw:
                 actual = os.fstat(raw.fileno())
@@ -130,11 +149,32 @@ def build_snapshot(log_root, bases, work):
                         continue
                     evidence['accepted'] += 1
                     evidence[kind] += 1
+                    formats.add(kind)
+                    original = LINE.fullmatch(line.rstrip(b'\r\n'))
+                    fields = COMBINED.fullmatch(original.group('tail')) if original else None
+                    states = tuple('absent' if value in (b'"-"', b'""') else 'value'
+                                   for value in fields.groups()) if fields else ('unobserved', 'unobserved')
+                    source_rows.append((hashlib.sha256(normalized.rstrip(b'\n')).hexdigest(), states))
                     stamp = datetime.datetime.utcfromtimestamp(epoch)
                     months.add(stamp.strftime('%Y-%m'))
                     low = epoch if low is None else min(low, epoch)
                     high = epoch if high is None else max(high, epoch)
                     output.write(str(epoch).encode('ascii') + b'\t' + normalized)
+            # The source format is a file/stream property. Mixed files abstain;
+            # a line that happens to look combined cannot override provenance.
+            file_format = next(iter(formats)) if len(formats) == 1 else 'ambiguous'
+            if declared.get('format') != file_format:
+                file_format = 'ambiguous'
+            evidence['files'][-1]['source_format'] = file_format
+            if not declared:
+                continue
+            for request_id, states in source_rows:
+                meta = {'format': file_format, 'vhost': declared.get('vhost'),
+                        'scheme': declared.get('scheme', 'unknown'),
+                        'client_source': declared.get('client_source', 'unknown'),
+                        'referrer': states[0] if file_format == 'combined' and declared.get('referrer_observed', True) else 'unobserved',
+                        'user_agent': states[1] if file_format == 'combined' else 'unobserved'}
+                observability[request_id] = merge_observability(observability.get(request_id), meta)
     environment = dict(os.environ)
     environment['LC_ALL'] = 'C'
     subprocess.check_call(['nice', '-n', '15', 'sort', '--stable', '--numeric-sort',
@@ -152,6 +192,13 @@ def build_snapshot(log_root, bases, work):
     evidence['last_utc'] = None if high is None else datetime.datetime.utcfromtimestamp(high).isoformat() + 'Z'
     evidence['normalized_sha256'] = digest.hexdigest()
     evidence['normalized_bytes'] = os.path.getsize(output_path)
+    metadata_raw = (json.dumps({'schema_version': 1, 'records': observability}, sort_keys=True,
+                               separators=(',', ':')) + '\n').encode('utf-8')
+    metadata_path = os.path.splitext(output_path)[0] + '.observability.json'
+    with open(metadata_path, 'wb') as handle:
+        handle.write(metadata_raw)
+    os.chmod(metadata_path, 0o600)
+    evidence['observability_sha256'] = hashlib.sha256(metadata_raw).hexdigest()
     os.unlink(unsorted_path)
     os.unlink(sorted_path)
     with open(os.path.join(work, 'input-receipt.json'), 'w', encoding='utf-8') as handle:

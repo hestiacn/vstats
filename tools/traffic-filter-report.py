@@ -22,6 +22,7 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent
 RECORD = re.compile(rb'^\S+ \S+ \S+ \[[^\]]+\] "((?:[^"\\]|\\.)*)" ([1-5][0-9]{2}) ([0-9]+|-) ')
 CLAIM = re.compile(r'(?:^|[^A-Za-z0-9])((?:Chrome|CriOS|Firefox|FxiOS|Safari|Edg|OPR|Opera)/[0-9][0-9.]{0,31})', re.I | re.A)
+EVIDENCE_CLASSES = ('service_discovery', 'operator_associated', 'historical_operator')
 
 
 def digest(raw):
@@ -147,6 +148,13 @@ def validate_scan_witness(label, proof):
 
 
 def witness_text(label, proof):
+    if label in ('Operator association', 'Retrospective operator inference'):
+        return ('{provider_id}; {procedure}; lookup {lookup_at}; expires {expires_at}; {state}. '
+                'DNS association is not request authentication or malicious intent.').format(**proof)
+    if label == 'Service-manifest discovery':
+        return ('{requests} GET/HEAD missing responses across {distinct_families} service families in '
+                '{seconds} seconds; registry {registry_id}; matching probes only.').format(
+                    seconds=proof['until'] - proof['from'], **proof)
     if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery'):
         validate_scan_witness(label, proof)
     if label == 'Distributed login probing':
@@ -207,7 +215,8 @@ def rule_evidence(record):
                                 (record.get('wp_enumeration_flagged'), 'WordPress enumeration', 'wp_enumeration_evidence'),
                                 (record.get('wp_query_probe_flagged'), 'WordPress query probing', 'wp_query_probe_evidence'),
                                 (record.get('backdoor_probe_flagged'), 'Backdoor path probing', 'backdoor_probe_evidence'),
-                                (record.get('protocol_probe_flagged'), 'Protocol endpoint discovery', 'protocol_probe_evidence')]:
+                                (record.get('protocol_probe_flagged'), 'Protocol endpoint discovery', 'protocol_probe_evidence'),
+                                (record.get('service_discovery_flagged'), 'Service-manifest discovery', 'service_discovery_evidence')]:
         if not matched:
             continue
         proof = record.get(key)
@@ -220,6 +229,11 @@ def rule_evidence(record):
         if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery'):
             validate_scan_witness(label, proof)
         result.append((label, proof))
+    operator = record.get('operator_association')
+    if operator:
+        if operator.get('state') not in ('dated_association', 'historical_candidate') or not re.fullmatch(r'[0-9a-f]{64}', operator.get('evidence_sha256', '')):
+            raise RuntimeError('Review lacks dated operator evidence')
+        result.append(('Operator association' if operator['state'] == 'dated_association' else 'Retrospective operator inference', operator))
     if record.get('ip_excluded'):
         evidence = record.get('ip_automation_evidence')
         if (not evidence or record.get('source_month_key') != evidence['source_month_key'] or
@@ -249,7 +263,10 @@ def render_review_row(record):
     match = CLAIM.search(record.get('user_agent') or '')
     claim = match.group(1) if match else 'no recognized browser claim'
     platform = record.get('behavior_platform') or 'unknown'
-    state = ('Included by request ID override' if record['behavior_included'] else
+    state = ('Retained in default; excluded only from inferred overlay' if record.get('operator_inferred_excluded') and not record['excluded'] else
+             'Retained; retrospective candidate only' if record.get('operator_association') and not record['excluded'] else
+             'Excluded by operator filter' if record.get('operator_excluded') and not record['suspected_automation'] else
+             'Included by request ID override' if record['behavior_included'] else
              'Excluded by automated-IP policy' if record.get('ip_excluded') and not record['suspected_automation'] else
              'Excluded by behavior and automated-IP policy' if record.get('ip_excluded') else 'Excluded by behavior filter')
     reasons = []
@@ -518,7 +535,7 @@ def boundary_context(source, start, end, cap):
 
 
 def _build(config, input_directory, output_directory, perl='perl', prefix='/vstats/example.test/', page_size=200,
-          exclude_automated_ips=True, unavailable_months=None):
+          exclude_automated_ips=True, unavailable_months=None, operator_evidence=None):
     unavailable_months = unavailable_months or {}
     config, inputs, output = Path(config), Path(input_directory), Path(output_directory)
     if type(exclude_automated_ips) is not bool:
@@ -547,11 +564,13 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
     cfg, window = validated['config'], validated['window_seconds']
     day_paths = {path.stem: path for path in days}
     output.mkdir(mode=0o700)
-    for name in ['filtered', 'request-filtered', 'excluded', 'request-excluded', 'reports', 'classification', 'review', 'context']:
+    for name in ['filtered', 'request-filtered', 'excluded', 'request-excluded', 'retrospective-filtered', 'reports', 'classification', 'review', 'context'] + \
+                ['evidence-' + scope + '-' + key for key in EVIDENCE_CLASSES for scope in ('class', 'exclusive')]:
         (output / name).mkdir(mode=0o700)
-    totals, actors, behavior = collections.Counter(), collections.Counter(), collections.Counter()
+    totals, actors, behavior, operator_counts = (collections.Counter() for _ in range(4))
     excluded_by_month, request_excluded_by_month, flagged_by_month = {}, {}, collections.Counter()
     daily, review_rows, triggers = [], collections.defaultdict(list), {}
+    class_impact = {key: {'by_month': {}} for key in EVIDENCE_CLASSES}
     first = last = None
     # First classify every partition before applying IP policy. A later day can
     # seed an exclusion for earlier requests in the same UTC month.
@@ -561,6 +580,8 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         request_filtered = output / 'request-filtered' / (day + '.log')
         command = [perl, str(ROOT / 'traffic-classify.pl'), '--config', str(config), '--input', str(source),
                    '--input-format', 'combined', '--output', str(report_path), '--details', '--filtered-log', str(request_filtered)]
+        if operator_evidence:
+            command += ['--operator-evidence', str(operator_evidence)]
         if day[:7] in unavailable_months or source.stat().st_size == 0:
             h, size, rows, last_byte = hashlib.sha256(), 0, 0, b''
             with source.open('rb') as raw_stream:
@@ -569,11 +590,16 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             rows += int(bool(size and last_byte != b'\n'))
             shutil.copyfile(str(source), str(request_filtered))
             shutil.copyfile(str(source), str(output / 'filtered' / (day + '.log')))
+            shutil.copyfile(str(source), str(output / 'retrospective-filtered' / (day + '.log')))
+            os.chmod(str(output / 'retrospective-filtered' / (day + '.log')), 0o600)
             os.chmod(str(request_filtered), 0o600)
             os.chmod(str(output / 'filtered' / (day + '.log')), 0o600)
             # Inactive/empty partitions retain every input record.
             for name in ['excluded', 'request-excluded']:
                 private_write(output / name / (day + '.log'), b'')
+            for key in EVIDENCE_CLASSES:
+                for scope in ('class', 'exclusive'):
+                    private_write(output / ('evidence-' + scope + '-' + key) / (day + '.log'), b'')
             manifest = {'input_sha256': h.hexdigest(), 'sha256': h.hexdigest(), 'input_log_bytes': size,
                         'kept_log_bytes': size, 'removed_log_bytes': 0, 'input_records': rows,
                         'excluded_records': 0, 'kept_records': rows}
@@ -590,6 +616,10 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         start_epoch = int(start_day.timestamp())
         before_day = (start_day - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
         after_day = (start_day + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+        for metadata_day in [before_day, day, after_day]:
+            metadata_path = inputs / (metadata_day + '.observability.json')
+            if metadata_path.is_file():
+                command += ['--metadata', str(metadata_path)]
         try:
             halo = {
                 'before': boundary_context(day_paths.get(before_day), start_epoch - window, start_epoch, cfg['limits']['input_bytes']),
@@ -625,7 +655,9 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             observed = report['analysis_context'].get(side)
             if raw_halo and (not observed or observed['sha256'] != digest(raw_halo) or observed['bytes'] != len(raw_halo)):
                 raise RuntimeError('Classifier boundary context identity mismatch')
-        analysis_context_sha256 = digest(json.dumps({'window_seconds': window, 'context': context_identity},
+        analysis_context_sha256 = digest(json.dumps({'window_seconds': window, 'context': context_identity,
+                                                     'observability': report.get('observability_sha256'),
+                                                     'operator_evidence': report.get('operator_evidence', {}).get('sha256')},
                                                     sort_keys=True).encode('utf-8'))
         raw = source.read_bytes()
         if digest(raw) != report['input_sha256'] or digest(request_filtered.read_bytes()) != manifest['sha256']:
@@ -647,7 +679,8 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             # Only the stronger proof authorizes expansion, not every label
             # attached to the trigger record.
             witnesses = [(label, proof) for label, proof in witnesses
-                         if label not in ('WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery') and
+                         if label not in ('WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery',
+                                          'Service-manifest discovery', 'Operator association', 'Retrospective operator inference') and
                          (label != 'Login browser rotation' or proof.get('ip_expansion_eligible', True))]
             if not witnesses:
                 raise RuntimeError('IP expansion lacks an eligible rule witness')
@@ -664,8 +697,9 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                 raise ValueError('IP/month policy group cap exceeded')
         totals.update(report['counts'])
         actors.update(report['actors'])
+        operator_counts.update(report.get('operator_evidence', {}).get('counts', {}))
         for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups',
-                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'head_scan_flagged_requests', 'sensitive_scan_flagged_requests', 'wp_enumeration_flagged_requests', 'wp_query_probe_flagged_requests', 'backdoor_probe_flagged_requests', 'protocol_probe_flagged_requests', 'overlap_requests']:
+                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'head_scan_flagged_requests', 'sensitive_scan_flagged_requests', 'wp_enumeration_flagged_requests', 'wp_query_probe_flagged_requests', 'backdoor_probe_flagged_requests', 'protocol_probe_flagged_requests', 'service_discovery_flagged_requests', 'overlap_requests']:
             behavior[key] += report['behavior'].get(key, 0)
         flagged_by_month[day[:7]] += report['behavior']['flagged_requests']
         first = period['from'] if first is None else min(first, period['from'])
@@ -704,6 +738,9 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             raise RuntimeError('Input changed between classification and IP policy')
         records = {index: (logical, piece) for index, logical, piece in physical_records(raw)}
         default_omitted, direct_omitted = set(), set()
+        class_selected = {key: set() for key in EVIDENCE_CLASSES}
+        class_exclusive = {key: set() for key in EVIDENCE_CLASSES}
+        inferred_omitted = set()
         ledger = excluded_by_month.setdefault(month, {'records': 0, 'response_body_bytes': 0})
         request_ledger = request_excluded_by_month.setdefault(month, {'records': 0, 'response_body_bytes': 0})
         day_additional = 0
@@ -715,12 +752,38 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             ip_selected = bool(exclude_automated_ips and trigger)
             included = bool(record['behavior_included'] or (ip_selected and record['request_id'] in include_ids))
             excluded = direct or (ip_selected and not included)
+            operator = record.get('operator_association') or {}
+            matches = {'service_discovery': bool(record.get('service_discovery_flagged')),
+                       'operator_associated': operator.get('state') == 'dated_association',
+                       'historical_operator': operator.get('state') == 'historical_candidate'}
+            causes = {key for key, matched in matches.items() if matched and
+                      ((key == 'service_discovery' and not record['behavior_included']) or
+                       (key != 'service_discovery' and record.get('operator_excluded')))}
+            if record.get('operator_inferred_excluded') and not excluded:
+                inferred_omitted.add(record['line_index'])
+            older_behavior = any(record.get(key) for key in ('broad_probing_flagged', 'probing_flagged', 'rapid_scan_flagged',
+                'distributed_login_flagged', 'login_rotation_flagged', 'head_scan_flagged', 'sensitive_scan_flagged',
+                'wp_enumeration_flagged', 'wp_query_probe_flagged', 'backdoor_probe_flagged', 'protocol_probe_flagged'))
+            baseline_excluded = (older_behavior and not record['behavior_included']) or (ip_selected and not included)
+            for key, matched in matches.items():
+                values = class_impact[key]['by_month'].setdefault(month, {'matched_requests': 0, 'removed_requests': 0,
+                    'exclusive_requests': 0, 'overlapping_requests': 0})
+                values['matched_requests'] += int(matched)
+                if key in causes and excluded:
+                    class_selected[key].add(record['line_index']); values['removed_requests'] += 1
+                    exclusive = len(causes) == 1 and not baseline_excluded
+                    values['exclusive_requests' if exclusive else 'overlapping_requests'] += 1
+                    if exclusive:
+                        class_exclusive[key].add(record['line_index'])
+                if key == 'historical_operator' and record['line_index'] in inferred_omitted:
+                    class_selected[key].add(record['line_index']); class_exclusive[key].add(record['line_index'])
+                    values['removed_requests'] += 1; values['exclusive_requests'] += 1
             if excluded:
                 default_omitted.add(record['line_index'])
             if not source_summary(sources, record, excluded, included, cfg['limits']['groups']):
                 unattributed_sources['excluded' if excluded else 'retained'] += 1
             campaign_summary(campaigns, record, cfg['limits']['groups'])
-            if not (record['suspected_automation'] or ip_selected):
+            if not (record['suspected_automation'] or ip_selected or record.get('operator_association')):
                 continue
             logical, _ = records[record['line_index']]
             match = RECORD.match(logical)
@@ -746,6 +809,13 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                 restored.add(record['source_month_key'])
         kept, manifest = filtered_bytes(raw, default_omitted, entry['input_sha256'])
         private_write(output / 'filtered' / (day + '.log'), kept)
+        inferred_raw, inferred_manifest = filtered_bytes(raw, default_omitted | inferred_omitted, entry['input_sha256'])
+        private_write(output / 'retrospective-filtered' / (day + '.log'), inferred_raw)
+        entry['retrospective_filtered_log'] = inferred_manifest
+        for key in EVIDENCE_CLASSES:
+            for scope, selected in [('class', class_selected[key]), ('exclusive', class_exclusive[key])]:
+                audit_raw, _ = filtered_bytes(raw, set(records) - selected, entry['input_sha256'])
+                private_write(output / ('evidence-' + scope + '-' + key) / (day + '.log'), audit_raw)
         # These private complements use exactly the same primary byte kernel.
         # Native AWStats, rather than a second method/Skip parser, counts them.
         for name, omitted, field in [('request-excluded', direct_omitted, 'request_excluded_log'),
@@ -809,6 +879,9 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                    '; WordPress query probing: ' + format(behavior['wp_query_probe_flagged_requests'], ',') +
                    '; backdoor path probing: ' + format(behavior['backdoor_probe_flagged_requests'], ',') +
                    '; protocol endpoint discovery: ' + format(behavior['protocol_probe_flagged_requests'], ',') +
+                   '; service-manifest discovery: ' + format(behavior['service_discovery_flagged_requests'], ',') +
+                   '; dated operator associations: ' + format(operator_counts['dated_association_requests'], ',') +
+                   '; retrospective candidates (not excluded by default): ' + format(operator_counts['historical_candidate_requests'], ',') +
                    '; overlap (two or more rules): ' + format(behavior['overlap_requests'], ',') +
                    '. Full raw user-agent strings and query strings are omitted from review.</p>')
     if sum(r['requests'] for r in sources.values()) + sum(unattributed_sources.values()) != totals['analyzed']:
@@ -833,6 +906,8 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
               'additional_excluded_requests': additional, 'inclusion_overrides': ip_overrides,
               'context_binding_version': 2, 'private_source_months': triggers, 'restored_source_months': sorted(restored), 'context_sha256_by_month': context}
     summary = {'schema_version': 1, 'generated_utc': generated, 'counts': dict(totals), 'actors': dict(actors), 'behavior': dict(behavior),
+               'operator_evidence': {'counts': dict(operator_counts), 'sha256': digest(Path(operator_evidence).read_bytes()) if operator_evidence else None},
+               'evidence_classes': class_impact,
                'excluded_by_month': excluded_by_month, 'request_excluded_by_month': request_excluded_by_month,
                'capacity_fallback': unavailable_months, 'flagged_by_month': dict(flagged_by_month), 'ip_exclusion': policy, 'daily_reports': daily,
                'period': {'from': first, 'until': last}, 'config_raw_sha256': digest(raw_config), 'source_review': source_review_summary,
@@ -856,12 +931,12 @@ def canonical_binding(value):
 
 
 def build(config, input_directory, output_directory, perl='perl', prefix='/vstats/example.test/', page_size=200,
-          exclude_automated_ips=True, capacity_fallback=False):
+          exclude_automated_ips=True, capacity_fallback=False, operator_evidence=None):
     unavailable = {}
     while True:
         try:
             return _build(config, input_directory, output_directory, perl, prefix, page_size,
-                          exclude_automated_ips=exclude_automated_ips, unavailable_months=unavailable)
+                          exclude_automated_ips=exclude_automated_ips, unavailable_months=unavailable, operator_evidence=operator_evidence)
         except CapacityLimit as e:
             if not capacity_fallback:
                 raise
@@ -883,12 +958,13 @@ def main():
     parser.add_argument('--perl', default='perl')
     parser.add_argument('--site-url-prefix', default='/vstats/example.test/')
     parser.add_argument('--page-size', type=int, default=200)
+    parser.add_argument('--operator-evidence', help='Offline operator-associated DNS observations; no network queries')
     parser.add_argument('--capacity-fallback', action='store_true', help='Keep native input for whole affected UTC months at documented hard maxima only')
     parser.add_argument('--include-automated-ips', action='store_true',
                         help='Disable default whole-IP/month exclusion; retain request-only filtering')
     args = parser.parse_args()
     build(args.config, args.input_directory, args.output_directory, args.perl, args.site_url_prefix, args.page_size,
-          exclude_automated_ips=not args.include_automated_ips, capacity_fallback=args.capacity_fallback)
+          exclude_automated_ips=not args.include_automated_ips, capacity_fallback=args.capacity_fallback, operator_evidence=args.operator_evidence)
 
 
 if __name__ == '__main__':

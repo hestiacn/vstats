@@ -65,7 +65,8 @@ class Controls(unittest.TestCase):
         with self.assertRaises(OSError): read_json(link, root_owned=True)
 
     def test_all_default_choices_on_missing_prerequisites_inactive(self):
-        self.assertTrue(all(self.profile['filters'].values()))
+        self.assertTrue(all(value for key, value in self.profile['filters'].items() if key != 'historical_operator'))
+        self.assertFalse(self.profile['filters']['historical_operator'])
         self.assertTrue(self.profile['exclude_automated_ips'])
         states = filter_status(self.profile)
         self.assertEqual(states['probing'], 'Needs configuration')
@@ -74,6 +75,23 @@ class Controls(unittest.TestCase):
         self.assertEqual(states['verified_crawlers'], 'Evidence unavailable')
         self.assertEqual(filter_status(self.profile, evidence=True, over_limits=True)['behavior'], 'Input over limits')
         self.assertEqual(filter_status(self.profile, evidence=True, over_limits=True)['verified_crawlers'], 'Active')
+
+    def test_residual_choices_preserve_old_policy_and_separate_inference(self):
+        old = copy.deepcopy(self.profile)
+        for key in ('service_discovery', 'operator_associated', 'historical_operator'):
+            del old['filters'][key]
+        del old['classifier']['service_discovery']; del old['classifier']['operator_association']
+        upgraded = validate_profile(old, str(ROOT), PERL)
+        for key in ('service_discovery', 'operator_associated', 'historical_operator'):
+            self.assertFalse(upgraded['filters'][key])
+        self.assertEqual(filter_status(self.profile)['operator_associated'], 'Evidence unavailable')
+        changed = copy.deepcopy(self.profile); changed['filters']['historical_operator'] = True
+        changed['classifier']['operator_association']['retrospective_months'] = ['2026-11']
+        validated = validate_profile(changed, str(ROOT), PERL)
+        self.assertEqual(validated['classifier']['operator_association']['retrospective_enabled'], 1)
+        reset = defaults(str(ROOT), PERL, validated)
+        self.assertFalse(reset['filters']['historical_operator'])
+        self.assertEqual(reset['classifier']['operator_association']['retrospective_months'], [])
 
     def test_login_rotation_configuration_and_old_profiles(self):
         old = copy.deepcopy(self.profile)
@@ -125,7 +143,8 @@ class Controls(unittest.TestCase):
         reset = defaults(str(ROOT), PERL, p)
         self.assertEqual(reset['classifier']['sensitive_scan']['paths'], [])
         self.assertEqual(reset['classifier']['wp_enumeration']['author_paths'], [])
-        self.assertTrue(all(reset['filters'].values()))
+        self.assertTrue(all(value for key, value in reset['filters'].items() if key != 'historical_operator'))
+        self.assertFalse(reset['filters']['historical_operator'])
         bad = copy.deepcopy(self.profile)
         del bad['filters']['head_scan']
         with self.assertRaises(ValueError):

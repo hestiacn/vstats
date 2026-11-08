@@ -26,7 +26,7 @@ import uuid
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from normalize_logs import build_snapshot
+from normalize_logs import build_snapshot, merge_observability
 from native_history_cache import read_history, restore_history
 from vstats_filters import (add_filters_menu, native_shell, canonical, identity, read_json,
                             atomic_json, validate_profile, defaults, filter_status, FILTERS, GENERATION,
@@ -660,6 +660,7 @@ def update_behavior_corpus(site, snapshot, account, token):
         receipt = json.load(handle)
     known = Counter()
     all_rows = {}
+    all_metadata = {}
     for day, info in sorted(receipt['days'].items()):
         if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', day):
             raise RuntimeError('Invalid corpus day')
@@ -679,11 +680,21 @@ def update_behavior_corpus(site, snapshot, account, token):
             raise RuntimeError('Corpus row count mismatch')
         known.update(rows)
         all_rows[day] = rows
+        metadata_path = os.path.join(old, day + '.observability.json')
+        if os.path.exists(metadata_path):
+            metadata_raw = Path(metadata_path).read_bytes()
+            if hashlib.sha256(metadata_raw).hexdigest() != info.get('observability_sha256'):
+                raise RuntimeError('Corpus observability identity mismatch')
+            all_metadata.update(json.loads(metadata_raw.decode('utf-8'))['records'])
     incoming = Counter()
     with open(snapshot, 'rb') as handle:
         for row in handle:
             normalized_day(row)
             incoming[row] += 1
+    metadata_path = os.path.splitext(snapshot)[0] + '.observability.json'
+    if os.path.exists(metadata_path):
+        for request_id, value in json.loads(Path(metadata_path).read_bytes().decode('utf-8'))['records'].items():
+            all_metadata[request_id] = merge_observability(all_metadata.get(request_id), value)
     changed = set()
     appended = 0
     for row, count in incoming.items():
@@ -709,6 +720,14 @@ def update_behavior_corpus(site, snapshot, account, token):
                 handle.write(raw)
             os.chown(target, 0, account.pw_gid)
             days[day] = {'rows': len(rows), 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()}
+        metadata = {hashlib.sha256(row.rstrip(b'\n')).hexdigest(): all_metadata[hashlib.sha256(row.rstrip(b'\n')).hexdigest()]
+                    for row in rows if hashlib.sha256(row.rstrip(b'\n')).hexdigest() in all_metadata}
+        metadata_raw = canonical({'schema_version': 1, 'records': metadata})
+        metadata_target = os.path.join(destination, day + '.observability.json')
+        with open(metadata_target, 'xb') as handle:
+            handle.write(metadata_raw)
+        os.chown(metadata_target, 0, account.pw_gid); os.chmod(metadata_target, 0o640)
+        days[day] = dict(days[day], observability_sha256=hashlib.sha256(metadata_raw).hexdigest())
     new = {'schema_version': 1, 'days': days, 'native_months': receipt.get('native_months', {}),
            'updated_utc': datetime.datetime.utcnow().isoformat() + 'Z', 'previous': old,
            'new_rows': appended, 'merge_policy': 'Maximum observed multiplicity of identical normalized records; retained history is never removed when source logs rotate.'}
@@ -868,20 +887,25 @@ def write_replay_config(directory, site, template, logfile, data, evidence, acco
     os.chmod(path, 0o640)
 
 
-def native_complement_totals(account, site, work, result_dir, template, days, evidence, mode, verify_repeat):
+def native_complement_totals(account, site, work, result_dir, template, days, evidence, mode, verify_repeat, folder=None):
     # Scratch histories never become another public view or persistent cache.
     data = os.path.join(work, 'audit-data-' + mode)
     config = os.path.join(work, 'audit-config-' + mode)
     private_directory(data, account.pw_gid)
     private_directory(os.path.join(data, site), account.pw_gid, owner=account.pw_uid, mode=0o700)
     private_directory(config, account.pw_gid)
-    folder = 'request-excluded' if mode == 'requests' else 'excluded'
+    optional = folder is not None
+    folder = folder or ('request-excluded' if mode == 'requests' else 'excluded')
+    replayed = False
     for day in days:
         logfile = os.path.join(result_dir, folder, day + '.log')
+        if optional and not os.path.getsize(logfile):
+            continue
         write_replay_config(config, site, template, logfile, os.path.join(data, site), evidence[day]['path'], account)
         invoke(account, site, ['-update'], site + '-' + mode + '-omitted-replay.log', config_dir=config)
+        replayed = True
     totals = cache_totals(site, account, data)
-    if verify_repeat:
+    if verify_repeat and replayed:
         before = cache_fingerprints(site, account, data)
         invoke(account, site, ['-update'], site + '-' + mode + '-omitted-repeat.log', config_dir=config)
         if cache_totals(site, account, data) != totals or cache_fingerprints(site, account, data) != before:
@@ -911,6 +935,9 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
     command = [sys.executable, os.path.join(APP, 'tools', 'traffic-filter-report.py'), '--config', config,
                '--input-directory', corpus, '--output-directory', result_dir, '--perl', PERL, '--capacity-fallback',
                '--site-url-prefix', '/vstats/' + site + '/']
+    operator_path = os.path.join(BASE, 'operator-evidence.json')
+    if os.path.exists(operator_path):
+        command += ['--operator-evidence', operator_path]
     if not layer_info.get('exclude_automated_ips', True):
         command.append('--include-automated-ips')
     environment = {'PATH': '/usr/bin:/bin', 'LC_ALL': 'C', 'LANG': 'C', 'TZ': 'UTC', 'PYTHONDONTWRITEBYTECODE': '1',
@@ -945,11 +972,14 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
     native_hash = hashlib.sha256(Path(os.path.join(APP, 'wwwroot/cgi-bin/awstats.pl')).read_bytes() +
                                  Path(os.path.join(APP, 'wwwroot/cgi-bin/lib/robots.pm')).read_bytes() +
                                  Path(os.path.join(APP, 'tools/lib/VStats/TrafficClassifier.pm')).read_bytes() +
+                                 Path(os.path.join(APP, 'tools/lib/VStats/OperatorEvidence.pm')).read_bytes() +
                                  Path(os.path.join(APP, 'tools/traffic-filter-report.py')).read_bytes() +
                                  Path(os.path.join(APP, 'tools/traffic-classify.pl')).read_bytes() +
                                  Path(cache_path).read_bytes() +
                                  json.dumps({'ip_month_policy': layer_info.get('exclude_automated_ips', True), 'views': 4}, sort_keys=True).encode()).hexdigest()
     history_roots = {'original': os.path.join(BASE, 'data'), 'confirmed': os.path.join(BASE, 'data-verified'), 'requests': os.path.join(BASE, 'data-requests'), 'behavior': os.path.join(BASE, 'data-behavior')}
+    if selected and selected['filters'].get('historical_operator') and selected['classifier']['operator_association']['retrospective_months']:
+        history_roots['retrospective'] = os.path.join(BASE, 'data-inferred')
     configs, data_roots = {}, {}
     for mode in history_roots:
         data_roots[mode] = os.path.join(work, 'data-' + mode)
@@ -989,7 +1019,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
         else:
             for day in month_days:
                 for mode in history_roots:
-                    logfile = os.path.join(result_dir, 'filtered' if mode == 'behavior' else 'request-filtered', day + '.log') if mode in ('behavior', 'requests') else os.path.join(corpus, day + '.log')
+                    folder = {'behavior': 'filtered', 'requests': 'request-filtered', 'retrospective': 'retrospective-filtered'}.get(mode)
+                    logfile = os.path.join(result_dir, folder, day + '.log') if folder else os.path.join(corpus, day + '.log')
                     proof = '' if mode == 'original' else evidence[day]['path']
                     write_replay_config(configs[mode], site, template, logfile,
                                         os.path.join(data_roots[mode], site), proof, account)
@@ -1004,7 +1035,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
     last_day = days[-1]
     totals = {}
     for mode in history_roots:
-        logfile = os.path.join(result_dir, 'filtered' if mode == 'behavior' else 'request-filtered', last_day + '.log') if mode in ('behavior', 'requests') else os.path.join(corpus, last_day + '.log')
+        folder = {'behavior': 'filtered', 'requests': 'request-filtered', 'retrospective': 'retrospective-filtered'}.get(mode)
+        logfile = os.path.join(result_dir, folder, last_day + '.log') if folder else os.path.join(corpus, last_day + '.log')
         write_replay_config(configs[mode], site, template, logfile, os.path.join(data_roots[mode], site),
                             '' if mode == 'original' else evidence[last_day]['path'], account)
         totals[mode] = cache_totals(site, account, data_roots[mode])
@@ -1019,6 +1051,19 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
     complements = {mode: native_complement_totals(account, site, work, result_dir, template, days,
                                                  evidence, mode, verify_repeat)
                    for mode in ['requests', 'behavior']}
+    for key, impact in summary.get('evidence_classes', {}).items():
+        for scope, count_key in [('class', 'removed_requests'), ('exclusive', 'exclusive_requests')]:
+            has_requests = any(v[count_key] for v in impact['by_month'].values())
+            native = (native_complement_totals(account, site, work, result_dir, template, days, evidence,
+                       key + '-' + scope, verify_repeat, folder='evidence-' + scope + '-' + key)
+                      if has_requests else {month: empty_totals() for month in months})
+            for month, values in impact['by_month'].items():
+                observed = native.get(month, empty_totals())
+                if observed['hits'] + observed['nonviewed_hits'] > values[count_key]:
+                    raise RuntimeError('Evidence-class native audit exceeds its byte-selected requests')
+                values['native_' + scope] = {k: observed[k] for k in ('pages', 'hits', 'bytes', 'nonviewed_hits')}
+        impact['meaning'] = ('Native class replays classify selected matching requests; exclusive replays count only requests '
+                             'whose removal is unique to this class. Overlaps are not additive. Visitor/session deltas are not attributed per rule.')
     for month in months:
         full = totals['confirmed'][month]
         for mode, ledger_name in [('requests', 'request_excluded_by_month'), ('behavior', 'excluded_by_month')]:
@@ -1068,6 +1113,12 @@ def copy_behavior_html(result, site, site_web, apache_gid, account):
             values = result['totals'][mode][month]
             effects += '<tr><td>' + month + '</td><td>' + title + '</td>' + ''.join('<td>' + format(values[key], ',') + '</td>' for key in ['unique', 'visits', 'pages', 'hits']) + '</tr>'
     effects += '</table><p>All counters are recomputed natively. IP-policy exceptions and a request-only view remain available.</p>'
+    effects += '<h2>New evidence classes</h2><p>Matching requests and their exclusive contributions; overlaps are not additive. Retrospective inference is separate from dated association.</p>'
+    for key, impact in result['summary'].get('evidence_classes', {}).items():
+        for month, values in sorted(impact['by_month'].items()):
+            native = values.get('native_class', {})
+            exclusive = values.get('native_exclusive', {})
+            effects += '<p>' + html.escape(month + ' / ' + key) + ': ' + str(values['matched_requests']) + ' matched; ' + str(values['exclusive_requests']) + ' exclusive; ' + str(values['overlapping_requests']) + ' overlapping removals. Native matching requests: ' + str(native.get('hits', 0)) + ' viewed hits; ' + str(native.get('nonviewed_hits', 0)) + ' non-viewed. Exclusive contribution: ' + str(exclusive.get('pages', 0)) + ' pages, ' + str(exclusive.get('hits', 0)) + ' viewed hits.</p>'
     for folder, slug, expected in [('classification', 'traffic-classification', result['summary']['classification_files']), ('review', 'behavior-exclusions', result['summary']['review_files'])]:
         destination = os.path.join(site_web, slug)
         private_directory(destination, apache_gid)
@@ -1089,6 +1140,8 @@ def copy_behavior_html(result, site, site_web, apache_gid, account):
 
 def persist_behavior_views(result, site, account, token):
     roots = {'original': os.path.join(BASE, 'data'), 'confirmed': os.path.join(BASE, 'data-verified'), 'requests': os.path.join(BASE, 'data-requests'), 'behavior': os.path.join(BASE, 'data-behavior')}
+    if 'retrospective' in result['data_roots']:
+        roots['retrospective'] = os.path.join(BASE, 'data-inferred')
     for mode, root in roots.items():
         private_directory(root, account.pw_gid)
         target = os.path.join(root, site)
@@ -1137,13 +1190,18 @@ def legacy_main(account, apache_gid):
                     raise RuntimeError('Unsafe configured site identifier')
                 site_work = os.path.join(work, site)
                 private_directory(site_work, account.pw_gid)
-                snapshot, evidence = build_snapshot(SOURCE_LOG, settings['base_names'], site_work)
+                snapshot, evidence = (build_snapshot(SOURCE_LOG, settings['base_names'], site_work, settings['log_sources'])
+                                      if settings.get('log_sources') else build_snapshot(SOURCE_LOG, settings['base_names'], site_work))
                 if evidence['rejected']:
                     raise RuntimeError('Unexplained Apache record normalization failures: ' + site)
                 input_directory = os.path.join(BASE, 'input', site)
                 private_directory(input_directory, account.pw_gid)
                 os.chown(snapshot, 0, account.pw_gid)
                 os.chmod(snapshot, 0o640)
+                metadata_path = os.path.splitext(snapshot)[0] + '.observability.json'
+                if os.path.exists(metadata_path):
+                    os.chown(metadata_path, 0, account.pw_gid); os.chmod(metadata_path, 0o640)
+                    os.replace(metadata_path, os.path.join(input_directory, 'access.observability.json'))
                 os.replace(snapshot, os.path.join(input_directory, 'access.log'))
 
                 behavior_enabled = settings.get('behavior_filter', False)
@@ -1188,6 +1246,8 @@ def legacy_main(account, apache_gid):
                             'native_months_reused': [m for m,v in result['native_months'].items() if v['reused']]},
                         'repeat_checked': options.verify_repeat, 'history_sections_preserved': options.verify_repeat,
                         'scope': 'Complete retained corpus; original, confirmed-only, request-only and configured IP/month-policy native replays'}
+                    if 'retrospective' in result['totals']:
+                        state['sites'][site]['retrospective_totals'] = result['totals']['retrospective']
                     site_web = os.path.join(generation, site)
                     private_directory(site_web, apache_gid)
                     extra_links = copy_supplemental_reports(site, site_web, apache_gid, skip=('traffic-classification',))
@@ -1201,6 +1261,13 @@ def legacy_main(account, apache_gid):
                                      config_dir=result['configs']['confirmed'], layer_info=info, confirmed=True)
                     render_site_view(account, site, os.path.join(site_web, 'original'), result['totals']['original'], apache_gid, extra_links,
                                      config_dir=result['configs']['original'], layer_info=info, original=True)
+                    if 'retrospective' in result['totals']:
+                        overlay = os.path.join(site_web, 'retrospective')
+                        render_site_view(account, site, overlay, result['totals']['retrospective'], apache_gid, extra_links,
+                                         config_dir=result['configs']['retrospective'])
+                        for path in Path(overlay).glob('**/*.html'):
+                            text = path.read_text(encoding='utf-8').replace('<body>', '<body><p>Retrospective operator inference: optional overlay. Historical identity is unverified; default reports are unchanged.</p>', 1)
+                            path.write_text(text, encoding='utf-8')
                     request_count = sum(v['hits'] + v['nonviewed_hits'] for v in after.values())
                     pending_behavior.append((site, result))
                     print(json.dumps({'site': site, 'requests_analyzed': request_count, 'behavior_flagged': info['flagged_requests'],
@@ -1336,6 +1403,9 @@ def retained_input(base, site):
             for chunk in iter(lambda: f.read(1024 * 1024), b''):
                 h.update(chunk); size += len(chunk); rows += chunk.count(b'\n')
         result[path.stem] = {'sha256': h.hexdigest(), 'bytes': size, 'rows': rows}
+        metadata = path.with_suffix('.observability.json')
+        if metadata.is_file():
+            result[path.stem]['observability_sha256'] = hashlib.sha256(metadata.read_bytes()).hexdigest()
     return result
 
 
@@ -1639,7 +1709,8 @@ def main():
             preflight = run / 'preflight'
             private_directory(str(preflight), account.pw_gid)
             frozen_bases = tuple(sites[site]['base_names'])
-            frozen_snapshot, frozen_input = build_snapshot(SOURCE_LOG, frozen_bases, str(preflight))
+            frozen_snapshot, frozen_input = (build_snapshot(SOURCE_LOG, frozen_bases, str(preflight), sites[site]['log_sources'])
+                                            if sites[site].get('log_sources') else build_snapshot(SOURCE_LOG, frozen_bases, str(preflight)))
             if frozen_input['rejected']:
                 raise RuntimeError('Input normalization failed; current reports remain applied')
             source_days = set(observed)
@@ -1651,10 +1722,10 @@ def main():
             scope.pop('acknowledgement')
             scope['acknowledgement'] = identity({k:v for k,v in scope.items() if k != 'needs_acknowledgement'})
             normal_snapshot = build_snapshot
-            def frozen_builder(log_root, bases, work):
+            def frozen_builder(log_root, bases, work, source_metadata=None):
                 if tuple(bases) == frozen_bases:
                     return frozen_snapshot, frozen_input
-                return normal_snapshot(log_root, bases, work)
+                return normal_snapshot(log_root, bases, work, source_metadata) if source_metadata else normal_snapshot(log_root, bases, work)
             build_snapshot = frozen_builder
             if request['action'] == 'apply' and scope['needs_acknowledgement'] and request.get('coverage_ack') != scope['acknowledgement']:
                 atomic_json(state_root / 'jobs' / (request['id'] + '-result.json'), {'coverage_required': scope}, gid=control_gid)
@@ -1684,8 +1755,14 @@ def main():
                 kind = 'css' if asset.endswith('.css') else 'js'
                 shutil.copyfile(str(Path(APP) / 'wwwroot' / kind / asset), str(generated / 'assets' / kind / asset))
         else:
-            for name in ['data', 'data-verified', 'data-requests', 'data-behavior', 'corpus', 'crawler-evidence', 'supplements']:
+            for name in ['data', 'data-verified', 'data-requests', 'data-behavior', 'data-inferred', 'corpus', 'crawler-evidence', 'supplements']:
                 clone_private(os.path.join(private_base, name), str(stage_base / name), immutable=(name == 'corpus'))
+            operator_path = Path(real_base) / 'operator-evidence.json'
+            if not operator_path.exists():
+                operator_path = Path(private_base) / 'operator-evidence.json'
+            if operator_path.exists():
+                operator_value = read_json(operator_path, root_owned=True)
+                atomic_json(stage_base / 'operator-evidence.json', operator_value, gid=account.pw_gid)
             for site in new_sites:
                 if site in selected_sites:
                     stage_native_site(real_base, stage_base, site, sites[site], account)
@@ -1740,6 +1817,10 @@ def main():
                     for day in actual:
                         shutil.copyfile(str(Path(private_base) / 'corpus' / site / 'current' / (day + '.log')), str(seed / (day + '.log')))
                         os.chown(str(seed / (day + '.log')), 0, account.pw_gid); os.chmod(str(seed / (day + '.log')), 0o640)
+                        old_metadata = Path(private_base) / 'corpus' / site / 'current' / (day + '.observability.json')
+                        if old_metadata.is_file():
+                            shutil.copyfile(str(old_metadata), str(seed / old_metadata.name))
+                            os.chown(str(seed / old_metadata.name), 0, account.pw_gid); os.chmod(str(seed / old_metadata.name), 0o640)
                     atomic_json(seed / 'receipt.json', {'days': actual, 'native_months': {}}, gid=account.pw_gid)
                     if (parent / 'current').is_symlink():
                         (parent / 'current').unlink()
@@ -1762,6 +1843,8 @@ def main():
                 profiles[site]['view_totals'] = {'original': values.get('original_totals', values.get('totals', {})),
                     'confirmed': values.get('confirmed_totals', {}), 'requests': values.get('request_totals', {}),
                     'behavior': values.get('totals', {})}
+                if values.get('retrospective_totals') is not None:
+                    profiles[site]['view_totals']['retrospective'] = values['retrospective_totals']
                 if profiles[site]['managed']:
                     profiles[site]['note'] = 'Filters applied; native statistics rebuilt from retained input.'
                     inputs = retained_input(str(stage_base), site)
@@ -1770,6 +1853,11 @@ def main():
                     result_summary = read_json(stage_base / 'work' / stage_state['generation'] / site / 'behavior/result/summary.json')
                     profiles[site]['capacity_fallback'] = result_summary.get('capacity_fallback', {})
                     profiles[site]['matched_requests'] = result_summary['behavior']
+                    profiles[site]['matched_requests'].update({
+                        'operator_associated_requests': result_summary.get('operator_evidence', {}).get('counts', {}).get('dated_association_requests', 0),
+                        'historical_operator_requests': result_summary.get('operator_evidence', {}).get('counts', {}).get('historical_candidate_requests', 0)})
+                    profiles[site]['operator_evidence'] = result_summary.get('operator_evidence', {})
+                    profiles[site]['evidence_classes'] = result_summary.get('evidence_classes', {})
                     profiles[site]['excluded_by_month'] = result_summary['excluded_by_month']
                     profiles[site]['request_excluded_by_month'] = result_summary['request_excluded_by_month']
                     profiles[site]['native_overlap_note'] = 'Per-filter matches overlap; native before/after metrics are recalculated, not sums of those matches.'
@@ -1785,7 +1873,13 @@ def main():
             info['browser_access'] = public_browser_policy(browser_policy(real_config, site))
             if info['applied']:
                 info['effective_by_month'] = {m: filter_status(info['applied'], evidence=any(d.startswith(m + '-') for d in evidence_dates),
-                    over_limits=m in info.get('capacity_fallback', {})) for m in info.get('totals', {})}
+                    over_limits=m in info.get('capacity_fallback', {}),
+                    operator_evidence=bool(info.get('operator_evidence', {}).get('sha256'))) for m in info.get('totals', {})}
+                for month, statuses in info['effective_by_month'].items():
+                    if statuses.get('operator_associated') == 'Active':
+                        statuses['operator_associated'] = 'Dated intervals only'
+                    if statuses.get('historical_operator') == 'Active' and month not in info['applied']['classifier']['operator_association']['retrospective_months']:
+                        statuses['historical_operator'] = 'Not selected for this month'
                 latest = max(info.get('totals', {}), default='')
                 info['effective'] = info['effective_by_month'].get(latest, filter_status(info['applied']))
                 if info['effective'].get('verified_crawlers') == 'Active':

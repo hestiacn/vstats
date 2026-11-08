@@ -51,7 +51,7 @@ sub output_target {
 sub main {
     fail('CGI execution is refused') if exists $ENV{GATEWAY_INTERFACE};
     Configure(qw(no_auto_abbrev no_ignore_case no_getopt_compat require_order));
-    my ($config,$input,$format,$output,$render,$details,$help,$filtered,$context_before,$context_after,@snapshots,@attestations);
+    my ($config,$input,$format,$output,$render,$details,$help,$filtered,$context_before,$context_after,$operator_file,@metadata,@snapshots,@attestations);
     $render='json';
     my ($parsed,%seen);
     my $once=sub {my ($name,$ref)=@_;return sub {fail('Invalid arguments') if $seen{$name}++;$$ref=$_[1];}};
@@ -60,6 +60,7 @@ sub main {
         'output=s'=>$once->('output',\$output),'output-format=s'=>$once->('output-format',\$render),'details'=>$once->('details',\$details),
         'filtered-log=s'=>$once->('filtered-log',\$filtered),
         'context-before=s'=>$once->('context-before',\$context_before),'context-after=s'=>$once->('context-after',\$context_after),
+        'operator-evidence=s'=>$once->('operator-evidence',\$operator_file),'metadata=s@'=>\@metadata,
         'snapshot=s@'=>\@snapshots,'attestation=s@'=>\@attestations,'help'=>$once->('help',\$help));
     }
     fail('Invalid arguments') if !$parsed;
@@ -77,9 +78,21 @@ sub main {
     for my $i (0..$#snapshots) {
         push @evidence,VStats::TrafficClassifier->snapshot(read_small($snapshots[$i],$caps->{snapshot_bytes}),read_small($attestations[$i],$caps->{attestation_bytes}));
     }
+    fail('Too many observability inputs') if @metadata>3;
+    my %metadata;
+    for my $path (@metadata) {
+        my $part=VStats::TrafficClassifier->input_metadata(read_small($path,33554432));
+        for my $id (keys %$part) {
+            fail('Conflicting observability metadata') if exists($metadata{$id}) &&
+                VStats::TrafficClassifier::canonical_json($metadata{$id}) ne VStats::TrafficClassifier::canonical_json($part->{$id});
+            $metadata{$id}=$part->{$id};
+        }
+        fail('Combined observability record limit exceeded') if keys(%metadata)>300000;
+    }
+    my $operator=defined($operator_file)?VStats::OperatorEvidence->new(read_small($operator_file,16777216)):undef;
     # All config/evidence validation precedes opening the access log.
-    my $engine=VStats::TrafficClassifier->new(config=>$cfg,format=>$format,snapshots=>\@evidence,details=>$details);
-    my @inputs=($config,$input,@snapshots,@attestations,(defined($context_before)?$context_before:()),(defined($context_after)?$context_after:()));
+    my $engine=VStats::TrafficClassifier->new(config=>$cfg,format=>$format,snapshots=>\@evidence,details=>$details,metadata=>\%metadata,operator_evidence=>$operator);
+    my @inputs=($config,$input,@snapshots,@attestations,@metadata,(defined($operator_file)?$operator_file:()),(defined($context_before)?$context_before:()),(defined($context_after)?$context_after:()));
     $stage='output path'; my ($target,$parent)=output_target($output,\@inputs);
     my ($filtered_target,$filtered_parent);
     if (defined $filtered) {
