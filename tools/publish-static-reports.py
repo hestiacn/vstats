@@ -1434,7 +1434,7 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
             level = int(level[0]) if level else 3
             profile = {'schema_version': 1,
                        'filters': dict(native_crawlers=bool(level), verified_crawlers=site_settings.get('verified_crawler_filter', False),
-                                       **{key: bool(classifier.get(key, {}).get('enabled', 0)) for key in ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation']}),
+                                       **{key: bool(classifier.get(key, {}).get('enabled', 0)) for key in ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration']}),
                        'exclude_automated_ips': site_settings.get('exclude_automated_ips', True),
                        'native_level': level or 3, 'classifier': classifier,
                        'exceptions': [{'request_id': i, 'reason': 'Imported existing inclusion; original reason not recorded'} for i in classifier.get('behavior_include', [])]}

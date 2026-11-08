@@ -7,13 +7,15 @@
   let csrf = null, editable = false, busy = false, poll = null, coverage = state.coverage;
   const site = state.site, base = '/vstats-control/sites/' + encodeURIComponent(site) + '/';
   const historical = $('filters-main').dataset.historical === 'true';
-  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation'];
-  const names = {native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.'],login_rotation:['Login browser rotation','Repeated adjacent login GET/POST pairs that switch claimed platforms; requires configured login paths.']};
+  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration'];
+  const names = {native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.'],login_rotation:['Login browser rotation','Repeated adjacent login GET/POST pairs that switch claimed platforms; requires configured login paths.'],head_scan:['HEAD path sweeps','Repeated HEAD requests across content paths with missing resources.'],sensitive_scan:['Sensitive-file probing','Concentrated reads of configured sensitive-file paths; no absence assumption.'],wp_enumeration:['WordPress enumeration','Author-ID and user-API enumeration with rotating browser claims.']};
   function structuredCopy(v) { return JSON.parse(JSON.stringify(v)); }
   function profileCopy(value) {
     const p = structuredCopy(value);
-    if(!Object.prototype.hasOwnProperty.call(p.filters,'login_rotation')) p.filters.login_rotation=false;
-    if(!p.classifier.login_rotation) p.classifier.login_rotation=structuredCopy(state.default_profile.classifier.login_rotation);
+    for(const key of ['login_rotation','head_scan','sensitive_scan','wp_enumeration']) {
+      if(!Object.prototype.hasOwnProperty.call(p.filters,key)) p.filters[key]=false;
+      if(!p.classifier[key]) p.classifier[key]=structuredCopy(state.default_profile.classifier[key]);
+    }
     return p;
   }
   function node(tag, text, cls) { const n = document.createElement(tag); if(text !== undefined) n.textContent = text; if(cls) n.className = cls; return n; }
@@ -113,7 +115,7 @@
     impact({before:(state.view_totals||{}).original,after:state.totals,before_label:'Additional filters off',after_label:'Current applied profile',capacity_fallback:state.capacity_fallback});
     const area=$('match-counts');area.replaceChildren(node('h3','Matches and actual exclusions for this generation'));
     const counts=state.matched_requests||{},table=node('table'),header=node('tr');header.append(node('th','Detector / measure'),node('th','Requests'));table.append(header);
-    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['login_rotation_flagged_requests','Login browser rotation'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
+    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['login_rotation_flagged_requests','Login browser rotation'],['head_scan_flagged_requests','HEAD path sweeps'],['sensitive_scan_flagged_requests','Sensitive-file probing'],['wp_enumeration_flagged_requests','WordPress enumeration'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
     const views=state.view_totals||{};
     for(const [mode,title,ledger] of [['requests','Matched-request filtering',state.request_excluded_by_month||{}],['behavior','Configured visitor policy',state.excluded_by_month||{}]]){
       for(const month of Object.keys(ledger).sort().reverse()){

@@ -9,5 +9,62 @@
     "distinct_user_agents": 3,
     "distinct_platforms": 2,
     "login_paths": []
-  }
+  },
+  "head_scan": {
+    "distinct_paths": 6,
+    "enabled": 0,
+    "min_requests": 12,
+    "not_found_requests": 4,
+    "window_seconds": 60
+  },
+  "sensitive_scan": {
+    "distinct_paths": 3,
+    "enabled": 0,
+    "min_requests": 3,
+    "paths": [
+      "/.env",
+      "/.env.local",
+      "/.env.backup",
+      "/.env.bak",
+      "/.env.example",
+      "/.git/config",
+      "/.git-credentials",
+      "/.svn/wc.db"
+    ],
+    "window_seconds": 60
+  },
+  "wp_enumeration": {
+    "author_paths": [
+      "/",
+      "/index.php"
+    ],
+    "distinct_author_ids": 3,
+    "distinct_platforms": 2,
+    "distinct_user_agents": 4,
+    "enabled": 0,
+    "min_requests": 8,
+    "not_found_requests": 3,
+    "rest_routes": [
+      "/wp/v2/users"
+    ],
+    "user_api_requests": 1,
+    "user_paths": [
+      "/wp-json/wp/v2/users",
+      "/index.php/wp-json/wp/v2/users"
+    ],
+    "window_seconds": 60
+  },
+  "crawler_tokens": [
+    "Googlebot",
+    "Bytespider",
+    "bingbot",
+    "AhrefsBot",
+    "ClaudeBot",
+    "GPTBot",
+    "curl",
+    "Wget",
+    "python-requests",
+    "fd-crm-enrich",
+    "RisikomonitorNotify"
+  ]
 }

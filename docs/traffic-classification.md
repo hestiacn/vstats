@@ -57,7 +57,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v10`. Optional private details include status, the per-request
+`vstats-traffic-v11`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
@@ -151,16 +151,19 @@ qualify. Inspect the numeric witness and use inclusion overrides when needed.
 minimum is 2 through minimum requests. Partial objects fill defaults. The
 existing byte, record, field and canonical IP/host group caps still apply.
 Window maintenance is linear after sorting; no operator regex/code is executed.
-All five behavioral rules remain optional and independently configurable.
+All eight behavioral rules remain optional and independently configurable.
 
 `suspected_automation` is the union of enabled broad path probing, configured
-endpoint probing, rapid content-path probing, distributed login probing and login browser rotation. Actor identities and the absence-attested `scanner_flagged`
+endpoint probing, rapid content-path probing, distributed login probing, login
+browser rotation, HEAD path sweeps, sensitive-file probing and WordPress
+enumeration. Actor identities and the absence-attested `scanner_flagged`
 layer remain independent. An overlapping request counts once and retains every
 applicable covering witness in private details and curated review. Aggregate
-`behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`, `distributed_login_rule`, `login_rotation_rule`,
+`behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`, `distributed_login_rule`, `login_rotation_rule`, `head_scan_rule`, `sensitive_scan_rule`, `wp_enumeration_rule`,
 `broad_flagged_requests`, `probing_flagged_requests`,
 `rapid_scan_flagged_requests`, `distributed_login_flagged_requests`,
-`login_rotation_flagged_requests` and `overlap_requests` (requests matching at least
+`login_rotation_flagged_requests`, `head_scan_flagged_requests`,
+`sensitive_scan_flagged_requests`, `wp_enumeration_flagged_requests` and `overlap_requests` (requests matching at least
 two rules); its main request and actor
 counts are the union. Eligible and insufficient-field counts deduplicate records
 across enabled rules. Merged sequence counts sum the rules' sequences, which may
@@ -170,12 +173,13 @@ endpoint list; aggregate output contains no observed request records.
 Private details include `broad_probing_flagged`, `probing_flagged`,
 `rapid_scan_flagged`, `distributed_login_flagged`, `probing_evidence`,
 `rapid_scan_evidence`, `distributed_login_evidence`, `login_rotation_flagged`
-and `login_rotation_evidence`, retaining the
+and `login_rotation_evidence`, plus corresponding `head_scan`, `sensitive_scan`
+and `wp_enumeration` flags and numeric evidence, retaining the
 existing broad `behavior_evidence`. Review
 labels each applicable rule and its numeric covering window. The same explicit
 exclusion selector and `behavior_include` request IDs apply to every rule;
 inclusion retains all witnesses and cannot override independent actor/scanner
-exclusions. All five rules are opt-in and may be enabled separately. Shared proxies
+exclusions. All eight rules are opt-in and may be enabled separately. Shared proxies
 and authorized automation can qualify; review results before relying on them.
 
 ### Login browser rotation
@@ -248,6 +252,77 @@ Stable browser emulation, isolated requests and missing evidence can evade it.
 Review ordinary site traffic and preview changes before adopting exclusion.
 Raw private request data and source addresses must remain out of public patches
 and regression fixtures; the supplied tests use synthetic records.
+
+### Low-volume scanning
+
+Three independent optional rules cover specific patterns below the broad burst
+thresholds. Raw classifier defaults remain `enabled: 0`. Their starter limits
+are exploratory heuristics selected after examining operator-reported examples;
+they have no calibrated precision/recall. Shared gateways, authorized tests and
+software can qualify. An automation flag does not establish malicious intent,
+compromise, successful authentication or component absence.
+
+| Rule | Default qualifying conditions in one inclusive 60-second window |
+|---|---|
+| `head_scan` | 12 HEAD requests across 6 normalized content paths, including 4 observed HTTP 404s. Static asset suffixes excluded by `rapid_scan` above are also excluded here. Browser claims and zero bandwidth are not requirements. |
+| `sensitive_scan` | 3 GET/HEAD requests across 3 distinct configured exact paths. Response status does not establish absence or success. Default paths: `/.env`, `/.env.local`, `/.env.backup`, `/.env.bak`, `/.env.example`, `/.git/config`, `/.git-credentials`, `/.svn/wc.db`. |
+| `wp_enumeration` | 8 eligible GET requests, 4 browser-agent claims, 2 platform claims, 3 distinct positive numeric author IDs, 1 user-API request and 3 observed HTTP 404s. All conditions must coincide. |
+
+Each rule groups by canonical literal IP and normalized host. A method, supported
+target and HTTP status are required; enumeration additionally needs a recognized
+browser/platform claim. Only eligible requests inside qualifying windows receive
+the rule flag. Ordinary pages, assets and out-of-window requests do not acquire
+a request-level flag. The explicit IP/month policy can subsequently exclude
+other source traffic; inclusions preserve the evidence and can restore selected
+requests. Actor labels, union/overlap accounting and daily context retain their
+existing meanings. Linear window maintenance follows time sorting.
+
+Enumeration uses `author_paths: ["/", "/index.php"]`,
+`user_paths: ["/wp-json/wp/v2/users", "/index.php/wp-json/wp/v2/users"]` and
+`rest_routes: ["/wp/v2/users"]`. On an author path it recognizes the exact query
+key `author` with a canonical positive decimal ID of at most ten digits, or the
+exact key `rest_route` matching a configured route. An exact configured user
+path is also API evidence. Query features are decoded once; duplicate recognized
+keys, malformed recognized values, combined author/API features and queries
+over 128 parameters abstain. Unrelated query values are neither inspected nor
+included in witnesses. No author IDs or query values are added to aggregate or
+review output; existing raw private details retain their retention warning.
+
+```json
+{
+  "schema_version": 1,
+  "head_scan": {"enabled": 1},
+  "sensitive_scan": {"enabled": 1},
+  "wp_enumeration": {"enabled": 1},
+  "exclude": ["suspected_automation"]
+}
+```
+
+Windows are 1–3600 seconds; request minima are 2–100000. Distinct content or
+sensitive paths are 2–2048 and cannot exceed the request minimum. Observed-404
+minima for HEAD and enumeration are 0 through the request minimum. Enumeration
+requires 2 through the request minimum for distinct agents and author IDs,
+2–5 platforms (not exceeding agent diversity), and at least 1 API request;
+the author-ID and API minima together cannot exceed the request minimum.
+Sensitive paths must be nonempty when enabled. Enumeration requires nonempty
+author paths and at least one configured user path or query route. Lists contain
+at most 2048 unique exact normalized paths. Existing byte/record/group caps apply.
+
+Private details add `head_scan_flagged`/`head_scan_evidence`,
+`sensitive_scan_flagged`/`sensitive_scan_evidence` and
+`wp_enumeration_flagged`/`wp_enumeration_evidence`. Numeric witnesses retain
+request/path/browser/platform/404 counts, plus author-ID and API counts. Aggregate
+behavior adds corresponding rule summaries and `*_flagged_requests` counts.
+Review distinguishes each pattern and retains every overlapping witness.
+
+The native signatures and default declared-token list also recognize exact
+bounded `fd-crm-enrich` and `RisikomonitorNotify` declarations. Native matching
+respects detection levels and the crawler-signatures checkbox, including mobile
+claims and marker collisions. Declarations are forgeable and are not provider
+verification. Custom classifier token arrays still replace the defaults.
+
+Fast successful page traversal, homepage/favicon-only traffic, an old browser
+claim, one request or equal page/hit totals alone do not satisfy these rules.
 
 ### Explicit filtering and inclusion overrides
 
@@ -521,7 +596,7 @@ numbers, negatives and inconsistencies **before opening the log**. JSON nesting
 | Field | Behavior |
 | --- | --- |
 | `hosts` | Default `[]`: all parsed hosts. Otherwise an exact normalized allowlist; missing/out-of-scope hosts count separately. |
-| `crawler_tokens` | Supplied array replaces defaults; empty is allowed. Registry markers still declare. Defaults: `Googlebot`, `Bytespider`, `bingbot`, `AhrefsBot`, `ClaudeBot`, `GPTBot`, `curl`, `Wget`, `python-requests`. |
+| `crawler_tokens` | Supplied array replaces defaults; empty is allowed. Registry markers still declare. Defaults: `Googlebot`, `Bytespider`, `bingbot`, `AhrefsBot`, `ClaudeBot`, `GPTBot`, `curl`, `Wget`, `python-requests`, `fd-crm-enrich`, `RisikomonitorNotify`. |
 | `probe_families` | Default `[]`; dated absence attestations below. |
 | `site_references` | Default `[]`; legitimate-path exemptions below. |
 | `scanner` | Defaults: `distinct_paths: 3`, `distinct_families: 2`, `window_seconds: 60`. Partial objects fill defaults. Positive integer families ≤ paths ≤ 2048; window ≤ 3600. |

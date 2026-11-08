@@ -22,6 +22,10 @@ sub BytespiderRobotID {
 # a device exemption. Generic patterns/browser words keep their legacy handling.
 # This is user-agent evidence, not authenticated operator identity.
 my %registered_mobile_crawlers;
+# Explicit self-declarations; no ownership or provider verification is implied.
+my $enrichment_marker = '(?:^|[^A-Za-z0-9])fd-crm-enrich(?=[\x09-\x0D\x20/;)]|$)';
+my $monitor_marker = '(?:^|[^A-Za-z0-9])RisikomonitorNotify(?=[\x09-\x0D\x20/;)]|$)';
+my %named_automation_tokens=($enrichment_marker=>'fd-crm-enrich',$monitor_marker=>'RisikomonitorNotify');
 sub RegisteredCrawlerRobotID {
     my ($ua,$level)=@_;
     return '' if !defined($ua) || ref($ua) || !defined($level) || $level !~ /\A[1-9][0-9]*\z/;
@@ -35,6 +39,10 @@ sub RegisteredCrawlerRobotID {
         my %client_names=map {lc($_)=>1} qw(CUBOT);
         my (%seen,@markers);
         for my $id (@rules) {
+            if (my $token=$named_automation_tokens{$id}) {
+                push @markers,[$id,qr/(?:^|[^A-Za-z0-9])\Q$token\E(?=[\x09-\x0D\x20\/;)]|\z)/iaa];
+                next;
+            }
             next if $id !~ /\A([A-Za-z0-9][A-Za-z0-9._-]*)(?:\/)?\z/;
             my $token=$1;
             # Literal webview/client/browser IDs are not crawler identities.
@@ -52,6 +60,8 @@ sub RegisteredCrawlerRobotID {
 }
 
 @RobotsSearchIDOrder_list1 = (
+$enrichment_marker,
+$monitor_marker,
 'meta-externalagent/',
 'facebookexternalhit',
 'hello.*palo.*alto.*networks',
@@ -1473,6 +1483,8 @@ sub RegisteredCrawlerRobotID {
 #------------------------------------------------------------------------------
 
 %RobotsHashIDLib = (
+$enrichment_marker => 'fd-crm-enrich (self-declared automation)',
+$monitor_marker => 'RisikomonitorNotify (self-declared monitoring)',
 
 # 自定义规则
 #---------------------------------------------------------------------------

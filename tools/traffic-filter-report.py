@@ -90,7 +90,27 @@ def validate_rotation_witness(proof):
         raise RuntimeError('Inconsistent login-rotation witness counts')
 
 
+def validate_scan_witness(label, proof):
+    keys = ('from', 'until', 'requests', 'distinct_paths', 'distinct_user_agents',
+            'distinct_platforms', 'not_found_requests', 'distinct_author_ids', 'user_api_requests')
+    if any(type(proof.get(key)) is not int or proof[key] < 0 for key in keys):
+        raise RuntimeError('Invalid low-volume scan witness fields')
+    if (not proof['from'] <= proof['until'] <= 4102444800 or
+            proof['until'] - proof['from'] > 3600 or proof['requests'] < 2 or
+            not 1 <= proof['distinct_paths'] <= proof['requests'] or
+            not proof['distinct_platforms'] <= proof['distinct_user_agents'] <= proof['requests'] or
+            proof['not_found_requests'] > proof['requests']):
+        raise RuntimeError('Inconsistent low-volume scan witness counts')
+    if label == 'WordPress enumeration' and (
+            not 2 <= proof['distinct_platforms'] <= 5 or proof['distinct_author_ids'] < 2 or
+            proof['user_api_requests'] < 1 or
+            proof['distinct_author_ids'] + proof['user_api_requests'] > proof['requests']):
+        raise RuntimeError('Inconsistent enumeration witness counts')
+
+
 def witness_text(label, proof):
+    if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration'):
+        validate_scan_witness(label, proof)
     if label == 'Distributed login probing':
         validate_distributed_witness(proof)
         return (('Campaign: {requests} requests from {distinct_sources} sources; {post_requests} login POSTs; '
@@ -111,6 +131,12 @@ def witness_text(label, proof):
     reason += ' in {} seconds'.format(proof['until'] - proof['from'])
     if label == 'Endpoint probing':
         reason += ' (configured endpoints; no 404 requirement)'
+    if label == 'HEAD path sweeps':
+        reason += ' (HEAD content paths; response-body bytes are not a condition)'
+    if label == 'Sensitive-file probing':
+        reason += ' (configured paths; no absence or failed-response assumption)'
+    if label == 'WordPress enumeration':
+        reason += '; {distinct_author_ids} author IDs; {user_api_requests} user-API requests'.format(**proof)
     if label == 'Rapid content-path probing':
         reason += ' (content paths; no browser rotation requirement)'
     return reason
@@ -124,7 +150,10 @@ def rule_evidence(record):
                                 (record.get('probing_flagged'), 'Endpoint probing', 'probing_evidence'),
                                 (record.get('rapid_scan_flagged'), 'Rapid content-path probing', 'rapid_scan_evidence'),
                                 (record.get('distributed_login_flagged'), 'Distributed login probing', 'distributed_login_evidence'),
-                                (record.get('login_rotation_flagged'), 'Login browser rotation', 'login_rotation_evidence')]:
+                                (record.get('login_rotation_flagged'), 'Login browser rotation', 'login_rotation_evidence'),
+                                (record.get('head_scan_flagged'), 'HEAD path sweeps', 'head_scan_evidence'),
+                                (record.get('sensitive_scan_flagged'), 'Sensitive-file probing', 'sensitive_scan_evidence'),
+                                (record.get('wp_enumeration_flagged'), 'WordPress enumeration', 'wp_enumeration_evidence')]:
         if not matched:
             continue
         proof = record.get(key)
@@ -134,6 +163,8 @@ def rule_evidence(record):
             validate_distributed_witness(proof)
         if label == 'Login browser rotation':
             validate_rotation_witness(proof)
+        if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration'):
+            validate_scan_witness(label, proof)
         result.append((label, proof))
     if record.get('ip_excluded'):
         evidence = record.get('ip_automation_evidence')
@@ -146,12 +177,14 @@ def rule_evidence(record):
                 raise RuntimeError('IP trigger crosses the report month')
         for item in evidence['rules']:
             proof = item['proof']
-            if item['rule'] not in ('Broad path probing', 'Endpoint probing', 'Rapid content-path probing', 'Distributed login probing', 'Login browser rotation') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
+            if item['rule'] not in ('Broad path probing', 'Endpoint probing', 'Rapid content-path probing', 'Distributed login probing', 'Login browser rotation', 'HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration') or not proof['from'] <= evidence['trigger_timestamp'] <= proof['until']:
                 raise RuntimeError('IP trigger lacks a covering rule witness')
             if item['rule'] == 'Distributed login probing':
                 validate_distributed_witness(proof)
             if item['rule'] == 'Login browser rotation':
                 validate_rotation_witness(proof)
+            if item['rule'] in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration'):
+                validate_scan_witness(item['rule'], proof)
     if not result and not record.get('ip_excluded'):
         raise RuntimeError('Review lacks a covering rule witness')
     return result
@@ -570,7 +603,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         totals.update(report['counts'])
         actors.update(report['actors'])
         for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups',
-                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'overlap_requests']:
+                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'head_scan_flagged_requests', 'sensitive_scan_flagged_requests', 'wp_enumeration_flagged_requests', 'overlap_requests']:
             behavior[key] += report['behavior'].get(key, 0)
         flagged_by_month[day[:7]] += report['behavior']['flagged_requests']
         first = period['from'] if first is None else min(first, period['from'])
@@ -708,6 +741,9 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                    '; rapid content-path probing: ' + format(behavior['rapid_scan_flagged_requests'], ',') +
                    '; distributed login probing: ' + format(behavior['distributed_login_flagged_requests'], ',') +
                    '; login browser rotation: ' + format(behavior['login_rotation_flagged_requests'], ',') +
+                   '; HEAD path sweeps: ' + format(behavior['head_scan_flagged_requests'], ',') +
+                   '; sensitive-file probing: ' + format(behavior['sensitive_scan_flagged_requests'], ',') +
+                   '; WordPress enumeration: ' + format(behavior['wp_enumeration_flagged_requests'], ',') +
                    '; overlap (two or more rules): ' + format(behavior['overlap_requests'], ',') +
                    '. Full raw user-agent strings and query strings are omitted from review.</p>')
     if sum(r['requests'] for r in sources.values()) + sum(unattributed_sources.values()) != totals['analyzed']:
@@ -768,7 +804,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
             if month in unavailable:
                 raise
             unavailable[month] = {'reason': 'Input over limits', 'limit': e.kind, 'hard_maximum': e.maximum,
-                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'exclude_automated_ips']}
+                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'exclude_automated_ips']}
             # Only our failed, newly created derived-output directory is removed.
             # Original daily input and any previously published output are untouched.
             shutil.rmtree(str(output_directory))

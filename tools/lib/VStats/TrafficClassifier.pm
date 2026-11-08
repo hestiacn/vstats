@@ -10,8 +10,8 @@ use POSIX qw(floor);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later. No file or network I/O here.
-our $VERSION = '1.8';
-my $ALGORITHM = 'vstats-traffic-v10';
+our $VERSION = '1.9';
+my $ALGORITHM = 'vstats-traffic-v11';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -22,7 +22,7 @@ my $FIXED = {config_bytes=>1048576,snapshot_bytes=>2097152,attestation_bytes=>16
 my $JSON = JSON::PP->new->canonical->allow_nonref;
 my $DEFAULT = {
     schema_version => 1, hosts => [],
-    crawler_tokens => [qw(Googlebot Bytespider bingbot AhrefsBot ClaudeBot GPTBot curl Wget python-requests)],
+    crawler_tokens => [qw(Googlebot Bytespider bingbot AhrefsBot ClaudeBot GPTBot curl Wget python-requests fd-crm-enrich RisikomonitorNotify)],
     probe_families => [], site_references => [], exclude => [], behavior_include => [],
     scanner => {distinct_paths => 3, distinct_families => 2, window_seconds => 60},
     behavior => {enabled => 0, window_seconds => 60, min_requests => 60,
@@ -39,6 +39,17 @@ my $DEFAULT = {
     login_rotation => {enabled => 0, window_seconds => 86400, pair_seconds => 30,
         min_pairs => 3, min_platform_switches => 2, distinct_user_agents => 3,
         distinct_platforms => 2, login_paths => []},
+    head_scan => {enabled => 0, window_seconds => 60, min_requests => 12,
+        distinct_paths => 6, not_found_requests => 4},
+    sensitive_scan => {enabled => 0, window_seconds => 60, min_requests => 3,
+        distinct_paths => 3, paths => [qw(/.env /.env.local /.env.backup /.env.bak
+            /.env.example /.git/config /.git-credentials /.svn/wc.db)]},
+    wp_enumeration => {enabled => 0, window_seconds => 60, min_requests => 8,
+        distinct_user_agents => 4, distinct_platforms => 2, distinct_author_ids => 3,
+        user_api_requests => 1, not_found_requests => 3,
+        author_paths => ['/', '/index.php'],
+        user_paths => ['/wp-json/wp/v2/users', '/index.php/wp-json/wp/v2/users'],
+        rest_routes => ['/wp/v2/users']},
     verification => {max_gap_seconds => 86400},
     limits => {input_bytes => 67108864, line_bytes => 16384, records => 100000,
                groups => 100000, ua_bytes => 4096, target_bytes => 8192},
@@ -50,7 +61,7 @@ sub defaults { return $JSON->decode($JSON->encode($DEFAULT)); }
 # The configured detector/grid width stays unchanged.
 sub analysis_window {
     my ($class,$config)=@_;my $window=$config->{scanner}{window_seconds};
-    for my $rule (qw(behavior probing rapid_scan)) {
+    for my $rule (qw(behavior probing rapid_scan head_scan sensitive_scan wp_enumeration)) {
         $window=$config->{$rule}{window_seconds} if $config->{$rule}{enabled} && $config->{$rule}{window_seconds}>$window;
     }
     my $dl=$config->{distributed_login};
@@ -168,7 +179,7 @@ sub config {
     my $d=defaults();
     for my $key (keys %$d) {
         if (!exists $c->{$key}) { $c->{$key}=$d->{$key}; next; }
-        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'distributed_login' || $key eq 'login_rotation' || $key eq 'verification' || $key eq 'limits') {
+        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'distributed_login' || $key eq 'login_rotation' || $key eq 'head_scan' || $key eq 'sensitive_scan' || $key eq 'wp_enumeration' || $key eq 'verification' || $key eq 'limits') {
             _keys($c->{$key},keys %{$d->{$key}});
             for my $k (keys %{$d->{$key}}) { $c->{$key}{$k}=$d->{$key}{$k} if !exists $c->{$key}{$k}; }
         }
@@ -246,6 +257,34 @@ sub config {
             || $normal ne $path || $rotation_paths{$path}++;
     }
     _bad('Enabled login rotation requires configured login paths') if $lr->{enabled} && !@{$lr->{login_paths}};
+    for my $kind (qw(head_scan sensitive_scan wp_enumeration)) {
+        my $rule=$c->{$kind};
+        _uint($rule->{enabled},1);_uint($rule->{window_seconds},$FIXED->{max_window},1);
+        _uint($rule->{min_requests},$d->{limits}{records},2);
+        if ($kind ne 'wp_enumeration') {
+            _uint($rule->{distinct_paths},$FIXED->{paths},2);
+            _bad('Scan paths exceed requests') if $rule->{distinct_paths}>$rule->{min_requests};
+        }
+        _uint($rule->{not_found_requests},$rule->{min_requests},0) if $kind ne 'sensitive_scan';
+        if ($kind eq 'wp_enumeration') {
+            _uint($rule->{distinct_user_agents},$rule->{min_requests},2);
+            _uint($rule->{distinct_platforms},5,2);
+            _uint($rule->{distinct_author_ids},$rule->{min_requests},2);
+            _uint($rule->{user_api_requests},$rule->{min_requests},1);
+            _bad('Inconsistent enumeration thresholds') if $rule->{distinct_platforms}>$rule->{distinct_user_agents}
+                || $rule->{distinct_author_ids}+$rule->{user_api_requests}>$rule->{min_requests};
+        }
+        for my $key ($kind eq 'sensitive_scan' ? ('paths') : $kind eq 'wp_enumeration' ? qw(author_paths user_paths rest_routes) : ()) {
+            _array($rule->{$key},$FIXED->{paths});my %seen;
+            for my $path (@{$rule->{$key}}) {
+                _str($path);my $normal=normalize_target($path);
+                _bad('Invalid or duplicate scan path') if !defined($normal) || $normal ne $path || $seen{$path}++;
+            }
+        }
+        _bad('Enabled sensitive scan requires configured paths') if $kind eq 'sensitive_scan' && $rule->{enabled} && !@{$rule->{paths}};
+        _bad('Enabled enumeration requires author and user-API paths') if $kind eq 'wp_enumeration' && $rule->{enabled}
+            && (!@{$rule->{author_paths}} || (!@{$rule->{user_paths}} && !@{$rule->{rest_routes}}));
+    }
     _uint($c->{verification}{max_gap_seconds},$FIXED->{max_gap});
     for my $k (keys %{$d->{limits}}) { _uint($c->{limits}{$k},$d->{limits}{$k},1); }
     _bad('Field cap exceeds line cap') if $c->{limits}{ua_bytes}>$c->{limits}{line_bytes} || $c->{limits}{target_bytes}>$c->{limits}{line_bytes};
@@ -998,6 +1037,121 @@ sub _login_rotation {
     return $out;
 }
 
+# Query inspection is deliberately limited to public enumeration shapes. No
+# author identifiers or unrelated query values are emitted in the witness.
+sub _query_feature {
+    my ($s)=@_;return if !defined($s) || $s=~/%(?![0-9A-Fa-f]{2})/;
+    $s=~tr/+/ /;$s=~s/%([0-9A-Fa-f]{2})/chr(hex($1))/eg;
+    return if $s=~/[^\x20-\x7E]/;return $s;
+}
+sub _enumeration_features {
+    my ($r,$author_paths,$user_paths,$rest_routes)=@_;return if $r->{method} ne 'GET';
+    my %value;my ($query)=$r->{target}=~/\?([^#]*)/;
+    if (defined $query) {
+        my @parts=split /&/,$query,-1;return if @parts>128;
+        for my $part (@parts) {
+            my ($key,$v)=split /=/,$part,2;$key=_query_feature($key);
+            next if !defined($key) || ($key ne 'author' && $key ne 'rest_route');
+            return if exists $value{$key};$v=_query_feature($v);return if !defined $v;
+            $value{$key}=$v;
+        }
+    }
+    my $author=$author_paths->{$r->{normal}} && defined($value{author})
+        && $value{author}=~/\A[1-9][0-9]{0,9}\z/ ? $value{author}:undef;
+    my $api=$user_paths->{$r->{normal}} || ($author_paths->{$r->{normal}}
+        && defined($value{rest_route}) && $rest_routes->{$value{rest_route}}) ? 1:0;
+    return if defined($author) && $api;
+    return {author=>$author,api=>$api} if defined($author) || $api;
+    return;
+}
+
+# These independent opt-in rules describe bounded observed patterns, not
+# component absence, authentication outcomes or the intent of the operator.
+sub _low_volume_scan {
+    my ($self,$kind)=@_;my $cfg=$self->{config}{$kind};
+    my $out={enabled=>$cfg->{enabled}?JSON::PP::true:JSON::PP::false,
+        rule_id=>$kind.'_v1',flagged_requests=>0,eligible_requests=>0,
+        insufficient_fields=>0,other_path_requests=>0,merged_sequences=>0,
+        flagged_source_groups=>0,actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
+    $_->{$kind.'_flagged'}=0 for @{$self->{records}};return $out if !$cfg->{enabled};
+    my %paths=map {$_=>1} @{$cfg->{paths}||[]};
+    my %authors=map {$_=>1} @{$cfg->{author_paths}||[]};
+    my %users=map {$_=>1} @{$cfg->{user_paths}||[]};
+    my %routes=map {$_=>1} @{$cfg->{rest_routes}||[]};my %groups;
+    for my $r (@{$self->{records}}) {
+        my ($af,$packed)=literal_ip($r->{client});my $platform=_browser_platform($r->{user_agent});
+        if (!defined($af) || !defined($r->{normal}) || !defined($r->{status}) || !defined($r->{method})
+                || ($kind eq 'wp_enumeration' && !defined($platform))) {
+            $r->{'_'.$kind.'_insufficient'}=1;$out->{insufficient_fields}++ if !$r->{_context};next;
+        }
+        my $feature;
+        if ($kind eq 'head_scan') {
+            next if $r->{method} ne 'HEAD';
+            if ($r->{normal}=~/\.(?:css|js|mjs|cjs|map|png|jpe?g|gif|webp|avif|svg|ico|bmp|tiff?|woff2?|ttf|otf|eot|mp3|mp4|webm|ogg|wav|pdf|zip|gz|br|rar|7z|tar)\z/iaa) {
+                $out->{other_path_requests}++ if !$r->{_context};next;
+            }
+        } elsif ($kind eq 'sensitive_scan') {
+            if (!$paths{$r->{normal}} || $r->{method}!~/\A(?:GET|HEAD)\z/) {
+                $out->{other_path_requests}++ if !$r->{_context};next;
+            }
+        } else {
+            $feature=_enumeration_features($r,\%authors,\%users,\%routes);
+            if (!$feature) {$out->{other_path_requests}++ if !$r->{_context};next;}
+            $r->{_enumeration_feature}=$feature;
+        }
+        $r->{'_'.$kind.'_eligible'}=1;$r->{behavior_platform}=$platform if defined $platform;
+        $out->{eligible_requests}++ if !$r->{_context};
+        push @{$groups{$af.':'.unpack('H*',$packed)."\0".($r->{host}//'')}},$r;
+        _bad('Low-volume scan group count limit exceeded') if keys(%groups)>$self->{config}{limits}{groups};
+    }
+    for my $key (sort keys %groups) {
+        my @p=sort {$a->{timestamp}<=>$b->{timestamp} || $a->{_order}<=>$b->{_order}} @{$groups{$key}};
+        my $primary=_primary_prefix(\@p);my (%paths,%uas,%platforms,%ids);
+        my ($left,$not_found,$apis,$assigned,$last_end)=(0,0,0,-1,undef);
+        my $adjust=sub {
+            my ($r,$delta)=@_;
+            for my $pair ([\%paths,$r->{normal}],[\%uas,$r->{user_agent}],[\%platforms,$r->{behavior_platform}],
+                    [\%ids,($r->{_enumeration_feature}||{})->{author}]) {
+                my ($map,$value)=@$pair;next if !defined $value;
+                $map->{$value}+=$delta;delete $map->{$value} if !$map->{$value};
+            }
+            $not_found+=$delta if $r->{status}==404;
+            $apis+=$delta if ($r->{_enumeration_feature}||{})->{api};
+        };
+        for my $right (0..$#p) {
+            my $r=$p[$right];$adjust->($r,1);
+            while ($r->{timestamp}-$p[$left]{timestamp}>$cfg->{window_seconds}) {$adjust->($p[$left++],-1);}
+            next if $right-$left+1<$cfg->{min_requests};
+            if ($kind eq 'wp_enumeration') {
+                next if keys(%ids)<$cfg->{distinct_author_ids} || $apis<$cfg->{user_api_requests}
+                    || keys(%uas)<$cfg->{distinct_user_agents} || keys(%platforms)<$cfg->{distinct_platforms}
+                    || $not_found<$cfg->{not_found_requests};
+            } else {
+                next if keys(%paths)<$cfg->{distinct_paths};
+                next if $kind eq 'head_scan' && $not_found<$cfg->{not_found_requests};
+            }
+            my $proof={from=>$p[$left]{timestamp},until=>$r->{timestamp},requests=>$right-$left+1,
+                distinct_paths=>scalar(keys %paths),distinct_user_agents=>scalar(keys %uas),
+                distinct_platforms=>scalar(keys %platforms),not_found_requests=>$not_found,
+                distinct_author_ids=>scalar(keys %ids),user_api_requests=>$apis};
+            my $start=$left>$assigned+1?$left:$assigned+1;
+            for my $i ($start..$right) {$p[$i]{$kind.'_flagged'}=1;$p[$i]{$kind.'_evidence'}=$proof;}
+            $assigned=$right;
+            if ($primary->[$right+1]>$primary->[$left]) {
+                $out->{merged_sequences}++ if !defined($last_end) || $proof->{from}>$last_end;
+                $last_end=$proof->{until};
+            }
+        }
+        my $flagged=0;
+        for my $r (@p) {
+            next if !$r->{$kind.'_flagged'} || $r->{_context};
+            $out->{flagged_requests}++;$out->{actors}{$r->{actor}}++;$flagged=1;
+        }
+        $out->{flagged_source_groups}++ if $flagged;
+    }
+    return $out;
+}
+
 sub finish {
     my ($self)=@_; _bad('Already finished') if $self->{finished};
     $self->_line(0) if $self->{line_present}; $self->{finished}=1;
@@ -1054,21 +1208,35 @@ sub finish {
     }
     my $sequences=$self->_scan(\%groups);
     my $broad=$self->_behavior; my $probing=$self->_probing; my $rapid=$self->_rapid_scan; my $distributed=$self->_distributed_login; my $rotation=$self->_login_rotation;
+    my @extra_kinds=qw(head_scan sensitive_scan wp_enumeration);
+    my @extra=map {$self->_low_volume_scan($_)} @extra_kinds;
     $self->{records}=$primary_records;
     my $behavior={enabled=>($broad->{enabled} || $probing->{enabled} || $rapid->{enabled} || $distributed->{enabled} || $rotation->{enabled})?JSON::PP::true:JSON::PP::false,
-        rule_id=>'behavior_union_v4',broad_rule=>$broad,probing_rule=>$probing,rapid_scan_rule=>$rapid,distributed_login_rule=>$distributed,login_rotation_rule=>$rotation,
+        rule_id=>'behavior_union_v5',broad_rule=>$broad,probing_rule=>$probing,rapid_scan_rule=>$rapid,distributed_login_rule=>$distributed,login_rotation_rule=>$rotation,
         broad_flagged_requests=>$broad->{flagged_requests},probing_flagged_requests=>$probing->{flagged_requests},
         rapid_scan_flagged_requests=>$rapid->{flagged_requests},distributed_login_flagged_requests=>$distributed->{flagged_requests},login_rotation_flagged_requests=>$rotation->{flagged_requests},
         overlap_requests=>0,flagged_requests=>0,eligible_requests=>0,insufficient_fields=>0,
         merged_sequences=>$broad->{merged_sequences}+$probing->{merged_sequences}+$rapid->{merged_sequences}+$distributed->{merged_sequences}+$rotation->{merged_sequences},flagged_source_groups=>0,
         actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
+    for my $i (0..$#extra_kinds) {
+        my $kind=$extra_kinds[$i];my $rule=$extra[$i];
+        $behavior->{enabled}=JSON::PP::true if $rule->{enabled};
+        $behavior->{$kind.'_rule'}=$rule;$behavior->{$kind.'_flagged_requests'}=$rule->{flagged_requests};
+        $behavior->{merged_sequences}+=$rule->{merged_sequences};
+    }
     my %behavior_groups;
     for my $r (@{$self->{records}}) {
         $r->{broad_probing_flagged}=$r->{suspected_automation};
-        $behavior->{overlap_requests}++ if $r->{broad_probing_flagged}+$r->{probing_flagged}+$r->{rapid_scan_flagged}+$r->{distributed_login_flagged}+$r->{login_rotation_flagged}>=2;
-        $r->{suspected_automation}=1 if $r->{probing_flagged} || $r->{rapid_scan_flagged} || $r->{distributed_login_flagged} || $r->{login_rotation_flagged};
-        $behavior->{eligible_requests}++ if $r->{_broad_eligible} || $r->{_probing_eligible} || $r->{_rapid_eligible} || $r->{_distributed_eligible} || $r->{_rotation_eligible};
-        $behavior->{insufficient_fields}++ if $r->{_broad_insufficient} || $r->{_probing_insufficient} || $r->{_rapid_insufficient} || $r->{_distributed_insufficient} || $r->{_rotation_insufficient};
+        my $extra_flags=0;my ($extra_eligible,$extra_insufficient)=(0,0);
+        for my $kind (@extra_kinds) {
+            $extra_flags+=$r->{$kind.'_flagged'};
+            $extra_eligible=1 if $r->{'_'.$kind.'_eligible'};
+            $extra_insufficient=1 if $r->{'_'.$kind.'_insufficient'};
+        }
+        $behavior->{overlap_requests}++ if $r->{broad_probing_flagged}+$r->{probing_flagged}+$r->{rapid_scan_flagged}+$r->{distributed_login_flagged}+$r->{login_rotation_flagged}+$extra_flags>=2;
+        $r->{suspected_automation}=1 if $r->{probing_flagged} || $r->{rapid_scan_flagged} || $r->{distributed_login_flagged} || $r->{login_rotation_flagged} || $extra_flags;
+        $behavior->{eligible_requests}++ if $r->{_broad_eligible} || $r->{_probing_eligible} || $r->{_rapid_eligible} || $r->{_distributed_eligible} || $r->{_rotation_eligible} || $extra_eligible;
+        $behavior->{insufficient_fields}++ if $r->{_broad_insufficient} || $r->{_probing_insufficient} || $r->{_rapid_insufficient} || $r->{_distributed_insufficient} || $r->{_rotation_insufficient} || $extra_insufficient;
         next if !$r->{suspected_automation};
         $behavior->{flagged_requests}++; $behavior->{actors}{$r->{actor}}++;
         my ($af,$packed)=literal_ip($r->{client});
@@ -1092,7 +1260,7 @@ sub finish {
         analysis_context=>{map {$_=>$self->{contexts}{$_}{meta}} grep {exists($self->{contexts}{$_}{meta})} qw(before after)},analysis_period=>{from=>$analysis_min,until=>$analysis_max},
         input_sha256=>$self->{digest}->hexdigest,input=>{format=>$self->{format},bytes=>$self->{input_bytes},period=>{from=>$self->{min},until=>$self->{max}},
             host_policy=>@{$cfg->{hosts}}?'configured hosts enforced; missing host excluded':'all parsed hosts; aliases inseparable for hostless records',hosts=>$cfg->{hosts}},
-        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},probing=>$cfg->{probing},rapid_scan=>$cfg->{rapid_scan},distributed_login=>$cfg->{distributed_login},login_rotation=>$cfg->{login_rotation},behavior_include=>$cfg->{behavior_include},verification=>$cfg->{verification},limits=>$cfg->{limits},
+        effective=>{scanner=>$cfg->{scanner},scanner_nondefault=>$nondefault?JSON::PP::true:JSON::PP::false,behavior=>$cfg->{behavior},probing=>$cfg->{probing},rapid_scan=>$cfg->{rapid_scan},distributed_login=>$cfg->{distributed_login},login_rotation=>$cfg->{login_rotation},(map {$_=>$cfg->{$_}} @extra_kinds),behavior_include=>$cfg->{behavior_include},verification=>$cfg->{verification},limits=>$cfg->{limits},
             status=>'Thresholds, continuity gaps and resource caps are heuristic assumptions; detection accuracy is unmeasured',crawler_tokens=>$cfg->{crawler_tokens}},
         counts=>{%{$self->{counts}}},actors=>\%actors,verification_outcomes=>\%verification,scanner_flagged_requests=>$flagged,merged_scanner_sequences=>$sequences,
         scanner_insufficient_fields=>$insufficient,unsupported_targets=>$unsupported,behavior=>$behavior,
@@ -1103,9 +1271,10 @@ sub finish {
             'Verified means verified against operator-attested published-range snapshots, not cryptographic source authentication. Bracketing assumes range continuity and does not prove uninterrupted ownership.',
             'Historical requests without covering archived evidence remain unavailable. IPv4-mapped IPv6 is not converted to IPv4; literal-IP acceptance follows platform inet_pton.',
             'Scanner flags describe qualifying probe requests, not intent or people. Shared IPs/UA and duplicate or overlapping input can affect results. Supply one nonoverlapping stable site snapshot.',
-            'Suspected automation is the union of optional broad path/404 probing, configured endpoint probing, rapid content-path/404 probing, distributed login probing and login browser rotation, not verified crawler identity. Broad and endpoint rules require browser/platform diversity; rapid scanning requires neither browser identity nor rotation and excludes static asset suffixes. Each requires its own coincident conditions in a source/host window. Endpoint probing uses configured paths without an absence or failed-response requirement. Overlaps count once; sequence counts sum across rules. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and insufficient boundary context can affect results; accuracy is unmeasured.',
+            'Suspected automation is the union of optional broad path/404 probing, configured endpoint probing, rapid content-path/404 probing, distributed login probing, login browser rotation, HEAD sweeps, configured sensitive-file probing and WordPress enumeration, not verified crawler identity. Broad and endpoint rules require browser/platform diversity; rapid scanning requires neither browser identity nor rotation and excludes static asset suffixes. Each requires its own coincident conditions in a source/host window. Endpoint probing uses configured paths without an absence or failed-response requirement. Overlaps count once; sequence counts sum across rules. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and insufficient boundary context can affect results; accuracy is unmeasured.',
             'Distributed login probing pools only repeatedly participating sources within configured login/admin paths and two fixed UTC grids. Each source needs POST-UA/platform rotation, POST-follow-up order and peer-shared exact POST UAs; coherent same-UA POST/follow-up spans veto intersecting source/host windows, rather than unrelated later activity. Pool counts are separate from source contributions. This is heuristic campaign evidence, not authentication, login success, intent or ownership; shared offices can cause false positives and stable-emulating bots, sparse sources and partition/grid boundaries can evade detection.',
             'Login browser rotation requires repeated adjacent same-path GET/POST pairs with within-pair platform changes and diverse POST browser claims for one literal IP and host. Only paired requests receive the flag. Configured paths, timestamps, methods, status and recognized browser/platform claims are required. Thresholds are exploratory; neither response status nor the flag establishes login failure, compromise, malicious intent or crawler identity. Shared gateways, interleaved users and authorized automation can qualify.',
+            'Low-volume scan rules use observed HEAD/path/404 combinations, configured sensitive-file paths without absence attestations, or public author-query/user-API enumeration plus browser/platform rotation. Thresholds are exploratory and accuracy is unmeasured. They do not infer compromise or malicious intent. Query values and author IDs are not emitted in numeric witnesses; ordinary homepage/favicon visits and rapid successful page walks alone do not qualify.',
             'Optional disjoint before/after context supplies evidence only. Primary hashes, physical indices, counts and filtered exports exclude context rows. Caller must freeze nonoverlapping contexts and bind their hashes when caching; contextual witness counts can exceed primary-day request counts.',
             'Local tokens, component absence and site-reference periods are operator attestations; no status-code or weak browser signal supplies identity or absence.',
             'No live DNS, network queries, incremental history or blocking. The report exposes the configured comparison; the CLI can explicitly export matching filtered input for a separate native replay. Caller controls retention and publication.',
@@ -1113,7 +1282,7 @@ sub finish {
     if (%exclude) { $report->{adjusted_requests}={label=>'requests in this input excluding '.join(', ',sort keys %exclude),original=>$self->{counts}{analyzed},excluded=>$excluded,remaining=>$self->{counts}{analyzed}-$excluded}; }
     if ($self->{details}) {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
-        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id method behavior_evidence probing_evidence rapid_scan_evidence distributed_login_evidence distributed_login_diagnostics login_rotation_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,distributed_login_flagged=>$r->{distributed_login_flagged}?JSON::PP::true:JSON::PP::false,login_rotation_flagged=>$r->{login_rotation_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false}} @{$self->{records}}];
+        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id method behavior_evidence probing_evidence rapid_scan_evidence distributed_login_evidence distributed_login_diagnostics login_rotation_evidence head_scan_evidence sensitive_scan_evidence wp_enumeration_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,distributed_login_flagged=>$r->{distributed_login_flagged}?JSON::PP::true:JSON::PP::false,login_rotation_flagged=>$r->{login_rotation_flagged}?JSON::PP::true:JSON::PP::false,excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false,(map {($_.'_flagged')=>($r->{$_.'_flagged'}?JSON::PP::true:JSON::PP::false)} @extra_kinds)}} @{$self->{records}}];
     }
     return $report;
 }
@@ -1132,7 +1301,7 @@ sub html_report {
     if (my $b=$report->{behavior}) {
         $html.='<h2>Suspected automation</h2>';
         if ($b->{enabled}) {
-            $html.='<p>Requests flagged by any enabled behavioral rule: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; rapid content-path probing: '.($b->{rapid_scan_flagged_requests}//0).'; distributed login probing: '.($b->{distributed_login_flagged_requests}//0).'; login browser rotation: '.($b->{login_rotation_flagged_requests}//0).'; overlap (two or more rules): '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
+            $html.='<p>Requests flagged by any enabled behavioral rule: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; rapid content-path probing: '.($b->{rapid_scan_flagged_requests}//0).'; distributed login probing: '.($b->{distributed_login_flagged_requests}//0).'; login browser rotation: '.($b->{login_rotation_flagged_requests}//0).'; HEAD sweeps: '.($b->{head_scan_flagged_requests}//0).'; sensitive-file probing: '.($b->{sensitive_scan_flagged_requests}//0).'; WordPress enumeration: '.($b->{wp_enumeration_flagged_requests}//0).'; overlap (two or more rules): '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
         } else { $html.='<p>Behavioral detection is disabled for this report.</p>'; }
     }
     if ($report->{adjusted_requests}) { my $a=$report->{adjusted_requests}; $html.='<p>'._html_escape($a->{label}).': '.$a->{remaining}.' (original '.$a->{original}.', excluded '.$a->{excluded}.').</p>'; }

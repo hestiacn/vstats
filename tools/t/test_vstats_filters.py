@@ -77,8 +77,9 @@ class Controls(unittest.TestCase):
 
     def test_login_rotation_configuration_and_old_profiles(self):
         old = copy.deepcopy(self.profile)
-        del old['filters']['login_rotation']
-        del old['classifier']['login_rotation']
+        for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration'):
+            del old['filters'][key]
+            del old['classifier'][key]
         restored = validate_profile(old, str(ROOT), PERL)
         self.assertFalse(restored['filters']['login_rotation'])
         self.assertEqual(restored['classifier']['login_rotation']['enabled'], 0)
@@ -95,6 +96,40 @@ class Controls(unittest.TestCase):
                          ['/account/sign-in'])
         p['filters']['login_rotation'] = False
         self.assertEqual(validate_profile(p, str(ROOT), PERL)['classifier']['login_rotation']['enabled'], 0)
+
+    def test_low_volume_rules_upgrade_prerequisites_and_defaults(self):
+        old = copy.deepcopy(self.profile)
+        added = ('head_scan', 'sensitive_scan', 'wp_enumeration')
+        for key in added:
+            del old['filters'][key]
+            del old['classifier'][key]
+        upgraded = validate_profile(old, str(ROOT), PERL)
+        for key in added:
+            self.assertFalse(upgraded['filters'][key])
+            self.assertEqual(upgraded['classifier'][key]['enabled'], 0)
+            self.assertEqual(filter_status(old)[key], 'Disabled')
+        p = copy.deepcopy(self.profile)
+        for key in added:
+            p['classifier'][key] = {}
+        p = validate_profile(p, str(ROOT), PERL)
+        for key in added:
+            self.assertTrue(p['filters'][key])
+            self.assertEqual(p['classifier'][key]['enabled'], 1)
+            self.assertEqual(filter_status(p)[key], 'Active')
+        p['classifier']['sensitive_scan']['paths'] = []
+        p['classifier']['wp_enumeration']['author_paths'] = []
+        p = validate_profile(p, str(ROOT), PERL)
+        for key in ('sensitive_scan', 'wp_enumeration'):
+            self.assertEqual(p['classifier'][key]['enabled'], 0)
+            self.assertEqual(filter_status(p)[key], 'Needs configuration')
+        reset = defaults(str(ROOT), PERL, p)
+        self.assertEqual(reset['classifier']['sensitive_scan']['paths'], [])
+        self.assertEqual(reset['classifier']['wp_enumeration']['author_paths'], [])
+        self.assertTrue(all(reset['filters'].values()))
+        bad = copy.deepcopy(self.profile)
+        del bad['filters']['head_scan']
+        with self.assertRaises(ValueError):
+            validate_profile(bad, str(ROOT), PERL)
 
     def test_classifier_coupled_bounds_and_schema_are_authoritative(self):
         for change in [('window_seconds', 3601), ('distinct_platforms', 1), ('min_requests', 1)]:

@@ -9,7 +9,8 @@ Filters. Settings affect statistics, not access to the website.
 
 * **Settings:** native crawler signatures, verified crawler evidence, broad
   probing, configured endpoint probing, rapid content-path scanning, and
-  distributed login probing and login browser rotation. New intended settings are checked by default.
+  distributed login probing, login browser rotation, HEAD path sweeps, sensitive-file
+  probing and WordPress enumeration. New intended settings are checked by default.
   Existing managed settings are imported only after their replay identities are
   verified. Checked settings can be inactive: paths may need configuration,
   evidence may not cover the request period, or classifier input may be over a
@@ -38,6 +39,13 @@ including activity spread across a day. See [rule settings and limitations](traf
 Existing saved profiles acquire this new checkbox disabled; selecting it is an
 explicit policy change. Reset uses the new checked defaults and retains any
 configured login paths. Preview the impact, then Apply & reprocess to publish.
+
+HEAD path sweeps, sensitive-file probing and WordPress enumeration have separate
+checkboxes and advanced settings. Existing saved profiles acquire them disabled;
+new profiles and Reset use checked defaults. These rules use observed request
+patterns, not source-IP lists or geography. Known self-declared monitoring and
+enrichment agents use the existing Native crawler signatures checkbox. They do
+not become verified crawler identities. [Rule details](traffic-classification.md#low-volume-scanning).
 
 Anonymous history actors mean permitted browser access, not an authenticated identity.
 Edits, reset and inclusion changes stay pending until Apply succeeds. Repeated
