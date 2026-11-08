@@ -10,7 +10,7 @@ use VStats::TrafficClassifier;
 my $root=abs_path(__FILE__);$root=~s{/tools/t/[^/]+\z}{};
 require "$root/wwwroot/cgi-bin/lib/robots.pm";
 our (@RobotsSearchIDOrder_list1,%RobotsHashIDLib);
-for my $token ('fd-crm-enrich','RisikomonitorNotify') {
+for my $token ('fd-crm-enrich','RisikomonitorNotify','cve-2026-12345-poc') {
     my $ua='Mozilla/5.0 (Linux; Android 10) Mobile Chrome/130.0 (compatible; '.$token.'/1)';
     my $id=RegisteredCrawlerRobotID($ua,1);
     ok($id && $ua=~/$id/i,'explicit enabled identity is bounded and overrides device exemption');
@@ -56,7 +56,7 @@ sub native {
     for my $line (split /\n/,$time//'') {my @q=split /\s+/,$line;next if @q<7;$counts[0]+=$q[2];$counts[1]+=$q[3];$counts[2]+=$q[5];$counts[3]+=$q[6];}
     return \@counts;
 }
-for my $token ('fd-crm-enrich','RisikomonitorNotify') {
+for my $token ('fd-crm-enrich','RisikomonitorNotify','cve-2026-12345-poc') {
     for my $prefix ('Mozilla/5.0 (compatible; ','Mozilla/5.0 (Android 10) Mobile Chrome/130.0 (compatible; ') {
         is_deeply(native($prefix.$token.'/1)',1),[0,0,1,100],'native accounting places declared agent in non-viewed traffic');
     }

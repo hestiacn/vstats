@@ -83,11 +83,26 @@ def validate_rotation_witness(proof):
     if (not 0 <= proof['from'] <= proof['until'] <= 4102444800 or
             proof['until'] - proof['from'] > 86400 or
             proof['requests'] != 2 * proof['pairs'] or
-            not 2 <= proof['platform_switches'] <= proof['pairs'] or
+            not 0 <= proof['platform_switches'] <= proof['pairs'] or
             not 2 <= proof['distinct_platforms'] <= 5 or
             not proof['distinct_platforms'] <= proof['distinct_user_agents'] <= proof['pairs'] or
             not 1 <= proof['pair_seconds'] <= 300):
         raise RuntimeError('Inconsistent login-rotation witness counts')
+    if 'agent_diversity_witness' not in proof:
+        if proof['platform_switches'] < 2:
+            raise RuntimeError('Invalid legacy login-rotation witness')
+        return
+    for key in ('agent_switches', 'switch_visits', 'agent_diversity_witness',
+                'repeated_switch_witness', 'ip_expansion_eligible'):
+        if type(proof.get(key)) is not int:
+            raise RuntimeError('Invalid alternative login witness')
+    if (not 0 <= proof['switch_visits'] <= proof['platform_switches'] <= proof['agent_switches'] <= proof['pairs'] or
+            any(proof[k] not in (0, 1) for k in ('agent_diversity_witness', 'repeated_switch_witness', 'ip_expansion_eligible')) or
+            not (proof['agent_diversity_witness'] or proof['repeated_switch_witness']) or
+            (proof['agent_diversity_witness'] and proof['agent_switches'] < 1) or
+            (proof['repeated_switch_witness'] and proof['switch_visits'] < 2) or
+            (proof['ip_expansion_eligible'] and (not proof['agent_diversity_witness'] or proof['platform_switches'] < 2))):
+        raise RuntimeError('Inconsistent alternative login witness')
 
 
 def validate_scan_witness(label, proof):
@@ -106,10 +121,15 @@ def validate_scan_witness(label, proof):
             proof['user_api_requests'] < 1 or
             proof['distinct_author_ids'] + proof['user_api_requests'] > proof['requests']):
         raise RuntimeError('Inconsistent enumeration witness counts')
+    if label == 'WordPress query probing' and (
+            any(type(proof.get(k)) is not int for k in ('query_requests', 'plugin_requests')) or
+            proof['query_requests'] < 1 or proof['plugin_requests'] < 1 or
+            proof['query_requests'] + proof['plugin_requests'] != proof['requests']):
+        raise RuntimeError('Inconsistent query-probe witness counts')
 
 
 def witness_text(label, proof):
-    if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration'):
+    if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing'):
         validate_scan_witness(label, proof)
     if label == 'Distributed login probing':
         validate_distributed_witness(proof)
@@ -125,7 +145,10 @@ def witness_text(label, proof):
         validate_rotation_witness(proof)
         return ('{pairs} adjacent login GET/POST pairs; {platform_switches} within-pair platform changes; '
                 '{distinct_user_agents} POST user agents; {distinct_platforms} POST platforms in ').format(**proof) + \
-               str(proof['until'] - proof['from']) + ' seconds (heuristic evidence; no login outcome inferred)'
+               str(proof['until'] - proof['from']) + ' seconds (heuristic evidence; no login outcome inferred)' + \
+               ('; {agent_switches} within-pair agent changes; {switch_visits} separated switch visits; '.format(**proof) +
+                ('stronger witness permits the configured IP policy' if proof['ip_expansion_eligible'] else 'request-only witness; no IP expansion')
+                if 'agent_diversity_witness' in proof else '')
     reason = ('{requests} requests; {distinct_user_agents} user agents; {distinct_platforms} platforms; '
               '{distinct_paths} paths; {not_found_requests} HTTP 404s').format(**proof)
     reason += ' in {} seconds'.format(proof['until'] - proof['from'])
@@ -137,6 +160,8 @@ def witness_text(label, proof):
         reason += ' (configured paths; no absence or failed-response assumption)'
     if label == 'WordPress enumeration':
         reason += '; {distinct_author_ids} author IDs; {user_api_requests} user-API requests'.format(**proof)
+    if label == 'WordPress query probing':
+        reason += '; {query_requests} internal-query requests; {plugin_requests} plugin-file requests (request-only; no exploitation inferred)'.format(**proof)
     if label == 'Rapid content-path probing':
         reason += ' (content paths; no browser rotation requirement)'
     return reason
@@ -153,7 +178,8 @@ def rule_evidence(record):
                                 (record.get('login_rotation_flagged'), 'Login browser rotation', 'login_rotation_evidence'),
                                 (record.get('head_scan_flagged'), 'HEAD path sweeps', 'head_scan_evidence'),
                                 (record.get('sensitive_scan_flagged'), 'Sensitive-file probing', 'sensitive_scan_evidence'),
-                                (record.get('wp_enumeration_flagged'), 'WordPress enumeration', 'wp_enumeration_evidence')]:
+                                (record.get('wp_enumeration_flagged'), 'WordPress enumeration', 'wp_enumeration_evidence'),
+                                (record.get('wp_query_probe_flagged'), 'WordPress query probing', 'wp_query_probe_evidence')]:
         if not matched:
             continue
         proof = record.get(key)
@@ -163,7 +189,7 @@ def rule_evidence(record):
             validate_distributed_witness(proof)
         if label == 'Login browser rotation':
             validate_rotation_witness(proof)
-        if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration'):
+        if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing'):
             validate_scan_witness(label, proof)
         result.append((label, proof))
     if record.get('ip_excluded'):
@@ -586,7 +612,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         for record in report['details']:
             if record.get('source_month') != day[:7]:
                 raise RuntimeError('Classifier lacks matching source/month metadata')
-            if not record['suspected_automation']:
+            if not record['suspected_automation'] or not record.get('ip_expansion_eligible', True):
                 continue
             witnesses = rule_evidence(record)
             key = record.get('source_month_key')
@@ -603,7 +629,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         totals.update(report['counts'])
         actors.update(report['actors'])
         for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups',
-                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'head_scan_flagged_requests', 'sensitive_scan_flagged_requests', 'wp_enumeration_flagged_requests', 'overlap_requests']:
+                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'head_scan_flagged_requests', 'sensitive_scan_flagged_requests', 'wp_enumeration_flagged_requests', 'wp_query_probe_flagged_requests', 'overlap_requests']:
             behavior[key] += report['behavior'].get(key, 0)
         flagged_by_month[day[:7]] += report['behavior']['flagged_requests']
         first = period['from'] if first is None else min(first, period['from'])
@@ -744,6 +770,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                    '; HEAD path sweeps: ' + format(behavior['head_scan_flagged_requests'], ',') +
                    '; sensitive-file probing: ' + format(behavior['sensitive_scan_flagged_requests'], ',') +
                    '; WordPress enumeration: ' + format(behavior['wp_enumeration_flagged_requests'], ',') +
+                   '; WordPress query probing: ' + format(behavior['wp_query_probe_flagged_requests'], ',') +
                    '; overlap (two or more rules): ' + format(behavior['overlap_requests'], ',') +
                    '. Full raw user-agent strings and query strings are omitted from review.</p>')
     if sum(r['requests'] for r in sources.values()) + sum(unattributed_sources.values()) != totals['analyzed']:
@@ -804,7 +831,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
             if month in unavailable:
                 raise
             unavailable[month] = {'reason': 'Input over limits', 'limit': e.kind, 'hard_maximum': e.maximum,
-                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'exclude_automated_ips']}
+                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'exclude_automated_ips']}
             # Only our failed, newly created derived-output directory is removed.
             # Original daily input and any previously published output are untouched.
             shutil.rmtree(str(output_directory))

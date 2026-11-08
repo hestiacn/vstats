@@ -388,6 +388,37 @@ class BatchIntegration(unittest.TestCase):
                 self.assertNotIn('author=', text)
                 shutil.rmtree(str(self.root / 'output'))
 
+    def test_alternative_login_and_query_witnesses_stay_request_only(self):
+        agents = ['Mozilla/5.0 (Windows) Chrome/131.0',
+                  'Mozilla/5.0 (Linux) Firefox/133.0',
+                  'Mozilla/5.0 (Macintosh) Safari/605.1']
+        cases = [
+            ('login_rotation', {'enabled': 1, 'login_paths': ['/account/sign-in']},
+             [(10+i, j, method, '/account/sign-in', agents[(i+j) % 3])
+              for i in range(2) for j, method in enumerate(['GET', 'POST'])], 'request-only witness'),
+            ('wp_query_probe', {'enabled': 1},
+             [(10, 0, 'GET', '/wp-content/plugins/example-plugin/readme.txt', agents[0]),
+              (10, 1, 'GET', '/?wp_query=SECRET_SENTINEL', agents[0])], 'WordPress query probing:')]
+        for key, settings, events, text_label in cases:
+            with self.subTest(rule=key):
+                self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'], key: settings}
+                lines = [('192.0.2.1 - - [02/Oct/2026:{:02d}:00:{:02d} +0000] "{} {} HTTP/1.1" '
+                          '200 100 "-" "{}"\n'.format(hour, second, method, path, ua)).encode('ascii')
+                         for hour, second, method, path, ua in events]
+                ordinary = b'192.0.2.1 - - [01/Oct/2026:10:00:00 +0000] "GET /ordinary HTTP/1.1" 200 99 "-" "ordinary/1"\n'
+                (self.inputs / '2026-10-01.log').write_bytes(ordinary)
+                (self.inputs / '2026-10-02.log').write_bytes(b''.join(lines))
+                self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+                result = self.run_build(exclude_automated_ips=True)
+                self.assertEqual(result['behavior'][key + '_flagged_requests'], len(events))
+                self.assertEqual(result['excluded_by_month']['2026-10']['records'], len(events))
+                self.assertEqual(result['request_excluded_by_month'], result['excluded_by_month'])
+                review = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+                self.assertIn(text_label, review)
+                self.assertNotIn('SECRET_SENTINEL', review)
+                self.assertNotIn('Trigger evidence', review)
+                shutil.rmtree(str(self.root / 'output'))
+
     def test_rapid_scan_witness_and_ip_policy_propagation(self):
         self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
                     'rapid_scan': {'enabled': 1, 'window_seconds': 10, 'min_requests': 6,

@@ -28,8 +28,9 @@ FILTERS = [('native_crawlers', 'Native crawler signatures', 'Existing AWStats us
            ('login_rotation', 'Login browser rotation', 'Repeated login GET/POST pairs that switch claimed platforms.'),
            ('head_scan', 'HEAD path sweeps', 'Repeated HEAD requests across content paths with missing resources.'),
            ('sensitive_scan', 'Sensitive-file probing', 'Concentrated reads of configured sensitive-file paths.'),
-           ('wp_enumeration', 'WordPress enumeration', 'Rotating browser claims while querying author IDs and user APIs.')]
-RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration']
+           ('wp_enumeration', 'WordPress enumeration', 'Rotating browser claims while querying author IDs and user APIs.'),
+           ('wp_query_probe', 'WordPress query probing', 'Internal query keys with plugin-file probing; matching requests only.')]
+RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe']
 SITE = re.compile(r'^[a-z0-9][a-z0-9._-]{0,252}$')
 IDENTIFIER = re.compile(r'^[a-f0-9]{32}$')
 GENERATION = re.compile(r'^\d{8}T\d{6}Z-[a-f0-9]{8}$')
@@ -128,7 +129,8 @@ def defaults(app, perl, current=None):
     if current:
         # Keep explicitly configured endpoint lists when resetting other options.
         for rule, keys in [('probing', ['paths']), ('distributed_login', ['login_paths', 'admin_paths']), ('login_rotation', ['login_paths']), ('sensitive_scan', ['paths']),
-                           ('wp_enumeration', ['author_paths', 'user_paths', 'rest_routes'])]:
+                           ('wp_enumeration', ['author_paths', 'user_paths', 'rest_routes']),
+                           ('wp_query_probe', ['query_paths', 'plugin_prefixes', 'query_keys'])]:
             for key in keys:
                 if key in current['classifier'].get(rule, {}):
                     classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])
@@ -148,8 +150,8 @@ def validate_profile(value, app, perl):
         raise ValueError('Invalid filter list')
     # Existing applied profiles keep their policy until explicitly changed.
     expected = {f[0] for f in FILTERS}
-    added = {'head_scan', 'sensitive_scan', 'wp_enumeration'}
-    if set(p['filters']) in (expected - added, expected - added - {'login_rotation'}):
+    added = {'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe'}
+    if set(p['filters']) in (expected - {'wp_query_probe'}, expected - added, expected - added - {'login_rotation'}):
         for key in added | {'login_rotation'}:
             p['filters'].setdefault(key, False)
     if set(p['filters']) != {f[0] for f in FILTERS}:
@@ -183,7 +185,7 @@ def validate_profile(value, app, perl):
             raise ValueError('Invalid rule configuration')
         if rule not in cfg:
             cfg[rule] = copy.deepcopy(rule_defaults[rule])
-        if rule in ('sensitive_scan', 'wp_enumeration'):
+        if rule in ('sensitive_scan', 'wp_enumeration', 'wp_query_probe'):
             for key, default_value in rule_defaults[rule].items():
                 if isinstance(default_value, list) and key not in cfg[rule]:
                     cfg[rule][key] = copy.deepcopy(default_value)
@@ -194,6 +196,8 @@ def validate_profile(value, app, perl):
     en = cfg['wp_enumeration']
     if not (en.get('author_paths') and (en.get('user_paths') or en.get('rest_routes'))):
         en['enabled'] = 0
+    if not all(cfg['wp_query_probe'].get(k) for k in ('query_paths', 'plugin_prefixes', 'query_keys')):
+        cfg['wp_query_probe']['enabled'] = 0
     if not cfg['login_rotation'].get('login_paths'):
         cfg['login_rotation']['enabled'] = 0
     if not cfg['probing'].get('paths'):
@@ -222,6 +226,8 @@ def filter_status(profile, evidence=False, over_limits=False):
             statuses[key] = 'Needs configuration'
         elif key == 'wp_enumeration' and not (profile['classifier'][key]['author_paths'] and
                 (profile['classifier'][key]['user_paths'] or profile['classifier'][key]['rest_routes'])):
+            statuses[key] = 'Needs configuration'
+        elif key == 'wp_query_probe' and not all(profile['classifier'][key].get(k) for k in ('query_paths', 'plugin_prefixes', 'query_keys')):
             statuses[key] = 'Needs configuration'
         elif key in RULES and over_limits:
             statuses[key] = 'Input over limits'

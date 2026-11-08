@@ -25,10 +25,12 @@ my %registered_mobile_crawlers;
 # Explicit self-declarations; no ownership or provider verification is implied.
 my $enrichment_marker = '(?:^|[^A-Za-z0-9])fd-crm-enrich(?=[\x09-\x0D\x20/;)]|$)';
 my $monitor_marker = '(?:^|[^A-Za-z0-9])RisikomonitorNotify(?=[\x09-\x0D\x20/;)]|$)';
+my $poc_marker = '(?:^|[^A-Za-z0-9])cve-[0-9]{4}-[0-9]{4,7}-poc(?=[\x09-\x0D\x20/;)]|$)';
 my %named_automation_tokens=($enrichment_marker=>'fd-crm-enrich',$monitor_marker=>'RisikomonitorNotify');
 sub RegisteredCrawlerRobotID {
     my ($ua,$level)=@_;
     return '' if !defined($ua) || ref($ua) || !defined($level) || $level !~ /\A[1-9][0-9]*\z/;
+    return $poc_marker if $ua =~ /$poc_marker/iaa;
     my $key=$level>=2?2:1;
     if (!exists $registered_mobile_crawlers{$key}) {
         our (@RobotsSearchIDOrder_list1,@RobotsSearchIDOrder_list2,@RobotsSearchIDOrder_listgen);
@@ -62,6 +64,7 @@ sub RegisteredCrawlerRobotID {
 @RobotsSearchIDOrder_list1 = (
 $enrichment_marker,
 $monitor_marker,
+$poc_marker,
 'meta-externalagent/',
 'facebookexternalhit',
 'hello.*palo.*alto.*networks',
@@ -1485,6 +1488,7 @@ $monitor_marker,
 %RobotsHashIDLib = (
 $enrichment_marker => 'fd-crm-enrich (self-declared automation)',
 $monitor_marker => 'RisikomonitorNotify (self-declared monitoring)',
+$poc_marker => 'CVE proof-of-concept tool (self-declared)',
 
 # 自定义规则
 #---------------------------------------------------------------------------

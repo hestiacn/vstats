@@ -77,7 +77,7 @@ class Controls(unittest.TestCase):
 
     def test_login_rotation_configuration_and_old_profiles(self):
         old = copy.deepcopy(self.profile)
-        for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration'):
+        for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe'):
             del old['filters'][key]
             del old['classifier'][key]
         restored = validate_profile(old, str(ROOT), PERL)
@@ -99,7 +99,7 @@ class Controls(unittest.TestCase):
 
     def test_low_volume_rules_upgrade_prerequisites_and_defaults(self):
         old = copy.deepcopy(self.profile)
-        added = ('head_scan', 'sensitive_scan', 'wp_enumeration')
+        added = ('head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe')
         for key in added:
             del old['filters'][key]
             del old['classifier'][key]

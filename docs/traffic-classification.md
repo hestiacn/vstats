@@ -215,9 +215,22 @@ target, HTTP status and recognized browser/platform claim. Supported target
 normalization strips queries before exact matching. Methods follow the existing
 ASCII uppercase normalization. Hostless logs cannot separate hostname aliases.
 
-All qualifying conditions must coincide in one inclusive rolling window, from
-the first GET through the last POST: enough pairs, enough within-pair platform
-changes, and enough distinct POST user agents/platforms. Platform categories
+One of two alternative witnesses must coincide in the inclusive rolling window:
+
+- At least `min_pairs` pairs, `distinct_user_agents` POST agents and
+  `distinct_platforms` POST platforms, plus at least one within-pair agent change.
+- Platform-switching pairs in at least `min_platform_switches` separated visits,
+  with at least `distinct_platforms` distinct POST agents and platforms. A new
+  switch visit starts only after a gap greater than `pair_seconds` from the
+  previous switching pair's POST to the next GET. A short uninterrupted burst
+  does not supply multiple separated visits.
+
+These alternatives are exploratory heuristics. The original stronger conjunction
+(`min_pairs`, `min_platform_switches`, POST-agent and POST-platform diversity)
+remains the requirement for this rule to trigger the configured IP/month policy.
+Alternative-only witnesses exclude their paired requests, even when that policy
+is checked. Tight adjacency reduces shared-IP ambiguity; it cannot authenticate
+a session or guarantee that requests belong to the same actor. Platform categories
 and browser recognition are the same as the broad rule above. Ordinary stable
 GET/POST sessions from different browsers behind one shared IP do not supply
 within-pair changes. A single mismatched pair or a GET-only login-page visit
@@ -225,8 +238,8 @@ cannot qualify. HTTP 200 is allowed and supplies no login-outcome evidence.
 
 Only the paired records inside qualifying windows receive
 `login_rotation_flagged` and a numeric `login_rotation_evidence` witness.
-Unpaired pages/assets remain outside this request-level rule. The existing
-explicit IP/month policy can separately exclude more traffic from that source;
+Unpaired pages/assets remain outside this request-level rule. The original stronger witness can separately trigger the configured IP/month
+policy and exclude more traffic from that source;
 request-ID inclusions still apply. Aggregate output adds `login_rotation_rule`
 and `login_rotation_flagged_requests` to the behavioral union. Review shows the
 pair count, within-pair platform changes, POST claim diversity and time span.
@@ -935,3 +948,38 @@ Private details add `distributed_login_diagnostics`, with at most two membership
 per eligible primary request. `source_review` contains exact source accounting and
 assigned campaign counts for audits. Summary population and assigned primary
 matches are checked against the classifier totals before publication.
+
+
+### WordPress internal-query probing
+
+The independent `wp_query_probe` rule requires two request types from one
+canonical source and host within `window_seconds` (default 60):
+
+- GET/POST to a configured `query_paths` endpoint (defaults `/`, `/index.php`)
+  with a nonempty value for a configured internal `query_keys` name (defaults
+  `wp_query`, `wp_stylesheet_path`, `wp_template_path`,
+  `_wp_current_template_content`).
+- GET/HEAD of a plugin readme or PHP file under a configured `plugin_prefixes`
+  directory (default `/wp-content/plugins/`), including an actual plugin slug.
+
+Keys are decoded once. Duplicate relevant keys, missing values and overlong
+query-part lists abstain. Values are never decoded, executed or included in the
+numeric witness. A lone query key, readme, robots fetch, rapid page walk or
+homepage/favicon visit does not qualify. Only the corroborating request types
+are flagged; ordinary neighboring requests remain untouched. This rule never
+supplies an IP/month trigger. No status, component absence, exploit success or
+malicious intent is inferred. The window is an unvalidated heuristic.
+
+The Filters page exposes its own checkbox, lists and window. New profiles and
+Reset select it; older profiles keep it disabled until selected. In the CLI it
+is opt-in (`wp_query_probe.enabled: 1`). Request-ID inclusion exceptions apply.
+
+Native crawler signatures also recognize bounded self-declarations of the form
+`cve-YYYY-NNNN-poc` (four-digit year and four to seven vulnerability digits),
+including mobile agents. These are declared tools, never verified identities.
+Disabling the native crawler-signatures choice preserves that traffic in the
+native comparison. Such declarations do not trigger the behavioral IP policy.
+
+A `/robots.txt` request is supporting evidence only: a human can open the same
+public URL. It supplies no exclusion witness by itself. Asset-free page walks
+remain candidates for investigation rather than a new automatic filter.

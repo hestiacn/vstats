@@ -50,7 +50,6 @@ is(count(rows(),$C->config('{"schema_version":1}')),0,'raw classifier remains op
 is(count(rows(),cfg(enabled=>0)),0,'explicit disable preserves traffic');
 for my $case (
     ['ordinary stable sessions behind a shared IP',sub {$_[0][2*$_+1]{user_agent}=$_[0][2*$_]{user_agent} for 0..2}],
-    ['one cross-platform pair',sub {$_[0][2*$_+1]{user_agent}=$_[0][2*$_]{user_agent} for 0..1}],
     ['same-platform browser rotation',sub {$_->{user_agent}='Mozilla/5.0 (Windows) Chrome/'.(120+$_->{timestamp}) for @{$_[0]}}],
     ['one POST browser',sub {$_[0][2*$_+1]{user_agent}=$ua[0] for 0..2}],
     ['isolated sources',sub {$_[0][2*$_]{client}=$_[0][2*$_+1]{client}='192.0.2.'.($_+1) for 0..2}],
@@ -65,7 +64,20 @@ for my $case (
 ) {
     my $r=rows();$case->[1]->($r);is(count($r),0,$case->[0].' is insufficient');
 }
-my $few=rows();splice @$few,4;is(count($few),0,'two pairs cannot meet default count');
+my $few=rows();splice @$few,4;
+my $sparse=run($few);
+is($sparse->{behavior}{flagged_requests},4,'two separated switched visits supply an alternative witness');
+ok(!grep({$_->{ip_expansion_eligible}} @{$sparse->{details}}),'sparse witness cannot trigger IP/month expansion');
+my $one=clone($few);splice @$one,2;is(count($one),0,'one mismatched pair is insufficient');
+my $single_switch=rows();$single_switch->[2*$_+1]{user_agent}=$single_switch->[2*$_]{user_agent} for 0..1;
+$single_switch->[4]{user_agent}=$ua[0];$single_switch->[5]{user_agent}=$ua[2];
+my $diverse=run($single_switch);
+is($diverse->{behavior}{flagged_requests},6,'diverse POST browsers with one in-pair change qualify');
+ok(!grep({$_->{ip_expansion_eligible}} @{$diverse->{details}}),'diversity-only witness cannot trigger IP/month expansion');
+my $burst=clone($few);$burst->[$_]{timestamp}=1000+$_ for 0..3;
+is(count($burst),0,'two switches in one short burst are not separated visits');
+ok(!grep({!$_->{ip_expansion_eligible} || !$_->{login_rotation_evidence}{ip_expansion_eligible}} @{$positive->{details}}),
+    'original stronger witness preserves configured IP policy eligibility');
 for my $barrier ('/style.css','/unsupported%2fpath',undef) {
     my $r=rows();
     for my $i (reverse 0..2) {
@@ -87,7 +99,7 @@ is_deeply([map {$_->{login_rotation_flagged}?1:0} @{run($extra)->{details}}],[(1
 my $boundary=rows();$boundary->[-1]{timestamp}=1000+86400;
 $boundary->[-2]{timestamp}=$boundary->[-1]{timestamp}-30;
 is(count($boundary),6,'pair timeout and complete witness window are inclusive');
-$boundary->[-1]{timestamp}++;is(count($boundary),0,'one second beyond boundary refuses');
+$boundary->[-1]{timestamp}++;is(count($boundary),4,'outside boundary retains only earlier qualifying pairs');
 my $daily=rows();$_->{timestamp}+=83000 for @$daily;
 my @before=grep {$_->{timestamp}<86400} @$daily;
 my @after=grep {$_->{timestamp}>=86400} @$daily;

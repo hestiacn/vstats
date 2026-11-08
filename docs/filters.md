@@ -213,3 +213,16 @@ have no measured precision/recall guarantee.
 An externally pruned or rewritten managed corpus fails the scheduled coverage
 guard; an explicit retained-input rebuild is required. The control plane does
 not silently repair or discard source material to get a job through that guard.
+
+
+WordPress query probing has its own filter choice, advanced key/path lists and
+match count. It affects only the matching requests. The login browser-rotation
+rule also accepts alternative browser-change or separated platform-switch
+witnesses; only its original stronger conjunction can trigger IP/month
+expansion. The IP policy checkbox therefore does not turn every new heuristic
+into a whole-source exclusion. Existing saved profiles keep the new query
+filter disabled until explicitly selected; Reset checks it.
+
+Robots-file requests and successful content-page walks alone remain visible.
+Self-declared CVE PoC tools follow the native crawler-signatures choice and do
+not establish verified identity, malicious intent or exploitation.

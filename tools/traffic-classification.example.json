@@ -66,5 +66,22 @@
     "python-requests",
     "fd-crm-enrich",
     "RisikomonitorNotify"
-  ]
+  ],
+  "wp_query_probe": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "query_paths": [
+      "/",
+      "/index.php"
+    ],
+    "plugin_prefixes": [
+      "/wp-content/plugins/"
+    ],
+    "query_keys": [
+      "wp_query",
+      "wp_stylesheet_path",
+      "wp_template_path",
+      "_wp_current_template_content"
+    ]
+  }
 }
