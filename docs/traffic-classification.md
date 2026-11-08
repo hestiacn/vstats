@@ -151,19 +151,23 @@ qualify. Inspect the numeric witness and use inclusion overrides when needed.
 minimum is 2 through minimum requests. Partial objects fill defaults. The
 existing byte, record, field and canonical IP/host group caps still apply.
 Window maintenance is linear after sorting; no operator regex/code is executed.
-All eight behavioral rules remain optional and independently configurable.
+All behavioral rules remain optional and independently configurable.
 
 `suspected_automation` is the union of enabled broad path probing, configured
 endpoint probing, rapid content-path probing, distributed login probing, login
 browser rotation, HEAD path sweeps, sensitive-file probing and WordPress
-enumeration. Actor identities and the absence-attested `scanner_flagged`
+enumeration, WordPress query probing, backdoor path probing and protocol endpoint
+discovery. Actor identities and the absence-attested `scanner_flagged`
 layer remain independent. An overlapping request counts once and retains every
 applicable covering witness in private details and curated review. Aggregate
 `behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`, `distributed_login_rule`, `login_rotation_rule`, `head_scan_rule`, `sensitive_scan_rule`, `wp_enumeration_rule`,
+`wp_query_probe_rule`, `backdoor_probe_rule`, `protocol_probe_rule`,
 `broad_flagged_requests`, `probing_flagged_requests`,
 `rapid_scan_flagged_requests`, `distributed_login_flagged_requests`,
 `login_rotation_flagged_requests`, `head_scan_flagged_requests`,
-`sensitive_scan_flagged_requests`, `wp_enumeration_flagged_requests` and `overlap_requests` (requests matching at least
+`sensitive_scan_flagged_requests`, `wp_enumeration_flagged_requests`,
+`wp_query_probe_flagged_requests`, `backdoor_probe_flagged_requests`,
+`protocol_probe_flagged_requests` and `overlap_requests` (requests matching at least
 two rules); its main request and actor
 counts are the union. Eligible and insufficient-field counts deduplicate records
 across enabled rules. Merged sequence counts sum the rules' sequences, which may
@@ -173,13 +177,13 @@ endpoint list; aggregate output contains no observed request records.
 Private details include `broad_probing_flagged`, `probing_flagged`,
 `rapid_scan_flagged`, `distributed_login_flagged`, `probing_evidence`,
 `rapid_scan_evidence`, `distributed_login_evidence`, `login_rotation_flagged`
-and `login_rotation_evidence`, plus corresponding `head_scan`, `sensitive_scan`
-and `wp_enumeration` flags and numeric evidence, retaining the
+and `login_rotation_evidence`, plus corresponding `head_scan`, `sensitive_scan`,
+`wp_enumeration`, `wp_query_probe`, `backdoor_probe` and `protocol_probe` flags and numeric evidence, retaining the
 existing broad `behavior_evidence`. Review
 labels each applicable rule and its numeric covering window. The same explicit
 exclusion selector and `behavior_include` request IDs apply to every rule;
 inclusion retains all witnesses and cannot override independent actor/scanner
-exclusions. All eight rules are opt-in and may be enabled separately. Shared proxies
+exclusions. All rules are opt-in and may be enabled separately. Shared proxies
 and authorized automation can qualify; review results before relying on them.
 
 ### Login browser rotation
@@ -983,3 +987,54 @@ native comparison. Such declarations do not trigger the behavioral IP policy.
 A `/robots.txt` request is supporting evidence only: a human can open the same
 public URL. It supplies no exclusion witness by itself. Asset-free page walks
 remain candidates for investigation rather than a new automatic filter.
+
+
+### Backdoor and protocol probe bursts
+
+Two independent opt-in rules cover short, low-volume probing below the broad
+request/path thresholds. They use configured exact paths, observed methods and
+responses. Neither geography nor a shared browser signature is a witness.
+
+`backdoor_probe` defaults to a 60-second window with at least 3 configured probe
+requests across 3 distinct probe paths, including 2 observed HTTP 404/410
+responses and 1 POST. The public example configuration lists the default
+backdoor-oriented path signatures. A lone PHP request, a readme, successful
+requests alone, or GET-only traffic cannot qualify. No component absence,
+exploit success or malicious intent is established.
+
+`protocol_probe` requires both a POST to a configured `post_paths` endpoint
+(default `/mcp`) and a GET to a different configured `get_paths` endpoint
+(default `/sse`) within 60 seconds. Both must return HTTP 404/410. At least one
+probe must carry a bounded explicit `tool_tokens` declaration (default
+`python-httpx`). One missing endpoint, browser headers alone, successful
+protocol use and mismatched methods abstain. The tool declaration is not
+verified identity. Operators can configure other paths and tool declarations.
+
+These are exploratory heuristic starter settings, not calibrated precision or
+recall. A human initiating an automated test can qualify. The source IP can
+represent several actors; the witness does not authenticate a session.
+
+Each rule flags only its matching probe records and configured nearby entry
+GET/HEAD requests inside a qualifying lookback window. `entry_paths` defaults
+to `/`, `/index.php`, `/favicon.ico`; an empty list selects probe records only.
+A qualifying window ends at a probe. Unrelated paths, older entries and entries
+after the last qualifying probe remain included. This retains unrelated visits
+while covering a scanner's nearby homepage fetch. Shared gateways can still
+cause a nearby human entry to be omitted; lower the window, clear entry paths
+or use request-ID inclusions where that tradeoff is unsuitable.
+
+Both rules are request-only: they never authorize IP/month expansion. If a
+record also matches a stronger existing rule, only the stronger proof appears
+as an IP-policy trigger. The rules remain independently selectable in Filters,
+with advanced parameters, separate counts and numeric review witnesses. New
+profiles and Reset check them; older saved profiles keep them disabled until
+selected. Reset preserves configured path/token lists. The CLI leaves both
+disabled unless explicitly enabled. Daily context supplies complete witnesses
+without inflating primary counts, and overlaps count once in the union.
+
+Private details expose `backdoor_probe_flagged` / `protocol_probe_flagged` and
+corresponding evidence. Numeric witnesses distinguish probe and nearby entry
+counts, distinct probe paths, missing responses, POSTs, endpoint roles and tool
+claims. They contain no observed query values, endpoint strings or raw agent
+claims. Aggregate output supplies a rule object and flagged-request count for
+each rule. Rule windows are bounded at the existing 3600-second hard maximum.

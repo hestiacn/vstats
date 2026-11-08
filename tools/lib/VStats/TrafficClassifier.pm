@@ -10,8 +10,8 @@ use POSIX qw(floor);
 use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 
 # GPL version 2 or later. No file or network I/O here.
-our $VERSION = '1.10';
-my $ALGORITHM = 'vstats-traffic-v12';
+our $VERSION = '1.11';
+my $ALGORITHM = 'vstats-traffic-v13';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -54,6 +54,16 @@ my $DEFAULT = {
         query_paths => ['/', '/index.php'],
         plugin_prefixes => ['/wp-content/plugins/'],
         query_keys => [qw(wp_query wp_stylesheet_path wp_template_path _wp_current_template_content)]},
+    backdoor_probe => {enabled => 0, window_seconds => 60, min_requests => 3,
+        distinct_paths => 3, not_found_requests => 2, post_requests => 1,
+        entry_paths => ['/', '/index.php', '/favicon.ico'],
+        paths => [qw(/wp-content/themes/seotheme/db.php /wp-plain.php
+            /wp-content/plugins/fix/up.php /ALFA_DATA/alfacgiapi/perl.alfa /alfacgiapi/perl.alfa
+            /wp-content/plugins/apikey/apikey.php /wp-content/plugins/apikey/apikey.php.suspected
+            /plugins/content/apismtp/apismtp.php /plugins/content/apismtp/apismtp.php.suspected)]},
+    protocol_probe => {enabled => 0, window_seconds => 60,
+        post_paths => ['/mcp'], get_paths => ['/sse'], tool_tokens => ['python-httpx'],
+        entry_paths => ['/', '/index.php', '/favicon.ico']},
     verification => {max_gap_seconds => 86400},
     limits => {input_bytes => 67108864, line_bytes => 16384, records => 100000,
                groups => 100000, ua_bytes => 4096, target_bytes => 8192},
@@ -65,7 +75,7 @@ sub defaults { return $JSON->decode($JSON->encode($DEFAULT)); }
 # The configured detector/grid width stays unchanged.
 sub analysis_window {
     my ($class,$config)=@_;my $window=$config->{scanner}{window_seconds};
-    for my $rule (qw(behavior probing rapid_scan head_scan sensitive_scan wp_enumeration wp_query_probe)) {
+    for my $rule (qw(behavior probing rapid_scan head_scan sensitive_scan wp_enumeration wp_query_probe backdoor_probe protocol_probe)) {
         $window=$config->{$rule}{window_seconds} if $config->{$rule}{enabled} && $config->{$rule}{window_seconds}>$window;
     }
     my $dl=$config->{distributed_login};
@@ -187,7 +197,7 @@ sub config {
     my $d=defaults();
     for my $key (keys %$d) {
         if (!exists $c->{$key}) { $c->{$key}=$d->{$key}; next; }
-        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'distributed_login' || $key eq 'login_rotation' || $key eq 'head_scan' || $key eq 'sensitive_scan' || $key eq 'wp_enumeration' || $key eq 'wp_query_probe' || $key eq 'verification' || $key eq 'limits') {
+        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'distributed_login' || $key eq 'login_rotation' || $key eq 'head_scan' || $key eq 'sensitive_scan' || $key eq 'wp_enumeration' || $key eq 'wp_query_probe' || $key eq 'backdoor_probe' || $key eq 'protocol_probe' || $key eq 'verification' || $key eq 'limits') {
             _keys($c->{$key},keys %{$d->{$key}});
             for my $k (keys %{$d->{$key}}) { $c->{$key}{$k}=$d->{$key}{$k} if !exists $c->{$key}{$k}; }
         }
@@ -308,6 +318,36 @@ sub config {
             }
         }
         _bad('Enabled query probing requires paths, prefixes and keys') if $wq->{enabled} && !@{$wq->{$key}};
+    }
+    for my $kind (qw(backdoor_probe protocol_probe)) {
+        my $rule=$c->{$kind};_uint($rule->{enabled},1);
+        _uint($rule->{window_seconds},$FIXED->{max_window},1);
+        if ($kind eq 'backdoor_probe') {
+            _uint($rule->{min_requests},$d->{limits}{records},2);
+            _uint($rule->{distinct_paths},$rule->{min_requests},2);
+            _uint($rule->{not_found_requests},$rule->{min_requests},2);
+            _uint($rule->{post_requests},$rule->{min_requests},1);
+        }
+        my %seen;
+        for my $key ($kind eq 'backdoor_probe' ? qw(paths entry_paths) : qw(post_paths get_paths entry_paths)) {
+            _array($rule->{$key},$FIXED->{paths});
+            for my $path (@{$rule->{$key}}) {
+                _str($path);my $normal=normalize_target($path);
+                _bad('Invalid, duplicate or overlapping burst-probe path') if !defined($normal)
+                    || $normal ne $path || $seen{$path}++;
+            }
+            _bad('Enabled burst probing requires configured probe paths') if $key ne 'entry_paths'
+                && $rule->{enabled} && !@{$rule->{$key}};
+        }
+        if ($kind eq 'protocol_probe') {
+            _array($rule->{tool_tokens},$FIXED->{tokens});my %tokens;
+            for my $token (@{$rule->{tool_tokens}}) {
+                _str($token);
+                _bad('Invalid protocol tool token') if length($token)>$FIXED->{token_bytes}
+                    || $token!~/\A[A-Za-z0-9][A-Za-z0-9._-]*\z/ || $refused{lc($token)} || $tokens{lc($token)}++;
+            }
+            _bad('Enabled protocol probing requires tool declarations') if $rule->{enabled} && !@{$rule->{tool_tokens}};
+        }
     }
     _uint($c->{verification}{max_gap_seconds},$FIXED->{max_gap});
     for my $k (keys %{$d->{limits}}) { _uint($c->{limits}{$k},$d->{limits}{$k},1); }
@@ -1195,6 +1235,90 @@ sub _wp_query_probe {
     return $out;
 }
 
+# Corroborated probe bursts may include configured entry GET/HEAD requests
+# in their lookback window. They never supply an IP/month trigger. Unrelated
+# paths and entries after the last qualifying probe remain outside the witness.
+sub _probe_burst {
+    my ($self,$kind)=@_;my $cfg=$self->{config}{$kind};
+    my $out={enabled=>$cfg->{enabled}?JSON::PP::true:JSON::PP::false,
+        rule_id=>$kind.'_burst_v1',flagged_requests=>0,eligible_requests=>0,
+        insufficient_fields=>0,other_path_requests=>0,merged_sequences=>0,
+        flagged_source_groups=>0,actors=>{map {$_=>0} qw(unknown declared_crawler_or_tool verified_crawler)}};
+    $_->{$kind.'_flagged'}=0 for @{$self->{records}};return $out if !$cfg->{enabled};
+    my %entries=map {$_=>1} @{$cfg->{entry_paths}};
+    my %paths=map {$_=>1} @{$cfg->{paths}||[]};
+    my %posts=map {$_=>1} @{$cfg->{post_paths}||[]};
+    my %gets=map {$_=>1} @{$cfg->{get_paths}||[]};my %groups;
+    for my $r (@{$self->{records}}) {
+        my ($af,$packed)=literal_ip($r->{client});
+        if (!defined($af) || !defined($r->{normal}) || !defined($r->{status}) || !defined($r->{method})) {
+            $r->{'_'.$kind.'_insufficient'}=1;$out->{insufficient_fields}++ if !$r->{_context};next;
+        }
+        my $missing=$r->{status}==404 || $r->{status}==410;
+        my $post=$posts{$r->{normal}} && $r->{method} eq 'POST'?1:0;
+        my $get=$gets{$r->{normal}} && $r->{method} eq 'GET'?1:0;
+        my $probe=$kind eq 'backdoor_probe'
+            ? ($paths{$r->{normal}} && $r->{method}=~/\A(?:GET|HEAD|POST)\z/ ? 1:0)
+            : ($missing && ($post || $get) ? 1:0);
+        my $entry=$entries{$r->{normal}} && $r->{method}=~/\A(?:GET|HEAD)\z/ ? 1:0;
+        if (!$probe && !$entry) {$out->{other_path_requests}++ if !$r->{_context};next;}
+        my $tool=$kind eq 'protocol_probe' && $probe
+            && (grep {marker_matches($r->{user_agent},$_)} @{$cfg->{tool_tokens}||[]}) ? 1:0;
+        $r->{'_'.$kind.'_feature'}={probe=>$probe,entry=>$entry,missing=>$probe && $missing?1:0,
+            post=>$probe && $r->{method} eq 'POST'?1:0,post_endpoint=>$probe && $post?1:0,
+            get_endpoint=>$probe && $get?1:0,tool=>$tool};
+        $r->{'_'.$kind.'_eligible'}=1;$out->{eligible_requests}++ if !$r->{_context};
+        push @{$groups{$af.':'.unpack('H*',$packed)."\0".($r->{host}//'')}},$r;
+        _bad('Burst-probe group count limit exceeded') if keys(%groups)>$self->{config}{limits}{groups};
+    }
+    for my $group (sort keys %groups) {
+        my @p=sort {$a->{timestamp}<=>$b->{timestamp} || $a->{_order}<=>$b->{_order}} @{$groups{$group}};
+        my $primary=_primary_prefix(\@p);my (%paths,%probe_paths,%uas,%platforms,%counts);
+        my ($left,$assigned,$last_end)=(0,-1,undef);
+        my $adjust=sub {
+            my ($r,$delta)=@_;my $f=$r->{'_'.$kind.'_feature'};my $platform=_browser_platform($r->{user_agent});
+            for my $pair ([\%paths,$r->{normal}],[\%uas,$r->{user_agent}],[\%platforms,$platform],
+                    [\%probe_paths,$f->{probe}?$r->{normal}:undef]) {
+                my ($map,$value)=@$pair;next if !defined $value;
+                $map->{$value}+=$delta;delete $map->{$value} if !$map->{$value};
+            }
+            $counts{$_}+=$delta*$f->{$_} for qw(probe entry missing post post_endpoint get_endpoint tool);
+        };
+        for my $right (0..$#p) {
+            my $r=$p[$right];$adjust->($r,1);
+            while ($r->{timestamp}-$p[$left]{timestamp}>$cfg->{window_seconds}) {$adjust->($p[$left++],-1);}
+            next if !$r->{'_'.$kind.'_feature'}{probe};
+            if ($kind eq 'backdoor_probe') {
+                next if $counts{probe}<$cfg->{min_requests} || keys(%probe_paths)<$cfg->{distinct_paths}
+                    || $counts{missing}<$cfg->{not_found_requests} || $counts{post}<$cfg->{post_requests};
+            } else {
+                next if !$counts{post_endpoint} || !$counts{get_endpoint} || !$counts{tool};
+            }
+            my $proof={from=>$p[$left]{timestamp},until=>$r->{timestamp},requests=>$right-$left+1,
+                probe_requests=>$counts{probe},entry_requests=>$counts{entry},
+                distinct_probe_paths=>scalar(keys %probe_paths),post_requests=>$counts{post},
+                post_endpoint_requests=>$counts{post_endpoint},get_endpoint_requests=>$counts{get_endpoint},
+                tool_requests=>$counts{tool},distinct_paths=>scalar(keys %paths),
+                distinct_user_agents=>scalar(keys %uas),distinct_platforms=>scalar(keys %platforms),
+                not_found_requests=>$counts{missing},distinct_author_ids=>0,user_api_requests=>0};
+            my $first=$left>$assigned+1?$left:$assigned+1;
+            for my $i ($first..$right) {$p[$i]{$kind.'_flagged'}=1;$p[$i]{$kind.'_evidence'}=$proof;}
+            $assigned=$right;
+            if ($primary->[$right+1]>$primary->[$left]) {
+                $out->{merged_sequences}++ if !defined($last_end) || $proof->{from}>$last_end;
+                $last_end=$proof->{until};
+            }
+        }
+        my $flagged=0;
+        for my $r (@p) {
+            next if !$r->{$kind.'_flagged'} || $r->{_context};
+            $out->{flagged_requests}++;$out->{actors}{$r->{actor}}++;$flagged=1;
+        }
+        $out->{flagged_source_groups}++ if $flagged;
+    }
+    return $out;
+}
+
 # These independent opt-in rules describe bounded observed patterns, not
 # component absence, authentication outcomes or the intent of the operator.
 sub _low_volume_scan {
@@ -1338,11 +1462,12 @@ sub finish {
     }
     my $sequences=$self->_scan(\%groups);
     my $broad=$self->_behavior; my $probing=$self->_probing; my $rapid=$self->_rapid_scan; my $distributed=$self->_distributed_login; my $rotation=$self->_login_rotation;
-    my @extra_kinds=qw(head_scan sensitive_scan wp_enumeration wp_query_probe);
-    my @extra=map {$_ eq 'wp_query_probe'?$self->_wp_query_probe:$self->_low_volume_scan($_)} @extra_kinds;
+    my @extra_kinds=qw(head_scan sensitive_scan wp_enumeration wp_query_probe backdoor_probe protocol_probe);
+    my @extra=map {$_ eq 'wp_query_probe'?$self->_wp_query_probe:
+        /\A(?:backdoor_probe|protocol_probe)\z/?$self->_probe_burst($_):$self->_low_volume_scan($_)} @extra_kinds;
     $self->{records}=$primary_records;
     my $behavior={enabled=>($broad->{enabled} || $probing->{enabled} || $rapid->{enabled} || $distributed->{enabled} || $rotation->{enabled})?JSON::PP::true:JSON::PP::false,
-        rule_id=>'behavior_union_v6',broad_rule=>$broad,probing_rule=>$probing,rapid_scan_rule=>$rapid,distributed_login_rule=>$distributed,login_rotation_rule=>$rotation,
+        rule_id=>'behavior_union_v7',broad_rule=>$broad,probing_rule=>$probing,rapid_scan_rule=>$rapid,distributed_login_rule=>$distributed,login_rotation_rule=>$rotation,
         broad_flagged_requests=>$broad->{flagged_requests},probing_flagged_requests=>$probing->{flagged_requests},
         rapid_scan_flagged_requests=>$rapid->{flagged_requests},distributed_login_flagged_requests=>$distributed->{flagged_requests},login_rotation_flagged_requests=>$rotation->{flagged_requests},
         overlap_requests=>0,flagged_requests=>0,eligible_requests=>0,insufficient_fields=>0,
@@ -1404,10 +1529,10 @@ sub finish {
             'Verified means verified against operator-attested published-range snapshots, not cryptographic source authentication. Bracketing assumes range continuity and does not prove uninterrupted ownership.',
             'Historical requests without covering archived evidence remain unavailable. IPv4-mapped IPv6 is not converted to IPv4; literal-IP acceptance follows platform inet_pton.',
             'Scanner flags describe qualifying probe requests, not intent or people. Shared IPs/UA and duplicate or overlapping input can affect results. Supply one nonoverlapping stable site snapshot.',
-            'Suspected automation is the union of optional broad path/404 probing, configured endpoint probing, rapid content-path/404 probing, distributed login probing, login browser rotation, HEAD sweeps, configured sensitive-file probing and WordPress enumeration, not verified crawler identity. Broad and endpoint rules require browser/platform diversity; rapid scanning requires neither browser identity nor rotation and excludes static asset suffixes. Each requires its own coincident conditions in a source/host window. Endpoint probing uses configured paths without an absence or failed-response requirement. Overlaps count once; sequence counts sum across rules. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and insufficient boundary context can affect results; accuracy is unmeasured.',
+            'Suspected automation is the union of optional broad path/404 probing, configured endpoint probing, rapid content-path/404 probing, distributed login probing, login browser rotation, HEAD sweeps, configured sensitive-file probing, WordPress enumeration, WordPress query probing, backdoor path probing and protocol endpoint discovery, not verified crawler identity. Broad and endpoint rules require browser/platform diversity; rapid scanning requires neither browser identity nor rotation and excludes static asset suffixes. Each requires its own coincident conditions in a source/host window. Endpoint probing uses configured paths without an absence or failed-response requirement. Overlaps count once; sequence counts sum across rules. Request-ID inclusions override only behavioral exclusion. Shared proxies, authorized tests and insufficient boundary context can affect results; accuracy is unmeasured.',
             'Distributed login probing pools only repeatedly participating sources within configured login/admin paths and two fixed UTC grids. Each source needs POST-UA/platform rotation, POST-follow-up order and peer-shared exact POST UAs; coherent same-UA POST/follow-up spans veto intersecting source/host windows, rather than unrelated later activity. Pool counts are separate from source contributions. This is heuristic campaign evidence, not authentication, login success, intent or ownership; shared offices can cause false positives and stable-emulating bots, sparse sources and partition/grid boundaries can evade detection.',
             'Login browser rotation uses adjacent same-path GET/POST pairs: enough diverse POST browser/platform claims plus an in-pair agent change, or repeated in-pair platform switches in separated visits. Only the original stronger conjunction permits configured IP/month expansion. Only paired requests receive the flag. Configured paths, timestamps, methods, status and recognized browser/platform claims are required. Thresholds are exploratory; neither response status nor the flag establishes login failure, compromise, malicious intent or crawler identity. Shared gateways, interleaved users and authorized automation can qualify.',
-            'Low-volume scan rules use observed HEAD/path/404 combinations, configured sensitive-file paths without absence attestations, or public author-query/user-API enumeration plus browser/platform rotation. Thresholds are exploratory and accuracy is unmeasured. They do not infer compromise or malicious intent. Query values and author IDs are not emitted in numeric witnesses; WordPress query probing requires internal query keys together with plugin readme/PHP enumeration and is request-only. Ordinary homepage/favicon visits, robots.txt fetches and rapid successful page walks alone do not qualify.',
+            'Low-volume scan rules use observed HEAD/path/404 combinations, configured sensitive-file paths without absence attestations, or public author-query/user-API enumeration plus browser/platform rotation. Thresholds are exploratory and accuracy is unmeasured. They do not infer compromise or malicious intent. Query values and author IDs are not emitted in numeric witnesses; WordPress query probing requires internal query keys together with plugin readme/PHP enumeration and is request-only. Backdoor and protocol probes require coincident explicit path/method/response evidence; their request-only witnesses can include configured nearby entry GET/HEAD requests in the same short lookback window. They never trigger IP/month expansion. Ordinary homepage/favicon visits, robots.txt fetches and rapid successful page walks alone do not qualify.',
             'Optional disjoint before/after context supplies evidence only. Primary hashes, physical indices, counts and filtered exports exclude context rows. Caller must freeze nonoverlapping contexts and bind their hashes when caching; contextual witness counts can exceed primary-day request counts.',
             'Local tokens, component absence and site-reference periods are operator attestations; no status-code or weak browser signal supplies identity or absence.',
             'No live DNS, network queries, incremental history or blocking. The report exposes the configured comparison; the CLI can explicitly export matching filtered input for a separate native replay. Caller controls retention and publication.',
@@ -1415,7 +1540,7 @@ sub finish {
     if (%exclude) { $report->{adjusted_requests}={label=>'requests in this input excluding '.join(', ',sort keys %exclude),original=>$self->{counts}{analyzed},excluded=>$excluded,remaining=>$self->{counts}{analyzed}-$excluded}; }
     if ($self->{details}) {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
-        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id method behavior_evidence probing_evidence rapid_scan_evidence distributed_login_evidence distributed_login_diagnostics login_rotation_evidence head_scan_evidence sensitive_scan_evidence wp_enumeration_evidence wp_query_probe_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,distributed_login_flagged=>$r->{distributed_login_flagged}?JSON::PP::true:JSON::PP::false,login_rotation_flagged=>$r->{login_rotation_flagged}?JSON::PP::true:JSON::PP::false,ip_expansion_eligible=>$r->{ip_expansion_eligible},excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false,(map {($_.'_flagged')=>($r->{$_.'_flagged'}?JSON::PP::true:JSON::PP::false)} @extra_kinds)}} @{$self->{records}}];
+        $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id method behavior_evidence probing_evidence rapid_scan_evidence distributed_login_evidence distributed_login_diagnostics login_rotation_evidence head_scan_evidence sensitive_scan_evidence wp_enumeration_evidence wp_query_probe_evidence backdoor_probe_evidence protocol_probe_evidence behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,distributed_login_flagged=>$r->{distributed_login_flagged}?JSON::PP::true:JSON::PP::false,login_rotation_flagged=>$r->{login_rotation_flagged}?JSON::PP::true:JSON::PP::false,ip_expansion_eligible=>$r->{ip_expansion_eligible},excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false,(map {($_.'_flagged')=>($r->{$_.'_flagged'}?JSON::PP::true:JSON::PP::false)} @extra_kinds)}} @{$self->{records}}];
     }
     return $report;
 }
@@ -1434,7 +1559,7 @@ sub html_report {
     if (my $b=$report->{behavior}) {
         $html.='<h2>Suspected automation</h2>';
         if ($b->{enabled}) {
-            $html.='<p>Requests flagged by any enabled behavioral rule: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; rapid content-path probing: '.($b->{rapid_scan_flagged_requests}//0).'; distributed login probing: '.($b->{distributed_login_flagged_requests}//0).'; login browser rotation: '.($b->{login_rotation_flagged_requests}//0).'; HEAD sweeps: '.($b->{head_scan_flagged_requests}//0).'; sensitive-file probing: '.($b->{sensitive_scan_flagged_requests}//0).'; WordPress enumeration: '.($b->{wp_enumeration_flagged_requests}//0).'; WordPress query probing: '.($b->{wp_query_probe_flagged_requests}//0).'; overlap (two or more rules): '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
+            $html.='<p>Requests flagged by any enabled behavioral rule: '.$b->{flagged_requests}.'. Merged qualifying sequences (sum across rules): '.$b->{merged_sequences}.'.</p><p>Broad path probing: '.($b->{broad_flagged_requests}//$b->{flagged_requests}).'; configured endpoint probing: '.($b->{probing_flagged_requests}//0).'; rapid content-path probing: '.($b->{rapid_scan_flagged_requests}//0).'; distributed login probing: '.($b->{distributed_login_flagged_requests}//0).'; login browser rotation: '.($b->{login_rotation_flagged_requests}//0).'; HEAD sweeps: '.($b->{head_scan_flagged_requests}//0).'; sensitive-file probing: '.($b->{sensitive_scan_flagged_requests}//0).'; WordPress enumeration: '.($b->{wp_enumeration_flagged_requests}//0).'; WordPress query probing: '.($b->{wp_query_probe_flagged_requests}//0).'; backdoor path probing: '.($b->{backdoor_probe_flagged_requests}//0).'; protocol endpoint discovery: '.($b->{protocol_probe_flagged_requests}//0).'; overlap (two or more rules): '.($b->{overlap_requests}//0).'.</p><p>Of these requests, '.$b->{actors}{unknown}.' have unknown actor identity. Behavioral flags overlap actor labels and do not prove crawler identity. Exclusions require an explicit selection; inclusion overrides: '.($b->{inclusion_overrides}//0).'.</p>';
         } else { $html.='<p>Behavioral detection is disabled for this report.</p>'; }
     }
     if ($report->{adjusted_requests}) { my $a=$report->{adjusted_requests}; $html.='<p>'._html_escape($a->{label}).': '.$a->{remaining}.' (original '.$a->{original}.', excluded '.$a->{excluded}.').</p>'; }

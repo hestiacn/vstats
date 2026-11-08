@@ -419,6 +419,57 @@ class BatchIntegration(unittest.TestCase):
                 self.assertNotIn('Trigger evidence', review)
                 shutil.rmtree(str(self.root / 'output'))
 
+    def test_probe_bursts_entry_scope_privacy_and_stronger_overlap(self):
+        cases = [
+            ('backdoor_probe', 'Backdoor path probing', [
+                ('GET', '/', 200, 'browser/1'),
+                ('GET', '/wp-content/themes/seotheme/db.php?secret=SECRET_SENTINEL', 404, 'browser/1'),
+                ('POST', '/wp-plain.php', 404, 'browser/1'),
+                ('GET', '/wp-content/plugins/fix/up.php', 301, 'browser/1')]),
+            ('protocol_probe', 'Protocol endpoint discovery', [
+                ('GET', '/', 200, 'browser/1'),
+                ('POST', '/mcp?secret=SECRET_SENTINEL', 404, 'python-httpx/0.28.1'),
+                ('GET', '/sse', 410, 'python-httpx/0.28.1')])]
+        earlier = b'192.0.2.1 - - [01/Oct/2026:10:00:00 +0000] "GET /earlier HTTP/1.1" 200 99 "-" "browser/1"\n'
+        for key, label, events in cases:
+            with self.subTest(rule=key):
+                def lines_for(events):
+                    return [('192.0.2.1 - - [02/Oct/2026:10:00:{:02d} +0000] "{} {} HTTP/1.1" '
+                             '{} 100 "-" "{}"\n'.format(i, method, target, status, ua)).encode('ascii')
+                            for i, (method, target, status, ua) in enumerate(events)]
+                self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'], key: {'enabled': 1}}
+                lines = lines_for(events)
+                ordinary = b'192.0.2.1 - - [02/Oct/2026:10:00:20 +0000] "GET /ordinary HTTP/1.1" 200 99 "-" "browser/1"\n'
+                (self.inputs / '2026-10-01.log').write_bytes(earlier)
+                (self.inputs / '2026-10-02.log').write_bytes(b''.join(lines) + ordinary)
+                self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+                result = self.run_build(exclude_automated_ips=True)
+                self.assertEqual(result['behavior'][key + '_flagged_requests'], len(events))
+                self.assertEqual(result['excluded_by_month']['2026-10']['records'], len(events))
+                self.assertEqual(result['excluded_by_month'], result['request_excluded_by_month'])
+                review = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+                self.assertIn(label + ':', review)
+                self.assertIn('1 nearby entry requests', review)
+                self.assertNotIn('SECRET_SENTINEL', review)
+                self.assertNotIn('Trigger evidence', review)
+                shutil.rmtree(str(self.root / 'output'))
+                self.cfg['behavior_include'] = [hashlib.sha256(lines[0].rstrip(b'\n')).hexdigest()]
+                self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+                self.assertEqual(self.run_build(exclude_automated_ips=True)['excluded_by_month']['2026-10']['records'], len(events)-1)
+                shutil.rmtree(str(self.root / 'output'))
+                self.cfg.pop('behavior_include')
+                get_path = '/wp-content/themes/seotheme/db.php' if key == 'backdoor_probe' else '/sse'
+                self.cfg['sensitive_scan'] = {'enabled': 1, 'paths': ['/', '/.env', get_path]}
+                expanded = [events[0], ('GET', '/.env', 403, 'browser/1')] + events[1:]
+                (self.inputs / '2026-10-02.log').write_bytes(b''.join(lines_for(expanded)))
+                self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+                overlap = self.run_build(exclude_automated_ips=True)
+                self.assertEqual(overlap['excluded_by_month']['2026-10']['records'], len(expanded)+1)
+                review = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+                self.assertIn('Trigger evidence, Sensitive-file probing:', review)
+                self.assertNotIn('Trigger evidence, ' + label + ':', review)
+                shutil.rmtree(str(self.root / 'output'))
+
     def test_request_only_overlap_does_not_become_an_ip_trigger(self):
         self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
                     'wp_query_probe': {'enabled': 1},

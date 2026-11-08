@@ -83,5 +83,47 @@
       "wp_template_path",
       "_wp_current_template_content"
     ]
+  },
+  "backdoor_probe": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "min_requests": 3,
+    "distinct_paths": 3,
+    "not_found_requests": 2,
+    "post_requests": 1,
+    "entry_paths": [
+      "/",
+      "/index.php",
+      "/favicon.ico"
+    ],
+    "paths": [
+      "/wp-content/themes/seotheme/db.php",
+      "/wp-plain.php",
+      "/wp-content/plugins/fix/up.php",
+      "/ALFA_DATA/alfacgiapi/perl.alfa",
+      "/alfacgiapi/perl.alfa",
+      "/wp-content/plugins/apikey/apikey.php",
+      "/wp-content/plugins/apikey/apikey.php.suspected",
+      "/plugins/content/apismtp/apismtp.php",
+      "/plugins/content/apismtp/apismtp.php.suspected"
+    ]
+  },
+  "protocol_probe": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "post_paths": [
+      "/mcp"
+    ],
+    "get_paths": [
+      "/sse"
+    ],
+    "tool_tokens": [
+      "python-httpx"
+    ],
+    "entry_paths": [
+      "/",
+      "/index.php",
+      "/favicon.ico"
+    ]
   }
 }

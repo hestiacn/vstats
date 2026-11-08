@@ -126,10 +126,28 @@ def validate_scan_witness(label, proof):
             proof['query_requests'] < 1 or proof['plugin_requests'] < 1 or
             proof['query_requests'] + proof['plugin_requests'] != proof['requests']):
         raise RuntimeError('Inconsistent query-probe witness counts')
+    if label in ('Backdoor path probing', 'Protocol endpoint discovery'):
+        extra = ('probe_requests', 'entry_requests', 'distinct_probe_paths', 'post_requests',
+                 'post_endpoint_requests', 'get_endpoint_requests', 'tool_requests')
+        if any(type(proof.get(k)) is not int or proof[k] < 0 for k in extra):
+            raise RuntimeError('Invalid probe-burst witness fields')
+        if (proof['probe_requests'] + proof['entry_requests'] != proof['requests'] or
+                not 2 <= proof['distinct_probe_paths'] <= proof['probe_requests'] <= proof['requests'] or
+                not 2 <= proof['not_found_requests'] <= proof['probe_requests'] or
+                not 1 <= proof['post_requests'] <= proof['probe_requests'] or
+                proof['distinct_probe_paths'] > proof['distinct_paths'] or
+                proof['tool_requests'] > proof['probe_requests']):
+            raise RuntimeError('Inconsistent probe-burst witness counts')
+        if label == 'Protocol endpoint discovery' and (
+                proof['post_endpoint_requests'] < 1 or proof['get_endpoint_requests'] < 1 or
+                proof['post_endpoint_requests'] + proof['get_endpoint_requests'] != proof['probe_requests'] or
+                proof['post_requests'] != proof['post_endpoint_requests'] or
+                proof['not_found_requests'] != proof['probe_requests'] or proof['tool_requests'] < 1):
+            raise RuntimeError('Inconsistent protocol-discovery witness counts')
 
 
 def witness_text(label, proof):
-    if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing'):
+    if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery'):
         validate_scan_witness(label, proof)
     if label == 'Distributed login probing':
         validate_distributed_witness(proof)
@@ -151,6 +169,8 @@ def witness_text(label, proof):
                 if 'agent_diversity_witness' in proof else '')
     reason = ('{requests} requests; {distinct_user_agents} user agents; {distinct_platforms} platforms; '
               '{distinct_paths} paths; {not_found_requests} HTTP 404s').format(**proof)
+    if label in ('Backdoor path probing', 'Protocol endpoint discovery'):
+        reason = reason.replace(' HTTP 404s', ' missing responses (HTTP 404/410)')
     reason += ' in {} seconds'.format(proof['until'] - proof['from'])
     if label == 'Endpoint probing':
         reason += ' (configured endpoints; no 404 requirement)'
@@ -162,6 +182,12 @@ def witness_text(label, proof):
         reason += '; {distinct_author_ids} author IDs; {user_api_requests} user-API requests'.format(**proof)
     if label == 'WordPress query probing':
         reason += '; {query_requests} internal-query requests; {plugin_requests} plugin-file requests (request-only; no exploitation inferred)'.format(**proof)
+    if label in ('Backdoor path probing', 'Protocol endpoint discovery'):
+        reason += ('; {probe_requests} probe requests across {distinct_probe_paths} probe paths; '
+                   '{post_requests} probe POSTs; {entry_requests} nearby entry requests '
+                   '(short burst only; no IP expansion or exploitation inferred)').format(**proof)
+        if label == 'Protocol endpoint discovery':
+            reason += '; {post_endpoint_requests} POST-endpoint probes; {get_endpoint_requests} GET-endpoint probes; {tool_requests} declared-tool requests'.format(**proof)
     if label == 'Rapid content-path probing':
         reason += ' (content paths; no browser rotation requirement)'
     return reason
@@ -179,7 +205,9 @@ def rule_evidence(record):
                                 (record.get('head_scan_flagged'), 'HEAD path sweeps', 'head_scan_evidence'),
                                 (record.get('sensitive_scan_flagged'), 'Sensitive-file probing', 'sensitive_scan_evidence'),
                                 (record.get('wp_enumeration_flagged'), 'WordPress enumeration', 'wp_enumeration_evidence'),
-                                (record.get('wp_query_probe_flagged'), 'WordPress query probing', 'wp_query_probe_evidence')]:
+                                (record.get('wp_query_probe_flagged'), 'WordPress query probing', 'wp_query_probe_evidence'),
+                                (record.get('backdoor_probe_flagged'), 'Backdoor path probing', 'backdoor_probe_evidence'),
+                                (record.get('protocol_probe_flagged'), 'Protocol endpoint discovery', 'protocol_probe_evidence')]:
         if not matched:
             continue
         proof = record.get(key)
@@ -189,7 +217,7 @@ def rule_evidence(record):
             validate_distributed_witness(proof)
         if label == 'Login browser rotation':
             validate_rotation_witness(proof)
-        if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing'):
+        if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery'):
             validate_scan_witness(label, proof)
         result.append((label, proof))
     if record.get('ip_excluded'):
@@ -619,7 +647,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             # Only the stronger proof authorizes expansion, not every label
             # attached to the trigger record.
             witnesses = [(label, proof) for label, proof in witnesses
-                         if label != 'WordPress query probing' and
+                         if label not in ('WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery') and
                          (label != 'Login browser rotation' or proof.get('ip_expansion_eligible', True))]
             if not witnesses:
                 raise RuntimeError('IP expansion lacks an eligible rule witness')
@@ -637,7 +665,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         totals.update(report['counts'])
         actors.update(report['actors'])
         for key in ['flagged_requests', 'eligible_requests', 'insufficient_fields', 'merged_sequences', 'flagged_source_groups',
-                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'head_scan_flagged_requests', 'sensitive_scan_flagged_requests', 'wp_enumeration_flagged_requests', 'wp_query_probe_flagged_requests', 'overlap_requests']:
+                    'inclusion_overrides', 'broad_flagged_requests', 'probing_flagged_requests', 'rapid_scan_flagged_requests', 'distributed_login_flagged_requests', 'login_rotation_flagged_requests', 'head_scan_flagged_requests', 'sensitive_scan_flagged_requests', 'wp_enumeration_flagged_requests', 'wp_query_probe_flagged_requests', 'backdoor_probe_flagged_requests', 'protocol_probe_flagged_requests', 'overlap_requests']:
             behavior[key] += report['behavior'].get(key, 0)
         flagged_by_month[day[:7]] += report['behavior']['flagged_requests']
         first = period['from'] if first is None else min(first, period['from'])
@@ -779,6 +807,8 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                    '; sensitive-file probing: ' + format(behavior['sensitive_scan_flagged_requests'], ',') +
                    '; WordPress enumeration: ' + format(behavior['wp_enumeration_flagged_requests'], ',') +
                    '; WordPress query probing: ' + format(behavior['wp_query_probe_flagged_requests'], ',') +
+                   '; backdoor path probing: ' + format(behavior['backdoor_probe_flagged_requests'], ',') +
+                   '; protocol endpoint discovery: ' + format(behavior['protocol_probe_flagged_requests'], ',') +
                    '; overlap (two or more rules): ' + format(behavior['overlap_requests'], ',') +
                    '. Full raw user-agent strings and query strings are omitted from review.</p>')
     if sum(r['requests'] for r in sources.values()) + sum(unattributed_sources.values()) != totals['analyzed']:
@@ -839,7 +869,7 @@ def build(config, input_directory, output_directory, perl='perl', prefix='/vstat
             if month in unavailable:
                 raise
             unavailable[month] = {'reason': 'Input over limits', 'limit': e.kind, 'hard_maximum': e.maximum,
-                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'exclude_automated_ips']}
+                                  'trigger_day': e.day, 'inactive': ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'exclude_automated_ips']}
             # Only our failed, newly created derived-output directory is removed.
             # Original daily input and any previously published output are untouched.
             shutil.rmtree(str(output_directory))

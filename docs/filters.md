@@ -226,3 +226,15 @@ filter disabled until explicitly selected; Reset checks it.
 Robots-file requests and successful content-page walks alone remain visible.
 Self-declared CVE PoC tools follow the native crawler-signatures choice and do
 not establish verified identity, malicious intent or exploitation.
+
+
+Backdoor path probing and Protocol endpoint discovery each have a Filters
+checkbox, advanced controls, match counts and review evidence. Their short
+witnesses can include configured nearby homepage/favicon GET/HEAD requests;
+clear `entry paths` to exclude explicit probes only. They never trigger the
+whole-IP policy. The rules require corroborating probe paths/methods and
+missing responses, with a declared tool also required for protocol discovery.
+Successful protocol clients, ordinary page walks, robots-file requests and
+shared browser signatures alone do not qualify. All thresholds are unvalidated
+heuristics. Existing profiles preserve their policy until the new choices are
+selected; Reset checks them and keeps configured lists.

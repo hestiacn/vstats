@@ -77,7 +77,7 @@ class Controls(unittest.TestCase):
 
     def test_login_rotation_configuration_and_old_profiles(self):
         old = copy.deepcopy(self.profile)
-        for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe'):
+        for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe'):
             del old['filters'][key]
             del old['classifier'][key]
         restored = validate_profile(old, str(ROOT), PERL)
@@ -99,7 +99,7 @@ class Controls(unittest.TestCase):
 
     def test_low_volume_rules_upgrade_prerequisites_and_defaults(self):
         old = copy.deepcopy(self.profile)
-        added = ('head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe')
+        added = ('head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe')
         for key in added:
             del old['filters'][key]
             del old['classifier'][key]
@@ -128,6 +128,37 @@ class Controls(unittest.TestCase):
         self.assertTrue(all(reset['filters'].values()))
         bad = copy.deepcopy(self.profile)
         del bad['filters']['head_scan']
+        with self.assertRaises(ValueError):
+            validate_profile(bad, str(ROOT), PERL)
+
+    def test_probe_burst_profiles_upgrade_controls_and_reset(self):
+        old = copy.deepcopy(self.profile)
+        for key in ('backdoor_probe', 'protocol_probe'):
+            del old['filters'][key]
+            del old['classifier'][key]
+        upgraded = validate_profile(old, str(ROOT), PERL)
+        for key in ('backdoor_probe', 'protocol_probe'):
+            self.assertFalse(upgraded['filters'][key])
+            self.assertEqual(upgraded['classifier'][key]['enabled'], 0)
+            self.assertEqual(filter_status(upgraded)[key], 'Disabled')
+        reset = defaults(str(ROOT), PERL, upgraded)
+        for key in ('backdoor_probe', 'protocol_probe'):
+            self.assertTrue(reset['filters'][key])
+        profile = copy.deepcopy(self.profile)
+        profile['classifier']['backdoor_probe']['entry_paths'] = []
+        profile['classifier']['protocol_probe']['entry_paths'] = []
+        active = validate_profile(profile, str(ROOT), PERL)
+        for key in ('backdoor_probe', 'protocol_probe'):
+            self.assertEqual(filter_status(active)[key], 'Active')
+            self.assertEqual(defaults(str(ROOT), PERL, active)['classifier'][key]['entry_paths'], [])
+        profile['classifier']['backdoor_probe']['paths'] = []
+        profile['classifier']['protocol_probe']['tool_tokens'] = []
+        inactive = validate_profile(profile, str(ROOT), PERL)
+        for key in ('backdoor_probe', 'protocol_probe'):
+            self.assertEqual(inactive['classifier'][key]['enabled'], 0)
+            self.assertEqual(filter_status(inactive)[key], 'Needs configuration')
+        bad = copy.deepcopy(self.profile)
+        del bad['filters']['protocol_probe']
         with self.assertRaises(ValueError):
             validate_profile(bad, str(ROOT), PERL)
 
