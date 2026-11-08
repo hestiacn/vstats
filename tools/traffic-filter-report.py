@@ -615,6 +615,14 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             if not record['suspected_automation'] or not record.get('ip_expansion_eligible', True):
                 continue
             witnesses = rule_evidence(record)
+            # A record may match request-only and stronger rules together.
+            # Only the stronger proof authorizes expansion, not every label
+            # attached to the trigger record.
+            witnesses = [(label, proof) for label, proof in witnesses
+                         if label != 'WordPress query probing' and
+                         (label != 'Login browser rotation' or proof.get('ip_expansion_eligible', True))]
+            if not witnesses:
+                raise RuntimeError('IP expansion lacks an eligible rule witness')
             key = record.get('source_month_key')
             if not key:
                 raise RuntimeError('Behavior trigger lacks a canonical source')

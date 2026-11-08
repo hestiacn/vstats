@@ -419,6 +419,29 @@ class BatchIntegration(unittest.TestCase):
                 self.assertNotIn('Trigger evidence', review)
                 shutil.rmtree(str(self.root / 'output'))
 
+    def test_request_only_overlap_does_not_become_an_ip_trigger(self):
+        self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
+                    'wp_query_probe': {'enabled': 1},
+                    'sensitive_scan': {'enabled': 1, 'paths': [
+                        '/', '/wp-content/plugins/example-plugin/readme.txt', '/.env']}}
+        targets = ['/wp-content/plugins/example-plugin/readme.txt', '/?wp_query=SECRET_SENTINEL', '/.env']
+        lines = [('192.0.2.1 - - [02/Oct/2026:10:00:0{} +0000] "GET {} HTTP/1.1" '
+                  '200 100 "-" "ordinary/1"\n'.format(i, target)).encode('ascii')
+                 for i, target in enumerate(targets)]
+        ordinary = b'192.0.2.1 - - [01/Oct/2026:10:00:00 +0000] "GET /ordinary HTTP/1.1" 200 99 "-" "ordinary/1"\n'
+        (self.inputs / '2026-10-01.log').write_bytes(ordinary)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(lines))
+        self.config.write_text(json.dumps(self.cfg), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(result['behavior']['wp_query_probe_flagged_requests'], 2)
+        self.assertEqual(result['request_excluded_by_month']['2026-10']['records'], 3)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 4)
+        review = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertIn('WordPress query probing:', review)
+        self.assertIn('Trigger evidence, Sensitive-file probing:', review)
+        self.assertNotIn('Trigger evidence, WordPress query probing:', review)
+        self.assertNotIn('SECRET_SENTINEL', review)
+
     def test_rapid_scan_witness_and_ip_policy_propagation(self):
         self.cfg = {'schema_version': 1, 'exclude': ['suspected_automation'],
                     'rapid_scan': {'enabled': 1, 'window_seconds': 10, 'min_requests': 6,
