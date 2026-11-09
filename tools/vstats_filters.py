@@ -256,8 +256,6 @@ def validate_profile(value, app, perl):
     cfg['exclude'] = ['suspected_automation']
     cfg['behavior_include'] = sorted(ids)
     for rule in RULES:
-        if not isinstance(cfg.get(rule, {}), dict):
-            raise ValueError('Invalid rule configuration')
         cfg[rule]['enabled'] = int(p['filters'][rule])
     # Intended enablement remains saved even where required paths are unavailable.
     if not cfg['probing']['paths']:
