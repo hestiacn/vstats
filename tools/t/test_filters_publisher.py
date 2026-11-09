@@ -257,6 +257,34 @@ class Publication(unittest.TestCase):
         self.assertEqual((self.generation / 'example.test/2026-10/awstats.example.test.html').read_bytes(), before)
         self.assertEqual([p.name for p in (self.state / 'runs').iterdir()], [self.old])
 
+    def test_corpus_capacity_is_unavailable_for_every_component_and_match_count(self):
+        import automation_analysis as corpus
+        profile = validate_profile(defaults(str(ROOT), PERL), str(ROOT), PERL)
+        inputs = self.root / 'capacity-input'; inputs.mkdir()
+        (inputs / '2026-10-01.log').write_bytes(record('01') + record('01', stamp='12:00:01'))
+        config = self.root / 'capacity-config.json'
+        config.write_text(json.dumps(profile['classifier']), encoding='utf-8')
+        with mock.patch.object(corpus, 'MAX_RECORDS', 1):
+            result = export.build(config, inputs, self.root / 'capacity-output', perl=PERL)
+        self.assertEqual(result['corpus_automation']['status'], 'unavailable_capacity')
+        for key in corpus.RULES:
+            self.assertEqual(result['evidence_classes'][key]['by_month'], {}, key)
+        with mock.patch.object(publisher, 'APP', str(ROOT)), mock.patch.object(publisher, 'PERL', PERL):
+            info = publisher.profile_state(True, profile, {}, {'totals': {'2026-10': {'hits': 123}}})
+        info['corpus_automation'] = result['corpus_automation']
+        info['matched_requests'] = {key + '_flagged_requests': result['behavior'][key + '_flagged_requests']
+                                    for key in corpus.RULES}
+        run = self.state / 'runs' / self.old; run.mkdir()
+        (run / 'manifest.json').write_text(json.dumps({'generation': self.old,
+            'private_base': str(self.base), 'profiles': {'example.test': info}}), encoding='utf-8')
+        self.run_publisher()
+        token = (self.web / 'current').resolve().name
+        published = json.loads((self.state / 'runs' / token / 'manifest.json').read_text(encoding='utf-8'))
+        actual = published['profiles']['example.test']
+        for key in corpus.RULES:
+            self.assertEqual(actual['effective'][key], 'Corpus evidence over limits; retained', key)
+            self.assertNotIn(key + '_flagged_requests', actual['matched_requests'], key)
+
     def test_render_failure_cannot_publish_settings_or_modify_old_report(self):
         with mock.patch.object(publisher,'decorate_generation',side_effect=RuntimeError('synthetic precommit failure')):
             with self.assertRaises(RuntimeError):self.run_publisher()

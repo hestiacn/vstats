@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('vstats_filter_report', str(ROOT / 'traffic-filter-report.py'))
@@ -180,6 +181,33 @@ class BatchIntegration(unittest.TestCase):
         page = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
         self.assertIn('Compound scripted browsing', page)
         self.assertNotIn('Synthetic) Chrome', page)
+
+    def test_cohort_overlay_is_not_attributed_to_historical_operator_evidence(self):
+        raw = self.ordinary
+        (self.inputs / '2026-10-02.log').write_bytes(raw)
+        self.config.write_text(json.dumps({'schema_version': 1, 'exclude': ['suspected_automation'],
+            'scheduled_automation': {'enabled': 1, 'aggressive_comparison': 1}}), encoding='utf-8')
+        proof = {'rule_id': 'aggressive_cohort_comparison_v1', 'signature_sha256': 'a' * 64,
+                 'corpus_sha256': 'b' * 64, 'label': 'Aggressive candidate; default retained'}
+        analysis = {'version': 'vstats-corpus-automation-v2', 'status': 'evaluated',
+            'matches': {}, 'aggressive': {('2026-10-02', 1): proof}, 'eligible_keys': set(),
+            'context_sha256': 'b' * 64, 'signatures': [],
+            'rule_counts': {key: 0 for key in builder.CORPUS_RULES}}
+        # Detection has separate corpus tests. Here a supported cohort-only
+        # payload exercises its actual export/accounting/review consumers.
+        with mock.patch.object(builder, 'prepare_automation', return_value=analysis):
+            result = self.run_build()
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), raw)
+        self.assertEqual((self.root / 'output/retrospective-filtered/2026-10-02.log').read_bytes(), b'')
+        impact = result['evidence_classes']['historical_operator']['by_month']['2026-10']
+        self.assertEqual(impact, dict(matched_requests=0, removed_requests=0,
+                                      exclusive_requests=0, overlapping_requests=0))
+        for scope in ('class', 'exclusive'):
+            audit = self.root / ('output/evidence-' + scope + '-historical_operator/2026-10-02.log')
+            self.assertEqual(audit.read_bytes(), b'')
+        page = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertIn('Aggressive comparison candidate', page)
+        self.assertNotIn('Retrospective operator inference:', page)
 
     def test_service_family_review_and_request_only_source_policy(self):
         rows = [('192.0.2.1 - - [02/Oct/2026:10:00:{:02d} +0000] "GET {} HTTP/1.1" {} 12 "-" "SyntheticClient/1"\n'.format(i, path, status)).encode()

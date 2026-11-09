@@ -28,6 +28,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from normalize_logs import build_snapshot, merge_observability
 from native_history_cache import read_history, restore_history
+from automation_analysis import RULES as CORPUS_RULES
 from vstats_filters import (add_filters_menu, native_shell, canonical, identity, read_json,
                             atomic_json, validate_profile, defaults, filter_status, FILTERS, RULES, GENERATION,
                             classifier_config, filter_catalogue,
@@ -1887,12 +1888,15 @@ def main():
         for site, info in profiles.items():
             info['browser_access'] = public_browser_policy(browser_policy(real_config, site))
             if info['applied']:
+                corpus = info.get('corpus_automation', {})
+                if corpus.get('status') == 'unavailable_capacity':
+                    for rule in CORPUS_RULES:
+                        info.get('matched_requests', {}).pop(rule + '_flagged_requests', None)
                 info['effective_by_month'] = {m: filter_status(info['applied'], evidence=any(d.startswith(m + '-') for d in evidence_dates),
                     over_limits=m in info.get('capacity_fallback', {}),
                     operator_evidence=bool(info.get('operator_evidence', {}).get('sha256'))) for m in info.get('totals', {})}
                 for month, statuses in info['effective_by_month'].items():
-                    corpus = info.get('corpus_automation', {})
-                    for rule in ('compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation'):
+                    for rule in CORPUS_RULES:
                         if info['applied']['filters'][rule] and corpus.get('status') == 'unavailable_capacity':
                             statuses[rule] = 'Corpus evidence over limits; retained'
                     if (info['applied']['filters']['scheduled_automation'] and corpus.get('status') == 'evaluated'

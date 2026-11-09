@@ -822,7 +822,8 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             matches = {'service_discovery': bool(record.get('service_discovery_flagged')),
                        'operator_associated': operator.get('state') == 'dated_association',
                        'historical_operator': operator.get('state') == 'historical_candidate'}
-            matches.update({key: bool(record.get(key + '_flagged')) for key in CORPUS_RULES})
+            if automation['status'] != 'unavailable_capacity':
+                matches.update({key: bool(record.get(key + '_flagged')) for key in CORPUS_RULES})
             causes = {key for key, matched in matches.items() if matched and
                       ((key in ('service_discovery',) + CORPUS_RULES and not record['behavior_included']) or
                        (key in ('operator_associated', 'historical_operator') and record.get('operator_excluded')))}
@@ -843,7 +844,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                     values['exclusive_requests' if exclusive else 'overlapping_requests'] += 1
                     if exclusive:
                         class_exclusive[key].add(record['line_index'])
-                if key == 'historical_operator' and record['line_index'] in inferred_omitted:
+                if key == 'historical_operator' and record.get('operator_inferred_excluded') and not excluded:
                     class_selected[key].add(record['line_index']); class_exclusive[key].add(record['line_index'])
                     values['removed_requests'] += 1; values['exclusive_requests'] += 1
             if excluded:
