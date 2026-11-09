@@ -1,5 +1,7 @@
 """Independent design cases for native fallback, coverage and UI isolation."""
+import ast
 import copy
+import re
 import hashlib
 import importlib.util
 import json
@@ -125,6 +127,39 @@ class Publisher(unittest.TestCase):
         for path in root.glob('**/*.html'):
             self.assertNotIn('/filters/', path.read_text(encoding='utf-8'))
         self.assertGreater(publisher.validate_report_links(str(root)), 0)
+
+    def test_inferred_notice_survives_native_body_attributes_and_decoration(self):
+        # Execute the actual legacy overlay block; synthesize only native HTML.
+        tree = ast.parse((ROOT / 'tools/publish-static-reports.py').read_text(encoding='utf-8'))
+        function = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'legacy_main')
+        overlays = [n for n in ast.walk(function) if isinstance(n, ast.If)
+                    and any(isinstance(x, ast.For) and isinstance(x.iter, ast.Call)
+                            and isinstance(x.iter.func, ast.Attribute) and x.iter.func.attr == 'glob'
+                            for x in n.body)]
+        self.assertEqual(len(overlays), 1)
+        site_web = self.root / 'generation/example.test'; site_web.mkdir(parents=True)
+        header = '<div class="header-right"><div class="dropdown-menu">\t</div>\n\t<button id="theme-toggle">theme</button></div>'
+        plain = '<html><body class="aws-main">' + header + '<table><td>123</td></table></body></html>'
+        (site_web / 'awstats.example.test.html').write_text(plain, encoding='utf-8')
+        def render(account, site, target, totals, gid, extra, **kwargs):
+            folder = Path(target) / '2026-11'; folder.mkdir(parents=True)
+            for name, body in [('awstats.example.test.html', '<body class="aws-main">'),
+                               ('awstats.example.test.unknownbrowser.html', '<BODY class="aws-main" data-test="1">'),
+                               ('index.html', '<body>')]:
+                (folder / name).write_text('<html>' + body + header + '<table><td>123</td></table></body></html>', encoding='utf-8')
+        scope = dict(Path=Path, re=re, os=os, account=None, site='example.test',
+                     site_web=str(site_web), apache_gid=os.getgid(), extra_links=[],
+                     result={'totals': {'retrospective': {}}, 'configs': {'retrospective': None}},
+                     render_site_view=render)
+        module = ast.fix_missing_locations(ast.Module(body=[copy.deepcopy(overlays[0])]))
+        exec(compile(module, '<actual-overlay-regression>', 'exec'), scope)
+        with mock.patch.object(publisher, 'render_filters'):
+            publisher.decorate_generation(str(site_web.parent), {'profiles': {'example.test': {}}}, os.getgid())
+        for path in (site_web / 'retrospective').glob('**/*.html'):
+            output = path.read_text(encoding='utf-8')
+            self.assertIn('Identity is unverified', output, str(path))
+            self.assertIn('<table><td>123</td></table>', output)
+        self.assertNotIn('Identity is unverified', (site_web / 'awstats.example.test.html').read_text(encoding='utf-8'))
 
     def test_control_requests_do_not_create_visits_in_the_website_report(self):
         from normalize_logs import normalize

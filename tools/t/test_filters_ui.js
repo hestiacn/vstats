@@ -87,7 +87,13 @@ async function runFiltersUi(fixture) {
       emitDocument('pointerdown',{target:body});assert(help.open,mode+': help must remain hoverable');
       emit(help,'mouseleave');assert(!help.open,mode+': hover dismissal');
       emit(trigger,'focusin');assert(help.open,mode+': keyboard focus help');
+      const beforeScroll=trigger.getBoundingClientRect();
+      trigger.getBoundingClientRect=()=>Object.assign({},beforeScroll,{bottom:240});
+      for(const listener of windowHandlers.scroll||[])listener({});
+      assert(help.open,mode+': focus-triggered scroll must preserve help');
+      assert(Number.parseFloat(body.style.top)===240,mode+': scroll must reposition existing help');
       emitDocument('keydown',{key:'Escape'});assert(!help.open,mode+': Escape dismissal');
+      for(const listener of windowHandlers.scroll||[])listener({});assert(!help.open,mode+': scroll after Escape must not reopen help');
       emit(trigger,'focusout',{relatedTarget:get('return-report')});
       emit(trigger,'click');assert(help.open,mode+': touch-like help tap');
       assert(Number.parseFloat(body.style.left)>=12&&Number.parseFloat(body.style.top)>=12,mode+': help positioning');

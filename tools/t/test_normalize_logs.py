@@ -1,6 +1,8 @@
 import hashlib
 import importlib.util
 import json
+import re
+import textwrap
 from pathlib import Path
 import tempfile
 import unittest
@@ -23,6 +25,22 @@ class Observability(unittest.TestCase):
 
     def common(self, path='/'):
         return ('192.0.2.1 - - [01/Nov/2026:12:00:00 +0000] "GET ' + path + ' HTTP/1.1" 200 20').encode()
+
+    def test_documented_log_sources_example_produces_trusted_observability(self):
+        docs = (ROOT / 'docs/filters.md').read_text(encoding='utf-8')
+        fence = chr(96) * 3
+        blocks = [b for b in re.findall(fence + r'json[ \t]*\n(.*?)\n[ \t]*' + fence, docs, re.S) if '"log_sources"' in b]
+        self.assertEqual(len(blocks), 1)
+        settings = json.loads(textwrap.dedent(blocks[0]))
+        with tempfile.TemporaryDirectory(prefix='vstats-doc-provenance-') as temporary:
+            root = Path(temporary); logs = root / 'logs'; logs.mkdir()
+            (logs / 'example-access_log').write_bytes(self.common() + b' "-" "SyntheticCrawler/1.0"\n')
+            path, _ = normalizer.build_snapshot(str(logs), ['example-access_log'], str(root / 'work'), settings['log_sources'])
+            metadata = json.loads((root / 'work/access.observability.json').read_text(encoding='utf-8'))['records']
+            item = metadata[hashlib.sha256(Path(path).read_bytes().rstrip(b'\n')).hexdigest()]
+            self.assertEqual(item['vhost'], 'example.test')
+            self.assertEqual(item['client_source'], 'socket_peer')
+            self.assertEqual(item['user_agent'], 'value')
 
     def test_common_is_unobserved(self):
         raw, receipt, metadata = self.snapshot(self.common() + b'\n', 'common')
