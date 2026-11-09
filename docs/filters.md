@@ -203,7 +203,7 @@ Publisher-owned `LogFile`, `DirData`, `PurgeLogFile=0` and `ArchiveLogRecords=0`
 assignments follow native Includes, so included settings cannot redirect processing
 or purge retained input. Filtered and verified views select their staged `VerifiedCrawlerEvidenceFile` after Includes, and a Filters-managed original view selects none; the original view of a site not managed by Filters retains its configured evidence choice.
 Managed sites with native Includes replay every retained month on every run.
-When any corpus-aware rule is enabled, changing retained corpus input can invalidate every cached month; nonempty per-class and exclusive-removal audit inputs are replayed separately on each run.
+When any corpus-layer rule is enabled (including WordPress micro-probing or metadata requests), changing retained corpus input can invalidate every cached month; nonempty per-class and exclusive-removal audit inputs are replayed separately on each run.
 The processing cost grows with retained input; no capacity guarantee is made.
 The publisher preserves the original main or verified configuration directory
 as the base for relative Includes, including nested and parent-directory targets.

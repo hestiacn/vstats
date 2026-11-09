@@ -327,6 +327,16 @@ def defaults(app, perl, current=None):
                              'classifier': classifier, 'exceptions': []}, app, perl)
 
 
+def micro_probe_unready(rule):
+    """True when well-typed lists cannot meet the classifier's enabled-only
+    micro-probe minima; malformed values are left for classifier_config."""
+    paths = [rule[k] for k in ('login_paths', 'post_paths', 'api_paths')]
+    minima = [rule[k] for k in ('login_distinct_paths', 'post_distinct_paths')]
+    if not all(type(v) is list for v in paths) or not all(type(v) is int for v in minima):
+        return False
+    return len(paths[0]) < minima[0] or len(paths[1]) < minima[1] or not paths[2]
+
+
 def validate_profile(value, app, perl):
     if not isinstance(value, dict) or set(value) != {'schema_version', 'filters', 'exclude_automated_ips',
                                                    'native_level', 'classifier', 'exceptions'}:
@@ -386,6 +396,8 @@ def validate_profile(value, app, perl):
         cfg['probing']['enabled'] = 0
     if not (cfg['distributed_login']['login_paths'] and cfg['distributed_login']['admin_paths']):
         cfg['distributed_login']['enabled'] = 0
+    if micro_probe_unready(cfg['wp_micro_probe']):
+        cfg['wp_micro_probe']['enabled'] = 0
     p['classifier'] = classifier_config(cfg, app, perl)
     p['exceptions'].sort(key=lambda e: e['request_id'])
     return p
@@ -424,6 +436,8 @@ def filter_status(profile, evidence=False, over_limits=False, operator_evidence=
         elif key == 'backdoor_probe' and not profile['classifier'][key]['paths']:
             statuses[key] = 'Needs configuration'
         elif key == 'protocol_probe' and not all(profile['classifier'][key][k] for k in ('post_paths', 'get_paths', 'tool_tokens')):
+            statuses[key] = 'Needs configuration'
+        elif key == 'wp_micro_probe' and micro_probe_unready(profile['classifier'][key]):
             statuses[key] = 'Needs configuration'
         elif (key in RULES or key in ('operator_associated', 'historical_operator')) and over_limits:
             statuses[key] = 'Input over limits'

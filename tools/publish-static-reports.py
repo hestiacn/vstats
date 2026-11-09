@@ -1985,10 +1985,13 @@ def main():
                 path = old_run / name
                 if path.is_dir() and not path.is_symlink():
                     shutil.rmtree(str(path))
-            for name in ['data', 'data-verified', 'data-requests', 'data-behavior', 'input', 'work', 'crawler-evidence', 'supplements']:
+            for name in ['data', 'data-verified', 'data-requests', 'data-behavior', 'data-inferred', 'input', 'work', 'crawler-evidence', 'supplements']:
                 path = old_run / 'base' / name
                 if path.is_dir() and not path.is_symlink():
                     shutil.rmtree(str(path))
+            evidence = old_run / 'base' / 'operator-evidence.json'
+            if evidence.is_file() and not evidence.is_symlink():
+                evidence.unlink()
 
 
 if __name__ == '__main__':

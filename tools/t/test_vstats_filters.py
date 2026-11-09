@@ -137,6 +137,34 @@ class Controls(unittest.TestCase):
         self.assertEqual(defaults(str(ROOT), PERL, selected)['classifier']['metadata_requests']['paths'], ['/custom-metadata.txt'])
         self.assertTrue(all(filter_status(selected)[key] == 'Active' for key in keys))
 
+    def test_defaults_and_reset_preserve_unconfigured_micro_paths(self):
+        for key, paths in [('api_paths', []), ('login_paths', ['/wp-login.php']),
+                           ('post_paths', ['/wp-json/batch/v1'])]:
+            with self.subTest(key=key):
+                profile = copy.deepcopy(self.profile)
+                profile['filters']['wp_micro_probe'] = False
+                profile['classifier']['wp_micro_probe'][key] = paths
+                profile = validate_profile(profile, str(ROOT), PERL)
+                generated = defaults(str(ROOT), PERL, profile)
+                self.assertEqual(validate_profile(generated, str(ROOT), PERL), generated)
+                self.assertTrue(generated['filters']['wp_micro_probe'])
+                self.assertEqual(generated['classifier']['wp_micro_probe'][key], paths)
+                self.assertEqual(generated['classifier']['wp_micro_probe']['enabled'], 0)
+                self.assertEqual(filter_status(generated)['wp_micro_probe'], 'Needs configuration')
+                direct = copy.deepcopy(generated['classifier'])
+                direct['wp_micro_probe']['enabled'] = 1
+                with self.assertRaises(ValueError):
+                    classifier_config(direct, str(ROOT), PERL)
+                self.manifest['profiles']['example.test'].update(
+                    applied=profile, profile_id=identity(profile), default_profile=generated)
+                atomic_json(self.state / 'runs' / GEN / 'manifest.json', self.manifest)
+                self.assertEqual(self.control.state_for('example.test')['default_profile'], generated)
+                self.control.change('example.test', 'reset', self.body, self.user)
+                reset = read_json(self.state / 'drafts/example.test.json')['profile']
+                self.assertEqual(reset['classifier']['wp_micro_probe'][key], paths)
+                self.assertTrue(reset['filters']['wp_micro_probe'])
+                self.assertEqual(reset['classifier']['wp_micro_probe']['enabled'], 0)
+
     def test_login_rotation_configuration_and_old_profiles(self):
         old = copy.deepcopy(self.profile)
         for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe'):

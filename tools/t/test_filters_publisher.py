@@ -245,6 +245,54 @@ class Publication(unittest.TestCase):
         self.assertEqual((self.web / 'current').resolve(), self.generation)
         self.assertEqual((self.generation / 'example.test/2026-10/awstats.example.test.html').read_text(), self.report)
 
+    def test_unconfigured_micro_defaults_survive_consecutive_publications(self):
+        profile = validate_profile(defaults(str(ROOT), PERL), str(ROOT), PERL)
+        profile['filters']['wp_micro_probe'] = False
+        profile['classifier']['wp_micro_probe']['api_paths'] = []
+        profile = validate_profile(profile, str(ROOT), PERL)
+        with mock.patch.object(publisher, 'APP', str(ROOT)), mock.patch.object(publisher, 'PERL', PERL):
+            info = publisher.profile_state(True, profile, {}, {'totals': {'2026-10': {'hits': 123}}})
+        run = self.state / 'runs' / self.old; run.mkdir()
+        (run / 'manifest.json').write_text(json.dumps({'generation': self.old,
+            'private_base': str(self.base), 'profiles': {'example.test': info}}), encoding='utf-8')
+        for _ in range(2):
+            self.run_publisher()
+            token = (self.web / 'current').resolve().name
+            manifest = json.loads((self.state / 'runs' / token / 'manifest.json').read_text(encoding='utf-8'))
+            generated = manifest['profiles']['example.test']['default_profile']
+            self.assertEqual(validate_profile(generated, str(ROOT), PERL), generated)
+            self.assertTrue(generated['filters']['wp_micro_probe'])
+            self.assertEqual(generated['classifier']['wp_micro_probe']['api_paths'], [])
+            self.assertEqual(generated['classifier']['wp_micro_probe']['enabled'], 0)
+
+    def test_pruning_preserves_referenced_bases_corpora_and_symlinks(self):
+        obsolete = self.state / 'runs/20261001T100000Z-11111111'
+        referenced = self.state / 'runs/20261002T100000Z-22222222'
+        linked = self.state / 'runs/20261003T100000Z-33333333'
+        previous = self.state / 'runs' / self.old
+        for run in [obsolete, referenced, previous]:
+            (run / 'base/data-inferred').mkdir(parents=True)
+            (run / 'base/data-inferred/history.txt').write_bytes(b'synthetic derived history')
+            (run / 'base/operator-evidence.json').write_text('{}', encoding='utf-8')
+            (run / 'base/corpus').mkdir()
+            (run / 'base/corpus/source.log').write_bytes(b'synthetic original input')
+        (linked / 'base').mkdir(parents=True)
+        (linked / 'base/data-inferred').symlink_to(referenced / 'base/data-inferred')
+        (linked / 'base/operator-evidence.json').symlink_to(referenced / 'base/operator-evidence.json')
+        with mock.patch.object(publisher, 'APP', str(ROOT)), mock.patch.object(publisher, 'PERL', PERL):
+            info = publisher.profile_state(False, None, {}, {'totals': {'2026-10': {'hits': 123}}})
+        (previous / 'manifest.json').write_text(json.dumps({'generation': self.old,
+            'private_base': str(referenced / 'base'), 'profiles': {'example.test': info}}), encoding='utf-8')
+        self.run_publisher()
+        self.assertFalse((obsolete / 'base/data-inferred').exists())
+        self.assertFalse((obsolete / 'base/operator-evidence.json').exists())
+        self.assertEqual((obsolete / 'base/corpus/source.log').read_bytes(), b'synthetic original input')
+        for run in [referenced, previous]:
+            self.assertEqual((run / 'base/data-inferred/history.txt').read_bytes(), b'synthetic derived history')
+            self.assertTrue((run / 'base/operator-evidence.json').is_file())
+        self.assertTrue((linked / 'base/data-inferred').is_symlink())
+        self.assertTrue((linked / 'base/operator-evidence.json').is_symlink())
+
     def test_incomplete_stored_profile_is_refused_before_publication(self):
         profile = validate_profile(defaults(str(ROOT), PERL), str(ROOT), PERL)
         del profile['filters']['behavior']
