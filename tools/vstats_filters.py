@@ -72,7 +72,7 @@ FILTER_CATALOGUE += [
          help='Requires all configured request, browser, platform, author-ID, API and HTTP 404 minima together in one source/site window. Only configured author paths, user paths and REST routes qualify. Ambiguous query features abstain; successful enumeration or malicious intent is not established.'),
     dict(key='wp_query_probe', label='WordPress query probing', family='probing_and_scanning', section='wp_query_probe',
          summary='Internal query keys together with plugin-file probes.',
-         help='Requires configured WordPress internal query keys on configured entry paths and plugin-file probes in one bounded source/site episode. Response failure is not required. Marks matching query/plugin probes only. Ordinary pages and unrelated requests do not inherit suspicion.'),
+         help='Requires configured WordPress internal query keys on configured query paths and plugin-file probes in one bounded source/site episode. Response failure is not required. Marks matching query/plugin probes only. Ordinary pages and unrelated requests do not inherit suspicion.'),
     dict(key='backdoor_probe', label='Backdoor path probing', family='probing_and_scanning', section='backdoor_probe',
          parameter_help={'not_found_requests': 'Minimum number of observed HTTP 404 or 410 responses among backdoor-path probes.'},
          summary='Configured backdoor-path probes with POST activity and missing responses.',
@@ -84,8 +84,10 @@ FILTER_CATALOGUE += [
          summary='Failed probes across independent service and manifest families.',
          help='Requires GET/HEAD responses of 404 or 410 across the configured number of registered service families within the time window. Evidence is scoped to one source, known site and exact observed user agent. OpenAPI/Swagger aliases form one family; MCP, AI plugin and AI/LLM descriptions supply others. Successful catch-all responses and ordinary metadata do not qualify. Marks the probes only.'),
     dict(key='wp_micro_probe', label='WordPress micro-probing', family='probing_and_scanning', section='wp_micro_probe',
+         parameter_help={'post_requests': 'Minimum number of POST requests to configured POST paths with HTTP 400–599 responses in the failing POST/API witness.',
+                         'entry_paths': 'Exact entry paths, one per line. Only the failing POST/API witness also marks GET/HEAD requests to them, with a recognized browser/platform claim, inside its episode window; the login-discovery witness never marks them.'},
          summary='Small multi-installation login or failing POST/API episodes.',
-         help='Requires either HEAD discovery across configured login locations plus a login GET, or failing POSTs across configured paths including an API endpoint, with browser/platform diversity in the source/site window. A positive same-user-agent page/asset edge vetoes the episode. Marks witnessed probes and configured entry requests only; sparse ordinary browsing is insufficient.'),
+         help='Requires either HEAD discovery across configured login locations plus a login GET, or failing POSTs across configured paths including an API endpoint, with browser/platform diversity in the source/site window. A positive same-user-agent page/asset edge vetoes the episode. Marks witnessed probes; only the failing POST/API witness also marks configured entry requests. Sparse ordinary browsing is insufficient.'),
     dict(key='operator_associated', label='Operator-associated scanners', family='provider_evidence', section='operator_association',
          section_label='Operator evidence and comparison', count_key='operator_associated_requests',
          summary='Forward-confirmed scanner DNS during its dated validity interval.',
@@ -97,9 +99,11 @@ FILTER_CATALOGUE += [
          summary='Independent client anomalies plus resource/rate evidence.',
          help='Requires an independent client anomaly together with resource or rate evidence in a witnessed visit. Metadata-family traversal and fast distinct-page traversal are bounded by their thresholds. Literal quote wrapping in the user agent qualifies as an anomaly only with sufficient unquoted controls and when rare in that day/log format. Missing assets or one page alone is insufficient. Positive browser continuity can veto the episode; no actor identity is inferred.'),
     dict(key='scheduled_automation', label='Scheduled crawling', family='automated_browsing', section='scheduled_automation',
+         parameter_help={'min_sources': 'Minimum number of distinct source addresses, in each supporting complete UTC week, making the same site and exact user agent\'s API/feed/font GET/HEAD requests.'},
          summary='Repeated weekly fetching patterns with corroborated witnesses.',
          help='Learns repeated weekly path/phase signatures across complete UTC weeks, corroborating sources and resource families. The target week is held out of the required other cycles. Positive browser continuity limits training and vetoes target episodes. Only structurally witnessed visits are excluded; a shared user-agent string or calendar phase alone never changes default totals.'),
     dict(key='inferred_scanner', label='Bounded scanner inference', family='scanner_inference', section='inferred_scanner',
+         parameter_help={'min_sources': 'Minimum number of distinct source addresses sharing the exact platformless client fingerprint, each with valid scanner DNS evidence within window days; counted across the whole corpus, not only selected months.'},
          summary='Recent selected months and corroborated scanner fingerprints.',
          help='Requires selected UTC months, scanner DNS evidence within window days of the request and the configured number of corroborating scanner sources for a client fingerprint. Association is inferred historical evidence, not verified ownership. Unsupported provenance and positive browser continuity abstain. Marks witnessed requests only; the comparison and evidence remain reviewable.'),
     dict(key='declared_automation', label='Declared automation', family='signatures', section='declared_automation',
@@ -134,7 +138,7 @@ PARAMETER_HELP = {
     'distinct_author_ids': 'Minimum number of distinct positive author IDs in the enumeration window.',
     'user_api_requests': 'Minimum number of requests carrying configured user-API evidence.',
     'query_paths': 'Exact paths at which configured internal query keys are considered, one per line.',
-    'plugin_prefixes': 'Plugin path prefixes considered for failed-file corroboration, one per line.',
+    'plugin_prefixes': 'Plugin directory prefixes, one per line. A GET/HEAD of a plugin readme or PHP file below one supplies plugin-file evidence whatever its response status.',
     'query_keys': 'Internal query-parameter names considered for probing evidence, one per line.',
     'entry_paths': 'Exact entry paths eligible for the witnessed episode only, one per line.',
     'post_requests': 'Minimum number of qualifying POST requests in the episode.',
@@ -145,9 +149,9 @@ PARAMETER_HELP = {
     'retrospective_months': 'UTC calendar months (YYYY-MM, one per line) for the optional inferred comparison; never backdates identity or changes default totals.',
     'distinct_pages': 'Minimum number of distinct page paths in the fast-page witness.',
     'metadata_families': 'Minimum number of distinct metadata resource families in the metadata-traversal witness.',
-    'quote_min_controls': 'Minimum number of unquoted browser control requests for the same UTC day and configured log format.',
-    'quote_min_sources': 'Minimum number of distinct source addresses supplying those unquoted controls.',
-    'quote_max_percent': 'Maximum percentage of quote-wrapped requests among wrapped and unwrapped controls; a broad format convention vetoes this anomaly.',
+    'quote_min_controls': 'Minimum number of requests with an observed, unquoted user-agent value in the same UTC day and configured log format.',
+    'quote_min_sources': 'Minimum number of distinct literal client IP addresses among those unquoted requests; a client value that is not a literal IP address does not count as a source.',
+    'quote_max_percent': 'Maximum percentage of quote-wrapped user-agent values among all requests with an observed user-agent value in the same UTC day and configured log format; a higher share is treated as a format convention and vetoes this anomaly.',
     'min_cycles': 'Minimum number of other complete UTC weeks with the repeated signature; the target week is held out.',
     'min_phase_paths': 'Minimum number of distinct weekly phase/path pairs in the learned signature.',
     'min_families': 'Minimum number of resource families corroborating a scheduled signature.',
@@ -161,7 +165,7 @@ PARAMETER_HELP = {
     'login_get_requests': 'Minimum number of GET requests to configured login paths.',
     'post_distinct_paths': 'Minimum number of distinct configured POST paths in the failing POST/API witness.',
     'api_paths': 'Exact API paths required to corroborate the failing POST witness, one per line.',
-    'sitemap_patterns': '0/1 switch: 1 also recognizes configured sitemap filename patterns (XML/XML.gz); 0 uses exact paths only.'}
+    'sitemap_patterns': '0/1 switch: 1 also recognizes the built-in XML/XML.gz sitemap filename patterns; 0 uses the configured exact paths only.'}
 
 FILTER_STATUS_CLASSES = {
     'Active': 'active', 'Active for covered requests': 'active',
@@ -173,7 +177,7 @@ FILTER_STATUS_CLASSES = {
     'Not selected for this month': 'needs'}
 
 FILTER_POLICIES = {
-    'ip_policy': dict(label='Exclude other requests from behavior-flagged IPs',
+    'ip_policy': dict(label='Exclude other requests from IPs with eligible behavior evidence',
                       summary='Extends qualifying evidence to the same website, address and UTC month.'),
     'native_level': dict(label='Native crawler detection level',
         summary='Extended legacy tables also match ordinary Windows desktop browsers.',

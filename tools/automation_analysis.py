@@ -153,7 +153,7 @@ def prepare(report_paths, config, valid_days):
                 slot = quoted[(path.stem, row['source_format'])]
                 is_quote = ua.startswith('"') and ua.endswith('"')
                 slot[int(is_quote)] += 1
-                if not is_quote:
+                if not is_quote and row['_client'] is not None:
                     slot[2].add(row['_client'])
             if (row['_host'] and row['_client'] and row['normalized_target'] and
                     row['client_source'] in ('socket_peer', 'trusted_proxy') and

@@ -488,10 +488,14 @@ bundles within existing evidence caps for historical native replay.
 
 ### Optional daily export and review builder
 
-The native-report export excludes automated IPs **by default**. If any enabled
-behavior rule flags a request, its canonical literal source IP is excluded
+The native-report export excludes automated IPs **by default**. If an IP-eligible
+witness flags a request, its canonical literal source IP is excluded
 throughout the same UTC report month in the provided site corpus, including
-earlier days. There is no carry-over to another month without new evidence.
+earlier days. Only broad, endpoint, rapid content-path, distributed login, HEAD
+sweep, sensitive-file and WordPress enumeration witnesses, and login rotation's
+original stronger witness, are IP-eligible; all other behavior rules, metadata
+requests and the corpus layer remain request-only. There is no carry-over to
+another month without new evidence.
 This policy spans the accepted hosts/aliases in that site input; supply separate
 site inputs when that is not the intended scope. It does not relabel every
 request from that IP as independently detected automation or assert a verified
@@ -814,7 +818,7 @@ silently assigning a site.
 
 JSONL requires integer UTC-epoch `timestamp`, nonempty string `client`, string
 `target`. Optional `user_agent`/`host` are strings or null; unknown keys are
-unparsed. Null/empty UA is missing; `"-"` is literal in JSONL.
+unparsed. Null, empty and `"-"` user agents are treated as missing.
 
 ```json
 {"timestamp":100,"client":"192.0.2.1","target":"/","user_agent":"Bytespider;","host":"example.test"}

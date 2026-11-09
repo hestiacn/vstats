@@ -284,8 +284,7 @@ match count. It affects only the matching requests. The login browser-rotation
 rule also accepts alternative browser-change or separated platform-switch
 witnesses; only its original stronger conjunction can trigger IP/month
 expansion. The IP policy checkbox therefore does not turn every new heuristic
-into a whole-source exclusion. Existing saved profiles keep the new query
-filter disabled until explicitly selected; Reset checks it.
+into a whole-source exclusion. New profiles and Reset check the query filter.
 
 Robots-file requests and successful content-page walks alone remain visible.
 Self-declared CVE PoC tools follow the native crawler-signatures choice and do
@@ -300,8 +299,7 @@ whole-IP policy. The rules require corroborating probe paths/methods and
 missing responses, with a declared tool also required for protocol discovery.
 Successful protocol clients, ordinary page walks, robots-file requests and
 shared browser signatures alone do not qualify. All thresholds are unvalidated
-heuristics. Existing profiles preserve their policy until the new choices are
-selected; Reset checks them and keeps configured lists.
+heuristics. New profiles and Reset check them; Reset keeps configured lists.
 
 ## Scanner association and service discovery
 

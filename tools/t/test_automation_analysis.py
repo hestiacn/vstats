@@ -85,6 +85,53 @@ class CorpusRules(unittest.TestCase):
             row['user_agent'] = '"Wrapped/1.0"'
         self.assertFalse(self.prepare(rows)['matches'])
 
+    def test_quote_controls_count_literal_sources_after_real_parsing(self):
+        self.config['compound_automation'].update(enabled=1, quote_min_controls=100,
+                                                  quote_min_sources=5)
+        config_path = self.root / 'config.json'
+        config_path.write_text(json.dumps(self.config), encoding='utf-8')
+        for case, fifth, expected in [('four', None, 0), ('invalid', 'invalid-client', 0),
+                                      ('five', '198.51.100.5', 8)]:
+            with self.subTest(case=case):
+                rows = self.burst()
+                for i, row in enumerate(rows[8:]):
+                    row['client'] = '198.51.100.' + str(i % 4 + 1)
+                if fifth is not None:
+                    rows[-1]['client'] = fifth
+                raw_lines, metadata = [], {}
+                for row in rows:
+                    raw = json.dumps(dict(timestamp=row['timestamp'], client=row['client'],
+                        target=row['normalized_target'], user_agent=row['user_agent'],
+                        host='example.test', method='GET', status=200))
+                    raw_lines.append(raw)
+                    metadata[hashlib.sha256(raw.encode('utf-8')).hexdigest()] = dict(
+                        format='combined', vhost='example.test', scheme='https',
+                        client_source='socket_peer', user_agent='value', referrer='absent')
+                input_path = self.root / (case + '.log')
+                metadata_path = self.root / (case + '-metadata.json')
+                output_path = self.root / (case + '-parsed.json')
+                input_path.write_text('\n'.join(raw_lines) + '\n', encoding='utf-8')
+                metadata_path.write_text(json.dumps(dict(schema_version=1, records=metadata)),
+                                         encoding='utf-8')
+                subprocess.check_call([PERL, str(ROOT / 'traffic-classify.pl'), '--config',
+                    str(config_path), '--input', str(input_path), '--input-format', 'jsonl',
+                    '--output', str(output_path), '--details', '--metadata', str(metadata_path)],
+                    env=dict(os.environ, LC_ALL='C', LANG='C'))
+                parsed = json.loads(output_path.read_text(encoding='utf-8'))
+                self.assertEqual(parsed['counts']['parsed'], 108)
+                self.assertEqual(parsed['counts']['analyzed'], 108)
+                controls = parsed['details'][8:]
+                self.assertEqual(len(controls), 100)
+                self.assertGreaterEqual(len(controls), self.config['compound_automation']['quote_min_controls'])
+                self.assertTrue(all(r['field_observability']['user_agent'] == 'value'
+                    and r['user_agent'] and not r['user_agent'].startswith('"') for r in controls))
+                if fifth == 'invalid-client':
+                    self.assertEqual(controls[-1]['client'], fifth)
+                    self.assertIsNone(analysis.canonical_ip(controls[-1]['client']))
+                result = self.prepare(parsed['details'])
+                self.assertEqual(sum(self.flags(parsed['details'], result, 'compound_automation')),
+                                 expected)
+
     def test_continuity_veto(self):
         self.config['compound_automation']['enabled'] = 1
         rows = self.burst()
