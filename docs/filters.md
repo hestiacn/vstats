@@ -5,6 +5,49 @@ Reference, Integration and Developer. Native reports keep their existing layout;
 filter settings, explanations, previews, comparisons and review tables are in
 Filters. Settings affect statistics, not access to the website.
 
+## Corpus-aware automation filters
+
+Four additional checkboxes operate on the complete retained site corpus:
+
+* **Compound scripted browsing** requires independent evidence classes in an
+  exact-client/known-vhost/observed-UA episode: a rare, genuinely quoted browser
+  claim plus a successful content burst, or an observed-empty claim plus a
+  multi-family metadata fetch. Missing logging is never an empty claim.
+* **Scheduled crawling** learns distinctive weekday/API/feed/font patterns
+  across complete UTC weeks. The target week cannot corroborate itself.
+  A homepage qualifies only when that same source and observed UA have their
+  own witnessed sweep within the bounded linking interval. A shared browser
+  string alone never excludes a homepage.
+* **Bounded scanner inference** combines a recorded provider-specific DNS check
+  with an exact, structurally non-browser client fingerprint corroborated
+  across multiple associated addresses, a bounded distance from that check,
+  and explicitly selected UTC months. This changes the default report when
+  enabled. It is inference, not verified historical ownership or current
+  membership. Review the Preview before enabling; refresh the authorized
+  candidate observations before initial activation. Existing strict dated
+  verification and the optional retrospective comparison remain separate.
+* **Declared automation** uses curated explicit crawler/research-automation
+  tokens. An arbitrary application product/contact string is insufficient;
+  declarations remain unverified. The initial token list is empty.
+
+New profiles/Reset check these choices. Existing saved profiles acquire them
+disabled until explicitly changed. Selected months and curated tokens are
+prerequisites; a checked rule can therefore be inactive. Parameters are under
+Advanced. Positive same-UA navigation/asset continuity vetoes the new episode
+rules. These rules never seed IP/month expansion or change existing actor
+identity. Request-ID inclusions retain the selected heuristic matches.
+
+An optional `scheduled_automation.aggressive_comparison=1` adds phase-linked
+cohort candidates to the existing **Inferred/aggressive comparison** only.
+It never changes the default report. Shared fingerprints/phases can include
+unrelated users; inspect its separate review labels. Its initial value is `0`.
+
+Geography, hosting networks, browser age, a single page, robots.txt alone and
+missing assets/referrers are not independent bot witnesses. All new thresholds
+are exploratory heuristics; precision/recall are unmeasured. Earlier logs
+without trustworthy site/client/field provenance may be insufficient. The
+normal report entry and native browser-update access rules are unchanged.
+
 ## Using it
 
 * **Settings:** native crawler signatures, verified crawler evidence, broad

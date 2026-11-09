@@ -1,5 +1,103 @@
 # Optional traffic classification
 
+## Corpus-aware scripted browsing and scheduled crawling
+
+`tools/traffic-filter-report.py` additionally runs `automation_analysis.py` on
+Perl-validated, disjoint primary-day details. It binds the complete input,
+observability, operator-snapshot and configuration identities into each new
+numeric witness and native cache key. No duplicate boundary context is used
+to learn a pattern. A standalone `traffic-classify.pl` run explicitly reports
+these rules as unevaluated without complete corpus context.
+
+The four optional sections are disabled in standalone configurations. Their
+starter parameters are **exploratory heuristic assumptions**, not calibrated
+accuracy or probability estimates:
+
+```json
+{
+  "compound_automation": {"enabled": 1, "window_seconds": 15,
+    "distinct_pages": 8, "metadata_families": 3,
+    "quote_max_percent": 10, "quote_min_controls": 20, "quote_min_sources": 5},
+  "scheduled_automation": {"enabled": 1, "min_cycles": 3, "min_sources": 3,
+    "min_phase_paths": 6, "min_families": 2, "entry_seconds": 1800,
+    "max_continuity_percent": 10, "aggressive_comparison": 0},
+  "inferred_scanner": {"enabled": 0, "window_days": 14,
+    "min_sources": 2, "months": []},
+  "declared_automation": {"enabled": 0, "tokens": []}
+}
+```
+
+Compound detection requires a literal client, known vhost, trustworthy client
+provenance and observed fields. It groups exact UA substreams. A surrounding
+literal-quote anomaly must be rare against same-day/format peer controls and
+coincide with a burst across distinct successful content paths. Format-wide
+wrapping abstains. The other conjunction is an observed-empty UA and bounded
+robots/sitemap/security metadata families. Those metadata requests alone can
+qualify; a Linux-UA entry and Windows-UA favicon never inherit their flag.
+Rate, an empty referrer, missing assets, browser age and robots.txt alone do not
+qualify. Positive observed same-UA page/referrer/asset continuity vetoes an
+episode; missing referrer logging supplies no negative evidence.
+
+Scheduled detection learns exact weekday/path sets within complete UTC weeks,
+using API/feed/font families, at least six phase/path pairs and multiple
+sources. Other weeks must independently corroborate the target: `min_cycles`
+counts supporting weeks **excluding the target week**. Therefore the default
+requires four complete matching weeks to classify one of the training weeks.
+Signatures frequent in continuity-bearing requests abstain. Actual matching
+resource requests can qualify even when AWStats counts them as pages. An entry
+page additionally needs that same source/vhost/exact UA's own witnessed sweep
+within `entry_seconds` and the same UTC week. No cohort-UA or source-month
+inheritance is permitted. Sparse historical provenance can limit coverage.
+
+Inference uses the latest passing provider-specific FCrDNS observation for the
+exact canonical address; a latest failed/tied-conflicting observation vetoes
+earlier proof. The exact platformless Chrome-style fingerprint must be
+corroborated across `min_sources` associated addresses in the complete corpus.
+Only selected months within `window_days` of the observation qualify, with a
+continuity veto. The result is labelled inferred, never historical ownership,
+authenticated identity or current membership. The strict dated/TTL algorithm
+is unchanged. Refresh the authorized candidate observations before initial
+activation and audit a frozen exclusion preview. There is no automatic DNS
+refresh or discovery of additional candidates.
+
+Declared automation needs curated explicit self-described crawler/scanner
+tokens, not an arbitrary app/contact token. For example, the first-party
+[Nuclei](https://github.com/projectdiscovery/nuclei) and
+[sqlmap](https://github.com/sqlmapproject/sqlmap) projects describe automated
+scanning tools. Matching declarations remain unverified and establish no
+maliciousness. The library's token default is empty; operators curate it.
+
+All four selections are request-only and respect explicit request-ID
+inclusions; they never seed the existing IP/month policy. Actor identities
+remain unchanged. Per-rule native class/exclusive replays account for overlap.
+The optional aggressive comparison adds shared-UA/calendar-phase homepages to
+the separate inferred comparison only; it can include unrelated users and
+never alters default totals.
+
+The optional corpus layer has defensive maxima: 500,000 eligible records,
+100,000 source/vhost/UA groups, 128 MiB per private report and 768 MiB of report
+input. Crossing them retains the legacy selections and records this layer as
+unavailable; it does not invent a clean result. These are resource guards, not
+detection thresholds. Precision/recall and false-exclusion rates are unmeasured.
+
+### Additional future connection evidence
+
+The normalizer accepts an explicitly tagged `VSTATS2` suffix after the existing
+combined fields: remote client port, keepalive count and four quoted coarse
+categories (Sec-Fetch-Site, Sec-Fetch-Mode, Sec-Fetch-Dest and client platform).
+It removes the suffix from the canonical native log and keeps bounded,
+allowlisted categories in the private observability sidecar. Conflicting
+metadata for byte-identical records abstains. Legacy common/combined records
+remain supported. Original referrer queries/fragments and cookies are not
+added to this evidence.
+
+Apache documents these [logging fields](https://httpd.apache.org/docs/2.4/mod/mod_log_config.html).
+Port/keepalive data alone is not a client identity: connection association
+requires a direct socket, no pooled proxy, bounded reuse and reliable
+provenance. Cross-UA request exclusion is deliberately not inferred from a
+shared IP/time window. The new fields support future audit; no missing
+historical fields are reconstructed.
+
 ## Suspected automation from request behavior
 
 The optional `behavior` configuration adds an independent `suspected_automation`
@@ -57,7 +155,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v11`. Optional private details include status, the per-request
+`vstats-traffic-v15`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.

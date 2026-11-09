@@ -7,12 +7,18 @@
   let csrf = null, editable = false, busy = false, poll = null, coverage = state.coverage;
   const site = state.site, base = '/vstats-control/sites/' + encodeURIComponent(site) + '/';
   const historical = $('filters-main').dataset.historical === 'true';
-  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery'];
+  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery', 'compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation'];
   const names = {operator_associated:['Operator-associated scanners','Forward-confirmed provider DNS within its dated validity interval; no historical backdating.'],historical_operator:['Retrospective operator inference','Optional separate report, off by default. Select UTC months in Advanced and reprocess. Default totals stay unchanged; historical identity is unverified.'],service_discovery:['Service-manifest discovery','Missing OpenAPI/MCP/AI manifests across independent families; matching probes only.'],native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.'],login_rotation:['Login browser rotation','Adjacent login GET/POST pairs with browser changes or repeated platform switches; requires configured login paths. Alternative witnesses affect matching requests only.'],head_scan:['HEAD path sweeps','Repeated HEAD requests across content paths with missing resources.'],sensitive_scan:['Sensitive-file probing','Concentrated reads of configured sensitive-file paths; no absence assumption.'],wp_enumeration:['WordPress enumeration','Author-ID and user-API enumeration with rotating browser claims.'],wp_query_probe:['WordPress query probing','Internal query keys combined with plugin-file probing; matching requests only.'],backdoor_probe:['Backdoor path probing','Missing configured backdoor paths with POST activity; short burst and nearby entry requests only.'],protocol_probe:['Protocol endpoint discovery','Missing POST/GET endpoints with a declared tool; short burst and nearby entry requests only.']};
+  Object.assign(names, {
+    compound_automation:['Compound scripted browsing','Independent client anomaly plus resource/rate evidence; witnessed visits only.'],
+    scheduled_automation:['Scheduled crawling','Repeated weekly resource-fetching patterns; a shared browser string alone never excludes a visit.'],
+    inferred_scanner:['Bounded scanner inference','Selected recent UTC months, scanner DNS snapshot and corroborated client fingerprint. Historical identity remains unverified.'],
+    declared_automation:['Declared automation','Curated explicit crawler/tool signatures; declarations are unverified.']
+  });
   function structuredCopy(v) { return JSON.parse(JSON.stringify(v)); }
   function profileCopy(value) {
     const p = structuredCopy(value);
-    for(const key of ['login_rotation','head_scan','sensitive_scan','wp_enumeration','wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery']) {
+    for(const key of ['login_rotation','head_scan','sensitive_scan','wp_enumeration','wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery', 'compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation']) {
       if(!Object.prototype.hasOwnProperty.call(p.filters,key)) p.filters[key]=false;
       if(!p.classifier[key]) p.classifier[key]=structuredCopy(state.default_profile.classifier[key]);
     }
@@ -75,8 +81,8 @@
       const box=node('section');box.append(node('h3',rule==='operator_association'?'Retrospective operator options':names[rule][0]));const grid=node('div',undefined,'filters-advanced-grid');
       for(const [key,value] of Object.entries(profile.classifier[rule])) {
         if(key==='enabled'||key==='retrospective_enabled') continue;
-        const label=node('label',key==='retrospective_months'?'UTC months (YYYY-MM, one per line)':key.replace(/_/g,' '));const input=node(Array.isArray(value)?'textarea':'input');input.dataset.rule=rule;input.dataset.key=key;
-        if(Array.isArray(value)) {input.value=value.join('\n');input.dataset.array='true';} else {input.type='number';input.step='1';input.min='0';input.value=value;}
+        const label=node('label',(key==='retrospective_months'||key==='months')?'UTC months (YYYY-MM, one per line)':key.replace(/_/g,' '));const input=node(Array.isArray(value)?'textarea':'input');input.dataset.rule=rule;input.dataset.key=key;
+        if(key==='aggressive_comparison') {input.type='checkbox';input.checked=Boolean(value);input.dataset.switch='true';label.textContent='Include phase-linked candidates in the optional comparison only';} else if(Array.isArray(value)) {input.value=value.join('\n');input.dataset.array='true';} else {input.type='number';input.step='1';input.min='0';input.value=value;}
         input.addEventListener('input',edited);label.append(input);grid.append(label);
       } box.append(grid);advanced.append(box);
     }
@@ -87,7 +93,7 @@
     const result=structuredCopy(profile);
     document.querySelectorAll('[data-filter]').forEach(input=>result.filters[input.dataset.filter]=input.checked);
     result.exclude_automated_ips=$('ip-policy').checked;result.native_level=Number($('native-level').value);
-    document.querySelectorAll('[data-rule]').forEach(input=>result.classifier[input.dataset.rule][input.dataset.key]=input.dataset.array?input.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean):Number(input.value));
+    document.querySelectorAll('[data-rule]').forEach(input=>result.classifier[input.dataset.rule][input.dataset.key]=input.dataset.switch?Number(input.checked):input.dataset.array?input.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean):Number(input.value));
     return result;
   }
   async function refresh() {
@@ -117,7 +123,7 @@
     impact({before:(state.view_totals||{}).original,after:state.totals,before_label:'Additional filters off',after_label:'Current applied profile',capacity_fallback:state.capacity_fallback});
     const area=$('match-counts');area.replaceChildren(node('h3','Matches and actual exclusions for this generation'));
     const counts=state.matched_requests||{},table=node('table'),header=node('tr');header.append(node('th','Detector / measure'),node('th','Requests'));table.append(header);
-    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['login_rotation_flagged_requests','Login browser rotation'],['head_scan_flagged_requests','HEAD path sweeps'],['sensitive_scan_flagged_requests','Sensitive-file probing'],['wp_enumeration_flagged_requests','WordPress enumeration'],['wp_query_probe_flagged_requests','WordPress query probing'],['backdoor_probe_flagged_requests','Backdoor path probing'],['protocol_probe_flagged_requests','Protocol endpoint discovery'],['service_discovery_flagged_requests','Service-manifest discovery'],['operator_associated_requests','Dated operator associations'],['historical_operator_requests','Retrospective candidates (not excluded by default)'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
+    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['login_rotation_flagged_requests','Login browser rotation'],['head_scan_flagged_requests','HEAD path sweeps'],['sensitive_scan_flagged_requests','Sensitive-file probing'],['wp_enumeration_flagged_requests','WordPress enumeration'],['wp_query_probe_flagged_requests','WordPress query probing'],['backdoor_probe_flagged_requests','Backdoor path probing'],['protocol_probe_flagged_requests','Protocol endpoint discovery'],['service_discovery_flagged_requests','Service-manifest discovery'],['compound_automation_flagged_requests','Compound scripted browsing'],['scheduled_automation_flagged_requests','Scheduled crawling'],['inferred_scanner_flagged_requests','Bounded scanner inference'],['declared_automation_flagged_requests','Declared automation (unverified)'],['operator_associated_requests','Dated operator associations'],['historical_operator_requests','Retrospective candidates (not excluded by default)'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
     const views=state.view_totals||{};
     for(const [mode,title,ledger] of [['requests','Matched-request filtering',state.request_excluded_by_month||{}],['behavior','Configured visitor policy',state.excluded_by_month||{}]]){
       for(const month of Object.keys(ledger).sort().reverse()){
@@ -184,7 +190,7 @@
     const months=Object.keys(state.totals||{}).sort();if(!months.length||!state.managed)return;
     const selected=context(),month=selected.month;
     const comparisonViews=[['requests','IP expansion off'],['confirmed','Behavioral and IP exclusions off'],['original','All additional filters off']];
-    if((state.view_totals||{}).retrospective) comparisonViews.push(['retrospective','Retrospective inference (unverified history)']);
+    if((state.view_totals||{}).retrospective) comparisonViews.push(['retrospective','Inferred/aggressive comparison (unverified)']);
     for(const [folder,title] of comparisonViews) {
       const button=node('button',title);button.onclick=()=>{$('comparison-frame').src='../'+folder+'/'+month+'/'+selected.filename;$('comparison-frame').hidden=false;};comparisons.append(button);
     }

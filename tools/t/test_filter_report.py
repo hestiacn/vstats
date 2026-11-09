@@ -1,4 +1,5 @@
 import hashlib
+import datetime
 import importlib.util
 import json
 import os
@@ -118,6 +119,34 @@ class BatchIntegration(unittest.TestCase):
         kwargs.setdefault('exclude_automated_ips', False)
         return builder.build(self.config, self.inputs, self.root / 'output', perl=self.perl,
                              prefix='/vstats/example.test/', **kwargs)
+
+    def test_corpus_compound_export_never_seeds_source_month(self):
+        quoted = '\\"Mozilla/5.0 (Synthetic) Chrome/123 Safari/537.36\\"'
+        rows = []
+        for i in range(8):
+            rows.append(('192.0.2.1 - - [02/Oct/2026:10:00:{:02d} +0000] "GET /p{} HTTP/1.1" 200 100 "-" "{}"\n'.format(i, i, quoted)).encode())
+        later = ('192.0.2.1 - - [02/Oct/2026:11:00:00 +0000] "GET /ordinary HTTP/1.1" 200 100 "-" "{}"\n'.format(quoted)).encode()
+        rows.append(later)
+        for i in range(100):
+            stamp = (datetime.datetime(2026, 10, 2, 12) + datetime.timedelta(seconds=i)).strftime('%d/%b/%Y:%H:%M:%S +0000')
+            rows.append(('198.51.100.{} - - [{}] "GET / HTTP/1.1" 200 100 "-" "Mozilla/5.0 (Synthetic) Safari/600"\n'.format(i + 1, stamp)).encode())
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(rows))
+        metadata = {hashlib.sha256(row.rstrip(b'\n')).hexdigest(): {'format': 'combined', 'vhost': 'example.test',
+            'scheme': 'https', 'client_source': 'socket_peer', 'user_agent': 'value', 'referrer': 'absent'} for row in rows}
+        (self.inputs / '2026-10-02.observability.json').write_text(json.dumps({'schema_version': 1, 'records': metadata}), encoding='utf-8')
+        self.config.write_text(json.dumps({'schema_version': 1, 'exclude': ['suspected_automation'],
+                                          'compound_automation': {'enabled': 1}}), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual(result['behavior']['compound_automation_flagged_requests'], 8)
+        self.assertEqual(result['ip_exclusion']['flagged_source_months'], 0)
+        self.assertEqual(result['ip_exclusion']['additional_excluded_requests'], 0)
+        self.assertIn(later, (self.root / 'output/filtered/2026-10-02.log').read_bytes())
+        impact = result['evidence_classes']['compound_automation']['by_month']['2026-10']
+        self.assertEqual(impact['exclusive_requests'], 8)
+        self.assertEqual(result['daily_reports'][0]['request_filtered_log']['excluded_records'], 8)
+        page = (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8')
+        self.assertIn('Compound scripted browsing', page)
+        self.assertNotIn('Synthetic) Chrome', page)
 
     def test_service_family_review_and_request_only_source_policy(self):
         rows = [('192.0.2.1 - - [02/Oct/2026:10:00:{:02d} +0000] "GET {} HTTP/1.1" {} 12 "-" "SyntheticClient/1"\n'.format(i, path, status)).encode()

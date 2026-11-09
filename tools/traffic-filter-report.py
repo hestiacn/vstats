@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Build private filtered daily logs and an escaped, reviewable HTML snapshot.
 
-Optional Python 3.6+ orchestration. The Perl classifier remains the sole detector.
+Optional Python 3.6+ orchestration. Perl validates daily requests; the bounded
+corpus layer adds explicit longitudinal evidence before any native replay.
 No network access, native-history edits, deployment or web backend is provided.
 """
 import argparse
@@ -20,9 +21,11 @@ import sys
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
+from automation_analysis import RULES as CORPUS_RULES, prepare as prepare_automation, apply_report as apply_automation
 RECORD = re.compile(rb'^\S+ \S+ \S+ \[[^\]]+\] "((?:[^"\\]|\\.)*)" ([1-5][0-9]{2}) ([0-9]+|-) ')
 CLAIM = re.compile(r'(?:^|[^A-Za-z0-9])((?:Chrome|CriOS|Firefox|FxiOS|Safari|Edg|OPR|Opera)/[0-9][0-9.]{0,31})', re.I | re.A)
-EVIDENCE_CLASSES = ('service_discovery', 'operator_associated', 'historical_operator')
+EVIDENCE_CLASSES = ('service_discovery', 'operator_associated', 'historical_operator') + CORPUS_RULES
 
 
 def digest(raw):
@@ -148,6 +151,20 @@ def validate_scan_witness(label, proof):
 
 
 def witness_text(label, proof):
+    if label == 'Aggressive comparison candidate':
+        return proof['label'] + '; signature ' + proof['signature_sha256']
+    if label == 'Compound scripted browsing':
+        return ('Independent classes: ' + ', '.join(proof['classes']) +
+                '; {requests} requests, {distinct} distinct witnesses, {seconds} seconds; exact client substream only.').format(
+                    seconds=proof['until'] - proof['from'], **proof)
+    if label == 'Scheduled crawling':
+        return ('{cycles} independent held-out UTC-week cycles; {phase_paths} weekday/path pairs; '
+                '{families} resource families; same-source linked entry: {linked_entry}; signature {signature_sha256}.').format(**proof)
+    if label == 'Inferred scanner association':
+        return ('{label}; snapshot {lookup_at}; request delta {request_delta_seconds} seconds; '
+                'bounded {window_days} days; fingerprint corroborated across {fingerprint_sources} addresses.').format(**proof)
+    if label == 'Declared automation (unverified)':
+        return 'Curated explicit tool token ' + proof['token'] + '; declaration is not authenticated identity.'
     if label in ('Operator association', 'Retrospective operator inference'):
         return ('{provider_id}; {procedure}; lookup {lookup_at}; expires {expires_at}; {state}. '
                 'DNS association is not request authentication or malicious intent.').format(**proof)
@@ -229,6 +246,17 @@ def rule_evidence(record):
         if label in ('HEAD path sweeps', 'Sensitive-file probing', 'WordPress enumeration', 'WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery'):
             validate_scan_witness(label, proof)
         result.append((label, proof))
+    for rule, label in [('compound_automation', 'Compound scripted browsing'),
+                        ('scheduled_automation', 'Scheduled crawling'),
+                        ('inferred_scanner', 'Inferred scanner association'),
+                        ('declared_automation', 'Declared automation (unverified)')]:
+        if record.get(rule + '_flagged'):
+            proof = record.get(rule + '_evidence')
+            if not proof or proof.get('rule_id') != rule + '_v1' or not re.fullmatch(r'[a-f0-9]{64}', proof.get('corpus_sha256', '')):
+                raise RuntimeError('Missing bound corpus witness')
+            result.append((label, proof))
+    if record.get('aggressive_cohort_candidate'):
+        result.append(('Aggressive comparison candidate', record['aggressive_cohort_candidate']))
     operator = record.get('operator_association')
     if operator:
         if operator.get('state') not in ('dated_association', 'historical_candidate') or not re.fullmatch(r'[0-9a-f]{64}', operator.get('evidence_sha256', '')):
@@ -263,7 +291,8 @@ def render_review_row(record):
     match = CLAIM.search(record.get('user_agent') or '')
     claim = match.group(1) if match else 'no recognized browser claim'
     platform = record.get('behavior_platform') or 'unknown'
-    state = ('Retained in default; excluded only from inferred overlay' if record.get('operator_inferred_excluded') and not record['excluded'] else
+    state = ('Retained in default; aggressive comparison candidate' if record.get('aggressive_cohort_candidate') and not record['excluded'] else
+             'Retained in default; excluded only from inferred overlay' if record.get('operator_inferred_excluded') and not record['excluded'] else
              'Retained; retrospective candidate only' if record.get('operator_association') and not record['excluded'] else
              'Excluded by operator filter' if record.get('operator_excluded') and not record['suspected_automation'] else
              'Included by request ID override' if record['behavior_included'] else
@@ -708,6 +737,30 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
                       'input_sha256': report['input_sha256'], 'request_filtered_log': manifest,
                       'config_sha256': report['config_sha256'], 'period': period, 'analysis_context_sha256': analysis_context_sha256,
                       'analysis_context': context_identity, 'analysis_window_seconds': window})
+    # New request-only rules run after every primary partition is validated.
+    # Existing expansion triggers were already frozen above, so no new rule can
+    # promote a weak witness into source-IP/month exclusion.
+    available = [entry for entry in daily if not entry.get('classification_unavailable') and not entry.get('empty_partition')]
+    automation = prepare_automation([output / 'reports' / (e['day'] + '.json') for e in available], cfg,
+                                   {e['day'] for e in daily if not e.get('classification_unavailable')})
+    for entry in available:
+        path = output / 'reports' / (entry['day'] + '.json')
+        report = json.loads(path.read_bytes().decode('utf-8'))
+        previous_behavior = dict(report['behavior'])
+        apply_automation(report, entry['day'], automation, cfg)
+        for key in set(previous_behavior) | set(report['behavior']):
+            if (key.endswith('_requests') or key in ('inclusion_overrides', 'flagged_source_groups')) and isinstance(report['behavior'].get(key), int):
+                behavior[key] += report['behavior'][key] - previous_behavior.get(key, 0)
+        flagged_by_month[entry['day'][:7]] += report['behavior']['flagged_requests'] - previous_behavior['flagged_requests']
+        kept, manifest = filtered_bytes(day_paths[entry['day']].read_bytes(),
+            {r['line_index'] for r in report['details'] if r['excluded']}, entry['input_sha256'])
+        request_path = output / 'request-filtered' / (entry['day'] + '.log')
+        request_path.write_bytes(kept)
+        report['filtered_log'] = manifest
+        path.write_bytes((json.dumps(report, sort_keys=True, indent=2) + '\n').encode('utf-8'))
+        entry.update(behavior=report['behavior'], request_filtered_log=manifest,
+                     analysis_context_sha256=digest(canonical_binding({'daily': entry['analysis_context_sha256'],
+                         'corpus': automation['context_sha256']})))
     context = {}
     for month in sorted({entry['day'][:7] for entry in daily}):
         binding = {'policy': 'vstats-ip-month-v1', 'enabled': exclude_automated_ips, 'config_sha256': digest(raw_config),
@@ -756,10 +809,12 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             matches = {'service_discovery': bool(record.get('service_discovery_flagged')),
                        'operator_associated': operator.get('state') == 'dated_association',
                        'historical_operator': operator.get('state') == 'historical_candidate'}
+            matches.update({key: bool(record.get(key + '_flagged')) for key in CORPUS_RULES})
             causes = {key for key, matched in matches.items() if matched and
-                      ((key == 'service_discovery' and not record['behavior_included']) or
-                       (key != 'service_discovery' and record.get('operator_excluded')))}
-            if record.get('operator_inferred_excluded') and not excluded:
+                      ((key in ('service_discovery',) + CORPUS_RULES and not record['behavior_included']) or
+                       (key in ('operator_associated', 'historical_operator') and record.get('operator_excluded')))}
+            if (record.get('operator_inferred_excluded') or
+                    (record.get('aggressive_cohort_candidate') and record['request_id'] not in include_ids)) and not excluded:
                 inferred_omitted.add(record['line_index'])
             older_behavior = any(record.get(key) for key in ('broad_probing_flagged', 'probing_flagged', 'rapid_scan_flagged',
                 'distributed_login_flagged', 'login_rotation_flagged', 'head_scan_flagged', 'sensitive_scan_flagged',
@@ -783,7 +838,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             if not source_summary(sources, record, excluded, included, cfg['limits']['groups']):
                 unattributed_sources['excluded' if excluded else 'retained'] += 1
             campaign_summary(campaigns, record, cfg['limits']['groups'])
-            if not (record['suspected_automation'] or ip_selected or record.get('operator_association')):
+            if not (record['suspected_automation'] or ip_selected or record.get('operator_association') or record.get('aggressive_cohort_candidate')):
                 continue
             logical, _ = records[record['line_index']]
             match = RECORD.match(logical)
@@ -907,6 +962,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
               'context_binding_version': 2, 'private_source_months': triggers, 'restored_source_months': sorted(restored), 'context_sha256_by_month': context}
     summary = {'schema_version': 1, 'generated_utc': generated, 'counts': dict(totals), 'actors': dict(actors), 'behavior': dict(behavior),
                'operator_evidence': {'counts': dict(operator_counts), 'sha256': digest(Path(operator_evidence).read_bytes()) if operator_evidence else None},
+               'corpus_automation': {k: automation[k] for k in ('version', 'status', 'context_sha256', 'signatures', 'rule_counts')},
                'evidence_classes': class_impact,
                'excluded_by_month': excluded_by_month, 'request_excluded_by_month': request_excluded_by_month,
                'capacity_fallback': unavailable_months, 'flagged_by_month': dict(flagged_by_month), 'ip_exclusion': policy, 'daily_reports': daily,

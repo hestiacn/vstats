@@ -20,16 +20,38 @@ LINE = re.compile(
     rb'(?P<size>\d+|-)(?P<tail>.*)$'
 )
 COMBINED = re.compile(rb'^ ("(?:[^"\\]|\\.)*") ("(?:[^"\\]|\\.)*")\s*$')
+CONNECTION = re.compile(rb'^(?P<classic> (?:"(?:[^"\\]|\\.)*" ){1}"(?:[^"\\]|\\.)*")'
+                        rb' VSTATS2 (?P<port>[0-9]{1,5}) (?P<keepalive>[0-9]{1,7})'
+                        rb' "(?P<site>(?:[^"\\]|\\.){0,128})" "(?P<mode>(?:[^"\\]|\\.){0,128})"'
+                        rb' "(?P<dest>(?:[^"\\]|\\.){0,128})" "(?P<platform>(?:[^"\\]|\\.){0,128})"\s*$')
 ROTATION = re.compile(r'-\d{8}(?:\.gz)?$')
 BASE_NAME = re.compile(r'^[A-Za-z0-9_.-]+$')
 
 
-def normalize(line):
+def normalize(line, with_fields=False):
     line = line.rstrip(b'\r\n')
     match = LINE.fullmatch(line)
     if not match:
         raise ValueError('not an Apache common/combined record')
     tail = match.group('tail')
+    connection = None
+    extra = CONNECTION.fullmatch(tail)
+    if extra:
+        port, keepalive = int(extra.group('port')), int(extra.group('keepalive'))
+        if not 1 <= port <= 65535 or keepalive > 1000000:
+            raise ValueError('invalid connection counters')
+        connection = {'remote_port': port, 'keepalive': keepalive}
+        enums = {'site': ('none', 'same-origin', 'same-site', 'cross-site'),
+                 'mode': ('navigate', 'same-origin', 'no-cors', 'cors', 'websocket'),
+                 'dest': ('document', 'iframe', 'empty', 'style', 'script', 'image', 'font', 'audio', 'video',
+                          'worker', 'serviceworker', 'sharedworker', 'manifest', 'report', 'object', 'embed', 'track'),
+                 'platform': ('Windows', 'macOS', 'Android', 'Linux', 'iOS', 'Chrome_OS')}
+        for key, choices in enums.items():
+            value = extra.group(key).decode('ascii', 'replace')
+            if key == 'platform':
+                value = value.replace('\\x22', '').replace('\\"', '').strip('"')
+            connection['platform' if key == 'platform' else 'fetch_' + key] = value if value in choices else 'unknown'
+        tail = extra.group('classic')
     if not tail.strip():
         tail, kind = b' "-" "-"', 'common'
     elif COMBINED.fullmatch(tail):
@@ -40,7 +62,7 @@ def normalize(line):
     if len(parts) > 1:
         uri = parts[1].split(b'?', 1)[0]
         if uri in (b'/vstats', b'/vstats-control') or uri.startswith((b'/vstats/', b'/vstats-control/')):
-            return None, None, 'statistics-request'
+            return (None, None, 'statistics-request', None) if with_fields else (None, None, 'statistics-request')
     month = MONTHS.index(match.group('month')) + 1
     local = datetime.datetime(
         int(match.group('year')), month, int(match.group('day')),
@@ -61,7 +83,7 @@ def normalize(line):
               match.group('request') + b' ' + match.group('status') + b' ' +
               # Apache %b uses '-' for a zero-byte response (mod_log_config).
               (b'0' if match.group('size') == b'-' else match.group('size')) + tail + b'\n')
-    return epoch, result, kind
+    return (epoch, result, kind, connection) if with_fields else (epoch, result, kind)
 
 
 def input_files(log_root, bases):
@@ -95,6 +117,8 @@ def merge_observability(left, right):
                          ('client_source', 'unknown'), ('user_agent', 'unobserved'), ('referrer', 'unobserved')]:
         if left.get(key) != right.get(key):
             result[key] = unknown
+    if left.get('connection_fields') != right.get('connection_fields'):
+        result['connection_fields'] = None
     return result
 
 
@@ -137,7 +161,7 @@ def build_snapshot(log_root, bases, work, source_metadata=None):
                         continue
                     evidence['rows'] += 1
                     try:
-                        epoch, normalized, kind = normalize(line)
+                        epoch, normalized, kind, connection = normalize(line, with_fields=True)
                     except (ValueError, OverflowError) as exc:
                         evidence['rejected'] += 1
                         if len(evidence['rejections']) < 20:
@@ -150,11 +174,11 @@ def build_snapshot(log_root, bases, work, source_metadata=None):
                     evidence['accepted'] += 1
                     evidence[kind] += 1
                     formats.add(kind)
-                    original = LINE.fullmatch(line.rstrip(b'\r\n'))
+                    original = LINE.fullmatch(normalized.rstrip(b'\r\n'))
                     fields = COMBINED.fullmatch(original.group('tail')) if original else None
                     states = tuple('absent' if value in (b'"-"', b'""') else 'value'
                                    for value in fields.groups()) if fields else ('unobserved', 'unobserved')
-                    source_rows.append((hashlib.sha256(normalized.rstrip(b'\n')).hexdigest(), states))
+                    source_rows.append((hashlib.sha256(normalized.rstrip(b'\n')).hexdigest(), states, connection))
                     stamp = datetime.datetime.utcfromtimestamp(epoch)
                     months.add(stamp.strftime('%Y-%m'))
                     low = epoch if low is None else min(low, epoch)
@@ -168,12 +192,14 @@ def build_snapshot(log_root, bases, work, source_metadata=None):
             evidence['files'][-1]['source_format'] = file_format
             if not declared:
                 continue
-            for request_id, states in source_rows:
+            for request_id, states, connection in source_rows:
                 meta = {'format': file_format, 'vhost': declared.get('vhost'),
                         'scheme': declared.get('scheme', 'unknown'),
                         'client_source': declared.get('client_source', 'unknown'),
                         'referrer': states[0] if file_format == 'combined' and declared.get('referrer_observed', True) else 'unobserved',
                         'user_agent': states[1] if file_format == 'combined' else 'unobserved'}
+                if connection is not None and file_format == 'combined':
+                    meta['connection_fields'] = connection
                 observability[request_id] = merge_observability(observability.get(request_id), meta)
     environment = dict(os.environ)
     environment['LC_ALL'] = 'C'

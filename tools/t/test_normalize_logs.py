@@ -48,6 +48,28 @@ class Observability(unittest.TestCase):
         self.assertEqual(receipt['files'][0]['source_format'], 'ambiguous')
         self.assertEqual({v['user_agent'] for v in metadata.values()}, {'unobserved'})
 
+    def test_tagged_connection_fields_preserve_native_bytes(self):
+        classic = b'192.0.2.1 - - [08/Nov/2026:12:00:00 +0000] "GET / HTTP/1.1" 200 123 "https://example.test/" "Synthetic/1"'
+        extra = b' VSTATS2 54321 2 "same-origin" "navigate" "document" "\\x22Windows\\x22"'
+        expected = normalizer.normalize(classic + b'\n')[1]
+        stamp, normalized, kind, fields = normalizer.normalize(classic + extra + b'\n', with_fields=True)
+        self.assertEqual(normalized, expected)
+        self.assertEqual(kind, 'combined')
+        self.assertEqual(fields, {'remote_port': 54321, 'keepalive': 2, 'fetch_site': 'same-origin',
+                                 'fetch_mode': 'navigate', 'fetch_dest': 'document', 'platform': 'Windows'})
+        raw, receipt, metadata = self.snapshot(classic + extra + b'\n')
+        self.assertEqual(raw, expected)
+        self.assertEqual(next(iter(metadata.values()))['connection_fields'], fields)
+
+    def test_connection_conflicts_and_invalid_ports_abstain(self):
+        classic = b'192.0.2.1 - - [08/Nov/2026:12:00:00 +0000] "GET / HTTP/1.1" 200 123 "-" "Synthetic/1"'
+        with self.assertRaises(ValueError):
+            normalizer.normalize(classic + b' VSTATS2 99999 0 "-" "-" "-" "-"\n')
+        value = {'format': 'combined', 'vhost': 'example.test', 'scheme': 'https', 'client_source': 'socket_peer',
+                 'user_agent': 'value', 'referrer': 'absent', 'connection_fields': {'remote_port': 1234, 'keepalive': 0}}
+        other = dict(value, connection_fields={'remote_port': 4321, 'keepalive': 0})
+        self.assertIsNone(normalizer.merge_observability(value, other)['connection_fields'])
+
     def test_conflicting_identical_records_abstain(self):
         value = {'format': 'combined', 'vhost': 'example.test', 'scheme': 'https', 'client_source': 'socket_peer', 'user_agent': 'absent', 'referrer': 'absent'}
         other = dict(value, format='common', user_agent='unobserved', scheme='http')

@@ -110,4 +110,14 @@ sub association {
     return if $last && !$last->{valid};
     return $historical ? {%$historical,state=>'historical_candidate',evidence_class=>'historical_candidate'}:undef;
 }
+# A snapshot is corroboration, never backdated DNS validity. The corpus layer
+# separately requires a bounded interval and an independently learned client
+# fingerprint. A later failed check vetoes earlier passing observations.
+sub inference_candidate {
+    my ($self,$r)=@_;return if ($r->{client_source}//'')!~/\A(?:socket_peer|trusted_proxy)\z/;
+    my (undef,undef,$client)=canonical_ip($r->{client});return if !defined($client);
+    my $list=$self->{sources}{$client}||[];my $proof=$list->[-1];return if !$proof || !$proof->{valid};
+    return if grep {$_->{lookup_at}==$proof->{lookup_at} && !$_->{valid}} @$list;
+    return {%$proof,state=>'inference_candidate',evidence_class=>'inferred_not_verified'};
+}
 1;

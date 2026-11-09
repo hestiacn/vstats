@@ -973,12 +973,14 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
                                  Path(os.path.join(APP, 'wwwroot/cgi-bin/lib/robots.pm')).read_bytes() +
                                  Path(os.path.join(APP, 'tools/lib/VStats/TrafficClassifier.pm')).read_bytes() +
                                  Path(os.path.join(APP, 'tools/lib/VStats/OperatorEvidence.pm')).read_bytes() +
+                                 Path(os.path.join(APP, 'tools/automation_analysis.py')).read_bytes() +
                                  Path(os.path.join(APP, 'tools/traffic-filter-report.py')).read_bytes() +
                                  Path(os.path.join(APP, 'tools/traffic-classify.pl')).read_bytes() +
                                  Path(cache_path).read_bytes() +
                                  json.dumps({'ip_month_policy': layer_info.get('exclude_automated_ips', True), 'views': 4}, sort_keys=True).encode()).hexdigest()
     history_roots = {'original': os.path.join(BASE, 'data'), 'confirmed': os.path.join(BASE, 'data-verified'), 'requests': os.path.join(BASE, 'data-requests'), 'behavior': os.path.join(BASE, 'data-behavior')}
-    if selected and selected['filters'].get('historical_operator') and selected['classifier']['operator_association']['retrospective_months']:
+    if selected and ((selected['filters'].get('historical_operator') and selected['classifier']['operator_association']['retrospective_months']) or
+                     (selected['filters'].get('scheduled_automation') and selected['classifier']['scheduled_automation']['aggressive_comparison'])):
         history_roots['retrospective'] = os.path.join(BASE, 'data-inferred')
     configs, data_roots = {}, {}
     for mode in history_roots:
@@ -1107,6 +1109,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
 
 
 def copy_behavior_html(result, site, site_web, apache_gid, account):
+    from vstats_filters import FILTERS
+    evidence_names = {key: title for key, title, _ in FILTERS}
     effects = '<h2>Effect on native statistics</h2><table><tr><th>Month</th><th>View</th><th>Unique visitors</th><th>Visits</th><th>Pages</th><th>Hits</th></tr>'
     for month in sorted(result['totals']['confirmed'], reverse=True):
         for mode, title in [('confirmed', 'Confirmed only'), ('requests', 'Request-only behavior filtering'), ('behavior', 'Default visitor policy')]:
@@ -1118,7 +1122,7 @@ def copy_behavior_html(result, site, site_web, apache_gid, account):
         for month, values in sorted(impact['by_month'].items()):
             native = values.get('native_class', {})
             exclusive = values.get('native_exclusive', {})
-            effects += '<p>' + html.escape(month + ' / ' + key) + ': ' + str(values['matched_requests']) + ' matched; ' + str(values['exclusive_requests']) + ' exclusive; ' + str(values['overlapping_requests']) + ' overlapping removals. Native matching requests: ' + str(native.get('hits', 0)) + ' viewed hits; ' + str(native.get('nonviewed_hits', 0)) + ' non-viewed. Exclusive contribution: ' + str(exclusive.get('pages', 0)) + ' pages, ' + str(exclusive.get('hits', 0)) + ' viewed hits.</p>'
+            effects += '<p>' + html.escape(month + ' / ' + evidence_names.get(key, key)) + ': ' + str(values['matched_requests']) + ' matched; ' + str(values['exclusive_requests']) + ' exclusive; ' + str(values['overlapping_requests']) + ' overlapping removals. Native matching requests: ' + str(native.get('hits', 0)) + ' viewed hits; ' + str(native.get('nonviewed_hits', 0)) + ' non-viewed. Exclusive contribution: ' + str(exclusive.get('pages', 0)) + ' pages, ' + str(exclusive.get('hits', 0)) + ' viewed hits.</p>'
     for folder, slug, expected in [('classification', 'traffic-classification', result['summary']['classification_files']), ('review', 'behavior-exclusions', result['summary']['review_files'])]:
         destination = os.path.join(site_web, slug)
         private_directory(destination, apache_gid)
@@ -1266,7 +1270,7 @@ def legacy_main(account, apache_gid):
                         render_site_view(account, site, overlay, result['totals']['retrospective'], apache_gid, extra_links,
                                          config_dir=result['configs']['retrospective'])
                         for path in Path(overlay).glob('**/*.html'):
-                            text = path.read_text(encoding='utf-8').replace('<body>', '<body><p>Retrospective operator inference: optional overlay. Historical identity is unverified; default reports are unchanged.</p>', 1)
+                            text = path.read_text(encoding='utf-8').replace('<body>', '<body><p>Optional inferred/aggressive comparison. Historical operator candidates and/or phase-linked cohort candidates may be included. Identity is unverified; unrelated users can match the aggressive comparison. Default reports are unchanged.</p>', 1)
                             path.write_text(text, encoding='utf-8')
                     request_count = sum(v['hits'] + v['nonviewed_hits'] for v in after.values())
                     pending_behavior.append((site, result))
@@ -1857,6 +1861,7 @@ def main():
                         'operator_associated_requests': result_summary.get('operator_evidence', {}).get('counts', {}).get('dated_association_requests', 0),
                         'historical_operator_requests': result_summary.get('operator_evidence', {}).get('counts', {}).get('historical_candidate_requests', 0)})
                     profiles[site]['operator_evidence'] = result_summary.get('operator_evidence', {})
+                    profiles[site]['corpus_automation'] = result_summary.get('corpus_automation', {})
                     profiles[site]['evidence_classes'] = result_summary.get('evidence_classes', {})
                     profiles[site]['excluded_by_month'] = result_summary['excluded_by_month']
                     profiles[site]['request_excluded_by_month'] = result_summary['request_excluded_by_month']
@@ -1876,6 +1881,16 @@ def main():
                     over_limits=m in info.get('capacity_fallback', {}),
                     operator_evidence=bool(info.get('operator_evidence', {}).get('sha256'))) for m in info.get('totals', {})}
                 for month, statuses in info['effective_by_month'].items():
+                    corpus = info.get('corpus_automation', {})
+                    for rule in ('compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation'):
+                        if info['applied']['filters'].get(rule) and corpus.get('status') == 'unavailable_capacity':
+                            statuses[rule] = 'Corpus evidence over limits; retained'
+                    if (info['applied']['filters'].get('scheduled_automation') and corpus.get('status') == 'evaluated'
+                            and corpus.get('signatures')):
+                        statuses['scheduled_automation'] = 'Active for witnessed episodes'
+                    if (statuses.get('inferred_scanner') == 'Active' and
+                            month not in info['applied']['classifier']['inferred_scanner']['months']):
+                        statuses['inferred_scanner'] = 'Not selected for this month'
                     if statuses.get('operator_associated') == 'Active':
                         statuses['operator_associated'] = 'Dated intervals only'
                     if statuses.get('historical_operator') == 'Active' and month not in info['applied']['classifier']['operator_association']['retrospective_months']:

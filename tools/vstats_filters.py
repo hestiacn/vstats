@@ -34,8 +34,12 @@ FILTERS = [('native_crawlers', 'Native crawler signatures', 'Existing AWStats us
            ('protocol_probe', 'Protocol endpoint discovery', 'Missing POST/GET endpoints with a declared tool; short burst only.'),
            ('service_discovery', 'Service-manifest discovery', 'Failed probes across independent service families; matching requests only.'),
            ('operator_associated', 'Operator-associated scanners', 'Forward-confirmed provider DNS within its dated validity interval.'),
-           ('historical_operator', 'Retrospective operator inference', 'Optional inference for selected UTC months; not verified historical identity.')]
-RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery']
+           ('historical_operator', 'Retrospective operator inference', 'Optional inference for selected UTC months; not verified historical identity.'),
+           ('compound_automation', 'Compound scripted browsing', 'Independent client anomaly and resource/rate evidence; witnessed visits only.'),
+           ('scheduled_automation', 'Scheduled crawling', 'Repeated weekly resource-fetching signatures; no shared-browser inheritance.'),
+           ('inferred_scanner', 'Bounded scanner inference', 'Selected recent months and corroborated client fingerprint; historical identity unverified.'),
+           ('declared_automation', 'Declared automation', 'Curated explicit crawler/tool declarations; unverified.')]
+RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery', 'compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation']
 SITE = re.compile(r'^[a-z0-9][a-z0-9._-]{0,252}$')
 IDENTIFIER = re.compile(r'^[a-f0-9]{32}$')
 GENERATION = re.compile(r'^\d{8}T\d{6}Z-[a-f0-9]{8}$')
@@ -137,7 +141,8 @@ def defaults(app, perl, current=None):
                            ('wp_enumeration', ['author_paths', 'user_paths', 'rest_routes']),
                            ('wp_query_probe', ['query_paths', 'plugin_prefixes', 'query_keys']),
                            ('backdoor_probe', ['paths', 'entry_paths']),
-                           ('protocol_probe', ['post_paths', 'get_paths', 'tool_tokens', 'entry_paths'])]:
+                           ('protocol_probe', ['post_paths', 'get_paths', 'tool_tokens', 'entry_paths']),
+                           ('declared_automation', ['tokens']), ('inferred_scanner', ['months'])]:
             for key in keys:
                 if key in current['classifier'].get(rule, {}):
                     classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])
@@ -233,6 +238,12 @@ def filter_status(profile, evidence=False, over_limits=False, operator_evidence=
             statuses[key] = 'Disabled'
         elif key == 'verified_crawlers' and not evidence:
             statuses[key] = 'Evidence unavailable'
+        elif key == 'inferred_scanner' and (not operator_evidence or not profile['classifier'][key]['months']):
+            statuses[key] = 'Needs evidence and selected months'
+        elif key == 'declared_automation' and not profile['classifier'][key]['tokens']:
+            statuses[key] = 'Needs curated tool tokens'
+        elif key == 'scheduled_automation':
+            statuses[key] = 'Needs repeated corpus evidence'
         elif key in ('operator_associated', 'historical_operator') and not operator_evidence:
             statuses[key] = 'Evidence unavailable'
         elif key == 'historical_operator' and not profile['classifier']['operator_association']['retrospective_months']:

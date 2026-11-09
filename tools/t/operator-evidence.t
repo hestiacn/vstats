@@ -64,4 +64,15 @@ my $later=bundle();my $ob=copy($later->{observations}[0]);$ob->{completed_at}=20
 is(run($later,99)->{details}[0]{operator_association}{state},'historical_candidate','later lookup cannot backdate earlier identity');
 my $failure=bundle();my $failed=copy($failure->{observations}[0]);$failed->{completed_at}=103;$failed->{queries}[0]{status}='SERVFAIL';push @{$failure->{observations}},$failed;
 is(run($failure,104)->{adjusted_requests}{excluded},0,'new failed lookup invalidates cached reuse');
+is(run(bundle(),99)->{details}[0]{operator_inference_candidate}{state},'inference_candidate',
+    'pre-check request can expose a snapshot candidate without strict exclusion');
+is(run(bundle(),111)->{details}[0]{operator_inference_candidate}{lookup_at},100,
+    'expired DNS is retained only as an inference snapshot, not current validity');
+is(run($later,99)->{details}[0]{operator_inference_candidate}{lookup_at},200,
+    'inference uses the newest observation rather than historical ownership');
+ok(!run($failure,99)->{details}[0]{operator_inference_candidate},
+    'a later failed observation vetoes inference even for an earlier request');
+my $tie=copy($later);my $bad_tie=copy($tie->{observations}[-1]);$bad_tie->{queries}[0]{status}='SERVFAIL';push @{$tie->{observations}},$bad_tie;
+ok(!run($tie,99)->{details}[0]{operator_inference_candidate},'conflicting observations at the latest timestamp abstain');
+ok(!run(bundle(),99,undef,{untrusted=>1})->{details}[0]{operator_inference_candidate},'inference requires trustworthy client provenance');
 done_testing;

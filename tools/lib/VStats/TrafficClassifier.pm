@@ -11,8 +11,8 @@ use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 use VStats::OperatorEvidence;
 
 # GPL version 2 or later. No file or network I/O here.
-our $VERSION = '1.12';
-my $ALGORITHM = 'vstats-traffic-v14';
+our $VERSION = '1.13';
+my $ALGORITHM = 'vstats-traffic-v15';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -67,6 +67,14 @@ my $DEFAULT = {
         entry_paths => ['/', '/index.php', '/favicon.ico']},
     service_discovery => {enabled => 0, window_seconds => 60, distinct_families => 3},
     operator_association => {enabled => 0, retrospective_enabled => 0, retrospective_months => []},
+    # These rules need the complete, explicitly bound corpus. The report builder
+    # evaluates them; a single-input CLI run must not pretend to have that context.
+    compound_automation => {enabled=>0, window_seconds=>15, distinct_pages=>8,
+        metadata_families=>3, quote_max_percent=>10, quote_min_controls=>20, quote_min_sources=>5},
+    scheduled_automation => {enabled=>0, min_cycles=>3, min_sources=>3, min_phase_paths=>6,
+        min_families=>2, entry_seconds=>1800, max_continuity_percent=>10, aggressive_comparison=>0},
+    inferred_scanner => {enabled=>0, window_days=>14, min_sources=>2, months=>[]},
+    declared_automation => {enabled=>0, tokens=>[]},
     verification => {max_gap_seconds => 86400},
     limits => {input_bytes => 67108864, line_bytes => 16384, records => 100000,
                groups => 100000, ua_bytes => 4096, target_bytes => 8192},
@@ -200,7 +208,7 @@ sub config {
     my $d=defaults();
     for my $key (keys %$d) {
         if (!exists $c->{$key}) { $c->{$key}=$d->{$key}; next; }
-        if ($key eq 'scanner' || $key eq 'behavior' || $key eq 'probing' || $key eq 'rapid_scan' || $key eq 'distributed_login' || $key eq 'login_rotation' || $key eq 'head_scan' || $key eq 'sensitive_scan' || $key eq 'wp_enumeration' || $key eq 'wp_query_probe' || $key eq 'backdoor_probe' || $key eq 'protocol_probe' || $key eq 'service_discovery' || $key eq 'operator_association' || $key eq 'verification' || $key eq 'limits') {
+        if (ref($d->{$key}) eq 'HASH') {
             _keys($c->{$key},keys %{$d->{$key}});
             for my $k (keys %{$d->{$key}}) { $c->{$key}{$k}=$d->{$key}{$k} if !exists $c->{$key}{$k}; }
         }
@@ -213,6 +221,25 @@ sub config {
         _str($token);
         _bad('Invalid crawler token') if length($token)>$FIXED->{token_bytes} || $token !~ /\A[A-Za-z0-9][A-Za-z0-9._-]*\z/;
         _bad('Duplicate or generic browser token') if $tokens{lc($token)}++ || $refused{lc($token)};
+    }
+    for my $kind (qw(compound_automation scheduled_automation inferred_scanner declared_automation)) {
+        _uint($c->{$kind}{enabled},1);
+    }
+    my $ca=$c->{compound_automation};
+    _uint($ca->{window_seconds},300,1);_uint($ca->{distinct_pages},2048,2);
+    _uint($ca->{metadata_families},3,3);_uint($ca->{quote_max_percent},10,1);
+    _uint($ca->{quote_min_controls},100000,1);_uint($ca->{quote_min_sources},10000,1);
+    my $sa=$c->{scheduled_automation};
+    _uint($sa->{min_cycles},12,3);_uint($sa->{min_sources},10000,3);
+    _uint($sa->{min_phase_paths},64,6);_uint($sa->{min_families},3,2);
+    _uint($sa->{entry_seconds},3600,1);_uint($sa->{max_continuity_percent},10,0);
+    _uint($sa->{aggressive_comparison},1);
+    my $is=$c->{inferred_scanner};_uint($is->{window_days},31,1);_uint($is->{min_sources},10000,2);
+    _array($is->{months},1200);my %im;
+    for (@{$is->{months}}) {_str($_);_bad('Invalid or duplicate inference month') if !/\A(?:19|20|21)[0-9]{2}-(?:0[1-9]|1[0-2])\z/ || $im{$_}++;}
+    _array($c->{declared_automation}{tokens},$FIXED->{tokens});my %dt;
+    for (@{$c->{declared_automation}{tokens}}) {
+        _str($_);_bad('Invalid automation token') if !/\A[A-Za-z0-9][A-Za-z0-9._-]{2,63}\z/ || $refused{lc($_)} || $dt{lc($_)}++;
     }
     my $s=$c->{scanner}; _uint($s->{distinct_paths},$FIXED->{paths},1); _uint($s->{distinct_families},$s->{distinct_paths},1); _uint($s->{window_seconds},$FIXED->{max_window},1);
     my $b=$c->{behavior}; _uint($b->{enabled},1); _uint($b->{window_seconds},$FIXED->{max_window},1);
@@ -528,10 +555,16 @@ sub _parse_line {
         _bad('Unsupported timestamp offset') if !$month{$month} || $oh>23 || $om>59;
         my $offset=($oh*3600+$om*60)*($sign eq '+'?1:-1);
         my $t=_epoch($year,$month{$month},$day,$hour,$min,$sec,$offset);
-        _apache_string($referer) if defined $referer;
+        $referer=_apache_string($referer) if defined $referer;
         $ua=_apache_string($ua) if defined $ua;
         $ua=undef if defined($ua) && ($ua eq '' || $ua eq '-');
         $r={timestamp=>$t,client=>$client,target=>$target,user_agent=>$ua,host=>undef,status=>0+$status,method=>$method};
+        # Keep only query-free, positive same-site continuity candidates. No
+        # external referrer, query, fragment, cookie or credential is exported.
+        if (defined($referer) && $referer=~m{\Ahttps?://([A-Za-z0-9.-]+)(/[^?#]*)?(?:[?#].*)?\z}i) {
+            my ($rh,$rp)=(lc($1),$2//'/');my $normal=normalize_target($rp);
+            if (defined($normal)) {$r->{referrer_host}=$rh;$r->{referrer_path}=$normal;}
+        }
     }
     if (exists $r->{method}) {
         _str($r->{method}); _bad('Invalid HTTP method') if $r->{method} !~ /\A[A-Za-z]{1,32}\z/;
@@ -616,6 +649,7 @@ sub _line {
         $r->{observed_vhost}=$meta->{vhost};
         $r->{source_format}=$meta->{format};$r->{scheme}=$meta->{scheme};$r->{client_source}=$meta->{client_source};
         $r->{field_observability}={user_agent=>$meta->{user_agent},referrer=>$meta->{referrer}};
+        $r->{connection_fields}=$meta->{connection_fields} if exists($meta->{connection_fields});
         $r->{user_agent}=undef if $meta->{user_agent} eq 'unobserved';
     } else {
         $r->{source_format}=$self->{format};
@@ -1405,12 +1439,19 @@ sub input_metadata {
     _bad('Invalid observability metadata') if ref($v->{records}) ne 'HASH' || keys(%{$v->{records}})>300000;
     for my $id (keys %{$v->{records}}) {
         _bad('Invalid observability request ID') if $id!~/\A[a-f0-9]{64}\z/;
-        my $m=$v->{records}{$id};_keys($m,qw(format vhost scheme client_source user_agent referrer));
+        my $m=$v->{records}{$id};_keys($m,qw(format vhost scheme client_source user_agent referrer connection_fields));
         _bad('Invalid source format') if ($m->{format}//'')!~/\A(?:common|combined|ambiguous)\z/;
         $m->{vhost}=_host($m->{vhost}) if defined($m->{vhost});
         _bad('Invalid source scheme') if ($m->{scheme}//'')!~/\A(?:http|https|unknown)\z/;
         _bad('Invalid client provenance') if ($m->{client_source}//'')!~/\A(?:socket_peer|trusted_proxy|unknown)\z/;
         for my $key (qw(user_agent referrer)) {_bad('Invalid field observability') if ($m->{$key}//'')!~/\A(?:value|absent|unobserved)\z/;}
+        if (exists($m->{connection_fields}) && defined($m->{connection_fields})) {
+            my $f=$m->{connection_fields};_keys($f,qw(remote_port keepalive fetch_site fetch_mode fetch_dest platform));
+            _uint($f->{remote_port},65535,1);_uint($f->{keepalive},1000000);
+            for my $k (qw(fetch_site fetch_mode fetch_dest platform)) {
+                _str($f->{$k});_bad('Invalid connection header category') if $f->{$k}!~/\A[A-Za-z0-9_-]{0,32}\z/;
+            }
+        }
     }
     return $v->{records};
 }
@@ -1602,6 +1643,7 @@ sub finish {
         $flagged++ if $r->{scanner_flagged};
         my $proof=$self->{operator_evidence}?$self->{operator_evidence}->association($r):undef;
         $r->{operator_association}=$proof if $proof;
+        $r->{operator_inference_candidate}=$self->{operator_evidence}->inference_candidate($r) if $self->{operator_evidence};
         $operator_counts{$proof->{state}.'_requests'}++ if $proof;
         my $oa=$cfg->{operator_association};
         $r->{operator_excluded}=($proof && %exclude && $proof->{state} eq 'dated_association' && $oa->{enabled})?1:0;
@@ -1650,6 +1692,19 @@ sub finish {
         $report->{details_warning}='Contains raw request data; keep private and apply your retention policy.';
         $report->{details}=[map {my $r=$_; +{(map {$_=>$r->{$_}} qw(line_index timestamp client user_agent target host actor verification_outcome status request_id method behavior_evidence probing_evidence rapid_scan_evidence distributed_login_evidence distributed_login_diagnostics login_rotation_evidence head_scan_evidence sensitive_scan_evidence wp_enumeration_evidence wp_query_probe_evidence backdoor_probe_evidence protocol_probe_evidence service_discovery_evidence operator_association operator_excluded operator_inferred_excluded field_observability source_format client_source scheme observed_vhost behavior_platform source_key source_month source_month_key)),normalized_target=>$r->{normal},scanner_flagged=>$r->{scanner_flagged}?JSON::PP::true:JSON::PP::false,suspected_automation=>$r->{suspected_automation}?JSON::PP::true:JSON::PP::false,broad_probing_flagged=>$r->{broad_probing_flagged}?JSON::PP::true:JSON::PP::false,probing_flagged=>$r->{probing_flagged}?JSON::PP::true:JSON::PP::false,rapid_scan_flagged=>$r->{rapid_scan_flagged}?JSON::PP::true:JSON::PP::false,distributed_login_flagged=>$r->{distributed_login_flagged}?JSON::PP::true:JSON::PP::false,login_rotation_flagged=>$r->{login_rotation_flagged}?JSON::PP::true:JSON::PP::false,ip_expansion_eligible=>$r->{ip_expansion_eligible},excluded=>$r->{excluded}?JSON::PP::true:JSON::PP::false,behavior_included=>$r->{behavior_included}?JSON::PP::true:JSON::PP::false,(map {($_.'_flagged')=>($r->{$_.'_flagged'}?JSON::PP::true:JSON::PP::false)} @extra_kinds)}} @{$self->{records}}];
     }
+    if ($self->{details}) {
+        for my $i (0..$#{$self->{records}}) {
+            my $r=$self->{records}[$i];
+            my @eligible=qw(_broad_eligible _probing_eligible _rapid_eligible _distributed_eligible _rotation_eligible);
+            push @eligible,map {'_'.$_.'_eligible'} @extra_kinds;
+            $report->{details}[$i]{legacy_behavior_eligible}=(grep {$r->{$_}} @eligible)?JSON::PP::true:JSON::PP::false;
+            for my $key (qw(referrer_host referrer_path connection_fields operator_inference_candidate)) {
+                $report->{details}[$i]{$key}=$r->{$key} if exists($r->{$key});
+            }
+        }
+    }
+    $report->{corpus_analysis}={status=>'not_evaluated_without_complete_corpus',
+        rules=>[qw(compound_automation scheduled_automation inferred_scanner declared_automation)]};
     return $report;
 }
 sub excluded_line_indices {

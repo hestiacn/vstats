@@ -76,6 +76,24 @@ class Controls(unittest.TestCase):
         self.assertEqual(filter_status(self.profile, evidence=True, over_limits=True)['behavior'], 'Input over limits')
         self.assertEqual(filter_status(self.profile, evidence=True, over_limits=True)['verified_crawlers'], 'Active')
 
+    def test_corpus_choices_upgrade_defaults_and_prerequisites(self):
+        keys = ['compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation']
+        self.assertTrue(all(self.profile['filters'][k] for k in keys))
+        old = copy.deepcopy(self.profile)
+        for key in keys:
+            old['filters'].pop(key); old['classifier'].pop(key)
+        restored = validate_profile(old, str(ROOT), PERL)
+        self.assertTrue(all(not restored['filters'][k] for k in keys))
+        statuses = filter_status(self.profile, operator_evidence=True)
+        self.assertEqual(statuses['inferred_scanner'], 'Needs evidence and selected months')
+        self.assertEqual(statuses['declared_automation'], 'Needs curated tool tokens')
+        selected = copy.deepcopy(self.profile)
+        selected['classifier']['inferred_scanner']['months'] = ['2026-13']
+        with self.assertRaises(ValueError): validate_profile(selected, str(ROOT), PERL)
+        selected = copy.deepcopy(self.profile)
+        selected['classifier']['declared_automation']['tokens'] = ['Mozilla']
+        with self.assertRaises(ValueError): validate_profile(selected, str(ROOT), PERL)
+
     def test_residual_choices_preserve_old_policy_and_separate_inference(self):
         old = copy.deepcopy(self.profile)
         for key in ('service_discovery', 'operator_associated', 'historical_operator'):

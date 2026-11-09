@@ -135,5 +135,34 @@
     "enabled": 0,
     "retrospective_enabled": 0,
     "retrospective_months": []
+  },
+  "compound_automation": {
+    "distinct_pages": 8,
+    "enabled": 0,
+    "metadata_families": 3,
+    "quote_max_percent": 10,
+    "quote_min_controls": 20,
+    "quote_min_sources": 5,
+    "window_seconds": 15
+  },
+  "scheduled_automation": {
+    "aggressive_comparison": 0,
+    "enabled": 0,
+    "entry_seconds": 1800,
+    "max_continuity_percent": 10,
+    "min_cycles": 3,
+    "min_families": 2,
+    "min_phase_paths": 6,
+    "min_sources": 3
+  },
+  "inferred_scanner": {
+    "enabled": 0,
+    "min_sources": 2,
+    "months": [],
+    "window_days": 14
+  },
+  "declared_automation": {
+    "enabled": 0,
+    "tokens": []
   }
 }
