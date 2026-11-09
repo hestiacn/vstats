@@ -39,7 +39,7 @@ FILTER_CATALOGUE = [
          help='Looks for rapid requests across distinct content paths together with the configured volume of missing responses. Browser rotation is not required. The thresholds are heuristics, not a measured probability of automation.'),
     dict(key='distributed_login', label='Distributed login probing', family='probing_and_scanning', section='distributed_login', ip_policy='yes',
          summary='Corroborated login probing across multiple sources.',
-         help='Uses coordinated evidence across sources targeting configured login and administration paths, including coherent login activity and browser/platform diversity. Both path lists are required. A shared browser string or a single login attempt is insufficient.')]
+         help='Requires corroborated login POST activity across sources, browser/platform diversity and shared agent claims on configured login and administration paths. Coherent same-browser POST-to-GET flows are protected. Both path lists are required. A shared browser string or a single login attempt is insufficient.')]
 
 FILTER_FAMILIES = [
     dict(key='signatures', label='Bot and tool signatures',
@@ -71,11 +71,12 @@ FILTER_CATALOGUE += [
          summary='Author-ID and user-API queries with rotating browser/platform claims.',
          help='Requires all configured request, browser, platform, author-ID, API and HTTP 404 minima together in one source/site window. Only configured author paths, user paths and REST routes qualify. Ambiguous query features abstain; successful enumeration or malicious intent is not established.'),
     dict(key='wp_query_probe', label='WordPress query probing', family='probing_and_scanning', section='wp_query_probe',
-         summary='Internal query keys together with failed plugin-file probes.',
-         help='Requires configured WordPress internal query keys on configured entry paths and missing plugin-file probes in one bounded source/site episode. Marks matching query/plugin probes only. Ordinary pages and unrelated requests do not inherit suspicion.'),
+         summary='Internal query keys together with plugin-file probes.',
+         help='Requires configured WordPress internal query keys on configured entry paths and plugin-file probes in one bounded source/site episode. Response failure is not required. Marks matching query/plugin probes only. Ordinary pages and unrelated requests do not inherit suspicion.'),
     dict(key='backdoor_probe', label='Backdoor path probing', family='probing_and_scanning', section='backdoor_probe',
+         parameter_help={'not_found_requests': 'Minimum number of observed HTTP 404 or 410 responses among backdoor-path probes.'},
          summary='Configured backdoor-path probes with POST activity and missing responses.',
-         help='Requires the configured requests, distinct backdoor paths, POSTs and HTTP 404s in one source/site window. Only qualifying probes and nearby configured entry requests are marked. Observed failures do not establish that a backdoor exists or an exploit succeeded.'),
+         help='Requires the configured requests, distinct backdoor paths, POSTs and HTTP 404/410 responses in one source/site window. Only qualifying probes and nearby configured entry requests are marked. Observed failures do not establish that a backdoor exists or an exploit succeeded.'),
     dict(key='protocol_probe', label='Protocol endpoint discovery', family='probing_and_scanning', section='protocol_probe',
          summary='Failed POST/GET endpoint discovery with an explicit tool declaration.',
          help='Combines missing POST and GET endpoints from the configured lists, a curated tool user-agent token and a short source/site window. Marks the witnessed probes and nearby configured entry requests. A tool claim alone does not qualify or verify identity.'),
