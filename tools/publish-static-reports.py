@@ -29,7 +29,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from normalize_logs import build_snapshot
 from native_history_cache import read_history, restore_history
 from vstats_filters import (add_filters_menu, native_shell, canonical, identity, read_json,
-                            atomic_json, validate_profile, defaults, filter_status, FILTERS, GENERATION,
+                            atomic_json, validate_profile, defaults, filter_status, FILTERS, RULES, GENERATION,
+                            classifier_config, filter_catalogue,
                             Control, browser_policy, public_browser_policy, publish_browser_policy, queued_user)
 
 BASE = '/var/lib/vstats'
@@ -1423,7 +1424,7 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
         profile = None
         if managed:
             cfg_file = Path(config) / 'traffic-classification' / ('awstats.' + site + '.json')
-            classifier = read_json(cfg_file)
+            classifier = classifier_config(read_json(cfg_file), APP, PERL)
             text = (Path(config) / ('awstats.' + site + '.conf')).read_text(encoding='utf-8')
             # Replay appends this level as the final native assignment. Import it
             # only from one unambiguous top-level line; otherwise fail closed.
@@ -1434,7 +1435,7 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
             level = int(level[0]) if level else 3
             profile = {'schema_version': 1,
                        'filters': dict(native_crawlers=bool(level), verified_crawlers=site_settings.get('verified_crawler_filter', False),
-                                       **{key: bool(classifier.get(key, {}).get('enabled', 0)) for key in ['behavior', 'probing', 'rapid_scan', 'distributed_login']}),
+                                       **{key: bool(classifier[key]['enabled']) for key in RULES}),
                        'exclude_automated_ips': site_settings.get('exclude_automated_ips', True),
                        'native_level': level or 3, 'classifier': classifier,
                        'exceptions': [{'request_id': i, 'reason': 'Imported existing inclusion; original reason not recorded'} for i in classifier.get('behavior_include', [])]}
@@ -1529,7 +1530,8 @@ def render_filters(generation, site, data, manifest, apache_gid):
                 href = '../filters/' + new + '/' + path.name
                 write_text(str(source / path.name), page('Filters', '<meta http-equiv="refresh" content="0;url=' +
                            html.escape(href, quote=True) + '"><a href="' + html.escape(href, quote=True) + '">Open Filters</a>'), apache_gid)
-    payload = dict(data, site=site, generation=manifest['generation'], generated_utc=manifest['generated_utc'])
+    payload = dict(data, site=site, generation=manifest['generation'], generated_utc=manifest['generated_utc'],
+                   filter_catalogue=filter_catalogue())
     # No private filesystem paths, raw log content or credential data are carried.
     template = (Path(APP) / 'wwwroot/filters.html').read_text(encoding='utf-8')
     encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
@@ -1618,6 +1620,12 @@ def main():
                 raise RuntimeError('Current report generation has no verified profile manifest; restore its matching state before bootstrapping')
             profiles = imported_profiles(sites, real_base, real_config, settings['legacy_app'], old_status, account)
             private_base = real_base
+        # Stored profiles are current-schema objects, never draft-version inputs.
+        # Refuse them before rebuilding or changing the committed report pair.
+        for info in profiles.values():
+            for field in ('applied', 'default_profile'):
+                if info.get(field) is not None:
+                    validate_profile(info[field], APP, PERL)
         new_sites = sorted(set(sites) - set(profiles))
         for site in new_sites:
             if not SITE_NAME.fullmatch(site):

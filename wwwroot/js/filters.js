@@ -7,9 +7,14 @@
   let csrf = null, editable = false, busy = false, poll = null, coverage = state.coverage;
   const site = state.site, base = '/vstats-control/sites/' + encodeURIComponent(site) + '/';
   const historical = $('filters-main').dataset.historical === 'true';
-  const rules = ['behavior', 'probing', 'rapid_scan', 'distributed_login'];
-  const names = {native_crawlers:['Native crawler signatures','Existing AWStats user-agent detection.'],verified_crawlers:['Verified crawlers','Only dated provider evidence can add this treatment.'],behavior:['Broad probing','Repeated diverse requests and missing paths within a configured time window.'],probing:['Endpoint probing','Requires your explicit endpoint paths; no paths are guessed.'],rapid_scan:['Rapid content-path scanning','Rapid requests across many paths, including missing resources.'],distributed_login:['Distributed login probing','Requires configured login paths and coordinated evidence across sources.']};
+  let catalogue, names, activeHelp = null, helpSerial = 0;
+  let filterInputs = new Map(), familyInputs = [];
   function structuredCopy(v) { return JSON.parse(JSON.stringify(v)); }
+  function readCatalogue() {
+    catalogue = state.filter_catalogue;
+    names = Object.fromEntries(catalogue.components.map(row => [row.key, [row.label, row.summary]]));
+  }
+  readCatalogue();
   function node(tag, text, cls) { const n = document.createElement(tag); if(text !== undefined) n.textContent = text; if(cls) n.className = cls; return n; }
   function message(text) { $('filter-message').className = text ? 'filters-alert' : ''; $('filter-message').textContent = text; }
   function edited() { $('profile-status').textContent = 'Unsaved changes'; }
@@ -50,34 +55,124 @@
     const details=node('details');details.append(node('summary','List retained UTC days'));details.append(node('p',days.join(', ') || 'Not yet determined'));area.append(details);
     $('coverage-confirm').hidden=!value.needs_acknowledgement; $('acknowledge-coverage').checked=false; authorization();
   }
+  function help(title, text) {
+    const root=node('details',undefined,'filter-help'), trigger=node('summary','?'), body=node('div',text,'filter-help-body');
+    body.id='filter-help-'+(++helpSerial);body.setAttribute('role','tooltip');
+    trigger.setAttribute('aria-label','About '+title);trigger.setAttribute('aria-describedby',body.id);
+    root.append(trigger,body);
+    let hovered=false,focused=false,pinned=false;
+    const entry={root,close(){root.open=false;pinned=false;if(activeHelp===entry)activeHelp=null;}};
+    const show=()=>{
+      if(activeHelp&&activeHelp!==entry)activeHelp.close();root.open=true;activeHelp=entry;
+      const anchor=trigger.getBoundingClientRect(), size=body.getBoundingClientRect(), viewport=document.documentElement;
+      body.style.left=Math.max(12,Math.min(anchor.right-size.width,viewport.clientWidth-size.width-12))+'px';
+      body.style.top=Math.max(12,Math.min(anchor.bottom,viewport.clientHeight-size.height-12))+'px';
+    };
+    root.addEventListener('mouseenter',()=>{hovered=true;show();});
+    root.addEventListener('mouseleave',()=>{hovered=false;if(!focused&&!pinned)entry.close();});
+    root.addEventListener('focusin',()=>{focused=true;show();});
+    root.addEventListener('focusout',event=>{if(!root.contains(event.relatedTarget)){focused=false;if(!hovered)entry.close();}});
+    trigger.addEventListener('click',event=>{event.preventDefault();pinned=!pinned;if(pinned)show();else entry.close();});
+    return root;
+  }
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&activeHelp){event.preventDefault();activeHelp.close();}});
+  document.addEventListener('pointerdown',event=>{if(activeHelp&&!activeHelp.root.contains(event.target))activeHelp.close();});
+  window.addEventListener('resize',()=>{if(activeHelp)activeHelp.close();});
+  window.addEventListener('scroll',()=>{if(activeHelp)activeHelp.close();});
+  function choice(item, host) {
+    const row=node('div',undefined,'filters-option'), label=node('label',undefined,'filter-setting'), input=node('input');
+    input.type='checkbox';input.checked=profile.filters[item.key];input.dataset.filter=item.key;
+    input.addEventListener('change',()=>{updateFamilies();edited();});
+    filterInputs.set(item.key,input);
+    const content=node('span');content.append(node('strong',item.label),node('small',item.summary));
+    label.append(input,content);
+    row.append(label,node('span',(state.effective||{})[item.key]||'Not recorded','filter-effective'),help(item.label,item.help));
+    host.append(row);
+  }
+  function updateFamilies() {
+    for(const family of familyInputs) {
+      const selected=family.members.filter(item=>filterInputs.get(item.key).checked).length;
+      family.input.checked=selected===family.members.length;
+      family.input.indeterminate=selected>0&&selected<family.members.length;
+      const counts={active:0,needs:0,off:0,unknown:0};
+      for(const item of family.members)counts[catalogue.status_classes[(state.effective||{})[item.key]]||'unknown']++;
+      let summary='Current report: '+counts.active+' active; '+counts.needs+' need configuration, evidence or capacity';
+      if(counts.off)summary+='; '+counts.off+' off';
+      if(counts.unknown)summary+='; '+counts.unknown+' not recorded';
+      family.status.textContent=summary;
+    }
+  }
+  function parameters(item, host, emitted) {
+    const rule=item.section;if(!rule||emitted.has(rule))return;emitted.add(rule);
+    const box=node('details',undefined,'filter-parameters');box.append(node('summary','Parameters: '+(item.section_label||item.label)));
+    const grid=node('div',undefined,'filters-advanced-grid');
+    for(const [key,value] of Object.entries(profile.classifier[rule])) {
+      if(key==='enabled'||key==='retrospective_enabled')continue;
+      const control=node('div',undefined,'filter-parameter'), label=node('label'), input=node(Array.isArray(value)?'textarea':'input');
+      let title=(key==='retrospective_months'||key==='months')?'UTC months (YYYY-MM, one per line)':key.replace(/_/g,' ');
+      let description=(item.parameter_help||{})[key]||catalogue.parameter_help[key];
+      input.dataset.rule=rule;input.dataset.key=key;
+      if(key==='aggressive_comparison') {
+        const policy=catalogue.policies.aggressive_comparison;title=policy.label;description=policy.summary;
+        input.type='checkbox';input.checked=Boolean(value);input.dataset.switch='true';
+        label.append(input,node('span',title));control.append(label,help(title,policy.help));
+      } else {
+        if(Array.isArray(value)){input.value=value.join('\n');input.dataset.array='true';}
+        else {input.type='number';input.step='1';input.min='0';input.value=value;}
+        label.append(node('span',title),input);control.append(label);
+      }
+      if(!description)throw new Error('Missing parameter help for '+rule+'/'+key);
+      const note=node('small',description,'filter-parameter-help');note.id='filter-parameter-'+rule+'-'+key;
+      input.setAttribute('aria-describedby',note.id);control.append(note);
+      input.addEventListener('input',edited);grid.append(control);
+    }
+    box.append(grid);host.append(box);
+  }
   function drawForm() {
-    $('site-label').textContent=site; $('applied-description').textContent=(state.applied?'Applied profile '+state.profile_id.slice(0,12):'Legacy/unverified profile; Filters have not been applied.')+' · Report generation '+state.generation+' · '+state.generated_utc;
+    if(activeHelp)activeHelp.close();readCatalogue();filterInputs=new Map();familyInputs=[];
+    $('site-label').textContent=site; $('applied-description').textContent=(state.applied?'Applied profile '+state.profile_id.slice(0,12):'Unverified profile; Filters have not been applied.')+' · Report generation '+state.generation+' · '+state.generated_utc;
     $('profile-status').textContent=state.pending?'Pending settings':state.applied?'Applied settings':'Defaults pending';$('profile-note').textContent=state.note||'';
-    const list=$('filter-list');list.replaceChildren();
-    for(const [key,labels] of Object.entries(names)) {
-      const label=node('label',undefined,'filters-option'), checkbox=node('input');checkbox.type='checkbox';checkbox.checked=profile.filters[key];checkbox.dataset.filter=key;checkbox.addEventListener('change',edited);
-      const content=node('span');content.append(node('strong',labels[0]),node('small',labels[1]));
-      label.append(checkbox,content,node('span',(state.effective||{})[key] || 'Not applied', 'filter-effective'));list.append(label);
+    const list=$('filter-list'),advanced=$('advanced-fields');list.replaceChildren();advanced.replaceChildren();
+    const emitted=new Set();
+    for(const family of catalogue.families) {
+      const members=catalogue.components.filter(item=>item.family===family.key);if(!members.length)continue;
+      const section=node('section',undefined,'filter-family-details');
+      if(members.length===1)choice(members[0],list);
+      else {
+        const row=node('div',undefined,'filters-option'),label=node('label',undefined,'filter-setting'),input=node('input');
+        input.type='checkbox';input.dataset.filterFamily=family.key;
+        const content=node('span');content.append(node('strong',family.label),node('small','Adjust individual rules in Advanced.'));
+        label.append(input,content);const status=node('span',undefined,'filter-effective');
+        row.append(label,status,help(family.label,family.help));list.append(row);
+        input.addEventListener('change',()=>{for(const item of members)filterInputs.get(item.key).checked=input.checked;updateFamilies();edited();});
+        familyInputs.push({input,status,members});section.append(node('h3',family.label));
+      }
+      for(const item of members) {
+        if(members.length>1)choice(item,section);
+        parameters(item,section,emitted);
+      }
+      if(section.children.length)advanced.append(section);
     }
-    $('ip-policy').checked=profile.exclude_automated_ips; $('native-level').value=profile.native_level;
-    const advanced=$('advanced-fields');advanced.replaceChildren();
-    for(const rule of rules) {
-      const box=node('section');box.append(node('h3',names[rule][0]));const grid=node('div',undefined,'filters-advanced-grid');
-      for(const [key,value] of Object.entries(profile.classifier[rule])) {
-        if(key==='enabled') continue;
-        const label=node('label',key.replace(/_/g,' '));const input=node(Array.isArray(value)?'textarea':'input');input.dataset.rule=rule;input.dataset.key=key;
-        if(Array.isArray(value)) {input.value=value.join('\n');input.dataset.array='true';} else {input.type='number';input.step='1';input.min='0';input.value=value;}
-        input.addEventListener('input',edited);label.append(input);grid.append(label);
-      } box.append(grid);advanced.append(box);
+    const optional=catalogue.components.filter(item=>!item.family);
+    if(optional.length) {
+      const section=node('section',undefined,'filter-family-details');section.append(node('h3','Optional comparisons'));
+      for(const item of optional){choice(item,section);parameters(item,section,emitted);}advanced.append(section);
     }
-    const periods=$('period-status');periods.replaceChildren();const table=node('table'),heading=node('tr');heading.append(node('th','UTC month'));Object.values(names).forEach(n=>heading.append(node('th',n[0])));table.append(heading);for(const month of Object.keys(state.effective_by_month||{}).sort().reverse()){const row=node('tr');row.append(node('td',month));Object.keys(names).forEach(key=>row.append(node('td',state.effective_by_month[month][key])));table.append(row);}periods.append(table);
+    const ip=catalogue.policies.ip_policy,native=catalogue.policies.native_level;
+    $('ip-policy-title').textContent=ip.label;$('ip-policy-description').textContent=ip.summary;
+    $('ip-policy-help').replaceChildren(help(ip.label,ip.help));$('ip-policy').checked=profile.exclude_automated_ips;
+    $('native-level-label').textContent=native.label;$('native-level-description').textContent=native.summary;
+    $('native-level-help').replaceChildren(help(native.label,native.help));$('native-level').replaceChildren();
+    for(const option of native.options){const nodeOption=node('option',option.label);nodeOption.value=String(option.value);$('native-level').append(nodeOption);}
+    $('native-level').value=profile.native_level;updateFamilies();
+    const periods=$('period-status');periods.replaceChildren();const table=node('table'),heading=node('tr');heading.append(node('th','UTC month'));Object.values(names).forEach(n=>heading.append(node('th',n[0])));table.append(heading);for(const month of Object.keys(state.effective_by_month||{}).sort().reverse()){const row=node('tr');row.append(node('td',month));Object.keys(names).forEach(key=>row.append(node('td',state.effective_by_month[month][key]||'Not recorded')));table.append(row);}periods.append(table);
     drawExceptions();drawCoverage(state.coverage);authorization();drawLinks();drawJobs(state.jobs||[]);drawCurrentImpact();
   }
   function collect() {
     const result=structuredCopy(profile);
     document.querySelectorAll('[data-filter]').forEach(input=>result.filters[input.dataset.filter]=input.checked);
     result.exclude_automated_ips=$('ip-policy').checked;result.native_level=Number($('native-level').value);
-    document.querySelectorAll('[data-rule]').forEach(input=>result.classifier[input.dataset.rule][input.dataset.key]=input.dataset.array?input.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean):Number(input.value));
+    document.querySelectorAll('[data-rule]').forEach(input=>result.classifier[input.dataset.rule][input.dataset.key]=input.dataset.switch?Number(input.checked):input.dataset.array?input.value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean):Number(input.value));
     return result;
   }
   async function refresh() {
@@ -107,7 +202,9 @@
     impact({before:(state.view_totals||{}).original,after:state.totals,before_label:'Additional filters off',after_label:'Current applied profile',capacity_fallback:state.capacity_fallback});
     const area=$('match-counts');area.replaceChildren(node('h3','Matches and actual exclusions for this generation'));
     const counts=state.matched_requests||{},table=node('table'),header=node('tr');header.append(node('th','Detector / measure'),node('th','Requests'));table.append(header);
-    for(const [key,title] of [['broad_flagged_requests','Broad probing'],['probing_flagged_requests','Endpoint probing'],['rapid_scan_flagged_requests','Rapid content-path scanning'],['distributed_login_flagged_requests','Distributed login probing'],['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']]){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
+    const measures=catalogue.components.filter(item=>item.count_key).map(item=>[item.count_key,item.label]);
+    measures.push(['flagged_requests','Individually flagged union'],['overlap_requests','Matched by multiple rules']);
+    for(const [key,title] of measures){const row=node('tr');row.append(node('td',title),node('td',counts[key]===undefined?'Unavailable on this generation':Number(counts[key]).toLocaleString()));table.append(row);}area.append(table);
     const views=state.view_totals||{};
     for(const [mode,title,ledger] of [['requests','Matched-request filtering',state.request_excluded_by_month||{}],['behavior','Configured visitor policy',state.excluded_by_month||{}]]){
       for(const month of Object.keys(ledger).sort().reverse()){

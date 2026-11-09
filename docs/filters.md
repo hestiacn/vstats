@@ -33,6 +33,28 @@ Filters. Settings affect statistics, not access to the website.
   as pending edits. Restore requires a new rebuild against retained input.
 
 Anonymous history actors mean permitted browser access, not an authenticated identity.
+Related rules share a main-page checkbox. Advanced keeps each component and its
+parameters. A mixed checkbox means only some components are selected; clicking it
+selects them all, while clicking a fully selected group clears them all. The
+status summary describes the current report, even while settings are pending.
+Question-mark help works on hover, keyboard focus or tap, including read-only
+pages; Escape dismisses it without changing a setting. Parameter descriptions
+give the units and the evidence each threshold bounds.
+
+Native detection level 1 uses the common and generic tables. Levels 2 and 3 add
+the same extended table. That inherited table matches desktop Windows NT 10.0
+user agents, including Microsoft Edge on Windows, as robots/non-viewed apart
+from the native download-file exemption. These signatures do not prove bot
+identity. Choose the native level with that limitation in mind.
+
+The filtering PR and its detector extension are intended to ship together as
+one feature. There is no upgrade path between their incomplete, unmerged draft
+schemas. Stored and browser profiles must contain every current choice and
+classifier field; incomplete profiles are refused before publication. A host
+holding incomplete draft profiles must reset/rebuild them outside the product
+before installing the final detector extension. Verified import of an existing
+native/managed setup and native-only onboarding remain supported.
+
 Edits, reset and inclusion changes stay pending until Apply succeeds. Repeated
 submission of one action ID returns that existing job, including after it
 finishes. An explicit Retry or Reprocess creates a new action. Returning to the

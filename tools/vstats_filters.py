@@ -19,13 +19,99 @@ import stat
 import subprocess
 import tempfile
 
-FILTERS = [('native_crawlers', 'Native crawler signatures', 'Existing AWStats user-agent detection.'),
-           ('verified_crawlers', 'Verified crawlers', 'Dated provider evidence; independent of browser claims.'),
-           ('behavior', 'Broad probing', 'Repeated diverse requests and missing paths in a bounded window.'),
-           ('probing', 'Endpoint probing', 'Repeated requests to explicitly configured paths.'),
-           ('rapid_scan', 'Rapid content-path scanning', 'Rapid diverse paths with repeated missing resources.'),
-           ('distributed_login', 'Distributed login probing', 'Coordinated sources targeting configured login paths.')]
-RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login']
+# Display metadata has one owner. Detector identifiers remain owned by their
+# classifiers; these descriptions never decide whether a request is excluded.
+FILTER_CATALOGUE = [
+    dict(key='native_crawlers', label='Native crawler signatures', family='signatures', section=None,
+         summary='Unverified user-agent signatures, including broad legacy matches.',
+         help='Uses AWStats user-agent signature tables at the selected native detection level. This is not verified crawler identity. Extended tables include ordinary Windows desktop user agents; see Native detection level before choosing them.'),
+    dict(key='verified_crawlers', label='Verified crawlers', family='provider_evidence', section=None,
+         summary='A registered crawler marker and dated provider IP-range evidence.',
+         help='Excludes requests with a registered crawler user-agent marker, currently Googlebot, and provider IP-range snapshots bracketing the request time. One snapshot exactly at that time can supply both brackets. An IP address or user-agent claim alone is insufficient.'),
+    dict(key='behavior', label='Broad probing', family='probing_and_scanning', section='behavior', ip_policy='yes',
+         count_key='broad_flagged_requests', summary='Diverse browser claims, paths and missing resources in a bounded window.',
+         help='Looks for the configured request volume, diversity of claimed user agents and platforms, distinct paths and missing responses within a time window. This is suspected automation, not verified identity; shared addresses may contain unrelated users.'),
+    dict(key='probing', label='Endpoint probing', family='probing_and_scanning', section='probing', ip_policy='yes',
+         summary='Repeated probing of explicitly configured endpoint paths.',
+         help='Requires repeated requests to the configured endpoint list with the configured diversity of browser and platform claims. An empty path list makes this rule inactive. Paths are supplied by the operator rather than guessed.'),
+    dict(key='rapid_scan', label='Rapid content-path scanning', family='probing_and_scanning', section='rapid_scan', ip_policy='yes',
+         summary='Many content paths and missing resources in a short window.',
+         help='Looks for rapid requests across distinct content paths together with the configured volume of missing responses. Browser rotation is not required. The thresholds are heuristics, not a measured probability of automation.'),
+    dict(key='distributed_login', label='Distributed login probing', family='probing_and_scanning', section='distributed_login', ip_policy='yes',
+         summary='Corroborated login probing across multiple sources.',
+         help='Uses coordinated evidence across sources targeting configured login and administration paths, including coherent login activity and browser/platform diversity. Both path lists are required. A shared browser string or a single login attempt is insufficient.')]
+
+FILTER_FAMILIES = [
+    dict(key='signatures', label='Bot and tool signatures',
+         help='Matches explicit or legacy user-agent signatures. These are unverified claims and patterns; the native extended tables can also match ordinary Windows browsers.'),
+    dict(key='provider_evidence', label='Provider evidence',
+         help='Uses the component\'s dated provider evidence and its own identity requirements. Evidence must cover the request; a browser claim alone is insufficient.'),
+    dict(key='probing_and_scanning', label='Probing and scanning',
+         help='Combines the selected probing detectors. All four behavioral components can seed the optional IP/month policy. Individual controls and thresholds are in Advanced.')]
+
+PARAMETER_HELP = {
+    'window_seconds': 'Time window for combining the rule\'s evidence, in seconds.',
+    'min_requests': 'Minimum number of requests needed by this rule, in requests.',
+    'distinct_user_agents': 'Minimum number of distinct claimed user-agent strings.',
+    'distinct_platforms': 'Minimum number of distinct claimed platform families; these are claims, not authenticated devices.',
+    'distinct_paths': 'Minimum number of distinct request paths.',
+    'not_found_requests': 'Minimum number of missing-resource responses, in requests.',
+    'paths': 'Configured endpoint paths considered by this rule, one exact path per line.',
+    'min_sources': 'Minimum number of distinct source addresses meeting the rule\'s witness requirements.',
+    'min_post_requests': 'Minimum number of POST requests across qualifying sources.',
+    'min_source_posts': 'Minimum number of POST requests from each qualifying source.',
+    'distinct_source_user_agents': 'Minimum number of distinct claimed user-agent strings for each qualifying source.',
+    'distinct_source_platforms': 'Minimum number of distinct claimed platform families for each qualifying source.',
+    'shared_user_agents': 'Minimum number of exact user-agent strings shared by the qualifying sources.',
+    'login_paths': 'Configured login paths used by this rule, one exact path per line.',
+    'admin_paths': 'Configured administration paths used to corroborate login probing, one exact path per line.'}
+
+FILTER_STATUS_CLASSES = {
+    'Active': 'active', 'Active for covered requests': 'active',
+    'Active for witnessed episodes': 'active', 'Dated intervals only': 'active',
+    'Disabled': 'off', 'Needs configuration': 'needs', 'Evidence unavailable': 'needs',
+    'Needs curated tool tokens': 'needs', 'Needs repeated corpus evidence': 'needs',
+    'Needs evidence and selected months': 'needs', 'Select UTC months in Advanced': 'needs',
+    'Input over limits': 'needs', 'Corpus evidence over limits; retained': 'needs',
+    'Not selected for this month': 'needs'}
+
+FILTER_POLICIES = {
+    'ip_policy': dict(label='Exclude other requests from behavior-flagged IPs',
+                      summary='Extends qualifying evidence to the same website, address and UTC month.'),
+    'native_level': dict(label='Native crawler detection level',
+        summary='Extended legacy tables also match ordinary Windows desktop browsers.',
+        help='Level 1 uses the common and generic signature lists. Levels 2 and 3 also use the extended list; this release defines no third list, so their signature coverage is the same. At level 2 or higher, a desktop user agent containing Windows NT 10.0 is classified as a robot/non-viewed, except for the existing download-file exemption. Microsoft Edge on Windows is an example. The extended list also includes old Edge and MSIE patterns. These signatures do not prove automation.',
+        options=[dict(value=1, label='1 — common and generic'), dict(value=2, label='2 — extended'),
+                 dict(value=3, label='3 — extended (same tables as 2)')]),
+    'aggressive_comparison': dict(label='Include phase-linked candidates in the optional comparison only',
+        summary='Adds weaker shared-phase candidates to the separate inferred comparison.',
+        help='Adds phase-linked cohort candidates to the optional inferred/aggressive comparison. Shared browser claims and calendar phases can include unrelated users. This switch never changes default report totals; the comparison is explicitly unverified.')}
+
+FILTERS = [(row['key'], row['label'], row['summary']) for row in FILTER_CATALOGUE]
+RULES = [row['key'] for row in FILTER_CATALOGUE if row.get('section') == row['key']]
+
+
+def filter_catalogue():
+    """Public display data, shared by static pages and the current state API."""
+    rows = copy.deepcopy(FILTER_CATALOGUE)
+    eligible = []
+    for row in rows:
+        policy = row.get('ip_policy')
+        if policy == 'yes':
+            eligible.append(row['label'])
+            row['help'] += ' This component can trigger the optional IP/month policy.'
+        elif policy == 'original':
+            eligible.append(row['label'] + ' (original stronger witness only)')
+            row['help'] += ' Only its original stronger witness can trigger the IP/month policy; alternative witnesses remain request-only.'
+        else:
+            row['help'] += ' This component never seeds additional IP/month exclusions.'
+        if row.get('section') == row['key']:
+            row.setdefault('count_key', row['key'] + '_flagged_requests')
+    policies = copy.deepcopy(FILTER_POLICIES)
+    policies['ip_policy']['help'] = ('Only these components can trigger same-website, same-address, same-UTC-month expansion: ' +
+        ', '.join(eligible) + '. Every other component is request-only for this policy. Independent native and provider/actor treatment still applies. Request-ID inclusions can retain selected behavioral/IP matches. Shared addresses can include unrelated users.')
+    return dict(components=rows, families=copy.deepcopy(FILTER_FAMILIES), policies=policies,
+                status_classes=dict(FILTER_STATUS_CLASSES), parameter_help=dict(PARAMETER_HELP))
 SITE = re.compile(r'^[a-z0-9][a-z0-9._-]{0,252}$')
 IDENTIFIER = re.compile(r'^[a-f0-9]{32}$')
 GENERATION = re.compile(r'^\d{8}T\d{6}Z-[a-f0-9]{8}$')
@@ -122,6 +208,7 @@ def classifier_config(raw, app, perl):
 def defaults(app, perl, current=None):
     classifier = classifier_config({'schema_version': 1, 'exclude': ['suspected_automation']}, app, perl)
     if current:
+        current = validate_profile(current, app, perl)
         # Keep explicitly configured endpoint lists when resetting other options.
         for rule, keys in [('probing', ['paths']), ('distributed_login', ['login_paths', 'admin_paths'])]:
             for key in keys:
@@ -160,17 +247,22 @@ def validate_profile(value, app, perl):
     if not isinstance(p['classifier'], dict):
         raise ValueError('Invalid classifier configuration')
     cfg = p['classifier']
-    cfg['schema_version'] = 1
+    reference = classifier_config({'schema_version': 1}, app, perl)
+    if (not set(reference) <= set(cfg) or any(
+            isinstance(value, dict) and
+            (not isinstance(cfg[key], dict) or not set(value) <= set(cfg[key]))
+            for key, value in reference.items())):
+        raise ValueError('Invalid rule configuration')
     cfg['exclude'] = ['suspected_automation']
     cfg['behavior_include'] = sorted(ids)
     for rule in RULES:
         if not isinstance(cfg.get(rule, {}), dict):
             raise ValueError('Invalid rule configuration')
-        cfg.setdefault(rule, {})['enabled'] = int(p['filters'][rule])
+        cfg[rule]['enabled'] = int(p['filters'][rule])
     # Intended enablement remains saved even where required paths are unavailable.
-    if not cfg['probing'].get('paths'):
+    if not cfg['probing']['paths']:
         cfg['probing']['enabled'] = 0
-    if not (cfg['distributed_login'].get('login_paths') and cfg['distributed_login'].get('admin_paths')):
+    if not (cfg['distributed_login']['login_paths'] and cfg['distributed_login']['admin_paths']):
         cfg['distributed_login']['enabled'] = 0
     p['classifier'] = classifier_config(cfg, app, perl)
     p['exceptions'].sort(key=lambda e: e['request_id'])
@@ -348,10 +440,16 @@ class Control:
     def state_for(self, site):
         manifest = self.current()
         data = copy.deepcopy(manifest['profiles'][site])
+        for profile in (data.get('applied'), data.get('default_profile')):
+            if profile is not None:
+                validate_profile(profile, self.settings['app'], self.settings['perl'])
         data.update(generation=manifest['generation'], generated_utc=manifest['generated_utc'], site=site)
+        data['filter_catalogue'] = filter_catalogue()
         data['browser_access'] = public_browser_policy(self.policy(site))
         draft = self.state / 'drafts' / (site + '.json')
         data['pending'] = read_json(draft) if draft.exists() else None
+        if data['pending'] is not None:
+            validate_profile(data['pending']['profile'], self.settings['app'], self.settings['perl'])
         data['jobs'] = self.jobs(site)
         return data
 
