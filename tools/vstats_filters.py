@@ -213,9 +213,9 @@ def defaults(app, perl, current=None):
         for rule, keys in [('probing', ['paths']), ('distributed_login', ['login_paths', 'admin_paths'])]:
             for key in keys:
                 classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])
-    return {'schema_version': 1, 'filters': {f[0]: True for f in FILTERS},
-            'exclude_automated_ips': True, 'native_level': 3,
-            'classifier': classifier, 'exceptions': []}
+    return validate_profile({'schema_version': 1, 'filters': {f[0]: True for f in FILTERS},
+                             'exclude_automated_ips': True, 'native_level': 3,
+                             'classifier': classifier, 'exceptions': []}, app, perl)
 
 
 def validate_profile(value, app, perl):
