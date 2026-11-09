@@ -1899,9 +1899,11 @@ def main():
                     for rule in CORPUS_RULES:
                         if info['applied']['filters'][rule] and corpus.get('status') == 'unavailable_capacity':
                             statuses[rule] = 'Corpus evidence over limits; retained'
-                    if (info['applied']['filters']['scheduled_automation'] and corpus.get('status') == 'evaluated'
-                            and corpus.get('signatures')):
-                        statuses['scheduled_automation'] = 'Active for witnessed episodes'
+                    if info['applied']['filters']['scheduled_automation'] and corpus.get('status') == 'evaluated':
+                        if month in info.get('capacity_fallback', {}):
+                            statuses['scheduled_automation'] = 'Input over limits'
+                        elif corpus.get('signatures'):
+                            statuses['scheduled_automation'] = 'Active for witnessed episodes'
                     if (statuses.get('inferred_scanner') == 'Active' and
                             month not in info['applied']['classifier']['inferred_scanner']['months']):
                         statuses['inferred_scanner'] = 'Not selected for this month'

@@ -285,6 +285,31 @@ class Publication(unittest.TestCase):
             self.assertEqual(actual['effective'][key], 'Corpus evidence over limits; retained', key)
             self.assertNotIn(key + '_flagged_requests', actual['matched_requests'], key)
 
+    def test_scheduled_status_respects_month_refusal_with_and_without_corpus_signatures(self):
+        profile = validate_profile(defaults(str(ROOT), PERL), str(ROOT), PERL)
+        earlier = self.generation / 'example.test/2026-09'; earlier.mkdir()
+        (earlier / 'awstats.example.test.html').write_text(self.report, encoding='utf-8')
+        signature = dict(signature_sha256='a' * 64, cycles=3, phase_paths=6, families=3)
+        for signatures in ([signature], []):
+            with self.subTest(signatures=bool(signatures)):
+                with mock.patch.object(publisher, 'APP', str(ROOT)), mock.patch.object(publisher, 'PERL', PERL):
+                    info = publisher.profile_state(True, profile, {}, {'totals': {
+                        '2026-09': {'hits': 123}, '2026-10': {'hits': 123}}})
+                info['capacity_fallback'] = {'2026-10': {'limit': 'records'}}
+                info['corpus_automation'] = {'status': 'evaluated', 'signatures': signatures}
+                previous = (self.web / 'current').resolve().name
+                run = self.state / 'runs' / previous; run.mkdir(exist_ok=True)
+                (run / 'manifest.json').write_text(json.dumps({'generation': previous,
+                    'private_base': str(self.base), 'profiles': {'example.test': info}}), encoding='utf-8')
+                self.run_publisher()
+                token = (self.web / 'current').resolve().name
+                manifest = json.loads((self.state / 'runs' / token / 'manifest.json').read_text(encoding='utf-8'))
+                actual = manifest['profiles']['example.test']
+                self.assertEqual(actual['effective_by_month']['2026-10']['scheduled_automation'], 'Input over limits')
+                self.assertEqual(actual['effective']['scheduled_automation'], 'Input over limits')
+                expected = 'Active for witnessed episodes' if signatures else 'Needs repeated corpus evidence'
+                self.assertEqual(actual['effective_by_month']['2026-09']['scheduled_automation'], expected)
+
     def test_render_failure_cannot_publish_settings_or_modify_old_report(self):
         with mock.patch.object(publisher,'decorate_generation',side_effect=RuntimeError('synthetic precommit failure')):
             with self.assertRaises(RuntimeError):self.run_publisher()
