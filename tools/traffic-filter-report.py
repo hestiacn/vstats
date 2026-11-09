@@ -53,7 +53,7 @@ def controls(prefix, exclude_automated_ips=True):
                'Request-only filtering (default; IP exclusion disabled)')
     return ("<nav><a href='" + prefix + "'>" + default + "</a> &middot; "
             "<a href='" + prefix + "requests/'>Disable IP exclusion; filter matched requests only</a> &middot; "
-            "<a href='" + prefix + "confirmed/'>Include suspected automation</a> &middot; "
+            "<a href='" + prefix + "confirmed/'>Native rules + selected verified-crawler evidence</a> &middot; "
             "<a href='" + prefix + "original/'>Original rules</a> &middot; "
             "<a href='" + prefix + "behavior-exclusions/'>Review exclusions</a></nav>")
 
@@ -92,10 +92,6 @@ def validate_rotation_witness(proof):
             not proof['distinct_platforms'] <= proof['distinct_user_agents'] <= proof['pairs'] or
             not 1 <= proof['pair_seconds'] <= 300):
         raise RuntimeError('Inconsistent login-rotation witness counts')
-    if 'agent_diversity_witness' not in proof:
-        if proof['platform_switches'] < 2:
-            raise RuntimeError('Invalid legacy login-rotation witness')
-        return
     for key in ('agent_switches', 'switch_visits', 'agent_diversity_witness',
                 'repeated_switch_witness', 'ip_expansion_eligible'):
         if type(proof.get(key)) is not int:
@@ -197,9 +193,8 @@ def witness_text(label, proof):
         return ('{pairs} adjacent login GET/POST pairs; {platform_switches} within-pair platform changes; '
                 '{distinct_user_agents} POST user agents; {distinct_platforms} POST platforms in ').format(**proof) + \
                str(proof['until'] - proof['from']) + ' seconds (heuristic evidence; no login outcome inferred)' + \
-               ('; {agent_switches} within-pair agent changes; {switch_visits} separated switch visits; '.format(**proof) +
-                ('stronger witness permits the configured IP policy' if proof['ip_expansion_eligible'] else 'request-only witness; no IP expansion')
-                if 'agent_diversity_witness' in proof else '')
+               '; {agent_switches} within-pair agent changes; {switch_visits} separated switch visits; '.format(**proof) + \
+               ('stronger witness permits the configured IP policy' if proof['ip_expansion_eligible'] else 'request-only witness; no IP expansion')
     reason = ('{requests} requests; {distinct_user_agents} user agents; {distinct_platforms} platforms; '
               '{distinct_paths} paths; {not_found_requests} HTTP 404s').format(**proof)
     if label in ('Backdoor path probing', 'Protocol endpoint discovery'):
@@ -305,7 +300,8 @@ def render_review_row(record):
     platform = record.get('behavior_platform') or 'unknown'
     state = ('Retained in default; aggressive comparison candidate' if record.get('aggressive_cohort_candidate') and not record['excluded'] else
              'Retained in default; excluded only from inferred overlay' if record.get('operator_inferred_excluded') and not record['excluded'] else
-             'Retained; retrospective candidate only' if record.get('operator_association') and not record['excluded'] else
+             'Retained; dated operator association' if (record.get('operator_association') or {}).get('state') == 'dated_association' and not record['excluded'] else
+             'Retained; retrospective candidate only' if (record.get('operator_association') or {}).get('state') == 'historical_candidate' and not record['excluded'] else
              'Excluded by metadata request policy' if record.get('metadata_requests_flagged') and not record['suspected_automation'] and not record['behavior_included'] else
              'Excluded by operator filter' if record.get('operator_excluded') and not record['suspected_automation'] else
              'Included by request ID override' if record['behavior_included'] else
@@ -714,7 +710,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
         for record in report['details']:
             if record.get('source_month') != day[:7]:
                 raise RuntimeError('Classifier lacks matching source/month metadata')
-            if not record['suspected_automation'] or not record.get('ip_expansion_eligible', True):
+            if not record['suspected_automation'] or not record['ip_expansion_eligible']:
                 continue
             witnesses = rule_evidence(record)
             # A record may match request-only and stronger rules together.
@@ -723,7 +719,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             witnesses = [(label, proof) for label, proof in witnesses
                          if label not in ('WordPress query probing', 'Backdoor path probing', 'Protocol endpoint discovery',
                                           'Service-manifest discovery', 'Operator association', 'Retrospective operator inference') and
-                         (label != 'Login browser rotation' or proof.get('ip_expansion_eligible', True))]
+                         (label != 'Login browser rotation' or proof['ip_expansion_eligible'])]
             if not witnesses:
                 raise RuntimeError('IP expansion lacks an eligible rule witness')
             key = record.get('source_month_key')

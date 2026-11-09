@@ -44,7 +44,10 @@ class ReviewRendering(unittest.TestCase):
     def test_login_rotation_requires_a_consistent_covering_witness(self):
         proof = {'from': 90, 'until': 100, 'requests': 6, 'pairs': 3,
                  'platform_switches': 2, 'distinct_user_agents': 3,
-                 'distinct_platforms': 2, 'pair_seconds': 30}
+                 'distinct_platforms': 2, 'pair_seconds': 30,
+                 'agent_switches': 2, 'switch_visits': 2,
+                 'agent_diversity_witness': 1, 'repeated_switch_witness': 1,
+                 'ip_expansion_eligible': 1}
         record = {'timestamp': 100, 'client': '192.0.2.1', 'method': 'POST',
                   'normalized_target': '/account/sign-in', 'status': 200,
                   'request_id': 'a' * 64, 'behavior_included': False, 'login_rotation_flagged': True,
@@ -250,6 +253,37 @@ class BatchIntegration(unittest.TestCase):
         self.assertEqual((self.root / 'output/retrospective-filtered/2026-10-02.log').read_bytes(), self.ordinary)
         self.assertEqual(result['ip_exclusion']['flagged_source_months'], 0)
         self.assertIn('excluded only from inferred overlay', (self.root / 'output/review/2026-10-001.html').read_text(encoding='utf-8'))
+
+    def test_operator_review_distinguishes_retained_dated_and_historical_evidence(self):
+        rows = [self.lines[-1], self.ordinary]
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(rows))
+        metadata = {hashlib.sha256(row.rstrip(b'\n')).hexdigest(): {'format': 'combined', 'vhost': 'example.test',
+                    'scheme': 'https', 'client_source': 'socket_peer', 'user_agent': 'value', 'referrer': 'absent'} for row in rows}
+        (self.inputs / '2026-10-02.observability.json').write_text(json.dumps({'schema_version': 1, 'records': metadata}), encoding='utf-8')
+        request_time = int(datetime.datetime(2026, 10, 2, 10, 0, 5, tzinfo=datetime.timezone.utc).timestamp())
+        reverse = '1.2.0.192.in-addr.arpa'; host = 'unit.internet-census.org'
+        evidence = self.root / 'operators.json'
+        for enabled, lookup, label, retained in [
+                (0, request_time - 1, 'Retained; dated operator association', b''.join(rows)),
+                (1, request_time - 1, 'Excluded by operator filter', self.ordinary),
+                (0, request_time + 1, 'Retained; retrospective candidate only', b''.join(rows))]:
+            with self.subTest(enabled=enabled, lookup=lookup):
+                bundle = {'schema_version': 1, 'provider_id': 'internet_census', 'source_url': 'https://www.internet-census.org/home.html',
+                          'source_document_fetched_at': 1700000000, 'resolver': {'address': '192.0.2.53', 'nonrewriting': 1},
+                          'selection': 'Synthetic fixture', 'observations': [{'client': '192.0.2.1', 'completed_at': lookup, 'queries': [
+                              {'qname': reverse, 'qtype': 'PTR', 'status': 'NOERROR', 'truncated': 0, 'answers': [{'owner': reverse, 'type': 'PTR', 'data': host, 'ttl': 20}]},
+                              {'qname': host, 'qtype': 'A', 'status': 'NOERROR', 'truncated': 0, 'answers': [{'owner': host, 'type': 'A', 'data': '192.0.2.1', 'ttl': 20}]}]}]}
+                evidence.write_text(json.dumps(bundle), encoding='utf-8')
+                self.config.write_text(json.dumps({'schema_version': 1, 'exclude': ['suspected_automation'],
+                    'operator_association': {'enabled': enabled, 'retrospective_enabled': 0, 'retrospective_months': []}}), encoding='utf-8')
+                output = self.root / ('operator-review-{}-{}'.format(enabled, lookup))
+                builder.build(self.config, self.inputs, output, perl=self.perl,
+                              prefix='/vstats/example.test/', exclude_automated_ips=False, operator_evidence=evidence)
+                review = (output / 'review/2026-10-001.html').read_text(encoding='utf-8')
+                self.assertIn(label, review)
+                if lookup < request_time:
+                    self.assertNotIn('Retained; retrospective candidate only', review)
+                self.assertEqual((output / 'filtered/2026-10-02.log').read_bytes(), retained)
 
     def test_private_complements_partition_primary_records(self):
         source = self.inputs / '2026-10-02.log'

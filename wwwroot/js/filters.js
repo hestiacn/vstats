@@ -218,9 +218,10 @@
       }
     }
     for(const [key,impact] of Object.entries(state.evidence_classes||{})) {
+      const item=catalogue.components.find(item=>item.key===key);
       for(const [month,value] of Object.entries(impact.by_month||{})) {
         const native=value.native_class||{},exclusive=value.native_exclusive||{};
-        area.append(node('p',month+' / '+(names[key]||[key])[0]+': '+value.matched_requests+' matched; '+value.exclusive_requests+' exclusive; '+value.overlapping_requests+' overlapping removals. Native matching requests: '+(native.hits||0)+' viewed hits, '+(native.nonviewed_hits||0)+' non-viewed. Exclusive contribution: '+(exclusive.pages||0)+' pages, '+(exclusive.hits||0)+' viewed hits.'+(key==='historical_operator'?' Applies only to the optional inferred report.':'')));
+        area.append(node('p',month+' / '+(names[key]||[key])[0]+': '+value.matched_requests+' matched; '+value.exclusive_requests+' exclusive; '+value.overlapping_requests+' overlapping removals. Native matching requests: '+(native.hits||0)+' viewed hits, '+(native.nonviewed_hits||0)+' non-viewed. Exclusive contribution: '+(exclusive.pages||0)+' pages, '+(exclusive.hits||0)+' viewed hits.'+(item&&item.impact_note?' '+item.impact_note:'')));
       }
     }
     area.append(node('p','Per-filter match counts overlap. They cover successfully classified input only. Missing classification results are unavailable. Native user-agent and verified-crawler attribution is reported by native AWStats; no per-rule count is inferred here.','filters-muted'));

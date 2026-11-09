@@ -545,8 +545,8 @@ IP-policy reasons name the report month and a real triggering request; the
 trigger's window is not misrepresented as covering an unrelated request.
 Bounded page navigation keeps every row reachable without quadratic link lists.
 View links assume canonical default IP policy, `requests/` request-only filtering,
-`confirmed/` behavior-off and `original/` original rules;
-the operator must generate those independent native views.
+`confirmed/` native rules plus selected verified-crawler evidence, and `original/`
+original rules; the operator must generate those independent native views.
 
 The builder performs no network lookup, history modification or deployment.
 `excluded_by_month.response_body_bytes` is a separate HTTP response-body ledger

@@ -42,6 +42,8 @@ async function runFiltersUi(fixture) {
       addEventListener(type,fn){(documentHandlers[type]||(documentHandlers[type]=[])).push(fn);},
       querySelectorAll(selector){return all().filter(n=>selector==='[data-filter]'?n.dataset.filter:selector==='[data-rule]'?n.dataset.rule:false);}};
     const profile=clone(fixture.profile),catalogue=clone(fixture.catalogue);
+    const optional=catalogue.components.find(component=>component.family===null);
+    if(optional)optional.impact_note='Catalogue-owned scope note fixture';
     const multi=catalogue.families.map(f=>({family:f,members:catalogue.components.filter(c=>c.family===f.key)})).filter(g=>g.members.length>1);
     if(mode==='mixed')profile.filters[multi[0].members[0].key]=false;
     const expectedInitial=clone(profile.filters);
@@ -49,6 +51,7 @@ async function runFiltersUi(fixture) {
       applied:mode==='unmanaged'?null:profile,default_profile:clone(fixture.profile),filter_catalogue:catalogue,pending:null,
       browser_access:{allow_updates:mode!=='readonly'},coverage:{known_previous_input:true,retained_days:['2026-11-01'],needs_acknowledgement:false},
       effective:fixture.effective,effective_by_month:{},jobs:[],totals:{'2026-11':{unique:1,visits:1,pages:2,hits:3,bytes:100}},view_totals:{},matched_requests:{}};
+    if(optional)state.evidence_classes={[optional.key]:{by_month:{'2026-11':{matched_requests:1,exclusive_requests:0,overlapping_requests:0}}}};
     get('filters-state').textContent=JSON.stringify(state);get('filters-main').dataset.historical=String(mode==='historical');
     const fetch=async(url,options)=>{
       if(options.method==='POST'){
@@ -62,6 +65,7 @@ async function runFiltersUi(fixture) {
     execute(document,window,fetch,{clipboard:{writeText:async()=>{}}},{protocol:'https:',search:'',hash:'#settings'},class{get(){return null;}},{getRandomValues(value){value.fill(1);return value;}});
     const settle=async()=>{for(let i=0;i<60;i++)await Promise.resolve();};await settle();
     assert(!get('filter-message').textContent,mode+': '+get('filter-message').textContent);
+    if(optional&&mode!=='unmanaged')assert(all().some(node=>node.textContent.includes(optional.impact_note)),mode+': scope note must come from catalogue');
     const inputs=()=>document.querySelectorAll('[data-filter]');
     const values=()=>Object.fromEntries(inputs().map(n=>[n.dataset.filter,n.checked]));
     assert(inputs().length===catalogue.components.length,mode+': each component must occur once');
