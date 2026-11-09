@@ -39,7 +39,7 @@ FILTER_CATALOGUE = [
          help='Looks for rapid requests across distinct content paths together with the configured volume of missing responses. Browser rotation is not required. The thresholds are heuristics, not a measured probability of automation.'),
     dict(key='distributed_login', label='Distributed login probing', family='probing_and_scanning', section='distributed_login', ip_policy='yes',
          summary='Corroborated login probing across multiple sources.',
-         help='Uses coordinated evidence across sources targeting configured login and administration paths, including coherent login activity and browser/platform diversity. Both path lists are required. A shared browser string or a single login attempt is insufficient.')]
+         help='Requires corroborated login POST activity across sources, browser/platform diversity and shared agent claims on configured login and administration paths. Coherent same-browser POST-to-GET flows are protected. Both path lists are required. A shared browser string or a single login attempt is insufficient.')]
 
 FILTER_FAMILIES = [
     dict(key='signatures', label='Bot and tool signatures',
