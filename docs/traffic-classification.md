@@ -155,7 +155,7 @@ The native verified-crawler option still requires supported identity and dated
 provider evidence; behavioral selection is a separate operator policy.
 
 Reports retain schema 1 with additive behavior fields; algorithm identity is
-`vstats-traffic-v15`. Optional private details include status, the per-request
+`vstats-traffic-v16`. Optional private details include status, the per-request
 behavior flag, request ID, normalized query-free path, inclusion/exclusion state
 and a numeric witnessing window. Aggregate JSON/HTML contains no source IP, target or user-agent
 records. HTML shows behavioral counts separately from actor identity.
@@ -254,18 +254,22 @@ All behavioral rules remain optional and independently configurable.
 `suspected_automation` is the union of enabled broad path probing, configured
 endpoint probing, rapid content-path probing, distributed login probing, login
 browser rotation, HEAD path sweeps, sensitive-file probing and WordPress
-enumeration, WordPress query probing, backdoor path probing and protocol endpoint
-discovery. Actor identities and the absence-attested `scanner_flagged`
+enumeration, WordPress query probing, backdoor path probing, protocol endpoint
+discovery and service-manifest discovery. The corpus layer can additionally
+flag compound scripted browsing, scheduled crawling, bounded scanner inference,
+declared automation and WordPress micro-probing. Metadata requests remain a
+separate reporting policy, outside that suspicion union.
+Actor identities and the absence-attested `scanner_flagged`
 layer remain independent. An overlapping request counts once and retains every
 applicable covering witness in private details and curated review. Aggregate
 `behavior` contains `broad_rule`, `probing_rule`, `rapid_scan_rule`, `distributed_login_rule`, `login_rotation_rule`, `head_scan_rule`, `sensitive_scan_rule`, `wp_enumeration_rule`,
-`wp_query_probe_rule`, `backdoor_probe_rule`, `protocol_probe_rule`,
+`wp_query_probe_rule`, `backdoor_probe_rule`, `protocol_probe_rule`, `service_discovery_rule`,
 `broad_flagged_requests`, `probing_flagged_requests`,
 `rapid_scan_flagged_requests`, `distributed_login_flagged_requests`,
 `login_rotation_flagged_requests`, `head_scan_flagged_requests`,
 `sensitive_scan_flagged_requests`, `wp_enumeration_flagged_requests`,
 `wp_query_probe_flagged_requests`, `backdoor_probe_flagged_requests`,
-`protocol_probe_flagged_requests` and `overlap_requests` (requests matching at least
+`protocol_probe_flagged_requests`, `service_discovery_flagged_requests` and `overlap_requests` (requests matching at least
 two rules); its main request and actor
 counts are the union. Eligible and insufficient-field counts deduplicate records
 across enabled rules. Merged sequence counts sum the rules' sequences, which may
@@ -276,7 +280,8 @@ Private details include `broad_probing_flagged`, `probing_flagged`,
 `rapid_scan_flagged`, `distributed_login_flagged`, `probing_evidence`,
 `rapid_scan_evidence`, `distributed_login_evidence`, `login_rotation_flagged`
 and `login_rotation_evidence`, plus corresponding `head_scan`, `sensitive_scan`,
-`wp_enumeration`, `wp_query_probe`, `backdoor_probe` and `protocol_probe` flags and numeric evidence, retaining the
+`wp_enumeration`, `wp_query_probe`, `backdoor_probe`, `protocol_probe` and
+`service_discovery` flags and numeric evidence, retaining the
 existing broad `behavior_evidence`. Review
 labels each applicable rule and its numeric covering window. The same explicit
 exclusion selector and `behavior_include` request IDs apply to every rule;
@@ -1073,7 +1078,7 @@ supplies an IP/month trigger. No status, component absence, exploit success or
 malicious intent is inferred. The window is an unvalidated heuristic.
 
 The Filters page exposes its own checkbox, lists and window. New profiles and
-Reset select it; older profiles keep it disabled until selected. In the CLI it
+Reset select it. In the CLI it
 is opt-in (`wp_query_probe.enabled: 1`). Request-ID inclusion exceptions apply.
 
 Native crawler signatures also recognize bounded self-declarations of the form
@@ -1125,8 +1130,7 @@ Both rules are request-only: they never authorize IP/month expansion. If a
 record also matches a stronger existing rule, only the stronger proof appears
 as an IP-policy trigger. The rules remain independently selectable in Filters,
 with advanced parameters, separate counts and numeric review witnesses. New
-profiles and Reset check them; older saved profiles keep them disabled until
-selected. Reset preserves configured path/token lists. The CLI leaves both
+profiles and Reset check them. Reset preserves configured path/token lists. The CLI leaves both
 disabled unless explicitly enabled. Daily context supplies complete witnesses
 without inflating primary counts, and overlaps count once in the union.
 

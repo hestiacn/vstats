@@ -29,7 +29,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from normalize_logs import build_snapshot, merge_observability
 from native_history_cache import read_history, restore_history
 from vstats_filters import (add_filters_menu, native_shell, canonical, identity, read_json,
-                            atomic_json, validate_profile, defaults, filter_status, FILTERS, GENERATION,
+                            atomic_json, validate_profile, defaults, filter_status, FILTERS, RULES, GENERATION,
+                            classifier_config, filter_catalogue,
                             Control, browser_policy, public_browser_policy, publish_browser_policy, queued_user)
 
 BASE = '/var/lib/vstats'
@@ -979,8 +980,8 @@ def replay_behavior_site(account, site, snapshot, site_work, layer_info, token, 
                                  Path(cache_path).read_bytes() +
                                  json.dumps({'ip_month_policy': layer_info.get('exclude_automated_ips', True), 'views': 4}, sort_keys=True).encode()).hexdigest()
     history_roots = {'original': os.path.join(BASE, 'data'), 'confirmed': os.path.join(BASE, 'data-verified'), 'requests': os.path.join(BASE, 'data-requests'), 'behavior': os.path.join(BASE, 'data-behavior')}
-    if selected and ((selected['filters'].get('historical_operator') and selected['classifier']['operator_association']['retrospective_months']) or
-                     (selected['filters'].get('scheduled_automation') and selected['classifier']['scheduled_automation']['aggressive_comparison'])):
+    if selected and ((selected['filters']['historical_operator'] and selected['classifier']['operator_association']['retrospective_months']) or
+                     (selected['filters']['scheduled_automation'] and selected['classifier']['scheduled_automation']['aggressive_comparison'])):
         history_roots['retrospective'] = os.path.join(BASE, 'data-inferred')
     configs, data_roots = {}, {}
     for mode in history_roots:
@@ -1497,7 +1498,7 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
         profile = None
         if managed:
             cfg_file = Path(config) / 'traffic-classification' / ('awstats.' + site + '.json')
-            classifier = read_json(cfg_file)
+            classifier = classifier_config(read_json(cfg_file), APP, PERL)
             text = (Path(config) / ('awstats.' + site + '.conf')).read_text(encoding='utf-8')
             # Replay appends this level as the final native assignment. Import it
             # only from one unambiguous top-level line; otherwise fail closed.
@@ -1508,7 +1509,9 @@ def imported_profiles(sites, real_base, config, legacy_app, old_state, account):
             level = int(level[0]) if level else 3
             profile = {'schema_version': 1,
                        'filters': dict(native_crawlers=bool(level), verified_crawlers=site_settings.get('verified_crawler_filter', False),
-                                       **{key: bool(classifier.get(key, {}).get('enabled', 0)) for key in ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe']}),
+                                       operator_associated=bool(classifier['operator_association']['enabled']),
+                                       historical_operator=bool(classifier['operator_association']['retrospective_enabled']),
+                                       **{key: bool(classifier[key]['enabled']) for key in RULES}),
                        'exclude_automated_ips': site_settings.get('exclude_automated_ips', True),
                        'native_level': level or 3, 'classifier': classifier,
                        'exceptions': [{'request_id': i, 'reason': 'Imported existing inclusion; original reason not recorded'} for i in classifier.get('behavior_include', [])]}
@@ -1603,7 +1606,8 @@ def render_filters(generation, site, data, manifest, apache_gid):
                 href = '../filters/' + new + '/' + path.name
                 write_text(str(source / path.name), page('Filters', '<meta http-equiv="refresh" content="0;url=' +
                            html.escape(href, quote=True) + '"><a href="' + html.escape(href, quote=True) + '">Open Filters</a>'), apache_gid)
-    payload = dict(data, site=site, generation=manifest['generation'], generated_utc=manifest['generated_utc'])
+    payload = dict(data, site=site, generation=manifest['generation'], generated_utc=manifest['generated_utc'],
+                   filter_catalogue=filter_catalogue())
     # No private filesystem paths, raw log content or credential data are carried.
     template = (Path(APP) / 'wwwroot/filters.html').read_text(encoding='utf-8')
     encoded = json.dumps(payload, ensure_ascii=False, sort_keys=True).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
@@ -1692,6 +1696,12 @@ def main():
                 raise RuntimeError('Current report generation has no verified profile manifest; restore its matching state before bootstrapping')
             profiles = imported_profiles(sites, real_base, real_config, settings['legacy_app'], old_status, account)
             private_base = real_base
+        # Stored profiles are current-schema objects, never draft-version inputs.
+        # Refuse them before rebuilding or changing the committed report pair.
+        for info in profiles.values():
+            for field in ('applied', 'default_profile'):
+                if info.get(field) is not None:
+                    validate_profile(info[field], APP, PERL)
         new_sites = sorted(set(sites) - set(profiles))
         for site in new_sites:
             if not SITE_NAME.fullmatch(site):
@@ -1883,9 +1893,9 @@ def main():
                 for month, statuses in info['effective_by_month'].items():
                     corpus = info.get('corpus_automation', {})
                     for rule in ('compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation'):
-                        if info['applied']['filters'].get(rule) and corpus.get('status') == 'unavailable_capacity':
+                        if info['applied']['filters'][rule] and corpus.get('status') == 'unavailable_capacity':
                             statuses[rule] = 'Corpus evidence over limits; retained'
-                    if (info['applied']['filters'].get('scheduled_automation') and corpus.get('status') == 'evaluated'
+                    if (info['applied']['filters']['scheduled_automation'] and corpus.get('status') == 'evaluated'
                             and corpus.get('signatures')):
                         statuses['scheduled_automation'] = 'Active for witnessed episodes'
                     if (statuses.get('inferred_scanner') == 'Active' and

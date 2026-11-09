@@ -15,7 +15,8 @@ sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
 from vstats_filters import (Control, atomic_json, canonical, identity, defaults, validate_profile,
-                           filter_status, add_filters_menu, read_json, browser_policy, publish_browser_policy, queued_user)
+                           filter_status, filter_catalogue, FILTERS, RULES, classifier_config,
+                           add_filters_menu, read_json, browser_policy, publish_browser_policy, queued_user)
 
 PERL = os.environ.get('VSTATS_TEST_PERL', '/opt/vstats/runtime/perl-5.44.0/bin/perl')
 GEN = '20261105T120000Z-12345678'
@@ -82,8 +83,8 @@ class Controls(unittest.TestCase):
         old = copy.deepcopy(self.profile)
         for key in keys:
             old['filters'].pop(key); old['classifier'].pop(key)
-        restored = validate_profile(old, str(ROOT), PERL)
-        self.assertTrue(all(not restored['filters'][k] for k in keys))
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            validate_profile(old, str(ROOT), PERL)
         statuses = filter_status(self.profile, operator_evidence=True)
         self.assertEqual(statuses['inferred_scanner'], 'Needs evidence and selected months')
         self.assertEqual(statuses['declared_automation'], 'Needs curated tool tokens')
@@ -99,9 +100,8 @@ class Controls(unittest.TestCase):
         for key in ('service_discovery', 'operator_associated', 'historical_operator'):
             del old['filters'][key]
         del old['classifier']['service_discovery']; del old['classifier']['operator_association']
-        upgraded = validate_profile(old, str(ROOT), PERL)
-        for key in ('service_discovery', 'operator_associated', 'historical_operator'):
-            self.assertFalse(upgraded['filters'][key])
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            validate_profile(old, str(ROOT), PERL)
         self.assertEqual(filter_status(self.profile)['operator_associated'], 'Evidence unavailable')
         changed = copy.deepcopy(self.profile); changed['filters']['historical_operator'] = True
         changed['classifier']['operator_association']['retrospective_months'] = ['2026-11']
@@ -117,9 +117,9 @@ class Controls(unittest.TestCase):
         old = copy.deepcopy(self.profile)
         for key in keys:
             del old['filters'][key]; del old['classifier'][key]
-        upgraded = validate_profile(old, str(ROOT), PERL)
-        self.assertTrue(all(not upgraded['filters'][k] for k in keys))
-        self.assertTrue(all(defaults(str(ROOT), PERL, upgraded)['filters'][k] for k in keys))
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            validate_profile(old, str(ROOT), PERL)
+        self.assertTrue(all(defaults(str(ROOT), PERL, self.profile)['filters'][k] for k in keys))
         for rule, key, value in [('wp_micro_probe', 'window_seconds', 0),
                                   ('wp_micro_probe', 'login_head_paths', 2),
                                   ('wp_micro_probe', 'post_requests', 2),
@@ -142,11 +142,9 @@ class Controls(unittest.TestCase):
         for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe'):
             del old['filters'][key]
             del old['classifier'][key]
-        restored = validate_profile(old, str(ROOT), PERL)
-        self.assertFalse(restored['filters']['login_rotation'])
-        self.assertEqual(restored['classifier']['login_rotation']['enabled'], 0)
-        self.assertEqual(filter_status(old)['login_rotation'], 'Disabled')
-        reset = defaults(str(ROOT), PERL, old)
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            validate_profile(old, str(ROOT), PERL)
+        reset = defaults(str(ROOT), PERL, self.profile)
         self.assertTrue(reset['filters']['login_rotation'])
         self.assertEqual(reset['classifier']['login_rotation']['login_paths'], [])
         p = copy.deepcopy(self.profile)
@@ -165,14 +163,14 @@ class Controls(unittest.TestCase):
         for key in added:
             del old['filters'][key]
             del old['classifier'][key]
-        upgraded = validate_profile(old, str(ROOT), PERL)
-        for key in added:
-            self.assertFalse(upgraded['filters'][key])
-            self.assertEqual(upgraded['classifier'][key]['enabled'], 0)
-            self.assertEqual(filter_status(old)[key], 'Disabled')
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            validate_profile(old, str(ROOT), PERL)
         p = copy.deepcopy(self.profile)
         for key in added:
             p['classifier'][key] = {}
+        with self.assertRaisesRegex(ValueError, 'Invalid rule configuration'):
+            validate_profile(p, str(ROOT), PERL)
+        p = copy.deepcopy(self.profile)
         p = validate_profile(p, str(ROOT), PERL)
         for key in added:
             self.assertTrue(p['filters'][key])
@@ -199,12 +197,9 @@ class Controls(unittest.TestCase):
         for key in ('backdoor_probe', 'protocol_probe'):
             del old['filters'][key]
             del old['classifier'][key]
-        upgraded = validate_profile(old, str(ROOT), PERL)
-        for key in ('backdoor_probe', 'protocol_probe'):
-            self.assertFalse(upgraded['filters'][key])
-            self.assertEqual(upgraded['classifier'][key]['enabled'], 0)
-            self.assertEqual(filter_status(upgraded)[key], 'Disabled')
-        reset = defaults(str(ROOT), PERL, upgraded)
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            validate_profile(old, str(ROOT), PERL)
+        reset = defaults(str(ROOT), PERL, self.profile)
         for key in ('backdoor_probe', 'protocol_probe'):
             self.assertTrue(reset['filters'][key])
         profile = copy.deepcopy(self.profile)
@@ -236,6 +231,62 @@ class Controls(unittest.TestCase):
         p = copy.deepcopy(self.profile); p['filters']['behavior'] = 1
         with self.assertRaises(ValueError):
             validate_profile(p, str(ROOT), PERL)
+
+    def test_complete_schema_is_required_without_draft_backfills(self):
+        for key in self.profile['filters']:
+            p = copy.deepcopy(self.profile); del p['filters'][key]
+            with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+                validate_profile(p, str(ROOT), PERL)
+        reference = classifier_config({'schema_version': 1}, str(ROOT), PERL)
+        for key, value in reference.items():
+            p = copy.deepcopy(self.profile); del p['classifier'][key]
+            with self.assertRaisesRegex(ValueError, 'Invalid rule configuration'):
+                validate_profile(p, str(ROOT), PERL)
+            if isinstance(value, dict):
+                for field in value:
+                    p = copy.deepcopy(self.profile); del p['classifier'][key][field]
+                    with self.assertRaisesRegex(ValueError, 'Invalid rule configuration'):
+                        validate_profile(p, str(ROOT), PERL)
+        self.assertEqual(validate_profile(self.profile, str(ROOT), PERL), self.profile)
+
+    def test_catalogue_partition_help_and_parameter_coverage(self):
+        catalogue = filter_catalogue()
+        keys = [row['key'] for row in catalogue['components']]
+        self.assertEqual(keys, [row[0] for row in FILTERS])
+        self.assertEqual(set(keys), set(self.profile['filters']))
+        self.assertEqual(len(set(keys)), len(keys))
+        families = {row['key'] for row in catalogue['families']}
+        for row in catalogue['components']:
+            self.assertIn(row['family'], families | {None})
+            self.assertTrue(all(row.get(field) for field in ['label', 'summary', 'help']))
+            if row['section']:
+                for key in self.profile['classifier'][row['section']]:
+                    if key not in ['enabled', 'retrospective_enabled', 'aggressive_comparison']:
+                        self.assertTrue(row.get('parameter_help', {}).get(key) or catalogue['parameter_help'].get(key), (row['key'], key))
+        self.assertEqual(set(RULES), {r['key'] for r in catalogue['components'] if r['section'] == r['key']})
+        configured = classifier_config({'schema_version': 1}, str(ROOT), PERL)
+        self.assertEqual({key for key, value in configured.items() if isinstance(value, dict) and 'enabled' in value},
+                         set(RULES) | {'operator_association'})
+        self.assertEqual({row['key'] for row in catalogue['components'] if row['family'] is None}, {'historical_operator'})
+        self.assertEqual(len(keys), 22)
+        self.assertEqual(len(families), 6)
+        self.assertEqual(self.control.state_for('example.test')['filter_catalogue'], catalogue)
+
+    def test_incomplete_restore_and_stored_state_fail_closed(self):
+        token = '20261105T110000Z-bbbbbbbb'
+        directory = self.state / 'runs' / token; directory.mkdir()
+        old = copy.deepcopy(self.manifest); old['generation'] = token
+        del old['profiles']['example.test']['applied']['filters']['behavior']
+        atomic_json(directory / 'manifest.json', old)
+        self.manifest['previous_generation'] = token
+        atomic_json(self.state / 'runs' / GEN / 'manifest.json', self.manifest)
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            self.control.change('example.test', 'restore', dict(self.body, restore_generation=token), self.user)
+        self.assertFalse((self.state / 'drafts/example.test.json').exists())
+        del self.manifest['profiles']['example.test']['applied']['filters']['behavior']
+        atomic_json(self.state / 'runs' / GEN / 'manifest.json', self.manifest)
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'):
+            self.control.state_for('example.test')
 
     def test_pending_save_reset_discard_never_publish(self):
         before = (self.state / 'runs' / GEN / 'manifest.json').read_bytes()

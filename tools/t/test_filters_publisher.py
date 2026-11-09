@@ -1,11 +1,13 @@
 """Independent design cases for native fallback, coverage and UI isolation."""
 import copy
+import hashlib
 import importlib.util
 import json
 import os
 from pathlib import Path
 import sys
 import tempfile
+import types
 import unittest
 from unittest import mock
 
@@ -22,7 +24,7 @@ def load(name, filename):
 
 export = load('filters_export_test', 'traffic-filter-report.py')
 publisher = load('filters_publisher_test', 'publish-static-reports.py')
-from vstats_filters import add_filters_menu, identity
+from vstats_filters import add_filters_menu, identity, validate_profile, defaults, filter_catalogue
 PERL = os.environ.get('VSTATS_TEST_PERL', '/opt/vstats/runtime/perl-5.44.0/bin/perl')
 
 
@@ -141,6 +143,52 @@ class Publisher(unittest.TestCase):
         with self.assertRaises(RuntimeError):publisher.validate_report_links(str(root))
 
 
+    def test_import_normalizes_classifier_and_keeps_provenance_refusals(self):
+        site = 'example.test'
+        config = self.root / 'native-config'; (config / 'traffic-classification').mkdir(parents=True)
+        cfg = config / 'traffic-classification' / ('awstats.' + site + '.json')
+        cfg.write_text(json.dumps({'schema_version': 1, 'behavior': {'enabled': 1}}), encoding='utf-8')
+        native_config = config / ('awstats.' + site + '.conf')
+        text = 'LevelForRobotsDetection=1\n'; native_config.write_text(text, encoding='utf-8')
+        base = self.root / 'managed'; corpus = base / 'corpus' / site / 'version1'; corpus.mkdir(parents=True)
+        (corpus.parent / 'current').symlink_to('version1')
+        receipt_file = corpus / 'receipt.json'; receipt = {'days': {}, 'native_months': {}}
+        receipt_file.write_text(json.dumps(receipt), encoding='utf-8')
+        sites = {site: {'behavior_filter': True, 'verified_crawler_filter': False}}
+        account = types.SimpleNamespace(pw_uid=os.getuid(), pw_gid=os.getgid())
+        state = {'completed_utc': '2026-11-09T12:00:00Z'}
+        def run():
+            return publisher.imported_profiles(sites, str(base), str(config), str(ROOT), state, account)[site]
+        with mock.patch.object(publisher, 'APP', str(ROOT)), mock.patch.object(publisher, 'PERL', PERL), mock.patch.object(publisher, 'archived_evidence_for_days', return_value={}):
+            imported = run()['applied']
+            self.assertEqual(imported, validate_profile(imported, str(ROOT), PERL))
+            self.assertEqual(set(imported['filters']), {r['key'] for r in filter_catalogue()['components']})
+            self.assertTrue(imported['filters']['behavior'])
+            for bad in [text + 'LevelForRobotsDetection=2\n', 'Include "other.conf"\n' + text]:
+                native_config.write_text(bad, encoding='utf-8')
+                with self.assertRaisesRegex(RuntimeError, 'Cannot verify the existing managed profile'): run()
+            native_config.write_text(text, encoding='utf-8')
+            receipt['days'] = {'2026-11-01': {'sha256': 'a' * 64}}
+            receipt_file.write_text(json.dumps(receipt), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'corpus bytes'): run()
+            receipt = {'days': {}, 'native_months': {'2026-11': {'signature': 'a' * 64}}}
+            receipt_file.write_text(json.dumps(receipt), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'Cannot verify the existing managed profile'): run()
+            # An empty-input signature can pass while the independent history gate fails.
+            sources = ['wwwroot/cgi-bin/awstats.pl', 'wwwroot/cgi-bin/lib/robots.pm',
+                       'tools/lib/VStats/TrafficClassifier.pm', 'tools/traffic-filter-report.py',
+                       'tools/traffic-classify.pl', 'tools/native_history_cache.py']
+            native = hashlib.sha256(b''.join((ROOT / p).read_bytes() for p in sources) +
+                json.dumps({'ip_month_policy': True, 'views': 4}, sort_keys=True).encode()).hexdigest()
+            prefix = hashlib.sha256(cfg.read_bytes() + text.encode() + native.encode()).hexdigest()
+            receipt['native_months']['2026-11'] = {'signature': hashlib.sha256((prefix + '[]').encode()).hexdigest(),
+                'history_sha256': {key: 'a' * 64 for key in ['original', 'confirmed', 'requests', 'behavior']}}
+            receipt_file.write_text(json.dumps(receipt), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'Managed native history identity changed'): run()
+            receipt_file.unlink()
+            with self.assertRaises(FileNotFoundError): run()
+
+
 @unittest.skipUnless(os.geteuid() == 0, 'Root is needed for the isolated publisher ownership fixture')
 class Publication(unittest.TestCase):
     def setUp(self):
@@ -196,6 +244,18 @@ class Publication(unittest.TestCase):
             self.run_publisher()
         self.assertEqual((self.web / 'current').resolve(), self.generation)
         self.assertEqual((self.generation / 'example.test/2026-10/awstats.example.test.html').read_text(), self.report)
+
+    def test_incomplete_stored_profile_is_refused_before_publication(self):
+        profile = validate_profile(defaults(str(ROOT), PERL), str(ROOT), PERL)
+        del profile['filters']['behavior']
+        run = self.state / 'runs' / self.old; run.mkdir()
+        (run / 'manifest.json').write_text(json.dumps({'generation': self.old, 'private_base': str(self.base),
+            'profiles': {'example.test': {'applied': profile}}}), encoding='utf-8')
+        before = (self.generation / 'example.test/2026-10/awstats.example.test.html').read_bytes()
+        with self.assertRaisesRegex(ValueError, 'Invalid filter list'): self.run_publisher()
+        self.assertEqual((self.web / 'current').resolve(), self.generation)
+        self.assertEqual((self.generation / 'example.test/2026-10/awstats.example.test.html').read_bytes(), before)
+        self.assertEqual([p.name for p in (self.state / 'runs').iterdir()], [self.old])
 
     def test_render_failure_cannot_publish_settings_or_modify_old_report(self):
         with mock.patch.object(publisher,'decorate_generation',side_effect=RuntimeError('synthetic precommit failure')):

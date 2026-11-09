@@ -19,29 +19,195 @@ import stat
 import subprocess
 import tempfile
 
-FILTERS = [('native_crawlers', 'Native crawler signatures', 'Existing AWStats user-agent detection.'),
-           ('verified_crawlers', 'Verified crawlers', 'Dated provider evidence; independent of browser claims.'),
-           ('behavior', 'Broad probing', 'Repeated diverse requests and missing paths in a bounded window.'),
-           ('probing', 'Endpoint probing', 'Repeated requests to explicitly configured paths.'),
-           ('rapid_scan', 'Rapid content-path scanning', 'Rapid diverse paths with repeated missing resources.'),
-           ('distributed_login', 'Distributed login probing', 'Coordinated sources targeting configured login paths.'),
-           ('login_rotation', 'Login browser rotation', 'Repeated login GET/POST pairs that switch claimed platforms.'),
-           ('head_scan', 'HEAD path sweeps', 'Repeated HEAD requests across content paths with missing resources.'),
-           ('sensitive_scan', 'Sensitive-file probing', 'Concentrated reads of configured sensitive-file paths.'),
-           ('wp_enumeration', 'WordPress enumeration', 'Rotating browser claims while querying author IDs and user APIs.'),
-           ('wp_query_probe', 'WordPress query probing', 'Internal query keys with plugin-file probing; matching requests only.'),
-           ('backdoor_probe', 'Backdoor path probing', 'Missing configured backdoor paths with POST activity; short burst only.'),
-           ('protocol_probe', 'Protocol endpoint discovery', 'Missing POST/GET endpoints with a declared tool; short burst only.'),
-           ('service_discovery', 'Service-manifest discovery', 'Failed probes across independent service families; matching requests only.'),
-           ('operator_associated', 'Operator-associated scanners', 'Forward-confirmed provider DNS within its dated validity interval.'),
-           ('historical_operator', 'Retrospective operator inference', 'Optional inference for selected UTC months; not verified historical identity.'),
-           ('compound_automation', 'Compound scripted browsing', 'Independent client anomaly and resource/rate evidence; witnessed visits only.'),
-           ('scheduled_automation', 'Scheduled crawling', 'Repeated weekly resource-fetching signatures; no shared-browser inheritance.'),
-           ('inferred_scanner', 'Bounded scanner inference', 'Selected recent months and corroborated client fingerprint; historical identity unverified.'),
-           ('declared_automation', 'Declared automation', 'Curated explicit crawler/tool declarations; unverified.')]
-FILTERS += [('wp_micro_probe', 'WordPress micro-probing', 'Small login-discovery or failed POST bursts with rotating browser/platform claims.'),
-            ('metadata_requests', 'Metadata requests', 'Exclude robots.txt and sitemap requests from normal totals; no crawler identity inferred.')]
-RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery', 'compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation', 'wp_micro_probe', 'metadata_requests']
+# Display metadata has one owner. Detector identifiers remain owned by their
+# classifiers; these descriptions never decide whether a request is excluded.
+FILTER_CATALOGUE = [
+    dict(key='native_crawlers', label='Native crawler signatures', family='signatures', section=None,
+         summary='Unverified user-agent signatures, including broad legacy matches.',
+         help='Uses AWStats user-agent signature tables at the selected native detection level. This is not verified crawler identity. Extended tables include ordinary Windows desktop user agents; see Native detection level before choosing them.'),
+    dict(key='verified_crawlers', label='Verified crawlers', family='provider_evidence', section=None,
+         summary='A registered crawler marker and dated provider IP-range evidence.',
+         help='Excludes requests with a registered crawler user-agent marker, currently Googlebot, and provider IP-range snapshots bracketing the request time. One snapshot exactly at that time can supply both brackets. An IP address or user-agent claim alone is insufficient.'),
+    dict(key='behavior', label='Broad probing', family='probing_and_scanning', section='behavior', ip_policy='yes',
+         count_key='broad_flagged_requests', summary='Diverse browser claims, paths and missing resources in a bounded window.',
+         help='Looks for the configured request volume, diversity of claimed user agents and platforms, distinct paths and missing responses within a time window. This is suspected automation, not verified identity; shared addresses may contain unrelated users.'),
+    dict(key='probing', label='Endpoint probing', family='probing_and_scanning', section='probing', ip_policy='yes',
+         summary='Repeated probing of explicitly configured endpoint paths.',
+         help='Requires repeated requests to the configured endpoint list with the configured diversity of browser and platform claims. An empty path list makes this rule inactive. Paths are supplied by the operator rather than guessed.'),
+    dict(key='rapid_scan', label='Rapid content-path scanning', family='probing_and_scanning', section='rapid_scan', ip_policy='yes',
+         summary='Many content paths and missing resources in a short window.',
+         help='Looks for rapid requests across distinct content paths together with the configured volume of missing responses. Browser rotation is not required. The thresholds are heuristics, not a measured probability of automation.'),
+    dict(key='distributed_login', label='Distributed login probing', family='probing_and_scanning', section='distributed_login', ip_policy='yes',
+         summary='Corroborated login probing across multiple sources.',
+         help='Uses coordinated evidence across sources targeting configured login and administration paths, including coherent login activity and browser/platform diversity. Both path lists are required. A shared browser string or a single login attempt is insufficient.')]
+
+FILTER_FAMILIES = [
+    dict(key='signatures', label='Bot and tool signatures',
+         help='Matches explicit or legacy user-agent signatures. These are unverified claims and patterns; the native extended tables can also match ordinary Windows browsers.'),
+    dict(key='provider_evidence', label='Provider evidence',
+         help='Uses the component\'s dated provider evidence and its own identity requirements. Evidence must cover the request; a browser claim alone is insufficient.'),
+    dict(key='probing_and_scanning', label='Probing and scanning',
+         help='Combines the selected probing detectors. Some can seed the optional IP/month policy; others remove matching requests only. Each component explains its eligibility. Individual controls and thresholds are in Advanced.'),
+    dict(key='automated_browsing', label='Automated browsing',
+         help='Combines independent client anomalies with request evidence, or learns repeated weekly fetching patterns with corroboration. These are heuristic suspicions, not verified identity, and affect witnessed requests only.'),
+    dict(key='scanner_inference', label='Bounded scanner inference',
+         help='Uses selected UTC months, a bounded time distance from recorded scanner DNS evidence and corroborated client fingerprints. Historical ownership is inferred, not verified; no IP/month expansion.'),
+    dict(key='metadata', label='Metadata requests',
+         help='A separate reporting policy for configured robots and sitemap fetches. It does not identify the visitor or establish automation; it never seeds IP/month expansion.')]
+
+FILTER_CATALOGUE += [
+    dict(key='login_rotation', label='Login browser rotation', family='probing_and_scanning', section='login_rotation', ip_policy='original',
+         parameter_help={'distinct_user_agents': 'Minimum number of distinct POST user-agent claims for the repeated-pair witness; the separated-switch witness instead uses distinct platforms as its POST-agent minimum.',
+                         'distinct_platforms': 'Minimum number of distinct POST platform claims; also the POST-agent minimum for the separated-switch witness.'},
+         summary='Adjacent login GET/POST pairs with changing browser or platform claims.',
+         help='Pairs adjacent GET then POST requests to the same configured login path within pair seconds. Requires repeated pairs with browser changes, or platform-switching pairs across separated visits. Pair and diversity thresholds apply in the time window. Stable sessions and GET-only login reads do not qualify. Claims do not establish authentication outcomes or a single actor.'),
+    dict(key='head_scan', label='HEAD path sweeps', family='probing_and_scanning', section='head_scan', ip_policy='yes',
+         summary='Many HEAD requests to content paths with observed missing resources.',
+         help='Requires the configured number of HEAD requests, distinct content paths and observed HTTP 404 responses in one source/site window. Static assets do not supply content paths. HEAD or zero response bytes alone is insufficient.'),
+    dict(key='sensitive_scan', label='Sensitive-file probing', family='probing_and_scanning', section='sensitive_scan', ip_policy='yes',
+         summary='Concentrated GET/HEAD reads of configured sensitive paths.',
+         help='Requires the configured request and distinct-path counts for exact sensitive paths within one source/site window. The operator controls the path list. A response does not establish component absence, compromise or successful access.'),
+    dict(key='wp_enumeration', label='WordPress enumeration', family='probing_and_scanning', section='wp_enumeration', ip_policy='yes',
+         summary='Author-ID and user-API queries with rotating browser/platform claims.',
+         help='Requires all configured request, browser, platform, author-ID, API and HTTP 404 minima together in one source/site window. Only configured author paths, user paths and REST routes qualify. Ambiguous query features abstain; successful enumeration or malicious intent is not established.'),
+    dict(key='wp_query_probe', label='WordPress query probing', family='probing_and_scanning', section='wp_query_probe',
+         summary='Internal query keys together with failed plugin-file probes.',
+         help='Requires configured WordPress internal query keys on configured entry paths and missing plugin-file probes in one bounded source/site episode. Marks matching query/plugin probes only. Ordinary pages and unrelated requests do not inherit suspicion.'),
+    dict(key='backdoor_probe', label='Backdoor path probing', family='probing_and_scanning', section='backdoor_probe',
+         summary='Configured backdoor-path probes with POST activity and missing responses.',
+         help='Requires the configured requests, distinct backdoor paths, POSTs and HTTP 404s in one source/site window. Only qualifying probes and nearby configured entry requests are marked. Observed failures do not establish that a backdoor exists or an exploit succeeded.'),
+    dict(key='protocol_probe', label='Protocol endpoint discovery', family='probing_and_scanning', section='protocol_probe',
+         summary='Failed POST/GET endpoint discovery with an explicit tool declaration.',
+         help='Combines missing POST and GET endpoints from the configured lists, a curated tool user-agent token and a short source/site window. Marks the witnessed probes and nearby configured entry requests. A tool claim alone does not qualify or verify identity.'),
+    dict(key='service_discovery', label='Service-manifest discovery', family='probing_and_scanning', section='service_discovery',
+         summary='Failed probes across independent service and manifest families.',
+         help='Requires GET/HEAD responses of 404 or 410 across the configured number of registered service families within the time window. Evidence is scoped to one source, known site and exact observed user agent. OpenAPI/Swagger aliases form one family; MCP, AI plugin and AI/LLM descriptions supply others. Successful catch-all responses and ordinary metadata do not qualify. Marks the probes only.'),
+    dict(key='wp_micro_probe', label='WordPress micro-probing', family='probing_and_scanning', section='wp_micro_probe',
+         summary='Small multi-installation login or failing POST/API episodes.',
+         help='Requires either HEAD discovery across configured login locations plus a login GET, or failing POSTs across configured paths including an API endpoint, with browser/platform diversity in the source/site window. A positive same-user-agent page/asset edge vetoes the episode. Marks witnessed probes and configured entry requests only; sparse ordinary browsing is insufficient.'),
+    dict(key='operator_associated', label='Operator-associated scanners', family='provider_evidence', section='operator_association',
+         section_label='Operator evidence and comparison', count_key='operator_associated_requests',
+         summary='Forward-confirmed scanner DNS during its dated validity interval.',
+         help='Uses recorded reverse and forward DNS confirmation for a registered scanner operator and trusted client-address provenance. Only requests strictly after lookup completion and before the smallest chain TTL expires qualify. A later lookup cannot backdate identity; generic hosting DNS and provider claims abstain. TTL does not establish exclusive address use.'),
+    dict(key='historical_operator', label='Retrospective operator inference', family=None, section='operator_association',
+         count_key='historical_operator_requests', summary='Optional comparison for explicitly selected UTC months; off by default.',
+         help='Adds a separate inferred comparison for selected UTC months using recorded scanner associations. Historical ownership remains unverified and is not backdated as identity. This option never changes the default or request-only report totals; select months under Operator evidence and comparison in Advanced.'),
+    dict(key='compound_automation', label='Compound scripted browsing', family='automated_browsing', section='compound_automation',
+         summary='Independent client anomalies plus resource/rate evidence.',
+         help='Requires an independent client anomaly together with resource or rate evidence in a witnessed visit. Metadata-family traversal and fast distinct-page traversal are bounded by their thresholds. Literal quote wrapping in the user agent qualifies as an anomaly only with sufficient unquoted controls and when rare in that day/log format. Missing assets or one page alone is insufficient. Positive browser continuity can veto the episode; no actor identity is inferred.'),
+    dict(key='scheduled_automation', label='Scheduled crawling', family='automated_browsing', section='scheduled_automation',
+         summary='Repeated weekly fetching patterns with corroborated witnesses.',
+         help='Learns repeated weekly path/phase signatures across complete UTC weeks, corroborating sources and resource families. The target week is held out of the required other cycles. Positive browser continuity limits training and vetoes target episodes. Only structurally witnessed visits are excluded; a shared user-agent string or calendar phase alone never changes default totals.'),
+    dict(key='inferred_scanner', label='Bounded scanner inference', family='scanner_inference', section='inferred_scanner',
+         summary='Recent selected months and corroborated scanner fingerprints.',
+         help='Requires selected UTC months, scanner DNS evidence within window days of the request and the configured number of corroborating scanner sources for a client fingerprint. Association is inferred historical evidence, not verified ownership. Unsupported provenance and positive browser continuity abstain. Marks witnessed requests only; the comparison and evidence remain reviewable.'),
+    dict(key='declared_automation', label='Declared automation', family='signatures', section='declared_automation',
+         summary='Curated explicit crawler/tool declarations, unverified.',
+         help='Matches curated bounded crawler or tool tokens in the observed user agent. An empty token list is inactive. Declarations can be forged and do not verify provider identity; generic browser strings are not crawler evidence.'),
+    dict(key='metadata_requests', label='Metadata requests', family='metadata', section='metadata_requests',
+         summary='Exclude robots and sitemap fetches as a reporting policy.',
+         help='Excludes GET/HEAD requests at configured exact paths and, when selected, recognized XML/XML.gz sitemap names. Can remove hits and response bytes even when the request has zero pages. Actor labels stay unchanged: robots.txt or sitemap access alone does not prove a bot or invalidate other visits.')]
+
+PARAMETER_HELP = {
+    'window_seconds': 'Time window for combining the rule\'s evidence, in seconds.',
+    'min_requests': 'Minimum number of requests needed by this rule, in requests.',
+    'distinct_user_agents': 'Minimum number of distinct claimed user-agent strings.',
+    'distinct_platforms': 'Minimum number of distinct claimed platform families; these are claims, not authenticated devices.',
+    'distinct_paths': 'Minimum number of distinct request paths.',
+    'not_found_requests': 'Minimum number of observed HTTP 404 responses, in requests.',
+    'paths': 'Configured endpoint paths considered by this rule, one exact path per line.',
+    'min_sources': 'Minimum number of distinct source addresses meeting the rule\'s witness requirements.',
+    'min_post_requests': 'Minimum number of POST requests across qualifying sources.',
+    'min_source_posts': 'Minimum number of POST requests from each qualifying source.',
+    'distinct_source_user_agents': 'Minimum number of distinct claimed user-agent strings for each qualifying source.',
+    'distinct_source_platforms': 'Minimum number of distinct claimed platform families for each qualifying source.',
+    'shared_user_agents': 'Minimum number of exact user-agent strings shared by the qualifying sources.',
+    'login_paths': 'Configured login paths used by this rule, one exact path per line.',
+    'admin_paths': 'Configured administration paths used to corroborate login probing, one exact path per line.',
+    'pair_seconds': 'Maximum elapsed seconds from a login GET to its adjacent POST; also separates platform-switching visits.',
+    'min_pairs': 'Minimum number of qualifying adjacent GET/POST pairs in the repeated-pair witness.',
+    'min_platform_switches': 'Minimum number of platform-switching pairs, or separated switch visits for the alternative witness.',
+    'author_paths': 'Exact paths accepting the author-ID or REST-route query feature, one per line.',
+    'user_paths': 'Exact user-API endpoint paths, one per line.',
+    'rest_routes': 'Exact decoded REST-route values accepted as user-API evidence, one per line.',
+    'distinct_author_ids': 'Minimum number of distinct positive author IDs in the enumeration window.',
+    'user_api_requests': 'Minimum number of requests carrying configured user-API evidence.',
+    'query_paths': 'Exact paths at which configured internal query keys are considered, one per line.',
+    'plugin_prefixes': 'Plugin path prefixes considered for failed-file corroboration, one per line.',
+    'query_keys': 'Internal query-parameter names considered for probing evidence, one per line.',
+    'entry_paths': 'Exact entry paths eligible for the witnessed episode only, one per line.',
+    'post_requests': 'Minimum number of qualifying POST requests in the episode.',
+    'post_paths': 'Exact paths eligible for POST evidence, one per line.',
+    'get_paths': 'Exact paths eligible for GET endpoint evidence, one per line.',
+    'tool_tokens': 'Bounded explicit tool user-agent tokens, one per line; claims remain unverified.',
+    'distinct_families': 'Minimum number of distinct registered service families, rather than URL aliases.',
+    'retrospective_months': 'UTC calendar months (YYYY-MM, one per line) for the optional inferred comparison; never backdates identity or changes default totals.',
+    'distinct_pages': 'Minimum number of distinct page paths in the fast-page witness.',
+    'metadata_families': 'Minimum number of distinct metadata resource families in the metadata-traversal witness.',
+    'quote_min_controls': 'Minimum number of unquoted browser control requests for the same UTC day and configured log format.',
+    'quote_min_sources': 'Minimum number of distinct source addresses supplying those unquoted controls.',
+    'quote_max_percent': 'Maximum percentage of quote-wrapped requests among wrapped and unwrapped controls; a broad format convention vetoes this anomaly.',
+    'min_cycles': 'Minimum number of other complete UTC weeks with the repeated signature; the target week is held out.',
+    'min_phase_paths': 'Minimum number of distinct weekly phase/path pairs in the learned signature.',
+    'min_families': 'Minimum number of resource families corroborating a scheduled signature.',
+    'entry_seconds': 'Maximum visit window in seconds for connecting a scheduled entry and its resources.',
+    'max_continuity_percent': 'Maximum percentage of learned witnesses with positive browser continuity; target episodes also have a continuity veto.',
+    'window_days': 'Maximum absolute distance in days between a request and recorded scanner DNS lookup.',
+    'months': 'Selected UTC calendar months (YYYY-MM, one per line) for bounded scanner inference; no other months qualify.',
+    'tokens': 'Curated bounded explicit crawler/tool user-agent declarations, one per line; not verified identities.',
+    'login_distinct_paths': 'Minimum number of distinct configured login paths in the login-discovery witness.',
+    'login_head_paths': 'Minimum number of distinct configured login paths requested with HEAD.',
+    'login_get_requests': 'Minimum number of GET requests to configured login paths.',
+    'post_distinct_paths': 'Minimum number of distinct configured POST paths in the failing POST/API witness.',
+    'api_paths': 'Exact API paths required to corroborate the failing POST witness, one per line.',
+    'sitemap_patterns': '0/1 switch: 1 also recognizes configured sitemap filename patterns (XML/XML.gz); 0 uses exact paths only.'}
+
+FILTER_STATUS_CLASSES = {
+    'Active': 'active', 'Active for covered requests': 'active',
+    'Active for witnessed episodes': 'active', 'Dated intervals only': 'active',
+    'Disabled': 'off', 'Needs configuration': 'needs', 'Evidence unavailable': 'needs',
+    'Needs curated tool tokens': 'needs', 'Needs repeated corpus evidence': 'needs',
+    'Needs evidence and selected months': 'needs', 'Select UTC months in Advanced': 'needs',
+    'Input over limits': 'needs', 'Corpus evidence over limits; retained': 'needs',
+    'Not selected for this month': 'needs'}
+
+FILTER_POLICIES = {
+    'ip_policy': dict(label='Exclude other requests from behavior-flagged IPs',
+                      summary='Extends qualifying evidence to the same website, address and UTC month.'),
+    'native_level': dict(label='Native crawler detection level',
+        summary='Extended legacy tables also match ordinary Windows desktop browsers.',
+        help='Level 1 uses the common and generic signature lists. Levels 2 and 3 also use the extended list; this release defines no third list, so their signature coverage is the same. At level 2 or higher, a desktop user agent containing Windows NT 10.0 is classified as a robot/non-viewed, except for the existing download-file exemption. Microsoft Edge on Windows is an example. The extended list also includes Edge below 100 and MSIE patterns. These signatures do not prove automation.',
+        options=[dict(value=1, label='1 — common and generic'), dict(value=2, label='2 — extended'),
+                 dict(value=3, label='3 — extended (same tables as 2)')]),
+    'aggressive_comparison': dict(label='Include phase-linked candidates in the optional comparison only',
+        summary='Adds weaker shared-phase candidates to the separate inferred comparison.',
+        help='Adds phase-linked cohort candidates to the optional inferred/aggressive comparison. Shared browser claims and calendar phases can include unrelated users. This switch never changes default report totals; the comparison is explicitly unverified.')}
+
+FILTERS = [(row['key'], row['label'], row['summary']) for row in FILTER_CATALOGUE]
+RULES = [row['key'] for row in FILTER_CATALOGUE if row.get('section') == row['key']]
+
+
+def filter_catalogue():
+    """Public display data, shared by static pages and the current state API."""
+    rows = copy.deepcopy(FILTER_CATALOGUE)
+    eligible = []
+    for row in rows:
+        policy = row.get('ip_policy')
+        if policy == 'yes':
+            eligible.append(row['label'])
+            row['help'] += ' This component can trigger the optional IP/month policy.'
+        elif policy == 'original':
+            eligible.append(row['label'] + ' (original stronger witness only)')
+            row['help'] += ' Only its original stronger witness can trigger the IP/month policy; alternative witnesses remain request-only.'
+        else:
+            row['help'] += ' This component never seeds additional IP/month exclusions.'
+        if row.get('section') == row['key']:
+            row.setdefault('count_key', row['key'] + '_flagged_requests')
+    policies = copy.deepcopy(FILTER_POLICIES)
+    policies['ip_policy']['help'] = ('Only these components can trigger same-website, same-address, same-UTC-month expansion: ' +
+        ', '.join(eligible) + '. Every other component is request-only for this policy. Independent native and provider/actor treatment still applies. Request-ID inclusions can retain selected behavioral/IP matches. Shared addresses can include unrelated users.')
+    return dict(components=rows, families=copy.deepcopy(FILTER_FAMILIES), policies=policies,
+                status_classes=dict(FILTER_STATUS_CLASSES), parameter_help=dict(PARAMETER_HELP))
 SITE = re.compile(r'^[a-z0-9][a-z0-9._-]{0,252}$')
 IDENTIFIER = re.compile(r'^[a-f0-9]{32}$')
 GENERATION = re.compile(r'^\d{8}T\d{6}Z-[a-f0-9]{8}$')
@@ -138,6 +304,7 @@ def classifier_config(raw, app, perl):
 def defaults(app, perl, current=None):
     classifier = classifier_config({'schema_version': 1, 'exclude': ['suspected_automation']}, app, perl)
     if current:
+        current = validate_profile(current, app, perl)
         # Keep explicitly configured endpoint lists when resetting other options.
         for rule, keys in [('probing', ['paths']), ('distributed_login', ['login_paths', 'admin_paths']), ('login_rotation', ['login_paths']), ('sensitive_scan', ['paths']),
                            ('wp_enumeration', ['author_paths', 'user_paths', 'rest_routes']),
@@ -148,8 +315,7 @@ def defaults(app, perl, current=None):
                            ('wp_micro_probe', ['login_paths', 'post_paths', 'api_paths', 'entry_paths']),
                            ('metadata_requests', ['paths'])]:
             for key in keys:
-                if key in current['classifier'].get(rule, {}):
-                    classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])
+                classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])
     return {'schema_version': 1, 'filters': {f[0]: f[0] != 'historical_operator' for f in FILTERS},
             'exclude_automated_ips': True, 'native_level': 3,
             'classifier': classifier, 'exceptions': []}
@@ -162,17 +328,7 @@ def validate_profile(value, app, perl):
     p = copy.deepcopy(value)
     if type(p['schema_version']) is not int or p['schema_version'] != 1:
         raise ValueError('Unsupported profile version')
-    if not isinstance(p['filters'], dict):
-        raise ValueError('Invalid filter list')
-    # Existing applied profiles keep their policy until explicitly changed.
-    expected = {f[0] for f in FILTERS}
-    baseline = {'native_crawlers', 'verified_crawlers', 'behavior', 'probing', 'rapid_scan', 'distributed_login'}
-    if baseline <= set(p['filters']) <= expected:
-        if any(key in RULES and key in p.get('classifier', {}) for key in expected - set(p['filters'])):
-            raise ValueError('Incomplete filter choice for an existing rule')
-        for key in expected - set(p['filters']):
-            p['filters'][key] = False
-    if set(p['filters']) != {f[0] for f in FILTERS}:
+    if not isinstance(p['filters'], dict) or set(p['filters']) != {f[0] for f in FILTERS}:
         raise ValueError('Invalid filter list')
     if any(type(v) is not bool for v in p['filters'].values()) or type(p['exclude_automated_ips']) is not bool:
         raise ValueError('Filter choices must be booleans')
@@ -194,41 +350,35 @@ def validate_profile(value, app, perl):
     if not isinstance(p['classifier'], dict):
         raise ValueError('Invalid classifier configuration')
     cfg = p['classifier']
-    cfg['schema_version'] = 1
+    reference = classifier_config({'schema_version': 1}, app, perl)
+    if (not set(reference) <= set(cfg) or any(
+            isinstance(value, dict) and
+            (not isinstance(cfg[key], dict) or not set(value) <= set(cfg[key]))
+            for key, value in reference.items())):
+        raise ValueError('Invalid rule configuration')
     cfg['exclude'] = ['suspected_automation']
     cfg['behavior_include'] = sorted(ids)
-    rule_defaults = classifier_config({'schema_version': 1}, app, perl)
     for rule in RULES:
-        if not isinstance(cfg.get(rule, {}), dict):
-            raise ValueError('Invalid rule configuration')
-        if rule not in cfg:
-            cfg[rule] = copy.deepcopy(rule_defaults[rule])
-        if rule in ('sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe'):
-            for key, default_value in rule_defaults[rule].items():
-                if isinstance(default_value, list) and key not in cfg[rule]:
-                    cfg[rule][key] = copy.deepcopy(default_value)
         cfg[rule]['enabled'] = int(p['filters'][rule])
-    if 'operator_association' not in cfg:
-        cfg['operator_association'] = copy.deepcopy(rule_defaults['operator_association'])
     cfg['operator_association']['enabled'] = int(p['filters']['operator_associated'])
     cfg['operator_association']['retrospective_enabled'] = int(p['filters']['historical_operator'])
     # Intended enablement remains saved even where required paths are unavailable.
-    if not cfg['sensitive_scan'].get('paths'):
+    if not cfg['sensitive_scan']['paths']:
         cfg['sensitive_scan']['enabled'] = 0
     en = cfg['wp_enumeration']
-    if not (en.get('author_paths') and (en.get('user_paths') or en.get('rest_routes'))):
+    if not (en['author_paths'] and (en['user_paths'] or en['rest_routes'])):
         en['enabled'] = 0
-    if not all(cfg['wp_query_probe'].get(k) for k in ('query_paths', 'plugin_prefixes', 'query_keys')):
+    if not all(cfg['wp_query_probe'][k] for k in ('query_paths', 'plugin_prefixes', 'query_keys')):
         cfg['wp_query_probe']['enabled'] = 0
-    if not cfg['backdoor_probe'].get('paths'):
+    if not cfg['backdoor_probe']['paths']:
         cfg['backdoor_probe']['enabled'] = 0
-    if not all(cfg['protocol_probe'].get(k) for k in ('post_paths', 'get_paths', 'tool_tokens')):
+    if not all(cfg['protocol_probe'][k] for k in ('post_paths', 'get_paths', 'tool_tokens')):
         cfg['protocol_probe']['enabled'] = 0
-    if not cfg['login_rotation'].get('login_paths'):
+    if not cfg['login_rotation']['login_paths']:
         cfg['login_rotation']['enabled'] = 0
-    if not cfg['probing'].get('paths'):
+    if not cfg['probing']['paths']:
         cfg['probing']['enabled'] = 0
-    if not (cfg['distributed_login'].get('login_paths') and cfg['distributed_login'].get('admin_paths')):
+    if not (cfg['distributed_login']['login_paths'] and cfg['distributed_login']['admin_paths']):
         cfg['distributed_login']['enabled'] = 0
     p['classifier'] = classifier_config(cfg, app, perl)
     p['exceptions'].sort(key=lambda e: e['request_id'])
@@ -238,7 +388,7 @@ def validate_profile(value, app, perl):
 def filter_status(profile, evidence=False, over_limits=False, operator_evidence=False):
     statuses = {}
     for key, _, _ in FILTERS:
-        if not profile['filters'].get(key, False):
+        if not profile['filters'][key]:
             statuses[key] = 'Disabled'
         elif key == 'verified_crawlers' and not evidence:
             statuses[key] = 'Evidence unavailable'
@@ -263,11 +413,11 @@ def filter_status(profile, evidence=False, over_limits=False, operator_evidence=
         elif key == 'wp_enumeration' and not (profile['classifier'][key]['author_paths'] and
                 (profile['classifier'][key]['user_paths'] or profile['classifier'][key]['rest_routes'])):
             statuses[key] = 'Needs configuration'
-        elif key == 'wp_query_probe' and not all(profile['classifier'][key].get(k) for k in ('query_paths', 'plugin_prefixes', 'query_keys')):
+        elif key == 'wp_query_probe' and not all(profile['classifier'][key][k] for k in ('query_paths', 'plugin_prefixes', 'query_keys')):
             statuses[key] = 'Needs configuration'
         elif key == 'backdoor_probe' and not profile['classifier'][key]['paths']:
             statuses[key] = 'Needs configuration'
-        elif key == 'protocol_probe' and not all(profile['classifier'][key].get(k) for k in ('post_paths', 'get_paths', 'tool_tokens')):
+        elif key == 'protocol_probe' and not all(profile['classifier'][key][k] for k in ('post_paths', 'get_paths', 'tool_tokens')):
             statuses[key] = 'Needs configuration'
         elif (key in RULES or key in ('operator_associated', 'historical_operator')) and over_limits:
             statuses[key] = 'Input over limits'
@@ -429,10 +579,16 @@ class Control:
     def state_for(self, site):
         manifest = self.current()
         data = copy.deepcopy(manifest['profiles'][site])
+        for profile in (data.get('applied'), data.get('default_profile')):
+            if profile is not None:
+                validate_profile(profile, self.settings['app'], self.settings['perl'])
         data.update(generation=manifest['generation'], generated_utc=manifest['generated_utc'], site=site)
+        data['filter_catalogue'] = filter_catalogue()
         data['browser_access'] = public_browser_policy(self.policy(site))
         draft = self.state / 'drafts' / (site + '.json')
         data['pending'] = read_json(draft) if draft.exists() else None
+        if data['pending'] is not None:
+            validate_profile(data['pending']['profile'], self.settings['app'], self.settings['perl'])
         data['jobs'] = self.jobs(site)
         return data
 

@@ -7,7 +7,7 @@ Filters. Settings affect statistics, not access to the website.
 
 ## Corpus-aware automation filters
 
-Four additional checkboxes operate on the complete retained site corpus:
+These independently selectable components operate on the retained site corpus:
 
 * **Compound scripted browsing** requires independent evidence classes in an
   exact-client/known-vhost/observed-UA episode: a rare, genuinely quoted browser
@@ -30,8 +30,7 @@ Four additional checkboxes operate on the complete retained site corpus:
   tokens. An arbitrary application product/contact string is insufficient;
   declarations remain unverified. The initial token list is empty.
 
-New profiles/Reset check these choices. Existing saved profiles acquire them
-disabled until explicitly changed. Selected months and curated tokens are
+New profiles/Reset check these choices. Selected months and curated tokens are
 prerequisites; a checked rule can therefore be inactive. Parameters are under
 Advanced. Positive same-UA navigation/asset continuity vetoes the new episode
 rules. These rules never seed IP/month expansion or change existing actor
@@ -50,10 +49,11 @@ normal report entry and native browser-update access rules are unchanged.
 
 ## Using it
 
-* **Settings:** native crawler signatures, verified crawler evidence, broad
-  probing, configured endpoint probing, rapid content-path scanning, and
-  distributed login probing, login browser rotation, HEAD path sweeps, sensitive-file
-  probing and WordPress enumeration. New intended settings are checked by default.
+* **Settings:** six families — Bot and tool signatures, Provider evidence,
+  Probing and scanning, Automated browsing, Bounded scanner inference and
+  Metadata requests. Advanced keeps each component and its thresholds; optional
+  retrospective inference stays separate and off by default.
+  New intended primary settings are checked by default.
   Existing managed settings are imported only after their replay identities are
   verified. Checked settings can be inactive: paths may need configuration,
   evidence may not cover the request period, or classifier input may be over a
@@ -79,18 +79,39 @@ normal report entry and native browser-update access rules are unchanged.
 The login browser rotation filter requires explicit exact login paths. It detects
 repeated adjacent GET/POST pairs whose claimed platforms change within the pair,
 including activity spread across a day. See [rule settings and limitations](traffic-classification.md#login-browser-rotation).
-Existing saved profiles acquire this new checkbox disabled; selecting it is an
-explicit policy change. Reset uses the new checked defaults and retains any
+Reset uses the checked defaults and retains any
 configured login paths. Preview the impact, then Apply & reprocess to publish.
 
 HEAD path sweeps, sensitive-file probing and WordPress enumeration have separate
-checkboxes and advanced settings. Existing saved profiles acquire them disabled;
-new profiles and Reset use checked defaults. These rules use observed request
+component controls and advanced settings; new profiles and Reset use checked
+defaults. These rules use observed request
 patterns, not source-IP lists or geography. Known self-declared monitoring and
 enrichment agents use the existing Native crawler signatures checkbox. They do
 not become verified crawler identities. [Rule details](traffic-classification.md#low-volume-scanning).
 
 Anonymous history actors mean permitted browser access, not an authenticated identity.
+Related rules share a main-page checkbox. Advanced keeps each component and its
+parameters. A mixed checkbox means only some components are selected; clicking it
+selects them all, while clicking a fully selected group clears them all. The
+status summary describes the current report, even while settings are pending.
+Question-mark help works on hover, keyboard focus or tap, including read-only
+pages; Escape dismisses it without changing a setting. Parameter descriptions
+give the units and the evidence each threshold bounds.
+
+Native detection level 1 uses the common and generic tables. Levels 2 and 3 add
+the same extended table. That inherited table matches desktop Windows NT 10.0
+user agents, including Microsoft Edge on Windows, as robots/non-viewed apart
+from the native download-file exemption. These signatures do not prove bot
+identity. Choose the native level with that limitation in mind.
+
+The filtering PR and its detector extension are intended to ship together as
+one feature. There is no upgrade path between their incomplete, unmerged draft
+schemas. Stored and browser profiles must contain every current choice and
+classifier field; incomplete profiles are refused before publication. A host
+holding incomplete draft profiles must reset/rebuild them outside the product
+before installing the final detector extension. Verified import of an existing
+native/managed setup and native-only onboarding remain supported.
+
 Edits, reset and inclusion changes stay pending until Apply succeeds. Repeated
 submission of one action ID returns that existing job, including after it
 finishes. An explicit Retry or Reprocess creates a new action. Returning to the
@@ -286,8 +307,7 @@ selected; Reset checks them and keeps configured lists.
 
 Three additional choices are available: **Service-manifest discovery**,
 **Operator-associated scanners**, and **Retrospective operator inference**.
-The first two are selected for new profiles; saved profiles gain them disabled
-until explicitly enabled. Retrospective inference is always off on Reset/new
+The first two are selected for new profiles. Retrospective inference is always off on Reset/new
 profiles. It needs selected UTC months in Advanced plus reprocessing. Its
 comparison button opens a separate inferred report, clearly labelled as
 unverified historical identity. Default reports stay unchanged.
@@ -308,8 +328,8 @@ rules. Use Preview, examine controls and native effects, then Apply/Reprocess.
 Prior report generations remain available for undo.
 ## WordPress micro-probing and metadata requests
 
-Two additional checkboxes keep these choices separate. New profiles and Reset
-select them; existing saved profiles retain their prior policy until changed.
+Two component checkboxes keep these choices separate. New profiles and Reset
+select them.
 
 **WordPress micro-probing** detects short, corroborated request episodes, using
 the configured login, entry and POST/API paths. Installation discovery requires
