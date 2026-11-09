@@ -65,8 +65,10 @@ async function runFiltersUi(fixture) {
     const inputs=()=>document.querySelectorAll('[data-filter]');
     const values=()=>Object.fromEntries(inputs().map(n=>[n.dataset.filter,n.checked]));
     assert(inputs().length===catalogue.components.length,mode+': each component must occur once');
-    assert(JSON.stringify(values())===JSON.stringify(Object.fromEntries(catalogue.components.map(c=>[c.key,(mode==='unmanaged'?fixture.profile.filters:expectedInitial)[c.key]]))),mode+': load changed a choice');
+    assert(catalogue.components.every(c=>values()[c.key]===(mode==='unmanaged'?fixture.profile.filters:expectedInitial)[c.key]),mode+': load changed a choice');
     const main=get('filter-list');
+    const parameterKeys=document.querySelectorAll('[data-rule]').map(n=>n.dataset.rule+'/'+n.dataset.key);
+    assert(new Set(parameterKeys).size===parameterKeys.length,mode+': duplicate shared parameters');
     for(const family of catalogue.families){
       const members=catalogue.components.filter(c=>c.family===family.key);if(!members.length)continue;
       if(members.length===1)assert(inputs().filter(n=>n.dataset.filter===members[0].key&&main.contains(n)).length===1,mode+': singleton must be on main page');
@@ -103,10 +105,22 @@ async function runFiltersUi(fixture) {
       assert(Object.entries(outside).every(([key,value])=>values()[key]===value),mode+': family changed another family');
       const member=inputs().find(n=>n.dataset.filter===group.members[0].key);member.checked=true;emit(member,'change');
       assert(familyInput().indeterminate,mode+': individual change must update family');
+      const summaries=all().filter(n=>n.className==='filter-effective'&&n.textContent.startsWith('Current report: '));
+      assert(summaries.length===multi.length,mode+': group status summaries');
+      for(const policy of ['ip_policy','native_level','aggressive_comparison']){
+        if(policy==='aggressive_comparison'&&!profile.classifier.scheduled_automation)continue;
+        const trigger=all().find(n=>n.tagName==='SUMMARY'&&n.attributes['aria-label']==='About '+catalogue.policies[policy].label);
+        assert(trigger,mode+': missing policy help '+policy);
+        const before=JSON.stringify(values());emit(trigger,'click');assert(trigger.parentNode.open,mode+': policy help');
+        emitDocument('keydown',{key:'Escape'});assert(before===JSON.stringify(values()),mode+': policy help changed filters');
+      }
+      const aggressive=document.querySelectorAll('[data-rule]').find(n=>n.dataset.key==='aggressive_comparison');
+      if(aggressive){aggressive.checked=true;emit(aggressive,'input');}
       const before=clone(values());emit(get('save-settings'),'click');await settle();
       assert(posts.length===1&&posts[0].url.endsWith('/save'),mode+': expected one pending save');
       assert(JSON.stringify(posts[0].body.profile.filters)===JSON.stringify(Object.fromEntries(Object.keys(fixture.profile.filters).map(key=>[key,before[key]]))),mode+': save changed choices');
       assert(familyInput().indeterminate,mode+': mixed state lost after refresh');
+      if(aggressive)assert(posts[0].body.profile.classifier.scheduled_automation.aggressive_comparison===1,mode+': comparison switch serialization');
       assert(documentHandlers.keydown.length===1&&documentHandlers.pointerdown.length===1,mode+': refresh leaked document listeners');
     }
     results.push({mode,pass:true,components:catalogue.components.length,mainFamilies:catalogue.families.length});
