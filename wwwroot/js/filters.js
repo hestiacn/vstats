@@ -270,7 +270,7 @@
     const comparisons=$('comparison-links');comparisons.replaceChildren();
     const months=Object.keys(state.totals||{}).sort();if(!months.length||!state.managed)return;
     const selected=context(),month=selected.month;
-    const comparisonViews=[['requests','IP expansion off'],['confirmed','Behavioral and IP exclusions off'],['original','All additional filters off']];
+    const comparisonViews=[['requests','IP expansion off'],['confirmed','Native rules + selected verified-crawler evidence'],['original','All additional filters off']];
     if((state.view_totals||{}).retrospective) comparisonViews.push(['retrospective','Inferred/aggressive comparison (unverified)']);
     for(const [folder,title] of comparisonViews) {
       const button=node('button',title);button.onclick=()=>{$('comparison-frame').src='../'+folder+'/'+month+'/'+selected.filename;$('comparison-frame').hidden=false;};comparisons.append(button);
