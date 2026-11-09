@@ -15,10 +15,10 @@ accuracy or probability estimates:
 
 ```json
 {
-  "compound_automation": {"enabled": 1, "window_seconds": 15,
+  "compound_automation": {"enabled": 0, "window_seconds": 15,
     "distinct_pages": 8, "metadata_families": 3,
     "quote_max_percent": 10, "quote_min_controls": 20, "quote_min_sources": 5},
-  "scheduled_automation": {"enabled": 1, "min_cycles": 3, "min_sources": 3,
+  "scheduled_automation": {"enabled": 0, "min_cycles": 3, "min_sources": 3,
     "min_phase_paths": 6, "min_families": 2, "entry_seconds": 1800,
     "max_continuity_percent": 10, "aggressive_comparison": 0},
   "inferred_scanner": {"enabled": 0, "window_days": 14,
@@ -435,7 +435,7 @@ request/path/browser/platform/404 counts, plus author-ID and API counts. Aggrega
 behavior adds corresponding rule summaries and `*_flagged_requests` counts.
 Review distinguishes each pattern and retains every overlapping witness.
 
-The native signatures and default declared-token list also recognize exact
+The native signatures and `crawler_tokens` defaults also recognize exact
 bounded `fd-crm-enrich` and `RisikomonitorNotify` declarations. Native matching
 respects detection levels and the crawler-signatures checkbox, including mobile
 claims and marker collisions. Declarations are forgeable and are not provider
