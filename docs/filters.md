@@ -30,8 +30,13 @@ These independently selectable components operate on the retained site corpus:
   tokens. An arbitrary application product/contact string is insufficient;
   declarations remain unverified. The initial token list is empty.
 
-New profiles/Reset check these choices. Selected months and curated tokens are
-prerequisites; a checked rule can therefore be inactive. Parameters are under
+New profiles/Reset check these choices. These automation rules also require a
+known website, trustworthy client-address provenance and observed or explicitly
+empty user-agent logging. Existing trustworthy retained metadata supplies these
+fields only for the requests it already records; for other input configure
+`log_sources` in installation step 2. Without them these rules abstain.
+Selected months and curated tokens are additional prerequisites; a checked
+rule can therefore be inactive. Parameters are under
 Advanced. Positive same-UA navigation/asset continuity vetoes the new episode
 rules. These rules never seed IP/month expansion or change existing actor
 identity. Request-ID inclusions retain the selected heuristic matches.
@@ -43,8 +48,9 @@ unrelated users; inspect its separate review labels. Its initial value is `0`.
 
 Geography, hosting networks, browser age, a single page, robots.txt alone and
 missing assets/referrers are not independent bot witnesses. All new thresholds
-are exploratory heuristics; precision/recall are unmeasured. Earlier logs
-without trustworthy site/client/field provenance may be insufficient. The
+are exploratory heuristics; precision/recall are unmeasured. Logs of any age
+without the required site, client-source and field provenance cannot qualify
+for the automation rules above. The
 normal report entry and native browser-update access rules are unchanged.
 
 ## Using it
@@ -150,6 +156,37 @@ separate native-accounting PR.
    `state` into `web/generations` before `current` changes. A missing or
    failing command, or a cross-filesystem layout, fails the run and keeps the
    prior report/profile pair.
+
+   For provenance-dependent rules, including the corpus-aware automation rules
+   and WordPress micro-probing, add `log_sources` beside `base_names` in each
+   site's private `sites.json` entry. It maps each exact log basename to facts
+   about that log's configuration, for example:
+
+   ```json
+   {
+     "log_sources": {
+       "example-access_log": {
+         "format": "combined",
+         "vhost": "example.test",
+         "scheme": "https",
+         "client_source": "socket_peer",
+         "referrer_observed": true
+       }
+     }
+   }
+   ```
+
+   `format` is `common` or `combined` and must describe the whole file;
+   `vhost` is the configured website hostname; `scheme` is `http`, `https`
+   or `unknown`. Set `client_source` to `socket_peer` only when the logged
+   address is the connection peer, or `trusted_proxy` only when a trusted
+   proxy has supplied and validated that client address; otherwise use
+   `unknown`. A declaration does not make an untrusted forwarded address
+   trustworthy. `referrer_observed` is optional (true by default for combined
+   logs); set it false when referrers were not observed. Common logs cannot
+   supply observed user agents or referrers. Missing declarations produce no
+   new provenance; trustworthy existing retained sidecars remain usable.
+
 3. Browser controls follow each site's native `AllowToUpdateStatsFromBrowser`:
    `1` displays editing, Preview and Apply & reprocess; `0` hides those actions
    and the API, worker and publisher reject browser mutations. Scheduled updates

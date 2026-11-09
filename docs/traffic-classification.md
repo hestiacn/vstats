@@ -1197,7 +1197,11 @@ Canonical Apache bytes and request IDs remain stable. Normalization writes
 `access.observability.json`; daily corpora retain corresponding sidecars and
 hashes. `--metadata FILE` accepts primary and neighboring-day sidecars. A
 source's configured format is a file/stream property, not an identity guessed
-from individual lines. Mixed or unconfigured formats abstain for new rules.
+from individual lines. For declared sources, a missing or mismatched format,
+or mixed formats within one file, marks the user agent unobserved for every
+classifier rule and actor label. Undeclared sources keep the parsed user agent;
+metadata conflicts clear it only when user-agent observability conflicts.
+Native AWStats processing is unaffected.
 Fields distinguish an observed value, observed empty/dash, and unobserved.
 Common logs cannot provide an agent/referrer; a common-to-combined transition
 cannot prove an agent change. Conflicting copies of one request conservatively

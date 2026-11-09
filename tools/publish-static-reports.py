@@ -1272,7 +1272,8 @@ def legacy_main(account, apache_gid):
                         render_site_view(account, site, overlay, result['totals']['retrospective'], apache_gid, extra_links,
                                          config_dir=result['configs']['retrospective'])
                         for path in Path(overlay).glob('**/*.html'):
-                            text = path.read_text(encoding='utf-8').replace('<body>', '<body><p>Optional inferred/aggressive comparison. Historical operator candidates and/or phase-linked cohort candidates may be included. Identity is unverified; unrelated users can match the aggressive comparison. Default reports are unchanged.</p>', 1)
+                            text = path.read_text(encoding='utf-8')
+                            text = re.sub(r'(<body\b[^>]*>)', lambda m: m.group(1) + '<p>Optional inferred/aggressive comparison. Historical operator candidates and/or phase-linked cohort candidates may be included. Identity is unverified; unrelated users can match the aggressive comparison. Default reports are unchanged.</p>', text, count=1, flags=re.I)
                             path.write_text(text, encoding='utf-8')
                     request_count = sum(v['hits'] + v['nonviewed_hits'] for v in after.values())
                     pending_behavior.append((site, result))

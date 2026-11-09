@@ -21,6 +21,8 @@ import tempfile
 
 # Display metadata has one owner. Detector identifiers remain owned by their
 # classifiers; these descriptions never decide whether a request is excluded.
+CORPUS_PROVENANCE_HELP = (' Needs a known website, a trustworthy source for the client address and an observed or explicitly empty user-agent field. Without these, this rule abstains.')
+
 FILTER_CATALOGUE = [
     dict(key='native_crawlers', label='Native crawler signatures', family='signatures', section=None,
          summary='Unverified user-agent signatures, including broad legacy matches.',
@@ -87,7 +89,7 @@ FILTER_CATALOGUE += [
          parameter_help={'post_requests': 'Minimum number of POST requests to configured POST paths with HTTP 400–599 responses in the failing POST/API witness.',
                          'entry_paths': 'Exact entry paths, one per line. Only the failing POST/API witness also marks GET/HEAD requests to them, with a recognized browser/platform claim, inside its episode window; the login-discovery witness never marks them.'},
          summary='Small multi-installation login or failing POST/API episodes.',
-         help='Requires either HEAD discovery across configured login locations plus a login GET, or failing POSTs across configured paths including an API endpoint, with browser/platform diversity in the source/site window. A positive same-user-agent page/asset edge vetoes the episode. Marks witnessed probes; only the failing POST/API witness also marks configured entry requests. Sparse ordinary browsing is insufficient.'),
+         help='Requires either HEAD discovery across configured login locations plus a login GET, or failing POSTs across configured paths including an API endpoint, with browser/platform diversity in the source/site window. A positive same-user-agent page/asset edge vetoes the episode. Marks witnessed probes; only the failing POST/API witness also marks configured entry requests. Sparse ordinary browsing is insufficient.' + CORPUS_PROVENANCE_HELP),
     dict(key='operator_associated', label='Operator-associated scanners', family='provider_evidence', section='operator_association',
          section_label='Operator evidence and comparison', count_key='operator_associated_requests',
          summary='Forward-confirmed scanner DNS during its dated validity interval.',
@@ -98,18 +100,18 @@ FILTER_CATALOGUE += [
          help='Adds a separate inferred comparison for selected UTC months using recorded scanner associations. Historical ownership remains unverified and is not backdated as identity. This option never changes the default or request-only report totals; select months under Operator evidence and comparison in Advanced.'),
     dict(key='compound_automation', label='Compound scripted browsing', family='automated_browsing', section='compound_automation',
          summary='Independent client anomalies plus resource/rate evidence.',
-         help='Requires an independent client anomaly together with resource or rate evidence in a witnessed visit. Metadata-family traversal and fast distinct-page traversal are bounded by their thresholds. Literal quote wrapping in the user agent qualifies as an anomaly only with sufficient unquoted controls and when rare in that day/log format. Missing assets or one page alone is insufficient. Positive browser continuity can veto the episode; no actor identity is inferred.'),
+         help='Requires an independent client anomaly together with resource or rate evidence in a witnessed visit. Metadata-family traversal and fast distinct-page traversal are bounded by their thresholds. Literal quote wrapping in the user agent qualifies as an anomaly only with sufficient unquoted controls and when rare in that day/log format. Missing assets or one page alone is insufficient. Positive browser continuity can veto the episode; no actor identity is inferred.' + CORPUS_PROVENANCE_HELP),
     dict(key='scheduled_automation', label='Scheduled crawling', family='automated_browsing', section='scheduled_automation',
          parameter_help={'min_sources': 'Minimum number of distinct source addresses, in each supporting complete UTC week, making the same site and exact user agent\'s API/feed/font GET/HEAD requests.'},
          summary='Repeated weekly fetching patterns with corroborated witnesses.',
-         help='Learns repeated weekly path/phase signatures across complete UTC weeks, corroborating sources and resource families. The target week is held out of the required other cycles. Positive browser continuity limits training and vetoes target episodes. Only structurally witnessed visits are excluded; a shared user-agent string or calendar phase alone never changes default totals.'),
+         help='Learns repeated weekly path/phase signatures across complete UTC weeks, corroborating sources and resource families. The target week is held out of the required other cycles. Positive browser continuity limits training and vetoes target episodes. Only structurally witnessed visits are excluded; a shared user-agent string or calendar phase alone never changes default totals.' + CORPUS_PROVENANCE_HELP),
     dict(key='inferred_scanner', label='Bounded scanner inference', family='scanner_inference', section='inferred_scanner',
          parameter_help={'min_sources': 'Minimum number of distinct source addresses sharing the exact platformless client fingerprint, each with valid scanner DNS evidence within window days; counted across the whole corpus, not only selected months.'},
          summary='Recent selected months and corroborated scanner fingerprints.',
          help='Requires selected UTC months, scanner DNS evidence within window days of the request and the configured number of corroborating scanner sources for a client fingerprint. Association is inferred historical evidence, not verified ownership. Unsupported provenance and positive browser continuity abstain. Marks witnessed requests only; the comparison and evidence remain reviewable.'),
     dict(key='declared_automation', label='Declared automation', family='signatures', section='declared_automation',
          summary='Curated explicit crawler/tool declarations, unverified.',
-         help='Matches curated bounded crawler or tool tokens in the observed user agent. An empty token list is inactive. Declarations can be forged and do not verify provider identity; generic browser strings are not crawler evidence.'),
+         help='Matches curated bounded crawler or tool tokens in the observed user agent. An empty token list is inactive. Declarations can be forged and do not verify provider identity; generic browser strings are not crawler evidence.' + CORPUS_PROVENANCE_HELP),
     dict(key='metadata_requests', label='Metadata requests', family='metadata', section='metadata_requests',
          summary='Exclude robots and sitemap fetches as a reporting policy.',
          help='Excludes GET/HEAD requests at configured exact paths and, when selected, recognized XML/XML.gz sitemap names. Can remove hits and response bytes even when the request has zero pages. Actor labels stay unchanged: robots.txt or sitemap access alone does not prove a bot or invalidate other visits.')]
