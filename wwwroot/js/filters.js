@@ -68,6 +68,7 @@
       body.style.left=Math.max(12,Math.min(anchor.right-size.width,viewport.clientWidth-size.width-12))+'px';
       body.style.top=Math.max(12,Math.min(anchor.bottom,viewport.clientHeight-size.height-12))+'px';
     };
+    entry.place=show;
     root.addEventListener('mouseenter',()=>{hovered=true;show();});
     root.addEventListener('mouseleave',()=>{hovered=false;if(!focused&&!pinned)entry.close();});
     root.addEventListener('focusin',()=>{focused=true;show();});
@@ -78,7 +79,7 @@
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&activeHelp){event.preventDefault();activeHelp.close();}});
   document.addEventListener('pointerdown',event=>{if(activeHelp&&!activeHelp.root.contains(event.target))activeHelp.close();});
   window.addEventListener('resize',()=>{if(activeHelp)activeHelp.close();});
-  window.addEventListener('scroll',()=>{if(activeHelp)activeHelp.close();});
+  window.addEventListener('scroll',()=>{if(activeHelp)activeHelp.place();});
   function choice(item, host) {
     const row=node('div',undefined,'filters-option'), label=node('label',undefined,'filter-setting'), input=node('input');
     input.type='checkbox';input.checked=profile.filters[item.key];input.dataset.filter=item.key;
