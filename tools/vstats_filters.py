@@ -97,7 +97,7 @@ FILTER_CATALOGUE += [
     dict(key='historical_operator', label='Retrospective operator inference', family=None, section='operator_association',
          count_key='historical_operator_requests', impact_note='Applies only to the optional inferred report.',
          summary='Optional comparison for explicitly selected UTC months; off by default.',
-         help='Adds a separate inferred comparison for selected UTC months using recorded scanner associations. Historical ownership remains unverified and is not backdated as identity. This option never changes the default or request-only report totals; select months under Operator evidence and comparison in Advanced.'),
+         help='Adds a separate inferred comparison for selected UTC months using recorded scanner associations and trusted client-address provenance. Historical ownership remains unverified and is not backdated as identity. This option never changes the default or request-only report totals; select months under Operator evidence and comparison in Advanced.'),
     dict(key='compound_automation', label='Compound scripted browsing', family='automated_browsing', section='compound_automation',
          summary='Independent client anomalies plus resource/rate evidence.',
          help='Requires an independent client anomaly together with resource or rate evidence in a witnessed visit. Metadata-family traversal and fast distinct-page traversal are bounded by their thresholds. Literal quote wrapping in the user agent qualifies as an anomaly only with sufficient unquoted controls and when rare in that day/log format. Missing assets or one page alone is insufficient. Positive browser continuity can veto the episode; no actor identity is inferred.' + CORPUS_PROVENANCE_HELP),
