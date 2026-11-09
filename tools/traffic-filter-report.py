@@ -165,6 +165,14 @@ def witness_text(label, proof):
                 'bounded {window_days} days; fingerprint corroborated across {fingerprint_sources} addresses.').format(**proof)
     if label == 'Declared automation (unverified)':
         return 'Curated explicit tool token ' + proof['token'] + '; declaration is not authenticated identity.'
+    if label == 'WordPress micro-probing':
+        return ('{branch} episode: {requests} records, {distinct_paths} probe paths, '
+                '{distinct_user_agents} browser claims and {distinct_platforms} claimed platforms; '
+                '{head_paths} HEAD login locations, {failed_post_requests} failed POSTs and {api_requests} API requests '
+                'in {seconds} seconds. Request-scoped heuristic; no identity or login outcome inferred.').format(
+                    seconds=proof['until'] - proof['from'], **proof)
+    if label == 'Metadata requests (report policy; identity unknown)':
+        return 'Robots/sitemap/configured metadata excluded by reporting policy; crawler identity is not inferred.'
     if label in ('Operator association', 'Retrospective operator inference'):
         return ('{provider_id}; {procedure}; lookup {lookup_at}; expires {expires_at}; {state}. '
                 'DNS association is not request authentication or malicious intent.').format(**proof)
@@ -249,11 +257,15 @@ def rule_evidence(record):
     for rule, label in [('compound_automation', 'Compound scripted browsing'),
                         ('scheduled_automation', 'Scheduled crawling'),
                         ('inferred_scanner', 'Inferred scanner association'),
-                        ('declared_automation', 'Declared automation (unverified)')]:
+                        ('declared_automation', 'Declared automation (unverified)'),
+                        ('wp_micro_probe', 'WordPress micro-probing'),
+                        ('metadata_requests', 'Metadata requests (report policy; identity unknown)')]:
         if record.get(rule + '_flagged'):
             proof = record.get(rule + '_evidence')
             if not proof or proof.get('rule_id') != rule + '_v1' or not re.fullmatch(r'[a-f0-9]{64}', proof.get('corpus_sha256', '')):
                 raise RuntimeError('Missing bound corpus witness')
+            if rule == 'wp_micro_probe' and not proof['from'] <= record['timestamp'] <= proof['until']:
+                raise RuntimeError('Micro-probe witness does not cover request')
             result.append((label, proof))
     if record.get('aggressive_cohort_candidate'):
         result.append(('Aggressive comparison candidate', record['aggressive_cohort_candidate']))
@@ -294,6 +306,7 @@ def render_review_row(record):
     state = ('Retained in default; aggressive comparison candidate' if record.get('aggressive_cohort_candidate') and not record['excluded'] else
              'Retained in default; excluded only from inferred overlay' if record.get('operator_inferred_excluded') and not record['excluded'] else
              'Retained; retrospective candidate only' if record.get('operator_association') and not record['excluded'] else
+             'Excluded by metadata request policy' if record.get('metadata_requests_flagged') and not record['suspected_automation'] and not record['behavior_included'] else
              'Excluded by operator filter' if record.get('operator_excluded') and not record['suspected_automation'] else
              'Included by request ID override' if record['behavior_included'] else
              'Excluded by automated-IP policy' if record.get('ip_excluded') and not record['suspected_automation'] else
@@ -838,7 +851,7 @@ def _build(config, input_directory, output_directory, perl='perl', prefix='/vsta
             if not source_summary(sources, record, excluded, included, cfg['limits']['groups']):
                 unattributed_sources['excluded' if excluded else 'retained'] += 1
             campaign_summary(campaigns, record, cfg['limits']['groups'])
-            if not (record['suspected_automation'] or ip_selected or record.get('operator_association') or record.get('aggressive_cohort_candidate')):
+            if not (record['suspected_automation'] or record.get('metadata_requests_flagged') or ip_selected or record.get('operator_association') or record.get('aggressive_cohort_candidate')):
                 continue
             logical, _ = records[record['line_index']]
             match = RECORD.match(logical)

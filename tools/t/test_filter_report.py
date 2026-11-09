@@ -120,6 +120,39 @@ class BatchIntegration(unittest.TestCase):
         return builder.build(self.config, self.inputs, self.root / 'output', perl=self.perl,
                              prefix='/vstats/example.test/', **kwargs)
 
+    def test_micro_and_metadata_export_evidence_and_no_ip_month_inheritance(self):
+        events = [('GET', '/', 200, 'Macintosh', 'Chrome/126', '192.0.2.1'),
+                  ('POST', '/', 500, 'Windows NT 10.0', 'Chrome/126', '192.0.2.1'),
+                  ('POST', '/wp-json/batch/v1', 500, 'Macintosh', 'Chrome/126', '192.0.2.1'),
+                  ('POST', '/index.php', 500, 'Macintosh', 'Chrome/126', '192.0.2.1'),
+                  ('GET', '/robots.txt', 200, 'Windows', 'Chrome/126', '198.51.100.2'),
+                  ('GET', '/page-sitemap.xml', 200, 'Windows', 'Chrome/126', '198.51.100.2'),
+                  ('GET', '/', 200, '', 'InternetData.io/1.0', '198.51.100.3')]
+        rows = [('{} - - [02/Oct/2026:10:00:{:02d} +0000] "{} {} HTTP/1.1" {} 100 "-" '
+                 '"Mozilla/5.0 ({}) {}"\n'.format(ip, i, method, path, status, platform, agent)).encode('ascii')
+                for i, (method, path, status, platform, agent, ip) in enumerate(events)]
+        ordinary = b'192.0.2.1 - - [02/Oct/2026:11:00:00 +0000] "GET /ordinary HTTP/1.1" 200 99 "-" "Mozilla/5.0 (Windows) Chrome/126"\n'
+        rows.append(ordinary)
+        (self.inputs / '2026-10-02.log').write_bytes(b''.join(rows))
+        metadata = {hashlib.sha256(row.rstrip(b'\n')).hexdigest(): {'format': 'combined', 'vhost': 'example.test',
+            'scheme': 'https', 'client_source': 'socket_peer', 'user_agent': 'value', 'referrer': 'absent'} for row in rows}
+        (self.inputs / '2026-10-02.observability.json').write_text(json.dumps({'schema_version': 1, 'records': metadata}), encoding='utf-8')
+        self.config.write_text(json.dumps({'schema_version': 1, 'exclude': ['suspected_automation'],
+            'wp_micro_probe': {'enabled': 1}, 'metadata_requests': {'enabled': 1},
+            'declared_automation': {'enabled': 1, 'tokens': ['InternetData.io', 'BitSightBot']}}), encoding='utf-8')
+        result = self.run_build(exclude_automated_ips=True)
+        self.assertEqual((self.root / 'output/filtered/2026-10-02.log').read_bytes(), ordinary)
+        self.assertEqual(result['behavior']['wp_micro_probe_flagged_requests'], 4)
+        self.assertEqual(result['behavior']['metadata_requests_flagged_requests'], 2)
+        self.assertEqual(result['behavior']['flagged_requests'], 5)
+        self.assertEqual(result['excluded_by_month']['2026-10']['records'], 7)
+        for key, count in [('wp_micro_probe', 4), ('metadata_requests', 2), ('declared_automation', 1)]:
+            self.assertEqual(result['evidence_classes'][key]['by_month']['2026-10']['exclusive_requests'], count)
+        review = ''.join(p.read_text(encoding='utf-8') for p in (self.root / 'output/review').glob('*.html'))
+        self.assertIn('Excluded by metadata request policy', review)
+        self.assertIn('WordPress micro-probing', review)
+        self.assertNotIn('Automated IP for', review)
+
     def test_corpus_compound_export_never_seeds_source_month(self):
         quoted = '\\"Mozilla/5.0 (Synthetic) Chrome/123 Safari/537.36\\"'
         rows = []

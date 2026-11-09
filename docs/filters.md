@@ -306,3 +306,35 @@ matched requests were already non-viewed. Per-class overlaps and exclusive
 contributions are separate; visitor/session deltas are not apportioned among
 rules. Use Preview, examine controls and native effects, then Apply/Reprocess.
 Prior report generations remain available for undo.
+## WordPress micro-probing and metadata requests
+
+Two additional checkboxes keep these choices separate. New profiles and Reset
+select them; existing saved profiles retain their prior policy until changed.
+
+**WordPress micro-probing** detects short, corroborated request episodes, using
+the configured login, entry and POST/API paths. Installation discovery requires
+HEAD requests at at least three distinct login locations, a login GET, and at
+least two browser claims spanning two claimed platforms. The POST branch needs
+at least three failing POSTs at three configured paths, including a configured
+API endpoint, with the same diversity requirements. The default window is ten
+seconds. These are exploratory heuristics, not calibrated probabilities.
+Observed page/asset continuity in the same source/site window vetoes the episode
+conservatively, including legitimate browsing behind a shared gateway. Only
+witnessed login requests, failed POSTs and configured preceding entry requests
+are affected; the rule never seeds source-IP/month expansion. Browser/platform
+claims do not prove client identity or malicious intent.
+
+**Metadata requests** removes matching GET/HEAD requests for robots.txt and
+configured metadata paths, plus recognized XML/XML.gz sitemap names. It is a
+reporting policy: a manual request for these URLs can also match. It does not
+label an actor as a crawler, increase the suspected-automation union or expand
+an exclusion to other requests from the source. Page requests remain eligible.
+Turn off the checkbox to restore these hits and bytes when reprocessing retained
+input. Request-ID inclusions can preserve an individual matching request.
+
+The existing **Declared automation** option accepts curated explicit names.
+Operators may configure InternetData.io and BitSightBot; these are unverified
+declarations, not authenticated operator identities. InternetData describes its
+automated robots/homepage scanning at <https://internetdata.io/scan>. A generic
+browser string, missing assets, robots.txt alone and geography do not establish
+crawler identity.

@@ -11,14 +11,17 @@ import ipaddress
 import json
 import re
 
-RULES = ('compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation')
-VERSION = 'vstats-corpus-automation-v1'
+RULES = ('compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation',
+         'wp_micro_probe', 'metadata_requests')
+AUTOMATION_RULES = tuple(rule for rule in RULES if rule != 'metadata_requests')
+VERSION = 'vstats-corpus-automation-v2'
 MAX_RECORDS = 500000
 MAX_GROUPS = 100000
 MAX_REPORT_BYTES = 128 * 1024 * 1024
 MAX_CORPUS_BYTES = 768 * 1024 * 1024
 ASSET = re.compile(r'\.(?:css|[cm]?js|map|png|jpe?g|gif|webp|avif|svg|ico|woff2?|ttf|otf|eot|pdf|zip|gz|mp[34]|webm|ogg|wav)$', re.I)
 PLATFORMLESS = re.compile(r'^Mozilla/5\.0 AppleWebKit/[0-9.]+ \(KHTML, like Gecko\) Chrome/[0-9.]+ Safari/[0-9.]+$')
+SITEMAP = re.compile(r'^/(?:[A-Za-z0-9_-]+/)*(?:sitemap(?:[_-]index)?|[A-Za-z0-9_-]+-sitemap[0-9]*|wp-sitemap-[A-Za-z0-9_-]+)\.xml(?:\.gz)?$')
 
 
 def identity(value):
@@ -107,28 +110,41 @@ def prepare(report_paths, config, valid_days):
         result['context_sha256'] = identity({'version': VERSION, 'status': 'disabled'})
         return result
     features, bindings, quoted = [], [], collections.defaultdict(lambda: [0, 0, set()])
-    byte_count = 0
+    metadata = config['metadata_requests']
+    metadata_paths = set(metadata['paths'])
+    byte_count, record_count = 0, 0
     keep = ('client', 'user_agent', 'field_observability', 'normalized_target', 'method', 'status',
             'timestamp', 'source_format', 'observed_vhost', 'host', 'source_month', 'client_source',
-            'request_id', 'line_index', 'referrer_host', 'referrer_path', 'operator_inference_candidate')
+            'request_id', 'line_index', 'referrer_host', 'referrer_path', 'operator_inference_candidate',
+            'browser_claim_platform')
     for path in report_paths:
         if path.stat().st_size > MAX_REPORT_BYTES or byte_count + path.stat().st_size > MAX_CORPUS_BYTES:
             result.update(status='unavailable_capacity', context_sha256=identity({'version': VERSION, 'capacity': True}))
+            result['matches'] = {}
             return result
         raw = path.read_bytes()
         byte_count += len(raw)
         if len(raw) > MAX_REPORT_BYTES or byte_count > MAX_CORPUS_BYTES:
             result.update(status='unavailable_capacity', context_sha256=identity({'version': VERSION, 'capacity': True}))
+            result['matches'] = {}
             return result
         report = json.loads(raw.decode('utf-8'))
         bindings.append((path.stem, report['input_sha256'], report.get('observability_sha256'),
                          report.get('operator_evidence', {}).get('sha256')))
         for source in report['details']:
-            if len(features) >= MAX_RECORDS:
+            record_count += 1
+            if record_count > MAX_RECORDS:
                 result.update(status='unavailable_capacity', context_sha256=identity({'version': VERSION, 'capacity': True}))
+                result['matches'] = {}
                 return result
             row = {k: source.get(k) for k in keep}
             row['_key'] = (path.stem, row['line_index'])
+            target = row['normalized_target']
+            if (metadata['enabled'] and row['method'] in ('GET', 'HEAD') and target and
+                    (target in metadata_paths or (metadata['sitemap_patterns'] and SITEMAP.fullmatch(target)))):
+                result['matches'][row['_key']] = {'metadata_requests': {
+                    'rule_id': 'metadata_requests_v1', 'kind': 'robots' if target == '/robots.txt' else 'sitemap_or_configured_metadata',
+                    'label': 'Metadata request excluded by report policy; crawler identity not inferred'}}
             row['_host'] = row['observed_vhost'] or row['host']
             row['_client'] = canonical_ip(row['client'])
             row['field_observability'] = row['field_observability'] or {}
@@ -146,11 +162,14 @@ def prepare(report_paths, config, valid_days):
                 features.append(row)
     result['context_sha256'] = identity({'version': VERSION, 'config': {k: config[k] for k in RULES},
                                         'primary_inputs': bindings, 'valid_days': sorted(valid_days)})
+    for proofs in result['matches'].values():
+        proofs['metadata_requests']['corpus_sha256'] = result['context_sha256']
     groups = collections.defaultdict(list)
     for row in features:
         groups[(row['_client'], row['_host'], row['user_agent'])].append(row)
     if len(groups) > MAX_GROUPS:
         result['status'] = 'unavailable_capacity'
+        result['matches'] = {}
         return result
     result['eligible_keys'] = {row['_key'] for row in features}
 
@@ -288,6 +307,79 @@ def prepare(report_paths, config, valid_days):
                                            'until': max(entry['timestamp'], row['timestamp'])})
                             mark(entry, 'scheduled_automation', linked)
 
+    # Small, corroborated WordPress probe episodes. Only the observed burst is
+    # flagged; neither unrelated paths nor an IP/month inherit the verdict.
+    mp = config['wp_micro_probe']
+    if mp['enabled']:
+        login, posts, api, entries = (set(mp[k]) for k in ('login_paths', 'post_paths', 'api_paths', 'entry_paths'))
+        micro_groups = collections.defaultdict(list)
+        continuous_times = collections.defaultdict(list)
+        for row in features:
+            if row.get('_continuous'):
+                continuous_times[(row['_client'], row['_host'])].append(row['timestamp'])
+            if (row['field_observability'].get('user_agent') != 'value' or not row['user_agent'] or
+                    row['browser_claim_platform'] not in ('ios', 'android', 'windows', 'mac', 'linux')):
+                continue
+            path, method, status = row['normalized_target'], row['method'], row['status']
+            roles = {'login': path in login and method in ('GET', 'HEAD'),
+                     'post': path in posts and method == 'POST' and 400 <= status <= 599,
+                     'entry': path in entries and method in ('GET', 'HEAD')}
+            if not any(roles.values()):
+                continue
+            row['_micro'] = roles
+            micro_groups[(row['_client'], row['_host'])].append(row)
+        for group, rows in micro_groups.items():
+            rows.sort(key=lambda r: (r['timestamp'], r['_key']))
+            continuity = sorted(continuous_times[group])
+            counters = {k: collections.Counter() for k in ('login_paths', 'head_paths', 'login_ua', 'login_platform',
+                        'post_paths', 'post_ua', 'post_platform', 'get', 'post', 'api')}
+            left, assigned = 0, {'login': -1, 'post': -1}
+            def adjust(row, delta):
+                roles, path = row['_micro'], row['normalized_target']
+                values = []
+                if roles['login']:
+                    values += [('login_paths', path), ('login_ua', row['user_agent']),
+                               ('login_platform', row['browser_claim_platform'])]
+                    values += [('head_paths', path)] if row['method'] == 'HEAD' else [('get', 'count')]
+                if roles['post']:
+                    values += [('post_paths', path), ('post_ua', row['user_agent']),
+                               ('post_platform', row['browser_claim_platform']), ('post', 'count')]
+                    if path in api:
+                        values.append(('api', 'count'))
+                for key, value in values:
+                    counters[key][value] += delta
+                    if not counters[key][value]:
+                        del counters[key][value]
+            for right, row in enumerate(rows):
+                adjust(row, 1)
+                while row['timestamp'] - rows[left]['timestamp'] > mp['window_seconds']:
+                    adjust(rows[left], -1); left += 1
+                login_ok = (row['_micro']['login'] and len(counters['login_paths']) >= mp['login_distinct_paths'] and
+                            len(counters['head_paths']) >= mp['login_head_paths'] and counters['get']['count'] >= mp['login_get_requests'])
+                post_ok = (row['_micro']['post'] and counters['post']['count'] >= mp['post_requests'] and
+                           len(counters['post_paths']) >= mp['post_distinct_paths'] and counters['api']['count'] > 0)
+                for branch, qualifies in (('login', login_ok), ('post', post_ok)):
+                    if (not qualifies or len(counters[branch + '_ua']) < mp['distinct_user_agents'] or
+                            len(counters[branch + '_platform']) < mp['distinct_platforms']):
+                        continue
+                    start, end = rows[left]['timestamp'], row['timestamp']
+                    # Observed page/asset edges were established within an exact
+                    # UA. Any such edge in this address/site window vetoes the
+                    # episode conservatively, including a busy shared gateway.
+                    claims = counters[branch + '_ua']
+                    if bisect.bisect_right(continuity, end) != bisect.bisect_left(continuity, start):
+                        continue
+                    proof = {'from': start, 'until': end, 'branch': branch, 'requests': right - left + 1,
+                             'distinct_user_agents': len(claims), 'distinct_platforms': len(counters[branch + '_platform']),
+                             'distinct_paths': len(counters[branch + '_paths']),
+                             'head_paths': len(counters['head_paths']), 'get_requests': counters['get']['count'],
+                             'failed_post_requests': counters['post']['count'], 'api_requests': counters['api']['count']}
+                    for index in range(max(left, assigned[branch] + 1), right + 1):
+                        item = rows[index]
+                        if item['_micro'][branch] or (branch == 'post' and item['_micro']['entry']):
+                            mark(item, 'wp_micro_probe', proof)
+                    assigned[branch] = right
+
     isc = config['inferred_scanner']
     fingerprints = collections.defaultdict(set)
     if isc['enabled']:
@@ -345,15 +437,17 @@ def apply_report(report, day, analysis, config):
                 old_counts[rule] += 1
         if not proofs:
             continue
-        record['suspected_automation'] = True
-        if not old:
+        automation_proofs = {rule: proof for rule, proof in proofs.items() if rule in AUTOMATION_RULES}
+        if automation_proofs:
+            record['suspected_automation'] = True
+        if automation_proofs and not old:
             report['behavior']['flagged_requests'] += 1
             report['behavior']['actors'][record['actor']] += 1
         legacy_flags = sum(bool(record.get(key)) for key in (
             'broad_probing_flagged', 'probing_flagged', 'rapid_scan_flagged', 'distributed_login_flagged',
             'login_rotation_flagged', 'head_scan_flagged', 'sensitive_scan_flagged', 'wp_enumeration_flagged',
             'wp_query_probe_flagged', 'backdoor_probe_flagged', 'protocol_probe_flagged', 'service_discovery_flagged'))
-        if legacy_flags < 2 and legacy_flags + len(proofs) >= 2:
+        if legacy_flags < 2 and legacy_flags + len(automation_proofs) >= 2:
             report['behavior']['overlap_requests'] += 1
         if record['request_id'] in included_ids:
             if not record['behavior_included']:
@@ -365,8 +459,8 @@ def apply_report(report, day, analysis, config):
         report['behavior'][rule + '_flagged_requests'] = count
         report['behavior'][rule + '_rule'] = {'enabled': bool(config[rule]['enabled']),
             'rule_id': rule + '_v1', 'flagged_requests': count, 'evaluation_status': analysis['status']}
-    report['behavior']['enabled'] = bool(report['behavior']['enabled'] or any(config[k]['enabled'] for k in RULES))
-    report['behavior']['rule_id'] = 'behavior_union_v9'
+    report['behavior']['enabled'] = bool(report['behavior']['enabled'] or any(config[k]['enabled'] for k in AUTOMATION_RULES))
+    report['behavior']['rule_id'] = 'behavior_union_v10'
     report['behavior']['flagged_source_groups'] = len({(r.get('source_key'), r.get('host'))
         for r in report['details'] if r['suspected_automation']})
     report['adjusted_requests']['excluded'] = sum(bool(r['excluded']) for r in report['details'])

@@ -39,7 +39,9 @@ FILTERS = [('native_crawlers', 'Native crawler signatures', 'Existing AWStats us
            ('scheduled_automation', 'Scheduled crawling', 'Repeated weekly resource-fetching signatures; no shared-browser inheritance.'),
            ('inferred_scanner', 'Bounded scanner inference', 'Selected recent months and corroborated client fingerprint; historical identity unverified.'),
            ('declared_automation', 'Declared automation', 'Curated explicit crawler/tool declarations; unverified.')]
-RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery', 'compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation']
+FILTERS += [('wp_micro_probe', 'WordPress micro-probing', 'Small login-discovery or failed POST bursts with rotating browser/platform claims.'),
+            ('metadata_requests', 'Metadata requests', 'Exclude robots.txt and sitemap requests from normal totals; no crawler identity inferred.')]
+RULES = ['behavior', 'probing', 'rapid_scan', 'distributed_login', 'login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe', 'service_discovery', 'compound_automation', 'scheduled_automation', 'inferred_scanner', 'declared_automation', 'wp_micro_probe', 'metadata_requests']
 SITE = re.compile(r'^[a-z0-9][a-z0-9._-]{0,252}$')
 IDENTIFIER = re.compile(r'^[a-f0-9]{32}$')
 GENERATION = re.compile(r'^\d{8}T\d{6}Z-[a-f0-9]{8}$')
@@ -142,7 +144,9 @@ def defaults(app, perl, current=None):
                            ('wp_query_probe', ['query_paths', 'plugin_prefixes', 'query_keys']),
                            ('backdoor_probe', ['paths', 'entry_paths']),
                            ('protocol_probe', ['post_paths', 'get_paths', 'tool_tokens', 'entry_paths']),
-                           ('declared_automation', ['tokens']), ('inferred_scanner', ['months'])]:
+                           ('declared_automation', ['tokens']), ('inferred_scanner', ['months']),
+                           ('wp_micro_probe', ['login_paths', 'post_paths', 'api_paths', 'entry_paths']),
+                           ('metadata_requests', ['paths'])]:
             for key in keys:
                 if key in current['classifier'].get(rule, {}):
                     classifier[rule][key] = copy.deepcopy(current['classifier'][rule][key])

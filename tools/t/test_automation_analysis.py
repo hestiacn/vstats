@@ -106,7 +106,7 @@ class CorpusRules(unittest.TestCase):
         self.assertFalse(self.prepare(rows)['matches'])
 
     def test_single_page_robots_geography_and_nats_are_not_rules(self):
-        for rule in analysis.RULES:
+        for rule in analysis.AUTOMATION_RULES:
             self.config[rule]['enabled'] = 1
         rows = [self.row(MONDAY + 100), self.row(MONDAY + 101, ua='DifferentBrowser/2'),
                 self.row(MONDAY + 102, '/robots.txt')]
@@ -215,6 +215,98 @@ class CorpusRules(unittest.TestCase):
         rows = [self.row(MONDAY + 1, ua='SyntheticCrawler/1.0'), self.row(MONDAY + 2, ua='ReaderApp/1.0 contact@example.test'),
                 self.row(MONDAY + 3, ua='NotSyntheticCrawler/1.0')]
         self.assertEqual(self.flags(rows, self.prepare(rows), 'declared_automation'), [True, False, False])
+
+    def micro_rows(self, branch='login', start=MONDAY + 100):
+        if branch == 'login':
+            events = [('HEAD', '/wp/wp-login.php', 'windows'), ('HEAD', '/wp-login.php', 'windows'),
+                      ('HEAD', '/site/wp-login.php', 'windows'), ('GET', '/wp-login.php', 'linux')]
+        else:
+            events = [('GET', '/', 'mac'), ('POST', '/', 'windows'),
+                      ('POST', '/wp-json/batch/v1', 'mac'), ('POST', '/index.php', 'mac')]
+        return [self.row(start + i, path, method=method, status=500 if method == 'POST' else 200,
+                        ua='Browser-' + platform + '/1', browser_claim_platform=platform)
+                for i, (method, path, platform) in enumerate(events)]
+
+    def test_micro_probe_branches_and_request_scope(self):
+        self.config['wp_micro_probe']['enabled'] = 1
+        for branch in ['login', 'post']:
+            rows = [self.row(MONDAY + 1)] + self.micro_rows(branch) + [self.row(MONDAY + 300)]
+            result = self.prepare(rows)
+            self.assertEqual(self.flags(rows, result, 'wp_micro_probe'), [False] + [True] * 4 + [False])
+            for proof in result['matches'].values():
+                self.assertEqual(proof['wp_micro_probe']['branch'], branch)
+            self.assertFalse(any(r['ip_expansion_eligible'] for r in rows))
+
+    def test_micro_probe_browser_admin_nat_and_missing_provenance_controls(self):
+        self.config['wp_micro_probe']['enabled'] = 1
+        for branch in ['login', 'post']:
+            for field, value in [('client', '192.0.2.2'), ('observed_vhost', 'other.test'),
+                                 ('client_source', 'unknown'), ('browser_claim_platform', None),
+                                 ('user_agent', None)]:
+                rows = self.micro_rows(branch); rows[-1][field] = value
+                self.assertFalse(self.prepare(rows)['matches'], (branch, field))
+            rows = self.micro_rows(branch)
+            for r in rows:
+                r['user_agent'] = UA; r['browser_claim_platform'] = 'ios'
+            self.assertFalse(self.prepare(rows)['matches'], 'stable browser/admin cannot supply rotation')
+            rows = self.micro_rows(branch); rows[-1]['timestamp'] = rows[0]['timestamp'] + 20
+            self.assertFalse(self.prepare(rows)['matches'], 'outside micro window')
+        edge = self.micro_rows('post'); edge[-1]['timestamp'] = edge[1]['timestamp'] + 10
+        self.assertEqual(self.flags(edge, self.prepare(edge), 'wp_micro_probe'), [False, True, True, True],
+                         'inclusive POST boundary retains an entry outside the actual witness window')
+        rows = self.micro_rows('post')
+        for r in rows:
+            r['status'] = 200
+        self.assertFalse(self.prepare(rows)['matches'], 'successful browser/API calls are insufficient')
+        rows = self.micro_rows('post'); rows[2]['normalized_target'] = '/other-endpoint'
+        self.assertFalse(self.prepare(rows)['matches'], 'configured API witness required')
+        rows = self.micro_rows('login'); rows[2]['method'] = 'GET'
+        self.assertFalse(self.prepare(rows)['matches'], 'three distinct HEAD locations required')
+
+    def test_micro_probe_midnight_continuity_and_inclusion(self):
+        self.config['wp_micro_probe']['enabled'] = 1
+        rows = self.micro_rows('post', MONDAY + 86398)
+        result = self.prepare(rows)
+        self.assertTrue(all(self.flags(rows, result, 'wp_micro_probe')), 'disjoint days share bounded evidence')
+        # A real page/asset edge from another browser behind the same gateway
+        # conservatively vetoes the coincident micro episode.
+        page = self.row(MONDAY + 86398, '/ordinary', ua=UA)
+        asset = self.row(MONDAY + 86399, '/style.css', ua=UA, referrer_host='example.test',
+                         referrer_path='/ordinary', field_observability={'user_agent': 'value', 'referrer': 'value'})
+        self.assertFalse(self.prepare(rows + [page, asset])['matches'])
+        self.config['behavior_include'] = [rows[0]['request_id']]
+        report = {'details': rows[:2], 'counts': {'analyzed': 2}, 'behavior': {'enabled': False,
+            'flagged_requests': 0, 'overlap_requests': 0, 'actors': {'unknown': 0}}, 'adjusted_requests': {}}
+        analysis.apply_report(report, '2026-09-28', result, self.config)
+        self.assertFalse(rows[0]['excluded']); self.assertTrue(rows[1]['excluded'])
+        self.assertEqual(report['behavior']['flagged_requests'], 2)
+
+    def test_metadata_policy_never_claims_automation_or_expands_a_source(self):
+        self.config['metadata_requests']['enabled'] = 1
+        paths = ['/robots.txt', '/page-sitemap.xml', '/wp-sitemap-posts-page-1.xml',
+                 '/ro/sitemap.xml.gz', '/', '/sitemap.xml.html', '/robots.txt.bak', '/wp-sitemap-admin.php']
+        rows = [self.row(MONDAY + i, path) for i, path in enumerate(paths)]
+        rows[0]['user_agent'] = None; rows[0]['field_observability']['user_agent'] = 'unobserved'
+        result = self.prepare(rows)
+        self.assertEqual(self.flags(rows, result, 'metadata_requests'), [True] * 4 + [False] * 4)
+        report = {'details': rows, 'counts': {'analyzed': len(rows)}, 'behavior': {'enabled': False,
+            'flagged_requests': 0, 'overlap_requests': 0, 'actors': {'unknown': 0}}, 'adjusted_requests': {}}
+        self.config['behavior_include'] = [rows[0]['request_id']]
+        analysis.apply_report(report, '2026-09-28', result, self.config)
+        self.assertEqual(report['adjusted_requests']['excluded'], 3)
+        self.assertEqual(report['behavior']['flagged_requests'], 0)
+        self.assertFalse(any(r['suspected_automation'] or r['ip_expansion_eligible'] for r in rows))
+        self.assertFalse(rows[0]['excluded']); self.assertTrue(rows[0]['behavior_included'])
+        self.config['metadata_requests']['enabled'] = 0
+        self.assertFalse(self.prepare(rows)['matches'])
+
+    def test_metadata_capacity_abstains_without_partial_exclusions(self):
+        self.config['metadata_requests']['enabled'] = 1
+        rows = [self.row(MONDAY + i, '/robots.txt', ua=None) for i in range(3)]
+        with mock.patch.object(analysis, 'MAX_RECORDS', 2):
+            result = self.prepare(rows)
+        self.assertEqual(result['status'], 'unavailable_capacity')
+        self.assertFalse(result['matches'])
 
     def test_over_capacity_retains_legacy_and_records_unavailable(self):
         self.config['compound_automation']['enabled'] = 1

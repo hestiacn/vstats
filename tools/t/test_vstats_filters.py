@@ -111,6 +111,32 @@ class Controls(unittest.TestCase):
         self.assertFalse(reset['filters']['historical_operator'])
         self.assertEqual(reset['classifier']['operator_association']['retrospective_months'], [])
 
+    def test_micro_and_metadata_choices_upgrade_validation_and_reset(self):
+        keys = ('wp_micro_probe', 'metadata_requests')
+        self.assertTrue(all(self.profile['filters'][k] for k in keys))
+        old = copy.deepcopy(self.profile)
+        for key in keys:
+            del old['filters'][key]; del old['classifier'][key]
+        upgraded = validate_profile(old, str(ROOT), PERL)
+        self.assertTrue(all(not upgraded['filters'][k] for k in keys))
+        self.assertTrue(all(defaults(str(ROOT), PERL, upgraded)['filters'][k] for k in keys))
+        for rule, key, value in [('wp_micro_probe', 'window_seconds', 0),
+                                  ('wp_micro_probe', 'login_head_paths', 2),
+                                  ('wp_micro_probe', 'post_requests', 2),
+                                  ('wp_micro_probe', 'distinct_platforms', 1),
+                                  ('wp_micro_probe', 'api_paths', ['/outside']),
+                                  ('wp_micro_probe', 'login_paths', ['/wp-login.php', '/wp-login.php']),
+                                  ('metadata_requests', 'sitemap_patterns', 2),
+                                  ('metadata_requests', 'paths', ['/robots.txt?private=x'])]:
+            changed = copy.deepcopy(self.profile); changed['classifier'][rule][key] = value
+            with self.assertRaises(ValueError): validate_profile(changed, str(ROOT), PERL)
+        selected = copy.deepcopy(self.profile)
+        selected['classifier']['metadata_requests']['paths'] = ['/custom-metadata.txt']
+        selected['classifier']['declared_automation']['tokens'] = ['InternetData.io', 'BitSightBot']
+        selected = validate_profile(selected, str(ROOT), PERL)
+        self.assertEqual(defaults(str(ROOT), PERL, selected)['classifier']['metadata_requests']['paths'], ['/custom-metadata.txt'])
+        self.assertTrue(all(filter_status(selected)[key] == 'Active' for key in keys))
+
     def test_login_rotation_configuration_and_old_profiles(self):
         old = copy.deepcopy(self.profile)
         for key in ('login_rotation', 'head_scan', 'sensitive_scan', 'wp_enumeration', 'wp_query_probe', 'backdoor_probe', 'protocol_probe'):

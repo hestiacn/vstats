@@ -74,7 +74,7 @@ The optional aggressive comparison adds shared-UA/calendar-phase homepages to
 the separate inferred comparison only; it can include unrelated users and
 never alters default totals.
 
-The optional corpus layer has defensive maxima: 500,000 eligible records,
+The optional corpus layer has defensive maxima: 500,000 primary records,
 100,000 source/vhost/UA groups, 128 MiB per private report and 768 MiB of report
 input. Crossing them retains the legacy selections and records this layer as
 unavailable; it does not invent a clean result. These are resource guards, not
@@ -1206,3 +1206,29 @@ are distinguished from additional viewed traffic removed. Every rule/registry
 change requires replay and browser/mixed-source controls before enablement.
 Structural non-browser/malformed-agent and catch-all-response ideas remain
 research candidates; no production exclusion implements them.
+## Small WordPress probes and metadata policy
+
+`wp_micro_probe` adds request-scoped corroboration for small WordPress login
+discovery and failing POST/API episodes. It combines configured path/method
+roles with observed browser/platform diversity in a bounded source/vhost window.
+The platform feature is parsed by the Perl classifier and remains a claim.
+Defaults use a ten-second window, three HEAD login locations plus a GET, or
+three failing POST paths including an API endpoint, and two distinct browser
+claims/platforms. These settings are heuristic assumptions. A positive
+same-UA page/asset edge in the source/site window vetoes the episode, including
+edges from another browser sharing that source. Sorting, disjoint day inputs,
+private provenance, request-ID inclusions and absence of IP/month propagation
+follow the corpus-layer contract. The witness reports counts and branch only;
+it does not infer authentication outcomes, exploit success or malicious intent.
+
+`metadata_requests` is an independent reporting policy for GET/HEAD requests at
+configured paths and recognized XML/XML.gz sitemap names. It can remove hits
+and response bytes even when AWStats already counts zero pages for those
+requests. It preserves actor labels, does not set `suspected_automation`, and
+never triggers source-IP/month expansion. A robots/sitemap request is not proof
+of automation. Both rules have separate controls and class/exclusive native
+accounting; the existing main report layout and update authorization apply.
+
+Curated declaration tokens may include InternetData.io and BitSightBot; the
+standalone default token list remains empty. Declared actor/operator claims remain unverified; no new network
+lookup, visitor-address list or geography rule is introduced.

@@ -11,8 +11,8 @@ use Encode qw(decode encode FB_CROAK LEAVE_SRC);
 use VStats::OperatorEvidence;
 
 # GPL version 2 or later. No file or network I/O here.
-our $VERSION = '1.13';
-my $ALGORITHM = 'vstats-traffic-v15';
+our $VERSION = '1.14';
+my $ALGORITHM = 'vstats-traffic-v16';
 my $word=qr/[^ \t]+/;
 my $MAX_EPOCH = 4102444800;
 my $PROVIDER = {provider_id=>'google_common',ua_tokens=>['Googlebot'],
@@ -75,6 +75,14 @@ my $DEFAULT = {
         min_families=>2, entry_seconds=>1800, max_continuity_percent=>10, aggressive_comparison=>0},
     inferred_scanner => {enabled=>0, window_days=>14, min_sources=>2, months=>[]},
     declared_automation => {enabled=>0, tokens=>[]},
+    wp_micro_probe => {enabled=>0, window_seconds=>10, distinct_user_agents=>2, distinct_platforms=>2,
+        login_distinct_paths=>3, login_head_paths=>3, login_get_requests=>1,
+        post_requests=>3, post_distinct_paths=>3,
+        login_paths=>[qw(/wp-login.php /wp/wp-login.php /site/wp-login.php /wordpress/wp-login.php /blog/wp-login.php)],
+        post_paths=>['/', '/index.php', '/wp-json/batch/v1'], api_paths=>['/wp-json/batch/v1'],
+        entry_paths=>['/', '/index.php']},
+    metadata_requests => {enabled=>0, sitemap_patterns=>1,
+        paths=>['/robots.txt', '/sitemap.xml', '/sitemap_index.xml', '/wp-sitemap.xml']},
     verification => {max_gap_seconds => 86400},
     limits => {input_bytes => 67108864, line_bytes => 16384, records => 100000,
                groups => 100000, ua_bytes => 4096, target_bytes => 8192},
@@ -222,9 +230,32 @@ sub config {
         _bad('Invalid crawler token') if length($token)>$FIXED->{token_bytes} || $token !~ /\A[A-Za-z0-9][A-Za-z0-9._-]*\z/;
         _bad('Duplicate or generic browser token') if $tokens{lc($token)}++ || $refused{lc($token)};
     }
-    for my $kind (qw(compound_automation scheduled_automation inferred_scanner declared_automation)) {
+    for my $kind (qw(compound_automation scheduled_automation inferred_scanner declared_automation wp_micro_probe metadata_requests)) {
         _uint($c->{$kind}{enabled},1);
     }
+    my $mp=$c->{wp_micro_probe};
+    _uint($mp->{window_seconds},300,1);_uint($mp->{distinct_user_agents},128,2);
+    _uint($mp->{distinct_platforms},5,2);
+    _bad('Inconsistent micro-probe browser diversity') if $mp->{distinct_platforms}>$mp->{distinct_user_agents};
+    _uint($mp->{login_distinct_paths},128,3);_uint($mp->{login_head_paths},$mp->{login_distinct_paths},3);
+    _uint($mp->{login_get_requests},128,1);_uint($mp->{post_requests},128,3);
+    _uint($mp->{post_distinct_paths},$mp->{post_requests},3);
+    for my $kind (qw(wp_micro_probe metadata_requests)) {
+        my $rule=$c->{$kind};
+        for my $key ($kind eq 'wp_micro_probe' ? qw(login_paths post_paths api_paths entry_paths) : ('paths')) {
+            _array($rule->{$key},$FIXED->{paths});my %seen;
+            for my $path (@{$rule->{$key}}) {
+                _str($path);my $normal=normalize_target($path);
+                _bad('Invalid or duplicate micro-probe/metadata path') if !defined($normal) || $normal ne $path || $seen{$path}++;
+                _bad('Login discovery requires wp-login.php locations') if $key eq 'login_paths' && $path!~m{/wp-login\.php\z};
+            }
+        }
+    }
+    my %post_paths=map {$_=>1} @{$mp->{post_paths}};
+    _bad('Micro-probe API paths must be POST paths') if grep {!$post_paths{$_}} @{$mp->{api_paths}};
+    _bad('Enabled micro-probing needs installation and API paths') if $mp->{enabled}
+        && (@{$mp->{login_paths}}<$mp->{login_distinct_paths} || @{$mp->{post_paths}}<$mp->{post_distinct_paths} || !@{$mp->{api_paths}});
+    _uint($c->{metadata_requests}{sitemap_patterns},1);
     my $ca=$c->{compound_automation};
     _uint($ca->{window_seconds},300,1);_uint($ca->{distinct_pages},2048,2);
     _uint($ca->{metadata_families},3,3);_uint($ca->{quote_max_percent},10,1);
@@ -1581,6 +1612,7 @@ sub finish {
         $actors{$r->{actor}}++ if !$r->{_context}; $verification{$r->{verification_outcome}}++ if !$r->{_context};
         my $normal=normalize_target($r->{target}); $unsupported++ if !defined($normal) && !$r->{_context};
         $r->{normal}=$normal if defined $normal;
+        $r->{browser_claim_platform}=_browser_platform($r->{user_agent});
         my @utc=gmtime($r->{timestamp});
         $r->{source_month}=sprintf('%04d-%02d',$utc[5]+1900,$utc[4]+1);
         my ($source_af,$source_packed)=literal_ip($r->{client});
@@ -1698,13 +1730,13 @@ sub finish {
             my @eligible=qw(_broad_eligible _probing_eligible _rapid_eligible _distributed_eligible _rotation_eligible);
             push @eligible,map {'_'.$_.'_eligible'} @extra_kinds;
             $report->{details}[$i]{legacy_behavior_eligible}=(grep {$r->{$_}} @eligible)?JSON::PP::true:JSON::PP::false;
-            for my $key (qw(referrer_host referrer_path connection_fields operator_inference_candidate)) {
+            for my $key (qw(referrer_host referrer_path connection_fields operator_inference_candidate browser_claim_platform)) {
                 $report->{details}[$i]{$key}=$r->{$key} if exists($r->{$key});
             }
         }
     }
     $report->{corpus_analysis}={status=>'not_evaluated_without_complete_corpus',
-        rules=>[qw(compound_automation scheduled_automation inferred_scanner declared_automation)]};
+        rules=>[qw(compound_automation scheduled_automation inferred_scanner declared_automation wp_micro_probe metadata_requests)]};
     return $report;
 }
 sub excluded_line_indices {
