@@ -10,7 +10,63 @@
 #
 # See perldoc.perl.org/perlreref.html for regex syntax.
 #-------------------------------------------------------
+# Documented HTTP user-agent declarations, checked 2026-11-10.
+# These names are spoofable; recognition does not verify the sender.
+# Keep this catalogue first in list1 so URL words cannot take precedence.
+my @declared_automation_agents = (
+    ['OAI-AdsBot', 'OpenAI ad landing-page fetcher', 'https://developers.openai.com/api/docs/bots'],
+    ['Amzn-SearchBot', 'Amazon search crawler', 'https://developer.amazon.com/amazonbot'],
+    ['Amzn-User', 'Amazon user-directed fetcher', 'https://developer.amazon.com/amazonbot'],
+    ['KimiBot', 'Kimi training crawler', 'https://www.kimi.ai/policies/kimi-crawlers'],
+    ['Kimi-SearchBot', 'Kimi search crawler', 'https://www.kimi.ai/policies/kimi-crawlers'],
+    ['Kimi-User', 'Kimi user-directed fetcher', 'https://www.kimi.ai/policies/kimi-crawlers'],
+    ['MistralAI-Index', 'Mistral search crawler', 'https://docs.mistral.ai/robots'],
+    ['MistralAI-Training', 'Mistral training crawler', 'https://docs.mistral.ai/robots'],
+    ['Google-Agent', 'Google hosted browser agent', 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers'],
+    ['Google-GeminiNotebook', 'Gemini Notebook source fetcher', 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers'],
+    ['Google-NotebookLM', 'NotebookLM source fetcher (legacy token)', 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers'],
+    ['Google-Pinpoint', 'Google Pinpoint source fetcher', 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers'],
+    ['Google-CWS', 'Chrome Web Store metadata fetcher', 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers'],
+    ['GoogleMessages', 'Google Messages preview fetcher', 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers'],
+    ['Google-Read-Aloud', 'Google Read Aloud fetcher', 'https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers'],
+    ['Claude-Agent', 'Anthropic hosted browser agent', 'https://support.claude.com/en/articles/18234133-how-do-anthropic-hosted-browsers-identify-themselves-when-they-browse-the-web-on-a-user-s-behalf'],
+);
+my @declared_automation_ids = map {
+    '(?aa:(?<![A-Za-z0-9_.-])' . quotemeta($_->[0]) . '(?=[\x09-\x0D\x20/;)]|\z))'
+} @declared_automation_agents;
+my @declared_automation_markers = map { [$_, qr/$_/iaa, 0] } @declared_automation_ids;
+# Already registered fetchers retain their original slash-requiring history IDs.
+for my $legacy (
+    ['ChatGPT-User', 'ChatGPT-User/'],
+    ['Claude-User', 'Claude-User/'],
+    ['MistralAI-User', 'MistralAI-User/'],
+    ['Perplexity-User', 'Perplexity-User/'],
+) {
+    my ($token, $id) = @$legacy;
+    my $marker = '(?<![A-Za-z0-9_.-])' . quotemeta($token) . '(?=[\x09-\x0D\x20/;)]|\z)';
+    push @declared_automation_markers, [$id, qr/$marker/iaa, 1];
+}
+
+sub DeclaredAutomationRobotID {
+    my ($ua, $level) = @_;
+    return '' if !defined($ua) || ref($ua) || !defined($level) || ref($level)
+        || $level !~ /\A[1-9][0-9]*\z/;
+    our (@RobotsSearchIDOrder_list1, @RobotsSearchIDOrder_list2, @RobotsSearchIDOrder_listgen);
+    for my $entry (@declared_automation_markers) {
+        my ($id, $marker, $legacy) = @$entry;
+        next unless $ua =~ $marker;
+        next if $legacy && $ua !~ /$id/iaa;
+        for my $list (\@RobotsSearchIDOrder_list1,
+                ($level >= 2 ? \@RobotsSearchIDOrder_list2 : ()),
+                \@RobotsSearchIDOrder_listgen) {
+            return $id if grep { $_ eq $id } @$list;
+        }
+    }
+    return '';
+}
+
 @RobotsSearchIDOrder_list1 = (
+@declared_automation_ids,
 'meta-externalagent/',
 'facebookexternalhit',
 'hello.*palo.*alto.*networks',
@@ -2865,6 +2921,14 @@
 'no_user_agent','empty user agent string',
 'unknown','Unknown robot (identified by hit on robots.txt)'
 );
+# Static labels for the new IDs only; old descriptions are unchanged.
+for my $i (0 .. $#declared_automation_agents) {
+    my ($token, $purpose, $url) = @{$declared_automation_agents[$i]};
+    $RobotsHashIDLib{$declared_automation_ids[$i]} =
+        '<a href="' . $url . '" target="_blank" rel="noopener noreferrer">'
+        . $token . '</a> (' . $purpose . '; user-agent declaration)';
+}
+
 # RobotsAffiliateLib
 # This list try to tell by which Search Engine a robot is used
 #-------------------------------------------------------------

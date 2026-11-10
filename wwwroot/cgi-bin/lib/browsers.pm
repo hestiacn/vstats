@@ -651,6 +651,9 @@ sub get_safari_version {
 #------------------------------------------------------------------------------
 sub get_device_type {
 	my $user_agent = shift;
+	# Declared automation must not inherit the mobile/tablet exemption.
+	return 'bot' if defined(&DeclaredAutomationRobotID)
+		&& DeclaredAutomationRobotID($user_agent, $main::LevelForRobotsDetection);
 	return 'tv' if $user_agent =~ /\bsmart[- ]?tv\b|\bwebos\b|\btizen\b|\broku\b|\bfiretv\b|\bfire[- ]?tv\b|\bchromecast\b|\bkodi\b|apple\s?tv|android\s?tv|\bhbbtv\b|\bsmarttv\b/i;
 	return 'wearable' if $user_agent =~ /\bwear\s?os\b|\bwatch\s?os\b|\bfitbit\b|\bgalaxy\s?watch\b|\bapple\s?watch\b|\bwearable\b/i;
 	return 'tablet' if $user_agent =~ /\btablet\b|\bipad\b|\bkindle\b|\bplaybook\b|\bnexus\s?7\b|\bnexus\s?10\b|\bgalaxy\s?tab\b/i;
