@@ -357,7 +357,7 @@ $DatabaseBreak = 'month';
 	$DecodePunycode
 ) = (
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 );
 
 (
@@ -396,7 +396,7 @@ $DatabaseBreak = 'month';
 	$AddDataArrayShowHoursStats
 ) = (
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 );
 
 (
@@ -5229,7 +5229,7 @@ sub Check_Config {
 		'EMailsShown',		'DownloadsShown'
 	);
 	my @maxnboflistdefaultval =
-	  ( 10, 10, 10, 10, 5, 10, 10, 10, 5, 10, 10, 10, 20 );
+	  ( 10, 10, 10, 10, 5, 10, 10, 10, 5, 10, 10, 10, 20, 10 );
 	foreach my $i ( 0 .. ( @maxnboflist - 1 ) ) {
 		if ( !$MaxNbOf{ $maxnboflist[$i] }
 			|| $MaxNbOf{ $maxnboflist[$i] } !~ /^\d+$/
@@ -6012,6 +6012,9 @@ sub Read_History_With_TmpUpdate {
 		if ($filetoread =~ /\.gz$/) {
 			open( HISTORY, "-|", "gzip", "-dc", $filetoread ) || error( "Couldn't open file \"$filetoread\" for read: $!",
 					"", "", $MigrateStats );
+			# Compression is storage only; decode exactly like plaintext history.
+			binmode( HISTORY, ':encoding(UTF-8)' ) || error( "Couldn't set UTF-8 decoding for \"$filetoread\": $!",
+					"", "", $MigrateStats );
 		} else {
 			open( HISTORY, "<:encoding(UTF-8)", $filetoread ) || error( "Couldn't open file \"$filetoread\" for read: $!",
 				"", "", $MigrateStats );
@@ -6078,16 +6081,16 @@ sub Read_History_With_TmpUpdate {
 			if ( $field[0] eq 'FirstTime' || $field[0] eq "${xmlrb}FirstTime" )
 			{
 				if ( !$FirstTime{$date}
-					|| $FirstTime{$date} > int( $field[1] ) )
+					|| ( int( $field[1] // 0 ) && $FirstTime{$date} > int( $field[1] ) ) )
 				{
-					$FirstTime{$date} = int( $field[1] );
+					$FirstTime{$date} = int( $field[1] // 0 );
 				}
 				next;
 			}
 			if ( $field[0] eq 'LastTime' || $field[0] eq "${xmlrb}LastTime" ) {
-				if ( !$LastTime{$date} || $LastTime{$date} < int( $field[1] ) )
+				if ( !$LastTime{$date} || $LastTime{$date} < int( $field[1] // 0 ) )
 				{
-					$LastTime{$date} = int( $field[1] );
+					$LastTime{$date} = int( $field[1] // 0 );
 				}
 				next;
 			}
@@ -6998,15 +7001,16 @@ sub Read_History_With_TmpUpdate {
 			# BEGIN_UNKNOWNREFERER
 			if ($field[0] eq 'BEGIN_UNKNOWNREFERER') {
 				if ($Debug) { debug(" Begin of UNKNOWNREFERER section"); }
-				$field[0] = '';
+				@field = ();
 				my $count       = 0;
 				my $countloaded = 0;
 				do {
-					if ($field[0]) {
+					if (@field >= 2) {
 						$count++;
 						if ( $SectionsToLoad{'unknownreferer'}) {
 							$countloaded++;
-							if ( !$_unknownreferer_l{ $field[0] } ) {
+							if ( !exists $_unknownreferer_l{ $field[0] }
+								|| int($field[1]) > $_unknownreferer_l{ $field[0] } ) {
 								$_unknownreferer_l{ $field[0] } =
 								  int($field[1]);
 							}
@@ -7015,9 +7019,9 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					@field = ParseUnknownAgentHistoryRow($_, $readxml);
 					$countlines++;
-				} until ($field[0] eq 'END_UNKNOWNREFERER' || $field[0] eq "${xmleb}END_UNKNOWNREFERER" || !$_);
+				} until ((@field == 1 && ($field[0] eq 'END_UNKNOWNREFERER' || $field[0] eq "${xmleb}END_UNKNOWNREFERER")) || !$_);
 				if ($field[0] ne 'END_UNKNOWNREFERER' && $field[0] ne "${xmleb}END_UNKNOWNREFERER") {
 					error("History file \"$filetoread\" is corrupted (End of section UNKNOWNREFERER not found).\nRestore a recent backup of this file (data for this month will be restored to backup date), remove it (data for month will be lost), or remove the corrupted section in file (data for at least this section will be lost).",
 						"", "", 1);
@@ -7043,15 +7047,16 @@ sub Read_History_With_TmpUpdate {
 				if ($Debug) {
 					debug(" Begin of UNKNOWNREFERERBROWSER section");
 				}
-				$field[0] = '';
+				@field = ();
 				my $count       = 0;
 				my $countloaded = 0;
 				do {
-					if ($field[0] ) {
+					if (@field >= 2) {
 						$count++;
 						if ($SectionsToLoad{'unknownrefererbrowser'}) {
 							$countloaded++;
-							if ( !$_unknownrefererbrowser_l{ $field[0] } ) {
+							if ( !exists $_unknownrefererbrowser_l{ $field[0] }
+								|| int($field[1]) > $_unknownrefererbrowser_l{ $field[0] } ) {
 								$_unknownrefererbrowser_l{ $field[0] } = int($field[1]);
 							}
 						}
@@ -7059,9 +7064,9 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					@field = ParseUnknownAgentHistoryRow($_, $readxml);
 					$countlines++;
-				} until ($field[0] eq 'END_UNKNOWNREFERERBROWSER' || $field[0] eq "${xmleb}END_UNKNOWNREFERERBROWSER" || !$_);
+				} until ((@field == 1 && ($field[0] eq 'END_UNKNOWNREFERERBROWSER' || $field[0] eq "${xmleb}END_UNKNOWNREFERERBROWSER")) || !$_);
 				if ($field[0] ne 'END_UNKNOWNREFERERBROWSER' && $field[0] ne "${xmleb}END_UNKNOWNREFERERBROWSER") {
 					error("History file \"$filetoread\" is corrupted (End of section UNKNOWNREFERERBROWSER not found).\nRestore a recent backup of this file (data for this month will be restored to backup date), remove it (data for month will be lost), or remove the corrupted section in file (data for at least this section will be lost).",
 						"", "", 1);
@@ -7189,7 +7194,11 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					# Robot signatures may contain spaces; counters are the numeric
+					# fields at the end of the record, not words within the signature.
+					my $robotrow = $readxml ? XMLDecodeFromHisto($_) : $_;
+					@field = $robotrow =~ /^(.*?)\s+(\d+)\s+(\d+)\s+(\d+)(?:\s+(\d+))?\s*$/
+						? ($1, $2, $3, $4, $5 // 0) : split(/\s+/, $robotrow);
 					$countlines++;
 				} until ($field[0] eq 'END_ROBOT' || $field[0] eq "${xmleb}END_ROBOT" || !$_);
 				if ($field[0] ne 'END_ROBOT' && $field[0] ne "${xmleb}END_ROBOT") {
@@ -8405,10 +8414,10 @@ sub Save_History {
 		  . ( $LastLine > 0 ? $LastLine : $LastTime{$breakdate} )
 		  . " $lastlinenb $lastlineoffset $lastlinechecksum${xmlre}\n";
 		print HISTORYTMP "${xmlrb}FirstTime${xmlrs}"
-		. (defined $FirstTime{$breakdate} ? $FirstTime{$breakdate} : '')
+		. (defined $FirstTime{$breakdate} ? $FirstTime{$breakdate} : 0)
 		. "${xmlre}\n";
 		print HISTORYTMP "${xmlrb}LastTime${xmlrs}"
-		. (defined $LastTime{$breakdate} ? $LastTime{$breakdate} : '')
+		. (defined $LastTime{$breakdate} ? $LastTime{$breakdate} : 0)
 		. "${xmlre}\n";
 		print HISTORYTMP "${xmlrb}LastUpdate${xmlrs}$LastUpdate $NbOfLinesParsed $NbOfOldLines $NbOfNewLines $NbOfLinesCorrupted $NbOfLinesDropped${xmlre}\n";
 		print HISTORYTMP "${xmlrb}TotalVisits${xmlrs}";
@@ -8964,7 +8973,7 @@ sub Save_History {
 		print HISTORYTMP "${xmlbb}BEGIN_DOWNLOADS${xmlbs}"
 		  . ( scalar keys %_downloads )
 		  . "${xmlbe}\n";
-		for my $u (sort {$_downloads{$b}->{'AWSTATS_HITS'} <=> $_downloads{$a}->{'AWSTATS_HITS'}}(keys %_downloads) ){
+		for my $u (sort {($_downloads{$b}->{'AWSTATS_HITS'} || 0) <=> ($_downloads{$a}->{'AWSTATS_HITS'} || 0)}(keys %_downloads) ){
 			print HISTORYTMP "${xmlrb}"
 			  . XMLEncodeForHisto($u)
 			  . "${xmlrs}"
@@ -9578,13 +9587,54 @@ sub Rename_All_Tmp_History {
 #------------------------------------------------------------------------------
 # Function:     Compress previous month history file after new file created
 # Description:  - Compresses the previous month's .txt history file to .gz
-#               - Only runs on the 2nd day of the month
-#               - Skips if file already compressed
+#               - Runs from the 2nd day of the month onward
+#               - Keeps the current/previous month; refreshes stale older archives
 # Parameters:   None
 # Input:        $DirData, $PROG, $FileSuffix, $Debug
 # Output:       Creates .gz file, deletes original .txt after successful compression
 # Return:       1 on success, 0 on failure or skip
 #------------------------------------------------------------------------------
+# Replace a stale archive from the authoritative plaintext only after a
+# complete sibling gzip has been closed. Failure preserves recoverable input.
+sub Compress_History_File {
+    my ($path)=@_;
+    return 0 if !-f $path || -l $path || (-e "$path.gz" && (!-f "$path.gz" || -l "$path.gz"));
+    my ($input,$output,$temporary);
+    my $ok=eval {
+        require IO::Compress::Gzip;
+        require File::Temp;
+        require File::Basename;
+        require Fcntl;
+        my $nofollow=eval {Fcntl::O_NOFOLLOW()} || 0;
+        sysopen($input,$path,Fcntl::O_RDONLY()|$nofollow) or die "History open failed\n";
+        binmode($input,':raw') or die "History mode failed\n";
+        my @before=stat($input);
+        die "History is not regular\n" if !@before || !Fcntl::S_ISREG($before[2]);
+        my ($file,$directory)=File::Basename::fileparse($path);
+        ($output,$temporary)=File::Temp::tempfile('.'.$file.'.gzip-XXXXXXXX',DIR=>$directory,UNLINK=>0);
+        binmode($output,':raw') or die "Archive mode failed\n";
+        IO::Compress::Gzip::gzip($input=>$output,Level=>9,Time=>$before[9]) or die "Archive compression failed\n";
+        close($output) or die "Archive close failed\n";undef $output;
+        my @after=stat($input);my @named=lstat($path);
+        for my $i (0,1,2,4,5,7,9,10) {
+            die "History changed during compression\n" if !@after || !@named || $before[$i]!=$after[$i] || $after[$i]!=$named[$i];
+        }
+        close($input) or die "History close failed\n";undef $input;
+        chmod($before[2]&0777,$temporary)==1 or die "Archive permissions failed\n";
+        chown($before[4],$before[5],$temporary)==1 or die "Archive ownership failed\n";
+        utime($before[8],$before[9],$temporary)==1 or die "Archive timestamp failed\n";
+        rename($temporary,"$path.gz") or die "Archive replace failed\n";undef $temporary;
+        my @final=lstat($path);
+        for my $i (0,1,2,4,5,7,9,10) {die "History changed before removal\n" if !@final || $before[$i]!=$final[$i];}
+        unlink($path)==1 or die "Plain history removal failed\n";
+        1;
+    };
+    close($input) if defined($input) && defined(fileno($input));
+    close($output) if defined($output) && defined(fileno($output));
+    unlink($temporary) if defined $temporary;
+    return $ok?1:0;
+}
+
 sub Compress_Previous_Month_History {
 	my ($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
 	$year += 1900;
@@ -9615,16 +9665,12 @@ sub Compress_Previous_Month_History {
 		}
 		my $full_path = "$DirData/$file";
 		my $gz_file = "$full_path.gz";
-		if (-f $gz_file) {
-			next;
-		}
 		if ($Debug) {
 			my $orig_size = (stat($full_path))[7] || 0;
 			debug("Compress: Compressing $file (" . 
 				  sprintf("%.2f MB", $orig_size/1024/1024) . ")");
 		}
-		my $result = system("gzip -9 '$full_path' 2>/dev/null");
-		if ($result == 0 && -f $gz_file) {
+		if (Compress_History_File($full_path)) {
 			$compressed++;
 			if ($Debug) {
 				debug("Compress: Done. $file compressed");
@@ -9875,6 +9921,27 @@ sub XMLEncode {
 # Parameters:	stringtoencode
 # Return:		encodedstring
 #------------------------------------------------------------------------------
+# Use the history representation for both loaded and newly observed agents.
+# Otherwise a raw agent containing spaces and its stored %20 form become two
+# hash keys that serialize to the same row key on the next update.
+sub UnknownAgentHistoryKey {
+	my $agent = shift;
+	$agent = '' if !defined $agent;
+	$agent =~ s/\s/%20/g;
+	return $agent;
+}
+
+sub ParseUnknownAgentHistoryRow {
+	my ($row, $xml) = @_;
+	$row = XMLDecodeFromHisto($row) if $xml;
+	# Read the timestamp from the right: XML decoding restores agent spaces.
+	$row =~ s/[ \t]+\z//;
+	if ($row =~ /\A(.*)[ \t]+([0-9]+)\z/s) {
+		return (UnknownAgentHistoryKey($1), $2);
+	}
+	return split(/\s+/, $row);
+}
+
 sub XMLEncodeForHisto {
 	my $string = shift;
 	$string =~ s/\s/%20/g;
@@ -10007,7 +10074,7 @@ sub Sanitize {
 # Return:       cleanedstring (safe for HTML output)
 #------------------------------------------------------------------------------
 sub CleanXSS {
-	my $stringtoclean = shift;
+	my $stringtoclean = shift // '';
 	$stringtoclean =~ s/javascript\s*://gi;
 	$stringtoclean =~ s/\s+on\w+\s*=\s*["'][^"']*["']//gi;
 	$stringtoclean =~ s/\s+on\w+\s*=\s*[^\s>]+//gi;
@@ -14710,7 +14777,7 @@ sub HTMLMainFileType{
 			$p_h = "$p_h %";
 		}
 		if ($Totalk) {
-			$p_k = int( $_filetypes_k{$key} / $Totalk * 1000 ) / 10;
+			$p_k = int( ( $_filetypes_k{$key} || 0 ) / $Totalk * 1000 ) / 10;
 			$p_k = "$p_k %";
 		}
 		if ( $key eq 'Unknown' ) {
@@ -15003,11 +15070,11 @@ sub HTMLShowBrowserDetail{
 		my $p_h = '&nbsp;';
 		my $p_p = '&nbsp;';
 		if ($total_h) {
-			$p_h = int( $totalfamily_h{$family} / $total_h * 1000 ) / 10;
+			$p_h = int( ($totalfamily_h{$family} || 0) / $total_h * 1000 ) / 10;
 			$p_h = "$p_h %";
 		}
 		if ($total_p) {
-			$p_p = int( $totalfamily_p{$family} / $total_p * 1000 ) / 10;
+			$p_p = int( ($totalfamily_p{$family} || 0) / $total_p * 1000 ) / 10;
 			$p_p = "$p_p %";
 		}
 		my $familyheadershown = 0;
@@ -15295,11 +15362,11 @@ sub HTMLShowOSDetail{
 		my $p_h = '&nbsp;';
 		my $p_p = '&nbsp;';
 		if ($total_h) {
-			$p_h = int( $totalfamily_h{$family} / $total_h * 1000 ) / 10;
+			$p_h = int( ($totalfamily_h{$family} || 0) / $total_h * 1000 ) / 10;
 			$p_h = "$p_h %";
 		}
 		if ($total_p) {
-			$p_p = int( $totalfamily_p{$family} / $total_p * 1000 ) / 10;
+			$p_p = int( ($totalfamily_p{$family} || 0) / $total_p * 1000 ) / 10;
 			$p_p = "$p_p %";
 		}
 		my $familyheadershown = 0;
@@ -16141,7 +16208,7 @@ sub HTMLShowRobots{
 		  . "</td>\n";
 		if ( $ShowRobotsStats =~ /H/i ) {
 			print "<td>"
-			  . Format_Number(( $_robot_h{$key} - $_robot_r{$key} ))
+			  . Format_Number(( $_robot_h{$key} - ($_robot_r{$key} || 0) ))
 			  . ( $_robot_r{$key} ? "+$_robot_r{$key}" : "" ) . "</td>\n";
 		}
 		if ( $ShowRobotsStats =~ /B/i ) {
@@ -16294,8 +16361,8 @@ sub HTMLShowURLDetail{
 	my $max_k = 1;
 	foreach my $key (@keylist) {
 		if ( $_url_p{$key} > $max_p ) { $max_p = $_url_p{$key}; }
-		if ( $_url_k{$key} / ( $_url_p{$key} || 1 ) > $max_k ) {
-			$max_k = $_url_k{$key} / ( $_url_p{$key} || 1 );
+		if ( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) > $max_k ) {
+			$max_k = ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 );
 		}
 	}
 	foreach my $key (@keylist) {
@@ -16330,7 +16397,7 @@ sub HTMLShowURLDetail{
 			  . (
 				$_url_k{$key}
 				? Format_Bytes(
-					$_url_k{$key} / ( $_url_p{$key} || 1 )
+					( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 )
 				  )
 				: "&nbsp;"
 			  )
@@ -16371,10 +16438,10 @@ sub HTMLShowURLDetail{
 			print "<div style=\"background-color: #$color_x; width: ${bredde_x}px; height: 4px; border-radius: 2px;\"></div>";
 		}
 		print "</td>\n</tr>\n";
-		$total_p += $_url_p{$key};
-		$total_e += $_url_e{$key};
-		$total_x += $_url_x{$key};
-		$total_k += $_url_k{$key};
+		$total_p += $_url_p{$key} || 0;
+		$total_e += $_url_e{$key} || 0;
+		$total_x += $_url_x{$key} || 0;
+		$total_k += $_url_k{$key} || 0;
 		$count++;
 	}
 	if ($Debug) {
@@ -16588,7 +16655,7 @@ sub HTMLShowHostsUnknown{
 			  . "</td>\n";
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -16752,7 +16819,7 @@ sub HTMLShowHosts{
 			  . "</td>\n";
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -16838,7 +16905,7 @@ sub HTMLShowDomains{
 		my $bredde_p = 0;
 		my $bredde_h = 0;
 		my $bredde_k = 0;
-		if ( $max_h > 0 ) { $bredde_p = int( $BarWidth * $_domener_p{$key} / $max_h ) + 1; }
+		if ( $max_h > 0 ) { $bredde_p = int( $BarWidth * ($_domener_p{$key} || 0) / $max_h ) + 1; }
 		if ( $_domener_p{$key} && $bredde_p == 1 ) { $bredde_p = 2; }
 		if ( $max_h > 0 ) {
 			$bredde_h = int( $BarWidth * $_domener_h{$key} / $max_h ) + 1;
@@ -16918,7 +16985,7 @@ sub HTMLShowDomains{
 		}
 		print "<td class=\"aws\">";
 		if ( $ShowDomainsStats =~ /P/i ) {
-			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} ) . "\"></div><br>";
+			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} || 0 ) . "\"></div><br>";
 		}
 		if ( $ShowDomainsStats =~ /H/i ) {
 			print "<div style=\"background-color: #$color_h; width: ${bredde_h}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Hits") . ": " . int( $_domener_h{$key} ) . "\"></div><br>";
@@ -16928,9 +16995,9 @@ sub HTMLShowDomains{
 		}
 		print "</td>\n";
 		print "</tr>\n";
-		$total_u += $_domener_u;
-		$total_v += $_domener_v;
-		$total_p += $_domener_p{$key};
+		$total_u += $_domener_u || 0;
+		$total_v += $_domener_v || 0;
+		$total_p += $_domener_p{$key} || 0;
 		$total_h += $_domener_h{$key};
 		$total_k += $_domener_k{$key} || 0;
 		$count++;
@@ -18987,7 +19054,7 @@ sub HTMLMainCountries{
 		my $bredde_u = 0;
 		my $bredde_v = 0;
 		if ( $max_h > 0 ) {
-			$bredde_p = int( $BarWidth * $_domener_p{$key} / $max_h ) + 1;
+			$bredde_p = int( $BarWidth * ($_domener_p{$key} || 0) / $max_h ) + 1;
 		}
 		if ( $_domener_p{$key} && $bredde_p == 1 ) { $bredde_p = 2; }
 		if ( $max_h > 0 ) {
@@ -19074,7 +19141,7 @@ sub HTMLMainCountries{
 		}
 		print "<td class=\"aws\">";
 		if ( $ShowDomainsStats =~ /P/i ) {
-			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} ) . "\"></div>";
+			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} || 0 ) . "\"></div>";
 		}
 		if ( $ShowDomainsStats =~ /H/i ) {
 			print "<div style=\"background-color: #$color_h; width: ${bredde_h}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Hits") . ": " . int( $_domener_h{$key} ) . "\"></div>";
@@ -19085,9 +19152,9 @@ sub HTMLMainCountries{
 		print "</td>\n";
 		print "</tr>\n";
 
-		$total_u += $_domener_u;
-		$total_v += $_domener_v;
-		$total_p += $_domener_p{$key};
+		$total_u += $_domener_u || 0;
+		$total_v += $_domener_v || 0;
+		$total_p += $_domener_p{$key} || 0;
 		$total_h += $_domener_h{$key};
 		$total_k += $_domener_k{$key} || 0;
 		$count++;
@@ -19397,7 +19464,7 @@ sub HTMLMainHosts{
 			  . '</td>';
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -19989,8 +20056,8 @@ sub HTMLMainPages{
 	&BuildKeyList( $MaxNbOf{'PageShown'}, $MinHit{'File'}, \%_url_p, \%_url_p );
 	foreach my $key (@keylist) {
 		if ( $_url_p{$key} > $max_p ) { $max_p = $_url_p{$key}; }
-		if ( $_url_k{$key} / ( $_url_p{$key} || 1 ) > $max_k ) {
-			$max_k = $_url_k{$key} / ( $_url_p{$key} || 1 );
+		if ( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) > $max_k ) {
+			$max_k = ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 );
 		}
 	}
 	foreach my $key (@keylist) {
@@ -20016,7 +20083,7 @@ sub HTMLMainPages{
 			  . (
 				$_url_k{$key}
 				? Format_Bytes(
-					$_url_k{$key} / ( $_url_p{$key} || 1 )
+					( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 )
 				  )
 				: "&nbsp;"
 			  )
@@ -20048,7 +20115,7 @@ sub HTMLMainPages{
 			print "<div style=\"background-color: #$color_h; width: ${bredde_p}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Hits") . ": " . Format_Number($_url_p{$key}) . "\"></div>";
 		}
 		if ( $ShowPagesStats =~ /B/i ) {
-			print "<div style=\"background-color: #$color_k; width: ${bredde_k}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Average") . ": " . Format_Bytes( $_url_k{$key} / ( $_url_p{$key} || 1 ) ) . "\"></div>";
+			print "<div style=\"background-color: #$color_k; width: ${bredde_k}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Average") . ": " . Format_Bytes( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) ) . "\"></div>";
 		}
 		if ( $ShowPagesStats =~ /E/i ) {
 			print "<div style=\"background-color: #$color_e; width: ${bredde_e}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Entry") . ": " . Format_Number($_url_e{$key}) . "\"></div>";
@@ -22230,7 +22297,7 @@ if ( $ENV{'GATEWAY_INTERFACE'} ) {
 			$outputlist =~ s/^=//;
 			foreach my $outputparam ( split( /,/, $outputlist ) ) {
 				$outputparam =~ s/:(.*)$//;
-				if ($outputparam) { $HTMLOutput{ lc($outputparam) } = "$1" || 1; }
+				if ($outputparam) { $HTMLOutput{ lc($outputparam) } = $1 || 1; }
 			}
 		}
 
@@ -22851,8 +22918,8 @@ if(! $retval) {
 	error("$error_msg\n\n$perm_cmd");
 }
 my $regfilesuffix = quotemeta($FileSuffix);
-foreach ( grep /^$PROG$datemask$regfilesuffix\.txt(|\.gz)$/i, file_filt(sort readdir DIR) )
-{ /^$PROG$datemask$regfilesuffix\.txt(|\.gz)$/i;
+foreach ( grep /^$PROG$datemask$regfilesuffix\.txt(?:\.gz)?$/i, file_filt(sort readdir DIR) )
+{ /^$PROG$datemask$regfilesuffix\.txt(?:\.gz)?$/i;
 	if ( !$ListOfYears{"$2"} || "$1" gt $ListOfYears{"$2"} ) { $ListOfYears{"$2"} = "$1"; }
 	my $rangestring = ( $2 || "" ) . ( $1 || "" ) . ( $3 || "" ) . ( $4 || "" );
 	if ( $rangestring gt $lastdatebeforeupdate ) {
@@ -23905,6 +23972,9 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 		# Analyze: successful favicon (=> countedtraffic=1 if favicon)
 		#--------------------------------------------------
 		if ( $urlwithnoquery =~ /$regicons/o ) {
+			# Apache %b uses a dash for zero response-body bytes. Normalize it
+			# before shared accounting, including 404 icon/manifest responses.
+			$field[$pos_size] = 0 if $pos_size > 0 && $field[$pos_size] eq '-';
 			# 提取图标类型
 			my $icon_type = 'other';
 			
@@ -24069,13 +24139,13 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 			if ( $urlwithnoquery =~ /$regfavico/o ) {
 				$countedtraffic = 1;
 				$_time_nv_h[$hourrecord]++;
-				if ( $field[$pos_code] != 404 && $pos_size > 0 ) {
+				if ( $pos_size > 0 ) {
 					$_time_nv_k[$hourrecord] += int( $field[$pos_size] );
 				}
 			}
 			else {
 				$countedtraffic = 7;
-				if ( $field[$pos_code] != 404 && $pos_size > 0 ) {
+				if ( $pos_size > 0 ) {
 					$_time_nv_k[$hourrecord] += int( $field[$pos_size] );
 				}
 				$_time_nv_h[$hourrecord]++;
@@ -24232,8 +24302,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 							}
 							# 206 状态码：分块下载
 							elsif ( $status_code == 206 ) {
-								if ( $_downloads{$file_url}->{'AWSTATS_HITS'} > 0 || 
-									$_downloads{$file_url}->{'AWSTATS_NEW'} > 0 ) {
+								if ( ($_downloads{$file_url}->{'AWSTATS_HITS'} || 0) > 0 ||
+									($_downloads{$file_url}->{'AWSTATS_NEW'} || 0) > 0 ) {
 									$_downloads{$file_url}->{'AWSTATS_206'}++;
 									$_downloads{$file_url}->{'AWSTATS_SIZE'} += $file_size;
 									$_downloads{$file_url}->{'AWSTATS_LAST_TIME'} = $timerecord;
@@ -24244,12 +24314,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 									if ($Debug) { debug( " Orphan 206 chunk: '$file_url'", 2 ); }
 								}
 								
-								# 206 分块请求也需要计入带宽统计
-								if ($pos_size > 0) {
-									$DayBytes{$yearmonthdayrecord} += $file_size;
-									$_time_k[$hourrecord] += $file_size;
-								}
-								$countedtraffic = 6;  # 标记为已统计
+								# Count partial-response traffic once in the shared block.
+								$countedtraffic = 6;
 							}
 							
 						} elsif ($Debug) {
@@ -24257,57 +24323,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						}
 					}
 					
-					if ( !$countedtraffic ) {
-						my $size = 0;
-						# 检查是否为页面（非静态资源）
-						my $is_page = 1;
-						if ( $extension && $NotPageList{$extension} ) {
-							$is_page = 0;
-							$PageBool = 0;
-						}
-						
-						# 页面统计
-						if ($is_page) {
-							$_url_p{$urlwithnoquery}++;
-							$_url_e{$urlwithnoquery}++ if ( !defined $FirstTimeforThisHost || $FirstTimeforThisHost eq "" );
-							$_url_k{$urlwithnoquery} += $size;
-						}
-						
-						# 时间统计
-						if ($is_page) {
-							$_time_p[$hourrecord]++;
-						}
-						$_time_h[$hourrecord]++;
-						
-						# 带宽统计
-						if ($pos_size > 0) {
-							$size = int($field[$pos_size]) || 0;
-							$DayBytes{$yearmonthdayrecord} += $size;
-							$_time_k[$hourrecord] += $size;
-							if ($is_page) {
-								$_url_k{$urlwithnoquery} += $size;
-							}
-						}
-						
-						# 主机统计
-						my $host_key = (defined $Host && $Host ne '') ? $Host : 'unknown_ip';
-						$_host_h{$host_key}++;
-						$_host_p{$host_key}++ if ($is_page);
-						$_host_k{$host_key} += $size;
-						$_host_l{$host_key} = $timerecord;
-						
-						# 如果是新会话，记录开始时间
-						if ( !defined $FirstTimeforThisHost || $FirstTimeforThisHost eq "" ) {
-							$_host_s{$host_key} = $timerecord;
-							$FirstTimeforThisHost = $timerecord;
-						}
-						$_host_u{$host_key} = $urlwithnoquery;
-						$DayVisits{$yearmonthdayrecord}++ if ( $FirstTimeforThisHost eq $timerecord );
-						
-						if ($Debug) {
-							debug( " Normal page view: '$urlwithnoquery' (status: $status_code)", 2 );
-						}
-					}
+					# Normal request, host, visit and bandwidth accounting is performed
+					# once in the shared processing blocks below this status section.
 				} else {
 					# 确保状态码是有效的三位数
 					if ( $field[$pos_code] !~ /^\d\d\d$/ ) {
@@ -24698,7 +24715,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 		if ( !$countedtraffic || $countedtraffic == 6) {
 			if ($LevelForFileTypesDetection) {
 				if (!$PageBool) {
-				if ($countedtraffic != 6){$_filetypes_h{$extension}++;}
+				$_filetypes_h{$extension}++;
 				if ( $field[$pos_size] ne '-' && $pos_size>0) {
 					$_filetypes_k{$extension} += int( $field[$pos_size] );
 				}
@@ -24745,8 +24762,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 				# TODO Use an id for hash key of url
 				# $_url_t{$_url_id}
 			}
-			if ($countedtraffic != 6){$_time_h[$hourrecord]++;}
- 			if ($countedtraffic != 6){$DayHits{$yearmonthdayrecord}++;}
+			$_time_h[$hourrecord]++;
+			$DayHits{$yearmonthdayrecord}++;
   			if ( $field[$pos_size] ne '-' && $pos_size>0) {
   				$_time_k[$hourrecord]          += int( $field[$pos_size] );
  				$DayBytes{$yearmonthdayrecord} += int( $field[$pos_size] );
@@ -24761,7 +24778,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 
 				# We found an authenticated user
 				if ($PageBool) { $_login_p{ $field[$pos_logname] }++; }
-				if ($countedtraffic != 6){$_login_h{$field[$pos_logname]}++;}
+				$_login_h{$field[$pos_logname]}++;
 				if ($pos_size>0){$_login_k{ $field[$pos_logname] } += int( $field[$pos_size] );}
 				$_login_l{ $field[$pos_logname] } = $timerecord;
 			}
@@ -25033,7 +25050,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 
 			# Store country
 			if ($PageBool) { $_domener_p{$Domain}++; }
-			if ($countedtraffic != 6){$_domener_h{$Domain}++;}
+			$_domener_h{$Domain}++;
 			if ( $field[$pos_size] ne '-' && $pos_size>0) {
 				$_domener_k{$Domain} += int( $field[$pos_size] );
 			}
@@ -25418,14 +25435,14 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 							$_browser_h{'Unknown'}++;
 							if ($PageBool) { $_browser_p{'Unknown'}++; }
 							$TmpBrowser{$UserAgent} = 'Unknown';
-							$_unknownrefererbrowser_l{$UserAgent} = $timerecord;
+							$_unknownrefererbrowser_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 						}
 					}
 					else {
 						$_browser_h{$uabrowser}++;
 						if ($PageBool) { $_browser_p{$uabrowser}++; }
 						if ( $uabrowser eq 'Unknown' ) {
-							$_unknownrefererbrowser_l{$UserAgent} = $timerecord;
+							$_unknownrefererbrowser_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 						}
 					}
 				}
@@ -25501,7 +25518,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 								}
 							}
 							if ( $countedtraffic != 4 ) {
-								$_unknownreferer_l{$UserAgent} = $timerecord;
+								$_unknownreferer_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 							}
 						}
 					}
@@ -25520,7 +25537,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						}
 						if ( $uaos eq 'Unknown' ) {
 							if ( $countedtraffic != 4 ) {
-								$_unknownreferer_l{$UserAgent} = $timerecord;
+								$_unknownreferer_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 							}
 						}
 					}
@@ -26347,7 +26364,7 @@ END_ERROR_TEXT
 	# If lastprocesseddate > 0 means there is at least one approved new record in log or at least one existing history file
 	if ( $lastprocesseddate > 0 ) {
 		seek( LOG, $lastlineoffset, 0 );
-		my $line = <LOG>;
+		my $line = <LOG> // '';
 		chomp $line;
 		$line =~ s/\r$//;
 		if ( !$NbOfLinesParsed ) 
@@ -26601,7 +26618,7 @@ if ( scalar keys %HTMLOutput ) {
 	my $TotalBytesErrors = 0;
 	foreach ( keys %_errors_h ) {
 		$TotalHitsErrors  += $_errors_h{$_};
-		$TotalBytesErrors += $_errors_k{$_};
+		$TotalBytesErrors += $_errors_k{$_} // 0;
 	}
 	if ( !$TotalEntries ) {
 		foreach ( keys %_url_e ) { $TotalEntries += $_url_e{$_}; }
