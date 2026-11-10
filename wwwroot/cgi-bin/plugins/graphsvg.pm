@@ -172,7 +172,11 @@ sub _graphsvg_plain_label {
 }
 
 sub _graphsvg_display {
-	return _graphsvg_esc(_graphsvg_plain_label(shift));
+	my $text = shift // '';
+	# Only these native display-name tables contain presentation markup.
+	# File names, addresses, extensions and cluster labels remain literal data.
+	$text = _graphsvg_plain_label($text) if $type eq 'browsers' || $type eq 'oss';
+	return _graphsvg_esc($text);
 }
 
 sub _graphsvg_plain_title {

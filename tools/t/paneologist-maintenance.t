@@ -79,11 +79,26 @@ like($out,qr/Content-Type:/i,'CGI response retains its HTTP header');
 like($out,qr/<html\b/i,'CGI response retains error HTML');
 is($err,'','CGI error response remains on stdout');
 
-write_file("$dir/access.log",("invalid synthetic log record\n" x 101));
+my $untrusted=q{invalid <img src="x" onerror="bad"> & "sample"};
+my $invalid_rows=($untrusted."\n") x 101;
+write_file("$dir/access.log",$invalid_rows);
 ($rc,$out,$err)=invoke({},'-config=fixture','-update');
+diag($out) unless $rc;
 isnt($rc,0,'malformed-log update fails');
 like($err,qr/LogFormat|LogSeparator/,'format diagnostic goes to stderr');
 unlike($out,qr/did not find|LogFormat parameter|LogSeparator/i,'format diagnostic is absent from stdout');
+like($err,qr/\Q$untrusted\E/,'plain CLI diagnostic preserves the literal sample');
+my $unsafe_path="$dir/access<unsafe>.log";
+write_file($unsafe_path,$invalid_rows);
+my $unsafe_cfg=$cfg;$unsafe_cfg=~s{^LogFile=.*$}{LogFile="$unsafe_path"}m;
+write_file("$dir/config/awstats.unsafe.conf",$unsafe_cfg);
+($rc,$out,$err)=invoke({},'-config=unsafe','-update','-output');
+isnt($rc,0,'HTML malformed-log update fails');
+like($out,qr/&lt;img src=&quot;x&quot;/,'HTML error escapes log-sample element and quotes');
+like($out,qr/&amp; &quot;sample&quot;/,'HTML error escapes ampersands and literal quotes');
+like($out,qr/access&lt;unsafe&gt;\.log/,'HTML error escapes the log filename');
+unlike($out,qr/<img src="x"/,'log sample cannot create an HTML image element');
+is($err,'','HTML error response remains on stdout');
 
 my $rows='';my @paths=('/','/next','/other','/asset.css','/image.png','/missing','/server-error');
 my @downloads=(['first.pdf',14],['second.zip',9],['third.gz',9],['fourth.mp3',8],['fifth.exe',8]);

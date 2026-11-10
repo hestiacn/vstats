@@ -76,6 +76,11 @@ xml_ok($escaped,'hostile/Unicode labels');
 my $browser=render('browsers',[q{<a href="https://example.test">Firefox &amp; extras</a>}],[1]);
 like($browser,qr/>Firefox &amp; extras &#8212; 100\.0%/,'native browser links become plain escaped labels');
 unlike($browser,qr/\bhref\s*=/,'native browser-link source does not appear as label text');
+for my $kind (qw(downloads hosts filetypes cluster countries_map)) {
+ my $literal=render($kind,[q{a<b>c&amp;y.zip}],[1]);
+ like($literal,qr/a&lt;b&gt;c&amp;amp;y\.zip/,$kind.' data label preserves literal tags and entity-like text');
+ xml_ok($literal,$kind.' literal label');
+}
 my $scientific=render('hours',['Hour'],['2e0','1.024e3']);
 like($scientific,qr/1024 Bytes/,'finite scientific values are retained');
 my $invalid=render('hours',['Hour'],['NaN','1e9999']);

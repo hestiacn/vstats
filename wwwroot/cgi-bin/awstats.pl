@@ -3099,6 +3099,15 @@ sub error {
 	}
 	my $secondmessage      = shift || '';
 	my $thirdmessage       = shift || '';
+	# Log samples and names are data, even in an HTML diagnostic response.
+	if (scalar keys %HTMLOutput || $ENV{'GATEWAY_INTERFACE'}) {
+		for my $value (\$secondmessage, \$thirdmessage) {
+			$$value =~ s/&/&amp;/g;
+			$$value =~ s/</&lt;/g;
+			$$value =~ s/>/&gt;/g;
+			$$value =~ s/"/&quot;/g;
+		}
+	}
 	my $donotshowsetupinfo = shift || 0;
 	my $dir = $PageDir ? 'rtl' : 'ltr';
 	if ( !$HeaderHTTPSent && $ENV{'GATEWAY_INTERFACE'} ) { http_head(); }
