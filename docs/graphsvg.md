@@ -6,11 +6,11 @@ The `graphsvg` plugin renders the existing AWStats ShowGraph data as inline SVG.
 
 Add `LoadPlugin="graphsvg"` to the site's AWStats configuration and regenerate its HTML reports. Disable other ShowGraph plugins, including `graphgooglechartapi` and `graphapplet`, first. Loading competing graph plugins is unsupported. Remove the setting and regenerate reports to restore the native charts; a log/history rebuild is unnecessary.
 
-Time charts show the native series and their supplied scales, with bandwidth formatted as bytes. Pie percentages describe only the displayed entries, as stated beneath each pie; they are not percentages of the entire site's traffic. The country map hook becomes a ranking of the top 15 countries by hits. Native tables remain available for the complete values. SVG labels are escaped, and each chart has a title and text labels. No chart data is sent to an external service, and no chart JavaScript is required. This applies to the plugin; other site/report assets retain their existing configuration.
+Time charts show the native series and their supplied scales, with bandwidth formatted as bytes. SVG pie hooks receive raw per-entry counts, while other graph plugins retain their existing rounded-percentage inputs. Pie percentages describe only the displayed entries, as stated beneath each pie; they are not percentages of the entire site's traffic. The country map hook becomes a ranking of the top 15 countries by hits. Native tables remain available for the complete values. Native presentation markup is reduced to plain label text and XML-escaped, and each chart has a title and text labels. No chart data is sent to an external service, and no chart JavaScript is required. This applies to the plugin; other site/report assets retain their existing configuration.
 
 ## Diagnostics and existing DNS protection
 
-CLI error diagnostics, including malformed-log diagnostics, go to stderr. HTML report and CGI error responses stay on stdout. Exit status remains nonzero on errors. The existing three-argument, read-only DNS-cache open is retained and covered by a regression test; it is not a newly introduced security fix.
+CLI error diagnostics, including malformed-log diagnostics, go to stderr. HTML report and CGI error responses stay on stdout. For CLI HTML generation with `-output`, error text is written into the HTML on stdout and stderr can be empty; callers must check the nonzero exit status. The existing three-argument, read-only DNS-cache open is retained and covered by a regression test; it is not a newly introduced security fix.
 
 ## Provenance
 

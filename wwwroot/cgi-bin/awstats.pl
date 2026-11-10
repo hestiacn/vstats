@@ -14668,7 +14668,7 @@ sub HTMLMainFileType{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_filetypes_h{$key} / $Totalh * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_filetypes_h{$key} : int( $_filetypes_h{$key} / $Totalh * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
@@ -18433,7 +18433,7 @@ sub HTMLMainDownloads{
 			my $cnt = 0;
 			for my $u (@top_downloads) {
 				my $filename = Get_Filename($u);
-				push @valdata, int($_downloads{$u}->{'AWSTATS_HITS'} / $Totalh * 1000) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_downloads{$u}->{'AWSTATS_HITS'} : int($_downloads{$u}->{'AWSTATS_HITS'} / $Totalh * 1000) / 10);
 				push @blocklabel, $filename;
 				$cnt++;
 				last if $cnt >= 5;
@@ -19294,7 +19294,7 @@ sub HTMLMainHosts{
 			
 			$cnt = 0;
 			foreach my $key (@keylist) {
-			   push @valdata, int( $_host_h{$key} / $suma * 1000 ) / 10;
+			   push @valdata, ($pluginname eq 'graphsvg' ? $_host_h{$key} : int( $_host_h{$key} / $suma * 1000 ) / 10);
 			   push @blocklabel, "$key";
 			   $cnt++;
 			   if ($cnt > 4) { last; }
@@ -20170,7 +20170,7 @@ sub HTMLMainOS{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int(  $new_os_h{$key} / $Totalh * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $new_os_h{$key} : int(  $new_os_h{$key} / $Totalh * 1000 ) / 10);
 				if ($key eq 'Unknown'){
 					push @blocklabel, "$key";
 				}
@@ -20362,7 +20362,7 @@ sub HTMLMainBrowsers{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int(  $new_browser_h{$key} / $TotalHits * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $new_browser_h{$key} : int(  $new_browser_h{$key} / $TotalHits * 1000 ) / 10);
 				if ($key eq 'Unknown'){
 					push @blocklabel, "$key";
 				}
@@ -21318,7 +21318,7 @@ sub HTMLMainHTTPStatus{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_errors_h{$key} / $TotalHitsErrors * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_errors_h{$key} : int( $_errors_h{$key} / $TotalHitsErrors * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
@@ -21679,7 +21679,7 @@ sub HTMLMainCluster{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_cluster_p{$key} / $TotalHits * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_cluster_p{$key} : int( $_cluster_p{$key} / $TotalHits * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }

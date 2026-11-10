@@ -6,6 +6,11 @@ use File::Temp qw(tempdir);
 use File::Path qw(make_path);
 use Cwd qw(abs_path);
 use Digest::SHA qw(sha256_hex);
+use File::Spec;
+
+my $python=$ENV{PYTHON3};
+if (!$python) {($python)=grep {-x $_} map {File::Spec->catfile($_,'python3')} File::Spec->path;}
+BAIL_OUT('python3 is required for SVG XML validation (or set PYTHON3)') unless $python && -x $python;
 
 for my $module (qw(JSON::XS Try::Tiny Geo::IPfree)) {
     eval "require $module; 1" or BAIL_OUT("native parser needs $module");
@@ -80,9 +85,14 @@ isnt($rc,0,'malformed-log update fails');
 like($err,qr/LogFormat|LogSeparator/,'format diagnostic goes to stderr');
 unlike($out,qr/did not find|LogFormat parameter|LogSeparator/i,'format diagnostic is absent from stdout');
 
-my $rows='';my @paths=('/','/next','/other','/asset.css','/image.png','/missing');
+my $rows='';my @paths=('/','/next','/other','/asset.css','/image.png','/missing','/server-error');
+my @downloads=(['first.pdf',14],['second.zip',9],['third.gz',9],['fourth.mp3',8],['fifth.exe',8]);
+for my $item (@downloads) {push @paths,(('/'.$item->[0]) x $item->[1]);}
+is(scalar @paths,55,'fixture retains all requested download repetitions');
+my @agents=('Mozilla/5.0 (X11; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0',
+ 'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 for my $i (0..$#paths) {
- $rows.=sprintf '192.0.2.%d - - [01/Oct/2026:10:00:%02d +0000] "GET %s HTTP/1.1" %d %d "-" "FixtureBrowser/1"',1+($i%2),$i,$paths[$i],($i==5?404:200),100+$i;
+ $rows.=sprintf '192.0.2.%d - - [01/Oct/2026:10:00:%02d +0000] "GET %s HTTP/1.1" %d %d "-" "%s"',1+($i%2),$i,$paths[$i],($i==5?404:$i==6?500:200),100+$i,$agents[$i%2];
  $rows.="\n";
 }
 write_file("$dir/access.log",$rows);
@@ -94,17 +104,41 @@ my %before=map {$_=>sha256_hex(read_file($_))} @histories;
 is($rc,0,'default native report succeeds');
 my $baseline_warnings=$err;
 like($err,qr/\A(?:Use of uninitialized value \$_domener_[uv] in addition \(\+\) at [^\n]+ line \d+\.\n)*\z/,'baseline contains only the unchanged upstream country-counter warnings');
-unlike($out,qr/<svg role="img" aria-label=/,'plugin is disabled by default');
+unlike($out,qr/<svg role="img"/,'plugin is disabled by default');
 write_file("$dir/config/awstats.fixture.conf",$cfg."\nLoadPlugin=\"graphsvg\"\n");
 ($rc,$out,$err)=invoke({},'-config=fixture','-output','-month=10','-year=2026','-staticlinks');
 is($rc,0,'native renderer loads optional SVG plugin');is($err,$baseline_warnings,'optional SVG introduces no additional report diagnostics');
-my @svg=$out=~/(<svg role="img" aria-label=.*?<\/svg>)/sg;
-cmp_ok(scalar @svg,'>=',4,'native monthly/day/week/hour hooks render SVG');
-unlike(join('',@svg),qr/<(?:script|image|foreignObject)\b|\b(?:href|src)\s*=/i,'rendered charts have no external or executable content');
+my @svg=$out=~/(<svg role="img"[^>]*>.*?<\/svg>)/sg;
+for my $type (qw(month daysofmonth daysofweek hours filetypes hosts oss browsers httpstatus downloads)) {
+ like($out,qr/data-awstats-graph="\Q$type\E"/,'native renderer exercises '.$type.' hook');
+}
+my ($downloads_svg)=grep {/data-awstats-graph="downloads"/} @svg;
+my ($download_history)=read_file($histories[0])=~/^BEGIN_DOWNLOADS[^\n]*\n(.*?)^END_DOWNLOADS/ms;
+my %download_hits;
+for my $line (split /\n/,$download_history//'') {
+ my ($path,$hits)=split /\s+/,$line;next unless defined $hits && $hits=~/^\d+$/;
+ $path=~s{.*/}{};$download_hits{$path}=$hits;
+}
+is(scalar keys %download_hits,5,'native history supplies the independent download-count oracle');
+for my $item (@downloads) {is($download_hits{$item->[0]},$item->[1],'native history retains fixture count for '.$item->[0]);}
+my $sum=0;$sum+=$_ for values %download_hits;
+for my $name (sort keys %download_hits) {
+ my $pct=sprintf('%.1f',100*$download_hits{$name}/$sum);
+ like($downloads_svg//'',qr/\Q$name\E &#8212; \Q$pct\E%/,'SVG percentage agrees with raw native history: '.$name);
+}
+open my $xml,'|-',$python,'-c',
+ 'import sys,xml.etree.ElementTree as E;r=E.fromstring(b"<root>"+sys.stdin.buffer.read()+b"</root>");assert len(r)>=4;assert not any(e.tag.split("}")[-1] in ("script","image","foreignObject") for e in r.iter());assert not any(k.lower().startswith("on") or k.lower() in ("href","src","{http://www.w3.org/1999/xlink}href") for e in r.iter() for k in e.attrib)' or die $!;
+print {$xml} join('',@svg);ok(close($xml),'native SVG has no resource links or executable elements/attributes');
 my %after=map {$_=>sha256_hex(read_file($_))} @histories;
 is_deeply(\%after,\%before,'chart rendering does not modify native histories');
 write_file("$dir/config/awstats.fixture.conf",$cfg."\nLoadPlugin=\"graphsvg\"\nBuildReportFormat=\"xhtml\"\n");
 ($rc,$out,$err)=invoke({},'-config=fixture','-output','-month=10','-year=2026','-staticlinks');
 is($rc,0,'SVG plugin works with native XHTML mode');is($err,$baseline_warnings,'XHTML introduces no additional report diagnostics');
 like($out,qr/<svg role="img"/,'XHTML output includes inline SVG');
+write_file("$dir/config/awstats.fixture.conf",$cfg."\nLoadPlugin=\"graphsvg\"\nAddLinkToExternalCGIWrapper=\"/export.cgi\"\n");
+($rc,$out,$err)=invoke({},'-config=fixture','-output','-month=10','-year=2026');
+is($rc,0,'native non-static report with Export links succeeds');
+my ($status_title)=$out=~/(<svg[^>]*data-awstats-graph="httpstatus"[^>]*>)/;
+ok(defined $status_title,'native non-static status graph is present');
+unlike($status_title//'',qr/&lt;a\b|&amp;nbsp;/,'native Export link is absent from the accessible chart title');
 done_testing;

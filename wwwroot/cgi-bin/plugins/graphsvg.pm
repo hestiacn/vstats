@@ -43,9 +43,8 @@ no strict "refs";
 # <-----
 # ENTER HERE THE MINIMUM AWSTATS VERSION REQUIRED BY YOUR PLUGIN
 # AND THE NAME OF ALL FUNCTIONS THE PLUGIN MANAGE.
-my $PluginNeedAWStatsVersion = "7.0";
+my $PluginNeedAWStatsVersion = "8.1";  # vstats localization API
 my $PluginHooksFunctions     = "Init ShowGraph";
-my $PluginName               = "graphsvg";
 
 # Geometry (in px). Width may be overridden per call by AWStats.
 my $imagewidth    = 640;    # default chart width
@@ -67,21 +66,16 @@ my $valdata;
 
 # <-----
 # IF YOUR PLUGIN NEED GLOBAL VARIABLES, THEY MUST BE DECLARED HERE.
-use vars qw/
-$DirClasses
-/;
 # ----->
 
 #-----------------------------------------------------------------------------
 # PLUGIN FUNCTION: Init_pluginname
 #-----------------------------------------------------------------------------
 sub Init_graphsvg {
-	my $InitParams   = shift;
 	my $checkversion = &Check_Plugin_Version($PluginNeedAWStatsVersion);
 
 	# <-----
 	# ENTER HERE CODE TO DO INIT PLUGIN ACTIONS
-	$DirClasses = $InitParams;
 	# ----->
 
 	return ( $checkversion ? $checkversion : "$PluginHooksFunctions" );
@@ -89,7 +83,7 @@ sub Init_graphsvg {
 
 #-------------------------------------------------------
 # PLUGIN FUNCTION: ShowGraph_pluginname
-# UNIQUE: YES (Only one plugin using this function can be loaded)
+# Enable only one ShowGraph plugin; this is not enforced by the loader.
 # Prints the proper chart depending on the $type provided
 # Parameters: $title $type $imagewidth \@blocklabel \@vallabel \@valcolor
 #             \@valmax \@valtotal \@valaverage \@valdata
@@ -97,7 +91,7 @@ sub Init_graphsvg {
 # Output:     Inline SVG
 # Return:     0 OK, 1 Error
 #-------------------------------------------------------
-sub ShowGraph_graphsvg() {
+sub ShowGraph_graphsvg {
 	$title      = shift;
 	$type       = shift;
 	$imagewidth = shift;
@@ -158,10 +152,35 @@ sub ShowGraph_graphsvg() {
 sub _graphsvg_accessible {
 	my $svg = shift;
 	return '' unless length($svg);
-	my $label = _graphsvg_esc($title);
-	$svg =~ s/<svg /<svg role="img" aria-label="$label" style="max-width:100%;height:auto" /;
+	my $label = _graphsvg_esc(_graphsvg_plain_title($title));
+	my $kind = _graphsvg_esc($type);
+	$svg =~ s/<svg /<svg role="img" data-awstats-graph="$kind" aria-label="$label" style="max-width:100%;height:auto" /;
 	$svg =~ s/(<svg\b[^>]*>)/$1<title>$label<\/title>/;
 	return $svg;
+}
+
+# Native titles and browser/OS labels may contain presentation HTML.
+# Strip markup before decoding entities, then XML-escape the resulting text.
+sub _graphsvg_plain_label {
+	my $text = shift // '';
+	$text =~ s/<[^>]*>//g;
+	my %entity = (nbsp=>' ',amp=>'&',lt=>'<',gt=>'>',quot=>'"',apos=>"'",'#39'=>"'");
+	$text =~ s/&(nbsp|amp|lt|gt|quot|apos|\#39);/$entity{$1}/ge;
+	$text =~ s/\s+/ /g;
+	$text =~ s/\A\s+|\s+\z//g;
+	return $text;
+}
+
+sub _graphsvg_display {
+	return _graphsvg_esc(_graphsvg_plain_label(shift));
+}
+
+sub _graphsvg_plain_title {
+	my $text = shift // '';
+	$text =~ s/<a\b[^>]*>.*?<\/a>//gis;
+	$text = _graphsvg_plain_label($text);
+	$text =~ s/\s*[-:]\s*\z//;
+	return $text;
 }
 
 # Escape a string for safe inclusion in SVG/XML text and attributes.
@@ -357,7 +376,7 @@ sub _graphsvg_bar {
 			  sprintf(
 '<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" fill="%s"><title>%s: %s</title></rect>',
 				$bx, $by, $bw, $h, _graphsvg_col( $valcolor->[$sx] ),
-				_graphsvg_esc($lab), _graphsvg_esc( _graphsvg_fmtval( $v, $isbytes ) ) );
+				_graphsvg_display($lab), _graphsvg_esc( _graphsvg_fmtval( $v, $isbytes ) ) );
 		}
 	}
 
@@ -371,12 +390,12 @@ sub _graphsvg_bar {
 		push @s,
 		  sprintf(
 '<text x="%.1f" y="%d" text-anchor="middle" font-size="%d"%s fill="#3c4043">%s</text>',
-			$cx, $ty, $fs, $wt, _graphsvg_esc($l1) );
+			$cx, $ty, $fs, $wt, _graphsvg_display($l1) );
 		if ( length($l2) ) {
 			push @s,
 			  sprintf(
 '<text x="%.1f" y="%d" text-anchor="middle" font-size="%d" fill="#70757a">%s</text>',
-				$cx, $ty + 10, $fs, _graphsvg_esc($l2) );
+				$cx, $ty + 10, $fs, _graphsvg_display($l2) );
 		}
 	}
 
@@ -398,7 +417,7 @@ sub _graphsvg_bar {
 		push @s,
 		  sprintf( '<rect x="%d" y="%d" width="10" height="10" fill="%s"/>',
 			$lx, $ly, _graphsvg_col( $valcolor->[$sx] ) );
-		my $txt = _graphsvg_esc($lab) . ( $tot ne '' ? ' (' . _graphsvg_esc($tot) . ')' : '' );
+		my $txt = _graphsvg_display($lab) . ( $tot ne '' ? ' (' . _graphsvg_esc($tot) . ')' : '' );
 		push @s,
 		  sprintf( '<text x="%d" y="%d" fill="#3c4043">%s</text>',
 			$lx + 14, $ly + 9, $txt );
@@ -485,7 +504,7 @@ sub _graphsvg_pie {
 			  sprintf(
 '<path d="M%.1f,%.1f L%.1f,%.1f A%d,%d 0 %d,1 %.1f,%.1f Z" fill="%s" stroke="#ffffff" stroke-width="1"><title>%s: %s%%</title></path>',
 				$cx, $cy, $x0, $y0, $r, $r, $large, $x1, $y1, $segcol[$i],
-				_graphsvg_esc( $blocklabel->[$i] ), $pct );
+				_graphsvg_display( $blocklabel->[$i] ), $pct );
 		}
 	}
 
@@ -499,7 +518,7 @@ sub _graphsvg_pie {
 		push @s,
 		  sprintf(
 '<text x="%d" y="%d" fill="#3c4043">%s &#8212; %s%%</text>',
-			$legendX + 16, $ly + 10, _graphsvg_esc( $blocklabel->[$i] ), $pct );
+			$legendX + 16, $ly + 10, _graphsvg_display( $blocklabel->[$i] ), $pct );
 	}
 
 	push @s, sprintf('<text x="12" y="%d" fill="#70757a">%s</text>', $H - 4, _graphsvg_esc(_t('Share of displayed entries')));
@@ -562,14 +581,14 @@ sub _graphsvg_rank {
 		push @s,
 		  sprintf(
 '<text x="%d" y="%.1f" text-anchor="end" fill="#3c4043">%s</text>',
-			$barX - 6, $by + $barH - 2, _graphsvg_esc( $row->[0] ) );
+			$barX - 6, $by + $barH - 2, _graphsvg_display( $row->[0] ) );
 
 		# Bar.
 		push @s,
 		  sprintf(
 '<rect x="%d" y="%.1f" width="%.1f" height="%d" fill="%s"><title>%s: %s</title></rect>',
 			$barX, $by, $w, $barH, $fill,
-			_graphsvg_esc( $row->[0] ), _graphsvg_esc( Format_Number( int( $row->[1] ) ) ) );
+			_graphsvg_display( $row->[0] ), _graphsvg_esc( Format_Number( int( $row->[1] ) ) ) );
 
 		# Value.
 		push @s,
