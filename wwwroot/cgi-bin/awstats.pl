@@ -47,6 +47,8 @@ our $SiteConfig;
 our ($REVISION, $VERSION);
 our $UseDefaultNotPageList = 0;
 our $EnableLocaldatePlugin = 1;
+our $VerifiedCrawlerEvidenceFile = '';
+our $VerifiedCrawlerEvidence;
 our %DOWNLOAD_EXTS = ();
 our %_favicon_html_cache;
 our $LARAGON_ROOT_LOOKED_UP = 0;
@@ -357,7 +359,7 @@ $DatabaseBreak = 'month';
 	$DecodePunycode
 ) = (
 	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 );
 
 (
@@ -396,7 +398,7 @@ $DatabaseBreak = 'month';
 	$AddDataArrayShowHoursStats
 ) = (
 	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 );
 
 (
@@ -3087,6 +3089,9 @@ sub tab_end {
 #------------------------------------------------------------------------------
 sub error {
 	my $message = shift || '';
+	# Preserve report/CGI responses on stdout; CLI diagnostics belong on stderr.
+	my $errorout = (scalar keys %HTMLOutput || $ENV{'GATEWAY_INTERFACE'})
+	  ? \*STDOUT : \*STDERR;
 	if ( scalar keys %HTMLOutput ) {
 		$message =~ s/\</&lt;/g;
 		$message =~ s/\>/&gt;/g;
@@ -3096,24 +3101,33 @@ sub error {
 	}
 	my $secondmessage      = shift || '';
 	my $thirdmessage       = shift || '';
+	# Log samples and names are data, even in an HTML diagnostic response.
+	if (scalar keys %HTMLOutput || $ENV{'GATEWAY_INTERFACE'}) {
+		for my $value (\$secondmessage, \$thirdmessage) {
+			$$value =~ s/&/&amp;/g;
+			$$value =~ s/</&lt;/g;
+			$$value =~ s/>/&gt;/g;
+			$$value =~ s/"/&quot;/g;
+		}
+	}
 	my $donotshowsetupinfo = shift || 0;
 	my $dir = $PageDir ? 'rtl' : 'ltr';
 	if ( !$HeaderHTTPSent && $ENV{'GATEWAY_INTERFACE'} ) { http_head(); }
 	if ( !$HeaderHTMLSent && scalar keys %HTMLOutput )   {
-		print "<!DOCTYPE html>\n";
-		print "<html lang=\"" . _t($Lang) . "\" dir=\"$dir\">\n";
-		print "<head>\n";
-		print "<meta charset=\"utf-8\">\n";
-		print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-		print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
-		print "<link rel=\"icon\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"16x16\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"180\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"manifest\" href=\"$DirIcons/os/site.webmanifest\">\n";
-		print get_modern_css($dir ? 'rtl' : 'ltr');
-		print "</head><body><div class=\"aws-container\">\n";
+		print {$errorout} "<!DOCTYPE html>\n";
+		print {$errorout} "<html lang=\"" . _t($Lang) . "\" dir=\"$dir\">\n";
+		print {$errorout} "<head>\n";
+		print {$errorout} "<meta charset=\"utf-8\">\n";
+		print {$errorout} "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+		print {$errorout} "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
+		print {$errorout} "<link rel=\"icon\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"16x16\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"180\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"manifest\" href=\"$DirIcons/os/site.webmanifest\">\n";
+		print {$errorout} get_modern_css($dir ? 'rtl' : 'ltr');
+		print {$errorout} "</head><body><div class=\"aws-container\">\n";
 		$HeaderHTMLSent = 1;
 	}
 	
@@ -3129,116 +3143,116 @@ sub error {
 	if ( !$ErrorMessages && $message =~ /^Format error$/i ) {
 
 		# Files seems to have bad format
-		if ( scalar keys %HTMLOutput )   { print "<div class=\"error-card\">"; }
+		if ( scalar keys %HTMLOutput )   { print {$errorout} "<div class=\"error-card\">"; }
 		if ( $message !~ $LogSeparator ) {
 
 			# Bad LogSeparator parameter
-			print $tagfontred . _t("AWStats did not found the") . " ${tagbold}LogSeparator${tagunbold} " . _t("in your log records.") . "${tagbr}${tagunfont}\n";
+			print {$errorout} $tagfontred . _t("AWStats did not found the") . " ${tagbold}LogSeparator${tagunbold} " . _t("in your log records.") . "${tagbr}${tagunfont}\n";
 		}
 		else {
 
 			# Bad LogFormat parameter
-			print "<p>" . _t("AWStats did not find any valid log lines that match your") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter, in the") . " ${NbOfLinesForCorruptedLog}" . _t("th first non commented lines read of your log.") . "</p>";
-			print $tagfontred . "<p>" . _t("Your log file") . " ${tagbold}$thirdmessage${tagunbold} " . _t("must have a bad format or") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter setup does not match this format.") . "</p>${tagbr}${tagunfont}\n";
-			print "<p>" . _t("Your AWStats") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter is:") . "</p>";
-			print "<pre class=\"code-block\">$LogFormat</pre>";
-			print "<p>" . _t("This means each line in your web server log file need to have:") . "</p>";
+			print {$errorout} "<p>" . _t("AWStats did not find any valid log lines that match your") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter, in the") . " ${NbOfLinesForCorruptedLog}" . _t("th first non commented lines read of your log.") . "</p>";
+			print {$errorout} $tagfontred . "<p>" . _t("Your log file") . " ${tagbold}$thirdmessage${tagunbold} " . _t("must have a bad format or") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter setup does not match this format.") . "</p>${tagbr}${tagunfont}\n";
+			print {$errorout} "<p>" . _t("Your AWStats") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter is:") . "</p>";
+			print {$errorout} "<pre class=\"code-block\">$LogFormat</pre>";
+			print {$errorout} "<p>" . _t("This means each line in your web server log file need to have:") . "</p>";
 			
 			if ( $LogFormat == 1 ) {
-				print "<p><strong>" . _t("combined log format") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("combined log format") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 2 ) {
-				print "<p><strong>" . _t("MSIE Extended W3C log format") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "date time c-ip c-username cs-method cs-uri-sterm sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("MSIE Extended W3C log format") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "date time c-ip c-username cs-method cs-uri-sterm sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 3 ) {
-				print "<p><strong>" . _t("WebStar native log format") . "</strong></p>";
+				print {$errorout} "<p><strong>" . _t("WebStar native log format") . "</strong></p>";
 			}
 			if ( $LogFormat == 4 ) {
-				print "<p><strong>" . _t("common log format") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("common log format") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 6 ) {
-				print "<p><strong>" . _t("Lotus Notes/Lotus Domino") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "111.22.33.44 - Firstname Middlename Lastname [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("Lotus Notes/Lotus Domino") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "111.22.33.44 - Firstname Middlename Lastname [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat !~ /^[1-6]$/ ) {
-				print "<p>" . _t("the following personalized log format:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "$LogFormat\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p>" . _t("the following personalized log format:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "$LogFormat\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
-			print "<p>" . _t("And this is an example of records AWStats found in your log file (the record number") . " $NbOfLinesForCorruptedLog " . _t("in your log):") . "</p>";
-			print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-			print "$secondmessage";
-			print( scalar keys %HTMLOutput ? "</div>" : "" );
-			print "\n";
+			print {$errorout} "<p>" . _t("And this is an example of records AWStats found in your log file (the record number") . " $NbOfLinesForCorruptedLog " . _t("in your log):") . "</p>";
+			print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+			print {$errorout} "$secondmessage";
+			print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
+			print {$errorout} "\n";
 		}
 	}
 	else {
 		if ($ENV{'GATEWAY_INTERFACE'}) {
-			print "<div class=\"error-card\" style=\"text-align: center;\">";
-			print "<h3>" . _t("Error") . "</h3>";
-			print "<div style=\"font-size: 100px; font-weight: bold; line-height: 1; margin-bottom: 20px;\">";
-			print "<span style=\"color: var(--error-color);\">5</span>";
-			print "<span style=\"color: var(--warning-color);\">0</span>";
-			print "<span style=\"color: var(--error-color);\">0</span>";
-			print "</div>";
-			print "<p style=\"white-space: pre-wrap; text-align: left; display: inline-block; max-width: 90%; margin: 0 auto;\">" . ($ErrorMessages ? $ErrorMessages : _t($message)) . "</p>";
-			print "</div>";
+			print {$errorout} "<div class=\"error-card\" style=\"text-align: center;\">";
+			print {$errorout} "<h3>" . _t("Error") . "</h3>";
+			print {$errorout} "<div style=\"font-size: 100px; font-weight: bold; line-height: 1; margin-bottom: 20px;\">";
+			print {$errorout} "<span style=\"color: var(--error-color);\">5</span>";
+			print {$errorout} "<span style=\"color: var(--warning-color);\">0</span>";
+			print {$errorout} "<span style=\"color: var(--error-color);\">0</span>";
+			print {$errorout} "</div>";
+			print {$errorout} "<p style=\"white-space: pre-wrap; text-align: left; display: inline-block; max-width: 90%; margin: 0 auto;\">" . ($ErrorMessages ? $ErrorMessages : _t($message)) . "</p>";
+			print {$errorout} "</div>";
 		} else {
 			my $err_msg = _t("Error") . ": " . ($ErrorMessages ? $ErrorMessages : _t($message)) . "\n";
-			print STDERR $err_msg;
+			print {$errorout} $err_msg;
 		}
 	}
 	
 	if ( !$ErrorMessages && !$donotshowsetupinfo && $ENV{'GATEWAY_INTERFACE'} ) {
-		print "<div class=\"help-card\">";
-		print "<h4>" . _t("Troubleshooting") . "</h4>";
+		print {$errorout} "<div class=\"help-card\">";
+		print {$errorout} "<h4>" . _t("Troubleshooting") . "</h4>";
 		
 		if ( $message =~ /Couldn.t open config file/i ) {
 			my $dir = $DIR;
 			if ( $dir =~ /^\./ ) { $dir .= '/../..'; }
 			else { $dir =~ s/[\\\/]?wwwroot[\\\/]cgi-bin[\\\/]?//; }
-			print "<p>";
+			print {$errorout} "<p>";
 			if ( $ENV{'GATEWAY_INTERFACE'} ) {
-				print "- <strong>" . _t("Did you use the correct URL?") . "</strong><br>";
-				print _t("Example:") . " http://localhost/awstats/awstats.pl?config=mysite<br>";
-				print _t("Example:") . " http://127.0.0.1/cgi-bin/awstats.pl?config=mysite<br>";
+				print {$errorout} "- <strong>" . _t("Did you use the correct URL?") . "</strong><br>";
+				print {$errorout} _t("Example:") . " http://localhost/awstats/awstats.pl?config=mysite<br>";
+				print {$errorout} _t("Example:") . " http://127.0.0.1/cgi-bin/awstats.pl?config=mysite<br>";
 			}
 			else {
-				print "- <strong>" . _t("Did you use correct config parameter?") . "</strong><br>";
-				print _t("Example: If your config file is awstats.mysite.conf, use -config=mysite") . "<br>";
+				print {$errorout} "- <strong>" . _t("Did you use correct config parameter?") . "</strong><br>";
+				print {$errorout} _t("Example: If your config file is awstats.mysite.conf, use -config=mysite") . "<br>";
 			}
-			print "- <strong>" . _t("Did you create your config file 'awstats.$SiteConfig.conf'?") . "</strong><br>";
-			print _t("If not, you can run \"awstats_configure.pl\" from command line, or create it manually.") . "<br>";
-			print "</p>";
+			print {$errorout} "- <strong>" . _t("Did you create your config file 'awstats.$SiteConfig.conf'?") . "</strong><br>";
+			print {$errorout} _t("If not, you can run \"awstats_configure.pl\" from command line, or create it manually.") . "<br>";
+			print {$errorout} "</p>";
 		}
 		else {
-			print "<p><strong>" . _t("Setup") . " ("
+			print {$errorout} "<p><strong>" . _t("Setup") . " ("
 			  . ( $FileConfig ? "'" . $FileConfig . "'" : "Config" )
 			  . ") " . _t("file, web server or permissions may be wrong.") . "</strong></p>";
 		}
-		print "<p>" . _t("Check config file, permissions and AWStats documentation (in 'docs' directory).") . "</p>";
-		print "</div>\n";
+		print {$errorout} "<p>" . _t("Check config file, permissions and AWStats documentation (in 'docs' directory).") . "</p>";
+		print {$errorout} "</div>\n";
 	}
 
 	# Remove lock if not a lock message
 	if ( $EnableLockForUpdate && $message !~ /lock file/ ) { &Lock_Update(0); }
 	
 	if ( scalar keys %HTMLOutput ) {
-		print "</div>\n";
-		print get_theme_script();
-		print "</body>\n</html>\n";
+		print {$errorout} "</div>\n";
+		print {$errorout} get_theme_script();
+		print {$errorout} "</body>\n</html>\n";
 	}
 	exit 1;
 }
@@ -3922,6 +3936,8 @@ sub SortBrowsers {
 # Return:       None (exits on error)
 #------------------------------------------------------------------------------
 sub Read_Config {
+    $VerifiedCrawlerEvidenceFile = '';
+    $VerifiedCrawlerEvidence = undef;
 	# Check config file in common possible directories :
 	# Windows :                   				"$DIR" (same dir than awstats.pl)
 	# Standard, Mandrake and Debian package :	"/etc/awstats"
@@ -4165,7 +4181,12 @@ sub Parse_Config {
 			if ($Debug) { debug( "Found an include : $includeFile", 2 ); }
 			if ( $includeFile !~ /^([a-zA-Z]:)?[\\\/]/ ) {
 				# Correct relative include files
-				if ( $FileConfig =~ /^(.*[\\\/])[^\\\/]*$/ ) {
+				if ( !$ENV{'GATEWAY_INTERFACE'}
+					&& defined($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'})
+					&& length($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'}) ) {
+					$includeFile = File::Spec->catfile($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'}, $includeFile);
+				}
+				elsif ( $FileConfig =~ /^(.*[\\\/])[^\\\/]*$/ ) {
 					$includeFile = "$1$includeFile";
 				}
 			}
@@ -4221,6 +4242,10 @@ sub Parse_Config {
 		}
 
 		# Initialize parameter for (param,value)
+		if ( $param eq 'VerifiedCrawlerEvidenceFile' ) {
+			$VerifiedCrawlerEvidenceFile = $value;
+			next;
+		}
 		if ( $param =~ /^LogFile/ ) {
 			if ( $QueryString !~ /logfile=([^\s&]+)/i ) { $LogFile = $value; }
 			next;
@@ -5095,13 +5120,40 @@ sub Check_Config {
 	if ( !$LogFile ) {
 		error("LogFile parameter is not defined in config/domain file");
 	}
-	if ( $LogType !~ /[WSMF]/i ) { $LogType = 'W'; }
+	if ( !defined($LogType) || $LogType !~ /[WSMF]/i ) { $LogType = 'W'; }
 	$LogFormat =~ s/\\//g;
 	if ( !$LogFormat ) {
 		error("LogFormat parameter is not defined in config/domain file");
 	}
 	if ( $LogFormat =~ /^\d$/ && $LogFormat !~ /[1-6]/ ) {
 		error( sprintf( "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')", $LogFormat ) );
+	}
+	# Validate optional evidence only after native defaults and log normalization.
+	if ($UpdateStats && length($VerifiedCrawlerEvidenceFile)) {
+		if ($LogType ne 'W' || ($LogFormat ne '1' && $LogFormat ne '4')) {
+			error('Verified crawler evidence requires HTTP combined or common logs.');
+		}
+		my $ok = eval {
+			local @INC = (File::Spec->catdir($DIR || '.', '..', '..', 'tools', 'lib'), @INC);
+			require VStats::TrafficClassifier;
+			my $cap = VStats::TrafficClassifier->fixed_limits->{evidence_bundle_bytes};
+			die 'Evidence must be a regular file' if -l $VerifiedCrawlerEvidenceFile || !-f $VerifiedCrawlerEvidenceFile;
+			open my $evidence, '<:raw', $VerifiedCrawlerEvidenceFile or die 'Evidence open failed';
+			die 'Evidence must be a regular file' if !-f $evidence;
+			my $raw = '';
+			while (1) {
+				my $n = read($evidence, my $chunk, 65536);
+				die 'Evidence read failed' if !defined($n);
+				last if !$n;
+				die 'Evidence bundle too large' if length($raw) + $n > $cap;
+				$raw .= $chunk;
+			}
+			close($evidence) or die 'Evidence close failed';
+			$VerifiedCrawlerEvidence = VStats::TrafficClassifier->evidence_verifier(
+				$raw, format => $LogFormat eq '1' ? 'combined' : 'common');
+			1;
+		};
+		error('Invalid or unreadable verified crawler evidence; statistics were not updated.') if !$ok;
 	}
 	$LogSeparator ||= "\\s";
 	$DirData      ||= '.';
@@ -5229,7 +5281,7 @@ sub Check_Config {
 		'EMailsShown',		'DownloadsShown'
 	);
 	my @maxnboflistdefaultval =
-	  ( 10, 10, 10, 10, 5, 10, 10, 10, 5, 10, 10, 10, 20 );
+	  ( 10, 10, 10, 10, 5, 10, 10, 10, 5, 10, 10, 10, 20, 10 );
 	foreach my $i ( 0 .. ( @maxnboflist - 1 ) ) {
 		if ( !$MaxNbOf{ $maxnboflist[$i] }
 			|| $MaxNbOf{ $maxnboflist[$i] } !~ /^\d+$/
@@ -6012,6 +6064,9 @@ sub Read_History_With_TmpUpdate {
 		if ($filetoread =~ /\.gz$/) {
 			open( HISTORY, "-|", "gzip", "-dc", $filetoread ) || error( "Couldn't open file \"$filetoread\" for read: $!",
 					"", "", $MigrateStats );
+			# Compression is storage only; decode exactly like plaintext history.
+			binmode( HISTORY, ':encoding(UTF-8)' ) || error( "Couldn't set UTF-8 decoding for \"$filetoread\": $!",
+					"", "", $MigrateStats );
 		} else {
 			open( HISTORY, "<:encoding(UTF-8)", $filetoread ) || error( "Couldn't open file \"$filetoread\" for read: $!",
 				"", "", $MigrateStats );
@@ -6078,16 +6133,16 @@ sub Read_History_With_TmpUpdate {
 			if ( $field[0] eq 'FirstTime' || $field[0] eq "${xmlrb}FirstTime" )
 			{
 				if ( !$FirstTime{$date}
-					|| $FirstTime{$date} > int( $field[1] ) )
+					|| ( int( $field[1] // 0 ) && $FirstTime{$date} > int( $field[1] ) ) )
 				{
-					$FirstTime{$date} = int( $field[1] );
+					$FirstTime{$date} = int( $field[1] // 0 );
 				}
 				next;
 			}
 			if ( $field[0] eq 'LastTime' || $field[0] eq "${xmlrb}LastTime" ) {
-				if ( !$LastTime{$date} || $LastTime{$date} < int( $field[1] ) )
+				if ( !$LastTime{$date} || $LastTime{$date} < int( $field[1] // 0 ) )
 				{
-					$LastTime{$date} = int( $field[1] );
+					$LastTime{$date} = int( $field[1] // 0 );
 				}
 				next;
 			}
@@ -6998,15 +7053,16 @@ sub Read_History_With_TmpUpdate {
 			# BEGIN_UNKNOWNREFERER
 			if ($field[0] eq 'BEGIN_UNKNOWNREFERER') {
 				if ($Debug) { debug(" Begin of UNKNOWNREFERER section"); }
-				$field[0] = '';
+				@field = ();
 				my $count       = 0;
 				my $countloaded = 0;
 				do {
-					if ($field[0]) {
+					if (@field >= 2) {
 						$count++;
 						if ( $SectionsToLoad{'unknownreferer'}) {
 							$countloaded++;
-							if ( !$_unknownreferer_l{ $field[0] } ) {
+							if ( !exists $_unknownreferer_l{ $field[0] }
+								|| int($field[1]) > $_unknownreferer_l{ $field[0] } ) {
 								$_unknownreferer_l{ $field[0] } =
 								  int($field[1]);
 							}
@@ -7015,9 +7071,9 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					@field = ParseUnknownAgentHistoryRow($_, $readxml);
 					$countlines++;
-				} until ($field[0] eq 'END_UNKNOWNREFERER' || $field[0] eq "${xmleb}END_UNKNOWNREFERER" || !$_);
+				} until ((@field == 1 && ($field[0] eq 'END_UNKNOWNREFERER' || $field[0] eq "${xmleb}END_UNKNOWNREFERER")) || !$_);
 				if ($field[0] ne 'END_UNKNOWNREFERER' && $field[0] ne "${xmleb}END_UNKNOWNREFERER") {
 					error("History file \"$filetoread\" is corrupted (End of section UNKNOWNREFERER not found).\nRestore a recent backup of this file (data for this month will be restored to backup date), remove it (data for month will be lost), or remove the corrupted section in file (data for at least this section will be lost).",
 						"", "", 1);
@@ -7043,15 +7099,16 @@ sub Read_History_With_TmpUpdate {
 				if ($Debug) {
 					debug(" Begin of UNKNOWNREFERERBROWSER section");
 				}
-				$field[0] = '';
+				@field = ();
 				my $count       = 0;
 				my $countloaded = 0;
 				do {
-					if ($field[0] ) {
+					if (@field >= 2) {
 						$count++;
 						if ($SectionsToLoad{'unknownrefererbrowser'}) {
 							$countloaded++;
-							if ( !$_unknownrefererbrowser_l{ $field[0] } ) {
+							if ( !exists $_unknownrefererbrowser_l{ $field[0] }
+								|| int($field[1]) > $_unknownrefererbrowser_l{ $field[0] } ) {
 								$_unknownrefererbrowser_l{ $field[0] } = int($field[1]);
 							}
 						}
@@ -7059,9 +7116,9 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					@field = ParseUnknownAgentHistoryRow($_, $readxml);
 					$countlines++;
-				} until ($field[0] eq 'END_UNKNOWNREFERERBROWSER' || $field[0] eq "${xmleb}END_UNKNOWNREFERERBROWSER" || !$_);
+				} until ((@field == 1 && ($field[0] eq 'END_UNKNOWNREFERERBROWSER' || $field[0] eq "${xmleb}END_UNKNOWNREFERERBROWSER")) || !$_);
 				if ($field[0] ne 'END_UNKNOWNREFERERBROWSER' && $field[0] ne "${xmleb}END_UNKNOWNREFERERBROWSER") {
 					error("History file \"$filetoread\" is corrupted (End of section UNKNOWNREFERERBROWSER not found).\nRestore a recent backup of this file (data for this month will be restored to backup date), remove it (data for month will be lost), or remove the corrupted section in file (data for at least this section will be lost).",
 						"", "", 1);
@@ -7189,7 +7246,11 @@ sub Read_History_With_TmpUpdate {
 					$_ = <HISTORY>;
 					chomp $_;
 					s/\r//;
-					@field = split(/\s+/, ($readxml ? XMLDecodeFromHisto($_) : $_));
+					# Robot signatures may contain spaces; counters are the numeric
+					# fields at the end of the record, not words within the signature.
+					my $robotrow = $readxml ? XMLDecodeFromHisto($_) : $_;
+					@field = $robotrow =~ /^(.*?)\s+(\d+)\s+(\d+)\s+(\d+)(?:\s+(\d+))?\s*$/
+						? ($1, $2, $3, $4, $5 // 0) : split(/\s+/, $robotrow);
 					$countlines++;
 				} until ($field[0] eq 'END_ROBOT' || $field[0] eq "${xmleb}END_ROBOT" || !$_);
 				if ($field[0] ne 'END_ROBOT' && $field[0] ne "${xmleb}END_ROBOT") {
@@ -8405,10 +8466,10 @@ sub Save_History {
 		  . ( $LastLine > 0 ? $LastLine : $LastTime{$breakdate} )
 		  . " $lastlinenb $lastlineoffset $lastlinechecksum${xmlre}\n";
 		print HISTORYTMP "${xmlrb}FirstTime${xmlrs}"
-		. (defined $FirstTime{$breakdate} ? $FirstTime{$breakdate} : '')
+		. (defined $FirstTime{$breakdate} ? $FirstTime{$breakdate} : 0)
 		. "${xmlre}\n";
 		print HISTORYTMP "${xmlrb}LastTime${xmlrs}"
-		. (defined $LastTime{$breakdate} ? $LastTime{$breakdate} : '')
+		. (defined $LastTime{$breakdate} ? $LastTime{$breakdate} : 0)
 		. "${xmlre}\n";
 		print HISTORYTMP "${xmlrb}LastUpdate${xmlrs}$LastUpdate $NbOfLinesParsed $NbOfOldLines $NbOfNewLines $NbOfLinesCorrupted $NbOfLinesDropped${xmlre}\n";
 		print HISTORYTMP "${xmlrb}TotalVisits${xmlrs}";
@@ -8964,7 +9025,7 @@ sub Save_History {
 		print HISTORYTMP "${xmlbb}BEGIN_DOWNLOADS${xmlbs}"
 		  . ( scalar keys %_downloads )
 		  . "${xmlbe}\n";
-		for my $u (sort {$_downloads{$b}->{'AWSTATS_HITS'} <=> $_downloads{$a}->{'AWSTATS_HITS'}}(keys %_downloads) ){
+		for my $u (sort {($_downloads{$b}->{'AWSTATS_HITS'} || 0) <=> ($_downloads{$a}->{'AWSTATS_HITS'} || 0)}(keys %_downloads) ){
 			print HISTORYTMP "${xmlrb}"
 			  . XMLEncodeForHisto($u)
 			  . "${xmlrs}"
@@ -9578,13 +9639,54 @@ sub Rename_All_Tmp_History {
 #------------------------------------------------------------------------------
 # Function:     Compress previous month history file after new file created
 # Description:  - Compresses the previous month's .txt history file to .gz
-#               - Only runs on the 2nd day of the month
-#               - Skips if file already compressed
+#               - Runs from the 2nd day of the month onward
+#               - Keeps the current/previous month; refreshes stale older archives
 # Parameters:   None
 # Input:        $DirData, $PROG, $FileSuffix, $Debug
 # Output:       Creates .gz file, deletes original .txt after successful compression
 # Return:       1 on success, 0 on failure or skip
 #------------------------------------------------------------------------------
+# Replace a stale archive from the authoritative plaintext only after a
+# complete sibling gzip has been closed. Failure preserves recoverable input.
+sub Compress_History_File {
+    my ($path)=@_;
+    return 0 if !-f $path || -l $path || (-e "$path.gz" && (!-f "$path.gz" || -l "$path.gz"));
+    my ($input,$output,$temporary);
+    my $ok=eval {
+        require IO::Compress::Gzip;
+        require File::Temp;
+        require File::Basename;
+        require Fcntl;
+        my $nofollow=eval {Fcntl::O_NOFOLLOW()} || 0;
+        sysopen($input,$path,Fcntl::O_RDONLY()|$nofollow) or die "History open failed\n";
+        binmode($input,':raw') or die "History mode failed\n";
+        my @before=stat($input);
+        die "History is not regular\n" if !@before || !Fcntl::S_ISREG($before[2]);
+        my ($file,$directory)=File::Basename::fileparse($path);
+        ($output,$temporary)=File::Temp::tempfile('.'.$file.'.gzip-XXXXXXXX',DIR=>$directory,UNLINK=>0);
+        binmode($output,':raw') or die "Archive mode failed\n";
+        IO::Compress::Gzip::gzip($input=>$output,Level=>9,Time=>$before[9]) or die "Archive compression failed\n";
+        close($output) or die "Archive close failed\n";undef $output;
+        my @after=stat($input);my @named=lstat($path);
+        for my $i (0,1,2,4,5,7,9,10) {
+            die "History changed during compression\n" if !@after || !@named || $before[$i]!=$after[$i] || $after[$i]!=$named[$i];
+        }
+        close($input) or die "History close failed\n";undef $input;
+        chmod($before[2]&0777,$temporary)==1 or die "Archive permissions failed\n";
+        chown($before[4],$before[5],$temporary)==1 or die "Archive ownership failed\n";
+        utime($before[8],$before[9],$temporary)==1 or die "Archive timestamp failed\n";
+        rename($temporary,"$path.gz") or die "Archive replace failed\n";undef $temporary;
+        my @final=lstat($path);
+        for my $i (0,1,2,4,5,7,9,10) {die "History changed before removal\n" if !@final || $before[$i]!=$final[$i];}
+        unlink($path)==1 or die "Plain history removal failed\n";
+        1;
+    };
+    close($input) if defined($input) && defined(fileno($input));
+    close($output) if defined($output) && defined(fileno($output));
+    unlink($temporary) if defined $temporary;
+    return $ok?1:0;
+}
+
 sub Compress_Previous_Month_History {
 	my ($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
 	$year += 1900;
@@ -9615,16 +9717,12 @@ sub Compress_Previous_Month_History {
 		}
 		my $full_path = "$DirData/$file";
 		my $gz_file = "$full_path.gz";
-		if (-f $gz_file) {
-			next;
-		}
 		if ($Debug) {
 			my $orig_size = (stat($full_path))[7] || 0;
 			debug("Compress: Compressing $file (" . 
 				  sprintf("%.2f MB", $orig_size/1024/1024) . ")");
 		}
-		my $result = system("gzip -9 '$full_path' 2>/dev/null");
-		if ($result == 0 && -f $gz_file) {
+		if (Compress_History_File($full_path)) {
 			$compressed++;
 			if ($Debug) {
 				debug("Compress: Done. $file compressed");
@@ -9875,6 +9973,27 @@ sub XMLEncode {
 # Parameters:	stringtoencode
 # Return:		encodedstring
 #------------------------------------------------------------------------------
+# Use the history representation for both loaded and newly observed agents.
+# Otherwise a raw agent containing spaces and its stored %20 form become two
+# hash keys that serialize to the same row key on the next update.
+sub UnknownAgentHistoryKey {
+	my $agent = shift;
+	$agent = '' if !defined $agent;
+	$agent =~ s/\s/%20/g;
+	return $agent;
+}
+
+sub ParseUnknownAgentHistoryRow {
+	my ($row, $xml) = @_;
+	$row = XMLDecodeFromHisto($row) if $xml;
+	# Read the timestamp from the right: XML decoding restores agent spaces.
+	$row =~ s/[ \t]+\z//;
+	if ($row =~ /\A(.*)[ \t]+([0-9]+)\z/s) {
+		return (UnknownAgentHistoryKey($1), $2);
+	}
+	return split(/\s+/, $row);
+}
+
 sub XMLEncodeForHisto {
 	my $string = shift;
 	$string =~ s/\s/%20/g;
@@ -10007,7 +10126,7 @@ sub Sanitize {
 # Return:       cleanedstring (safe for HTML output)
 #------------------------------------------------------------------------------
 sub CleanXSS {
-	my $stringtoclean = shift;
+	my $stringtoclean = shift // '';
 	$stringtoclean =~ s/javascript\s*://gi;
 	$stringtoclean =~ s/\s+on\w+\s*=\s*["'][^"']*["']//gi;
 	$stringtoclean =~ s/\s+on\w+\s*=\s*[^\s>]+//gi;
@@ -14665,13 +14784,13 @@ sub HTMLMainFileType{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_filetypes_h{$key} / $Totalh * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_filetypes_h{$key} : int( $_filetypes_h{$key} / $Totalh * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"7\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("File type"),        "filetypes",
 				0, 						\@blocklabel,
@@ -14710,7 +14829,7 @@ sub HTMLMainFileType{
 			$p_h = "$p_h %";
 		}
 		if ($Totalk) {
-			$p_k = int( $_filetypes_k{$key} / $Totalk * 1000 ) / 10;
+			$p_k = int( ( $_filetypes_k{$key} || 0 ) / $Totalk * 1000 ) / 10;
 			$p_k = "$p_k %";
 		}
 		if ( $key eq 'Unknown' ) {
@@ -15003,11 +15122,11 @@ sub HTMLShowBrowserDetail{
 		my $p_h = '&nbsp;';
 		my $p_p = '&nbsp;';
 		if ($total_h) {
-			$p_h = int( $totalfamily_h{$family} / $total_h * 1000 ) / 10;
+			$p_h = int( ($totalfamily_h{$family} || 0) / $total_h * 1000 ) / 10;
 			$p_h = "$p_h %";
 		}
 		if ($total_p) {
-			$p_p = int( $totalfamily_p{$family} / $total_p * 1000 ) / 10;
+			$p_p = int( ($totalfamily_p{$family} || 0) / $total_p * 1000 ) / 10;
 			$p_p = "$p_p %";
 		}
 		my $familyheadershown = 0;
@@ -15295,11 +15414,11 @@ sub HTMLShowOSDetail{
 		my $p_h = '&nbsp;';
 		my $p_p = '&nbsp;';
 		if ($total_h) {
-			$p_h = int( $totalfamily_h{$family} / $total_h * 1000 ) / 10;
+			$p_h = int( ($totalfamily_h{$family} || 0) / $total_h * 1000 ) / 10;
 			$p_h = "$p_h %";
 		}
 		if ($total_p) {
-			$p_p = int( $totalfamily_p{$family} / $total_p * 1000 ) / 10;
+			$p_p = int( ($totalfamily_p{$family} || 0) / $total_p * 1000 ) / 10;
 			$p_p = "$p_p %";
 		}
 		my $familyheadershown = 0;
@@ -16141,7 +16260,7 @@ sub HTMLShowRobots{
 		  . "</td>\n";
 		if ( $ShowRobotsStats =~ /H/i ) {
 			print "<td>"
-			  . Format_Number(( $_robot_h{$key} - $_robot_r{$key} ))
+			  . Format_Number(( $_robot_h{$key} - ($_robot_r{$key} || 0) ))
 			  . ( $_robot_r{$key} ? "+$_robot_r{$key}" : "" ) . "</td>\n";
 		}
 		if ( $ShowRobotsStats =~ /B/i ) {
@@ -16294,8 +16413,8 @@ sub HTMLShowURLDetail{
 	my $max_k = 1;
 	foreach my $key (@keylist) {
 		if ( $_url_p{$key} > $max_p ) { $max_p = $_url_p{$key}; }
-		if ( $_url_k{$key} / ( $_url_p{$key} || 1 ) > $max_k ) {
-			$max_k = $_url_k{$key} / ( $_url_p{$key} || 1 );
+		if ( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) > $max_k ) {
+			$max_k = ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 );
 		}
 	}
 	foreach my $key (@keylist) {
@@ -16330,7 +16449,7 @@ sub HTMLShowURLDetail{
 			  . (
 				$_url_k{$key}
 				? Format_Bytes(
-					$_url_k{$key} / ( $_url_p{$key} || 1 )
+					( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 )
 				  )
 				: "&nbsp;"
 			  )
@@ -16371,10 +16490,10 @@ sub HTMLShowURLDetail{
 			print "<div style=\"background-color: #$color_x; width: ${bredde_x}px; height: 4px; border-radius: 2px;\"></div>";
 		}
 		print "</td>\n</tr>\n";
-		$total_p += $_url_p{$key};
-		$total_e += $_url_e{$key};
-		$total_x += $_url_x{$key};
-		$total_k += $_url_k{$key};
+		$total_p += $_url_p{$key} || 0;
+		$total_e += $_url_e{$key} || 0;
+		$total_x += $_url_x{$key} || 0;
+		$total_k += $_url_k{$key} || 0;
 		$count++;
 	}
 	if ($Debug) {
@@ -16588,7 +16707,7 @@ sub HTMLShowHostsUnknown{
 			  . "</td>\n";
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -16752,7 +16871,7 @@ sub HTMLShowHosts{
 			  . "</td>\n";
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -16838,7 +16957,7 @@ sub HTMLShowDomains{
 		my $bredde_p = 0;
 		my $bredde_h = 0;
 		my $bredde_k = 0;
-		if ( $max_h > 0 ) { $bredde_p = int( $BarWidth * $_domener_p{$key} / $max_h ) + 1; }
+		if ( $max_h > 0 ) { $bredde_p = int( $BarWidth * ($_domener_p{$key} || 0) / $max_h ) + 1; }
 		if ( $_domener_p{$key} && $bredde_p == 1 ) { $bredde_p = 2; }
 		if ( $max_h > 0 ) {
 			$bredde_h = int( $BarWidth * $_domener_h{$key} / $max_h ) + 1;
@@ -16918,7 +17037,7 @@ sub HTMLShowDomains{
 		}
 		print "<td class=\"aws\">";
 		if ( $ShowDomainsStats =~ /P/i ) {
-			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} ) . "\"></div><br>";
+			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} || 0 ) . "\"></div><br>";
 		}
 		if ( $ShowDomainsStats =~ /H/i ) {
 			print "<div style=\"background-color: #$color_h; width: ${bredde_h}px; height: 5px; border-radius: 3px;\" title=\"" . _t("Hits") . ": " . int( $_domener_h{$key} ) . "\"></div><br>";
@@ -16928,9 +17047,9 @@ sub HTMLShowDomains{
 		}
 		print "</td>\n";
 		print "</tr>\n";
-		$total_u += $_domener_u;
-		$total_v += $_domener_v;
-		$total_p += $_domener_p{$key};
+		$total_u += $_domener_u || 0;
+		$total_v += $_domener_v || 0;
+		$total_p += $_domener_p{$key} || 0;
 		$total_h += $_domener_h{$key};
 		$total_k += $_domener_k{$key} || 0;
 		$count++;
@@ -17498,7 +17617,7 @@ sub HTMLMainMonthly{
 			$valdata[ $xx++ ] = $MonthBytes{ $YearRequired . $monthix } || 0;
 		}
 		
-		my $function = "ShowGraph_$pluginname";
+		my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 		&$function(
 			"$title",        "month",
 			$ShowMonthStats, \@blocklabel,
@@ -17856,7 +17975,7 @@ sub HTMLMainDaily{
 			$valdata[ $xx++ ] = $DayHits{$date_key}   || 0;
 			$valdata[ $xx++ ] = $DayBytes{$date_key}  || 0;
 		}
-		my $function = "ShowGraph_$pluginname";
+		my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 		&$function(
 			"$title",              "daysofmonth",
 			$ShowDaysOfMonthStats, \@blocklabel,
@@ -18202,7 +18321,7 @@ sub HTMLMainDaysofWeek{
 						$avg_dayofweek_h[$_] = int( $avg_dayofweek_h[$_] );
 					}
 				}
-				my $function = "ShowGraph_$pluginname";
+				my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 				&$function(
 					"$title",             "daysofweek",
 					$ShowDaysOfWeekStats, \@blocklabel,
@@ -18430,7 +18549,7 @@ sub HTMLMainDownloads{
 			my $cnt = 0;
 			for my $u (@top_downloads) {
 				my $filename = Get_Filename($u);
-				push @valdata, int($_downloads{$u}->{'AWSTATS_HITS'} / $Totalh * 1000) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_downloads{$u}->{'AWSTATS_HITS'} : int($_downloads{$u}->{'AWSTATS_HITS'} / $Totalh * 1000) / 10);
 				push @blocklabel, $filename;
 				$cnt++;
 				last if $cnt >= 5;
@@ -18446,7 +18565,7 @@ sub HTMLMainDownloads{
 			$columns += 1;  # 进度条列
 			
 			print "<td colspan=\"$columns\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("Top Downloads"), "downloads",
 				0, \@blocklabel,
@@ -18667,7 +18786,7 @@ sub HTMLMainHours{
 			$valdata[ $xx++ ] = $_time_h[$_] || 0;
 			$valdata[ $xx++ ] = $_time_k[$_] || 0;
 		}
-		my $function = "ShowGraph_$pluginname";
+		my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 		&$function(
 			"$title", "hours",
 			$ShowHoursStats, \@blocklabel,
@@ -18934,7 +19053,7 @@ sub HTMLMainCountries{
 				if ($cnt > 99) { last; }
 			}
 			print "<tr><td colspan=\"7\" align=\"center\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"AWStatsCountryMap", "countries_map",
 				0, \@blocklabel,
@@ -18987,7 +19106,7 @@ sub HTMLMainCountries{
 		my $bredde_u = 0;
 		my $bredde_v = 0;
 		if ( $max_h > 0 ) {
-			$bredde_p = int( $BarWidth * $_domener_p{$key} / $max_h ) + 1;
+			$bredde_p = int( $BarWidth * ($_domener_p{$key} || 0) / $max_h ) + 1;
 		}
 		if ( $_domener_p{$key} && $bredde_p == 1 ) { $bredde_p = 2; }
 		if ( $max_h > 0 ) {
@@ -19074,7 +19193,7 @@ sub HTMLMainCountries{
 		}
 		print "<td class=\"aws\">";
 		if ( $ShowDomainsStats =~ /P/i ) {
-			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} ) . "\"></div>";
+			print "<div style=\"background-color: #$color_p; width: ${bredde_p}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Pages") . ": " . int( $_domener_p{$key} || 0 ) . "\"></div>";
 		}
 		if ( $ShowDomainsStats =~ /H/i ) {
 			print "<div style=\"background-color: #$color_h; width: ${bredde_h}px; height: 5px; border-radius: 3px; margin-bottom: 2px;\" title=\"" . _t("Hits") . ": " . int( $_domener_h{$key} ) . "\"></div>";
@@ -19085,9 +19204,9 @@ sub HTMLMainCountries{
 		print "</td>\n";
 		print "</tr>\n";
 
-		$total_u += $_domener_u;
-		$total_v += $_domener_v;
-		$total_p += $_domener_p{$key};
+		$total_u += $_domener_u || 0;
+		$total_v += $_domener_v || 0;
+		$total_p += $_domener_p{$key} || 0;
 		$total_h += $_domener_h{$key};
 		$total_k += $_domener_k{$key} || 0;
 		$count++;
@@ -19291,14 +19410,14 @@ sub HTMLMainHosts{
 			
 			$cnt = 0;
 			foreach my $key (@keylist) {
-			   push @valdata, int( $_host_h{$key} / $suma * 1000 ) / 10;
+			   push @valdata, ($pluginname eq 'graphsvg' ? $_host_h{$key} : int( $_host_h{$key} / $suma * 1000 ) / 10);
 			   push @blocklabel, "$key";
 			   $cnt++;
 			   if ($cnt > 4) { last; }
 			}
 			
 			print "<tr><td colspan=\"7\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"Hosts", "hosts",
 				0, \@blocklabel,
@@ -19397,7 +19516,7 @@ sub HTMLMainHosts{
 			  . '</td>';
 		}
 		print "</tr>\n";
-		$total_p += $_host_p{$key};
+		$total_p += $_host_p{$key} || 0;
 		$total_h += $_host_h{$key};
 		$total_k += $_host_k{$key} || 0;
 		$count++;
@@ -19989,8 +20108,8 @@ sub HTMLMainPages{
 	&BuildKeyList( $MaxNbOf{'PageShown'}, $MinHit{'File'}, \%_url_p, \%_url_p );
 	foreach my $key (@keylist) {
 		if ( $_url_p{$key} > $max_p ) { $max_p = $_url_p{$key}; }
-		if ( $_url_k{$key} / ( $_url_p{$key} || 1 ) > $max_k ) {
-			$max_k = $_url_k{$key} / ( $_url_p{$key} || 1 );
+		if ( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) > $max_k ) {
+			$max_k = ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 );
 		}
 	}
 	foreach my $key (@keylist) {
@@ -20016,7 +20135,7 @@ sub HTMLMainPages{
 			  . (
 				$_url_k{$key}
 				? Format_Bytes(
-					$_url_k{$key} / ( $_url_p{$key} || 1 )
+					( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 )
 				  )
 				: "&nbsp;"
 			  )
@@ -20048,7 +20167,7 @@ sub HTMLMainPages{
 			print "<div style=\"background-color: #$color_h; width: ${bredde_p}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Hits") . ": " . Format_Number($_url_p{$key}) . "\"></div>";
 		}
 		if ( $ShowPagesStats =~ /B/i ) {
-			print "<div style=\"background-color: #$color_k; width: ${bredde_k}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Average") . ": " . Format_Bytes( $_url_k{$key} / ( $_url_p{$key} || 1 ) ) . "\"></div>";
+			print "<div style=\"background-color: #$color_k; width: ${bredde_k}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Average") . ": " . Format_Bytes( ( $_url_k{$key} || 0 ) / ( $_url_p{$key} || 1 ) ) . "\"></div>";
 		}
 		if ( $ShowPagesStats =~ /E/i ) {
 			print "<div style=\"background-color: #$color_e; width: ${bredde_e}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Entry") . ": " . Format_Number($_url_e{$key}) . "\"></div>";
@@ -20167,7 +20286,7 @@ sub HTMLMainOS{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int(  $new_os_h{$key} / $Totalh * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $new_os_h{$key} : int(  $new_os_h{$key} / $Totalh * 1000 ) / 10);
 				if ($key eq 'Unknown'){
 					push @blocklabel, "$key";
 				}
@@ -20191,7 +20310,7 @@ sub HTMLMainOS{
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"5\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("Top 5 Operating Systems"),       "oss",
 				0, 						\@blocklabel,
@@ -20359,7 +20478,7 @@ sub HTMLMainBrowsers{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int(  $new_browser_h{$key} / $TotalHits * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $new_browser_h{$key} : int(  $new_browser_h{$key} / $TotalHits * 1000 ) / 10);
 				if ($key eq 'Unknown'){
 					push @blocklabel, "$key";
 				}
@@ -20383,7 +20502,7 @@ sub HTMLMainBrowsers{
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"5\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("Top 5 Browsers"),   "browsers",
 				0, 						\@blocklabel,
@@ -21315,13 +21434,13 @@ sub HTMLMainHTTPStatus{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_errors_h{$key} / $TotalHitsErrors * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_errors_h{$key} : int( $_errors_h{$key} / $TotalHitsErrors * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"5\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"$title",              "httpstatus",
 				0, 						\@blocklabel,
@@ -21676,13 +21795,13 @@ sub HTMLMainCluster{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_cluster_p{$key} / $TotalHits * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_cluster_p{$key} : int( $_cluster_p{$key} / $TotalHits * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"7\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"$title",              "cluster",
 				0, 						\@blocklabel,
@@ -22230,7 +22349,7 @@ if ( $ENV{'GATEWAY_INTERFACE'} ) {
 			$outputlist =~ s/^=//;
 			foreach my $outputparam ( split( /,/, $outputlist ) ) {
 				$outputparam =~ s/:(.*)$//;
-				if ($outputparam) { $HTMLOutput{ lc($outputparam) } = "$1" || 1; }
+				if ($outputparam) { $HTMLOutput{ lc($outputparam) } = $1 || 1; }
 			}
 		}
 
@@ -22851,8 +22970,8 @@ if(! $retval) {
 	error("$error_msg\n\n$perm_cmd");
 }
 my $regfilesuffix = quotemeta($FileSuffix);
-foreach ( grep /^$PROG$datemask$regfilesuffix\.txt(|\.gz)$/i, file_filt(sort readdir DIR) )
-{ /^$PROG$datemask$regfilesuffix\.txt(|\.gz)$/i;
+foreach ( grep /^$PROG$datemask$regfilesuffix\.txt(?:\.gz)?$/i, file_filt(sort readdir DIR) )
+{ /^$PROG$datemask$regfilesuffix\.txt(?:\.gz)?$/i;
 	if ( !$ListOfYears{"$2"} || "$1" gt $ListOfYears{"$2"} ) { $ListOfYears{"$2"} = "$1"; }
 	my $rangestring = ( $2 || "" ) . ( $1 || "" ) . ( $3 || "" ) . ( $4 || "" );
 	if ( $rangestring gt $lastdatebeforeupdate ) {
@@ -23905,6 +24024,9 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 		# Analyze: successful favicon (=> countedtraffic=1 if favicon)
 		#--------------------------------------------------
 		if ( $urlwithnoquery =~ /$regicons/o ) {
+			# Apache %b uses a dash for zero response-body bytes. Normalize it
+			# before shared accounting, including 404 icon/manifest responses.
+			$field[$pos_size] = 0 if $pos_size > 0 && $field[$pos_size] eq '-';
 			# 提取图标类型
 			my $icon_type = 'other';
 			
@@ -24069,13 +24191,13 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 			if ( $urlwithnoquery =~ /$regfavico/o ) {
 				$countedtraffic = 1;
 				$_time_nv_h[$hourrecord]++;
-				if ( $field[$pos_code] != 404 && $pos_size > 0 ) {
+				if ( $pos_size > 0 ) {
 					$_time_nv_k[$hourrecord] += int( $field[$pos_size] );
 				}
 			}
 			else {
 				$countedtraffic = 7;
-				if ( $field[$pos_code] != 404 && $pos_size > 0 ) {
+				if ( $pos_size > 0 ) {
 					$_time_nv_k[$hourrecord] += int( $field[$pos_size] );
 				}
 				$_time_nv_h[$hourrecord]++;
@@ -24107,6 +24229,27 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						last;
 					}
 				}
+			}
+		}
+
+		# Additional evidence never replaces the existing robot/worm/error rules.
+		# Run before download tracking so confirmed downloads are not counted as
+		# ordinary traffic and download events before being classified as robots.
+		if (!$countedtraffic && $VerifiedCrawlerEvidence && $LogType eq 'W'
+			&& $ValidHTTPCodes{$field[$pos_code]}) {
+			my $labels = $VerifiedCrawlerEvidence->classify_line($line);
+			if ($labels->{actor} eq 'verified_crawler') {
+				# google_common is the sole reviewed provider in this registry.
+				my $robot = 'Googlebot/';
+				$field[$pos_size] = 0 if $pos_size > 0 && int($field[$pos_code]) == 304;
+				$_robot_h{$robot}++;
+				$_robot_k{$robot} += int($field[$pos_size]) if $pos_size > 0 && $field[$pos_size] ne '-';
+				$_robot_l{$robot} = $timerecord;
+				$_robot_r{$robot}++ if $urlwithnoquery =~ /$regrobot/o;
+				$countedtraffic = 4;
+				$_time_nv_p[$hourrecord]++ if $PageBool;
+				$_time_nv_h[$hourrecord]++;
+				$_time_nv_k[$hourrecord] += int($field[$pos_size]) if $pos_size > 0 && $field[$pos_size] ne '-';
 			}
 		}
 
@@ -24232,8 +24375,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 							}
 							# 206 状态码：分块下载
 							elsif ( $status_code == 206 ) {
-								if ( $_downloads{$file_url}->{'AWSTATS_HITS'} > 0 || 
-									$_downloads{$file_url}->{'AWSTATS_NEW'} > 0 ) {
+								if ( ($_downloads{$file_url}->{'AWSTATS_HITS'} || 0) > 0 ||
+									($_downloads{$file_url}->{'AWSTATS_NEW'} || 0) > 0 ) {
 									$_downloads{$file_url}->{'AWSTATS_206'}++;
 									$_downloads{$file_url}->{'AWSTATS_SIZE'} += $file_size;
 									$_downloads{$file_url}->{'AWSTATS_LAST_TIME'} = $timerecord;
@@ -24244,12 +24387,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 									if ($Debug) { debug( " Orphan 206 chunk: '$file_url'", 2 ); }
 								}
 								
-								# 206 分块请求也需要计入带宽统计
-								if ($pos_size > 0) {
-									$DayBytes{$yearmonthdayrecord} += $file_size;
-									$_time_k[$hourrecord] += $file_size;
-								}
-								$countedtraffic = 6;  # 标记为已统计
+								# Count partial-response traffic once in the shared block.
+								$countedtraffic = 6;
 							}
 							
 						} elsif ($Debug) {
@@ -24257,57 +24396,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						}
 					}
 					
-					if ( !$countedtraffic ) {
-						my $size = 0;
-						# 检查是否为页面（非静态资源）
-						my $is_page = 1;
-						if ( $extension && $NotPageList{$extension} ) {
-							$is_page = 0;
-							$PageBool = 0;
-						}
-						
-						# 页面统计
-						if ($is_page) {
-							$_url_p{$urlwithnoquery}++;
-							$_url_e{$urlwithnoquery}++ if ( !defined $FirstTimeforThisHost || $FirstTimeforThisHost eq "" );
-							$_url_k{$urlwithnoquery} += $size;
-						}
-						
-						# 时间统计
-						if ($is_page) {
-							$_time_p[$hourrecord]++;
-						}
-						$_time_h[$hourrecord]++;
-						
-						# 带宽统计
-						if ($pos_size > 0) {
-							$size = int($field[$pos_size]) || 0;
-							$DayBytes{$yearmonthdayrecord} += $size;
-							$_time_k[$hourrecord] += $size;
-							if ($is_page) {
-								$_url_k{$urlwithnoquery} += $size;
-							}
-						}
-						
-						# 主机统计
-						my $host_key = (defined $Host && $Host ne '') ? $Host : 'unknown_ip';
-						$_host_h{$host_key}++;
-						$_host_p{$host_key}++ if ($is_page);
-						$_host_k{$host_key} += $size;
-						$_host_l{$host_key} = $timerecord;
-						
-						# 如果是新会话，记录开始时间
-						if ( !defined $FirstTimeforThisHost || $FirstTimeforThisHost eq "" ) {
-							$_host_s{$host_key} = $timerecord;
-							$FirstTimeforThisHost = $timerecord;
-						}
-						$_host_u{$host_key} = $urlwithnoquery;
-						$DayVisits{$yearmonthdayrecord}++ if ( $FirstTimeforThisHost eq $timerecord );
-						
-						if ($Debug) {
-							debug( " Normal page view: '$urlwithnoquery' (status: $status_code)", 2 );
-						}
-					}
+					# Normal request, host, visit and bandwidth accounting is performed
+					# once in the shared processing blocks below this status section.
 				} else {
 					# 确保状态码是有效的三位数
 					if ( $field[$pos_code] !~ /^\d\d\d$/ ) {
@@ -24558,19 +24648,26 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 				if ($LevelForRobotsDetection) {
 
 					if ($UserAgent) {
+						# Older or locally customized robots.pm may lack the helper.
+						my $explicit_robot = defined(&BytespiderRobotID)
+							? BytespiderRobotID($UserAgent) : '';
 						my $is_mobile_device = 0;
 						if (defined &get_device_type) {
 							my $device_type = get_device_type($UserAgent);
-							if ($device_type eq 'mobile' || $device_type eq 'tablet') {
-								$is_mobile_device = 1;
-								if ($Debug) {
-									debug("  Mobile device detected ($device_type), skipping robot classification", 2);
+							if (!$explicit_robot && ($device_type eq 'mobile' || $device_type eq 'tablet')) {
+								$explicit_robot = RegisteredCrawlerRobotID($UserAgent, $LevelForRobotsDetection)
+									if defined(&RegisteredCrawlerRobotID);
+								if (!$explicit_robot) {
+									$is_mobile_device = 1;
+									if ($Debug) {
+										debug("  Mobile device detected ($device_type), skipping robot classification", 2);
+									}
 								}
 							}
 						}
 						# 如果不是移动设备，进行机器人检测
 						if (!$is_mobile_device) {
-							my $uarobot = $TmpRobot{$UserAgent};
+							my $uarobot = $explicit_robot || $TmpRobot{$UserAgent};
 							#study $UserAgent;		Does not increase speed
 							if ( !$uarobot ) {
 								if ($Debug) {
@@ -24698,7 +24795,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 		if ( !$countedtraffic || $countedtraffic == 6) {
 			if ($LevelForFileTypesDetection) {
 				if (!$PageBool) {
-				if ($countedtraffic != 6){$_filetypes_h{$extension}++;}
+				$_filetypes_h{$extension}++;
 				if ( $field[$pos_size] ne '-' && $pos_size>0) {
 					$_filetypes_k{$extension} += int( $field[$pos_size] );
 				}
@@ -24745,8 +24842,8 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 				# TODO Use an id for hash key of url
 				# $_url_t{$_url_id}
 			}
-			if ($countedtraffic != 6){$_time_h[$hourrecord]++;}
- 			if ($countedtraffic != 6){$DayHits{$yearmonthdayrecord}++;}
+			$_time_h[$hourrecord]++;
+			$DayHits{$yearmonthdayrecord}++;
   			if ( $field[$pos_size] ne '-' && $pos_size>0) {
   				$_time_k[$hourrecord]          += int( $field[$pos_size] );
  				$DayBytes{$yearmonthdayrecord} += int( $field[$pos_size] );
@@ -24761,7 +24858,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 
 				# We found an authenticated user
 				if ($PageBool) { $_login_p{ $field[$pos_logname] }++; }
-				if ($countedtraffic != 6){$_login_h{$field[$pos_logname]}++;}
+				$_login_h{$field[$pos_logname]}++;
 				if ($pos_size>0){$_login_k{ $field[$pos_logname] } += int( $field[$pos_size] );}
 				$_login_l{ $field[$pos_logname] } = $timerecord;
 			}
@@ -25033,7 +25130,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 
 			# Store country
 			if ($PageBool) { $_domener_p{$Domain}++; }
-			if ($countedtraffic != 6){$_domener_h{$Domain}++;}
+			$_domener_h{$Domain}++;
 			if ( $field[$pos_size] ne '-' && $pos_size>0) {
 				$_domener_k{$Domain} += int( $field[$pos_size] );
 			}
@@ -25418,14 +25515,14 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 							$_browser_h{'Unknown'}++;
 							if ($PageBool) { $_browser_p{'Unknown'}++; }
 							$TmpBrowser{$UserAgent} = 'Unknown';
-							$_unknownrefererbrowser_l{$UserAgent} = $timerecord;
+							$_unknownrefererbrowser_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 						}
 					}
 					else {
 						$_browser_h{$uabrowser}++;
 						if ($PageBool) { $_browser_p{$uabrowser}++; }
 						if ( $uabrowser eq 'Unknown' ) {
-							$_unknownrefererbrowser_l{$UserAgent} = $timerecord;
+							$_unknownrefererbrowser_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 						}
 					}
 				}
@@ -25501,7 +25598,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 								}
 							}
 							if ( $countedtraffic != 4 ) {
-								$_unknownreferer_l{$UserAgent} = $timerecord;
+								$_unknownreferer_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 							}
 						}
 					}
@@ -25520,7 +25617,7 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 						}
 						if ( $uaos eq 'Unknown' ) {
 							if ( $countedtraffic != 4 ) {
-								$_unknownreferer_l{$UserAgent} = $timerecord;
+								$_unknownreferer_l{UnknownAgentHistoryKey($UserAgent)} = $timerecord;
 							}
 						}
 					}
@@ -26347,7 +26444,7 @@ END_ERROR_TEXT
 	# If lastprocesseddate > 0 means there is at least one approved new record in log or at least one existing history file
 	if ( $lastprocesseddate > 0 ) {
 		seek( LOG, $lastlineoffset, 0 );
-		my $line = <LOG>;
+		my $line = <LOG> // '';
 		chomp $line;
 		$line =~ s/\r$//;
 		if ( !$NbOfLinesParsed ) 
@@ -26601,7 +26698,7 @@ if ( scalar keys %HTMLOutput ) {
 	my $TotalBytesErrors = 0;
 	foreach ( keys %_errors_h ) {
 		$TotalHitsErrors  += $_errors_h{$_};
-		$TotalBytesErrors += $_errors_k{$_};
+		$TotalBytesErrors += $_errors_k{$_} // 0;
 	}
 	if ( !$TotalEntries ) {
 		foreach ( keys %_url_e ) { $TotalEntries += $_url_e{$_}; }

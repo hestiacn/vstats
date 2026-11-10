@@ -1,0 +1,40 @@
+<main class="filters-content" id="filters-main">
+  <div class="filters-heading"><div><p class="filters-eyebrow">Website statistics</p><h1>Filters</h1><p id="site-label"></p></div><a id="return-report" href="../">← Return to report</a></div>
+  <nav class="filters-tabs" aria-label="Filters sections">
+    <a href="#settings">Settings</a><a href="#impact">Impact &amp; reprocessing</a><a href="#review">Review</a><a href="#history">History</a>
+  </nav>
+  <p id="filter-message" role="status" aria-live="polite"></p>
+  <section class="filters-panel" id="settings">
+    <div class="filters-title"><h2>Settings</h2><span class="filters-badge" id="profile-status">Applied settings</span></div>
+    <p id="applied-description"></p>
+    <p id="profile-note" class="filters-muted"></p>
+    <p id="readonly-note">Browser editing and reprocessing follow AllowToUpdateStatsFromBrowser in this site’s AWStats configuration.</p>
+    <form id="settings-form">
+      <fieldset id="profile-fields" disabled><legend class="sr-only">Filter settings</legend><div id="filter-list"></div>
+        <div class="filters-option"><label class="filter-setting"><input type="checkbox" id="ip-policy"><span><strong id="ip-policy-title"></strong><small id="ip-policy-description"></small></span></label><div id="ip-policy-help"></div></div>
+        <details class="filters-advanced"><summary>Advanced settings</summary><p>Adjust individual filters and their parameters here. These thresholds are heuristics, not calibrated accuracy estimates. The classifier validates supported bounds and coupled constraints.</p><div class="filters-option"><label class="filter-setting"><span><strong id="native-level-label"></strong><select id="native-level"></select><small id="native-level-description"></small></span></label><div id="native-level-help"></div></div><div id="advanced-fields"></div></details>
+      </fieldset>
+      <div id="settings-actions" class="filters-actions" hidden><button id="apply-settings" class="filters-primary" type="button" disabled>Apply &amp; reprocess logs</button><button id="save-settings" type="button" disabled>Save pending settings</button><button id="discard-settings" type="button" disabled>Discard pending changes</button><button id="reset-settings" type="button" disabled>Reset defaults</button></div>
+    </form>
+    <details class="filters-advanced"><summary>Effective filters by UTC month</summary><p>Verified-crawler treatment requires a matching marker, IP and covering snapshots for each request. A month can have partial evidence coverage.</p><div id="period-status" class="filters-table-scroll"></div></details>
+  </section>
+  <section class="filters-panel" id="impact"><h2>Impact &amp; reprocessing</h2>
+    <p>Preview recalculates the applied and proposed settings against the same frozen retained input. Apply rebuilds native statistics from all available retained logs. Editing a checkbox changes neither reports nor the applied profile.</p>
+    <div id="coverage-description"></div><label id="coverage-confirm" class="filters-option" hidden><input type="checkbox" id="acknowledge-coverage"><span>I understand this rebuild uses only the listed retained input. Uncovered history will be omitted from the new reports; no totals from different rules will be carried forward.</span></label>
+    <div id="reprocessing-actions" class="filters-actions" hidden><button id="preview" type="button" disabled>Preview</button><button id="apply" class="filters-primary" type="button" disabled>Apply &amp; reprocess all available logs</button></div>
+    <div id="job-status" role="status" aria-live="polite"></div><div id="impact-table"></div>
+    <div id="match-counts"></div>
+    <p class="filters-muted">Per-filter matches can overlap. Overall request exclusions use a deduplicated union. Visitors remaining in the reports are not verified humans, and these figures do not measure classifier accuracy.</p>
+  </section>
+  <section class="filters-panel" id="review"><h2>Review</h2>
+    <p>Inspect classification evidence, excluded and retained requests, and campaign/source contributions. Queries and full raw user-agent strings are omitted.</p>
+    <div class="filters-actions" id="review-links"></div><iframe id="review-frame" title="Classification and exclusion evidence" hidden></iframe>
+    <details class="filters-advanced"><summary>Include an incorrectly excluded request</summary><p>An inclusion applies to all byte-identical records sharing this request ID for this website. It affects behavioral and IP-policy exclusions. Independent native, verified-crawler and actor/scanner treatment still applies, and automation evidence is retained.</p>
+      <fieldset id="exception-fields" disabled><label>Request ID<input id="exception-id" pattern="[a-f0-9]{64}" maxlength="64" autocomplete="off"></label><label>Reason<input id="exception-reason" maxlength="500"></label><button type="button" id="add-exception">Add to pending settings</button><div id="exceptions-list"></div></fieldset>
+    </details>
+    <h3>Compare this generation</h3><p>Comparison views change what you inspect, not the applied profile.</p><div class="filters-actions" id="comparison-links"></div><iframe id="comparison-frame" title="Native report comparison" hidden></iframe>
+  </section>
+  <section class="filters-panel" id="history"><h2>History</h2><p>Restoring settings creates pending changes and requires a new rebuild. Older profiles do not promise reproducible totals when input is no longer retained.</p><div id="history-list"></div><h3>Recent jobs</h3><div id="recent-jobs"></div></section>
+</main>
+<!-- FILTERS_STATE -->
+<script src="/vstats/assets/js/filters.js" defer></script>

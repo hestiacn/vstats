@@ -1,0 +1,12 @@
+[Unit]
+Description=Private vstats Filters control socket
+
+[Socket]
+ListenStream=/run/httpd/vstats-filters.sock
+SocketUser=vstats-control
+SocketGroup=apache
+SocketMode=0660
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "login_rotation": {
+    "enabled": 0,
+    "window_seconds": 86400,
+    "pair_seconds": 30,
+    "min_pairs": 3,
+    "min_platform_switches": 2,
+    "distinct_user_agents": 3,
+    "distinct_platforms": 2,
+    "login_paths": []
+  },
+  "head_scan": {
+    "distinct_paths": 6,
+    "enabled": 0,
+    "min_requests": 12,
+    "not_found_requests": 4,
+    "window_seconds": 60
+  },
+  "sensitive_scan": {
+    "distinct_paths": 3,
+    "enabled": 0,
+    "min_requests": 3,
+    "paths": [
+      "/.env",
+      "/.env.local",
+      "/.env.backup",
+      "/.env.bak",
+      "/.env.example",
+      "/.git/config",
+      "/.git-credentials",
+      "/.svn/wc.db"
+    ],
+    "window_seconds": 60
+  },
+  "wp_enumeration": {
+    "author_paths": [
+      "/",
+      "/index.php"
+    ],
+    "distinct_author_ids": 3,
+    "distinct_platforms": 2,
+    "distinct_user_agents": 4,
+    "enabled": 0,
+    "min_requests": 8,
+    "not_found_requests": 3,
+    "rest_routes": [
+      "/wp/v2/users"
+    ],
+    "user_api_requests": 1,
+    "user_paths": [
+      "/wp-json/wp/v2/users",
+      "/index.php/wp-json/wp/v2/users"
+    ],
+    "window_seconds": 60
+  },
+  "crawler_tokens": [
+    "Googlebot",
+    "Bytespider",
+    "bingbot",
+    "AhrefsBot",
+    "ClaudeBot",
+    "GPTBot",
+    "curl",
+    "Wget",
+    "python-requests",
+    "fd-crm-enrich",
+    "RisikomonitorNotify"
+  ],
+  "wp_query_probe": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "query_paths": [
+      "/",
+      "/index.php"
+    ],
+    "plugin_prefixes": [
+      "/wp-content/plugins/"
+    ],
+    "query_keys": [
+      "wp_query",
+      "wp_stylesheet_path",
+      "wp_template_path",
+      "_wp_current_template_content"
+    ]
+  },
+  "backdoor_probe": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "min_requests": 3,
+    "distinct_paths": 3,
+    "not_found_requests": 2,
+    "post_requests": 1,
+    "entry_paths": [
+      "/",
+      "/index.php",
+      "/favicon.ico"
+    ],
+    "paths": [
+      "/wp-content/themes/seotheme/db.php",
+      "/wp-plain.php",
+      "/wp-content/plugins/fix/up.php",
+      "/ALFA_DATA/alfacgiapi/perl.alfa",
+      "/alfacgiapi/perl.alfa",
+      "/wp-content/plugins/apikey/apikey.php",
+      "/wp-content/plugins/apikey/apikey.php.suspected",
+      "/plugins/content/apismtp/apismtp.php",
+      "/plugins/content/apismtp/apismtp.php.suspected"
+    ]
+  },
+  "protocol_probe": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "post_paths": [
+      "/mcp"
+    ],
+    "get_paths": [
+      "/sse"
+    ],
+    "tool_tokens": [
+      "python-httpx"
+    ],
+    "entry_paths": [
+      "/",
+      "/index.php",
+      "/favicon.ico"
+    ]
+  },
+  "service_discovery": {
+    "enabled": 0,
+    "window_seconds": 60,
+    "distinct_families": 3
+  },
+  "operator_association": {
+    "enabled": 0,
+    "retrospective_enabled": 0,
+    "retrospective_months": []
+  },
+  "compound_automation": {
+    "distinct_pages": 8,
+    "enabled": 0,
+    "metadata_families": 3,
+    "quote_max_percent": 10,
+    "quote_min_controls": 20,
+    "quote_min_sources": 5,
+    "window_seconds": 15
+  },
+  "scheduled_automation": {
+    "aggressive_comparison": 0,
+    "enabled": 0,
+    "entry_seconds": 1800,
+    "max_continuity_percent": 10,
+    "min_cycles": 3,
+    "min_families": 2,
+    "min_phase_paths": 6,
+    "min_sources": 3
+  },
+  "inferred_scanner": {
+    "enabled": 0,
+    "min_sources": 2,
+    "months": [],
+    "window_days": 14
+  },
+  "declared_automation": {
+    "enabled": 0,
+    "tokens": []
+  },
+  "wp_micro_probe": {
+    "enabled": 0,
+    "window_seconds": 10,
+    "distinct_user_agents": 2,
+    "distinct_platforms": 2,
+    "login_distinct_paths": 3,
+    "login_head_paths": 3,
+    "login_get_requests": 1,
+    "post_requests": 3,
+    "post_distinct_paths": 3,
+    "login_paths": [
+      "/wp-login.php",
+      "/wp/wp-login.php",
+      "/site/wp-login.php",
+      "/wordpress/wp-login.php",
+      "/blog/wp-login.php"
+    ],
+    "post_paths": [
+      "/",
+      "/index.php",
+      "/wp-json/batch/v1"
+    ],
+    "api_paths": [
+      "/wp-json/batch/v1"
+    ],
+    "entry_paths": [
+      "/",
+      "/index.php"
+    ]
+  },
+  "metadata_requests": {
+    "enabled": 0,
+    "sitemap_patterns": 1,
+    "paths": [
+      "/robots.txt",
+      "/sitemap.xml",
+      "/sitemap_index.xml",
+      "/wp-sitemap.xml"
+    ]
+  }
+}

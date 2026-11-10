@@ -1,0 +1,232 @@
+"""Read-only normalization of the configured Apache log copies for vstats."""
+import calendar
+import datetime
+import glob
+import gzip
+import hashlib
+import json
+import os
+import re
+import stat
+import subprocess
+
+MONTHS = b'Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec'.split()
+LINE = re.compile(
+    rb'^(?P<host>\S+) (?P<ident>\S+) (?P<user>\S+) '
+    rb'\[(?P<day>\d{2})/(?P<month>[A-Za-z]{3})/(?P<year>\d{4}):'
+    rb'(?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2}) '
+    rb'(?P<sign>[+-])(?P<tzhour>\d{2})(?P<tzminute>\d{2})\] '
+    rb'(?P<request>"(?:[^"\\]|\\.)*") (?P<status>\d{3}) '
+    rb'(?P<size>\d+|-)(?P<tail>.*)$'
+)
+COMBINED = re.compile(rb'^ ("(?:[^"\\]|\\.)*") ("(?:[^"\\]|\\.)*")\s*$')
+CONNECTION = re.compile(rb'^(?P<classic> (?:"(?:[^"\\]|\\.)*" ){1}"(?:[^"\\]|\\.)*")'
+                        rb' VSTATS2 (?P<port>[0-9]{1,5}) (?P<keepalive>[0-9]{1,7})'
+                        rb' "(?P<site>(?:[^"\\]|\\.){0,128})" "(?P<mode>(?:[^"\\]|\\.){0,128})"'
+                        rb' "(?P<dest>(?:[^"\\]|\\.){0,128})" "(?P<platform>(?:[^"\\]|\\.){0,128})"\s*$')
+ROTATION = re.compile(r'-\d{8}(?:\.gz)?$')
+BASE_NAME = re.compile(r'^[A-Za-z0-9_.-]+$')
+
+
+def normalize(line, with_fields=False):
+    line = line.rstrip(b'\r\n')
+    match = LINE.fullmatch(line)
+    if not match:
+        raise ValueError('not an Apache common/combined record')
+    tail = match.group('tail')
+    connection = None
+    extra = CONNECTION.fullmatch(tail)
+    if extra:
+        port, keepalive = int(extra.group('port')), int(extra.group('keepalive'))
+        if not 1 <= port <= 65535 or keepalive > 1000000:
+            raise ValueError('invalid connection counters')
+        connection = {'remote_port': port, 'keepalive': keepalive}
+        enums = {'site': ('none', 'same-origin', 'same-site', 'cross-site'),
+                 'mode': ('navigate', 'same-origin', 'no-cors', 'cors', 'websocket'),
+                 'dest': ('document', 'iframe', 'empty', 'style', 'script', 'image', 'font', 'audio', 'video',
+                          'worker', 'serviceworker', 'sharedworker', 'manifest', 'report', 'object', 'embed', 'track'),
+                 'platform': ('Windows', 'macOS', 'Android', 'Linux', 'iOS', 'Chrome_OS')}
+        for key, choices in enums.items():
+            value = extra.group(key).decode('ascii', 'replace')
+            if key == 'platform':
+                value = value.replace('\\x22', '').replace('\\"', '').strip('"')
+            connection['platform' if key == 'platform' else 'fetch_' + key] = value if value in choices else 'unknown'
+        tail = extra.group('classic')
+    if not tail.strip():
+        tail, kind = b' "-" "-"', 'common'
+    elif COMBINED.fullmatch(tail):
+        tail, kind = tail.rstrip(), 'combined'
+    else:
+        raise ValueError('unsupported additional log fields')
+    parts = match.group('request')[1:-1].split(b' ')
+    if len(parts) > 1:
+        uri = parts[1].split(b'?', 1)[0]
+        if uri in (b'/vstats', b'/vstats-control') or uri.startswith((b'/vstats/', b'/vstats-control/')):
+            return (None, None, 'statistics-request', None) if with_fields else (None, None, 'statistics-request')
+    month = MONTHS.index(match.group('month')) + 1
+    local = datetime.datetime(
+        int(match.group('year')), month, int(match.group('day')),
+        int(match.group('hour')), int(match.group('minute')), int(match.group('second')))
+    zone_hour, zone_minute = int(match.group('tzhour')), int(match.group('tzminute'))
+    if zone_hour > 14 or zone_minute > 59:
+        raise ValueError('invalid numeric timezone')
+    offset = (zone_hour * 60 + zone_minute) * 60
+    if match.group('sign') == b'-':
+        offset = -offset
+    epoch = calendar.timegm(local.timetuple()) - offset
+    utc = datetime.datetime.utcfromtimestamp(epoch)
+    stamp = ('%02d/%s/%04d:%02d:%02d:%02d +0000' %
+             (utc.day, MONTHS[utc.month - 1].decode('ascii'), utc.year,
+              utc.hour, utc.minute, utc.second)).encode('ascii')
+    result = (match.group('host') + b' ' + match.group('ident') + b' ' +
+              match.group('user') + b' [' + stamp + b'] ' +
+              match.group('request') + b' ' + match.group('status') + b' ' +
+              # Apache %b uses '-' for a zero-byte response (mod_log_config).
+              (b'0' if match.group('size') == b'-' else match.group('size')) + tail + b'\n')
+    return (epoch, result, kind, connection) if with_fields else (epoch, result, kind)
+
+
+def input_files(log_root, bases):
+    result = []
+    seen = set()
+    for base in bases:
+        if not BASE_NAME.fullmatch(base):
+            raise ValueError('unsafe configured log basename')
+        path = os.path.join(log_root, base)
+        rotations = [item for item in glob.glob(path + '-*')
+                     if ROTATION.fullmatch(item[len(path):])]
+        for item in sorted(rotations) + [path]:
+            if not os.path.exists(item):
+                continue
+            info = os.lstat(item)
+            if not stat.S_ISREG(info.st_mode):
+                raise ValueError('non-regular source log')
+            identity = (info.st_dev, info.st_ino)
+            if identity in seen:
+                continue
+            seen.add(identity)
+            result.append((item, info))
+    return result
+
+
+def merge_observability(left, right):
+    if left is None:
+        return dict(right)
+    result = dict(left)
+    for key, unknown in [('format', 'ambiguous'), ('vhost', None), ('scheme', 'unknown'),
+                         ('client_source', 'unknown'), ('user_agent', 'unobserved'), ('referrer', 'unobserved')]:
+        if left.get(key) != right.get(key):
+            result[key] = unknown
+    if left.get('connection_fields') != right.get('connection_fields'):
+        result['connection_fields'] = None
+    return result
+
+
+def build_snapshot(log_root, bases, work, source_metadata=None):
+    os.makedirs(work, mode=0o700, exist_ok=True)
+    unsorted_path = os.path.join(work, 'unsorted.tsv')
+    sorted_path = os.path.join(work, 'sorted.tsv')
+    output_path = os.path.join(work, 'access.log')
+    evidence = {'rows': 0, 'accepted': 0, 'common': 0, 'combined': 0,
+                'statistics_requests': 0, 'rejected': 0, 'partial_lines': 0,
+                'rejections': [], 'files': [], 'months': [], 'timezone': 'UTC'}
+    months = set()
+    observability = {}
+    source_metadata = source_metadata or {}
+    low, high = None, None
+    with open(unsorted_path, 'wb') as output:
+        for path, before in input_files(log_root, bases):
+            basename = next(base for base in bases if path.startswith(os.path.join(log_root, base)) and
+                            (path == os.path.join(log_root, base) or ROTATION.fullmatch(path[len(os.path.join(log_root, base)):])))
+            declared = source_metadata.get(basename, {})
+            if set(declared) - {'format', 'vhost', 'scheme', 'client_source', 'referrer_observed'}:
+                raise ValueError('unsupported log-source provenance')
+            formats, source_rows = set(), []
+            descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+            with os.fdopen(descriptor, 'rb') as raw:
+                actual = os.fstat(raw.fileno())
+                if (actual.st_dev, actual.st_ino) != (before.st_dev, before.st_ino):
+                    raise RuntimeError('source log rotated during open; retry the snapshot')
+                evidence['files'].append({'path': path, 'bytes_at_open': actual.st_size,
+                                          'device': actual.st_dev, 'inode': actual.st_ino})
+                stream = gzip.GzipFile(fileobj=raw) if path.endswith('.gz') else raw
+                limit = None if path.endswith('.gz') else actual.st_size
+                while limit is None or stream.tell() < limit:
+                    remaining = -1 if limit is None else limit - stream.tell()
+                    line = stream.readline(remaining)
+                    if not line:
+                        break
+                    if not line.endswith(b'\n'):
+                        evidence['partial_lines'] += 1
+                        continue
+                    evidence['rows'] += 1
+                    try:
+                        epoch, normalized, kind, connection = normalize(line, with_fields=True)
+                    except (ValueError, OverflowError) as exc:
+                        evidence['rejected'] += 1
+                        if len(evidence['rejections']) < 20:
+                            evidence['rejections'].append({'path': path,
+                                'source_offset': stream.tell(), 'reason': str(exc)})
+                        continue
+                    if kind == 'statistics-request':
+                        evidence['statistics_requests'] += 1
+                        continue
+                    evidence['accepted'] += 1
+                    evidence[kind] += 1
+                    formats.add(kind)
+                    original = LINE.fullmatch(normalized.rstrip(b'\r\n'))
+                    fields = COMBINED.fullmatch(original.group('tail')) if original else None
+                    states = tuple('absent' if value in (b'"-"', b'""') else 'value'
+                                   for value in fields.groups()) if fields else ('unobserved', 'unobserved')
+                    source_rows.append((hashlib.sha256(normalized.rstrip(b'\n')).hexdigest(), states, connection))
+                    stamp = datetime.datetime.utcfromtimestamp(epoch)
+                    months.add(stamp.strftime('%Y-%m'))
+                    low = epoch if low is None else min(low, epoch)
+                    high = epoch if high is None else max(high, epoch)
+                    output.write(str(epoch).encode('ascii') + b'\t' + normalized)
+            # The source format is a file/stream property. Mixed files abstain;
+            # a line that happens to look combined cannot override provenance.
+            file_format = next(iter(formats)) if len(formats) == 1 else 'ambiguous'
+            if declared.get('format') != file_format:
+                file_format = 'ambiguous'
+            evidence['files'][-1]['source_format'] = file_format
+            if not declared:
+                continue
+            for request_id, states, connection in source_rows:
+                meta = {'format': file_format, 'vhost': declared.get('vhost'),
+                        'scheme': declared.get('scheme', 'unknown'),
+                        'client_source': declared.get('client_source', 'unknown'),
+                        'referrer': states[0] if file_format == 'combined' and declared.get('referrer_observed', True) else 'unobserved',
+                        'user_agent': states[1] if file_format == 'combined' else 'unobserved'}
+                if connection is not None and file_format == 'combined':
+                    meta['connection_fields'] = connection
+                observability[request_id] = merge_observability(observability.get(request_id), meta)
+    environment = dict(os.environ)
+    environment['LC_ALL'] = 'C'
+    subprocess.check_call(['nice', '-n', '15', 'sort', '--stable', '--numeric-sort',
+                           '--field-separator=\t', '--key=1,1', '--temporary-directory=' + work,
+                           '--output=' + sorted_path, unsorted_path], env=environment)
+    digest = hashlib.sha256()
+    with open(sorted_path, 'rb') as source, open(output_path, 'wb') as output:
+        for row in source:
+            normalized = row.partition(b'\t')[2]
+            output.write(normalized)
+            digest.update(normalized)
+    os.chmod(output_path, 0o600)
+    evidence['months'] = sorted(months)
+    evidence['first_utc'] = None if low is None else datetime.datetime.utcfromtimestamp(low).isoformat() + 'Z'
+    evidence['last_utc'] = None if high is None else datetime.datetime.utcfromtimestamp(high).isoformat() + 'Z'
+    evidence['normalized_sha256'] = digest.hexdigest()
+    evidence['normalized_bytes'] = os.path.getsize(output_path)
+    metadata_raw = (json.dumps({'schema_version': 1, 'records': observability}, sort_keys=True,
+                               separators=(',', ':')) + '\n').encode('utf-8')
+    metadata_path = os.path.splitext(output_path)[0] + '.observability.json'
+    with open(metadata_path, 'wb') as handle:
+        handle.write(metadata_raw)
+    os.chmod(metadata_path, 0o600)
+    evidence['observability_sha256'] = hashlib.sha256(metadata_raw).hexdigest()
+    os.unlink(unsorted_path)
+    os.unlink(sorted_path)
+    with open(os.path.join(work, 'input-receipt.json'), 'w', encoding='utf-8') as handle:
+        json.dump(evidence, handle, indent=2, sort_keys=True)
+    return output_path, evidence
