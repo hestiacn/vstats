@@ -3089,6 +3089,9 @@ sub tab_end {
 #------------------------------------------------------------------------------
 sub error {
 	my $message = shift || '';
+	# Preserve report/CGI responses on stdout; CLI diagnostics belong on stderr.
+	my $errorout = (scalar keys %HTMLOutput || $ENV{'GATEWAY_INTERFACE'})
+	  ? \*STDOUT : \*STDERR;
 	if ( scalar keys %HTMLOutput ) {
 		$message =~ s/\</&lt;/g;
 		$message =~ s/\>/&gt;/g;
@@ -3098,24 +3101,33 @@ sub error {
 	}
 	my $secondmessage      = shift || '';
 	my $thirdmessage       = shift || '';
+	# Log samples and names are data, even in an HTML diagnostic response.
+	if (scalar keys %HTMLOutput || $ENV{'GATEWAY_INTERFACE'}) {
+		for my $value (\$secondmessage, \$thirdmessage) {
+			$$value =~ s/&/&amp;/g;
+			$$value =~ s/</&lt;/g;
+			$$value =~ s/>/&gt;/g;
+			$$value =~ s/"/&quot;/g;
+		}
+	}
 	my $donotshowsetupinfo = shift || 0;
 	my $dir = $PageDir ? 'rtl' : 'ltr';
 	if ( !$HeaderHTTPSent && $ENV{'GATEWAY_INTERFACE'} ) { http_head(); }
 	if ( !$HeaderHTMLSent && scalar keys %HTMLOutput )   {
-		print "<!DOCTYPE html>\n";
-		print "<html lang=\"" . _t($Lang) . "\" dir=\"$dir\">\n";
-		print "<head>\n";
-		print "<meta charset=\"utf-8\">\n";
-		print "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
-		print "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
-		print "<link rel=\"icon\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"16x16\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"180\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
-		print "<link rel=\"manifest\" href=\"$DirIcons/os/site.webmanifest\">\n";
-		print get_modern_css($dir ? 'rtl' : 'ltr');
-		print "</head><body><div class=\"aws-container\">\n";
+		print {$errorout} "<!DOCTYPE html>\n";
+		print {$errorout} "<html lang=\"" . _t($Lang) . "\" dir=\"$dir\">\n";
+		print {$errorout} "<head>\n";
+		print {$errorout} "<meta charset=\"utf-8\">\n";
+		print {$errorout} "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+		print {$errorout} "<meta name=\"generator\" content=\"AWStats $VERSION\">\n";
+		print {$errorout} "<link rel=\"icon\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"16x16\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"180\" height=\"180\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"icon\" sizes=\"192x192\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"icon\" sizes=\"512x512\" href='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"512\" height=\"512\" viewBox=\"0 0 100 100\"><text x=\"50\" y=\"55\" font-size=\"50\" text-anchor=\"middle\">📊</text></svg>'>\n";
+		print {$errorout} "<link rel=\"manifest\" href=\"$DirIcons/os/site.webmanifest\">\n";
+		print {$errorout} get_modern_css($dir ? 'rtl' : 'ltr');
+		print {$errorout} "</head><body><div class=\"aws-container\">\n";
 		$HeaderHTMLSent = 1;
 	}
 	
@@ -3131,116 +3143,116 @@ sub error {
 	if ( !$ErrorMessages && $message =~ /^Format error$/i ) {
 
 		# Files seems to have bad format
-		if ( scalar keys %HTMLOutput )   { print "<div class=\"error-card\">"; }
+		if ( scalar keys %HTMLOutput )   { print {$errorout} "<div class=\"error-card\">"; }
 		if ( $message !~ $LogSeparator ) {
 
 			# Bad LogSeparator parameter
-			print $tagfontred . _t("AWStats did not found the") . " ${tagbold}LogSeparator${tagunbold} " . _t("in your log records.") . "${tagbr}${tagunfont}\n";
+			print {$errorout} $tagfontred . _t("AWStats did not found the") . " ${tagbold}LogSeparator${tagunbold} " . _t("in your log records.") . "${tagbr}${tagunfont}\n";
 		}
 		else {
 
 			# Bad LogFormat parameter
-			print "<p>" . _t("AWStats did not find any valid log lines that match your") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter, in the") . " ${NbOfLinesForCorruptedLog}" . _t("th first non commented lines read of your log.") . "</p>";
-			print $tagfontred . "<p>" . _t("Your log file") . " ${tagbold}$thirdmessage${tagunbold} " . _t("must have a bad format or") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter setup does not match this format.") . "</p>${tagbr}${tagunfont}\n";
-			print "<p>" . _t("Your AWStats") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter is:") . "</p>";
-			print "<pre class=\"code-block\">$LogFormat</pre>";
-			print "<p>" . _t("This means each line in your web server log file need to have:") . "</p>";
+			print {$errorout} "<p>" . _t("AWStats did not find any valid log lines that match your") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter, in the") . " ${NbOfLinesForCorruptedLog}" . _t("th first non commented lines read of your log.") . "</p>";
+			print {$errorout} $tagfontred . "<p>" . _t("Your log file") . " ${tagbold}$thirdmessage${tagunbold} " . _t("must have a bad format or") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter setup does not match this format.") . "</p>${tagbr}${tagunfont}\n";
+			print {$errorout} "<p>" . _t("Your AWStats") . " ${tagbold}LogFormat${tagunbold} " . _t("parameter is:") . "</p>";
+			print {$errorout} "<pre class=\"code-block\">$LogFormat</pre>";
+			print {$errorout} "<p>" . _t("This means each line in your web server log file need to have:") . "</p>";
 			
 			if ( $LogFormat == 1 ) {
-				print "<p><strong>" . _t("combined log format") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("combined log format") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 2 ) {
-				print "<p><strong>" . _t("MSIE Extended W3C log format") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "date time c-ip c-username cs-method cs-uri-sterm sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("MSIE Extended W3C log format") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "date time c-ip c-username cs-method cs-uri-sterm sc-status sc-bytes cs-version cs(User-Agent) cs(Referer)\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 3 ) {
-				print "<p><strong>" . _t("WebStar native log format") . "</strong></p>";
+				print {$errorout} "<p><strong>" . _t("WebStar native log format") . "</strong></p>";
 			}
 			if ( $LogFormat == 4 ) {
-				print "<p><strong>" . _t("common log format") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("common log format") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "111.22.33.44 - - [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat == 6 ) {
-				print "<p><strong>" . _t("Lotus Notes/Lotus Domino") . "</strong> " . _t("like this:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "111.22.33.44 - Firstname Middlename Lastname [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p><strong>" . _t("Lotus Notes/Lotus Domino") . "</strong> " . _t("like this:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "111.22.33.44 - Firstname Middlename Lastname [10/Jan/2001:02:14:14 +0200] \"GET / HTTP/1.1\" 200 1234 \"http://www.fromserver.com/from.htm\" \"Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)\"\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
 			if ( $LogFormat !~ /^[1-6]$/ ) {
-				print "<p>" . _t("the following personalized log format:") . "</p>";
-				print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-				print "$LogFormat\n";
-				print( scalar keys %HTMLOutput ? "</div>" : "" );
+				print {$errorout} "<p>" . _t("the following personalized log format:") . "</p>";
+				print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+				print {$errorout} "$LogFormat\n";
+				print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
 			}
-			print "<p>" . _t("And this is an example of records AWStats found in your log file (the record number") . " $NbOfLinesForCorruptedLog " . _t("in your log):") . "</p>";
-			print( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
-			print "$secondmessage";
-			print( scalar keys %HTMLOutput ? "</div>" : "" );
-			print "\n";
+			print {$errorout} "<p>" . _t("And this is an example of records AWStats found in your log file (the record number") . " $NbOfLinesForCorruptedLog " . _t("in your log):") . "</p>";
+			print {$errorout}( scalar keys %HTMLOutput ? "<div class=\"code-block\">" : "" );
+			print {$errorout} "$secondmessage";
+			print {$errorout}( scalar keys %HTMLOutput ? "</div>" : "" );
+			print {$errorout} "\n";
 		}
 	}
 	else {
 		if ($ENV{'GATEWAY_INTERFACE'}) {
-			print "<div class=\"error-card\" style=\"text-align: center;\">";
-			print "<h3>" . _t("Error") . "</h3>";
-			print "<div style=\"font-size: 100px; font-weight: bold; line-height: 1; margin-bottom: 20px;\">";
-			print "<span style=\"color: var(--error-color);\">5</span>";
-			print "<span style=\"color: var(--warning-color);\">0</span>";
-			print "<span style=\"color: var(--error-color);\">0</span>";
-			print "</div>";
-			print "<p style=\"white-space: pre-wrap; text-align: left; display: inline-block; max-width: 90%; margin: 0 auto;\">" . ($ErrorMessages ? $ErrorMessages : _t($message)) . "</p>";
-			print "</div>";
+			print {$errorout} "<div class=\"error-card\" style=\"text-align: center;\">";
+			print {$errorout} "<h3>" . _t("Error") . "</h3>";
+			print {$errorout} "<div style=\"font-size: 100px; font-weight: bold; line-height: 1; margin-bottom: 20px;\">";
+			print {$errorout} "<span style=\"color: var(--error-color);\">5</span>";
+			print {$errorout} "<span style=\"color: var(--warning-color);\">0</span>";
+			print {$errorout} "<span style=\"color: var(--error-color);\">0</span>";
+			print {$errorout} "</div>";
+			print {$errorout} "<p style=\"white-space: pre-wrap; text-align: left; display: inline-block; max-width: 90%; margin: 0 auto;\">" . ($ErrorMessages ? $ErrorMessages : _t($message)) . "</p>";
+			print {$errorout} "</div>";
 		} else {
 			my $err_msg = _t("Error") . ": " . ($ErrorMessages ? $ErrorMessages : _t($message)) . "\n";
-			print STDERR $err_msg;
+			print {$errorout} $err_msg;
 		}
 	}
 	
 	if ( !$ErrorMessages && !$donotshowsetupinfo && $ENV{'GATEWAY_INTERFACE'} ) {
-		print "<div class=\"help-card\">";
-		print "<h4>" . _t("Troubleshooting") . "</h4>";
+		print {$errorout} "<div class=\"help-card\">";
+		print {$errorout} "<h4>" . _t("Troubleshooting") . "</h4>";
 		
 		if ( $message =~ /Couldn.t open config file/i ) {
 			my $dir = $DIR;
 			if ( $dir =~ /^\./ ) { $dir .= '/../..'; }
 			else { $dir =~ s/[\\\/]?wwwroot[\\\/]cgi-bin[\\\/]?//; }
-			print "<p>";
+			print {$errorout} "<p>";
 			if ( $ENV{'GATEWAY_INTERFACE'} ) {
-				print "- <strong>" . _t("Did you use the correct URL?") . "</strong><br>";
-				print _t("Example:") . " http://localhost/awstats/awstats.pl?config=mysite<br>";
-				print _t("Example:") . " http://127.0.0.1/cgi-bin/awstats.pl?config=mysite<br>";
+				print {$errorout} "- <strong>" . _t("Did you use the correct URL?") . "</strong><br>";
+				print {$errorout} _t("Example:") . " http://localhost/awstats/awstats.pl?config=mysite<br>";
+				print {$errorout} _t("Example:") . " http://127.0.0.1/cgi-bin/awstats.pl?config=mysite<br>";
 			}
 			else {
-				print "- <strong>" . _t("Did you use correct config parameter?") . "</strong><br>";
-				print _t("Example: If your config file is awstats.mysite.conf, use -config=mysite") . "<br>";
+				print {$errorout} "- <strong>" . _t("Did you use correct config parameter?") . "</strong><br>";
+				print {$errorout} _t("Example: If your config file is awstats.mysite.conf, use -config=mysite") . "<br>";
 			}
-			print "- <strong>" . _t("Did you create your config file 'awstats.$SiteConfig.conf'?") . "</strong><br>";
-			print _t("If not, you can run \"awstats_configure.pl\" from command line, or create it manually.") . "<br>";
-			print "</p>";
+			print {$errorout} "- <strong>" . _t("Did you create your config file 'awstats.$SiteConfig.conf'?") . "</strong><br>";
+			print {$errorout} _t("If not, you can run \"awstats_configure.pl\" from command line, or create it manually.") . "<br>";
+			print {$errorout} "</p>";
 		}
 		else {
-			print "<p><strong>" . _t("Setup") . " ("
+			print {$errorout} "<p><strong>" . _t("Setup") . " ("
 			  . ( $FileConfig ? "'" . $FileConfig . "'" : "Config" )
 			  . ") " . _t("file, web server or permissions may be wrong.") . "</strong></p>";
 		}
-		print "<p>" . _t("Check config file, permissions and AWStats documentation (in 'docs' directory).") . "</p>";
-		print "</div>\n";
+		print {$errorout} "<p>" . _t("Check config file, permissions and AWStats documentation (in 'docs' directory).") . "</p>";
+		print {$errorout} "</div>\n";
 	}
 
 	# Remove lock if not a lock message
 	if ( $EnableLockForUpdate && $message !~ /lock file/ ) { &Lock_Update(0); }
 	
 	if ( scalar keys %HTMLOutput ) {
-		print "</div>\n";
-		print get_theme_script();
-		print "</body>\n</html>\n";
+		print {$errorout} "</div>\n";
+		print {$errorout} get_theme_script();
+		print {$errorout} "</body>\n</html>\n";
 	}
 	exit 1;
 }
@@ -14772,13 +14784,13 @@ sub HTMLMainFileType{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_filetypes_h{$key} / $Totalh * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_filetypes_h{$key} : int( $_filetypes_h{$key} / $Totalh * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"7\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("File type"),        "filetypes",
 				0, 						\@blocklabel,
@@ -17605,7 +17617,7 @@ sub HTMLMainMonthly{
 			$valdata[ $xx++ ] = $MonthBytes{ $YearRequired . $monthix } || 0;
 		}
 		
-		my $function = "ShowGraph_$pluginname";
+		my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 		&$function(
 			"$title",        "month",
 			$ShowMonthStats, \@blocklabel,
@@ -17963,7 +17975,7 @@ sub HTMLMainDaily{
 			$valdata[ $xx++ ] = $DayHits{$date_key}   || 0;
 			$valdata[ $xx++ ] = $DayBytes{$date_key}  || 0;
 		}
-		my $function = "ShowGraph_$pluginname";
+		my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 		&$function(
 			"$title",              "daysofmonth",
 			$ShowDaysOfMonthStats, \@blocklabel,
@@ -18309,7 +18321,7 @@ sub HTMLMainDaysofWeek{
 						$avg_dayofweek_h[$_] = int( $avg_dayofweek_h[$_] );
 					}
 				}
-				my $function = "ShowGraph_$pluginname";
+				my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 				&$function(
 					"$title",             "daysofweek",
 					$ShowDaysOfWeekStats, \@blocklabel,
@@ -18537,7 +18549,7 @@ sub HTMLMainDownloads{
 			my $cnt = 0;
 			for my $u (@top_downloads) {
 				my $filename = Get_Filename($u);
-				push @valdata, int($_downloads{$u}->{'AWSTATS_HITS'} / $Totalh * 1000) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_downloads{$u}->{'AWSTATS_HITS'} : int($_downloads{$u}->{'AWSTATS_HITS'} / $Totalh * 1000) / 10);
 				push @blocklabel, $filename;
 				$cnt++;
 				last if $cnt >= 5;
@@ -18553,7 +18565,7 @@ sub HTMLMainDownloads{
 			$columns += 1;  # 进度条列
 			
 			print "<td colspan=\"$columns\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("Top Downloads"), "downloads",
 				0, \@blocklabel,
@@ -18774,7 +18786,7 @@ sub HTMLMainHours{
 			$valdata[ $xx++ ] = $_time_h[$_] || 0;
 			$valdata[ $xx++ ] = $_time_k[$_] || 0;
 		}
-		my $function = "ShowGraph_$pluginname";
+		my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 		&$function(
 			"$title", "hours",
 			$ShowHoursStats, \@blocklabel,
@@ -19041,7 +19053,7 @@ sub HTMLMainCountries{
 				if ($cnt > 99) { last; }
 			}
 			print "<tr><td colspan=\"7\" align=\"center\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"AWStatsCountryMap", "countries_map",
 				0, \@blocklabel,
@@ -19398,14 +19410,14 @@ sub HTMLMainHosts{
 			
 			$cnt = 0;
 			foreach my $key (@keylist) {
-			   push @valdata, int( $_host_h{$key} / $suma * 1000 ) / 10;
+			   push @valdata, ($pluginname eq 'graphsvg' ? $_host_h{$key} : int( $_host_h{$key} / $suma * 1000 ) / 10);
 			   push @blocklabel, "$key";
 			   $cnt++;
 			   if ($cnt > 4) { last; }
 			}
 			
 			print "<tr><td colspan=\"7\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"Hosts", "hosts",
 				0, \@blocklabel,
@@ -20274,7 +20286,7 @@ sub HTMLMainOS{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int(  $new_os_h{$key} / $Totalh * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $new_os_h{$key} : int(  $new_os_h{$key} / $Totalh * 1000 ) / 10);
 				if ($key eq 'Unknown'){
 					push @blocklabel, "$key";
 				}
@@ -20298,7 +20310,7 @@ sub HTMLMainOS{
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"5\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("Top 5 Operating Systems"),       "oss",
 				0, 						\@blocklabel,
@@ -20466,7 +20478,7 @@ sub HTMLMainBrowsers{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int(  $new_browser_h{$key} / $TotalHits * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $new_browser_h{$key} : int(  $new_browser_h{$key} / $TotalHits * 1000 ) / 10);
 				if ($key eq 'Unknown'){
 					push @blocklabel, "$key";
 				}
@@ -20490,7 +20502,7 @@ sub HTMLMainBrowsers{
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"5\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				_t("Top 5 Browsers"),   "browsers",
 				0, 						\@blocklabel,
@@ -21422,13 +21434,13 @@ sub HTMLMainHTTPStatus{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_errors_h{$key} / $TotalHitsErrors * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_errors_h{$key} : int( $_errors_h{$key} / $TotalHitsErrors * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"5\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"$title",              "httpstatus",
 				0, 						\@blocklabel,
@@ -21783,13 +21795,13 @@ sub HTMLMainCluster{
 			my @valcolor = ($color_p);
 			my $cnt = 0;
 			foreach my $key (@keylist) {
-				push @valdata, int( $_cluster_p{$key} / $TotalHits * 1000 ) / 10;
+				push @valdata, ($pluginname eq 'graphsvg' ? $_cluster_p{$key} : int( $_cluster_p{$key} / $TotalHits * 1000 ) / 10);
 				push @blocklabel, "$key";
 				$cnt++;
 				if ($cnt > 4) { last; }
 			}
 			print "<tr><td colspan=\"7\">";
-			my $function = "ShowGraph_$pluginname";
+			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
 			&$function(
 				"$title",              "cluster",
 				0, 						\@blocklabel,
