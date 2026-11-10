@@ -32,7 +32,7 @@ my @declared_automation_agents = (
     ['Claude-Agent', 'Anthropic hosted browser agent', 'https://support.claude.com/en/articles/18234133-how-do-anthropic-hosted-browsers-identify-themselves-when-they-browse-the-web-on-a-user-s-behalf'],
 );
 my @declared_automation_ids = map {
-    '(?aa:(?<![A-Za-z0-9_.-])' . quotemeta($_->[0]) . '(?=[\x09-\x0D\x20/;)]|\z))'
+    '(?aa:(?:\A|[^A-Za-z0-9_.-])' . quotemeta($_->[0]) . '(?=[\x09-\x0D\x20/;)]|\z))'
 } @declared_automation_agents;
 my @declared_automation_markers = map { [$_, qr/$_/iaa, 0] } @declared_automation_ids;
 # Already registered fetchers retain their original slash-requiring history IDs.
