@@ -561,7 +561,6 @@ jobs:
               echo "=== 运行打包脚本 ==="
               perl makepack-awstats.pl --target=PKG
               
-              # --- 核心对齐：+PLIST 已转移至更安全的独立的元数据目录 meta-stage ---
               echo "=== 查看 +PLIST 内容 ==="
               head -20 /tmp/awstats-buildroot/meta-stage/+PLIST
               echo ""
@@ -573,26 +572,45 @@ jobs:
               echo "=== 检查文件路径格式 ==="
               grep -E "^(bin|etc|share|www)" /tmp/awstats-buildroot/meta-stage/+PLIST | head -10
               echo ""
-              
-              echo "=== 验证 +POST_INSTALL 是否在包中 ==="
-              PKG_FILE="/home/runner/work/vstats/vstats/make/awstats-8.1-1.pkg"
 
-              tar -xzf "$PKG_FILE" -O +MANIFEST 2>/dev/null | grep -q "dbip-city-lite"
-              if [ $? -eq 0 ]; then
-                  echo "✅ +POST_INSTALL 脚本已完美合规融合到 +MANIFEST 的元数据中！"
-                  echo "=== 验证元数据中的脚本片段 ==="
-                  tar -xzf "$PKG_FILE" -O +MANIFEST 2>/dev/null | grep -A 5 -B 2 "dbip-city" | head -10
+              echo "=== 验证 +POST_INSTALL 是否在包中 ==="
+              PKG_FILE=$(ls /home/runner/work/vstats/vstats/make/awstats-*.pkg 2>/dev/null | head -1)
+              if [ -z "$PKG_FILE" ]; then
+                  echo "❌ 没找到 .pkg 文件"
+                  ls -la /home/runner/work/vstats/vstats/make/
+                  exit 1
+              fi
+              echo "找到: $PKG_FILE"
+
+              if tar -xf "$PKG_FILE" -O +MANIFEST > /tmp/manifest.txt 2>/dev/null; then
+                  echo "✅ +MANIFEST 解包成功"
               else
-                  echo "❌ 脚本未成功融入包元数据中"
+                  echo "⚠️ tar -xf 失败，尝试 xz"
+                  tar -xJf "$PKG_FILE" -O +MANIFEST > /tmp/manifest.txt 2>/dev/null || {
+                      echo "❌ 解包彻底失败"
+                      exit 1
+                  }
+              fi
+
+              if grep -q "dbip-city-lite" /tmp/manifest.txt; then
+                  echo "✅ +POST_INSTALL 已融合到 +MANIFEST"
+                  echo "=== 验证元数据中的脚本片段 ==="
+                  grep -A5 -B2 "dbip-city" /tmp/manifest.txt
+              else
+                  echo "❌ +MANIFEST 里没有 dbip-city-lite"
+                  echo "=== +MANIFEST 全文 ==="
+                  cat /tmp/manifest.txt
+                  exit 1
               fi
               echo ""
-              
+
               echo "=== 备份并整理 pkg 文件 ==="
               cd /home/runner/work/vstats/vstats/make
-              if [ -f "awstats-8.1-1.pkg" ]; then
+              if [ -n "$PKG_FILE" ] && [ -f "$PKG_FILE" ]; then
                   rm -f awstats-*_1.pkg 2>/dev/null || true
-                  sha256sum awstats-8.1-1.pkg > SHA256SUMS.txt
+                  sha256sum "$PKG_FILE" > SHA256SUMS.txt
                   echo "✅ 已生成校验和"
+                  cat SHA256SUMS.txt
               fi
               ls -la *.pkg
 
@@ -1051,261 +1069,211 @@ jobs:
         name: build-report
         path: final/BUILD_REPORT.md
     
-    - name: 创建 GitHub Release
+    - name: Create GitHub Release
       uses: softprops/action-gh-release@v3
       with:
         name: AWStats Community Edition ${{ steps.version.outputs.version }}
         body: |
-            # AWStats Community Edition ${{ steps.version.outputs.version }}
-            
-            ## ✨ Main Updates
-            
-            ### 🎯 Version 8.1 (UTF-8 Community Edition)
-            
-            ### 🏷️ New Feature: Custom Branding Display
+          # AWStats Community Edition ${{ steps.version.outputs.version }}
 
-            > **🚀 vstats: Bringing Warmth to Statistics**
-            AWStats is no longer just a cold data page. Now you can easily embed your brand identity at the top of reports. Combined with powerful support for 73 languages and 13 calendar systems, users worldwide can access statistics without cultural or language barriers.
+          ## ✨ Main Updates
 
-            ### 🚀 Branding Features
+          ### 🎯 Version 8.2 (2026-11-11)
 
-            - **Universal Compatibility**: Perfectly displays whether you're using mainstream Linux distributions or various operating systems
-            - **Visual Consistency**: Supports vector SVG logos, ensuring sharp clarity at any resolution (including Retina displays)
-            - **Smart Concatenation**: The system automatically combines your brand name with the multilingual `Server Management Panel` field, achieving brand localization across all languages
+          Optional SVG charts, verified crawler evidence, and the Filters static publisher; plus history-compression atomicity and a batch of undef/parsing fixes.
 
-            ### 🖼️ Usage Examples
+          ### 📊 Optional SVG charts (`graphsvg`)
 
-            | Type | Examples |
-            |:---:|:---:|
-            | 🐧 Linux Distributions | `RHEL`, `Debian`, `Ubuntu`, `CentOS`, `Arch Linux`, `Fedora`, `Rocky Linux` |
-            | 🖥️ Operating Systems | `macOS`, `Windows`, `FreeBSD` |
-            | ☁️ Cloud Providers | `Aliyun`, `Tencent`, `AWS`, `Azure`, `Google Cloud` |
+          > Contributor: @Bllacky
 
-            ### 📝 Configuration Example
+          **Background**: The Google Image Charts API that `graphgooglechartapi` depended on was shut down in March 2019, so charts in old reports are broken images (including static published reports). `graphsvg` generates inline SVG locally to fix this and sends no visitor statistics to third parties.
 
-            Add the following to your AWStats configuration file (e.g., `/etc/awstats/awstats.yourdomain.conf`):
+          - **Disabled by default**; when disabled, native AWStats charts are still used
+          - Enable by adding `LoadPlugin="graphsvg"` to the configuration
+          - **Do not enable other ShowGraph plugins** (e.g. `graphgooglechartapi`) at the same time; this combination is not supported
+          - `graphsvg` and `geoipfree` hook different events and **can be enabled together without conflict** — do not remove `geoipfree` in order to enable `graphsvg`
+          - No external chart service / JS dependency; works offline and in static reports
 
-            ```perl
-            # --- Brand Customization Settings ---
-            BrandLink="https://your-company.com"   # Logo click redirect URL
-            BrandPlatform="CloudStack"             # Your platform name (English characters recommended)
-            StatsUrl="/vstats"                     # AWStats deployment web path
-            ```
+          ### 🕷️ Verified Crawler Evidence
 
-            **Effects**
-            - `BrandPlatform="HestiaCP"` → Displays **"HestiaCP Server Management Panel"**
-            - `BrandPlatform="cPanel"` → Displays **"cPanel Server Management Panel"**
-            - `BrandPlatform="Plesk"` → Displays **"Plesk Server Management Panel"**
-            - `BrandPlatform="DirectAdmin"` → Displays **"DirectAdmin Server Management Panel"**
-            - `BrandPlatform="CyberPanel"` → Displays **"CyberPanel Server Management Panel"**
-            - `BrandPlatform="aapanel"` → Displays **"aapanel Server Management Panel"**
-            - `BrandPlatform="Portainer"` → Displays **"Portainer Server Management Panel"**
-            - `BrandPlatform="CasaOS"` → Displays **"CasaOS Server Management Panel"**
-            - `BrandPlatform="NPM"` → Displays **"NPM Server Management Panel"**
+          > Contributor: @Bllacky
 
-            ### 🌐 Automated Localization Effects
+          **Background**: Native AWStats identifies crawlers by User-Agent alone, and UA can be forged arbitrarily (e.g. `curl -A "Googlebot/2.1"`), so real crawlers cannot be distinguished from masquerading scanners. This feature adds "official IP range + timestamp" verification on top of UA.
 
-            **vstats** automatically embeds `BrandPlatform` into 73 native language contexts, achieving true global branding:
+          - New `VerifiedCrawlerEvidenceFile` config option + `VStats::TrafficClassifier` validation + `classify_line` in the main flow
+          - **Only supports `LogType=W` with `LogFormat=1(combined)/4(common)`**
+          - Missing/invalid/oversized/close-failed evidence → **aborts the current update** (no fallback, no reverting to native rules)
+          - The evidence file must be a non-symlink regular file no larger than `evidence_bundle_bytes`
+          - On a match it is recorded as `Googlebot/`, 304 response bodies are zeroed, and it runs before download tracking
+          - Currently only the `google_common` provider is registered
+          - **This layer is additive verification and does not replace native UA/robot/error rules**
 
-            | Language | Real-time Rendering Preview |
-            | :---: | :--- |
-            | **简体中文** | `HestiaCP 服务器管理面板` |
-            | **English** | `HestiaCP Server Management Panel` |
-            | **Kannada** | `HestiaCP ಸರ್ವರ್ ನಿರ್ವಹಣಾ ಫಲಕ` |
-            | **Georgian** | `HestiaCP სერვერის მართვის පැනელი` |
-            | **Arabic** | `لوحة إدارة خوادم HestiaCP` |
+          ### 🧩 Filters Static Publisher
 
-            > 📌 **Note**: The system will automatically handle the word order of different languages (such as right-to-left display for Arabic), ensuring that the brand is presented professionally and authentically in any cultural context.
-            
-            ### ⚠️ Activation Condition
+          New `Filters` static publisher with 6 families:
 
-            To keep the interface clean, the branding area **only activates when the `logo.svg` file exists and is readable**.
+          `signatures` / `provider_evidence` / `probing_and_scanning` / `automated_browsing` / `scanner_inference` / `metadata`
 
-            - **File Location**: Place your brand icon named `logo.svg` in your site's AWStats directory
-            - **Default Link**: If `BrandLink` is not configured, the system defaults to `https://hestiacp.com`
+          Companion tools: `tools/traffic-classify.pl` (offline request reports), `tools/automation_analysis.py` (corpus analysis), `tools/vstats_filters.py` (behavior filtering).
 
-            ### 🗓️ **New localdate calendar plugin** Automatically switches calendar display based on user language
+          See [`docs/filters.md`](https://github.com/${{ github.repository }}/blob/release/docs/filters.md) and [`docs/traffic-classification.md`](https://github.com/${{ github.repository }}/blob/release/docs/traffic-classification.md).
 
-            > **Enabled by default**, if you need to disable it, please add `EnableLocaldatePlugin=0` in the configuration file
-            > ⚠️ **Note:** The start date for the Japanese era name needs to be manually configured. See the notes within the `plugins/localdate.pm` for details.
-            - 🇯🇵 Japanese era (Reiwa): Open `plugins/localdate.pm` and locate lines 80-86. Remove the `#` comment before the era you wish to enable, and fill in the correct start date (`start_year`, `start_month`, `start_day`). Also add the corresponding era translation key in `lang/awstats-ja.po` (`calendar_era_2` → `New Era Name`). Subsequent eras follow the same pattern (`calendar_era_3`, `calendar_era_4`...)
-            - 🇹🇭 Buddhist calendar (Thailand, Cambodia, Laos)
-            - 🇹🇼 Minguo calendar (ROC)
-            - 🇨🇳 Ganzhi calendar (Heavenly Stems + Earthly Branches + Zodiac)
-            - 🇻🇳 Vietnamese Ganzhi calendar (Heavenly Stems + Earthly Branches + Zodiac, Rabbit → Cat)
-            - 🇰🇷 Dangun calendar
-            - 🕌 Islamic (Hijri) calendar
-            - 🇮🇷 Persian calendar
-            - 🇲🇲 Burmese calendar
-            - 🇳🇵 Vikram Samvat
-            - 🇮🇳 Saka calendar
-            - 🇪🇹 Ethiopian calendar
-            - 🇧🇩 Bengali calendar
-            - ✡️ Hebrew calendar
+          ### 🛠️ Other Changes
 
-            > 📌 **Ethiopian calendar**: First 12 months have 30 days each, the 13th month has 6 days in leap years and 5 days in common years.
-            > 📌 **Hebrew calendar**: 7 leap years in a 19-year cycle, adds one month (Adar I, 30 days) in leap years, totaling 13 months.
+          - New `VSTATS_NATIVE_INCLUDE_ROOT` (CLI mode, redirects relative include paths)
+          - History `.txt` compression now uses pure Perl `IO::Compress::Gzip` + atomic rename; compares `dev/ino/mode/uid/gid/size/mtime/ctime` (eight fields) before and after compression; any change aborts, original file retained on failure
+          - `Compress_Previous_Month_History` now compresses older months starting from the 2nd, keeps current and previous month uncompressed
+          - `gzip` history and plaintext decoded uniformly as `UTF-8`
+          - `CLI` error diagnostics go to `stderr`, `HTML/CGI` to `stdout`; log samples/filenames escaped in HTML error responses
+          - `ShowGraph_$pluginname` now uses `__PACKAGE__->can`
+          - 206 partial downloads no longer double-count bandwidth; ordinary statistics consolidated into the shared block
+          - `%b` `-` for `favicon/manifest` normalized to 0; 404 icon/manifest responses now count toward bandwidth
+          - `mobile/tablet` exemption now checks explicit `crawler` first (`BytespiderRobotID` / `RegisteredCrawlerRobotID`), with `defined(&...)` guards for older `robots.pm`
+          - `UnknownAgentHistoryKey` used on the **write side** of `UNKNOWNREFERER` / `UNKNOWNREFERERBROWSER` (4 places), loading and writing both normalize to `%20`
+          - `Read_Config` resets evidence state before each config read
+          - Release packages exclude `tools/t/`; `RPM/Debian/FreeBSD` declare `python3 >= 3.6`
+          - A batch of `|| 0` / `// 0` undef guards; `file_filt` regex fix; `ROBOT` section trailing-numeric-field parsing fix; `error()` escaping
 
-            If you find any issues, please report them on [issues](https://github.com/hestiacn/vstats/issues). This feature automatically adapts the calendar display of report dates to match the site's current language (e.g., Arabic shows Islamic calendar, Japanese shows Japanese era), no additional configuration required.
+          ## 🙏 Contributors
 
-            #### 🎨 UI & Experience
-            - 📱 Adopted HTML5 standard with responsive design, perfectly adapted for mobile, tablet and desktop
-            - 🌙 Added dark/light theme toggle with system theme follow support
-            - 🧭 Added navigation menu allowing site administrators to read official documentation in their native language
-            - 📖 Added documentation viewer (iframe) - click menu links to view docs within the page with a close button
-            - 😊 Replaced country/region flag icons with Emoji, more modern and lightweight
-            - 📊 Modernized table styling: rounded borders, hover highlight effects
-            - 🎨 Defined theme colors using CSS variables, support one-click dark/light mode toggle
-            - 📊 Rebuilt chart engine: removed PNG image dependency, using pure CSS progress bars and bar charts
-            - 🖼️ Upgraded icon system: all PNG icons replaced with vector SVG format
-            - 🎨 Significantly upgraded OS/device icon library, added 200+ recognitions
-            - 🔝 Added back-to-top button with smooth scroll
-            - 🕐 Optimized hour chart tooltip hints with 24-hour independent copy
+          Both core features in this release were contributed by **@Bllacky**:
 
-            ## 🚀 Quick Start
+          - **`graphsvg` optional SVG chart plugin** — replaces the Google Image Charts API shut down in 2019, renders charts locally as inline SVG, fixes broken images and removes external dependencies and visitor-data leakage.
+          - **Verified Crawler Evidence native filtering** — adds "official IP range + timestamp" verification on top of User-Agent, upgrading "self-declared crawler" to an auditable verified crawler; includes the `VerifiedCrawlerEvidenceFile` option, `VStats::TrafficClassifier` validation and `classify_line` in the main flow.
 
-            ### Using HestiaCP (Recommended)
-            If you use [Hestia Control Panel](https://hestiacp.com/), AWStats will be configured automatically:
-            1. AWStats is automatically enabled when adding a domain
-            2. Log path is automatically configured
-            3. Scheduled updates are automatically added
-            4. Visit `https://your-domain/vstats/` to view statistics
+          Thanks to @Bllacky for supporting AWStats Community Edition!
 
-            ## 🔄 Pre-Upgrade Conversion (Only for Upgrading from Older Versions)
+          ## 📦 Installation Dependencies
 
-            If upgrading the site, please first run `/usr/share/awstats/tools/awstats_convert-zh.pl` to convert the historical data files (*.txt) from format version 7.0-7.9 to 8.1. The script will automatically detect and batch convert all AWStats data files (*.txt) located under the `/home/*/web/*/stats/` directory. Please feel free to run it — it will automatically back up the original files before conversion. If your site is not located under the `home` directory, adjust the path according to this structure: `/home/site_running_username/web/your_domain_name/stats/`. After the conversion is complete, proceed with the data update operation; otherwise, the update will fail due to format incompatibility.
+          - perl
+          - libmaxmind-db-reader-perl
+          - libsocket-perl
+          - libencode-perl
+          - libjson-xs-perl
+          - libtry-tiny-perl
+          - python3 (>= 3.6)
 
-            > **Note**: If your site version is below 7.0, please adjust the script's regex matching parameter `s/AWSTATS DATA FILE 7.[0-9]{1,2}/AWSTATS DATA FILE 8.1/` according to your actual version number.
-            >
-            > **💡 Tip**: Backup files are by default saved in the directory `/backup/awstats_converter/backup_<timestamp>/`.
-            
-            ## 📋 Changelog
-            - [English Changelog](https://github.com/${{ github.repository }}/blob/release/docs/CHANGELOG.md)
-            
-            ---
-            ## ✨ 主要更新
+          > **⚠️ Manual install / archive users**: The dependencies above are declared in the distribution packages (RPM/DEB/FreeBSD), but **`.zip` and `.tar.gz` archives do not bundle them**. Package names and package managers differ by platform/distribution (for example, `libmaxmind-db-reader-perl` is installed via `apt` on Debian/Ubuntu, is `perl-MaxMind-DB-Reader` on RHEL-family systems, and is `perl-maxmind-db-reader` on Arch), so please search for and install the corresponding packages for your system. Thank you for supporting the Community Edition.
 
-            ### 🎯 8.1 版本（UTF-8 社区版）
+          ## 🚀 Quick Start
 
-            ### 🏷️ 新增功能：自定义品牌展示
+          ### Using HestiaCP (Recommended)
+          If you use [Hestia Control Panel](https://hestiacp.com/), AWStats will be configured automatically:
+          1. AWStats is automatically enabled when adding a domain
+          2. Log path is automatically configured
+          3. Scheduled updates are automatically added
+          4. Visit `https://your-domain/vstats/` to view statistics
 
-            > **🚀 vstats: 让统计充满温度**
-            AWStats 不再只是一个冷冰冰的数据页面。现在，您可以轻松将品牌标识植入报告顶部。配合强大的 73 国语言翻译与 13 种历法适配，让全球用户都能跨越文化与语言的障碍。
+          ## 🔄 Pre-Upgrade Conversion (Only for Upgrading from Older Versions)
 
-            ### 🚀 品牌化特性
+          When upgrading from older versions (7.0–7.9), run `awstats_convert-zh.pl` first to convert historical data files (`*.txt`) to the 8.x format, then run the update; otherwise the update will fail due to format incompatibility. The script auto-detects files under `/home/*/web/*/stats/` and converts them in batches, backing up originals first.
 
-            - **全平台适配**：不论是主流 Linux 发行版、各类操作系统，均能完美显示
-            - **视觉一致性**：支持矢量 SVG Logo，确保在各种分辨率（甚至是 Retina 屏）下都能清晰锐利
-            - **智能拼接**：系统会自动将您的品牌名与多语言包中的 `Server Management Panel` 字段拼接，实现全语种的品牌本地化
+          > **Note**: If your site version is below 7.0, adjust the script's regex `s/AWSTATS DATA FILE 7\.[0-9]{1,2}/AWSTATS DATA FILE 8.1/` according to your actual version.
+          >
+          > **💡 Tip**: Backups are saved by default in `/backup/awstats_converter/backup_<timestamp>/`.
 
-            ### 🖼️ 适用场景示例
+          ## 📋 Changelog
+          - [English Changelog](https://github.com/${{ github.repository }}/blob/release/docs/CHANGELOG.md)
 
-            | 类型 | 示例 |
-            |:---:|:---:|
-            | 🐧 Linux 发行版 | `RHEL`、`Debian`、`Ubuntu`、`CentOS`、`Arch Linux`、`Fedora`、`Rocky Linux` |
-            | 🖥️ 操作系统 | `macOS`、`Windows`、`FreeBSD` |
-            | ☁️ 云主机商 | `Aliyun`、`Tencent`、`AWS`、`Azure`、`Google Cloud` |
+          ---
+          ## ✨ 主要更新
 
-            ### 📝 配置示例
+          ### 🎯 8.2 版本（2026-11-11）
 
-            在 AWStats 配置文件（如 `/etc/awstats/awstats.yourdomain.conf`）中添加：
+          可选 SVG 图表、已验证爬虫证据、Filters 静态发布器；以及历史压缩原子性、一批 undef/解析修复。
 
-            ```perl
-            # --- 品牌自定义设置 ---
-            BrandLink="https://your-company.com"   # 点击 Logo 跳转的网址
-            BrandPlatform="CloudStack"             # 您的平台名称（建议英文字符）
-            StatsUrl="/vstats"                     # AWStats 部署的 Web 路径
-            ```
+          ### 📊 可选 SVG 图表插件（`graphsvg`）
 
-            **效果**
-            - BrandPlatform="HestiaCP" → 显示 **"HestiaCP 服务器管理面板"**
-            - BrandPlatform="cPanel" → 显示 **"cPanel 服务器管理面板"**
-            - BrandPlatform="Plesk" → 显示 **"Plesk 服务器管理面板"**
-            - BrandPlatform="DirectAdmin" → 显示 **"DirectAdmin 服务器管理面板"**
-            - BrandPlatform="CyberPanel" → 显示 **"CyberPanel 服务器管理面板"**
-            - BrandPlatform="aapanel" → 显示 **"aapanel 服务器管理面板"**
-            - BrandPlatform="Portainer" → 显示 **"Portainer 服务器管理面板"**
-            - BrandPlatform="CasaOS" → 显示 **"CasaOS 服务器管理面板"**
-            - BrandPlatform="NPM" → 显示 **"NPM 服务器管理面板"**
+          > 贡献者：@Bllacky
 
-            ### 🌐 自动化本地化效果
+          **背景**：原 `graphgooglechartapi` 依赖的 Google Image Charts API 已于 2019 年 3 月关闭，旧报告图表破图（含静态发布报告）。`graphsvg` 在本地生成内联 SVG 修复，且不向第三方发送访客统计。
 
-            **vstats** 会自动将 `BrandPlatform` 嵌入到 73 种母语语境中，实现真正的品牌全球化：
+          - **默认不启用**；不启用时仍使用 AWStats 原生图表
+          - 启用方式：配置中添加 `LoadPlugin="graphsvg"`
+          - **不要同时启用其他 ShowGraph 插件**（如 `graphgooglechartapi`），不支持该组合
+          - `graphsvg` 与 `geoipfree` 挂不同钩子，**可同时启用、不冲突**——不要为了启用 `graphsvg` 而移除 `geoipfree`
+          - 无外部图表服务 / JS 依赖，离线与静态报告均可用
 
-            | 语言 | 实时渲染效果预览 |
-            | :---: | :---: |
-            | **简体中文** | `HestiaCP 服务器管理面板` |
-            | **English** | `HestiaCP Server Management Panel` |
-            | **Kannada** | `HestiaCP ಸರ್ವರ್ ನಿರ್ವಹಣಾ ಫಲಕ` |
-            | **Georgian** | `HestiaCP სერვერის მართვის පැනელი` |
-            | **Arabic** | `لوحة إدارة خوادم HestiaCP` |
+          ### 🕷️ 已验证爬虫证据（Verified Crawler Evidence）
 
-            > 📌 **注**：系统会自动处理不同语言的语序（如阿拉伯语的从右往左显示），确保品牌展示在任何文化背景下都显得专业且地道。
-            
-            ### ⚠️ 激活条件
+          > 贡献者：@Bllacky
 
-            为保持页面简洁，品牌展示区域**仅在检测到 `logo.svg` 文件存在且可读时**才会激活。
+          **背景**：原生 AWStats 仅凭 User-Agent 判断爬虫，UA 可任意伪造（如 `curl -A "Googlebot/2.1"`），真爬虫与伪装扫描器无法区分。本功能在 UA 之外增加"官方 IP 段 + 时间戳"双重验证。
 
-            - **文件位置**：请将您的品牌图标命名为 `logo.svg` 并放置在站点 AWStats 目录下
-            - **默认链接**：若未配置 `BrandLink`，系统将指向 `https://hestiacp.com`
+          - 新增 `VerifiedCrawlerEvidenceFile` 配置项 + `VStats::TrafficClassifier` 校验 + 主流程 `classify_line`
+          - **仅支持 `LogType=W` 且 `LogFormat=1(combined)/4(common)`**
+          - 证据缺失/非法/超限/close 失败 → **中止本次 update**（不降级、不退回原生规则）
+          - 证据文件须为非符号链接常规文件、大小不超过 `evidence_bundle_bytes`
+          - 命中后记 `Googlebot/`、304 响应体归零、在下载追踪前运行
+          - 当前仅注册 `google_common` 提供商
+          - **本层为追加验证，不替换原生 UA/机器人/错误规则**
 
-            ### 🗓️ **新增 localdate 日历插件** 根据用户语言自动切换历法显示
+          ### 🧩 Filters 静态发布器
 
-            > **默认开启**，如需关闭请在配置文件中添加 `EnableLocaldatePlugin=0`
-            > ⚠️ **注意**：日本年号需要手动配置起始日期，详见`plugins/localdate.pm`内注释。
-            - 🇯🇵 日本年号（令和）：打开 `plugins/localdate.pm` 找到第 80-86 行，删除需要启用的年号前的 `#` 注释，并填写正确的起始年月日（`start_year`、`start_month`、`start_day`）。同时在 `lang/awstats-ja.po` 中添加对应年号翻译键（`calendar_era_2` → `新年号名称`），后续年号依次类推（`calendar_era_3`、`calendar_era_4`...）
-            - 🇹🇭 佛历（泰国、柬埔寨、老挝）
-            - 🇹🇼 民国纪年
-            - 🇨🇳 甲子纪年（天干地支 + 生肖）
-            - 🇻🇳 越南甲子纪年（天干地支 + 生肖，兔→猫）
-            - 🇰🇷 檀君纪年
-            - 🕌 伊斯兰历（希吉拉历）
-            - 🇮🇷 波斯历
-            - 🇲🇲 缅甸历
-            - 🇳🇵 维克拉姆历
-            - 🇮🇳 萨卡历
-            - 🇪🇹 埃塞俄比亚历
-            - 🇧🇩 孟加拉历
-            - ✡️ 希伯来历
+          新增 `Filters` 静态发布器，6 类 family：
 
-            > 📌 **埃塞俄比亚历**：前 12 个月各 30 天，第 13 个月闰年 6 天平年 5 天。
-            > 📌 **希伯来历**：19 年 7 闰，闰年增加一个月（Adar I，30 天），共 13 个月。
+          `signatures` / `provider_evidence` / `probing_and_scanning` / `automated_browsing` / `scanner_inference` / `metadata`
 
-            如有错误，欢迎在[issues](https://github.com/hestiacn/vstats/issues)提交问题反馈。此功能让报告日期的历法显示自动匹配站点当前语言（如阿拉伯语显示伊斯兰历、日语显示日本年号），无需额外配置。
+          配套工具：`tools/traffic-classify.pl`（离线请求报告）、`tools/automation_analysis.py`（语料分析）、`tools/vstats_filters.py`（行为过滤）。
 
-            #### 🎨 界面与体验
-            - 📱 采用 HTML5 标准，支持响应式设计，完美适配手机、平板和电脑
-            - 🌙 新增深色/浅色主题切换功能，支持跟随系统主题，保护眼睛
-            - 🧭 新增导航菜单，网站部署人员可使用本土化语言查看官方文档
-            - 📖 新增文档查看器（iframe），点击菜单链接在页面内查看文档，支持关闭按钮，无需离开当前页
-            - 😊 国家/地区旗帜图标全面替换为 Emoji，更现代轻量，无需维护图片资源
-            - 📊 表格样式现代化：圆角边框、悬停高亮效果
-            - 🎨 使用 CSS 变量定义主题颜色，支持一键切换深色/浅色模式
-            - 📊 图表引擎重构：移除 PNG 图片依赖，改用纯 CSS 实现横向进度条和竖向柱状图，加载更快、支持主题色自动适配
-            - 🖼️ 图标系统全面升级：所有 PNG 图标替换为矢量 SVG 格式，支持任意缩放，深色模式下自动适配颜色
-            - 🎨 操作系统/设备图标库全面升级，新增手机品牌、Linux 发行版、游戏主机、开发工具、文本浏览器等 200+ 识别
-            - 🔝 新增返回顶部按钮：滚动超过 300px 自动显示，点击平滑返回顶部，支持深色模式和 RTL 布局
-            - 🕐 小时图表鼠标悬停提示优化：24 小时独立文案，结合 AWStats 特色与人文关怀
+          详见 [`docs/filters.md`](https://github.com/${{ github.repository }}/blob/release/docs/filters.md) 与 [`docs/traffic-classification.md`](https://github.com/${{ github.repository }}/blob/release/docs/traffic-classification.md) 文档。
 
-            ## 🚀 快速开始
+          ### 🛠️ 其他变更
 
-            ### 使用 HestiaCP（推荐）
-            如果你使用 [Hestia Control Panel](https://hestiacp.com/)，AWStats 会自动配置：
-            1. 添加域名时自动启用 AWStats
-            2. 日志路径自动配置
-            3. 定时更新自动添加
-            4. 访问 `https://your-domain/vstats/` 查看统计
+          - 新增 `VSTATS_NATIVE_INCLUDE_ROOT`（CLI 模式，重定向相对 include 路径）
+          - 历史 `.txt` 压缩改为纯 Perl `IO::Compress::Gzip` + 原子 rename；压缩前后比对 `dev/ino/mode/uid/gid/size/mtime/ctime` 八字段，变更即中止、失败保留原文件
+          - `Compress_Previous_Month_History` 改为 2 号起压缩更早月份，保留当前月与上月
+          - `gzip` 历史与明文统一 `UTF-8` 解码
+          - `CLI` 错误诊断走 `stderr`，`HTML/CGI` 走 `stdout`；HTML 错误响应中转义日志样本/文件名
+          - `ShowGraph_$pluginname` 改用 `__PACKAGE__->can`
+          - 206 分块不再重复计带宽；普通统计合并到共享块
+          - `favicon/manifest` 的 `%b` `-` 归一化为 0；404 图标/manifest 也计带宽
+          - `mobile/tablet` 豁免前先查显式 `crawler`（`BytespiderRobotID` / `RegisteredCrawlerRobotID`），对旧版 `robots.pm` 有 `defined(&...)` 保护
+          - `UnknownAgentHistoryKey` 用于 `UNKNOWNREFERER` / `UNKNOWNREFERERBROWSER` **写入侧**（4 处），加载与写入统一 `%20`
+          - `Read_Config` 每次读配置前重置证据状态
+          - 发布包排除 `tools/t/`；`RPM/Debian/FreeBSD` 声明 `python3 >= 3.6`
+          - 一批 `|| 0` / `// 0` 防 undef；`file_filt` 正则修正；`ROBOT` section 末尾数字字段解析修复；`error()` 转义
 
-            ## 🔄 升级前转换（仅限从旧版升级）
+          ## 🙏 贡献者
 
-            若涉及站点升级，请先执行 `/usr/share/awstats/tools/awstats_convert-zh.pl` 对历史数据文件（*.txt）进行格式转换（7.0-7.9 → 8.1）。程序将自动检测 `/home/*/web/*/stats/` 目录下的所有 AWStats 数据文件（*.txt）并进行自动批量转换。请放心执行，它将在转换前自动备份原文件。若您的站点不在 `home` 目录下，请参考这个路径结构 `/home/站点运行用户名/web/您的域名/stats/` 微调。转换完成后，再执行数据更新操作，否则将因格式不兼容导致更新失败。
-            
-            > **注意**：若您的站点版本低于 7.0，请根据实际版本号调整脚本中 `s/AWSTATS DATA FILE 7\.[0-9]{1,2}/AWSTATS DATA FILE 8.1/` 正则表达式的匹配参数。
-            >
-            > **💡 提示**：备份文件默认保存在 `/backup/awstats_converter/backup_执行时的时间戳命名/` 目录下。
-            
-            ## 📋 更新日志
-            - [中文更新日志](https://github.com/${{ github.repository }}/blob/release/docs/CHANGELOG-zh_CN.md)
+          本次更新的两项核心功能均由 **@Bllacky** 贡献：
+
+          - **`graphsvg` 可选 SVG 图表插件**——替代已于 2019 年关闭的 Google Image Charts API，用内联 SVG 本地渲染图表，修复破图并去除外部依赖与访客数据外发。
+          - **Verified Crawler Evidence 原生过滤**——在 User-Agent 之外增加"官方 IP 段 + 时间戳"双重验证，把"自称爬虫"升级为可审计的验证爬虫；配套 `VerifiedCrawlerEvidenceFile` 配置、`VStats::TrafficClassifier` 校验与主流程 `classify_line`。
+
+          感谢 @Bllacky 对 AWStats Community Edition 的支持！
+
+          ## 📦 安装依赖
+
+          - perl
+          - libmaxmind-db-reader-perl
+          - libsocket-perl
+          - libencode-perl
+          - libjson-xs-perl
+          - libtry-tiny-perl
+          - python3 (>= 3.6)
+
+          > **⚠️ 手动安装 / 压缩包用户请注意**：以上依赖已在发行包（RPM/DEB/FreeBSD）中声明，但 **`.zip` 和 `.tar.gz` 压缩包不包含这些依赖**。不同平台/发行版的包名与包管理器不同（例如 `libmaxmind-db-reader-perl` 在 Debian/Ubuntu 由 `apt` 安装，在 RHEL 系对应 `perl-MaxMind-DB-Reader`，在 Arch 对应 `perl-maxmind-db-reader`），请自行根据您的系统搜索对应安装包补充安装对应依赖。感谢您对社区版的支持。
+
+          ## 🚀 快速开始
+
+          ### 使用 HestiaCP（推荐）
+          如果你使用 [Hestia Control Panel](https://hestiacp.com/)，AWStats 会自动配置：
+          1. 添加域名时自动启用 AWStats
+          2. 日志路径自动配置
+          3. 定时更新自动添加
+          4. 访问 `https://your-domain/vstats/` 查看统计
+
+          ## 🔄 升级前转换（仅限从旧版升级）
+
+          从旧版（7.0–7.9）升级请先运行 `awstats_convert-zh.pl` 转换历史数据文件（`*.txt`）到 8.x 格式，再执行更新；否则会因格式不兼容导致更新失败。脚本会自动检测 `/home/*/web/*/stats/` 下的数据文件并批量转换，转换前自动备份。
+
+          > **注意**：若您的站点版本低于 7.0，请根据实际版本号调整脚本中 `s/AWSTATS DATA FILE 7\.[0-9]{1,2}/AWSTATS DATA FILE 8.1/` 正则表达式的匹配参数。
+          >
+          > **💡 提示**：备份文件默认保存在 `/backup/awstats_converter/backup_执行时的时间戳命名/` 目录下。
+
+          ## 📋 更新日志
+          - [中文更新日志](https://github.com/${{ github.repository }}/blob/release/docs/CHANGELOG-zh_CN.md)
 
         files: |
           final/*.tar.gz

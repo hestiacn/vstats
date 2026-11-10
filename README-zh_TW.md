@@ -1,4 +1,4 @@
-# AWStats 8.1 - 進階網站統計工具（社群版）
+# AWStats - 進階網站統計工具（社群版）
 
 <p align="center">
   <img src="docs/images/screenshot.png" alt="AWStats Dashboard Preview" width="800">
@@ -102,12 +102,14 @@ StatsUrl="/vstats"                   # AWStats 部署目錄
 | 特性 | 原始 AWStats | 重構版本 |
 |:---:|:---:|:---:|
 | 編碼 | GBK / 局部編碼 | **UTF-8 全支援** |
-| 翻譯方式 | 數字索引 `$Message[169]` | **語意化鍵名 `_t('key')`** |
+| 翻譯方式 | 數字索引 `$Message[169]` | **語義化鍵名 `_t('key')`** |
 | 介面風格 | 固定樣式 | **明暗主題切換 + 響應式** |
-| 國家旗幟 | PNG圖像 | **Emoji** — `Edge` 瀏覽器安裝 `Twemoji for Edge` 擴充功能即可正常顯示圖示 |
+| 國家 | PNG 圖像 | **Emoji** |
 | 圖表 | PNG 圖像 | **純 CSS 圖表** |
-| 曆法支援 | 公曆 | **12 種曆法** |
-| 維護狀態 | 已封存 | **持續維護** |
+| 曆法支援 | 公曆 | **15 種曆法** |
+| 維護狀態 | 已歸檔 | **持續維護** |
+
+**Emoji 欄說明**：`EDGE` 瀏覽器安裝 `Twemoji for Edge` 擴充功能即可正常顯示 Emoji 圖示。
 
 ---
 

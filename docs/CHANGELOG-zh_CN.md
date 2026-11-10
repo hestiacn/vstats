@@ -1,10 +1,49 @@
-# 📋 AWStats 版本更新发布记录
+# 📋 AWStats 版本更新日志
 
-*基于官方文档、SourceForge 记录和作者历史资料整理，部分日期可能与实际不符。如需查看原始更新，请访问 [SourceForge](https://sourceforge.net/projects/awstats/)。*
+所有该项目的重要更改都会记录在此文件中。
 
-⚠️ **AWStats 8.0 将是原作者(Laurent Destailleur)维护的最后一个版本，后续版本由社区维护。**
+## 🚀 8.x 系列 (2026-最新)
 
-## 🚀 8.x 系列(2026-latest)
+### 8.2 - 2026-11-11
+
+可选的 SVG 图表、已验证的爬虫证据和过滤器静态发布工具；此外还有历史压缩原子性，以及一批未定义/解析修复。
+
+- 新增：可选 `SVG` 图表插件 `graphsvg`，用内联 `SVG` 渲染 `ShowGraph` 数据，无外部图表服务`/JS` 依赖。
+  背景：原 `graphgooglechartapi` 依赖的 Google Image Charts API 已于 2019 年 3 月关闭，旧报告图表破图（含静态发布报告）；`graphsvg` 在本地生成 SVG 修复，且不向第三方发送访客统计。
+  **默认不启用，不启用时仍使用 AWStats 原生图表**；如需启用请在配置中添加 `LoadPlugin="graphsvg"`。
+  **不要同时启用其他 ShowGraph 插件（如 `graphgooglechartapi`），不支持这种组合。**
+  **`graphsvg` 与 `geoipfree` 挂不同钩子，可同时启用、不冲突——不要为了启用 `graphsvg` 而移除 `geoipfree`。**
+- 新增：Verified Crawler Evidence 原生过滤，`VerifiedCrawlerEvidenceFile` 配置项 + `VStats::TrafficClassifier` 校验 + 主流程 `classify_line`。
+  背景：原生 AWStats 仅凭 User-Agent 判断爬虫，UA 可任意伪造（如 `curl -A "Googlebot/2.1"`），真爬虫与伪装扫描器无法区分。本功能在 UA 之外增加"官方 IP 段 + 时间戳"双重验证，把"自称爬虫"升级为"UA + 官方 IP 段 + 时间戳三重验证的爬虫"。
+  **仅支持 `LogType=W` 且 `LogFormat=1(combined)/4(common)`；证据缺失/非法/超限/close 失败 → 中止本次 update（不降级、不退回原生规则）。**
+  证据文件须为非符号链接常规文件、大小不超过 `evidence_bundle_bytes`；命中后记 `Googlebot/`、304 响应体归零、在下载追踪前运行。当前仅注册 `google_common` 提供商。
+  **本层为追加验证，不替换原生 UA/机器人/错误规则；原生规则继续独立生效。**
+- 新增：`Filters` 静态发布器 6 类 family：`signatures` / `provider_evidence` / `probing_and_scanning` / `automated_browsing` / `scanner_inference` / `metadata`（见 `docs/filters.md`）。
+- 新增：`tools/traffic-classify.pl` 离线请求报告、`tools/automation_analysis.py` 语料分析、`tools/vstats_filters.py` 行为过滤
+- 新增：`UnknownAgentHistoryKey` / `ParseUnknownAgentHistoryRow`，修 agent 含空格、XML 编码后 key 不一致问题（#18）
+- 新增：CLI 模式支持 `VSTATS_NATIVE_INCLUDE_ROOT` 环境变量，重定向相对 include 路径，供发布器隔离配置；CGI 模式忽略
+- 更新：历史 `.txt` 压缩改为纯 Perl `IO::Compress::Gzip` + 临时文件原子 rename，压缩前后比对 `dev/ino/mode/uid/gid/size/mtime/ctime` 八个字段，任一变化即中止、失败保留原文件（#18）
+- 更新：`Compress_Previous_Month_History` 改为 2 号起压缩更早月份，保留当前月与上月不压缩，刷新陈旧旧档；已存在 `.gz` 且源未变则跳过
+- 更新：`gzip` 历史与明文统一 `UTF-8` 解码，保留非 `ASCII key`
+- 更新：`CLI` 错误诊断走 `stderr`，`HTML/CGI` 错误走 `stdout`；输出流选择基于 `%HTMLOutput` 或 `GATEWAY_INTERFACE`，**静态渲染场景也走 stdout**；日志样本/文件名在 `HTML` 错误响应中转义
+- 更新：`ShowGraph_$pluginname` 改用 `__PACKAGE__->can`，修严格模式回调分发
+- 更新：`awstats.pl` 各图表调用点（文件类型/下载/主机/OS/浏览器/HTTP 状态/集群）增加 `graphsvg` 分支，直接传原始计数；其他插件仍传百分比
+- 更新：206 分块下载不再重复计带宽；普通页面/主机/会话统计统一合并到共享块，移除状态码分支内的重复统计
+- 更新：`favicon/manifest` 的 `%b` `-` 归一化为 0；404 图标/manifest 也计带宽
+- 更新：`mobile/tablet` 豁免前先检查显式 `crawler`（`BytespiderRobotID` / `RegisteredCrawlerRobotID`），避免移动端注册爬虫被误豁免；对缺失该函数的旧版 `robots.pm` 有 `defined(&...)` 保护
+- 更新：`UnknownAgentHistoryKey` 用于 `UNKNOWNREFERER` / `UNKNOWNREFERERBROWSER` **写入侧**（4 处），加载与写入统一 `%20` 形式，真正修复 key 不一致（#18）
+- 更新：`Read_Config` 每次读配置前重置 `VerifiedCrawlerEvidenceFile` / `VerifiedCrawlerEvidence`，避免多站点残留
+- 更新：发布安装包排除 `tools/t/`（测试目录文件不进发布包），需要开发请下载源码包
+- 更新：`RPM/Debian/FreeBSD` 包显式声明 `python3 >= 3.6`；`ca-certificates` 移到 RPM `Requires`
+- 修复：`@maxnboflistdefaultval` 补 `DownloadsShown` 默认值，避免未初始化
+- 修复：`$LogType` 未定义时先 `!defined` 再默认，避免未初始化警告
+- 修复：`$HTMLOutput{...} = "$1" || 1` 去掉不必要的字符串插值，改为 `$1 || 1`（运行结果不变，仅移除无意义插值）
+- 修复：`file_filt` 正则 `(|\.gz)` 是捕获组不是可选，会污染 `$1`，改为 `(?:\.gz)?`
+- 修复：`ROBOT` section 解析改用末尾数字字段正则，修复机器人签名含空格导致字段错位的问题
+- 修复：大量 `|| 0` / `// 0` 防 undef，避免 Perl 未初始化警告
+- 修复：gzip 历史压缩原子性、单饼图切片、科学计数法数值（`graphsvg.pm`）
+- 修复：`error()` 中 `$secondmessage` / `$thirdmessage` 做 HTML 转义，防止日志内容注入诊断响应
+
 ### 8.1.1 - 2026-10-13
 
 - 新增：历史 `txt` 数据文件自动压缩为 `gz`，减少磁盘占用 (#2)
@@ -346,6 +385,12 @@ StatsUrl="/vstats"                     # AWStats 部署的 Web 路径 用于导�
 - 🌏 修正语言加载逻辑，auto 模式下正确回退到英文
 - 🧹 移除过时的 PrintCLIHelp，统一使用 print_help 函数，现在您可以使用`awstats.pl -h`触发帮助说明。
 
+
+## 以下基于官方文档、SourceForge 记录和作者历史资料整理，部分日期可能与实际不符。
+
+如需查看原始更新，请访问 [SourceForge](https://sourceforge.net/projects/awstats/)。
+
+⚠️ **AWStats 8.0 将是原作者[Laurent Destailleur](https://github.com/eldy/AWStats)维护的最后一个版本，后续版本由社区维护。**
 
 ### 8.0 - 2025-08-26
 - 👋 *这是开发者(Laurent Destailleur)维护的最后一个版本*

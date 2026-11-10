@@ -29,6 +29,7 @@ Depends: perl,
          libencode-perl,
          libjson-xs-perl,
          libtry-tiny-perl,
+         python3 (>= 3.6),
          ${misc:Depends}
 Recommends: wget,
             ca-certificates

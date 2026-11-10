@@ -20,7 +20,7 @@ XPStyle on
 ;------------------------------------------------------------------------------
 ; 版本信息
 ;------------------------------------------------------------------------------
-!define VERSION "8.1"
+!define VERSION "8.2"
 !define PRODUCT_NAME "AWStats"
 !define PRODUCT_PUBLISHER "Laurent Destailleur"
 !define PRODUCT_WEB_SITE "https://www.awstats.org"

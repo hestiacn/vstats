@@ -1,10 +1,49 @@
 # 📋 AWStats Release Changelog
 
-*Based on official documentation, SourceForge records, and historical author materials. Some dates may not match actual release dates. For original records, please visit [SourceForge](https://sourceforge.net/projects/awstats/).*
+All notable changes to this project will be documented in this file.
 
-⚠️ **AWStats 8.0 will be the last version maintained by the original author(Laurent Destailleur). Subsequent versions are maintained by the community.**
+## 🚀 8.x Series (2026-latest)
 
-## 🚀 8.x Series(2026-latest)
+### 8.2 - 2026-11-11
+
+Optional SVG charts, verified crawler evidence, and the Filters static publisher; plus history-compression atomicity and a batch of undef/parsing fixes.
+
+- New: Optional `SVG` chart plugin `graphsvg`, rendering `ShowGraph` data as inline `SVG` with no external chart service `/JS` dependency.
+  Background: The Google Image Charts API that `graphgooglechartapi` depended on was shut down in March 2019, so charts in old reports are broken images (including static published reports); `graphsvg` generates SVG locally to fix this and sends no visitor statistics to third parties.
+  **Disabled by default; when disabled, native AWStats charts are still used.** Enable by adding `LoadPlugin="graphsvg"` to the configuration.
+  **Do not enable other ShowGraph plugins (e.g. `graphgooglechartapi`) at the same time; this combination is not supported.**
+  **`graphsvg` and `geoipfree` hook different events and can be enabled together without conflict — do not remove `geoipfree` in order to enable `graphsvg`.**
+- New: Verified Crawler Evidence native filtering, with `VerifiedCrawlerEvidenceFile` config option + `VStats::TrafficClassifier` validation + `classify_line` in the main flow.
+  Background: Native AWStats identifies crawlers by User-Agent alone, and UA can be forged arbitrarily (e.g. `curl -A "Googlebot/2.1"`), so real crawlers cannot be distinguished from masquerading scanners. This feature adds "official IP range + timestamp" verification on top of UA, upgrading "self-declared crawler" to "UA + official IP range + timestamp triple-verified crawler".
+  **Only supports `LogType=W` with `LogFormat=1(combined)/4(common)`; missing/invalid/oversized/close-failed evidence → aborts the current update (no fallback, no reverting to native rules).**
+  The evidence file must be a non-symlink regular file no larger than `evidence_bundle_bytes`; on a match it is recorded as `Googlebot/`, 304 response bodies are zeroed, and it runs before download tracking. Currently only the `google_common` provider is registered.
+  **This layer is additive verification and does not replace native UA/robot/error rules; native rules continue to apply independently.**
+- New: `Filters` static publisher with 6 families: `signatures` / `provider_evidence` / `probing_and_scanning` / `automated_browsing` / `scanner_inference` / `metadata` (see `docs/filters.md`).
+- New: `tools/traffic-classify.pl` offline request reports, `tools/automation_analysis.py` corpus analysis, `tools/vstats_filters.py` behavior filtering
+- New: `UnknownAgentHistoryKey` / `ParseUnknownAgentHistoryRow`, fixing the key mismatch caused by agents containing spaces after XML encoding (#18)
+- New: CLI mode supports the `VSTATS_NATIVE_INCLUDE_ROOT` environment variable to redirect relative include paths, for publisher config isolation; ignored in CGI mode
+- Update: History `.txt` compression now uses pure Perl `IO::Compress::Gzip` + atomic rename via a temporary file, comparing `dev/ino/mode/uid/gid/size/mtime/ctime` (eight fields) before and after compression; any change aborts, and the original file is retained on failure (#18)
+- Update: `Compress_Previous_Month_History` now compresses older months starting from the 2nd, keeps the current and previous months uncompressed, and refreshes stale older archives; skips when `.gz` already exists and the source is unchanged
+- Update: `gzip` history and plaintext are both decoded uniformly as `UTF-8`, preserving non-`ASCII keys`
+- Update: `CLI` error diagnostics go to `stderr`, `HTML/CGI` errors go to `stdout`; the output stream is chosen based on `%HTMLOutput` or `GATEWAY_INTERFACE`, **so static-render scenarios also use stdout**; log samples/filenames are escaped in `HTML` error responses
+- Update: `ShowGraph_$pluginname` now uses `__PACKAGE__->can`, fixing callback dispatch under strict mode
+- Update: Chart call sites in `awstats.pl` (file types/downloads/hosts/OS/browsers/HTTP status/cluster) gained a `graphsvg` branch passing raw counts directly; other plugins still receive percentages
+- Update: 206 partial downloads no longer double-count bandwidth; ordinary page/host/session statistics are consolidated into the shared block, removing duplicate accounting within status-code branches
+- Update: `%b` `-` for `favicon/manifest` normalized to 0; 404 icon/manifest responses now count toward bandwidth
+- Update: `mobile/tablet` exemption now checks for an explicit `crawler` first (`BytespiderRobotID` / `RegisteredCrawlerRobotID`), preventing mobile registered crawlers from being wrongly exempted; `defined(&...)` guards protect against older `robots.pm` missing these functions
+- Update: `UnknownAgentHistoryKey` is used on the **write side** of `UNKNOWNREFERER` / `UNKNOWNREFERERBROWSER` (4 places), so loading and writing both normalize to the `%20` form, truly fixing the key mismatch (#18)
+- Update: `Read_Config` now resets `VerifiedCrawlerEvidenceFile` / `VerifiedCrawlerEvidence` before each config read, avoiding cross-site residue
+- Update: Release packages exclude `tools/t/` (test directory files are not shipped); download the source package if you need them for development
+- Update: `RPM/Debian/FreeBSD` packages explicitly declare `python3 >= 3.6`; `ca-certificates` moved to RPM `Requires`
+- Fix: `@maxnboflistdefaultval` now includes a `DownloadsShown` default to avoid uninitialized values
+- Fix: `$LogType` now checks `!defined` before defaulting, avoiding uninitialized warnings
+- Fix: `$HTMLOutput{...} = "$1" || 1` drops the unnecessary string interpolation and becomes `$1 || 1` (behavior unchanged, only removes meaningless interpolation)
+- Fix: `file_filt` regex `(|\.gz)` was a capture group rather than optional and polluted `$1`; changed to `(?:\.gz)?`
+- Fix: `ROBOT` section parsing now uses a trailing-numeric-field regex, fixing field misalignment when robot signatures contain spaces
+- Fix: numerous `|| 0` / `// 0` guards against undef, avoiding Perl uninitialized warnings
+- Fix: gzip history compression atomicity, single pie slice, scientific-notation values (`graphsvg.pm`)
+- Fix: `error()` now HTML-escapes `$secondmessage` / `$thirdmessage`, preventing log content from being injected into diagnostic responses
+
 
 ### 8.1.1 - 2026-10-13
 
@@ -375,6 +414,12 @@ Thank you for choosing the AWStats Community Enhanced Edition! 🎉
 - 🚪 Documentation viewer appears dynamically after clicking links, supports close button
 - 🌏 Fixed language loading logic to correctly fallback to English in auto mode
 - 🧹 Removed obsolete PrintCLIHelp, unified use of `print_help` function. Now you can trigger help using `awstats.pl -h`
+
+## Based on official documentation, SourceForge records, and historical author materials.Some dates may not match actual release dates. 
+
+For original records, please visit [SourceForge](https://sourceforge.net/projects/awstats/).
+
+⚠️ **AWStats 8.0 will be the last version maintained by the original author [Laurent Destailleur](https://github.com/eldy/AWStats). Subsequent versions are maintained by the community.**
 
 ### 8.0 - 2025-08-26
 - 👋 *This is the last version maintained by the original developer(Laurent Destailleur)*

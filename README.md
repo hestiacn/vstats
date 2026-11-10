@@ -1,4 +1,4 @@
-# AWStats 8.1 - Advanced Website Statistics Tool (Community Edition)
+# AWStats - Advanced Website Statistics Tool (Community Edition)
 
 <p align="center">
   <img src="docs/images/screenshot.png" alt="AWStats Dashboard Preview" width="800">
@@ -106,17 +106,19 @@ Get the latest version from the links below:
 
 ---
 
-## 📊 Comparison with Original
+## 📊 Comparison with the Original
 
 | Feature | Original AWStats | Refactored Version |
 |:---:|:---:|:---:|
-| Encoding | GBK / Local encoding | **Full UTF-8 Support** |
-| Translation | Numeric indices `$Message[169]` | **Semantic keys `_t('key')`** |
-| Interface | Fixed style | **Dark/Light theme + Responsive** |
-| Country Flags | PNG images | **Emoji** — For `EDGE` browser, install the `Twemoji for Edge` extension to display icons properly |
-| Charts | PNG images | **Pure CSS Charts** |
-| Calendar Support | Gregorian only | **13 Calendar Systems** |
-| Maintenance Status | Archived | **Actively Maintained** |
+| Encoding | GBK / partial encoding | **Full UTF-8 support** |
+| Translation method | Numeric index `$Message[169]` | **Semantic keys `_t('key')`** |
+| UI style | Fixed style | **Light/dark theme toggle + responsive** |
+| Country flags | PNG images | **Emoji** |
+| Charts | PNG images | **Pure CSS charts** |
+| Calendar support | Gregorian calendar | **15 calendars** |
+| Maintenance status | Archived | **Continuously maintained** |
+
+**Emoji column note**: In `EDGE` browser, install the `Twemoji for Edge` extension to display Emoji icons properly.
 
 ---
 

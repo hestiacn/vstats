@@ -1,4 +1,4 @@
-# AWStats 8.1 - Geavanceerde website statistieken tool (Community Editie)
+# AWStats - Geavanceerde website statistieken tool (Community Editie)
 
 <p align="center">
   <img src="docs/images/screenshot.png" alt="AWStats Dashboard Voorbeeld" width="800">
@@ -97,17 +97,19 @@ Download de nieuwste versie via onderstaande links:
 
 ---
 
-## 📊 Vergelijking met originele versie
+## 📊 Vergelijking met het origineel
 
-| Kenmerk | Originele AWStats | Hervormde versie |
+| Kenmerk | Originele AWStats | Herstructurereerde versie |
 |:---:|:---:|:---:|
-| Codering | GBK / gedeeltelijke codering | **Volledige UTF-8 ondersteuning** |
+| Codering | GBK / gedeeltelijke codering | **Volledige UTF-8-ondersteuning** |
 | Vertaalmethode | Numerieke index `$Message[169]` | **Semantische sleutels `_t('key')`** |
-| Interface stijl | Vaste stijl | **Lichte/Donkere thema's + Responsief** |
-| Vlaggen | PNG afbeeldingen | **Emoji's** — In de `Edge`-browser installeert u de extensie `Twemoji for Edge` om de pictogrammen correct weer te geven |
-| Grafieken | PNG afbeeldingen | **Pure CSS grafieken** |
-| Kalenderondersteuning | Gregoriaans | **13 kalenders** |
-| Onderhoudsstatus | Gearchiveerd | **Actief onderhouden** |
+| UI-stijl | Vaste stijl | **Licht/donker thema wisselen + responsief** |
+| Landvlaggen | PNG-afbeeldingen | **Emoji** |
+| Grafieken | PNG-afbeeldingen | **Puur CSS-grafieken** |
+| Kalenderondersteuning | Gregoriaanse kalender | **15 kalenders** |
+| Onderhoudsstatus | Gearchiveerd | **Voortdurend onderhouden** |
+
+**Opmerking bij de Emoji-kolom**: Installeer in de `EDGE`-browser de extensie `Twemoji for Edge` om Emoji-pictogrammen correct weer te geven.
 
 ---
 

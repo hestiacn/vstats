@@ -26,8 +26,8 @@ my $Lang = '';
 #------------------------------------------------------------------------------
 # Defines
 #------------------------------------------------------------------------------
-my $REVISION='20260510';
-my $VERSION="8.1 (release $REVISION)";
+my $REVISION='20261111';
+my $VERSION="8.2 (release $REVISION)";
 # Default value of DIRCONFIG
 my $DIRCONFIG;
 my $Awstats;

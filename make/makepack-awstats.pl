@@ -405,6 +405,7 @@ sub cleanup_buildroot {
     my @remove_dirs = (
         "$target_dir/make",
         "$target_dir/test",
+        "$target_dir/tools/t",
     );
     
     foreach my $dir (@remove_dirs) {
@@ -469,6 +470,7 @@ sub build_tgz {
             . "--exclude='make' --exclude='test' --exclude='*.bak' --exclude='*~' "
             . "--exclude='*.old' --exclude='.gitignore' --exclude='.gitattributes' "
             . "--exclude='.project' --exclude='.cvsignore' --exclude='git2cvs.sh' "
+            . "--exclude='tools/t' "
             . "-czf '$output_file' --transform='s/^/$filename\\//' . 2>&1";
     
     print "Running: $cmd\n";
@@ -509,6 +511,7 @@ sub build_zip {
             . "-xr!*.bak -xr!*~ -xr!*.old "
             . "-xr!.gitignore -xr!.gitattributes "
             . "-xr!.project -xr!.cvsignore -xr!git2cvs.sh "
+            . "-xr!tools/t "
             . ". 2>&1";
     
     print "Running: $cmd\n";
@@ -665,12 +668,12 @@ sub build_rpm {
     print $fh_dbip '        echo "✓ DB-IP database updated to ${YEAR_MONTH}"', "\n";
     print $fh_dbip '    else', "\n";
     print $fh_dbip '        echo "$(date): Gunzip failed" >> "$LOG_FILE"', "\n";
-    print $fh_dbip '        echo "⚠ DB-IP database decompression failed"', "\n";
+    print $fh_dbip '        echo "DB-IP database decompression failed"', "\n";
     print $fh_dbip '    fi', "\n";
     print $fh_dbip 'else', "\n";
     print $fh_dbip '    rm -f "$DBIP_TEMP_GZ"', "\n";
     print $fh_dbip '    echo "$(date): Download failed for ${YEAR_MONTH}" >> "$LOG_FILE"', "\n";
-    print $fh_dbip '    echo "⚠ DB-IP database update failed"', "\n";
+    print $fh_dbip '    echo "DB-IP database update failed"', "\n";
     print $fh_dbip 'fi', "\n";
     close $fh_dbip;
 
@@ -784,10 +787,12 @@ sub build_rpm {
     print $spec_out 'Group: Applications/Internet', "\n";
     print $spec_out '', "\n";
     print $spec_out 'Requires: perl >= 1:5.020', "\n";
+    print $spec_out 'Requires: python3 >= 3.6', "\n";
     print $spec_out 'Requires: perl(JSON::XS)', "\n";
     print $spec_out 'Requires: perl(Try::Tiny)', "\n";
     print $spec_out 'Requires: wget', "\n";
-    print $spec_out 'Recommends: cron, httpd, ca-certificates', "\n";
+    print $spec_out 'Requires: ca-certificates', "\n";
+    print $spec_out 'Recommends: cron, httpd', "\n";
     print $spec_out 'AutoReqProv: yes', "\n";
     print $spec_out '', "\n";
 
@@ -1420,7 +1425,7 @@ EOF
     close $dbip_fh;
     chmod 0755, "$pkg_root/usr/local/bin/awstats-dbip-update";
 
-    open my $dbip_cron_fh, '>', "$pkg_root/etc/cron.d/awstats-dbip-update";
+    open my $dbip_cron_fh, '>', "$pkg_root/usr/local/etc/cron.d/awstats-dbip-update";
     print $dbip_cron_fh <<'EOF';
 # Update DB-IP database monthly on the 3rd at 3:00 AM
 0 3 3 * * root /usr/local/bin/awstats-dbip-update > /dev/null 2>&1
@@ -1443,7 +1448,7 @@ EOF
     # --------------------------------------------------------------------------
     print "\n📋 Step 4: Generating package manifest...\n";
     
-    my $meta_stage = "/tmp/awstats-buildroot/meta-stage";
+    my $meta_stage = "$BUILDROOT/meta-stage";
     system("rm -rf '$meta_stage' && mkdir -p '$meta_stage'") == 0 or die "Cannot initialize meta-stage dir: $!";
     
     my $manifest_file = "$meta_stage/+MANIFEST";
@@ -1460,7 +1465,7 @@ EOF
 
     my $arch = `uname -m`; chomp $arch;
     my $os_version = `freebsd-version | cut -d. -f1`; chomp $os_version;
-    my $freebsd_version = "$os_version:$arch";
+    my $freebsd_version = "FreeBSD:$os_version:$arch";
 
     print $mf "name: $PROJECT\n";
     print $mf "version: $pkg_version\n";
@@ -1489,6 +1494,7 @@ EOF
     
     print $mf "deps: {\n";
     print $mf "    perl5: { origin: \"lang/perl5\" },\n";
+    print $mf "    python3: { origin: \"lang/python3\", version: \">=3.6\" },\n";
     print $mf "    p5-JSON-XS: { origin: \"converters/p5-JSON-XS\" },\n";
     print $mf "    p5-Try-Tiny: { origin: \"lang/p5-Try-Tiny\" },\n";
     print $mf "    p5-MaxMind-DB-Common: { origin: \"net/p5-MaxMind-DB-Common\" },\n";
@@ -1584,10 +1590,10 @@ if [ ! -f "$DBIP_DEST" ]; then
             echo "✓ GeoIP database downloaded successfully"
         else
             rm -f "$DBIP_TEMP_GZ"
-            echo "⚠️ Failed to download GeoIP database"
+            echo "Failed to download GeoIP database"
         fi
     else
-        echo "⚠️ fetch not installed, skipping GeoIP database download"
+        echo "fetch not installed, skipping GeoIP database download"
     fi
 fi
 
@@ -1608,7 +1614,7 @@ fi
 
 echo ""
 echo "=========================================="
-echo " AWStats 8.1-1 UTF-8 installation complete"
+echo " AWStats __VERSION__ UTF-8 installation complete"
 echo "=========================================="
 echo " Main directory:     /usr/local/share/awstats"
 echo " CGI scripts:        /usr/local/www/cgi-bin/"
@@ -1631,6 +1637,17 @@ echo "=========================================="
 EOF
     close $pi;
     chmod 0755, $postinstall_file;
+    {
+        local $/;
+        open my $in, '<', $postinstall_file or die "Cannot read $postinstall_file: $!";
+        my $content = <$in>;
+        close $in;
+        $content =~ s/__VERSION__/$pkg_version/g;
+        open my $out, '>', $postinstall_file or die "Cannot write $postinstall_file: $!";
+        print $out $content;
+        close $out;
+    }
+
     print "  ✅ Created +POST_INSTALL inside metadata directory\n";
 
     # --------------------------------------------------------------------------

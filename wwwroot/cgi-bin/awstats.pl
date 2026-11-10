@@ -67,8 +67,8 @@ our %_icon_status = (
 # Initialization
 %LangHash      = ();
 %translate_map = ();
-$REVISION      = '20260510';
-$VERSION       = "8.1 (release $REVISION)";
+$REVISION      = '20261111';
+$VERSION       = "8.2 (release $REVISION)";
 
 # ----- constant variable -----
 use vars qw/
@@ -358,8 +358,8 @@ $DatabaseBreak = 'month';
 	$DecodeUA,
 	$DecodePunycode
 ) = (
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 );
 
 (
@@ -3934,15 +3934,14 @@ sub SortBrowsers {
 # Input:        $DIR, $PROG, $SiteConfig
 # Output:       Global configuration variables, $FileConfig, $FileSuffix
 # Return:       None (exits on error)
+# Search dirs:  - Windows: "$DIR" (same dir as awstats.pl)
+#               - Standard / Mandrake / Debian: "/etc/awstats"
+#               - Other: "/usr/local/etc/awstats"
+#               - FHS / Suse: "/etc/opt/awstats"
 #------------------------------------------------------------------------------
 sub Read_Config {
     $VerifiedCrawlerEvidenceFile = '';
     $VerifiedCrawlerEvidence = undef;
-	# Check config file in common possible directories :
-	# Windows :                   				"$DIR" (same dir than awstats.pl)
-	# Standard, Mandrake and Debian package :	"/etc/awstats"
-	# Other possible directories :				"/usr/local/etc/awstats",
-	# FHS standard, Suse package : 				"/etc/opt/awstats"
 	my $configdir = shift;
 	# my $UseDefaultNotPageList = 0;
 	my @PossibleConfigDir;
@@ -9637,17 +9636,26 @@ sub Rename_All_Tmp_History {
 }
 
 #------------------------------------------------------------------------------
-# Function:     Compress previous month history file after new file created
-# Description:  - Compresses the previous month's .txt history file to .gz
-#               - Runs from the 2nd day of the month onward
-#               - Keeps the current/previous month; refreshes stale older archives
-# Parameters:   None
-# Input:        $DirData, $PROG, $FileSuffix, $Debug
-# Output:       Creates .gz file, deletes original .txt after successful compression
+# Function:     Compress a single history file atomically
+# Description:  - Compresses $path to "$path.gz" using pure-Perl gzip
+#                 (IO::Compress::Gzip), not an external gzip binary
+#               - Writes to a sibling temp file and renames it into place,
+#                 so a failure never leaves a partial or truncated archive
+#               - Refuses symlinks and non-regular files
+#               - Verifies the source did not change during compression
+#                 (dev/ino/mode/nlink/uid/gid/size/mtime/ctime compared
+#                 before and after)
+#               - Preserves mode, owner and timestamps on the archive
+#               - On any failure the original plaintext is left in place
+# Parameters:   $path - full path to the plaintext history file
+# Input:        None (uses only its argument)
+# Output:       Creates "$path.gz", removes $path on success
 # Return:       1 on success, 0 on failure or skip
+#               Note: 0 also covers deliberate skips (the caller already
+#               saw a regular .gz, or the source is a symlink/non-regular
+#               file). Callers cannot tell "skipped" from "failed" from
+#               the return value alone.
 #------------------------------------------------------------------------------
-# Replace a stale archive from the authoritative plaintext only after a
-# complete sibling gzip has been closed. Failure preserves recoverable input.
 sub Compress_History_File {
     my ($path)=@_;
     return 0 if !-f $path || -l $path || (-e "$path.gz" && (!-f "$path.gz" || -l "$path.gz"));
@@ -9687,6 +9695,23 @@ sub Compress_History_File {
     return $ok?1:0;
 }
 
+#------------------------------------------------------------------------------
+# Function:     Compress previous month history file after new file created
+# Description:  - Compresses older monthly .txt/.bak history files to .gz
+#               - Runs from the 2nd day of the month onward (the 1st is
+#                 left alone so the just-rotated previous-month file is
+#                 not compressed while it may still be written to)
+#               - Keeps the current and previous month uncompressed;
+#                 refreshes stale older archives
+#               - Delegates each file to Compress_History_File() for the
+#                 atomic write; this function only selects files, calls
+#                 the helper and logs the result
+# Parameters:   None
+# Input:        $DirData, $PROG, $FileSuffix, $Debug
+# Output:       Creates .gz files, deletes original .txt/.bak after each
+#               successful compression
+# Return:       Number of files successfully compressed (0 on skip/failure)
+#------------------------------------------------------------------------------
 sub Compress_Previous_Month_History {
 	my ($sec, $min, $hour, $mday, $mon, $year) = localtime(time);
 	$year += 1900;
@@ -9973,9 +9998,24 @@ sub XMLEncode {
 # Parameters:	stringtoencode
 # Return:		encodedstring
 #------------------------------------------------------------------------------
+sub XMLEncodeForHisto {
+	my $string = shift;
+	$string =~ s/\s/%20/g;
+	if ( $BuildHistoryFormat ne 'xml' ) { return $string; }
+	$string =~ s/=/%3d/g;
+	$string =~ s/&/&amp;/g;
+	$string =~ s/</&lt;/g;
+	$string =~ s/>/&gt;/g;
+	$string =~ s/\"/&quot;/g;
+	$string =~ s/\'/&apos;/g;
+	return $string;
+}
+
+#------------------------------------------------------------------------------
 # Use the history representation for both loaded and newly observed agents.
 # Otherwise a raw agent containing spaces and its stored %20 form become two
 # hash keys that serialize to the same row key on the next update.
+#------------------------------------------------------------------------------
 sub UnknownAgentHistoryKey {
 	my $agent = shift;
 	$agent = '' if !defined $agent;
@@ -9992,19 +10032,6 @@ sub ParseUnknownAgentHistoryRow {
 		return (UnknownAgentHistoryKey($1), $2);
 	}
 	return split(/\s+/, $row);
-}
-
-sub XMLEncodeForHisto {
-	my $string = shift;
-	$string =~ s/\s/%20/g;
-	if ( $BuildHistoryFormat ne 'xml' ) { return $string; }
-	$string =~ s/=/%3d/g;
-	$string =~ s/&/&amp;/g;
-	$string =~ s/</&lt;/g;
-	$string =~ s/>/&gt;/g;
-	$string =~ s/\"/&quot;/g;
-	$string =~ s/\'/&apos;/g;
-	return $string;
 }
 
 #------------------------------------------------------------------------------
@@ -15242,7 +15269,7 @@ sub HTMLShowBrowserDetail{
 		}
 		print "<tr>";
 		
-		# 处理设备类型
+		# Processing equipment type
 		my ($is_device, $display_name, $icon_name) = parse_device_key($key);
 		
 		if ( $key eq 'Unknown' ) {
@@ -15252,7 +15279,7 @@ sub HTMLShowBrowserDetail{
 			  . "</td>\n<td class=\"aws\"><span style=\"color: #$color_other\">" . _t("Unknown Browser") . "</span></td>\n<td width=\"80\">?</td>\n";
 		}
 		elsif ($is_device) {
-			# 设备类型：使用 Emoji 而不是 SVG 图标
+			# Device type: Use Emoji instead of SVG icons
 			print "<td"
 			  	. ( $count ? "" : " width=\"$WIDTHCOLICON\"" )
 				. "><span style=\"font-size:24px;\">$icon_name</span>"
@@ -15452,7 +15479,7 @@ sub HTMLShowOSDetail{
 					$p_p = "$p_p %";
 				}
 
-				# 获取映射后的图标名称
+				# Get the mapped icon name
 				my $icon_key = $key;
 				if (defined $OSHashID{$key}) {
 					$icon_key = $OSHashID{$key};
@@ -15533,7 +15560,7 @@ sub HTMLShowOSDetail{
 		}
 		print "<tr>";
 		
-		# 处理设备类型
+		# Handling equipment type
 		my ($is_device, $display_name, $icon_name) = parse_device_key($key);
 		
 		if ( $key eq 'Unknown' ) {
@@ -16967,24 +16994,24 @@ sub HTMLShowDomains{
 		if ( $_domener_k{$key} && $bredde_k == 1 ) { $bredde_k = 2; }
 		my $newkey = lc($key);
 
-		# 获取显示用的完整位置和国家代码
+		# Get the full location and country code for display
 		my $display_name = '';
 		my $country_code = '';
 		if (exists $TmpDomainFullLocation{$newkey}) {
 			$display_name = $TmpDomainFullLocation{$newkey}->{display};
 			$country_code = $TmpDomainFullLocation{$newkey}->{code};
 		} else {
-			# 回退：将键名中的下划线转回空格
+			# Revert: change underscores in key names back to spaces
 			$display_name = $key;
 			$display_name =~ s/_/ /g;
-			# 提取国家名称并尝试查找代码
+			# Extract the country name and try to find the code
 			my $country_name = '';
 			if ($display_name =~ /^([^,]+),/) {
 				$country_name = $1;
 			} else {
 				$country_name = $display_name;
 			}
-			# 通过国家名称查找代码
+			# Find the code by country name
 			foreach my $code (keys %DomainsHashIDLib) {
 				if (lc($DomainsHashIDLib{$code}) eq lc($country_name)) {
 					$country_code = $code;
@@ -17086,7 +17113,7 @@ sub HTMLShowDownloads{
 	my $regext = qr/\.(\w{1,6})$/;
 	print "$Center<a name=\"downloads\">&nbsp;</a><br>";
 	
-	# 使用与 Main 函数相同的标题（但不需要 Full list 链接）
+	# Use the same title as the Main function (but without the Full list link)
 	my $title = _t("Downloads");
 	if ( $AddLinkToExternalCGIWrapper && ($ENV{'GATEWAY_INTERFACE'} || !$StaticLinks) ) {
 		$title .= " &nbsp; - &nbsp; <a href=\"" 
@@ -17123,7 +17150,7 @@ sub HTMLShowDownloads{
 	my $count = 0;
 	my $Totalh = 0;
 	
-	# 先计算总点击数用于百分比
+	# First compute total hits for percentage calculation
 	for my $u (keys %_downloads) {
 		$Totalh += $_downloads{$u}->{'AWSTATS_HITS'} || 0;
 	}
@@ -17131,7 +17158,7 @@ sub HTMLShowDownloads{
 	for my $u (sort {$_downloads{$b}->{'AWSTATS_HITS'} <=> $_downloads{$a}->{'AWSTATS_HITS'}}(keys %_downloads) ) {
 		print "<tr valign=\"middle\">";
 		
-		# 图标列
+		# Icon column
 		my $ext = Get_Extension($regext, $u);
 		if ( !$ext) {
 			print "<td class=\"aws\" width=\"$WIDTHCOLICON\" align=\"center\">"
@@ -17149,12 +17176,12 @@ sub HTMLShowDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 文件名列
+		# Filename column
 		print "<td class=\"aws\">";
 		&HTMLShowURLInfo($u);
 		print "<\/td>\n";
 		
-		# Hits 统计
+		# Hits statistics
 		if ( $ShowDownloadsStats =~ /H/i ){
 			my $hits = $_downloads{$u}->{'AWSTATS_HITS'} || 0;
 			my $hits206 = $_downloads{$u}->{'AWSTATS_206'} || 0;
@@ -17162,7 +17189,7 @@ sub HTMLShowDownloads{
 			print "<td class=\"aws\" bgcolor=\"#$color_h\" align=\"right\">" . Format_Number($hits206) . "<\/td>\n";
 		}
 		
-		# 带宽统计
+		# Bandwidth statistics
 		if ( $ShowDownloadsStats =~ /B/i ){
 			my $size = $_downloads{$u}->{'AWSTATS_SIZE'} || 0;
 			my $total_ops = ($_downloads{$u}->{'AWSTATS_HITS'} || 0) + ($_downloads{$u}->{'AWSTATS_206'} || 0);
@@ -17171,7 +17198,7 @@ sub HTMLShowDownloads{
 			print "<td class=\"aws\" bgcolor=\"#$color_k\" align=\"right\" nowrap=\"nowrap\">" . Format_Bytes($avg) . "<\/td>\n";
 		}
 		
-		# 完成率
+		# Completion rate
 		if ( $ShowDownloadsStats =~ /C/i ){
 			my $hits = $_downloads{$u}->{'AWSTATS_HITS'} || 0;
 			my $hits206 = $_downloads{$u}->{'AWSTATS_206'} || 0;
@@ -17182,7 +17209,7 @@ sub HTMLShowDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 移动设备统计
+		# Mobile device statistics
 		if ( $ShowDownloadsStats =~ /M/i ){
 			my $mobile = $_downloads{$u}->{'AWSTATS_MOBILE'} || 0;
 			my $pct = $Totalh > 0 ? int($mobile / $Totalh * 100) : 0;
@@ -17191,7 +17218,7 @@ sub HTMLShowDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 最后下载时间
+		# Last download time
 		if ( $ShowDownloadsStats =~ /T/i ){
 			my $last = $_downloads{$u}->{'AWSTATS_LAST_TIME'} || 0;
 			print "<td class=\"aws\" bgcolor=\"#$color_t\" align=\"right\" nowrap=\"nowrap\">"
@@ -17199,7 +17226,7 @@ sub HTMLShowDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 进度条（基于完成率）
+		# Progress bar (based on completion rate)
 		my $hits = $_downloads{$u}->{'AWSTATS_HITS'} || 0;
 		my $hits206 = $_downloads{$u}->{'AWSTATS_206'} || 0;
 		my $complete_rate = $hits > 0 ? ($hits - $hits206) / $hits : 0;
@@ -17908,12 +17935,12 @@ sub HTMLMainDaily{
 	my $total_u = my $total_v = my $total_p = my $total_h = my $total_k = 0;
 	my $max_v = my $max_h = my $max_k = 0;    # Start from 0 because can be lower than 1
 	
-	# 计算总计和最大值
+	# Calculate the total and the maximum
 	for (my $day = $start_day; $day <= $end_day; $day++) {
 		my $day_str = sprintf("%02d", $day);
 		my $date_key = $YearRequired . $MonthRequired . $day_str;
 		
-		# 验证日期有效性
+		# Verify the date validity
 		if (defined &is_valid_calendar_day) {
 			next unless is_valid_calendar_day($YearRequired, $MonthRequired, $day, $actual_days_in_month);
 		} else {
@@ -18512,7 +18539,7 @@ sub HTMLMainDownloads{
 	my $Totalh = 0;
 	if ($MaxNbOf{'DownloadsShown'} < 1){$MaxNbOf{'DownloadsShown'} = 10;}
 	
-	# 标题
+	# Title
 	my $title = "⬇️ " . _t("Downloads") . " (" . _t("Top") . " $MaxNbOf{'DownloadsShown'}) &nbsp; - &nbsp; <a href=\""
 	  . ( $ENV{'GATEWAY_INTERFACE'} || !$StaticLinks
 		? XMLEncode("$AWScript${NewLinkParams}output=downloads")
@@ -18530,7 +18557,7 @@ sub HTMLMainDownloads{
 	  
 	&tab_head( "$title", 0, 0, 'downloads' );
 	
-	# 计算前5名用于饼图
+	# Compute top 5 for the pie chart
 	my $cnt = 0;
 	my @top_downloads = ();
 	for my $u (sort {$_downloads{$b}->{'AWSTATS_HITS'} <=> $_downloads{$a}->{'AWSTATS_HITS'}}(keys %_downloads) ){
@@ -18540,7 +18567,7 @@ sub HTMLMainDownloads{
 		last if $cnt >= 5;
 	}
 	
-	# 饼图
+	# Pie chart
 	if ($Totalh > 0 && scalar keys %_downloads > 1){
 		foreach my $pluginname ( keys %{ $PluginsLoaded{'ShowGraph'} } ) {
 			my @blocklabel = ();
@@ -18555,14 +18582,14 @@ sub HTMLMainDownloads{
 				last if $cnt >= 5;
 			}
 			
-			# 动态计算列数
-			my $columns = 2;  # 图标列 + 文件名列
+			# Dynamically compute the number of columns
+			my $columns = 2;  # icon column + filename column
 			$columns += 2 if $ShowDownloadsStats =~ /H/i;  # Hits + 206
 			$columns += 2 if $ShowDownloadsStats =~ /B/i;  # Bandwidth + Avg
 			$columns += 1 if $ShowDownloadsStats =~ /C/i;  # Complete
 			$columns += 1 if $ShowDownloadsStats =~ /M/i;  # Mobile
 			$columns += 1 if $ShowDownloadsStats =~ /T/i;  # Last time
-			$columns += 1;  # 进度条列
+			$columns += 1;  # progress bar column
 			
 			print "<td colspan=\"$columns\">";
 			my $function = __PACKAGE__->can("ShowGraph_$pluginname");
@@ -18580,7 +18607,7 @@ sub HTMLMainDownloads{
 	print "<tr bgcolor=\"#$color_TableBGRowTitle\">";
 	print "<th colspan=\"2\">" . _t("Downloads") . ": $total_dls</th>\n";
 	
-	# 根据 ShowDownloadsStats 的值动态添加表头
+	# Dynamically add headers according to the value of ShowDownloadsStats
 	if ( $ShowDownloadsStats =~ /H/i ){
 		print "<th bgcolor=\"#$color_h\" width=\"80\">" . _t("Hits") . "</th>\n";
 		print "<th bgcolor=\"#$color_h\" width=\"100\">" . _t("Pause & Go") . "</th>\n";
@@ -18604,7 +18631,7 @@ sub HTMLMainDownloads{
 	for my $u (sort {$_downloads{$b}->{'AWSTATS_HITS'} <=> $_downloads{$a}->{'AWSTATS_HITS'}}(keys %_downloads) ){
 		print "<tr valign=\"middle\">";
 		
-		# 图标列
+		# Icon column
 		my $ext = Get_Extension($regext, $u);
 		if ( !$ext ) {
 			print "<td class=\"aws\" width=\"$WIDTHCOLICON\" align=\"center\">"
@@ -18621,12 +18648,12 @@ sub HTMLMainDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 文件名列
+		# Filename column
 		print "<td class=\"aws\">";
 		&HTMLShowURLInfo($u);
 		print "<\/td>\n";
 		
-		# Hits 统计
+		# Hits statistics
 		if ( $ShowDownloadsStats =~ /H/i ){
 			my $hits = $_downloads{$u}->{'AWSTATS_HITS'} || 0;
 			my $hits206 = $_downloads{$u}->{'AWSTATS_206'} || 0;
@@ -18634,7 +18661,7 @@ sub HTMLMainDownloads{
 			print "<td class=\"aws\" bgcolor=\"#$color_h\" align=\"right\">" . Format_Number($hits206) . "<\/td>\n";
 		}
 		
-		# 带宽统计
+		# Bandwidth statistics
 		if ( $ShowDownloadsStats =~ /B/i ){
 			my $size = $_downloads{$u}->{'AWSTATS_SIZE'} || 0;
 			my $total_ops = ($_downloads{$u}->{'AWSTATS_HITS'} || 0) + ($_downloads{$u}->{'AWSTATS_206'} || 0);
@@ -18643,7 +18670,7 @@ sub HTMLMainDownloads{
 			print "<td class=\"aws\" bgcolor=\"#$color_k\" align=\"right\" nowrap=\"nowrap\">" . Format_Bytes($avg) . "<\/td>\n";
 		}
 		
-		# 完成率
+		# Completion rate
 		if ( $ShowDownloadsStats =~ /C/i ){
 			my $hits = $_downloads{$u}->{'AWSTATS_HITS'} || 0;
 			my $hits206 = $_downloads{$u}->{'AWSTATS_206'} || 0;
@@ -18654,7 +18681,7 @@ sub HTMLMainDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 移动设备统计
+		# Mobile device statistics
 		if ( $ShowDownloadsStats =~ /M/i ){
 			my $mobile = $_downloads{$u}->{'AWSTATS_MOBILE'} || 0;
 			my $pct = $Totalh > 0 ? int($mobile / $Totalh * 100) : 0;
@@ -18663,7 +18690,7 @@ sub HTMLMainDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 最后下载时间
+		# Last download time
 		if ( $ShowDownloadsStats =~ /T/i ){
 			my $last = $_downloads{$u}->{'AWSTATS_LAST_TIME'} || 0;
 			print "<td class=\"aws\" bgcolor=\"#$color_t\" align=\"right\" nowrap=\"nowrap\">"
@@ -18671,7 +18698,7 @@ sub HTMLMainDownloads{
 				. "<\/td>\n";
 		}
 		
-		# 进度条（基于完成率）
+		# Progress bar (based on completion rate)
 		my $hits = $_downloads{$u}->{'AWSTATS_HITS'} || 0;
 		my $hits206 = $_downloads{$u}->{'AWSTATS_206'} || 0;
 		my $complete_rate = $hits > 0 ? ($hits - $hits206) / $hits : 0;
@@ -18849,7 +18876,7 @@ sub HTMLMainHours{
 		);
 		
 		# Define period text mapping with internationalization
-		# 定义 24 小时独立翻译
+		# Define 24-hour independent translation
 		my %period_text = (
 			0  => _t("period_00"),
 			1  => _t("period_01"),
@@ -19752,7 +19779,7 @@ sub HTMLMainRobots{
 				);
 			}
 			
-			# 转义 HTML 特殊字符
+			# Escape HTML special characters
 			$tooltip_text =~ s/&/&amp;/g;
 			$tooltip_text =~ s/</&lt;/g;
 			$tooltip_text =~ s/>/&gt;/g;
@@ -21279,7 +21306,7 @@ sub HTMLMainProtocolStats{
 	print "<th>&nbsp;</th>\n";
 	print "</tr>\n";
 	
-	# 计算总数
+	# Calculate totals
 	my $total_hits = 0;
 	my $total_bytes = 0;
 	foreach my $proto (keys %_protocol_h) {
@@ -21287,7 +21314,7 @@ sub HTMLMainProtocolStats{
 		$total_bytes += $_protocol_k{$proto} || 0;
 	}
 	
-	# 计算最大值用于进度条
+	# Calculate maximum values for progress bars
 	my $max_hits = 1;
 	my $max_bytes = 1;
 	foreach my $proto (keys %_protocol_h) {
@@ -21297,7 +21324,7 @@ sub HTMLMainProtocolStats{
 		$max_bytes = $bytes if $bytes > $max_bytes;
 	}
 	
-	# 协议性能评级描述
+	# Protocol performance rating descriptions
 	my %perf_desc = (
 		'HTTP/1.0' => _t('Each request requires a new connection'),
 		'HTTP/1.1' => _t('Multiple requests can reuse one connection'),
@@ -21307,7 +21334,7 @@ sub HTMLMainProtocolStats{
 		'HTTP/3.0' => _t('Faster connection, better performance on poor networks'),
 	);
 
-	# 按协议版本排序
+	# Sort by protocol version
 	my %order_map = (
 		'HTTP/1.0' => 1,
 		'HTTP/1.1' => 2,
@@ -21327,7 +21354,7 @@ sub HTMLMainProtocolStats{
 		my $pct_hits = $total_hits ? sprintf("%.1f", $hits / $total_hits * 100) : 0;
 		my $pct_bytes = $total_bytes ? sprintf("%.1f", $bytes / $total_bytes * 100) : 0;
 		
-		# 进度条宽度
+		# Progress bar widths
 		my $bar_hits = $max_hits ? int(200 * $hits / $max_hits) : 0;
 		my $bar_bytes = $max_bytes ? int(200 * $bytes / $max_bytes) : 0;
 		my $bar_pct_hits = $total_hits ? int(200 * $hits / $total_hits) : 0;
@@ -21338,7 +21365,7 @@ sub HTMLMainProtocolStats{
 		$bar_pct_hits = 2 if $bar_pct_hits < 2 && $hits > 0;
 		$bar_pct_bytes = 2 if $bar_pct_bytes < 2 && $bytes > 0;
 		
-		# 协议显示名称和描述
+		# Protocol display name and description
 		my $display = $proto;
 		$display =~ s/HTTP\//HTTP /;
 		my $desc = $perf_desc{$proto} || '';
@@ -21350,7 +21377,7 @@ sub HTMLMainProtocolStats{
 		print "<td align=\"right\"><b>$pct_hits%</b></td>\n";
 		print "<td align=\"right\"><b>$pct_bytes%</b></td>\n";
 		print "<td class=\"aws\">";
-		# 堆叠进度条
+		# Stacked progress bars
 		print "<div style=\"background-color: #$color_h; width: ${bar_hits}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Hits") . ": " . Format_Number($hits) . " ($pct_hits%)\"></div>";
 		print "<div style=\"background-color: #$color_k; width: ${bar_bytes}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Bandwidth") . ": " . Format_Bytes($bytes) . " ($pct_bytes%)\"></div>";
 		print "<div style=\"background-color: #$color_e; width: ${bar_pct_hits}px; height: 4px; border-radius: 2px; margin-bottom: 2px;\" title=\"" . _t("Request %") . ": $pct_hits%\"></div>";
@@ -21359,14 +21386,14 @@ sub HTMLMainProtocolStats{
 		print "</tr>\n";
 	}
 	
-	# 如果没有数据，显示提示
+	# If no data, show a hint
 	if ($total_hits == 0) {
 		print "<tr bgcolor=\"#$color_TableBGRowTitle\">";
 		print "<td colspan=\"6\" align=\"center\">" . _t("No protocol data available") . "</td>\n";
 		print "</tr>\n";
 	}
 	
-	# 性能建议
+	# Performance suggestions
 	if (exists $_protocol_h{'HTTP/1.0'} && $_protocol_h{'HTTP/1.0'} > 0) {
 		my $pct = sprintf("%.1f", $_protocol_h{'HTTP/1.0'} / $total_hits * 100);
 		print "<tr bgcolor=\"#$color_TableBGRowTitle\">";
@@ -21545,22 +21572,22 @@ sub parse_auth_results {
 	
 	my %results;
 	
-	# 解析 DKIM
+	# Parse DKIM
 	if ($auth =~ /dkim=(\w+)/i) {
 		$results{'dkim'} = lc($1);
 	}
 	
-	# 解析 SPF
+	# Parse SPF
 	if ($auth =~ /spf=(\w+)/i) {
 		$results{'spf'} = lc($1);
 	}
 	
-	# 解析 DMARC
+	# Parse DMARC
 	if ($auth =~ /dmarc=(\w+)/i) {
 		$results{'dmarc'} = lc($1);
 	}
 	
-	# 解析 ARC (Authenticated Received Chain)
+	# Parse ARC (Authenticated Received Chain)
 	if ($auth =~ /arc=(\w+)/i) {
 		$results{'arc'} = lc($1);
 	}
@@ -21723,7 +21750,7 @@ sub HTMLShowMailTLSStats {
 	my $title = "🔒 " . _t("TLS Encryption Statistics");
 	&tab_head($title, 0, 0, 'tlsstats');
 	
-	# TLS 版本统计
+	# TLS Version Stats
 	if ($total_version > 0) {
 		print "<tr><td colspan=\"2\" class=\"aws\"><b>" . _t("TLS Versions") . "</b></td>\n</tr>\n";
 		foreach my $version (sort keys %_tls_version) {
@@ -21736,7 +21763,7 @@ sub HTMLShowMailTLSStats {
 		}
 	}
 	
-	# TLS 加密套件统计 (只显示前10)
+	# TLS Cipher Suite Statistics (Top 10 Only)
 	if ($total_cipher > 0) {
 		print "<tr><td colspan=\"2\" class=\"aws\">&nbsp;</td>\n</tr>\n";
 		print "<tr><td colspan=\"2\" class=\"aws\"><b>" . _t("Top Ciphers") . "</b></td>\n</tr>\n";
@@ -21756,6 +21783,7 @@ sub HTMLShowMailTLSStats {
 	&tab_end();
 	print "<br>";
 }
+
 #------------------------------------------------------------------------------
 # Function:     Prints the cluster information chart and table
 # Parameters:   $NewLinkParams, $NewLinkTarget
@@ -21827,8 +21855,8 @@ sub HTMLMainCluster{
 	print "</tr>\n";
 	my $total_p = my $total_h = my $total_k = 0;
 
-# Cluster feature might have been enable in middle of month so we recalculate
-# total for cluster section only, to calculate ratio, instead of using global total
+    # Cluster feature might have been enable in middle of month so we recalculate
+    # total for cluster section only, to calculate ratio, instead of using global total
 	foreach my $key (@keylist) {
 		$total_p += int( $_cluster_p{$key} || 0 );
 		$total_h += int( $_cluster_h{$key} || 0 );
@@ -22021,9 +22049,9 @@ sub HTMLMainExtra{
 }
 
 return 1 if $TEST_MODE;
-#==============================================================================
+#------------------------------------------------------------------------------
 # MAIN PROGRAM ENTRY POINT
-#==============================================================================
+#------------------------------------------------------------------------------
 # This section handles:
 #   - Command-line argument parsing (CLI and CGI modes)
 #   - Configuration file loading
@@ -22045,7 +22073,7 @@ return 1 if $TEST_MODE;
 #   - Sanitizes all user inputs (CleanXSS, Sanitize)
 #   - Validates access controls (IP whitelist, authenticated users)
 #   - Prevents path traversal attacks
-#==============================================================================
+#------------------------------------------------------------------------------
 #region MAIN
 unless ($TEST_MODE) {
 ( $DIR  = $0 ) =~ s/([^\/\\]+)$//;

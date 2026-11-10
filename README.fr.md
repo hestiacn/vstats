@@ -1,4 +1,4 @@
-# AWStats 8.1 - Outil avancé de statistiques web (Édition Communautaire)
+# AWStats - Outil avancé de statistiques web (Édition Communautaire)
 
 <p align="center">
   <img src="docs/images/screenshot.png" alt="Aperçu du tableau de bord AWStats" width="800">
@@ -99,15 +99,17 @@ Téléchargez la dernière version depuis les liens ci-dessous :
 
 ## 📊 Comparaison avec la version originale
 
-| Fonctionnalité | AWStats Original | Version Refondue |
+| Caractéristique | AWStats original | Version refondue |
 |:---:|:---:|:---:|
-| Encodage | GBK / encodage partiel | **Support UTF-8 complet** |
-| Système de traduction | Index numérique `$Message[169]` | **Clés sémantiques `_t('key')`** |
-| Interface | Style fixe | **Thèmes clair/sombre + responsive** |
-| Drapeaux | Images PNG | **Émojis** — Sur le navigateur `Edge`, installez l'extension `Twemoji for Edge` pour afficher correctement les icônes |
-| Graphiques | Images PNG | **Graphiques CSS pur** |
-| Support calendrier | Grégorien | **13 calendriers** |
+| Encodage | GBK / encodage partiel | **Prise en charge complète de l'UTF-8** |
+| Méthode de traduction | Index numérique `$Message[169]` | **Clés sémantiques `_t('key')`** |
+| Style d'interface | Style fixe | **Basculement thème clair/sombre + responsive** |
+| Drapeaux | Images PNG | **Emoji** |
+| Graphiques | Images PNG | **Graphiques en CSS pur** |
+| Prise en charge des calendriers | Calendrier grégorien | **15 calendriers** |
 | État de maintenance | Archivé | **Maintenance continue** |
+
+**Note sur la colonne Emoji** : dans le navigateur `EDGE`, installez l'extension `Twemoji for Edge` pour afficher correctement les icônes Emoji.
 
 ---
 
