@@ -1,0 +1,17 @@
+[Unit]
+Description=vstats Filters report rebuild worker
+After=local-fs.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 -I /opt/vstats/current/tools/filters-worker.py --settings /etc/vstats/filters.json
+Restart=on-failure
+UMask=0027
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+ReadWriteDirectories=/var/lib/vstats /var/www/vstats /var/log/vstats
+
+[Install]
+WantedBy=multi-user.target

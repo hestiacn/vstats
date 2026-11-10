@@ -47,6 +47,8 @@ our $SiteConfig;
 our ($REVISION, $VERSION);
 our $UseDefaultNotPageList = 0;
 our $EnableLocaldatePlugin = 1;
+our $VerifiedCrawlerEvidenceFile = '';
+our $VerifiedCrawlerEvidence;
 our %DOWNLOAD_EXTS = ();
 our %_favicon_html_cache;
 our $LARAGON_ROOT_LOOKED_UP = 0;
@@ -3922,6 +3924,8 @@ sub SortBrowsers {
 # Return:       None (exits on error)
 #------------------------------------------------------------------------------
 sub Read_Config {
+    $VerifiedCrawlerEvidenceFile = '';
+    $VerifiedCrawlerEvidence = undef;
 	# Check config file in common possible directories :
 	# Windows :                   				"$DIR" (same dir than awstats.pl)
 	# Standard, Mandrake and Debian package :	"/etc/awstats"
@@ -4165,7 +4169,12 @@ sub Parse_Config {
 			if ($Debug) { debug( "Found an include : $includeFile", 2 ); }
 			if ( $includeFile !~ /^([a-zA-Z]:)?[\\\/]/ ) {
 				# Correct relative include files
-				if ( $FileConfig =~ /^(.*[\\\/])[^\\\/]*$/ ) {
+				if ( !$ENV{'GATEWAY_INTERFACE'}
+					&& defined($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'})
+					&& length($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'}) ) {
+					$includeFile = File::Spec->catfile($ENV{'VSTATS_NATIVE_INCLUDE_ROOT'}, $includeFile);
+				}
+				elsif ( $FileConfig =~ /^(.*[\\\/])[^\\\/]*$/ ) {
 					$includeFile = "$1$includeFile";
 				}
 			}
@@ -4221,6 +4230,10 @@ sub Parse_Config {
 		}
 
 		# Initialize parameter for (param,value)
+		if ( $param eq 'VerifiedCrawlerEvidenceFile' ) {
+			$VerifiedCrawlerEvidenceFile = $value;
+			next;
+		}
 		if ( $param =~ /^LogFile/ ) {
 			if ( $QueryString !~ /logfile=([^\s&]+)/i ) { $LogFile = $value; }
 			next;
@@ -5095,13 +5108,40 @@ sub Check_Config {
 	if ( !$LogFile ) {
 		error("LogFile parameter is not defined in config/domain file");
 	}
-	if ( $LogType !~ /[WSMF]/i ) { $LogType = 'W'; }
+	if ( !defined($LogType) || $LogType !~ /[WSMF]/i ) { $LogType = 'W'; }
 	$LogFormat =~ s/\\//g;
 	if ( !$LogFormat ) {
 		error("LogFormat parameter is not defined in config/domain file");
 	}
 	if ( $LogFormat =~ /^\d$/ && $LogFormat !~ /[1-6]/ ) {
 		error( sprintf( "LogFormat parameter is wrong in config/domain file. Value is '%s' (should be 1,2,3,4,5 or a 'personalized AWStats log format string')", $LogFormat ) );
+	}
+	# Validate optional evidence only after native defaults and log normalization.
+	if ($UpdateStats && length($VerifiedCrawlerEvidenceFile)) {
+		if ($LogType ne 'W' || ($LogFormat ne '1' && $LogFormat ne '4')) {
+			error('Verified crawler evidence requires HTTP combined or common logs.');
+		}
+		my $ok = eval {
+			local @INC = (File::Spec->catdir($DIR || '.', '..', '..', 'tools', 'lib'), @INC);
+			require VStats::TrafficClassifier;
+			my $cap = VStats::TrafficClassifier->fixed_limits->{evidence_bundle_bytes};
+			die 'Evidence must be a regular file' if -l $VerifiedCrawlerEvidenceFile || !-f $VerifiedCrawlerEvidenceFile;
+			open my $evidence, '<:raw', $VerifiedCrawlerEvidenceFile or die 'Evidence open failed';
+			die 'Evidence must be a regular file' if !-f $evidence;
+			my $raw = '';
+			while (1) {
+				my $n = read($evidence, my $chunk, 65536);
+				die 'Evidence read failed' if !defined($n);
+				last if !$n;
+				die 'Evidence bundle too large' if length($raw) + $n > $cap;
+				$raw .= $chunk;
+			}
+			close($evidence) or die 'Evidence close failed';
+			$VerifiedCrawlerEvidence = VStats::TrafficClassifier->evidence_verifier(
+				$raw, format => $LogFormat eq '1' ? 'combined' : 'common');
+			1;
+		};
+		error('Invalid or unreadable verified crawler evidence; statistics were not updated.') if !$ok;
 	}
 	$LogSeparator ||= "\\s";
 	$DirData      ||= '.';
@@ -24180,6 +24220,27 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 			}
 		}
 
+		# Additional evidence never replaces the existing robot/worm/error rules.
+		# Run before download tracking so confirmed downloads are not counted as
+		# ordinary traffic and download events before being classified as robots.
+		if (!$countedtraffic && $VerifiedCrawlerEvidence && $LogType eq 'W'
+			&& $ValidHTTPCodes{$field[$pos_code]}) {
+			my $labels = $VerifiedCrawlerEvidence->classify_line($line);
+			if ($labels->{actor} eq 'verified_crawler') {
+				# google_common is the sole reviewed provider in this registry.
+				my $robot = 'Googlebot/';
+				$field[$pos_size] = 0 if $pos_size > 0 && int($field[$pos_code]) == 304;
+				$_robot_h{$robot}++;
+				$_robot_k{$robot} += int($field[$pos_size]) if $pos_size > 0 && $field[$pos_size] ne '-';
+				$_robot_l{$robot} = $timerecord;
+				$_robot_r{$robot}++ if $urlwithnoquery =~ /$regrobot/o;
+				$countedtraffic = 4;
+				$_time_nv_p[$hourrecord]++ if $PageBool;
+				$_time_nv_h[$hourrecord]++;
+				$_time_nv_k[$hourrecord] += int($field[$pos_size]) if $pos_size > 0 && $field[$pos_size] ne '-';
+			}
+		}
+
 		# 初始化正则表达式
 		$DOWNLOAD_TOOLS_UA_RE = qr/IDM|XDM|aria2|wget|curl|python-requests|Go-http-client|WebCopier|Teleport|Scrapy|httpx/i;
 		$STREAMING_UA_RE = qr/AppleWebKit|Gecko|Mobile|Android|iPhone|iPad|iPod|PlayStation|Xbox|SmartTV|HbbTV/i;
@@ -24575,19 +24636,26 @@ if ( $UpdateStats && $FrameName ne 'index' && $FrameName ne 'mainleft' ) {
 				if ($LevelForRobotsDetection) {
 
 					if ($UserAgent) {
+						# Older or locally customized robots.pm may lack the helper.
+						my $explicit_robot = defined(&BytespiderRobotID)
+							? BytespiderRobotID($UserAgent) : '';
 						my $is_mobile_device = 0;
 						if (defined &get_device_type) {
 							my $device_type = get_device_type($UserAgent);
-							if ($device_type eq 'mobile' || $device_type eq 'tablet') {
-								$is_mobile_device = 1;
-								if ($Debug) {
-									debug("  Mobile device detected ($device_type), skipping robot classification", 2);
+							if (!$explicit_robot && ($device_type eq 'mobile' || $device_type eq 'tablet')) {
+								$explicit_robot = RegisteredCrawlerRobotID($UserAgent, $LevelForRobotsDetection)
+									if defined(&RegisteredCrawlerRobotID);
+								if (!$explicit_robot) {
+									$is_mobile_device = 1;
+									if ($Debug) {
+										debug("  Mobile device detected ($device_type), skipping robot classification", 2);
+									}
 								}
 							}
 						}
 						# 如果不是移动设备，进行机器人检测
 						if (!$is_mobile_device) {
-							my $uarobot = $TmpRobot{$UserAgent};
+							my $uarobot = $explicit_robot || $TmpRobot{$UserAgent};
 							#study $UserAgent;		Does not increase speed
 							if ( !$uarobot ) {
 								if ($Debug) {
