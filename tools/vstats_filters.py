@@ -108,7 +108,7 @@ FILTER_CATALOGUE += [
     dict(key='inferred_scanner', label='Bounded scanner inference', family='scanner_inference', section='inferred_scanner',
          parameter_help={'min_sources': 'Minimum number of distinct source addresses sharing the exact platformless client fingerprint, each with valid scanner DNS evidence within window days; counted across the whole corpus, not only selected months.'},
          summary='Recent selected months and corroborated scanner fingerprints.',
-         help='Requires selected UTC months, scanner DNS evidence within window days of the request and the configured number of corroborating scanner sources for a client fingerprint. Association is inferred historical evidence, not verified ownership. Unsupported provenance and positive browser continuity abstain. Marks witnessed requests only; the comparison and evidence remain reviewable.'),
+         help='Requires selected UTC months, scanner DNS evidence within window days of the request and the configured number of corroborating scanner sources for a client fingerprint. Association is inferred historical evidence, not verified ownership. Unsupported provenance and positive browser continuity abstain. Excludes witnessed requests from the default report; evidence is reviewable.'),
     dict(key='declared_automation', label='Declared automation', family='signatures', section='declared_automation',
          summary='Curated explicit crawler/tool declarations, unverified.',
          help='Matches curated bounded crawler or tool tokens in the observed user agent. An empty token list is inactive. Declarations can be forged and do not verify provider identity; generic browser strings are not crawler evidence.' + CORPUS_PROVENANCE_HELP),
