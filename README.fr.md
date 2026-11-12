@@ -87,11 +87,11 @@ Téléchargez la dernière version depuis les liens ci-dessous :
 
 | Système/Format | Lien de téléchargement |
 |:---:|:---:|
-| **Debian/Ubuntu** | [![Télécharger .deb](https://img.shields.io/badge/Télécharger-.deb-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb) |
-| **RHEL/CentOS/Fedora** | [![Télécharger .rpm](https://img.shields.io/badge/Télécharger-.rpm-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
-| **Code source (tar.gz)** | [![Télécharger .tar.gz](https://img.shields.io/badge/Télécharger-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
-| **Code source (zip)** | [![Télécharger .zip](https://img.shields.io/badge/Télécharger-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![Télécharger Windows](https://img.shields.io/badge/Télécharger-Windows-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
+| **Debian/Ubuntu** | [![Télécharger .deb](https://img.shields.io/badge/Télécharger-.deb-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb) |
+| **RHEL/CentOS/Fedora** | [![Télécharger .rpm](https://img.shields.io/badge/Télécharger-.rpm-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm) |
+| **Code source (tar.gz)** | [![Télécharger .tar.gz](https://img.shields.io/badge/Télécharger-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.tar.gz) |
+| **Code source (zip)** | [![Télécharger .zip](https://img.shields.io/badge/Télécharger-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.zip) |
+| **Windows** | [![Télécharger Windows](https://img.shields.io/badge/Télécharger-Windows-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-utf8.exe) |
 
 > **Note pour l'environnement Windows** : La version Windows n'inclut que l'installateur EXE, la structure des répertoires et les chemins n'ont pas été testés. Si vous rencontrez des problèmes, n'hésitez pas à ouvrir une Issue ou une Pull Request !
 
@@ -251,28 +251,28 @@ HestiaCP intègre déjà AWStats, il suffit de mettre à jour et d'installer les
 > ⚠️ **Remarque importante** : Lors de l'installation dans l'environnement HestiaCP, si le système vous demande de mettre à jour le fichier de configuration, veuillez choisir **`N`** (conserver la configuration d'origine), sinon la configuration de routage spécifique au panneau HestiaCP sera écrasée.
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### Debian / Ubuntu Installation native
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### RHEL / CentOS / Rocky Linux / Fedora
 
 ```bash
 # Utilisation de la commande DNF standard, parfaitement compatible avec tout l'écosystème Red Hat
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm && dnf install -y /tmp/awstats-8.2-1.noarch.rpm
 ```
 
 ### FreeBSD
 
 ```bash
 # Verrouillage de protection après installation, élimine complètement les faux rapports de déclassement des versions anciennes des panneaux tiers (comme Webmin)
-fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
-pkg install -y /tmp/awstats-8.1-1.pkg && \
+fetch -o /tmp/awstats-8.2-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.pkg && \
+pkg install -y /tmp/awstats-8.2-1.pkg && \
 pkg lock -y awstats
 ```
 

@@ -111,7 +111,7 @@ $log
 - [Source Code (tar.gz)](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR.tar.gz)
 - [Source Code (zip)](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR.zip)
 - [RPM Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR-$RPMSUBVERSION.noarch.rpm)
-- [DEB Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/${PROJECT}_$MAJOR.$MINOR-${RPMSUBVERSION}_all.deb)
+- [DEB Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/${PROJECT}-$MAJOR.$MINOR-${RPMSUBVERSION}.deb)
 - [FreeBSD Package](https://github.com/$GITHUB_REPO/releases/download/v$MAJOR.$MINOR/$PROJECT-$MAJOR.$MINOR-$PKGSUBVERSION.pkg)
 
 ### Installation
@@ -1019,7 +1019,7 @@ sub build_rpm {
 sub build_deb {
     my $version = "$MAJOR.$MINOR";
     my $filename = "$PROJECT-$version";
-    my $output = "$DESTI/${PROJECT}_$version-${RPMSUBVERSION}_all.deb";
+    my $output = "$DESTI/${PROJECT}-$version-${RPMSUBVERSION}.deb";
     
     print "\n🔨 Building DEB package: $filename\n";
     print "=" x 60, "\n";

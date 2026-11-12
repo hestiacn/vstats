@@ -87,11 +87,11 @@ StatsUrl="/vstats"                   # AWStats 배포 디렉토리
 
 | 시스템/형식 | 다운로드 링크 |
 |:---:|:---:|
-| **Debian/Ubuntu** | [![Download .deb](https://img.shields.io/badge/Download-.deb_패키지-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb) |
-| **RHEL/CentOS/Fedora** | [![Download .rpm](https://img.shields.io/badge/Download-.rpm_패키지-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
-| **소스 코드 (tar.gz)** | [![Download .tar.gz](https://img.shields.io/badge/Download-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
-| **소스 코드 (zip)** | [![Download .zip](https://img.shields.io/badge/Download-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![Download Windows](https://img.shields.io/badge/Download-Windows_버전-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
+| **Debian/Ubuntu** | [![Download .deb](https://img.shields.io/badge/Download-.deb_패키지-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb) |
+| **RHEL/CentOS/Fedora** | [![Download .rpm](https://img.shields.io/badge/Download-.rpm_패키지-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm) |
+| **소스 코드 (tar.gz)** | [![Download .tar.gz](https://img.shields.io/badge/Download-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.tar.gz) |
+| **소스 코드 (zip)** | [![Download .zip](https://img.shields.io/badge/Download-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.zip) |
+| **Windows** | [![Download Windows](https://img.shields.io/badge/Download-Windows_버전-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-utf8.exe) |
 
 > **Windows 환경 참고**: Windows 버전은 EXE 설치 프로그램만 패키징되어 있으며, 디렉토리 구조와 경로는 실제로 테스트되지 않았습니다. 사용 중 문제가 발생하면 Issue 또는 Pull Request를 제출해 주세요.
 
@@ -251,28 +251,28 @@ HestiaCP에는 AWStats가 이미 포함되어 있습니다. 빌드된 `deb` 및 
 > ⚠️ **중요 알림**: HestiaCP 환경에서 설치할 때 시스템에서 구성 파일 업데이트를 요청하면 반드시 **`N`**(원본 구성 유지)을 선택하세요. 그렇지 않으면 HestiaCP 패널의 고유 라우팅 구성이 덮어쓰기됩니다.
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### Debian / Ubuntu 기본 설치
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### RHEL / CentOS / Rocky Linux / Fedora
 
 ```bash
 # 최신 DNF 표준 install 명령어 사용, Red Hat 생태계 전체에 완벽 호환
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm && dnf install -y /tmp/awstats-8.2-1.noarch.rpm
 ```
 
 ### FreeBSD
 
 ```bash
 # 설치 후 원클릭 잠금 방어 주입, 타사 관리 패널(예: Webmin)의 이전 버전 다운그레이드 오보를 완전히 제거
-fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
-pkg install -y /tmp/awstats-8.1-1.pkg && \
+fetch -o /tmp/awstats-8.2-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.pkg && \
+pkg install -y /tmp/awstats-8.2-1.pkg && \
 pkg lock -y awstats
 ```
 

@@ -87,11 +87,11 @@ StatsUrl="/vstats"                   # AWStats 部署目录
 
 | 系统/格式 | 下载链接 |
 |:---:|:---:|
-| **Debian/Ubuntu** | [![下载 .deb 包](https://img.shields.io/badge/下载-.deb_包-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb) |
-| **RHEL/CentOS/Fedora** | [![下载 .rpm 包](https://img.shields.io/badge/下载-.rpm_包-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
-| **源码包 (tar.gz)** | [![下载源码 .tar.gz](https://img.shields.io/badge/下载-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
-| **源码包 (zip)** | [![下载源码 .zip](https://img.shields.io/badge/下载-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![下载 Windows版](https://img.shields.io/badge/下载-Windows版-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
+| **Debian/Ubuntu** | [![下载 .deb 包](https://img.shields.io/badge/下载-.deb_包-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb) |
+| **RHEL/CentOS/Fedora** | [![下载 .rpm 包](https://img.shields.io/badge/下载-.rpm_包-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm) |
+| **源码包 (tar.gz)** | [![下载源码 .tar.gz](https://img.shields.io/badge/下载-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.tar.gz) |
+| **源码包 (zip)** | [![下载源码 .zip](https://img.shields.io/badge/下载-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.zip) |
+| **Windows** | [![下载 Windows版](https://img.shields.io/badge/下载-Windows版-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-utf8.exe) |
 
 > **Windows 环境说明**：Windows 版本仅打包了 EXE 安装包，目录结构和路径均未经过实际测试。如在使用中遇到问题，欢迎提交 Issue 或 Pull Request 协助修复！
 
@@ -250,28 +250,26 @@ HestiaCP 已自带 AWStats，更新安装打包好的 `deb` 和 `rpm` 程序即�
 > ⚠️ **重要提示**：使用 HestiaCP 环境安装时，若系统提示配置文件是否更新，请务必选择 **`N`**（保留原配置），否则会覆盖 HestiaCP 面板的特有路由配置。
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### Debian / Ubuntu 原生直装
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### RHEL / CentOS / Rocky Linux / Fedora
 
 ```bash
-# 采用现代 DNF 标准 install 指令，完美对齐全系列红帽生态
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm && dnf install -y /tmp/awstats-8.2-1.noarch.rpm
 ```
 
 ### FreeBSD
 
 ```bash
-# 安装后一键注入锁定防御，彻底消灭第三方管理面板（如 Webmin）的旧版本降级误报
-fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
-pkg install -y /tmp/awstats-8.1-1.pkg && \
+fetch -o /tmp/awstats-8.2-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.pkg && \
+pkg install -y /tmp/awstats-8.2-1.pkg && \
 pkg lock -y awstats
 ```
 

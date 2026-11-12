@@ -87,11 +87,11 @@ StatsUrl="/vstats"                   # دليل نشر AWStats
 
 | النظام/الصيغة | رابط التحميل |
 |:---:|:---:|
-| **Debian/Ubuntu** | [![تحميل .deb](https://img.shields.io/badge/تحميل-.deb_حزمة-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb) |
-| **RHEL/CentOS/Fedora** | [![تحميل .rpm](https://img.shields.io/badge/تحميل-.rpm_حزمة-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm) |
-| **الكود المصدري (tar.gz)** | [![تحميل .tar.gz](https://img.shields.io/badge/تحميل-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.tar.gz) |
-| **الكود المصدري (zip)** | [![تحميل .zip](https://img.shields.io/badge/تحميل-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1.zip) |
-| **Windows** | [![تحميل Windows](https://img.shields.io/badge/تحميل-نسخة_Windows-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-utf8.exe) |
+| **Debian/Ubuntu** | [![تحميل .deb](https://img.shields.io/badge/تحميل-.deb_حزمة-2ea44f?logo=debian&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb) |
+| **RHEL/CentOS/Fedora** | [![تحميل .rpm](https://img.shields.io/badge/تحميل-.rpm_حزمة-2ea44f?logo=fedora&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm) |
+| **الكود المصدري (tar.gz)** | [![تحميل .tar.gz](https://img.shields.io/badge/تحميل-.tar.gz-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.tar.gz) |
+| **الكود المصدري (zip)** | [![تحميل .zip](https://img.shields.io/badge/تحميل-.zip-2ea44f?logo=sourceforge&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2.zip) |
+| **Windows** | [![تحميل Windows](https://img.shields.io/badge/تحميل-نسخة_Windows-2ea44f?logo=windows&logoColor=white)](https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-utf8.exe) |
 
 > **ملاحظة حول بيئة Windows**: تحتوي نسخة Windows فقط على مثبت EXE، ولم يتم اختبار بنية الدليل والمسارات. إذا واجهت مشاكل أثناء الاستخدام، يرجى تقديم Issue أو Pull Request للمساعدة في الإصلاح.
 
@@ -251,28 +251,28 @@ HestiaCP يأتي مدمجًا مع AWStats، ما عليك سوى تحديث و
 > ⚠️ **تنبيه مهم**: عند التثبيت في بيئة HestiaCP، إذا طلب النظام تحديث ملف التكوين، يرجى اختيار **`N`** (الاحتفاظ بالتكوين الأصلي)، وإلا سيتم استبدال تكوين المسار الخاص بلوحة HestiaCP.
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### Debian / Ubuntu التثبيت المباشر
 
 ```bash
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats_8.1-1_all.deb && apt install -y /tmp/awstats_8.1-1_all.deb
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.deb && apt install -y /tmp/awstats-8.2-1.deb
 ```
 
 ### RHEL / CentOS / Rocky Linux / Fedora
 
 ```bash
 # استخدام أمر DNF القياسي للتثبيت، متوافق تماماً مع نظام Red Hat البيئي
-wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.noarch.rpm && dnf install -y /tmp/awstats-8.1-1.noarch.rpm
+wget -P /tmp/ https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.noarch.rpm && dnf install -y /tmp/awstats-8.2-1.noarch.rpm
 ```
 
 ### FreeBSD
 
 ```bash
 # قفل الحماية بحقنة واحدة بعد التثبيت، القضاء تماماً على التقارير الخاطئة لإصدارات لوحات الإدارة القديمة (مثل Webmin)
-fetch -o /tmp/awstats-8.1-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.1-1.pkg && \
-pkg install -y /tmp/awstats-8.1-1.pkg && \
+fetch -o /tmp/awstats-8.2-1.pkg https://github.com/hestiacn/vstats/releases/latest/download/awstats-8.2-1.pkg && \
+pkg install -y /tmp/awstats-8.2-1.pkg && \
 pkg lock -y awstats
 ```
 
