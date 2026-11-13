@@ -92,7 +92,7 @@ sub GetCountryCodeByAddr_geoipfree {
         $storage_location =~ s/ /_/g;
         
         my $code = lc($country_code);
-        $TmpDomainFullLocation{$code} = {
+        $TmpDomainFullLocation{lc($storage_location)} = {
             display => $display_location,
             code => $code,
             country_name => $country_code,

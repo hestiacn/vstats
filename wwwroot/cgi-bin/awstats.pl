@@ -2778,12 +2778,17 @@ sub html_end {
 		#}
 		if (@plugins) {
 			my $plugin_str = join(', ', @plugins);
+			my $extra = '';
 			if (grep { $_ eq 'geoipfree' } @plugins) {
-				$plugin_str .= ' - ' . _t("dbip by") . ' <a href="https://db-ip.com" target="_blank" rel="noopener" title="' . _t("IPDB by") . '">dbip</a>';
+				$extra = ' - ' . _t("dbip by")
+                    . ' <a href="https://db-ip.com" target="_blank" rel="noopener" title="' . _t("IPDB by") . '">DB-IP</a>'
+                    . ' &middot; '
+                    . '<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" title="CC BY 4.0">CC BY 4.0</a>';
 			}
-			printf(" (%s: %s)", 
+			printf(" (%s: %s)%s", 
 				_t("plugins"), 
-				$plugin_str
+				$plugin_str,
+				$extra
 			);
 		}
 	}
@@ -6889,6 +6894,13 @@ sub Read_History_With_TmpUpdate {
 							$_domener_p{ $field[0] } += $field[1] if $field[1];
 							$_domener_h{ $field[0] } += $field[2] if $field[2];
 							$_domener_k{ $field[0] } += $field[3] if $field[3];
+							if (defined $field[4] && $field[4] =~ /^[a-z]{2}$/) {
+								$TmpDomainFullLocation{lc($field[0])} = {
+									code         => $field[4],
+									country_name => uc($field[4]),
+                                    display      => join(' ', map { ucfirst($_) } split(/_/, lc($field[0]))),
+								};
+							}
 						}
 					}
 					$_ = <HISTORY>;
@@ -8568,16 +8580,18 @@ sub Save_History {
 		# ||0 could be commented to reduce history file size
 		foreach (@keylist) {
 			$keysinkeylist{$_} = 1;
-			my $page = $_domener_p{$_} || 0;
+			my $page  = $_domener_p{$_} || 0;
 			my $bytes = $_domener_k{$_} || 0;
-			print HISTORYTMP "${xmlrb}$_${xmlrs}$page${xmlrs}$_domener_h{$_}${xmlrs}$bytes${xmlre}\n";
+			my $code  = $TmpDomainFullLocation{lc($_)} ? ($TmpDomainFullLocation{lc($_)}->{code} || '') : '';
+			print HISTORYTMP "${xmlrb}$_${xmlrs}$page${xmlrs}$_domener_h{$_}${xmlrs}$bytes${xmlrs}$code${xmlre}\n";
 		}
 		# ||0 could be commented to reduce history file size
 		foreach ( keys %_domener_h ) {
 			if ( $keysinkeylist{$_} ) { next; }
-			my $page = $_domener_p{$_} || 0;
+			my $page  = $_domener_p{$_} || 0;
 			my $bytes = $_domener_k{$_} || 0;
-			print HISTORYTMP "${xmlrb}$_${xmlrs}$page${xmlrs}$_domener_h{$_}${xmlrs}$bytes${xmlre}\n";
+			my $code  = $TmpDomainFullLocation{lc($_)} ? ($TmpDomainFullLocation{lc($_)}->{code} || '') : '';
+			print HISTORYTMP "${xmlrb}$_${xmlrs}$page${xmlrs}$_domener_h{$_}${xmlrs}$bytes${xmlrs}$code${xmlre}\n";
 		}
 		print HISTORYTMP "${xmleb}END_DOMAIN${xmlee}\n";
 	}
@@ -16993,7 +17007,7 @@ sub HTMLShowDomains{
 		if ( $max_k > 0 ) { $bredde_k = int( $BarWidth * ( $_domener_k{$key} || 0 ) / $max_k ) + 1; }
 		if ( $_domener_k{$key} && $bredde_k == 1 ) { $bredde_k = 2; }
 		my $newkey = lc($key);
-
+        
 		# Get the full location and country code for display
 		my $display_name = '';
 		my $country_code = '';

@@ -1,8 +1,9 @@
 #!/usr/bin/perl
 #-----------------------------------------------------------------------------
 # GraphSVG AWStats plugin
-# Adapted from paneologist/AWStats, commit 1abd522b1e5b4c50866968e84d4a24247bbaec4e.
-# https://github.com/paneologist/AWStats (GNU GPL version 3 or later).
+# Adapted from paneologist/AWStats.
+# https://github.com/paneologist/AWStats/commit/1abd522b1e5b4c50866968e84d4a24247bbaec4e
+# (GNU GPL version 3 or later).
 # Draws AWStats graphs as self-contained, inline SVG (no external service).
 #
 # This is a drop-in replacement for the "graphgooglechartapi" plugin, whose
@@ -332,26 +333,26 @@ sub _graphsvg_bar {
 '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" font-family="Helvetica,Arial,sans-serif" font-size="10">',
 		$W, $H, $W, $H );
 	push @s,
-	  sprintf( '<rect x="0" y="0" width="%d" height="%d" fill="#ffffff"/>',
+	  sprintf( '<rect x="0" y="0" width="%d" height="%d" fill="var(--bg-color)"/>',
 		$W, $H );
 
-	# Week-end column backgrounds.
-	foreach my $b ( 0 .. $nblocks - 1 ) {
-		my ( undef, undef, $we ) = _graphsvg_label( $blocklabel->[$b] );
-		next unless $we;
-		my $gx = $padL + $b * $groupW;
-		push @s,
-		  sprintf(
-'<rect x="%.1f" y="%d" width="%.1f" height="%d" fill="%s" opacity="0.6"/>',
-			$gx, $plotTop, $groupW, $plotH, _graphsvg_col( $color_weekend, 'EAEAEA' ) );
-	}
+    # Week-end column backgrounds.
+    foreach my $b ( 0 .. $nblocks - 1 ) {
+        my ( undef, undef, $we ) = _graphsvg_label( $blocklabel->[$b] );
+        next unless $we;
+        my $gx = $padL + $b * $groupW;
+        push @s,
+        sprintf(
+    '<rect x="%.1f" y="%d" width="%.1f" height="%d" fill="var(--color-weekend-bg)" opacity="0.6"/>',
+            $gx, $plotTop, $groupW, $plotH );
+    }
 
 	# Horizontal grid lines.
 	foreach my $g ( 0 .. 4 ) {
 		my $gy = $plotTop + $plotH * $g / 4;
 		push @s,
 		  sprintf(
-'<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="#e6e6e6" stroke-width="1"/>',
+'<line x1="%d" y1="%.1f" x2="%d" y2="%.1f" stroke="var(--border-color)" stroke-width="1"/>',
 			$padL, $gy, $W - $padR, $gy );
 	}
 
@@ -472,7 +473,7 @@ sub _graphsvg_pie {
 '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" font-family="Helvetica,Arial,sans-serif" font-size="11">',
 		$W, $H, $W, $H );
 	push @s,
-	  sprintf( '<rect x="0" y="0" width="%d" height="%d" fill="#ffffff"/>',
+	  sprintf( '<rect x="0" y="0" width="%d" height="%d" fill="var(--bg-color)"/>',
 		$W, $H );
 
 	# Per-segment colours: evenly spread shades of the base colour.
@@ -571,7 +572,7 @@ sub _graphsvg_rank {
 '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" font-family="Helvetica,Arial,sans-serif" font-size="11">',
 		$W, $H, $W, $H );
 	push @s,
-	  sprintf( '<rect x="0" y="0" width="%d" height="%d" fill="#ffffff"/>',
+	  sprintf( '<rect x="0" y="0" width="%d" height="%d" fill="var(--bg-color)"/>',
 		$W, $H );
 
 	foreach my $i ( 0 .. scalar(@rows) - 1 ) {

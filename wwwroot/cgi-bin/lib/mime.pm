@@ -69,6 +69,8 @@
 'xml',       'mime_xml',
 'sgm',       'mime_sgml',
 'sgml',      'mime_sgml',
+'rss',       'mime_rss',
+'atom',      'mime_rss',
 
 # 现代文件格式
 'markdown',  'mime_markdown',

@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## 🚀 8.x Series (2026-latest)
 
+### 8.2.1 - 2026-11-14
+
+- **Added**: Technical description for the `mime_rss` file format.
+- **Improved**: Fixed the background color of `graphsvg` charts so they follow the current UI theme automatically.
+- **Improved**: Added `DB-IP` data source and `CC BY 4.0` license attribution links to the footer.
+- **Fixed**: Country codes were not persisted to the data file. During report rendering, `$TmpDomainFullLocation` was empty, so the code relied on `%DomainsHashIDLib` for reverse matching by country name; when matching failed, it fell back to taking the first two letters of the country name (e.g. `The Netherlands` → `th`), causing wrong flag emojis for some countries (e.g. the Netherlands displayed the Thailand flag).
+
 ### 8.2 - 2026-11-11
 
 Optional SVG charts, verified crawler evidence, and the Filters static publisher; plus history-compression atomicity and a batch of undef/parsing fixes.
